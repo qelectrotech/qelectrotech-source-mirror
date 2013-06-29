@@ -292,13 +292,13 @@
         <location filename="../sources/borderpropertieswidget.cpp" line="110"/>
         <source>px</source>
         <comment>unit for cols width</comment>
-        <translation>πιξελ</translation>
+        <translation> πιξελ</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="126"/>
         <source>px</source>
         <comment>unit for rows height</comment>
-        <translation>πιξελ</translation>
+        <translation> πιξελ</translation>
     </message>
 </context>
 <context>
@@ -1314,7 +1314,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="77"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation>Έκδοση μόνο για ανάγνωση</translation>
+        <translation>Άνοιγμα μόνο για ανάγνωση</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="78"/>
@@ -1568,7 +1568,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Ajouter un schéma</source>
-        <translation>Προσθήκη ενός διαγράμματος</translation>
+        <translation>Προσθήκη διαγράμματος</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
@@ -2361,7 +2361,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
         <source>Ajouter une ligne</source>
-        <translation>Προσθήκη μίας γραμμής</translation>
+        <translation>Προσθήκη γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
@@ -2754,7 +2754,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/projectview.cpp" line="701"/>
         <source>Ajouter un schéma</source>
-        <translation>Προσθήκη ενός διαγράμματος</translation>
+        <translation>Προσθήκη διαγράμματος</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="715"/>
@@ -3050,7 +3050,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
         <source>Ajouter une colonne</source>
-        <translation>Προσθήκη μίας στήλης</translation>
+        <translation>Προσθήκη στήλης</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="243"/>
@@ -3310,7 +3310,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
         <source>Ajouter un champ de texte</source>
-        <translation>Προσθήκη ενός πλαισίου κειμένου</translation>
+        <translation>Προσθήκη πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="99"/>
@@ -3325,7 +3325,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
         <source>Ajouter une ligne</source>
-        <translation>Προσθήκη μίας γραμμής</translation>
+        <translation>Προσθήκη γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
@@ -3335,7 +3335,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="224"/>
         <source>Ajouter un schéma</source>
-        <translation>Προσθήκη ενός διαγράμματος</translation>
+        <translation>Προσθήκη διαγράμματος</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="225"/>
@@ -3660,7 +3660,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
         <source>Ajoute une colonne au schéma</source>
         <comment>status bar tip</comment>
-        <translation>Προσθήκη μίας στήλης στο διάγραμμα</translation>
+        <translation>Προσθήκη στήλης στο διάγραμμα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
@@ -4871,13 +4871,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="346"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
-        <translation>Προσθήκη μίας γραμμής</translation>
+        <translation>Προσθήκη γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="347"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
-        <translation>Προσθήκη μίας στήλης</translation>
+        <translation>Προσθήκη στήλης</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="348"/>
@@ -5126,13 +5126,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="75"/>
         <source>Ajouter un champ de texte</source>
         <comment>undo caption</comment>
-        <translation>Προσθήκη ενός πλαισίου κειμένου</translation>
+        <translation>Προσθήκη πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="110"/>
         <source>ajouter un conducteur</source>
         <comment>undo caption</comment>
-        <translation>προσθήκη ενός αγωγού</translation>
+        <translation>προσθήκη αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="149"/>
@@ -6623,25 +6623,25 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templateview.cpp" line="535"/>
         <source>Ajouter une colonne (avant)</source>
         <comment>context menu</comment>
-        <translation>Προσθήκη μίας στήλης (πριν)</translation>
+        <translation>Προσθήκη στήλης (πριν)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="536"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
-        <translation>Προσθήκη μίας γραμμής (πριν)</translation>
+        <translation>Προσθήκη γραμμής (πριν)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="537"/>
         <source>Ajouter une colonne (après)</source>
         <comment>context menu</comment>
-        <translation>Προσθήκη μίας στήλης (μετά)</translation>
+        <translation>Προσθήκη στήλης (μετά)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="538"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
-        <translation>Προσθήκη μίας γραμμής (μετά)</translation>
+        <translation>Προσθήκη γραμμής (μετά)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="539"/>

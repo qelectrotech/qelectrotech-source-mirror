@@ -6,7 +6,7 @@
     </names>
     <informations></informations>
     <description>
-        <rect width="36" x="-9" y="-41" antialias="false" height="82" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="36" x="-9" y="-40" antialias="false" height="81" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40.24" x1="15" y2="-38.24" x2="15"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40.24" x1="-3" y2="-38.24" x2="-3"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="39" x1="15" y2="41.5" x2="15"/>
@@ -51,6 +51,6 @@
         <polygon x4="2.65811" y5="13" x5="2.65811" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:white" closed="false" y1="11" x1="4" y2="13" x2="4" y3="11" x3="2.65811" y4="13"/>
         <polygon x4="20.6581" y5="13" x5="20.6581" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:white" closed="false" y1="11" x1="22" y2="13" x2="22" y3="11" x3="20.6581" y4="13"/>
         <input x="-6" y="-15.5" size="4" rotate="true" text="_A"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40.932" x1="9" y2="41.343" x2="9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-39.9458" x1="9" y2="41.358" x2="9"/>
     </description>
 </definition>
