@@ -4,6 +4,7 @@
         <name lang="fr">connecteur interne</name>
         <name lang="pl">Łącznik wewnętrzny</name>
         <name lang="it">Riferimento interno</name>
+        <name lang="cs">Vnitřní odkaz</name>
     </names>
     <informations>ezza</informations>
     <description>
