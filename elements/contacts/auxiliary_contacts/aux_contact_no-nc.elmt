@@ -1,6 +1,7 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Auxiliary contact NO + NC</name>
+        <name lang="fr">Contact auxilliaire NO + NC</name>
         <name lang="pl">Zestyki pomocnicze NO + NZ</name>
     </names>
     <informations></informations>
