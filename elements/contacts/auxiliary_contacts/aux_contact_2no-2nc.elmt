@@ -1,5 +1,6 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Βοηθητικές επαφές, 2 ανοικτές + 2 κλειστές</name>
         <name lang="en">Auxiliary contact 2 x NO + 2 x NC</name>
         <name lang="fr">Contact auxilliaire 2 x NO + 2 x NC</name>
         <name lang="pl">Zestyki pomocnicze 2 x NO + 2 x NZ</name>
