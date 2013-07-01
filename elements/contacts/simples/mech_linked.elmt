@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Mechanically linked contacts</name>
+        <name lang="it">Contatti meccanicamente connessi</name>
         <name lang="pl">Zestyki o wymuszonym przełączaniu NO + NO</name>
     </names>
     <informations></informations>
