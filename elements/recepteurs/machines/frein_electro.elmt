@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مكبح كهروميكانيكي</name>
+        <name lang="el">Ηλεκτρομηχανικό φρένο</name>
         <name lang="en">Electromechanical brake</name>
+        <name lang="it">Freno elettromeccanico</name>
         <name lang="fr">Frein electromecanique</name>
         <name lang="pl"> Hamulec elektromechaniczny</name>
         <name lang="cs">Elektromechanická brzda</name>
-        <name lang="it">Freno elettromeccanico</name>
     </names>
     <informations></informations>
     <description>

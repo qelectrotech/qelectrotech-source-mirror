@@ -1,11 +1,12 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" orientation="ynnd">
     <names>
         <name lang="ar">مقاومة تسخين</name>
+        <name lang="el">Αντίσταση θέρμανσης</name>
         <name lang="en">Resistance heating</name>
+        <name lang="it">Resistenza di riscaldamento</name>
         <name lang="fr">Résistance chauffante</name>
         <name lang="pl">Grzejnik rezystancyjny</name>
         <name lang="cs">Vytápěcí odpor</name>
-        <name lang="it">Resistenza di riscaldamento</name>
     </names>
     <informations></informations>
     <description>

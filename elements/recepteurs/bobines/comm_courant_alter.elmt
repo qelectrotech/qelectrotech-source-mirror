@@ -1,11 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="70" version="0.3" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
+        <name lang="el">Πηνίο εναλλασσόμενου</name>
         <name lang="en">AC Relais</name>
-        <name lang="fr">Relais à courant
-alternatif</name>
+        <name lang="it">Relè AC</name>
+        <name lang="fr">Relais à courant alternatif</name>
         <name lang="pl">Przekaźnik prądu przemiennego</name>
         <name lang="cs">Relé střídavého proudu</name>
-        <name lang="it">Relè AC</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

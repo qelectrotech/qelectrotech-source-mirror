@@ -1,9 +1,10 @@
-<definition width="60" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">محرّك تيّار مستمرّ</name>
         <name lang="de">Gleichstrom Motor</name>
         <name lang="ru">Эл. мотор постоянного тока</name>
         <name lang="pt">Motor de corrente contínua</name>
+        <name lang="el">Μοτέρ συνεχούς</name>
         <name lang="en">DC motor</name>
         <name lang="it">Motore a corrente continua</name>
         <name lang="fr">Moteur à courant continu</name>

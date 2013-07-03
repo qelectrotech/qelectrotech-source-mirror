@@ -1,9 +1,10 @@
-<definition width="60" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مُولّد تيّار مستمرّ</name>
         <name lang="de">Gleichstrom Generator</name>
         <name lang="ru">Генератор постоянного тока</name>
         <name lang="pt">Gerador de corrente contínua</name>
+        <name lang="el">Γεννήτρια συνεχούς</name>
         <name lang="en">DC generator</name>
         <name lang="it">Generatore di corrente continua</name>
         <name lang="fr">Générateur à courant continu</name>

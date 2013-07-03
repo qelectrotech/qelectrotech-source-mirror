@@ -1,11 +1,12 @@
-<definition width="80" version="0.3" hotspot_x="30" hotspot_y="40" height="60" type="element" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="30" hotspot_y="40" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صندوق ثلاثي الأوجه - مثلثي</name>
+        <name lang="el">Κιβώτιο με συνδεσμολογία τριγώνου</name>
         <name lang="en">Caisson phase triangle</name>
+        <name lang="it">Collegamento a triangolo</name>
         <name lang="fr">Caisson triphasé triangle</name>
         <name lang="pl">Grzejnik trójfazowy skojarzony w trójkąt</name>
         <name lang="cs">Třífázové topení, trojúhelníkové</name>
-        <name lang="it">Collegamento a triangolo</name>
     </names>
     <informations></informations>
     <description>

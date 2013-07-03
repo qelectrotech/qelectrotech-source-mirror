@@ -1,11 +1,12 @@
-<definition width="80" version="0.3" hotspot_x="30" hotspot_y="40" height="60" type="element" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="30" hotspot_y="40" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صندوق ثلاثي الأوجه نجمي</name>
+        <name lang="el">Κιβώτιο με συνδεσμολογία αστέρα</name>
         <name lang="en">Caisson phase star</name>
+        <name lang="it">Collegamento a stella</name>
         <name lang="fr">Caisson triphasé étoile</name>
         <name lang="pl">Grzejnik trójfazowy skojarzony w gwiazdę</name>
         <name lang="cs">Třífázové topení, hvězdicové</name>
-        <name lang="it">Collegamento a stella</name>
     </names>
     <informations></informations>
     <description>

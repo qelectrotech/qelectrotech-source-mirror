@@ -1,11 +1,12 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="ar">حامي من الصواعق</name>
+        <name lang="el">Προστασία από υπέρταση</name>
         <name lang="en">Surge protection</name>
+        <name lang="it">Protez. alimentazione</name>
         <name lang="fr">Parafoudre</name>
         <name lang="pl">Ogranicznik przepięć</name>
         <name lang="cs">Bleskojistka, ochrana proti nárazu</name>
-        <name lang="it">Protez. alimentazione</name>
     </names>
     <informations></informations>
     <description>

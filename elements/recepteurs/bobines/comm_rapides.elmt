@@ -1,11 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="25" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
+        <name lang="el">Πηνίο γρήγορου ρελέ</name>
         <name lang="en">Fast relay</name>
-        <name lang="fr">Relais rapide (à
-mise au travail et à mise au repos rapides)</name>
+        <name lang="it">Relè rapido</name>
+        <name lang="fr">Relais rapide (à mise au travail et à mise au repos rapides)</name>
         <name lang="pl">Przekaźnik szybki</name>
         <name lang="cs">Rychlé relé</name>
-        <name lang="it">Relè rapido</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

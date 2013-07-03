@@ -1,9 +1,10 @@
-<definition width="70" version="0.3" hotspot_x="25" hotspot_y="25" height="60" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="25" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="ar">محرّك أحادي الوجه</name>
         <name lang="de">Wechselstrom Motor</name>
         <name lang="ru">Однофазный эл. мотор</name>
         <name lang="pt">Motor monofásico</name>
+        <name lang="el">Μονοφασικό μοτέρ</name>
         <name lang="en">One-phase engine</name>
         <name lang="it">Motore monofase</name>
         <name lang="fr">Moteur monophasé</name>

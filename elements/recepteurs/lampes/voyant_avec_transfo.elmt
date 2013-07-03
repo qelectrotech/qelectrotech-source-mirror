@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
         <name lang="ar">مصباح بمُحوّل</name>
+        <name lang="el">Λυχνία με μετασχηματιστή</name>
         <name lang="en">Light with transformer</name>
         <name lang="it">Luce con trasformatore</name>
         <name lang="fr">Voyant avec transfo</name>

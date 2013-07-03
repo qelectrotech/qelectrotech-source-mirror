@@ -1,11 +1,10 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
         <name lang="en">Relay insensitive to AC</name>
-        <name lang="fr">Relais insensible au
-courant alternatif</name>
+        <name lang="it">Relè insensibile alla CA</name>
+        <name lang="fr">Relais insensible au courant alternatif</name>
         <name lang="pl">Przekaźnik niewrażliwy na prąd przemienny</name>
         <name lang="cs">Relé necitlivé na střídavý proud</name>
-        <name lang="it">Relè insensibile alla CA</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

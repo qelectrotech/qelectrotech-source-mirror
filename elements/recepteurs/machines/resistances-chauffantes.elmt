@@ -1,11 +1,12 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مقاومة تسخين</name>
+        <name lang="el">Αντίσταση θέρμανσης</name>
         <name lang="en">Resistances heating</name>
+        <name lang="it">Resistenza di riscaldamento</name>
         <name lang="fr">Resistances chauffantes</name>
         <name lang="pl">Grzejnik</name>
         <name lang="cs">Vytápěcí odpory</name>
-        <name lang="it">Resistenza di riscaldamento</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

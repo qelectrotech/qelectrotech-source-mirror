@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
         <name lang="ar">مُؤشّر وميضي</name>
+        <name lang="el">Λυχνία με παλλόμενο φως</name>
         <name lang="en">Flashing light</name>
         <name lang="it">Luce intermittente</name>
         <name lang="fr">Voyant flash</name>
