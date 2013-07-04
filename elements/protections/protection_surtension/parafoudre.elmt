@@ -1,13 +1,11 @@
-<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
-        <name lang="de">Doppel-Funkenstrecke
-</name>
+        <name lang="de">Doppel-Funkenstrecke</name>
         <name lang="en">Surge protector</name>
-        <name lang="fr">Parafoudre
-</name>
+        <name lang="it">Scaricatore</name>
+        <name lang="fr">Parafoudre</name>
         <name lang="pl">Ogranicznik przepięć</name>
         <name lang="cs">Bleskojistka, ochrana proti přepětí</name>
-        <name lang="it">Scaricatore</name>
     </names>
     <informations>EN 60617: 07-22-03</informations>
     <description>

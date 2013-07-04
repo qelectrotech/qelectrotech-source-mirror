@@ -1,11 +1,12 @@
 <definition width="130" version="0.3" hotspot_x="10" hotspot_y="10" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="ar">انطلاق محرك</name>
+        <name lang="el">Εκκίνηση μοτέρ</name>
         <name lang="en">Start motor</name>
+        <name lang="it">Partenza motore</name>
         <name lang="fr">Depart moteur</name>
         <name lang="pl">Rozruch silnika</name>
         <name lang="cs">Spuštění motoru</name>
-        <name lang="it">Partenza motore</name>
     </names>
     <informations></informations>
     <description>

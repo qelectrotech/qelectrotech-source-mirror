@@ -2,11 +2,12 @@
     <names>
         <name lang="ar">قاطع مغناطيسي-حراري GV</name>
         <name lang="de">Motorschutzschalter</name>
+        <name lang="el">Θερμομαγνητικό GV</name>
         <name lang="en">Magneto-thermal circuit breaker GV</name>
+        <name lang="it">Interr. magneto-termico</name>
         <name lang="fr">Disjoncteur Magnéto-thermique GV</name>
         <name lang="pl">Wyłącznik silnikowy</name>
         <name lang="cs">Magnetotepelný jistič GV</name>
-        <name lang="it">Interr. magneto-termico</name>
     </names>
     <informations></informations>
     <description>

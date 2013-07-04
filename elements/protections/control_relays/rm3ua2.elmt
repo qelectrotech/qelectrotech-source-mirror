@@ -1,11 +1,12 @@
 <definition width="140" version="0.3" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">RM3UA2</name>
+        <name lang="el">RM3UA2</name>
         <name lang="en">RM3UA2</name>
+        <name lang="it">RM3UA2</name>
         <name lang="fr">RM3UA2</name>
         <name lang="pl">RM3UA2</name>
         <name lang="cs">RM3UA2</name>
-        <name lang="it">RM3UA2</name>
     </names>
     <informations></informations>
     <description>
