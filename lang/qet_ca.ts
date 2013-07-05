@@ -1609,30 +1609,30 @@ L&apos;operació és irreversible.</translation>
         <translation>Eliminar el filtre</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="84"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="86"/>
         <source>Filtrer : </source>
         <translation>Filtrar:</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="473"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="475"/>
         <source>Gestionnaire de catégories</source>
         <comment>window title</comment>
         <translation>Gestor de categories</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="476"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="478"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories.</source>
         <translation>Pot fer servir aquest gestor per afegir, eliminar o modificar les categories.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="641"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="643"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
         <translatorcomment>Lectura de fitxer de símbols i categories</translatorcomment>
         <translation>S&apos;està llegint...</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="664"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="666"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
         <translation>Carregant: %p%</translation>
@@ -2029,32 +2029,32 @@ L&apos;operació és irreversible.</translation>
         <translation>Moure el símbol amb el hotspot</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="84"/>
+        <location filename="../sources/hotspoteditor.cpp" line="89"/>
         <source>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Dimensions&lt;/span&gt;</source>
         <translation>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Dimensions&lt;/span&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="85"/>
+        <location filename="../sources/hotspoteditor.cpp" line="90"/>
         <source>Largeur :</source>
         <translation>Base:</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="87"/>
+        <location filename="../sources/hotspoteditor.cpp" line="92"/>
         <source>Hauteur :</source>
         <translation>Altura:</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="89"/>
+        <location filename="../sources/hotspoteditor.cpp" line="94"/>
         <source>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Hotspot&lt;/span&gt;</source>
         <translation>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Hotspot&lt;/span&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="90"/>
+        <location filename="../sources/hotspoteditor.cpp" line="95"/>
         <source>Abscisse :</source>
         <translation>Abscissa:</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="92"/>
+        <location filename="../sources/hotspoteditor.cpp" line="97"/>
         <source>Ordonnée :</source>
         <translation>Ordenada:</translation>
     </message>
@@ -2526,19 +2526,19 @@ L&apos;operació és irreversible.</translation>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
-        <source>Unité</source>
+        <source>Chiffre 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
-        <source>Dizaine</source>
+        <source>Chiffre 01</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
-        <source>Centaine</source>
+        <source>Chiffre 001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4745,7 +4745,7 @@ Què vol fer?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1326"/>
+        <location filename="../sources/qetproject.cpp" line="1328"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>S&apos;ha produït un problema mentre es copiava el símbol %1</translation>
     </message>
@@ -5740,6 +5740,32 @@ Què vol fer?</translation>
         <location filename="../sources/ui/selectautonumw.cpp" line="34"/>
         <source>Schéma sans titre</source>
         <translation type="unfinished">Esquema sense títol</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/selectautonumw.cpp" line="122"/>
+        <source>Autonumérotation</source>
+        <comment>title window</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/selectautonumw.cpp" line="123"/>
+        <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.
+-Chaque Folio possède sa propre méthode de numérotation.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprant: un type, une valeur et une incrémentation.
+
+-les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représente un type numérique définie dans le champs &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ &quot;Incrémentation&quot;.
+-&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représenté sur le schéma par deux et trois digits minimum.
+Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type &quot;Texte&quot;, représente un texte fixe.
+Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
+
+-Le type &quot;N° folio&quot; représente le n° du folio en cours.
+Les autres champs ne sont pas utilisés.</source>
+        <comment>help dialog about the autonumerotation</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

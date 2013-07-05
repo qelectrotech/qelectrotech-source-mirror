@@ -782,7 +782,7 @@ to all conductors of this potential?</translation>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation type="unfinished">Diagram annotation</translation>
+        <translation>Diagram annotation</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
@@ -1549,24 +1549,24 @@ Changes will be definitive.</translation>
         <translation>Delete this template</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="476"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="478"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories.</source>
         <translation>Use this manager to add, delete or modify categories.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="641"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="643"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
         <translation>Reading...</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="664"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="666"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
         <translation>Loading: %p%</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="84"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="86"/>
         <source>Filtrer : </source>
         <translation>Filter: </translation>
     </message>
@@ -1621,7 +1621,7 @@ Changes will be definitive.</translation>
         <translation>Undo</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="473"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="475"/>
         <source>Gestionnaire de catégories</source>
         <comment>window title</comment>
         <translation>Categories manager</translation>
@@ -2011,32 +2011,32 @@ Changes will be definitive.</translation>
         <translation>Translate element along with hotspot</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="84"/>
+        <location filename="../sources/hotspoteditor.cpp" line="89"/>
         <source>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Dimensions&lt;/span&gt;</source>
         <translation>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Size&lt;/span&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="85"/>
+        <location filename="../sources/hotspoteditor.cpp" line="90"/>
         <source>Largeur :</source>
         <translation>Width:</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="87"/>
+        <location filename="../sources/hotspoteditor.cpp" line="92"/>
         <source>Hauteur :</source>
         <translation>Height:</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="89"/>
+        <location filename="../sources/hotspoteditor.cpp" line="94"/>
         <source>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Hotspot&lt;/span&gt;</source>
         <translation>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Hotspot&lt;/span&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="90"/>
+        <location filename="../sources/hotspoteditor.cpp" line="95"/>
         <source>Abscisse :</source>
         <translation>Abscissa:</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="92"/>
+        <location filename="../sources/hotspoteditor.cpp" line="97"/>
         <source>Ordonnée :</source>
         <translation>Ordinate:</translation>
     </message>
@@ -2511,20 +2511,20 @@ Changes will be definitive.</translation>
         <source>Form</source>
         <translation>Form</translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
-        <source>Unité</source>
-        <translation>Unit</translation>
+        <source>Chiffre 1</source>
+        <translation>number 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
-        <source>Dizaine</source>
-        <translation>Tens</translation>
+        <source>Chiffre 01</source>
+        <translation>number 01</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
-        <source>Centaine</source>
-        <translation>Centaine</translation>
+        <source>Chiffre 001</source>
+        <translation>number 001</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
@@ -4682,7 +4682,7 @@ Que désirez vous faire ?</source>
         <translation>&lt;b&gt; Opening project ... &lt;/ b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1326"/>
+        <location filename="../sources/qetproject.cpp" line="1328"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>An error occured during the copy of the element %1</translation>
     </message>
@@ -5679,7 +5679,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="25"/>
         <source>Folio:  </source>
-        <translation>Scheme:.</translation>
+        <translation>Scheme:</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="32"/>
@@ -5720,6 +5720,46 @@ Que désirez vous faire ?</source>
         <location filename="../sources/ui/selectautonumw.cpp" line="34"/>
         <source>Schéma sans titre</source>
         <translation>Untitled diagram</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/selectautonumw.cpp" line="122"/>
+        <source>Autonumérotation</source>
+        <comment>title window</comment>
+        <translation>Auto Numbering</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/selectautonumw.cpp" line="123"/>
+        <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.
+-Chaque Folio possède sa propre méthode de numérotation.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprant: un type, une valeur et une incrémentation.
+
+-les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représente un type numérique définie dans le champs &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ &quot;Incrémentation&quot;.
+-&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représenté sur le schéma par deux et trois digits minimum.
+Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type &quot;Texte&quot;, représente un texte fixe.
+Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
+
+-Le type &quot;N° folio&quot; représente le n° du folio en cours.
+Les autres champs ne sont pas utilisés.</source>
+        <comment>help dialog about the autonumerotation</comment>
+        <translation>This is where you can define how the new drivers will be numbered.
+-Each Folio has its own method of numbering.
+Dial-A is composed of a variable minimum.
+-You can add or delete a variable numbering through the - and + buttons.
+A variable-numbering comprant: a type, a value and an increment.
+
+-types &quot;Number 1&quot;, &quot;Number 01&quot; and &quot;Number 001&quot; represents a numeric type defined in the field &quot;Value&quot;, which is incremented for each new driver of the value of the &quot;Raise&quot;.
+- &quot;Number 01&quot; and &quot;Number 001&quot;, respectively, are shown in the diagram by two and at least three digits.
+If the number specified in the Value field has fewer digits than the type chosen, it will be preceded by one or two 0 to meet its type.
+
+-Type &quot;text&quot; is a fixed text.
+The fields &quot;Raise&quot; is not used.
+
+-The &quot;N°. portfolio&quot; type represents the number of the current portfolio.
+The other fields are not used.</translation>
     </message>
 </context>
 <context>
@@ -5855,17 +5895,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Apparence :</source>
-        <translation type="unfinished"></translation>
+        <translation>appearance:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Contour :</source>
-        <translation type="unfinished"></translation>
+        <translation>outline:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="99"/>
         <source>Géométrie :</source>
-        <translation type="unfinished"></translation>
+        <translation>geometry:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
