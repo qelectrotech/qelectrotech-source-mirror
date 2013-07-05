@@ -112,12 +112,32 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 	int answer = ui -> buttonBox -> buttonRole(button);
 
 	switch (answer) {
-		//reset the displayed context to default context of @diagram_chooser.
+			//reset the displayed context to default context of @diagram_chooser.
 		case QDialogButtonBox::ResetRole:
 			on_diagram_chooser_activated();
 			applyEnable(false);
 			break;
-		//apply the context in the diagram displayed by @diagram_chooser.
+			//help dialog
+		case QDialogButtonBox::HelpRole:
+			QMessageBox::information (this, tr("Autonum\351rotation", "title window"),
+																	tr("C'est ici que vous pouvez d\351finir la mani\350re dont sera num\351rot\351 les nouveaux conducteurs.\n"
+																	   "-Chaque Folio poss\350de sa propre m\351thode de num\351rotation.\n"
+																	   "-Une num\351rotation est compos\351e d'une variable minimum.\n"
+																	   "-Vous pouvez ajouter ou supprimer une variable de num\351rotation par le biais des boutons - et +.\n"
+																	   "-Une variable de num\351rotation comprant: un type, une valeur et une incr\351mentation.\n"
+
+																	   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", repr\351sente un type num\351rique d\351finie dans le champs \"Valeur\", "
+																	   "qui s'incr\351mente \340 chaque nouveau conducteur de la valeur du champ \"Incr\351mentation\".\n"
+																	   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement repr\351sent\351 sur le sch\351ma par deux et trois digits minimum.\n"
+																	   "Si le chiffre d\351finie dans le champs Valeur poss\351de moins de digits que le type choisit,"
+																	   "celui-ci sera pr\351c\351d\351 par un ou deux 0 afin de respecter son type.\n"
+
+																	   "\n-Le type \"Texte\", repr\351sente un texte fixe.\nLe champs \"Incr\351mentation\" n'est pas utilis\351.\n"
+
+																	   "\n-Le type \"N\260 folio\" repr\351sente le n\260 du folio en cours.\nLes autres champs ne sont pas utilis\351s.",
+																	   "help dialog about the autonumerotation"));
+
+			//apply the context in the diagram displayed by @diagram_chooser.
 		case QDialogButtonBox::ApplyRole:
 			NumerotationContext nc = toNumContext();
 			diagram_list.at(ui -> diagram_chooser -> currentIndex()) -> setNumerotation(Diagram::Conductors, nc);

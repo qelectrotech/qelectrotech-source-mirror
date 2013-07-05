@@ -26,17 +26,17 @@
        </property>
        <item>
         <property name="text">
-         <string>Unité</string>
+         <string>Chiffre 1</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Dizaine</string>
+         <string>Chiffre 01</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Centaine</string>
+         <string>Chiffre 001</string>
         </property>
        </item>
        <item>
