@@ -2517,17 +2517,17 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Chiffre 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμοί 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Chiffre 01</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμοί 01</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Chiffre 001</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμοί 001</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
@@ -5730,7 +5730,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/ui/selectautonumw.cpp" line="122"/>
         <source>Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="123"/>
@@ -5750,7 +5750,21 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εδώ μπορείτε να καθορίσετε την αρίθμηση των νέων αγωγών.
+-Κάθε σελίδα έχει τον δικό της τρόπο αρίθμησης.
+Κάθε Αρίθμηση αποτελείται από τουλάχιστον μία μεταβλητή.
+-Μπορείτε να προσθέσετε ή να αφαιρέσετε μεταβλητές μέσω των κουμπιών + και -.
+Κάθε μεταβλητή αρίθμησης αποτελείται από ένα Τύπο, μια Τιμή και Αύξηση.
+
+-οι τύποι &quot;Αριθμοί 1&quot;, &quot;Αριθμοί 01&quot; και &quot;Αριθμοί 001&quot; αντιπροσωπεύουν έναν αριθμητικό τύπο που ορίζεται στο πεδίο &quot;Τιμή&quot;, ο οποίος αυξάνεται για κάθε νέο αγωγό βάσει της τιμής του πεδίου &quot;Αύξηση&quot;.
+- &quot;Αριθμοί 01&quot; και &quot;Αριθμοί 001&quot;, εμφανίζονται αντίστοιχα στο διάγραμμα με τουλάχιστον δυο και τρία ψηφία.
+Αν ο αριθμός που καθορίστηκε στο πεδίο Τιμή έχει λιγότερα ψηφία από τον επιλεγμένο τύπο, θα συμπληρωθεί με ένα ή δυο μηδενικά ώστε να ανταποκρίνεται στον τύπο του.
+
+-Ο τύπος &quot;κείμενο&quot; είναι ένα σταθερό κείμενο.
+Το πεδίο &quot;Αύξηση&quot; δεν χρησιμοποιείται.
+
+-Ο τύπος &quot;N°.σελίδας&quot; αντιπροσωπεύει τον αριθμό της τρέχουσας σελίδας.
+Τα υπόλοιπα πεδία δεν χρησιμοποιούνται.</translation>
     </message>
 </context>
 <context>
