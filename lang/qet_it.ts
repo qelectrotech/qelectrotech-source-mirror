@@ -6,7 +6,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="188"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation>Questo programma è sotto licenza GNU/GPL.</translation>
+        <translation>Questo programma è rilasciato sotto licenza GNU/GPL.</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="113"/>
@@ -2512,17 +2512,18 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Chiffre 1</source>
-        <translation type="unfinished"></translation>
+        <translation>1 Cifra (1)
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Chiffre 01</source>
-        <translation type="unfinished"></translation>
+        <translation>2 Cifre (01)</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Chiffre 001</source>
-        <translation type="unfinished"></translation>
+        <translation>3 Cifre (001)</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
@@ -5723,7 +5724,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/ui/selectautonumw.cpp" line="122"/>
         <source>Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Numerazione automatica</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="123"/>
@@ -5743,7 +5744,21 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Qui è possibile definire come saranno numerati i nuovi conduttori.
+-Ogni Folio può avere un proprio metodo di numerazione.
+-La numerazione dev&apos;essere composto da almeno una variabile.
+-È possibile aggiungere o eliminare una variabile di numerazione attraverso i tasti - e +.
+-Una variabile di numerazione comprende: tipologia, valore e incremento.
+
+-La Tipologia &quot;1 Cifra (1)&quot;, &quot;2 Cifre (01)&quot; e &quot;3 Cifre (001)&quot; rappresenta un tipo numerico definito nel campo &quot;Valore&quot;, che viene incrementato per ogni nuovo conduttore, del valore impostato nel campo &quot;Incremento&quot;.
+-&quot;2 Cifre (01)&quot; e &quot;3 Cifre (001)&quot;, sono, rispettivamente, mostrati nello schema da due e tre cifre.
+Se il numero specificato nel campo Valore ha meno cifre di quelle impostate, sarà preceduto da uno o due 0 per completare la tipologia.
+
+-&quot;Testo&quot; rappresenta un testo fisso.
+Il campo &quot;Incremento&quot;, in questo caso non è utilizzato.
+
+-&quot;N. del foglio&quot; rappresenta il numero del foglio in cui è contenuto.
+Gli altri campi non sono utilizzati.</translation>
     </message>
 </context>
 <context>
