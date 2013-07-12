@@ -1,10 +1,11 @@
 <definition width="290" version="0.3" hotspot_x="0" hotspot_y="0" height="130" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">PILZ PNOZ m1p ETH</name>
         <name lang="en">PILZ PNOZ m1p ETH</name>
+        <name lang="it">PILZ PNOZ m1p ETH</name>
         <name lang="fr">PILZ PNOZ m1p ETH</name>
         <name lang="pl">PILZ PNOZ m1p ETH</name>
-	<name lang="it">PILZ PNOZ m1p ETH</name>
-	<name lang="cs">PILZ PNOZ m1p ETH</name>
+        <name lang="cs">PILZ PNOZ m1p ETH</name>
     </names>
     <informations>PILZ PNOZ m1p ETH module
 symbol by Jonas Stein news@jonasstein.de

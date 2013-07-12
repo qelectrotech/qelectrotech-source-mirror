@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مُكثّف مُستقطب </name>
+        <name lang="el">Ηλεκτρολυτικός πυκνωτής</name>
         <name lang="en">Polarized Capacitor</name>
         <name lang="it">Condensatore elettrolitico</name>
         <name lang="fr">Condensateur polarisé</name>

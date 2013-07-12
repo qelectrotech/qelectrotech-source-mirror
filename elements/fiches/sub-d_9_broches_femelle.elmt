@@ -1,11 +1,12 @@
 <definition width="60" version="0.3" hotspot_x="40" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">رابط توصيل SUB-D 9 (أنثوي)</name>
+        <name lang="el">D-SUB 9 ακροδέκτες (θηλυκό)</name>
         <name lang="en">D-SUB  9 pin (female)</name>
+        <name lang="it">DIN 4 Pin</name>
         <name lang="fr">SUB-D 9 broches (femelle)</name>
         <name lang="pl">Gniazdo D-Sub, dziewięciostykowe</name>
         <name lang="cs">Zásuvka D-SUB 9 kolíků (ženská)</name>
-        <name lang="it">DIN 4 Pin</name>
     </names>
     <informations></informations>
     <description>

@@ -1,7 +1,8 @@
-<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">دايود زينر</name>
         <name lang="de">Zener Diode</name>
+        <name lang="el">Δίοδος ζένερ</name>
         <name lang="en">Zener diode</name>
         <name lang="it">Diodo zener</name>
         <name lang="fr">Diode Zener</name>

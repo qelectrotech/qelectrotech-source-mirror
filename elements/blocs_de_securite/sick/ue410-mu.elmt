@@ -1,12 +1,13 @@
 <definition width="200" version="0.3" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">UE410-MU</name>
+        <name lang="el">UE410-MU</name>
         <name lang="en">UE410-MU</name>
+        <name lang="it">UE410-MU</name>
         <name lang="fr">UE410-MU</name>
         <name lang="pl">UE410-MU</name>
-        <name lang="cs">UE410-MU</name>
         <name lang="es">UE410-MU</name>
-        <name lang="it">UE410-MU</name>
+        <name lang="cs">UE410-MU</name>
     </names>
     <informations></informations>
     <description>

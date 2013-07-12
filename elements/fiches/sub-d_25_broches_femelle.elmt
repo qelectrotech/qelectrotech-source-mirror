@@ -1,11 +1,12 @@
 <definition width="60" version="0.3" hotspot_x="40" hotspot_y="70" height="140" type="element" orientation="dyyy">
     <names>
         <name lang="ar">رابط توصيل SUB-D 25 (أنثوي)</name>
+        <name lang="el">D-SUB 25 ακροδέκτες (θηλυκό)</name>
         <name lang="en">D-SUB 25 pin (female)</name>
+        <name lang="it">D-SUB 25 Pin (femmina)</name>
         <name lang="fr">SUB-D 25 broches (femelle)</name>
         <name lang="pl">Gniazdo D-Sub, dwudziestopięciostykowe</name>
         <name lang="cs">Zásuvka D-SUB 25 kolíků (ženská)</name>
-        <name lang="it">D-SUB 25 Pin (femmina)</name>
     </names>
     <informations></informations>
     <description>

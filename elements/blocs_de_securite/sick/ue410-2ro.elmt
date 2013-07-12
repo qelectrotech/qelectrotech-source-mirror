@@ -1,12 +1,13 @@
 <definition width="220" version="0.3" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">UE410-2RO</name>
+        <name lang="el">UE410-2RO</name>
         <name lang="en">UE410-2RO</name>
+        <name lang="it">UE410-2RO</name>
         <name lang="fr">UE410-2RO</name>
         <name lang="pl">UE410-2RO</name>
-        <name lang="cs">UE410-2RO</name>
         <name lang="es">UE410-2RO</name>
-        <name lang="it">UE410-2RO</name>
+        <name lang="cs">UE410-2RO</name>
     </names>
     <informations></informations>
     <description>

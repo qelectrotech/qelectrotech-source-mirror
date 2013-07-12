@@ -1,12 +1,13 @@
 <definition width="130" version="0.3" hotspot_x="0" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">PSEN 1.1p-10</name>
+        <name lang="el">PSEN 1.1p-10</name>
         <name lang="en">PSEN 1.1p-10</name>
+        <name lang="it">PSEN 1.1p-10</name>
         <name lang="fr">PSEN 1.1p-10</name>
         <name lang="pl">PSEN 1.1p-10</name>
-        <name lang="cs">PSEN 1.1p-10</name>
         <name lang="es">PSEN 1.1p-10</name>
-        <name lang="it">PSEN 1.1p-10</name>
+        <name lang="cs">PSEN 1.1p-10</name>
     </names>
     <informations></informations>
     <description>

@@ -1,11 +1,12 @@
 <definition width="60" version="0.3" hotspot_x="40" hotspot_y="70" height="140" type="element" orientation="dyyy">
     <names>
         <name lang="ar">رابط توصيل SUB-D 25 (ذكري)</name>
+        <name lang="el">D-SUB 25 ακροδέκτες (αρσενικό)</name>
         <name lang="en">D-SUB 25 pin (male)</name>
+        <name lang="it">D-SUB 25 Pin (maschio)</name>
         <name lang="fr">SUB-D 25 broches (male)</name>
         <name lang="pl">Wtyk D-Sub, dwudziestopięciostykowy</name>
         <name lang="cs">Zástrčka D-SUB 25 kolíků (mužská)</name>
-        <name lang="it">D-SUB 25 Pin (maschio)</name>
     </names>
     <informations></informations>
     <description>

@@ -1,11 +1,12 @@
 <definition width="70" version="0.3" hotspot_x="40" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">رابط 15 نقطة SUB-DHD 15 (أنثى) </name>
+        <name lang="el">D-SUB HD 15 ακροδέκτες (θηλυκό)</name>
         <name lang="en">D-SUB HD 15 pin (female)</name>
+        <name lang="it">D-SUB 15 Pin (femmina)</name>
         <name lang="fr">SUB-D HD 15 broches (femelle)</name>
         <name lang="pl">Gniazdo D-Sub, piętnastostykowe</name>
         <name lang="cs">Zásuvka D-SUB HD 15 kolíků (ženská)</name>
-        <name lang="it">D-SUB 15 Pin (femmina)</name>
     </names>
     <informations></informations>
     <description>
