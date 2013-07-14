@@ -88,4 +88,8 @@
     <source>x</source>
     <target>x</target>
 </phrase>
+<phrase>
+    <source>Conducteurs</source>
+    <target>Leitungen</target>
+</phrase>
 </QPH>

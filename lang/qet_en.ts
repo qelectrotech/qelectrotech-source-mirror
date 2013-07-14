@@ -845,7 +845,7 @@ to all conductors of this potential?</translation>
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation>Do you really want delete conductors annotations:
+        <translation>Do you really want to delete conductors annotations:
 
 %1 ?</translation>
     </message>
@@ -854,7 +854,7 @@ to all conductors of this potential?</translation>
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation>Do you really annotate conductors:
+        <translation>Do you really want to annotate conductors:
 
 %1 ?</translation>
     </message>
