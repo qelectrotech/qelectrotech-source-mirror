@@ -71,7 +71,8 @@
         <location filename="../sources/aboutqet.cpp" line="145"/>
         <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Traduction en grec</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Traducción en griego</translatorcomment>
+        <translation>Traducción al griego</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="166"/>
@@ -91,7 +92,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="169"/>
         <source>Paquets gentoo</source>
-        <translation type="unfinished"></translation>
+        <translation>Paquetes gentoo</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="170"/>
@@ -149,14 +150,14 @@ Iconos</translation>
         <location filename="../sources/aboutqet.cpp" line="96"/>
         <source>© 2006-2013 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">© 2006-2012 Los desarrolladores de QElectroTech {2006-2013 ?}</translation>
+        <translation>© 2006-2012 Los desarrolladores de QElectroTech {2006-2013 ?}</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="100"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
         <translatorcomment>Contacto : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translatorcomment>
-        <translation></translation>
+        <translation>Contacto : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="114"/>
@@ -168,7 +169,7 @@ Iconos</translation>
     <message>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <source>Collection d&apos;éléments &amp; Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>Colección de elementos y desarrollo</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="131"/>
@@ -182,19 +183,19 @@ Iconos</translation>
         <location filename="../sources/richtext/addlinkdialog.ui" line="5"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="104"/>
         <source>Insert Link</source>
-        <translation type="unfinished"></translation>
+        <translation>Insertar enlace</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="105"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>Título:</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="36"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="106"/>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL:</translation>
     </message>
 </context>
 <context>
@@ -389,13 +390,13 @@ Iconos</translation>
     <message>
         <location filename="../sources/conductor.cpp" line="1282"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto de los conductores</translation>
     </message>
     <message>
         <location filename="../sources/conductor.cpp" line="1283"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation>¿Quiere aplicar el nuevo texto a los conductores de este potencial?</translation>
     </message>
 </context>
 <context>
@@ -403,28 +404,29 @@ Iconos</translation>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="23"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Textos de potencial</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="26"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished"></translation>
+        <translation>Los textos del potencial eléctrico no son idénticos.
+¿Aplicar un texto a cada uno de estos conductores?</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source>  : est présent </source>
-        <translation type="unfinished"></translation>
+        <translation>: está presente</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source> fois.</source>
-        <translation type="unfinished"></translation>
+        <translation>veces.</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
         <source>Autre</source>
-        <translation type="unfinished"></translation>
+        <translation>Otro</translation>
     </message>
 </context>
 <context>
@@ -452,17 +454,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
         <source>Rotation du texte sur conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Girar el texto del conductor:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
         <source>Vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertical</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontal</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
@@ -636,7 +638,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/diagramview.cpp" line="523"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sin titulo</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="548"/>
@@ -753,13 +755,14 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramview.cpp" line="1017"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Textos de conductores</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Quiere aplicar el nuevo texto
+¿a todos los conductores de este potencial?</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1073"/>
@@ -780,83 +783,83 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Anotación de los esquemas</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuración</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="42"/>
         <source>Annotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Anotación</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="50"/>
         <source>Sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Selección</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="58"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Conductores</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="75"/>
         <source>Composants</source>
-        <translation type="unfinished"></translation>
+        <translation>Componentes</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Número de folio seleccionado&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
         <source>Annotation (alpha)</source>
-        <translation type="unfinished"></translation>
+        <translation>Anotación (alpha)</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Suprimir la numeración del folio seleccionado&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
         <source>Supprimer l&apos;annotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Suprimir la anotación</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="147"/>
         <source>Fermer</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerrar</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation>Suprimir anotaciones de los conductores</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="68"/>
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>¿Realmente quiere eliminar las anotaciones de los conductores: %1?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="101"/>
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>¿Realmente quiere anotar los conductores de: %1?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
         <source>Annotation des conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation>Anotación de los conductores</translation>
     </message>
 </context>
 <context>
@@ -864,17 +867,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
         <source>Merci de patienter</source>
-        <translation type="unfinished"></translation>
+        <translation>Gracias por la espera</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Titulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiqueta de texto</translation>
     </message>
 </context>
 <context>
@@ -2509,32 +2512,32 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Chiffre 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Figura 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Chiffre 01</source>
-        <translation type="unfinished"></translation>
+        <translation>Figura 01</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Chiffre 001</source>
-        <translation type="unfinished"></translation>
+        <translation>Figura 001</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
         <source>Texte</source>
-        <translation type="unfinished">Texto</translation>
+        <translation>Texto</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="49"/>
         <source>N° folio</source>
-        <translation type="unfinished"></translation>
+        <translation>No.Folio</translation>
     </message>
 </context>
 <context>
@@ -3265,17 +3268,17 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Éditer le champ de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar el campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Annoter les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Anotar los esquemas</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Exporter une nomenclature (beta)</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar una nomenclatura (beta)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
@@ -4682,7 +4685,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="965"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Abrir el proyecto actual...&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1328"/>
@@ -5213,7 +5216,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="964"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>modificar las propiedades de varios conductores</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -5681,58 +5684,58 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="25"/>
         <source>Folio:  </source>
-        <translation type="unfinished"></translation>
+        <translation>Folio:</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Elija el folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="55"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Eliminar una variable numérica&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="72"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Añadir una variable numérica &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="91"/>
         <source>Définition</source>
-        <translation type="unfinished"></translation>
+        <translation>Definición</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="107"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="117"/>
         <source>Valeur</source>
-        <translation type="unfinished">Valor</translation>
+        <translation>Valor</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="133"/>
         <source>Incrémentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Incrementación</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="34"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">Esquema sin título</translation>
+        <translation>Esquema sin título</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="122"/>
         <source>Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Autonumeración</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="123"/>
@@ -5752,7 +5755,18 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aquí es donde se puede definir cómo se numerarán los nuevos conductores.
+Cada Folio tiene su propio método de numeración.
+Una numeración se compone minimo de una variable.
+Usted puede agregar o quitar una variable de numeración a través de los botones - y +.
+Una variable de numeración comprende: un tipo, un valor y un incremento.
+
+Los -tipos &quot;Número 1&quot;, &quot;Número 01&quot; y &quot;Número 001&quot;, representa un tipo numérico definido en el campo &quot;Valor&quot;, quienes incrementan en cada nuevo conductor el valor del campo &quot;Incrementación&quot;.
+“Figura 01” y “figura 001”, se representan respectivamente en el esquema por dos y tres dígitos mínimo.
+Si el número especificado en el campo valor tiene menos dígitos que el tipo elegido, será precedido por uno o dos 0 a cumplir su tipo.
+
+El tipo de &quot;Texto&quot; representa un texto fijo.
+El campo &quot;Incrementación&quot; no se utiliza.</translation>
     </message>
 </context>
 <context>
@@ -5793,19 +5807,19 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="35"/>
         <source>Vert</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verde</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="36"/>
         <source>Rouge</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rojo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="37"/>
         <source>Bleu</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azul</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="41"/>
@@ -5829,7 +5843,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="44"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
-        <translation type="unfinished">Líneas y puntos</translation>
+        <translation>Líneas y puntos</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="49"/>
@@ -5871,34 +5885,34 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Vert</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verde</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rojo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azul</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Apparence :</source>
-        <translation type="unfinished"></translation>
+        <translation>apariencia:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Contour :</source>
-        <translation type="unfinished"></translation>
+        <translation>Contorno:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="99"/>
         <source>Géométrie :</source>
-        <translation type="unfinished"></translation>
+        <translation>Geometría:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
@@ -6795,47 +6809,47 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiqueta de texto</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="30"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Proyecto sín título</translation>
+        <translation>Proyecto sín título</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="32"/>
         <source>Projet : </source>
-        <translation type="unfinished"></translation>
+        <translation>Proyecto:</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Selección</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Nom</source>
-        <translation type="unfinished">Nombre</translation>
+        <translation>Nombre</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">Esquema sin título</translation>
+        <translation>Esquema sin título</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="102"/>
         <source>Désélectionner tout</source>
-        <translation type="unfinished">Deseleccionar todo</translation>
+        <translation>Deseleccionar todo</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Sélectionner tout</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar todo</translation>
     </message>
 </context>
 <context>
@@ -6843,55 +6857,55 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="52"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished"></translation>
+        <translation>NOMENCLATURA:</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Ref</source>
-        <translation type="unfinished"></translation>
+        <translation>Ref</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Schéma</source>
-        <translation type="unfinished">Esquema</translation>
+        <translation>Esquema</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Désignation
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Designación</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="63"/>
         <source>nomenclature_</source>
-        <translation type="unfinished"></translation>
+        <translation>nomenclatura_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar como...</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivo csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="70"/>
         <source>Erreur</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="71"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>¡Imposible reemplazar el archivo!</translation>
     </message>
 </context>
 <context>
@@ -6899,7 +6913,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="250"/>
         <source>Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Color del Texto</translation>
     </message>
 </context>
 <context>
@@ -6907,7 +6921,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="192"/>
         <source>Insert HTML entity</source>
-        <translation type="unfinished"></translation>
+        <translation>Insertar entidad HTML</translation>
     </message>
 </context>
 <context>
@@ -6915,27 +6929,27 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="670"/>
         <source>Edit text</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar texto</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="692"/>
         <source>Rich Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto enriquecido</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="693"/>
         <source>Source</source>
-        <translation type="unfinished"></translation>
+        <translation>Fuente</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="699"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="701"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cancelar</translation>
     </message>
 </context>
 <context>
@@ -6943,72 +6957,72 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="363"/>
         <source>CTRL+B</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+B</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="369"/>
         <source>CTRL+I</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+I</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="362"/>
         <source>Texte en gras</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto en negrita</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="368"/>
         <source>Texte en italique</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto en Italica</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="374"/>
         <source>Texte souligé</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto subrayado</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="375"/>
         <source>CTRL+U</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+U</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="388"/>
         <source>Left Align</source>
-        <translation type="unfinished"></translation>
+        <translation>Alineación Izquierda</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="393"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Centrado</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="398"/>
         <source>Right Align</source>
-        <translation type="unfinished"></translation>
+        <translation>Alineación Derecha</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="403"/>
         <source>Justify</source>
-        <translation type="unfinished"></translation>
+        <translation>Justificado</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="416"/>
         <source>Superscript</source>
-        <translation type="unfinished"></translation>
+        <translation>Superíndice</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="422"/>
         <source>Subscript</source>
-        <translation type="unfinished"></translation>
+        <translation>Subíndice</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="433"/>
         <source>Insérer un lien</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserte un vinculo</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="437"/>
         <source>Insert &amp;Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Insertar &amp;Imagen</translation>
     </message>
 </context>
 </TS>
