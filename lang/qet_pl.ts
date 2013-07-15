@@ -2514,17 +2514,17 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Chiffre 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Cyfra 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Chiffre 01</source>
-        <translation type="unfinished"></translation>
+        <translation>Cyfra 01</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Chiffre 001</source>
-        <translation type="unfinished"></translation>
+        <translation>Cyfra 001</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
@@ -5734,7 +5734,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/ui/selectautonumw.cpp" line="122"/>
         <source>Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Autonumeracja</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="123"/>
@@ -5754,7 +5754,21 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj możesz określić sposób numeracji nowych przewodów.
+- Każda strona posiada odrębną numerację przewodów.
+- Numeracja jest złożona co najmniej z jednej zmiennej.
+- Możesz dodawać lub usuwać zmienne numeracji za pomocą przycisków &quot;-&quot; oraz &quot;+&quot;.
+- Zmienną numeracji wyraża: typ, wartość i inkrementacja.
+
+- Typ: &quot;Numer 1&quot;, &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza typ numeru w polu &quot;Wartość&quot;, który jest zwiększany dla każdego nowego przewodu o wartość podaną w polu &quot;Inkrementacja&quot;.
+- &quot;Numer 01&quot; i &quot;Numer 001&quot; są odpowiednio wyrażane w schemacie poprzez dwie lub trzy cyfry.
+  Jeżeli numer określony w polu &quot;Wartość&quot; ma mniej cyfr niż wybrany typ, zostanie poprzedzony jedną lub dwoma cyframi 0 dla zachowania jego typu.
+
+- Typ &quot;Tekst&quot; oznacza stały tekst.
+  Pole &quot;Inkrementacja&quot; nie jest używane.
+
+- Typ &quot;Nr strony&quot; oznacza numer bieżącej strony.
+  Pozostałe pola nie są używane.</translation>
     </message>
 </context>
 <context>
