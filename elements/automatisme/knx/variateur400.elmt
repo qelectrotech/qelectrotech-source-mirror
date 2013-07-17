@@ -1,8 +1,9 @@
 <definition width="120" version="0.3" hotspot_x="65" hotspot_y="60" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="en">400w inverter knx</name>
-        <name lang="fr">Variateur 400w knx</name>
         <name lang="it">Regolatore 400w knx</name>
+        <name lang="fr">Variateur 400w knx</name>
+        <name lang="pl">Regulator 400W</name>
     </names>
     <informations></informations>
     <description>
