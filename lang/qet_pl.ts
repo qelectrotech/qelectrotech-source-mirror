@@ -808,7 +808,7 @@ dla wszystkich przewodów tego potencjału?</translation>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="75"/>
         <source>Composants</source>
-        <translation>Komponent</translation>
+        <translation>Element</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
@@ -5708,7 +5708,7 @@ Co chcesz zrobić ?</translation>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="91"/>
         <source>Définition</source>
-        <translation>Definicja</translation>
+        <translation>Opis</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="107"/>
@@ -5755,20 +5755,20 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
         <translation>Tutaj możesz określić sposób numeracji nowych przewodów.
-- Każda strona posiada odrębną numerację przewodów.
-- Numeracja jest złożona co najmniej z jednej zmiennej.
-- Możesz dodawać lub usuwać zmienne numeracji za pomocą przycisków &quot;-&quot; oraz &quot;+&quot;.
-- Zmienną numeracji wyraża: typ, wartość i inkrementacja.
+-Każda strona posiada odrębną numerację przewodów.
+-Numeracja jest złożona co najmniej z jednej zmiennej.
+-Możesz dodawać lub usuwać zmienne numeracji za pomocą przycisków &quot;-&quot; oraz &quot;+&quot;.
+-Zmienną numeracji opisuje: typ, wartość i inkrementacja.
 
-- Typ: &quot;Numer 1&quot;, &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza typ numeru w polu &quot;Wartość&quot;, który jest zwiększany dla każdego nowego przewodu o wartość podaną w polu &quot;Inkrementacja&quot;.
-- &quot;Numer 01&quot; i &quot;Numer 001&quot; są odpowiednio wyrażane w schemacie poprzez dwie lub trzy cyfry.
-  Jeżeli numer określony w polu &quot;Wartość&quot; ma mniej cyfr niż wybrany typ, zostanie poprzedzony jedną lub dwoma cyframi 0 dla zachowania jego typu.
+-Typ: &quot;Numer 1&quot;, &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza typ numeru w polu &quot;Wartość&quot;, który jest zwiększany dla każdego nowego przewodu o wartość podaną w polu &quot;Inkrementacja&quot;.
+-&quot;Numer 01&quot; i &quot;Numer 001&quot; są odpowiednio wyrażane w schemacie poprzez dwie lub trzy cyfry.
+Jeżeli numer określony w polu &quot;Wartość&quot; ma mniej cyfr niż wybrany typ, zostanie poprzedzony jedną lub dwoma cyframi 0 dla zachowania jego typu.
 
-- Typ &quot;Tekst&quot; oznacza stały tekst.
-  Pole &quot;Inkrementacja&quot; nie jest używane.
+-Typ &quot;Tekst&quot; oznacza stały tekst.
+Pole &quot;Inkrementacja&quot; nie jest używane.
 
-- Typ &quot;Nr strony&quot; oznacza numer bieżącej strony.
-  Pozostałe pola nie są używane.</translation>
+-Typ &quot;Nr strony&quot; oznacza numer bieżącej strony.
+Pozostałe pola nie są używane.</translation>
     </message>
 </context>
 <context>
