@@ -2514,17 +2514,17 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Chiffre 1</source>
-        <translation>Cyfra 1</translation>
+        <translation>Numer 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Chiffre 01</source>
-        <translation>Cyfra 01</translation>
+        <translation>Numer 01</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Chiffre 001</source>
-        <translation>Cyfra 001</translation>
+        <translation>Numer 001</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
