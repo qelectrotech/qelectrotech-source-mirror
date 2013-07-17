@@ -808,7 +808,7 @@ dla wszystkich przewodów tego potencjału?</translation>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="75"/>
         <source>Composants</source>
-        <translation>Element</translation>
+        <translation>Elementy</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
