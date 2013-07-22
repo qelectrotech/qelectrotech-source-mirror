@@ -5,6 +5,7 @@
         <name lang="en">2-pole circuit breaker</name>
         <name lang="it">Interruttore 2 poli</name>
         <name lang="fr">Disjoncteur bipolaire</name>
+        <name lang="pl">Wyłącznik dwubiegunowy</name>
         <name lang="cs">Dvoupólový jistič</name>
     </names>
     <informations></informations>

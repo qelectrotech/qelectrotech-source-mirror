@@ -5,6 +5,7 @@
         <name lang="en">1-pole circuit breaker</name>
         <name lang="it">Interruttore 1 polo</name>
         <name lang="fr">Disjoncteur unipolaire</name>
+        <name lang="pl">Wyłącznik jednobiegunowy</name>
         <name lang="cs">Jednopólový jistič</name>
     </names>
     <informations></informations>
