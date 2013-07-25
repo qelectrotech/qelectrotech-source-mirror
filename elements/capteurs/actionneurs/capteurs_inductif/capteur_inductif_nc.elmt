@@ -1,12 +1,13 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">حسّاس حثّي NC</name>
+        <name lang="el">Επαγωγικός αισθητήρας, κλειστή επαφή</name>
         <name lang="en">Inductif sensor  NC</name>
+        <name lang="it">Sensore induttivo NC</name>
         <name lang="fr">Capteur inductif NC</name>
         <name lang="pl">Czujnik indukcyjny rozwierny</name>
         <name lang="es">Sensor inductivo NC</name>
         <name lang="cs">Indukční čidlo NC</name>
-        <name lang="it">Sensore induttivo NC</name>
     </names>
     <informations></informations>
     <description>

@@ -1,12 +1,13 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="ar">حسّاس مغناطيسي ب 3 أطراف</name>
+        <name lang="el">Μαγνητικός αισθητήρας, 3 ακροδέκτες</name>
         <name lang="en">Magnetic sensor 3 terminals</name>
+        <name lang="it">Sensore magnetico a 3 terminali</name>
         <name lang="fr">Capteur magnetique 3 bornes</name>
         <name lang="pl">Czujnik magnetyczny trójprzewodowy</name>
         <name lang="es">Sensor magnetico 3 terminales</name>
         <name lang="cs">Magnetické čidlo se třemi svorkami</name>
-        <name lang="it">Sensore magnetico a 3 terminali</name>
     </names>
     <informations></informations>
     <description>

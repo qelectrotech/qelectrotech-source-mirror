@@ -1,12 +1,13 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">حساس حثي - مفتاح NC</name>
+        <name lang="el">Επαγωγικός αισθητήρας, 2 ακροδέκτες, κλειστή επαφή</name>
         <name lang="en">Inductif sensor 2 terminals NC</name>
+        <name lang="it">Sensore induttivo a 2 terminali</name>
         <name lang="fr">Capteur inductif NC</name>
         <name lang="pl">Czujnik indukcyjny trójprzewodowy, rozwierny</name>
-        <name lang="cs">Indukční čidlo se dvěma svorkami NC</name>
         <name lang="es">Sensor inductivo 2 terminales NC</name>
-        <name lang="it">Sensore induttivo a 2 terminali</name>
+        <name lang="cs">Indukční čidlo se dvěma svorkami NC</name>
     </names>
     <informations></informations>
     <description>

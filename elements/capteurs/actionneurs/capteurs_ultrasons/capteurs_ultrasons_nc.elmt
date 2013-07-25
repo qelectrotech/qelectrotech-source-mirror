@@ -1,12 +1,13 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">حسّاس فوق صوتي NC</name>
+        <name lang="el">Αισθητήρας υπερήχων, κλειστή επαφή</name>
         <name lang="en">Ultrasonic sensor  NC</name>
+        <name lang="it">Sensore ultrasonico NC</name>
         <name lang="fr">Capteur ultrasons NC</name>
         <name lang="pl">Czujnik ultradźwiękowy trójprzewodowy, rozwierny</name>
         <name lang="es">Sensor ultrasónico NC</name>
         <name lang="cs">Ultrazvukové čidlo NC</name>
-        <name lang="it">Sensore ultrasonico NC</name>
     </names>
     <informations></informations>
     <description>

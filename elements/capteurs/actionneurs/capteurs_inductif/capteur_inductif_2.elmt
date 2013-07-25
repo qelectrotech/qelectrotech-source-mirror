@@ -2,12 +2,13 @@
     <names>
         <name lang="ar">حسّاس حثّي بطرفين</name>
         <name lang="de">Induktiver Sensor 2-Leiter</name>
+        <name lang="el">Επαγωγικός αισθητήρας, 2 ακροδέκτες, ανοικτή επαφή</name>
         <name lang="en">Inductive sensor 2 terminals</name>
+        <name lang="it">Sensore induttivo a 2 terminali</name>
         <name lang="fr">Capteur inductif 2 fils</name>
         <name lang="pl">Czujnik indukcyjny dwuprzewodowy, zwierny</name>
         <name lang="es">Sensor inductivo 2 terminales NA</name>
         <name lang="cs">Indukční čidlo se dvěmi svorkami</name>
-        <name lang="it">Sensore induttivo a 2 terminali</name>
     </names>
     <informations></informations>
     <description>
