@@ -2513,17 +2513,17 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Chiffre 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Chiffre 01</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo 01</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Chiffre 001</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo 001</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
@@ -5733,7 +5733,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/ui/selectautonumw.cpp" line="122"/>
         <source>Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatické číslování</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="123"/>
@@ -5753,7 +5753,21 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zde můžete stanovit, jak se budou číslovat nové vodiče.
+- Každé folio má svůj vlastní způsob číslování.
+Každé číslování je složeno z nejmenší proměnné.
+- Můžete přidat nebo smazat proměnnou číslování pomocí tlačítek minus ( - ) a plus ( + ).
+Proměnná číslování obsahuje typ, hodnotu a přírustek.
+
+- Typy &quot;Číslo 1&quot;, &quot;Číslo 01&quot; a &quot;Číslo 001&quot; představují číselný typ stanovený v poli &quot;Hodnota&quot;, jenž je zvýšen s každým novým vodičem o hodnotu v poli &quot;Přírůstek&quot;.
+- &quot;Číslo 01&quot; a &quot;Číslo 001&quot;, jsou, v tomto pořadí, ve výkresu představovány nejméně dvěma nebo třemi číslicemi.
+Pokud má číslo stanovené v poli Hodnota méně číslic, než kolik jich má zvolený typ, bude uvedeno jednou nebo dvěma nulami, aby se dodržel jeho typ.
+
+-Typ &quot;text&quot; představuje neměnný text.
+Pole &quot;Přírůstek&quot; se nepoužívá.
+
+- Typ &quot;Číslo folia&quot; představuje číslo nynějšího folia.
+Jiná pole se se nepoužívají.</translation>
     </message>
 </context>
 <context>
@@ -5889,17 +5903,17 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Apparence :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzhled:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Contour :</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrys:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="99"/>
         <source>Géométrie :</source>
-        <translation type="unfinished"></translation>
+        <translation>Geometrie:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
