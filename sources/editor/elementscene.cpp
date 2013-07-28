@@ -1046,11 +1046,13 @@ void ElementScene::getPasteArea(const QRectF &to_paste) {
 void ElementScene::reset() {
 	// supprime les objets d'annulation
 	undoStack().clear();
+
 	// enleve les elements de la scene
-	foreach (QGraphicsItem *qgi, items()) {
-		qgiManager().release(qgi);
+	foreach (QGraphicsItem *qgi, items()) {	
 		removeItem(qgi);
+		qgiManager().release(qgi);
 	}
+	decorator_ = 0;
 }
 
 /**
