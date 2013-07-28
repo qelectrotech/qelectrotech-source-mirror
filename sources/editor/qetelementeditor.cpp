@@ -184,7 +184,7 @@ void QETElementEditor::setupActions() {
 	open_file         -> setShortcut(tr("Ctrl+Shift+O"));
 	save              -> setShortcut(QKeySequence::Save);
 	save_as_file      -> setShortcut(tr("Ctrl+Shift+S"));
-	//reload            -> setShortcut(Qt::Key_F5);
+	reload            -> setShortcut(Qt::Key_F5);
 	quit              -> setShortcut(QKeySequence(tr("Ctrl+Q")));
 	selectall         -> setShortcut(QKeySequence::SelectAll);
 	deselectall       -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
@@ -313,7 +313,7 @@ void QETElementEditor::setupActions() {
 	main_toolbar -> addAction(open);
 	main_toolbar -> addAction(save);
 	main_toolbar -> addAction(save_as);
-	//main_toolbar -> addAction(reload);
+	main_toolbar -> addAction(reload);
 	main_toolbar -> addSeparator();
 	main_toolbar -> addAction(undo);
 	main_toolbar -> addAction(redo);
@@ -373,7 +373,7 @@ void QETElementEditor::setupMenus() {
 	file_menu    -> addAction(save_as);
 	file_menu    -> addAction(save_as_file);
 	file_menu    -> addSeparator();
-	//file_menu    -> addAction(reload);
+	file_menu    -> addAction(reload);
 	file_menu    -> addSeparator();
 	file_menu    -> addAction(quit);
 	
@@ -953,7 +953,6 @@ void QETElementEditor::slot_reload() {
 	}
 	
 	// recharge l'element
-	//TODO disable reload action because after action element is not editable next
 	if (opened_from_file) {
 		// l'element a ete ouvert a partir d'un chemin de fichier
 		ce_scene -> reset();
@@ -977,7 +976,7 @@ void QETElementEditor::slot_reload() {
 */
 bool QETElementEditor::slot_save() {
 	// verification avant d'enregistrer le fichier
-	//checkElement();
+	checkElement();
 	// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
 	if (opened_from_file) {
 		if (filename_.isEmpty()) return(slot_saveAsFile());

@@ -1048,8 +1048,8 @@ void ElementScene::reset() {
 	undoStack().clear();
 	// enleve les elements de la scene
 	foreach (QGraphicsItem *qgi, items()) {
-		removeItem(qgi);
 		qgiManager().release(qgi);
+		removeItem(qgi);
 	}
 }
 
