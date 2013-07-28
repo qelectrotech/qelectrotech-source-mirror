@@ -441,14 +441,22 @@ void ElementScene::setGrid(int x_g, int y_g) {
 const QDomDocument ElementScene::toXml(bool all_parts) const {
 	// document XML
 	QDomDocument xml_document;
-	
+
+	//define the size of the element by the upper multiple of 10
+	QRectF size= elementSceneGeometricRect();
+	int upwidth = (qRound(size.width())/10)*10;
+	if ((qRound(size.width())%10) >= 5) upwidth+=10;
+
+	int upheight = (qRound(size.height())/10)*10;
+	if ((qRound(size.height())%10) >= 5) upheight+=10;
+
 	// racine du document XML
 	QDomElement root = xml_document.createElement("definition");
 	root.setAttribute("type",        "element");
-	root.setAttribute("width",       QString("%1").arg(_width  * 10));
-	root.setAttribute("height",      QString("%1").arg(_height * 10));
-	root.setAttribute("hotspot_x",   QString("%1").arg(_hotspot.x()));
-	root.setAttribute("hotspot_y",   QString("%1").arg(_hotspot.y()));
+	root.setAttribute("width",       QString("%1").arg(upwidth+10));
+	root.setAttribute("height",      QString("%1").arg(upheight+10));
+	root.setAttribute("hotspot_x",   QString("%1").arg(-(qRound(size.x())-5)));
+	root.setAttribute("hotspot_y",   QString("%1").arg(-(qRound(size.y())-5)));
 	root.setAttribute("orientation", ori.toString());
 	root.setAttribute("version", QET::version);
 	if (internal_connections) root.setAttribute("ic", "true");
@@ -554,6 +562,23 @@ QRectF ElementScene::borderRect() const {
 QRectF ElementScene::sceneContent() const {
 	qreal adjustment = 5.0;
 	return(elementContentBoundingRect(items()).unite(borderRect()).adjusted(-adjustment, -adjustment, adjustment, adjustment));
+}
+
+/**
+	@return the minimum, margin-less rectangle the element can fit into, in scene
+	coordinates. It is different from itemsBoundingRect() because it is not supposed
+	to imply any margin.
+*/
+QRectF ElementScene::elementSceneGeometricRect() const{
+	QRectF esgr;
+	foreach (QGraphicsItem *qgi, items()) {
+		if (qgi -> type() == ElementPrimitiveDecorator::Type) continue;
+		if (qgi -> type() == QGraphicsRectItem::Type) continue;
+		if (CustomElementPart *cep = dynamic_cast <CustomElementPart*> (qgi)) {
+			esgr |= cep -> sceneGeometricRect();
+		}
+	}
+	return (esgr);
 }
 
 /**

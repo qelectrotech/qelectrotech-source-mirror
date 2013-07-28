@@ -143,6 +143,7 @@ class ElementScene : public QGraphicsScene {
 	virtual void getPasteArea(const QRectF &);
 	QRectF borderRect() const;
 	QRectF sceneContent() const;
+	QRectF elementSceneGeometricRect () const;
 	bool borderContainsEveryParts() const;
 	bool containsTerminals() const;
 	QUndoStack &undoStack();

@@ -449,10 +449,7 @@ void QETElementEditor::slot_updateMenus() {
 	paste_in_area   -> setEnabled(clipboard_elmt);
 	
 	// actions dependant de l'etat de la pile d'annulation
-	save            -> setEnabled(!read_only && !ce_scene -> undoStack().isClean() && ce_scene -> borderContainsEveryParts());
-	save_as         -> setEnabled(ce_scene -> borderContainsEveryParts());
-	save_as_file    -> setEnabled(ce_scene -> borderContainsEveryParts());
-	//if (!ce_scene -> borderContainsEveryParts()) checkElement();
+	save            -> setEnabled(!read_only && !ce_scene -> undoStack().isClean());
 	undo            -> setEnabled(!read_only && ce_scene -> undoStack().canUndo());
 	redo            -> setEnabled(!read_only && ce_scene -> undoStack().canRedo());
 }
@@ -1053,10 +1050,6 @@ bool QETElementEditor::slot_saveAsFile() {
 */
 bool QETElementEditor::canClose() {
 	if (ce_scene -> undoStack().isClean()) return(true);
-	//verification avant d'enregistrer le fichier
-	if (!ce_scene -> borderContainsEveryParts()) checkElement();
-	// si le symbole deborde, echec de la fermeture
-	if (!ce_scene -> borderContainsEveryParts()) return(false);
 	// demande d'abord a l'utilisateur s'il veut enregistrer l'element en cours
 	QMessageBox::StandardButton answer = QET::MessageBox::question(
 		this,
