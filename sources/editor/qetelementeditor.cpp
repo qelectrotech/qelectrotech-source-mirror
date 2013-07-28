@@ -976,7 +976,7 @@ void QETElementEditor::slot_reload() {
 */
 bool QETElementEditor::slot_save() {
 	// verification avant d'enregistrer le fichier
-	checkElement();
+	//checkElement();
 	// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
 	if (opened_from_file) {
 		if (filename_.isEmpty()) return(slot_saveAsFile());
