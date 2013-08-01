@@ -439,24 +439,27 @@ void ElementScene::setGrid(int x_g, int y_g) {
 	@return un document XML decrivant l'element
 */
 const QDomDocument ElementScene::toXml(bool all_parts) const {
-	// document XML
-	QDomDocument xml_document;
-
 	//define the size of the element by the upper multiple of 10
 	QRectF size= elementSceneGeometricRect();
-	int upwidth = (qRound(size.width())/10)*10;
-	if ((qRound(size.width())%10) >= 5) upwidth+=10;
+	int upwidth = ((qRound(size.width())/10)*10)+10;
+	if ((qRound(size.width())%10) > 6) upwidth+=10;
 
-	int upheight = (qRound(size.height())/10)*10;
-	if ((qRound(size.height())%10) >= 5) upheight+=10;
+	int upheight = ((qRound(size.height())/10)*10)+10;
+	if ((qRound(size.height())%10) > 6) upheight+=10;
 
+	//the margin between the real size of the element and the rectangle that delimits
+	int xmargin = qRound(upwidth - size.width());
+	int ymargin = qRound(upheight - size.height());
+
+	// document XML
+	QDomDocument xml_document;
 	// racine du document XML
 	QDomElement root = xml_document.createElement("definition");
 	root.setAttribute("type",        "element");
-	root.setAttribute("width",       QString("%1").arg(upwidth+10));
-	root.setAttribute("height",      QString("%1").arg(upheight+10));
-	root.setAttribute("hotspot_x",   QString("%1").arg(-(qRound(size.x())-5)));
-	root.setAttribute("hotspot_y",   QString("%1").arg(-(qRound(size.y())-5)));
+	root.setAttribute("width",       QString("%1").arg(upwidth));
+	root.setAttribute("height",      QString("%1").arg(upheight));
+	root.setAttribute("hotspot_x",   QString("%1").arg(-(qRound(size.x() - (xmargin/2)))));
+	root.setAttribute("hotspot_y",   QString("%1").arg(-(qRound(size.y() - (ymargin/2)))));
 	root.setAttribute("orientation", ori.toString());
 	root.setAttribute("version", QET::version);
 	if (internal_connections) root.setAttribute("ic", "true");
