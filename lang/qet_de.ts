@@ -986,26 +986,26 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementdialog.cpp" line="294"/>
         <source>Sélection inexistante</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Auswahl nicht-existierend</translation>
+        <translation>Keine Auswahl</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="257"/>
         <location filename="../sources/elementdialog.cpp" line="295"/>
         <source>La sélection n&apos;existe pas.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Die auswahl existiert nicht.</translation>
+        <translation>Die Auswahl existiert nicht.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="266"/>
         <source>Sélection incorrecte</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Auswahl nicht korrekt</translation>
+        <translation>Auswahl nicht korrekt</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="267"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Die auswahl ist kein Bauteil.</translation>
+        <translation>Auswahl ist kein Bauteil.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="284"/>
@@ -1046,7 +1046,7 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementdialog.cpp" line="346"/>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Das Element existiert bereits. Soll es überschrieben werden?</translation>
     </message>
 </context>
 <context>
@@ -1095,13 +1095,13 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/editor/elementscene.cpp" line="718"/>
         <source>Éditer la taille et le point de saisie</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Größe und Ursprung bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="764"/>
         <source>Éditer les orientations</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ausrichtung bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="768"/>
@@ -1111,7 +1111,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="780"/>
         <source>Autoriser les connexions internes</source>
-        <translation type="unfinished">Interne Verbindungen erlauben</translation>
+        <translation>Interne Verbindungen erlauben</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="818"/>
@@ -1122,37 +1122,37 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="822"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished">Sie koennen dieses freie feld benutyen um frei die Autoren des Bautei, seine Lizenz, oder jede weitere Information die sie nuetzlich denken zu erwaehnen.</translation>
+        <translation>Sie können dieses freie Feld benutzen um die Autoren, die Lizenz, oder jede weitere nützliche Information zu speichern.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="862"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Namen bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="866"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
-        <translation type="unfinished">Sie koennen den Namen des Bauteiles in verschiedenen Sprachen spezifieren.</translation>
+        <translation>Sie können den Namen des Bauteiles in verschiedenen Sprachen spezifieren.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="1061"/>
         <location filename="../sources/editor/elementscene.cpp" line="1126"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
-        <translation type="unfinished">Dieses Dokument XML ist keine Bauteil Definition.</translation>
+        <translation>Dieses XML-Dokument ist keine Bauteildefinition.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="1075"/>
         <source>Les dimensions ou le point de saisie ne sont pas valides.</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Die Größe oder der Ursprung sind ungültig.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="1090"/>
         <source>Les orientations ne sont pas valides.</source>
         <comment>error message</comment>
-        <translation>unzulässige Ausrichtung</translation>
+        <translation>Unzulässige Ausrichtung</translation>
     </message>
 </context>
 <context>
@@ -1989,19 +1989,19 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="29"/>
         <source>L&apos;élément doit être assez grand pour contenir tout sa représentation graphique.</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Element muss groß genug sein, um komplett dargestellt werden zu können.</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="39"/>
         <location filename="../sources/hotspoteditor.cpp" line="44"/>
         <source> ×10 px</source>
-        <translation type="unfinished"> ×10 px</translation>
+        <translation> ×10 px</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="48"/>
         <location filename="../sources/hotspoteditor.cpp" line="52"/>
         <source> px</source>
-        <translation type="unfinished">px</translation>
+        <translation> px</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="72"/>
@@ -2011,22 +2011,22 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="89"/>
         <source>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Dimensions&lt;/span&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Abmessung&lt;/span&gt;</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="90"/>
         <source>Largeur :</source>
-        <translation type="unfinished">Breite :</translation>
+        <translation>Breite:</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="92"/>
         <source>Hauteur :</source>
-        <translation type="unfinished">Hoehe :</translation>
+        <translation>Höhe:</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="94"/>
         <source>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Hotspot&lt;/span&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Hotspot&lt;/span&gt;</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="95"/>
@@ -2036,7 +2036,7 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="97"/>
         <source>Ordonnée :</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordinante:</translation>
     </message>
 </context>
 <context>
@@ -6909,7 +6909,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="363"/>
         <source>CTRL+B</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+B</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="368"/>
@@ -6919,7 +6919,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="369"/>
         <source>CTRL+I</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+I</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="374"/>
@@ -6929,7 +6929,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="375"/>
         <source>CTRL+U</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+U</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="388"/>
