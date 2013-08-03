@@ -1116,6 +1116,7 @@ void QETElementEditor::closeEvent(QCloseEvent *qce) {
 	if (canClose()) {
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
+		ce_scene -> reset();
 		qce -> accept();
 	} else qce -> ignore();
 }
