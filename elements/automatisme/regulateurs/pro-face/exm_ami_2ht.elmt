@@ -1,8 +1,9 @@
-<definition width="1000" version="0.3" hotspot_x="25" hotspot_y="2" height="100" type="element" orientation="dyyy">
+<definition width="1000" version="0.3" hotspot_x="26" hotspot_y="1" height="100" type="element" orientation="dyyy">
     <names>
         <name lang="en">EXM-AMI2HT</name>
-        <name lang="fr">EXM-AMI2HT</name>
         <name lang="it">EXM-AMI2HT</name>
+        <name lang="fr">EXM-AMI2HT</name>
+        <name lang="pl">EXM-AMI2HT</name>
         <name lang="cs">EXM-AMI2HT</name>
     </names>
     <informations></informations>

@@ -1,8 +1,9 @@
-<definition width="200" version="0.3" hotspot_x="2" hotspot_y="3" height="250" type="element" orientation="dyyy">
+<definition width="200" version="0.3" hotspot_x="1" hotspot_y="0" height="240" type="element" orientation="dyyy">
     <names>
         <name lang="en">Head  HTB Proface</name>
-        <name lang="fr">Tete HTB Proface</name>
         <name lang="it">Modulo HTB Proface</name>
+        <name lang="fr">Tete HTB Proface</name>
+        <name lang="pl">Moduł THB Pro-face</name>
         <name lang="cs">Modul HTB Proface</name>
     </names>
     <informations></informations>

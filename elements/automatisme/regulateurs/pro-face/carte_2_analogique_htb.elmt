@@ -1,8 +1,9 @@
-<definition width="100" version="0.3" hotspot_x="2" hotspot_y="3" height="240" type="element" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="0" hotspot_y="2" height="240" type="element" orientation="dyyy">
     <names>
         <name lang="en">Card 2 AI head HTB</name>
-        <name lang="fr">Carte 2 AI tete HTB</name>
         <name lang="it">Scheda 2AI per modulo HTB</name>
+        <name lang="fr">Carte 2 AI tete HTB</name>
+        <name lang="pl">Karta 2 AI (moduł THB)</name>
         <name lang="cs">Karta 2AI pro modul HTB</name>
     </names>
     <informations></informations>

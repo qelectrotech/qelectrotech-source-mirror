@@ -1,8 +1,9 @@
-<definition width="260" version="0.3" hotspot_x="-2" hotspot_y="1" height="300" type="element" orientation="dyyy">
+<definition width="250" version="0.3" hotspot_x="-5" hotspot_y="0" height="300" type="element" orientation="dyyy">
     <names>
         <name lang="en">Proface LT3301L</name>
-        <name lang="fr">Proface LT3301L</name>
         <name lang="it">Proface LT3301L</name>
+        <name lang="fr">Proface LT3301L</name>
+        <name lang="pl">Pro-face LT3301L</name>
         <name lang="cs">Proface LT3301L</name>
     </names>
     <informations></informations>

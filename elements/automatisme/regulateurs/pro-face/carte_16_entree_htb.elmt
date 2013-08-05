@@ -1,8 +1,9 @@
-<definition width="100" version="0.3" hotspot_x="2" hotspot_y="3" height="240" type="element" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="0" hotspot_y="2" height="240" type="element" orientation="dyyy">
     <names>
         <name lang="en">Card 16DI head HTB</name>
-        <name lang="fr">Carte 16DI tete HTB</name>
         <name lang="it">Scheda 16DI per modulo HTB</name>
+        <name lang="fr">Carte 16DI tete HTB</name>
+        <name lang="pl">Karta 16 DI (moduł THB)</name>
         <name lang="cs">Karta 16DI pro modul HTB</name>
     </names>
     <informations></informations>
