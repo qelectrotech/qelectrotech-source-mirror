@@ -2375,7 +2375,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="95"/>
         <source>Étape 1/4 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation>Βήμα 1/5: Γονική κατηγορία</translation>
+        <translation>Βήμα 1/4: Γονική κατηγορία</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="112"/>
@@ -2387,13 +2387,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="135"/>
         <source>Étape 3/4 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation>Βήμα 3/5: Ονόματα του στοιχείου</translation>
+        <translation>Βήμα 3/4: Ονόματα του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="155"/>
         <source>Étape 4/4 : Orientations</source>
         <comment>wizard page title</comment>
-        <translation>Βήμα 5/5: Προσανατολισμοί</translation>
+        <translation>Βήμα 4/4: Προσανατολισμοί</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="156"/>
