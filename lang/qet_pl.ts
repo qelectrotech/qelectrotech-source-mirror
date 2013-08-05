@@ -2372,25 +2372,25 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/newelementwizard.cpp" line="95"/>
         <source>Étape 1/4 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Krok 1 z 5 : Kategoria powiązana {1/4 ?}</translation>
+        <translation>Krok 1/4 : Kategoria powiązana</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="112"/>
         <source>Étape 2/4 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Krok 2 z 5 : Nazwa pliku {2/4 ?}</translation>
+        <translation>Krok 2/4 : Nazwa pliku</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="135"/>
         <source>Étape 3/4 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Krok 3 z 5 : Nazwa elementu {3/4 ?}</translation>
+        <translation>Krok 3/4 : Nazwa elementu</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="155"/>
         <source>Étape 4/4 : Orientations</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Krok 5 z 5 : Orientacja {4/4 ?}</translation>
+        <translation>Krok 4/4 : Orientacja</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="156"/>
