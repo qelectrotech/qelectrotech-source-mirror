@@ -27,7 +27,6 @@
 #include "parttext.h"
 #include "parttextfield.h"
 #include "partarc.h"
-#include "hotspoteditor.h"
 #include "editorcommands.h"
 #include "elementcontent.h"
 #include "nameslist.h"
@@ -39,9 +38,6 @@
 */
 ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
-	_width(3),
-	_height(7),
-	_hotspot(15, 35),
 	internal_connections(false),
 	qgi_manager(this),
 	element_editor(editor),
@@ -326,55 +322,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 }
 
 /**
-	Dessine l'arriere-plan de l'editeur, cad la grille.
-	@param p Le QPainter a utiliser pour dessiner
-	@param r Le rectangle de la zone a dessiner
-*/
-void ElementScene::drawBackground(QPainter *p, const QRectF &r) {
-	p -> save();
-	
-	// desactive tout antialiasing, sauf pour le texte
-	p -> setRenderHint(QPainter::Antialiasing, false);
-	p -> setRenderHint(QPainter::TextAntialiasing, true);
-	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
-	
-	// dessine un fond blanc
-	p -> setPen(Qt::NoPen);
-	p -> setBrush(Qt::white);
-	p -> drawRect(r);
-	
-	// encadre la zone dessinable de l'element
-	QRectF drawable_area(-_hotspot.x(), -_hotspot.y(), width(), height());
-	p -> setPen(Qt::black);
-	p -> setBrush(Qt::NoBrush);
-	p -> drawRect(drawable_area);
-	
-	// on dessine un point de la grille sur 10
-	int drawn_x_grid = x_grid * 10;
-	int drawn_y_grid = y_grid * 10;
-	
-	if (r.width() < 2500 && r.height() < 2500) {
-		// dessine les points de la grille
-		p -> setPen(Qt::black);
-		p -> setBrush(Qt::NoBrush);
-		qreal limite_x = r.x() + r.width();
-		qreal limite_y = r.y() + r.height();
-		
-		int g_x = (int)ceil(r.x());
-		while (g_x % drawn_x_grid) ++ g_x;
-		int g_y = (int)ceil(r.y());
-		while (g_y % drawn_y_grid) ++ g_y;
-		
-		for (int gx = g_x ; gx < limite_x ; gx += drawn_x_grid) {
-			for (int gy = g_y ; gy < limite_y ; gy += drawn_y_grid) {
-				p -> drawPoint(gx, gy);
-			}
-		}
-	}
-	p -> restore();
-}
-
-/**
 	Dessine l'arriere-plan de l'editeur, cad l'indicateur de hotspot.
 	@param p Le QPainter a utiliser pour dessiner
 	@param rect Le rectangle de la zone a dessiner
@@ -390,8 +337,8 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &rect) {
 	
 	p -> setPen(Qt::red);
 	p -> setBrush(Qt::NoBrush);
-	p -> drawLine(QLineF(0.0, -_hotspot.y(), 0.0, height() - _hotspot.y()));
-	p -> drawLine(QLineF(-_hotspot.x(), 0.0, width() - _hotspot.x(),  0.0));
+	p -> drawLine(-20, 0, 20, 0);
+	p -> drawLine(0, -20, 0, 20);
 	p -> restore();
 }
 
@@ -555,7 +502,7 @@ void ElementScene::fromXml(
 	superieur gauche les coordonnees opposees du hotspot.
 */
 QRectF ElementScene::borderRect() const {
-	return(QRectF(-_hotspot, QSizeF(width(), height())));
+	return(QRectF(-elementSceneGeometricRect().topLeft(), QSizeF(width(), height())));
 }
 
 /**
@@ -728,52 +675,6 @@ void ElementScene::slot_delete() {
 	// removing items does not trigger QGraphicsScene::selectionChanged()
 	emit(partsRemoved());
 	emit(selectionChanged());
-}
-
-/**
-	Lance un dialogue pour editer les dimensions et le point de saisie
-	(hotspot) de l'element.
-*/
-void ElementScene::slot_editSizeHotSpot() {
-	bool is_read_only = element_editor && element_editor -> isReadOnly();
-	
-	// cree un dialogue
-	QDialog dialog_sh(element_editor);
-	dialog_sh.setModal(true);
-#ifdef Q_WS_MAC
-	dialog_sh.setWindowFlags(Qt::Sheet);
-#endif
-	dialog_sh.setWindowTitle(tr("\311diter la taille et le point de saisie", "window title"));
-	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_sh);
-	
-	// ajoute un HotspotEditor au dialogue
-	HotspotEditor *hotspot_editor = new HotspotEditor();
-	hotspot_editor -> setElementWidth(static_cast<uint>(width() / 10));
-	hotspot_editor -> setElementHeight(static_cast<uint>(height() / 10));
-	hotspot_editor -> setHotspot(hotspot());
-	hotspot_editor -> setOldHotspot(hotspot());
-	hotspot_editor -> setPartsRect(elementContentBoundingRect(items()));
-	hotspot_editor -> setPartsRectEnabled(true);
-	hotspot_editor -> setReadOnly(is_read_only);
-	dialog_layout -> addWidget(hotspot_editor);
-	
-	// ajoute deux boutons au dialogue
-	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	dialog_layout -> addWidget(dialog_buttons);
-	connect(dialog_buttons, SIGNAL(accepted()),    &dialog_sh, SLOT(accept()));
-	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_sh, SLOT(reject()));
-	
-	// lance le dialogue
-	if (dialog_sh.exec() == QDialog::Accepted && !is_read_only) {
-		QSize new_size(hotspot_editor -> elementSize());
-		QSize old_size(width(), height());
-		QPoint new_hotspot(hotspot_editor -> hotspot());
-		QPoint old_hotspot(_hotspot);
-		
-		if (new_size != old_size || new_hotspot != old_hotspot) {
-			undo_stack.push(new ChangeHotspotCommand(this, old_size, new_size, old_hotspot, new_hotspot, hotspot_editor -> offsetParts()));
-		}
-	}
 }
 
 /**
@@ -1092,25 +993,7 @@ bool ElementScene::applyInformations(const QDomDocument &xml_document, QString *
 		}
 		return(false);
 	}
-	
-	// dimensions et hotspot : ces attributs doivent etre presents et valides
-	int w, h, hot_x, hot_y;
-	if (
-		!QET::attributeIsAnInteger(root, QString("width"),     &w) ||\
-		!QET::attributeIsAnInteger(root, QString("height"),    &h) ||\
-		!QET::attributeIsAnInteger(root, QString("hotspot_x"), &hot_x) ||\
-		!QET::attributeIsAnInteger(root, QString("hotspot_y"), &hot_y)
-	) {
-		if (error_message) {
-			*error_message = tr("Les dimensions ou le point de saisie ne sont pas valides.", "error message");
-		}
-		return(false);
-	}
-	//
-	setWidth(w);
-	setHeight(h);
-	setHotspot(QPoint(hot_x, hot_y));
-	
+		
 	// orientations
 	internal_connections = (root.attribute("ic") == "true");
 	

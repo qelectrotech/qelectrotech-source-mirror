@@ -92,10 +92,6 @@ class QETElementEditor : public QETMainWindow {
 	
 	// methods
 	public:
-	void setSize(const QSize &);
-	QSize size() const;
-	void setHotspot(const QPoint &);
-	QPoint hotspot() const;
 	void setNames(const NamesList &);
 	void setOrientations(const OrientationSet &orientation_set);
 	OrientationSet orientations() const;
@@ -155,40 +151,6 @@ class QETElementEditor : public QETMainWindow {
 	void pasteFromElement();
 	void updateCurrentPartEditor();
 };
-
-/**
-	@param siz The new size for the currently edited element
-*/
-inline void QETElementEditor::setSize(const QSize &siz) {
-	ce_scene -> setWidth(siz.width());
-	ce_scene -> setHeight(siz.height());
-}
-
-/**
-	@return the size of the currently edited element
-*/
-inline QSize QETElementEditor::size() const {
-	return(
-		QSize(
-			ce_scene -> width(),
-			ce_scene -> height()
-		)
-	);
-}
-
-/**
-	@param hs The new hotspot for the currently edited element
-*/
-inline void QETElementEditor::setHotspot(const QPoint &hs) {
-	ce_scene -> setHotspot(hs);
-}
-
-/**
-	@return the hotspot of the currently edited element
-*/
-inline QPoint QETElementEditor::hotspot() const {
-	return(ce_scene -> hotspot());
-}
 
 /**
 	@param nameslist the new list of names for the currently edited element

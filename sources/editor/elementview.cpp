@@ -408,13 +408,7 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	p -> setPen(Qt::NoPen);
 	p -> setBrush(Qt::white);
 	p -> drawRect(r);
-	
-	// encadre la zone dessinable de l'element
-	QRectF drawable_area(-scene_ -> hotspot().x(), -scene_ -> hotspot().y(), scene_ -> width(), scene_ -> height());
-	p -> setPen(Qt::black);
-	p -> setBrush(Qt::NoBrush);
-	p -> drawRect(drawable_area);
-	
+		
 	// determine le zoom en cours
 	qreal zoom_factor = matrix().m11();
 	

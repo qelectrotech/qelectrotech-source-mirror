@@ -21,7 +21,6 @@
 #include "elementscategorieslist.h"
 #include "nameslistwidget.h"
 #include "orientationsetwidget.h"
-#include "hotspoteditor.h"
 #include "element.h"
 #include "qetelementeditor.h"
 #include "qet.h"
@@ -50,7 +49,6 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 	addPage(buildStep2());
 	addPage(buildStep3());
 	addPage(buildStep4());
-	addPage(buildStep5());
 	setFixedSize(705, 325);
 }
 
@@ -94,7 +92,7 @@ bool NewElementWizard::preselectCategory(ElementsCategory *category) {
 QWizardPage *NewElementWizard::buildStep1() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Category);
-	page -> setTitle(tr("\311tape 1/5 : Cat\351gorie parente", "wizard page title"));
+	page -> setTitle(tr("\311tape 1/4 : Cat\351gorie parente", "wizard page title"));
 	page -> setSubTitle(tr("S\351lectionnez une cat\351gorie dans laquelle enregistrer le nouvel \351l\351ment.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
@@ -111,7 +109,7 @@ QWizardPage *NewElementWizard::buildStep1() {
 QWizardPage *NewElementWizard::buildStep2() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Filename);
-	page -> setTitle(tr("\311tape 2/5 : Nom du fichier", "wizard page title"));
+	page -> setTitle(tr("\311tape 2/4 : Nom du fichier", "wizard page title"));
 	page -> setSubTitle(tr("Indiquez le nom du fichier dans lequel enregistrer le nouvel \351l\351ment.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
@@ -134,7 +132,7 @@ QWizardPage *NewElementWizard::buildStep2() {
 QWizardPage *NewElementWizard::buildStep3() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Names);
-	page -> setTitle(tr("\311tape 3/5 : Noms de l'\351l\351ment", "wizard page title"));
+	page -> setTitle(tr("\311tape 3/4 : Noms de l'\351l\351ment", "wizard page title"));
 	page -> setSubTitle(tr("Indiquez le ou les noms de l'\351l\351ment.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
@@ -149,30 +147,12 @@ QWizardPage *NewElementWizard::buildStep3() {
 }
 
 /**
-	Met en place l'etape 4 : Dimensions et Hotspot
+	Met en place l'etape 4 : orientations possibles pour le nouvel element
 */
 QWizardPage *NewElementWizard::buildStep4() {
 	QWizardPage *page = new QWizardPage();
-	page -> setProperty("WizardState", Dimensions);
-	page -> setTitle(tr("\311tape 4/5 : Dimensions et point de saisie", "wizard page title"));
-	page -> setSubTitle(tr("Saisissez les dimensions du nouvel \351l\351ment ainsi que la position du hotspot (point de saisie de l'\351l\351ment \340 la souris) en consid\351rant que l'\351l\351ment est dans son orientation par d\351faut.", "wizard page subtitle"));
-	QVBoxLayout *layout = new QVBoxLayout();
-	
-	hotspot_editor = new HotspotEditor();
-	layout -> addWidget(hotspot_editor, 0);
-	layout -> setSpacing(0);
-	
-	page -> setLayout(layout);
-	return(page);
-}
-
-/**
-	Met en place l'etape 5 : orientations possibles pour le nouvel element
-*/
-QWizardPage *NewElementWizard::buildStep5() {
-	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Orientations);
-	page -> setTitle(tr("\311tape 5/5 : Orientations", "wizard page title"));
+	page -> setTitle(tr("\311tape 4/4 : Orientations", "wizard page title"));
 	page -> setSubTitle(tr("Indiquez les orientations possibles pour le nouvel \351l\351ment.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
@@ -274,8 +254,6 @@ bool NewElementWizard::validStep2() {
 */
 void NewElementWizard::createNewElement() {
 	QETElementEditor *edit_new_element = new QETElementEditor(parentWidget());
-	edit_new_element -> setSize(hotspot_editor -> elementSize());
-	edit_new_element -> setHotspot(hotspot_editor -> hotspot());
 	edit_new_element -> setNames(element_names -> names());
 	edit_new_element -> setOrientations(orientation_set -> orientationSet());
 	

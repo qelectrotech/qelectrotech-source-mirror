@@ -22,7 +22,6 @@ class ElementsCategoriesWidget;
 class ElementsCategory;
 class NamesListWidget;
 class OrientationSetWidget;
-class HotspotEditor;
 class QFileNameEdit;
 /**
 	This class provides a wizard dialog enabling users to to specify the basic
@@ -59,7 +58,6 @@ class NewElementWizard : public QWizard {
 	QFileNameEdit *qle_filename;
 	NamesListWidget *element_names;
 	OrientationSetWidget *orientation_set;
-	HotspotEditor *hotspot_editor;
 	WizardState current_state;
 	QString chosen_file;
 	ElementsCategory *chosen_category;
@@ -70,7 +68,6 @@ class NewElementWizard : public QWizard {
 	QWizardPage *buildStep2();
 	QWizardPage *buildStep3();
 	QWizardPage *buildStep4();
-	QWizardPage *buildStep5();
 	bool validStep1();
 	bool validStep2();
 	bool validateCurrentPage();

@@ -225,39 +225,6 @@ class ChangePolygonPointsCommand : public ElementEditionCommand {
 };
 
 /**
-	This command changes the dimensions and/or the hotspot of an electrical
-	element.
-*/
-class ChangeHotspotCommand : public ElementEditionCommand {
-	// constructors, destructor
-	public:
-	ChangeHotspotCommand(ElementScene *, const QSize &, const QSize &, const QPoint &, const QPoint &, const QPoint & = QPoint(), QUndoCommand * = 0);
-	virtual ~ChangeHotspotCommand();
-	private:
-	ChangeHotspotCommand(const ChangeHotspotCommand &);
-	
-	// methods
-	public:
-	virtual void undo();
-	virtual void redo();
-	
-	private:
-	void applyOffset(const QPointF &);
-	
-	// attributes
-	/// Former dimensions
-	QSize size_before;
-	/// new dimensions
-	QSize size_after;
-	/// Former hotspot
-	QPoint hotspot_before;
-	/// New hotspot
-	QPoint hotspot_after;
-	/// Offset to be applied to primitives
-	QPoint offset;
-};
-
-/**
 	This command changes the translated names of an electrical element.
 */
 class ChangeNamesCommand : public ElementEditionCommand {

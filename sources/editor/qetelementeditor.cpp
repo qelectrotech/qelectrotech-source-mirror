@@ -144,7 +144,6 @@ void QETElementEditor::setupActions() {
 	zoom_out        = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re"),                           this);
 	zoom_fit        = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351"),                            this);
 	zoom_reset      = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom"),                               this);
-	edit_size_hs    = new QAction(QET::Icons::HotSpot,              tr("\311diter la taille et le point de saisie"), this);
 	edit_names      = new QAction(QET::Icons::Names,                tr("\311diter les noms"),                        this);
 	edit_ori        = new QAction(QET::Icons::Orientations,         tr("\311diter les orientations"),                this);
 	edit_author     = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations sur l'auteur"),   this);
@@ -205,7 +204,6 @@ void QETElementEditor::setupActions() {
 	zoom_reset        -> setShortcut(QKeySequence(tr("Ctrl+0")));
 	
 	edit_names        -> setShortcut(QKeySequence(tr("Ctrl+E")));
-	edit_size_hs      -> setShortcut(QKeySequence(tr("Ctrl+R")));
 	edit_ori          -> setShortcut(QKeySequence(tr("Ctrl+T")));
 	edit_author       -> setShortcut(tr("Ctrl+Y"));
 	
@@ -236,7 +234,6 @@ void QETElementEditor::setupActions() {
 	connect(zoom_fit,        SIGNAL(triggered()), ce_view,  SLOT(zoomFit()));
 	connect(zoom_reset,      SIGNAL(triggered()), ce_view,  SLOT(zoomReset()));
 	connect(edit_delete,     SIGNAL(triggered()), ce_scene, SLOT(slot_delete()));
-	connect(edit_size_hs,    SIGNAL(triggered()), ce_scene, SLOT(slot_editSizeHotSpot()));
 	connect(edit_names,      SIGNAL(triggered()), ce_scene, SLOT(slot_editNames()));
 	connect(edit_ori,        SIGNAL(triggered()), ce_scene, SLOT(slot_editOrientations()));
 	connect(edit_author,     SIGNAL(triggered()), ce_scene, SLOT(slot_editAuthorInformations()));
@@ -253,7 +250,6 @@ void QETElementEditor::setupActions() {
 	connect(add_arc,         SIGNAL(triggered()), ce_scene, SLOT(slot_addArc()));
 	connect(add_terminal,    SIGNAL(triggered()), ce_scene, SLOT(slot_addTerminal()));
 	connect(add_textfield,   SIGNAL(triggered()), ce_scene, SLOT(slot_addTextField()));
-	
 	connect(move,            SIGNAL(triggered()), this,     SLOT(slot_setRubberBandToView()));
 	connect(add_line,        SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
 	connect(add_rectangle,   SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
@@ -321,7 +317,6 @@ void QETElementEditor::setupActions() {
 	main_toolbar -> addAction(edit_delete);
 	view_toolbar -> addAction(zoom_fit);
 	view_toolbar -> addAction(zoom_reset);
-	element_toolbar -> addAction(edit_size_hs);
 	element_toolbar -> addAction(edit_names);
 	element_toolbar -> addAction(edit_ori);
 	depth_toolbar -> addAction(edit_forward);
@@ -398,7 +393,6 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addAction(edit_delete);
 	edit_menu -> addSeparator();
 	edit_menu -> addAction(edit_names);
-	edit_menu -> addAction(edit_size_hs);
 	edit_menu -> addAction(edit_ori);
 	edit_menu -> addAction(edit_author);
 	edit_menu -> addSeparator();
@@ -627,23 +621,7 @@ bool QETElementEditor::checkElement() {
 	// liste les avertissements applicables
 	typedef QPair<QString, QString> QETWarning;
 	QList<QETWarning> warnings;
-	
-	/// Avertissement #1 : si les parties semblent deborder du cadre de l'element
-	if (!ce_scene -> borderContainsEveryParts()) {
-		warnings << qMakePair(
-			tr("Dimensions de l'\351l\351ment", "warning title"),
-			tr(
-				"Certaines parties graphiques (textes, cercles, lignes...) "
-				"semblent d\351border du cadre de l'\351l\351ment. Cela "
-				"risque de g\351n\351rer des bugs graphiques lors de leur "
-				"manipulation sur un sch\351ma. Vous pouvez corriger cela soit "
-				"en d\351pla\347ant ces parties, soit en vous rendant dans "
-				"\311dition > \311diter la taille et le point de saisie.",
-				"warning description"
-			)
-		);
-	}
-	
+		
 	/// Avertissement #2 : si l'element ne comporte aucune borne
 	if (!ce_scene -> containsTerminals()) {
 		warnings << qMakePair(

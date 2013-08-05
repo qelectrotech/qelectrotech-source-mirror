@@ -63,12 +63,6 @@ class ElementScene : public QGraphicsScene {
 	
 	// attributes
 	private:
-	/// element width, in dozens of pixels
-	uint _width;
-	/// element height, in dozens of pixels
-	uint _height;
-	/// hotspot position
-	QPoint _hotspot;
 	/// List of localized names
 	NamesList _names;
 	/// Set of orientations
@@ -116,12 +110,6 @@ class ElementScene : public QGraphicsScene {
 	
 	// methods
 	public:
-	void setWidth(const uint &);
-	uint width() const;
-	void setHeight(const uint &);
-	uint height() const;
-	void setHotspot(const QPoint &);
-	QPoint hotspot() const;
 	void setNames(const NamesList &);
 	NamesList names() const;
 	OrientationSet orientations();
@@ -158,7 +146,6 @@ class ElementScene : public QGraphicsScene {
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
-	virtual void drawBackground(QPainter *, const QRectF &);
 	virtual void drawForeground(QPainter *, const QRectF &);
 	virtual void endCurrentBehavior(const QGraphicsSceneMouseEvent *);
 	
@@ -191,7 +178,6 @@ class ElementScene : public QGraphicsScene {
 	void slot_deselectAll();
 	void slot_invertSelection();
 	void slot_delete();
-	void slot_editSizeHotSpot();
 	void slot_editNames();
 	void slot_editOrientations();
 	void slot_editAuthorInformations();
@@ -220,51 +206,6 @@ class ElementScene : public QGraphicsScene {
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ElementScene::ItemOptions)
 
-/**
-	@param wid the new width for the currently edited element
-*/
-inline void ElementScene::setWidth(const uint &wid) {
-	_width = wid;
-	while (_width % 10) ++ _width;
-	_width /= 10;
-}
-
-/**
-	@return the height of the currently edited element
-*/
-inline uint ElementScene::width() const {
-	return(_width * 10);
-}
-
-/**
-	@param hei the new height for the currently edited element
-*/
-inline void ElementScene::setHeight(const uint &hei) {
-	_height = hei;
-	while (_height % 10) ++ _height;
-	_height /= 10;
-}
-
-/**
-	@return the width of the currently edited element
-*/
-inline uint ElementScene::height() const {
-	return(_height * 10);
-}
-
-/**
-	@param hs the new hotspot for the currently edited element
-*/
-inline void ElementScene::setHotspot(const QPoint &hs) {
-	_hotspot = hs;
-}
-
-/**
-	@return the hotspot of the currently edited element
-*/
-inline QPoint ElementScene::hotspot() const {
-	return(_hotspot);
-}
 
 /**
 	@param nameslist New set of naes for the currently edited element
