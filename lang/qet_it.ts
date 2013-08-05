@@ -2370,25 +2370,25 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/newelementwizard.cpp" line="95"/>
         <source>Étape 1/4 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Passo 1 di 5: Categoria base {1/4 ?}</translation>
+        <translation>Passo 1 di 4: Categoria principale</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="112"/>
         <source>Étape 2/4 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Passo 2 di 5: Nome del file {2/4 ?}</translation>
+        <translation>Passo 2 di 4: Nome del file</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="135"/>
         <source>Étape 3/4 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Passo 3 di 5: Nome dell&apos;elemento {3/4 ?}</translation>
+        <translation>Passo 3 di 4: Nome dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="155"/>
         <source>Étape 4/4 : Orientations</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Passo 5 di 5: Orientamento {4/4 ?}</translation>
+        <translation>Passo 4 di 4: Orientamento</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="156"/>
