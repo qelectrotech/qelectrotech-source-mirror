@@ -4168,7 +4168,7 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="508"/>
         <source>Informations</source>
         <comment>dock title</comment>
-        <translation>Informations</translation>
+        <translation type="unfinished">Information</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="517"/>

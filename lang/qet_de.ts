@@ -1894,7 +1894,7 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="123"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Symbol kann Informationen über den Autor, die Lizenz und weitere nützliche Hinweise enthalten. Der Standardwert dieses Textfeldes für neue Symbole kann unten definiert werden. </translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="210"/>
@@ -3325,7 +3325,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="255"/>
         <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
+        <translation>Strg+Q</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="263"/>
@@ -3335,7 +3335,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation>Strg+I</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
@@ -3345,7 +3345,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="271"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Leertaste</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="272"/>
@@ -3370,22 +3370,22 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
         <source>Ctrl+T</source>
-        <translation>Ctrl+T</translation>
+        <translation>Strg+T</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
         <source>Ctrl+8</source>
-        <translation type="unfinished">Ctrl+8</translation>
+        <translation>Strg+8</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
         <source>Ctrl+9</source>
-        <translation>Ctrl+9</translation>
+        <translation>Strg+9</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="283"/>
         <source>Ctrl+0</source>
-        <translation>Ctrl+0</translation>
+        <translation>Strg+0</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
@@ -3433,19 +3433,19 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
         <source>Exporte le schéma courant dans un autre format</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exportiert den aktuellen Schaltplan in ein anderes Format</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="297"/>
         <source>Imprime le schéma courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Druckt aktuellen Schaltplan</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Anwendung QElectroTech schließen</translation>
+        <translation>QElectroTech schließen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
@@ -3565,19 +3565,19 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
         <source>Rétrécit le schéma en hauteur</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Verkleinert das Diagram in der Hoehe</translation>
+        <translation>Verkleinert den Plan in der Höhe</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="321"/>
         <source>Agrandit le schéma</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Vergroessert das Diagram</translation>
+        <translation>Vergrößert den Plan</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="322"/>
         <source>Rétrécit le schéma</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Verengt das Diagram</translation>
+        <translation>Verkleinert den Plan</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
