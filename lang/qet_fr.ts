@@ -4,7 +4,7 @@
 <context>
     <name>QETElementEditor</name>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="602"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="593"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n partie sélectionnée.</numerusform>
@@ -12,7 +12,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="667"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="642"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
