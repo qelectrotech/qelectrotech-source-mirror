@@ -129,10 +129,7 @@ class ElementScene : public QGraphicsScene {
 	virtual QList<QGraphicsItem *> zItems(ItemOptions options = ItemOptions(SortByZValue | IncludeTerminals | SelectedOrNot)) const;
 	virtual ElementContent selectedContent() const;
 	virtual void getPasteArea(const QRectF &);
-	QRectF borderRect() const;
-	QRectF sceneContent() const;
 	QRectF elementSceneGeometricRect () const;
-	bool borderContainsEveryParts() const;
 	bool containsTerminals() const;
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();

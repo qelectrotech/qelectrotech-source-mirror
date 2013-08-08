@@ -497,24 +497,6 @@ void ElementScene::fromXml(
 }
 
 /**
-	@return le rectangle representant les limites de l'element.
-	Ce rectangle a pour dimensions la taille de l'element et pour coin
-	superieur gauche les coordonnees opposees du hotspot.
-*/
-QRectF ElementScene::borderRect() const {
-	return(QRectF(-elementSceneGeometricRect().topLeft(), QSizeF(width(), height())));
-}
-
-/**
-	@return un rectangle englobant toutes les parties ainsi que le
-	"bounding rect" de l'element
-*/
-QRectF ElementScene::sceneContent() const {
-	qreal adjustment = 5.0;
-	return(elementContentBoundingRect(items()).unite(borderRect()).adjusted(-adjustment, -adjustment, adjustment, adjustment));
-}
-
-/**
 	@return the minimum, margin-less rectangle the element can fit into, in scene
 	coordinates. It is different from itemsBoundingRect() because it is not supposed
 	to imply any margin.
@@ -529,15 +511,6 @@ QRectF ElementScene::elementSceneGeometricRect() const{
 		}
 	}
 	return (esgr);
-}
-
-/**
-	@return true si toutes les parties graphiques composant l'element sont
-	integralement contenues dans le rectangle representant les limites de
-	l'element.
-*/
-bool ElementScene::borderContainsEveryParts() const {
-	return(borderRect().contains(elementContentBoundingRect(items())));
 }
 
 /**

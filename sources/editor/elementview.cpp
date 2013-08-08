@@ -114,7 +114,7 @@ void ElementView::zoomOut() {
 	le zoom est reinitialise
 */
 void ElementView::zoomFit() {
-	adjustSceneRect();
+	resetSceneRect();
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
 }
 
@@ -122,23 +122,30 @@ void ElementView::zoomFit() {
 	Reinitialise le zoom
 */
 void ElementView::zoomReset() {
-	adjustSceneRect();
+	resetSceneRect();
 	resetMatrix();
 	scale(4.0, 4.0);
 }
 
 /**
-	Ajuste le sceneRect (zone du schema visualisee par l'ElementView) afin que
-	celui inclut a la fois les parties dans et en dehors du cadre et le cadre
-	lui-meme.
+	Ajuste le sceneRect (zone du schéma visualisée par l'ElementView) afin que
+	celui-ci inclut à la fois les primitives de l'élément ainsi que le viewport
+	de la scène avec une marge de 1/4 d'elle-même.
 */
 void ElementView::adjustSceneRect() {
-	QRectF old_scene_rect = scene_ -> sceneRect();
-	QRectF new_scene_rect = scene_ -> sceneContent();
-	setSceneRect(new_scene_rect);
-	
-	// met a jour la scene
-	scene_ -> update(old_scene_rect.united(new_scene_rect));
+	QRectF esgr = scene_ -> elementSceneGeometricRect();
+	QRectF vpbr = mapToScene(this -> viewport() -> rect()).boundingRect();
+	QRectF new_scene_rect = vpbr.adjusted(-vpbr.height()/4, -vpbr.width()/4, vpbr.height()/4, vpbr.width()/4);
+	setSceneRect(new_scene_rect.united(esgr));
+}
+
+/**
+ * @brief ElementView::resetSceneRect
+ * reset le sceneRect (zone du schéma visualisée par l'ElementView) afin que
+ * celui-ci inclut uniquement les primitives de l'élément dessiné.
+ */
+void ElementView::resetSceneRect() {
+	setSceneRect(scene_ -> elementSceneGeometricRect());
 }
 
 /**
@@ -353,6 +360,7 @@ void ElementView::mouseMoveEvent(QMouseEvent *e) {
 		QPointF move = reference_view_ - mapToScene(e -> pos());
 		this -> centerOn(center_view_ + move);
 		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
+		adjustSceneRect();
 		return;
 	}
 	QGraphicsView::mouseMoveEvent(e);

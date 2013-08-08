@@ -59,6 +59,7 @@ class ElementView : public QGraphicsView {
 	void zoomFit();
 	void zoomReset();
 	void adjustSceneRect();
+	void resetSceneRect ();
 	void cut();
 	void copy();
 	void paste();
