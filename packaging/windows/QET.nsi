@@ -77,7 +77,6 @@
 	!insertmacro MUI_LANGUAGE "Arabic"
 	!insertmacro MUI_LANGUAGE "German"
 	!insertmacro MUI_LANGUAGE "Italian"
-	!insertmacro MUI_LANGUAGE "Polish"
 	!insertmacro MUI_LANGUAGE "Romanian"
 	!insertmacro MUI_LANGUAGE "Catalan"
 	!insertmacro MUI_LANGUAGE "Croatian"
@@ -112,9 +111,12 @@ Section ""
 	Var /GLOBAL final_qet_exe
 	Var /GLOBAL final_project_ico
 	Var /GLOBAL final_element_ico
+	Var /GLOBAL final_titleblock_ico
+
 	StrCpy $final_qet_exe     "$INSTDIR\Lancer QET.bat"
 	StrCpy $final_project_ico "$INSTDIR\ico\application-x-qet-project.ico"
 	StrCpy $final_element_ico "$INSTDIR\ico\application-x-qet-element.ico"
+	StrCpy $final_titleblock_ico "$INSTDIR\ico\application-x-qet-titleblock.ico"
 	
 	; write file associations registry keys
 	WriteRegStr   HKEY_CLASSES_ROOT "Applications\qelectrotech.exe\shell\open\command" ""             "$\"$final_qet_exe$\" $\"%1$\""
