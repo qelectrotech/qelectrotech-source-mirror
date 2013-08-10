@@ -12,7 +12,7 @@
 ;General
 	; General Product Description Definitions
 	!define SOFT_NAME     "QElectroTech"
-	!define SOFT_VERSION  "0.3"
+	!define SOFT_VERSION  "0.3b"
 	!define SOFT_WEB_SITE "http://qelectrotech.org/"
 	!define SOFT_BUILD    "1"
 	
@@ -73,6 +73,14 @@
 	!insertmacro MUI_LANGUAGE "Portuguese"
 	!insertmacro MUI_LANGUAGE "Czech"
 	!insertmacro MUI_LANGUAGE "Polish"
+	!insertmacro MUI_LANGUAGE "Greek"
+	!insertmacro MUI_LANGUAGE "Arabic"
+	!insertmacro MUI_LANGUAGE "German"
+	!insertmacro MUI_LANGUAGE "Italian"
+	!insertmacro MUI_LANGUAGE "Polish"
+	!insertmacro MUI_LANGUAGE "Romanian"
+	!insertmacro MUI_LANGUAGE "Catalan"
+	!insertmacro MUI_LANGUAGE "Croatian"
 
 ;--------------------------------
 ;Reserve Files
