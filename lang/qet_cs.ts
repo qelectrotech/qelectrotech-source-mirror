@@ -2371,25 +2371,25 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/newelementwizard.cpp" line="95"/>
         <source>Étape 1/4 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Krok 1 z 5: Rodičovská skupina {1/4 ?}</translation>
+        <translation>Krok 1 ze 4: Rodičovská skupina</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="112"/>
         <source>Étape 2/4 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Krok 2 z 5: Název souboru {2/4 ?}</translation>
+        <translation>Krok 2 ze 4: Název souboru</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="135"/>
         <source>Étape 3/4 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Krok 3 z 5: Názvy prvku {3/4 ?}</translation>
+        <translation>Krok 3 ze 4: Názvy prvku</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="155"/>
         <source>Étape 4/4 : Orientations</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Krok 5 z 5: Natočení {4/4 ?}</translation>
+        <translation>Krok 5 ze 4: Natočení</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="156"/>
