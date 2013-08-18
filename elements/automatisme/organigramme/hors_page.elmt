@@ -1,9 +1,10 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="40" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="en">Off-page reference</name>
+        <name lang="it">Riferimento esterno</name>
         <name lang="fr">Connecteur externe</name>
         <name lang="pl">Łącznik zewnętrzny</name>
-        <name lang="it">Riferimento esterno</name>
+        <name lang="es">Referencia a otra página</name>
         <name lang="cs">Vnější odkaz</name>
     </names>
     <informations>ezza</informations>

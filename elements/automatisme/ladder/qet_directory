@@ -1,15 +1,15 @@
 <qet-directory>
     <names>
+        <name lang="ar">المخطط السلمي Ladder</name>
         <name lang="de">Kontakt Plan (KOP)</name>
         <name lang="ru">?????????-???????? ?????</name>
-        <name lang="en">Ladder</name>
-        <name lang="ar">المخطط السلمي Ladder</name>
-        <name lang="fr">Ladder</name>
-        <name lang="es">Ladder</name>
         <name lang="pt">Ladder</name>
-        <name lang="cs">?eb??k</name>
-        <name lang="pl">Schemat drabinkowy (LD)</name>
-        <name lang="it">Ladder</name>
         <name lang="el">Διάγραμμα επαφών (Ladder)</name>
+        <name lang="en">Ladder</name>
+        <name lang="it">Ladder</name>
+        <name lang="fr">Ladder</name>
+        <name lang="pl">Schemat drabinkowy (LD)</name>
+        <name lang="es">Escalera</name>
+        <name lang="cs">?eb??k</name>
     </names>
 </qet-directory>

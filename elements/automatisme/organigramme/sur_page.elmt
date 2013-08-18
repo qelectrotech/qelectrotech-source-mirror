@@ -1,9 +1,10 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="en">On-page reference</name>
+        <name lang="it">Riferimento interno</name>
         <name lang="fr">connecteur interne</name>
         <name lang="pl">Łącznik wewnętrzny</name>
-        <name lang="it">Riferimento interno</name>
+        <name lang="es">Conector interno</name>
         <name lang="cs">Vnitřní odkaz</name>
     </names>
     <informations>ezza</informations>
