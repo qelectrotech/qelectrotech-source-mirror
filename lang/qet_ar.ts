@@ -2464,17 +2464,17 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Chiffre 1</source>
-        <translation type="unfinished"></translation>
+        <translation>عدد 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Chiffre 01</source>
-        <translation type="unfinished"></translation>
+        <translation>عدد 01</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Chiffre 001</source>
-        <translation type="unfinished"></translation>
+        <translation>عدد 001</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
@@ -5671,7 +5671,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/ui/selectautonumw.cpp" line="122"/>
         <source>Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>ترقيم ذاتي</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="123"/>
@@ -5691,7 +5691,20 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>هنا, يُمكنكم تعريف طريقة ترقيم المُوصلات الجديدة 
+- كلّ ورقة تمتلك الترقيم الخاص بها
+- يتألّف كلّ ترقيم من مُتغيّر كحدّ أدنى
+- يُمكنكم إضافة أو حذف مُتغيّر ترقيم من خلال الأزرار - و  +
+-يحتوي متغيّر الترقيم : نوع, قيمة و زيادة
+
+-الأنواع 1 , 01 و 001 تُمثّل النوع الرقمي المُعرّف في الحقل - قيمة - , والذي يزداد بواحد عند إضافة مُوصل جديد بالنسبة لحقل - زيادة -
+- عدد 01 و عدد001 يُمثّلان على المُخطط وعلى التوالي باثنين أو بثلاث أرقام على الأقلّ . إذا كان الرقم المُعرّف في الحقل قيمة يحتوي على عدد أقلّ من الحروف فإنّ الرقم يُسبق بصفر أو صفرين لإحترام نوعه.
+
+- النوع - نص - يُمثّل نصّا ثابتا.
+- الحقل - زيادة - غير مُستخدم
+
+- النوع - صفحة رقم N يُمثّل رقم الصفحة الحالية
+- الحقول الأخرى غير مُستخدمة </translation>
     </message>
 </context>
 <context>
