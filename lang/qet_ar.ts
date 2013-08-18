@@ -2401,25 +2401,25 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="95"/>
         <source>Étape 1/4 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">الخطوة 1/5 :الصنف الأم {1/4 ?}</translation>
+        <translation>الخطوة 1/4 : الصنف الأم</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="112"/>
         <source>Étape 2/4 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">الخطوة 2/5 : اسم الملف {2/4 ?}</translation>
+        <translation>الخطوة 2/4 : اسم الملف</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="135"/>
         <source>Étape 3/4 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">الخطوة 3/5 : أسماء العنصر {3/4 ?}</translation>
+        <translation>الخطوة 3/4 : اسم العنصر</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="155"/>
         <source>Étape 4/4 : Orientations</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">الخطوة 5/5 : اتجاهات {4/4 ?}</translation>
+        <translation>الخطوة 4/4 : اتجاهات</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="156"/>
