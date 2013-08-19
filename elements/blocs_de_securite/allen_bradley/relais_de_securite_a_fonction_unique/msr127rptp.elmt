@@ -1,10 +1,11 @@
-<definition width="260" version="0.3" hotspot_x="85" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="260" version="0.3" hotspot_x="85" hotspot_y="40" height="90" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">msr127rp/tp</name>
+        <name lang="it">MSR127RP/TP</name>
         <name lang="fr">msr127rp/tp</name>
         <name lang="pl">MSR127RP/TP</name>
+        <name lang="es">msr127rp/tp</name>
         <name lang="cs">MSR127RP/TP</name>
-        <name lang="it">MSR127RP/TP</name>
     </names>
     <informations></informations>
     <description>

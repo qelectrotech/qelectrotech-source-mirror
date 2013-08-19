@@ -1,10 +1,11 @@
-<definition width="470" version="0.3" hotspot_x="295" hotspot_y="35" height="100" type="element" ic="true" orientation="dyyy">
+<definition width="470" version="0.3" hotspot_x="295" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">msr18t</name>
+        <name lang="it">MSR18T</name>
         <name lang="fr">msr18t</name>
         <name lang="pl">MSR18T</name>
+        <name lang="es">msr18t</name>
         <name lang="cs">MSR18T</name>
-        <name lang="it">MSR18T</name>
     </names>
     <informations></informations>
     <description>

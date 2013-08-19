@@ -1,10 +1,11 @@
-<definition width="260" version="0.3" hotspot_x="85" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="260" version="0.3" hotspot_x="85" hotspot_y="40" height="90" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">msr8t</name>
+        <name lang="it">MSR8T</name>
         <name lang="fr">msr8t</name>
         <name lang="pl">MSR8T</name>
+        <name lang="es">msr8t</name>
         <name lang="cs">MSR8T</name>
-        <name lang="it">MSR8T</name>
     </names>
     <informations></informations>
     <description>

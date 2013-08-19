@@ -1,9 +1,10 @@
 <definition width="110" version="0.3" hotspot_x="-8" hotspot_y="-6" height="150" type="element" orientation="dyyy">
     <names>
         <name lang="en">MAIN UNIT CPU000</name>
+        <name lang="it">UNITÀ CPU000</name>
         <name lang="fr">MAIN UNIT CPU000</name>
         <name lang="pl">FX3-CPU000000</name>
-        <name lang="it">UNITÀ CPU000</name>
+        <name lang="es">UNIDAD PRINCIPAL CPU000</name>
         <name lang="cs">FX3-CPU000000</name>
     </names>
     <informations></informations>

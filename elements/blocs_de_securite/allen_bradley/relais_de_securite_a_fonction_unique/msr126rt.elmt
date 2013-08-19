@@ -1,11 +1,12 @@
-<definition width="200" version="0.3" hotspot_x="25" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="200" version="0.3" hotspot_x="25" hotspot_y="40" height="90" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">MSR126R/T</name>
         <name lang="en">msr126r/t</name>
+        <name lang="it">MSR126R/T</name>
         <name lang="fr">msr126r/t</name>
         <name lang="pl">MSR126R/T</name>
+        <name lang="es">msr126r/t</name>
         <name lang="cs">MSR126R/T</name>
-        <name lang="it">MSR126R/T</name>
     </names>
     <informations></informations>
     <description>

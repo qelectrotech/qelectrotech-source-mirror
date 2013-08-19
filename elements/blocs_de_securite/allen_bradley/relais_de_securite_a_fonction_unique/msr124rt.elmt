@@ -1,11 +1,12 @@
-<definition width="410" version="0.3" hotspot_x="175" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="410" version="0.3" hotspot_x="175" hotspot_y="40" height="90" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">MSR124RT</name>
         <name lang="en">msr124rt</name>
+        <name lang="it">MSR124RT</name>
         <name lang="fr">msr124rt</name>
         <name lang="pl">MSR124RT</name>
+        <name lang="es">msr124rt</name>
         <name lang="cs">MSR124RT</name>
-        <name lang="it">MSR124RT</name>
     </names>
     <informations></informations>
     <description>

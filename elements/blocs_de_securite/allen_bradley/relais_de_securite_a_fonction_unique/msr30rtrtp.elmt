@@ -1,10 +1,11 @@
-<definition width="200" version="0.3" hotspot_x="25" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="200" version="0.3" hotspot_x="25" hotspot_y="40" height="90" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">msr30rt/rtp</name>
+        <name lang="it">MSR30RT/RTP</name>
         <name lang="fr">msr30rt/rtp</name>
         <name lang="pl">MSR30RT/RTP</name>
+        <name lang="es">msr30rt/rtp</name>
         <name lang="cs">MSR30RT/RTP</name>
-        <name lang="it">MSR30RT/RTP</name>
     </names>
     <informations></informations>
     <description>

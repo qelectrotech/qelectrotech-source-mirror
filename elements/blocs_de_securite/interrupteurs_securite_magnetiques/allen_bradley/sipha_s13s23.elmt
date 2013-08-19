@@ -1,12 +1,13 @@
-<definition width="90" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
+<definition width="100" version="0.3" hotspot_x="31" hotspot_y="38" height="80" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="ar">Sipha S13/S23</name>
         <name lang="de">Sipha S13/S23</name>
         <name lang="en">Sipha S13/S23</name>
+        <name lang="it">Sipha S13/S23</name>
         <name lang="fr">Sipha S13/S23</name>
         <name lang="pl">Sipha S13/S23</name>
+        <name lang="es">Sipha S13/S23</name>
         <name lang="cs">Sipha S13/S23</name>
-        <name lang="it">Sipha S13/S23</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
