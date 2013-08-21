@@ -2333,13 +2333,13 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
         <location filename="../sources/newelementwizard.cpp" line="95"/>
         <source>Étape 1/4 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Etapa 1/5: Caegoría padre {1/4 ?}</translation>
+        <translation>Etapa 1/4: Categoría padre</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="112"/>
         <source>Étape 2/4 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Etapa 2/5: Nombre de archivo {2/4 ?}</translation>
+        <translation>Etapa 2/4: Nombre de archivo</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="116"/>
@@ -2355,13 +2355,13 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
         <location filename="../sources/newelementwizard.cpp" line="135"/>
         <source>Étape 3/4 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Etapa 3/5: Nombres del elemento {3/4 ?}</translation>
+        <translation>Etapa 3/4: Nombres del elemento</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="155"/>
         <source>Étape 4/4 : Orientations</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Etapa 5/5: Orientaciones {4/4 ?}</translation>
+        <translation>Etapa 4/4: Orientaciones</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="46"/>
