@@ -772,22 +772,22 @@ dla wszystkich przewodów tego potencjału?</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Selectionner une image...</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz obraz...</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Pliki obrazów (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Erreur</source>
-        <translation type="unfinished">Błąd</translation>
+        <translation>Błąd</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie można załadować obrazu... :(</translation>
     </message>
 </context>
 <context>
@@ -3443,7 +3443,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
         <source>Ajouter une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw obraz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
@@ -5055,7 +5055,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="108"/>
         <source>Ajouter une image</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>wstaw obraz</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="143"/>
@@ -5341,8 +5341,8 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/qet.cpp" line="266"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n obraz(y)</numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
