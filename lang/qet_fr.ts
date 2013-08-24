@@ -24,7 +24,7 @@
 <context>
     <name>QObject</name>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="205"/>
+        <location filename="../sources/qet.cpp" line="206"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -33,7 +33,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="226"/>
+        <location filename="../sources/qet.cpp" line="229"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -42,12 +42,21 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="241"/>
+        <location filename="../sources/qet.cpp" line="251"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform>%n champ de texte</numerusform>
             <numerusform>%n champs de texte</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="266"/>
+        <source>%n image(s)</source>
+        <comment>part of a sentence listing the content of a diagram</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
