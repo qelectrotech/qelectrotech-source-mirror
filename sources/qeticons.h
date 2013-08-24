@@ -161,6 +161,7 @@ namespace QET {
 		extern QIcon ZoomIn;
 		extern QIcon ZoomOriginal;
 		extern QIcon ZoomOut;
+		extern QIcon adding_image;
 	}
 }
 #endif

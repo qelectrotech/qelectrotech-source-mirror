@@ -124,6 +124,7 @@ class QETDiagramEditor : public QETMainWindow {
 	void slot_resetConductors();
 	void slot_addText();
 	void slot_editText();
+	void slot_addImage();
 	void setWindowedMode();
 	void setTabbedMode();
 	void readSettings();
@@ -215,7 +216,7 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *cascade_window;     ///< Show MDI subwindows as cascade
 	QAction *prev_window;        ///< Switch to the previous document
 	QAction *next_window;        ///< Switch to the next document
-	
+	QAction *add_image;       ///< Tool to add an independent image item on diagrams
 	private:
 	QMdiArea workspace;
 	QSignalMapper windowMapper;

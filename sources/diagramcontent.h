@@ -21,6 +21,7 @@
 class Conductor;
 class Element;
 class IndependentTextItem;
+class DiagramImageItem;
 /**
 	This class provides a container that makes the transmission of diagram content
 	to other functions/methods easier. The different kind of items are made
@@ -40,6 +41,7 @@ class DiagramContent {
 	enum Filter {
 		Elements = 1,
 		TextFields = 2,
+		Images = 3,
 		ConductorsToMove = 4,
 		ConductorsToUpdate = 8,
 		OtherConductors = 16,
@@ -52,6 +54,8 @@ class DiagramContent {
 	QSet<Element *> elements;
 	/// Hold independent text items
 	QSet<IndependentTextItem *> textFields;
+	/// Hold image
+	QSet<DiagramImageItem *> images;
 	/// Hold conductors that would get updated considering electrical elements are moved
 	QSet<Conductor *> conductorsToUpdate;
 	/// Hold conductors that would be moved as is considering electrical elements are moved

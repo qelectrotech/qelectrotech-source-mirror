@@ -196,10 +196,11 @@ bool QET::attributeIsAReal(const QDomElement &e, QString nom_attribut, qreal *re
 	@param elements_count nombre d'elements
 	@param conductors_count nombre de conducteurs
 	@param texts_count nombre de champs de texte
+	@param images_count nombre d'images
 	@return la proposition decrivant le nombre d'elements, de conducteurs et de
 	textes
 */
-QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count, int texts_count) {
+QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count, int texts_count, int images_count) {
 	QString text;
 	if (elements_count) {
 		text += QObject::tr(
@@ -207,13 +208,15 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 			"part of a sentence listing the content of a diagram",
 			elements_count
 		);
-		if (conductors_count && texts_count) {
+		if ((conductors_count && texts_count) ||
+			(conductors_count && images_count) ||
+			(texts_count && images_count)) {
 			text += QObject::tr(
 				", ",
 				"separator between elements and conductors in a sentence "
 				"listing the content of a diagram"
 			);
-		} else if (conductors_count || texts_count) {
+		} else if (conductors_count || texts_count || images_count) {
 			text += QObject::tr(
 				" et ",
 				"separator between elements and conductors (or texts) in a "
@@ -228,7 +231,14 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 			"part of a sentence listing the content of a diagram",
 			conductors_count
 		);
-		if (texts_count) {
+		if (texts_count && images_count) {
+			text += QObject::tr(
+				", ",
+				"separator between elements and conductors in a sentence "
+				"listing the content of a diagram"
+			);
+		}
+		else if (texts_count || images_count) {
 			text += QObject::tr(
 				" et ",
 				"separator between conductors and texts in a sentence listing "
@@ -242,6 +252,21 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 			"%n champ(s) de texte",
 			"part of a sentence listing the content of a diagram",
 			texts_count
+		);
+		if (images_count) {
+			text += QObject::tr(
+				" et ",
+				"separator between conductors and texts in a sentence listing "
+				"the content of a diagram"
+			);
+		}
+	}
+
+	if (images_count) {
+		text += QObject::tr(
+			"%n image(s)",
+			"part of a sentence listing the content of a diagram",
+			images_count
 		);
 	}
 	return(text);

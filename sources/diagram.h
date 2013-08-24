@@ -40,6 +40,7 @@ class IndependentTextItem;
 class QETProject;
 class Terminal;
 class ConductorTextItem;
+class DiagramImageItem;
 /**
 	This class represents an electric diagram. It manages its various child
 	elements, conductors and texts and handles their graphic rendering.
@@ -134,6 +135,7 @@ class Diagram : public QGraphicsScene {
 	void addElement(Element *);
 	void addConductor(Conductor *);
 	void addIndependentTextItem(IndependentTextItem *);
+	void addDiagramImageItem(DiagramImageItem *);
 	
 	void removeElement(Element *);
 	void removeConductor(Conductor *);

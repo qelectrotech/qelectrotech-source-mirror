@@ -24,6 +24,7 @@ class Conductor;
 class Diagram;
 class Element;
 class IndependentTextItem;
+class DiagramImageItem;
 class QETDiagramEditor;
 /**
 	This class provides a widget to render an electric diagram in an editable,
@@ -37,6 +38,8 @@ class DiagramView : public QGraphicsView {
 	DiagramView(Diagram * = 0, QWidget * = 0);
 	virtual ~DiagramView();
 	
+	enum behavior {noAction, addingText, addingImage, dragView};
+
 	private:
 	DiagramView(const DiagramView &);
 	
@@ -47,13 +50,13 @@ class DiagramView : public QGraphicsView {
 	QAction *paste_here;
 	QAction *find_element_;
 	QPoint paste_here_pos;
-	bool is_adding_text;
-	bool is_moving_view_;               ///< Indicate whether the visualisation mode has been enabled due to mouse/keyboard interactions
+	behavior current_behavior;
 	bool fresh_focus_in_;               ///< Indicate the focus was freshly gained
 	ElementsLocation next_location_;
 	QPoint next_position_;
 	QPointF reference_view_;
 	QPointF center_view_;
+	QImage image_to_add_;
 	
 	// methods
 	public:
@@ -71,7 +74,9 @@ class DiagramView : public QGraphicsView {
 	bool hasDeletableItems();
 	void addText();
 	void editText();
+	void addImage();
 	IndependentTextItem *addDiagramTextAtPos(const QPointF &);
+	DiagramImageItem *addDiagramImageAtPos(const QPointF &);
 	
 	protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent *);
@@ -120,6 +125,10 @@ class DiagramView : public QGraphicsView {
 	void editElementRequired(const ElementsLocation &);
 	/// Signal emitted when users want to edit and/or duplicate an existing title block template
 	void editTitleBlockTemplate(const QString &, bool);
+	/// Signal emitted after a image was added
+	void ImageAdded(bool);
+	/// Signal emmitted fater windows selection image have been canceled
+	void ImageAddedCanceled(bool);
 	
 	public slots:
 	void selectNothing();

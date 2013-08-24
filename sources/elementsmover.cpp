@@ -22,6 +22,7 @@
 #include "diagramcommands.h"
 #include "element.h"
 #include "independenttextitem.h"
+#include "diagramimageitem.h"
 
 /**
 	Constructeur
@@ -138,6 +139,13 @@ void ElementsMover::continueMovement(const QPointF &movement) {
 		if (movement_driver_ && text_field == movement_driver_) continue;
 		text_field -> setPos(text_field -> pos() + movement);
 	}
+
+	//deplace les images
+	foreach(DiagramImageItem *dii, moved_content_.images) {
+		if (movement_driver_ && dii == movement_driver_) continue;
+		dii -> setPos(dii -> pos() + movement);
+	}
+
 }
 
 /**

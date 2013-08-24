@@ -60,8 +60,8 @@ void QGIManager::release(QGraphicsItem *qgi) {
 	if (!qgi_manager.contains(qgi)) return;
 	-- qgi_manager[qgi];
 	if (qgi_manager[qgi] <= 0 && !(scene -> items().contains(qgi))) {
-		qgi_manager.remove(qgi);
 		delete qgi;
+		qgi_manager.remove(qgi);
 	}
 }
 

@@ -20,6 +20,7 @@
 #include "element.h"
 #include "independenttextitem.h"
 #include "conductor.h"
+#include "diagramimageitem.h"
 
 /**
 	Constructeur par defaut. Ne contient rien.
@@ -33,6 +34,7 @@ DiagramContent::DiagramContent() {
 DiagramContent::DiagramContent(const DiagramContent &other) :
 	elements(other.elements),
 	textFields(other.textFields),
+	images(other.images),
 	conductorsToUpdate(other.conductorsToUpdate),
 	conductorsToMove(other.conductorsToMove),
 	otherConductors(other.otherConductors)
@@ -68,6 +70,7 @@ QList<Conductor *> DiagramContent::conductors(int filter) const {
 void DiagramContent::clear() {
 	elements.clear();
 	textFields.clear();
+	images.clear();
 	conductorsToUpdate.clear();
 	conductorsToMove.clear();
 	otherConductors.clear();
@@ -82,6 +85,7 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const {
 	foreach(QGraphicsItem *qgi, conductors(filter)) items_list << qgi;
 	if (filter & Elements)   foreach(QGraphicsItem *qgi, elements)   items_list << qgi;
 	if (filter & TextFields) foreach(QGraphicsItem *qgi, textFields)  items_list << qgi;
+	if (filter & Images) foreach(QGraphicsItem *qgi, images) items_list << qgi;
 	if (filter & SelectedOnly) {
 		foreach(QGraphicsItem *qgi, items_list) {
 			if (!qgi -> isSelected()) items_list.removeOne(qgi);
@@ -99,12 +103,14 @@ int DiagramContent::count(int filter) const {
 	if (filter & SelectedOnly) {
 		if (filter & Elements)           foreach(Element *element,     elements)                  { if (element   -> isSelected()) ++ count; }
 		if (filter & TextFields)         foreach(DiagramTextItem *dti, textFields)                { if (dti       -> isSelected()) ++ count; }
+		if (filter & Images)			 foreach(DiagramImageItem *dii, images)					  { if (dii		  -> isSelected()) ++ count; }
 		if (filter & ConductorsToMove)   foreach(Conductor *conductor, conductorsToMove)          { if (conductor -> isSelected()) ++ count; }
 		if (filter & ConductorsToUpdate) foreach(Conductor *conductor, conductorsToUpdate)        { if (conductor -> isSelected()) ++ count; }
 		if (filter & OtherConductors)    foreach(Conductor *conductor, otherConductors)           { if (conductor -> isSelected()) ++ count; }
 	} else {
 		if (filter & Elements)           count += elements.count();
 		if (filter & TextFields)         count += textFields.count();
+		if (filter & Images)			 count += images.count();
 		if (filter & ConductorsToMove)   count += conductorsToMove.count();
 		if (filter & ConductorsToUpdate) count += conductorsToUpdate.count();
 		if (filter & OtherConductors)    count += otherConductors.count();
@@ -122,12 +128,14 @@ QString DiagramContent::sentence(int filter) const {
 	int elements_count   = (filter & Elements) ? elements.count() : 0;
 	int conductors_count = conductors(filter).count();
 	int textfields_count = (filter & TextFields) ? textFields.count() : 0;
+	int images_count	 = (filter & Images) ? images.count() : 0;
 	
 	return(
 		QET::ElementsAndConductorsSentence(
 			elements_count,
 			conductors_count,
-			textfields_count
+			textfields_count,
+			images_count
 		)
 	);
 }

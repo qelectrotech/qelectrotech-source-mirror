@@ -26,6 +26,7 @@
 #include "conductortextitem.h"
 #include "elementtextitem.h"
 #include "independenttextitem.h"
+#include "diagramimageitem.h"
 #include "titleblockpropertieswidget.h"
 #include "templatelocation.h"
 #include "qetapp.h"
@@ -37,6 +38,10 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "qtextorientationspinboxwidget.h"
+#include <QGraphicsObject>
+
+#include <QGraphicsPixmapItem>
+#include <QGraphicsSceneMouseEvent>
 
 
 /**
@@ -44,10 +49,11 @@
 	@param diagram Schema a afficher ; si diagram vaut 0, un nouveau Diagram est utilise
 	@param parent Le QWidget parent de cette vue de schema
 */
-DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent), is_adding_text(false), is_moving_view_(false) {
+DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent) {
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	setInteractive(true);
-	
+	current_behavior = noAction;
+
 	QString whatsthis = tr(
 		"Ceci est la zone dans laquelle vous concevez vos sch\351mas en y ajoutant"
 		" des \351l\351ments et en posant des conducteurs entre leurs bornes. Il est"
@@ -140,6 +146,7 @@ void DiagramView::rotateSelection() {
 	// recupere les elements et les champs de texte a pivoter
 	QHash<Element *, QET::Orientation> elements_to_rotate;
 	QList<DiagramTextItem *> texts_to_rotate;
+	QList<DiagramImageItem *> images_to_rotate;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(item)) {
 			elements_to_rotate.insert(e, e -> orientation().current());
@@ -152,12 +159,14 @@ void DiagramView::rotateSelection() {
 			if (eti -> parentItem() && !eti -> parentItem() -> isSelected()) {
 				texts_to_rotate << eti;
 			}
+		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(item)) {
+			images_to_rotate << dii;
 		}
 	}
 	
 	// effectue les rotations s'il y a quelque chose a pivoter
-	if (elements_to_rotate.isEmpty() && texts_to_rotate.isEmpty()) return;
-	scene -> undoStack().push(new RotateElementsCommand(elements_to_rotate, texts_to_rotate));
+	if (elements_to_rotate.isEmpty() && texts_to_rotate.isEmpty() && images_to_rotate.isEmpty()) return;
+	scene -> undoStack().push(new RotateElementsCommand(elements_to_rotate, texts_to_rotate, images_to_rotate));
 }
 
 void DiagramView::rotateTexts() {
@@ -417,11 +426,16 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 		switchToVisualisationModeIfNeeded(e);
 		fresh_focus_in_ = false;
 	}
-	if (isInteractive() && !scene -> isReadOnly()) {
-		if (is_adding_text && e -> buttons() == Qt::LeftButton) {
-			addDiagramTextAtPos(mapToScene(e -> pos()));
-			is_adding_text = false;
+	if (isInteractive() && !scene -> isReadOnly() && current_behavior > noAction && e -> buttons() == Qt::LeftButton) {
+		switch (current_behavior) {
+			case addingText:
+				addDiagramTextAtPos(mapToScene(e -> pos()));
+				break;
+			case addingImage:
+				addDiagramImageAtPos(mapToScene(e -> pos()));
+				break;
 		}
+		current_behavior = noAction;
 	}
 	// workaround for drag view with hold wheel click and drag mouse
 	// see also mouseMoveEvent() and mouseReleaseEvent()
@@ -632,7 +646,8 @@ bool DiagramView::hasCopiableItems() {
 	foreach(QGraphicsItem *qgi, scene -> selectedItems()) {
 		if (
 			qgraphicsitem_cast<Element *>(qgi) ||
-			qgraphicsitem_cast<IndependentTextItem *>(qgi)
+			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
+			qgraphicsitem_cast<DiagramImageItem *>(qgi)
 		) {
 			return(true);
 		}
@@ -649,7 +664,8 @@ bool DiagramView::hasDeletableItems() {
 		if (
 			qgraphicsitem_cast<Element *>(qgi) ||
 			qgraphicsitem_cast<Conductor *>(qgi) ||
-			qgraphicsitem_cast<IndependentTextItem *>(qgi)
+			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
+			qgraphicsitem_cast<DiagramImageItem *>(qgi)
 		) {
 			return(true);
 		}
@@ -1143,7 +1159,7 @@ bool DiagramView::event(QEvent *e) {
 bool DiagramView::switchToVisualisationModeIfNeeded(QInputEvent *e) {
 	if (isCtrlShifting(e) && !selectedItemHasFocus()) {
 		if (dragMode() != QGraphicsView::ScrollHandDrag) {
-			is_moving_view_ = true;
+			current_behavior = dragView;
 			setVisualisationMode();
 			return(true);
 		}
@@ -1157,9 +1173,9 @@ bool DiagramView::switchToVisualisationModeIfNeeded(QInputEvent *e) {
 	otherwise.
 */
 bool DiagramView::switchToSelectionModeIfNeeded(QInputEvent *e) {
-	if (is_moving_view_ && !selectedItemHasFocus() && !isCtrlShifting(e)) {
+	if (current_behavior == dragView && !selectedItemHasFocus() && !isCtrlShifting(e)) {
 		setSelectionMode();
-		is_moving_view_ = false;
+		current_behavior = noAction;
 		return(true);
 	}
 	return(false);
@@ -1201,12 +1217,11 @@ bool DiagramView::selectedItemHasFocus() {
 */
 void DiagramView::addText() {
 	if (scene -> isReadOnly()) return;
-	is_adding_text = true;
+	current_behavior = addingText;
 }
 
 
-/**
-	To edit the text through the htmlEditor
+/**	To edit the text through the htmlEditor
 */
 void DiagramView::editText() {
 	if (scene -> isReadOnly()) return;
@@ -1223,6 +1238,50 @@ void DiagramView::editText() {
 	// Test if any text existe..
 	if (texts_to_edit.isEmpty()) return;	
 	else texts_to_edit.at(0)->edit();	
+}
+
+
+/**
+* @brief DiagramView::addImage
+*/
+void DiagramView::addImage() {
+	if (scene -> isReadOnly()) return;
+
+	QString pathPictures = QDesktopServices::storageLocation ( QDesktopServices::PicturesLocation );
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Selectionner une image..."), pathPictures.toStdString().c_str(), tr("Image Files (*.png *.jpg *.bmp *.svg)"));
+	if(fileName.isEmpty()) {
+		emit ImageAddedCanceled(false);
+		return;
+	}
+
+	int ret = image_to_add_.load(fileName);
+	if(!ret){
+		QMessageBox::critical(this, tr("Erreur"), tr("Impossible de charger l'image...D\351soler :("));
+		return;
+	}
+	current_behavior = addingImage;
+}
+/**
+* @brief DiagramView::addDiagramImageAtPos
+* @param pos
+* @return
+*/
+DiagramImageItem *DiagramView::addDiagramImageAtPos(const QPointF &pos) {
+
+	if (!isInteractive() || scene -> isReadOnly()) return(0);
+
+	// cree un nouveau champ image
+	DiagramImageItem *Imageitem = new DiagramImageItem( QPixmap::fromImage(image_to_add_) );
+
+	// le place a la position pos en gerant l'annulation
+	scene -> undoStack().push(new AddImageCommand(scene, Imageitem, pos));
+	adjustSceneRect();
+	
+	// emet le signal ImageAdded
+	emit(ImageAdded(false));
+
+	return(Imageitem);
+
 }
 
 /**
@@ -1243,7 +1302,7 @@ IndependentTextItem *DiagramView::addDiagramTextAtPos(const QPointF &pos) {
 	
 	// emet le signal textAdded
 	emit(textAdded(false));
-	
+
 	return(iti);
 }
 

@@ -46,12 +46,15 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Diagram *parent_diagram) :
 	segments(NULL),
 	moving_point(false),
 	moving_segment(false),
-	previous_z_value(zValue()),
 	modified_path(false),
 	has_to_save_profile(false),
 	segments_squares_scale_(1.0),
 	must_highlight_(Conductor::None)
 {
+	//set Zvalue at 10 to be upper than the DiagramImageItem
+	setZValue(10);
+	previous_z_value = zValue();
+
 	// ajout du conducteur a la liste de conducteurs de chacune des deux bornes
 	bool ajout_p1 = terminal1 -> addConductor(this);
 	bool ajout_p2 = terminal2 -> addConductor(this);

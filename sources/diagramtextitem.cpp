@@ -32,6 +32,8 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram)
 	previous_text_(),
 	rotation_angle_(0.0)
 {
+	//set Zvalue at 10 to be upper than the DiagramImageItem
+	setZValue(10);
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
@@ -52,6 +54,8 @@ DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, Dia
 	previous_text_(text),
 	rotation_angle_(0.0)
 {
+	//set Zvalue at 10 to be upper than the DiagramImageItem
+	setZValue(10);
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);

@@ -216,6 +216,7 @@ void QETDiagramEditor::actions() {
 	add_text          = new QAction(QET::Icons::PartTextField,         tr("Ajouter un champ de texte"),            this);
 	add_edittext      = new QAction(QET::Icons::EditText,              tr("\311diter le champ de texte"),          this);
 	add_column        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne"),             this);
+	add_image      = new QAction(QET::Icons::adding_image,          tr("Ajouter une image"),             this);
 	remove_column     = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne"),             this);
 	add_row           = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne"),               this);
 	remove_row        = new QAction(QET::Icons::EditTableDeleteRow,         tr("Enlever une ligne"),               this);
@@ -337,6 +338,7 @@ void QETDiagramEditor::actions() {
 	
 	// traitements speciaux
 	add_text           -> setCheckable(true);
+	add_image       -> setCheckable(true);
 	windowed_view_mode -> setCheckable(true);
 	tabbed_view_mode   -> setCheckable(true);
 	mode_selection     -> setCheckable(true);
@@ -399,6 +401,7 @@ void QETDiagramEditor::actions() {
 	connect(infos_diagram,      SIGNAL(triggered()), this,       SLOT(editCurrentDiagramProperties()));
 	connect(add_text,           SIGNAL(triggered()), this,       SLOT(slot_addText())              );
 	connect(add_edittext,       SIGNAL(triggered()), this,       SLOT(slot_editText())              );
+	connect(add_image,			SIGNAL(triggered()), this,       SLOT(slot_addImage())              );
 	connect(add_column,         SIGNAL(triggered()), this,       SLOT(slot_addColumn())            );
 	connect(remove_column,      SIGNAL(triggered()), this,       SLOT(slot_removeColumn())         );
 	connect(add_row,            SIGNAL(triggered()), this,       SLOT(slot_addRow())               );
@@ -514,7 +517,7 @@ void QETDiagramEditor::menus() {
 	menu_affichage -> addAction(zoom_content);
 	menu_affichage -> addAction(zoom_fit);
 	menu_affichage -> addAction(zoom_reset);
-	
+
 	// menu Fenetres
 	slot_updateWindowsMenu();
 }
@@ -562,6 +565,7 @@ void QETDiagramEditor::toolbar() {
 	diagram_bar -> addAction(infos_diagram);
 	diagram_bar -> addAction(conductor_reset);
 	diagram_bar -> addAction(add_text);
+	diagram_bar -> addAction(add_image);
 
 	// ajout de la barre d'outils a la fenetre principale
 	addToolBar(Qt::TopToolBarArea, main_bar);
@@ -1150,6 +1154,7 @@ void QETDiagramEditor::slot_updateActions() {
 	remove_column     -> setEnabled(editable_diagram);
 	add_row           -> setEnabled(editable_diagram);
 	remove_row        -> setEnabled(editable_diagram);
+	add_image		  ->setEnabled(editable_diagram);
 	
 	//display the beta feature only in debug mode
 #ifdef QT_NO_DEBUG
@@ -1193,8 +1198,8 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	// actions ayant aussi besoin d'items (elements, conducteurs, textes, ...) selectionnes
 	bool copiable_items  = dv ? (dv -> hasCopiableItems()) : false;
 	bool deletable_items = dv ? (dv -> hasDeletableItems()) : false;
-	cut              -> setEnabled(editable_diagram && copiable_items);
-	copy             -> setEnabled(copiable_items);
+	cut              -> setEnabled(editable_diagram);
+	copy             -> setEnabled(editable_diagram);
 	delete_selection -> setEnabled(editable_diagram && deletable_items);
 	rotate_selection -> setEnabled(editable_diagram && dv -> diagram() -> canRotateSelection());
 	selection_prop   -> setEnabled(deletable_items);
@@ -1482,11 +1487,20 @@ void QETDiagramEditor::slot_resetConductors() {
 	Ajoute un texte au schema courant
 */
 void QETDiagramEditor::slot_addText() {
+	add_image -> setChecked(false);
 	if (DiagramView *dv = currentDiagram()) {
 		dv -> addText();
 	}
 }
-
+/**
+	Ajoute une image au schema courant
+*/
+void QETDiagramEditor::slot_addImage() {
+	add_text -> setChecked(false);
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> addImage();
+	}
+}
 /**
 	to Edit en text through the html editor
 */
@@ -1754,6 +1768,8 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv) {
 	connect(dv,              SIGNAL(modeChanged()),              this,     SLOT(slot_updateModeActions()));
 	connect(dv,              SIGNAL(textAdded(bool)),            add_text, SLOT(setChecked(bool)));
 	connect(dv,              SIGNAL(textAdded(bool)),            add_edittext, SLOT(setChecked(bool)));
+	connect(dv,              SIGNAL(ImageAdded(bool)),           add_image, SLOT(setChecked(bool)));
+	connect(dv,				 SIGNAL(ImageAddedCanceled(bool)),   add_image, SLOT(setChecked(bool)));
 }
 
 /**

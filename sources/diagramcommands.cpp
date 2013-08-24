@@ -25,6 +25,7 @@
 #include "qgimanager.h"
 #include "diagram.h"
 #include "diagramtextitem.h"
+#include "diagramimageitem.h"
 
 /**
 	Constructeur
@@ -94,6 +95,38 @@ void AddTextCommand::undo() {
 void AddTextCommand::redo() {
 	diagram -> addIndependentTextItem(textitem);
 	textitem -> setPos(position);
+}
+
+/**
+	Constructeur
+	@param dia Schema auquel on ajoute une image
+	@param image Image ajoute
+	@param pos Position a laquelle l'image est ajoute
+	@param parent QUndoCommand parent
+ */
+AddImageCommand::AddImageCommand(Diagram *dia, DiagramImageItem *image, const QPointF &pos, QUndoCommand *parent):
+	QUndoCommand(QObject::tr("Ajouter une image", "undo caption"), parent),
+	imageitem(image),
+	diagram(dia),
+	position(pos)
+{
+	diagram -> qgiManager().manage(imageitem);
+}
+
+///Destructor
+AddImageCommand::~AddImageCommand() {
+	diagram -> qgiManager().release(imageitem);
+}
+
+///Annule l'ajout
+void AddImageCommand::undo() {
+	diagram -> removeItem(imageitem);
+}
+
+///Refait l'ajout
+void AddImageCommand::redo() {
+	diagram -> addDiagramImageItem(imageitem);
+	imageitem -> setPos(position - imageitem -> boundingRect().center());
 }
 
 /**
@@ -176,6 +209,10 @@ void DeleteElementsCommand::undo() {
 	foreach(IndependentTextItem *t, removed_content.textFields) {
 		diagram -> addIndependentTextItem(t);
 	}
+
+	foreach(DiagramImageItem *dii, removed_content.images) {
+		diagram -> addItem(dii);
+	}
 }
 
 /// refait les suppressions
@@ -193,6 +230,11 @@ void DeleteElementsCommand::redo() {
 	// enleve les textes
 	foreach(IndependentTextItem *t, removed_content.textFields) {
 		diagram -> removeIndependentTextItem(t);
+	}
+
+	//enleve les images
+	foreach(DiagramImageItem *dii, removed_content.images) {
+		diagram -> removeItem(dii);
 	}
 }
 
@@ -310,7 +352,8 @@ MoveElementsCommand::MoveElementsCommand(
 		DiagramContent::Elements |
 		DiagramContent::TextFields |
 		DiagramContent::ConductorsToUpdate |
-		DiagramContent::ConductorsToMove
+		DiagramContent::ConductorsToMove |
+		DiagramContent::Images
 	);
 	
 	setText(
@@ -370,6 +413,11 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	// deplace les textes
 	foreach(DiagramTextItem *text, content_to_move.textFields) {
 		text -> setPos(text -> pos() + actual_movement);
+	}
+
+	// deplace les images
+	foreach (DiagramImageItem *dii, content_to_move.images) {
+		dii -> setPos(dii -> pos() + actual_movement);
 	}
 }
 
@@ -575,10 +623,11 @@ void ChangeDiagramTextCommand::redo() {
 	@param texts Textes a pivoter
 	@param parent QUndoCommand parent
 */
-RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &texts, QUndoCommand *parent) :
+RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &texts, const QList<DiagramImageItem *> &images, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	elements_to_rotate(elements),
 	texts_to_rotate(texts),
+	images_to_rotate(images),
 	applied_rotation_angle_(-90.0)
 {
 	setText(
@@ -587,7 +636,7 @@ RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orienta
 				"pivoter %1",
 				"undo caption - %1 is a sentence listing the rotated content"
 			)
-		).arg(QET::ElementsAndConductorsSentence(elements.count(), 0, texts.count()))
+		).arg(QET::ElementsAndConductorsSentence(elements.count(), 0, texts.count(), images.count()))
 	);
 }
 
@@ -609,6 +658,7 @@ void RotateElementsCommand::undo() {
 		}
 		else {dti -> rotateBy(-applied_rotation_angle_);}
 	}
+	foreach(DiagramImageItem *dii, images_to_rotate) dii -> rotateBy(-applied_rotation_angle_);
 }
 
 /// refait le pivotement
@@ -624,6 +674,7 @@ void RotateElementsCommand::redo() {
 		}
 		dti -> rotateBy(applied_rotation_angle_);
 	}
+	foreach(DiagramImageItem *dii, images_to_rotate) dii -> rotateBy(applied_rotation_angle_);
 }
 
 /**

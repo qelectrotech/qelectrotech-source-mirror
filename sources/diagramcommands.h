@@ -29,6 +29,7 @@ class DiagramTextItem;
 class Element;
 class ElementTextItem;
 class IndependentTextItem;
+class DiagramImageItem;
 
 /**
 	This command adds an element to a particular diagram.
@@ -81,6 +82,33 @@ class AddTextCommand : public QUndoCommand {
 	Diagram *diagram;
 	/// position of the text item on the diagram
 	QPointF position;
+};
+
+/**
+  This command adds an image item to a particular diagram
+*/
+class AddImageCommand : public QUndoCommand {
+	//constructors, destructor
+	public:
+	AddImageCommand (Diagram *, DiagramImageItem *, const QPointF &, QUndoCommand * = 0);
+	virtual ~AddImageCommand();
+	private:
+	AddImageCommand(const AddImageCommand &);
+
+	//methods
+	public:
+	virtual void undo();
+	virtual void redo();
+
+	// attributes
+	private:
+	/// added image item
+	DiagramImageItem *imageitem;
+	/// diagram the image item is added to
+	Diagram *diagram;
+	/// position of the image item on the diagram
+	QPointF position;
+
 };
 
 /**
@@ -302,7 +330,7 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 class RotateElementsCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &, QUndoCommand * = 0);
+	RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &, const QList<DiagramImageItem *> &, QUndoCommand * = 0);
 	virtual ~RotateElementsCommand();
 	private:
 	RotateElementsCommand(const RotateElementsCommand &);
@@ -321,6 +349,8 @@ class RotateElementsCommand : public QUndoCommand {
 	QHash<Element *, QET::Orientation> elements_to_rotate;
 	/// text items to be rotated
 	QList<DiagramTextItem *> texts_to_rotate;
+	/// images item to be rotated
+	QList<DiagramImageItem *> images_to_rotate;
 	/// angle of rotation to be applied to text items
 	qreal applied_rotation_angle_;
 	/// previous state of each conductor text item

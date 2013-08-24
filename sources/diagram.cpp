@@ -30,6 +30,7 @@
 #include "ghostelement.h"
 #include "independenttextitem.h"
 #include "qetapp.h"
+#include "diagramimageitem.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -334,6 +335,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	QList<Element *> list_elements;
 	QList<Conductor *> list_conductors;
 	QList<DiagramTextItem *> list_texts;
+	QList<DiagramImageItem *> list_images;
 	
 	// Determine les elements a "XMLiser"
 	foreach(QGraphicsItem *qgi, items()) {
@@ -350,6 +352,9 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
 			if (whole_content) list_texts << iti;
 			else if (iti -> isSelected()) list_texts << iti;
+		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
+			if (whole_content) list_images << dii;
+			else if (dii -> isSelected()) list_images << dii;
 		}
 	}
 	
@@ -381,6 +386,15 @@ QDomDocument Diagram::toXml(bool whole_content) {
 			inputs.appendChild(dti -> toXml(document));
 		}
 		racine.appendChild(inputs);
+	}
+
+	// save of images
+	if (!list_images.isEmpty()) {
+		QDomElement images = document.createElement("images");
+		foreach (DiagramImageItem *dii, list_images) {
+			images.appendChild(dii -> toXml(document));
+		}
+		racine.appendChild(images);
 	}
 	
 	// on retourne le document XML ainsi genere
@@ -536,6 +550,14 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		addIndependentTextItem(iti);
 		added_texts << iti;
 	}
+
+	QList<DiagramImageItem *> added_images;
+	foreach (QDomElement image_xml, QET::findInDomElement(root, "images", "image")) {
+		DiagramImageItem *dii = new DiagramImageItem (this);
+		dii -> fromXml(image_xml);
+		addItem(dii);
+		added_images << dii;
+	}
 	
 	// gere la translation des nouveaux elements et texte si celle-ci est demandee
 	if (position != QPointF()) {
@@ -545,6 +567,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		QList<QGraphicsItem *> added_items;
 		foreach (Element *added_element, added_elements) added_items << added_element;
 		foreach (DiagramTextItem *added_text, added_texts) added_items << added_text;
+		foreach (DiagramImageItem *added_image, added_images) added_items << added_image;
 		foreach (QGraphicsItem *item, added_items) {
 			QPointF csg = item -> mapToScene(item -> boundingRect()).boundingRect().topLeft();
 			qreal px = csg.x();
@@ -565,6 +588,9 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 		foreach (DiagramTextItem *added_text, added_texts) {
 			added_text -> setPos(added_text -> pos().x() + diff_x, added_text -> pos().y() + diff_y);
+		}
+		foreach (DiagramImageItem *added_image, added_images) {
+			added_image -> setPos(added_image -> pos().x() + diff_x, added_image -> pos().y() + diff_y);
 		}
 	}
 	
@@ -601,6 +627,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		content_ptr -> elements         = added_elements.toSet();
 		content_ptr -> conductorsToMove = added_conductors.toSet();
 		content_ptr -> textFields       = added_texts.toSet();
+		content_ptr -> images			= added_images.toSet();
 	}
 	
 	return(true);
@@ -705,6 +732,15 @@ void Diagram::addIndependentTextItem(IndependentTextItem *iti) {
 		this,
 		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
 	);
+}
+
+void Diagram::addDiagramImageItem(DiagramImageItem *dii) {
+	if (!dii || isReadOnly()) return;
+
+	//add image at diagram
+	if (dii -> scene() != this) {
+		addItem(dii);
+	}
 }
 
 /**
@@ -1183,6 +1219,8 @@ DiagramContent Diagram::selectedContent() {
 			) {
 				dc.otherConductors << c;
 			}
+		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(item)) {
+			dc.images << dii;
 		}
 	}
 	
@@ -1227,6 +1265,8 @@ bool Diagram::canRotateSelection() const {
 			if (e -> orientation().current() != e -> orientation().next()) {
 				return(true);
 			}
+		} else if (qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
+			return (true);
 		}
 	}
 	return(false);
