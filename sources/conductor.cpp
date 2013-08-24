@@ -51,8 +51,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Diagram *parent_diagram) :
 	segments_squares_scale_(1.0),
 	must_highlight_(Conductor::None)
 {
-	//set Zvalue at 10 to be upper than the DiagramImageItem
-	setZValue(10);
+	//set Zvalue at 9 to be upper than the DiagramImageItem and bottom of element(10)
+	setZValue(9);
 	previous_z_value = zValue();
 
 	// ajout du conducteur a la liste de conducteurs de chacune des deux bornes
