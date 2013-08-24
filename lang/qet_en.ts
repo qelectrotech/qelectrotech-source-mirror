@@ -771,22 +771,22 @@ to all conductors of this potential?</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Selectionner une image...</source>
-        <translation type="unfinished"></translation>
+        <translation>Select an image ...</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Image Files (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Erreur</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to load image ... Sorry: (</translation>
     </message>
 </context>
 <context>
@@ -2392,19 +2392,19 @@ Changes will be definitive.</translation>
         <location filename="../sources/newelementwizard.cpp" line="95"/>
         <source>Étape 1/4 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Step 1 of 5: Parent category {1/4 ?}</translation>
+        <translation type="unfinished">Step 1 of 4: Parent category {1/4 ?}</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="112"/>
         <source>Étape 2/4 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Step 2 of 5: Filename {2/4 ?}</translation>
+        <translation type="unfinished">Step 2 of 4: Filename {2/4 ?}</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="135"/>
         <source>Étape 3/4 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Step 3 of 5: Element names {3/4 ?}</translation>
+        <translation type="unfinished">Step 3 of 4: Element names {3/4 ?}</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="155"/>
@@ -3441,7 +3441,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
         <source>Ajouter une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Add a picture</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
@@ -4104,7 +4104,7 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="499"/>
         <source>Informations</source>
         <comment>dock title</comment>
-        <translation type="unfinished">Information</translation>
+        <translation>Information</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="508"/>
@@ -5051,7 +5051,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="108"/>
         <source>Ajouter une image</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Add a picture</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="143"/>
@@ -5334,8 +5334,8 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="266"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n picture(s)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
