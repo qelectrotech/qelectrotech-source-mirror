@@ -717,22 +717,22 @@ Applicare un testo all&apos;insiema dei conduttori?</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Selectionner une image...</source>
-        <translation type="unfinished"></translation>
+        <translation>Selezionare un&apos;immagine...</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>File immagine (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Erreur</source>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile caricare l&apos;immagine... Spiacente :-(</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="942"/>
@@ -2309,7 +2309,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
         <source>Ajouter une ligne</source>
-        <translation>Aggiungi una linea</translation>
+        <translation>Aggiungere una linea</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
@@ -2690,7 +2690,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="701"/>
         <source>Ajouter un schéma</source>
-        <translation>Aggiungi uno schema</translation>
+        <translation>Aggiungere uno schema</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="715"/>
@@ -2986,7 +2986,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
         <source>Ajouter une colonne</source>
-        <translation>Aggiungi una colonna</translation>
+        <translation>Aggiungere una colonna</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="244"/>
@@ -3246,7 +3246,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
         <source>Ajouter un champ de texte</source>
-        <translation>Aggiungi un campo di testo</translation>
+        <translation>Aggiungere un campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="99"/>
@@ -3261,7 +3261,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
         <source>Ajouter une ligne</source>
-        <translation>Aggiungi una riga</translation>
+        <translation>Aggiungere una riga</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
@@ -3271,7 +3271,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="225"/>
         <source>Ajouter un schéma</source>
-        <translation>Aggiungi uno schema</translation>
+        <translation>Aggiungere uno schema</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="226"/>
@@ -3434,7 +3434,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
         <source>Ajouter une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere un&apos;immagine</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
@@ -3601,7 +3601,7 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
         <source>Ajoute une colonne au schéma</source>
         <comment>status bar tip</comment>
-        <translation>Aggiungi una colonna allo schema</translation>
+        <translation>Aggiunge una colonna allo schema</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="318"/>
@@ -3818,37 +3818,37 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
         <source>Ajouter une ligne</source>
-        <translation>Aggiungi una linea</translation>
+        <translation>Aggiungere una linea</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
         <source>Ajouter une ellipse</source>
-        <translation>Aggiungi un&apos;ellisse</translation>
+        <translation>Aggiungere un&apos;ellisse</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="158"/>
         <source>Ajouter un polygone</source>
-        <translation>Aggiungi un poligono</translation>
+        <translation>Aggiungere un poligono</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="159"/>
         <source>Ajouter du texte</source>
-        <translation>Aggiungi testo</translation>
+        <translation>Aggiungere testo</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="160"/>
         <source>Ajouter un arc de cercle</source>
-        <translation>Aggiungi un arco di cerchio</translation>
+        <translation>Aggiungere un arco di cerchio</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="161"/>
         <source>Ajouter une borne</source>
-        <translation>Aggiungi un terminale</translation>
+        <translation>Aggiungere un terminale</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="162"/>
         <source>Ajouter un champ de texte</source>
-        <translation>Aggiungi un campo di testo</translation>
+        <translation>Aggiungere un campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="174"/>
@@ -4340,7 +4340,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="156"/>
         <source>Ajouter un rectangle</source>
-        <translation>Aggiungi un rettangolo</translation>
+        <translation>Aggiungere un rettangolo</translation>
     </message>
 </context>
 <context>
@@ -4825,13 +4825,13 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="346"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
-        <translation>Aggiungi una riga (&amp;l)</translation>
+        <translation>Aggiungere una riga (&amp;l)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="347"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
-        <translation>Aggiungi una &amp;colonna</translation>
+        <translation>Aggiungere una &amp;colonna</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
@@ -5038,25 +5038,25 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/diagramcommands.cpp" line="43"/>
         <source>ajouter 1 %1</source>
         <comment>undo caption - %1 is an element name</comment>
-        <translation>aggiungi 1 %1</translation>
+        <translation>aggiungere 1 %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="76"/>
         <source>Ajouter un champ de texte</source>
         <comment>undo caption</comment>
-        <translation>Aaggiungi un campo testo</translation>
+        <translation>Aaggiungere un campo testo</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="108"/>
         <source>Ajouter une image</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere un&apos;immagine</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="143"/>
         <source>ajouter un conducteur</source>
         <comment>undo caption</comment>
-        <translation>aggiungi un conduttore</translation>
+        <translation>aggiungere un conduttore</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="182"/>
@@ -5333,8 +5333,8 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/qet.cpp" line="266"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n immagine/i</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
