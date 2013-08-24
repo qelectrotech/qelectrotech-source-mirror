@@ -21,7 +21,8 @@
 #include "qetapp.h"
 
 DiagramImageItem::DiagramImageItem(Diagram *parent_diagram) :
-	QGraphicsPixmapItem(0, parent_diagram)
+	QGraphicsPixmapItem(0, parent_diagram),
+	first_move_(false)
 {
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
 #if QT_VERSION >= 0x040600
@@ -246,10 +247,14 @@ void DiagramImageItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 
 		//we apply the mouse movement
 		QPointF old_pos = pos();
-		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
+		if (first_move_) {
+			mouse_to_origin_movement_ = old_pos - e -> buttonDownScenePos(Qt::LeftButton);
+		}
+		QPointF expected_pos = e-> scenePos() + mouse_to_origin_movement_;
+		setPos(expected_pos); // setPos() will snap the expected position to the grid
+
 		//we calcul the real movement apply by setPos()
 		QPointF effective_movement = pos() - old_pos;
-
 		if (diagram()) {
 			//we signal the real movement apply to diagram,
 			//who he apply to other selected item
