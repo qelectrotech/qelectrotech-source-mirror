@@ -2453,8 +2453,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Chiffre 1</source>
-        <translation>1 Cifra (1)
-</translation>
+        <translation type="unfinished">1 Cifra (1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
