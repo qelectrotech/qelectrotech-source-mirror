@@ -1198,8 +1198,8 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	// actions ayant aussi besoin d'items (elements, conducteurs, textes, ...) selectionnes
 	bool copiable_items  = dv ? (dv -> hasCopiableItems()) : false;
 	bool deletable_items = dv ? (dv -> hasDeletableItems()) : false;
-	cut              -> setEnabled(editable_diagram);
-	copy             -> setEnabled(editable_diagram);
+	cut              -> setEnabled(editable_diagram && copiable_items);
+	copy             -> setEnabled(copiable_items);
 	delete_selection -> setEnabled(editable_diagram && deletable_items);
 	rotate_selection -> setEnabled(editable_diagram && dv -> diagram() -> canRotateSelection());
 	selection_prop   -> setEnabled(deletable_items);

@@ -1324,6 +1324,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			context_menu -> addAction(paste_here);
 			context_menu -> addSeparator();
 			context_menu -> addAction(qde -> infos_diagram);
+			context_menu -> addAction(qde -> prj_diagramNum);
 			context_menu -> addAction(qde -> add_column);
 			context_menu -> addAction(qde -> remove_column);
 			context_menu -> addAction(qde -> add_row);
@@ -1341,7 +1342,6 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			context_menu -> addAction(qde -> find_element);
 			context_menu -> addAction(qde -> edit_element);
 			context_menu -> addAction(qde -> selection_prop);
-			context_menu -> addAction(qde -> prj_diagramNum);
 		}
 		
 		// affiche le menu contextuel
