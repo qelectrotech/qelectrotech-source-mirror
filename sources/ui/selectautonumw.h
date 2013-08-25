@@ -15,7 +15,7 @@ class SelectAutonumW : public QWidget
 	
 	//METHODS
 	public:
-	explicit SelectAutonumW(const QList <Diagram *> &, QWidget *parent = 0);
+	explicit SelectAutonumW(const QList <Diagram *> &, Diagram * = 0, QWidget *parent = 0);
 	~SelectAutonumW();
 	
 	private:

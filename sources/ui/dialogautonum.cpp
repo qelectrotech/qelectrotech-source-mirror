@@ -34,7 +34,7 @@ DialogAutoNum::DialogAutoNum(Diagram *dg, QWidget *parent) :
 {
 	ui -> setupUi(this);
 	
-	ui -> configuration_layout -> addWidget (new SelectAutonumW(dg_ -> project() -> diagrams(), ui -> configuration_tab));
+	ui -> configuration_layout -> addWidget (new SelectAutonumW(dg_ -> project() -> diagrams(), dg, ui -> configuration_tab));
 
 	dgselect_ = new diagramselection( dg_ -> project(), ui -> annotation_tab);
 	ui -> verticalLayout_Selection -> addWidget(dgselect_);

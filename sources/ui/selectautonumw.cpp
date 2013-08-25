@@ -5,7 +5,7 @@
 /**
  * Constructor
  */
-SelectAutonumW::SelectAutonumW(const QList <Diagram *> &diagrams, QWidget *parent) :
+SelectAutonumW::SelectAutonumW(const QList <Diagram *> &diagrams, Diagram *current_diagram ,QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::SelectAutonumW),
 	diagram_list(diagrams)
@@ -13,6 +13,7 @@ SelectAutonumW::SelectAutonumW(const QList <Diagram *> &diagrams, QWidget *paren
 	ui->setupUi(this);
 
 	initDiagramChooser();
+	if (current_diagram) ui -> diagram_chooser -> setCurrentIndex (diagram_list.indexOf(current_diagram));
 	setCurrentContext();
 }
 
