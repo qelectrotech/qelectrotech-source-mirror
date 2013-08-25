@@ -100,20 +100,20 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const {
 */
 int DiagramContent::count(int filter) const {
 	int count = 0;
-	if (filter & SelectedOnly) {
-		if (filter & Elements)           foreach(Element *element,     elements)                  { if (element   -> isSelected()) ++ count; }
-		if (filter & TextFields)         foreach(DiagramTextItem *dti, textFields)                { if (dti       -> isSelected()) ++ count; }
-		if (filter & Images)			 foreach(DiagramImageItem *dii, images)					  { if (dii		  -> isSelected()) ++ count; }
-		if (filter & ConductorsToMove)   foreach(Conductor *conductor, conductorsToMove)          { if (conductor -> isSelected()) ++ count; }
-		if (filter & ConductorsToUpdate) foreach(Conductor *conductor, conductorsToUpdate)        { if (conductor -> isSelected()) ++ count; }
-		if (filter & OtherConductors)    foreach(Conductor *conductor, otherConductors)           { if (conductor -> isSelected()) ++ count; }
+	if (filter == SelectedOnly) {
+		if (filter == Elements)           foreach(Element *element,     elements)                  { if (element   -> isSelected()) ++ count; }
+		if (filter == TextFields)         foreach(DiagramTextItem *dti, textFields)                { if (dti       -> isSelected()) ++ count; }
+		if (filter == Images)			  foreach(DiagramImageItem *dii, images)				   { if (dii	   -> isSelected()) ++ count; }
+		if (filter == ConductorsToMove)   foreach(Conductor *conductor, conductorsToMove)          { if (conductor -> isSelected()) ++ count; }
+		if (filter == ConductorsToUpdate) foreach(Conductor *conductor, conductorsToUpdate)        { if (conductor -> isSelected()) ++ count; }
+		if (filter == OtherConductors)    foreach(Conductor *conductor, otherConductors)           { if (conductor -> isSelected()) ++ count; }
 	} else {
-		if (filter & Elements)           count += elements.count();
-		if (filter & TextFields)         count += textFields.count();
-		if (filter & Images)			 count += images.count();
-		if (filter & ConductorsToMove)   count += conductorsToMove.count();
-		if (filter & ConductorsToUpdate) count += conductorsToUpdate.count();
-		if (filter & OtherConductors)    count += otherConductors.count();
+		if (filter == Elements)           count += elements.count();
+		if (filter == TextFields)         count += textFields.count();
+		if (filter == Images)			  count += images.count();
+		if (filter == ConductorsToMove)   count += conductorsToMove.count();
+		if (filter == ConductorsToUpdate) count += conductorsToUpdate.count();
+		if (filter == OtherConductors)    count += otherConductors.count();
 	}
 	return(count);
 }
