@@ -1,11 +1,12 @@
-<definition width="870" version="0.3" hotspot_x="60" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="860" version="0.3" hotspot_x="55" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="el">TWDLMDA ; 40DTK-CN2,40DUK-CN2 (είσοδοι)</name>
         <name lang="en">TWDLMDA ; 40DTK-CN2,40DUK-CN2 (Inputs)</name>
+        <name lang="it">TWDLMDA ; 40DTK-CN2,40DUK-CN1 (ingressi)</name>
         <name lang="fr">TWDLMDA ; 40DTK-CN2,40DUK-CN2 (entrées)</name>
         <name lang="pl">TWDLMDA ; 40DTK-CN2,40DUK-CN2 (wejścia)</name>
-        <name lang="cs">TWDLMDA ; 40DTK-CN2,40DUK-CN1 (vstupy)</name>
-        <name lang="it">TWDLMDA ; 40DTK-CN2,40DUK-CN1 (ingressi)</name>
         <name lang="es">TWDLMDA ; 40DTK-CN2,40DUK-CN2 (Entradas)</name>
+        <name lang="cs">TWDLMDA ; 40DTK-CN2,40DUK-CN1 (vstupy)</name>
     </names>
     <informations></informations>
     <description>

@@ -1,13 +1,14 @@
-<definition width="760" version="0.3" hotspot_x="4" hotspot_y="4" height="180" type="element" orientation="dnyn">
+<definition width="760" version="0.3" hotspot_x="5" hotspot_y="4" height="180" type="element" orientation="dnyn">
     <names>
         <name lang="ar">لوحة PSTN</name>
+        <name lang="pt">Carta PSTN</name>
+        <name lang="el">Κάρτα επικοινωνίας PSTN</name>
         <name lang="en">Board PSTN</name>
+        <name lang="it">Scheda PSTN</name>
         <name lang="fr">Carte PSTN</name>
         <name lang="pl">Karta PSTN</name>
-        <name lang="cs">Karta PSTN</name>
-        <name lang="pt">Carta PSTN</name>
         <name lang="es">Tarjeta PSTN</name>
-        <name lang="it">Scheda PSTN</name>
+        <name lang="cs">Karta PSTN</name>
     </names>
     <informations></informations>
     <description>

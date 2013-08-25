@@ -1,13 +1,14 @@
-<definition width="760" version="0.3" hotspot_x="4" hotspot_y="4" height="170" type="element" orientation="dnyn">
+<definition width="760" version="0.3" hotspot_x="5" hotspot_y="4" height="160" type="element" orientation="dnyn">
     <names>
         <name lang="ar">لوحة تغذية </name>
+        <name lang="pt">fonte alimentação</name>
+        <name lang="el">Τροφοδοτικό</name>
         <name lang="en">Power board</name>
+        <name lang="it">Scheda di alimentazione</name>
         <name lang="fr">Carte d'Alimentation</name>
         <name lang="pl">Zasilacz</name>
-        <name lang="cs">Podavač</name>
-        <name lang="pt">fonte alimentação</name>
         <name lang="es">Fuente de alimentación</name>
-        <name lang="it">Scheda di alimentazione</name>
+        <name lang="cs">Podavač</name>
     </names>
     <informations></informations>
     <description>

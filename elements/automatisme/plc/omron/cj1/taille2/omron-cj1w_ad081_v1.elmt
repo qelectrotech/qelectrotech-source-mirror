@@ -1,13 +1,14 @@
-<definition width="110" version="0.3" hotspot_x="10" hotspot_y="290" height="300" type="element" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="3" hotspot_y="289" height="290" type="element" orientation="dyyy">
     <names>
         <name lang="ar">OMRON-CJ1W_AD081_V1</name>
+        <name lang="pt">OMRON-CJ1W_AD081_V1</name>
+        <name lang="el">OMRON-CJ1W_AD081_V1</name>
         <name lang="en">OMRON-CJ1W_AD081_V1</name>
+        <name lang="it">OMRON-CJ1W_AD081_V1</name>
         <name lang="fr">OMRON-CJ1W_AD081_V1</name>
         <name lang="pl">OMRON-CJ1W_AD081_V1</name>
-        <name lang="cs">OMRON-CJ1W_AD081_V1</name>
-        <name lang="pt">OMRON-CJ1W_AD081_V1</name>
         <name lang="es">OMRON-CJ1W_AD081_V1</name>
-        <name lang="it">OMRON-CJ1W_AD081_V1</name>
+        <name lang="cs">OMRON-CJ1W_AD081_V1</name>
     </names>
     <informations></informations>
     <description>

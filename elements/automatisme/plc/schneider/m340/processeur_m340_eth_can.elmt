@@ -1,5 +1,6 @@
-<definition width="100" version="0.3" hotspot_x="0" hotspot_y="0" height="240" type="element" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="-1" hotspot_y="0" height="240" type="element" orientation="dyyy">
     <names>
+        <name lang="el">BMX P34 2030</name>
         <name lang="en">BMX P34 2030</name>
         <name lang="it">BMX P34 2030</name>
         <name lang="fr">BMX P34 2030</name>

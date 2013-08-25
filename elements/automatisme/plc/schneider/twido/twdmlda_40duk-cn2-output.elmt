@@ -1,11 +1,12 @@
-<definition width="770" version="0.3" hotspot_x="50" hotspot_y="30" height="100" type="element" orientation="dyyy">
+<definition width="770" version="0.3" hotspot_x="55" hotspot_y="25" height="90" type="element" orientation="dyyy">
     <names>
+        <name lang="el">TWDLMDA40DUK "CN2" (έξοδοι)</name>
         <name lang="en">TWDLMDA40DUK "CN2" (Outputs)</name>
+        <name lang="it">TWDLMDA40DUK "CN2" (uscite)</name>
         <name lang="fr">TWDLMDA40DUK "CN2" (sorties)</name>
         <name lang="pl">TWDLMDA40DUK "CN2" (wejscia)</name>
-        <name lang="cs">TWDLMDA40DUK "CN2" (výstupy)</name>
-        <name lang="it">TWDLMDA40DUK "CN2" (uscite)</name>
         <name lang="es">TWDLMDA40DUK "CN2" (Salidas)</name>
+        <name lang="cs">TWDLMDA40DUK "CN2" (výstupy)</name>
     </names>
     <informations></informations>
     <description>

@@ -1,13 +1,14 @@
-<definition width="450" version="0.3" hotspot_x="10" hotspot_y="250" height="250" type="element" ic="true" orientation="dyyy">
+<definition width="440" version="0.3" hotspot_x="5" hotspot_y="225" height="220" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Easy 821</name>
+        <name lang="pt">Easy 821</name>
+        <name lang="el">Easy 821</name>
         <name lang="en">Easy 821</name>
+        <name lang="it">Easy 821</name>
         <name lang="fr">Easy 821</name>
         <name lang="pl">Easy 821</name>
-        <name lang="cs">Easy 821</name>
-        <name lang="pt">Easy 821</name>
         <name lang="es">Easy 821</name>
-        <name lang="it">Easy 821</name>
+        <name lang="cs">Easy 821</name>
     </names>
     <informations></informations>
     <description>

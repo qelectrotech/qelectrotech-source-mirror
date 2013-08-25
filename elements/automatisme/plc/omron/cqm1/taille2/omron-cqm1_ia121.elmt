@@ -1,13 +1,14 @@
-<definition width="110" version="0.3" hotspot_x="10" hotspot_y="340" height="360" type="element" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="2" hotspot_y="345" height="360" type="element" orientation="dyyy">
     <names>
         <name lang="ar">omron-cqm1_ia121</name>
+        <name lang="pt">omron-cqm1_ia121</name>
+        <name lang="el">omron-cqm1_ia121</name>
         <name lang="en">omron-cqm1_ia121</name>
+        <name lang="it">omron-cqm1_ia121</name>
         <name lang="fr">omron-cqm1_ia121</name>
         <name lang="pl">omron-cqm1_ia121</name>
-        <name lang="cs">omron-cqm1_ia121</name>
-        <name lang="pt">omron-cqm1_ia121</name>
         <name lang="es">omron-cqm1_ia121</name>
-        <name lang="it">omron-cqm1_ia121</name>
+        <name lang="cs">omron-cqm1_ia121</name>
     </names>
     <informations></informations>
     <description>

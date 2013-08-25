@@ -1,12 +1,13 @@
-<definition width="560" version="0.3" hotspot_x="20" hotspot_y="30" height="170" type="element" orientation="dyyy">
+<definition width="570" version="0.3" hotspot_x="25" hotspot_y="25" height="160" type="element" orientation="dyyy">
     <names>
         <name lang="ar">TWDLCDA16DRF</name>
+        <name lang="el">TWDLCDA16DRF</name>
         <name lang="en">TWDLCDA16DRF</name>
+        <name lang="it">TWDLCDA16DRF</name>
         <name lang="fr">TWDLCDA16DRF</name>
         <name lang="pl">TWDLCDA16DRF</name>
+        <name lang="es">TWDLCDA16DRF</name>
         <name lang="cs">TWDLCDA16DRF</name>
-        <name lang="it">TWDLCDA16DRF</name>
-	<name lang="es">TWDLCDA16DRF</name>
     </names>
     <informations></informations>
     <description>

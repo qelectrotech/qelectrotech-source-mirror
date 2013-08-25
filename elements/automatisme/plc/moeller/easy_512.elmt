@@ -1,13 +1,14 @@
-<definition width="320" version="0.3" hotspot_x="10" hotspot_y="230" height="230" type="element" ic="true" orientation="dyyy">
+<definition width="300" version="0.3" hotspot_x="2" hotspot_y="225" height="220" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Easy 512</name>
+        <name lang="pt">Easy 512</name>
+        <name lang="el">Easy 512</name>
         <name lang="en">Easy 512</name>
+        <name lang="it">Easy 512</name>
         <name lang="fr">Easy 512</name>
         <name lang="pl">Easy 512</name>
-        <name lang="cs">Easy 512</name>
-        <name lang="pt">Easy 512</name>
         <name lang="es">Easy 512</name>
-        <name lang="it">Easy 512</name>
+        <name lang="cs">Easy 512</name>
     </names>
     <informations></informations>
     <description>

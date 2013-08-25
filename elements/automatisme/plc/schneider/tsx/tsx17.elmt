@@ -1,11 +1,12 @@
-<definition width="780" version="0.3" hotspot_x="105" hotspot_y="25" height="190" type="element" orientation="dyyy">
+<definition width="780" version="0.3" hotspot_x="103" hotspot_y="33" height="210" type="element" orientation="dyyy">
     <names>
+        <name lang="el">TSX 17</name>
         <name lang="en">TSX 17</name>
+        <name lang="it">TSX 17</name>
         <name lang="fr">TSX 17</name>
         <name lang="pl">TSX 17</name>
+        <name lang="es">TSX 17</name>
         <name lang="cs">TSX 17</name>
-        <name lang="it">TSX 17</name>
-	<name lang="es">TSX 17</name>
     </names>
     <informations>Pikip</informations>
     <description>

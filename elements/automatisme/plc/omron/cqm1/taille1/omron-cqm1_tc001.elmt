@@ -1,13 +1,14 @@
-<definition width="50" version="0.3" hotspot_x="10" hotspot_y="120" height="130" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="3" hotspot_y="123" height="130" type="element" orientation="dyyy">
     <names>
         <name lang="ar">omron-cqm1_tc001</name>
+        <name lang="pt">omron-cqm1_tc001</name>
+        <name lang="el">omron-cqm1_tc001</name>
         <name lang="en">omron-cqm1_tc001</name>
+        <name lang="it">omron-cqm1_tc001</name>
         <name lang="fr">omron-cqm1_tc001</name>
         <name lang="pl">omron-cqm1_tc001</name>
-        <name lang="cs">omron-cqm1_tc001</name>
-        <name lang="pt">omron-cqm1_tc001</name>
         <name lang="es">omron-cqm1_tc001</name>
-        <name lang="it">omron-cqm1_tc001</name>
+        <name lang="cs">omron-cqm1_tc001</name>
     </names>
     <informations></informations>
     <description>

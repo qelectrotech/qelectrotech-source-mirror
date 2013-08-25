@@ -1,13 +1,14 @@
-<definition width="50" version="0.3" hotspot_x="10" hotspot_y="100" height="110" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="3" hotspot_y="101" height="110" type="element" orientation="dyyy">
     <names>
         <name lang="ar">omron-cj1w_etn11</name>
+        <name lang="pt">omron-cj1w_etn11</name>
+        <name lang="el">omron-cj1w_etn11</name>
         <name lang="en">omron-cj1w_etn11</name>
+        <name lang="it">omron-cj1w_etn11</name>
         <name lang="fr">omron-cj1w_etn11</name>
         <name lang="pl">omron-cj1w_etn11</name>
-        <name lang="cs">omron-cj1w_etn11</name>
-        <name lang="pt">omron-cj1w_etn11</name>
         <name lang="es">omron-cj1w_etn11</name>
-        <name lang="it">omron-cj1w_etn11</name>
+        <name lang="cs">omron-cj1w_etn11</name>
     </names>
     <informations></informations>
     <description>

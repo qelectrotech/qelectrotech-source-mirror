@@ -1,12 +1,13 @@
-<definition width="250" version="0.3" hotspot_x="10" hotspot_y="290" height="300" type="element" orientation="dyyy">
+<definition width="240" version="0.3" hotspot_x="8" hotspot_y="288" height="290" type="element" orientation="dyyy">
     <names>
         <name lang="ar">omron-cj2h_cpu64</name>
+        <name lang="el">omron-cj2h_cpu64</name>
         <name lang="en">omron-cj2h_cpu64</name>
+        <name lang="it">omron-cj2h_cpu64</name>
         <name lang="fr">omron-cj2h_cpu64</name>
         <name lang="pl">omron-cj2h_cpu64</name>
-        <name lang="cs">omron-cj2h_cpu64</name>
         <name lang="es">omron-cj2h_cpu64</name>
-        <name lang="it">omron-cj2h_cpu64</name>
+        <name lang="cs">omron-cj2h_cpu64</name>
     </names>
     <informations></informations>
     <description>

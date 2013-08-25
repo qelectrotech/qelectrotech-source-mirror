@@ -1,13 +1,14 @@
-<definition width="890" version="0.3" hotspot_x="5" hotspot_y="45" height="110" type="element" orientation="dnnn">
+<definition width="800" version="0.3" hotspot_x="4" hotspot_y="39" height="100" type="element" orientation="dnnn">
     <names>
         <name lang="ar">ABE7-R16S210-2</name>
+        <name lang="pt">ABE7-R16S210-2</name>
+        <name lang="el">ABE7-R16S210-2</name>
         <name lang="en">ABE7-R16S210-2</name>
+        <name lang="it">ABE7-R16S210-2</name>
         <name lang="fr">ABE7-R16S210-2</name>
         <name lang="pl">ABE7-R16S210-2</name>
-        <name lang="cs">ABE7-R16S210-2</name>
-        <name lang="pt">ABE7-R16S210-2</name>
         <name lang="es">ABE7-R16S210-2</name>
-        <name lang="it">ABE7-R16S210-2</name>
+        <name lang="cs">ABE7-R16S210-2</name>
     </names>
     <informations>SIEMENS S7-300 (digital inputs)</informations>
     <description>

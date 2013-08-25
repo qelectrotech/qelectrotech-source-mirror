@@ -1,11 +1,12 @@
-<definition width="770" version="0.3" hotspot_x="50" hotspot_y="30" height="100" type="element" orientation="dyyy">
+<definition width="770" version="0.3" hotspot_x="55" hotspot_y="25" height="90" type="element" orientation="dyyy">
     <names>
+        <name lang="el">TWDLMDA20DTK (έξοδοι)</name>
         <name lang="en">TWDLMDA20DTK (Outputs)</name>
+        <name lang="it">TWDLMDA20DTK (uscite)</name>
         <name lang="fr">TWDLMDA20DTK (sorties)</name>
         <name lang="pl">TWDLMDA20DTK (wyjścia)</name>
-        <name lang="cs">TWDLMDA20DTK (výstupy)</name>
-        <name lang="it">TWDLMDA20DTK (uscite)</name>
         <name lang="es">TWDLMDA20DTK (Salidas)</name>
+        <name lang="cs">TWDLMDA20DTK (výstupy)</name>
     </names>
     <informations></informations>
     <description>

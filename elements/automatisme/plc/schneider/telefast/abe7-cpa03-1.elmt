@@ -1,13 +1,14 @@
-<definition width="950" version="0.3" hotspot_x="25" hotspot_y="45" height="110" type="element" orientation="dnnn">
+<definition width="940" version="0.3" hotspot_x="20" hotspot_y="39" height="100" type="element" orientation="dnnn">
     <names>
         <name lang="ar">ABE7 CPA03-1</name>
+        <name lang="pt">ABE7 CPA03-1</name>
+        <name lang="el">ABE7 CPA03-1</name>
         <name lang="en">ABE7 CPA03-1</name>
+        <name lang="it">ABE7 CPA03-1</name>
         <name lang="fr">ABE7 CPA03-1</name>
         <name lang="pl">ABE7 CPA03-1</name>
-        <name lang="cs">ABE7 CPA03-1</name>
-        <name lang="pt">ABE7 CPA03-1</name>
         <name lang="es">ABE7 CPA03-1</name>
-        <name lang="it">ABE7 CPA03-1</name>
+        <name lang="cs">ABE7 CPA03-1</name>
     </names>
     <informations>SIEMENS S7-300 (digital inputs)</informations>
     <description>

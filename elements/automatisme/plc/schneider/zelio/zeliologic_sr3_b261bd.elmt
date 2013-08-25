@@ -1,11 +1,12 @@
-<definition width="500" version="0.3" hotspot_x="125" hotspot_y="50" height="150" type="element" orientation="dyyy">
+<definition width="510" version="0.3" hotspot_x="130" hotspot_y="55" height="160" type="element" orientation="dyyy">
     <names>
+        <name lang="el">Zelio Logic SR3 B261BD</name>
         <name lang="en">Zelio Logic SR3 B261BD</name>
+        <name lang="it">Zelio Logic SR3 B261BD</name>
         <name lang="fr">Zelio Logic SR3 B261BD</name>
         <name lang="pl">Zelio Logic SR3 B261BD</name>
-        <name lang="cs">Zelio Logic SR3 B261BD</name>
-        <name lang="it">Zelio Logic SR3 B261BD</name>
         <name lang="es">Zelio Logic SR3 B261BD</name>
+        <name lang="cs">Zelio Logic SR3 B261BD</name>
     </names>
     <informations></informations>
     <description>
