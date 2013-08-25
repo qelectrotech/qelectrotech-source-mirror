@@ -107,6 +107,13 @@ int DiagramContent::count(int filter) const {
 		if (filter == ConductorsToMove)   foreach(Conductor *conductor, conductorsToMove)          { if (conductor -> isSelected()) ++ count; }
 		if (filter == ConductorsToUpdate) foreach(Conductor *conductor, conductorsToUpdate)        { if (conductor -> isSelected()) ++ count; }
 		if (filter == OtherConductors)    foreach(Conductor *conductor, otherConductors)           { if (conductor -> isSelected()) ++ count; }
+	} else if (filter == All) {
+		count += elements.count();
+		count += textFields.count();
+		count += images.count();
+		count += conductorsToMove.count();
+		count += conductorsToUpdate.count();
+		count += otherConductors.count();
 	} else {
 		if (filter == Elements)           count += elements.count();
 		if (filter == TextFields)         count += textFields.count();
