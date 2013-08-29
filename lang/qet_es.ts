@@ -60,12 +60,12 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="143"/>
         <source>Traduction en croate</source>
-        <translation>Traducción en croata</translation>
+        <translation>Traducción al croata</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="144"/>
         <source>Traduction en catalan</source>
-        <translation>Traducción en catalán</translation>
+        <translation>Traducción al catalán</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="145"/>
@@ -77,28 +77,27 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="166"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation>Paquetes Fedora y Red Hat</translation>
+        <translation>Fedora y Red Hat empaquetado</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="167"/>
         <source>Paquets Mandriva</source>
-        <translation>Mandriva paquetes</translation>
+        <translation>Mandriva empaquetado</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="168"/>
         <source>Paquets Debian</source>
-        <translation>Debian paquetes</translation>
+        <translation>Debian empaquetado</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="169"/>
         <source>Paquets gentoo</source>
-        <translation>Paquetes gentoo</translation>
+        <translation>Gentoo empaquetado</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="170"/>
         <source>Icônes</source>
-        <translation>	
-Iconos</translation>
+        <translation>Iconos</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="188"/>
@@ -772,22 +771,22 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Selectionner une image...</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccione una imagen ...</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivos de imagen (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Erreur</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
-        <translation type="unfinished"></translation>
+        <translation>No se puede cargar la imagen...Lo siento :(</translation>
     </message>
 </context>
 <context>
@@ -2877,7 +2876,7 @@ Opciones disponibles:
         <location filename="../sources/qetapp.cpp" line="112"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation>Cargando... Leyendo collecciones de elementos</translation>
+        <translation>Cargando... Leyendo colecciones de elementos</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="122"/>
@@ -3212,7 +3211,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
         <source>Ajouter une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar una imagen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
@@ -5055,7 +5054,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="108"/>
         <source>Ajouter une image</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Agregar una imagen</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="143"/>
@@ -5340,9 +5339,9 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="266"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n imagen(s)</numerusform>
+            <numerusform>%n imagenes</numerusform>
         </translation>
     </message>
     <message>
