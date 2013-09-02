@@ -252,7 +252,7 @@ PasteDiagramCommand::PasteDiagramCommand(
 	QUndoCommand(parent),
 	content(c),
 	diagram(dia),
-	filter(DiagramContent::Elements|DiagramContent::TextFields|DiagramContent::ConductorsToMove),
+	filter(DiagramContent::Elements|DiagramContent::TextFields|DiagramContent::Images|DiagramContent::ConductorsToMove),
 	first_redo(true)
 {
 	
@@ -274,32 +274,39 @@ PasteDiagramCommand::~PasteDiagramCommand() {
 
 /// annule le coller
 void PasteDiagramCommand::undo() {
-	// enleve les conducteurs
+	// remove the conductors
 	foreach(Conductor *c, content.conductorsToMove) diagram -> removeConductor(c);
 	
-	// enleve les elements
+	// remove the elements
 	foreach(Element *e, content.elements) diagram -> removeElement(e);
 	
-	// enleve les textes
+	// remove the texts
 	foreach(IndependentTextItem *t, content.textFields) diagram -> removeIndependentTextItem(t);
+
+	// remove the images
+	foreach(DiagramImageItem *dii, content.images) diagram -> removeItem(dii);
 }
 
 /// refait le coller
 void PasteDiagramCommand::redo() {
 	if (first_redo) first_redo = false;
 	else {
-		// pose les elements
+		// paste the elements
 		foreach(Element *e, content.elements)  diagram -> addElement(e);
 		
-		// pose les conducteurs
+		// paste the conductors
 		foreach(Conductor *c, content.conductorsToMove) diagram -> addConductor(c);
 		
-		// pose les textes
+		// paste the texts
 		foreach(IndependentTextItem *t, content.textFields) diagram -> addIndependentTextItem(t);
+
+		// paste the images
+		foreach(DiagramImageItem *dii, content.images) diagram -> addDiagramImageItem(dii);
 	}
 	foreach(Element *e, content.elements) e -> setSelected(true);
 	foreach(Conductor *c, content.conductorsToMove) c -> setSelected(true);
 	foreach(IndependentTextItem *t, content.textFields) t -> setSelected(true);
+	foreach(DiagramImageItem *dii, content.images) dii -> setSelected(true);
 }
 
 /**
