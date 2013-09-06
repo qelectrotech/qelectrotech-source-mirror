@@ -219,15 +219,55 @@ void DiagramImageItem::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	@param event un QGraphicsSceneMouseEvent decrivant le double-clic
 */
 void DiagramImageItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	/*if (!(textInteractionFlags() & Qt::imageditable)) {
-		// rend le champ de image editable
-		setTextInteractionFlags(Qt::imageditorInteraction);
-		
-		// edite le champ de image
-		setFocus(Qt::MouseFocusReason);
-	} else {
-		QGraphicsPixmapItem::mouseDoubleClickEvent(event);
-	}*/
+	Q_UNUSED (event);
+	if (diagram() -> isReadOnly()) return;
+	//the range for scale image and divisor factor
+	int min_range = 1;
+	int max_range = 200;
+	int factor_range = 100;
+
+	//the dialog
+	QDialog property_dialog;
+	property_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'une image", "window title"));
+	//the main layout
+	QVBoxLayout *dialog_layout = new QVBoxLayout(&property_dialog);
+
+	//GroupBox for resizer image
+	QGroupBox *resize_groupe = new QGroupBox(tr("Dimension de l'image", "image size"));
+	dialog_layout -> addWidget(resize_groupe);
+	QHBoxLayout *resize_layout = new QHBoxLayout(resize_groupe);
+
+	//slider
+	QSlider *slider = new QSlider(Qt::Horizontal, &property_dialog);
+	slider->setRange(min_range, max_range);
+	qreal scale_= scale();
+	slider -> setValue(scale_*factor_range);
+	//spinbox
+	QSpinBox *spin_box = new QSpinBox(&property_dialog);
+	spin_box -> setRange(min_range, max_range);
+	spin_box -> setValue(scale_*factor_range);
+	spin_box -> setSuffix(" %");
+	//synchro slider with spinbox
+	connect(slider, SIGNAL(valueChanged(int)), spin_box, SLOT(setValue(int)));
+	connect(slider, SIGNAL(valueChanged(int)), this, SLOT(setScale(int)));
+	connect(spin_box, SIGNAL(valueChanged(int)), slider, SLOT(setValue(int)));
+	//add slider and spinbox to layout
+	resize_layout -> addWidget(slider);
+	resize_layout -> addWidget(spin_box);
+
+	//dialog butto, box
+	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	dialog_layout -> addWidget(dbb);
+	connect(dbb, SIGNAL(accepted()), &property_dialog, SLOT(accept()));
+	connect(dbb, SIGNAL(rejected()), &property_dialog, SLOT(reject()));
+
+	if (property_dialog.exec() == QDialog::Accepted) {
+		qreal new_scale = slider -> value();
+		new_scale /= factor_range;
+		if (scale_ != new_scale) QGraphicsPixmapItem::setScale(new_scale);
+	}
+	else QGraphicsPixmapItem::setScale(scale_);
+	return;
 }
 
 /**
@@ -327,9 +367,16 @@ QPointF DiagramImageItem::pos() const {
 	return(QGraphicsPixmapItem::pos());
 }
 
-/// Rend le champ de image non focusable
-void DiagramImageItem::setNonFocusable() {
-	setFlag(QGraphicsPixmapItem::ItemIsFocusable, false);
+/**
+ * @brief DiagramImageItem::setScale
+ * @param scale the value of @scale must be betwen 1 and 200
+ */
+void DiagramImageItem::setScale(int scale) {
+	if (scale >= 1 && scale <= 200) {
+		qreal new_scale = scale;
+		new_scale /= 100;
+		QGraphicsPixmapItem::setScale(new_scale);
+	}
 }
 
 /**

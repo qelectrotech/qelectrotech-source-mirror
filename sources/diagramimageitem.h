@@ -76,8 +76,8 @@ class DiagramImageItem : public QObject, public QGraphicsPixmapItem {
 	/// signal emitted after image was changed
 	void diagramImageChanged(DiagramImageItem *, const QString &, const QString &);
 	
-	public slots:
-	void setNonFocusable();
+	private slots:
+	void setScale(int);
 	
 	private:
 	bool first_move_;
