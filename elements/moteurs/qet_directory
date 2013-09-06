@@ -1,0 +1,15 @@
+<qet-directory>
+    <names>
+        <name lang="ar">محرّك</name>
+        <name lang="de">Motor</name>
+        <name lang="ru">Эл. мотор</name>
+        <name lang="pt">Motor</name>
+        <name lang="el">Μοτέρ</name>
+        <name lang="en">Engine</name>
+        <name lang="it">Motore</name>
+        <name lang="fr">Moteur</name>
+        <name lang="pl">Silnik</name>
+        <name lang="es">Motor</name>
+        <name lang="cs">Motor</name>
+    </names>
+</qet-directory>
