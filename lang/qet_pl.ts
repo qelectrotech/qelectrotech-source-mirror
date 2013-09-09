@@ -5055,7 +5055,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="108"/>
         <source>Ajouter une image</source>
         <comment>undo caption</comment>
-        <translation>wstaw obraz</translation>
+        <translation>wstawienie obrazu</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="143"/>
@@ -5332,7 +5332,7 @@ Co chcesz zrobić ?</translation>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>pole tekstowe</numerusform>
+            <numerusform>pola tekstowego</numerusform>
             <numerusform>%n pola tekstowe</numerusform>
             <numerusform>%n pól tekstowych</numerusform>
         </translation>
@@ -5342,7 +5342,7 @@ Co chcesz zrobić ?</translation>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>%n obraz(y)</numerusform>
+            <numerusform>%n obrazu(ów)</numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
