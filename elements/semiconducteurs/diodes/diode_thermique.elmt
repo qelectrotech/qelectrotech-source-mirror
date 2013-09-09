@@ -1,13 +1,10 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
     <names>
         <name lang="ar">دايود بارتباط حراري</name>
-        <name lang="de">Temperaturdiode
-</name>
-        <name lang="en">Temperature sensing diode
-</name>
+        <name lang="de">Temperaturdiode</name>
+        <name lang="en">Temperature sensing diode</name>
         <name lang="it">Diodo sensibile alla temperatura</name>
-        <name lang="fr">Diode à dépendance thermique
-</name>
+        <name lang="fr">Diode à dépendance thermique</name>
         <name lang="pl">Dioda o zależności temperaturowej.</name>
         <name lang="cs">Dioda zaznamenávající teplotu</name>
     </names>
