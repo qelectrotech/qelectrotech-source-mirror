@@ -561,4 +561,22 @@ class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
 	/// track whether post-change properties were set
 	bool new_settings_set;
 };
+
+class ImageResizerCommand : public QUndoCommand {
+	//constructor and destructor
+	public:
+	ImageResizerCommand (DiagramImageItem *image, qreal &old_, qreal &new_, QUndoCommand *parent = 0);
+	virtual ~ImageResizerCommand();
+
+	//methods
+	public:
+	virtual void undo();
+	virtual void redo();
+
+	//attributes
+	private:
+	DiagramImageItem *image_;
+	qreal old_size, new_size;
+};
+
 #endif

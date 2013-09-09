@@ -51,19 +51,13 @@ class DiagramImageItem : public QObject, public QGraphicsPixmapItem {
 	
 	virtual void setPos(const QPointF &);
 	virtual void setPos(qreal, qreal);
-	virtual QPointF pos() const;
 	void setRotationAngle(const qreal &);
 	void rotateBy(const qreal &);
 	void edit();
-	QPointF mapMovementToScene(const QPointF &) const;
-	QPointF mapMovementFromScene(const QPointF &) const;
-	QPointF mapMovementToParent(const QPointF &) const;
-	QPointF mapMovementFromParent(const QPointF &) const;
+	void setPixmap(const QPixmap &pixmap);
 	
 	protected:
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-	void focusInEvent(QFocusEvent *);
-	void focusOutEvent(QFocusEvent *);
 	void mousePressEvent(QGraphicsSceneMouseEvent *e);
 	void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
 	void mouseMoveEvent(QGraphicsSceneMouseEvent *);
@@ -71,13 +65,11 @@ class DiagramImageItem : public QObject, public QGraphicsPixmapItem {
 	void applyRotation(const qreal &);
 	
 	signals:
-	/// signal emitted when the image field loses focus
-	void lostFocus();
 	/// signal emitted after image was changed
 	void diagramImageChanged(DiagramImageItem *, const QString &, const QString &);
 	
 	private slots:
-	void setScale(int);
+	void PreviewScale(int);
 	
 	private:
 	bool first_move_;

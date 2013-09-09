@@ -28,7 +28,6 @@ DiagramImageItem::DiagramImageItem(Diagram *parent_diagram) :
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
-	//connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
 }
 
 /**
@@ -40,12 +39,11 @@ DiagramImageItem::DiagramImageItem(const QPixmap &pixmap, Diagram *parent_diagra
 	QGraphicsPixmapItem(pixmap, 0, parent_diagram),
 	first_move_(false)
 {
-	setCursor(Qt::PointingHandCursor);
+	setTransformOriginPoint(boundingRect().center());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
-	//connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
 }
 
 /// Destructeur
@@ -83,82 +81,6 @@ void DiagramImageItem::rotateBy(const qreal &added_rotation) {
 }
 
 /**
-	Traduit en coordonnees de la scene un mouvement / vecteur initialement
-	exprime en coordonnees locales.
-	@param movement Vecteur exprime en coordonnees locales
-	@return le meme vecteur, exprime en coordonnees de la scene
-*/
-QPointF DiagramImageItem::mapMovementToScene(const QPointF &movement) const {
-	// on definit deux points en coordonnees locales
-	QPointF local_origin(0.0, 0.0);
-	QPointF local_movement_point(movement);
-	
-	// on les mappe sur la scene
-	QPointF scene_origin(mapToScene(local_origin));
-	QPointF scene_movement_point(mapToScene(local_movement_point));
-	
-	// on calcule le vecteur represente par ces deux points
-	return(scene_movement_point - scene_origin);
-}
-
-/**
-	Traduit en coordonnees locales un mouvement / vecteur initialement
-	exprime en coordonnees de la scene.
-	@param movement Vecteur exprime en coordonnees de la scene
-	@return le meme vecteur, exprime en coordonnees locales
-*/
-QPointF DiagramImageItem::mapMovementFromScene(const QPointF &movement) const {
-	// on definit deux points sur la scene
-	QPointF scene_origin(0.0, 0.0);
-	QPointF scene_movement_point(movement);
-	
-	// on les mappe sur ce QGraphicsItem
-	QPointF local_origin(mapFromScene(scene_origin));
-	QPointF local_movement_point(mapFromScene(scene_movement_point));
-	
-	// on calcule le vecteur represente par ces deux points
-	return(local_movement_point - local_origin);
-}
-
-/**
-	Traduit en coordonnees de l'item parent un mouvement / vecteur initialement
-	exprime en coordonnees locales.
-	@param movement Vecteur exprime en coordonnees locales
-	@return le meme vecteur, exprime en coordonnees du parent
-*/
-QPointF DiagramImageItem::mapMovementToParent(const QPointF &movement) const {
-	// on definit deux points en coordonnees locales
-	QPointF local_origin(0.0, 0.0);
-	QPointF local_movement_point(movement);
-	
-	// on les mappe sur la scene
-	QPointF parent_origin(mapToParent(local_origin));
-	QPointF parent_movement_point(mapToParent(local_movement_point));
-	
-	// on calcule le vecteur represente par ces deux points
-	return(parent_movement_point - parent_origin);
-}
-
-/**
-	Traduit en coordonnees locales un mouvement / vecteur initialement
-	exprime en coordonnees du parent.
-	@param movement Vecteur exprime en coordonnees du parent
-	@return le meme vecteur, exprime en coordonnees locales
-*/
-QPointF DiagramImageItem::mapMovementFromParent(const QPointF &movement) const {
-	// on definit deux points sur le parent
-	QPointF parent_origin(0.0, 0.0);
-	QPointF parent_movement_point(movement);
-	
-	// on les mappe sur ce QGraphicsItem
-	QPointF local_origin(mapFromParent(parent_origin));
-	QPointF local_movement_point(mapFromParent(parent_movement_point));
-	
-	// on calcule le vecteur represente par ces deux points
-	return(local_movement_point - local_origin);
-}
-
-/**
 	Dessine le champ de image.
 	Cette methode delegue simplement le travail a QGraphicsPixmapItem::paint apres
 	avoir desactive l'antialiasing.
@@ -169,37 +91,6 @@ QPointF DiagramImageItem::mapMovementFromParent(const QPointF &movement) const {
 void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 	QGraphicsPixmapItem::paint(painter, option, widget);
-}
-
-/**
-	Gere la prise de focus du champ de image
-	@param e Objet decrivant la prise de focus
-*/
-void DiagramImageItem::focusInEvent(QFocusEvent *e) {
-	QGraphicsPixmapItem::focusInEvent(e);
-	
-	// empeche le deplacement du image pendant son edition
-	setFlag(QGraphicsItem::ItemIsMovable, false);
-}
-
-/**
-	Gere la perte de focus du champ de image
-	@param e Objet decrivant la perte de focus
-*/
-void DiagramImageItem::focusOutEvent(QFocusEvent *e) {
-	QGraphicsPixmapItem::focusOutEvent(e);
-	
-	/*// deselectionne le image
-	QTextCursor cursor = textCursor();
-	cursor.clearSelection();
-	setTextCursor(cursor);
-	
-	// hack a la con pour etre re-entrant
-	setTextInteractionFlags(Qt::NoTextInteraction);
-	
-	// autorise de nouveau le deplacement du image
-	setFlag(QGraphicsItem::ItemIsMovable, true);
-	QTimer::singleShot(0, this, SIGNAL(lostFocus()));*/
 }
 
 /**
@@ -249,24 +140,25 @@ void DiagramImageItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	spin_box -> setSuffix(" %");
 	//synchro slider with spinbox
 	connect(slider, SIGNAL(valueChanged(int)), spin_box, SLOT(setValue(int)));
-	connect(slider, SIGNAL(valueChanged(int)), this, SLOT(setScale(int)));
+	connect(slider, SIGNAL(valueChanged(int)), this, SLOT(PreviewScale(int)));
 	connect(spin_box, SIGNAL(valueChanged(int)), slider, SLOT(setValue(int)));
 	//add slider and spinbox to layout
 	resize_layout -> addWidget(slider);
 	resize_layout -> addWidget(spin_box);
 
-	//dialog butto, box
+	//dialog button, box
 	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dbb);
 	connect(dbb, SIGNAL(accepted()), &property_dialog, SLOT(accept()));
 	connect(dbb, SIGNAL(rejected()), &property_dialog, SLOT(reject()));
-
+	//dialog is accepted...
 	if (property_dialog.exec() == QDialog::Accepted) {
 		qreal new_scale = slider -> value();
 		new_scale /= factor_range;
-		if (scale_ != new_scale) QGraphicsPixmapItem::setScale(new_scale);
+		if (scale_ != new_scale) diagram()->undoStack().push(new ImageResizerCommand(this, scale_, new_scale));
 	}
-	else QGraphicsPixmapItem::setScale(scale_);
+	//...or not
+	else setScale(scale_);
 	return;
 }
 
@@ -328,9 +220,7 @@ void DiagramImageItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	@param angle Angle de la rotation a effectuer
 */
 void DiagramImageItem::applyRotation(const qreal &angle) {
-	// un simple appel a QGraphicsPixmapItem::setRotation suffit
-	setTransformOriginPoint(boundingRect().center());
-	QGraphicsPixmapItem::setRotation(QGraphicsPixmapItem::rotation() + angle);
+	setRotation(QET::correctAngle(rotation()+angle));
 }
 
 /**
@@ -361,21 +251,14 @@ void DiagramImageItem::setPos(qreal x, qreal y) {
 }
 
 /**
-	@return la position du champ de image
-*/
-QPointF DiagramImageItem::pos() const {
-	return(QGraphicsPixmapItem::pos());
-}
-
-/**
  * @brief DiagramImageItem::setScale
  * @param scale the value of @scale must be betwen 1 and 200
  */
-void DiagramImageItem::setScale(int scale) {
+void DiagramImageItem::PreviewScale(int scale) {
 	if (scale >= 1 && scale <= 200) {
 		qreal new_scale = scale;
 		new_scale /= 100;
-		QGraphicsPixmapItem::setScale(new_scale);
+		setScale(new_scale);
 	}
 }
 
@@ -384,6 +267,11 @@ void DiagramImageItem::setScale(int scale) {
  */
 void DiagramImageItem::edit() {
 	// waiting
+}
+
+void DiagramImageItem::setPixmap(const QPixmap &pixmap) {
+	QGraphicsPixmapItem::setPixmap(pixmap);
+	setTransformOriginPoint(boundingRect().center());
 }
 
 /**
@@ -404,8 +292,9 @@ bool DiagramImageItem::fromXml(const QDomElement &e) {
 	pixmap.loadFromData(array);
 	setPixmap(pixmap);
 
+	setScale(e.attribute("size").toDouble());
+	setRotationAngle(e.attribute("rotation").toDouble());
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
-	if (e.hasAttribute("rotation")) setRotationAngle(e.attribute("rotation").toDouble());
 
 	return (true);
 }
@@ -419,7 +308,8 @@ QDomElement DiagramImageItem::toXml(QDomDocument &document) const {
 	//write some attribute
 	result.setAttribute("x", QString("%1").arg(pos().x()));
 	result.setAttribute("y", QString("%1").arg(pos().y()));
-	if (rotation()) result.setAttribute("rotation", QString("%1").arg(rotation()));
+	result.setAttribute("rotation", QString("%1").arg(rotation()));
+	result.setAttribute("size", QString("%1").arg(scale()));
 
 	//write the pixmap in the xml element after he was been transformed to base64
 	QByteArray array;

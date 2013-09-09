@@ -1071,3 +1071,38 @@ void ChangeSeveralConductorsPropertiesCommand::redo() {
 		}
 	}
 }
+
+/**
+ * @brief ImageResizerCommand::ImageResizerCommand Constructor
+ * @param image
+ * @param old_ old size of image
+ * @param new_ new size of image
+ * @param parent undocommand parent
+ */
+ImageResizerCommand::ImageResizerCommand (DiagramImageItem *image, qreal &old_, qreal &new_, QUndoCommand *parent):
+	QUndoCommand(parent),
+	image_(image),
+	old_size (old_),
+	new_size (new_)
+{}
+
+/**
+ * @brief ImageResizerCommand::~ImageResizerCommand destructor
+ */
+ImageResizerCommand::~ImageResizerCommand() {}
+
+/**
+ * @brief ImageResizerCommand::undo set the old size
+ */
+void ImageResizerCommand::undo() {
+	image_ -> setScale(old_size);
+}
+
+/**
+ * @brief ImageResizerCommand::redo set the new size
+ */
+void ImageResizerCommand::redo() {
+	if (old_size<new_size) setText(QObject::tr("Agrandire une image \340 %1 %").arg(new_size*100));
+	else setText(QObject::tr("R\351duire une image \340 %1 %").arg(new_size*100));
+	image_ -> setScale(new_size);
+}

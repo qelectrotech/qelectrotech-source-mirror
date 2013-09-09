@@ -261,8 +261,7 @@ void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	@param angle Angle de la rotation a effectuer
 */
 void DiagramTextItem::applyRotation(const qreal &angle) {
-	// un simple appel a QGraphicsTextItem::setRotation suffit
-	QGraphicsTextItem::setRotation(QGraphicsTextItem::rotation() + angle);
+	setRotation(QET::correctAngle(rotation()+angle));
 }
 
 /**
