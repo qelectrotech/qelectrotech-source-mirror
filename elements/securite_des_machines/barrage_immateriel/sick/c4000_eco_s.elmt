@@ -1,12 +1,13 @@
-<definition width="80" version="0.3" hotspot_x="20" hotspot_y="35" height="150" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="17" hotspot_y="32" height="140" type="element" orientation="dyyy">
     <names>
         <name lang="ar">(C4000S ECO S)</name>
+        <name lang="el">C4000S ECO (Πομπός)</name>
         <name lang="en">C4000S ECO (S)</name>
+        <name lang="it">C4000S ECO (E)</name>
         <name lang="fr">C4000S ECO (S)</name>
         <name lang="pl">C4000S ECO (S)</name>
-        <name lang="cs">C4000S ECO (S)</name>
         <name lang="es">C4000S ECO (E)</name>
-        <name lang="it">C4000S ECO (E)</name>
+        <name lang="cs">C4000S ECO (S)</name>
     </names>
     <informations></informations>
     <description>

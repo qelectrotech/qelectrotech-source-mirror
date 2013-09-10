@@ -13,7 +13,7 @@ Pro prvky a nákresy používá soubory XML, a zahrnuje v sobě jak editor nákr
 </p>
 <p xml:lang="el">
 Το QElectroTech είναι μια εφαρμογή Qt4 για σχεδίαση ηλεκτρικών διαγραμμάτων.
-Χρησιμοποιεί αρχεία XML για στοιχεία και διαγράμματα, και περιλαμβάνει επεξεργαστή διαγραμμάτων καθώς και επεξεργαστή στοιχείων.
+Χρησιμοποιεί αρχεία XML για στοιχεία και διαγράμματα, και περιλαμβάνει επεξεργαστή διαγραμμάτων, επεξεργαστή στοιχείων, και επεξεργαστή πινακίδων.
 </p>
 <p xml:lang="es">
 QElectroTech es una aplicación Qt4 para diseñar esquemas eléctricos.
