@@ -75,6 +75,7 @@ class DiagramView : public QGraphicsView {
 	void addText();
 	void editText();
 	void addImage();
+	void editImage();
 	IndependentTextItem *addDiagramTextAtPos(const QPointF &);
 	DiagramImageItem *addDiagramImageAtPos(const QPointF &);
 	

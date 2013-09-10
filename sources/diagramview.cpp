@@ -1261,6 +1261,21 @@ void DiagramView::addImage() {
 	}
 	current_behavior = addingImage;
 }
+
+/**
+ * @brief DiagramView::editImage
+ * open edit image dialog if only one image is selected
+ */
+void DiagramView::editImage() {
+	if (scene -> isReadOnly()) return;
+	QList <QGraphicsItem *> images = diagram() -> selectedContent().items(DiagramContent::Images);
+	if (images.count() != 1) return;
+	DiagramImageItem *image;
+	if ((image = qgraphicsitem_cast<DiagramImageItem *> (images.first()))) {
+		image -> edit();
+	}
+}
+
 /**
 * @brief DiagramView::addDiagramImageAtPos
 * @param pos
@@ -1338,9 +1353,8 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			context_menu -> addAction(qde -> delete_selection);
 			context_menu -> addAction(qde -> rotate_selection);
 			context_menu -> addAction(qde -> rotate_texts);
-			context_menu -> addAction(qde -> add_edittext);
+			context_menu -> addAction(qde -> edit_selection);
 			context_menu -> addAction(qde -> find_element);
-			context_menu -> addAction(qde -> edit_element);
 			context_menu -> addAction(qde -> selection_prop);
 		}
 		

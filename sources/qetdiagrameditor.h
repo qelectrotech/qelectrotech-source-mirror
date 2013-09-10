@@ -123,8 +123,8 @@ class QETDiagramEditor : public QETMainWindow {
 	void slot_editConductor();
 	void slot_resetConductors();
 	void slot_addText();
-	void slot_editText();
 	void slot_addImage();
+	void slot_editSelection();
 	void setWindowedMode();
 	void setTabbedMode();
 	void readSettings();
@@ -190,13 +190,11 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *rotate_selection;   ///< Rotate selected elements and text items by 90 degrees
 	QAction *rotate_texts;       ///< Direct selected text items to a specific angle
 	QAction *find_element;       ///< Find the selected element in the panel
-	QAction *edit_element;       ///< Edit the selected element
 	QAction *selection_prop;     ///< Show a dialog describing the selection
 	QAction *conductor_reset;    ///< Reset paths of selected conductors
 	QAction *conductor_default;  ///< Show a dialog to edit default conductor properties
 	QAction *infos_diagram;      ///< Show a dialog to edit diagram properties
 	QAction *add_text;           ///< Tool to add an independent text item on diagrams
-	QAction *add_edittext;       ///< Tool to add an independent text item on diagrams
 	QAction *add_column;         ///< Increase diagram width by adding an extra column
 	QAction *remove_column;      ///< Decrease diagram width by removing the last column
 	QAction *add_row;            ///< Increase diagram height by adding an extra row
@@ -216,7 +214,9 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *cascade_window;     ///< Show MDI subwindows as cascade
 	QAction *prev_window;        ///< Switch to the previous document
 	QAction *next_window;        ///< Switch to the next document
-	QAction *add_image;       ///< Tool to add an independent image item on diagrams
+	QAction *add_image;          ///< Tool to add an independent image item on diagrams
+	QAction *edit_selection;	 ///< To edit selected item
+
 	private:
 	QMdiArea workspace;
 	QSignalMapper windowMapper;

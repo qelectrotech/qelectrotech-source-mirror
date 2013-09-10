@@ -209,14 +209,13 @@ void QETDiagramEditor::actions() {
 	rotate_selection  = new QAction(QET::Icons::ObjectRotateRight,     tr("Pivoter"),                              this);
 	rotate_texts      = new QAction(QET::Icons::ObjectRotateRight,     tr("Orienter les textes"),                  this);
 	find_element      = new QAction(                                   tr("Retrouver dans le panel"),              this);
-	edit_element      = new QAction(QET::Icons::ElementEdit,           tr("\311diter l'\351l\351ment"),            this);
+	edit_selection    = new QAction(QET::Icons::ElementEdit,           tr("\311diter l'item s\351lectionn\351"),            this);
 	selection_prop    = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s de la s\351lection"),  this);
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
 	add_text          = new QAction(QET::Icons::PartTextField,         tr("Ajouter un champ de texte"),            this);
-	add_edittext      = new QAction(QET::Icons::EditText,              tr("\311diter le champ de texte"),          this);
 	add_column        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne"),             this);
-	add_image      = new QAction(QET::Icons::adding_image,          tr("Ajouter une image"),             this);
+	add_image		  = new QAction(QET::Icons::adding_image,          tr("Ajouter une image"),             this);
 	remove_column     = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne"),             this);
 	add_row           = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne"),               this);
 	remove_row        = new QAction(QET::Icons::EditTableDeleteRow,         tr("Enlever une ligne"),               this);
@@ -274,6 +273,7 @@ void QETDiagramEditor::actions() {
 	selection_prop    -> setShortcut(QKeySequence(tr("Ctrl+J")));
 	conductor_reset   -> setShortcut(QKeySequence(tr("Ctrl+K")));
 	infos_diagram     -> setShortcut(QKeySequence(tr("Ctrl+L")));
+	edit_selection	  -> setShortcut(QKeySequence(tr("Ctrl+E")));
 	
 	prj_add_diagram   -> setShortcut(QKeySequence(tr("Ctrl+T")));
 	
@@ -310,7 +310,6 @@ void QETDiagramEditor::actions() {
 	rotate_selection  -> setStatusTip(tr("Pivote les \351l\351ments et textes s\351lectionn\351s", "status bar tip"));
 	rotate_texts      -> setStatusTip(tr("Pivote les textes s\351lectionn\351s \340 un angle pr\351cis", "status bar tip"));
 	find_element      -> setStatusTip(tr("Retrouve l'\351l\351ment s\351lectionn\351 dans le panel", "status bar tip"));
-	edit_element      -> setStatusTip(tr("Retrouve l'\351l\351ment s\351lectionn\351 dans le panel avant de l'\351diter", "status bar tip"));
 	selection_prop    -> setStatusTip(tr("\311dite les propri\351t\351s des objets s\351lectionn\351", "status bar tip"));
 	conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
 	infos_diagram     -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche", "status bar tip"));
@@ -338,7 +337,7 @@ void QETDiagramEditor::actions() {
 	
 	// traitements speciaux
 	add_text           -> setCheckable(true);
-	add_image       -> setCheckable(true);
+	add_image		   -> setCheckable(true);
 	windowed_view_mode -> setCheckable(true);
 	tabbed_view_mode   -> setCheckable(true);
 	mode_selection     -> setCheckable(true);
@@ -364,8 +363,7 @@ void QETDiagramEditor::actions() {
 	connect(rotate_selection,   SIGNAL(triggered()), this,       SLOT(slot_rotate())               );
 	connect(rotate_texts,       SIGNAL(triggered()), this,       SLOT(slot_rotateTexts())          );
 	connect(find_element,       SIGNAL(triggered()), this,       SLOT(findSelectedElementInPanel()));
-	connect(edit_element,       SIGNAL(triggered()), this,       SLOT(findSelectedElementInPanel()));
-	connect(edit_element,       SIGNAL(triggered()), this,       SLOT(editSelectedElementInEditor()));
+	connect(edit_selection,     SIGNAL(triggered()), this,       SLOT(slot_editSelection())        );
 	connect(windowed_view_mode, SIGNAL(triggered()), this,       SLOT(setWindowedMode())           );
 	connect(tabbed_view_mode,   SIGNAL(triggered()), this,       SLOT(setTabbedMode())             );
 	connect(mode_selection,     SIGNAL(triggered()), this,       SLOT(slot_setSelectionMode())     );
@@ -400,7 +398,6 @@ void QETDiagramEditor::actions() {
 	connect(conductor_reset,    SIGNAL(triggered()), this,       SLOT(slot_resetConductors())      );
 	connect(infos_diagram,      SIGNAL(triggered()), this,       SLOT(editCurrentDiagramProperties()));
 	connect(add_text,           SIGNAL(triggered()), this,       SLOT(slot_addText())              );
-	connect(add_edittext,       SIGNAL(triggered()), this,       SLOT(slot_editText())              );
 	connect(add_image,			SIGNAL(triggered()), this,       SLOT(slot_addImage())              );
 	connect(add_column,         SIGNAL(triggered()), this,       SLOT(slot_addColumn())            );
 	connect(remove_column,      SIGNAL(triggered()), this,       SLOT(slot_removeColumn())         );
@@ -476,7 +473,7 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addAction(delete_selection);
 	menu_edition -> addAction(rotate_selection);
 	menu_edition -> addAction(rotate_texts);
-	menu_edition -> addAction(add_edittext);
+	menu_edition -> addAction(edit_selection);
 	menu_edition -> addAction(selection_prop);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(conductor_reset);
@@ -1193,7 +1190,6 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	// number of selected elements
 	int selected_elements_count = dv ? dv -> diagram() -> selectedContent().count(DiagramContent::Elements) : 0;
 	find_element -> setEnabled(selected_elements_count == 1);
-	edit_element -> setEnabled(selected_elements_count == 1);
 	
 	// actions ayant aussi besoin d'items (elements, conducteurs, textes, ...) selectionnes
 	bool copiable_items  = dv ? (dv -> hasCopiableItems()) : false;
@@ -1209,7 +1205,38 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	int selected_texts = dv ? (dv -> diagram() -> selectedTexts().count()) : 0;
 	int selected_conductor_texts = dv ? (dv -> diagram() -> selectedConductorTexts().count()) : 0;
 	rotate_texts -> setEnabled(editable_diagram && selected_texts);
-	add_edittext -> setEnabled(editable_diagram && selected_texts == 1 && !selected_conductor_texts);
+
+	// actions need only one editable item
+	int selected_image = dv ? dv -> diagram() -> selectedContent().count(DiagramContent::Images) : 0;
+	int selected_editable = selected_elements_count + (selected_texts - selected_conductor_texts) + selected_image;
+
+	if (selected_editable == 1) {
+		edit_selection -> setEnabled(true);
+		//edit element
+		if (selected_elements_count == 1) {
+			edit_selection -> setText(tr("\311diter l'\351lement", "edit element"));
+			edit_selection -> setIcon(QET::Icons::ElementEdit);
+			edit_selection -> setIconVisibleInMenu(true);
+		}
+		//edit text field
+		else if (selected_texts == 1) {
+			edit_selection -> setText(tr("\311diter le champ de texte", "edit text field"));
+			edit_selection -> setIcon(QET::Icons::EditText);
+			edit_selection -> setIconVisibleInMenu(true);
+		}
+		//edit image
+		else if (selected_image) {
+			edit_selection -> setText(tr("\311diter l'image", "edit image"));
+			edit_selection ->setIconVisibleInMenu(false);
+		}
+	}
+	//not an editable item
+	else {
+		edit_selection -> setText(tr("\311diter l'objet s\351lectionn\351", "edit selected item"));
+		edit_selection -> setIcon(QET::Icons::ElementEdit);
+		edit_selection -> setIconVisibleInMenu(true);
+		edit_selection -> setEnabled(false);
+	}
 }
 
 
@@ -1501,12 +1528,22 @@ void QETDiagramEditor::slot_addImage() {
 		dv -> addImage();
 	}
 }
+
 /**
-	to Edit en text through the html editor
-*/
-void QETDiagramEditor::slot_editText() {
+ * @brief QETDiagramEditor::slot_editSelection
+ * edit the selected item if he can be edited and if only  one item is selected
+ */
+void QETDiagramEditor::slot_editSelection() {
 	if (DiagramView *dv = currentDiagram()) {
-		dv -> editText();
+		DiagramContent dc = dv -> diagram() -> selectedContent();
+		if (dc.count() != 1) return;
+
+		if (dc.count(DiagramContent::Elements)) {
+			findSelectedElementInPanel();
+			editSelectedElementInEditor();
+		}
+		else if (dc.count(DiagramContent::TextFields)) dv -> editText();
+		else if (dc.count(DiagramContent::Images)) dv -> editImage();
 	}
 }
 
@@ -1767,7 +1804,6 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv) {
 	connect(dv,              SIGNAL(selectionChanged()),         this,     SLOT(slot_updateComplexActions()));
 	connect(dv,              SIGNAL(modeChanged()),              this,     SLOT(slot_updateModeActions()));
 	connect(dv,              SIGNAL(textAdded(bool)),            add_text, SLOT(setChecked(bool)));
-	connect(dv,              SIGNAL(textAdded(bool)),            add_edittext, SLOT(setChecked(bool)));
 	connect(dv,              SIGNAL(ImageAdded(bool)),           add_image, SLOT(setChecked(bool)));
 	connect(dv,				 SIGNAL(ImageAddedCanceled(bool)),   add_image, SLOT(setChecked(bool)));
 }
