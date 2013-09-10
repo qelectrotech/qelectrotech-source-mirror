@@ -146,7 +146,8 @@ unix {
 	INSTALLS += desktop mime_xml mime_desktop mime_package icons man examples appdata
 }
 
-# Options de compilation communes a Unix et MacOS Xunix {
+# Options de compilation communes a Unix et MacOS X
+unix {
 	# Chemin des fichiers de traduction ; par defaut : lang/ dans le repertoire d'execution
 	DEFINES += QET_LANG_PATH=$$join(COMPIL_PREFIX,,,$${QET_LANG_PATH})
 	
