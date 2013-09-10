@@ -5,7 +5,7 @@
 <description>
 <p>
 QElectroTech is a Qt4 application to design electric diagrams.
-It uses XML files for elements and diagrams, and includes both a diagram editor, a element editor, an titleblock editor.
+It uses XML files for elements and diagrams, and includes both a diagram editor, a element editor, and an titleblock editor.
 </p>
 <p xml:lang="cs">
 QElectroTech je aplikací Qt4 určenou pro návrh nákresů elektrických obvodů.
