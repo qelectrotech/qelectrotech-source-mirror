@@ -557,13 +557,13 @@ Apply a text to all of these drivers?</translation>
         <location filename="../sources/diagramimageitem.cpp" line="229"/>
         <source>Éditer les propriétés d&apos;une image</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edit the properties of an image</translation>
     </message>
     <message>
         <location filename="../sources/diagramimageitem.cpp" line="234"/>
         <source>Dimension de l&apos;image</source>
         <comment>image size</comment>
-        <translation type="unfinished"></translation>
+        <translation>Image size</translation>
     </message>
 </context>
 <context>
@@ -2407,25 +2407,25 @@ Changes will be definitive.</translation>
         <location filename="../sources/newelementwizard.cpp" line="95"/>
         <source>Étape 1/4 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Step 1 of 4: Parent category {1/4 ?}</translation>
+        <translation>Step 1 of 4: Parent category {1/4 ?}</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="112"/>
         <source>Étape 2/4 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Step 2 of 4: Filename {2/4 ?}</translation>
+        <translation>Step 2 of 4: Filename {2/4 ?}</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="135"/>
         <source>Étape 3/4 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Step 3 of 4: Element names {3/4 ?}</translation>
+        <translation>Step 3 of 4: Element names {3/4 ?}</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="155"/>
         <source>Étape 4/4 : Orientations</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Step 5 of 5: Orientations {4/4 ?}</translation>
+        <translation>Step 5 of 5: Orientations {4/4 ?}</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="156"/>
@@ -3282,7 +3282,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Éditer l&apos;item sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit the selected item</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
@@ -3486,7 +3486,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished">Ctrl+E</translation>
+        <translation>Ctrl+E</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
@@ -3707,25 +3707,25 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="1217"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edit the element</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1223"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
-        <translation type="unfinished">Edit the text field</translation>
+        <translation>Edit the text field</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edit the image</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edit the selected object</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1845"/>
@@ -5175,12 +5175,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1105"/>
         <source>Agrandire une image à %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Enlarge an image.%1.%</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1106"/>
         <source>Réduire une image à %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Reduce the image to.%1.%</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
