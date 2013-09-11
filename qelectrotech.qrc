@@ -64,7 +64,6 @@
         <file>ico/16x16/masquer.png</file>
         <file>ico/16x16/neutral.png</file>
         <file>ico/16x16/north.png</file>
-        <file>ico/16x16/object-rotate-right.png</file>
         <file>ico/16x16/orientations.png</file>
         <file>ico/16x16/phase.png</file>
         <file>ico/16x16/preferences-desktop-user.png</file>
@@ -167,6 +166,7 @@
         <file>ico/22x22/textfield.png</file>
         <file>ico/22x22/text.png</file>
         <file>ico/22x22/text-xml.png</file>
+	<file>ico/22x22/transform-scale.png</file>
         <file>ico/22x22/two_pages.png</file>
         <file>ico/22x22/view_fit_width.png</file>
         <file>ico/22x22/view_fit_window.png</file>

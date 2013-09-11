@@ -153,6 +153,7 @@ namespace QET {
 		QIcon ZoomOriginal;
 		QIcon ZoomOut;
 		QIcon adding_image;
+		QIcon resize_image;
 	}
 }
 
@@ -312,7 +313,6 @@ void QET::Icons::initIcons() {
 	NewDiagram          .addFile(":/ico/128x128/diagram.png");
 	North               .addFile(":/ico/16x16/north.png");
 	ObjectLocked        .addFile(":/ico/22x22/object-locked.png");
-	ObjectRotateRight   .addFile(":/ico/16x16/object-rotate-right.png");
 	ObjectRotateRight   .addFile(":/ico/22x22/object-rotate-right.png");
 	ObjectUnlocked      .addFile(":/ico/22x22/object-unlocked.png");
 	Orientations        .addFile(":/ico/16x16/orientations.png");
@@ -350,6 +350,7 @@ void QET::Icons::initIcons() {
 	Raise               .addFile(":/ico/22x22/raise.png");
 	Remove              .addFile(":/ico/16x16/list-remove.png");
 	Remove              .addFile(":/ico/22x22/list-remove.png");
+	resize_image        .addFile(":/ico/22x22/transform-scale.png");
 	Restore             .addFile(":/ico/22x22/restaurer.png");
 	SendBackward        .addFile(":/ico/22x22/send_backward.png");
 	Settings            .addFile(":/ico/128x128/settings.png");

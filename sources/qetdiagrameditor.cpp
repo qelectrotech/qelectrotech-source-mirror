@@ -1227,7 +1227,8 @@ void QETDiagramEditor::slot_updateComplexActions() {
 		//edit image
 		else if (selected_image) {
 			edit_selection -> setText(tr("\311diter l'image", "edit image"));
-			edit_selection ->setIconVisibleInMenu(false);
+			edit_selection -> setIcon(QET::Icons::resize_image);
+			edit_selection -> setIconVisibleInMenu(true);
 		}
 	}
 	//not an editable item
