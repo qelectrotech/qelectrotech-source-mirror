@@ -557,13 +557,13 @@ Czy chcesz zastosować oznaczenia dla wszystkich przewodów?</translation>
         <location filename="../sources/diagramimageitem.cpp" line="229"/>
         <source>Éditer les propriétés d&apos;une image</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edycja właściwości obrazu</translation>
     </message>
     <message>
         <location filename="../sources/diagramimageitem.cpp" line="234"/>
         <source>Dimension de l&apos;image</source>
         <comment>image size</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar obrazu</translation>
     </message>
 </context>
 <context>
@@ -3284,7 +3284,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Éditer l&apos;item sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Edycja zaznaczonej pozycji</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
@@ -3488,7 +3488,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished">Ctrl+E</translation>
+        <translation>Ctrl+E</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
@@ -3708,25 +3708,25 @@ Dostępne opcje :
         <location filename="../sources/qetdiagrameditor.cpp" line="1217"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edycja elementu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1223"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
-        <translation type="unfinished">Edycja pola tekstowego</translation>
+        <translation>Edycja pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edycja obrazu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edycja zaznaczonego objektu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1845"/>
@@ -5179,12 +5179,12 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1105"/>
         <source>Agrandire une image à %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Powiększ obraz o %1 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1106"/>
         <source>Réduire une image à %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomniejsz obraz o %1 %</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
