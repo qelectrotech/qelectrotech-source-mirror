@@ -557,13 +557,13 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/diagramimageitem.cpp" line="229"/>
         <source>Éditer les propriétés d&apos;une image</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων της εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/diagramimageitem.cpp" line="234"/>
         <source>Dimension de l&apos;image</source>
         <comment>image size</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διαστάσεις εικόνας</translation>
     </message>
 </context>
 <context>
@@ -3286,7 +3286,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Éditer l&apos;item sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του επιλεγμένου αντικειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
@@ -3490,7 +3490,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished">Ctrl+E</translation>
+        <translation>Ctrl+E</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
@@ -3692,25 +3692,25 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="1217"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1223"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
-        <translation type="unfinished">Επεξεργασία του πλαισίου κειμένου</translation>
+        <translation>Επεξεργασία του πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία εικόνας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του επιλεγμένου αντικειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1910"/>
@@ -5180,12 +5180,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1105"/>
         <source>Agrandire une image à %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Μεγέθυνση εικόνας κατά %1 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1106"/>
         <source>Réduire une image à %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Σμίκρυνση εικόνας κατά %1 %</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
