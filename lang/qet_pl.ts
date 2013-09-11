@@ -5179,12 +5179,12 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1105"/>
         <source>Agrandire une image à %1 %</source>
-        <translation>Powiększ obraz o %1 %</translation>
+        <translation>powiększenie obrazu do %1 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1106"/>
         <source>Réduire une image à %1 %</source>
-        <translation>Pomniejsz obraz o %1 %</translation>
+        <translation>pomniejsz obrazu do %1 %</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
