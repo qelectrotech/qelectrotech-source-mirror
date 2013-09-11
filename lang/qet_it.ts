@@ -557,13 +557,13 @@ Applicare un testo all&apos;insiema dei conduttori?</translation>
         <location filename="../sources/diagramimageitem.cpp" line="229"/>
         <source>Éditer les propriétés d&apos;une image</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modifica le proprietà di un&apos;immagine</translation>
     </message>
     <message>
         <location filename="../sources/diagramimageitem.cpp" line="234"/>
         <source>Dimension de l&apos;image</source>
         <comment>image size</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dimensioni di un&apos;immagine</translation>
     </message>
 </context>
 <context>
@@ -2324,7 +2324,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
         <source>Ajouter une ligne</source>
-        <translation>Aggiungere una linea</translation>
+        <translation>Aggiunge una linea</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
@@ -2704,7 +2704,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="701"/>
         <source>Ajouter un schéma</source>
-        <translation>Aggiungere uno schema</translation>
+        <translation>Aggiungi uno schema</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="715"/>
@@ -3000,7 +3000,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Ajouter une colonne</source>
-        <translation>Aggiungere una colonna</translation>
+        <translation>Aggiungi una colonna</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="243"/>
@@ -3260,7 +3260,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
         <source>Ajouter un champ de texte</source>
-        <translation>Aggiungere un campo di testo</translation>
+        <translation>Aggiungi un campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="99"/>
@@ -3275,12 +3275,12 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
         <source>Ajouter une ligne</source>
-        <translation>Aggiungere una riga</translation>
+        <translation>Aggiungi una riga</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Éditer l&apos;item sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifica l&apos;oggetto selezionato</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
@@ -3290,7 +3290,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="224"/>
         <source>Ajouter un schéma</source>
-        <translation>Aggiungere uno schema</translation>
+        <translation>Aggiungi uno schema</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="225"/>
@@ -3443,7 +3443,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
         <source>Ajouter une image</source>
-        <translation>Aggiungere un&apos;immagine</translation>
+        <translation>Aggiungi un&apos;immagine</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
@@ -3478,7 +3478,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished">Ctrl+E</translation>
+        <translation>Ctrl+E</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
@@ -3704,25 +3704,25 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="1217"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modifica l&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1223"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
-        <translation type="unfinished">Modificare il campo di testo</translation>
+        <translation>Modifica il campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modifica l&apos;immagine</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modifica l&apos;oggetto selezionato</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1845"/>
@@ -3850,37 +3850,37 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
         <source>Ajouter une ligne</source>
-        <translation>Aggiungere una linea</translation>
+        <translation>Aggiungi una linea</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
         <source>Ajouter une ellipse</source>
-        <translation>Aggiungere un&apos;ellisse</translation>
+        <translation>Aggiungi un&apos;ellisse</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="158"/>
         <source>Ajouter un polygone</source>
-        <translation>Aggiungere un poligono</translation>
+        <translation>Aggiungi un poligono</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="159"/>
         <source>Ajouter du texte</source>
-        <translation>Aggiungere testo</translation>
+        <translation>Aggiungi testo</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="160"/>
         <source>Ajouter un arc de cercle</source>
-        <translation>Aggiungere un arco di cerchio</translation>
+        <translation>Aggiungi un arco di cerchio</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="161"/>
         <source>Ajouter une borne</source>
-        <translation>Aggiungere un terminale</translation>
+        <translation>Aggiungi un terminale</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="162"/>
         <source>Ajouter un champ de texte</source>
-        <translation>Aggiungere un campo di testo</translation>
+        <translation>Aggiungi un campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="174"/>
@@ -5173,12 +5173,12 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1105"/>
         <source>Agrandire une image à %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingrandire un&apos;immagine del %1 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1106"/>
         <source>Réduire une image à %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Ridurre un&apos;immagine del %1 %</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -6168,7 +6168,7 @@ Gli altri campi non sono utilizzati.</translation>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="278"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation>Modificare questo modello</translation>
+        <translation>Modifica questo modello</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="279"/>
