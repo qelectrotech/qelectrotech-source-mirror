@@ -5184,7 +5184,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1106"/>
         <source>Réduire une image à %1 %</source>
-        <translation>pomniejsz obrazu do %1 %</translation>
+        <translation>pomniejszenie obrazu do %1 %</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -5376,7 +5376,7 @@ Co chcesz zrobić ?</translation>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform>pola tekstowego</numerusform>
-            <numerusform>%n pola tekstowe</numerusform>
+            <numerusform>%n pól tekstowych</numerusform>
             <numerusform>%n pól tekstowych</numerusform>
         </translation>
     </message>
@@ -5384,10 +5384,10 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/qet.cpp" line="266"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation>
-            <numerusform>%n obrazu(ów)</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation type="unfinished">
+            <numerusform>%n obrazu</numerusform>
+            <numerusform>%n obrazów</numerusform>
+            <numerusform>%n obrazów</numerusform>
         </translation>
     </message>
     <message>
