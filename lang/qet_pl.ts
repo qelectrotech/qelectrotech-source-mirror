@@ -419,7 +419,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source> fois.</source>
-        <translation> raz(y).</translation>
+        <translation>-krotnie.</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
@@ -5384,7 +5384,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/qet.cpp" line="266"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n obrazu</numerusform>
             <numerusform>%n obrazów</numerusform>
             <numerusform>%n obrazów</numerusform>
@@ -5521,9 +5521,9 @@ Co chcesz zrobić ?</translation>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation>
-            <numerusform>Wycięcie %n komórki(ek)</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Wycięcie %n komórki</numerusform>
+            <numerusform>Wycięcie %n komórek</numerusform>
+            <numerusform>Wycięcie %n komórek</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5531,9 +5531,9 @@ Co chcesz zrobić ?</translation>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation>
-            <numerusform>Wklejenie %n komórki(ek)</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Wklejenie %n komórki</numerusform>
+            <numerusform>Wklejenie %n komórek</numerusform>
+            <numerusform>Wklejenie %n komórek</numerusform>
         </translation>
     </message>
     <message>
