@@ -409,17 +409,17 @@ dla przewodów o tym samym potencjale ?</translation>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Oznaczenia potencjału elektrycznego nie są identyczne.
-Czy chcesz zastosować oznaczenia dla wszystkich przewodów?</translation>
+Jakie oznaczenia przewodów chcesz zastosować?</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source>  : est présent </source>
-        <translation>  : jest aktualny </translation>
+        <translation>  : występuje </translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source> fois.</source>
-        <translation> raz.</translation>
+        <translation> raz(y).</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
