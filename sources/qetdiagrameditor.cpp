@@ -1213,29 +1213,25 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	if (selected_editable == 1) {
 		edit_selection -> setEnabled(true);
 		//edit element
-		if (selected_elements_count == 1) {
+		if (selected_elements_count) {
 			edit_selection -> setText(tr("\311diter l'\351lement", "edit element"));
 			edit_selection -> setIcon(QET::Icons::ElementEdit);
-			edit_selection -> setIconVisibleInMenu(true);
 		}
 		//edit text field
-		else if (selected_texts == 1) {
+		else if (selected_texts) {
 			edit_selection -> setText(tr("\311diter le champ de texte", "edit text field"));
 			edit_selection -> setIcon(QET::Icons::EditText);
-			edit_selection -> setIconVisibleInMenu(true);
 		}
 		//edit image
 		else if (selected_image) {
 			edit_selection -> setText(tr("\311diter l'image", "edit image"));
 			edit_selection -> setIcon(QET::Icons::resize_image);
-			edit_selection -> setIconVisibleInMenu(true);
 		}
 	}
 	//not an editable item
 	else {
 		edit_selection -> setText(tr("\311diter l'objet s\351lectionn\351", "edit selected item"));
 		edit_selection -> setIcon(QET::Icons::ElementEdit);
-		edit_selection -> setIconVisibleInMenu(true);
 		edit_selection -> setEnabled(false);
 	}
 }
