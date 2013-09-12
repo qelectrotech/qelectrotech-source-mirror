@@ -424,7 +424,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
         <source>Autre</source>
-        <translation>Inny</translation>
+        <translation type="unfinished">Inne</translation>
     </message>
 </context>
 <context>
