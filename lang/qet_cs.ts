@@ -1200,7 +1200,7 @@ vodiče s tímto potenciálem?</translation>
     <message>
         <location filename="../sources/elementscategorieswidget.cpp" line="34"/>
         <source>Recharger les catégories</source>
-        <translation>Znovu nahrát skupiny</translation>
+        <translation>Nahrát skupiny znovu</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorieswidget.cpp" line="37"/>
@@ -1504,7 +1504,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="58"/>
         <source>Recharger les collections</source>
-        <translation>Znovu nahrát sbírky</translation>
+        <translation>Nahrát sbírky znovu</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
@@ -3123,12 +3123,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="239"/>
         <source>Mode Selection</source>
-        <translation>Režim výběru</translation>
+        <translation>Výběrový režim</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="240"/>
         <source>Mode Visualisation</source>
-        <translation>Režim zobrazení</translation>
+        <translation>Pohledový režim</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="242"/>
@@ -3369,7 +3369,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="503"/>
         <source>Afficher les projets</source>
-        <translation>pohled na projekty</translation>
+        <translation>Pohled na projekty</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="223"/>
@@ -5610,7 +5610,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/recentfiles.cpp" line="162"/>
         <source>&amp;Récemment ouvert(s)</source>
-        <translation>&amp;Nedávno otevřený(é)</translation>
+        <translation>&amp;Nedávno otevřené</translation>
     </message>
 </context>
 <context>
@@ -6239,7 +6239,7 @@ Jiná pole se se nepoužívají.</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="345"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Zda můžete stanovit svá vlastní spojení pro názvy/hodnoty, takže s ními záhlaví výkresu bude počítat. Např. spojení názvu &quot;volta&quot; s hodnotou &quot;1745&quot; nahradí %{volta} 1745 v záhlaví výkresu.</translation>
+        <translation>Zde můžete stanovit svá vlastní spojení pro názvy/hodnoty, takže s ními záhlaví výkresu bude počítat. Např. spojení názvu &quot;volta&quot; s hodnotou &quot;1745&quot; nahradí %{volta} 1745 v záhlaví výkresu.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="358"/>
