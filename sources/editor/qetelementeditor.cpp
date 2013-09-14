@@ -424,10 +424,19 @@ void QETElementEditor::contextMenuEvent(QContextMenuEvent *event)
 	menu.addAction(deselectall);
 	menu.addAction(inv_select);
 	menu.addSeparator();
+	menu.addAction(edit_delete);
 	menu.addAction(cut);
 	menu.addAction(copy);
+	menu.addSeparator();
 	menu.addAction(paste);
 	menu.addAction(paste_in_area);
+	menu.addAction(paste_from_file);
+	menu.addAction(paste_from_elmt);
+	menu.addSeparator();
+	menu.addAction(edit_forward);
+	menu.addAction(edit_raise);
+	menu.addAction(edit_lower);
+	menu.addAction(edit_backward);
 	menu.exec(event->globalPos());
  }
 
