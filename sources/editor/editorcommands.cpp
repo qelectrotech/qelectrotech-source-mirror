@@ -157,7 +157,7 @@ void PastePartsCommand::undo() {
 		editor_view_ -> offset_paste_count_    = old_offset_paste_count_;
 		editor_view_ -> start_top_left_corner_ = old_start_top_left_corner_;
 	}
-	//editor_view_ -> zoomFit();
+	editor_view_ -> adjustSceneRect();
 }
 
 /// refait le coller
@@ -176,7 +176,7 @@ void PastePartsCommand::redo() {
 		}
 	}
 	editor_scene_ -> slot_select(content_);
-	//editor_view_ -> zoomFit();
+	editor_view_ -> adjustSceneRect();
 }
 
 /**
