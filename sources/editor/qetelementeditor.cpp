@@ -400,7 +400,7 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addAction(edit_raise);
 	edit_menu -> addAction(edit_lower);
 	edit_menu -> addAction(edit_backward);
-	
+
 	display_menu -> addAction(zoom_in);
 	display_menu -> addAction(zoom_out);
 	display_menu -> addAction(zoom_fit);
@@ -410,6 +410,21 @@ void QETElementEditor::setupMenus() {
 	insertMenu(settings_menu_, edit_menu);
 	insertMenu(settings_menu_, display_menu);
 }
+
+/**
+ * @brief QETElementEditor::contextMenuEvent
+ * @param event
+ */
+void QETElementEditor::contextMenuEvent(QContextMenuEvent *event)
+ {
+	 QMenu menu(this);
+	 menu.addAction(cut);
+	 menu.addAction(copy);
+	 menu.addAction(paste);
+	 menu.addAction(paste_in_area);
+	 menu.exec(event->globalPos());
+ }
+
 
 /**
 	Met a jour les menus
