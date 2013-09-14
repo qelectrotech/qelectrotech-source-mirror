@@ -402,13 +402,13 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="23"/>
         <source>Textes de potentiel</source>
-        <translation>Oznaczenia potencjału</translation>
+        <translation>Oznaczenia dla potencjału</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="26"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation>Oznaczenia potencjału elektrycznego nie są identyczne.
+        <translation>Oznaczenia dla potencjału elektrycznego nie są identyczne.
 Jakie oznaczenia przewodów chcesz zastosować?</translation>
     </message>
     <message>
@@ -424,7 +424,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
         <source>Autre</source>
-        <translation type="unfinished">Inne</translation>
+        <translation>Inne</translation>
     </message>
 </context>
 <context>
