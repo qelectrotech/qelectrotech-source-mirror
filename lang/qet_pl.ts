@@ -419,7 +419,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source> fois.</source>
-        <translation>-krotnie.</translation>
+        <translation>- krotnie.</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
@@ -3214,7 +3214,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="214"/>
         <source>Réinitialiser les conducteurs</source>
-        <translation>Przywrócenie tras przewodów</translation>
+        <translation>Przywróć trasy przewodów</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="273"/>
