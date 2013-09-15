@@ -1206,32 +1206,32 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/elementscategory.cpp" line="283"/>
         <source>La copie d&apos;une catégorie vers elle-même ou vers l&apos;une de ses sous-catégories n&apos;est pas gérée.</source>
-        <translation type="unfinished"></translation>
+        <translation>Eine Kategorie kann nicht in sich selbst oder in eine Ihrer Unterkategorieen kopiert werden.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="472"/>
         <source>Il n&apos;est pas possible de déplacer une collection.</source>
-        <translation type="unfinished">Es ist nicht moeglich eine Samlung zu verschieben.</translation>
+        <translation>Es ist nicht möglich eine Sammlung zu verschieben.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="478"/>
         <source>Le déplacement d&apos;une catégorie dans une de ses sous-catégories n&apos;est pas possible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Eine Kategorie kann nicht in eine Ihrer Unterkategorieen kopiert werden.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="556"/>
         <source>La suppression de cette catégorie a échoué.</source>
-        <translation type="unfinished">Das loeschen dieser Kategorie ist gescheitert.</translation>
+        <translation>Das Löschen dieser Kategorie ist gescheitert.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="583"/>
         <source>Impossible de supprimer l&apos;élément</source>
-        <translation type="unfinished">Es ist unmoeglich dieses Bauteil zu löschen</translation>
+        <translation>Dieses Bauteil kann nicht gelöscht werden</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="604"/>
         <source>Impossible de supprimer la catégorie</source>
-        <translation>Es ist unmoeglich di Kategorie zu loeschen</translation>
+        <translation>Diese Kategorie kann nicht gelöscht werden</translation>
     </message>
 </context>
 <context>
@@ -1296,19 +1296,19 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Die gewuenschte Kategorie ist nicht vorhanden. Aufgabe.</translation>
+        <translation>Die gewünschte Kategorie ist nicht vorhanden. Abbruch.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="56"/>
         <source>Éditer une catégorie</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeite Kategorie</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="64"/>
         <source>Créer une nouvelle catégorie</source>
         <comment>window title</comment>
-        <translation type="unfinished">Neue Kategorie erschaffen</translation>
+        <translation>Neue Kategorie erstellen</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="69"/>
@@ -1320,47 +1320,47 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="77"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lesezugriff</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="78"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sie können die Kategorie nicht verändern. Die Bearbeitungen finden im Lesezugriff statt.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="99"/>
         <source>Nom interne : </source>
-        <translation type="unfinished"></translation>
+        <translation>Interner Name:</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="110"/>
         <source>Vous pouvez spécifier un nom par langue pour la catégorie.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie können der Kategorie einen Namen pro Sprache geben.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="129"/>
         <source>Nom interne manquant</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Interner Name fehlt</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="130"/>
         <source>Vous devez spécifier un nom interne.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Es muss ein interner Name angegeben werden.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="140"/>
         <source>Nom interne déjà utilisé</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Interner Name ist bereits in Gebrauch</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="141"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Interner Name ist bereits von einer anderen Kategorie in Gebrauch. Wählen Sie bitte einen anderen.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="155"/>
@@ -1373,13 +1373,13 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="156"/>
         <source>Impossible de créer la catégorie</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Erschaffen der Kategorie unmoeglich</translation>
+        <translation>Kategorie Anlegen unmöglich</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="172"/>
         <source>Impossible d&apos;enregistrer la catégorie</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Speichern der Kategorie unmoeglich</translation>
+        <translation>Kategorie speichern unmöglich</translation>
     </message>
 </context>
 <context>
@@ -1492,12 +1492,12 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Entsprechende Datei oeffnen</translation>
+        <translation>Ordner öffnen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Copier le chemin</source>
-        <translation type="unfinished"></translation>
+        <translation>Pfad in Zwischenablage kopieren</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="58"/>
@@ -1512,7 +1512,7 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="60"/>
         <source>Éditer la catégorie</source>
-        <translation type="unfinished">Kategorie bearbeiten</translation>
+        <translation>Kategorie bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="61"/>
@@ -1522,7 +1522,7 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="62"/>
         <source>Vider la collection</source>
-        <translation type="unfinished">Samlung leeren</translation>
+        <translation>Samlung leeren</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
@@ -1532,7 +1532,7 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Bauteil bearbeiten</translation>
+        <translation>Bauteil bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
@@ -1542,12 +1542,12 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Ouvrir un fichier élément</source>
-        <translation type="unfinished">Bauteil Datei oeffnen</translation>
+        <translation>Bauteil Datei öffnen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Basculer vers ce projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt aktivieren</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
@@ -1557,7 +1557,7 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Propriétés du projet</source>
-        <translation type="unfinished">Eigenschaften des Projekts</translation>
+        <translation>Eigenschaften des Projekts</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
@@ -1572,17 +1572,17 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Supprimer ce schéma</source>
-        <translation type="unfinished">Diagram löschen</translation>
+        <translation>Diagram löschen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Remonter ce schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaltung aufwärts bewegen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Abaisser ce schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaltung abwärts bewegen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
@@ -1592,17 +1592,17 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Éditer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorlage bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Supprimer ce modèle</source>
-        <translation type="unfinished">Model löschen</translation>
+        <translation>Model löschen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
         <source>Déplacer dans cette catégorie</source>
-        <translation type="unfinished">In diese Kategorie verschieben</translation>
+        <translation>In diese Kategorie verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="79"/>
@@ -1628,24 +1628,24 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/elementspanelwidget.cpp" line="475"/>
         <source>Gestionnaire de catégories</source>
         <comment>window title</comment>
-        <translation type="unfinished">Kategorien Manager</translation>
+        <translation>Kategorien Manager</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="478"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwenden Sie diesen Manager, um Kategorieen hizuzufügen, zu löschen oder zu bearbeiten.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="643"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lese...</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="666"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
-        <translation type="unfinished">Laden:%p%</translation>
+        <translation>Lade: %p%</translation>
     </message>
 </context>
 <context>
@@ -1787,83 +1787,83 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/exportpropertieswidget.cpp" line="106"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Export in Ordner</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="124"/>
         <source>Dossier cible :</source>
-        <translation type="unfinished">Gezielte Datei :</translation>
+        <translation>Zielordner:</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="129"/>
         <source>Parcourir</source>
-        <translation type="unfinished">durchlaufen</translation>
+        <translation>Durchsuchen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="139"/>
         <source>Format :</source>
-        <translation type="unfinished">Format :</translation>
+        <translation>Format:</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="142"/>
         <source>PNG (*.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>PNG (*.png)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="143"/>
         <source>JPEG (*.jpg)</source>
-        <translation type="unfinished"></translation>
+        <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="144"/>
         <source>Bitmap (*.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitmap (*.bmp)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="145"/>
         <source>SVG (*.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG (*.svg)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="151"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Renderoptionen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="156"/>
         <source>Exporter le cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Rahmen exportieren</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="159"/>
         <source>Exporter les éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportiere nur die Symbole</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="164"/>
         <source>Dessiner la grille</source>
-        <translation type="unfinished"></translation>
+        <translation>Gitter zeichnen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="168"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Rahmen zeichnen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Inset zeichnen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="176"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Anschlüsse zeichnen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="180"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Leiterfarben erhalten</translation>
     </message>
 </context>
 <context>
@@ -1932,7 +1932,7 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/genericpanel.cpp" line="220"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
-        <translation type="unfinished">Keine Datei</translation>
+        <translation>Keine Datei</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="226"/>
@@ -1956,13 +1956,13 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/genericpanel.cpp" line="352"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Diagram ohne Titel</translation>
+        <translation>Diagram ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="359"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="438"/>
@@ -1991,7 +1991,7 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/genericpanel.cpp" line="868"/>
         <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished">Dies ist ein Bauteil, dass in ein Diagram hinzufuegbar ist.</translation>
+        <translation>Dies ist ein Bauteil, dass in ein Diagram hinzufügbar ist.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1152"/>
@@ -2057,7 +2057,7 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
         <source>Impossible d&apos;obtenir la description XML de ce modèle</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Die XML Beschreibung des Symbols kann nicht geöffnet werden</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="86"/>
@@ -2080,7 +2080,7 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
         <source>Utiliser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Bereits integrierte Model benutzen</translation>
+        <translation>Bereits eingebettete Symbole verwenden</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="173"/>
@@ -2092,13 +2092,13 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="183"/>
         <source>Écraser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lösche die bereits eingebetteten Symbole</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="193"/>
         <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Beide Symbole sollen koexistieren</translation>
     </message>
 </context>
 <context>
@@ -2490,12 +2490,12 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="30"/>
         <source>Possible</source>
-        <translation type="unfinished">moeglich</translation>
+        <translation>möglich</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="31"/>
         <source>Impossible</source>
-        <translation type="unfinished">unmoeglich</translation>
+        <translation>unmöglich</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="50"/>
@@ -2524,7 +2524,7 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="60"/>
         <source>Par défaut</source>
-        <translation type="unfinished">Standart</translation>
+        <translation>Standard</translation>
     </message>
 </context>
 <context>
@@ -5566,13 +5566,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qtextorientationwidget.cpp" line="36"/>
         <source>Ex.</source>
         <comment>Short example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>z.B.</translation>
     </message>
     <message>
         <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
         <source>Exemple</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Beispiel</translation>
     </message>
 </context>
 <context>
@@ -5881,57 +5881,57 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="39"/>
         <source>Nord</source>
-        <translation type="unfinished"></translation>
+        <translation>Nord</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="40"/>
         <source>Est</source>
-        <translation type="unfinished"></translation>
+        <translation>Ost</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="41"/>
         <source>Sud</source>
-        <translation type="unfinished"></translation>
+        <translation>Süd</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="42"/>
         <source>Ouest</source>
-        <translation type="unfinished"></translation>
+        <translation>West</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="45"/>
         <source>Position : </source>
-        <translation type="unfinished"></translation>
+        <translation>Position: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="48"/>
         <source>x : </source>
-        <translation type="unfinished"></translation>
+        <translation>x: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="50"/>
         <source>y : </source>
-        <translation type="unfinished"></translation>
+        <translation>y: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
         <source>Orientation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Orientierung: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="114"/>
         <source>abscisse</source>
-        <translation type="unfinished">Abzisse</translation>
+        <translation>Abzisse</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="116"/>
         <source>ordonnée</source>
-        <translation type="unfinished">Ordinante</translation>
+        <translation>Ordinante</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="118"/>
         <source>orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientierung</translation>
     </message>
 </context>
 <context>
