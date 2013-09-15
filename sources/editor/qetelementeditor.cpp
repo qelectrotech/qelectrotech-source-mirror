@@ -376,7 +376,7 @@ void QETElementEditor::setupMenus() {
 	paste_from_menu -> setIcon(QET::Icons::EditPaste);
 	paste_from_menu -> addAction(paste_from_file);
 	paste_from_menu -> addAction(paste_from_elmt);
-	
+
 	edit_menu -> addAction(undo);
 	edit_menu -> addAction(redo);
 	edit_menu -> addSeparator();
@@ -430,8 +430,7 @@ void QETElementEditor::contextMenuEvent(QContextMenuEvent *event)
 	menu.addSeparator();
 	menu.addAction(paste);
 	menu.addAction(paste_in_area);
-	menu.addAction(paste_from_file);
-	menu.addAction(paste_from_elmt);
+	menu.addMenu(paste_from_menu);
 	menu.addSeparator();
 	menu.addAction(edit_forward);
 	menu.addAction(edit_raise);
