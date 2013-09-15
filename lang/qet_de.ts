@@ -558,13 +558,13 @@ Verbindungen gleichen Potentials anwenden?</translation>
         <location filename="../sources/diagramimageitem.cpp" line="229"/>
         <source>Éditer les propriétés d&apos;une image</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bildeigenschaften bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/diagramimageitem.cpp" line="234"/>
         <source>Dimension de l&apos;image</source>
         <comment>image size</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bildgröße</translation>
     </message>
 </context>
 <context>
@@ -780,22 +780,22 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Selectionner une image...</source>
-        <translation type="unfinished"></translation>
+        <translation>Wählen Sie ein Bild aus...</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilder (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Erreur</source>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild konnte nicht geladen werden. </translation>
     </message>
 </context>
 <context>
@@ -1104,7 +1104,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="283"/>
         <source>arc</source>
-        <translation type="unfinished">arc</translation>
+        <translation>Kreisbogen</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="290"/>
@@ -1240,13 +1240,13 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementscategorydeleter.cpp" line="59"/>
         <source>Vider la collection ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Samlung leeren?</translation>
+        <translation>Samlung leeren?</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
         <source>Êtes-vous sûr de vouloir vider cette collection ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Sind sie sicher diese Samlung leeren zu wollen?</translation>
+        <translation>Sind Sie sicher diese Samlung leeren zu wollen?</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="76"/>
@@ -1387,7 +1387,7 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/elementscollection.cpp" line="151"/>
         <source>Il n&apos;est pas possible de déplacer une collection.</source>
-        <translation type="unfinished">Es ist nicht moeglich eine Samlung zu verschieben.</translation>
+        <translation>Es ist nicht möglich eine Samlung zu verschieben.</translation>
     </message>
 </context>
 <context>
@@ -1668,7 +1668,7 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
         <source>vertical :</source>
-        <translation type="unfinished">Senkrecht :</translation>
+        <translation>Senkrecht:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="112"/>
@@ -1678,17 +1678,17 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="114"/>
         <source>ordonnée</source>
-        <translation type="unfinished">Ordinante</translation>
+        <translation>Ordinante</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="116"/>
         <source>diamètre horizontal</source>
-        <translation type="unfinished">Horizontalen Durchmesser</translation>
+        <translation>horizontaler Durchmesser</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="118"/>
         <source>diamètre vertical</source>
-        <translation type="unfinished">Vertikale Achse </translation>
+        <translation>vertikaler Durchmesser</translation>
     </message>
 </context>
 <context>
@@ -2004,7 +2004,7 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/ghostelement.cpp" line="38"/>
         <source>&lt;u&gt;Élément manquant :&lt;/u&gt; %1</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;u&gt;Fehlendes Element:&lt;/u&gt; %1</translation>
     </message>
 </context>
 <context>
@@ -2457,22 +2457,22 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Chiffre 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahlenformat 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Chiffre 01</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahlenformat 01</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Chiffre 001</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahlenformat 001</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
@@ -2855,12 +2855,12 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1355"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Verstecke Editor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1356"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Zeige Editor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1357"/>
@@ -2943,31 +2943,37 @@ Options disponibles :
   -v, --version                 Afficher la version
   --license                     Afficher la licence
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">QElectroTech, ein Programm zum Erstellen von Schaltplänen.
+
+Parameter: 
+  --help                         Zeige diese Hilfe
+  -v, --version                 Display the version
+  --license                     Display the license
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1540"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --common-elements-dir=DIR     Setzt Pfad zur Symbolsammlung</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1543"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --common-tbt-dir=DIR          Setzt Template Pfad</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1546"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --config-dir=DIR              Pfad zur Konfiguration</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1548"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --lang-dir=DIR                Setzt den Pfad zu den Sprachdateien</translation>
     </message>
 </context>
 <context>
@@ -4169,7 +4175,6 @@ Options disponibles :
         <source>%n partie(s) sélectionnée(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4189,7 +4194,6 @@ Options disponibles :
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5345,7 +5349,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -5367,7 +5370,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -5383,7 +5385,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5391,7 +5392,6 @@ Que désirez vous faire ?</source>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5495,7 +5495,6 @@ Que désirez vous faire ?</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5503,7 +5502,6 @@ Que désirez vous faire ?</source>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -6450,7 +6448,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="75"/>
         <source>Gestionnaire de logos</source>
-        <translation type="unfinished"></translation>
+        <translation>Logomanager</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="78"/>
@@ -6845,7 +6843,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="250"/>
         <source>Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Textfarbe</translation>
     </message>
 </context>
 <context>
@@ -6853,7 +6851,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="192"/>
         <source>Insert HTML entity</source>
-        <translation type="unfinished"></translation>
+        <translation>HTML-Objekt einfügen</translation>
     </message>
 </context>
 <context>
