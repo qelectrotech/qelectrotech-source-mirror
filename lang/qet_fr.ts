@@ -54,9 +54,9 @@
         <location filename="../sources/qet.cpp" line="266"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n image</numerusform>
+            <numerusform>%n image</numerusform>
         </translation>
     </message>
     <message numerus="yes">
