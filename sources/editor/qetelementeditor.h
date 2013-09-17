@@ -113,11 +113,11 @@ class QETElementEditor : public QETMainWindow {
 	static QPointF pasteOffset();
 	static QET::OrientedMovement pasteMovement();
 	static QString getOpenElementFileName(QWidget * = 0, const QString & = QString());
-	
+	void contextMenu(QContextMenuEvent *event);
+
 	protected:
 	void closeEvent(QCloseEvent *);
 	virtual void firstActivation(QEvent *);
-	void contextMenuEvent(QContextMenuEvent *event);
 
 	private:
 	void setupActions();

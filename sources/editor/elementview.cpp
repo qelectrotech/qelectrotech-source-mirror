@@ -65,6 +65,10 @@ QRectF ElementView::viewedSceneRect() const {
 	return(QRectF(scene_left_top, scene_right_bottom));
 }
 
+void ElementView::contextMenuEvent(QContextMenuEvent *event) {
+	scene_ -> contextMenu(event);
+}
+
 /**
 	Definit l'ElementScene visualisee par cette ElementView
 	@param s l'ElementScene visualisee par cette ElementView

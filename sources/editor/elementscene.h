@@ -138,6 +138,7 @@ class ElementScene : public QGraphicsScene {
 	void cut();
 	void copy();
 	void paste();
+	void contextMenu (QContextMenuEvent *event);
 	
 	protected:
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);

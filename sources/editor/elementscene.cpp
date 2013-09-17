@@ -598,6 +598,11 @@ void ElementScene::paste() {
 	
 }
 
+void ElementScene::contextMenu(QContextMenuEvent *event) {
+	if (behavior == ElementScene::Normal)
+		element_editor -> contextMenu(event);
+}
+
 /**
 	Selectionne une liste de parties
 	@param content liste des parties a selectionner

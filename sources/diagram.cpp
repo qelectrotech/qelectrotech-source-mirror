@@ -84,6 +84,8 @@ Diagram::~Diagram() {
 	delete undo_stack_;
 	// suppression du QGIManager - tous les elements qu'il connait sont supprimes
 	delete qgi_manager_;
+	// remove of conductor setter
+	delete conductor_setter_;
 	
 	// suppression des objets gerant les deplacements
 	delete elements_mover_;
