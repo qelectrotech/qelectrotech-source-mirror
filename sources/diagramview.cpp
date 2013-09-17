@@ -426,13 +426,19 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 		switchToVisualisationModeIfNeeded(e);
 		fresh_focus_in_ = false;
 	}
-	if (isInteractive() && !scene -> isReadOnly() && current_behavior > noAction && e -> buttons() == Qt::LeftButton) {
+	if (isInteractive() && !scene -> isReadOnly() && e -> buttons() == Qt::LeftButton) {
 		switch (current_behavior) {
+			case noAction:
+				break;
 			case addingText:
 				addDiagramTextAtPos(mapToScene(e -> pos()));
 				break;
 			case addingImage:
 				addDiagramImageAtPos(mapToScene(e -> pos()));
+				break;
+			case dragView:
+				break;
+			default:
 				break;
 		}
 		current_behavior = noAction;
