@@ -117,10 +117,10 @@ int DiagramContent::count(int filter) const {
 	} else {
 		if (filter & Elements)           count += elements.count();
 		if (filter & TextFields)         count += textFields.count();
-		if (filter & Images)			  count += images.count();
-		if (filter == ConductorsToMove)   count += conductorsToMove.count();
-		if (filter == ConductorsToUpdate) count += conductorsToUpdate.count();
-		if (filter == OtherConductors)    count += otherConductors.count();
+		if (filter & Images)             count += images.count();
+		if (filter & ConductorsToMove)   count += conductorsToMove.count();
+		if (filter & ConductorsToUpdate) count += conductorsToUpdate.count();
+		if (filter & OtherConductors)    count += otherConductors.count();
 	}
 	return(count);
 }
