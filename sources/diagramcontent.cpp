@@ -116,8 +116,8 @@ int DiagramContent::count(int filter) const {
 		count += otherConductors.count();
 	} else {
 		if (filter & Elements)           count += elements.count();
-		if (filter == TextFields)         count += textFields.count();
-		if (filter == Images)			  count += images.count();
+		if (filter & TextFields)         count += textFields.count();
+		if (filter & Images)			  count += images.count();
 		if (filter == ConductorsToMove)   count += conductorsToMove.count();
 		if (filter == ConductorsToUpdate) count += conductorsToUpdate.count();
 		if (filter == OtherConductors)    count += otherConductors.count();
