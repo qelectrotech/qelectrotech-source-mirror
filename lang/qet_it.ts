@@ -4101,7 +4101,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="353"/>
         <source>&amp;Édition</source>
-        <translation>Modifica</translation>
+        <translation>Modifica (&amp;E)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="354"/>
