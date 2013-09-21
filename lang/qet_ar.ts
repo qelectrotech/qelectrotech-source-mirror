@@ -569,13 +569,13 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/diagramimageitem.cpp" line="229"/>
         <source>Éditer les propriétés d&apos;une image</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>تحرير خصائص الصورة</translation>
     </message>
     <message>
         <location filename="../sources/diagramimageitem.cpp" line="234"/>
         <source>Dimension de l&apos;image</source>
         <comment>image size</comment>
-        <translation type="unfinished"></translation>
+        <translation>مقاسات الصورة</translation>
     </message>
 </context>
 <context>
@@ -793,22 +793,22 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Selectionner une image...</source>
-        <translation type="unfinished"></translation>
+        <translation>تحديد الصورة</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1251"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>ملفات صورة  (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Erreur</source>
-        <translation type="unfinished">خطأ</translation>
+        <translation>خطأ</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1259"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
-        <translation type="unfinished"></translation>
+        <translation>نأسف لعدم إمكانية تحميل الصورة</translation>
     </message>
 </context>
 <context>
@@ -3188,7 +3188,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
         <source>Ajouter une image</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة صورة</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
@@ -3425,12 +3425,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Éditer l&apos;item sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation>تحرير العنصر المُحدّد</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished">Ctrl+E</translation>
+        <translation>Ctrl+E</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
@@ -3765,25 +3765,25 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="1217"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
-        <translation type="unfinished"></translation>
+        <translation>تحرير العنصر</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1223"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
-        <translation type="unfinished">تحرير الحقل النصّي</translation>
+        <translation>تحرير الحقل النصّي</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
-        <translation type="unfinished"></translation>
+        <translation>تحرير الصورة</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
-        <translation type="unfinished"></translation>
+        <translation>تحرير الكائن المُحدّد</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1410"/>
@@ -5102,7 +5102,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="108"/>
         <source>Ajouter une image</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>إضافة صورة</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="143"/>
@@ -5193,12 +5193,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1105"/>
         <source>Agrandire une image à %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>تكبير الصورة إلى %1 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1106"/>
         <source>Réduire une image à %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>تصغير الصورة إلى %1 %</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -5454,12 +5454,12 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="266"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n صورة</numerusform>
+            <numerusform>%n صورتان</numerusform>
+            <numerusform>%n صورا</numerusform>
+            <numerusform>%n صورا</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
