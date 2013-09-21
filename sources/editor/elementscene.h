@@ -121,7 +121,7 @@ class ElementScene : public QGraphicsScene {
 	virtual int xGrid() const;
 	virtual int yGrid() const;
 	virtual void setGrid(int, int);
-	virtual const QDomDocument toXml(bool = true) const;
+	virtual const QDomDocument toXml(bool = true);
 	virtual QRectF boundingRectFromXml(const QDomDocument &);
 	virtual void fromXml(const QDomDocument &, const QPointF & = QPointF(), bool = true, ElementContent * = 0);
 	virtual void reset();
@@ -159,6 +159,7 @@ class ElementScene : public QGraphicsScene {
 	bool mustSnapToGrid(QGraphicsSceneMouseEvent *);
 	static bool zValueLessThan(QGraphicsItem *, QGraphicsItem *);
 	QMutex *decorator_lock_;
+	void centerElementToOrigine();
 	
 	public slots:
 	void slot_move();
@@ -200,6 +201,8 @@ class ElementScene : public QGraphicsScene {
 	void partsZValueChanged();
 	/// Signal emitted when users have defined the copy/paste area
 	void pasteAreaDefined(const QRectF &);
+	/// Signal emitted when need zoomFit
+	void needZoomFit();
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ElementScene::ItemOptions)

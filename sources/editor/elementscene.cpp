@@ -385,9 +385,17 @@ void ElementScene::setGrid(int x_g, int y_g) {
 	representer tout l'element ou seulement les elements selectionnes
 	@return un document XML decrivant l'element
 */
-const QDomDocument ElementScene::toXml(bool all_parts) const {
-	//define the size of the element by the upper multiple of 10
+const QDomDocument ElementScene::toXml(bool all_parts) {
 	QRectF size= elementSceneGeometricRect();
+	//if the element doesn't contains the origin point of the scene
+	//we move the element to the origin for solve this default before saving
+	if (!size.contains(0,0) && all_parts) {
+		centerElementToOrigine();
+		//recalcul the size after movement
+		size= elementSceneGeometricRect();
+	}
+
+	//define the size of the element by the upper multiple of 10
 	int upwidth = ((qRound(size.width())/10)*10)+10;
 	if ((qRound(size.width())%10) > 6) upwidth+=10;
 
@@ -1146,6 +1154,33 @@ bool ElementScene::mustSnapToGrid(QGraphicsSceneMouseEvent *e) {
 */
 bool ElementScene::zValueLessThan(QGraphicsItem *item1, QGraphicsItem *item2) {
 	return(item1-> zValue() < item2 -> zValue());
+}
+
+/**
+ * @brief ElementScene::centerElementToOrigine
+ * try to center better is possible the element to the scene
+ * (the calcul isn't optimal but work good)
+ */
+void ElementScene::centerElementToOrigine() {
+	QRectF size= elementSceneGeometricRect();
+	int center_x = qRound(size.center().x());
+	int center_y = qRound(size.center().y());
+
+	//define the movement of translation
+	int move_x = center_x - (qRound(center_x) %10);
+	if (center_x < 0) move_x -= 10;
+	int move_y = center_y - (qRound(center_y) %10);
+	if (center_y < 0) move_y -= 10;
+
+		//move each primitive by @move
+		foreach (QGraphicsItem *qgi, items()) {
+			if (qgi -> type() == ElementPrimitiveDecorator::Type) continue;
+			if (qgi -> type() == QGraphicsRectItem::Type) continue;
+			//deselect item for disable decorator
+			qgi -> setSelected(false);
+			qgi -> moveBy(-(move_x), -(move_y));
+		}
+		emit (needZoomFit());
 }
 
 /**
