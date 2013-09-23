@@ -1,10 +1,11 @@
-<definition width="80" version="0.3" hotspot_x="5" hotspot_y="5" height="130" type="element" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="10" hotspot_y="9" height="140" type="element" orientation="dyyy">
     <names>
         <name lang="en">Bamo probe resistive ste</name>
+        <name lang="it">Sonda resistiva BAMO STE</name>
         <name lang="fr">Bamo_sonde_resistif_ste</name>
         <name lang="pl">Czujnik rezystancyjny Bamo STE</name>
+        <name lang="es">Bamo sonda resistiva ste</name>
         <name lang="cs">Rezistivní čidlo Bamo STE</name>
-        <name lang="it">Sonda resistiva BAMO STE</name>
     </names>
     <informations>Rafart Renaud</informations>
     <description>

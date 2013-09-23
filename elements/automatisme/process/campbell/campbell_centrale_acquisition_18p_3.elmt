@@ -1,10 +1,11 @@
-<definition width="390" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" ic="true" orientation="dyyy">
+<definition width="380" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مركز رفع بيانات Campbell CR1000 18P  قناة 3</name>
         <name lang="en">Campbell CR1000 18P Central Acquisition Channel 3</name>
         <name lang="it">Centrale acquisizione Campbell CR1000 18P canale 3</name>
         <name lang="fr">Campbell Centrale Acquisition CR1000 18P Voie 3</name>
         <name lang="pl">Campbell - Rejestrator CR1000 (część 3/3)</name>
+        <name lang="es">Campbell CR1000 central de adquisición canal 3 18P</name>
         <name lang="cs">Campbell - Registrátor CR1000 (část 3/3)</name>
     </names>
     <informations></informations>

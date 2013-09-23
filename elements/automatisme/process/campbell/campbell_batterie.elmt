@@ -1,10 +1,11 @@
-<definition width="160" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="140" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Campbell Batterie PS100E 12V</name>
         <name lang="en">Campbell PS100E 12V Battery</name>
         <name lang="it">Batteria 12V Campbell PS100E</name>
         <name lang="fr">Campbell Batterie PS100E 12V</name>
         <name lang="pl">Campbell - Bateria PS100E 12V</name>
+        <name lang="es">Campbell PS100E bateria 12V</name>
         <name lang="cs">Baterie Campbell PS100E 12V</name>
     </names>
     <informations></informations>

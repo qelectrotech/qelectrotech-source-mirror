@@ -1,10 +1,11 @@
-<definition width="330" version="0.3" hotspot_x="15" hotspot_y="35" height="100" type="element" orientation="dyyy">
+<definition width="320" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مركزية رفع بيانات CR1000 15P قناة 2</name>
         <name lang="en">the Central Acquisition Channel 2 CR1000 15P</name>
         <name lang="it">Centale acquisizione Campbell CR1000 15P canale 2</name>
         <name lang="fr">l Centrale Acquisition CR1000 15P Voie 2</name>
         <name lang="pl">Campbell - Rejestrator CR1000 (część 2/3)</name>
+        <name lang="es">Campbell CR1000 central de adquisición canal 2 15P</name>
         <name lang="cs">Campbell - Registrátor CR1000 (část 2/3)</name>
     </names>
     <informations></informations>
