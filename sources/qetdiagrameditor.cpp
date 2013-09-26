@@ -1533,7 +1533,7 @@ void QETDiagramEditor::slot_addImage() {
 void QETDiagramEditor::slot_editSelection() {
 	if (DiagramView *dv = currentDiagram()) {
 		DiagramContent dc = dv -> diagram() -> selectedContent();
-		if (dc.count() != 1) return;
+		if (dc.count(DiagramContent::SelectedOnly | DiagramContent::All) != 1) return;
 
 		if (dc.count(DiagramContent::Elements)) {
 			findSelectedElementInPanel();

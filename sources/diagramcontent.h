@@ -41,13 +41,13 @@ class DiagramContent {
 	enum Filter {
 		Elements = 1,
 		TextFields = 2,
-		Images = 3,
-		ConductorsToMove = 4,
-		ConductorsToUpdate = 8,
-		OtherConductors = 16,
-		AnyConductor = 28,
-		All = 31,
-		SelectedOnly = 32
+		Images = 4,
+		ConductorsToMove = 8,
+		ConductorsToUpdate = 16,
+		OtherConductors = 32,
+		AnyConductor = 56,
+		All = 63,
+		SelectedOnly = 64
 	};
 	
 	/// Hold electrical elements
