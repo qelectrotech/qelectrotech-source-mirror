@@ -4337,7 +4337,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="164"/>
         <source>Maintenez la touche Shift enfoncée pour effectuer plusieurs ajouts d&apos;affilée</source>
-        <translation>Tenere premuto lo Shift per aggiungere più parti in una riga</translation>
+        <translation>Tenere premuto il tasto Shift per aggiungere più parti in una riga</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="172"/>
@@ -5114,7 +5114,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/diagramcommands.cpp" line="580"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
-        <translation>sposta %1</translation>
+        <translation>spostato %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="601"/>
