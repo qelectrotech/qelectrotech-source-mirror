@@ -26,7 +26,7 @@ namespace QET {
 	/// QElectroTech version (as string, used to mark projects and elements XML documents)
 	const QString version = "0.3";
 	/// QElectroTech displayed version
-	const QString displayedVersion = "0.3rc";
+	const QString displayedVersion = "0.3";
 	QString license();
 	/// Orientation (used for electrical elements and their terminals)
 	enum Orientation {North, East, South, West};

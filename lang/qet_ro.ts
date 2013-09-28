@@ -646,157 +646,157 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="537"/>
+        <location filename="../sources/diagramview.cpp" line="543"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="562"/>
+        <location filename="../sources/diagramview.cpp" line="568"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Proprietatile schemei</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="890"/>
+        <location filename="../sources/diagramview.cpp" line="896"/>
         <source>Propriétés de la sélection</source>
         <translation>Proprietatile selectiei</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="892"/>
+        <location filename="../sources/diagramview.cpp" line="898"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Selectia contine %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="933"/>
         <source>Élément manquant</source>
         <translation>Element inexistent</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="929"/>
+        <location filename="../sources/diagramview.cpp" line="935"/>
         <source>Élément</source>
         <translation>Element</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="934"/>
+        <location filename="../sources/diagramview.cpp" line="940"/>
         <source>Nom : %1
 </source>
         <translation>Nume: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="937"/>
+        <location filename="../sources/diagramview.cpp" line="943"/>
         <source>Folio : %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="939"/>
+        <location filename="../sources/diagramview.cpp" line="945"/>
         <source>Position : %1
 </source>
         <translation>Pozitie: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="940"/>
+        <location filename="../sources/diagramview.cpp" line="946"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Dimensiuni: %1x%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="941"/>
+        <location filename="../sources/diagramview.cpp" line="947"/>
         <source>Bornes : %1
 </source>
         <translation>Borne:%1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="942"/>
+        <location filename="../sources/diagramview.cpp" line="948"/>
         <source>Connexions internes : %1
 </source>
         <translation>Conexiuni interne: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="942"/>
+        <location filename="../sources/diagramview.cpp" line="948"/>
         <source>Autorisées</source>
         <translation>Autorizate</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="942"/>
+        <location filename="../sources/diagramview.cpp" line="948"/>
         <source>Interdites</source>
         <translation>Interzise</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="943"/>
+        <location filename="../sources/diagramview.cpp" line="949"/>
         <source>Champs de texte : %1
 </source>
         <translation>Câmpuri de text: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="946"/>
+        <location filename="../sources/diagramview.cpp" line="952"/>
         <source>Emplacement : %1
 </source>
         <translation>Amplasare: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="950"/>
+        <location filename="../sources/diagramview.cpp" line="956"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Proprietatile elementului selectat</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="951"/>
+        <location filename="../sources/diagramview.cpp" line="957"/>
         <source>Retrouver dans le panel</source>
         <translation>Cautati in panou</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="952"/>
+        <location filename="../sources/diagramview.cpp" line="958"/>
         <source>Éditer l&apos;élément</source>
         <translation>Editati elementul</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1014"/>
+        <location filename="../sources/diagramview.cpp" line="1020"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Editati proprietatile unui conductor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1033"/>
+        <location filename="../sources/diagramview.cpp" line="1039"/>
         <source>Textes de conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1034"/>
+        <location filename="../sources/diagramview.cpp" line="1040"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1089"/>
+        <location filename="../sources/diagramview.cpp" line="1095"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1251"/>
+        <location filename="../sources/diagramview.cpp" line="1257"/>
         <source>Selectionner une image...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1251"/>
+        <location filename="../sources/diagramview.cpp" line="1257"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1259"/>
+        <location filename="../sources/diagramview.cpp" line="1265"/>
         <source>Erreur</source>
         <translation type="unfinished">Eroare</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1259"/>
+        <location filename="../sources/diagramview.cpp" line="1265"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1126,52 +1126,52 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>poligon</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="666"/>
+        <location filename="../sources/editor/elementscene.cpp" line="679"/>
         <source>Éditer les orientations</source>
         <comment>window title</comment>
         <translation>Editati orientarea</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="670"/>
+        <location filename="../sources/editor/elementscene.cpp" line="683"/>
         <source>L&apos;orientation par défaut est l&apos;orientation dans laquelle s&apos;effectue la création de l&apos;élément.</source>
         <translation>Orientarea implicita este cea la care s-a creat elementul.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="682"/>
+        <location filename="../sources/editor/elementscene.cpp" line="695"/>
         <source>Autoriser les connexions internes</source>
         <translation>Permiteti conexiunile interne</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="720"/>
+        <location filename="../sources/editor/elementscene.cpp" line="733"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Editati informatiile despre autor</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="724"/>
+        <location filename="../sources/editor/elementscene.cpp" line="737"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Puteti utiliza acest camp liber pentru a trece autorii elementului, licenta acestuia sau orice altceva considerati util.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="764"/>
+        <location filename="../sources/editor/elementscene.cpp" line="777"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Editati numele</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="768"/>
+        <location filename="../sources/editor/elementscene.cpp" line="781"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Puteti specifica numele elementului in mai multe limbi.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="965"/>
-        <location filename="../sources/editor/elementscene.cpp" line="1012"/>
+        <location filename="../sources/editor/elementscene.cpp" line="978"/>
+        <location filename="../sources/editor/elementscene.cpp" line="1025"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translation>Acest fisier XML nu este o definitie de element.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="976"/>
+        <location filename="../sources/editor/elementscene.cpp" line="989"/>
         <source>Les orientations ne sont pas valides.</source>
         <comment>error message</comment>
         <translation>Orientarile nu sunt valide.</translation>
@@ -3390,7 +3390,7 @@ Opțiuni disponibile:
         <translation type="unfinished">Deschideți proiectul numai pentru citire</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1910"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1907"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation type="unfinished">Eroare</translation>
@@ -3741,40 +3741,40 @@ Opțiuni disponibile:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1223"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1222"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1227"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1233"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1410"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1407"/>
         <source>Active le projet « %1 »</source>
         <translation>Activați proiectul « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1845"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1842"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Imposibil de deschis acest element din panou, se pare că este editat în altă fereastră</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1851"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1848"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Imposibil de deschis acest element din panou... reîmprospătare panou...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1863"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1860"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Imposibil de deschis acest element din panou</translation>
     </message>
@@ -4133,48 +4133,48 @@ Opțiuni disponibile:
         <translation>Lipiți din...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="458"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="486"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[Modificat]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="460"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="488"/>
         <source> [lecture seule]</source>
         <comment>window title tag</comment>
         <translation>[numai citire]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="499"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="527"/>
         <source>Informations</source>
         <comment>dock title</comment>
         <translation>Informații</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="508"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="536"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Anulări</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="515"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="543"/>
         <source>Aucune modification</source>
         <translation>Nicio modificare</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="526"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="554"/>
         <source>Parties</source>
         <comment>dock title</comment>
         <translation>Piese</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="538"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="566"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
         <translation>Editor de elemente</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="593"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="621"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n piesă(e) selectată(e).</numerusform>
@@ -4183,19 +4183,19 @@ Opțiuni disponibile:
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="628"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="656"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
         <translation>Lipsă borne</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="629"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="657"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
         <translation>Elementul nu conține nicio bornă. Un element trebuie să conțină borne pentru a putea fi legat de alte elemente prin intermediul conductorilor.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="642"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="670"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -4205,167 +4205,167 @@ Opțiuni disponibile:
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="652"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="680"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt; : %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="662"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="690"/>
         <source>Avertissements</source>
         <comment>messagebox title</comment>
         <translation>Avertissemente</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="680"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="708"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Fișierul %1 nu există.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="688"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1312"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1340"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Nu se poate deschide fișierul %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="697"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1316"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="725"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1344"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Acest fișier nu este un document XML valid</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="703"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1322"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="731"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1350"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Eroare</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="715"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1285"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="743"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1313"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Editare in mod numai citire</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1286"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="744"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1314"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>Nu aveti drepturile necesare pentru editarea acestui element. Va fi deschis in mod numai citire.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="740"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="766"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="777"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="768"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="794"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="805"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Eroare</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="741"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="769"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>Imposibil de salvat in acest fisier</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="767"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="795"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Nu se poate găsi elementul</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="778"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="806"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Nu se poate salva elementul</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="906"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="934"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation type="unfinished">Fișierul nu poate fi deschis</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="908"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="936"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="925"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="953"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Reîncărcați elementul</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="926"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="954"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Ați modificat acest element. Dacă reîncărcați, modificările se vor pierde. Sigur doriți să reîncărcați?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1000"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1028"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Salvați tot</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1002"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1030"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>Element QElectroTech (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1034"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1062"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Salvati elementul curent?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1036"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1064"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Doriți să salvați elementul %1?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1135"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1163"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation>Prea multe primitive, lista nu a fost generată.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1234"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1262"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Deschidere fișier</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1236"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1264"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>Elemente QElectroTech (*.elmt);;Fișiere XML (*.xml);;Orice tip de fișier (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1257"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1266"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1342"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1351"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1285"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1294"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1370"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1379"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Element inexistent.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1258"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1343"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1286"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1371"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Elementul nu există.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1267"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1352"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1295"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1380"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Directorul ales nu conține niciun element.</translation>

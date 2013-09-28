@@ -661,152 +661,152 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>توجيه النص المحدد</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="537"/>
+        <location filename="../sources/diagramview.cpp" line="543"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>بدون عنوان</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="562"/>
+        <location filename="../sources/diagramview.cpp" line="568"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translatorcomment>نافذة العنوان</translatorcomment>
         <translation>خاصيات المخطط</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="890"/>
+        <location filename="../sources/diagramview.cpp" line="896"/>
         <source>Propriétés de la sélection</source>
         <translation>خصائص التحديد</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="892"/>
+        <location filename="../sources/diagramview.cpp" line="898"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translatorcomment> %1.سرد الكائنات المحددة</translatorcomment>
         <translation>يحتوي التحديد %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="933"/>
         <source>Élément manquant</source>
         <translation>عنصر ناقص</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="929"/>
+        <location filename="../sources/diagramview.cpp" line="935"/>
         <source>Élément</source>
         <translation>عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="934"/>
+        <location filename="../sources/diagramview.cpp" line="940"/>
         <source>Nom : %1
 </source>
         <translation>الاسم : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="937"/>
+        <location filename="../sources/diagramview.cpp" line="943"/>
         <source>Folio : %1
 </source>
         <translation>صفحة : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="939"/>
+        <location filename="../sources/diagramview.cpp" line="945"/>
         <source>Position : %1
 </source>
         <translation>الموضع : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="940"/>
+        <location filename="../sources/diagramview.cpp" line="946"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>مقاسات : %1x%2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="941"/>
+        <location filename="../sources/diagramview.cpp" line="947"/>
         <source>Bornes : %1
 </source>
         <translation>نهايات التوصيل : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="942"/>
+        <location filename="../sources/diagramview.cpp" line="948"/>
         <source>Connexions internes : %1
 </source>
         <translation>التوصيلات الداخلية : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="942"/>
+        <location filename="../sources/diagramview.cpp" line="948"/>
         <source>Autorisées</source>
         <translation>مسموح </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="942"/>
+        <location filename="../sources/diagramview.cpp" line="948"/>
         <source>Interdites</source>
         <translation>ممنوع </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="943"/>
+        <location filename="../sources/diagramview.cpp" line="949"/>
         <source>Champs de texte : %1
 </source>
         <translation>حقل نصي  %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="946"/>
+        <location filename="../sources/diagramview.cpp" line="952"/>
         <source>Emplacement : %1
 </source>
         <translation>موضع : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="950"/>
+        <location filename="../sources/diagramview.cpp" line="956"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>خاصيات العنصر المحدد</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="951"/>
+        <location filename="../sources/diagramview.cpp" line="957"/>
         <source>Retrouver dans le panel</source>
         <translation>إيجاد في اللوحة</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="952"/>
+        <location filename="../sources/diagramview.cpp" line="958"/>
         <source>Éditer l&apos;élément</source>
         <translation>نشر العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1014"/>
+        <location filename="../sources/diagramview.cpp" line="1020"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>تحرير خاصيات الموصل</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1033"/>
+        <location filename="../sources/diagramview.cpp" line="1039"/>
         <source>Textes de conducteurs</source>
         <translation>نصوص الموصلات</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1034"/>
+        <location filename="../sources/diagramview.cpp" line="1040"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>هل تُريد اعتماد النصّ الجديد على موصلات هذا الكمون ؟</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1089"/>
+        <location filename="../sources/diagramview.cpp" line="1095"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>إختيار اللون الجديد لهذا الموصل</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1251"/>
+        <location filename="../sources/diagramview.cpp" line="1257"/>
         <source>Selectionner une image...</source>
         <translation>تحديد الصورة</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1251"/>
+        <location filename="../sources/diagramview.cpp" line="1257"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>ملفات صورة  (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1259"/>
+        <location filename="../sources/diagramview.cpp" line="1265"/>
         <source>Erreur</source>
         <translation>خطأ</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1259"/>
+        <location filename="../sources/diagramview.cpp" line="1265"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation>نأسف لعدم إمكانية تحميل الصورة</translation>
     </message>
@@ -1159,56 +1159,56 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>متعدد أضلع</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="666"/>
+        <location filename="../sources/editor/elementscene.cpp" line="679"/>
         <source>Éditer les orientations</source>
         <comment>window title</comment>
         <translatorcomment>عنوان النافذة</translatorcomment>
         <translation>تحرير الإتجاهات</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="670"/>
+        <location filename="../sources/editor/elementscene.cpp" line="683"/>
         <source>L&apos;orientation par défaut est l&apos;orientation dans laquelle s&apos;effectue la création de l&apos;élément.</source>
         <translation>الإتجاه المفترض هو الإتجاه الذي أُنشأ فيه العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="682"/>
+        <location filename="../sources/editor/elementscene.cpp" line="695"/>
         <source>Autoriser les connexions internes</source>
         <translation>السماح بالتوصيلات الداخلية</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="720"/>
+        <location filename="../sources/editor/elementscene.cpp" line="733"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translatorcomment>عنوان النافذة</translatorcomment>
         <translation>تحرير معلومات المؤلف</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="724"/>
+        <location filename="../sources/editor/elementscene.cpp" line="737"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>يمكنكم استعمال هذا الحقل الحر لذكر المؤلفين , العنصر, ترخيصه أو أي معلومة أخرى ترونها ضرورية</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="764"/>
+        <location filename="../sources/editor/elementscene.cpp" line="777"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translatorcomment>عنوان النافذة</translatorcomment>
         <translation>تحرير الأسماء</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="768"/>
+        <location filename="../sources/editor/elementscene.cpp" line="781"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>يمكنكم تعيين إسم العنصر بلغات .متعددة</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="965"/>
-        <location filename="../sources/editor/elementscene.cpp" line="1012"/>
+        <location filename="../sources/editor/elementscene.cpp" line="978"/>
+        <location filename="../sources/editor/elementscene.cpp" line="1025"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translatorcomment>رسالة خطأ</translatorcomment>
         <translation>هذا المستند XML ليس بمعرف للعنصر .</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="976"/>
+        <location filename="../sources/editor/elementscene.cpp" line="989"/>
         <source>Les orientations ne sont pas valides.</source>
         <comment>error message</comment>
         <translatorcomment>رسالة خطأ</translatorcomment>
@@ -3768,45 +3768,45 @@ Options disponibles :
         <translation>تحرير العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1223"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1222"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>تحرير الحقل النصّي</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1227"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>تحرير الصورة</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1233"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>تحرير الكائن المُحدّد</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1410"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1407"/>
         <source>Active le projet « %1 »</source>
         <translation>تفعيل  المشروع « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1845"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1842"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>لا يُمكن التعرّف على هذا العنصر في اللوحة. يبدو أنه حرّر في نافذة أخرى</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1851"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1848"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>إستحالة التعرّف على هذا العنصر في اللوحة ... إعادة تحميل اللوحة</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1863"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1860"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>إستحالة التعرّف على هذا العنصر في اللوحة</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1910"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1907"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>خطأ</translation>
@@ -4166,48 +4166,48 @@ Options disponibles :
         <translation>لصق من ...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="458"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="486"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[مُعدّل]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="460"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="488"/>
         <source> [lecture seule]</source>
         <comment>window title tag</comment>
         <translation> [للقراءة فقط]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="499"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="527"/>
         <source>Informations</source>
         <comment>dock title</comment>
         <translation>معلومات</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="508"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="536"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>إلغاءات</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="515"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="543"/>
         <source>Aucune modification</source>
         <translation>لا تغيير</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="526"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="554"/>
         <source>Parties</source>
         <comment>dock title</comment>
         <translation>أجزاء</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="538"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="566"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
         <translation>محرر العناصر</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="593"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="621"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n جزء محدد</numerusform>
@@ -4219,19 +4219,19 @@ Options disponibles :
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="628"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="656"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
         <translation>غياب طرف توصيل</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="629"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="657"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
         <translation>العنصر لا يحتوي على أيّ نقطة توصيل. لا بُدّ للعنصر من إحتواء نقاط توصيل ليتسنى ربطه مع عناصر أخرى بواسطة أسلاك موصلة.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="642"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="670"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -4244,167 +4244,167 @@ Options disponibles :
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="652"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="680"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt; : %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="662"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="690"/>
         <source>Avertissements</source>
         <comment>messagebox title</comment>
         <translation>تنبيهات</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="680"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="708"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>الملف %1 غير موجود</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="688"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1312"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1340"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>إستحالة فتح الملف %1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="697"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1316"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="725"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1344"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>هذا الملف وثيقة XML غير سليمة</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="703"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1322"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="731"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1350"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>خطأ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="715"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1285"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="743"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1313"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>تحرير بقراءة فقط</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1286"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="744"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1314"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>ليس لديك الصلاحيات الضرورية لتعديل هذا العنصر . وبالتالي سيُفتح للقراءة فقط.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="740"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="766"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="777"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="768"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="794"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="805"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>خطأ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="741"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="769"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>لايمكن الكتابة في هذا الملف</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="767"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="795"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
         <translation>لا يُمكن الوصول لهذا العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="778"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="806"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>لا يمكن حفظ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="906"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="934"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>إستحالة فتح الملف</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="908"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="936"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>يبدو أنّ الملف %1 الذي تُحاول فتحه غير موجود .</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="925"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="953"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>إعادة تحميل العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="926"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="954"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>لقد قُمت بتعديلات على هذا العنصر. إذا قمت بإعادة تحميله فإنك ستفقد هذه التعديلات . هل ترغب فعلا في إعادة تحميل العنصر ؟ </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1000"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1028"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>حفظ باسم</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1002"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1030"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>عتاصر QElectrotech (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1034"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1062"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>حفظ العنصر الحالي ؟ </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1036"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1064"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>هل تريد حفظ العنصر %1 ؟</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1135"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1163"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation>عدد كبير من الأوليات , قائمة غير مُحدثة</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1234"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1262"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>فتح ملف</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1236"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1264"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>عناصر QElectrotech (*.elmt); ملفات XML(*.xml)::كل الملفات (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1257"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1266"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1342"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1351"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1285"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1294"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1370"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1379"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>لا وجود للعنصر</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1258"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1343"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1286"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1371"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>العنصر غير موجود</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1267"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1352"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1295"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1380"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>المسار الإفتراضي المختار لا يُطابق عنصر.</translation>
