@@ -4140,7 +4140,7 @@ Opzioni disponibili:
         <location filename="../sources/editor/qetelementeditor.cpp" line="536"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation>Annullati</translation>
+        <translation>Cronologia</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="554"/>
