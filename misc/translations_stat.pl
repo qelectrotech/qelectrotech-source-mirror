@@ -93,7 +93,7 @@ our %languages = (
 	'ca' => {
 		'name'               => 'Català',
 		'french_name'        => 'Catalan',
-		'translator_name'    => 'Youssef Ouamalkran',
+		'translator_name'    => 'Youssef Ouamalkran & Eduard Amoros',
 		'translator_mail_ml' => 'youssefsan@gmail.com',
 		'qt'                 => 0
 	},
