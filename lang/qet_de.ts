@@ -3102,12 +3102,12 @@ Parameter:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="206"/>
         <source>Désélectionner tout</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl aufheben</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="207"/>
         <source>Inverser la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl umkehren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
@@ -3117,7 +3117,7 @@ Parameter:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
         <source>Pivoter</source>
-        <translation type="unfinished">Drehen</translation>
+        <translation>Drehen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="210"/>
@@ -3142,7 +3142,7 @@ Parameter:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="215"/>
         <source>Propriétés du schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagram Eigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
@@ -3212,12 +3212,12 @@ Parameter:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Zoom vor</translation>
+        <translation>Vergrößern</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Zoom zurueck</translation>
+        <translation>Verkleinern</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
@@ -3247,12 +3247,12 @@ Parameter:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="239"/>
         <source>Mode Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="240"/>
         <source>Mode Visualisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Ansicht verschieben</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="242"/>
@@ -3370,7 +3370,7 @@ Parameter:
         <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
         <source>Ferme le schéma courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aktuelle Zeichnung schließen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
@@ -3613,7 +3613,7 @@ Parameter:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="432"/>
         <source>&amp;Édition</source>
-        <translation type="unfinished"></translation>
+        <translation>B&amp;earbeiten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="433"/>
@@ -3623,37 +3623,37 @@ Parameter:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="434"/>
         <source>Afficha&amp;ge</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Anzeige</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="436"/>
         <source>Fe&amp;nêtres</source>
-        <translation type="unfinished"></translation>
+        <translation>Fe&amp;nster</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="496"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeige oder verstecke die Werkzeugleiste</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeige oder verstecke die Anzeige Werkzeugleiste</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="498"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeige oder verstecke die Diagramm Werkzeugleiste</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeige oder verstecke das Element Panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="500"/>
         <source>Affiche ou non la liste des modifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeige oder verstecke die Historie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="503"/>
@@ -3668,7 +3668,7 @@ Parameter:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="529"/>
         <source>Affichage</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeige</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="532"/>
@@ -4175,7 +4175,6 @@ Parameter:
         <source>%n partie(s) sélectionnée(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4195,7 +4194,6 @@ Parameter:
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5351,7 +5349,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -5373,7 +5370,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -5389,7 +5385,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5397,7 +5392,6 @@ Que désirez vous faire ?</source>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5501,7 +5495,6 @@ Que désirez vous faire ?</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5509,7 +5502,6 @@ Que désirez vous faire ?</source>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>

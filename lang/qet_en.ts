@@ -2997,7 +2997,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
-        <translation>Displays or not the elements panel</translation>
+        <translation>Show or hide the elements panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
@@ -3122,12 +3122,12 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="239"/>
         <source>Mode Selection</source>
-        <translation>Selection Mode</translation>
+        <translation>Select</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="240"/>
         <source>Mode Visualisation</source>
-        <translation>View Mode</translation>
+        <translation>Move</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="242"/>
@@ -3510,7 +3510,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
         <source>Ferme le schéma courant</source>
         <comment>status bar tip</comment>
-        <translation>Closes the current diagram</translation>
+        <translation>Close the current diagram</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
