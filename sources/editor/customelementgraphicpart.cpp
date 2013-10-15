@@ -75,6 +75,7 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde) {
 		if (style_name == "line-style") {
 			if      (style_value == "dashed") _linestyle = DashedStyle;
 			if      (style_value == "dotted") _linestyle = DottedStyle;
+			if      (style_value == "dashdotted") _linestyle = DashdottedStyle;
 			else if (style_value == "normal") _linestyle = NormalStyle;
 			// il n'y a pas de else car les valeurs non conformes sont ignorees (idem par la suite)
 		} else if (style_name == "line-weight") {
