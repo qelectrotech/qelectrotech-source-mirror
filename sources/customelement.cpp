@@ -750,6 +750,7 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 	pen.setStyle(Qt::SolidLine);
 	pen.setWidthF(1.0);
 	brush.setStyle(Qt::NoBrush);
+	pen.setStyle(Qt::DashDotLine);
 	
 	// recupere la liste des couples style / valeur
 	QStringList styles = e.attribute("style").split(";", QString::SkipEmptyParts);
