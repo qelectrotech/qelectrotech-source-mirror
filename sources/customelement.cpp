@@ -743,14 +743,6 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 	// attributs par defaut
 	pen.setJoinStyle(Qt::BevelJoin);
 	pen.setCapStyle(Qt::SquareCap);
-	pen.setColor(Qt::black);
-	pen.setColor(Qt::red);
-	pen.setColor(Qt::blue);
-	pen.setColor(Qt::green);
-	pen.setStyle(Qt::SolidLine);
-	pen.setWidthF(1.0);
-	brush.setStyle(Qt::NoBrush);
-	pen.setStyle(Qt::DashDotLine);
 	
 	// recupere la liste des couples style / valeur
 	QStringList styles = e.attribute("style").split(";", QString::SkipEmptyParts);
@@ -764,7 +756,7 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 			if (style_name == "line-style") {
 				if (style_value == "dashed") pen.setStyle(Qt::DashLine);
 				else if (style_value == "dotted") pen.setStyle(Qt::DotLine);
-				else if (style_value == "dashdoted") pen.setStyle(Qt::DashDotLine);
+				else if (style_value == "dashdotted") pen.setStyle(Qt::DashDotLine);
 				else if (style_value == "normal") pen.setStyle(Qt::SolidLine);
 			} else if (style_name == "line-weight") {
 				if (style_value == "thin") pen.setWidth(0);
