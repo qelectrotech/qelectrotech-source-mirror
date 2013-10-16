@@ -12,7 +12,7 @@
 ;General
 	; General Product Description Definitions
 	!define SOFT_NAME     "QElectroTech"
-	!define SOFT_VERSION  "0.3b"
+	!define SOFT_VERSION  "0.3"
 	!define SOFT_WEB_SITE "http://qelectrotech.org/"
 	!define SOFT_BUILD    "1"
 	
@@ -140,6 +140,7 @@ Section ""
 	; TODO : add the QuickStart Guide (or any other documentation) when available
 	
 	; shortcut on the desktop
+	SetShellVarContext all ; all users
 	CreateShortCut "$DESKTOP\QElectroTech.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
 SectionEnd
 
