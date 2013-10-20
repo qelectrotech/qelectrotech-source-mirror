@@ -39,9 +39,13 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 	chosen_category(0)
 {
 	setOptions(options() & ~QWizard::NoCancelButton);
-#ifdef Q_WS_MAC
-	setWindowFlags(Qt::Sheet);
+
+#ifdef Q_WS_WIN
+	setWizardStyle(QWizard::AeroStyle);
+#elif Q_WS_MAC
+	setWizardStyle(QWizard::MacStyle);
 #endif
+
 	setPixmap(LogoPixmap, QPixmap(":/ico/256x256/qelectrotech.png").scaled(64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 	setWindowTitle(tr("Cr\351er un nouvel \351l\351ment : Assistant", "window title"));
 	setButtonText(QWizard::NextButton, tr("&Suivant >"));
