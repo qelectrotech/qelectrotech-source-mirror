@@ -6,6 +6,7 @@
         <name lang="fr">Relais électronique</name>
         <name lang="pl">Przekaźnik elektroniczny</name>
         <name lang="cs">Elektronické relé</name>
+        <name lang="es">Relé electrónico</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

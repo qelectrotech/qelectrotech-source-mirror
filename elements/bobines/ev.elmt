@@ -1,4 +1,4 @@
-<definition width="90" version="0.3" hotspot_x="0" hotspot_y="0" height="60" type="element" orientation="dyyy">
+<definition width="80" version="0.3" hotspot_x="37" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام كهربائي</name>
         <name lang="de">Magnetventil</name>
@@ -7,22 +7,23 @@
         <name lang="it">Elettrovalvola</name>
         <name lang="fr">Electrovanne</name>
         <name lang="pl">Elektrozawór</name>
+        <name lang="es">Electroválvula</name>
         <name lang="cs">Elektrostavidlo</name>
     </names>
     <informations></informations>
     <description>
-        <input x="40" y="15" size="4" rotate="true" text="A1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="40" y2="50" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="40" y2="20" x2="40"/>
-        <input x="40" y="47" size="4" rotate="true" text="A2"/>
-        <input x="53" y="29.6667" size="8" rotate="true" text="YV_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="30" x1="13" y2="30" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="7" y2="20" x2="17"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="7" y2="40" x2="17"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="7" y2="40" x2="17"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="17" y2="40" x2="7"/>
-        <rect width="30" x="20" y="20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="40" y="10" orientation="n"/>
-        <terminal x="40" y="50" orientation="s"/>
+        <input x="0" y="-15" size="4" rotate="true" text="A1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+        <input x="0" y="17" size="4" rotate="true" text="A2"/>
+        <input x="13" y="-0.3333" size="8" rotate="true" text="YV_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="0" x1="-27" y2="0" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-33" y2="-10" x2="-23"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-33" y2="10" x2="-23"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-33" y2="10" x2="-23"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-23" y2="10" x2="-33"/>
+        <rect width="30" x="-20" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
     </description>
 </definition>

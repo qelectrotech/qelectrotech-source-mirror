@@ -1,10 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="25" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
         <name lang="en">Remanence relay</name>
+        <name lang="it">Relè</name>
         <name lang="fr">Relais à rémanence</name>
         <name lang="pl">Przekaźnik remanencyjny</name>
+        <name lang="ES">Relé de remanencia</name>
         <name lang="cs">Přetrvávající relé</name>
-        <name lang="it">Relè</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

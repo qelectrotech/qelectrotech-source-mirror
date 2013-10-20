@@ -1,10 +1,11 @@
-<definition width="70" version="0.3" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="27" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
         <name lang="el">Πηνίο ρελέ με μηχανική μανδάλωση</name>
         <name lang="en">Relay with mechanical interlock</name>
         <name lang="it">Relè con interblocco meccanico</name>
         <name lang="fr">Relais à verrouillage mécanique</name>
         <name lang="pl">Przekaźnik z blokadą mechaniczną</name>
+        <name lang="es">Relé con enclavamiento mecánico</name>
         <name lang="cs">Relé s mechanickým zavíráním</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

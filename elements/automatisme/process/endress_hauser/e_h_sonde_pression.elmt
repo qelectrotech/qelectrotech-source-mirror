@@ -1,10 +1,11 @@
-<definition width="90" version="0.3" hotspot_x="25" hotspot_y="45" height="100" type="element" ic="true" orientation="dyyy">
+<definition width="80" version="0.3" hotspot_x="20" hotspot_y="41" height="100" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Endress+Hauser مجس ضغط Cerabar M</name>
         <name lang="en">Endress+Hauser Pressure Sensor Cerabar M</name>
         <name lang="it">Sensore di conduttività Enress &amp;amp; Hauser Cerabar M</name>
         <name lang="fr">Endress+Hauser Sonde pression Cerabar M</name>
         <name lang="pl">Endress+Hauser - Przetwornik ciśnienia Cerabar M</name>
+        <name lang="es">Endress+Hauser Cerabar M Sensor de presión</name>
         <name lang="cs">Endress+Hauser - Tlakové čidlo Cerabar M</name>
     </names>
     <informations></informations>

@@ -1,4 +1,4 @@
-<definition width="150" version="0.3" hotspot_x="15" hotspot_y="15" height="90" type="element" orientation="dyyy">
+<definition width="150" version="0.3" hotspot_x="15" hotspot_y="14" height="90" type="element" orientation="dyyy">
     <names>
         <name lang="ar">OMRON 7HEC</name>
         <name lang="pt">OMRON 7H EC</name>
@@ -7,6 +7,7 @@
         <name lang="it">OMRON 7H EC</name>
         <name lang="fr">OMRON 7H EC</name>
         <name lang="pl">OMRON 7H EC</name>
+        <name lang="es">OMRON 7H EC</name>
         <name lang="cs">OMRON 7H EC</name>
     </names>
     <informations></informations>

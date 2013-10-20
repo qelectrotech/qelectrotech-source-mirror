@@ -1,10 +1,11 @@
-<definition width="180" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="180" version="0.3" hotspot_x="15" hotspot_y="34" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Endress&amp;Hause  مجس موصليّة  CLS40</name>
         <name lang="en">Endress+Hauser conductivity sensor CLS40</name>
         <name lang="it">Endress+Hauser sensore conduttività CLS40</name>
         <name lang="fr">Endress+Hauser Sonde conductivité CLS40</name>
         <name lang="pl">Endress+Hauser - Czujnik przewodności CLS40</name>
+        <name lang="es">Endress+Hauser CLS40 Sensor de conductividad</name>
         <name lang="cs">Endress+Hauser - Čidlo vodivosti  CLS40</name>
     </names>
     <informations></informations>

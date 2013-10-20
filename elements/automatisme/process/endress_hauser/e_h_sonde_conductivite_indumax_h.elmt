@@ -1,10 +1,11 @@
-<definition width="180" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="180" version="0.3" hotspot_x="15" hotspot_y="34" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">Endress+Hauser مجس موصليّة Indiumax H CLS54</name>
         <name lang="en">Endress+Hauser H CLS54 sensor conductivity Indiumax</name>
         <name lang="it">Sensore di conduttività Endress+Hauser Indiumax CLS54</name>
         <name lang="fr">Endress+Hauser Sonde conductivité Indiumax H CLS54</name>
         <name lang="pl">Endress+Hauser - Indukcyjna sonda przewodności H CLS54</name>
+        <name lang="es">Endress + Hauser Indiumax H CLS54 sensor de conductividad</name>
         <name lang="cs">Endress+Hauser - Čidlo vodivosti Indiumax H CLS54</name>
     </names>
     <informations></informations>

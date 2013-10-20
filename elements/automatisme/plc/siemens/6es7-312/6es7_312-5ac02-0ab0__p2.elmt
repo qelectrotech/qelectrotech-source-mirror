@@ -1,4 +1,4 @@
-<definition width="840" version="0.3" hotspot_x="65" hotspot_y="35" height="110" type="element" orientation="dnnn">
+<definition width="830" version="0.3" hotspot_x="58" hotspot_y="39" height="110" type="element" orientation="dnnn">
     <names>
         <name lang="ar">6ES7 312-5AC02-0AB0 (part 2/3)</name>
         <name lang="pt">6ES7 312-5AC02-0AB0 (parte 2/3)</name>
@@ -7,7 +7,7 @@
         <name lang="it">6ES7 312-5AC02-0AB0 (parte 2/3)</name>
         <name lang="fr">6ES7 312-5AC02-0AB0 (part 2/3)</name>
         <name lang="pl">6ES7 312-5AC02-0AB0 (część 2/3)</name>
-        <name lang="es">6ES7 312-5AC02-0AB0 (part 2/3)</name>
+        <name lang="es">6ES7 312-5AC02-0AB0 (parte 2/3)</name>
         <name lang="cs">6ES7 312-5AC02-0AB0 (part 2/3)</name>
     </names>
     <informations></informations>

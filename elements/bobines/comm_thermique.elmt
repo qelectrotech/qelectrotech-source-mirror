@@ -1,10 +1,11 @@
-<definition width="60" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="17" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
         <name lang="el">Θερμικό ρελέ υπερφόρτωσης</name>
         <name lang="en">Thermal overload relay</name>
         <name lang="it">Relè termico</name>
         <name lang="fr">Organe de commande d'un relais thermique</name>
         <name lang="pl">Przekaźnik nadprądowy cieplny</name>
+        <name lang="es">Relé de sobrecarga termica</name>
         <name lang="cs">Řídící čidlo tepelného relé</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

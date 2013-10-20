@@ -6,6 +6,7 @@
         <name lang="fr">Relais rapide (à mise au travail et à mise au repos rapides)</name>
         <name lang="pl">Przekaźnik szybki</name>
         <name lang="cs">Rychlé relé</name>
+        <name lang="es">Relé rapido</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

@@ -1,10 +1,11 @@
-<definition width="80" version="0.3" hotspot_x="40" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="70" version="0.3" hotspot_x="35" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
         <name lang="el">Πηνίο χρινικού, καθυστέρηση ενεργοποίησης-απενεργοποίησης</name>
         <name lang="en">Relay Focus work and quiescence delayed</name>
         <name lang="it">Relè ritardato all'apertura/chiusura</name>
         <name lang="fr">Relais à mise au travail et mise au repos retardées</name>
         <name lang="pl">Przekaźnik działający ze zwłoką przy odwzbudzeniu</name>
+        <name lang="es">Relé de trabajo y reposo retardado</name>
         <name lang="cs">Relé pracující při probuzení a uvedené v nečinnost se zpožděním</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

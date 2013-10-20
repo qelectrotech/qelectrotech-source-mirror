@@ -1,10 +1,11 @@
-<definition width="70" version="0.3" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="25" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
         <name lang="el">Πηνίο Χρονικού καθυστέρησης απενεργοποίησης</name>
         <name lang="en">Relay Focus rest delayed</name>
         <name lang="it">Relè ritardato all'apertura</name>
         <name lang="fr">Relais à mise au repos retardée</name>
         <name lang="pl">Przekaźnik działający ze zwłoką przy odwzbudzeniu</name>
+        <name lang="es">Relé con retardo de apertura</name>
         <name lang="cs">Relé uvedené v nečinnost se zpožděním</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

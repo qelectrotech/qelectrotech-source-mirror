@@ -1,4 +1,4 @@
-<definition width="950" version="0.3" hotspot_x="65" hotspot_y="55" height="120" type="element" orientation="dnnn">
+<definition width="940" version="0.3" hotspot_x="60" hotspot_y="51" height="110" type="element" orientation="dnnn">
     <names>
         <name lang="ar">1762-L40BXB(R) - (part OUT 1/2)</name>
         <name lang="pt">1762-L40BXB(R) - (part OUT 1/2)</name>
@@ -6,7 +6,7 @@
         <name lang="it">1762-L40BXB(R) - (part OUT 1/2)</name>
         <name lang="fr">1762-L40BXB(R) - (part OUT 1/2)</name>
         <name lang="pl">1762-L40BXB(R) - (part OUT 1/2)</name>
-        <name lang="es">1762-L40BXB(R) - (part OUT 1/2)</name>
+        <name lang="es">1762-L40BXB(R) - (Salida parte 1/2)</name>
         <name lang="cs">1762-L40BXB(R) - (part OUT 1/2)</name>
     </names>
     <informations></informations>

@@ -1,10 +1,11 @@
-<definition width="250" version="0.3" hotspot_x="15" hotspot_y="35" height="110" type="element" ic="true" orientation="dyyy">
+<definition width="230" version="0.3" hotspot_x="15" hotspot_y="36" height="110" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Endress+Hauser - Bitop L</name>
         <name lang="en">Endress+Hauser Bitop L</name>
         <name lang="it">Endress+Hauser Bitop L</name>
         <name lang="fr">Endress+Hauser Bitop L</name>
         <name lang="pl">Endress+Hauser - Bitop L</name>
+        <name lang="es">Endress+Hauser - Bitop L</name>
         <name lang="cs">Endress+Hauser - Bitop L</name>
     </names>
     <informations></informations>

@@ -1,10 +1,11 @@
-<definition width="150" version="0.3" hotspot_x="25" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="150" version="0.3" hotspot_x="25" hotspot_y="36" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">Endress+Hauser مجس موصليّة CLS40 </name>
         <name lang="en">Endress+Hauser Conductivity Probe CLS40</name>
         <name lang="it">Sonda conduttiva Endress+Hauser CLS40</name>
         <name lang="fr">Endress+Hauser Sonde Conductivité CLS40 </name>
         <name lang="pl">Endress+Hauser - Czuknik przewodności CLS40</name>
+        <name lang="es">Endress+Hauser CLS40 Sonda de conductividad</name>
         <name lang="cs">Endress+Hauser - Čidlo vodivosti CLS40</name>
     </names>
     <informations></informations>

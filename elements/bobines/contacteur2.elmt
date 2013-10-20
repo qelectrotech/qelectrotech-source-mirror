@@ -1,10 +1,11 @@
-<definition width="70" version="0.22" hotspot_x="50" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="80" version="0.3" hotspot_x="47" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="en">Contactor</name>
+        <name lang="it">Contattore</name>
         <name lang="fr">Contacteur</name>
         <name lang="pl">Przekaźnik</name>
+        <name lang="es">Contactor 2P 1T</name>
         <name lang="cs">Stykač</name>
-        <name lang="it">Contattore</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,24 +1,25 @@
-<definition width="90" version="0.3" hotspot_x="0" hotspot_y="0" height="170" type="element" orientation="dyyy">
+<definition width="80" version="0.3" hotspot_x="34" hotspot_y="72" height="160" type="element" orientation="dyyy">
     <names>
         <name lang="ar">RESEAU STATION TETE</name>
         <name lang="en">RESEAU STATION TETE</name>
         <name lang="it">RETE Stazione di partenza</name>
         <name lang="fr">RESEAU STATION TETE</name>
         <name lang="pl">RESEAU STATION TETE</name>
+        <name lang="es">Estación de Red Principal</name>
         <name lang="cs">RESEAU STATION TETE</name>
     </names>
     <informations></informations>
     <description>
-        <input x="26" y="24.5" size="5" rotate="true" text="ADR : _"/>
-        <arc width="4.5" x="8.8" y="156.575" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
-        <arc width="4.5" x="8.8" y="10" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
-        <arc width="4.5" x="76.3" y="156.575" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <arc width="4.5" x="76.3" y="10" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="11.2" y2="10" x2="78.4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.55" x1="8.8" y2="160.8" x2="8.8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.5604" x1="80.8" y2="160.789" x2="80.8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="166.325" x1="10.7649" y2="166.325" x2="78.2212"/>
-        <input x="20" y="124.5" size="5" rotate="true" text="STATION_"/>
-        <terminal x="80.8" y="90" orientation="e"/>
+        <input x="-14" y="-55.5" size="5" rotate="true" text="ADR : _"/>
+        <arc width="4.5" x="-31.2" y="76.575" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <arc width="4.5" x="-31.2" y="-70" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="4.5" x="36.3" y="76.575" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="4.5" x="36.3" y="-70" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-70" x1="-28.8" y2="-70" x2="38.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65.45" x1="-31.2" y2="80.8" x2="-31.2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65.4396" x1="40.8" y2="80.789" x2="40.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="86.325" x1="-29.2351" y2="86.325" x2="38.2212"/>
+        <input x="-20" y="44.5" size="5" rotate="true" text="STATION_"/>
+        <terminal x="40.8" y="10" orientation="e"/>
     </description>
 </definition>

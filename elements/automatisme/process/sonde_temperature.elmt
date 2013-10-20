@@ -1,10 +1,11 @@
-<definition width="40" version="0.3" hotspot_x="5" hotspot_y="30" height="30" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="5" hotspot_y="32" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="en">Temperature sensor</name>
+        <name lang="it">Sonda di temperatura</name>
         <name lang="fr">Sonde de temperature</name>
         <name lang="pl">Czujnik temperatury</name>
+        <name lang="es">Sensor de temperatura</name>
         <name lang="cs">Teplotní čidlo</name>
-        <name lang="it">Sonda di temperatura</name>
     </names>
     <informations></informations>
     <description>
