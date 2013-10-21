@@ -164,9 +164,13 @@ QWidget *AboutQET::contributorsTab() const {
 	QLabel *contributors = new QLabel();
 	
 	addAuthor(contributors, "Remi Collet",         "remi@fedoraproject.org",      tr("Paquets Fedora et Red Hat"));
-	addAuthor(contributors, "Trem",                "trem@mandriva.org",           tr("Paquets Mandriva"));
+	addAuthor(contributors, "Trem",                "trem@mageia.org",             tr("Paquets Mageia"));
 	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",    tr("Paquets Debian"));
-	addAuthor(contributors, "Markos Chandras",     "hwoarang@gentoo.org.",        tr("Paquets gentoo"));
+	addAuthor(contributors, "Markos Chandras",     "hwoarang@gentoo.org.",        tr("Paquets Gentoo"));
+	addAuthor(contributors, "Mbit",                 "",                           tr("Paquets Gentoo"));
+	addAuthor(contributors, "Elbert",               "",                           tr("Paquets OS/2"));
+	addAuthor(contributors, "zloidemon",            "",                           tr("Paquets FreeBSD"));
+	addAuthor(contributors, "Chipsterjulien",       "",                           tr("Paquets Archlinux AUR"));
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
 
 	
