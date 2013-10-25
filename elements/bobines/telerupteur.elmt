@@ -1,10 +1,11 @@
-<definition width="60" version="0.3" hotspot_x="50" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="70" version="0.3" hotspot_x="47" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="el">Τηλεχειριζόμενος διακόπτης</name>
         <name lang="en">Remote controlled switch</name>
         <name lang="it">Teleruttore</name>
         <name lang="fr">Télérupteur</name>
         <name lang="pl">Łącznik zdalnie sterowany</name>
+        <name lang="es">Interruptor a control remoto 1P1T</name>
         <name lang="cs">Dálkový spínač (přerušovač)</name>
     </names>
     <informations>Author: The QElectroTech team

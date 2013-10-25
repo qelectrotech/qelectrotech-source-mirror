@@ -1,4 +1,4 @@
-<definition width="50" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="14" hotspot_y="31" height="60" type="element" orientation="dnny">
     <names>
         <name lang="ar">Omron HDE-M1</name>
         <name lang="el">Omron HDE-M1</name>
@@ -6,6 +6,7 @@
         <name lang="it">Omron HDE-M1</name>
         <name lang="fr">Omron HDE-M1</name>
         <name lang="pl">Omron HDE-M1</name>
+        <name lang="es">Omron HDE-M1</name>
         <name lang="cs">Omron HDE-M1</name>
     </names>
     <informations></informations>

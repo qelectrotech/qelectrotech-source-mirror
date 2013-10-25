@@ -1,10 +1,11 @@
-<definition width="60" version="0.3" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="32" hotspot_y="31" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="el">Αισθητήρας ροής αερίου, μεταγωγική επαφή</name>
         <name lang="en">Actuated by the flow of a gas NC/NO</name>
         <name lang="it">Azionato dal flusso di un gas (NC/NO)</name>
         <name lang="fr">Actionné par le débit d'un gaz NF/NO</name>
         <name lang="pl">Zestyk przełączny sterowany przepływem gazu</name>
+        <name lang="es">Accionado por el flujo de un gas NC/NA</name>
         <name lang="cs">Ovládáno průtokem plynu NC/NO</name>
     </names>
     <informations></informations>

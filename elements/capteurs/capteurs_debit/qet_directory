@@ -1,10 +1,11 @@
 <qet-directory>
     <names>
+        <name lang="el">Αισθητήρες ροής</name>
         <name lang="en">Flow sensors</name>
+        <name lang="it">Sensori di flusso</name>
         <name lang="fr">Capteurs debit</name>
         <name lang="pl">Czujniki przepływu</name>
-	<name lang="it">Sensori di flusso</name>
+        <name lang="es">Sensores de flujo</name>
         <name lang="cs">Průtoková čidla</name>
-        <name lang="el">Αισθητήρες ροής</name>
-   </names>
+    </names>
 </qet-directory>

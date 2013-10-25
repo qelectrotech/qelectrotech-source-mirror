@@ -1,10 +1,11 @@
-<definition width="60" version="0.3" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="38" hotspot_y="31" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="en">NO controlled relative humidity</name>
+        <name lang="it">Controllato dall'umidità relativa NO</name>
         <name lang="fr">Actionné par humidité relative NO</name>
         <name lang="pl">Zestyk zwierny sterowany poziomemi wilgotności względnej</name>
+        <name lang="es">Accionado por humedad relativa NA</name>
         <name lang="cs">Ovládáno relativní vlhkostí NO</name>
-        <name lang="it">Controllato dall'umidità relativa NO</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

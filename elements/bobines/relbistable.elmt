@@ -1,13 +1,13 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="19" hotspot_y="37" height="70" type="element" orientation="dnny">
     <names>
         <name lang="ar">مُرحّل ثنائي الإستقرار</name>
         <name lang="ru">Обмотка</name>
         <name lang="en">Coil</name>
+        <name lang="it">Relè bistabile</name>
         <name lang="fr">Relais bistable</name>
         <name lang="pl">Cewka</name>
-        <name lang="es">Bobina</name>
+        <name lang="es">Relé biestable</name>
         <name lang="cs">Cívka</name>
-        <name lang="it">Relè bistabile</name>
     </names>
     <informations></informations>
     <description>

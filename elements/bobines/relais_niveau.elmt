@@ -1,4 +1,4 @@
-<definition width="110" version="0.3" hotspot_x="55" hotspot_y="45" height="90" type="element" orientation="dyyy">
+<definition width="110" version="0.3" hotspot_x="56" hotspot_y="39" height="80" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مُرحّل مستوى</name>
         <name lang="el">Ρελέ στάθμης</name>
@@ -6,6 +6,7 @@
         <name lang="it">Relè di livello</name>
         <name lang="fr">Relais de Niveau</name>
         <name lang="pl">Przekaźnik kontroli poziomu</name>
+        <name lang="es">Relé de nivel</name>
         <name lang="cs">Relé pro kontrolu hladiny</name>
     </names>
     <informations></informations>
