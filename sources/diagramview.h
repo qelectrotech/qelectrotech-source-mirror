@@ -76,7 +76,7 @@ class DiagramView : public QGraphicsView {
 	void editText();
 	void addImage();
 	void editImage();
-	IndependentTextItem *addDiagramTextAtPos(const QPointF &);
+	IndependentTextItem *addDiagramTextAtPos(const QPointF &, const QString text = 0);
 	DiagramImageItem *addDiagramImageAtPos(const QPointF &);
 	
 	protected:
@@ -102,6 +102,7 @@ class DiagramView : public QGraphicsView {
 	void dropEvent(QDropEvent *);
 	void handleElementDrop(QDropEvent *);
 	void handleTitleBlockDrop(QDropEvent *);
+	void handleTextDrop(QDropEvent *);
 	QRectF viewedSceneRect() const;
 	bool mustIntegrateElement(const ElementsLocation &) const;
 	bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;

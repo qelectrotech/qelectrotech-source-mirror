@@ -232,6 +232,8 @@ void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
 		e -> acceptProposedAction();
 	} else if (e -> mimeData() -> hasFormat("application/x-qet-titleblock-uri")) {
 		e -> acceptProposedAction();
+	} else if (e -> mimeData() -> hasText()) {
+		e -> acceptProposedAction();
 	} else {
 		e -> ignore();
 	}
@@ -264,6 +266,8 @@ void DiagramView::dropEvent(QDropEvent *e) {
 		handleElementDrop(e);
 	} else if (e -> mimeData() -> hasFormat("application/x-qet-titleblock-uri")) {
 		handleTitleBlockDrop(e);
+	} else if (e -> mimeData() -> hasText()) {
+		handleTextDrop(e);
 	}
 }
 
@@ -297,6 +301,18 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
 	tbt_loc.fromString(e -> mimeData() -> text());
 	if (tbt_loc.isValid()) {
 		emit(aboutToSetDroppedTitleBlockTemplate(tbt_loc));
+	}
+}
+
+/**
+ * @brief DiagramView::handleTextDrop
+ *handle the drop of text, html markup are automatically detected.
+ * @param e the QDropEvent describing the current drag'n drop
+ */
+void DiagramView::handleTextDrop(QDropEvent *e) {
+	if (e -> mimeData() -> hasText()) {
+		if (e -> mimeData() -> hasHtml()) addDiagramTextAtPos(e->pos()) -> setHtml(e -> mimeData() -> text());
+		else addDiagramTextAtPos(e -> pos(), e -> mimeData() -> text());
 	}
 }
 
@@ -1311,11 +1327,14 @@ DiagramImageItem *DiagramView::addDiagramImageAtPos(const QPointF &pos) {
 	@param pos Position du champ de texte ajoute
 	@return le champ de texte ajoute
 */
-IndependentTextItem *DiagramView::addDiagramTextAtPos(const QPointF &pos) {
+IndependentTextItem *DiagramView::addDiagramTextAtPos(const QPointF &pos, const QString text) {
 	if (!isInteractive() || scene -> isReadOnly()) return(0);
 	
 	// cree un nouveau champ de texte
-	IndependentTextItem *iti = new IndependentTextItem("_");
+	IndependentTextItem *iti;
+	if (text.isEmpty()) {
+		iti = new IndependentTextItem("_");
+	} else iti = new IndependentTextItem(text);
 	
 	// le place a la position pos en gerant l'annulation
 	scene -> undoStack().push(new AddTextCommand(scene, iti, pos));
