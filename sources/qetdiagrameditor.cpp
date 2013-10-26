@@ -184,54 +184,54 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 */
 void QETDiagramEditor::actions() {
 	// icones et labels
-	new_file          = new QAction(QIcon::fromTheme("document-new", QET::Icons::DocumentNew),           tr("&Nouveau"),                             this);
-	open_file         = new QAction(QIcon::fromTheme("document-open", QET::Icons::DocumentOpen),          tr("&Ouvrir"),                              this);
-	close_file        = new QAction(QIcon::fromTheme("window-close", QET::Icons::DocumentClose),         tr("&Fermer"),                              this);
-	save_file         = new QAction(QIcon::fromTheme("document-save", QET::Icons::DocumentSave),          tr("&Enregistrer"),                         this);
-	save_file_as      = new QAction(QIcon::fromTheme("document-save-as", QET::Icons::DocumentSaveAs),        tr("Enregistrer sous"),                     this);
-	save_cur_diagram  = new QAction(QIcon::fromTheme("document-save-all", QET::Icons::DocumentSaveAll),       tr("&Enregistrer le sch\351ma courant"),    this);
-	import_diagram    = new QAction(QIcon::fromTheme("document-import", QET::Icons::DocumentImport),        tr("&Importer"),                            this);
-	export_diagram    = new QAction(QIcon::fromTheme("document-export", QET::Icons::DocumentExport),        tr("E&xporter"),                            this);
-	print             = new QAction(QIcon::fromTheme("document-print", QET::Icons::DocumentPrint),         tr("Imprimer"),                             this);
-	quit_editor       = new QAction(QIcon::fromTheme("application-exit", QET::Icons::ApplicationExit),       tr("&Quitter"),                             this);
+	new_file          = new QAction(QET::Icons::DocumentNew,           tr("&Nouveau"),                             this);
+	open_file         = new QAction(QET::Icons::DocumentOpen,          tr("&Ouvrir"),                              this);
+	close_file        = new QAction(QET::Icons::DocumentClose,         tr("&Fermer"),                              this);
+	save_file         = new QAction(QET::Icons::DocumentSave,          tr("&Enregistrer"),                         this);
+	save_file_as      = new QAction(QET::Icons::DocumentSaveAs,        tr("Enregistrer sous"),                     this);
+	save_cur_diagram  = new QAction(QET::Icons::DocumentSaveAll,       tr("&Enregistrer le sch\351ma courant"),    this);
+	import_diagram    = new QAction(QET::Icons::DocumentImport,        tr("&Importer"),                            this);
+	export_diagram    = new QAction(QET::Icons::DocumentExport,        tr("E&xporter"),                            this);
+	print             = new QAction(QET::Icons::DocumentPrint,         tr("Imprimer"),                             this);
+	quit_editor       = new QAction(QET::Icons::ApplicationExit,       tr("&Quitter"),                             this);
 	
 	undo = undo_group.createUndoAction(this, tr("Annuler"));
-	undo -> setIcon(QIcon::fromTheme("edit-undo", QET::Icons::EditUndo));
+	undo -> setIcon(QET::Icons::EditUndo);
 	redo = undo_group.createRedoAction(this, tr("Refaire"));
-	redo -> setIcon(QIcon::fromTheme("edit-redo", QET::Icons::EditRedo));
-	cut               = new QAction(QIcon::fromTheme("edit-cut", QET::Icons::EditCut),               tr("Co&uper"),                              this);
-	copy              = new QAction(QIcon::fromTheme("edit-copy", QET::Icons::EditCopy),              tr("Cop&ier"),                              this);
-	paste             = new QAction(QIcon::fromTheme("edit-paste", QET::Icons::EditPaste),             tr("C&oller"),                              this);
-	select_all        = new QAction(QIcon::fromTheme("edit-select-all", QET::Icons::EditSelectAll),         tr("Tout s\351lectionner"),                 this);
+	redo -> setIcon(QET::Icons::EditRedo);
+	cut               = new QAction(QET::Icons::EditCut,               tr("Co&uper"),                              this);
+	copy              = new QAction(QET::Icons::EditCopy,              tr("Cop&ier"),                              this);
+	paste             = new QAction(QET::Icons::EditPaste,             tr("C&oller"),                              this);
+	select_all        = new QAction(QET::Icons::EditSelectAll,         tr("Tout s\351lectionner"),                 this);
 	select_nothing    = new QAction(                                   tr("D\351s\351lectionner tout"),            this);
 	select_invert     = new QAction(                                   tr("Inverser la s\351lection"),             this);
-	delete_selection  = new QAction(QIcon::fromTheme("edit-delete", QET::Icons::EditDelete),            tr("Supprimer"),                            this);
-	rotate_selection  = new QAction(QIcon::fromTheme("object-rotate-right", QET::Icons::ObjectRotateRight),     tr("Pivoter"),                              this);
-	rotate_texts      = new QAction(QIcon::fromTheme("object-rotate-right", QET::Icons::ObjectRotateRight),     tr("Orienter les textes"),                  this);
-	find_element      = new QAction(QIcon::fromTheme("edit-find"),     tr("Retrouver dans le panel"),              this);
+	delete_selection  = new QAction(QET::Icons::EditDelete,            tr("Supprimer"),                            this);
+	rotate_selection  = new QAction(QET::Icons::ObjectRotateRight,     tr("Pivoter"),                              this);
+	rotate_texts      = new QAction(QET::Icons::ObjectRotateRight,     tr("Orienter les textes"),                  this);
+	find_element      = new QAction(                                   tr("Retrouver dans le panel"),              this);
 	edit_selection    = new QAction(QET::Icons::ElementEdit,           tr("\311diter l'item s\351lectionn\351"),            this);
-	selection_prop    = new QAction(QIcon::fromTheme("document-properties", QET::Icons::DialogInformation),     tr("Propri\351t\351s de la s\351lection"),  this);
+	selection_prop    = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s de la s\351lection"),  this);
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
-	infos_diagram     = new QAction(QIcon::fromTheme("document-properties", QET::Icons::DialogInformation),     tr("Propri\351t\351s du sch\351ma"),        this);
-	add_text          = new QAction(QIcon::fromTheme("insert-text", QET::Icons::PartTextField),         tr("Ajouter un champ de texte"),            this);
+	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
+	add_text          = new QAction(QET::Icons::PartTextField,         tr("Ajouter un champ de texte"),            this);
 	add_column        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne"),             this);
-	add_image		  = new QAction(QIcon::fromTheme("insert-image", QET::Icons::adding_image),          tr("Ajouter une image"),             this);
+	add_image		  = new QAction(QET::Icons::adding_image,          tr("Ajouter une image"),             this);
 	remove_column     = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne"),             this);
 	add_row           = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne"),               this);
 	remove_row        = new QAction(QET::Icons::EditTableDeleteRow,         tr("Enlever une ligne"),               this);
 	
-	prj_edit_prop     = new QAction(QIcon::fromTheme("document-properties", QET::Icons::DialogInformation),     tr("Propri\351t\351s du projet"),           this);
+	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du projet"),           this);
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le sch\351ma"),               this);
-	prj_clean         = new QAction(QIcon::fromTheme("edit-clear", QET::Icons::EditClear),             tr("Nettoyer le projet"),                   this);
+	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
 	prj_diagramNum    = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les sch\351mas"),        this);
-	prj_nomenclature  = new QAction(QIcon::fromTheme("document-export", QET::Icons::DocumentExport),        tr("Exporter une nomenclature (beta)"),     this);
+	prj_nomenclature  = new QAction(QET::Icons::DocumentExport,        tr("Exporter une nomenclature (beta)"),     this);
 	
-	zoom_in           = new QAction(QIcon::fromTheme("zoom-in", QET::Icons::ZoomIn),                tr("Zoom avant"),                           this);
-	zoom_out          = new QAction(QIcon::fromTheme("zoom-out", QET::Icons::ZoomOut),               tr("Zoom arri\350re"),                      this);
-	zoom_content      = new QAction(QIcon::fromTheme("zoom-fit-best", QET::Icons::ZoomDraw),              tr("Zoom sur le contenu"),                  this);
-	zoom_fit          = new QAction(QIcon::fromTheme("zoom-fit-best", QET::Icons::ZoomFitBest),           tr("Zoom adapt\351"),                       this);
-	zoom_reset        = new QAction(QIcon::fromTheme("zoom-original", QET::Icons::ZoomOriginal),          tr("Pas de zoom"),                          this);
+	zoom_in           = new QAction(QET::Icons::ZoomIn,                tr("Zoom avant"),                           this);
+	zoom_out          = new QAction(QET::Icons::ZoomOut,               tr("Zoom arri\350re"),                      this);
+	zoom_content      = new QAction(QET::Icons::ZoomDraw,              tr("Zoom sur le contenu"),                  this);
+	zoom_fit          = new QAction(QET::Icons::ZoomFitBest,           tr("Zoom adapt\351"),                       this);
+	zoom_reset        = new QAction(QET::Icons::ZoomOriginal,          tr("Pas de zoom"),                          this);
 	
 	tabbed_view_mode  = new QAction(                                   tr("en utilisant des onglets"),             this);
 	windowed_view_mode= new QAction(                                   tr("en utilisant des fen\352tres"),         this);
@@ -239,10 +239,10 @@ void QETDiagramEditor::actions() {
 	mode_selection    = new QAction(QET::Icons::PartSelect,            tr("Mode Selection"),                       this);
 	mode_visualise    = new QAction(QET::Icons::ViewMove,              tr("Mode Visualisation"),                   this);
 	
-	tile_window        = new QAction(									tr("&Mosa\357que"),                         this);
-	cascade_window     = new QAction(									tr("&Cascade"),                             this);
-	next_window        = new QAction(QIcon::fromTheme("go-next"),		tr("Projet suivant"),                       this);
-	prev_window        = new QAction(QIcon::fromTheme("go-previous"),	tr("Projet pr\351c\351dent"),               this);
+	tile_window        = new QAction(                                  tr("&Mosa\357que"),                         this);
+	cascade_window     = new QAction(                                  tr("&Cascade"),                             this);
+	next_window        = new QAction(                                  tr("Projet suivant"),                       this);
+	prev_window        = new QAction(                                  tr("Projet pr\351c\351dent"),               this);
 	
 	// raccourcis clavier
 	new_file          -> setShortcut(QKeySequence::New);
