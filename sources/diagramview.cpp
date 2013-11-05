@@ -1327,7 +1327,7 @@ DiagramImageItem *DiagramView::addDiagramImageAtPos(const QPointF &pos) {
 	@param pos Position du champ de texte ajoute
 	@return le champ de texte ajoute
 */
-IndependentTextItem *DiagramView::addDiagramTextAtPos(const QPointF &pos, const QString text) {
+IndependentTextItem *DiagramView::addDiagramTextAtPos(const QPointF &pos, const QString &text) {
 	if (!isInteractive() || scene -> isReadOnly()) return(0);
 	
 	// cree un nouveau champ de texte
