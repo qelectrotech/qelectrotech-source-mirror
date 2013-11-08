@@ -1,6 +1,8 @@
 <definition width="250" version="0.3" hotspot_x="130" hotspot_y="56" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Module 8 relais</name>
+        <name lang="en">8 relais module</name>
+        <name lang="it">Modulo 8 relais</name>
     </names>
     <informations>Charles Ferrand
 novembre 2013</informations>
