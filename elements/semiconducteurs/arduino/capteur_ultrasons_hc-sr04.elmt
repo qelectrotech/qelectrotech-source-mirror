@@ -1,6 +1,8 @@
 <definition width="70" version="0.3" hotspot_x="34" hotspot_y="20" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Capteur HC-SR04</name>
+        <name lang="it">Sensore ultrasonico HC-SR04</name>
+        <name lang="en">Ultrasonic module HC-SR04</name>
     </names>
     <informations></informations>
     <description>
