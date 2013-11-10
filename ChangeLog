@@ -1,12 +1,23 @@
 
-ChangeLog from v0.3 rc
--Element Editor: 
+====== ChangeLog from 0.3 rc to 0.3 ======
+First, the collection of symbols has made a big step forward, with about 1560 new elements. 
+There are now symbols for pneumatics, hydraulics, process, solar, cold, etc. Considerable effort has been done to organize the collection in a better way. 
+We hope that the new organisation is clearer for all. We would like to thank all the contributors who send us symbols.
+
+=====-Element Editor: =====
+Considerable work has be done to replace the manual defining zone of the symbol, aka hotspot.And fix bugs, It is now automatic. You do not have to care about it anymore. 
+Primary colors have been added for the drawing shapes. 
+A contextual menu (right click) has been added. So, you can now work more quickly with symbols. It is also more user-friendly.
+
+====== ChangeLog from v0.3 rc ======
+
+=====-Element Editor: =====
 * Replacing checkboxes with lists of colors. 
 * Removed the manual hotspot, it is now automatic and you do not have to worry.
 Officially Collection: a large classification work on the structure was realized. It should be clear to everyone.
 The collection is enriched with 1711 items in 286 categories (ie 1997 files)
 
--Schema Editor:
+=====-Schema Editor:=====
 * Added import image, image rotation, image resizing and saving the file in the project. 
 (Double click on the image called a widget and cursor that reduce or enlarge the selected image.) 
 NB: Following the "edit image" entry will also be added in the right click menu.
@@ -14,11 +25,7 @@ NB: Following the "edit image" entry will also be added in the right click menu.
 Some bugs have been resolved, and the translation status continues to grow. 
 
 
-
-
-
-
-ChangeLog from v0.3 beta 
+======ChangeLog from v0.3 beta ======
 Two more items for the changelog:
 * In the official collection, there are now 1672 elements and 256 categoris for a total of 1928 files. In version 0.3 alpha, there were 1465 elements and 233 categories, while version 0.22 had153 elements and 51 categories.
 
@@ -41,8 +48,9 @@ Here is the changelog, for version 0.3 beta:
 * Added several protection to prevent from saving an element if one of its primitive is beyond the hotspot.
 
 
-ChangeLog from 0.22 to 0.3a
-Application
+====== ChangeLog from 0.22 to 0.3a ======
+
+===== Application =====
 
 Elements collection: QElectroTech now provides 1465 elements within 233 categories (0.22 provided 153 elements within 51 categories). Most elements are related to electricity though some relate to chillers, solar, hydraulic and pneumatic engineering.
 A new kind of collections appeared to store title block templates; as for elements, there is a distinction between common (system-wide) templates and custom (user-wide) templates.
@@ -55,7 +63,7 @@ Elements names are fully translated to English, French, Czech and Polish.
 Main windows: added a “What's this?” action.
 QElectroTech now handles *.titleblock files.
 
-Diagram editor
+===== Diagram editor =====
 
 It is now possible to move and rotate all texts on a diagram : element texts, conductor texts and independent texts.
 When moving a text related to an electrical element, this element is highlighted.
@@ -84,14 +92,14 @@ Printing: when printing diagrams with no title block, use the space left by the 
 Added a few status and “What's this?” tips.
 Got rid of the green icon used for projects, changed a few other icons.
 
-Element editor
+===== Element editor =====
 
 Both static and dynamic texts can now be rotated
 Added “dotted” line style
 Added white color for texts
 Newly added parts are placed above existing ones.
 
-Title block template editor
+===== Title block template editor =====
 
 A third kind of editor was implemented so users can create their own title block templates:
 
@@ -104,33 +112,6 @@ The text value is optionally preceded by a label.
 As other texts within QElectroTech, labels and texts can be translated to other languages.
 Texts and labels may contain variables (e.g. %company-name); these variables are replaced by real world values once the template is applied to a diagram.
 Those real-world values can be set among the diagram properties.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ====== Changelog 0.11 -> 0.2 ======
