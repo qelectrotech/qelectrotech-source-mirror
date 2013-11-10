@@ -1,3 +1,138 @@
+
+ChangeLog from v0.3 rc
+-Element Editor: 
+* Replacing checkboxes with lists of colors. 
+* Removed the manual hotspot, it is now automatic and you do not have to worry.
+Officially Collection: a large classification work on the structure was realized. It should be clear to everyone.
+The collection is enriched with 1711 items in 286 categories (ie 1997 files)
+
+-Schema Editor:
+* Added import image, image rotation, image resizing and saving the file in the project. 
+(Double click on the image called a widget and cursor that reduce or enlarge the selected image.) 
+NB: Following the "edit image" entry will also be added in the right click menu.
+* F5 keyboard shortcut can recharge symbol collections.
+Some bugs have been resolved, and the translation status continues to grow. 
+
+
+
+
+
+
+ChangeLog from v0.3 beta 
+Two more items for the changelog:
+* In the official collection, there are now 1672 elements and 256 categoris for a total of 1928 files. In version 0.3 alpha, there were 1465 elements and 233 categories, while version 0.22 had153 elements and 51 categories.
+
+*Progress in the translation (see http://qelectrotech.org/wiki/doc/translation/stats for current state)
+* Functions (edit element and find in panel) have been moved to the context
+Here is the changelog, for version 0.3 beta:
+* Functions (edit element and find in panel) have been moved to the context menu, that can be accessed with right click. This is more user friendly.
+* Refresh of categories when an element is moved.
+* DateNow button added in the "Diagram property" dialog.
+* Dotted lines can now been added between conductors.
+* Rich text can be added to the diagram text fields.
+[screenshot]
+* HTML WYSIWYG editor for rich text: bold, italic, underlined, font size from 6 to 72 pixels, font colour, etc.
+* You can change between the two modes(Selection mode <-> View mode) with the scroll button.
+* Symbol editor: focus on the new value for language, languages sorted in alphabetical order.
+* Added a widget that reflects the loading of a big project.
+* Automated numbering of conductors according to your rules. See note from Joshua http://qelectrotech.org/wiki/doc/autonum
+* Added a dialog to automatically rotate the text if the associated conductor is vertical or horizontal. Parameters are saved in qelectrotech.conf
+* Added basic colours on the tools for lines and for the filling of the primitives, and also for the style line and point in the element editor.
+* Added several protection to prevent from saving an element if one of its primitive is beyond the hotspot.
+
+
+ChangeLog from 0.22 to 0.3a
+Application
+
+Elements collection: QElectroTech now provides 1465 elements within 233 categories (0.22 provided 153 elements within 51 categories). Most elements are related to electricity though some relate to chillers, solar, hydraulic and pneumatic engineering.
+A new kind of collections appeared to store title block templates; as for elements, there is a distinction between common (system-wide) templates and custom (user-wide) templates.
+Translations:
+English, Spanish, French, Portuguese and Czech translations have been maintained.
+Russian translations have been removed because they are not maintained anymore.
+Polish, German, Italian, Arabic and Croatian translations have been added.
+Following translation to Arabic, some work was done to improve Right-To-Left languages support.
+Elements names are fully translated to English, French, Czech and Polish.
+Main windows: added a “What's this?” action.
+QElectroTech now handles *.titleblock files.
+
+Diagram editor
+
+It is now possible to move and rotate all texts on a diagram : element texts, conductor texts and independent texts.
+When moving a text related to an electrical element, this element is highlighted.
+Texts related to a conductor cannot be moved too far away from it.
+It is now possible to create diagrams with more than 100 rows/columns.
+Elements panel:
+During a drag and drop operation, the hovered item is now expanded after a short time not moving the mouse.
+Items are now expanded/collapsed by a double click.
+Common, custom and embedded collections of title block templates are displayed within the elements panel.
+Elements previews and names are now cached into a SQLite database stored in the user configuration directory, thus speeding up the elements panel (re)loading
+The elements panel now displays the folio index before each diagram title.
+UI consistency: renamed “Import element” to “Open an element file”, separated this action from those related to the current selection, and ensured elements-related actions are disabled when selecting a project/diagram/title block template.
+Freshly integrated elements are now highlighted in the elements panel – this behaviour can be disabled though.
+When clearing the search field, the panel state is restored to its previous state.
+Title blocks are now rendered using templates:
+For each diagram, users can choose the template to be used in the diagram properties.
+They may also drag and drop it from the elements panel to the diagram.
+Title block templates are always integrated within the parent project.
+Fixed a bug in the print preview dialog.
+Added a F2 shortcut for the widget “Edit the color of the given conductor”.
+As elements, diagrams now have a “version” attribute for compatibility purposes.
+Better handling of file opening for documents saved with newer versions of QElectroTech.
+Diagram loading: removed an optimization that could lead to conductors not being loaded when several terminals share the same coordinates.
+Users may now enter visualisation mode by pressing Ctrl and Shift.
+Printing: when printing diagrams with no title block, use the space left by the title block.
+Added a few status and “What's this?” tips.
+Got rid of the green icon used for projects, changed a few other icons.
+
+Element editor
+
+Both static and dynamic texts can now be rotated
+Added “dotted” line style
+Added white color for texts
+Newly added parts are placed above existing ones.
+
+Title block template editor
+
+A third kind of editor was implemented so users can create their own title block templates:
+
+It allows users to customize the layout and content of cells that constitute the title block.
+Cells can be merged and splitted.
+Their width can be fixed, relative to the total width or relative to the remaining widths.
+Their height is a simple fixed length.
+They contain either a logo (be it in SVG or a usual bitmap format) or some text.
+The text value is optionally preceded by a label.
+As other texts within QElectroTech, labels and texts can be translated to other languages.
+Texts and labels may contain variables (e.g. %company-name); these variables are replaced by real world values once the template is applied to a diagram.
+Those real-world values can be set among the diagram properties.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ====== Changelog 0.11 -> 0.2 ======
 À partir de la version 0.2, QElectroTech est disponible en français, anglais, mais aussi :
   * en espagnol, grâce aux traductions de Youssef ;
