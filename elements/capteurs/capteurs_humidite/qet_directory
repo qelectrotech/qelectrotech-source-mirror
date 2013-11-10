@@ -1,10 +1,11 @@
 <qet-directory>
     <names>
+        <name lang="el">Αισθητήρες υγρασίας</name>
         <name lang="en">Humidity sensors</name>
+        <name lang="it">Sensori di umidità</name>
         <name lang="fr">Capteurs humidité</name>
         <name lang="pl">Czujnik wilgotności</name>
-	<name lang="it">Sensori di umidità</name>
         <name lang="cs">Vlhkostní čidla</name>
-        <name lang="el">Αισθητήρες υγρασίας</name>
-   </names>
+        <name lang="es">Sensores de humedad</name>
+    </names>
 </qet-directory>

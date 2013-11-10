@@ -1,10 +1,11 @@
-<definition width="60" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="28" hotspot_y="41" height="60" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Βοηθητικές επαφές, 2 ανοικτές</name>
         <name lang="en">Auxiliary contact 2 x NO</name>
-        <name lang="fr">Contact auxilliaire 2 x NO</name>
         <name lang="it">Contatti ausiliari 2NO</name>
+        <name lang="fr">Contact auxilliaire 2 x NO</name>
         <name lang="pl">Zestyki pomocnicze 2 x NO</name>
+        <name lang="es">Contacto auxiliar 2 x NA</name>
         <name lang="cs">Pomocné kontakty 2 x NO</name>
     </names>
     <informations></informations>

@@ -1,7 +1,8 @@
 <qet-directory>
     <names>
-        <name lang="fr">Domotique</name>
         <name lang="en">Automation</name>
         <name lang="it">Domotica</name>
+        <name lang="fr">Domotique</name>
+        <name lang="es">automatización</name>
     </names>
 </qet-directory>

@@ -1,10 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="24" hotspot_y="31" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="en">NF Actuated by the level of a liquid</name>
+        <name lang="it">Azionato dal livello di un liquido NC</name>
         <name lang="fr">Actionné par le niveau d'un liquide NF</name>
         <name lang="pl">Zestyk rozwierny sterowany poziomem cieczy</name>
+        <name lang="es">Accionado por el nivel de un liquido NC</name>
         <name lang="cs">Ovládáno hladinou kapaliny NC</name>
-        <name lang="it">Azionato dal livello di un liquido NC</name>
     </names>
     <informations></informations>
     <description>

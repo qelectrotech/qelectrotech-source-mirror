@@ -1,8 +1,9 @@
 <definition width="590" version="0.3" hotspot_x="295" hotspot_y="55" height="130" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="fr">X880 V3</name>
         <name lang="en">X880 V3</name>
         <name lang="it">X800 V3</name>
+        <name lang="fr">X880 V3</name>
+        <name lang="es">X800 V3</name>
     </names>
     <informations></informations>
     <description>

@@ -1,9 +1,10 @@
-<definition width="60" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="28" hotspot_y="41" height="60" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Positively driven contacts</name>
         <name lang="it">Contatti meccanicamente connessi</name>
         <name lang="fr">Contacts à manoeuvre effectuée positivement</name>
         <name lang="pl">Zestyki o przełączaniu niezawodnym</name>
+        <name lang="es">Contacto impulsado positivamente</name>
         <name lang="cs">Mechanicky spojené kontakty NO + NO</name>
     </names>
     <informations></informations>

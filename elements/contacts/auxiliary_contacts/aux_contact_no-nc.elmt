@@ -1,10 +1,11 @@
-<definition width="70" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="25" hotspot_y="31" height="60" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Βοηθητικές επαφές, 1 ανοικτή + 1 κλειστή</name>
         <name lang="en">Auxiliary contact NO + NC</name>
-        <name lang="fr">Contact auxilliaire NO + NC</name>
         <name lang="it">Contatti ausiliari NO+NC</name>
+        <name lang="fr">Contact auxilliaire NO + NC</name>
         <name lang="pl">Zestyki pomocnicze NO + NZ</name>
+        <name lang="es">Contacto auxiliar NA + NC</name>
         <name lang="cs">Pomocné kontakty 4 x NO + NC</name>
     </names>
     <informations></informations>

@@ -1,9 +1,10 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="25" hotspot_y="31" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="en">Mirror contact NC</name>
         <name lang="it">Contatto NC</name>
         <name lang="fr">Contact miroir NC</name>
         <name lang="pl">Zestyk lustrzany rozwierny</name>
+        <name lang="es">Contacto NC</name>
         <name lang="cs">Zrcadlový kontakt NC</name>
     </names>
     <informations>autor: pawel32640

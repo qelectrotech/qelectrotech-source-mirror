@@ -1,8 +1,9 @@
 <definition width="590" version="0.3" hotspot_x="294" hotspot_y="55" height="130" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="fr">IPX800 V3</name>
         <name lang="en">IPX800 V3</name>
         <name lang="it">IPX800 V3</name>
+        <name lang="fr">IPX800 V3</name>
+        <name lang="es">IPX800 V3</name>
     </names>
     <informations></informations>
     <description>

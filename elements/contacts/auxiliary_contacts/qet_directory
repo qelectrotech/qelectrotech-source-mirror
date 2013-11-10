@@ -2,9 +2,10 @@
     <names>
         <name lang="el">Βοηθητικές επαφές</name>
         <name lang="en">Auxiliary contacts</name>
-        <name lang="fr">Contacts auxilliaire</name>
         <name lang="it">Contatti ausiliari</name>
+        <name lang="fr">Contacts auxilliaire</name>
         <name lang="pl">Zestyki pomocnicze</name>
+        <name lang="es">Contactos auxiliares</name>
         <name lang="cs">Pomocné kontakty</name>
-   </names>
+    </names>
 </qet-directory>

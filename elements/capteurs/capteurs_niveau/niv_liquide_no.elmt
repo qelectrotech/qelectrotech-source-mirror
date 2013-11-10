@@ -1,10 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="28" hotspot_y="31" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="en">NO Actuated by the level of a liquid</name>
+        <name lang="it">Azionato dal livello di un liquido NO</name>
         <name lang="fr">Actionné par le niveau d'un liquide NO</name>
         <name lang="pl">Zestyk zwierny sterowany poziomem cieczy</name>
+        <name lang="es">Accionado por el nivel de un liquido NA</name>
         <name lang="cs">Ovládáno hladinou kapaliny NO</name>
-        <name lang="it">Azionato dal livello di un liquido NO</name>
     </names>
     <informations></informations>
     <description>
