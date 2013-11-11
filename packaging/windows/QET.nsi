@@ -133,6 +133,7 @@ Section ""
 	WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file\DefaultIcon"                     ""             "$final_element_ico"
 	WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file\shell\open\command"              ""             "$\"$final_qet_exe$\" $\"%1$\""
 	
+	SetShellVarContext all ; all users
 	; shortcuts in the start menu
 	CreateDirectory "$SMPROGRAMS\${SOFT_NAME}"
 	CreateShortCut  "$SMPROGRAMS\${SOFT_NAME}\QElectroTech.lnk"           "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
@@ -140,7 +141,6 @@ Section ""
 	; TODO : add the QuickStart Guide (or any other documentation) when available
 	
 	; shortcut on the desktop
-	SetShellVarContext all ; all users
 	CreateShortCut "$DESKTOP\QElectroTech.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
 SectionEnd
 
