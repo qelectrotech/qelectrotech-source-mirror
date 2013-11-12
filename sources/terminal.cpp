@@ -33,7 +33,7 @@ const qreal Terminal::terminalSize = 4.0;
 	@param pf  position du point d'amarrage pour un conducteur
 	@param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
 */
-void Terminal::init(QPointF pf, QET::Orientation o) {
+void Terminal::init(QPointF pf, QET::Orientation o, QString number) {
 	// definition du pount d'amarrage pour un conducteur
 	dock_conductor_  = pf;
 	
@@ -50,7 +50,8 @@ void Terminal::init(QPointF pf, QET::Orientation o) {
 		case QET::South:
 		default        : dock_elmt_ += QPointF(0, -Terminal::terminalSize);
 	}
-	
+	// Number of terminal
+	number_terminal_ = number;
 	// par defaut : pas de conducteur
 	
 	// QRectF null
@@ -70,12 +71,12 @@ void Terminal::init(QPointF pf, QET::Orientation o) {
 	@param e   Element auquel cette borne appartient
 	@param s   Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(QPointF pf, QET::Orientation o, Element *e, Diagram *s) :
+Terminal::Terminal(QPointF pf, QET::Orientation o, QString num, Element *e, Diagram *s) :
 	QGraphicsItem(e, s),
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
 {
-	init(pf, o);
+	init(pf, o, num);
 }
 
 /**
@@ -86,12 +87,12 @@ Terminal::Terminal(QPointF pf, QET::Orientation o, Element *e, Diagram *s) :
 	@param e    Element auquel cette borne appartient
 	@param s    Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(qreal pf_x, qreal pf_y, QET::Orientation o, Element *e, Diagram *s) :
+Terminal::Terminal(qreal pf_x, qreal pf_y, QET::Orientation o, QString num, Element *e, Diagram *s) :
 	QGraphicsItem(e, s),
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
 {
-	init(QPointF(pf_x, pf_y), o);
+	init(QPointF(pf_x, pf_y), o, num);
 }
 
 /**
@@ -437,6 +438,7 @@ QDomElement Terminal::toXml(QDomDocument &doc) const {
 	qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x()));
 	qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));
 	qdo.setAttribute("orientation", ori_);
+	qdo.setAttribute("number", number_terminal_);
 	return(qdo);
 }
 
@@ -453,6 +455,7 @@ bool Terminal::valideXml(QDomElement &terminal) {
 	if (!terminal.hasAttribute("x")) return(false);
 	if (!terminal.hasAttribute("y")) return(false);
 	if (!terminal.hasAttribute("orientation")) return(false);
+	if (!terminal.hasAttribute("number")) return(false);
 	
 	bool conv_ok;
 	// parse l'abscisse
@@ -485,7 +488,8 @@ bool Terminal::fromXml(QDomElement &terminal) {
 	return (
 		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
 		qFuzzyCompare(terminal.attribute("y").toDouble(), dock_elmt_.y()) &&
-		terminal.attribute("orientation").toInt() == ori_
+		terminal.attribute("orientation").toInt() == ori_ &&
+		terminal.attribute("number").toInt() == number_terminal_
 	);
 }
 

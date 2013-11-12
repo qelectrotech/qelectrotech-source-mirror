@@ -31,8 +31,8 @@ class Terminal : public QGraphicsItem {
 	
 	// constructors, destructor
 	public:
-	Terminal(QPointF,      QET::Orientation, Element * = 0, Diagram * = 0);
-	Terminal(qreal, qreal, QET::Orientation, Element * = 0, Diagram * = 0);
+	Terminal(QPointF,      QET::Orientation, QString number, Element * = 0, Diagram * = 0);
+	Terminal(qreal, qreal, QET::Orientation, QString number, Element * = 0, Diagram * = 0);
 	virtual ~Terminal();
 	
 	private:
@@ -61,6 +61,7 @@ class Terminal : public QGraphicsItem {
 	QList<Conductor *> conductors() const;
 	QET::Orientation orientation() const;
 	QPointF dockConductor() const;
+	QString number() const;
 	void updateConductor();
 	bool isLinkedTo(Terminal *);
 	bool canBeLinkedTo(Terminal *);
@@ -116,9 +117,11 @@ class Terminal : public QGraphicsItem {
 	bool hovered_;
 	/// Color used for the hover effect
 	QColor hovered_color_;
+	/// Number of Terminal
+	QString number_terminal_;
 	
 	private:
-	void init(QPointF, QET::Orientation);
+	void init(QPointF, QET::Orientation, QString number);
 };
 
 /**
@@ -134,6 +137,13 @@ inline int Terminal::conductorsCount() const {
 */
 inline QPointF Terminal::dockConductor() const {
 	return(mapToScene(dock_conductor_));
+}
+
+/**
+	@return the number of terminal.
+*/
+inline QString Terminal::number() const {
+	return(number_terminal_);
 }
 
 #endif
