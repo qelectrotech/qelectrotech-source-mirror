@@ -31,8 +31,9 @@ class Terminal : public QGraphicsItem {
 	
 	// constructors, destructor
 	public:
+	Terminal(QPointF,      QET::Orientation, Element * = 0, Diagram * = 0);
+	Terminal(qreal, qreal, QET::Orientation, Element * = 0, Diagram * = 0);
 	Terminal(QPointF,      QET::Orientation, QString number, Element * = 0, Diagram * = 0);
-	Terminal(qreal, qreal, QET::Orientation, QString number, Element * = 0, Diagram * = 0);
 	virtual ~Terminal();
 	
 	private:
@@ -62,6 +63,7 @@ class Terminal : public QGraphicsItem {
 	QET::Orientation orientation() const;
 	QPointF dockConductor() const;
 	QString number() const;
+	void setNumber(QString number);
 	void updateConductor();
 	bool isLinkedTo(Terminal *);
 	bool canBeLinkedTo(Terminal *);

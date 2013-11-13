@@ -71,12 +71,12 @@ void Terminal::init(QPointF pf, QET::Orientation o, QString number) {
 	@param e   Element auquel cette borne appartient
 	@param s   Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(QPointF pf, QET::Orientation o, QString num, Element *e, Diagram *s) :
+Terminal::Terminal(QPointF pf, QET::Orientation o, Element *e, Diagram *s) :
 	QGraphicsItem(e, s),
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
 {
-	init(pf, o, num);
+	init(pf, o, "_");
 }
 
 /**
@@ -87,12 +87,28 @@ Terminal::Terminal(QPointF pf, QET::Orientation o, QString num, Element *e, Diag
 	@param e    Element auquel cette borne appartient
 	@param s    Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(qreal pf_x, qreal pf_y, QET::Orientation o, QString num, Element *e, Diagram *s) :
+Terminal::Terminal(qreal pf_x, qreal pf_y, QET::Orientation o, Element *e, Diagram *s) :
 	QGraphicsItem(e, s),
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
 {
-	init(QPointF(pf_x, pf_y), o, num);
+	init(QPointF(pf_x, pf_y), o, "_");
+}
+
+/**
+	initialise une borne
+	@param pf  position du point d'amarrage pour un conducteur
+	@param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
+	@param num number of terminal (ex 3 - 4 for NO)
+	@param e   Element auquel cette borne appartient
+	@param s   Scene sur laquelle figure cette borne
+*/
+Terminal::Terminal(QPointF pf, QET::Orientation o, QString num, Element *e, Diagram *s) :
+	QGraphicsItem(e, s),
+	parent_element_(e),
+	hovered_color_(Terminal::neutralColor)
+{
+	init(pf, o, num);
 }
 
 /**
@@ -126,6 +142,15 @@ QET::Orientation Terminal::orientation() const {
 			return((QET::Orientation)angle);
 		}
 	} else return(ori_);
+}
+
+
+/**
+ * @brief Terminal::setNumber
+ * @param number
+ */
+void Terminal::setNumber(QString number) {
+	number_terminal_ = number;
 }
 
 /**
@@ -489,7 +514,7 @@ bool Terminal::fromXml(QDomElement &terminal) {
 		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
 		qFuzzyCompare(terminal.attribute("y").toDouble(), dock_elmt_.y()) &&
 		terminal.attribute("orientation").toInt() == ori_ &&
-		terminal.attribute("number").toInt() == number_terminal_
+		terminal.attribute("number") == number_terminal_
 	);
 }
 
@@ -506,3 +531,4 @@ Diagram *Terminal::diagram() const {
 Element *Terminal::parentElement() const {
 	return(parent_element_);
 }
+
