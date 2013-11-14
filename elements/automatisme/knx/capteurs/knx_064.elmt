@@ -1,0 +1,18 @@
+<definition width="80" version="0.3" hotspot_x="55" hotspot_y="20" height="40" type="element" orientation="dyny">
+    <names>
+        <name lang="en">Switch. Act. mod. + PB single</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="30" x="-40" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="9" y="4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <circle x="11" y="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-15" x2="20"/>
+        <input x="10" y="0.5" size="5" rotate="true" text="1"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-35" y2="0" x2="-30" y3="-3" x3="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-15" y2="0" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-50" y2="0" x2="-40"/>
+        <terminal x="-50" y="0" orientation="w"/>
+    </description>
+</definition>

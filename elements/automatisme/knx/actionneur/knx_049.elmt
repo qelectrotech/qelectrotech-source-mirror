@@ -1,0 +1,20 @@
+<definition width="60" version="0.3" hotspot_x="36" hotspot_y="19" height="40" type="element" orientation="dyny">
+    <names>
+        <name lang="en">Shutter actuator, single</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="10" x="-20" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-14" y5="-11" x5="-14" y6="-12" x6="-15" y7="-11" x7="-16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-16" y2="11" x2="-16" y3="12" x3="-15" y4="11"/>
+        <input x="-6" y="7.5" size="5" rotate="true" text="1"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-18" y2="-12" x2="-15" y3="-9" x3="-12"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-30" y2="0" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-3" y2="0" x2="5"/>
+        <circle x="0" y="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="4" y2="-2" x2="13"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="4" y2="2" x2="13"/>
+        <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-30" y="0" orientation="w"/>
+    </description>
+</definition>

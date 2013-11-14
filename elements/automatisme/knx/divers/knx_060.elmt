@@ -1,0 +1,26 @@
+<definition width="60" version="0.3" hotspot_x="25" hotspot_y="20" height="50" type="element" orientation="dyny">
+    <names>
+        <name lang="en">Lock system</name>
+    </names>
+    <informations/>
+    <description>
+        <rect width="30" x="0" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="19" y="-3.5" size="5" rotate="true" text="n"/>
+        <input x="12" y="4.5" size="5" rotate="true" text="(=)"/>
+        <polygon x4="-4" y5="-11" x5="-4" y6="-12" x6="-5" y7="-11" x7="-6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-6" y2="11" x2="-6" y3="12" x3="-5" y4="11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-10"/>
+        <polygon x4="17" y5="-10" x5="17" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="2" x1="3" y2="2" x2="10" y3="-10" x3="10" y4="-10"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-8" y2="-12" x2="-5" y3="-9" x3="-2"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-8" y2="12" x2="-5" y3="9" x3="-2"/>
+        <circle x="11" y="8" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="5"/>
+        <rect width="11" x="16" y="10" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="22" y="11" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:white;color:white" y1="14" x1="24" y2="13" x2="24"/>
+        <text x="19" y="22" size="5" text="DC"/>
+        <line length1="1.5" length2="1" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="10" y2="16" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="10" y2="24" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="0" y2="-15" x2="30"/>
+        <terminal x="-20" y="0" orientation="w"/>
+    </description>
+</definition>

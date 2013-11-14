@@ -1,0 +1,21 @@
+<definition width="70" version="0.3" hotspot_x="46" hotspot_y="21" height="40" type="element" orientation="dyny">
+    <names>
+        <name lang="en">IR Receiver</name>
+        <name lang="pl">Odbiornik podczerwieni</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="10" x="-32" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="70" angle="-140"/>
+        <arc width="6" x="-32" y="-6" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="70" angle="-140"/>
+        <arc width="2" x="-32" y="-2" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="70" angle="-140"/>
+        <rect width="10" x="-20" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-13" y="-8.5" size="5" rotate="true" text="IR"/>
+        <polygon x4="-14" y5="-11" x5="-14" y6="-12" x6="-15" y7="-11" x7="-16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-16" y2="11" x2="-16" y3="12" x3="-15" y4="11"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-18" y2="-12" x2="-15" y3="-9" x3="-12"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-40" y2="0" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-15" x2="20"/>
+        <terminal x="-40" y="0" orientation="w"/>
+    </description>
+</definition>
