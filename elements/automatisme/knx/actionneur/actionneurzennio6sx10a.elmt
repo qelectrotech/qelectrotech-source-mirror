@@ -1,11 +1,11 @@
-<definition width="190" version="0.3" hotspot_x="25" hotspot_y="45" height="70" type="element" orientation="dyyy">
+<definition width="180" version="0.3" hotspot_x="20" hotspot_y="37" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="en">Actuator 6SX10A</name>
-        <name lang="it">Attuatore zennio 6s10a</name>
-        <name lang="fr">Actionneur zennio 6s10a</name>
+        <name lang="it">Attuatore zennio 6sx10a</name>
+        <name lang="fr">Actionneur zennio 6sx10a</name>
+        <name lang="pl">6SX10A</name>
         <name lang="es">Actuador 6sx10a</name>
         <name lang="cs">Aktuátor 6SX10A</name>
-        <name lang="pl">6SX10A</name>
     </names>
     <informations></informations>
     <description>

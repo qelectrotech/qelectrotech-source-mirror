@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="36" hotspot_y="20" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Analog output, 4-fold</name>
+        <name lang="it">Uscita analogica, 4 vie</name>
     </names>
     <informations></informations>
     <description>

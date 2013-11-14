@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="36" hotspot_y="20" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Analog output, general</name>
+        <name lang="it">Uscita analogica, simbolo generico</name>
         <name lang="pl">Wyjście analogowe, symbol ogólny</name>
     </names>
     <informations></informations>
