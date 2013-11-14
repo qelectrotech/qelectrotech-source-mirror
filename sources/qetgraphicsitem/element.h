@@ -19,16 +19,15 @@
 #define ELEMENT_H
 #include <QtGui>
 #include "terminal.h"
-#include "orientationset.h"
+#include "qetgraphicsitem.h"
 class Diagram;
 class ElementTextItem;
 /**
 	This is the base class for electrical elements.
 */
-class Element : public QObject, public QGraphicsItem {
+class Element : public QetGraphicsItem {
 	
 	Q_OBJECT
-	Q_INTERFACES(QGraphicsItem)
 	
 	// constructors, destructor
 	public:
@@ -43,14 +42,6 @@ class Element : public QObject, public QGraphicsItem {
 	enum { Type = UserType + 1000 };
 	
 	protected:
-	/**
-		Hold orientations for the element :
-			* allowed orientations
-			* current orientation
-			* default orientation
-		@see OrientationSet
-	*/
-	OrientationSet ori;
 	
 	private:
 	QSize   dimensions;
@@ -87,7 +78,6 @@ class Element : public QObject, public QGraphicsItem {
 	virtual QString typeId() const = 0;
 	/// @return the human name for this element
 	virtual QString name() const = 0;
-	Diagram *diagram() const;
 	
 	virtual bool isHighlighted() const;
 	virtual void setHighlighted(bool);
@@ -103,15 +93,12 @@ class Element : public QObject, public QGraphicsItem {
 	
 	// selection-related methods
 	void select();
-	void deselect();
-	
-	// position-related methods
-	void setPos(const QPointF &);
-	void setPos(qreal, qreal);
+	void deselect();	
 	
 	// methods related to internal connections
 	bool internalConnections();
 	void setInternalConnections(bool);
+	virtual void rotateBy(const qreal &);
 	
 	// methods related to XML import/export
 	static bool valideXml(QDomElement &);
@@ -119,19 +106,14 @@ class Element : public QObject, public QGraphicsItem {
 	virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
 	
 	// orientation-related methods
-	bool setOrientation(QET::Orientation o);
-	const OrientationSet &orientation() const;
+	int orientation() const;
 	
 	protected:
 	void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
-	void mousePressEvent(QGraphicsSceneMouseEvent *);
-	void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	
 	private:
 	bool internal_connections_;
 	bool must_highlight_;
-	bool first_move_;
 	void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 	void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
 	void updatePixmap();
@@ -157,10 +139,14 @@ inline void Element::setInternalConnections(bool ic) {
 
 /**
 	Indicate the current orientation of this element
+	O = 0°
+	1 = 90°
+	2 = 180°
+	3 = 270°
 	@return the current orientation of this element
 */
-inline const OrientationSet & Element::orientation() const {
-	return(ori);
+inline int Element::orientation() const {
+	return(QET::correctAngle(rotation())/90);
 }
 
 #endif

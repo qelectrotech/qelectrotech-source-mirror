@@ -71,7 +71,7 @@ class QETElementEditor : public QETMainWindow {
 	QAction *selectall, *deselectall, *inv_select;
 	QAction *cut, *copy, *paste, *paste_in_area, *paste_from_file, *paste_from_elmt;
 	QAction *undo, *redo;
-	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_ori, *edit_author;
+	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_author;
 	QAction *edit_raise, *edit_lower, *edit_backward, *edit_forward;
 	/// actions for the "display" menu
 	QAction *zoom_in, *zoom_out, *zoom_fit, *zoom_reset;
@@ -93,7 +93,6 @@ class QETElementEditor : public QETMainWindow {
 	// methods
 	public:
 	void setNames(const NamesList &);
-	void setOrientations(const OrientationSet &orientation_set);
 	OrientationSet orientations() const;
 	void setLocation(const ElementsLocation &);
 	ElementsLocation location() const;
@@ -111,7 +110,6 @@ class QETElementEditor : public QETMainWindow {
 	void readSettings();
 	void writeSettings();
 	static QPointF pasteOffset();
-	static QET::OrientedMovement pasteMovement();
 	static QString getOpenElementFileName(QWidget * = 0, const QString & = QString());
 	void contextMenu(QContextMenuEvent *event);
 
@@ -158,20 +156,6 @@ class QETElementEditor : public QETMainWindow {
 */
 inline void QETElementEditor::setNames(const NamesList &nameslist) {
 	ce_scene -> setNames(nameslist);
-}
-
-/**
-	@param orientation_set the new set of orientations for the currently edited element
-*/
-inline void QETElementEditor::setOrientations(const OrientationSet &orientation_set) {
-	ce_scene -> setOrientations(orientation_set);
-}
-
-/**
-	@param the set of orientations for the currently edited element
-*/
-inline OrientationSet QETElementEditor::orientations() const {
-	return(ce_scene -> orientations());
 }
 
 /**

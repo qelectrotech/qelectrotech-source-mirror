@@ -702,7 +702,9 @@ void CustomElement::setQPainterAntiAliasing(QPainter &qp, bool aa) {
 	@return true si l'attribut "orientation" est valide, false sinon
 */
 bool CustomElement::validOrientationAttribute(const QDomElement &e) {
-	return(ori.fromString(e.attribute("orientation")));
+	int ori = e.attribute("orientation").toInt();
+	if(ori >= 0 && ori <=3) return true;
+	return false;
 }
 
 /**

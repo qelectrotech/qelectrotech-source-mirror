@@ -20,7 +20,6 @@
 #include <QtGui>
 #include <QtXml>
 #include "nameslistwidget.h"
-#include "orientationsetwidget.h"
 #include "qgimanager.h"
 #include "elementcontent.h"
 class CustomElementPart;
@@ -65,10 +64,6 @@ class ElementScene : public QGraphicsScene {
 	private:
 	/// List of localized names
 	NamesList _names;
-	/// Set of orientations
-	OrientationSet ori;
-	/// whether internal connections (i.e. connections between terminals of a same element) are accepted
-	bool internal_connections;
 	/// Extra informations
 	QString informations_;
 	/// QGraphicsItem manager
@@ -112,8 +107,6 @@ class ElementScene : public QGraphicsScene {
 	public:
 	void setNames(const NamesList &);
 	NamesList names() const;
-	OrientationSet orientations();
-	void setOrientations(const OrientationSet &);
 	bool internalConnections();
 	void setInternalConnections(bool);
 	QString informations() const;
@@ -178,7 +171,6 @@ class ElementScene : public QGraphicsScene {
 	void slot_invertSelection();
 	void slot_delete();
 	void slot_editNames();
-	void slot_editOrientations();
 	void slot_editAuthorInformations();
 	void slot_bringForward();
 	void slot_raise();
@@ -220,34 +212,6 @@ inline void ElementScene::setNames(const NamesList &nameslist) {
 */
 inline NamesList ElementScene::names() const {
 	return(_names);
-}
-
-/**
-	@return the orientation set of the currently edited element
-*/
-inline OrientationSet ElementScene::orientations() {
-	return(ori);
-}
-
-/**
-	@param orientation_set the new orientation set for the currently edited element
-*/
-inline void ElementScene::setOrientations(const OrientationSet &orientation_set) {
-	ori = orientation_set;
-}
-
-/**
-	@return whether internal connections are accepted
-*/
-inline bool ElementScene::internalConnections() {
-	return(internal_connections);
-}
-
-/**
-	@param ic true for internal connections to be accepted, false otherwise
-*/
-inline void ElementScene::setInternalConnections(bool ic) {
-	internal_connections = ic;
 }
 
 /**

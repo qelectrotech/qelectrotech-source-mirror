@@ -38,7 +38,6 @@
 */
 ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
-	internal_connections(false),
 	qgi_manager(this),
 	element_editor(editor),
 	decorator_(0)
@@ -415,9 +414,9 @@ const QDomDocument ElementScene::toXml(bool all_parts) {
 	root.setAttribute("height",      QString("%1").arg(upheight));
 	root.setAttribute("hotspot_x",   QString("%1").arg(-(qRound(size.x() - (xmargin/2)))));
 	root.setAttribute("hotspot_y",   QString("%1").arg(-(qRound(size.y() - (ymargin/2)))));
-	root.setAttribute("orientation", ori.toString());
+	root.setAttribute("orientation", "dyyy"); //we keep the orientation for compatibility with previous version of qet
 	root.setAttribute("version", QET::version);
-	if (internal_connections) root.setAttribute("ic", "true");
+	root.setAttribute("ic", "true"); //we keep the internal connection for compatibility with previous version of qet
 	
 	// noms de l'element
 	root.appendChild(_names.toXml(xml_document));
@@ -661,58 +660,6 @@ void ElementScene::slot_delete() {
 	// removing items does not trigger QGraphicsScene::selectionChanged()
 	emit(partsRemoved());
 	emit(selectionChanged());
-}
-
-/**
-	Lance un dialogue pour editer les noms de cete element
-*/
-void ElementScene::slot_editOrientations() {
-	bool is_read_only = element_editor && element_editor -> isReadOnly();
-	
-	// cree un dialogue
-	QDialog dialog_ori(element_editor);
-	dialog_ori.setModal(true);
-#ifdef Q_WS_MAC
-	dialog_ori.setWindowFlags(Qt::Sheet);
-#endif
-	dialog_ori.setMinimumSize(400, 260);
-	dialog_ori.setWindowTitle(tr("\311diter les orientations", "window title"));
-	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_ori);
-	
-	// ajoute un champ explicatif au dialogue
-	QLabel *information_label = new QLabel(tr("L'orientation par d\351faut est l'orientation dans laquelle s'effectue la cr\351ation de l'\351l\351ment."));
-	information_label -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
-	information_label -> setWordWrap(true);
-	dialog_layout -> addWidget(information_label);
-	
-	// ajoute un OrientationSetWidget au dialogue
-	OrientationSetWidget *ori_widget = new OrientationSetWidget();
-	ori_widget -> setOrientationSet(ori);
-	ori_widget -> setReadOnly(is_read_only);
-	dialog_layout -> addWidget(ori_widget);
-	
-	// ajoute une case a cocher pour les connexions internes
-	QCheckBox *ic_checkbox = new QCheckBox(tr("Autoriser les connexions internes"));
-	ic_checkbox -> setChecked(internal_connections);
-	ic_checkbox -> setDisabled(is_read_only);
-	dialog_layout -> addWidget(ic_checkbox);
-	dialog_layout -> addStretch();
-	// ajoute deux boutons au dialogue
-	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	dialog_layout -> addWidget(dialog_buttons);
-	connect(dialog_buttons, SIGNAL(accepted()),    &dialog_ori, SLOT(accept()));
-	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_ori, SLOT(reject()));
-	
-	// lance le dialogue
-	if (dialog_ori.exec() == QDialog::Accepted && !is_read_only) {
-		OrientationSet new_ori = ori_widget -> orientationSet();
-		if (new_ori != ori) {
-			undoStack().push(new ChangeOrientationsCommand(this, ori, new_ori));
-		}
-		if (ic_checkbox -> isChecked() != internal_connections) {
-			undoStack().push(new AllowInternalConnectionsCommand(this, ic_checkbox -> isChecked()));
-		}
-	}
 }
 
 /**
@@ -979,18 +926,7 @@ bool ElementScene::applyInformations(const QDomDocument &xml_document, QString *
 		}
 		return(false);
 	}
-		
-	// orientations
-	internal_connections = (root.attribute("ic") == "true");
-	
-	// connexions internes
-	if (!ori.fromString(root.attribute("orientation"))) {
-		if (error_message) {
-			*error_message = tr("Les orientations ne sont pas valides.", "error message");
-		}
-		return(false);
-	}
-	
+
 	// extrait les noms de la definition XML
 	_names.fromXml(root);
 	

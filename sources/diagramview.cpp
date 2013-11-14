@@ -17,16 +17,16 @@
 */
 #include "diagramview.h"
 #include "diagram.h"
-#include "customelement.h"
-#include "ghostelement.h"
-#include "conductor.h"
+#include "qetgraphicsitem/customelement.h"
+#include "qetgraphicsitem/ghostelement.h"
+#include "qetgraphicsitem/conductor.h"
 #include "diagramcommands.h"
 #include "diagramposition.h"
 #include "conductorpropertieswidget.h"
-#include "conductortextitem.h"
-#include "elementtextitem.h"
-#include "independenttextitem.h"
-#include "diagramimageitem.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/elementtextitem.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
 #include "titleblockpropertieswidget.h"
 #include "templatelocation.h"
 #include "qetapp.h"
@@ -144,12 +144,12 @@ void DiagramView::rotateSelection() {
 	if (scene -> isReadOnly()) return;
 	
 	// recupere les elements et les champs de texte a pivoter
-	QHash<Element *, QET::Orientation> elements_to_rotate;
+	QList<Element *> elements_to_rotate;
 	QList<DiagramTextItem *> texts_to_rotate;
 	QList<DiagramImageItem *> images_to_rotate;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(item)) {
-			elements_to_rotate.insert(e, e -> orientation().current());
+			elements_to_rotate << e;
 		} else if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
 			texts_to_rotate << cti;
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
@@ -1294,7 +1294,7 @@ void DiagramView::editImage() {
 	if (images.count() != 1) return;
 	DiagramImageItem *image;
 	if ((image = qgraphicsitem_cast<DiagramImageItem *> (images.first()))) {
-		image -> edit();
+		image -> editProperty();
 	}
 }
 

@@ -17,8 +17,8 @@
 */
 #include "terminal.h"
 #include "diagram.h"
-#include "element.h"
-#include "conductor.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/conductor.h"
 #include "diagramcommands.h"
 #include "qetapp.h"
 
@@ -131,13 +131,12 @@ Terminal::~Terminal() {
 QET::Orientation Terminal::orientation() const {
 	if (Element *elt = qgraphicsitem_cast<Element *>(parentItem())) {
 		// orientations actuelle et par defaut de l'element
-		QET::Orientation ori_cur = elt -> orientation().current();
-		QET::Orientation ori_def = elt -> orientation().defaultOrientation();
-		if (ori_cur == ori_def) return(ori_);
+		int ori_cur = elt -> orientation();
+		if (ori_cur == 0) return(ori_);
 		else {
 			// calcul l'angle de rotation implique par l'orientation de l'element parent
 			// angle de rotation de la borne sur la scene, divise par 90
-			int angle = ori_cur - ori_def + ori_;
+			int angle = ori_cur + ori_;
 			while (angle >= 4) angle -= 4;
 			return((QET::Orientation)angle);
 		}
@@ -213,9 +212,8 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 			qreal applied_rotation = 0.0;
 			if (Element *elt = qgraphicsitem_cast<Element *>(parentItem())) {
 				// orientations actuelle et par defaut de l'element
-				QET::Orientation ori_cur = elt -> orientation().current();
-				QET::Orientation ori_def = elt -> orientation().defaultOrientation();
-				applied_rotation = QET::correctAngle(90.0 * (ori_cur - ori_def));
+				int ori_cur = elt -> orientation();
+				applied_rotation = QET::correctAngle(90.0 * ori_cur);
 			}
 			if (applied_rotation == 90.0) p -> translate(1.0, -1.0);
 			else if (applied_rotation == 180.0) p -> translate(-1.0, -1.0);

@@ -19,6 +19,7 @@
 #define ELEMENT_VIEW_H
 #include <QGraphicsView>
 #include "elementscene.h"
+
 /**
 	This class provides a widget to render an ElementScene instance, i.e. the
 	edition class for electrical elements.
@@ -50,7 +51,7 @@ class ElementView : public QGraphicsView {
 	virtual void drawBackground(QPainter *, const QRectF &);
 	
 	private:
-	QRectF applyMovement(const QRectF &, const QET::OrientedMovement &, const QPointF &);
+	QRectF applyMovement(const QRectF &, const QPointF &);
 	
 	public slots:
 	void setVisualisationMode();

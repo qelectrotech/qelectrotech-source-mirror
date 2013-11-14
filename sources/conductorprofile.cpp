@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorprofile.h"
-#include "conductor.h"
+#include "qetgraphicsitem/conductor.h"
 #include "conductorsegmentprofile.h"
 
 /// Constructeur

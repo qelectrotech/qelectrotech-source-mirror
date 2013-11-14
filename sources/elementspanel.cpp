@@ -21,7 +21,7 @@
 #include "diagram.h"
 #include "elementscategory.h"
 #include "elementscollectioncache.h"
-#include "customelement.h"
+#include "qetgraphicsitem/customelement.h"
 #include "fileelementscollection.h"
 #include "fileelementdefinition.h"
 #include "qeticons.h"

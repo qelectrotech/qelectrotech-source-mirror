@@ -249,30 +249,6 @@ class ChangeNamesCommand : public ElementEditionCommand {
 };
 
 /**
-	This command changes the allowed orientations of an electrical element.
-*/
-class ChangeOrientationsCommand : public ElementEditionCommand {
-	// constructors, destructor
-	public:
-	ChangeOrientationsCommand(ElementScene *, const OrientationSet &, const OrientationSet &, QUndoCommand * = 0);
-	virtual ~ChangeOrientationsCommand();
-	private:
-	ChangeOrientationsCommand(const ChangeOrientationsCommand &);
-	
-	// methods
-	public:
-	virtual void undo();
-	virtual void redo();
-	
-	// attributes
-	private:
-	/// Former orientations
-	OrientationSet ori_before;
-	/// New orientations
-	OrientationSet ori_after;
-};
-
-/**
 	This command changes the zValue of a set of primitives when editing an
 	electrical element.
 */
@@ -310,29 +286,6 @@ class ChangeZValueCommand : public ElementEditionCommand {
 	QHash<QGraphicsItem *, qreal> redo_hash;
 	/// kind of treatment to apply
 	Option option;
-};
-
-/**
-	This command enables or disables internal connections for an electrical
-	element.
-*/
-class AllowInternalConnectionsCommand : public ElementEditionCommand {
-	// constructors, destructor
-	public:
-	AllowInternalConnectionsCommand(ElementScene *, bool, QUndoCommand * = 0);
-	virtual ~AllowInternalConnectionsCommand();
-	private:
-	AllowInternalConnectionsCommand(const AllowInternalConnectionsCommand &);
-	
-	// methods
-	public:
-	virtual void undo();
-	virtual void redo();
-	
-	// attributes
-	private:
-	/// whether internal connections are allowed afterward
-	bool ic;
 };
 
 /**

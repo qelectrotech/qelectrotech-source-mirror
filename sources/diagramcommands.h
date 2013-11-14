@@ -19,7 +19,7 @@
 #define DIAGRAM_COMMANDS_H
 #include <QtGui>
 #include "borderproperties.h"
-#include "conductor.h"
+#include "qetgraphicsitem/conductor.h"
 #include "conductorproperties.h"
 #include "diagramcontent.h"
 #include "titleblockproperties.h"
@@ -330,7 +330,7 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 class RotateElementsCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &, const QList<DiagramImageItem *> &, QUndoCommand * = 0);
+	RotateElementsCommand(const QList<Element *> &elements, const QList<DiagramTextItem *> &, const QList<DiagramImageItem *> &, QUndoCommand * = 0);
 	virtual ~RotateElementsCommand();
 	private:
 	RotateElementsCommand(const RotateElementsCommand &);
@@ -339,14 +339,11 @@ class RotateElementsCommand : public QUndoCommand {
 	public:
 	virtual void undo();
 	virtual void redo();
-	qreal appliedRotationAngle() const;
-	void setAppliedRotationAngle(const qreal &);
-	static void rotateElement(Element *, QET::Orientation);
 	
 	// attributes
 	private:
 	/// hold rotated elements along with their former orientation
-	QHash<Element *, QET::Orientation> elements_to_rotate;
+	QList<Element *> elements_to_rotate;
 	/// text items to be rotated
 	QList<DiagramTextItem *> texts_to_rotate;
 	/// images item to be rotated

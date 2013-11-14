@@ -145,7 +145,6 @@ void QETElementEditor::setupActions() {
 	zoom_fit        = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351"),                            this);
 	zoom_reset      = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom"),                               this);
 	edit_names      = new QAction(QET::Icons::Names,                tr("\311diter les noms"),                        this);
-	edit_ori        = new QAction(QET::Icons::Orientations,         tr("\311diter les orientations"),                this);
 	edit_author     = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations sur l'auteur"),   this);
 	edit_raise      = new QAction(QET::Icons::Raise,                tr("Rapprocher"),                                this);
 	edit_lower      = new QAction(QET::Icons::Lower,                tr("\311loigner"),                               this);
@@ -204,7 +203,6 @@ void QETElementEditor::setupActions() {
 	zoom_reset        -> setShortcut(QKeySequence(tr("Ctrl+0")));
 	
 	edit_names        -> setShortcut(QKeySequence(tr("Ctrl+E")));
-	edit_ori          -> setShortcut(QKeySequence(tr("Ctrl+T")));
 	edit_author       -> setShortcut(tr("Ctrl+Y"));
 	
 	edit_raise        -> setShortcut(QKeySequence(tr("Ctrl+Shift+Up")));
@@ -235,7 +233,6 @@ void QETElementEditor::setupActions() {
 	connect(zoom_reset,      SIGNAL(triggered()), ce_view,  SLOT(zoomReset()));
 	connect(edit_delete,     SIGNAL(triggered()), ce_scene, SLOT(slot_delete()));
 	connect(edit_names,      SIGNAL(triggered()), ce_scene, SLOT(slot_editNames()));
-	connect(edit_ori,        SIGNAL(triggered()), ce_scene, SLOT(slot_editOrientations()));
 	connect(edit_author,     SIGNAL(triggered()), ce_scene, SLOT(slot_editAuthorInformations()));
 	connect(edit_forward,    SIGNAL(triggered()), ce_scene, SLOT(slot_bringForward()));
 	connect(edit_raise,      SIGNAL(triggered()), ce_scene, SLOT(slot_raise()));
@@ -318,7 +315,6 @@ void QETElementEditor::setupActions() {
 	view_toolbar -> addAction(zoom_fit);
 	view_toolbar -> addAction(zoom_reset);
 	element_toolbar -> addAction(edit_names);
-	element_toolbar -> addAction(edit_ori);
 	depth_toolbar -> addAction(edit_forward);
 	depth_toolbar -> addAction(edit_raise);
 	depth_toolbar -> addAction(edit_lower);
@@ -393,7 +389,6 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addAction(edit_delete);
 	edit_menu -> addSeparator();
 	edit_menu -> addAction(edit_names);
-	edit_menu -> addAction(edit_ori);
 	edit_menu -> addAction(edit_author);
 	edit_menu -> addSeparator();
 	edit_menu -> addAction(edit_forward);
@@ -1236,14 +1231,6 @@ void QETElementEditor::writeSettings() {
 QPointF QETElementEditor::pasteOffset() {
 	QPointF paste_offset(5.0, 0.0);
 	return(paste_offset);
-}
-
-/**
-	@return Le type de mouvement a effectuer lors d'un copier/coller avec
-	decalage.
-*/
-QET::OrientedMovement QETElementEditor::pasteMovement() {
-	return(QET::ToEast);
 }
 
 /**

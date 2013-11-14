@@ -22,9 +22,9 @@
 
 #include "qetproject.h"
 #include "diagram.h"
-#include "element.h"
+#include "qetgraphicsitem/element.h"
 #include "diagramcontent.h"
-#include "customelement.h"
+#include "qetgraphicsitem/customelement.h"
 
 class QETProject;
 class Diagram;

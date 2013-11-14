@@ -6,7 +6,7 @@
 #include <QSet>
 #include <QMultiMap>
 #include <QString>
-#include "conductor.h"
+#include "qetgraphicsitem/conductor.h"
 #include "diagram.h"
 
 class ConductorAutoNumerotationWidget : public QDialog

@@ -322,7 +322,6 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 		// on applique le decalage qui convient
 		final_pasted_content_bounding_rect = applyMovement(
 			pasted_content_bounding_rect,
-			QETElementEditor::pasteMovement(),
 			QETElementEditor::pasteOffset()
 		);
 	}
@@ -483,21 +482,11 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	@param movement Orientation du decalage a appliquer
 	@param offset Decalage a appliquer
 */
-QRectF ElementView::applyMovement(const QRectF &start, const QET::OrientedMovement &movement, const QPointF &offset) {
-	// calcule le decalage a appliquer a partir de l'offset indique et du mouvement
+QRectF ElementView::applyMovement(const QRectF &start, const QPointF &offset) {
+	// calcule le decalage a appliquer a partir de l'offset
 	QPointF final_offset;
-	if (movement == QET::ToNorthEast || movement == QET::ToEast || movement == QET::ToSouthEast) {
-		final_offset.rx() =  start.width() + offset.x();
-	} else if (movement == QET::ToNorthWest || movement == QET::ToWest || movement == QET::ToSouthWest) {
-		final_offset.rx() = -start.width() - offset.x();
-	}
-	
-	if (movement == QET::ToNorthWest || movement == QET::ToNorth || movement == QET::ToNorthEast) {
-		final_offset.ry() = -start.height() - offset.y();
-	} else if (movement == QET::ToSouthWest || movement == QET::ToSouth || movement == QET::ToSouthEast) {
-		final_offset.ry() =  start.height() + offset.y();
-	}
-	
+	final_offset.rx() =  start.width() + offset.x();
+
 	// applique le decalage ainsi calcule
 	return(start.translated(final_offset));
 }

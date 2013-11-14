@@ -2,7 +2,7 @@
 #include "elementscollection.h"
 #include "elementscategory.h"
 #include "elementdefinition.h"
-#include "customelement.h"
+#include "qetgraphicsitem/customelement.h"
 
 /**
 	Construct a cache for elements collections.

@@ -20,8 +20,7 @@
 #include "elementscategorieswidget.h"
 #include "elementscategorieslist.h"
 #include "nameslistwidget.h"
-#include "orientationsetwidget.h"
-#include "element.h"
+#include "qetgraphicsitem/element.h"
 #include "qetelementeditor.h"
 #include "qet.h"
 #include "qetapp.h"
@@ -52,7 +51,6 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 	addPage(buildStep1());
 	addPage(buildStep2());
 	addPage(buildStep3());
-	addPage(buildStep4());
 	setFixedSize(705, 325);
 }
 
@@ -96,7 +94,7 @@ bool NewElementWizard::preselectCategory(ElementsCategory *category) {
 QWizardPage *NewElementWizard::buildStep1() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Category);
-	page -> setTitle(tr("\311tape 1/4 : Cat\351gorie parente", "wizard page title"));
+	page -> setTitle(tr("\311tape 1/3 : Cat\351gorie parente", "wizard page title"));
 	page -> setSubTitle(tr("S\351lectionnez une cat\351gorie dans laquelle enregistrer le nouvel \351l\351ment.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
@@ -113,7 +111,7 @@ QWizardPage *NewElementWizard::buildStep1() {
 QWizardPage *NewElementWizard::buildStep2() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Filename);
-	page -> setTitle(tr("\311tape 2/4 : Nom du fichier", "wizard page title"));
+	page -> setTitle(tr("\311tape 2/3 : Nom du fichier", "wizard page title"));
 	page -> setSubTitle(tr("Indiquez le nom du fichier dans lequel enregistrer le nouvel \351l\351ment.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
@@ -136,7 +134,7 @@ QWizardPage *NewElementWizard::buildStep2() {
 QWizardPage *NewElementWizard::buildStep3() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Names);
-	page -> setTitle(tr("\311tape 3/4 : Noms de l'\351l\351ment", "wizard page title"));
+	page -> setTitle(tr("\311tape 3/3 : Noms de l'\351l\351ment", "wizard page title"));
 	page -> setSubTitle(tr("Indiquez le ou les noms de l'\351l\351ment.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
@@ -150,33 +148,17 @@ QWizardPage *NewElementWizard::buildStep3() {
 	return(page);
 }
 
-/**
-	Met en place l'etape 4 : orientations possibles pour le nouvel element
-*/
-QWizardPage *NewElementWizard::buildStep4() {
-	QWizardPage *page = new QWizardPage();
-	page -> setProperty("WizardState", Orientations);
-	page -> setTitle(tr("\311tape 4/4 : Orientations", "wizard page title"));
-	page -> setSubTitle(tr("Indiquez les orientations possibles pour le nouvel \351l\351ment.", "wizard page subtitle"));
-	QVBoxLayout *layout = new QVBoxLayout();
-	
-	orientation_set = new OrientationSetWidget();
-	layout -> addWidget(orientation_set);
-	layout -> addSpacing(25);
-	
-	page -> setLayout(layout);
-	return(page);
-}
-
 /// @return true si l'etape en cours est validee, false sinon
 bool NewElementWizard::validateCurrentPage() {
 	WizardState wizard_state = static_cast<WizardState>(currentPage() -> property("WizardState").toInt());
 	if      (wizard_state == Category) return(validStep1());
 	else if (wizard_state == Filename) return(validStep2());
-	else if (wizard_state == Names)    return(element_names -> checkOneName()); // il doit y avoir au moins un nom
-	else if (wizard_state == Orientations) {
-		createNewElement();
-		return(true);
+	else if (wizard_state == Names) {
+		// must have one name minimum
+		if (element_names -> checkOneName())
+			createNewElement();
+		return true;
+
 	}
 	else return(true);
 }
@@ -259,7 +241,6 @@ bool NewElementWizard::validStep2() {
 void NewElementWizard::createNewElement() {
 	QETElementEditor *edit_new_element = new QETElementEditor(parentWidget());
 	edit_new_element -> setNames(element_names -> names());
-	edit_new_element -> setOrientations(orientation_set -> orientationSet());
 	
 	ElementsLocation new_element_location = chosen_category -> location();
 	new_element_location.addToPath(chosen_file);

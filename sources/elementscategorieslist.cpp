@@ -17,7 +17,7 @@
 */
 #include "elementscategorieslist.h"
 #include "qetapp.h"
-#include "customelement.h"
+#include "qetgraphicsitem/customelement.h"
 #include "elementscollection.h"
 #include "elementscategory.h"
 #include "elementdefinition.h"

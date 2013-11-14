@@ -16,16 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramcommands.h"
-#include "element.h"
-#include "conductor.h"
-#include "conductortextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/conductortextitem.h"
 #include "diagram.h"
-#include "elementtextitem.h"
-#include "independenttextitem.h"
+#include "qetgraphicsitem/elementtextitem.h"
+#include "qetgraphicsitem/independenttextitem.h"
 #include "qgimanager.h"
 #include "diagram.h"
-#include "diagramtextitem.h"
-#include "diagramimageitem.h"
+#include "qetgraphicsitem/diagramtextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
 
 /**
 	Constructeur
@@ -630,12 +630,12 @@ void ChangeDiagramTextCommand::redo() {
 	@param texts Textes a pivoter
 	@param parent QUndoCommand parent
 */
-RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &texts, const QList<DiagramImageItem *> &images, QUndoCommand *parent) :
+RotateElementsCommand::RotateElementsCommand(const QList<Element *> &elements, const QList<DiagramTextItem *> &texts, const QList<DiagramImageItem *> &images, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	elements_to_rotate(elements),
 	texts_to_rotate(texts),
 	images_to_rotate(images),
-	applied_rotation_angle_(-90.0)
+	applied_rotation_angle_(90.0)
 {
 	setText(
 		QString(
@@ -653,14 +653,14 @@ RotateElementsCommand::~RotateElementsCommand() {
 
 /// defait le pivotement
 void RotateElementsCommand::undo() {
-	foreach(Element *e, elements_to_rotate.keys()) {
-		rotateElement(e, elements_to_rotate[e]);
+	foreach(Element *e, elements_to_rotate) {
+		e -> rotateBy(-applied_rotation_angle_);
 	}
 	foreach(DiagramTextItem *dti, texts_to_rotate) {
 		//ConductorTextItem have a default rotation angle, we apply a specific treatment
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(dti)) {
 			cti -> forceRotateByUser(previous_rotate_by_user_[cti]);
-			(cti -> wasRotateByUser()) ? cti -> rotateBy(-appliedRotationAngle()) :
+			(cti -> wasRotateByUser()) ? cti -> rotateBy(-applied_rotation_angle_) :
 										 cti -> parentConductor() -> adjustTextItemPosition();
 		}
 		else {dti -> rotateBy(-applied_rotation_angle_);}
@@ -670,8 +670,8 @@ void RotateElementsCommand::undo() {
 
 /// refait le pivotement
 void RotateElementsCommand::redo() {
-	foreach(Element *e, elements_to_rotate.keys()) {
-		rotateElement(e, e -> orientation().next());
+	foreach(Element *e, elements_to_rotate) {
+		e -> rotateBy(applied_rotation_angle_);
 	}
 	foreach(DiagramTextItem *dti, texts_to_rotate) {
 		//we grab the previous rotation by user of each ConductorTextItem
@@ -682,50 +682,6 @@ void RotateElementsCommand::redo() {
 		dti -> rotateBy(applied_rotation_angle_);
 	}
 	foreach(DiagramImageItem *dii, images_to_rotate) dii -> rotateBy(applied_rotation_angle_);
-}
-
-/**
-	@return l'angle de rotation applique aux textes
-*/
-qreal RotateElementsCommand::appliedRotationAngle() const {
-	return(applied_rotation_angle_);
-}
-
-/**
-	@param angle l'angle de rotation a appliquer aux textes
-*/
-void RotateElementsCommand::setAppliedRotationAngle(const qreal &angle) {
-	applied_rotation_angle_ = QET::correctAngle(angle);
-}
-
-/**
-	Passe un element a une orientation donnee, en prenant soin de gerer ses textes enfants
-	@param element Element a orienter soigneusement
-	@param orientation Nouvelle orientation de l'element
-*/
-void RotateElementsCommand::rotateElement(Element *element, QET::Orientation orientation) {
-	qreal rotation_value = 90.0 * (orientation - element -> orientation().current());
-	element -> setOrientation(orientation);
-	element -> update();
-	if (rotation_value) {
-		// repositionne les textes de l'element qui ne comportent pas l'option "FollowParentRotations"
-		foreach(ElementTextItem *eti, element -> texts()) {
-			if (!eti -> followParentRotations())  {
-				// on souhaite pivoter le champ de texte par rapport a son centre
-				QPointF eti_center = eti -> boundingRect().center();
-				// pour ce faire, on repere la position de son centre par rapport a son parent
-				QPointF parent_eti_center_before = eti -> mapToParent(eti_center);
-				// on applique ensuite une simple rotation contraire, qui sera donc appliquee sur le milieu du cote gauche du champ de texte
-				eti -> rotateBy(-rotation_value);
-				// on regarde ensuite la nouvelle position du centre du champ de texte par rapport a son parent
-				QPointF parent_eti_center_after = eti -> mapToParent(eti_center);
-				// on determine la translation a appliquer
-				QPointF eti_translation = parent_eti_center_before - parent_eti_center_after;
-				// on applique cette translation
-				eti -> setPos(eti -> pos() + eti_translation);
-			}
-		}
-	}
 }
 
 /**

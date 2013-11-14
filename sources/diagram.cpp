@@ -16,21 +16,21 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <math.h>
-#include "conductor.h"
-#include "conductortextitem.h"
-#include "customelement.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/customelement.h"
 #include "diagram.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
 #include "diagramposition.h"
-#include "elementtextitem.h"
+#include "qetgraphicsitem/elementtextitem.h"
 #include "elementsmover.h"
 #include "elementtextsmover.h"
 #include "exportdialog.h"
-#include "ghostelement.h"
-#include "independenttextitem.h"
+#include "qetgraphicsitem/ghostelement.h"
+#include "qetgraphicsitem/independenttextitem.h"
 #include "qetapp.h"
-#include "diagramimageitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -547,7 +547,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	// chargement de tous les textes du fichiers XML
 	QList<IndependentTextItem *> added_texts;
 	foreach (QDomElement text_xml, QET::findInDomElement(root, "inputs", "input")) {
-		IndependentTextItem *iti = new IndependentTextItem(this);
+        	IndependentTextItem *iti = new IndependentTextItem(this);
 		iti -> fromXml(text_xml);
 		addIndependentTextItem(iti);
 		added_texts << iti;
@@ -555,7 +555,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 
 	QList<DiagramImageItem *> added_images;
 	foreach (QDomElement image_xml, QET::findInDomElement(root, "images", "image")) {
-		DiagramImageItem *dii = new DiagramImageItem (this);
+		DiagramImageItem *dii = new DiagramImageItem ();
 		dii -> fromXml(image_xml);
 		addItem(dii);
 		added_images << dii;
@@ -1256,20 +1256,11 @@ DiagramContent Diagram::selectedContent() {
 */
 bool Diagram::canRotateSelection() const {
 	foreach(QGraphicsItem * qgi, selectedItems()) {
-		if (qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
-			return(true);
-		} else if (qgraphicsitem_cast<ElementTextItem *>(qgi)) {
-			return(true);
-		} else if (qgraphicsitem_cast<ConductorTextItem *>(qgi)) {
-			return(true);
-		} else if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
-			// l'element est-il pivotable ?
-			if (e -> orientation().current() != e -> orientation().next()) {
-				return(true);
-			}
-		} else if (qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
-			return (true);
-		}
+		if (qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
+		qgraphicsitem_cast<ConductorTextItem *>(qgi) ||
+		qgraphicsitem_cast<DiagramImageItem *>(qgi) ||
+		qgraphicsitem_cast<ElementTextItem *>(qgi) ||
+		qgraphicsitem_cast<Element *>(qgi)) return (true);
 	}
 	return(false);
 }

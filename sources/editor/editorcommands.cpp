@@ -411,39 +411,6 @@ void ChangeNamesCommand::redo() {
 
 /**
 	Constructeur
-	@param element_scene Element edite
-	@param before Orientations avant changement
-	@param after Orientations apres changement
-	@param parent QUndoCommand parent
-*/
-ChangeOrientationsCommand::ChangeOrientationsCommand(
-	ElementScene *element_scene,
-	const OrientationSet &before,
-	const OrientationSet &after,
-	QUndoCommand *parent
-) :
-	ElementEditionCommand(QObject::tr("modification orientations", "undo caption"), element_scene, 0, parent),
-	ori_before(before),
-	ori_after(after)
-{
-}
-
-/// Destructeur
-ChangeOrientationsCommand::~ChangeOrientationsCommand() {
-}
-
-/// Annule le changement
-void ChangeOrientationsCommand::undo() {
-	editor_scene_ -> setOrientations(ori_before);
-}
-
-/// Refait le changement
-void ChangeOrientationsCommand::redo() {
-	editor_scene_ -> setOrientations(ori_after);
-}
-
-/**
-	Constructeur
 	@param elmt ElementScene concernee
 	@param o Option decrivant le type de traitement applique aux zValues des parties de l'element
 	@param parent QUndoCommand parent
@@ -563,32 +530,6 @@ void ChangeZValueCommand::applySendBackward(const QList<QGraphicsItem *> &items_
 	int z = 1;
 	foreach(QGraphicsItem *qgi,     selected_items) redo_hash.insert(qgi, z ++);
 	foreach(QGraphicsItem *qgi, non_selected_items) redo_hash.insert(qgi, z ++);
-}
-
-/**
-	Constructeur
-	@param elmt ElementScene concernee
-	@param allow true pour que les connexions internes soient acceptees, false sinon
-	@param parent QUndoCommand parent
-*/
-AllowInternalConnectionsCommand::AllowInternalConnectionsCommand(ElementScene *elmt, bool allow, QUndoCommand *parent) :
-	ElementEditionCommand(QObject::tr("modification connexions internes", "undo caption"), elmt, 0, parent),
-	ic(allow)
-{
-}
-
-/// Destructeur
-AllowInternalConnectionsCommand::~AllowInternalConnectionsCommand() {
-}
-
-/// Annule le changement d'autorisation pour les connexions internes
-void AllowInternalConnectionsCommand::undo() {
-	editor_scene_ -> setInternalConnections(!ic);
-}
-
-/// Refait le changement d'autorisation pour les connexions internes
-void AllowInternalConnectionsCommand::redo() {
-	editor_scene_ -> setInternalConnections(ic);
 }
 
 /**

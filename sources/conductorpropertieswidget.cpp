@@ -17,7 +17,7 @@
 */
 #include "conductorpropertieswidget.h"
 #include <QtGui>
-#include "conductor.h"
+#include "qetgraphicsitem/conductor.h"
 #include "qeticons.h"
 #include "qetapp.h"
 

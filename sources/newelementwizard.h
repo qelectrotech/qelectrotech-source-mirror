@@ -21,7 +21,6 @@
 class ElementsCategoriesWidget;
 class ElementsCategory;
 class NamesListWidget;
-class OrientationSetWidget;
 class QFileNameEdit;
 /**
 	This class provides a wizard dialog enabling users to to specify the basic
@@ -31,9 +30,6 @@ class QFileNameEdit;
 	  - the category the element should be saved to
 	  - the filename the element should be saved to
 	  - localized names
-	  - dimensions
-	  - hotspot position
-	  - allowed and default orientations
 */
 class NewElementWizard : public QWizard {
 	Q_OBJECT
@@ -53,11 +49,10 @@ class NewElementWizard : public QWizard {
 	
 	// attributes
 	private:
-	enum WizardState { Category, Filename, Names, Dimensions, Orientations };
+	enum WizardState { Category, Filename, Names };
 	ElementsCategoriesWidget *categories_list;
 	QFileNameEdit *qle_filename;
 	NamesListWidget *element_names;
-	OrientationSetWidget *orientation_set;
 	WizardState current_state;
 	QString chosen_file;
 	ElementsCategory *chosen_category;
@@ -67,7 +62,6 @@ class NewElementWizard : public QWizard {
 	QWizardPage *buildStep1();
 	QWizardPage *buildStep2();
 	QWizardPage *buildStep3();
-	QWizardPage *buildStep4();
 	bool validStep1();
 	bool validStep2();
 	bool validateCurrentPage();

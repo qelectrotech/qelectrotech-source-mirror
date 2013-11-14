@@ -16,12 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementtextsmover.h"
-#include "conductor.h"
-#include "elementtextitem.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/elementtextitem.h"
 #include "diagram.h"
 #include "diagramcommands.h"
-#include "element.h"
-#include "independenttextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/independenttextitem.h"
 
 /**
 	Constructeur

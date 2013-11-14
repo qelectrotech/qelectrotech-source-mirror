@@ -27,11 +27,9 @@
 	Constructeur pour un element sans scene ni parent
 */
 Element::Element(QGraphicsItem *parent, Diagram *scene) :
-	QObject(),
-	QGraphicsItem(parent, scene),
+	QetGraphicsItem(parent),
 	internal_connections_(false),
-	must_highlight_(false),
-	first_move_(true)
+	must_highlight_(false)
 {
 	setZValue(10);
 }
@@ -72,9 +70,7 @@ void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		Diagram *dia = diagram();
 		if (dia && options -> levelOfDetail == 1.0 && widget) {
 			// calcule la rotation qu'a subi l'element
-			qreal applied_rotation = 90.0 * (ori.current() - ori.defaultOrientation());
-			while (applied_rotation < 360.0) applied_rotation += 360.0;
-			while (applied_rotation > 360.0) applied_rotation -= 360.0;
+			qreal applied_rotation = 90.0 * orientation();
 			if (applied_rotation == 90.0) painter -> translate(1.0, -1.0);
 			else if (applied_rotation == 180.0) painter -> translate(-1.0, -1.0);
 			else if (applied_rotation == 270.0) painter -> translate(-1.0, 1.0);
@@ -169,25 +165,38 @@ QPixmap Element::pixmap() {
 }
 
 /**
-	Permet de specifier l'orientation de l'element
-	@param o la nouvelle orientation de l'objet
-	@return true si l'orientation a pu etre appliquee, false sinon
-*/
-bool Element::setOrientation(QET::Orientation o) {
-	// verifie que l'orientation demandee est acceptee
-	if (!ori.accept(o)) return(false);
-	prepareGeometryChange();
-	// rotation en consequence et rafraichissement de l'element graphique
-	qreal rotation_value = 90.0 * (o - ori.current());
-	rotate(rotation_value);
-	ori.setCurrent(o);
-	update();
+ * @brief Element::rotateBy
+ * this methode is redefined for handle child item
+ * @param angle
+ */
+void Element::rotateBy(const qreal &angle) {
+	qreal applied_angle = QET::correctAngle(angle);
+	applyRotation(applied_angle + rotation());
+
+	//update the path of conductor
 	foreach(QGraphicsItem *qgi, childItems()) {
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
 			p -> updateConductor();
 		}
 	}
-	return(true);
+
+	// repositionne les textes de l'element qui ne comportent pas l'option "FollowParentRotations"
+	foreach(ElementTextItem *eti, texts()) {
+		if (!eti -> followParentRotations())  {
+			// on souhaite pivoter le champ de texte par rapport a son centre
+			QPointF eti_center = eti -> boundingRect().center();
+			// pour ce faire, on repere la position de son centre par rapport a son parent
+			QPointF parent_eti_center_before = eti -> mapToParent(eti_center);
+			// on applique ensuite une simple rotation contraire, qui sera donc appliquee sur le milieu du cote gauche du champ de texte
+			eti -> rotateBy(-applied_angle);
+			// on regarde ensuite la nouvelle position du centre du champ de texte par rapport a son parent
+			QPointF parent_eti_center_after = eti -> mapToParent(eti_center);
+			// on determine la translation a appliquer
+			QPointF eti_translation = parent_eti_center_before - parent_eti_center_after;
+			// on applique cette translation
+			eti -> setPos(eti -> pos() + eti_translation);
+		}
+	}
 }
 
 /*** Methodes protegees ***/
@@ -274,95 +283,6 @@ void Element::updatePixmap() {
 	p.translate(hotspot_coord);
 	// L'element se dessine sur la pixmap
 	paint(&p, 0);
-}
-
-/**
-	Change la position de l'element en veillant a ce que l'element
-	reste sur la grille du Diagram auquel il appartient.
-	@param p Nouvelles coordonnees de l'element
-*/
-void Element::setPos(const QPointF &p) {
-	if (p == pos()) return;
-	// pas la peine de positionner sur la grille si l'element n'est pas sur un Diagram
-	if (scene()) {
-		// arrondit l'abscisse a 10 px pres
-		int p_x = qRound(p.x() / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
-		// arrondit l'ordonnee a 10 px pres
-		int p_y = qRound(p.y() / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
-		QGraphicsItem::setPos(p_x, p_y);
-	} else QGraphicsItem::setPos(p);
-}
-
-/**
-	Change la position de l'element en veillant a ce que l'element
-	reste sur la grille du Diagram auquel il appartient.
-	@param x Nouvelle abscisse de l'element
-	@param y Nouvelle ordonnee de l'element
-*/
-void Element::setPos(qreal x, qreal y) {
-	setPos(QPointF(x, y));
-}
-
-/**
-	Gere le clic sur l'element
-	@param e Objet decrivant l'evenement souris
-*/
-void Element::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-	first_move_ = true;
-	if (e -> modifiers() & Qt::ControlModifier) {
-		setSelected(!isSelected());
-	}
-	QGraphicsItem::mousePressEvent(e);
-}
-
-/**
-	Gere les mouvements de souris lies a l'element
-	@param e Objet decrivant l'evenement souris
-*/
-void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
-	if (isSelected() && e -> buttons() & Qt::LeftButton) {
-		// l'element est en train d'etre deplace
-		Diagram *diagram_ptr = diagram();
-		if (diagram_ptr) {
-			if (first_move_) {
-				// il s'agit du premier mouvement du deplacement, on le signale
-				// au schema parent
-				diagram_ptr -> beginMoveElements(this);
-			}
-		}
-		
-		// on applique le mouvement impose par la souris
-		QPointF old_pos = pos();
-		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
-		
-		// on calcule le mouvement reellement applique par setPos()
-		QPointF effective_movement = pos() - old_pos;
-		
-		if (diagram_ptr) {
-			// on signale le mouvement ainsi applique au schema parent, qui
-			// l'appliquera aux autres items selectionnes selon son bon vouloir
-			diagram_ptr -> continueMoveElements(effective_movement);
-		}
-	} else e -> ignore();
-	
-	if (first_move_) {
-		first_move_ = false;
-	}
-}
-
-/**
-	Gere le relachement de souris
-	Cette methode a ete reimplementee pour tenir a jour la liste des elements
-	et conducteurs a deplacer au niveau du schema.
-*/
-void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	if (Diagram *diagram_ptr = diagram()) {
-		diagram_ptr -> endMoveElements();
-	}
-	
-	if (!(e -> modifiers() & Qt::ControlModifier)) {
-		QGraphicsItem::mouseReleaseEvent(e);
-	}
 }
 
 /**
@@ -462,11 +382,11 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	// orientation
 	bool conv_ok;
 	int read_ori = e.attribute("orientation").toInt(&conv_ok);
-	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = ori.defaultOrientation();
+	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = 0;
 	if (handle_inputs_rotation) {
-		RotateElementsCommand::rotateElement(this, (QET::Orientation)read_ori);
+		rotateBy(90*read_ori);
 	} else {
-		setOrientation((QET::Orientation)read_ori);
+		applyRotation(90*read_ori);
 	}
 	return(true);
 }
@@ -488,7 +408,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	// position, selection et orientation
 	element.setAttribute("x", QString("%1").arg(pos().x()));
 	element.setAttribute("y", QString("%1").arg(pos().y()));
-	element.setAttribute("orientation", QString("%1").arg(ori.current()));
+	element.setAttribute("orientation", QString("%1").arg(orientation()));
 	
 	/* recupere le premier id a utiliser pour les bornes de cet element */
 	int id_terminal = 0;
@@ -521,9 +441,4 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	element.appendChild(inputs);
 	
 	return(element);
-}
-
-/// @return le Diagram auquel cet element appartient, ou 0 si cet element est independant
-Diagram *Element::diagram() const {
-	return(qobject_cast<Diagram *>(scene()));
 }

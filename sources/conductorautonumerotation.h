@@ -18,7 +18,7 @@
 #ifndef CONDUCTORAUTONUMEROTATION_H
 #define CONDUCTORAUTONUMEROTATION_H
 
-#include "conductor.h"
+#include "qetgraphicsitem/conductor.h"
 #include "numerotationcontext.h"
 #include "autonumerotation.h"
 
