@@ -1,6 +1,7 @@
-<definition width="60" version="0.3" hotspot_x="35" hotspot_y="19" height="40" type="element" orientation="dyny">
+<definition width="60" version="0.3" hotspot_x="34" hotspot_y="19" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Analog input, 4-fold</name>
+        <name lang="it">Ingresso analogico, 4 vie</name>
     </names>
     <informations></informations>
     <description>

@@ -1,7 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="34" hotspot_y="19" height="40" type="element" orientation="dyny">
     <names>
-        <name lang="en">Temperature sensor
-</name>
+        <name lang="en">Temperature sensor</name>
+        <name lang="it">Sensore di temperatura</name>
         <name lang="pl">Czujnik temperatury</name>
     </names>
     <informations></informations>

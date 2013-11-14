@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Shutter switch</name>
+        <name lang="it">Pulsante tapparella</name>
     </names>
     <informations></informations>
     <description>

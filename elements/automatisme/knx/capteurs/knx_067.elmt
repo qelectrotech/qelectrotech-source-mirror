@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="19" height="40" type="element" orientation="dyny">
     <names>
-        <name lang="en">Binary Input, 6-fold</name>
+        <name lang="en">Binary Input, single</name>
+        <name lang="it">Ingresso digitale, 1 via</name>
     </names>
     <informations></informations>
     <description>

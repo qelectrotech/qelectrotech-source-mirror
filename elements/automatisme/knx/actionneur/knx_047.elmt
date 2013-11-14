@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="35" hotspot_y="19" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Binary output, 3-fold</name>
+        <name lang="it">Uscita digitale, 3 vie</name>
     </names>
     <informations></informations>
     <description>

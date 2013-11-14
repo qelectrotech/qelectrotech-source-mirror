@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="34" hotspot_y="18" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Brightness sensor</name>
+        <name lang="it">Sensore di luminosità</name>
     </names>
     <informations></informations>
     <description>
