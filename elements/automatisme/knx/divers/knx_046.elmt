@@ -1,7 +1,7 @@
 <definition width="90" version="0.3" hotspot_x="35" hotspot_y="19" height="40" type="element" orientation="dyny">
     <names>
-        <name lang="en">Binary/binary
-</name>
+        <name lang="en">Binary/binary</name>
+        <name lang="it">ingresso digitale, uscita digitale</name>
     </names>
     <informations></informations>
     <description>

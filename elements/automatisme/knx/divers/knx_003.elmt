@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="26" hotspot_y="20" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Power supply</name>
+        <name lang="it">Alimentatore</name>
     </names>
     <informations></informations>
     <description>

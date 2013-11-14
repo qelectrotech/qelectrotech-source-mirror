@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Push button, single</name>
+        <name lang="it">Pulsante, 1 via</name>
     </names>
     <informations></informations>
     <description>

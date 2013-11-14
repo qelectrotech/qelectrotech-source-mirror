@@ -1,6 +1,7 @@
 <definition width="70" version="0.3" hotspot_x="46" hotspot_y="21" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">IR Transmitter</name>
+        <name lang="it">Trasmettitore IR</name>
         <name lang="pl">Nadajnik podczerwieni</name>
     </names>
     <informations></informations>

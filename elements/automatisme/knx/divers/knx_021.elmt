@@ -1,6 +1,7 @@
 <definition width="80" version="0.3" hotspot_x="35" hotspot_y="18" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Serial</name>
+        <name lang="it">Interf. seriale</name>
     </names>
     <informations></informations>
     <description>

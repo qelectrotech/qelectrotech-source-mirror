@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="36" hotspot_y="19" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Display</name>
+        <name lang="it">Display</name>
     </names>
     <informations></informations>
     <description>

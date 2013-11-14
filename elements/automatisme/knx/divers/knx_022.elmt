@@ -1,8 +1,9 @@
 <definition width="80" version="0.3" hotspot_x="35" hotspot_y="18" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">ISDN</name>
+        <name lang="it">Interf. ISDN</name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
         <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="20" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
