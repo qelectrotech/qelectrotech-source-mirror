@@ -32,8 +32,10 @@ const qreal Terminal::terminalSize = 4.0;
 	Methode privee pour initialiser la borne.
 	@param pf  position du point d'amarrage pour un conducteur
 	@param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
+	@param number of terminal
+	@param name of terminal
 */
-void Terminal::init(QPointF pf, QET::Orientation o, QString number) {
+void Terminal::init(QPointF pf, QET::Orientation o, QString number, QString name, bool hiddenName) {
 	// definition du pount d'amarrage pour un conducteur
 	dock_conductor_  = pf;
 	
@@ -52,6 +54,9 @@ void Terminal::init(QPointF pf, QET::Orientation o, QString number) {
 	}
 	// Number of terminal
 	number_terminal_ = number;
+	// Name of terminal
+	name_terminal_ = name;
+	name_terminal_hidden = hiddenName;
 	// par defaut : pas de conducteur
 	
 	// QRectF null
@@ -76,7 +81,7 @@ Terminal::Terminal(QPointF pf, QET::Orientation o, Element *e, Diagram *s) :
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
 {
-	init(pf, o, "_");
+	init(pf, o, "_", "_", false);
 }
 
 /**
@@ -92,7 +97,7 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, QET::Orientation o, Element *e, Diagr
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
 {
-	init(QPointF(pf_x, pf_y), o, "_");
+	init(QPointF(pf_x, pf_y), o, "_", "_", false);
 }
 
 /**
@@ -100,15 +105,17 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, QET::Orientation o, Element *e, Diagr
 	@param pf  position du point d'amarrage pour un conducteur
 	@param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
 	@param num number of terminal (ex 3 - 4 for NO)
+	@param name of terminal
+	@param hiddenName hide or show the name
 	@param e   Element auquel cette borne appartient
 	@param s   Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(QPointF pf, QET::Orientation o, QString num, Element *e, Diagram *s) :
+Terminal::Terminal(QPointF pf, QET::Orientation o, QString num, QString name, bool hiddenName, Element *e, Diagram *s) :
 	QGraphicsItem(e, s),
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
 {
-	init(pf, o, num);
+	init(pf, o, num, name, hiddenName);
 }
 
 /**
@@ -150,6 +157,15 @@ QET::Orientation Terminal::orientation() const {
  */
 void Terminal::setNumber(QString number) {
 	number_terminal_ = number;
+}
+
+/**
+ * @brief Terminal::setName
+ * @param name
+ */
+void Terminal::setName(QString name, bool hiddenName) {
+	name_terminal_ = name;
+	name_terminal_hidden = hiddenName;
 }
 
 /**

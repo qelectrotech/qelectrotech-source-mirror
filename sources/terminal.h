@@ -33,7 +33,7 @@ class Terminal : public QGraphicsItem {
 	public:
 	Terminal(QPointF,      QET::Orientation, Element * = 0, Diagram * = 0);
 	Terminal(qreal, qreal, QET::Orientation, Element * = 0, Diagram * = 0);
-	Terminal(QPointF,      QET::Orientation, QString number, Element * = 0, Diagram * = 0);
+	Terminal(QPointF,      QET::Orientation, QString number, QString name, bool hiddenName, Element * = 0, Diagram * = 0);
 	virtual ~Terminal();
 	
 	private:
@@ -63,7 +63,9 @@ class Terminal : public QGraphicsItem {
 	QET::Orientation orientation() const;
 	QPointF dockConductor() const;
 	QString number() const;
+	QString name() const;
 	void setNumber(QString number);
+	void setName(QString name, bool hiddenName);
 	void updateConductor();
 	bool isLinkedTo(Terminal *);
 	bool canBeLinkedTo(Terminal *);
@@ -121,9 +123,12 @@ class Terminal : public QGraphicsItem {
 	QColor hovered_color_;
 	/// Number of Terminal
 	QString number_terminal_;
+	/// Name of Terminal
+	QString name_terminal_;
+	bool name_terminal_hidden;
 	
 	private:
-	void init(QPointF, QET::Orientation, QString number);
+	void init(QPointF, QET::Orientation, QString number, QString name, bool hiddenName);
 };
 
 /**
@@ -146,6 +151,13 @@ inline QPointF Terminal::dockConductor() const {
 */
 inline QString Terminal::number() const {
 	return(number_terminal_);
+}
+
+/**
+	@return the name of terminal.
+*/
+inline QString Terminal::name() const {
+	return(name_terminal_);
 }
 
 #endif
