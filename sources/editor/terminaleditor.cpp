@@ -41,6 +41,9 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWi
 	orientation -> addItem(QET::Icons::South, tr("Sud"),   QET::South);
 	orientation -> addItem(QET::Icons::West,  tr("Ouest"), QET::West);
 	
+	qle_number = new QLineEdit();
+	qle_name   = new QLineEdit();
+	
 	QVBoxLayout *main_layout = new QVBoxLayout();
 	main_layout -> addWidget(new QLabel(tr("Position : ")));
 	
@@ -55,6 +58,14 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWi
 	ori -> addWidget(new QLabel(tr("Orientation : ")));
 	ori -> addWidget(orientation                     );
 	main_layout -> addLayout(ori);
+	
+	QHBoxLayout *num = new QHBoxLayout();
+	num -> addWidget(new QLabel(tr("Num\351ro : ")));
+	num -> addWidget(qle_number                     );
+	num -> addWidget(new QLabel(tr("Nom : ")));
+	num -> addWidget(qle_name                     );
+	main_layout -> addLayout(num);
+	
 	main_layout -> addStretch();
 	setLayout(main_layout);
 	
@@ -108,6 +119,8 @@ void TerminalEditor::updateTerminal() {
 			).toInt()
 		)
 	);
+	part -> setNumber( qle_number->text() );
+	part -> setName  ( qle_name->text() );
 }
 
 /// Met a jour l'abscisse de la position de la borne et cree un objet d'annulation
@@ -116,6 +129,9 @@ void TerminalEditor::updateTerminalX() { addChangePartCommand(tr("abscisse"),   
 void TerminalEditor::updateTerminalY() { addChangePartCommand(tr("ordonn\351e"), part, "y",           qle_y -> text().toDouble()); updateForm(); }
 /// Met a jour l'orientation de la borne et cree un objet d'annulation
 void TerminalEditor::updateTerminalO() { addChangePartCommand(tr("orientation"), part, "orientation", orientation -> itemData(orientation -> currentIndex()).toInt()); }
+/// update Number and name, create cancel object
+void TerminalEditor::updateTerminalNum() { addChangePartCommand(tr("num\351ro: ")+qle_number -> text(), part, "num\351ro:", qle_number -> text()); updateForm(); }
+void TerminalEditor::updateTerminalName() { addChangePartCommand(tr("nom: ")+qle_name -> text(), part, "nom", qle_name -> text()); updateForm(); }
 
 /**
 	Met a jour le formulaire d'edition
@@ -126,6 +142,8 @@ void TerminalEditor::updateForm() {
 	qle_x -> setText(part -> property("x").toString());
 	qle_y -> setText(part -> property("y").toString());
 	orientation -> setCurrentIndex(static_cast<int>(part -> orientation()));
+	qle_number -> setText(part -> number() );
+	qle_name -> setText(part -> nameOfTerminal() );
 	activeConnections(true);
 }
 
@@ -138,9 +156,13 @@ void TerminalEditor::activeConnections(bool active) {
 		connect(qle_x,       SIGNAL(editingFinished()), this, SLOT(updateTerminalX()));
 		connect(qle_y,       SIGNAL(editingFinished()), this, SLOT(updateTerminalY()));
 		connect(orientation, SIGNAL(activated(int)),    this, SLOT(updateTerminalO()));
+		connect(qle_number,  SIGNAL(editingFinished()), this, SLOT(updateTerminalNum()));
+		connect(qle_name,    SIGNAL(editingFinished()), this, SLOT(updateTerminalName()));
 	} else {
 		disconnect(qle_x,       SIGNAL(editingFinished()), this, SLOT(updateTerminalX()));
 		disconnect(qle_y,       SIGNAL(editingFinished()), this, SLOT(updateTerminalY()));
 		disconnect(orientation, SIGNAL(activated(int)),    this, SLOT(updateTerminalO()));
+		disconnect(qle_number,  SIGNAL(editingFinished()), this, SLOT(updateTerminalNum()));
+		disconnect(qle_name,    SIGNAL(editingFinished()), this, SLOT(updateTerminalName()));
 	}
 }

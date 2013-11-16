@@ -54,6 +54,11 @@ void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	
 	// lit l'orientation de la borne
 	_orientation = QET::orientationFromString(xml_elmt.attribute("orientation"));
+	
+	// Read number and name of terminal from XML
+	number_ = xml_elmt.attribute("number");
+	name_ = xml_elmt.attribute("name");
+	
 	updateSecondPoint();
 }
 
@@ -71,6 +76,9 @@ const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
 	
 	// ecrit l'orientation de la borne
 	xml_element.setAttribute("orientation", orientationToString(_orientation));
+	// Write name and number to XML
+	xml_element.setAttribute("number", number_);
+	xml_element.setAttribute("name", name_);
 	
 	return(xml_element);
 }
@@ -143,6 +151,36 @@ void PartTerminal::setOrientation(QET::Orientation ori) {
 }
 
 /**
+	@return Number of terminal
+*/
+QString PartTerminal::number() const {
+	return(number_);
+}
+
+/**
+	set Number of Terminal
+	@param num number of terminal
+*/
+void PartTerminal::setNumber(const QString &num) {
+	number_ = num;
+}
+
+/**
+	@return Name of terminal
+*/
+QString PartTerminal::nameOfTerminal() const {
+	return(name_);
+}
+
+/**
+	set Name of Terminal
+	@param na Name of terminal
+*/
+void PartTerminal::setName(const QString &na) {
+	name_ = na;
+}
+
+/**
 	Specifie la valeur d'une propriete donnee de la borne
 	@param property propriete a modifier. Valeurs acceptees :
 		* x : abscisse de la borne
@@ -160,6 +198,12 @@ void PartTerminal::setProperty(const QString &property, const QVariant &value) {
 	} else if (property == "orientation") {
 		if (!value.canConvert(QVariant::Int)) return;
 		setOrientation(static_cast<QET::Orientation>(value.toInt()));
+	} else if (property == "number") {
+		if (!value.canConvert(QVariant::String)) return;
+		setNumber(value.toString());
+	} else if (property == "name") {
+		if (!value.canConvert(QVariant::String)) return;
+		setName(value.toString());
 	}
 }
 
@@ -178,6 +222,10 @@ QVariant PartTerminal::property(const QString &property) {
 		return(scenePos().y());
 	} else if (property == "orientation") {
 		return(_orientation);
+	} else if (property == "number") {
+		return(number_);
+	} else if (property == "name") {
+		return(name_);
 	}
 	return(QVariant());
 }

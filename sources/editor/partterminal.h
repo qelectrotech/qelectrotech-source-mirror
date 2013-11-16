@@ -36,6 +36,7 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	private:
 	QET::Orientation _orientation;
 	QPointF second_point;
+	QString number_, name_;
 	
 	// methods
 	public:
@@ -54,6 +55,11 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	virtual QRectF boundingRect() const;
 	QET::Orientation orientation() const;
 	void setOrientation(QET::Orientation);
+	QString number() const;
+	void setNumber(const QString &);
+	QString nameOfTerminal() const;
+	void setName(const QString &);
+	
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
