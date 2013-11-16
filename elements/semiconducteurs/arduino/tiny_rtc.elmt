@@ -1,7 +1,8 @@
-<definition width="90" version="0.3" hotspot_x="51" hotspot_y="52" height="70" type="element" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="50" hotspot_y="52" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="it">Tiny RTC (orologio e calendario)</name>
         <name lang="fr">Tiny RTC (horloge temps réel)</name>
+        <name lang="pl">Tiny RTC</name>
     </names>
     <informations>Charles Ferrand 
 novembre 2013</informations>
