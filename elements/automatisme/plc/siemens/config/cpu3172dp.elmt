@@ -1,6 +1,7 @@
-<definition width="170" version="0.3" hotspot_x="5" hotspot_y="5" height="260" type="element" orientation="dyyy">
+<definition width="170" version="0.3" hotspot_x="4" hotspot_y="5" height="260" type="element" orientation="dyyy">
     <names>
         <name lang="fr">6ES7 317-2AJ10-0AB0</name>
+        <name lang="pl">6ES7317-2AJ10-0AB0</name>
     </names>
     <informations></informations>
     <description>

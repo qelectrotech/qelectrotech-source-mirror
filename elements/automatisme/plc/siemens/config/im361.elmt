@@ -1,10 +1,10 @@
-<definition width="160" version="0.3" hotspot_x="135" hotspot_y="196" height="260" type="element" ic="true" orientation="dyyy">
+<definition width="160" version="0.3" hotspot_x="135" hotspot_y="197" height="260" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">IM361 RECEIVE 6ES7 361-3CA01-0AA0</name>
         <name lang="en">IM361 RECEIVE 6ES7 361-3CA01-0AA0</name>
         <name lang="it">IM361 RECEIVE 6ES7 361-3CA01-0AA0</name>
         <name lang="fr">IM361 RECEIVE 6ES7 361-3CA01-0AA0</name>
-        <name lang="pl">IM361 RECEIVE 6ES7 361-3CA01-0AA0</name>
+        <name lang="pl">6ES7 361-3CA01-0AA0</name>
         <name lang="es">IM361 Receptor 6ES7 361-3CA01-0AA0</name>
         <name lang="cs">IM361 RECEIVE 6ES7 361-3CA01-0AA0</name>
     </names>

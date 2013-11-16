@@ -1,4 +1,4 @@
-<definition width="170" version="0.3" hotspot_x="15" hotspot_y="35" height="260" type="element" orientation="dnnn">
+<definition width="170" version="0.3" hotspot_x="16" hotspot_y="33" height="260" type="element" orientation="dnnn">
     <names>
         <name lang="ar">PS 307   5A</name>
         <name lang="pt">PS 307   5A</name>
@@ -6,7 +6,7 @@
         <name lang="en">PS 307   5A</name>
         <name lang="it">PS 307 5A Alim. di potenza</name>
         <name lang="fr">PS 307   5A</name>
-        <name lang="pl">PS 307   5A</name>
+        <name lang="pl">6ES7307-1EA00-0AA0</name>
         <name lang="es">PS 307   5A</name>
         <name lang="cs">PS 307   5A</name>
     </names>
