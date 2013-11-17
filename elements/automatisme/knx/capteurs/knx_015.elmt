@@ -2,6 +2,7 @@
     <names>
         <name lang="en">Movement sensor</name>
         <name lang="it">Sensore infrarosso</name>
+        <name lang="pl">Czujnik ruchu (pasywny czujnik podczerwieni)</name>
     </names>
     <informations></informations>
     <description>

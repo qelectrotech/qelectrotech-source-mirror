@@ -2,6 +2,7 @@
     <names>
         <name lang="en">Circuit Breaker Alarm</name>
         <name lang="it">Allarme contatto aperto</name>
+        <name lang="pl">Alarm - wyłącznik otwarty</name>
     </names>
     <informations></informations>
     <description>

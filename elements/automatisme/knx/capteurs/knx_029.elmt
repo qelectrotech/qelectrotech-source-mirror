@@ -1,7 +1,8 @@
-<definition width="60" version="0.3" hotspot_x="34" hotspot_y="19" height="40" type="element" orientation="dyny">
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="19" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Binary/Analog input, mix</name>
         <name lang="it">Ingresso digitale/analogico, misto</name>
+        <name lang="pl">Wejście analogowo-cyfrowe, symbol ogólny</name>
     </names>
     <informations></informations>
     <description>

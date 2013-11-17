@@ -1,7 +1,8 @@
-<definition width="70" version="0.3" hotspot_x="34" hotspot_y="20" height="50" type="element" orientation="dyny">
+<definition width="70" version="0.3" hotspot_x="35" hotspot_y="20" height="50" type="element" orientation="dyny">
     <names>
         <name lang="en">Sensor (Brightn., PIR), 2-fold</name>
         <name lang="it">Sensore (lumin., IR), 2 vie</name>
+        <name lang="pl">Czujnik natężenia oświetlenia i ruchu, dwukrotny</name>
     </names>
     <informations></informations>
     <description>

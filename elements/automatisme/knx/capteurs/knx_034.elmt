@@ -1,7 +1,8 @@
-<definition width="60" version="0.3" hotspot_x="34" hotspot_y="19" height="40" type="element" orientation="dyny">
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="19" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">Analog input, general</name>
         <name lang="it">Ingresso analogico, generico</name>
+        <name lang="pl">Wejście analogowe, symbol ogólny</name>
     </names>
     <informations></informations>
     <description>
