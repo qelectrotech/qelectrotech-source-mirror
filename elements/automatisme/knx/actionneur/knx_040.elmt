@@ -1,7 +1,8 @@
-<definition width="60" version="0.3" hotspot_x="36" hotspot_y="20" height="40" type="element" orientation="dyny">
+<definition width="60" version="0.3" hotspot_x="36" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Analog output, 4-fold</name>
         <name lang="it">Uscita analogica, 4 vie</name>
+        <name lang="fr">Quatre sorties analogiques</name>
         <name lang="pl">Cztery wyjścia analogowe</name>
     </names>
     <informations></informations>
@@ -14,6 +15,6 @@
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
         <polygon x4="15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="15" y2="-4" x2="15" y3="2" x3="-7" y4="2"/>
         <text x="11" y="11" size="6" text="4"/>
-        <terminal x="-30" y="0" orientation="w"/>
+        <terminal x="-30" y="0" number="" name="" orientation="w"/>
     </description>
 </definition>

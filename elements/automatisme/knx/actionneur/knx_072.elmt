@@ -1,7 +1,8 @@
-<definition width="60" version="0.3" hotspot_x="35" hotspot_y="19" height="40" type="element" orientation="dyny">
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Binary output, 6-fold</name>
         <name lang="it">Uscita digitale, 6 vie</name>
+        <name lang="fr">Six sorties numériques</name>
         <name lang="pl">Sześć wyjść cyfrowych</name>
     </names>
     <informations></informations>
@@ -15,6 +16,6 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-30" y2="0" x2="-20"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-18" y2="-12" x2="-15" y3="-9" x3="-12"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
-        <terminal x="-30" y="0" orientation="w"/>
+        <terminal x="-30" y="0" number="" name="" orientation="w"/>
     </description>
 </definition>

@@ -1,7 +1,8 @@
-<definition width="60" version="0.3" hotspot_x="36" hotspot_y="20" height="40" type="element" orientation="dyny">
+<definition width="60" version="0.3" hotspot_x="36" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Electrical Heater</name>
         <name lang="it">Riscaldatore elettrico</name>
+        <name lang="fr">Chauffage électrique</name>
         <name lang="pl">Ogrzewanie elektryczne</name>
     </names>
     <informations></informations>
@@ -16,6 +17,6 @@
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
         <text x="10" y="12" size="6" text="T"/>
         <polygon x4="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="-5" y2="2" x2="15" y3="-3" x3="15" y4="2"/>
-        <terminal x="-30" y="0" orientation="w"/>
+        <terminal x="-30" y="0" number="" name="" orientation="w"/>
     </description>
 </definition>

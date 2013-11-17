@@ -23,7 +23,12 @@ Thanks to Mohamed Souabni for his translations into Arabic
 Thanks to Uroš Platiše for his translations into Slovenian
 Thanks to Antun Marakovic for his translations Croatian
 Thanks to Nikos Papadopoylos && Yannis Gyftomitros their Greek translations
-Thanks to Markos Chandras for Gentoo packaging.
+Thanks to Markos Chandras for Gentoo packaging
+Thanks to David for packaging Slackware
+Thanks to Chipsterjulien for packaging Archlinux AUR packages
+Thanks to Elbert from the NL for packaging OS/2
+Thanks to zloidemon from for packaging FreeBsd (port GCC)
+Thanks to Mrbit for ebuild Gentoo packaging.
 
 [fr]
 Merci à Qt Software pour la bibliothèque Qt ( http://www.qtsoftware.com/ ), sous licence GNU/GPL.
@@ -51,6 +56,11 @@ Merci à Uroš Platiše pour ses traductions en Slovene
 Merci à Antun Marakovic pour ses traductions Croate
 Merci à Nikos Papadopoylos && Yannis Gyftomitros pour leurs traductions en grec
 Merci à Markos Chandras pour les paquets Gentoo
+Merci à David les paquets Slackware
+Merci à Chipsterjulien les paquets  Archlinux AUR packages
+Merci à Elbert from the NL les paquets  OS/2
+Merci à Zloidemon from for les paquets  (port GCC)
+Merci à Mrbit for ebuild les paquets Gentoo
 
 [ru]
 Спасибо Qt Software за их библиотеку Qt ( http://www.qtsoftware.com/ ), лицензированную на условиях GNU/GPL.
