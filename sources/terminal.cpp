@@ -494,7 +494,6 @@ bool Terminal::valideXml(QDomElement &terminal) {
 	if (!terminal.hasAttribute("x")) return(false);
 	if (!terminal.hasAttribute("y")) return(false);
 	if (!terminal.hasAttribute("orientation")) return(false);
-	if (!terminal.hasAttribute("number")) return(false);
 	
 	bool conv_ok;
 	// parse l'abscisse
@@ -527,8 +526,7 @@ bool Terminal::fromXml(QDomElement &terminal) {
 	return (
 		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
 		qFuzzyCompare(terminal.attribute("y").toDouble(), dock_elmt_.y()) &&
-		terminal.attribute("orientation").toInt() == ori_ &&
-		terminal.attribute("number") == number_terminal_
+		terminal.attribute("orientation").toInt() == ori_ 
 	);
 }
 
