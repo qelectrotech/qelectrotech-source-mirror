@@ -1,7 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="36" hotspot_y="20" height="40" type="element" orientation="dyny">
     <names>
-        <name lang="en">Controller
-</name>
+        <name lang="en">Controller</name>
+        <name lang="pl">Regulator</name>
     </names>
     <informations></informations>
     <description>

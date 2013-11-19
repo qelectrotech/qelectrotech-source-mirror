@@ -1,7 +1,8 @@
-<definition width="80" version="0.3" hotspot_x="35" hotspot_y="19" height="40" type="element" orientation="dyny">
+<definition width="80" version="0.3" hotspot_x="35" hotspot_y="18" height="40" type="element" orientation="dyny">
     <names>
         <name lang="en">PLC</name>
         <name lang="it">interf. PLC</name>
+        <name lang="pl">Interfejs KNX / PLC</name>
     </names>
     <informations></informations>
     <description>

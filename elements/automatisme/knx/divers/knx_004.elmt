@@ -1,6 +1,13 @@
 <definition width="30" version="0.3" hotspot_x="26" hotspot_y="20" height="40" type="element" orientation="dyny">
     <names>
+        <name lang="ar">ملف خانق</name>
+        <name lang="de">Drossel</name>
+        <name lang="pt">Bloqueio</name>
         <name lang="en">Choke</name>
+        <name lang="it">Dispositivo di blocco</name>
+        <name lang="fr">Piège</name>
+        <name lang="pl">Dławik</name>
+        <name lang="es">Choque</name>
     </names>
     <informations></informations>
     <description>

@@ -2,6 +2,7 @@
     <names>
         <name lang="en">ISDN</name>
         <name lang="it">Interf. ISDN</name>
+        <name lang="pl">Interfejs KNX / RS 232</name>
     </names>
     <informations></informations>
     <description>
