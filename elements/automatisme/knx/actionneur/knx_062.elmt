@@ -3,7 +3,7 @@
         <name lang="en">Valve</name>
         <name lang="it">Comando valvola</name>
         <name lang="fr">commande de vanne</name>
-        <name lang="pl">Napęd zaworu</name>
+        <name lang="pl">Zawór regulacyjny</name>
     </names>
     <informations></informations>
     <description>
@@ -18,6 +18,6 @@
         <polygon x4="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="10" y2="-8" x2="-8" y3="-13" x3="10" y4="-8"/>
         <polygon x4="16" y5="7" x5="4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="4" y2="13" x2="4" y3="7" x3="16" y4="13"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="10" y2="9" x2="10"/>
-        <terminal x="-30" y="0" number="" name="" orientation="w"/>
+        <terminal x="-30" y="0" orientation="w"/>
     </description>
 </definition>

@@ -2,7 +2,7 @@
     <names>
         <name lang="en">Sensor (Brightn., PIR), single</name>
         <name lang="it">Sensore (lumin., IR), 1 via</name>
-        <name lang="pl">Czujnik natężenia oświetlenia i ruchu</name>
+        <name lang="pl">Czujnik natężenia oświetlenia / czujnik ruchu</name>
     </names>
     <informations></informations>
     <description>
