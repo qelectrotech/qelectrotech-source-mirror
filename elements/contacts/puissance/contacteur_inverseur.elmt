@@ -1,6 +1,7 @@
-<definition width="200" version="0.3" hotspot_x="47" hotspot_y="38" height="70" type="element" ic="true" orientation="dnny">
+<definition width="200" version="0.3" hotspot_x="47" hotspot_y="38" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">Contacteur inverseur</name>
+        <name lang="pl">Stycznik rewersyjny</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -40,17 +41,17 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <input x="88" y="-22" size="6" rotate="true" text="_"/>
         <polygon x4="50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="50" y2="-4" x2="60" y3="4" x3="55" y4="-4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="0" x1="-1.1478" y2="0" x2="51.0768"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
-        <terminal x="20" y="-21" orientation="n"/>
-        <terminal x="20" y="21" orientation="s"/>
-        <terminal x="40" y="-21" orientation="n"/>
-        <terminal x="40" y="21" orientation="s"/>
-        <terminal x="70" y="-21" orientation="n"/>
-        <terminal x="70" y="21" orientation="s"/>
-        <terminal x="90" y="-21" orientation="n"/>
-        <terminal x="90" y="21" orientation="s"/>
-        <terminal x="110" y="-21" orientation="n"/>
-        <terminal x="110" y="21" orientation="s"/>
+        <terminal x="0" y="-21" number="" name="" orientation="n"/>
+        <terminal x="0" y="21" number="" name="" orientation="s"/>
+        <terminal x="20" y="-21" number="" name="" orientation="n"/>
+        <terminal x="20" y="21" number="" name="" orientation="s"/>
+        <terminal x="40" y="-21" number="" name="" orientation="n"/>
+        <terminal x="40" y="21" number="" name="" orientation="s"/>
+        <terminal x="70" y="-21" number="" name="" orientation="n"/>
+        <terminal x="70" y="21" number="" name="" orientation="s"/>
+        <terminal x="90" y="-21" number="" name="" orientation="n"/>
+        <terminal x="90" y="21" number="" name="" orientation="s"/>
+        <terminal x="110" y="-21" number="" name="" orientation="n"/>
+        <terminal x="110" y="21" number="" name="" orientation="s"/>
     </description>
 </definition>
