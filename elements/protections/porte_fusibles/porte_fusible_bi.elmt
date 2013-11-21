@@ -2,6 +2,7 @@
     <names>
         <name lang="fr">Porte Fusible</name>
         <name lang="pl">Odłącznik bezpiecznikowy</name>
+        <name lang="it">Porta Fusibile</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
