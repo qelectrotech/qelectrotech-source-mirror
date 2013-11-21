@@ -1,8 +1,8 @@
-<definition width="60" version="0.3" hotspot_x="36" hotspot_y="19" height="40" type="element" orientation="dyny">
+<definition width="60" version="0.3" hotspot_x="36" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Shutter actuator, 2-fold</name>
         <name lang="it">Attuatore tapparella, 2 vie</name>
-        <name lang="pl">Dwa sterowniki żaluzji</name>
+        <name lang="pl">Sterownik żaluzji, dwukanałowy</name>
     </names>
     <informations></informations>
     <description>
@@ -17,6 +17,6 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="5" y2="-2" x2="14"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="5" y2="2" x2="14"/>
         <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="-30" y="0" orientation="w"/>
+        <terminal x="-30" y="0" number="" name="" orientation="w"/>
     </description>
 </definition>
