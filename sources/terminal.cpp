@@ -478,6 +478,8 @@ QDomElement Terminal::toXml(QDomDocument &doc) const {
 	qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));
 	qdo.setAttribute("orientation", ori_);
 	qdo.setAttribute("number", number_terminal_);
+	qdo.setAttribute("name", name_terminal_);
+	qdo.setAttribute("nameHidden", name_terminal_hidden);
 	return(qdo);
 }
 
@@ -523,10 +525,13 @@ bool Terminal::valideXml(QDomElement &terminal) {
 	@return true si la borne "se reconnait" (memes coordonnes, meme orientation), false sinon
 */
 bool Terminal::fromXml(QDomElement &terminal) {
+	number_terminal_ = terminal.attribute("number");
+	name_terminal_ = terminal.attribute("name");
+	name_terminal_hidden = terminal.attribute("nameHidden").toInt();
 	return (
 		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
 		qFuzzyCompare(terminal.attribute("y").toDouble(), dock_elmt_.y()) &&
-		terminal.attribute("orientation").toInt() == ori_ 
+		(terminal.attribute("orientation").toInt() == ori_)
 	);
 }
 
