@@ -988,14 +988,25 @@ ChangeSeveralConductorsPropertiesCommand::~ChangeSeveralConductorsPropertiesComm
 
 /// definit l'ancienne configuration
 void ChangeSeveralConductorsPropertiesCommand::setOldSettings(const QList<ConductorProperties> &properties) {
-	old_properties = properties;
-	old_settings_set = true;
+	if (!old_settings_set) {
+		old_properties = properties;
+		old_settings_set = true;
+	}
 }
 
 /// definit la nouvelle configuration
 void ChangeSeveralConductorsPropertiesCommand::setNewSettings(const QList<ConductorProperties> &properties) {
-	new_properties = properties;
-	new_settings_set = true;
+	if (!new_settings_set) {
+		new_properties = properties;
+		new_settings_set = true;
+	}
+}
+
+void ChangeSeveralConductorsPropertiesCommand::setNewSettings(const ConductorProperties &properties) {
+	if (!new_settings_set) {
+		single_new_properties = properties;
+		new_settings_set = true;
+	}
 }
 
 /**
@@ -1019,11 +1030,23 @@ void ChangeSeveralConductorsPropertiesCommand::undo() {
 */
 void ChangeSeveralConductorsPropertiesCommand::redo() {
 	if (old_settings_set && new_settings_set) {
-		int i=0;
-		foreach(Conductor *c, conductors) {
-			c -> setProperties(new_properties.at(i));
-			c -> update();
-			i++;
+
+		//new propertie are the same for each conductor
+		if (new_properties.isEmpty()) {
+			foreach(Conductor *c, conductors) {
+				c -> setProperties(single_new_properties);
+				c -> update();
+			}
+		}
+
+		//new propertie are different for each conductor
+		else {
+			int i=0;
+			foreach(Conductor *c, conductors) {
+				c -> setProperties(new_properties.at(i));
+				c -> update();
+				i++;
+			}
 		}
 	}
 }

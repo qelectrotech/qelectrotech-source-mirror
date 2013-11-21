@@ -1047,43 +1047,39 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	if (conductor_dialog.exec() == QDialog::Accepted) {
 		// recupere les nouvelles proprietes
 		ConductorProperties new_properties = cpw -> conductorProperties();
+
 		if (new_properties != old_properties) {
 			int qmbreturn=0;
-			//if conductor isn't alone at this potential and text is changed
+			//if conductor isn't alone at this potential and is property is changed
 			//ask user to apply text on every conductors of this potential
-			if ((edited_conductor -> relatedPotentialConductors().size() >= 1) && (old_properties.text != new_properties.text)){
-				qmbreturn = QMessageBox::question(diagramEditor(), tr("Textes de conducteurs"),
-												  tr("Voulez-vous appliquer le nouveau texte \n"
+			if (edited_conductor -> relatedPotentialConductors().size() >= 1){
+				qmbreturn = QMessageBox::question(diagramEditor(), tr("Propri\351t\351 de conducteurs"),
+												  tr("Voulez-vous appliquer les nouvelles propri\351t\351s \n"
 													 "\340 l'ensemble des conducteurs de ce potentiel ?"),
 												  QMessageBox::No| QMessageBox::Yes, QMessageBox::Yes);
 
 				if (qmbreturn == QMessageBox::Yes){
 					QSet <Conductor *> conductorslist = edited_conductor -> relatedPotentialConductors();
 					conductorslist << edited_conductor;
-					QList <ConductorProperties> old_properties_list, new_properties_list;
-					ConductorProperties cp;
+					QList <ConductorProperties> old_properties_list;
 
 					foreach (Conductor *c, conductorslist) {
 						if (c == edited_conductor) {
 							old_properties_list << old_properties;
-							new_properties_list << new_properties;
 						}
 						else {
 							old_properties_list << c -> properties();
-							cp = c -> properties();
-							cp.text = new_properties.text;
-							c -> setProperties(cp);
-							new_properties_list << c -> properties();
-							c -> setText(new_properties.text);
+							c -> setProperties(new_properties);
 						}
 					}
 					//initialize the corresponding UndoCommand object
 					ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(conductorslist);
 					cscpc -> setOldSettings(old_properties_list);
-					cscpc -> setNewSettings(new_properties_list);
+					cscpc -> setNewSettings(new_properties);
 					diagram() -> undoStack().push(cscpc);
 				}
 			}
+
 			if (qmbreturn == 0 || qmbreturn == QMessageBox::No) {
 				// initialise l'objet UndoCommand correspondant
 				ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(edited_conductor);

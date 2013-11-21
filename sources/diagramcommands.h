@@ -544,6 +544,7 @@ class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
 	virtual void redo();
 	virtual void setOldSettings(const QList<ConductorProperties> &);
 	virtual void setNewSettings(const QList<ConductorProperties> &);
+	virtual void setNewSettings(const ConductorProperties &);
 
 	// attributes
 	private:
@@ -553,6 +554,8 @@ class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
 	QList <ConductorProperties> old_properties;
 	/// properties after the change
 	QList <ConductorProperties> new_properties;
+	///  single properties for each conductor
+	ConductorProperties single_new_properties;
 	/// track whether pre-change properties were set
 	bool old_settings_set;
 	/// track whether post-change properties were set
