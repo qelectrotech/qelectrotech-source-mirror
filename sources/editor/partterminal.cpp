@@ -58,6 +58,7 @@ void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	// Read number and name of terminal from XML
 	number_ = xml_elmt.attribute("number");
 	name_ = xml_elmt.attribute("name");
+	nameHidden_ = xml_elmt.attribute("nameHidden").toInt();
 	
 	updateSecondPoint();
 }
@@ -79,6 +80,7 @@ const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
 	// Write name and number to XML
 	xml_element.setAttribute("number", number_);
 	xml_element.setAttribute("name", name_);
+	xml_element.setAttribute("nameHidden", nameHidden_);
 	
 	return(xml_element);
 }
@@ -181,6 +183,20 @@ void PartTerminal::setName(const QString &na) {
 }
 
 /**
+ * @brief PartTerminal::nameIsHidden
+ * @return 
+ */
+bool PartTerminal::nameIsHidden() const {
+	return(nameHidden_);
+}
+/**
+ * @brief PartTerminal::setNameHidden
+ */
+void PartTerminal::setNameHidden(const bool &nh) {
+	nameHidden_ = nh;
+}
+
+/**
 	Specifie la valeur d'une propriete donnee de la borne
 	@param property propriete a modifier. Valeurs acceptees :
 		* x : abscisse de la borne
@@ -204,6 +220,9 @@ void PartTerminal::setProperty(const QString &property, const QVariant &value) {
 	} else if (property == "name") {
 		if (!value.canConvert(QVariant::String)) return;
 		setName(value.toString());
+	} else if (property == "nameHidden") {
+		if (!value.canConvert(QVariant::Int)) return;
+		setNameHidden(value.toInt());
 	}
 }
 
@@ -226,6 +245,8 @@ QVariant PartTerminal::property(const QString &property) {
 		return(number_);
 	} else if (property == "name") {
 		return(name_);
+	} else if (property == "nameHidden") {
+		return(nameHidden_);
 	}
 	return(QVariant());
 }

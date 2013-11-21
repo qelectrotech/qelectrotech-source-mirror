@@ -37,6 +37,7 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	QET::Orientation _orientation;
 	QPointF second_point;
 	QString number_, name_;
+	bool nameHidden_;
 	
 	// methods
 	public:
@@ -59,6 +60,8 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	void setNumber(const QString &);
 	QString nameOfTerminal() const;
 	void setName(const QString &);
+	bool nameIsHidden() const;
+	void setNameHidden(const bool &);
 	
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
