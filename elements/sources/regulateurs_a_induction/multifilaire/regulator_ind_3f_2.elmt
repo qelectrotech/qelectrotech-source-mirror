@@ -1,5 +1,6 @@
 <definition width="90" version="0.3" hotspot_x="44" hotspot_y="35" height="60" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Voltage regulator</name>
         <name lang="fr">Regulateur de tension</name>
         <name lang="pl">Regulator indukcyjny trójfazowy (forma 2)</name>
     </names>
