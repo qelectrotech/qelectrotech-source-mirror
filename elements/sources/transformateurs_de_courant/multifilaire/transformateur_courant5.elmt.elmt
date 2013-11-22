@@ -1,0 +1,28 @@
+<definition width="30" version="0.3" hotspot_x="7" hotspot_y="45" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr"> Transformateur d'impulsion ou de courant, avec deux enroulements secondaires sur le même noyau</name>
+        <name lang="pl">Przekładnik (forma 2)</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27.05" x1="-5.05" y2="-31.05" x2="4.95"/>
+        <arc width="5" x="-2.5" y="-15" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="5" x="-2.5" y="5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="5" x="-2.5" y="-20" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <text x="1" y="-23" size="5" text="9"/>
+        <arc width="5" x="-2.5" y="0" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-20" x2="10"/>
+        <input x="7" y="-31" size="9" rotate="true" text="_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="10" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-5" y2="10" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="0" y2="20" x2="0"/>
+        <terminal x="0" y="-40" orientation="n"/>
+        <terminal x="10" y="10" orientation="e"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="10" y="-10" orientation="e"/>
+        <terminal x="10" y="-20" orientation="e"/>
+    </description>
+</definition>

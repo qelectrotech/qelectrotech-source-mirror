@@ -1,0 +1,24 @@
+<definition width="40" version="0.3" hotspot_x="13" hotspot_y="43" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr"> Transformateur de courant, à deux enroulements secondaires sur un circuit magnétique commun
+</name>
+        <name lang="pl">Przekładnik (forma 2)</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="11" y2="-15" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="11" y2="-5" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="13" y2="-15" x2="18"/>
+        <input x="7" y="-26" size="9" rotate="true" text="_"/>
+        <circle x="-8" y="-18" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="16"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="13" y2="-5" x2="18"/>
+        <circle x="-8" y="-8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="8" y2="0" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="8" y2="-10" x2="20"/>
+        <terminal x="0" y="-30" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="20" y="0" orientation="e"/>
+        <terminal x="20" y="-10" orientation="e"/>
+    </description>
+</definition>
