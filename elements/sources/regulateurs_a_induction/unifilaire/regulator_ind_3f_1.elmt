@@ -4,12 +4,7 @@
         <name lang="fr">regulateur de voltage</name>
         <name lang="pl">Regulator indukcyjny trójfazowy (forma 1)</name>
     </names>
-    <informations>autor: pawel32640
-
-norma: EN 60617
-numer: 06-12-02
-
-licencja: zobacz http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations></informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="-5" y2="17" x2="5"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16.05" x1="-5.05" y2="-20.05" x2="4.95"/>
@@ -24,7 +19,7 @@ licencja: zobacz http://qelectrotech.org/wiki/doc/elements_license</informations
         <input x="17" y="0" size="9" rotate="true" text="_"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-15" y2="-15" x2="15"/>
         <polygon x4="13" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-16" x1="13" y2="-13" x2="16" y3="-19" x3="19" y4="-16"/>
-        <terminal x="0" y="-30" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="0" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="-30" number="" name="" orientation="n"/>
+        <terminal x="0" y="30" number="" name="" orientation="s"/>
     </description>
 </definition>

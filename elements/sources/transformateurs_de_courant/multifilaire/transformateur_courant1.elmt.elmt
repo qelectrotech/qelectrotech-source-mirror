@@ -4,12 +4,7 @@
         <name lang="fr">Transformateur de courant, transformateur d'impulsion</name>
         <name lang="pl">Przekładnik (forma 2)</name>
     </names>
-    <informations>autor: pawel32640
-
-norma: EN 60617
-numer: 06-09-11
-
-licencja: zobacz http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations></informations>
     <description>
         <arc width="5" x="-2.5" y="5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
         <arc width="5" x="-2.5" y="0" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
@@ -17,9 +12,9 @@ licencja: zobacz http://qelectrotech.org/wiki/doc/elements_license</informations
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="10" x2="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="20" x2="0"/>
-        <terminal x="0" y="-10" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="10" y="10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="0" y="20" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="-10" number="" name="" orientation="n"/>
+        <terminal x="10" y="10" number="" name="" orientation="e"/>
+        <terminal x="10" y="0" number="" name="" orientation="e"/>
+        <terminal x="0" y="20" number="" name="" orientation="s"/>
     </description>
 </definition>

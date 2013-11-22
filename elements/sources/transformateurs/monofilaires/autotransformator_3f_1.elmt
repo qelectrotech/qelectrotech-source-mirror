@@ -1,13 +1,8 @@
-<definition width="70" version="0.3" hotspot_x="37" hotspot_y="45" height="80" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="37" hotspot_y="45" height="80" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="pl">Autotransformator trójfazowy skojarzony w gwiazdę (forma 1)</name>
     </names>
-    <informations>autor: pawel32640
-
-norma: EN 60617
-numer: 06-11-03
-
-licencja: zobacz http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations></informations>
     <description>
         <arc width="50" x="-35" y="-27.5" antialias="true" height="55" style="line-style:normal;line-weight:normal;filling:none;color:black" start="66" angle="-65"/>
         <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
@@ -22,7 +17,7 @@ licencja: zobacz http://qelectrotech.org/wiki/doc/elements_license</informations
         <input x="17" y="0" size="9" rotate="true" text="_"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3" x1="-4" y2="0" x2="0" y3="-3" x3="4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="4" x2="0"/>
-        <terminal x="0" y="-40" orientation="n"/>
-        <terminal x="0" y="30" orientation="s"/>
+        <terminal x="0" y="-40" number="" name="" orientation="n"/>
+        <terminal x="0" y="30" number="" name="" orientation="s"/>
     </description>
 </definition>

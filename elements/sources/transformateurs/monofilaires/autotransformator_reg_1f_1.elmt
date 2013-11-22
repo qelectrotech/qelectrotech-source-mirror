@@ -1,13 +1,8 @@
-<definition width="70" version="0.3" hotspot_x="37" hotspot_y="45" height="80" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="37" hotspot_y="45" height="80" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="pl">Autotransformator jednofazowy, regulacyjny (forma 1)</name>
     </names>
-    <informations>autor: pawel32640
-
-norma: EN 60617
-numer: 06-11-05
-
-licencja: zobacz http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations></informations>
     <description>
         <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.05" x1="-5.05" y2="-34.05" x2="4.95"/>
@@ -20,7 +15,7 @@ licencja: zobacz http://qelectrotech.org/wiki/doc/elements_license</informations
         <arc width="50" x="-35" y="-27.5" antialias="true" height="55" style="line-style:normal;line-weight:normal;filling:none;color:black" start="66" angle="-65"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-15" y2="-15" x2="15"/>
         <polygon x4="13" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-16" x1="13" y2="-13" x2="16" y3="-19" x3="19" y4="-16"/>
-        <terminal x="0" y="-40" orientation="n"/>
-        <terminal x="0" y="30" orientation="s"/>
+        <terminal x="0" y="-40" number="" name="" orientation="n"/>
+        <terminal x="0" y="30" number="" name="" orientation="s"/>
     </description>
 </definition>

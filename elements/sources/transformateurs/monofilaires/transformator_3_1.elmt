@@ -1,13 +1,8 @@
-<definition width="70" version="0.3" hotspot_x="27" hotspot_y="45" height="90" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="27" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="pl">Transformator (forma 1)</name>
     </names>
-    <informations>autor: pawel32640
-
-norma: EN 60617
-numer: 06-09-04
-
-licencja: zobacz http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations></informations>
     <description>
         <circle x="-25" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
         <circle x="-15" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
@@ -16,8 +11,8 @@ licencja: zobacz http://qelectrotech.org/wiki/doc/elements_license</informations
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="-10" y2="40" x2="-10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="0" y2="-25" x2="0"/>
         <input x="27" y="0" size="9" rotate="true" text="_"/>
-        <terminal x="0" y="-40" orientation="n"/>
-        <terminal x="-10" y="40" orientation="s"/>
-        <terminal x="10" y="40" orientation="s"/>
+        <terminal x="0" y="-40" number="" name="" orientation="n"/>
+        <terminal x="-10" y="40" number="" name="" orientation="s"/>
+        <terminal x="10" y="40" number="" name="" orientation="s"/>
     </description>
 </definition>
