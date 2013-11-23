@@ -1021,8 +1021,7 @@ void DiagramView::editConductor() {
 	@param edited_conductor Conducteur a editer
 */
 void DiagramView::editConductor(Conductor *edited_conductor) {
-	if (scene -> isReadOnly()) return;
-	if (!edited_conductor) return;
+	if (scene -> isReadOnly() || !edited_conductor) return;
 	
 	// initialise l'editeur de proprietes pour le conducteur
 	ConductorProperties old_properties = edited_conductor -> properties();
@@ -1036,8 +1035,11 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'un conducteur", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
 	dialog_layout -> addWidget(cpw);
+	QCheckBox *cb_apply_all = new QCheckBox(tr("Appliquer les propri\351t\351s \340 l'ensemble des conducteurs de ce potentiel"), &conductor_dialog);
+	dialog_layout -> addWidget(cb_apply_all);
 	dialog_layout -> addStretch();
 	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	dbb -> setParent(&conductor_dialog);
 	dialog_layout -> addWidget(dbb);
 	connect(dbb, SIGNAL(accepted()), &conductor_dialog, SLOT(accept()));
 	connect(dbb, SIGNAL(rejected()), &conductor_dialog, SLOT(reject()));
@@ -1049,16 +1051,7 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 		ConductorProperties new_properties = cpw -> conductorProperties();
 
 		if (new_properties != old_properties) {
-			int qmbreturn=0;
-			//if conductor isn't alone at this potential and is property is changed
-			//ask user to apply text on every conductors of this potential
-			if (edited_conductor -> relatedPotentialConductors().size() >= 1){
-				qmbreturn = QMessageBox::question(diagramEditor(), tr("Propri\351t\351 de conducteurs"),
-												  tr("Voulez-vous appliquer les nouvelles propri\351t\351s \n"
-													 "\340 l'ensemble des conducteurs de ce potentiel ?"),
-												  QMessageBox::No| QMessageBox::Yes, QMessageBox::Yes);
-
-				if (qmbreturn == QMessageBox::Yes){
+				if (cb_apply_all -> isChecked()) {
 					QSet <Conductor *> conductorslist = edited_conductor -> relatedPotentialConductors();
 					conductorslist << edited_conductor;
 					QList <ConductorProperties> old_properties_list;
@@ -1078,9 +1071,8 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 					cscpc -> setNewSettings(new_properties);
 					diagram() -> undoStack().push(cscpc);
 				}
-			}
 
-			if (qmbreturn == 0 || qmbreturn == QMessageBox::No) {
+			else {
 				// initialise l'objet UndoCommand correspondant
 				ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(edited_conductor);
 				ccpc -> setOldSettings(old_properties);
