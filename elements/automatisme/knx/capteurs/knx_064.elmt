@@ -1,4 +1,4 @@
-<definition width="80" version="0.3" hotspot_x="55" hotspot_y="20" height="40" type="element" orientation="dyny">
+<definition width="70" version="0.3" hotspot_x="44" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Switch. Act. mod. + PB single</name>
         <name lang="it">Modulo contatto + pulsante</name>
@@ -14,7 +14,19 @@
         <input x="10" y="0.5" size="5" rotate="true" text="1"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-35" y2="0" x2="-30" y3="-3" x3="-20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-15" y2="0" x2="-20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-50" y2="0" x2="-40"/>
-        <terminal x="-50" y="0" orientation="w"/>
+        <terminal x="-40" y="10" number="" name="" orientation="w"/>
+        <terminal x="-40" y="0" number="" name="" orientation="w"/>
+        <terminal x="-40" y="-10" number="" name="" orientation="w"/>
+        <terminal x="20" y="0" number="" name="" orientation="e"/>
+        <terminal x="21" y="10" number="" name="" orientation="e"/>
+        <terminal x="20" y="-10" number="" name="" orientation="e"/>
+        <terminal x="-30" y="15" number="" name="" orientation="s"/>
+        <terminal x="-20" y="-15" number="" name="" orientation="n"/>
+        <terminal x="0" y="-15" number="" name="" orientation="n"/>
+        <terminal x="-30" y="-15" number="" name="" orientation="n"/>
+        <terminal x="-20" y="15" number="" name="" orientation="s"/>
+        <terminal x="10" y="15" number="" name="" orientation="s"/>
+        <terminal x="0" y="15" number="" name="" orientation="s"/>
+        <terminal x="10" y="-15" number="" name="" orientation="n"/>
     </description>
 </definition>
