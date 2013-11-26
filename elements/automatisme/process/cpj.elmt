@@ -1,5 +1,6 @@
-<definition width="220" version="0.3" hotspot_x="96" hotspot_y="65" height="140" type="element" orientation="dyyy">
+<definition width="220" version="0.3" hotspot_x="96" hotspot_y="65" height="140" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">CPJ</name>
         <name lang="en">CPJ</name>
         <name lang="it">CPJ</name>
         <name lang="fr">CPJ</name>
@@ -39,17 +40,17 @@
         <circle x="77.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
         <circle x="67.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
         <circle x="57.5" y="-60.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <terminal x="58" y="-61" orientation="n"/>
-        <terminal x="68" y="-61" orientation="n"/>
-        <terminal x="78" y="-61" orientation="n"/>
-        <terminal x="88" y="-61" orientation="n"/>
-        <terminal x="98" y="-61" orientation="n"/>
-        <terminal x="-40" y="-61" orientation="n"/>
-        <terminal x="-30" y="-61" orientation="n"/>
-        <terminal x="-20" y="-61" orientation="n"/>
-        <terminal x="-10" y="-61" orientation="n"/>
-        <terminal x="0" y="-61" orientation="n"/>
-        <terminal x="10" y="-61" orientation="n"/>
-        <terminal x="20" y="-61" orientation="n"/>
+        <terminal x="58" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="68" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="78" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="88" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="98" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-40" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-30" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-20" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="-61" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="20" y="-61" nameHidden="0" number="" name="" orientation="n"/>
     </description>
 </definition>

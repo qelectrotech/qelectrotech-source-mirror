@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Ψηφιακή είσοδος, μονή</name>
         <name lang="en">Binary Input, single</name>
         <name lang="it">Ingresso digitale, 1 via</name>
         <name lang="pl">Wejście cyfrowe</name>
@@ -9,15 +10,15 @@
         <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="9" y="8.5" size="5" rotate="true" text="1"/>
         <polygon x4="10" y5="-12" x5="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-4" y2="0" x2="3" y3="-12" x3="3" y4="-12"/>
-        <terminal x="-10" y="10" number="" name="" orientation="w"/>
-        <terminal x="-10" y="0" number="" name="" orientation="w"/>
-        <terminal x="-10" y="-10" number="" name="" orientation="w"/>
-        <terminal x="20" y="0" number="" name="" orientation="e"/>
-        <terminal x="20" y="10" number="" name="" orientation="e"/>
-        <terminal x="20" y="-10" number="" name="" orientation="e"/>
-        <terminal x="0" y="15" number="" name="" orientation="s"/>
-        <terminal x="10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="0" y="-15" number="" name="" orientation="n"/>
-        <terminal x="10" y="15" number="" name="" orientation="s"/>
+        <terminal x="-10" y="10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-10" y="-10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="20" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="20" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

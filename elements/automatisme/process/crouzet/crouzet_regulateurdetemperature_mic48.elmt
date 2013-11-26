@@ -1,10 +1,11 @@
 <definition width="290" version="0.3" hotspot_x="15" hotspot_y="35" height="110" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Crouzet MIC 48</name>
         <name lang="en">Crouzet mic 48</name>
+        <name lang="it">Crouzet MIC 48</name>
         <name lang="fr">Crouzet mic 48</name>
         <name lang="pl">Crouzet MIC 48</name>
         <name lang="cs">Crouzet MIC 48</name>
-        <name lang="it">Crouzet MIC 48</name>
     </names>
     <informations></informations>
     <description>
@@ -104,20 +105,20 @@
         <text x="36" y="40" size="4" text="NO"/>
         <polygon x4="7" y5="68" x5="7" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="-28" x1="7" y2="-28" x2="-10" y3="68" x3="-10" y4="68"/>
         <polygon x4="253" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="-28" x1="133" y2="-28" x2="270" y3="68" x3="270" y4="68"/>
-        <terminal x="10" y="-28" orientation="n"/>
-        <terminal x="40" y="-28" orientation="n"/>
-        <terminal x="70" y="-28" orientation="n"/>
-        <terminal x="100" y="-28" orientation="n"/>
-        <terminal x="130" y="-28" orientation="n"/>
-        <terminal x="10" y="68" orientation="s"/>
-        <terminal x="40" y="68" orientation="s"/>
-        <terminal x="70" y="68" orientation="s"/>
-        <terminal x="100" y="68" orientation="s"/>
-        <terminal x="120" y="68" orientation="s"/>
-        <terminal x="150" y="68" orientation="s"/>
-        <terminal x="170" y="68" orientation="s"/>
-        <terminal x="190" y="68" orientation="s"/>
-        <terminal x="220" y="68" orientation="s"/>
-        <terminal x="250" y="68" orientation="s"/>
+        <terminal x="10" y="-28" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="40" y="-28" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="70" y="-28" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="100" y="-28" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="130" y="-28" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="68" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="40" y="68" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="70" y="68" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="100" y="68" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="120" y="68" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="150" y="68" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="170" y="68" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="190" y="68" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="220" y="68" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="250" y="68" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

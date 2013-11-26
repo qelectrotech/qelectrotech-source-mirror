@@ -1,5 +1,6 @@
-<definition width="170" version="0.3" hotspot_x="4" hotspot_y="5" height="260" type="element" orientation="dyyy">
+<definition width="170" version="0.3" hotspot_x="5" hotspot_y="5" height="260" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">6ES7317-2AJ10-0AB0</name>
         <name lang="fr">6ES7 317-2AJ10-0AB0</name>
         <name lang="pl">6ES7317-2AJ10-0AB0</name>
     </names>
@@ -168,9 +169,9 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="246" x1="44" y2="246" x2="48"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="248" x1="45" y2="248" x2="47"/>
         <input x="10" y="213.5" size="5" rotate="true" text="0"/>
-        <terminal x="10" y="180" orientation="w"/>
-        <terminal x="40" y="190" orientation="w"/>
-        <terminal x="15" y="234" orientation="w"/>
-        <terminal x="16" y="225" orientation="w"/>
+        <terminal x="10" y="180" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="40" y="190" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="15" y="234" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="16" y="225" nameHidden="0" number="" name="" orientation="w"/>
     </description>
 </definition>

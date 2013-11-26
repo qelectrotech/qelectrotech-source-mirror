@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Μπουτόν ρολών</name>
         <name lang="en">Shutter switch</name>
         <name lang="it">Pulsante tapparella</name>
         <name lang="pl">Łącznik przyciskowy sterowania żaluzji, symbol ogólny</name>
@@ -17,17 +18,17 @@
         <polygon x4="1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="1" y2="-7" x2="7" y3="-12" x3="4" y4="-7"/>
         <polygon x4="-6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-6" y2="-12" x2="0" y3="-7" x3="-3" y4="-12"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-15" x2="20"/>
-        <terminal x="-20" y="10" number="" name="" orientation="w"/>
-        <terminal x="-20" y="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="-10" number="" name="" orientation="w"/>
-        <terminal x="20" y="0" number="" name="" orientation="e"/>
-        <terminal x="20" y="10" number="" name="" orientation="e"/>
-        <terminal x="20" y="-10" number="" name="" orientation="e"/>
-        <terminal x="-10" y="15" number="" name="" orientation="s"/>
-        <terminal x="0" y="-15" number="" name="" orientation="n"/>
-        <terminal x="10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="-10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="0" y="15" number="" name="" orientation="s"/>
-        <terminal x="10" y="15" number="" name="" orientation="s"/>
+        <terminal x="-20" y="10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="-10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="20" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="20" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

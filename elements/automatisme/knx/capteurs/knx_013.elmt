@@ -1,5 +1,6 @@
-<definition width="50" version="0.3" hotspot_x="24" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Αισθητήρας ταχύτητας ανέμου</name>
         <name lang="en">Wind speed sensor</name>
         <name lang="it">Sensore anemometro</name>
         <name lang="pl">Czujnik prędkości wiatru</name>
@@ -14,17 +15,17 @@
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
         <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-15" x2="20"/>
-        <terminal x="-20" y="10" number="" name="" orientation="w"/>
-        <terminal x="-20" y="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="-10" number="" name="" orientation="w"/>
-        <terminal x="20" y="0" number="" name="" orientation="e"/>
-        <terminal x="20" y="10" number="" name="" orientation="e"/>
-        <terminal x="20" y="-10" number="" name="" orientation="e"/>
-        <terminal x="-10" y="15" number="" name="" orientation="s"/>
-        <terminal x="0" y="-15" number="" name="" orientation="n"/>
-        <terminal x="10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="-10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="0" y="15" number="" name="" orientation="s"/>
-        <terminal x="10" y="15" number="" name="" orientation="s"/>
+        <terminal x="-20" y="10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="-10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="20" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="20" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

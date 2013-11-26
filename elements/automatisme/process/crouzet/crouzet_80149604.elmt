@@ -1,8 +1,8 @@
-<definition width="150" version="0.3" hotspot_x="35" hotspot_y="85" height="180" type="element" orientation="dyyy">
+<definition width="140" version="0.3" hotspot_x="30" hotspot_y="80" height="170" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Crouzet80149604</name>
         <name lang="pt">Crouzet80149604</name>
-        <name lang="el">Crouzet 80149604</name>
+        <name lang="el">Crouzet80149604</name>
         <name lang="en">Crouzet 80149604</name>
         <name lang="it">Crouzet 80149604</name>
         <name lang="fr">Crouzet 80149604</name>
@@ -48,13 +48,13 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.5" x1="35" y2="-18" x2="35"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="35" y2="-18" x2="45"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.5" x1="35" y2="18" x2="35"/>
-        <terminal x="40" y="-70" orientation="n"/>
-        <terminal x="100" y="0" orientation="e"/>
-        <terminal x="40" y="81" orientation="s"/>
-        <terminal x="-20" y="-20" orientation="w"/>
-        <terminal x="-20" y="0" orientation="w"/>
-        <terminal x="-20" y="20" orientation="w"/>
-        <terminal x="-20" y="-40" orientation="w"/>
-        <terminal x="-20" y="40" orientation="w"/>
+        <terminal x="40" y="-70" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="100" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="40" y="81" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-20" y="-20" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="20" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="-40" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="40" nameHidden="0" number="" name="" orientation="w"/>
     </description>
 </definition>

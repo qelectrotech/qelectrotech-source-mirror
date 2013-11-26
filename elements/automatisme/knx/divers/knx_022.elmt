@@ -1,8 +1,9 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Διεπαφή ISDN</name>
         <name lang="en">ISDN</name>
         <name lang="it">Interf. ISDN</name>
-        <name lang="pl">Interfejs KNX / RS 232</name>
+        <name lang="pl">Interfejs KNX / ISDN</name>
     </names>
     <informations></informations>
     <description>
@@ -18,19 +19,19 @@
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-15" x2="20"/>
         <text x="-6" y="-6" size="6" text="EIB"/>
-        <terminal x="-20" y="10" number="" name="" orientation="w"/>
-        <terminal x="-20" y="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="-10" number="" name="" orientation="w"/>
-        <terminal x="30" y="0" number="" name="" orientation="e"/>
-        <terminal x="30" y="10" number="" name="" orientation="e"/>
-        <terminal x="30" y="-10" number="" name="" orientation="e"/>
-        <terminal x="-10" y="15" number="" name="" orientation="s"/>
-        <terminal x="0" y="-15" number="" name="" orientation="n"/>
-        <terminal x="10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="-10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="0" y="15" number="" name="" orientation="s"/>
-        <terminal x="10" y="15" number="" name="" orientation="s"/>
-        <terminal x="20" y="-15" number="" name="" orientation="n"/>
-        <terminal x="20" y="15" number="" name="" orientation="s"/>
+        <terminal x="-20" y="10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="-10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="30" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="30" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="30" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="20" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="20" y="15" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

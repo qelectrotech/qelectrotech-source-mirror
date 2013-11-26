@@ -1,12 +1,13 @@
-<definition width="160" version="0.3" hotspot_x="95" hotspot_y="75" height="120" type="element" orientation="ydyy">
+<definition width="120" version="0.3" hotspot_x="76" hotspot_y="41" height="80" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">لوحة عرض  EKA 163A</name>
+        <name lang="el">Οθόνη EKA 163A</name>
         <name lang="en">Display EKA 163A</name>
+        <name lang="it">Display EKA 163A</name>
         <name lang="fr">Afficheur EKA 163A</name>
         <name lang="pl">Wyświetlacz EKA 163A</name>
-        <name lang="cs">Obrazovka EKA 163A</name>
         <name lang="es">Display EKA 163A</name>
-        <name lang="it">Display EKA 163A</name>
+        <name lang="cs">Obrazovka EKA 163A</name>
     </names>
     <informations></informations>
     <description>
@@ -25,9 +26,9 @@
         <circle x="13.5279" y="15.5279" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <circle x="13.5279" y="4.5279" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <circle x="13.5279" y="-14.4721" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
-        <terminal x="35" y="-20" orientation="e"/>
-        <terminal x="35" y="-10" orientation="e"/>
-        <terminal x="35" y="10" orientation="e"/>
-        <terminal x="35" y="20" orientation="e"/>
+        <terminal x="35" y="-20" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="35" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="35" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="35" y="20" nameHidden="0" number="" name="" orientation="e"/>
     </description>
 </definition>

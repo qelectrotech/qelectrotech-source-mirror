@@ -1,6 +1,7 @@
 <definition width="80" version="0.3" hotspot_x="20" hotspot_y="41" height="100" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Endress+Hauser مجس ضغط Cerabar M</name>
+        <name lang="el">Endress+Hauser - Αισθητήρας πίεσης Cerabar M</name>
         <name lang="en">Endress+Hauser Pressure Sensor Cerabar M</name>
         <name lang="it">Sensore di conduttività Enress &amp;amp; Hauser Cerabar M</name>
         <name lang="fr">Endress+Hauser Sonde pression Cerabar M</name>
@@ -28,8 +29,8 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="37" y2="6" x2="43"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="36" y2="4" x2="44"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="4" x2="40"/>
-        <terminal x="0" y="50" orientation="s"/>
-        <terminal x="20" y="50" orientation="s"/>
-        <terminal x="40" y="50" orientation="s"/>
+        <terminal x="0" y="50" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="20" y="50" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="40" y="50" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

@@ -1,6 +1,7 @@
-<definition width="220" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="220" version="0.3" hotspot_x="15" hotspot_y="34" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Endress+Hauser - مقياس تدفق Promag 50</name>
+        <name lang="el">Endress+Hauser - Μετρητής ροής Promag 50</name>
         <name lang="en">Endress+Hauser Promag 50 Flowmeter</name>
         <name lang="it">Debimetro Endress+Hauser Promag 50</name>
         <name lang="fr">Endress+Hauser Débimétre PROMAG 50</name>
@@ -73,15 +74,15 @@
         <circle x="107.172" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
         <circle x="87.172" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
         <circle x="17.1716" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
-        <terminal x="-3.55271e-15" y="-30" orientation="n"/>
-        <terminal x="20" y="-30" orientation="n"/>
-        <terminal x="90" y="-30" orientation="n"/>
-        <terminal x="110" y="-30" orientation="n"/>
-        <terminal x="130" y="-30" orientation="n"/>
-        <terminal x="150" y="-30" orientation="n"/>
-        <terminal x="170" y="-30" orientation="n"/>
-        <terminal x="190" y="-30" orientation="n"/>
-        <terminal x="50" y="-30" orientation="n"/>
-        <terminal x="70" y="-30" orientation="n"/>
+        <terminal x="-3.55271e-15" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="20" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="90" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="110" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="130" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="150" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="170" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="190" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="50" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="70" y="-30" nameHidden="0" number="" name="" orientation="n"/>
     </description>
 </definition>

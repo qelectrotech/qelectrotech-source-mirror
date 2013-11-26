@@ -3,6 +3,7 @@
         <name lang="ar">ملف خانق</name>
         <name lang="de">Drossel</name>
         <name lang="pt">Bloqueio</name>
+        <name lang="el">Φίλτρο</name>
         <name lang="en">Choke</name>
         <name lang="it">Dispositivo di blocco</name>
         <name lang="fr">Piège</name>
@@ -14,7 +15,7 @@
         <rect width="10" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-5" y2="12" x2="-5"/>
         <rect width="4" x="-7" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <terminal x="0" y="0" number="" name="" orientation="e"/>
-        <terminal x="-10" y="0" number="" name="" orientation="w"/>
+        <terminal x="0" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
     </description>
 </definition>

@@ -1,5 +1,6 @@
 <definition width="590" version="0.3" hotspot_x="294" hotspot_y="55" height="130" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">IPX800 V3</name>
         <name lang="en">IPX800 V3</name>
         <name lang="it">IPX800 V3</name>
         <name lang="fr">IPX800 V3</name>
@@ -238,48 +239,48 @@
         <rect width="40" x="240" y="-30" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="253" y="-22" size="6" text="Alim"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="-250" y2="2" x2="-263"/>
-        <terminal x="-270" y="-50" orientation="n"/>
-        <terminal x="-250" y="-50" orientation="n"/>
-        <terminal x="-230" y="-50" orientation="n"/>
-        <terminal x="-210" y="-50" orientation="n"/>
-        <terminal x="-190" y="-50" orientation="n"/>
-        <terminal x="-170" y="-50" orientation="n"/>
-        <terminal x="-150" y="-50" orientation="n"/>
-        <terminal x="-130" y="-50" orientation="n"/>
-        <terminal x="-110" y="-50" orientation="n"/>
-        <terminal x="-90" y="-50" orientation="n"/>
-        <terminal x="-70" y="-50" orientation="n"/>
-        <terminal x="-50" y="-50" orientation="n"/>
-        <terminal x="-30" y="-50" orientation="n"/>
-        <terminal x="-10" y="-50" orientation="n"/>
-        <terminal x="10" y="-50" orientation="n"/>
-        <terminal x="30" y="-50" orientation="n"/>
-        <terminal x="50" y="-50" orientation="n"/>
-        <terminal x="70" y="-50" orientation="n"/>
-        <terminal x="90" y="-50" orientation="n"/>
-        <terminal x="110" y="-50" orientation="n"/>
-        <terminal x="130" y="-50" orientation="n"/>
-        <terminal x="150" y="-50" orientation="n"/>
-        <terminal x="170" y="-50" orientation="n"/>
-        <terminal x="190" y="-50" orientation="n"/>
-        <terminal x="250" y="-50" orientation="n"/>
-        <terminal x="270" y="-50" orientation="n"/>
-        <terminal x="30" y="70" orientation="s"/>
-        <terminal x="50" y="70" orientation="s"/>
-        <terminal x="70" y="70" orientation="s"/>
-        <terminal x="90" y="70" orientation="s"/>
-        <terminal x="110" y="70" orientation="s"/>
-        <terminal x="130" y="70" orientation="s"/>
-        <terminal x="150" y="70" orientation="s"/>
-        <terminal x="170" y="70" orientation="s"/>
-        <terminal x="190" y="70" orientation="s"/>
-        <terminal x="-260" y="70" orientation="s"/>
-        <terminal x="251" y="70" orientation="s"/>
-        <terminal x="-130" y="70" orientation="s"/>
-        <terminal x="-110" y="70" orientation="s"/>
-        <terminal x="-90" y="70" orientation="s"/>
-        <terminal x="-70" y="70" orientation="s"/>
-        <terminal x="-50" y="70" orientation="s"/>
-        <terminal x="-150" y="70" orientation="s"/>
+        <terminal x="-270" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-250" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-230" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-210" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-190" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-170" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-150" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-130" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-110" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-90" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-70" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-50" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-30" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="30" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="50" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="70" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="90" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="110" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="130" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="150" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="170" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="190" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="250" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="270" y="-50" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="30" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="50" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="70" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="90" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="110" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="130" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="150" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="170" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="190" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-260" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="251" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-130" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-110" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-90" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-70" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-50" y="70" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-150" y="70" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

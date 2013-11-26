@@ -1,7 +1,8 @@
-<definition width="830" version="0.3" hotspot_x="59" hotspot_y="51" height="110" type="element" orientation="dnnn">
+<definition width="830" version="0.3" hotspot_x="59" hotspot_y="51" height="110" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">1762-L40BXB(R) - (part OUT 2/2)</name>
         <name lang="pt">1762-L40BXB(R) - (part OUT 2/2)</name>
+        <name lang="el">1762-L40BXB(R) - (Έξοδοι, μέρος 2/2)</name>
         <name lang="en">1762-L40BXB(R) - (part OUT 2/2)</name>
         <name lang="it">1762-L40BXB(R) - (part OUT 2/2)</name>
         <name lang="fr">1762-L40BXB(R) - (part OUT 2/2)</name>
@@ -49,15 +50,15 @@
         <circle x="87.5001" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="566" y="-24" size="9" rotate="true" text="1762-L40BXB(R) - OUT 2/2"/>
         <input x="751" y="-28" size="9" rotate="true" text="_"/>
-        <terminal x="90" y="51" orientation="s"/>
-        <terminal x="170" y="51" orientation="s"/>
-        <terminal x="250" y="51" orientation="s"/>
-        <terminal x="330" y="51" orientation="s"/>
-        <terminal x="410" y="51" orientation="s"/>
-        <terminal x="490" y="51" orientation="s"/>
-        <terminal x="570" y="51" orientation="s"/>
-        <terminal x="650" y="51" orientation="s"/>
-        <terminal x="730" y="51" orientation="s"/>
-        <terminal x="30" y="51" orientation="s"/>
+        <terminal x="90" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="170" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="250" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="330" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="410" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="490" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="570" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="650" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="730" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="30" y="51" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

@@ -1,5 +1,6 @@
-<definition width="410" version="0.3" hotspot_x="24" hotspot_y="15" height="110" type="element" orientation="yydy">
+<definition width="410" version="0.3" hotspot_x="24" hotspot_y="15" height="110" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Αισθητήρας στάθμης ES 2001Bamo</name>
         <name lang="en">Relay level resistive ES 2001Bamo</name>
         <name lang="it">Relè di livello resistivo BAMO ES 2001</name>
         <name lang="fr">Relais niveau resistif ES 2001Bamo</name>
@@ -46,16 +47,16 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="191" y2="50" x2="200"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="180" y2="30" x2="180"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="180" y2="52" x2="194"/>
-        <terminal x="46" y="-10" orientation="n"/>
-        <terminal x="46" y="89" orientation="s"/>
-        <terminal x="110" y="-10" orientation="n"/>
-        <terminal x="180" y="-10" orientation="n"/>
-        <terminal x="99" y="89" orientation="s"/>
-        <terminal x="130" y="89" orientation="s"/>
-        <terminal x="170" y="89" orientation="s"/>
-        <terminal x="200" y="89" orientation="s"/>
-        <terminal x="380" y="20" orientation="e"/>
-        <terminal x="379" y="40" orientation="e"/>
-        <terminal x="379" y="60" orientation="e"/>
+        <terminal x="46" y="-10" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="46" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="110" y="-10" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="180" y="-10" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="99" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="130" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="170" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="200" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="380" y="20" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="379" y="40" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="379" y="60" nameHidden="0" number="" name="" orientation="e"/>
     </description>
 </definition>

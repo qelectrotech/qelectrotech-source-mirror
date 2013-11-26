@@ -1,6 +1,7 @@
-<definition width="140" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="140" version="0.3" hotspot_x="15" hotspot_y="34" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Campbell Batterie PS100E 12V</name>
+        <name lang="el">Μπαταρία 12V Campbell PS100E</name>
         <name lang="en">Campbell PS100E 12V Battery</name>
         <name lang="it">Batteria 12V Campbell PS100E</name>
         <name lang="fr">Campbell Batterie PS100E 12V</name>
@@ -40,11 +41,11 @@
         <circle x="107.172" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
         <circle x="87.172" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
         <circle x="17.1716" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
-        <terminal x="-3.55271e-15" y="-30" orientation="n"/>
-        <terminal x="20" y="-30" orientation="n"/>
-        <terminal x="90" y="-30" orientation="n"/>
-        <terminal x="110" y="-30" orientation="n"/>
-        <terminal x="50" y="-30" orientation="n"/>
-        <terminal x="70" y="-30" orientation="n"/>
+        <terminal x="-3.55271e-15" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="20" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="90" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="110" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="50" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="70" y="-30" nameHidden="0" number="" name="" orientation="n"/>
     </description>
 </definition>

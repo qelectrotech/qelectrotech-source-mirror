@@ -1,7 +1,8 @@
-<definition width="840" version="0.3" hotspot_x="65" hotspot_y="55" height="140" type="element" orientation="dnnn">
+<definition width="830" version="0.3" hotspot_x="59" hotspot_y="45" height="130" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">1762-IT4</name>
         <name lang="pt">1762-IT4</name>
+        <name lang="el">1762-IT4</name>
         <name lang="en">1762-IT4</name>
         <name lang="it">1762-IT4</name>
         <name lang="fr">1762-IT4</name>
@@ -51,15 +52,15 @@
         <input x="751" y="-28" size="9" rotate="true" text="_"/>
         <arc width="61" x="30" y="29" antialias="true" height="37" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
         <input x="31" y="72" size="6" rotate="true" text="CJC sensor"/>
-        <terminal x="90" y="51" orientation="s"/>
-        <terminal x="170" y="51" orientation="s"/>
-        <terminal x="250" y="51" orientation="s"/>
-        <terminal x="330" y="51" orientation="s"/>
-        <terminal x="410" y="51" orientation="s"/>
-        <terminal x="490" y="51" orientation="s"/>
-        <terminal x="570" y="51" orientation="s"/>
-        <terminal x="650" y="51" orientation="s"/>
-        <terminal x="730" y="51" orientation="s"/>
-        <terminal x="30" y="51" orientation="s"/>
+        <terminal x="90" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="170" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="250" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="330" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="410" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="490" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="570" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="650" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="730" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="30" y="51" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

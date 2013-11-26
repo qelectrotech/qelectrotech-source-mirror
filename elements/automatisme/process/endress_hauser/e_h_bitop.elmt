@@ -1,6 +1,7 @@
-<definition width="230" version="0.3" hotspot_x="15" hotspot_y="36" height="110" type="element" ic="true" orientation="dyyy">
+<definition width="230" version="0.3" hotspot_x="15" hotspot_y="35" height="110" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Endress+Hauser - Bitop L</name>
+        <name lang="el">Endress+Hauser - Bitop L</name>
         <name lang="en">Endress+Hauser Bitop L</name>
         <name lang="it">Endress+Hauser Bitop L</name>
         <name lang="fr">Endress+Hauser Bitop L</name>
@@ -101,16 +102,16 @@
         <text x="83" y="-3" size="6" rotation="270" text="15"/>
         <text x="64" y="-3" size="6" rotation="270" text="14"/>
         <text x="43" y="-3" size="6" rotation="270" text="13"/>
-        <terminal x="20" y="-30" orientation="n"/>
-        <terminal x="40" y="-30" orientation="n"/>
-        <terminal x="60" y="-30" orientation="n"/>
-        <terminal x="80" y="-30" orientation="n"/>
-        <terminal x="100" y="-30" orientation="n"/>
-        <terminal x="120" y="-30" orientation="n"/>
-        <terminal x="140" y="-30" orientation="n"/>
-        <terminal x="160" y="-30" orientation="n"/>
-        <terminal x="180" y="-30" orientation="n"/>
-        <terminal x="200" y="-30" orientation="n"/>
-        <terminal x="0" y="-30" orientation="n"/>
+        <terminal x="20" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="40" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="60" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="80" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="100" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="120" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="140" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="160" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="180" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="200" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="-30" nameHidden="0" number="" name="" orientation="n"/>
     </description>
 </definition>

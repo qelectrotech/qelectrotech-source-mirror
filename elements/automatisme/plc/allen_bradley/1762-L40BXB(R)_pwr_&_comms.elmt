@@ -1,7 +1,8 @@
-<definition width="340" version="0.3" hotspot_x="15" hotspot_y="45" height="120" type="element" ic="true" orientation="dnnn">
+<definition width="340" version="0.3" hotspot_x="16" hotspot_y="39" height="110" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
         <name lang="pt">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
+        <name lang="el">1762-L40BXB(R)  - (Τροφοδοσία &amp; Επικοινωνία)</name>
         <name lang="en">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
         <name lang="it">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
         <name lang="fr">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
@@ -47,10 +48,10 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-9" y2="-28" x2="301"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="52" x1="277" y2="56" x2="283"/>
         <text x="273" y="53" size="4" text="8"/>
-        <terminal x="280" y="54" orientation="n"/>
-        <terminal x="40" y="57" orientation="n"/>
-        <terminal x="10" y="57" orientation="n"/>
-        <terminal x="211" y="54" orientation="n"/>
-        <terminal x="70" y="63" orientation="s"/>
+        <terminal x="280" y="54" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="40" y="57" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="57" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="211" y="54" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="70" y="63" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

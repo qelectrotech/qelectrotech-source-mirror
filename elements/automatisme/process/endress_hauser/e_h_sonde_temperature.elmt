@@ -1,6 +1,7 @@
 <definition width="80" version="0.3" hotspot_x="9" hotspot_y="35" height="100" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Endress+Hauser مجس حرارة TMT180</name>
+        <name lang="el">Endress+Hauser - Αισθητήρας θερμοκρασίας TMT180</name>
         <name lang="en">Temperature sensor Endress+Hauser TMT180</name>
         <name lang="it">Sonda di temperatura Endress+Hauser TMT180</name>
         <name lang="fr">Endress+Hauser Sonde Température TMT180</name>
@@ -33,11 +34,11 @@
         <circle x="6.3944" y="26.3944" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
         <circle x="36.3944" y="-13.6056" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
         <circle x="26.3944" y="-13.6056" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
-        <terminal x="30" y="-30" orientation="n"/>
-        <terminal x="40" y="-30" orientation="n"/>
-        <terminal x="10" y="60" orientation="s"/>
-        <terminal x="20" y="60" orientation="s"/>
-        <terminal x="40" y="60" orientation="s"/>
-        <terminal x="50" y="60" orientation="s"/>
+        <terminal x="30" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="40" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="60" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="20" y="60" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="40" y="60" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="50" y="60" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

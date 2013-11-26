@@ -1,6 +1,7 @@
-<definition width="180" version="0.3" hotspot_x="15" hotspot_y="34" height="70" type="element" orientation="dyyy">
+<definition width="180" version="0.3" hotspot_x="15" hotspot_y="34" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Endress+Hauser مجس موصليّة Indiumax H CLS54</name>
+        <name lang="el">E+H -Αισθητήρας αγωγιμότητας indiumax H CLS54</name>
         <name lang="en">Endress+Hauser H CLS54 sensor conductivity Indiumax</name>
         <name lang="it">Sensore di conduttività Endress+Hauser Indiumax CLS54</name>
         <name lang="fr">Endress+Hauser Sonde conductivité Indiumax H CLS54</name>
@@ -60,13 +61,13 @@
         <circle x="37.1716" y="18.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
         <circle x="17.1716" y="18.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
         <circle x="-2.82843" y="18.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
-        <terminal x="0" y="30" orientation="s"/>
-        <terminal x="20" y="30" orientation="s"/>
-        <terminal x="40" y="30" orientation="s"/>
-        <terminal x="60" y="30" orientation="s"/>
-        <terminal x="80" y="30" orientation="s"/>
-        <terminal x="100" y="30" orientation="s"/>
-        <terminal x="120" y="30" orientation="s"/>
-        <terminal x="140" y="30" orientation="s"/>
+        <terminal x="0" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="20" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="40" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="60" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="80" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="100" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="120" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="140" y="30" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

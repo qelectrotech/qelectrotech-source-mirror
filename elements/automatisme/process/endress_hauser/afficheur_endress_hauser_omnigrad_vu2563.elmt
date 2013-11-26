@@ -1,6 +1,7 @@
-<definition width="150" version="0.3" hotspot_x="12" hotspot_y="39" height="80" type="element" orientation="dyyy">
+<definition width="150" version="0.3" hotspot_x="12" hotspot_y="39" height="80" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Endress+Hauser - Omnigrad 2653</name>
+        <name lang="el">Endress+Hauser - Omnigrad 2653</name>
         <name lang="en">Endress+Hauser - Omnigrad 2653</name>
         <name lang="it">Endress+Hauser Omnigrad 2653</name>
         <name lang="fr">Omnigrad E&amp;H 2653</name>
@@ -75,16 +76,16 @@
         <text x="-3" y="28" size="5" text="1"/>
         <text x="-6" y="-22" size="5" text="14"/>
         <text x="73" y="-11" size="7" text="Omnigrad"/>
-        <terminal x="0" y="-35" orientation="n"/>
-        <terminal x="20" y="-35" orientation="n"/>
-        <terminal x="40" y="-35" orientation="n"/>
-        <terminal x="60" y="-35" orientation="n"/>
-        <terminal x="0" y="36" orientation="s"/>
-        <terminal x="20" y="36" orientation="s"/>
-        <terminal x="40" y="36" orientation="s"/>
-        <terminal x="60" y="36" orientation="s"/>
-        <terminal x="80" y="36" orientation="s"/>
-        <terminal x="100" y="36" orientation="s"/>
-        <terminal x="120" y="36" orientation="s"/>
+        <terminal x="0" y="-35" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="20" y="-35" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="40" y="-35" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="60" y="-35" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="36" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="20" y="36" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="40" y="36" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="60" y="36" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="80" y="36" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="100" y="36" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="120" y="36" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>
