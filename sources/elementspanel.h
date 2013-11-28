@@ -121,5 +121,6 @@ class ElementsPanel : public GenericPanel {
 	int loading_progress_;                         ///< used to track the loading progress of elements collections
 	bool first_reload_;                            ///< used to distinguish the first time this panel is reloaded
 	QString filter_;                               ///< Currently applied filter
+	QTreeWidgetItem *it_prev_, *it_;
 };
 #endif
