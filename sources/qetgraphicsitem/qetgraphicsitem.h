@@ -28,15 +28,13 @@ class QetGraphicsItem : public QGraphicsObject {
 	QetGraphicsItem(QGraphicsItem *parent = 0);
 	virtual ~QetGraphicsItem() = 0;
 
-	//abstarct methode	
-	virtual void editProperty ();
-
 	//public methode
 	Diagram* diagram() const;
 	virtual void setPos(const QPointF &p);
 	virtual void setPos(qreal x, qreal y);
 	virtual void rotateBy(const qreal &);
 	virtual void applyRotation(const qreal &);
+	virtual void editProperty ()=0;
 
 	signals:
 
@@ -50,6 +48,7 @@ class QetGraphicsItem : public QGraphicsObject {
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *e);
 
 	protected:
+	bool is_movable_;
 	bool first_move_;
 	QPointF mouse_to_origin_movement_;
 

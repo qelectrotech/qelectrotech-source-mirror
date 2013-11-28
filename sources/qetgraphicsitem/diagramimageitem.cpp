@@ -104,42 +104,48 @@ void DiagramImageItem::editProperty() {
 	int factor_range = 100;
 
 	//the dialog
-	QDialog property_dialog;
+	QDialog property_dialog(diagram()->views().at(0));
 	property_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'une image", "window title"));
 	//the main layout
-	QVBoxLayout *dialog_layout = new QVBoxLayout(&property_dialog);
+	QVBoxLayout dialog_layout(&property_dialog);
 
 	//GroupBox for resizer image
-	QGroupBox *resize_groupe = new QGroupBox(tr("Dimension de l'image", "image size"));
-	dialog_layout -> addWidget(resize_groupe);
-	QHBoxLayout *resize_layout = new QHBoxLayout(resize_groupe);
+	QGroupBox resize_groupe(tr("Dimension de l'image", "image size"));
+	dialog_layout.addWidget(&resize_groupe);
+	QHBoxLayout resize_layout(&resize_groupe);
 
-	//slider
-	QSlider *slider = new QSlider(Qt::Horizontal, &property_dialog);
-	slider->setRange(min_range, max_range);
+		//slider
+	QSlider slider(Qt::Horizontal, &property_dialog);
+	slider.setRange(min_range, max_range);
 	qreal scale_= scale();
-	slider -> setValue(scale_*factor_range);
-	//spinbox
-	QSpinBox *spin_box = new QSpinBox(&property_dialog);
-	spin_box -> setRange(min_range, max_range);
-	spin_box -> setValue(scale_*factor_range);
-	spin_box -> setSuffix(" %");
-	//synchro slider with spinbox
-	connect(slider, SIGNAL(valueChanged(int)), spin_box, SLOT(setValue(int)));
-	connect(slider, SIGNAL(valueChanged(int)), this, SLOT(PreviewScale(int)));
-	connect(spin_box, SIGNAL(valueChanged(int)), slider, SLOT(setValue(int)));
-	//add slider and spinbox to layout
-	resize_layout -> addWidget(slider);
-	resize_layout -> addWidget(spin_box);
+	slider.setValue(scale_*factor_range);
+		//spinbox
+	QSpinBox spin_box(&property_dialog);
+	spin_box.setRange(min_range, max_range);
+	spin_box.setValue(scale_*factor_range);
+	spin_box.setSuffix(" %");
+		//synchro slider with spinbox
+	connect(&slider, SIGNAL(valueChanged(int)), &spin_box, SLOT(setValue(int)));
+	connect(&slider, SIGNAL(valueChanged(int)), this, SLOT(PreviewScale(int)));
+	connect(&spin_box, SIGNAL(valueChanged(int)), &slider, SLOT(setValue(int)));
+		//add slider and spinbox to layout
+	resize_layout.addWidget(&slider);
+	resize_layout.addWidget(&spin_box);
+		//check box for disable move
+	QCheckBox cb(tr("Verrouiller la position"), &property_dialog);
+	cb.setChecked(!is_movable_);
+	dialog_layout.addWidget(&cb);
 
 	//dialog button, box
-	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	dialog_layout -> addWidget(dbb);
-	connect(dbb, SIGNAL(accepted()), &property_dialog, SLOT(accept()));
-	connect(dbb, SIGNAL(rejected()), &property_dialog, SLOT(reject()));
+	QDialogButtonBox dbb(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	dialog_layout.addWidget(&dbb);
+	connect(&dbb, SIGNAL(accepted()), &property_dialog, SLOT(accept()));
+	connect(&dbb, SIGNAL(rejected()), &property_dialog, SLOT(reject()));
+
 	//dialog is accepted...
 	if (property_dialog.exec() == QDialog::Accepted) {
-		qreal new_scale = slider -> value();
+		cb.isChecked() ? is_movable_=false : is_movable_=true;
+		qreal new_scale = slider.value();
 		new_scale /= factor_range;
 		if (scale_ != new_scale) diagram()->undoStack().push(new ImageResizerCommand(this, scale_, new_scale));
 	}

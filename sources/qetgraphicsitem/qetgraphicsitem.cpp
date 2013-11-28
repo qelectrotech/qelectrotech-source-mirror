@@ -25,14 +25,13 @@
  */
 QetGraphicsItem::QetGraphicsItem(QGraphicsItem *parent):
 	QGraphicsObject(parent),
+	is_movable_(true),
 	first_move_(true)
 {
 }
 
 QetGraphicsItem::~QetGraphicsItem()
 {}
-
-void QetGraphicsItem::editProperty(){}
 
 /**
  * @brief QetGraphicsItem::diagram
@@ -48,7 +47,7 @@ Diagram* QetGraphicsItem::diagram() const{
  * @param p the new position of item
  */
 void QetGraphicsItem::setPos(const QPointF &p) {
-	if (p == pos()) return;
+	if (p == pos() || !is_movable_) return;
 	if (scene()) {
 		// arrondit l'abscisse a 10 px pres
 		int p_x = qRound(p.x() / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
