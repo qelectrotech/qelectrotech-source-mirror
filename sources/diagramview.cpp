@@ -39,7 +39,7 @@
 #include "qetmessagebox.h"
 #include "qtextorientationspinboxwidget.h"
 #include <QGraphicsObject>
-
+#include <ui/elementpropertieswidget.h>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneMouseEvent>
 
@@ -88,6 +88,8 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(pare
 	connect(&(scene -> border_and_titleblock), SIGNAL(displayChanged()),              this, SLOT(adjustSceneRect()));
 	connect(&(scene -> border_and_titleblock), SIGNAL(diagramTitleChanged(const QString &)), this, SLOT(updateWindowTitle()));
 	connect(&(scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(updateWindowTitle()));
+	connect(diagram, SIGNAL(editElementRequired(ElementsLocation)), this, SIGNAL(editElementRequired(ElementsLocation)));
+	connect(diagram, SIGNAL(findElementRequired(ElementsLocation)), this, SIGNAL(findElementRequired(ElementsLocation)));
 	
 	connect(this, SIGNAL(aboutToAddElement()), this, SLOT(addDroppedElement()), Qt::QueuedConnection);
 	connect(
@@ -881,42 +883,37 @@ void DiagramView::applyReadOnly() {
 	Edite les proprietes des objets selectionnes
 */
 void DiagramView::editSelectionProperties() {
-	// recupere la selection
+	// get selection
 	DiagramContent selection = scene -> selectedContent();
 	
-	// s'il n'y a rien de selectionne, cette methode ne fait rien
+	// if selection contains nothing return
 	int selected_items_count = selection.count(DiagramContent::All | DiagramContent::SelectedOnly);
 	if (!selected_items_count) return;
 	
-	// si la selection ne comprend qu'un seul objet, on l'edite via un dialogue approprie
-	if (selected_items_count == 1) {
-		// cas d'un conducteur selectionne
-		QList<Conductor *> selected_conductors = selection.conductors(DiagramContent::AnyConductor | DiagramContent::SelectedOnly);
-		if (selected_conductors.count() == 1) {
-			editConductor(selected_conductors.at(0));
-			return;
-		}
-		
-		// cas d'un element selectionne
-		if (selection.elements.count() == 1) {
-			editElement(selection.elements.toList().at(0));
-			return;
-		}
-		
-		// cas d'un champ de texte selectionne : pour le moment, on traite comme une selection multiple
+	// if selection contains one item and this item can be editable, edit this item with an appropriate dialog
+	if (selected_items_count == 1 && selection.items(DiagramContent::Elements |
+													 DiagramContent::AnyConductor |
+													 DiagramContent::SelectedOnly).size()) {
+		// edit conductor
+		if (selection.conductors(DiagramContent::AnyConductor | DiagramContent::SelectedOnly).size())
+			editConductor(selection.conductors().first());
+		// edit element
+		else if (selection.elements.size())
+			selection.elements.toList().first() -> editProperty();
 	}
 	
-	// sinon on affiche un simple listing des elements selectionnes
-	QET::MessageBox::information(
-		this,
-		tr("Propri\351t\351s de la s\351lection"),
-		QString(
-			tr(
-				"La s\351lection contient %1.",
-				"%1 is a sentence listing the selected objects"
-			)
-		).arg(selection.sentence(DiagramContent::All | DiagramContent::SelectedOnly))
-	);
+	else {
+		QET::MessageBox::information(
+			this,
+			tr("Propri\351t\351s de la s\351lection"),
+			QString(
+				tr(
+					"La s\351lection contient %1.",
+					"%1 is a sentence listing the selected objects"
+				)
+			).arg(selection.sentence(DiagramContent::All | DiagramContent::SelectedOnly))
+		);
+	}
 }
 
 /**
@@ -930,75 +927,6 @@ void DiagramView::editSelectedConductorColor() {
 	QList<Conductor *> selected_conductors = selection.conductors(DiagramContent::AnyConductor | DiagramContent::SelectedOnly);
 	if (selected_conductors.count() == 1) {
 		editConductorColor(selected_conductors.at(0));
-	}
-}
-
-/**
-	Affiche des informations sur un element
-	@param element Element a afficher
-*/
-void DiagramView::editElement(Element *element) {
-	if (!element) return;
-	
-	CustomElement *custom_element = qobject_cast<CustomElement *>(element);
-	GhostElement  *ghost_element  = qobject_cast<GhostElement  *>(element);
-	
-	// type de l'element
-	QString description_string;
-	if (ghost_element) {
-		description_string += tr("\311l\351ment manquant");
-	} else {
-		description_string += tr("\311l\351ment");
-	}
-	description_string += "\n";
-	
-	// nom, nombre de bornes, dimensions
-	description_string += QString(tr("Nom\240: %1\n")).arg(element -> name());
-	int folio_index = scene -> folioIndex();
-	if (folio_index != -1) {
-		description_string += QString(tr("Folio\240: %1\n")).arg(folio_index + 1);
-	}
-	description_string += QString(tr("Position\240: %1\n")).arg(scene -> convertPosition(element -> scenePos()).toString());
-	description_string += QString(tr("Dimensions\240: %1\327%2\n")).arg(element -> size().width()).arg(element -> size().height());
-	description_string += QString(tr("Bornes\240: %1\n")).arg(element -> terminals().count());
-	description_string += QString(tr("Connexions internes\240: %1\n")).arg(element -> internalConnections() ? tr("Autoris\351es") : tr("Interdites"));
-	description_string += QString(tr("Champs de texte\240: %1\n")).arg(element -> texts().count());
-	
-	if (custom_element) {
-		description_string += QString(tr("Emplacement\240: %1\n")).arg(custom_element -> location().toString());
-	}
-	
-	// titre et boutons du dialogue
-	QString description_title = tr("Propri\351t\351s de l'\351l\351ment s\351lectionn\351");
-	QPushButton *find_in_panel = new QPushButton(tr("Retrouver dans le panel"));
-	QPushButton *edit_element = new QPushButton(tr("\311diter l'\351l\351ment"));
-	edit_element->setIcon(QET::Icons::ElementEdit);
-	
-	// dialogue en lui-meme
-	QMessageBox edit_element_dialog(diagramEditor());
-#ifdef Q_WS_MAC
-	edit_element_dialog.setWindowFlags(Qt::Sheet);
-#endif
-	edit_element_dialog.setIcon(QMessageBox::Information);
-	edit_element_dialog.setWindowTitle(description_title);
-	edit_element_dialog.setText(description_title);
-	edit_element_dialog.setInformativeText(description_string);
-	edit_element_dialog.addButton(find_in_panel, QMessageBox::ApplyRole);
-	edit_element_dialog.addButton(edit_element, QMessageBox::ApplyRole);
-	edit_element_dialog.addButton(QMessageBox::Ok);
-	edit_element_dialog.setDefaultButton(QMessageBox::Ok);
-	edit_element_dialog.setEscapeButton(QMessageBox::Ok);
-	edit_element_dialog.exec();
-	
-	// Permet de trouver l'element dans la collection
-	if (edit_element_dialog.clickedButton() == find_in_panel) {
-		emit(findElementRequired(custom_element -> location()));
-	}
-	
-	// Trouve l'element dans la collection et l'edite
-	if (edit_element_dialog.clickedButton() == edit_element) {
-		emit(findElementRequired(custom_element -> location()));
-		emit(editElementRequired(custom_element -> location()));
 	}
 }
 
@@ -1036,8 +964,8 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
 	dialog_layout -> addWidget(cpw);
 	QCheckBox *cb_apply_all = new QCheckBox(tr("Appliquer les propri\351t\351s \340 l'ensemble des conducteurs de ce potentiel"), &conductor_dialog);
-	dialog_layout -> addWidget(cb_apply_all);
 	dialog_layout -> addStretch();
+	dialog_layout -> addWidget(cb_apply_all);
 	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	dbb -> setParent(&conductor_dialog);
 	dialog_layout -> addWidget(dbb);
@@ -1427,8 +1355,6 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 	if (QGraphicsItem *qgi = itemAt(e -> pos())) {
 		if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
 			editConductor(c);
-		} else if (Element *element = qgraphicsitem_cast<Element *>(qgi)) {
-			editElement(element);
 		} else {
 			QGraphicsView::mouseDoubleClickEvent(e);
 		}

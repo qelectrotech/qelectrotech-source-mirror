@@ -199,6 +199,10 @@ class Diagram : public QGraphicsScene {
 	void readOnlyChanged(bool);
 	void usedTitleBlockTemplateChanged(const QString &);
 	void diagramTitleChanged(Diagram *, const QString &);
+	/// Signal emitted when users wish to locate an element from the diagram within elements collection
+	void findElementRequired(const ElementsLocation &);
+	/// Signal emitted when users wish to edit an element from the diagram
+	void editElementRequired(const ElementsLocation &);
 };
 Q_DECLARE_METATYPE(Diagram *)
 

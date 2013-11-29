@@ -99,6 +99,7 @@ class Element : public QetGraphicsItem {
 	bool internalConnections();
 	void setInternalConnections(bool);
 	virtual void rotateBy(const qreal &);
+	virtual void editProperty();
 	
 	// methods related to XML import/export
 	static bool valideXml(QDomElement &);

@@ -22,6 +22,7 @@
 #include "elementtextitem.h"
 #include "diagramcommands.h"
 #include <QtDebug>
+#include <ui/elementpropertieswidget.h>
 
 /**
 	Constructeur pour un element sans scene ni parent
@@ -38,6 +39,16 @@ Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	Destructeur
 */
 Element::~Element() {
+}
+
+void Element::editProperty() {
+	if (diagram())
+		if(!diagram()->isReadOnly()){
+			elementpropertieswidget epw (this, diagram()->views().first());
+			connect(&epw, SIGNAL(editElementRequired(ElementsLocation)), diagram(), SIGNAL(editElementRequired(ElementsLocation)));
+			connect(&epw, SIGNAL(findElementRequired(ElementsLocation)), diagram(), SIGNAL(findElementRequired(ElementsLocation)));
+			epw.exec();
+		}
 }
 
 /**
