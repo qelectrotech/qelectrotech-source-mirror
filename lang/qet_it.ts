@@ -408,8 +408,8 @@ i conduttori di questo potenziale?</translation>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="26"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation>I testi di questo potenziale no sono uguali.
-Applicare un testo all&apos;insiema dei conduttori?</translation>
+        <translation>I testi di questo potenziale non sono uguali.
+Applicare un testo all&apos;insieme dei conduttori?</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
