@@ -156,28 +156,28 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="167"/>
         <source>Paquets Mageia</source>
-        <translation type="unfinished"></translation>
+        <translation>Mageia packages</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="169"/>
         <location filename="../sources/aboutqet.cpp" line="170"/>
         <source>Paquets Gentoo</source>
-        <translation type="unfinished"></translation>
+        <translation>Gentoo packages</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
         <source>Paquets OS/2</source>
-        <translation type="unfinished"></translation>
+        <translation>OS/2 packages </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="172"/>
         <source>Paquets FreeBSD</source>
-        <translation type="unfinished"></translation>
+        <translation>FreeBSD packages </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="173"/>
         <source>Paquets Archlinux AUR</source>
-        <translation type="unfinished"></translation>
+        <translation>Archlinux AUR packages </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="168"/>
@@ -463,7 +463,7 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="66"/>
         <source>Taille</source>
-        <translation type="unfinished"></translation>
+        <translation>Size</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
@@ -589,7 +589,7 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="135"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished"></translation>
+        <translation>Lock Position</translation>
     </message>
 </context>
 <context>
@@ -699,7 +699,7 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="966"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Apply properties to all drivers of this potential</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="963"/>
@@ -2290,7 +2290,7 @@ Changes will be definitive.</translation>
         <location filename="../sources/newelementwizard.cpp" line="97"/>
         <source>Étape 1/3 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Step 1 of 4: Parent category {1/4 ?} {1/3 ?}</translation>
+        <translation>Step 1 of 3: Parent category</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="98"/>
@@ -2302,7 +2302,7 @@ Changes will be definitive.</translation>
         <location filename="../sources/newelementwizard.cpp" line="114"/>
         <source>Étape 2/3 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Step 2 of 4: Filename {2/4 ?} {2/3 ?}</translation>
+        <translation>Step 2 of 3: Filename</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="115"/>
@@ -2314,7 +2314,7 @@ Changes will be definitive.</translation>
         <location filename="../sources/newelementwizard.cpp" line="137"/>
         <source>Étape 3/3 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Step 3 of 4: Element names {3/4 ?} {3/3 ?}</translation>
+        <translation>Step 3 of 3: Element names</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="138"/>
@@ -5767,7 +5767,7 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="46"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Visible</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="49"/>
@@ -5792,12 +5792,12 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="64"/>
         <source>Nom : </source>
-        <translation type="unfinished"></translation>
+        <translation>Name :</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="70"/>
         <source>Numéro : </source>
-        <translation type="unfinished"></translation>
+        <translation>number:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="134"/>
@@ -5817,17 +5817,17 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="141"/>
         <source>numéro: </source>
-        <translation type="unfinished"></translation>
+        <translation>number:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="145"/>
         <source>nom: </source>
-        <translation type="unfinished"></translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="149"/>
         <source>nom visible: </source>
-        <translation type="unfinished"></translation>
+        <translation>Visible name:</translation>
     </message>
 </context>
 <context>
@@ -6688,80 +6688,80 @@ Maximum width: %2px
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="17"/>
         <source>Propriétés de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Element properties</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="20"/>
         <source>Général</source>
-        <translation type="unfinished">General</translation>
+        <translation>General</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="44"/>
         <source>Élément manquant</source>
-        <translation type="unfinished">Missing element</translation>
+        <translation>Missing element</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="46"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="51"/>
         <source>Nom : %1
 </source>
-        <translation type="unfinished">Name: %1
+        <translation>Name: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="54"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished">Folio: %1</translation>
+        <translation>Folio: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="56"/>
         <source>Position : %1
 </source>
-        <translation type="unfinished">Position: %1
+        <translation>Position: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="57"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation type="unfinished">Size: %1×%2
+        <translation>Size: %1×%2
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="58"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished">Terminals: %1
+        <translation>Terminals: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="59"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished">Text fields: %1
+        <translation>Text fields: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="62"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished">Location: %1
+        <translation>Location: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="80"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Find in the panel</translation>
+        <translation>Find in the panel</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="82"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Edit element</translation>
+        <translation>Edit element</translation>
     </message>
 </context>
 <context>
