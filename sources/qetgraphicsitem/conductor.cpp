@@ -1213,7 +1213,9 @@ QString Conductor::text() const {
 	@param t Nouveau texte du conducteur
 */
 void Conductor::setText(const QString &t) {
+	text_item -> setFontSize(properties_.text_size);
 	text_item -> setPlainText(t);
+
 }
 
 /// @param p les proprietes de ce conducteur

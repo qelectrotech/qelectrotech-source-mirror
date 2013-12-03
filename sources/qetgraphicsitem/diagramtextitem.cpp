@@ -184,6 +184,10 @@ QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
 	return(local_movement_point - local_origin);
 }
 
+void DiagramTextItem::setFontSize(int &s) {
+	setFont(QETApp::diagramTextsFont(s));
+}
+
 /**
 	Dessine le champ de texte.
 	Cette methode delegue simplement le travail a QGraphicsTextItem::paint apres

@@ -58,6 +58,7 @@ class DiagramTextItem : public QGraphicsTextItem {
 	QPointF mapMovementFromScene(const QPointF &) const;
 	QPointF mapMovementToParent(const QPointF &) const;
 	QPointF mapMovementFromParent(const QPointF &) const;
+	void setFontSize(int &s);
 	
 	protected:
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);

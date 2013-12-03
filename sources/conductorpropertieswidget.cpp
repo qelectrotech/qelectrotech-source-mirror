@@ -63,8 +63,13 @@ void ConductorPropertiesWidget::buildInterface() {
 	QHBoxLayout *multiline_layout = new QHBoxLayout();
 	QLabel *text = new QLabel(tr("Texte :"));
 	text_field = new QLineEdit();
+	QLabel *size_text = new QLabel(tr("Taille"), this);
+	text_size_sb = new QSpinBox(this);
+	text_size_sb->setRange(5,9);
 	multiline_layout -> addWidget(text);
 	multiline_layout -> addWidget(text_field);
+	multiline_layout -> addWidget(size_text);
+	multiline_layout -> addWidget(text_size_sb);
 
 	QGridLayout *rotate_text_layout = new QGridLayout;
 	QLabel *rotate_label = new QLabel(tr("Rotation du texte sur conducteur :"));
@@ -179,6 +184,7 @@ void ConductorPropertiesWidget::buildConnections() {
 	connect(color_button,      SIGNAL(clicked()),                    this,          SLOT(chooseColor()));
 	connect(verti_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
 	connect(horiz_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
+	connect(text_size_sb,	   SIGNAL(valueChanged(int)),			 this,			SLOT(updateConfig()));
 }
 
 /**
@@ -225,6 +231,7 @@ void ConductorPropertiesWidget::destroyConnections() {
 	disconnect(line_style,        SIGNAL(currentIndexChanged(int)),     this,          SLOT(updateConfig()));
 	disconnect(verti_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
 	disconnect(horiz_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
+	disconnect(text_size_sb,	  SIGNAL(valueChanged(int)),			this,		   SLOT(updateConfig()));
 }
 
 /// Destructeur
@@ -239,6 +246,7 @@ void ConductorPropertiesWidget::updateConfig() {
 	properties_.color = colorButton();
 	properties_.style = static_cast<Qt::PenStyle>(line_style -> itemData(line_style -> currentIndex()).toInt());
 	properties_.text = text_field -> text();
+	properties_.text_size = text_size_sb->value();
 	properties_.verti_rotate_text = verti_select -> value();
 	properties_.horiz_rotate_text = horiz_select -> value();
 	properties_.singleLineProperties.hasGround = ground_checkbox -> isChecked();
@@ -258,6 +266,7 @@ void ConductorPropertiesWidget::updateDisplay() {
 	int index = line_style -> findData(properties_.style);
 	if (index != -1) line_style -> setCurrentIndex(index);
 	text_field -> setText(properties_.text);
+	text_size_sb -> setValue(properties_.text_size);
 	ground_checkbox -> setChecked(properties_.singleLineProperties.hasGround);
 	neutral_checkbox -> setChecked(properties_.singleLineProperties.hasNeutral);
 	merge_checkbox -> setChecked(properties_.singleLineProperties.is_pen);
@@ -338,6 +347,7 @@ void ConductorPropertiesWidget::setReadOnly(bool ro) {
 	multiline -> setDisabled(ro);
 	singleline -> setDisabled(ro);
 	text_field -> setReadOnly(ro);
+	text_size_sb -> setReadOnly(ro);
 	phase_checkbox -> setDisabled(ro);
 	phase_spinbox -> setReadOnly(ro);
 	ground_checkbox -> setDisabled(ro);

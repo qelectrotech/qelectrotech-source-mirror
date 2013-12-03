@@ -75,6 +75,7 @@ class ConductorPropertiesWidget : public QWidget {
 	QPushButton *color_button;
 	QComboBox *line_style;
 	QCheckBox *merge_checkbox;
+	QSpinBox *text_size_sb;
 	
 	ConductorProperties properties_;
 	

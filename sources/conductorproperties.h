@@ -79,6 +79,8 @@ class ConductorProperties {
 	QColor color;
 	/// Texte displayed for multiline conductors
 	QString text;
+	/// size of text
+	int text_size;
 	/// rotation angle texte
 	double verti_rotate_text;
 	double horiz_rotate_text;
@@ -96,8 +98,8 @@ class ConductorProperties {
 	static QString typeToString(ConductorType);
 	
 	// operators
-	int operator==(const ConductorProperties &);
-	int operator!=(const ConductorProperties &);
+	bool operator==(const ConductorProperties &) const;
+	bool operator!=(const ConductorProperties &) const;
 	
 	private:
 	void readStyle(const QString &);

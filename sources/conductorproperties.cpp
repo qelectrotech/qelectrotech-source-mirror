@@ -220,6 +220,7 @@ ConductorProperties::ConductorProperties() :
 	type(Multi),
 	color(Qt::black),
 	text("_"),
+	text_size(9),
 	verti_rotate_text(270),
 	horiz_rotate_text(0),
 	style(Qt::SolidLine)
@@ -248,6 +249,7 @@ void ConductorProperties::toXml(QDomElement &e) const {
 		singleLineProperties.toXml(e);
 	} else if (type == Multi) {
 		e.setAttribute("num", text);
+		e.setAttribute("numsize", text_size);
 		e.setAttribute("vertirotatetext", verti_rotate_text);
 		e.setAttribute("horizrotatetext", horiz_rotate_text);
 	}
@@ -284,6 +286,7 @@ void ConductorProperties::fromXml(QDomElement &e) {
 	} else {
 		// recupere le champ de texte
 		text = e.attribute("num");
+		text_size = e.attribute("numsize", QString::number(9)).toInt();
 		verti_rotate_text = e.attribute("vertirotatetext").toDouble();
 		horiz_rotate_text = e.attribute("horizrotatetext").toDouble();
 		type = Multi;
@@ -299,6 +302,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "style", writeStyle());
 	settings.setValue(prefix + "type", typeToString(type));
 	settings.setValue(prefix + "text", text);
+	settings.setValue(prefix + "textsize", QString::number(text_size));
 	settings.setValue(prefix + "vertirotatetext", QString::number(verti_rotate_text));
 	settings.setValue(prefix + "horizrotatetext", QString::number(horiz_rotate_text));
 	singleLineProperties.toSettings(settings, prefix);
@@ -327,6 +331,7 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	}
 	singleLineProperties.fromSettings(settings, prefix);
 	text = settings.value(prefix + "text", "_").toString();
+	text_size = settings.value(prefix + "textsize", "7").toInt();
 	verti_rotate_text = settings.value((prefix + "vertirotatetext"), "270").toDouble();
 	horiz_rotate_text = settings.value((prefix + "horizrotatetext"), "0").toDouble();
 
@@ -350,12 +355,13 @@ QString ConductorProperties::typeToString(ConductorType t) {
 	@param other l'autre ensemble de proprietes avec lequel il faut effectuer la comparaison
 	@return true si les deux ensembles de proprietes sont identiques, false sinon
 */
-int ConductorProperties::operator==(const ConductorProperties &other) {
+bool ConductorProperties::operator==(const ConductorProperties &other) const{
 	return(
 		other.type == type &&\
 		other.color == color &&\
 		other.style == style &&\
 		other.text == text &&\
+		other.text_size == text_size &&\
 		other.verti_rotate_text == verti_rotate_text &&\
 		other.horiz_rotate_text == horiz_rotate_text &&\
 		other.singleLineProperties == singleLineProperties
@@ -366,12 +372,13 @@ int ConductorProperties::operator==(const ConductorProperties &other) {
 	@param other l'autre ensemble de proprietes avec lequel il faut effectuer la comparaison
 	@return true si les deux ensembles de proprietes sont differents, false sinon
 */
-int ConductorProperties::operator!=(const ConductorProperties &other) {
+bool ConductorProperties::operator!=(const ConductorProperties &other) const{
 	return(
 		other.type != type ||\
 		other.color != color ||\
 		other.style != style ||\
 		other.text != text ||\
+		other.text_size != text_size ||\
 		other.verti_rotate_text != verti_rotate_text ||\
 		other.horiz_rotate_text != horiz_rotate_text ||\
 		other.singleLineProperties != singleLineProperties
