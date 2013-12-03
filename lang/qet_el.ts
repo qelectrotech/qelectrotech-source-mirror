@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="188"/>
+        <location filename="../sources/aboutqet.cpp" line="192"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Αυτό το πρόγραμμα διατίθεται υπό την Άδεια GNU/GPL.</translation>
     </message>
@@ -73,78 +73,78 @@
         <translation>Επικοινωνία: &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="114"/>
+        <location filename="../sources/aboutqet.cpp" line="115"/>
         <location filename="../sources/aboutqet.cpp" line="116"/>
-        <location filename="../sources/aboutqet.cpp" line="117"/>
         <source>Développement</source>
         <translation>Ανάπτυξη</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="115"/>
+        <location filename="../sources/aboutqet.cpp" line="114"/>
         <source>Collection d&apos;éléments &amp; Développement</source>
         <translation>Συλλογή στοιχείων και Ανάπτυξη</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="131"/>
+        <location filename="../sources/aboutqet.cpp" line="130"/>
         <source>Traduction en espagnol</source>
         <translation>Ισπανική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="132"/>
+        <location filename="../sources/aboutqet.cpp" line="131"/>
         <source>Traduction en russe</source>
         <translation>Ρωσική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="133"/>
+        <location filename="../sources/aboutqet.cpp" line="132"/>
         <source>Traduction en portugais</source>
         <translation>Πορτογαλική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="134"/>
+        <location filename="../sources/aboutqet.cpp" line="133"/>
         <source>Traduction en tchèque</source>
         <translation>Τσέχικη μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="135"/>
+        <location filename="../sources/aboutqet.cpp" line="134"/>
         <source>Traduction en polonais</source>
         <translation>Πολωνική μετάφραση</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="135"/>
         <location filename="../sources/aboutqet.cpp" line="136"/>
         <location filename="../sources/aboutqet.cpp" line="137"/>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en allemand</source>
         <translation>Γερμανική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en roumain</source>
         <translation>Ρουμανική μετάφραση</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <location filename="../sources/aboutqet.cpp" line="140"/>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Traduction en italien</source>
         <translation>Ιταλική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="142"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Traduction en arabe</source>
         <translation>Αραβική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en croate</source>
         <translation>Κροατική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="144"/>
+        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Traduction en catalan</source>
         <translation>Καταλανική μετάφραση</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="144"/>
         <location filename="../sources/aboutqet.cpp" line="145"/>
-        <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Traduction en grec</source>
         <translation>Ελληνική μετάφραση</translation>
     </message>
@@ -155,8 +155,29 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="167"/>
-        <source>Paquets Mandriva</source>
-        <translation>Πακέτα για Madriva</translation>
+        <source>Paquets Mageia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="169"/>
+        <location filename="../sources/aboutqet.cpp" line="170"/>
+        <source>Paquets Gentoo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="171"/>
+        <source>Paquets OS/2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="172"/>
+        <source>Paquets FreeBSD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="173"/>
+        <source>Paquets Archlinux AUR</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="168"/>
@@ -164,12 +185,7 @@
         <translation>Πακέτα για Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="169"/>
-        <source>Paquets gentoo</source>
-        <translation>Πακέτα για gentoo</translation>
-    </message>
-    <message>
-        <location filename="../sources/aboutqet.cpp" line="170"/>
+        <location filename="../sources/aboutqet.cpp" line="174"/>
         <source>Icônes</source>
         <translation>Εικονίδια</translation>
     </message>
@@ -385,12 +401,12 @@
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/conductor.cpp" line="1285"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1287"/>
         <source>Textes de conducteurs</source>
         <translation>Κείμενα των αγωγών</translation>
     </message>
     <message>
-        <location filename="../sources/conductor.cpp" line="1286"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1288"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>Θέλετε να εφαρμοστεί το νέο κείμενο
@@ -445,83 +461,88 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Κείμενο:</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="66"/>
+        <source>Taille</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
         <source>Rotation du texte sur conducteur :</source>
         <translation>Γωνία των ετικετών των αγωγών:</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="78"/>
         <source>Vertical</source>
         <translation>Κάθετα</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="84"/>
         <source>Horizontal</source>
         <translation>Οριζόντια</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="90"/>
         <source>Unifilaire</source>
         <translation>Μονογραμμικό</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="91"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="96"/>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="92"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="97"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
         <translation>Ουδετέρωση</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="103"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="108"/>
         <source>phase</source>
         <translation>φάση</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="136"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="141"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
         <translation>Τεχνοτροπία: </translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="138"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="143"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translation>Συνεχόμενη</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="139"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="144"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translation>Διακεκομμένη</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="140"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="145"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation>Παύλες και τελείες</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="92"/>
         <source>terre</source>
         <translation>γείωση</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="89"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="94"/>
         <source>neutre</source>
         <translation>ουδέτερος</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="128"/>
         <source>Apparence du conducteur</source>
         <translation>Εμφάνιση του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="130"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="135"/>
         <source>Couleur :</source>
         <translation>Χρώμα:</translation>
     </message>
@@ -554,16 +575,21 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
 <context>
     <name>DiagramImageItem</name>
     <message>
-        <location filename="../sources/diagramimageitem.cpp" line="229"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="108"/>
         <source>Éditer les propriétés d&apos;une image</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των ιδιοτήτων της εικόνας</translation>
     </message>
     <message>
-        <location filename="../sources/diagramimageitem.cpp" line="234"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="113"/>
         <source>Dimension de l&apos;image</source>
         <comment>image size</comment>
         <translation>Διαστάσεις εικόνας</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="135"/>
+        <source>Verrouiller la position</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -636,7 +662,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Επικόλληση εδώ</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="197"/>
+        <location filename="../sources/diagramview.cpp" line="199"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
         <translation>Επιλέξτε τον προσανατολισμό των επιλεγμένων κειμένων</translation>
@@ -648,158 +674,61 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Σε αυτή την περιοχή σχεδιάζετε τα διαγράμματά σας προσθέτοντας στοιχεία και αγωγούς μεταξύ των ακροδεκτών. Μπορείτε επίσης να προσθέσετε ανεξάρτητα κείμενα.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="543"/>
+        <location filename="../sources/diagramview.cpp" line="561"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Ανώνυμο</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="568"/>
+        <location filename="../sources/diagramview.cpp" line="586"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Ιδιότητες του διαγράμματος</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="896"/>
+        <location filename="../sources/diagramview.cpp" line="908"/>
         <source>Propriétés de la sélection</source>
         <translation>Ιδιότητες της επιλογής</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="898"/>
+        <location filename="../sources/diagramview.cpp" line="910"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Η επιλογή εμπεριέχει %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="933"/>
-        <source>Élément manquant</source>
-        <translation>Λείπει στοιχείο</translation>
+        <location filename="../sources/diagramview.cpp" line="966"/>
+        <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="935"/>
-        <source>Élément</source>
-        <translation>Στοιχείο</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="940"/>
-        <source>Nom : %1
-</source>
-        <translation>Όνομα: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="943"/>
-        <source>Folio : %1
-</source>
-        <translation>Διάγραμμα: %1 </translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="945"/>
-        <source>Position : %1
-</source>
-        <translation>Θέση: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="946"/>
-        <source>Dimensions : %1×%2
-</source>
-        <translation>Διαστάσεις: %1×%2
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="947"/>
-        <source>Bornes : %1
-</source>
-        <translation>Ακροδέκτες: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="948"/>
-        <source>Connexions internes : %1
-</source>
-        <translation>Εσωτερικές συνδέσεις: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="948"/>
-        <source>Autorisées</source>
-        <translation>Επιτρέπεται</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="948"/>
-        <source>Interdites</source>
-        <translation>Απαγορεύεται</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="949"/>
-        <source>Champs de texte : %1
-</source>
-        <translation>Πεδία κειμένου: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="952"/>
-        <source>Emplacement : %1
-</source>
-        <translation>Τοποθεσία: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="956"/>
-        <source>Propriétés de l&apos;élément sélectionné</source>
-        <translation>Ιδιότητες των επιλεγμένων στοιχείων</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="957"/>
-        <source>Retrouver dans le panel</source>
-        <translation>Εύρεση στο πλαίσιο</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="958"/>
-        <source>Éditer l&apos;élément</source>
-        <translation>Επεξεργασία του στοιχείου</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="1020"/>
+        <location filename="../sources/diagramview.cpp" line="963"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των ιδιοτήτων του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1039"/>
-        <source>Textes de conducteurs</source>
-        <translation>Κείμενα των αγωγών</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="1040"/>
-        <source>Voulez-vous appliquer le nouveau texte 
-à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation>Θέλετε να εφαρμοστεί το νέο κείμενο
-σε όλους τους αγωγούς αυτού του δυναμικού;</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="1095"/>
+        <location filename="../sources/diagramview.cpp" line="1027"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Επιλέξτε το νέο χρώμα αυτού του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1257"/>
+        <location filename="../sources/diagramview.cpp" line="1189"/>
         <source>Selectionner une image...</source>
         <translation>Επιλογή εικόνας...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1257"/>
+        <location filename="../sources/diagramview.cpp" line="1189"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>Αρχεία εικόνων (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1265"/>
+        <location filename="../sources/diagramview.cpp" line="1197"/>
         <source>Erreur</source>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1265"/>
+        <location filename="../sources/diagramview.cpp" line="1197"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation>Αδύνατη η φόρτωση της εικόνας...Λυπάμαι :(</translation>
     </message>
@@ -1094,93 +1023,71 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="262"/>
+        <location filename="../sources/editor/elementscene.cpp" line="261"/>
         <source>ligne</source>
         <translation>γραμμή</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="276"/>
+        <location filename="../sources/editor/elementscene.cpp" line="275"/>
         <source>ellipse</source>
         <translation>έλλειψη</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="283"/>
+        <location filename="../sources/editor/elementscene.cpp" line="282"/>
         <source>arc</source>
         <translation>τόξο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="290"/>
+        <location filename="../sources/editor/elementscene.cpp" line="289"/>
         <source>borne</source>
         <translation>ακροδέκτης</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="297"/>
+        <location filename="../sources/editor/elementscene.cpp" line="296"/>
         <source>texte</source>
         <translation>κείμενο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="304"/>
+        <location filename="../sources/editor/elementscene.cpp" line="303"/>
         <source>champ de texte</source>
         <translation>πεδίο κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="316"/>
+        <location filename="../sources/editor/elementscene.cpp" line="315"/>
         <source>polygone</source>
         <translation>πολύγωνο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="683"/>
-        <source>L&apos;orientation par défaut est l&apos;orientation dans laquelle s&apos;effectue la création de l&apos;élément.</source>
-        <translation>Προκαθορισμένος προσανατολισμός, είναι ο προσανατολισμός ο οποίος δημιουργούνται τα στοιχεία.</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/elementscene.cpp" line="733"/>
+        <location filename="../sources/editor/elementscene.cpp" line="680"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των πληροφοριών του συγγραφέα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="737"/>
+        <location filename="../sources/editor/elementscene.cpp" line="684"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Σε αυτό το πεδίο μπορείτε να ορίσετε, τον συγγραφέα αυτού του στοιχείου, την άδεια χρήσης, ή όποια άλλη πληροφορία θεωρείτε χρήσιμη.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="781"/>
+        <location filename="../sources/editor/elementscene.cpp" line="728"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Μπορείτε να εισάγετε το όνομα του στοιχείου σε πολλές γλώσσες.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="695"/>
-        <source>Autoriser les connexions internes</source>
-        <translation>Να επιτρέπονται οι εσωτερικές συνδέσεις</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/elementscene.cpp" line="978"/>
-        <location filename="../sources/editor/elementscene.cpp" line="1025"/>
+        <location filename="../sources/editor/elementscene.cpp" line="925"/>
+        <location filename="../sources/editor/elementscene.cpp" line="961"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translation>Αυτό το αρχείο Εξ-εμ-ε (XML) δεν είναι προσδιορισμός κάποιου στοιχείου.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="989"/>
-        <source>Les orientations ne sont pas valides.</source>
-        <comment>error message</comment>
-        <translation>Οι προσανατολισμοί δεν είναι έγκυροι.</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/elementscene.cpp" line="679"/>
-        <source>Éditer les orientations</source>
-        <comment>window title</comment>
-        <translation>Επεξεργασία των προσανατολισμών</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/elementscene.cpp" line="777"/>
+        <location filename="../sources/editor/elementscene.cpp" line="724"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των ονομάτων</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="269"/>
+        <location filename="../sources/editor/elementscene.cpp" line="268"/>
         <source>rectangle</source>
         <translation>παραλληλόγραμμο</translation>
     </message>
@@ -1400,95 +1307,95 @@ Les changements seront définitifs.</source>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="413"/>
+        <location filename="../sources/elementspanel.cpp" line="433"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της εργασίας</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="436"/>
+        <location filename="../sources/elementspanel.cpp" line="456"/>
         <source>Cartouches embarqués</source>
         <translation>Ενσωματωμένες πινακίδες</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="437"/>
+        <location filename="../sources/elementspanel.cpp" line="457"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της ενσωματωμένης συλλογής πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="446"/>
+        <location filename="../sources/elementspanel.cpp" line="466"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
         <translation>Σύρετε και αφήστε αυτό το πρότυπο πινακίδας μέσα στο διάγραμμα για να εφαρμοστεί </translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="458"/>
+        <location filename="../sources/elementspanel.cpp" line="478"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="470"/>
+        <location filename="../sources/elementspanel.cpp" line="490"/>
         <source>Collection embarquée</source>
         <translation>Ενσωματωμένη συλλογή</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="471"/>
+        <location filename="../sources/elementspanel.cpp" line="491"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της ενσωματωμένης συλλογής στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="479"/>
+        <location filename="../sources/elementspanel.cpp" line="499"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
         <translation>Σύρετε και αφήστε αυτό το στοιχείο στο διάγραμμα για να εισάγετε ένα στοιχείο &quot;%1&quot; σε αυτό, διπλό πάτημα για επεξεργασία</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="570"/>
+        <location filename="../sources/elementspanel.cpp" line="590"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής πινακίδων του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="571"/>
+        <location filename="../sources/elementspanel.cpp" line="591"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Αυτή είναι η συλλογή πινακίδων που παρέχεται μαζί με το QElectroTech. Εγκατεστημένη σαν στοιχείο του συστήματος,και δεν μπορείτε να τη προσαρμόσετε.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="577"/>
+        <location filename="../sources/elementspanel.cpp" line="597"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής στοιχείων του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="578"/>
+        <location filename="../sources/elementspanel.cpp" line="598"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Αυτή είναι η συλλογή στοιχείων που παρέχεται μαζί με το QElectroTech. Εγκατεστημένη σαν στοιχείο του συστήματος,και δεν μπορείτε να τη προσαρμόσετε.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="586"/>
+        <location filename="../sources/elementspanel.cpp" line="606"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της προσωπικής σας συλλογής πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="587"/>
+        <location filename="../sources/elementspanel.cpp" line="607"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Αυτή είναι η προσωπική σας συλλογή από πινακίδες --χρησιμοποιήστε τη για να δημιουργήσετε, να αποθηκεύσετε και να επεξεργαστείτε τις δικές σας πινακίδες.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="593"/>
+        <location filename="../sources/elementspanel.cpp" line="613"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της προσωπικής σας συλλογής στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="594"/>
+        <location filename="../sources/elementspanel.cpp" line="614"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Αυτή είναι η προσωπική σας συλλογή από στοιχεία --χρησιμοποιήστε τη για να δημιουργήσετε, να αποθηκεύσετε και να επεξεργαστείτε τις δικά σας στοιχεία.</translation>
@@ -2010,7 +1917,7 @@ Les changements seront définitifs.</source>
 <context>
     <name>GhostElement</name>
     <message>
-        <location filename="../sources/ghostelement.cpp" line="38"/>
+        <location filename="../sources/qetgraphicsitem/ghostelement.cpp" line="38"/>
         <source>&lt;u&gt;Élément manquant :&lt;/u&gt; %1</source>
         <translation>&lt;u&gt;Απών στοιχείο:&lt;/u&gt; %1</translation>
     </message>
@@ -2362,102 +2269,90 @@ Les changements seront définitifs.</source>
 <context>
     <name>NewElementWizard</name>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="118"/>
+        <location filename="../sources/newelementwizard.cpp" line="120"/>
         <source>Vous n&apos;êtes pas obligé de préciser l&apos;extension *.elmt. Elle sera ajoutée automatiquement.</source>
         <translation>Δεν χρειάζεται να προσδιορίσετε την επέκταση «*.elmt». Θα προστεθεί αυτόματα.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="116"/>
+        <location filename="../sources/newelementwizard.cpp" line="118"/>
         <source>nouvel_element</source>
         <translation>νέο_στοιχείο</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="47"/>
+        <location filename="../sources/newelementwizard.cpp" line="50"/>
         <source>&amp;Suivant &gt;</source>
         <translation>&amp;Επόμενο &gt;</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="46"/>
+        <location filename="../sources/newelementwizard.cpp" line="49"/>
         <source>Créer un nouvel élément : Assistant</source>
         <comment>window title</comment>
         <translation>Δημιουργία νέου στοιχείου: Οδηγός</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="96"/>
+        <location filename="../sources/newelementwizard.cpp" line="97"/>
+        <source>Étape 1/3 : Catégorie parente</source>
+        <comment>wizard page title</comment>
+        <translation type="unfinished">Βήμα 1/4: Γονική κατηγορία {1/3 ?}</translation>
+    </message>
+    <message>
+        <location filename="../sources/newelementwizard.cpp" line="98"/>
         <source>Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.</source>
         <comment>wizard page subtitle</comment>
         <translation>Επιλέξτε την κατηγορία στην οποία θα αποθηκευθεί το νέο στοιχείο.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="113"/>
+        <location filename="../sources/newelementwizard.cpp" line="114"/>
+        <source>Étape 2/3 : Nom du fichier</source>
+        <comment>wizard page title</comment>
+        <translation type="unfinished">Βήμα 2/4 : Όνομα αρχείου {2/3 ?}</translation>
+    </message>
+    <message>
+        <location filename="../sources/newelementwizard.cpp" line="115"/>
         <source>Indiquez le nom du fichier dans lequel enregistrer le nouvel élément.</source>
         <comment>wizard page subtitle</comment>
         <translation>Εισάγετε το όνομα του αρχείου για το νέο στοιχείο.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="136"/>
+        <location filename="../sources/newelementwizard.cpp" line="137"/>
+        <source>Étape 3/3 : Noms de l&apos;élément</source>
+        <comment>wizard page title</comment>
+        <translation type="unfinished">Βήμα 3/4: Ονόματα του στοιχείου {3/3 ?}</translation>
+    </message>
+    <message>
+        <location filename="../sources/newelementwizard.cpp" line="138"/>
         <source>Indiquez le ou les noms de l&apos;élément.</source>
         <comment>wizard page subtitle</comment>
         <translation>Εισάγετε ένα ή περισσότερα ονόματα για το στοιχείο.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="141"/>
+        <location filename="../sources/newelementwizard.cpp" line="143"/>
         <source>Nom du nouvel élément</source>
         <comment>default name when creating a new element</comment>
         <translation>Όνομα του νέου στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="95"/>
-        <source>Étape 1/4 : Catégorie parente</source>
-        <comment>wizard page title</comment>
-        <translation>Βήμα 1/4: Γονική κατηγορία</translation>
-    </message>
-    <message>
-        <location filename="../sources/newelementwizard.cpp" line="112"/>
-        <source>Étape 2/4 : Nom du fichier</source>
-        <comment>wizard page title</comment>
-        <translation>Βήμα 2/4 : Όνομα αρχείου</translation>
-    </message>
-    <message>
-        <location filename="../sources/newelementwizard.cpp" line="135"/>
-        <source>Étape 3/4 : Noms de l&apos;élément</source>
-        <comment>wizard page title</comment>
-        <translation>Βήμα 3/4: Ονόματα του στοιχείου</translation>
-    </message>
-    <message>
-        <location filename="../sources/newelementwizard.cpp" line="155"/>
-        <source>Étape 4/4 : Orientations</source>
-        <comment>wizard page title</comment>
-        <translation>Βήμα 4/4: Προσανατολισμοί</translation>
-    </message>
-    <message>
-        <location filename="../sources/newelementwizard.cpp" line="156"/>
-        <source>Indiquez les orientations possibles pour le nouvel élément.</source>
-        <comment>wizard page subtitle</comment>
-        <translation>Εισάγετε τους επιτρεπόμενους και τους απαγορευμένους προσανατολισμούς για το νέο στοιχείο.</translation>
-    </message>
-    <message>
-        <location filename="../sources/newelementwizard.cpp" line="198"/>
-        <location filename="../sources/newelementwizard.cpp" line="218"/>
-        <location filename="../sources/newelementwizard.cpp" line="230"/>
+        <location filename="../sources/newelementwizard.cpp" line="184"/>
+        <location filename="../sources/newelementwizard.cpp" line="204"/>
+        <location filename="../sources/newelementwizard.cpp" line="216"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="199"/>
+        <location filename="../sources/newelementwizard.cpp" line="185"/>
         <source>Vous devez sélectionner une catégorie.</source>
         <comment>message box content</comment>
         <translation>Πρέπει να επιλέξετε μία κατηγορία.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="219"/>
+        <location filename="../sources/newelementwizard.cpp" line="205"/>
         <source>Vous devez entrer un nom de fichier</source>
         <comment>message box content</comment>
         <translation>Πρέπει να εισάγετε ένα όνομα για το αρχείο</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="231"/>
+        <location filename="../sources/newelementwizard.cpp" line="217"/>
         <source>Merci de ne pas utiliser les caractères suivants : \ / : * ? &quot; &lt; &gt; |</source>
         <comment>message box content</comment>
         <translation>Παρακαλώ, μην χρησιμοποιείτε τους ακόλουθους χαρακτήρες : \ / : * ? &lt; &gt; |</translation>
@@ -2494,48 +2389,6 @@ Les changements seront définitifs.</source>
         <location filename="../sources/ui/numparteditorw.ui" line="49"/>
         <source>N° folio</source>
         <translation>N° σελίδας</translation>
-    </message>
-</context>
-<context>
-    <name>OrientationSetWidget</name>
-    <message>
-        <location filename="../sources/orientationsetwidget.cpp" line="30"/>
-        <source>Possible</source>
-        <translation>Επιτρεπτό</translation>
-    </message>
-    <message>
-        <location filename="../sources/orientationsetwidget.cpp" line="31"/>
-        <source>Impossible</source>
-        <translation>Απαράδεκτο</translation>
-    </message>
-    <message>
-        <location filename="../sources/orientationsetwidget.cpp" line="50"/>
-        <location filename="../sources/orientationsetwidget.cpp" line="62"/>
-        <source>Nord :</source>
-        <translation>Βορράς:</translation>
-    </message>
-    <message>
-        <location filename="../sources/orientationsetwidget.cpp" line="52"/>
-        <location filename="../sources/orientationsetwidget.cpp" line="66"/>
-        <source>Est :</source>
-        <translation>Ανατολή:</translation>
-    </message>
-    <message>
-        <location filename="../sources/orientationsetwidget.cpp" line="54"/>
-        <location filename="../sources/orientationsetwidget.cpp" line="70"/>
-        <source>Sud :</source>
-        <translation>Νότος:</translation>
-    </message>
-    <message>
-        <location filename="../sources/orientationsetwidget.cpp" line="56"/>
-        <location filename="../sources/orientationsetwidget.cpp" line="74"/>
-        <source>Ouest :</source>
-        <translation>Δύση:</translation>
-    </message>
-    <message>
-        <location filename="../sources/orientationsetwidget.cpp" line="60"/>
-        <source>Par défaut</source>
-        <translation>Προεπιλογή</translation>
     </message>
 </context>
 <context>
@@ -3844,77 +3697,72 @@ Options disponibles :
         <translation>Επεξεργασία των ονομάτων</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
-        <source>Éditer les orientations</source>
-        <translation>Επεξεργασία των προσανατολισμών</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="154"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="153"/>
         <source>Déplacer un objet</source>
         <translation>Μετακίνηση ενός αντικειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="154"/>
         <source>Ajouter une ligne</source>
         <translation>Προσθήκη γραμμής</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="156"/>
         <source>Ajouter une ellipse</source>
         <translation>Προσθήκη έλλειψης</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="158"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
         <source>Ajouter un polygone</source>
         <translation>Προσθήκη πολυγώνου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="159"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="158"/>
         <source>Ajouter du texte</source>
         <translation>Προσθήκη κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="160"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="159"/>
         <source>Ajouter un arc de cercle</source>
         <translation>Προσθήκη τόξου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="161"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="160"/>
         <source>Ajouter une borne</source>
         <translation>Προσθήκη ακροδέκτη</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="162"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="161"/>
         <source>Ajouter un champ de texte</source>
         <translation>Προσθήκη πλαισίου κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="174"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="173"/>
         <source>Annuler</source>
         <translation>Αναίρεση</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="175"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="174"/>
         <source>Refaire</source>
         <translation>Επαναφορά</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="187"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="186"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="189"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="188"/>
         <source>Ctrl+Shift+A</source>
         <translation>Ctrl+Shift+A</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="190"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="189"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="670"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="665"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -3923,63 +3771,58 @@ Options disponibles :
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="680"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="675"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="206"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="205"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="207"/>
-        <source>Ctrl+T</source>
-        <translation>Ctrl+T</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="150"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="149"/>
         <source>Rapprocher</source>
         <translation>Ανύψωση</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="151"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="150"/>
         <source>Éloigner</source>
         <translation>Χαμήλωμα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="151"/>
         <source>Envoyer au fond</source>
         <translation>Μετακίνηση πίσω</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="153"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Amener au premier plan</source>
         <translation>Μετακίνηση εμπρός</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="210"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="208"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Πάνω</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="211"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="209"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Κάτω</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="212"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="210"/>
         <source>Ctrl+Shift+End</source>
         <translation>Ctrl+Shift+End</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="213"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="211"/>
         <source>Ctrl+Shift+Home</source>
         <translation>Ctrl+Shift+Home</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="543"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="538"/>
         <source>Aucune modification</source>
         <translation>Καμία αλλαγή</translation>
     </message>
@@ -4009,12 +3852,12 @@ Options disponibles :
         <translation>Επαναφορά της εστίασης</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="203"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="202"/>
         <source>Ctrl+9</source>
         <translation>Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="204"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="203"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
@@ -4029,12 +3872,12 @@ Options disponibles :
         <translation>Αποθήκευση σε ένα αρχείο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="183"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="182"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="185"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="184"/>
         <source>Ctrl+Shift+S</source>
         <translation>Ctrl+Shift+S</translation>
     </message>
@@ -4055,113 +3898,113 @@ Options disponibles :
         <translation>ένα στοιχείο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="149"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <translation>Επεξεργασία των πληροφοριών του συγγραφέα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="198"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="197"/>
         <source>Backspace</source>
         <translation>Υπαναχώρηση</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="208"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="206"/>
         <source>Ctrl+Y</source>
         <translation>Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="287"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="284"/>
         <source>Parties</source>
         <comment>toolbar title</comment>
         <translation>Τμήματα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="299"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="296"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
         <translation>Εργαλεία</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="301"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="298"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
         <translation>Προβολή</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="303"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="300"/>
         <source>Élément</source>
         <comment>toolbar title</comment>
         <translation>Στοιχείο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="305"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="302"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>Βάθος</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="352"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="348"/>
         <source>&amp;Fichier</source>
         <translation>&amp;Αρχείο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="353"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="349"/>
         <source>&amp;Édition</source>
         <translation>Ε&amp;πεξεργασία</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="354"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="350"/>
         <source>Afficha&amp;ge</source>
         <translation>Προβο&amp;λή</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="355"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="351"/>
         <source>O&amp;utils</source>
         <translation>Ερ&amp;γαλεία</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="375"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="371"/>
         <source>Coller depuis...</source>
         <translation>Επικόλληση από ...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="486"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="481"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[Αλλαγμένο]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="488"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="483"/>
         <source> [lecture seule]</source>
         <comment>window title tag</comment>
         <translation> [Μόνο για ανάγνωση]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="527"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="522"/>
         <source>Informations</source>
         <comment>dock title</comment>
         <translation>Πληροφορίες</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="536"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="531"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Αναίρεση</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="554"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="549"/>
         <source>Parties</source>
         <comment>dock title</comment>
         <translation>Τμήματα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="566"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="561"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
         <translation>Επεξεργαστής στοιχείων</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="621"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="616"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n επιλεγμένο τμήμα.</numerusform>
@@ -4169,185 +4012,185 @@ Options disponibles :
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="656"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
         <translation>Απουσία ακροδέκτη</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="657"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="652"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
         <translation>Το στοιχείο δεν περιέχει κάποιον ακροδέκτη. Τα στοιχεία πρέπει μα έχουν ακροδέκτες ώστε να μπορούν να συνδεθούν με άλλα στοιχεία μέσω αγωγών.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="690"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="685"/>
         <source>Avertissements</source>
         <comment>messagebox title</comment>
         <translation>Προειδοποιήσεις</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="708"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="703"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Δεν υπάρχει το αρχείο %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1340"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="711"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1327"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Αδυναμία ανοίγματος του αρχείου %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="725"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1344"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="720"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1331"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Αυτό το αρχείο δεν είναι ένα έγκυρο έγγραφο ΕξΕμΕλ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="731"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1350"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1337"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="743"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1313"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="738"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1300"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Έκδοση μόνο για ανάγνωση</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="744"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1314"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="739"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1301"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>Δεν επιτρέπεται η μετατροπή αυτού του στοιχείου. Γι αυτό θα ανοιχτεί μόνο για ανάγνωση.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="768"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="794"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="805"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="763"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="789"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="800"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="769"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="764"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>Αδυναμία εγγραφής σε αυτό το αρχείο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="795"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="790"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Αδυναμία εντοπισμού του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="806"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="801"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Αδυναμία αποθήκευσης του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="934"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="929"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Αδυναμία ανοίγματος του αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="936"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="931"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Φαίνεται ότι το αρχείο 1% που προσπαθείτε να ανοίξετε δεν υπάρχει.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1163"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1158"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation>Πάρα πολλά τμήματα· ο κατάλογος δεν αποτυπώθηκε.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1262"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1249"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Άνοιγμα ενός αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1264"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1251"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>Στοιχεία του ΚιουΕλέκτροΤεχκ (*.elmt);;Αρχεία ΕξΕμΈλ (*.xml);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="953"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="948"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Επαναφόρτωση του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="954"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="949"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Αυτό το στοιχείο έχει αλλαχθεί, μετά από την τελευταία αποθήκευσή του. Αν το επαναφορτώσετε, αυτές οι αλλαγές θα χαθούν.
 Θέλετε πραγματικά να επαναφορτωθεί αυτό το στοιχείο;</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1028"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1023"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Αποθήκευση ως</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1030"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1025"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>Στοιχεία του ΚιουΕλέκτροΤεχκ (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1062"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1057"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Αποθήκευση του παρόντος διαγράμματος;</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1064"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1059"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Θέλεις να γίνει αποθήκευση του στοιχείου %1;</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1285"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1294"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1370"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1379"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1272"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1281"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1357"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1366"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Μη υπαρκτό στοιχείο.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1286"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1371"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1273"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1358"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Το στοιχείο δεν υπάρχει.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1295"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1380"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1282"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1367"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Η επιλεγμένη εικονική διαδρομή δεν ταιριάζει σε κάποιο στοιχείο.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="164"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="163"/>
         <source>Maintenez la touche Shift enfoncée pour effectuer plusieurs ajouts d&apos;affilée</source>
         <translation>Για να προσθέσετε πολλαπλά τμήματα σε μία σειρά, κρατήστε πατημένο το πλήκτρο Shift</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="172"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
         <source>Utilisez le bouton droit de la souris pour poser le dernier point du polygone</source>
         <translation>Με το δεξί πλήκτρο του ποντικιού, ορίστε το τελευταίο σημείο του πολυγώνου</translation>
     </message>
@@ -4372,12 +4215,12 @@ Options disponibles :
         <translation>Επικόλληση στην περιο&amp;χή...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="194"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="193"/>
         <source>Ctrl+Shift+V</source>
         <translation>Ctrl+Shift+V</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="156"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
         <source>Ajouter un rectangle</source>
         <translation>Προσθήκη παραλληλόγραμμου</translation>
     </message>
@@ -5069,7 +4912,7 @@ Que désirez vous faire ?</source>
         <translation>Το αρχείο κειμένου που περιέχει την άδεια GNU/GPL υπάρχει αλλά δεν μπορεί να ανοιχτεί - αλλα ούτως ή άλλως την έχετε στην καρδιά σας, έτσι δεν είναι;</translation>
     </message>
     <message>
-        <location filename="../sources/customelement.cpp" line="118"/>
+        <location filename="../sources/qetgraphicsitem/customelement.cpp" line="118"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
         <translation>Προσοχή: Το στοιχείο έχει αποθηκευτεί με μια νεότερη έκδοση του QElectroTech.</translation>
     </message>
@@ -5136,54 +4979,54 @@ Que désirez vous faire ?</source>
         <translation>περιστροφή %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="798"/>
+        <location filename="../sources/diagramcommands.cpp" line="754"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
         <translation>Περιστροφή του %1 σε %2°</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="822"/>
+        <location filename="../sources/diagramcommands.cpp" line="778"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation>μετατροπή ενός αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="875"/>
+        <location filename="../sources/diagramcommands.cpp" line="831"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>Επαναφορά του %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="913"/>
+        <location filename="../sources/diagramcommands.cpp" line="869"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
         <translation>μετατροπή της πινακίδας</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="944"/>
+        <location filename="../sources/diagramcommands.cpp" line="900"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
         <translation>μετατροπή των διαστάσεων του διαγράμματος</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="971"/>
+        <location filename="../sources/diagramcommands.cpp" line="927"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>μετατροπή των ιδιοτήτων ενος αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1022"/>
+        <location filename="../sources/diagramcommands.cpp" line="978"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Επεξεργασία των ιδιοτήτων πολλαπλών αγωγών</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1105"/>
+        <location filename="../sources/diagramcommands.cpp" line="1084"/>
         <source>Agrandire une image à %1 %</source>
         <translation>Μεγέθυνση εικόνας κατά %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1106"/>
+        <location filename="../sources/diagramcommands.cpp" line="1085"/>
         <source>Réduire une image à %1 %</source>
         <translation>Σμίκρυνση εικόνας κατά %1 %</translation>
     </message>
@@ -5224,55 +5067,43 @@ Que désirez vous faire ?</source>
         <translation>μετατροπή των ονομάτων</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="425"/>
-        <source>modification orientations</source>
-        <comment>undo caption</comment>
-        <translation>μετατροπή των προσανατολισμών</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="467"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="434"/>
         <source>amener au premier plan</source>
         <comment>undo caption</comment>
         <translation>μεταφορά εμπρός</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="470"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="437"/>
         <source>rapprocher</source>
         <comment>undo caption</comment>
         <translation>ανύψωση</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="473"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="440"/>
         <source>éloigner</source>
         <comment>undo caption</comment>
         <translation>χαμήλωμα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="476"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="443"/>
         <source>envoyer au fond</source>
         <comment>undo caption</comment>
         <translation>μετακίνηση προς τα πίσω</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="575"/>
-        <source>modification connexions internes</source>
-        <comment>undo caption</comment>
-        <translation>μετατροπή των εσωτερικών συνδέσεων</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="602"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="543"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
         <translation>μετατροπή των πληροφοριών του συγγραφέα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="717"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="658"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
         <translation>Αλλαγή μεγέθους %1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="719"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="660"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
         <translation>αλλαγή διάστασης %1 αντικειμένων</translation>
@@ -5302,7 +5133,7 @@ Que désirez vous faire ?</source>
         <translation>πολύγωνο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partterminal.h" line="49"/>
+        <location filename="../sources/editor/partterminal.h" line="51"/>
         <source>borne</source>
         <comment>element part name</comment>
         <translation>ακροδέκτης</translation>
@@ -5394,7 +5225,7 @@ Que désirez vous faire ?</source>
         <translation>Δεν είναι δυνατό το άνοιγμα του αρχείου %1 για εγγραφή, παρουσιάστηκε σφάλμα %2</translation>
     </message>
     <message>
-        <location filename="../sources/terminal.cpp" line="63"/>
+        <location filename="../sources/terminal.cpp" line="69"/>
         <source>Borne</source>
         <comment>tooltip</comment>
         <translation>Ακροδέκτης</translation>
@@ -5939,39 +5770,69 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>Δύση</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="45"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="46"/>
+        <source>Visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/terminaleditor.cpp" line="49"/>
         <source>Position : </source>
         <translation>Θέση: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="48"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="52"/>
         <source>x : </source>
         <translation>x: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="50"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="54"/>
         <source>y : </source>
         <translation>y: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="59"/>
         <source>Orientation : </source>
         <translation>Προσανατολισμός: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="114"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="64"/>
+        <source>Nom : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/terminaleditor.cpp" line="70"/>
+        <source>Numéro : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/terminaleditor.cpp" line="134"/>
         <source>abscisse</source>
         <translation>τετμημένη</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="116"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="136"/>
         <source>ordonnée</source>
         <translation>τεταγμένη</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="118"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="138"/>
         <source>orientation</source>
         <translation>προσανατολισμός</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/terminaleditor.cpp" line="141"/>
+        <source>numéro: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/terminaleditor.cpp" line="145"/>
+        <source>nom: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/terminaleditor.cpp" line="149"/>
+        <source>nom visible: </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6823,6 +6684,87 @@ Longueur maximale : %2px
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Sélectionner tout</source>
         <translation>Επιλογή όλων</translation>
+    </message>
+</context>
+<context>
+    <name>elementpropertieswidget</name>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="17"/>
+        <source>Propriétés de l&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="20"/>
+        <source>Général</source>
+        <translation type="unfinished">Γενικά</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="44"/>
+        <source>Élément manquant</source>
+        <translation type="unfinished">Λείπει στοιχείο</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="46"/>
+        <source>Élément</source>
+        <translation type="unfinished">Στοιχείο</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="51"/>
+        <source>Nom : %1
+</source>
+        <translation type="unfinished">Όνομα: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="54"/>
+        <source>Folio : %1
+</source>
+        <translation type="unfinished">Διάγραμμα: %1 </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="56"/>
+        <source>Position : %1
+</source>
+        <translation type="unfinished">Θέση: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="57"/>
+        <source>Dimensions : %1×%2
+</source>
+        <translation type="unfinished">Διαστάσεις: %1×%2
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="58"/>
+        <source>Bornes : %1
+</source>
+        <translation type="unfinished">Ακροδέκτες: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="59"/>
+        <source>Champs de texte : %1
+</source>
+        <translation type="unfinished">Πεδία κειμένου: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="62"/>
+        <source>Emplacement : %1
+</source>
+        <translation type="unfinished">Τοποθεσία: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="80"/>
+        <source>Retrouver dans le panel</source>
+        <translation type="unfinished">Εύρεση στο πλαίσιο</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="82"/>
+        <source>Éditer l&apos;élément</source>
+        <translation type="unfinished">Επεξεργασία του στοιχείου</translation>
     </message>
 </context>
 <context>
