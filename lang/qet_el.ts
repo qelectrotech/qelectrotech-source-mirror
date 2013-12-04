@@ -156,28 +156,28 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="167"/>
         <source>Paquets Mageia</source>
-        <translation type="unfinished"></translation>
+        <translation>Πακέτα για Mageia</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="169"/>
         <location filename="../sources/aboutqet.cpp" line="170"/>
         <source>Paquets Gentoo</source>
-        <translation type="unfinished"></translation>
+        <translation>Πακέτα για Gentoo</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
         <source>Paquets OS/2</source>
-        <translation type="unfinished"></translation>
+        <translation>Πακέτα για OS/2</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="172"/>
         <source>Paquets FreeBSD</source>
-        <translation type="unfinished"></translation>
+        <translation>Πακέτα για FreeBSD</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="173"/>
         <source>Paquets Archlinux AUR</source>
-        <translation type="unfinished"></translation>
+        <translation>Πακέτα για Archlinux AUR</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="168"/>
@@ -463,7 +463,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="66"/>
         <source>Taille</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
@@ -589,7 +589,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="135"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished"></translation>
+        <translation>Κλείδωμα της θέσης</translation>
     </message>
 </context>
 <context>
@@ -699,7 +699,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramview.cpp" line="966"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή ιδιοτήτων σε όλους τους αγωγούς αυτού του δυναμικού</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="963"/>
@@ -2293,7 +2293,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="97"/>
         <source>Étape 1/3 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Βήμα 1/4: Γονική κατηγορία {1/3 ?}</translation>
+        <translation>Βήμα 1/3: Γονική κατηγορία</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="98"/>
@@ -2305,7 +2305,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="114"/>
         <source>Étape 2/3 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Βήμα 2/4 : Όνομα αρχείου {2/3 ?}</translation>
+        <translation>Βήμα 2/ : Όνομα αρχείου</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="115"/>
@@ -2317,7 +2317,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="137"/>
         <source>Étape 3/3 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Βήμα 3/4: Ονόματα του στοιχείου {3/3 ?}</translation>
+        <translation>Βήμα 3/3: Ονόματα του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="138"/>
@@ -5772,7 +5772,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="46"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορατό</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="49"/>
@@ -5797,12 +5797,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="64"/>
         <source>Nom : </source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="70"/>
         <source>Numéro : </source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="134"/>
@@ -5822,17 +5822,17 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="141"/>
         <source>numéro: </source>
-        <translation type="unfinished"></translation>
+        <translation>αριθμός:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="145"/>
         <source>nom: </source>
-        <translation type="unfinished"></translation>
+        <translation>όνομα:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="149"/>
         <source>nom visible: </source>
-        <translation type="unfinished"></translation>
+        <translation>ορατό όνομα:</translation>
     </message>
 </context>
 <context>
@@ -6691,80 +6691,80 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="17"/>
         <source>Propriétés de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιδιότητες του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="20"/>
         <source>Général</source>
-        <translation type="unfinished">Γενικά</translation>
+        <translation>Γενικά</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="44"/>
         <source>Élément manquant</source>
-        <translation type="unfinished">Λείπει στοιχείο</translation>
+        <translation>Λείπει στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="46"/>
         <source>Élément</source>
-        <translation type="unfinished">Στοιχείο</translation>
+        <translation>Στοιχείο</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="51"/>
         <source>Nom : %1
 </source>
-        <translation type="unfinished">Όνομα: %1
+        <translation>Όνομα: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="54"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished">Διάγραμμα: %1 </translation>
+        <translation>Διάγραμμα: %1 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="56"/>
         <source>Position : %1
 </source>
-        <translation type="unfinished">Θέση: %1
+        <translation>Θέση: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="57"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation type="unfinished">Διαστάσεις: %1×%2
+        <translation>Διαστάσεις: %1×%2
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="58"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished">Ακροδέκτες: %1
+        <translation>Ακροδέκτες: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="59"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished">Πεδία κειμένου: %1
+        <translation>Πεδία κειμένου: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="62"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished">Τοποθεσία: %1
+        <translation>Τοποθεσία: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="80"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Εύρεση στο πλαίσιο</translation>
+        <translation>Εύρεση στο πλαίσιο</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="82"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Επεξεργασία του στοιχείου</translation>
+        <translation>Επεξεργασία του στοιχείου</translation>
     </message>
 </context>
 <context>
