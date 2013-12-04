@@ -693,7 +693,7 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="966"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Applicare le proprietà a tutti i conducenti di questo potenziale</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1189"/>
