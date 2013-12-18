@@ -184,7 +184,7 @@ void ConductorPropertiesWidget::buildConnections() {
 	connect(color_button,      SIGNAL(clicked()),                    this,          SLOT(chooseColor()));
 	connect(verti_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
 	connect(horiz_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
-	connect(text_size_sb,	   SIGNAL(valueChanged(int)),			 this,			SLOT(updateConfig()));
+	connect(text_size_sb,      SIGNAL(valueChanged(int)),            this,          SLOT(updateConfig()));
 }
 
 /**
@@ -231,7 +231,7 @@ void ConductorPropertiesWidget::destroyConnections() {
 	disconnect(line_style,        SIGNAL(currentIndexChanged(int)),     this,          SLOT(updateConfig()));
 	disconnect(verti_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
 	disconnect(horiz_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
-	disconnect(text_size_sb,	  SIGNAL(valueChanged(int)),			this,		   SLOT(updateConfig()));
+	disconnect(text_size_sb,      SIGNAL(valueChanged(int)),            this,          SLOT(updateConfig()));
 }
 
 /// Destructeur
