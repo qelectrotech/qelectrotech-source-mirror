@@ -1,58 +1,58 @@
-<definition width="200" version="0.3" hotspot_x="47" hotspot_y="38" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="200" version="0.3" hotspot_x="97" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="it">Contattore invertitore</name>
         <name lang="fr">Contacteur inverseur</name>
         <name lang="pl">Stycznik rewersyjny</name>
-        <name lang="it">Contattore invertitore</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="108" y="17" size="6" rotate="true" text="_"/>
-        <input x="108" y="-22" size="6" rotate="true" text="_"/>
-        <input x="68" y="17" size="6" rotate="true" text="_"/>
-        <input x="68" y="-22" size="6" rotate="true" text="_"/>
-        <input x="-1" y="17" size="6" rotate="true" text="_"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="105" y2="10" x2="110" y3="20" x3="110"/>
-        <input x="-1" y="-22" size="6" rotate="true" text="_"/>
-        <input x="39" y="17" size="6" rotate="true" text="_"/>
-        <input x="19" y="17" size="6" rotate="true" text="_"/>
-        <input x="39" y="-22" size="6" rotate="true" text="_"/>
-        <input x="88" y="17" size="6" rotate="true" text="_"/>
-        <input x="115" y="-1.5" size="9" text="KM_"/>
-        <input x="19" y="-22" size="6" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="0" x1="58.3676" y2="0" x2="107.56"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="35" y2="10" x2="40" y3="20" x3="40"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="65" y2="10" x2="70" y3="20" x3="70"/>
+        <text x="-6" y="19" size="4" text="6&#xa;T3"/>
+        <text x="-26" y="19" size="4" text="4&#xa;T2"/>
+        <text x="-6" y="-20" size="4" text="5&#xa;L3"/>
+        <text x="-46" y="19" size="4" text="2&#xa;T1"/>
+        <text x="64" y="-20" size="4" text="5&#xa;L3"/>
+        <text x="44" y="19" size="4" text="4&#xa;T2"/>
+        <text x="-26" y="-20" size="4" text="3&#xa;L2"/>
+        <text x="44" y="-20" size="4" text="3&#xa;L2"/>
+        <text x="64" y="19" size="4" text="6&#xa;T3"/>
+        <text x="24" y="19" size="4" text="2&#xa;T1"/>
+        <text x="24" y="-20" size="4" text="1&#xa;L1"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="55" y2="10" x2="60" y3="20" x3="60"/>
+        <input x="65" y="-1.5" size="9" text="KM_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="8.3676" y2="0" x2="57.56"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-15" y2="10" x2="-10" y3="20" x3="-10"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-55" y2="10" x2="-50" y3="20" x3="-50"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="15" y2="10" x2="20" y3="20" x3="20"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="85" y2="10" x2="90" y3="20" x3="90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="70" y2="-10" x2="70"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
-        <arc width="5" x="67.5" y="-14.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <input x="-41" y="-1.5" size="9" text="KM_"/>
-        <arc width="5" x="-2.5" y="-14.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="90" y2="-10" x2="90"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-35" y2="10" x2="-30" y3="20" x3="-30"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="35" y2="10" x2="40" y3="20" x3="40"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-10" x2="20"/>
-        <arc width="5" x="87.5" y="-14.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="110" y2="-10" x2="110"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-50" y2="-10" x2="-50"/>
         <arc width="5" x="17.5" y="-14.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <arc width="5" x="107.5" y="-14.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <input x="-91" y="-1.5" size="9" text="KM_"/>
+        <arc width="5" x="-52.5" y="-14.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="40" y2="-10" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-30" y2="-10" x2="-30"/>
         <arc width="5" x="37.5" y="-14.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <input x="88" y="-22" size="6" rotate="true" text="_"/>
-        <polygon x4="50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="50" y2="-4" x2="60" y3="4" x3="55" y4="-4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="0" x1="-1.1478" y2="0" x2="51.0768"/>
-        <terminal x="0" y="-21" number="" name="" orientation="n"/>
-        <terminal x="0" y="21" number="" name="" orientation="s"/>
-        <terminal x="20" y="-21" number="" name="" orientation="n"/>
-        <terminal x="20" y="21" number="" name="" orientation="s"/>
-        <terminal x="40" y="-21" number="" name="" orientation="n"/>
-        <terminal x="40" y="21" number="" name="" orientation="s"/>
-        <terminal x="70" y="-21" number="" name="" orientation="n"/>
-        <terminal x="70" y="21" number="" name="" orientation="s"/>
-        <terminal x="90" y="-21" number="" name="" orientation="n"/>
-        <terminal x="90" y="21" number="" name="" orientation="s"/>
-        <terminal x="110" y="-21" number="" name="" orientation="n"/>
-        <terminal x="110" y="21" number="" name="" orientation="s"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="60" y2="-10" x2="60"/>
+        <arc width="5" x="-32.5" y="-14.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="5" x="57.5" y="-14.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-10" x2="-10"/>
+        <arc width="5" x="-12.5" y="-14.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <polygon x4="0" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-4" x1="0" y2="-4" x2="10" y3="4" x3="5" y4="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-51.1478" y2="0" x2="1.0768"/>
+        <text x="-46" y="-20" size="4" text="1&#xa;L1"/>
+        <terminal x="-50" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-50" y="20" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-30" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-30" y="20" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-10" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="20" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="20" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="20" y="20" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="40" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="40" y="20" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="60" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="60" y="20" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

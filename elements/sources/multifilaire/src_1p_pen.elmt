@@ -1,4 +1,4 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+<definition width="40" version="0.3" hotspot_x="22" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مصدر وحيد القطبية +PEN</name>
         <name lang="de">Wechselstrom + PEN</name>
@@ -12,11 +12,11 @@
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="3" y2="0" x2="13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="3" y2="10" x2="13"/>
-        <text x="-13" y="12" size="5" text="PEN"/>
-        <text x="-12" y="3" size="5" text="L"/>
-        <terminal x="13" y="0" orientation="e"/>
-        <terminal x="13" y="10" orientation="e"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="10" x2="10"/>
+        <text x="-16" y="12" size="5" text="PEN"/>
+        <text x="-15" y="-7" size="5" text="L"/>
+        <terminal x="10" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="10" y="10" nameHidden="0" number="" name="" orientation="e"/>
     </description>
 </definition>
