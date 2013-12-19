@@ -719,6 +719,9 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 		- line-weight : epaiseur du trait
 			- thin : trait fin
 			- normal : trait d'epaisseur 1 [par defaut]
+			- none : trait invisible
+			- forte : trait d'epaisseur 2
+			- eleve : trait d'epaisseur 5
 		- filling : remplissage de la forme
 			- white : remplissage blanc
 			- black : remplissage noir
@@ -761,9 +764,12 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 				else if (style_value == "dashdotted") pen.setStyle(Qt::DashDotLine);
 				else if (style_value == "normal") pen.setStyle(Qt::SolidLine);
 			} else if (style_name == "line-weight") {
-				if (style_value == "thin") pen.setWidth(0);
+				if (style_value == "none") pen.setColor(QColor(0, 0, 0, 0));
+				else if (style_value == "thin") pen.setWidth(0);
 				else if (style_value == "normal") pen.setWidthF(1.0);
-				else if (style_value == "none") pen.setColor(QColor(0, 0, 0, 0));
+				else if (style_value == "hight") pen.setWidthF(2.0);
+				else if (style_value == "eleve") pen.setWidthF(5.0);
+
 			} else if (style_name == "filling") {
 				if (style_value == "white") {
 					brush.setStyle(Qt::SolidPattern);

@@ -45,11 +45,13 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	normal_style -> setChecked(true);
 	
 	// epaisseur
-	weight = new QButtonGroup(this);
-	weight -> addButton(none_weight   = new QRadioButton(tr("Nulle", "element part weight")),   CustomElementGraphicPart::NoneWeight);
-	weight -> addButton(thin_weight   = new QRadioButton(tr("Fine", "element part weight")),    CustomElementGraphicPart::ThinWeight);
-	weight -> addButton(normal_weight = new QRadioButton(tr("Normale", "element part weight")), CustomElementGraphicPart::NormalWeight);
-	
+	size_weight = new QComboBox(this);
+	size_weight -> addItem(tr("Nulle", "element part weight"),  CustomElementGraphicPart::NoneWeight);
+	size_weight -> addItem(tr("Fine", "element part weight"),  CustomElementGraphicPart::ThinWeight);
+	size_weight -> addItem(tr("Normale", "element part weight"),  CustomElementGraphicPart::NormalWeight);
+	size_weight -> addItem(tr("Forte", "element part weight"),  CustomElementGraphicPart::UltraWeight);
+	size_weight -> addItem(tr("\311lev\351", "element part weight"),  CustomElementGraphicPart::BigWeight);
+
 	// remplissage
 	filling_color = new QComboBox (this);
 	filling_color -> addItem(tr("Aucun", "element part filling"), CustomElementGraphicPart::NoneFilling);
@@ -85,15 +87,13 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	style_layout -> addWidget(dotted_style);
 	style_layout -> addStretch();
 	main_layout -> addLayout(style_layout);
-	
-	QHBoxLayout *weight_layout = new QHBoxLayout();
-	weight_layout -> addWidget(new QLabel(tr("\311paisseur : ")));
-	weight_layout -> addWidget(none_weight);
-	weight_layout -> addWidget(thin_weight);
-	weight_layout -> addWidget(normal_weight);
-	weight_layout -> addStretch();
-	main_layout -> addLayout(weight_layout);
 	main_layout -> addWidget(antialiasing);
+
+	QHBoxLayout *weight_layout = new QHBoxLayout();
+	weight_layout -> addWidget(new QLabel(tr("\311paisseur : ")), 0, Qt::AlignRight);
+	weight_layout -> addWidget(size_weight);
+	main_layout -> addLayout(weight_layout);
+
 
 	main_layout -> addSpacing(10);
 	main_layout -> addWidget(new QLabel("<u>" + tr("G\351om\351trie :") + "</u> "));
@@ -122,8 +122,8 @@ void StyleEditor::updatePart() {
 	part -> setLineStyle(static_cast<CEGP::LineStyle>(style -> checkedId()));
 	
 	// applique l'epaisseur
-	part -> setLineWeight(static_cast<CEGP::LineWeight>(weight -> checkedId()));
-	
+	part -> setLineWeight(static_cast<CEGP::LineWeight>(size_weight -> currentIndex()));
+
 	// applique le remplissage
 	part -> setFilling(static_cast<CEGP::Filling>(filling_color -> currentIndex()));
 }
@@ -135,7 +135,7 @@ void StyleEditor::updatePartColor()          { addChangePartCommand(tr("style co
 /// Met a jour le style du trait et cree un objet d'annulation
 void StyleEditor::updatePartLineStyle()      { addChangePartCommand(tr("style ligne"),        part, "line-style",  style -> checkedId());        }
 /// Met a jour l'epaisseur du trait et cree un objet d'annulation
-void StyleEditor::updatePartLineWeight()     { addChangePartCommand(tr("style epaisseur"),    part, "line-weight", weight -> checkedId());       }
+void StyleEditor::updatePartLineWeight()     { addChangePartCommand(tr("style epaisseur"),    part, "line-weight", size_weight -> currentIndex());}
 /// Met a jour la couleur de fond et cree un objet d'annulation
 void StyleEditor::updatePartFilling()        { addChangePartCommand(tr("style remplissage"),  part, "filling",     filling_color -> currentIndex());}
 
@@ -155,8 +155,8 @@ void StyleEditor::updateForm() {
 	style -> button(part -> lineStyle()) -> setChecked(true);
 	
 	// lit l'epaisseur
-	weight -> button(part -> lineWeight()) -> setChecked(true);
-	
+	size_weight -> setCurrentIndex(part -> lineWeight());
+
 	// lit le remplissage
 	filling_color -> setCurrentIndex(part -> filling());
 	activeConnections(true);
@@ -199,13 +199,13 @@ void StyleEditor::activeConnections(bool active) {
 	if (active) {
 		connect (outline_color, SIGNAL(activated(int)), this, SLOT(updatePartColor()));
 		connect(style,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineStyle()));
-		connect(weight,       SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineWeight()));
+		connect(size_weight,       SIGNAL(activated(int)), this, SLOT(updatePartLineWeight()));
 		connect(filling_color, SIGNAL(activated(int)), this, SLOT(updatePartFilling()));
 		connect(antialiasing, SIGNAL(stateChanged(int)),  this, SLOT(updatePartAntialiasing()));
 	} else {
 		disconnect(outline_color, SIGNAL(activated(int)), this, SLOT(updatePartColor()));
 		disconnect(style,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineStyle()));
-		disconnect(weight,       SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineWeight()));
+		disconnect(size_weight,       SIGNAL(activated(int)), this, SLOT(updatePartLineWeight()));
 		disconnect(filling_color, SIGNAL(activated(int)), this, SLOT(updatePartFilling()));
 		disconnect(antialiasing, SIGNAL(stateChanged(int)),  this, SLOT(updatePartAntialiasing()));
 	}

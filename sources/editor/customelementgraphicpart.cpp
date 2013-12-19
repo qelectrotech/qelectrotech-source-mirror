@@ -35,7 +35,10 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const {
 	if      (_lineweight == NoneWeight)   css_like_styles += "none";
 	else if (_lineweight == ThinWeight)   css_like_styles += "thin";
 	else if (_lineweight == NormalWeight) css_like_styles += "normal";
-	
+	else if (_lineweight == UltraWeight)  css_like_styles += "hight";
+	else if (_lineweight == BigWeight)    css_like_styles += "eleve";
+
+
 	css_like_styles += ";filling:";
 	if      (_filling == NoneFilling)  css_like_styles += "none";
 	else if (_filling == BlackFilling) css_like_styles += "black";
@@ -79,9 +82,11 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde) {
 			else if (style_value == "normal") _linestyle = NormalStyle;
 			// il n'y a pas de else car les valeurs non conformes sont ignorees (idem par la suite)
 		} else if (style_name == "line-weight") {
-			if      (style_value == "thin")   _lineweight = ThinWeight;
+			if      (style_value == "none")   _lineweight = NoneWeight;
+			else if (style_value == "thin")   _lineweight = ThinWeight;
 			else if (style_value == "normal") _lineweight = NormalWeight;
-			else if (style_value == "none")   _lineweight = NoneWeight;
+			else if (style_value == "hight")   _lineweight = UltraWeight;
+			else if (style_value == "eleve")   _lineweight  = BigWeight;
 		} else if (style_name == "filling") {
 			if      (style_value == "white") _filling = WhiteFilling;
 			else if (style_value == "black") _filling = BlackFilling;
@@ -129,9 +134,13 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const {
 	else if (_linestyle == NormalStyle) pen.setStyle(Qt::SolidLine);
 	
 	// applique l'epaisseur de trait
-	if      (_lineweight == NoneWeight)   pen.setColor(QColor(0, 0, 0, 0));
-	else if (_lineweight == ThinWeight)   pen.setWidth(0);
-	else if (_lineweight == NormalWeight) pen.setWidthF(1.0);
+	if      (_lineweight == NoneWeight) pen.setColor(QColor(0, 0, 0, 0));
+	else if (_lineweight == ThinWeight) pen.setWidth(0);
+	else if (_lineweight == NormalWeight)  pen.setWidthF(1.0);
+	else if (_lineweight == UltraWeight) pen.setWidthF(2.0);
+	else if (_lineweight == BigWeight)  pen.setWidthF(5.0);
+
+
 	
 	// applique le remplissage
 	if (_filling == NoneFilling) {

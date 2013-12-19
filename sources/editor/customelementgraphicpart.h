@@ -38,9 +38,12 @@ class CustomElementGraphicPart : public CustomElementPart {
 	
 	/// This enum lists the various line weights available to draw primitives.
 	enum LineWeight {
-		NormalWeight, ///< Normal line
+		NoneWeight,    ///< Invisible line
 		ThinWeight,   ///< Thin line
-		NoneWeight    ///< Invisible line
+		NormalWeight, ///< Normal line 1px
+		UltraWeight, ///< Normal line 2px
+		BigWeight    ///< Big Line
+
 	};
 	
 	/// This enum lists the various filling colors available to draw primitives.
