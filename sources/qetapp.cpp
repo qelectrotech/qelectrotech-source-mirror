@@ -35,6 +35,7 @@
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
+#include <QProcessEnvironment>
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::common_elements_dir = QString();
@@ -389,11 +390,15 @@ TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(const QStri
 	@return le nom de l'utilisateur courant
 */
 QString QETApp::userName() {
+	QProcess * process = new QProcess();
 #ifndef Q_OS_WIN32
-	return(QString(getenv("USER")));
+	// return(QString(getenv("USER")));
+	return((process->processEnvironment()).value("USER", "UNKNOWN"));
 #else
-	return(QString(getenv("USERNAME")));
+	// return(QString(getenv("USERNAME")));
+	return((process->processEnvironment()).value("USERNAME", "UNKNOWN"));
 #endif
+	delete process;
 }
 
 /**
@@ -473,9 +478,12 @@ QString QETApp::configDir() {
 #endif
 #ifdef Q_OS_WIN32
 	// recupere l'emplacement du dossier Application Data
-	char *app_data_env = getenv("APPDATA");
-	QString app_data_str(app_data_env);
-	delete app_data_env;
+	// char *app_data_env = getenv("APPDATA");
+	// QString app_data_str(app_data_env);
+	QProcess * process = new QProcess();
+	QString app_data_str = (process->processEnvironment()).value("APPDATA");
+	// delete app_data_env;
+	delete process;
 	if (app_data_str.isEmpty()) {
 		app_data_str = QDir::homePath() + "/Application Data";
 	}
