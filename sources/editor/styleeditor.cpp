@@ -37,12 +37,12 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	outline_color -> addItem(tr("Bleu", "element part color"), CustomElementGraphicPart::BlueColor);
 
 	// style
-	style = new QButtonGroup(this);
-	style -> addButton(normal_style = new QRadioButton(tr("Normal",       "element part line style")), CustomElementGraphicPart::NormalStyle);
-	style -> addButton(dashed_style = new QRadioButton(tr("Tiret",        "element part line style")), CustomElementGraphicPart::DashedStyle);
-	style -> addButton(dotted_style = new QRadioButton(tr("Pointill\351", "element part line style")), CustomElementGraphicPart::DottedStyle);
-	style -> addButton(dashdotted_style = new QRadioButton(tr("Traits et points", "element part line style")), CustomElementGraphicPart::DashdottedStyle);
-	normal_style -> setChecked(true);
+	line_style = new QComboBox(this);
+	line_style -> addItem(tr("Normal",       "element part line style"), CustomElementGraphicPart::NormalStyle);
+	line_style -> addItem(tr("Tiret",        "element part line style"), CustomElementGraphicPart::DashedStyle);
+	line_style -> addItem(tr("Pointill\351", "element part line style"), CustomElementGraphicPart::DottedStyle);
+	line_style -> addItem(tr("Traits et points", "element part line style"), CustomElementGraphicPart::DashdottedStyle);
+	//normal_style -> setChecked(true);
 	
 	// epaisseur
 	size_weight = new QComboBox(this);
@@ -80,20 +80,16 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	main_layout -> addLayout(color_layout);
 	
 	QHBoxLayout *style_layout = new QHBoxLayout();
-	style_layout -> addWidget(new QLabel(tr("Style : ")));
-	style_layout -> addWidget(normal_style);
-	style_layout -> addWidget(dashed_style);
-	style_layout -> addWidget(dashdotted_style);
-	style_layout -> addWidget(dotted_style);
-	style_layout -> addStretch();
+	style_layout -> addWidget(new QLabel(tr("Style : ")), 0, Qt::AlignRight);
+	style_layout -> addWidget(line_style);
 	main_layout -> addLayout(style_layout);
-	main_layout -> addWidget(antialiasing);
+
 
 	QHBoxLayout *weight_layout = new QHBoxLayout();
 	weight_layout -> addWidget(new QLabel(tr("\311paisseur : ")), 0, Qt::AlignRight);
 	weight_layout -> addWidget(size_weight);
 	main_layout -> addLayout(weight_layout);
-
+	main_layout -> addWidget(antialiasing);
 
 	main_layout -> addSpacing(10);
 	main_layout -> addWidget(new QLabel("<u>" + tr("G\351om\351trie :") + "</u> "));
@@ -119,7 +115,7 @@ void StyleEditor::updatePart() {
 	part -> setColor(static_cast<CEGP::Color>(outline_color -> currentIndex()));
 	
 	// applique le style
-	part -> setLineStyle(static_cast<CEGP::LineStyle>(style -> checkedId()));
+	part -> setLineStyle(static_cast<CEGP::LineStyle>(line_style -> currentIndex()));
 	
 	// applique l'epaisseur
 	part -> setLineWeight(static_cast<CEGP::LineWeight>(size_weight -> currentIndex()));
@@ -133,7 +129,7 @@ void StyleEditor::updatePartAntialiasing()   { addChangePartCommand(tr("style an
 /// Met a jour la couleur du trait et cree un objet d'annulation
 void StyleEditor::updatePartColor()          { addChangePartCommand(tr("style couleur"),      part, "color",       outline_color -> currentIndex());}
 /// Met a jour le style du trait et cree un objet d'annulation
-void StyleEditor::updatePartLineStyle()      { addChangePartCommand(tr("style ligne"),        part, "line-style",  style -> checkedId());        }
+void StyleEditor::updatePartLineStyle()      { addChangePartCommand(tr("style ligne"),        part, "line-style",  line_style -> currentIndex());}
 /// Met a jour l'epaisseur du trait et cree un objet d'annulation
 void StyleEditor::updatePartLineWeight()     { addChangePartCommand(tr("style epaisseur"),    part, "line-weight", size_weight -> currentIndex());}
 /// Met a jour la couleur de fond et cree un objet d'annulation
@@ -152,7 +148,7 @@ void StyleEditor::updateForm() {
 	outline_color -> setCurrentIndex(part -> color());
 	
 	// lit le style
-	style -> button(part -> lineStyle()) -> setChecked(true);
+	line_style -> setCurrentIndex(part -> lineStyle());
 	
 	// lit l'epaisseur
 	size_weight -> setCurrentIndex(part -> lineWeight());
@@ -198,13 +194,13 @@ CustomElementPart *StyleEditor::currentPart() const {
 void StyleEditor::activeConnections(bool active) {
 	if (active) {
 		connect (outline_color, SIGNAL(activated(int)), this, SLOT(updatePartColor()));
-		connect(style,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineStyle()));
+		connect(line_style,        SIGNAL(activated(int)), this, SLOT(updatePartLineStyle()));
 		connect(size_weight,       SIGNAL(activated(int)), this, SLOT(updatePartLineWeight()));
 		connect(filling_color, SIGNAL(activated(int)), this, SLOT(updatePartFilling()));
 		connect(antialiasing, SIGNAL(stateChanged(int)),  this, SLOT(updatePartAntialiasing()));
 	} else {
 		disconnect(outline_color, SIGNAL(activated(int)), this, SLOT(updatePartColor()));
-		disconnect(style,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineStyle()));
+		disconnect(line_style,        SIGNAL(activated(int)), this, SLOT(updatePartLineStyle()));
 		disconnect(size_weight,       SIGNAL(activated(int)), this, SLOT(updatePartLineWeight()));
 		disconnect(filling_color, SIGNAL(activated(int)), this, SLOT(updatePartFilling()));
 		disconnect(antialiasing, SIGNAL(stateChanged(int)),  this, SLOT(updatePartAntialiasing()));
