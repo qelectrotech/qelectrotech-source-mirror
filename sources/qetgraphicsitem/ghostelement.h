@@ -43,6 +43,7 @@ class GhostElement : public CustomElement {
 	// methods
 	public:
 	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
+	virtual int linkType() const {return Element::simple;}
 	
 	protected:
 	QRectF minimalBoundingRect() const;
