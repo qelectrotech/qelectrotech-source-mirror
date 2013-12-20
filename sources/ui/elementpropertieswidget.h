@@ -13,6 +13,7 @@ class elementpropertieswidget : public QDialog
 
 	private:
 	QWidget* generalWidget();
+	void buildInterface();
 
 	signals:
 	/// Signal emitted when users wish to locate an element from the diagram within elements collection
@@ -26,6 +27,7 @@ class elementpropertieswidget : public QDialog
 	void editElement ();
 
 	private:
+	QWidget *w; ///this widget is only for test
 	QDialogButtonBox *dbb;
 	Element *element_;
 	Diagram *diagram_;

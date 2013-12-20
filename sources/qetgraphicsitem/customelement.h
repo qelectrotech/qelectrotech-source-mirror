@@ -35,7 +35,6 @@ class CustomElement : public FixedElement {
 	// constructors, destructor
 	public:
 	CustomElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
-	CustomElement(const QDomElement &,      QGraphicsItem * = 0, Diagram * = 0, int * = 0);
 	virtual ~CustomElement();
 	
 	private:

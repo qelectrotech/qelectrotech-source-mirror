@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy" link_type="folio_report">
     <names>
         <name lang="ar">الصفحة التالية</name>
         <name lang="de">Nächste Seite</name>

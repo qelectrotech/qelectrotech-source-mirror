@@ -28,6 +28,15 @@ class ElementTextItem;
 class Element : public QetGraphicsItem {
 	
 	Q_OBJECT
+
+	public:
+	enum linkerType{
+		simple = 1,
+		report = 2,
+		master = 4,
+		slave = 8,
+		bornier = 16
+	};
 	
 	// constructors, destructor
 	public:
@@ -78,6 +87,8 @@ class Element : public QetGraphicsItem {
 	virtual QString typeId() const = 0;
 	/// @return the human name for this element
 	virtual QString name() const = 0;
+	/// @return the linkable type
+	virtual int linkType() const = 0;
 	
 	virtual bool isHighlighted() const;
 	virtual void setHighlighted(bool);

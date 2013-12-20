@@ -19,6 +19,7 @@
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/customelement.h"
+#include "factory/elementfactory.h"
 #include "diagram.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
@@ -523,9 +524,10 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		ElementsLocation element_location = ElementsLocation(type_id);
 		if (type_id.startsWith("embed://")) element_location.setProject(project_);
 		
-		CustomElement *nvel_elmt = new CustomElement(element_location);
-		if (nvel_elmt -> isNull()) {
-			QString debug_message = QString("Diagram::fromXml() : Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(nvel_elmt -> state());
+		int state = 0;
+		Element *nvel_elmt = ElementFactory::Instance()->createElement(element_location, 0, 0, &state);
+		if (state) {
+			QString debug_message = QString("Diagram::fromXml() : Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(state);
 			qDebug() << qPrintable(debug_message);
 			delete nvel_elmt;
 			

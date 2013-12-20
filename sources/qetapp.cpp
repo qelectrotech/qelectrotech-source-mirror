@@ -36,6 +36,7 @@
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
 #include <QProcessEnvironment>
+#include "factory/elementfactory.h"
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::common_elements_dir = QString();
@@ -141,6 +142,7 @@ QETApp::~QETApp() {
 	delete common_collection;
 	if (custom_tbt_collection_) delete custom_tbt_collection_;
 	if (common_tbt_collection_) delete common_tbt_collection_;
+	ElementFactory::dropInstance();
 }
 
 /**

@@ -21,7 +21,7 @@
 #include "diagram.h"
 #include "elementscategory.h"
 #include "elementscollectioncache.h"
-#include "qetgraphicsitem/customelement.h"
+#include "factory/elementfactory.h"
 #include "fileelementscollection.h"
 #include "fileelementdefinition.h"
 #include "qeticons.h"
@@ -309,7 +309,7 @@ void ElementsPanel::startElementDrag(const ElementsLocation &location) {
 		
 		// element temporaire pour fournir un apercu
 		int elmt_creation_state;
-		Element *temp_elmt = new CustomElement(location, 0, 0, &elmt_creation_state);
+		Element *temp_elmt = ElementFactory::Instance()->createElement(location, 0, 0, &elmt_creation_state);
 		if (elmt_creation_state) {
 			delete temp_elmt;
 			return;

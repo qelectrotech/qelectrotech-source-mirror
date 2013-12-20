@@ -2,7 +2,7 @@
 #include "elementscollection.h"
 #include "elementscategory.h"
 #include "elementdefinition.h"
-#include "qetgraphicsitem/customelement.h"
+#include "factory/elementfactory.h"
 
 /**
 	Construct a cache for elements collections.
@@ -171,7 +171,7 @@ QPixmap ElementsCollectionCache::pixmap() const {
 */
 bool ElementsCollectionCache::fetchData(const ElementsLocation &location) {
 	int state;
-	CustomElement *custom_elmt = new CustomElement(location, 0, 0, &state);
+	Element *custom_elmt = ElementFactory::Instance()->createElement(location, 0, 0, &state);
 	if (state) {
 		qDebug() << "ElementsCollectionCache::fetchData() : Le chargement du composant" << qPrintable(location.toString()) << "a echoue avec le code d'erreur" << state;
 	} else {

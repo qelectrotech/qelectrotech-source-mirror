@@ -82,12 +82,6 @@ CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qg
 	elmt_state = 0;
 }
 
-CustomElement::CustomElement(const QDomElement &xml_def_elmt, QGraphicsItem *qgi, Diagram *s, int *state) : FixedElement(qgi, s) {
-	int elmt_state = -1;
-	buildFromXml(xml_def_elmt, &elmt_state);
-	if (state) *state = elmt_state;
-}
-
 /**
 	Construit l'element personnalise a partir d'un element XML representant sa
 	definition.

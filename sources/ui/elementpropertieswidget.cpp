@@ -14,19 +14,7 @@ elementpropertieswidget::elementpropertieswidget(Element *elmt, QWidget *parent)
 	element_ (elmt),
 	diagram_ (elmt->diagram())
 {
-	setWindowTitle(tr("Propri\351t\351s de l'\351l\351ment"));
-
-	tab_ = new QTabWidget(this);
-	tab_ -> addTab(generalWidget(), tr("G\351n\351ral"));
-
-	dbb = new QDialogButtonBox(QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::Reset,
-							   Qt::Horizontal, this);
-	connect(dbb, SIGNAL(clicked(QAbstractButton*)), this, SLOT(standardButtonClicked(QAbstractButton*)));
-
-	QVBoxLayout *main_layout = new QVBoxLayout(this);
-	main_layout -> addWidget(tab_);
-	main_layout -> addWidget(dbb);
-	setLayout(main_layout);
+	buildInterface();
 }
 
 /**
@@ -87,6 +75,45 @@ QWidget* elementpropertieswidget::generalWidget() {
 
 	vlayout_->addLayout(hlayout_);
 	return general_widget;
+}
+
+/**
+ * @brief elementpropertieswidget::buildInterface
+ *build the interface of this dialog, the main tab can have
+ *different tab according to the edited element
+ */
+void elementpropertieswidget::buildInterface() {
+
+	setWindowTitle(tr("Propri\351t\351s de l'\351l\351ment"));
+	tab_ = new QTabWidget(this);
+	tab_ -> addTab(generalWidget(), tr("G\351n\351ral"));
+
+	//Add tab according to the element
+	switch (element_ -> linkType()) {
+		case Element::simple:
+			break;
+		case Element::report:
+			w = new QComboBox(this);
+			tab_ -> addTab(w, tr("Report de folio"));
+			break;
+		case Element::master:
+			break;
+		case Element::slave:
+			break;
+		case Element::bornier:
+			break;
+		default:
+			break;
+	}
+
+	dbb = new QDialogButtonBox(QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::Reset,
+							   Qt::Horizontal, this);
+	connect(dbb, SIGNAL(clicked(QAbstractButton*)), this, SLOT(standardButtonClicked(QAbstractButton*)));
+
+	QVBoxLayout *main_layout = new QVBoxLayout(this);
+	main_layout -> addWidget(tab_);
+	main_layout -> addWidget(dbb);
+	setLayout(main_layout);
 }
 
 /**
