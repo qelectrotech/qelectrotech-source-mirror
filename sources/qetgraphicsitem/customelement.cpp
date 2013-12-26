@@ -148,6 +148,12 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 	low_zoom_qp.begin(&low_zoom_drawing);
 	QPen tmp;
 	tmp.setWidthF(1.0); // ligne vaudou pour prise en compte du setCosmetic - ne pas enlever
+	// make component color reverse of back_ground color for contrast
+	QColor color(Diagram::background_color);
+	color.setBlue(255 - color.blue());
+	color.setGreen(255 - color.green());
+	color.setRed(255 - color.red());
+	tmp.setColor(color);
 	tmp.setCosmetic(true);
 	low_zoom_qp.setPen(tmp);
 	
@@ -293,6 +299,12 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	setPainterStyle(e, qp);
 	QPen t = qp.pen();
 	t.setJoinStyle(Qt::MiterJoin);
+	// make component color reverse of back_ground color for contrast
+	QColor color(Diagram::background_color);
+	color.setBlue(255 - color.blue());
+	color.setGreen(255 - color.green());
+	color.setRed(255 - color.red());
+	t.setColor(color);
 	qp.setPen(t);
 	
 	QLineF line(x1, y1, x2, y2);
@@ -397,6 +409,12 @@ bool CustomElement::parseRect(QDomElement &e, QPainter &qp) {
 	// force le type de jointures pour les rectangles
 	QPen p = qp.pen();
 	p.setJoinStyle(Qt::MiterJoin);
+	// make component color reverse of back_ground color for contrast
+	QColor color(Diagram::background_color);
+	color.setBlue(255 - color.blue());
+	color.setGreen(255 - color.green());
+	color.setRed(255 - color.red());
+	p.setColor(color);
 	qp.setPen(p);
 	
 	qp.drawRect(QRectF(rect_x, rect_y, rect_w, rect_h));
@@ -549,6 +567,13 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	QFont used_font = QETApp::diagramTextsFont(size);
 	QFontMetrics qfm(used_font);
 	QColor text_color = (e.attribute("color") != "white"? Qt::black : Qt::white);
+
+	// make component color reverse of back_ground color for contrast
+	QColor color(Diagram::background_color);
+	color.setBlue(255 - color.blue());
+	color.setGreen(255 - color.green());
+	color.setRed(255 - color.red());
+	text_color = color;
 	
 	// instancie un QTextDocument (comme la classe QGraphicsTextItem) pour
 	// generer le rendu graphique du texte
@@ -743,6 +768,13 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 	pen.setJoinStyle(Qt::BevelJoin);
 	pen.setCapStyle(Qt::SquareCap);
 	
+	// make component color reverse of back_ground color for contrast
+	QColor color(Diagram::background_color);
+	color.setBlue(255 - color.blue());
+	color.setGreen(255 - color.green());
+	color.setRed(255 - color.red());
+	pen.setColor(color);
+
 	// recupere la liste des couples style / valeur
 	QStringList styles = e.attribute("style").split(";", QString::SkipEmptyParts);
 	
@@ -796,6 +828,8 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 					pen.setColor(Qt::green);
 				}
 			}
+			// make component color reverse of back_ground color for contrast
+			pen.setColor(color);
 		}
 	}
 	

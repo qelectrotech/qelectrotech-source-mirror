@@ -21,6 +21,7 @@
 #include "borderproperties.h"
 class QCheckBox;
 class QSpinBox;
+class QPushButton;
 /**
 	This class provides a widget to edit dimensions and display properties of a
 	diagram, title block excluded.
@@ -42,6 +43,10 @@ class BorderPropertiesWidget : public QWidget {
 	bool isReadOnly() const;
 	void setReadOnly(bool);
 	void setEditedBorder(const BorderProperties &);
+
+	public slots:
+	// to choose the back_ground color of diagram.
+	void chooseColor();
 	
 	private:
 	void build();
@@ -55,5 +60,6 @@ class BorderPropertiesWidget : public QWidget {
 	QSpinBox *rows_count;           ///< Widget to edit the rows count
 	QSpinBox *rows_height;          ///< Widget to edit the rows height
 	QCheckBox *display_rows;        ///< Checkbox stating whether to display row headers
+	QPushButton *pb_background_color; ///< Push button for selecting diagram background color
 };
 #endif

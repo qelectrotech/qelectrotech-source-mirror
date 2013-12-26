@@ -77,7 +77,8 @@ class Diagram : public QGraphicsScene {
 	static const int yGrid;
 	/// margin around the diagram
 	static const qreal margin;
-	
+	/// background color of diagram
+	static QColor background_color;
 	private:
 	QGraphicsLineItem *conductor_setter_;
 	ElementsMover *elements_mover_;

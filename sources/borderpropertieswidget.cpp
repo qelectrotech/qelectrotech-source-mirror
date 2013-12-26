@@ -19,7 +19,10 @@
 #include <QtGui>
 #include "qetapp.h"
 #include "bordertitleblock.h"
-
+// added to incorporate QColor functionality and so that
+// variable Diagram::background_color is recognized in this file
+#include <QColor>
+#include "diagram.h"
 /**
 	Constructeur
 	Construit un widget editant les proprietes d'une bordure
@@ -126,6 +129,11 @@ void BorderPropertiesWidget::build() {
 	rows_height -> setSuffix(tr("px",   "unit for rows height"));
 	
 	display_rows = new QCheckBox(tr("Afficher les en-t\352tes"), diagram_size_box);
+
+	widget_layout -> addWidget(diagram_size_box);
+	// add background color field
+	QLabel *ds3 = new QLabel(tr("Couleur de fond :"));
+	pb_background_color = new QPushButton(diagram_size_box);
 	
 	// layout
 	diagram_size_box_layout -> addWidget(ds1,            0, 0);
@@ -137,6 +145,26 @@ void BorderPropertiesWidget::build() {
 	diagram_size_box_layout -> addWidget(rows_height,    1, 2);
 	diagram_size_box_layout -> addWidget(display_rows,   1, 3);
 	
-	widget_layout -> addWidget(diagram_size_box);
+	diagram_size_box_layout -> addWidget(ds3,            2, 0, 1, 2);
+	diagram_size_box_layout -> addWidget(pb_background_color, 2, 2, 1, 2);
+	// make color of pushbutton same as the present background color chosen
+	QPalette palette;
+	palette.setColor(QPalette::Button, Diagram::background_color);
+	pb_background_color -> setPalette(palette);
+
+	//build button connection
+	connect(pb_background_color, SIGNAL(clicked()), this, SLOT(chooseColor()));
 	setLayout(widget_layout);
+}
+	/**
+	Background color choose QColorDialog. Makes Diagram::background_color equal to new chosen color.
+	*/
+void BorderPropertiesWidget::chooseColor() {
+	QColor user_chosen_color = QColorDialog::getColor(Diagram::background_color);
+	if (user_chosen_color.isValid()) {
+		Diagram::background_color = user_chosen_color;
+		QPalette palette;
+		palette.setColor(QPalette::Button, Diagram::background_color);
+		pb_background_color -> setPalette(palette);
+	}
 }

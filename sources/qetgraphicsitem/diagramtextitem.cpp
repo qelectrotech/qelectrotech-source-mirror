@@ -198,6 +198,11 @@ void DiagramTextItem::setFontSize(int &s) {
 */
 void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
 	painter -> setRenderHint(QPainter::Antialiasing, false);
+	QColor color(Diagram::background_color);
+	color.setBlue(255 - color.blue());
+	color.setGreen(255 - color.green());
+	color.setRed(255 - color.red());
+	setDefaultTextColor(color);
 	QGraphicsTextItem::paint(painter, option, widget);
 }
 
