@@ -82,20 +82,16 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	QHBoxLayout *style_layout = new QHBoxLayout();
 	style_layout -> addWidget(new QLabel(tr("Style : ")), 0, Qt::AlignRight);
 	style_layout -> addWidget(line_style);
+	style_layout -> addSpacing(10);
+	style_layout -> addWidget(new QLabel(tr("\311paisseur : ")), 0, Qt::AlignRight);
+	style_layout -> addWidget(size_weight);
 	main_layout -> addLayout(style_layout);
 
-
-	QHBoxLayout *weight_layout = new QHBoxLayout();
-	weight_layout -> addWidget(new QLabel(tr("\311paisseur : ")), 0, Qt::AlignRight);
-	weight_layout -> addWidget(size_weight);
-	main_layout -> addLayout(weight_layout);
 	main_layout -> addWidget(antialiasing);
 
 	main_layout -> addSpacing(10);
 	main_layout -> addWidget(new QLabel("<u>" + tr("G\351om\351trie :") + "</u> "));
 	main_layout -> addStretch();
-
-
 	setLayout(main_layout);
 }
 
