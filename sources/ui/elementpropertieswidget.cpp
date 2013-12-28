@@ -93,8 +93,8 @@ void elementpropertieswidget::buildInterface() {
 		case Element::simple:
 			break;
 		case Element::report:
-			w = new QComboBox(this);
-			tab_ -> addTab(w, tr("Report de folio"));
+			frp_ = new FolioReportProperties(element_, this);
+			tab_ -> addTab(frp_, tr("Report de folio"));
 			break;
 		case Element::master:
 			break;

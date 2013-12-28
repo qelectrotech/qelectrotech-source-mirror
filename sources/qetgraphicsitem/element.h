@@ -56,6 +56,7 @@ class Element : public QetGraphicsItem {
 	QSize   dimensions;
 	QPoint  hotspot_coord;
 	QPixmap preview;
+	QList <Element *> connected_elements;
 	
 	// methods
 	public:
@@ -79,6 +80,7 @@ class Element : public QetGraphicsItem {
 	virtual int minTerminalsCount() const = 0;
 	/// @return the maximum number of terminals for this element
 	virtual int maxTerminalsCount() const = 0;
+	bool isFree () const;
 	/**
 		Draw this element
 	*/
@@ -130,6 +132,10 @@ class Element : public QetGraphicsItem {
 	void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
 	void updatePixmap();
 };
+
+inline bool Element::isFree() const {
+	return (connected_elements.isEmpty());
+}
 
 /**
 	Indicate whether this element allows internal connections, i.e. whether its

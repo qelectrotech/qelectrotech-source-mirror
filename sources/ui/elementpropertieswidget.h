@@ -4,6 +4,7 @@
 #include <QtGui>
 #include <qetgraphicsitem/element.h>
 #include <diagram.h>
+#include <folioreportproperties.h>
 
 class elementpropertieswidget : public QDialog
 {
@@ -27,7 +28,7 @@ class elementpropertieswidget : public QDialog
 	void editElement ();
 
 	private:
-	QWidget *w; ///this widget is only for test
+	FolioReportProperties *frp_;
 	QDialogButtonBox *dbb;
 	Element *element_;
 	Diagram *diagram_;

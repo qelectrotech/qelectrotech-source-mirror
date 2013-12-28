@@ -165,6 +165,7 @@ class Diagram : public QGraphicsScene {
 	bool isEmpty() const;
 	
 	QList<CustomElement *> customElements() const;
+	QList<Element *> elements() const;
 	QSet<DiagramTextItem *> selectedTexts() const;
 	QSet<ConductorTextItem *> selectedConductorTexts() const;
 	QSet<Conductor *> selectedConductors() const;

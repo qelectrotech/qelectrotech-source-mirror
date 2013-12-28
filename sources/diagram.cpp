@@ -936,6 +936,15 @@ QList<CustomElement *> Diagram::customElements() const {
 	return(elements_list);
 }
 
+QList <Element *> Diagram::elements() const {
+	QList<Element *> element_list;
+	foreach (QGraphicsItem *qgi, items()) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi))
+			element_list <<elmt;
+	}
+	return (element_list);
+}
+
 /**
 	Initialise un deplacement d'elements, conducteurs et champs de texte sur le
 	schema.
