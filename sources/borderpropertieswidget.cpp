@@ -133,7 +133,9 @@ void BorderPropertiesWidget::build() {
 	widget_layout -> addWidget(diagram_size_box);
 	// add background color field
 	QLabel *ds3 = new QLabel(tr("Couleur de fond :"));
-	pb_background_color = new QPushButton(diagram_size_box);
+	background_color = new QCheckBox(tr("Gris"), diagram_size_box);
+	bool isnotChecked = Diagram::background_color == Qt::white;
+	background_color -> setChecked(!isnotChecked);
 	
 	// layout
 	diagram_size_box_layout -> addWidget(ds1,            0, 0);
@@ -146,25 +148,16 @@ void BorderPropertiesWidget::build() {
 	diagram_size_box_layout -> addWidget(display_rows,   1, 3);
 	
 	diagram_size_box_layout -> addWidget(ds3,            2, 0, 1, 2);
-	diagram_size_box_layout -> addWidget(pb_background_color, 2, 2, 1, 2);
-	// make color of pushbutton same as the present background color chosen
-	QPalette palette;
-	palette.setColor(QPalette::Button, Diagram::background_color);
-	pb_background_color -> setPalette(palette);
+	diagram_size_box_layout -> addWidget(background_color, 2, 2, 1, 2);
 
 	//build button connection
-	connect(pb_background_color, SIGNAL(clicked()), this, SLOT(chooseColor()));
+	connect(background_color, SIGNAL(stateChanged(int)), this, SLOT(changeColor()));
 	setLayout(widget_layout);
 }
 	/**
 	Background color choose QColorDialog. Makes Diagram::background_color equal to new chosen color.
 	*/
-void BorderPropertiesWidget::chooseColor() {
-	QColor user_chosen_color = QColorDialog::getColor(Diagram::background_color);
-	if (user_chosen_color.isValid()) {
-		Diagram::background_color = user_chosen_color;
-		QPalette palette;
-		palette.setColor(QPalette::Button, Diagram::background_color);
-		pb_background_color -> setPalette(palette);
-	}
+void BorderPropertiesWidget::changeColor() {
+	Diagram::background_color = (background_color -> isChecked()) ? Qt::gray : Qt::white;
+
 }

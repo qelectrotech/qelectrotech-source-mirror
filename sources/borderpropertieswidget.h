@@ -46,7 +46,7 @@ class BorderPropertiesWidget : public QWidget {
 
 	public slots:
 	// to choose the back_ground color of diagram.
-	void chooseColor();
+	void changeColor();
 	
 	private:
 	void build();
@@ -60,6 +60,6 @@ class BorderPropertiesWidget : public QWidget {
 	QSpinBox *rows_count;           ///< Widget to edit the rows count
 	QSpinBox *rows_height;          ///< Widget to edit the rows height
 	QCheckBox *display_rows;        ///< Checkbox stating whether to display row headers
-	QPushButton *pb_background_color; ///< Push button for selecting diagram background color
+	QCheckBox *background_color;    ///< Checkbox for selecting diagram background color grey/white
 };
 #endif
