@@ -59,6 +59,7 @@ class DiagramTextItem : public QGraphicsTextItem {
 	QPointF mapMovementToParent(const QPointF &) const;
 	QPointF mapMovementFromParent(const QPointF &) const;
 	void setFontSize(int &s);
+	void setNoEditable(bool e = true) {no_editable = e;}
 	
 	protected:
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
@@ -82,5 +83,6 @@ class DiagramTextItem : public QGraphicsTextItem {
 	QString previous_text_;
 	/// angle of rotation of the text field
 	qreal rotation_angle_;
+	bool no_editable;
 };
 #endif

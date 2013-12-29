@@ -16,10 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "reportelement.h"
+#include "elementtextitem.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)
-{}
+{
+	texts().at(0)->setNoEditable();
+}
 
 int ReportElement::linkType() const {
 	return REPORT;

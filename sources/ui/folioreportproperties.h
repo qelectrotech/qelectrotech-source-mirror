@@ -15,10 +15,19 @@ class FolioReportProperties : public QWidget
 	public:
 	explicit FolioReportProperties(Element *elmt, QWidget *parent = 0);
 	~FolioReportProperties();
+	void BuildRadioList();
+	void Apply();
+
+	private slots:
+	void linkToElement(const int i) {element_to_link = element_list.at(i);}
 
 	private:
-	Element *element_;
+	Element *element_, *element_to_link;
+	QList <Element *> element_list;
 	Ui::FolioReportProperties *ui;
+	QSignalMapper *sm_;
+
+
 };
 
 #endif // FOLIOREPORTPROPERTIES_H

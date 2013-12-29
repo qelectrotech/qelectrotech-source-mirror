@@ -37,6 +37,7 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram)
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
+	setNoEditable(false);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
@@ -59,6 +60,7 @@ DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, Dia
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
+	setNoEditable(false);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
@@ -247,7 +249,7 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	@param event un QGraphicsSceneMouseEvent decrivant le double-clic
 */
 void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	if (!(textInteractionFlags() & Qt::TextEditable)) {
+	if (!(textInteractionFlags() & Qt::TextEditable) && !no_editable) {
 		// rend le champ de texte editable
 		setTextInteractionFlags(Qt::TextEditorInteraction);
 		

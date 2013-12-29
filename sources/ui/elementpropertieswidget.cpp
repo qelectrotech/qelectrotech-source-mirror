@@ -14,6 +14,7 @@ elementpropertieswidget::elementpropertieswidget(Element *elmt, QWidget *parent)
 	element_ (elmt),
 	diagram_ (elmt->diagram())
 {
+	frp_ = 0;
 	buildInterface();
 }
 
@@ -129,6 +130,7 @@ void elementpropertieswidget::standardButtonClicked(QAbstractButton *button) {
 		case QDialogButtonBox::ResetRole:
 			break;
 		case QDialogButtonBox::ApplyRole:
+			if (frp_) frp_->Apply();
 			this->accept();
 		case QDialogButtonBox::RejectRole:
 			this->reject();
