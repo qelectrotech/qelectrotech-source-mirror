@@ -17,11 +17,17 @@
 */
 #include "reportelement.h"
 #include "elementtextitem.h"
+#include "diagramposition.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)
 {
 	texts().at(0)->setNoEditable();
+}
+
+void ReportElement::linkToElement(Element * elmt) {
+	texts().at(0)->setPlainText(QString ("%1-%2").arg(elmt->diagram()->folioIndex() + 1)
+												 .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString()));
 }
 
 int ReportElement::linkType() const {

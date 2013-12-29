@@ -81,6 +81,7 @@ class Element : public QetGraphicsItem {
 	/// @return the maximum number of terminals for this element
 	virtual int maxTerminalsCount() const = 0;
 	bool isFree () const;
+	virtual void linkToElement(Element *) {}
 	/**
 		Draw this element
 	*/

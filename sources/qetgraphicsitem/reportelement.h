@@ -31,6 +31,7 @@ class ReportElement : public CustomElement {
 
 	public  :
 	explicit ReportElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
+	virtual void linkToElement(Element *);
 
 	virtual int linkType() const;
 
