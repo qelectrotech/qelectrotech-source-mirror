@@ -66,9 +66,5 @@ void FolioReportProperties::BuildRadioList() {
  * Apply the new properties for this folio report
  */
 void FolioReportProperties::Apply() {
-	if (element_to_link) {
-		element_to_link->linkToElement(element_);
-		element_->linkToElement(element_to_link);
-	}
-
+	if (element_to_link) element_to_link->linkToElement(element_);
 }

@@ -32,12 +32,15 @@ class ReportElement : public CustomElement {
 	public  :
 	explicit ReportElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
 	virtual void linkToElement(Element *);
-
+	virtual void unLinkAllElements();
 	virtual int linkType() const;
+
+	private:
 
 	signals:
 
-	public slots:
+	private slots:
+	void updateLabel();
 };
 
 #endif // REPORTELEMENT_H

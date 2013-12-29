@@ -51,12 +51,12 @@ class Element : public QetGraphicsItem {
 	enum { Type = UserType + 1000 };
 	
 	protected:
+	QList <Element *> connected_elements;
 	
 	private:
 	QSize   dimensions;
 	QPoint  hotspot_coord;
 	QPixmap preview;
-	QList <Element *> connected_elements;
 	
 	// methods
 	public:
@@ -82,6 +82,7 @@ class Element : public QetGraphicsItem {
 	virtual int maxTerminalsCount() const = 0;
 	bool isFree () const;
 	virtual void linkToElement(Element *) {}
+	virtual void unLinkAllElements() {}
 	/**
 		Draw this element
 	*/

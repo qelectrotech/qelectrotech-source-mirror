@@ -54,6 +54,7 @@ void QetGraphicsItem::setPos(const QPointF &p) {
 		// arrondit l'ordonnee a 10 px pres
 		int p_y = qRound(p.y() / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
 		QGraphicsItem::setPos(p_x, p_y);
+		emit positionChange(pos());
 	} else QGraphicsItem::setPos(p);
 }
 

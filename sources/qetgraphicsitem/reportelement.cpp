@@ -25,11 +25,68 @@ ReportElement::ReportElement(const ElementsLocation &location, QGraphicsItem *qg
 	texts().at(0)->setNoEditable();
 }
 
+/**
+ * @brief ReportElement::linkToElement
+ * Link this element to the other element
+ * @param elmt
+ * element to be linked with this
+ */
 void ReportElement::linkToElement(Element * elmt) {
-	texts().at(0)->setPlainText(QString ("%1-%2").arg(elmt->diagram()->folioIndex() + 1)
-												 .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString()));
+	//ensure elmt isn't already linked
+	bool i=true;
+	if (!this->isFree()){
+		if (connected_elements.first() == elmt) i = false;
+	}
+
+	//ensure elmt is a report
+	if (elmt->linkType() == REPORT && i) {
+		unLinkAllElements();
+		connected_elements << elmt;
+		connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
+		updateLabel();
+		elmt->linkToElement(this);
+	}
 }
 
+/**
+ * @brief ReportElement::unLinkAllElements
+ * Unlink all of the element in the QList connected_elements
+ */
+void ReportElement::unLinkAllElements(){
+	if (!isFree()){
+		QList <Element *> tmp_elmt = connected_elements;
+
+		foreach(Element *elmt, connected_elements) {
+			disconnect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
+		}
+		connected_elements.clear();
+		updateLabel();
+
+		foreach(Element *elmt, tmp_elmt){
+			elmt->unLinkAllElements();
+		}
+	}
+}
+
+/**
+ * @brief ReportElement::linkType
+ * @return the kind of link type
+ */
 int ReportElement::linkType() const {
 	return REPORT;
+}
+
+/**
+ * @brief ReportElement::updateLabel
+ * Update the displayed label.
+ * ie the folio and position of the linked folio report
+ */
+void ReportElement::updateLabel() {
+	if (!connected_elements.isEmpty()){
+		Element *elmt = connected_elements.at(0);
+		texts().at(0)->setPlainText(QString ("%1-%2").arg(elmt->diagram()->folioIndex() + 1)
+													 .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString()));
+	} else {
+		texts().at(0)->setPlainText("_");
+	}
 }

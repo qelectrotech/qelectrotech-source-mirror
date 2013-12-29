@@ -37,6 +37,7 @@ class QetGraphicsItem : public QGraphicsObject {
 	virtual void editProperty ()=0;
 
 	signals:
+	void positionChange(QPointF);
 
 	public slots:
 
