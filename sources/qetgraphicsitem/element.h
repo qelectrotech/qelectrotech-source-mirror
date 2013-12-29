@@ -22,21 +22,21 @@
 #include "qetgraphicsitem.h"
 class Diagram;
 class ElementTextItem;
+
+// this define is use to know the kind of element and
+// to use flag for element provider class
+#define SIMPLE 1
+#define REPORT 2
+#define MASTER 4
+#define SLAVE 8
+#define BORNIER 16
+
 /**
 	This is the base class for electrical elements.
 */
 class Element : public QetGraphicsItem {
 	
 	Q_OBJECT
-
-	public:
-	enum linkerType{
-		simple = 1,
-		report = 2,
-		master = 4,
-		slave = 8,
-		bornier = 16
-	};
 	
 	// constructors, destructor
 	public:

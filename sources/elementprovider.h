@@ -32,7 +32,7 @@ class ElementProvider
 {
 	public:
 	ElementProvider(QETProject *prj, Diagram *diagram=0);
-	QList <Element *> FreeElement(int filter);
+	QList <Element *> FreeElement(const int filter) const;
 
 	private:
 	QList <Diagram *> diag_list;

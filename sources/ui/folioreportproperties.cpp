@@ -12,14 +12,16 @@ FolioReportProperties::FolioReportProperties(Element *elmt, QWidget *parent) :
 	ui->setupUi(this);
 
 	ElementProvider ep(element_->diagram()->project(), element_->diagram());
-	QList <Element *> elmt_list = ep.FreeElement(Element::report);
+	QList <Element *> elmt_list = ep.FreeElement(REPORT);
 
 	foreach (Element *elmt, elmt_list) {
 		if (elmt != element_) {
 			QString button_text;
-			button_text += elmt->name();
-			button_text += QString(tr(" Folio\240: %1, ")).arg(elmt->diagram()->folioIndex() + 1);
-			button_text += QString(tr("Position\240: %1")).arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
+			QString title = elmt->diagram()->title();
+			if (title.isEmpty()) title = tr("Sans titre");
+			button_text += QString(tr("Folio\240 %1 (%2), position %3.")).arg(elmt->diagram()->folioIndex() + 1)
+																		  .arg(title)
+																		  .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
 
 			QRadioButton *rb = new QRadioButton(button_text , this);
 			ui->available_report_layout->addWidget(rb);

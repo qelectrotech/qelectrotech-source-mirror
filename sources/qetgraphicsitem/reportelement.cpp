@@ -22,5 +22,5 @@ ReportElement::ReportElement(const ElementsLocation &location, QGraphicsItem *qg
 {}
 
 int ReportElement::linkType() const {
-	return ReportElement::report;
+	return REPORT;
 }

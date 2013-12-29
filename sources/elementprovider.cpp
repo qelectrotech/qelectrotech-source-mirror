@@ -34,10 +34,10 @@ ElementProvider::ElementProvider(QETProject *prj, Diagram *diagram)
  * All returned element are free, ie element aren't connected with another element
  * @param filter
  * the filter for search element
- * (the filter must be the enum linkerType in Element.h)
+ * (You can find all filter with the #define in Element.h)
  * @return
  */
-QList <Element *> ElementProvider::FreeElement(int filter) {
+QList <Element *> ElementProvider::FreeElement(const int filter) const{
 	QList <Element *> free_elmt;
 
 	//serch in all diagram
