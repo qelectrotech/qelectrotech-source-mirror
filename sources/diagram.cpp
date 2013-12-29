@@ -39,7 +39,6 @@ const qreal Diagram::margin = 5.0;
 
 // static variable to keep track of present background color of the diagram.
 QColor		Diagram::background_color = Qt::white;
-
 /**
 	Constructeur
 	@param parent Le QObject parent du schema
@@ -124,16 +123,17 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	
 	// dessine un fond blanc
 	p -> setPen(Qt::NoPen);
-
 	//set brush color to present background color.
 	p -> setBrush(Diagram::background_color);
-
 	p -> drawRect(r);
 	
 	if (draw_grid_) {
-
 		// dessine les points de la grille
-		p -> setPen(Qt::black);
+		// if background color is black, then grid spots shall be white, else they shall be black in color.
+		if (Diagram::background_color == Qt::black)
+			p -> setPen(Qt::white);
+		else
+			p -> setPen(Qt::black);
 		p -> setBrush(Qt::NoBrush);
 		qreal limite_x = r.x() + r.width();
 		qreal limite_y = r.y() + r.height();
@@ -934,6 +934,15 @@ QList<CustomElement *> Diagram::customElements() const {
 		}
 	}
 	return(elements_list);
+}
+
+QList <Element *> Diagram::elements() const {
+	QList<Element *> element_list;
+	foreach (QGraphicsItem *qgi, items()) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi))
+			element_list <<elmt;
+	}
+	return (element_list);
 }
 
 /**

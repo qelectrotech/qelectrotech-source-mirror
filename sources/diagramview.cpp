@@ -652,11 +652,9 @@ void DiagramView::editDiagramProperties() {
 			/// TODO implement an undo command to allow the user to undo/redo this action
 			scene -> defaultConductorProperties = new_conductors;
 		}
-
 		// adjustSceneRect shall be called whenever the user accepts the dialog
 		// even if no changes have been made.
 		// Added so that diagram refreshes after back-ground color change.
-
 		//if (adjust_scene)
 			adjustSceneRect();
 	}

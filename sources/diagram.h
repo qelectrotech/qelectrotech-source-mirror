@@ -79,7 +79,6 @@ class Diagram : public QGraphicsScene {
 	static const qreal margin;
 	/// background color of diagram
 	static QColor background_color;
-	
 	private:
 	QGraphicsLineItem *conductor_setter_;
 	ElementsMover *elements_mover_;
@@ -166,6 +165,7 @@ class Diagram : public QGraphicsScene {
 	bool isEmpty() const;
 	
 	QList<CustomElement *> customElements() const;
+	QList<Element *> elements() const;
 	QSet<DiagramTextItem *> selectedTexts() const;
 	QSet<ConductorTextItem *> selectedConductorTexts() const;
 	QSet<Conductor *> selectedConductors() const;
