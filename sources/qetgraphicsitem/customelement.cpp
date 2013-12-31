@@ -549,7 +549,7 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	QFont used_font = QETApp::diagramTextsFont(size);
 	QFontMetrics qfm(used_font);
 	QColor text_color = (e.attribute("color") != "white"? Qt::black : Qt::white);
-
+	
 	// instancie un QTextDocument (comme la classe QGraphicsTextItem) pour
 	// generer le rendu graphique du texte
 	QTextDocument text_document;
@@ -742,7 +742,7 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 	// attributs par defaut
 	pen.setJoinStyle(Qt::BevelJoin);
 	pen.setCapStyle(Qt::SquareCap);
-
+	
 	// recupere la liste des couples style / valeur
 	QStringList styles = e.attribute("style").split(";", QString::SkipEmptyParts);
 	

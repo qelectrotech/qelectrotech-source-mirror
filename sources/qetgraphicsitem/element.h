@@ -23,13 +23,6 @@
 class Diagram;
 class ElementTextItem;
 
-// this define is use to know the kind of element and
-// to use flag for element provider class
-#define SIMPLE 1
-#define REPORT 2
-#define MASTER 4
-#define SLAVE 8
-#define BORNIER 16
 
 /**
 	This is the base class for electrical elements.
@@ -49,6 +42,15 @@ class Element : public QetGraphicsItem {
 	// attributes
 	public:
 	enum { Type = UserType + 1000 };
+	// this enum is use to know the kind of element and
+	// to use flag for element provider class
+	enum {Simple = 1,
+		  Report = 2,
+		  Master = 4,
+		  SlaveNO = 8,
+		  SlaveNC = 16,
+		  AllSlave = 24,
+		  Bornier = 32};
 	
 	protected:
 	QList <Element *> connected_elements;

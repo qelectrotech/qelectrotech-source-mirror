@@ -22,5 +22,5 @@ SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qg
 {}
 
 int SimpleElement::linkType() const {
-	return SIMPLE;
+	return Simple;
 }

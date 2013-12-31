@@ -37,7 +37,7 @@ FolioReportProperties::~FolioReportProperties()
  */
 void FolioReportProperties::BuildRadioList() {
 	ElementProvider ep(element_->diagram()->project(), element_->diagram());
-	QList <Element *> elmt_list = ep.FreeElement(REPORT);
+	QList <Element *> elmt_list = ep.FreeElement(Element::Report);
 
 	foreach (Element *elmt, elmt_list) {
 		if (elmt != element_) {

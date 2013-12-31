@@ -39,7 +39,7 @@ void ReportElement::linkToElement(Element * elmt) {
 	}
 
 	//ensure elmt is a report
-	if (elmt->linkType() == REPORT && i) {
+	if (elmt->linkType() == Report && i) {
 		unLinkAllElements();
 		connected_elements << elmt;
 		connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
@@ -73,7 +73,7 @@ void ReportElement::unLinkAllElements(){
  * @return the kind of link type
  */
 int ReportElement::linkType() const {
-	return REPORT;
+	return Report;
 }
 
 /**
