@@ -969,6 +969,7 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
 	dialog_layout -> addWidget(cpw);
 	QCheckBox *cb_apply_all = new QCheckBox(tr("Appliquer les propri\351t\351s \340 l'ensemble des conducteurs de ce potentiel"), &conductor_dialog);
+	cb_apply_all->setChecked(true);
 	dialog_layout -> addStretch();
 	dialog_layout -> addWidget(cb_apply_all);
 	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);

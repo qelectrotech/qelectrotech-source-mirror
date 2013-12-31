@@ -1335,6 +1335,14 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_li
 	if (!t_list -> contains(terminal1)) {
 		t_list -> append(terminal1);
 		QList <Conductor *> other_conductors_list_t1 = terminal1 -> conductors();
+
+		//get terminal share the same potential of terminal1
+		Terminal *t1_bis = relatedPotentialTerminal(terminal1);
+		if (t1_bis && !t_list->contains(t1_bis)) {
+			t_list -> append(t1_bis);
+			other_conductors_list_t1 += t1_bis->conductors();
+		}
+
 		other_conductors_list_t1.removeAll(this);
 		//recherche les conducteurs connecté au conducteur déjà trouvé
 		foreach (Conductor *c, other_conductors_list_t1) {
@@ -1342,10 +1350,19 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_li
 		}
 		other_conductors += other_conductors_list_t1.toSet();
 	}
+
 	//renvoie tous les conducteurs du terminal 2
 	if (!t_list -> contains(terminal2)) {
 		t_list -> append(terminal2);
 		QList <Conductor *> other_conductors_list_t2 = terminal2 -> conductors();
+
+		//get terminal share the same potential of terminal1
+		Terminal *t2_bis = relatedPotentialTerminal(terminal2);
+		if (t2_bis && !t_list->contains(t2_bis)) {
+			t_list -> append(t2_bis);
+			other_conductors_list_t2 += t2_bis->conductors();
+		}
+
 		other_conductors_list_t2.removeAll(this);
 		//recherche les conducteurs connecté au conducteur déjà trouvé
 		foreach (Conductor *c, other_conductors_list_t2) {
@@ -1357,6 +1374,21 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_li
 
 	if (declar_t_list) delete t_list;
 	return(other_conductors);
+}
+
+/**
+ * @brief Conductor::relatedPotentialTerminal
+ * find another terminal in the same electric potential of terminal @t
+ */
+Terminal * Conductor::relatedPotentialTerminal (Terminal *t) {
+	//terminal must have a folio report parent.
+	if (t->parentElement()->linkType() & Element::Report) {
+		QList <Element *> elmt_list = t->parentElement()->linkedElements();
+		if (!elmt_list.isEmpty()) {
+			return (elmt_list.first()->terminals().first());
+		}
+	}
+	return 0;
 }
 
 /**

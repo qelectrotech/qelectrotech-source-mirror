@@ -91,6 +91,7 @@ class Element : public QetGraphicsItem {
 	virtual void linkToElement(Element *) {}
 	virtual void unLinkAllElements() {}
 	void initLink(QETProject *);
+	QList<Element *> linkedElements () const;
 
 	/**
 		Draw this element
@@ -185,6 +186,10 @@ inline int Element::orientation() const {
  */
 inline QUuid Element::uuid() const {
 	return uuid_;
+}
+
+inline QList <Element *> Element::linkedElements() const {
+	return connected_elements;
 }
 
 #endif
