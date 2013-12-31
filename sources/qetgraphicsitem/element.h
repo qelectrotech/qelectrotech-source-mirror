@@ -20,6 +20,7 @@
 #include <QtGui>
 #include "terminal.h"
 #include "qetgraphicsitem.h"
+#include <QUuid>
 class Diagram;
 class ElementTextItem;
 
@@ -54,11 +55,13 @@ class Element : public QetGraphicsItem {
 	
 	protected:
 	QList <Element *> connected_elements;
+	QList <QUuid> tmp_uuids_link;
 	
 	private:
 	QSize   dimensions;
 	QPoint  hotspot_coord;
 	QPixmap preview;
+	QUuid uuid_;
 	
 	// methods
 	public:
@@ -82,9 +85,13 @@ class Element : public QetGraphicsItem {
 	virtual int minTerminalsCount() const = 0;
 	/// @return the maximum number of terminals for this element
 	virtual int maxTerminalsCount() const = 0;
+
+	// related method for link between element
 	bool isFree () const;
 	virtual void linkToElement(Element *) {}
 	virtual void unLinkAllElements() {}
+	void initLink(QETProject *);
+
 	/**
 		Draw this element
 	*/
@@ -122,6 +129,7 @@ class Element : public QetGraphicsItem {
 	static bool valideXml(QDomElement &);
 	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
 	virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
+	QUuid uuid() const;
 	
 	// orientation-related methods
 	int orientation() const;
@@ -169,6 +177,14 @@ inline void Element::setInternalConnections(bool ic) {
 */
 inline int Element::orientation() const {
 	return(QET::correctAngle(rotation())/90);
+}
+
+/**
+ * @brief Element::uuid
+ * @return the uuid of this element
+ */
+inline QUuid Element::uuid() const {
+	return uuid_;
 }
 
 #endif

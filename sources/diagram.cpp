@@ -686,6 +686,11 @@ QDomElement Diagram::writeXml(QDomDocument &xml_doc) const {
 	return(new_node.toElement());
 }
 
+void Diagram::initElementsLinks() {
+	foreach (Element *elmt, elements())
+		elmt->initLink(project());
+}
+
 /**
 	Ajoute un element sur le schema
 	@param element Element a ajouter

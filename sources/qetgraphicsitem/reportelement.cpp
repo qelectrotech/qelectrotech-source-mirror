@@ -44,6 +44,7 @@ void ReportElement::linkToElement(Element * elmt) {
 		connected_elements << elmt;
 		connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
 		updateLabel();
+		tmp_uuids_link.removeAll(elmt->uuid());
 		elmt->linkToElement(this);
 	}
 }

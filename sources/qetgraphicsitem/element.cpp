@@ -23,6 +23,7 @@
 #include "diagramcommands.h"
 #include <QtDebug>
 #include <ui/elementpropertieswidget.h>
+#include "elementprovider.h"
 
 /**
 	Constructeur pour un element sans scene ni parent
@@ -32,6 +33,7 @@ Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	internal_connections_(false),
 	must_highlight_(false)
 {
+	uuid_ = QUuid::createUuid();
 	setZValue(10);
 }
 
@@ -385,7 +387,14 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 			foreach(QDomElement input, inputs) eti -> fromXml(input);
 		}
 	}
+
+	//load uuid of connected elements
+	QList <QDomElement> uuid_list = QET::findInDomElement(e, "links_uuids", "link_uuid");
+	foreach (QDomElement qdo, uuid_list) tmp_uuids_link << qdo.attribute("uuid");
 	
+	//uuid of this element
+	uuid_= QUuid(e.attribute("uuid", QUuid::createUuid().toString()));
+
 	// position, selection
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
@@ -415,6 +424,8 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	
 	// type
 	element.setAttribute("type", typeId());
+	// uuid
+	element.setAttribute("uuid", uuid().toString());
 	
 	// position, selection et orientation
 	element.setAttribute("x", QString("%1").arg(pos().x()));
@@ -450,6 +461,30 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		inputs.appendChild(eti -> toXml(document));
 	}
 	element.appendChild(inputs);
+
+	//if this element is linked to other elements,
+	//save the uuid of each other elements
+	if (! isFree()) {
+		QDomElement links_uuids = document.createElement("links_uuids");
+		foreach (Element *elmt, connected_elements) {
+			QDomElement link_uuid = document.createElement("link_uuid");
+			link_uuid.setAttribute("uuid", elmt->uuid().toString());
+			links_uuids.appendChild(link_uuid);
+		}
+		element.appendChild(links_uuids);
+	}
 	
 	return(element);
+}
+
+// Initialise link for this element
+void Element::initLink(QETProject *prj) {
+	// if nothing to link return now
+	if (tmp_uuids_link.isEmpty()) return;
+
+	ElementProvider ep(prj);
+	foreach (Element *elmt, ep.fromUuids(tmp_uuids_link)) {
+		elmt->linkToElement(this);
+	}
+	tmp_uuids_link.clear();
 }

@@ -133,6 +133,7 @@ class Diagram : public QGraphicsScene {
 	QDomElement writeXml(QDomDocument &) const;
 	
 	// methods related to graphics items addition/removal on the diagram
+	void initElementsLinks();
 	void addElement(Element *);
 	void addConductor(Conductor *);
 	void addIndependentTextItem(IndependentTextItem *);

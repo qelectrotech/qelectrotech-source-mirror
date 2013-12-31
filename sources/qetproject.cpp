@@ -990,6 +990,11 @@ void QETProject::readDiagramsXml() {
 	foreach(Diagram *diagram, loaded_diagrams.values()) {
 		addDiagram(diagram);
 	}
+	// Initialise links between elements in this project
+	foreach (Diagram *d, diagrams()) {
+		d->initElementsLinks();
+	}
+
 	//delete dialog object
 	delete dlgWaiting;
 }

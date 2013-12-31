@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementprovider.h"
+#include "QUuid"
 
 /**
  * @brief ElementProvider::ElementProvider Constructor
@@ -51,4 +52,23 @@ QList <Element *> ElementProvider::FreeElement(const int filter) const{
 		}
 	}
 	return (free_elmt);
+}
+
+/**
+ * @brief ElementProvider::fromUuids
+ * @param uuid_list list of uuid must be found
+ * @return all elements with uuid corresponding to uuid in @uuid_list
+ */
+QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const {
+	QList <Element *> found_element;
+
+	foreach (Diagram *d, diag_list) {
+		foreach(Element *elmt, d->elements()) {
+			if (uuid_list.contains(elmt->uuid())) {
+				found_element << elmt;
+				uuid_list.removeAll(elmt->uuid());
+			}
+		}
+	}
+	return found_element;
 }
