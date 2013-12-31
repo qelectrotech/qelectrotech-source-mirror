@@ -91,17 +91,19 @@ void elementpropertieswidget::buildInterface() {
 
 	//Add tab according to the element
 	switch (element_ -> linkType()) {
-		case SIMPLE:
+		case Element::Simple:
 			break;
-		case REPORT:
+		case Element::Report:
 			frp_ = new FolioReportProperties(element_, this);
 			tab_ -> addTab(frp_, tr("Report de folio"));
 			break;
-		case MASTER:
+		case Element::Master:
 			break;
-		case SLAVE:
+		case Element::SlaveNC:
 			break;
-		case BORNIER:
+		case Element::SlaveNO:
+			break;
+		case Element::Bornier:
 			break;
 		default:
 			break;
