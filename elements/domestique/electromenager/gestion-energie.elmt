@@ -1,0 +1,27 @@
+<definition width="120" version="0.3" hotspot_x="0" hotspot_y="180" height="180" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">Gestion Énergie</name>
+    </names>
+    <informations>cbh41</informations>
+    <description>
+        <rect width="120" x="0" y="-85" antialias="false" height="85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="0" y2="-15" x2="120"/>
+        <input x="29" y="-34.5" size="7" rotate="true" text="2"/>
+        <input x="-2" y="-53.5" size="7" rotate="true" text="Coffret"/>
+        <text x="42" y="-18" size="5" text="4.5 kA C"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-45" x1="0" y2="-45" x2="120"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65" x1="0" y2="-65" x2="120"/>
+        <text x="66" y="-30" size="7" text="A"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-170" x1="0" y2="-170" x2="120"/>
+        <text x="2" y="-69" size="7" text="Gestion Énergie"/>
+        <text x="36" y="-2" size="5" text="3 G 1.5 mm²"/>
+        <arc width="6" x="57" y="-154" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <circle x="54" y="-116" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-150" x1="57" y2="-116" x2="57"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-150" x1="63" y2="-116" x2="63"/>
+        <rect width="6" x="57" y="-130" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text x="73" y="-135" size="9" text="°C"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-179" x1="60" y2="-155" x2="60"/>
+        <terminal x="60" y="-180" orientation="n"/>
+    </description>
+</definition>

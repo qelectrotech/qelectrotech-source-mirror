@@ -1,0 +1,28 @@
+<definition width="130" version="0.3" hotspot_x="6" hotspot_y="185" height="190" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="fr">Arrosage auto</name>
+    </names>
+    <informations>cbh41</informations>
+    <description>
+        <arc width="20" x="61" y="-121" antialias="true" height="20" style="line-style:dotted;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="30" x="61" y="-127" antialias="true" height="30" style="line-style:dotted;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="35" x="24.5" y="-136" antialias="true" height="30" style="line-style:dotted;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="30" x="29" y="-127" antialias="true" height="30" style="line-style:dotted;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="35" x="60.5" y="-136" antialias="true" height="30" style="line-style:dotted;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="120" x="0" y="-85" antialias="false" height="85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="0" y2="-15" x2="120"/>
+        <input x="29" y="-33" size="7" rotate="true" text="10"/>
+        <input x="-2" y="-53.5" size="7" rotate="true" text="Extérieur"/>
+        <text x="42" y="-18" size="5" text="4.5 kA C"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-45" x1="0" y2="-45" x2="120"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65" x1="0" y2="-65" x2="120"/>
+        <text x="66" y="-30" size="7" text="A"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-170" x1="0" y2="-170" x2="120"/>
+        <text x="2" y="-69" size="7" text="Arrosage auto"/>
+        <text x="36" y="-2" size="5" text="3 G 1.5 mm²"/>
+        <rect width="4" x="58" y="-110" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="20" x="39" y="-121" antialias="true" height="20" style="line-style:dotted;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="-112" x1="60" y2="-120" x2="60"/>
+        <terminal x="60" y="-180" nameHidden="0" number="" name="" orientation="n"/>
+    </description>
+</definition>
