@@ -1382,7 +1382,7 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_li
  */
 Terminal * Conductor::relatedPotentialTerminal (Terminal *t) {
 	//terminal must have a folio report parent.
-	if (t->parentElement()->linkType() & Element::Report) {
+	if (t->parentElement()->linkType() & Element::AllReport) {
 		QList <Element *> elmt_list = t->parentElement()->linkedElements();
 		if (!elmt_list.isEmpty()) {
 			return (elmt_list.first()->terminals().first());

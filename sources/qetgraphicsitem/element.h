@@ -46,12 +46,14 @@ class Element : public QetGraphicsItem {
 	// this enum is use to know the kind of element and
 	// to use flag for element provider class
 	enum {Simple = 1,
-		  Report = 2,
-		  Master = 4,
-		  SlaveNO = 8,
-		  SlaveNC = 16,
-		  AllSlave = 24,
-		  Bornier = 32};
+		  NextReport = 2,
+		  PreviousReport = 4,
+		  AllReport = 6,
+		  Master = 8,
+		  SlaveNO = 16,
+		  SlaveNC = 32,
+		  AllSlave = 48,
+		  Bornier = 64};
 	
 	protected:
 	QList <Element *> connected_elements;

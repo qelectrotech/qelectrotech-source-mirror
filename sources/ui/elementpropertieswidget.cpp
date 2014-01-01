@@ -93,7 +93,11 @@ void elementpropertieswidget::buildInterface() {
 	switch (element_ -> linkType()) {
 		case Element::Simple:
 			break;
-		case Element::Report:
+		case Element::NextReport:
+			frp_ = new FolioReportProperties(element_, this);
+			tab_ -> addTab(frp_, tr("Report de folio"));
+			break;
+		case Element::PreviousReport:
 			frp_ = new FolioReportProperties(element_, this);
 			tab_ -> addTab(frp_, tr("Report de folio"));
 			break;

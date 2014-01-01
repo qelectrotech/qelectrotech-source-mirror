@@ -36,8 +36,10 @@ FolioReportProperties::~FolioReportProperties()
  * @brief FolioReportProperties::BuildRadioList : build the radio list for each available folio report
  */
 void FolioReportProperties::BuildRadioList() {
+	//Research the invert report of @element_
+	int rep = element_->linkType() == Element::NextReport? Element::PreviousReport : Element::NextReport;
 	ElementProvider ep(element_->diagram()->project(), element_->diagram());
-	QList <Element *> elmt_list = ep.freeElement(Element::Report);
+	QList <Element *> elmt_list = ep.freeElement(rep);
 
 	foreach (Element *elmt, elmt_list) {
 		if (elmt != element_) {

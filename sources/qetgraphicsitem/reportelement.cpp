@@ -20,10 +20,12 @@
 #include "diagramposition.h"
 #include "qetproject.h"
 
-ReportElement::ReportElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
+ReportElement::ReportElement(const ElementsLocation &location, QString link_type,QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)
 {
 	texts().at(0)->setNoEditable();
+	link_type == "next_report"? link_type_=NextReport : link_type_=PreviousReport;
+	link_type == "next_report"? inverse_report=PreviousReport : inverse_report=NextReport;
 }
 
 ReportElement::~ReportElement() {
@@ -43,8 +45,8 @@ void ReportElement::linkToElement(Element * elmt) {
 		if (connected_elements.first() == elmt) i = false;
 	}
 
-	//ensure elmt is a report
-	if (elmt->linkType() == Report && i) {
+	//ensure elmt is a inverse report of this element
+	if ((elmt->linkType() == inverse_report) && i) {
 		unlinkAllElements();
 		connected_elements << elmt;
 		connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
@@ -81,7 +83,7 @@ void ReportElement::unlinkAllElements(){
  * @return the kind of link type
  */
 int ReportElement::linkType() const {
-	return Report;
+	return link_type_;
 }
 
 /**
