@@ -767,7 +767,7 @@ void Diagram::removeElement(Element *element) {
 	if (!element || isReadOnly()) return;
 	
 	// remove all links of element
-	element->unLinkAllElements();
+	element->unlinkAllElements();
 	// enleve l'element au schema
 	removeItem(element);
 	

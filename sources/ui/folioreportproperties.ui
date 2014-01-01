@@ -15,7 +15,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QHBoxLayout" name="main_H_layout">
      <item>
       <widget class="QGroupBox" name="Report_gb">
        <property name="toolTip">

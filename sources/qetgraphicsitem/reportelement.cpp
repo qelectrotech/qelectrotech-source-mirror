@@ -18,11 +18,16 @@
 #include "reportelement.h"
 #include "elementtextitem.h"
 #include "diagramposition.h"
+#include "qetproject.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)
 {
 	texts().at(0)->setNoEditable();
+}
+
+ReportElement::~ReportElement() {
+	unlinkAllElements();
 }
 
 /**
@@ -40,9 +45,10 @@ void ReportElement::linkToElement(Element * elmt) {
 
 	//ensure elmt is a report
 	if (elmt->linkType() == Report && i) {
-		unLinkAllElements();
+		unlinkAllElements();
 		connected_elements << elmt;
 		connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
+		connect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 		updateLabel();
 		tmp_uuids_link.removeAll(elmt->uuid());
 		elmt->linkToElement(this);
@@ -53,18 +59,19 @@ void ReportElement::linkToElement(Element * elmt) {
  * @brief ReportElement::unLinkAllElements
  * Unlink all of the element in the QList connected_elements
  */
-void ReportElement::unLinkAllElements(){
+void ReportElement::unlinkAllElements(){
 	if (!isFree()){
 		QList <Element *> tmp_elmt = connected_elements;
 
 		foreach(Element *elmt, connected_elements) {
 			disconnect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
+			disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 		}
 		connected_elements.clear();
 		updateLabel();
 
 		foreach(Element *elmt, tmp_elmt){
-			elmt->unLinkAllElements();
+			elmt->unlinkAllElements();
 		}
 	}
 }

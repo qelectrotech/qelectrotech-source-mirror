@@ -38,7 +38,7 @@ ElementProvider::ElementProvider(QETProject *prj, Diagram *diagram)
  * (You can find all filter with the #define in Element.h)
  * @return
  */
-QList <Element *> ElementProvider::FreeElement(const int filter) const{
+QList <Element *> ElementProvider::freeElement(const int filter) const{
 	QList <Element *> free_elmt;
 
 	//serch in all diagram

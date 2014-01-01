@@ -89,7 +89,7 @@ class Element : public QetGraphicsItem {
 	// related method for link between element
 	bool isFree () const;
 	virtual void linkToElement(Element *) {}
-	virtual void unLinkAllElements() {}
+	virtual void unlinkAllElements() {}
 	void initLink(QETProject *);
 	QList<Element *> linkedElements () const;
 
