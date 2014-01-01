@@ -1,4 +1,4 @@
-<definition width="50" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy" link_type="folio_report">
+<definition width="50" version="0.3" hotspot_x="33" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">الصفحة السابقة</name>
         <name lang="de">Vorherige Seite</name>
@@ -7,14 +7,14 @@
         <name lang="it">Foglio precedente</name>
         <name lang="fr">Folio précédent</name>
         <name lang="pl">Wejście adresowe</name>
-        <name lang="cs">Předchozí list</name>
         <name lang="es">folio anterior</name>
+        <name lang="cs">Předchozí list</name>
     </names>
     <informations></informations>
     <description>
         <polygon x4="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" closed="false" y1="-4" x1="-1" y2="4" x2="-1" y3="0" x3="9" y4="-4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="9" y2="0" x2="12"/>
-        <input x="-31" y="2.6666" size="9" rotate="true" text="/"/>
-        <terminal x="13" y="0" orientation="e"/>
+        <input x="-31" y="0" size="9" rotate="true" text="/"/>
+        <terminal x="13" y="0" nameHidden="0" number="" name="" orientation="e"/>
     </description>
 </definition>
