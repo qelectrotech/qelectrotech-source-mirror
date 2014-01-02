@@ -296,12 +296,12 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="135"/>
         <source>Couleur de fond :</source>
-        <translation type="unfinished"></translation>
+        <translation>colore di fondo:</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="136"/>
         <source>Gris</source>
-        <translation type="unfinished"></translation>
+        <translation>Grigio</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="112"/>
@@ -1790,22 +1790,22 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="28"/>
         <source>Report de folio disponible :</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimenti di pagina disponibili:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="49"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Senza titolo</translation>
+        <translation>Senza titolo</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="50"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagina  %1 (%2), Posizione %3.</translation>
     </message>
 </context>
 <context>
@@ -2412,7 +2412,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="49"/>
         <source>N° folio</source>
-        <translation>N° del Foglio</translation>
+        <translation>N° Pagina</translation>
     </message>
 </context>
 <context>
@@ -5515,12 +5515,12 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="25"/>
         <source>Folio:  </source>
-        <translation>Foglio: </translation>
+        <translation>Pagina: </translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Selezionare il foglio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Selezionare la pagina&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="55"/>
@@ -5582,7 +5582,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
         <translation>Qui è possibile definire come saranno numerati i nuovi conduttori.
--Ogni Folio può avere un proprio metodo di numerazione.
+-Ogni pagina può avere un proprio metodo di numerazione.
 -La numerazione dev&apos;essere composto da almeno una variabile.
 -È possibile aggiungere o eliminare una variabile di numerazione attraverso i tasti - e +.
 -Una variabile di numerazione comprende: tipologia, valore e incremento.
@@ -5594,7 +5594,7 @@ Se il numero specificato nel campo Valore ha meno cifre di quelle impostate, sar
 -&quot;Testo&quot; rappresenta un testo fisso.
 Il campo &quot;Incremento&quot;, in questo caso non è utilizzato.
 
--&quot;N. del foglio&quot; rappresenta il numero del foglio in cui è contenuto.
+-&quot;N. Pagina&quot; rappresenta il numero della pagina in cui è contenuto.
 Gli altri campi non sono utilizzati.</translation>
     </message>
 </context>
@@ -5690,19 +5690,19 @@ Gli altri campi non sono utilizzati.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Normale</source>
         <comment>element part weight</comment>
-        <translation>Normale</translation>
+        <translation>Normale (x1)</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Forte</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spesso (x2)</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elevato (x3)</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
@@ -6093,9 +6093,9 @@ Gli altri campi non sono utilizzati.</translation>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
-        <translation>Variabili che si possono usare nel campo Foglio:
-  - %id: numero dello schema corrente
-  - %total: numero totale degli schemi</translation>
+        <translation>Variabili che si possono usare nel campo Pagina:
+  - %id: numero della pagina corrente
+  - %total: numero totale delle pagine</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="311"/>
@@ -6165,7 +6165,7 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="387"/>
         <source>Folio : </source>
-        <translation>Foglio: </translation>
+        <translation>Pagina: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="422"/>
@@ -6314,12 +6314,12 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Per impostazione predefinita, sono disponibili le seguenti le variabili:&lt;ul&gt;&lt;li&gt;%{author} : autore del foglio&lt;/li&gt;&lt;li&gt;%{date} : data del foglio&lt;/li&gt;&lt;li&gt;%{title} : titolo del foglio&lt;/li&gt;&lt;li&gt;%{filename} : nome del file di progetto&lt;/li&gt;&lt;li&gt;%{folio} : indicazioni relative al foglio&lt;/li&gt;&lt;li&gt;%{folio-id} : numero del foglio &lt;/li&gt;&lt;li&gt;%{folio-total} : nomero totale dei fogli del progetto&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation>Per impostazione predefinita, sono disponibili le seguenti le variabili:&lt;ul&gt;&lt;li&gt;%{author} : autore della pagina&lt;/li&gt;&lt;li&gt;%{date} : data di creazione&lt;/li&gt;&lt;li&gt;%{title} : titolo della pagina&lt;/li&gt;&lt;li&gt;%{filename} : nome del file di progetto&lt;/li&gt;&lt;li&gt;%{folio} : indicazioni relative alla pagina&lt;/li&gt;&lt;li&gt;%{folio-id} : numero di pagina &lt;/li&gt;&lt;li&gt;%{folio-total} : nomero totale di pagine del progetto&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Ogni cella di un cartiglio visualizza un valore, eventualmente preceduto da un&apos;etichetta. Entrambi possono essere tradotti in diverse lingue. &lt;br/&gt; Quello che si sta modificando è un &lt;em&gt;modello&lt;/ em&gt; di cartiglio, non si può inserire direttamenti del testo, ma si utilizza una variabile nel formato %{nome_variabile}, che sarà poi sostituito dai valori appropriati nel foglio.</translation>
+        <translation>Ogni cella di un cartiglio visualizza un valore, eventualmente preceduto da un&apos;etichetta. Entrambi possono essere tradotti in diverse lingue. &lt;br/&gt; Quello che si sta modificando è un &lt;em&gt;modello&lt;/ em&gt; di cartiglio, non si può inserire direttamenti del testo, ma si utilizza una variabile nel formato %{nome_variabile}, che sarà poi sostituito dai valori appropriati nella pagina.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
@@ -6753,7 +6753,7 @@ Lunghezza massima: %2px</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="43"/>
         <source>Folio : %1
 </source>
-        <translation>Foglio: %1
+        <translation>Pagina: %1
 </translation>
     </message>
     <message>
@@ -6804,7 +6804,7 @@ Lunghezza massima: %2px</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="98"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="102"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimento di pagina</translation>
     </message>
 </context>
 <context>
@@ -6822,7 +6822,7 @@ Lunghezza massima: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Folio</source>
-        <translation>Foglio</translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
