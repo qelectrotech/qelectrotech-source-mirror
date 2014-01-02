@@ -1,6 +1,8 @@
 <definition width="120" version="0.3" hotspot_x="0" hotspot_y="180" height="180" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Earth</name>
         <name lang="fr">Terre</name>
+        <name lang="it">Terra</name>
     </names>
     <informations>cbh41</informations>
     <description>
