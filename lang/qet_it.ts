@@ -6125,7 +6125,7 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="341"/>
         <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
-        <translation>%id e %total sono disponibili come immagine-%{folio-id} e %{folio-total} (rispettivamente) per i modelli di cartigli.</translation>
+        <translation>%id e %total sono disponibili rispettivamente con %{folio-id} e %{folio-total} per i modelli dei cartigli.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="345"/>
