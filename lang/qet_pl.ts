@@ -296,12 +296,12 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="135"/>
         <source>Couleur de fond :</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolor tła :</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="136"/>
         <source>Gris</source>
-        <translation type="unfinished"></translation>
+        <translation>Szary</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="112"/>
@@ -1791,22 +1791,22 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="28"/>
         <source>Report de folio disponible :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostępne odsyłacze do stron :</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="49"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Bez tytułu</translation>
+        <translation>Bez tytułu</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="50"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished"></translation>
+        <translation>Strona  %1 (%2), pozycja %3.</translation>
     </message>
 </context>
 <context>
@@ -5707,13 +5707,13 @@ Pozostałe pola nie są używane.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Forte</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gruba</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bardzo gruba</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
@@ -6817,7 +6817,7 @@ Długość maksymalna : %2px</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="98"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="102"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Odsyłacz do strony</translation>
     </message>
 </context>
 <context>
