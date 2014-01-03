@@ -1,8 +1,9 @@
 <definition width="130" version="0.3" hotspot_x="6" hotspot_y="185" height="190" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Lighting</name>
-        <name lang="fr">Éclairage</name>
         <name lang="it">Illuminazione</name>
+        <name lang="fr">Éclairage</name>
+        <name lang="pl">Oświetlenie</name>
     </names>
     <informations>cbh41</informations>
     <description>

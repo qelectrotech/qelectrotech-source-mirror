@@ -1,8 +1,9 @@
-<definition width="290" version="0.3" hotspot_x="163" hotspot_y="55" height="150" type="element" orientation="dyyy">
+<definition width="290" version="0.3" hotspot_x="163" hotspot_y="55" height="150" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">WIT 6.2 CPU</name>
-        <name lang="fr">WIT 6.2 Unité centrale</name>
         <name lang="it">WIT 6.2 CPU</name>
+        <name lang="fr">WIT 6.2 Unité centrale</name>
+        <name lang="pl">WIT 6.2 CPU</name>
     </names>
     <informations></informations>
     <description>
@@ -67,29 +68,29 @@
         <rect width="10" x="-10" y="76" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="-120" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="-70" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="-150" y="-49" orientation="n"/>
-        <terminal x="-135" y="-49" orientation="n"/>
-        <terminal x="-115" y="-49" orientation="n"/>
-        <terminal x="-100" y="-49" orientation="n"/>
-        <terminal x="-80" y="-49" orientation="n"/>
-        <terminal x="-65" y="-49" orientation="n"/>
-        <terminal x="-45" y="-49" orientation="n"/>
-        <terminal x="-30" y="-49" orientation="n"/>
-        <terminal x="-10" y="-49" orientation="n"/>
-        <terminal x="5" y="-49" orientation="n"/>
-        <terminal x="25" y="-49" orientation="n"/>
-        <terminal x="40" y="-49" orientation="n"/>
-        <terminal x="60" y="-49" orientation="n"/>
-        <terminal x="75" y="-49" orientation="n"/>
-        <terminal x="96" y="-49" orientation="n"/>
-        <terminal x="111" y="-49" orientation="n"/>
-        <terminal x="-5" y="88" orientation="s"/>
-        <terminal x="51" y="88" orientation="s"/>
-        <terminal x="66" y="89" orientation="s"/>
-        <terminal x="8" y="88" orientation="s"/>
-        <terminal x="82" y="88" orientation="s"/>
-        <terminal x="-115" y="88" orientation="s"/>
-        <terminal x="-79.5" y="89" orientation="s"/>
-        <terminal x="-60" y="88" orientation="s"/>
+        <terminal x="-150" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-135" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-115" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-100" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-80" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-65" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-45" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-30" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="5" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="25" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="40" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="60" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="75" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="96" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="111" y="-49" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-5" y="88" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="51" y="88" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="66" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="8" y="88" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="82" y="88" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-115" y="88" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-79.5" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-60" y="88" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

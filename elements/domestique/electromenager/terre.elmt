@@ -1,8 +1,9 @@
-<definition width="120" version="0.3" hotspot_x="0" hotspot_y="180" height="180" type="element" orientation="dyyy">
+<definition width="130" version="0.3" hotspot_x="6" hotspot_y="183" height="190" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Earth</name>
-        <name lang="fr">Terre</name>
         <name lang="it">Terra</name>
+        <name lang="fr">Terre</name>
+        <name lang="pl">Uziemienie</name>
     </names>
     <informations>cbh41</informations>
     <description>
@@ -21,6 +22,6 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-130" x1="40" y2="-130" x2="80"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-120" x1="50" y2="-120" x2="70"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-110" x1="59" y2="-110" x2="61"/>
-        <terminal x="60" y="-176" orientation="n"/>
+        <terminal x="60" y="-176" nameHidden="0" number="" name="" orientation="n"/>
     </description>
 </definition>
