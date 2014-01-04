@@ -1,5 +1,6 @@
 <definition width="130" version="0.3" hotspot_x="6" hotspot_y="185" height="190" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Washing machine</name>
         <name lang="fr">Lave-Linge</name>
         <name lang="pl">Pralka</name>
     </names>

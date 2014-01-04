@@ -2,6 +2,7 @@
     <names>
         <name lang="en">IR-Rec/Dec with 4-fold PB</name>
         <name lang="it">Ric. IR/Decoder, pulsante 4 vie</name>
+        <name lang="fr">Recepteur/decodeur IR 4 sorties</name>
         <name lang="pl">Nadajnik / dekoder podczerwieni, czterokanałowy</name>
     </names>
     <informations></informations>
@@ -21,15 +22,15 @@
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="33" y2="0" x2="20"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-15" x2="20"/>
-        <terminal x="-20" y="10" number="" name="" orientation="w"/>
-        <terminal x="-20" y="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="-10" number="" name="" orientation="w"/>
-        <terminal x="33" y="0" number="" name="" orientation="e"/>
-        <terminal x="-10" y="15" number="" name="" orientation="s"/>
-        <terminal x="0" y="-15" number="" name="" orientation="n"/>
-        <terminal x="10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="-10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="0" y="15" number="" name="" orientation="s"/>
-        <terminal x="10" y="15" number="" name="" orientation="s"/>
+        <terminal x="-20" y="10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="-10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="33" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

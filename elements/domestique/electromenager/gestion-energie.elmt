@@ -1,5 +1,6 @@
 <definition width="130" version="0.3" hotspot_x="6" hotspot_y="185" height="190" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Energy management</name>
         <name lang="it">Gestione Energia</name>
         <name lang="fr">Gestion Énergie</name>
         <name lang="pl">Zarządzanie enerią</name>
@@ -8,7 +9,7 @@
     <description>
         <rect width="120" x="0" y="-85" antialias="false" height="85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="0" y2="-15" x2="120"/>
-        <input x="29" y="-34.5" size="7" rotate="true" text="2"/>
+        <input x="29" y="-33" size="7" rotate="true" text="2"/>
         <input x="-2" y="-53.5" size="7" rotate="true" text="Coffret"/>
         <text x="42" y="-18" size="5" text="4.5 kA C"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-45" x1="0" y2="-45" x2="120"/>

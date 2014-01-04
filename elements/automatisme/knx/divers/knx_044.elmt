@@ -2,6 +2,7 @@
     <names>
         <name lang="en">IR Decoder</name>
         <name lang="it">Decoder IR</name>
+        <name lang="fr">Decodeur IR</name>
         <name lang="pl">Dekoder podczerwieni</name>
     </names>
     <informations></informations>
@@ -15,17 +16,17 @@
         <polygon x4="7" y5="-10" x5="7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="2" x1="-7" y2="2" x2="0" y3="-10" x3="0" y4="-10"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-18" y2="-12" x2="-15" y3="-9" x3="-12"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
-        <terminal x="-20" y="10" number="" name="" orientation="w"/>
-        <terminal x="-20" y="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="-10" number="" name="" orientation="w"/>
-        <terminal x="20" y="0" number="" name="" orientation="e"/>
-        <terminal x="20" y="10" number="" name="" orientation="e"/>
-        <terminal x="20" y="-10" number="" name="" orientation="e"/>
-        <terminal x="-10" y="15" number="" name="" orientation="s"/>
-        <terminal x="0" y="-15" number="" name="" orientation="n"/>
-        <terminal x="10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="-10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="0" y="15" number="" name="" orientation="s"/>
-        <terminal x="10" y="15" number="" name="" orientation="s"/>
+        <terminal x="-20" y="10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="-10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="20" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="20" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

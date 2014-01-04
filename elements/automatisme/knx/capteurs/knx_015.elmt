@@ -3,6 +3,7 @@
         <name lang="el">Αισθητήρας Κίνησης</name>
         <name lang="en">Movement sensor</name>
         <name lang="it">Sensore infrarosso</name>
+        <name lang="fr">capteur de mouvements</name>
         <name lang="pl">Czujnik ruchu (pasywny czujnik podczerwieni)</name>
     </names>
     <informations></informations>

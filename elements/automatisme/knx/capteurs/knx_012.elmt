@@ -3,6 +3,7 @@
         <name lang="el">Αισθητήρας θερμοκρασίας</name>
         <name lang="en">Temperature sensor</name>
         <name lang="it">Sensore di temperatura</name>
+        <name lang="fr">Capteur de temperature</name>
         <name lang="pl">Czujnik temperatury</name>
     </names>
     <informations></informations>

@@ -2,6 +2,7 @@
     <names>
         <name lang="en">Binary Output/IR-Rec.-Dec.</name>
         <name lang="it">Uscita digitale + Ric. IR/Decoder</name>
+        <name lang="fr">Recepteur/Decodeur sortie numerique</name>
         <name lang="pl">Wyjście cyfrowe + nadajnik / dekoder podczerwieni</name>
     </names>
     <informations></informations>
@@ -23,19 +24,19 @@
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="63" y2="0" x2="50"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="20" y2="-15" x2="50"/>
-        <terminal x="-20" y="10" number="" name="" orientation="w"/>
-        <terminal x="-20" y="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="-10" number="" name="" orientation="w"/>
-        <terminal x="63" y="0" number="" name="" orientation="e"/>
-        <terminal x="30" y="-15" number="" name="" orientation="n"/>
-        <terminal x="30" y="15" number="" name="" orientation="s"/>
-        <terminal x="-10" y="15" number="" name="" orientation="s"/>
-        <terminal x="0" y="-15" number="" name="" orientation="n"/>
-        <terminal x="10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="-10" y="-15" number="" name="" orientation="n"/>
-        <terminal x="0" y="15" number="" name="" orientation="s"/>
-        <terminal x="10" y="15" number="" name="" orientation="s"/>
-        <terminal x="40" y="-15" number="" name="" orientation="n"/>
-        <terminal x="40" y="15" number="" name="" orientation="s"/>
+        <terminal x="-20" y="10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-20" y="-10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="63" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="30" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="30" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="40" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="40" y="15" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

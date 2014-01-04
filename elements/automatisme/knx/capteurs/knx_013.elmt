@@ -1,8 +1,9 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="24" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Αισθητήρας ταχύτητας ανέμου</name>
         <name lang="en">Wind speed sensor</name>
         <name lang="it">Sensore anemometro</name>
+        <name lang="fr">Capteur vitesse vent</name>
         <name lang="pl">Czujnik prędkości wiatru</name>
     </names>
     <informations></informations>
