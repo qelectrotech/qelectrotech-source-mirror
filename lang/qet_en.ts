@@ -296,12 +296,12 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="135"/>
         <source>Couleur de fond :</source>
-        <translation type="unfinished"></translation>
+        <translation>Background.:</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="136"/>
         <source>Gris</source>
-        <translation type="unfinished"></translation>
+        <translation>Gray</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="112"/>
@@ -1791,22 +1791,22 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="28"/>
         <source>Report de folio disponible :</source>
-        <translation type="unfinished"></translation>
+        <translation>Report folio available:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="49"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Untitled</translation>
+        <translation>Untitled</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="50"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished"></translation>
+        <translation>Folio  %1 (%2), position %3.</translation>
     </message>
 </context>
 <context>
@@ -5238,8 +5238,8 @@ Que désirez vous faire ?</source>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>%n picture(s)</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n.picture</numerusform>
+            <numerusform>%n.pictures</numerusform>
         </translation>
     </message>
     <message>
@@ -5698,13 +5698,13 @@ The other fields are not used.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Forte</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Strong</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hight</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
@@ -6808,7 +6808,7 @@ Maximum width: %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="98"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="102"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Report folio</translation>
     </message>
 </context>
 <context>
