@@ -5021,7 +5021,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="831"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
-        <translation>Przywrócenie %1</translation>
+        <translation>przywrócenie %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="869"/>
