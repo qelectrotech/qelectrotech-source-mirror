@@ -72,7 +72,7 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		painter -> setRenderHint(QPainter::Antialiasing,          false);
 		painter -> setRenderHint(QPainter::TextAntialiasing,      false);
 		painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
-		// Dessin du cadre de selection en noir a partir du boundingrect
+        // Dessin du cadre de selection en noir à partir du boundingrect
 		QPen t(Qt::black);
 		t.setStyle(Qt::DashLine);
 		painter -> setPen(t);
