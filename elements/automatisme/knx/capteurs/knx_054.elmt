@@ -3,6 +3,7 @@
         <name lang="el">Ααισθητήρας (Φωτ., Υπέρ.), διπλός</name>
         <name lang="en">Sensor (Brightn., PIR), 2-fold</name>
         <name lang="it">Sensore (lumin., IR), 2 vie</name>
+        <name lang="fr">Capteur capteur de lumière / de mouvement, deux canaux</name>
         <name lang="pl">Czujnik natężenia oświetlenia / czujnik ruchu, dwukanałowy</name>
     </names>
     <informations></informations>

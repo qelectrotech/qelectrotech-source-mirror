@@ -3,6 +3,7 @@
         <name lang="el">Ψηφιακή/Αναλογική είσοδος, μικτή</name>
         <name lang="en">Binary/Analog input, mix</name>
         <name lang="it">Ingresso digitale/analogico, misto</name>
+        <name lang="fr">Variateur analogique-numérique</name>
         <name lang="pl">Wejście analogowo-cyfrowe, symbol ogólny</name>
     </names>
     <informations></informations>

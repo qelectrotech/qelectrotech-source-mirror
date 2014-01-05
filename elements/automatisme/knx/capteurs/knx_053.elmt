@@ -3,6 +3,7 @@
         <name lang="el">Ααισθητήρας (Φωτ., Υπέρ.), μονός</name>
         <name lang="en">Sensor (Brightn., PIR), single</name>
         <name lang="it">Sensore (lumin., IR), 1 via</name>
+        <name lang="fr">Capteur capteur de lumière / de mouvement</name>
         <name lang="pl">Czujnik natężenia oświetlenia / czujnik ruchu</name>
     </names>
     <informations></informations>
