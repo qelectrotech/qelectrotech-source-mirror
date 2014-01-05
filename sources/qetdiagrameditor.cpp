@@ -119,7 +119,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	
 	// connexions signaux / slots pour une interface sensee
 	connect(&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slot_updateWindowsMenu()));
-	connect(&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slot_updateActions()));
+	connect(&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slot_updateUndoStack()));
 	connect(QApplication::clipboard(), SIGNAL(dataChanged()),              this, SLOT(slot_updatePasteAction()));
 	
 	// lecture des parametres
@@ -1158,21 +1158,22 @@ void QETDiagramEditor::slot_updateActions() {
 	prj_nomenclature  -> setVisible(false);
 #endif
 	
-	// affiche les actions correspondant au diagram view en cours
-	if (dv) {
-		if (can_update_actions) {
-			undo_group.setActiveStack(&(dv -> diagram() -> undoStack()));
-			undo -> setEnabled(undo_group.canUndo());
-			redo -> setEnabled(undo_group.canRedo());
-		}
-	} else {
-		undo -> setEnabled(false);
-		redo -> setEnabled(false);
-	}
-	
 	slot_updateModeActions();
 	slot_updatePasteAction();
 	slot_updateComplexActions();
+}
+
+/**
+ * @brief QETDiagramEditor::slot_updateUndoStack
+ * Update the undo stack view
+ */
+void QETDiagramEditor::slot_updateUndoStack() {
+	ProjectView *pv = currentProject();
+	if (pv && can_update_actions) {
+		undo_group.setActiveStack(pv->project()->undoStack());
+		undo -> setEnabled(undo_group.canUndo());
+		redo -> setEnabled(undo_group.canRedo());
+	}
 }
 
 /**
@@ -1821,6 +1822,7 @@ void QETDiagramEditor::diagramIsAboutToBeRemoved(DiagramView *dv) {
 void QETDiagramEditor::diagramWasRemoved(DiagramView *dv) {
 	Q_UNUSED(dv);
 	can_update_actions = true;
+	slot_updateUndoStack();
 }
 
 /**

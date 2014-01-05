@@ -88,7 +88,6 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(pare
 	connect(&(scene -> border_and_titleblock), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
 	connect(&(scene -> border_and_titleblock), SIGNAL(displayChanged()),              this, SLOT(adjustSceneRect()));
 	connect(&(scene -> border_and_titleblock), SIGNAL(diagramTitleChanged(const QString &)), this, SLOT(updateWindowTitle()));
-	connect(&(scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(updateWindowTitle()));
 	connect(diagram, SIGNAL(editElementRequired(ElementsLocation)), this, SIGNAL(editElementRequired(ElementsLocation)));
 	connect(diagram, SIGNAL(findElementRequired(ElementsLocation)), this, SIGNAL(findElementRequired(ElementsLocation)));
 	
@@ -772,19 +771,7 @@ void DiagramView::adjustSceneRect() {
 	Met a jour le titre du widget
 */
 void DiagramView::updateWindowTitle() {
-	QString view_title(title());
-	
-	// verifie si le document a ete modifie
-	bool modified_diagram = !(scene -> undoStack().isClean());
-	
-	// specifie le titre du widget
-	setWindowTitle(view_title + " [*]");
-	setWindowModified(modified_diagram);
-	
-	// emet le signal titleChanged en ajoutant manuellement [*] si le schema a ete modifie
-	QString emitted_title = view_title;
-	if (modified_diagram) emitted_title += " [*]";
-	emit(titleChanged(this, emitted_title));
+	emit(titleChanged(this, title()));
 }
 
 /**

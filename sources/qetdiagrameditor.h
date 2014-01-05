@@ -111,6 +111,7 @@ class QETDiagramEditor : public QETMainWindow {
 	void slot_setSelectionMode();
 	void slot_setVisualisationMode();
 	void slot_updateActions();
+	void slot_updateUndoStack();
 	void slot_updateModeActions();
 	void slot_updateComplexActions();
 	void slot_updatePasteAction();

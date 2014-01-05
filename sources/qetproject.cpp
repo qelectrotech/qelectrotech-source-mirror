@@ -62,6 +62,9 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	// une categorie dediee aux elements integres automatiquement
 	ensureIntegrationCategoryExists();
 	setupTitleBlockTemplatesCollection();
+
+	undo_stack_ = new QUndoStack();
+	connect(undo_stack_, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
 }
 
 /**
@@ -102,6 +105,9 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	if (!project_file_info.isWritable()) {
 		setReadOnly(true);
 	}
+
+	undo_stack_ = new QUndoStack();
+	connect(undo_stack_, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
 }
 
 /**
@@ -123,6 +129,9 @@ QETProject::QETProject(const QDomElement &xml_element, QObject *parent) :
 	readProjectXml();
 	
 	setupTitleBlockTemplatesCollection();
+
+	undo_stack_ = new QUndoStack();
+	connect(undo_stack_, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
 }
 
 /**
@@ -145,6 +154,7 @@ QETProject::~QETProject() {
 		delete diagram;
 	}
 	// qDebug() << diagrams_;
+	delete undo_stack_;
 }
 
 /**

@@ -118,6 +118,7 @@ class QETProject : public QObject {
 	bool diagramsWereModified();
 	DiagramContext projectProperties();
 	void setProjectProperties(const DiagramContext &);
+	QUndoStack* undoStack() {return undo_stack_;}
 	
 	public slots:
 	void componentWritten();
@@ -143,6 +144,7 @@ class QETProject : public QObject {
 	void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 	void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 	void usedTitleBlockTemplateChanged(const QString &);
+	void undoStackChanged (bool a) {if (!a) setModified(true);}
 	
 	private:
 	void setupTitleBlockTemplatesCollection();
@@ -193,6 +195,8 @@ class QETProject : public QObject {
 	TitleBlockTemplatesProjectCollection titleblocks_;
 	/// project-wide variables that will be made available to child diagrams
 	DiagramContext project_properties_;
+	/// undo stack for this project
+	QUndoStack *undo_stack_;
 };
 Q_DECLARE_METATYPE(QETProject *)
 #endif

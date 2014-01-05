@@ -176,9 +176,9 @@ bool ProjectView::tryClosing() {
 	//   - or specify what is to be saved, i.e. they choose whether they wants to
 	// save/give up/remove diagrams considered as modified.
 	int user_input = tryClosingDiagrams();
-	if (user_input == QDialogButtonBox::RejectRole) {
+	if (user_input == QMessageBox::Cancel) {
 		return(false); // the closing process was cancelled
-	} else if (user_input == QDialogButtonBox::DestructiveRole) {
+	} else if (user_input == QMessageBox::Discard) {
 		return(true); // all modifications were discarded
 	}
 	
@@ -222,55 +222,34 @@ bool ProjectView::tryClosingElementEditors() {
 }
 
 /**
-	Un projet comporte 0 a n schemas.
-	Cette methode parcourt les schemas et demande a l'utilisateur s'il veut
-	enregistrer les schemas modifies afin de les fermer. L'utilisateur peut
-	refuser la fermeture d'un schema.
-	Si un schema a ete ajoute sans jamais etre modifie, cette methode demande a
-	l'utilisateur s'il souhaite l'enlever.
-	@return true si tous les schemas peuvent etre fermes, false sinon
-*/
+ * @brief ProjectView::tryClosingDiagrams
+ * try to close this project, if diagram or project option are changed
+ * a dialog ask if user want to save the modification.
+ * @return the answer of dialog or discard if no change.
+ */
 int ProjectView::tryClosingDiagrams() {
-	if (!project_) return(QDialogButtonBox::DestructiveRole);
-	
-	bool project_modified = project_ -> projectOptionsWereModified();
-	QList<Diagram *> modified_diagrams = getDiagrams(AllDiagrams | ModifiedDiagramsOnly);
-	bool has_filepath = !project_ -> filePath().isEmpty();
-	if (!project_modified && !modified_diagrams.count() && has_filepath) {
+	if (!project_) return(QMessageBox::Discard);
+
+	if (!project()->projectOptionsWereModified() &&
+		project()->undoStack()->isClean() &&
+		!project()->filePath().isEmpty()) {
 		// nothing was modified, and we have a filepath, i.e. everything was already
 		// saved, i.e we can close the project right now
-		return(QDialogButtonBox::DestructiveRole);
+		return(QMessageBox::Discard);
+	}
+
+	int close_dialog = QMessageBox::question(this, project()->title(),
+								   tr("Le projet \340 \351t\351 modifi\351.\n"
+									  "Voulez-vous enregistrer les modifications ?"),
+								   QMessageBox::Save | QMessageBox::Discard
+								   | QMessageBox::Cancel,
+								   QMessageBox::Save);
+
+	if (close_dialog == QMessageBox::Save) {
+		saveDiagrams(project()->diagrams());
 	}
 	
-	CloseDiagramsDialog close_dialog(modified_diagrams, this);
-	if (!project_ -> title().isEmpty()) {
-		close_dialog.setWindowTitle(
-			QString(
-				tr(
-					"Fermer le projet \"%1\"",
-					"project closing dialog title -- %1 is a project title"
-				)
-			).arg(project_ -> title())
-		);
-	}
-	connect(&close_dialog, SIGNAL(showDiagram(Diagram*)), this, SLOT(showDiagram(Diagram*)));
-	if (close_dialog.exec() == QDialog::Rejected) {
-		return(QDialogButtonBox::RejectRole);
-	}
-	
-	if (close_dialog.answer() == QDialogButtonBox::AcceptRole) {
-		// save diagrams the user marked as to be saved
-		QList<Diagram *> to_save = close_dialog.diagramsByAction(CloseDiagramsDialog::Save);
-		saveDiagrams(to_save);
-		
-		// remove diagrams the user marked as to be removed
-		QList<Diagram *> to_close = close_dialog.diagramsByAction(CloseDiagramsDialog::Remove);
-		foreach (Diagram *diagram, to_close) {
-			removeDiagram(diagram);
-		}
-	}
-	
-	return(close_dialog.answer());
+	return(close_dialog);
 }
 
 /**
@@ -558,7 +537,7 @@ void ProjectView::exportProject() {
 	@return a QETResult object reflecting the situation
 */
 QETResult ProjectView::save() {
-	return(doSave(AllDiagrams | ModifiedDiagramsOnly));
+	return(doSave(AllDiagrams));
 }
 
 /**
@@ -607,6 +586,7 @@ QETResult ProjectView::doSave(ProjectSaveOptions options) {
 	// write to file
 	QETResult result = project_ -> write();
 	updateWindowTitle();
+	if (options == AllDiagrams) project()->undoStack()->clear();
 	return(result);
 }
 

@@ -25,6 +25,7 @@
 #include "exportproperties.h"
 #include "qgimanager.h"
 #include "numerotationcontext.h"
+#include "qetproject.h"
 
 class Conductor;
 class CustomElement;
@@ -86,7 +87,6 @@ class Diagram : public QGraphicsScene {
 	bool draw_grid_;
 	bool use_border_;
 	QGIManager *qgi_manager_;
-	QUndoStack *undo_stack_;
 	bool draw_terminals_;
 	bool draw_colored_conductors_;
 	QDomDocument xml_document_;
@@ -323,7 +323,7 @@ inline Diagram::BorderOptions Diagram::borderOptions() {
 
 /// @return the diagram undo stack
 inline QUndoStack &Diagram::undoStack() {
-	return(*undo_stack_);
+	return *(project()->undoStack());
 }
 
 /// @return the diagram graphics item manager

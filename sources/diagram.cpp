@@ -53,7 +53,6 @@ Diagram::Diagram(QObject *parent) :
 	read_only_(false),
 	diagram_qet_version_(-1)
 {
-	undo_stack_ = new QUndoStack();
 	qgi_manager_ = new QGIManager(this);
 	setBackgroundBrush(Qt::white);
 	conductor_setter_ = new QGraphicsLineItem(0, 0);
@@ -83,8 +82,8 @@ Diagram::Diagram(QObject *parent) :
 	Destructeur
 */
 Diagram::~Diagram() {
-	// suppression de la liste des annulations - l'undo stack fait appel au qgimanager pour supprimer certains elements
-	delete undo_stack_;
+	// clear undo stack to prevent errors, because contains pointers to this diagram and is elements.
+	undoStack().clear();
 	// suppression du QGIManager - tous les elements qu'il connait sont supprimes
 	delete qgi_manager_;
 	// remove of conductor setter
@@ -651,7 +650,6 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 void Diagram::write() {
 	qDebug() << qPrintable(QString("Diagram::write() : saving changes from diagram \"%1\" [%2]").arg(title()).arg(QET::pointerString(this)));
 	write(toXml().documentElement());
-	undoStack().setClean();
 }
 
 /**
@@ -828,7 +826,7 @@ void Diagram::titleChanged(const QString &title) {
 */
 void Diagram::diagramTextChanged(DiagramTextItem *text_item, const QString &old_text, const QString &new_text) {
 	if (!text_item) return;
-	undo_stack_ -> push(new ChangeDiagramTextCommand(text_item, old_text, new_text));
+	undoStack().push(new ChangeDiagramTextCommand(text_item, old_text, new_text));
 }
 
 /**
