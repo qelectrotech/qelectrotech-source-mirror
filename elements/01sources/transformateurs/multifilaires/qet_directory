@@ -1,6 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="en">Multiconductor</name>
-        <name lang="fr">Multifilaires</name>
+        <name lang="de">Mehradrig</name>
+        <name lang="ru">Многолинейные</name>
+        <name lang="pt">Multifilar</name>
+        <name lang="en">Multiline</name>
+        <name lang="it">Multifilari</name>
+        <name lang="fr">Multifilaire</name>
+        <name lang="ar">متعددة الأسلاك</name>
+        <name lang="pl">Schemat wielokreskowyowy</name>
+        <name lang="es">Multihilo</name>
+        <name lang="cs">Několik vedení</name>
     </names>
 </qet-directory>

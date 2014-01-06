@@ -1,7 +1,13 @@
 <definition width="70" version="0.3" hotspot_x="27" hotspot_y="45" height="90" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">Transformateur triphasé, couplage étoile-étoile-triangle</name>
-        <name lang="pl">Transformator trójfazowy Yyd (forma 1)</name>
+        <name lang="ar">مُحوّل ثلاثي الأوجه بملفات ثانوية مزدوجة نجمي-نجمي-مثلثي</name>
+        <name lang="de">Drehstromtransformator, Stern/Stern/Dreieckschaltung</name>
+        <name lang="el">Μετασχηματιστής με 2 δευτερεύοντα αστέρας-αστέρας-τρίγωνο</name>
+        <name lang="en">Transformateur 2 secondaires étoile-étoile-triangle</name>
+        <name lang="it">Trasformatore trifase a tre avvolgi- menti, collegamento stella-stel- la-triangolo</name>
+        <name lang="fr">Transformateur 2 secondaires étoile-étoile-triangle</name>
+        <name lang="pl">Transformator trójuzwojeniowy</name>
+        <name lang="cs">Třífázový transformátor, hvězda-hvězda, trojúhelníkové zapojení</name>
     </names>
     <informations></informations>
     <description>
