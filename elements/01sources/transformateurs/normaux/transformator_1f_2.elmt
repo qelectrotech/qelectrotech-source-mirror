@@ -1,6 +1,11 @@
 <definition width="40" version="0.3" hotspot_x="16" hotspot_y="25" height="40" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="pl">Transformator (forma 2)</name>
+        <name lang="el">Μετασχηματιστής δυο τυλιγμάτων</name>
+        <name lang="en">Two winding transformer</name>
+        <name lang="it">Trasformatore</name>
+        <name lang="fr">Transformateur à deux enroulements</name>
+        <name lang="pl">Transformator</name>
+        <name lang="cs">Transformátor</name>
     </names>
     <informations></informations>
     <description>
