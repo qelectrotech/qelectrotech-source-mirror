@@ -1,6 +1,16 @@
 <definition width="70" version="0.3" hotspot_x="27" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="pl">Transformator (forma 1)</name>
+        <name lang="ar">محوّل ثلاثي الأوجه</name>
+        <name lang="de">Trafo Drehstrom</name>
+        <name lang="ru">Трёхфазный трансформатор</name>
+        <name lang="pt">Transformador trifásico</name>
+        <name lang="el">Τριφασικός μετασχηματιστής</name>
+        <name lang="en">Three-phase transducer</name>
+        <name lang="it">Trasformatore trifase</name>
+        <name lang="fr">Transformateur triphasé</name>
+        <name lang="pl">Transformator trójfazowy</name>
+        <name lang="es">Transformador trifásico</name>
+        <name lang="cs">Třífázový transformátor</name>
     </names>
     <informations></informations>
     <description>

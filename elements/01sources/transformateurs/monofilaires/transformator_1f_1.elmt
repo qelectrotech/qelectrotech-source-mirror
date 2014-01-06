@@ -1,6 +1,15 @@
 <definition width="50" version="0.3" hotspot_x="17" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="pl">Transformator (forma 1)</name>
+        <name lang="ar">محوّل أحادي الوجه</name>
+        <name lang="de">Trafo Wechselstrom</name>
+        <name lang="ru">Однофазный трансформатор</name>
+        <name lang="pt">Transformador monofásico</name>
+        <name lang="en">Single phase transducer</name>
+        <name lang="it">Trasformatore monofase</name>
+        <name lang="fr">Transformateur monophasé</name>
+        <name lang="pl">Transformator jednofazowy</name>
+        <name lang="es">Transformador monofásica</name>
+        <name lang="cs">Jednofázový transformátor</name>
     </names>
     <informations></informations>
     <description>
