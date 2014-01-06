@@ -111,6 +111,7 @@ class Diagram : public QGraphicsScene {
 	void setProject(QETProject *);
 	int folioIndex() const;
 	qreal declaredQElectroTechVersion(bool = true) const;
+	void showMe() {emit showDiagram(this);}
 	
 	// methods related to read only mode
 	bool isReadOnly() const;
@@ -198,6 +199,7 @@ class Diagram : public QGraphicsScene {
 	void invertSelection();
 	
 	signals:
+	void showDiagram (Diagram *);
 	void written();
 	void readOnlyChanged(bool);
 	void usedTitleBlockTemplateChanged(const QString &);

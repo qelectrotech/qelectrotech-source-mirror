@@ -322,6 +322,7 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 	QString text_after;
 	/// prevent the first call to redo()
 	bool first_redo;
+	Diagram *diagram;
 };
 
 /**
@@ -352,6 +353,7 @@ class RotateElementsCommand : public QUndoCommand {
 	qreal applied_rotation_angle_;
 	/// previous state of each conductor text item
 	QHash<ConductorTextItem *, bool> previous_rotate_by_user_;
+	Diagram *diagram;
 };
 
 /**
@@ -383,6 +385,7 @@ class RotateTextsCommand : public QUndoCommand {
 	double applied_rotation_angle_;
 	/// previous state of each conductor text item
 	QHash<ConductorTextItem *, bool> previous_rotate_by_user_;
+	Diagram *diagram;
 };
 
 /**
@@ -418,6 +421,7 @@ class ChangeConductorCommand : public QUndoCommand {
 	QPointF text_pos_after_mov_;
 	/// prevent the first call to redo()
 	bool first_redo;
+	Diagram *diagram;
 };
 
 /**
@@ -440,6 +444,7 @@ class ResetConductorCommand : public QUndoCommand {
 	private:
 	/// impacted conductors along with their former profiles
 	QHash<Conductor *, ConductorProfilesGroup> conductors_profiles;
+	Diagram *diagram;
 };
 
 /**
@@ -525,6 +530,7 @@ class ChangeConductorPropertiesCommand : public QUndoCommand {
 	bool old_settings_set;
 	/// track whether post-change properties were set
 	bool new_settings_set;
+	Diagram *diagram;
 };
 
 /**
@@ -533,7 +539,7 @@ class ChangeConductorPropertiesCommand : public QUndoCommand {
 class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	ChangeSeveralConductorsPropertiesCommand(QSet<Conductor *>, QUndoCommand * = 0);
+	ChangeSeveralConductorsPropertiesCommand(QList<Conductor *>, QUndoCommand * = 0);
 	virtual ~ChangeSeveralConductorsPropertiesCommand();
 	private:
 	ChangeSeveralConductorsPropertiesCommand(const ChangeSeveralConductorsPropertiesCommand &);
@@ -549,7 +555,7 @@ class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
 	// attributes
 	private:
 	/// modified conductor
-	QSet<Conductor *> conductors;
+	QList<Conductor *> conductors;
 	/// properties before the change
 	QList <ConductorProperties> old_properties;
 	/// properties after the change
@@ -560,6 +566,7 @@ class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
 	bool old_settings_set;
 	/// track whether post-change properties were set
 	bool new_settings_set;
+	Diagram *diagram;
 };
 
 class ImageResizerCommand : public QUndoCommand {
@@ -577,6 +584,7 @@ class ImageResizerCommand : public QUndoCommand {
 	private:
 	DiagramImageItem *image_;
 	qreal old_size, new_size;
+	Diagram *diagram;
 };
 
 #endif

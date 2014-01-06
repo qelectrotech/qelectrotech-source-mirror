@@ -83,6 +83,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(pare
 	paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);
 	connect(paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
 	
+	connect(scene, SIGNAL(showDiagram(Diagram*)), this, SIGNAL(showDiagram(Diagram*)));
 	connect(scene, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
 	connect(scene, SIGNAL(readOnlyChanged(bool)), this, SLOT(applyReadOnly()));
 	connect(&(scene -> border_and_titleblock), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
@@ -973,7 +974,7 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 
 		if (new_properties != old_properties) {
 				if (cb_apply_all -> isChecked()) {
-					QSet <Conductor *> conductorslist = edited_conductor -> relatedPotentialConductors();
+					QList <Conductor *> conductorslist = edited_conductor -> relatedPotentialConductors().toList();
 					conductorslist << edited_conductor;
 					QList <ConductorProperties> old_properties_list;
 

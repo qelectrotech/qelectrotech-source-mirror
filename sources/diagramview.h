@@ -131,6 +131,8 @@ class DiagramView : public QGraphicsView {
 	void ImageAdded(bool);
 	/// Signal emmitted fater windows selection image have been canceled
 	void ImageAddedCanceled(bool);
+	/// Signal emmitted when diagram must be show
+	void showDiagram (Diagram *);
 	
 	public slots:
 	void selectNothing();

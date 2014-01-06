@@ -318,6 +318,7 @@ void ProjectView::addDiagram(DiagramView *diagram) {
 	diagram -> setFrameStyle(QFrame::Plain | QFrame::NoFrame);
 	diagrams_ << diagram;
 	rebuildDiagramsMap();
+	connect(diagram, SIGNAL(showDiagram(Diagram*)), this, SLOT(showDiagram(Diagram*)));
 	connect(diagram, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *, const QString &)));
 	connect(diagram, SIGNAL(findElementRequired(const ElementsLocation &)), this, SIGNAL(findElementRequired(const ElementsLocation &)));
 	connect(diagram, SIGNAL(editElementRequired(const ElementsLocation &)), this, SIGNAL(editElementRequired(const ElementsLocation &)));

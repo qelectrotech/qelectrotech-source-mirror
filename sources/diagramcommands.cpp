@@ -55,11 +55,13 @@ AddElementCommand::~AddElementCommand() {
 
 /// Annule l'ajout
 void AddElementCommand::undo() {
+	diagram->showMe();
 	diagram -> removeElement(element);
 }
 
 /// Refait l'ajout
 void AddElementCommand::redo() {
+	diagram->showMe();
 	diagram -> addElement(element);
 	element -> setPos(position);
 	element -> setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
@@ -88,11 +90,13 @@ AddTextCommand::~AddTextCommand() {
 
 /// Annule l'ajout
 void AddTextCommand::undo() {
+	diagram->showMe();
 	diagram -> removeIndependentTextItem(textitem);
 }
 
 /// Refait l'ajout
 void AddTextCommand::redo() {
+	diagram->showMe();
 	diagram -> addIndependentTextItem(textitem);
 	textitem -> setPos(position);
 }
@@ -120,11 +124,13 @@ AddImageCommand::~AddImageCommand() {
 
 ///Annule l'ajout
 void AddImageCommand::undo() {
+	diagram->showMe();
 	diagram -> removeItem(imageitem);
 }
 
 ///Refait l'ajout
 void AddImageCommand::redo() {
+	diagram->showMe();
 	diagram -> addDiagramImageItem(imageitem);
 	imageitem -> setPos(position - imageitem -> boundingRect().center());
 }
@@ -154,11 +160,13 @@ AddConductorCommand::~AddConductorCommand() {
 
 /// Annule l'ajout
 void AddConductorCommand::undo() {
+	diagram->showMe();
 	diagram -> removeConductor(conductor);
 }
 
 /// Refait l'ajout
 void AddConductorCommand::redo() {
+	diagram->showMe();
 	diagram -> addConductor(conductor);
 }
 
@@ -195,6 +203,7 @@ DeleteElementsCommand::~DeleteElementsCommand() {
 
 /// annule les suppressions
 void DeleteElementsCommand::undo() {
+	diagram->showMe();
 	// remet les elements
 	foreach(Element *e, removed_content.elements) {
 		diagram -> addElement(e);
@@ -217,6 +226,7 @@ void DeleteElementsCommand::undo() {
 
 /// refait les suppressions
 void DeleteElementsCommand::redo() {
+	diagram->showMe();
 	// enleve les conducteurs
 	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
 		diagram -> removeConductor(c);
@@ -274,6 +284,7 @@ PasteDiagramCommand::~PasteDiagramCommand() {
 
 /// annule le coller
 void PasteDiagramCommand::undo() {
+	diagram->showMe();
 	// remove the conductors
 	foreach(Conductor *c, content.conductorsToMove) diagram -> removeConductor(c);
 	
@@ -289,6 +300,7 @@ void PasteDiagramCommand::undo() {
 
 /// refait le coller
 void PasteDiagramCommand::redo() {
+	diagram->showMe();
 	if (first_redo) first_redo = false;
 	else {
 		// paste the elements
@@ -379,11 +391,13 @@ MoveElementsCommand::~MoveElementsCommand() {
 
 /// annule le deplacement
 void MoveElementsCommand::undo() {
+	diagram->showMe();
 	move(-movement);
 }
 
 /// refait le deplacement
 void MoveElementsCommand::redo() {
+	diagram->showMe();
 	if (first_redo) first_redo = false;
 	else move(movement);
 }
@@ -481,11 +495,13 @@ MoveElementsTextsCommand::~MoveElementsTextsCommand() {
 
 /// annule le deplacement
 void MoveElementsTextsCommand::undo() {
+	diagram->showMe();
 	move(-movement);
 }
 
 /// refait le deplacement
 void MoveElementsTextsCommand::redo() {
+	diagram->showMe();
 	if (first_redo) first_redo = false;
 	else move(movement);
 }
@@ -526,6 +542,7 @@ MoveConductorsTextsCommand::~MoveConductorsTextsCommand() {
 
 /// annule le deplacement
 void MoveConductorsTextsCommand::undo() {
+	diagram->showMe();
 	foreach(ConductorTextItem *cti, texts_to_move_.keys()) {
 		QPointF movement = texts_to_move_[cti].first;
 		bool was_already_moved = texts_to_move_[cti].second;
@@ -539,6 +556,7 @@ void MoveConductorsTextsCommand::undo() {
 
 /// refait le deplacement
 void MoveConductorsTextsCommand::redo() {
+	diagram->showMe();
 	if (first_redo) {
 		first_redo = false;
 	} else {
@@ -602,7 +620,8 @@ ChangeDiagramTextCommand::ChangeDiagramTextCommand(
 	text_item(dti),
 	text_before(before),
 	text_after(after),
-	first_redo(true)
+	first_redo(true),
+	diagram(dti->diagram())
 {
 }
 
@@ -612,11 +631,13 @@ ChangeDiagramTextCommand::~ChangeDiagramTextCommand() {
 
 /// annule la modification de texte
 void ChangeDiagramTextCommand::undo() {
+	diagram->showMe();
 	text_item -> setHtml(text_before);
 }
 
 /// refait la modification de texte
 void ChangeDiagramTextCommand::redo() {
+	diagram->showMe();
 	if (first_redo) {
 		first_redo = false;
 	} else {
@@ -635,7 +656,8 @@ RotateElementsCommand::RotateElementsCommand(const QList<Element *> &elements, c
 	elements_to_rotate(elements),
 	texts_to_rotate(texts),
 	images_to_rotate(images),
-	applied_rotation_angle_(90.0)
+	applied_rotation_angle_(90.0),
+	diagram (elements.first()->diagram())
 {
 	setText(
 		QString(
@@ -653,6 +675,7 @@ RotateElementsCommand::~RotateElementsCommand() {
 
 /// defait le pivotement
 void RotateElementsCommand::undo() {
+	diagram->showMe();
 	foreach(Element *e, elements_to_rotate) {
 		e -> rotateBy(-applied_rotation_angle_);
 	}
@@ -670,6 +693,7 @@ void RotateElementsCommand::undo() {
 
 /// refait le pivotement
 void RotateElementsCommand::redo() {
+	diagram->showMe();
 	foreach(Element *e, elements_to_rotate) {
 		e -> rotateBy(applied_rotation_angle_);
 	}
@@ -693,7 +717,8 @@ void RotateElementsCommand::redo() {
 RotateTextsCommand::RotateTextsCommand(const QHash<DiagramTextItem *, double> &previous_state, double applied_rotation, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	texts_to_rotate(previous_state),
-	applied_rotation_angle_(applied_rotation)
+	applied_rotation_angle_(applied_rotation),
+	diagram(previous_state.key(0)->diagram())
 {
 	defineCommandName();
 }
@@ -724,6 +749,7 @@ RotateTextsCommand::~RotateTextsCommand() {
 	Annule la rotation des textes
 */
 void RotateTextsCommand::undo() {
+	diagram->showMe();
 	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text))
 			cti -> forceRotateByUser(previous_rotate_by_user_[cti]);
@@ -735,6 +761,7 @@ void RotateTextsCommand::undo() {
 	Applique l'angle de rotation aux textes
 */
 void RotateTextsCommand::redo() {
+	diagram->showMe();
 	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text)) {
 			//we grab the previous rotation by user of each ConductorTextItem
@@ -780,7 +807,8 @@ ChangeConductorCommand::ChangeConductorCommand(
 	old_profile(old_p),
 	new_profile(new_p),
 	path_type(path_t),
-	first_redo(true)
+	first_redo(true),
+	diagram (c->diagram())
 {
 }
 
@@ -790,12 +818,14 @@ ChangeConductorCommand::~ChangeConductorCommand() {
 
 /// Annule la modification du conducteur
 void ChangeConductorCommand::undo() {
+	diagram->showMe();
 	conductor -> setProfile(old_profile, path_type);
 	conductor -> textItem() -> setPos(text_pos_before_mov_);
 }
 
 /// Refait la modification du conducteur
 void ChangeConductorCommand::redo() {
+	diagram->showMe();
 	if (first_redo) {
 		first_redo = false;
 	} else {
@@ -825,7 +855,8 @@ ResetConductorCommand::ResetConductorCommand(
 	QUndoCommand *parent
 ) :
 	QUndoCommand(parent),
-	conductors_profiles(cp)
+	conductors_profiles(cp),
+	diagram(cp.keys().first()->diagram())
 {
 	setText(
 		QObject::tr(
@@ -841,6 +872,7 @@ ResetConductorCommand::~ResetConductorCommand() {
 
 /// Annule la reinitialisation des conducteurs
 void ResetConductorCommand::undo() {
+	diagram->showMe();
 	foreach(Conductor *c, conductors_profiles.keys()) {
 		c -> setProfiles(conductors_profiles[c]);
 	}
@@ -848,6 +880,7 @@ void ResetConductorCommand::undo() {
 
 /// Refait la reinitialisation des conducteurs
 void ResetConductorCommand::redo() {
+	diagram->showMe();
 	foreach(Conductor *c, conductors_profiles.keys()) {
 		c -> setProfiles(ConductorProfilesGroup());
 	}
@@ -879,12 +912,14 @@ ChangeTitleBlockCommand::~ChangeTitleBlockCommand() {
 
 /// Annule la modification de cartouche
 void ChangeTitleBlockCommand::undo() {
+	diagram->showMe();
 	diagram -> border_and_titleblock.importTitleBlock(old_titleblock);
 	diagram -> invalidate(diagram -> border());
 }
 
 /// Refait la modification de cartouche
 void ChangeTitleBlockCommand::redo() {
+	diagram->showMe();
 	diagram -> border_and_titleblock.importTitleBlock(new_titleblock);
 	diagram -> invalidate(diagram -> border());
 }
@@ -910,11 +945,13 @@ ChangeBorderCommand::~ChangeBorderCommand() {
 
 /// Annule les changements apportes au schema
 void ChangeBorderCommand::undo() {
+	diagram->showMe();
 	diagram -> border_and_titleblock.importBorder(old_properties);
 }
 
 /// Refait les changements apportes au schema
 void ChangeBorderCommand::redo() {
+	diagram->showMe();
 	diagram -> border_and_titleblock.importBorder(new_properties);
 }
 
@@ -927,7 +964,8 @@ ChangeConductorPropertiesCommand::ChangeConductorPropertiesCommand(Conductor *c,
 	QUndoCommand(QObject::tr("modifier les propri\351t\351s d'un conducteur", "undo caption"), parent),
 	conductor(c),
 	old_settings_set(false),
-	new_settings_set(false)
+	new_settings_set(false),
+	diagram(c->diagram())
 {
 }
 
@@ -952,6 +990,7 @@ void ChangeConductorPropertiesCommand::setNewSettings(const ConductorProperties 
 	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
 */
 void ChangeConductorPropertiesCommand::undo() {
+	diagram->showMe();
 	if (old_settings_set && new_settings_set) {
 		conductor -> setProperties(old_properties);
 		conductor -> update();
@@ -963,6 +1002,7 @@ void ChangeConductorPropertiesCommand::undo() {
 	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
 */
 void ChangeConductorPropertiesCommand::redo() {
+	diagram->showMe();
 	if (old_settings_set && new_settings_set) {
 		conductor -> setProperties(new_properties);
 		conductor -> update();
@@ -974,11 +1014,12 @@ void ChangeConductorPropertiesCommand::redo() {
 	@param c La liste des conducteurs dont on modifie les proprietes
 	@param parent QUndoCommand parent
 */
-ChangeSeveralConductorsPropertiesCommand::ChangeSeveralConductorsPropertiesCommand(QSet<Conductor *>c, QUndoCommand *parent) :
+ChangeSeveralConductorsPropertiesCommand::ChangeSeveralConductorsPropertiesCommand(QList<Conductor *>c, QUndoCommand *parent) :
 	QUndoCommand(QObject::tr("modifier les propri\351t\351s de plusieurs conducteurs", "undo caption"), parent),
 	conductors(c),
 	old_settings_set(false),
-	new_settings_set(false)
+	new_settings_set(false),
+	diagram(c.first()->diagram())
 {
 }
 
@@ -1014,6 +1055,7 @@ void ChangeSeveralConductorsPropertiesCommand::setNewSettings(const ConductorPro
 	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
 */
 void ChangeSeveralConductorsPropertiesCommand::undo() {
+	diagram->showMe();
 	if (old_settings_set && new_settings_set) {
 		int i=0;
 		foreach(Conductor *c, conductors) {
@@ -1029,6 +1071,7 @@ void ChangeSeveralConductorsPropertiesCommand::undo() {
 	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
 */
 void ChangeSeveralConductorsPropertiesCommand::redo() {
+	diagram->showMe();
 	if (old_settings_set && new_settings_set) {
 
 		//new propertie are the same for each conductor
@@ -1062,7 +1105,8 @@ ImageResizerCommand::ImageResizerCommand (DiagramImageItem *image, qreal &old_, 
 	QUndoCommand(parent),
 	image_(image),
 	old_size (old_),
-	new_size (new_)
+	new_size (new_),
+	diagram(image->diagram())
 {}
 
 /**
@@ -1074,6 +1118,7 @@ ImageResizerCommand::~ImageResizerCommand() {}
  * @brief ImageResizerCommand::undo set the old size
  */
 void ImageResizerCommand::undo() {
+	diagram->showMe();
 	image_ -> setScale(old_size);
 }
 
@@ -1081,6 +1126,7 @@ void ImageResizerCommand::undo() {
  * @brief ImageResizerCommand::redo set the new size
  */
 void ImageResizerCommand::redo() {
+	diagram->showMe();
 	if (old_size<new_size) setText(QObject::tr("Agrandire une image \340 %1 %").arg(new_size*100));
 	else setText(QObject::tr("R\351duire une image \340 %1 %").arg(new_size*100));
 	image_ -> setScale(new_size);

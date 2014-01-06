@@ -95,7 +95,7 @@ void ConductorAutoNumerotation::applyText(QString t) {
 		diagram_ -> undoStack().push(ccpc);
 	}
 	else {
-		QSet <Conductor *> clist = conductor_list;
+		QList <Conductor *> clist = conductor_list.toList();
 		clist << conductor_;
 		QList <ConductorProperties> old_properties, new_properties;
 		ConductorProperties cp;
