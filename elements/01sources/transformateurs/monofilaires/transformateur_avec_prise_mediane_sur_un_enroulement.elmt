@@ -1,25 +1,23 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="24" hotspot_y="45" height="90" type="element" orientation="dyyy">
     <names>
-        <name lang="ar">مُحوّل بمقبس متوسط على ملف </name>
-        <name lang="de">Transformator mit Mittenanzapfung an einer Wicklung</name>
-        <name lang="el">Μετασχηματιστής με μεσαία λήψη στο ένα τύλιγμα</name>
-        <name lang="en">Transformer with centre tapping on one winding</name>
-        <name lang="it">Trasformatore monofase con presa centrale su un avvolgimento</name>
-        <name lang="fr">Transformateur avec prise médiane sur un enroulement</name>
-        <name lang="pl">Transformator z przewodem środkowym</name>
-        <name lang="cs">Jednofázový transformátor s odbočkou z vinutí uprostřed</name>
+        <name lang="ar">مُحوّل برابط قابل للتعديل</name>
+        <name lang="de">Wicklung Transformator mit veränderbarer Kopplung</name>
+        <name lang="en">Transformer with variable coupling</name>
+        <name lang="it">Trasformatore monofase con ac- coppiamento regolabile</name>
+        <name lang="fr">Transformateur à couplage réglable</name>
+        <name lang="pl">Transformator regulacyjny</name>
+        <name lang="cs">Transformátor s měnitelným zapojením</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="0" y2="-8" x2="16"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-8" x2="0"/>
-        <circle x="-10" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <circle x="-10" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="0" y2="-15" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="0" y2="25" x2="0"/>
-        <terminal x="0" y="-26" orientation="n"/>
-        <terminal x="0" y="26" orientation="s"/>
-        <terminal x="18" y="-8" orientation="e"/>
+        <circle x="-15" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <circle x="-15" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="0" y2="-25" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="0" y2="40" x2="0"/>
+        <input x="17" y="0" size="9" rotate="true" text="_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-20" y2="-10" x2="20"/>
+        <polygon x4="19" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-12" x1="19" y2="-8" x2="21" y3="-14" x3="26" y4="-12"/>
+        <terminal x="0" y="-40" orientation="n"/>
+        <terminal x="0" y="40" orientation="s"/>
     </description>
 </definition>
