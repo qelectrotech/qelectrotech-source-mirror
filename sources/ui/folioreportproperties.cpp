@@ -4,6 +4,7 @@
 #include <diagramposition.h>
 #include <elementprovider.h>
 #include <qetgraphicsitem/elementtextitem.h>
+#include <diagramcommands.h>
 
 /**
  * @brief FolioReportProperties::FolioReportProperties : Construcor
@@ -68,5 +69,7 @@ void FolioReportProperties::BuildRadioList() {
  * Apply the new properties for this folio report
  */
 void FolioReportProperties::Apply() {
-	if (element_to_link) element_to_link->linkToElement(element_);
+	if (element_to_link) {
+		element_->diagram()->undoStack().push(new LinkElementsCommand(element_, element_to_link));
+	}
 }

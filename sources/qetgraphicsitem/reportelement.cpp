@@ -77,6 +77,17 @@ void ReportElement::unlinkAllElements(){
 		}
 	}
 }
+/**
+ * @brief ReportElement::unlinkElement
+ *unlink the specified element.
+ *for reportelement, they must be only one linked element, so we call
+ *unlinkAllElements for clear the connected_elements list.
+ * @param elmt
+ */
+void ReportElement::unlinkElement(Element *elmt) {
+	Q_UNUSED (elmt);
+	unlinkAllElements();
+}
 
 /**
  * @brief ReportElement::linkType

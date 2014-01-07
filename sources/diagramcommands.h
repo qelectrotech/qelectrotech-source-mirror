@@ -587,4 +587,19 @@ class ImageResizerCommand : public QUndoCommand {
 	Diagram *diagram;
 };
 
+class LinkElementsCommand : public QUndoCommand {
+	public:
+	// constructor destructor
+	LinkElementsCommand (Element *elmt1, Element *elmt2, QUndoCommand *parent = 0);
+	virtual ~LinkElementsCommand();
+	//methods
+	virtual void undo();
+	virtual void redo();
+
+	private:
+	//attributes
+	Diagram*diagram_;
+	Element *elmt_1, *elmt_2;
+};
+
 #endif

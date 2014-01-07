@@ -34,6 +34,7 @@ class ReportElement : public CustomElement {
 	~ReportElement();
 	virtual void linkToElement(Element *);
 	virtual void unlinkAllElements();
+	virtual void unlinkElement(Element *elmt);
 	virtual int linkType() const;
 
 	private:

@@ -1131,3 +1131,47 @@ void ImageResizerCommand::redo() {
 	else setText(QObject::tr("R\351duire une image \340 %1 %").arg(new_size*100));
 	image_ -> setScale(new_size);
 }
+
+/**
+ * @brief LinkElementsCommand::LinkElementsCommand
+ *Constructor
+ * @param elmt1 element to Link
+ * @param elmt2 element to link
+ * @param parent parent undo command
+ */
+LinkElementsCommand::LinkElementsCommand(Element *elmt1, Element *elmt2, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	diagram_(elmt1->diagram()),
+	elmt_1(elmt1),
+	elmt_2(elmt2)
+{
+	if (elmt1->linkType() & Element::AllReport &&
+		elmt2->linkType() & Element::AllReport)
+		setText(QObject::tr("Lier deux reports de folio",
+							"title for undo LinkElementsCommand if two elements are folio report"));
+	else setText(QObject::tr("Lier deux éléments"));
+}
+
+/**
+ * @brief LinkElementsCommand::~LinkElementsCommand
+ *destructor
+ */
+LinkElementsCommand::~LinkElementsCommand(){}
+
+/**
+ * @brief LinkElementsCommand::undo
+ *Undo command
+ */
+void LinkElementsCommand::undo() {
+	diagram_->showMe();
+	elmt_1->unlinkElement(elmt_2);
+}
+
+/**
+ * @brief LinkElementsCommand::redo
+ *redo command
+ */
+void LinkElementsCommand::redo() {
+	diagram_->showMe();
+	elmt_1->linkToElement(elmt_2);
+}
