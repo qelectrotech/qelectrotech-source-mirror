@@ -22,6 +22,16 @@
 #include "qetmessagebox.h"
 #include "exportpropertieswidget.h"
 #include "qetdiagrameditor.h"
+#include "createdxf.h"
+#include "conductorsegment.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/diagramtextitem.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/customelement.h"
+#include "qetgraphicsitem/elementtextitem.h"
+#include "qetgraphicsitem/ghostelement.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
 
 /**
 	Constructeur
@@ -351,6 +361,108 @@ void ExportDialog::generateSvg(Diagram *diagram, int width, int height, bool kee
 }
 
 /**
+	Exporte le schema en DXF
+	@param diagram Schema a exporter en DXF
+	@param width  Largeur de l'export DXF
+	@param height Hauteur de l'export DXF
+	@param keep_aspect_ratio True pour conserver le ratio, false sinon
+	@param io_device Peripherique de sortie pour le code DXF (souvent : un fichier)
+*/
+void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool keep_aspect_ratio, QString &file_path) {
+
+	project_ -> setFilePath(file_path);
+
+	width  -= 2*Diagram::margin;
+	height -= 2*Diagram::margin;
+
+	Createdxf::xScale = Createdxf::sheetWidth  / double(width);
+	Createdxf::yScale = Createdxf::sheetHeight / double(height);
+
+	Createdxf::dxfBegin(file_path);
+
+	//Add project elements (lines, rectangles, circles, texts) to dxf file
+	Createdxf::drawRectangle(file_path, 0, 0, double(width)*Createdxf::xScale, double(height)*Createdxf::yScale, 0);
+	diagram -> border_and_titleblock.drawDxf(width, height, keep_aspect_ratio, file_path, 0);
+
+	// Build the lists of elements.
+	QList<Element *> list_elements;
+	QList<Conductor *> list_conductors;
+	QList<DiagramTextItem *> list_texts;
+	QList<DiagramImageItem *> list_images;
+
+	// Determine les elements a "XMLiser"
+	foreach(QGraphicsItem *qgi, diagram -> items()) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
+			list_elements << elmt;
+		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
+			list_conductors << f;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
+			list_texts << iti;
+		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
+			list_images << dii;
+		}
+	}
+
+	//Draw elements
+	foreach(Element *elmt, list_elements) {
+
+		qreal hot_spot_x = elmt -> pos().x();// + elmt -> hotspot().x();
+		qreal hot_spot_y = elmt -> pos().y();// + elmt -> hotspot().y();
+
+		QList<ElementTextItem *> elmt_text = elmt -> texts();
+		foreach(ElementTextItem *dti, elmt_text) {
+			qreal fontSize = dti -> font().pointSizeF();
+			if (fontSize < 0)
+				fontSize = dti -> font().pixelSize();
+			fontSize *= Createdxf::yScale;
+			qreal x = hot_spot_x + dti -> pos().x();
+			x *= Createdxf::xScale;
+			qreal y = hot_spot_y + dti -> pos().y();
+			y = Createdxf::sheetHeight - (y * Createdxf::yScale) - fontSize*1.05;
+			Createdxf::drawText(file_path, dti -> toPlainText(), x, y, fontSize, dti -> rotationAngle(), 0 );
+		}
+	}
+
+	//Draw conductors
+	foreach(Conductor *cond, list_conductors) {
+		foreach(ConductorSegment *segment, cond -> segmentsList()) {
+			qreal x1 = (segment -> firstPoint().x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (segment -> firstPoint().y() * Createdxf::yScale);
+			qreal x2 = (segment -> secondPoint().x()) * Createdxf::xScale;
+			qreal y2 = Createdxf::sheetHeight - (segment -> secondPoint().y() * Createdxf::yScale);
+			Createdxf::drawLine(file_path, x1, y1, x2, y2, 0);
+		}
+		//Draw conductor text item
+		ConductorTextItem *textItem = cond -> textItem();
+		if (textItem) {
+			qreal fontSize = textItem -> font().pointSizeF();
+			if (fontSize < 0)
+				fontSize = textItem -> font().pixelSize();
+			fontSize *= Createdxf::yScale;
+			qreal x = (textItem -> pos().x()) * Createdxf::xScale;
+			qreal y = Createdxf::sheetHeight - (textItem -> pos().y() * Createdxf::yScale) - fontSize*1.05;
+			Createdxf::drawText(file_path, textItem -> toPlainText(), x, y, fontSize, textItem -> rotationAngle(), 0 );
+		}
+	}
+
+	//Draw text items
+	foreach(DiagramTextItem *dti, list_texts) {
+		qreal fontSize = dti -> font().pointSizeF();
+		if (fontSize < 0)
+			fontSize = dti -> font().pixelSize();
+		fontSize *= Createdxf::yScale;
+		qreal x = (dti -> pos().x()) * Createdxf::xScale;
+		qreal y = Createdxf::sheetHeight - (dti -> pos().y() * Createdxf::yScale) - fontSize*1.05;
+		Createdxf::drawText(file_path, dti -> toPlainText(), x, y, fontSize, dti -> rotationAngle(), 0 );
+	}
+
+
+	Createdxf::dxfEnd(file_path);
+}
+
+
+
+/**
 	Slot effectuant les exports apres la validation du dialogue.
 */
 void ExportDialog::slot_export() {
@@ -455,6 +567,14 @@ void ExportDialog::exportDiagram(ExportDiagramLine *diagram_line) {
 			diagram_line -> height -> value(),
 			diagram_line -> keep_ratio -> isChecked(),
 			target_file
+		);
+	} else if (format_acronym == "DXF") {
+		generateDxf(
+			diagram_line -> diagram,
+			diagram_line -> width  -> value(),
+			diagram_line -> height -> value(),
+			diagram_line -> keep_ratio -> isChecked(),
+			diagram_path
 		);
 	} else {
 		QImage image = generateImage(

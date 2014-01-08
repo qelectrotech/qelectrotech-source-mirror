@@ -22,6 +22,7 @@
 #include "diagramposition.h"
 #include "qetapp.h"
 #include "math.h"
+#include "createdxf.h"
 
 /**
 	Constructeur simple : construit une bordure en recuperant les dimensions
@@ -408,6 +409,80 @@ void BorderTitleBlock::draw(QPainter *qp, qreal x, qreal y) {
 	diagram_rect_     .translate(-x, -y);
 	titleblock_rect_       .translate(-x, -y);
 }
+
+void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QString &file_path, int color) {
+
+	// Transform to DXF scale.
+	columns_header_height_ *= Createdxf::yScale;
+	rows_height_           *= Createdxf::yScale;
+	rows_header_width_     *= Createdxf::xScale;
+	columns_width_         *= Createdxf::xScale;
+
+	// dessine la case vide qui apparait des qu'il y a un entete
+	if (display_border_ &&
+		(display_columns_ ||
+		 display_rows_)
+		) {
+		Createdxf::drawRectangle(
+			file_path,
+			double(diagram_rect_.topLeft().x()) * Createdxf::xScale,
+			Createdxf::sheetHeight - double(diagram_rect_.topLeft().y()) * Createdxf::yScale - columns_header_height_,
+			rows_header_width_,
+			columns_header_height_,
+			color
+		);
+	}
+
+	// dessine la numerotation des colonnes
+	if (display_border_ &&
+		display_columns_) {
+		for (int i = 1 ; i <= columns_count_ ; ++ i) {
+			double xCoord = diagram_rect_.topLeft().x() +
+					(rows_header_width_ + ((i - 1) *
+					 columns_width_));
+			double yCoord = Createdxf::sheetHeight - diagram_rect_.topLeft().y() - columns_header_height_;
+			double recWidth = columns_width_;
+			double recHeight = columns_header_height_;
+			Createdxf::drawRectangle(file_path, xCoord, yCoord, recWidth, recHeight, color);
+			Createdxf::drawTextAligned(file_path, QString::number(i), xCoord,
+									   yCoord + recHeight*0.5, recHeight*0.7, 0, 0, 1, 2, xCoord+recWidth/2, color, 0);
+		}
+	}
+
+	// dessine la numerotation des lignes
+
+	if (display_border_ && display_rows_) {
+		QString row_string("A");
+		for (int i = 1 ; i <= rows_count_ ; ++ i) {
+			double xCoord = diagram_rect_.topLeft().x() * Createdxf::xScale;
+			double yCoord = Createdxf::sheetHeight - diagram_rect_.topLeft().y()*Createdxf::yScale
+							- (columns_header_height_ + ((i - 1) * rows_height_))
+							- rows_height_;
+			double recWidth = rows_header_width_;
+			double recHeight = rows_height_;
+			Createdxf::drawRectangle(file_path, xCoord, yCoord, recWidth, recHeight, color);
+			Createdxf::drawTextAligned(file_path, row_string, xCoord,
+									   yCoord + recHeight*0.5, recWidth*0.7, 0, 0, 1, 2, xCoord+recWidth/2, color, 0);
+			row_string = incrementLetters(row_string);
+		}
+	}
+
+	// render the titleblock, using the TitleBlockTemplate object
+	if (display_titleblock_) {
+		//qp -> translate(titleblock_rect_.topLeft());
+		titleblock_template_renderer_ -> renderDxf(titleblock_rect_, titleblock_rect_.width(), file_path, color);
+		//qp -> translate(-titleblock_rect_.topLeft());
+	}
+
+	// Transform back to QET scale
+	columns_header_height_ /= Createdxf::yScale;
+	rows_height_		   /= Createdxf::yScale;
+	rows_header_width_     /= Createdxf::xScale;
+	columns_width_         /= Createdxf::xScale;
+
+}
+
+
 
 /**
 	Ajoute une colonne.

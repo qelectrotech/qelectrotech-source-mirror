@@ -97,6 +97,7 @@ class TitleBlockTemplate : public QObject {
 	QPixmap bitmapLogo(const QString &) const;
 	
 	void render(QPainter &, const DiagramContext &, int) const;
+	void renderDxf(QRectF &, const DiagramContext &, int, QString &, int) const;
 	void renderCell(QPainter &, const TitleBlockCell &, const DiagramContext &, const QRect &) const;
 	QString toString() const;
 	void applyCellSpans();
@@ -133,6 +134,7 @@ class TitleBlockTemplate : public QObject {
 	QString finalTextForCell(const TitleBlockCell &, const DiagramContext &) const;
 	QString interpreteVariables(const QString &, const DiagramContext &) const;
 	void renderTextCell(QPainter &, const QString &, const TitleBlockCell &, const QRectF &) const;
+	void renderTextCellDxf(QString &, const QString &, const TitleBlockCell &, qreal, qreal, qreal, qreal, int) const;
 	
 	// attributes
 	private:

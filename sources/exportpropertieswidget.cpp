@@ -143,6 +143,7 @@ void ExportPropertiesWidget::build() {
 	format -> addItem(tr("JPEG (*.jpg)"),   "JPG");
 	format -> addItem(tr("Bitmap (*.bmp)"), "BMP");
 	format -> addItem(tr("SVG (*.svg)"),    "SVG");
+	format -> addItem(tr("DXF (*.dxf)"),    "DXF");
 	hboxLayout1 -> addStretch();
 	
 	vboxLayout -> addLayout(hboxLayout1);

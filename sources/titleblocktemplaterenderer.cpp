@@ -76,6 +76,12 @@ void TitleBlockTemplateRenderer::render(QPainter *provided_painter, int titleblo
 	}
 }
 
+
+void TitleBlockTemplateRenderer::renderDxf(QRectF &title_block_rect, int titleblock_width, QString &file_path, int color) {
+	if (!titleblock_template_) return;
+	titleblock_template_ -> renderDxf(title_block_rect, context_, titleblock_width, file_path, color);
+}
+
 /**
 	Renders the titleblock to the internal QPicture
 	@param titleblock_width Width of the titleblock to render

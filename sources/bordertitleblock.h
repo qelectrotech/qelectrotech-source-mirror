@@ -49,7 +49,8 @@ class BorderTitleBlock : public QObject {
 	static int   minNbRows();
 	static qreal minRowsHeight();
 	
-	void draw(QPainter *, qreal = 0.0, qreal = 0.0);
+	void draw(QPainter *, qreal = 0.0, qreal = 0.0);	
+	void drawDxf(int, int, bool, QString &, int);
 	
 	// methods to get dimensions
 	// columns

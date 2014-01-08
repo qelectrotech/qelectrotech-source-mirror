@@ -19,6 +19,7 @@
 #include "qet.h"
 #include "qetapp.h"
 #include "nameslist.h"
+#include "createdxf.h"
 // uncomment the line below to get more debug information
 //#define TITLEBLOCK_TEMPLATE_DEBUG
 
@@ -1258,6 +1259,55 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 }
 
 /**
+	Render the titleblock in DXF.
+	@param diagram_context Diagram context to use to generate the titleblock strings
+	@param titleblock_width Width of the titleblock to render
+*/
+void TitleBlockTemplate::renderDxf(QRectF &title_block_rect, const DiagramContext &diagram_context,
+								   int titleblock_width, QString &file_path, int color) const {
+	QList<int> widths = columnsWidth(titleblock_width);
+
+	// draw the titleblock border
+	double xCoord    = title_block_rect.topLeft().x();
+	double yCoord    = Createdxf::sheetHeight - title_block_rect.bottomLeft().y()*Createdxf::yScale;
+	double recWidth  = title_block_rect.width()  * Createdxf::xScale;
+	double recHeight = title_block_rect.height() * Createdxf::yScale;
+	Createdxf::drawRectangle(file_path, xCoord, yCoord, recWidth, recHeight, color);
+
+	// run through each individual cell
+	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
+		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
+			if (cells_[i][j] -> spanner_cell || cells_[i][j] -> cell_type == TitleBlockCell::EmptyCell) continue;
+
+			// calculate the border rect of the current cell
+			double x = lengthRange(0, cells_[i][j] -> num_col, widths);
+			double y = lengthRange(0, cells_[i][j] -> num_row, rows_heights_);
+
+			int row_span = 0, col_span = 0;
+			if (cells_[i][j] -> span_state != TitleBlockCell::Disabled) {
+				row_span = cells_[i][j] -> applied_row_span;
+				col_span = cells_[i][j] -> applied_col_span;
+			}
+			double w = lengthRange(cells_[i][j] -> num_col, cells_[i][j] -> num_col + 1 + col_span, widths);
+			double h = lengthRange(cells_[i][j] -> num_row, cells_[i][j] -> num_row + 1 + row_span, rows_heights_);
+
+			x = xCoord + x*Createdxf::xScale;
+			h *= Createdxf::yScale;
+			y = yCoord + recHeight - h - y*Createdxf::yScale;
+			w *= Createdxf::xScale;
+
+			Createdxf::drawRectangle(file_path, x, y, w, h, color);
+			if (cells_[i][j] -> type() == TitleBlockCell::TextCell) {
+				QString final_text = finalTextForCell(*cells_[i][j], diagram_context);
+				renderTextCellDxf(file_path, final_text, *cells_[i][j], x, y, w, h, color);
+			}
+		}
+	}
+}
+
+
+
+/**
 	Render a titleblock cell.
 	@param painter Painter to use to render the titleblock
 	@param diagram_context Diagram context to use to generate the titleblock strings
@@ -1294,6 +1344,9 @@ void TitleBlockTemplate::renderCell(QPainter &painter, const TitleBlockCell &cel
 	painter.setBrush(Qt::NoBrush);
 	painter.drawRect(cell_rect);
 }
+
+
+
 
 /**
 	@param cell A cell from this template
@@ -1388,6 +1441,65 @@ void TitleBlockTemplate::renderTextCell(QPainter &painter, const QString &text, 
 	// Still here? Let's draw the text normally
 	painter.drawText(cell_rect, cell.alignment, text);
 }
+
+
+void TitleBlockTemplate::renderTextCellDxf(QString &file_path, const QString &text,
+										   const TitleBlockCell &cell,
+										   qreal x, qreal y, qreal w, qreal h, int color) const {
+	if (text.isEmpty()) return;
+	QFont text_font = TitleBlockTemplate::fontForCell(cell);
+	double textHeight = text_font.pointSizeF();
+	if (textHeight < 0)
+		textHeight = text_font.pixelSize();
+
+	qreal x2 = x + w;
+
+	int vAlign = 0;
+	int hAlign = 0;
+	bool hALigned = false;
+
+	if ( cell.alignment & Qt::AlignRight ) {
+		hAlign = 2;
+		hALigned = true;
+	} else if ( cell.alignment & Qt::AlignHCenter ) {
+		hAlign = 1;
+		hALigned = true;
+		x2 = x + w/2;
+	} else if ( cell.alignment & Qt::AlignJustify ) {
+		hAlign = 5;
+		hALigned = true;
+	}
+
+	if ( cell.alignment & Qt::AlignTop ) {
+		vAlign = 3;
+		y += h - textHeight*Createdxf::yScale;
+		if (!hALigned)
+			x2 = x;
+	} else if ( cell.alignment & Qt::AlignVCenter ) {
+		vAlign = 2;
+		y += h/2;
+		if (!hALigned)
+			x2 = x;
+	} else if ( cell.alignment & Qt::AlignBottom ) {}
+
+
+	//painter.setFont(text_font);
+
+	if (cell.hadjust) {
+		QFontMetricsF font_metrics(text_font);
+		QRectF font_rect = font_metrics.boundingRect(QRect(-10000, -10000, 10000, 10000), cell.alignment, text);
+
+		if (font_rect.width()*Createdxf::xScale > w) {
+			qreal ratio = qreal(w) / qreal(font_rect.width()*Createdxf::xScale);
+			textHeight *= ratio;
+		}
+	}
+
+	Createdxf::drawTextAligned(file_path, text, x,
+							   y, textHeight*Createdxf::yScale, 0, 0, hAlign, vAlign, x2, color, 0);
+
+}
+
 
 /**
 	Set the spanner_cell attribute of every cell to 0.
