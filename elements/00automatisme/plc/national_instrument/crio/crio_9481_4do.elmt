@@ -1,6 +1,7 @@
-<definition width="70" version="0.3" hotspot_x="34" hotspot_y="76" height="180" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="33" hotspot_y="77" height="180" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">cRIO 9481 - 4 sorties relais 2A</name>
+        <name lang="pl">cRIO - czterokanałowy moduł wyjść przekaźnikowych</name>
     </names>
     <informations></informations>
     <description>
@@ -32,15 +33,15 @@
         <text x="-1" y="-8" size="3" text="0&#xa;1&#xa;2&#xa;3&#xa;4&#xa;5&#xa;6&#xa;7&#xa;8&#xa;9"/>
         <ellipse width="3" x="-6" y="-33" antialias="true" height="6" style="line-style:normal;line-weight:thin;filling:green;color:black"/>
         <text x="-10" y="-28" size="3" text="0"/>
-        <terminal x="-9" y="-4" orientation="w"/>
-        <terminal x="-9" y="-10" orientation="w"/>
-        <terminal x="-9" y="8" orientation="w"/>
-        <terminal x="-9" y="2" orientation="w"/>
-        <terminal x="-9" y="20" orientation="w"/>
-        <terminal x="-9" y="14" orientation="w"/>
-        <terminal x="-9" y="32" orientation="w"/>
-        <terminal x="-9" y="26" orientation="w"/>
-        <terminal x="-9" y="44" orientation="w"/>
-        <terminal x="-9" y="38" orientation="w"/>
+        <terminal x="-9" y="-4" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-9" y="-10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-9" y="8" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-9" y="2" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-9" y="20" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-9" y="14" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-9" y="32" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-9" y="26" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-9" y="44" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-9" y="38" nameHidden="0" number="" name="" orientation="w"/>
     </description>
 </definition>

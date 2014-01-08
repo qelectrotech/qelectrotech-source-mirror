@@ -1,6 +1,7 @@
-<definition width="100" version="0.3" hotspot_x="52" hotspot_y="66" height="150" type="element" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="55" hotspot_y="66" height="150" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">contrôleur cRIO</name>
+        <name lang="pl">cRIO 9024 - sterownik czasu rzeczywistego</name>
     </names>
     <informations></informations>
     <description>
@@ -65,13 +66,13 @@
         <text x="3" y="-30" size="3" text="V1"/>
         <rect width="2" x="-22" y="44" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <input x="-50" y="68.5" size="9" rotate="true" text="NI cRIO 9024"/>
-        <terminal x="23" y="-31" orientation="e"/>
-        <terminal x="23" y="-25" orientation="e"/>
-        <terminal x="23" y="-19" orientation="e"/>
-        <terminal x="23" y="-13" orientation="e"/>
-        <terminal x="-16" y="-24" orientation="n"/>
-        <terminal x="-16" y="1" orientation="s"/>
-        <terminal x="16" y="22" orientation="e"/>
-        <terminal x="-16" y="49" orientation="s"/>
+        <terminal x="23" y="-31" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="23" y="-25" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="23" y="-19" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="23" y="-13" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-16" y="-24" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-16" y="1" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="16" y="22" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-16" y="49" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

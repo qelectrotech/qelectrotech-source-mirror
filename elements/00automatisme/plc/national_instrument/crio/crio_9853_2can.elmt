@@ -1,6 +1,7 @@
-<definition width="70" version="0.3" hotspot_x="34" hotspot_y="77" height="180" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="33" hotspot_y="78" height="180" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">cRIO bus CAN</name>
+        <name lang="pl">cRIO 9853 - porty High-Speed CAN</name>
     </names>
     <informations></informations>
     <description>
@@ -41,7 +42,7 @@
         <input x="-29" y="77" size="9" rotate="true" text="NI cRIO&#xa;  9853"/>
         <text x="-13" y="-42" size="5" text="NI 9853"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40" x1="-20" y2="-40" x2="20"/>
-        <terminal x="-2" y="32" orientation="w"/>
-        <terminal x="-2" y="-14" orientation="w"/>
+        <terminal x="-2" y="32" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-2" y="-14" nameHidden="0" number="" name="" orientation="w"/>
     </description>
 </definition>

@@ -1,6 +1,7 @@
-<definition width="70" version="0.3" hotspot_x="34" hotspot_y="76" height="180" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="33" hotspot_y="77" height="180" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">cRIO 9422 - 8 entrées num</name>
+        <name lang="pl">cRIO 9422 - ośmiokanałowy moduł wejść cyfrowych </name>
     </names>
     <informations></informations>
     <description>
@@ -62,21 +63,21 @@
         <text x="1" y="39" size="2" text="13"/>
         <text x="1" y="44" size="2" text="14"/>
         <text x="1" y="49" size="2" text="15"/>
-        <terminal x="-6" y="-28" orientation="w"/>
-        <terminal x="-6" y="-23" orientation="w"/>
-        <terminal x="-6" y="-18" orientation="w"/>
-        <terminal x="-6" y="-13" orientation="w"/>
-        <terminal x="-6" y="-8" orientation="w"/>
-        <terminal x="-6" y="-3" orientation="w"/>
-        <terminal x="-6" y="2" orientation="w"/>
-        <terminal x="-6" y="7" orientation="w"/>
-        <terminal x="-6" y="12" orientation="w"/>
-        <terminal x="-6" y="17" orientation="w"/>
-        <terminal x="-6" y="22" orientation="w"/>
-        <terminal x="-6" y="27" orientation="w"/>
-        <terminal x="-6" y="32" orientation="w"/>
-        <terminal x="-6" y="37" orientation="w"/>
-        <terminal x="-6" y="42" orientation="w"/>
-        <terminal x="-6" y="47" orientation="w"/>
+        <terminal x="-6" y="-28" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="-23" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="-18" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="-13" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="-8" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="-3" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="2" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="7" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="12" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="17" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="22" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="27" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="32" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="37" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="42" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-6" y="47" nameHidden="0" number="" name="" orientation="w"/>
     </description>
 </definition>
