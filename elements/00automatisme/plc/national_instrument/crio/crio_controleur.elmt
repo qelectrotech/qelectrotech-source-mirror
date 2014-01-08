@@ -1,0 +1,77 @@
+<definition width="100" version="0.3" hotspot_x="52" hotspot_y="66" height="150" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">contrôleur cRIO</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text x="-16" y="-53" size="5" text="contrôleur"/>
+        <rect width="90" x="-50" y="-50" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-39" y="-20" size="3" text="eth 2"/>
+        <text x="-40" y="1" size="3" text="eth 1"/>
+        <rect width="14" x="-24" y="-11" antialias="false" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="14" x="-24" y="-31" antialias="false" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-12" y="-16" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-12" y="4" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-12" y="0" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-12" y="-20" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-12" y="-18" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-12" y="-24" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-24" y="-18" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <rect width="2" x="-12" y="-22" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-12" y="-26" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-12" y="2" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-24" y="-31" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:green;color:black"/>
+        <rect width="2" x="-12" y="-28" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-12" y="-30" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-12" y="-4" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-24" y="2" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <rect width="2" x="-12" y="-2" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-12" y="-6" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-13" y="44" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="17" x="-25" y="44" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-24" y="-11" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:green;color:black"/>
+        <rect width="2" x="-12" y="-8" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-12" y="-10" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="2" x="-16" y="44" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="3" y="-24" size="3" text="C"/>
+        <text x="3" y="-11" size="3" text="C"/>
+        <rect width="8" x="13" y="-41" antialias="false" height="38" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="-6" y="48" size="3" text="USB"/>
+        <rect width="2" x="-19" y="44" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="12" x="11" y="-16" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <text x="3" y="-17" size="3" text="V2"/>
+        <rect width="12" x="11" y="-28" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle x="15" y="-40" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4"/>
+        <rect width="12" x="11" y="-22" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle x="14" y="13" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="15" y="35" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
+        <rect width="12" x="11" y="-34" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle x="15" y="-8" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4"/>
+        <circle x="17" y="27" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="17" y="23" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="14" y="25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="17" y="15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="14" y="29" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-37" x1="16" y2="-39" x2="18"/>
+        <circle x="17" y="19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="14" y="21" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="14" y="17" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="32" x1="21" y2="12" x2="21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x1="12" y2="32" x2="21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x1="12" y2="11" x2="12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="21" y2="11" x2="12"/>
+        <circle x="15" y="6" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="16" y2="-7" x2="18"/>
+        <text x="3" y="-30" size="3" text="V1"/>
+        <rect width="2" x="-22" y="44" antialias="false" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input x="-50" y="68.5" size="9" rotate="true" text="NI cRIO 9024"/>
+        <terminal x="23" y="-31" orientation="e"/>
+        <terminal x="23" y="-25" orientation="e"/>
+        <terminal x="23" y="-19" orientation="e"/>
+        <terminal x="23" y="-13" orientation="e"/>
+        <terminal x="-16" y="-24" orientation="n"/>
+        <terminal x="-16" y="1" orientation="s"/>
+        <terminal x="16" y="22" orientation="e"/>
+        <terminal x="-16" y="49" orientation="s"/>
+    </description>
+</definition>

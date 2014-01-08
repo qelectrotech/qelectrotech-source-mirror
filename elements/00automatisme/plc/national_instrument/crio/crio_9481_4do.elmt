@@ -1,0 +1,46 @@
+<definition width="70" version="0.3" hotspot_x="34" hotspot_y="76" height="180" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">cRIO 9481 - 4 sorties relais 2A</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text x="-11" y="-63" size="5" text="sorties&#xa; relais"/>
+        <text x="7" y="-28" size="3" text="3"/>
+        <rect width="40" x="-20" y="-50" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="3" x="3" y="-33" antialias="true" height="6" style="line-style:normal;line-weight:thin;filling:green;color:black"/>
+        <ellipse width="3" x="-3" y="-33" antialias="true" height="6" style="line-style:normal;line-weight:thin;filling:green;color:black"/>
+        <ellipse width="3" x="0" y="-33" antialias="true" height="6" style="line-style:normal;line-weight:thin;filling:green;color:black"/>
+        <rect width="8" x="-7" y="-20" antialias="false" height="74" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="12" x="-9" y="41" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-9" y="35" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-9" y="5" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <text x="-13" y="-42" size="5" text="NI 9481"/>
+        <rect width="12" x="-9" y="29" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-9" y="-1" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40" x1="-20" y2="-40" x2="20"/>
+        <rect width="12" x="-9" y="23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle x="-5" y="49" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4"/>
+        <rect width="12" x="-9" y="-7" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle x="-5" y="-19" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4"/>
+        <rect width="12" x="-9" y="17" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-9" y="-13" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="52" x1="-4" y2="50" x2="-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16" x1="-4" y2="-18" x2="-2"/>
+        <rect width="12" x="-9" y="11" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <text x="4" y="-8" size="3" text="CH0a&#xa;CH0b&#xa;CH1a&#xa;CH1b&#xa;CH2a&#xa;CH2b&#xa;CH3a&#xa;CH3b&#xa;NC&#xa;NC"/>
+        <input x="-29" y="79" size="9" rotate="true" text="NI cRIO&#xa;  9481"/>
+        <text x="-1" y="-8" size="3" text="0&#xa;1&#xa;2&#xa;3&#xa;4&#xa;5&#xa;6&#xa;7&#xa;8&#xa;9"/>
+        <ellipse width="3" x="-6" y="-33" antialias="true" height="6" style="line-style:normal;line-weight:thin;filling:green;color:black"/>
+        <text x="-10" y="-28" size="3" text="0"/>
+        <terminal x="-9" y="-4" orientation="w"/>
+        <terminal x="-9" y="-10" orientation="w"/>
+        <terminal x="-9" y="8" orientation="w"/>
+        <terminal x="-9" y="2" orientation="w"/>
+        <terminal x="-9" y="20" orientation="w"/>
+        <terminal x="-9" y="14" orientation="w"/>
+        <terminal x="-9" y="32" orientation="w"/>
+        <terminal x="-9" y="26" orientation="w"/>
+        <terminal x="-9" y="44" orientation="w"/>
+        <terminal x="-9" y="38" orientation="w"/>
+    </description>
+</definition>

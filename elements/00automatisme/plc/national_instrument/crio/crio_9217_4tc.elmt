@@ -1,0 +1,82 @@
+<definition width="70" version="0.3" hotspot_x="34" hotspot_y="76" height="180" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">cRIO 9217 - 4 entrées PT100</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text x="-20" y="-63" size="5" text="    entrées &#xa;température"/>
+        <rect width="8" x="-4" y="-36" antialias="false" height="92" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle x="-2" y="-36" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4"/>
+        <circle x="-2" y="52" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4"/>
+        <input x="-29" y="79" size="9" rotate="true" text="NI cRIO&#xa;  9217"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-33" x1="-1" y2="-35" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40" x1="-20" y2="-40" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="55" x1="-1" y2="53" x2="1"/>
+        <rect width="12" x="-6" y="-15" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="25" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="-25" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="5" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="-5" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="40" x="-20" y="-50" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="10" y="-26" size="2" text="EX0"/>
+        <text x="10" y="-21" size="2" text="RTD0+"/>
+        <text x="10" y="-16" size="2" text="RTD0-"/>
+        <text x="10" y="-11" size="2" text="COM"/>
+        <text x="10" y="-6" size="2" text="EX1"/>
+        <text x="10" y="-1" size="2" text="RTD1+"/>
+        <text x="10" y="4" size="2" text="RTD1-"/>
+        <text x="10" y="9" size="2" text="COM"/>
+        <text x="10" y="14" size="2" text="EX2"/>
+        <text x="10" y="19" size="2" text="RTD2+"/>
+        <text x="10" y="24" size="2" text="RTD2-"/>
+        <text x="10" y="29" size="2" text="COM"/>
+        <text x="10" y="34" size="2" text="EX3"/>
+        <text x="10" y="39" size="2" text="RTD3+"/>
+        <text x="10" y="44" size="2" text="RTD3-"/>
+        <text x="10" y="49" size="2" text="COM"/>
+        <text x="-13" y="-42" size="5" text="NI 9217"/>
+        <rect width="12" x="-6" y="-20" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="35" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="15" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="0" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="20" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="-10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="45" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="40" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="30" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" x="-6" y="-30" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <text x="3" y="-26" size="2" text="0"/>
+        <text x="3" y="-21" size="2" text="1"/>
+        <text x="3" y="-16" size="2" text="2"/>
+        <text x="3" y="-11" size="2" text="3"/>
+        <text x="3" y="-6" size="2" text="4"/>
+        <text x="3" y="-1" size="2" text="5"/>
+        <text x="3" y="4" size="2" text="6"/>
+        <text x="3" y="9" size="2" text="7"/>
+        <text x="3" y="14" size="2" text="8"/>
+        <text x="3" y="19" size="2" text="9"/>
+        <text x="1" y="24" size="2" text="10"/>
+        <text x="1" y="29" size="2" text="11"/>
+        <text x="1" y="34" size="2" text="12"/>
+        <text x="1" y="39" size="2" text="13"/>
+        <text x="1" y="44" size="2" text="14"/>
+        <text x="1" y="49" size="2" text="15"/>
+        <terminal x="-6" y="-28" orientation="w"/>
+        <terminal x="-6" y="-23" orientation="w"/>
+        <terminal x="-6" y="-18" orientation="w"/>
+        <terminal x="-6" y="-13" orientation="w"/>
+        <terminal x="-6" y="-8" orientation="w"/>
+        <terminal x="-6" y="-3" orientation="w"/>
+        <terminal x="-6" y="2" orientation="w"/>
+        <terminal x="-6" y="7" orientation="w"/>
+        <terminal x="-6" y="12" orientation="w"/>
+        <terminal x="-6" y="17" orientation="w"/>
+        <terminal x="-6" y="22" orientation="w"/>
+        <terminal x="-6" y="27" orientation="w"/>
+        <terminal x="-6" y="32" orientation="w"/>
+        <terminal x="-6" y="37" orientation="w"/>
+        <terminal x="-6" y="42" orientation="w"/>
+        <terminal x="-6" y="47" orientation="w"/>
+    </description>
+</definition>

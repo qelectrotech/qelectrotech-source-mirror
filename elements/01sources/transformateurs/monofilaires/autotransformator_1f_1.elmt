@@ -1,6 +1,13 @@
 <definition width="70" version="0.3" hotspot_x="37" hotspot_y="45" height="80" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="pl">Autotransformator jednofazowy (forma 1)</name>
+        <name lang="ar">مُحوّل ذاتي</name>
+        <name lang="de">Spartransformator</name>
+        <name lang="el">Αυτομετασχηματιστής</name>
+        <name lang="en">Auto-transformer</name>
+        <name lang="it">Autotrasformatore</name>
+        <name lang="fr">Autotransformateur</name>
+        <name lang="pl">Autotransformator</name>
+        <name lang="cs">Autotransformátor</name>
     </names>
     <informations></informations>
     <description>

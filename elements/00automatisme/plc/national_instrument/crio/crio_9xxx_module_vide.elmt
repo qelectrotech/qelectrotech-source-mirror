@@ -1,0 +1,13 @@
+<definition width="70" version="0.3" hotspot_x="34" hotspot_y="56" height="160" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">cRIO 9xxx - module vide</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="40" x="-20" y="-50" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-13" y="-42" size="5" text="NI xxxx"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40" x1="-20" y2="-40" x2="20"/>
+        <input x="-29" y="79" size="9" rotate="true" text="NI cRIO&#xa;  libre"/>
+        <text x="4" y="22" size="10" rotation="270" text="libre"/>
+    </description>
+</definition>
