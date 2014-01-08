@@ -1143,12 +1143,16 @@ LinkElementsCommand::LinkElementsCommand(Element *elmt1, Element *elmt2, QUndoCo
 	QUndoCommand(parent),
 	diagram_(elmt1->diagram()),
 	elmt_1(elmt1),
-	elmt_2(elmt2)
+	elmt_2(elmt2),
+	previous_report(0)
 {
 	if (elmt1->linkType() & Element::AllReport &&
-		elmt2->linkType() & Element::AllReport)
+		elmt2->linkType() & Element::AllReport) {
 		setText(QObject::tr("Lier deux reports de folio",
 							"title for undo LinkElementsCommand if two elements are folio report"));
+		if(!elmt1->isFree())
+			previous_report = elmt1->linkedElements().first();
+	}
 	else setText(QObject::tr("Lier deux éléments"));
 }
 
@@ -1165,6 +1169,8 @@ LinkElementsCommand::~LinkElementsCommand(){}
 void LinkElementsCommand::undo() {
 	diagram_->showMe();
 	elmt_1->unlinkElement(elmt_2);
+	if (previous_report)
+		elmt_1->linkToElement(previous_report);
 }
 
 /**
@@ -1174,4 +1180,45 @@ void LinkElementsCommand::undo() {
 void LinkElementsCommand::redo() {
 	diagram_->showMe();
 	elmt_1->linkToElement(elmt_2);
+}
+
+/**
+ * @brief unlinkElementsCommand::unlinkElementsCommand
+ * Constructor, unlink elmt2 or all elements if elmt2 isn't specified
+ * @param elmt1 element to set undo command
+ * @param elmt2 element to be unlinked
+ * @param parent undo parent
+ */
+unlinkElementsCommand::unlinkElementsCommand(Element *elmt1, Element *elmt2, QUndoCommand *parent):
+	QUndoCommand(parent),
+	diagram_(elmt1->diagram()),
+	element_(elmt1)
+{
+	if (elmt2) elmt_list << elmt2;
+	else elmt_list << elmt1->linkedElements();
+	setText(QObject::tr("D\351lier %n \351l\351ment(s)", "", elmt_list.size()));
+}
+
+/**
+ * @brief unlinkElementsCommand::~unlinkElementsCommand
+ * destructor
+ */
+unlinkElementsCommand::~unlinkElementsCommand(){}
+
+/**
+ * @brief unlinkElementsCommand::undo
+ *undo command
+ */
+void unlinkElementsCommand::undo() {
+	foreach (Element *elmt, elmt_list)
+		element_->linkToElement(elmt);
+}
+
+/**
+ * @brief unlinkElementsCommand::redo
+ *redo command
+ */
+void unlinkElementsCommand::redo() {
+	foreach (Element *elmt, elmt_list)
+		element_->unlinkElement(elmt);
 }

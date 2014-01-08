@@ -598,8 +598,24 @@ class LinkElementsCommand : public QUndoCommand {
 
 	private:
 	//attributes
-	Diagram*diagram_;
-	Element *elmt_1, *elmt_2;
+	Diagram *diagram_;
+	Element *elmt_1, *elmt_2, *previous_report;
+};
+
+class unlinkElementsCommand : public QUndoCommand {
+	public:
+	//constructor destructor
+	unlinkElementsCommand (Element *elmt1, Element *elmt2 = 0, QUndoCommand *parent = 0);
+	virtual ~unlinkElementsCommand();
+	//methods
+	virtual void undo();
+	virtual void redo();
+
+	private:
+	//attributes
+	Diagram *diagram_;
+	Element *element_;
+	QList <Element *> elmt_list;
 };
 
 #endif

@@ -14,8 +14,11 @@
    <string>Form</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="margin">
+    <number>9</number>
+   </property>
    <item>
-    <layout class="QHBoxLayout" name="main_H_layout">
+    <layout class="QVBoxLayout" name="v_main_layout">
      <item>
       <widget class="QGroupBox" name="Report_gb">
        <property name="toolTip">
@@ -60,6 +63,9 @@
            <layout class="QVBoxLayout" name="available_report_layout">
             <property name="sizeConstraint">
              <enum>QLayout::SetMinimumSize</enum>
+            </property>
+            <property name="margin">
+             <number>0</number>
             </property>
            </layout>
           </widget>
