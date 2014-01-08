@@ -656,9 +656,12 @@ RotateElementsCommand::RotateElementsCommand(const QList<Element *> &elements, c
 	elements_to_rotate(elements),
 	texts_to_rotate(texts),
 	images_to_rotate(images),
-	applied_rotation_angle_(90.0),
-	diagram (elements.first()->diagram())
+	applied_rotation_angle_(90.0)
 {
+	if(elements_to_rotate.size()) diagram = elements_to_rotate.first()->diagram();
+	else if (texts_to_rotate.size()) diagram = texts_to_rotate.first()->diagram();
+	else if (images_to_rotate.size()) diagram = images_to_rotate.first()->diagram();
+
 	setText(
 		QString(
 			QObject::tr(
