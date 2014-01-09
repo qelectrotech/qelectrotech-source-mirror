@@ -692,49 +692,49 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Ιδιότητες του διαγράμματος</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="913"/>
+        <location filename="../sources/diagramview.cpp" line="901"/>
         <source>Propriétés de la sélection</source>
         <translation>Ιδιότητες της επιλογής</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="915"/>
+        <location filename="../sources/diagramview.cpp" line="903"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Η επιλογή εμπεριέχει %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="971"/>
+        <location filename="../sources/diagramview.cpp" line="959"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Εφαρμογή ιδιοτήτων σε όλους τους αγωγούς αυτού του δυναμικού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="968"/>
+        <location filename="../sources/diagramview.cpp" line="956"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των ιδιοτήτων του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1033"/>
+        <location filename="../sources/diagramview.cpp" line="1021"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Επιλέξτε το νέο χρώμα αυτού του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1195"/>
+        <location filename="../sources/diagramview.cpp" line="1183"/>
         <source>Selectionner une image...</source>
         <translation>Επιλογή εικόνας...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1195"/>
+        <location filename="../sources/diagramview.cpp" line="1183"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>Αρχεία εικόνων (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1203"/>
+        <location filename="../sources/diagramview.cpp" line="1191"/>
         <source>Erreur</source>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1203"/>
+        <location filename="../sources/diagramview.cpp" line="1191"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation>Αδύνατη η φόρτωση της εικόνας...Λυπάμαι :(</translation>
     </message>
@@ -1623,79 +1623,79 @@ Les changements seront définitifs.</source>
 <context>
     <name>ExportDialog</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="544"/>
+        <location filename="../sources/exportdialog.cpp" line="664"/>
         <source>Aperçu</source>
         <translation>Προεπισκόπηση</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="118"/>
+        <location filename="../sources/exportdialog.cpp" line="128"/>
         <source>Dimensions</source>
         <translation>Διαστάσεις</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="434"/>
+        <location filename="../sources/exportdialog.cpp" line="546"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>Αδυναμία εγγραφής σε αυτό το αρχείο</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="48"/>
+        <location filename="../sources/exportdialog.cpp" line="58"/>
         <source>Exporter les schémas du projet</source>
         <comment>window title</comment>
         <translation>Εξαγωγή των διαγραμμάτων της εργασίας</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="58"/>
+        <location filename="../sources/exportdialog.cpp" line="68"/>
         <source>Exporter</source>
         <translation>Εξαγωγή</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="62"/>
+        <location filename="../sources/exportdialog.cpp" line="72"/>
         <source>Choisissez les schémas que vous désirez exporter ainsi que leurs dimensions :</source>
         <translation>Επιλέξτε τα διαγράμματα τα οποία θα θέλατε να εξαχθούν, και καθορίστε το μέγεθός τους:</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="116"/>
+        <location filename="../sources/exportdialog.cpp" line="126"/>
         <source>Schéma</source>
         <translation>Διάγραμμα</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="117"/>
+        <location filename="../sources/exportdialog.cpp" line="127"/>
         <source>Nom de fichier</source>
         <translation>Όνομα αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="377"/>
+        <location filename="../sources/exportdialog.cpp" line="489"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
         <translation>Πρέπει να ορίσετε ένα μη κενό, και μοναδικό, όνομα για κάθε διάγραμμα που θα εξαχθεί.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="646"/>
-        <location filename="../sources/exportdialog.cpp" line="651"/>
+        <location filename="../sources/exportdialog.cpp" line="766"/>
+        <location filename="../sources/exportdialog.cpp" line="771"/>
         <source>px</source>
         <translation>πιξελ</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="376"/>
+        <location filename="../sources/exportdialog.cpp" line="488"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>Ονόματα αρχείων προορισμού</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="392"/>
+        <location filename="../sources/exportdialog.cpp" line="504"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>Λείπει ο κατάλογος</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="393"/>
+        <location filename="../sources/exportdialog.cpp" line="505"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>Πρέπει να προσδιορίσετε τη διαδρομή του φακέλου στον οποίο θα αποθηκευθούν τα αρχεία εικόνας.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="436"/>
+        <location filename="../sources/exportdialog.cpp" line="548"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Φαίνεται να μην διαθέτετε δικαιώματα εγγραφής για το αρχείο %1.</translation>
@@ -1745,43 +1745,48 @@ Les changements seront définitifs.</source>
         <translation>ΕσΒηΤζι (*.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="151"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="146"/>
+        <source>DXF (*.dxf)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
         <translation>Επιλογές αποτύπωσης</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="180"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="181"/>
         <source>Conserver les couleurs des conducteurs</source>
         <translation>Διατήρηση των χρωματισμών των αγωγών</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="156"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="157"/>
         <source>Exporter le cadre</source>
         <translation>Εξαγωγή των ορίων</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="159"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="160"/>
         <source>Exporter les éléments</source>
         <translation>Εξαγωγή μόνο των στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="164"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="165"/>
         <source>Dessiner la grille</source>
         <translation>Σχεδίαση του δικτυώματος</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="168"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="169"/>
         <source>Dessiner le cadre</source>
         <translation>Σχεδίαση των ορίων</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="173"/>
         <source>Dessiner le cartouche</source>
         <translation>Σχεδίαση της πινακίδας</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="176"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="177"/>
         <source>Dessiner les bornes</source>
         <translation>Σχεδίαση των ακροδεκτών</translation>
     </message>
@@ -1794,18 +1799,28 @@ Les changements seront définitifs.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioreportproperties.ui" line="28"/>
+        <location filename="../sources/ui/folioreportproperties.ui" line="31"/>
         <source>Report de folio disponible :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="49"/>
+        <location filename="../sources/ui/folioreportproperties.cpp" line="54"/>
         <source>Sans titre</source>
         <translation type="unfinished">Ανώνυμο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="50"/>
+        <location filename="../sources/ui/folioreportproperties.cpp" line="55"/>
         <source>Folio  %1 (%2), position %3.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/folioreportproperties.cpp" line="86"/>
+        <source>Ce report est déjà lier.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/folioreportproperties.cpp" line="87"/>
+        <source>Délier</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2514,100 +2529,100 @@ Les changements seront définitifs.</source>
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="652"/>
+        <location filename="../sources/projectview.cpp" line="633"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
         <translation>Διαγραφή των αχρησιμοποίητων στοιχείων της εργασίας</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="653"/>
+        <location filename="../sources/projectview.cpp" line="634"/>
         <source>Supprimer les catégories vides</source>
         <translation>Διαγραφή των άδειων κατηγοριών</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="369"/>
+        <location filename="../sources/projectview.cpp" line="349"/>
         <source>Supprimer le schéma ?</source>
         <comment>message box title</comment>
         <translation>Να διαγραφεί το διάγραμμα;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="370"/>
+        <location filename="../sources/projectview.cpp" line="242"/>
+        <source>Le projet à été modifié.
+Voulez-vous enregistrer les modifications ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="350"/>
         <source>Êtes-vous sûr de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
         <translation>Σίγουρα θέλετε να διαγραφεί αυτή η κατηγορία, από την εργασία;
 Αυτό θα είναι αμετάκλητο.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="439"/>
+        <location filename="../sources/projectview.cpp" line="419"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
         <translation>Ιδιότητες της εργασίας</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="644"/>
+        <location filename="../sources/projectview.cpp" line="625"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Εργασία μόνο για ανάγνωση</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="645"/>
+        <location filename="../sources/projectview.cpp" line="626"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
         <translation>Αυτή η εργασία είναι μόνο για ανάγνωση. Κατά συνέπεια, δεν μπορεί να καθαριστεί.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="651"/>
+        <location filename="../sources/projectview.cpp" line="632"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
         <translation>Διαγραφή των μη χρησιμοποιούμενων προτύπων από την εργασία</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="665"/>
+        <location filename="../sources/projectview.cpp" line="646"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
         <translation>Καθαρισμός της εργασίας</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="287"/>
+        <location filename="../sources/projectview.cpp" line="266"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Αποθήκευση ως</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="249"/>
-        <source>Fermer le projet &quot;%1&quot;</source>
-        <comment>project closing dialog title -- %1 is a project title</comment>
-        <translation>Κλείσιμο της εργασίας&quot;%1&quot; </translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="289"/>
+        <location filename="../sources/projectview.cpp" line="268"/>
         <source>Schéma QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a diagram file</comment>
         <translation>Διάγραμμα του QElectroTech (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="311"/>
+        <location filename="../sources/projectview.cpp" line="290"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
         <translation>Ανενεργή εργασία</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="701"/>
+        <location filename="../sources/projectview.cpp" line="682"/>
         <source>Ajouter un schéma</source>
         <translation>Προσθήκη διαγράμματος</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="715"/>
+        <location filename="../sources/projectview.cpp" line="696"/>
         <source>Ce projet ne contient aucun schéma</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>Αυτή η εργασία δεν περιέχει κάποιο διάγραμμα</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="781"/>
+        <location filename="../sources/projectview.cpp" line="762"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Εργασία</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="526"/>
+        <location filename="../sources/projectview.cpp" line="506"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
         <translation>εργασία</translation>
@@ -3571,47 +3586,47 @@ Options disponibles :
         <translation>Επιτρέπει την προβολή του διαγράμματος, χωρίς να γίνεται μετατροπή του</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1217"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1218"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Επεξεργασία του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1222"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1223"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Επεξεργασία του πλαισίου κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1227"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1228"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Επεξεργασία εικόνας</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1233"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1234"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Επεξεργασία του επιλεγμένου αντικειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1907"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1909"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1842"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1844"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Αδυναμία εύρεσης του συγκεκριμένου στοιχείου στο σχέδιο, γιατί, μάλλον επεξεργάζεται από άλλο παράθυρο</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1848"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1850"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Αδυναμία εύρεσης του συγκεκριμένου στοιχείου στο σχέδιο... επαναφορτώνεται το σχέδιο...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1860"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1862"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Αδυναμία εύρεσης του συγκεκριμένου στοιχείου στο σχέδιο</translation>
     </message>
@@ -3668,7 +3683,7 @@ Options disponibles :
         <translation>Άνοιγμα του αρχείου μόνο για ανάγνωση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1407"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1408"/>
         <source>Active le projet « %1 »</source>
         <translation>Ενεργοποιεί την εργασία « %1 »</translation>
     </message>
@@ -4493,23 +4508,23 @@ Options disponibles :
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="616"/>
+        <location filename="../sources/qetproject.cpp" line="626"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Δεν είναι δυνατή η δημιουργία της κατηγορίας για την ενσωμάτωση των στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="644"/>
+        <location filename="../sources/qetproject.cpp" line="654"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>Παρουσιάστηκε σφάλμα κατά την αντιγραφή της κατηγορίας %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="718"/>
+        <location filename="../sources/qetproject.cpp" line="728"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Παρουσιάστηκε σφάλμα κατά την ενσωμάτωση του προτύπου.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="911"/>
+        <location filename="../sources/qetproject.cpp" line="921"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -4517,53 +4532,53 @@ Que désirez vous faire ?</source>
 Τι θα θέλατε να γίνει;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="965"/>
+        <location filename="../sources/qetproject.cpp" line="975"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation>&lt;b&gt;Άνοιγμα εργασίας...&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1333"/>
+        <location filename="../sources/qetproject.cpp" line="1343"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Παρουσιάστηκε σφάλμα κατά την αντιγραφή του στοιχείου %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="910"/>
+        <location filename="../sources/qetproject.cpp" line="920"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Προειδοποίηση</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="244"/>
+        <location filename="../sources/qetproject.cpp" line="254"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
         <translation>Εργασία &quot;%1 &quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="251"/>
+        <location filename="../sources/qetproject.cpp" line="261"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Εργασία %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="258"/>
+        <location filename="../sources/qetproject.cpp" line="268"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Ανώνυμη εργασία</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="267"/>
+        <location filename="../sources/qetproject.cpp" line="277"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [μόνο-για-ανάγνωση]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="275"/>
+        <location filename="../sources/qetproject.cpp" line="285"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [Αλλαγμένο]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="627"/>
+        <location filename="../sources/qetproject.cpp" line="637"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>Αδύνατη η πρόσβαση στο προς ενσωμάτωση στοιχείο</translation>
     </message>
@@ -4926,7 +4941,7 @@ Que désirez vous faire ?</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="672"/>
+        <location filename="../sources/exportdialog.cpp" line="792"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Εξαγωγή στο πρόχειρο</translation>
     </message>
@@ -4952,112 +4967,131 @@ Que désirez vous faire ?</source>
         <translation>προσθήκη 1 %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="76"/>
+        <location filename="../sources/diagramcommands.cpp" line="78"/>
         <source>Ajouter un champ de texte</source>
         <comment>undo caption</comment>
         <translation>Προσθήκη πλαισίου κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="108"/>
+        <location filename="../sources/diagramcommands.cpp" line="112"/>
         <source>Ajouter une image</source>
         <comment>undo caption</comment>
         <translation>Προσθήκη εικόνας</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="143"/>
+        <location filename="../sources/diagramcommands.cpp" line="149"/>
         <source>ajouter un conducteur</source>
         <comment>undo caption</comment>
         <translation>προσθήκη αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="182"/>
+        <location filename="../sources/diagramcommands.cpp" line="190"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation>διαγραφή του %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="261"/>
+        <location filename="../sources/diagramcommands.cpp" line="271"/>
         <source>coller %1</source>
         <comment>undo caption - %1 is a sentence listing the content to paste</comment>
         <translation>επικόλληση του %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="327"/>
+        <location filename="../sources/diagramcommands.cpp" line="339"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
         <translation>αποκοπή του %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="368"/>
-        <location filename="../sources/diagramcommands.cpp" line="470"/>
-        <location filename="../sources/diagramcommands.cpp" line="580"/>
+        <location filename="../sources/diagramcommands.cpp" line="380"/>
+        <location filename="../sources/diagramcommands.cpp" line="484"/>
+        <location filename="../sources/diagramcommands.cpp" line="598"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>μετακίνηση %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="601"/>
+        <location filename="../sources/diagramcommands.cpp" line="619"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
         <translation>μετατροπή του κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="642"/>
+        <location filename="../sources/diagramcommands.cpp" line="667"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
         <translation>περιστροφή %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="754"/>
+        <location filename="../sources/diagramcommands.cpp" line="784"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
         <translation>Περιστροφή του %1 σε %2°</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="778"/>
+        <location filename="../sources/diagramcommands.cpp" line="808"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation>μετατροπή ενός αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="831"/>
+        <location filename="../sources/diagramcommands.cpp" line="865"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>Επαναφορά του %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="869"/>
+        <location filename="../sources/diagramcommands.cpp" line="905"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
         <translation>μετατροπή της πινακίδας</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="900"/>
+        <location filename="../sources/diagramcommands.cpp" line="938"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
         <translation>μετατροπή των διαστάσεων του διαγράμματος</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="927"/>
+        <location filename="../sources/diagramcommands.cpp" line="967"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>μετατροπή των ιδιοτήτων ενος αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="978"/>
+        <location filename="../sources/diagramcommands.cpp" line="1021"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Επεξεργασία των ιδιοτήτων πολλαπλών αγωγών</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1084"/>
+        <location filename="../sources/diagramcommands.cpp" line="1133"/>
         <source>Agrandire une image à %1 %</source>
         <translation>Μεγέθυνση εικόνας κατά %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1085"/>
+        <location filename="../sources/diagramcommands.cpp" line="1134"/>
         <source>Réduire une image à %1 %</source>
         <translation>Σμίκρυνση εικόνας κατά %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="1154"/>
+        <source>Lier deux reports de folio</source>
+        <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="1159"/>
+        <source>Lier deux Ã©lÃ©ments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/diagramcommands.cpp" line="1202"/>
+        <source>Délier %n élément(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -5277,27 +5311,27 @@ Que désirez vous faire ?</source>
         <translation>παραλληλόγραμμο</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="633"/>
+        <location filename="../sources/exportdialog.cpp" line="753"/>
         <source>Schéma sans titre</source>
         <translation>Ανώνυμο διάγραμμα</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="635"/>
+        <location filename="../sources/exportdialog.cpp" line="755"/>
         <source>schema</source>
         <translation>διάγραμμα</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="660"/>
+        <location filename="../sources/exportdialog.cpp" line="780"/>
         <source>Conserver les proportions</source>
         <translation>Διατήρηση της αναλογίας διαστάσεων</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="664"/>
+        <location filename="../sources/exportdialog.cpp" line="784"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Επαναφορά των διαστάσεων</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="668"/>
+        <location filename="../sources/exportdialog.cpp" line="788"/>
         <source>Aperçu</source>
         <translation>Προεπισκόπηση</translation>
     </message>
@@ -6183,13 +6217,13 @@ Les autres champs ne sont pas utilisés.</source>
 <context>
     <name>TitleBlockTemplate</name>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1311"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1364"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
         <translation> %1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1313"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1366"/>
         <source> %1</source>
         <translation> %1</translation>
     </message>
