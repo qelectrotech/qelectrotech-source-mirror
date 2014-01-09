@@ -1747,7 +1747,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="146"/>
         <source>DXF (*.dxf)</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF (*.dxf)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
@@ -1816,12 +1816,12 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="86"/>
         <source>Ce report est déjà lier.</source>
-        <translation type="unfinished"></translation>
+        <translation>This report is already linked.</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="87"/>
         <source>Délier</source>
-        <translation type="unfinished"></translation>
+        <translation>Unlink</translation>
     </message>
 </context>
 <context>
@@ -2545,7 +2545,8 @@ Changes will be definitive.</translation>
         <location filename="../sources/projectview.cpp" line="242"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation type="unfinished"></translation>
+        <translation>The project was modified.
+Do you want to save changes?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="350"/>
@@ -5073,19 +5074,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1154"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation type="unfinished"></translation>
+        <translation>Link two reports of folio</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1159"/>
         <source>Lier deux Ã©lÃ©ments</source>
-        <translation type="unfinished"></translation>
+        <translation>Link two elements</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1202"/>
         <source>Délier %n élément(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Unlink.%n element</numerusform>
+            <numerusform>Unlink.%n elements</numerusform>
         </translation>
     </message>
     <message>
