@@ -5077,7 +5077,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="1154"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation>Połącz dwa odsyłacze dla strony</translation>
+        <translation>połączenie 2 odsyłaczy do strony</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1159"/>
@@ -5088,9 +5088,9 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="1202"/>
         <source>Délier %n élément(s)</source>
         <translation>
-            <numerusform>Rozłącz %n element</numerusform>
-            <numerusform>Rozłącz %n elementy</numerusform>
-            <numerusform>Rozłącz %n elementów</numerusform>
+            <numerusform>rozłączenie %n elementu</numerusform>
+            <numerusform>rozłączenie %n elementy</numerusform>
+            <numerusform>rozłączenie %n elementów</numerusform>
         </translation>
     </message>
     <message>
@@ -5230,8 +5230,8 @@ Co chcesz zrobić ?</translation>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>elementu</numerusform>
-            <numerusform>%n elementów</numerusform>
+            <numerusform>element</numerusform>
+            <numerusform>%n elementy</numerusform>
             <numerusform>%n elementów</numerusform>
         </translation>
     </message>
@@ -5253,8 +5253,8 @@ Co chcesz zrobić ?</translation>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>przewodu</numerusform>
-            <numerusform>%n przewodów</numerusform>
+            <numerusform>przewód</numerusform>
+            <numerusform>%n przewody</numerusform>
             <numerusform>%n przewodów</numerusform>
         </translation>
     </message>
@@ -6853,7 +6853,7 @@ Długość maksymalna : %2px</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="98"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="102"/>
         <source>Report de folio</source>
-        <translation>Odsyłacz do strony</translation>
+        <translation>Odsyłacze do stron</translation>
     </message>
 </context>
 <context>
