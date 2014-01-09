@@ -1,11 +1,11 @@
-<definition width="20" version="0.3" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="20" hotspot_y="23" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مرجع مُلامس NO (أفقي)</name>
         <name lang="en">Reference contact NO h</name>
-        <name lang="fr">Reference contact NO h</name>
-        <name lang="pl">Odniesienie 1 (pionowo)</name>
-        <name lang="cs">Odkaz_1 - kontakt NO (vodorovný)</name>
         <name lang="it">Rif. contatto NO _ (verticale)</name>
+        <name lang="fr">Reference contact NO h</name>
+        <name lang="pl">Odsyłacz 1 (pionowo)</name>
+        <name lang="cs">Odkaz_1 - kontakt NO (vodorovný)</name>
     </names>
     <informations></informations>
     <description>

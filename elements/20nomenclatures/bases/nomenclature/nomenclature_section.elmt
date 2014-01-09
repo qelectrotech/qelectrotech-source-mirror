@@ -1,11 +1,11 @@
-<definition width="60" version="0.3" hotspot_x="5" hotspot_y="20" height="30" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="4" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">تسمية مساحة المقطع </name>
         <name lang="el">Διατομή αγωγού</name>
         <name lang="en">Classification Section</name>
         <name lang="it">Sezione del conduttore</name>
         <name lang="fr">Nomenclature section</name>
-        <name lang="pl">Oznaczenie - przekrój poprzeczny przewodu</name>
+        <name lang="pl">Przekrój poprzeczny przewodu</name>
         <name lang="cs">Část členění</name>
     </names>
     <informations></informations>

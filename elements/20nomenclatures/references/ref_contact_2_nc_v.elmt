@@ -1,11 +1,11 @@
-<definition width="20" version="0.3" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="20" hotspot_y="23" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مرجع مُلامس NC (عمودي)</name>
         <name lang="en">Reference contact NC (vertical)</name>
-        <name lang="fr">Reference contact NC v</name>
-        <name lang="pl">Odniesienie - zestyk rozwierny (pionowo)</name>
-        <name lang="cs">Odkaz - kontakt NC (svislý)</name>
         <name lang="it">Rif. contatto NC / (verticale)</name>
+        <name lang="fr">Reference contact NC v</name>
+        <name lang="pl">Odsyłacz - zestyk rozwierny (pionowo)</name>
+        <name lang="cs">Odkaz - kontakt NC (svislý)</name>
     </names>
     <informations></informations>
     <description>

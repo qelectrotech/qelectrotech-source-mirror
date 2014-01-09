@@ -1,19 +1,19 @@
-<definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
+<definition width="140" version="0.3" hotspot_x="70" hotspot_y="11" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">علامة مصدر ثلاثي الأطوار</name>
         <name lang="el">Ετικέτα τριφασικού</name>
         <name lang="en">Label three phase</name>
         <name lang="it">Etichetta trifase alternata</name>
         <name lang="fr">Courant alternatif etiquette</name>
-        <name lang="pl">Oznaczenie - prąd przemienny trójfazowy</name>
+        <name lang="pl">Prąd przemienny trójfazowy</name>
         <name lang="cs">Štítek - tři fáze</name>
     </names>
     <informations>EN 60617: 02-02-07</informations>
     <description>
-        <input x="-15" y="-15" size="8" rotate="true" text="3N"/>
-        <arc width="5" x="13.5" y="-17.2" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-20" angle="-100"/>
-        <arc width="5" x="3.5" y="-17.8" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-200" angle="-100"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="8" y2="-13" x2="14"/>
-        <input x="16" y="-15" size="8" rotate="true" text="50 Hz 400/230V"/>
+        <input x="-65" y="5" size="8" rotate="true" text="3N"/>
+        <arc width="5" x="-36.5" y="2.8" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-20" angle="-100"/>
+        <arc width="5" x="-46.5" y="2.2" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-200" angle="-100"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-42" y2="7" x2="-36"/>
+        <input x="-34" y="5" size="8" rotate="true" text="50 Hz 400/230V"/>
     </description>
 </definition>
