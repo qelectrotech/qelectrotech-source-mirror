@@ -3360,7 +3360,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Exporter une nomenclature (beta)</source>
-        <translation>Eksport nomenklatury</translation>
+        <translation>Eksport oznaczeń</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
@@ -6861,7 +6861,7 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="52"/>
         <source>NOMENCLATURE : </source>
-        <translation>NOMENKLATURA : </translation>
+        <translation>OZNACZENIA : </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
@@ -6887,7 +6887,7 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="63"/>
         <source>nomenclature_</source>
-        <translation>nomenklatura_</translation>
+        <translation>oznaczenia_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
