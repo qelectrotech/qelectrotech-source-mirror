@@ -1746,7 +1746,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="146"/>
         <source>DXF (*.dxf)</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF (*.dxf)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
@@ -1815,12 +1815,12 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="86"/>
         <source>Ce report est déjà lier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo riferimento è già collegato</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="87"/>
         <source>Délier</source>
-        <translation type="unfinished"></translation>
+        <translation>Scollega il riferimento</translation>
     </message>
 </context>
 <context>
@@ -2543,7 +2543,8 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/projectview.cpp" line="242"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation type="unfinished"></translation>
+        <translation>La proprietà è stata modificata.
+Salvare le modifiche?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="350"/>
@@ -5071,18 +5072,18 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/diagramcommands.cpp" line="1154"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation type="unfinished"></translation>
+        <translation>Collegare due riferimenti di pagina</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1159"/>
         <source>Lier deux Ã©lÃ©ments</source>
-        <translation type="unfinished"></translation>
+        <translation>Collegare due Elementi</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1202"/>
         <source>Délier %n élément(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Scollegare %n elemento(i)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
