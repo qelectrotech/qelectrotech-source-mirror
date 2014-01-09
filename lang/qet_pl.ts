@@ -1747,7 +1747,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="146"/>
         <source>DXF (*.dxf)</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF (*.dxf)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
@@ -1816,12 +1816,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="86"/>
         <source>Ce report est déjà lier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ten odsyłacz jest już połączony.</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="87"/>
         <source>Délier</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozłącz</translation>
     </message>
 </context>
 <context>
@@ -2544,7 +2544,8 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/projectview.cpp" line="242"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt został zmieniony.
+Czy chcesz zapisać zmiany ?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="350"/>
@@ -5076,20 +5077,20 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="1154"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation type="unfinished"></translation>
+        <translation>Połącz dwa odsyłacze dla strony</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1159"/>
         <source>Lier deux Ã©lÃ©ments</source>
-        <translation type="unfinished"></translation>
+        <translation>Połącz dwa Ã©lÃ©ments</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1202"/>
         <source>Délier %n élément(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Rozłącz %n element</numerusform>
+            <numerusform>Rozłącz %n elementy</numerusform>
+            <numerusform>Rozłącz %n elementów</numerusform>
         </translation>
     </message>
     <message>
