@@ -296,12 +296,12 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="135"/>
         <source>Couleur de fond :</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώμα φόντου:</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="136"/>
         <source>Gris</source>
-        <translation type="unfinished"></translation>
+        <translation>Γκρί</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="112"/>
@@ -1747,7 +1747,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="146"/>
         <source>DXF (*.dxf)</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF (*.dxf)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
@@ -1796,7 +1796,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="31"/>
@@ -1806,12 +1806,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="54"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Ανώνυμο</translation>
+        <translation>Ανώνυμο</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="55"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished"></translation>
+        <translation>Σελίδα  %1 (%2), θέση %3.</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="86"/>
@@ -2548,7 +2548,8 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="242"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Η εργασία έχει τροποποιηθεί.
+Θέλετε να αποθηκευτούν οι αλλαγές;</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="350"/>
@@ -5089,7 +5090,6 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1202"/>
         <source>Délier %n élément(s)</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
