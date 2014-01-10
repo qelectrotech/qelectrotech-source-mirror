@@ -50,12 +50,21 @@ class CustomElement : public FixedElement {
 	QList<Terminal *> list_terminals;
 	QList<ElementTextItem *> list_texts_;
 	bool forbid_antialiasing;
+
+	QList<QLineF *> list_lines_;
+	QList<QRectF *> list_rectangles_;
+	QList<QRectF *> list_circles_;
+	QList<QVector<QPointF> *> list_polygons_;
 	
 	// methods
 	public:
 	virtual QList<Terminal *> terminals() const;
 	virtual QList<Conductor *> conductors() const;
 	virtual QList<ElementTextItem *> texts() const;
+	virtual QList<QLineF *> lines() const;
+	virtual QList<QRectF *> rectangles() const;
+	virtual QList<QRectF *> circles() const;
+	virtual QList<QVector<QPointF> *> polygons() const;
 	virtual int terminalsCount() const;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
 	QString typeId() const;

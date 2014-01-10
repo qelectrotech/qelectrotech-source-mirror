@@ -73,7 +73,13 @@ CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qg
 		elmt_state = 3;
 		return;
 	}
-	
+
+	//Start from empty lists.
+	list_lines_.clear();
+	list_rectangles_.clear();
+	list_circles_.clear();
+	list_polygons_.clear();
+
 	buildFromXml(element_definition -> xml(), &elmt_state);
 	if (state) *state = elmt_state;
 	if (elmt_state) return;
@@ -219,6 +225,26 @@ QList<ElementTextItem *> CustomElement::texts() const {
 	return(list_texts_);
 }
 
+/// @return the list of lines
+QList<QLineF *> CustomElement::lines() const {
+	return(list_lines_);
+}
+
+/// @return the list of rectangles
+QList<QRectF *> CustomElement::rectangles() const {
+	return(list_rectangles_);
+}
+
+/// @return the list of bounding rectangles for circles
+QList<QRectF *> CustomElement::circles() const {
+	return(list_circles_);
+}
+
+/// @return the list of bounding rectangles for circles
+QList<QVector<QPointF> *> CustomElement::polygons() const {
+	return(list_polygons_);
+}
+
 /**
 	@return Le nombre de bornes que l'element possede
 */
@@ -296,6 +322,11 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	qp.setPen(t);
 	
 	QLineF line(x1, y1, x2, y2);
+
+	//Add line to the list
+	QLineF *newLine = new QLineF(line);
+	list_lines_ << newLine;
+
 	QPointF point1(line.p1());
 	QPointF point2(line.p2());
 	
@@ -391,6 +422,11 @@ bool CustomElement::parseRect(QDomElement &e, QPainter &qp) {
 	if (!QET::attributeIsAReal(e, QString("y"),       &rect_y))  return(false);
 	if (!QET::attributeIsAReal(e, QString("width"),   &rect_w))  return(false);
 	if (!QET::attributeIsAReal(e, QString("height"),  &rect_h))  return(false);
+
+	//Add rectangle to the list
+	QRectF *rect = new QRectF(rect_x, rect_y, rect_w, rect_h);
+	list_rectangles_ << rect;
+
 	qp.save();
 	setPainterStyle(e, qp);
 	
@@ -424,7 +460,13 @@ bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 	if (!QET::attributeIsAReal(e, QString("diameter"), &cercle_r)) return(false);
 	qp.save();
 	setPainterStyle(e, qp);
-	qp.drawEllipse(QRectF(cercle_x, cercle_y, cercle_r, cercle_r));
+	QRectF circle_bounding_rect(cercle_x, cercle_y, cercle_r, cercle_r);
+
+	// Add circle to list
+	QRectF *circle = new QRectF(circle_bounding_rect);
+	list_circles_ << circle;
+
+	qp.drawEllipse(circle_bounding_rect);
 	qp.restore();
 	return(true);
 }
@@ -515,10 +557,25 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 			)
 		);
 	}
+
 	qp.save();
 	setPainterStyle(e, qp);
 	if (e.attribute("closed") == "false") qp.drawPolyline(points.data(), i-1);
-	else qp.drawPolygon(points.data(), i-1);
+	else {
+		qp.drawPolygon(points.data(), i-1);
+		// insert first point at the end again for DXF export.
+		points.push_back(
+			QPointF(
+				e.attribute(QString("x%1").arg(1)).toDouble(),
+				e.attribute(QString("y%1").arg(1)).toDouble()
+			)
+		);
+	}
+
+	// Add to list of polygons.
+	QVector<QPointF> *poly = new QVector<QPointF>(points);
+	list_polygons_ << poly;
+
 	qp.restore();
 	return(true);
 }

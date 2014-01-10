@@ -81,6 +81,14 @@ class Element : public QetGraphicsItem {
 	virtual QList<Conductor *> conductors() const = 0;
 	/// @return the list of text items attached to this element
 	virtual QList<ElementTextItem *> texts() const = 0;
+	/// @return the list of lines items in this element
+	virtual QList<QLineF *> lines() const = 0;
+	/// @return the list of rectangles items in this element
+	virtual QList<QRectF *> rectangles() const = 0;
+	/// @return the list of bounding rectangles for circles items in this element
+	virtual QList<QRectF *> circles() const = 0;
+	/// @return the list of polygons in this element
+	virtual QList<QVector<QPointF> *> polygons() const = 0;
 	/// @return the current number of terminals of this element
 	virtual int terminalsCount() const = 0;
 	/// @return the minimum number of terminals for this element

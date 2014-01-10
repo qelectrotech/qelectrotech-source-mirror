@@ -406,8 +406,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	//Draw elements
 	foreach(Element *elmt, list_elements) {
 
-		qreal hot_spot_x = elmt -> pos().x();// + elmt -> hotspot().x();
-		qreal hot_spot_y = elmt -> pos().y();// + elmt -> hotspot().y();
+		qreal hot_spot_x = elmt -> pos().x();
+		qreal hot_spot_y = elmt -> pos().y();// - (diagram -> margin / 2);
 
 		QList<ElementTextItem *> elmt_text = elmt -> texts();
 		foreach(ElementTextItem *dti, elmt_text) {
@@ -418,8 +418,49 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			qreal x = hot_spot_x + dti -> pos().x();
 			x *= Createdxf::xScale;
 			qreal y = hot_spot_y + dti -> pos().y();
-			y = Createdxf::sheetHeight - (y * Createdxf::yScale) - fontSize*1.05;
+			y = Createdxf::sheetHeight - (y * Createdxf::yScale) - fontSize;
 			Createdxf::drawText(file_path, dti -> toPlainText(), x, y, fontSize, dti -> rotationAngle(), 0 );
+		}
+
+		QList<QLineF *> elmt_line = elmt -> lines();
+		foreach(QLineF *line, elmt_line) {
+			qreal x1 = (hot_spot_x + line -> p1().x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (hot_spot_y + line -> p1().y()) * Createdxf::yScale;
+			qreal x2 = (hot_spot_x + line -> p2().x()) * Createdxf::xScale;
+			qreal y2 = Createdxf::sheetHeight - (hot_spot_y + line -> p2().y()) * Createdxf::yScale;
+			Createdxf::drawLine(file_path, x1, y1, x2, y2, 0);
+		}
+
+		QList<QRectF *> elmt_rectangle = elmt -> rectangles();
+		foreach(QRectF *rect, elmt_rectangle) {
+			qreal x1 = (hot_spot_x + rect -> bottomLeft().x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (hot_spot_y + rect -> bottomLeft().y()) * Createdxf::yScale;
+			qreal w = rect -> width() * Createdxf::xScale;
+			qreal h = rect -> height() * Createdxf::yScale;
+			Createdxf::drawRectangle(file_path, x1, y1, w, h, 0);
+		}
+
+		QList<QRectF *> elmt_circle = elmt -> circles();
+		foreach(QRectF *circle_rect, elmt_circle) {
+			qreal x1 = (hot_spot_x + circle_rect ->center().x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (hot_spot_y + circle_rect -> center().y()) * Createdxf::yScale;
+			qreal r = circle_rect -> width() * Createdxf::xScale / 2;
+			Createdxf::drawCircle(file_path, r, x1, y1, 0);
+		}
+
+		QList<QVector<QPointF> *> elmt_polygon = elmt -> polygons();
+		foreach(QVector<QPointF> *polygon, elmt_polygon) {
+			if (polygon -> size() == 0)
+				continue;
+			qreal x1 = (hot_spot_x + polygon -> at(0).x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (hot_spot_y + polygon -> at(0).y()) * Createdxf::yScale;
+			for (int i = 1; i < polygon -> size(); ++i ) {
+				qreal x2 = (hot_spot_x + polygon -> at(i).x()) * Createdxf::xScale;
+				qreal y2 = Createdxf::sheetHeight - (hot_spot_y + polygon -> at(i).y()) * Createdxf::yScale;
+				Createdxf::drawLine(file_path, x1, y1, x2, y2, 0);
+				x1 = x2;
+				y1 = y2;
+			}
 		}
 	}
 
