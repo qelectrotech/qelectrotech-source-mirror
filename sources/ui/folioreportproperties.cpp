@@ -45,7 +45,8 @@ void FolioReportProperties::buildRadioList() {
 	int rep = element_->linkType() == Element::NextReport? Element::PreviousReport : Element::NextReport;
 	ElementProvider ep(element_->diagram()->project(), element_->diagram());
 	QList <Element *> elmt_list = ep.freeElement(rep);
-
+	qSort(elmt_list);
+	qDebug() <<elmt_list;
 	foreach (Element *elmt, elmt_list) {
 		if (elmt != element_) {
 			//label for the button
