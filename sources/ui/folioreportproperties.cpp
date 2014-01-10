@@ -66,6 +66,8 @@ void FolioReportProperties::buildRadioList() {
 			hl->addWidget(pb);
 			ui->available_report_layout->addLayout(hl);
 			element_list << elmt;
+			qSort(element_list);
+			qDebug() <<element_list;
 			//map the radio button signal
 			connect(rb, SIGNAL(clicked()), sm_, SLOT(map()));
 			sm_ -> setMapping(rb, element_list.size()-1);
