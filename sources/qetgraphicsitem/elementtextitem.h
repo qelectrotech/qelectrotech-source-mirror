@@ -72,6 +72,10 @@ class ElementTextItem : public DiagramTextItem {
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+	virtual void focusOutEvent(QFocusEvent *e) {DiagramTextItem::focusOutEvent(e); setFlag(QGraphicsItem::ItemIsMovable, false);}
+
+	private:
+	void build();
 };
 
 /**

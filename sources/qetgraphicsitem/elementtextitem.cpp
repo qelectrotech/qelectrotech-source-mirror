@@ -31,15 +31,7 @@ ElementTextItem::ElementTextItem(Element *parent_element, Diagram *parent_diagra
 	follow_parent_rotations(false),
 	original_rotation_angle_(0.0),
 	first_move_(true)
-{
-	// par defaut, les DiagramTextItem sont Selectable et Movable
-	// cela nous convient, on ne touche pas a ces flags
-	
-	adjustItemPosition(1);
-	// ajuste la position du QGraphicsItem lorsque le QTextDocument change
-	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
-	connect(document(), SIGNAL(contentsChanged()),      this, SLOT(adjustItemPosition()));
-}
+{build();}
 
 /**
 	Constructeur
@@ -53,10 +45,11 @@ ElementTextItem::ElementTextItem(const QString &text, Element *parent_element, D
 	follow_parent_rotations(false),
 	original_rotation_angle_(0.0),
 	first_move_(true)
-{
-	// par defaut, les DiagramTextItem sont Selectable et Movable
-	// cela nous convient, on ne touche pas a ces flags
-	
+{build();}
+
+void ElementTextItem::build() {
+	setFlag(QGraphicsItem::ItemIsMovable, false);
+	setToolTip(tr("Maintenir ctrl pour d\351placer", "tool tip for element text item"));
 	adjustItemPosition(1);
 	// ajuste la position du QGraphicsItem lorsque le QTextDocument change
 	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
@@ -224,9 +217,10 @@ void ElementTextItem::applyRotation(const qreal &angle) {
 void ElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	first_move_ = true;
 	if (e -> modifiers() & Qt::ControlModifier) {
-		setSelected(!isSelected());
+		setSelected(true);
+		setFlag(QGraphicsItem::ItemIsMovable, true);
 	}
-	DiagramTextItem::mousePressEvent(e);
+	else DiagramTextItem::mousePressEvent(e);
 }
 
 /**
@@ -307,4 +301,5 @@ void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (!(e -> modifiers() & Qt::ControlModifier)) {
 		QGraphicsTextItem::mouseReleaseEvent(e);
 	}
+	setFlag(QGraphicsItem::ItemIsMovable, false);
 }
