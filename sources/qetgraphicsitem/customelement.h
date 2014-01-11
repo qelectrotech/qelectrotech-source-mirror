@@ -55,6 +55,7 @@ class CustomElement : public FixedElement {
 	QList<QRectF *> list_rectangles_;
 	QList<QRectF *> list_circles_;
 	QList<QVector<QPointF> *> list_polygons_;
+	QList<QVector<qreal> *> list_arcs_;
 	
 	// methods
 	public:
@@ -65,6 +66,7 @@ class CustomElement : public FixedElement {
 	virtual QList<QRectF *> rectangles() const;
 	virtual QList<QRectF *> circles() const;
 	virtual QList<QVector<QPointF> *> polygons() const;
+	virtual QList<QVector<qreal> *> arcs() const;
 	virtual int terminalsCount() const;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
 	QString typeId() const;

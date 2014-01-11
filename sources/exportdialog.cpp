@@ -462,6 +462,26 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 				y1 = y2;
 			}
 		}
+
+		// Draw arcs and ellipses
+		QList<QVector<qreal> *> elmt_arc = elmt -> arcs();
+		foreach(QVector<qreal> *arc, elmt_arc) {
+			if (arc -> size() == 0)
+				continue;
+			qreal x = (hot_spot_x + arc -> at(0)) * Createdxf::xScale;
+			qreal y = Createdxf::sheetHeight - (hot_spot_y + arc -> at(1)) * Createdxf::yScale;
+			qreal w = arc -> at(2) * Createdxf::xScale;
+			qreal h = arc -> at(3) * Createdxf::yScale;
+			qreal startAngle = arc -> at(4);
+			qreal spanAngle = arc -> at(5);
+
+			// approximate this to center_x, center_y, radius, start angle and end angle.
+			qreal center_x = x + w/2;
+			qreal center_y = y - w/2;
+			qreal radius = (w+h)/4;
+			qreal endAngle = startAngle + spanAngle;
+			Createdxf::drawArc(file_path, center_x, center_y, radius, endAngle, startAngle, 0);
+		}
 	}
 
 	//Draw conductors

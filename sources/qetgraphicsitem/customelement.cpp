@@ -79,6 +79,7 @@ CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qg
 	list_rectangles_.clear();
 	list_circles_.clear();
 	list_polygons_.clear();
+	list_arcs_.clear();
 
 	buildFromXml(element_definition -> xml(), &elmt_state);
 	if (state) *state = elmt_state;
@@ -243,6 +244,11 @@ QList<QRectF *> CustomElement::circles() const {
 /// @return the list of bounding rectangles for circles
 QList<QVector<QPointF> *> CustomElement::polygons() const {
 	return(list_polygons_);
+}
+
+/// @return the list of arcs
+QList<QVector<qreal> *> CustomElement::arcs() const {
+	return(list_arcs_);
 }
 
 /**
@@ -493,6 +499,16 @@ bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 	if (!QET::attributeIsAReal(e, QString("height"), &ellipse_h))  return(false);
 	qp.save();
 	setPainterStyle(e, qp);
+
+	QVector<qreal> *arc = new QVector<qreal>;
+	arc -> push_back(ellipse_x);
+	arc -> push_back(ellipse_y);
+	arc -> push_back(ellipse_l);
+	arc -> push_back(ellipse_h);
+	arc -> push_back(0);
+	arc -> push_back(360);
+	list_arcs_ << arc;
+
 	qp.drawEllipse(QRectF(ellipse_x, ellipse_y, ellipse_l, ellipse_h));
 	qp.restore();
 	return(true);
@@ -524,6 +540,16 @@ bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 	
 	qp.save();
 	setPainterStyle(e, qp);
+
+	QVector<qreal> *arc = new QVector<qreal>;
+	arc -> push_back(arc_x);
+	arc -> push_back(arc_y);
+	arc -> push_back(arc_l);
+	arc -> push_back(arc_h);
+	arc -> push_back(arc_s);
+	arc -> push_back(arc_a);
+	list_arcs_ << arc;
+
 	qp.drawArc(QRectF(arc_x, arc_y, arc_l, arc_h), (int)(arc_s * 16), (int)(arc_a * 16));
 	qp.restore();
 	return(true);
@@ -547,7 +573,7 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 		else break;
 	}
 	if (i < 3) return(false);
-	QVector<QPointF> points(i-1);
+	QVector<QPointF> points; // empty vector created instead of default initialized vector with i-1 elements.
 	for (int j = 1 ; j < i ; ++ j) {
 		points.insert(
 			j - 1,
@@ -563,13 +589,9 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 	if (e.attribute("closed") == "false") qp.drawPolyline(points.data(), i-1);
 	else {
 		qp.drawPolygon(points.data(), i-1);
+
 		// insert first point at the end again for DXF export.
-		points.push_back(
-			QPointF(
-				e.attribute(QString("x%1").arg(1)).toDouble(),
-				e.attribute(QString("y%1").arg(1)).toDouble()
-			)
-		);
+		points.push_back(points[0]);
 	}
 
 	// Add to list of polygons.

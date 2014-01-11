@@ -88,7 +88,9 @@ class Element : public QetGraphicsItem {
 	/// @return the list of bounding rectangles for circles items in this element
 	virtual QList<QRectF *> circles() const = 0;
 	/// @return the list of polygons in this element
-	virtual QList<QVector<QPointF> *> polygons() const = 0;
+	virtual QList<QVector<QPointF> *> polygons() const = 0;	
+	/// @return the list of arcs in this element
+	virtual QList<QVector<qreal> *> arcs() const = 0;
 	/// @return the current number of terminals of this element
 	virtual int terminalsCount() const = 0;
 	/// @return the minimum number of terminals for this element
