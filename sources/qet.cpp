@@ -111,6 +111,7 @@ QET::Orientation QET::previousOrientation(QET::Orientation o) {
 	@return true si le point appartient au segment de droite, false sinon
 */
 bool QET::lineContainsPoint(const QLineF &line, const QPointF &point) {
+	if (point == line.p1()) return(true);
 	QLineF point_line(line.p1(), point);
 	if (point_line.unitVector() != line.unitVector()) return(false);
 	return(point_line.length() <= line.length());
