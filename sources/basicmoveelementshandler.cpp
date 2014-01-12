@@ -38,105 +38,105 @@ BasicMoveElementsHandler::~BasicMoveElementsHandler() {
 }
 
 /**
-	@param action Action a renvoyer si un item existe deja
+	@param action Action return if an item already exists
 */
 void BasicMoveElementsHandler::setActionIfItemAlreadyExists(QET::Action action) {
 	already_exists_ = action;
 }
 
 /**
-	@param action Action a renvoyer si un item n'est pas lisible
+	@param action Action return if an item is not readable
 */
 void BasicMoveElementsHandler::setActionIfItemIsNotReadable(QET::Action action) {
 	not_readable_ = action;
 }
 
 /**
-	@param action Action a renvoyer si un item n'est pas accessible en ecriture
+	@param action Action return if an item is not writable
 */
 void BasicMoveElementsHandler::setActionIfItemIsNotWritable(QET::Action action) {
 	not_writable_ = action;
 }
 
 /**
-	@param action Action a renvoyer si un item provoque une erreur
+	@param action Action if a return item causes an error
 */
 void BasicMoveElementsHandler::setActionIfItemTriggersAnError(QET::Action action) {
 	error_ = action;
 }
 
 /**
-	@param name Nom a renvoyer pour une eventuelle operation de renommage
-	Il est toutefois deconseille de proceder a un renommage systematique, vu que
-	cette propriete est invariable.
+	@param name Name refer to a possible renaming operation
+	However, it is not recommended to proceed to a systematic renaming, as
+	this property is invariable.
 */
 void BasicMoveElementsHandler::setNameForRenamingOperation(const QString &name) {
 	rename_ = name;
 }
 
 /**
-	@return l'action a effectuer si la categorie cible existe deja
+	@return the action to be performed if the target category already exists
 */
 QET::Action BasicMoveElementsHandler::categoryAlreadyExists(ElementsCategory *, ElementsCategory  *) {
 	return(already_exists_);
 }
 
 /**
-	@return l'action a effectuer si l'element cible existe deja
+	@return the action performed if the target element already exists
 */
 QET::Action BasicMoveElementsHandler::elementAlreadyExists(ElementDefinition *, ElementDefinition *) {
 	return(already_exists_);
 }
 
 /**
-	@return l'action a effectuer si la categorie existe deja
+	@return the action to take if the category already exists
 */
 QET::Action BasicMoveElementsHandler::categoryIsNotReadable(ElementsCategory *) {
 	return(not_readable_);
 }
 
 /**
-	@return l'action a effectuer si l'element existe deja
+	@return the action to take if the element already exists
 */
 QET::Action BasicMoveElementsHandler::elementIsNotReadable(ElementDefinition *) {
 	return(not_readable_);
 }
 
 /**
-	@return l'action a effectuer si la categorie cible n'est pas accessible
-	en ecriture
+	@return the action to be performed if the target category is not accessible
+	in writing
 */
 QET::Action BasicMoveElementsHandler::categoryIsNotWritable(ElementsCategory *) {
 	return(not_writable_);
 }
 
 /**
-	@return l'action a effectuer si l'element cible n'est pas accessible
-	en ecriture
+	@return the action performed if the target element is not accessible
+	in writing
 */
 QET::Action BasicMoveElementsHandler::elementIsNotWritable(ElementDefinition *) {
 	return(not_writable_);
 }
 
 /**
-	@return l'action a effectuer lorsque l'erreur decrite dans la QString
-	s'est produite avec la categorie indiquee
+	@return the action to be performed when the error described in the QString
+	occurred with dieters category
 */
 QET::Action BasicMoveElementsHandler::errorWithACategory(ElementsCategory *, const QString &) {
 	return(error_);
 }
 
 /**
-	@return l'action a effectuer lorsque l'erreur decrite dans la QString
-	s'est produite avec l'element indique
+	@return the action to be performed when the error described in the QString
+	occurred with the element indicates
 */
 QET::Action BasicMoveElementsHandler::errorWithAnElement(ElementDefinition *, const QString &) {
 	return(error_);
 }
 
 /**
-	@return le nom a utiliser pour le renommage si une methode de cet objet
-	a precedemment renvoye QET::Rename.
+	@return the name to use for renaming if a method of this object
+	has previously sent back QET::Rename.
 */
 QString BasicMoveElementsHandler::nameForRenamingOperation() {
 	return(rename_);

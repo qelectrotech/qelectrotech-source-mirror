@@ -23,7 +23,7 @@
 
 /**
 	Constructeur
-	@param parent Le QWidget parent de la boite de dialogue
+	@param parent The parent of the dialog QWidget
 */
 AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	// Titre, taille, comportement...
@@ -60,7 +60,7 @@ AboutQET::~AboutQET() {
 }
 
 /**
-	@return Le titre QElectroTech avec son icone
+	@return The title QElectroTech with its icon
 */
 QWidget *AboutQET::title() const {
 	QWidget *icon_and_title = new QWidget();
@@ -87,7 +87,7 @@ QWidget *AboutQET::title() const {
 }
 
 /**
-	@return Le widget contenu par l'onglet "A propos"
+	@return The widget content tab "About"
 */
 QWidget *AboutQET::aboutTab() const {
 	QLabel *about = new QLabel(
@@ -106,7 +106,7 @@ QWidget *AboutQET::aboutTab() const {
 }
 
 /**
-	@return Le widget contenu par l'onglet "Auteurs"
+	@return The widget content by "Authors" tab
 */
 QWidget *AboutQET::authorsTab() const {
 	QLabel *authors = new QLabel();
@@ -122,7 +122,7 @@ QWidget *AboutQET::authorsTab() const {
 }
 
 /**
-	@return Le widget contenu par l'onglet "Traducteurs"
+	@return The widget content via the "Translators" tab
 */
 QWidget *AboutQET::translatorsTab() const {
 	QLabel *translators = new QLabel();
@@ -158,7 +158,7 @@ QWidget *AboutQET::translatorsTab() const {
 }
 
 /**
-	@return Le widget contenu par l'onglet "Contributeurs"
+	@return The widget content via the "Contributors" tab
 */
 QWidget *AboutQET::contributorsTab() const {
 	QLabel *contributors = new QLabel();
@@ -184,7 +184,7 @@ QWidget *AboutQET::contributorsTab() const {
 }
 
 /**
-	@return Le widget contenu par l'onglet "Accord de Licence"
+	@return The widget content via the "License Agreement" tab
 */
 QWidget *AboutQET::licenseTab() const {
 	QWidget *license = new QWidget();
@@ -205,11 +205,11 @@ QWidget *AboutQET::licenseTab() const {
 }
 
 /**
-	Ajoute une personne a la liste des auteurs
-	@param label QLabel auquel sera ajoute la personne
-	@param name  Nom de la personne
-	@param email Adresse e-mail de la personne
-	@param work  Fonction / travail effectue par la personne
+	Adds a person to the list of authors
+	@param label QLabel which will add the person
+	@param name  Name of person
+	@param email E-mail address of the person
+	@param work  Function / work done by the person
 */
 void AboutQET::addAuthor(QLabel *label, const QString &name, const QString &email, const QString &work) const {
 	QString new_text = label -> text();
