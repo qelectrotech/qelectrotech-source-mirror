@@ -418,8 +418,14 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			qreal x = hot_spot_x + dti -> pos().x();
 			x *= Createdxf::xScale;
 			qreal y = hot_spot_y + dti -> pos().y();
-			y = Createdxf::sheetHeight - (y * Createdxf::yScale) - fontSize;
-			Createdxf::drawText(file_path, dti -> toPlainText(), x, y, fontSize, dti -> rotationAngle(), 0 );
+			y = Createdxf::sheetHeight - (y * Createdxf::yScale);// - fontSize;
+			QStringList lines = dti -> toPlainText().split('\n');
+			y += (fontSize/2) * (lines.count()-1);
+			foreach (QString line, lines) {
+				Createdxf::drawText(file_path, line, x, y, fontSize, dti -> rotationAngle(), 0 );
+				y -= fontSize*1.06;
+			}
+
 		}
 
 		QList<QLineF *> elmt_line = elmt -> lines();
@@ -501,8 +507,13 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 				fontSize = textItem -> font().pixelSize();
 			fontSize *= Createdxf::yScale;
 			qreal x = (textItem -> pos().x()) * Createdxf::xScale;
-			qreal y = Createdxf::sheetHeight - (textItem -> pos().y() * Createdxf::yScale) - fontSize*1.05;
-			Createdxf::drawText(file_path, textItem -> toPlainText(), x, y, fontSize, textItem -> rotationAngle(), 0 );
+			qreal y = Createdxf::sheetHeight - (textItem -> pos().y() * Createdxf::yScale) - fontSize;
+			QStringList lines = textItem->toPlainText().split('\n');
+			foreach (QString line, lines) {
+				Createdxf::drawText(file_path, line, x, y, fontSize, textItem -> rotationAngle(), 0 );
+				y -= fontSize*1.06;
+			}
+
 		}
 	}
 
@@ -514,7 +525,11 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		fontSize *= Createdxf::yScale;
 		qreal x = (dti -> pos().x()) * Createdxf::xScale;
 		qreal y = Createdxf::sheetHeight - (dti -> pos().y() * Createdxf::yScale) - fontSize*1.05;
-		Createdxf::drawText(file_path, dti -> toPlainText(), x, y, fontSize, dti -> rotationAngle(), 0 );
+		QStringList lines = dti -> toPlainText().split('\n');
+		foreach (QString line, lines) {
+			Createdxf::drawText(file_path, line, x, y, fontSize, dti -> rotationAngle(), 0 );
+			y -= fontSize*1.06;
+		}
 	}
 
 
