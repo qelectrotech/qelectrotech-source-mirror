@@ -5737,13 +5737,13 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Forte</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Έντονο</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πολύ έντονο</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
