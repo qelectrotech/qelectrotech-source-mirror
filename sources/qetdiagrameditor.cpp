@@ -1301,6 +1301,11 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 	
 	// gere la fermeture du projet
 	connect(project_view, SIGNAL(projectClosed(ProjectView*)), this, SLOT(projectWasClosed(ProjectView *)));
+
+	// gere l'ouverture d'un autre projet apres fermeture
+	connect(new_file, SIGNAL(triggered()), this, SLOT(slot_updateActions()));
+	connect(open_file, SIGNAL(triggered()), this, SLOT(slot_updateActions()));
+	connect(QETApp::projectsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)), this, SLOT(slot_updateActions()));
 	
 	// gere l'ajout et le retrait de schema du projet
 	connect(project_view, SIGNAL(diagramAdded(DiagramView *)),   this, SLOT(diagramWasAdded(DiagramView *)));
