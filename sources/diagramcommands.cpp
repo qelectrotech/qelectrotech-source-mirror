@@ -734,7 +734,8 @@ RotateTextsCommand::RotateTextsCommand(const QHash<DiagramTextItem *, double> &p
 */
 RotateTextsCommand::RotateTextsCommand(const QList<DiagramTextItem *> &texts, double applied_rotation, QUndoCommand *parent) :
 	QUndoCommand(parent),
-	applied_rotation_angle_(applied_rotation)
+	applied_rotation_angle_(applied_rotation),
+	diagram(texts.first()->diagram())
 {
 	foreach(DiagramTextItem *text, texts) {
 		texts_to_rotate.insert(text, text -> rotationAngle());
