@@ -20,7 +20,10 @@ FolioReportProperties::FolioReportProperties(Element *elmt, QWidget *parent) :
 {
 	ui->setupUi(this);
 	unlink = false;
-	if(element_->isFree()) buildRadioList();
+	if(element_->isFree()) {
+		buildRadioList();
+		ui->button_linked->setDisabled(true);
+	}
 	else buildUnlinkButton();
 }
 
@@ -39,7 +42,7 @@ void FolioReportProperties::buildRadioList() {
 	sm_ = new QSignalMapper(this);
 	connect(sm_, SIGNAL(mapped(int)), this, SLOT(linkToElement(int)));
 	sm_show_ = new QSignalMapper(this);
-	connect(sm_show_, SIGNAL(mapped(int)), this, SLOT(showDiagram(int)));
+	connect(sm_show_, SIGNAL(mapped(int)), this, SLOT(showElementFromList(int)));
 
 	//Research the invert report of @element_
 	int rep = element_->linkType() == Element::NextReport? Element::PreviousReport : Element::NextReport;
@@ -118,13 +121,39 @@ void FolioReportProperties::unlinkClicked() {
 }
 
 /**
- * @brief FolioReportProperties::showDiagram
- * Show the wanted report element
- * @param i position of wanted element in element_list
+ * @brief FolioReportProperties::showElement
+ * Show the required element
+ * @param elmt: element to be displayed
  */
-void FolioReportProperties::showDiagram(const int i) {
-	Element *elmt = element_list.at(i);
+void FolioReportProperties::showElement(Element *elmt) {
 	elmt->diagram()->showMe();
 	foreach (QGraphicsItem *qgi, elmt->diagram()->selectedItems()) qgi->setSelected(false);
 	elmt->setSelected(true);
+}
+
+/**
+ * @brief FolioReportProperties::showElementFromList
+ * Show element at the position @i from @element_list
+ * @param i position of element to be displayed
+ */
+void FolioReportProperties::showElementFromList(const int i) {
+	if (element_list.size() > i)
+		showElement(element_list.at(i));
+}
+
+/**
+ * @brief FolioReportProperties::on_button_this_clicked
+ * Action when push button "this report" is clicked
+ */
+void FolioReportProperties::on_button_this_clicked() {
+	showElement(element_);
+}
+
+/**
+ * @brief FolioReportProperties::on_button_linked_clicked
+ * Action when push button "linked report" is clicked
+ */
+void FolioReportProperties::on_button_linked_clicked() {
+	if (element_->isFree()) return;
+	showElement(element_->linkedElements().first());
 }

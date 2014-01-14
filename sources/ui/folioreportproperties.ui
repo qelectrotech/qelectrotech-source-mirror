@@ -57,7 +57,7 @@
              <x>0</x>
              <y>0</y>
              <width>370</width>
-             <height>258</height>
+             <height>224</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="available_report_layout">
@@ -73,6 +73,24 @@
         </item>
        </layout>
       </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="button_this">
+         <property name="text">
+          <string>Voir ce report</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="button_linked">
+         <property name="text">
+          <string>Voir le report lié</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>

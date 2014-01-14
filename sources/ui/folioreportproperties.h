@@ -15,16 +15,20 @@ class FolioReportProperties : public QWidget
 	public:
 	explicit FolioReportProperties(Element *elmt, QWidget *parent = 0);
 	~FolioReportProperties();
-	void buildRadioList();
-	void buildUnlinkButton();
 	void Apply();
 
 	private slots:
 	void linkToElement(const int i) {element_to_link = element_list.at(i);}
 	void unlinkClicked();
-	void showDiagram(const int i);
+	void showElement(Element *elmt);
+	void showElementFromList (const int i);
+	void on_button_this_clicked();
+	void on_button_linked_clicked();
 
 	private:
+	void buildRadioList();
+	void buildUnlinkButton();
+
 	Element *element_, *element_to_link;
 	QList <Element *> element_list;
 	Ui::FolioReportProperties *ui;
