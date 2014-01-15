@@ -5,6 +5,7 @@
         <name lang="it">Interf. seriale</name>
         <name lang="fr">Interface RS 232</name>
         <name lang="pl">Interfejs KNX / RS 232</name>
+        <name lang="es">Interface serial RS232</name>
     </names>
     <informations></informations>
     <description>

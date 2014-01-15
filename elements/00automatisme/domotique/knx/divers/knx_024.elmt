@@ -5,6 +5,7 @@
         <name lang="it">Bus di campo</name>
         <name lang="fr">Interface KNX / FB (Fieldbus)</name>
         <name lang="pl">Interfejs KNX / FB (Fieldbus)</name>
+        <name lang="es">Interfaz FB (bus de campo)</name>
     </names>
     <informations></informations>
     <description>
