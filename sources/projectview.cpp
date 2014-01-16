@@ -238,7 +238,10 @@ int ProjectView::tryClosingDiagrams() {
 		return(QMessageBox::Discard);
 	}
 
-	int close_dialog = QMessageBox::question(this, project()->title(),
+	QString title = project()->title();
+	if (title.isEmpty()) title = "QElectroTech";
+
+	int close_dialog = QMessageBox::question(this, title,
 								   tr("Le projet \340 \351t\351 modifi\351.\n"
 									  "Voulez-vous enregistrer les modifications ?"),
 								   QMessageBox::Save | QMessageBox::Discard
