@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="33" hotspot_y="57" height="160" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">cRIO 9xxx - module vide</name>
+        <name lang="it">cRIO 9xxx - modulo vuoto</name>
         <name lang="pl">cRIO 9xxx - pusty moduł</name>
     </names>
     <informations></informations>

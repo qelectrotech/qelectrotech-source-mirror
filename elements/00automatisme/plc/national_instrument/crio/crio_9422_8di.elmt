@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="33" hotspot_y="77" height="180" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">cRIO 9422 - 8 entrées num</name>
+        <name lang="it">cRIO 9422 - modulo 8 ingressi digitali</name>
         <name lang="pl">cRIO 9422 - ośmiokanałowy moduł wejść cyfrowych </name>
     </names>
     <informations></informations>

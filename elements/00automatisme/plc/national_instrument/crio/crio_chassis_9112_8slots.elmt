@@ -1,6 +1,7 @@
 <definition width="690" version="0.3" hotspot_x="85" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">châssis cRIO 9112 - 8 slots</name>
+        <name lang="it">cRIO 9112 - chassis a 8 slot</name>
         <name lang="pl">cRIO 9112 - podstawa montażowa ośmio modułowa</name>
     </names>
     <informations></informations>

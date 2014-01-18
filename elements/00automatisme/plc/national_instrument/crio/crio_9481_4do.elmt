@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="33" hotspot_y="77" height="180" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">cRIO 9481 - 4 sorties relais 2A</name>
+        <name lang="it">cRIO 9481 - modulo 4 uscite a relè 2A</name>
         <name lang="pl">cRIO - czterokanałowy moduł wyjść przekaźnikowych</name>
     </names>
     <informations></informations>

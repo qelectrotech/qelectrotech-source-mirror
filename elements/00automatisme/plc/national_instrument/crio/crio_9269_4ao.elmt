@@ -1,6 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="33" hotspot_y="77" height="180" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">cRIO 9269 4 sorties ana</name>
+        <name lang="it">cRIO 9269 modulo 4 uscite analogiche</name>
         <name lang="pl">cRIO 9269 wyjścia analogowe</name>
     </names>
     <informations></informations>

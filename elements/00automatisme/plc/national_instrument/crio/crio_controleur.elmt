@@ -1,6 +1,7 @@
 <definition width="100" version="0.3" hotspot_x="55" hotspot_y="66" height="150" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">contrôleur cRIO</name>
+        <name lang="it">cRIO 9024 - controller real-time</name>
         <name lang="pl">cRIO 9024 - sterownik czasu rzeczywistego</name>
     </names>
     <informations></informations>
