@@ -24,42 +24,38 @@
 #include "bordertitleblock.h"
 #include "qeticons.h"
 #include "exportpropertieswidget.h"
+#include "ui/reportpropertiewidget.h"
 
 /**
 	Constructeur
 	@param parent QWidget parent
 */
 NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
-	// dimensions par defaut d'un schema
-	bpw = new BorderPropertiesWidget(QETDiagramEditor::defaultBorderProperties());
-	
-	// proprietes par defaut d'un cartouche
+	// main tab widget
+	QTabWidget *tab_widget = new QTabWidget(this);
+
+	// dimensions by default for diagram
+	bpw = new BorderPropertiesWidget(QETDiagramEditor::defaultBorderProperties());	
+	// default titleblock properties
 	ipw = new TitleBlockPropertiesWidget(QETDiagramEditor::defaultTitleBlockProperties(), true);
+	QWidget *diagram_widget = new QWidget();
+	QVBoxLayout *diagram_layout = new QVBoxLayout(diagram_widget);
+	diagram_layout -> addWidget(bpw);
+	diagram_layout -> addWidget(ipw);
+	tab_widget->addTab(diagram_widget, tr("Sch\351ma"));
 	
-	// proprietes par defaut des conducteurs
+	// default conductor properties
 	cpw = new ConductorPropertiesWidget(QETDiagramEditor::defaultConductorProperties());
 	cpw -> setContentsMargins(0, 0, 0, 0);
+	tab_widget->addTab(cpw, tr("Conducteur"));
+
+	// default propertie of report label
+	rpw = new ReportPropertieWidget(QETDiagramEditor::defaultReportProperties());
+	tab_widget->addTab(rpw, ("Report de folio"));
 	
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
-	
-	QLabel *title = new QLabel(this -> title());
-	vlayout1 -> addWidget(title);
-	
-	QFrame *horiz_line = new QFrame();
-	horiz_line -> setFrameShape(QFrame::HLine);
-	vlayout1 -> addWidget(horiz_line);
-	
-	QHBoxLayout *hlayout1 = new QHBoxLayout();
-	QVBoxLayout *vlayout2 = new QVBoxLayout();
-	
-	vlayout2 -> addWidget(bpw);
-	vlayout2 -> addWidget(ipw);
-	vlayout2 -> setSpacing(5);
-	hlayout1 -> addLayout(vlayout2);
-	hlayout1 -> addWidget(cpw);
-	vlayout1 -> addLayout(hlayout1);
-	vlayout1 -> addStretch(1);
-	hlayout1 -> setAlignment(cpw, Qt::AlignTop);
+	vlayout1->addWidget(tab_widget);
+
 	setLayout(vlayout1);
 }
 
@@ -81,6 +77,9 @@ void NewDiagramPage::applyConf() {
 	
 	// proprietes par defaut des conducteurs
 	cpw -> conductorProperties().toSettings(settings, "diagrameditor/defaultconductor");
+
+	// default report propertie
+	rpw->toSettings(settings, "diagrameditor/defaultreport");
 }
 
 /// @return l'icone de cette page

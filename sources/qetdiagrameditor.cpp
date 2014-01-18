@@ -644,6 +644,7 @@ bool QETDiagramEditor::newProject() {
 	new_project -> setDefaultBorderProperties(defaultBorderProperties());
 	new_project -> setDefaultConductorProperties(defaultConductorProperties());
 	new_project -> setDefaultTitleBlockProperties(defaultTitleBlockProperties());
+	new_project -> setDefaultReportProperties(defaultReportProperties());
 	
 	// ajoute un schema au projet
 	new_project -> addNewDiagram();
@@ -1301,7 +1302,7 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 	
 	// gere la fermeture du projet
 	connect(project_view, SIGNAL(projectClosed(ProjectView*)), this, SLOT(projectWasClosed(ProjectView *)));
-
+	
 	// gere l'ajout et le retrait de schema du projet
 	connect(project_view, SIGNAL(diagramAdded(DiagramView *)),   this, SLOT(diagramWasAdded(DiagramView *)));
 	connect(project_view, SIGNAL(diagramAdded(DiagramView *)),   this, SLOT(slot_updateActions()));
@@ -1331,6 +1332,7 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 	// affiche la fenetre
 	if (maximise) project_view -> showMaximized();
 	else project_view -> show();
+
 	slot_updateActions();
 }
 
@@ -1978,4 +1980,13 @@ ExportProperties QETDiagramEditor::defaultPrintProperties() {
 	def.fromSettings(settings, "print/default");
 	
 	return(def);
+}
+
+/**
+ * @brief QETDiagramEditor::defaultReportProperties
+ * @return default folio report properties
+ */
+QString QETDiagramEditor::defaultReportProperties() {
+	QSettings &settings= QETApp::settings();
+	return(settings.value("diagrameditor/defaultreportlabel", "%f-%l%c").toString());
 }

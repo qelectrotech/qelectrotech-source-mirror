@@ -62,6 +62,7 @@ class QETDiagramEditor : public QETMainWindow {
 	static ConductorProperties defaultConductorProperties();
 	static ExportProperties    defaultExportProperties();
 	static ExportProperties    defaultPrintProperties();
+	static QString defaultReportProperties();
 	
 	protected:
 	void actions();

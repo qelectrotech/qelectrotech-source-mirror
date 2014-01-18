@@ -89,7 +89,7 @@ void FolioReportProperties::buildRadioList() {
 void FolioReportProperties::buildUnlinkButton() {
 	unlink_widget = new QWidget(this);
 	QHBoxLayout *unlink_layout = new QHBoxLayout(unlink_widget);
-	QLabel *lb = new QLabel(tr("Ce report est d\351j\340 lier."), unlink_widget);
+	QLabel *lb = new QLabel(tr("Ce report est d\351j\340 li\351."), unlink_widget);
 	QPushButton *pb = new QPushButton(tr("D\351lier"), unlink_widget);
 	connect(pb, SIGNAL(clicked()), this, SLOT(unlinkClicked()));
 	unlink_layout->addWidget(lb);

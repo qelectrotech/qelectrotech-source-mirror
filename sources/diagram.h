@@ -102,6 +102,7 @@ class Diagram : public QGraphicsScene {
 	virtual void keyReleaseEvent(QKeyEvent *);
 	
 	public:
+	QString defaultReportProperties () const {return project_->defaultReportProperties();}
 	static bool clipboardMayContainDiagram();
 	bool setNumerotation (NumerotationType, NumerotationContext);
 	NumerotationContext getNumerotation (NumerotationType) const;
@@ -208,6 +209,7 @@ class Diagram : public QGraphicsScene {
 	void findElementRequired(const ElementsLocation &);
 	/// Signal emitted when users wish to edit an element from the diagram
 	void editElementRequired(const ElementsLocation &);
+	void reportPropertiesChanged(QString);
 };
 Q_DECLARE_METATYPE(Diagram *)
 

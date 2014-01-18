@@ -95,6 +95,8 @@ class QETProject : public QObject {
 	void setDefaultTitleBlockProperties(const TitleBlockProperties &);
 	ConductorProperties defaultConductorProperties() const;
 	void setDefaultConductorProperties(const ConductorProperties &);
+	QString defaultReportProperties() const;
+	void setDefaultReportProperties (const QString &properties);
 	QDomDocument toXml();
 	bool close();
 	QETResult write();
@@ -138,6 +140,7 @@ class QETProject : public QObject {
 	void elementIntegrated(QETProject *, const ElementsLocation &);
 	void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
 	void readOnlyChanged(QETProject *, bool);
+	void reportPropertiesChanged(QString);
 	
 	private slots:
 	void updateDiagramsFolioData();
@@ -191,6 +194,8 @@ class QETProject : public QObject {
 	ConductorProperties default_conductor_properties_;
 	/// Default title block properties for new diagrams created within the project
 	TitleBlockProperties default_titleblock_properties_;
+	/// Default report properties
+	QString default_report_properties_;
 	/// Embedded title block templates collection
 	TitleBlockTemplatesProjectCollection titleblocks_;
 	/// project-wide variables that will be made available to child diagrams

@@ -38,6 +38,8 @@ class DiagramPosition {
 	void setPosition(const QPointF &);
 	QString toString();
 	bool isOutOfBounds() const;
+	unsigned int number()const {return number_;}
+	QString letter()const {return letter_;}
 	
 	// attributes
 	private:

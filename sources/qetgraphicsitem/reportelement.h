@@ -40,10 +40,12 @@ class ReportElement : public CustomElement {
 	private:
 	int link_type_;
 	int inverse_report;
+	QString label_;
 
 	signals:
 
 	private slots:
+	void setLabel (QString label);
 	void updateLabel();
 };
 

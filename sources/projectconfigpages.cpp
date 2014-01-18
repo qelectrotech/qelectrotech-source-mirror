@@ -6,6 +6,7 @@
 #include "diagramcontextwidget.h"
 #include "titleblockpropertieswidget.h"
 #include <QtGui>
+#include "ui/reportpropertiewidget.h"
 
 /**
 	Constructor
@@ -236,6 +237,12 @@ void ProjectNewDiagramConfigPage::applyProjectConf() {
 		project_ -> setDefaultConductorProperties(conductor_ -> conductorProperties());
 		modified_project = true;
 	}
+
+	QString new_report_prop = report_->ReportProperties();
+	if (project_->defaultReportProperties() != new_report_prop) {
+		project_->setDefaultReportProperties(new_report_prop);
+		modified_project = true;
+	}
 	
 	if (modified_project) {
 		project_ -> setModified(modified_project);
@@ -256,29 +263,29 @@ void ProjectNewDiagramConfigPage::initWidgets() {
 	titleblock_ = new TitleBlockPropertiesWidget(TitleBlockProperties(), true);
 	conductor_ = new ConductorPropertiesWidget();
 	conductor_ -> setContentsMargins(0, 0, 0, 0);
+	report_ = new ReportPropertieWidget("_");
 }
 
 /**
 	Initialize the layout of this page.
 */
 void ProjectNewDiagramConfigPage::initLayout() {
-	// put border properties above title block properties
-	QVBoxLayout *vlayout2 = new QVBoxLayout();
-	vlayout2 -> addWidget(border_);
-	vlayout2 -> addWidget(titleblock_);
-	vlayout2 -> setSpacing(5);
-	
-	// add conductor properties on the right
-	QHBoxLayout *hlayout1 = new QHBoxLayout();
-	hlayout1 -> addLayout(vlayout2);
-	hlayout1 -> addWidget(conductor_);
-	hlayout1 -> setAlignment(conductor_, Qt::AlignTop);
-	
-	// add the informative label above previous widgets
+	// main tab widget
+	QTabWidget *tab_widget = new QTabWidget(this);
+
+	QWidget *diagram_widget = new QWidget();
+	QVBoxLayout *diagram_layout = new QVBoxLayout(diagram_widget);
+	diagram_layout -> addWidget(border_);
+	diagram_layout -> addWidget(titleblock_);
+	tab_widget->addTab(diagram_widget, tr("Sch\351ma"));
+
+	tab_widget->addTab(conductor_, tr("Conducteur"));
+
+	tab_widget->addTab(report_, ("Report de folio"));
+
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
-	vlayout1 -> addWidget(informative_label_);
-	vlayout1 -> addLayout(hlayout1);
-	vlayout1 -> addStretch();
+	vlayout1->addWidget(tab_widget);
+
 	setLayout(vlayout1);
 }
 
@@ -289,6 +296,7 @@ void ProjectNewDiagramConfigPage::readValuesFromProject() {
 	border_ -> setEditedBorder(project_ -> defaultBorderProperties());
 	conductor_ -> setConductorProperties(project_ -> defaultConductorProperties());
 	titleblock_ -> setTitleBlockProperties(project_ -> defaultTitleBlockProperties());
+	report_->setReportProperties(project_->defaultReportProperties());
 }
 
 /**

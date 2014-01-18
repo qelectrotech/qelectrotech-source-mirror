@@ -8,6 +8,7 @@ class BorderPropertiesWidget;
 class TitleBlockPropertiesWidget;
 class ConductorPropertiesWidget;
 class DiagramContextWidget;
+class ReportPropertieWidget;
 
 /**
 	This class, derived from ConfigPage, aims at providing the basic skeleton
@@ -125,6 +126,7 @@ class ProjectNewDiagramConfigPage : public ProjectConfigPage {
 	BorderPropertiesWidget *border_;
 	TitleBlockPropertiesWidget *titleblock_;
 	ConductorPropertiesWidget *conductor_;
+	ReportPropertieWidget *report_;
 };
 
 #endif

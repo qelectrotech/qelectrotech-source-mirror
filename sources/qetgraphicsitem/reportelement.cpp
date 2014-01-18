@@ -26,6 +26,10 @@ ReportElement::ReportElement(const ElementsLocation &location, QString link_type
 	texts().at(0)->setNoEditable();
 	link_type == "next_report"? link_type_=NextReport : link_type_=PreviousReport;
 	link_type == "next_report"? inverse_report=PreviousReport : inverse_report=NextReport;
+	if (s) {
+		label_ = s->defaultReportProperties();
+		connect(s, SIGNAL(reportPropertiesChanged(QString)), this, SLOT(setLabel(QString)));
+	}
 }
 
 ReportElement::~ReportElement() {
@@ -98,6 +102,16 @@ int ReportElement::linkType() const {
 }
 
 /**
+ * @brief ReportElement::setLabel
+ * Set new label and call updatelabel
+ * @param label new label
+ */
+void ReportElement::setLabel(QString label) {
+	label_ = label;
+	updateLabel();
+}
+
+/**
  * @brief ReportElement::updateLabel
  * Update the displayed label.
  * ie the folio and position of the linked folio report
@@ -105,8 +119,11 @@ int ReportElement::linkType() const {
 void ReportElement::updateLabel() {
 	if (!connected_elements.isEmpty()){
 		Element *elmt = connected_elements.at(0);
-		texts().at(0)->setPlainText(QString ("%1-%2").arg(elmt->diagram()->folioIndex() + 1)
-													 .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString()));
+		QString label = label_;
+		label.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
+		label.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));
+		label.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
+		texts().at(0)->setPlainText(label);
 	} else {
 		texts().at(0)->setPlainText("_");
 	}

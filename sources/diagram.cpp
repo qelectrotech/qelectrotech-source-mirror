@@ -531,7 +531,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		if (type_id.startsWith("embed://")) element_location.setProject(project_);
 		
 		int state = 0;
-		Element *nvel_elmt = ElementFactory::Instance()->createElement(element_location, 0, 0, &state);
+		Element *nvel_elmt = ElementFactory::Instance()->createElement(element_location, 0, this, &state);
 		if (state) {
 			QString debug_message = QString("Diagram::fromXml() : Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(state);
 			qDebug() << qPrintable(debug_message);
@@ -1162,6 +1162,7 @@ QETProject *Diagram::project() const {
 */
 void Diagram::setProject(QETProject *project) {
 	project_ = project;
+	connect(project_, SIGNAL(reportPropertiesChanged(QString)), this, SIGNAL(reportPropertiesChanged(QString)));
 }
 
 /**

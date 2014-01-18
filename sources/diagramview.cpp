@@ -849,7 +849,7 @@ bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocati
 bool DiagramView::addElementAtPos(const ElementsLocation &location, const QPoint &pos) {
 	// construit une instance de l'element correspondant a l'emplacement
 	int state;
-	Element *el = ElementFactory::Instance()->createElement(location, 0, 0, &state);
+	Element *el = ElementFactory::Instance()->createElement(location, 0, diagram(), &state);
 	if (state) {
 		delete el;
 		return(false);

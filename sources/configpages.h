@@ -23,6 +23,7 @@ class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
 class TitleBlockPropertiesWidget;
 class ExportPropertiesWidget;
+class ReportPropertieWidget;
 
 /**
 	This configuration page enables users to define the properties of new
@@ -44,10 +45,11 @@ class NewDiagramPage : public ConfigPage {
 	QIcon icon() const;
 	
 	// attributes
-	public:
+	private:
 	BorderPropertiesWidget *bpw;     ///< Widget to edit default diagram dimensions
 	TitleBlockPropertiesWidget *ipw; ///< Widget to edit default title block properties
 	ConductorPropertiesWidget *cpw;  ///< Widget to edit default conductor properties
+	ReportPropertieWidget *rpw;///< Widget to edit default report label
 };
 
 /**

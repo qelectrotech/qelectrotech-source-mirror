@@ -421,6 +421,15 @@ void QETProject::setDefaultConductorProperties(const ConductorProperties &conduc
 	default_conductor_properties_ = conductor;
 }
 
+QString QETProject::defaultReportProperties() const {
+	return default_report_properties_;
+}
+
+void QETProject::setDefaultReportProperties(const QString &properties) {
+	default_report_properties_ = properties;
+	emit reportPropertiesChanged(properties);
+}
+
 /**
 	@return un document XML representant le projet 
 */
@@ -1074,9 +1083,10 @@ void QETProject::readDefaultPropertiesXml() {
 	default_border_properties_    = QETDiagramEditor::defaultBorderProperties();
 	default_titleblock_properties_     = QETDiagramEditor::defaultTitleBlockProperties();
 	default_conductor_properties_ = QETDiagramEditor::defaultConductorProperties();
+	default_report_properties_ = QETDiagramEditor::defaultReportProperties();
 	
 	// lecture des valeurs indiquees dans le projet
-	QDomElement border_elmt, titleblock_elmt, conductors_elmt;
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt;
 	
 	// recherche des elements XML concernant les dimensions, le cartouche et les conducteurs
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling()) {
@@ -1088,13 +1098,16 @@ void QETProject::readDefaultPropertiesXml() {
 			titleblock_elmt = child_elmt;
 		} else if (child_elmt.tagName() == "conductors") {
 			conductors_elmt = child_elmt;
+		} else if (child_elmt.tagName() == "report") {
+			report_elmt = child_elmt;
 		}
 	}
 	
-	// dimensions, cartouche, et conducteurs
+	// size, titleblock, conductor, report
 	if (!border_elmt.isNull())     default_border_properties_.fromXml(border_elmt);
 	if (!titleblock_elmt.isNull())      default_titleblock_properties_.fromXml(titleblock_elmt);
 	if (!conductors_elmt.isNull()) default_conductor_properties_.fromXml(conductors_elmt);
+	if (!report_elmt.isNull()) setDefaultReportProperties(report_elmt.attribute("label"));
 }
 
 /**
@@ -1122,6 +1135,11 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	QDomElement conductor_elmt = xml_document.createElement("conductors");
 	default_conductor_properties_.toXml(conductor_elmt);
 	xml_element.appendChild(conductor_elmt);
+
+	// export default report properties
+	QDomElement report_elmt = xml_document.createElement("report");
+	report_elmt.setAttribute("label", defaultReportProperties());
+	xml_element.appendChild(report_elmt);
 }
 
 /**
