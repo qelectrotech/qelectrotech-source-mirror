@@ -422,7 +422,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			QStringList lines = dti -> toPlainText().split('\n');
 			y += (fontSize/2) * (lines.count()-1);
 			foreach (QString line, lines) {
-				Createdxf::drawText(file_path, line, x, y, fontSize, dti -> rotationAngle(), 0 );
+				if (line.size() > 0)
+					Createdxf::drawText(file_path, line, x, y, fontSize, dti -> rotationAngle(), 0 );
 				y -= fontSize*1.06;
 			}
 
@@ -486,7 +487,10 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			qreal center_y = y - w/2;
 			qreal radius = (w+h)/4;
 			qreal endAngle = startAngle + spanAngle;
-			Createdxf::drawArc(file_path, center_x, center_y, radius, endAngle, startAngle, 0);
+			if (startAngle == 0 && spanAngle == 360)
+				Createdxf::drawCircle(file_path, radius, center_x, center_y, 0);
+			else
+				Createdxf::drawArc(file_path, center_x, center_y, radius, endAngle, startAngle, 0);
 		}
 	}
 

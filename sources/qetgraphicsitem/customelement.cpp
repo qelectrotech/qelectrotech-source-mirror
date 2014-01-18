@@ -634,6 +634,18 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	QTextDocument text_document;
 	text_document.setDefaultFont(used_font);
 	text_document.setPlainText(e.attribute("text"));
+
+	//Add element to list of texts.
+	ElementTextItem *eti = new ElementTextItem(e.attribute("text"));
+	eti -> setFont(QETApp::diagramTextsFont(size));
+	eti -> setOriginalPos(QPointF(pos_x, pos_y));
+	eti -> setPos(pos_x, pos_y);
+	qreal original_rotation_angle = 0.0;
+	QET::attributeIsAReal(e, "rotation", &original_rotation_angle);
+	eti -> setOriginalRotationAngle(original_rotation_angle);
+	eti -> setRotationAngle(original_rotation_angle);
+	eti -> setFollowParentRotations(e.attribute("rotate") == "true");
+	list_texts_ << eti;
 	
 	// Se positionne aux coordonnees indiquees dans la description du texte	
 	qp.setTransform(QTransform(), false);
@@ -669,7 +681,7 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	QAbstractTextDocumentLayout::PaintContext ctx;
 	ctx.palette.setColor(QPalette::Text, text_color);
 	text_document.documentLayout() -> draw(&qp, ctx);
-	
+
 	qp.restore();
 	return(true);
 }
