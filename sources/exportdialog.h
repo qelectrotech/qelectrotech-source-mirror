@@ -89,6 +89,7 @@ class ExportDialog : public QDialog {
 	void exportDiagram(ExportDiagramLine *);
 	qreal diagramRatio(Diagram *);
 	QSize diagramSize(Diagram *);
+	QPointF rotation_transformed(qreal, qreal, qreal, qreal, qreal);
 	
 	public slots:
 	void slot_correctWidth(int);

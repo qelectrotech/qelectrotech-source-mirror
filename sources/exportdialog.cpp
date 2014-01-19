@@ -17,6 +17,7 @@
 */
 #include "exportdialog.h"
 #include <QSvgGenerator>
+#include <cmath>
 #include <QtXml>
 #include "qeticons.h"
 #include "qetmessagebox.h"
@@ -406,8 +407,13 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	//Draw elements
 	foreach(Element *elmt, list_elements) {
 
-		qreal hot_spot_x = elmt -> pos().x();
-		qreal hot_spot_y = elmt -> pos().y();// - (diagram -> margin / 2);
+		double rotation_angle = elmt -> orientation() * 90;
+
+		qreal elem_pos_x = elmt -> pos().x();
+		qreal elem_pos_y = elmt -> pos().y();// - (diagram -> margin / 2);
+
+		qreal hotspot_x = (elem_pos_x) * Createdxf::xScale;
+		qreal hotspot_y = Createdxf::sheetHeight - (elem_pos_y) * Createdxf::yScale;
 
 		QList<ElementTextItem *> elmt_text = elmt -> texts();
 		foreach(ElementTextItem *dti, elmt_text) {
@@ -415,15 +421,18 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			if (fontSize < 0)
 				fontSize = dti -> font().pixelSize();
 			fontSize *= Createdxf::yScale;
-			qreal x = hot_spot_x + dti -> pos().x();
+			qreal x = elem_pos_x + dti -> pos().x();
+			qreal y = elem_pos_y + dti -> pos().y();
 			x *= Createdxf::xScale;
-			qreal y = hot_spot_y + dti -> pos().y();
 			y = Createdxf::sheetHeight - (y * Createdxf::yScale);// - fontSize;
+			QPointF transformed_point = rotation_transformed(x, y, hotspot_x, hotspot_y, rotation_angle);
+			x = transformed_point.x();
+			y = transformed_point.y();
 			QStringList lines = dti -> toPlainText().split('\n');
 			y += (fontSize/2) * (lines.count()-1);
 			foreach (QString line, lines) {
 				if (line.size() > 0 && line != "_" )
-					Createdxf::drawText(file_path, line, x, y, fontSize, dti -> rotationAngle(), 0 );
+					Createdxf::drawText(file_path, line, x, y, fontSize, -(dti -> rotationAngle() + rotation_angle), 0 );
 				y -= fontSize*1.06;
 			}
 
@@ -431,27 +440,49 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 
 		QList<QLineF *> elmt_line = elmt -> lines();
 		foreach(QLineF *line, elmt_line) {
-			qreal x1 = (hot_spot_x + line -> p1().x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (hot_spot_y + line -> p1().y()) * Createdxf::yScale;
-			qreal x2 = (hot_spot_x + line -> p2().x()) * Createdxf::xScale;
-			qreal y2 = Createdxf::sheetHeight - (hot_spot_y + line -> p2().y()) * Createdxf::yScale;
+			qreal x1 = (elem_pos_x + line -> p1().x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + line -> p1().y()) * Createdxf::yScale;
+			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
+			x1 = transformed_point.x();
+			y1 = transformed_point.y();
+			qreal x2 = (elem_pos_x + line -> p2().x()) * Createdxf::xScale;
+			qreal y2 = Createdxf::sheetHeight - (elem_pos_y + line -> p2().y()) * Createdxf::yScale;
+			transformed_point = rotation_transformed(x2, y2, hotspot_x, hotspot_y, rotation_angle);
+			x2 = transformed_point.x();
+			y2 = transformed_point.y();
 			Createdxf::drawLine(file_path, x1, y1, x2, y2, 0);
 		}
 
 		QList<QRectF *> elmt_rectangle = elmt -> rectangles();
 		foreach(QRectF *rect, elmt_rectangle) {
-			qreal x1 = (hot_spot_x + rect -> bottomLeft().x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (hot_spot_y + rect -> bottomLeft().y()) * Createdxf::yScale;
+			qreal x1 = (elem_pos_x + rect -> bottomLeft().x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + rect -> bottomLeft().y()) * Createdxf::yScale;
 			qreal w = rect -> width() * Createdxf::xScale;
 			qreal h = rect -> height() * Createdxf::yScale;
-			Createdxf::drawRectangle(file_path, x1, y1, w, h, 0);
+			// opposite corner
+			qreal x2 = x1 + w;
+			qreal y2 = y1 + h;
+			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
+			x1 = transformed_point.x();
+			y1 = transformed_point.y();
+			transformed_point = rotation_transformed(x2, y2, hotspot_x, hotspot_y, rotation_angle);
+			x2 = transformed_point.x();
+			y2 = transformed_point.y();
+			qreal bottom_left_x = (x1 < x2) ? x1 : x2;
+			qreal bottom_left_y = (y1 < y2) ? y1 : y2;
+			w = (x1 < x2) ? x2-x1 : x1-x2;
+			h = (y1 < y2) ? y2-y1 : y1-y2;
+			Createdxf::drawRectangle(file_path, bottom_left_x, bottom_left_y, w, h, 0);
 		}
 
 		QList<QRectF *> elmt_circle = elmt -> circles();
 		foreach(QRectF *circle_rect, elmt_circle) {
-			qreal x1 = (hot_spot_x + circle_rect ->center().x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (hot_spot_y + circle_rect -> center().y()) * Createdxf::yScale;
+			qreal x1 = (elem_pos_x + circle_rect ->center().x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + circle_rect -> center().y()) * Createdxf::yScale;
 			qreal r = circle_rect -> width() * Createdxf::xScale / 2;
+			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
+			x1 = transformed_point.x();
+			y1 = transformed_point.y();
 			Createdxf::drawCircle(file_path, r, x1, y1, 0);
 		}
 
@@ -459,11 +490,17 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		foreach(QVector<QPointF> *polygon, elmt_polygon) {
 			if (polygon -> size() == 0)
 				continue;
-			qreal x1 = (hot_spot_x + polygon -> at(0).x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (hot_spot_y + polygon -> at(0).y()) * Createdxf::yScale;
+			qreal x1 = (elem_pos_x + polygon -> at(0).x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + polygon -> at(0).y()) * Createdxf::yScale;
+			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
+			x1 = transformed_point.x();
+			y1 = transformed_point.y();
 			for (int i = 1; i < polygon -> size(); ++i ) {
-				qreal x2 = (hot_spot_x + polygon -> at(i).x()) * Createdxf::xScale;
-				qreal y2 = Createdxf::sheetHeight - (hot_spot_y + polygon -> at(i).y()) * Createdxf::yScale;
+				qreal x2 = (elem_pos_x + polygon -> at(i).x()) * Createdxf::xScale;
+				qreal y2 = Createdxf::sheetHeight - (elem_pos_y + polygon -> at(i).y()) * Createdxf::yScale;
+				QPointF transformed_point = rotation_transformed(x2, y2, hotspot_x, hotspot_y, rotation_angle);
+				x2 = transformed_point.x();
+				y2 = transformed_point.y();
 				Createdxf::drawLine(file_path, x1, y1, x2, y2, 0);
 				x1 = x2;
 				y1 = y2;
@@ -475,8 +512,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		foreach(QVector<qreal> *arc, elmt_arc) {
 			if (arc -> size() == 0)
 				continue;
-			qreal x = (hot_spot_x + arc -> at(0)) * Createdxf::xScale;
-			qreal y = Createdxf::sheetHeight - (hot_spot_y + arc -> at(1)) * Createdxf::yScale;
+			qreal x = (elem_pos_x + arc -> at(0)) * Createdxf::xScale;
+			qreal y = Createdxf::sheetHeight - (elem_pos_y + arc -> at(1)) * Createdxf::yScale;
 			qreal w = arc -> at(2) * Createdxf::xScale;
 			qreal h = arc -> at(3) * Createdxf::yScale;
 			qreal startAngle = arc -> at(4);
@@ -487,10 +524,16 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			qreal center_y = y - w/2;
 			qreal radius = (w+h)/4;
 			qreal endAngle = startAngle + spanAngle;
+			QPointF transformed_point = rotation_transformed(center_x, center_y, hotspot_x, hotspot_y, rotation_angle);
+			center_x = transformed_point.x();
+			center_y = transformed_point.y();
 			if (startAngle == 0 && spanAngle == 360)
 				Createdxf::drawCircle(file_path, radius, center_x, center_y, 0);
-			else
+			else {
+				endAngle += rotation_angle;
+				startAngle += rotation_angle;
 				Createdxf::drawArc(file_path, center_x, center_y, radius, endAngle, startAngle, 0);
+			}
 		}
 	}
 
@@ -536,9 +579,25 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			y -= fontSize*1.06;
 		}
 	}
-
-
 	Createdxf::dxfEnd(file_path);
+}
+
+QPointF ExportDialog::rotation_transformed(qreal px, qreal py , qreal origin_x, qreal origin_y, qreal angle) {
+
+	angle *= -3.14159265 / 180;
+
+	float s = sin(angle);
+	float c = cos(angle);
+
+	// Vector to rotate:
+	qreal Vx = px - origin_x;
+	qreal Vy = py - origin_y;
+
+	// rotate vector
+	float xnew = Vx * c - Vy * s;
+	float ynew = Vx * s + Vy * c;
+
+	return QPointF(xnew + origin_x, ynew + origin_y);
 }
 
 
