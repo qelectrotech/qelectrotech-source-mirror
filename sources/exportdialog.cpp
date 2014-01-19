@@ -431,9 +431,20 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			QStringList lines = dti -> toPlainText().split('\n');
 			y += (fontSize/2) * (lines.count()-1);
 			foreach (QString line, lines) {
+				qreal angle = 360 - (dti -> rotationAngle() + rotation_angle);
 				if (line.size() > 0 && line != "_" )
-					Createdxf::drawText(file_path, line, x, y, fontSize, -(dti -> rotationAngle() + rotation_angle), 0 );
-				y -= fontSize*1.06;
+					Createdxf::drawText(file_path, line, x, y, fontSize, angle, 0);
+
+				angle += 1080;
+				// coordinates for next line
+				if (int(angle) % 360 == 0) // no rotation
+					y -= fontSize*1.06;
+				else if (int(angle - 180) % 360 == 0) // 180 degrees rotation
+					y += fontSize*1.06;
+				else if (int(angle - 270) % 360 == 0) // 90 degrees rotation
+					x -= fontSize*1.06;
+				else // ((angle - 90) % 360 == 0)  270 degrees rotation
+					x += fontSize*1.06;
 			}
 
 		}
@@ -518,7 +529,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			qreal h = arc -> at(3) * Createdxf::yScale;
 			qreal startAngle = arc -> at(4);
 			qreal spanAngle = arc -> at(5);
-
+			drawDxfArcEllipse(file_path, x, y, w, h, startAngle, spanAngle, hotspot_x, hotspot_y, rotation_angle);
+			/*
 			// approximate this to center_x, center_y, radius, start angle and end angle.
 			qreal center_x = x + w/2;
 			qreal center_y = y - w/2;
@@ -533,7 +545,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 				endAngle += rotation_angle;
 				startAngle += rotation_angle;
 				Createdxf::drawArc(file_path, center_x, center_y, radius, endAngle, startAngle, 0);
-			}
+			}*/
 		}
 	}
 
@@ -557,9 +569,20 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			qreal y = Createdxf::sheetHeight - (textItem -> pos().y() * Createdxf::yScale) - fontSize;
 			QStringList lines = textItem->toPlainText().split('\n');
 			foreach (QString line, lines) {
+				qreal angle = 360 - (textItem -> rotationAngle());
 				if (line.size() > 0 && line != "_" )
-					Createdxf::drawText(file_path, line, x, y, fontSize, textItem -> rotationAngle(), 0 );
-				y -= fontSize*1.06;
+					Createdxf::drawText(file_path, line, x, y, fontSize, angle, 0 );
+
+				angle += 1080;
+				// coordinates for next line
+				if (int(angle) % 360 == 0) // no rotation
+					y -= fontSize*1.06;
+				else if (int(angle - 180) % 360 == 0) // 180 degrees rotation
+					y += fontSize*1.06;
+				else if (int(angle - 270) % 360 == 0) // 90 degrees rotation
+					x -= fontSize*1.06;
+				else // ((angle - 90) % 360 == 0)  270 degrees rotation
+					x += fontSize*1.06;
 			}
 
 		}
@@ -575,11 +598,51 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		qreal y = Createdxf::sheetHeight - (dti -> pos().y() * Createdxf::yScale) - fontSize*1.05;
 		QStringList lines = dti -> toPlainText().split('\n');
 		foreach (QString line, lines) {
-			Createdxf::drawText(file_path, line, x, y, fontSize, dti -> rotationAngle(), 0 );
-			y -= fontSize*1.06;
+			qreal angle = 360 - (dti -> rotationAngle());
+			if (line.size() > 0 && line != "_" )
+				Createdxf::drawText(file_path, line, x, y, fontSize, angle, 0);
+
+			angle += 1080;
+			// coordinates for next line
+			if (int(angle) % 360 == 0) // no rotation
+				y -= fontSize*1.06;
+			else if (int(angle - 180) % 360 == 0) // 180 degrees rotation
+				y += fontSize*1.06;
+			else if (int(angle - 270) % 360 == 0) // 90 degrees rotation
+				x -= fontSize*1.06;
+			else // ((angle - 90) % 360 == 0)  270 degrees rotation
+				x += fontSize*1.06;
 		}
 	}
 	Createdxf::dxfEnd(file_path);
+}
+
+// approximate the ellipse to parts of circles.
+void ExportDialog::drawDxfArcEllipse(QString file_path, qreal x, qreal y, qreal w, qreal h, qreal startAngle,
+									 qreal spanAngle, qreal hotspot_x, qreal hotspot_y, qreal rotation_angle) {
+
+	/*//if horizontal ellipse
+	if (w > h) {
+		qreal sin1 = sin(startAngle);
+		qreal sin2 = sin(startAngle + spanAngle);
+		if (sin1 > 0 && sin2 < 0) {
+
+		}
+	}*/
+	qreal center_x = x + w/2;
+	qreal center_y = y - w/2;
+	qreal radius = (w+h)/4;
+	qreal endAngle = startAngle + spanAngle;
+	QPointF transformed_point = rotation_transformed(center_x, center_y, hotspot_x, hotspot_y, rotation_angle);
+	center_x = transformed_point.x();
+	center_y = transformed_point.y();
+	if (startAngle == 0 && spanAngle == 360)
+		Createdxf::drawCircle(file_path, radius, center_x, center_y, 0);
+	else {
+		endAngle += rotation_angle;
+		startAngle += rotation_angle;
+		Createdxf::drawArc(file_path, center_x, center_y, radius, endAngle, startAngle, 0);
+	}
 }
 
 QPointF ExportDialog::rotation_transformed(qreal px, qreal py , qreal origin_x, qreal origin_y, qreal angle) {

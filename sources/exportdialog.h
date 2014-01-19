@@ -90,6 +90,7 @@ class ExportDialog : public QDialog {
 	qreal diagramRatio(Diagram *);
 	QSize diagramSize(Diagram *);
 	QPointF rotation_transformed(qreal, qreal, qreal, qreal, qreal);
+	void drawDxfArcEllipse(QString, qreal, qreal, qreal, qreal, qreal, qreal, qreal, qreal, qreal);
 	
 	public slots:
 	void slot_correctWidth(int);
