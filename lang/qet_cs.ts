@@ -152,28 +152,28 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="167"/>
         <source>Paquets Mageia</source>
-        <translation type="unfinished"></translation>
+        <translation>Balíčky pro Mageiu</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="169"/>
         <location filename="../sources/aboutqet.cpp" line="170"/>
         <source>Paquets Gentoo</source>
-        <translation type="unfinished"></translation>
+        <translation>Balíčky pro Gentoo</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
         <source>Paquets OS/2</source>
-        <translation type="unfinished"></translation>
+        <translation>Balíčky pro OS/2</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="172"/>
         <source>Paquets FreeBSD</source>
-        <translation type="unfinished"></translation>
+        <translation>Balíčky pro FreeBSD</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="173"/>
         <source>Paquets Archlinux AUR</source>
-        <translation type="unfinished"></translation>
+        <translation>Balíčky pro Archlinux AUR</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="168"/>
@@ -296,12 +296,12 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="135"/>
         <source>Couleur de fond :</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozadí:</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="136"/>
         <source>Gris</source>
-        <translation type="unfinished"></translation>
+        <translation>Šedá</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="112"/>
@@ -469,7 +469,7 @@ Použít text na všechny tyto vodiče?</translation>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="66"/>
         <source>Taille</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
@@ -595,7 +595,7 @@ Použít text na všechny tyto vodiče?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="135"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamknout polohu</translation>
     </message>
 </context>
 <context>
@@ -705,7 +705,7 @@ Použít text na všechny tyto vodiče?</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="959"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít vlastnosti na všechny vodiče tohoto potenciálu</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="956"/>
@@ -736,7 +736,7 @@ Použít text na všechny tyto vodiče?</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="1191"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
-        <translation>Obrázek nelze nahrát...</translation>
+        <translation>Obrázek nelze nahrát... Promiňte</translation>
     </message>
 </context>
 <context>
@@ -782,7 +782,7 @@ Použít text na všechny tyto vodiče?</translation>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Číslování vybraného folia&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Číslování vybraného listu&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
@@ -792,7 +792,7 @@ Použít text na všechny tyto vodiče?</translation>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Číslování vybraného folia odstraněno&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Číslování vybraného listu odstraněno&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
@@ -1104,7 +1104,7 @@ Použít text na všechny tyto vodiče?</translation>
         <location filename="../sources/qetgraphicsitem/elementtextitem.cpp" line="52"/>
         <source>Maintenir ctrl pour déplacer</source>
         <comment>tool tip for element text item</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podržet klávesu Ctrl pro přesunutí</translation>
     </message>
 </context>
 <context>
@@ -1756,7 +1756,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="146"/>
         <source>DXF (*.dxf)</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF (*.dxf)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
@@ -1805,42 +1805,42 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="31"/>
         <source>Report de folio disponible :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zpráva o dostupném listu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="82"/>
         <source>Voir ce report</source>
-        <translation type="unfinished"></translation>
+        <translation>Podívat se na tuto zprávu</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/folioreportproperties.ui" line="89"/>
         <source>Voir le report lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Podívat se na připojenou zprávu</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="58"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Bez názvu</translation>
+        <translation>Bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="59"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished"></translation>
+        <translation>List  %1 (%2), poloha %3.</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="92"/>
         <source>Ce report est déjà lié.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tato zpráva je již připojena.</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="93"/>
         <source>Délier</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpojit</translation>
     </message>
 </context>
 <context>
@@ -1915,7 +1915,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/genericpanel.cpp" line="226"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Toto je projekt QElectroTech, to znamená soubor s příponou .qet obsahující několik výkresů/folií. Také s sebou nese prvky a vzory záhlaví výkresů používané tímto výkresem/těmito folii.</translation>
+        <translation>Toto je projekt QElectroTech, to znamená soubor s příponou .qet obsahující několik výkresů/ listů. Také s sebou nese prvky a vzory záhlaví výkresů používané tímto výkresem/těmito listy.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="288"/>
@@ -2321,12 +2321,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="45"/>
         <source>Schéma</source>
-        <translation type="unfinished">Výkres</translation>
+        <translation>Výkres</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="50"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Vodič</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="92"/>
@@ -2362,7 +2362,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/newelementwizard.cpp" line="97"/>
         <source>Étape 1/3 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Krok 1 ze 4: Rodičovská skupina {1/3 ?}</translation>
+        <translation>Krok 1 ze 3: Rodičovská skupina</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="98"/>
@@ -2374,7 +2374,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/newelementwizard.cpp" line="114"/>
         <source>Étape 2/3 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Krok 2 ze 4: Název souboru {2/3 ?}</translation>
+        <translation>Krok 2 ze 3: Název souboru</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="115"/>
@@ -2386,7 +2386,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/newelementwizard.cpp" line="137"/>
         <source>Étape 3/3 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Krok 3 ze 4: Názvy prvku {3/3 ?}</translation>
+        <translation>Krok 3 ze 3: Názvy prvku</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="138"/>
@@ -2457,7 +2457,7 @@ Provedené změny budou konečné.</translation>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="49"/>
         <source>N° folio</source>
-        <translation>Číslo folia</translation>
+        <translation>Číslo listu</translation>
     </message>
 </context>
 <context>
@@ -2553,12 +2553,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="280"/>
         <source>Schéma</source>
-        <translation type="unfinished">Výkres</translation>
+        <translation>Výkres</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="282"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Vodič</translation>
     </message>
 </context>
 <context>
@@ -2583,7 +2583,8 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/projectview.cpp" line="245"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt byl změněn.
+Chcete uložit změny?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="353"/>
@@ -5115,20 +5116,20 @@ Co chcete dělat?</translation>
         <location filename="../sources/diagramcommands.cpp" line="1155"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spojit dvě zprávy o listu</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1160"/>
         <source>Lier deux Ã©lÃ©ments</source>
-        <translation type="unfinished"></translation>
+        <translation>Spojit dva prvky</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1203"/>
         <source>Délier %n élément(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Odpojit %n prvek</numerusform>
+            <numerusform>Odpojit %n prvky</numerusform>
+            <numerusform>Odpojit %n prvků</numerusform>
         </translation>
     </message>
     <message>
@@ -5595,12 +5596,12 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Popisek zprávy o listu</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -5609,7 +5610,11 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Můžete stanovit svůj vlastní popisek pro zprávy o listu.
+Vytvořte svůj vlastní text pomocí následujících proměnných:
+%f : číslo listu 
+%l : číslo řádku
+%c : číslo sloupce</translation>
     </message>
 </context>
 <context>
@@ -5622,12 +5627,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="25"/>
         <source>Folio:  </source>
-        <translation>Folio: </translation>
+        <translation>List: </translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;vybrat výkres&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vybrat list&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="55"/>
@@ -5692,7 +5697,7 @@ Les autres champs ne sont pas utilisés.</source>
 - Každé folio má svůj vlastní způsob číslování.
 Každé číslování je složeno z nejmenší proměnné.
 - Můžete přidat nebo smazat proměnnou číslování pomocí tlačítek minus ( - ) a plus ( + ).
-Proměnná číslování obsahuje typ, hodnotu a přírustek.
+Proměnná číslování obsahuje typ, hodnotu a přírůstek.
 
 - Typy &quot;Číslo 1&quot;, &quot;Číslo 01&quot; a &quot;Číslo 001&quot; představují číselný typ stanovený v poli &quot;Hodnota&quot;, jenž je zvýšen s každým novým vodičem o hodnotu v poli &quot;Přírůstek&quot;.
 - &quot;Číslo 01&quot; a &quot;Číslo 001&quot;, jsou, v tomto pořadí, ve výkresu představovány nejméně dvěma nebo třemi číslicemi.
@@ -5701,7 +5706,7 @@ Pokud má číslo stanovené v poli Hodnota méně číslic, než kolik jich má
 -Typ &quot;text&quot; představuje neměnný text.
 Pole &quot;Přírůstek&quot; se nepoužívá.
 
-- Typ &quot;Číslo folia&quot; představuje číslo nynějšího folia.
+- Typ &quot;Číslo listu&quot; představuje číslo nynějšího listu.
 Jiná pole se se nepoužívají.</translation>
     </message>
 </context>
@@ -5803,13 +5808,13 @@ Jiná pole se se nepoužívají.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Forte</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Silná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hodně silná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
@@ -5913,7 +5918,7 @@ Jiná pole se se nepoužívají.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="46"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Viditelný</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="49"/>
@@ -5938,12 +5943,12 @@ Jiná pole se se nepoužívají.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="64"/>
         <source>Nom : </source>
-        <translation type="unfinished"></translation>
+        <translation>Název: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="70"/>
         <source>Numéro : </source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="134"/>
@@ -5958,22 +5963,22 @@ Jiná pole se se nepoužívají.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="138"/>
         <source>orientation</source>
-        <translation>natočení</translation>
+        <translation>Natočení</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="141"/>
         <source>numéro: </source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="145"/>
         <source>nom: </source>
-        <translation type="unfinished"></translation>
+        <translation>Název: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="149"/>
         <source>nom visible: </source>
-        <translation type="unfinished"></translation>
+        <translation>Viditelný název: </translation>
     </message>
 </context>
 <context>
@@ -6421,12 +6426,12 @@ Jiná pole se se nepoužívají.</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Ve výchozím nastavení jsou dostupné následující proměnné: &lt;ul&gt;&lt;li&gt;%{author}: folio autor&lt;/li&gt;&lt;li&gt;%{date}: folio datum&lt;/li&gt;&lt;li&gt;%{title}: folio název&lt;/li&gt;&lt;li&gt;%{filename}: název souboru projektu&lt;/li&gt;&lt;li&gt;%{folio}: informace vztahující se k foliu&lt;/li&gt;&lt;li&gt;%{folio-id}: ukazatel folia v projektu&lt;/li&gt;&lt;li&gt;%{folio-total}: celkový počet folií v projektu&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation>Ve výchozím nastavení jsou dostupné následující proměnné: &lt;ul&gt;&lt;li&gt;%{author}: autor listu&lt;/li&gt;&lt;li&gt;%{date}: datum listu&lt;/li&gt;&lt;li&gt;%{title}: název listu&lt;/li&gt;&lt;li&gt;%{filename}: název souboru projektu&lt;/li&gt;&lt;li&gt;%{folio}: informace vztahující se k listu&lt;/li&gt;&lt;li&gt;%{folio-id}: ukazatel listu v projektu&lt;/li&gt;&lt;li&gt;%{folio-total}: celkový počet listů v projektu&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Každá buňka záhlaví výkresu zobrazuje hodnotu, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Protože to, co nyní upravujete je &lt;em&gt;vzor&lt;/em&gt; záhlaví výkresu, vyhněte se přímému zadávání surových dat: upřednostňujte vkládání proměnných jako %{variable-name}, jež budou později nahrazeny with přiměřenými hodnotami z folia.</translation>
+        <translation>Každá buňka záhlaví výkresu zobrazuje hodnotu volitelně předcházenou popiskem. Obojí je možné překládat do několika jazyků.&lt;br/&gt;Protože to, co nyní upravujete je &lt;em&gt;vzor&lt;/em&gt; záhlaví výkresu, vyhněte se přímému zadávání surových dat: upřednostňujte vkládání proměnných jako %{variable-name}, jež budou později nahrazeny přiměřenými hodnotami z listu.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
@@ -6832,86 +6837,86 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="88"/>
         <source>Propriétés de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti prvku</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="90"/>
         <source>Général</source>
-        <translation type="unfinished">Obecné</translation>
+        <translation>Obecné</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="33"/>
         <source>Élément manquant</source>
-        <translation type="unfinished">Chybějící prvek</translation>
+        <translation>Chybějící prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="35"/>
         <source>Élément</source>
-        <translation type="unfinished">Prvek</translation>
+        <translation>Prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="40"/>
         <source>Nom : %1
 </source>
-        <translation type="unfinished">Název: %1
+        <translation>Název: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="43"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished">Folio : %1</translation>
+        <translation>List: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="45"/>
         <source>Position : %1
 </source>
-        <translation type="unfinished">Poloha: %1
+        <translation>Poloha: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="46"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation type="unfinished">Velikost: %1×%2
+        <translation>Velikost: %1×%2
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="47"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished">Zakončení: %1
+        <translation>Zakončení: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="48"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished">Textová pole: %1
+        <translation>Textová pole: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="51"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished">Umístění: %1
+        <translation>Umístění: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="69"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Najít v panelu</translation>
+        <translation>Najít v panelu</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="71"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Upravit prvek</translation>
+        <translation>Upravit prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="98"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="102"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Zpráva o listu</translation>
     </message>
 </context>
 <context>
