@@ -116,10 +116,14 @@ QWidget *AboutQET::authorsTab() const {
 	addAuthor(authors, "Joshua Claveau",     "Joshua@qelectrotech.org",     tr("D\351veloppement"));
 	addAuthor(authors, "Abhishek Bansal",    "abhishek@qelectrotech.org",   tr("D\351veloppement"));
 
-	authors -> setAlignment(Qt::AlignCenter);
+
 	authors -> setOpenExternalLinks(true);
 	authors -> setTextFormat(Qt::RichText);
-	return(authors);
+
+	QWidget *authors_widget = new QWidget();
+	QHBoxLayout *authors_layout = new QHBoxLayout(authors_widget);
+	authors_layout -> addWidget(authors, 0, Qt::AlignCenter);
+	return(authors_widget);
 }
 
 /**
