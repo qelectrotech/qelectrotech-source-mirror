@@ -1103,7 +1103,7 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
         <location filename="../sources/qetgraphicsitem/elementtextitem.cpp" line="52"/>
         <source>Maintenir ctrl pour déplacer</source>
         <comment>tool tip for element text item</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tenere premuto ctrl per spostare</translation>
     </message>
 </context>
 <context>
@@ -1814,12 +1814,12 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="82"/>
         <source>Voir ce report</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualizzare questo riferimento</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/folioreportproperties.ui" line="89"/>
         <source>Voir le report lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualizzare il riferimento collegato</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="58"/>
@@ -1834,7 +1834,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="92"/>
         <source>Ce report est déjà lié.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo riferimento è già collegato</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="93"/>
@@ -2320,12 +2320,12 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="45"/>
         <source>Schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="50"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Conduttore</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="92"/>
@@ -2552,12 +2552,12 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="280"/>
         <source>Schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="282"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Conduttore</translation>
     </message>
 </context>
 <context>
@@ -5584,12 +5584,12 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Etichetta del riferimento al foglio</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -5598,7 +5598,11 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>È possibile definire un&apos;etichetta per i riferimenti al foglio.
+Creare un testo personalizzato con l&apos;aiuto delle variabili:
+%f: numero del foglio
+%l: riga
+%c: colonna</translation>
     </message>
 </context>
 <context>
