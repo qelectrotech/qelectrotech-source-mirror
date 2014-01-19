@@ -114,6 +114,7 @@ QWidget *AboutQET::authorsTab() const {
 	addAuthor(authors, "Laurent Trinques",   "scorpio@qelectrotech.org",    tr("D\351veloppement"));
 	addAuthor(authors, "Cyril Frausti",      "cyril@qelectrotech.org",      tr("D\351veloppement"));
 	addAuthor(authors, "Joshua Claveau",     "Joshua@qelectrotech.org",     tr("D\351veloppement"));
+	addAuthor(authors, "Abhishek Bansal",    "abhishek@qelectrotech.org",   tr("D\351veloppement"));
 
 	authors -> setAlignment(Qt::AlignCenter);
 	authors -> setOpenExternalLinks(true);
