@@ -1104,7 +1104,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
         <location filename="../sources/qetgraphicsitem/elementtextitem.cpp" line="52"/>
         <source>Maintenir ctrl pour déplacer</source>
         <comment>tool tip for element text item</comment>
-        <translation type="unfinished"></translation>
+        <translation>Przytrzymaj klawisz CTRL, aby wejść</translation>
     </message>
 </context>
 <context>
@@ -1815,12 +1815,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="82"/>
         <source>Voir ce report</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobacz odsyłacz</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/folioreportproperties.ui" line="89"/>
         <source>Voir le report lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobacz połączenie odsyłacza</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="58"/>
@@ -1835,7 +1835,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="92"/>
         <source>Ce report est déjà lié.</source>
-        <translation type="unfinished"></translation>
+        <translation>Odsyłacz jest już połączony.</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="93"/>
@@ -2321,12 +2321,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="45"/>
         <source>Schéma</source>
-        <translation type="unfinished">Schemat</translation>
+        <translation>Schemat</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="50"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewód</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="92"/>
@@ -2553,12 +2553,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="280"/>
         <source>Schéma</source>
-        <translation type="unfinished">Schemat</translation>
+        <translation>Schemat</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="282"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewód</translation>
     </message>
 </context>
 <context>
@@ -5596,12 +5596,12 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -5610,7 +5610,11 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj możesz zdefiniować etykietę dla odsyłaczy.
+Utwórz tekst etykiety za pomocą następujących zmiennych :
+%f : numer strony 
+%l : numer wiersza
+%c : numer kolumny</translation>
     </message>
 </context>
 <context>
