@@ -1736,22 +1736,22 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="142"/>
         <source>PNG (*.png)</source>
-        <translation>ΠηΕνΤζι (*.png)</translation>
+        <translation>PNG (*.png)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="143"/>
         <source>JPEG (*.jpg)</source>
-        <translation>ΤζέιΠηΕγγ (*.jpg)</translation>
+        <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="144"/>
         <source>Bitmap (*.bmp)</source>
-        <translation>Μπίτμαπ (*.bmp)</translation>
+        <translation>Bitmap (*.bmp)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="145"/>
         <source>SVG (*.svg)</source>
-        <translation>ΕσΒηΤζι (*.svg)</translation>
+        <translation>SVG (*.svg)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="146"/>
@@ -2325,12 +2325,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="45"/>
         <source>Schéma</source>
-        <translation type="unfinished">Διάγραμμα</translation>
+        <translation>Διάγραμμα</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="50"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Αγωγός</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="92"/>
@@ -2557,12 +2557,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="280"/>
         <source>Schéma</source>
-        <translation type="unfinished">Διάγραμμα</translation>
+        <translation>Διάγραμμα</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="282"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Αγωγός</translation>
     </message>
 </context>
 <context>
@@ -5130,7 +5130,6 @@ Que désirez vous faire ?</source>
         <source>Délier %n élément(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -5591,7 +5590,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
