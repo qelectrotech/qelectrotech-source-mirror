@@ -441,9 +441,9 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 					y -= fontSize*1.06;
 				else if (int(angle - 180) % 360 == 0) // 180 degrees rotation
 					y += fontSize*1.06;
-				else if (int(angle - 270) % 360 == 0) // 90 degrees rotation
+				else if (int(angle - 270) % 360 == 0) // 270 degrees rotation
 					x -= fontSize*1.06;
-				else // ((angle - 90) % 360 == 0)  270 degrees rotation
+				else // ((angle - 90) % 360 == 0)  90 degrees rotation
 					x += fontSize*1.06;
 			}
 
@@ -579,9 +579,9 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 					y -= fontSize*1.06;
 				else if (int(angle - 180) % 360 == 0) // 180 degrees rotation
 					y += fontSize*1.06;
-				else if (int(angle - 270) % 360 == 0) // 90 degrees rotation
+				else if (int(angle - 270) % 360 == 0) // 270 degrees rotation
 					x -= fontSize*1.06;
-				else // ((angle - 90) % 360 == 0)  270 degrees rotation
+				else // ((angle - 90) % 360 == 0)  90 degrees rotation
 					x += fontSize*1.06;
 			}
 
@@ -608,9 +608,9 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 				y -= fontSize*1.06;
 			else if (int(angle - 180) % 360 == 0) // 180 degrees rotation
 				y += fontSize*1.06;
-			else if (int(angle - 270) % 360 == 0) // 90 degrees rotation
+			else if (int(angle - 270) % 360 == 0) // 270 degrees rotation
 				x -= fontSize*1.06;
-			else // ((angle - 90) % 360 == 0)  270 degrees rotation
+			else // ((angle - 90) % 360 == 0)  90 degrees rotation
 				x += fontSize*1.06;
 		}
 	}
@@ -621,27 +621,125 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 void ExportDialog::drawDxfArcEllipse(QString file_path, qreal x, qreal y, qreal w, qreal h, qreal startAngle,
 									 qreal spanAngle, qreal hotspot_x, qreal hotspot_y, qreal rotation_angle) {
 
-	/*//if horizontal ellipse
-	if (w > h) {
-		qreal sin1 = sin(startAngle);
-		qreal sin2 = sin(startAngle + spanAngle);
-		if (sin1 > 0 && sin2 < 0) {
+	// vector of parts of arc (stored as a pair of startAngle and spanAngle) for each quadrant.
+	QVector< QPair<qreal,qreal> > arc_parts_vector;
 
+	if (spanAngle > 0) {
+		qreal start = startAngle;
+		qreal span;
+		int i;
+		for ( i = startAngle; i < startAngle+spanAngle; i++ ) {
+			int absolute_theta = (i > 0) ? i : -i;
+			if (absolute_theta == 0 || absolute_theta == 90 ||
+				absolute_theta == 180 || absolute_theta == 270 ||
+				absolute_theta == 360) {
+				span = i - start;
+				QPair<qreal, qreal> newPart(start,span);
+				arc_parts_vector.push_back(newPart);
+				start = i;
+			}
 		}
-	}*/
-	qreal center_x = x + w/2;
-	qreal center_y = y - w/2;
-	qreal radius = (w+h)/4;
-	qreal endAngle = startAngle + spanAngle;
-	QPointF transformed_point = rotation_transformed(center_x, center_y, hotspot_x, hotspot_y, rotation_angle);
-	center_x = transformed_point.x();
-	center_y = transformed_point.y();
-	if (startAngle == 0 && spanAngle == 360)
-		Createdxf::drawCircle(file_path, radius, center_x, center_y, 0);
-	else {
-		endAngle += rotation_angle;
-		startAngle += rotation_angle;
-		Createdxf::drawArc(file_path, center_x, center_y, radius, endAngle, startAngle, 0);
+		if (start != i) {
+			span = i - start;
+			QPair<qreal, qreal> newPart(start,span);
+			arc_parts_vector.push_back(newPart);
+		}
+	} else {
+		qreal start = startAngle;
+		qreal span;
+		int i;
+		for ( i = startAngle; i > startAngle+spanAngle; i-- ) {
+			int absolute_theta = (i > 0) ? i : -i;
+			if (absolute_theta == 0 || absolute_theta == 90 ||
+				absolute_theta == 180 || absolute_theta == 270 ||
+				absolute_theta == 360) {
+				span = i - start;
+				QPair<qreal, qreal> newPart(start,span);
+				arc_parts_vector.push_back(newPart);
+				start = i;
+			}
+		}
+		if (start != i) {
+			span = i - start;
+			QPair<qreal, qreal> newPart(start,span);
+			arc_parts_vector.push_back(newPart);
+		}
+	}
+
+	for (int i = 0; i < arc_parts_vector.size(); i++) {
+
+		QPair<qreal,qreal> arc = arc_parts_vector[i];
+		if (arc.second == 0)
+			continue;
+		qreal arc_startAngle = arc.first * 3.142/180;
+		qreal arc_spanAngle = arc.second * 3.142/180;
+
+		qreal a = w/2;
+		qreal b = h/2;
+
+		qreal x1 = x + w/2 + a*cos(arc_startAngle);
+		qreal y1 = y - h/2 + b*sin(arc_startAngle);
+		qreal x2 = x + w/2 + a*cos(arc_startAngle + arc_spanAngle);
+		qreal y2 = y - h/2 + b*sin(arc_startAngle + arc_spanAngle);
+
+
+		qreal mid_ellipse_x = x + w/2 + a*cos(arc_startAngle + arc_spanAngle/2);
+		qreal mid_ellipse_y = y - h/2 + b*sin(arc_startAngle + arc_spanAngle/2);
+		qreal mid_line_x = (x1+x2)/2;
+		qreal mid_line_y = (y1+y2)/2;
+
+		qreal x3 = (mid_ellipse_x + mid_line_x)/2;
+		qreal y3 = (mid_ellipse_y + mid_line_y)/2;
+
+		// find circumcenter of points (x1,y1), (x3,y3) and (x2,y2)
+		qreal a1 = 2*x2 - 2*x1;
+		qreal b1 = 2*y2 - 2*y1;
+		qreal c1 = x1*x1 + y1*y1 - x2*x2 - y2*y2;
+
+		qreal a2 = 2*x3 - 2*x1;
+		qreal b2 = 2*y3 - 2*y1;
+		qreal c2 = x1*x1 + y1*y1 - x3*x3 - y3*y3;
+
+		qreal center_x = (b1*c2 - b2*c1) / (a1*b2 - a2*b1);
+		qreal center_y = (a1*c2 - a2*c1) / (b1*a2 - b2*a1);
+
+		qreal radius = sqrt( (x1-center_x)*(x1-center_x) + (y1-center_y)*(y1-center_y) );
+
+		if ( x1 > center_x && y1 > center_y )
+			arc_startAngle = asin( (y1 - center_y) / radius );
+		else if ( x1 > center_x && y1 < center_y )
+			arc_startAngle = 3.142*2 - asin( (center_y - y1) / radius );
+		else if ( x1 < center_x && y1 < center_y )
+			arc_startAngle = 3.142 + asin( (center_y - y1) / radius );
+		else
+			arc_startAngle = 3.142 - asin( (y1 - center_y) / radius );
+
+		qreal arc_endAngle;
+
+		if ( x2 > center_x && y2 > center_y )
+			arc_endAngle = asin( (y2 - center_y) / radius );
+		else if ( x2 > center_x && y2 < center_y )
+			arc_endAngle = 3.142*2 - asin( (center_y - y2) / radius );
+		else if ( x2 < center_x && y2 < center_y )
+			arc_endAngle = 3.142 + asin( (center_y - y2) / radius );
+		else
+			arc_endAngle = 3.142 - asin( (y2 - center_y) / radius );
+
+		if (arc_endAngle < arc_startAngle) {
+			qreal temp = arc_startAngle;
+			arc_startAngle = arc_endAngle;
+			arc_endAngle = temp;
+		}
+
+		QPointF transformed_point = rotation_transformed(center_x, center_y, hotspot_x, hotspot_y, rotation_angle);
+		center_x = transformed_point.x();
+		center_y = transformed_point.y();
+		arc_endAngle *= 180/3.142;
+		arc_startAngle *= 180/3.142;
+		arc_endAngle -= rotation_angle;
+		arc_startAngle -= rotation_angle;
+
+		Createdxf::drawArc(file_path, center_x, center_y, radius, arc_startAngle, arc_endAngle, 0);
 	}
 }
 
