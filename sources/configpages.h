@@ -70,9 +70,12 @@ class GeneralConfigurationPage : public ConfigPage {
 	void applyConf();
 	QString title() const;
 	QIcon icon() const;
+
+	private:
+	void fillLang(QSettings &);
 	
 	// attributes
-	public:
+	private:
 	QLabel *title_label_;
 	QFrame *horiz_line_;
 	QGroupBox *appearance_;
@@ -86,6 +89,9 @@ class GeneralConfigurationPage : public ConfigPage {
 	QCheckBox *highlight_integrated_elements_;
 	QLabel    *default_element_infos_label_;
 	QTextEdit *default_element_infos_textfield_;
+	QGroupBox *lang_group_box;
+	QComboBox *lang_combo_box;
+	QLabel *lang_label;
 };
 
 /**

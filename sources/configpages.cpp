@@ -51,7 +51,7 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 
 	// default propertie of report label
 	rpw = new ReportPropertieWidget(QETDiagramEditor::defaultReportProperties());
-	tab_widget->addTab(rpw, ("Report de folio"));
+	tab_widget->addTab(rpw, tr("Report de folio"));
 	
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	vlayout1->addWidget(tab_widget);
@@ -156,6 +156,15 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	elements_management_layout -> addWidget(default_element_infos_label_);
 	elements_management_layout -> addWidget(default_element_infos_textfield_);
 	elements_management_ -> setLayout(elements_management_layout);
+
+	//setup lang combo box selection widget
+	lang_group_box = new QGroupBox(tr("Langue"), this);
+	QHBoxLayout *lang_layout = new QHBoxLayout(lang_group_box);
+	lang_combo_box = new QComboBox();
+	lang_label = new QLabel(tr("La nouvelle langue sera pris en compte au prochain lancement de QElectroTech."));
+	lang_layout->addWidget(lang_combo_box);
+	lang_layout->addWidget(lang_label);
+	fillLang(settings);
 	
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	
@@ -169,6 +178,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	vlayout1 -> addWidget(appearance_);
 	vlayout1 -> addWidget(projects_view_mode_);
 	vlayout1 -> addWidget(elements_management_);
+	vlayout1 -> addWidget(lang_group_box);
 	vlayout1 -> addStretch();
 	
 	setLayout(vlayout1);
@@ -179,8 +189,9 @@ GeneralConfigurationPage::~GeneralConfigurationPage() {
 }
 
 /**
-	Applique la configuration de cette page
-*/
+ * @brief GeneralConfigurationPage::applyConf
+ * Write all configuration in settings file
+ */
 void GeneralConfigurationPage::applyConf() {
 	QSettings &settings = QETApp::settings();
 	
@@ -190,6 +201,8 @@ void GeneralConfigurationPage::applyConf() {
 	if (was_using_system_colors != must_use_system_colors) {
 		QETApp::instance() -> useSystemPalette(must_use_system_colors);
 	}
+
+	settings.setValue("lang", lang_combo_box->itemData(lang_combo_box->currentIndex()).toString());
 	
 	QString view_mode = tabbed_mode_ -> isChecked() ? "tabbed" : "windowed";
 	settings.setValue("diagrameditor/viewmode", view_mode) ;
@@ -207,6 +220,42 @@ QIcon GeneralConfigurationPage::icon() const {
 /// @return le titre de cette page
 QString GeneralConfigurationPage::title() const {
 	return(tr("G\351n\351ral", "configuration page title"));
+}
+
+/**
+ * @brief GeneralConfigurationPage::fillLang
+ * fill all available lang in @lang_combo_box
+ */
+void GeneralConfigurationPage::fillLang(QSettings &settings) {
+	lang_combo_box->addItem(tr("Syst\350me"), "system");
+	lang_combo_box->insertSeparator(1);
+
+	// all lang available on lang directory
+	lang_combo_box->addItem(tr("Arabe"), "ar");
+	lang_combo_box->addItem(tr("Catalan"), "ca");
+	lang_combo_box->addItem(tr("Tch\350que"), "cs");
+	lang_combo_box->addItem(tr("Allemand"), "de");
+	lang_combo_box->addItem(tr("Grec"), "el");
+	lang_combo_box->addItem(tr("Anglais"), "en");
+	lang_combo_box->addItem(tr("Espagnol"), "es");
+	lang_combo_box->addItem(tr("Fran\347ais"), "fr");
+	lang_combo_box->addItem(tr("Croate"), "hr");
+	lang_combo_box->addItem(tr("Italien"), "it");
+	lang_combo_box->addItem(tr("Polonais"), "pl");
+	lang_combo_box->addItem(tr("Portugais"), "pt");
+	lang_combo_box->addItem(tr("Roumains"), "ro");
+	lang_combo_box->addItem(tr("Russe"), "ru");
+	lang_combo_box->addItem(tr("Slov\350ne"), "sl");
+
+	//set curent index to the lang found in setting file
+	//if lang doesn't exist set to system
+	for (int i=0; i<lang_combo_box->count(); i++) {
+		if (lang_combo_box->itemData(i).toString() == settings.value("lang").toString()) {
+			lang_combo_box->setCurrentIndex(i);
+			return;
+		}
+	}
+	lang_combo_box->setCurrentIndex(0);
 }
 
 /**

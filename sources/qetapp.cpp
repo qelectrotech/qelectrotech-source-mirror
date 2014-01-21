@@ -71,9 +71,9 @@ QETApp::QETApp(int &argc, char **argv) :
 	non_interactive_execution_(false)
 {
 	parseArguments();
+	initConfiguration();
 	initLanguage();
 	QET::Icons::initIcons();
-	initConfiguration();
 	initStyle();
 	
 	if (!non_interactive_execution_ && isRunning()) {
@@ -107,7 +107,7 @@ QETApp::QETApp(int &argc, char **argv) :
 	if (!collections_cache_) {
 		QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
 		collections_cache_ = new ElementsCollectionCache(cache_path, this);
-		collections_cache_ -> setLocale(QLocale::system().name().left(2)); // @todo we need a unique function to get the good language
+		collections_cache_->setLocale(langFromSetting());
 	}
 	
 	// loads known collections into memory (this does not include items rendering made in elements panels)
@@ -183,6 +183,16 @@ void QETApp::setLanguage(const QString &desired_language) {
 	if (ltr_special_string == "RTL") switchLayout(Qt::RightToLeft);
 }
 
+/**
+ * @brief QETApp::langFromSetting
+ * @return the langage found in setting file
+ * if nothing was found return the system local.
+ */
+QString QETApp::langFromSetting() {
+	QString system_language = settings().value("lang", "system").toString();
+	if(system_language == "system") {system_language = QLocale::system().name().left(2);}
+	return system_language;
+}
 /**
 	Switches the application to the provided layout.
 */
@@ -1300,9 +1310,7 @@ void QETApp::setSplashScreenStep(const QString &message) {
 	Determine et applique le langage a utiliser pour l'application
 */
 void QETApp::initLanguage() {
-	// selectionne le langage du systeme
-	QString system_language = QLocale::system().name().left(2);
-	setLanguage(system_language);
+	setLanguage(langFromSetting());
 }
 
 /**

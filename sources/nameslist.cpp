@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "nameslist.h"
+#include "qetapp.h"
+
 // make this class usable with QVariant
 int NamesList::MetaTypeId = qRegisterMetaType<NamesList>("NamesList");
 
@@ -201,8 +203,7 @@ bool NamesList::operator==(const NamesList &nl) const {
 	@return The adequate name regarding the current system locale.
 */
 QString NamesList::name(const QString &fallback_name) const {
-	// recupere les deux premiers caracteres de la locale en cours du systeme
-	QString system_language = QLocale::system().name().left(2);
+	QString system_language = QETApp::langFromSetting();
 	QString returned_name;
 	if (!hash_names[system_language].isEmpty()) {
 		returned_name = hash_names[system_language];

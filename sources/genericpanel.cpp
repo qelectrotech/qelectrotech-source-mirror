@@ -48,8 +48,7 @@ ElementsCollectionCache *GenericPanel::getElementsCache() {
 		// build a default cache
 		QString cache_path = "./genericpanel.sqlite";
 		cache_ = new ElementsCollectionCache(cache_path, this);
-		/// @todo we need a unique function to get the good language
-		cache_ -> setLocale(QLocale::system().name().left(2));
+		cache_->setLocale(QETApp::langFromSetting());
 	}
 	return(cache_);
 }

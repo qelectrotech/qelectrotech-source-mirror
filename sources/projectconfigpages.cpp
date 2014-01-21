@@ -281,7 +281,7 @@ void ProjectNewDiagramConfigPage::initLayout() {
 
 	tab_widget->addTab(conductor_, tr("Conducteur"));
 
-	tab_widget->addTab(report_, ("Report de folio"));
+	tab_widget->addTab(report_, tr("Report de folio"));
 
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	vlayout1->addWidget(tab_widget);
