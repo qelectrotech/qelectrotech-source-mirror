@@ -1104,7 +1104,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/qetgraphicsitem/elementtextitem.cpp" line="52"/>
         <source>Maintenir ctrl pour déplacer</source>
         <comment>tool tip for element text item</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κρατήστε το ctrl για μετακίνηση</translation>
     </message>
 </context>
 <context>
@@ -1815,12 +1815,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="82"/>
         <source>Voir ce report</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση αυτής της αναφοράς</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/folioreportproperties.ui" line="89"/>
         <source>Voir le report lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση της συνδεδεμένης αναφοράς</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="58"/>
@@ -1835,12 +1835,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="92"/>
         <source>Ce report est déjà lié.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η αναφορά είναι ήδη συνδεδεμένη.</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="93"/>
         <source>Délier</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποσύνδεση</translation>
     </message>
 </context>
 <context>
@@ -5123,12 +5123,13 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1160"/>
         <source>Lier deux Ã©lÃ©ments</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνδεση δυο στοιχείων</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1203"/>
         <source>Délier %n élément(s)</source>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>Αποσύνδεση %n στοιχείου(ων)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
