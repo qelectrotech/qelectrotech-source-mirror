@@ -46,10 +46,9 @@ void FolioReportProperties::buildRadioList() {
 
 	//Research the invert report of @element_
 	int rep = element_->linkType() == Element::NextReport? Element::PreviousReport : Element::NextReport;
-	ElementProvider ep(element_->diagram()->project(), element_->diagram());
+	ElementProvider ep(element_->diagram()->project());
 	QList <Element *> elmt_list = ep.freeElement(rep);
-	qSort(elmt_list);
-	qDebug() <<elmt_list;
+
 	foreach (Element *elmt, elmt_list) {
 		if (elmt != element_) {
 			//label for the button
@@ -61,7 +60,7 @@ void FolioReportProperties::buildRadioList() {
 																		  .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
 
 			//button himself
-			QHBoxLayout *hl = new QHBoxLayout(this);
+			QHBoxLayout *hl = new QHBoxLayout();
 			QRadioButton *rb = new QRadioButton(button_text , this);
 			QPushButton *pb = new QPushButton(QET::Icons::ZoomDraw,"",this);
 			hl->addWidget(rb);
@@ -69,8 +68,6 @@ void FolioReportProperties::buildRadioList() {
 			hl->addWidget(pb);
 			ui->available_report_layout->addLayout(hl);
 			element_list << elmt;
-			qSort(element_list);
-			qDebug() <<element_list;
 			//map the radio button signal
 			connect(rb, SIGNAL(clicked()), sm_, SLOT(map()));
 			sm_ -> setMapping(rb, element_list.size()-1);
