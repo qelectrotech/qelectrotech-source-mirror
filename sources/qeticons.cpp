@@ -155,7 +155,7 @@ namespace QET {
 		QIcon adding_image;
 		QIcon resize_image;
 		QIcon ar;
-		QIcon catalania;
+		QIcon catalonia;
 		QIcon cs;
 		QIcon de;
 		QIcon gr;
@@ -404,7 +404,7 @@ void QET::Icons::initIcons() {
 	ZoomOut             .addFile(":/ico/16x16/zoom-out.png");
 	ZoomOut             .addFile(":/ico/22x22/zoom-out.png");
 	ar                  .addFile(":/ico/24x16/ar.png");
-	catalania           .addFile(":/ico/24x16/catalania.png");
+	catalonia           .addFile(":/ico/24x16/catalonia.png");
 	cs                  .addFile(":/ico/24x16/cs.png");
 	de                  .addFile(":/ico/24x16/de.png");
 	gr                  .addFile(":/ico/24x16/gr.png");

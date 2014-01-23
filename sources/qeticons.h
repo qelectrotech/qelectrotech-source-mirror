@@ -164,7 +164,7 @@ namespace QET {
 		extern QIcon adding_image;
 		extern QIcon resize_image;
 		extern QIcon ar;
-		extern QIcon catalania;
+		extern QIcon catalonia;
 		extern QIcon cs;
 		extern QIcon de;
 		extern QIcon gr;
