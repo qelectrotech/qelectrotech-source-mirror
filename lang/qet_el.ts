@@ -1901,12 +1901,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="161"/>
         <source>Langue</source>
-        <translation type="unfinished">Γλώσσα</translation>
+        <translation>Γλώσσα</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="164"/>
         <source>La nouvelle langue sera pris en compte au prochain lancement de QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>Η νέα γλώσσα θα ισχύει μετά την επανεκκίνηση του QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="222"/>
@@ -1917,82 +1917,82 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="230"/>
         <source>Système</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύστημα</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="234"/>
         <source>Arabe</source>
-        <translation type="unfinished"></translation>
+        <translation>Αραβικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="235"/>
         <source>Catalan</source>
-        <translation type="unfinished"></translation>
+        <translation>Καταλανικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="236"/>
         <source>Tchèque</source>
-        <translation type="unfinished"></translation>
+        <translation>Τσέχικα</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="237"/>
         <source>Allemand</source>
-        <translation type="unfinished"></translation>
+        <translation>Γερμανικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="238"/>
         <source>Grec</source>
-        <translation type="unfinished"></translation>
+        <translation>Ελληνικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="239"/>
         <source>Anglais</source>
-        <translation type="unfinished"></translation>
+        <translation>Αγγλικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="240"/>
         <source>Espagnol</source>
-        <translation type="unfinished"></translation>
+        <translation>Ισπανικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="241"/>
         <source>Français</source>
-        <translation type="unfinished"></translation>
+        <translation>Γαλλικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="242"/>
         <source>Croate</source>
-        <translation type="unfinished"></translation>
+        <translation>Κροατικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="243"/>
         <source>Italien</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιταλικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="244"/>
         <source>Polonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Πολωνικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="245"/>
         <source>Portugais</source>
-        <translation type="unfinished"></translation>
+        <translation>Πορτογαλικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="246"/>
         <source>Roumains</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρουμανικά</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="247"/>
         <source>Russe</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρώσικα</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>Slovène</source>
-        <translation type="unfinished"></translation>
+        <translation>Σλοβενικά</translation>
     </message>
 </context>
 <context>
@@ -2831,7 +2831,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1380"/>
         <source>Ferme l&apos;application QElectroTech</source>
-        <translation>Κλείσιμο του ΚιουΕλέκτροΤεχκ</translation>
+        <translation>Κλείσιμο του QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1381"/>
