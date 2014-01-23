@@ -566,9 +566,10 @@ bool ElementsPanel::mustHighlightIntegratedElements() const {
 }
 
 /**
-	Recharge l'arbre des elements
-	@param reload_collections true pour relire les collections depuis leurs sources (fichiers, projets...)
-*/
+ * @brief ElementsPanel::reload
+ * Reload the elements tree
+ * @param reload_collections true for read all collections since their sources (files, projects ...)
+ */
 void ElementsPanel::reload(bool reload_collections) {
 	if (reload_collections) {
 		emit(readingAboutToBegin());
@@ -593,6 +594,8 @@ void ElementsPanel::reload(bool reload_collections) {
 	
 	// load the common elements collection
 	if (QETApp::commonElementsCollection() -> rootCategory()) {
+		// first check local
+		QETApp::commonElementsCollection()->cache()->setLocale(QETApp::langFromSetting());
 		common_collection_item_ = addCollection(QETApp::commonElementsCollection());
 		common_collection_item_ -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper la collection d'\351l\351ments QElectroTech", "Status tip"));
 		common_collection_item_ -> setWhatsThis(0, tr("Ceci est la collection d'\351l\351ments fournie avec QElectroTech. Install\351e en tant que composant syst\350me, vous ne pouvez normalement pas la personnaliser.", "\"What's this\" tip"));
@@ -609,6 +612,8 @@ void ElementsPanel::reload(bool reload_collections) {
 	
 	// load the custom elements collection
 	if (QETApp::customElementsCollection() -> rootCategory()) {
+		// first check local
+		QETApp::customElementsCollection()->cache()->setLocale(QETApp::langFromSetting());
 		custom_collection_item_ = addCollection(QETApp::customElementsCollection());
 		custom_collection_item_ -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper votre collection personnelle d'\351l\351ments", "Status tip"));
 		custom_collection_item_ -> setWhatsThis(0, tr("Ceci est votre collection personnelle d'\351l\351ments -- utilisez-la pour cr\351er, stocker et \351diter vos propres \351l\351ments.", "\"What's this\" tip"));
