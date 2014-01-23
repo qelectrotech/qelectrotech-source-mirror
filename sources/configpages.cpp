@@ -231,21 +231,21 @@ void GeneralConfigurationPage::fillLang(QSettings &settings) {
 	lang_combo_box->insertSeparator(1);
 
 	// all lang available on lang directory
-	lang_combo_box->addItem(tr("Arabe"), "ar");
-	lang_combo_box->addItem(tr("Catalan"), "ca");
-	lang_combo_box->addItem(tr("Tch\350que"), "cs");
-	lang_combo_box->addItem(tr("Allemand"), "de");
-	lang_combo_box->addItem(tr("Grec"), "el");
-	lang_combo_box->addItem(tr("Anglais"), "en");
-	lang_combo_box->addItem(tr("Espagnol"), "es");
-	lang_combo_box->addItem(tr("Fran\347ais"), "fr");
-	lang_combo_box->addItem(tr("Croate"), "hr");
-	lang_combo_box->addItem(tr("Italien"), "it");
-	lang_combo_box->addItem(tr("Polonais"), "pl");
-	lang_combo_box->addItem(tr("Portugais"), "pt");
-	lang_combo_box->addItem(tr("Roumains"), "ro");
-	lang_combo_box->addItem(tr("Russe"), "ru");
-	lang_combo_box->addItem(tr("Slov\350ne"), "sl");
+	lang_combo_box->addItem(QET::Icons::ar,           tr("Arabe"), "ar");
+	lang_combo_box->addItem(QET::Icons::catalania,           tr("Catalan"), "ca");
+	lang_combo_box->addItem(QET::Icons::cs,           tr("Tch\350que"), "cs");
+	lang_combo_box->addItem(QET::Icons::de,          tr("Allemand"), "de");
+	lang_combo_box->addItem(QET::Icons::gr,           tr("Grec"), "el");
+	lang_combo_box->addItem(QET::Icons::en,           tr("Anglais"), "en");
+	lang_combo_box->addItem(QET::Icons::es,           tr("Espagnol"), "es");
+	lang_combo_box->addItem(QET::Icons::fr,          tr("Fran\347ais"), "fr");
+	lang_combo_box->addItem(QET::Icons::hr,           tr("Croate"), "hr");
+	lang_combo_box->addItem(QET::Icons::it,           tr("Italien"), "it");
+	lang_combo_box->addItem(QET::Icons::pl,           tr("Polonais"), "pl");
+	lang_combo_box->addItem(QET::Icons::pt,           tr("Portugais"), "pt");
+	lang_combo_box->addItem(QET::Icons::ro,           tr("Roumains"), "ro");
+	lang_combo_box->addItem(QET::Icons::ru,           tr("Russe"), "ru");
+	lang_combo_box->addItem(QET::Icons::sl,           tr("Slov\350ne"), "sl");
 
 	//set curent index to the lang found in setting file
 	//if lang doesn't exist set to system

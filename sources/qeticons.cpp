@@ -154,6 +154,21 @@ namespace QET {
 		QIcon ZoomOut;
 		QIcon adding_image;
 		QIcon resize_image;
+		QIcon ar;
+		QIcon catalania;
+		QIcon cs;
+		QIcon de;
+		QIcon gr;
+		QIcon en;
+		QIcon es;
+		QIcon fr;
+		QIcon hr;
+		QIcon it;
+		QIcon pl;
+		QIcon pt;
+		QIcon ro;
+		QIcon ru;
+		QIcon sl;
 	}
 }
 
@@ -388,4 +403,19 @@ void QET::Icons::initIcons() {
 	ZoomOriginal        .addFile(":/ico/22x22/zoom-original.png");
 	ZoomOut             .addFile(":/ico/16x16/zoom-out.png");
 	ZoomOut             .addFile(":/ico/22x22/zoom-out.png");
+	ar                  .addFile(":/ico/24x16/ar.png");
+	catalania           .addFile(":/ico/24x16/catalania.png");
+	cs                  .addFile(":/ico/24x16/cs.png");
+	de                  .addFile(":/ico/24x16/de.png");
+	gr                  .addFile(":/ico/24x16/gr.png");
+	en                  .addFile(":/ico/24x16/en.png");
+	es                  .addFile(":/ico/24x16/es.png");
+	fr                  .addFile(":/ico/24x16/fr.png");
+	hr                  .addFile(":/ico/24x16/hr.png");
+	it                  .addFile(":/ico/24x16/it.png");
+	pl                  .addFile(":/ico/24x16/pl.png");
+	pt                  .addFile(":/ico/24x16/pt.png");
+	ro                  .addFile(":/ico/24x16/ro.png");
+	ru                  .addFile(":/ico/24x16/ru.png");
+	sl                  .addFile(":/ico/24x16/sl.png");
 }

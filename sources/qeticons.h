@@ -163,6 +163,21 @@ namespace QET {
 		extern QIcon ZoomOut;
 		extern QIcon adding_image;
 		extern QIcon resize_image;
+		extern QIcon ar;
+		extern QIcon catalania;
+		extern QIcon cs;
+		extern QIcon de;
+		extern QIcon gr;
+		extern QIcon en;
+		extern QIcon es;
+		extern QIcon fr;
+		extern QIcon hr;
+		extern QIcon it;
+		extern QIcon pl;
+		extern QIcon pt;
+		extern QIcon ro;
+		extern QIcon ru;
+		extern QIcon sl;
 	}
 }
 #endif

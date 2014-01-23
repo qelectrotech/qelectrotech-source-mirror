@@ -166,7 +166,7 @@
         <file>ico/22x22/textfield.png</file>
         <file>ico/22x22/text.png</file>
         <file>ico/22x22/text-xml.png</file>
-	<file>ico/22x22/transform-scale.png</file>
+        <file>ico/22x22/transform-scale.png</file>
         <file>ico/22x22/two_pages.png</file>
         <file>ico/22x22/view_fit_width.png</file>
         <file>ico/22x22/view_fit_window.png</file>
@@ -209,5 +209,20 @@
         <file>ico/32x32/format-text-bold.png</file>
         <file>ico/32x32/format-text-italic.png</file>
         <file>ico/32x32/format-text-underline.png</file>
+        <file>ico/24x16/ar.png</file>
+        <file>ico/24x16/cs.png</file>
+        <file>ico/24x16/de.png</file>
+        <file>ico/24x16/es.png</file>
+        <file>ico/24x16/en.png</file>
+        <file>ico/24x16/catalonia.png</file>
+        <file>ico/24x16/fr.png</file>
+        <file>ico/24x16/hr.png</file>
+        <file>ico/24x16/lt.png</file>
+        <file>ico/24x16/pl.png</file>
+        <file>ico/24x16/pt.png</file>
+        <file>ico/24x16/ro.png</file>
+        <file>ico/24x16/ru.png</file>
+        <file>ico/24x16/sl.png</file>
+        <file>ico/24x16/gr.png</file>
     </qresource>
 </RCC>
