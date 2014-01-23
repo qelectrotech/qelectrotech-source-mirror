@@ -239,7 +239,7 @@ int ProjectView::tryClosingDiagrams() {
 	}
 
 	QString title = project()->title();
-	if (title.isEmpty()) title = "QElectroTech";
+	if (title.isEmpty()) title = "QElectroTech ";
 
 	int close_dialog = QMessageBox::question(this, title,
 								   tr("Le projet \340 \351t\351 modifi\351.\n"
