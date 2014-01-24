@@ -1900,12 +1900,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="161"/>
         <source>Langue</source>
-        <translation type="unfinished">Język</translation>
+        <translation>Język</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="164"/>
         <source>La nouvelle langue sera pris en compte au prochain lancement de QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>Język zostanie zmieniony przy następnym uruchomieniu QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="222"/>
@@ -1916,82 +1916,82 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="230"/>
         <source>Système</source>
-        <translation type="unfinished"></translation>
+        <translation>Systemowy</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="234"/>
         <source>Arabe</source>
-        <translation type="unfinished"></translation>
+        <translation>Arabski</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="235"/>
         <source>Catalan</source>
-        <translation type="unfinished"></translation>
+        <translation>Kataloński</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="236"/>
         <source>Tchèque</source>
-        <translation type="unfinished"></translation>
+        <translation>Czeski</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="237"/>
         <source>Allemand</source>
-        <translation type="unfinished"></translation>
+        <translation>Niemiecki</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="238"/>
         <source>Grec</source>
-        <translation type="unfinished"></translation>
+        <translation>Grecki</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="239"/>
         <source>Anglais</source>
-        <translation type="unfinished"></translation>
+        <translation>Angielski</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="240"/>
         <source>Espagnol</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiszpański</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="241"/>
         <source>Français</source>
-        <translation type="unfinished"></translation>
+        <translation>Francuski</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="242"/>
         <source>Croate</source>
-        <translation type="unfinished"></translation>
+        <translation>Chorwacki</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="243"/>
         <source>Italien</source>
-        <translation type="unfinished"></translation>
+        <translation>Włoski</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="244"/>
         <source>Polonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Polski</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="245"/>
         <source>Portugais</source>
-        <translation type="unfinished"></translation>
+        <translation>Portugalski</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="246"/>
         <source>Roumains</source>
-        <translation type="unfinished"></translation>
+        <translation>Rumuński</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="247"/>
         <source>Russe</source>
-        <translation type="unfinished"></translation>
+        <translation>Rosyjski</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>Slovène</source>
-        <translation type="unfinished"></translation>
+        <translation>Soweński</translation>
     </message>
 </context>
 <context>
@@ -2422,7 +2422,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="54"/>
         <source>Report de folio</source>
-        <translation type="unfinished">Odsyłacze do stron</translation>
+        <translation>Odsyłacze do stron</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="92"/>
@@ -2659,7 +2659,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="284"/>
         <source>Report de folio</source>
-        <translation type="unfinished">Odsyłacze do stron</translation>
+        <translation>Odsyłacze do stron</translation>
     </message>
 </context>
 <context>
