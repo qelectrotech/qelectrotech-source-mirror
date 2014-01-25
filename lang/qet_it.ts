@@ -1889,12 +1889,12 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/configpages.cpp" line="120"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
-        <translation>Mostrare nel pannello gli elementi integrati di recente</translation>
+        <translation>Mostra nel pannello gli elementi integrati di recente</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="122"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Ogni elemento incorpora informazioni sul suo autore, la sua licenza e ogni altra informazione utile in un campo testo liberamente editabile. Specificare qui il valore predefinito del campo testo per l&apos;elemento che si vuole creare:</translation>
+        <translation>Ogni elemento incorpora informazioni sull&apos;autore, la licenza e ogni altra informazione utile, in un campo di testo liberamente editabile. Specificare qui il valore predefinito del campo di testo per l&apos;elemento che si vuole creare:</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="161"/>
