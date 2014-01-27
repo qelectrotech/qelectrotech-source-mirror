@@ -4,6 +4,7 @@
         <name lang="it">Lumin, IR, 1 via</name>
         <name lang="fr">Capteur capteur de lumière / de mouvement</name>
         <name lang="pl">Czujnik natężenia oświetlenia / czujnik ruchu</name>
+        <name lang="es">Sensor IR, generico</name>
     </names>
     <informations></informations>
     <description>

@@ -1,10 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="24" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Αισθητήρας φωτεινότητας</name>
         <name lang="en">Brightness sensor</name>
         <name lang="it">Sensore di luminosità</name>
         <name lang="fr">Capteur de luminuosité</name>
         <name lang="pl">Czujnik natężenia oświetlenia</name>
+        <name lang="es">Sensor de brillo, luminancia</name>
     </names>
     <informations></informations>
     <description>

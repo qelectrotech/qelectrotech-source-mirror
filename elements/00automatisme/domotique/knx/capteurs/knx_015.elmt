@@ -5,6 +5,7 @@
         <name lang="it">Sensore infrarosso</name>
         <name lang="fr">capteur de mouvements</name>
         <name lang="pl">Czujnik ruchu (pasywny czujnik podczerwieni)</name>
+        <name lang="es">Sensor de movimiento</name>
     </names>
     <informations></informations>
     <description>

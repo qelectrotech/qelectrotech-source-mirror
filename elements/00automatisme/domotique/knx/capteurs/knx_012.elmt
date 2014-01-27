@@ -1,10 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="24" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Αισθητήρας θερμοκρασίας</name>
         <name lang="en">Temperature sensor</name>
         <name lang="it">Sensore di temperatura</name>
         <name lang="fr">Capteur de temperature</name>
         <name lang="pl">Czujnik temperatury</name>
+        <name lang="es">Sensor de temperatura</name>
     </names>
     <informations></informations>
     <description>

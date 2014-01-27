@@ -1,10 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="24" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Αισθητήρας τάσης/έντασης</name>
         <name lang="en">Current/Voltage sensor</name>
         <name lang="it">Sensore corrente/tensione</name>
         <name lang="fr">Capteur de courant / tension</name>
         <name lang="pl">Czujnik prądu / napięcia</name>
+        <name lang="es">Sensor de corriente / tensión</name>
     </names>
     <informations></informations>
     <description>
