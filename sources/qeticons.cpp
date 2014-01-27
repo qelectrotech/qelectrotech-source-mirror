@@ -169,6 +169,7 @@ namespace QET {
 		QIcon ro;
 		QIcon ru;
 		QIcon sl;
+		QIcon translation;
 	}
 }
 
@@ -418,4 +419,5 @@ void QET::Icons::initIcons() {
 	ro                  .addFile(":/ico/24x16/ro.png");
 	ru                  .addFile(":/ico/24x16/ru.png");
 	sl                  .addFile(":/ico/24x16/sl.png");
+	translation          .addFile(":/ico/22x22/applications-development-translation.png");
 }

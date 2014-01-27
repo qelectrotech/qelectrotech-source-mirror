@@ -227,7 +227,7 @@ QString GeneralConfigurationPage::title() const {
  * fill all available lang in @lang_combo_box
  */
 void GeneralConfigurationPage::fillLang(QSettings &settings) {
-	lang_combo_box->addItem(tr("Syst\350me"), "system");
+	lang_combo_box->addItem(QET::Icons::translation,  tr("Syst\350me"), "system");
 	lang_combo_box->insertSeparator(1);
 
 	// all lang available on lang directory
