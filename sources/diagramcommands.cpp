@@ -301,10 +301,15 @@ void PasteDiagramCommand::undo() {
 /// refait le coller
 void PasteDiagramCommand::redo() {
 	diagram -> showMe();
-	if (first_redo) first_redo = false;
+	if (first_redo) {
+		first_redo = false;
+		//this is the first paste, we make new uuid for each element
+		//because old uuid are the uuid of the copied element
+		foreach(Element *e, content.elements) e->newUuid();
+	}
 	else {
 		// paste the elements
-		foreach(Element *e, content.elements)  diagram -> addElement(e);
+		foreach(Element *e, content.elements) diagram -> addElement(e);
 		
 		// paste the conductors
 		foreach(Conductor *c, content.conductorsToMove) diagram -> addConductor(c);

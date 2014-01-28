@@ -105,6 +105,8 @@ class Element : public QetGraphicsItem {
 	virtual void unlinkElement(Element *elmt) {}
 	void initLink(QETProject *);
 	QList<Element *> linkedElements () const;
+	//create new uuid for this element
+	void newUuid() {uuid_ = QUuid::createUuid();}
 
 	/**
 		Draw this element
