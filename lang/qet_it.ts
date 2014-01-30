@@ -61,12 +61,6 @@
         <translation>QElectroTech, applicazione per il disegno di schemi elettrici.</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="96"/>
-        <source>© 2006-2013 Les développeurs de QElectroTech</source>
-        <comment>about tab, developers line</comment>
-        <translation>© 2006-2013 Gli sviluppatori di QElectroTech</translation>
-    </message>
-    <message>
         <location filename="../sources/aboutqet.cpp" line="100"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
@@ -180,6 +174,12 @@
         <location filename="../sources/aboutqet.cpp" line="173"/>
         <source>Paquets Debian</source>
         <translation>Pacchetti per Debian</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="96"/>
+        <source>© 2006-2014 Les développeurs de QElectroTech</source>
+        <comment>about tab, developers line</comment>
+        <translation>© 2006-2014 Gli sviluppatori di QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="179"/>
@@ -423,29 +423,29 @@ i conduttori di questo potenziale?</translation>
 <context>
     <name>ConductorAutoNumerotationWidget</name>
     <message>
-        <location filename="../sources/conductorautonumerotationwidget.cpp" line="23"/>
+        <location filename="../sources/conductorautonumerotationwidget.cpp" line="40"/>
         <source>Textes de potentiel</source>
         <translation>Testi dei potenziali</translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotationwidget.cpp" line="26"/>
+        <location filename="../sources/conductorautonumerotationwidget.cpp" line="43"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>I testi di questo potenziale non sono uguali.
 Applicare un testo all&apos;insieme dei conduttori?</translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
+        <location filename="../sources/conductorautonumerotationwidget.cpp" line="77"/>
         <source>  : est présent </source>
         <translation>  : è presente </translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
+        <location filename="../sources/conductorautonumerotationwidget.cpp" line="77"/>
         <source> fois.</source>
         <translation> volte.</translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
+        <location filename="../sources/conductorautonumerotationwidget.cpp" line="90"/>
         <source>Autre</source>
         <translation>Altro</translation>
     </message>
@@ -562,18 +562,18 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
 <context>
     <name>DiagramContextWidget</name>
     <message>
-        <location filename="../sources/diagramcontextwidget.cpp" line="125"/>
+        <location filename="../sources/diagramcontextwidget.cpp" line="142"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
         <translation>I nomi possono contenere solo lettere minuscole, numeri e punteggiatura.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
+        <location filename="../sources/diagramcontextwidget.cpp" line="176"/>
         <source>Nom</source>
         <comment>table header</comment>
         <translation>Nome</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
+        <location filename="../sources/diagramcontextwidget.cpp" line="176"/>
         <source>Valeur</source>
         <comment>table header</comment>
         <translation>Valore</translation>
@@ -1368,49 +1368,49 @@ I cambiamenti saranno irreversibili.</translation>
         <translation>Trascinare un elemento su di uno schema per inserire un elemento « %1 », fare doppio clic per modificarlo</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="590"/>
+        <location filename="../sources/elementspanel.cpp" line="591"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Fare doppio clic per minimizzare o espandere la collezione dei cartigli di QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="591"/>
+        <location filename="../sources/elementspanel.cpp" line="592"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Questa è la raccolta di cartigli forniti con QElectroTech. Installati come un componente di sistema, normalmente non è possibile personalizzarli.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="597"/>
+        <location filename="../sources/elementspanel.cpp" line="600"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Fare doppio clic per minimizzare o espandere l&apos;insieme degli elementi di QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="598"/>
+        <location filename="../sources/elementspanel.cpp" line="601"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Questa è la raccolta di elementi forniti con QElectroTech. Installati come un componente di sistema, normalmente non è possibile personalizzarli.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="606"/>
+        <location filename="../sources/elementspanel.cpp" line="609"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation>Fare doppio clic per minimizzare o espandere la collezione personale di cartigli</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="607"/>
+        <location filename="../sources/elementspanel.cpp" line="610"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Questa è la collezione personale di cartigli -- utilizzarla per creare, memorizzare e modificare i propri cartigli.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="613"/>
+        <location filename="../sources/elementspanel.cpp" line="618"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
         <translation>Fare doppio clic per minimizzare o espandere la collezione personale di elementi</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="614"/>
+        <location filename="../sources/elementspanel.cpp" line="619"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Questa è la collezione personale di elementi -- utilizzarla per creare, memorizzare e modificare i propri elementi.</translation>
@@ -1823,22 +1823,22 @@ I cambiamenti saranno irreversibili.</translation>
         <translation>Visualizzare il riferimento collegato</translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="57"/>
+        <location filename="../sources/ui/folioreportproperties.cpp" line="74"/>
         <source>Sans titre</source>
         <translation>Senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="58"/>
+        <location filename="../sources/ui/folioreportproperties.cpp" line="75"/>
         <source>Folio  %1 (%2), position %3.</source>
         <translation>Pagina  %1 (%2), Posizione %3.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="89"/>
+        <location filename="../sources/ui/folioreportproperties.cpp" line="106"/>
         <source>Ce report est déjà lié.</source>
         <translation>Questo riferimento è già collegato</translation>
     </message>
     <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="90"/>
+        <location filename="../sources/ui/folioreportproperties.cpp" line="107"/>
         <source>Délier</source>
         <translation>Scollega il riferimento</translation>
     </message>
@@ -1996,72 +1996,72 @@ I cambiamenti saranno irreversibili.</translation>
 <context>
     <name>GenericPanel</name>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="219"/>
+        <location filename="../sources/genericpanel.cpp" line="236"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
         <translation>Nessun file</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="225"/>
+        <location filename="../sources/genericpanel.cpp" line="242"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Si tratta di un progetto QElectroTech, vale a dire un file con l&apos;estensione .QET che riunisce i vari schemi/fogli. Inoltre carica gli elementi e modelli di cartigli utilizzat in questi schemi/fogli.</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="287"/>
+        <location filename="../sources/genericpanel.cpp" line="304"/>
         <source>Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Si tratta della raccolta incorporata in un file di progetto in cui memorizzare e gestire gli elementi usati nei diagrammi del progetto principale.</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="292"/>
+        <location filename="../sources/genericpanel.cpp" line="309"/>
         <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Questa categoria di elementi è utilizzata per integrare automaticamente nei progetti, tutti gli elementi utilizzati in uno schema del progetto.</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="351"/>
+        <location filename="../sources/genericpanel.cpp" line="368"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
         <translation>Schema senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="358"/>
+        <location filename="../sources/genericpanel.cpp" line="375"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
         <translation>%1 - %2</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="437"/>
+        <location filename="../sources/genericpanel.cpp" line="454"/>
         <source>Modèles de cartouche</source>
         <translation>Modelli di cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="527"/>
+        <location filename="../sources/genericpanel.cpp" line="544"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
         <translation>Modello &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="528"/>
+        <location filename="../sources/genericpanel.cpp" line="545"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Questo è un modello di cartiglio, che può essere applicato ad un schema.</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="713"/>
+        <location filename="../sources/genericpanel.cpp" line="730"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Questa è una categoria di elementi, un semplice contenitore che permette di organizzare le collezioni di elementi</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="867"/>
+        <location filename="../sources/genericpanel.cpp" line="884"/>
         <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Questo è un elemento che può essere inserito in uno schema.</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="1151"/>
+        <location filename="../sources/genericpanel.cpp" line="1168"/>
         <source>%1 [non utilisé dans le projet]</source>
         <translation>%1 [non utilizzato nel progetto]</translation>
     </message>
@@ -2607,25 +2607,25 @@ I cambiamenti saranno irreversibili.</translation>
 <context>
     <name>ProjectMainConfigPage</name>
     <message>
-        <location filename="../sources/projectconfigpages.cpp" line="95"/>
+        <location filename="../sources/projectconfigpages.cpp" line="112"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Generale</translation>
     </message>
     <message>
-        <location filename="../sources/projectconfigpages.cpp" line="139"/>
+        <location filename="../sources/projectconfigpages.cpp" line="156"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
         <translation>Titolo del progetto:</translation>
     </message>
     <message>
-        <location filename="../sources/projectconfigpages.cpp" line="141"/>
+        <location filename="../sources/projectconfigpages.cpp" line="158"/>
         <source>Ce titre sera disponible pour tous les schémas de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
         <translation>Questo titolo sarà disponibile per tutti gli schemi di questo progetto come %projecttitle.</translation>
     </message>
     <message>
-        <location filename="../sources/projectconfigpages.cpp" line="143"/>
+        <location filename="../sources/projectconfigpages.cpp" line="160"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
         <translation>Nella tabella sottostante è possibile impostare le proprietà personalizzate utilizzabili in tutti gli schemi di questo progetto (in genere per i cartigli).</translation>
@@ -2634,29 +2634,29 @@ I cambiamenti saranno irreversibili.</translation>
 <context>
     <name>ProjectNewDiagramConfigPage</name>
     <message>
-        <location filename="../sources/projectconfigpages.cpp" line="207"/>
+        <location filename="../sources/projectconfigpages.cpp" line="224"/>
         <source>Nouveau schéma</source>
         <comment>project configuration page title</comment>
         <translation>Nuovo schema</translation>
     </message>
     <message>
-        <location filename="../sources/projectconfigpages.cpp" line="257"/>
+        <location filename="../sources/projectconfigpages.cpp" line="274"/>
         <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
         <comment>explicative label</comment>
         <translation>Proprietà usate quando si aggiunge un nuovo schema al progetto:</translation>
     </message>
     <message>
-        <location filename="../sources/projectconfigpages.cpp" line="280"/>
+        <location filename="../sources/projectconfigpages.cpp" line="297"/>
         <source>Schéma</source>
         <translation>Schema</translation>
     </message>
     <message>
-        <location filename="../sources/projectconfigpages.cpp" line="282"/>
+        <location filename="../sources/projectconfigpages.cpp" line="299"/>
         <source>Conducteur</source>
         <translation>Conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/projectconfigpages.cpp" line="284"/>
+        <location filename="../sources/projectconfigpages.cpp" line="301"/>
         <source>Report de folio</source>
         <translation>Riferimento di pagina</translation>
     </message>
@@ -5131,96 +5131,96 @@ Cosa vuoi fare?</translation>
         <translation>incolla %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="339"/>
+        <location filename="../sources/diagramcommands.cpp" line="344"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
         <translation>taglia %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="380"/>
-        <location filename="../sources/diagramcommands.cpp" line="484"/>
-        <location filename="../sources/diagramcommands.cpp" line="598"/>
+        <location filename="../sources/diagramcommands.cpp" line="385"/>
+        <location filename="../sources/diagramcommands.cpp" line="489"/>
+        <location filename="../sources/diagramcommands.cpp" line="603"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>spostato %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="619"/>
+        <location filename="../sources/diagramcommands.cpp" line="624"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
         <translation>modifica il testo</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="667"/>
+        <location filename="../sources/diagramcommands.cpp" line="672"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
         <translation>ruota %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="785"/>
+        <location filename="../sources/diagramcommands.cpp" line="790"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
         <translation>orientare %1 a %2°</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="809"/>
+        <location filename="../sources/diagramcommands.cpp" line="814"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation>modifica un conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="866"/>
+        <location filename="../sources/diagramcommands.cpp" line="871"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>Resetta %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="906"/>
+        <location filename="../sources/diagramcommands.cpp" line="911"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
         <translation>modifica il cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="939"/>
+        <location filename="../sources/diagramcommands.cpp" line="944"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
         <translation>modifica le dimensioni dello schema</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="968"/>
+        <location filename="../sources/diagramcommands.cpp" line="973"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>modifica le proprietà di un conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1022"/>
+        <location filename="../sources/diagramcommands.cpp" line="1027"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Modifica le proprietà di più conduttori</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1134"/>
+        <location filename="../sources/diagramcommands.cpp" line="1139"/>
         <source>Agrandire une image à %1 %</source>
         <translation>Ingrandire un&apos;immagine del %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1135"/>
+        <location filename="../sources/diagramcommands.cpp" line="1140"/>
         <source>Réduire une image à %1 %</source>
         <translation>Ridurre un&apos;immagine del %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1155"/>
+        <location filename="../sources/diagramcommands.cpp" line="1160"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
         <translation>Collegare due riferimenti di pagina</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1160"/>
+        <location filename="../sources/diagramcommands.cpp" line="1165"/>
         <source>Lier deux Ã©lÃ©ments</source>
         <translation>Collegare due Elementi</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1203"/>
+        <location filename="../sources/diagramcommands.cpp" line="1208"/>
         <source>Délier %n élément(s)</source>
         <translation>
             <numerusform>Scollegare %n elemento(i)</numerusform>
@@ -5754,18 +5754,18 @@ Creare un testo personalizzato con l&apos;aiuto delle variabili:
         <translation>Incremento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.cpp" line="35"/>
+        <location filename="../sources/ui/selectautonumw.cpp" line="52"/>
         <source>Schéma sans titre</source>
         <translation>Schema senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.cpp" line="123"/>
+        <location filename="../sources/ui/selectautonumw.cpp" line="140"/>
         <source>Autonumérotation</source>
         <comment>title window</comment>
         <translation>Numerazione automatica</translation>
     </message>
     <message>
-        <location filename="../sources/ui/selectautonumw.cpp" line="124"/>
+        <location filename="../sources/ui/selectautonumw.cpp" line="141"/>
         <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.
 -Chaque Folio possède sa propre méthode de numérotation.
 -Une numérotation est composée d&apos;une variable minimum.
@@ -6554,13 +6554,13 @@ Gli altri campi non sono utilizzati.</translation>
 <context>
     <name>TitleBlockTemplateLocationChooser</name>
     <message>
-        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="79"/>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="96"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
         <translation>Collezione padre</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="80"/>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="97"/>
         <source>Modèle existant</source>
         <comment>used in save as form</comment>
         <translation>Modello esistente</translation>
@@ -6569,13 +6569,13 @@ Gli altri campi non sono utilizzati.</translation>
 <context>
     <name>TitleBlockTemplateLocationSaver</name>
     <message>
-        <location filename="../sources/titleblock/templatelocationsaver.cpp" line="62"/>
+        <location filename="../sources/titleblock/templatelocationsaver.cpp" line="79"/>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
         <translation>o nuovo nome</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelocationsaver.cpp" line="74"/>
+        <location filename="../sources/titleblock/templatelocationsaver.cpp" line="91"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
         <translation>Nuovo modello (inserire il nome)</translation>
@@ -6924,86 +6924,86 @@ Lunghezza massima: %2px</translation>
 <context>
     <name>elementpropertieswidget</name>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="88"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="105"/>
         <source>Propriétés de l&apos;élément</source>
         <translation>Proprietà dell&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="90"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="107"/>
         <source>Général</source>
         <translation>Generale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="33"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="50"/>
         <source>Élément manquant</source>
         <translation>Elemento mancante</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="35"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="52"/>
         <source>Élément</source>
         <translation>Elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="40"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="57"/>
         <source>Nom : %1
 </source>
         <translation>Nome: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="43"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="60"/>
         <source>Folio : %1
 </source>
         <translation>Pagina: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="45"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="62"/>
         <source>Position : %1
 </source>
         <translation>Posizione: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="46"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="63"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Dimensioni: %1×%2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="47"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="64"/>
         <source>Bornes : %1
 </source>
         <translation>Terminali: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="48"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="65"/>
         <source>Champs de texte : %1
 </source>
         <translation>Campi di testo: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="51"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="68"/>
         <source>Emplacement : %1
 </source>
         <translation>Posizione: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="69"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="86"/>
         <source>Retrouver dans le panel</source>
         <translation>Visualizzarlo nello schema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="71"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="88"/>
         <source>Éditer l&apos;élément</source>
         <translation>Modificare l&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="98"/>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="102"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="115"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="119"/>
         <source>Report de folio</source>
         <translation>Riferimento di pagina</translation>
     </message>

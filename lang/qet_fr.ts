@@ -80,9 +80,9 @@
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1203"/>
         <source>Délier %n élément(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Délier %n élément</numerusform>
+            <numerusform>Délier %n éléments</numerusform>
         </translation>
     </message>
 </context>
