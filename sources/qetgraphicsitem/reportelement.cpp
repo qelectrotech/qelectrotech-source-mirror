@@ -19,6 +19,7 @@
 #include "elementtextitem.h"
 #include "diagramposition.h"
 #include "qetproject.h"
+#include "conductorautonumerotation.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, QString link_type,QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)
@@ -56,8 +57,11 @@ void ReportElement::linkToElement(Element * elmt) {
 		connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
 		connect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 		updateLabel();
-		tmp_uuids_link.removeAll(elmt->uuid());
 		elmt->linkToElement(this);
+		//Check if text of this potential is identical.
+		if (conductors().count() && elmt->conductors().count()) {
+			ConductorAutoNumerotation::checkPotential(conductors().first());
+		}
 	}
 }
 
@@ -117,14 +121,16 @@ void ReportElement::setLabel(QString label) {
  * ie the folio and position of the linked folio report
  */
 void ReportElement::updateLabel() {
+	ElementTextItem *text = texts().first();
+
 	if (!connected_elements.isEmpty()){
 		Element *elmt = connected_elements.at(0);
 		QString label = label_;
 		label.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
 		label.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));
 		label.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
-		texts().at(0)->setPlainText(label);
+		text->setPlainText(label);
 	} else {
-		texts().at(0)->setPlainText("_");
+		text->setPlainText("_");
 	}
 }

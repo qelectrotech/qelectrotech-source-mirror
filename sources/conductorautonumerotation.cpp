@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2014 The QElectroTech Team
+	Copyright 2006-2014 The QElectroTech team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -76,6 +76,30 @@ void ConductorAutoNumerotation::numerateDiagram() {
 		NumerotationContextCommands ncc(diagram_, num_context);
 		applyText(ncc.toRepresentedString());
 		diagram_ -> setNumerotation(Diagram::Conductors, ncc.next());
+	}
+}
+
+/**
+ * @brief ConductorAutoNumerotation::checkPotential
+ * Check if text of this potential is identical.
+ * If not, ask user how to numerate
+ * @param conductor
+ * One conductor of this potential.
+ */
+void ConductorAutoNumerotation::checkPotential(Conductor *conductor) {
+	//fill list of potential
+	QSet <Conductor *> c_list = conductor->relatedPotentialConductors();
+	c_list << conductor;
+	//fill list of text
+	QStringList strl;
+	foreach (const Conductor *c, c_list) strl<<(c->text());
+
+	//check text list, isn't same in potential, ask user what to do
+	if (!eachIsEqual(strl)) {
+		ConductorAutoNumerotationWidget *canw = new ConductorAutoNumerotationWidget(conductor, c_list, conductor -> diagramEditor());
+		ConductorAutoNumerotation can(conductor);
+		connect(canw, SIGNAL(textIsSelected(QString)), &can, SLOT(applyText(QString)));
+		canw -> exec();
 	}
 }
 

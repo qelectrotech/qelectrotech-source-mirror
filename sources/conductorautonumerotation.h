@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2014 The QElectroTech Team
+	Copyright 2006-2014 The QElectroTech team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -34,6 +34,7 @@ class ConductorAutoNumerotation: public AutoNumerotation
 	void numerate();
 	void numerateDiagram();
 	void removeNumOfDiagram();
+	static void checkPotential(Conductor *);
 
 	public slots:
 	void applyText(QString);
