@@ -5,6 +5,7 @@
         <name lang="fr">Decodeur IR</name>
         <name lang="pl">Dekoder podczerwieni</name>
         <name lang="es">Decodificador IR</name>
+        <name lang="cs">Infračervený dekodér</name>
     </names>
     <informations></informations>
     <description>

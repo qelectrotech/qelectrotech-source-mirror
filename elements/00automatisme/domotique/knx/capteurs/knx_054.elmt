@@ -6,6 +6,7 @@
         <name lang="fr">Capteur capteur de lumière / de mouvement, deux canaux</name>
         <name lang="pl">Czujnik natężenia oświetlenia / czujnik ruchu, dwukanałowy</name>
         <name lang="es">Sensor (luminancia, IP), 2 vias</name>
+        <name lang="cs">Čidlo (světelnost, IR), dvoukanálové</name>
     </names>
     <informations></informations>
     <description>

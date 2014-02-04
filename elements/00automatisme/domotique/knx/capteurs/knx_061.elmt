@@ -5,6 +5,7 @@
         <name lang="fr">Alarme - interrupteur ouvert</name>
         <name lang="pl">Alarm - wyłącznik otwarty</name>
         <name lang="es">Circuito interruptor automatico de alarma</name>
+        <name lang="cs">Poplach - otevřený spínač</name>
     </names>
     <informations></informations>
     <description>

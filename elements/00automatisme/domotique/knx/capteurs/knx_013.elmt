@@ -6,6 +6,7 @@
         <name lang="fr">Capteur vitesse vent</name>
         <name lang="pl">Czujnik prędkości wiatru</name>
         <name lang="es">Sensor de velocidad de viento</name>
+        <name lang="cs">Čidlo rychlosti větru</name>
     </names>
     <informations></informations>
     <description>

@@ -5,6 +5,7 @@
         <name lang="it">Ricevitore IR</name>
         <name lang="fr">Recepteur IR</name>
         <name lang="pl">Odbiornik podczerwieni</name>
+        <name lang="cs">Infračervený přijímač</name>
     </names>
     <informations></informations>
     <description>

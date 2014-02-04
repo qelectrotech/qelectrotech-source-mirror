@@ -6,6 +6,7 @@
         <name lang="fr">Capteur capteur de lumière / de mouvement</name>
         <name lang="pl">Czujnik natężenia oświetlenia / czujnik ruchu</name>
         <name lang="es">Sensor (luminancia, IR), 1 via</name>
+        <name lang="cs">Čidlo (světelnost, IR)</name>
     </names>
     <informations></informations>
     <description>

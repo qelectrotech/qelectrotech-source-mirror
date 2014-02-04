@@ -4,6 +4,7 @@
         <name lang="it">Uscita digitale + Ric. IR/Decoder</name>
         <name lang="fr">Recepteur/Decodeur sortie numerique</name>
         <name lang="pl">Wyjście cyfrowe + nadajnik / dekoder podczerwieni</name>
+        <name lang="cs">Digitální vstup + přijímač/dekodér, infračervený</name>
     </names>
     <informations></informations>
     <description>

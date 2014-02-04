@@ -6,6 +6,7 @@
         <name lang="fr">Capteur de courant / tension</name>
         <name lang="pl">Czujnik prądu / napięcia</name>
         <name lang="es">Sensor de corriente / tensión</name>
+        <name lang="cs">Čidlo proudu/napětí</name>
     </names>
     <informations></informations>
     <description>

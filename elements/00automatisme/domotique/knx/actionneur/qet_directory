@@ -7,5 +7,6 @@
         <name lang="fr">Actionneur</name>
         <name lang="pl">Aktuatory</name>
         <name lang="es">Accionador</name>
+        <name lang="cs">Ovladač</name>
     </names>
 </qet-directory>

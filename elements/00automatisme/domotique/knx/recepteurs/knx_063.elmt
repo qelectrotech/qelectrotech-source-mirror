@@ -4,6 +4,7 @@
         <name lang="it">Ric. IR/Decoder, pulsante 4 vie</name>
         <name lang="fr">Recepteur/decodeur IR 4 sorties</name>
         <name lang="pl">Nadajnik / dekoder podczerwieni, czterokanałowy</name>
+        <name lang="cs">Infračervený přijímač/dekodér, čtyřkanálový</name>
     </names>
     <informations></informations>
     <description>

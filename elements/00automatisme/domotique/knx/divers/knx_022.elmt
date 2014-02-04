@@ -6,6 +6,7 @@
         <name lang="fr">Interface ISDN</name>
         <name lang="pl">Interfejs KNX / ISDN</name>
         <name lang="es">Interface ISDN</name>
+        <name lang="cs">Rozhraní KNX / ISDN</name>
     </names>
     <informations></informations>
     <description>

@@ -6,6 +6,7 @@
         <name lang="fr">Capteur de temperature</name>
         <name lang="pl">Czujnik temperatury</name>
         <name lang="es">Sensor de temperatura</name>
+        <name lang="cs">Teplotní čidlo</name>
     </names>
     <informations></informations>
     <description>

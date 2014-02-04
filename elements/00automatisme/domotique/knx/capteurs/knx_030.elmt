@@ -6,6 +6,7 @@
         <name lang="fr">Entrée numerique</name>
         <name lang="pl">Wejście cyfrowe, symbol ogólny</name>
         <name lang="es">Entrada digital, generico</name>
+        <name lang="cs">Digitální vstup, obecný symbol</name>
     </names>
     <informations></informations>
     <description>

@@ -5,6 +5,7 @@
         <name lang="fr">Actionneur d'obturation</name>
         <name lang="pl">Sterownik żaluzji</name>
         <name lang="es">Accionador de obturación, 1 via</name>
+        <name lang="cs">Ovladač žaluzií/okenic, jednokanálový</name>
     </names>
     <informations></informations>
     <description>
