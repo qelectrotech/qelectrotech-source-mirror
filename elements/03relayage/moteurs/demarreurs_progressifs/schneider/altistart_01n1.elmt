@@ -11,16 +11,16 @@
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="73" x1="-10" y2="79" x2="-10"/>
-        <polygon x4="73" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="-30" x1="73" y2="-30" x2="110" y3="80" x3="110" y4="80"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="23" x1="-10" y2="67" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-8" x1="-10" y2="17" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="73" x1="-10" y2="79" x2="-10"/>
+        <polygon x4="73" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-30" x1="73" y2="-30" x2="110" y3="80" x3="110" y4="80"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="-10" y2="67" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-10" y2="17" x2="-10"/>
         <input x="-10" y="70.5" size="4" rotate="true" text="CL1/0"/>
         <circle x="-12.2361" y="67.8139" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-30" x1="-10" y2="-12" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-10" y2="-12" x2="-10"/>
         <input x="-10" y="-14.5" size="4" rotate="true" text="24V"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-30" x1="27" y2="-30" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="80" x1="27" y2="80" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="27" y2="-30" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="27" y2="80" x2="-10"/>
         <input x="-10" y="16.5" size="4" rotate="true" text="CL2"/>
         <input x="66" y="26.5" size="9" rotate="true" text="XXX"/>
         <input x="69.5" y="-9" size="4" rotation="270" rotate="true" text="5/L3"/>
@@ -28,10 +28,10 @@
         <circle x="-12.2361" y="-12.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
         <input x="29.5" y="77" size="4" rotation="270" rotate="true" text="2/T1"/>
         <input x="29.5" y="-9" size="4" rotation="270" rotate="true" text="1/L1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="79.95" x1="32.45" y2="79.95" x2="47.45"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="79.95" x1="52.45" y2="79.95" x2="67.45"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-30" x1="52" y2="-30" x2="67"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-30" x1="32" y2="-30" x2="47"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="79.95" x1="32.45" y2="79.95" x2="47.45"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="79.95" x1="52.45" y2="79.95" x2="67.45"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="52" y2="-30" x2="67"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="32" y2="-30" x2="47"/>
         <input x="70.5" y="77" size="4" rotation="270" rotate="true" text="6/T3"/>
         <input x="50.5" y="77" size="4" rotation="270" rotate="true" text="4/T2"/>
         <circle x="67.7639" y="77.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
