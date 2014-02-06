@@ -17,6 +17,7 @@
 */
 #include "qetproject.h"
 #include "diagram.h"
+#include "diagramfoliolist.h"
 #include "elementdefinition.h"
 #include "xmlelementscollection.h"
 #include "elementscategory.h"
@@ -828,6 +829,25 @@ Diagram *QETProject::addNewDiagram() {
 	addDiagram(diagram);
 	emit(diagramAdded(this, diagram));
 	return(diagram);
+}
+
+Diagram *QETProject::addNewDiagramFolioList() {
+	// ne fait rien si le projet est en lecture seule
+	if (isReadOnly()) return(0);
+
+	// cree un nouveau schema
+	Diagram *diagram_folio_list = new DiagramFolioList();
+
+	// lui transmet les parametres par defaut
+	diagram_folio_list -> border_and_titleblock.importBorder(defaultBorderProperties());
+	diagram_folio_list -> border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
+	diagram_folio_list -> defaultConductorProperties = defaultConductorProperties();
+	QString title = "List of Drawings";
+	diagram_folio_list -> border_and_titleblock.setTitle(title);
+
+	addDiagram(diagram_folio_list);
+	emit(diagramAdded(this, diagram_folio_list));
+	return(diagram_folio_list);
 }
 
 /**

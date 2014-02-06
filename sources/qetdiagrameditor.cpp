@@ -648,6 +648,7 @@ bool QETDiagramEditor::newProject() {
 	
 	// ajoute un schema au projet
 	new_project -> addNewDiagram();
+	new_project -> addNewDiagramFolioList();
 	
 	return(addProject(new_project));
 }
