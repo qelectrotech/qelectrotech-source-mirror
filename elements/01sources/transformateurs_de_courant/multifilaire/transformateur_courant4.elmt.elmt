@@ -1,8 +1,8 @@
 <definition width="30" version="0.3" hotspot_x="9" hotspot_y="45" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Current transformer with two secondary windings on a common magnetic circuit</name>
-        <name lang="fr"> Transformateur de courant, à deux enroulements secondaires sur un circuit magnétique commun
-</name>
+        <name lang="fr"> Transformateur de courant, à deux enroulements secondaires sur un circuit magnétique commun</name>
+        <name lang="it">Transformatore di corrente, 2 secondari 1 circuito magnetico comune</name>
         <name lang="pl">Przekładnik (forma 2)</name>
     </names>
     <informations></informations>

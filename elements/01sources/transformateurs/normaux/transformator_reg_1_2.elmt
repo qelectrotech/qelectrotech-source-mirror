@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="16" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Transformateur à couplage réglable</name>
+        <name lang="it">Trasformatore regolabile</name>
         <name lang="pl">Transformator regulacyjny (forma 2)</name>
     </names>
     <informations></informations>

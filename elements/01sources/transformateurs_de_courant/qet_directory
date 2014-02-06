@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-        <name lang="fr">transformateurs de courant</name>
+        <name lang="fr">Transformateurs de courant</name>
+        <name lang="it">Trasformatori di corrente</name>
         <name lang="en">Current transformer</name>
         <name lang="pl">Przekładniki</name>
     </names>

@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="18" hotspot_y="25" height="40" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="it">Autotrasformatore monofase(forma 2)</name>
         <name lang="pl">Autotransformator jednofazowy (forma 2)</name>
     </names>
     <informations></informations>
