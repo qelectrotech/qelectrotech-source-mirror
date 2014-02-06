@@ -206,6 +206,7 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *prj_del_diagram;    ///< Delete a diagram from the current project
 	QAction *prj_clean;          ///< Clean the content of the curent project by removing useless items
 	QAction *prj_diagramNum;     ///< Numerotation des schemas
+	QAction *prj_diagramList;    ///< Sommaire des schemas
 	QAction *prj_nomenclature;   ///< generate nomenclature
 	QAction *zoom_in;            ///< Zoom in
 	QAction *zoom_out;           ///< Zoom out

@@ -225,5 +225,6 @@
         <file>ico/24x16/gr.png</file>
         <file>ico/24x16/it.png</file>
         <file>ico/22x22/applications-development-translation.png</file>
+        <file>ico/48x48/view-pim-journal.png</file>
     </qresource>
 </RCC>

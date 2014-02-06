@@ -842,7 +842,7 @@ Diagram *QETProject::addNewDiagramFolioList() {
 	diagram_folio_list -> border_and_titleblock.importBorder(defaultBorderProperties());
 	diagram_folio_list -> border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 	diagram_folio_list -> defaultConductorProperties = defaultConductorProperties();
-	QString title = "List of Drawings";
+	QString title = (tr("Liste des Sch\351mas"));
 	diagram_folio_list -> border_and_titleblock.setTitle(title);
 
 	addDiagram(diagram_folio_list);

@@ -215,7 +215,7 @@ void QETDiagramEditor::actions() {
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
 	add_text          = new QAction(QET::Icons::PartTextField,         tr("Ajouter un champ de texte"),            this);
 	add_column        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne"),             this);
-	add_image		  = new QAction(QET::Icons::adding_image,          tr("Ajouter une image"),             this);
+	add_image		  = new QAction(QET::Icons::adding_image,          tr("Ajouter une image"),                    this);
 	remove_column     = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne"),             this);
 	add_row           = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne"),               this);
 	remove_row        = new QAction(QET::Icons::EditTableDeleteRow,         tr("Enlever une ligne"),               this);
@@ -224,7 +224,8 @@ void QETDiagramEditor::actions() {
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le sch\351ma"),               this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
-	prj_diagramNum    = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les sch\351mas"),        this);
+	prj_diagramNum    = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les sch\351mas"),               this);
+	prj_diagramList   = new QAction(QET::Icons::listDrawings,          tr("Ajouter un sommaire"),                  this);
 	prj_nomenclature  = new QAction(QET::Icons::DocumentExport,        tr("Exporter une nomenclature (beta)"),     this);
 	
 	zoom_in           = new QAction(QET::Icons::ZoomIn,                tr("Zoom avant"),                           this);
@@ -372,7 +373,8 @@ void QETDiagramEditor::actions() {
 	connect(prj_add_diagram,    SIGNAL(triggered()), this,       SLOT(addDiagramToProject())       );
 	connect(prj_del_diagram,    SIGNAL(triggered()), this,       SLOT(removeDiagramFromProject())  );
 	connect(prj_clean,          SIGNAL(triggered()), this,       SLOT(cleanCurrentProject())       );
-	connect(prj_diagramNum,     SIGNAL(triggered()), this,       SLOT(diagramNumProject())   );
+	connect(prj_diagramNum,     SIGNAL(triggered()), this,       SLOT(diagramNumProject())         );
+	//connect(prj_diagramList,    SIGNAL(triggered()), this,       SLOT(addNewDiagramFolioList())    );
 	connect(prj_nomenclature,   SIGNAL(triggered()), this,       SLOT(nomenclatureProject())       );
 	connect(zoom_in,            SIGNAL(triggered()), this,       SLOT(slot_zoomIn())               );
 	connect(zoom_out,           SIGNAL(triggered()), this,       SLOT(slot_zoomOut())              );
@@ -491,6 +493,7 @@ void QETDiagramEditor::menus() {
 	menu_project -> addAction(prj_clean);
 	menu_project -> addSeparator();
 	menu_project -> addAction(prj_diagramNum);
+	menu_project -> addAction(prj_diagramList);
 	menu_project -> addAction(prj_nomenclature);
 	
 	main_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
@@ -1135,6 +1138,7 @@ void QETDiagramEditor::slot_updateActions() {
 	prj_del_diagram   -> setEnabled(editable_project);
 	prj_clean         -> setEnabled(editable_project);
 	prj_diagramNum    -> setEnabled(editable_project);
+	prj_diagramList   -> setEnabled(opened_project);
 	prj_nomenclature  -> setEnabled(editable_project);
 	import_diagram    -> setEnabled(editable_project);
 	export_diagram    -> setEnabled(opened_diagram);
@@ -1153,7 +1157,7 @@ void QETDiagramEditor::slot_updateActions() {
 	remove_column     -> setEnabled(editable_diagram);
 	add_row           -> setEnabled(editable_diagram);
 	remove_row        -> setEnabled(editable_diagram);
-	add_image		  ->setEnabled(editable_diagram);
+	add_image         ->setEnabled(editable_diagram);
 	
 	//display the beta feature only in debug mode
 #ifdef QT_NO_DEBUG
@@ -1203,7 +1207,7 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	rotate_selection -> setEnabled(editable_diagram && dv -> diagram() -> canRotateSelection());
 	selection_prop   -> setEnabled(deletable_items);
 	prj_diagramNum   -> setEnabled(editable_diagram);
-	
+
 	// actions ayant besoin de textes selectionnes
 	int selected_texts = dv ? (dv -> diagram() -> selectedTexts().count()) : 0;
 	int selected_conductor_texts = dv ? (dv -> diagram() -> selectedConductorTexts().count()) : 0;
