@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="18" hotspot_y="25" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Transformateur monophasé à deux enroulements avec écran</name>
+        <name lang="pl">Trasformatore monofase con schermo</name>
         <name lang="pl">Transformator (forma 2)</name>
     </names>
     <informations></informations>

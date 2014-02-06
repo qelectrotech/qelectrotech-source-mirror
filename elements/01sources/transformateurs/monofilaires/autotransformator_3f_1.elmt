@@ -1,5 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="37" hotspot_y="45" height="80" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="it">Autotrasformatore 3F Y (forma 1)</name>
         <name lang="pl">Autotransformator trójfazowy skojarzony w gwiazdę (forma 1)</name>
     </names>
     <informations></informations>

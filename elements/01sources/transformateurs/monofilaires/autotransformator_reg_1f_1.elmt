@@ -1,5 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="37" hotspot_y="45" height="80" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="it">Autotransformatore monofase regolabile (forma 1)</name>
         <name lang="pl">Autotransformator jednofazowy, regulacyjny (forma 1)</name>
     </names>
     <informations></informations>

@@ -1,6 +1,7 @@
 <definition width="130" version="0.3" hotspot_x="57" hotspot_y="35" height="80" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Transformateur triphasé, couplage étoile-étoile-triangle</name>
+        <name lang="pl">Trasformatore 3F Yyd</name>
         <name lang="pl">Transformator trójfazowy Yyd (forma 2)</name>
     </names>
     <informations></informations>
