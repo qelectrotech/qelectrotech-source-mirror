@@ -20,11 +20,9 @@
 /**
  * constructor
  */
-ConductorAutoNumerotationWidget::ConductorAutoNumerotationWidget(Conductor *c, QSet<Conductor *> cl, QWidget *parent) :
+ConductorAutoNumerotationWidget::ConductorAutoNumerotationWidget(QSet<Conductor *> cl, QWidget *parent) :
 	QDialog (parent),
-	conductor_(c),
-	c_list(cl),
-	diagram_(c -> diagram())
+	c_list(cl)
 {
 #ifdef Q_WS_MAC
 	setWindowFlags(Qt::Sheet);

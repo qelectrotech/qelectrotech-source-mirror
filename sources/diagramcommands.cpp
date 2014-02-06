@@ -26,6 +26,7 @@
 #include "diagram.h"
 #include "qetgraphicsitem/diagramtextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
+#include "conductorautonumerotation.h"
 
 /**
 	Constructeur
@@ -1153,7 +1154,8 @@ LinkElementsCommand::LinkElementsCommand(Element *elmt1, Element *elmt2, QUndoCo
 	diagram_(elmt1->diagram()),
 	elmt_1(elmt1),
 	elmt_2(elmt2),
-	previous_report(0)
+	previous_report(0),
+	first_redo(true)
 {
 	if (elmt1->linkType() & Element::AllReport &&
 		elmt2->linkType() & Element::AllReport) {
@@ -1189,6 +1191,13 @@ void LinkElementsCommand::undo() {
 void LinkElementsCommand::redo() {
 	diagram_->showMe();
 	elmt_1->linkToElement(elmt_2);
+	//Check if text of this potential is identical.
+	if (first_redo) {
+		if(elmt_1->conductors().count() && elmt_2->conductors().count()) {
+			ConductorAutoNumerotation::checkPotential(elmt_1->conductors().first());
+		}
+		first_redo = false;
+	}
 }
 
 /**

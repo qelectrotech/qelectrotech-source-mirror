@@ -96,10 +96,10 @@ void ConductorAutoNumerotation::checkPotential(Conductor *conductor) {
 
 	//check text list, isn't same in potential, ask user what to do
 	if (!eachIsEqual(strl)) {
-		ConductorAutoNumerotationWidget *canw = new ConductorAutoNumerotationWidget(conductor, c_list, conductor -> diagramEditor());
+		ConductorAutoNumerotationWidget canw(c_list, conductor -> diagramEditor());
 		ConductorAutoNumerotation can(conductor);
-		connect(canw, SIGNAL(textIsSelected(QString)), &can, SLOT(applyText(QString)));
-		canw -> exec();
+		connect(&canw, SIGNAL(textIsSelected(QString)), &can, SLOT(applyText(QString)));
+		canw.exec();
 	}
 }
 
@@ -168,7 +168,7 @@ void ConductorAutoNumerotation::numeratePotential() {
 	}
 	//the texts isn't identicals
 	else {
-		ConductorAutoNumerotationWidget *canw = new ConductorAutoNumerotationWidget(conductor_, conductor_list, conductor_ -> diagramEditor());
+		ConductorAutoNumerotationWidget *canw = new ConductorAutoNumerotationWidget(conductor_list, conductor_ -> diagramEditor());
 		connect(canw, SIGNAL(textIsSelected(QString)),
 				this, SLOT(applyText(QString)));
 		canw -> exec();

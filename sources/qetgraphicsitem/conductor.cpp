@@ -1395,6 +1395,7 @@ Terminal * Conductor::relatedPotentialTerminal (Terminal *t) {
  * @return l'editeur de schemas parent ou 0
  */
 QETDiagramEditor* Conductor::diagramEditor() const {
+	if (diagram()->views().isEmpty()) return 0;
 	QWidget *w = const_cast<QGraphicsView *>(diagram() -> views().at(0));
 	while (w -> parentWidget() && !w -> isWindow()) {
 		w = w -> parentWidget();

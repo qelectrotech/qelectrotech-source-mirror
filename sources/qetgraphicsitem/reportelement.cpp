@@ -19,7 +19,6 @@
 #include "elementtextitem.h"
 #include "diagramposition.h"
 #include "qetproject.h"
-#include "conductorautonumerotation.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, QString link_type,QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)
@@ -50,7 +49,7 @@ void ReportElement::linkToElement(Element * elmt) {
 		if (connected_elements.first() == elmt) i = false;
 	}
 
-	//ensure elmt is a inverse report of this element
+	//ensure elmt is an inverse report of this element
 	if ((elmt->linkType() == inverse_report) && i) {
 		unlinkAllElements();
 		connected_elements << elmt;
@@ -58,10 +57,6 @@ void ReportElement::linkToElement(Element * elmt) {
 		connect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 		updateLabel();
 		elmt->linkToElement(this);
-		//Check if text of this potential is identical.
-		if (conductors().count() && elmt->conductors().count()) {
-			ConductorAutoNumerotation::checkPotential(conductors().first());
-		}
 	}
 }
 

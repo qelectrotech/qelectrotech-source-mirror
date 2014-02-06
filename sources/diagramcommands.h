@@ -600,6 +600,7 @@ class LinkElementsCommand : public QUndoCommand {
 	//attributes
 	Diagram *diagram_;
 	Element *elmt_1, *elmt_2, *previous_report;
+	bool first_redo;
 };
 
 class unlinkElementsCommand : public QUndoCommand {
