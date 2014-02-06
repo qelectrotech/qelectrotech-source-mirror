@@ -31,12 +31,12 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 	rowHeight = (rowHeight > height*0.05) ? height*0.05 : rowHeight;
 	QRectF row_RectF(x0 + width*.1, y0 + height*.05, width*0.8, rowHeight);
 
-	fillRow(p, row_RectF, "Author", "Title", "Folio", "Date");
+	fillRow(p, row_RectF, "Auteur", "Titre", "Folio", "Date");
 	foreach (Diagram *diagram, diagram_list) {
 		y0 += rowHeight;
 		QRectF row_rect(x0 + width*.1, y0 + height*.05, width*0.8, rowHeight);
 		fillRow(p, row_rect, diagram -> border_and_titleblock.author(), diagram -> border_and_titleblock.title(),
-				 diagram -> border_and_titleblock.folio(), diagram -> border_and_titleblock.date().toString());
+				 diagram -> border_and_titleblock.folio(), diagram -> border_and_titleblock.date().toString("dd/MM/yyyy"));
 	}
 	p -> setPen(Qt::NoPen);
 	border_and_titleblock.draw(p, margin, margin);
