@@ -241,7 +241,7 @@ ConductorProperties::~ConductorProperties() {
  */
 void ConductorProperties::toXml(QDomElement &e) const {
 	e.setAttribute("type", typeToString(type));
-	e.setAttribute("num", text);
+
 	
 	if (color != QColor(Qt::black)) {
 		e.setAttribute("color", color.name());
@@ -249,11 +249,11 @@ void ConductorProperties::toXml(QDomElement &e) const {
 	
 	if (type == Single) {
 		singleLineProperties.toXml(e);
-	} else if (type == Multi) {
-		e.setAttribute("numsize", text_size);
-		e.setAttribute("vertirotatetext", verti_rotate_text);
-		e.setAttribute("horizrotatetext", horiz_rotate_text);
 	}
+	e.setAttribute("num", text);
+	e.setAttribute("numsize", text_size);
+	e.setAttribute("vertirotatetext", verti_rotate_text);
+	e.setAttribute("horizrotatetext", horiz_rotate_text);
 	
 	QString conductor_style = writeStyle();
 	if (!conductor_style.isEmpty()) {
@@ -278,8 +278,6 @@ void ConductorProperties::fromXml(QDomElement &e) {
 	
 	// read style of conductor
 	readStyle(e.attribute("style"));
-	// qet text field
-	text = e.attribute("num");
 	
 	if (e.attribute("type") == typeToString(Single)) {
 		// get specific properties for single conductor
@@ -288,11 +286,14 @@ void ConductorProperties::fromXml(QDomElement &e) {
 	} else if (e.attribute("type") == typeToString(Simple)) {
 		type = Simple;
 	} else {
-		text_size = e.attribute("numsize", QString::number(9)).toInt();
-		verti_rotate_text = e.attribute("vertirotatetext").toDouble();
-		horiz_rotate_text = e.attribute("horizrotatetext").toDouble();
 		type = Multi;
 	}
+	// get text field
+	text = e.attribute("num");
+	text_size = e.attribute("numsize", QString::number(9)).toInt();
+	verti_rotate_text = e.attribute("vertirotatetext").toDouble();
+	horiz_rotate_text = e.attribute("horizrotatetext").toDouble();
+
 }
 
 /**
