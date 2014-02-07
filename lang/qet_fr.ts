@@ -78,7 +78,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1203"/>
+        <location filename="../sources/diagramcommands.cpp" line="1217"/>
         <source>Délier %n élément(s)</source>
         <translation>
             <numerusform>Délier %n élément</numerusform>
