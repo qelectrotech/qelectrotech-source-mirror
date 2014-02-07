@@ -39,10 +39,12 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 	if (!cache_db_.open()) {
 		qDebug() << "Unable to open the SQLite database " << database_path << " as " << connection_name << ": " << cache_db_.lastError();
 	} else {
-		cache_db_.exec("PRAGMA temp_store=MEMORY");
+		cache_db_.exec("PRAGMA temp_store = MEMORY");
 		cache_db_.exec("PRAGMA journal_mode = MEMORY");
-		cache_db_.exec("PRAGMA synchronous=OFF");
-		cache_db_.exec("PRAGMA cache_size=10000");
+		cache_db_.exec("PRAGMA page_size = 4096");
+		cache_db_.exec("PRAGMA cache_size = 16384");
+		cache_db_.exec("PRAGMA locking_mode = EXCLUSIVE");
+		cache_db_.exec("PRAGMA synchronous = OFF");
 		/// @todo the tables could already exist, handle that case.
 		cache_db_.exec("CREATE TABLE names (path VARCHAR(512) NOT NULL, locale VARCHAR(2) NOT NULL, mtime DATETIME NOT NULL, name VARCHAR(128), PRIMARY KEY(path, locale));");
 		cache_db_.exec("CREATE TABLE pixmaps (path VARCHAR(512) NOT NULL UNIQUE, mtime DATETIME NOT NULL, pixmap BLOB, PRIMARY KEY(path), FOREIGN KEY(path) REFERENCES names (path) ON DELETE CASCADE);");
