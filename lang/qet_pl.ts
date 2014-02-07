@@ -584,22 +584,22 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="34"/>
         <source>Auteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="35"/>
         <source>Titre</source>
-        <translation type="unfinished">Tytuł</translation>
+        <translation>Tytuł</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="36"/>
         <source>Folio</source>
-        <translation type="unfinished">Strona</translation>
+        <translation>Strona</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="37"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Data</translation>
     </message>
 </context>
 <context>
@@ -3523,7 +3523,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw spis treści</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
@@ -4687,7 +4687,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetproject.cpp" line="846"/>
         <source>Liste des Schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Spis schematów</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="956"/>
