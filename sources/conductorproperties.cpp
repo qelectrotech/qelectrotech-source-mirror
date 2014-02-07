@@ -233,13 +233,15 @@ ConductorProperties::ConductorProperties() :
 ConductorProperties::~ConductorProperties() {
 }
 
+
 /**
-	Exporte les parametres du conducteur sous formes d'attributs XML
-	ajoutes a l'element e.
-	@param e Element XML auquel seront ajoutes des attributs
-*/
+ * @brief ConductorProperties::toXml
+ * Export conductor propertie, in the XML element 'e'
+ * @param e the xml element
+ */
 void ConductorProperties::toXml(QDomElement &e) const {
 	e.setAttribute("type", typeToString(type));
+	e.setAttribute("num", text);
 	
 	if (color != QColor(Qt::black)) {
 		e.setAttribute("color", color.name());
@@ -248,7 +250,6 @@ void ConductorProperties::toXml(QDomElement &e) const {
 	if (type == Single) {
 		singleLineProperties.toXml(e);
 	} else if (type == Multi) {
-		e.setAttribute("num", text);
 		e.setAttribute("numsize", text_size);
 		e.setAttribute("vertirotatetext", verti_rotate_text);
 		e.setAttribute("horizrotatetext", horiz_rotate_text);
@@ -260,13 +261,14 @@ void ConductorProperties::toXml(QDomElement &e) const {
 	}
 }
 
+
 /**
-	Importe les parametres du conducteur unifilaire a partir des attributs XML
-	de l'element e
-	@param e Element XML dont les attributs seront lus
-*/
+ * @brief ConductorProperties::fromXml
+ * Import conductor propertie, from the attribute of the xml element 'e'
+ * @param e the xml document
+ */
 void ConductorProperties::fromXml(QDomElement &e) {
-	// recupere la couleur du conducteur
+	// get conductor color
 	QColor xml_color= QColor(e.attribute("color"));
 	if (xml_color.isValid()) {
 		color = xml_color;
@@ -274,18 +276,18 @@ void ConductorProperties::fromXml(QDomElement &e) {
 		color = QColor(Qt::black);
 	}
 	
-	// lit le style du conducteur
+	// read style of conductor
 	readStyle(e.attribute("style"));
+	// qet text field
+	text = e.attribute("num");
 	
 	if (e.attribute("type") == typeToString(Single)) {
-		// recupere les parametres specifiques a un conducteur unifilaire
+		// get specific properties for single conductor
 		singleLineProperties.fromXml(e);
 		type = Single;
 	} else if (e.attribute("type") == typeToString(Simple)) {
 		type = Simple;
 	} else {
-		// recupere le champ de texte
-		text = e.attribute("num");
 		text_size = e.attribute("numsize", QString::number(9)).toInt();
 		verti_rotate_text = e.attribute("vertirotatetext").toDouble();
 		horiz_rotate_text = e.attribute("horizrotatetext").toDouble();
