@@ -31,7 +31,12 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 	rowHeight = (rowHeight > height*0.05) ? height*0.05 : rowHeight;
 	QRectF row_RectF(x0 + width*.1, y0 + height*.05, width*0.8, rowHeight);
 
-	fillRow(p, row_RectF, "Auteur", "Titre", "Folio", "Date");
+	QString authorTranslatable = tr("Auteur");
+	QString titleTranslatable = tr("Titre");
+	QString folioTranslatable = tr("Folio");
+	QString dateTranslatable = tr("Date");
+
+	fillRow(p, row_RectF, authorTranslatable, titleTranslatable, folioTranslatable, dateTranslatable);
 	foreach (Diagram *diagram, diagram_list) {
 		y0 += rowHeight;
 		QRectF row_rect(x0 + width*.1, y0 + height*.05, width*0.8, rowHeight);

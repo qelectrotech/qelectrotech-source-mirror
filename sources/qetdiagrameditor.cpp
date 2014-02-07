@@ -222,6 +222,7 @@ void QETDiagramEditor::actions() {
 	
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du projet"),           this);
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
+	//prj_add_diagram_foliolist   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le sch\351ma"),               this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
 	prj_diagramNum    = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les sch\351mas"),               this);
@@ -374,7 +375,7 @@ void QETDiagramEditor::actions() {
 	connect(prj_del_diagram,    SIGNAL(triggered()), this,       SLOT(removeDiagramFromProject())  );
 	connect(prj_clean,          SIGNAL(triggered()), this,       SLOT(cleanCurrentProject())       );
 	connect(prj_diagramNum,     SIGNAL(triggered()), this,       SLOT(diagramNumProject())         );
-	//connect(prj_diagramList,    SIGNAL(triggered()), this,       SLOT(addNewDiagramFolioList())    );
+	connect(prj_diagramList,    SIGNAL(triggered()), this,       SLOT(addDiagramFolioListToProject()));
 	connect(prj_nomenclature,   SIGNAL(triggered()), this,       SLOT(nomenclatureProject())       );
 	connect(zoom_in,            SIGNAL(triggered()), this,       SLOT(slot_zoomIn())               );
 	connect(zoom_out,           SIGNAL(triggered()), this,       SLOT(slot_zoomOut())              );
@@ -1135,6 +1136,7 @@ void QETDiagramEditor::slot_updateActions() {
 	save_cur_diagram  -> setEnabled(editable_diagram);
 	prj_edit_prop     -> setEnabled(opened_project);
 	prj_add_diagram   -> setEnabled(editable_project);
+	//prj_add_diagram_foliolist   -> setEnabled(editable_project);
 	prj_del_diagram   -> setEnabled(editable_project);
 	prj_clean         -> setEnabled(editable_project);
 	prj_diagramNum    -> setEnabled(editable_project);
@@ -1676,6 +1678,12 @@ void QETDiagramEditor::editProjectProperties(QETProject *project) {
 void QETDiagramEditor::addDiagramToProject() {
 	if (ProjectView *current_project = currentProject()) {
 		current_project -> addNewDiagram();
+	}
+}
+
+void QETDiagramEditor::addDiagramFolioListToProject() {
+	if (ProjectView *current_project = currentProject()) {
+		current_project -> addNewDiagramFolioList();
 	}
 }
 

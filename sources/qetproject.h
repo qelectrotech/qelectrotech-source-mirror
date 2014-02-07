@@ -121,6 +121,7 @@ class QETProject : public QObject {
 	DiagramContext projectProperties();
 	void setProjectProperties(const DiagramContext &);
 	QUndoStack* undoStack() {return undo_stack_;}
+	bool isFolioListAdded() {return folio_list_added_;}
 	
 	public slots:
 	void componentWritten();
@@ -185,6 +186,8 @@ class QETProject : public QObject {
 	bool modified_;
 	/// Whether the project is read only
 	bool read_only_;
+	/// Whether folio_list has been added.
+	bool folio_list_added_;
 	/// Filepath for which this project is considered read only
 	QString read_only_file_path_;
 	/// Name of the category used when automatically integrating elements within the embedded collection

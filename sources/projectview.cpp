@@ -306,6 +306,15 @@ void ProjectView::addNewDiagram() {
 	showDiagram(new_diagram_view);
 }
 
+void ProjectView::addNewDiagramFolioList() {
+	if (project_ -> isReadOnly() || project_ -> isFolioListAdded()) return;
+
+	Diagram *new_diagram = project_ -> addNewDiagramFolioList();
+	DiagramView *new_diagram_view = new DiagramView(new_diagram);
+	addDiagram(new_diagram_view);
+	showDiagram(new_diagram_view);
+}
+
 /**
 	Ajoute un schema au ProjectView
 	@param diagram Schema a ajouter

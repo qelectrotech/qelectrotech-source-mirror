@@ -143,6 +143,7 @@ class QETDiagramEditor : public QETMainWindow {
 	void editDiagramProperties(DiagramView *);
 	void editDiagramProperties(Diagram *);
 	void addDiagramToProject();
+	void addDiagramFolioListToProject();
 	void addDiagramToProject(QETProject *);
 	void removeDiagram(Diagram *);
 	void removeDiagramFromProject();
