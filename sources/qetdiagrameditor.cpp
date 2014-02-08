@@ -402,7 +402,7 @@ void QETDiagramEditor::actions() {
 	connect(conductor_reset,    SIGNAL(triggered()), this,       SLOT(slot_resetConductors())      );
 	connect(infos_diagram,      SIGNAL(triggered()), this,       SLOT(editCurrentDiagramProperties()));
 	connect(add_text,           SIGNAL(triggered()), this,       SLOT(slot_addText())              );
-	connect(add_image,			SIGNAL(triggered()), this,       SLOT(slot_addImage())              );
+	connect(add_image,          SIGNAL(triggered()), this,       SLOT(slot_addImage())              );
 	connect(add_column,         SIGNAL(triggered()), this,       SLOT(slot_addColumn())            );
 	connect(remove_column,      SIGNAL(triggered()), this,       SLOT(slot_removeColumn())         );
 	connect(add_row,            SIGNAL(triggered()), this,       SLOT(slot_addRow())               );
@@ -1160,12 +1160,9 @@ void QETDiagramEditor::slot_updateActions() {
 	remove_column     -> setEnabled(editable_diagram);
 	add_row           -> setEnabled(editable_diagram);
 	remove_row        -> setEnabled(editable_diagram);
-	add_image         ->setEnabled(editable_diagram);
-	
-	//display the beta feature in all mode
-#ifdef QT_NO_DEBUG
-	prj_nomenclature  -> setVisible(true);
-#endif
+	add_image         -> setEnabled(editable_diagram);
+	prj_nomenclature  -> setEnabled(editable_project);
+
 	
 	slot_updateModeActions();
 	slot_updatePasteAction();
