@@ -4682,7 +4682,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetproject.cpp" line="846"/>
         <source>Liste des Schémas</source>
-        <translation>Elenco degli schemi</translation>
+        <translation>Indice degli schemi</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="956"/>
