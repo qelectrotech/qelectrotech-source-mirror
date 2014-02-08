@@ -1162,9 +1162,9 @@ void QETDiagramEditor::slot_updateActions() {
 	remove_row        -> setEnabled(editable_diagram);
 	add_image         ->setEnabled(editable_diagram);
 	
-	//display the beta feature only in debug mode
+	//display the beta feature in all mode
 #ifdef QT_NO_DEBUG
-	prj_nomenclature  -> setVisible(false);
+	prj_nomenclature  -> setVisible(true);
 #endif
 	
 	slot_updateModeActions();
