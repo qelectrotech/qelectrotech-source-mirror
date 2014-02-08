@@ -584,22 +584,22 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="34"/>
         <source>Auteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Autore</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="35"/>
         <source>Titre</source>
-        <translation type="unfinished">Titolo</translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="36"/>
         <source>Folio</source>
-        <translation type="unfinished">Pagina</translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="37"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Data</translation>
     </message>
 </context>
 <context>
@@ -3514,7 +3514,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un indice</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
@@ -4682,7 +4682,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetproject.cpp" line="846"/>
         <source>Liste des Schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Elenco degli schemi</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="956"/>
