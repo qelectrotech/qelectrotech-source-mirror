@@ -1,6 +1,8 @@
-<definition width="70" version="0.3" hotspot_x="28" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="70" version="0.4" hotspot_x="28" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Three-phase transformer Yd</name>
         <name lang="it">Trasformatore trifase Yd</name>
+        <name lang="fr">Transformateur triphasé etoile triangle</name>
         <name lang="pl">Transformator trójfazowy Yd (forma 2)</name>
     </names>
     <informations></informations>
@@ -45,11 +47,11 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="20" y2="35" x2="20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="0" y2="35" x2="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-20" y2="35" x2="-20"/>
-        <terminal x="20" y="-30" number="" name="" orientation="n"/>
-        <terminal x="0" y="-30" number="" name="" orientation="n"/>
-        <terminal x="-20" y="-30" number="" name="" orientation="n"/>
-        <terminal x="20" y="40" number="" name="" orientation="s"/>
-        <terminal x="0" y="40" number="" name="" orientation="s"/>
-        <terminal x="-20" y="40" number="" name="" orientation="s"/>
+        <terminal x="20" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-20" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="20" y="40" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="40" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-20" y="40" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>
