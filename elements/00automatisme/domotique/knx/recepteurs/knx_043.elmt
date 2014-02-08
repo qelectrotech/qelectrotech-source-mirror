@@ -1,10 +1,11 @@
-<definition width="70" version="0.3" hotspot_x="45" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="70" version="0.4" hotspot_x="45" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Δέκτης υπερύθρων</name>
         <name lang="en">IR Receiver</name>
         <name lang="it">Ricevitore IR</name>
         <name lang="fr">Recepteur IR</name>
         <name lang="pl">Odbiornik podczerwieni</name>
+        <name lang="es">IR Receptor</name>
         <name lang="cs">Infračervený přijímač</name>
     </names>
     <informations></informations>

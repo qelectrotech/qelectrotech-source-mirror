@@ -1,10 +1,11 @@
-<definition width="70" version="0.3" hotspot_x="45" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="70" version="0.4" hotspot_x="45" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Πομπός υπερύθρων</name>
         <name lang="en">IR Transmitter</name>
         <name lang="it">Trasmettitore IR</name>
         <name lang="fr">Emetteur IR</name>
         <name lang="pl">Nadajnik podczerwieni</name>
+        <name lang="es">IR Emisor</name>
     </names>
     <informations></informations>
     <description>

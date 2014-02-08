@@ -1,10 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Μπουτόν, γενικά</name>
         <name lang="en">Push button, general</name>
         <name lang="it">Pulsante, generico</name>
         <name lang="fr">Bouton poussoir general</name>
         <name lang="pl">Przycisk, symbol ogólny</name>
+        <name lang="es">Pulsador, general</name>
         <name lang="cs">Tlačítko, obecný symbol</name>
     </names>
     <informations></informations>

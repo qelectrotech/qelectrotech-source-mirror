@@ -1,9 +1,10 @@
 <qet-directory>
     <names>
+        <name lang="el">Μπουτόν</name>
+        <name lang="it">Pulsanti</name>
         <name lang="fr">Poussoirs</name>
         <name lang="pl">Przyciski</name>
-        <name lang="it">Pulsanti</name>
-        <name lang="el">Μπουτόν</name>
         <name lang="cs">Tlačítka</name>
+	<name lang="es">Pulsadores</name>
     </names>
 </qet-directory>

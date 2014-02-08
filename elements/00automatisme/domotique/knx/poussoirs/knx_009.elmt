@@ -1,10 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Μπουτόν τετραπλό</name>
         <name lang="en">Push button, 4-fold</name>
         <name lang="it">Pulsante 4 vie</name>
         <name lang="fr">Bouton poussoir 4 sorties</name>
         <name lang="pl">Przycisk poczwórny</name>
+        <name lang="es">Pulsador, 4 vias</name>
         <name lang="cs">Čtyřcestné tlačítko</name>
     </names>
     <informations></informations>

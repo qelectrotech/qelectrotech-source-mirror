@@ -1,10 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Μπουτόν μονό</name>
         <name lang="en">Push button, single</name>
         <name lang="it">Pulsante, 1 via</name>
         <name lang="fr">Bouton poussoir</name>
         <name lang="pl">Przycisk</name>
+        <name lang="es">Pulsador, 1 via</name>
         <name lang="cs">Tlačítko</name>
     </names>
     <informations></informations>
