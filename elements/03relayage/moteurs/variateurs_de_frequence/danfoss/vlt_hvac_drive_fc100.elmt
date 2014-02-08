@@ -1,6 +1,8 @@
 <definition width="470" version="0.4" hotspot_x="24" hotspot_y="7" height="100" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">VLT HVAC Drive FC100</name>
         <name lang="fr">VLT HVAC Drive FC100</name>
+        <name lang="it">VLT HVAC Drive FC100</name>
     </names>
     <informations></informations>
     <description>
