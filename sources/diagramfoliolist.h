@@ -19,18 +19,32 @@
 #define DIAGRAMFOLIOLIST_H
 
 #include "diagram.h"
+#include "qetgraphicsitem/independenttextitem.h"
 
 class DiagramFolioList : public Diagram
 {
 	public:
-	DiagramFolioList(QObject *parent = 0) : Diagram(parent) {}
-	virtual ~DiagramFolioList() {}
+	DiagramFolioList(QObject *parent = 0);
+	virtual ~DiagramFolioList();
+	virtual QList<QLineF *> lines() const		{return list_lines_;}
+	virtual QList<QRectF *> rectangles() const	{return list_rectangles_;}
+	void setId(int i) {id = i;}
+	int getId() const {return id;}
+
+	static int folioList_quantity;
+	static qreal colWidths[4];
 
 	protected:
 	void drawBackground(QPainter *, const QRectF &);
 
 	private:
 	void fillRow(QPainter *, const QRectF &, QString, QString, QString, QString);
+	void buildGrid(const QRectF &, int, int, qreal[]);
+
+
+	QList<QLineF *> list_lines_;
+	QList<QRectF *> list_rectangles_;
+	int id;
 
 };
 

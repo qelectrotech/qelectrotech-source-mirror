@@ -33,6 +33,7 @@
 #include "qetresult.h"
 #include "genericpanel.h"
 #include "nomenclature.h"
+#include "diagramfoliolist.h"
 
 #include "ui/dialogautonum.h"
 
@@ -1682,8 +1683,11 @@ void QETDiagramEditor::addDiagramToProject() {
 }
 
 void QETDiagramEditor::addDiagramFolioListToProject() {
-	if (ProjectView *current_project = currentProject()) {
-		current_project -> addNewDiagramFolioList();
+	ProjectView *current_project = currentProject();
+	if (current_project && DiagramFolioList::folioList_quantity == 0) {
+		int diagram_qty = current_project -> diagrams().size();
+		for (int i = 0; i <= diagram_qty/58; i++)
+			current_project -> addNewDiagramFolioList();
 	}
 }
 

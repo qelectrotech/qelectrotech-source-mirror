@@ -35,6 +35,7 @@
 #include "qetmessagebox.h"
 #include "qettabbar.h"
 #include "qettemplateeditor.h"
+#include "diagramfoliolist.h"
 
 /**
 	Constructeur
@@ -303,11 +304,14 @@ void ProjectView::addNewDiagram() {
 	Diagram *new_diagram = project_ -> addNewDiagram();
 	DiagramView *new_diagram_view = new DiagramView(new_diagram);
 	addDiagram(new_diagram_view);
+
+	if (project_ -> diagrams().size() % 58 == 1 && DiagramFolioList::folioList_quantity != 0)
+		addNewDiagramFolioList();
 	showDiagram(new_diagram_view);
 }
 
 void ProjectView::addNewDiagramFolioList() {
-	if (project_ -> isReadOnly() || project_ -> isFolioListAdded()) return;
+	if (project_ -> isReadOnly()) return;
 
 	Diagram *new_diagram = project_ -> addNewDiagramFolioList();
 	DiagramView *new_diagram_view = new DiagramView(new_diagram);

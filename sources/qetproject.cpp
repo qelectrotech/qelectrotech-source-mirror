@@ -46,8 +46,7 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	project_qet_version_(-1),
 	modified_(false),
 	read_only_(false),
-	titleblocks_(this),
-	folio_list_added_(false)
+	titleblocks_(this)
 {
 	// 0 a n schema(s) vide(s)
 	int diagrams_count = qMax(0, diagrams);
@@ -847,7 +846,6 @@ Diagram *QETProject::addNewDiagramFolioList() {
 	diagram_folio_list -> border_and_titleblock.setTitle(title);
 
 	addDiagram(diagram_folio_list);
-	folio_list_added_ = true;
 	emit(diagramAdded(this, diagram_folio_list));
 	return(diagram_folio_list);
 }
@@ -861,14 +859,31 @@ void QETProject::removeDiagram(Diagram *diagram) {
 	if (isReadOnly()) return;
 	
 	if (!diagram || !diagrams_.contains(diagram)) return;
-	
-	if (diagrams_.removeAll(diagram)) {
 
-		DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
-		if (ptr)
-			folio_list_added_ = false;
+	DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
+	if (ptr) {
+		foreach (Diagram *diag, diagrams_) {
+			ptr = dynamic_cast<DiagramFolioList *>(diag);
+			if (ptr) {
+				diagrams_.removeAll(ptr);
+				emit(diagramRemoved(this, ptr));
+				delete ptr;
+			}
+		}
+	} else if (diagrams_.removeAll(diagram)) {
 		emit(diagramRemoved(this, diagram));
 		delete diagram;
+		if (diagrams_.size() % 58 == 0) {
+			foreach (Diagram *diag, diagrams_) {
+				ptr = dynamic_cast<DiagramFolioList *>(diag);
+				if (ptr && ptr -> getId() == DiagramFolioList::folioList_quantity-1) {
+					diagrams_.removeAll(ptr);
+					emit(diagramRemoved(this, ptr));
+					delete ptr;
+					break;
+				}
+			}
+		}
 	}
 	
 	updateDiagramsFolioData();
