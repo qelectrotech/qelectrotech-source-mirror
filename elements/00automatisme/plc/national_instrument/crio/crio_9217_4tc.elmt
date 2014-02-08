@@ -1,7 +1,8 @@
-<definition width="60" version="0.3" hotspot_x="32" hotspot_y="77" height="180" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="32" hotspot_y="77" height="180" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="fr">cRIO 9217 - 4 entrées PT100</name>
+        <name lang="en">cRIO 9217 - 4 inputs PT100</name>
         <name lang="it">cRIO 9217 - modulo 4 ingressi analogici 100Ω</name>
+        <name lang="fr">cRIO 9217 - 4 entrées PT100</name>
         <name lang="pl">cRIO 9217 - czterokanałowy moduł wejść analogowych </name>
     </names>
     <informations></informations>
