@@ -315,7 +315,7 @@ void ProjectView::addNewDiagramFolioList() {
 
 	Diagram *new_diagram = project_ -> addNewDiagramFolioList();
 	DiagramView *new_diagram_view = new DiagramView(new_diagram);
-	addDiagram(new_diagram_view);
+	addDiagram(new_diagram_view, true);
 	showDiagram(new_diagram_view);
 }
 
@@ -323,13 +323,20 @@ void ProjectView::addNewDiagramFolioList() {
 	Ajoute un schema au ProjectView
 	@param diagram Schema a ajouter
 */
-void ProjectView::addDiagram(DiagramView *diagram) {
+/**
+ * @brief ProjectView::addDiagram
+ * Add new digram to this project view
+ * @param diagram added diagram
+ * @param front: true add page at front
+ *				 false add page at back
+ */
+void ProjectView::addDiagram(DiagramView *diagram, bool front) {
 	if (!diagram) return;
-	
-	// verifie que le schema n'est pas deja present dans le projet
+
+	// check diagram isn't present in the project
 	if (diagram_ids_.values().contains(diagram)) return;
 	
-	// ajoute un nouvel onglet pour le nouveau schema
+	// Add new tab for the diagram
 	tabs_ -> addTab(diagram, QET::Icons::Diagram, diagram -> title());
 	diagram -> setFrameStyle(QFrame::Plain | QFrame::NoFrame);
 	diagrams_ << diagram;
@@ -340,8 +347,11 @@ void ProjectView::addDiagram(DiagramView *diagram) {
 	connect(diagram, SIGNAL(editElementRequired(const ElementsLocation &)), this, SIGNAL(editElementRequired(const ElementsLocation &)));
 	connect(diagram, SIGNAL(editTitleBlockTemplate(const QString &, bool)), this, SLOT(editTitleBlockTemplateRequired(const QString &, bool)));
 	
-	// signale l'ajout du schema
+	// signal diagram was added
 	emit(diagramAdded(diagram));
+	// move tab to front if wanted
+	if (front)
+		tabs_->moveTab(tabs_->count()-1, 0);
 }
 
 /**

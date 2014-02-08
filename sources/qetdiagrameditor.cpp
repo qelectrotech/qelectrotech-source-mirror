@@ -651,9 +651,9 @@ bool QETDiagramEditor::newProject() {
 	new_project -> setDefaultTitleBlockProperties(defaultTitleBlockProperties());
 	new_project -> setDefaultReportProperties(defaultReportProperties());
 	
-	// ajoute un schema au projet
-	new_project -> addNewDiagram();
+	// add summary and new diagram
 	new_project -> addNewDiagramFolioList();
+	new_project -> addNewDiagram();
 	
 	return(addProject(new_project));
 }
@@ -834,7 +834,7 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 }
 
 /**
-	Ajoute un projet
+	Ajoute un projetmoveDiagramUp(
 	@param project projet a ajouter
 	@param update_panel Whether the elements panel should be warned this
 	project has been added. Defaults to true.

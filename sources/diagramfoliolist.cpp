@@ -17,12 +17,18 @@
 */
 #include "diagramfoliolist.h"
 #include <QPainter>
+#include "qetapp.h"
 
 int DiagramFolioList::folioList_quantity = 0;
 qreal DiagramFolioList::colWidths[4] = {0.1, 0.55, 0.2, 0.15};
 
-DiagramFolioList::DiagramFolioList(QObject *parent) : Diagram(parent)
-{
+/**
+ * @brief DiagramFolioList::DiagramFolioList
+ * Constructor
+ * @param parent parent QObject
+ */
+DiagramFolioList::DiagramFolioList(QObject *parent) : Diagram(parent) {
+
 	list_lines_.clear();
 	list_rectangles_.clear();
 
@@ -40,38 +46,43 @@ DiagramFolioList::DiagramFolioList(QObject *parent) : Diagram(parent)
 	buildGrid(row_RectF,30,2,colWidths);
 }
 
+/**
+ * @brief DiagramFolioList::~DiagramFolioList
+ * Destructor
+ */
 DiagramFolioList::~DiagramFolioList()
 {
 	if (folioList_quantity > 0)
 		folioList_quantity--;
 }
 
+/**
+ * @brief DiagramFolioList::drawBackground
+ * Draw background, and call method to draw the folio list (grid)
+ * @param p painter to use
+ * @param r rectangle where we paint
+ */
 void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 {
 	p -> save();
 
-	// desactive tout antialiasing, sauf pour le texte
+	// disable all antialiasing, except for the texts
 	p -> setRenderHint(QPainter::Antialiasing, false);
 	p -> setRenderHint(QPainter::TextAntialiasing, true);
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 
-	// dessine un fond blanc
+	// draw white background
 	p -> setPen(Qt::NoPen);
 	p -> setBrush(Diagram::background_color);
 	p -> drawRect(r);
 	p -> setPen(Qt::black);
-
-	QString authorTranslatable = tr("Auteur");
-	QString titleTranslatable = tr("Titre");
-	QString folioTranslatable = tr("Folio");
-	QString dateTranslatable = tr("Date");
 
 	qreal x0 = list_rectangles_[0] -> topLeft().x();
 	qreal y0 = list_rectangles_[0] -> topLeft().y();
 	qreal rowHeight = (list_rectangles_[0] -> height())/30;
 	QRectF row_RectF(x0, y0, list_rectangles_[0] -> width(), rowHeight);
 
-	fillRow(p, row_RectF, authorTranslatable, titleTranslatable, folioTranslatable, dateTranslatable);
+	fillHeader(p, row_RectF);
 	QList<Diagram *> diagram_list = project() -> diagrams();
 
 	int startDiagram = id * 58;
@@ -80,8 +91,8 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 		y0 += rowHeight;
 		QRectF row_rect(x0, y0, list_rectangles_[0] -> width(), rowHeight);
 		fillRow(p, row_rect, diagram_list[i] -> border_and_titleblock.author(),
-				diagram_list[i] -> border_and_titleblock.title(),
-				 diagram_list[i] -> border_and_titleblock.folio(),
+				diagram_list[i] -> title(),
+				QString::number(diagram_list[i] ->folioIndex()+1),
 				diagram_list[i] -> border_and_titleblock.date().toString("dd/MM/yyyy"));
 	}
 
@@ -89,7 +100,7 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 	y0 = list_rectangles_[1] -> topLeft().y();
 	rowHeight = (list_rectangles_[1] -> height())/30;
 	QRectF row_RectF2(x0, y0, list_rectangles_[1] -> width(), rowHeight);
-	fillRow(p, row_RectF2, authorTranslatable, titleTranslatable, folioTranslatable, dateTranslatable);
+	fillHeader(p, row_RectF2);
 
 	startDiagram += 29;
 
@@ -97,8 +108,8 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 		y0 += rowHeight;
 		QRectF row_rect(x0, y0, list_rectangles_[1] -> width(), rowHeight);
 		fillRow(p, row_rect, diagram_list[i] -> border_and_titleblock.author(),
-				diagram_list[i] -> border_and_titleblock.title(),
-				 diagram_list[i] -> border_and_titleblock.folio(),
+				diagram_list[i] -> title(),
+				QString::number(diagram_list[i] ->folioIndex()+1),
 				diagram_list[i] -> border_and_titleblock.date().toString("dd/MM/yyyy"));
 	}
 
@@ -106,6 +117,12 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 	p -> restore();
 }
 
+/**
+ * @brief DiagramFolioList::fillRow
+ * Add new row and fill it with the given information.
+ * @param qp Qpainter to use
+ * @param row_rect rectangle where we must draw the new row
+ */
 void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, QString author, QString title,
 							   QString folio, QString date)
 {
@@ -159,4 +176,22 @@ void DiagramFolioList::buildGrid(const QRectF &rect, int rows, int tables, qreal
 		}
 		x0 += colWidths[cols-1]*tableWidth + tablesSpacing;
 	}
+}
+
+/**
+ * @brief DiagramFolioList::fillHeader
+ * Fill the header with bigger font
+ * @param qp the painter to use
+ * @param row_RectF rectangle of header
+ */
+void DiagramFolioList::fillHeader(QPainter *qp, const QRectF &row_RectF) {
+	QString authorTranslatable = tr("Auteur");
+	QString titleTranslatable = tr("Titre");
+	QString folioTranslatable = tr("Folio");
+	QString dateTranslatable = tr("Date");
+
+	qp->save();
+	qp->setFont(QETApp::diagramTextsFont(13));
+	fillRow(qp, row_RectF, authorTranslatable, titleTranslatable, folioTranslatable, dateTranslatable);
+	qp->restore();
 }

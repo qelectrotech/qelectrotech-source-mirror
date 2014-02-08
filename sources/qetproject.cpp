@@ -831,21 +831,30 @@ Diagram *QETProject::addNewDiagram() {
 	return(diagram);
 }
 
+/**
+ * @brief QETProject::addNewDiagramFolioList
+ * Add new diagram folio list
+ * @return the created diagram
+ */
 Diagram *QETProject::addNewDiagramFolioList() {
-	// ne fait rien si le projet est en lecture seule
+	// do nothing if project is read only
 	if (isReadOnly()) return(0);
 
-	// cree un nouveau schema
+	//create new diagram
 	Diagram *diagram_folio_list = new DiagramFolioList();
 
-	// lui transmet les parametres par defaut
+	// setup default properties
 	diagram_folio_list -> border_and_titleblock.importBorder(defaultBorderProperties());
 	diagram_folio_list -> border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 	diagram_folio_list -> defaultConductorProperties = defaultConductorProperties();
-	QString title = (tr("Liste des Sch\351mas"));
-	diagram_folio_list -> border_and_titleblock.setTitle(title);
+
+	diagram_folio_list -> border_and_titleblock.setTitle(tr("Liste des Sch\351mas"));
+	// no need to display rows and columns
+	diagram_folio_list -> border_and_titleblock.displayRows(false);
+	diagram_folio_list -> border_and_titleblock.displayColumns(false);
 
 	addDiagram(diagram_folio_list);
+
 	emit(diagramAdded(this, diagram_folio_list));
 	return(diagram_folio_list);
 }
@@ -1187,13 +1196,19 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	Cette methode ajoute un schema donne au projet
 	@param diagram Schema a ajouter
 */
+/**
+ * @brief QETProject::addDiagram
+ * Add a diagram in this project
+ * @param diagram added diagram
+ * @param position postion of the new diagram, by default at the end
+ */
 void QETProject::addDiagram(Diagram *diagram) {
 	if (!diagram) return;
 	
-	// s'assure que le schema connaisse son projet parent
+	// Ensure diagram know is parent project
 	diagram -> setProject(this);
 	
-	// si le schema est ecrit, alors il faut reecrire le fichier projet
+	// If diagram is write, we must rewrite the project
 	connect(diagram, SIGNAL(written()), this, SLOT(componentWritten()));
 	connect(
 		&(diagram -> border_and_titleblock),
@@ -1206,8 +1221,8 @@ void QETProject::addDiagram(Diagram *diagram) {
 		this, SLOT(usedTitleBlockTemplateChanged(const QString &))
 	);
 	
-	// ajoute le schema au projet
-	diagrams_ << diagram;
+	// add diagram to project
+		diagrams_ << diagram;
 	
 	updateDiagramsFolioData();
 }
