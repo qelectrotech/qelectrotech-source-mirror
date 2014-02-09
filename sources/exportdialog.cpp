@@ -821,23 +821,33 @@ void ExportDialog::fillRow(QString file_path, const QRectF &row_rect, QString au
 
 	x *= Createdxf::xScale;
 	y = Createdxf::sheetHeight - y * Createdxf::yScale;
-	qreal height = row_rect.height() * Createdxf::yScale *0.75;
+	qreal height = row_rect.height() * Createdxf::yScale *0.7;
 	y += height*0.2;
 
-	Createdxf::drawTextAligned(file_path, folio, x, y+height*0.1, height*0.8, 0, 0, 1, 0,
-							   x + DiagramFolioList::colWidths[0]*row_rect.width()*Createdxf::xScale/2, 0);
+	Createdxf::drawTextAligned(file_path, folio,
+							   x + 0.05*DiagramFolioList::colWidths[0]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
+							   x + 0.95*DiagramFolioList::colWidths[0]*row_rect.width()*Createdxf::xScale, 0);
+
 	x += DiagramFolioList::colWidths[0]*row_rect.width()*Createdxf::xScale;
+	QString heading = tr("Titre");
+	if (title == heading)
+		Createdxf::drawTextAligned(file_path, title,
+								   x + 0.05*DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
+								   x + 0.95*DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale, 0);
+	else
+		Createdxf::drawTextAligned(file_path, title,
+								   x + 0.05*DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
+								   x + 0.95*DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale, 0, true);
 
-	Createdxf::drawTextAligned(file_path, title, x, y+height*0.1, height*0.8, 0, 0, 1, 0,
-							   x + DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale/2, 0);
 	x += DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale;
+	Createdxf::drawTextAligned(file_path, author,
+							   x + 0.05*DiagramFolioList::colWidths[2]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
+							   x + 0.95*DiagramFolioList::colWidths[2]*row_rect.width()*Createdxf::xScale, 0);
 
-	Createdxf::drawTextAligned(file_path, author, x, y+height*0.1, height*0.8, 0, 0, 1, 0,
-							   x + DiagramFolioList::colWidths[2]*row_rect.width()*Createdxf::xScale/2, 0);
 	x += DiagramFolioList::colWidths[2]*row_rect.width()*Createdxf::xScale;
-
-	Createdxf::drawTextAligned(file_path, date, x, y+height*0.1, height*0.8, 0, 0, 1, 0,
-							   x + DiagramFolioList::colWidths[3]*row_rect.width()*Createdxf::xScale/2, 0);
+	Createdxf::drawTextAligned(file_path, date,
+							   x + 0.05*DiagramFolioList::colWidths[3]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
+							   x + 0.95*DiagramFolioList::colWidths[3]*row_rect.width()*Createdxf::xScale, 0);
 }
 
 QPointF ExportDialog::rotation_transformed(qreal px, qreal py , qreal origin_x, qreal origin_y, qreal angle) {

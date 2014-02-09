@@ -38,7 +38,7 @@ class Createdxf
 	static void drawLine(QString,double,double,double,double,int);
 	static void drawText(QString,QString,double,double,double,double,int);
 	static void drawTextAligned(QString fileName, QString text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign, int colour,
-                     float scale = 0);
+					 bool leftAlign = false, float scale = 0);
 
 	static const double sheetWidth;
 	static const double sheetHeight;

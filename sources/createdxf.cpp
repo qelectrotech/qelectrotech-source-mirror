@@ -489,7 +489,7 @@ void Createdxf::drawText(QString fileName, QString text,double x, double y, doub
 
 /* draw aligned text in DXF Format */
 void Createdxf::drawTextAligned(QString fileName, QString text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign,int colour,
-                            float scale)
+							bool leftAlign, float scale)
 {
     if (!fileName.isEmpty()) {
         QFile file(fileName);
@@ -520,19 +520,21 @@ void Createdxf::drawTextAligned(QString fileName, QString text,double x, double 
             To_Dxf << text      << "\r\n";    // Text Value
             To_Dxf << 50        << "\r\n";
             To_Dxf << rotation  << "\r\n";    // Text Rotation
+			// If "Fit to width", then check if width of text < width specified then change it "center align or left align"
+			if (hAlign == 5) {
+				int xDiff = xAlign - x;
+				if (text.length() < xDiff/height && !leftAlign) {
+					hAlign = 1;
+					xAlign = (x+xAlign) / 2;
+				} else if (text.length() < xDiff/height && leftAlign) {
+					file.close();
+					return;
+				}
+			}
+
             To_Dxf << 51        << "\r\n";
             To_Dxf << oblique   << "\r\n";    // Text Obliqueness
-            To_Dxf << 72        << "\r\n";
-
-            // If "Fit to width", then check if width of text < width specified then change it "center align"
-            if (hAlign == 5) {
-                int xDiff = xAlign - x;
-                if (text.length() < xDiff/height) {
-                    hAlign = 1;
-                    xAlign = (x+xAlign) / 2;
-                }
-            }
-
+            To_Dxf << 72        << "\r\n";            
             To_Dxf << hAlign    << "\r\n";    // Text Horizontal Alignment
             To_Dxf << 73        << "\r\n";
             To_Dxf << vAlign    << "\r\n";    // Text Vertical Alignment
