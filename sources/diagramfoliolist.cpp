@@ -129,15 +129,40 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, QString aut
 	qreal x = row_rect.topLeft().x();
 	qreal y = row_rect.topLeft().y();
 
+	QFontMetrics origFontMetrics(qp -> font());
+	qreal origFontSize = qp -> font().pointSizeF();
+	QFont workingFont(qp -> font());
+
+	// reduce the font size if the text entry is long
+	if (origFontMetrics.width(folio) > 0.95*colWidths[0]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[0]*row_rect.width() / origFontMetrics.width(folio));
+	else
+		workingFont.setPointSizeF(origFontSize);
+	qp -> setFont(workingFont);
 	qp -> drawText(QRectF(x, y, colWidths[0]*row_rect.width(), row_rect.height()), Qt::AlignCenter, folio);
 	x += colWidths[0]*row_rect.width();
 
-	qp -> drawText(QRectF(x, y, colWidths[1]*row_rect.width(), row_rect.height()), Qt::AlignCenter, title);
+	if (origFontMetrics.width(title) > 0.95*colWidths[1]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[1]*row_rect.width() / origFontMetrics.width(title));
+	else
+		workingFont.setPointSizeF(origFontSize);
+	qp -> setFont(workingFont);
+	qp -> drawText(QRectF(x+0.01*row_rect.width(), y, colWidths[1]*row_rect.width()*0.99, row_rect.height()), Qt::AlignLeft | Qt::AlignVCenter, title);
 	x += colWidths[1]*row_rect.width();
 
+	if (origFontMetrics.width(author) > 0.95*colWidths[2]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[2]*row_rect.width() / origFontMetrics.width(author));
+	else
+		workingFont.setPointSizeF(origFontSize);
+	qp -> setFont(workingFont);
 	qp -> drawText(QRectF(x, y, colWidths[2]*row_rect.width(), row_rect.height()), Qt::AlignCenter, author);
 	x += colWidths[2]*row_rect.width();
 
+	if (origFontMetrics.width(date) > 0.95*colWidths[3]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[3]*row_rect.width() / origFontMetrics.width(date));
+	else
+		workingFont.setPointSizeF(origFontSize);
+	qp -> setFont(workingFont);
 	qp -> drawText(QRectF(x, y, colWidths[3]*row_rect.width(), row_rect.height()), Qt::AlignCenter, date);
 }
 
