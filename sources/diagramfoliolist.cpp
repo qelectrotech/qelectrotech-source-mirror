@@ -19,7 +19,6 @@
 #include <QPainter>
 #include "qetapp.h"
 
-int DiagramFolioList::folioList_quantity = 0;
 qreal DiagramFolioList::colWidths[4] = {0.1, 0.55, 0.2, 0.15};
 
 /**
@@ -27,11 +26,13 @@ qreal DiagramFolioList::colWidths[4] = {0.1, 0.55, 0.2, 0.15};
  * Constructor
  * @param parent parent QObject
  */
-DiagramFolioList::DiagramFolioList(QObject *parent) : Diagram(parent) {
-
-	id = folioList_quantity;
-	folioList_quantity++;
-
+DiagramFolioList::DiagramFolioList( QETProject *project, QObject *parent) : Diagram(parent) {
+	if (project) {
+		setProject(project);
+		id = project -> getFolioSheetsQuantity();
+	}
+	else
+		id = 0;
 }
 
 /**
@@ -40,8 +41,9 @@ DiagramFolioList::DiagramFolioList(QObject *parent) : Diagram(parent) {
  */
 DiagramFolioList::~DiagramFolioList()
 {
-	if (folioList_quantity > 0)
-		folioList_quantity--;
+	int folioSheetQty = project() -> getFolioSheetsQuantity();
+	if (folioSheetQty > 0)
+		project() -> setFolioSheetsQuantity(folioSheetQty-1);
 }
 
 /**

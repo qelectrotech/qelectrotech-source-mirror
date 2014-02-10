@@ -305,7 +305,7 @@ void ProjectView::addNewDiagram() {
 	DiagramView *new_diagram_view = new DiagramView(new_diagram);
 	addDiagram(new_diagram_view);
 
-	if (project_ -> diagrams().size() % 58 == 1 && DiagramFolioList::folioList_quantity != 0)
+	if (project_ -> diagrams().size() % 58 == 1 && project_ -> getFolioSheetsQuantity() != 0)
 		addNewDiagramFolioList();
 	showDiagram(new_diagram_view);
 }
@@ -340,11 +340,7 @@ void ProjectView::addDiagram(DiagramView *diagram, bool front) {
 	tabs_ -> addTab(diagram, QET::Icons::Diagram, diagram -> title());
 	diagram -> setFrameStyle(QFrame::Plain | QFrame::NoFrame);
 
-	// Add diagram type is a folio list then add it just after the last folio list in project, else add it at the back.
-	//if (DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram))
-		//diagrams_.insert(DiagramFolioList::folioList_quantity, diagram);
-	//else
-		diagrams_ << diagram;
+	diagrams_ << diagram;
 
 	rebuildDiagramsMap();
 	connect(diagram, SIGNAL(showDiagram(Diagram*)), this, SLOT(showDiagram(Diagram*)));
@@ -356,11 +352,9 @@ void ProjectView::addDiagram(DiagramView *diagram, bool front) {
 	// signal diagram was added
 	emit(diagramAdded(diagram));
 	// move tab to front if wanted
-	if (front) {  //DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram ->diagram())) {
-		//int tabCount = tabs_ -> count();
-		//for (int i = 0; i < (tabCount-1) - (DiagramFolioList::folioList_quantity-1); i++)
-			//moveDiagramUp(diagram);
-		tabs_->moveTab(tabs_->count()-1, DiagramFolioList::folioList_quantity-1);
+	if (front) {
+		tabs_->moveTab(tabs_->count()-1, project_ -> getFolioSheetsQuantity()-1);
+		//diagram -> diagram() -> project() -> setFolioSheetsQuantity(true);
 	}
 }
 
@@ -431,7 +425,6 @@ void ProjectView::removeDiagram(Diagram *diagram) {
 void ProjectView::showDiagram(DiagramView *diagram) {
 	if (!diagram) return;
 	tabs_ -> setCurrentWidget(diagram);
-	;
 }
 
 /**

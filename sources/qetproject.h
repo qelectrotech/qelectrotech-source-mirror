@@ -74,6 +74,8 @@ class QETProject : public QObject {
 	public:
 	ProjectState state() const;
 	QList<Diagram *> diagrams() const;
+	int getFolioSheetsQuantity() const;
+	void setFolioSheetsQuantity(int);
 	int folioIndex(const Diagram *) const;
 	ElementsCollection *embeddedCollection() const;
 	TitleBlockTemplatesProjectCollection *embeddedTitleBlockTemplatesCollection();
@@ -175,6 +177,8 @@ class QETProject : public QObject {
 	QDomDocument document_root_;
 	/// Diagrams carried by the project
 	QList<Diagram *> diagrams_;
+	/// Folio List Sheet is added to this project.
+	int folioSheetsQuantity;
 	/// Embedded elements collection
 	XmlElementsCollection *collection_;
 	/// Project title

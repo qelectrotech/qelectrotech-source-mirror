@@ -24,14 +24,13 @@
 class DiagramFolioList : public Diagram
 {
 	public:
-	DiagramFolioList(QObject *parent = 0);
+	DiagramFolioList( QETProject *project = 0, QObject *parent = 0);
 	virtual ~DiagramFolioList();
 	virtual QList<QLineF *> lines() const		{return list_lines_;}
 	virtual QList<QRectF *> rectangles() const	{return list_rectangles_;}
 	void setId(int i) {id = i;}
 	int getId() const {return id;}
 
-	static int folioList_quantity;
 	static qreal colWidths[4];
 
 	protected:

@@ -46,14 +46,15 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	project_qet_version_(-1),
 	modified_(false),
 	read_only_(false),
-	titleblocks_(this)
+	titleblocks_(this),
+	folioSheetsQuantity(0)
 {
 	// 0 a n schema(s) vide(s)
 	int diagrams_count = qMax(0, diagrams);
 	for (int i = 0 ; i < diagrams_count ; ++ i) {
 		addNewDiagram();
 	}
-	
+
 	// une collection d'elements vide
 	collection_ = new XmlElementsCollection();
 	collection_ -> setProtocol("embed");
@@ -79,7 +80,8 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	project_qet_version_(-1),
 	modified_(false),
 	read_only_(false),
-	titleblocks_(this)
+	titleblocks_(this),
+	folioSheetsQuantity(0)
 {
 	// ouvre le fichier
 	QFile project_file(path);
@@ -121,7 +123,8 @@ QETProject::QETProject(const QDomElement &xml_element, QObject *parent) :
 	project_qet_version_(-1),
 	modified_(false),
 	read_only_(false),
-	titleblocks_(this)
+	titleblocks_(this),
+	folioSheetsQuantity(0)
 {
 	// copie le contenu XML
 	document_root_.appendChild(document_root_.importNode(xml_element, true));
@@ -154,6 +157,8 @@ QETProject::~QETProject() {
 		diagrams_.removeAll(diagram);
 		delete diagram;
 	}
+
+	folioSheetsQuantity = 0;
 	// qDebug() << diagrams_;
 	delete undo_stack_;
 }
@@ -165,6 +170,14 @@ QETProject::~QETProject() {
 */
 QETProject::ProjectState QETProject::state() const {
 	return(state_);
+}
+
+int QETProject::getFolioSheetsQuantity() const {
+	return(folioSheetsQuantity);
+}
+
+void QETProject::setFolioSheetsQuantity(int quantity) {
+	folioSheetsQuantity = quantity;
 }
 
 /**
@@ -440,6 +453,7 @@ QDomDocument QETProject::toXml() {
 	QDomElement project_root = xml_doc.createElement("project");
 	project_root.setAttribute("version", QET::version);
 	project_root.setAttribute("title", project_title_);
+	project_root.setAttribute("folioSheetQuantity", QString::number(folioSheetsQuantity));
 	xml_doc.appendChild(project_root);
 	
 	// titleblock templates, if any
@@ -467,9 +481,12 @@ QDomDocument QETProject::toXml() {
 	// qDebug() << "Export XML de" << diagrams_.count() << "schemas";
 	int order_num = 1;
 	foreach(Diagram *diagram, diagrams_) {
-		qDebug() << qPrintable(QString("QETProject::toXml() : exporting diagram \"%1\" [%2]").arg(diagram -> title()).arg(QET::pointerString(diagram)));
-		QDomNode appended_diagram = project_root.appendChild(diagram -> writeXml(xml_doc));
-		appended_diagram.toElement().setAttribute("order", order_num ++);
+		DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
+		if ( !ptr ) {
+			qDebug() << qPrintable(QString("QETProject::toXml() : exporting diagram \"%1\" [%2]").arg(diagram -> title()).arg(QET::pointerString(diagram)));
+			QDomNode appended_diagram = project_root.appendChild(diagram -> writeXml(xml_doc));
+			appended_diagram.toElement().setAttribute("order", order_num ++);
+		}
 	}
 	
 	// collection
@@ -841,7 +858,7 @@ Diagram *QETProject::addNewDiagramFolioList() {
 	if (isReadOnly()) return(0);
 
 	//create new diagram
-	Diagram *diagram_folio_list = new DiagramFolioList();
+	Diagram *diagram_folio_list = new DiagramFolioList(this);
 
 	// setup default properties
 	diagram_folio_list -> border_and_titleblock.importBorder(defaultBorderProperties());
@@ -853,7 +870,9 @@ Diagram *QETProject::addNewDiagramFolioList() {
 	diagram_folio_list -> border_and_titleblock.displayRows(false);
 	diagram_folio_list -> border_and_titleblock.displayColumns(false);
 
+
 	addDiagram(diagram_folio_list);
+	setFolioSheetsQuantity( getFolioSheetsQuantity()+1 );
 
 	emit(diagramAdded(this, diagram_folio_list));
 	return(diagram_folio_list);
@@ -946,6 +965,10 @@ void QETProject::readProjectXml() {
 	
 	// la racine du document XML est sensee etre un element "project"
 	if (root_elmt.tagName() == "project") {
+
+		if (root_elmt.hasAttribute("folioSheetQuantity"))
+			setFolioSheetsQuantity(root_elmt.attribute("folioSheetQuantity","0").toInt());
+
 		// mode d'ouverture normal
 		if (root_elmt.hasAttribute("version")) {
 			bool conv_ok;
@@ -1040,6 +1063,13 @@ void QETProject::readDiagramsXml() {
 	// Initialise links between elements in this project
 	foreach (Diagram *d, diagrams()) {
 		d->initElementsLinks();
+	}
+
+	if (getFolioSheetsQuantity()) {
+		setFolioSheetsQuantity(0);
+		int diagCount = diagrams().size();
+		for (int i = 0; i <= diagCount/58; i++)
+			addNewDiagramFolioList();
 	}
 
 	//delete dialog object

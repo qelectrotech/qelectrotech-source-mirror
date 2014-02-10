@@ -1681,7 +1681,7 @@ void QETDiagramEditor::addDiagramToProject() {
 
 void QETDiagramEditor::addDiagramFolioListToProject() {
 	ProjectView *current_project = currentProject();
-	if (current_project && DiagramFolioList::folioList_quantity == 0) {
+	if (current_project && current_project -> project() -> getFolioSheetsQuantity() == 0) {
 		int diagram_qty = current_project -> diagrams().size();
 		for (int i = 0; i <= diagram_qty/58; i++)
 			current_project -> addNewDiagramFolioList();
@@ -1814,11 +1814,14 @@ void QETDiagramEditor::removeDiagramFromProject() {
 						current_project -> removeDiagram(diag);
 					}
 				}
+				//current_project ->project() ->setFolioSheetsQuantity(0);
 			} else if (current_project -> diagrams().size() % 58 == 0) {
 				foreach (DiagramView *diag, current_project -> diagrams()) {
 					DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diag -> diagram());
-					if (ptr && ptr -> getId() == DiagramFolioList::folioList_quantity-1) {
+					if (ptr && ptr -> getId() == current_project -> project() -> getFolioSheetsQuantity() - 1) {
 						current_project -> removeDiagram(diag);
+						//int folioQuantity = current_project -> project() -> getFolioSheetsQuantity();
+						//current_project -> project() -> setFolioSheetsQuantity(folioQuantity - 1);
 					}
 				}
 			}
