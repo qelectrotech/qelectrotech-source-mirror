@@ -1,11 +1,12 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnny">
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">بطارية بخليتين</name>
         <name lang="en">Battery 2 elements</name>
+        <name lang="it">Batteria (2 elementi, serie)</name>
         <name lang="fr">Pile 2 éléments</name>
         <name lang="pl">Bateria ogniw elektrochemicznych</name>
+        <name lang="es">Bateria 2 elementos en serie</name>
         <name lang="cs">Akumulátor 2 prvky</name>
-        <name lang="it">Batteria (2 elementi, serie)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -19,7 +20,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="14" y="5.6666" size="6" text="-"/>
         <text x="-19" y="5.6666" size="6" text="+"/>
         <rect width="3" x="6.7" y="-6" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <terminal x="-20" y="0" orientation="w"/>
-        <terminal x="20" y="0" orientation="e"/>
+        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
     </description>
 </definition>

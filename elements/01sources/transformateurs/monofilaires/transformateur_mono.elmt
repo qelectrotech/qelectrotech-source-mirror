@@ -1,4 +1,4 @@
-<definition width="60" version="0.3" hotspot_x="21" hotspot_y="45" height="90" type="element" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="21" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">محوّل أحادي الوجه</name>
         <name lang="de">Trafo Wechselstrom</name>
@@ -8,7 +8,7 @@
         <name lang="it">Trasformatore monofase</name>
         <name lang="fr">Transformateur monophasé</name>
         <name lang="pl">Transformator jednofazowy</name>
-        <name lang="es">Transformador monofásica</name>
+        <name lang="es">Transformador monofásico</name>
         <name lang="cs">Jednofázový transformátor</name>
     </names>
     <informations></informations>
@@ -23,7 +23,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="0" x1="-15" y2="0" x2="16"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-5" y2="-34" x2="5"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-5" y2="-32" x2="5"/>
-        <terminal x="0" y="-40" orientation="n"/>
-        <terminal x="0" y="40" orientation="s"/>
+        <terminal x="0" y="-40" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="40" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

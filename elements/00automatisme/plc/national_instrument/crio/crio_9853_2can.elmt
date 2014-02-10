@@ -1,9 +1,10 @@
-<definition width="60" version="0.4" hotspot_x="33" hotspot_y="78" height="180" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="34" hotspot_y="73" height="170" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">cRIO bus CAN</name>
         <name lang="it">cRIO 9853 - modulo CAN-bus</name>
         <name lang="fr">cRIO bus CAN</name>
         <name lang="pl">cRIO 9853 - porty High-Speed CAN</name>
+        <name lang="es">cRIO 9853 - puertos CAN</name>
     </names>
     <informations></informations>
     <description>

@@ -1,11 +1,12 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnny">
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">بطارية خليّة واحدة (قصيرة)</name>
         <name lang="en">Battery one element (short)</name>
+        <name lang="it">Batteria (un elemento corto)</name>
         <name lang="fr">Pile 1 élément (court)</name>
         <name lang="pl">Ogniwo elektrochemiczne</name>
+        <name lang="es">Bateria 1 elemento, terminales cortos</name>
         <name lang="cs">Akumulátor 1 prvek (krátký)</name>
-        <name lang="it">Batteria (un elemento corto)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -16,7 +17,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <rect width="3" x="0" y="-6" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <text x="6" y="6.6666" size="6" text="-"/>
         <text x="-11" y="6.6666" size="6" text="+"/>
-        <terminal x="-11" y="0" orientation="w"/>
-        <terminal x="11" y="0" orientation="e"/>
+        <terminal x="-11" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="11" y="0" nameHidden="0" number="" name="" orientation="e"/>
     </description>
 </definition>
