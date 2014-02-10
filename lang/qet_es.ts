@@ -299,12 +299,12 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="135"/>
         <source>Couleur de fond :</source>
-        <translation type="unfinished"></translation>
+        <translation>Color de fondo:</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="136"/>
         <source>Gris</source>
-        <translation type="unfinished"></translation>
+        <translation>Gris</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="112"/>
@@ -585,22 +585,22 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="34"/>
         <source>Auteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="35"/>
         <source>Titre</source>
-        <translation type="unfinished">Titulo</translation>
+        <translation>Titulo</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="36"/>
         <source>Folio</source>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="37"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Fecha</translation>
     </message>
 </context>
 <context>
@@ -1125,7 +1125,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/qetgraphicsitem/elementtextitem.cpp" line="52"/>
         <source>Maintenir ctrl pour déplacer</source>
         <comment>tool tip for element text item</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mantener ctrl para mover</translation>
     </message>
 </context>
 <context>
@@ -1778,7 +1778,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="146"/>
         <source>DXF (*.dxf)</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF (*.dxf)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
@@ -1827,42 +1827,42 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="31"/>
         <source>Report de folio disponible :</source>
-        <translation type="unfinished"></translation>
+        <translation>Informe de folio disponible:</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.ui" line="82"/>
         <source>Voir ce report</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver este informe</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/folioreportproperties.ui" line="89"/>
         <source>Voir le report lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver el informe vinculado</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="74"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Sin titulo</translation>
+        <translation>Sin titulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="75"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished"></translation>
+        <translation>Folio  %1 (%2), posición %3.</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="106"/>
         <source>Ce report est déjà lié.</source>
-        <translation type="unfinished"></translation>
+        <translation>Este informe ya está vinculado.</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="107"/>
         <source>Délier</source>
-        <translation type="unfinished"></translation>
+        <translation>Desvincular</translation>
     </message>
 </context>
 <context>
@@ -1921,12 +1921,12 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="161"/>
         <source>Langue</source>
-        <translation type="unfinished">Idioma</translation>
+        <translation>Idioma</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="164"/>
         <source>La nouvelle langue sera pris en compte au prochain lancement de QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>El nuevo lenguaje se tomarán en cuenta en el próximo lanzamiento de QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="222"/>
@@ -1937,82 +1937,83 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="230"/>
         <source>Système</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistema</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="234"/>
         <source>Arabe</source>
-        <translation type="unfinished"></translation>
+        <translation>Árabe</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="235"/>
         <source>Catalan</source>
-        <translation type="unfinished"></translation>
+        <translation>Catalán</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="236"/>
         <source>Tchèque</source>
-        <translation type="unfinished"></translation>
+        <translation>Checo</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="237"/>
         <source>Allemand</source>
-        <translation type="unfinished"></translation>
+        <translation>Alemán</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="238"/>
         <source>Grec</source>
-        <translation type="unfinished"></translation>
+        <translation>Griego</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="239"/>
         <source>Anglais</source>
-        <translation type="unfinished"></translation>
+        <translation>Inglés</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="240"/>
         <source>Espagnol</source>
-        <translation type="unfinished"></translation>
+        <translation>Español</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="241"/>
         <source>Français</source>
-        <translation type="unfinished"></translation>
+        <translation>Francés</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="242"/>
         <source>Croate</source>
-        <translation type="unfinished"></translation>
+        <translation>Croata</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="243"/>
         <source>Italien</source>
-        <translation type="unfinished"></translation>
+        <translation>Italiano</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="244"/>
         <source>Polonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Polaco</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="245"/>
         <source>Portugais</source>
-        <translation type="unfinished"></translation>
+        <translation>Portugués</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="246"/>
         <source>Roumains</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Rumanos</translatorcomment>
+        <translation>Rumano</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="247"/>
         <source>Russe</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruso</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>Slovène</source>
-        <translation type="unfinished"></translation>
+        <translation>Esloveno</translation>
     </message>
 </context>
 <context>
@@ -2437,17 +2438,17 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/configpages.cpp" line="45"/>
         <source>Schéma</source>
-        <translation type="unfinished">Esquema</translation>
+        <translation>Esquema</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="50"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Conductor</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="54"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Informe de folio</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="92"/>
@@ -2674,17 +2675,17 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="297"/>
         <source>Schéma</source>
-        <translation type="unfinished">Esquema</translation>
+        <translation>Esquema</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="299"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Conductor</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="301"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Informe de folio</translation>
     </message>
 </context>
 <context>
@@ -2709,7 +2710,8 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
         <location filename="../sources/projectview.cpp" line="245"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation type="unfinished"></translation>
+        <translation>El proyecto ha sido modificado.
+¿Quiere guardar los cambios?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="362"/>
@@ -3292,7 +3294,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar un resumen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
@@ -4686,7 +4688,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetproject.cpp" line="846"/>
         <source>Liste des Schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de esquemas</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="956"/>
@@ -5251,19 +5253,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1162"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation type="unfinished"></translation>
+        <translation>Enlazar dos informes de folio</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1167"/>
         <source>Lier deux Ã©lÃ©ments</source>
-        <translation type="unfinished"></translation>
+        <translation>Vincular dos Ã©lÃ©mentos</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1217"/>
         <source>Délier %n élément(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Desvincular %n élémento(s)</numerusform>
+            <numerusform>Desvincular %n elementos</numerusform>
         </translation>
     </message>
     <message>
@@ -5725,12 +5727,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiqueta de informe de folio</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -5739,7 +5741,11 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Puede definir una etiqueta personalizada para los informes de folio
+Crear su propio texto, utilizando las siguientes variables
+%f : el número de folio
+%l : el número de línea
+%c : el número de columna</translation>
     </message>
 </context>
 <context>
@@ -5930,13 +5936,13 @@ El campo &quot;Incrementación&quot; no se utiliza.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Forte</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fuerte</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alto</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
@@ -7040,7 +7046,7 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="115"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="119"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Informe de folio</translation>
     </message>
 </context>
 <context>
