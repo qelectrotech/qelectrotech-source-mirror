@@ -652,7 +652,7 @@ bool QETDiagramEditor::newProject() {
 	new_project -> setDefaultReportProperties(defaultReportProperties());
 	
 	// add summary and new diagram
-	new_project -> addNewDiagramFolioList();
+	//new_project -> addNewDiagramFolioList();
 	new_project -> addNewDiagram();
 	
 	return(addProject(new_project));
@@ -1804,7 +1804,24 @@ void QETDiagramEditor::removeDiagramFromProject() {
 	if (ProjectView *current_project = currentProject()) {
 		if (DiagramView *current_diagram = current_project -> currentDiagram()) {
 			can_update_actions = false;
+			bool isFolioList = false;
+			if (DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(current_diagram -> diagram()))
+				isFolioList = true;
 			current_project -> removeDiagram(current_diagram);
+			if (isFolioList) {
+				foreach (DiagramView *diag, current_project -> diagrams()) {
+					if (DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diag -> diagram())) {
+						current_project -> removeDiagram(diag);
+					}
+				}
+			} else if (current_project -> diagrams().size() % 58 == 0) {
+				foreach (DiagramView *diag, current_project -> diagrams()) {
+					DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diag -> diagram());
+					if (ptr && ptr -> getId() == DiagramFolioList::folioList_quantity-1) {
+						current_project -> removeDiagram(diag);
+					}
+				}
+			}
 		}
 	}
 }

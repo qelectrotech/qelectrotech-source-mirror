@@ -865,34 +865,12 @@ Diagram *QETProject::addNewDiagramFolioList() {
 */
 void QETProject::removeDiagram(Diagram *diagram) {
 	// ne fait rien si le projet est en lecture seule
-	if (isReadOnly()) return;
-	
+	if (isReadOnly()) return;	
 	if (!diagram || !diagrams_.contains(diagram)) return;
 
-	DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
-	if (ptr) {
-		foreach (Diagram *diag, diagrams_) {
-			ptr = dynamic_cast<DiagramFolioList *>(diag);
-			if (ptr) {
-				diagrams_.removeAll(ptr);
-				emit(diagramRemoved(this, ptr));
-				delete ptr;
-			}
-		}
-	} else if (diagrams_.removeAll(diagram)) {
+	if (diagrams_.removeAll(diagram)) {
 		emit(diagramRemoved(this, diagram));
 		delete diagram;
-		if (diagrams_.size() % 58 == 0) {
-			foreach (Diagram *diag, diagrams_) {
-				ptr = dynamic_cast<DiagramFolioList *>(diag);
-				if (ptr && ptr -> getId() == DiagramFolioList::folioList_quantity-1) {
-					diagrams_.removeAll(ptr);
-					emit(diagramRemoved(this, ptr));
-					delete ptr;
-					break;
-				}
-			}
-		}
 	}
 	
 	updateDiagramsFolioData();

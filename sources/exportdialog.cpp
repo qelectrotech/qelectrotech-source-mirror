@@ -419,8 +419,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			y0 += rowHeight;
 			QRectF row_rect(x0, y0, list_rectangles[0] -> width(), rowHeight);
 			fillRow(file_path, row_rect, diagram_list[i] -> border_and_titleblock.author(),
-					diagram_list[i] -> border_and_titleblock.title(),
-					 diagram_list[i] -> border_and_titleblock.folio(),
+					diagram_list[i] -> title(),
+					QString::number(diagram_list[i] ->folioIndex()+1),
 					diagram_list[i] -> border_and_titleblock.date().toString("dd/MM/yyyy"));
 		}
 
@@ -436,8 +436,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			y0 += rowHeight;
 			QRectF row_rect(x0, y0, list_rectangles[1] -> width(), rowHeight);
 			fillRow(file_path, row_rect, diagram_list[i] -> border_and_titleblock.author(),
-					diagram_list[i] -> border_and_titleblock.title(),
-					 diagram_list[i] -> border_and_titleblock.folio(),
+					diagram_list[i] -> title(),
+					QString::number(diagram_list[i] ->folioIndex()+1),
 					diagram_list[i] -> border_and_titleblock.date().toString("dd/MM/yyyy"));
 		}
 
