@@ -29,21 +29,9 @@ qreal DiagramFolioList::colWidths[4] = {0.1, 0.55, 0.2, 0.15};
  */
 DiagramFolioList::DiagramFolioList(QObject *parent) : Diagram(parent) {
 
-	list_lines_.clear();
-	list_rectangles_.clear();
-
 	id = folioList_quantity;
 	folioList_quantity++;
 
-	qreal width  = border_and_titleblock.columnsTotalWidth();
-	qreal height = border_and_titleblock.rowsTotalHeight();
-
-	//top left corner of drawable area
-	qreal x0 = border_and_titleblock.rowsHeaderWidth();
-	qreal y0 = border_and_titleblock.columnsHeaderHeight();
-	QRectF row_RectF(x0, y0, width, height);
-
-	buildGrid(row_RectF,30,2,colWidths);
 }
 
 /**
@@ -75,10 +63,25 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 	p -> setPen(Qt::NoPen);
 	p -> setBrush(Diagram::background_color);
 	p -> drawRect(r);
-	p -> setPen(Qt::black);
+	p -> setPen(Qt::black);	
 
-	qreal x0 = list_rectangles_[0] -> topLeft().x();
-	qreal y0 = list_rectangles_[0] -> topLeft().y();
+	clear();
+
+	list_lines_.clear();
+	list_rectangles_.clear();
+
+	qreal width  = border_and_titleblock.columnsTotalWidth();
+	qreal height = border_and_titleblock.rowsTotalHeight();
+
+	//top left corner of drawable area
+	qreal x0 = border_and_titleblock.rowsHeaderWidth();
+	qreal y0 = border_and_titleblock.columnsHeaderHeight();
+	QRectF row_RectBorder(x0, y0, width, height);
+
+	buildGrid(row_RectBorder,30,2,colWidths);
+
+	x0 = list_rectangles_[0] -> topLeft().x();
+	y0 = list_rectangles_[0] -> topLeft().y();
 	qreal rowHeight = (list_rectangles_[0] -> height())/30;
 	QRectF row_RectF(x0, y0, list_rectangles_[0] -> width(), rowHeight);
 
