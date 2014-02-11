@@ -172,10 +172,18 @@ QETProject::ProjectState QETProject::state() const {
 	return(state_);
 }
 
+/**
+	Get the folioSheetQuantity
+	@return folio Sheets Quantity.
+*/
 int QETProject::getFolioSheetsQuantity() const {
 	return(folioSheetsQuantity);
 }
 
+/**
+	Set the folioSheetQuantity to quantity
+	@param New value of quantity to be set.
+*/
 void QETProject::setFolioSheetsQuantity(int quantity) {
 	folioSheetsQuantity = quantity;
 }
@@ -453,6 +461,8 @@ QDomDocument QETProject::toXml() {
 	QDomElement project_root = xml_doc.createElement("project");
 	project_root.setAttribute("version", QET::version);
 	project_root.setAttribute("title", project_title_);
+
+	// write the present value of folioSheetsQuantity to XML.
 	project_root.setAttribute("folioSheetQuantity", QString::number(folioSheetsQuantity));
 	xml_doc.appendChild(project_root);
 	
@@ -481,6 +491,8 @@ QDomDocument QETProject::toXml() {
 	// qDebug() << "Export XML de" << diagrams_.count() << "schemas";
 	int order_num = 1;
 	foreach(Diagram *diagram, diagrams_) {
+
+		// Write the diagram to XML only if it is not of type DiagramFolioList.
 		DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
 		if ( !ptr ) {
 			qDebug() << qPrintable(QString("QETProject::toXml() : exporting diagram \"%1\" [%2]").arg(diagram -> title()).arg(QET::pointerString(diagram)));
@@ -966,6 +978,8 @@ void QETProject::readProjectXml() {
 	// la racine du document XML est sensee etre un element "project"
 	if (root_elmt.tagName() == "project") {
 
+		// if there is an attribute for folioSheetQuantity, then set it accordingly.
+		// If not, then the value remains at the initial value of zero.
 		if (root_elmt.hasAttribute("folioSheetQuantity"))
 			setFolioSheetsQuantity(root_elmt.attribute("folioSheetQuantity","0").toInt());
 
@@ -1065,6 +1079,7 @@ void QETProject::readDiagramsXml() {
 		d->initElementsLinks();
 	}
 
+	// If the folio sheets quantity is non-zero, then add the folio sheets
 	if (getFolioSheetsQuantity()) {
 		setFolioSheetsQuantity(0);
 		int diagCount = diagrams().size();

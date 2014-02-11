@@ -651,8 +651,7 @@ bool QETDiagramEditor::newProject() {
 	new_project -> setDefaultTitleBlockProperties(defaultTitleBlockProperties());
 	new_project -> setDefaultReportProperties(defaultReportProperties());
 	
-	// add summary and new diagram
-	//new_project -> addNewDiagramFolioList();
+	// add new diagram
 	new_project -> addNewDiagram();
 	
 	return(addProject(new_project));
@@ -1682,6 +1681,8 @@ void QETDiagramEditor::addDiagramToProject() {
 void QETDiagramEditor::addDiagramFolioListToProject() {
 	ProjectView *current_project = currentProject();
 	if (current_project && current_project -> project() -> getFolioSheetsQuantity() == 0) {
+
+		// The number of folio sheets depend on the number of diagrams in the project.
 		int diagram_qty = current_project -> diagrams().size();
 		for (int i = 0; i <= diagram_qty/58; i++)
 			current_project -> addNewDiagramFolioList();
@@ -1805,23 +1806,28 @@ void QETDiagramEditor::removeDiagramFromProject() {
 		if (DiagramView *current_diagram = current_project -> currentDiagram()) {
 			can_update_actions = false;
 			bool isFolioList = false;
+
+			// if diagram to remove is a "folio list sheet", then set a flag.
 			if (DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(current_diagram -> diagram()))
 				isFolioList = true;
+
 			current_project -> removeDiagram(current_diagram);
+
+			// if the removed diagram was a folio sheet, then delete all the remaining folio sheets also.
 			if (isFolioList) {
 				foreach (DiagramView *diag, current_project -> diagrams()) {
 					if (DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diag -> diagram())) {
 						current_project -> removeDiagram(diag);
 					}
 				}
-				//current_project ->project() ->setFolioSheetsQuantity(0);
+
+			  // else if after diagram removal, the total diagram quantity becomes a factor of 58, then
+			  // remove one (last) folio sheet.
 			} else if (current_project -> diagrams().size() % 58 == 0) {
 				foreach (DiagramView *diag, current_project -> diagrams()) {
 					DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diag -> diagram());
 					if (ptr && ptr -> getId() == current_project -> project() -> getFolioSheetsQuantity() - 1) {
 						current_project -> removeDiagram(diag);
-						//int folioQuantity = current_project -> project() -> getFolioSheetsQuantity();
-						//current_project -> project() -> setFolioSheetsQuantity(folioQuantity - 1);
 					}
 				}
 			}
