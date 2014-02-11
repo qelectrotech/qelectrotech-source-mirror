@@ -34,6 +34,21 @@ DiagramFolioList::DiagramFolioList( QETProject *project, QObject *parent) : Diag
 	}
 	else
 		id = 0;
+
+	clear();
+	list_lines_.clear();
+	list_rectangles_.clear();
+
+	qreal width  = border_and_titleblock.columnsTotalWidth();
+	qreal height = border_and_titleblock.rowsTotalHeight();
+
+	//top left corner of drawable area
+	qreal x0 = border_and_titleblock.rowsHeaderWidth();
+	qreal y0 = border_and_titleblock.columnsHeaderHeight();
+	QRectF row_RectBorder(x0, y0, width, height);
+	sheetRectangle = row_RectBorder;
+
+	buildGrid(row_RectBorder,30,2,colWidths);
 }
 
 /**
@@ -68,11 +83,6 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 	p -> drawRect(r);
 	p -> setPen(Qt::black);	
 
-	clear();
-
-	list_lines_.clear();
-	list_rectangles_.clear();
-
 	qreal width  = border_and_titleblock.columnsTotalWidth();
 	qreal height = border_and_titleblock.rowsTotalHeight();
 
@@ -81,7 +91,14 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 	qreal y0 = border_and_titleblock.columnsHeaderHeight();
 	QRectF row_RectBorder(x0, y0, width, height);
 
-	buildGrid(row_RectBorder,30,2,colWidths);
+	// If the sheet size has changed since last paint, then clear the scene and re-draw the grid.
+	if (sheetRectangle != row_RectBorder) {
+		sheetRectangle = row_RectBorder;
+		clear();
+		list_lines_.clear();
+		list_rectangles_.clear();
+		buildGrid(row_RectBorder,30,2,colWidths);
+	}
 
 	x0 = list_rectangles_[0] -> topLeft().x();
 	y0 = list_rectangles_[0] -> topLeft().y();

@@ -44,6 +44,7 @@ class DiagramFolioList : public Diagram
 
 	QList<QLineF *> list_lines_;
 	QList<QRectF *> list_rectangles_;
+	QRectF sheetRectangle;
 	int id;
 
 };
