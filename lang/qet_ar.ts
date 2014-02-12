@@ -597,22 +597,22 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="34"/>
         <source>Auteur</source>
-        <translation type="unfinished"></translation>
+        <translation>المؤلف</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="35"/>
         <source>Titre</source>
-        <translation type="unfinished">العنوان</translation>
+        <translation>العنوان</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="36"/>
         <source>Folio</source>
-        <translation type="unfinished">ورقة</translation>
+        <translation>ورقة</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="37"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>التاريخ</translation>
     </message>
 </context>
 <context>
@@ -3301,7 +3301,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة مُلخص</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
@@ -4765,7 +4765,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetproject.cpp" line="846"/>
         <source>Liste des Schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>قائمة المُخططات</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="955"/>
@@ -5534,11 +5534,6 @@ Que désirez vous faire ?</source>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
