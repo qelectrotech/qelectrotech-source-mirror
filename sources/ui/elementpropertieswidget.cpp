@@ -32,6 +32,7 @@ elementpropertieswidget::elementpropertieswidget(Element *elmt, QWidget *parent)
 	diagram_ (elmt->diagram())
 {
 	frp_ = 0;
+	eiw_ = 0;
 	buildInterface();
 }
 
@@ -109,6 +110,8 @@ void elementpropertieswidget::buildInterface() {
 	//Add tab according to the element
 	switch (element_ -> linkType()) {
 		case Element::Simple:
+			eiw_ = new ElementInfoWidget(element_, this);
+			tab_ -> addTab(eiw_, tr("Information"));
 			break;
 		case Element::NextReport:
 			frp_ = new FolioReportProperties(element_, this);
@@ -119,6 +122,8 @@ void elementpropertieswidget::buildInterface() {
 			tab_ -> addTab(frp_, tr("Report de folio"));
 			break;
 		case Element::Master:
+			eiw_ = new ElementInfoWidget(element_, this);
+			tab_ -> addTab(eiw_, tr("Information"));
 			break;
 		case Element::SlaveNC:
 			break;
@@ -153,7 +158,8 @@ void elementpropertieswidget::standardButtonClicked(QAbstractButton *button) {
 		case QDialogButtonBox::ResetRole:
 			break;
 		case QDialogButtonBox::ApplyRole:
-			if (frp_) frp_->Apply();
+			if (frp_) frp_->Apply();		//folio report widget
+			else if (eiw_) eiw_->apply();	//element information widget
 			this->accept();
 		case QDialogButtonBox::RejectRole:
 			this->reject();

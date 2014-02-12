@@ -22,6 +22,7 @@
 #include <QSettings>
 #include <QString>
 #include <QVariant>
+#include <QStringList>
 /**
 	This class represents a diagram context, i.e. the data (a list of key/value
 	pairs) of a diagram at a given time. It is notably used by titleblock templates
@@ -34,12 +35,14 @@ class DiagramContext {
 		Alphabetical,
 		DecreasingLength
 	};
+
 	QList<QString> keys(KeyOrder = None) const;
 	bool contains(const QString &) const;
 	const QVariant operator[](const QString &) const;
-	bool addValue(const QString &, const QVariant &);
+	bool addValue(const QString &, const QVariant &, bool show = true);
 	void clear();
 	int count();
+	bool keyMustShow (const QString &) const;
 	
 	bool operator==(const DiagramContext &) const;
 	bool operator!=(const DiagramContext &) const;
@@ -56,5 +59,6 @@ class DiagramContext {
 	bool keyIsAcceptable(const QString &) const;
 	/// Diagram context data (key/value pairs)
 	QHash<QString, QVariant> content_;
+	QHash<QString, bool> content_show;
 };
 #endif

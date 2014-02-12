@@ -53,16 +53,20 @@ const QVariant DiagramContext::operator[](const QString &key) const {
 
 /**
 	@param key key to insert in the context - the key may only contain lowercase
-	letters and dashes
+	letters and dashes.
+	If embedded key is set, key must be find it else value is not added.
 	@see DiagramContext::keyIsAcceptable()
 	@param value value to insert in the context
+	@param show if value is used to be show on the diagram or somewhere else,
+	we can specify if he is show(true) or not(false)
 	@return true if the insertion succeeds, false otherwise
 */
-bool DiagramContext::addValue(const QString &key, const QVariant &value) {
+bool DiagramContext::addValue(const QString &key, const QVariant &value, bool show) {
 	if (keyIsAcceptable(key)) {
 		content_.insert(key, value);
+		content_show.insert(key, show);
 		return(true);
-	}
+		}
 	return(false);
 }
 
@@ -71,6 +75,7 @@ bool DiagramContext::addValue(const QString &key, const QVariant &value) {
 */
 void DiagramContext::clear() {
 	content_.clear();
+	content_show.clear();
 }
 
 /**
@@ -78,6 +83,16 @@ void DiagramContext::clear() {
 */
 int DiagramContext::count() {
 	return(content_.count());
+}
+
+/**
+ * @brief DiagramContext::keyMustShow
+ * @return the value pairs with key, if key no found, return false
+ */
+bool DiagramContext::keyMustShow(const QString &key) const {
+	if (content_show.contains(key))
+		return content_show[key];
+	return false;
 }
 
 bool DiagramContext::operator==(const DiagramContext &dc) const {
@@ -96,6 +111,7 @@ void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const {
 	foreach (QString key, keys()) {
 		QDomElement property = e.ownerDocument().createElement(tag_name);
 		property.setAttribute("name", key);
+		property.setAttribute("show",content_show[key]);
 		QDomText value = e.ownerDocument().createTextNode(content_[key].toString());
 		property.appendChild(value);
 		e.appendChild(property);
@@ -110,6 +126,7 @@ void DiagramContext::fromXml(const QDomElement &e, const QString &tag_name) {
 	foreach (QDomElement property, QET::findInDomElement(e, tag_name)) {
 		if (!property.hasAttribute("name")) continue;
 		addValue(property.attribute("name"), QVariant(property.text()));
+		content_show.insert(property.attribute("name"), property.attribute("show", "1").toInt());
 	}
 }
 

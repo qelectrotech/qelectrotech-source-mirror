@@ -338,6 +338,36 @@ ElementsCollectionCache *QETApp::collectionCache() {
 }
 
 /**
+ * @brief QETApp::elementInfoKeys
+ * @return all available key for describe an element
+ */
+QStringList QETApp::elementInfoKeys() {
+	QStringList info_list;
+	info_list << "label"
+			  << "comment"
+			  << "manufacturer"
+			  << "manufacturer-reference"
+			  << "machine-manufacturer-reference";
+	return info_list;
+}
+
+/**
+ * @brief ElementsProperties::translatedInfo
+ * Return the translated information key given by @info
+ * If @info don't match, return an empty string
+ * @param info the key to be translated
+ * @return
+ */
+QString QETApp::elementTranslatedInfoKey(QString &info) {
+	if (info == "label") return tr("Label");
+	else if (info == "comment") return tr("Commentaire");
+	else if (info == "manufacturer") return tr("Fabriquant");
+	else if (info == "manufacturer-reference") return tr("R\351f\351rence fabriquant");
+	else if (info == "machine-manufacturer-reference") return tr("R\351f\351rence fabriquant machine");
+	return (info);
+}
+
+/**
 	@return the common title block templates collection, i.e. the one provided
 	by QElecrotTech
 */

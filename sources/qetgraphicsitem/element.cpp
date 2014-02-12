@@ -24,6 +24,7 @@
 #include <QtDebug>
 #include <ui/elementpropertieswidget.h>
 #include "elementprovider.h"
+#include "elementsproperties.h"
 
 /**
 	Constructeur pour un element sans scene ni parent
@@ -395,6 +396,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	//uuid of this element
 	uuid_= QUuid(e.attribute("uuid", QUuid::createUuid().toString()));
 
+	//load informations
+	informations_.fromXml(e.firstChildElement("informations"), "information");
+
 	// position, selection
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
@@ -473,6 +477,11 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		}
 		element.appendChild(links_uuids);
 	}
+
+	//save information of this element
+	QDomElement infos = document.createElement("informations");
+	informations_.toXml(infos, "information");
+	element.appendChild(infos);
 	
 	return(element);
 }

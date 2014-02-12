@@ -22,6 +22,7 @@
 #include <qetgraphicsitem/element.h>
 #include <diagram.h>
 #include <folioreportproperties.h>
+#include <elementinfowidget.h>
 
 class elementpropertieswidget : public QDialog
 {
@@ -46,6 +47,7 @@ class elementpropertieswidget : public QDialog
 
 	private:
 	FolioReportProperties *frp_;
+	ElementInfoWidget *eiw_;
 	QDialogButtonBox *dbb;
 	Element *element_;
 	Diagram *diagram_;

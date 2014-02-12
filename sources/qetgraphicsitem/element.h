@@ -21,6 +21,7 @@
 #include "terminal.h"
 #include "qetgraphicsitem.h"
 #include <QUuid>
+#include "elementsproperties.h"
 class Diagram;
 class ElementTextItem;
 
@@ -35,8 +36,7 @@ class Element : public QetGraphicsItem {
 	// constructors, destructor
 	public:
 	Element(QGraphicsItem * = 0, Diagram * = 0);
-	virtual ~Element();
-	
+	virtual ~Element();	
 	private:
 	Element(const Element &);
 	
@@ -55,15 +55,11 @@ class Element : public QetGraphicsItem {
 		  AllSlave = 48,
 		  Bornier = 64};
 	
-	protected:
-	QList <Element *> connected_elements;
-	QList <QUuid> tmp_uuids_link;
-	
 	private:
 	QSize   dimensions;
 	QPoint  hotspot_coord;
 	QPixmap preview;
-	QUuid uuid_;
+
 	
 	// methods
 	public:
@@ -98,19 +94,41 @@ class Element : public QetGraphicsItem {
 	/// @return the maximum number of terminals for this element
 	virtual int maxTerminalsCount() const = 0;
 
-	// related method for link between element
+
+	/**
+	 *related method and attributes,
+	 *about none graphic thing
+	 *like the linked element or information about this element
+	 */
+		//METHODS related to linked element
+		public:
 	bool isFree () const;
 	virtual void linkToElement(Element *) {}
 	virtual void unlinkAllElements() {}
-	virtual void unlinkElement(Element *elmt) {}
+	virtual void unlinkElement(Element *) {}
 	void initLink(QETProject *);
 	QList<Element *> linkedElements () const;
-	//create new uuid for this element
-	void newUuid() {uuid_ = QUuid::createUuid();}
+	void newUuid() {uuid_ = QUuid::createUuid();} 	//create new uuid for this element
+
+		//ATTRIBUTES related to linked element
+		protected:
+	QList <Element *> connected_elements;
+	QList <QUuid> tmp_uuids_link;
+	QUuid uuid_;
+
+		//METHODS related to information
+		public:
+	DiagramContext informations()const {return informations_;}
+	void setInformations(DiagramContext dc) {informations_ = dc;}
+
+		//ATTRIBUTES
+		protected:
+	DiagramContext informations_;
 
 	/**
 		Draw this element
 	*/
+	public:
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
 	/// @return This element type ID
 	virtual QString typeId() const = 0;
