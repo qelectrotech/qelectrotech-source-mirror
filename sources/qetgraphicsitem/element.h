@@ -21,7 +21,6 @@
 #include "terminal.h"
 #include "qetgraphicsitem.h"
 #include <QUuid>
-#include "elementsproperties.h"
 class Diagram;
 class ElementTextItem;
 
