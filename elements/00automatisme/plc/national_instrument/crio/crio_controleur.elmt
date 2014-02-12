@@ -5,6 +5,7 @@
         <name lang="fr">contrôleur cRIO</name>
         <name lang="pl">cRIO 9024 - sterownik czasu rzeczywistego</name>
         <name lang="es">cRIO 9024 - controlador en tiempo real</name>
+        <name lang="cs">cRIO 9024 - řízení skutečného času</name>
     </names>
     <informations></informations>
     <description>
