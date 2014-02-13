@@ -1056,17 +1056,17 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="41"/>
         <source>TextLabel</source>
-        <translation type="unfinished">TextLabel</translation>
+        <translation>TextLabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="48"/>
         <source>Visible</source>
-        <translation type="unfinished">Visible</translation>
+        <translation>Visible</translation>
     </message>
 </context>
 <context>
@@ -1074,7 +1074,7 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
 </context>
 <context>
@@ -1727,23 +1727,23 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="403"/>
         <source>Auteur</source>
-        <translation type="unfinished">Author</translation>
+        <translation>Author</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="404"/>
         <location filename="../sources/exportdialog.cpp" line="832"/>
         <source>Titre</source>
-        <translation type="unfinished">Title</translation>
+        <translation>Title</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="405"/>
         <source>Folio</source>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="406"/>
         <source>Date</source>
-        <translation type="unfinished">Date</translation>
+        <translation>Date</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="897"/>
@@ -3026,27 +3026,27 @@ Available options:
     <message>
         <location filename="../sources/qetapp.cpp" line="362"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="363"/>
         <source>Commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Annotation</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="364"/>
         <source>Fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Manufacturer</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="365"/>
         <source>Référence fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Manufacturer part</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Référence fabriquant machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Machine manufacturer reference</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="377"/>
@@ -7115,7 +7115,7 @@ Maximum width: %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="114"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Information</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
