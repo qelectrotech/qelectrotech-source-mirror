@@ -1727,23 +1727,23 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="403"/>
         <source>Auteur</source>
-        <translation type="unfinished">Συγγραφέας </translation>
+        <translation>Συγγραφέας</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="404"/>
         <location filename="../sources/exportdialog.cpp" line="832"/>
         <source>Titre</source>
-        <translation type="unfinished">Τίτλος</translation>
+        <translation>Τίτλος</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="405"/>
         <source>Folio</source>
-        <translation type="unfinished">Διάγραμμα</translation>
+        <translation>Διάγραμμα</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="406"/>
         <source>Date</source>
-        <translation type="unfinished">Ημερομηνία </translation>
+        <translation>Ημερομηνία </translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="897"/>
@@ -2912,7 +2912,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1412"/>
         <source>Restaurer QElectroTech</source>
-        <translation>Επαναφορά του ΚιουΕλέκτροΤεχκ</translation>
+        <translation>Επαναφορά του QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1497"/>
@@ -3036,22 +3036,22 @@ Options disponibles :
     <message>
         <location filename="../sources/qetapp.cpp" line="362"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Ετικέτα</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="363"/>
         <source>Commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχόλιο</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="364"/>
         <source>Fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατασκευαστής</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="365"/>
         <source>Référence fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναφορά κατασκευαστή</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
@@ -3310,7 +3310,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="684"/>
         <source>Schémas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
-        <translation>Διαγράμματα ΚιουΕλέκτροΤεχκ (*.qet);;Αρχεία ΕξΕμΈλ (*.xml);;Όλα τα αρχεία (*)</translation>
+        <translation>Διαγράμματα QElectroTech (*.qet);;Αρχεία XML (*.xml);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
@@ -3528,19 +3528,19 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
-        <translation>Το αρχείο %1 δεν δείχνει να είναι αρχείο εργασίας ΚιουΕλέκτροΤεχκ. Κατά συνέπεια, δεν μπορεί να ανοιχτεί.</translation>
+        <translation>Το αρχείο %1 δεν δείχνει να είναι αρχείο εργασίας QElectroTech. Κατά συνέπεια, δεν μπορεί να ανοιχτεί.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="67"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
-        <translation>ΚιουΕλέκτροΤεχκ</translation>
+        <translation>QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="73"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
-        <translation>ΚιουΕλέκτροΤεχκ</translation>
+        <translation>QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="76"/>
@@ -3676,7 +3676,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Κλείνει το ΚιουΕλέκτροΤεχκ</translation>
+        <translation>Κλείνει το QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -4171,7 +4171,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="57"/>
         <source>QElectroTech - Éditeur d&apos;élément</source>
         <comment>window title</comment>
-        <translation>Επεξεργαστής στοιχείων του ΚιουΕλέκτροΤεχκ</translation>
+        <translation>Επεξεργαστής στοιχείων του QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="139"/>
@@ -4408,7 +4408,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1251"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
-        <translation>Στοιχεία του ΚιουΕλέκτροΤεχκ (*.elmt);;Αρχεία ΕξΕμΈλ (*.xml);;Όλα τα αρχεία (*)</translation>
+        <translation>Στοιχεία του QElectroTech (*.elmt);;Αρχεία XML (*.xml);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="948"/>
@@ -4433,7 +4433,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1025"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
-        <translation>Στοιχεία του ΚιουΕλέκτροΤεχκ (*.elmt)</translation>
+        <translation>Στοιχεία του QElectroTech (*.elmt)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1057"/>
@@ -4597,7 +4597,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="37"/>
         <source>QElectroTech : Aperçu avant impression</source>
-        <translation>ΚιουΕλέκτροΤεχκ: Προεπισκόπηση εκτύπωσης</translation>
+        <translation>QElectroTech: Προεπισκόπηση εκτύπωσης</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="170"/>
@@ -7114,7 +7114,7 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="114"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Πληροφορία</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
