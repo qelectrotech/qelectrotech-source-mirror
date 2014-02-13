@@ -1055,17 +1055,17 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="41"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Etichetta</translation>
+        <translation>Testo</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="48"/>
         <source>Visible</source>
-        <translation type="unfinished">Visibile</translation>
+        <translation>Visibile</translation>
     </message>
 </context>
 <context>
@@ -1073,7 +1073,7 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
 </context>
 <context>
@@ -1726,23 +1726,23 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="403"/>
         <source>Auteur</source>
-        <translation type="unfinished">Autore</translation>
+        <translation>Autore</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="404"/>
         <location filename="../sources/exportdialog.cpp" line="832"/>
         <source>Titre</source>
-        <translation type="unfinished">Titolo</translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="405"/>
         <source>Folio</source>
-        <translation type="unfinished">Pagina</translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="406"/>
         <source>Date</source>
-        <translation type="unfinished">Data</translation>
+        <translation>Data</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="897"/>
@@ -3024,27 +3024,27 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetapp.cpp" line="362"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etichetta</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="363"/>
         <source>Commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Commento</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="364"/>
         <source>Fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Costruttore</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="365"/>
         <source>Référence fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimento costruttore</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Référence fabriquant machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimento costruttore della macchina</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="377"/>
@@ -7111,7 +7111,7 @@ Lunghezza massima: %2px</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="114"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
