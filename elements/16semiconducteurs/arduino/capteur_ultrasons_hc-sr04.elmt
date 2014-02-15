@@ -4,6 +4,7 @@
         <name lang="it">Sensore ultrasonico HC-SR04</name>
         <name lang="fr">Capteur HC-SR04</name>
         <name lang="pl">Ultradźwiękowy czujnik odległości HC-SR04</name>
+        <name lang="cs">Ultrazvukové vzdálenostní čidlo HC-SR04</name>
     </names>
     <informations></informations>
     <description>

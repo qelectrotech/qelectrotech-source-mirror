@@ -3,6 +3,7 @@
         <name lang="it">Sezionatore con fusibile 1P+N</name>
         <name lang="fr">Porte fusible P+N</name>
         <name lang="pl">Odłącznik bezpiecznikowy</name>
+        <name lang="cs">Úsekový vypínač, tavný, P+N</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="fr">Emetteur IR</name>
         <name lang="pl">Nadajnik podczerwieni</name>
         <name lang="es">IR Emisor</name>
+        <name lang="cs">Infračervený vysílač</name>
     </names>
     <informations></informations>
     <description>
