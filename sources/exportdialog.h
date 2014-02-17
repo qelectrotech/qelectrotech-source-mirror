@@ -68,6 +68,10 @@ class ExportDialog : public QDialog {
 	QGridLayout *diagrams_list_layout_;
 	ExportPropertiesWidget *epw;
 	QDialogButtonBox *buttons;
+
+	QPushButton *selectAll;
+	QPushButton *deSelectAll;
+
 	// mappers
 	QSignalMapper *preview_mapper_;
 	QSignalMapper *width_mapper_;
@@ -104,5 +108,7 @@ class ExportDialog : public QDialog {
 	void slot_changeFilesExtension(bool = false);
 	void slot_previewDiagram(int);
 	void slot_exportToClipBoard(int);
+	void slot_selectAllClicked();
+	void slot_deSelectAllClicked();
 };
 #endif

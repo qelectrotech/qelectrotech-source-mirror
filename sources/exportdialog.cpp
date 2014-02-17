@@ -70,8 +70,21 @@ ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(paren
 	export_button -> setText(tr("Exporter"));
 	
 	// disposition des elements
+
+	QHBoxLayout *hLayout = new QHBoxLayout();
+	hLayout -> addWidget(new QLabel(tr("Choisissez les sch\351mas que vous d\351sirez exporter ainsi que leurs dimensions :")));
+	selectAll   = new QPushButton();
+	deSelectAll = new QPushButton();
+	selectAll   -> setText(tr("Select All"));
+	deSelectAll -> setText(tr("De-Select All"));
+	hLayout -> addWidget(selectAll);
+	hLayout -> addWidget(deSelectAll);
+	connect(selectAll,   SIGNAL(clicked()),            this, SLOT(slot_selectAllClicked()));
+	connect(deSelectAll, SIGNAL(clicked()),            this, SLOT(slot_deSelectAllClicked()));
+
+
 	QVBoxLayout *layout = new QVBoxLayout(this);
-	layout -> addWidget(new QLabel(tr("Choisissez les sch\351mas que vous d\351sirez exporter ainsi que leurs dimensions :")));
+	layout -> addLayout(hLayout);
 	layout -> addWidget(initDiagramsListPart(), 1);
 	layout -> addWidget(epw);
 	layout -> addWidget(buttons);
@@ -169,6 +182,20 @@ QWidget *ExportDialog::initDiagramsListPart() {
 	
 	return(scroll_diagrams_list);
 }
+
+void ExportDialog::slot_selectAllClicked() {
+	foreach (ExportDiagramLine *diagramLine, diagram_lines_) {
+		diagramLine -> must_export -> setChecked(true);
+	}
+}
+
+void ExportDialog::slot_deSelectAllClicked() {
+	foreach (ExportDiagramLine *diagramLine, diagram_lines_) {
+		diagramLine -> must_export -> setChecked(false);
+	}
+}
+
+
 
 /**
 	@param diagram Un schema
