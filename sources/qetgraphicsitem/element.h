@@ -107,6 +107,7 @@ class Element : public QetGraphicsItem {
 	virtual void unlinkElement(Element *) {}
 	void initLink(QETProject *);
 	QList<Element *> linkedElements () const;
+	virtual int linkType() const {return link_type_;} // @return the linkable type
 	void newUuid() {uuid_ = QUuid::createUuid();} 	//create new uuid for this element
 
 		//ATTRIBUTES related to linked element
@@ -114,6 +115,7 @@ class Element : public QetGraphicsItem {
 	QList <Element *> connected_elements;
 	QList <QUuid> tmp_uuids_link;
 	QUuid uuid_;
+	int link_type_;
 
 		//METHODS related to information
 		public:
@@ -133,8 +135,6 @@ class Element : public QetGraphicsItem {
 	virtual QString typeId() const = 0;
 	/// @return the human name for this element
 	virtual QString name() const = 0;
-	/// @return the linkable type
-	virtual int linkType() const = 0;
 	
 	virtual bool isHighlighted() const;
 	virtual void setHighlighted(bool);

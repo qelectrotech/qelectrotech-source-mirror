@@ -35,10 +35,8 @@ class ReportElement : public CustomElement {
 	virtual void linkToElement(Element *);
 	virtual void unlinkAllElements();
 	virtual void unlinkElement(Element *elmt);
-	virtual int linkType() const;
 
 	private:
-	int link_type_;
 	int inverse_report;
 	QString label_;
 

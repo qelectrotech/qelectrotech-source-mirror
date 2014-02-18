@@ -93,14 +93,6 @@ void ReportElement::unlinkElement(Element *elmt) {
 }
 
 /**
- * @brief ReportElement::linkType
- * @return the kind of link type
- */
-int ReportElement::linkType() const {
-	return link_type_;
-}
-
-/**
  * @brief ReportElement::setLabel
  * Set new label and call updatelabel
  * @param label new label

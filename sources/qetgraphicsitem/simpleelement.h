@@ -31,8 +31,6 @@ class SimpleElement : public CustomElement {
 	public  :
 	explicit SimpleElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
 
-	virtual int linkType() const;
-
 	signals:
 
 	public slots:

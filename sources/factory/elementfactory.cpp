@@ -22,6 +22,7 @@
 #include "QDomElement"
 #include "qetgraphicsitem/simpleelement.h"
 #include "qetgraphicsitem/reportelement.h"
+#include "qetgraphicsitem/masterelement.h"
 
 ElementFactory* ElementFactory::factory_ = 0;
 /**
@@ -46,7 +47,9 @@ Element * ElementFactory::createElement(const ElementsLocation &location, QGraph
 	if (element_definition->xml().hasAttribute("link_type")) {
 		QString link_type = element_definition->xml().attribute("link_type");
 		if (link_type == "next_report" || link_type == "previous_report") return (new ReportElement(location, link_type, qgi, s, state));
+		if (link_type == "master") return (new MasterElement(location, qgi, s, state));
 	}
+	
 	//default if nothing match for link_type
 	return (new SimpleElement(location, qgi, s, state));
 }

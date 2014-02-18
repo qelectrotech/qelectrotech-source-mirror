@@ -33,6 +33,7 @@ elementpropertieswidget::elementpropertieswidget(Element *elmt, QWidget *parent)
 {
 	frp_ = 0;
 	eiw_ = 0;
+	mpw_ = 0;
 	buildInterface();
 }
 
@@ -105,7 +106,6 @@ void elementpropertieswidget::buildInterface() {
 
 	setWindowTitle(tr("Propri\351t\351s de l'\351l\351ment"));
 	tab_ = new QTabWidget(this);
-	tab_ -> addTab(generalWidget(), tr("G\351n\351ral"));
 
 	//Add tab according to the element
 	switch (element_ -> linkType()) {
@@ -122,6 +122,8 @@ void elementpropertieswidget::buildInterface() {
 			tab_ -> addTab(frp_, tr("Report de folio"));
 			break;
 		case Element::Master:
+			mpw_ = new MasterPropertiesWidget(this);
+			tab_ -> addTab(mpw_, tr("R\351f\351rence crois\351 (maitre)"));
 			eiw_ = new ElementInfoWidget(element_, this);
 			tab_ -> addTab(eiw_, tr("Information"));
 			break;
@@ -134,6 +136,8 @@ void elementpropertieswidget::buildInterface() {
 		default:
 			break;
 	}
+
+	tab_ -> addTab(generalWidget(), tr("G\351n\351ral"));
 
 	dbb = new QDialogButtonBox(QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::Reset,
 							   Qt::Horizontal, this);

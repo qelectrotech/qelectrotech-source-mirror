@@ -19,8 +19,6 @@
 
 SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)
-{}
-
-int SimpleElement::linkType() const {
-	return Simple;
+{
+	link_type_ = Simple;
 }
