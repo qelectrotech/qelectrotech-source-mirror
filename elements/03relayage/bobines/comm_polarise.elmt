@@ -1,4 +1,4 @@
-<definition width="60" version="0.3" hotspot_x="25" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="25" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">مرحّل مُستقطب</name>
         <name lang="el">Πηνίο ρελέ με πολικότητα</name>

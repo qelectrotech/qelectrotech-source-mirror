@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">ملف</name>
         <name lang="de">Spule</name>

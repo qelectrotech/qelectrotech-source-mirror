@@ -1,4 +1,4 @@
-<definition width="80" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="80" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">ملف مُؤقت مع تأخير الإستجابة و تأخير الإعتاق</name>
         <name lang="de">elektromechanischer Antrieb mit Ansprech- und Rückfallverzögerung</name>

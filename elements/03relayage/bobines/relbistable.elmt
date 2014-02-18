@@ -1,4 +1,4 @@
-<definition width="60" version="0.3" hotspot_x="19" hotspot_y="37" height="70" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="19" hotspot_y="37" height="70" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">مُرحّل ثنائي الإستقرار</name>
         <name lang="ru">Обмотка</name>

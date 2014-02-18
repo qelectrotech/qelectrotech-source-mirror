@@ -1,4 +1,4 @@
-<definition width="60" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="en">Relay insensitive to AC</name>
         <name lang="it">Relè insensibile alla CA</name>

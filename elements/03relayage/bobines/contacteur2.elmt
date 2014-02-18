@@ -1,4 +1,4 @@
-<definition width="80" version="0.3" hotspot_x="47" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="80" version="0.3" hotspot_x="47" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="en">Contactor</name>
         <name lang="it">Contattore</name>

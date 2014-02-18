@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="el">Ηλεκτρονικό ρελέ</name>
         <name lang="en">Electronic relay</name>

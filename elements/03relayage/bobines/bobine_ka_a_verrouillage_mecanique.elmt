@@ -1,4 +1,4 @@
-<definition width="80" version="0.3" hotspot_x="17" hotspot_y="28" height="60" type="element" orientation="dnny">
+<definition width="80" version="0.3" hotspot_x="17" hotspot_y="28" height="60" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">ملف KA  بقفل ميكانيكي</name>
         <name lang="ru">Обмотка</name>
