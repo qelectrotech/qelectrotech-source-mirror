@@ -1,0 +1,60 @@
+<definition width="170" version="0.4" hotspot_x="4" hotspot_y="10" height="70" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="fr">Afficheur ELIWELL IC901</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="33" y2="50" x2="47"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="102.956" y2="50" x2="127.047"/>
+        <text x="24" y="46" size="6" text="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="133" y2="50" x2="147"/>
+        <text x="154" y="47" size="6" text="7"/>
+        <text x="124" y="47" size="6" text="6"/>
+        <text x="52" y="47" size="6" text="3"/>
+        <text x="95" y="47" size="6" text="5"/>
+        <text x="73" y="47" size="6" text="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="83" y2="50" x2="97"/>
+        <circle x="127.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="47.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="27.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="77.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="97.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="160" y2="50" x2="160"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-0.0765217" y2="0" x2="159.083"/>
+        <circle x="147.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="50" x2="0"/>
+        <circle x="7.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="0" y2="50" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="153" y2="50" x2="159"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="13" y2="50" x2="27"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="52" y2="50" x2="77"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="10" y2="30" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="30" y2="40" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="10" y2="30" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="50" y2="40" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="40" y2="36" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="36" x1="40" y2="43" x2="37"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="30" y2="40" x2="39"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="50" y2="40" x2="43"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="80" y2="40" x2="80"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="100" y2="40" x2="100"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="130" y2="20" x2="130"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="150" y2="40" x2="150"/>
+        <rect width="7" x="146" y="24" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="156" y2="39" x2="143"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="130" y2="20" x2="149"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="150" y2="24" x2="150"/>
+        <text x="4" y="46" size="6" text="1"/>
+        <text x="15" y="10" size="8" text="ELIWELL"/>
+        <input x="122" y="7" size="8" rotate="true" text="IC901"/>
+        <input x="12" y="20" size="7" rotate="true" text="_"/>
+        <text x="80" y="32" size="7" text="220V"/>
+        <terminal x="10" y="52" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="30" y="52" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="50" y="52" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="80" y="52" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="100" y="52" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="130" y="52" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="150" y="52" nameHidden="1" number="" name="" orientation="s"/>
+    </description>
+</definition>

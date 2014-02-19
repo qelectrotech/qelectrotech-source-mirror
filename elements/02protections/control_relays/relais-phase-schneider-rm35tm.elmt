@@ -1,0 +1,87 @@
+<definition width="130" version="0.4" hotspot_x="65" hotspot_y="40" height="100" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Motor control relay RM35TM</name>
+        <name lang="fr">Relais Phase RM35TM</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="13" y2="50" x2="27"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-7" y2="50" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-27" y2="-30" x2="-13"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-27" y2="50" x2="-13"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-47" y2="50" x2="-33"/>
+        <rect width="10" x="44" y="38" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="33" y2="-30" x2="47"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="13" y2="-30" x2="27"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="33" y2="50" x2="47"/>
+        <rect width="10" x="4" y="38" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="25" y="-26" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-56" y="38" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="45" y="-26" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-35" y="38" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="6" y="-26" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-35" y="-26" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-15" y="-26" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-16" y="38" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-7" y2="-30" x2="7"/>
+        <circle x="27.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="47.5" y="-32.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text x="33" y="14" size="4" text="L1"/>
+        <circle x="27.5" y="-32.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="7.5" y="-32.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text x="40" y="29" size="4" text="L2"/>
+        <circle x="-12.5" y="-32.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-32.5" y="-32.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text x="27" y="29" size="4" text="L3"/>
+        <rect width="10" x="24" y="38" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="33" y="7" size="6" text="Un"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-60" y2="50" x2="-53"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="53" y2="-30" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="53" y2="50" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.8141" x1="60" y2="49.7153" x2="60"/>
+        <rect width="4" x="48" y="18" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="48" y="3" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-14" y="44" size="5" text="11"/>
+        <text x="-55" y="44" size="5" text="A1"/>
+        <text x="5" y="44" size="5" text="14"/>
+        <text x="25" y="44" size="5" text="21"/>
+        <text x="-34" y="44" size="5" text="A2"/>
+        <text x="-14" y="-20" size="5" text="Y1"/>
+        <circle x="-52.5" y="-32.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-12.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text x="-34" y="-20" size="5" text="T2"/>
+        <text x="45" y="44" size="5" text="24"/>
+        <text x="46" y="-20" size="5" text="L3"/>
+        <text x="26" y="-20" size="5" text="L2"/>
+        <text x="7" y="-20" size="5" text="L1"/>
+        <circle x="7.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-32.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="47.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-52.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.8276" x1="-60" y2="49.7299" x2="-60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-60" y2="-30" x2="-53"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-47" y2="-30" x2="-33"/>
+        <rect width="10" x="-55" y="-26" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-54" y="-20" size="5" text="T1"/>
+        <rect width="4" x="48" y="-7" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="29" y="-2" size="6" text="&lt;V&lt;"/>
+        <arc width="3" x="34.5" y="19" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-270"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="36" y2="23" x2="31"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="36" y2="23" x2="41"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="31" y2="23" x2="41"/>
+        <input x="-55" y="-6.5" size="7" rotate="true" text="_"/>
+        <input x="-54" y="20" size="7" rotate="true" text="RM35TM_"/>
+        <terminal x="-50" y="-32" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="-30" y="-32" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="-10" y="-32" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="10" y="-32" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="30" y="-32" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="50" y="-32" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="-50" y="52" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="-30" y="52" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="-10" y="52" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="10" y="52" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="30" y="52" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="50" y="52" nameHidden="1" number="" name="" orientation="s"/>
+    </description>
+</definition>
