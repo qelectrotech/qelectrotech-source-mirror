@@ -15,26 +15,25 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef MASTERELEMENT_H
-#define MASTERELEMENT_H
+#ifndef SLAVEELEMENT_H
+#define SLAVEELEMENT_H
 
 #include "customelement.h"
 
-class MasterElement : public CustomElement
+class SlaveElement : public CustomElement
 {
 	Q_OBJECT
-	
 	public:
-	explicit MasterElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
-	~MasterElement();
+	explicit SlaveElement (const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
+	~SlaveElement();
 	virtual void linkToElement(Element *elmt);
 	virtual void unlinkAllElements();
 	virtual void unlinkElement(Element *elmt);
-	
+
 	signals:
 
 	public slots:
 
 };
 
-#endif // MASTERELEMENT_H
+#endif // SLAVEELEMENT_H

@@ -44,15 +44,13 @@ class Element : public QetGraphicsItem {
 	enum { Type = UserType + 1000 };
 	// this enum is use to know the kind of element and
 	// to use flag for element provider class
-	enum {Simple = 1,
+	enum kind {Simple = 1,
 		  NextReport = 2,
 		  PreviousReport = 4,
 		  AllReport = 6,
 		  Master = 8,
-		  SlaveNO = 16,
-		  SlaveNC = 32,
-		  AllSlave = 48,
-		  Bornier = 64};
+		  Slave = 16,
+		  Bornier = 32};
 	
 	private:
 	QSize   dimensions;
@@ -115,16 +113,19 @@ class Element : public QetGraphicsItem {
 	QList <Element *> connected_elements;
 	QList <QUuid> tmp_uuids_link;
 	QUuid uuid_;
-	int link_type_;
+	kind link_type_;
 
 		//METHODS related to information
 		public:
-	DiagramContext informations()const {return informations_;}
-	void setInformations(DiagramContext dc) {informations_ = dc;}
+	DiagramContext elementInformations()const {return element_informations_;}
+	void setElementInformations(DiagramContext dc) {element_informations_ = dc;}
+	DiagramContext kindInformations() const {return kind_informations_;}	//@kind_information_ is used to store more information
+																			//about the herited class like contactelement for know
+																			// kind of contact (simple tempo) or number of contact show by the element.
 
 		//ATTRIBUTES
 		protected:
-	DiagramContext informations_;
+	DiagramContext element_informations_, kind_informations_;
 
 	/**
 		Draw this element

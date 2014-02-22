@@ -29,7 +29,7 @@ ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::ElementInfoWidget),
 	element_(elmt),
-	elmt_info(elmt->informations())
+	elmt_info(elmt->elementInformations())
 {
 	ui->setupUi(this);
 	buildInterface();
@@ -59,7 +59,7 @@ void ElementInfoWidget::apply() {
 						eipw->text(),
 						eipw->mustShow());
 	}
-	element_->setInformations(dc);
+	element_->setElementInformations(dc);
 }
 
 /**

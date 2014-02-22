@@ -122,14 +122,12 @@ void elementpropertieswidget::buildInterface() {
 			tab_ -> addTab(frp_, tr("Report de folio"));
 			break;
 		case Element::Master:
-			mpw_ = new MasterPropertiesWidget(this);
-			tab_ -> addTab(mpw_, tr("R\351f\351rence crois\351 (maitre)"));
+			mpw_ = new MasterPropertiesWidget(element_, this);
+			tab_ -> addTab(mpw_, tr("R\351f\351rence crois\351e (maitre)"));
 			eiw_ = new ElementInfoWidget(element_, this);
 			tab_ -> addTab(eiw_, tr("Information"));
 			break;
-		case Element::SlaveNC:
-			break;
-		case Element::SlaveNO:
+		case Element::Slave:
 			break;
 		case Element::Bornier:
 			break;

@@ -33,7 +33,7 @@ Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	internal_connections_(false),
 	must_highlight_(false)
 {
-	link_type_ = 0;
+	link_type_ = Simple;
 	uuid_ = QUuid::createUuid();
 	setZValue(10);
 }
@@ -397,7 +397,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	uuid_= QUuid(e.attribute("uuid", QUuid::createUuid().toString()));
 
 	//load informations
-	informations_.fromXml(e.firstChildElement("informations"), "information");
+	element_informations_.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
+	//load kind informations
+	kind_informations_.fromXml(e.firstChildElement("kindInformations"), "kindInformation");
 
 	// position, selection
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
@@ -479,9 +481,19 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	}
 
 	//save information of this element
-	QDomElement infos = document.createElement("informations");
-	informations_.toXml(infos, "information");
-	element.appendChild(infos);
+	if (! element_informations_.keys().isEmpty()) {
+		QDomElement infos = document.createElement("elementInformations");
+		element_informations_.toXml(infos, "elementInformation");
+		element.appendChild(infos);
+	}
+
+	//save kind_informations of this element
+	if (! kind_informations_.keys().isEmpty()) {
+		QDomElement kind_infos = document.createElement("kindInformations");
+		kind_informations_.toXml(kind_infos, "kindInformation");
+		element.appendChild(kind_infos);
+	}
+
 	
 	return(element);
 }

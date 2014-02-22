@@ -15,50 +15,50 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "masterelement.h"
+#include "slaveelement.h"
 
 /**
- * @brief MasterElement::MasterElement
+ * @brief SlaveElement::SlaveElement
  * Default constructor
  * @param location location of xml definition
  * @param qgi parent QGraphicItem
  * @param s parent diagram
  * @param state int used to know if the creation of element have error
  */
-MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
+SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)
 {
-	link_type_ = Master;
+	link_type_ = Slave;
 }
 
 /**
- * @brief MasterElement::~MasterElement
+ * @brief SlaveElement::~SlaveElement
  * default destructor
  */
-MasterElement::~MasterElement() {
+SlaveElement::~SlaveElement() {
 	unlinkAllElements();
 }
 
 /**
- * @brief MasterElement::linkToElement
- * Link this master to another element
- * For this class element must be a slave
+ * @brief SlaveElement::linkToElement
+ * Link this slave to another element
+ * For this class element must be a master
  * @param elmt
  */
-void MasterElement::linkToElement(Element *elmt) {	
-	// check if element is slave and if isn't already linked
-	if (elmt->linkType() == Slave && !connected_elements.contains(elmt)) {
-		///TODO create the cross ref and connection
+void SlaveElement::linkToElement(Element *elmt) {
+	// check if element is master and if isn't already linked
+	if (elmt->linkType() == Master && !connected_elements.contains(elmt)) {
+		if(!isFree()) unlinkAllElements();
 		connected_elements << elmt;
 		elmt->linkToElement(this);
 	}
 }
 
 /**
- * @brief MasterElement::unlinkAllElements
+ * @brief SlaveElement::unlinkAllElements
  * Unlink all of the element in the QList connected_elements
  */
-void MasterElement::unlinkAllElements() {
+void SlaveElement::unlinkAllElements() {
 	// if this element is free no need to do something
 	if (!isFree()) {
 		foreach(Element *elmt, connected_elements) {
@@ -68,11 +68,11 @@ void MasterElement::unlinkAllElements() {
 }
 
 /**
- * @brief MasterElement::unlinkElement
+ * @brief SlaveElement::unlinkElement
  * Unlink the given elmt in parametre
- * @param elmt element to unlink from this
+ * @param elmt
  */
-void MasterElement::unlinkElement(Element *elmt) {
+void SlaveElement::unlinkElement(Element *elmt) {
 	//Ensure elmt is linked to this element
 	if (connected_elements.contains(elmt)) {
 		connected_elements.removeOne(elmt);
