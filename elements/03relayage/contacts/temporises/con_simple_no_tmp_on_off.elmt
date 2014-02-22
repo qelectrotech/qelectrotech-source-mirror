@@ -1,4 +1,4 @@
-<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny"> link_type="slave">
     <names>
         <name lang="ar">مُلامس وصل (NO) يُغلق و يُفتح بتأخير</name>
         <name lang="el">Ανοικτή επαφή χρονικου, καθυστέρηση ενεργ/απ</name>
