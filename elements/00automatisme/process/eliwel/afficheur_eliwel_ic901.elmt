@@ -1,6 +1,7 @@
 <definition width="170" version="0.4" hotspot_x="4" hotspot_y="10" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">Afficheur ELIWELL IC901</name>
+        <name lang="it">Display ELIWELL IC901</name>
     </names>
     <informations></informations>
     <description>
