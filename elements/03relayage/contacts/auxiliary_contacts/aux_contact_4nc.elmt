@@ -1,4 +1,4 @@
-<definition width="100" version="0.3" hotspot_x="45" hotspot_y="31" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="45" hotspot_y="31" height="60" type="element" ic="true" orientation="dyyy" link_type="slave">
     <names>
         <name lang="el">Βοηθητικές επαφές, 4 κλειστές</name>
         <name lang="en">Auxiliary contact 4 x NC</name>

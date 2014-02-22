@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="31" height="60" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="25" hotspot_y="31" height="60" type="element" orientation="dyyy" link_type="slave">
     <names>
         <name lang="en">Mirror contact NC</name>
         <name lang="it">Contatto NC</name>

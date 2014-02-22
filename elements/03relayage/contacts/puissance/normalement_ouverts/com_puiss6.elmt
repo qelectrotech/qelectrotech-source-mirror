@@ -1,4 +1,4 @@
-<definition width="110" version="0.3" hotspot_x="39" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="110" version="0.3" hotspot_x="39" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy" link_type="slave">
     <names>
         <name lang="ar">مُلامس قدرة - كونتكتور (NO)</name>
         <name lang="de">Leistungs Kontakt</name>

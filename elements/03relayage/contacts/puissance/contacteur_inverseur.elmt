@@ -1,4 +1,4 @@
-<definition width="200" version="0.3" hotspot_x="97" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="200" version="0.3" hotspot_x="97" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy" link_type="slave">
     <names>
         <name lang="it">Contattore invertitore</name>
         <name lang="fr">Contacteur inverseur</name>
