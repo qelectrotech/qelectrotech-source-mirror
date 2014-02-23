@@ -43,6 +43,7 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneMouseEvent>
 #include "factory/elementfactory.h"
+#include "qetgraphicsitem/qetshapeitem.h"
 
 
 /**
@@ -451,16 +452,43 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 				break;
 			case addingText:
 				addDiagramTextAtPos(mapToScene(e -> pos()));
+				current_behavior = noAction;
 				break;
 			case addingImage:
 				addDiagramImageAtPos(mapToScene(e -> pos()));
+				current_behavior = noAction;
+				break;
+			case addingLine:
+				if (!rubber_band) {
+					rubber_band_origin = mapToScene(e -> pos());
+					rubber_band = new QRubberBand(QRubberBand::Rectangle, this);
+				}
+				rubber_band->setGeometry(QRectF(rubber_band_origin, QSize()).toRect());
+				rubber_band->show();
+				break;
+			case addingRectangle:
+				if (!rubber_band) {
+					rubber_band_origin = mapToScene(e -> pos());
+					rubber_band = new QRubberBand(QRubberBand::Rectangle, this);
+				}
+				rubber_band->setGeometry(QRectF(rubber_band_origin, QSize()).toRect());
+				rubber_band->show();
+				break;
+			case addingEllipse:
+				if (!rubber_band) {
+					rubber_band_origin = mapToScene(e -> pos());
+					rubber_band = new QRubberBand(QRubberBand::Rectangle, this);
+				}
+				rubber_band->setGeometry(QRectF(rubber_band_origin, QSize()).toRect());
+				rubber_band->show();
 				break;
 			case dragView:
+				current_behavior = noAction;
 				break;
 			default:
+				current_behavior = noAction;
 				break;
 		}
-		current_behavior = noAction;
 	}
 	// workaround for drag view with hold wheel click and drag mouse
 	// see also mouseMoveEvent() and mouseReleaseEvent()
@@ -484,6 +512,9 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e) {
 		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
 		return;
 	}
+	if ((e -> buttons() & Qt::LeftButton) &&
+		(current_behavior == addingLine || current_behavior == addingRectangle || current_behavior == addingEllipse))
+		rubber_band -> setGeometry(QRectF(rubber_band_origin, mapToScene(e->pos())).normalized().toRect());
 	QGraphicsView::mouseMoveEvent(e);
 }
 
@@ -496,6 +527,30 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
 		setCursor(Qt::ArrowCursor);
 		return;
 	}
+	if (current_behavior == addingLine || current_behavior == addingRectangle || current_behavior == addingEllipse) {
+		QRectF rec = QRectF(rubber_band_origin, mapToScene(e->pos())).normalized();
+		if (current_behavior == addingLine) {
+			QetShapeItem *line;
+			if (rubber_band_origin == rec.topLeft() || rubber_band_origin == rec.bottomRight())
+				line = new QetShapeItem(rec.topLeft(), rec.bottomRight(), QetShapeItem::Line, false);
+			else
+				line = new QetShapeItem(rec.topLeft(), rec.bottomRight(), QetShapeItem::Line, true);
+			scene -> addItem(line);
+			emit(LineAdded(false));
+		} else if (current_behavior == addingRectangle) {
+			QetShapeItem *rect = new QetShapeItem(rec.topLeft(), rec.bottomRight(), QetShapeItem::Rectangle);
+			scene -> addItem(rect);
+			emit(RectangleAdded(false));
+		} else { // ellipse
+			QetShapeItem *ellipse = new QetShapeItem(rec.topLeft(), rec.bottomRight(), QetShapeItem::Ellipse);
+			scene -> addItem(ellipse);
+			emit(EllipseAdded(false));
+		}
+		rubber_band -> hide();
+		rubber_band = 0;
+		current_behavior = noAction;
+	}
+
 	QGraphicsView::mouseReleaseEvent(e);
 }
 
@@ -1192,6 +1247,27 @@ void DiagramView::addImage() {
 		return;
 	}
 	current_behavior = addingImage;
+}
+
+/**
+* @brief DiagramView::addLine
+*/
+void DiagramView::addLine() {
+	current_behavior = addingLine;
+}
+
+/**
+* @brief DiagramView::addRectangle
+*/
+void DiagramView::addRectangle() {
+	current_behavior = addingRectangle;
+}
+
+/**
+* @brief DiagramView::addEllipse
+*/
+void DiagramView::addEllipse() {
+	current_behavior = addingEllipse;
 }
 
 /**

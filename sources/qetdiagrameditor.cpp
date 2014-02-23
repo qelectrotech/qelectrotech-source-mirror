@@ -217,6 +217,9 @@ void QETDiagramEditor::actions() {
 	add_text          = new QAction(QET::Icons::PartTextField,         tr("Ajouter un champ de texte"),            this);
 	add_column        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne"),             this);
 	add_image		  = new QAction(QET::Icons::adding_image,          tr("Ajouter une image"),                    this);
+	add_line		  = new QAction(QET::Icons::PartLine,              tr("Ajouter une line"),                     this);
+	add_rectangle	  = new QAction(QET::Icons::PartRectangle,         tr("Ajouter une rectangle"),                this);
+	add_ellipse		  = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une ellipse"),	                this);
 	remove_column     = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne"),             this);
 	add_row           = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne"),               this);
 	remove_row        = new QAction(QET::Icons::EditTableDeleteRow,         tr("Enlever une ligne"),               this);
@@ -341,6 +344,9 @@ void QETDiagramEditor::actions() {
 	// traitements speciaux
 	add_text           -> setCheckable(true);
 	add_image		   -> setCheckable(true);
+	add_line		   -> setCheckable(true);
+	add_rectangle	   -> setCheckable(true);
+	add_ellipse		   -> setCheckable(true);
 	windowed_view_mode -> setCheckable(true);
 	tabbed_view_mode   -> setCheckable(true);
 	mode_selection     -> setCheckable(true);
@@ -403,6 +409,9 @@ void QETDiagramEditor::actions() {
 	connect(infos_diagram,      SIGNAL(triggered()), this,       SLOT(editCurrentDiagramProperties()));
 	connect(add_text,           SIGNAL(triggered()), this,       SLOT(slot_addText())              );
 	connect(add_image,          SIGNAL(triggered()), this,       SLOT(slot_addImage())              );
+	connect(add_line,          SIGNAL(triggered()), this,       SLOT(slot_addLine())              );
+	connect(add_rectangle,      SIGNAL(triggered()), this,       SLOT(slot_addRectangle())         );
+	connect(add_ellipse,        SIGNAL(triggered()), this,       SLOT(slot_addEllipse())           );
 	connect(add_column,         SIGNAL(triggered()), this,       SLOT(slot_addColumn())            );
 	connect(remove_column,      SIGNAL(triggered()), this,       SLOT(slot_removeColumn())         );
 	connect(add_row,            SIGNAL(triggered()), this,       SLOT(slot_addRow())               );
@@ -568,6 +577,9 @@ void QETDiagramEditor::toolbar() {
 	diagram_bar -> addAction(conductor_reset);
 	diagram_bar -> addAction(add_text);
 	diagram_bar -> addAction(add_image);
+	diagram_bar -> addAction(add_line);
+	diagram_bar -> addAction(add_rectangle);
+	diagram_bar -> addAction(add_ellipse);
 
 	// ajout de la barre d'outils a la fenetre principale
 	addToolBar(Qt::TopToolBarArea, main_bar);
@@ -1519,7 +1531,10 @@ void QETDiagramEditor::slot_resetConductors() {
 	Ajoute un texte au schema courant
 */
 void QETDiagramEditor::slot_addText() {
-	add_image -> setChecked(false);
+	add_image	  -> setChecked(false);
+	add_line	  -> setChecked(false);
+	add_rectangle -> setChecked(false);
+	add_ellipse   -> setChecked(false);
 	if (DiagramView *dv = currentDiagram()) {
 		dv -> addText();
 	}
@@ -1528,9 +1543,42 @@ void QETDiagramEditor::slot_addText() {
 	Ajoute une image au schema courant
 */
 void QETDiagramEditor::slot_addImage() {
-	add_text -> setChecked(false);
+	add_text	  -> setChecked(false);
+	add_line	  -> setChecked(false);
+	add_rectangle -> setChecked(false);
+	add_ellipse   -> setChecked(false);
 	if (DiagramView *dv = currentDiagram()) {
 		dv -> addImage();
+	}
+}
+
+void QETDiagramEditor::slot_addLine() {
+	add_text	  -> setChecked(false);
+	add_image	  -> setChecked(false);
+	add_rectangle -> setChecked(false);
+	add_ellipse   -> setChecked(false);
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> addLine();
+	}
+}
+
+void QETDiagramEditor::slot_addRectangle() {
+	add_text      -> setChecked(false);
+	add_image	  -> setChecked(false);
+	add_line	  -> setChecked(false);
+	add_ellipse   -> setChecked(false);
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> addRectangle();
+	}
+}
+
+void QETDiagramEditor::slot_addEllipse() {
+	add_text      -> setChecked(false);
+	add_image	  -> setChecked(false);
+	add_line	  -> setChecked(false);
+	add_rectangle -> setChecked(false);
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> addEllipse();
 	}
 }
 
@@ -1846,6 +1894,9 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv) {
 	connect(dv,              SIGNAL(modeChanged()),              this,     SLOT(slot_updateModeActions()));
 	connect(dv,              SIGNAL(textAdded(bool)),            add_text, SLOT(setChecked(bool)));
 	connect(dv,              SIGNAL(ImageAdded(bool)),           add_image, SLOT(setChecked(bool)));
+	connect(dv,              SIGNAL(LineAdded(bool)),            add_line, SLOT(setChecked(bool)));
+	connect(dv,              SIGNAL(RectangleAdded(bool)),       add_rectangle, SLOT(setChecked(bool)));
+	connect(dv,              SIGNAL(EllipseAdded(bool)),           add_ellipse, SLOT(setChecked(bool)));
 	connect(dv,				 SIGNAL(ImageAddedCanceled(bool)),   add_image, SLOT(setChecked(bool)));
 }
 

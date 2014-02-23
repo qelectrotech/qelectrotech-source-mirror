@@ -126,6 +126,9 @@ class QETDiagramEditor : public QETMainWindow {
 	void slot_resetConductors();
 	void slot_addText();
 	void slot_addImage();
+	void slot_addLine();
+	void slot_addRectangle();
+	void slot_addEllipse();
 	void slot_editSelection();
 	void setWindowedMode();
 	void setTabbedMode();
@@ -219,6 +222,9 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *prev_window;        ///< Switch to the previous document
 	QAction *next_window;        ///< Switch to the next document
 	QAction *add_image;          ///< Tool to add an independent image item on diagrams
+	QAction *add_line;		     ///< Tool to add an independent line shape item on diagrams
+	QAction *add_rectangle;		 ///< Tool to add an independent rectangle shape item on diagrams
+	QAction *add_ellipse;		 ///< Tool to add an independent ellipse shape item on diagrams
 	QAction *edit_selection;	 ///< To edit selected item
 
 	private:

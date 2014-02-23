@@ -38,7 +38,7 @@ class DiagramView : public QGraphicsView {
 	DiagramView(Diagram * = 0, QWidget * = 0);
 	virtual ~DiagramView();
 	
-	enum behavior {noAction, addingText, addingImage, dragView};
+	enum behavior {noAction, addingText, addingImage, addingLine, addingRectangle, addingEllipse, dragView};
 
 	private:
 	DiagramView(const DiagramView &);
@@ -57,6 +57,8 @@ class DiagramView : public QGraphicsView {
 	QPointF reference_view_;
 	QPointF center_view_;
 	QImage image_to_add_;
+	QRubberBand *rubber_band;
+	QPointF rubber_band_origin;
 	
 	// methods
 	public:
@@ -75,6 +77,9 @@ class DiagramView : public QGraphicsView {
 	void addText();
 	void editText();
 	void addImage();
+	void addLine();
+	void addRectangle();
+	void addEllipse();
 	void editImage();
 	IndependentTextItem *addDiagramTextAtPos(const QPointF &, const QString &text = 0);
 	DiagramImageItem *addDiagramImageAtPos(const QPointF &);
@@ -129,6 +134,12 @@ class DiagramView : public QGraphicsView {
 	void editTitleBlockTemplate(const QString &, bool);
 	/// Signal emitted after a image was added
 	void ImageAdded(bool);
+	/// Signal emitted after a line was added
+	void LineAdded(bool);
+	/// Signal emitted after a rectangle was added
+	void RectangleAdded(bool);
+	/// Signal emitted after a ellipse was added
+	void EllipseAdded(bool);
 	/// Signal emmitted fater windows selection image have been canceled
 	void ImageAddedCanceled(bool);
 	/// Signal emmitted when diagram must be show
