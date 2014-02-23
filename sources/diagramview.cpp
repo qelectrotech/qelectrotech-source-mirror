@@ -459,28 +459,28 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 				current_behavior = noAction;
 				break;
 			case addingLine:
-				if (!rubber_band) {
+		//		if (!rubber_band) {
 					rubber_band_origin = mapToScene(e -> pos());
-					rubber_band = new QRubberBand(QRubberBand::Rectangle, this);
-				}
-				rubber_band->setGeometry(QRectF(rubber_band_origin, QSize()).toRect());
-				rubber_band->show();
+			//		rubber_band = new QRubberBand(QRubberBand::Rectangle, this);
+				//}
+				//rubber_band->setGeometry(QRectF(rubber_band_origin, QSize()).toRect());
+				//rubber_band->show();
 				break;
 			case addingRectangle:
-				if (!rubber_band) {
+				//if (!rubber_band) {
 					rubber_band_origin = mapToScene(e -> pos());
-					rubber_band = new QRubberBand(QRubberBand::Rectangle, this);
-				}
-				rubber_band->setGeometry(QRectF(rubber_band_origin, QSize()).toRect());
-				rubber_band->show();
+					//rubber_band = new QRubberBand(QRubberBand::Rectangle, this);
+			//	}
+				//rubber_band->setGeometry(QRectF(rubber_band_origin, QSize()).toRect());
+				//rubber_band->show();
 				break;
 			case addingEllipse:
-				if (!rubber_band) {
+			//	if (!rubber_band) {
 					rubber_band_origin = mapToScene(e -> pos());
-					rubber_band = new QRubberBand(QRubberBand::Rectangle, this);
-				}
-				rubber_band->setGeometry(QRectF(rubber_band_origin, QSize()).toRect());
-				rubber_band->show();
+				//	rubber_band = new QRubberBand(QRubberBand::Rectangle, this);
+				//}
+				//rubber_band->setGeometry(QRectF(rubber_band_origin, QSize()).toRect());
+				//rubber_band->show();
 				break;
 			case dragView:
 				current_behavior = noAction;
@@ -512,9 +512,9 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e) {
 		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
 		return;
 	}
-	if ((e -> buttons() & Qt::LeftButton) &&
+	/*if ((e -> buttons() & Qt::LeftButton) &&
 		(current_behavior == addingLine || current_behavior == addingRectangle || current_behavior == addingEllipse))
-		rubber_band -> setGeometry(QRectF(rubber_band_origin, mapToScene(e->pos())).normalized().toRect());
+		rubber_band -> setGeometry(QRectF(rubber_band_origin, mapToScene(e->pos())).normalized().toRect());*/
 	QGraphicsView::mouseMoveEvent(e);
 }
 
@@ -546,8 +546,8 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
 			scene -> addItem(ellipse);
 			emit(EllipseAdded(false));
 		}
-		rubber_band -> hide();
-		rubber_band = 0;
+		//rubber_band -> hide();
+		//rubber_band = 0;
 		current_behavior = noAction;
 	}
 
