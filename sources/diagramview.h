@@ -20,6 +20,7 @@
 #include <QtGui>
 #include "elementslocation.h"
 #include "templatelocation.h"
+#include "qetgraphicsitem/qetshapeitem.h"
 class Conductor;
 class Diagram;
 class Element;
@@ -57,7 +58,7 @@ class DiagramView : public QGraphicsView {
 	QPointF reference_view_;
 	QPointF center_view_;
 	QImage image_to_add_;
-	QRubberBand *rubber_band;
+	QetShapeItem *newItem;
 	QPointF rubber_band_origin;
 	
 	// methods

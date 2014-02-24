@@ -16,6 +16,12 @@ class QetShapeItem : public QetGraphicsItem
 	QetShapeItem(QPointF, QPointF, ShapeType, bool lineAngle = false, QGraphicsItem *parent = 0);
 	virtual ~QetShapeItem();
 
+	void setStyle(Qt::PenStyle);
+	Qt::PenStyle getStyle() const	 { return _shapeStyle;	   }
+	ShapeType getType()		const	 { return _shapeType;	   }
+	void setBoundingRect(QRectF rec) { _boundingRect = rec;	   }
+	void setLineAngle(bool lineAngle){ _lineAngle = lineAngle; }
+
 	private:
 	ShapeType    _shapeType;
 	Qt::PenStyle _shapeStyle;
@@ -23,7 +29,6 @@ class QetShapeItem : public QetGraphicsItem
 	bool		 _lineAngle;  // false if line from topleft corner to bottomright corner
 							  // and true if line from topright corner to bottomleft corner
 
-	void setStyle(Qt::PenStyle);
 	virtual void editProperty() {}
 
 	protected:
