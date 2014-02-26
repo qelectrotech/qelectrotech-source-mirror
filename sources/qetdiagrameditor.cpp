@@ -210,23 +210,23 @@ void QETDiagramEditor::actions() {
 	rotate_selection  = new QAction(QET::Icons::ObjectRotateRight,     tr("Pivoter"),                              this);
 	rotate_texts      = new QAction(QET::Icons::ObjectRotateRight,     tr("Orienter les textes"),                  this);
 	find_element      = new QAction(                                   tr("Retrouver dans le panel"),              this);
-	edit_selection    = new QAction(QET::Icons::ElementEdit,           tr("\311diter l'item s\351lectionn\351"),            this);
+	edit_selection    = new QAction(QET::Icons::ElementEdit,           tr("\311diter l'item s\351lectionn\351"),   this);
 	selection_prop    = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s de la s\351lection"),  this);
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
 	add_text          = new QAction(QET::Icons::PartTextField,         tr("Ajouter un champ de texte"),            this);
 	add_column        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne"),             this);
 	add_image		  = new QAction(QET::Icons::adding_image,          tr("Ajouter une image"),                    this);
-	add_line		  = new QAction(QET::Icons::PartLine,              tr("Ajouter une line"),                     this);
-	add_rectangle	  = new QAction(QET::Icons::PartRectangle,         tr("Ajouter une rectangle"),                this);
-	add_ellipse		  = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une ellipse"),	                this);
+	add_line		  = new QAction(QET::Icons::PartLine,              tr("Ajouter une liaison mecanique"),        this);
+	add_rectangle	  = new QAction(QET::Icons::PartRectangle,         tr("Ajouter une zone rectangle"),           this);
+	add_ellipse		  = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une zone ellipse"),              this);
 	remove_column     = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne"),             this);
 	add_row           = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne"),               this);
 	remove_row        = new QAction(QET::Icons::EditTableDeleteRow,         tr("Enlever une ligne"),               this);
 	
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du projet"),           this);
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
-	//prj_add_diagram_foliolist   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
+
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le sch\351ma"),               this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
 	prj_diagramNum    = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les sch\351mas"),               this);
@@ -343,10 +343,10 @@ void QETDiagramEditor::actions() {
 	
 	// traitements speciaux
 	add_text           -> setCheckable(true);
-	add_image		   -> setCheckable(true);
-	add_line		   -> setCheckable(true);
-	add_rectangle	   -> setCheckable(true);
-	add_ellipse		   -> setCheckable(true);
+	add_image          -> setCheckable(true);
+	add_line           -> setCheckable(true);
+	add_rectangle      -> setCheckable(true);
+	add_ellipse        -> setCheckable(true);
 	windowed_view_mode -> setCheckable(true);
 	tabbed_view_mode   -> setCheckable(true);
 	mode_selection     -> setCheckable(true);
