@@ -25,6 +25,11 @@ namespace Ui {
 	class FolioReportProperties;
 }
 
+/**
+ * @brief The FolioReportProperties class
+ * This class is a widget for make link between two reports element.
+ * This class embendded the undo/redo command when apply new connection.
+ */
 class FolioReportProperties : public QWidget
 {
 	Q_OBJECT

@@ -140,8 +140,10 @@ void FolioReportProperties::unlinkClicked() {
  * @param elmt: element to be displayed
  */
 void FolioReportProperties::showElement(Element *elmt) {
+	QList <Element *> elmt_list = element_list;
+	elmt_list << element_->linkedElements() << element_;
+	foreach (Element *elmt, elmt_list) elmt->setSelected(false);
 	elmt->diagram()->showMe();
-	foreach (QGraphicsItem *qgi, elmt->diagram()->selectedItems()) qgi->setSelected(false);
 	elmt->setSelected(true);
 }
 

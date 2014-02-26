@@ -158,10 +158,12 @@ void elementpropertieswidget::standardButtonClicked(QAbstractButton *button) {
 
 	switch (answer) {
 		case QDialogButtonBox::ResetRole:
+			if (mpw_) mpw_->reset();
 			break;
 		case QDialogButtonBox::ApplyRole:
-			if (frp_) frp_->Apply();		//folio report widget
-			else if (eiw_) eiw_->apply();	//element information widget
+			if (frp_) frp_->Apply();	//folio report widget
+			if (eiw_) eiw_->apply();	//element information widget
+			if (mpw_) mpw_->apply();	//master property widget
 			this->accept();
 		case QDialogButtonBox::RejectRole:
 			this->reject();

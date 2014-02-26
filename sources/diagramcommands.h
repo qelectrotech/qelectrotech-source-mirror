@@ -591,6 +591,7 @@ class LinkElementsCommand : public QUndoCommand {
 	public:
 	// constructor destructor
 	LinkElementsCommand (Element *elmt1, Element *elmt2, QUndoCommand *parent = 0);
+	LinkElementsCommand (Element *elmt1, QList <Element *> &elmtList, QUndoCommand *parent = 0);
 	virtual ~LinkElementsCommand();
 	//methods
 	virtual void undo();
@@ -599,7 +600,8 @@ class LinkElementsCommand : public QUndoCommand {
 	private:
 	//attributes
 	Diagram *diagram_;
-	Element *elmt_1, *elmt_2, *previous_report;
+	Element *element_, *previous_report;
+	QList <Element *> elmt_list;
 	bool first_redo;
 };
 
@@ -607,6 +609,7 @@ class unlinkElementsCommand : public QUndoCommand {
 	public:
 	//constructor destructor
 	unlinkElementsCommand (Element *elmt1, Element *elmt2 = 0, QUndoCommand *parent = 0);
+	unlinkElementsCommand (Element *elmt1, QList <Element *> &elmtList, QUndoCommand *parent = 0);
 	virtual ~unlinkElementsCommand();
 	//methods
 	virtual void undo();

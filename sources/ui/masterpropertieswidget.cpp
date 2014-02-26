@@ -20,7 +20,14 @@
 #include <QListWidgetItem>
 #include <diagramposition.h>
 #include <elementprovider.h>
+#include <diagramcommands.h>
 
+/**
+ * @brief MasterPropertiesWidget::MasterPropertiesWidget
+ * Default constructor
+ * @param elmt
+ * @param parent
+ */
 MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::MasterPropertiesWidget),
@@ -28,14 +35,80 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 {
 	ui->setupUi(this);
 	buildInterface();
+	connect(ui->free_list,		SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(showElementFromLWI(QListWidgetItem*)));
+	connect(ui->linked_list,	SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(showElementFromLWI(QListWidgetItem*)));
 }
 
+/**
+ * @brief MasterPropertiesWidget::~MasterPropertiesWidget
+ * Destructor
+ */
 MasterPropertiesWidget::~MasterPropertiesWidget()
 {
+	foreach(Element *elmt, lwi_hash.values()) elmt->setHighlighted(false);
 	delete ui;
 }
 
+/**
+ * @brief MasterPropertiesWidget::apply
+ * Do what we need when apply new conf
+ */
+void MasterPropertiesWidget::apply() {
+	QList <Element *> to_link;
+	QList <Element *> linked_ = element_->linkedElements();
+
+	for (int i=0; i<ui->linked_list->count(); i++) {
+		to_link << lwi_hash[ui->linked_list->item(i)];
+	}
+
+	//If same element are find in to_link and linked, that means
+	// element are already linked, so we remove element on the two list
+	//if linked_ contains element at the end of the operation,
+	//that means this element must be unlinked from @element_
+	foreach (Element *elmt, to_link) {
+		if(linked_.contains(elmt)) {
+			to_link.removeAll(elmt);
+			linked_.removeAll(elmt);
+		}
+	}
+
+	// if two list, contain element, we link and unlink @element_ with corresponding
+	//undo command, and add first command for parent of the second, user see only one
+	//undo command
+	if (linked_.count() && to_link.count()) {
+		LinkElementsCommand *lec = new LinkElementsCommand(element_, to_link);
+		new unlinkElementsCommand(element_, linked_, lec);
+		element_->diagram()->undoStack().push(lec);
+	}
+	//Else do the single undo command corresponding to the link.
+	else if (to_link.count()) {
+		LinkElementsCommand *lec = new LinkElementsCommand(element_, to_link);
+		element_->diagram()->undoStack().push(lec);
+	}
+	else if (linked_.count()) {
+		unlinkElementsCommand *uec = new unlinkElementsCommand(element_, linked_);
+		element_->diagram()->undoStack().push(uec);
+	}
+}
+
+/**
+ * @brief MasterPropertiesWidget::reset
+ * Reset curent widget, clear eveything and rebuild widget.
+ */
+void MasterPropertiesWidget::reset() {
+	foreach (QListWidgetItem *lwi, lwi_hash.keys()) {
+		delete lwi;
+	}
+	lwi_hash.clear();
+	buildInterface();
+}
+
+/**
+ * @brief MasterPropertiesWidget::buildInterface
+ * Build the interface of the widget
+ */
 void MasterPropertiesWidget::buildInterface() {
+	//build the free list
 	ElementProvider elmt_prov(element_->diagram()->project());
 
 	foreach(Element *elmt, elmt_prov.freeElement(Element::Slave)) {
@@ -47,7 +120,22 @@ void MasterPropertiesWidget::buildInterface() {
 																	  .arg(title)
 																	  .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
 		QListWidgetItem *lwi_ = new QListWidgetItem(elmt->pixmap(), widget_text);
+		lwi_hash.insert(lwi_, elmt);
 		ui->free_list->addItem(lwi_);
+	}
+
+	//build the linked list
+	foreach(Element *elmt, element_->linkedElements()) {
+		//label for list widget
+		QString widget_text;
+		QString title = elmt->diagram()->title();
+		if (title.isEmpty()) title = tr("Sans titre");
+		widget_text += QString(tr("Folio\240 %1 (%2), position %3.")).arg(elmt->diagram()->folioIndex() + 1)
+																	  .arg(title)
+																	  .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
+		QListWidgetItem *lwi_ = new QListWidgetItem(elmt->pixmap(), widget_text);
+		lwi_hash.insert(lwi_, elmt);
+		ui->linked_list->addItem(lwi_);
 	}
 }
 
@@ -62,9 +150,25 @@ void MasterPropertiesWidget::on_link_button_clicked() {
 					ui->free_list->currentRow()));
 }
 
+/**
+ * @brief MasterPropertiesWidget::on_unlink_button_clicked
+ * move curent item in linked_list to free_list
+ */
 void MasterPropertiesWidget::on_unlink_button_clicked() {
 	//take the curent item from linked_list and push it to free_list
 	ui->free_list->addItem(
 				ui->linked_list->takeItem(
 					ui->linked_list->currentRow()));
+}
+
+/**
+ * @brief MasterPropertiesWidget::showElementFromLWI
+ * Show the element corresponding to the given QListWidgetItem
+ * @param lwi
+ */
+void MasterPropertiesWidget::showElementFromLWI(QListWidgetItem *lwi) {
+	foreach(Element *elmt, lwi_hash.values()) elmt->setHighlighted(false);
+	Element *elmt = lwi_hash[lwi];
+	elmt->diagram()->showMe();
+	elmt->setHighlighted(true);
 }

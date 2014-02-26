@@ -1152,11 +1152,11 @@ void ImageResizerCommand::redo() {
 LinkElementsCommand::LinkElementsCommand(Element *elmt1, Element *elmt2, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	diagram_(elmt1->diagram()),
-	elmt_1(elmt1),
-	elmt_2(elmt2),
+	element_(elmt1),
 	previous_report(0),
 	first_redo(true)
 {
+	elmt_list << elmt2;
 	if (elmt1->linkType() & Element::AllReport &&
 		elmt2->linkType() & Element::AllReport) {
 		setText(QObject::tr("Lier deux reports de folio",
@@ -1164,6 +1164,21 @@ LinkElementsCommand::LinkElementsCommand(Element *elmt1, Element *elmt2, QUndoCo
 		if(!elmt1->isFree())
 			previous_report = elmt1->linkedElements().first();
 	}
+	else if (element_->linkType() & Element::Master)
+			setText(QObject::tr("Editer les r\351f\351rence crois\351", "edite the cross reference"));
+	else	setText(QObject::tr("Lier deux éléments"));
+}
+
+LinkElementsCommand::LinkElementsCommand(Element *elmt1, QList<Element *> &elmtList, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	diagram_(elmt1->diagram()),
+	element_(elmt1),
+	elmt_list(elmtList),
+	previous_report(0),
+	first_redo(true)
+{
+	if (element_->linkType() & Element::Master)
+				 setText(QObject::tr("Editer les r\351f\351rence crois\351"));
 	else setText(QObject::tr("Lier deux éléments"));
 }
 
@@ -1179,9 +1194,13 @@ LinkElementsCommand::~LinkElementsCommand(){}
  */
 void LinkElementsCommand::undo() {
 	diagram_->showMe();
-	elmt_1->unlinkElement(elmt_2);
+
+	foreach (Element *elmt, elmt_list)
+		element_->unlinkElement(elmt);
+
 	if (previous_report)
-		elmt_1->linkToElement(previous_report);
+		element_->linkToElement(previous_report);
+	QUndoCommand::undo();
 }
 
 /**
@@ -1190,14 +1209,18 @@ void LinkElementsCommand::undo() {
  */
 void LinkElementsCommand::redo() {
 	diagram_->showMe();
-	elmt_1->linkToElement(elmt_2);
-	//Check if text of this potential is identical.
-	if (first_redo) {
-		if(elmt_1->conductors().count() && elmt_2->conductors().count()) {
-			ConductorAutoNumerotation::checkPotential(elmt_1->conductors().first());
+
+	foreach (Element *elmt, elmt_list)
+		element_->linkToElement(elmt);
+
+	//If element are report, check if text of this potential is identical.
+	if ((element_->linkType() &Element::AllReport) && first_redo) {
+		if(element_->conductors().count() && elmt_list.first()->conductors().count()) {
+			ConductorAutoNumerotation::checkPotential(element_->conductors().first());
 		}
 		first_redo = false;
 	}
+	QUndoCommand::redo();
 }
 
 /**
@@ -1218,6 +1241,21 @@ unlinkElementsCommand::unlinkElementsCommand(Element *elmt1, Element *elmt2, QUn
 }
 
 /**
+ * @brief unlinkElementsCommand::unlinkElementsCommand
+ * @param elmt1 Element to set the link
+ * @param elmtList list of all element to be linked to elmt1
+ * @param parent undo command
+ */
+unlinkElementsCommand::unlinkElementsCommand(Element *elmt1, QList<Element *> &elmtList, QUndoCommand *parent):
+	QUndoCommand(parent),
+	diagram_(elmt1->diagram()),
+	element_(elmt1),
+	elmt_list(elmtList)
+{
+	setText(QObject::tr("D\351lier %n \351l\351ment(s)", "", elmt_list.size()));
+}
+
+/**
  * @brief unlinkElementsCommand::~unlinkElementsCommand
  * destructor
  */
@@ -1230,6 +1268,7 @@ unlinkElementsCommand::~unlinkElementsCommand(){}
 void unlinkElementsCommand::undo() {
 	foreach (Element *elmt, elmt_list)
 		element_->linkToElement(elmt);
+	QUndoCommand::undo();
 }
 
 /**
@@ -1239,4 +1278,5 @@ void unlinkElementsCommand::undo() {
 void unlinkElementsCommand::redo() {
 	foreach (Element *elmt, elmt_list)
 		element_->unlinkElement(elmt);
+	QUndoCommand::redo();
 }

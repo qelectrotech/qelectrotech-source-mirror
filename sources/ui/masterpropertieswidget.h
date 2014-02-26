@@ -25,6 +25,12 @@ namespace Ui {
 	class MasterPropertiesWidget;
 }
 
+/**
+ * @brief The MasterPropertiesWidget class
+ * This class is a widget for make link between a master element with several slave element.
+ * This class embenddedthe undo/redo command when apply new connection.
+ */
+
 class MasterPropertiesWidget : public QWidget
 {
 	Q_OBJECT
@@ -33,16 +39,21 @@ class MasterPropertiesWidget : public QWidget
 	explicit MasterPropertiesWidget(Element *elmt, QWidget *parent = 0);
 	~MasterPropertiesWidget();
 
+	void apply();
+	void reset();
+
 	private:
 	void buildInterface();
 
 	private slots:
 	void on_link_button_clicked();
 	void on_unlink_button_clicked();
+	void showElementFromLWI(QListWidgetItem *lwi);
 
 	private:
 	Ui::MasterPropertiesWidget *ui;
 	Element *element_;
+	QHash <QListWidgetItem *, Element *> lwi_hash;
 };
 
 #endif // MASTERPROPERTIESWIDGET_H
