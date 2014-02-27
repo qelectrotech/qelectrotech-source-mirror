@@ -1716,12 +1716,12 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="78"/>
         <source>Select All</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleziona tutto</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="79"/>
         <source>De-Select All</source>
-        <translation type="unfinished"></translation>
+        <translation>De-seleziona tutto</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="141"/>
@@ -1916,7 +1916,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="106"/>
         <source>Ce report est déjà lié.</source>
-        <translation>Questo riferimento è già collegato</translation>
+        <translation>Questo riferimento è già collegato.</translation>
     </message>
     <message>
         <location filename="../sources/ui/folioreportproperties.cpp" line="107"/>
@@ -2450,39 +2450,39 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
         <source>Délier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
         <source>Lier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
         <source>Éléments disponibles</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
         <source>Éléments liés</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="118"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="132"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Senza titolo</translation>
+        <translation>Senza titolo</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="119"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="133"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished">Pagina  %1 (%2), Posizione %3.</translation>
+        <translation>Pagina  %1 (%2), Posizione %3.</translation>
     </message>
 </context>
 <context>
@@ -3632,17 +3632,17 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
         <source>Ajouter une liaison mecanique</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un collegamento meccanico</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
         <source>Ajouter une zone rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Disegna un rettangolo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
         <source>Ajouter une zone ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Disegna un ellisse</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
@@ -5389,7 +5389,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/diagramcommands.cpp" line="1168"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modifica il riferimento incrociato</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1169"/>
@@ -5400,7 +5400,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1181"/>
         <source>Editer les référence croisé</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifica il riferimento incrociato</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1240"/>
@@ -7115,7 +7115,7 @@ Lunghezza massima: %2px</translation>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Référence croisée (maitre)</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimento incrociato (master)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="138"/>
