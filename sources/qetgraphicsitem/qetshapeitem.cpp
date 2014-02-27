@@ -65,6 +65,7 @@ QPainterPath QetShapeItem::shape() const
 
 void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+	painter -> setRenderHint(QPainter::Antialiasing, false);
 	QRectF rec = boundingRect();
 	QPen pen(Qt::black);
 	if (isSelected())
