@@ -524,6 +524,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
 		return;
 	}
 	if (current_behavior == addingLine || current_behavior == addingRectangle || current_behavior == addingEllipse) {
+		newItem -> setFullyBuilt(true);
 		if (current_behavior == addingLine)
 			emit(LineAdded(false));
 		else if (current_behavior == addingRectangle)

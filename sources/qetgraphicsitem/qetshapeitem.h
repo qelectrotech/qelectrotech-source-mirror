@@ -21,6 +21,7 @@ class QetShapeItem : public QetGraphicsItem
 	ShapeType getType()		const	 { return _shapeType;	   }
 	void setBoundingRect(QRectF rec) { _boundingRect = rec;	   }
 	void setLineAngle(bool lineAngle){ _lineAngle = lineAngle; }
+	void setFullyBuilt(bool isBuilt);
 
 	private:
 	ShapeType    _shapeType;
@@ -28,12 +29,14 @@ class QetShapeItem : public QetGraphicsItem
 	QRectF       _boundingRect;
 	bool		 _lineAngle;  // false if line from topleft corner to bottomright corner
 							  // and true if line from topright corner to bottomleft corner
+	bool		 _isFullyBuilt;
 
 	virtual void editProperty() {}
 
 	protected:
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 	QRectF boundingRect() const;
+	QPainterPath shape() const;
 
 };
 
