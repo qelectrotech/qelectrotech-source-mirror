@@ -1,4 +1,4 @@
-<definition width="50" version="0.3" hotspot_x="7" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny"> link_type="slave">
+<definition width="50" version="0.3" hotspot_x="7" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny" link_type="slave">
     <names>
         <name lang="ar">مُلامس قدرة كونتكتور (NC)</name>
         <name lang="de">Leistungs Kontakt (NC)</name>
