@@ -705,61 +705,61 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Orijentacija za označeni tekst</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="562"/>
+        <location filename="../sources/diagramview.cpp" line="600"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="587"/>
+        <location filename="../sources/diagramview.cpp" line="625"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Svojstva sheme</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="901"/>
+        <location filename="../sources/diagramview.cpp" line="941"/>
         <source>Propriétés de la sélection</source>
         <translation>Odabir svojstva</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="903"/>
+        <location filename="../sources/diagramview.cpp" line="943"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Odabir sadrži %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="959"/>
+        <location filename="../sources/diagramview.cpp" line="999"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="956"/>
+        <location filename="../sources/diagramview.cpp" line="996"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Uredi svojstva vodiča</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1021"/>
+        <location filename="../sources/diagramview.cpp" line="1061"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Izaberi novu boju za ovaj vodič</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1183"/>
+        <location filename="../sources/diagramview.cpp" line="1223"/>
         <source>Selectionner une image...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1183"/>
+        <location filename="../sources/diagramview.cpp" line="1223"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1191"/>
+        <location filename="../sources/diagramview.cpp" line="1231"/>
         <source>Erreur</source>
         <translation type="unfinished">Greška</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1191"/>
+        <location filename="../sources/diagramview.cpp" line="1231"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1689,90 +1689,100 @@ Promjene su konačne.</translation>
         <translation>Izvoz</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="74"/>
+        <location filename="../sources/exportdialog.cpp" line="75"/>
         <source>Choisissez les schémas que vous désirez exporter ainsi que leurs dimensions :</source>
         <translation>Odaberi shemu koju želiš izvesti i odredi njenu veličinu:</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="128"/>
+        <location filename="../sources/exportdialog.cpp" line="78"/>
+        <source>Select All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="79"/>
+        <source>De-Select All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="141"/>
         <source>Schéma</source>
         <translation>Shema</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="129"/>
+        <location filename="../sources/exportdialog.cpp" line="142"/>
         <source>Nom de fichier</source>
         <translation>Ime datoteke</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="130"/>
+        <location filename="../sources/exportdialog.cpp" line="143"/>
         <source>Dimensions</source>
         <translation>Dimenzije</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="403"/>
+        <location filename="../sources/exportdialog.cpp" line="430"/>
         <source>Auteur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="404"/>
-        <location filename="../sources/exportdialog.cpp" line="832"/>
+        <location filename="../sources/exportdialog.cpp" line="431"/>
+        <location filename="../sources/exportdialog.cpp" line="859"/>
         <source>Titre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="405"/>
+        <location filename="../sources/exportdialog.cpp" line="432"/>
         <source>Folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="406"/>
+        <location filename="../sources/exportdialog.cpp" line="433"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="896"/>
+        <location filename="../sources/exportdialog.cpp" line="923"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>Ciljno ime datoteke</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="897"/>
+        <location filename="../sources/exportdialog.cpp" line="924"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
         <translation>Morate upisati jedinstveno ime za svaku shemu koju izvozite, praznina ne može biti ime.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="912"/>
+        <location filename="../sources/exportdialog.cpp" line="939"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="913"/>
+        <location filename="../sources/exportdialog.cpp" line="940"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>Morate odrediti putanju do datoteke u koju će biti spremljena slika datoteke.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="954"/>
+        <location filename="../sources/exportdialog.cpp" line="981"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>Ne mogu pisati u datoteku</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="956"/>
+        <location filename="../sources/exportdialog.cpp" line="983"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Izgleda da nemate potrebne dozvole za pisanjeu datoteku%1.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1072"/>
+        <location filename="../sources/exportdialog.cpp" line="1099"/>
         <source>Aperçu</source>
         <translation>Petpregled</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1174"/>
-        <location filename="../sources/exportdialog.cpp" line="1179"/>
+        <location filename="../sources/exportdialog.cpp" line="1201"/>
+        <location filename="../sources/exportdialog.cpp" line="1206"/>
         <source>px</source>
         <translation>px</translation>
     </message>
@@ -2429,6 +2439,46 @@ Promjene su konačne.</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="163"/>
         <source>longueur fin 2</source>
         <translation>kraj 2 dužine</translation>
+    </message>
+</context>
+<context>
+    <name>MasterPropertiesWidget</name>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
+        <source>Délier l&apos;élément séléctionné</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
+        <source>Lier l&apos;élément séléctionné</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
+        <source>Éléments disponibles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
+        <source>Éléments liés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="118"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="132"/>
+        <source>Sans titre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="119"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="133"/>
+        <source>Folio  %1 (%2), position %3.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3291,232 +3341,247 @@ Dostupne opcije:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
+        <source>Ajouter une liaison mecanique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
+        <source>Ajouter une zone rectangle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
+        <source>Ajouter une zone ellipse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="223"/>
         <source>Enlever une colonne</source>
         <translation>Ukloni stupac</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="224"/>
         <source>Ajouter une ligne</source>
         <translation>Dodaj red</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="225"/>
         <source>Enlever une ligne</source>
         <translation>Ukloni red</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="224"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Propriétés du projet</source>
         <translation>Svojstva projekta</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="225"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Ajouter un schéma</source>
         <translation>Dodaj shemu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
         <source>Supprimer le schéma</source>
         <translation>Obriši shemu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
         <source>Nettoyer le projet</source>
         <translation>Obriši projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
         <source>Annoter les schémas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="233"/>
         <source>Ajouter un sommaire</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="234"/>
         <source>Exporter une nomenclature (beta)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="233"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="236"/>
         <source>Zoom avant</source>
         <translation>Povećaj</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="234"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="237"/>
         <source>Zoom arrière</source>
         <translation>Smanji</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="235"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="238"/>
         <source>Zoom sur le contenu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="236"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="239"/>
         <source>Zoom adapté</source>
         <translation>Podesi povećanje</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="237"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="240"/>
         <source>Pas de zoom</source>
         <translation>Poništi povećanje</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="239"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="242"/>
         <source>en utilisant des onglets</source>
         <translation>koristi kartice</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="240"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="243"/>
         <source>en utilisant des fenêtres</source>
         <translation>koristi prozore</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="242"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="245"/>
         <source>Mode Selection</source>
         <translation>Način selekcije</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="243"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="246"/>
         <source>Mode Visualisation</source>
         <translation>Vrsta pogleda</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="245"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
         <source>&amp;Mosaïque</source>
         <translation>&amp;Mozaik</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="246"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
         <source>&amp;Cascade</source>
         <translation>&amp;Kaskada</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="247"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="250"/>
         <source>Projet suivant</source>
         <translation>Slijedeći projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="251"/>
         <source>Projet précédent</source>
         <translation>Prethodni projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="255"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="258"/>
         <source>Ctrl+Shift+I</source>
         <translation>Ctrl+Shift+A</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="256"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="259"/>
         <source>Ctrl+Shift+X</source>
         <translation>Ctrl+Shift+X</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="258"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="261"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="266"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="269"/>
         <source>Ctrl+Shift+A</source>
         <translation>Ctrl+Shift+A</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="270"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="271"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="274"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="274"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
         <source>Space</source>
         <translation>Razmak</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="275"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
         <source>Ctrl+Space</source>
         <translation>Ctrl+Razmaknica</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Ctrl+J</source>
         <translation>Ctrl+J</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
         <source>Ctrl+K</source>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="284"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="285"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="288"/>
         <source>Ctrl+8</source>
         <translation type="unfinished">Ctrl+8</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="286"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
         <source>Ctrl+9</source>
         <translation>Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="287"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
         <source>Crée un nouveau schéma</source>
         <comment>status bar tip</comment>
         <translation>Otvori novu shemu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="294"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="297"/>
         <source>Ouvre un schéma existant</source>
         <comment>status bar tip</comment>
         <translation>Otvori postojeću shemu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="295"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
         <source>Ferme le schéma courant</source>
         <comment>status bar tip</comment>
         <translation>Zatvori trenutnu shemu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="318"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="769"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="781"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="796"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation type="unfinished">Nemoguće otvoriti datoteku</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="771"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="783"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="798"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="810"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
         <translation type="unfinished">Otvori datoteku samo za čitanje</translation>
@@ -3532,385 +3597,385 @@ Dostupne opcije:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
         <source>Ctrl+E</source>
         <translation type="unfinished">Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
         <source>Enregistre le projet courant et tous ses schémas</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="297"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
         <source>Enregistre le project courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="301"/>
         <source>Enregistre le schéma courant du projet courant</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
         <source>Importe un schéma dans le schéma courant</source>
         <comment>status bar tip</comment>
         <translation>Uvezi shemu u trenutnu shemu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
         <source>Exporte le schéma courant dans un autre format</source>
         <comment>status bar tip</comment>
         <translation>Izvezi trenutnu shemu u drugi format</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="301"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
         <source>Imprime le schéma courant</source>
         <comment>status bar tip</comment>
         <translation>Tiskaj trenutnu shemu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Zatvori QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
         <source>Annule l&apos;action précédente</source>
         <comment>status bar tip</comment>
         <translation>Poništi prethodne akcije</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
         <translation>Vrati poništene akcije</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
         <source>Transfère les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Stavi odabrane elemente u međuspremnik</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
         <source>Copie les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Kopiraj odabrane elemente</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="311"/>
         <source>Place les éléments du presse-papier sur le schéma</source>
         <comment>status bar tip</comment>
         <translation>Zalijepi elemente iz međuspremnika u shemu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
         <source>Sélectionne tous les éléments du schéma</source>
         <comment>status bar tip</comment>
         <translation>Odaberi sve elemente na shemi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
         <source>Désélectionne tous les éléments du schéma</source>
         <comment>status bar tip</comment>
         <translation>Poništi odabir svih elemenata na shemi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="311"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
         <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Poništi odabir elemenata i odabei elemente koji nisu bili odabrani</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
         <source>Enlève les éléments sélectionnés du schéma</source>
         <comment>status bar tip</comment>
         <translation>Ukloni odabrane elemente sa sheme</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Okreni odabrani element i tekst</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
         <translation>Okreni odabrani tekst za određeni kut</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
         <source>Édite les propriétés des objets sélectionné</source>
         <comment>status bar tip</comment>
         <translation>Uredi svojstva odabranog elementa</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
         <translation>Vrati putanje vodiča ignorirajući korisničke promjene</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="318"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="321"/>
         <source>Édite les informations affichées par le cartouche</source>
         <comment>status bar tip</comment>
         <translation>Uredi ubačene informacije </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="322"/>
         <source>Ajoute une colonne au schéma</source>
         <comment>status bar tip</comment>
         <translation>Dodaj stupac shemi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
         <source>Enlève une colonne au schéma</source>
         <comment>status bar tip</comment>
         <translation>Ukloni stupac sa sheme</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="321"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="324"/>
         <source>Agrandit le schéma en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Razvuci shemu po visini</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="322"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
         <source>Rétrécit le schéma en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Stisni shemu po visini</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="324"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="327"/>
         <source>Agrandit le schéma</source>
         <comment>status bar tip</comment>
         <translation>Razvuci shemu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="328"/>
         <source>Rétrécit le schéma</source>
         <comment>status bar tip</comment>
         <translation>Stisni shemu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="329"/>
         <source>Adapte le zoom de façon à afficher tout le contenu indépendamment du cadre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="327"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="330"/>
         <source>Adapte la taille du schéma afin qu&apos;il soit entièrement visible</source>
         <comment>status bar tip</comment>
         <translation>Promijeni veličinu sheme tako da je vidljiva</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="328"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="331"/>
         <source>Restaure le zoom par défaut</source>
         <comment>status bar tip</comment>
         <translation>Vrati nivo temeljnog povećanja</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="330"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="333"/>
         <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
         <comment>status bar tip</comment>
         <translation>Prikaži otvorene projekte u prozorima</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="331"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
         <source>Présente les différents projets ouverts des onglets</source>
         <comment>status bar tip</comment>
         <translation>Prikaži otvorene projekte u karticama</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="333"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Permet de sélectionner les éléments</source>
         <comment>status bar tip</comment>
         <translation>Dozvoli odabir elemenata</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Permet de visualiser le schéma sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
         <translation>Dozvoli pregled sheme bez mijenjanja</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="339"/>
         <source>Dispose les fenêtres en mosaïque</source>
         <comment>status bar tip</comment>
         <translation>Složi prozore kao mozaik</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="340"/>
         <source>Dispose les fenêtres en cascade</source>
         <comment>status bar tip</comment>
         <translation>Složi prozore u kaskadu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="341"/>
         <source>Active le projet suivant</source>
         <comment>status bar tip</comment>
         <translation>Aktiviraj slijedeći projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="339"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="342"/>
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
         <translation>Aktiviraj prethodni projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="435"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="444"/>
         <source>&amp;Fichier</source>
         <translation>&amp;Datoteka</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="436"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="445"/>
         <source>&amp;Édition</source>
         <translation>&amp;Uredi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="437"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="446"/>
         <source>&amp;Projet</source>
         <translation>&amp;Projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="438"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="447"/>
         <source>Afficha&amp;ge</source>
         <translation>Ekr&amp;an</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="440"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="449"/>
         <source>Fe&amp;nêtres</source>
         <translation>Pro&amp;zor</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="510"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Prikaži ili sakrij glavnu alatnu traku</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="502"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
         <translation>Prikaži ili sakrij alatnu traku ekrana</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="503"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
         <translation>Prikaži ili sakrij alatnu traku sheme</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="504"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
         <translation>Ekran ili element van panela</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="505"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
         <source>Affiche ou non la liste des modifications</source>
         <translation>Prikaži ili sakrij listu vraćanja</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="508"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="517"/>
         <source>Afficher les projets</source>
         <translation>Prikaži projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="531"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="540"/>
         <source>Outils</source>
         <translation>Alati</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="534"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="543"/>
         <source>Affichage</source>
         <translation>Ekran</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="537"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
         <source>Schéma</source>
         <translation>Shema</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="682"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="694"/>
         <source>Ouvrir un fichier</source>
         <translation>Otvori datoteku</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="684"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="696"/>
         <source>Schémas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>QElectroTech sheme (*.qet);;XML Files (*.xml);;All files (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="785"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="797"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Datoteka koju pokušavate otvoriti nije čitljiva i ne može biti otvorena. Molim provjerite dozvole za datoteku.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Nije moguće upisivanje u projekt kojeg pokušavate otvoriti. Otvorit će se samo za čitanje.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="812"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="824"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Nemoguće otvoriti projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="826"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1223"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1228"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1240"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1233"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1245"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1239"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1251"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1415"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1427"/>
         <source>Active le projet « %1 »</source>
         <translation>Aktiviraj projekt &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1887"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1938"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Ne mogu pronaći element na ploči, izgleda da je uređivan iz drugog prozora</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1893"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1944"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Ne mogu pronaći element na ploči...ponovo učitavam ploču...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1905"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1956"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Ne mogu pronaći element na ploči</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1952"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2003"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation type="unfinished">Greška</translation>
@@ -5299,12 +5364,25 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1167"/>
+        <location filename="../sources/diagramcommands.cpp" line="1168"/>
+        <source>Editer les référence croisé</source>
+        <comment>edite the cross reference</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="1169"/>
+        <location filename="../sources/diagramcommands.cpp" line="1182"/>
         <source>Lier deux Ã©lÃ©ments</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="1181"/>
+        <source>Editer les référence croisé</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1217"/>
+        <location filename="../sources/diagramcommands.cpp" line="1240"/>
+        <location filename="../sources/diagramcommands.cpp" line="1255"/>
         <source>Délier %n élément(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -5462,32 +5540,32 @@ Que désirez vous faire ?</source>
         <translation>tekstualno polje</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1161"/>
+        <location filename="../sources/exportdialog.cpp" line="1188"/>
         <source>Schéma sans titre</source>
         <translation>Neimenovana shema</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1163"/>
+        <location filename="../sources/exportdialog.cpp" line="1190"/>
         <source>schema</source>
         <translation>shema</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1188"/>
+        <location filename="../sources/exportdialog.cpp" line="1215"/>
         <source>Conserver les proportions</source>
         <translation>Zadrži omjer</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1192"/>
+        <location filename="../sources/exportdialog.cpp" line="1219"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Poništi veličinu</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1196"/>
+        <location filename="../sources/exportdialog.cpp" line="1223"/>
         <source>Aperçu</source>
         <translation>Pretpregled</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1200"/>
+        <location filename="../sources/exportdialog.cpp" line="1227"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Izvezi u međuspremnik</translation>
     </message>
@@ -7016,80 +7094,85 @@ Najveća širina:%2px
 <context>
     <name>elementpropertieswidget</name>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="106"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="107"/>
         <source>Propriétés de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="108"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
+        <source>Référence croisée (maitre)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="138"/>
         <source>Général</source>
         <translation type="unfinished">Općenito</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="51"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="52"/>
         <source>Élément manquant</source>
         <translation type="unfinished">Element nedostaje</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="53"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="54"/>
         <source>Élément</source>
         <translation type="unfinished">Element</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="58"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="59"/>
         <source>Nom : %1
 </source>
         <translation type="unfinished">Naziv: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="61"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="62"/>
         <source>Folio : %1
 </source>
         <translation type="unfinished">Presaviti: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="63"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="64"/>
         <source>Position : %1
 </source>
         <translation type="unfinished">Pozicija: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="64"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="65"/>
         <source>Dimensions : %1×%2
 </source>
         <translation type="unfinished">Dimenzije: %1×%2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="65"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="66"/>
         <source>Bornes : %1
 </source>
         <translation type="unfinished">Priključci: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="66"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="67"/>
         <source>Champs de texte : %1
 </source>
         <translation type="unfinished">Prostor za tekst:%1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="69"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="70"/>
         <source>Emplacement : %1
 </source>
         <translation type="unfinished">Pozicija:%1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="87"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="88"/>
         <source>Retrouver dans le panel</source>
         <translation type="unfinished">Nađi na ploči</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="89"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="90"/>
         <source>Éditer l&apos;élément</source>
         <translation type="unfinished">Uredi element</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="114"/>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="128"/>
         <source>Information</source>
         <translation type="unfinished"></translation>
     </message>
