@@ -714,6 +714,7 @@ bool DiagramView::hasCopiableItems() {
 		if (
 			qgraphicsitem_cast<Element *>(qgi) ||
 			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
+			qgraphicsitem_cast<QetShapeItem *>(qgi) ||
 			qgraphicsitem_cast<DiagramImageItem *>(qgi)
 		) {
 			return(true);
@@ -732,6 +733,7 @@ bool DiagramView::hasDeletableItems() {
 			qgraphicsitem_cast<Element *>(qgi) ||
 			qgraphicsitem_cast<Conductor *>(qgi) ||
 			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
+			qgraphicsitem_cast<QetShapeItem *>(qgi) ||
 			qgraphicsitem_cast<DiagramImageItem *>(qgi)
 		) {
 			return(true);
