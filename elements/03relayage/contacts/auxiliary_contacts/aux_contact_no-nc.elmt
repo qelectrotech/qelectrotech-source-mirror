@@ -9,6 +9,12 @@
         <name lang="cs">Pomocné kontakty 4 x NO + NC</name>
     </names>
     <informations></informations>
+    <kindInformations>
+        <kindInformation name="state" show="1">NO + NC</kindInformation>
+        <kindInformation name="number" show="1">2</kindInformation>
+        <kindInformation name="type" show="1">Auxiliary</kindInformation>
+        <kindInformation name="tempoType" show="0"></kindInformation>
+    </kindInformations>
     <description>
         <input x="-3" y="16" size="4" text="62"/>
         <input x="-3" y="-16" size="4" text="61"/>

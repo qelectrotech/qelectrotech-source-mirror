@@ -13,6 +13,12 @@ norma: EN 60947-4-1
 załącznik: F
 
 licencja: zobacz  http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <kindInformations>
+        <kindInformation name="state" show="1">NC</kindInformation>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="type" show="1">Auxiliary</kindInformation>
+        <kindInformation name="tempoType" show="0"></kindInformation>
+    </kindInformations>
     <description>
         <input x="-23" y="16" size="4" text="22"/>
         <input x="-23" y="-16" size="4" text="21"/>

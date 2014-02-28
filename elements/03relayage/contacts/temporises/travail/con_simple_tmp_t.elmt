@@ -17,7 +17,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <kindInformations>
         <kindInformation name="state" show="1">NO</kindInformation>
         <kindInformation name="number" show="1">1</kindInformation>
-        <kindInformation name="type" show="1">relay</kindInformation>
+        <kindInformation name="type" show="1">delay</kindInformation>
         <kindInformation name="tempoType" show="1">work</kindInformation>
    </kindInformations>
     <description>
