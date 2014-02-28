@@ -33,6 +33,7 @@
 #include "qetgraphicsitem/ghostelement.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
+#include "qetgraphicsitem/qetshapeitem.h"
 #include "diagramfoliolist.h"
 
 /**
@@ -420,6 +421,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	QList<DiagramImageItem *> list_images;
 	QList<QLineF *> list_lines;
 	QList<QRectF *> list_rectangles;
+	QList<QRectF *> list_ellipses;
 
 	DiagramFolioList *ptr;
 	if (ptr = dynamic_cast<DiagramFolioList *>(diagram)) {
@@ -479,6 +481,14 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 				list_texts << iti;
 			} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
 				list_images << dii;
+			} else if (QetShapeItem *dii = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
+				if (dii -> getType() == QetShapeItem::Line && dii -> getLine()) {
+					list_lines << dii -> getLine();
+				} else if (dii -> getType() == QetShapeItem::Rectangle && dii -> getRectangle()) {
+					list_rectangles << dii -> getRectangle();
+				} else if (dii -> getEllipse()){
+					 list_ellipses << dii -> getEllipse();
+				}
 			}
 		}
 	}
@@ -499,6 +509,17 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		qreal w = rect -> width() * Createdxf::xScale;
 		qreal h = rect -> height() * Createdxf::yScale;
 		Createdxf::drawRectangle(file_path, x1, y1, w, h, 0);
+	}
+
+	//draw independent ellipses
+	foreach(QRectF *rect, list_ellipses) {
+		qreal x1 = (rect -> topLeft().x()) * Createdxf::xScale;
+		qreal y1 = Createdxf::sheetHeight - (rect -> topLeft().y()) * Createdxf::yScale;
+		qreal w = rect -> width() * Createdxf::xScale;
+		qreal h = rect -> height() * Createdxf::yScale;
+		qreal startAngle = 0;
+		qreal spanAngle = 360;
+		drawDxfArcEllipse(file_path, x1, y1, w, h, startAngle, spanAngle, 0, 0, 0);
 	}
 
 	//Draw elements
@@ -627,22 +648,6 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			qreal startAngle = arc -> at(4);
 			qreal spanAngle = arc -> at(5);
 			drawDxfArcEllipse(file_path, x, y, w, h, startAngle, spanAngle, hotspot_x, hotspot_y, rotation_angle);
-			/*
-			// approximate this to center_x, center_y, radius, start angle and end angle.
-			qreal center_x = x + w/2;
-			qreal center_y = y - w/2;
-			qreal radius = (w+h)/4;
-			qreal endAngle = startAngle + spanAngle;
-			QPointF transformed_point = rotation_transformed(center_x, center_y, hotspot_x, hotspot_y, rotation_angle);
-			center_x = transformed_point.x();
-			center_y = transformed_point.y();
-			if (startAngle == 0 && spanAngle == 360)
-				Createdxf::drawCircle(file_path, radius, center_x, center_y, 0);
-			else {
-				endAngle += rotation_angle;
-				startAngle += rotation_angle;
-				Createdxf::drawArc(file_path, center_x, center_y, radius, endAngle, startAngle, 0);
-			}*/
 		}
 	}
 

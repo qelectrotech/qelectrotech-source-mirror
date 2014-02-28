@@ -17,11 +17,14 @@ class QetShapeItem : public QetGraphicsItem
 	virtual ~QetShapeItem();
 
 	void setStyle(Qt::PenStyle);
-	Qt::PenStyle getStyle() const	 { return _shapeStyle;	   }
-	ShapeType getType()		const	 { return _shapeType;	   }
-	void setBoundingRect(QRectF rec) { _boundingRect = rec;	   }
-	void setLineAngle(bool lineAngle){ _lineAngle = lineAngle; }
+	Qt::PenStyle getStyle() const		{ return _shapeStyle;	   }
+	ShapeType getType()		const		{ return _shapeType;	   }
+	void setBoundingRect(QRectF rec)	{ _boundingRect = rec;	   }
+	void setLineAngle(bool lineAngle)	{ _lineAngle = lineAngle;  }
 	void setFullyBuilt(bool isBuilt);
+	QLineF *getLine();
+	QRectF *getRectangle();
+	QRectF *getEllipse();
 
 	private:
 	ShapeType    _shapeType;
@@ -30,6 +33,8 @@ class QetShapeItem : public QetGraphicsItem
 	bool		 _lineAngle;  // false if line from topleft corner to bottomright corner
 							  // and true if line from topright corner to bottomleft corner
 	bool		 _isFullyBuilt;
+	QPointF		 _lineP1;
+	QPointF		 _lineP2;
 
 	virtual void editProperty() {}
 

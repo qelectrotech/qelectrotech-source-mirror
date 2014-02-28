@@ -25,6 +25,37 @@ void QetShapeItem::setFullyBuilt(bool isBuilt)
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
 }
 
+QLineF *QetShapeItem::getLine()
+{
+	QRectF rect = boundingRect();
+	QLineF *line = 0;
+	if (_shapeType == Line) {
+		if (_lineAngle)
+			line = new QLineF(rect.topRight(), rect.bottomLeft());
+		else
+			line = new QLineF(rect.topLeft(), rect.bottomRight());
+	}
+	return line;
+}
+
+QRectF *QetShapeItem::getRectangle()
+{
+	QRectF rect = boundingRect();
+	QRectF *rec = 0;
+	if (_shapeType == Rectangle)
+		rec = new QRectF(rect);
+	return rec;
+}
+
+QRectF *QetShapeItem::getEllipse()
+{
+	QRectF rect = boundingRect();
+	QRectF *rec = 0;
+	if (_shapeType == Ellipse)
+		rec = new QRectF(rect);
+	return rec;
+}
+
 QRectF QetShapeItem::boundingRect() const
 {
 	return _boundingRect;
