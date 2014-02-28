@@ -138,6 +138,43 @@ void AddImageCommand::redo() {
 
 /**
 	Constructeur
+	@param dia Schema auquel on ajoute une shape
+	@param shape Shape ajoute
+	@param pos Position a laquelle l'shape est ajoute
+	@param parent QUndoCommand parent
+ */
+AddShapeCommand::AddShapeCommand(Diagram *dia, QetShapeItem *shape, const QPointF &pos, QUndoCommand *parent):
+	QUndoCommand(QObject::tr("Ajouter une Shape", "undo caption"), parent),
+	shapeitem(shape),
+	diagram(dia),
+	position(pos)
+{
+	diagram -> qgiManager().manage(shapeitem);
+}
+
+///Destructor
+AddShapeCommand::~AddShapeCommand() {
+	diagram -> qgiManager().release(shapeitem);
+}
+
+///Annule l'ajout
+void AddShapeCommand::undo() {
+	diagram -> showMe();
+	diagram -> removeItem(shapeitem);
+}
+
+///Refait l'ajout
+void AddShapeCommand::redo() {
+	diagram -> showMe();
+	if (shapeitem ->diagram() != diagram)
+		diagram -> addItem(shapeitem);
+	//diagram -> addDiagramImageItem(imageitem);
+	//imageitem -> setPos(position - imageitem -> boundingRect().center());
+}
+
+
+/**
+	Constructeur
 	@param d Schema auquel on ajoute un conducteur
 	@param c Conducteur ajoute
 	@param parent QUndoCommand parent

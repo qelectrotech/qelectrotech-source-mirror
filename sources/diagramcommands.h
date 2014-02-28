@@ -24,6 +24,7 @@
 #include "diagramcontent.h"
 #include "titleblockproperties.h"
 #include "qet.h"
+#include "qetgraphicsitem/qetshapeitem.h"
 class Diagram;
 class DiagramTextItem;
 class Element;
@@ -104,6 +105,34 @@ class AddImageCommand : public QUndoCommand {
 	private:
 	/// added image item
 	DiagramImageItem *imageitem;
+	/// diagram the image item is added to
+	Diagram *diagram;
+	/// position of the image item on the diagram
+	QPointF position;
+
+};
+
+
+/**
+  This command adds an image item to a particular diagram
+*/
+class AddShapeCommand : public QUndoCommand {
+	//constructors, destructor
+	public:
+	AddShapeCommand (Diagram *, QetShapeItem *, const QPointF &, QUndoCommand * = 0);
+	virtual ~AddShapeCommand();
+	private:
+	AddShapeCommand(const AddShapeCommand &);
+
+	//methods
+	public:
+	virtual void undo();
+	virtual void redo();
+
+	// attributes
+	private:
+	/// added shape item
+	QetShapeItem *shapeitem;
 	/// diagram the image item is added to
 	Diagram *diagram;
 	/// position of the image item on the diagram

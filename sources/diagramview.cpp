@@ -461,6 +461,9 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 				rubber_band_origin = mapToScene(e -> pos());
 				newItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Line, false);
 				scene -> addItem(newItem);
+				// le place a la position pos en gerant l'annulation
+				//scene -> undoStack().push(new AddShapeCommand(scene, newItem, e->pos));
+				//adjustSceneRect();
 				break;
 			case addingRectangle:
 				rubber_band_origin = mapToScene(e -> pos());
@@ -714,7 +717,7 @@ bool DiagramView::hasCopiableItems() {
 		if (
 			qgraphicsitem_cast<Element *>(qgi) ||
 			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
-			qgraphicsitem_cast<QetShapeItem *>(qgi) ||
+			dynamic_cast<QetShapeItem *>(qgi) ||
 			qgraphicsitem_cast<DiagramImageItem *>(qgi)
 		) {
 			return(true);
@@ -733,7 +736,7 @@ bool DiagramView::hasDeletableItems() {
 			qgraphicsitem_cast<Element *>(qgi) ||
 			qgraphicsitem_cast<Conductor *>(qgi) ||
 			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
-			qgraphicsitem_cast<QetShapeItem *>(qgi) ||
+			dynamic_cast<QetShapeItem *>(qgi) ||
 			qgraphicsitem_cast<DiagramImageItem *>(qgi)
 		) {
 			return(true);

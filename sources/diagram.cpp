@@ -32,6 +32,7 @@
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetapp.h"
 #include "qetgraphicsitem/diagramimageitem.h"
+#include "qetgraphicsitem/qetshapeitem.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -345,9 +346,12 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	QList<Conductor *> list_conductors;
 	QList<DiagramTextItem *> list_texts;
 	QList<DiagramImageItem *> list_images;
+	QList<QetShapeItem *> list_shapes;
 	
+	QList<QGraphicsItem *> list_items = items();
+	;
 	// Determine les elements a "XMLiser"
-	foreach(QGraphicsItem *qgi, items()) {
+	foreach(QGraphicsItem *qgi, list_items) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
 			if (whole_content) list_elements << elmt;
 			else if (elmt -> isSelected()) list_elements << elmt;
@@ -364,6 +368,9 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
 			if (whole_content) list_images << dii;
 			else if (dii -> isSelected()) list_images << dii;
+		} else if (QetShapeItem *dsi = dynamic_cast<QetShapeItem *>(qgi)) {
+			if (whole_content) list_shapes << dsi;
+			else if (dsi -> isSelected()) list_shapes << dsi;
 		}
 	}
 	
@@ -405,7 +412,17 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		}
 		racine.appendChild(images);
 	}
-	
+
+	// save of basic shapes
+	if (!list_shapes.isEmpty()) {
+		QDomElement shapes = document.createElement("shapes");
+		foreach (QetShapeItem *dii, list_shapes) {
+			dii ->setWritingXml(true);
+			shapes.appendChild(dii -> toXml(document));
+			dii ->setWritingXml(false);
+		}
+		racine.appendChild(shapes);
+	}
 	// on retourne le document XML ainsi genere
 	return(document);
 }
@@ -568,6 +585,14 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		addItem(dii);
 		added_images << dii;
 	}
+
+	QList<QetShapeItem *> added_shapes;
+	foreach (QDomElement shape_xml, QET::findInDomElement(root, "shapes", "shape")) {
+		QetShapeItem *dii = new QetShapeItem (QPointF(0,0));
+		dii -> fromXml(shape_xml);
+		addItem(dii);
+		added_shapes << dii;
+	}
 	
 	// gere la translation des nouveaux elements et texte si celle-ci est demandee
 	if (position != QPointF()) {
@@ -578,6 +603,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		foreach (Element *added_element, added_elements) added_items << added_element;
 		foreach (DiagramTextItem *added_text, added_texts) added_items << added_text;
 		foreach (DiagramImageItem *added_image, added_images) added_items << added_image;
+		foreach (QetShapeItem *added_shape, added_shapes) added_items << added_shape;
 		foreach (QGraphicsItem *item, added_items) {
 			QPointF csg = item -> mapToScene(item -> boundingRect()).boundingRect().topLeft();
 			qreal px = csg.x();
@@ -601,6 +627,9 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 		foreach (DiagramImageItem *added_image, added_images) {
 			added_image -> setPos(added_image -> pos().x() + diff_x, added_image -> pos().y() + diff_y);
+		}
+		foreach (QetShapeItem *added_shape, added_shapes) {
+			added_shape -> setPos(added_shape -> pos().x() + diff_x, added_shape -> pos().y() + diff_y);
 		}
 	}
 	
@@ -638,6 +667,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		content_ptr -> conductorsToMove = added_conductors.toSet();
 		content_ptr -> textFields       = added_texts.toSet();
 		content_ptr -> images			= added_images.toSet();
+		content_ptr -> shapes			= added_shapes.toSet();
 	}
 	
 	return(true);

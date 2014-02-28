@@ -8,12 +8,12 @@ class QetShapeItem : public QetGraphicsItem
 	public:
 
 	enum ShapeType {
-		Line,
+		Line = 0,
 		Rectangle,
 		Ellipse
 	};
 
-	QetShapeItem(QPointF, QPointF, ShapeType, bool lineAngle = false, QGraphicsItem *parent = 0);
+	QetShapeItem(QPointF, QPointF = QPointF(0,0), ShapeType = Line, bool lineAngle = false, QGraphicsItem *parent = 0);
 	virtual ~QetShapeItem();
 
 	void setStyle(Qt::PenStyle);
@@ -25,6 +25,9 @@ class QetShapeItem : public QetGraphicsItem
 	QLineF *getLine();
 	QRectF *getRectangle();
 	QRectF *getEllipse();
+	virtual bool fromXml(const QDomElement &);
+	virtual QDomElement toXml(QDomDocument &document) const;
+	void setWritingXml(bool writing)	{ _writingXml = writing;   }
 
 	private:
 	ShapeType    _shapeType;
@@ -35,6 +38,7 @@ class QetShapeItem : public QetGraphicsItem
 	bool		 _isFullyBuilt;
 	QPointF		 _lineP1;
 	QPointF		 _lineP2;
+	bool		_writingXml;
 
 	virtual void editProperty() {}
 

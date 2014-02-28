@@ -18,10 +18,12 @@
 #ifndef DIAGRAM_CONTENT_H
 #define DIAGRAM_CONTENT_H
 #include <QtGui>
+#include "qetgraphicsitem/qetshapeitem.h"
 class Conductor;
 class Element;
 class IndependentTextItem;
 class DiagramImageItem;
+
 /**
 	This class provides a container that makes the transmission of diagram content
 	to other functions/methods easier. The different kind of items are made
@@ -47,7 +49,8 @@ class DiagramContent {
 		OtherConductors = 32,
 		AnyConductor = 56,
 		All = 63,
-		SelectedOnly = 64
+		SelectedOnly = 64,
+		Shapes = 128
 	};
 	
 	/// Hold electrical elements
@@ -56,6 +59,8 @@ class DiagramContent {
 	QSet<IndependentTextItem *> textFields;
 	/// Hold image
 	QSet<DiagramImageItem *> images;
+	/// Hold shape
+	QSet<QetShapeItem *> shapes;
 	/// Hold conductors that would get updated considering electrical elements are moved
 	QSet<Conductor *> conductorsToUpdate;
 	/// Hold conductors that would be moved as is considering electrical elements are moved

@@ -481,7 +481,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 				list_texts << iti;
 			} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
 				list_images << dii;
-			} else if (QetShapeItem *dii = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
+			} else if (QetShapeItem *dii = dynamic_cast<QetShapeItem *>(qgi)) {
 				if (dii -> getType() == QetShapeItem::Line && dii -> getLine()) {
 					list_lines << dii -> getLine();
 				} else if (dii -> getType() == QetShapeItem::Rectangle && dii -> getRectangle()) {

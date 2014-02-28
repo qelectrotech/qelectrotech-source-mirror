@@ -201,7 +201,7 @@ bool QET::attributeIsAReal(const QDomElement &e, QString nom_attribut, qreal *re
 	@return la proposition decrivant le nombre d'elements, de conducteurs et de
 	textes
 */
-QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count, int texts_count, int images_count) {
+QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count, int texts_count, int images_count, int shapes_count) {
 	QString text;
 	if (elements_count) {
 		text += QObject::tr(
@@ -268,6 +268,14 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 			"%n image(s)",
 			"part of a sentence listing the content of a diagram",
 			images_count
+		);
+	}
+
+	if (shapes_count) {
+		text += QObject::tr(
+			"%n image(s)",
+			"part of a sentence listing the content of a diagram",
+			shapes_count
 		);
 	}
 	return(text);
