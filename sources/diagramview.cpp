@@ -461,9 +461,6 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 				rubber_band_origin = mapToScene(e -> pos());
 				newItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Line, false);
 				scene -> addItem(newItem);
-				// le place a la position pos en gerant l'annulation
-				//scene -> undoStack().push(new AddShapeCommand(scene, newItem, e->pos));
-				//adjustSceneRect();
 				break;
 			case addingRectangle:
 				rubber_band_origin = mapToScene(e -> pos());
@@ -528,6 +525,9 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
 	}
 	if (current_behavior == addingLine || current_behavior == addingRectangle || current_behavior == addingEllipse) {
 		newItem -> setFullyBuilt(true);
+		// le place a la position pos en gerant l'annulation
+		scene -> undoStack().push(new AddShapeCommand(scene, newItem, rubber_band_origin));
+		adjustSceneRect();
 		if (current_behavior == addingLine)
 			emit(LineAdded(false));
 		else if (current_behavior == addingRectangle)
