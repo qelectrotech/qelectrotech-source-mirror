@@ -4049,7 +4049,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="154"/>
         <source>Ajouter une ligne</source>
-        <translation>Aggiungi una linea</translation>
+        <translation>Disegna una linea</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="156"/>
