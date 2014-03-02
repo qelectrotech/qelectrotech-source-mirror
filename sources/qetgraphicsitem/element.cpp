@@ -398,8 +398,6 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 
 	//load informations
 	element_informations_.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
-	//load kind informations
-	kind_informations_.fromXml(e.firstChildElement("kindInformations"), "kindInformation");
 
 	// position, selection
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
@@ -487,14 +485,6 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		element.appendChild(infos);
 	}
 
-	//save kind_informations of this element
-	if (! kind_informations_.keys().isEmpty()) {
-		QDomElement kind_infos = document.createElement("kindInformations");
-		kind_informations_.toXml(kind_infos, "kindInformation");
-		element.appendChild(kind_infos);
-	}
-
-	
 	return(element);
 }
 

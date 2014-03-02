@@ -161,6 +161,9 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 	// extrait les noms de la definition XML
 	names.fromXml(xml_def_elmt);
 	setToolTip(name());
+
+	//load kind informations
+	kind_informations_.fromXml(xml_def_elmt.firstChildElement("kindInformations"), "kindInformation");
 	
 	// parcours des enfants de la definition : parties du dessin
 	int parsed_elements_count = 0;
