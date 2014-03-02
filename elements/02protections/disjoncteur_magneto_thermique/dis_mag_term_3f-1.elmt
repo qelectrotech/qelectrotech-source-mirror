@@ -9,7 +9,8 @@
         <name lang="pl">Wyłącznik silnikowy</name>
         <name lang="cs">Magnetotepelný jistič</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="24" y="-40" size="4" text="5&#xa;L3"/>
         <text x="24" y="39" size="4" text="6&#xa;T3"/>

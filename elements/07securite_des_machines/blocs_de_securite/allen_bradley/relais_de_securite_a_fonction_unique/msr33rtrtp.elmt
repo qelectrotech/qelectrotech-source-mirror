@@ -7,7 +7,8 @@
         <name lang="es">msr33rt/rtp</name>
         <name lang="cs">MSR33RT/RTP</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="28" x1="147" y2="28" x2="150" y3="40" x3="150"/>
         <polygon antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="28" x1="117" y2="28" x2="120" y3="40" x3="120"/>

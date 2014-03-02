@@ -8,7 +8,8 @@
         <name lang="es">XPS-AK</name>
         <name lang="it">XPS-AK</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="37" x1="280" y2="37" x2="290" y3="30" x3="297"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="58" x1="264" y2="58" x2="318"/>

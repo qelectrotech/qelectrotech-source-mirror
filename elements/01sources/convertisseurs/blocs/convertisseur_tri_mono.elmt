@@ -7,7 +7,8 @@
         <name lang="cs">Měnič třífázový/jednofázový proud</name>
         <name lang="it">Convertitore AC trifase / AC monofase</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="40" x="-20" y="-30" antialias="false" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <arc width="5" x="11.5" y="10.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-175"/>

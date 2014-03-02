@@ -10,7 +10,8 @@
         <name lang="es">msr178dp</name>
         <name lang="cs">msr178dp</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-30" x1="180" y2="4" x2="180" y3="4" x3="150"/>
         <text x="-177" y="-18" size="5" rotation="270" text="A3"/>

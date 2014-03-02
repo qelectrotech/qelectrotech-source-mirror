@@ -7,7 +7,8 @@
         <name lang="es">Autotransformador monofásico regulable</name>
         <name lang="cs">Jednofázový autotransformátor, nastavitelný (forma 1)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.05" x1="-5.05" y2="-34.05" x2="4.95"/>

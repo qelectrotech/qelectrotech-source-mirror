@@ -7,7 +7,8 @@
         <name lang="es">msr142rtp</name>
         <name lang="cs">MSR142RTP</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="268" y="38" size="5" rotation="270" text="74"/>
         <text x="328" y="-15" size="5" rotation="270" text="111"/>

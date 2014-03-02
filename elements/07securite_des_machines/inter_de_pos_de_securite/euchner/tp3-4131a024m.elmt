@@ -9,7 +9,8 @@
         <name lang="es">TP3-4131A024M</name>
         <name lang="cs">TP3-4131A024M</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="95" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" closed="false" y1="10" x1="90" y2="6" x2="90" y3="6" x3="95" y4="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="113" y2="48" x2="127"/>

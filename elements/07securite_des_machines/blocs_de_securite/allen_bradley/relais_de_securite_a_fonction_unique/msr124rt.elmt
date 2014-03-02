@@ -8,7 +8,8 @@
         <name lang="es">msr124rt</name>
         <name lang="cs">MSR124RT</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-148" y="36" size="5" rotation="270" text="A4-"/>
         <text x="118" y="-17" size="5" rotation="270" text="43"/>

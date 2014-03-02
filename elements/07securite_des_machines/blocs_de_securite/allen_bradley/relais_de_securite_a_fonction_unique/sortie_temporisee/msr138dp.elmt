@@ -10,7 +10,8 @@
         <name lang="es">msr138dp</name>
         <name lang="cs">msr138dp</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-178" y="-15" size="5" rotation="270" text="S11"/>
         <text x="-238" y="38" size="5" rotation="270" text="A2"/>

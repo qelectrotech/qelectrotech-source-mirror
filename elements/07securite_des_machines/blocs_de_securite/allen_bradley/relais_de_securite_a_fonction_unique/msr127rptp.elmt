@@ -7,7 +7,8 @@
         <name lang="es">msr127rp/tp</name>
         <name lang="cs">MSR127RP/TP</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-57" y="37" size="5" rotation="270" text="S21"/>
         <text x="-28" y="-15" size="5" rotation="270" text="S11"/>

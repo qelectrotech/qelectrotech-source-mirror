@@ -6,7 +6,8 @@
         <name lang="pl">Przekładnik (forma 1)</name>
         <name lang="cs">Transformátor impulsu nebo proudu, se třemi primárními křížícími se vodiči (forma 2)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.95" x1="-5.05" y2="-2.05" x2="4.95"/>
         <input x="6" y="-16" size="9" rotate="true" text="_"/>

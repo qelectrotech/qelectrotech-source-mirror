@@ -6,7 +6,8 @@
         <name lang="pl">Autotransformator regulacyjny (forma 2)</name>
         <name lang="cs">Autotransformátor, nastavitelný (forma 2)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="2" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-9" x1="2" y2="-6" x2="5" y3="-12" x3="8" y4="-9"/>
         <arc width="5" x="5" y="-7.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>

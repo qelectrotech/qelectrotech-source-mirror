@@ -7,7 +7,8 @@
         <name lang="es">msr30rt/rtp</name>
         <name lang="cs">MSR30RT/RTP</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="128" y="38" size="5" rotation="270" text="24"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20" x1="147" y2="30" x2="147"/>

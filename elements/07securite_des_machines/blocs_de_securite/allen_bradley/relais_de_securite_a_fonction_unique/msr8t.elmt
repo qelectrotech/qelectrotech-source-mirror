@@ -7,7 +7,8 @@
         <name lang="es">msr8t</name>
         <name lang="cs">MSR8T</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="118" y="-21" size="5" rotation="270" text="51"/>
         <text x="-58" y="-13" size="5" rotation="270" text="S13"/>

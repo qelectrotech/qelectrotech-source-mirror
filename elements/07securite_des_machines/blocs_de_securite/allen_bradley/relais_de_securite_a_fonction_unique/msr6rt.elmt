@@ -7,7 +7,8 @@
         <name lang="es">msr6r/t</name>
         <name lang="cs">MSR6R/T</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-58" y="36" size="5" rotation="270" text="S13"/>
         <text x="-28" y="-12" size="5" rotation="270" text="S24"/>

@@ -8,7 +8,8 @@
         <name lang="pl">Rozruch silnika TeSys</name>
         <name lang="cs">Spuštění motoru TeSys</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="70" x="7" y="19" antialias="false" height="16" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
         <rect width="65" x="9" y="22" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

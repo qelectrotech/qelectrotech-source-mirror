@@ -8,7 +8,8 @@
         <name lang="pl">Sygnalizator świetlny napędzany silnikiem</name>
         <name lang="cs">Blikající světlo</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="7" y="2" size="6" text="M"/>
         <circle x="3" y="-8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="16"/>

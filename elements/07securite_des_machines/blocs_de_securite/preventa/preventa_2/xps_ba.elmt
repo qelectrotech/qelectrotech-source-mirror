@@ -8,7 +8,8 @@
         <name lang="es">XPS-BA</name>
         <name lang="it">XPS-BA</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-55" y="14.5" size="9" rotate="true" text="XPS-BA"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-25" x1="60" y2="0" x2="60" y3="21" x3="55"/>

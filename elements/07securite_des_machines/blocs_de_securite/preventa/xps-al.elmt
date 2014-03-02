@@ -8,7 +8,8 @@
         <name lang="es">XPS-AL</name>
         <name lang="it">XPS-AL</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="15" x="73.5" y="55.5" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="15" x="29" y="56" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

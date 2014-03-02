@@ -5,7 +5,8 @@
         <name lang="pl">Autotransformator trójfazowy skojarzony w gwiazdę (forma 2)</name>
         <name lang="cs">Třífázový autotransformátor Y, spojený do hvězdy (forma 2)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="5" x="-12.5" y="-10" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <arc width="5" x="-32.5" y="-10" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>

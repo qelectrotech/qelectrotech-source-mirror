@@ -9,7 +9,8 @@
         <name lang="cs">Usměrňovač - jednofázový střídavý proud &gt; stejnosměrný proud</name>
         <name lang="it">AC monofase &gt; DC</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-13" y="0" size="5" text="N"/>
         <text x="-13" y="-7.6666" size="5" text="L"/>

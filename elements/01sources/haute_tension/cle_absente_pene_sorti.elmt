@@ -7,7 +7,8 @@
         <name lang="ar">المفتاح مفقود غير مصرّح بالدخول</name>
         <name lang="it">Chiave assente, manovra bloccata</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="22" x="18" y="-4" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:black;color:black"/>

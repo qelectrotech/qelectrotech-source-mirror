@@ -7,7 +7,8 @@
         <name lang="ar">المفتاح مُتاح يُسمح بالدخول</name>
         <name lang="it">Chiave libera, manovra libera</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-8" y2="8" x2="9"/>
         <rect width="4" x="19" y="-8" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:black;color:black"/>

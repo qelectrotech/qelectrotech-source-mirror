@@ -9,7 +9,8 @@
         <name lang="es">PSEN 1.1p-10</name>
         <name lang="cs">PSEN 1.1p-10</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="32" y="40" size="5" text="1"/>
         <text x="92" y="40" size="5" text="4"/>

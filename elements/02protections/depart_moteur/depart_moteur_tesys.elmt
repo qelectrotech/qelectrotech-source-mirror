@@ -8,7 +8,8 @@
         <name lang="pl">Rozruch silnika</name>
         <name lang="cs">Spuštění motoru</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="70" x="9" y="22" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="10" y="32" size="5" rotate="true" text="unité de controle"/>

@@ -6,7 +6,8 @@
         <name lang="pl">Przekładnik (forma 2)</name>
         <name lang="cs">Transformátor proudu, dvě jádra s jedním sekundárním vinutím na každém jádru (forma 2)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="5" x="-2.5" y="-15" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
         <arc width="5" x="-2.5" y="5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>

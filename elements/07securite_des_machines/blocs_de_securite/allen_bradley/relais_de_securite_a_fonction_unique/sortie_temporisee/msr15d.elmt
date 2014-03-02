@@ -10,7 +10,8 @@
         <name lang="es">msr15d</name>
         <name lang="cs">msr15d</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="183" y="58" size="5" rotation="270" text="X2"/>
         <polygon x4="183" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="-32" x1="183" y2="-32" x2="200" y3="62" x3="200" y4="62"/>

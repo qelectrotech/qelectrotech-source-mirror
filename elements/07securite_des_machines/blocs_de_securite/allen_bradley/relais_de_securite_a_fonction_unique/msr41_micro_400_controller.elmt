@@ -7,7 +7,8 @@
         <name lang="es">msr41 micro 400 controlador</name>
         <name lang="cs">MSR41 Micro 400 Controller</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="90" y5="150" x5="2" y6="123" x6="2" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="-22" x1="2" y2="-50" x2="2" y3="-50" x3="90" y4="150"/>
         <text x="47" y="135" size="6" text="Micro 400"/>
