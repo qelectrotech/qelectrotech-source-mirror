@@ -368,7 +368,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
 			if (whole_content) list_images << dii;
 			else if (dii -> isSelected()) list_images << dii;
-		} else if (QetShapeItem *dsi = dynamic_cast<QetShapeItem *>(qgi)) {
+		} else if (QetShapeItem *dsi = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
 			if (whole_content) list_shapes << dsi;
 			else if (dsi -> isSelected()) list_shapes << dsi;
 		}

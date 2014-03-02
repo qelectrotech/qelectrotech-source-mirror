@@ -16,6 +16,19 @@ class QetShapeItem : public QetGraphicsItem
 	QetShapeItem(QPointF, QPointF = QPointF(0,0), ShapeType = Line, bool lineAngle = false, QGraphicsItem *parent = 0);
 	virtual ~QetShapeItem();
 
+	// attributes
+	public:
+	enum { Type = UserType + 1008 };
+
+	// methods
+	public:
+	/**
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		QetShapeItem
+		@return the QGraphicsItem type
+	*/
+	virtual int type() const { return Type; }
+
 	void setStyle(Qt::PenStyle);
 	Qt::PenStyle getStyle() const		{ return _shapeStyle;	   }
 	ShapeType getType()		const		{ return _shapeType;	   }
