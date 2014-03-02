@@ -1,11 +1,12 @@
-<definition width="110" version="0.3" hotspot_x="55" hotspot_y="40" height="80" type="element" orientation="dyyy">
+<definition width="90" version="0.4" hotspot_x="45" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">مُبادل ماء - زيت</name>
+        <name lang="el">Εναλλάκτης νερού λαδιού</name>
         <name lang="en">Water oil exchanger</name>
+        <name lang="it">Scambiatore acqua/olio</name>
         <name lang="fr">Echangeur Eau-Huile</name>
         <name lang="pl">Wodno-olejowy wymiennik ciepła</name>
         <name lang="cs">Výměník voda olej</name>
-        <name lang="ar">مُبادل ماء - زيت</name>
-        <name lang="it">Scambiatore acqua/olio</name>
     </names>
     <informations></informations>
     <description>
@@ -16,7 +17,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="39.9375" y2="0" x2="29.6719"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-40.0781" y2="0" x2="-30.6562"/>
         <polygon x4="29.9092" y5="-29.9004" x5="0.0966" y6="-29.9004" x6="0.0966" y7="-29.9004" x7="0.0966" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.041" x1="0.0966" y2="0.0527" x2="-29.9971" y3="30.0059" x3="-0.0439" y4="0.0527"/>
-        <terminal x="-40.1836" y="0" orientation="w"/>
-        <terminal x="39.9727" y="0" orientation="e"/>
+        <terminal x="-40.1836" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="39.9727" y="0" nameHidden="0" number="" name="" orientation="e"/>
     </description>
 </definition>

@@ -1,11 +1,12 @@
-<definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element" orientation="dyyy">
+<definition width="20" version="0.4" hotspot_x="9" hotspot_y="5" height="20" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">زمبرك</name>
+        <name lang="el">Ελατήριο</name>
         <name lang="en">Spring</name>
+        <name lang="it">Molla Dx</name>
         <name lang="fr">Ressort</name>
         <name lang="pl">Sprężyna (strona prawa)</name>
         <name lang="cs">Pružina (pravá strana)</name>
-        <name lang="ar">زمبرك</name>
-        <name lang="it">Molla Dx</name>
     </names>
     <informations></informations>
     <description>

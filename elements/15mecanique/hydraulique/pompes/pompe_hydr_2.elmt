@@ -1,11 +1,12 @@
-<definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="7" hotspot_y="35" height="60" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">مضخّة هيدروليكية 2</name>
+        <name lang="el">Υδραυλική αντλία 2</name>
         <name lang="en">Hydraulic pump 2</name>
+        <name lang="it">Pompa idraulica 2</name>
         <name lang="fr">Pompe hydraulique 2</name>
         <name lang="pl">Pompa hydrauliczna</name>
         <name lang="cs">Vodní čerpadlo 2</name>
-        <name lang="ar">مضخّة هيدروليكية 2</name>
-        <name lang="it">Pompa idraulica 2</name>
     </names>
     <informations></informations>
     <description>
@@ -15,7 +16,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="25" y2="-4" x2="40"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="25" y2="-6" x2="40"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="-20" x2="10"/>
-        <terminal x="10" y="-30" orientation="n"/>
-        <terminal x="10" y="20" orientation="s"/>
+        <terminal x="10" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="20" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

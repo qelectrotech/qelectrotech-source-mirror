@@ -1,14 +1,15 @@
-<definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element" orientation="dyyy">
+<definition width="20" version="0.4" hotspot_x="1" hotspot_y="5" height="20" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">زمبرك تمركز</name>
+        <name lang="el">Ελατήριο</name>
         <name lang="en">Spring</name>
+        <name lang="it">Molla Sx</name>
         <name lang="fr">Ressort de centrage</name>
         <name lang="pl">Sprężyna (strona lewa)</name>
         <name lang="cs">Pružina (levá strana)</name>
-        <name lang="ar">زمبرك تمركز</name>
-        <name lang="it">Molla Sx</name>
     </names>
     <informations></informations>
     <description>
-        <polygon x4="-1" y5="9" x5="1" y6="1" x6="3" y7="6" x7="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6" x1="-7" y2="1" x2="-5" y3="9" x3="-3" y4="1"/>
+        <polygon x4="9" y5="9" x5="11" y6="1" x6="13" y7="6" x7="15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6" x1="3" y2="1" x2="5" y3="9" x3="7" y4="1"/>
     </description>
 </definition>

@@ -1,11 +1,12 @@
-<definition width="30" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="21" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">دوّاسة</name>
+        <name lang="el">Ποδόπληκτρο</name>
         <name lang="en">Pedal</name>
+        <name lang="it">pedale</name>
         <name lang="fr">Pédale</name>
         <name lang="pl">Pedał</name>
         <name lang="cs">Pedál</name>
-        <name lang="ar">دوّاسة</name>
-        <name lang="it">pedale</name>
     </names>
     <informations></informations>
     <description>

@@ -1,11 +1,12 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="60" type="element" orientation="dnnn">
+<definition width="50" version="0.4" hotspot_x="15" hotspot_y="22" height="60" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">صمّام بثلاث مسارات - تحكّم كهرومغناطيسي</name>
+        <name lang="el">Τρίοδη Βαλβίδα - Ηλεκτρομαγνητικός έλεγχος</name>
         <name lang="en">Three-way valve-control electromagnetic</name>
+        <name lang="it">Elettrovalvola 3vie</name>
         <name lang="fr">Vanne trois voies- commande électromagnétique</name>
         <name lang="pl">Zawór trójdrogowy sterowany elektromagnetycznie</name>
         <name lang="cs">Trojcestná klapka řízená elektromagnetem</name>
-        <name lang="ar">صمّام بثلاث مسارات - تحكّم كهرومغناطيسي</name>
-        <name lang="it">Elettrovalvola 3vie</name>
     </names>
     <informations></informations>
     <description>
@@ -19,8 +20,8 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="10" x2="30"/>
         <polygon x4="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="20" y2="10" x2="10" y3="4" x3="20" y4="16"/>
         <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="0" y2="16" x2="0" y3="10" x3="10" y4="4"/>
-        <terminal x="30" y="10" orientation="e"/>
-        <terminal x="-10" y="10" orientation="w"/>
-        <terminal x="10" y="30" orientation="s"/>
+        <terminal x="30" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-10" y="10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="10" y="30" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

@@ -1,11 +1,12 @@
-<definition width="70" version="0.3" hotspot_x="40" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="35" hotspot_y="23" height="40" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">محرّك كهربائي</name>
+        <name lang="el">Ηλεκτρικός κινητήρας</name>
         <name lang="en">Electric motor</name>
+        <name lang="it">Motore elettrico</name>
         <name lang="fr">Moteur electrique</name>
         <name lang="pl">Silnik elektryczny</name>
         <name lang="cs">Elektrický motor</name>
-        <name lang="ar">محرّك كهربائي</name>
-        <name lang="it">Motore elettrico</name>
     </names>
     <informations></informations>
     <description>

@@ -1,11 +1,12 @@
-<definition width="90" version="0.3" hotspot_x="45" hotspot_y="20" height="50" type="element" orientation="dyyy">
+<definition width="80" version="0.4" hotspot_x="40" hotspot_y="14" height="40" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">اسطوانة غير متماثلة مزدوج الفعل مع قضيب مُوجّه لليمين</name>
+        <name lang="el">Έμβολο διπλής ενεργείας, δεξιά</name>
         <name lang="en">Double acting cylinders right</name>
+        <name lang="it">Pistone a doppia azione Dx</name>
         <name lang="fr">Vérin assymétrique double effet tige orientée à droite</name>
         <name lang="pl">Siłownik asymetryczny podwójnego działania</name>
         <name lang="cs">Dvojčinný nesouměrný válec, osa natočená vpravo</name>
-        <name lang="ar">اسطوانة غير متماثلة مزدوج الفعل مع قضيب مُوجّه لليمين</name>
-        <name lang="it">Pistone a doppia azione Dx</name>
     </names>
     <informations></informations>
     <description>
@@ -14,7 +15,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-30" y2="20" x2="-30"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-25" y2="10" x2="-25"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-25" y2="0" x2="35"/>
-        <terminal x="20" y="20" orientation="s"/>
-        <terminal x="-30" y="20" orientation="s"/>
+        <terminal x="20" y="20" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-30" y="20" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

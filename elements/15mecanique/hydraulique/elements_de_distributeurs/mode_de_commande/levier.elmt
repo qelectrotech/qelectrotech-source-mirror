@@ -1,11 +1,12 @@
-<definition width="30" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="20" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">رافعة</name>
+        <name lang="el">Μοχλός</name>
         <name lang="en">Lever</name>
+        <name lang="it">Comando a leva</name>
         <name lang="fr">Levier</name>
         <name lang="pl">Dźwignia</name>
         <name lang="cs">Páka</name>
-        <name lang="ar">رافعة</name>
-        <name lang="it">Comando a leva</name>
     </names>
     <informations></informations>
     <description>

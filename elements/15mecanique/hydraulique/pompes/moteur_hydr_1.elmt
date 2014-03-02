@@ -1,11 +1,12 @@
-<definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="80" version="0.4" hotspot_x="14" hotspot_y="35" height="60" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">مُحرّك هيدروليكي</name>
+        <name lang="el">Υδραυλικός κινητήρας 1</name>
         <name lang="en">Hydraulic motor 1</name>
+        <name lang="it">Motore idraulico 1</name>
         <name lang="fr">Moteur hydraulique 1</name>
         <name lang="pl">Silnik hydrauliczny o zmiennym kierunku przepływu, o zmiennej objętości roboczej i o dwóch kierunkach obrotów</name>
         <name lang="cs">Vodní motor 1</name>
-        <name lang="ar">مُحرّك هيدروليكي</name>
-        <name lang="it">Motore idraulico 1</name>
     </names>
     <informations></informations>
     <description>
@@ -21,7 +22,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="25" y2="-4" x2="40"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="25" y2="-6" x2="40"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="-20" x2="10"/>
-        <terminal x="10" y="-30" orientation="n"/>
-        <terminal x="10" y="20" orientation="s"/>
+        <terminal x="10" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="20" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

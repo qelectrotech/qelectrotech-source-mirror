@@ -1,11 +1,12 @@
-<definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="120" version="0.4" hotspot_x="14" hotspot_y="30" height="50" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">نقل هيدروليكي</name>
+        <name lang="el">Υδραυλική μετάδοση</name>
         <name lang="en">Hydraulic transmission</name>
+        <name lang="it">Trasmissione idraulica</name>
         <name lang="fr">Transmission hydraulique</name>
         <name lang="pl">Przekładnia hydrauliczna zwarta, o zmiennej prędkości, o jednym kierunku obrotów, z pompą o zmiennej objętości roboczej</name>
         <name lang="cs">Vodní převod</name>
-        <name lang="ar">نقل هيدروليكي</name>
-        <name lang="it">Trasmissione idraulica</name>
     </names>
     <informations></informations>
     <description>

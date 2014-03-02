@@ -1,6 +1,6 @@
-<definition width="60" version="0.3" hotspot_x="26" hotspot_y="21" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="25" hotspot_y="21" height="50" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="el">Ααισθητήρας (Φωτ., Υπέρ.), τριπλός</name>
+        <name lang="el">Αισθητήρας (Φωτ., Υπέρ.), τριπλός</name>
         <name lang="en">Sensor (Brightn., PIR), 3-fold</name>
         <name lang="it">Sensore (lumin., IR), 3 vie</name>
         <name lang="fr">Capteur capteur de lumière / de mouvement, trois canaux</name>

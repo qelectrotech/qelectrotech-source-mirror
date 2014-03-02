@@ -1,11 +1,12 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+<definition width="70" version="0.4" hotspot_x="16" hotspot_y="22" height="40" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">اسطوانة هيدروليكية 3</name>
+        <name lang="el">Υδραυλικό έμβολο 3</name>
         <name lang="en">hydraulic cylinder 3</name>
+        <name lang="it">Pistone idraulico 3</name>
         <name lang="fr">Verin hydraulique 3</name>
         <name lang="pl">Siłownik hydrauliczny jednostronnego działania, pchający ze sprężyną</name>
         <name lang="cs">Vodní válec 3</name>
-        <name lang="ar">اسطوانة هيدروليكية 3</name>
-        <name lang="it">Pistone idraulico 3</name>
     </names>
     <informations></informations>
     <description>
@@ -24,6 +25,6 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="-12" x2="50"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="0" x2="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-4" y2="0" x2="-4"/>
-        <terminal x="-10" y="10" orientation="s"/>
+        <terminal x="-10" y="10" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>
