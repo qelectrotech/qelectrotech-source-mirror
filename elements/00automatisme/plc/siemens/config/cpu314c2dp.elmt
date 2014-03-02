@@ -6,7 +6,8 @@
         <name lang="pl">6ES7314-6CG03-0AB0</name>
         <name lang="cs">6ES7314-6CG03-0AB0</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="80" x="0" y="0" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="58" y="158" size="4" text="DP"/>

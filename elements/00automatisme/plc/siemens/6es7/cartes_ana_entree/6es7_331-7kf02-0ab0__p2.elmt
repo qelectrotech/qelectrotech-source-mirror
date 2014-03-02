@@ -10,7 +10,8 @@
         <name lang="es">6ES7 331-7KF02-0AB0 (parte 2/2)</name>
         <name lang="cs">6ES7 331-7KF02-0AB0 (část 2/2)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-54" y="16" size="9" rotate="true" text="/"/>
         <input x="659" y="-17" size="7" rotate="true" text="-"/>

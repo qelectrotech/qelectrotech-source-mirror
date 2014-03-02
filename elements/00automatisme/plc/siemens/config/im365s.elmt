@@ -10,7 +10,8 @@
         <name lang="es">IM365 Emisor 365-0BA01-0AA0</name>
         <name lang="cs">IM365 SEND 365-0BA01-0AA0</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="80" x="-10" y="-30" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="33" y="-14.5" size="5" rotate="true" text="SEND"/>

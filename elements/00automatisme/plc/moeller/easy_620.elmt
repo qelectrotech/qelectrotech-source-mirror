@@ -10,7 +10,8 @@
         <name lang="es">Easy 620</name>
         <name lang="cs">Easy 620</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="430" x="0" y="-221" antialias="false" height="211" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="429" x="1" y="-199" antialias="false" height="169" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

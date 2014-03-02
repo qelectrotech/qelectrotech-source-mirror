@@ -10,7 +10,8 @@
         <name lang="es">6ES5 441-8MA11</name>
         <name lang="cs">6ES5 441-8MA11</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="54" x="18" y="237" antialias="false" height="8" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <rect width="90" x="0" y="0" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

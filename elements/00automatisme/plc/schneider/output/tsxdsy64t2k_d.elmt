@@ -10,7 +10,8 @@
         <name lang="es">TSX DSY 64T2K (conector D)</name>
         <name lang="cs">TSX DSY 64T2K (spojka D)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-1" y="30" size="7" text="24VDC"/>
         <text x="0" y="10" size="9" text="SCHNEIDER   TSX DSY 64 T2K   DQ 64 24VDC"/>

@@ -10,7 +10,8 @@
         <name lang="es">6ES7 323-1BL00-0AA0 (parte 2/4)</name>
         <name lang="cs">6ES7 323-1BL00-0AA0 (část 2/4)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="755" y="15" size="9" rotate="true" text="/"/>
         <input x="-55" y="16" size="9" rotate="true" text="/"/>

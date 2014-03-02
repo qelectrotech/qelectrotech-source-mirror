@@ -10,7 +10,8 @@
         <name lang="es">1762-OB8</name>
         <name lang="cs">1762-OB8</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="156" y="27" size="7" rotate="true" text="OUT&#xa;   1"/>
         <input x="315" y="27" size="7" rotate="true" text="OUT&#xa;   3"/>

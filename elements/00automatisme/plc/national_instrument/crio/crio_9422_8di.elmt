@@ -7,7 +7,8 @@
         <name lang="es">cRIO 9422 - 8 entradas digitales</name>
         <name lang="cs">cRIO 9422 - osmikanálový modul digitálních vstupů</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-20" y="-63" size="5" text="    entrées &#xa;numériques"/>
         <text x="10" y="-26" size="2" text="DI0+"/>

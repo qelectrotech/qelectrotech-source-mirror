@@ -7,7 +7,8 @@
         <name lang="es">Display digital</name>
         <name lang="cs">Digitální obrazovka</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1" antialias="true" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="7" y2="-10" x2="11"/>
         <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

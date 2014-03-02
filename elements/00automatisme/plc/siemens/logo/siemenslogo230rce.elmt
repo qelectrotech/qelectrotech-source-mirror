@@ -10,7 +10,8 @@
         <name lang="es">6ED1 052-1FB00-0BA7</name>
         <name lang="cs">6ED1 052-1FB00-0BA7</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="184" y="198" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
         <text x="89" y="212" size="3" text="2"/>

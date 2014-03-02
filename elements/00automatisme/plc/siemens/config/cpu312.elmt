@@ -10,7 +10,8 @@
         <name lang="es">CPU 312</name>
         <name lang="cs">CPU 312</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="22" y="42" size="4" text="PUSH"/>
         <rect width="80" x="-10" y="-30" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

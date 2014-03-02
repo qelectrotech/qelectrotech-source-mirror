@@ -6,7 +6,8 @@
         <name lang="pl">Czujnik ciśnienia Vegabar 52</name>
         <name lang="cs">Tlakové čidlo Vegabar 52</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="8" y="-6" size="5" text="3"/>
         <text x="-42" y="-6" size="5" text="2"/>

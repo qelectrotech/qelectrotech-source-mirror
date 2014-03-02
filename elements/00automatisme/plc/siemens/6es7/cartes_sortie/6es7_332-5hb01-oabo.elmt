@@ -10,7 +10,8 @@
         <name lang="es">6ES7 332-5HB01-OABO</name>
         <name lang="cs">6ES7 332-5HB01-OABO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="100" x1="380" y2="120" x2="380"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="100" x1="220" y2="120" x2="220"/>

@@ -8,7 +8,8 @@
         <name lang="es">Estación de Red final</name>
         <name lang="cs">RESEAU STATION FIN</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-14" y="-55.5" size="5" rotate="true" text="ADR : _"/>
         <arc width="4.5" x="-31.2" y="76.575" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>

@@ -8,7 +8,8 @@
         <name lang="cs">Datové vstupy (8 vstupů)</name>
         <name lang="es">Data entradas (8 entradas)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="81" y="-5" size="7" rotate="true" text="L-"/>
         <input x="1" y="-5" size="7" rotate="true" text="L+"/>

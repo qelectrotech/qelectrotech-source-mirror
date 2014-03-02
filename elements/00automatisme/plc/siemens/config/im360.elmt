@@ -8,7 +8,8 @@
         <name lang="es">IM360 Emisor 6ES7 360-3AA01-0AA0</name>
         <name lang="cs">IM360 SEND 6ES7 360-3AA01-0AA0</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="80" x="-60" y="-190" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-53" y="-179" size="4" text="IM-S"/>

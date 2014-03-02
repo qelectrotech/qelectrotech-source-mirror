@@ -10,7 +10,8 @@
         <name lang="es">6ES7 322-1HH00-0AA0 (parte 2/2)</name>
         <name lang="cs">6ES7 322-1HH00-0AA0 (část 2/2)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-55" y="14" size="9" rotate="true" text="/"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="733" y2="58" x2="750"/>

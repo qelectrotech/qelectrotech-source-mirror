@@ -8,7 +8,8 @@
         <name lang="cs">TWDLMDA20DRT (výstupy)</name>
         <name lang="es">TWDLMDA20DRT (Salidas)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-20" y5="28" x5="-20" y6="28" x6="-3" y7="28" x7="-3" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="28" x1="753" y2="28" x2="770" y3="-30" x3="770" y4="-30"/>
         <text x="328" y="-1" size="5" text="3"/>

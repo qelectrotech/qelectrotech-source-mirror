@@ -10,7 +10,8 @@
         <name lang="es">6ES7 321-1BL00-0AA0 (parte 4/4)</name>
         <name lang="cs">6ES7 321-1BL00-0AA0 (část 4/4)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-55" y="16" size="9" rotate="true" text="/"/>
         <polygon x4="-5" y5="12" x5="-10" y6="-33" x6="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="65" x1="-10" y2="18" x2="-10" y3="15" x3="-15" y4="15"/>

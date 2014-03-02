@@ -6,7 +6,8 @@
         <name lang="pl">JUMO eTRON 701050</name>
         <name lang="cs">JUMO eTRON 701050 digitální termostat</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-40" x1="-63" y2="-40" x2="-70" y3="50" x3="-70" y4="50"/>
         <text x="-12" y="44" size="6" text="1"/>

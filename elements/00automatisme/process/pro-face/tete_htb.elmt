@@ -7,7 +7,8 @@
         <name lang="es">Modulo THB Interface</name>
         <name lang="cs">Modul HTB Proface</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <ellipse width="2.75" x="38.8" y="182.5" antialias="true" height="3.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <ellipse width="0.55" x="43.475" y="159.25" antialias="true" height="0.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

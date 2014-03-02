@@ -9,7 +9,8 @@
         <name lang="it">Wit 0.8</name>
         <name lang="el">Wit 0.8</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="280" x="-159" y="-50" antialias="false" height="139" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="-134" y="12.5" size="9" rotate="true" text="WIT"/>

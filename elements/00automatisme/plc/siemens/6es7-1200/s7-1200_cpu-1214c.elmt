@@ -10,7 +10,8 @@
         <name lang="es">6ES5 102-8MA02</name>
         <name lang="cs">6ES5 102-8MA02</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="10" y="156" size="6" rotate="true" text="__-__-__-__-__-__"/>
         <text x="424" y="23" size="6" text="INPUTS"/>

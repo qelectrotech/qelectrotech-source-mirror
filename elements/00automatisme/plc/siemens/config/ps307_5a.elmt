@@ -10,7 +10,8 @@
         <name lang="es">PS 307   5A</name>
         <name lang="cs">PS 307   5A</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="20" x="0" y="25" antialias="false" height="33" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="160" x="-10" y="-30" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

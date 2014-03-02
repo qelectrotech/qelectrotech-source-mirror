@@ -5,7 +5,8 @@
         <name lang="pl">JUMO cTRON 702072/702074</name>
         <name lang="cs">JUMO cTRON 702072/702074 regulátor teploty</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-80" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-163" x1="70" y2="-170" x2="70" y3="-170" x3="-80" y4="-73"/>
         <text x="31" y="-131" size="4" text="0/2 -> 10V"/>

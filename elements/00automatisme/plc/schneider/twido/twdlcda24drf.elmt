@@ -10,7 +10,8 @@
         <name lang="es">TWDLCDA24DRF</name>
         <name lang="cs">TWDLCDA24DRF</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="120" x="651" y="15" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <text x="689" y="30" size="4" color="white" text="4"/>

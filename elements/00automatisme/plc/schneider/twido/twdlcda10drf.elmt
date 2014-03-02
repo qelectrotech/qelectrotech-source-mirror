@@ -9,7 +9,8 @@
         <name lang="es">TWDLCDA10DRF</name>
         <name lang="cs">TWDLCDA10DRF</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="380" x="-21" y="-21" antialias="false" height="152" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <polygon x4="60" y5="130" x5="60" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="131" x1="0" y2="100" x2="0" y3="100" x3="60" y4="131"/>

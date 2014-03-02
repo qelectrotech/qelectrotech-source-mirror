@@ -7,7 +7,8 @@
         <name lang="es">Conector de módulo + botón pulsador</name>
         <name lang="cs">Modul spínače + tlačítko</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="30" x="-40" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="9" y="4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>

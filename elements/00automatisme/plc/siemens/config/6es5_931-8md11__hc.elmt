@@ -10,7 +10,8 @@
         <name lang="es">6ES5 931-8MD11</name>
         <name lang="cs">6ES5 931-8MD11</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="21" x="18" y="26" antialias="false" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="17" x="20" y="33" antialias="false" height="27" style="line-style:normal;line-weight:thin;filling:none;color:black"/>

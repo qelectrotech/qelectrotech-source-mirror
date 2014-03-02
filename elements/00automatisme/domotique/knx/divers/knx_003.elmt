@@ -8,7 +8,8 @@
         <name lang="es">Fuente de alimentación</name>
         <name lang="cs">Napájení</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <arc width="5" x="-0.5" y="-11.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>

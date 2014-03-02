@@ -10,7 +10,8 @@
         <name lang="es">omron-cj1w_clk23</name>
         <name lang="cs">omron-cj1w_clk23</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="26" y2="-33" x2="26"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="12" y2="-9" x2="12"/>

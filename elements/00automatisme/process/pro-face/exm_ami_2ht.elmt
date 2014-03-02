@@ -7,7 +7,8 @@
         <name lang="es">EXM-AMI2HT</name>
         <name lang="cs">EXM-AMI2HT</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="36" x="-17" y="10" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="36" x="593" y="10" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

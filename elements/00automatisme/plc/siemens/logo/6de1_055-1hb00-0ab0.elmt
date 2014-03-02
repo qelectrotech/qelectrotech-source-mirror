@@ -10,7 +10,8 @@
         <name lang="es">6ED1 055-1HB00-OBA0</name>
         <name lang="cs">6ED1 055-1HB00-OBA0</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="90" x="5" y="0" antialias="false" height="220" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="35" x="23" y="36" antialias="false" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

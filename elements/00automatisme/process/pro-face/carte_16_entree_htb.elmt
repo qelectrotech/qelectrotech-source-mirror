@@ -7,7 +7,8 @@
         <name lang="es">Tarjeta 16DI modulo HTB</name>
         <name lang="cs">Karta 16DI pro modul HTB</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="18" x="16" y="57.392" antialias="false" height="5.96905" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="26" x="64" y="9" antialias="false" height="62" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

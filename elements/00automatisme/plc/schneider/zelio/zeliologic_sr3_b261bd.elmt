@@ -8,7 +8,8 @@
         <name lang="es">Zelio Logic SR3 B261BD</name>
         <name lang="cs">Zelio Logic SR3 B261BD</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" x1="320" y2="86" x2="318"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="300" y2="80" x2="360"/>

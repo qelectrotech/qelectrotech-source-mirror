@@ -8,7 +8,8 @@
         <name lang="es">BMX P34 2020</name>
         <name lang="cs">BMX P34 2020</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="96" y5="196" x5="97" antialias="false" style="line-style:normal;line-weight:normal;filling:green;color:black" closed="false" y1="197" x1="96" y2="204" x2="96" y3="200" x3="88" y4="197"/>
         <text x="61" y="203" size="7" text="ETH"/>

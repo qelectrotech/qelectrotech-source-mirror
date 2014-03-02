@@ -7,7 +7,8 @@
         <name lang="pl">6es7-314-6bf00-0ab0_3-3</name>
         <name lang="cs">6es7-314-6bf00-0ab0_3-3</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="980" x="0" y="5" antialias="false" height="220" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="540" y="110" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>

@@ -7,7 +7,8 @@
         <name lang="pl">Crouzet MIC 48</name>
         <name lang="cs">Crouzet MIC 48</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="120" y5="53" x5="120" y6="53" x6="120" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="53" x1="100" y2="45" x2="100" y3="35" x3="110" y4="45"/>
         <text x="128" y="3" size="4" text="+"/>

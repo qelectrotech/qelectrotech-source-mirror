@@ -10,7 +10,8 @@
         <name lang="es">tsx_</name>
         <name lang="cs">tsx</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="92" x="10" y="-438" antialias="true" height="92" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <text x="31" y="-420" size="9" color="white" text="tsx _"/>

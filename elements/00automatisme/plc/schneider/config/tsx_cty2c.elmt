@@ -10,7 +10,8 @@
         <name lang="es">tsx_cfy2x_</name>
         <name lang="cs">tsx_cfy2x_</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="100" x="5" y="-441" antialias="true" height="28" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <text x="28" y="-424" size="9" color="white" text="tsx cfy2x"/>

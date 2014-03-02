@@ -10,7 +10,8 @@
         <name lang="es">1762-IT4</name>
         <name lang="cs">1762-IT4</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="720" y="28" size="7" rotate="true" text="IN4&#xa; -"/>
         <input x="560" y="28" size="7" rotate="true" text="IN3&#xa; -"/>

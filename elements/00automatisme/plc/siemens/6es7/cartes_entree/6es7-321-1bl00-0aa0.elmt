@@ -8,7 +8,8 @@
         <name lang="es">6es7-321-1bl00-0aa0</name>
         <name lang="cs">6es7-321-1bl00-0aa0</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="177" y="77" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
         <circle x="-73" y="77" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>

@@ -10,7 +10,8 @@
         <name lang="es">6ES7 321-1BH02-OAAO</name>
         <name lang="cs">6ES7 321-1BH02-OAAO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="387" y="57" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="26"/>
         <text x="743" y="11.6667" size="9" text="7"/>

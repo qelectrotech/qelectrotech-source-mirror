@@ -10,7 +10,8 @@
         <name lang="es">6ES7 214-1AD23-0XB0 (parte 4/5)</name>
         <name lang="cs">6ES7 214-1AD23-0XB0 (část 4/5)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="515" y="3" size="9" rotate="true" text="/"/>
         <input x="476" y="37" size="7" rotate="true" text="Q0.4"/>

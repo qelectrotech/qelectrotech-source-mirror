@@ -10,7 +10,8 @@
         <name lang="es">OMRON-CJ1W_DA021</name>
         <name lang="cs">OMRON-CJ1W_DA021</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="9" y="-185" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
         <circle x="9" y="-210" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>

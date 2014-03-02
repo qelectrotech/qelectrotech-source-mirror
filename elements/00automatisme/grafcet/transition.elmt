@@ -11,7 +11,8 @@
         <name lang="es">transición</name>
         <name lang="cs">Přechod</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="15" y="2" size="8" rotate="true" text="T 00"/>
         <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>

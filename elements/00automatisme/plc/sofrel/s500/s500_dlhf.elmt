@@ -10,7 +10,8 @@
         <name lang="es">Tarjeta DL/HF</name>
         <name lang="cs">Karta DL/HF</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="750" x="0" y="0" antialias="false" height="150" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="610" y="142" size="7" text="CD-"/>

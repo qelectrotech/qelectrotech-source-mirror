@@ -10,7 +10,8 @@
         <name lang="es">tsx_p57254m</name>
         <name lang="cs">tsx_p57254m</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="102" x="2" y="-442" antialias="true" height="33" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" x3="3" x4="5" antialias="false" x5="100" x6="104" x7="106" x8="107" x9="107" closed="false" y1="-408" y2="-447" y10="-407" y3="-449" y4="-450" y5="-450" x10="107" y6="-449" y7="-446" y8="-445" y9="-407"/>

@@ -11,7 +11,8 @@
         <name lang="es">Etapa</name>
         <name lang="cs">Krok</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-30" y="14" size="6" rotate="true" text=""/>
         <input x="-20" y="0" size="10" rotate="true" text="E 00"/>

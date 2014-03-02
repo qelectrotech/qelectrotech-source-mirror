@@ -10,7 +10,8 @@
         <name lang="es">Facade S550</name>
         <name lang="cs">Místní telemetrická jednotka S550</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="83" y5="297" x5="73" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="297" x1="73" y2="297" x2="123" y3="317" x3="113" y4="317"/>
         <rect width="786" x="0" y="0" antialias="false" height="374" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

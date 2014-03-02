@@ -10,7 +10,8 @@
         <name lang="es">6ED1 055-4MH00-0BA0</name>
         <name lang="cs">6ED1 055-4MH00-0BA0</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="9" y="25" size="7" rotate="true" text="24V DC"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="23" y2="3" x2="37"/>

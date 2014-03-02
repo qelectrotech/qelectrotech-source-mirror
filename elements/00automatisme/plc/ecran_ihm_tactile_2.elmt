@@ -8,7 +8,8 @@
         <name lang="es">HMI TÁCTIL 2</name>
         <name lang="cs">HMI TACTILE 2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-64.25" y="79.45" size="4" rotate="true" text="-_"/>
         <arc width="11.25" x="-90" y="76.575" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>

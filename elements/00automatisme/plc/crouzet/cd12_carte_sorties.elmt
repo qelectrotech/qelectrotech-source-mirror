@@ -11,7 +11,8 @@
         <name lang="es">CD12 tarjeta de salida</name>
         <name lang="cs">Karta CD12 výstupy</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="298" x="1" y="1" antialias="false" height="38" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="47" y="24.5" size="8" text="O1"/>

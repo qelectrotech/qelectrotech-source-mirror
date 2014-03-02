@@ -10,7 +10,8 @@
         <name lang="es">TSX DEY 64D2K (conector C)</name>
         <name lang="cs">TSX DEY 64D2K (spojka C)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="838" y="-19" size="7" rotate="true" text="%I0.47"/>
         <input x="788" y="-19" size="7" rotate="true" text="%I0.46"/>

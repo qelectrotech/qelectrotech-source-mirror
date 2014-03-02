@@ -10,7 +10,8 @@
         <name lang="es">6EP1931-2EC21</name>
         <name lang="cs">6EP1931-2EC21</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="377.5" y="87.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="-372.5" y="87.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>

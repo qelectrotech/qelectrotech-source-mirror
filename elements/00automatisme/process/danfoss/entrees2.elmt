@@ -8,7 +8,8 @@
         <name lang="es">AKCC550 entradas/2</name>
         <name lang="it">AKCC550 ingressi/2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="363" x="-320" y="-54" antialias="false" height="98" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-241" y="32.6667" size="9" text="Entrées ana AKCC 550"/>

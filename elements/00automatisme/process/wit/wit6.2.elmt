@@ -9,7 +9,8 @@
         <name lang="it">Wit 6.2</name>
         <name lang="el">Wit 6.2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="280" x="-158" y="-50" antialias="false" height="139" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="59" y="-10" size="6" text="DO0.1"/>

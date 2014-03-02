@@ -6,7 +6,8 @@
         <name lang="pl">WIT 6.2 CPU</name>
         <name lang="cs">WIT 6.2 CPU</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="280" x="-158" y="-50" antialias="false" height="139" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="-72" y="68.5" size="5" rotate="true" text="BUS"/>

@@ -9,7 +9,8 @@
         <name lang="pl">6es7-314-6cg03-0ab0_3-3</name>
         <name lang="pt">6es7-314-6cg03-0ab0_3-3</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="160" x1="573" y2="160" x2="616"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="160" x1="923.5" y2="160" x2="966.5"/>

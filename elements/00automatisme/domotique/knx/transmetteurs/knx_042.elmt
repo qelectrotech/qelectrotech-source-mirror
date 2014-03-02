@@ -8,7 +8,8 @@
         <name lang="es">IR Emisor</name>
         <name lang="cs">Infračervený vysílač</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <arc width="10" x="-32" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-110" angle="-140"/>

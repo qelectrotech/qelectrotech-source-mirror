@@ -8,7 +8,8 @@
         <name lang="es">Acoplador IM153-1AA03-0XB0</name>
         <name lang="cs">6ES7 153-1AA03-0XB0</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="3.99" x="3.84" y="-141.55" antialias="true" height="3.9" style="line-style:normal;line-weight:normal;filling:none;color:black" start="350" angle="-110"/>
         <ellipse width="2.97397" x="3.01806" y="-151.453" antialias="true" height="2.90689" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

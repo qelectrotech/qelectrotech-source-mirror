@@ -10,7 +10,8 @@
         <name lang="es">6ES7 312-5BE03-0AB0 (parte 1/3)</name>
         <name lang="cs">6ES7 312-5BE03-0AB0 (část 1/3)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="305" y="15" size="9" rotate="true" text="/"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="33" y2="-28" x2="277"/>

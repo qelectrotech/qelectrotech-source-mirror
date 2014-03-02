@@ -10,7 +10,8 @@
         <name lang="es">6ES7 332-5HB01-0AB0</name>
         <name lang="cs">6ES7 332-5HB01-0AB0</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="802" y="27" size="7" rotate="true" text="M"/>
         <circle x="807.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>

@@ -10,7 +10,8 @@
         <name lang="es">Tarjeta PSTN</name>
         <name lang="cs">Karta PSTN</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="750" x="0" y="0" antialias="false" height="150" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="131" x1="692" y2="150" x2="692"/>

@@ -10,7 +10,8 @@
         <name lang="es">6es7-332-5hf00-0ab0_b</name>
         <name lang="cs">6es7-332-5hf00-0ab0_b</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="980" x="3" y="4" antialias="false" height="220" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="0" length2="0" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="88" x1="848" y2="88" x2="768"/>

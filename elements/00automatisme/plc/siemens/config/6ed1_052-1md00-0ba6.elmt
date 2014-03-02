@@ -10,7 +10,8 @@
         <name lang="es">6ED1 052-1MD00-0BA6</name>
         <name lang="cs">6ED1 052-1MD00-0BA6</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="195" x="0" y="0" antialias="false" height="220" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="173" y="12" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="10"/>

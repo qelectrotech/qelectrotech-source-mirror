@@ -9,7 +9,8 @@
         <name lang="pl">Crouzet 80149604</name>
         <name lang="cs">Crouzet 80149604</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="66" y="-1" size="5" text="Logic&#xa;ground"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="70" x1="-10" y2="70" x2="90"/>

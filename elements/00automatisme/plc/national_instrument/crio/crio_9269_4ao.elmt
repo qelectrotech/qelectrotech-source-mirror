@@ -7,7 +7,8 @@
         <name lang="es">cRIO 9269 4 salidas analogas</name>
         <name lang="cs">cRIO 9269 4 analogové vstupy</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-21" y="-63" size="5" text="     sorties&#xa;analogiques"/>
         <text x="4" y="21" size="3" text="AO2+&#xa;AO2-"/>

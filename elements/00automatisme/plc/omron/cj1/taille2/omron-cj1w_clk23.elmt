@@ -10,7 +10,8 @@
         <name lang="es">OMRON-CJ1W_CLK23</name>
         <name lang="cs">OMRON-CJ1W_CLK23</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="52.1512" y="-182.849" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="19.6977"/>
         <circle x="52.1512" y="-210.849" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="19.6977"/>

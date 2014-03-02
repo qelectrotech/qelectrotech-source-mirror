@@ -9,7 +9,8 @@
         <name lang="cs">TWDLCAA16DRF</name>
 	<name lang="es">TWDLCAA16DRF</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="560" x="-20" y="-21" antialias="false" height="152" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <polygon x4="450" y5="99" x5="450" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="99" x1="330" y2="84" x2="330" y3="84" x3="450" y4="99"/>

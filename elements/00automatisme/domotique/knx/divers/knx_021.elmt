@@ -8,7 +8,8 @@
         <name lang="es">Interface serial RS232</name>
         <name lang="cs">Sériové rozhraní KNX / RS 232</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="20" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

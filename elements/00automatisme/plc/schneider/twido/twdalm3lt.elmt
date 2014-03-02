@@ -8,7 +8,8 @@
         <name lang="cs">TWDALM3LT</name>
 	<name lang="es">TWDALM3LT</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="343" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="68" x1="123" y2="68" x2="360" y3="2" x3="360" y4="2"/>
         <polygon x4="230" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="7" x1="130" y2="30" x2="130" y3="30" x3="230" y4="6"/>

@@ -11,7 +11,8 @@
         <name lang="es">CD12 tarjeta de entrada</name>
         <name lang="cs">Karta CD12 vstupy</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="125" y="32" size="8" text="CROUZET CD12 Carte entrées"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="130" y2="0" x2="130"/>

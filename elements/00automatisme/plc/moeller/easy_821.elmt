@@ -10,7 +10,8 @@
         <name lang="es">Easy 821</name>
         <name lang="cs">Easy 821</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="430" x="0" y="-221" antialias="false" height="211" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="153" x="10" y="-160" antialias="false" height="89" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

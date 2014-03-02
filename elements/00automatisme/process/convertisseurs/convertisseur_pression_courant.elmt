@@ -10,7 +10,8 @@
         <name lang="es">Convertidor de presión/power</name>
         <name lang="cs">Tlakově-elektrický převodník</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="1" y="-27" size="6" rotate="true" text="_"/>
         <text x="5" y="8" size="6" text="a"/>

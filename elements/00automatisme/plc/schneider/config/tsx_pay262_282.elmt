@@ -10,7 +10,8 @@
         <name lang="es">tsx_pay262_282</name>
         <name lang="cs">tsx_pay262_282</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="93" x="9" y="-438" antialias="true" height="90" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <text x="22" y="-425" size="9" color="white" text="tsx pay262"/>

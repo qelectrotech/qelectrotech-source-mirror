@@ -10,7 +10,8 @@
         <name lang="es">6AV6641-0CA01-0AX0</name>
         <name lang="cs">6AV6641-0CA01-0AX0</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="9" y="-6" size="7" rotate="true" text="24V DC"/>
         <input x="12" y="-18.5" size="5" rotate="true" text="L+"/>

@@ -10,7 +10,8 @@
         <name lang="es">omron-cqm1h_cpu51</name>
         <name lang="cs">omron-cqm1h_cpu51</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="349" x="6" y="-326" antialias="true" height="57" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <rect width="66" x="286" y="-322" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:white;color:white"/>

@@ -10,7 +10,8 @@
         <name lang="es">tsx_say102</name>
         <name lang="cs">tsx_say102</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="90" x="10" y="-441" antialias="true" height="103" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <text x="41" y="-304" size="4" text="PWROK"/>

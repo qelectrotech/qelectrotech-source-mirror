@@ -8,7 +8,8 @@
         <name lang="cs">Datové výstupy (8 výstupů)</name>
         <name lang="es">Data salidas (8 Salidas)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-10" y2="48" x2="-10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="-10" y2="48" x2="7"/>

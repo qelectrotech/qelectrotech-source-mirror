@@ -10,7 +10,8 @@
         <name lang="es">Tsx psy 2600</name>
         <name lang="cs">Tsx psy 2600</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="102" x="-48" y="-221" antialias="true" height="35" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <polygon x4="-51.55" y5="-224.55" x5="-51.55" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-184.55" x1="57.45" y2="-226.55" x2="57.45" y3="-226.55" x3="-51.55" y4="-224.55"/>

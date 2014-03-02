@@ -7,7 +7,8 @@
         <name lang="es">IR Receptor/decodificador 4 salidas</name>
         <name lang="cs">Infračervený přijímač/dekodér, čtyřkanálový</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="10" x="22" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-110" angle="-140"/>
         <arc width="6" x="26" y="-6" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-110" angle="-140"/>

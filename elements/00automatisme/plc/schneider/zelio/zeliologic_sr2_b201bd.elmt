@@ -10,7 +10,8 @@
         <name lang="es">Zelio Logic SR2 B201BD</name>
         <name lang="cs">Zelio Logic SR2 B201BD</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="323" y="27" size="6" text="RS232"/>
         <rect width="20" x="350" y="5" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

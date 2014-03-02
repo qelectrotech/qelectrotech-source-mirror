@@ -10,7 +10,8 @@
         <name lang="es">tsx_cty4a</name>
         <name lang="cs">tsx_cty4a</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="100" x="6" y="-444" antialias="true" height="28" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <text x="32" y="-429" size="9" color="white" text="tsx cty4a"/>

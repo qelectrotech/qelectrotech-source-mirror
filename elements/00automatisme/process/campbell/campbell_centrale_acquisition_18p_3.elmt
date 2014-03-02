@@ -8,7 +8,8 @@
         <name lang="es">Campbell CR1000 central de adquisición canal 3 18P</name>
         <name lang="cs">Campbell - Registrátor CR1000 (část 3/3)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="159" y="18" size="5" text="Com1"/>
         <text x="159" y="8" size="4" text="Tx"/>

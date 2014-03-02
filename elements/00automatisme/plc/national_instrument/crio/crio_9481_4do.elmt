@@ -7,7 +7,8 @@
         <name lang="es">cRIO 9481 relay 4 salidas 2A</name>
         <name lang="cs">cRIO 9481 4 výstupy relé 2A</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-11" y="-63" size="5" text="sorties&#xa; relais"/>
         <text x="7" y="-28" size="3" text="3"/>

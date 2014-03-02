@@ -8,7 +8,8 @@
         <name lang="es">Campbell CR1000 central de adquisición canal 2 15P</name>
         <name lang="cs">Campbell - Registrátor CR1000 (část 2/3)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="300" y2="49" x2="300"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="40" y2="-2" x2="40"/>

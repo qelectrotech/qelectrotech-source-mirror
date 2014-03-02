@@ -10,7 +10,8 @@
         <name lang="es">OMRON-CJ1W_ETN11</name>
         <name lang="cs">OMRON-CJ1W_ETN11</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="53.101" y="-178.899" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="19.799"/>
         <circle x="53.101" y="-239.899" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="19.799"/>

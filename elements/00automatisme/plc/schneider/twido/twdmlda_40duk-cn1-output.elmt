@@ -8,7 +8,8 @@
         <name lang="es">TWDLMDA40DUK "CN1" (Salidas)</name>
         <name lang="cs">TWDLMDA40DUK "CN1" (výstupy)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="710" y5="58" x5="710" y6="58" x6="693" y7="58" x7="693" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="58" x1="-33" y2="58" x2="-50" y3="-20" x3="-50" y4="-20"/>
         <polygon x4="320" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="35" x1="390" y2="35" x2="320" y3="40" x3="320" y4="40"/>

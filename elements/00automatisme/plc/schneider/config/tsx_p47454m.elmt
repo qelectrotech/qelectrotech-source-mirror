@@ -10,7 +10,8 @@
         <name lang="es">tsx_p47454m</name>
         <name lang="cs">tsx_p47454m</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="106" x="114" y="-446" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <text x="141" y="-432" size="9" color="white" text="tsx p4754"/>

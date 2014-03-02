@@ -10,7 +10,8 @@
         <name lang="es">omron-cqm1_tc001</name>
         <name lang="cs">omron-cqm1_tc001</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-91" x1="33" y2="-91" x2="1"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-91" x1="33" y2="-21" x2="33"/>

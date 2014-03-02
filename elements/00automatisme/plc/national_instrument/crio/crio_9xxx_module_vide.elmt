@@ -7,7 +7,8 @@
         <name lang="es">cRIO 9xxx - modulo libre</name>
         <name lang="cs">cRIO 9xxx - prázdný modul</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="40" x="-20" y="-50" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-13" y="-42" size="5" text="NI xxxx"/>

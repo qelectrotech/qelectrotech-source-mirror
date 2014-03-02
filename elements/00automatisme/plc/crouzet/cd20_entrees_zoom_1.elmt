@@ -11,7 +11,8 @@
         <name lang="es">CD20 tarjeta de entrada ampliada</name>
         <name lang="cs">Karta CD20 zoom vstupy</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="690" y2="0" x2="690"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="360" y2="0" x2="360"/>

@@ -8,7 +8,8 @@
         <name lang="es">IM361 Receptor 6ES7 361-3CA01-0AA0</name>
         <name lang="cs">IM361 RECEIVE 6ES7 361-3CA01-0AA0</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="149" x="-130" y="-192" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="56" x="-117" y="-18" antialias="false" height="76" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

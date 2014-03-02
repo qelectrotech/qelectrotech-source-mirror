@@ -10,7 +10,8 @@
         <name lang="es">tsx_rky6</name>
         <name lang="cs">tsx_rky6</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-320" x1="84" y2="-289" x2="84"/>
         <circle x="11.6863" y="-42.3137" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="22.6274"/>

@@ -8,7 +8,8 @@
         <name lang="cs">TWDLMDA20DRT (vstupy)</name>
         <name lang="es">TWDLMDA20DRT (Entradas)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="800" y5="-28" x5="800" y6="-28" x6="783" y7="-28" x7="783" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="-28" x1="-33" y2="-28" x2="-50" y3="30" x3="-50" y4="30"/>
         <text x="773" y="-13" size="5" text="com"/>

@@ -10,7 +10,8 @@
         <name lang="es">OMRON-CJ1W_ID232</name>
         <name lang="cs">OMRON-CJ1W_ID232</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="24.172" y="-240.828" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
         <rect width="67" x="0" y="-280" antialias="false" height="270" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

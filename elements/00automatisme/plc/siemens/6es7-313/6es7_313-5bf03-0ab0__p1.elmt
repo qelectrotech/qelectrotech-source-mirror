@@ -10,7 +10,8 @@
         <name lang="es">6ES7 313-5BF03-0AB0 (parte 1/8)</name>
         <name lang="cs">6ES7 313-5BF03-0AB0 (část 1/8)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="268" y="-6" size="7" rotate="true" text="MPI"/>
         <input x="305" y="15" size="9" rotate="true" text="/"/>

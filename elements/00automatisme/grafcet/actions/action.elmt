@@ -11,7 +11,8 @@
         <name lang="es">acción</name>
         <name lang="cs">Čin</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="8" y="2" size="8" text="action"/>
         <rect width="125" x="7" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

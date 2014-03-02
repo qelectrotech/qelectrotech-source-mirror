@@ -10,7 +10,8 @@
         <name lang="es">6AV3607-1JC20-0AX1</name>
         <name lang="cs">6AV3607-1JC20-0AX1</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="136" y="-16" size="7" rotate="true" text="IF1A"/>
         <input x="9" y="-6" size="7" rotate="true" text="24V DC"/>

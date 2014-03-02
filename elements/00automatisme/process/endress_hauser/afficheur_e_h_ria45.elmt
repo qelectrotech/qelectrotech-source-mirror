@@ -9,7 +9,8 @@
         <name lang="es">Endress+Hauser - RIA45</name>
         <name lang="cs">Endress+Hauser - RIA45</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="245" y="46" size="5" text="14"/>
         <text x="224" y="46" size="5" text="13"/>

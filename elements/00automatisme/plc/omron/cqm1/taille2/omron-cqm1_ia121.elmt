@@ -10,7 +10,8 @@
         <name lang="es">omron-cqm1_ia121</name>
         <name lang="cs">omron-cqm1_ia121</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="83" x="7" y="-323" antialias="true" height="55" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <rect width="6" x="10" y="-289" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:white;color:white"/>

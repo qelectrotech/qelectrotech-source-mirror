@@ -10,7 +10,8 @@
         <name lang="es">6ES5 095-8MA03</name>
         <name lang="cs">6ES5 095-8MA03</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="270" x="0" y="0" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="77" y="214" size="4" text="M"/>

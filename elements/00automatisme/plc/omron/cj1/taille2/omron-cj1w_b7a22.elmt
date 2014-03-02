@@ -10,7 +10,8 @@
         <name lang="es">OMRON-CJ1W_B7A22</name>
         <name lang="cs">OMRON-CJ1W_B7A22</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="67" x="0" y="-279" antialias="false" height="270" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <arc width="12" x="14" y="-241" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>

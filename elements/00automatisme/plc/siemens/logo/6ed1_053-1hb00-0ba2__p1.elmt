@@ -10,7 +10,8 @@
         <name lang="es">6ED1 053-1HB00-0BA2 (parte 1/3)</name>
         <name lang="cs">6ED1 053-1HB00-0BA2 (část 1/3)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-69" y="-26" size="7" rotate="true" text="L+"/>
         <input x="685" y="5" size="9" rotate="true" text="/"/>

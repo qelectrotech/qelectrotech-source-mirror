@@ -10,7 +10,8 @@
         <name lang="es">OMRON-CJ1W_NC413</name>
         <name lang="cs">OMRON-CJ1W_NC413</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="52.5" y="-253.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="23"/>
         <circle x="15.5" y="-253.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="23"/>

@@ -7,7 +7,8 @@
         <name lang="es">cRIO 9853 - puertos CAN</name>
         <name lang="cs">cRIO 9853 - modul CAN-bus</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-8" y="-63" size="5" text=" bus&#xa;CAN"/>
         <text x="-6" y="-31" size="3" text="Port 1"/>

@@ -7,7 +7,8 @@
         <name lang="es">Tarjeta 2 AI modulo HTB</name>
         <name lang="cs">Karta 2AI pro modul HTB</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="26" x="64" y="9" antialias="false" height="62" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="11" x="72" y="20" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

@@ -10,7 +10,8 @@
         <name lang="es">OMRON 7H EC</name>
         <name lang="cs">OMRON 7H EC</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="4" y="60.5" size="5" rotate="true" text="1"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-10" x1="130" y2="67" x2="130"/>

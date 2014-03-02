@@ -11,7 +11,8 @@
         <name lang="es">CD20 tarjeta de salida ampliada</name>
         <name lang="cs">Karta CD20 zoom výstupy</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="346" y="24.6667" size="8" text="O 4"/>
         <text x="46" y="24.6667" size="8" text="O 1"/>

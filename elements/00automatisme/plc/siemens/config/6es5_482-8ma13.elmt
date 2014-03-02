@@ -10,7 +10,8 @@
         <name lang="es">6ES5 482-8MA13</name>
         <name lang="cs">6ES5 482-8MA13</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="76" y="135" size="4" text="NC"/>
         <text x="76" y="126" size="4" text="NC"/>

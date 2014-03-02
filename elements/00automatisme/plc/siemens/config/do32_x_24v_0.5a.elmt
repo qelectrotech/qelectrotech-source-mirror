@@ -10,7 +10,8 @@
         <name lang="es">SM322   DO 32 x DC24V/0,5A</name>
         <name lang="cs">SM322   DO 32 x DC24V/0,5A</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="208" x1="36" y2="208" x2="48"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="202" x1="42" y2="214" x2="42"/>
