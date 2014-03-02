@@ -8,7 +8,8 @@
         <name lang="ar">اسطوانة بفعل وحيد</name>
         <name lang="it">Cilindro effetto singolo</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="9" y5="0" x5="16" y6="-20" x6="23" y7="0" x7="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-12" y2="-20" x2="-5" y3="0" x3="2" y4="-20"/>
         <polygon x4="-12" y5="-20" x5="42" y6="-12" x6="42" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8" x1="42" y2="0" x2="42" y3="0" x3="-12" y4="-20"/>

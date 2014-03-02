@@ -7,7 +7,8 @@
         <name lang="pl">Podstawa PYF 2</name>
         <name lang="cs">Patice PYF 2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34.9" x1="27" y2="36" x2="27"/>
         <rect width="29" x="0" y="-30" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

@@ -7,7 +7,8 @@
         <name lang="ar">توقيف طارئ بمفتاح</name>
         <name lang="it">Arresto d'emergenza a chiave</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-13" y="-13" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="26"/>
         <circle x="-36" y="-36" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="72"/>

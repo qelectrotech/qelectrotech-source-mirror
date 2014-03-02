@@ -7,7 +7,8 @@
         <name lang="ar">مقياس ضغط</name>
         <name lang="it">Manometro</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="13" y="5" size="9" rotate="true" text="_"/>
         <circle x="-12" y="-36" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="24"/>

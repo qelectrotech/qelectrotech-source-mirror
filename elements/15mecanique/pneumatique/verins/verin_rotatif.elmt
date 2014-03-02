@@ -7,7 +7,8 @@
         <name lang="ar">مُشغّل دوار</name>
         <name lang="it">Cilindro rotativo</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="35" x="-5" y="-27" antialias="true" height="35" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" angle="180"/>
         <polygon x4="30" y5="-6" x5="30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-14" x1="30" y2="-14" x2="46" y3="-6" x3="46" y4="-6"/>

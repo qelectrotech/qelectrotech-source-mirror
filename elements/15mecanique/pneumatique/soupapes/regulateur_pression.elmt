@@ -9,7 +9,8 @@ pression
         <name lang="ar">مُعدّل ضغط</name>
         <name lang="it">Regolatore di pressione</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="46" y2="-5" x2="39"/>
         <polygon x4="44" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19" x1="44" y2="-17" x2="48" y3="-23" x3="49" y4="-19"/>

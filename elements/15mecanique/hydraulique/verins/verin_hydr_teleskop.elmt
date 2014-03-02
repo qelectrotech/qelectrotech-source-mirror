@@ -8,7 +8,8 @@
         <name lang="pl">Cylinder (siłownik) teleskowpowy hydrauliczny dwustronnego działania</name>
         <name lang="cs">Zasouvací vodní válec</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="0" y2="-16" x2="52" y3="-12" x3="52"/>
         <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="0" y2="-4" x2="52" y3="-8" x3="52"/>

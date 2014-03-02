@@ -12,7 +12,8 @@
         <name lang="es">Resistencia</name>
         <name lang="cs">Odporník</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="8" x="-4" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="7.5" y="3.3333" size="9" rotate="true" text="R_"/>

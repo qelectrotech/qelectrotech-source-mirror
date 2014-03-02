@@ -7,7 +7,8 @@
         <name lang="pl">LC1K</name>
         <name lang="cs">LC1K</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="46" x="0" y="-50" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="39" y="-1" size="2" text="A2"/>

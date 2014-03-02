@@ -7,7 +7,8 @@
         <name lang="ar">رابط سريع بصمّام ضدّ الرجع</name>
         <name lang="it">Raccordo rapido con valvola ritegno</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="22" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
         <rect width="34" x="-2" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

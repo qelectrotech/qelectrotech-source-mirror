@@ -7,7 +7,8 @@
         <name lang="ar">مُرشّح فراغي</name>
         <name lang="it">Filtro a vuoto</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="47" y="19" size="9" rotate="true" text="_"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="13" y2="-16" x2="30"/>

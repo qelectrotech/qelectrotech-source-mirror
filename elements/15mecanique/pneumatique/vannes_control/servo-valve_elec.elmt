@@ -7,7 +7,8 @@
         <name lang="ar">صمّام مُضاعف بتحكّم كهرومغناطيسي</name>
         <name lang="it">Servo-valvola elettromagnetica a due bobine</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="15" y2="-22" x2="105"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="15" y2="12" x2="105"/>

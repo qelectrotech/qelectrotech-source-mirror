@@ -7,7 +7,8 @@
         <name lang="ar">مُرشّح بتعديل الضغط</name>
         <name lang="it">Filtro e regolatore di pressione</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="2" length2="2" antialias="false" end1="triangle" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="86" y2="0" x2="108"/>
         <input x="63" y="51" size="9" rotate="true" text="_"/>

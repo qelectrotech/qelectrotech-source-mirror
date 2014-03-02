@@ -7,7 +7,8 @@
         <name lang="ar">مُوزّعات 2x3/2 NO - NO</name>
         <name lang="it">Valvola 2x3/2 NO/NO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="94" y="8" size="9" rotate="true" text="_"/>
         <line length1="2" length2="2" antialias="false" end1="triangle" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-37" x1="-50" y2="-59" x2="-50"/>

@@ -9,7 +9,8 @@
         <name lang="pl">Tabliczka rysunkowa - tytuł</name>
         <name lang="cs">Název nomenklaturní tabulky</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="250" y="-10" size="15" text="ΥΠΟΜΝΗΜΑ"/>
         <rect width="650" x="0" y="-30" antialias="false" height="30" style="line-style:normal;line-weight:thin;filling:none;color:black"/>

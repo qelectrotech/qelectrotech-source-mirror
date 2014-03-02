@@ -7,7 +7,8 @@
         <name lang="ar">اسطوانة بدون ذراع</name>
         <name lang="it">Cilindro senza stelo</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="58" y="8" size="9" rotate="true" text="_"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-3" y2="-36" x2="-3"/>

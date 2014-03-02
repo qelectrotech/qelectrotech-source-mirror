@@ -7,7 +7,8 @@
         <name lang="ar">مُعدّل ضغط</name>
         <name lang="it">Regolatore di pressione</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="17" y="10" size="9" rotate="true" text="_"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-66" x1="-12" y2="-77" x2="-23"/>

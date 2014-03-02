@@ -7,7 +7,8 @@
         <name lang="pl">G2RS</name>
         <name lang="cs">G2RS</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="15" x="-10" y="-30" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.03322" x1="-7" y2="-1.03322" x2="2"/>

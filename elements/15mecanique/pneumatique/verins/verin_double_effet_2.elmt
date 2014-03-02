@@ -7,7 +7,8 @@
         <name lang="ar">اسطوانة بفعل مزدوج بتثبيط من جانب واحد ثابت</name>
         <name lang="it">Azionatore doppio effetto con inibizione unilaterale dei valori costanti</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="52" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-12" x1="-2" y2="-20" x2="-2" y3="-20" x3="52" y4="-12"/>
         <polygon x4="27" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="27" y2="-16" x2="32" y3="-4" x3="32" y4="-4"/>

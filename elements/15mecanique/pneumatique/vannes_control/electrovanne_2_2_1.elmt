@@ -7,7 +7,8 @@
         <name lang="ar">صمّام محكوم كهربائيا 2/2 , برافعة</name>
         <name lang="it">Elettrovalvola 2/2 con leva</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="71" y5="-12" x5="73" y6="-20" x6="75" y7="-15" x7="77" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="65" y2="-20" x2="67" y3="-12" x3="69" y4="-20"/>
         <circle x="-12" y="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>

@@ -7,7 +7,8 @@
         <name lang="ar">موزع 2/3</name>
         <name lang="it">Valvola di controllo 3-2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="21.3784" y="16.7653" size="6" text="t"/>
         <polygon x4="-15" y5="-10" x5="-15" y6="-10.5" x6="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-15" y2="-10" x2="25" y3="10" x3="25" y4="10"/>

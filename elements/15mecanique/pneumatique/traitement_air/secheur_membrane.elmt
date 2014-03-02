@@ -7,7 +7,8 @@
         <name lang="ar">مُجفّف بغشاء</name>
         <name lang="it">Essicatore a membrana</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="43" y="35" size="9" rotate="true" text="_"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="30" y2="0" x2="13"/>

@@ -7,7 +7,8 @@
         <name lang="ar">اسطوانة جنب إلى جنب</name>
         <name lang="it">Cilindro tandem</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-10" y2="-8" x2="34"/>
         <polygon x4="106" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8" x1="-2" y2="0" x2="-2" y3="0" x3="106" y4="-7"/>

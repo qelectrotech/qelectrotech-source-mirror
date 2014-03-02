@@ -7,7 +7,8 @@
         <name lang="it">Micro relè</name>
         <name lang="cs">Mikrorelé</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="2" y="31" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
         <circle x="-6" y="-36" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>

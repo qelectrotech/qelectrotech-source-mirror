@@ -7,7 +7,8 @@
         <name lang="ar">صمّام صغري بتحكّم ميكانيكي</name>
         <name lang="it">Microvalvola a comando meccanico</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="0.1" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="2" y2="26" x2="6"/>
         <line length1="0.1" length2="1.5" antialias="true" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="-1" y2="-21" x2="-9"/>

@@ -7,7 +7,8 @@
         <name lang="ar">مُحرّك كهربائي</name>
         <name lang="it">Motore elettrico</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-5" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
         <text x="3" y="-0.3333" size="12" text="M"/>

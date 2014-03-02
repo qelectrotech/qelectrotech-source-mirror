@@ -7,7 +7,8 @@
         <name lang="pl">Odsyłacz 3 (pionowo)</name>
         <name lang="cs">Odkaz_3 - světlo (svislé)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="3" y2="-7" x2="7"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="3" y2="-3" x2="7"/>

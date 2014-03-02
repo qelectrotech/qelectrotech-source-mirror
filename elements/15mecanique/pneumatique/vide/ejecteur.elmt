@@ -7,7 +7,8 @@
         <name lang="ar">مُولّد فراغ</name>
         <name lang="it">Generatore di vuoto</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="36" y5="-21" x5="36" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="36" y2="-27" x2="36" y3="-24" x3="42" y4="-21"/>
         <input x="13" y="9" size="9" rotate="true" text="_"/>

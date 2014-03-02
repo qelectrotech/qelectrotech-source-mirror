@@ -7,7 +7,8 @@
         <name lang="ar">صمّام لتوصيل الضغط, تحكّم نيوماتي</name>
         <name lang="it">Valvola di riempimento pneumatica</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="16" y="-48" size="9" rotate="true" text="_"/>
         <arc width="6" x="-8" y="-34" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="50" angle="-100"/>

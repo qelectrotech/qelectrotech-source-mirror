@@ -8,7 +8,8 @@
         <name lang="pl">Siłownik hydrauliczny dwustronnego działania, nastawialny z hamowaniem jednostronnym</name>
         <name lang="cs">Vodní válec 2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-12" y5="-20" x5="42" y6="-12" x6="42" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8" x1="42" y2="0" x2="42" y3="0" x3="-12" y4="-20"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="10" y2="-1" x2="-5"/>

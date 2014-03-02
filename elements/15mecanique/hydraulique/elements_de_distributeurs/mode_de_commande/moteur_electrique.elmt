@@ -8,7 +8,8 @@
         <name lang="pl">Silnik elektryczny</name>
         <name lang="cs">Elektrický motor</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-6" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="8" x1="-6" y2="5" x2="-3" y3="11" x3="0" y4="8"/>
         <text x="-28" y="1" size="9" text="M"/>

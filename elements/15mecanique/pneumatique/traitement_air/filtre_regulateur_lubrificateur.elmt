@@ -7,7 +7,8 @@
         <name lang="ar">مُرشّح مُعدّل للضغط بمزيتة</name>
         <name lang="it">Filtro, regolatore e lubrificatore</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="78" y="21" size="9" rotate="true" text="_"/>
         <circle x="31.5" y="-10.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="21"/>

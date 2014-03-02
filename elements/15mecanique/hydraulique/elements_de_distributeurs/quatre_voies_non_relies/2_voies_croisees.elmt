@@ -7,7 +7,8 @@
         <name lang="cs">2 cesty překřížené</name>
         <name lang="it">2 porte incrociate</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <polygon x4="29.85" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="10" x1="29.85" y2="6" x2="24.85" y3="4" x3="27.85" y4="10"/>

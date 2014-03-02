@@ -8,7 +8,8 @@
         <name lang="pl">Sprężyna (strona prawa)</name>
         <name lang="cs">Pružina (pravá strana)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="1" y5="9" x5="3" y6="1" x6="5" y7="6" x7="7" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6" x1="-5" y2="1" x2="-3" y3="9" x3="-1" y4="1"/>
     </description>

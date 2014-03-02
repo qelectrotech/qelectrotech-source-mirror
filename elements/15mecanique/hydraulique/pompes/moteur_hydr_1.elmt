@@ -8,7 +8,8 @@
         <name lang="pl">Silnik hydrauliczny o zmiennym kierunku przepływu, o zmiennej objętości roboczej i o dwóch kierunkach obrotów</name>
         <name lang="cs">Vodní motor 1</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-24" x2="29"/>
         <polygon x4="25" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-23" x1="25" y2="-20" x2="28" y3="-26" x3="31" y4="-23"/>

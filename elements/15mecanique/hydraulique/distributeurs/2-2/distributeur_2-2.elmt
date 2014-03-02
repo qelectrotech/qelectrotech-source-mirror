@@ -7,7 +7,8 @@
         <name lang="ar">مّوزّع عاديّا مفتوح 2-2</name>
         <name lang="it">Valvola di controllo NO 2-2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.6836" x1="10" y2="-15.3164" x2="10"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.8007" x1="26.6836" y2="4.8515" x2="30.5859"/>

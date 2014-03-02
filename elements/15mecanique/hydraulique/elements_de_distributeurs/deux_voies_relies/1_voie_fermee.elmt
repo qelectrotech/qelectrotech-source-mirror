@@ -7,7 +7,8 @@
         <name lang="ar">فوهات مفصولة 2</name>
         <name lang="it">2 porte chiuse</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="10" y="-25.5" size="5" rotate="true" text="a"/>
         <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

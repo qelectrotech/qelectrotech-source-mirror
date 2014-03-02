@@ -8,7 +8,8 @@
         <name lang="pl">Siłownik jednostronnego działania ze sprężyną powrotną</name>
         <name lang="cs">Jednočinný válec - vrácený pružinou</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-25" y5="-10" x5="-25" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-25" y2="-10" x2="35" y3="10" x3="35" y4="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-15" y2="0" x2="45"/>

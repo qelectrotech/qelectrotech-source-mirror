@@ -8,7 +8,8 @@
         <name lang="cs">Spojka USB, USB 1 a 2</name>
         <name lang="it">Connettore USB 1 e 2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="50" y5="-13" x5="50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="17" x1="50" y2="7" x2="40" y3="-3" x3="40" y4="-13"/>
         <input x="48.5" y="46" size="9" rotate="true" text="_"/>

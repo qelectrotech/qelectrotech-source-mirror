@@ -7,7 +7,8 @@
         <name lang="ar">مُحرّك رئيسي</name>
         <name lang="it">Motore principale</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="30" x="-5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="3" y="-0.3333" size="12" text="M"/>

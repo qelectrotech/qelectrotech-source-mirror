@@ -7,7 +7,8 @@
         <name lang="ar">مُوزّع 4/2 بماسكة</name>
         <name lang="it">Valvola 4/2 bloccabile</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="23" y="9" size="9" rotate="true" text="_"/>
         <line length1="1.5" length2="2" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-12" x1="0" y2="-36" x2="0"/>

@@ -7,7 +7,8 @@
         <name lang="ar">مُوزّع 2x3/2 NC-NO</name>
         <name lang="it">Valvola 2x3/2 NC/NO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="86" y="8.5" size="9" rotate="true" text="_"/>
         <line length1="2" length2="2" antialias="true" end1="triangle" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-49" x1="-39" y2="-71" x2="-51"/>

@@ -8,7 +8,8 @@
         <name lang="pl">Wodno-olejowy wymiennik ciepła</name>
         <name lang="cs">Výměník voda olej</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30.0652" x1="0.8679" y2="30.0652" x2="25.6179"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.9817" x1="-0.5185" y2="-29.9817" x2="-25.1279"/>

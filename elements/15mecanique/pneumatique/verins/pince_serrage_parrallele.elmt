@@ -7,7 +7,8 @@
         <name lang="ar">قابض</name>
         <name lang="it">Pinze, parallele</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="59" y="11" size="9" rotate="true" text="_"/>
         <circle x="66" y="-27" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>

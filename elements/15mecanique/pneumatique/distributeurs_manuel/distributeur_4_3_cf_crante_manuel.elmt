@@ -7,7 +7,8 @@
         <name lang="ar">مُوزّع 4/3CF بماسكة</name>
         <name lang="it">Valvola 4/3</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="27" y="8" size="9" rotate="true" text="_"/>
         <line length1="2" length2="1.5" antialias="true" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-36" x1="-12" y2="-12" x2="-24"/>

@@ -7,7 +7,8 @@
         <name lang="ar">مقياس سرعة تاكومتر</name>
         <name lang="it">Tachimetro</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="8" y="-27" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="24"/>
         <polygon x4="18" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-29" x1="18" y2="-25" x2="18" y3="-27" x3="23" y4="-29"/>

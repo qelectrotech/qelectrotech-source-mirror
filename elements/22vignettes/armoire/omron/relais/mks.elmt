@@ -7,7 +7,8 @@
         <name lang="pl">MKS</name>
         <name lang="cs">MKS</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="34" x="3" y="-2" antialias="false" height="34" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="5" x="28" y="1" antialias="false" height="1" style="line-style:normal;line-weight:thin;filling:none;color:black"/>

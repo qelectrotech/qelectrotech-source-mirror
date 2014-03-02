@@ -7,7 +7,8 @@
         <name lang="ar">كابل ربط - 1</name>
         <name lang="it">Connessione cavo - 1</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-1.15" y="-11.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="10"/>

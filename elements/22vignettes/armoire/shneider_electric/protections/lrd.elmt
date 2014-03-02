@@ -7,7 +7,8 @@
         <name lang="pl">LRD</name>
         <name lang="cs">LRD</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="24" y5="-27" x5="24" y6="-27" x6="8" y7="-30" x7="8" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-34" x1="4" y2="-34" x2="1" y3="-49" x3="1" y4="-49"/>
         <rect width="45" x="0" y="-50" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

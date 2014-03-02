@@ -7,7 +7,8 @@
         <name lang="pl">LC2D</name>
         <name lang="cs">LC2D</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="45" x="46" y="-90" antialias="false" height="85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="45" x="0" y="-90" antialias="false" height="85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

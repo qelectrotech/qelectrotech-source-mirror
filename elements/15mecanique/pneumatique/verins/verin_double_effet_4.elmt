@@ -7,7 +7,8 @@
         <name lang="ar">مُشغّل بفعل مزدوج ذو مكبح بتعديلين</name>
         <name lang="it">Azionatore doppio effetto con freno a due regolazioni</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="11" y2="-1" x2="-4"/>
         <polygon x4="-1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-17" x1="-1" y2="-17" x2="-7" y3="-3" x3="-7" y4="-3"/>

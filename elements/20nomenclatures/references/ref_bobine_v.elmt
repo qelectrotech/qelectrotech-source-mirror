@@ -7,7 +7,8 @@
         <name lang="pl">Odsyłacz 4 (pionowo)</name>
         <name lang="cs">Odkaz - cívka (svislá)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="2.9667" y2="-6" x2="2.9667"/>
         <rect width="6" x="-0.0334" y="-4" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

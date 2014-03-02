@@ -7,7 +7,8 @@
         <name lang="ar">صمّام توصيل ضغط بدائرة كهربائية ذات أولوية</name>
         <name lang="it">Valvola di riempimento, con comando elettrico prioritario</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="37" y="1" size="9" rotate="true" text="_"/>
         <line length1="2" length2="1.5" antialias="true" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-28" x1="9" y2="-21" x2="-6"/>

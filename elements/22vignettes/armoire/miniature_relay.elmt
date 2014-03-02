@@ -7,7 +7,8 @@
         <name lang="it">Relè miniatura</name>
         <name lang="cs">Miniaturní relé</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="22" x="-11" y="-38" antialias="false" height="76" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="20" x="-10" y="-13" antialias="false" height="27" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

@@ -8,7 +8,8 @@
         <name lang="pl">Potencjometr</name>
         <name lang="cs">Potenciometr</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="-15" y2="0" x2="-5"/>
         <input x="7.5" y="3.3333" size="9" rotate="true" text="R_"/>

@@ -7,7 +7,8 @@
         <name lang="pl">GV2ME</name>
         <name lang="cs">GV2ME</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="16" y="-85" size="3" text="3L2"/>
         <text x="32" y="-85" size="3" text="5L3"/>

@@ -8,7 +8,8 @@
         <name lang="pl">Pompa hydrauliczna</name>
         <name lang="cs">Vodní čerpadlo 2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="6" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-12" x1="6" y2="-12" x2="14" y3="-20" x3="10" y4="-12"/>
         <circle x="-5" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>

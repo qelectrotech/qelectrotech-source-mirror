@@ -7,7 +7,8 @@
         <name lang="ar">مُجفّف</name>
         <name lang="it">Essicatore</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="20" y5="-10" x5="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-30" x2="20" y3="-10" x3="40" y4="10"/>
         <line length1="0.1" length2="0.1" antialias="false" end1="circle" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="9" y2="-19" x2="31"/>

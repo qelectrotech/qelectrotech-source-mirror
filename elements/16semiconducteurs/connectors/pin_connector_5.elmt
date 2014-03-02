@@ -8,7 +8,8 @@
         <name lang="cs">Spojka, 5 kolíků</name>
         <name lang="it">Connettore, 5 pin</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-25.5" y="21" size="9" rotate="true" text="_"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="simple" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-25" y2="5" x2="-15"/>

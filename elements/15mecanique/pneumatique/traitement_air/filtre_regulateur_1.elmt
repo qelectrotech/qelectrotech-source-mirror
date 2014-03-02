@@ -7,7 +7,8 @@
         <name lang="ar">مُرشّح تعديل ضغط بجهاز قيس</name>
         <name lang="it">Filtro, regolatore e manometro</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="103.85" y="-11.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
         <polygon x4="70" y5="-43" x5="80" y6="-45" x6="70" y7="-47" x7="75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-35" x1="75" y2="-37" x2="70" y3="-39" x3="80" y4="-41"/>

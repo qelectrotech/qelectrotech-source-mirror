@@ -7,7 +7,8 @@
         <name lang="ar">صرف هواء</name>
         <name lang="it">Scarico d'aria</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="13.85" y="-1.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
         <arc width="20" x="-7" y="-20" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="45" angle="-90"/>

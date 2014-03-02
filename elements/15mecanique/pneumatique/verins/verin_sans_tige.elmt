@@ -8,7 +8,8 @@ Vérin sans tige double effet avec amortissement réglable aux deux fins de cour
         <name lang="ar">اسطوانة بدون ذراع بفعل مزدوج و بإخماد قابل للتعديل عند نهايتي المشوار  (تحريك خطّي نيوماتي)</name>
         <name lang="it">Cilindro senza stelo, doppio effetto, con ammortizzazione regolabile ai fine corsa (azionamento pneumatico lineare)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="72" y5="30" x5="72" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="72" y2="30" x2="-12" y3="-10" x3="-12" y4="-10"/>
         <polygon x4="20" y5="-20" x5="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-20" x2="40" y3="40" x3="40" y4="40"/>

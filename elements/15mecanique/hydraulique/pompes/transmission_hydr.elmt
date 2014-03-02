@@ -8,7 +8,8 @@
         <name lang="pl">Przekładnia hydrauliczna zwarta, o zmiennej prędkości, o jednym kierunku obrotów, z pompą o zmiennej objętości roboczej</name>
         <name lang="cs">Vodní převod</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-4" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-16" x1="-4" y2="-13" x2="-1" y3="-19" x3="2" y4="-16"/>
         <circle x="5" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>

@@ -7,7 +7,8 @@
         <name lang="ar">مُوزّع 5/2 أحادي راجع بالضغط</name>
         <name lang="it">Valvola 5/2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="21" y="8" size="9" rotate="true" text="_"/>
         <line length1="2" length2="2" antialias="true" end1="triangle" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-13" x1="-1" y2="-35" x2="11"/>

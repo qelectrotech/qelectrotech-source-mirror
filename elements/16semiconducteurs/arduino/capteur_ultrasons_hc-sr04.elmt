@@ -6,7 +6,8 @@
         <name lang="pl">Ultradźwiękowy czujnik odległości HC-SR04</name>
         <name lang="cs">Ultrazvukové vzdálenostní čidlo HC-SR04</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="7" y="-9" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="22"/>
         <text x="11" y="2" size="6" rotation="90" text="Gnd"/>

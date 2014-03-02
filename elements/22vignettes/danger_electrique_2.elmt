@@ -7,7 +7,8 @@
         <name lang="pl">Pod napięciem</name>
         <name lang="cs">Pod napětím</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="40" x1="1" y2="2" x2="20" y3="40" x3="39" y4="40"/>
         <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="41" x1="0" y2="41" x2="40" y3="1" x3="20" y4="41"/>

@@ -7,7 +7,8 @@
         <name lang="ar">مُوزّع  5/3 CF</name>
         <name lang="it">Valvola 5/3</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-36" x1="-52" y2="-36" x2="51"/>
         <input x="80" y="9" size="9" rotate="true" text="_"/>

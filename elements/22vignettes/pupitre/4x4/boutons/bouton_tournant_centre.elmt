@@ -8,7 +8,8 @@
         <name lang="pl">Łącznik obrotowy w pozycji środkowej</name>
         <name lang="cs">Otočné tlačítko otevřené ve středové pozici</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-20" y="-20" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="40"/>
         <circle x="-22" y="-22" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="44"/>

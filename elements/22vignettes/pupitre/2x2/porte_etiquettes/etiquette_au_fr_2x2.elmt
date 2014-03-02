@@ -8,7 +8,8 @@
         <name lang="pl">Etykieta - Zatrzymanie awaryjne - fr</name>
         <name lang="cs">Štítek - nouzové zastavení - fr</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="12.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="75"/>
         <circle x="30" y="30" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="40"/>

@@ -8,7 +8,8 @@
         <name lang="pl">Silnik hydrauliczny o jednym kierunku przepływu, o zmiennej objętości roboczej z odprowadzeniem przecieków, o dwóch kierunkach obrotów z dwustronnym wałem</name>
         <name lang="cs">Vodní motor 3</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="0" y2="-24" x2="39"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17" x1="35" y2="14" x2="35"/>

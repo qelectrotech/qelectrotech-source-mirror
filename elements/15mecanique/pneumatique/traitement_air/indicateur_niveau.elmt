@@ -7,7 +7,8 @@
         <name lang="ar">مُؤشّر مستوى سائل</name>
         <name lang="it">Indicatore del livello del liquido</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-5" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
         <arc width="30" x="-5" y="-30" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-45" angle="-90"/>

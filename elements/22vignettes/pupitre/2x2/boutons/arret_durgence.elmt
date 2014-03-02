@@ -7,7 +7,8 @@
         <name lang="ar">توقيف طوارئ</name>
         <name lang="it">Arresto d'emergenza</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-19" y="-19" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="38"/>
         <circle x="-20" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>

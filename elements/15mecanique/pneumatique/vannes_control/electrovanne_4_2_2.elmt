@@ -7,7 +7,8 @@
         <name lang="ar">صمّام تحكّم 4/3 , مغلق عند منتصف الموضع</name>
         <name lang="it">Valvola 4/3 di controllo, chiusa in posizione intermedia</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="38.85" y="-6.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
         <circle x="58.85" y="-6.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>

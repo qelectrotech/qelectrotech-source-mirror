@@ -7,7 +7,8 @@
         <name lang="ar">شفّاط فراغي</name>
         <name lang="it">Pinza vuoto (ventosa)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="8" y="10" size="9" rotate="true" text="_"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="18" x2="0"/>

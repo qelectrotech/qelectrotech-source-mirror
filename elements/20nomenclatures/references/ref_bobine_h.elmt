@@ -7,7 +7,8 @@
         <name lang="pl">Odsyłacz 4 (poziomo)</name>
         <name lang="cs">Odkaz - cívka (vodorovná)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.95" x1="0.0001" y2="0.95" x2="0.0001"/>
         <rect width="6" x="-3" y="2.95" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

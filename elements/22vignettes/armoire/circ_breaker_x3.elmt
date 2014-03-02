@@ -8,7 +8,8 @@
         <name lang="pl">Wyłącznik trójbiegunowy</name>
         <name lang="cs">Třípólový jistič</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="54" x="-9" y="-40" antialias="false" height="81" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-39.9914" x1="27" y2="40.324" x2="27"/>

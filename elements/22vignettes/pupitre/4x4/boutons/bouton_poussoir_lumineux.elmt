@@ -8,7 +8,8 @@
         <name lang="pl">Przycisk podświetlony</name>
         <name lang="cs">Podsvícené tlačítko</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="24" x="-12" y="-12" antialias="true" height="24" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-270"/>
         <circle x="-14" y="-14" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="28"/>

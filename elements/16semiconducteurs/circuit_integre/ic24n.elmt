@@ -9,7 +9,8 @@
         <name lang="pl">Układ scalony, 24 nóżki (ponumerowany)</name>
         <name lang="cs">Integrovaný obvod, 24 očíslovaných kolíků</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="10.5" y="80.6667" size="5" text="14"/>
         <text x="10" y="100.667" size="5" text="13"/>

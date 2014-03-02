@@ -7,7 +7,8 @@
         <name lang="pl">MY</name>
         <name lang="cs">MY</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="20" x="5" y="-29" antialias="false" height="28" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="4" x="19" y="-25" antialias="false" height="2.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>

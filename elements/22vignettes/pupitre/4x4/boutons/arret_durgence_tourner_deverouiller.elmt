@@ -7,7 +7,8 @@
         <name lang="ar">توقيف طوارئ - دوران للإطلاق</name>
         <name lang="it">Arresto d'emergenza, sblocco a rotazione</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="50" x="-25" y="-25" antialias="true" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-60" angle="-100"/>
         <arc width="50" x="-25" y="-25" antialias="true" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" start="60" angle="-100"/>

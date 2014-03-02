@@ -7,7 +7,8 @@
         <name lang="ar">مُعدّل ضغط E/P</name>
         <name lang="it">Regolatore di pressione E/P</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="13" y="10" size="9" rotate="true" text="_"/>
         <circle x="-42" y="-66" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="24"/>

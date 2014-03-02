@@ -8,7 +8,8 @@
         <name lang="pl">Góra-dół</name>
         <name lang="cs">Nahoru/Dolů</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="2" length2="2" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-13" x1="5" y2="-23" x2="5"/>
         <line length1="2" length2="2" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-23" x1="-5" y2="-13" x2="-5"/>

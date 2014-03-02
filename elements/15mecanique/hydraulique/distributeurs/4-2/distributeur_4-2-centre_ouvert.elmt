@@ -7,7 +7,8 @@
         <name lang="ar">موزّع مركز مفتوح 2-4</name>
         <name lang="it">Valvola di controllo aperta 4-2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-29.9829" y5="-5.4489" x5="-14.9829" y6="-5.4489" x6="-14.9829" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5.4489" x1="-14.9829" y2="4.5510" x2="-14.9829" y3="4.5510" x3="-29.9829" y4="-5.4489"/>
         <circle x="19.2171" y="-0.9325" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="1.6"/>

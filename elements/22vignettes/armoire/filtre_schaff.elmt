@@ -7,7 +7,8 @@
         <name lang="pl">Filtr Schaff</name>
         <name lang="cs">Filtr Schaff</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="13" y5="19" x5="13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="19" x1="-13" y2="26" x2="-6" y3="26" x3="6" y4="19"/>
         <rect width="26" x="-13" y="-23" antialias="false" height="41" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

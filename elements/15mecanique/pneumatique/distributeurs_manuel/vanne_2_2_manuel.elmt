@@ -7,7 +7,8 @@
         <name lang="ar">صمّام توقيق 2/2</name>
         <name lang="it">Valvola 2/2 di arresto</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="12" y="8" size="9" rotate="true" text="_"/>
         <circle x="-61.5" y="-35.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
