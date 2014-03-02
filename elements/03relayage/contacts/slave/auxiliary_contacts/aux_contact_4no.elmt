@@ -12,7 +12,7 @@
   <kindInformations>
         <kindInformation name="state" show="1">NO</kindInformation>
         <kindInformation name="number" show="1">4</kindInformation>
-        <kindInformation name="type" show="1">Auxiliary</kindInformation>
+        <kindInformation name="type" show="1">simple</kindInformation>
         <kindInformation name="tempoType" show="0"></kindInformation>
   </kindInformations>
     <description>

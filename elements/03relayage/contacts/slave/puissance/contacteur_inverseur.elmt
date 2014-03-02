@@ -7,6 +7,12 @@
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <kindInformations>
+        <kindInformation name="state" show="1">NO</kindInformation>
+        <kindInformation name="number" show="1">8</kindInformation>
+        <kindInformation name="type" show="1">puissance</kindInformation>
+        <kindInformation name="tempoType" show="0"></kindInformation>
+    </kindInformations>
     <description>
         <text x="-6" y="19" size="4" text="6&#xa;T3"/>
         <text x="-26" y="19" size="4" text="4&#xa;T2"/>
