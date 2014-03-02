@@ -1717,12 +1717,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="78"/>
         <source>Select All</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή Όλων</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="79"/>
         <source>De-Select All</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποεπιλογή Όλων</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="141"/>
@@ -2455,39 +2455,39 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
         <source>Délier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποσύνδεση του επιλεγμένου στοιχείου</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
         <source>Lier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνδεση του επιλεγμένου στοιχείου</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
         <source>Éléments disponibles</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμα στοιχεία</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
         <source>Éléments liés</source>
-        <translation type="unfinished"></translation>
+        <translation>Συνδεδεμένα στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="118"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="132"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Ανώνυμο</translation>
+        <translation>Ανώνυμο</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="119"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="133"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished">Σελίδα  %1 (%2), θέση %3.</translation>
+        <translation>Σελίδα  %1 (%2), θέση %3.</translation>
     </message>
 </context>
 <context>
@@ -3644,17 +3644,17 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
         <source>Ajouter une liaison mecanique</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη μηχανικής σύνδεσης</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
         <source>Ajouter une zone rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη τετραγωνικής περιοχής</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
         <source>Ajouter une zone ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη ελειψοειδούς περιοχής</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
