@@ -7,7 +7,8 @@
         <name lang="cs">Zásuvka DIN 4 kolíky</name>
         <name lang="it">DIN 4 Pin</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-25" y="-12.6667" size="4" text="1"/>
         <text x="22" y="-12.6667" size="4" text="4"/>

@@ -8,7 +8,8 @@
         <name lang="pl">Kolanko 90</name>
         <name lang="cs">Koleno 90</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="12" x="-12" y="-12" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
         <terminal x="-6" y="0" orientation="w"/>

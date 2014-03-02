@@ -7,7 +7,8 @@
         <name lang="cs">Kombinovaný zásobnik 1000L</name>
         <name lang="it">Scambiatore combinato 1000L</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="120" x="-60" y="133.5" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
         <arc width="120" x="-60" y="-67.5" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>

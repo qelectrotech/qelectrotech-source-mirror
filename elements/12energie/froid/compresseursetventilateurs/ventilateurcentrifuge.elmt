@@ -8,7 +8,8 @@
         <name lang="pl">Wentylatot odsrodkowy</name>
         <name lang="cs">Odstředivý ventilátor</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="30"/>
         <arc width="12" x="-12" y="-5" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>

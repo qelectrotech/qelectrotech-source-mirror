@@ -6,7 +6,8 @@
         <name lang="it">Computer PC</name>
         <name lang="cs">Počítač PC</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="100" x="0" y="80" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="9.5" y="82.5" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" diameter="1"/>

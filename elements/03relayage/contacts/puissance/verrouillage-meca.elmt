@@ -8,7 +8,8 @@
         <name lang="pl">Blokada mechaniczna</name>
         <name lang="cs">Mechanický zámek</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="8" y2="-7" x2="18" y3="4" x3="13" y4="-7"/>
         <terminal x="4" y="0" orientation="w"/>

@@ -7,7 +7,8 @@
         <name lang="cs">Vodovodní uzávěr ECS</name>
         <name lang="it">Rubinetto acqua calda sanitaria ACS</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="12" x="-7" y="0" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
         <arc width="12" x="-6" y="-0.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>

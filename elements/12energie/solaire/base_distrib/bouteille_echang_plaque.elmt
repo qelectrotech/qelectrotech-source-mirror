@@ -7,7 +7,8 @@
         <name lang="cs">1F deskový výměník</name>
         <name lang="it">1F Scambiatore</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-39" x2="-45" x3="-45" x4="-50" antialias="false" x5="-40" x6="-50" x7="-44" x8="-44" x9="-30" closed="false" y1="14" y2="14" y10="-11" y3="10" y4="5" y5="0" x10="-30" y6="-5" y7="-8" y8="-11" y9="-11"/>
         <rect width="12" x="-23" y="-9" antialias="false" height="21" style="line-style:normal;line-weight:thin;filling:none;color:black"/>

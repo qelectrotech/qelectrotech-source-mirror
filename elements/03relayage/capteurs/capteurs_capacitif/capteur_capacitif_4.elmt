@@ -10,7 +10,8 @@
         <name lang="es">Sensor capacitivo 4 terminales</name>
         <name lang="cs">Kapacitní čidlo se čtyřmi svorkami</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-32" y="-3" size="4" text="WH"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-28" y2="-8" x2="-22"/>

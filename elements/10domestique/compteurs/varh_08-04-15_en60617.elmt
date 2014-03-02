@@ -8,7 +8,8 @@
         <name lang="pl">Licznik warogodzin</name>
         <name lang="cs">Měřič hodin jalového výkonu (varhodin)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="30" x="-15" y="-14" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="30" x="-15" y="-22" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

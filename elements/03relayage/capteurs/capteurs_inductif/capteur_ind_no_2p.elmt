@@ -9,7 +9,8 @@
         <name lang="es">Sensor inductivo NA</name>
         <name lang="cs">Indukční čidlo se dvěma svorkami NO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="22.5" y="0.55" size="9" rotate="true" text="_"/>
         <text x="2" y="-20" size="5" text="BR"/>

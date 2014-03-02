@@ -7,7 +7,8 @@
         <name lang="cs">C zásobník s dvojitým pláštěm</name>
         <name lang="it">C Scambiatore</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-39" y="-18" size="9" text="C"/>
         <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" x2="42" x3="42" x4="38" antialias="false" x5="45" x6="39" x7="44" x8="38" x9="42" closed="false" y1="-22" y2="-22" y10="24" y3="-10" y11="24" y4="-6" y5="-2" x10="42" y6="3" x11="2" y7="6" y8="10" y9="13"/>

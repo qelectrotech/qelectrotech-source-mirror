@@ -6,7 +6,8 @@
         <name lang="cs">Kontakt NO řízený motorem</name>
         <name lang="it">Contatto NO motorizzato</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-18" y="-8" size="5" text="M"/>
         <circle x="-20" y="-15" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="10"/>

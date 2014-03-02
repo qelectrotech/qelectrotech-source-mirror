@@ -7,7 +7,8 @@
         <name lang="cs">Bezpečnostní skupina (pravá)</name>
         <name lang="it">Gruppo di sicurezza DX</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x1="0" x2="-8" x3="-8" x4="8" antialias="false" x5="8" x6="20" x7="20" x8="8" x9="8" closed="false" y1="20" y2="20" y10="20" y3="-10" y4="-10" y5="-7" x10="0" y6="-7" y7="7" y8="7" y9="20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="0" x2="17"/>

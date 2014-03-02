@@ -8,7 +8,8 @@
         <name lang="pl">MOVIDRIVE MDX60B/61B</name>
         <name lang="cs">MOVIDRIVE MDX60B/61B</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="68" x1="222" y2="68" x2="247"/>
         <polygon x4="301" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="3" x1="100" y2="7" x2="100" y3="7" x3="301" y4="3"/>

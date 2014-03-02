@@ -8,7 +8,8 @@
         <name lang="cs">Zásuvka PC 2P+T</name>
         <name lang="it">Presa 2p+T</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="5" y="34.3333" size="4" text="PC 230V 16A"/>
         <rect width="2" x="19" y="19" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>

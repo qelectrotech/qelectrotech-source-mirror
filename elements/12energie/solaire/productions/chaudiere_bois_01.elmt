@@ -8,7 +8,8 @@
         <name lang="pl">Kocioł</name>
         <name lang="cs">Kotel na dřevo</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="70" x="-35" y="-60" antialias="false" height="120" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="35" y2="50" x2="40"/>

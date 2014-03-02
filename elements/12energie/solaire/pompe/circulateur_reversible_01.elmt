@@ -8,7 +8,8 @@
         <name lang="pl">Pompa cyrkulacyjna</name>
         <name lang="cs">Cirkulační pumpa</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="6" y2="-5" x2="1" y3="5" x3="1" y4="0"/>
         <polygon x4="-6" y5="0" x5="-6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-6" y2="-5" x2="-1" y3="5" x3="-1" y4="0"/>

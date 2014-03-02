@@ -8,7 +8,8 @@
         <name lang="pl">Grzejnik trójfazowy skojarzony w gwiazdę</name>
         <name lang="cs">Třífázové topení, hvězdicové</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="31.5" y="-4.6666" size="9" rotate="true" text="R_"/>
         <rect width="47" x="-23" y="-34" antialias="false" height="48" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>

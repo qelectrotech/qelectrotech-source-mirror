@@ -7,7 +7,8 @@
         <name lang="cs">Zásuvka DIN 5 kolíků 360 stupňů se středovým kolíčkem</name>
         <name lang="it">DIN 5 Pin 360° con pin centrale</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-25" y2="-10" x2="-13"/>
         <arc width="40" x="-20" y="-20" antialias="true" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="84" angle="-348"/>

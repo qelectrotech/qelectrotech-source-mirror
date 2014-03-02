@@ -9,7 +9,8 @@
         <name lang="cs">Impulsový průtokoměr</name>
         <name lang="it">Flussimetro a impulsi</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
         <text x="2" y="-12.6667" size="4" text="13"/>

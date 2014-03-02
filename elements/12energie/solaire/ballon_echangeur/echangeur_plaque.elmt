@@ -7,7 +7,8 @@
         <name lang="cs">Deskový výměník tepla</name>
         <name lang="it">Scambiatore a piastre</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="26" x="-13" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="12" x2="10" x3="-5" x4="10" antialias="true" x5="-5" x6="10" x7="-5" x8="10" x9="12" closed="false" y1="-30" y2="-30" y10="30" y3="-20" y4="-10" y5="0" x10="10" y6="10" y7="20" y8="30" y9="30"/>

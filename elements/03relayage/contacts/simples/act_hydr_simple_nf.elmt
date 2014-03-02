@@ -6,7 +6,8 @@
         <name lang="cs">Kontakt NC řízený pneumaticky nebo hydraulicky, jednocestný</name>
         <name lang="it">Contatto NC a comando pneumatico o idraulico</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="20" x="-30" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <input x="-10" y="16" size="4" text="2"/>

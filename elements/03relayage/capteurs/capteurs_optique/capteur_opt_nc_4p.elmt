@@ -8,7 +8,8 @@
         <name lang="cs">Optické čidlo čtyřdrátové (NC)</name>
         <name lang="it">Sensore ottico (NC)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="22.5" y="-0.45" size="9" rotate="true" text="_"/>
         <text x="12" y="22" size="5" text="WH"/>

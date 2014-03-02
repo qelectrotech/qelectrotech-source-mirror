@@ -9,7 +9,8 @@
         <name lang="pl">Licznik godzin</name>
         <name lang="cs">Počítadlo hodin</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-3" y="2.3333" size="9" text="h"/>
         <rect width="30" x="-15" y="-11" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

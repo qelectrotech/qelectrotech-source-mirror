@@ -7,7 +7,8 @@
         <name lang="cs">Zásuvka mini-DIN 8 kolíků</name>
         <name lang="it">Mini-DIN 8 Pin</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="11" y="27.3333" size="4" text="1"/>
         <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="17" x1="7" y2="20" x2="10" y3="30" x3="10"/>

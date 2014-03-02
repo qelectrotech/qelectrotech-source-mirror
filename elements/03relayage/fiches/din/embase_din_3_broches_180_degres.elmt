@@ -7,7 +7,8 @@
         <name lang="cs">Zásuvka DIN 3 kolíky 180 stupňů</name>
         <name lang="it">DIN 3 Pin 180°</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="40" x="-20" y="-20" antialias="true" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="84" angle="-348"/>
         <text x="-26" y="-1.6666" size="4" text="3"/>

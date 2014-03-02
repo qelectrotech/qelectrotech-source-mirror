@@ -8,7 +8,8 @@
         <name lang="pl">Pompa</name>
         <name lang="cs">Pumpa</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-10" y="-17" size="7" text="P1"/>
         <polygon x4="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="8" y2="-7" x2="-4" y3="7" x3="-4" y4="0"/>

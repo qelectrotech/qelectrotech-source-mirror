@@ -7,7 +7,8 @@
         <name lang="cs">Vrstvový zásobník 1000L</name>
         <name lang="it">Serbatoio a stratificazione 1000L</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-25" y="73.5" size="9" rotate="true" text="2000L"/>
         <rect width="16" x="-8" y="-116" antialias="false" height="232" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>

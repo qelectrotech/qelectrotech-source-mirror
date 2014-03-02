@@ -7,7 +7,8 @@
         <name lang="cs">Nádoba, ohřívání 01</name>
         <name lang="it">Vaso di espansione 10L</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-13" y="25" size="7" rotate="true" text="10L"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.1" x1="0" y2="20.1" x2="0"/>

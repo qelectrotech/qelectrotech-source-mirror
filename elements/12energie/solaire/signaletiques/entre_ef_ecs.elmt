@@ -8,7 +8,8 @@
         <name lang="pl">Przyłącze zimnej wody użytkowej</name>
         <name lang="cs">Přívod studené užitkové vody</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-12" y="2" size="5" text="EF"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="3" y2="0" x2="11"/>

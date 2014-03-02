@@ -9,7 +9,8 @@
         <name lang="es">Sensor magnetico NA</name>
         <name lang="cs">Magnetické čidlo NO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-19" y5="-8" x5="-17" y6="-6" x6="-17" y7="-6" x7="-17" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="-17" y2="-14" x2="-17" y3="-14" x3="-19" y4="-8"/>
         <polygon x4="-17" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="-17" y2="-16" x2="-21" y3="-6" x3="-21" y4="-6"/>

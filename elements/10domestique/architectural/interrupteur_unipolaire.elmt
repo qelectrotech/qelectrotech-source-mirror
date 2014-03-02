@@ -8,7 +8,8 @@
         <name lang="pl">Łącznik jednobiegunowy</name>
         <name lang="cs">Jednopólový spínač</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="2" y2="-10" x2="10" y3="-8" x3="12"/>
         <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>

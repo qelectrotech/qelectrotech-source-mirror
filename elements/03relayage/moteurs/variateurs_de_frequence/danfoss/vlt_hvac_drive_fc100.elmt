@@ -5,7 +5,8 @@
         <name lang="it">VLT HVAC Drive FC100</name>
         <name lang="cs">VLT HVAC Drive FC100</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-20.45" y="44" size="9" rotate="true" text="VLT HVAC DRIVE&#xa;       FC 100"/>
         <text x="93" y="76" size="6" text="R+"/>

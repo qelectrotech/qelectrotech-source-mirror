@@ -9,7 +9,8 @@
         <name lang="cs">Altistart 01N1</name>
         <name lang="es">Altistart 01N1</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="73" x1="-10" y2="79" x2="-10"/>
         <polygon x4="73" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-30" x1="73" y2="-30" x2="110" y3="80" x3="110" y4="80"/>

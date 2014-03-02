@@ -9,7 +9,8 @@
         <name lang="cs">MCD 3000</name>
         <name lang="es">MCD 3000</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="242.5" y="63" size="4" rotation="270" rotate="true" text="22"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="68" x1="252" y2="68" x2="267"/>

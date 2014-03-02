@@ -9,7 +9,8 @@
         <name lang="es">Sensor magnetico NC</name>
         <name lang="cs">Magnetické čidlo NC</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-20" y5="-7" x5="-18" y6="-5" x6="-18" y7="-5" x7="-18" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="-18" y2="-13" x2="-18" y3="-13" x3="-20" y4="-7"/>
         <polygon x4="-18" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="-18" y2="-15" x2="-22" y3="-5" x3="-22" y4="-5"/>

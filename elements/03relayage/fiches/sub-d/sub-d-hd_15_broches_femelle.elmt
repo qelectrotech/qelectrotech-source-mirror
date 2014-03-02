@@ -8,7 +8,8 @@
         <name lang="pl">Gniazdo D-Sub, piętnastostykowe</name>
         <name lang="cs">Zásuvka D-SUB HD 15 kolíků (ženská)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-2" y2="-15" x2="-30"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="-2" y2="25" x2="-30"/>

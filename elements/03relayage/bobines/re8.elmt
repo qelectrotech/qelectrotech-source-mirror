@@ -9,7 +9,8 @@
         <name lang="es">RE8</name>
         <name lang="cs">RE8</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="80" x="0" y="0" antialias="false" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="2" y="32.5" size="9" rotate="true" text="T_"/>

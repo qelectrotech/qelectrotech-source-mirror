@@ -7,7 +7,8 @@
         <name lang="cs">Přechod přes stěnu</name>
         <name lang="it">Passaggio a muro</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-20" y2="0" x2="-16" y3="-5" x3="-13"/>
         <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-20" x2="-4" y3="-10" x3="-10"/>

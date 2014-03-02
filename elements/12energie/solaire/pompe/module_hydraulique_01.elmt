@@ -8,7 +8,8 @@
         <name lang="pl">Moduł hydrauliczny n°1</name>
         <name lang="cs">Hydraulický modul n°1</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="0" y2="3" x2="-6" y3="3" x3="6" y4="-8"/>
         <circle x="-9.99995" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>

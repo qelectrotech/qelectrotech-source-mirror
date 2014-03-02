@@ -8,7 +8,8 @@
         <name lang="pl">DIGIDRIVE SK</name>
         <name lang="cs">Digidrive sk</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="350" x="2" y="0" antialias="false" height="66" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="50" y="29.5" size="9" rotate="true" text="VALEUR"/>

@@ -8,7 +8,8 @@
         <name lang="es">Contacto auxiliar 2 x NA</name>
         <name lang="cs">Pomocné kontakty 2 x NO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <kindInformations>
         <kindInformation name="state" show="1">NO</kindInformation>
         <kindInformation name="number" show="1">2</kindInformation>

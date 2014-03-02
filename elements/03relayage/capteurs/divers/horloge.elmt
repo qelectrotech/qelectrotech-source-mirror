@@ -10,7 +10,8 @@
         <name lang="es">Contacto temporizado</name>
         <name lang="cs">Hodinový kontakt</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-27" y="-6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="12"/>
         <text x="2" y="20.8333" size="4" text="14"/>

@@ -10,7 +10,8 @@
         <name lang="es">Bobina KA con enclavamiento mecánico</name>
         <name lang="cs">Cívka relé s mechanickým uzavřením</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="6" x="14" y="-8" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8" x1="14" y2="0" x2="20" y3="8" x3="14"/>

@@ -7,7 +7,8 @@
         <name lang="pl">Zestyk przełączny sterowany zegarem</name>
         <name lang="cs">Kontakt NC/NO řízený elektrickými hodinami</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-10" x1="-20" y2="-10" x2="-5"/>
         <circle x="-30" y="-15" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="10"/>

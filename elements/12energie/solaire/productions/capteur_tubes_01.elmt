@@ -8,7 +8,8 @@
         <name lang="pl">Kolektory</name>
         <name lang="cs">Kolektory</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="32" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-13" x1="98" y2="-13" x2="100" y3="-22" x3="100" y4="-22"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="88" y2="-13" x2="91"/>

@@ -7,7 +7,8 @@
         <name lang="cs">Elektrický zásobnik ECS</name>
         <name lang="it">Scambiatore elettrico ACS</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-37" y="-24" size="9" text="Ballon&#xa; ECS"/>
         <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="-10" x3="9" x4="-10" antialias="false" x5="10" x6="-10" x7="10" x8="-11" x9="10" closed="false" y1="82" y2="70" y10="30" y3="65" y11="30" y4="60" y12="30" y5="56" x10="-10" y6="50" x11="2" y7="45" x12="2" y8="40" y9="35"/>

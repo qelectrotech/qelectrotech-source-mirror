@@ -5,7 +5,8 @@
         <name lang="it"> Pressostato Citec 8930</name>
         <name lang="cs"> Tlakové čidlo Citec 8930</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="150" x="-60" y="-70" antialias="true" height="140" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-180"/>
         <text x="4" y="-14" size="5" text="L+"/>

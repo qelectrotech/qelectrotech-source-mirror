@@ -10,7 +10,8 @@
         <name lang="es">Sensor capacitivo 3 terminales</name>
         <name lang="cs">Kapacitní čidlo se třemi svorkami</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-9" y="14" size="4" text="BU"/>
         <text x="6" y="-3" size="4" text="BK"/>

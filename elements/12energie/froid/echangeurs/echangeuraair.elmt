@@ -8,7 +8,8 @@
         <name lang="pl">Wymiennik powietrza</name>
         <name lang="cs">Výměník horkého vzduchu</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="19" y="-1.66667" size="5" text="_"/>
         <rect width="36" x="-18" y="-20" antialias="false" height="48" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

@@ -7,7 +7,8 @@
         <name lang="cs">Zásobnik s výměníkem 1</name>
         <name lang="it">Scambiatore di calore</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="120" x="-58.125" y="-93.25" antialias="true" height="201" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <arc width="120" x="-58" y="-111.5" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>

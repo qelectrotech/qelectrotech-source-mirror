@@ -7,7 +7,8 @@
         <name lang="cs">Nádoba, ohřívání 02</name>
         <name lang="it">Vaso di espansione 50L</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="3" x2="-3" y3="3" x3="3" y4="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="20"/>

@@ -8,7 +8,8 @@
         <name lang="pl">Zestyk pzełączny napędzany kluczykiem</name>
         <name lang="cs">Klíčový spínač - 3 polohy</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-35" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-8" x1="-37" y2="-4" x2="-38" y3="-4" x3="-34" y4="-8"/>
         <circle x="-38.2361" y="-12.2361" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4.4721"/>

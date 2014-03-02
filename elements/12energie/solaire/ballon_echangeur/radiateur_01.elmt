@@ -7,7 +7,8 @@
         <name lang="cs">Deskové topné těleso</name>
         <name lang="it">Radiatore</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="-19" y2="2" x2="-17"/>
         <arc width="4" x="48" y="-7.5" antialias="true" height="84" style="line-style:normal;line-weight:normal;filling:none;color:black" start="50" angle="-103"/>

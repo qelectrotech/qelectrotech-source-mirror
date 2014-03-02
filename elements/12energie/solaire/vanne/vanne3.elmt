@@ -7,7 +7,8 @@
         <name lang="cs">Třícestný ventil</name>
         <name lang="it">Valvola 3vie</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="20" x="-10" y="-31" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="-5" y="-16.3333" size="6" rotate="true" text="V1"/>

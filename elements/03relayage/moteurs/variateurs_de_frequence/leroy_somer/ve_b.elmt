@@ -7,7 +7,8 @@
         <name lang="pl">VE/B</name>
         <name lang="cs">VE/B</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="117" y="71" size="5" text="F-"/>
         <circle x="117.5" y="75.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>

@@ -7,7 +7,8 @@
         <name lang="cs">Čidlo teploty uzávěru</name>
         <name lang="it">Sonda di temperatura</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-8" x2="0"/>
         <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" x3="-1" x4="1" antialias="false" x5="-1" x6="0" x7="0" x8="0" closed="false" y1="-1" y2="-2" y3="-3" y4="-4" y5="-5" y6="-6" y7="-7" y8="-7"/>

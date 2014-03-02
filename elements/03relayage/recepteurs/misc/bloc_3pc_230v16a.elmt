@@ -8,7 +8,8 @@
         <name lang="cs">Blok 3 PC 2P+T 230v 16A</name>
         <name lang="it">Blocco 3 prese di corrente 220V 16A</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="69.25" y="3.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
         <circle x="59.25" y="6.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>

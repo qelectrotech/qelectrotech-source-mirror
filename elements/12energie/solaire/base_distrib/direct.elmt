@@ -7,7 +7,8 @@
         <name lang="cs">A nepřímý výměník A</name>
         <name lang="it">A Scambio indiretto</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-42" y="-23" size="9" text="A"/>
         <polygon x4="24" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="24" y2="21" x2="27" y3="27" x3="27" y4="24"/>

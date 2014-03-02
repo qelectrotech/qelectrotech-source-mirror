@@ -8,7 +8,8 @@
         <name lang="cs">Optické čidlo dvoudrátové (NO)</name>
         <name lang="it">Sensore ottico (NC)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="22.5" y="1.55" size="9" rotate="true" text="_"/>
         <line length1="1.5" length2="0.2" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="10" y2="1" x2="7"/>

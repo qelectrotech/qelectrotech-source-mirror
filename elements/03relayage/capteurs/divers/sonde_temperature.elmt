@@ -9,7 +9,8 @@
         <name lang="es">Sonda de temperatura</name>
         <name lang="cs">Teplotní čidlo</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <ellipse width="4" x="-12.5" y="-3.5" antialias="true" height="6" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <arc width="2" x="-10.5" y="-1.5" antialias="true" height="2" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-180"/>

@@ -7,7 +7,8 @@
         <name lang="cs">B polopřímý</name>
         <name lang="it">B Semi-diretto 2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-41" y="-22" size="9" text="B&quot;"/>
         <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-32" x2="2" x3="-8" x4="2" antialias="true" x5="-8" x6="2" x7="-18" x8="-32" closed="false" y1="-9.5" y2="-9.5" y3="-4.5" y4="0.5" y5="5.5" y6="10.5" y7="10.5" y8="10.5"/>

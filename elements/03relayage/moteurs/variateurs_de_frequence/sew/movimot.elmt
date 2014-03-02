@@ -7,7 +7,8 @@
         <name lang="pl">MOVIMOT</name>
         <name lang="cs">MOVIMOT</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="205" y="123" size="6" text="f1/f2"/>
         <text x="206" y="64" size="6" text="24V"/>

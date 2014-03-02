@@ -8,7 +8,8 @@
         <name lang="pl">Wymiennik ciepła</name>
         <name lang="cs">Topné těleso</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="11" x="-31" y="-5" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="66" x="-33" y="11" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

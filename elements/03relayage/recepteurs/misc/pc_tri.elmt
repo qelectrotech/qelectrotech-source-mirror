@@ -7,7 +7,8 @@
         <name lang="cs">Zásuvka třípólová</name>
         <name lang="it">Presa 3P+T</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-9" y="-12.6667" size="4" text="L1"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="-7" x2="8"/>

@@ -7,7 +7,8 @@
         <name lang="pl">Komora mieszania</name>
         <name lang="cs">Smíchávací komora</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="20" x="-10" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="10" y="0" orientation="e"/>

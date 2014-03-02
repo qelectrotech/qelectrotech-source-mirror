@@ -7,7 +7,8 @@
         <name lang="es">Accionado por el nivel de un liquido NC/NA</name>
         <name lang="cs">Ovládáno hladinou kapaliny NC/NO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="12" x="-32" y="-4.5" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-20" angle="-140"/>
         <arc width="12" x="-32" y="-2.5" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-200" angle="-140"/>

@@ -7,7 +7,8 @@
         <name lang="cs">Vodorovný zásobnik ECS</name>
         <name lang="it">Scambiatore orizzontale ACS</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="84" y5="-18" x5="84" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-22" x1="83" y2="-22" x2="90" y3="-18" x3="90" y4="-18"/>
         <polygon x4="84" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="42" x1="83" y2="42" x2="90" y3="38" x3="90" y4="38"/>

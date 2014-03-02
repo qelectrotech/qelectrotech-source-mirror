@@ -8,7 +8,8 @@
         <name lang="pl">Wskaźnik optyczny o świetle migowym</name>
         <name lang="cs">Blikající světlo</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-7" y5="0" x5="0" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="0" y2="7" x2="-7" y3="0" x3="-10" y4="-7"/>
         <polygon x4="7" y5="0" x5="0" y6="0" x6="0" y7="0" x7="0" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="0" y2="-7" x2="7" y3="0" x3="10" y4="7"/>

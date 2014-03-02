@@ -7,7 +7,8 @@
         <name lang="cs">Nástěnné topné těleso</name>
         <name lang="it">Parete radiante</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" y1="-32" x1="2" y2="22" x2="2"/>
         <circle x="-11.5" y="-12.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>

@@ -7,7 +7,8 @@
         <name lang="cs">Podlahové topné těleso</name>
         <name lang="it">Pavimento radiante</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-16" y="36" size="6" text="Plancher  N°"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="6" y2="6" x2="6"/>

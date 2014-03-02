@@ -8,7 +8,8 @@
         <name lang="pl">Gniazdo D-Sub, dziewięciostykowe</name>
         <name lang="cs">Zásuvka D-SUB 9 kolíků (ženská)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-18" y="13" size="2" text="9"/>
         <text x="-28" y="18" size="2" text="5"/>

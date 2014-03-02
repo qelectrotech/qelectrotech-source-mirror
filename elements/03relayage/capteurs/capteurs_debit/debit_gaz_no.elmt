@@ -8,7 +8,8 @@
         <name lang="es">Accionado por el flujo de un gas NA</name>
         <name lang="cs">Ovládáno průtokem plynu NO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="10" x="-20" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-3"/>

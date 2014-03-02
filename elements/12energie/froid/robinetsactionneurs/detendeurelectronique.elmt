@@ -7,7 +7,8 @@
         <name lang="cs">Elektrický redukční ventil</name>
         <name lang="it">A controllo elettronico</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-5.83095" y="-17.831" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="11.6619"/>
         <text x="-3.5" y="-11" size="3" text="TCE"/>

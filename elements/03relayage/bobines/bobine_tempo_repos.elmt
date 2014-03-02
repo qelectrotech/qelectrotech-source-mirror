@@ -11,7 +11,8 @@
         <name lang="es">Bobina de reposo temporizado</name>
         <name lang="cs">Cívka relé - klid</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="4" x="10" y="-8" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <rect width="28" x="-14" y="-8" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

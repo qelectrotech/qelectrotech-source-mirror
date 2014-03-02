@@ -8,7 +8,8 @@
         <name lang="es">Sensor de flujo</name>
         <name lang="cs">Průtokové čidlo</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="105" x="-35" y="-25" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="56" y="-17" size="5" text="0V"/>

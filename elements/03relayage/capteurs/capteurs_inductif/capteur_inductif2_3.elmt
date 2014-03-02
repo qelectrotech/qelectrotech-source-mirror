@@ -10,7 +10,8 @@
         <name lang="es">Sensor inductivo 2, 3 terminales NA</name>
         <name lang="cs">Indukční čidlo se třemi svorkami</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="41" x="-20" y="-16" antialias="true" height="32" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <arc width="4" x="3" y="5.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-180"/>

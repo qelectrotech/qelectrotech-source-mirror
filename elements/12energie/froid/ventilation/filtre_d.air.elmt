@@ -7,7 +7,8 @@
         <name lang="pl">Filtr powietrza</name>
         <name lang="cs">Filtr vzduchu</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="10" y5="20" x5="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="-10" y2="-10" x2="10" y3="0" x3="-10" y4="10"/>
         <rect width="20" x="-10" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

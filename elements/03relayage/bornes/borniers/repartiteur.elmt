@@ -8,7 +8,8 @@
         <name lang="es">Distribuidor</name>
         <name lang="cs">Rozdělovač</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="42" x="4" y="-16" antialias="false" height="12" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <input x="47" y="-9.3333" size="9" text="XR_"/>

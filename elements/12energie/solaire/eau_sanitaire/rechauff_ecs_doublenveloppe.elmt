@@ -7,7 +7,8 @@
         <name lang="cs">Ohřívač s dvojitým pláštěm ECS</name>
         <name lang="it">Riscaldatore ACS</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="12" y="-22" size="4" text="EF"/>
         <text x="-10" y="-24" size="4" text="ECS"/>

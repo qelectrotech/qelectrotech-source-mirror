@@ -8,7 +8,8 @@
         <name lang="pl">Micromaster 440</name>
         <name lang="cs">Micromaster 440</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="270" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="26" x1="320" y2="20" x2="320" y3="20" x3="270" y4="54"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="310" y2="30" x2="320"/>

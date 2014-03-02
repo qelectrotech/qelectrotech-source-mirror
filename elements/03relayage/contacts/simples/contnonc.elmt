@@ -11,7 +11,8 @@
         <name lang="es">Contacto simple</name>
         <name lang="cs">Jednoduchý kontakt</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="4" y="20" size="6" text="_"/>
         <input x="-33" y="-21" size="6" text="_"/>

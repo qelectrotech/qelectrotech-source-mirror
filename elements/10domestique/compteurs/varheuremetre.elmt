@@ -8,7 +8,8 @@
         <name lang="pl">Licznik warogodzin</name>
         <name lang="cs">Počítadlo varhodin</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-13" y="2.3333" size="9" text="Varh"/>
         <rect width="30" x="-15" y="-11" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

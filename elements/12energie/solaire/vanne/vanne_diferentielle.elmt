@@ -7,7 +7,8 @@
         <name lang="cs">Diferenciální ventil</name>
         <name lang="it">Valvola differenziale</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-19" y="-23" size="3" rotate="true" text="vanne pression&#xa;différentielle"/>
         <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" x3="-3" x4="3" antialias="true" x5="-3" x6="3" x7="-3" x8="3" x9="0" closed="false" y1="0" y2="-4" y10="-17" y3="-6" y11="-17" y4="-8" y12="-17" y5="-9" x10="0" y6="-11" x11="0" y7="-12" x12="0" y8="-14" y9="-15"/>

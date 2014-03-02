@@ -9,7 +9,8 @@
         <name lang="cs">IMS2</name>
         <name lang="es">IMS2</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="114.6" y="64" size="4" rotation="270" rotate="true" text="14"/>
         <input x="242.5" y="64" size="4" rotation="270" rotate="true" text="42"/>

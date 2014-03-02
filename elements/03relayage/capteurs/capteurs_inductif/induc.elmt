@@ -9,7 +9,8 @@
         <name lang="es">Sensor inductivo</name>
         <name lang="cs">Indukční čidlo</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-51" y="-4.3333" size="9" rotate="true" text="____"/>
         <rect width="40" x="-20" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

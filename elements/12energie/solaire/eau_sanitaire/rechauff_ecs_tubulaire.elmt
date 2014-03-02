@@ -7,7 +7,8 @@
         <name lang="cs">Trubkový ohřívač ECS</name>
         <name lang="it">Riscaldatore ACS tubolare</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="13" y="-27" size="4" text="EF"/>
         <text x="-26" y="-27" size="4" text="ECS"/>

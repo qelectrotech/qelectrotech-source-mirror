@@ -7,7 +7,8 @@
         <name lang="pl">MC07 FSC11B</name>
         <name lang="cs">MC07 FSC11B</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="105.657" y="24.2426" size="5" rotation="315" text="SC11"/>
         <text x="66.6569" y="24.2426" size="5" rotation="315" text="GND"/>

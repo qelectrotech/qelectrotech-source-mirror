@@ -8,7 +8,8 @@
         <name lang="pl">Termostat</name>
         <name lang="cs">Termostat</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-3" y="-2" size="4" text="TS"/>
         <arc width="4" x="-4" y="-7" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>

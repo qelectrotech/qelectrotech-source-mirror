@@ -7,7 +7,8 @@
         <name lang="cs">Plovákový ventil</name>
         <name lang="it">Galleggiante</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <ellipse width="6" x="4" y="-10.5" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="4" y2="-5" x2="0" y3="-1" x3="0"/>

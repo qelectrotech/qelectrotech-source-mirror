@@ -8,7 +8,8 @@
         <name lang="pl">ATV31HU75N4</name>
         <name lang="cs">ATV31HU75N4</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="365" y="69.55" size="9" rotate="true" text="3.00"/>
         <line length1="0" length2="0" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="311" y2="60" x2="404"/>

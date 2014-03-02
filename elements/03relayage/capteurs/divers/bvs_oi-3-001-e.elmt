@@ -8,7 +8,8 @@
         <name lang="es">BVS OI-3-001-E</name>
         <name lang="it">BVS OI-3-001-E</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-80" x1="170" y2="80" x2="170"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="80" x1="152" y2="80" x2="170"/>

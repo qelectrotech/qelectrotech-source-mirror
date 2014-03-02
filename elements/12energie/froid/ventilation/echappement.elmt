@@ -7,7 +7,8 @@
         <name lang="pl">Wyrzutnia powietrza</name>
         <name lang="cs">Výfuk vzduchu</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="0" y2="-2" x2="0"/>
         <polygon x4="-1.5" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-9" x1="-1.5" y2="-9" x2="1.5" y3="-14" x3="0" y4="-9"/>

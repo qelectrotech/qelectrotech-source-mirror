@@ -7,7 +7,8 @@
         <name lang="cs">Sprcha</name>
         <name lang="it">Doccia</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-5" y="0" size="3" rotate="true" text="douche"/>
         <polygon x4="-9" y5="8" x5="-9" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="-1" y2="-3" x2="-2" y3="-3" x3="-9" y4="8"/>

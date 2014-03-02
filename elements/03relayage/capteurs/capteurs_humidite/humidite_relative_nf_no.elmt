@@ -7,7 +7,8 @@
         <name lang="es">Accionado por humedad relativa NC/NO</name>
         <name lang="cs">Ovládáno relativní vlhkostí NC/NO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="22" x="-42" y="-7" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-41" y="0" size="5" text="%H O"/>

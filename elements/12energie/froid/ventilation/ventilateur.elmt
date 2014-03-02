@@ -7,7 +7,8 @@
         <name lang="pl">Wentylator</name>
         <name lang="cs">Větrák</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="5" x2="1" y3="5" x3="18" y4="-10"/>
         <rect width="40" x="-10" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

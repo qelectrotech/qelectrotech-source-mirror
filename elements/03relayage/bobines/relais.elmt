@@ -11,7 +11,8 @@
         <name lang="es">Bobina</name>
         <name lang="cs">Cívka</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="4" y="20" size="6" rotate="true" text="_"/>
         <input x="4" y="-22" size="6" rotate="true" text="_"/>

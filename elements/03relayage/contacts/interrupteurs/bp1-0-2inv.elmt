@@ -11,7 +11,8 @@
         <name lang="es">Interruptor 3 posiciones incluso neutro</name>
         <name lang="cs">Třípolohový přepínač včetně neutrální (1-0-2)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-23" y="-30" size="6" rotate="true" text="_"/>
         <input x="10" y="16" size="6" rotate="true" text="_"/>

@@ -9,7 +9,8 @@
         <name lang="es">Terminal fusible</name>
         <name lang="cs">Tavná pojistka elektrického propojení</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="10" y="24.6667" size="9" rotate="true" text="F_"/>
         <rect width="6" x="-3" y="17" antialias="false" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

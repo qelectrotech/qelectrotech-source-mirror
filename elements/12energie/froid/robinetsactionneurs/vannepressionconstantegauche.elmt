@@ -8,7 +8,8 @@
         <name lang="pl">Zawór stałego ćiśnienia (lewy)</name>
         <name lang="cs">Ventil stálého tlaku (levý)</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="-10" y2="-7" x2="-14" y3="-12" x3="-14" y4="-12"/>
         <text x="-4.7" y="-9.66667" size="5" text="PC"/>

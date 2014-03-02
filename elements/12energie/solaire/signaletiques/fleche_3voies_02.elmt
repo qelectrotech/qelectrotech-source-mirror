@@ -7,7 +7,8 @@
         <name lang="cs">Šipka 3 směry 2</name>
         <name lang="it">Freccia 3vie</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-7" y5="0" x5="-7" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="-3" x2="-7" y3="0" x3="-4" y4="3"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-3" y2="0" x2="12"/>

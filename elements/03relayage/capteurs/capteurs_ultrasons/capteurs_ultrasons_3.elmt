@@ -9,7 +9,8 @@
         <name lang="es">Sensor ultrasónico 3 terminales NA</name>
         <name lang="cs">Ultrazvukové čidlo se třemi svorkami NO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.05" x1="11" y2="-3.05" x2="11"/>
         <input x="23" y="0.5" size="9" rotate="true" text="_"/>

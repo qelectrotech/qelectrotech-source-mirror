@@ -8,7 +8,8 @@
         <name lang="pl">Kolanko duże 90</name>
         <name lang="cs">Velké koleno 90</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="16" x="-6" y="-6" antialias="true" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
         <terminal x="3" y="10" orientation="w"/>

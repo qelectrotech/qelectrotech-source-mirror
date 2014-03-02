@@ -8,7 +8,8 @@
         <name lang="pl">Hamulec elektromagnetyczny</name>
         <name lang="cs">Elektromagnetická brzda</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="0" x1="-30" y2="0" x2="-14"/>
         <polygon x4="-36" y5="20" x5="-30" y6="20" x6="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-30" y2="-20" x2="-30" y3="-27" x3="-36" y4="27"/>

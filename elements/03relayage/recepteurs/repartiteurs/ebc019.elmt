@@ -8,7 +8,8 @@
         <name lang="pl">ifm EBC019</name>
         <name lang="cs">ifm EBC019</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="49" y="87" size="7" text="PWR"/>
         <rect width="39" x="80" y="207" antialias="false" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

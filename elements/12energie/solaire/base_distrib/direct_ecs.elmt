@@ -7,7 +7,8 @@
         <name lang="cs">A nepřímý výměník/zásobník ECS</name>
         <name lang="it">A Scambio indiretto / serbatoio ACS</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-43" y="-21" size="9" text="A&quot;"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="29" y2="-8" x2="6"/>

@@ -9,7 +9,8 @@
         <name lang="cs">Altistart 01N2_LY/Q</name>
         <name lang="es">Altistart 01N2_LY/Q</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="81" y="33" size="9" text="LY/Q"/>
         <polygon x4="72" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="73" x1="115" y2="80" x2="115" y3="80" x3="72" y4="80"/>

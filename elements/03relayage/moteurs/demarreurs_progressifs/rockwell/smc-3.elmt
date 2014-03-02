@@ -9,7 +9,8 @@
         <name lang="cs">SMC-3</name>
         <name lang="es">SMC-3</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="68" x1="73" y2="68" x2="97"/>
         <polygon x4="120.1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="67" x1="100.1" y2="40" x2="100.1" y3="40" x3="120.1" y4="45"/>

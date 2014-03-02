@@ -7,7 +7,8 @@
         <name lang="cs">D dělený zásobník</name>
         <name lang="it">D" Scambiatore</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-45" y="-23" size="9" text="D&quot;"/>
         <rect width="29" x="-15" y="-20.7" antialias="false" height="52" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

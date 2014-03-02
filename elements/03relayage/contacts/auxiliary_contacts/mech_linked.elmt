@@ -7,7 +7,8 @@
         <name lang="es">Contacto impulsado positivamente</name>
         <name lang="cs">Mechanicky spojené kontakty NO + NO</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-13.5" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2"/>
         <input x="-23" y="6" size="4" text="54"/>

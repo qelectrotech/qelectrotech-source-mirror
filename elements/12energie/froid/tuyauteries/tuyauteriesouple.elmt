@@ -8,7 +8,8 @@
         <name lang="pl">Przewód elestyczny</name>
         <name lang="cs">Pružné potrubí</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="5" x="-7.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
         <arc width="5" x="-12.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-220" angle="-50"/>

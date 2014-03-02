@@ -7,7 +7,8 @@
         <name lang="cs">Pojistný ventil s teplotním čidlem</name>
         <name lang="it">Valvola di sicurezza termica con sonda</name>
     </names>
-    <informations></informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="20" y2="-10" x2="11"/>
         <polygon x4="7" y5="-14" x5="8" y6="-10" x6="9" y7="-10" x7="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-12" x1="4" y2="-12" x2="5" y3="-14" x3="6" y4="-10"/>
