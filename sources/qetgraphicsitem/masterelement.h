@@ -19,6 +19,7 @@
 #define MASTERELEMENT_H
 
 #include "customelement.h"
+#include "crossrefitem.h"
 
 class MasterElement : public CustomElement
 {
@@ -34,6 +35,9 @@ class MasterElement : public CustomElement
 	signals:
 
 	public slots:
+
+	private:
+	CrossRefItem *cri_;
 
 };
 

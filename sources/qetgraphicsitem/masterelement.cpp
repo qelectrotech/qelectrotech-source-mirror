@@ -29,6 +29,7 @@ MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qg
 	CustomElement(location, qgi, s, state)
 {
 	link_type_ = Master;
+	cri_ = 0;
 }
 
 /**
@@ -48,9 +49,12 @@ MasterElement::~MasterElement() {
 void MasterElement::linkToElement(Element *elmt) {	
 	// check if element is slave and if isn't already linked
 	if (elmt->linkType() == Slave && !connected_elements.contains(elmt)) {
-		///TODO create the cross ref and connection
 		connected_elements << elmt;
 		elmt->linkToElement(this);
+		//create cross ref item if not yet
+		if (!cri_) cri_ = new CrossRefItem(this, this);
+		connect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
+		cri_->updateLabel();
 	}
 }
 
@@ -77,5 +81,14 @@ void MasterElement::unlinkElement(Element *elmt) {
 	if (connected_elements.contains(elmt)) {
 		connected_elements.removeOne(elmt);
 		elmt->unlinkElement(this);
+		//update the graphics cross ref
+		disconnect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
+		if (isFree()) {
+			delete cri_;
+			cri_ = 0;
+		}
+		else {
+			cri_->updateLabel();
+		}
 	}
 }

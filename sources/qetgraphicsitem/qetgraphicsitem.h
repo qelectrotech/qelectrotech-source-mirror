@@ -34,7 +34,7 @@ class QetGraphicsItem : public QGraphicsObject {
 	virtual void setPos(qreal x, qreal y);
 	virtual void rotateBy(const qreal &);
 	virtual void applyRotation(const qreal &);
-	virtual void editProperty ()=0;
+	virtual void editProperty (){}
 
 	signals:
 	void positionChange(QPointF);
