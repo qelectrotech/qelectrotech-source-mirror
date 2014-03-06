@@ -260,6 +260,10 @@ void DeleteElementsCommand::undo() {
 	foreach(DiagramImageItem *dii, removed_content.images) {
 		diagram -> addItem(dii);
 	}
+
+	foreach(QetShapeItem *dsi, removed_content.shapes) {
+		diagram -> addItem(dsi);
+	}
 }
 
 /// refait les suppressions
@@ -283,6 +287,11 @@ void DeleteElementsCommand::redo() {
 	//enleve les images
 	foreach(DiagramImageItem *dii, removed_content.images) {
 		diagram -> removeItem(dii);
+	}
+
+	//enleve les shapes
+	foreach(QetShapeItem *dsi, removed_content.shapes) {
+		diagram -> removeItem(dsi);
 	}
 }
 

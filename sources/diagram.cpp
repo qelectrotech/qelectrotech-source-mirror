@@ -1277,6 +1277,8 @@ DiagramContent Diagram::selectedContent() {
 			}
 		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(item)) {
 			dc.images << dii;
+		} else if (QetShapeItem *dsi = qgraphicsitem_cast<QetShapeItem *>(item)) {
+			dc.shapes << dsi;
 		}
 	}
 	

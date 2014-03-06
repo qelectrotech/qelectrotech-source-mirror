@@ -50,7 +50,7 @@ class DiagramContent {
 		AnyConductor = 56,
 		Shapes = 64,
 		All = 127,
-		SelectedOnly = 128,
+		SelectedOnly = 128
 	};
 	
 	/// Hold electrical elements

@@ -1226,7 +1226,9 @@ void QETDiagramEditor::slot_updateComplexActions() {
 
 	// actions need only one editable item
 	int selected_image = dv ? dv -> diagram() -> selectedContent().count(DiagramContent::Images) : 0;
-	int selected_editable = selected_elements_count + (selected_texts - selected_conductor_texts) + selected_image;
+
+	int selected_shape = dv ? dv -> diagram() -> selectedContent().count(DiagramContent::Shapes) : 0;
+	int selected_editable = selected_elements_count + (selected_texts - selected_conductor_texts) + selected_image + selected_shape;
 
 	if (selected_editable == 1) {
 		edit_selection -> setEnabled(true);
