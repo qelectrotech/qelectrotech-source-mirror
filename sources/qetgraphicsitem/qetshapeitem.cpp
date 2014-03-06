@@ -24,7 +24,7 @@ void QetShapeItem::setStyle(Qt::PenStyle newStyle)
 void QetShapeItem::setFullyBuilt(bool isBuilt)
 {
 	_isFullyBuilt = isBuilt;
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
+	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 }
 
 QLineF *QetShapeItem::getLine()
