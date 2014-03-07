@@ -424,7 +424,8 @@ MoveElementsCommand::MoveElementsCommand(
 		DiagramContent::TextFields |
 		DiagramContent::ConductorsToUpdate |
 		DiagramContent::ConductorsToMove |
-		DiagramContent::Images
+		DiagramContent::Images |
+		DiagramContent::Shapes
 	);
 	
 	setText(
@@ -491,6 +492,11 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	// deplace les images
 	foreach (DiagramImageItem *dii, content_to_move.images) {
 		dii -> setPos(dii -> pos() + actual_movement);
+	}
+
+	// deplace les shapes
+	foreach (QetShapeItem *dsi, content_to_move.shapes) {
+		dsi -> setPos(dsi -> pos() + actual_movement);
 	}
 }
 
