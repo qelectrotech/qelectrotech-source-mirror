@@ -616,6 +616,25 @@ class ImageResizerCommand : public QUndoCommand {
 	Diagram *diagram;
 };
 
+
+class ChangeShapeStyleCommand : public QUndoCommand {
+	//constructor and destructor
+	public:
+	ChangeShapeStyleCommand (QetShapeItem *shape, Qt::PenStyle &old_, Qt::PenStyle &new_, QUndoCommand *parent = 0);
+	virtual ~ChangeShapeStyleCommand();
+
+	//methods
+	public:
+	virtual void undo();
+	virtual void redo();
+
+	//attributes
+	private:
+	QetShapeItem *shape_;
+	Qt::PenStyle old_style, new_style;
+	Diagram *diagram;
+};
+
 class LinkElementsCommand : public QUndoCommand {
 	public:
 	// constructor destructor

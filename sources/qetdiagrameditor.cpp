@@ -1599,6 +1599,7 @@ void QETDiagramEditor::slot_editSelection() {
 		}
 		else if (dc.count(DiagramContent::TextFields)) dv -> editText();
 		else if (dc.count(DiagramContent::Images)) dv -> editImage();
+		else if (dc.count(DiagramContent::Shapes)) dv -> editShape();
 	}
 }
 

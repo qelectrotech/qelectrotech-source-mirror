@@ -1273,6 +1273,20 @@ void DiagramView::editImage() {
 }
 
 /**
+ * @brief DiagramView::editShape
+ * open edit image dialog if only one shape is selected
+ */
+void DiagramView::editShape() {
+	if (scene -> isReadOnly()) return;
+	QList <QGraphicsItem *> shapes = diagram() -> selectedContent().items(DiagramContent::Shapes);
+	if (shapes.count() != 1) return;
+	QetShapeItem *shape;
+	if ((shape = qgraphicsitem_cast<QetShapeItem *> (shapes.first()))) {
+		shape -> editProperty();
+	}
+}
+
+/**
 * @brief DiagramView::addDiagramImageAtPos
 * @param pos
 * @return

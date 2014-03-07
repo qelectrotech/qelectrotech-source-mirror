@@ -82,6 +82,7 @@ class DiagramView : public QGraphicsView {
 	void addRectangle();
 	void addEllipse();
 	void editImage();
+	void editShape();
 	IndependentTextItem *addDiagramTextAtPos(const QPointF &, const QString &text = 0);
 	DiagramImageItem *addDiagramImageAtPos(const QPointF &);
 	

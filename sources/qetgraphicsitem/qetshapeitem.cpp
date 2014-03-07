@@ -1,4 +1,5 @@
 #include "qetshapeitem.h"
+#include "diagramcommands.h"
 
 
 QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, bool lineAngle,QGraphicsItem *parent) :
@@ -19,6 +20,7 @@ QetShapeItem::~QetShapeItem()
 void QetShapeItem::setStyle(Qt::PenStyle newStyle)
 {
 	_shapeStyle = newStyle;
+	update();
 }
 
 void QetShapeItem::setFullyBuilt(bool isBuilt)
@@ -157,4 +159,53 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const {
 	result.setAttribute("style", QString::number(_shapeStyle));
 
 	return(result);
+}
+
+void QetShapeItem::editProperty()
+{
+	if (diagram() -> isReadOnly()) return;
+
+	//the dialog
+	QDialog property_dialog(diagram()->views().at(0));
+	property_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'une shape", "window title"));
+	//the main layout
+	QVBoxLayout dialog_layout(&property_dialog);
+
+	//GroupBox for resizer image
+	QGroupBox restyle_groupe(tr("Shape Line Style", "shape style"));
+	dialog_layout.addWidget(&restyle_groupe);
+	QHBoxLayout restyle_layout(&restyle_groupe);
+
+	QComboBox style_combo(&property_dialog);
+	style_combo.addItem(tr("Solid Line"));
+	style_combo.addItem(tr("Dash Line"));
+	style_combo.addItem(tr("Dot Line"));
+	style_combo.addItem(tr("DashDot Line"));
+	style_combo.addItem(tr("DashDotDot Line"));
+
+	// The items have been added in order accordance with Qt::PenStyle.
+	style_combo.setCurrentIndex(int(_shapeStyle) - 1);
+
+	restyle_layout.addWidget(&style_combo);
+
+	//check box for disable move
+	QCheckBox cb(tr("Verrouiller la position"), &property_dialog);
+	cb.setChecked(!is_movable_);
+	dialog_layout.addWidget(&cb);
+
+	//dialog button, box
+	QDialogButtonBox dbb(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	dialog_layout.addWidget(&dbb);
+	connect(&dbb, SIGNAL(accepted()), &property_dialog, SLOT(accept()));
+	connect(&dbb, SIGNAL(rejected()), &property_dialog, SLOT(reject()));
+
+	//dialog is accepted...
+	if (property_dialog.exec() == QDialog::Accepted) {
+		cb.isChecked() ? is_movable_=false : is_movable_=true;
+
+		Qt::PenStyle new_style = Qt::PenStyle(style_combo.currentIndex() + 1);
+		if (new_style != _shapeStyle)
+			diagram()->undoStack().push(new ChangeShapeStyleCommand(this, _shapeStyle, new_style));
+	}
+	return;
 }

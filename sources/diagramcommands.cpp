@@ -1188,6 +1188,47 @@ void ImageResizerCommand::redo() {
 	image_ -> setScale(new_size);
 }
 
+
+/**
+ * @brief ChangeShapeStyleCommand::ChangeShapeStyleCommand Constructor
+ * @param shape
+ * @param old_ old style of shape
+ * @param new_ new style of shape
+ * @param parent undocommand parent
+ */
+ChangeShapeStyleCommand::ChangeShapeStyleCommand(QetShapeItem *shape, Qt::PenStyle &old_, Qt::PenStyle &new_, QUndoCommand *parent):
+	QUndoCommand(parent),
+	shape_(shape),
+	old_style (old_),
+	new_style (new_),
+	diagram(shape->diagram())
+{}
+
+/**
+ * @brief ChangeShapeStyleCommand::~ChangeShapeStyleCommand destructor
+ */
+ChangeShapeStyleCommand::~ChangeShapeStyleCommand() {}
+
+/**
+ * @brief ChangeShapeStyleCommand::undo set the old style
+ */
+void ChangeShapeStyleCommand::undo() {
+	shape_ -> setStyle(old_style);
+	diagram -> showMe();
+	QUndoCommand::undo();
+}
+
+/**
+ * @brief ChangeShapeStyleCommand::redo set the new style
+ */
+void ChangeShapeStyleCommand::redo() {
+	shape_ -> setStyle(new_style);
+	diagram -> showMe();
+	QUndoCommand::redo();
+}
+
+
+
 /**
  * @brief LinkElementsCommand::LinkElementsCommand
  *Constructor

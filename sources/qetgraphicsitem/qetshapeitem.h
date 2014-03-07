@@ -41,6 +41,7 @@ class QetShapeItem : public QetGraphicsItem
 	virtual bool fromXml(const QDomElement &);
 	virtual QDomElement toXml(QDomDocument &document) const;
 	void setWritingXml(bool writing)	{ _writingXml = writing;   }
+	virtual void editProperty();
 
 	private:
 	ShapeType    _shapeType;
@@ -52,8 +53,6 @@ class QetShapeItem : public QetGraphicsItem
 	QPointF		 _lineP1;
 	QPointF		 _lineP2;
 	bool		_writingXml;
-
-	virtual void editProperty() {}
 
 	protected:
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
