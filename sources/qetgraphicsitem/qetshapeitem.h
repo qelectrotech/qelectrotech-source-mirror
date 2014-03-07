@@ -42,6 +42,7 @@ class QetShapeItem : public QetGraphicsItem
 	virtual QDomElement toXml(QDomDocument &document) const;
 	void setWritingXml(bool writing)	{ _writingXml = writing;   }
 	virtual void editProperty();
+	QRectF boundingRect() const;
 
 	private:
 	ShapeType    _shapeType;
@@ -52,11 +53,13 @@ class QetShapeItem : public QetGraphicsItem
 	bool		 _isFullyBuilt;
 	QPointF		 _lineP1;
 	QPointF		 _lineP2;
+	QPointF		 _origMousePress;
 	bool		_writingXml;
 
 	protected:
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-	QRectF boundingRect() const;
+	virtual void mousePressEvent(QGraphicsSceneMouseEvent *e);
+	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *e);
 	QPainterPath shape() const;
 
 };

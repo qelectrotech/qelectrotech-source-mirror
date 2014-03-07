@@ -497,6 +497,10 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	// deplace les shapes
 	foreach (QetShapeItem *dsi, content_to_move.shapes) {
 		dsi -> setPos(dsi -> pos() + actual_movement);
+		QRectF rec = dsi -> boundingRect();
+		rec.translate(actual_movement);
+		dsi -> setBoundingRect(rec);
+		dsi -> setPos(dsi -> pos() - actual_movement);
 	}
 }
 

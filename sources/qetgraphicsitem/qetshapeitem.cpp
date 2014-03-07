@@ -124,6 +124,31 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 	}
 }
 
+void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *e)
+{
+	_origMousePress = mapToScene(e -> pos());
+	first_move_ = true;
+	if (e -> modifiers() & Qt::ControlModifier) {
+		setSelected(!isSelected());
+	}
+	QGraphicsItem::mousePressEvent(e);
+}
+
+void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
+{
+	if (diagram()) diagram() -> endMoveElements();
+	QPointF newCoord = mapToScene(e -> pos());
+	if (newCoord != _origMousePress) {
+		//translate bounding rectangle
+		QRectF rec = boundingRect();
+		rec.translate(newCoord - _origMousePress);
+		setBoundingRect(rec);
+		setPos(pos() - newCoord + _origMousePress);
+	}
+
+	if (!(e -> modifiers() & Qt::ControlModifier)) QGraphicsItem::mouseReleaseEvent(e);
+}
+
 
 bool QetShapeItem::fromXml(const QDomElement &e)
 {
