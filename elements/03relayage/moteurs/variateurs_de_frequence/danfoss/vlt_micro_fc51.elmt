@@ -1,8 +1,9 @@
 <definition width="470" version="0.4" hotspot_x="25" hotspot_y="7" height="100" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">VLT MicroDrive FC51</name>
-        <name lang="fr">VLT MicroDrive FC51</name>
         <name lang="it">VLT MicroDrive FC51</name>
+        <name lang="fr">VLT MicroDrive FC51</name>
+        <name lang="pl">VLT Micro Drive FC51</name>
         <name lang="cs">VLT MicroDrive FC51</name>
     </names>
     <informations>Author: The QElectroTech team

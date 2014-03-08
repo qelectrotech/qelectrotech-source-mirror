@@ -1,8 +1,9 @@
 <definition width="430" version="0.4" hotspot_x="25" hotspot_y="7" height="100" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">VLT 2800</name>
-        <name lang="fr">VLT 2800</name>
         <name lang="it">Inverter VLT 2800</name>
+        <name lang="fr">VLT 2800</name>
+        <name lang="pl">VLT 2800</name>
         <name lang="cs">Střídač VLT 2800</name>
     </names>
     <informations>Author: The QElectroTech team

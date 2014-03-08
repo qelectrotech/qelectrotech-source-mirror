@@ -1,8 +1,9 @@
 <definition width="130" version="0.4" hotspot_x="65" hotspot_y="40" height="100" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Motor control relay RM35TM</name>
-        <name lang="fr">Relais Phase RM35TM</name>
         <name lang="it">Controllo fasi RM35TM</name>
+        <name lang="fr">Relais Phase RM35TM</name>
+        <name lang="pl">Przekaźnik zabezpieczeniowy RM35TM</name>
         <name lang="cs">Ovládání fáze - fázové relé RM35TM</name>
     </names>
     <informations>Author: The QElectroTech team

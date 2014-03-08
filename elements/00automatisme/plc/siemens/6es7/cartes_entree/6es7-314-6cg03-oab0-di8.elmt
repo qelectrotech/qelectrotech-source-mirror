@@ -1,13 +1,13 @@
 <definition width="990" version="0.4" hotspot_x="493" hotspot_y="87" height="190" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">6es7-314-6cg03-oab0 DI8</name>
-	<name lang="cs">6es7-314-6cg03-oab0 DI8</name>
+        <name lang="pt">6es7-314-6cg03-oab0 DI8</name>
         <name lang="en">6es7-314-6cg03-oab0 DI8</name>
-	<name lang="es">6es7-314-6cg03-oab0 DI8</name>
-	<name lang="fr">6es7-314-6cg03-oab0 DI8</name>
         <name lang="it">6es7-314-6cg03-oab0 DI8</name>
-        <name lang="pl">6es7-314-6cg03-oab0 DI8</name>
-	<name lang="pt">6es7-314-6cg03-oab0 DI8</name>        
+        <name lang="fr">6es7-314-6cg03-oab0 DI8</name>
+        <name lang="pl">6ES7 314-6CG03-0AB0 (część 2/3)</name>
+        <name lang="es">6es7-314-6cg03-oab0 DI8</name>
+        <name lang="cs">6es7-314-6cg03-oab0 DI8</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

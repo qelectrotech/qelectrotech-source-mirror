@@ -1,8 +1,9 @@
 <definition width="90" version="0.4" hotspot_x="34" hotspot_y="32" height="60" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">3 position  switch</name>
-        <name lang="fr">Commutateur a 3 positions </name>
         <name lang="it">Commutatore a 3 posizioni </name>
+        <name lang="fr">Commutateur a 3 positions </name>
+        <name lang="pl">Łącznik obrotowy przełączny z położeniem neutralnym</name>
         <name lang="cs">Spínač - 3 polohy</name>
     </names>
     <informations>Author: The QElectroTech team

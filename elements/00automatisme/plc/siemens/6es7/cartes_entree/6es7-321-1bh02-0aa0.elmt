@@ -1,13 +1,13 @@
 <definition width="1000" version="0.4" hotspot_x="496" hotspot_y="84" height="200" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">6es7-321-1bh02-0aa0</name>
-        <name lang="cs">6es7-321-1bh02-0aa0</name>
-        <name lang="el">6es7-321-1bh02-0aa0</name>
-        <name lang="es">6es7-321-1bh02-0aa0</name>
-        <name lang="fr">6es7-321-1bh02-0aa0</name>
-        <name lang="it">6es7-321-1bh02-0aa0</name>
-        <name lang="pl">6es7-321-1bh02-0aa0</name>
         <name lang="pt">6es7-321-1bh02-0aa0</name>
+        <name lang="el">6es7-321-1bh02-0aa0</name>
+        <name lang="it">6es7-321-1bh02-0aa0</name>
+        <name lang="fr">6es7-321-1bh02-0aa0</name>
+        <name lang="pl">6ES7 321-1BH02-0AA0</name>
+        <name lang="es">6es7-321-1bh02-0aa0</name>
+        <name lang="cs">6es7-321-1bh02-0aa0</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
