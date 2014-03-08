@@ -705,61 +705,61 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
         <translation>Orientacja zaznaczonych tekstów</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="600"/>
+        <location filename="../sources/diagramview.cpp" line="603"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Bez tytułu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="625"/>
+        <location filename="../sources/diagramview.cpp" line="628"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Właściwości schematu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="941"/>
+        <location filename="../sources/diagramview.cpp" line="944"/>
         <source>Propriétés de la sélection</source>
         <translation>Właściwości zaznaczenia</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="943"/>
+        <location filename="../sources/diagramview.cpp" line="946"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Zaznaczenie zawiera %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="999"/>
+        <location filename="../sources/diagramview.cpp" line="1002"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Zastosuj właściwości do wszystkich połączeń tego potencjału</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="996"/>
+        <location filename="../sources/diagramview.cpp" line="999"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Edycja właściwości przewodu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1061"/>
+        <location filename="../sources/diagramview.cpp" line="1064"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Wybierz nowy kolor przewodu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1223"/>
+        <location filename="../sources/diagramview.cpp" line="1226"/>
         <source>Selectionner une image...</source>
         <translation>Wybierz obraz...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1223"/>
+        <location filename="../sources/diagramview.cpp" line="1226"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>Pliki obrazów (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1231"/>
+        <location filename="../sources/diagramview.cpp" line="1234"/>
         <source>Erreur</source>
         <translation>Błąd</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1231"/>
+        <location filename="../sources/diagramview.cpp" line="1234"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation>Nie można załadować obrazu... :(</translation>
     </message>
@@ -1683,110 +1683,110 @@ Zmiany zostaną zapisane.</translation>
 <context>
     <name>ExportDialog</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1099"/>
+        <location filename="../sources/exportdialog.cpp" line="1104"/>
         <source>Aperçu</source>
         <translation>Podgląd</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="143"/>
+        <location filename="../sources/exportdialog.cpp" line="144"/>
         <source>Dimensions</source>
         <translation>Rozmiar</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="981"/>
+        <location filename="../sources/exportdialog.cpp" line="986"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>Nie można zapisać do tego pliku</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="60"/>
+        <location filename="../sources/exportdialog.cpp" line="61"/>
         <source>Exporter les schémas du projet</source>
         <comment>window title</comment>
         <translation>Eksport schematów projektu</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="70"/>
+        <location filename="../sources/exportdialog.cpp" line="71"/>
         <source>Exporter</source>
         <translation>Eksport</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="75"/>
+        <location filename="../sources/exportdialog.cpp" line="76"/>
         <source>Choisissez les schémas que vous désirez exporter ainsi que leurs dimensions :</source>
         <translation>Wybierz schematy, które chcesz wyeksportować i określ ich rozmiar:</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="78"/>
-        <source>Select All</source>
-        <translation>Zaznacz wszystko</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="79"/>
-        <source>De-Select All</source>
-        <translation>Odznacz wszystko</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="141"/>
+        <location filename="../sources/exportdialog.cpp" line="142"/>
         <source>Schéma</source>
         <translation>Schemat</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="142"/>
+        <location filename="../sources/exportdialog.cpp" line="143"/>
         <source>Nom de fichier</source>
         <translation>Nazwa pliku</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="430"/>
+        <location filename="../sources/exportdialog.cpp" line="432"/>
         <source>Auteur</source>
         <translation>Autor</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="431"/>
-        <location filename="../sources/exportdialog.cpp" line="859"/>
+        <location filename="../sources/exportdialog.cpp" line="433"/>
+        <location filename="../sources/exportdialog.cpp" line="864"/>
         <source>Titre</source>
         <translation>Tytuł</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="432"/>
+        <location filename="../sources/exportdialog.cpp" line="434"/>
         <source>Folio</source>
         <translation>Strona</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="433"/>
+        <location filename="../sources/exportdialog.cpp" line="435"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="924"/>
+        <location filename="../sources/exportdialog.cpp" line="929"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
         <translation>Musisz podać nieużywaną nazwę pliku dla eksportowanych schematów.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1201"/>
         <location filename="../sources/exportdialog.cpp" line="1206"/>
+        <location filename="../sources/exportdialog.cpp" line="1211"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="923"/>
+        <location filename="../sources/exportdialog.cpp" line="928"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>Nazwy plików docelowych</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="939"/>
+        <location filename="../sources/exportdialog.cpp" line="79"/>
+        <source>Tout cocher</source>
+        <translation type="unfinished">Zaznacz wszystkie</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="80"/>
+        <source>Tout décocher</source>
+        <translation type="unfinished">Odznacz wszystkie</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="944"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>Brak katalogu</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="940"/>
+        <location filename="../sources/exportdialog.cpp" line="945"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>Musisz podać ścieżkę do katalogu, w którym są zapisywane pliki obrazów.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="983"/>
+        <location filename="../sources/exportdialog.cpp" line="988"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Wydaje się, że nie masz uprawnień wymaganych do zapisu pliku %1.</translation>
@@ -3908,46 +3908,46 @@ Dostępne opcje :
         <translation>Otwórz plik tylko do odczytu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1237"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Edycja elementu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1240"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1242"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Edycja pola tekstowego</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1245"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1247"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Edycja obrazu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1251"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1253"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Edycja zaznaczonego objektu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1938"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1941"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Nie można znaleźć tego elementu w panelu, ponieważ wydaje się, że jest edytowany w innym oknie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1944"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1947"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Nie można znaleźć tego elementu w panelu ... odśwież panel ...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1956"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1959"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Nie można znaleźć tego elementu w panelu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2003"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2006"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Błąd</translation>
@@ -3987,7 +3987,7 @@ Dostępne opcje :
         <translation>Uaktywnia poprzedni projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1427"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1429"/>
         <source>Active le projet « %1 »</source>
         <translation>Uaktywnia projekt « %1 »</translation>
     </message>
@@ -5251,17 +5251,17 @@ Co chcesz zrobić ?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1227"/>
+        <location filename="../sources/exportdialog.cpp" line="1232"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Eksport do schowka</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="323"/>
+        <location filename="../sources/qet.cpp" line="331"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Nie można znaleźć pliku z licencją GNU / GPL - na pewno znasz ją sercem, prawda ?</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="327"/>
+        <location filename="../sources/qet.cpp" line="335"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Plik tekstowy zawierający licencję GNU / GPL istnieje, ale nie można go otworzyć - na pewno znasz ją sercem, prawda ?</translation>
     </message>
@@ -5289,127 +5289,133 @@ Co chcesz zrobić ?</translation>
         <translation>wstawienie obrazu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="150"/>
+        <location filename="../sources/diagramcommands.cpp" line="147"/>
+        <source>Ajouter une Shape</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="187"/>
         <source>ajouter un conducteur</source>
         <comment>undo caption</comment>
         <translation>wstawienie przewodu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="191"/>
+        <location filename="../sources/diagramcommands.cpp" line="228"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation>usunięcie %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="272"/>
+        <location filename="../sources/diagramcommands.cpp" line="318"/>
         <source>coller %1</source>
         <comment>undo caption - %1 is a sentence listing the content to paste</comment>
         <translation>wklejenie %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="345"/>
+        <location filename="../sources/diagramcommands.cpp" line="391"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
         <translation>wycięcie %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="386"/>
-        <location filename="../sources/diagramcommands.cpp" line="490"/>
-        <location filename="../sources/diagramcommands.cpp" line="604"/>
+        <location filename="../sources/diagramcommands.cpp" line="433"/>
+        <location filename="../sources/diagramcommands.cpp" line="546"/>
+        <location filename="../sources/diagramcommands.cpp" line="660"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>przesunięcie %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="625"/>
+        <location filename="../sources/diagramcommands.cpp" line="681"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
         <translation>zmiana tekstu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="673"/>
+        <location filename="../sources/diagramcommands.cpp" line="729"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
         <translation>obrócenie %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="791"/>
+        <location filename="../sources/diagramcommands.cpp" line="847"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
         <translation>zmiana orientacji %1 na %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="815"/>
+        <location filename="../sources/diagramcommands.cpp" line="871"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation>zmiana przewodu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="872"/>
+        <location filename="../sources/diagramcommands.cpp" line="928"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>przywrócenie %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="912"/>
+        <location filename="../sources/diagramcommands.cpp" line="968"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
         <translation>zmiana tabliczki rysunkowej</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="945"/>
+        <location filename="../sources/diagramcommands.cpp" line="1001"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
         <translation>zmiana rozmiaru schematu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="974"/>
+        <location filename="../sources/diagramcommands.cpp" line="1030"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>zmiana właściwości przewodu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1028"/>
+        <location filename="../sources/diagramcommands.cpp" line="1084"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>zmiana właściwości przewodów</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1140"/>
+        <location filename="../sources/diagramcommands.cpp" line="1196"/>
         <source>Agrandire une image à %1 %</source>
         <translation>powiększenie obrazu do %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1141"/>
+        <location filename="../sources/diagramcommands.cpp" line="1197"/>
         <source>Réduire une image à %1 %</source>
         <translation>pomniejszenie obrazu do %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1162"/>
+        <location filename="../sources/diagramcommands.cpp" line="1259"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
         <translation>połączenie 2 odsyłaczy do strony</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1168"/>
+        <location filename="../sources/diagramcommands.cpp" line="1265"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
         <translation>Edytuj odsyłacz</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1169"/>
-        <location filename="../sources/diagramcommands.cpp" line="1182"/>
+        <location filename="../sources/diagramcommands.cpp" line="1266"/>
+        <location filename="../sources/diagramcommands.cpp" line="1279"/>
         <source>Lier deux Ã©lÃ©ments</source>
         <translation>Połącz dwa Ã©lÃ©ments</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1181"/>
+        <location filename="../sources/diagramcommands.cpp" line="1278"/>
         <source>Editer les référence croisé</source>
         <translation>Edytuj odsyłacz</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1240"/>
-        <location filename="../sources/diagramcommands.cpp" line="1255"/>
+        <location filename="../sources/diagramcommands.cpp" line="1337"/>
+        <location filename="../sources/diagramcommands.cpp" line="1352"/>
         <source>Délier %n élément(s)</source>
         <translation>
             <numerusform>rozłączenie %n elementu</numerusform>
@@ -5601,6 +5607,7 @@ Co chcesz zrobić ?</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="267"/>
+        <location filename="../sources/qet.cpp" line="275"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -5610,7 +5617,7 @@ Co chcesz zrobić ?</translation>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="605"/>
+        <location filename="../sources/qet.cpp" line="613"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Nie można otworzyć pliku %1 do zpisu, napotkany błąd %2 .</translation>
@@ -5639,27 +5646,27 @@ Co chcesz zrobić ?</translation>
         <translation>prostokąt</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1188"/>
+        <location filename="../sources/exportdialog.cpp" line="1193"/>
         <source>Schéma sans titre</source>
         <translation>Schemat bez tytułu</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1190"/>
+        <location filename="../sources/exportdialog.cpp" line="1195"/>
         <source>schema</source>
         <translation>schemat</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1215"/>
+        <location filename="../sources/exportdialog.cpp" line="1220"/>
         <source>Conserver les proportions</source>
         <translation>Zachowaj proporcje</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1219"/>
+        <location filename="../sources/exportdialog.cpp" line="1224"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Skasuj rozmiar</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1223"/>
+        <location filename="../sources/exportdialog.cpp" line="1228"/>
         <source>Aperçu</source>
         <translation>Podgląd</translation>
     </message>
@@ -5823,6 +5830,51 @@ Co chcesz zrobić ?</translation>
         <source>Exemple</source>
         <comment>Longer example string</comment>
         <translation>Wzór</translation>
+    </message>
+</context>
+<context>
+    <name>QetShapeItem</name>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="195"/>
+        <source>Éditer les propriétés d&apos;une liaison, Zone </source>
+        <comment>window title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
+        <source>Shape Line Style</source>
+        <comment>shape style</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
+        <source>Normal</source>
+        <translation type="unfinished">Ciągła</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="206"/>
+        <source>Tiret</source>
+        <translation type="unfinished">Kreskowa</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="207"/>
+        <source>Pointillé</source>
+        <translation type="unfinished">Kropkowa</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="208"/>
+        <source>Traits et points</source>
+        <translation type="unfinished">Kreskowo-kropkowa</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
+        <source>Traits points points</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="217"/>
+        <source>Verrouiller la position</source>
+        <translation type="unfinished">Zablokuj położenie</translation>
     </message>
 </context>
 <context>
