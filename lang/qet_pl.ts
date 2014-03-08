@@ -1766,12 +1766,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="79"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Zaznacz wszystkie</translation>
+        <translation>Zaznacz wszystkie</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="80"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Odznacz wszystkie</translation>
+        <translation>Odznacz wszystkie</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="944"/>
@@ -5292,7 +5292,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="147"/>
         <source>Ajouter une Shape</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>wstaw figurę</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="187"/>
@@ -5838,43 +5838,43 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="195"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edycja właściwości połączenia, Strefy </translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
         <source>Shape Line Style</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rodzaj linii</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Normal</source>
-        <translation type="unfinished">Ciągła</translation>
+        <translation>Ciągła</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="206"/>
         <source>Tiret</source>
-        <translation type="unfinished">Kreskowa</translation>
+        <translation>Kreskowa</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="207"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Kropkowa</translation>
+        <translation>Kropkowa</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="208"/>
         <source>Traits et points</source>
-        <translation type="unfinished">Kreskowo-kropkowa</translation>
+        <translation>Kreskowo-kropkowa</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
         <source>Traits points points</source>
-        <translation type="unfinished"></translation>
+        <translation>Kreskowa z dwiem kreskami</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="217"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Zablokuj położenie</translation>
+        <translation>Zablokuj położenie</translation>
     </message>
 </context>
 <context>
