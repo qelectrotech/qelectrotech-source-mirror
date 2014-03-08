@@ -76,8 +76,8 @@ ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(paren
 	hLayout -> addWidget(new QLabel(tr("Choisissez les sch\351mas que vous d\351sirez exporter ainsi que leurs dimensions :")));
 	selectAll   = new QPushButton();
 	deSelectAll = new QPushButton();
-	selectAll   -> setText(tr("Select All"));
-	deSelectAll -> setText(tr("De-Select All"));
+	selectAll   -> setText(tr("Tout cocher"));
+	deSelectAll -> setText(tr("Tout d\351cocher"));
 	hLayout -> addWidget(selectAll);
 	hLayout -> addWidget(deSelectAll);
 	connect(selectAll,   SIGNAL(clicked()),            this, SLOT(slot_selectAllClicked()));

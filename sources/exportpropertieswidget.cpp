@@ -50,7 +50,7 @@ ExportProperties ExportPropertiesWidget::exportProperties() const {
 	export_properties.format                  = format -> itemData(format -> currentIndex()).toString();
 	export_properties.draw_grid               = draw_grid      -> isChecked();
 	export_properties.draw_border             = draw_border    -> isChecked();
-	export_properties.draw_titleblock              = draw_titleblock     -> isChecked();
+	export_properties.draw_titleblock         = draw_titleblock     -> isChecked();
 	export_properties.draw_terminals          = draw_terminals -> isChecked();
 	export_properties.draw_colored_conductors = draw_colored_conductors -> isChecked();
 	export_properties.exported_area           = export_border -> isChecked() ? QET::BorderArea : QET::ElementsArea;
@@ -70,7 +70,7 @@ void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_
 	
 	draw_grid               -> setChecked(export_properties.draw_grid);
 	draw_border             -> setChecked(export_properties.draw_border);
-	draw_titleblock              -> setChecked(export_properties.draw_titleblock);
+	draw_titleblock         -> setChecked(export_properties.draw_titleblock);
 	draw_terminals          -> setChecked(export_properties.draw_terminals);
 	draw_colored_conductors -> setChecked(export_properties.draw_colored_conductors);
 	
@@ -203,7 +203,7 @@ void ExportPropertiesWidget::build() {
 	connect(exported_content_choices, SIGNAL(buttonClicked(QAbstractButton *)), this, SIGNAL(exportedAreaChanged()));
 	connect(draw_grid,                SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 	connect(draw_border,              SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_titleblock,               SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
+	connect(draw_titleblock,          SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 	connect(draw_terminals,           SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 	connect(draw_colored_conductors,  SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 }
