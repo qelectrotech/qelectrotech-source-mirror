@@ -192,7 +192,7 @@ void QetShapeItem::editProperty()
 
 	//the dialog
 	QDialog property_dialog(diagram()->views().at(0));
-	property_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'une shape", "window title"));
+	property_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'une liaison, Zone ", "window title"));
 	//the main layout
 	QVBoxLayout dialog_layout(&property_dialog);
 
@@ -202,11 +202,11 @@ void QetShapeItem::editProperty()
 	QHBoxLayout restyle_layout(&restyle_groupe);
 
 	QComboBox style_combo(&property_dialog);
-	style_combo.addItem(tr("Solid Line"));
-	style_combo.addItem(tr("Dash Line"));
-	style_combo.addItem(tr("Dot Line"));
-	style_combo.addItem(tr("DashDot Line"));
-	style_combo.addItem(tr("DashDotDot Line"));
+	style_combo.addItem(tr("Normal"));
+	style_combo.addItem(tr("Tiret"));
+	style_combo.addItem(tr("Pointill\351"));
+	style_combo.addItem(tr("Traits et points"));
+	style_combo.addItem(tr("Traits points points"));
 
 	// The items have been added in order accordance with Qt::PenStyle.
 	style_combo.setCurrentIndex(int(_shapeStyle) - 1);
