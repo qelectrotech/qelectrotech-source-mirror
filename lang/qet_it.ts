@@ -1765,12 +1765,12 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="79"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Seleziona tutto</translation>
+        <translation>Seleziona tutto</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="80"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Deseleziona tutto</translation>
+        <translation>Deseleziona tutto</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="944"/>
@@ -5287,7 +5287,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/diagramcommands.cpp" line="147"/>
         <source>Ajouter une Shape</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aggiunta di una forma</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="187"/>
@@ -5826,43 +5826,43 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="195"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modifica le proprietà di una linea, Area </translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
         <source>Shape Line Style</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Stile della linea</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Normal</source>
-        <translation type="unfinished">Normale</translation>
+        <translation>Normale</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="206"/>
         <source>Tiret</source>
-        <translation type="unfinished">Trattino</translation>
+        <translation>Trattino</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="207"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Tratteggiato</translation>
+        <translation>Punteggiato</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="208"/>
         <source>Traits et points</source>
-        <translation type="unfinished">Punto e linea</translation>
+        <translation>Punto e linea</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
         <source>Traits points points</source>
-        <translation type="unfinished"></translation>
+        <translation>Linea-punto-punto</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="217"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Bloccare la posizione</translation>
+        <translation>Bloccare la posizione</translation>
     </message>
 </context>
 <context>
