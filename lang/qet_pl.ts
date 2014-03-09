@@ -3661,7 +3661,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="233"/>
         <source>Ajouter un sommaire</source>
-        <translation>Wstaw spis treści</translation>
+        <translation>Wstaw spis schematów</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="234"/>
@@ -5869,7 +5869,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
         <source>Traits points points</source>
-        <translation>Kreskowa z dwiem kreskami</translation>
+        <translation>Kreskowa z dwiema kreskami</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="217"/>
