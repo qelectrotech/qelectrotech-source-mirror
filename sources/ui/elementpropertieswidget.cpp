@@ -16,9 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementpropertieswidget.h"
-#include <qetgraphicsitem/ghostelement.h>
-#include <qeticons.h>
-#include <diagramposition.h>
+#include "qetgraphicsitem/ghostelement.h"
+#include "qeticons.h"
+#include "diagramposition.h"
 
 /**
  * @brief elementpropertieswidget::elementpropertieswidget
@@ -31,9 +31,9 @@ elementpropertieswidget::elementpropertieswidget(Element *elmt, QWidget *parent)
 	element_ (elmt),
 	diagram_ (elmt->diagram())
 {
-	frp_ = 0;
 	eiw_ = 0;
 	mpw_ = 0;
+	lsew_ = 0;
 	buildInterface();
 }
 
@@ -114,12 +114,12 @@ void elementpropertieswidget::buildInterface() {
 			tab_ -> addTab(eiw_, tr("Information"));
 			break;
 		case Element::NextReport:
-			frp_ = new FolioReportProperties(element_, this);
-			tab_ -> addTab(frp_, tr("Report de folio"));
+			lsew_ = new LinkSingleElementWidget(element_, this);
+			tab_ -> addTab(lsew_, tr("Report de folio"));
 			break;
 		case Element::PreviousReport:
-			frp_ = new FolioReportProperties(element_, this);
-			tab_ -> addTab(frp_, tr("Report de folio"));
+			lsew_ = new LinkSingleElementWidget(element_, this);
+			tab_ -> addTab(lsew_, tr("Report de folio"));
 			break;
 		case Element::Master:
 			mpw_ = new MasterPropertiesWidget(element_, this);
@@ -128,6 +128,8 @@ void elementpropertieswidget::buildInterface() {
 			tab_ -> addTab(eiw_, tr("Information"));
 			break;
 		case Element::Slave:
+			lsew_ = new LinkSingleElementWidget(element_, this);
+			tab_ -> addTab(lsew_, tr("R\351f\351rence crois\351e (esclave)"));
 			break;
 		case Element::Bornier:
 			break;
@@ -161,9 +163,9 @@ void elementpropertieswidget::standardButtonClicked(QAbstractButton *button) {
 			if (mpw_) mpw_->reset();
 			break;
 		case QDialogButtonBox::ApplyRole:
-			if (frp_) frp_->Apply();	//folio report widget
 			if (eiw_) eiw_->apply();	//element information widget
 			if (mpw_) mpw_->apply();	//master property widget
+			if (lsew_) lsew_->apply();	//link sigle element widget
 			this->accept();
 		case QDialogButtonBox::RejectRole:
 			this->reject();

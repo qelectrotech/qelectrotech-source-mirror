@@ -61,10 +61,11 @@ DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
 TEMPLATE = app
 DEPENDPATH += .
-INCLUDEPATH += sources sources/editor sources/titleblock
+INCLUDEPATH += sources sources/editor sources/titleblock sources/ui sources/qetgraphicsitem sources/richtext sources/factory
 
 # Fichiers sources
 HEADERS += sources/*.h   sources/ui/*.h   sources/editor/*.h   sources/titleblock/*.h  sources/richtext/*.h sources/qetgraphicsitem/*.h sources/factory/*.cpp
+
 SOURCES += sources/*.cpp sources/editor/*.cpp sources/titleblock/*.cpp sources/richtext/*.cpp sources/ui/*.cpp sources/qetgraphicsitem/*.cpp sources/factory/*.cpp
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
@@ -80,7 +81,9 @@ TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang
 QT += xml svg network sql
 
 # UI DESIGNER FILES AND GENERATION SOURCES FILES
-FORMS += sources/richtext/addlinkdialog.ui  sources/ui/*.ui
+FORMS += sources/richtext/addlinkdialog.ui  sources/ui/*.ui \
+    sources/ui/slavepropertieswidget.ui \
+    sources/ui/linksingleelementwidget.ui
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/
 

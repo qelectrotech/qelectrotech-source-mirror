@@ -1250,7 +1250,6 @@ LinkElementsCommand::LinkElementsCommand(Element *elmt1, Element *elmt2, QUndoCo
 	QUndoCommand(parent),
 	diagram_(elmt1->diagram()),
 	element_(elmt1),
-	previous_report(0),
 	first_redo(true)
 {
 	elmt_list << elmt2;
@@ -1258,12 +1257,12 @@ LinkElementsCommand::LinkElementsCommand(Element *elmt1, Element *elmt2, QUndoCo
 		elmt2->linkType() & Element::AllReport) {
 		setText(QObject::tr("Lier deux reports de folio",
 							"title for undo LinkElementsCommand if two elements are folio report"));
-		if(!elmt1->isFree())
-			previous_report = elmt1->linkedElements().first();
 	}
-	else if (element_->linkType() & Element::Master)
+	else if (element_->linkType() & (Element::Master|Element::Slave))
 			setText(QObject::tr("Editer les r\351f\351rence crois\351", "edite the cross reference"));
 	else	setText(QObject::tr("Lier deux éléments"));
+
+	previous_linked = elmt1->linkedElements();
 }
 
 LinkElementsCommand::LinkElementsCommand(Element *elmt1, QList<Element *> &elmtList, QUndoCommand *parent) :
@@ -1271,12 +1270,12 @@ LinkElementsCommand::LinkElementsCommand(Element *elmt1, QList<Element *> &elmtL
 	diagram_(elmt1->diagram()),
 	element_(elmt1),
 	elmt_list(elmtList),
-	previous_report(0),
 	first_redo(true)
 {
-	if (element_->linkType() & Element::Master)
+	if (element_->linkType() & (Element::Master|Element::Slave))
 				 setText(QObject::tr("Editer les r\351f\351rence crois\351"));
 	else setText(QObject::tr("Lier deux éléments"));
+	previous_linked = elmt1->linkedElements();
 }
 
 /**
@@ -1295,8 +1294,9 @@ void LinkElementsCommand::undo() {
 	foreach (Element *elmt, elmt_list)
 		element_->unlinkElement(elmt);
 
-	if (previous_report)
-		element_->linkToElement(previous_report);
+	foreach (Element *elmt, previous_linked)
+		element_->linkToElement(elmt);
+
 	QUndoCommand::undo();
 }
 

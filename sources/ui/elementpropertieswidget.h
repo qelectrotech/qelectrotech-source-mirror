@@ -19,11 +19,11 @@
 #define ELEMENTPROPERTIESWIDGET_H
 
 #include <QtGui>
-#include <qetgraphicsitem/element.h>
-#include <diagram.h>
-#include <folioreportproperties.h>
-#include <elementinfowidget.h>
-#include <masterpropertieswidget.h>
+#include "qetgraphicsitem/element.h"
+#include "diagram.h"
+#include "elementinfowidget.h"
+#include "masterpropertieswidget.h"
+#include "linksingleelementwidget.h"
 
 class elementpropertieswidget : public QDialog
 {
@@ -47,9 +47,9 @@ class elementpropertieswidget : public QDialog
 	void editElement ();
 
 	private:
-	FolioReportProperties *frp_;
 	ElementInfoWidget *eiw_;
 	MasterPropertiesWidget *mpw_;
+	LinkSingleElementWidget *lsew_;
 	QDialogButtonBox *dbb;
 	Element *element_;
 	Diagram *diagram_;

@@ -21,12 +21,20 @@
 /**
  * @brief ElementProvider::ElementProvider Constructor
  * @param prj the project where we must find element
- * @param diagram the digram to exclude from the search
+ * @param diagram the diagram to exclude from the search
  */
 ElementProvider::ElementProvider(QETProject *prj, Diagram *diagram)
 {
 	diag_list = prj->diagrams();
 	diag_list.removeOne(diagram);
+}
+
+/**
+ * @brief ElementProvider::ElementProvider Constructor
+ * @param diag Diagram to search
+ */
+ElementProvider::ElementProvider(Diagram *diag) {
+	diag_list << diag;
 }
 
 /**
@@ -71,4 +79,27 @@ QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const {
 		}
 	}
 	return found_element;
+}
+
+/**
+ * @brief ElementProvider::find
+ * Search and return the asked element corresponding  with the given filter
+ * @param filter
+ * the filter for search element
+ * (You can find all filter with the #define in Element.h)
+ */
+QList <Element *> ElementProvider::find(const int filter) const {
+	QList <Element *> elmt_;
+
+	//serch in all diagram
+	foreach (Diagram *d, diag_list) {
+		//get all element in diagram d
+		QList <Element *> elmt_list;
+		elmt_list = d->elements();
+		foreach (Element *elmt, elmt_list) {
+			if (filter & elmt->linkType())
+				elmt_ << elmt;
+		}
+	}
+	return (elmt_);
 }

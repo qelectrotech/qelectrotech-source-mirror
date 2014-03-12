@@ -648,8 +648,9 @@ class LinkElementsCommand : public QUndoCommand {
 	private:
 	//attributes
 	Diagram *diagram_;
-	Element *element_, *previous_report;
+	Element *element_;
 	QList <Element *> elmt_list;
+	QList <Element *> previous_linked;
 	bool first_redo;
 };
 
