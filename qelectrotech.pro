@@ -82,7 +82,6 @@ QT += xml svg network sql
 
 # UI DESIGNER FILES AND GENERATION SOURCES FILES
 FORMS += sources/richtext/addlinkdialog.ui  sources/ui/*.ui \
-    sources/ui/slavepropertieswidget.ui \
     sources/ui/linksingleelementwidget.ui
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/
