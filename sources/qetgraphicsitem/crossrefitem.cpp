@@ -1,3 +1,20 @@
+/*
+	Copyright 2006-2014 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
 #include "crossrefitem.h"
 #include "element.h"
 #include "qetapp.h"
@@ -17,7 +34,6 @@ CrossRefItem::CrossRefItem(Element *elmt, QetGraphicsItem *parent) :
 	connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
 	connect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 	updateLabel();
-	autoPos();
 }
 
 /**
@@ -40,9 +56,12 @@ void CrossRefItem::updateLabel() {
 	pen_.setWidth(1);
 	qp.setPen(pen_);
 
+	//calcul the size
+	setUpBoundingRect();
+
 	//draw the cross
-	qp.drawLine(30,0, 30,50); //vertical line
-	qp.drawLine(0,10, 60,10); //horizontal line
+	qp.drawLine(30, 0,  30, boundingRect().height()); //vertical line
+	qp.drawLine(0,	10, boundingRect().width(), 10);  //horizontal line
 
 	//draw the header
 	qp.setFont(QETApp::diagramTextsFont(7));
@@ -53,7 +72,7 @@ void CrossRefItem::updateLabel() {
 
 	//and fill it
 	fillCrossRef(&qp);
-	update();
+	autoPos();
 }
 
 /**
@@ -86,7 +105,7 @@ void CrossRefItem::autoPos() {
  * @return the bounding rect of this item
  */
 QRectF CrossRefItem::boundingRect() const {
-	return (QRectF(QPointF(0,0), QSizeF(60,50)));
+	return bounding_rect_;
 }
 
 /**
@@ -133,6 +152,43 @@ void CrossRefItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 }
 
 /**
+ * @brief CrossRefItem::setUpBoundingRect
+ * Get the numbers of slaves elements linked to this parent element,
+ * for calculate the size of the bounding rect.
+ * The cross ref item is drawing according to the size of the bounding rect.
+ */
+void CrossRefItem::setUpBoundingRect() {
+	//this is the default size of cross ref item
+	QRectF default_bounding(0, 0, 60, 50);
+
+	//No need to calcul if nothing is linked
+	if (!element_->isFree()) {
+		QList <Element *> NO_list;
+		QList <Element *> NC_list;
+
+		//find each no and nc of connected element to element_
+		foreach (Element *elmt, element_->linkedElements()) {
+			QString state = elmt->kindInformations()["state"].toString();
+			if (state == "NO")		NO_list << elmt;
+			else if (state == "NC") NC_list << elmt;
+		}
+
+		int i =0;
+		if (NO_list.count()>4 || NC_list.count()>4) {
+			i = NO_list.count() > NC_list.count()?
+						NO_list.count() : NC_list.count();
+
+			//increase the height of bounding rect,
+			//according to the number of slave item less 4.
+			i-=4;
+			default_bounding.setHeight(default_bounding.height() + (i*9));
+		}
+	}
+
+	bounding_rect_ = default_bounding;
+}
+
+/**
  * @brief CrossRefItem::fillCrossRef
  * Fill the content of the cross ref
  * @param painter painter to use.
@@ -159,7 +215,7 @@ void CrossRefItem::fillCrossRef(QPainter *painter) {
 		contact_str += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 		contact_str += "\n";
 	}
-	QRectF rect_(0, 13, 30, 40);
+	QRectF rect_(0, 13, 30, (boundingRect().height()-10));
 	painter->drawText(rect_, Qt::AlignHCenter, contact_str);
 
 	//fill the NC
@@ -170,6 +226,6 @@ void CrossRefItem::fillCrossRef(QPainter *painter) {
 		contact_str += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 		contact_str += "\n";
 	}
-	rect_.setRect(30, 13, 30, 40);
+	rect_.setRect(30, 13, 30, (boundingRect().height()-10));
 	painter->drawText(rect_, Qt::AlignHCenter, contact_str);
 }
