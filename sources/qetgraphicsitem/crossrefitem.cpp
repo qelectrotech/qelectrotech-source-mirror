@@ -72,7 +72,9 @@ void CrossRefItem::updateLabel() {
 
 	//and fill it
 	fillCrossRef(&qp);
+
 	autoPos();
+	update();
 }
 
 /**
