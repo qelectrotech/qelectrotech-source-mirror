@@ -62,6 +62,34 @@ void ElementSelectorWidget::showElement(Element *elmt) {
 }
 
 /**
+ * @brief ElementSelectorWidget::clear
+ * Clear the curent list and the widget
+ */
+void ElementSelectorWidget::clear() {
+	elements_list.clear();
+	string_filter.clear();
+	if(showed_element) showed_element->setHighlighted(false);
+	foreach(QWidget *w, content_list) {
+		ui->scroll_layout_->removeWidget(w);
+		delete w;
+	}
+	content_list.clear();
+	delete sm_;
+	delete sm_show_;
+}
+
+/**
+ * @brief ElementSelectorWidget::setList
+ * Set new list of elements
+ * @param elmt_list the new elements list
+ */
+void ElementSelectorWidget::setList(QList<Element *> elmt_list) {
+	clear();
+	elements_list << elmt_list;
+	buildInterface();
+}
+
+/**
  * @brief ElementSelectorWidget::buildInterface
  * Build interface of this widget (fill all available element)
  */
@@ -84,14 +112,23 @@ void ElementSelectorWidget::buildInterface() {
 																		  .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
 
 		//add the button himself
-		QHBoxLayout *hl = new QHBoxLayout();
-		QRadioButton *rb = new QRadioButton(button_text , this);
-		QPushButton *pb = new QPushButton(QET::Icons::ZoomDraw,"", this);
+		QWidget *widget = new QWidget(this);
+		QHBoxLayout *hl = new QHBoxLayout(widget);
+		hl->setContentsMargins(0,0,0,0);
+		QRadioButton *rb = new QRadioButton(button_text , widget);
+		QPushButton *pb = new QPushButton(QET::Icons::ZoomDraw,"", widget);
 		pb->setToolTip(tr("Voir l'\351l\351ment"));
 		hl->addWidget(rb);
 		hl->addStretch();
 		hl->addWidget(pb);
-		ui->scroll_layout_->addLayout(hl);
+		ui->scroll_layout_->insertWidget(map_id, widget);
+		content_list << widget;
+		//Add the string for filter this widget
+		QString filter;
+		foreach(QString str, elmt->elementInformations().keys()){
+			filter += elmt->elementInformations()[str].toString();
+		}
+		string_filter << filter;
 
 		//map the radio button signal
 		connect(rb, SIGNAL(clicked()), sm_, SLOT(map()));
@@ -102,7 +139,6 @@ void ElementSelectorWidget::buildInterface() {
 
 		map_id++; //increase the map_id for next button.
 	}
-	ui->scroll_layout_->addStretch();
 }
 
 /**
@@ -113,4 +149,24 @@ void ElementSelectorWidget::buildInterface() {
 void ElementSelectorWidget::showElementFromList(const int i) {
 	if (elements_list.size() >= i)
 		showElement(elements_list.at(i));
+}
+
+/**
+ * @brief ElementSelectorWidget::filter
+ * Filter the content of the list.
+ * Give an empty string remove all filter.
+ * @param str string to filter
+ */
+void ElementSelectorWidget::filter(const QString &str) {
+	if(str.isEmpty()) {
+		foreach (QWidget *w, content_list) w->setHidden(false);
+	}
+	else {
+		for (int i =0; i<string_filter.size(); i++) {
+			if (string_filter.at(i).contains(str, Qt::CaseInsensitive))
+				content_list.at(i)->setHidden(false);
+			else
+				content_list.at(i)->setHidden(true);
+		}
+	}
 }

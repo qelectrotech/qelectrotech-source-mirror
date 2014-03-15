@@ -41,6 +41,11 @@ class ElementSelectorWidget : public QWidget
 	~ElementSelectorWidget();
 	Element * selectedElement () const{return selected_element;}
 	void showElement(Element *elmt);
+	void clear();
+	void setList(QList <Element *> elmt_list);
+
+	public slots:
+	void filter(const QString &str);
 
 	private:
 	void buildInterface();
@@ -56,6 +61,8 @@ class ElementSelectorWidget : public QWidget
 	QList <Element *> elements_list;
 	QSignalMapper *sm_, *sm_show_;
 	Element *selected_element, *showed_element;
+	QList <QWidget *> content_list;
+	QStringList string_filter;
 };
 
 #endif // ELEMENTSELECTORWIDGET_H

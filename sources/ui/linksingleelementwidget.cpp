@@ -37,7 +37,8 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent)
 	esw_(0),
 	diagram_list(element_->diagram()->project()->diagrams()),
 	unlink_widget(0),
-	unlink_(false)
+	unlink_(false),
+	search_field(0)
 {
 	ui->setupUi(this);
 
@@ -49,7 +50,7 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent)
 		filter_ = Element::Simple;
 
 	buildInterface();
-	connect(ui->folio_combo_box, SIGNAL(currentIndexChanged(int)), this, SLOT(reBuildList()));
+	connect(ui->folio_combo_box, SIGNAL(currentIndexChanged(int)), this, SLOT(setNewList()));
 }
 
 /**
@@ -87,18 +88,14 @@ void LinkSingleElementWidget::buildInterface() {
 		ui->folio_combo_box->addItem(title);
 	}
 
-	//Element is free build list
-	if(element_->isFree()) {
-		buildList();
+	buildList();
+	if (!element_->isFree()) {
 		ui->button_linked->setDisabled(true);
-	}
-	//Element isn't free build an empty list and add 'unlink' button
-	else {
 		buildUnlinkButton();
-		QList <Element *> elmt_list;
-		esw_ = new ElementSelectorWidget(elmt_list, this);
-		ui->content_layout->addWidget(esw_);
 	}
+
+	if(filter_ & Element::Master)
+		buildSearchField();
 }
 
 /**
@@ -108,30 +105,7 @@ void LinkSingleElementWidget::buildInterface() {
  * required folio (folio selected with the combo box)
  */
 void LinkSingleElementWidget::buildList() {
-	QList <Element *> elmt_list;
-	int i = ui->folio_combo_box->currentIndex();
-
-	//find in all diagram of this project
-	if (i == 0) {
-		ElementProvider ep(element_->diagram()->project());
-		if (filter_ & Element::AllReport)
-			elmt_list = ep.freeElement(filter_);
-		else
-			elmt_list = ep.find(filter_);
-	}
-	//find in single diagram
-	else {
-		ElementProvider ep (diagram_list.at(i-1));
-		if (filter_ & Element::AllReport)
-			elmt_list = ep.freeElement(filter_);
-		else
-			elmt_list = ep.find(filter_);
-	}
-
-	//If element is linked, remove is parent from the list
-	if(!element_->isFree()) elmt_list.removeAll(element_->linkedElements().first());
-
-	esw_ = new ElementSelectorWidget(elmt_list, this);
+	esw_ = new ElementSelectorWidget(availableElements(), this);
 	ui->content_layout->addWidget(esw_);
 }
 
@@ -153,15 +127,79 @@ void LinkSingleElementWidget::buildUnlinkButton() {
 }
 
 /**
- * @brief LinkSingleElementWidget::reBuildList
- * Rebuild the list of element
+ * @brief LinkSingleElementWidget::buildSearchField
+ * Build a line edit for search element by they information,
+ * like label or information
  */
-void LinkSingleElementWidget::reBuildList() {
-	if (element_->isFree() || unlink_) {
-		ui->content_layout->removeWidget(esw_);
-		delete esw_;
-		buildList();
+void LinkSingleElementWidget::buildSearchField() {
+	search_field = new QLineEdit(this);
+	search_field -> setPlaceholderText(tr("Rechercher"));
+	setUpCompleter();
+	connect(search_field, SIGNAL(textChanged(QString)), esw_, SLOT(filter(QString)));
+	ui->header_layout->addWidget(search_field);
+}
+
+/**
+ * @brief LinkSingleElementWidget::availableElements
+ * @return A QList with all available element
+ * to be linked with the edited element.
+ * This methode take care of the combo box "find in diagram"
+ */
+QList <Element *> LinkSingleElementWidget::availableElements() {
+	QList <Element *> elmt_list;
+	//if element isn't free and unlink isn't pressed, return an empty list
+	if (!element_->isFree() && !unlink_) return elmt_list;
+
+	int i = ui->folio_combo_box->currentIndex();
+	//find in all diagram of this project
+	if (i == 0) {
+		ElementProvider ep(element_->diagram()->project());
+		if (filter_ & Element::AllReport)
+			elmt_list = ep.freeElement(filter_);
+		else
+			elmt_list = ep.find(filter_);
 	}
+	//find in single diagram
+	else {
+		ElementProvider ep (diagram_list.at(i-1));
+		if (filter_ & Element::AllReport)
+			elmt_list = ep.freeElement(filter_);
+		else
+			elmt_list = ep.find(filter_);
+	}
+	//If element is linked, remove is parent from the list
+	if(!element_->isFree()) elmt_list.removeAll(element_->linkedElements().first());
+
+	return elmt_list;
+}
+
+/**
+ * @brief LinkSingleElementWidget::setUpCompleter
+ * Setup the completer for the find_field
+ */
+void LinkSingleElementWidget::setUpCompleter() {
+	if (search_field) {
+		search_field->clear();
+		delete search_field->completer();
+
+		QStringList list;
+		foreach (Element *elmt, availableElements())
+			foreach(QString str, elmt->elementInformations().keys())
+				list << elmt->elementInformations()[str].toString();
+
+		QCompleter *comp = new QCompleter(list, search_field);
+		comp->setCaseSensitivity(Qt::CaseInsensitive);
+		search_field->setCompleter(comp);
+	}
+}
+
+/**
+ * @brief LinkSingleElementWidget::setNewList
+ * Set the list according to the selected diagram in the combo_box
+ */
+void LinkSingleElementWidget::setNewList() {
+	esw_->setList(availableElements());
+	setUpCompleter();
 }
 
 /**
@@ -173,7 +211,7 @@ void LinkSingleElementWidget::unlinkClicked() {
 	delete unlink_widget;
 	unlink_widget = 0;
 	unlink_ = true;
-	reBuildList();
+	setNewList();
 }
 
 /**

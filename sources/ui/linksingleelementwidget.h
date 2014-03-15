@@ -52,9 +52,12 @@ class LinkSingleElementWidget : public QWidget
 	void buildInterface();
 	void buildList();
 	void buildUnlinkButton();
+	void buildSearchField();
+	QList <Element *> availableElements();
+	void setUpCompleter();
 
 	private slots:
-	void reBuildList();
+	void setNewList();
 	void unlinkClicked();
 	void on_button_this_clicked();
 	void on_button_linked_clicked();
@@ -68,6 +71,7 @@ class LinkSingleElementWidget : public QWidget
 	QWidget *unlink_widget;
 	bool unlink_;
 	Element::kind filter_;
+	QLineEdit *search_field;
 };
 
 #endif // LINKSINGLEELEMENTWIDGET_H
