@@ -89,10 +89,10 @@ void LinkSingleElementWidget::buildInterface() {
 	}
 
 	buildList();
-	if (!element_->isFree()) {
-		ui->button_linked->setDisabled(true);
-		buildUnlinkButton();
-	}
+
+	element_->isFree() ?
+				ui->button_linked->setDisabled(true) :
+				buildUnlinkButton();
 
 	if(filter_ & Element::Master)
 		buildSearchField();
