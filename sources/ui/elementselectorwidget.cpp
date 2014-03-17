@@ -105,6 +105,12 @@ void ElementSelectorWidget::buildInterface() {
 	foreach (Element *elmt, elements_list) {
 		//label for the button
 		QString button_text;
+		//if element is master and have label, add label to the string
+		if (elmt->linkType() & Element::Master) {
+			QString label = elmt->elementInformations()["label"].toString();
+			if (!label.isEmpty()) button_text += (label + "   ");
+		}
+
 		QString title = elmt->diagram()->title();
 		if (title.isEmpty()) title = tr("Sans titre");
 		button_text += QString(tr("Folio\240 %1 (%2), position %3.")).arg(elmt->diagram()->folioIndex() + 1)

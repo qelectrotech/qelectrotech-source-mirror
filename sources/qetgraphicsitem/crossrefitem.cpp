@@ -63,12 +63,37 @@ void CrossRefItem::updateLabel() {
 	qp.drawLine(30, 0,  30, boundingRect().height()); //vertical line
 	qp.drawLine(0,	10, boundingRect().width(), 10);  //horizontal line
 
+	//draw the symbolic NO
+	qp.drawLine(2, 5, 10, 5);
+	static const QPointF p1[3] = {
+		QPointF(10, 8),
+		QPointF(18, 5),
+		QPointF(26, 5),
+	};
+	qp.drawPolyline(p1,3);
+
+	//draw the symbolic NC
+	static const QPointF p2[3] = {
+		QPointF(34, 5),
+		QPointF(42, 5),
+		QPointF(42, 0),
+	};
+	qp.drawPolyline(p2,3);
+	static const QPointF p3[3] = {
+		QPointF(40, 0),
+		QPointF(50, 5),
+		QPointF(58, 5),
+	};
+	qp.drawPolyline(p3,3);
+
+	///keep this code for possible next feature
+	///choice to use symbolic or text.
 	//draw the header
-	qp.setFont(QETApp::diagramTextsFont(7));
+	/*qp.setFont(QETApp::diagramTextsFont(7));
 	QRectF header_rect (0,0,30,10);
 	qp.drawText(header_rect, Qt::AlignCenter, "NO");
 	header_rect.setRect(30, 0, 30, 10);
-	qp.drawText(header_rect, Qt::AlignCenter, "NC");
+	qp.drawText(header_rect, Qt::AlignCenter, "NC");*/
 
 	//and fill it
 	fillCrossRef(&qp);
