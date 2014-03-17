@@ -1,0 +1,27 @@
+<definition width="40" version="0.4" hotspot_x="5" hotspot_y="39" height="80" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Air_Circuit_Breaker</name>
+        <name lang="fr"> Disjoncteur à commande pneumatique </name>
+    </names>
+    <informations>Author: Arun Kishore Eswara
+
+License: Creative Commons By 3.0 
+Quote Author and use for free : strictly non-commercial</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="7" y2="-2" x2="15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="7" y2="1" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="32.6" x1="0" y2="27.3692" x2="0"/>
+        <arc width="16" x="-3" y="-11" antialias="true" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="circle" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.3524" x1="0" y2="24.7016" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="simple" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23.6476" x1="0" y2="-10.2984" x2="0"/>
+        <polygon x4="3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-23" x1="-3" y2="-26" x2="0" y3="-23" x3="3" y4="-23"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="24" x1="-3" y2="27" x2="0" y3="24" x3="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26.4" x1="0" y2="-31.6308" x2="0"/>
+        <arc width="13" x="-3" y="-11" antialias="true" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="7" y2="-5" x2="15"/>
+        <input x="14" y="4" size="9" rotate="true" text="_"/>
+        <text x="8" y="-18" size="9" text="ACB"/>
+        <terminal x="0" y="-31" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="0" y="32" nameHidden="1" number="" name="" orientation="s"/>
+    </description>
+</definition>

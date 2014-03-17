@@ -1,0 +1,27 @@
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="45" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Flange</name>
+        <name lang="fr">Poulie</name>
+    </names>
+    <informations>Author: Arun Kishore Eswara
+
+License: Creative Commons By 3.0 
+Quote Author and use for free : strictly non-commercial</informations>
+    <description>
+        <ellipse width="10" x="-5" y="-7" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="10" x="-5" y="-36" antialias="true" height="32" style="line-style:normal;line-weight:none;filling:white;color:black"/>
+        <ellipse width="10" x="-5" y="-39" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35.964" x1="-5" y2="-4.0388" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-34.963" x1="5" y2="-4.04" x2="5"/>
+        <ellipse width="34" x="-17" y="-38" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse width="34" x="-17" y="-41" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse width="5" x="8" y="-37" antialias="true" height="1" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <ellipse width="5" x="-2" y="-40" antialias="true" height="1" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <ellipse width="5" x="-3" y="-34" antialias="true" height="1" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-36" x1="-17" y2="-34" x2="-17"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-36" x1="17" y2="-34" x2="17"/>
+        <ellipse width="9" x="-5" y="-38" antialias="true" height="3" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <ellipse width="5" x="-13" y="-37" antialias="true" height="1" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <terminal x="0" y="-6" nameHidden="1" number="" name="" orientation="n"/>
+    </description>
+</definition>
