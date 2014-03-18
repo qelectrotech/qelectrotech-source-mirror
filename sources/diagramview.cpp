@@ -445,9 +445,11 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 		switchToVisualisationModeIfNeeded(e);
 		fresh_focus_in_ = false;
 	}
+
 	if (isInteractive() && !scene -> isReadOnly() && e -> buttons() == Qt::LeftButton) {
 		switch (current_behavior) {
 			case noAction:
+				QGraphicsView::mousePressEvent(e);
 				break;
 			case addingText:
 				addDiagramTextAtPos(mapToScene(e -> pos()));
@@ -474,6 +476,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 				break;
 			case dragView:
 				current_behavior = noAction;
+				QGraphicsView::mousePressEvent(e);
 				break;
 			default:
 				current_behavior = noAction;
@@ -482,13 +485,13 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 	}
 	// workaround for drag view with hold wheel click and drag mouse
 	// see also mouseMoveEvent() and mouseReleaseEvent()
-	if (e -> buttons() == Qt::MidButton) {
+	else if (e -> buttons() == Qt::MidButton) {
 		setCursor(Qt::ClosedHandCursor);
 		reference_view_ = mapToScene(e -> pos());
 		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
 		return;
 	}
-	QGraphicsView::mousePressEvent(e);
+	else QGraphicsView::mousePressEvent(e);
 }
 
 /**
@@ -502,7 +505,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e) {
 		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
 		return;
 	}
-	if ((e -> buttons() & Qt::LeftButton) &&
+	else if ((e -> buttons() & Qt::LeftButton) &&
 		(current_behavior == addingLine || current_behavior == addingRectangle || current_behavior == addingEllipse)) {
 		QRectF rec = QRectF(rubber_band_origin, mapToScene(e->pos())).normalized();
 		scene ->removeItem(newItem);
@@ -511,7 +514,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e) {
 			newItem -> setLineAngle(rubber_band_origin != rec.topLeft() && rubber_band_origin != rec.bottomRight());
 		scene ->addItem(newItem);
 	}
-	QGraphicsView::mouseMoveEvent(e);
+	else QGraphicsView::mouseMoveEvent(e);
 }
 
 /**
@@ -523,7 +526,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
 		setCursor(Qt::ArrowCursor);
 		return;
 	}
-	if (current_behavior == addingLine || current_behavior == addingRectangle || current_behavior == addingEllipse) {
+	else if (current_behavior == addingLine || current_behavior == addingRectangle || current_behavior == addingEllipse) {
 		newItem -> setFullyBuilt(true);
 		// le place a la position pos en gerant l'annulation
 		scene -> undoStack().push(new AddShapeCommand(scene, newItem, rubber_band_origin));
@@ -537,7 +540,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
 		current_behavior = noAction;
 	}
 
-	QGraphicsView::mouseReleaseEvent(e);
+	else QGraphicsView::mouseReleaseEvent(e);
 }
 
 /**
