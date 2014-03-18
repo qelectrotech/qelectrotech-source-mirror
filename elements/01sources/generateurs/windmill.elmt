@@ -1,0 +1,30 @@
+<definition width="110" version="0.4" hotspot_x="55" hotspot_y="201" height="260" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Wind Mill</name>
+        <name lang="fr">Eolienne</name>
+    </names>
+    <informations>Author: Arun Kishore Eswara
+
+License: Creative Commons Attribution 3.0 base License
+
+</informations>
+    <description>
+        <polygon x4="2.11159" y5="-148" x5="-2.20659" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y1="-146.886" x1="-2.20659" y2="46.9281" x2="-8.095" y3="46.9281" x3="8" y4="-148"/>
+        <rect width="16" x="7" y="-4" antialias="false" height="37" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-11" y="-155" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="21"/>
+        <ellipse width="9" x="-5" y="-149" antialias="true" height="56" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse width="9" x="-5" y="-197" antialias="true" height="57" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse width="57" x="-53" y="-149" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse width="58" x="-6" y="-149" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle x="-6" y="-150" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="11"/>
+        <polygon x4="18.961" y5="46.5333" x5="-20.312" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y1="47.33" x1="-21.0974" y2="54.5" x2="-25.0247" y3="54.5" x3="22.8883" y4="46.5333"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="42" x1="-34" y2="49" x2="-34"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="49" x1="-38" y2="49" x2="-30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="51" x1="-36.84" y2="51" x2="-31.1733"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="53" x1="-35" y2="53" x2="-33"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="42" x1="-34" y2="42" x2="-8" y3="42" x3="-8"/>
+        <terminal x="22" y="23" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="22" y="29" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="22" y="16" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>
