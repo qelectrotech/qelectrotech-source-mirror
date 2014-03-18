@@ -35,6 +35,7 @@ ElementSelectorWidget::ElementSelectorWidget(QList <Element *> elmt_list, QWidge
 	selected_element(0),
 	showed_element(0)
 {
+	qSort(elements_list.begin(), elements_list.end(), comparPos);
 	ui->setupUi(this);
 	buildInterface();
 }
@@ -86,6 +87,7 @@ void ElementSelectorWidget::clear() {
 void ElementSelectorWidget::setList(QList<Element *> elmt_list) {
 	clear();
 	elements_list << elmt_list;
+	qSort(elements_list.begin(), elements_list.end(), comparPos);
 	buildInterface();
 }
 

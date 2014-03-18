@@ -104,7 +104,7 @@ class Element : public QetGraphicsItem {
 	virtual void unlinkAllElements() {}
 	virtual void unlinkElement(Element *) {}
 	void initLink(QETProject *);
-	QList<Element *> linkedElements () const;
+	QList<Element *> linkedElements ();
 	virtual int linkType() const {return link_type_;} // @return the linkable type
 	void newUuid() {uuid_ = QUuid::createUuid();} 	//create new uuid for this element
 
@@ -179,6 +179,8 @@ class Element : public QetGraphicsItem {
 	void updatePixmap();
 };
 
+bool comparPos(const Element * elmt1, const Element * elmt2);
+
 inline bool Element::isFree() const {
 	return (connected_elements.isEmpty());
 }
@@ -221,7 +223,12 @@ inline QUuid Element::uuid() const {
 	return uuid_;
 }
 
-inline QList <Element *> Element::linkedElements() const {
+/**
+ * @brief Element::linkedElements
+ * @return the list of linked elements, the list is sorted by position
+ */
+inline QList <Element *> Element::linkedElements() {
+	 qSort(connected_elements.begin(), connected_elements.end(), comparPos);
 	return connected_elements;
 }
 

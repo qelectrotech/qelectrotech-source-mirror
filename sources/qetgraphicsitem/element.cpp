@@ -24,6 +24,7 @@
 #include <QtDebug>
 #include <ui/elementpropertieswidget.h>
 #include "elementprovider.h"
+#include "diagramposition.h"
 
 /**
 	Constructeur pour un element sans scene ni parent
@@ -53,6 +54,8 @@ void Element::editProperty() {
 			epw.exec();
 		}
 }
+
+
 
 /**
 	@return true si l'element est mis en evidence
@@ -498,4 +501,24 @@ void Element::initLink(QETProject *prj) {
 		elmt->linkToElement(this);
 	}
 	tmp_uuids_link.clear();
+}
+
+/**
+ * @brief comparPos
+ * Compare position of the two elements. Compare 3 points:
+ * 1 folio - 2 row - 3 line
+ * returns a response when a comparison is found.
+ * @return true if elmt1 is at lower position than elmt 2, else false
+ */
+bool comparPos(const Element *elmt1, const Element *elmt2) {
+	//Compare folio first
+	if (elmt1->diagram()->folioIndex() != elmt2->diagram()->folioIndex())
+		return elmt1->diagram()->folioIndex() < elmt2->diagram()->folioIndex();
+	//Compare the row in second
+	QString a = elmt1->diagram()->convertPosition(elmt1->scenePos()).letter();
+	QString b = elmt2->diagram()->convertPosition(elmt2->scenePos()).letter();
+	if (a != b)
+		return a<b;
+	//In last compare the line
+	return elmt1->pos().x() <= elmt2->pos().x();
 }
