@@ -53,7 +53,12 @@ void CrossRefItem::updateLabel() {
 	//init the painter
 	QPainter qp(&drawing_);
 	QPen pen_;
-	pen_.setWidth(1);
+
+#ifdef Q_WS_WIN
+	pen.setWidth(1);
+#elif Q_WS_MAC
+	pen.setWidth(0.5);
+#endif
 	qp.setPen(pen_);
 
 	//calcul the size
