@@ -55,9 +55,9 @@ void CrossRefItem::updateLabel() {
 	QPen pen_;
 
 #ifdef Q_WS_WIN
-	pen.setWidth(1);
+	pen_.setWidth(1);
 #elif Q_WS_MAC
-	pen.setWidth(0.5);
+	pen_.setWidth(0.5);
 #endif
 	qp.setPen(pen_);
 
