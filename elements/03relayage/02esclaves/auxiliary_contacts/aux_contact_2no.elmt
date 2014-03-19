@@ -22,7 +22,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <input x="-23" y="-26" size="4" text="53"/>
         <input x="-3" y="-26" size="4" text="63"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="-15" y2="0" x2="-10" y3="10" x3="-10"/>
-        <input x="11" y="-9.5" size="9" text="_"/>
+        <input x="11" y="-9.5" size="9" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-10" y2="-20" x2="-10"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="5" y2="0" x2="10" y3="10" x3="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="-20" x2="10"/>
