@@ -61,29 +61,29 @@ void CrossRefItem::updateLabel() {
 	setUpBoundingRect();
 
 	//draw the cross
-	qp.drawLine(30, 0,  30, boundingRect().height()); //vertical line
-	qp.drawLine(0,	10, boundingRect().width(), 10);  //horizontal line
+	qp.drawLine(30, 0, 30, boundingRect().height()); //vertical line
+	qp.drawLine(0,	5, boundingRect().width(), 5);  //horizontal line
 
 	//draw the symbolic NO
-	qp.drawLine(2, 5, 10, 5);
+	qp.drawLine(11, 2, 14, 2);
 	static const QPointF p1[3] = {
-		QPointF(10, 8),
-		QPointF(18, 5),
-		QPointF(26, 5),
+		QPointF(14, 1),
+		QPointF(16, 2),
+		QPointF(18, 2),
 	};
 	qp.drawPolyline(p1,3);
 
 	//draw the symbolic NC
 	static const QPointF p2[3] = {
-		QPointF(34, 5),
-		QPointF(42, 5),
-		QPointF(42, 0),
+		QPointF(36, 2),
+		QPointF(39, 2),
+		QPointF(39, 0),
 	};
 	qp.drawPolyline(p2,3);
 	static const QPointF p3[3] = {
-		QPointF(40, 0),
-		QPointF(50, 5),
-		QPointF(58, 5),
+		QPointF(38, 0),
+		QPointF(41, 2),
+		QPointF(43, 2),
 	};
 	qp.drawPolyline(p3,3);
 
@@ -152,7 +152,6 @@ void CrossRefItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		painter->save();
 		QPen t(Qt::black);
 		t.setStyle(Qt::DashLine);
-		t.setCosmetic(true);
 		painter -> setPen(t);
 		painter -> setRenderHint(QPainter::Antialiasing, false);
 		painter->drawRect(boundingRect());
@@ -246,7 +245,7 @@ void CrossRefItem::fillCrossRef(QPainter *painter) {
 		contact_str += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 		contact_str += "\n";
 	}
-	QRectF rect_(0, 13, 30, (boundingRect().height()-10));
+	QRectF rect_(0, 10, 26, (boundingRect().height()-10));
 	painter->drawText(rect_, Qt::AlignHCenter, contact_str);
 
 	//fill the NC
@@ -257,6 +256,6 @@ void CrossRefItem::fillCrossRef(QPainter *painter) {
 		contact_str += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 		contact_str += "\n";
 	}
-	rect_.setRect(30, 13, 30, (boundingRect().height()-10));
+	rect_.setRect(28, 10, 28, (boundingRect().height()-10));
 	painter->drawText(rect_, Qt::AlignHCenter, contact_str);
 }
