@@ -104,12 +104,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		painter -> setRenderHint(QPainter::Antialiasing, false);
 		QRectF rec = boundingRect();
 		QPen pen(Qt::black);
-
-#ifdef Q_WS_WIN
-	pen.setWidth(1);
-#elif Q_WS_MAC
-	pen.setWidth(0.5);
-#endif
+		pen.setWidthF(0.5);
 
 		if (isSelected())
 			pen.setColor(Qt::red);

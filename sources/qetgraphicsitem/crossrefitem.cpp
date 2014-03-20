@@ -53,12 +53,8 @@ void CrossRefItem::updateLabel() {
 	//init the painter
 	QPainter qp(&drawing_);
 	QPen pen_;
-
-#ifdef Q_WS_WIN
-	pen_.setWidth(1);
-#elif Q_WS_MAC
-	pen_.setWidth(0.5);
-#endif
+	pen_.setWidthF(0.5);
+	pen_.setCosmetic(true);
 	qp.setPen(pen_);
 
 	//calcul the size
@@ -156,7 +152,9 @@ void CrossRefItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		painter->save();
 		QPen t(Qt::black);
 		t.setStyle(Qt::DashLine);
+		t.setCosmetic(true);
 		painter -> setPen(t);
+		painter -> setRenderHint(QPainter::Antialiasing, false);
 		painter->drawRect(boundingRect());
 		painter->restore();
 	}
@@ -238,7 +236,8 @@ void CrossRefItem::fillCrossRef(QPainter *painter) {
 		else if (state == "NC") NC_list << elmt;
 	}
 
-	painter->setFont(QETApp::diagramTextsFont(6));
+	painter -> setFont(QETApp::diagramTextsFont(4));
+	painter -> setRenderHint(QPainter::Antialiasing, false);
 	//fill the NO
 	QString contact_str;
 	foreach (Element *elmt, NO_list) {
