@@ -152,6 +152,7 @@ void CrossRefItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		painter->save();
 		QPen t(Qt::black);
 		t.setStyle(Qt::DashLine);
+		t.setCosmetic(true);
 		painter -> setPen(t);
 		painter -> setRenderHint(QPainter::Antialiasing, false);
 		painter->drawRect(boundingRect());
