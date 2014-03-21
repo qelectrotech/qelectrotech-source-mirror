@@ -504,6 +504,17 @@ void Element::initLink(QETProject *prj) {
 }
 
 /**
+ * @brief Element::setElementInformations
+ * Set new information for this element.
+ * This method emit @elementInfoChange
+ * @param dc
+ */
+void Element::setElementInformations(DiagramContext dc) {
+	element_informations_ = dc;
+	emit elementInfoChange(element_informations_);
+}
+
+/**
  * @brief comparPos
  * Compare position of the two elements. Compare 3 points:
  * 1 folio - 2 row - 3 line

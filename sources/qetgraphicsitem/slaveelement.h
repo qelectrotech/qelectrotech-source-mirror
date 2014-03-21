@@ -32,7 +32,11 @@ class SlaveElement : public CustomElement
 
 	signals:
 
-	public slots:
+	private slots:
+	void updateLabel();
+
+	private:
+	QGraphicsTextItem *Xref_item;
 
 };
 

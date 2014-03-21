@@ -711,18 +711,19 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 	
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
 	eti -> setFont(QETApp::diagramTextsFont(size));
+	eti -> setTagg(e.attribute("tagg", "other"));
 	
-	// position du champ de texte
+	// position the text field
 	eti -> setOriginalPos(QPointF(pos_x, pos_y));
 	eti -> setPos(pos_x, pos_y);
 	
-	// rotation du champ de texte
+	// rotation of the text field
 	qreal original_rotation_angle = 0.0;
 	QET::attributeIsAReal(e, "rotation", &original_rotation_angle);
 	eti -> setOriginalRotationAngle(original_rotation_angle);
 	eti -> setRotationAngle(original_rotation_angle);
 	
-	// comportement du champ lorsque son element parent est pivote
+	// behavior when the parent element is rotated
 	eti -> setFollowParentRotations(e.attribute("rotate") == "true");
 	
 	list_texts_ << eti;
@@ -899,4 +900,23 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 	
 	// mise en place (ou non) de l'antialiasing
 	setQPainterAntiAliasing(qp, e.attribute("antialias") == "true");
+}
+
+/**
+ * @brief CustomElement::setTaggedText
+ * Set text @newstr to the text tagged with @tagg.
+ * If tagg is found return the text item, else return 0.
+ * @param tagg required tagg
+ * @param newstr new label
+ * @param noeditable set editable or not (by default, set editable)
+ */
+ElementTextItem* CustomElement::setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable) {
+	foreach (ElementTextItem *eti, list_texts_) {
+		if (eti -> tagg() == tagg) {
+			eti -> setPlainText(newstr);
+			eti -> setNoEditable(noeditable);
+			return eti;
+		}
+	}
+	return 0;
 }

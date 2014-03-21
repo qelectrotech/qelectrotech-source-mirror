@@ -115,10 +115,13 @@ class Element : public QetGraphicsItem {
 	QUuid uuid_;
 	kind link_type_;
 
+		signals:
+	void elementInfoChange(DiagramContext);
+
 		//METHODS related to information
 		public:
 	DiagramContext elementInformations()const {return element_informations_;}
-	void setElementInformations(DiagramContext dc) {element_informations_ = dc;}
+	void setElementInformations(DiagramContext dc);//{element_informations_ = dc; emit elementInfoChange(dc);}
 	DiagramContext kindInformations() const {return kind_informations_;}	//@kind_information_ is used to store more information
 																			//about the herited class like contactelement for know
 																			// kind of contact (simple tempo) or number of contact show by the element.

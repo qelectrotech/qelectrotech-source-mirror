@@ -16,6 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "slaveelement.h"
+#include "diagramposition.h"
+#include "qetapp.h"
+#include "elementtextitem.h"
 
 /**
  * @brief SlaveElement::SlaveElement
@@ -28,6 +31,7 @@
 SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)
 {
+	Xref_item = NULL;
 	link_type_ = Slave;
 }
 
@@ -50,6 +54,9 @@ void SlaveElement::linkToElement(Element *elmt) {
 	if (elmt->linkType() == Master && !connected_elements.contains(elmt)) {
 		if(!isFree()) unlinkAllElements();
 		connected_elements << elmt;
+		updateLabel();
+		connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
+		connect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 		elmt->linkToElement(this);
 	}
 }
@@ -76,6 +83,47 @@ void SlaveElement::unlinkElement(Element *elmt) {
 	//Ensure elmt is linked to this element
 	if (connected_elements.contains(elmt)) {
 		connected_elements.removeOne(elmt);
+		disconnect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
+		disconnect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
+		delete Xref_item; Xref_item = NULL;
+		updateLabel();
 		elmt->unlinkElement(this);
+	}
+}
+
+/**
+ * @brief SlaveElement::updateLabel
+ * update the label (tagged with label) of this element.
+ * If this element is connected to a master,
+ * the label show the string tagged by "label" of the master
+ * and add a qgraphicstextitem for show the position of the master
+ */
+void SlaveElement::updateLabel() {
+	QString label("_");
+	QString Xreflabel;
+	bool no_editable = false;
+
+	//must be linked to set the label of master
+	if (linkedElements().count()) {
+		no_editable = true;
+		Element *elmt = linkedElements().first();
+		label = elmt -> elementInformations()["label"].toString();
+
+		Xreflabel = "(";
+		Xreflabel += QString::number(elmt->diagram()->folioIndex()+1);
+		Xreflabel += "-";
+		Xreflabel += elmt->diagram() -> convertPosition(elmt -> scenePos()).toString();
+		Xreflabel += ")";
+	}
+
+	// set the new label
+	ElementTextItem *eti = setTaggedText("label", label, no_editable);
+	if (eti && !isFree()) {
+		if (Xref_item) Xref_item -> setPlainText(Xreflabel);
+		else {
+			Xref_item = new QGraphicsTextItem(Xreflabel, eti);
+			Xref_item -> setFont(QETApp::diagramTextsFont(5));
+			Xref_item -> setPos(eti ->  boundingRect().bottomLeft());
+		}
 	}
 }

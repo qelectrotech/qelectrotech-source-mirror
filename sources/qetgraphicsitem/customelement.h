@@ -90,6 +90,7 @@ class CustomElement : public FixedElement {
 	virtual void setQPainterAntiAliasing(QPainter &, bool);
 	virtual bool validOrientationAttribute(const QDomElement &);
 	virtual void setPainterStyle(QDomElement &, QPainter &);
+	ElementTextItem* setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable=false);
 };
 
 /**

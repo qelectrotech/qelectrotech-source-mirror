@@ -44,6 +44,7 @@ class ElementTextItem : public DiagramTextItem {
 	QPointF original_position;
 	qreal original_rotation_angle_;
 	bool first_move_;
+	QString tagg_;
 	
 	// methods
 	public:
@@ -63,6 +64,8 @@ class ElementTextItem : public DiagramTextItem {
 	void setOriginalRotationAngle(const qreal &);
 	qreal originalRotationAngle() const;
 	virtual void setFont(const QFont &);
+	void setTagg(const QString &str) {tagg_ = str;}
+	QString tagg() const {return tagg_;}
 	
 	public slots:
 	void adjustItemPosition(int = 0);
