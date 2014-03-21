@@ -20,6 +20,9 @@
 #include "qetapp.h"
 #include "diagramposition.h"
 
+//define the height of the header.
+#define header 5
+
 /**
  * @brief CrossRefItem::CrossRefItem
  * Default constructor
@@ -54,36 +57,35 @@ void CrossRefItem::updateLabel() {
 	QPainter qp(&drawing_);
 	QPen pen_;
 	pen_.setWidthF(0.2);
-	pen_.setCosmetic(true);
 	qp.setPen(pen_);
 
 	//calcul the size
 	setUpBoundingRect();
 
 	//draw the cross
-	qp.drawLine(30, 0, 30, boundingRect().height()); //vertical line
-	qp.drawLine(0,	5, boundingRect().width(), 5);  //horizontal line
+	qp.drawLine(boundingRect().width()/2, 0, boundingRect().width()/2, boundingRect().height()); //vertical line
+	qp.drawLine(0,	header, boundingRect().width(), header);  //horizontal line
 
 	//draw the symbolic NO
-	qp.drawLine(11, 2, 14, 2);
+	qp.drawLine(5, 3, 10, 3);
 	static const QPointF p1[3] = {
-		QPointF(14, 1),
-		QPointF(16, 2),
-		QPointF(18, 2),
+		QPointF(10, 0),
+		QPointF(15, 3),
+		QPointF(20, 3),
 	};
 	qp.drawPolyline(p1,3);
 
 	//draw the symbolic NC
 	static const QPointF p2[3] = {
-		QPointF(36, 2),
-		QPointF(39, 2),
-		QPointF(39, 0),
+		QPointF(30, 3),
+		QPointF(35, 3),
+		QPointF(35, 0),
 	};
 	qp.drawPolyline(p2,3);
 	static const QPointF p3[3] = {
-		QPointF(38, 0),
-		QPointF(41, 2),
-		QPointF(43, 2),
+		QPointF(34, 0),
+		QPointF(40, 3),
+		QPointF(45, 3),
 	};
 	qp.drawPolyline(p3,3);
 
@@ -155,8 +157,8 @@ void CrossRefItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		t.setCosmetic(true);
 		painter -> setPen(t);
 		painter -> setRenderHint(QPainter::Antialiasing, false);
-		painter->drawRect(boundingRect());
-		painter->restore();
+		painter -> drawRect(boundingRect());
+		painter -> restore();
 	}
 	drawing_.play(painter);
 }
@@ -189,7 +191,7 @@ void CrossRefItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
  */
 void CrossRefItem::setUpBoundingRect() {
 	//this is the default size of cross ref item
-	QRectF default_bounding(0, 0, 60, 50);
+	QRectF default_bounding(0, 0, 50, 40);
 
 	//No need to calcul if nothing is linked
 	if (!element_->isFree()) {
@@ -211,7 +213,7 @@ void CrossRefItem::setUpBoundingRect() {
 			//increase the height of bounding rect,
 			//according to the number of slave item less 4.
 			i-=4;
-			default_bounding.setHeight(default_bounding.height() + (i*9));
+			default_bounding.setHeight(default_bounding.height() + (i*8));
 		}
 	}
 
@@ -236,8 +238,8 @@ void CrossRefItem::fillCrossRef(QPainter *painter) {
 		else if (state == "NC") NC_list << elmt;
 	}
 
-	painter -> setFont(QETApp::diagramTextsFont(4));
-	painter -> setRenderHint(QPainter::Antialiasing, false);
+	painter -> setFont(QETApp::diagramTextsFont(5));
+	qreal half_cross = boundingRect().width()/2;
 	//fill the NO
 	QString contact_str;
 	foreach (Element *elmt, NO_list) {
@@ -246,8 +248,8 @@ void CrossRefItem::fillCrossRef(QPainter *painter) {
 		contact_str += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 		contact_str += "\n";
 	}
-	QRectF rect_(0, 10, 26, (boundingRect().height()-10));
-	painter->drawText(rect_, Qt::AlignHCenter, contact_str);
+	QRectF rect_(3, header, half_cross, (boundingRect().height()-header));
+	painter->drawText(rect_, Qt::AlignTop | Qt::AlignLeft, contact_str);
 
 	//fill the NC
 	contact_str.clear();
@@ -257,6 +259,6 @@ void CrossRefItem::fillCrossRef(QPainter *painter) {
 		contact_str += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 		contact_str += "\n";
 	}
-	rect_.setRect(28, 10, 28, (boundingRect().height()-10));
-	painter->drawText(rect_, Qt::AlignHCenter, contact_str);
+	rect_.setRect(half_cross+3 , header, half_cross, (boundingRect().height()-header));
+	painter -> drawText(rect_, Qt::AlignTop | Qt::AlignLeft, contact_str);
 }
