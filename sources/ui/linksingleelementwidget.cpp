@@ -133,7 +133,9 @@ void LinkSingleElementWidget::buildUnlinkButton() {
  */
 void LinkSingleElementWidget::buildSearchField() {
 	search_field = new QLineEdit(this);
+#if QT_VERSION >= 0x040700
 	search_field -> setPlaceholderText(tr("Rechercher"));
+#endif
 	setUpCompleter();
 	connect(search_field, SIGNAL(textChanged(QString)), esw_, SLOT(filter(QString)));
 	ui->header_layout->addWidget(search_field);
