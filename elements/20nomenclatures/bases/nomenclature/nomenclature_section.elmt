@@ -1,4 +1,4 @@
-<definition width="60" version="0.3" hotspot_x="4" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="4" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">تسمية مساحة المقطع </name>
         <name lang="el">Διατομή αγωγού</name>
@@ -6,6 +6,7 @@
         <name lang="it">Sezione del conduttore</name>
         <name lang="fr">Nomenclature section</name>
         <name lang="pl">Przekrój poprzeczny przewodu</name>
+        <name lang="es">Clasificación de sección</name>
         <name lang="cs">Část členění</name>
     </names>
     <informations>Author: The QElectroTech team

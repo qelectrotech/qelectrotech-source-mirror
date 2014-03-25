@@ -1,4 +1,4 @@
-<definition width="660" version="0.3" hotspot_x="5" hotspot_y="9" height="30" type="element" ic="true" orientation="dyyy">
+<definition width="660" version="0.4" hotspot_x="5" hotspot_y="9" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">سطر جدول تسمية</name>
         <name lang="de">Linienfeld Nomemklatur</name>
@@ -7,6 +7,7 @@
         <name lang="it">Riga della tabella per elenco</name>
         <name lang="fr">Ligne de tableau de nomenclature</name>
         <name lang="pl">Tabliczka rysunkowa - wiersz</name>
+        <name lang="es">Nomenclatura lineas del cuadro</name>
         <name lang="cs">Čára nomenklaturní tabulky</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -1,13 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="ru">Перечень элементов</name>
-        <name lang="en">Nomenclatures</name>
-        <name lang="fr">Nomenclatures</name>
         <name lang="ar">تسميات</name>
+        <name lang="de">Nomenklatur</name>
+        <name lang="ru">Перечень элементов</name>
+        <name lang="el">Πίνακες</name>
+        <name lang="en">Nomenclatures</name>
+        <name lang="it">Tabella</name>
+        <name lang="fr">Nomenclatures</name>
         <name lang="pl">Oznaczenia</name>
         <name lang="cs">Nomenklatura</name>
-        <name lang="de">Nomenklatur</name>
-        <name lang="it">Tabella</name>
-        <name lang="el">Πίνακες</name>
+        <name lang="en">Nomenclaturas</name>
     </names>
 </qet-directory>

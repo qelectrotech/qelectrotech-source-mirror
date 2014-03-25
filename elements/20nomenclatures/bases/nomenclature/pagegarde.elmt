@@ -1,9 +1,10 @@
 <definition width="430" version="0.4" hotspot_x="4" hotspot_y="23" height="260" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Table Title Homepage</name>
-        <name lang="fr">Titre tableau page de garde</name>
         <name lang="it">Tabella pagina principale</name>
+        <name lang="fr">Titre tableau page de garde</name>
         <name lang="pl">Tabela tytułowa</name>
+        <name lang="es">Cuadro de titulo de la pagina principal</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

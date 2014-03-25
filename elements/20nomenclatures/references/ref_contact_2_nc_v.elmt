@@ -1,10 +1,11 @@
-<definition width="30" version="0.3" hotspot_x="20" hotspot_y="23" height="30" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="20" hotspot_y="23" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مرجع مُلامس NC (عمودي)</name>
         <name lang="en">Reference contact NC (vertical)</name>
         <name lang="it">Rif. contatto NC / (verticale)</name>
         <name lang="fr">Reference contact NC v</name>
         <name lang="pl">Odsyłacz - zestyk rozwierny (pionowo)</name>
+        <name lang="es">Referencia contacto NC vertical</name>
         <name lang="cs">Odkaz - kontakt NC (svislý)</name>
     </names>
     <informations>Author: The QElectroTech team
