@@ -51,6 +51,7 @@ class QetGraphicsItem : public QGraphicsObject {
 	protected:
 	bool is_movable_;
 	bool first_move_;
+	bool snap_to_grid_;
 	QPointF mouse_to_origin_movement_;
 
 };

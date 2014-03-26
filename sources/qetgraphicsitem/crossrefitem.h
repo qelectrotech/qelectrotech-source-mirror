@@ -39,6 +39,7 @@ class CrossRefItem : public QetGraphicsItem
 	~CrossRefItem();
 
 	QRectF boundingRect() const;
+	virtual QPainterPath shape() const;
 
 	signals:
 
@@ -52,15 +53,16 @@ class CrossRefItem : public QetGraphicsItem
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *e);
 
 	private:
-	void setUpBoundingRect();
-	void fillCrossRef(QPainter *painter);
+	void setUpBoundingRect(QPainter &painter);
+	void fillCrossRef(QPainter &painter);
+	void fillExtraInfo(QPainter &painter);
 
 	//Attributes
 	private:
 	Element *element_; //element to display the cross reference
-	QRectF bounding_rect_;
+	QRectF bounding_rect_ , text_rect_;
 	QPicture drawing_;
-	bool b;
+	QPainterPath shape_path_;
 
 };
 

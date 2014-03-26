@@ -26,7 +26,8 @@
 QetGraphicsItem::QetGraphicsItem(QGraphicsItem *parent):
 	QGraphicsObject(parent),
 	is_movable_(true),
-	first_move_(true)
+	first_move_(true),
+	snap_to_grid_(true)
 {
 }
 
@@ -48,7 +49,7 @@ Diagram* QetGraphicsItem::diagram() const{
  */
 void QetGraphicsItem::setPos(const QPointF &p) {
 	if (p == pos() || !is_movable_) return;
-	if (scene()) {
+	if (scene() && snap_to_grid_) {
 		// arrondit l'abscisse a 10 px pres
 		int p_x = qRound(p.x() / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
 		// arrondit l'ordonnee a 10 px pres

@@ -525,11 +525,13 @@ bool comparPos(const Element *elmt1, const Element *elmt2) {
 	//Compare folio first
 	if (elmt1->diagram()->folioIndex() != elmt2->diagram()->folioIndex())
 		return elmt1->diagram()->folioIndex() < elmt2->diagram()->folioIndex();
-	//Compare the row in second
+	//Compare the row(in letter pos) in second
 	QString a = elmt1->diagram()->convertPosition(elmt1->scenePos()).letter();
 	QString b = elmt2->diagram()->convertPosition(elmt2->scenePos()).letter();
 	if (a != b)
 		return a<b;
-	//In last compare the line
+	//In last compare the line, if line is egal, return sorted by row in real pos
+	if (elmt1->pos().x() == elmt2->pos().x())
+		return elmt1->y() <= elmt2->pos().y();
 	return elmt1->pos().x() <= elmt2->pos().x();
 }

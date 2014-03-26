@@ -33,8 +33,10 @@ CrossRefItem::CrossRefItem(Element *elmt, QetGraphicsItem *parent) :
 	QetGraphicsItem(parent),
 	element_ (elmt)
 {
+	snap_to_grid_=false;
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
 	connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
+	connect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 	connect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 	updateLabel();
 }
@@ -45,7 +47,24 @@ CrossRefItem::CrossRefItem(Element *elmt, QetGraphicsItem *parent) :
  */
 CrossRefItem::~CrossRefItem() {
 	disconnect(element_, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
+	disconnect(element_, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 	disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+}
+
+/**
+ * @brief CrossRefItem::boundingRect
+ * @return the bounding rect of this item
+ */
+QRectF CrossRefItem::boundingRect() const {
+	return bounding_rect_;
+}
+
+/**
+ * @brief CrossRefItem::shape
+ * @return the shape of this item
+ */
+QPainterPath CrossRefItem::shape() const{
+	return shape_path_;
 }
 
 /**
@@ -53,39 +72,48 @@ CrossRefItem::~CrossRefItem() {
  * Update the content of the item
  */
 void CrossRefItem::updateLabel() {
+	//init the shape
+	shape_path_= QPainterPath();
 	//init the painter
-	QPainter qp(&drawing_);
+	QPainter qp;
+	qp.begin(&drawing_);
 	QPen pen_;
 	pen_.setWidthF(0.2);
 	qp.setPen(pen_);
 
 	//calcul the size
-	setUpBoundingRect();
+	setUpBoundingRect(qp);
 
 	//draw the cross
-	qp.drawLine(boundingRect().width()/2, 0, boundingRect().width()/2, boundingRect().height()); //vertical line
-	qp.drawLine(0,	header, boundingRect().width(), header);  //horizontal line
+	QRectF br = boundingRect();
+	qp.drawLine(br.width()/2, 0, br.width()/2, br.height()-9);		//vertical line
+	qp.drawLine(br.width()/2-25, header, br.width()/2+25, header);  //horizontal line
 
 	//draw the symbolic NO
-	qp.drawLine(5, 3, 10, 3);
-	static const QPointF p1[3] = {
-		QPointF(10, 0),
-		QPointF(15, 3),
-		QPointF(20, 3),
+	qreal xoffset = br.width()/2 - 25;
+	qp.drawLine(xoffset+5, 3, xoffset+10, 3);
+	QPointF p1[3] = {
+		QPointF(xoffset+10, 0),
+		QPointF(xoffset+15, 3),
+		QPointF(xoffset+20, 3),
 	};
 	qp.drawPolyline(p1,3);
 
 	//draw the symbolic NC
-	static const QPointF p2[3] = {
-		QPointF(30, 3),
+	xoffset = br.width()/2;
+	QPointF p2[3] = {
+		QPointF(xoffset+5, 3),
+		QPointF(xoffset+10, 3),
+		QPointF(xoffset+10, 0)
+		/*QPointF(30, 3),
 		QPointF(35, 3),
-		QPointF(35, 0),
+		QPointF(35, 0),*/
 	};
 	qp.drawPolyline(p2,3);
-	static const QPointF p3[3] = {
-		QPointF(34, 0),
-		QPointF(40, 3),
-		QPointF(45, 3),
+	QPointF p3[3] = {
+		QPointF(xoffset+9, 0),
+		QPointF(xoffset+15, 3),
+		QPointF(xoffset+20, 3),
 	};
 	qp.drawPolyline(p3,3);
 
@@ -99,7 +127,8 @@ void CrossRefItem::updateLabel() {
 	qp.drawText(header_rect, Qt::AlignCenter, "NC");*/
 
 	//and fill it
-	fillCrossRef(&qp);
+	fillCrossRef(qp);
+	qp.end();
 
 	autoPos();
 	update();
@@ -114,8 +143,7 @@ void CrossRefItem::autoPos() {
 	QRectF border= element_->diagram()->border();
 	QPointF point;
 
-	//if this item have parent calcule
-	//te position by using mapped point.
+	//if this item have parent calcule the position by using mapped point.
 	if(parentItem()) {
 		point = element_->boundingRect().center();
 		QPointF ypoint_ = mapToParent(mapFromScene(0, border.height() - element_->diagram()->border_and_titleblock.titleBlockHeight() - boundingRect().height()));
@@ -126,16 +154,8 @@ void CrossRefItem::autoPos() {
 		point.setY(border.height() - element_->diagram()->border_and_titleblock.titleBlockHeight() - boundingRect().height());
 	}
 
-	point.setX(point.x() - boundingRect().width()/2);
+	point.setX(point.x() - bounding_rect_.width()/2);
 	setPos(point);
-}
-
-/**
- * @brief CrossRefItem::boundingRect
- * @return the bounding rect of this item
- */
-QRectF CrossRefItem::boundingRect() const {
-	return bounding_rect_;
 }
 
 /**
@@ -157,7 +177,7 @@ void CrossRefItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		t.setCosmetic(true);
 		painter -> setPen(t);
 		painter -> setRenderHint(QPainter::Antialiasing, false);
-		painter -> drawRect(boundingRect());
+		painter -> drawPath(shape_path_);
 		painter -> restore();
 	}
 	drawing_.play(painter);
@@ -187,9 +207,10 @@ void CrossRefItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
  * @brief CrossRefItem::setUpBoundingRect
  * Get the numbers of slaves elements linked to this parent element,
  * for calculate the size of the bounding rect.
+ * Add size of comment text if needed
  * The cross ref item is drawing according to the size of the bounding rect.
  */
-void CrossRefItem::setUpBoundingRect() {
+void CrossRefItem::setUpBoundingRect(QPainter &painter) {
 	//this is the default size of cross ref item
 	QRectF default_bounding(0, 0, 50, 40);
 
@@ -216,8 +237,31 @@ void CrossRefItem::setUpBoundingRect() {
 			default_bounding.setHeight(default_bounding.height() + (i*8));
 		}
 	}
-
+	shape_path_.addRect(default_bounding);
 	bounding_rect_ = default_bounding;
+
+	//check if need to show the comment of @element_
+	//and add rect of text to the boundingrect
+	QString comment = element_-> elementInformations()["comment"].toString();
+	bool must_show = element_-> elementInformations().keyMustShow("comment");
+	if (!comment.isEmpty() && must_show) {
+		painter.save();
+		painter.setFont(QETApp::diagramTextsFont(6));
+		//calcule the size au graphic text
+		text_rect_ = QRectF(default_bounding.bottomLeft(), QPointF(default_bounding.bottomRight().x(), default_bounding.bottomRight().y()-9));
+		text_rect_ = painter.boundingRect(text_rect_, Qt::AlignHCenter ,comment);
+		bounding_rect_.setSize(default_bounding.united(text_rect_).size());
+
+		shape_path_.addRect(text_rect_);
+		//translate content of shape_path_ if text_rect width
+		//is bigger than default_bounding width
+		if(text_rect_.width() > default_bounding.width()) {
+			int offset = (text_rect_.width()-default_bounding.width())/2;
+			shape_path_.translate(offset,0);
+			text_rect_.translate(offset,0);
+		}
+		painter.restore();
+	}
 }
 
 /**
@@ -225,7 +269,7 @@ void CrossRefItem::setUpBoundingRect() {
  * Fill the content of the cross ref
  * @param painter painter to use.
  */
-void CrossRefItem::fillCrossRef(QPainter *painter) {
+void CrossRefItem::fillCrossRef(QPainter &painter) {
 	if (element_->isFree()) return;
 
 	QList <Element *> NO_list;
@@ -238,8 +282,8 @@ void CrossRefItem::fillCrossRef(QPainter *painter) {
 		else if (state == "NC") NC_list << elmt;
 	}
 
-	painter -> setFont(QETApp::diagramTextsFont(5));
-	qreal half_cross = boundingRect().width()/2;
+	painter.setFont(QETApp::diagramTextsFont(5));
+	qreal half_cross = bounding_rect_.width()/2;
 	//fill the NO
 	QString contact_str;
 	foreach (Element *elmt, NO_list) {
@@ -248,8 +292,8 @@ void CrossRefItem::fillCrossRef(QPainter *painter) {
 		contact_str += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 		contact_str += "\n";
 	}
-	QRectF rect_(3, header, half_cross, (boundingRect().height()-header));
-	painter->drawText(rect_, Qt::AlignTop | Qt::AlignLeft, contact_str);
+	QRectF rect_(half_cross-22, header, half_cross, (bounding_rect_.height()-header));
+	painter.drawText(rect_, Qt::AlignTop | Qt::AlignLeft, contact_str);
 
 	//fill the NC
 	contact_str.clear();
@@ -259,6 +303,25 @@ void CrossRefItem::fillCrossRef(QPainter *painter) {
 		contact_str += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 		contact_str += "\n";
 	}
-	rect_.setRect(half_cross+3 , header, half_cross, (boundingRect().height()-header));
-	painter -> drawText(rect_, Qt::AlignTop | Qt::AlignLeft, contact_str);
+	rect_.setRect(half_cross+3 , header, half_cross+22, (bounding_rect_.height()-header));
+	painter.drawText(rect_, Qt::AlignTop | Qt::AlignLeft, contact_str);
+
+	fillExtraInfo(painter);
+}
+
+/**
+ * @brief CrossRefItem::fillExtraInfo
+ * Fill the comment info of the parent item if needed.
+ * @param painter painter to use for draw the text
+ */
+void CrossRefItem::fillExtraInfo(QPainter &painter) {
+	//check if need to show the comment of @element_
+	QString comment = element_-> elementInformations()["comment"].toString();
+	bool must_show = element_-> elementInformations().keyMustShow("comment");
+	if (!comment.isEmpty() && must_show) {
+		painter.setFont(QETApp::diagramTextsFont(6));
+		//draw text inside a roundedrect
+		painter.drawText(text_rect_, Qt::AlignHCenter, comment);
+		painter.drawRoundedRect(text_rect_, 2, 2);
+	}
 }
