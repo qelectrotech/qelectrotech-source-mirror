@@ -1,4 +1,4 @@
-<definition width="60" version="0.3" hotspot_x="35" hotspot_y="35" height="70" type="element" ic="true" orientation="dnyn" link_type="slave">
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="35" height="70" type="element" ic="true" orientation="dnyn" >
     <names>
         <name lang="ar">مُلامس NO-NC</name>
         <name lang="de">Wechselkontakt (NO/NC)</name>

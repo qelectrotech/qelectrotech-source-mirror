@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="slave">
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
         <name lang="ar">مُلامس فصل (NC) يُفتح ويُغلق بتأخير</name>
         <name lang="el">Κλειστή επαφή χρονικου, καθυστέρηση ενεργ/απεν</name>

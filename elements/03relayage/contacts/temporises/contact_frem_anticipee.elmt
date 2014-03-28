@@ -1,4 +1,4 @@
-<definition width="20" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy" link_type="slave">
+<definition width="20" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy" >
     <names>
         <name lang="en">Contact early closure</name>
         <name lang="fr">Contact à fermeture anticipée</name>

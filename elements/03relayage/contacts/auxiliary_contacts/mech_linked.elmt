@@ -1,4 +1,4 @@
-<definition width="60" version="0.3" hotspot_x="28" hotspot_y="41" height="60" type="element" ic="true" orientation="dyyy" link_type="slave">
+<definition width="60" version="0.3" hotspot_x="28" hotspot_y="41" height="60" type="element" ic="true" orientation="dyyy" >
     <names>
         <name lang="en">Positively driven contacts</name>
         <name lang="it">Contatti meccanicamente connessi</name>

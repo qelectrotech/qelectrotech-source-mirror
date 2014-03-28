@@ -1,4 +1,4 @@
-<definition width="100" version="0.3" hotspot_x="48" hotspot_y="31" height="60" type="element" ic="true" orientation="dyyy" link_type="slave">
+<definition width="100" version="0.3" hotspot_x="48" hotspot_y="31" height="60" type="element" ic="true" orientation="dyyy" >
     <names>
         <name lang="el">Βοηθητικές επαφές, 4 ανοικτές</name>
         <name lang="en">Auxiliary contact 4 x NO</name>
@@ -10,12 +10,6 @@
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
-  <kindInformations>
-        <kindInformation name="state" show="1">NO</kindInformation>
-        <kindInformation name="number" show="1">4</kindInformation>
-        <kindInformation name="type" show="1">simple</kindInformation>
-        <kindInformation name="tempoType" show="0"></kindInformation>
-  </kindInformations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-32" y2="0" x2="27"/>
         <input x="17" y="16" size="4" text="84"/>

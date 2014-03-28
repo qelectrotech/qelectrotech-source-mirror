@@ -14,7 +14,7 @@
         <polygon x4="-8" y5="4" x5="0" y6="20" x6="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-5" x2="0" y3="-5" x3="-8" y4="4"/>
         <input x="-14" y="18" size="4" text="A2"/>
         <input x="-14" y="-17" size="4" text="A1"/>
-        <input x="16" y="0.5" size="9" text="_"/>
+        <input x="16" y="0.5" size="9" text="_" tagg="label"/>
         <terminal x="0" y="-20" orientation="n"/>
         <terminal x="0" y="20" orientation="s"/>
     </description>
