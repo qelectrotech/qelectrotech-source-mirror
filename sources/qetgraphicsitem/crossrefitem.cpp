@@ -86,8 +86,8 @@ void CrossRefItem::updateLabel() {
 
 	//draw the cross
 	QRectF br = boundingRect();
-	qp.drawLine(br.width()/2, 0, br.width()/2, br.height()-9);		//vertical line
-	qp.drawLine(br.width()/2-25, header, br.width()/2+25, header);  //horizontal line
+	qp.drawLine(br.width()/2, 0, br.width()/2, br.height() - text_rect_.height());	//vertical line
+	qp.drawLine(br.width()/2-25, header, br.width()/2+25, header);					//horizontal line
 
 	//draw the symbolic NO
 	qreal xoffset = br.width()/2 - 25;
@@ -105,9 +105,6 @@ void CrossRefItem::updateLabel() {
 		QPointF(xoffset+5, 3),
 		QPointF(xoffset+10, 3),
 		QPointF(xoffset+10, 0)
-		/*QPointF(30, 3),
-		QPointF(35, 3),
-		QPointF(35, 0),*/
 	};
 	qp.drawPolyline(p2,3);
 	QPointF p3[3] = {
@@ -248,7 +245,7 @@ void CrossRefItem::setUpBoundingRect(QPainter &painter) {
 		painter.save();
 		painter.setFont(QETApp::diagramTextsFont(6));
 		//calcule the size au graphic text
-		text_rect_ = QRectF(default_bounding.bottomLeft(), QPointF(default_bounding.bottomRight().x(), default_bounding.bottomRight().y()-9));
+		text_rect_ = QRectF(default_bounding.bottomLeft(), QPointF(default_bounding.bottomRight().x(), default_bounding.bottomRight().y()-1));
 		text_rect_ = painter.boundingRect(text_rect_, Qt::AlignHCenter ,comment);
 		bounding_rect_.setSize(default_bounding.united(text_rect_).size());
 
@@ -262,6 +259,7 @@ void CrossRefItem::setUpBoundingRect(QPainter &painter) {
 		}
 		painter.restore();
 	}
+	else text_rect_ = QRectF();
 }
 
 /**

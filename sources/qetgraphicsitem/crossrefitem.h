@@ -63,7 +63,6 @@ class CrossRefItem : public QetGraphicsItem
 	QRectF bounding_rect_ , text_rect_;
 	QPicture drawing_;
 	QPainterPath shape_path_;
-
 };
 
 #endif // CROSSREFITEM_H
