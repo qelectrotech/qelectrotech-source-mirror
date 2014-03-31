@@ -35,10 +35,10 @@ class MasterElement : public CustomElement
 	signals:
 
 	public slots:
+	void updateLabel();
 
 	private:
 	CrossRefItem *cri_;
-
 };
 
 #endif // MASTERELEMENT_H

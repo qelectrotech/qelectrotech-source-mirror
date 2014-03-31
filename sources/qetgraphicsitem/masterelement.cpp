@@ -30,6 +30,7 @@ MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qg
 {
 	link_type_ = Master;
 	cri_ = 0;
+	connect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 }
 
 /**
@@ -38,6 +39,7 @@ MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qg
  */
 MasterElement::~MasterElement() {
 	unlinkAllElements();
+	disconnect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 }
 
 /**
@@ -91,4 +93,18 @@ void MasterElement::unlinkElement(Element *elmt) {
 			cri_->updateLabel();
 		}
 	}
+}
+
+/**
+ * @brief MasterElement::updateLabel
+ * update label of this element
+ */
+void MasterElement::updateLabel() {
+	QString label = elementInformations()["label"].toString();
+	bool	show  = elementInformations().keyMustShow("label");
+
+	// setup the label
+	(label.isEmpty() || !show)?
+				setTaggedText("label", "_", false):
+				setTaggedText("label", label, true);
 }

@@ -86,5 +86,7 @@ void ElementInfoWidget::fillInfo() {
 		//check "show" if this eipw is label and if elmt_info haven't got value for label.
 		if (eipw->key() == "label" && (elmt_info["label"].toString().isEmpty()))
 			eipw->setShow(true);
+		else if (eipw->key() == "comment" && (elmt_info["comment"].toString().isEmpty()))
+			eipw->setShow(true);
 	}
 }
