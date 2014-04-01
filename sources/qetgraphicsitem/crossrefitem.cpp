@@ -290,8 +290,8 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
 		contact_str += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 		contact_str += "\n";
 	}
-	QRectF rect_(half_cross-30, header, half_cross, (bounding_rect_.height()-header));
-	painter.drawText(rect_, Qt::AlignTop | Qt::AlignRight, contact_str);
+	QRectF rect_(half_cross-26, header, half_cross, (bounding_rect_.height()-header));
+	painter.drawText(rect_, Qt::AlignTop | Qt::AlignLeft, contact_str);
 
 	//fill the NC
 	contact_str.clear();
