@@ -22,6 +22,8 @@
 
 //define the height of the header.
 #define header 5
+//define the widht of the cross
+#define crossWidth 50
 
 /**
  * @brief CrossRefItem::CrossRefItem
@@ -209,7 +211,7 @@ void CrossRefItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
  */
 void CrossRefItem::setUpBoundingRect(QPainter &painter) {
 	//this is the default size of cross ref item
-	QRectF default_bounding(0, 0, 50, 40);
+	QRectF default_bounding(0, 0, crossWidth, 40);
 
 	//No need to calcul if nothing is linked
 	if (!element_->isFree()) {
@@ -281,7 +283,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
 	}
 
 	painter.setFont(QETApp::diagramTextsFont(5));
-	qreal half_cross = bounding_rect_.width()/2;
+	qreal middle_cross = bounding_rect_.width()/2;
 	//fill the NO
 	QString contact_str;
 	foreach (Element *elmt, NO_list) {
@@ -290,7 +292,10 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
 		contact_str += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 		contact_str += "\n";
 	}
-	QRectF rect_(half_cross-26, header, half_cross, (bounding_rect_.height()-header));
+	QRectF rect_(middle_cross - (crossWidth/2),
+				 header,
+				 middle_cross,
+				 (bounding_rect_.height()-header));
 	painter.drawText(rect_, Qt::AlignTop | Qt::AlignLeft, contact_str);
 
 	//fill the NC
@@ -301,8 +306,11 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
 		contact_str += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 		contact_str += "\n";
 	}
-	rect_.setRect(half_cross+3 , header, half_cross+22, (bounding_rect_.height()-header));
-	painter.drawText(rect_, Qt::AlignTop | Qt::AlignLeft, contact_str);
+	rect_.setRect(middle_cross,
+				  header,
+				  crossWidth/2,
+				  (bounding_rect_.height()-header));
+	painter.drawText(rect_, Qt::AlignTop | Qt::AlignRight, contact_str);
 
 	fillExtraInfo(painter);
 }
