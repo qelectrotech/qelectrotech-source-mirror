@@ -1,8 +1,9 @@
 <definition width="70" version="0.4" hotspot_x="33" hotspot_y="34" height="60" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Φωτοβολταϊκή κυψέλη</name>
         <name lang="en">PVCell</name>
-        <name lang="fr">Caisson solaire photovoltaïque</name>
         <name lang="it">Fotovoltaico</name>
+        <name lang="fr">Caisson solaire photovoltaïque</name>
     </names>
     <informations>Author: Arun Kishore Eswara 
 

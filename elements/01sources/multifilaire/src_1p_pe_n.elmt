@@ -1,8 +1,9 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مصدر وحيد القطبية + أرضي PE + محايد N</name>
         <name lang="de">Wechselstrom + PE +N</name>
         <name lang="ru">Однополюсный + PE +N</name>
+        <name lang="el">Μονοφασικό +N +PE</name>
         <name lang="en">Single-pole source + PE +N</name>
         <name lang="it">Sorgente unipolare + PE +N</name>
         <name lang="fr">Source unipolaire + PE +N</name>

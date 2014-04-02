@@ -1,8 +1,9 @@
-<definition width="40" version="0.3" hotspot_x="22" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="22" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مصدر وحيد القطبية +PEN</name>
         <name lang="de">Wechselstrom + PEN</name>
         <name lang="ru">Однополюсный + PEN</name>
+        <name lang="el">Μονοφασικό +PEN</name>
         <name lang="en">Single-pole source +PEN</name>
         <name lang="it">Sorgente unipolare + PEN</name>
         <name lang="fr">Source unipolaire + PEN</name>

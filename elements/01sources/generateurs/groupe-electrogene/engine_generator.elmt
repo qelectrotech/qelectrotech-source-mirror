@@ -1,8 +1,9 @@
 <definition width="270" version="0.4" hotspot_x="158" hotspot_y="83" height="180" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Η/Ζ με μηχανή πετρελαίου</name>
         <name lang="en">Diesel Engine</name>
-        <name lang="fr">Groupe electrogene diesel</name>
         <name lang="it">Gruppo elettrogeno diesel</name>
+        <name lang="fr">Groupe electrogene diesel</name>
     </names>
     <informations>Author: Arun Kishore Eswara
 

@@ -1,9 +1,10 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مصدر وحيد القطبية + محايد N</name>
         <name lang="de">Wechselstrom L + N</name>
         <name lang="ru">Однополюсный + нейтраль</name>
         <name lang="pt">Fonte unipolar + neutro</name>
+        <name lang="el">Μονοφασικό + Ουδέτερος</name>
         <name lang="en">Single-pole source + neutral</name>
         <name lang="it">Sorgente unipolare + neutro</name>
         <name lang="fr">Source unipolaire + neutre</name>

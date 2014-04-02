@@ -1,6 +1,6 @@
-<definition width="70" version="0.3" hotspot_x="35" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
+<definition width="70" version="0.4" hotspot_x="35" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="el">Πηνίο χρινικού, καθυστέρηση ενεργοποίησης-απενεργοποίησης</name>
+        <name lang="el">Πηνίο χρονικού, καθυστέρηση ενεργοποίησης-απενεργοποίησης</name>
         <name lang="en">Relay Focus work and quiescence delayed</name>
         <name lang="it">Relè ritardato all'apertura/chiusura</name>
         <name lang="fr">Relais à mise au travail et mise au repos retardées</name>
@@ -20,7 +20,7 @@
         <input x="-14" y="18" size="4" text="A2"/>
         <input x="-14" y="-17" size="4" text="A1"/>
         <input x="16" y="0.5" size="9" text="_" tagg="label"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="0" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="20" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>

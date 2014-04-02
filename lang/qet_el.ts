@@ -1766,12 +1766,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="79"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Επιλογή όλων</translation>
+        <translation>Επιλογή όλων</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="80"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Αποεπιλογή όλων</translation>
+        <translation>Αποεπιλογή όλων</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="944"/>
@@ -5294,7 +5294,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="147"/>
         <source>Ajouter une Shape</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη Σχήματος</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="187"/>
@@ -5844,32 +5844,32 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Normal</source>
-        <translation type="unfinished">Απλή</translation>
+        <translation>Απλή</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="206"/>
         <source>Tiret</source>
-        <translation type="unfinished">Διακεκομμένη</translation>
+        <translation>Διακεκομμένη</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="207"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Στίγματα</translation>
+        <translation>Στίγματα</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="208"/>
         <source>Traits et points</source>
-        <translation type="unfinished">Παύλες και τελείες</translation>
+        <translation>Παύλες και τελείες</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
         <source>Traits points points</source>
-        <translation type="unfinished"></translation>
+        <translation>Παύλα τελεία τελεία</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="217"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Κλείδωμα της θέσης</translation>
+        <translation>Κλείδωμα της θέσης</translation>
     </message>
 </context>
 <context>

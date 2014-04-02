@@ -1,6 +1,7 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">بطارية بخليتين</name>
+        <name lang="el">Μπαταρία (2 στοιχεία σε σειρά)</name>
         <name lang="en">Battery 2 elements</name>
         <name lang="it">Batteria (2 elementi, serie)</name>
         <name lang="fr">Pile 2 éléments</name>

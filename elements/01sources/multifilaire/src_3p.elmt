@@ -1,9 +1,10 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مصدر ثلاثي القطبيّة</name>
         <name lang="de">Drehstrom</name>
         <name lang="ru">Трёхполюсный</name>
         <name lang="pt">Fonte tripolar</name>
+        <name lang="el">Τριφασικό</name>
         <name lang="en">Three-pole source</name>
         <name lang="it">Sorgente tripolare</name>
         <name lang="fr">Source tripolaire</name>

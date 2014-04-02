@@ -1,8 +1,9 @@
-<definition width="170" version="0.4" hotspot_x="109" hotspot_y="58" height="140" type="element" ic="true" orientation="dyyy">
+<definition width="170" version="0.4" hotspot_x="109" hotspot_y="57" height="140" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Ανορθωτής</name>
         <name lang="en">Rectifier</name>
-        <name lang="fr">Redresseur</name>
         <name lang="it">Raddrizzatore</name>
+        <name lang="fr">Redresseur</name>
     </names>
     <informations>Author: Arun Kishore Eswara
 
