@@ -17,7 +17,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <kindInformations>
         <kindInformation name="state" show="1">NC</kindInformation>
         <kindInformation name="number" show="1">3</kindInformation>
-        <kindInformation name="type" show="1">puissance</kindInformation>
+        <kindInformation name="type" show="1">power</kindInformation>
         <kindInformation name="tempoType" show="0"></kindInformation>
     </kindInformations>
     <description>
