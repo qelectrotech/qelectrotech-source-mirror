@@ -53,10 +53,12 @@ void MasterElement::linkToElement(Element *elmt) {
 	if (elmt->linkType() == Slave && !connected_elements.contains(elmt)) {
 		connected_elements << elmt;
 		elmt->linkToElement(this);
-		//create cross ref item if not yet
-		if (!cri_) cri_ = new CrossRefItem(this, this);
-		connect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
-		cri_->updateLabel();
+
+		if (elmt->kindInformations()["type"].toString() != "power") {
+			if (!cri_) cri_ = new CrossRefItem(this, this); //create cross ref item if not yet
+			connect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
+			cri_->updateLabel();
+		}
 	}
 }
 
@@ -85,7 +87,12 @@ void MasterElement::unlinkElement(Element *elmt) {
 		elmt->unlinkElement(this);
 		//update the graphics cross ref
 		disconnect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
-		if (isFree()) {
+
+		bool delete_cri = true;
+		foreach(Element *elmt, linkedElements())
+			if (elmt->kindInformations()["type"].toString() != "power") delete_cri = false;
+
+		if (delete_cri) {
 			delete cri_;
 			cri_ = 0;
 		}

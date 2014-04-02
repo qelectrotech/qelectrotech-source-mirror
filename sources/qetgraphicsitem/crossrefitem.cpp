@@ -88,8 +88,8 @@ void CrossRefItem::updateLabel() {
 
 	//draw the cross
 	QRectF br = boundingRect();
-	qp.drawLine(br.width()/2, 0, br.width()/2, br.height() - text_rect_.height());	//vertical line
-	qp.drawLine(br.width()/2-25, header, br.width()/2+25, header);					//horizontal line
+	qp.drawLine(br.width()/2, 0, br.width()/2, br.height() - text_rect_.height());			//vertical line
+	qp.drawLine(br.width()/2-(crossWidth/2), header, br.width()/2+(crossWidth/2), header);	//horizontal line
 
 	//draw the symbolic NO
 	qreal xoffset = br.width()/2 - 25;
@@ -277,6 +277,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
 
 	//find each no and nc of connected element to element_
 	foreach (Element *elmt, element_->linkedElements()) {
+		if (elmt->kindInformations()["type"].toString() == "power") continue;
 		QString state = elmt->kindInformations()["state"].toString();
 		if (state == "NO")		NO_list << elmt;
 		else if (state == "NC") NC_list << elmt;
