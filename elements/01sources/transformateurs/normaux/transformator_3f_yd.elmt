@@ -1,5 +1,6 @@
 <definition width="70" version="0.4" hotspot_x="28" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Τριφασικός μετασχηματιστής, αστέρας -τρίγωνο</name>
         <name lang="en">Three-phase transformer Yd</name>
         <name lang="it">Trasformatore trifase Yd</name>
         <name lang="fr">Transformateur triphasé etoile triangle</name>

@@ -1,5 +1,6 @@
-<definition width="70" version="0.4" hotspot_x="37" hotspot_y="45" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="80" version="0.4" hotspot_x="41" hotspot_y="45" height="80" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Ρυθμιζόμενος αυτομετασχηματιστής</name>
         <name lang="en">Adjustable autotransformer</name>
         <name lang="it">Autotransformatore monofase regolabile (forma 1)</name>
         <name lang="fr">Autotransformateur monophasé reglable</name>
