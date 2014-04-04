@@ -2,6 +2,7 @@
     <names>
         <name lang="en">Flasher relay</name>
         <name lang="fr">Relais clignoteur</name>
+        <name lang="it">Relè ciclico</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
