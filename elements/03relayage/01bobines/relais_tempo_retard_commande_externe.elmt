@@ -3,6 +3,7 @@
         <name lang="en">Relay Focus rest delayed withe external command</name>
         <name lang="fr">Relais temporisé repos à commande externe</name>
         <name lang="it">Relè temporizzato a comando esterno</name>
+        <name lang="cs">Relé zpoděné vnějším příkazem</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

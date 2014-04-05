@@ -5,6 +5,7 @@
         <name lang="fr">Titre tableau page de garde</name>
         <name lang="pl">Tabela tytułowa</name>
         <name lang="es">Cuadro de titulo de la pagina principal</name>
+        <name lang="cs">Titulní tabulka na hlavní straně</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
