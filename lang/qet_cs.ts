@@ -1766,12 +1766,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="79"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Zatrhnout vše</translation>
+        <translation>Zatrhnout vše</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="80"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Zrušit zatrhnutí u všeho</translation>
+        <translation>Zrušit zatrhnutí u všeho</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="944"/>
@@ -2451,39 +2451,39 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
         <source>Délier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpojit vybraný prvek</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
         <source>Lier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Spojit vybraný prvek</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
         <source>Éléments disponibles</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostupné prvky</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
         <source>Éléments liés</source>
-        <translation type="unfinished"></translation>
+        <translation>Spojené prvky</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="118"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="132"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Bez názvu</translation>
+        <translation>Bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="119"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="133"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished">List  %1 (%2), poloha %3.</translation>
+        <translation>List  %1 (%2), poloha %3.</translation>
     </message>
 </context>
 <context>
@@ -3092,12 +3092,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetapp.cpp" line="365"/>
         <source>Référence fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Výrobce</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Référence fabriquant machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Výrobce stroje</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="377"/>
@@ -3641,17 +3641,17 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
         <source>Ajouter une liaison mecanique</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat mechanické spojení</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
         <source>Ajouter une zone rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat obdélníkovou oblast</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
         <source>Ajouter une zone ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat elipsovitou oblast</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
@@ -5292,7 +5292,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/diagramcommands.cpp" line="147"/>
         <source>Ajouter une Shape</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Přidat tvar</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="187"/>
@@ -5400,7 +5400,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/diagramcommands.cpp" line="1265"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upravit křížové odkazy</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1266"/>
@@ -5411,7 +5411,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1278"/>
         <source>Editer les référence croisé</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit křížové odkazy</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1337"/>
@@ -5838,43 +5838,43 @@ Co chcete dělat?</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="195"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upravit vlastnosti spojení, oblast </translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
         <source>Shape Line Style</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Styl čáry tvaru</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Normal</source>
-        <translation type="unfinished">Běžná</translation>
+        <translation>Obvyklá</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="206"/>
         <source>Tiret</source>
-        <translation type="unfinished">Čárkovaná</translation>
+        <translation>Čárkovaná</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="207"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Tečkovaná</translation>
+        <translation>Tečkovaná</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="208"/>
         <source>Traits et points</source>
-        <translation type="unfinished"></translation>
+        <translation>Čárky a tečky</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
         <source>Traits points points</source>
-        <translation type="unfinished"></translation>
+        <translation>Čárky, tečky, tečky</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="217"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Zamknout polohu</translation>
+        <translation>Zamknout polohu</translation>
     </message>
 </context>
 <context>
@@ -7179,7 +7179,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Référence croisée (maitre)</source>
-        <translation type="unfinished"></translation>
+        <translation>Křížové odkazy (hlavní)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="138"/>
