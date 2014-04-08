@@ -705,61 +705,61 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Σε αυτή την περιοχή σχεδιάζετε τα διαγράμματά σας προσθέτοντας στοιχεία και αγωγούς μεταξύ των ακροδεκτών. Μπορείτε επίσης να προσθέσετε ανεξάρτητα κείμενα.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="603"/>
+        <location filename="../sources/diagramview.cpp" line="606"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Ανώνυμο</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="628"/>
+        <location filename="../sources/diagramview.cpp" line="631"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Ιδιότητες του διαγράμματος</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="944"/>
+        <location filename="../sources/diagramview.cpp" line="947"/>
         <source>Propriétés de la sélection</source>
         <translation>Ιδιότητες της επιλογής</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="946"/>
+        <location filename="../sources/diagramview.cpp" line="949"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Η επιλογή εμπεριέχει %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1002"/>
+        <location filename="../sources/diagramview.cpp" line="1005"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Εφαρμογή ιδιοτήτων σε όλους τους αγωγούς αυτού του δυναμικού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="999"/>
+        <location filename="../sources/diagramview.cpp" line="1002"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των ιδιοτήτων του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1064"/>
+        <location filename="../sources/diagramview.cpp" line="1067"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Επιλέξτε το νέο χρώμα αυτού του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1226"/>
+        <location filename="../sources/diagramview.cpp" line="1229"/>
         <source>Selectionner une image...</source>
         <translation>Επιλογή εικόνας...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1226"/>
+        <location filename="../sources/diagramview.cpp" line="1229"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>Αρχεία εικόνων (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1234"/>
+        <location filename="../sources/diagramview.cpp" line="1237"/>
         <source>Erreur</source>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1234"/>
+        <location filename="../sources/diagramview.cpp" line="1237"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation>Αδύνατη η φόρτωση της εικόνας...Λυπάμαι :(</translation>
     </message>
@@ -1147,6 +1147,29 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/editor/elementscene.cpp" line="268"/>
         <source>rectangle</source>
         <translation>παραλληλόγραμμο</translation>
+    </message>
+</context>
+<context>
+    <name>ElementSelectorWidget</name>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="117"/>
+        <source>Sans titre</source>
+        <translation type="unfinished">Ανώνυμο</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="118"/>
+        <source>Folio  %1 (%2), position %3.</source>
+        <translation type="unfinished">Σελίδα  %1 (%2), θέση %3.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="128"/>
+        <source>Voir l&apos;élément</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1883,49 +1906,6 @@ Les changements seront définitifs.</source>
     </message>
 </context>
 <context>
-    <name>FolioReportProperties</name>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.ui" line="14"/>
-        <source>Form</source>
-        <translation>Φόρμα</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.ui" line="31"/>
-        <source>Report de folio disponible :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.ui" line="82"/>
-        <source>Voir ce report</source>
-        <translation>Εμφάνιση αυτής της αναφοράς</translation>
-    </message>
-    <message utf8="true">
-        <location filename="../sources/ui/folioreportproperties.ui" line="89"/>
-        <source>Voir le report lié</source>
-        <translation>Εμφάνιση της συνδεδεμένης αναφοράς</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="74"/>
-        <source>Sans titre</source>
-        <translation>Ανώνυμο</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="75"/>
-        <source>Folio  %1 (%2), position %3.</source>
-        <translation>Σελίδα  %1 (%2), θέση %3.</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="106"/>
-        <source>Ce report est déjà lié.</source>
-        <translation>Αυτή η αναφορά είναι ήδη συνδεδεμένη.</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="107"/>
-        <source>Délier</source>
-        <translation>Αποσύνδεση</translation>
-    </message>
-</context>
-<context>
     <name>GeneralConfigurationPage</name>
     <message>
         <location filename="../sources/configpages.cpp" line="110"/>
@@ -2448,6 +2428,54 @@ Les changements seront définitifs.</source>
         <source>Carré</source>
         <comment>type of the 2nd end of a line</comment>
         <translation>Ρόμβος</translation>
+    </message>
+</context>
+<context>
+    <name>LinkSingleElementWidget</name>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
+        <source>Rechercher dans le folio :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
+        <source>Voir cet élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
+        <source>Voir l&apos;élément lié</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="81"/>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="86"/>
+        <source>Sans titre</source>
+        <translation type="unfinished">Ανώνυμο</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="120"/>
+        <source>Cet élément est déjà lié.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="121"/>
+        <source>Délier</source>
+        <translation type="unfinished">Αποσύνδεση</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="137"/>
+        <source>Rechercher</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5393,25 +5421,25 @@ Que désirez vous faire ?</source>
         <translation>Σμίκρυνση εικόνας κατά %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1259"/>
+        <location filename="../sources/diagramcommands.cpp" line="1258"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1265"/>
+        <location filename="../sources/diagramcommands.cpp" line="1262"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
         <translation>Επεξεργασία παραπομπής</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1266"/>
-        <location filename="../sources/diagramcommands.cpp" line="1279"/>
+        <location filename="../sources/diagramcommands.cpp" line="1263"/>
+        <location filename="../sources/diagramcommands.cpp" line="1277"/>
         <source>Lier deux Ã©lÃ©ments</source>
         <translation>Σύνδεση δυο στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1278"/>
+        <location filename="../sources/diagramcommands.cpp" line="1276"/>
         <source>Editer les référence croisé</source>
         <translation>Επεξεργασία παραπομπής</translation>
     </message>
@@ -5830,44 +5858,44 @@ Que désirez vous faire ?</source>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="195"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Shape Line Style</source>
         <comment>shape style</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
         <source>Normal</source>
         <translation>Απλή</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="206"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
         <source>Tiret</source>
         <translation>Διακεκομμένη</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="207"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>
         <source>Pointillé</source>
         <translation>Στίγματα</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="208"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
         <source>Traits et points</source>
         <translation>Παύλες και τελείες</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Traits points points</source>
         <translation>Παύλα τελεία τελεία</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="217"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
         <source>Verrouiller la position</source>
         <translation>Κλείδωμα της θέσης</translation>
     </message>
@@ -7173,7 +7201,12 @@ Longueur maximale : %2px
         <translation>Παραπομπές (master)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="138"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
+        <source>Référence croisée (esclave)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="140"/>
         <source>Général</source>
         <translation>Γενικά</translation>
     </message>

@@ -705,61 +705,61 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
         <translation>Ruotare i testi selezionati</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="628"/>
+        <location filename="../sources/diagramview.cpp" line="631"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Proprietà dello schema</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="944"/>
+        <location filename="../sources/diagramview.cpp" line="947"/>
         <source>Propriétés de la sélection</source>
         <translation>Proprietà della selezione</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="946"/>
+        <location filename="../sources/diagramview.cpp" line="949"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>La selezione contiene %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1002"/>
+        <location filename="../sources/diagramview.cpp" line="1005"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Applicare le proprietà a tutti i conduttori di questo potenziale</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1226"/>
+        <location filename="../sources/diagramview.cpp" line="1229"/>
         <source>Selectionner une image...</source>
         <translation>Selezionare un&apos;immagine...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1226"/>
+        <location filename="../sources/diagramview.cpp" line="1229"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>File immagine (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1234"/>
+        <location filename="../sources/diagramview.cpp" line="1237"/>
         <source>Erreur</source>
         <translation>Errore</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1234"/>
+        <location filename="../sources/diagramview.cpp" line="1237"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation>Impossibile caricare l&apos;immagine... Spiacente :-(</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="603"/>
+        <location filename="../sources/diagramview.cpp" line="606"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="999"/>
+        <location filename="../sources/diagramview.cpp" line="1002"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Modifica le proprietà di un conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1064"/>
+        <location filename="../sources/diagramview.cpp" line="1067"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Scegliere il nuovo colore di questo conduttore</translation>
     </message>
@@ -1146,6 +1146,29 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
         <location filename="../sources/editor/elementscene.cpp" line="268"/>
         <source>rectangle</source>
         <translation>rettangolo</translation>
+    </message>
+</context>
+<context>
+    <name>ElementSelectorWidget</name>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Modulo</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="117"/>
+        <source>Sans titre</source>
+        <translation type="unfinished">Senza titolo</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="118"/>
+        <source>Folio  %1 (%2), position %3.</source>
+        <translation type="unfinished">Pagina  %1 (%2), Posizione %3.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="128"/>
+        <source>Voir l&apos;élément</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1882,49 +1905,6 @@ I cambiamenti saranno irreversibili.</translation>
     </message>
 </context>
 <context>
-    <name>FolioReportProperties</name>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.ui" line="14"/>
-        <source>Form</source>
-        <translation>Modulo</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.ui" line="31"/>
-        <source>Report de folio disponible :</source>
-        <translation>Riferimenti di pagina disponibili:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.ui" line="82"/>
-        <source>Voir ce report</source>
-        <translation>Visualizzare questo riferimento</translation>
-    </message>
-    <message utf8="true">
-        <location filename="../sources/ui/folioreportproperties.ui" line="89"/>
-        <source>Voir le report lié</source>
-        <translation>Visualizzare il riferimento collegato</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="74"/>
-        <source>Sans titre</source>
-        <translation>Senza titolo</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="75"/>
-        <source>Folio  %1 (%2), position %3.</source>
-        <translation>Pagina  %1 (%2), Posizione %3.</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="106"/>
-        <source>Ce report est déjà lié.</source>
-        <translation>Questo riferimento è già collegato.</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="107"/>
-        <source>Délier</source>
-        <translation>Scollega il riferimento</translation>
-    </message>
-</context>
-<context>
     <name>GeneralConfigurationPage</name>
     <message>
         <location filename="../sources/configpages.cpp" line="110"/>
@@ -2443,6 +2423,54 @@ I cambiamenti saranno irreversibili.</translation>
         <source>Carré</source>
         <comment>type of the 2nd end of a line</comment>
         <translation>Quadrato</translation>
+    </message>
+</context>
+<context>
+    <name>LinkSingleElementWidget</name>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Modulo</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
+        <source>Rechercher dans le folio :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
+        <source>Voir cet élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
+        <source>Voir l&apos;élément lié</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="81"/>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="86"/>
+        <source>Sans titre</source>
+        <translation type="unfinished">Senza titolo</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="120"/>
+        <source>Cet élément est déjà lié.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="121"/>
+        <source>Délier</source>
+        <translation type="unfinished">Scollega il riferimento</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="137"/>
+        <source>Rechercher</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5386,25 +5414,25 @@ Cosa vuoi fare?</translation>
         <translation>Ridurre un&apos;immagine del %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1259"/>
+        <location filename="../sources/diagramcommands.cpp" line="1258"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
         <translation>Collegare due riferimenti di pagina</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1265"/>
+        <location filename="../sources/diagramcommands.cpp" line="1262"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
         <translation>Modifica il riferimento incrociato</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1266"/>
-        <location filename="../sources/diagramcommands.cpp" line="1279"/>
+        <location filename="../sources/diagramcommands.cpp" line="1263"/>
+        <location filename="../sources/diagramcommands.cpp" line="1277"/>
         <source>Lier deux Ã©lÃ©ments</source>
         <translation>Collegare due Elementi</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1278"/>
+        <location filename="../sources/diagramcommands.cpp" line="1276"/>
         <source>Editer les référence croisé</source>
         <translation>Modifica il riferimento incrociato</translation>
     </message>
@@ -5823,44 +5851,44 @@ Cosa vuoi fare?</translation>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="195"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
         <translation>Modifica le proprietà di una linea, Area </translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Shape Line Style</source>
         <comment>shape style</comment>
         <translation>Stile della linea</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
         <source>Normal</source>
         <translation>Normale</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="206"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
         <source>Tiret</source>
         <translation>Trattino</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="207"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>
         <source>Pointillé</source>
         <translation>Punteggiato</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="208"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
         <source>Traits et points</source>
         <translation>Punto e linea</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Traits points points</source>
         <translation>Linea-punto-punto</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="217"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
         <source>Verrouiller la position</source>
         <translation>Bloccare la posizione</translation>
     </message>
@@ -7170,7 +7198,12 @@ Lunghezza massima: %2px</translation>
         <translation>Riferimento incrociato (master)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="138"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
+        <source>Référence croisée (esclave)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="140"/>
         <source>Général</source>
         <translation>Generale</translation>
     </message>

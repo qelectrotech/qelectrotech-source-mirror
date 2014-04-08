@@ -705,61 +705,61 @@ Použít text na všechny tyto vodiče?</translation>
         <translation>Natočit vybrané texty</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="603"/>
+        <location filename="../sources/diagramview.cpp" line="606"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Bez názvu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="628"/>
+        <location filename="../sources/diagramview.cpp" line="631"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Vlastnosti výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="944"/>
+        <location filename="../sources/diagramview.cpp" line="947"/>
         <source>Propriétés de la sélection</source>
         <translation>Vlastnosti výběru</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="946"/>
+        <location filename="../sources/diagramview.cpp" line="949"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Výběr obsahuje %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1002"/>
+        <location filename="../sources/diagramview.cpp" line="1005"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Použít vlastnosti na všechny vodiče tohoto potenciálu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="999"/>
+        <location filename="../sources/diagramview.cpp" line="1002"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Upravit vlastnosti vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1064"/>
+        <location filename="../sources/diagramview.cpp" line="1067"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Vybrat novou barvu pro tento vodič</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1226"/>
+        <location filename="../sources/diagramview.cpp" line="1229"/>
         <source>Selectionner une image...</source>
         <translation>Vybrat obrázek...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1226"/>
+        <location filename="../sources/diagramview.cpp" line="1229"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>Obrázkové soubory (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1234"/>
+        <location filename="../sources/diagramview.cpp" line="1237"/>
         <source>Erreur</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1234"/>
+        <location filename="../sources/diagramview.cpp" line="1237"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation>Obrázek nelze nahrát... Promiňte</translation>
     </message>
@@ -1147,6 +1147,29 @@ Použít text na všechny tyto vodiče?</translation>
         <location filename="../sources/editor/elementscene.cpp" line="268"/>
         <source>rectangle</source>
         <translation>obdélník</translation>
+    </message>
+</context>
+<context>
+    <name>ElementSelectorWidget</name>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formulář</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="117"/>
+        <source>Sans titre</source>
+        <translation type="unfinished">Bez názvu</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="118"/>
+        <source>Folio  %1 (%2), position %3.</source>
+        <translation type="unfinished">List  %1 (%2), poloha %3.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="128"/>
+        <source>Voir l&apos;élément</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1883,49 +1906,6 @@ Provedené změny budou konečné.</translation>
     </message>
 </context>
 <context>
-    <name>FolioReportProperties</name>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.ui" line="14"/>
-        <source>Form</source>
-        <translation>Formulář</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.ui" line="31"/>
-        <source>Report de folio disponible :</source>
-        <translation>Zpráva o dostupném listu:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.ui" line="82"/>
-        <source>Voir ce report</source>
-        <translation>Podívat se na tuto zprávu</translation>
-    </message>
-    <message utf8="true">
-        <location filename="../sources/ui/folioreportproperties.ui" line="89"/>
-        <source>Voir le report lié</source>
-        <translation>Podívat se na připojenou zprávu</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="74"/>
-        <source>Sans titre</source>
-        <translation>Bez názvu</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="75"/>
-        <source>Folio  %1 (%2), position %3.</source>
-        <translation>List  %1 (%2), poloha %3.</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="106"/>
-        <source>Ce report est déjà lié.</source>
-        <translation>Tato zpráva je již připojena.</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/folioreportproperties.cpp" line="107"/>
-        <source>Délier</source>
-        <translation>Odpojit</translation>
-    </message>
-</context>
-<context>
     <name>GeneralConfigurationPage</name>
     <message>
         <location filename="../sources/configpages.cpp" line="110"/>
@@ -2444,6 +2424,54 @@ Provedené změny budou konečné.</translation>
         <source>Carré</source>
         <comment>type of the 2nd end of a line</comment>
         <translation>Kosočtverec</translation>
+    </message>
+</context>
+<context>
+    <name>LinkSingleElementWidget</name>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formulář</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
+        <source>Rechercher dans le folio :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
+        <source>Voir cet élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
+        <source>Voir l&apos;élément lié</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="81"/>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="86"/>
+        <source>Sans titre</source>
+        <translation type="unfinished">Bez názvu</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="120"/>
+        <source>Cet élément est déjà lié.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="121"/>
+        <source>Délier</source>
+        <translation type="unfinished">Odpojit</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="137"/>
+        <source>Rechercher</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5391,25 +5419,25 @@ Co chcete dělat?</translation>
         <translation>Zmenšit obrázek %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1259"/>
+        <location filename="../sources/diagramcommands.cpp" line="1258"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
         <translation>Spojit dvě zprávy o listu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1265"/>
+        <location filename="../sources/diagramcommands.cpp" line="1262"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
         <translation>Upravit křížové odkazy</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1266"/>
-        <location filename="../sources/diagramcommands.cpp" line="1279"/>
+        <location filename="../sources/diagramcommands.cpp" line="1263"/>
+        <location filename="../sources/diagramcommands.cpp" line="1277"/>
         <source>Lier deux Ã©lÃ©ments</source>
         <translation>Spojit dva prvky</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1278"/>
+        <location filename="../sources/diagramcommands.cpp" line="1276"/>
         <source>Editer les référence croisé</source>
         <translation>Upravit křížové odkazy</translation>
     </message>
@@ -5835,44 +5863,44 @@ Co chcete dělat?</translation>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="195"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
         <translation>Upravit vlastnosti spojení, oblast </translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Shape Line Style</source>
         <comment>shape style</comment>
         <translation>Styl čáry tvaru</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
         <source>Normal</source>
         <translation>Obvyklá</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="206"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
         <source>Tiret</source>
         <translation>Čárkovaná</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="207"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>
         <source>Pointillé</source>
         <translation>Tečkovaná</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="208"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
         <source>Traits et points</source>
         <translation>Čárky a tečky</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Traits points points</source>
         <translation>Čárky, tečky, tečky</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="217"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
         <source>Verrouiller la position</source>
         <translation>Zamknout polohu</translation>
     </message>
@@ -7182,7 +7210,12 @@ Největší délka: %2px</translation>
         <translation>Křížové odkazy (hlavní)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="138"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
+        <source>Référence croisée (esclave)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="140"/>
         <source>Général</source>
         <translation>Obecné</translation>
     </message>
