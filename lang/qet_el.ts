@@ -3101,12 +3101,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetapp.cpp" line="365"/>
         <source>Référence fabriquant</source>
-        <translation>Αναφορά κατασκευαστή</translation>
+        <translation>Κωδικός κατασκευαστή</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Référence fabriquant machine</source>
-        <translation>Αναφορά κατασκευαστή μηχανής</translation>
+        <translation>Πλήρης κωδικός κατασκευαστή</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="377"/>
@@ -5402,7 +5402,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1265"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία παραπομπής</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1266"/>
@@ -5413,7 +5413,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1278"/>
         <source>Editer les référence croisé</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία παραπομπής</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1337"/>
@@ -7170,7 +7170,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Référence croisée (maitre)</source>
-        <translation type="unfinished"></translation>
+        <translation>Παραπομπές (master)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="138"/>
