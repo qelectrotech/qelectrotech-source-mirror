@@ -1153,22 +1153,22 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message>
         <location filename="../sources/ui/elementselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="117"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Senza titolo</translation>
+        <translation>Senza titolo</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="118"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished">Pagina  %1 (%2), Posizione %3.</translation>
+        <translation>Pagina  %1 (%2), Posizione %3.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="128"/>
         <source>Voir l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra l&apos;elemento</translation>
     </message>
 </context>
 <context>
@@ -2430,47 +2430,47 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
         <source>Rechercher dans le folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>Cercare nel foglio</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
         <source>Voir cet élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra questo elemento</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
         <source>Voir l&apos;élément lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra l&apos;elemento collegato</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="81"/>
         <source>Tous</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutti</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="86"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Senza titolo</translation>
+        <translation>Senza titolo</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="120"/>
         <source>Cet élément est déjà lié.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;elemento è già collegato.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="121"/>
         <source>Délier</source>
-        <translation type="unfinished">Scollega il riferimento</translation>
+        <translation>Annulla il collegamento</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="137"/>
         <source>Rechercher</source>
-        <translation type="unfinished"></translation>
+        <translation>Cercare</translation>
     </message>
 </context>
 <context>
@@ -7200,7 +7200,7 @@ Lunghezza massima: %2px</translation>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimento incrociato (slave)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="140"/>
