@@ -1,0 +1,25 @@
+<definition width="50" version="0.4" hotspot_x="26" hotspot_y="29" height="60" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Diodes Module Pilot Wire</name>
+        <name lang="fr">Module Fil Pilote</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input x="8" y="14.5" size="9" rotate="true" text="-"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="6" y2="6" x2="14"/>
+        <input x="-12" y="-15" size="6" rotate="true" text="FP"/>
+        <rect width="40" x="-20" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-14" y2="0" x2="-6"/>
+        <polygon x4="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-10" y2="6" x2="-14" y3="6" x3="-6" y4="0"/>
+        <polygon x4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6" x1="10" y2="0" x2="6" y3="0" x3="14" y4="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-10" y2="7" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="10" y2="6" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="-15" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="-6" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="10" y2="-6" x2="-9"/>
+        <input x="-22" y="15.5" size="9" rotate="true" text="+"/>
+        <terminal x="-10" y="-19" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="19" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="10" y="19" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>
