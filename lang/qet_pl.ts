@@ -2451,7 +2451,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="81"/>
         <source>Tous</source>
-        <translation>Wszystko</translation>
+        <translation>Wszystkie</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="86"/>
@@ -3110,7 +3110,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetapp.cpp" line="363"/>
         <source>Commentaire</source>
-        <translation>Komentaż</translation>
+        <translation>Komentarz</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="364"/>
@@ -3120,12 +3120,12 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetapp.cpp" line="365"/>
         <source>Référence fabriquant</source>
-        <translation>Numer fabryczny</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Référence fabriquant machine</source>
-        <translation>Numer fabryczny maszyny</translation>
+        <translation>Numer seryjny</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="377"/>
