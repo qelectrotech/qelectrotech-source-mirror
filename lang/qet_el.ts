@@ -2575,7 +2575,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="54"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναφορά σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="92"/>
@@ -2812,7 +2812,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="301"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναφορά σελίδας</translation>
     </message>
 </context>
 <context>
@@ -5424,7 +5424,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1258"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σύνδεση δύο αναφορών σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1262"/>
@@ -5961,7 +5961,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ετικέτα αναφοράς σελίδας</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -5970,7 +5970,11 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Μπορείτε να καθορίσετε μια προσωποποιημένη ετικέτα για τις αναφορές σελίδας.
+Δημιουργήστε το δικό σας κείμενο, χρησιμοποιώντας τις παρακάτω μεταβλητές:
+%f: αριθμός σελίδας
+%l: αριθμός γραμμής
+%c: αριθμός στήλης</translation>
     </message>
 </context>
 <context>
@@ -7288,7 +7292,7 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="122"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναφορά σελίδας</translation>
     </message>
 </context>
 <context>
