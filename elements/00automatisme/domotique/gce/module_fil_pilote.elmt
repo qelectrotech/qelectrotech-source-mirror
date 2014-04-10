@@ -1,8 +1,9 @@
-<definition width="50" version="0.4" hotspot_x="26" hotspot_y="29" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="29" height="60" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Diodes Module Pilot Wire</name>
-        <name lang="fr">Module Fil Pilote</name>
         <name lang="it">Modulo a diodi pilota</name>
+        <name lang="fr">Module Fil Pilote</name>
+        <name lang="pl">Moduł diodowy</name>
     </names>
     <informations></informations>
     <description>
