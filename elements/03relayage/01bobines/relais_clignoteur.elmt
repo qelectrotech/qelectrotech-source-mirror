@@ -1,4 +1,4 @@
-<definition width="80" version="0.4" hotspot_x="28" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="80" version="0.4" hotspot_x="28" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy" link_type="master">
     <names>
         <name lang="en">Flasher relay</name>
         <name lang="it">Relè ciclico</name>
@@ -14,7 +14,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
         <input x="-14" y="18" size="4" text="A2"/>
         <input x="-14" y="-17" size="4" text="A1"/>
-        <input x="30" y="3" size="9" text="_"/>
+        <input x="30" y="3" size="9" text="_" tagg="label/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.42222" x1="-20" y2="-1.46667" x2="-20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-20" y2="-2" x2="-17"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-17" y2="-5" x2="-17"/>
