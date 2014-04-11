@@ -1187,12 +1187,19 @@ QETProject *Diagram::project() const {
 }
 
 /**
-	@param project le nouveau projet auquel ce schema appartient ou 0 s'il
-	s'agit d'un schema independant. Indiquer 0 pour rendre ce schema independant.
-*/
+ * @brief Diagram::setProject
+ * @param project: set parent project of this diagram or 0 if this diagram haven't got a parent project
+ */
 void Diagram::setProject(QETProject *project) {
+	if (project_) {
+		disconnect (project_, SIGNAL(reportPropertiesChanged(QString)),	  this, SIGNAL(reportPropertiesChanged(QString)));
+		disconnect (project_, SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SIGNAL(XRefPropertiesChanged(XRefProperties)));
+	}
 	project_ = project;
-	connect(project_, SIGNAL(reportPropertiesChanged(QString)), this, SIGNAL(reportPropertiesChanged(QString)));
+	if (project_) {
+		connect (project_, SIGNAL(reportPropertiesChanged(QString)),	  this, SIGNAL(reportPropertiesChanged(QString)));
+		connect (project_, SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SIGNAL(XRefPropertiesChanged(XRefProperties)));
+	}
 }
 
 /**

@@ -29,7 +29,6 @@
 #include "basicmoveelementshandler.h"
 #include "qetmessagebox.h"
 #include "titleblocktemplate.h"
-
 #include "ui/dialogwaiting.h"
 
 QString QETProject::integration_category_name = "import";
@@ -452,6 +451,15 @@ void QETProject::setDefaultReportProperties(const QString &properties) {
 	emit reportPropertiesChanged(properties);
 }
 
+XRefProperties QETProject::defaultXrefProperties() const{
+	return m_default_xref_properties;
+}
+
+void QETProject::setDefaultXRefProperties(const XRefProperties &properties) {
+	m_default_xref_properties = properties;
+	emit XRefPropertiesChanged(properties);
+}
+
 /**
 	@return un document XML representant le projet 
 */
@@ -481,7 +489,7 @@ QDomDocument QETProject::toXml() {
 	writeProjectPropertiesXml(project_properties);
 	project_root.appendChild(project_properties);
 	
-	// proprietes pour les nouveaux schemas
+	// Properties for news diagrams
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
 	writeDefaultPropertiesXml(new_diagrams_properties);
 	project_root.appendChild(new_diagrams_properties);
@@ -1139,29 +1147,27 @@ void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
 }
 
 /**
-	Charge les proprietes par defaut des nouveaux schemas depuis la description
-	XML du projet :
-	  * dimensions
-	  * contenu du cartouche
-	  * conducteurs par defaut
-*/
+ * @brief QETProject::readDefaultPropertiesXml
+ * load default properties for new diagram, found in the xml of this project
+ * or by default find in the QElectroTech global conf
+ */
 void QETProject::readDefaultPropertiesXml() {
-	// repere l'element XML decrivant les proprietes des nouveaux schemas
+	// Find xml element where is stored properties for new diagram
 	QDomNodeList newdiagrams_nodes = document_root_.elementsByTagName("newdiagrams");
 	if (newdiagrams_nodes.isEmpty()) return;
 	
 	QDomElement newdiagrams_elmt = newdiagrams_nodes.at(0).toElement();
 	
-	// par defaut, les valeurs sont celles de la configuration QElectroTech
-	default_border_properties_    = QETDiagramEditor::defaultBorderProperties();
-	default_titleblock_properties_     = QETDiagramEditor::defaultTitleBlockProperties();
-	default_conductor_properties_ = QETDiagramEditor::defaultConductorProperties();
-	default_report_properties_ = QETDiagramEditor::defaultReportProperties();
+	// By default, use value find in the global conf of QElectroTech
+	default_border_properties_	   = QETDiagramEditor::defaultBorderProperties();
+	default_titleblock_properties_ = QETDiagramEditor::defaultTitleBlockProperties();
+	default_conductor_properties_  = QETDiagramEditor::defaultConductorProperties();
+	default_report_properties_	   = QETDiagramEditor::defaultReportProperties();
+	m_default_xref_properties	   = QETDiagramEditor::defaultXRefProperties();
 	
-	// lecture des valeurs indiquees dans le projet
-	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt;
+	//Read values indicate in project
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt;
 	
-	// recherche des elements XML concernant les dimensions, le cartouche et les conducteurs
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling()) {
 		QDomElement child_elmt = child.toElement();
 		if (child_elmt.isNull()) continue;
@@ -1173,38 +1179,44 @@ void QETProject::readDefaultPropertiesXml() {
 			conductors_elmt = child_elmt;
 		} else if (child_elmt.tagName() == "report") {
 			report_elmt = child_elmt;
+		} else if (child_elmt.tagName() == "xref") {
+			xref_elmt = child_elmt;
 		}
 	}
 	
 	// size, titleblock, conductor, report
-	if (!border_elmt.isNull())     default_border_properties_.fromXml(border_elmt);
-	if (!titleblock_elmt.isNull())      default_titleblock_properties_.fromXml(titleblock_elmt);
+	if (!border_elmt.isNull())	   default_border_properties_.fromXml(border_elmt);
+	if (!titleblock_elmt.isNull()) default_titleblock_properties_.fromXml(titleblock_elmt);
 	if (!conductors_elmt.isNull()) default_conductor_properties_.fromXml(conductors_elmt);
-	if (!report_elmt.isNull()) setDefaultReportProperties(report_elmt.attribute("label"));
+	if (!report_elmt.isNull())	   setDefaultReportProperties(report_elmt.attribute("label"));
+	if (!xref_elmt.isNull())	   m_default_xref_properties.fromXml(xref_elmt);
 }
 
+
 /**
-	Exporte les proprietes par defaut des nouveaux schemas dans l'element XML :
-	  * dimensions
-	  * contenu du cartouche
-	  * conducteurs par defaut
-	@param xml_element Element XML sous lequel seront exportes les proprietes
-	par defaut des nouveaux schemas 
-*/
+ * @brief QETProject::writeDefaultPropertiesXml
+ * Export all defaults properties used by a new diagram and his content
+ * #size of border
+ * #content of titleblock
+ * #default conductor
+ * #defaut folio report
+ * #default Xref
+ * @param xml_element xml element to use for store default propertie.
+ */
 void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	QDomDocument xml_document = xml_element.ownerDocument();
 	
-	// exporte les dimensions
+	// export size of border
 	QDomElement border_elmt = xml_document.createElement("border");
 	default_border_properties_.toXml(border_elmt);
 	xml_element.appendChild(border_elmt);
 	
-	// exporte le contenu du cartouche
+	// export content of titleblock
 	QDomElement titleblock_elmt = xml_document.createElement("inset");
 	default_titleblock_properties_.toXml(titleblock_elmt);
 	xml_element.appendChild(titleblock_elmt);
 	
-	// exporte le type de conducteur par defaut
+	// exporte default conductor
 	QDomElement conductor_elmt = xml_document.createElement("conductors");
 	default_conductor_properties_.toXml(conductor_elmt);
 	xml_element.appendChild(conductor_elmt);
@@ -1213,6 +1225,11 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	QDomElement report_elmt = xml_document.createElement("report");
 	report_elmt.setAttribute("label", defaultReportProperties());
 	xml_element.appendChild(report_elmt);
+
+	// export default XRef properties
+	QDomElement xref_elmt = xml_document.createElement("xref");
+	defaultXrefProperties().toXml(xref_elmt);
+	xml_element.appendChild(xref_elmt);
 }
 
 /**

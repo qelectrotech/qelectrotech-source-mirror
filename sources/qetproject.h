@@ -25,6 +25,7 @@
 #include "conductorproperties.h"
 #include "titleblockproperties.h"
 #include "templatescollection.h"
+#include "properties/xrefproperties.h"
 
 class Diagram;
 class ElementsCollection;
@@ -99,6 +100,8 @@ class QETProject : public QObject {
 	void setDefaultConductorProperties(const ConductorProperties &);
 	QString defaultReportProperties() const;
 	void setDefaultReportProperties (const QString &properties);
+	XRefProperties defaultXrefProperties () const;
+	void setDefaultXRefProperties(const XRefProperties &properties);
 	QDomDocument toXml();
 	bool close();
 	QETResult write();
@@ -144,6 +147,7 @@ class QETProject : public QObject {
 	void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
 	void readOnlyChanged(QETProject *, bool);
 	void reportPropertiesChanged(QString);
+	void XRefPropertiesChanged (XRefProperties);
 	
 	private slots:
 	void updateDiagramsFolioData();
@@ -201,6 +205,8 @@ class QETProject : public QObject {
 	TitleBlockProperties default_titleblock_properties_;
 	/// Default report properties
 	QString default_report_properties_;
+	/// Default xref properties
+	XRefProperties m_default_xref_properties;
 	/// Embedded title block templates collection
 	TitleBlockTemplatesProjectCollection titleblocks_;
 	/// project-wide variables that will be made available to child diagrams

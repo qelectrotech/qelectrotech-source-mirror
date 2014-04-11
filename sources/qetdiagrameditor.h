@@ -23,6 +23,8 @@
 #include "conductorproperties.h"
 #include "titleblockproperties.h"
 #include "exportproperties.h"
+#include "properties/xrefproperties.h"
+
 class QETProject;
 class QETResult;
 class ProjectView;
@@ -62,7 +64,8 @@ class QETDiagramEditor : public QETMainWindow {
 	static ConductorProperties defaultConductorProperties();
 	static ExportProperties    defaultExportProperties();
 	static ExportProperties    defaultPrintProperties();
-	static QString defaultReportProperties();
+	static QString			   defaultReportProperties();
+	static XRefProperties	   defaultXRefProperties();
 	
 	protected:
 	void actions();

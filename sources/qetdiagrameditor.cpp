@@ -651,17 +651,20 @@ void QETDiagramEditor::saveCurrentDiagram() {
 }
 
 /**
-	Cree un nouveau projet vide
-*/
+ * @brief QETDiagramEditor::newProject
+ * Create an empty project
+ * @return
+ */
 bool QETDiagramEditor::newProject() {
-	// cree un nouveau projet sans schema
+	// create new project without diagram
 	QETProject *new_project = new QETProject(0);
 	
-	// transmet les proprietes par defaut des nouveaux schemas
-	new_project -> setDefaultBorderProperties(defaultBorderProperties());
-	new_project -> setDefaultConductorProperties(defaultConductorProperties());
-	new_project -> setDefaultTitleBlockProperties(defaultTitleBlockProperties());
-	new_project -> setDefaultReportProperties(defaultReportProperties());
+	// Set default properties for new diagram
+	new_project -> setDefaultBorderProperties	  (defaultBorderProperties());
+	new_project -> setDefaultConductorProperties  (defaultConductorProperties());
+	new_project -> setDefaultTitleBlockProperties (defaultTitleBlockProperties());
+	new_project -> setDefaultReportProperties	  (defaultReportProperties());
+	new_project -> setDefaultXRefProperties		  (defaultXRefProperties());
 	
 	// add new diagram
 	new_project -> addNewDiagram();
@@ -2083,4 +2086,14 @@ ExportProperties QETDiagramEditor::defaultPrintProperties() {
 QString QETDiagramEditor::defaultReportProperties() {
 	QSettings &settings= QETApp::settings();
 	return(settings.value("diagrameditor/defaultreportlabel", "%f-%l%c").toString());
+}
+
+/**
+ * @brief QETDiagramEditor::defaultXRefProperties
+ * @return the default setting for Xref
+ */
+XRefProperties QETDiagramEditor::defaultXRefProperties() {
+	XRefProperties properties;
+	properties.fromSettings(QETApp::settings(), "diagrameditor/defaultxref");
+	return properties;
 }

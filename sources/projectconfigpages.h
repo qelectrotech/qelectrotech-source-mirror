@@ -26,6 +26,7 @@ class TitleBlockPropertiesWidget;
 class ConductorPropertiesWidget;
 class DiagramContextWidget;
 class ReportPropertieWidget;
+class XRefPropertiesWidget;
 
 /**
 	This class, derived from ConfigPage, aims at providing the basic skeleton
@@ -144,6 +145,7 @@ class ProjectNewDiagramConfigPage : public ProjectConfigPage {
 	TitleBlockPropertiesWidget *titleblock_;
 	ConductorPropertiesWidget *conductor_;
 	ReportPropertieWidget *report_;
+	XRefPropertiesWidget *xref_;
 };
 
 #endif

@@ -24,6 +24,7 @@ class ConductorPropertiesWidget;
 class TitleBlockPropertiesWidget;
 class ExportPropertiesWidget;
 class ReportPropertieWidget;
+class XRefPropertiesWidget;
 
 /**
 	This configuration page enables users to define the properties of new
@@ -49,7 +50,9 @@ class NewDiagramPage : public ConfigPage {
 	BorderPropertiesWidget *bpw;     ///< Widget to edit default diagram dimensions
 	TitleBlockPropertiesWidget *ipw; ///< Widget to edit default title block properties
 	ConductorPropertiesWidget *cpw;  ///< Widget to edit default conductor properties
-	ReportPropertieWidget *rpw;///< Widget to edit default report label
+	ReportPropertieWidget *rpw;		 ///< Widget to edit default report label
+	XRefPropertiesWidget *xrefpw;	 ///< Widget to edit default xref properties
+
 };
 
 /**

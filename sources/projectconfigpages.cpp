@@ -24,6 +24,7 @@
 #include "titleblockpropertieswidget.h"
 #include <QtGui>
 #include "ui/reportpropertiewidget.h"
+#include "ui/xrefpropertieswidget.h"
 
 /**
 	Constructor
@@ -260,6 +261,12 @@ void ProjectNewDiagramConfigPage::applyProjectConf() {
 		project_->setDefaultReportProperties(new_report_prop);
 		modified_project = true;
 	}
+
+	XRefProperties new_xref_properties = xref_ -> properties();
+	if (project_ -> defaultXrefProperties() != new_xref_properties) {
+		project_ -> setDefaultXRefProperties(new_xref_properties);
+		modified_project = true;
+	}
 	
 	if (modified_project) {
 		project_ -> setModified(modified_project);
@@ -276,11 +283,12 @@ void ProjectNewDiagramConfigPage::initWidgets() {
 			"explicative label"
 		)
 	);
-	border_ = new BorderPropertiesWidget(BorderProperties()); 
+	border_		= new BorderPropertiesWidget(BorderProperties());
 	titleblock_ = new TitleBlockPropertiesWidget(TitleBlockProperties(), true);
-	conductor_ = new ConductorPropertiesWidget();
-	conductor_ -> setContentsMargins(0, 0, 0, 0);
-	report_ = new ReportPropertieWidget("_");
+	conductor_  = new ConductorPropertiesWidget();
+	conductor_  -> setContentsMargins(0, 0, 0, 0);
+	report_		= new ReportPropertieWidget("_");
+	xref_		= new XRefPropertiesWidget();
 }
 
 /**
@@ -294,11 +302,11 @@ void ProjectNewDiagramConfigPage::initLayout() {
 	QVBoxLayout *diagram_layout = new QVBoxLayout(diagram_widget);
 	diagram_layout -> addWidget(border_);
 	diagram_layout -> addWidget(titleblock_);
-	tab_widget->addTab(diagram_widget, tr("Sch\351ma"));
 
-	tab_widget->addTab(conductor_, tr("Conducteur"));
-
-	tab_widget->addTab(report_, tr("Report de folio"));
+	tab_widget -> addTab (diagram_widget, tr("Sch\351ma"));
+	tab_widget -> addTab (conductor_,	  tr("Conducteur"));
+	tab_widget -> addTab (report_,		  tr("Report de folio"));
+	tab_widget -> addTab (xref_,		  tr("R\351f\351rence crois\351es"));
 
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	vlayout1->addWidget(tab_widget);
@@ -310,19 +318,20 @@ void ProjectNewDiagramConfigPage::initLayout() {
 	Read properties from the edited project then fill widgets with them.
 */
 void ProjectNewDiagramConfigPage::readValuesFromProject() {
-	border_ -> setEditedBorder(project_ -> defaultBorderProperties());
-	conductor_ -> setConductorProperties(project_ -> defaultConductorProperties());
-	titleblock_ -> setTitleBlockProperties(project_ -> defaultTitleBlockProperties());
-	report_->setReportProperties(project_->defaultReportProperties());
+	border_		-> setEditedBorder		   (project_ -> defaultBorderProperties());
+	conductor_	-> setConductorProperties  (project_ -> defaultConductorProperties());
+	titleblock_ -> setTitleBlockProperties (project_ -> defaultTitleBlockProperties());
+	report_		-> setReportProperties	   (project_ -> defaultReportProperties());
+	xref_		-> setProperties		   (project_ -> defaultXrefProperties());
 }
 
 /**
-	Set the content of this page read only if the project is read only,
 	editable if the project is editable.
  */
 void ProjectNewDiagramConfigPage::adjustReadOnly() {
 	bool is_read_only = project_ -> isReadOnly();
-	border_ -> setReadOnly(is_read_only);
+	border_		-> setReadOnly(is_read_only);
 	titleblock_ -> setReadOnly(is_read_only);
-	conductor_ -> setReadOnly(is_read_only);
+	conductor_  -> setReadOnly(is_read_only);
+	xref_		-> setReadOnly(is_read_only);
 }

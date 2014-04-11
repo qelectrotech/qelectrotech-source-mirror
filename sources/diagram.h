@@ -26,6 +26,7 @@
 #include "qgimanager.h"
 #include "numerotationcontext.h"
 #include "qetproject.h"
+#include "properties/xrefproperties.h"
 
 class Conductor;
 class CustomElement;
@@ -102,7 +103,8 @@ class Diagram : public QGraphicsScene {
 	virtual void keyReleaseEvent(QKeyEvent *);
 	
 	public:
-	QString defaultReportProperties () const {return project_->defaultReportProperties();}
+	QString		   defaultReportProperties () const {return project_ -> defaultReportProperties();}
+	XRefProperties defaultXRefProperties   () const {return project_ -> defaultXrefProperties();}
 	static bool clipboardMayContainDiagram();
 	bool setNumerotation (NumerotationType, NumerotationContext);
 	NumerotationContext getNumerotation (NumerotationType) const;
@@ -210,6 +212,7 @@ class Diagram : public QGraphicsScene {
 	/// Signal emitted when users wish to edit an element from the diagram
 	void editElementRequired(const ElementsLocation &);
 	void reportPropertiesChanged(QString);
+	void XRefPropertiesChanged(XRefProperties);
 };
 Q_DECLARE_METATYPE(Diagram *)
 

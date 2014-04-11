@@ -25,6 +25,7 @@
 #include "qeticons.h"
 #include "exportpropertieswidget.h"
 #include "ui/reportpropertiewidget.h"
+#include "ui/xrefpropertieswidget.h"
 
 /**
 	Constructeur
@@ -52,6 +53,10 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	// default propertie of report label
 	rpw = new ReportPropertieWidget(QETDiagramEditor::defaultReportProperties());
 	tab_widget->addTab(rpw, tr("Report de folio"));
+
+	// default properties of xref
+	xrefpw = new XRefPropertiesWidget(QETDiagramEditor::defaultXRefProperties(), this);
+	tab_widget->addTab(xrefpw, tr("R\351f\351rence crois\351es"));
 	
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	vlayout1->addWidget(tab_widget);
@@ -80,6 +85,9 @@ void NewDiagramPage::applyConf() {
 
 	// default report propertie
 	rpw->toSettings(settings, "diagrameditor/defaultreport");
+
+	// default xref properties
+	xrefpw -> properties().toSettings(settings, "diagrameditor/defaultxref");
 }
 
 /// @return l'icone de cette page

@@ -61,12 +61,16 @@ DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
 TEMPLATE = app
 DEPENDPATH += .
-INCLUDEPATH += sources sources/editor sources/titleblock sources/ui sources/qetgraphicsitem sources/richtext sources/factory
+INCLUDEPATH += sources sources/editor sources/titleblock sources/ui sources/qetgraphicsitem sources/richtext sources/factory sources/properties
 
 # Fichiers sources
-HEADERS += sources/*.h   sources/ui/*.h   sources/editor/*.h   sources/titleblock/*.h  sources/richtext/*.h sources/qetgraphicsitem/*.h sources/factory/*.cpp
+HEADERS += sources/*.h   sources/ui/*.h   sources/editor/*.h   sources/titleblock/*.h  sources/richtext/*.h sources/qetgraphicsitem/*.h sources/factory/*.cpp \
+    sources/properties/propertiesinterface.h \
+    sources/properties/xrefproperties.h
 
-SOURCES += sources/*.cpp sources/editor/*.cpp sources/titleblock/*.cpp sources/richtext/*.cpp sources/ui/*.cpp sources/qetgraphicsitem/*.cpp sources/factory/*.cpp
+SOURCES += sources/*.cpp sources/editor/*.cpp sources/titleblock/*.cpp sources/richtext/*.cpp sources/ui/*.cpp sources/qetgraphicsitem/*.cpp sources/factory/*.cpp \
+    sources/properties/propertiesinterface.cpp \
+    sources/properties/xrefproperties.cpp
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
@@ -82,7 +86,8 @@ QT += xml svg network sql
 
 # UI DESIGNER FILES AND GENERATION SOURCES FILES
 FORMS += sources/richtext/addlinkdialog.ui  sources/ui/*.ui \
-    sources/ui/linksingleelementwidget.ui
+    sources/ui/linksingleelementwidget.ui \
+    sources/ui/xrefpropertieswidget.ui
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/
 
