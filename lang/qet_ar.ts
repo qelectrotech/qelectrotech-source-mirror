@@ -1090,17 +1090,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="41"/>
         <source>TextLabel</source>
-        <translation type="unfinished">علامة نصيّة</translation>
+        <translation>علامة نصيّة</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="48"/>
         <source>Visible</source>
-        <translation type="unfinished">مرئي</translation>
+        <translation>ظاهر</translation>
     </message>
 </context>
 <context>
@@ -1108,7 +1108,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
 </context>
 <context>
@@ -1191,22 +1191,22 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/elementselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="117"/>
         <source>Sans titre</source>
-        <translation type="unfinished">بدون عنوان</translation>
+        <translation>بدون عنوان</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="118"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished">صفحة (%2)%1  موضع  %3.</translation>
+        <translation>صفحة (%2)%1  موضع  %3.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="128"/>
         <source>Voir l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>انظر العنصر</translation>
     </message>
 </context>
 <context>
@@ -1761,12 +1761,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="79"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">وضع علامة على الكلّ</translation>
+        <translation>وضع علامة على الكلّ</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="80"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">إزالة العلامة عن الكلّ</translation>
+        <translation>إزالة العلامة عن الكلّ</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="142"/>
@@ -1786,23 +1786,23 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="432"/>
         <source>Auteur</source>
-        <translation type="unfinished">المؤلف</translation>
+        <translation>المؤلف</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="433"/>
         <location filename="../sources/exportdialog.cpp" line="864"/>
         <source>Titre</source>
-        <translation type="unfinished">العنوان</translation>
+        <translation>العنوان</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="434"/>
         <source>Folio</source>
-        <translation type="unfinished">ورقة</translation>
+        <translation>ورقة</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="435"/>
         <source>Date</source>
-        <translation type="unfinished">التاريخ</translation>
+        <translation>التاريخ</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="928"/>
@@ -2468,47 +2468,47 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
         <source>Rechercher dans le folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>البحث في الورقة</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
         <source>Voir cet élément</source>
-        <translation type="unfinished"></translation>
+        <translation>انظر هذا العنصر</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
         <source>Voir l&apos;élément lié</source>
-        <translation type="unfinished"></translation>
+        <translation>انظر العنصر المرتبط</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="81"/>
         <source>Tous</source>
-        <translation type="unfinished"></translation>
+        <translation>الكل</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="86"/>
         <source>Sans titre</source>
-        <translation type="unfinished">بدون عنوان</translation>
+        <translation>بدون عنوان</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="120"/>
         <source>Cet élément est déjà lié.</source>
-        <translation type="unfinished"></translation>
+        <translation>هذا العنصر مُرتبط</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="121"/>
         <source>Délier</source>
-        <translation type="unfinished">فك الإرتباط</translation>
+        <translation>فك الإرتباط</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="137"/>
         <source>Rechercher</source>
-        <translation type="unfinished"></translation>
+        <translation>البحث</translation>
     </message>
 </context>
 <context>
@@ -2516,39 +2516,39 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
         <source>Délier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>فكّ ارتباط العنصر المُحدّد</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
         <source>Lier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>ربط العنصر المُحدّد</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
         <source>Éléments disponibles</source>
-        <translation type="unfinished"></translation>
+        <translation>عناصر مُتوفرة</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
         <source>Éléments liés</source>
-        <translation type="unfinished"></translation>
+        <translation>عناصر مُرتبطة</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="118"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="132"/>
         <source>Sans titre</source>
-        <translation type="unfinished">بدون عنوان</translation>
+        <translation>بدون عنوان</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="119"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="133"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished">صفحة (%2)%1  موضع  %3.</translation>
+        <translation>صفحة (%2)%1  موضع  %3.</translation>
     </message>
 </context>
 <context>
@@ -2995,27 +2995,27 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="362"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>علامة</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="363"/>
         <source>Commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation>تعليق</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="364"/>
         <source>Fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>المُصنّع</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="365"/>
         <source>Référence fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>مرجع المُصنّع</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Référence fabriquant machine</source>
-        <translation type="unfinished"></translation>
+        <translation>مرجع مُصنّع الآلة</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="377"/>
@@ -3412,17 +3412,17 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
         <source>Ajouter une liaison mecanique</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة رابط ميكانيكي</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
         <source>Ajouter une zone rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة منطقة مستطيلة</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
         <source>Ajouter une zone ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة منطقة اهليجية</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="223"/>
@@ -5342,7 +5342,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="147"/>
         <source>Ajouter une Shape</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>إضافة شكل</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="187"/>
@@ -5450,7 +5450,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1262"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>تحرير المراجع المُتقاطعة</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1263"/>
@@ -5461,7 +5461,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1276"/>
         <source>Editer les référence croisé</source>
-        <translation type="unfinished"></translation>
+        <translation>تحرير المراجع المُتقاطعة</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1337"/>
@@ -5721,11 +5721,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -5924,43 +5919,43 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>تحرير خصائص رابط, منطقة</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Shape Line Style</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>تشكيل نمط الخطّ</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
         <source>Normal</source>
-        <translation type="unfinished">عادي</translation>
+        <translation>عادي</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
         <source>Tiret</source>
-        <translation type="unfinished">خط وصل</translation>
+        <translation>خط وصل</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>
         <source>Pointillé</source>
-        <translation type="unfinished">متقطع</translation>
+        <translation>متقطع</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
         <source>Traits et points</source>
-        <translation type="unfinished">خطوط و نقاط</translation>
+        <translation>خطوط و نقاط</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Traits points points</source>
-        <translation type="unfinished"></translation>
+        <translation>خطوط نقاط نقاط</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">تجميد الوضعية</translation>
+        <translation>تجميد الوضعية</translation>
     </message>
 </context>
 <context>
@@ -7265,12 +7260,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Référence croisée (maitre)</source>
-        <translation type="unfinished"></translation>
+        <translation>مرجع متقاطع - قائد</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished"></translation>
+        <translation>مرجع متقاطع - مُنقاد</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="140"/>
@@ -7343,7 +7338,7 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="114"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="128"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>معلومة</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
