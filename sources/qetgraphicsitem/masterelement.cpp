@@ -55,7 +55,10 @@ void MasterElement::linkToElement(Element *elmt) {
 		elmt->linkToElement(this);
 
 		if (elmt->kindInformations()["type"].toString() != "power") {
-			if (!cri_) cri_ = new CrossRefItem(this, this); //create cross ref item if not yet
+			if (!cri_) {
+				cri_ = new CrossRefItem(this); //create cross ref item if not yet
+				diagram()->addItem(cri_);
+			}
 			connect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
 			cri_->updateLabel();
 		}
@@ -93,6 +96,7 @@ void MasterElement::unlinkElement(Element *elmt) {
 			if (elmt->kindInformations()["type"].toString() != "power") delete_cri = false;
 
 		if (delete_cri) {
+			diagram()->removeItem(cri_);
 			delete cri_;
 			cri_ = 0;
 		}

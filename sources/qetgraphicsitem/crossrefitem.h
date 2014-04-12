@@ -29,13 +29,13 @@ class element;
  * It's the responsability of the parent to informe displayed slave are moved,
  * by calling the slot @updateLabel
  */
-class CrossRefItem : public QetGraphicsItem
+class CrossRefItem : public QGraphicsObject
 {
 	Q_OBJECT
 
 	//Methods
 	public:
-	explicit CrossRefItem(Element *elmt, QetGraphicsItem *parent = 0);
+	explicit CrossRefItem(Element *elmt, QGraphicsItem *parent = 0);
 	~CrossRefItem();
 
 	QRectF boundingRect() const;

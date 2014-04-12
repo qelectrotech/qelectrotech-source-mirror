@@ -31,15 +31,14 @@
  * @param elmt element to dispaly the cross ref
  * @param parent parent QetGraphicsItem
  */
-CrossRefItem::CrossRefItem(Element *elmt, QetGraphicsItem *parent) :
-	QetGraphicsItem(parent),
+CrossRefItem::CrossRefItem(Element *elmt, QGraphicsItem *parent) :
+	QGraphicsObject(parent),
 	element_ (elmt)
 {
-	snap_to_grid_=false;
-	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
+	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable);
 	connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
 	connect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
-	connect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+	connect(elmt->diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 	updateLabel();
 }
 
@@ -50,7 +49,7 @@ CrossRefItem::CrossRefItem(Element *elmt, QetGraphicsItem *parent) :
 CrossRefItem::~CrossRefItem() {
 	disconnect(element_, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
 	disconnect(element_, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
-	disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+	disconnect(element_->diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 }
 
 /**
@@ -189,7 +188,7 @@ void CrossRefItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
  */
 void CrossRefItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	element_->setHighlighted(true);
-	QetGraphicsItem::mouseMoveEvent(e);
+	QGraphicsObject::mouseMoveEvent(e);
 }
 
 /**
@@ -199,7 +198,7 @@ void CrossRefItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
  */
 void CrossRefItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	element_->setHighlighted(false);
-	QetGraphicsItem::mouseReleaseEvent(e);
+	QGraphicsObject::mouseReleaseEvent(e);
 }
 
 /**
