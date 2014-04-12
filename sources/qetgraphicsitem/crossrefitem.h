@@ -19,6 +19,7 @@
 #define CROSSREFITEM_H
 
 #include "qetgraphicsitem/qetgraphicsitem.h"
+#include"properties/xrefproperties.h"
 class element;
 
 /**
@@ -63,6 +64,7 @@ class CrossRefItem : public QGraphicsObject
 	QRectF bounding_rect_ , text_rect_;
 	QPicture drawing_;
 	QPainterPath shape_path_;
+	XRefProperties m_properties;
 };
 
 #endif // CROSSREFITEM_H

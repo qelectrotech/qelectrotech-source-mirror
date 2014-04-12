@@ -35,10 +35,12 @@ CrossRefItem::CrossRefItem(Element *elmt, QGraphicsItem *parent) :
 	QGraphicsObject(parent),
 	element_ (elmt)
 {
+	m_properties = elmt->diagram()->defaultXRefProperties();
 	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable);
 	connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
 	connect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 	connect(elmt->diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+	connect(elmt->diagram(), SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SLOT(updateLabel()));
 	updateLabel();
 }
 
@@ -276,7 +278,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
 
 	//find each no and nc of connected element to element_
 	foreach (Element *elmt, element_->linkedElements()) {
-		if (elmt->kindInformations()["type"].toString() == "power") continue;
+		if (elmt->kindInformations()["type"].toString() == "power" && !m_properties.showPowerContact()) continue;
 		QString state = elmt->kindInformations()["state"].toString();
 		if (state == "NO")		NO_list << elmt;
 		else if (state == "NC") NC_list << elmt;

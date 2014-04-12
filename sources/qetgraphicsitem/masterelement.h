@@ -31,11 +31,17 @@ class MasterElement : public CustomElement
 	virtual void linkToElement(Element *elmt);
 	virtual void unlinkAllElements();
 	virtual void unlinkElement(Element *elmt);
+
+	protected:
+	QVariant itemChange(GraphicsItemChange change, const QVariant &value);
 	
 	signals:
 
 	public slots:
 	void updateLabel();
+
+	private slots:
+	void reLink();
 
 	private:
 	CrossRefItem *cri_;
