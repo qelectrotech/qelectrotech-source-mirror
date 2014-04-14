@@ -167,6 +167,7 @@ FunctionEnd
 ;Uninstaller Section
 
 Section "Uninstall"
+	SetShellVarContext all ; all users
 	; remove start menu shortcuts
 	RMDir /r "$SMPROGRAMS\${SOFT_NAME}"
 	; remove shortcut on the desktop
