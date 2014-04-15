@@ -7,6 +7,7 @@
         <name lang="pl">Ogrzewacz elektryczny</name>
         <name lang="es">Calentador eléctrico</name>
         <name lang="cs">Elektrický ohřívač</name>
+        <name lang="nl">Elektrische verwarming</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

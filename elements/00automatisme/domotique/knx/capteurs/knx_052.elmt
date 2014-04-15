@@ -7,6 +7,7 @@
         <name lang="pl">Zegar sterujący, dwukanałowy</name>
         <name lang="es">Switch temporizado, 2 vias</name>
         <name lang="cs">Řídicí hodiny, dvoukanálové</name>
+        <name lang="nl">Tijd shakelaar, 2voud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

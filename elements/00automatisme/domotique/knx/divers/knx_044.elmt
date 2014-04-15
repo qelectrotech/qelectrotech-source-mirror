@@ -7,6 +7,7 @@
         <name lang="pl">Dekoder podczerwieni</name>
         <name lang="es">Decodificador IR</name>
         <name lang="cs">Infračervený dekodér</name>
+        <name lang="nl">IR Dekodeur</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

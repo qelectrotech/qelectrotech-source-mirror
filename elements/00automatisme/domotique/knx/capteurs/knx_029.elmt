@@ -7,6 +7,7 @@
         <name lang="pl">Wejście analogowo-cyfrowe, symbol ogólny</name>
         <name lang="es">Entrada Digital/analogica, convertidor</name>
         <name lang="cs">Digitálně-anylogový vstup, smíšený, obecný symbol</name>
+        <name lang="nl">Digitaal/Analoog ingang, mix</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

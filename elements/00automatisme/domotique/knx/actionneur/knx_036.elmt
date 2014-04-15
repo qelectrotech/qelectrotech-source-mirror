@@ -7,6 +7,7 @@
         <name lang="pl">Dwa wyjścia cyfrowe</name>
         <name lang="es">Dos salidas binarias</name>
         <name lang="cs">Dva digitální výstupy</name>
+        <name lang="nl">Digitaal uitgang, 2 voudig</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

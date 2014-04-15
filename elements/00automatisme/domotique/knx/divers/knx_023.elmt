@@ -7,6 +7,7 @@
         <name lang="pl">Modem</name>
         <name lang="es">Modem</name>
         <name lang="cs">Modem</name>
+        <name lang="nl">Modem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,6 +7,7 @@
         <name lang="pl">Przycisk</name>
         <name lang="es">Pulsador, 1 via</name>
         <name lang="cs">Tlačítko</name>
+        <name lang="nl">Drukknop, enkel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,6 +7,7 @@
         <name lang="pl">Wyjście analogowe</name>
         <name lang="es">Salida analógica, unica</name>
         <name lang="cs">Analogový výstup</name>
+        <name lang="nl">Analoog uitgang, enkel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

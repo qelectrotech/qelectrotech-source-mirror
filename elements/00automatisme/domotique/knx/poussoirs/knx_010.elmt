@@ -7,6 +7,7 @@
         <name lang="pl">Przycisk, symbol ogólny</name>
         <name lang="es">Pulsador, general</name>
         <name lang="cs">Tlačítko, obecný symbol</name>
+        <name lang="nl">Drukknop, algemeen</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

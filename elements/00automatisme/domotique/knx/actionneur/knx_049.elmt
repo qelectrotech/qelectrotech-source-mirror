@@ -6,6 +6,7 @@
         <name lang="pl">Sterownik żaluzji</name>
         <name lang="es">Accionador de obturación, 1 via</name>
         <name lang="cs">Ovladač žaluzií/okenic, jednokanálový</name>
+        <name lang="nl">jaloezie, enkel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

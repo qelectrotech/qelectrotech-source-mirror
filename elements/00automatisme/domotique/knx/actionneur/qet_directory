@@ -8,5 +8,6 @@
         <name lang="pl">Aktuatory</name>
         <name lang="es">Accionador</name>
         <name lang="cs">Ovladač</name>
+        <name lang="nl">Actuator</name>
     </names>
 </qet-directory>

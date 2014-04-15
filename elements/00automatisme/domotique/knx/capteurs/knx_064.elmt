@@ -6,6 +6,7 @@
         <name lang="pl">Moduł łącznika + przycisk</name>
         <name lang="es">Conector de módulo + botón pulsador</name>
         <name lang="cs">Modul spínače + tlačítko</name>
+        <name lang="nl">Modulekontakt + Drukknop enkel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

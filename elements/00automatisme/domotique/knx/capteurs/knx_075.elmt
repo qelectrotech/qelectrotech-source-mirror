@@ -7,6 +7,7 @@
         <name lang="pl">Sześć wejść cyfrowych</name>
         <name lang="es">Entrada digital, 6 vias</name>
         <name lang="cs">Šest digitálních vstupů</name>
+        <name lang="nl">Digitaal Ingang, 6voud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,6 +7,7 @@
         <name lang="pl">Wyświetlacz</name>
         <name lang="es">Display</name>
         <name lang="cs">Obrazovka</name>
+        <name lang="nl">Scherm</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -10,6 +10,7 @@
         <name lang="pl">Dławik</name>
         <name lang="es">Choke</name>
         <name lang="cs">Škrticí klapka</name>
+        <name lang="nl">Weerstand</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

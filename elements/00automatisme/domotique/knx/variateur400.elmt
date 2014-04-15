@@ -6,6 +6,7 @@
         <name lang="es">Inversor 400w knx</name>
         <name lang="cs">Střídač knx 400W</name>
         <name lang="pl">Regulator 400W</name>
+        <name lang="nl">Regelaar 400Watt</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

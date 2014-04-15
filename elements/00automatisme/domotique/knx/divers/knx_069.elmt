@@ -6,6 +6,7 @@
         <name lang="pl">Bramka</name>
         <name lang="es">Puerta de enlace</name>
         <name lang="cs">Brána</name>
+        <name lang="nl">Doorgang</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

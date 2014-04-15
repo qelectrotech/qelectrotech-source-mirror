@@ -7,6 +7,7 @@
         <name lang="pl">Czujnik natężenia oświetlenia</name>
         <name lang="es">Sensor de brillo, luminancia</name>
         <name lang="cs">Světelnostní čidlo</name>
+        <name lang="nl">Licht sensor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

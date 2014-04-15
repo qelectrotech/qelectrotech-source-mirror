@@ -7,6 +7,7 @@
         <name lang="pl">Czujnik natężenia oświetlenia / czujnik ruchu, trójkanałowy</name>
         <name lang="es">Sensor (luminancia, IR), 3 vias</name>
         <name lang="cs">Čidlo (světelnost, IR), tříkanálové</name>
+        <name lang="nl">Sensor (Licht,beweging), 3voud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

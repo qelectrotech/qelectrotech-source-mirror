@@ -6,6 +6,7 @@
         <name lang="pl">6SX10A</name>
         <name lang="es">Actuador 6sx10a</name>
         <name lang="cs">Ovladač 6SX10A</name>
+        <name lang="nl">Actuator 6SX10A</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

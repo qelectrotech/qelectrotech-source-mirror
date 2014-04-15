@@ -7,6 +7,7 @@
         <name lang="pl">Cztery wejścia analogowe</name>
         <name lang="es">Entrada analogica, 4 vias</name>
         <name lang="cs">Čtyři analogové výstupy</name>
+        <name lang="nl">Analoog ingang, 4voud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

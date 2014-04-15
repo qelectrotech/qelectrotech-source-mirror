@@ -7,6 +7,7 @@
         <name lang="pl">Przycisk podwójny</name>
         <name lang="es">Pulsador, 2 vias</name>
         <name lang="cs">Dvojité tlačítko</name>
+        <name lang="nl">Drukknop, dubbel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,6 +7,7 @@
         <name lang="pl">Czujnik prądu / napięcia</name>
         <name lang="es">Sensor de corriente / tensión</name>
         <name lang="cs">Čidlo proudu/napětí</name>
+        <name lang="nl">Stroom/Spanning sensor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

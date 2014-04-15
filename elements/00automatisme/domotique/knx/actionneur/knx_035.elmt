@@ -7,6 +7,7 @@
         <name lang="pl">Wyjście cyfrowe</name>
         <name lang="es">Salida binaria, unica</name>
         <name lang="cs">Digitální výstup</name>
+        <name lang="nl">Digitaal uitgang, enkel</name> 
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

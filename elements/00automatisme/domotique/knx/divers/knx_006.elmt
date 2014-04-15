@@ -6,6 +6,7 @@
         <name lang="pl">Sprzęgło linii</name>
         <name lang="es">Acoplador de línea</name>
         <name lang="cs">Spojka vedení</name>
+        <name lang="nl">Lijn koppelaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

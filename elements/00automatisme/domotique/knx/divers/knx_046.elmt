@@ -6,6 +6,7 @@
         <name lang="pl">Wejście cyfrowe + wyjście cyfrowe</name>
         <name lang="es">Binario/binario</name>
         <name lang="cs">Digitální vstup + digitální výstup</name>
+        <name lang="nl">Digitaal in / Digitaal uit</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

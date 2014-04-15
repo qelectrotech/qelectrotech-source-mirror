@@ -7,6 +7,7 @@
         <name lang="pl">Dwa wejście cyfrowe</name>
         <name lang="es">Entrada digital 2 vias</name>
         <name lang="cs">Dva digitální vstupy</name>
+        <name lang="nl">Digitaal ingang, 2voudig</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

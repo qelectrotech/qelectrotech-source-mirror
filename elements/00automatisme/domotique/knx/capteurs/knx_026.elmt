@@ -7,6 +7,7 @@
         <name lang="pl">Wejście cyfrowe</name>
         <name lang="es">Entrada digital. 1 via</name>
         <name lang="cs">Digitální vstup</name>
+        <name lang="nl">Digitaal ingang, enkel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

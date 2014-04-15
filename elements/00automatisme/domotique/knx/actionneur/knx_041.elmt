@@ -7,6 +7,7 @@
         <name lang="pl">Wyjście analogowe, symbol ogólny</name>
         <name lang="es">Salida analógica,genérica</name>
         <name lang="cs">Analogový výstup, obecný symbol</name>
+        <name lang="nl">Analoog uitgang, standaard</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

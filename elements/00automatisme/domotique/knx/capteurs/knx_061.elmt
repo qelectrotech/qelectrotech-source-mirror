@@ -6,6 +6,7 @@
         <name lang="pl">Alarm - wyłącznik otwarty</name>
         <name lang="es">Circuito interruptor automatico de alarma</name>
         <name lang="cs">Poplach - otevřený spínač</name>
+        <name lang="nl">Kring breek Alarm</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

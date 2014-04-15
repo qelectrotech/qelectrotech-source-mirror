@@ -6,6 +6,7 @@
         <name lang="pl">Wyjście cyfrowe + nadajnik / dekoder podczerwieni</name>
         <name lang="es">IR Receptor/decodificador, salida digital</name>
         <name lang="cs">Digitální vstup + přijímač/dekodér, infračervený</name>
+        <name lang="nl">digitaal uitgang + IR ontvanger/decoder</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="pl">Wyświetlacz binarny</name>
         <name lang="es">Display digital</name>
         <name lang="cs">Digitální obrazovka</name>
+        <name lang="nl">Digitaal Scherm</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

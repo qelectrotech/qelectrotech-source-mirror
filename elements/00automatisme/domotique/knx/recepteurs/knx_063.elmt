@@ -6,6 +6,7 @@
         <name lang="pl">Nadajnik / dekoder podczerwieni, czterokanałowy</name>
         <name lang="es">IR Receptor/decodificador 4 salidas</name>
         <name lang="cs">Infračervený přijímač/dekodér, čtyřkanálový</name>
+        <name lang="nl">IR Ontvanger /decoder 4voudig</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
