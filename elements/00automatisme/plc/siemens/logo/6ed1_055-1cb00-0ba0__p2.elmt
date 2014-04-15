@@ -1,6 +1,6 @@
 <definition width="470" version="0.3" hotspot_x="120" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="ar">6ED1 055-1CB00-0BA0 (part2/2)</name>
+        <name lang="ar">6ED1 055-1CB00-0BA0 (part 2/2)</name>
         <name lang="pt">6ED1 055-1CB00-0BA0 (parte 2/2)</name>
         <name lang="el">6ED1 055-1CB00-0BA0 (μέρος 2/2)</name>
         <name lang="en">6ED1 055-1CB00-0BA0 (part2/2)</name>
@@ -8,7 +8,8 @@
         <name lang="fr">6ED1 055-1CB00-0BA0 (part2/2)</name>
         <name lang="pl">6ED1 055-1CB00-0BA0 (część 2/2)</name>
         <name lang="es">6ED1 055-1CB00-0BA0 (parte 2/2)</name>
-        <name lang="cs">6ED1 055-1CB00-0BA0 (část2/2)</name>
+        <name lang="cs">6ED1 055-1CB00-0BA0 (část 2/2)</name>
+        <name lang="nl">6ED1 055-1CB00-0BA0 (deel 2/2)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

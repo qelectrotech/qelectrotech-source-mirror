@@ -10,6 +10,7 @@
         <name lang="pl">Działanie</name>
         <name lang="es">acción</name>
         <name lang="cs">Čin</name>
+        <name lang="nl">Actie</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -8,5 +8,6 @@
         <name lang="es">Configuración</name>
         <name lang="it">Configurazione</name>
         <name lang="el">Διάταξη</name>
+        <name lang="nl">config</name>
     </names>
 </qet-directory>

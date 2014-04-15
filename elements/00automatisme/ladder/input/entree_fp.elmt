@@ -11,6 +11,7 @@
         <name lang="pl">Wejście (zbocze narastające)</name>
         <name lang="es">Entrada (ascendente)</name>
         <name lang="cs">Vstup (stoupající)</name>
+        <name lang="nl">Ingang (Opgaande flank)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

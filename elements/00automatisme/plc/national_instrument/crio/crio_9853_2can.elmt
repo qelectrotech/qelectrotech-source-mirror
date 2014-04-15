@@ -6,6 +6,7 @@
         <name lang="pl">cRIO 9853 - porty High-Speed CAN</name>
         <name lang="es">cRIO 9853 - puertos CAN</name>
         <name lang="cs">cRIO 9853 - modul CAN-bus</name>
+        <name lang="nl">cRIO bus CAN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="pl">cRIO 9269 wyjścia analogowe</name>
         <name lang="es">cRIO 9269 4 salidas analogas</name>
         <name lang="cs">cRIO 9269 4 analogové vstupy</name>
+        <name lang="nl">cRIO 9269 4 uitgangen  Analoog</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

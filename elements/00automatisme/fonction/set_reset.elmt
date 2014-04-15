@@ -11,6 +11,7 @@
         <name lang="pl">Przerzutnik RS</name>
         <name lang="es">SET/RESET</name>
         <name lang="cs">NASTAVIT/NASTAVIT ZNOVU</name>
+        <name lang="nl">SET/RESET Aan/Uit</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

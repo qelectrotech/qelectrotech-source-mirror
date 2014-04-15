@@ -10,6 +10,7 @@
         <name lang="pl">Karta wejść CD20</name>
         <name lang="es">CD20 tarjeta de entrada</name>
         <name lang="cs">Karta CD20 vstupy</name>
+        <name lang="nl">CD20 ingangskaart</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

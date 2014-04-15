@@ -1,14 +1,15 @@
 <definition width="100" version="0.3" hotspot_x="5" hotspot_y="5" height="260" type="element" orientation="dnnn">
     <names>
-        <name lang="ar">6ES5 441-8MA11</name>
+        <name lang="ar">6ES5 431-8MA11</name>
         <name lang="pt">6ES5 431-8MA11</name>
         <name lang="el">6ES5 431-8MA11</name>
-        <name lang="en">6ES5 441-8MA11</name>
-        <name lang="it">6ES5 441-8MA11</name>
-        <name lang="fr">6ES5 441-8MA11</name>
+        <name lang="en">6ES5 431-8MA11</name>
+        <name lang="it">6ES5 431-8MA11</name>
+        <name lang="fr">6ES5 431-8MA11</name>
         <name lang="pl">6ES5 431-8MA11</name>
-        <name lang="es">6ES5 441-8MA11</name>
+        <name lang="es">6ES5 431-8MA11</name>
         <name lang="cs">6ES5 431-8MA11</name>
+        <name lang="nl">6ES5 431-8MA11</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

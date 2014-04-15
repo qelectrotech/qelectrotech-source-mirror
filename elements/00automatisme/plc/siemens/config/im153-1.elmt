@@ -1,12 +1,13 @@
 <definition width="90" version="0.3" hotspot_x="63" hotspot_y="195" height="260" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">6ES7 153-1AA03-0XB0</name>
-        <name lang="en">Coupleur 153-1AA03-0XB0</name>
+        <name lang="en">Coupleur 6ES7153-1AA03-0XB0</name>
         <name lang="it">Interfaccia 153-1AA03-0XB0</name>
         <name lang="fr">Coupleur 153-1AA03-0XB0</name>
         <name lang="pl">6ES7153-1AA03-0XB0</name>
         <name lang="es">Acoplador IM153-1AA03-0XB0</name>
         <name lang="cs">6ES7 153-1AA03-0XB0</name>
+        <name lang="nl">6ES7 153-1AA03-0XB0 interface</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,7 +6,8 @@
         <name lang="fr">TWDAM  .M3HT ; I2HT ; O1HT</name>
         <name lang="pl">TWDAM  .M3HT ; I2HT ; O1HT</name>
         <name lang="cs">TWDAM  .M3HT ; I2HT ; O1HT</name>
-	<name lang="es">TWDAM  .M3HT ; I2HT ; O1HT</name>
+        <name lang="es">TWDAM  .M3HT ; I2HT ; O1HT</name>
+        <name lang="nl">TWDAM  .M3HT ; I2HT ; O1HT</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

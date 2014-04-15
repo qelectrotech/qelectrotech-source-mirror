@@ -10,6 +10,7 @@
         <name lang="pl">Krok (output)</name>
         <name lang="es">Etapa de salida</name>
         <name lang="cs">Výstupní krok</name>
+        <name lang="nl">Uitgang stap</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

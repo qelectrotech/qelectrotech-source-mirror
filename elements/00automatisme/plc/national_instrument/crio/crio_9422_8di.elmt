@@ -6,6 +6,7 @@
         <name lang="pl">cRIO 9422 - ośmiokanałowy moduł wejść cyfrowych </name>
         <name lang="es">cRIO 9422 - 8 entradas digitales</name>
         <name lang="cs">cRIO 9422 - osmikanálový modul digitálních vstupů</name>
+        <name lang="nl">cRIO 9422 8 digitaal ingangen gescheiden</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

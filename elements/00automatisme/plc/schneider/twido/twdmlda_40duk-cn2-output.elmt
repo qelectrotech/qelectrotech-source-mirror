@@ -7,6 +7,7 @@
         <name lang="pl">TWDLMDA40DUK "CN2" (wejscia)</name>
         <name lang="es">TWDLMDA40DUK "CN2" (Salidas)</name>
         <name lang="cs">TWDLMDA40DUK "CN2" (výstupy)</name>
+        <name lang="nl">TWDLMDA40DUK "CN2" (Uitgangen)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

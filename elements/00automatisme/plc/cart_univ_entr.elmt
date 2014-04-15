@@ -7,6 +7,7 @@
         <name lang="pl">Karta wejść (8 wejść)</name>
         <name lang="cs">Datové vstupy (8 vstupů)</name>
         <name lang="es">Data entradas (8 entradas)</name>
+        <name lang="nl">Data ingangen (8 ingang)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -10,6 +10,7 @@
         <name lang="pl">Karta wyjść CD12</name>
         <name lang="es">CD12 tarjeta de salida</name>
         <name lang="cs">Karta CD12 výstupy</name>
+        <name lang="nl">CD12 uitgangskaart</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

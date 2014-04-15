@@ -6,6 +6,7 @@
         <name lang="pl">cRIO 9xxx - pusty moduł</name>
         <name lang="es">cRIO 9xxx - modulo libre</name>
         <name lang="cs">cRIO 9xxx - prázdný modul</name>
+        <name lang="nl">cRIO 9xxx - Lege module</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

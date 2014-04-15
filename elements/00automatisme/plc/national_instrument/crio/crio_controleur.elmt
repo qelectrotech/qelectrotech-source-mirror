@@ -6,6 +6,7 @@
         <name lang="pl">cRIO 9024 - sterownik czasu rzeczywistego</name>
         <name lang="es">cRIO 9024 - controlador en tiempo real</name>
         <name lang="cs">cRIO 9024 - řízení skutečného času</name>
+        <name lang="nl">cRIO 9024 - controller real-time</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

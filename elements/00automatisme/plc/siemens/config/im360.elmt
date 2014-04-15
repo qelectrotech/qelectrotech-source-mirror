@@ -7,6 +7,7 @@
         <name lang="pl">6ES7 360-3AA01-0AA0</name>
         <name lang="es">IM360 Emisor 6ES7 360-3AA01-0AA0</name>
         <name lang="cs">IM360 SEND 6ES7 360-3AA01-0AA0</name>
+        <name lang="nl">IM360 Zender 6ES7 360-3AA01-0AA0</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

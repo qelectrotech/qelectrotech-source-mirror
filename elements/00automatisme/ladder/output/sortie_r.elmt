@@ -11,6 +11,7 @@
         <name lang="pl">Wyjście (kasowanie bitu)</name>
         <name lang="es">Salida (reset)</name>
         <name lang="cs">Výstup (nastavit znovu)</name>
+        <name lang="nl">Uitgang (Reset)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

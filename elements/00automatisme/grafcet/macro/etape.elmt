@@ -10,6 +10,7 @@
         <name lang="pl">Krok makro</name>
         <name lang="es">Macro etapa</name>
         <name lang="cs">Makro krok</name>
+        <name lang="nl">Macro Stap</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

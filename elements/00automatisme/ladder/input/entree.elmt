@@ -11,6 +11,7 @@
         <name lang="pl">Wejście</name>
         <name lang="es">Entrada</name>
         <name lang="cs">Vstup</name>
+        <name lang="nl">Ingang</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

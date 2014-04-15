@@ -11,6 +11,7 @@
         <name lang="pl">Wyjście</name>
         <name lang="es">Salida</name>
         <name lang="cs">Výstup</name>
+        <name lang="nl">Uitgang</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

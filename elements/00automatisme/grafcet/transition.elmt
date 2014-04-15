@@ -10,6 +10,7 @@
         <name lang="pl">Tranzycja</name>
         <name lang="es">transición</name>
         <name lang="cs">Přechod</name>
+        <name lang="nl">Overgang</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

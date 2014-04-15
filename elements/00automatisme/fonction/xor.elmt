@@ -11,6 +11,7 @@
         <name lang="pl">XOR</name>
         <name lang="es">O exclusiva (XOR)</name>
         <name lang="cs">NEBO výhradní (XOR)</name>
+        <name lang="nl">XOR exclusief OF</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

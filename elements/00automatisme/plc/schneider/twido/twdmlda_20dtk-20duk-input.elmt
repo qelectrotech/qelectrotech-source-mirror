@@ -6,7 +6,8 @@
         <name lang="fr">TWDLMDA ; 20DTK,20DUK (entrées)</name>
         <name lang="pl">TWDLMDA ; 20DTK,20DUK (wejścia)</name>
         <name lang="cs">TWDLMDA ; 20DTK,20DUK (výstupy)</name>
-        <name lang="es">TWDLMDA ; 20DTK,20DUK (Entradas)</name>
+        <name lang="es">TWDLMDA ; 20DTK,20DUK (Entradas)</name
+        <name lang="nl">TWDLMDA ; 20DTK,20DUK (Ingangen)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

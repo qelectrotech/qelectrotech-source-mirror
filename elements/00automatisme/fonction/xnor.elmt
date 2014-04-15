@@ -11,6 +11,7 @@
         <name lang="pl">XNOR</name>
         <name lang="es">NO-O exclusiva (XNOR)</name>
         <name lang="cs"> NE-NEBO výhradní (XNOR)</name>
+        <name lang="nl">XNOR exclusief OF NIET</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

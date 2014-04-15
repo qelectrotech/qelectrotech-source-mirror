@@ -11,6 +11,7 @@
         <name lang="pl">Wejscie (negacja logiczna)</name>
         <name lang="es">Entrada (lógica negativa)</name>
         <name lang="cs">Vstup (záporná logika)</name>
+        <name lang="nl">Ingang (negatieve Logica)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

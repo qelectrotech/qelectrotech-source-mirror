@@ -3,12 +3,13 @@
         <name lang="ar">واجهة S550</name>
         <name lang="pt">Unidade de telemetria S550</name>
         <name lang="el">Τερματικό S550</name>
-        <name lang="en">Facade S550</name>
+        <name lang="en">Frontview S550</name>
         <name lang="it">Frontale S550</name>
         <name lang="fr">Façade S550</name>
         <name lang="pl">Lokalna jednostka telemetryczna S550</name>
         <name lang="es">Facade S550</name>
-        <name lang="cs">Místní telemetrická jednotka S550</name>
+        <name lang="cs">Místní telemetrick jednotka S550</name>
+        <name lang="nl">Voorzijde S550 </name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

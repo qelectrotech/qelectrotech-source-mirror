@@ -7,6 +7,7 @@
         <name lang="pl">Karta wyjść (8 wyjść)</name>
         <name lang="cs">Datové výstupy (8 výstupů)</name>
         <name lang="es">Data salidas (8 Salidas)</name>
+        <name lang="nl">Data Uitgangen (8 uitgangen)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

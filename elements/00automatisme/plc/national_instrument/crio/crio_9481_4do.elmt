@@ -6,6 +6,7 @@
         <name lang="pl">cRIO - czterokanałowy moduł wyjść przekaźnikowych</name>
         <name lang="es">cRIO 9481 relay 4 salidas 2A</name>
         <name lang="cs">cRIO 9481 4 výstupy relé 2A</name>
+        <name lang="nl">cRIO 9481 4 relais uitgangen 2A gescheiden</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

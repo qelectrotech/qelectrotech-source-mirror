@@ -10,6 +10,7 @@
         <name lang="pl">Wejście adresowe</name>
         <name lang="es">Reporte de entrada</name>
         <name lang="cs">Hlášení vstupu</name>
+        <name lang="nl">Ingang Raport</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

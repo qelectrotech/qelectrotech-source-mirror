@@ -9,6 +9,7 @@
         <name lang="pl">CPU 312 IFM   DI 10/DO 6xDC24V</name>
         <name lang="es">CPU 312 IFM   DI 10/DO 6xDC24V</name>
         <name lang="cs">CPU 312 IFM   DI 10/DO 6xDC24V</name>
+        <name lang="nl">CPU 312 IFM   DI 10/DO 6xDC24V</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

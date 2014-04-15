@@ -11,6 +11,7 @@
         <name lang="pl">Wejście (zbocze opadające)</name>
         <name lang="es">Entrada (descendente)</name>
         <name lang="cs">Vstup (klesající)</name>
+        <name lang="nl">Ingang (neergaande flank)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

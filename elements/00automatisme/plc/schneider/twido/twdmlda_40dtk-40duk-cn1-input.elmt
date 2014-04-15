@@ -7,6 +7,7 @@
         <name lang="pl">TWDLMDA ; 40DTK-CN1,40DUK-CN1 (wejścia)</name>
         <name lang="es">TWDLMDA ; 40DTK-CN1,40DUK-CN1 (Entradas)</name>
         <name lang="cs">TWDLMDA ; 40DTK-CN1,40DUK-CN1 (výstupy)</name>
+        <name lang="nl">TWDLMDA ; 40DTK-CN1,40DUK-CN1 (Ingangen)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

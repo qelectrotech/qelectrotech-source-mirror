@@ -10,6 +10,7 @@
         <name lang="pl">Krok</name>
         <name lang="es">Etapa</name>
         <name lang="cs">Krok</name>
+        <name lang="nl">Stap</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
