@@ -1,12 +1,13 @@
 <definition width="80" version="0.3" hotspot_x="36" hotspot_y="72" height="160" type="element" orientation="dyyy">
     <names>
         <name lang="ar">RESEAU STATION FIN</name>
-        <name lang="en">RESEAU STATION FIN</name>
+        <name lang="en">Network Station Last</name>
         <name lang="it">RETE Stazione finale</name>
         <name lang="fr">RESEAU STATION FIN</name>
         <name lang="pl">RESEAU STATION FIN</name>
         <name lang="es">Estación de Red final</name>
         <name lang="cs">RESEAU STATION FIN</name>
+        <name lang="nl">Netwerk Station laatsteRESEAU STATION FIN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

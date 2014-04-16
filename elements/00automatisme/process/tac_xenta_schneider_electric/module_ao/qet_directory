@@ -5,7 +5,8 @@
         <name lang="ar">وحدة خرج تماثلي</name>
         <name lang="pl">Moduły wyjść analogowych</name>
         <name lang="cs">Moduly analogových výstupů</name>
-        <name lang="es">Modulo análogo de salidas</name>
+        <name lang="es">Modulo análogo de salidas</name> 
         <name lang="it">Modulo di uscita analogica</name>
+        <name lang="nl">Analoge Uitgangen</name>
     </names>
 </qet-directory>

@@ -5,6 +5,7 @@
         <name lang="fr">WIT 6.2 Unité centrale</name>
         <name lang="pl">WIT 6.2 CPU</name>
         <name lang="cs">WIT 6.2 CPU</name>
+        <name lang="nl">WIT 6.2 CPU</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

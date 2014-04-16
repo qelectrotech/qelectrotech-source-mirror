@@ -7,6 +7,7 @@
         <name lang="fr">Depart moteur</name>
         <name lang="pl">Rozruch silnika</name>
         <name lang="cs">Spuštění motoru</name>
+        <name lang="nl">Overstroomschakelaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

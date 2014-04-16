@@ -1,13 +1,14 @@
 <definition width="80" version="0.3" hotspot_x="9" hotspot_y="35" height="100" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="ar">Endress+Hauser مجس حرارة TMT180</name>
-        <name lang="el">Endress+Hauser - Αισθητήρας θερμοκρασίας TMT180</name>
-        <name lang="en">Temperature sensor Endress+Hauser TMT180</name>
-        <name lang="it">Sonda di temperatura Endress+Hauser TMT180</name>
-        <name lang="fr">Endress+Hauser Sonde Température TMT180</name>
-        <name lang="pl">Endress+Hauser - Przetwornik temperatury TMT180</name>
-        <name lang="es">Endress+Hauser TMT180 Sensor de temperatura</name>
-        <name lang="cs">Endress+Hauser - Teplotní čidlo TMT180</name>
+        <name lang="ar">مجس حرارة TMT180</name>
+        <name lang="el">Αισθητήρας θερμοκρασίας TMT180</name>
+        <name lang="en">Temperature sensor TMT180</name>
+        <name lang="it">Sonda di temperatura TMT180</name>
+        <name lang="fr">Sonde Température TMT180</name>
+        <name lang="pl">Przetwornik temperatury TMT180</name>
+        <name lang="es">TMT180 Sensor de temperatura</name>
+        <name lang="cs">Teplotní čidlo TMT180</name>
+        <name lang="nl">Temperatuur sensor TMT180</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

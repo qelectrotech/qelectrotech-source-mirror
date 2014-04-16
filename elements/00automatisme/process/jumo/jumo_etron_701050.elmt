@@ -1,10 +1,11 @@
 <definition width="140" version="0.3" hotspot_x="75" hotspot_y="44" height="100" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="en">jumo_eTRON 701050</name>
-        <name lang="fr">jumo  eTRON 701050</name>
+        <name lang="en">jumo eTRON 701050</name>
+        <name lang="fr">jumo eTRON 701050</name>
         <name lang="it">JUMO eTRON 701050 Termostato digitale</name>
-        <name lang="pl">JUMO eTRON 701050</name>
+        <name lang="pl">JUMO eTRON 701050</name>                     
         <name lang="cs">JUMO eTRON 701050 digitální termostat</name>
+        <name lang="nl">JUMO eTRON 701050 Thermostaat</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

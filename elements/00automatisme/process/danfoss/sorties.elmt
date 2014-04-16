@@ -2,12 +2,13 @@
     <names>
         <name lang="ar">مخارج AKCC 550</name>
         <name lang="el">AKCC 550 - έξοδοι</name>
-        <name lang="en">Outputs AKCC 550</name>
+        <name lang="en">AKCC 550 Outputs</name>
         <name lang="it">AKCC 550 uscite</name>
-        <name lang="fr">Sorties AKCC 550</name>
+        <name lang="fr">AKCC 550 Sorties</name>
         <name lang="pl">AKCC 550 - wyjścia</name>
-        <name lang="es">AKCC 550 salidas</name>
+        <name lang="es">AKCC 550 salidas</name>  
         <name lang="cs">AKCC 550 - výstupy</name>
+        <name lang="nl">AKCC 550 - uitgangen 3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

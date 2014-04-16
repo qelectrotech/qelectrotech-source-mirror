@@ -1,10 +1,11 @@
 <definition width="150" version="0.4" hotspot_x="75" hotspot_y="74" height="300" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="en">Endress&amp;Hauser Indumax CLS52</name>
-        <name lang="it">Endress&amp;Hauser Indumax CLS52</name>
-        <name lang="fr">Endress&amp;Hauser Indumax CLS52</name>
-        <name lang="pl">Endress+Hauser Indumax CLS52</name>
-        <name lang="cs">Endress&amp;Hauser Indumax CLS52</name>
+        <name lang="en">Indumax CLS52</name>
+        <name lang="it">Indumax CLS52</name>
+        <name lang="fr">Indumax CLS52</name>
+        <name lang="pl">Indumax CLS52</name>    
+        <name lang="cs">Indumax CLS52</name>
+        <name lang="nl">Indumax CLS52</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

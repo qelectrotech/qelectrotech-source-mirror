@@ -5,8 +5,9 @@
         <name lang="it">Regolatore di temperatura West 8010+</name>
         <name lang="fr">West Indicateur 8010+</name>
         <name lang="pl">WEST - Regulator temperatury 8010 +</name>
-        <name lang="es">West Indicador 8010+</name>
+        <name lang="es">West Indicador 8010+</name>            
         <name lang="cs">WEST - Regulátor teploty 8010 +</name>
+        <name lang="nl">Regelaar 8010 +</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

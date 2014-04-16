@@ -3,12 +3,13 @@
         <name lang="ar">محول قياسات</name>
         <name lang="pt">Conversor de temperatura</name>
         <name lang="el">Μετατροπέας μέτρησης θερμοκρασίας</name>
-        <name lang="en">Measure converter</name>
+        <name lang="en">Measure converter Pt100/TC</name>
         <name lang="it">Convertitore di misura</name>
-        <name lang="fr">Convertisseur de mesure</name>
+        <name lang="fr">Convertisseur de mesure Pt100/TC</name>
         <name lang="pl">Przetwornik temperatury</name>
         <name lang="es">Convertidor de temperatura</name>
         <name lang="cs">Převodník měření</name>
+        <name lang="nl">Converter temperatuur Pt100/TC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

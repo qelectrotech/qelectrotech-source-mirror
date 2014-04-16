@@ -6,8 +6,9 @@
         <name lang="it">AKCC550 ingressi</name>
         <name lang="fr">AKCC550 entrées</name>
         <name lang="pl">AKCC550 - wejścia 1</name>
-        <name lang="es">AKCC550 entradas</name>
+        <name lang="es">AKCC550 entradas</name>  
         <name lang="cs">AKCC550 - vstupy 1</name>
+        <name lang="nl">AKCC550 regelaar ingangen 1</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

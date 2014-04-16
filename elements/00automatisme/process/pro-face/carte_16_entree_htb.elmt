@@ -4,8 +4,9 @@
         <name lang="it">Scheda 16DI per modulo HTB</name>
         <name lang="fr">Carte 16DI tete HTB</name>
         <name lang="pl">Karta 16 DI (moduł THB)</name>
-        <name lang="es">Tarjeta 16DI modulo HTB</name>
+        <name lang="es">Tarjeta 16DI modulo HTB</name> 
         <name lang="cs">Karta 16DI pro modul HTB</name>
+        <name lang="nl">Module 16 digitaal ingang HTB</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="pl">Warystor</name>
         <name lang="cs">Varistor</name>
         <name lang="it">Varistore Metal-oxide</name>
+        <name lang="nl">Varistor Metal-oxide</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

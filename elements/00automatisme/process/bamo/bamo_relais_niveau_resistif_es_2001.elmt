@@ -1,12 +1,13 @@
 <definition width="410" version="0.3" hotspot_x="24" hotspot_y="15" height="110" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">Αισθητήρας στάθμης ES 2001Bamo</name>
-        <name lang="en">Relay level resistive ES 2001Bamo</name>
+        <name lang="en">Relay level resistive ES 2001</name>
         <name lang="it">Relè di livello resistivo BAMO ES 2001</name>
-        <name lang="fr">Relais niveau resistif ES 2001Bamo</name>
+        <name lang="fr">Relais niveau resistif ES 2001</name>
         <name lang="pl">Przekaźnik kontroli poziomu ES 2001Bamo</name>
         <name lang="es">Relevador de nivel resistivo</name>
         <name lang="cs">Rezistivní úroveň relé ES 2001Bamo</name>
+        <name lang="nl">niveau weerstand relais ES2001</name>
     </names>
     <informations>Rafart Renaud</informations>
     <description>

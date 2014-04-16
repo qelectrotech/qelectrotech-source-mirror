@@ -1,12 +1,13 @@
 <definition width="750" version="0.3" hotspot_x="0" hotspot_y="0" height="250" type="element" orientation="dnnn">
     <names>
-        <name lang="ar">Satchwell MN 450 (صفحة 2/1 )</name>
-        <name lang="en">Satchwell MN 450 ( 1/2)</name>
-        <name lang="fr">Satchwell MN 450 (page 1/2)</name>
-        <name lang="pl">Satchwell MN 450 (część 1/2)</name>
-        <name lang="cs">Satchwell MN 450 (strana 1/2)</name>
-        <name lang="es">Satchwell MN 450 ( pagina 1/2)</name>
-        <name lang="it">Satchwell MN 450 (pagina 1/2)</name>
+        <name lang="ar">MN 450 (صفحة 2/1 )</name>
+        <name lang="en">MN 450 ( 1/2)</name>
+        <name lang="fr">MN 450 (page 1/2)</name>
+        <name lang="pl">MN 450 (część 1/2)</name>
+        <name lang="cs">MN 450 (strana 1/2)</name>
+        <name lang="es">MN 450 ( pagina 1/2)</name>
+        <name lang="it">MN 450 (pagina 1/2)</name>
+        <name lang="nl">MN 450 (deel 1/2)</name>
     </names>
     <informations>Auteur : C V C 71&#xd;
 Langue : Fr&#xd;

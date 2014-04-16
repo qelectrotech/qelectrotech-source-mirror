@@ -6,6 +6,7 @@
         <name lang="pl">Wyłącznik</name>
         <name lang="cs">Čtyřpólový jistič</name>
         <name lang="it">Int. Aut. Magneto-termico 4P</name>
+        <name lang="nl">Lastscheider 4</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

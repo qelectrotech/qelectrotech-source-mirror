@@ -6,6 +6,7 @@
         <name lang="fr">Porte fusible 2P</name>
         <name lang="pl">Odłącznik bezpiecznikowy</name>
         <name lang="cs">Tavný odpojovač</name>
+        <name lang="nl">Zekeringscheider 2</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

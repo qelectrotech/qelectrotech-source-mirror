@@ -9,6 +9,7 @@
         <name lang="pl">OMRON 7H EC</name>
         <name lang="es">OMRON 7H EC</name>
         <name lang="cs">OMRON 7H EC</name>
+        <name lang="nl">OMRON 7H EC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

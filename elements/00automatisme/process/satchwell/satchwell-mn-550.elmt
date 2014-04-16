@@ -1,12 +1,13 @@
 <definition width="750" version="0.3" hotspot_x="0" hotspot_y="0" height="250" type="element" orientation="dnnn">
     <names>
-        <name lang="ar">Satchwell MN 550 (صفحة 3/1)</name>
-        <name lang="en">Satchwell MN 550 ( 1/3)</name>
-        <name lang="fr">Satchwell MN 550 (page 1/3)</name>
-        <name lang="pl">Satchwell MN 550 (część 1/3)</name>
-        <name lang="cs">Satchwell MN 550 ( 1/3)</name>
-        <name lang="es">Satchwell MN 550 ( pagina 1/3)</name>
-        <name lang="it">Satchwell MN 550 (pagina 1/3)</name>
+        <name lang="ar">MN 550 (صفحة 3/1)</name>
+        <name lang="en">MN 550 ( 1/3)</name>
+        <name lang="fr">MN 550 (page 1/3)</name>
+        <name lang="pl">MN 550 (część 1/3)</name>
+        <name lang="cs">MN 550 ( 1/3)</name>
+        <name lang="es">MN 550 ( pagina 1/3)</name>
+        <name lang="it">MN 550 (pagina 1/3)</name>
+        <name lang="nl">MN 550 (deel 1/3)</name>
     </names>
     <informations>Auteur : C V C 71&#xd;
 Langue : Fr&#xd;

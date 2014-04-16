@@ -5,7 +5,8 @@
         <name lang="ar">وحدات التحكم بالطاقة</name>
         <name lang="pl">Moduły kontroli energii</name>
         <name lang="cs">Moduly ovládání energie</name>
-        <name lang="es">Módulos de control de energía</name>
+        <name lang="es">Módulos de control de energía</name>  
         <name lang="it">Moduli di controllo di energia</name>
+        <name lang="nl">Energie Modules regeling</name>
     </names>
 </qet-directory>

@@ -1,12 +1,13 @@
 <qet-directory>
     <names>
-        <name lang="en">Endress hauser</name>
-        <name lang="fr">Endress hauser</name>
+        <name lang="en">Endress+hauser</name>
+        <name lang="fr">Endress+hauser</name>
         <name lang="pl">Endress+hauser</name>
-        <name lang="cs">Endress hauser</name>
-        <name lang="pt">Endress hauser</name>
-        <name lang="es">Endress hauser</name>
-        <name lang="it">Endress hauser</name>
-        <name lang="el">Endress hauser</name>
+        <name lang="cs">Endress+hauser</name>
+        <name lang="pt">Endress+hauser</name>
+        <name lang="es">Endress+hauser</name>
+        <name lang="it">Endress+hauser</name>
+        <name lang="el">Endress+hauser</name>
+        <name lang="nl">Endress+hauser</name>
     </names>
 </qet-directory>

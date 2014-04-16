@@ -1,13 +1,14 @@
 <definition width="230" version="0.3" hotspot_x="15" hotspot_y="35" height="110" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="ar">Endress+Hauser - Bitop L</name>
-        <name lang="el">Endress+Hauser - Bitop L</name>
-        <name lang="en">Endress+Hauser Bitop L</name>
-        <name lang="it">Endress+Hauser Bitop L</name>
-        <name lang="fr">Endress+Hauser Bitop L</name>
-        <name lang="pl">Endress+Hauser - Bitop L</name>
-        <name lang="es">Endress+Hauser - Bitop L</name>
-        <name lang="cs">Endress+Hauser - Bitop L</name>
+        <name lang="ar">Bitop L</name>
+        <name lang="el">Bitop L</name>
+        <name lang="en">Bitop L</name>
+        <name lang="it">Bitop L</name>
+        <name lang="fr">Bitop L</name>
+        <name lang="pl">Bitop L</name>
+        <name lang="es">Bitop L</name>
+        <name lang="cs">Bitop L</name>
+        <name lang="nl">Bitop L</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

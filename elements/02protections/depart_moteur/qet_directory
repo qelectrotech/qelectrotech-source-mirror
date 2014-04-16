@@ -8,5 +8,6 @@
         <name lang="cs">Spuštění motoru</name>
         <name lang="it">Partenza motori</name>
         <name lang="el">Εκκίνηση μοτέρ</name>
+        <name lang="nl">Start Motor</name>
     </names>
 </qet-directory>

@@ -5,7 +5,8 @@
         <name lang="ar">وحدة توزيع</name>
         <name lang="pl">Moduły wzmacniaczy</name>
         <name lang="cs">Moduly relé</name>
-        <name lang="es">Modulo repetidor</name>
+        <name lang="es">Modulo repetidor</name> 
         <name lang="it">Modulo repetitore</name>
+        <name lang="nl">Herhaler</name>
     </names>
 </qet-directory>

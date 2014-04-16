@@ -1,13 +1,14 @@
 <definition width="150" version="0.3" hotspot_x="12" hotspot_y="39" height="80" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="ar">Endress+Hauser - Omnigrad 2653</name>
-        <name lang="el">Endress+Hauser - Omnigrad 2653</name>
-        <name lang="en">Endress+Hauser - Omnigrad 2653</name>
-        <name lang="it">Endress+Hauser Omnigrad 2653</name>
-        <name lang="fr">Omnigrad E&amp;H 2653</name>
-        <name lang="pl">Endress+Hauser - Omnigrad 2653</name>
-        <name lang="es">Endress+Hauser - Omnigrad 2653</name>
-        <name lang="cs">Endress+Hauser - Omnigrad 2653</name>
+        <name lang="ar">Omnigrad 2653</name>
+        <name lang="el">Omnigrad 2653</name>
+        <name lang="en">Omnigrad 2653</name>
+        <name lang="it">Omnigrad 2653</name>
+        <name lang="fr">Omnigrad 2653</name>
+        <name lang="pl">Omnigrad 2653</name>
+        <name lang="es">Omnigrad 2653</name>
+        <name lang="cs">Omnigrad 2653</name>
+        <name lang="nl">Omnigrad 2653</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

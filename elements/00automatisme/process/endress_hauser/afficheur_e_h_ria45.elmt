@@ -1,13 +1,14 @@
 <definition width="290" version="0.3" hotspot_x="15" hotspot_y="45" height="120" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="ar">Endress+Hauser-RIA45</name>
-        <name lang="el">Endress+Hauser - RIA45</name>
-        <name lang="en">Endress+Hauser RIA45</name>
-        <name lang="it">Endress+Hauser RIA45</name>
-        <name lang="fr">Endress+Hauser RIA45</name>
-        <name lang="pl">Endress+Hauser - RIA45</name>
-        <name lang="es">Endress+Hauser - RIA45</name>
-        <name lang="cs">Endress+Hauser - RIA45</name>
+        <name lang="ar">RIA45</name>
+        <name lang="el">RIA45</name>
+        <name lang="en">RIA45</name>
+        <name lang="it">RIA45</name>
+        <name lang="fr">RIA45</name>
+        <name lang="pl">RIA45</name>
+        <name lang="es">RIA45</name>
+        <name lang="cs">RIA45</name>
+        <name lang="nl">RIA45</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

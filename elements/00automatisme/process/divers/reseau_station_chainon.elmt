@@ -1,12 +1,13 @@
 <definition width="80" version="0.3" hotspot_x="35" hotspot_y="72" height="160" type="element" orientation="dyyy">
     <names>
         <name lang="ar">RESEAU STATION CHAINON</name>
-        <name lang="en">RESEAU STATION CHAINON</name>
+        <name lang="en">Network Station middle</name>
         <name lang="it">RETE Stazione intermedia</name>
         <name lang="fr">RESEAU STATION CHAINON</name>
         <name lang="pl">RESEAU STATION CHAINON</name>
         <name lang="es">CHAINON Red de estaciones</name>
         <name lang="cs">RESEAU STATION CHAINON</name>
+        <name lang="nl">Netwerk station midden</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

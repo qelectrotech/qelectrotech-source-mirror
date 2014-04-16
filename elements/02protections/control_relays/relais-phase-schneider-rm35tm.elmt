@@ -5,6 +5,7 @@
         <name lang="fr">Relais Phase RM35TM</name>
         <name lang="pl">Przekaźnik zabezpieczeniowy RM35TM</name>
         <name lang="cs">Ovládání fáze - fázové relé RM35TM</name>
+        <name lang="nl">fasebewaking RM35TM</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,13 +1,14 @@
 <definition width="180" version="0.3" hotspot_x="15" hotspot_y="34" height="70" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="ar">Endress+Hauser مجس موصليّة Indiumax H CLS54</name>
-        <name lang="el">E+H -Αισθητήρας αγωγιμότητας indiumax H CLS54</name>
-        <name lang="en">Endress+Hauser H CLS54 sensor conductivity Indiumax</name>
-        <name lang="it">Sensore di conduttività Endress+Hauser Indiumax CLS54</name>
-        <name lang="fr">Endress+Hauser Sonde conductivité Indiumax H CLS54</name>
-        <name lang="pl">Endress+Hauser - Indukcyjna sonda przewodności H CLS54</name>
-        <name lang="es">Endress + Hauser Indiumax H CLS54 sensor de conductividad</name>
-        <name lang="cs">Endress+Hauser - Čidlo vodivosti Indiumax H CLS54</name>
+        <name lang="ar">مجس موصليّة Indumax H CLS54</name>
+        <name lang="el">Αισθητήρας αγωγιμότητας indumax H CLS54</name>
+        <name lang="en">H CLS54 sensor conductivity Indumax</name>
+        <name lang="it">Sensore di conduttività Indumax CLS54</name>
+        <name lang="fr">Sonde conductivité Indumax H CLS54</name>
+        <name lang="pl">Indukcyjna sonda przewodności H CLS54</name>
+        <name lang="es">Indumax H CLS54 sensor de conductividad</name>
+        <name lang="cs">Čidlo vodivosti Indumax H CLS54</name>
+        <name lang="nl">Geleidbaarheidssensor Indumax H CLS54</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,10 +1,11 @@
 <definition width="160" version="0.3" hotspot_x="65" hotspot_y="75" height="150" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="en">Endress&amp;HAUSER Pressure Sensor DeltaPilot S</name>
-        <name lang="fr">Endress&amp;HAUSER Sonde Pression DeltaPilot S</name>
-        <name lang="it">Sonda di pressione Endress&amp;HAUSER DeltaPilot S</name>
+        <name lang="en">Pressure Sensor DeltaPilot S</name>
+        <name lang="fr">Sonde Pression DeltaPilot S</name>
+        <name lang="it">Sonda di pressione DeltaPilot S</name>
         <name lang="pl">Czujnik ciśnienia Deltapilot S</name>
         <name lang="cs">Tlakové čidlo Deltapilot S</name>
+        <name lang="nl">Druksensor Deltapilot S</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

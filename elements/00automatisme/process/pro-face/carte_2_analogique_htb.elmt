@@ -6,6 +6,7 @@
         <name lang="pl">Karta 2 AI (moduł THB)</name>
         <name lang="es">Tarjeta 2 AI modulo HTB</name>
         <name lang="cs">Karta 2AI pro modul HTB</name>
+        <name lang="nl">Module 2 Analoog Ingang HTB</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

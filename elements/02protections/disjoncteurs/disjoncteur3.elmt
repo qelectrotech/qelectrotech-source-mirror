@@ -10,6 +10,7 @@
         <name lang="pl">Wyłącznik</name>
         <name lang="es">Disyuntor</name>
         <name lang="cs">Jistič</name>
+        <name lang="nl">Lastscheider 2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

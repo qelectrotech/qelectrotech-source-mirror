@@ -9,6 +9,7 @@
         <name lang="pl">Przekaźnik termiczny</name>
         <name lang="es">Relé térmico</name>
         <name lang="cs">Tepelné relé</name>
+        <name lang="nl">Thermisch blok </name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

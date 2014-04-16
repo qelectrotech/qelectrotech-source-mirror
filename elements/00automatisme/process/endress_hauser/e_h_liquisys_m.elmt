@@ -1,13 +1,14 @@
 <definition width="490" version="0.3" hotspot_x="16" hotspot_y="35" height="130" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="ar">Endress+Hauser Liquisys M</name>
-        <name lang="el">Endress+Hauser Liquisys M</name>
-        <name lang="en">Endress+Hauser Liquisys M</name>
-        <name lang="it">Endress+Hauser Liquisys M</name>
-        <name lang="fr">Endress+Hauser Liquisys M</name>
-        <name lang="pl">Endress+Hauser - Przetwornik pomiarowy mętności Liquisys M</name>
-        <name lang="es">Endress+Hauser Liquisys M</name>
-        <name lang="cs">Endress+Hauser Liquisys M</name>
+        <name lang="ar">Liquisys M</name>
+        <name lang="el">Liquisys M</name>
+        <name lang="en">Liquisys M</name>
+        <name lang="it">Liquisys M</name>
+        <name lang="fr">Liquisys M</name>
+        <name lang="pl">Przetwornik pomiarowy mętności Liquisys M</name>
+        <name lang="es">Liquisys M</name>
+        <name lang="cs">Liquisys M</name>
+        <name lang="nl">Liquisys M</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,12 +1,13 @@
 <definition width="750" version="0.3" hotspot_x="0" hotspot_y="0" height="250" type="element" orientation="dnnn">
     <names>
-        <name lang="ar">Satchwell MN 650 (صفحة 4/1)</name>
-        <name lang="en">Satchwell MN 650 ( 1/4)</name>
-        <name lang="fr">Satchwell MN 650 (page 1/4)</name>
-        <name lang="pl">Satchwell MN 650 (część 1/4)</name>
-        <name lang="cs">Satchwell MN 650 (strana 1/4)</name>
-        <name lang="es">Satchwell MN 650 ( pagina 1/4)</name>
-        <name lang="it">Satchwell MN 650 (pagina 1/4)</name>
+        <name lang="ar">MN 650 (صفحة 4/1)</name>
+        <name lang="en">MN 650 ( 1/4)</name>
+        <name lang="fr">MN 650 (page 1/4)</name>
+        <name lang="pl">MN 650 (część 1/4)</name>
+        <name lang="cs">MN 650 (strana 1/4)</name>
+        <name lang="es">MN 650 ( pagina 1/4)</name>
+        <name lang="it">MN 650 (pagina 1/4)</name>
+        <name lang="nl">MN 650 (deel 1/4)</name>
     </names>
     <informations>Auteur : C V C 71&#xd;
 Langue : Fr&#xd;

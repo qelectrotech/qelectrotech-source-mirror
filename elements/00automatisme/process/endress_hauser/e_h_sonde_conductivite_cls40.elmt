@@ -1,13 +1,14 @@
 <definition width="180" version="0.3" hotspot_x="15" hotspot_y="34" height="70" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="ar">Endress&amp;Hause  مجس موصليّة  CLS40</name>
-        <name lang="el">Endress+Hauser - Αισθητήρας αγωγιμότητας CLS40</name>
-        <name lang="en">Endress+Hauser conductivity sensor CLS40</name>
-        <name lang="it">Endress+Hauser sensore conduttività CLS40</name>
-        <name lang="fr">Endress+Hauser Sonde conductivité CLS40</name>
-        <name lang="pl">Endress+Hauser - Czujnik przewodności CLS40</name>
-        <name lang="es">Endress+Hauser CLS40 Sensor de conductividad</name>
-        <name lang="cs">Endress+Hauser - Čidlo vodivosti  CLS40</name>
+        <name lang="ar">مجس موصليّة  CLS40</name>
+        <name lang="el">Αισθητήρας αγωγιμότητας CLS40</name>
+        <name lang="en">conductivity sensor CLS40</name>
+        <name lang="it">sensore conduttività CLS40</name>
+        <name lang="fr">Sonde conductivité CLS40</name>
+        <name lang="pl">Czujnik przewodności CLS40</name>
+        <name lang="es">CLS40 Sensor de conductividad</name>
+        <name lang="cs">Čidlo vodivosti  CLS40</name>
+        <name lang="nl">Geleidbaarheids sensor CLS40</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

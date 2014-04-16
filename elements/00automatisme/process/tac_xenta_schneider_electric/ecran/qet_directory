@@ -7,5 +7,6 @@
         <name lang="cs">Obrazovka</name>
         <name lang="es">Pantalla</name>
         <name lang="it">Schermo</name>
+        <name lang="nl">Scherm</name>
     </names>
 </qet-directory>
