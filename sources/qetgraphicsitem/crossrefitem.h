@@ -54,16 +54,16 @@ class CrossRefItem : public QGraphicsObject
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *e);
 
 	private:
-	void setUpBoundingRect(QPainter &painter);
+	void setUpCrossBoundingRect();
 	void fillCrossRef(QPainter &painter);
-	void fillExtraInfo(QPainter &painter);
+	void AddExtraInfo(QPainter &painter);
 
 	//Attributes
 	private:
-	Element *element_; //element to display the cross reference
-	QRectF bounding_rect_ , text_rect_;
-	QPicture drawing_;
-	QPainterPath shape_path_;
+	Element		  *m_element; //element to display the cross reference
+	QRectF		   m_bounding_rect;
+	QPicture	   m_drawing;
+	QPainterPath   m_shape_path;
 	XRefProperties m_properties;
 };
 
