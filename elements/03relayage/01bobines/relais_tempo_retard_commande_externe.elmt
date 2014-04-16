@@ -5,6 +5,7 @@
         <name lang="fr">Relais temporisé repos à commande externe</name>
         <name lang="pl">Przekaźnik z opuźnionym powrotem, z wejściem sterującym</name>
         <name lang="cs">Relé zpoděné vnějším příkazem</name>
+        <name lang="el">Πηνίο καθυστέρησης απενεργοποίησης με εξωτερική εντολή</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
