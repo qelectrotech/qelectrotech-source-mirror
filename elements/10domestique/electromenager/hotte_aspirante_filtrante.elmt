@@ -7,6 +7,7 @@
         <name lang="fr">Hotte aspirante filtrante</name>
         <name lang="pl">Okap z wentylatorem i filtrem</name>
         <name lang="cs">Odsávač par s filtrem</name>
+        <name lang="nl">Afzuigkap</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

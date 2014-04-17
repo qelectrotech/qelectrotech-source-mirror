@@ -11,6 +11,7 @@ unipolaire
 </name>
         <name lang="pl">Łącznik z ograniczonym czasem zamknięcia</name>
         <name lang="cs">Jednopólový časový spínač</name>
+        <name lang="nl">Schakelaar tijd</name>
     </names>
     <informations>EN 60617: 11-14-03</informations>
     <description>

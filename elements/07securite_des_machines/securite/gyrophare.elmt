@@ -7,6 +7,7 @@
         <name lang="fr">Gyrophare</name>
         <name lang="pl">Sygnalizator świetlny napędzany silnikiem</name>
         <name lang="cs">Blikající světlo</name>
+        <name lang="nl">Lamp Alarm</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

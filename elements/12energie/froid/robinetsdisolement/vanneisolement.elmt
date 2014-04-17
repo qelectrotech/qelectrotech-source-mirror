@@ -7,6 +7,7 @@
         <name lang="fr">Vanne d'isolement</name>
         <name lang="pl">Zawór odcinający</name>
         <name lang="cs">Izolační ventil</name>
+        <name lang="nl">Isolatieklep</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

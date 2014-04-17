@@ -7,6 +7,7 @@
         <name lang="fr">Entrée Eau Froide ECS</name>
         <name lang="pl">Przyłącze zimnej wody użytkowej</name>
         <name lang="cs">Přívod studené užitkové vody</name>
+        <name lang="nl">Koud water aanvoer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

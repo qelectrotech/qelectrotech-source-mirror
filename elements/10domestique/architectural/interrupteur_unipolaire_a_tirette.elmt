@@ -8,6 +8,7 @@
         <name lang="fr">Interrupteur unipolaire à tirette</name>
         <name lang="pl">Łącznik pociągany</name>
         <name lang="cs">Tahací jednopólový vypínač</name>
+        <name lang="nl">Schakelaar met trekkoord</name>
     </names>
     <informations>EN 60617: 11-14-09</informations>
     <description>

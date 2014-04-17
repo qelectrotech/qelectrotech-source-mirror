@@ -6,6 +6,7 @@
         <name lang="pl">Zawór kątowy (prawy)</name>
         <name lang="cs">Regulační uzávěr (pravý)</name>
         <name lang="it">Raccordo DX</name>
+        <name lang="nl">Elleboog</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

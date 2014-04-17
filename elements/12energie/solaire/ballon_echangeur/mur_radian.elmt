@@ -6,6 +6,7 @@
         <name lang="pl">Grzejnik ścienny</name>
         <name lang="cs">Nástěnné topné těleso</name>
         <name lang="it">Parete radiante</name>
+        <name lang="nl">Muur verwarming</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

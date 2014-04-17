@@ -6,6 +6,7 @@
         <name lang="pl">Ogrzewanie ścienne</name>
         <name lang="cs">Stěnový ohřev</name>
         <name lang="it">Riscaldatore a parete</name>
+        <name lang="nl">Muur verwarming</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

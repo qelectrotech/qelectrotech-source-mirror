@@ -2,11 +2,12 @@
     <names>
         <name lang="ar">مروحة (رمز عام)</name>
         <name lang="el">Ανεμιστήρας, γενικό σύμβολο</name>
-        <name lang="en">Fan </name>
+        <name lang="en">Fan general</name>
         <name lang="it">Ventilatore (segno generale)</name>
         <name lang="fr">Ventilateur (général)</name>
         <name lang="pl">Wentylator, symbol ogólny</name>
         <name lang="cs">Ventilátor (obecný symbol)</name>
+        <name lang="nl">Ventilator algemeen</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

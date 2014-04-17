@@ -6,6 +6,7 @@
         <name lang="pl">Zawór odcinający, wersja lewa</name>
         <name lang="cs">Izolační ventil, levá služba</name>
         <name lang="it">Valvole di intercettazione e servizio (SX)</name>
+        <name lang="nl">Isolatie afsluiter serviceaansluiting links</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

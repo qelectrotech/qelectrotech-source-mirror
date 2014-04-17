@@ -4,12 +4,13 @@
         <name lang="de">ICC</name>
         <name lang="ru">Контроль изоляции</name>
         <name lang="pt">Dispositivo de guarda de isolamento</name>
-        <name lang="en">PIC</name>
+        <name lang="en">Guard isolation</name>
         <name lang="it">Controllo isolamento</name>
         <name lang="fr">CPI</name>
         <name lang="pl">UKSI</name>
         <name lang="es">Aparato de vigilencia de aislamiento</name>
         <name lang="cs">Kontrola izolace</name>
+        <name lang="nl">Isolatiebewaking</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

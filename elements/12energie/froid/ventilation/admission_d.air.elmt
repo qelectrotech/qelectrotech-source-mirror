@@ -6,6 +6,7 @@
         <name lang="fr">Admission d'air</name>
         <name lang="pl">Czerpnia powietrza</name>
         <name lang="cs">Přívod vzduchu</name>
+        <name lang="nl">Inlaat lucht</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

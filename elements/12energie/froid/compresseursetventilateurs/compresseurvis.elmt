@@ -7,6 +7,7 @@
         <name lang="fr">Compresseur à vis</name>
         <name lang="pl">Kompresor śrubowy</name>
         <name lang="cs">Šroubový kompresor</name>
+        <name lang="nl">Schroef compressor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

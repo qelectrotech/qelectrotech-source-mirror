@@ -6,6 +6,7 @@
         <name lang="pl">Płytowy wymiennik ciepła</name>
         <name lang="cs">Deskový výměník tepla</name>
         <name lang="it">Scambiatore a piastre</name>
+        <name lang="nl">plaat warmtewisselaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

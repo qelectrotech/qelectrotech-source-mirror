@@ -6,6 +6,7 @@
         <name lang="fr">Échappement d'air</name>
         <name lang="pl">Wyrzutnia powietrza</name>
         <name lang="cs">Výfuk vzduchu</name>
+        <name lang="nl">Uitlaat lucht</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

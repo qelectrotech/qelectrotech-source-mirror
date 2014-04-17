@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
         <name lang="ar">خرج ECS</name>
-        <name lang="en">ECS output</name>
+        <name lang="en">output</name>
         <name lang="fr">sortie ECS</name>
         <name lang="pl">Przyłącze CWU</name>
         <name lang="cs">Východ ECS</name>
         <name lang="it">Uscita acqua calda sanit.</name>
+        <name lang="nl">Afvoer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

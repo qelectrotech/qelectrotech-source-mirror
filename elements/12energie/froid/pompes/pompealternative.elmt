@@ -7,6 +7,7 @@
         <name lang="fr">Pompe alternative</name>
         <name lang="pl">Pompa tłokowa</name>
         <name lang="cs">Tlakové čerpadlo</name>
+        <name lang="nl">Zuigerpomp</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

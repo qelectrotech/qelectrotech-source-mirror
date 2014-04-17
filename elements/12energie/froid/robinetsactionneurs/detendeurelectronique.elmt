@@ -6,6 +6,7 @@
         <name lang="pl">Zaór elektroniczny</name>
         <name lang="cs">Elektrický redukční ventil</name>
         <name lang="it">A controllo elettronico</name>
+        <name lang="nl">Expansieventiel elektronisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

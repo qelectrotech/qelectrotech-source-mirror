@@ -7,6 +7,7 @@
         <name lang="fr">Compresseur à piston</name>
         <name lang="pl">Kompresor tłokowy</name>
         <name lang="cs">Pístový kompresor</name>
+        <name lang="nl">Zuiger compressor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

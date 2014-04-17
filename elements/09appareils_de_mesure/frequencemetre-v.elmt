@@ -10,6 +10,7 @@
         <name lang="pl">Częstotliwościomierz (pionowo)</name>
         <name lang="es">Frecuencímetro vertical</name>
         <name lang="cs">Měřič kmitočtu, svislý</name>
+        <name lang="nl">Frequentiemeter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

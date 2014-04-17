@@ -8,6 +8,7 @@
         <name lang="fr">Socle de prise de courant (puissance) avec volet d'obturation (EN 60617 11-13-0x)</name>
         <name lang="pl">Gniazdo wtykowe ze stykiem ochronnym i z pokrywą</name>
         <name lang="cs">Krytá izolovaná zásuvka (EN 60617 11-13-0x)</name>
+        <name lang="nl">contactdoos randaarde deksel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="pl">F zbiorniki</name>
         <name lang="cs">F lahvový výměník</name>
         <name lang="it">F Scambiatore</name>
+        <name lang="nl">type F Pijp wisselaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="pl">C Wymiennik pośredni</name>
         <name lang="cs">C přímý výměník</name>
         <name lang="it">C Scambio diretto</name>
+        <name lang="nl">type C tank wisselaar direct</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

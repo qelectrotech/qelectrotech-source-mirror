@@ -6,6 +6,7 @@
         <name lang="pl">Odpowietrznik</name>
         <name lang="cs">Vypouštěcí kohout</name>
         <name lang="it">Sfiato</name>
+        <name lang="nl">luchtvanger</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

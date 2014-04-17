@@ -2,11 +2,12 @@
     <names>
         <name lang="ar">مفتاح ثلاثي الأقطاب</name>
         <name lang="el">Τριπλός διακόπτης</name>
-        <name lang="en">???</name>
+        <name lang="en">Switch 3 pole</name>
         <name lang="it">Interruttore tripolare</name>
         <name lang="fr">Interrupteur tripolaire</name>
         <name lang="pl">Łącznik trójbiegunowy</name>
         <name lang="cs">Třípólový spínač</name>
+        <name lang="nl">Schakelaar (3)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -2,11 +2,12 @@
     <names>
         <name lang="ar">قطر</name>
         <name lang="el">Διάμετρος</name>
-        <name lang="en">diameter copper</name>
+        <name lang="en">diameter</name>
         <name lang="it">Diametro</name>
-        <name lang="fr">Diamètre cuivre</name>
+        <name lang="fr">Diamètre</name>
         <name lang="pl">Średnica</name>
         <name lang="cs">Průměr</name>
+        <name lang="nl">Diameter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

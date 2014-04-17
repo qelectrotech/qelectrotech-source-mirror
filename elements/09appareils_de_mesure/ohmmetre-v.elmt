@@ -11,6 +11,7 @@
         <name lang="pl">Omomierz (pionowo)</name>
         <name lang="es">Óhmetro vertical</name>
         <name lang="cs">Ohmmetr, svislý</name>
+        <name lang="nl">Ohmmeter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="pl">Zawór trójdrożny z napędem</name>
         <name lang="cs">Trojcestný ventil s pohonem</name>
         <name lang="it">Valvola 3vie motorizzata</name>
+        <name lang="nl">klep motor 3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

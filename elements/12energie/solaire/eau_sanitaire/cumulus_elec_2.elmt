@@ -6,6 +6,7 @@
         <name lang="pl">Zbiornik elektryczny CWU</name>
         <name lang="cs">Elektrická jímka ECS</name>
         <name lang="it">Serbatoio ACS elettrico</name>
+        <name lang="nl">Boiler elektrisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

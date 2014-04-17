@@ -6,6 +6,7 @@
         <name lang="pl">Samoopróżniający się zasobnik Guy Delsol</name>
         <name lang="cs">Samočinně se vyprazdňující zásobník Guy Delsol</name>
         <name lang="it">Serbatoio Guy Delsol ad auto-svuotamento</name>
+        <name lang="nl">automatische aftap Guy Delsol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

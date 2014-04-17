@@ -6,6 +6,7 @@
         <name lang="pl">Zawór zwrotny grawitacyjny</name>
         <name lang="cs">Gravitační pojistný ventil</name>
         <name lang="it">Valvola di ritegno a gravità</name>
+        <name lang="nl">terugslagklep zonder veer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

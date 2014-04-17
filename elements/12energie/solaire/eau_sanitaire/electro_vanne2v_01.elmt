@@ -6,6 +6,7 @@
         <name lang="pl">Elektrozawór dwudrożny</name>
         <name lang="cs">Elektrický uzávěr 2V</name>
         <name lang="it">Elettrovalvola 2vie acqua sanitaria</name>
+        <name lang="nl">Elketrische klep sanitair 2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

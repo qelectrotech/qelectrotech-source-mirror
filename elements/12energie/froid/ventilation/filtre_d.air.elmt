@@ -6,6 +6,7 @@
         <name lang="fr">Filtre d'air</name>
         <name lang="pl">Filtr powietrza</name>
         <name lang="cs">Filtr vzduchu</name>
+        <name lang="nl">Luchtfilter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

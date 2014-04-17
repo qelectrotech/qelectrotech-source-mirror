@@ -7,6 +7,7 @@
         <name lang="fr">Vanne à pression constante (droite)</name>
         <name lang="pl">Zawór stałego ciśnienia (prawy)</name>
         <name lang="cs">Ventil stálého tlaku (pravý)</name>
+        <name lang="nl">Constante druk klep rechts</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

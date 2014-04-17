@@ -6,6 +6,7 @@
         <name lang="fr">Ventilateur</name>
         <name lang="pl">Wentylator</name>
         <name lang="cs">Větrák</name>
+        <name lang="nl">Ventilator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

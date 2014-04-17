@@ -7,6 +7,7 @@
         <name lang="fr">Congélateur</name>
         <name lang="pl">Zamrażarka</name>
         <name lang="cs">Mraznička, mrazák, mrazicí skříň</name>
+        <name lang="nl">Vriezer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

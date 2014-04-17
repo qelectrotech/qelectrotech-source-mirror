@@ -6,6 +6,7 @@
         <name lang="pl">Grupa bezpieczeństwa</name>
         <name lang="cs">Bezpečnostní skupina (pravá)</name>
         <name lang="it">Gruppo di sicurezza DX</name>
+        <name lang="nl">Inlaatcombinatie</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

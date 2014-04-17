@@ -11,6 +11,7 @@
         <name lang="pl">Piekarnik elektryczny</name>
         <name lang="es">Horno eléctrico</name>
         <name lang="cs">Elektrická kamna</name>
+        <name lang="nl">Elektrische oven</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="pl">E zasobniki z zaworem</name>
         <name lang="cs">E zásobníky s uzávěrem</name>
         <name lang="it">E cilindro e valvola</name>
+        <name lang="nl">type E pijp en kleppen wisselaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

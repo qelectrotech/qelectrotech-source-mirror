@@ -6,6 +6,7 @@
         <name lang="pl">Bateria mieszająca</name>
         <name lang="cs">Směšovací baterie</name>
         <name lang="it">Miscelatrore</name>
+        <name lang="nl">Mengkraan</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,6 +7,7 @@
         <name lang="fr">Interrupteur unipolaire</name>
         <name lang="pl">Łącznik jednobiegunowy</name>
         <name lang="cs">Jednopólový spínač</name>
+        <name lang="nl">Schakelaar (1)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

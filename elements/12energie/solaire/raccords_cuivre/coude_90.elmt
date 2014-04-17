@@ -7,6 +7,7 @@
         <name lang="fr">Coude à 90</name>
         <name lang="pl">Kolanko 90</name>
         <name lang="cs">Koleno 90</name>
+        <name lang="nl">Hoek 90</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

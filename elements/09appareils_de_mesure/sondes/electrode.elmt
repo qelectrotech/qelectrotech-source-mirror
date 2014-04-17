@@ -9,6 +9,7 @@
         <name lang="pl">Elektroda</name>
         <name lang="es">Electrodo</name>
         <name lang="cs">Elektroda</name>
+        <name lang="nl">Elektrode</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

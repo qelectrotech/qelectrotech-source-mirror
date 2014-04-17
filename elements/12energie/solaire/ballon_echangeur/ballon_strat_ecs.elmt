@@ -6,6 +6,7 @@
         <name lang="pl">Zasobnik warstwowy CWU</name>
         <name lang="cs">Vrstvový zásobnik ECS</name>
         <name lang="it">Scambiatore a stratificazione ACS</name>
+        <name lang="nl">Opslagtank met wisselaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

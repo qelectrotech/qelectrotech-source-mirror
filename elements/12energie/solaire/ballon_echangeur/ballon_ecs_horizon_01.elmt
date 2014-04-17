@@ -6,6 +6,7 @@
         <name lang="pl">Zasobnik poziomy CWU</name>
         <name lang="cs">Vodorovný zásobnik ECS</name>
         <name lang="it">Scambiatore orizzontale ACS</name>
+        <name lang="nl">Boiler elektrisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

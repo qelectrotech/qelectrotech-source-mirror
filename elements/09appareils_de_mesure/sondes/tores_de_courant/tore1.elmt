@@ -10,6 +10,7 @@
         <name lang="pl">Przekładnik prądowy jednotorowy</name>
         <name lang="es">Núcleo toroide 1 polo</name>
         <name lang="cs">Prstencové jádro s jedním pólem</name>
+        <name lang="nl">Stroomtransformator ringkern 1AC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

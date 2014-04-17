@@ -10,6 +10,7 @@
         <name lang="pl">Galwanometr (pionowo)</name>
         <name lang="es">Galvanómetro vertical</name>
         <name lang="cs">Galvanometr, svislý</name>
+        <name lang="nl">Galvanometer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

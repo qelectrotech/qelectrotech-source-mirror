@@ -6,6 +6,7 @@
         <name lang="pl">B półpośredni</name>
         <name lang="cs">B polopřímý</name>
         <name lang="it">B Semi-diretto</name>
+        <name lang="nl">type B Sub direct 1</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

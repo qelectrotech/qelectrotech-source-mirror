@@ -7,6 +7,7 @@
         <name lang="fr">Radiateur</name>
         <name lang="pl">Wymiennik ciepła</name>
         <name lang="cs">Topné těleso</name>
+        <name lang="nl">Elektrische radiator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

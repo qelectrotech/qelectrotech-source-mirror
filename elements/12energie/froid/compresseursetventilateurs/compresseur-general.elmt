@@ -2,11 +2,12 @@
     <names>
         <name lang="ar">ضاغط (رمز عام)</name>
         <name lang="el">Συμπιεστής, γενικό σύμβολο</name>
-        <name lang="en">Compressor (général)</name>
+        <name lang="en">Compressor (general)</name>
         <name lang="it">Compressore (segno generale)</name>
         <name lang="fr">Compresseur (général)</name>
         <name lang="pl">Kompresor, symbol ogólny</name>
         <name lang="cs">Kompresor (obecný symbol)</name>
+        <name lang="nl">Compressor algemeen</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

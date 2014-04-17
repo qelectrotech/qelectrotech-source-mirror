@@ -7,6 +7,7 @@
         <name lang="fr">capteurs à tube</name>
         <name lang="pl">Kolektory</name>
         <name lang="cs">Kolektory</name>
+        <name lang="nl">Buis collectors</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

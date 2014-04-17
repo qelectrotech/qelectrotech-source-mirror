@@ -9,6 +9,7 @@
         <name lang="fr">Minuterie</name>
         <name lang="pl">Datownik czasu</name>
         <name lang="cs">Časový spínač</name>
+        <name lang="nl">Tijdrelais</name>
     </names>
     <informations>EN 60617: 11-14-13</informations>
     <description>

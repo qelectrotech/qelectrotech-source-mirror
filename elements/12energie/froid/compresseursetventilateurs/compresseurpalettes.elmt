@@ -6,6 +6,7 @@
         <name lang="fr">Compresseur à palettes</name>
         <name lang="pl">Kompresor wirnikowy</name>
         <name lang="cs">Lopatkový kompresor</name>
+        <name lang="nl">Vaan compressor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

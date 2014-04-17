@@ -7,6 +7,7 @@
         <name lang="fr">Compresseur scroll</name>
         <name lang="pl">Kompresor spiralny</name>
         <name lang="cs">Spirálový kompresor</name>
+        <name lang="nl">Scroll compressor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

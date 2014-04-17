@@ -8,6 +8,7 @@
         <name lang="fr">Compteur d'énergie active Wattheuremètre</name>
         <name lang="pl">Licznik watogodzin</name>
         <name lang="cs">Počítadlo watthodin</name>
+        <name lang="nl">Watt uur meter</name>
     </names>
     <informations>EN 60617: 08-04-03</informations>
     <description>

@@ -6,6 +6,7 @@
         <name lang="pl">Ogrzewacz CWU</name>
         <name lang="cs">Trubkový ohřívač ECS</name>
         <name lang="it">Riscaldatore ACS tubolare</name>
+        <name lang="nl">tank met pijpwisselaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

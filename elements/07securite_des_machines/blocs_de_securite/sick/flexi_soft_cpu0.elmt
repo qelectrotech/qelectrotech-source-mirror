@@ -6,6 +6,7 @@
         <name lang="pl">FX3-CPU000000</name>
         <name lang="es">UNIDAD PRINCIPAL CPU000</name>
         <name lang="cs">FX3-CPU000000</name>
+        <name lang="nl">FX3-CPU000000</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

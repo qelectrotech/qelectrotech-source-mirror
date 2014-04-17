@@ -8,6 +8,7 @@
         <name lang="fr">Dispositif de commande ou de contrôle par clé,</name>
         <name lang="pl">Łącznik sterowany kluczem</name>
         <name lang="cs">Klíčový spínač</name>
+        <name lang="nl">sleutelschakelaar</name>
     </names>
     <informations>EN 60617: 11-14-15</informations>
     <description>

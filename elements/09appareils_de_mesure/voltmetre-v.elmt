@@ -11,6 +11,7 @@
         <name lang="pl">Woltomierz (pionowo)</name>
         <name lang="es">Voltímetro vertical</name>
         <name lang="cs">Voltmetr, svislý</name>
+        <name lang="nl">Voltmeter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

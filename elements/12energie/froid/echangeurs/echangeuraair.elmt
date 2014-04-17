@@ -7,6 +7,7 @@
         <name lang="fr">Echangeur à air</name>
         <name lang="pl">Wymiennik powietrza</name>
         <name lang="cs">Výměník horkého vzduchu</name>
+        <name lang="nl">Lucht warmte wisselaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

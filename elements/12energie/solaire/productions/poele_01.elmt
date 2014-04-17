@@ -6,6 +6,7 @@
         <name lang="pl">Piec</name>
         <name lang="cs">Kamna</name>
         <name lang="it">Stufa</name>
+        <name lang="nl">Allesbrander JMO</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

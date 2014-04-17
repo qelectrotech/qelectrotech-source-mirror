@@ -8,6 +8,7 @@
         <name lang="fr">Commutateur unipolaire</name>
         <name lang="pl">Łącznik grupowy</name>
         <name lang="cs">Sériový přepínač, jednopólový</name>
+        <name lang="nl">Serieschakelaar</name>
     </names>
     <informations>EN 60617: 11-14-05</informations>
     <description>

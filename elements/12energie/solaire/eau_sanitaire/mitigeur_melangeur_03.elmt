@@ -6,6 +6,7 @@
         <name lang="pl">Mieszacz CWU</name>
         <name lang="cs">Směšovač 03 ECS</name>
         <name lang="it">Valvola miscelatrice ACS 3</name>
+        <name lang="nl">Mengklep 3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

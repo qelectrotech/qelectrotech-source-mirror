@@ -7,6 +7,7 @@
         <name lang="fr">Compteur 220V monophase</name>
         <name lang="pl">Licznik jednofazowy</name>
         <name lang="cs">Jednofázové počítadlo 220V</name>
+        <name lang="nl">KWh meter 230V</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

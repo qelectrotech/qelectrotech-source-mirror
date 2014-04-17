@@ -6,6 +6,7 @@
         <name lang="pl">Pompa cyrkulacyjna CWU</name>
         <name lang="cs">Sanitární cirkulační pumpa</name>
         <name lang="it">Circolatore sanitaria</name>
+        <name lang="nl">Pomp sanitair</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

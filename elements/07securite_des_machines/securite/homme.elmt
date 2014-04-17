@@ -11,6 +11,7 @@
         <name lang="pl">Człowiek</name>
         <name lang="es">Ser humano</name>
         <name lang="cs">Člověk</name>
+        <name lang="nl">Persoon</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

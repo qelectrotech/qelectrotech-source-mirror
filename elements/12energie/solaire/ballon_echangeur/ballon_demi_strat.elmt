@@ -6,6 +6,7 @@
         <name lang="pl">Zasobnik warstwowy 1000L</name>
         <name lang="cs">Vrstvový zásobník 1000L</name>
         <name lang="it">Serbatoio a stratificazione 1000L</name>
+        <name lang="nl">Opslagtank 1000L</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

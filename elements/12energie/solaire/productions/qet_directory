@@ -7,5 +7,6 @@
         <name lang="cs">Výroba</name>
         <name lang="it">Produzione acqua calda</name>
         <name lang="el">Παραγωγή</name>
+        <name lang="nl">warmteproductie</name>
     </names>
 </qet-directory>

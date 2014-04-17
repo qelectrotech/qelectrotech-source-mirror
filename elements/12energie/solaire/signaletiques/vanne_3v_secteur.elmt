@@ -6,6 +6,7 @@
         <name lang="pl">Cyrkulacja, zawory trójdrożne</name>
         <name lang="cs">Cirkulace, uzávěry 3 směry</name>
         <name lang="it">Valvola 3vie a settori</name>
+        <name lang="nl">Klep circulatie naar sector</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

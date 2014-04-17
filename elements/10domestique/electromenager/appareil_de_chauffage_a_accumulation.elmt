@@ -7,6 +7,7 @@
         <name lang="fr">Appareil de chauffage a accumulation</name>
         <name lang="pl">Grzejnik elektryczny akumulacyjny</name>
         <name lang="cs">Akumulační ohřívač, topné těleso</name>
+        <name lang="nl">Verwarming met accumulator (steenkachel)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

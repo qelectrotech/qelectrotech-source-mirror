@@ -6,6 +6,7 @@
         <name lang="pl">Zawór termostatyczny CWU</name>
         <name lang="cs">Termostatický uzávěr ECS</name>
         <name lang="it">Valvola miscelatrice termostatica</name>
+        <name lang="nl">Mengklep thermostatisch</name>
     </names>
     <informations>Le mitigeur thermostatique posé en sortie de ballon permet de distribuer l'eau chaude sanitaire à une température constante.</informations>
     <description>

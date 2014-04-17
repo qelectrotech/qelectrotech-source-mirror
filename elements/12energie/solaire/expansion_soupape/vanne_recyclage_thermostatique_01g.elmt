@@ -6,6 +6,7 @@
         <name lang="pl">Zawór termostatyczny</name>
         <name lang="cs">Termostatický uzávěr</name>
         <name lang="it">Valvola termostatica</name>
+        <name lang="nl">Thermostaat klep</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

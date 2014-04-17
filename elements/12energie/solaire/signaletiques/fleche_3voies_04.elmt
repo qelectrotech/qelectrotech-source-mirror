@@ -6,6 +6,7 @@
         <name lang="pl">Kierunek - trójdrożny 4</name>
         <name lang="cs">Šipka 3 směry 4</name>
         <name lang="it">Freccia 3vie</name>
+        <name lang="nl">Pijl</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

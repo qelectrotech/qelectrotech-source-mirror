@@ -7,6 +7,7 @@
         <name lang="fr">Interrupteur fin de course</name>
         <name lang="pl">Łącznik krańcowy</name>
         <name lang="cs">Koncový spínač</name>
+        <name lang="nl">Eindschakelaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

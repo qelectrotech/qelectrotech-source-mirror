@@ -6,6 +6,7 @@
         <name lang="pl">Manometr</name>
         <name lang="cs">Tlakoměr</name>
         <name lang="it">Manometro</name>
+        <name lang="nl">Drukmeter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

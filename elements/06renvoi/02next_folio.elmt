@@ -10,6 +10,7 @@ link_type="next_report">
         <name lang="pl">Wyjście adresowe</name>
         <name lang="es">Folio siguiente</name>
         <name lang="cs">Další list</name>
+        <name lang="nl">Referentie volgend</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

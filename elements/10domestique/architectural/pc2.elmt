@@ -10,6 +10,7 @@ symbol
         <name lang="fr">Socle de prise de courant</name>
         <name lang="pl">Gniazdo pojedyncze</name>
         <name lang="cs">Zásuvka, obecný symbol</name>
+        <name lang="nl">Contactdoos</name>
     </names>
     <informations>EN 60617: 11-13-01</informations>
     <description>

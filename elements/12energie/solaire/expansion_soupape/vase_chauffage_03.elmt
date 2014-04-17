@@ -6,6 +6,7 @@
         <name lang="pl">Naczynie wzbiorcze</name>
         <name lang="cs">Nádoba, kruhové ohřívání</name>
         <name lang="it">Vaso di espansione</name>
+        <name lang="nl">Expansie tank</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

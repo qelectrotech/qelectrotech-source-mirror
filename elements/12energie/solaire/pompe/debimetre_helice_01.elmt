@@ -6,6 +6,7 @@
         <name lang="pl">Przepływomierz wirnikowy</name>
         <name lang="cs">Točitý průtokoměr</name>
         <name lang="it">Misuratore di portata a elica</name>
+        <name lang="nl">Stromingsmeter propellor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

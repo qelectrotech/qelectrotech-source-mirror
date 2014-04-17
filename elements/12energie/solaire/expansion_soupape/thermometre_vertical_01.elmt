@@ -6,6 +6,7 @@
         <name lang="pl">Termometr</name>
         <name lang="cs">Svislý teploměr</name>
         <name lang="it">Termometro verticale</name>
+        <name lang="nl">Thermometer vertikaal</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

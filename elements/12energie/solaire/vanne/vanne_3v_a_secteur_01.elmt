@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام 3 مسارات بقطاعات</name>
-        <name lang="en">3-way valve sector has</name>
+        <name lang="en">3-way valve sector</name>
         <name lang="fr">Vanne 3 voies a secteur</name>
         <name lang="pl">Zawór trójdrożny</name>
         <name lang="cs">Trojcestný ventil</name>
         <name lang="it">Valvola 3vie a settori</name>
+        <name lang="nl">klep 3 sector</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

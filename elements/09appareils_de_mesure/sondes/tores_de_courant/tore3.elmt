@@ -10,6 +10,7 @@
         <name lang="pl">Przekładnik prądowy trójtorowy</name>
         <name lang="es">Núcleo toroide 3 polos</name>
         <name lang="cs">Prstencové jádro se třemi póly</name>
+        <name lang="nl">Stroomtransformator ringkern 3AC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

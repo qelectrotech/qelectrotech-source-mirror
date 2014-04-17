@@ -6,6 +6,7 @@
         <name lang="pl">Zawór termostatyczny wewnętrzny</name>
         <name lang="cs">Vnitřní termostatický ventil</name>
         <name lang="it">Sonda termostatica interna</name>
+        <name lang="nl">Expansieventiel intern</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

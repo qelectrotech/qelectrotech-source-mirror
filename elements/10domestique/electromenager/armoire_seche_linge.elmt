@@ -7,6 +7,7 @@
         <name lang="fr">Armoire sèche-linge</name>
         <name lang="pl">Suszarka</name>
         <name lang="cs">Sušička, sušící skříň</name>
+        <name lang="nl">Droog kast</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

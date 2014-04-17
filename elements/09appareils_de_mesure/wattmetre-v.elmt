@@ -11,6 +11,7 @@
         <name lang="pl">Watomierz (pionowo)</name>
         <name lang="es">Vatímetro vertical</name>
         <name lang="cs">Wattmetr, svislý</name>
+        <name lang="nl">Wattmeter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

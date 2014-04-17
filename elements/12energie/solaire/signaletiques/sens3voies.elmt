@@ -6,6 +6,7 @@
         <name lang="pl">Oznaczenie kierunku</name>
         <name lang="cs">Označení směru</name>
         <name lang="it">Valvola 3vie</name>
+        <name lang="nl">Pijl</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

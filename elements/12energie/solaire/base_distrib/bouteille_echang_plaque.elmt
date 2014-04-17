@@ -6,6 +6,7 @@
         <name lang="pl">1F wymiennik płytowy</name>
         <name lang="cs">1F deskový výměník</name>
         <name lang="it">1F Scambiatore</name>
+        <name lang="nl">type 1F plaat warmtewisselaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

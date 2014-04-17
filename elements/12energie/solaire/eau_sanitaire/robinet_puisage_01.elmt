@@ -6,6 +6,7 @@
         <name lang="pl">Bateria</name>
         <name lang="cs">Baterie</name>
         <name lang="it">Rubinetto</name>
+        <name lang="nl">Tappunt</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

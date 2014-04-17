@@ -6,6 +6,7 @@
         <name lang="pl">C zasobnik z podwójnym płaszczem</name>
         <name lang="cs">C zásobník s dvojitým pláštěm</name>
         <name lang="it">C Scambiatore</name>
+        <name lang="nl">type C tank met uitwendig wisselaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,6 +7,7 @@
         <name lang="fr">Appareil de chauffage</name>
         <name lang="pl">Grzejnik elektryczny</name>
         <name lang="cs">Ohřívač, topné těleso</name>
+        <name lang="nl">Verwarmer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="pl">Zawór trójdrożny</name>
         <name lang="cs">Třícestný ventil</name>
         <name lang="it">Valvola 3vie</name>
+        <name lang="nl">klep 3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

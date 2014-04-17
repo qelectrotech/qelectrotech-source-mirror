@@ -6,6 +6,7 @@
         <name lang="pl">Zawór T.A.</name>
         <name lang="cs">Uzávěr T.A.</name>
         <name lang="it">Valvola di bilanciamento T.A.</name>
+        <name lang="nl">Klep balans T.A.</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

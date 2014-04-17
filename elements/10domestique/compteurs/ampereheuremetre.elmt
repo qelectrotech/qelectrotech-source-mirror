@@ -1,13 +1,14 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">أمبيرساعة متر </name>
-        <name lang="de">Betriebsstundenzähler</name>
+        <name lang="de">Ampere stunden zähler</name>
         <name lang="el">Μετρητής κατανάλωσης, Αμπερώρια (Ah)</name>
         <name lang="en">Ampere Hour Meter</name>
         <name lang="it">Misuratore di Ah</name>
         <name lang="fr">Ampèreheuremètre</name>
         <name lang="pl">Licznik amperogodzin</name>
         <name lang="cs">Ampérmetr</name>
+        <name lang="nl">Ampere uur meter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

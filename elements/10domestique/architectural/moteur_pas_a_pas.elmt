@@ -8,6 +8,7 @@
         <name lang="fr">Moteur pas à pas</name>
         <name lang="pl">Silnik krokowy</name>
         <name lang="cs">Krokový motor</name>
+        <name lang="nl">Stappenmotor</name>
     </names>
     <informations>EN 60617: 06-04-03</informations>
     <description>

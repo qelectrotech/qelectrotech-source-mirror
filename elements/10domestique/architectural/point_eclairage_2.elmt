@@ -11,6 +11,7 @@ Stromversorgung
 </name>
         <name lang="pl">Oświetlenie ewakuacyjne autonomiczne</name>
         <name lang="cs">Bezpečnostní světla se zabudovanou dodávkou elektrického proudu</name>
+        <name lang="nl">Noodlamp automatisch met accu</name>
     </names>
     <informations>EN 60617: 11-15-12</informations>
     <description>

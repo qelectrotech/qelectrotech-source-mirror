@@ -6,6 +6,7 @@
         <name lang="pl">Zawór odcinający, izolacyjny</name>
         <name lang="cs">Uzavírací ventil, izolační</name>
         <name lang="it">Valvola d'intercettazione</name>
+        <name lang="nl">Klep isolatie</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

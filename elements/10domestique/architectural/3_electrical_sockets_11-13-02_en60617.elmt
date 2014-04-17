@@ -8,6 +8,7 @@
         <name lang="fr">Socle de prise de courant (3)  (EN 60617 11-13-02)</name>
         <name lang="pl">Gniazdo trójbiegunowe (EN 60617: 11-13-02)</name>
         <name lang="cs">Vícenásobná elektrická zásuvka (3) (EN 60617 11-13-01)</name>
+        <name lang="nl">Wandcontactdoos (3) (EN 60617 11-13-01)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

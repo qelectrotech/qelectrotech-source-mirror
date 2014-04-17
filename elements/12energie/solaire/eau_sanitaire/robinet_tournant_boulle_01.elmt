@@ -6,6 +6,7 @@
         <name lang="pl">Zawór kulowy</name>
         <name lang="cs">Kulový uzávěr</name>
         <name lang="it">Valvola a sfera</name>
+        <name lang="nl">Kogelklep</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

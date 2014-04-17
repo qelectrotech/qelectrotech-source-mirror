@@ -9,6 +9,7 @@
         <name lang="cs">Automaticky řízené relé PILZ</name>
         <name lang="es">Relevadores autocontrolados PILZ</name>
         <name lang="it">Relè di sicurezza PILZ</name>
+        <name lang="nl">veiligheidsmodule PILZ</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

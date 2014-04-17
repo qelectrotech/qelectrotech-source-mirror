@@ -8,6 +8,7 @@
         <name lang="fr">Socle de prise de courant (puissance), symbole general (EN 60617 11-13-01)</name>
         <name lang="pl">Gniazdo wtykowe (EN 60617: 11-13-01)</name>
         <name lang="cs">Elektrická zásuvka, obecný symbol (EN 60617 11-13-01)</name>
+        <name lang="nl">wandcontactdoos algemeen (EN 60617 11-13-01)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

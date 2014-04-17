@@ -1,10 +1,11 @@
 <qet-directory>
     <names>
-        <name lang="fr">Vase expansion soupape</name>
-        <name lang="en">Vessel expansion valve</name>
+        <name lang="fr">accesoire</name>
+        <name lang="en">accesories</name>
         <name lang="ar">توسعة و صمّامات</name>
         <name lang="pl">Naczynia i zawory</name>
         <name lang="cs">Nádoby a uzávěry</name>
         <name lang="it">Vasi di espansione</name>
+        <name lang="nl">accesoires</name>
     </names>
 </qet-directory>

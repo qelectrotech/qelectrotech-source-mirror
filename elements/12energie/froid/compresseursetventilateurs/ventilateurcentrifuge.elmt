@@ -7,6 +7,7 @@
         <name lang="fr">Ventilateur centrifuge</name>
         <name lang="pl">Wentylatot odsrodkowy</name>
         <name lang="cs">Odstředivý ventilátor</name>
+        <name lang="nl">Centrifugaal ventilator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

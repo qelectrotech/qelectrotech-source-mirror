@@ -7,6 +7,7 @@
         <name lang="fr">Réfrigérateur avec partie congélateur</name>
         <name lang="pl">Chłodziarka z zamrażarką</name>
         <name lang="cs">Lednička s mrazákem</name>
+        <name lang="nl">Koelkast met vriezer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

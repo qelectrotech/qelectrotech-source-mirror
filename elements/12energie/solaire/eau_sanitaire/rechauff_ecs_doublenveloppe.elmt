@@ -6,6 +6,7 @@
         <name lang="pl">Zasobnik z płaszczem CWU</name>
         <name lang="cs">Ohřívač s dvojitým pláštěm ECS</name>
         <name lang="it">Riscaldatore ACS</name>
+        <name lang="nl">Tank met interne tank wisselaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

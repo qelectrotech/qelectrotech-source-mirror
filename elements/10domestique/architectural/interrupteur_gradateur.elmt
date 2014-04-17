@@ -8,6 +8,7 @@
         <name lang="fr">Interrupteur gradateur</name>
         <name lang="pl">Ściemniacz</name>
         <name lang="cs">Reostat</name>
+        <name lang="nl">Dimmer</name>
     </names>
     <informations>EN 60617: 11-14-08</informations>
     <description>

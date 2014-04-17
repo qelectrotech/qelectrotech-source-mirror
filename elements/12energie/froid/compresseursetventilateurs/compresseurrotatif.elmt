@@ -7,6 +7,7 @@
         <name lang="fr">Compresseur rotatif</name>
         <name lang="pl">Kompresor wirowy</name>
         <name lang="cs">Otáčivý kompresor</name>
+        <name lang="nl">Rotatie compressor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

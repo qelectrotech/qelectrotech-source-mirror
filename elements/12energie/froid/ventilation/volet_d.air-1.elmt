@@ -6,6 +6,7 @@
         <name lang="fr">Volet d'air</name>
         <name lang="pl">Przepustnica</name>
         <name lang="cs">Vzduchová klapka</name>
+        <name lang="nl">Luchtklep</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

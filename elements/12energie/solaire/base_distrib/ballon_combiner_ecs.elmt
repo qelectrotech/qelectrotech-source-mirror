@@ -6,6 +6,7 @@
         <name lang="pl">1B zasobnik kombinowany CWU</name>
         <name lang="cs">1B zásobník kombinovaný ECS</name>
         <name lang="it">1B Scambiatore ACS</name>
+        <name lang="nl">type 1B tank met dubbele wisselaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

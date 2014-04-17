@@ -6,6 +6,7 @@
         <name lang="pl">Zawór różnicowy</name>
         <name lang="cs">Rozdílový uzávěr (levý)</name>
         <name lang="it">Valvola differenziale "sinistra"</name>
+        <name lang="nl">Drukverschil klep</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,6 +7,7 @@
         <name lang="fr">Appareil de cuisson</name>
         <name lang="pl">Kuchenka</name>
         <name lang="cs">Spotřebič na vaření</name>
+        <name lang="nl">Kook apparaat</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

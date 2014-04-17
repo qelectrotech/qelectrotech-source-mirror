@@ -6,6 +6,7 @@
         <name lang="pl">Zawór pompowy</name>
         <name lang="cs">Čerpadlová klapka</name>
         <name lang="it">Valvola di ritegno pompa</name>
+        <name lang="nl">Pompklep</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

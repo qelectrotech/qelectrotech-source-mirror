@@ -7,6 +7,7 @@
         <name lang="fr">Varheuremètre</name>
         <name lang="pl">Licznik warogodzin</name>
         <name lang="cs">Počítadlo varhodin</name>
+        <name lang="nl">VAr energie meter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
