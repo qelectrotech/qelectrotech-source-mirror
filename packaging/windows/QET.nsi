@@ -80,6 +80,7 @@
 	!insertmacro MUI_LANGUAGE "Romanian"
 	!insertmacro MUI_LANGUAGE "Catalan"
 	!insertmacro MUI_LANGUAGE "Croatian"
+	!insertmacro MUI_LANGUAGE "Nederland"
 
 ;--------------------------------
 ;Reserve Files
