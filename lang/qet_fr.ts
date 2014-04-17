@@ -52,6 +52,7 @@
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="267"/>
+        <location filename="../sources/qet.cpp" line="275"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -78,8 +79,8 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1240"/>
-        <location filename="../sources/diagramcommands.cpp" line="1255"/>
+        <location filename="../sources/diagramcommands.cpp" line="1337"/>
+        <location filename="../sources/diagramcommands.cpp" line="1352"/>
         <source>Délier %n élément(s)</source>
         <translation>
             <numerusform>Délier %n élément</numerusform>
