@@ -145,7 +145,7 @@ our %languages = (
 		'translator_name'    => 'Nikos Papadopoylos &  Yannis Gyftomitros',
 		'translator_mail_ml' => '231036448@freemail.gr',
 		'qt'                 => 1
-	}
+	},
 	'nl' => {
 		'name'               => 'Netherlands',
 		'french_name'        => 'Pays-Bas',
