@@ -6,6 +6,7 @@
         <name lang="cs">Regulativní ventil zavřený ve středové poloze 4/2</name>
         <name lang="ar">مُوزع مركز مغلق 2-4</name>
         <name lang="it">Valvola di controllo chiusa 4-2</name>
+        <name lang="nl">gesloten, P -&gt; B A -&gt; T 4-2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

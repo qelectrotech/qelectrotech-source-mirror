@@ -8,6 +8,7 @@
         <name lang="pl">Prąd przemienny trójfazowy</name>
         <name lang="es">Etiqueta trifásico</name>
         <name lang="cs">Štítek - tři fáze</name>
+        <name lang="nl">Label 3 fasen 400 Volt</name>
     </names>
     <informations>EN 60617: 02-02-07</informations>
     <description>

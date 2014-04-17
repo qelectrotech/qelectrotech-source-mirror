@@ -6,6 +6,7 @@
         <name lang="cs">Elektrické řízení (dvě cívky)</name>
         <name lang="ar">تحكم كهربائي (ملفين)</name>
         <name lang="it">Doppio comando elettrico</name>
+        <name lang="nl">Spoel Elektrisch dubbel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

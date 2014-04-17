@@ -2,10 +2,11 @@
     <names>
         <name lang="el">Μεταβλητή αντίσταση</name>
         <name lang="en">Adjustable resistance</name>
-        <name lang="it">Resistenza variabile 10k</name>
+        <name lang="it">Resistenza variabile</name>
         <name lang="fr">Potar</name>
-        <name lang="pl">Rezystor regulacyjny 10k</name>
-        <name lang="cs">Rezistor regulační 10k</name>
+        <name lang="pl">Rezystor regulacyjny</name>
+        <name lang="cs">Rezistor regulační</name>
+        <name lang="nl">Potentiometer</name>
     </names>
     <informations>ezza</informations>
     <description>

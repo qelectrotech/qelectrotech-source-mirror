@@ -7,6 +7,7 @@
         <name lang="fr">Bouton poussoir lumineux</name>
         <name lang="pl">Przycisk podświetlony</name>
         <name lang="cs">Podsvícené tlačítko</name>
+        <name lang="nl">Drukknop lamp</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

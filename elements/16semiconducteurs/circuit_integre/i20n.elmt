@@ -8,6 +8,7 @@
         <name lang="fr">Circuit integré 20 broches, numerotées</name>
         <name lang="pl">Układ scalony, 20 nóżek (ponumerowany)</name>
         <name lang="cs">Integrovaný obvod, 20 očíslovaných kolíků</name>
+        <name lang="nl">IC 20 pin nummers</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

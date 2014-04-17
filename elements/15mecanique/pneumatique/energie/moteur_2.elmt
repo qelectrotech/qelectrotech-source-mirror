@@ -1,6 +1,6 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="en">Moteur à deux sens de
+        <name lang="en">Motor with two directions of
 rotation
 variable</name>
         <name lang="fr">Moteur à deux sens de
@@ -10,6 +10,7 @@ variable</name>
         <name lang="cs">Motor se dvěma směry otáčení</name>
         <name lang="ar">مُحرّك بدوران في الإتجاهين مُتغيّر</name>
         <name lang="it">Motore 2 direzioni</name>
+        <name lang="nl">Motor 2 richtingen vraiabel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

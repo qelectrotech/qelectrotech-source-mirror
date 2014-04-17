@@ -6,6 +6,7 @@
         <name lang="cs">Řízeno pomocí tlaku</name>
         <name lang="ar">تحكّم ضغط هوائي</name>
         <name lang="it">Comando a pressione d'aria</name>
+        <name lang="nl">Luchtdruk</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

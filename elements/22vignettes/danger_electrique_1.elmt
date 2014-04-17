@@ -6,6 +6,7 @@
         <name lang="fr">Danger electrique</name>
         <name lang="pl">Pod napięciem</name>
         <name lang="cs">Pod napětím</name>
+        <name lang="nl">Gevaar elektrisch klein</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

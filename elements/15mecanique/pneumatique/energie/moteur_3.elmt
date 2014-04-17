@@ -6,6 +6,7 @@
         <name lang="cs">Vzduchový motor s otáčejícími se písty (Wankelův motor)</name>
         <name lang="ar">مُحرّك نيوماتي دوراني</name>
         <name lang="it">Motore rotativo pneumatico</name>
+        <name lang="nl">Motor draaiend</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

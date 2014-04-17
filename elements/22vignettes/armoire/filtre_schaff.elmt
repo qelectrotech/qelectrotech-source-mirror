@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="el">Φίλτρο Schaff</name>
-        <name lang="en">Filter Schaff</name>
+        <name lang="en">Filter Schaffner</name>
         <name lang="it">Filtro Schaff</name>
         <name lang="fr">Filtre_schaff</name>
         <name lang="pl">Filtr Schaff</name>
         <name lang="cs">Filtr Schaff</name>
+        <name lang="nl">Filter Schaffner</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

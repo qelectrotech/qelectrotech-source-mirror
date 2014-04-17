@@ -6,6 +6,7 @@
         <name lang="cs">Nastavitelná škrtící klapka</name>
         <name lang="ar">صمّام صغري بتحكّم ميكانيكي</name>
         <name lang="it">Microvalvola a comando meccanico</name>
+        <name lang="nl">Klep micro mechanisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

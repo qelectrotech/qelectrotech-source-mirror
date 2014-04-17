@@ -6,6 +6,7 @@
         <name lang="cs">Dvojčinné poháněcí zařízení s jednostranným brzděním o stálé hodnotě</name>
         <name lang="ar">اسطوانة بفعل مزدوج بتثبيط من جانب واحد ثابت</name>
         <name lang="it">Azionatore doppio effetto con inibizione dei valori costanti</name>
+        <name lang="nl">cilinder met buffer enkel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

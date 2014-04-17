@@ -1,8 +1,9 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="45" height="50" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="en">Flange</name>
+        <name lang="en">Coupling</name>
         <name lang="fr">Poulie</name>
         <name lang="it">Flangia</name>
+        <name lang="nl">Koppeling</name>
         <name lang="cs">Obruba</name>
     </names>
     <informations>Author: Arun Kishore Eswara

@@ -6,6 +6,7 @@
         <name lang="cs">Přenašeč tlaku</name>
         <name lang="ar">حسّاس ضغط</name>
         <name lang="it">Sensore di pressione</name>
+        <name lang="nl">Drukzender</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,11 +1,12 @@
 <definition width="120" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="en">Solenoid 5 / 2, driven by the pressure in both directions</name>
+        <name lang="en">Valve 5 / 2, driven by the pressure in both directions</name>
         <name lang="fr">Electrovanne 5 / 2, entraînée par la pression dans les deux directions</name>
         <name lang="pl">Zawór sterujący 5/2, sterowany za pomocą ciśnienia w obu kierunkach</name>
         <name lang="cs">Elektromagnetický ventil 5/2, řízený za pomoci tlaku v obou směrech</name>
         <name lang="ar">صمّام بتحكّم كهربائي 5/2 متحرّك بالضغط في الاتجاهين</name>
         <name lang="it">Elettroalvola 5/2 controllata dalla pressione nei due sensi</name>
+        <name lang="nl">Klep 5/2 luchtbediend</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

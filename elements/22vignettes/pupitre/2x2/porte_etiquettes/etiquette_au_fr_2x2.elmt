@@ -7,6 +7,7 @@
         <name lang="fr">Etiquette - Arrêt d'urgence - fr</name>
         <name lang="pl">Etykieta - Zatrzymanie awaryjne - fr</name>
         <name lang="cs">Štítek - nouzové zastavení - fr</name>
+        <name lang="nl">Label Noodstop (fr)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

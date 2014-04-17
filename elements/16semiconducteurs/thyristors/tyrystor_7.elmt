@@ -7,6 +7,7 @@
         <name lang="fr">Thyristor triode blocable</name>
         <name lang="pl">Tyrystor triodowy odłączający z bramką niokreśloną</name>
         <name lang="cs">Vypínací triodový tyristor</name>
+        <name lang="nl">Thyristor uitschakel</name>
     </names>
     <informations>EN 60617: 05-04-07</informations>
     <description>

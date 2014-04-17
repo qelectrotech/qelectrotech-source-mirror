@@ -6,6 +6,7 @@
         <name lang="cs">Plnicí ventil, s elektrickým přednostním okruhem</name>
         <name lang="ar">صمّام توصيل ضغط بدائرة كهربائية ذات أولوية</name>
         <name lang="it">Valvola di riempimento, con comando elettrico prioritario</name>
+        <name lang="nl">Klep vul elektrisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

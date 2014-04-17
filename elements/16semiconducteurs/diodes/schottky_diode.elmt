@@ -7,6 +7,7 @@
         <name lang="pl">Dioda Schottky`ego</name>
         <name lang="cs">Schottkyova dioda</name>
         <name lang="it">Diodo Skottky</name>
+        <name lang="nl">Diode Schottky</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

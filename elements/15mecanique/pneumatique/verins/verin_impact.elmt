@@ -6,6 +6,7 @@
         <name lang="cs">Nárazové vzduchové poháněcí zařízení</name>
         <name lang="ar">مُشغّل نيوماتي تأثير</name>
         <name lang="it">Cilindro impatto pneumatico</name>
+        <name lang="nl">Cilinder impact</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

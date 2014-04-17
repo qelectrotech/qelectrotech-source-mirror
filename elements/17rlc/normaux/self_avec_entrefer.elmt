@@ -6,6 +6,7 @@
         <name lang="fr">Self avec entrefer</name>
         <name lang="pl">Dławik</name>
         <name lang="cs">Tlumivka (indukčnost se vzduchovou mezerou)</name>
+        <name lang="nl">Inductor met spleet</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

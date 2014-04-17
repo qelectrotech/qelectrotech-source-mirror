@@ -6,6 +6,7 @@
         <name lang="cs">Pojistný tlakový ventil</name>
         <name lang="ar">صمّام أمان</name>
         <name lang="it">Valvola di sicurezza</name>
+        <name lang="nl">klep overdruk</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

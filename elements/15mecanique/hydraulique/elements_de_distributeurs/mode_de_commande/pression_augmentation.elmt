@@ -6,6 +6,7 @@
         <name lang="cs">Řízeno nárůstem tlaku</name>
         <name lang="ar">رفع ضغط الهواء</name>
         <name lang="it">Aumento di pressione</name>
+        <name lang="nl">Lucht Stijgend</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

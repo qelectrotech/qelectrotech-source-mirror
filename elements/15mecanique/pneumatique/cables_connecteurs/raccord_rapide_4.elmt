@@ -6,6 +6,7 @@
         <name lang="cs">Rychle se otevírající klapky s mechanickým zpětným působením</name>
         <name lang="ar">صمّام بفتح سريع و بارتداد خلفي ميكانيكي</name>
         <name lang="it">Valvola ad apertura rapida con feedback meccanico</name>
+        <name lang="nl">Snelkoppeling met kleppen</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="cs">Dvojitý ventil 2x3/2 NF-NF</name>
         <name lang="ar">مُوزّعات 2x3/2 NC-NC</name>
         <name lang="it">Valvola 2x3/2 NC/NC</name>
+        <name lang="nl">Klep 2x3/2 NC/NC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

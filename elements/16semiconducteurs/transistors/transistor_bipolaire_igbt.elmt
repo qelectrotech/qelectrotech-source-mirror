@@ -7,6 +7,7 @@
         <name lang="pl">Tranzystor biopolarny IGBT</name>
         <name lang="cs">Dvoupólový tranzistor IGBT</name>
         <name lang="it">transistor bipolare IGBT</name>
+        <name lang="nl">transistor bipolare IGBT</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="pl">Tabela tytułowa</name>
         <name lang="es">Cuadro de titulo de la pagina principal</name>
         <name lang="cs">Titulní tabulka na hlavní straně</name>
+        <name lang="nl">Titel pagina Tabel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

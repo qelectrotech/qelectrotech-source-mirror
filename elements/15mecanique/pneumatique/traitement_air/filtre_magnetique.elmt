@@ -6,6 +6,7 @@
         <name lang="cs">Filtr s magnetickou zábranou</name>
         <name lang="ar">مُرشّح بحاجز مغناطيسي</name>
         <name lang="it">Filtro con barriera magnetica</name>
+        <name lang="nl">Filter met magneetvanger</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

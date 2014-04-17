@@ -6,6 +6,7 @@
         <name lang="cs">Nouzové zastavení odblokované obrácením</name>
         <name lang="ar">توقيف طوارئ - دوران للإطلاق</name>
         <name lang="it">Arresto d'emergenza, sblocco a rotazione</name>
+        <name lang="nl">Knop Noodstop draai reset</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

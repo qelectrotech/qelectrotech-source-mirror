@@ -1,11 +1,12 @@
 <definition width="100" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="en">Solenoid valve 2 / 2, with lever</name>
+        <name lang="en">valve 2 / 2, with lever</name>
         <name lang="fr">Electrovanne 2 / 2, à levier</name>
         <name lang="pl">Zawór sterujący 2/2, sterowany dźwignią, powrót wymuszony sprężyną</name>
         <name lang="cs">Elektromagnetický ventil (solenoid) 2/2, s pákou</name>
         <name lang="ar">صمّام محكوم كهربائيا 2/2 , برافعة</name>
         <name lang="it">Elettrovalvola 2/2 con leva</name>
+        <name lang="nl">klep hefboom 2/2 con leva</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

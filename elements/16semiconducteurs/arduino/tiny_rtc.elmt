@@ -4,6 +4,8 @@
         <name lang="fr">Tiny RTC (horloge temps réel)</name>
         <name lang="pl">Tiny RTC</name>
         <name lang="cs">Tiny RTC (hodiny a kalendář)</name>
+        <name lang="en">Tiny RTC real time clock)</name>
+        <name lang="nl">Tiny RTC Tijdklok</name>
     </names>
     <informations>Charles Ferrand 
 novembre 2013</informations>

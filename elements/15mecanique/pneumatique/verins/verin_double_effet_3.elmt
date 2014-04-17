@@ -6,6 +6,7 @@
         <name lang="cs">Dvojčinné poháněcí zařízení s dutým hřídelem</name>
         <name lang="ar">مُشغّل بفعل مزدوج بذراع فارغة</name>
         <name lang="it">azionatore doppio effetto con stelo cavo</name>
+        <name lang="nl">cilinder met doorlopende holle stang</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

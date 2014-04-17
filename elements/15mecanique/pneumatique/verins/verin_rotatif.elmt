@@ -6,6 +6,7 @@
         <name lang="cs">Otáčivé poháněcí zařízení</name>
         <name lang="ar">مُشغّل دوار</name>
         <name lang="it">Cilindro rotativo</name>
+        <name lang="nl">Cilnder rotatie (luchtmotor)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

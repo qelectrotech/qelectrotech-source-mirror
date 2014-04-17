@@ -6,6 +6,7 @@
         <name lang="cs">Servoventil řízený elektromagneticky, se dvěma cívkami</name>
         <name lang="ar">صمّام مُضاعف</name>
         <name lang="it">Servo-valvola, doppio solenoide</name>
+        <name lang="nl">Klep servo 4/3, elektrisch dubbel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

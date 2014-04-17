@@ -6,6 +6,7 @@
         <name lang="cs">Vypouštěcí ventil oddělovače s automatickým spouštěním</name>
         <name lang="ar">فاصل بصرف آلي</name>
         <name lang="it">Separatore con spurgo automatico</name>
+        <name lang="nl">afscheider automatische aftap</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

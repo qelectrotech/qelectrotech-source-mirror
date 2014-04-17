@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مسارات -P  -&gt; B  مُتصلة 2</name>
-        <name lang="en">2 ports - P -&gt; B connected</name>
-        <name lang="fr">2 voies - P -&gt; B relies</name>
-        <name lang="pl">2 drogi - P -&gt; B połączone</name>
-        <name lang="cs">2 cesty - P -&gt; B spojené</name>
-        <name lang="it">2 porte - P -&gt; B connesse</name>
+        <name lang="en">4 ports - P -&gt; B connected</name>
+        <name lang="fr">4 voies - P -&gt; B relies</name>
+        <name lang="pl">4 drogi - P -&gt; B połączone</name>
+        <name lang="cs">4 cesty - P -&gt; B spojené</name>
+        <name lang="it">4 porte - P -&gt; B connesse</name>
+        <name lang="nl">4 P -&gt; B</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

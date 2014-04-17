@@ -6,6 +6,7 @@
         <name lang="cs">Regulativní ventil 4/2</name>
         <name lang="ar">موزّع 2-4</name>
         <name lang="it">Valvola di controllo 4-2</name>
+        <name lang="nl">P -&gt; A B -&gt; T, P -&gt; B A -&gt; T 4-2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

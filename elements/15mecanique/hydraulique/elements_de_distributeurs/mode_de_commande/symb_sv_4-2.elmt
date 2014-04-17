@@ -6,6 +6,7 @@
         <name lang="pl">Serwozawór 4/2</name>
         <name lang="ar">صمّام محكوم 4-2</name>
         <name lang="it">Servo-valvola 4-2</name>
+        <name lang="nl">klep servo 4-2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

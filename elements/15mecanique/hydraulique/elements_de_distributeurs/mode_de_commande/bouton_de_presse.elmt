@@ -6,6 +6,7 @@
         <name lang="cs">Stisknuté tlačítko</name>
         <name lang="ar">زرّ ضغط</name>
         <name lang="it">Premere il pulsante</name>
+        <name lang="nl">Drukknop</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

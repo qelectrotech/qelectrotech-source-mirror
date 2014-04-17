@@ -6,6 +6,7 @@
         <name lang="cs">Táhlo s nastavitelnou délkou</name>
         <name lang="ar">ضاغط بطول قابل للتعديل</name>
         <name lang="it">Pulsante regolabile</name>
+        <name lang="nl">Drukknop regelbaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

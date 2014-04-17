@@ -7,6 +7,7 @@
         <name lang="cs">Ukazatel tlaku</name>
         <name lang="ar">مُؤشّر ضغط</name>
         <name lang="it">Indicatore di pressione</name>
+        <name lang="nl">Druk aanwijzer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

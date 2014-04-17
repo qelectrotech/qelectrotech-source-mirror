@@ -1,11 +1,12 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="70" type="element" orientation="dyyy">
     <names>
-        <name lang="en">Pneumatic Actuator Double (twin) and contact-free double-acting piston signaling</name>
+        <name lang="en">Pneumatic Actuator Double (twin)</name>
         <name lang="fr">verin actionneur pneumatique à double tiges</name>
         <name lang="pl">Siłownik pneumatyczny podwójny (twin) dwustronnego działania i bezstykową sygnalizacją położenia tłoka</name>
         <name lang="cs">Dvojité vzduchové poháněcí zařízení, zdvihák, a bezstykový dvojčinný signalizační píst</name>
         <name lang="ar">اسطوانة بذراعين</name>
         <name lang="it">Cilindro a doppio stelo</name>
+        <name lang="nl">Cilinder dubbel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

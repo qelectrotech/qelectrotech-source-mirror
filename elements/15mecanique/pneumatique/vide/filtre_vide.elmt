@@ -6,6 +6,7 @@
         <name lang="cs">Vakuový filtr</name>
         <name lang="ar">مُرشّح فراغي</name>
         <name lang="it">Filtro a vuoto</name>
+        <name lang="nl">Filter vacuum</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

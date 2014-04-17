@@ -6,6 +6,7 @@
         <name lang="cs">Vodní čerpadlo s proměnlivým výkonem</name>
         <name lang="ar">مضخّة بتدفق مُتغيّر</name>
         <name lang="it">Pompa a portata variabile</name>
+        <name lang="nl">Pomp variabel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

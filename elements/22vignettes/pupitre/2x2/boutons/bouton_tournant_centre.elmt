@@ -7,6 +7,7 @@
         <name lang="fr">Bouton tournant centré</name>
         <name lang="pl">Łącznik obrotowy przełączny otwarty w pozycji pośredniej</name>
         <name lang="cs">Otočné tlačítko otevřené ve středové pozici</name>
+        <name lang="nl">knop draai stand 0</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

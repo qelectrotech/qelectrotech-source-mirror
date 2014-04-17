@@ -6,6 +6,7 @@
         <name lang="cs">Regulativní ventil 3/2</name>
         <name lang="ar">موزع 2/3</name>
         <name lang="it">Valvola di controllo 3-2</name>
+        <name lang="nl">P -&gt; A, A -&gt; T 3-2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

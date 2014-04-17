@@ -7,6 +7,7 @@
         <name lang="pl">Złącze jednostykowe</name>
         <name lang="cs">Spojka, 1 kolík</name>
         <name lang="it">Connettore, 1 pin</name>
+        <name lang="nl">Connector 1 pin</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

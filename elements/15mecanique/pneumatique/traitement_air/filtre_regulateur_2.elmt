@@ -6,6 +6,7 @@
         <name lang="cs">Filtr, regulátor, tlakoměr, maznice</name>
         <name lang="ar">مُرشّح , مُعدّل, جهاز قياس ضغط, مزيتة</name>
         <name lang="it">Filtro, regolatore, manometro e lubrificatore</name>
+        <name lang="nl">Filter drukregelaar manometer en oliedruppelaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="cs">Vysunovatelný jednočinný vzduchový válec (motor)</name>
         <name lang="ar">اسطوانة (محرك) تيليسكوبي نيوماتي بفعل وحيد</name>
         <name lang="it">Cilindro (motore) telescopico, effetto singolo</name>
+        <name lang="nl">Cilnder telescoop 1 richting</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

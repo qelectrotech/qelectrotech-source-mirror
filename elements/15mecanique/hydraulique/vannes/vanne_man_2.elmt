@@ -6,6 +6,7 @@
         <name lang="cs">Trojcestná klapka řízená ručně</name>
         <name lang="ar">صمّام بثلاث مسارات - تحكّم يدوي</name>
         <name lang="it">Valvola manuale 3vie</name>
+        <name lang="nl">Klep drieweg hand</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

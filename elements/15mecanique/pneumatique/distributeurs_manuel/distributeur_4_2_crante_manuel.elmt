@@ -6,6 +6,7 @@
         <name lang="cs">Uzamykatelný ventil 4/2</name>
         <name lang="ar">مُوزّع 4/2 بماسكة</name>
         <name lang="it">Valvola 4/2 bloccabile</name>
+        <name lang="nl">Klep 4/2 bloccabile</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

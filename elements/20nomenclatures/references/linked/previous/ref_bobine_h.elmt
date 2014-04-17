@@ -1,0 +1,19 @@
+<definition width="30" version="0.3" hotspot_x="0" hotspot_y="10" height="30" type="element" ic="true" orientation="dyyy"link_type="previous_report">
+    <names>
+        <name lang="ar">مرجع ملف (أفقي)</name>
+        <name lang="en">Reference coil h</name>
+        <name lang="it">Riferimento bobina _ (orizzontale)</name>
+        <name lang="fr">Reference bobine h</name>
+        <name lang="pl">Odsyłacz 4 (poziomo)</name>
+        <name lang="cs">Odkaz - cívka (vodorovná)</name>
+        <name lang="nl">Referentie vorig spoel</name>
+    </names>
+    <informations>Author: Computer Shooter
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.95" x1="0.0001" y2="0.95" x2="0.0001"/>
+        <rect width="6" x="-3" y="2.95" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.95" x1="0.0001" y2="8.95" x2="0.0001"/>
+        <input x="2" y="5" size="5" rotate="true" text="_"/>
+    </description>
+</definition>

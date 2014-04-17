@@ -6,6 +6,7 @@
         <name lang="cs">Elektrické řízení (pravá strana)</name>
         <name lang="ar">تحكم كهربائي يمين</name>
         <name lang="it">Comando elettrico Dx</name>
+        <name lang="nl">Spoel Elektrisch rechts</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

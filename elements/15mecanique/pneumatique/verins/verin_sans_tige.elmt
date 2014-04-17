@@ -1,12 +1,15 @@
 <definition width="100" version="0.3" hotspot_x="15" hotspot_y="30" height="80" type="element" orientation="dyyy">
     <names>
-        <name lang="en">Rodless cylinders double-acting with adjustable cushioning at both ends of stroke (linear drive tire)</name>
+        <name lang="en">Rodless cylinders double-acting with 
+        adjustable cushioning at both ends of stroke 
+        (linear drive tire)</name>
         <name lang="fr">
 Vérin sans tige double effet avec amortissement réglable aux deux fins de course (entraînement linéaire pneumatique)</name>
         <name lang="pl">Siłownik pneumatyczny beztłoczyskowy ze sprzężeniem mechanicznym i hamowaniem dwustronnym nastawialnym</name>
         <name lang="cs">Beztyčové dvojčinné válce s nastavitelnou tlumicí vrstvou na obou koncích zdvihu (přímočarý vzduchový pohon)</name>
         <name lang="ar">اسطوانة بدون ذراع بفعل مزدوج و بإخماد قابل للتعديل عند نهايتي المشوار  (تحريك خطّي نيوماتي)</name>
         <name lang="it">Cilindro senza stelo, doppio effetto, con ammortizzazione regolabile ai fine corsa (azionamento pneumatico lineare)</name>
+        <name lang="nl">Cilnder stangloos magneetkoppeling met buffer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

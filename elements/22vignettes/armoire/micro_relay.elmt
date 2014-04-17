@@ -6,6 +6,7 @@
         <name lang="pl">Przekaźnik</name>
         <name lang="it">Micro relè</name>
         <name lang="cs">Mikrorelé</name>
+        <name lang="nl">relais micro</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

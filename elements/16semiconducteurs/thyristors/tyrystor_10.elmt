@@ -1,16 +1,14 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
         <name lang="ar">ثايريستور رباعي الأطراف مكبوح في الإنحياز العكسي</name>
-        <name lang="de">rückwärts sperrende Thyristortetriode
-</name>
-        <name lang="en">Reverse blocking thyristor tetrode
-type
-</name>
+        <name lang="de">rückwärts sperrende Thyristortetriode</name>
+        <name lang="en">Reverse blocking thyristor tetrode type</name>
         <name lang="it">Tiristore tetrodo bloccato nel sen-so inverso di conduzione</name>
         <name lang="fr">Thyristor tétrode bloqué en inverse
 </name>
         <name lang="pl">Tyrystor tetrodowy blokujący wstecznie</name>
         <name lang="cs">Tetrodový tyristor, blokující obráceně</name>
+        <name lang="nl">Thyristor tetrode</name>
     </names>
     <informations>EN 60617: 05-04-10</informations>
     <description>

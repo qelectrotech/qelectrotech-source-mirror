@@ -7,6 +7,7 @@
         <name lang="fr">Clapet simple</name>
         <name lang="pl">Zawór zwrotny</name>
         <name lang="cs">Pojistný ventil</name>
+        <name lang="nl">Klep terugslag</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

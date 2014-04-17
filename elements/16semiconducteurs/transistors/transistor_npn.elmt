@@ -8,6 +8,7 @@
         <name lang="fr">Transistor NPN</name>
         <name lang="pl">Tranzystor NPN</name>
         <name lang="cs">Tranzistor NPN</name>
+        <name lang="nl">Transistor NPN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

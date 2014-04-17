@@ -9,6 +9,7 @@ rotation
         <name lang="cs">Motor s jedním směrem otáčení</name>
         <name lang="ar">مُحرّك باتجاه دوران واحد</name>
         <name lang="it">Motore 1 direzione</name>
+        <name lang="nl">Motor 1 richting</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

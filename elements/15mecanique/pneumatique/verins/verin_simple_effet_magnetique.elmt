@@ -6,6 +6,7 @@
         <name lang="cs">Jednočinné zdviháky, válce pístnice</name>
         <name lang="ar">اسطوانة بفعل وحيد</name>
         <name lang="it">Cilindro effetto singolo</name>
+        <name lang="nl">Cilinder 1 richting</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

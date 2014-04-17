@@ -6,6 +6,7 @@
         <name lang="cs">Pomocná nádrž na vzduch</name>
         <name lang="ar">خزّان</name>
         <name lang="it">Serbatoio</name>
+        <name lang="nl">Tank</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

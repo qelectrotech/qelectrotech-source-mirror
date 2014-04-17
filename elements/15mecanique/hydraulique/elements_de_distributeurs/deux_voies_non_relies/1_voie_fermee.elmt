@@ -6,6 +6,7 @@
         <name lang="pl">2 drogi, zamknięty</name>
         <name lang="cs">2 otvory zavřené</name>
         <name lang="it">2 porte chiuse</name>
+        <name lang="nl">2 gesloten</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

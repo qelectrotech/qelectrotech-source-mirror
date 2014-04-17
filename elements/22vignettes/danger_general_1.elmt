@@ -6,6 +6,7 @@
         <name lang="fr">Danger</name>
         <name lang="pl">Inne niebezpieczeństwo</name>
         <name lang="cs">Jiné nebezpečí</name>
+        <name lang="nl">Gevaar algemeen klein</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

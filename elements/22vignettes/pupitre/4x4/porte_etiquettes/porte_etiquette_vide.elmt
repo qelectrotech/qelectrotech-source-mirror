@@ -7,6 +7,7 @@
         <name lang="fr">Porte étiquette vièrge</name>
         <name lang="pl">Bez oznaczenia</name>
         <name lang="cs">Bez označení</name>
+        <name lang="nl">Label houder leeg</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

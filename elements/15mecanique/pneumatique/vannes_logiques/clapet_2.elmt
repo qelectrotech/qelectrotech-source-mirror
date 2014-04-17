@@ -6,6 +6,7 @@
         <name lang="cs">Řízený vratný ventil, odklopný tlakem, vychýlený pružinou</name>
         <name lang="ar">صمّام ضد الرجع بزمبرك محكوم</name>
         <name lang="it">Valvola di ritegno a molla controllata</name>
+        <name lang="nl">Klep terugslag met veer en luchtbediend</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

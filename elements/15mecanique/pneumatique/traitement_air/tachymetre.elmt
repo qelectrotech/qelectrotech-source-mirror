@@ -1,11 +1,12 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
     <names>
-        <name lang="en">Tachometer for measuring the frequency of rotation</name>
+        <name lang="en">Tachometer</name>
         <name lang="fr">Tachymètre</name>
         <name lang="pl">Obrotomierz do pomiaru częstości obrotów</name>
         <name lang="cs">Otáčkoměr</name>
         <name lang="ar">مقياس سرعة تاكومتر</name>
         <name lang="it">Tachimetro</name>
+        <name lang="nl">Rotatiemeter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

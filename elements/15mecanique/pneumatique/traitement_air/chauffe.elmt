@@ -6,6 +6,7 @@
         <name lang="cs">Ohřívač</name>
         <name lang="ar">سخّان</name>
         <name lang="it">Riscaldatore</name>
+        <name lang="nl">Verwarming</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

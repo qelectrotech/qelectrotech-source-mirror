@@ -7,6 +7,7 @@
         <name lang="fr">Disjoncteur tripolaire</name>
         <name lang="pl">Wyłącznik trójbiegunowy</name>
         <name lang="cs">Třípólový jistič</name>
+        <name lang="nl">stroom onderbreker 3 polig</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

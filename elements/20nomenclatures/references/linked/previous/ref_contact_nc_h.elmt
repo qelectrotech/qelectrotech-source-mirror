@@ -1,0 +1,19 @@
+<definition width="30" version="0.3" hotspot_x="12" hotspot_y="11" height="30" type="element" ic="true" orientation="dyyy" link_type="previous_report">
+    <names>
+        <name lang="ar">مرجع مُلامس NC (أفقي)</name>
+        <name lang="en">Reference contact NC h</name>
+        <name lang="it">Rif. contatto NC _ (orizzontale)</name>
+        <name lang="fr">Reference contact NC h</name>
+        <name lang="pl">Odsyłacz 2 (poziomo)</name>
+        <name lang="cs">Odkaz_2 - kontakt NC (vodorovný)</name>
+        <name lang="nl">Referentie vorig contact (NC)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="3" x1="-8" y2="5" x2="0" y3="5" x3="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-8" y2="4" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-10" y2="5" x2="-8"/>
+        <input x="2" y="4.5" size="5" rotate="true" text="_"/>
+    </description>
+</definition>

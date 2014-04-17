@@ -6,6 +6,7 @@
         <name lang="fr">Bâche à l'air libre</name>
         <name lang="pl">Zbiornik otwarty</name>
         <name lang="cs">Otevřená nádrž</name>
+        <name lang="nl">Onder niveau</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

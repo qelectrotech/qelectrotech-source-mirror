@@ -1,11 +1,12 @@
 <definition width="40" version="0.22" hotspot_x="10" hotspot_y="40" height="70" type="element" orientation="dyyy">
     <names>
-        <name lang="en">2 ports - A-B-T  connected</name>
-        <name lang="fr">2 voies - A-B-T Relies</name>
-        <name lang="cs">2 cesty - A-B-T spojené</name>
-        <name lang="pl">2 drogi - A-B-T połączone</name>
+        <name lang="en">4 ports - A-B-T  connected</name>
+        <name lang="fr">4 voies - A-B-T Relies</name>
+        <name lang="cs">4 cesty - A-B-T spojené</name>
+        <name lang="pl">4 drogi - A-B-T połączone</name>
         <name lang="ar">مسارات -A-B-T مُتّصلة 2</name>
-        <name lang="it">2 porte - A-B-T connesse</name>
+        <name lang="it">4 porte - A-B-T connesse</name>
+        <name lang="nl">4 A - B - T</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

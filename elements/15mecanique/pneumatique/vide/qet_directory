@@ -5,5 +5,6 @@
         <name lang="pl">Podciśnienie</name>
         <name lang="cs">Vzduchoprázdno</name>
         <name lang="it">Vuoto</name>
+        <name lang="nl">Vacuum</name>
     </names>
 </qet-directory>

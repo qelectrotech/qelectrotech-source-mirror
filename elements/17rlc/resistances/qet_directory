@@ -11,5 +11,6 @@
         <name lang="pl">Rezystor</name>
         <name lang="es">Resistencia</name>
         <name lang="cs">Odporník</name>
+        <name lang="nl">Weerstand</name>
     </names>
 </qet-directory>

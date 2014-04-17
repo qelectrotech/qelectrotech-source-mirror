@@ -6,6 +6,7 @@
         <name lang="pl">Tranzystor biopolarny npn</name>
         <name lang="cs">Dvoupólový tranzistor npn</name>
         <name lang="it">Transistor bipolare NPN</name>
+        <name lang="nl">Transistor bipolare NPN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

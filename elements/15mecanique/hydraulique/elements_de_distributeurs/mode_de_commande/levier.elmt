@@ -7,6 +7,7 @@
         <name lang="fr">Levier</name>
         <name lang="pl">Dźwignia</name>
         <name lang="cs">Páka</name>
+        <name lang="nl">hefboom</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

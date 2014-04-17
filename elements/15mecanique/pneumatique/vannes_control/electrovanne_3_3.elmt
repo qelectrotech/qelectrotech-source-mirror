@@ -6,6 +6,7 @@
         <name lang="cs">Řídící rozdělovač 3/3, řízený elektromagneticky</name>
         <name lang="ar">مُوزّع تحكم 3/3 , تحكم كهرومغناطيسي</name>
         <name lang="it">Distributore 3/3 di controllo, elettromagnetico</name>
+        <name lang="nl">Klep elektrisch 3/3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

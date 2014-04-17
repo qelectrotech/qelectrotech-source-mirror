@@ -10,6 +10,7 @@
 </name>
         <name lang="pl">Rezystor regulacyjny</name>
         <name lang="cs">Nastavitelný fotoodporník</name>
+        <name lang="nl">Weerstand instelbaar</name>
     </names>
     <informations>EN 60617: 04-01-03</informations>
     <description>

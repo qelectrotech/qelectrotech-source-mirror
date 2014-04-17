@@ -6,6 +6,7 @@
         <name lang="cs">Přesně nastavený ventil</name>
         <name lang="ar">صمّام معياري</name>
         <name lang="it">Valvola tarata</name>
+        <name lang="nl">Klep gekalibreerd</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

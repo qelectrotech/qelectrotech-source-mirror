@@ -10,6 +10,7 @@
 </name>
         <name lang="pl">Dioda wsteczna</name>
         <name lang="cs">Obrácená dioda</name>
+        <name lang="nl">Diode tunnel</name>
     </names>
     <informations>EN 60617: 05-03-08</informations>
     <description>

@@ -5,6 +5,7 @@
         <name lang="fr">Capteur HC-SR04</name>
         <name lang="pl">Ultradźwiękowy czujnik odległości HC-SR04</name>
         <name lang="cs">Ultrazvukové vzdálenostní čidlo HC-SR04</name>
+        <name lang="nl">Ultrasoon afstandsensor HC-SR04</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

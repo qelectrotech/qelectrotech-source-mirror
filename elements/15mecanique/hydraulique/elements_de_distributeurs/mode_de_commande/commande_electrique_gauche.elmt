@@ -6,6 +6,7 @@
         <name lang="cs">Elektrické řízení (levá strana)</name>
         <name lang="ar">تحكم كهربائي يسار</name>
         <name lang="it">Comando elettrico Sx</name>
+        <name lang="nl">Spoel Elektrisch links</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

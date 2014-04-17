@@ -6,6 +6,7 @@
         <name lang="cs">Dělič průtoku</name>
         <name lang="ar">مُقسّم تدفّق</name>
         <name lang="it">Ripartitore di flusso</name>
+        <name lang="nl">Stroomverdeler</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

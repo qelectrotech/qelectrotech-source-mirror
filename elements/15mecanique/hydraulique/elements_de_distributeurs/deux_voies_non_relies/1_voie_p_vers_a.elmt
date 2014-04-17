@@ -6,6 +6,7 @@
         <name lang="pl">2 drogi, otwarty</name>
         <name lang="cs">2 otvory otevřené usměrněné</name>
         <name lang="it">2 porte aperte</name>
+        <name lang="nl">2 P -&gt; A</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

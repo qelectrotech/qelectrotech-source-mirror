@@ -9,6 +9,7 @@ rotation
         <name lang="cs">Motor se dvěma směry otáčení</name>
         <name lang="ar">مُحرّك بدوران في اتجاهين</name>
         <name lang="it">Motore 2 direzioni</name>
+        <name lang="nl">Motor 2 richtingen</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

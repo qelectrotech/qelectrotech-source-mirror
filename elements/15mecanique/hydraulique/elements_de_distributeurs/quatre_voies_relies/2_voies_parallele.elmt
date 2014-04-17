@@ -1,11 +1,12 @@
 <definition width="40" version="0.22" hotspot_x="10" hotspot_y="40" height="70" type="element" orientation="dyyy">
     <names>
-        <name lang="en">2 ports parallel connected</name>
-        <name lang="fr">2 voies parallèles connectées</name>
-        <name lang="cs">2 cesty souběžné spojené</name>
-        <name lang="pl">2 drogi równoległe, połączone</name>
-        <name lang="ar">مسارات مُتوازية مُتّصلة 2</name>
-        <name lang="it">2 porte parallele connesse</name>
+        <name lang="en">4 ports parallel connected</name>
+        <name lang="fr">4 voies parallèles connectées</name>
+        <name lang="cs">4 cesty souběžné spojené</name>
+        <name lang="pl">4 drogi równoległe, połączone</name>
+        <name lang="ar">سرات مُتوازية مُتّصلة 2</name>
+        <name lang="it">4 porte parallele connesse</name>
+        <name lang="nl">4 P -&gt; A, B -&gt; T </name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

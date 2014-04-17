@@ -6,6 +6,7 @@
         <name lang="cs">Plnicí ventil, řízený vzduchem</name>
         <name lang="ar">صمّام لتوصيل الضغط, تحكّم نيوماتي</name>
         <name lang="it">Valvola di riempimento pneumatica</name>
+        <name lang="nl">Klep vul pneumatisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

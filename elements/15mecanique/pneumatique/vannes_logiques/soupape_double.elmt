@@ -6,6 +6,7 @@
         <name lang="cs">Ventil dvojitého signálu (logický ventil A (AND))</name>
         <name lang="ar">مكبس إشارة مزدوجة (صمّام منطقي كفاية AND )</name>
         <name lang="it">Valvola di segnale doppia (ADN logico)</name>
+        <name lang="nl">klep signaal (AND)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

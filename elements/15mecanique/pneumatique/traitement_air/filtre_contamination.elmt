@@ -6,6 +6,7 @@
         <name lang="cs">Filtr s ukazatelem znečištění</name>
         <name lang="ar">مُرشّح بمُؤشّر تلوّث</name>
         <name lang="it">Filtro con indicatore di contaminazione</name>
+        <name lang="nl">Filter met vervuilingsindicator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

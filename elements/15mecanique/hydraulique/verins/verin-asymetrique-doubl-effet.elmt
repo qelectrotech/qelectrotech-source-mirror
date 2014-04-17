@@ -7,6 +7,7 @@
         <name lang="fr">Vérin assymétrique double effet tige orientée à droite</name>
         <name lang="pl">Siłownik asymetryczny podwójnego działania</name>
         <name lang="cs">Dvojčinný nesouměrný válec, osa natočená vpravo</name>
+        <name lang="nl">Cilinder dubbelwerkend</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

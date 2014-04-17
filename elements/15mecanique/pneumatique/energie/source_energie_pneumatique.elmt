@@ -6,6 +6,7 @@
         <name lang="cs">Zdroje vzduchové energie</name>
         <name lang="ar">مصدر طاقة نيوماتية</name>
         <name lang="it">Alimentazione motore</name>
+        <name lang="nl">Toevoer lucht</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,6 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
-        <name lang="en">The pressure regulator, two-way, single, adjustable spring</name>
+        <name lang="en">Pressure regulator adjustable spring</name>
         <name lang="fr">Régulateur de
 pression
 </name>
@@ -8,6 +8,7 @@ pression
         <name lang="cs">Ovladač tlaku, dvoucestný, jednocestný, nastavitelná pružina</name>
         <name lang="ar">مُعدّل ضغط</name>
         <name lang="it">Regolatore di pressione</name>
+        <name lang="nl">Drukregelaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

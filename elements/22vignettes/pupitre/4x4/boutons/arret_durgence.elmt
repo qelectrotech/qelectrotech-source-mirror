@@ -6,6 +6,7 @@
         <name lang="cs">Nouzové zastavení</name>
         <name lang="ar">توقيف طارئ</name>
         <name lang="it">Arresto d'emergenza</name>
+        <name lang="nl">Knop Noodstop</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

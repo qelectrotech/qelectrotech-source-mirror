@@ -6,6 +6,7 @@
         <name lang="cs">Stálé větrání</name>
         <name lang="ar">تهوئة مسنمرة</name>
         <name lang="it">Ventilazione continua</name>
+        <name lang="nl">Uitlaat</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

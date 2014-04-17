@@ -6,6 +6,7 @@
         <name lang="pl">Przekaźnik</name>
         <name lang="it">Relè miniatura</name>
         <name lang="cs">Miniaturní relé</name>
+        <name lang="nl">relais miniatuur basis stekker</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

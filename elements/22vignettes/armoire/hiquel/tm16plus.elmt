@@ -6,6 +6,7 @@
         <name lang="pl">Wielofunkcyjny przekaźnik czasowy TM16+</name>
         <name lang="it">Relè temporizzatore multifunzione TM16+</name>
         <name lang="cs">Vícefunkční časové relè TM16+</name>
+        <name lang="nl">Tijdrelais multi TM16+</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

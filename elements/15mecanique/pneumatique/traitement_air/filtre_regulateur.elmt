@@ -6,6 +6,7 @@
         <name lang="cs">Regulátor tlaku filtru</name>
         <name lang="ar">مُرشّح بتعديل الضغط</name>
         <name lang="it">Filtro e regolatore di pressione</name>
+        <name lang="nl">Filter + drukregelaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

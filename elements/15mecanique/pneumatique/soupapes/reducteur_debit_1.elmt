@@ -1,6 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="40" height="80" type="element" orientation="dnnn">
     <names>
-        <name lang="en">Adjustable throttle valve</name>
+        <name lang="en">Adjustable throttle valve oneway</name>
         <name lang="fr">Réducteur de
 débit
 unidirectionnel
@@ -9,6 +9,7 @@ unidirectionnel
         <name lang="cs">Jednocestná škrtící klapka</name>
         <name lang="ar">مُخفّض تدفّق أحادي الإتجاه</name>
         <name lang="it">Riduttore flusso unidirezionale</name>
+        <name lang="nl">Smoring regelbaar 1 richting</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="it">Induttanza 2</name>
         <name lang="pl">Cewka (forma 2)</name>
         <name lang="cs">Cívka (forma 2)</name>
+        <name lang="nl">Inductor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

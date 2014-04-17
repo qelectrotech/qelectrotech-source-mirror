@@ -6,6 +6,7 @@
         <name lang="cs">Tlačítko</name>
         <name lang="ar">زرّ</name>
         <name lang="it">Pulsante</name>
+        <name lang="nl">Drukknop</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

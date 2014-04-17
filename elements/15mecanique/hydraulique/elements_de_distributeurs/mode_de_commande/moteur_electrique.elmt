@@ -7,6 +7,7 @@
         <name lang="fr">Moteur electrique</name>
         <name lang="pl">Silnik elektryczny</name>
         <name lang="cs">Elektrický motor</name>
+        <name lang="nl">Motor elektrisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

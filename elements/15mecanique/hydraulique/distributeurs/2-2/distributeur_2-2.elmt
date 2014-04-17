@@ -6,6 +6,7 @@
         <name lang="cs">Regulativní ventil obvykle otevřený 2/2</name>
         <name lang="ar">مّوزّع عاديّا مفتوح 2-2</name>
         <name lang="it">Valvola di controllo NO 2-2</name>
+        <name lang="nl">P -&gt; A, gesloten NO 2-2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

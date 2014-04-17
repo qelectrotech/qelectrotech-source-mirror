@@ -1,13 +1,13 @@
 <definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
     <names>
         <name lang="ar">ترياك , بوابة N</name>
-        <name lang="en">rückwärts sperrende Thyristortriode, N-Gate
-</name>
-        <name lang="fr">Thyristor triode bloqué en inverse, gâchette N
-</name>
+        <name lang="en">Reverse blocking Thyristortriode, N-Gate</name>
+        <name lang="de">rückwärts sperrende Thyristortriode, N-Gate</name>
+        <name lang="fr">Thyristor triode bloqué en inverse, gâchette N</name>
         <name lang="pl">Tyrystor triodowy dwukierunkowy. Triak</name>
         <name lang="cs">Triodový tyristor blokující obráceně, brána N</name>
         <name lang="it">Tiristore triodo bloccato nel senso inverso di conduzione, porta N (controllato sull’anodo)</name>
+        <name lang="nl">Triac N gate</name>
     </names>
     <informations>EN 60617: 05-04-11</informations>
     <description>

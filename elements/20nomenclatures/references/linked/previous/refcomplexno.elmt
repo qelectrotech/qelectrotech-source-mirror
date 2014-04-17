@@ -1,0 +1,25 @@
+<definition width="40" version="0.4" hotspot_x="25" hotspot_y="31" height="60" type="element" ic="true" orientation="dyyy" link_type="previous_report">
+    <names>
+        <name lang="en">ref complex contact NO</name>
+        <name lang="it">Contatto NO</name>
+        <name lang="fr">Contact NO</name>
+        <name lang="es">Contacto NO</name>          
+        <name lang="cs">Zrcadlový kontakt NO</name>
+        <name lang="nl">referentie vorig complex contact (NO)</name>
+    </names>
+    <informations>autor: pawel32640
+
+norma: EN 60947-4-1
+załącznik: F
+
+licencja: zobacz  http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-23" y="16" size="4" text="14"/>
+        <input x="-23" y="-16" size="5" text="13"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-9" x2="-10"/>
+        <input x="-2" y="0.5" size="10" text="_"/>
+        <polygon x4="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="-10" y2="10" x2="-10" y3="-9" x3="-15" y4="-9"/>
+        <terminal x="-10" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="20" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>

@@ -7,6 +7,7 @@
         <name lang="fr">Vanne trois voies</name>
         <name lang="pl">Zawór trójdrogowy</name>
         <name lang="cs">Trojcestná klapka</name>
+        <name lang="nl">Klep Drieweg</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

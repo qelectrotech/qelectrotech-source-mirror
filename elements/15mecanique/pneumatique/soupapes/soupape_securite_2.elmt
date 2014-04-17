@@ -1,11 +1,12 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
-        <name lang="en">Pressure relief valve, three-way, single, adjustable spring</name>
+        <name lang="en">Pressure relief valve adjustable spring</name>
         <name lang="fr">Soupape de sécurité</name>
         <name lang="pl">Zawór ograniczający ciśnienie, trójdrogowy, jednostopniowy, nastawiany sprężyną</name>
         <name lang="cs">Pojistný tlakový ventil, trojcestný, jednocestný, nastavitelná pružina</name>
         <name lang="ar">صمّام أمان</name>
         <name lang="it">Valvola di sicurezza</name>
+        <name lang="nl">Klep overdruk</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

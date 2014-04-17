@@ -8,6 +8,7 @@ débit variable
         <name lang="cs">Nastavitelná škrtící klapka</name>
         <name lang="ar">مُخفّض تدفّق قابل للتعديل</name>
         <name lang="it">Riduttore di flusso regolabile</name>
+        <name lang="nl">Smoring regelbaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="cs">Ukazatel hladiny kapaliny</name>
         <name lang="ar">مُؤشّر مستوى سائل</name>
         <name lang="it">Indicatore di livello del liquido</name>
+        <name lang="nl">Vloeistof niveau aanwijzer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

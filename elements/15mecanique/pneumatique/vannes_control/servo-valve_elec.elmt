@@ -6,6 +6,7 @@
         <name lang="cs">Servoventil řízený dvěma elektromagnetickými cívkami</name>
         <name lang="ar">صمّام مُضاعف بتحكّم كهرومغناطيسي</name>
         <name lang="it">Servo-valvola elettromagnetica a due bobine</name>
+        <name lang="nl">Klep servo 4/3 elektrisch 2 spoel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

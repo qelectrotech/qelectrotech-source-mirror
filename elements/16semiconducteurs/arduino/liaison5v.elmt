@@ -1,11 +1,12 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="ar">توصيلة  5V</name>
-        <name lang="en">5volt</name>
+        <name lang="en">5 volt</name>
         <name lang="fr">Liaisons 5volt</name>
         <name lang="pl">Łączówka +5V</name>
         <name lang="cs">Spojení +5V</name>
         <name lang="it">Alim. +5v</name>
+        <name lang="nl">Voedingrail +5v</name>
     </names>
     <informations>ezza</informations>
     <description>

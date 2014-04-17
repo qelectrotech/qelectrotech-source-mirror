@@ -7,6 +7,7 @@
         <name lang="fr">Potentiomètre</name>
         <name lang="pl">Potencjometr</name>
         <name lang="cs">Potenciometr</name>
+        <name lang="nl">Potentiometer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

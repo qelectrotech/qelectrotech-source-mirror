@@ -6,6 +6,7 @@
         <name lang="cs">Uzavírací šoupátko</name>
         <name lang="ar">صمّام توقيف</name>
         <name lang="it">Valvola d'intercettazione</name>
+        <name lang="nl">Klep stop</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

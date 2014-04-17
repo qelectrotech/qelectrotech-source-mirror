@@ -7,6 +7,7 @@
         <name lang="fr">Ressort</name>
         <name lang="pl">Sprężyna (strona prawa)</name>
         <name lang="cs">Pružina (pravá strana)</name>
+        <name lang="nl">Veer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

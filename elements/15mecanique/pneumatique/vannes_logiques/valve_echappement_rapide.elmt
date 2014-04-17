@@ -6,6 +6,7 @@
         <name lang="pl">Przełącznik obiegu (zawór logiczny LUB)</name>
         <name lang="ar">بوابة كفاية (OR)</name>
         <name lang="it">Porta logica OR</name>
+        <name lang="nl">Klep (OR)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

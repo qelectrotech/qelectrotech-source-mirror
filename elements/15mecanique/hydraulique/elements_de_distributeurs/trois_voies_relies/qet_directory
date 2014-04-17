@@ -4,6 +4,7 @@
         <name lang="en">3 ports connected</name>
         <name lang="cs">3 cesty spojené</name>
         <name lang="pl">Trójdrogowy z przyłączami</name>
-        <name lang="it">2 vie con connessioni</name>
+        <name lang="it">3 vie con connessioni</name>
+        <name lang="nl">3 aansluiting buiten</name>
     </names>
 </qet-directory>

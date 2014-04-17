@@ -1,0 +1,20 @@
+<definition width="40" version="0.4" hotspot_x="0" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy" link_type="next_report">
+    <names>
+        <name lang="ar">الصفحة التالية</name>
+        <name lang="de">Refaus</name>
+        <name lang="el">Επόμενη σελίδα</name>
+        <name lang="en">reference next</name>
+        <name lang="it">Foglio successivo</name>
+        <name lang="fr">Refout</name>
+        <name lang="pl">Wyjście adresowe</name>
+        <name lang="es">Folio siguiente</name>
+        <name lang="cs">Další list</name>
+        <name lang="nl">Referentie volgend</name>
+    </names>
+    <informations>Author: Computer Shooter
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="5" y="0" size="5" rotate="true" text="/"/>
+
+    </description>
+</definition>

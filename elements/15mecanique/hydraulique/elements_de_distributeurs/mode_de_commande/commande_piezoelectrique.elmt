@@ -6,6 +6,7 @@
         <name lang="cs">Piezoelektrické řízení</name>
         <name lang="ar">انضغاط كهربائي</name>
         <name lang="it">Comando piezoelettrico</name>
+        <name lang="nl">Piezo lektrisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

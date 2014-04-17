@@ -6,6 +6,7 @@
         <name lang="cs">Převodník analogově tlakový</name>
         <name lang="ar">حسّاس ضغط تماثلي</name>
         <name lang="it">Analogico / pressione</name>
+        <name lang="nl">Druk analoog blok</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

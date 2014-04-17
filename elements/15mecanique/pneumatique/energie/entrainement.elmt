@@ -6,6 +6,7 @@
         <name lang="cs">hlavní pohon</name>
         <name lang="ar">مُحرّك رئيسي</name>
         <name lang="it">Motore principale</name>
+        <name lang="nl">Motor algemeen</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

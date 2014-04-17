@@ -6,6 +6,7 @@
         <name lang="cs">Dvoucestný ovladač průtoku s vyrovnáním teploty, s proměnlivou výstupní průtokovou rychlostí</name>
         <name lang="ar">مُخفّض تدفق بمسارين و بتعويض حراري خرج التدفّق قابل للتعديل</name>
         <name lang="it">Regolatore di flusso, con compensazione di temperatura e uscita variabile</name>
+        <name lang="nl">stromingsregelaar met temperatuurcompensatie</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

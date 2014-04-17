@@ -1,11 +1,12 @@
 <definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="en">Valve 4 / 3 control, closed in mid-position</name>
-        <name lang="fr">Vanne 4 / 3 de contrôle, fermée à la mi-position</name>
+        <name lang="en">Valve 4 / 3 control, open in mid-position</name>
+        <name lang="fr">Vanne 4 / 3 de contrôle, open à la mi-position</name>
         <name lang="pl">Zawór sterujący 4/3, zamknięty w położeniu środkowym, z przekryciem ujemnym, z nieskończoną liczbą połączeń pośrednich</name>
         <name lang="cs">Řídící ventil 4/3, uzavřený ve středové poloze</name>
         <name lang="ar">صمّام تحكّم 4/3 , مغلق عند منتصف الموضع</name>
-        <name lang="it">Valvola 4/3 di controllo, chiusa in posizione intermedia</name>
+        <name lang="it">Valvola 4/3 di controllo, aperto in posizione intermedia</name>
+        <name lang="nl">Klep 4/3 open in stop (niet bruikbaar)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

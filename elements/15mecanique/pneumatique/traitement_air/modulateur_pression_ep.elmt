@@ -6,6 +6,7 @@
         <name lang="cs">Ovladač tlaku E/P</name>
         <name lang="ar">مُعدّل ضغط E/P</name>
         <name lang="it">Regolatore di pressione E/P</name>
+        <name lang="nl">Drukregelaar I/P omzetter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

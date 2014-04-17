@@ -6,6 +6,7 @@
         <name lang="cs">Dvoucestný ovladač průtoku, s proměnlivou výstupní průtokovou rychlostí</name>
         <name lang="ar">مُخفّض تدفّق ثنائي الإتجاه قابل للتعديل</name>
         <name lang="it">Riduttore di flusso bidirezionale regolabile</name>
+        <name lang="nl">Smoring regelbaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,11 +1,13 @@
 <definition width="130" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
-        <name lang="en">Pneumatic Actuator "tandem" double acting with single piston rod and piston contactless signaling</name>
+        <name lang="en">Pneumatic Actuator "tandem" double acting 
+        with single piston rod and piston contactless signaling</name>
         <name lang="fr">Actionneur pneumatique "tandem" à double effet avec tige de piston unique</name>
         <name lang="pl">Siłownik pneumatyczny "tandem" dwustronnego działania z jednostronnym tłoczyskiem i bezstykową sygnalizacją położenia tłoka</name>
         <name lang="cs">Dvojčinné vzduchové poháněcí zařízení "tandem" s jednou pístnicí, s jednou tyčí pístu, a bezstykově signalizujícím pístem</name>
         <name lang="ar">مُشغّل نيوماتي "جنب إلى جنب" بفعل مزدوج بذراع مكبس وحيد</name>
         <name lang="it">Cilindro "tandem" doppio effetto con stelo unico</name>
+        <name lang="nl">Cilinder tandem met magneet</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

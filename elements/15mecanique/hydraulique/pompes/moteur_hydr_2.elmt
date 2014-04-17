@@ -7,6 +7,7 @@
         <name lang="fr">Moteur hydraulique 2</name>
         <name lang="pl">Silnik hydrauliczny o jednym kierunku przepływu, o stałej objętości roboczej i o jednym kierunku obrotów</name>
         <name lang="cs">Vodní motor 2</name>
+        <name lang="nl">Motor 2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

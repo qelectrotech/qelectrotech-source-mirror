@@ -6,6 +6,7 @@
         <name lang="cs">Řídící rozdělovač 4/2, řízený tlačítkem</name>
         <name lang="ar">مُوزّع تحكّم 4/2 , تحكّم بزرّ ضاغط</name>
         <name lang="it">Distributore 4/2 di controllo, comando a pulsante</name>
+        <name lang="nl">Klep drukknop 4/2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

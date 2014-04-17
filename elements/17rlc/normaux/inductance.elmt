@@ -11,6 +11,7 @@
         <name lang="pl">Cewka</name>
         <name lang="es">Inductor</name>
         <name lang="cs">Indukční cívka</name>
+        <name lang="nl">Inductor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

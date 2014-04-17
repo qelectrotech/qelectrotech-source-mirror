@@ -6,6 +6,7 @@
         <name lang="cs">Prvek elektrického vedení</name>
         <name lang="ar">عنصر كابل كهربائي</name>
         <name lang="it">Cavo elettrico</name>
+        <name lang="nl">Leiding elektrisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

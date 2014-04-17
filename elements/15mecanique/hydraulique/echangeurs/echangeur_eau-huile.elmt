@@ -7,6 +7,7 @@
         <name lang="fr">Echangeur Eau-Huile</name>
         <name lang="pl">Wodno-olejowy wymiennik ciepła</name>
         <name lang="cs">Výměník voda olej</name>
+        <name lang="nl">Water Olie warmtewisselaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

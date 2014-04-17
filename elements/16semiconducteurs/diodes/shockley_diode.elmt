@@ -7,6 +7,7 @@
         <name lang="pl">Dynistor</name>
         <name lang="cs">Shockleyova dioda (Dynistor)</name>
         <name lang="it">Diodo Shockley</name>
+        <name lang="nl">Diode Shockley</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="cs">Nouzové zastavení odblokované klíčkem</name>
         <name lang="ar">توقيف طارئ بمفتاح</name>
         <name lang="it">Arresto d'emergenza a chiave</name>
+        <name lang="nl">Knop noodstop met slot</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

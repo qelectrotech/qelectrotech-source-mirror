@@ -1,0 +1,21 @@
+<definition width="30" version="0.3" hotspot_x="7" hotspot_y="5" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">إحالة على دخل </name>
+        <name lang="de">Ausgangsklemme</name>
+        <name lang="el">Ακροδέκτης εξόδου</name>
+        <name lang="en">Output terminal</name>
+        <name lang="it">Terminale di uscita</name>
+        <name lang="fr">Renvoi schéma in</name>
+        <name lang="pl">Wejście adresowe</name>
+        <name lang="es">Punto de salida</name>
+        <name lang="cs">Výstupy</name>
+        <name lang="nl">referentie uitgang</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input x="5" y="13" size="6" text="()"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="-4" y2="5" x2="0" y3="-1" x3="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.5" x1="0" y2="20" x2="0"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

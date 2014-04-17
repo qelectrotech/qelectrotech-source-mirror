@@ -7,6 +7,7 @@
         <name lang="fr">Diode à dépendance thermique</name>
         <name lang="pl">Dioda o zależności temperaturowej.</name>
         <name lang="cs">Dioda zaznamenávající teplotu</name>
+        <name lang="nl">Diode temperatuur</name>
     </names>
     <informations>EN 60617: 05-03-03</informations>
     <description>

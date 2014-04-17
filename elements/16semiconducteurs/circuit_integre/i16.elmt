@@ -8,6 +8,7 @@
         <name lang="fr">Circuit integré 16 broches</name>
         <name lang="pl">Układ scalony, 16 nóżek</name>
         <name lang="cs">Integrovaný obvod, 16 kolíků</name>
+        <name lang="nl">IC 16 pin</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

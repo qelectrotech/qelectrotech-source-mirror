@@ -7,6 +7,7 @@
         <name lang="fr">Pédale</name>
         <name lang="pl">Pedał</name>
         <name lang="cs">Pedál</name>
+        <name lang="nl">Voetpedaal</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

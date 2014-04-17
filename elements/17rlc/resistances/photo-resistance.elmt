@@ -4,13 +4,14 @@
         <name lang="de">Photowiderstand
 </name>
         <name lang="el">Φωτοαντίσταση</name>
-        <name lang="en">Light dependent resistor
+        <name lang="en">Light dependent resistor LDR
 </name>
         <name lang="it">Fotoresistore</name>
         <name lang="fr">Photorésistance
 </name>
         <name lang="pl">Fotorezystor</name>
         <name lang="cs">Fotoodporník</name>
+        <name lang="nl">Weerstand lichtgevoelig LDR</name>
     </names>
     <informations>EN 60617: 05-06-01</informations>
     <description>

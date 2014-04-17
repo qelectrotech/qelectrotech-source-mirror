@@ -7,6 +7,7 @@
         <name lang="fr">Vérin simple effet - retour par ressort</name>
         <name lang="pl">Siłownik jednostronnego działania ze sprężyną powrotną</name>
         <name lang="cs">Jednočinný válec - vrácený pružinou</name>
+        <name lang="nl">Cylinder 1zijdig + veer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

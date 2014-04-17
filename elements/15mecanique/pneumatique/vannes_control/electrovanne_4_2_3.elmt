@@ -6,6 +6,7 @@
         <name lang="cs">Řídící ventil 4/3, řízený tlačítkem</name>
         <name lang="ar">صمّام تحكّم 4/3 , تحكّم بزرّ ضاغط</name>
         <name lang="it">Valvola 4/3 di controllo, comando a pulsante</name>
+        <name lang="nl">Klep 4/3 drukknop</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

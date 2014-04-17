@@ -6,6 +6,7 @@
         <name lang="cs">Ventil 5/2</name>
         <name lang="ar">مُوزّع 5/2 أحادي راجع بزمبرك</name>
         <name lang="it">Valvola 5/2</name>
+        <name lang="nl">Klep 5/2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

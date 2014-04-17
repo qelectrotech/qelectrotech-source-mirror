@@ -6,6 +6,7 @@
         <name lang="cs">Elektromagnetický ventil 5/3</name>
         <name lang="ar">صمّام بتكّم كهربائي 5/3</name>
         <name lang="it">Elettrovalvola 5/3</name>
+        <name lang="nl">Klep elektrisch 5/3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

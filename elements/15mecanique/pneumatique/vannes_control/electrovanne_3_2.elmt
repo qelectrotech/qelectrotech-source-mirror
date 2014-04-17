@@ -6,6 +6,7 @@
         <name lang="cs">Elektromagnetický ventil (solenoid) 2/2, s pákou, povinná pružina</name>
         <name lang="ar">صمّام بتحكم كهربائي 2/2 , بذراع , زمبرك إرجاع</name>
         <name lang="it">Elettrovalvola 2/2 con leva e molla obbligatoria</name>
+        <name lang="nl">klep rol veer 2/2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
