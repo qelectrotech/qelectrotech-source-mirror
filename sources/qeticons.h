@@ -178,6 +178,7 @@ namespace QET {
 		extern QIcon ro;
 		extern QIcon ru;
 		extern QIcon sl;
+		extern QIcon nl;
 		extern QIcon translation;
 		extern QIcon listDrawings;
 	}

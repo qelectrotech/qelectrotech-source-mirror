@@ -254,6 +254,7 @@ void GeneralConfigurationPage::fillLang(QSettings &settings) {
 	lang_combo_box->addItem(QET::Icons::ro,           tr("Roumains"), "ro");
 	lang_combo_box->addItem(QET::Icons::ru,           tr("Russe"), "ru");
 	lang_combo_box->addItem(QET::Icons::sl,           tr("Slov\350ne"), "sl");
+	lang_combo_box->addItem(QET::Icons::nl,           tr("Pays-Bas"), "nl");
 
 	//set curent index to the lang found in setting file
 	//if lang doesn't exist set to system
