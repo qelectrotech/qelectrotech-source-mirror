@@ -1,12 +1,13 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Μονή ψηφιακή έξοδος</name>
         <name lang="en">Binary Output module single</name>
         <name lang="it">Uscita digitale, 1 via</name>
         <name lang="fr">Sortie numérique</name>
         <name lang="pl">Wyjście cyfrowe</name>
         <name lang="es">Salida binaria</name>
-        <name lang="cs">Digitální výstup</name>
         <name lang="nl">Digitaal uitgang module, enkel</name>
+        <name lang="cs">Digitální výstup</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

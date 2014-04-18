@@ -1,12 +1,13 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dnnn">
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="31" height="40" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">صمّام معياري</name>
+        <name lang="el">Ρυθμιζόμενη βαλβίδα</name>
         <name lang="en">Calibrated valve</name>
+        <name lang="it">Valvola tarata</name>
         <name lang="fr">Soupape tarré</name>
         <name lang="pl">Odpowietrznik chwilowy o zadanej wartości</name>
-        <name lang="cs">Přesně nastavený ventil</name>
-        <name lang="ar">صمّام معياري</name>
-        <name lang="it">Valvola tarata</name>
         <name lang="nl">Klep gekalibreerd</name>
+        <name lang="cs">Přesně nastavený ventil</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -18,7 +19,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="5" y2="0" x2="5"/>
         <circle x="3.85" y="-1.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="20"/>
-        <terminal x="20" y="0" orientation="e"/>
-        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
     </description>
 </definition>

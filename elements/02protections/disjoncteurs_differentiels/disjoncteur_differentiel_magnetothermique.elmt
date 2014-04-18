@@ -1,12 +1,13 @@
-<definition width="70" version="0.3" hotspot_x="12" hotspot_y="45" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="70" version="0.4" hotspot_x="13" hotspot_y="45" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">قاطع تفاضلي مغناطيسي - حراري</name>
+        <name lang="el">Θερμομαγνητικός διαφορικός διακόπτης</name>
         <name lang="en">Magneto-thermal differential switch</name>
         <name lang="it">Interr. magneto-termico differenziale</name>
         <name lang="fr">Disjoncteur différentiel magnéto-thermique</name>
         <name lang="pl">Wyłącznik różnicowoprądowy z członem nadprądowym</name>
-        <name lang="cs">Rozdílový magnetotepelný jistič</name>
         <name lang="nl">Aardlekschakelaar + automaat</name>
+        <name lang="cs">Rozdílový magnetotepelný jistič</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -22,6 +23,6 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="16" x2="0"/>
         <polygon x4="-5" antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="-20" x1="-4" y2="-20" x2="-10" y3="-4" x3="-10" y4="-4"/>
         <terminal x="0" y="20" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="0" y="-40" nameHidden="104" number="" name="" orientation="n"/>
+        <terminal x="0" y="-40" nameHidden="1" number="" name="" orientation="n"/>
     </description>
 </definition>

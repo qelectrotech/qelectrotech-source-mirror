@@ -1,10 +1,11 @@
-<definition width="40" version="0.4" hotspot_x="5" hotspot_y="39" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="9" hotspot_y="39" height="80" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Αποζεύκτης αέρος</name>
         <name lang="en">Air_Circuit_Breaker</name>
-        <name lang="fr">Disjoncteur à commande pneumatique</name>
         <name lang="it">Interrutore a comando pneumatico</name>
-        <name lang="cs">Vypínač/Přerušovač oběhu vzduchu</name>
+        <name lang="fr">Disjoncteur à commande pneumatique</name>
         <name lang="nl">Lastscheider 1 lucht</name>
+        <name lang="cs">Vypínač/Přerušovač oběhu vzduchu</name>
     </names>
     <informations>Author: Arun Kishore Eswara
 

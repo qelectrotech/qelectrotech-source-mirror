@@ -1,12 +1,13 @@
-<definition width="70" version="0.3" hotspot_x="35" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="30" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">موحد ثلاثي الأوجه</name>
+        <name lang="el">Μετατροπέας τριφασικό AC/DC</name>
         <name lang="en">AC/DC tri converter</name>
+        <name lang="it">Convertitore AC trifase / DC</name>
         <name lang="fr">Convertisseur tri AC/DC</name>
         <name lang="pl">Prostownik</name>
-        <name lang="cs">Usměrňovač - měnič třífázový střídavý proud/stejnosměrný proud</name>
-        <name lang="it">Convertitore AC trifase / DC</name>
         <name lang="nl">Wisselspanning driefase > gelijkspanning  AC3 > DC</name>
+        <name lang="cs">Usměrňovač - měnič třífázový střídavý proud/stejnosměrný proud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -21,10 +22,10 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="20" y2="-10" x2="25"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-25" y2="20" x2="-20"/>
         <arc width="5" x="-16.5" y="-25.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-175"/>
-        <terminal x="-25" y="-20" orientation="w"/>
-        <terminal x="25" y="-10" orientation="e"/>
-        <terminal x="25" y="10" orientation="e"/>
-        <terminal x="-25" y="0" orientation="w"/>
-        <terminal x="-26" y="20" orientation="w"/>
+        <terminal x="-25" y="-20" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="25" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="25" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-25" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-26" y="20" nameHidden="0" number="" name="" orientation="w"/>
     </description>
 </definition>

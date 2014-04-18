@@ -1,13 +1,14 @@
-<definition width="50" version="0.3" hotspot_x="35" hotspot_y="45" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="35" hotspot_y="44" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مقطع : محول مستمر / مستمر</name>
         <name lang="de">Gleichstrom-Umrichter</name>
+        <name lang="el">Μετατροπέας DC/DC</name>
         <name lang="en">DC/DC converter</name>
         <name lang="it">Convertitore DC/DC</name>
         <name lang="fr">Convertisseur DC/DC</name>
         <name lang="pl">Zasilacz prądu stałego</name>
-        <name lang="cs">Měnič stejnosměrného proudu</name>
         <name lang="nl">Gelijkspanning > gelijkspanning DC > DC</name>
+        <name lang="cs">Měnič stejnosměrného proudu</name>
     </names>
     <informations>EN 60617: 06-14-02</informations>
     <description>
@@ -19,10 +20,10 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="1" y2="-5" x2="5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-6" y2="-7" x2="5"/>
         <line length1="0" length2="0" antialias="true" end1="simple" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-30" y2="-40" x2="10"/>
-        <terminal x="-30" y="-30" orientation="w"/>
-        <terminal x="-30" y="-10" orientation="w"/>
-        <terminal x="10" y="-30" orientation="e"/>
-        <terminal x="10" y="-10" orientation="e"/>
-        <terminal x="-10" y="0" orientation="s"/>
+        <terminal x="-30" y="-30" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-30" y="-10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="10" y="-30" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="10" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="s"/>
     </description>
 </definition>
