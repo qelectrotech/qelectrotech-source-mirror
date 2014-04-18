@@ -7,6 +7,7 @@
         <name lang="fr">Caisson triphasé étoile</name>
         <name lang="pl">Grzejnik trójfazowy skojarzony w gwiazdę</name>
         <name lang="cs">Třífázové topení, hvězdicové</name>
+        <name lang="nl">Apparaat 3AC Ster</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

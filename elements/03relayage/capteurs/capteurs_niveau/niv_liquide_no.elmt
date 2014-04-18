@@ -6,6 +6,7 @@
         <name lang="pl">Zestyk zwierny sterowany poziomem cieczy</name>
         <name lang="es">Accionado por el nivel de un liquido NA</name>
         <name lang="cs">Ovládáno hladinou kapaliny NO</name>
+        <name lang="nl">vloeistofniveau 2 (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

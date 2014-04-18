@@ -9,6 +9,7 @@
         <name lang="pl">Inwerter jednofazowy</name>
         <name lang="es">Inversor de fase monohilo</name>
         <name lang="cs">Přepínač směru fáze jednoduchého spojení</name>
+        <name lang="nl">Fasendraaier</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

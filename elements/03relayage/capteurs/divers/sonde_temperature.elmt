@@ -8,6 +8,7 @@
         <name lang="pl">Czujnik temperatury</name>
         <name lang="es">Sonda de temperatura</name>
         <name lang="cs">Teplotní čidlo</name>
+        <name lang="nl">contact temperatuur</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

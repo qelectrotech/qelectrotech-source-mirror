@@ -8,6 +8,7 @@
         <name lang="pl">Czujnik magnetyczny rozwierny</name>
         <name lang="es">Sensor magnetico NC</name>
         <name lang="cs">Magnetické čidlo NC</name>
+        <name lang="nl">Magnetisch contact (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

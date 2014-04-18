@@ -10,6 +10,7 @@
         <name lang="pl">Łącznik obrotowy przełączny z położeniem neutralnym</name>
         <name lang="es">Interruptor 3 posiciones incluso neutro</name>
         <name lang="cs">Třípolohový přepínač včetně neutrální (1-0-2)</name>
+        <name lang="nl">Keuzeschakelaar 3 pos met 0 (1-0-2) (NO/NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="fr">VLT 2800</name>
         <name lang="pl">VLT 2800</name>
         <name lang="cs">Střídač VLT 2800</name>
+        <name lang="nl">Inverter VLT 2800</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

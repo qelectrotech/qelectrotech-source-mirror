@@ -7,6 +7,7 @@
         <name lang="fr">Frein magnetique Moteur</name>
         <name lang="pl">Hamulec elektromagnetyczny</name>
         <name lang="cs">Elektromagnetická brzda</name>
+        <name lang="nl">Rem Magnetisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -11,5 +11,6 @@
         <name lang="pl">Przekaźniki cieplne</name>
         <name lang="es">Relés térmicos</name>
         <name lang="cs">Tepelné relé</name>
+        <name lang="nl">Thermische contacten</name>
     </names>
 </qet-directory>

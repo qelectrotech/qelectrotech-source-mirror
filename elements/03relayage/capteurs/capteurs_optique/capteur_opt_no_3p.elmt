@@ -7,6 +7,7 @@
         <name lang="es">Sensor óptico 3 terminales NA</name>
         <name lang="cs">Optické čidlo třídrátové (NO)</name>
         <name lang="it">Sensore ottico (NC)</name>
+        <name lang="nl">Fotocel 2 (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

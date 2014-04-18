@@ -8,6 +8,7 @@
         <name lang="pl">Czujnik ultradźwiękowy trójprzewodowy</name>
         <name lang="es">Sensor ultrasónico 3 terminales</name>
         <name lang="cs">Ultrazvukové čidlo se třemi svorkami</name>
+        <name lang="nl">ultrasoon sensor 3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

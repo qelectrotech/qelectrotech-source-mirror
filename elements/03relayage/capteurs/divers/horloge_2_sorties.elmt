@@ -8,6 +8,7 @@
         <name lang="pl">Przekaźnik czasowy wielozestykowy</name>
         <name lang="es">Switch temporizado 2 salidas</name>
         <name lang="cs">Časový spínač se dvěma výstupy</name>
+        <name lang="nl">Tijdschakelaar 2 contacten</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

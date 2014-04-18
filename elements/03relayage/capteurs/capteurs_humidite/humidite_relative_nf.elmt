@@ -6,6 +6,7 @@
         <name lang="pl">Zestyk rozwierny sterowany poziomemi wilgotności względnej</name>
         <name lang="es">Accionado por humedad relativa NC</name>
         <name lang="cs">Ovládáno relativní vlhkostí NC</name>
+        <name lang="nl">Relatieve Vochtigheid (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

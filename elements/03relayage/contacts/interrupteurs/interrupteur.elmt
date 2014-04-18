@@ -11,6 +11,7 @@
         <name lang="pl">Łącznik</name>
         <name lang="es">Interruptor</name>
         <name lang="cs">Spínač</name>
+        <name lang="nl">Contact (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

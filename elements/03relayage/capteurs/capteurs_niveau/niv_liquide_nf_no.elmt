@@ -6,6 +6,7 @@
         <name lang="pl">Zestyk przełączny sterowany poziomem cieczy</name>
         <name lang="es">Accionado por el nivel de un liquido NC/NA</name>
         <name lang="cs">Ovládáno hladinou kapaliny NC/NO</name>
+        <name lang="nl">vloeistofniveau 3 (NC)/(NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

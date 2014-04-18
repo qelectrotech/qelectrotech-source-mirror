@@ -6,6 +6,7 @@
         <name lang="pl">Zestyki o przełączaniu niezawodnym</name>
         <name lang="es">Contacto impulsado positivamente</name>
         <name lang="cs">Mechanicky spojené kontakty NO + NO</name>
+        <name lang="nl">contacten geforceerd (NO) + (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

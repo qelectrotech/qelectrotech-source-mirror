@@ -4,12 +4,13 @@
         <name lang="de">Druckschalter</name>
         <name lang="ru">Кнопка (НР)</name>
         <name lang="el">Μπουτόν</name>
-        <name lang="en">Push-button</name>
+        <name lang="en">Push-button wrong symbol</name>
         <name lang="it">Pulsante a tirante</name>
         <name lang="fr">Tirette</name>
         <name lang="pl">Łącznik przyciskowy z powrotem samoczynnym</name>
         <name lang="es">Pulsador</name>
         <name lang="cs">Stiskací vypínač</name>
+        <name lang="nl">fout symbool</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

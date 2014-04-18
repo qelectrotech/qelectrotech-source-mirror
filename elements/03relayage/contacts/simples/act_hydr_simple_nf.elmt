@@ -5,6 +5,7 @@
         <name lang="pl">Zestyk rozwierny sterowany pneumatycznie lub hedraulicznie, jednokierunkowy</name>
         <name lang="cs">Kontakt NC řízený pneumaticky nebo hydraulicky, jednocestný</name>
         <name lang="it">Contatto NC a comando pneumatico o idraulico</name>
+        <name lang="nl">pneumatisch/hydraulisch 1 pos (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

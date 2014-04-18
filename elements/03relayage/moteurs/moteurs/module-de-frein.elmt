@@ -2,11 +2,12 @@
     <names>
         <name lang="ar">مكبح مغناطيسي</name>
         <name lang="el">Μαγνητικό φρένο</name>
-        <name lang="en">Bloc frein</name>
+        <name lang="en">Brake Electromagnetic</name>
         <name lang="it">Freno elettromagnetico</name>
         <name lang="fr">Frein magnetique Moteur</name>
         <name lang="pl">Prostownik do hamulca</name>
         <name lang="cs">Elektromagnetická brzda</name>
+        <name lang="nl">Rem elektromagnetisch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

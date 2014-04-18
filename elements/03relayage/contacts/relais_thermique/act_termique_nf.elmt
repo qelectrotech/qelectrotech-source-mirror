@@ -6,6 +6,7 @@
         <name lang="fr">Actionné par un dispositif thermique NF</name>
         <name lang="pl">Zestyk rozwierny przekaźnika cieplnego</name>
         <name lang="cs">Tepelné relé (NC)</name>
+        <name lang="nl">Thermisch bediend contact (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

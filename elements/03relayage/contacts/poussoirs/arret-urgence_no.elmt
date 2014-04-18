@@ -9,6 +9,7 @@
         <name lang="es">Pulsador</name>
         <name lang="cs">Nouzové zastavení</name>
         <name lang="it">Arresto d'emergenza</name>
+        <name lang="nl">Noodstop drukknop (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

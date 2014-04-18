@@ -8,6 +8,7 @@
         <name lang="pl">Zacisk bezpiecznikowy</name>
         <name lang="es">Terminal fusible</name>
         <name lang="cs">Svorka tavného svorkoviště</name>
+        <name lang="nl">Klem met smeltzekering</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

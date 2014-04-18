@@ -11,6 +11,7 @@
         <name lang="pl">Zestyk przełączny, otwrty w pozycji pośredniej</name>
         <name lang="es">Interruptor 3 posiciones incluso neutro</name>
         <name lang="cs">Třípolohový spínač včetně nulové</name>
+        <name lang="nl">Op/Neer contact 3 pos (NO/NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,6 +7,7 @@
         <name lang="cs">Fotoelektrické čidlo - snímač</name>
         <name lang="es">Sensor foto-eléctrico receptor</name>
         <name lang="it">Sensore foto-elettrico - Ricevitore</name>
+        <name lang="nl">Fotocel Ontvanger</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

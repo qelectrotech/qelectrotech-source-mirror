@@ -6,6 +6,7 @@
         <name lang="pl">Złącze Mini-DIN, ośmiostykowe</name>
         <name lang="cs">Zásuvka mini-DIN 8 kolíků</name>
         <name lang="it">Mini-DIN 8 Pin</name>
+        <name lang="nl">Mini-DIN 8 Pin</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

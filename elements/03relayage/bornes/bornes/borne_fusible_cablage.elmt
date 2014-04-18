@@ -8,6 +8,7 @@
         <name lang="pl">Złącze bezpiecznikowe</name>
         <name lang="es">Terminal fusible</name>
         <name lang="cs">Tavná pojistka elektrického propojení</name>
+        <name lang="nl">klem met zekering</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

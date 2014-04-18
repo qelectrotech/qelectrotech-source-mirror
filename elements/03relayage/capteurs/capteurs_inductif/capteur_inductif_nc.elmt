@@ -8,6 +8,7 @@
         <name lang="pl">Czujnik indukcyjny rozwierny</name>
         <name lang="es">Sensor inductivo NC</name>
         <name lang="cs">Indukční čidlo NC</name>
+        <name lang="nl">Inductief contact 2 (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

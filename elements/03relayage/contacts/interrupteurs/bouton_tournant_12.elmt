@@ -8,6 +8,7 @@
         <name lang="pl">Łącznik obrotowy przełączny, otwarty w pozycji pośredniej</name>
         <name lang="es">Switch selector_12 3 posiciones fijas</name>
         <name lang="cs">Otočný přepínač se 3 pevnými polohami, otevřený v prostřední poloze</name>
+        <name lang="nl">Keuzeschakelaar 3 standen 2 X (NC)</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

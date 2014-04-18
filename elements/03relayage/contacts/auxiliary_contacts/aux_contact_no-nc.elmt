@@ -6,7 +6,8 @@
         <name lang="fr">Contact auxilliaire NO + NC</name>
         <name lang="pl">Zestyki pomocnicze NO + NZ</name>
         <name lang="es">Contacto auxiliar NA + NC</name>
-        <name lang="cs">Pomocné kontakty 4 x NO + NC</name>
+        <name lang="cs">Pomocné kontakty NO + NC</name>
+        <name lang="nl">Hulpcontact (NO) + (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

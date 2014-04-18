@@ -9,6 +9,7 @@
         <name lang="pl">Czujnik indukcyjny trójprzewodowy</name>
         <name lang="es">Sensor inductivo 3 terminales</name>
         <name lang="cs">Indukční čidlo se třemi svorkami</name>
+        <name lang="nl">Inductief 3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

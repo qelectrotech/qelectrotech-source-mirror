@@ -6,6 +6,7 @@
         <name lang="pl">Gniazdo wtyczkowe</name>
         <name lang="cs">Zásuvka jednopólová skříň</name>
         <name lang="it">Presa monofase da pannello</name>
+        <name lang="nl">Contact 1AC + aarde</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

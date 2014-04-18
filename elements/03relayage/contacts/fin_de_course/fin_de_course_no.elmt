@@ -5,12 +5,13 @@
         <name lang="ru">Концевой контакт (НР)</name>
         <name lang="pt">Fim de curso (NO)</name>
         <name lang="el">Τερματικό, Ανοικτό</name>
-        <name lang="en">Limit</name>
+        <name lang="en">Limitswitch (NO)</name>
         <name lang="it">Finecorsa (NA)</name>
         <name lang="fr">Fin de course</name>
         <name lang="pl">Zestyk zwierny łącznika krańcowego</name>
         <name lang="es">Final de carrera</name>
         <name lang="cs">Konec vodivého spojení</name>
+        <name lang="nl">Eindschakelaar (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

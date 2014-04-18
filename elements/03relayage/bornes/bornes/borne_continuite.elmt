@@ -10,6 +10,7 @@
         <name lang="pl">Zacisk</name>
         <name lang="es">Terminal de unión</name>
         <name lang="cs">Spojovací svorka</name>
+        <name lang="nl">klem doorgang</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

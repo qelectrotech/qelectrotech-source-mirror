@@ -7,6 +7,7 @@
         <name lang="fr">Moteur série, monophasé</name>
         <name lang="pl">Silnik jednofazowy szeregowy</name>
         <name lang="cs">Sériový elektromotor, jednofázový</name>
+        <name lang="nl">Motor serie 1fase</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

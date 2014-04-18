@@ -7,6 +7,7 @@
         <name lang="fr">Boutons tournant à clé</name>
         <name lang="pl">Pozycja wyjęcia kluczyka łącznika</name>
         <name lang="cs">Poloha přepnutí klíče spínače</name>
+        <name lang="nl">Schakelstanden</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

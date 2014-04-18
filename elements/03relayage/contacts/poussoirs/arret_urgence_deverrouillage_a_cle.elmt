@@ -6,6 +6,7 @@
         <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>
         <name lang="cs">Nouzové zastavení - uvolnění klíče</name>
         <name lang="it">Arresto d'emergenza con sblocco a chiave</name>
+        <name lang="nl">Noodstop sleutelreset (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

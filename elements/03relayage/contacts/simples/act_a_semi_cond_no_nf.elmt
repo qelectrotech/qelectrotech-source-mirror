@@ -5,6 +5,7 @@
         <name lang="pl">Zestyk przełączny sterowany elektronicznie</name>
         <name lang="cs">Přepínací zařízení s kontaktem NO/NC řízené elektronicky</name>
         <name lang="it">Contatto a comando elettronico (NO/NC)</name>
+        <name lang="nl">Electronisch contact (NC/NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

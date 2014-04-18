@@ -7,6 +7,7 @@
         <name lang="pl">Czujnik rezystancyjny Bamo STE</name>
         <name lang="es">Bamo sonda resistiva ste</name>
         <name lang="cs">Rezistivní čidlo Bamo STE</name>
+        <name lang="nl">vloeistofniveau sensor Bamo STE</name>
     </names>
     <informations>Rafart Renaud</informations>
     <description>

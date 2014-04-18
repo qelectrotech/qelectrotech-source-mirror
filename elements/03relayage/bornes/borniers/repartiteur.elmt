@@ -7,6 +7,7 @@
         <name lang="pl">Łączówka</name>
         <name lang="es">Distribuidor</name>
         <name lang="cs">Rozdělovač</name>
+        <name lang="nl">Verdeler</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

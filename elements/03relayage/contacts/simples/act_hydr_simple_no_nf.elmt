@@ -6,6 +6,7 @@ pneumatique, à simple effet NO/NF</name>
         <name lang="pl">Zestyk przełączny sterowany pneumatycznie lub hydraulicznie, jednokierunkowy</name>
         <name lang="cs">Kontakt NO/NC řízený pneumaticky nebo hydraulicky, jednocestný</name>
         <name lang="it">Contatto NO/NC a comando pneumatico o idraulico</name>
+        <name lang="nl">Cpneumatisch/hydraulisch 1 pos (NC/NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

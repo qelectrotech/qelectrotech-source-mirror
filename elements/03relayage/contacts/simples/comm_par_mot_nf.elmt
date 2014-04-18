@@ -5,6 +5,7 @@
         <name lang="pl">Zestyk rozwierny sterowany silnikiem</name>
         <name lang="cs">Kontakt NC řízený motorem</name>
         <name lang="it">Contatto NC motorizzato</name>
+        <name lang="nl">Motor contact (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

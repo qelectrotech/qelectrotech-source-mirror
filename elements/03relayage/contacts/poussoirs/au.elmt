@@ -10,6 +10,7 @@
         <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>
         <name lang="es">Parada de emergencia (NC)</name>
         <name lang="cs">Nouzové zastavení</name>
+        <name lang="nl">Noodstop drukknop (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

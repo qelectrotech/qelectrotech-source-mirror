@@ -6,6 +6,7 @@
         <name lang="pl">Zestyk przełączny sterowany elektronicznie</name>
         <name lang="es">Accionado por humedad relativa NC/NO</name>
         <name lang="cs">Ovládáno relativní vlhkostí NC/NO</name>
+        <name lang="nl">Relatieve Vochtigheid (NC)/(NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

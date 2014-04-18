@@ -8,6 +8,7 @@
         <name lang="pl">Czujnik poziomu cieczy</name>
         <name lang="es">Sensor de nivel</name>
         <name lang="cs">Hladinové čidlo</name>
+        <name lang="nl">vloeistofniveau sensor </name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

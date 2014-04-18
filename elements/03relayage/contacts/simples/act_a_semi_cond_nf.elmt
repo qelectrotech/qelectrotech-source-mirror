@@ -5,6 +5,7 @@
         <name lang="fr">Dispositif de commande à semi-conducteur NC</name>
         <name lang="pl">Zestyk rozwierny sterowany elektronicznie</name>
         <name lang="cs">Přepínací zařízení s kontaktem NC řízené elektronicky</name>
+        <name lang="nl">Electronisch contact (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

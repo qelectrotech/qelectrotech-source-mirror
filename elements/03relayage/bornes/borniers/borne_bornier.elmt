@@ -8,6 +8,7 @@
         <name lang="pl">Zacisk</name>
         <name lang="es">Terminal</name>
         <name lang="cs">Svorka svorkoviště</name>
+        <name lang="nl">Klem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

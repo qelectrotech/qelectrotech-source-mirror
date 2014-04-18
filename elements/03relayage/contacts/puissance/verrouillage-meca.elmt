@@ -7,6 +7,7 @@
         <name lang="fr">Verrouillage Mécannique</name>
         <name lang="pl">Blokada mechaniczna</name>
         <name lang="cs">Mechanický zámek</name>
+        <name lang="nl">mechanisch grendel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="pl">Łącznik przyciskowy, odblokowywany przez obracanie (przycisk bezpieczeństwa), </name>
         <name lang="cs">Nouzové zastavení</name>
         <name lang="it">Arresto d'emergenza</name>
+        <name lang="nl">Nooddrukknop 2 pos 2 X (NC)</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

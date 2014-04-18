@@ -7,6 +7,7 @@
         <name lang="fr">Commutateur a 2 positions à clé</name>
         <name lang="pl">Łącznik obrotowy napędzany kluczykiem</name>
         <name lang="cs">Klíčový spínač - 2 polohy</name>
+        <name lang="nl">sleutelschakelaar 2 pos (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

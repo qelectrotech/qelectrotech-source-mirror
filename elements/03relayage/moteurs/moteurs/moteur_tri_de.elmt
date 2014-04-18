@@ -10,6 +10,7 @@
         <name lang="pl">Silnik trójfazowy</name>
         <name lang="es">Motor de seis fases</name>
         <name lang="cs">Šestifázový motor</name>
+        <name lang="nl">DraaistroomMotor 3 fasen 6 aansluitingen</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

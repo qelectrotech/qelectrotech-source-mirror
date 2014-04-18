@@ -7,6 +7,7 @@
         <name lang="fr">Interrupteur rotatif 1-0-2</name>
         <name lang="pl">Łącznik obrotowy przełączny, otwarty w pozycji pośredniej, uruchamiany kluczykiem</name>
         <name lang="cs">Otočný spínač 1-0-2 - 3 polohy včetně neurální</name>
+        <name lang="nl">Sleutelschakelaar 3 pos (NO/NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="pl">Zestyk rozwierny sterowany poziomem cieczy</name>
         <name lang="es">Accionado por el nivel de un liquido NC</name>
         <name lang="cs">Ovládáno hladinou kapaliny NC</name>
+        <name lang="nl">vloeistofniveau 2 (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

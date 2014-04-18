@@ -8,6 +8,7 @@
         <name lang="pl">Czujnik ultradźwiękowy trójprzewodowy, rozwierny</name>
         <name lang="es">Sensor ultrasónico NC</name>
         <name lang="cs">Ultrazvukové čidlo NC</name>
+        <name lang="nl">contact ultrasoon 2 (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

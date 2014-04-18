@@ -1,16 +1,14 @@
 <definition width="60" version="0.3" hotspot_x="5" hotspot_y="35" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">قابس و مقبس متعدّد الأقطاب</name>
-        <name lang="de">Verbinder, Buchse und Stecker, allpolige
-Darstellung
-</name>
+        <name lang="de">Verbinder, Buchse und Stecker, allpolige Darstellung</name>
         <name lang="en">Plug multipolar</name>
         <name lang="it">Spina e presa multipolari</name>
-        <name lang="fr">Prise et fiche multipolaires
-</name>
+        <name lang="fr">Prise et fiche multipolaires</name>
         <name lang="pl">Złącze wielostykowe</name>
         <name lang="es">Conector multipolar</name>
         <name lang="cs">Spojka, zásuvka a zástrčka, vícepólové znázornění</name>
+        <name lang="nl">Steker en contact veelpolig</name>
     </names>
     <informations>EN 60617: 03-03-07</informations>
     <description>

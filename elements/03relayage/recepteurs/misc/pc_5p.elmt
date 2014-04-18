@@ -6,6 +6,7 @@
         <name lang="pl">Złącze wielostykowe</name>
         <name lang="cs">Zásuvka 5 pólová</name>
         <name lang="it">Presa 3P+N+T</name>
+        <name lang="nl">Contact 3AC + nul +aarde</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

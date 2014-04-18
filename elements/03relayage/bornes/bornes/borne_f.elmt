@@ -10,6 +10,7 @@
         <name lang="pl">Zacisk</name>
         <name lang="es">Punto de unión</name>
         <name lang="cs">Koncová svorka</name>
+        <name lang="nl">Klem eind</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

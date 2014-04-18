@@ -8,6 +8,7 @@
         <name lang="pl">Łącznik zmierzchowy</name>
         <name lang="es">Sensor de luz</name>
         <name lang="cs">Světelné čidlo</name>
+        <name lang="nl">contact Lichthoeveelheid</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

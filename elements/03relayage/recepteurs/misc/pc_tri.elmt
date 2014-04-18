@@ -6,6 +6,7 @@
         <name lang="pl">Gniazdo wtyczkowe czterobiegunowe</name>
         <name lang="cs">Zásuvka třípólová</name>
         <name lang="it">Presa 3P+T</name>
+        <name lang="nl">Contact 3AC + aarde</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

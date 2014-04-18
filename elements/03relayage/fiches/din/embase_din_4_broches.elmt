@@ -6,6 +6,7 @@
         <name lang="pl">Złącze DIN czterostykowe</name>
         <name lang="cs">Zásuvka DIN 4 kolíky</name>
         <name lang="it">DIN 4 Pin</name>
+        <name lang="nl">DIN 4 Pin</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

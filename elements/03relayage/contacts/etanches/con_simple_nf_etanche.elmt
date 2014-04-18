@@ -11,6 +11,7 @@
         <name lang="pl">Zestyk rozwierny (szczelny)</name>
         <name lang="es">Contactor simple (NC / resistente al agua)</name>
         <name lang="cs">Jednoduché vodivé spojení (NC / nepropustné)</name>
+        <name lang="nl">Waterdicht enkel (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -11,6 +11,7 @@
         <name lang="pl">Lampa sygnalizacyjna o świetle migowym</name>
         <name lang="es">Luz intermitente</name>
         <name lang="cs">Svítící světlo</name>
+        <name lang="nl">Knipperlamp</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

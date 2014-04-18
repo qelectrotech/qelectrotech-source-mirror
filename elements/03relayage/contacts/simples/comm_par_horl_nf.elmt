@@ -6,6 +6,7 @@
         <name lang="fr">Commande par horloge électrique NF</name>
         <name lang="pl">Zestyk rozwierny sterowany zegarem</name>
         <name lang="cs">Kontakt NC řízený elektrickými hodinami</name>
+        <name lang="nl">Klok contact (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

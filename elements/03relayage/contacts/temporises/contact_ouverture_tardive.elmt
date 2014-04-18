@@ -5,6 +5,7 @@
         <name lang="pl">Zestyk rozwierny z opuźnionym działaniem</name>
         <name lang="cs">Kontakt s opožděným otevřením (11-12)</name>
         <name lang="it">Contatto ad apertura ritardata</name>
+        <name lang="nl">Laat openend (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

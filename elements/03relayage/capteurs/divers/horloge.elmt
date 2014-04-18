@@ -9,6 +9,7 @@
         <name lang="pl">Zegar sterujący</name>
         <name lang="es">Contacto temporizado</name>
         <name lang="cs">Hodinový kontakt</name>
+        <name lang="nl">contact Klok</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

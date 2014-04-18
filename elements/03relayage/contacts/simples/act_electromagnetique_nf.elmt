@@ -6,6 +6,7 @@
         <name lang="fr">Actionné par un dispositif électromagnétique NC</name>
         <name lang="pl">Zestyk rozwierny przekaźnika elektromagnetycznego</name>
         <name lang="cs">Elektromagnetické relé (NC)</name>
+        <name lang="nl">Elektromagnetisch (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

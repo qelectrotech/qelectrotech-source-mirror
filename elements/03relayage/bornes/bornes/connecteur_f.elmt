@@ -10,6 +10,7 @@
         <name lang="pl">Gniazdo</name>
         <name lang="es">Conector hembra</name>
         <name lang="cs">Ženská spojka</name>
+        <name lang="nl">Contact vrouw</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

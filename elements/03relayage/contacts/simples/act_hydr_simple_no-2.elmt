@@ -6,6 +6,7 @@ pneumatique, à simple effet</name>
         <name lang="pl">Zestyk zwierny sterowany pneumatycznie lub hydraulicznie, jednokierunkowy</name>
         <name lang="cs">Kontakt NO řízený pneumaticky nebo hydraulicky, jednocestný</name>
         <name lang="it">Contatto NO a comando pneumatico o idraulico</name>
+        <name lang="nl">pneumatisch/hydraulisch (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

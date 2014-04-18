@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dnny">
     <names>
         <name lang="ar">زرّ توقيف طارئ</name>
-        <name lang="en">Push-button</name>
+        <name lang="en">Emergency Push-button pullreset</name>
         <name lang="fr">Arret d`urgence</name>
         <name lang="pl">Łącznik przyciskowy, odblokowywany przez pociągnięcie (przycisk bezpieczeństwa), </name>
         <name lang="cs">Nouzové zastavení</name>
         <name lang="it">Arresto d'emergenza</name>
+        <name lang="nl">Nooddrukknop trekreset</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

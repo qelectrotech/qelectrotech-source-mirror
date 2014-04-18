@@ -6,6 +6,7 @@
         <name lang="pl">Czujnik ciśnienia</name>
         <name lang="es">Sensor de presión</name>
         <name lang="cs">Tlakové čidlo</name>
+        <name lang="nl">Druksensor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

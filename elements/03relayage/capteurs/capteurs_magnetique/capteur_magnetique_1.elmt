@@ -8,6 +8,7 @@
         <name lang="pl">Czujnik magnetyczny trójprzewodowy</name>
         <name lang="es">Sensor magnetico 3 terminales</name>
         <name lang="cs">Magnetické čidlo se třemi svorkami</name>
+        <name lang="nl">Magnetisch 3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

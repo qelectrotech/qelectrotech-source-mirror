@@ -2,12 +2,13 @@
     <names>
         <name lang="ar">مفتاح فصل</name>
         <name lang="de">Trennschalter Sicherung</name>
-        <name lang="en">Disconnecting switch</name>
+        <name lang="en">Disconnecting switch fused</name>
         <name lang="it">Sezionatore</name>
         <name lang="fr">Sectionneur</name>
         <name lang="pl">Odłącznik bezpiecznikowy</name>
         <name lang="es">Switch de desconexión</name>
         <name lang="cs">Rozpojovací spínač</name>
+        <name lang="nl">Scheidingschakelaar met smeltzekering</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

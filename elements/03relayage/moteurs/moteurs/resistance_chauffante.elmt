@@ -7,6 +7,7 @@
         <name lang="fr">Résistance chauffante</name>
         <name lang="pl">Grzejnik rezystancyjny</name>
         <name lang="cs">Vytápěcí odpor</name>
+        <name lang="nl">Verwarmingsweerstand</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

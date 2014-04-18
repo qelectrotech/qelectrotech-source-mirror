@@ -7,6 +7,7 @@
         <name lang="fr">Contact  centrifuge (NF)</name>
         <name lang="pl">Zestyk rozwierny łącznika odśrodkowego</name>
         <name lang="cs">Odstředivé spojení (NC)</name>
+        <name lang="nl">Rotatie contact (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

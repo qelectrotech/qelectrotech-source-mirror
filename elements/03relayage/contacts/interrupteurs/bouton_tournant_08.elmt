@@ -8,6 +8,7 @@
         <name lang="pl">Łącznik obrotowy przełączny z samoczynnym powrotem, uruchamiany kluczykiem</name>
         <name lang="es">Switch selector_8 posiciones fijas con llave LH</name>
         <name lang="cs">Otočný přepínač s 2 polohami se samočinným navrácením, uvedený do provozu klíčkem</name>
+        <name lang="nl">2 positie sleutelschakelaar(vergrendelt in stand 2, veer naar stand 1 (NO/NC)</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

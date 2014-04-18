@@ -8,6 +8,7 @@
         <name lang="cs">Presostat (NC)</name>
         <name lang="it">Presostato (NC)</name>
         <name lang="es">Presóstato NC</name>
+        <name lang="nl">Pressostaat 2 (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

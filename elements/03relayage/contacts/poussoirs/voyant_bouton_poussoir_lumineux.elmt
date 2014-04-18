@@ -7,6 +7,7 @@
         <name lang="fr">Voyant à bouton poussoir lumineux</name>
         <name lang="pl">Łącznik przyciskowy podświetlony</name>
         <name lang="cs">LED podsvícené tlačítko</name>
+        <name lang="nl">lamp van drukknop </name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -11,5 +11,6 @@
         <name lang="pl">Silnik</name>
         <name lang="es">Motor</name>
         <name lang="cs">Motor</name>
+        <name lang="nl">Motor</name>
     </names>
 </qet-directory>

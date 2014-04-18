@@ -7,6 +7,7 @@
         <name lang="pl">Zestyk zwierny sterowany przepływem gazu</name>
         <name lang="es">Accionado por el flujo de un gas NA</name>
         <name lang="cs">Ovládáno průtokem plynu NO</name>
+        <name lang="nl">Gasstroming (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

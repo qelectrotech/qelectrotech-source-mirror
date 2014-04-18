@@ -1,17 +1,19 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="5" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="ar">طرف خرج</name>
-        <name lang="de">Ausgangsklemme</name>
+        <name lang="de">stecker weiblich</name>
         <name lang="ru">Гнездо (стар.)</name>
         <name lang="pt">Terminal de saída</name>
         <name lang="el">Ακροδέκτης εξόδου</name>
-        <name lang="en">Output terminal</name>
+        <name lang="en">Female contact</name>
         <name lang="it">Terminale di uscita</name>
-        <name lang="fr">Borne sortie</name>
+        <name lang="fr">contact femelle</name>
         <name lang="pl">Gniazdo</name>
         <name lang="es">Terminal de salida</name>
         <name lang="cs">Výstupní svorka</name>
+        <name lang="nl">Contact vrouw</name>
     </names>
+    <informations>EN 60617: 03-03-02</informations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

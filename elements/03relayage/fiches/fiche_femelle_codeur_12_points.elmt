@@ -6,6 +6,7 @@
         <name lang="pl">Gniazdo dwunastostykowe</name>
         <name lang="cs">Zástrčka kodéru, zásuvka s 12 body</name>
         <name lang="it">Connett. 12 Pin encoder</name>
+        <name lang="nl">Encoder M12 12Pin</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

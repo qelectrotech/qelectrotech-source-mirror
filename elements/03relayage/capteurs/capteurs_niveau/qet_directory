@@ -6,6 +6,7 @@
         <name lang="fr">Capteurs niveau</name>
         <name lang="pl">Czujniki poziomu cieczy</name>
         <name lang="cs">Hladinová čidla</name>
-        <name lang="es">Sensores de humedad</name>
+        <name lang="es">Sensores de nivel</name>
+        <name lang="nl">vloeistofniveau </name>
     </names>
 </qet-directory>

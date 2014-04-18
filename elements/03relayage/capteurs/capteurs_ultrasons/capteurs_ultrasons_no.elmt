@@ -8,6 +8,7 @@
         <name lang="pl">Czujnik ultradźwiękowy trójprzewodowy, zwierny</name>
         <name lang="es">Sensor ultrasónico NA</name>
         <name lang="cs">Ultrazvukové čidlo NO</name>
+        <name lang="nl">Ultrasoon contact 2 (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

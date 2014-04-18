@@ -5,6 +5,7 @@
         <name lang="pl">Zestyk zwierny sterowany elektronicznie</name>
         <name lang="cs">Přepínací zařízení s kontaktem NO řízené elektronicky</name>
         <name lang="it">Contatto a comando elettronico (NO)</name>
+        <name lang="nl">Electronisch contact (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -10,6 +10,7 @@
         <name lang="pl">Złącze wtykowe</name>
         <name lang="es">Conector</name>
         <name lang="cs">Spojka</name>
+        <name lang="nl">Stopcontact</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

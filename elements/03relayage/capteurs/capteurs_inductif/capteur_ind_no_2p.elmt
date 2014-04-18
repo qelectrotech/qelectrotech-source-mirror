@@ -8,6 +8,7 @@
         <name lang="pl">Czujnik indukcyjny dwuprzewodowy, zwierny</name>
         <name lang="es">Sensor inductivo NA</name>
         <name lang="cs">Indukční čidlo se dvěma svorkami NO</name>
+        <name lang="nl">Inductief 2 (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

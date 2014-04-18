@@ -4,12 +4,13 @@
         <name lang="de">Doppelklemme</name>
         <name lang="ru">Соединение (стар.)</name>
         <name lang="pt">Terminal duplo</name>
-        <name lang="en">Dual terminal</name>
+        <name lang="en">Plug and socket </name>
         <name lang="it">Terminale doppio</name>
-        <name lang="fr">Double borne</name>
+        <name lang="fr">Fiche et prise</name>
         <name lang="pl">Złącze wtykowe</name>
         <name lang="es">Terminal doble</name>
         <name lang="cs">Dvojitá svorka</name>
+        <name lang="nl">Steker en contact</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

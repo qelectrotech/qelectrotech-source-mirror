@@ -11,6 +11,7 @@
         <name lang="pl">Silnik jednofazowy</name>
         <name lang="es">Motor monofásico</name>
         <name lang="cs">Jednofázový motor</name>
+        <name lang="nl">Motor 1AC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

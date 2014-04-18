@@ -8,6 +8,7 @@
         <name lang="pl">Czujnik indukcyjny trójprzewodowy, zwierny</name>
         <name lang="es">Sensor inductivo 3 terminales NA</name>
         <name lang="cs">Indukční čidlo se třemi svorkami NO</name>
+        <name lang="nl">Inductief 3 (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

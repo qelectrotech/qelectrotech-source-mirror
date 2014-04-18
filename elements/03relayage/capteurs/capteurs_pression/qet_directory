@@ -6,6 +6,7 @@
 	<name lang="it">Sensori di pressione</name>
         <name lang="cs">Tlaková čidla</name>
         <name lang="el">Αισθητήρες πίεσης</name>
-        <name lang="es">Sensores de presión</name>
+        <name lang="es">Sensores de presión</na>
+        <name lang="nl">Druk</name>
    </names>
 </qet-directory>

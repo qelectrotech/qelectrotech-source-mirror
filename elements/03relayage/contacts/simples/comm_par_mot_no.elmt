@@ -5,6 +5,7 @@
         <name lang="pl">Zestyk zwierny sterowany silnikiem</name>
         <name lang="cs">Kontakt NO řízený motorem</name>
         <name lang="it">Contatto NO motorizzato</name>
+        <name lang="nl">Motor contact (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

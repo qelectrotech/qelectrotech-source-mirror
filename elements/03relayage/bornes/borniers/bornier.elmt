@@ -8,6 +8,7 @@
         <name lang="pl">Listwa zaciskowa</name>
         <name lang="cs">Svorkoviště</name>
         <name lang="es">Terminal multiple DIP 20 bornes</name>
+        <name lang="nl">Klemmenlijst</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

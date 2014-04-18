@@ -6,6 +6,7 @@
         <name lang="pl">Złącze DIN, pięciostykowe</name>
         <name lang="cs">Zásuvka DIN 5 kolíků 270 stupňů</name>
         <name lang="it">DIN 5 Pin 270°</name>
+        <name lang="nl">DIN 5 Pin 270°</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

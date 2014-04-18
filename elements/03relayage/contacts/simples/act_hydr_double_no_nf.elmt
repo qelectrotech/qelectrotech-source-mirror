@@ -6,6 +6,7 @@ pneumatique, à double effet NO/NC</name>
         <name lang="pl">Zestyk przełączny sterowany pneumatycznie lub hydraulicznie, dwukierunkowy</name>
         <name lang="cs">Kontakt NC/NO řízený pneumaticky nebo hydraulicky, dvoucestný</name>
         <name lang="it">Contatto NO/NC a comando pneumatico o idraulico, nei 2 sensi</name>
+        <name lang="nl">pneumatisch/hydraulisch 2 pos (NC/NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
