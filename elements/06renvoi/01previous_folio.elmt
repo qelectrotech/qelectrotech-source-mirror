@@ -10,7 +10,7 @@ link_type="previous_report">
         <name lang="pl">Wejście adresowe</name>
         <name lang="es">folio anterior</name>
         <name lang="cs">Předchozí list</name>
-        <name lang="nl">Referentie Vorig/name>
+        <name lang="nl">Referentie Vorig</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
