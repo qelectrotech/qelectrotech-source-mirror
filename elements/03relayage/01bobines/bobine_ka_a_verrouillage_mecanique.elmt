@@ -9,6 +9,7 @@
         <name lang="pl">Cewka przekaźnika z blokadą mechaniczną</name>
         <name lang="es">Bobina KA con enclavamiento mecánico</name>
         <name lang="cs">Cívka relé s mechanickým uzavřením</name>
+        <name lang="nl">spoel met vergrendeling</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

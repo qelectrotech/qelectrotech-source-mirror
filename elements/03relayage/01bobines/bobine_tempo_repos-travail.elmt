@@ -10,6 +10,7 @@
         <name lang="pl">Cewka przekaźnika działającego ze zwłoką przy wzbudzeniu i odwzbudzeniu</name>
         <name lang="es">Bobina de relé retardado</name>
         <name lang="cs">Cívka relé - klid-práce</name>
+        <name lang="nl">mechanisch met opkom en afval vertraging</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

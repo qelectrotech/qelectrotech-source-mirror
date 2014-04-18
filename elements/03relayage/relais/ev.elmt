@@ -9,6 +9,7 @@
         <name lang="pl">Elektrozawór</name>
         <name lang="es">Electroválvula</name>
         <name lang="cs">Elektrostavidlo</name>
+        <name lang="nl">Elektrische afsluiter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

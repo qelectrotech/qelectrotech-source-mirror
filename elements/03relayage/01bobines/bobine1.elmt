@@ -11,6 +11,7 @@
         <name lang="pl">Cewka</name>
         <name lang="es">Bobina</name>
         <name lang="cs">Cívka</name>
+        <name lang="nl">Spoel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

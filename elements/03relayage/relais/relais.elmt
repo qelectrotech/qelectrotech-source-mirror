@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">مُرحّل</name>
         <name lang="de">Spule</name>
@@ -10,6 +10,7 @@
         <name lang="pl">Cewka</name>
         <name lang="es">Bobina</name>
         <name lang="cs">Cívka</name>
+        <name lang="nl">Spoel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

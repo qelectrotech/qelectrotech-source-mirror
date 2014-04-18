@@ -8,6 +8,7 @@
         <name lang="pl">Przekaźnik spolaryzowany</name>
         <name lang="cs">Polarizované relé</name>
         <name lang="es">Relé polarizado</name>
+        <name lang="nl">relay polair</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

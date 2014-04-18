@@ -1,12 +1,13 @@
 <definition width="100" version="0.3" hotspot_x="48" hotspot_y="30" height="60" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="el">Πηνίο ρελέ με πολικότητα</name>
-        <name lang="en">Polarized relay, working at one direction of current in the coil</name>
+        <name lang="en">Polarized relay</name>
         <name lang="it">Relè polarizzato</name>
         <name lang="fr">Relais polarisé fonctionnant pour un seul sens du courant et retournant en position de repos après coupure</name>
         <name lang="pl">Przekaźnik spolaryzowany, działający przy jednym kierunku prądu w cewce</name>
         <name lang="es">Relé polarizado, de trabajo en una dirección de la corriente en la bobina</name>
         <name lang="cs">Polarizované relé, pracující v jednom směru proudu v cívce</name>
+        <name lang="nl">Polair relais</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

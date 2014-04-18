@@ -1,12 +1,13 @@
-<definition width="100" version="0.3" hotspot_x="31" hotspot_y="25" height="50" type="element" orientation="dnny" >
+<definition width="100" version="0.3" hotspot_x="31" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">مُرحّل استاتيكي</name>
-        <name lang="en">Static relay</name>
+        <name lang="en">Solid State relay</name>
         <name lang="it">Relè statico</name>
-        <name lang="fr">Relais statique</name>
+        <name lang="fr">Relais solide statique</name>
         <name lang="pl">Przekaźnik statyczny</name>
         <name lang="es">Relé estático</name>
         <name lang="cs">Statické relé</name>
+        <name lang="nl">Elektronisch relais</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

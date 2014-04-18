@@ -11,6 +11,7 @@
         <name lang="pl">Zestyk zwierny</name>
         <name lang="es">Contactor simple</name>
         <name lang="cs">Jednoduché spojení</name>
+        <name lang="nl">contact enkel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

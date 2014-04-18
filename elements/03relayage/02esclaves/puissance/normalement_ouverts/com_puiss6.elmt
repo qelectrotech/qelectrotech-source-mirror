@@ -11,6 +11,7 @@
         <name lang="pl">Stycznik</name>
         <name lang="es">Interruptor de potencia contactor</name>
         <name lang="cs">Stykač síly vodivého spojení</name>
+        <name lang="nl">Last contact (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

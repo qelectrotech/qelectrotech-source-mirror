@@ -6,6 +6,7 @@
         <name lang="pl">Przekaźnik niewrażliwy na prąd przemienny</name>
         <name lang="cs">Relé necitlivé na střídavý proud</name>
         <name lang="es"> relé insensible a la CA</name>
+        <name lang="nl">relais ongevoelig voor wisselspanning</name>
         <name lang="el">Ρελέ με αντοχή σε AC</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

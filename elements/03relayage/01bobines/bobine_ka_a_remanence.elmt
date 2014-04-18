@@ -11,6 +11,7 @@
         <name lang="pl">Cewka przekaźnika remanencyjnego</name>
         <name lang="es">Bobina KA de remanencia</name>
         <name lang="cs">Cívka přetrvávajícího relé</name>
+        <name lang="nl">spoel remanent</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

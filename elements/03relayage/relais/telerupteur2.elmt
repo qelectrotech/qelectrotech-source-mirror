@@ -1,4 +1,4 @@
-<definition width="80" version="0.3" hotspot_x="47" hotspot_y="25" height="50" type="element" orientation="dnny" >
+<definition width="80" version="0.3" hotspot_x="47" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="el">Τηλεχειριζόμενος διακόπτης</name>
         <name lang="en">Remote controlled switch</name>
@@ -7,6 +7,7 @@
         <name lang="pl">Łącznik zdalnie sterowany</name>
         <name lang="es">Interruptor a control remoto 2P1T</name>
         <name lang="cs">Dálkový spínač (přerušovač)</name>
+        <name lang="nl">Afstand bestuurbaar schakelaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

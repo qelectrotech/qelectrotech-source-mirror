@@ -4,12 +4,13 @@
         <name lang="de">Kontakte slave</name>
         <name lang="ru">Контакты раб</name>
         <name lang="pt">Contatos escravo</name>
-        <name lang="el">Επαφές ρελέ</name>
+        <name lang="el">Επαφές σκλάβος</name>
         <name lang="en">Contacts slave</name>
-        <name lang="it">Contatti slave (riferimento alla bobina)</name>
+        <name lang="it">Contatti schiavo</name>
         <name lang="fr">Contacts esclaves</name>
         <name lang="pl">Zestyki</name>
         <name lang="es">Contactos esclavo</name>
         <name lang="cs">Kontakty otrok</name>
+        <name lang="nl">Contacten slaaf</name>
     </names>
 </qet-directory>

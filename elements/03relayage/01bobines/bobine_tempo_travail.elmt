@@ -10,6 +10,7 @@
         <name lang="pl">Cewka przekaźnika działająca ze zwłoką przy wzbudzeniu</name>
         <name lang="es">Bobina de trabajo temporizado</name>
         <name lang="cs">Cívka relé - práce</name>
+        <name lang="nl">mechanisch met opkomvertraging</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

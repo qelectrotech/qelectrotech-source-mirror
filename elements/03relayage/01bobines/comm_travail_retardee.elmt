@@ -1,12 +1,13 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="el">Πηνίο χρονικού καθυστέρησης ενεργοποίησης</name>
-        <name lang="en">Relay operating with a delay of at excitation</name>
+        <name lang="en">Relay operating delay at excitation</name>
         <name lang="it">Relè ritardato alla chiusura</name>
         <name lang="fr">Relais à mise au travail retardée</name>
         <name lang="pl">Przekaźnik działający ze zwłoką przy wzbudzeniu</name>
         <name lang="es">Relé con retrazo en la exitación</name>
         <name lang="cs">Relé pracující při probuzení se zpožděním</name>
+        <name lang="nl">Relays met opkomvertraging</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
