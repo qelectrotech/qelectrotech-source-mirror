@@ -9,6 +9,7 @@
         <name lang="pl">Linia trójfazowa (TN-C-S)</name>
         <name lang="es">Punto de distribución TN-C > TN-S</name>
         <name lang="cs">Bod rozdělení TN-C > TN-S</name>
+        <name lang="nl">Net TN-C > TN-S</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

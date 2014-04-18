@@ -6,6 +6,7 @@
         <name lang="cs">Zařízení zamknuto, klíč nedostupný</name>
         <name lang="ar">جهاز مُغلق , مفتاح سجين</name>
         <name lang="it">Apparecchio a chiave, chiuso</name>
+        <name lang="nl">Sleutelvanger gesloten</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

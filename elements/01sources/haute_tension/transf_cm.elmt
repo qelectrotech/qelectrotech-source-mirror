@@ -6,6 +6,7 @@
         <name lang="cs">Transformátor napětí CM</name>
         <name lang="ar">محوّل كمون CM</name>
         <name lang="it">Trasformatore di potenziale CM</name>
+        <name lang="nl">Transformator CM CM</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

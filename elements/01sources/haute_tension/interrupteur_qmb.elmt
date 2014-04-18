@@ -6,6 +6,7 @@
         <name lang="cs">Přerušovač s pojistkou QMB</name>
         <name lang="ar">مفتاح بمصهر QMB</name>
         <name lang="it">Interruttore QMB</name>
+        <name lang="nl">Onderbreker met zekering QMB</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="cs">Zařízení odemčeno, klíč nedostupný</name>
         <name lang="ar">جهاز مفتوح, مفتاج سجين</name>
         <name lang="it">Apparecchio a chiave, aperto</name>
+        <name lang="nl">Sleutelvanger open</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

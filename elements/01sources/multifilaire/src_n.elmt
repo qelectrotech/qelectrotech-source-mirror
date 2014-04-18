@@ -1,22 +1,23 @@
-<definition width="30" version="0.4" hotspot_x="15" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
     <names>
         <name lang="ar">مصدر محايد</name>
         <name lang="de">Neutralleiter</name>
         <name lang="ru">Нейтраль</name>
         <name lang="pt">Fonte de neutro</name>
-        <name lang="el">Ουδέτερος</name>
         <name lang="en">Neutral source</name>
         <name lang="it">Sorgente neutro</name>
         <name lang="fr">Source neutre</name>
         <name lang="pl">Przewód neutralny</name>
         <name lang="es">Fuente neutro</name>
         <name lang="cs">Nulový zdroj</name>
+        <name lang="nl">Nul voeding</name>
+        <name lang="el">Ουδέτερος</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
         <text x="-12" y="3" size="5" text="N"/>
-        <terminal x="10" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="10" y="0" orientation="e"/>
     </description>
 </definition>

@@ -1,0 +1,30 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="el">Μετασχηματιστής δυο τυλιγμάτων</name>
+        <name lang="en">Two winding transformer</name>
+        <name lang="it">Trasformatore</name>
+        <name lang="fr">Transformateur à deux enroulements</name>
+        <name lang="pl">Transformator</name>
+        <name lang="cs">Jednofázový transformátor s obrazovkou</name>
+        <name lang="nl">Transformator gescheiden</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="5" x="-10" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="10" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="10" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-10" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-10" x2="-10"/>
+        <arc width="5" x="5" y="-11.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="5" x="0" y="-11.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="5" x="-5" y="-11.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="5" x="-10" y="-11.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="5" x="5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="5" x="0" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="5" x="-5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <terminal x="-10" y="-20" orientation="n"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="-10" y="10" orientation="s"/>
+        <terminal x="10" y="10" orientation="s"/>
+    </description>
+</definition>

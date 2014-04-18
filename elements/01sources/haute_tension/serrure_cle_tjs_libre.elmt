@@ -6,6 +6,7 @@
         <name lang="cs">Zámek, klíč vždy dostupný</name>
         <name lang="ar">قفل مفتاح دائما حرّ</name>
         <name lang="it">Serratura sempre libera</name>
+        <name lang="nl">Sleutel altijd vrij</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,9 +1,10 @@
-<definition width="190" version="0.4" hotspot_x="93" hotspot_y="138" height="210" type="element" ic="true" orientation="dyyy">
+<definition width="190" version="0.4" hotspot_x="93" hotspot_y="137" height="210" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="el">Η/Ζ με τουρμπομηχανή</name>
         <name lang="en">Micro_Turbine</name>
-        <name lang="it">Micro Turbina</name>
         <name lang="fr">Groupe electrogene</name>
+        <name lang="it">Micro Turbina</name>
+        <name lang="nl">Micro Turbine</name>
+        <name lang="el">Η/Ζ με τουρμπομηχανή</name>
         <name lang="cs">Mikroturbíny</name>
     </names>
     <informations>Author: Arun Kishore Eswara

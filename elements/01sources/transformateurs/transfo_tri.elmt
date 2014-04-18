@@ -1,0 +1,43 @@
+<definition width="70" version="0.3" hotspot_x="25" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny">
+    <names>
+        <name lang="ar">محوّل ثلاثي الأوجه</name>
+        <name lang="de">Trafo Drehstrom</name>
+        <name lang="ru">Трёхфазный трансформатор</name>
+        <name lang="pt">Transformador trifásico</name>
+        <name lang="el">Τριφασικός μετασχηματιστής</name>
+        <name lang="en">Three-phase transducer</name>
+        <name lang="it">Trasformatore trifase</name>
+        <name lang="fr">Transformateur triphasé</name>
+        <name lang="pl">Transformator trójfazowy</name>
+        <name lang="es">Transformador trifásico</name>
+        <name lang="cs">Třífázový transformátor</name>
+        <name lang="nl">Transformator draaistroom</name>
+
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="0" y2="13" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="0" y2="8" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="0" y2="20" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="0" y2="20" x2="-7"/>
+        <input x="20" y="15" size="5" rotate="true" text="___V"/>
+        <input x="20" y="-10" size="5" rotate="true" text="___V"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.5" x1="10" y2="35" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="0" y2="35" x2="0"/>
+        <circle x="-15" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.5" x1="-10" y2="35" x2="-10"/>
+        <circle x="-15" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <input x="17.75" y="4" size="9" text="T_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="0" y2="-25" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="10" y2="-21.5" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="-10" y2="-21.5" x2="-10"/>
+        <terminal x="10" y="-36" orientation="n"/>
+        <terminal x="0" y="-36" orientation="n"/>
+        <terminal x="-10" y="-36" orientation="n"/>
+        <terminal x="-10" y="36" orientation="s"/>
+        <terminal x="0" y="36" orientation="s"/>
+        <terminal x="10" y="36" orientation="s"/>
+        <terminal x="-21" y="13" orientation="w"/>
+    </description>
+</definition>

@@ -1,10 +1,12 @@
-<definition width="50" version="0.4" hotspot_x="17" hotspot_y="25" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="18" hotspot_y="25" height="40" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="el">Μονοφασικός μετασχηματιστής</name>
         <name lang="it">Autotrasformatore monofase(forma 2)</name>
         <name lang="fr">Autotransformateur monophasé</name>
         <name lang="pl">Autotransformator jednofazowy (forma 2)</name>
         <name lang="cs">Jednofázový autotransformátor (forma 2)</name>
+        <name lang="nl">eenfase Autotransformator</name>
+        <name lang="en">autotransformer single phase</name>
+        <name lang="el">Μονοφασικός μετασχηματιστής</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

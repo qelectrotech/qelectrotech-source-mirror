@@ -5,6 +5,8 @@
         <name lang="it">Transformatore di corrente, 2 secondari 1 circuito magnetico comune</name>
         <name lang="pl">Przekładnik (forma 2)</name>
         <name lang="cs">Transformátor proudu, se dvěma sekundárními vinutími na jednom magnetickém vedení (forma 2)</name>
+        <name lang="nl">Stroomtrafo 2 uitgangen</name>
+
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

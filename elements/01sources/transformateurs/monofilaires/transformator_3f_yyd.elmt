@@ -9,6 +9,7 @@
         <name lang="pl">Transformator trójuzwojeniowy</name>
         <name lang="es">Transformador 2 secundarios estrella-estrella-triangulo</name>
         <name lang="cs">Třífázový transformátor, hvězda-hvězda, trojúhelníkové zapojení</name>
+        <name lang="nl">driefasen transformator Ster-Ster Driehoek</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

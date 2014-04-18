@@ -6,6 +6,7 @@
         <name lang="cs">Zámek, klíč vždy nedostupný</name>
         <name lang="ar">قفل بمفتاح دائما سجين</name>
         <name lang="it">Serratura con chiave bloccata</name>
+        <name lang="nl">Slot met gevangen sleutel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

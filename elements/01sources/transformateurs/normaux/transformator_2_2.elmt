@@ -6,6 +6,7 @@
         <name lang="fr">Transformateur à deux enroulements</name>
         <name lang="pl">Transformator</name>
         <name lang="cs">Transformátor</name>
+        <name lang="nl">Transformator gescheiden aftakking</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

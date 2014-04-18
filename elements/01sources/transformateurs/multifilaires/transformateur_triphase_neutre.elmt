@@ -7,6 +7,7 @@
         <name lang="fr">Transformateur triphasé + neutre</name>
         <name lang="pl">Transformator trójfazowy</name>
         <name lang="cs">Třífázový transformátor + neutrální</name>
+        <name lang="nl">driefase transformator + Nul</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

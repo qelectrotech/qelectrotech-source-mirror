@@ -10,6 +10,7 @@
         <name lang="pl">Źródło prądu (nowy)</name>
         <name lang="es">Fuente de corriente (nuevo)</name>
         <name lang="cs">Zdroj proudu (nový)</name>
+        <name lang="nl">Stroombron new</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,8 @@
         <name lang="it">Trasformatore di corrente o d'impulso</name>
         <name lang="pl">Przekładnik (forma 2)</name>
         <name lang="cs">Transformátor impulsu nebo proudu (forma 2)</name>
+        <name lang="nl">Stroomtrafo</name>
+
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

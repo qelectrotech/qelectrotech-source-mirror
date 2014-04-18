@@ -6,6 +6,7 @@
         <name lang="cs">Klíč nedostupný, vstup dovolen</name>
         <name lang="ar">مفتاح سجين متاح الدخول حر</name>
         <name lang="it">Chiave bloccata, manovra libera</name>
+        <name lang="nl">Slot vang ingang vrij</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

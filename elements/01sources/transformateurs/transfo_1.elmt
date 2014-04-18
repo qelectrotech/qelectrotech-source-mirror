@@ -1,0 +1,30 @@
+<definition width="50" version="0.3" hotspot_x="10" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
+    <names>
+        <name lang="ar">محوّل وحيد الخط</name>
+        <name lang="de">Trafo Einfach</name>
+        <name lang="ru">Однолинейный трансформатор</name>
+        <name lang="pt">Transformador unifilar</name>
+        <name lang="el">Μονοπολικός μετασχηματιστής</name>
+        <name lang="en">Single line transducer</name>
+        <name lang="it">Trasformatore unifilare</name>
+        <name lang="fr">Transformateur unifilaire</name>
+        <name lang="pl">Transformator</name>
+        <name lang="es">Transformador unifilar</name>
+        <name lang="cs">Jednoduchý transformátor</name>
+        <name lang="nl">enkellijn transformator</name>
+
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="20" y="17" size="5" text="___V"/>
+        <circle x="-5" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <input x="20" y="-10" size="5" text="___V"/>
+        <circle x="-5" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <input x="18" y="3" size="9" text="T_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="5" y2="-15" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="5" y2="25" x2="5"/>
+        <terminal x="5" y="-26" orientation="n"/>
+        <terminal x="5" y="26" orientation="s"/>
+    </description>
+</definition>

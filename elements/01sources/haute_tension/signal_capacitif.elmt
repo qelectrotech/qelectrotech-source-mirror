@@ -8,6 +8,7 @@
         <name lang="pl">Pojemnościowy wskaźnik napięcia</name>
         <name lang="it">Indicatore presenza tensione capacitiva</name>
         <name lang="ar">مُؤشر وجود جهد سعوي</name>
+        <name lang="nl">Capacitair Voltage melder</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

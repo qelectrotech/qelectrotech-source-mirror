@@ -9,6 +9,7 @@
         <name lang="pl">Transformator z przewodem środkowym</name>
         <name lang="es">Transformador con derivación central en una bobina</name>
         <name lang="cs">Jednofázový transformátor s odbočkou z vinutí uprostřed</name>
+        <name lang="nl">transformator met middenaftakking </name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

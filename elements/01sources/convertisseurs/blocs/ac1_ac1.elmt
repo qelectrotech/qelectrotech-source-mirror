@@ -11,6 +11,7 @@
         <name lang="pl">Przekształtnik prądu przemiennego</name>
         <name lang="es">Alterna monofásica > Alterna monofásica</name>
         <name lang="cs">Střídavý proud > stejnosměrný proud</name>
+        <name lang="nl">Wisselspanning > Wisselspanning  AC1 > AC1</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

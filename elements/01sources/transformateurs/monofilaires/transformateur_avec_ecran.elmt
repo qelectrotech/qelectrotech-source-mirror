@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">مُحوّل بشاشة</name>
         <name lang="de">Einphasentransformator mit zwei Wicklungen und Schirm</name>
-        <name lang="el">Μονοφασικός μετασχηματιστής με θωράκιση</name>
         <name lang="en">Single phase transformer with screen</name>
         <name lang="it">Trasformatore monofase a due av-volgimenti con schermo</name>
         <name lang="fr">Transformateur avec écran</name>
         <name lang="pl">Transformator ekranowany</name>
         <name lang="es">Transformador monofásico con regilla</name>
         <name lang="cs">Jednofázový transformátor s obrazovkou</name>
+        <name lang="nl">enkelfase transformator met scherm</name>
+        <name lang="el">Μονοφασικός μετασχηματιστής με θωράκιση</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

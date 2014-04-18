@@ -11,5 +11,7 @@
         <name lang="pl">Schemat jednoliniowy</name>
         <name lang="es">Monohilos</name>
         <name lang="cs">Jednoduché vedení</name>
+        <name lang="nl">Enkellijn</name>
+
     </names>
 </qet-directory>

@@ -11,6 +11,7 @@
         <name lang="pl">Transformator trójfazowy</name>
         <name lang="es">Transformador trifásico</name>
         <name lang="cs">Třífázový transformátor</name>
+        <name lang="nl">driefase transformator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,0 +1,49 @@
+<definition width="130" version="0.4" hotspot_x="33" hotspot_y="62" height="150" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Inverter</name>
+        <name lang="fr">Onduleur</name>
+        <name lang="it">Inverter</name>
+        <name lang="nl">Inverter</name>
+    </names>
+    <informations>Author: Arun Kishore Eswara
+
+License: Creative Commons By 3.0 
+Quote Author and use for free : strictly non-commercial</informations>
+    <description>
+        <text x="-20" y="-33" size="4" text="DC Voltage"/>
+        <text x="37" y="-47" size="7" text="Inverter"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="28.1004" x1="33.6462" y2="28.1004" x2="36.45"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26.8996" x1="32.4962" y2="-26.8996" x2="35.3"/>
+        <rect width="51.75" x="29.55" y="-36" antialias="true" height="71" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-27" y="81" size="4" text="Control Signals"/>
+        <text x="-26" y="49" size="4" text="Actual Signals"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35.8671" x1="70" y2="50.144" x2="70"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28.0401" x1="33.8982" y2="-25.7524" x2="33.8982"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35.8671" x1="40" y2="50.144" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24.1275" x1="11.0497" y2="24.1275" x2="69.937"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.14443" x1="70.95" y2="-24" x2="70.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24.1275" x1="70.95" y2="6.86063" x2="70.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23.9065" x1="58.3" y2="-0.0784918" x2="58.3"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.566" x1="69.8" y2="4.292" x2="74.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.22286" x1="58.3" y2="-23.7943" x2="58.3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.8757" x1="44.5" y2="-23.9057" x2="44.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="10.8466" y2="-24" x2="69.937"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24.1275" x1="44.5" y2="-4.96905" x2="44.5"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13.65" x1="43.35" y2="-10.2" x2="47.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.2" x1="48.0247" y2="-10.2" x2="90.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.292" x1="74.5852" y2="4.292" x2="90.2994"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.411111" x1="57.15" y2="-3.07667" x2="62.9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.0767" x1="62.9057" y2="-3.07667" x2="90.4938"/>
+        <rect width="78.3871" x="13.6129" y="51" antialias="false" height="24" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="16" y="66" size="6" text="Control Electronics"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="4.29867" y2="58" x2="13.4395"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="68" x1="3.65273" y2="68" x2="13.5012"/>
+        <terminal x="89.35" y="-10.2" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="89.35" y="-3.0767" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="89.35" y="4.292" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="6" y="58" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="4.07931" y="68" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="14" y="-24" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="14" y="24" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

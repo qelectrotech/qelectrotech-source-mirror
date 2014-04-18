@@ -6,6 +6,7 @@
         <name lang="cs">Jistič DM2</name>
         <name lang="ar">قاطع DM2</name>
         <name lang="it">Sezionatore DM2</name>
+        <name lang="nl">Onderbreker DM2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,15 +1,13 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
     <names>
-        <name lang="de">Leiter im Erdreich,
-Erdkabel
-</name>
+        <name lang="de">Leiter im Erdreich, Erdkabel</name>
         <name lang="en">Underground line</name>
-        <name lang="fr">Ligne souterraine
-</name>
+        <name lang="fr">Ligne souterraine</name>
         <name lang="pl">Linia podziemna</name>
         <name lang="cs">Podzemní vodič, zemní kabel</name>
         <name lang="ar">خط تحت أرضي</name>
         <name lang="it">Linea sotteranea</name>
+        <name lang="nl">Ondergronds lijn</name>
     </names>
     <informations>EN 60617: 11-03-01</informations>
     <description>

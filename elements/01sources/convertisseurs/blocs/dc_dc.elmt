@@ -11,6 +11,7 @@
         <name lang="pl">Przekształtnik prądu stałego</name>
         <name lang="es">Continua > Continua</name>
         <name lang="cs">Stejnosměrný proud > stejnosměrný proud</name>
+        <name lang="nl">Gelijkspanning > gelijkspanning DC>DC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

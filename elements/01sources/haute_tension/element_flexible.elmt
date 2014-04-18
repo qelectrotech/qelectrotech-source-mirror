@@ -1,14 +1,13 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
     <names>
-        <name lang="de">Flexibler Elektro-Installationskanal
-</name>
+        <name lang="de">Flexibler Elektro-Installationskanal</name>
         <name lang="en">Flexible element</name>
-        <name lang="fr">Élément flexible
-</name>
+        <name lang="fr">Élément flexible</name>
         <name lang="pl">Przewód giętki</name>
         <name lang="cs">Pružný prvek</name>
         <name lang="ar">عنصر مرن</name>
         <name lang="it">Elemento flessibile</name>
+        <name lang="nl">Flexibel element</name>
     </names>
     <informations>EN 60617: 03-01-06</informations>
     <description>

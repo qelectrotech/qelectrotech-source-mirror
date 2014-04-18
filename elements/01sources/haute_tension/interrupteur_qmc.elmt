@@ -6,6 +6,7 @@
         <name lang="cs">Přerušovač s pojistkou QMC</name>
         <name lang="ar">مفتاح QMC</name>
         <name lang="it">Interruttore QMC</name>
+        <name lang="nl">Onderbreker QMC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

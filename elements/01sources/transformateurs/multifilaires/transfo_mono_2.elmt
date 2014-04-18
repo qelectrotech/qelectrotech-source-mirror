@@ -10,6 +10,7 @@
         <name lang="pl">Transformator jednofazowy</name>
         <name lang="es">Transformador monofásica</name>
         <name lang="cs">Jednofázový transformátor</name>
+        <name lang="nl">eenfase transformator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

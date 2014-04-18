@@ -1,10 +1,11 @@
 <definition width="110" version="0.4" hotspot_x="55" hotspot_y="201" height="260" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="el">Ανεμόμυλος</name>
         <name lang="en">Wind Mill</name>
-        <name lang="it">Eolico</name>
         <name lang="fr">Eolienne</name>
+        <name lang="it">Eolico</name>
+        <name lang="nl">Windmolen</name>
         <name lang="cs">Větrný motor</name>
+        <name lang="el">Ανεμόμυλος</name>
     </names>
     <informations>Author: Arun Kishore Eswara
 

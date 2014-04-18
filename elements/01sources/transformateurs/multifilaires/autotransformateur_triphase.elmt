@@ -7,6 +7,7 @@
         <name lang="fr">Autotransformateur triphasé</name>
         <name lang="pl">Autotransformator trójfazowy</name>
         <name lang="cs">Třífázový autotransformátor</name>
+        <name lang="nl">driefase autotransformator</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

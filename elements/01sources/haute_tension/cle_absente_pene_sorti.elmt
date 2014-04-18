@@ -6,6 +6,7 @@
         <name lang="cs">Klíči chybí zástrčka, výstup nedovolen</name>
         <name lang="ar">المفتاح مفقود غير مصرّح بالدخول</name>
         <name lang="it">Chiave assente, manovra bloccata</name>
+        <name lang="nl">Slot missende sleutel uit geblokt</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

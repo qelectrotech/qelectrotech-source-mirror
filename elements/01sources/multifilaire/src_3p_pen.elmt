@@ -1,15 +1,16 @@
-<definition width="40" version="0.4" hotspot_x="23" hotspot_y="41" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="23" hotspot_y="41" height="80" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مصدر ثلاثي القطبيّة + PEN</name>
         <name lang="de">Drehstrom + PEN</name>
         <name lang="ru">Трёхполюсный + PEN</name>
-        <name lang="el">Τριφασικό + PEN</name>
         <name lang="en">Three-pole source + PEN</name>
         <name lang="it">Sorgente tripolare + PEN</name>
         <name lang="fr">Source tripolaire + PEN</name>
         <name lang="pl">Linia trójfazowa (PEN)</name>
         <name lang="es">Fuente tripolar + PEN</name>
         <name lang="cs">3 fáze + PEN</name>
+        <name lang="nl">driefasen + aardenul</name>
+        <name lang="el">Τριφασικό + PEN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

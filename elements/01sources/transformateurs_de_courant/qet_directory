@@ -5,6 +5,8 @@
         <name lang="en">Current transformer</name>
         <name lang="pl">Przekładniki</name>
         <name lang="cs">ransformátory proudu</name>
+        <name lang="nl">Current transformator</name>
         <name lang="el">Μετασχηματιστές Έντασης</name>
+
     </names>
 </qet-directory>

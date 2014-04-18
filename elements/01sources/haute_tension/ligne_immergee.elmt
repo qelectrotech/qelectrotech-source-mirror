@@ -1,15 +1,13 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="30" type="element" orientation="dyyy">
     <names>
-        <name lang="de">Leiter im Gewässer,
-Seekabel
-</name>
+        <name lang="de">Leiter im Gewässer,Seekabel</name>
         <name lang="en">Line immersed</name>
-        <name lang="fr">Ligne immergée
-</name>
+        <name lang="fr">Ligne immergée</name>
         <name lang="pl">Linia podwodna</name>
         <name lang="cs">Ponořený vodič, mořský kabel</name>
         <name lang="ar">خط مغمور</name>
         <name lang="it">Linea immersa</name>
+        <name lang="nl">Onderwater lijn</name>
     </names>
     <informations>EN 60617: 11-03-02</informations>
     <description>

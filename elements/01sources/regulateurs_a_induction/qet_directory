@@ -4,5 +4,7 @@
         <name lang="pl">Regulatory indukcyjne</name>
         <name lang="it">Regulatori induttivi</name>
         <name lang="cs">Indukční regulátory</name>
+        <name lang="en">Voltage regulators</name>
+        <name lang="nl">Spanningsregelaars</name>
     </names>
 </qet-directory>

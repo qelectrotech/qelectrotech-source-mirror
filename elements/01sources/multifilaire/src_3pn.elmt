@@ -1,16 +1,17 @@
-<definition width="30" version="0.4" hotspot_x="15" hotspot_y="40" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="40" height="80" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مصدر ثلاثي القطبيّة + محايد</name>
         <name lang="de">Dreiphasig + Neutral</name>
         <name lang="ru">Трёхполюсный + нейтраль</name>
         <name lang="pt">Fonte tripolar + neutro</name>
-        <name lang="el">Τριφασικό + Ουδέτερος</name>
         <name lang="en">Three-pole source + neutral</name>
         <name lang="it">Sorgente tripolare + neutro</name>
         <name lang="fr">Source tripolaire + neutre</name>
         <name lang="pl">Linia trójfazowa (czteroprzewodowa)</name>
         <name lang="es">Fuente tripolar + neutro</name>
         <name lang="cs">Třípólový zdroj + nulový</name>
+        <name lang="nl">Driefasen + nul</name>
+         <name lang="el">Τριφασικό + Ουδέτερος</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

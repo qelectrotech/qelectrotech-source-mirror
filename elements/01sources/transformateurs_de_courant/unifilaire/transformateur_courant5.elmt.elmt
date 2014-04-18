@@ -5,6 +5,8 @@
         <name lang="it">Trasformatore d'impulso o di corrente, 2 secondari con unico nucleo</name>
         <name lang="pl">Przekładnik (forma 2)</name>
         <name lang="cs">Transformátor impulsu nebo proudu, se dvěma sekundárními vinutími na tomtéž jádru (forma 2)</name>
+        <name lang="nl">Stroomtrafo met 2 uitgangen</name>
+
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

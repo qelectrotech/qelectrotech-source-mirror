@@ -6,6 +6,7 @@
         <name lang="cs">Výsuvný spínač DM1-Z</name>
         <name lang="ar">قاطع بالسحب DM1-Z</name>
         <name lang="it">Sezionatore DM1-Z</name>
+        <name lang="nl">Onderbreker uittrekbaar DM1-Z</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

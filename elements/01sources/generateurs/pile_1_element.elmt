@@ -1,13 +1,14 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">بطارية خليّة واحدة</name>
-        <name lang="el">Μπαταρία (1 στοιχείο)</name>
         <name lang="en">Battery one element</name>
         <name lang="it">Batteria (un elemento)</name>
         <name lang="fr">Pile 1 élément</name>
         <name lang="pl">Ogniwo elektrochemiczne</name>
         <name lang="es">Bateria 1 elemento</name>
         <name lang="cs">Akumulátor 1 prvek</name>
+        <name lang="nl">Batterij 1 element DC</name>
+        <name lang="el">Μπαταρία (1 στοιχείο)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,0 +1,27 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
+    <names>
+        <name lang="ar">محوّل مثلثي نجمي Dy</name>
+        <name lang="el">Μετασχηματιστής τρίγωνο-αστέρας</name>
+        <name lang="en">transformeur delta-star</name>
+        <name lang="it">Transformatore Triangolo-stella</name>
+        <name lang="fr">Transformateur triangle étoile</name>
+        <name lang="pl">Transformator Dy</name>
+        <name lang="cs">Transformátor Dy</name>
+        <name lang="nl">Transformator Driehoek/Ster</name>
+
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="3" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="3" y2="-7" x2="-3" y3="-14" x3="0" y4="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="0" y2="7" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="0" y2="7" x2="-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="0" y2="13" x2="0"/>
+        <circle x="-10" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <circle x="-10" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="0" y2="-15" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="0" y2="25" x2="0"/>
+        <terminal x="0" y="-26" orientation="n"/>
+        <terminal x="0" y="26" orientation="s"/>
+    </description>
+</definition>

@@ -1,15 +1,16 @@
-<definition width="40" version="0.4" hotspot_x="22" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="22" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مصدر وحيد القطبية +PEN</name>
         <name lang="de">Wechselstrom + PEN</name>
         <name lang="ru">Однополюсный + PEN</name>
-        <name lang="el">Μονοφασικό +PEN</name>
         <name lang="en">Single-pole source +PEN</name>
         <name lang="it">Sorgente unipolare + PEN</name>
         <name lang="fr">Source unipolaire + PEN</name>
         <name lang="pl">Linia jednofazowa (TN-C)</name>
         <name lang="es">Fuente unipolo + PEN</name>
         <name lang="cs">1 fáze + PEN</name>
+        <name lang="nl">1 fase + aardenul</name>
+        <name lang="el">Μονοφασικό +PEN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

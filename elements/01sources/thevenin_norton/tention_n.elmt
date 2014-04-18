@@ -10,6 +10,7 @@
         <name lang="pl">Źródło napięcia (nowy)</name>
         <name lang="es">Fuente de tensión (nuevo)</name>
         <name lang="cs">Zdroj napětí (nový)</name>
+        <name lang="nl">Spanningsbron nieuw</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

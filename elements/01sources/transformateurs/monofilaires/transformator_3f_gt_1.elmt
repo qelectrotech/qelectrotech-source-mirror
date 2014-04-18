@@ -1,12 +1,13 @@
-<definition width="60" version="0.4" hotspot_x="21" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="17" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="el">Τριφασικός μετασχηματιστής, αστέρας τρίγωνο</name>
         <name lang="en">Three-phase transformer Yd</name>
         <name lang="it">Trasformatore 3F Yd (forma 1)</name>
         <name lang="fr">Transformateur triphasé etoile triangle</name>
         <name lang="pl">Transformator tyrójfazowy Yd (forma 1)</name>
         <name lang="es">Transformador trifásico Yd</name>
         <name lang="cs">Třífázový autotransformátor Yd, hvězda trojúhelník (forma 1)</name>
+        <name lang="nl">driefasen transformator Ster driehoek</name>
+        <name lang="el">Τριφασικός μετασχηματιστής, αστέρας τρίγωνο</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

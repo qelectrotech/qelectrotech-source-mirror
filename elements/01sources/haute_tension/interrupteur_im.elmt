@@ -6,6 +6,7 @@
         <name lang="cs">Přerušovač IM</name>
         <name lang="ar">مفتاح IM</name>
         <name lang="it">Interruttore IM</name>
+        <name lang="nl">Onderbreker IM</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

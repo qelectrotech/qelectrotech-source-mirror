@@ -8,6 +8,7 @@
         <name lang="de">Erdungsschalter</name>
         <name lang="it">Interruttore-sezionatore di terra</name>
         <name lang="ar">مفتاح-عازل أرضي</name>
+        <name lang="nl">Aardeschakelaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

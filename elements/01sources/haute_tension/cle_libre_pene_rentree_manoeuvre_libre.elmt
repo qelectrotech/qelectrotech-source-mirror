@@ -6,6 +6,7 @@
         <name lang="cs">Klíč dostupný, vstup dovolen</name>
         <name lang="ar">المفتاح مُتاح يُسمح بالدخول</name>
         <name lang="it">Chiave libera, manovra libera</name>
+        <name lang="nl">Slot sleutel in vrij</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

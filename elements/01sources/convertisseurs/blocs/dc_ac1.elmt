@@ -11,6 +11,7 @@
         <name lang="pl">Falownik</name>
         <name lang="es">Continua > Alterna monofásica</name>
         <name lang="cs">Stejnosměrný proud > střídavý proud</name>
+        <name lang="nl">Gelijkspanning > Wisselspanning DC > AC1</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
