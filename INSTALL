@@ -99,11 +99,11 @@ $ make
 
 [el]
 Απαιτήσεις:
-libQt4 (see packages libqt4*)
-cupsys-bsd for printing
+libQt4 (δείτε για πακέτα libqt4*)
+cupsys-bsd για εκτύπωση
 
 Πως να το μεταγλωττίσετε:
-$ qmake (qmake-qt4 for Debian-based systems)
+$ qmake (qmake-qt4 για συστήματα βασισμένα σε Debian)
 $ make
 # umask 0022
 # make install

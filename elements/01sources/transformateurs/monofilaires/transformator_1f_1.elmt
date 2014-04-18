@@ -11,6 +11,7 @@
         <name lang="es">Transformador monofásico</name>
         <name lang="cs">Jednofázový transformátor</name>
         <name lang="nl">wisselspanning transformator</name>
+        <name lang="el">Μονοφασικός μετασχηματιστής</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
