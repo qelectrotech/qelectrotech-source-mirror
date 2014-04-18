@@ -5871,7 +5871,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία ιδιοτήτων ενός συνδέσμου, Ζώνης</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
