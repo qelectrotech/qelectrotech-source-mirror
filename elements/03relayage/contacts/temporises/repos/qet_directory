@@ -1,0 +1,16 @@
+<qet-directory>
+    <names>
+        <name lang="ar">توقّف</name>
+        <name lang="de">Abschaltverzögert</name>
+        <name lang="ru">при возврате</name>
+        <name lang="pt">Interruptores de tempo desligado retardado</name>
+        <name lang="en">Switch-off delay</name>
+        <name lang="el">Καθυστέρηση απενεργοποίησης</name>
+        <name lang="it">Ritardo alla diseccitazione</name>
+        <name lang="fr">Repos</name>
+        <name lang="pl">Zestyki zwierające z opóźnieniem przy powrocie</name>
+        <name lang="es">Comutadores de tiempo retardado de apago</name>
+        <name lang="cs">Opožděné vypnutí</name>
+        <name lang="nl">afvalvertraagd</name>
+    </names>
+</qet-directory>

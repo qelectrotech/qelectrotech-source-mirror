@@ -1,0 +1,16 @@
+<qet-directory>
+    <names>
+        <name lang="ar">تشغيل</name>
+        <name lang="de">Einschaltverzögert</name>
+        <name lang="ru">при срабатывании</name>
+        <name lang="pt">Interruptores de tempo ligado retardado</name>
+        <name lang="en">Switch-on delay</name>
+        <name lang="el">Καθυστέρηση ενεργοποίησης</name>
+        <name lang="it">Ritardo all'accitazione</name>
+        <name lang="fr">Travail</name>
+        <name lang="pl">Zestyki zwierające z opóźnieniem przy uruchamianiu</name>
+        <name lang="es">Comutadores de tiempo retardado de encendido</name>
+        <name lang="cs">Opožděné zapnutí</name>
+        <name lang="nl">Opkomvertraagd </name>
+    </names>
+</qet-directory>
