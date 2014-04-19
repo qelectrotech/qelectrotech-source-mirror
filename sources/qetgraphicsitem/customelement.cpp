@@ -210,6 +210,11 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 	Destructeur
 */
 CustomElement::~CustomElement() {
+	qDeleteAll (list_lines_);
+	qDeleteAll (list_rectangles_);
+	qDeleteAll (list_circles_);
+	qDeleteAll (list_polygons_);
+	qDeleteAll (list_arcs_);
 }
 
 /// @return la liste des bornes de cet element

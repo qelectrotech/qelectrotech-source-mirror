@@ -433,14 +433,18 @@ TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(const QStri
 */
 QString QETApp::userName() {
 	QProcess * process = new QProcess();
+	QString str;
 #ifndef Q_OS_WIN32
 	// return(QString(getenv("USER")));
-	return((process->processEnvironment()).value("USER", "UNKNOWN"));
+	str = (process->processEnvironment()).value("USER", "UNKNOWN");
+	delete process;
+	return(str);
 #else
 	// return(QString(getenv("USERNAME")));
-	return((process->processEnvironment()).value("USERNAME", "UNKNOWN"));
-#endif
+	str = (process->processEnvironment()).value("USERNAME", "UNKNOWN");
 	delete process;
+	return(str);
+#endif
 }
 
 /**

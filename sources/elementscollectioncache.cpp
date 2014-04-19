@@ -65,6 +65,10 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 	Destructor
 */
 ElementsCollectionCache::~ElementsCollectionCache() {
+	delete select_name_;
+	delete select_pixmap_;
+	delete insert_name_;
+	delete insert_pixmap_;
 	cache_db_.close();
 }
 
