@@ -5,6 +5,7 @@
         <name lang="pl">Stycznik rewersyjny</name>
         <name lang="cs">Obrácený stykač</name>
         <name lang="nl">contacten draairichting</name>
+        <name lang="en">reversing contactor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

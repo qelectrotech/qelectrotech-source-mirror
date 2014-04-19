@@ -1,7 +1,8 @@
 <definition width="250" version="0.3" hotspot_x="4" hotspot_y="5" height="260" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="el">6ES7314-6CG03-0AB0</name>
-        <name lang="fr">314-6CG03-0AB0</name>
+        <name lang="fr">CPU 6ES7314-6CG03-0AB0</name>
+        <name lang="en">CPU 6ES7314-6CG03-0AB0</name>
         <name lang="it">CPU 6ES7314-6CG03-0AB0</name>
         <name lang="pl">6ES7314-6CG03-0AB0</name>
         <name lang="cs">6ES7314-6CG03-0AB0</name>
