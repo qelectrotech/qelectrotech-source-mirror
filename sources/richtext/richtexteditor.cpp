@@ -53,9 +53,9 @@
 #include <QtCore/QList>
 #include <QtCore/QMap>
 #include <QtCore/QPointer>
-#include <QtCore/QProcess>
-#include <QtCore/QTemporaryFile>
-#include <QtCore/QDir>
+#include <QtCore/QXmlStreamReader>
+#include <QtCore/QXmlStreamWriter>
+#include <QtCore/QXmlStreamAttributes>
 
 #include <QtGui/QAction>
 #include <QtGui/QColorDialog>
@@ -78,10 +78,103 @@
 
 QT_BEGIN_NAMESPACE
 
-//static const char *RichTextDialogC = "RichTextDialog";
-//static const char *Geometry = "Geometry";
+static const char RichTextDialogGroupC[] = "RichTextDialog";
+static const char GeometryKeyC[] = "Geometry";
+static const char TabKeyC[] = "Tab";
+
+const bool simplifyRichTextDefault = true;
 
 namespace qdesigner_internal {
+	// Richtext simplification filter helpers: Elements to be discarded
+	static inline bool filterElement(const QStringRef &name)
+	{
+		return name != QLatin1String("meta") && name != QLatin1String("style");
+	}
+
+	// Richtext simplification filter helpers: Filter attributes of elements
+	static inline void filterAttributes(const QStringRef &name,
+										QXmlStreamAttributes *atts,
+										bool *paragraphAlignmentFound)
+	{
+		typedef QXmlStreamAttributes::iterator AttributeIt;
+
+		if (atts->isEmpty())
+			return;
+
+		 // No style attributes for <body>
+		if (name == QLatin1String("body")) {
+			atts->clear();
+			return;
+		}
+
+		// Clean out everything except 'align' for 'p'
+		if (name == QLatin1String("p")) {
+			for (AttributeIt it = atts->begin(); it != atts->end(); ) {
+				if (it->name() == QLatin1String("align")) {
+					++it;
+					*paragraphAlignmentFound = true;
+				} else {
+					it = atts->erase(it);
+				}
+			}
+			return;
+		}
+	}
+
+	// Richtext simplification filter helpers: Check for blank QStringRef.
+	static inline bool isWhiteSpace(const QStringRef &in)
+	{
+		const int count = in.size();
+		for (int i = 0; i < count; i++)
+			if (!in.at(i).isSpace())
+				return false;
+		return true;
+	}
+
+	// Richtext simplification filter: Remove hard-coded font settings,
+	// <style> elements, <p> attributes other than 'align' and
+	// and unnecessary meta-information.
+	QString simplifyRichTextFilter(const QString &in, bool *isPlainTextPtr = 0)
+	{
+		unsigned elementCount = 0;
+		bool paragraphAlignmentFound = false;
+		QString out;
+		QXmlStreamReader reader(in);
+		QXmlStreamWriter writer(&out);
+		writer.setAutoFormatting(false);
+		writer.setAutoFormattingIndent(0);
+
+		while (!reader.atEnd()) {
+			switch (reader.readNext()) {
+			case QXmlStreamReader::StartElement:
+				elementCount++;
+				if (filterElement(reader.name())) {
+					const QStringRef name = reader.name();
+					QXmlStreamAttributes attributes = reader.attributes();
+					filterAttributes(name, &attributes, &paragraphAlignmentFound);
+					writer.writeStartElement(name.toString());
+					if (!attributes.isEmpty())
+						writer.writeAttributes(attributes);
+				} else {
+					reader.readElementText(); // Skip away all nested elements and characters.
+				}
+				break;
+			case QXmlStreamReader::Characters:
+				if (!isWhiteSpace(reader.text()))
+					writer.writeCharacters(reader.text().toString());
+				break;
+			case QXmlStreamReader::EndElement:
+				writer.writeEndElement();
+				break;
+			default:
+				break;
+			}
+		}
+		// Check for plain text (no spans, just <html><head><body><p>)
+		if (isPlainTextPtr)
+			*isPlainTextPtr = !paragraphAlignmentFound && elementCount == 4u; //
+		return out;
+	}
 
 class RichTextEditor : public QTextEdit
 {
@@ -91,6 +184,7 @@ public:
     void setDefaultFont(const QFont &font);
 
     QToolBar *createToolBar(QWidget *parent = 0);
+    bool simplifyRichText() const      { return m_simplifyRichText; }
 
 public slots:
     void setFontBold(bool b);
@@ -100,6 +194,10 @@ public slots:
 
 signals:
     void stateChanged();
+    void simplifyRichTextChanged(bool);
+
+private:
+    bool m_simplifyRichText;
 };
 
 class AddLinkDialog : public QDialog
@@ -293,7 +391,7 @@ private slots:
     void setVAlignSub(bool sub);
     void insertLink();
     void insertImage();
-    void runXmlPatterns();
+
 
 private:
     QAction *m_bold_action;
@@ -307,7 +405,7 @@ private:
     QAction *m_align_justify_action;
     QAction *m_link_action;
     QAction *m_image_action;
-    QAction *m_xmlPatterns;
+    QAction *m_simplify_richtext_action;
     ColorAction *m_color_action;
     QComboBox *m_font_size_input;
 
@@ -338,11 +436,6 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
     m_editor(editor)
 {
 
-    m_xmlPatterns = new QAction("Run XMLPatterns", this);
-    connect(m_xmlPatterns, SIGNAL(triggered()), this, SLOT(runXmlPatterns()));
-    addAction(m_xmlPatterns);
-	m_xmlPatterns -> setVisible( false );
-	
     // Font size combo box
     m_font_size_input->setEditable(false);
     const QList<int> font_sizes = QFontDatabase::standardSizes();
@@ -353,7 +446,6 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
             this, SLOT(sizeInputActivated(QString)));
     addWidget(m_font_size_input);
 
-    addSeparator();
 
     // Bold, italic and underline buttons
 
@@ -375,7 +467,6 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
     m_underline_action->setShortcut(tr("CTRL+U"));
     addAction(m_underline_action);
 
-    addSeparator();
 
     // Left, center, right and justified alignment buttons
 
@@ -404,10 +495,9 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
     addAction(m_align_justify_action);
 
 	m_align_justify_action -> setVisible( false );
-	m_align_center_action  -> setVisible( false );
-	m_align_left_action   -> setVisible( false );
-	m_align_right_action   -> setVisible( false );
-    //addSeparator();
+    m_align_center_action -> setVisible( false );
+    m_align_left_action -> setVisible( false );
+    m_align_right_action -> setVisible( false );
 
     // Superscript and subscript buttons
 
@@ -426,8 +516,6 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 	m_valign_sup_action -> setVisible( false );
 	m_valign_sub_action -> setVisible( false );
 
-    //addSeparator();
-
     // Insert hyperlink and image buttons
 
 	m_link_action->setText(tr("Ins\351rer un lien"));
@@ -443,13 +531,23 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 
 	// Text color button
 	connect(m_color_action, SIGNAL(colorChanged(QColor)),
-            this, SLOT(colorChanged(QColor)));
-    addAction(m_color_action);
+		 this, SLOT(colorChanged(QColor)));
+   addAction(m_color_action);
 
-    connect(editor, SIGNAL(textChanged()), this, SLOT(updateActions()));
-    connect(editor, SIGNAL(stateChanged()), this, SLOT(updateActions()));
 
-    updateActions();
+   // Simplify rich text
+   m_simplify_richtext_action = createCheckableAction(
+	QIcon(":/ico/32x32/simplifyrichtext.png"),
+			 tr("Simplify Rich Text"), editor, SLOT(setSimplifyRichText(bool)),this);
+   m_simplify_richtext_action->setChecked(editor->simplifyRichText());
+   connect(m_editor, SIGNAL(simplifyRichTextChanged(bool)),
+   m_simplify_richtext_action, SLOT(setChecked(bool)));
+   addAction(m_simplify_richtext_action);
+
+   connect(editor, SIGNAL(textChanged()), this, SLOT(updateActions()));
+   connect(editor, SIGNAL(stateChanged()), this, SLOT(updateActions()));
+
+   updateActions();
 }
 
 void RichTextEditorToolBar::alignmentActionTriggered(QAction *action)
@@ -469,36 +567,7 @@ void RichTextEditorToolBar::alignmentActionTriggered(QAction *action)
     m_editor->setAlignment(new_alignment);
 }
 
-QString runXSLT(const QString &t)
-{
-    QString pattern = QDir::tempPath();
-    if (!pattern.endsWith('/'))
-        pattern += '/';
-    pattern += "qt_tempXXXXXX.html";
-    QTemporaryFile tf(pattern);
-    if (!tf.open())
-        return QLatin1String("Open failure");
-    const QString tfName = tf.fileName();
-    tf.write(t.toUtf8());
-    tf.close();
-    QProcess p;
-    QStringList args;
-    args << "tohtml.xsl" << tfName;
-    p.start("xmlpatterns",args);
-    if (!p.waitForStarted() || !p.waitForFinished())
-        return QLatin1String("Run failure");
-    const QByteArray output = p.exitStatus() == QProcess::NormalExit &&
-                           p.exitCode() == 0 ?
-                           p.readAllStandardOutput() :
-                           p.readAllStandardError();
-    return QString::fromUtf8(output);
-}
 
-
-void RichTextEditorToolBar::runXmlPatterns()
-{
-    qWarning("%s", qPrintable(runXSLT(m_editor->text(Qt::RichText))));
-}
 
 void RichTextEditorToolBar::colorChanged(const QColor &color)
 {
@@ -649,15 +718,16 @@ QString RichTextEditor::text(Qt::TextFormat format) const
     case Qt::PlainText:
         return toPlainText();
     case Qt::RichText:
-        return toHtml();
+    return m_simplifyRichText ? simplifyRichTextFilter(toHtml()) : toHtml();
     case Qt::AutoText:
         break;
     }
     const QString html = toHtml();
-    const QString plain = toPlainText();
-    QTextEdit tester;
-    tester.setPlainText(plain);
-    return tester.toHtml() == html ? plain : html;
+    bool isPlainText;
+    const QString simplifiedHtml = simplifyRichTextFilter(html, &isPlainText);
+    if (isPlainText)
+    return toPlainText();
+    return m_simplifyRichText ? simplifiedHtml : html;
 }
 
 RichTextEditorDialog::RichTextEditorDialog(QWidget *parent)  :
@@ -771,7 +841,6 @@ void RichTextEditorDialog::tabIndexChanged(int newIndex)
 
     if (newIndex == SourceIndex) {
         const QString html = m_editor->text(Qt::RichText);
-        qWarning("%s", qPrintable(runXSLT(html)));
         m_text_edit->setPlainText(html);
 
     } else
