@@ -33,6 +33,7 @@
 #include "qetapp.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/crossrefitem.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -80,32 +81,32 @@ Diagram::Diagram(QObject *parent) :
 }
 
 /**
-	Destructeur
-*/
+ * @brief Diagram::~Diagram
+ * Destructor
+ */
 Diagram::~Diagram() {
 	// clear undo stack to prevent errors, because contains pointers to this diagram and is elements.
 	undoStack().clear();
-	// suppression du QGIManager - tous les elements qu'il connait sont supprimes
+	//delete of QGIManager, every elements he knows are removed
 	delete qgi_manager_;
 	// remove of conductor setter
 	delete conductor_setter_;
 	
-	// suppression des objets gerant les deplacements
+	// delete of object for manage movement
 	delete elements_mover_;
 	delete element_texts_mover_;
 	
-	// recense les items supprimables
+	// list removable items
 	QList<QGraphicsItem *> deletable_items;
 	foreach(QGraphicsItem *qgi, items()) {
 		if (qgi -> parentItem()) continue;
 		if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
+		else if (qgraphicsitem_cast<CrossRefItem *>(qgi)) continue;
+
 		deletable_items << qgi;
 	}
-	
-	// suppression des items supprimables
-	foreach(QGraphicsItem *qgi_d, deletable_items) {
-		delete qgi_d;
-	}
+
+	qDeleteAll (deletable_items);
 }
 
 /**

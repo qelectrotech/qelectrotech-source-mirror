@@ -39,6 +39,9 @@ class CrossRefItem : public QGraphicsObject
 	explicit CrossRefItem(Element *elmt, QGraphicsItem *parent = 0);
 	~CrossRefItem();
 
+	enum { Type = UserType + 1009 };
+	virtual int type() const { return Type; }
+
 	QRectF boundingRect() const;
 	virtual QPainterPath shape() const;
 

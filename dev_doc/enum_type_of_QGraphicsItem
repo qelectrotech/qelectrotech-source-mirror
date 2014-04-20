@@ -1,0 +1,12 @@
+		Type = UserType + ???
+Element + 1000
+Conductor + 1001
+Terminal + 1002
+ElementTextItem + 1003
+DiagramTextItem + 1004
+IndependentTextItem + 1005
+ConductorTextItem + 1006
+DiagramImageItem + 1007
+QetShapItem + 1008
+crossRefItem + 1009
+ElementPrimitiveDecorator + 2200
