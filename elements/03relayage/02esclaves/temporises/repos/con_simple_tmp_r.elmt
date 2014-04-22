@@ -17,8 +17,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <kindInformations>
         <kindInformation name="state" show="1">NO</kindInformation>
         <kindInformation name="number" show="1">1</kindInformation>
-        <kindInformation name="type" show="1">delay</kindInformation>
-        <kindInformation name="tempoType" show="1">switch-off</kindInformation>
+        <kindInformation name="type" show="1">delayOff</kindInformation>
    </kindInformations>
     <description>
         <arc width="10" x="-14" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" angle="-180"/>

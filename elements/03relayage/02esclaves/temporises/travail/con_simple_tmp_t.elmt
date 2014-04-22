@@ -17,8 +17,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <kindInformations>
         <kindInformation name="state" show="1">NO</kindInformation>
         <kindInformation name="number" show="1">1</kindInformation>
-        <kindInformation name="type" show="1">delay</kindInformation>
-        <kindInformation name="tempoType" show="1">work</kindInformation>
+        <kindInformation name="type" show="1">delayOn</kindInformation>
    </kindInformations>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>
