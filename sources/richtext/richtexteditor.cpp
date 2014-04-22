@@ -827,6 +827,9 @@ void RichTextEditorDialog::setDefaultFont(const QFont &font)
 
 void RichTextEditorDialog::setText(const QString &text)
 {
+    // Generally simplify rich text unless verbose text is found.
+    const bool isSimplifiedRichText = !text.startsWith("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">");
+    m_editor->setSimplifyRichText(isSimplifiedRichText);
     m_editor->setText(text);
     m_text_edit->setPlainText(text);
     m_state = Clean;
