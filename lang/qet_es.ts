@@ -1053,17 +1053,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="41"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Etiqueta de texto</translation>
+        <translation>Etiqueta de texto</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="48"/>
         <source>Visible</source>
-        <translation type="unfinished">Visible</translation>
+        <translation>Visible</translation>
     </message>
 </context>
 <context>
@@ -1071,7 +1071,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
 </context>
 <context>
@@ -1151,22 +1151,22 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/elementselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="117"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Sin titulo</translation>
+        <translation>Sin titulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="118"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished">Folio  %1 (%2), posición %3.</translation>
+        <translation>Folio  %1 (%2), posición %3.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="128"/>
         <source>Voir l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver el elemento</translation>
     </message>
 </context>
 <context>
@@ -1748,23 +1748,23 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="432"/>
         <source>Auteur</source>
-        <translation type="unfinished">Autor</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="433"/>
         <location filename="../sources/exportdialog.cpp" line="864"/>
         <source>Titre</source>
-        <translation type="unfinished">Titulo</translation>
+        <translation>Titulo</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="434"/>
         <source>Folio</source>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="435"/>
         <source>Date</source>
-        <translation type="unfinished">Fecha</translation>
+        <translation>Fecha</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="929"/>
@@ -1787,12 +1787,12 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="79"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Marcar todos</translation>
+        <translation>Marcar todos</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="80"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Desmarcar todos</translation>
+        <translation>Desmarcar todos</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="944"/>
@@ -2433,47 +2433,47 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
         <source>Rechercher dans le folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar en el folio:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
         <source>Voir cet élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver este elemento</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
         <source>Voir l&apos;élément lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver el elemento enlazado</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="81"/>
         <source>Tous</source>
-        <translation type="unfinished"></translation>
+        <translation>Todos</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="86"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Sin titulo</translation>
+        <translation>Sin titulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="120"/>
         <source>Cet élément est déjà lié.</source>
-        <translation type="unfinished"></translation>
+        <translation>Este elemento ya está enlazado.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="121"/>
         <source>Délier</source>
-        <translation type="unfinished">Desvincular</translation>
+        <translation>Desvincular</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="137"/>
         <source>Rechercher</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar</translation>
     </message>
 </context>
 <context>
@@ -2481,39 +2481,39 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
         <source>Délier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Desvincular el elemento seleccionado</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
         <source>Lier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Vincular el elemento seleccionado</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
         <source>Éléments disponibles</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementos disponibles</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
         <source>Éléments liés</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementos enlazados</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="118"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="132"/>
         <source>Sans titre</source>
-        <translation type="unfinished">Sin titulo</translation>
+        <translation>Sin titulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="119"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="133"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished">Folio  %1 (%2), posición %3.</translation>
+        <translation>Folio  %1 (%2), posición %3.</translation>
     </message>
 </context>
 <context>
@@ -2579,7 +2579,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/configpages.cpp" line="59"/>
         <source>Référence croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia cruzada</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="100"/>
@@ -2821,7 +2821,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="309"/>
         <source>Référence croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia cruzada</translation>
     </message>
 </context>
 <context>
@@ -3117,27 +3117,27 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetapp.cpp" line="362"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiqueta</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="363"/>
         <source>Commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentario</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="364"/>
         <source>Fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Fabricante</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="365"/>
         <source>Référence fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia del fabricante</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Référence fabriquant machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia del fabricante de la máquina</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="377"/>
@@ -3450,17 +3450,17 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
         <source>Ajouter une liaison mecanique</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar un enlace mecánico</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
         <source>Ajouter une zone rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar una zona rectangular</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
         <source>Ajouter une zone ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar una zona elíptica</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
@@ -5332,7 +5332,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="147"/>
         <source>Ajouter une Shape</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Agregar una forma</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="187"/>
@@ -5441,7 +5441,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1262"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>Editar la referencia cruzada</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1263"/>
@@ -5452,7 +5452,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1276"/>
         <source>Editer les référence croisé</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar la referencia cruzada</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1337"/>
@@ -5873,43 +5873,43 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Editar las propiedades de una unión, zona</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Shape Line Style</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Forma Estilo de Linea</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
         <source>Normal</source>
-        <translation type="unfinished">Normal</translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
         <source>Tiret</source>
-        <translation type="unfinished">Raya</translation>
+        <translation>Guión</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Línea de puntos</translation>
+        <translation>Línea de puntos</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
         <source>Traits et points</source>
-        <translation type="unfinished">Líneas y puntos</translation>
+        <translation>Líneas y puntos</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Traits points points</source>
-        <translation type="unfinished"></translation>
+        <translation>Líneas puntos puntos</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Bloquear la posición</translation>
+        <translation>Bloquear la posición</translation>
     </message>
 </context>
 <context>
@@ -7146,12 +7146,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="20"/>
         <source>Afficher les contacts de puissance dans la croix</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar los contactos de potencia en la cruz</translation>
     </message>
 </context>
 <context>
@@ -7227,12 +7227,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Référence croisée (maitre)</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia cruzada (maestro)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia cruzada (esclavo)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="140"/>
@@ -7310,7 +7310,7 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="114"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="128"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Información</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
