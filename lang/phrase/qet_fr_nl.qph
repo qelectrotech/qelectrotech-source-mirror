@@ -1,0 +1,95 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="nl_NL">
+<phrase>
+    <source>modifié</source>
+    <target>gewijzigd</target>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>Projekt</target>
+</phrase>
+<phrase>
+    <source>Configuration</source>
+    <target>Instellingen</target>
+</phrase>
+<phrase>
+    <source>Enregistrer</source>
+    <target>Opslaan</target>
+</phrase>
+<phrase>
+    <source>QElectroTech</source>
+    <target>QElectroTech</target>
+</phrase>
+<phrase>
+    <source>&amp;Quitter</source>
+    <target>Einde</target>
+</phrase>
+<phrase>
+    <source>Fermer</source>
+    <target>Sluiten</target>
+</phrase>
+<phrase>
+    <source>Texte</source>
+    <target>Tekst</target>
+</phrase>
+<phrase>
+    <source>Texte :</source>
+    <target>Tekst:</target>
+</phrase>
+<phrase>
+    <source>Schéma</source>
+    <target>Diagram</target>
+</phrase>
+<phrase>
+    <source>Nom</source>
+    <target>Naam</target>
+</phrase>
+<phrase>
+    <source></source>
+    <target>Vertikaal</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Horizontaal</target>
+</phrase>
+<phrase>
+    <source>Centre</source>
+    <target>Middelpunt</target>
+</phrase>
+<phrase>
+    <source>px</source>
+    <target>px</target>
+</phrase>
+<phrase>
+    <source>Abscisse :</source>
+    <target>Horizontale as:</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>Fout</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>Voorvertoning</target>
+</phrase>
+<phrase>
+    <source>élément</source>
+    <target>element</target>
+</phrase>
+<phrase>
+    <source>Élement</source>
+    <target>Element</target>
+</phrase>
+<phrase>
+    <source>y</source>
+    <target>y</target>
+</phrase>
+<phrase>
+    <source>x</source>
+    <target>x</target>
+</phrase>
+<phrase>
+    <source>Conducteurs</source>
+    <target>Geleider</target>
+</phrase>
+</QPH>
