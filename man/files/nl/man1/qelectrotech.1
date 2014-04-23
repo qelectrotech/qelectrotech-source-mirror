@@ -1,0 +1,68 @@
+.TH QELECTROTECH 1 "AUGUST 2008" QElectroTech "Gebruikers handleiding"
+.SH NAAM
+qelectrotech \- Electrisch teken programma
+.SH SYNOPSIS
+.B qelectrotech
+.B [\-\-common\-elements\-dir\fR=\fIDIR\fB]
+.B [\-\-config\-dir\fR=\fIDIR\fB]
+.B [\-\-lang\-dir\fR=\fIDIR\fB]
+.B [\-\-help]
+.B [\-v\fR|\fB\-\-version]
+.B [\-\-license]
+.B [\fIFILE\fB]...
+
+.SH DESCRIPTION
+QElectroTech is een tekenprogramma voor elektrische schema's. schema's (*.qet) en elementen (*.elmt) worden bewaard in XML taal.
+De elementen komen uit een alleen lezen bestand. 
+Elke gebruiker kan een eigen collectie opbouwen, waar wel wijzigingen mogelijk zijn.
+
+.SH OPTIONS
+.TP
+\fB\-\-common\-elements\-dir\fR=\fIDIR\fR
+Gebruikte DIR voor standaard bibliotheek QET_ALLOW_OVERRIDE_CED_OPTION optie tijdens compilatie.
+.TP
+\fB\-\-config\-dir\fR=\fIDIR\fR
+Gebruikte DIR voor gebruikersconfiguratie qelectrotech.conf, applicatie configuratie, en een subdir: elements, met de gebruikers elementen collectie.  Note : deze optie staat aan door QET_ALLOW_OVERRIDE_CD_OPTION bij compilatie.
+.TP
+\fB\-\-lang\-dir\fR=\fIDIR\fR
+Gebruikte DIR met de vertalingen.
+.TP
+\fB\-\-help\fR
+Toont de beschikbare opties.
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+Applicatie versie (bijv.: 0.1).
+.TP
+\fB\-\-license\fR
+Applicatie licentie (GNU/GPL).
+
+.P
+Als u de laatste 3 opties gebruikt zal het programma stoppen.
+Als de applicatie nog steeds draait, zullen de bestanden open zijn.
+Echter opties zoals wijzigen van directories (algemene collectie, configuratie en vertalingen bestanden) zullen niet veranderen.
+Als een bestandsnaam eindigt met .elmt, QElectroTech zal de element editor openen.
+Anders word het tekenprogramma geopend.
+.SH AUTHEURS
+Benoit Ansieau <benoit@qelectrotech.org>
+.br
+Xavier Guerrin <xavier@qelectrotech.org>
+.br
+Laurent Trinques <scorpio@qelectrotech.org>
+.br
+Joshua Claveau <joshua@qelectrotech.org>
+.br
+Cyril.frausti <cyril@qelectrotech.org>
+
+
+.SH Probleem rapportage
+Als u denkt een fout ontdekt te hebben,kijk dan eerst naar de FAQ <http://qelectrotech.org/wiki/doku.php?id=doc:faq> en de BugTracker <http://qelectrotech.org/bugtracker/> om te zien of het probleem reeds bekend is. Zo niet vul dan een rapportje in via de BugTracker. 
+
+.SH COPYRIGHT
+Copyright (c) QElectroTech ontwikkelaars.
+.br
+Licentie : GNU/GPL v2+ : <http://www.gnu.org/licenses/old\-licenses/gpl\-2.0.html>
+.br
+Dit programma is vrije software. U mag wijzigen, en verspreiden. Het wordt geleverd zoals ontvangen en ZONDER ENIGE GARANTIE.
+
+.SH SEE ALSO
+Officiele website : <http://qelectrotech.org/>
