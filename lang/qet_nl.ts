@@ -193,7 +193,7 @@
         <location filename="../sources/richtext/addlinkdialog.ui" line="5"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="104"/>
         <source>Insert Link</source>
-        <translation>toevoegen link</translation>
+        <translation>Toevoegen link</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
@@ -223,12 +223,12 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="56"/>
         <source>horizontal :</source>
-        <translation>horizontaal:</translation>
+        <translation>Horizontaal:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="58"/>
         <source>vertical :</source>
-        <translation>verticaal:</translation>
+        <translation>Verticaal:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="60"/>
@@ -243,32 +243,32 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="122"/>
         <source>abscisse</source>
-        <translation>horizontale as</translation>
+        <translation>Horizontale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="124"/>
         <source>ordonnée</source>
-        <translation>verticale as</translation>
+        <translation>Verticale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="126"/>
         <source>diamètre horizontal</source>
-        <translation>horizontale diameter</translation>
+        <translation>Horizontale diameter</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="128"/>
         <source>diamètre vertical</source>
-        <translation>verticale diameter</translation>
+        <translation>Verticale diameter</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="130"/>
         <source>angle de départ</source>
-        <translation>start hoek</translation>
+        <translation>Start hoek</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="132"/>
         <source>angle</source>
-        <translation>angle</translation>
+        <translation>Angle</translation>
     </message>
 </context>
 <context>
@@ -276,18 +276,18 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="98"/>
         <source>Dimensions du schéma</source>
-        <translation>diagram grootte</translation>
+        <translation>Diagram grootte</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="102"/>
         <source>Colonnes :</source>
-        <translation>Kolommen:</translation>
+        <translation>Stramienen:</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="115"/>
         <location filename="../sources/borderpropertieswidget.cpp" line="131"/>
         <source>Afficher les en-têtes</source>
-        <translation>Show kolomnamen</translation>
+        <translation>Toon stramiennamen</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="118"/>
@@ -315,13 +315,13 @@
         <location filename="../sources/borderpropertieswidget.cpp" line="113"/>
         <source>px</source>
         <comment>unit for cols width</comment>
-        <translation>px</translation>
+        <translation>Px</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="129"/>
         <source>px</source>
         <comment>unit for rows height</comment>
-        <translation>px</translation>
+        <translation>Px</translation>
     </message>
 </context>
 <context>
@@ -336,7 +336,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="87"/>
         <source>Les schémas ci-dessous contiennent des modifications non enregistrées. Faut-il les sauvegarder ?</source>
         <comment>informative label</comment>
-        <translation>diagrammen gewijzigd. Wilt u bewaren?</translation>
+        <translation>Diagrammen gewijzigd. Wilt u bewaren?</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="96"/>
@@ -354,7 +354,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="101"/>
         <source>Schéma</source>
         <comment>column header</comment>
-        <translation>diagram</translation>
+        <translation>Diagram</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="104"/>
@@ -378,7 +378,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="220"/>
         <source>Schéma sans titre</source>
         <comment>fallback diagram title</comment>
-        <translation>diagram ongetiteld</translation>
+        <translation>Diagram ongetiteld</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="229"/>
@@ -410,7 +410,7 @@
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1287"/>
         <source>Textes de conducteurs</source>
-        <translation>geleider tekst</translation>
+        <translation>Geleider tekst</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1288"/>
@@ -424,13 +424,13 @@
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="38"/>
         <source>Textes de potentiel</source>
-        <translation>geleidernummers</translation>
+        <translation>Geleidernummers</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="41"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation>namen van geleiders zijn niet gelijk.
+        <translation>Namen van geleiders zijn niet gelijk.
         Wilt u de tekst gelijk maken voor alle geleiders?</translation>
     </message>
     <message>
@@ -441,7 +441,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="75"/>
         <source> fois.</source>
-        <translation>correct.</translation>
+        <translation>Correct.</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="88"/>
@@ -454,7 +454,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="54"/>
         <source>Type de conducteur</source>
-        <translation>geleider types</translation>
+        <translation>Geleider types</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="61"/>
@@ -474,7 +474,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
         <source>Rotation du texte sur conducteur :</source>
-        <translation>hoek van geleider labels:</translation>
+        <translation>Hoek van geleider labels:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="78"/>
@@ -506,7 +506,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="108"/>
         <source>phase</source>
-        <translation>fase</translation>
+        <translation>Fase</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="141"/>
@@ -530,22 +530,22 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/conductorpropertieswidget.cpp" line="145"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation>punten en strepen</translation>
+        <translation>Punten en strepen</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="92"/>
         <source>terre</source>
-        <translation>aarde</translation>
+        <translation>Aarde</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="94"/>
         <source>neutre</source>
-        <translation>nul</translation>
+        <translation>Nul</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="128"/>
         <source>Apparence du conducteur</source>
-        <translation>geleider eigenschappen</translation>
+        <translation>Geleider eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="135"/>
@@ -633,7 +633,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="218"/>
         <source>Quel type d&apos;impression désirez-vous effectuer ?</source>
-        <translation>Waar wilt u afdrukken?</translation>
+        <translation>Waar wilt u afdrukken ?</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="223"/>
@@ -713,7 +713,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/diagramview.cpp" line="631"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation>diagram eigenschappen</translation>
+        <translation>Diagram eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="947"/>
@@ -768,7 +768,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramschooser.cpp" line="165"/>
         <source>Schéma sans titre</source>
-        <translation>diagram ongetiteld</translation>
+        <translation>Diagram ongetiteld</translation>
     </message>
 </context>
 <context>
@@ -776,7 +776,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation>diagram nummering</translation>
+        <translation>Diagram nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
@@ -796,7 +796,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="58"/>
         <source>Conducteurs</source>
-        <translation>geleiders</translation>
+        <translation>Geleiders</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="75"/>
@@ -832,7 +832,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation>verwijderen nummering van geleiders</translation>
+        <translation>Verwijderen nummering van geleiders</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="68"/>
@@ -980,7 +980,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/elementdialog.cpp" line="246"/>
         <source>Vous devez sélectionner un élément.</source>
         <comment>message box content</comment>
-        <translation>selecteer een element.</translation>
+        <translation>Selecteer een element.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="256"/>
@@ -994,7 +994,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/elementdialog.cpp" line="295"/>
         <source>La sélection n&apos;existe pas.</source>
         <comment>message box content</comment>
-        <translation>selectie bestaat niet.</translation>
+        <translation>Selectie bestaat niet.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="266"/>
@@ -1006,7 +1006,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/elementdialog.cpp" line="267"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
-        <translation>selectie is geen element.</translation>
+        <translation>Selectie is geen element.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="284"/>
@@ -1081,17 +1081,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="261"/>
         <source>ligne</source>
-        <translation>lijn</translation>
+        <translation>Lijn</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="275"/>
         <source>ellipse</source>
-        <translation>ellips</translation>
+        <translation>Ellips</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="282"/>
         <source>arc</source>
-        <translation>arc</translation>
+        <translation>Arc</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="289"/>
@@ -1101,17 +1101,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="296"/>
         <source>texte</source>
-        <translation>tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="303"/>
         <source>champ de texte</source>
-        <translation>tekstveld</translation>
+        <translation>Tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="315"/>
         <source>polygone</source>
-        <translation>polygoon</translation>
+        <translation>Polygoon</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="680"/>
@@ -1145,7 +1145,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="268"/>
         <source>rectangle</source>
-        <translation>rechthoek</translation>
+        <translation>Rechthoek</translation>
     </message>
 </context>
 <context>
@@ -1308,7 +1308,7 @@ U kunt niet meer terug.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
-        <translation>gewenste categorie bestaat niet, ik geef op.</translation>
+        <translation>Gewenste categorie bestaat niet, ik geef op.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="56"/>
@@ -1362,7 +1362,7 @@ U kunt niet meer terug.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="141"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
-        <translation>interne naam is reeds gebruikt in andere categorie, Kies een andere naam.</translation>
+        <translation>Interne naam is reeds gebruikt in andere categorie, Kies een andere naam.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="155"/>
@@ -1621,7 +1621,7 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Nouveau modèle</source>
-        <translation>nieuw sjabloon</translation>
+        <translation>Nieuw sjabloon</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
@@ -1647,7 +1647,7 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Propriétés du schéma</source>
-        <translation>diagram eigenschappen</translation>
+        <translation>Diagram eigenschappen</translation>
     </message>
 </context>
 <context>
@@ -1665,32 +1665,32 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="53"/>
         <source>horizontal :</source>
-        <translation>horizontaal:</translation>
+        <translation>Horizontaal:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
         <source>vertical :</source>
-        <translation>verticaal:</translation>
+        <translation>Verticaal:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="112"/>
         <source>abscisse</source>
-        <translation>horizontale as</translation>
+        <translation>Horizontale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="114"/>
         <source>ordonnée</source>
-        <translation>verticale as</translation>
+        <translation>Verticale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="116"/>
         <source>diamètre horizontal</source>
-        <translation>horizontale diameter</translation>
+        <translation>Horizontale diameter</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="118"/>
         <source>diamètre vertical</source>
-        <translation>verticale diameter</translation>
+        <translation>Verticale diameter</translation>
     </message>
 </context>
 <context>
@@ -1739,7 +1739,7 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="142"/>
         <source>Schéma</source>
-        <translation>diagram</translation>
+        <translation>Diagram</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="143"/>
@@ -1777,7 +1777,7 @@ U kunt niet meer terug.</translation>
         <location filename="../sources/exportdialog.cpp" line="1206"/>
         <location filename="../sources/exportdialog.cpp" line="1211"/>
         <source>px</source>
-        <translation>px</translation>
+        <translation>Px</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="928"/>
@@ -1799,7 +1799,7 @@ U kunt niet meer terug.</translation>
         <location filename="../sources/exportdialog.cpp" line="944"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
-        <translation>map mist</translation>
+        <translation>Map mist</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="945"/>
@@ -1965,7 +1965,7 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="172"/>
         <source>La nouvelle langue sera pris en compte au prochain lancement de QElectroTech.</source>
-        <translation>nieuwe taal wordt gebruikt na een herstart van QElectroTech.</translation>
+        <translation>Nieuwe taal wordt gebruikt na een herstart van QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="230"/>
@@ -2265,7 +2265,7 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="247"/>
         <source>Annuler</source>
-        <translation>ontdoen</translation>
+        <translation>Ontdoen</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="66"/>
@@ -2278,37 +2278,37 @@ U kunt niet meer terug.</translation>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="70"/>
         <source>La catégorie « %1 » (%2) existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation>categorie &quot;%1&quot; (%2) bestaat reeds. Wat wilt u doen?</translation>
+        <translation>Categorie &quot;%1&quot; (%2) bestaat reeds. Wat wilt u doen?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="118"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation>element &quot;%1&quot; bestaat reeds. Wat wilt u doen?</translation>
+        <translation>Element &quot;%1&quot; bestaat reeds. Wat wilt u doen?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="152"/>
         <source>La catégorie %1 n&apos;est pas accessible en lecture.</source>
         <comment>message box content</comment>
-        <translation>categorie %1 is niet leesbaar.</translation>
+        <translation>Categorie %1 is niet leesbaar.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="162"/>
         <source>L&apos;élément %1 n&apos;est pas accessible en lecture.</source>
         <comment>message box content</comment>
-        <translation>element %1 is niet leesbaar.</translation>
+        <translation>Element %1 is niet leesbaar.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="172"/>
         <source>La catégorie %1 n&apos;est pas accessible en écriture.</source>
         <comment>message box content</comment>
-        <translation>categorie %1 is niet schrifbaar.</translation>
+        <translation>Categorie %1 is niet schrifbaar.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="182"/>
         <source>L&apos;élément %1 n&apos;est pas accessible en écriture.</source>
         <comment>message box content</comment>
-        <translation>element %1 is niet schrijfbaar.</translation>
+        <translation>Element %1 is niet schrijfbaar.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="362"/>
@@ -2323,22 +2323,22 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="149"/>
         <source>abscisse point 1</source>
-        <translation>horizontale as punt 1</translation>
+        <translation>Horizontale as punt 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="151"/>
         <source>ordonnée point 1</source>
-        <translation>verticale as punt 1</translation>
+        <translation>Verticale as punt 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="153"/>
         <source>abscisse point 2</source>
-        <translation>horizontale as punt 2</translation>
+        <translation>Horizontale as punt 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="155"/>
         <source>ordonnée point 2</source>
-        <translation>verticale as punt 2</translation>
+        <translation>Verticale as punt 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="76"/>
@@ -2504,7 +2504,7 @@ U kunt niet meer terug.</translation>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
         <source>Éléments liés</source>
-        <translation>elementen met relatie</translation>
+        <translation>Elementen met relatie</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="118"/>
@@ -2540,7 +2540,7 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
         <source>Ajouter une ligne</source>
-        <translation>voeg een regel toe</translation>
+        <translation>Voeg een regel toe</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
@@ -2566,12 +2566,12 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="46"/>
         <source>Schéma</source>
-        <translation>diagram</translation>
+        <translation>Diagram</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="51"/>
         <source>Conducteur</source>
-        <translation>geleider</translation>
+        <translation>Geleider</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="55"/>
@@ -2587,7 +2587,7 @@ U kunt niet meer terug.</translation>
         <location filename="../sources/configpages.cpp" line="100"/>
         <source>Nouveau schéma</source>
         <comment>configuration page title</comment>
-        <translation>nieuw diagram</translation>
+        <translation>Nieuw diagram</translation>
     </message>
 </context>
 <context>
@@ -2600,7 +2600,7 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="118"/>
         <source>nouvel_element</source>
-        <translation>nieuw_element</translation>
+        <translation>Nieuw_element</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="50"/>
@@ -2653,7 +2653,7 @@ U kunt niet meer terug.</translation>
         <location filename="../sources/newelementwizard.cpp" line="143"/>
         <source>Nom du nouvel élément</source>
         <comment>default name when creating a new element</comment>
-        <translation>nieuwe element naam</translation>
+        <translation>Nieuwe element naam</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="184"/>
@@ -2692,17 +2692,17 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Chiffre 1</source>
-        <translation>nummer soort 1</translation>
+        <translation>Nummer soort 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Chiffre 01</source>
-        <translation>nummer soort 01</translation>
+        <translation>Nummer soort 01</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Chiffre 001</source>
-        <translation>nummer soort 001</translation>
+        <translation>Nummer soort 001</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
@@ -2725,12 +2725,12 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="41"/>
         <source>x</source>
-        <translation>x</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="41"/>
         <source>y</source>
-        <translation>y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="49"/>
@@ -2797,23 +2797,23 @@ U kunt niet meer terug.</translation>
         <location filename="../sources/projectconfigpages.cpp" line="225"/>
         <source>Nouveau schéma</source>
         <comment>project configuration page title</comment>
-        <translation>nieuw diagram</translation>
+        <translation>Nieuw diagram</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="281"/>
         <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
         <comment>explicative label</comment>
-        <translation>eigenschappen gebruikt bij toevoegen van een nieuw diagram aan project:</translation>
+        <translation>Eigenschappen gebruikt bij toevoegen van een nieuw diagram aan project:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="306"/>
         <source>Schéma</source>
-        <translation>diagram</translation>
+        <translation>Diagram</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="307"/>
         <source>Conducteur</source>
-        <translation>geleider</translation>
+        <translation>Geleider</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="308"/>
@@ -2848,7 +2848,7 @@ U kunt niet meer terug.</translation>
         <location filename="../sources/projectview.cpp" line="246"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation>project is gewijzigd.
+        <translation>Project is gewijzigd.
 Wilt u wijzigingen bewaren?</translation>
     </message>
     <message>
@@ -2878,7 +2878,7 @@ Wilt u wijzigingen bewaren?</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="662"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation>verwijder ongebruikte sjablonen uit project</translation>
+        <translation>Verwijder ongebruikte sjablonen uit project</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="676"/>
@@ -2902,12 +2902,12 @@ Wilt u wijzigingen bewaren?</translation>
         <location filename="../sources/projectview.cpp" line="294"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
-        <translation>geen actief project</translation>
+        <translation>Geen actief project</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="712"/>
         <source>Ajouter un schéma</source>
-        <translation>toevoegen een diagram</translation>
+        <translation>Toevoegen een diagram</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="726"/>
@@ -2925,7 +2925,7 @@ Wilt u wijzigingen bewaren?</translation>
         <location filename="../sources/projectview.cpp" line="536"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation>project</translation>
+        <translation>Project</translation>
     </message>
 </context>
 <context>
@@ -2995,7 +2995,7 @@ Wilt u wijzigingen bewaren?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1415"/>
         <source>Réduire QElectroTech dans le systray</source>
-        <translation>verkleind QElectroTech naar systray</translation>
+        <translation>Verkleind QElectroTech naar systray</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1416"/>
@@ -3005,7 +3005,7 @@ Wilt u wijzigingen bewaren?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1501"/>
         <source>Éditeurs de schémas</source>
-        <translation>diagram editors</translation>
+        <translation>Diagram editors</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1510"/>
@@ -3168,7 +3168,7 @@ Beschikbare opties:
         <location filename="../sources/qetapp.cpp" line="814"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation>diagram</translation>
+        <translation>Diagram</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="815"/>
@@ -3228,7 +3228,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
         <source>Ajouter une colonne</source>
-        <translation>Kolom toevoegen</translation>
+        <translation>Stramien toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
@@ -3298,7 +3298,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="223"/>
         <source>Enlever une colonne</source>
-        <translation>Kolom verwijderen</translation>
+        <translation>Stramien verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="191"/>
@@ -3428,7 +3428,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="199"/>
         <source>Annuler</source>
-        <translation>annuleer</translation>
+        <translation>Annuleer</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
@@ -3453,7 +3453,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
         <source>Propriétés du schéma</source>
-        <translation>diagram eigenschappen</translation>
+        <translation>Diagram eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
@@ -3483,12 +3483,12 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
         <source>Schéma</source>
-        <translation>diagram</translation>
+        <translation>Diagram</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Ajouter un champ de texte</source>
-        <translation>toevoegen een tekstveld</translation>
+        <translation>Toevoegen een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="100"/>
@@ -3518,7 +3518,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Ajouter un schéma</source>
-        <translation>diagram toevoegen</translation>
+        <translation>Diagram toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
@@ -3579,7 +3579,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
-        <translation>project kan niet bewaard worden. word alleen lezen geopend</translation>
+        <translation>Project kan niet bewaard worden. word alleen lezen geopend</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="242"/>
@@ -3634,7 +3634,7 @@ Beschikbare opties:
         <location filename="../sources/qetdiagrameditor.cpp" line="76"/>
         <source>Panel d&apos;éléments</source>
         <comment>dock title</comment>
-        <translation>elementen Paneel</translation>
+        <translation>Elementen Paneel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="93"/>
@@ -3687,12 +3687,12 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
         <source>Ajouter une zone rectangle</source>
-        <translation>rechthoek toevoegen</translation>
+        <translation>Rechthoek toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
         <source>Ajouter une zone ellipse</source>
-        <translation>ellips toevoegen</translation>
+        <translation>Ellips toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
@@ -3858,13 +3858,13 @@ Beschikbare opties:
         <location filename="../sources/qetdiagrameditor.cpp" line="322"/>
         <source>Ajoute une colonne au schéma</source>
         <comment>status bar tip</comment>
-        <translation>Kolom toevoegen aan diagram</translation>
+        <translation>Stramien toevoegen aan diagram</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
         <source>Enlève une colonne au schéma</source>
         <comment>status bar tip</comment>
-        <translation>Kolom verwijderen van diagram</translation>
+        <translation>Stramien verwijderen van diagram</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="324"/>
@@ -4094,37 +4094,37 @@ Beschikbare opties:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="154"/>
         <source>Ajouter une ligne</source>
-        <translation>voeg lijn toe</translation>
+        <translation>Voeg lijn toe</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="156"/>
         <source>Ajouter une ellipse</source>
-        <translation>voeg ellipse toe</translation>
+        <translation>Voeg ellipse toe</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
         <source>Ajouter un polygone</source>
-        <translation>voeg polygoon toe</translation>
+        <translation>Voeg polygoon toe</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="158"/>
         <source>Ajouter du texte</source>
-        <translation>voeg tekst toe</translation>
+        <translation>Voeg tekst toe</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="159"/>
         <source>Ajouter un arc de cercle</source>
-        <translation>voeg arc toe</translation>
+        <translation>Voeg arc toe</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="160"/>
         <source>Ajouter une borne</source>
-        <translation>voeg terminal toe</translation>
+        <translation>Voeg terminal toe</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="161"/>
         <source>Ajouter un champ de texte</source>
-        <translation>voeg tekstveld toe</translation>
+        <translation>Voeg tekstveld toe</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="173"/>
@@ -4184,12 +4184,12 @@ Beschikbare opties:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="151"/>
         <source>Envoyer au fond</source>
-        <translation>naar achter</translation>
+        <translation>Naar achter</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Amener au premier plan</source>
-        <translation>naar voor</translation>
+        <translation>Naar voor</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="208"/>
@@ -4280,12 +4280,12 @@ Beschikbare opties:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="139"/>
         <source>un fichier</source>
-        <translation>een bestand</translation>
+        <translation>Een bestand</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="140"/>
         <source>un élément</source>
-        <translation>een element</translation>
+        <translation>Een element</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
@@ -4391,7 +4391,7 @@ Beschikbare opties:
         <location filename="../sources/editor/qetelementeditor.cpp" line="561"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
-        <translation>elementen Editor</translation>
+        <translation>Elementen Editor</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="616"/>
@@ -4458,7 +4458,7 @@ Beschikbare opties:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1301"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
-        <translation>Geen privilege om element te wijzigen. Wijzigingen worden niet bewaard.</translation>
+        <translation>Geen privilege om element te wijzigen. Wijzigingen worden niet bewaard</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="763"/>
@@ -4557,7 +4557,7 @@ Beschikbare opties:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1366"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
-        <translation>element bestaat niet.</translation>
+        <translation>Element bestaat niet.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1273"/>
@@ -4675,7 +4675,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="127"/>
         <source>Passer en &amp;mode plein écran</source>
-        <translation>verlaat Volscherm modus</translation>
+        <translation>Verlaat Volscherm modus</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="129"/>
@@ -4705,7 +4705,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="170"/>
         <source>Schémas à imprimer :</source>
-        <translation>diagrammen om af te drukken:</translation>
+        <translation>Diagrammen om af te drukken:</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
@@ -4950,7 +4950,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="162"/>
         <source>nouveau_modele</source>
         <comment>template name suggestion when duplicating the default one</comment>
-        <translation>nieuw_sjabloon</translation>
+        <translation>Nieuw_sjabloon</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="170"/>
@@ -4968,7 +4968,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="328"/>
         <source>&amp;Nouveau</source>
         <comment>menu entry</comment>
-        <translation>nieuw</translation>
+        <translation>Nieuw</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="329"/>
@@ -5070,7 +5070,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="348"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
-        <translation>cellen samenvoegen</translation>
+        <translation>Cellen samenvoegen</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="337"/>
@@ -5106,7 +5106,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="347"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
-        <translation>Kolom toevoegen</translation>
+        <translation>Stramien toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
@@ -5267,7 +5267,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="926"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation>Dit veld kunt u gebruiken voor informatie betreffende auteurs, licentie en andere info</translation>
+        <translation>Dit veld kunt u gebruiken voor informatie betreffende auteurs, licentie en andere info.</translation>
     </message>
 </context>
 <context>
@@ -5347,25 +5347,25 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="187"/>
         <source>ajouter un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">toevoegen van een geleider</translation>
+        <translation type="unfinished">Toevoegen van een geleider</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="228"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
-        <translation type="unfinished">verwijder %1</translation>
+        <translation type="unfinished">Verwijder %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="318"/>
         <source>coller %1</source>
         <comment>undo caption - %1 is a sentence listing the content to paste</comment>
-        <translation type="unfinished">plak %1</translation>
+        <translation type="unfinished">Plak %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="391"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
-        <translation type="unfinished">knip %1</translation>
+        <translation type="unfinished">Knip %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="433"/>
@@ -5373,19 +5373,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="660"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
-        <translation type="unfinished">verplaats %1</translation>
+        <translation type="unfinished">Verplaats %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="681"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">wijzig tekst</translation>
+        <translation type="unfinished">Wijzig tekst</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="729"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
-        <translation type="unfinished">roteer %1</translation>
+        <translation type="unfinished">Roteer %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="847"/>
@@ -5397,7 +5397,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="871"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">wijzig een geleider</translation>
+        <translation type="unfinished">Wijzig een geleider</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="928"/>
@@ -5409,31 +5409,31 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="968"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">wijzig de inzet(titel blok)</translation>
+        <translation type="unfinished">Wijzig de inzet(titel blok)</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1001"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">wijzig diagram grootte</translation>
+        <translation type="unfinished">Wijzig diagram grootte</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1030"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">wijzig geleider eigenschappen</translation>
+        <translation type="unfinished">Wijzig geleider eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1084"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">wijzig de eigenschappen van meerdere geleiders </translation>
+        <translation type="unfinished">Wijzig de eigenschappen van meerdere geleiders </translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1258"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation type="unfinished">koppel twee pagina rapporten</translation>
+        <translation type="unfinished">Koppel twee pagina rapporten</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1262"/>
@@ -5465,31 +5465,31 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/partarc.h" line="50"/>
         <source>arc</source>
         <comment>element part name</comment>
-        <translation>arc</translation>
+        <translation>Arc</translation>
     </message>
     <message>
         <location filename="../sources/editor/partellipse.h" line="45"/>
         <source>ellipse</source>
         <comment>element part name</comment>
-        <translation>ellipse</translation>
+        <translation>Ellipse</translation>
     </message>
     <message>
         <location filename="../sources/editor/partline.h" line="60"/>
         <source>ligne</source>
         <comment>element part name</comment>
-        <translation>lijn</translation>
+        <translation>Lijn</translation>
     </message>
     <message>
         <location filename="../sources/editor/partpolygon.h" line="48"/>
         <source>polygone</source>
         <comment>element part name</comment>
-        <translation>polygoon</translation>
+        <translation>Polygoon</translation>
     </message>
     <message>
         <location filename="../sources/editor/partterminal.h" line="51"/>
         <source>borne</source>
         <comment>element part name</comment>
-        <translation>terminal</translation>
+        <translation>Terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttext.cpp" line="49"/>
@@ -5501,7 +5501,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/parttext.h" line="48"/>
         <source>texte</source>
         <comment>element part name</comment>
-        <translation>tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="45"/>
@@ -5513,7 +5513,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/parttextfield.h" line="54"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
-        <translation>tekstveld</translation>
+        <translation>Tekstveld</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="207"/>
@@ -5535,7 +5535,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="221"/>
         <source> et </source>
         <comment>separator between elements and conductors (or texts) in a sentence listing the content of a diagram</comment>
-        <translation> and </translation>
+        <translation> en </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="230"/>
@@ -5558,8 +5558,8 @@ Que désirez vous faire ?</source>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>%n tekstfield</numerusform>
-            <numerusform>%n tekstfields</numerusform>
+            <numerusform>%n tekstveld</numerusform>
+            <numerusform>%n tekstveld</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5576,24 +5576,24 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="613"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation>Onmogelijk om bestand %1 met schrijf te openen, gevonden fout: %2.</translation>
+        <translation>&gt;Onmogelijk om bestand %1 met schrijf te openen, gevonden fout: %2.</translation>
     </message>
     <message>
         <location filename="../sources/terminal.cpp" line="69"/>
         <source>Borne</source>
         <comment>tooltip</comment>
-        <translation>terminal</translation>
+        <translation>Terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
         <source>suppression</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">verwijder</translation>
+        <translation type="unfinished">Verwijder</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="139"/>
         <source>coller</source>
-        <translation>plak</translation>
+        <translation>Plak</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="209"/>
@@ -5605,31 +5605,31 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="230"/>
         <source>déplacement</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">verplaats</translation>
+        <translation type="unfinished">Verplaats</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="270"/>
         <source>ajout %1</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">toevoegen van %1</translation>
+        <translation type="unfinished">Toevoegen van %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="323"/>
         <source>modification %1</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">wijzig %1</translation>
+        <translation type="unfinished">Wijzig %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="358"/>
         <source>modification points polygone</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">wijzig polygoon punten</translation>
+        <translation type="unfinished">Wijzig polygoon punten</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="392"/>
         <source>modification noms</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">wijzig namen</translation>
+        <translation type="unfinished">Wijzig namen</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="434"/>
@@ -5641,19 +5641,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="437"/>
         <source>rapprocher</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">laag omhoog</translation>
+        <translation type="unfinished">Laag omhoog</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="440"/>
         <source>éloigner</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">laag omlaag</translation>
+        <translation type="unfinished">Laag omlaag</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="443"/>
         <source>envoyer au fond</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">onderop</translation>
+        <translation type="unfinished">Onderop</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="543"/>
@@ -5665,19 +5665,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="658"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
-        <translation type="unfinished">schalen %1</translation>
+        <translation type="unfinished">Schalen %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="660"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
-        <translation type="unfinished">schalen van  %1 primitives </translation>
+        <translation type="unfinished">Schalen van  %1 primitives </translation>
     </message>
     <message>
         <location filename="../sources/editor/partrectangle.h" line="45"/>
         <source>rectangle</source>
         <comment>element part name</comment>
-        <translation>rechthoek</translation>
+        <translation>Rechthoek</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1193"/>
@@ -5687,7 +5687,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1195"/>
         <source>schema</source>
-        <translation>diagram</translation>
+        <translation>Diagram</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1220"/>
@@ -5720,7 +5720,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimension.cpp" line="41"/>
         <source>%1% du restant</source>
         <comment>titleblock: width relative to remaining length</comment>
-        <translation>overblijvend %1%</translation>
+        <translation>Overblijvend %1%</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="415"/>
@@ -5732,7 +5732,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="417"/>
         <source>Suppression d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>verwijder rij</translation>
+        <translation>Verwijder rij</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="421"/>
@@ -5750,19 +5750,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="556"/>
         <source>Modification d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>wijzig rij</translation>
+        <translation>Wijzig rij</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="558"/>
         <source>Modification d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>wijzig kolom</translation>
+        <translation>Wijzig kolom</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="623"/>
         <source>Fusion de %1 cellules</source>
         <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
-        <translation>samenvoegen van %1 cellen</translation>
+        <translation>Samenvoegen van %1 cellen</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="763"/>
@@ -5774,7 +5774,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
         <source>modification des informations complémentaires</source>
         <comment>undo caption</comment>
-        <translation>wijzig extra informatie</translation>
+        <translation>Wijzig extra informatie</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
@@ -5798,55 +5798,55 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblockcell.cpp" line="120"/>
         <source>type</source>
         <comment>title block cell property human name</comment>
-        <translation>type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="122"/>
         <source>nom</source>
         <comment>title block cell property human name</comment>
-        <translation>naam</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="124"/>
         <source>logo</source>
         <comment>title block cell property human name</comment>
-        <translation>logo</translation>
+        <translation>Logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="126"/>
         <source>label</source>
         <comment>title block cell property human name</comment>
-        <translation>label</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="128"/>
         <source>affichage du label</source>
         <comment>title block cell property human name</comment>
-        <translation>label tonen</translation>
+        <translation>Label tonen</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="130"/>
         <source>valeur affichée</source>
         <comment>title block cell property human name</comment>
-        <translation>waarde</translation>
+        <translation>Waarde</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="132"/>
         <source>alignement du texte</source>
         <comment>title block cell property human name</comment>
-        <translation>tekst uitlijning</translation>
+        <translation>Tekst uitlijning</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="134"/>
         <source>taille du texte</source>
         <comment>title block cell property human name</comment>
-        <translation>font grootte</translation>
+        <translation>Font grootte</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="136"/>
         <source>ajustement horizontal</source>
         <comment>title block cell property human name</comment>
-        <translation>horizontaal positie</translation>
+        <translation>Horizontaal positie</translation>
     </message>
 </context>
 <context>
@@ -5906,7 +5906,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
         <source>Verrouiller la position</source>
-        <translation>Lock Position</translation>
+        <translation>Grendel Positie</translation>
     </message>
 </context>
 <context>
@@ -5914,7 +5914,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/recentfiles.cpp" line="162"/>
         <source>&amp;Récemment ouvert(s)</source>
-        <translation>&amp;Recently Opened</translation>
+        <translation>Recent geopend</translation>
     </message>
 </context>
 <context>
@@ -5942,12 +5942,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="111"/>
         <source>abscisse</source>
-        <translation>horizontale as</translation>
+        <translation>Horizontale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="113"/>
         <source>ordonnée</source>
-        <translation>verticale as</translation>
+        <translation>Verticale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="115"/>
@@ -5957,7 +5957,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="117"/>
         <source>hauteur</source>
-        <translation>hoogte</translation>
+        <translation>Hoogte</translation>
     </message>
 </context>
 <context>
@@ -5979,11 +5979,11 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>You can define a custom label for reports of folio.
-Create your own text, using the following variables.:
-%f : the number of folio
-%l :.line number
-%c :the column number</translation>
+        <translation>U kunt een gebruikers label aan rapporten geven.
+Creer uw eigen tekst met de volgende variabelen:
+%f : pagina nummer
+%l : lijnnummer
+%c : kolom of stramien nummer</translation>
     </message>
 </context>
 <context>
@@ -5991,32 +5991,32 @@ Create your own text, using the following variables.:
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="25"/>
         <source>Folio:  </source>
-        <translation>Scheme:</translation>
+        <translation>Pagina:</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choose the scheme&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kies een schema&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="55"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete a variable numbering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Verwijder een nummering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="72"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;toevoegen  a variable numbering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;toevoegen van een nummering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="91"/>
         <source>Définition</source>
-        <translation>Définition</translation>
+        <translation>Definitie</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="107"/>
@@ -6026,12 +6026,12 @@ Create your own text, using the following variables.:
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="117"/>
         <source>Valeur</source>
-        <translation>Value</translation>
+        <translation>Waarde</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="133"/>
         <source>Incrémentation</source>
-        <translation>Incrementing</translation>
+        <translation>Optellend</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="52"/>
@@ -6042,7 +6042,7 @@ Create your own text, using the following variables.:
         <location filename="../sources/ui/selectautonumw.cpp" line="140"/>
         <source>Autonumérotation</source>
         <comment>title window</comment>
-        <translation>Auto Numbering</translation>
+        <translation>Auto Nummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="141"/>
@@ -6062,21 +6062,20 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation>This is where you can define how the nieuw drivers will be numbered.
--Each Folio has its own method of numbering.
-Dial-A is composed of a variable minimum.
--You can add or delete a variable numbering through the - and + buttons.
-A variable-numbering comprant: a type, a value and an increment.
+        <translation>Hier kunt u een type opgeven voor het automatisch nummeren van geleiders.
+-Elke pagina kan een eigen methode van nummering hebben.
 
--types &quot;Number 1&quot;, &quot;Number 01&quot; and &quot;Number 001&quot; represents a numeric type defined in the field &quot;Value&quot;, which is incremented for each nieuw driver of the value of the &quot;Raise&quot;.
-- &quot;Number 01&quot; and &quot;Number 001&quot;, respectively, are shown in the diagram by two and at least three digits.
-If the number specified in the Value field has fewer digits than the type chosen, it will be preceded by one or two 0 to meet its type.
+-U kunt velden toevoegen met de - en + knoppen.
+Een veld bestaat uit een type, een beginwaarde, en een optelgetal.
 
--Type &quot;text&quot; is a fixed text.
-The fields &quot;Raise&quot; is not used.
+-types: Nummer voor een mumeriek veld
+&quot;Waarde&quot;, is het getal waar mee gestart word &quot;Raise&quot;, is de waarde waarmee opgehoogd wordt.
+- &quot;Nummer 1&quot; &quot;Nummer 01&quot; en &quot;Nummer 001&quot;, is het aantal cijfers dat getoond word, eventueel met voorloopnullen als de waarde kleiner is..
 
--The &quot;N°. portfolio&quot; type represents the number of the current portfolio.
-The other fields are not used.</translation>
+-Type &quot;tekst&quot; is een vaste tekst(bijv. locatie +A1).
+
+-Type &quot;N°. paginanummer&quot; geeft het pagina nummer.
+</translation>
     </message>
 </context>
 <context>
@@ -6084,182 +6083,182 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="65"/>
         <source>Antialiasing</source>
-        <translation>Antialiasing</translation>
+        <translation>Verscherper</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Style : </source>
-        <translation>Style: </translation>
+        <translation>Stijl: </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="86"/>
         <source>Épaisseur : </source>
-        <translation>Weight: </translation>
+        <translation>Gewicht: </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="78"/>
         <source>Remplissage :</source>
-        <translation>Filling:</translation>
+        <translation>Vulling:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="33"/>
         <source>Noir</source>
         <comment>element part color</comment>
-        <translation>Black</translation>
+        <translation>Zwart</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="34"/>
         <source>Blanc</source>
         <comment>element part color</comment>
-        <translation>White</translation>
+        <translation>Wit</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="35"/>
         <source>Vert</source>
         <comment>element part color</comment>
-        <translation>Green</translation>
+        <translation>Groen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="36"/>
         <source>Rouge</source>
         <comment>element part color</comment>
-        <translation>Red</translation>
+        <translation>Rood</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="37"/>
         <source>Bleu</source>
         <comment>element part color</comment>
-        <translation>Blue</translation>
+        <translation>Blauw</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="41"/>
         <source>Normal</source>
         <comment>element part line style</comment>
-        <translation>Normal</translation>
+        <translation>Normaal</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="42"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
-        <translation>Dashed</translation>
+        <translation>Streep</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="43"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
-        <translation>Dotted</translation>
+        <translation>Punt</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="44"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
-        <translation>Dots and dashes</translation>
+        <translation>Punt streep</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="49"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
-        <translation>None</translation>
+        <translation>Nul</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Fine</source>
         <comment>element part weight</comment>
-        <translation>Thin</translation>
+        <translation>Dun</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Normale</source>
         <comment>element part weight</comment>
-        <translation>Normal</translation>
+        <translation>Normaal</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Forte</source>
         <comment>element part weight</comment>
-        <translation>Strong</translation>
+        <translation>Dik</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
-        <translation>Hight</translation>
+        <translation>Dubbeldik</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
-        <translation>None</translation>
+        <translation>Geen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Noir</source>
         <comment>element part filling</comment>
-        <translation>Black</translation>
+        <translation>Zwart</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
-        <translation>White</translation>
+        <translation>Wit</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Vert</source>
         <comment>element part filling</comment>
-        <translation>Green</translation>
+        <translation>Groen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
-        <translation>Red</translation>
+        <translation>Rood</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="62"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
-        <translation>Blue</translation>
+        <translation>Blauw</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="72"/>
         <source>Apparence :</source>
-        <translation>appearance:</translation>
+        <translation>Verschijning:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="75"/>
         <source>Contour :</source>
-        <translation>outline:</translation>
+        <translation>buitenlijn:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Géométrie :</source>
-        <translation>geometry:</translation>
+        <translation>Geometrie:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="124"/>
         <source>style antialiasing</source>
-        <translation>antialiasing style</translation>
+        <translation>Verscherpings stijl</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="126"/>
         <source>style couleur</source>
-        <translation>color style</translation>
+        <translation>Kleur stijl</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="128"/>
         <source>style ligne</source>
-        <translation>line style</translation>
+        <translation>Lijn stijl</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="130"/>
         <source>style epaisseur</source>
-        <translation>weight style</translation>
+        <translation>Dikte stijl</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>style remplissage</source>
-        <translation>filling style</translation>
+        <translation>Vulling stijl</translation>
     </message>
 </context>
 <context>
@@ -6267,87 +6266,87 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="39"/>
         <source>Nord</source>
-        <translation>North</translation>
+        <translation>Noord (N)</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="40"/>
         <source>Est</source>
-        <translation>East</translation>
+        <translation>Oost(E)</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="41"/>
         <source>Sud</source>
-        <translation>South</translation>
+        <translation>Zuid(S)</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="42"/>
         <source>Ouest</source>
-        <translation>West</translation>
+        <translation>West(O)</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="46"/>
         <source>Visible</source>
-        <translation>Visible</translation>
+        <translation>Zichtbaar</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="49"/>
         <source>Position : </source>
-        <translation>Position: </translation>
+        <translation>Positie: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="52"/>
         <source>x : </source>
-        <translation>x: </translation>
+        <translation>X: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="54"/>
         <source>y : </source>
-        <translation>y: </translation>
+        <translation>Y: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="59"/>
         <source>Orientation : </source>
-        <translation>orientatie: </translation>
+        <translation>Orientatie: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="64"/>
         <source>Nom : </source>
-        <translation>naam:</translation>
+        <translation>Naam:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="70"/>
         <source>Numéro : </source>
-        <translation>number:</translation>
+        <translation>Nummer:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="134"/>
         <source>abscisse</source>
-        <translation>horizontale as</translation>
+        <translation>Horizontale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="136"/>
         <source>ordonnée</source>
-        <translation>verticale as</translation>
+        <translation>Verticale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="138"/>
         <source>orientation</source>
-        <translation>orientatie</translation>
+        <translation>Orientatie</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="141"/>
         <source>numéro: </source>
-        <translation>number:</translation>
+        <translation>Nummer:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="145"/>
         <source>nom: </source>
-        <translation>Name:</translation>
+        <translation>Naam:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="149"/>
         <source>nom visible: </source>
-        <translation>Visible name:</translation>
+        <translation>Zichtbare naam:</translation>
     </message>
 </context>
 <context>
@@ -6356,80 +6355,80 @@ The other fields are not used.</translation>
         <location filename="../sources/editor/texteditor.cpp" line="38"/>
         <source>Noir</source>
         <comment>element text part color</comment>
-        <translation>Black</translation>
+        <translation>Zwart</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="39"/>
         <source>Blanc</source>
         <comment>element text part color</comment>
-        <translation>White</translation>
+        <translation>Wit</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="44"/>
         <source>Angle de rotation : </source>
-        <translation>Rotation angle: </translation>
+        <translation>Rotatie Hoek: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="52"/>
         <source>Position : </source>
-        <translation>Position: </translation>
+        <translation>Positie: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="55"/>
         <source>x : </source>
-        <translation>x: </translation>
+        <translation>X: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="57"/>
         <source>y : </source>
-        <translation>y: </translation>
+        <translation>Y: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="62"/>
         <source>Taille : </source>
-        <translation>Size: </translation>
+        <translation>Grootte: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="67"/>
         <source>Couleur : </source>
-        <translation>Color: </translation>
+        <translation>Kleur: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="74"/>
         <source>Texte : </source>
-        <translation>Text: </translation>
+        <translation>Tekst: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="135"/>
         <source>abscisse</source>
-        <translation>horizontale as</translation>
+        <translation>Horizontale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="137"/>
         <source>ordonnée</source>
-        <translation>verticale as</translation>
+        <translation>Verticale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="141"/>
         <source>taille</source>
-        <translation>size</translation>
+        <translation>Grootte</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="143"/>
         <source>couleur</source>
         <comment>undo caption</comment>
-        <translation>color</translation>
+        <translation type="unfinished">Kleur</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="145"/>
         <source>angle de rotation</source>
-        <translation>rotatie hoek</translation>
+        <translation>Rotatie hoek</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttext.cpp" line="537"/>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>contenu</source>
-        <translation>content</translation>
+        <translation>Inhoud</translation>
     </message>
 </context>
 <context>
@@ -6437,68 +6436,68 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="37"/>
         <source>Ne pas subir les rotations de l&apos;élément parent</source>
-        <translation>Do not follow parent element rotations</translation>
+        <translation>Volg ouder rotaties NIET</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
         <source>Angle de rotation par défaut : </source>
-        <translation>Default rotation angle: </translation>
+        <translation>Standaard rotatie hoek: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="47"/>
         <source>Position : </source>
-        <translation>Position: </translation>
+        <translation>Positie: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="50"/>
         <source>x : </source>
-        <translation>x: </translation>
+        <translation>X: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="52"/>
         <source>y : </source>
-        <translation>y: </translation>
+        <translation>Y: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="57"/>
         <source>Taille : </source>
-        <translation>Size: </translation>
+        <translation>Grootte: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="62"/>
         <source>Texte par défaut : </source>
-        <translation>Default text: </translation>
+        <translation>Standaard tekst: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="125"/>
         <source>abscisse</source>
-        <translation>horizontale as</translation>
+        <translation>Horizontale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="127"/>
         <source>ordonnée</source>
-        <translation>verticale as</translation>
+        <translation>Verticale as</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="131"/>
         <source>taille</source>
-        <translation>size</translation>
+        <translation>Grootte</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="133"/>
         <source>propriété</source>
-        <translation>property</translation>
+        <translation>Eigenschap</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
         <source>angle de rotation</source>
-        <translation type="unfinished">rotatie hoek</translation>
+        <translation type="unfinished">Rotatie hoek</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="516"/>
         <location filename="../sources/editor/textfieldeditor.cpp" line="129"/>
         <source>contenu</source>
-        <translation>content</translation>
+        <translation>Inhoud</translation>
     </message>
 </context>
 <context>
@@ -6507,25 +6506,25 @@ The other fields are not used.</translation>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="118"/>
         <source>Largeur :</source>
         <comment>default dialog label</comment>
-        <translation>Width:</translation>
+        <translation>Breedte:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="125"/>
         <source>Absolu</source>
         <comment>a traditional, absolute measure</comment>
-        <translation>Absolute</translation>
+        <translation>Maat </translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="126"/>
         <source>Relatif au total</source>
         <comment>a percentage of the total width</comment>
-        <translation>Relative to total</translation>
+        <translation>Relatief naar totaal</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="127"/>
         <source>Relatif au restant</source>
         <comment>a percentage of what remains from the total width</comment>
-        <translation>Relative to remaining</translation>
+        <translation>Relatief naar overblijvend</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="167"/>
@@ -6537,7 +6536,7 @@ The other fields are not used.</translation>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="171"/>
         <source>px</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation>px</translation>
+        <translation>Px</translation>
     </message>
 </context>
 <context>
@@ -6545,58 +6544,58 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="174"/>
         <source>Modèle par défaut</source>
-        <translation>Default sjabloon</translation>
+        <translation>Standaard sjabloon</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="278"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation>Edit this sjabloon</translation>
+        <translation>Wijzig dit sjabloon</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="279"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
-        <translation>Duplicate and edit this sjabloon</translation>
+        <translation>Kopieer en wijzig dit sjabloon</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="285"/>
         <source>Title block templates actions</source>
-        <translation>titel blok sjablonen actions</translation>
+        <translation>Titel blok sjablonen acties</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="290"/>
         <source>Modèle :</source>
-        <translation>sjabloon:</translation>
+        <translation>Sjabloon:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="302"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
-        <translation>The following variables can be used in the Folio field:
-  - %id: the current diagram&apos;s number in the project
-  - %total: total number of diagrams in the project</translation>
+        <translation>De volgende variabelen kunnen gebruikt worden in het pagina veld:
+  - %id: pagina nummer in het project
+  - %total: totaal aantal paginas in het project</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="311"/>
         <source>Pas de date</source>
-        <translation>No date</translation>
+        <translation>Zonder datum</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="312"/>
         <source>Date courante</source>
-        <translation>Current date</translation>
+        <translation>Huidige datum</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="313"/>
         <source>Date fixe : </source>
-        <translation>Fixed date: </translation>
+        <translation>Vaste datum: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="331"/>
         <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
-        <translation>Available to titel blok sjablonen as %1.</translation>
+        <translation>Beschikbaar voor titel blok sjablonen:  %1.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="340"/>
@@ -6606,52 +6605,52 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="341"/>
         <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
-        <translation>%id and %total are available to titel blok sjablonen as %{folio-id} and %{folio-total} respectively.</translation>
+        <translation>%id en %total kunnen in titel blok sjablonen gebruikt worden als %{folio-id} en %{folio-total}.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="345"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>You may define here your own name/value associations so the titel blok takes them into account. E.g. associating the &quot;volta&quot; naamwith the &quot;1745&quot; value will replace %{volta} with 1745 within the titel blok.</translation>
+        <translation>Hier kunt u uw eigen variabelenamen en bijbehorende waarden voor het titel blok. bijv.  &quot;volta&quot; als naam met de waarde &quot;1745&quot;  %{volta} zal vervangen worden door 1745.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="358"/>
         <source>Principales</source>
-        <translation>Main</translation>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="359"/>
         <source>Personnalisées</source>
-        <translation>Custom</translation>
+        <translation>Gebruiker</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="379"/>
         <source>Titre : </source>
-        <translation>Title: </translation>
+        <translation>Titel: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="381"/>
         <source>Auteur : </source>
-        <translation>Author: </translation>
+        <translation>Auteur: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="383"/>
         <source>Date : </source>
-        <translation>Date: </translation>
+        <translation>Datum: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="385"/>
         <source>Fichier : </source>
-        <translation>File: </translation>
+        <translation>Bestand: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="387"/>
         <source>Folio : </source>
-        <translation>Folio: </translation>
+        <translation>Pagina: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="422"/>
         <source>Informations du cartouche</source>
-        <translation>titel blok eigenschappen</translation>
+        <translation>Titel blok eigenschappen</translation>
     </message>
 </context>
 <context>
@@ -6673,12 +6672,12 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="49"/>
         <source>Type de cellule :</source>
-        <translation>Cell type:</translation>
+        <translation>Cel type:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
         <source>Vide</source>
-        <translation>Empty</translation>
+        <translation>Leeg</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="52"/>
@@ -6694,7 +6693,7 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
         <source>Aucun logo</source>
-        <translation>No logo</translation>
+        <translation>Geen logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="66"/>
@@ -6704,73 +6703,73 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="56"/>
         <source>Nom :</source>
-        <translation>Name:</translation>
+        <translation>Naam:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
-        <translation>Warning: empty cells borders are not rendered on the final diagram.</translation>
+        <translation>Waarschuwing Lege cellen worden niet getekend.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
         <source>Afficher un label :</source>
-        <translation>Display a label:</translation>
+        <translation>Toon een label:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="76"/>
         <source>Editer</source>
-        <translation>Edit</translation>
+        <translation>Wijzig</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="73"/>
         <source>Texte :</source>
-        <translation>Text:</translation>
+        <translation>Tekst:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
         <source>Alignement :</source>
-        <translation>Alignment:</translation>
+        <translation>Uitlijning:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
         <source>horizontal :</source>
-        <translation>horizontal:</translation>
+        <translation>Horizontaal:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
         <source>Gauche</source>
-        <translation>Left</translation>
+        <translation>Links</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="81"/>
         <source>Centré</source>
-        <translation>Center</translation>
+        <translation>Midden</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="82"/>
         <source>Droite</source>
-        <translation>Right</translation>
+        <translation>Rechts</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="86"/>
         <source>vertical :</source>
-        <translation>vertical:</translation>
+        <translation>Vertikaal:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
         <source>Haut</source>
-        <translation>Top</translation>
+        <translation>Boven</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="89"/>
         <source>Milieu</source>
-        <translation>Middle</translation>
+        <translation>Midden</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="90"/>
         <source>Bas</source>
-        <translation>Bottom</translation>
+        <translation>Onder</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="94"/>
@@ -6780,39 +6779,39 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
         <source>Ajuster la taille de police si besoin</source>
-        <translation>Adjust font size if needed</translation>
+        <translation>Regel font grootte indien nodig</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
         <source>Label de cette cellule</source>
-        <translation>Label for this cell</translation>
+        <translation>Label voor deze cel</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="258"/>
         <source>Valeur de cette cellule</source>
-        <translation>Value for this cell</translation>
+        <translation>Waarde voor dezecel</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>The following variables are available by standaard: &lt;ul&gt;&lt;li&gt;%{author}: folio author&lt;/li&gt;&lt;li&gt;%{date}: folio date&lt;/li&gt;&lt;li&gt;%{title}: folio title&lt;/li&gt;&lt;li&gt;%{filename}: project filename&lt;/li&gt;&lt;li&gt;%{folio}: folio-related information&lt;/li&gt;&lt;li&gt;%{folio-id}: folio index within the project&lt;/li&gt;&lt;li&gt;%{folio-total}: total number of folios within the project&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation>De volgende waarden zijn als standaard aanwezig: &lt;ul&gt;&lt;li&gt;%{author}: pagina auteur&lt;/li&gt;&lt;li&gt;%{date}: pagina datum&lt;/li&gt;&lt;li&gt;%{title}: pagina titel&lt;/li&gt;&lt;li&gt;%{filename}: project bestandsnaam&lt;/li&gt;&lt;li&gt;%{folio}: pagina informatie&lt;/li&gt;&lt;li&gt;%{folio-id}: pagina index binnen project&lt;/li&gt;&lt;li&gt;%{folio-total}: totaal aantal pagina&apos;s binnen project&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Each cell of a titel blok displays a value, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Since what you are currently editing is a titel blok &lt;em&gt;sjabloon&lt;/em&gt;, avoid entering raw data directly: prefer inserting variables like %{variable-name}, which will be replaced afterwards with adequate values from the folio.</translation>
+        <translation>Elke cel van het titel blok heeft een waarde, eventueel met een label in diverse talen.&lt;br/&gt;Aangezien u nu bezig bent in een titel blok &lt;em&gt;sjabloon&lt;/em&gt;, vermijd het invoeren van waardes, beter is om variabelen te gebruiken zoals %{variable-name}, die automatisch vervangen worden door correcte waarden vanuit de pagina.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
         <source>Aucun logo</source>
         <comment>text displayed in the combo box when a template has no logo</comment>
-        <translation>No logo</translation>
+        <translation>Geen logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="422"/>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
-        <translation>Cell edition: %1</translation>
+        <translation>Cel editie: %1</translation>
     </message>
 </context>
 <context>
@@ -6821,14 +6820,14 @@ The other fields are not used.</translation>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation>Delete the titel blok sjabloon?</translation>
+        <translation>Verwijder titel blok sjabloon?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation>Do you really want to delete this titel blok sjabloon (%1)?</translation>
+        <translation>Weet u zeker dat u verwijder titel blok sjabloon (%1) wilt doen?</translation>
     </message>
 </context>
 <context>
@@ -6837,13 +6836,13 @@ The other fields are not used.</translation>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="96"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
-        <translation>Parent collection</translation>
+        <translation>Vader collectie</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="97"/>
         <source>Modèle existant</source>
         <comment>used in save as form</comment>
-        <translation>Existing sjabloon</translation>
+        <translation>Bestaand sjabloon</translation>
     </message>
 </context>
 <context>
@@ -6852,13 +6851,13 @@ The other fields are not used.</translation>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="79"/>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
-        <translation>or nieuw name</translation>
+        <translation>Of nieuwe naam</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="91"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
-        <translation>nieuw sjabloon (enter its name)</translation>
+        <translation>Nieuw sjabloon (geef nieuwe naam)</translation>
     </message>
 </context>
 <context>
@@ -6871,38 +6870,38 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="78"/>
         <source>Logos embarqués dans ce modèle :</source>
-        <translation>Logos embedded within this sjabloon:</translation>
+        <translation>Logos in dit sjabloon:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="87"/>
         <source>Ajouter un logo</source>
-        <translation>toevoegen  a logo</translation>
+        <translation>Toevoegen  van een logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="88"/>
         <source>Exporter ce logo</source>
-        <translation>Export this logo</translation>
+        <translation>Exporteer  dit logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
         <source>Supprimer ce logo</source>
-        <translation>Remove this logo</translation>
+        <translation>Verwijder dit logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="90"/>
         <source>Propriétés</source>
-        <translation>eigenschappen</translation>
+        <translation>Eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="91"/>
         <source>Nom :</source>
-        <translation>Name:</translation>
+        <translation>Naam:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="93"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="195"/>
         <source>Renommer</source>
-        <translation>Rename</translation>
+        <translation>Hernoem</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="94"/>
@@ -6913,17 +6912,17 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="188"/>
         <source>Logo déjà existant</source>
-        <translation>Logo already existing</translation>
+        <translation>Logo bestaat reeds</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="194"/>
         <source>Remplacer</source>
-        <translation>Replace</translation>
+        <translation>Vervang</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="214"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation>A logo named &quot;%1&quot; already exists. Do you wish to replace it or do you prefer specifying another naamfor the nieuw logo?</translation>
+        <translation>A logo met naam &quot;%1&quot; bestaat al. Wilt u dit vervangen, of wilt u een nieuwe naam geven aan het nieuwe logo?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="250"/>
@@ -6933,18 +6932,18 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="267"/>
         <source>Choisir une image / un logo</source>
-        <translation>Choose a picture /a logo</translation>
+        <translation>Kies een afbeelding of logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="269"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation>Vector graphics (*.svg);;Bitmap graphics (*.png *.jpg *.jpeg *.gif *.xpm);;All files (*)</translation>
+        <translation>Vector graphics (*.svg);;Bitmap graphics (*.png *.jpg *.jpeg *.gif *.xpm);;Alle bestanden (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="276"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="308"/>
         <source>Erreur</source>
-        <translation>Error</translation>
+        <translation>Fout</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="276"/>
@@ -6954,12 +6953,12 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="300"/>
         <source>Choisir un fichier pour exporter ce logo</source>
-        <translation>Choose a file to export this logo</translation>
+        <translation>Kies een bestand voor dit logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="302"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
-        <translation>All files (*);;Vector graphics (*.svg);;Bitmap graphics (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</translation>
+        <translation>Alle bestanden (*);;Vector graphics (*.svg);;Bitmap graphics (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="308"/>
@@ -6969,22 +6968,22 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="335"/>
         <source>Renommer un logo</source>
-        <translation>Renaama logo</translation>
+        <translation>Hernoem logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="340"/>
         <source>Vous devez saisir un nouveau nom.</source>
-        <translation>You have to enter a nieuw name.</translation>
+        <translation>U moet een nieuwe naam.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="349"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
-        <translation>The nieuw naam cannot be empty.</translation>
+        <translation>De nieuwe naam kan niet leeg zijn.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="358"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
-        <translation>The naamyou entered is already used by another logo.</translation>
+        <translation>De naam is al gebruikt.</translation>
     </message>
 </context>
 <context>
@@ -6993,79 +6992,79 @@ The other fields are not used.</translation>
         <location filename="../sources/titleblock/templateview.cpp" line="332"/>
         <source>Changer la largeur de la colonne</source>
         <comment>window title when changing a column with</comment>
-        <translation>Change the column breedte</translation>
+        <translation>Wijzig de kolom breedte</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="333"/>
         <source>Largeur :</source>
         <comment>text before the spinbox to change a column width</comment>
-        <translation>Width:</translation>
+        <translation>Breedte:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="358"/>
         <source>Changer la hauteur de la ligne</source>
         <comment>window title when changing a row height</comment>
-        <translation>Change the row height</translation>
+        <translation>Wijzig de rij hoogte</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="359"/>
         <source>Hauteur :</source>
         <comment>text before the spinbox to change a row height</comment>
-        <translation>Height:</translation>
+        <translation>Hoogte:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="535"/>
         <source>Ajouter une colonne (avant)</source>
         <comment>context menu</comment>
-        <translation>toevoegen  a column (before)</translation>
+        <translation>Toevoegen van een kolom (links)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="536"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
-        <translation>toevoegen  a row (before)</translation>
+        <translation>Toevoegen van een rij (boven)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="537"/>
         <source>Ajouter une colonne (après)</source>
         <comment>context menu</comment>
-        <translation>toevoegen  a column (after)</translation>
+        <translation>Toevoegen een kolom (rechts)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="538"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
-        <translation>toevoegen  a row (after)</translation>
+        <translation>Toevoegen van een rij (onder)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="539"/>
         <source>Modifier les dimensions de cette colonne</source>
         <comment>context menu</comment>
-        <translation>Change this column dimension</translation>
+        <translation>Wijzig kolom dimensie</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="540"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
-        <translation>Change this row dimension</translation>
+        <translation>Wijzig rij dimensie</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="541"/>
         <source>Supprimer cette colonne</source>
         <comment>context menu</comment>
-        <translation>Delete this column</translation>
+        <translation>Verwijder kolom</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="542"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
-        <translation>Delete this row</translation>
+        <translation>Verwijder rij</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="543"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
-        <translation>Change this preview breedte</translation>
+        <translation>Wijzig de toonbreedte</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="608"/>
@@ -7093,12 +7092,12 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="784"/>
         <source>Changer la largeur de l&apos;aperçu</source>
-        <translation>Change the preview breedte</translation>
+        <translation>Wijzig de toonbreedte</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="785"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation>Preview breedte:</translation>
+        <translation>Wijzig breedte:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="933"/>
@@ -7115,14 +7114,14 @@ Maximum breedte: %2px
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation type="unfinished">Minimum breedte: %1px
+        <translation>Minimum breedte: %1px
 </translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
-        <translation>Total breedte for this preview: %1px</translation>
+        <translation>Totale breedte: %1px</translation>
     </message>
 </context>
 <context>
@@ -7131,13 +7130,13 @@ Maximum breedte: %2px
         <location filename="../sources/titleblock/templatescollection.cpp" line="120"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Ongetiteld project (id %1) title blocks</translation>
+        <translation>Ongetiteld project (id %1) title blokken</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation>&quot;%1&quot; project title blocks</translation>
+        <translation>&quot;%1&quot; project titel blokken</translation>
     </message>
 </context>
 <context>
@@ -7159,13 +7158,13 @@ Maximum breedte: %2px
         <location filename="../sources/xmlelementscollection.cpp" line="69"/>
         <source>Collection du projet sans titre (id %1)</source>
         <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Ongetiteld project (id %1) collection</translation>
+        <translation>Ongetiteld project (id %1) collectie</translation>
     </message>
     <message>
         <location filename="../sources/xmlelementscollection.cpp" line="77"/>
         <source>Collection du projet &quot;%1&quot;</source>
         <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation>&quot;%1&quot; project collection</translation>
+        <translation>&quot;%1&quot; project collectie</translation>
     </message>
 </context>
 <context>
@@ -7178,7 +7177,7 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
         <source>TextLabel</source>
-        <translation>TextLabel</translation>
+        <translation>TekstLabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="30"/>
@@ -7188,17 +7187,17 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="32"/>
         <source>Projet : </source>
-        <translation>project : </translation>
+        <translation>Project : </translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Sélection</source>
-        <translation>Choice</translation>
+        <translation>Kies</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Nom</source>
-        <translation>Name</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
@@ -7208,12 +7207,12 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="102"/>
         <source>Désélectionner tout</source>
-        <translation>Select none</translation>
+        <translation>Niets selecteren</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Sélectionner tout</source>
-        <translation>Select all</translation>
+        <translation>Alles selecteren</translation>
     </message>
 </context>
 <context>
@@ -7226,7 +7225,7 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Référence croisée (maitre)</source>
-        <translation>Cross-reference (master)</translation>
+        <translation>Cross-referentie (master)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
@@ -7241,7 +7240,7 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="52"/>
         <source>Élément manquant</source>
-        <translation>Missing element</translation>
+        <translation>Missend element</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="54"/>
@@ -7252,54 +7251,54 @@ Maximum breedte: %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="59"/>
         <source>Nom : %1
 </source>
-        <translation>Name: %1
+        <translation>Naam: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="62"/>
         <source>Folio : %1
 </source>
-        <translation>Folio: %1</translation>
+        <translation>Pagina: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="64"/>
         <source>Position : %1
 </source>
-        <translation>Position: %1
+        <translation>Positie: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="65"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation>Size: %1×%2
+        <translation>Grootte: %1×%2
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="66"/>
         <source>Bornes : %1
 </source>
-        <translation>aansluitingen: %1
+        <translation>Aansluitingen: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="67"/>
         <source>Champs de texte : %1
 </source>
-        <translation>Text fields: %1
+        <translation>Tekst velden: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="70"/>
         <source>Emplacement : %1
 </source>
-        <translation>Location: %1
+        <translation>Locatie: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="88"/>
         <source>Retrouver dans le panel</source>
-        <translation>Find in the panel</translation>
+        <translation>Vind in het panel</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="90"/>
@@ -7310,13 +7309,13 @@ Maximum breedte: %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="114"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="128"/>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>Informatie</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="122"/>
         <source>Report de folio</source>
-        <translation>Report folio</translation>
+        <translation>Rapport pagina</translation>
     </message>
 </context>
 <context>
@@ -7334,38 +7333,38 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Schéma</source>
-        <translation>diagram</translation>
+        <translation>Diagram</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Désignation
 </source>
-        <translation>Description</translation>
+        <translation>Omschrijving</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="63"/>
         <source>nomenclature_</source>
-        <translation>nomenclature_</translation>
+        <translation>Nomenclature_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Enregister sous... </source>
-        <translation>Save As ...</translation>
+        <translation>Bewaar als ...</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation>Files csv (*.csv)</translation>
+        <translation>Bestanden csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="70"/>
         <source>Erreur</source>
-        <translation>Error</translation>
+        <translation>Fout</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="71"/>
@@ -7382,7 +7381,7 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="349"/>
         <source>Text Color</source>
-        <translation>Text Color</translation>
+        <translation>Tekst Kleur</translation>
     </message>
 </context>
 <context>
@@ -7398,17 +7397,17 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="757"/>
         <source>Edit text</source>
-        <translation>Edit text</translation>
+        <translation>Edit tekst</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="780"/>
         <source>Rich Text</source>
-        <translation>Rich Text</translation>
+        <translation>Rich Tekst</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="781"/>
         <source>Source</source>
-        <translation>Source</translation>
+        <translation>Bron</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="787"/>
@@ -7418,7 +7417,7 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="789"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Cancel</translation>
+        <translation>&amp;Stop</translation>
     </message>
 </context>
 <context>
@@ -7436,17 +7435,17 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="455"/>
         <source>Texte en gras</source>
-        <translation>Bold</translation>
+        <translation>Dik</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="461"/>
         <source>Texte en italique</source>
-        <translation>Italic</translation>
+        <translation>Cursief</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="467"/>
         <source>Texte souligé</source>
-        <translation>Underline</translation>
+        <translation>Onderstreep</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="468"/>
@@ -7456,42 +7455,42 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="480"/>
         <source>Left Align</source>
-        <translation>Left Align</translation>
+        <translation>Links lijnen</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="485"/>
         <source>Center</source>
-        <translation>Center</translation>
+        <translation>Midden lijnen</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="490"/>
         <source>Right Align</source>
-        <translation>Right Align</translation>
+        <translation>Rechts lijnen</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="495"/>
         <source>Justify</source>
-        <translation>Justify</translation>
+        <translation>Lijnen</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="507"/>
         <source>Superscript</source>
-        <translation>Superscript</translation>
+        <translation>Superscript (hoog)</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="513"/>
         <source>Subscript</source>
-        <translation>Subscript</translation>
+        <translation>Subscript(laag)</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="522"/>
         <source>Insérer un lien</source>
-        <translation>Insert line</translation>
+        <translation>Toevoegen lijn</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="526"/>
         <source>Insert &amp;Image</source>
-        <translation>Insert &amp;Image</translation>
+        <translation>Toevoegen afbeelding</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="542"/>
