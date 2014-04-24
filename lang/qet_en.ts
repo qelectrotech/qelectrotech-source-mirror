@@ -442,7 +442,7 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="75"/>
         <source> fois.</source>
-        <translation>time.</translation>
+        <translation>correct.</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="88"/>
@@ -609,7 +609,7 @@ Apply a text to all of these drivers?</translation>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="108"/>
         <source>Éditer les propriétés d&apos;une image</source>
         <comment>window title</comment>
-        <translation>Edit the properties of an image</translation>
+        <translation>Image properties</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="113"/>
@@ -955,7 +955,7 @@ Apply a text to all of these drivers?</translation>
         <location filename="../sources/elementdialog.cpp" line="69"/>
         <source>Ouvrir une catégorie</source>
         <comment>dialog title</comment>
-        <translation>OPen a category</translation>
+        <translation>Open a category</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="70"/>
@@ -1794,7 +1794,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="80"/>
         <source>Tout décocher</source>
-        <translation>Unchek all</translation>
+        <translation>Uncheck all</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="944"/>
@@ -2057,7 +2057,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="257"/>
         <source>Pays-Bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Dutch</translation>
     </message>
 </context>
 <context>
@@ -2582,7 +2582,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="59"/>
         <source>Référence croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Cross Reference</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="100"/>
@@ -2824,7 +2824,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="309"/>
         <source>Référence croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Cross Reference</translation>
     </message>
 </context>
 <context>
@@ -2949,7 +2949,7 @@ Do you want to save changes?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1405"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
-        <translation>&amp;Hide diagram editors</translation>
+        <translation>&amp;Hide diagram editor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1406"/>
@@ -2959,18 +2959,18 @@ Do you want to save changes?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1407"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
-        <translation>&amp;Hide element editors</translation>
+        <translation>&amp;Hide element editor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1408"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
-        <translation>&amp;Show element editors</translation>
+        <translation>&amp;Show element editor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1409"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>&amp;Hide title block template editors</translation>
+        <translation>&amp;Hide title block template editor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1410"/>
@@ -3823,13 +3823,13 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
         <source>Désélectionne tous les éléments du schéma</source>
         <comment>status bar tip</comment>
-        <translation>Deselect all elements on the plan</translation>
+        <translation>Deselect all elements on the diagram</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
         <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation>Deselects selected elements and select non-selected elements</translation>
+        <translation>Inverts selection of elements</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
@@ -4665,7 +4665,7 @@ Available options:
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="123"/>
         <source>Sortir du &amp;mode plein écran</source>
-        <translation>Exit f&amp;ullScreen mode</translation>
+        <translation>Leave F&amp;ullScreen Mode</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="125"/>
@@ -4716,7 +4716,7 @@ Available options:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="173"/>
         <source>Tout décocher</source>
-        <translation>Unchek all</translation>
+        <translation>Uncheck all</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
@@ -4873,7 +4873,7 @@ Available options:
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
-        <translation>This document appears to have been saved wit h a newer version of QElectroTech. All or a part of its opening may fail. What do you wish to do?</translation>
+        <translation>This document appears to have been saved with a newer version of QElectroTech. All or a part of its opening may fail. What do you wish to do?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1057"/>
@@ -5877,7 +5877,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Shape Line Style</source>
         <comment>shape style</comment>
-        <translation>Shape Line Style</translation>
+        <translation>Line Style</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
@@ -5902,7 +5902,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Traits points points</source>
-        <translation>Dots dashes dashes</translation>
+        <translation>Dash dot dot</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
@@ -6017,7 +6017,7 @@ Create your own text, using the following variables.:
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="91"/>
         <source>Définition</source>
-        <translation>Définition</translation>
+        <translation>Definition</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="107"/>
@@ -6184,7 +6184,7 @@ The other fields are not used.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
-        <translation>Hight</translation>
+        <translation>High</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
@@ -6950,7 +6950,7 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="276"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation>Unable to ippen the specified file</translation>
+        <translation>Unable to open the specified file</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="300"/>
@@ -7094,12 +7094,12 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="784"/>
         <source>Changer la largeur de l&apos;aperçu</source>
-        <translation>Change the preview width</translation>
+        <translation>Change the width</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="785"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation>Preview width:</translation>
+        <translation>Width:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="933"/>
@@ -7123,7 +7123,7 @@ Maximum width: %2px
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
-        <translation>Total width for this preview: %1px</translation>
+        <translation>Total width: %1px</translation>
     </message>
 </context>
 <context>
@@ -7146,12 +7146,12 @@ Maximum width: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="20"/>
         <source>Afficher les contacts de puissance dans la croix</source>
-        <translation type="unfinished"></translation>
+        <translation>Show the power contacts in the cross</translation>
     </message>
 </context>
 <context>
@@ -7497,7 +7497,7 @@ Maximum width: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="542"/>
         <source>Simplify Rich Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Simplify Rich Text</translation>
     </message>
 </context>
 </TS>
