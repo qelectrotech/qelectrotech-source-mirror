@@ -2058,7 +2058,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="257"/>
         <source>Pays-Bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Ολλανδικά</translation>
     </message>
 </context>
 <context>
@@ -7501,7 +7501,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="542"/>
         <source>Simplify Rich Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Απλοποίηση εμπλουτισμένου κειμένου</translation>
     </message>
 </context>
 </TS>
