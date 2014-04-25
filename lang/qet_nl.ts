@@ -23,7 +23,7 @@
         <location filename="../sources/aboutqet.cpp" line="37"/>
         <source>À &amp;propos</source>
         <comment>tab title</comment>
-        <translation>&amp;About</translation>
+        <translation>&amp;Over</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="38"/>
@@ -378,7 +378,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="220"/>
         <source>Schéma sans titre</source>
         <comment>fallback diagram title</comment>
-        <translation>Diagram ongetiteld</translation>
+        <translation>Diagram naamloos</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="229"/>
@@ -563,7 +563,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="142"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation>Namen mogen alleen kleine letters cijfers en strepen hebben.</translation>
+        <translation>Namen mogen alleen kleine letters, cijfers en strepen hebben </translation>
     </message>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="176"/>
@@ -707,7 +707,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/diagramview.cpp" line="606"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
-        <translation>Ongetiteld</translation>
+        <translation>Naamloos</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="631"/>
@@ -768,7 +768,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramschooser.cpp" line="165"/>
         <source>Schéma sans titre</source>
-        <translation>Diagram ongetiteld</translation>
+        <translation>Naamloos Diagram</translation>
     </message>
 </context>
 <context>
@@ -2056,7 +2056,7 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="257"/>
         <source>Pays-Bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Nederland</translation>
     </message>
 </context>
 <context>
@@ -2089,7 +2089,7 @@ U kunt niet meer terug.</translation>
         <location filename="../sources/genericpanel.cpp" line="368"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation>Ongetiteld diagram</translation>
+        <translation>Naamloos diagram</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="375"/>
@@ -2581,7 +2581,7 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="59"/>
         <source>Référence croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Kruis referentie</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="100"/>
@@ -2823,7 +2823,7 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="309"/>
         <source>Référence croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Kruis referentie</translation>
     </message>
 </context>
 <context>
@@ -4906,7 +4906,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetproject.cpp" line="289"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
-        <translation>Ongetiteld project</translation>
+        <translation>Naamloos project</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="298"/>
@@ -4923,7 +4923,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="684"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
-        <translation>&gt;Onmogelijk om element te bereiken voor integratie</translation>
+        <translation>Onmogelijk om element te bereiken voor integratie</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="775"/>
@@ -5323,7 +5323,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="44"/>
         <source>ajouter 1 %1</source>
         <comment>undo caption - %1 is an element name</comment>
-        <translation type="unfinished">1 toevoegen %1</translation>
+        <translation>1 toevoegen %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="79"/>
@@ -5335,37 +5335,37 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="113"/>
         <source>Ajouter une image</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Add an picture</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="147"/>
         <source>Ajouter une Shape</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"> toevoegen van een figuur&gt;</translation>
+        <translation>Toevoegen van een figuur</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="187"/>
         <source>ajouter un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Toevoegen van een geleider</translation>
+        <translation>Toevoegen van een geleider</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="228"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
-        <translation type="unfinished">Verwijder %1</translation>
+        <translation>Verwijder %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="318"/>
         <source>coller %1</source>
         <comment>undo caption - %1 is a sentence listing the content to paste</comment>
-        <translation type="unfinished">Plak %1</translation>
+        <translation>Plak %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="391"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
-        <translation type="unfinished">Knip %1</translation>
+        <translation>Knip %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="433"/>
@@ -5373,67 +5373,67 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="660"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
-        <translation type="unfinished">Verplaats %1</translation>
+        <translation>Verplaats %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="681"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig tekst</translation>
+        <translation>Wijzig tekst</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="729"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
-        <translation type="unfinished">Roteer %1</translation>
+        <translation>Roteer %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="847"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
-        <translation type="unfinished">Roteer %1 to %2°</translation>
+        <translation>Roteer %1 to %2°</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="871"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig een geleider</translation>
+        <translation>Wijzig een geleider</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="928"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
-        <translation type="unfinished">Reset %1</translation>
+        <translation>Reset %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="968"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig de inzet(titel blok)</translation>
+        <translation>Wijzig de inzet(titel blok)</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1001"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig diagram grootte</translation>
+        <translation>Wijzig diagram grootte</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1030"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig geleider eigenschappen</translation>
+        <translation>Wijzig geleider eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1084"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig de eigenschappen van meerdere geleiders </translation>
+        <translation>Wijzig de eigenschappen van meerdere geleiders </translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1258"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation type="unfinished">Koppel twee pagina rapporten</translation>
+        <translation>Koppel twee pagina rapporten</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1262"/>
@@ -5588,7 +5588,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
         <source>suppression</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Verwijder</translation>
+        <translation>Verwijder</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="139"/>
@@ -5605,73 +5605,73 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="230"/>
         <source>déplacement</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Verplaats</translation>
+        <translation>Verplaats</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="270"/>
         <source>ajout %1</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Toevoegen van %1</translation>
+        <translation>Toevoegen van %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="323"/>
         <source>modification %1</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig %1</translation>
+        <translation>Wijzig %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="358"/>
         <source>modification points polygone</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig polygoon punten</translation>
+        <translation>Wijzig polygoon punten</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="392"/>
         <source>modification noms</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig namen</translation>
+        <translation>Wijzig namen</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="434"/>
         <source>amener au premier plan</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">bovenop</translation>
+        <translation>bovenop</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="437"/>
         <source>rapprocher</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Laag omhoog</translation>
+        <translation>Laag omhoog</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="440"/>
         <source>éloigner</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Laag omlaag</translation>
+        <translation>Laag omlaag</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="443"/>
         <source>envoyer au fond</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Onderop</translation>
+        <translation>Onderop</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="543"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Wijzig extra informatie</translation>
+        <translation>Wijzig extra informatie</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="658"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
-        <translation type="unfinished">Schalen %1</translation>
+        <translation>Schalen %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="660"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
-        <translation type="unfinished">Schalen van  %1 primitives </translation>
+        <translation>Schalen van  %1 primitives </translation>
     </message>
     <message>
         <location filename="../sources/editor/partrectangle.h" line="45"/>
@@ -5682,7 +5682,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1193"/>
         <source>Schéma sans titre</source>
-        <translation>Ongetiteld diagram</translation>
+        <translation>Naamloos diagram</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1195"/>
@@ -5780,7 +5780,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>Knip %n cel</numerusform>
             <numerusform>Knip %n cellen</numerusform>
         </translation>
@@ -5789,7 +5789,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="952"/>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>Plak %n cell</numerusform>
             <numerusform>Plak %n cells</numerusform>
         </translation>
@@ -6036,7 +6036,7 @@ Creer uw eigen tekst met de volgende variabelen:
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="52"/>
         <source>Schéma sans titre</source>
-        <translation>Ongetiteld diagram</translation>
+        <translation>Naamloos diagram</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="140"/>
@@ -6417,7 +6417,7 @@ Een veld bestaat uit een type, een beginwaarde, en een optelgetal.
         <location filename="../sources/editor/texteditor.cpp" line="143"/>
         <source>couleur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Kleur</translation>
+        <translation>Kleur</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="145"/>
@@ -6491,7 +6491,7 @@ Een veld bestaat uit een type, een beginwaarde, en een optelgetal.
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
         <source>angle de rotation</source>
-        <translation type="unfinished">Rotatie hoek</translation>
+        <translation>Rotatie hoek</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="516"/>
@@ -7130,7 +7130,7 @@ Maximum breedte: %2px
         <location filename="../sources/titleblock/templatescollection.cpp" line="120"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Ongetiteld project (id %1) title blokken</translation>
+        <translation>Naamloos project (id %1) title blokken</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
@@ -7158,7 +7158,7 @@ Maximum breedte: %2px
         <location filename="../sources/xmlelementscollection.cpp" line="69"/>
         <source>Collection du projet sans titre (id %1)</source>
         <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Ongetiteld project (id %1) collectie</translation>
+        <translation>Naamloos project (id %1) collectie</translation>
     </message>
     <message>
         <location filename="../sources/xmlelementscollection.cpp" line="77"/>
@@ -7182,7 +7182,7 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="30"/>
         <source>Projet sans titre</source>
-        <translation>Ongetiteld project</translation>
+        <translation>Naamloos project</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="32"/>
