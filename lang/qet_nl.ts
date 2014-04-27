@@ -1564,7 +1564,7 @@ U kunt niet meer terug.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Supprimer ce modèle</source>
-        <translation>Delete this sjabloon</translation>
+        <translation>verwijder deze sjabloon</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="478"/>

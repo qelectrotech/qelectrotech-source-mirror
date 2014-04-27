@@ -626,9 +626,9 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
         </field>
         <field valign="center" row="3" fontsize="9" hadjust="true" col="8" name="folio" displaylabel="false" align="center">
             <value>
-                <translation lang="en">%{folio-id}/%folio-total}</translation>
-                <translation lang="fr">%{folio-id}/%folio-total}</translation>
-                <translation lang="nl">%{folio-id}/%folio-total}</translation>
+                <translation lang="en">%{folio-id}/%{folio-total}</translation>
+                <translation lang="fr">%{folio-id}/%{folio-total}</translation>
+                <translation lang="nl">%{folio-id}/%{folio-total}</translation>
             </value>
             <label>
                 <translation lang="en">Sheet</translation>
