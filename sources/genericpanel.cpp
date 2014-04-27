@@ -1226,6 +1226,8 @@ template<typename T>
 T GenericPanel::valueForItem(QTreeWidgetItem *item) const {
 	return(qVariantValue<T>(item -> data(0, GenericPanel::Item)));
 }
+template TitleBlockTemplateLocation
+GenericPanel::valueForItem(QTreeWidgetItem *item) const;
 template ElementsLocation GenericPanel::valueForItem(QTreeWidgetItem*)
 const;
 /**
