@@ -174,16 +174,4 @@ macx {
 # Compilers-specific options
 unix {
 	QMAKE_COPY_DIR = 'cp -f -r --preserve=timestamps'
-	*-g++* {
-		system(g++ -v --help 2>&1 | grep -q fipa-sra) {
-			QMAKE_CXXFLAGS += -fno-ipa-sra
-		}
-	}
-}
-win32 {
-	*-g++* {
-		system(g++ -v --help 2>&1 | find \"fipa-sra\" >NUL) {
-			QMAKE_CXXFLAGS += -fno-ipa-sra
-		}
-	}
 }

@@ -1230,6 +1230,10 @@ template TitleBlockTemplateLocation
 GenericPanel::valueForItem(QTreeWidgetItem *item) const;
 template ElementsLocation GenericPanel::valueForItem(QTreeWidgetItem*)
 const;
+template QETProject* GenericPanel::valueForItem(QTreeWidgetItem*)
+const;
+template Diagram* GenericPanel::valueForItem(QTreeWidgetItem*)
+const;
 /**
 	
 */
