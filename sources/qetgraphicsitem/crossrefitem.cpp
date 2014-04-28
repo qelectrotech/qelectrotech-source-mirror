@@ -40,7 +40,7 @@ CrossRefItem::CrossRefItem(Element *elmt, QGraphicsItem *parent) :
 	connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
 	connect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 	connect(elmt->diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
-	connect(elmt->diagram(), SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SLOT(updateLabel()));
+	connect(elmt->diagram(), SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SLOT(setProperties(XRefProperties)));
 	updateLabel();
 }
 
@@ -52,6 +52,7 @@ CrossRefItem::~CrossRefItem() {
 	disconnect(m_element, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
 	disconnect(m_element, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 	disconnect(m_element->diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+	disconnect(m_element->diagram(), SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SLOT(setProperties(XRefProperties)));
 }
 
 /**
@@ -68,6 +69,13 @@ QRectF CrossRefItem::boundingRect() const {
  */
 QPainterPath CrossRefItem::shape() const{
 	return m_shape_path;
+}
+
+void CrossRefItem::setProperties(XRefProperties xrp) {
+	if (m_properties != xrp) {
+		m_properties = xrp;
+		updateLabel();
+	}
 }
 
 /**

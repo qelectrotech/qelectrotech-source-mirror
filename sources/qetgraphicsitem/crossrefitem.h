@@ -56,6 +56,7 @@ class CrossRefItem : public QGraphicsObject
 	signals:
 
 	public slots:
+	void setProperties (XRefProperties xrp);
 	void updateLabel();
 	void autoPos();
 

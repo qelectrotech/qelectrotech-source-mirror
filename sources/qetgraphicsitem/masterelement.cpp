@@ -88,51 +88,35 @@ void MasterElement::unlinkElement(Element *elmt) {
 	if (connected_elements.contains(elmt)) {
 		connected_elements.removeOne(elmt);
 		elmt->unlinkElement(this);
-		//update the graphics cross ref
-		disconnect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
 
-		bool delete_cri = true;
+		if (cri_) {
+			//update the graphics cross ref
+			disconnect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
 
-		//if power contact isn't show, make sure they are only power contacts linked
-		//or nothing befor remove cri_
-		if (!diagram()->defaultXRefProperties().showPowerContact()) {
-			foreach(Element *elmt, linkedElements())
-				if (elmt->kindInformations()["type"].toString() != "power") delete_cri = false;
-		}
-		//else only make sur list is empty
-		else {
-			if (!linkedElements().isEmpty()) delete_cri = false;
-		}
+			bool delete_cri = true;
 
-		if (delete_cri) {
-			diagram()->removeItem(cri_);
-			delete cri_;
-			cri_ = 0;
-		}
-		else {
-			cri_->updateLabel();
+			//if power contact isn't show, make sure they are only power contacts linked
+			//or nothing befor remove cri_
+			if (!diagram()->defaultXRefProperties().showPowerContact()) {
+				foreach(Element *elmt, linkedElements())
+					if (elmt->kindInformations()["type"].toString() != "power") delete_cri = false;
+			}
+			//else only make sur list is empty
+			else {
+				if (!linkedElements().isEmpty()) delete_cri = false;
+			}
+
+			if (delete_cri) {
+				diagram()->removeItem(cri_);
+				delete cri_;
+				cri_ = 0;
+			}
+			else {
+				cri_->updateLabel();
+			}
 		}
 	}
 }
-
-/**
- * @brief MasterElement::itemChange
- * Réimplemente the protected method item change
- * This is used to make connection/disconnection when this item is added/removed from a diagram
- * @return
- */
-QVariant MasterElement::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (change == QGraphicsItem::ItemSceneChange) {
-		if (diagram())
-			disconnect(diagram(), SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SLOT(reLink()));
-	}
-	else if (change == QGraphicsItem::ItemSceneHasChanged) {
-		if (diagram())
-			connect(diagram(), SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SLOT(reLink()));
-	}
-	return QetGraphicsItem::itemChange(change, value);
-}
-
 
 /**
  * @brief MasterElement::updateLabel
@@ -146,18 +130,4 @@ void MasterElement::updateLabel() {
 	(label.isEmpty() || !show)?
 				setTaggedText("label", "_", false):
 				setTaggedText("label", label, true);
-}
-
-/**
- * @brief MasterElement::reLink
- * Relink all linked element.
- * this method is notably used when xref properties changes
- * for update the content of th e XRef
- */
-void MasterElement::reLink() {
-	QList <Element *> elmt_list = linkedElements();
-	unlinkAllElements();
-	foreach (Element *elmt, elmt_list) {
-		linkToElement(elmt);
-	}
 }
