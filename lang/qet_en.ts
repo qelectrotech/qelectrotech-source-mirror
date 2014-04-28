@@ -297,7 +297,7 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="135"/>
         <source>Couleur de fond :</source>
-        <translation>Background.:</translation>
+        <translation>Background color:</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="136"/>
@@ -5981,10 +5981,10 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
         <translation>You can define a custom label for reports of folio.
-Create your own text, using the following variables.:
-%f : the number of folio
-%l :.line number
-%c :the column number</translation>
+Create your own text, using the following variables:
+%f: the number of folio
+%l: line number
+%c: the column number</translation>
     </message>
 </context>
 <context>
