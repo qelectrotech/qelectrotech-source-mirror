@@ -14,6 +14,7 @@
 		<comment xml:lang="pl">Plik projektu QElectrotech</comment>
 		<comment xml:lang="it">File del progetto QElectroTech</comment>
 		<comment xml:lang="el">Αρχείο έργου του QElectroTech</comment>
+		<comment xml:lang="nl">QElectroTech project bestand</comment>
 		<glob pattern="*.qet" />
 	</mime-type>
 	<mime-type type="application/x-qet-element">
@@ -30,6 +31,7 @@
 		<comment xml:lang="pl">Plik elementu QElectroTech</comment>
 		<comment xml:lang="it">File del progetto QElectroTech</comment>
 		<comment xml:lang="el">Αρχείο στοιχείου του QElectroTech</comment>
+		<comment xml:lang="nl">QElectroTech element bestand</comment>
 		<glob pattern="*.elmt" />
 	</mime-type>
 	<mime-type type="application/x-qet-titleblock">
@@ -45,6 +47,7 @@
 		<comment xml:lang="pt">Modelo de moldura QElectroTech</comment>
 		<comment xml:lang="it">Modello di cartiglio per QElectroTech</comment>
 		<comment xml:lang="el">Πρότυπο πινακίδας του QElectroTech</comment>
+		<comment xml:lang="nl">QElectroTech titel bloksjabloon</comment>
 		<glob pattern="*.titleblock" />
 	</mime-type>
 </mime-info>

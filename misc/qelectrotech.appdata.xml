@@ -15,6 +15,7 @@
  <summary xml:lang="pl">Edytor schematów elektrycznych</summary>
  <summary xml:lang="pt">Editor de esquemas eléctricos</summary>
  <summary xml:lang="ru">Редактор электрических схем</summary>
+ <summary xml:lang="nl">Elektrische schema bewerker</summary>
  <description>
   <p>
    QElectroTech is a Qt4 application to design electric diagrams.
@@ -52,6 +53,10 @@
    QElectroTech é uma aplicação baseada em Qt4 para desenhar esquemas eléctricos.
    QET utiliza ficheiros XML para os elementos e para os esquemas e inclui um editor de esquemas e um editor de elementos.
   </p>
+  <p xml:lang="nl">
+   QElectroTech is een Qt4 applicatie om elektrische schema's te ontwerpen.
+   Het maakt gebruik van XML-bestanden voor elementen en diagrammen, en omvat zowel een diagram bewerker, een element bewerker, en een bloksjabloon bewerker.
+   </p>
  </description>
  <url type="homepage">http://qelectrotech.org</url>
  <screenshots>
