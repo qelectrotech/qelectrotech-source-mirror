@@ -112,7 +112,6 @@ QWidget *AboutQET::authorsTab() const {
 	QLabel *authors = new QLabel();
 	addAuthor(authors, "Beno\356t Ansieau",  "benoit@qelectrotech.org",     tr("Id\351e originale"));
 	addAuthor(authors, "Laurent Trinques",   "scorpio@qelectrotech.org",    tr("D\351veloppement"));
-	addAuthor(authors, "Cyril Frausti",      "cyril@qelectrotech.org",      tr("D\351veloppement"));
 	addAuthor(authors, "Joshua Claveau",     "Joshua@qelectrotech.org",     tr("D\351veloppement"));
 	addAuthor(authors, "Abhishek Bansal",    "abhishek@qelectrotech.org",   tr("D\351veloppement"));
 
@@ -149,6 +148,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Nikos Papadopoylos",         "231036448@freemail.gr",       tr("Traduction en grec"));
 	addAuthor(translators, "Yannis Gyftomitros",         "yang@hellug.gr",              tr("Traduction en grec"));
 	addAuthor(translators, "Eduard Amoros",              "",                            tr("Traduction en catalan"));
+	addAuthor(translators, "Paul Van Deelen",            "shooter@home.nl",             tr("Traduction en n\351erlandais"));
 
 
 
@@ -177,6 +177,8 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "zloidemon",            "",                           tr("Paquets FreeBSD"));
 	addAuthor(contributors, "Chipsterjulien",       "",                           tr("Paquets Archlinux AUR"));
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
+	addAuthor(contributors, "Cyril Frausti",       "cyril@qelectrotech.org",      tr("D\351veloppement"));
+	addAuthor(contributors, "Arun Kishore Eswara", "eswara.arun@gmail.com",       tr("Documentation"));
 
 	
 	contributors -> setOpenExternalLinks(true);
