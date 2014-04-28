@@ -1438,7 +1438,7 @@ U kunt niet meer terug.</translation>
         <location filename="../sources/elementspanel.cpp" line="499"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation>Trek element naar tekenvlak om toe te voegen, dubbel klik om te wijzigen(alleen eigen elementen</translation>
+        <translation>Trek element naar tekenvlak om toe te voegen, dubbel klik om te wijzigen « %1 », alleen eigen elementen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="591"/>
