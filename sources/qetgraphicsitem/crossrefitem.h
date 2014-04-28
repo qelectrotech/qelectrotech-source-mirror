@@ -42,6 +42,14 @@ class CrossRefItem : public QGraphicsObject
 	enum { Type = UserType + 1009 };
 	virtual int type() const { return Type; }
 
+	enum CONTACTS {
+		NO = 1,
+		NC = 2,
+		Power = 4,
+		DelayOn = 8,
+		DelayOff = 16
+	};
+
 	QRectF boundingRect() const;
 	virtual QPainterPath shape() const;
 
@@ -52,14 +60,17 @@ class CrossRefItem : public QGraphicsObject
 	void autoPos();
 
 	protected:
-	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *e);
-	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *e);
+	virtual void paint			   (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+	virtual void mouseMoveEvent	   (QGraphicsSceneMouseEvent *e);
+	virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *e);
 
 	private:
 	void setUpCrossBoundingRect();
-	void fillCrossRef(QPainter &painter);
-	void AddExtraInfo(QPainter &painter);
+	void drawHasCross	 (QPainter &painter);
+	void drawHasContacts (QPainter &painter);
+	void drawContact	 (QPainter &painter, int flags, QString str = QString());
+	void fillCrossRef	 (QPainter &painter);
+	void AddExtraInfo	 (QPainter &painter);
 
 	//Attributes
 	private:
@@ -68,6 +79,7 @@ class CrossRefItem : public QGraphicsObject
 	QPicture	   m_drawing;
 	QPainterPath   m_shape_path;
 	XRefProperties m_properties;
+	int			   m_drawed_contacts;
 };
 
 #endif // CROSSREFITEM_H

@@ -288,7 +288,7 @@ void ProjectNewDiagramConfigPage::initWidgets() {
 	conductor_  = new ConductorPropertiesWidget();
 	conductor_  -> setContentsMargins(0, 0, 0, 0);
 	report_		= new ReportPropertieWidget("_");
-	xref_		= new XRefPropertiesWidget();
+	xref_		= new XRefPropertiesWidget(XRefProperties());
 }
 
 /**

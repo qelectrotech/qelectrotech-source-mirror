@@ -33,6 +33,8 @@ XRefProperties::XRefProperties()
  */
 void XRefProperties::toSettings(QSettings &settings, const QString prefix) const {
 	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
+	QString display = m_display == Cross? "cross" : "contacts";
+	settings.setValue(prefix + "displayhas", display);
 }
 
 /**
@@ -43,6 +45,8 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
  */
 void XRefProperties::fromSettings(const QSettings &settings, const QString prefix) {
 	m_show_power_ctc = settings.value(prefix + "showpowerctc", false).toBool();
+	QString display = settings.value(prefix + "displayhas", "cross").toString();
+	display == "cross"? m_display = Cross : m_display = Contacts;
 }
 
 /**
@@ -52,6 +56,8 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
  */
 void XRefProperties::toXml(QDomElement &xml_element) const {
 	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "fasle");
+	QString display = m_display == Cross? "cross" : "contacts";
+	xml_element.setAttribute("displayhas", display);
 }
 
 /**
@@ -61,10 +67,13 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
  */
 void XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
+	QString display = xml_element.attribute("displayhas", "cross");
+	display == "cross"? m_display = Cross : m_display = Contacts;
 }
 
 bool XRefProperties::operator ==(const XRefProperties &xrp) const{
-	return (m_show_power_ctc == xrp.m_show_power_ctc);
+	return (m_show_power_ctc == xrp.m_show_power_ctc &&
+			m_display == xrp.m_display);
 }
 
 bool XRefProperties::operator !=(const XRefProperties &xrp) const {

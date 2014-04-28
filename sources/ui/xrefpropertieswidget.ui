@@ -15,7 +15,34 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QCheckBox" name="cb_show_power">
+    <widget class="QGroupBox" name="m_display_gb">
+     <property name="title">
+      <string>Représentation:</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QRadioButton" name="m_display_has_cross_rb">
+          <property name="text">
+           <string>Afficher en croix</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="m_display_has_contacts_rb">
+          <property name="text">
+           <string>Afficher en contacts</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="m_show_power_cb">
      <property name="text">
       <string>Afficher les contacts de puissance dans la croix</string>
      </property>

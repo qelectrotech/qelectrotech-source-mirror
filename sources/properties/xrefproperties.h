@@ -29,6 +29,11 @@ class XRefProperties : public PropertiesInterface
 	public:
 	XRefProperties();
 
+	enum DisplayHas {
+		Cross,
+		Contacts
+	};
+
 	virtual void toSettings	  (QSettings &settings, const QString = QString()) const;
 	virtual void fromSettings (const QSettings &settings, const QString = QString());
 	virtual void toXml		  (QDomElement &xml_element) const;
@@ -40,8 +45,12 @@ class XRefProperties : public PropertiesInterface
 	void setShowPowerContac (const bool a) {m_show_power_ctc = a;}
 	bool showPowerContact	() const	   {return m_show_power_ctc;}
 
+	void setDisplayHas (const DisplayHas dh) {m_display = dh;}
+	DisplayHas displayHas () const			 {return m_display;}
+
 	private:
 	bool m_show_power_ctc;
+	DisplayHas m_display;
 };
 
 #endif // XREFPROPERTIES_H

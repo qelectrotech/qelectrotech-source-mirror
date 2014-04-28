@@ -31,6 +31,7 @@ XRefPropertiesWidget::XRefPropertiesWidget(XRefProperties properties, QWidget *p
 	m_properties(properties)
 {
 	ui->setupUi(this);
+	connect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)), ui->m_show_power_cb, SLOT(setEnabled(bool)));
 	updateDisplay();
 }
 
@@ -40,6 +41,7 @@ XRefPropertiesWidget::XRefPropertiesWidget(XRefProperties properties, QWidget *p
  */
 XRefPropertiesWidget::~XRefPropertiesWidget()
 {
+	disconnect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)), ui->m_show_power_cb, SLOT(setEnabled(bool)));
 	delete ui;
 }
 
@@ -58,7 +60,10 @@ void XRefPropertiesWidget::setProperties(const XRefProperties &properties) {
  * @return the propertie edited by this widget
  */
 XRefProperties XRefPropertiesWidget::properties() {
-	m_properties.setShowPowerContac(ui->cb_show_power->isChecked());
+	if		(ui->m_display_has_cross_rb->isChecked())	 m_properties.setDisplayHas(XRefProperties::Cross);
+	else if (ui->m_display_has_contacts_rb->isChecked()) m_properties.setDisplayHas(XRefProperties::Contacts);
+	m_properties.setShowPowerContac(ui->m_show_power_cb->isChecked());
+
 	return m_properties;
 }
 
@@ -68,7 +73,9 @@ XRefProperties XRefPropertiesWidget::properties() {
  * @param ro
  */
 void XRefPropertiesWidget::setReadOnly(bool ro) {
-	ui->cb_show_power->setDisabled(ro);
+	ui->m_display_has_cross_rb->setDisabled(ro);
+	ui->m_display_has_contacts_rb->setDisabled(ro);
+	ui->m_show_power_cb->setDisabled(ro);
 }
 
 /**
@@ -76,5 +83,14 @@ void XRefPropertiesWidget::setReadOnly(bool ro) {
  * Update display with the content of the properties
  */
 void XRefPropertiesWidget::updateDisplay() {
-	ui->cb_show_power->setChecked(m_properties.showPowerContact());
+	XRefProperties::DisplayHas dh = m_properties.displayHas();
+	if		(dh == XRefProperties::Cross)	 {
+		ui->m_display_has_cross_rb->setChecked(true);
+	}
+	else if (dh == XRefProperties::Contacts) {
+		ui->m_display_has_contacts_rb->setChecked(true);
+	}
+
+	ui->m_show_power_cb->setChecked(m_properties.showPowerContact());
+	ui->m_show_power_cb->setDisabled(!ui->m_display_has_cross_rb->isChecked());
 }
