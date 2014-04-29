@@ -222,6 +222,7 @@ void QetShapeItem::editProperty()
 	QCheckBox cb(tr("Verrouiller la position"), &property_dialog);
 	cb.setChecked(!is_movable_);
 	dialog_layout.addWidget(&cb);
+	cb.setVisible(false);
 
 	//dialog button, box
 	QDialogButtonBox dbb(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
