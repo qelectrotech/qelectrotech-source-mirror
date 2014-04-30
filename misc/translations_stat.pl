@@ -107,7 +107,7 @@ our %languages = (
 	'de' => {
 		'name'               => 'Deutsch',
 		'french_name'        => 'Allemand',
-		'translator_name'    => 'Markus Budde & Jonas Stein &  Noah Braden',
+		'translator_name'    => 'Markus Budde & Jonas Stein &  Noah Braden &  Nuri',
 		'translator_mail_ml' => 'markus.budde@msn.com',
 		'qt'                 => 1
 	},
@@ -149,8 +149,8 @@ our %languages = (
 	'nl' => {
 		'name'               => 'Netherlands',
 		'french_name'        => 'Pays-Bas',
-		'translator_name'    => 'Shooter',
-		'translator_mail_ml' => 'shooter@home.nl',
+		'translator_name'    => 'Paul Van Deelen',
+		'translator_mail_ml' => 'shooter@home.nl & Elbert',
 		'qt'                 => 1
 	}
 );
