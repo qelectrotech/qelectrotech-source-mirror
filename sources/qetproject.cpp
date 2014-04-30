@@ -1270,22 +1270,29 @@ void QETProject::addDiagram(Diagram *diagram) {
 /**
 	@return La liste des noms a utiliser pour la categorie dediee aux elements
 	integres automatiquement dans le projet.
+
 */
 NamesList QETProject::namesListForIntegrationCategory() {
 	NamesList names;
-	
+
 	const QChar russian_data[24] = { 0x0418, 0x043C, 0x043F, 0x043E, 0x0440, 0x0442, 0x0438, 0x0440, 0x043E, 0x0432, 0x0430, 0x043D, 0x043D, 0x044B, 0x0435, 0x0020, 0x044D, 0x043B, 0x0435, 0x043C, 0x0435, 0x043D, 0x0442, 0x044B };
 	const QChar greek_data[18] = { 0x0395, 0x03b9, 0x03c3, 0x03b7, 0x03b3, 0x03bc, 0x03ad, 0x03bd, 0x03b1, 0x0020, 0x03c3, 0x03c4, 0x03bf, 0x03b9, 0x03c7, 0x03b5, 0x03af, 0x03b1 };
 
 	names.addName("fr", "\311l\351ments import\351s");
 	names.addName("en", "Imported elements");
+	names.addName("de", "Importierte elemente");
 	names.addName("es", "Elementos importados");
 	names.addName("ru", QString(russian_data, 24));
 	names.addName("cs", "Zaveden\351 prvky");
 	names.addName("pl", "Elementy importowane");
+	names.addName("pt", "elementos importados");
 	names.addName("it", "Elementi importati");
 	names.addName("el", QString(greek_data, 18));
-	
+	names.addName("nl", "Elementen ge\357mporteerd");
+	names.addName("hr", "Uvezeni elementi");
+	names.addName("ca", "Elements importats");
+	names.addName("ro", "Elemente importate");
+
 	return(names);
 }
 
