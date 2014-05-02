@@ -54,8 +54,6 @@ void MasterElement::linkToElement(Element *elmt) {
 		connected_elements << elmt;
 		elmt->linkToElement(this);
 
-		if (elmt->kindInformations()["type"].toString() == "power" && !diagram()->defaultXRefProperties().showPowerContact()) return;
-
 		if (!cri_) {
 				cri_ = new CrossRefItem(this); //create cross ref item if not yet
 				diagram()->addItem(cri_);
@@ -89,31 +87,16 @@ void MasterElement::unlinkElement(Element *elmt) {
 		connected_elements.removeOne(elmt);
 		elmt->unlinkElement(this);
 
-		if (cri_) {
-			//update the graphics cross ref
-			disconnect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
+		//update the graphics cross ref
+		disconnect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
 
-			bool delete_cri = true;
-
-			//if power contact isn't show, make sure they are only power contacts linked
-			//or nothing befor remove cri_
-			if (!diagram()->defaultXRefProperties().showPowerContact()) {
-				foreach(Element *elmt, linkedElements())
-					if (elmt->kindInformations()["type"].toString() != "power") delete_cri = false;
-			}
-			//else only make sur list is empty
-			else {
-				if (!linkedElements().isEmpty()) delete_cri = false;
-			}
-
-			if (delete_cri) {
-				diagram()->removeItem(cri_);
-				delete cri_;
-				cri_ = 0;
-			}
-			else {
-				cri_->updateLabel();
-			}
+		if (linkedElements().isEmpty()) {
+			diagram()->removeItem(cri_);
+			delete cri_;
+			cri_ = 0;
+		}
+		else {
+			cri_->updateLabel();
 		}
 	}
 }

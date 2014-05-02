@@ -105,6 +105,7 @@ void CrossRefItem::updateLabel() {
 
 	autoPos();
 	update();
+	checkMustShow();
 }
 
 /**
@@ -465,5 +466,43 @@ void CrossRefItem::AddExtraInfo(QPainter &painter) {
 		m_bounding_rect = m_bounding_rect.united(text_bounding);
 		painter.drawRoundedRect(text_bounding, 2, 2);
 		painter.restore();
+	}
+}
+
+/**
+ * @brief CrossRefItem::checkMustShow
+ * Check the propertie of this Xref for know if we
+ * must to be show or not
+ */
+void CrossRefItem::checkMustShow() {
+
+	//We always show Xref when is displayed has contact
+	if (m_properties.displayHas() == XRefProperties::Contacts) {
+		this->show();
+		return;
+	}
+
+	//if Xref is display has cross and we must to don't show power contact, check it
+	else if (m_properties.displayHas() == XRefProperties::Cross && !m_properties.showPowerContact()) {
+		bool power = false;
+		foreach (Element *elmt, m_element->linkedElements()) {
+			// contact checked isn't power, show this xref and return;
+			if (elmt->kindInformations()["type"].toString() != "power") {
+				this->show();
+				return;
+			} else {
+				power = true;
+			}
+		}
+		if (power) {
+			this->hide();
+			return;
+		}
+	}
+
+	//By default, show this Xref
+	else {
+		this->show();
+		return;
 	}
 }
