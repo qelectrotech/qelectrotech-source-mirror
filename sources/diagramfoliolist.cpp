@@ -238,10 +238,10 @@ void DiagramFolioList::buildGrid(const QRectF &rect, int rows, int tables, qreal
  * @param row_RectF rectangle of header
  */
 void DiagramFolioList::fillHeader(QPainter *qp, const QRectF &row_RectF) {
-	QString authorTranslatable = tr("Auteur");
-	QString titleTranslatable = tr("Titre");
-	QString folioTranslatable = tr("Folio");
-	QString dateTranslatable = tr("Date");
+	QString authorTranslatable(QObject::tr("Auteur"));
+	QString titleTranslatable(QObject::tr("Titre"));
+	QString folioTranslatable(QObject::tr("Folio"));
+	QString dateTranslatable(QObject::tr("Date"));
 
 	qp->save();
 	qp->setFont(QETApp::diagramTextsFont(13));

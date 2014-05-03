@@ -202,16 +202,16 @@ void QetShapeItem::editProperty()
 	QVBoxLayout dialog_layout(&property_dialog);
 
 	//GroupBox for resizer image
-	QGroupBox restyle_groupe(tr("Shape Line Style", "shape style"));
+	QGroupBox restyle_groupe(QObject::tr("Type de ligne", "shape style"));
 	dialog_layout.addWidget(&restyle_groupe);
 	QHBoxLayout restyle_layout(&restyle_groupe);
 
 	QComboBox style_combo(&property_dialog);
-	style_combo.addItem(tr("Normal"));
-	style_combo.addItem(tr("Tiret"));
-	style_combo.addItem(tr("Pointill\351"));
-	style_combo.addItem(tr("Traits et points"));
-	style_combo.addItem(tr("Traits points points"));
+	style_combo.addItem(QObject::tr("Normal"));
+	style_combo.addItem(QObject::tr("Tiret"));
+	style_combo.addItem(QObject::tr("Pointill\351"));
+	style_combo.addItem(QObject::tr("Traits et points"));
+	style_combo.addItem(QObject::tr("Traits points points"));
 
 	// The items have been added in order accordance with Qt::PenStyle.
 	style_combo.setCurrentIndex(int(_shapeStyle) - 1);
