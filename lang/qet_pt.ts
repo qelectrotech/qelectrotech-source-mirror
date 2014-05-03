@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="197"/>
+        <location filename="../sources/aboutqet.cpp" line="199"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Este programa está licenciado nos termos da licença GNU/GPL.</translation>
     </message>
@@ -70,73 +70,78 @@
         <location filename="../sources/aboutqet.cpp" line="114"/>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <location filename="../sources/aboutqet.cpp" line="116"/>
-        <location filename="../sources/aboutqet.cpp" line="117"/>
+        <location filename="../sources/aboutqet.cpp" line="180"/>
         <source>Développement</source>
         <translation>Desenvolvimento</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="135"/>
+        <location filename="../sources/aboutqet.cpp" line="134"/>
         <source>Traduction en espagnol</source>
         <translation>Tradução Espanhola</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="136"/>
+        <location filename="../sources/aboutqet.cpp" line="135"/>
         <source>Traduction en russe</source>
         <translation>Tradução Russa</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="137"/>
+        <location filename="../sources/aboutqet.cpp" line="136"/>
         <source>Traduction en portugais</source>
         <translation>Tradução Portuguesa</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="137"/>
         <source>Traduction en tchèque</source>
         <translation>Tradução Checa</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en polonais</source>
         <translation>Tradução Polaca</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <location filename="../sources/aboutqet.cpp" line="140"/>
         <location filename="../sources/aboutqet.cpp" line="141"/>
-        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en allemand</source>
         <translation>Tradução Alemã</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en roumain</source>
         <translation>Tradução Romena</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="143"/>
         <location filename="../sources/aboutqet.cpp" line="144"/>
-        <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Traduction en italien</source>
         <translation>Tradução Italiana</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="146"/>
+        <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Traduction en arabe</source>
         <translation>Tradução em Árabe</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="147"/>
+        <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Traduction en croate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="148"/>
-        <location filename="../sources/aboutqet.cpp" line="151"/>
+        <location filename="../sources/aboutqet.cpp" line="147"/>
+        <location filename="../sources/aboutqet.cpp" line="150"/>
         <source>Traduction en catalan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="148"/>
         <location filename="../sources/aboutqet.cpp" line="149"/>
-        <location filename="../sources/aboutqet.cpp" line="150"/>
         <source>Traduction en grec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="151"/>
+        <source>Traduction en néerlandais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -171,6 +176,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="181"/>
+        <source>Documentation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/aboutqet.cpp" line="173"/>
         <source>Paquets Debian</source>
         <translation>Pacotes Debian</translation>
@@ -192,18 +202,21 @@
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="5"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="104"/>
+        <location filename="../sources/ui/ui_addlinkdialog.h" line="103"/>
         <source>Insert Link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="105"/>
+        <location filename="../sources/ui/ui_addlinkdialog.h" line="104"/>
         <source>Title:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="36"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="106"/>
+        <location filename="../sources/ui/ui_addlinkdialog.h" line="105"/>
         <source>URL:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -580,24 +593,8 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
 <context>
     <name>DiagramFolioList</name>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="241"/>
-        <source>Auteur</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/diagramfoliolist.cpp" line="173"/>
-        <location filename="../sources/diagramfoliolist.cpp" line="242"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="243"/>
-        <source>Folio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="244"/>
-        <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -774,56 +771,67 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <name>DialogAutoNum</name>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="171"/>
         <source>Annotation des schémas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="172"/>
         <source>Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="42"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="184"/>
         <source>Annotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="50"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="173"/>
         <source>Sélection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="58"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="174"/>
         <source>Conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="75"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="175"/>
         <source>Composants</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="177"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="179"/>
         <source>Annotation (alpha)</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="181"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="183"/>
         <source>Supprimer l&apos;annotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="147"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="185"/>
         <source>Fermer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -858,16 +866,19 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <name>DialogWaiting</name>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
+        <location filename="../sources/ui/ui_dialogwaiting.h" line="98"/>
         <source>Merci de patienter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
+        <location filename="../sources/ui/ui_dialogwaiting.h" line="99"/>
         <source>Titre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
+        <location filename="../sources/ui/ui_dialogwaiting.h" line="101"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1049,16 +1060,19 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <name>ElementInfoPartWidget</name>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_elementinfopartwidget.h" line="67"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="41"/>
+        <location filename="../sources/ui/ui_elementinfopartwidget.h" line="68"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="48"/>
+        <location filename="../sources/ui/ui_elementinfopartwidget.h" line="70"/>
         <source>Visible</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1067,6 +1081,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <name>ElementInfoWidget</name>
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="20"/>
+        <location filename="../sources/ui/ui_elementinfowidget.h" line="70"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1147,6 +1162,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <name>ElementSelectorWidget</name>
     <message>
         <location filename="../sources/ui/elementselectorwidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_elementselectorwidget.h" line="65"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1900,6 +1916,29 @@ As alterações serão definitivas.</translation>
     </message>
 </context>
 <context>
+    <name>FolioReportProperties</name>
+    <message>
+        <location filename="../sources/ui/ui_folioreportproperties.h" line="101"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/ui_folioreportproperties.h" line="108"/>
+        <source>Report de folio disponible :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/ui_folioreportproperties.h" line="109"/>
+        <source>Voir ce report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/ui_folioreportproperties.h" line="110"/>
+        <source>Voir le report lié</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GeneralConfigurationPage</name>
     <message>
         <location filename="../sources/configpages.cpp" line="118"/>
@@ -2429,21 +2468,25 @@ As alterações serão definitivas.</translation>
     <name>LinkSingleElementWidget</name>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_linksingleelementwidget.h" line="94"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
+        <location filename="../sources/ui/ui_linksingleelementwidget.h" line="95"/>
         <source>Rechercher dans le folio :</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
+        <location filename="../sources/ui/ui_linksingleelementwidget.h" line="96"/>
         <source>Voir cet élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
+        <location filename="../sources/ui/ui_linksingleelementwidget.h" line="97"/>
         <source>Voir l&apos;élément lié</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2477,26 +2520,31 @@ As alterações serão definitivas.</translation>
     <name>MasterPropertiesWidget</name>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_masterpropertieswidget.h" line="100"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
+        <location filename="../sources/ui/ui_masterpropertieswidget.h" line="102"/>
         <source>Délier l&apos;élément séléctionné</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
+        <location filename="../sources/ui/ui_masterpropertieswidget.h" line="106"/>
         <source>Lier l&apos;élément séléctionné</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
+        <location filename="../sources/ui/ui_masterpropertieswidget.h" line="109"/>
         <source>Éléments disponibles</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
+        <location filename="../sources/ui/ui_masterpropertieswidget.h" line="110"/>
         <source>Éléments liés</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2680,31 +2728,37 @@ As alterações serão definitivas.</translation>
     <name>NumPartEditorW</name>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="14"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="84"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="87"/>
         <source>Chiffre 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="88"/>
         <source>Chiffre 01</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="89"/>
         <source>Chiffre 001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="90"/>
         <source>Texte</source>
         <translation type="unfinished">Texto</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="49"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="91"/>
         <source>N° folio</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4874,7 +4928,7 @@ O que deseja fazer?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1457"/>
+        <location filename="../sources/qetproject.cpp" line="1464"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Ocurreu um erro durante a cópia do elemento %1</translation>
     </message>
@@ -5842,33 +5896,29 @@ O que deseja fazer?</translation>
         <comment>title block cell property human name</comment>
         <translation>ajuste horizontal</translation>
     </message>
-</context>
-<context>
-    <name>QTextOrientationWidget</name>
     <message>
-        <location filename="../sources/qtextorientationwidget.cpp" line="36"/>
-        <source>Ex.</source>
-        <comment>Short example string</comment>
-        <translation>Ex.</translation>
+        <location filename="../sources/diagramfoliolist.cpp" line="241"/>
+        <source>Auteur</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
-        <source>Exemple</source>
-        <comment>Longer example string</comment>
-        <translation>Exemplo</translation>
+        <location filename="../sources/diagramfoliolist.cpp" line="242"/>
+        <source>Titre</source>
+        <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
-        <source>Éditer les propriétés d&apos;une liaison, Zone </source>
-        <comment>window title</comment>
+        <location filename="../sources/diagramfoliolist.cpp" line="243"/>
+        <source>Folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramfoliolist.cpp" line="244"/>
+        <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
-        <source>Shape Line Style</source>
+        <source>Type de ligne</source>
         <comment>shape style</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -5896,6 +5946,42 @@ O que deseja fazer?</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Traits points points</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QTextOrientationWidget</name>
+    <message>
+        <location filename="../sources/qtextorientationwidget.cpp" line="36"/>
+        <source>Ex.</source>
+        <comment>Short example string</comment>
+        <translation>Ex.</translation>
+    </message>
+    <message>
+        <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
+        <source>Exemple</source>
+        <comment>Longer example string</comment>
+        <translation>Exemplo</translation>
+    </message>
+</context>
+<context>
+    <name>QetShapeItem</name>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
+        <source>Éditer les propriétés d&apos;une liaison, Zone </source>
+        <comment>window title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation type="obsolete">Normal</translation>
+    </message>
+    <message>
+        <source>Tiret</source>
+        <translation type="obsolete">tracejado</translation>
+    </message>
+    <message>
+        <source>Pointillé</source>
+        <translation type="obsolete">Tracejado</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
@@ -5958,16 +6044,19 @@ O que deseja fazer?</translation>
     <name>ReportPropertieWidget</name>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_reportpropertiewidget.h" line="87"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
+        <location filename="../sources/ui/ui_reportpropertiewidget.h" line="88"/>
         <source>Label de report de folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
+        <location filename="../sources/ui/ui_reportpropertiewidget.h" line="89"/>
         <source>Vous pouvez définir un label personnalisé pour les reports de folio.
 Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
@@ -5980,46 +6069,55 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <name>SelectAutonumW</name>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="14"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="155"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="25"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="156"/>
         <source>Folio:  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="32"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="158"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="55"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="161"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="72"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="165"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="91"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="168"/>
         <source>Définition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="107"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="169"/>
         <source>Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="117"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="170"/>
         <source>Valeur</source>
         <translation type="unfinished">Valor</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="133"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="171"/>
         <source>Incrémentation</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7121,11 +7219,31 @@ Largura maxima : %2px
     <name>XRefPropertiesWidget</name>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="84"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="85"/>
+        <source>Représentation:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="28"/>
+        <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="86"/>
+        <source>Afficher en croix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="35"/>
+        <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="87"/>
+        <source>Afficher en contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="47"/>
+        <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="88"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7149,11 +7267,13 @@ Largura maxima : %2px
     <name>diagramselection</name>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="14"/>
+        <location filename="../sources/ui/ui_diagramselection.h" line="64"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
+        <location filename="../sources/ui/ui_diagramselection.h" line="65"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>

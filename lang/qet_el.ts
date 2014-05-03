@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="197"/>
+        <location filename="../sources/aboutqet.cpp" line="199"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Αυτό το πρόγραμμα διατίθεται υπό την Άδεια GNU/GPL.</translation>
     </message>
@@ -70,74 +70,79 @@
         <location filename="../sources/aboutqet.cpp" line="114"/>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <location filename="../sources/aboutqet.cpp" line="116"/>
-        <location filename="../sources/aboutqet.cpp" line="117"/>
+        <location filename="../sources/aboutqet.cpp" line="180"/>
         <source>Développement</source>
         <translation>Ανάπτυξη</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="135"/>
+        <location filename="../sources/aboutqet.cpp" line="134"/>
         <source>Traduction en espagnol</source>
         <translation>Ισπανική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="136"/>
+        <location filename="../sources/aboutqet.cpp" line="135"/>
         <source>Traduction en russe</source>
         <translation>Ρωσική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="137"/>
+        <location filename="../sources/aboutqet.cpp" line="136"/>
         <source>Traduction en portugais</source>
         <translation>Πορτογαλική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="137"/>
         <source>Traduction en tchèque</source>
         <translation>Τσέχικη μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en polonais</source>
         <translation>Πολωνική μετάφραση</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <location filename="../sources/aboutqet.cpp" line="140"/>
         <location filename="../sources/aboutqet.cpp" line="141"/>
-        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en allemand</source>
         <translation>Γερμανική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en roumain</source>
         <translation>Ρουμανική μετάφραση</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="143"/>
         <location filename="../sources/aboutqet.cpp" line="144"/>
-        <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Traduction en italien</source>
         <translation>Ιταλική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="146"/>
+        <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Traduction en arabe</source>
         <translation>Αραβική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="147"/>
+        <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Traduction en croate</source>
         <translation>Κροατική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="148"/>
-        <location filename="../sources/aboutqet.cpp" line="151"/>
+        <location filename="../sources/aboutqet.cpp" line="147"/>
+        <location filename="../sources/aboutqet.cpp" line="150"/>
         <source>Traduction en catalan</source>
         <translation>Καταλανική μετάφραση</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="148"/>
         <location filename="../sources/aboutqet.cpp" line="149"/>
-        <location filename="../sources/aboutqet.cpp" line="150"/>
         <source>Traduction en grec</source>
         <translation>Ελληνική μετάφραση</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="151"/>
+        <source>Traduction en néerlandais</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
@@ -171,6 +176,11 @@
         <translation>Πακέτα για Archlinux AUR</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="181"/>
+        <source>Documentation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/aboutqet.cpp" line="173"/>
         <source>Paquets Debian</source>
         <translation>Πακέτα για Debian</translation>
@@ -192,18 +202,21 @@
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="5"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="104"/>
+        <location filename="../sources/ui/ui_addlinkdialog.h" line="103"/>
         <source>Insert Link</source>
         <translation>Εισαγωγή συνδέσμου</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="105"/>
+        <location filename="../sources/ui/ui_addlinkdialog.h" line="104"/>
         <source>Title:</source>
         <translation>Τίτλος:</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="36"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="106"/>
+        <location filename="../sources/ui/ui_addlinkdialog.h" line="105"/>
         <source>URL:</source>
         <translation>URL:</translation>
     </message>
@@ -582,25 +595,21 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
 <context>
     <name>DiagramFolioList</name>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="241"/>
         <source>Auteur</source>
-        <translation>Συγγραφέας </translation>
+        <translation type="obsolete">Συγγραφέας </translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="173"/>
-        <location filename="../sources/diagramfoliolist.cpp" line="242"/>
         <source>Titre</source>
         <translation>Τίτλος</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="243"/>
         <source>Folio</source>
-        <translation>Σελίδα</translation>
+        <translation type="obsolete">Σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="244"/>
         <source>Date</source>
-        <translation>Ημερομηνία </translation>
+        <translation type="obsolete">Ημερομηνία </translation>
     </message>
 </context>
 <context>
@@ -776,56 +785,67 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <name>DialogAutoNum</name>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="171"/>
         <source>Annotation des schémas</source>
         <translation>Σήμανση των διαγραμμάτων</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="172"/>
         <source>Configuration</source>
         <translation>Ρυθμίσεις</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="42"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="184"/>
         <source>Annotation</source>
         <translation>Σήμανση</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="50"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="173"/>
         <source>Sélection</source>
         <translation>Επιλογή</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="58"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="174"/>
         <source>Conducteurs</source>
         <translation>Αγωγοί</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="75"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="175"/>
         <source>Composants</source>
         <translation>Εξαρτήματα</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="177"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Αρίθμηση του επιλεγμένου διαγράμματος&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="179"/>
         <source>Annotation (alpha)</source>
         <translation>Σήμανση (αλφα)</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="181"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Αφαιρέθηκε η αρίθμηση του επιλεγμένου διαγράμματος&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="183"/>
         <source>Supprimer l&apos;annotation</source>
         <translation>Διαγραφή της σήμανσης</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="147"/>
+        <location filename="../sources/ui/ui_dialogautonum.h" line="185"/>
         <source>Fermer</source>
         <translation>Κλείσιμο</translation>
     </message>
@@ -864,16 +884,19 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <name>DialogWaiting</name>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
+        <location filename="../sources/ui/ui_dialogwaiting.h" line="98"/>
         <source>Merci de patienter</source>
         <translation>Ευχαριστούμε για την υπομονή σας</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
+        <location filename="../sources/ui/ui_dialogwaiting.h" line="99"/>
         <source>Titre</source>
         <translation>Τίτλος</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
+        <location filename="../sources/ui/ui_dialogwaiting.h" line="101"/>
         <source>TextLabel</source>
         <translation>Κείμενο: </translation>
     </message>
@@ -1055,16 +1078,19 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <name>ElementInfoPartWidget</name>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_elementinfopartwidget.h" line="67"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="41"/>
+        <location filename="../sources/ui/ui_elementinfopartwidget.h" line="68"/>
         <source>TextLabel</source>
         <translation>ΕτικέταΚειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="48"/>
+        <location filename="../sources/ui/ui_elementinfopartwidget.h" line="70"/>
         <source>Visible</source>
         <translation>Ορατό</translation>
     </message>
@@ -1073,6 +1099,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <name>ElementInfoWidget</name>
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="20"/>
+        <location filename="../sources/ui/ui_elementinfowidget.h" line="70"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
@@ -1153,6 +1180,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <name>ElementSelectorWidget</name>
     <message>
         <location filename="../sources/ui/elementselectorwidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_elementselectorwidget.h" line="65"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
@@ -1906,6 +1934,29 @@ Les changements seront définitifs.</source>
     </message>
 </context>
 <context>
+    <name>FolioReportProperties</name>
+    <message>
+        <location filename="../sources/ui/ui_folioreportproperties.h" line="101"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/ui_folioreportproperties.h" line="108"/>
+        <source>Report de folio disponible :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/ui_folioreportproperties.h" line="109"/>
+        <source>Voir ce report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/ui_folioreportproperties.h" line="110"/>
+        <source>Voir le report lié</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GeneralConfigurationPage</name>
     <message>
         <location filename="../sources/configpages.cpp" line="118"/>
@@ -2439,21 +2490,25 @@ Les changements seront définitifs.</source>
     <name>LinkSingleElementWidget</name>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_linksingleelementwidget.h" line="94"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
+        <location filename="../sources/ui/ui_linksingleelementwidget.h" line="95"/>
         <source>Rechercher dans le folio :</source>
         <translation>Αναζήτηση στη σελίδα:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
+        <location filename="../sources/ui/ui_linksingleelementwidget.h" line="96"/>
         <source>Voir cet élément</source>
         <translation>Προβολή αυτού του στοιχείου</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
+        <location filename="../sources/ui/ui_linksingleelementwidget.h" line="97"/>
         <source>Voir l&apos;élément lié</source>
         <translation>Προβολή του συνδεδεμένου στοιχείου</translation>
     </message>
@@ -2487,26 +2542,31 @@ Les changements seront définitifs.</source>
     <name>MasterPropertiesWidget</name>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_masterpropertieswidget.h" line="100"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
+        <location filename="../sources/ui/ui_masterpropertieswidget.h" line="102"/>
         <source>Délier l&apos;élément séléctionné</source>
         <translation>Αποσύνδεση του επιλεγμένου στοιχείου</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
+        <location filename="../sources/ui/ui_masterpropertieswidget.h" line="106"/>
         <source>Lier l&apos;élément séléctionné</source>
         <translation>Σύνδεση του επιλεγμένου στοιχείου</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
+        <location filename="../sources/ui/ui_masterpropertieswidget.h" line="109"/>
         <source>Éléments disponibles</source>
         <translation>Διαθέσιμα στοιχεία</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
+        <location filename="../sources/ui/ui_masterpropertieswidget.h" line="110"/>
         <source>Éléments liés</source>
         <translation>Συνδεδεμένα στοιχεία</translation>
     </message>
@@ -2690,31 +2750,37 @@ Les changements seront définitifs.</source>
     <name>NumPartEditorW</name>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="14"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="84"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="87"/>
         <source>Chiffre 1</source>
         <translation>Αριθμοί 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="88"/>
         <source>Chiffre 01</source>
         <translation>Αριθμοί 01</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="89"/>
         <source>Chiffre 001</source>
         <translation>Αριθμοί 001</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="90"/>
         <source>Texte</source>
         <translation>Κείμενο</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="49"/>
+        <location filename="../sources/ui/ui_numparteditorw.h" line="91"/>
         <source>N° folio</source>
         <translation>N° σελίδας</translation>
     </message>
@@ -4892,7 +4958,7 @@ Que désirez vous faire ?</source>
         <translation>&lt;b&gt;Άνοιγμα εργασίας...&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1457"/>
+        <location filename="../sources/qetproject.cpp" line="1464"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Παρουσιάστηκε σφάλμα κατά την αντιγραφή του στοιχείου %1</translation>
     </message>
@@ -5854,6 +5920,57 @@ Que désirez vous faire ?</source>
         <comment>title block cell property human name</comment>
         <translation>οριζόντια προσαρμογή</translation>
     </message>
+    <message>
+        <location filename="../sources/diagramfoliolist.cpp" line="241"/>
+        <source>Auteur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramfoliolist.cpp" line="242"/>
+        <source>Titre</source>
+        <translation type="unfinished">Τίτλος</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramfoliolist.cpp" line="243"/>
+        <source>Folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramfoliolist.cpp" line="244"/>
+        <source>Date</source>
+        <translation type="unfinished">Ημερομηνία </translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
+        <source>Type de ligne</source>
+        <comment>shape style</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
+        <source>Normal</source>
+        <translation type="unfinished">Απλή</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
+        <source>Tiret</source>
+        <translation type="unfinished">Διακεκομμένη</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>
+        <source>Pointillé</source>
+        <translation type="unfinished">Στίγματα</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
+        <source>Traits et points</source>
+        <translation type="unfinished">Παύλες και τελείες</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
+        <source>Traits points points</source>
+        <translation type="unfinished">Παύλα τελεία τελεία</translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -5879,35 +5996,29 @@ Que désirez vous faire ?</source>
         <translation>Επεξεργασία ιδιοτήτων ενός συνδέσμου, Ζώνης</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Shape Line Style</source>
         <comment>shape style</comment>
-        <translation>Τύπος Γραμμής Σχήματος</translation>
+        <translation type="obsolete">Τύπος Γραμμής Σχήματος</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
         <source>Normal</source>
-        <translation>Απλή</translation>
+        <translation type="obsolete">Απλή</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
         <source>Tiret</source>
-        <translation>Διακεκομμένη</translation>
+        <translation type="obsolete">Διακεκομμένη</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>
         <source>Pointillé</source>
-        <translation>Στίγματα</translation>
+        <translation type="obsolete">Στίγματα</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
         <source>Traits et points</source>
-        <translation>Παύλες και τελείες</translation>
+        <translation type="obsolete">Παύλες και τελείες</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Traits points points</source>
-        <translation>Παύλα τελεία τελεία</translation>
+        <translation type="obsolete">Παύλα τελεία τελεία</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
@@ -5970,16 +6081,19 @@ Que désirez vous faire ?</source>
     <name>ReportPropertieWidget</name>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_reportpropertiewidget.h" line="87"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
+        <location filename="../sources/ui/ui_reportpropertiewidget.h" line="88"/>
         <source>Label de report de folio</source>
         <translation>Ετικέτα αναφοράς σελίδας</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
+        <location filename="../sources/ui/ui_reportpropertiewidget.h" line="89"/>
         <source>Vous pouvez définir un label personnalisé pour les reports de folio.
 Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
@@ -5996,46 +6110,55 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <name>SelectAutonumW</name>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="14"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="155"/>
         <source>Form</source>
         <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="25"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="156"/>
         <source>Folio:  </source>
         <translation>Διάγραμμα:</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="32"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="158"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Επιλέξτε το διάγραμμα&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="55"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="161"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Διαγραφή μιας μεταβλητής αρίθμησης &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="72"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="165"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Προσθήκη μιας μεταβλητής αρίθμησης &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="91"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="168"/>
         <source>Définition</source>
         <translation>Ορισμός</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="107"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="169"/>
         <source>Type</source>
         <translation>Τύπος:</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="117"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="170"/>
         <source>Valeur</source>
         <translation>Τιμή</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="133"/>
+        <location filename="../sources/ui/ui_selectautonumw.h" line="171"/>
         <source>Incrémentation</source>
         <translation>Αύξηση</translation>
     </message>
@@ -7148,11 +7271,31 @@ Longueur maximale : %2px
     <name>XRefPropertiesWidget</name>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
+        <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="84"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="85"/>
+        <source>Représentation:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="28"/>
+        <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="86"/>
+        <source>Afficher en croix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="35"/>
+        <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="87"/>
+        <source>Afficher en contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="47"/>
+        <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="88"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation>Εμφάνιση των επαφών ισχύος στο σταυρό</translation>
     </message>
@@ -7176,11 +7319,13 @@ Longueur maximale : %2px
     <name>diagramselection</name>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="14"/>
+        <location filename="../sources/ui/ui_diagramselection.h" line="64"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
+        <location filename="../sources/ui/ui_diagramselection.h" line="65"/>
         <source>TextLabel</source>
         <translation>ΕτικέταΚειμένου</translation>
     </message>
