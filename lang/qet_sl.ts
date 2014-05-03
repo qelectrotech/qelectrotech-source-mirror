@@ -65,73 +65,78 @@
         <location filename="../sources/aboutqet.cpp" line="114"/>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <location filename="../sources/aboutqet.cpp" line="116"/>
-        <location filename="../sources/aboutqet.cpp" line="117"/>
+        <location filename="../sources/aboutqet.cpp" line="180"/>
         <source>Développement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="135"/>
+        <location filename="../sources/aboutqet.cpp" line="134"/>
         <source>Traduction en espagnol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="136"/>
+        <location filename="../sources/aboutqet.cpp" line="135"/>
         <source>Traduction en russe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="137"/>
+        <location filename="../sources/aboutqet.cpp" line="136"/>
         <source>Traduction en portugais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="137"/>
         <source>Traduction en tchèque</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en polonais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <location filename="../sources/aboutqet.cpp" line="140"/>
         <location filename="../sources/aboutqet.cpp" line="141"/>
-        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en allemand</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en roumain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="143"/>
         <location filename="../sources/aboutqet.cpp" line="144"/>
-        <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Traduction en italien</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="146"/>
+        <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Traduction en arabe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="147"/>
+        <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Traduction en croate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="148"/>
-        <location filename="../sources/aboutqet.cpp" line="151"/>
+        <location filename="../sources/aboutqet.cpp" line="147"/>
+        <location filename="../sources/aboutqet.cpp" line="150"/>
         <source>Traduction en catalan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="148"/>
         <location filename="../sources/aboutqet.cpp" line="149"/>
-        <location filename="../sources/aboutqet.cpp" line="150"/>
         <source>Traduction en grec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="151"/>
+        <source>Traduction en néerlandais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -182,7 +187,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="197"/>
+        <location filename="../sources/aboutqet.cpp" line="181"/>
+        <source>Documentation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="199"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -580,24 +590,8 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
 <context>
     <name>DiagramFolioList</name>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="241"/>
-        <source>Auteur</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/diagramfoliolist.cpp" line="173"/>
-        <location filename="../sources/diagramfoliolist.cpp" line="242"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="243"/>
-        <source>Folio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="244"/>
-        <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4910,7 +4904,7 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1457"/>
+        <location filename="../sources/qetproject.cpp" line="1464"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5841,33 +5835,29 @@ Que désirez vous faire ?</source>
         <comment>title block cell property human name</comment>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>QTextOrientationWidget</name>
     <message>
-        <location filename="../sources/qtextorientationwidget.cpp" line="36"/>
-        <source>Ex.</source>
-        <comment>Short example string</comment>
+        <location filename="../sources/diagramfoliolist.cpp" line="241"/>
+        <source>Auteur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
-        <source>Exemple</source>
-        <comment>Longer example string</comment>
+        <location filename="../sources/diagramfoliolist.cpp" line="242"/>
+        <source>Titre</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
-        <source>Éditer les propriétés d&apos;une liaison, Zone </source>
-        <comment>window title</comment>
+        <location filename="../sources/diagramfoliolist.cpp" line="243"/>
+        <source>Folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramfoliolist.cpp" line="244"/>
+        <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
-        <source>Shape Line Style</source>
+        <source>Type de ligne</source>
         <comment>shape style</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -5894,6 +5884,30 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Traits points points</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QTextOrientationWidget</name>
+    <message>
+        <location filename="../sources/qtextorientationwidget.cpp" line="36"/>
+        <source>Ex.</source>
+        <comment>Short example string</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
+        <source>Exemple</source>
+        <comment>Longer example string</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QetShapeItem</name>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
+        <source>Éditer les propriétés d&apos;une liaison, Zone </source>
+        <comment>window title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7117,8 +7131,23 @@ Longueur maximale : %2px
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="20"/>
+        <source>Représentation:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="28"/>
+        <source>Afficher en croix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="35"/>
+        <source>Afficher en contacts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="47"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation type="unfinished"></translation>
     </message>
