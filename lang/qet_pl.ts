@@ -142,7 +142,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="151"/>
         <source>Traduction en néerlandais</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na holenderski</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
@@ -178,7 +178,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="181"/>
         <source>Documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokumentacja</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="173"/>
@@ -1938,22 +1938,22 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/ui_folioreportproperties.h" line="101"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/ui_folioreportproperties.h" line="108"/>
         <source>Report de folio disponible :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostępne odsyłacze do stron:</translation>
     </message>
     <message>
         <location filename="../sources/ui/ui_folioreportproperties.h" line="109"/>
         <source>Voir ce report</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobacz ten odsyłacz</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/ui_folioreportproperties.h" line="110"/>
         <source>Voir le report lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobacz granicę tego odsyłacza</translation>
     </message>
 </context>
 <context>
@@ -2108,7 +2108,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="257"/>
         <source>Pays-Bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Holenderski</translation>
     </message>
 </context>
 <context>
@@ -2641,7 +2641,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="59"/>
         <source>Référence croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Odsyłacz</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="100"/>
@@ -2889,7 +2889,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="309"/>
         <source>Référence croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Odsyłacz</translation>
     </message>
 </context>
 <context>
@@ -5949,7 +5949,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Type de ligne</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rodzaj linii</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
@@ -7279,31 +7279,31 @@ Długość maksymalna : %2px</translation>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
         <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="84"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="20"/>
         <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="85"/>
         <source>Représentation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prezentacja:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="28"/>
         <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="86"/>
         <source>Afficher en croix</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż krzyż</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="35"/>
         <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="87"/>
         <source>Afficher en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż zestyki</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="47"/>
         <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="88"/>
         <source>Afficher les contacts de puissance dans la croix</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż zestyki i krzyż</translation>
     </message>
 </context>
 <context>
@@ -7652,7 +7652,7 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="542"/>
         <source>Simplify Rich Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Uproszczony Rich Text</translation>
     </message>
 </context>
 </TS>
