@@ -142,7 +142,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="151"/>
         <source>Traduction en néerlandais</source>
-        <translation type="unfinished"></translation>
+        <translation>Ολανδική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
@@ -178,7 +178,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="181"/>
         <source>Documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Τεκμηρίωση</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="173"/>
@@ -1938,22 +1938,22 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/ui_folioreportproperties.h" line="101"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/ui_folioreportproperties.h" line="108"/>
         <source>Report de folio disponible :</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμες αναφορές σελίδας:</translation>
     </message>
     <message>
         <location filename="../sources/ui/ui_folioreportproperties.h" line="109"/>
         <source>Voir ce report</source>
-        <translation type="unfinished"></translation>
+        <translation>Δείτε αυτή την αναφορά</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/ui_folioreportproperties.h" line="110"/>
         <source>Voir le report lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Δείτε την συνδεδεμένη αναφορά</translation>
     </message>
 </context>
 <context>
@@ -5923,53 +5923,53 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="241"/>
         <source>Auteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Συγγραφέας </translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="242"/>
         <source>Titre</source>
-        <translation type="unfinished">Τίτλος</translation>
+        <translation>Τίτλος</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="243"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="244"/>
         <source>Date</source>
-        <translation type="unfinished">Ημερομηνία </translation>
+        <translation>Ημερομηνία </translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Type de ligne</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος Γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
         <source>Normal</source>
-        <translation type="unfinished">Απλή</translation>
+        <translation>Απλή</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
         <source>Tiret</source>
-        <translation type="unfinished">Διακεκομμένη</translation>
+        <translation>Διακεκομμένη</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Στίγματα</translation>
+        <translation>Στίγματα</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
         <source>Traits et points</source>
-        <translation type="unfinished">Παύλες και τελείες</translation>
+        <translation>Παύλες και τελείες</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Traits points points</source>
-        <translation type="unfinished">Παύλα τελεία τελεία</translation>
+        <translation>Παύλα τελεία τελεία</translation>
     </message>
 </context>
 <context>
@@ -7279,19 +7279,19 @@ Longueur maximale : %2px
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="20"/>
         <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="85"/>
         <source>Représentation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποτύπωση:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="28"/>
         <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="86"/>
         <source>Afficher en croix</source>
-        <translation type="unfinished"></translation>
+        <translation>Προβολή σε σταυρό</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="35"/>
         <location filename="../sources/ui/ui_xrefpropertieswidget.h" line="87"/>
         <source>Afficher en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση ως λίστα επαφών</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="47"/>
