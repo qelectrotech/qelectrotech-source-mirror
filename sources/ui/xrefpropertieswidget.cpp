@@ -75,7 +75,11 @@ XRefProperties XRefPropertiesWidget::properties() {
 void XRefPropertiesWidget::setReadOnly(bool ro) {
 	ui->m_display_has_cross_rb->setDisabled(ro);
 	ui->m_display_has_contacts_rb->setDisabled(ro);
-	ui->m_show_power_cb->setDisabled(ro);
+
+	if (m_properties.displayHas() != XRefProperties::Cross)
+		ui->m_show_power_cb->setDisabled(true);
+	else
+		ui->m_show_power_cb->setDisabled(ro);
 }
 
 /**
