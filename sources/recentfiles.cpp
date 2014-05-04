@@ -160,7 +160,6 @@ void RecentFiles::buildMenu() {
 	// reinitialise le menu
 	if (!menu_) {
 		menu_ = new QMenu;
-		menu_ -> setIcon(QET::Icons::DocumentOpenRecent);
 	} else {
 		menu_ -> clear();
 	}
