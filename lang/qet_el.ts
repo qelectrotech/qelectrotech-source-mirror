@@ -142,7 +142,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="151"/>
         <source>Traduction en néerlandais</source>
-        <translation>Ολανδική μετάφραση</translation>
+        <translation>Ολλανδική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
@@ -7183,7 +7183,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="35"/>
         <source>Afficher en contacts</source>
-        <translation>Εμφάνιση ως λίστα επαφών</translation>
+        <translation>Προβολή ως λίστα επαφών</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="47"/>
@@ -7348,7 +7348,7 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="114"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="128"/>
         <source>Information</source>
-        <translation>Πληροφορία</translation>
+        <translation>Πληροφορίες</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
@@ -7372,7 +7372,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Folio</source>
-        <translation>Διάγραμμα</translation>
+        <translation>Σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
