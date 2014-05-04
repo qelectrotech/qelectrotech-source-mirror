@@ -159,7 +159,7 @@ void RecentFiles::saveFilesToSettings() {
 void RecentFiles::buildMenu() {
 	// reinitialise le menu
 	if (!menu_) {
-		menu_ = new QMenu(tr("&R\351cemment ouvert(s)"));
+		menu_ = new QMenu;
 		menu_ -> setIcon(QET::Icons::DocumentOpenRecent);
 	} else {
 		menu_ -> clear();

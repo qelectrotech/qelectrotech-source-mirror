@@ -457,7 +457,7 @@ void QETDiagramEditor::menus() {
 	// menu Fichier
 	menu_fichier -> addAction(new_file);
 	menu_fichier -> addAction(open_file);
-	menu_fichier -> addMenu(tr("&R\351cemment ouvert(s)")),(QETApp::projectsRecentFiles() -> menu());
+	menu_fichier -> addMenu(tr("&R\351cemment ouvert(s)")) -> addMenu(QETApp::projectsRecentFiles() -> menu());
 	connect(QETApp::projectsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)), this, SLOT(openRecentFile(const QString &)));
 	menu_fichier -> addAction(save_file);
 	menu_fichier -> addAction(save_file_as);
