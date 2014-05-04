@@ -3924,6 +3924,11 @@ Opzioni disponibili:
         <translation>Permesso di vedere lo schema senza modificarlo</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouvert(s)</source>
+        <translation>File &amp;recenti</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Impossible d&apos;ouvrir le fichier</source>

@@ -3613,6 +3613,11 @@ Opțiuni disponibile:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouvert(s)</source>
+        <translation type="unfinished">Deschise &amp;Recent</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Impossible d&apos;ouvrir le fichier</source>

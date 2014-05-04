@@ -3648,6 +3648,11 @@ Options disponibles :
         <translation>إيجاد العنصر المُحدّد في اللوحة</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouvert(s)</source>
+        <translation type="unfinished">&amp;مفتوح حديثا</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Impossible d&apos;ouvrir le fichier</source>

@@ -3880,6 +3880,11 @@ Verfügbare Optionen:
         <translation>Fe&amp;nster</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouvert(s)</source>
+        <translation>&amp;Zuletzt geöffnet</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="510"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Zeigt oder versteckt die Hauptwerkzeugsleiste</translation>

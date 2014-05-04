@@ -3927,6 +3927,11 @@ Available options:
         <translation>Allows to view the diagram without modifying it</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouvert(s)</source>
+        <translation>&amp;Recently Opened</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Impossible d&apos;ouvrir le fichier</source>

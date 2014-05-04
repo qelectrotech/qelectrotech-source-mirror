@@ -3927,6 +3927,11 @@ Dostupné volby:
         <translation>Dovolí zobrazení výkresu bez možnosti jej upravit</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouvert(s)</source>
+        <translation type="unfinished">&amp;Nedávno otevřené</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
@@ -5882,7 +5887,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Běžná</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>

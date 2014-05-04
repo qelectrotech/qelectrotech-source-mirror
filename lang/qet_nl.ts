@@ -3926,6 +3926,11 @@ Beschikbare opties:
         <translation>Toestaan om het diagram te bekijken zonder wijziging</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouvert(s)</source>
+        <translation>&amp;Recent geopend(s)</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
@@ -5886,12 +5891,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
         <source>Traits et points</source>
-        <translation>Punt streep.punt</translation>
+        <translation>Punt streep</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Traits points points</source>
-        <translation type="unfinished"></translation>
+        <translation>Punt streep.punt</translation>
     </message>
 </context>
 <context>

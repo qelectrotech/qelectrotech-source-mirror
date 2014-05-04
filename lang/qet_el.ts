@@ -3930,6 +3930,11 @@ Options disponibles :
         <translation>Επιτρέπει την προβολή του διαγράμματος, χωρίς να γίνεται μετατροπή του</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouvert(s)</source>
+        <translation>&amp;Προσφάτως Ανοιγμένα</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1240"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>

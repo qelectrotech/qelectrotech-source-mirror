@@ -3629,6 +3629,11 @@ Opciones disponibles:
         <translation>Venta&amp;nas</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouvert(s)</source>
+        <translation>&amp;Recientemente abierto(s)</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="510"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Mostrar u ocultar la barra de herramientas principal</translation>
@@ -5884,7 +5889,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
         <source>Tiret</source>
-        <translation type="unfinished"></translation>
+        <translation>Raya</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>

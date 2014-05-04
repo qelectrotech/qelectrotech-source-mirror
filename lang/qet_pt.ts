@@ -3918,6 +3918,11 @@ Opções disponiveis:
         <translation>Permite visualizar o esquema sem o modificar</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouvert(s)</source>
+        <translation>&amp;Recentemente abertos</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
@@ -4476,7 +4481,7 @@ Opções disponiveis:
         <location filename="../sources/editor/qetelementeditor.cpp" line="929"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Não é possível abrir o ficheiro</translation>
+        <translation>Não é possível abrir o ficheiro</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="931"/>
@@ -5446,7 +5451,6 @@ O que deseja fazer?</translation>
         <source>Délier %n élément(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -5634,7 +5638,6 @@ O que deseja fazer?</translation>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
