@@ -1,12 +1,12 @@
 <qet-directory>
     <names>
-        <name lang="en">Pressure sensors</name>
+	<name lang="cs">Tlaková čidla</name>        
+	<name lang="el">Αισθητήρες πίεσης</name>	
+	<name lang="en">Pressure sensors</name>
+	<name lang="es">Sensores de presión</na>
         <name lang="fr">Capteurs pression</name>
-        <name lang="pl">Czujniki ciśnienia</name>
 	<name lang="it">Sensori di pressione</name>
-        <name lang="cs">Tlaková čidla</name>
-        <name lang="el">Αισθητήρες πίεσης</name>
-        <name lang="es">Sensores de presión</na>
+        <name lang="pl">Czujniki ciśnienia</name>
         <name lang="nl">Druk</name>
    </names>
 </qet-directory>
