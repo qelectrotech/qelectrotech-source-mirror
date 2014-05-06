@@ -1,0 +1,23 @@
+<definition width="140" version="0.3" hotspot_x="0" hotspot_y="15" height="30" type="element" orientation="dnyn">
+    <names>
+        <name lang="ar">مستمرّ</name>
+        <name lang="de">Fortsetzen</name>
+        <name lang="pt">continuo</name>
+        <name lang="el">Συνέχεια</name>
+        <name lang="en">continue</name>
+        <name lang="it">Continua</name>
+        <name lang="fr">continue</name>
+        <name lang="pl">Działanie</name>
+        <name lang="cs">Čin</name>
+        <name lang="nl">Verder</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="25" y="2" size="8" rotate="true" text="action"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="20" y2="4" x2="20"/>
+        <text x="8" y="3" size="8" text="="/>
+        <rect width="125" x="7" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="3" y="0" orientation="w"/>
+    </description>
+</definition>
