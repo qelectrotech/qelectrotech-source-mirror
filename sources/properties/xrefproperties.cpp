@@ -35,6 +35,8 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
 	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
 	QString display = m_display == Cross? "cross" : "contacts";
 	settings.setValue(prefix + "displayhas", display);
+	settings.setValue(prefix + "powerprefix",  m_prefix.value("power"));
+	settings.setValue(prefix + "delayprefix", m_prefix.value("delay"));
 }
 
 /**
@@ -47,6 +49,8 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 	m_show_power_ctc = settings.value(prefix + "showpowerctc", false).toBool();
 	QString display = settings.value(prefix + "displayhas", "cross").toString();
 	display == "cross"? m_display = Cross : m_display = Contacts;
+	m_prefix.insert("power", settings.value(prefix + "powerprefix").toString());
+	m_prefix.insert("delay", settings.value(prefix + "delayprefix").toString());
 }
 
 /**
@@ -58,6 +62,8 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "fasle");
 	QString display = m_display == Cross? "cross" : "contacts";
 	xml_element.setAttribute("displayhas", display);
+	xml_element.setAttribute("powerprefix", m_prefix.value("power"));
+	xml_element.setAttribute("delayprefix", m_prefix.value("delay"));
 }
 
 /**
@@ -69,11 +75,14 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
 	QString display = xml_element.attribute("displayhas", "cross");
 	display == "cross"? m_display = Cross : m_display = Contacts;
+	m_prefix.insert("power", xml_element.attribute("powerprefix"));
+	m_prefix.insert("delay", xml_element.attribute("delayprefix"));
 }
 
 bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 	return (m_show_power_ctc == xrp.m_show_power_ctc &&
-			m_display == xrp.m_display);
+			m_display == xrp.m_display &&
+			m_prefix == xrp.m_prefix);
 }
 
 bool XRefProperties::operator !=(const XRefProperties &xrp) const {

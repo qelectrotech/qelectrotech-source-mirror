@@ -42,24 +42,57 @@
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="m_show_power_cb">
-     <property name="text">
-      <string>Afficher les contacts de puissance dans la croix</string>
+    <widget class="QGroupBox" name="m_cross_properties_gb">
+     <property name="title">
+      <string>Option d'affichage en croix</string>
      </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QCheckBox" name="m_show_power_cb">
+        <property name="text">
+         <string>Afficher les contacts de puissance dans la croix</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="m_delay_prefix_le"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="m_power_prefix_le"/>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Préfixe des contacts de puissance:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Préfixe des contacts temporisés:</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>253</height>
-      </size>
-     </property>
-    </spacer>
    </item>
   </layout>
  </widget>

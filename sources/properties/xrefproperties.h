@@ -48,9 +48,13 @@ class XRefProperties : public PropertiesInterface
 	void setDisplayHas (const DisplayHas dh) {m_display = dh;}
 	DisplayHas displayHas () const			 {return m_display;}
 
+	void setPrefix (const QString &key, const QString &value) {m_prefix.insert(key, value);}
+	QString prefix (const QString &key) const {return m_prefix.value(key);}
+
 	private:
 	bool m_show_power_ctc;
 	DisplayHas m_display;
+	QHash <QString, QString> m_prefix;
 };
 
 #endif // XREFPROPERTIES_H
