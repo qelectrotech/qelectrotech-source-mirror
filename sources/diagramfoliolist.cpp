@@ -35,10 +35,6 @@ DiagramFolioList::DiagramFolioList( QETProject *project, QObject *parent) : Diag
 	else
 		id = 0;
 
-	clear();
-	list_lines_.clear();
-	list_rectangles_.clear();
-
 	qreal width  = border_and_titleblock.columnsTotalWidth();
 	qreal height = border_and_titleblock.rowsTotalHeight();
 
@@ -57,6 +53,8 @@ DiagramFolioList::DiagramFolioList( QETProject *project, QObject *parent) : Diag
  */
 DiagramFolioList::~DiagramFolioList()
 {
+	qDeleteAll (list_lines_);
+	qDeleteAll (list_rectangles_);
 	int folioSheetQty = project() -> getFolioSheetsQuantity();
 	if (folioSheetQty > 0)
 		project() -> setFolioSheetsQuantity(folioSheetQty-1);
@@ -94,8 +92,13 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 	// If the sheet size has changed since last paint, then clear the scene and re-draw the grid.
 	if (sheetRectangle != row_RectBorder) {
 		sheetRectangle = row_RectBorder;
-		clear();
+		foreach(QGraphicsItem *qgi, items()) {
+			removeItem(qgi);
+			qgiManager().release(qgi);
+		}
+		qDeleteAll (list_lines_);
 		list_lines_.clear();
+		qDeleteAll (list_rectangles_);
 		list_rectangles_.clear();
 		buildGrid(row_RectBorder,30,2,colWidths);
 	}
