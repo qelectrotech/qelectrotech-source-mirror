@@ -38,7 +38,7 @@ class DiagramFolioList : public Diagram
 
 	private:
 	void fillRow(QPainter *, const QRectF &, QString, QString, QString, QString);
-	void buildGrid(const QRectF &, int, int, qreal[]);
+	void buildGrid(QPainter *, const QRectF &, int, int, qreal[]);
 	void fillHeader(QPainter *, const QRectF &);
 
 

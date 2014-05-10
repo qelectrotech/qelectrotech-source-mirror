@@ -34,17 +34,6 @@ DiagramFolioList::DiagramFolioList( QETProject *project, QObject *parent) : Diag
 	}
 	else
 		id = 0;
-
-	qreal width  = border_and_titleblock.columnsTotalWidth();
-	qreal height = border_and_titleblock.rowsTotalHeight();
-
-	//top left corner of drawable area
-	qreal x0 = border_and_titleblock.rowsHeaderWidth();
-	qreal y0 = border_and_titleblock.columnsHeaderHeight();
-	QRectF row_RectBorder(x0, y0, width, height);
-	sheetRectangle = row_RectBorder;
-
-	buildGrid(row_RectBorder,30,2,colWidths);
 }
 
 /**
@@ -89,19 +78,7 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 	qreal y0 = border_and_titleblock.columnsHeaderHeight();
 	QRectF row_RectBorder(x0, y0, width, height);
 
-	// If the sheet size has changed since last paint, then clear the scene and re-draw the grid.
-	if (sheetRectangle != row_RectBorder) {
-		sheetRectangle = row_RectBorder;
-		foreach(QGraphicsItem *qgi, items()) {
-			removeItem(qgi);
-			qgiManager().release(qgi);
-		}
-		qDeleteAll (list_lines_);
-		list_lines_.clear();
-		qDeleteAll (list_rectangles_);
-		list_rectangles_.clear();
-		buildGrid(row_RectBorder,30,2,colWidths);
-	}
+	buildGrid(p, row_RectBorder,30,2,colWidths);
 
 	x0 = list_rectangles_[0] -> topLeft().x();
 	y0 = list_rectangles_[0] -> topLeft().y();
@@ -197,8 +174,13 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, QString aut
 	qp -> drawText(QRectF(x, y, colWidths[3]*row_rect.width(), row_rect.height()), Qt::AlignCenter, date);
 }
 
-void DiagramFolioList::buildGrid(const QRectF &rect, int rows, int tables, qreal colWidths[])
+void DiagramFolioList::buildGrid(QPainter *qp, const QRectF &rect, int rows, int tables, qreal colWidths[])
 {
+	qDeleteAll (list_lines_);
+	list_lines_.clear();
+	qDeleteAll (list_rectangles_);
+	list_rectangles_.clear();
+
 	qreal sum = 0;
 	for (int i = 0; i < 4; i++ )
 		sum += colWidths[i];
@@ -217,16 +199,16 @@ void DiagramFolioList::buildGrid(const QRectF &rect, int rows, int tables, qreal
 
 	for (int i = 0; i < tables; ++i) {
 		QRectF *tableRect = new QRectF(x0, y0, tableWidth, rect.height() - 2*tablesSpacing);
-		addRect(*tableRect);
+		qp->drawRect(*tableRect);
 		list_rectangles_.push_back(tableRect);
 		for (int j = 1; j < rows; ++j) {
 			QLineF *line = new QLineF(x0, y0 + j*rowHeight, x0 + tableWidth,y0 + j*rowHeight);
-			addLine(*line);
+			qp->drawLine(*line);
 			list_lines_.push_back(line);
 		}
 		for (int j = 0; j < cols-1; ++j) {
 			QLineF *line = new QLineF(x0 + colWidths[j]*tableWidth, y0, x0 + colWidths[j]*tableWidth,y0 + rows*rowHeight);
-			addLine(*line);
+			qp->drawLine(*line);
 			list_lines_.push_back(line);
 			x0 += colWidths[j]*tableWidth;
 		}
