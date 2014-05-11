@@ -29,7 +29,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-16" x1="-4" y2="-16" x2="6"/>
         <polygon antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="21" x1="0" y2="21" x2="-10" y3="-10" x3="-10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="7" x1="0" y2="7" x2="-10"/>
-        <input x="40" y="0.5" size="9" rotate="true" text="Q"/>
+        <input x="40" y="0.5" size="9" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10" x1="-10" y2="-22" x2="-10"/>
         <terminal x="10" y="-40" nameHidden="0" number="" name="" orientation="n"/>
         <terminal x="10" y="40" nameHidden="0" number="" name="" orientation="s"/>

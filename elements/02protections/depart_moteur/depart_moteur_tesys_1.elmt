@@ -54,7 +54,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <arc width="5" x="57.5" y="40" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
         <arc width="5" x="57.5" y="11" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
         <arc width="5" x="37.5" y="11" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <input x="80" y="25.5" size="9" rotate="true" text="Q_"/>
+        <input x="80" y="25.5" size="9" rotate="true" text="_" tagg="label"/>
         <arc width="3" x="58.5" y="0" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
         <arc width="3" x="18.5" y="0" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
         <arc width="3" x="38.5" y="0" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>

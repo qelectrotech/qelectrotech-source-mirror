@@ -15,7 +15,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <rect width="70" x="9" y="22" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="10" y="32" size="5" rotate="true" text="unité de controle"/>
         <rect width="18" x="81" y="3" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="91" y="34.5" size="9" rotate="true" text="Q_"/>
+        <input x="91" y="34.5" size="9" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="81" y2="3" x2="99"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="37" x1="60" y2="46" x2="60"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="37" x1="40" y2="46" x2="40"/>

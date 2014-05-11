@@ -27,7 +27,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <input x="36" y="5.3333" size="4" rotate="true" text="Plage _A/_A"/>
         <rect width="35" x="-5" y="-10" antialias="false" height="20" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
         <input x="36" y="13.3333" size="4" rotate="true" text="Réglage _A"/>
-        <input x="35" y="-4.3333" size="9" text="F_"/>
+        <input x="35" y="-4.3333" size="9" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-5" x2="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="5" y2="5" x2="5"/>

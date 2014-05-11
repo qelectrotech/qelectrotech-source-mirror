@@ -17,7 +17,7 @@
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="5" y5="5" x5="0" y6="20" x6="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-5" x2="0" y3="-5" x3="5" y4="5"/>
-        <input x="10" y="3" size="9" text="F_"/>
+        <input x="10" y="3" size="9" text="_" tagg="label"/>
         <terminal x="0" y="-21" orientation="n"/>
         <terminal x="0" y="21" orientation="s"/>
     </description>
