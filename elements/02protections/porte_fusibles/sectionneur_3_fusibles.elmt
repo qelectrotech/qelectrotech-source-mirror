@@ -1,4 +1,4 @@
-<definition width="110" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="110" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy" link_type="master">
     <names>
         <name lang="ar">مفتاح عزل ثلاثي بمصهرات</name>
         <name lang="en">switchfuses</name>

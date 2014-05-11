@@ -1,4 +1,4 @@
-<definition width="140" version="0.3" hotspot_x="68" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy">
+<definition width="140" version="0.3" hotspot_x="68" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
     <names>
         <name lang="ar">قاطع مغناطيسي-حراري </name>
         <name lang="de">Motorschutzschalter</name>

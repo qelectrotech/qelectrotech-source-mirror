@@ -1,4 +1,4 @@
-<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">قاطع</name>
         <name lang="de">Lastschalter</name>

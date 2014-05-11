@@ -1,4 +1,4 @@
-<definition width="130" version="0.3" hotspot_x="10" hotspot_y="10" height="60" type="element" orientation="dyyy">
+<definition width="130" version="0.3" hotspot_x="10" hotspot_y="10" height="60" type="element" orientation="dyyy" link_type="master">
     <names>
         <name lang="ar">انطلاق محرك</name>
         <name lang="el">Εκκίνηση μοτέρ</name>

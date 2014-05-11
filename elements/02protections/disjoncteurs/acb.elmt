@@ -1,4 +1,4 @@
-<definition width="50" version="0.4" hotspot_x="9" hotspot_y="39" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="9" hotspot_y="39" height="80" type="element" ic="true" orientation="dyyy" link_type="master">
     <names>
         <name lang="el">Αποζεύκτης αέρος</name>
         <name lang="en">Air_Circuit_Breaker</name>

@@ -1,4 +1,4 @@
-<definition width="130" version="0.3" hotspot_x="70" hotspot_y="35" height="80" type="element" orientation="dyyy">
+<definition width="130" version="0.3" hotspot_x="70" hotspot_y="35" height="80" type="element" orientation="dyyy" link_type="master">
     <names>
         <name lang="ar">قاطع تفاضلي</name>
         <name lang="de">Differenz Lastschalter</name>

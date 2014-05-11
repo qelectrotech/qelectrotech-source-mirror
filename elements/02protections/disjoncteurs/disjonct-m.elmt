@@ -1,4 +1,4 @@
-<definition width="30" version="0.3" hotspot_x="0" hotspot_y="25" height="60" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="0" hotspot_y="25" height="60" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">قاطع أحدي القطب</name>
         <name lang="en">Circuit-breaker</name>

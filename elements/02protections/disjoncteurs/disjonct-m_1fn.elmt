@@ -1,4 +1,4 @@
-<definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="60" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="60" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
         <name lang="en">Circuit-breaker</name>

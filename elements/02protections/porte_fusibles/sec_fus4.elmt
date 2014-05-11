@@ -1,4 +1,4 @@
-<definition width="100" version="0.3" hotspot_x="31" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="31" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy" link_type="master">
     <names>
         <name lang="ar">مفتاح عزل بمصهرات</name>
         <name lang="de">Lastschalter</name>

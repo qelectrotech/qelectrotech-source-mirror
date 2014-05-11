@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">مرحل حراري</name>
         <name lang="de">Thermisches Relais</name>

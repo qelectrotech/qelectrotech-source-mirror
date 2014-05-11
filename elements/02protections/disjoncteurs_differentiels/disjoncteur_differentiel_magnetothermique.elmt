@@ -1,4 +1,4 @@
-<definition width="70" version="0.4" hotspot_x="13" hotspot_y="45" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="70" version="0.4" hotspot_x="13" hotspot_y="45" height="70" type="element" ic="true" orientation="dyyy" link_type="master">
     <names>
         <name lang="ar">قاطع تفاضلي مغناطيسي - حراري</name>
         <name lang="el">Θερμομαγνητικός διαφορικός διακόπτης</name>
