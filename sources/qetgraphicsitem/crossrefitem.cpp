@@ -89,6 +89,27 @@ QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_p
 	return txt;
 }
 
+/**
+ * @brief CrossRefItem::allElementsPositionText
+ * Return the text of all elements linked to @m_element, in several QString
+ * according to the type of linked elements. Each text of elements are separate by "\n"
+ * @param no_str the string of NO contacts
+ * @param nc_str the string of NC contacts
+ * @param add_prefix must add prefix to text (true) or not (false);
+ */
+void CrossRefItem::allElementsPositionText(QString &no_str, QString &nc_str, const bool &add_prefix) const {
+	QString *tmp_str;
+	foreach (Element *elmt, m_element->linkedElements()) {
+		QString state = elmt->kindInformations()["state"].toString();
+
+		if (state == "NO") tmp_str = &no_str;
+		else if (state == "NC") tmp_str = &nc_str;
+
+		if (!tmp_str->isEmpty()) *tmp_str += "\n";
+		*tmp_str += elementPositionText(elmt, add_prefix);
+	}
+}
+
 void CrossRefItem::setProperties(const XRefProperties &xrp) {
 	if (m_properties != xrp) {
 		m_properties = xrp;
@@ -256,16 +277,8 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter) {
 	//No need to calcul if nothing is linked
 	if (!m_element->isFree()) {
 
-		QString no_str, nc_str, *tmp_str;
-		foreach (Element *elmt, m_element->linkedElements()) {
-			QString state = elmt->kindInformations()["state"].toString();
-
-			if (state == "NO") tmp_str = &no_str;
-			else if (state == "NC") tmp_str = &nc_str;
-
-			if (!tmp_str->isEmpty()) *tmp_str += "\n";
-			*tmp_str += elementPositionText(elmt, true);
-		}
+		QString no_str, nc_str;
+		allElementsPositionText(no_str, nc_str, true);
 
 		//Adjust the size of default_bounding if needed.
 		//We calcule the size by using a single text
@@ -435,46 +448,18 @@ void CrossRefItem::drawContact(QPainter &painter, int flags, QString str) {
 void CrossRefItem::fillCrossRef(QPainter &painter) {
 	if (m_element->isFree()) return;
 
-	QList <Element *> NO_list;
-	QList <Element *> NC_list;
-
-	//find each no and nc of connected element to m_element
-	foreach (Element *elmt, m_element->linkedElements()) {
-		if (elmt->kindInformations()["type"].toString() == "power" && !m_properties.showPowerContact()) continue;
-		QString state = elmt->kindInformations()["state"].toString();
-		if (state == "NO")		NO_list << elmt;
-		else if (state == "NC") NC_list << elmt;
-	}
+	QString no_str, nc_str;
+	allElementsPositionText(no_str, nc_str, true);
 
 	qreal middle_cross = m_bounding_rect.width()/2;
 
-	QString contact_str;
-	int i =0;
-	//fill the NO
-	foreach (Element *elmt, NO_list) {
-		++i;
-		contact_str += elementPositionText(elmt, true);
-		if(NO_list.size() > i) contact_str += "\n";
-	}
-	QRectF rect_(0,
-				 header,
-				 middle_cross,
-				 m_bounding_rect.height()-header);
-	painter.drawText(rect_, Qt::AlignTop | Qt::AlignLeft, contact_str);
+	QRectF rect_(0, header, middle_cross, boundingRect().height()-header);
+	painter.drawText(rect_, Qt::AlignTop | Qt::AlignLeft, no_str);
 
-	//fill the NC
-	contact_str.clear();
-	i = 0;
-	foreach (Element *elmt, NC_list) {
-		++i;
-		contact_str += elementPositionText(elmt, true);
-		if (NC_list.size() > i) contact_str += "\n";
-	}
-	rect_.setRect(middle_cross,
-				  header,
-				  middle_cross,
-				  m_bounding_rect.height()-header);
-	painter.drawText(rect_, Qt::AlignTop | Qt::AlignRight, contact_str);
+	rect_.moveTopLeft(QPointF (middle_cross, header));
+	painter.drawText(rect_, Qt::AlignTop | Qt::AlignRight, nc_str);
+
+
 }
 
 /**
@@ -540,3 +525,4 @@ void CrossRefItem::checkMustShow() {
 		return;
 	}
 }
+

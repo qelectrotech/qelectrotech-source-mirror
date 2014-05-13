@@ -53,6 +53,7 @@ class CrossRefItem : public QGraphicsObject
 	QRectF boundingRect			() const;
 	virtual QPainterPath shape	() const;
 	QString elementPositionText (const Element *elmt, const bool &add_prefix = false) const;
+	void allElementsPositionText (QString &no_str, QString &nc_str,const bool &add_prefix = false) const;
 
 	signals:
 
@@ -87,3 +88,4 @@ class CrossRefItem : public QGraphicsObject
 };
 
 #endif // CROSSREFITEM_H
+
