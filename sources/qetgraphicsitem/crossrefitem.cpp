@@ -22,6 +22,8 @@
 
 //define the height of the header.
 #define header 5
+//define the minimal height of the cross (without header)
+#define cross_min_heigth 33
 
 /**
  * @brief CrossRefItem::CrossRefItem
@@ -107,6 +109,7 @@ void CrossRefItem::updateLabel() {
 	QPen pen_;
 	pen_.setWidthF(0.2);
 	qp.setPen(pen_);
+	qp.setFont(QETApp::diagramTextsFont(5));
 
 	XRefProperties::DisplayHas dh = m_properties.displayHas();
 	if (dh == XRefProperties::Cross) {
@@ -246,58 +249,43 @@ void CrossRefItem::buildHeaderContact() {
  * for calculate the size of the cross bounding rect.
  * The cross ref item is drawing according to the size of the cross bounding rect.
  */
-void CrossRefItem::setUpCrossBoundingRect() {
+void CrossRefItem::setUpCrossBoundingRect(QPainter &painter) {
 	//this is the default size of cross ref item
-	//add 2 to header for better visual
-	QRectF default_bounding(0, 0, 40, header+2);
+	QRectF default_bounding(0, 0, 40, header + cross_min_heigth);
 
 	//No need to calcul if nothing is linked
 	if (!m_element->isFree()) {
-		/*Set up a Qpainter with the same parametres
-		than the QPainter used for draw the text inside the cross,
-		for calculate the size of each text
-		=====
-		We can also use the QPainter used for draw the text inside the cross
-		and call the method "boundingrect", for know the size of text,
-		but the QrectF returned isn't good (bug)*/
-		QPainter qp;
-		QPicture pict;
-		qp.begin(&pict);
-		QPen pen_;
-		pen_.setWidthF(0.2);
-		qp.setPen(pen_);
-		qp.setFont(QETApp::diagramTextsFont(5));
 
-		QList <Element *> NO_list;
-		QList <Element *> NC_list;
-
-		//find each no and nc of connected element to m_element
-		//and define the size of default_bounding according to the connected elements
-		bool was_ajusted = false;
-		qreal no_height = 0, nc_height = 0;
+		QString no_str, nc_str, *tmp_str;
 		foreach (Element *elmt, m_element->linkedElements()) {
-			QRectF r;
-			qp.drawText(r, Qt::AlignCenter, elementPositionText(elmt, true), &r);
-			if (r.width() > default_bounding.width()/2) {
-				default_bounding.setWidth(r.width()*2);
-				was_ajusted = true;
-			}
-
 			QString state = elmt->kindInformations()["state"].toString();
-			if (state == "NO") {
-				NO_list << elmt;
-				no_height += r.height();
-			}
-			else if (state == "NC") {
-				NC_list << elmt;
-				nc_height += r.height();
-			}
+
+			if (state == "NO") tmp_str = &no_str;
+			else if (state == "NC") tmp_str = &nc_str;
+
+			if (!tmp_str->isEmpty()) *tmp_str += "\n";
+			*tmp_str += elementPositionText(elmt, true);
 		}
-		if (was_ajusted)	   default_bounding.setWidth  (default_bounding.width()+5); //adjust only for better visual
-		no_height > nc_height? default_bounding.setHeight (default_bounding.height() + no_height) :
-							   default_bounding.setHeight (default_bounding.height() + nc_height);
-		qp.end();
+
+		//Adjust the size of default_bounding if needed.
+		//We calcule the size by using a single text
+		//because in the method fillCrossRef, the text is draw like this (aka single text)
+
+		//Adjust according to the NO
+		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, no_str);
+		if (bounding.height() > default_bounding.height() - header)
+			default_bounding.setHeight(bounding.height() + header); //adjust the height
+		if (bounding.width() > default_bounding.width()/2)
+			default_bounding.setWidth(bounding.width()*2);			//adjust the width
+
+		//Adjust according to the NC
+		bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, nc_str);
+		if (bounding.height() > default_bounding.height() - header)
+			default_bounding.setHeight(bounding.height() + header); //adjust the heigth
+		if (bounding.width() > default_bounding.width()/2)
+			default_bounding.setWidth(bounding.width()*2);			//adjust the width
 	}
+
 	m_shape_path.addRect(default_bounding);
 	m_bounding_rect = default_bounding;
 }
@@ -309,7 +297,7 @@ void CrossRefItem::setUpCrossBoundingRect() {
  */
 void CrossRefItem::drawHasCross(QPainter &painter) {
 	//calcul the size of the cross
-	setUpCrossBoundingRect();
+	setUpCrossBoundingRect(painter);
 
 	//draw the cross
 	QRectF br = boundingRect();
@@ -335,12 +323,6 @@ void CrossRefItem::drawHasCross(QPainter &painter) {
 void CrossRefItem::drawHasContacts(QPainter &painter) {
 	m_drawed_contacts = 0;
 
-	painter.save();
-	QPen pen_;
-	pen_.setWidthF(0.3);
-	painter.setPen(pen_);
-	painter.setFont(QETApp::diagramTextsFont(5));
-
 	//Draw each linked contact
 	foreach (Element *elmt,  m_element->linkedElements()) {
 		DiagramContext info = elmt->kindInformations();
@@ -362,7 +344,6 @@ void CrossRefItem::drawHasContacts(QPainter &painter) {
 	QRectF br(0, 0, 50, m_drawed_contacts*10+4);
 	m_bounding_rect = br;
 	m_shape_path.addRect(br);
-	painter.restore();
 }
 
 /**
@@ -465,7 +446,6 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
 		else if (state == "NC") NC_list << elmt;
 	}
 
-	painter.setFont(QETApp::diagramTextsFont(5));
 	qreal middle_cross = m_bounding_rect.width()/2;
 
 	QString contact_str;
@@ -510,8 +490,9 @@ void CrossRefItem::AddExtraInfo(QPainter &painter) {
 		painter.setFont(QETApp::diagramTextsFont(6));
 
 		QRectF r, text_bounding;
-		r = QRectF(QPointF(boundingRect().bottomLeft().x() - boundingRect().width()/2, boundingRect().bottomLeft().y()),
-							QPointF(boundingRect().bottomRight().x() + boundingRect().width()/2, boundingRect().bottomRight().y()+50));
+		qreal center = boundingRect().center().x();
+		r = QRectF(QPointF(center - 50, boundingRect().bottom()),
+				   QPointF(center + 50, boundingRect().bottom() + 50));
 		painter.drawText(r, Qt::TextWordWrap | Qt::AlignHCenter, comment, &text_bounding);
 
 		text_bounding.adjust(-1,0,1,0); //adjust only for better visual

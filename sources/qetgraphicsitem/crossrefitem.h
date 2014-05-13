@@ -68,7 +68,7 @@ class CrossRefItem : public QGraphicsObject
 
 	private:
 	void buildHeaderContact		();
-	void setUpCrossBoundingRect ();
+	void setUpCrossBoundingRect (QPainter &painter);
 	void drawHasCross			(QPainter &painter);
 	void drawHasContacts		(QPainter &painter);
 	void drawContact			(QPainter &painter, int flags, QString str = QString());
