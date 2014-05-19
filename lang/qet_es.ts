@@ -593,7 +593,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
 <context>
     <name>DiagramFolioList</name>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="173"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="153"/>
         <source>Titre</source>
         <translation>Titulo</translation>
     </message>
@@ -1689,7 +1689,7 @@ Los cambios no podrían ser revertidos.</translation>
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="313"/>
+        <location filename="../sources/configpages.cpp" line="314"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>Exportar</translation>
@@ -2051,6 +2051,11 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/configpages.cpp" line="257"/>
         <source>Pays-Bas</source>
         <translation>Países Bajos</translation>
+    </message>
+    <message>
+        <location filename="../sources/configpages.cpp" line="258"/>
+        <source>Belgique-Flemish</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2755,7 +2760,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="367"/>
+        <location filename="../sources/configpages.cpp" line="368"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
         <translation>Impresión</translation>
@@ -3634,111 +3639,111 @@ Opciones disponibles:
         <translation>&amp;Recientemente abierto(s)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="510"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Mostrar u ocultar la barra de herramientas principal</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
         <translation>Mostrar u ocultar la barra de herramientas &quot;Ver&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
         <translation>Mostrar u ocultar la barra de herramientas &quot;Esquema&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
         <translation>Mostrar u ocultar el panel de dispositivos</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Affiche ou non la liste des modifications</source>
         <translation>Mostrar u ocultar la lista de modificaciones</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="517"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="518"/>
         <source>Afficher les projets</source>
         <translation>Mostrar los proyectos</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="540"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="541"/>
         <source>Outils</source>
         <translation>Herramientas</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="543"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="544"/>
         <source>Affichage</source>
         <translation>Ver</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="547"/>
         <source>Schéma</source>
         <translation>Esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="697"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="698"/>
         <source>Ouvrir un fichier</source>
         <translation>Abrir un archivo</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="699"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="700"/>
         <source>Schémas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>Esquemas QElectroTech (*.qet);;Archivos XML (*.xml);;Todos los archivos (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="800"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="801"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Parece que el archivo que intenta abrir no es accesible en lectura. Por eso es imposible abrirlo. Por favor compruebe los permisos del archivo.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="815"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Parece que el proyecto que intenta abrir no es accesible en escritura. Por eso se abrira en sólo lectura.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1240"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1241"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Editar el elemento</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1245"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1246"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Editar el campo de texto</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1250"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1251"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Editar la imagen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1256"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1257"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Editar el objeto seleccionado</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1944"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1945"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Imposible de encontrar este elemento en el panel porque parece que fue editado en otra ventana</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1950"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1951"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Imposible encontrar este elemento en el panel ... recarge el panel ...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1962"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1963"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Imposible encontrar este elemento en el panel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2009"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2010"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Error</translation>
@@ -3749,13 +3754,13 @@ Opciones disponibles:
         <translation>Limpiar el proyecto</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="827"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="828"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Fracaso al abrir el proyecto</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="829"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="830"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>Parece que el archivo %1 no es un archivo de proyecto QElectroTech. Por eso no se puede abrir.</translation>
@@ -4014,25 +4019,25 @@ Opciones disponibles:
         <translation>Activar el proyecto previo</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="785"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="800"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Imposible de abrir el archivo</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="786"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="787"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Parece que el archivo %1 que usted está intentando abrir no existe.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="813"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Abriendo el proyecto en sólo lectura</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1432"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1433"/>
         <source>Active le projet « %1 »</source>
         <translation>Activar el proyecto « %1 »</translation>
     </message>
@@ -5856,22 +5861,22 @@ Que désirez vous faire ?</source>
         <translation>ajuste horizontal</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="241"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="226"/>
         <source>Auteur</source>
         <translation>Autor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="242"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="227"/>
         <source>Titre</source>
         <translation>Titulo</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="243"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="228"/>
         <source>Folio</source>
         <translation>Folio</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="244"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="229"/>
         <source>Date</source>
         <translation>Fecha</translation>
     </message>
@@ -5934,14 +5939,6 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
         <source>Verrouiller la position</source>
         <translation>Bloquear la posición</translation>
-    </message>
-</context>
-<context>
-    <name>RecentFiles</name>
-    <message>
-        <location filename="../sources/recentfiles.cpp" line="162"/>
-        <source>&amp;Récemment ouvert(s)</source>
-        <translation>&amp;Recientemente abierto(s)</translation>
     </message>
 </context>
 <context>
@@ -7189,8 +7186,23 @@ Longueur maximale : %2px
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="47"/>
+        <source>Option d&apos;affichage en croix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="53"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation>Mostrar los contactos de potencia en la cruz</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="68"/>
+        <source>Préfixe des contacts de puissance:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="75"/>
+        <source>Préfixe des contacts temporisés:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
