@@ -1,0 +1,14 @@
+<definition width="20" version="0.4" hotspot_x="10" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Cross</name>
+        <name lang="fr">Croix</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle x="-1" y="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2"/>
+        <terminal x="0" y="4" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="-4" y="0" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="4" y="0" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="0" y="-4" nameHidden="1" number="" name="" orientation="n"/>
+    </description>
+</definition>

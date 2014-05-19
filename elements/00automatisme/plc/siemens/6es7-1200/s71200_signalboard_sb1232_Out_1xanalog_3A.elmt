@@ -1,0 +1,32 @@
+<definition width="210" version="0.3" hotspot_x="0" hotspot_y="10" height="80" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="de">S7-1200-signalboard-sb1232-Out-1xanalog/3A</name>
+        <name lang="en">S7-1200-signalboard-sb1232-Out-1xanalog/3A</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.1883" x1="152" y2="20.8793" x2="152"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="154" y2="22" x2="154"/>
+        <input x="110" y="54" size="4" rotate="true" text="0-10V,      R=>1000 Ohm&#xa;4-20mA, R =&lt; 600 Ohm"/>
+        <text x="116" y="42" size="6" text="-"/>
+        <input x="37" y="9" size="4" rotate="true" text="SB1232, OUT 0-10V, 4-20mA"/>
+        <input x="169" y="15" size="6" rotate="true" text="AQ:PE"/>
+        <input x="170" y="25" size="6" rotate="true" text="AQ:O"/>
+        <input x="37" y="39" size="4" rotate="true" text="Supply&#xa;24V =>40 mA&#xa;5V 15mA"/>
+        <input x="170" y="35" size="6" rotate="true" text="AQ:OM"/>
+        <rect width="20" x="100" y="25" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="6" y="23" size="6" rotate="true" text="#?"/>
+        <input x="1" y="6.5" size="9" rotate="true" text="-K?"/>
+        <line length1="1.5" length2="2.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="120" y2="40" x2="170"/>
+        <input x="123" y="25" size="6" rotate="true" text="QW?"/>
+        <line length1="2.5" length2="2.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" x1="85" y2="35" x2="100"/>
+        <line length1="1.5" length2="2.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="120" y2="30" x2="171"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="45" x1="100" y2="25" x2="120"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17" x1="156" y2="23" x2="156"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="156" y2="20" x2="170"/>
+        <text x="115" y="33" size="6" text="+"/>
+        <terminal x="170" y="30" orientation="e"/>
+        <terminal x="170" y="40" orientation="e"/>
+        <terminal x="170" y="20" orientation="e"/>
+    </description>
+</definition>

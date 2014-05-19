@@ -1,0 +1,29 @@
+<definition width="90" version="0.3" hotspot_x="45" hotspot_y="25" height="90" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Logo-1x-digital-input/05</name>
+        <name lang="fr">Logo-1x-digital-input/05</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="-0.7818" y2="23" x2="2.7636"/>
+        <rect width="30" x="-36" y="0" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="12.2182" y2="23" x2="15.7636"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="24.2182" y2="23" x2="27.7636"/>
+        <input x="-8" y="19.5" size="5" rotate="true" text="?"/>
+        <arc width="4.35" x="20.525" y="6.75" antialias="true" height="4.5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="5.2182" y2="23" x2="8.7636"/>
+        <input x="-36" y="11" size="6" rotate="true" text="PLC;&#xa;I?"/>
+        <input x="-37" y="41" size="6" rotate="true" text="?"/>
+        <arc width="4.35" x="16.175" y="6.75" antialias="true" height="4.5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.5" x1="18.35" y2="7.5" x2="22.7"/>
+        <input x="25" y="-1" size="6" rotation="270" rotate="true" text="I?"/>
+        <rect width="14" x="13" y="2" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-44" y="-9.5" size="9" rotate="true" text="-? /"/>
+        <rect width="40" x="-6" y="0" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.0545" x1="20" y2="15.8727" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="18.2182" y2="23" x2="21.7636"/>
+        <circle x="19.5" y="22.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <rect width="70" x="-36" y="26" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="20" y="0" orientation="n"/>
+    </description>
+</definition>
