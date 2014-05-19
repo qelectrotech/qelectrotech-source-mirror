@@ -2055,7 +2055,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="258"/>
         <source>Belgique-Flemish</source>
-        <translation type="unfinished"></translation>
+        <translation>Belga-Fiammingo</translation>
     </message>
 </context>
 <context>
@@ -7178,7 +7178,7 @@ Lunghezza massima: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="47"/>
         <source>Option d&apos;affichage en croix</source>
-        <translation type="unfinished"></translation>
+        <translation>Opzioni per la visualizzazione dei contatti</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="53"/>
@@ -7188,12 +7188,12 @@ Lunghezza massima: %2px</translation>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="68"/>
         <source>Préfixe des contacts de puissance:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefisso per i contatti di potenza:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="75"/>
         <source>Préfixe des contacts temporisés:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefisso per i contatti temporizzati:</translation>
     </message>
 </context>
 <context>
