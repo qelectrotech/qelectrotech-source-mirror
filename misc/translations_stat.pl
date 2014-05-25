@@ -149,8 +149,15 @@ our %languages = (
 	'nl' => {
 		'name'               => 'Netherlands',
 		'french_name'        => 'Pays-Bas',
-		'translator_name'    => 'Paul Van Deelen',
-		'translator_mail_ml' => 'shooter@home.nl & Elbert',
+		'translator_name'    => 'Paul Van Deelen & Elbert',
+		'translator_mail_ml' => 'shooter@home.nl',
+		'qt'                 => 1
+	},
+	'be' => {
+		'name'               => 'Belgium-Flemish',
+		'french_name'        => 'Belgique-flamand',
+		'translator_name'    => 'Ronny Desmedt',
+		'translator_mail_ml' => 'r.desmedt@live.be',
 		'qt'                 => 1
 	}
 );
