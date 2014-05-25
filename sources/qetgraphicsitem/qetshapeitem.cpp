@@ -23,6 +23,15 @@ void QetShapeItem::setStyle(Qt::PenStyle newStyle)
 	update();
 }
 
+void QetShapeItem::scale(double factor)
+{
+	QRectF bounding_rect = boundingRect();
+	bounding_rect.setWidth(bounding_rect.width() * factor);
+	bounding_rect.setHeight(bounding_rect.height() * factor);
+	setBoundingRect(bounding_rect);
+	update();
+}
+
 void QetShapeItem::setFullyBuilt(bool isBuilt)
 {
 	_isFullyBuilt = isBuilt;
@@ -224,6 +233,22 @@ void QetShapeItem::editProperty()
 	dialog_layout.addWidget(&cb);
 	cb.setVisible(false);
 
+	//GroupBox for Scaling
+	QGroupBox scale_groupe(QObject::tr("Scale", "shape scale"));
+	dialog_layout.addWidget(&scale_groupe);
+	QHBoxLayout scale_layout(&scale_groupe);
+
+	QLabel scale_label(&property_dialog);
+	scale_label.setText(tr("Scale Factor"));
+
+	QLineEdit scale_lineedit(&property_dialog);
+	QDoubleValidator scale_val(0.0,1000,3, &property_dialog);
+	scale_lineedit.setValidator(&scale_val);
+	scale_lineedit.setText("1.0");
+
+	scale_layout.addWidget(&scale_label);
+	scale_layout.addWidget(&scale_lineedit);
+
 	//dialog button, box
 	QDialogButtonBox dbb(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	dialog_layout.addWidget(&dbb);
@@ -237,6 +262,9 @@ void QetShapeItem::editProperty()
 		Qt::PenStyle new_style = Qt::PenStyle(style_combo.currentIndex() + 1);
 		if (new_style != _shapeStyle)
 			diagram()->undoStack().push(new ChangeShapeStyleCommand(this, _shapeStyle, new_style));
+		double scale_factor = scale_lineedit.text().toDouble();
+		if (scale_factor != 1 && scale_factor > 0 && scale_factor < 1000 )
+			diagram()->undoStack().push(new ChangeShapeScaleCommand(this, scale_factor));
 	}
 	return;
 }

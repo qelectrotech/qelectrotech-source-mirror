@@ -635,6 +635,24 @@ class ChangeShapeStyleCommand : public QUndoCommand {
 	Diagram *diagram;
 };
 
+class ChangeShapeScaleCommand : public QUndoCommand {
+	//constructor and destructor
+	public:
+	ChangeShapeScaleCommand (QetShapeItem *shape, double scale_factor, QUndoCommand *parent = 0);
+	virtual ~ChangeShapeScaleCommand();
+
+	//methods
+	public:
+	virtual void undo();
+	virtual void redo();
+
+	//attributes
+	private:
+	QetShapeItem *shape_;
+	double factor;
+	Diagram *diagram;
+};
+
 class LinkElementsCommand : public QUndoCommand {
 	public:
 	// constructor destructor

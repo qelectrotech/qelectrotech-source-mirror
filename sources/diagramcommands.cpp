@@ -1240,6 +1240,47 @@ void ChangeShapeStyleCommand::redo() {
 
 
 /**
+ * @brief ChangeShapeScaleCommand::ChangeShapeScaleCommand Constructor
+ * @param shape
+ * @param scale_factor
+ * @param parent undocommand parent
+ */
+ChangeShapeScaleCommand::ChangeShapeScaleCommand(QetShapeItem *shape, double scale_factor, QUndoCommand *parent):
+	QUndoCommand(parent),
+	shape_(shape),
+	factor (scale_factor),
+	diagram(shape->diagram())
+{}
+
+/**
+ * @brief ChangeShapeScaleCommand::~ChangeShapeScaleCommand destructor
+ */
+ChangeShapeScaleCommand::~ChangeShapeScaleCommand() {}
+
+/**
+ * @brief ChangeShapeScaleCommand::undo set the old size
+ */
+void ChangeShapeScaleCommand::undo() {
+	diagram -> removeItem(shape_);
+	shape_ -> scale(1/factor);
+	diagram -> addItem(shape_);
+	diagram -> showMe();
+	QUndoCommand::undo();
+}
+
+/**
+ * @brief ChangeShapeScaleCommand::redo set the new size
+ */
+void ChangeShapeScaleCommand::redo() {
+	diagram -> removeItem(shape_);
+	shape_ -> scale(factor);
+	diagram -> addItem(shape_);
+	diagram -> showMe();
+	QUndoCommand::redo();
+}
+
+
+/**
  * @brief LinkElementsCommand::LinkElementsCommand
  *Constructor
  * @param elmt1 element to Link
