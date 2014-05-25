@@ -118,3 +118,14 @@ Hoe te compileren:
      $ make
      # Umask 0022
      # Make install
+
+[be]
+Vereisten:
+libQt4 (pakketten libqt4*)
+cupsys-bsd voor het afdrukken
+
+Hoe te compileren :
+$ qmake (qmake-qt4 voor systemen op basis van Debian)
+$ make
+# umask 0022
+# make install

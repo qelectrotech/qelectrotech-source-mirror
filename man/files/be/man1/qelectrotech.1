@@ -1,0 +1,63 @@
+.TH QELECTROTECH 1 "Augustus 2008" QElectroTech "Gebruikers handleiding"
+.SH NOM
+qelectrotech \- Tekenprogramma voor elektrische schema's
+.SH SYNOPSIS
+.B qelectrotech
+.B [\-\-common\-elements\-dir\fR=\fIREP\fB]
+.B [\-\-config\-dir\fR=\fIREP\fB]
+.B [\-\-lang\-dir\fR=\fIREP\fB]
+.B [\-\-help]
+.B [\-v\fR|\fB\-\-version]
+.B [\-\-license]
+.B [\fIFICHIER\fB]...
+
+.SH DESCRIPTION
+QElectroTech is een tekenprogramma voor elektrische schem's. Deze schémas (*.qet) en deze elektrische elmenten (*.elmt) worden bewaard in het XML formaat.
+De beschikbare elementen op het schema kunnen afkomstig zijn van de gemeenschappelijke collectie of gebruikers collectie
+Typisch, de gemeenschappelijke collectie is toegankelijk voor alle gebruikers, maar het is niet bewerkbaar door hen.
+De Gebruiker collectie is uniek voor elke gebruiker en kan worden gewijzigd naar eigen goeddunken.
+.SH OPTIONS
+.TP
+\fB\-\-common\-elements\-dir\fR=\fIREP\fR
+Gebruik REP als hoofdmap van de gemeenschappelijke elementen collectie. Opmerking: Deze optie is alleen ingeschakeld als de variabele QET_ALLOW_OVERRIDE_CED_OPTION tijdens compilatie is opgegeven.
+.TP
+\fB\-\-config\-dir\fR=\fIREP\fR
+Gebruik REP als de map configuratie van de huidige gebruiker. Dit bestand qelectrotech.conf hosts bestand met de configuratie van de applicatie en de sub Elements \ dossiers met de collectie elementen van de gebruikers. Opmerking: Deze optie is alleen ingeschakeld als de variabele QET_ALLOW_OVERRIDE_CD_OPTION tijdens compilatie is opgegeven.
+.TP
+\fB\-\-lang\-dir\fR=\fIREP\fR
+Zoeken de vertalings bestanden van de applicatie in de REP.
+.TP
+\fB\-\-help\fR
+Geeft een korte beschrijving van de beschikbare opties
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+Geeft de versie van de applicatie (bijvoorbeeld : 0.1).
+.TP
+\fB\-\-license\fR
+Geef de licentie van de applicatie weer (GNU/GPL).
+
+.P
+Merk op dat als een van de laatste drie opties is opgegeven in de opdrachtregel, het programma stopt na het tonen van de juiste informatie. Als een exemplaar van de toepassing reeds opgestart is door de gebruiker, is wordt er rekening gehouden met de command line, met inbegrip van de te openen bestanden. Herdefiniëren van de opties bestanden (gedeelde collectie, configuratie directory en taalbestanden) wordt echter niet in aanmerking genomen. Als de naam van een te openen bestand de  extensie .Elmt bevat, pobeert QElectroTech deze te openen in de element editor. Anders zal het beschouwen als een schema.
+.SH AUTEURS
+Benoît Ansieau <benoit@qelectrotech.org>
+.br
+Xavier Guerrin <xavier@qelectrotech.org>
+.br
+Laurent Trinques <scorpio@qelectrotech.org>
+.br
+Joshua Claveau <joshua@qelectrotech.org>
+.br
+Cyril.frausti <cyril@qelectrotech.org>
+
+.SH SIGNALER DES BUGS
+Als de toepassing abnormaal reageert , raadpleeg dan onze FAQ voor meer info. <http://qelectrotech.org/wiki/doku.php?id=doc:faq> en onze BugTracker <http://qelectrotech.org/bugtracker/> om te zien of het probleem reeds gekend is. Zo niet, dien een fouten meldings rapport in via BugTracker. 
+
+.SH COPYRIGHT
+Copyright © De ontwikkelaars van QElectroTech
+.br
+Licencie : GNU/GPL v2+ : <http://www.gnu.org/licenses/old\-licenses/gpl\-2.0.html>
+.br
+Dit programma is vrije software. U kunt deze wijzigen en opnieuw verdelen. Het wordt geleverd zoals het is en ZONDER ENIGE GARANTIE.
+
+.SH VOIR AUSSI
+Officiele website : <http://qelectrotech.org/>
