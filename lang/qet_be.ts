@@ -3357,7 +3357,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="246"/>
         <source>Mode Visualisation</source>
-        <translation>Weergave modus</translation>
+        <translation>Verplaatsen modus</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
@@ -3387,7 +3387,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="240"/>
         <source>Pas de zoom</source>
-        <translation>Geen zoom</translation>
+        <translation>Zoom 1:1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="210"/>
