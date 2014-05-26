@@ -100,6 +100,9 @@ TARGET = qelectrotech
 # Ajustement des bibliotheques utilisees lors de l'edition des liens
 unix:QMAKE_LIBS_THREAD -= -lpthread
 
+# Enable C++11
+QMAKE_CXXFLAGS += -std=c++11
+
 # Description de l'installation
 target.path        = $$join(INSTALL_PREFIX,,,$${QET_BINARY_PATH})
 

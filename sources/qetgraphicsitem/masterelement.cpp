@@ -29,7 +29,7 @@ MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qg
 	CustomElement(location, qgi, s, state)
 {
 	link_type_ = Master;
-	cri_ = 0;
+	cri_ = nullptr;
 	connect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 }
 
@@ -93,7 +93,7 @@ void MasterElement::unlinkElement(Element *elmt) {
 		if (linkedElements().isEmpty()) {
 			diagram()->removeItem(cri_);
 			delete cri_;
-			cri_ = 0;
+			cri_ = nullptr;
 		}
 		else {
 			cri_->updateLabel();
