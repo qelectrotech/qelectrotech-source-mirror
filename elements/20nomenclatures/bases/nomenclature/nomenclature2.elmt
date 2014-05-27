@@ -1,0 +1,53 @@
+<definition width="980" version="0.4" hotspot_x="5" hotspot_y="26" height="110" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Nomenclature 2</name>
+        <name lang="fr">Nomenclature 2</name>
+        <name lang="pl">Zestawienie materiałowe 2</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input x="200" y="70" size="8" rotate="true" text="_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="190" y2="80" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="80" x2="0"/>
+        <input x="200" y="50" size="8" rotate="true" text="_"/>
+        <input x="900" y="70" size="8" rotate="true" text="_"/>
+        <input x="200" y="30" size="8" rotate="true" text="_"/>
+        <input x="900" y="50" size="8" rotate="true" text="_"/>
+        <input x="200" y="10" size="8" rotate="true" text="_"/>
+        <input x="900" y="30" size="8" rotate="true" text="_"/>
+        <input x="200" y="-10" size="8" rotate="true" text="_"/>
+        <input x="900" y="10" size="8" rotate="true" text="_"/>
+        <input x="900" y="-10" size="8" rotate="true" text="_"/>
+        <input x="750" y="70" size="8" rotate="true" text="_"/>
+        <input x="750" y="50" size="8" rotate="true" text="_"/>
+        <input x="750" y="30" size="8" rotate="true" text="_"/>
+        <input x="750" y="10" size="8" rotate="true" text="_"/>
+        <input x="750" y="-10" size="8" rotate="true" text="_"/>
+        <input x="600" y="70" size="8" rotate="true" text="_"/>
+        <input x="600" y="50" size="8" rotate="true" text="_"/>
+        <input x="600" y="30" size="8" rotate="true" text="_"/>
+        <input x="600" y="10" size="8" rotate="true" text="_"/>
+        <input x="600" y="-10" size="8" rotate="true" text="_"/>
+        <input x="120" y="70" size="8" rotate="true" text="_"/>
+        <input x="120" y="50" size="8" rotate="true" text="_"/>
+        <input x="120" y="30" size="8" rotate="true" text="_"/>
+        <input x="120" y="10" size="8" rotate="true" text="_"/>
+        <input x="120" y="-10" size="8" rotate="true" text="_"/>
+        <input x="10" y="70" size="8" rotate="true" text="_"/>
+        <input x="10" y="50" size="8" rotate="true" text="_"/>
+        <input x="10" y="30" size="8" rotate="true" text="_"/>
+        <input x="10" y="10" size="8" rotate="true" text="_"/>
+        <input x="10" y="-10" size="8" rotate="true" text="_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="970" y2="80" x2="970"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="890" y2="80" x2="890"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="740" y2="80" x2="740"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="110" y2="80" x2="110"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="590" y2="80" x2="590"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="0" y2="80" x2="970"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="0" y2="60" x2="970"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="0" y2="40" x2="970"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="20" x2="970"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="970"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-20" x2="970"/>
+    </description>
+</definition>
