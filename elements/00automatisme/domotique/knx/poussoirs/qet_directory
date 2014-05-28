@@ -7,6 +7,7 @@
         <name lang="cs">Tlačítka</name>
         <name lang="es">Pulsadores</name>
         <name lang="nl">Drukknoppen</name>
-        <name lang="en"> pushbutton</name>
+        <name lang="en">pushbutton</name>
+        <name lang="be">Drukknoppen</name>
     </names>
 </qet-directory>

@@ -9,5 +9,6 @@
         <name lang="it">Configurazione</name>
         <name lang="el">Διάταξη</name>
         <name lang="nl">config</name>
+        <name lang="be">config</name>
     </names>
 </qet-directory>

@@ -12,5 +12,6 @@
         <name lang="es">Escalera</name>
         <name lang="cs">Žebříkové schéma</name>
         <name lang="nl">Ladder Diagram (KOP)</name>
+        <name lang="be">Ladder (KOP)</name>
     </names>
 </qet-directory>

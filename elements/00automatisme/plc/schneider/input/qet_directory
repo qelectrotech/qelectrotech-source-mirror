@@ -9,5 +9,6 @@
         <name lang="it">Schede ingresso</name>
         <name lang="el">Κάρτες εισόδων</name>
         <name lang="nl">Ingangs Kaarten</name>
+        <name lang="be">Ingangs Kaarten</name>
     </names>
 </qet-directory>

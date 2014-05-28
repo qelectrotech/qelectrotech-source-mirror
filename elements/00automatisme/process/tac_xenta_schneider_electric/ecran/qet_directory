@@ -8,5 +8,6 @@
         <name lang="es">Pantalla</name>
         <name lang="it">Schermo</name>
         <name lang="nl">Scherm</name>
+        <name lang="be">Scherm</name>
     </names>
 </qet-directory>
