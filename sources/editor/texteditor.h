@@ -37,7 +37,8 @@ class TextEditor : public ElementItemEditor {
 	// attributes
 	private:
 	PartText *part;
-	QLineEdit *qle_x, *qle_y, *qle_text;
+	QLineEdit *qle_text;
+	QDoubleSpinBox *qle_x, *qle_y;
 	QSpinBox *font_size;
 	QButtonGroup *color_;
 	QRadioButton *black_color_, *white_color_;

@@ -37,7 +37,7 @@ class ArcEditor : public ElementItemEditor {
 	private:
 	PartArc *part;
 	StyleEditor *style_;
-	QLineEdit *x, *y, *h, *v;
+	QDoubleSpinBox *x, *y, *h, *v;
 	QSpinBox *angle, *start_angle;
 	
 	// methods

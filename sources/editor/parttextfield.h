@@ -19,6 +19,7 @@
 #define PART_TEXTFIELD_H
 #include <QtGui>
 #include "customelementpart.h"
+#include "qetapp.h"
 class TextFieldEditor;
 class QETElementEditor;
 class ElementPrimitiveDecorator;
@@ -41,6 +42,7 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	
 	// attributes
 	bool follow_parent_rotations;
+	QString m_tagg;
 	
 	// methods
 	public:
@@ -55,24 +57,44 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	virtual QString xmlName() const { return(QString("input")); }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
-	qreal rotationAngle() const;
-	void setRotationAngle(const qreal &);
-	bool followParentRotations();
-	void setFollowParentRotations(bool);
-	virtual void setProperty(const QString &, const QVariant &);
-	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
 	virtual QRectF sceneGeometricRect() const;
 	virtual void startUserTransformation(const QRectF &);
 	virtual void handleUserTransformation(const QRectF &, const QRectF &);
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0 );
-	
 	virtual void setDecorator(ElementPrimitiveDecorator *);
 	virtual bool singleItemPressEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
 	virtual bool singleItemMoveEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
 	virtual bool singleItemReleaseEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
 	virtual bool singleItemDoubleClickEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
-	
+
+	///PROPERTY
+	virtual void setProperty(const char *name, const QVariant &value) {QGraphicsTextItem::setProperty(name, value);}
+	virtual QVariant property(const char *name) const {return QGraphicsTextItem::property(name);}
+
+	// displayed text
+	Q_PROPERTY(QString text READ toPlainText WRITE setPlainText)
+	// font size
+	Q_PROPERTY(int   size READ size  WRITE setSize)
+		int size() const {return font().pointSize();}
+		void setSize (const int value) {setFont(QETApp::diagramTextsFont(value)); real_font_size_ = value;}
+	// real size
+	Q_PROPERTY(qreal real_size READ realSize WRITE setRealSize)
+		qreal realSize() const {return real_font_size_;}
+		void setRealSize(const qreal size) {real_font_size_ = size;}
+	// angle of text
+	Q_PROPERTY(qreal rotation_angle READ rotation WRITE setRotationAngle)
+		void setRotationAngle(const qreal &angle) {setRotation(QET::correctAngle(angle));}
+	// follow parent rotation
+	Q_PROPERTY(bool rotate READ followParentRotations WRITE setFollowParentRotations)
+		bool followParentRotations() const {return follow_parent_rotations;}
+		void setFollowParentRotations(bool i) {follow_parent_rotations = i;}
+	// tagg of text
+	Q_PROPERTY(QString tagg READ tagg WRITE setTagg)
+		QString tagg() const {return m_tagg;}
+		void setTagg(const QString &tagg) {m_tagg = tagg;}
+
+
 	public slots:
 	void adjustItemPosition(int = 0);
 	void setEditable(bool);

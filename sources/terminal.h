@@ -31,9 +31,9 @@ class Terminal : public QGraphicsItem {
 	
 	// constructors, destructor
 	public:
-	Terminal(QPointF,      QET::Orientation, Element * = 0, Diagram * = 0);
-	Terminal(qreal, qreal, QET::Orientation, Element * = 0, Diagram * = 0);
-	Terminal(QPointF,      QET::Orientation, QString number, QString name, bool hiddenName, Element * = 0, Diagram * = 0);
+	Terminal(QPointF,      Qet::Orientation, Element * = 0, Diagram * = 0);
+	Terminal(qreal, qreal, Qet::Orientation, Element * = 0, Diagram * = 0);
+	Terminal(QPointF,      Qet::Orientation, QString number, QString name, bool hiddenName, Element * = 0, Diagram * = 0);
 	virtual ~Terminal();
 	
 	private:
@@ -60,7 +60,7 @@ class Terminal : public QGraphicsItem {
 	Element *parentElement() const;
 	
 	QList<Conductor *> conductors() const;
-	QET::Orientation orientation() const;
+	Qet::Orientation orientation() const;
 	QPointF dockConductor() const;
 	QString number() const;
 	QString name() const;
@@ -108,7 +108,7 @@ class Terminal : public QGraphicsItem {
 	/// docking point for parent element
 	QPointF dock_elmt_;
 	/// terminal orientation
-	QET::Orientation ori_;
+	Qet::Orientation ori_;
 	/// List of conductors attached to the terminal
 	QList<Conductor *> conductors_;
 	/// Pointer to a rectangle representing the terminal bounding rect;
@@ -128,7 +128,7 @@ class Terminal : public QGraphicsItem {
 	bool name_terminal_hidden;
 	
 	private:
-	void init(QPointF, QET::Orientation, QString number, QString name, bool hiddenName);
+	void init(QPointF, Qet::Orientation, QString number, QString name, bool hiddenName);
 };
 
 /**

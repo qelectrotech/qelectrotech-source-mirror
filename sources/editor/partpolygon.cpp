@@ -25,9 +25,9 @@
 	@param scene La scene sur laquelle figure ce polygone
 */
 PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : 
-	QGraphicsPolygonItem(parent, scene),
 	CustomElementGraphicPart(editor),
-	closed(false)
+	QGraphicsPolygonItem(parent, scene),
+	m_closed(false)
 {
 	setFlags(QGraphicsItem::ItemIsSelectable);
 #if QT_VERSION >= 0x040600
@@ -64,7 +64,7 @@ void PartPolygon::fromXml(const QDomElement &qde) {
 	}
 	setPolygon(temp_polygon);
 	
-	closed = qde.attribute("closed") != "false";
+	m_closed = qde.attribute("closed") != "false";
 }
 
 /**
@@ -81,7 +81,7 @@ const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const {
 		xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(point.y()));
 		++ i;
 	}
-	if (!closed) xml_element.setAttribute("closed", "false");
+	if (!m_closed) xml_element.setAttribute("closed", "false");
 	stylesToXml(xml_element);
 	return(xml_element);
 }
@@ -99,35 +99,8 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
 	if (isSelected()) t.setColor(Qt::red);
 	painter -> setPen(t);
-	if (closed) painter -> drawPolygon(polygon());
+	if (m_closed) painter -> drawPolygon(polygon());
 	else painter -> drawPolyline(polygon());
-}
-
-/**
-	Specifie la valeur d'une propriete donnee du polygone
-	@param property propriete a modifier. Valeurs acceptees :
-		* closed : true pour fermer le polygone, false sinon
-	@param value Valeur a attribuer a la propriete
-*/
-void PartPolygon::setProperty(const QString &property, const QVariant &value) {
-	CustomElementGraphicPart::setProperty(property, value);
-	if (property == "closed") closed = value.toBool();
-	update();
-}
-
-/**
-	Permet d'acceder a la valeur d'une propriete donnee de la ligne
-	@param property propriete lue. Valeurs acceptees :
-		* closed : true pour fermer le polygone, false sinon
-	@return La valeur de la propriete property
-*/
-QVariant PartPolygon::property(const QString &property) {
-	// appelle la methode property de CustomElementGraphicpart pour les styles
-	QVariant style_property = CustomElementGraphicPart::property(property);
-	if (style_property != QVariant()) return(style_property);
-	
-	if (property == "closed") return(closed);
-	return(QVariant());
 }
 
 /**
@@ -143,7 +116,6 @@ QVariant PartPolygon::itemChange(GraphicsItemChange change, const QVariant &valu
 	}
 	return(QGraphicsPolygonItem::itemChange(change, value));
 }
-
 
 /**
 	@return true si cette partie n'est pas pertinente et ne merite pas d'etre

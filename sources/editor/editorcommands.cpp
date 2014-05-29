@@ -315,7 +315,7 @@ void AddPartCommand::redo() {
 ChangePartCommand::ChangePartCommand(
 	const QString &name,
 	CustomElementPart *part,
-	const QString &prop,
+	const char *prop,
 	const QVariant &old_v,
 	const QVariant &new_v,
 	QUndoCommand *parent

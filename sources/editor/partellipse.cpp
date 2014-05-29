@@ -23,7 +23,7 @@
 	@param parent Le QGraphicsItem parent de cette ellipse
 	@param scene La scene sur laquelle figure cette ellipse
 */
-PartEllipse::PartEllipse(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsEllipseItem(parent, scene), CustomElementGraphicPart(editor) {
+PartEllipse::PartEllipse(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : CustomElementGraphicPart(editor), QGraphicsEllipseItem(parent, scene) {
 	setFlags(QGraphicsItem::ItemIsSelectable);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
@@ -106,66 +106,32 @@ void PartEllipse::fromXml(const QDomElement &qde) {
 	);
 }
 
-/**
-	Specifie la valeur d'une propriete donnee de l'ellipse
-	@param property propriete a modifier. Valeurs acceptees :
-		* x : abscisse du centre de l'ellipse
-		* y : ordonnee du centre de l'ellipse
-		* diameter_h : diametre horizontal de l'ellipse
-		* diameter_v : diametre vertical de l'ellipse
-	@param value Valeur a attribuer a la propriete
-*/
-void PartEllipse::setProperty(const QString &property, const QVariant &value) {
-	CustomElementGraphicPart::setProperty(property, value);
-	if (!value.canConvert(QVariant::Double)) return;
-	if (property == "x") {
-		QRectF current_rect = rect();
-		QPointF current_pos = mapToScene(current_rect.center());
-		setRect(current_rect.translated(value.toDouble() - current_pos.x(), 0.0));
-	} else if (property == "y") {
-		QRectF current_rect = rect();
-		QPointF current_pos = mapToScene(current_rect.center());
-		setRect(current_rect.translated(0.0, value.toDouble() - current_pos.y()));
-	} else if (property == "diameter_h") {
-		qreal new_width = qAbs(value.toDouble());
-		QRectF current_rect = rect();
-		current_rect.translate((new_width - current_rect.width()) / -2.0, 0.0);
-		current_rect.setWidth(new_width);
-		setRect(current_rect);
-	} else if (property == "diameter_v") {
-		qreal new_height = qAbs(value.toDouble());
-		QRectF current_rect = rect();
-		current_rect.translate(0.0, (new_height - current_rect.height()) / -2.0);
-		current_rect.setHeight(new_height);
-		setRect(current_rect);
-	}
-	update();
+void PartEllipse::setX(const qreal x) {
+	QRectF current_rect = rect();
+	QPointF current_pos = mapToScene(current_rect.center());
+	setRect(current_rect.translated(x - current_pos.x(), 0.0));
 }
 
-/**
-	Permet d'acceder a la valeur d'une propriete donnee de l'ellipse
-	@param property propriete lue. Valeurs acceptees :
-		* x : abscisse du centre de l'ellipse
-		* y : ordonnee du centre de l'ellipse
-		* diameter_h : diametre horizontal de l'ellipse
-		* diameter_v : diametre vertical de l'ellipse
-	@return La valeur de la propriete property
-*/
-QVariant PartEllipse::property(const QString &property) {
-	// appelle la methode property de CustomElementGraphicpart pour les styles
-	QVariant style_property = CustomElementGraphicPart::property(property);
-	if (style_property != QVariant()) return(style_property);
-	
-	if (property == "x") {
-		return(mapToScene(rect().center()).x());
-	} else if (property == "y") {
-		return(mapToScene(rect().center()).y());
-	} else if (property == "diameter_h") {
-		return(rect().width());
-	} else if (property == "diameter_v") {
-		return(rect().height());
-	}
-	return(QVariant());
+void PartEllipse::setY(const qreal y) {
+	QRectF current_rect = rect();
+	QPointF current_pos = mapToScene(current_rect.center());
+	setRect(current_rect.translated(0.0, y - current_pos.y()));
+}
+
+void PartEllipse::setWidth(const qreal w) {
+	qreal new_width = qAbs(w);
+	QRectF current_rect = rect();
+	current_rect.translate((new_width - current_rect.width()) / -2.0, 0.0);
+	current_rect.setWidth(new_width);
+	setRect(current_rect);
+}
+
+void PartEllipse::setHeight(const qreal h) {
+	qreal new_height = qAbs(h);
+	QRectF current_rect = rect();
+	current_rect.translate(0.0, (new_height - current_rect.height()) / -2.0);
+	current_rect.setHeight(new_height);
+	setRect(current_rect);
 }
 
 /**

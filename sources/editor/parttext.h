@@ -19,6 +19,7 @@
 #define PART_TEXT_H
 #include <QtGui>
 #include "customelementpart.h"
+#include "qetapp.h"
 class TextEditor;
 class ElementPrimitiveDecorator;
 /**
@@ -49,23 +50,35 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	virtual QString xmlName() const { return(QString("text")); }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
-	qreal rotationAngle() const;
-	void setRotationAngle(const qreal &);
-	bool isBlack() const;
-	void setBlack(bool);
-	virtual void setProperty(const QString &, const QVariant &);
-	virtual QVariant property(const QString &);
+	void setRotation(qreal angle) {(QGraphicsObject::setRotation(QET::correctAngle(angle)));}
 	virtual bool isUseless() const;
 	virtual QRectF sceneGeometricRect() const;
 	virtual void startUserTransformation(const QRectF &);
 	virtual void handleUserTransformation(const QRectF &, const QRectF &);
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0 );
-	
 	virtual void setDecorator(ElementPrimitiveDecorator *);
 	virtual bool singleItemPressEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
 	virtual bool singleItemMoveEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
 	virtual bool singleItemReleaseEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
 	virtual bool singleItemDoubleClickEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
+
+	///PROPERTY
+	void setProperty(const char *name, const QVariant &value) {QGraphicsTextItem::setProperty(name, value);}
+	QVariant property(const char *name) const {return QGraphicsTextItem::property(name);}
+	// Size value
+	Q_PROPERTY(qreal size READ size WRITE setSize)
+		qreal size () const {return font().pointSize();}
+		void setSize (qreal s) {setFont(QETApp::diagramTextsFont(s));}
+	// Real size value
+	Q_PROPERTY(qreal real_size READ realSize WRITE setRealSize)
+		qreal realSize() const {return real_font_size_;}
+		void setRealSize(qreal rs) {real_font_size_ = rs;}
+	// Color value (true = black , false = white)
+	Q_PROPERTY(bool color READ isBlack WRITE setBlack)
+		bool isBlack() const {return defaultTextColor() == Qt::black;}
+		void setBlack(bool b) {setDefaultTextColor(b ? Qt::black : Qt::white);}
+	// displayed string
+	Q_PROPERTY(QString text READ toPlainText WRITE setPlainText)
 	
 	public slots:
 	void adjustItemPosition(int = 0);

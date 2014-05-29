@@ -64,11 +64,11 @@ class CustomElementPart {
 	/**
 		Set a specific property of the primitive
 	*/
-	virtual void setProperty(const QString &, const QVariant &) = 0;
+	virtual void setProperty(const char *name, const QVariant &value) = 0;
 	/**
 		Get the current value of a specific primitive property
 	*/
-	virtual QVariant property(const QString &) = 0;
+	virtual QVariant property(const char *name) const = 0;
 	/**
 		@return whether the primitive appears to be useless (e.g. 0-length line)
 		Typically, useless primitives are discarded when saving the element.

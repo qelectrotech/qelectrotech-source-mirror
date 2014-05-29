@@ -33,34 +33,31 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 {
 	style_ = new StyleEditor(editor);
 	
-	x1 = new QLineEdit();
-	y1 = new QLineEdit();
-	x2 = new QLineEdit();
-	y2 = new QLineEdit();
+	x1 = new QDoubleSpinBox();
+	y1 = new QDoubleSpinBox();
+	x2 = new QDoubleSpinBox();
+	y2 = new QDoubleSpinBox();
 	
-	x1 -> setValidator(new QDoubleValidator(x1));
-	y1 -> setValidator(new QDoubleValidator(y1));
-	x2 -> setValidator(new QDoubleValidator(x2));
-	y2 -> setValidator(new QDoubleValidator(y2));
+	x1 -> setRange(-1000, 1000);
+	y1 -> setRange(-1000, 1000);
+	x2 -> setRange(-1000, 1000);
+	y2 -> setRange(-1000, 1000);
 	
 	end1_type = new QComboBox();
-	end1_type -> addItem(QET::Icons::EndLineNone,     tr("Normale",                "type of the 1st end of a line"), QET::None    );
-	end1_type -> addItem(QET::Icons::EndLineSimple,   tr("Fl\350che simple",       "type of the 1st end of a line"), QET::Simple  );
-	end1_type -> addItem(QET::Icons::EndLineTriangle, tr("Fl\350che triangulaire", "type of the 1st end of a line"), QET::Triangle);
-	end1_type -> addItem(QET::Icons::EndLineCircle,   tr("Cercle",                 "type of the 1st end of a line"), QET::Circle  );
-	end1_type -> addItem(QET::Icons::EndLineDiamond,  tr("Carr\351",               "type of the 1st end of a line"), QET::Diamond );
+	end1_type -> addItem(QET::Icons::EndLineNone,     tr("Normale",                "type of the 1st end of a line"), Qet::None    );
+	end1_type -> addItem(QET::Icons::EndLineSimple,   tr("Fl\350che simple",       "type of the 1st end of a line"), Qet::Simple  );
+	end1_type -> addItem(QET::Icons::EndLineTriangle, tr("Fl\350che triangulaire", "type of the 1st end of a line"), Qet::Triangle);
+	end1_type -> addItem(QET::Icons::EndLineCircle,   tr("Cercle",                 "type of the 1st end of a line"), Qet::Circle  );
+	end1_type -> addItem(QET::Icons::EndLineDiamond,  tr("Carr\351",               "type of the 1st end of a line"), Qet::Diamond );
 	end2_type = new QComboBox();
-	end2_type -> addItem(QET::Icons::EndLineNone,     tr("Normale",                "type of the 2nd end of a line"), QET::None    );
-	end2_type -> addItem(QET::Icons::EndLineSimple,   tr("Fl\350che simple",       "type of the 2nd end of a line"), QET::Simple  );
-	end2_type -> addItem(QET::Icons::EndLineTriangle, tr("Fl\350che triangulaire", "type of the 2nd end of a line"), QET::Triangle);
-	end2_type -> addItem(QET::Icons::EndLineCircle,   tr("Cercle",                 "type of the 2nd end of a line"), QET::Circle  );
-	end2_type -> addItem(QET::Icons::EndLineDiamond,  tr("Carr\351",               "type of the 2nd end of a line"), QET::Diamond );
+	end2_type -> addItem(QET::Icons::EndLineNone,     tr("Normale",                "type of the 2nd end of a line"), Qet::None    );
+	end2_type -> addItem(QET::Icons::EndLineSimple,   tr("Fl\350che simple",       "type of the 2nd end of a line"), Qet::Simple  );
+	end2_type -> addItem(QET::Icons::EndLineTriangle, tr("Fl\350che triangulaire", "type of the 2nd end of a line"), Qet::Triangle);
+	end2_type -> addItem(QET::Icons::EndLineCircle,   tr("Cercle",                 "type of the 2nd end of a line"), Qet::Circle  );
+	end2_type -> addItem(QET::Icons::EndLineDiamond,  tr("Carr\351",               "type of the 2nd end of a line"), Qet::Diamond );
 	
-	end1_length = new QLineEdit();
-	end2_length = new QLineEdit();
-	
-	end1_length -> setValidator(new QDoubleValidator(end1_length));
-	end2_length -> setValidator(new QDoubleValidator(end2_length));
+	end1_length = new QDoubleSpinBox();
+	end2_length = new QDoubleSpinBox();
 	
 	QGridLayout *grid = new QGridLayout();
 	grid -> addWidget(new QLabel("x1"),        0, 0);
@@ -127,40 +124,40 @@ CustomElementPart *LineEditor::currentPart() const {
 */
 void LineEditor::updateLine() {
 	if (!part) return;
-	part -> setFirstEndType(static_cast<QET::EndType>(end1_type -> currentIndex()));
-	part -> setFirstEndLength(end1_length -> text().toDouble());
-	part -> setSecondEndType(static_cast<QET::EndType>(end2_type -> currentIndex()));
-	part -> setSecondEndLength(end2_length -> text().toDouble());
+	part -> setProperty("end1",    end1_type   -> itemData(end1_type->currentIndex()));
+	part -> setProperty("length1", end1_length -> value());
+	part -> setProperty("end2",	   end2_type   -> itemData(end2_type->currentIndex()));
+	part -> setProperty("length2", end2_length -> value());
 	part -> setLine(
 		QLineF(
 			part -> mapFromScene(
-				x1 -> text().toDouble(),
-				y1 -> text().toDouble()
+				x1 -> value(),
+				y1 -> value()
 			),
 			part -> mapFromScene(
-				x2 -> text().toDouble(),
-				y2 -> text().toDouble()
+				x2 -> value(),
+				y2 -> value()
 			)
 		)
 	);
 }
 
 /// Met a jour l'abscisse du premier point de la ligne et cree un objet d'annulation
-void LineEditor::updateLineX1() { addChangePartCommand(tr("abscisse point 1"),    part, "x1", x1 -> text().toDouble()); }
+void LineEditor::updateLineX1() { addChangePartCommand(tr("abscisse point 1"),    part, "x1", x1 -> value()); }
 /// Met a jour l'ordonnee du premier point de la ligne et cree un objet d'annulation
-void LineEditor::updateLineY1() { addChangePartCommand(tr("ordonn\351e point 1"), part, "y1", y1 -> text().toDouble()); }
+void LineEditor::updateLineY1() { addChangePartCommand(tr("ordonn\351e point 1"), part, "y1", y1 -> value()); }
 /// Met a jour l'abscisse du second point de la ligne et cree un objet d'annulation
-void LineEditor::updateLineX2() { addChangePartCommand(tr("abscisse point 2"),    part, "x2", x2 -> text().toDouble()); }
+void LineEditor::updateLineX2() { addChangePartCommand(tr("abscisse point 2"),    part, "x2", x2 -> value()); }
 /// Met a jour l'ordonnee du second point de la ligne et cree un objet d'annulation
-void LineEditor::updateLineY2() { addChangePartCommand(tr("ordonn\351e point 2"), part, "y2", y2 -> text().toDouble()); }
+void LineEditor::updateLineY2() { addChangePartCommand(tr("ordonn\351e point 2"), part, "y2", y2 -> value()); }
 /// Met a jour le type de la premiere extremite
-void LineEditor::updateLineEndType1() {   addChangePartCommand(tr("type fin 1"),     part, "end1",    end1_type -> currentIndex());   }
+void LineEditor::updateLineEndType1() {   addChangePartCommand(tr("type fin 1"),     part, "end1",    end1_type -> itemData(end1_type->currentIndex()));   }
 /// Met a jour la longueur de la premiere extremite
-void LineEditor::updateLineEndLength1() { addChangePartCommand(tr("longueur fin 1"), part, "length1", end1_length -> text()); }
+void LineEditor::updateLineEndLength1() { addChangePartCommand(tr("longueur fin 1"), part, "length1", end1_length -> value()); }
 /// Met a jour le type de la seconde extremite
-void LineEditor::updateLineEndType2() {   addChangePartCommand(tr("type fin 2"),     part, "end2",    end2_type -> currentIndex());   }
+void LineEditor::updateLineEndType2() {   addChangePartCommand(tr("type fin 2"),     part, "end2",    end2_type -> itemData(end2_type->currentIndex()));   }
 /// Met a jour la longueur de la seconde extremite
-void LineEditor::updateLineEndLength2() { addChangePartCommand(tr("longueur fin 2"), part, "length2", end2_length -> text()); }
+void LineEditor::updateLineEndLength2() { addChangePartCommand(tr("longueur fin 2"), part, "length2", end2_length -> value()); }
 
 /**
 	Met a jour le formulaire d'edition
@@ -170,14 +167,14 @@ void LineEditor::updateForm() {
 	activeConnections(false);
 	QPointF p1(part -> sceneP1());
 	QPointF p2(part -> sceneP2());
-	x1 -> setText(QString("%1").arg(p1.x()));
-	y1 -> setText(QString("%1").arg(p1.y()));
-	x2 -> setText(QString("%1").arg(p2.x()));
-	y2 -> setText(QString("%1").arg(p2.y()));
-	end1_type -> setCurrentIndex(part -> firstEndType());
-	end1_length -> setText(QString("%1").arg(part -> firstEndLength()));
-	end2_type -> setCurrentIndex(part -> secondEndType());
-	end2_length -> setText(QString("%1").arg(part -> secondEndLength()));
+	x1 -> setValue(p1.x());
+	y1 -> setValue(p1.y());
+	x2 -> setValue(p2.x());
+	y2 -> setValue(p2.y());
+	end1_type -> setCurrentIndex(end1_type->findData(part -> firstEndType()));
+	end1_length -> setValue(part -> firstEndLength());
+	end2_type -> setCurrentIndex(end2_type->findData(part -> secondEndType()));
+	end2_length -> setValue(part -> secondEndLength());
 	activeConnections(true);
 }
 

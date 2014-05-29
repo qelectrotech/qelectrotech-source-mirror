@@ -323,8 +323,8 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	if (!QET::attributeIsAReal(e, QString("x2"), &x2)) return(false);
 	if (!QET::attributeIsAReal(e, QString("y2"), &y2)) return(false);
 	
-	QET::EndType first_end = QET::endTypeFromString(e.attribute("end1"));
-	QET::EndType second_end = QET::endTypeFromString(e.attribute("end2"));
+	Qet::EndType first_end = Qet::endTypeFromString(e.attribute("end1"));
+	Qet::EndType second_end = Qet::endTypeFromString(e.attribute("end2"));
 	qreal length1, length2;
 	if (!QET::attributeIsAReal(e, QString("length1"), &length1)) length1 = 1.5;
 	if (!QET::attributeIsAReal(e, QString("length2"), &length2)) length2 = 1.5;
@@ -362,23 +362,23 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	QPointF start_point, stop_point;
 	if (draw_1st_end) {
 		QList<QPointF> four_points1(PartLine::fourEndPoints(point1, point2, length1));
-		if (first_end == QET::Circle) {
+		if (first_end == Qet::Circle) {
 			qp.drawEllipse(QRectF(four_points1[0] - QPointF(length1, length1), QSizeF(length1 * 2.0, length1 * 2.0)));
 			start_point = four_points1[1];
-		} else if (first_end == QET::Diamond) {
+		} else if (first_end == Qet::Diamond) {
 			qp.drawPolygon(QPolygonF() << four_points1[1] << four_points1[2] << point1 << four_points1[3]);
 			start_point = four_points1[1];
-		} else if (first_end == QET::Simple) {
+		} else if (first_end == Qet::Simple) {
 			qp.drawPolyline(QPolygonF() << four_points1[3] << point1 << four_points1[2]);
 			start_point = point1;
 			
-		} else if (first_end == QET::Triangle) {
+		} else if (first_end == Qet::Triangle) {
 			qp.drawPolygon(QPolygonF() << four_points1[0] << four_points1[2] << point1 << four_points1[3]);
 			start_point = four_points1[0];
 		}
 		
 		// ajuste le depart selon l'epaisseur du trait
-		if (pen_width && (first_end == QET::Simple || first_end == QET::Circle)) {
+		if (pen_width && (first_end == Qet::Simple || first_end == Qet::Circle)) {
 			start_point = QLineF(start_point, point2).pointAt(pen_width / 2.0 / line_length);
 		}
 	} else {
@@ -388,22 +388,22 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	// dessine la seconde extremite
 	if (draw_2nd_end) {
 		QList<QPointF> four_points2(PartLine::fourEndPoints(point2, point1, length2));
-		if (second_end == QET::Circle) {
+		if (second_end == Qet::Circle) {
 			qp.drawEllipse(QRectF(four_points2[0] - QPointF(length2, length2), QSizeF(length2 * 2.0, length2 * 2.0)));
 			stop_point = four_points2[1];
-		} else if (second_end == QET::Diamond) {
+		} else if (second_end == Qet::Diamond) {
 			qp.drawPolygon(QPolygonF() << four_points2[2] << point2 << four_points2[3] << four_points2[1]);
 			stop_point = four_points2[1];
-		} else if (second_end == QET::Simple) {
+		} else if (second_end == Qet::Simple) {
 			qp.drawPolyline(QPolygonF() << four_points2[3] << point2 << four_points2[2]);
 			stop_point = point2;
-		} else if (second_end == QET::Triangle) {
+		} else if (second_end == Qet::Triangle) {
 			qp.drawPolygon(QPolygonF() << four_points2[0] << four_points2[2] << point2 << four_points2[3] << four_points2[0]);
 			stop_point = four_points2[0];
 		}
 		
 		// ajuste l'arrivee selon l'epaisseur du trait
-		if (pen_width && (second_end == QET::Simple || second_end == QET::Circle)) {
+		if (pen_width && (second_end == Qet::Simple || second_end == Qet::Circle)) {
 			stop_point = QLineF(point1, stop_point).pointAt((line_length - (pen_width / 2.0)) / line_length);
 		}
 	} else {
@@ -749,14 +749,14 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 Terminal *CustomElement::parseTerminal(QDomElement &e) {
 	// verifie la presence et la validite des attributs obligatoires
 	qreal terminalx, terminaly;
-	QET::Orientation terminalo;
+	Qet::Orientation terminalo;
 	if (!QET::attributeIsAReal(e, QString("x"), &terminalx)) return(0);
 	if (!QET::attributeIsAReal(e, QString("y"), &terminaly)) return(0);
 	if (!e.hasAttribute("orientation")) return(0);
-	if (e.attribute("orientation") == "n") terminalo = QET::North;
-	else if (e.attribute("orientation") == "s") terminalo = QET::South;
-	else if (e.attribute("orientation") == "e") terminalo = QET::East;
-	else if (e.attribute("orientation") == "w") terminalo = QET::West;
+	if (e.attribute("orientation") == "n") terminalo = Qet::North;
+	else if (e.attribute("orientation") == "s") terminalo = Qet::South;
+	else if (e.attribute("orientation") == "e") terminalo = Qet::East;
+	else if (e.attribute("orientation") == "w") terminalo = Qet::West;
 	else return(0);
 	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this, qobject_cast<Diagram *>(scene()));
 	new_terminal -> setZValue(420); // valeur arbitraire pour maintenir les bornes au-dessus des champs de texte

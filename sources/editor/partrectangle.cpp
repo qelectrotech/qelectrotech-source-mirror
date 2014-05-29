@@ -23,7 +23,7 @@
 	@param parent Le QGraphicsItem parent de ce rectangle
 	@param scene La scene sur laquelle figure ce rectangle
 */
-PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsRectItem(parent, scene), CustomElementGraphicPart(editor) {
+PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : CustomElementGraphicPart(editor), QGraphicsRectItem(parent, scene) {
 	setFlags(QGraphicsItem::ItemIsSelectable);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
@@ -106,63 +106,45 @@ void PartRectangle::fromXml(const QDomElement &qde) {
 }
 
 /**
-	Specifie la valeur d'une propriete donnee du rectangle
-	@param property propriete a modifier. Valeurs acceptees :
-		* x : abscisse du coin superieur gauche du rectangle
-		* y : ordonnee du coin superieur gauche du rectangle
-		* width : largeur du rectangle
-		* height : hauteur du rectangle
-	@param value Valeur a attribuer a la propriete
-*/
-void PartRectangle::setProperty(const QString &property, const QVariant &value) {
-	CustomElementGraphicPart::setProperty(property, value);
-	if (!value.canConvert(QVariant::Double)) return;
-	if (property == "x") {
-		QRectF current_rect = rect();
-		QPointF current_pos = mapToScene(current_rect.topLeft());
-		setRect(current_rect.translated(value.toDouble() - current_pos.x(), 0.0));
-	} else if (property == "y") {
-		QRectF current_rect = rect();
-		QPointF current_pos = mapToScene(current_rect.topLeft());
-		setRect(current_rect.translated(0.0, value.toDouble() - current_pos.y()));
-	} else if (property == "width") {
-		qreal new_width = qAbs(value.toDouble());
-		QRectF current_rect = rect();
-		current_rect.setWidth(new_width);
-		setRect(current_rect);
-	} else if (property == "height") {
-		qreal new_height = qAbs(value.toDouble());
-		QRectF current_rect = rect();
-		current_rect.setHeight(new_height);
-		setRect(current_rect);
-	}
-	update();
+ * @brief PartRectangle::setX
+ * @param x new value
+ */
+void PartRectangle::setX(qreal x) {
+	QRectF current_rect = rect();
+	QPointF current_pos = mapToScene(current_rect.topLeft());
+	setRect(current_rect.translated(x - current_pos.x(), 0.0));
 }
 
 /**
-	Permet d'acceder a la valeur d'une propriete donnee du rectangle
-	@param property propriete lue. Valeurs acceptees :
-		* x : abscisse du coin superieur gauche du rectangle
-		* y : ordonnee du coin superieur gauche du rectangle
-		* width : largeur du rectangle
-		* height : hauteur du rectangle
-	@return La valeur de la propriete property
-*/
-QVariant PartRectangle::property(const QString &property) {
-	// appelle la methode property de CustomElementGraphicpart pour les styles
-	QVariant style_property = CustomElementGraphicPart::property(property);
-	if (style_property != QVariant()) return(style_property);
-	
-	if (property == "x") {
-		return(mapToScene(rect().topLeft()).x());
-	} else if (property == "y") {
-		return(mapToScene(rect().topLeft()).y());
-	} else if (property == "width") {
-		return(rect().width());
-	} else if (property == "height") {
-		return(rect().height());
-	}
-	return(QVariant());
+ * @brief PartRectangle::setY
+ * @param y new value
+ */
+void PartRectangle::setY(qreal y) {
+	QRectF current_rect = rect();
+	QPointF current_pos = mapToScene(current_rect.topLeft());
+	setRect(current_rect.translated(0.0, y - current_pos.y()));
+}
+
+/**
+ * @brief PartRectangle::setWidth
+ * @param w new value
+ */
+void PartRectangle::setWidth(qreal w) {
+	qreal new_width = qAbs(w);
+	QRectF current_rect = rect();
+	current_rect.setWidth(new_width);
+	setRect(current_rect);
+}
+
+/**
+ * @brief PartRectangle::setHeight
+ * @param h new value
+ */
+void PartRectangle::setHeight(qreal h) {
+	qreal new_height = qAbs(h);
+	QRectF current_rect = rect();
+	current_rect.setHeight(new_height);
+	setRect(current_rect);
 }
 
 /**

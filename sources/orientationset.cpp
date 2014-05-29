@@ -27,8 +27,8 @@ OrientationSet::OrientationSet() :
 	east_ori(true),
 	south_ori(true),
 	west_ori(true),
-	default_ori(QET::North),
-	current_ori(QET::North)
+	default_ori(Qet::North),
+	current_ori(Qet::North)
 {}
 
 /**
@@ -42,8 +42,8 @@ bool OrientationSet::setNorth (bool ori) {
 		north_ori = ori;
 		// en cas de desactivation d'une orientation, il faut verifier voire corriger les orientations courante et par defaut 
 		if (!ori) {
-			if (default_ori == QET::North) default_ori = next();
-			if (current_ori == QET::North) current_ori = next();
+			if (default_ori == Qet::North) default_ori = next();
+			if (current_ori == Qet::North) current_ori = next();
 		}
 	}
 	return(can_set_ori);
@@ -60,8 +60,8 @@ bool OrientationSet::setEast (bool ori) {
 		east_ori = ori;
 		// en cas de desactivation d'une orientation, il faut verifier voire corriger les orientations courante et par defaut 
 		if (!ori) {
-			if (default_ori == QET::East) default_ori = next();
-			if (current_ori == QET::East) current_ori = next();
+			if (default_ori == Qet::East) default_ori = next();
+			if (current_ori == Qet::East) current_ori = next();
 		}
 	}
 	return(can_set_ori);
@@ -78,8 +78,8 @@ bool OrientationSet::setSouth (bool ori) {
 		south_ori = ori;
 		// en cas de desactivation d'une orientation, il faut verifier voire corriger les orientations courante et par defaut 
 		if (!ori) {
-			if (default_ori == QET::South) default_ori = next();
-			if (current_ori == QET::South) current_ori = next();
+			if (default_ori == Qet::South) default_ori = next();
+			if (current_ori == Qet::South) current_ori = next();
 		}
 	}
 	return(can_set_ori);
@@ -96,8 +96,8 @@ bool OrientationSet::setWest (bool ori) {
 		west_ori = ori;
 		// en cas de desactivation d'une orientation, il faut verifier voire corriger les orientations courante et par defaut 
 		if (!ori) {
-			if (default_ori == QET::West) default_ori = next();
-			if (current_ori == QET::West) current_ori = next();
+			if (default_ori == Qet::West) default_ori = next();
+			if (current_ori == Qet::West) current_ori = next();
 		}
 	}
 	return(can_set_ori);
@@ -108,7 +108,7 @@ bool OrientationSet::setWest (bool ori) {
 	@param ori nouvelle orientation courante
 	@return true si le changement d'orientation a reussi, false sinon
 */
-bool OrientationSet::setCurrent(QET::Orientation ori) {
+bool OrientationSet::setCurrent(Qet::Orientation ori) {
 	bool can_set_ori = accept(ori);
 	if (can_set_ori) current_ori = ori;
 	return(can_set_ori);
@@ -117,18 +117,18 @@ bool OrientationSet::setCurrent(QET::Orientation ori) {
 /**
 	@return l'orientation suivant l'orientation courante
 */
-QET::Orientation OrientationSet::next() const {
-	QET::Orientation result = current_ori;
-	do result = QET::nextOrientation(result); while (!accept(result));
+Qet::Orientation OrientationSet::next() const {
+	Qet::Orientation result = current_ori;
+	do result = Qet::nextOrientation(result); while (!accept(result));
 	return(result);
 }
 
 /**
 	@return l'orientation precedant l'orientation courante
 */
-QET::Orientation OrientationSet::previous() const {
-	QET::Orientation result = current_ori;
-	do result = QET::previousOrientation(result); while (!accept(result));
+Qet::Orientation OrientationSet::previous() const {
+	Qet::Orientation result = current_ori;
+	do result = Qet::previousOrientation(result); while (!accept(result));
 	return(result);
 }
 
@@ -157,13 +157,13 @@ const OrientationSet OrientationSet::operator--(int) {
 	@param ori L'orientation en question
 	@return true si l'orientation est utilisable, false sinon
 */
-bool OrientationSet::accept(QET::Orientation ori) const {
+bool OrientationSet::accept(Qet::Orientation ori) const {
 	bool accepted_ori = false;
 	switch(ori) {
-		case QET::North: accepted_ori = north_ori; break;
-		case QET::East : accepted_ori = east_ori;  break;
-		case QET::South: accepted_ori = south_ori; break;
-		case QET::West : accepted_ori = west_ori;  break;
+		case Qet::North: accepted_ori = north_ori; break;
+		case Qet::East : accepted_ori = east_ori;  break;
+		case Qet::South: accepted_ori = south_ori; break;
+		case Qet::West : accepted_ori = west_ori;  break;
 	}
 	return(accepted_ori);
 }
@@ -172,7 +172,7 @@ bool OrientationSet::accept(QET::Orientation ori) const {
 	Definit l'orientation suivante comme etant l'orientation courante
 	@return la nouvelle orientation courante
 */
-QET::Orientation OrientationSet::setNext() {
+Qet::Orientation OrientationSet::setNext() {
 	setCurrent(next());
 	return(current_ori);
 }
@@ -181,7 +181,7 @@ QET::Orientation OrientationSet::setNext() {
 	Definit l'orientation precedente comme etant l'orientation courante
 	@return la nouvelle orientation courante
 */
-QET::Orientation OrientationSet::setPrevious() {
+Qet::Orientation OrientationSet::setPrevious() {
 	setCurrent(previous());
 	return(current_ori);
 }
@@ -245,7 +245,7 @@ bool OrientationSet::fromString(const QString &str) {
 	if (matches.count("d") != 1) return(false);
 	
 	bool *ori_pointers[4] = { &north_ori, &east_ori, &south_ori, &west_ori };
-	QET::Orientation ori_ints[4] = { QET::North, QET::East, QET::South, QET::West };
+	Qet::Orientation ori_ints[4] = { Qet::North, Qet::East, Qet::South, Qet::West };
 	for(int i = 0 ; i < 4 ; ++ i) {
 		QString current = matches.at(i + 1);
 		if (current == "d") {
@@ -263,7 +263,7 @@ bool OrientationSet::fromString(const QString &str) {
 */
 QString OrientationSet::toString() const {
 	bool ori_pointers[4] = { north_ori, east_ori, south_ori, west_ori };
-	QET::Orientation ori_ints[4] = { QET::North, QET::East, QET::South, QET::West };
+	Qet::Orientation ori_ints[4] = { Qet::North, Qet::East, Qet::South, Qet::West };
 	QString result("");
 	for(int i = 0 ; i < 4 ; ++ i) {
 		if (default_ori == ori_ints[i]) result += "d";

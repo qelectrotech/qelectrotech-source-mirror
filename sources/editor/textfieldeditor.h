@@ -36,8 +36,10 @@ class TextFieldEditor : public ElementItemEditor {
 	// attributes
 	private:
 	PartTextField *part;
-	QLineEdit *qle_x, *qle_y, *qle_text;
+	QLineEdit *qle_text;
+	QComboBox *m_tagg_cb;
 	QSpinBox *font_size;
+	QDoubleSpinBox *qle_x, *qle_y;
 	QCheckBox *rotate;
 	QTextOrientationSpinBoxWidget *rotation_angle_;
 	
@@ -54,6 +56,7 @@ class TextFieldEditor : public ElementItemEditor {
 	void updateTextFieldS();
 	void updateTextFieldR();
 	void updateTextFieldRotationAngle();
+	void updateTagg();
 	void updateForm();
 	
 	private:

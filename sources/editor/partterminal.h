@@ -17,14 +17,15 @@
 */
 #ifndef PART_TERMINAL_H
 #define PART_TERMINAL_H
-#include "customelementpart.h"
+#include "customelementgraphicpart.h"
 #include "qet.h"
 #include <QtGui>
 /**
 	This class represents a terminal which may be used to compose the drawing of
 	an electrical element within the element editor.
 */
-class PartTerminal : public CustomElementPart, public QGraphicsItem {
+class PartTerminal : public CustomElementGraphicPart, public QGraphicsItem {
+	Q_OBJECT
 	public:
 	// constructors, destructor
 	PartTerminal(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
@@ -34,10 +35,8 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	
 	// attributes
 	private:
-	QET::Orientation _orientation;
+	Qet::Orientation m_orientation;
 	QPointF second_point;
-	QString number_, name_;
-	bool nameHidden_;
 	
 	// methods
 	public:
@@ -54,21 +53,23 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	virtual QRectF boundingRect() const;
-	QET::Orientation orientation() const;
-	void setOrientation(QET::Orientation);
-	QString number() const;
-	void setNumber(const QString &);
-	QString nameOfTerminal() const;
-	void setName(const QString &);
-	bool nameIsHidden() const;
-	void setNameHidden(const bool &);
 	
-	virtual void setProperty(const QString &, const QVariant &);
-	virtual QVariant property(const QString &);
+	/*virtual void setProperty(const QString &, const QVariant &);
+	virtual QVariant property(const QString &);*/
 	virtual bool isUseless() const;
 	virtual QRectF sceneGeometricRect() const;
 	virtual void startUserTransformation(const QRectF &);
 	virtual void handleUserTransformation(const QRectF &, const QRectF &);
+
+	///PROPERTY
+	// X value
+	Q_PROPERTY(qreal x READ x WRITE setX)
+	// Y value
+	Q_PROPERTY(qreal y READ y WRITE setY)
+	// Horientation value
+	Q_PROPERTY(Qet::Orientation orientation READ orientation WRITE setOrientation)
+		Qet::Orientation orientation() const {return m_orientation;}
+		void setOrientation(Qet::Orientation ori);
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

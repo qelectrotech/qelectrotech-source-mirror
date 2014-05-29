@@ -37,7 +37,7 @@ class RectangleEditor : public ElementItemEditor {
 	private:
 	PartRectangle *part;
 	StyleEditor *style_;
-	QLineEdit *x, *y, *w, *h;
+	QDoubleSpinBox *x, *y, *w, *h;
 	
 	// methods
 	public:

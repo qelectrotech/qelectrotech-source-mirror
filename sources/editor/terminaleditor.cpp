@@ -29,21 +29,17 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWi
 	ElementItemEditor(editor, parent),
 	part(term)
 {
-	qle_x = new QLineEdit();
-	qle_y = new QLineEdit();
+	qle_x = new QDoubleSpinBox();
+	qle_y = new QDoubleSpinBox();
 	
-	qle_x -> setValidator(new QDoubleValidator(qle_x));
-	qle_y -> setValidator(new QDoubleValidator(qle_y));
+	qle_x -> setRange(-1000, 1000);
+	qle_y -> setRange(-1000, 1000);
 	
 	orientation = new QComboBox();
-	orientation -> addItem(QET::Icons::North, tr("Nord"),  QET::North);
-	orientation -> addItem(QET::Icons::East,  tr("Est"),   QET::East);
-	orientation -> addItem(QET::Icons::South, tr("Sud"),   QET::South);
-	orientation -> addItem(QET::Icons::West,  tr("Ouest"), QET::West);
-	
-	qle_number = new QLineEdit();
-	qle_name   = new QLineEdit();
-	qcheck_name_visible = new QCheckBox(tr("Visible"));
+	orientation -> addItem(QET::Icons::North, tr("Nord"),  Qet::North);
+	orientation -> addItem(QET::Icons::East,  tr("Est"),   Qet::East);
+	orientation -> addItem(QET::Icons::South, tr("Sud"),   Qet::South);
+	orientation -> addItem(QET::Icons::West,  tr("Ouest"), Qet::West);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout();
 	main_layout -> addWidget(new QLabel(tr("Position : ")));
@@ -59,17 +55,6 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWi
 	ori -> addWidget(new QLabel(tr("Orientation : ")));
 	ori -> addWidget(orientation                     );
 	main_layout -> addLayout(ori);
-	
-	QHBoxLayout *name = new QHBoxLayout();
-	name -> addWidget(new QLabel(tr("Nom : ")));
-	name -> addWidget(qle_name                     );
-	name -> addWidget(qcheck_name_visible                     );
-	main_layout -> addLayout(name);
-	
-	QHBoxLayout *num = new QHBoxLayout();
-	num -> addWidget(new QLabel(tr("Num\351ro : ")));
-	num -> addWidget(qle_number                     );
-	main_layout -> addLayout(num);
 	
 	main_layout -> addStretch();
 	setLayout(main_layout);
@@ -116,51 +101,34 @@ CustomElementPart *TerminalEditor::currentPart() const {
 */
 void TerminalEditor::updateTerminal() {
 	if (!part) return;
-	part -> setPos(qle_x -> text().toDouble(), qle_y -> text().toDouble());
+	part -> setPos(qle_x -> value(), qle_y -> value());
 	part -> setOrientation(
-		static_cast<QET::Orientation>(
+		static_cast<Qet::Orientation>(
 			orientation -> itemData(
 				orientation -> currentIndex()
 			).toInt()
 		)
 	);
-	part -> setNumber( qle_number->text() );
-	part -> setName  ( qle_name->text() );
-	part -> setNameHidden( !qcheck_name_visible ->isChecked() );
 }
 
 /// WARNING!!!! on addChangePartCommand the prop accept only the simple string! (NOT /:;,?...)
 /// Met a jour l'abscisse de la position de la borne et cree un objet d'annulation
-void TerminalEditor::updateTerminalX() { addChangePartCommand(tr("abscisse"),    part, "x",           qle_x -> text().toDouble()); updateForm(); }
+void TerminalEditor::updateTerminalX() { addChangePartCommand(tr("abscisse"),    part, "x",           qle_x -> value()); }
 /// Met a jour l'ordonnee de la position de la borne et cree un objet d'annulation
-void TerminalEditor::updateTerminalY() { addChangePartCommand(tr("ordonn\351e"), part, "y",           qle_y -> text().toDouble()); updateForm(); }
+void TerminalEditor::updateTerminalY() { addChangePartCommand(tr("ordonn\351e"), part, "y",           qle_y -> value()); }
 /// Met a jour l'orientation de la borne et cree un objet d'annulation
-void TerminalEditor::updateTerminalO() { addChangePartCommand(tr("orientation"), part, "orientation", orientation -> itemData(orientation -> currentIndex()).toInt()); }
+void TerminalEditor::updateTerminalO() { addChangePartCommand(tr("orientation"), part, "orientation", orientation -> itemData(orientation -> currentIndex())); }
 /// update Number and name, create cancel object
-void TerminalEditor::updateTerminalNum() {
-	addChangePartCommand(tr("num\351ro: ")+qle_number -> text(), part, "number", qle_number -> text());
-	updateForm();
-}
-void TerminalEditor::updateTerminalName() {
-	addChangePartCommand(tr("nom: ")+qle_name -> text(), part, "name", qle_name -> text());
-	updateForm();
-}
-void TerminalEditor::updateTerminalNameVisible() {
-	addChangePartCommand(tr("nom visible: ")+QString::number( qcheck_name_visible->isChecked()), part, "nameHidden", !qcheck_name_visible -> isChecked());
-	updateForm();
-}
+
 /**
 	Met a jour le formulaire d'edition
 */
 void TerminalEditor::updateForm() {
 	if (!part) return;
 	activeConnections(false);
-	qle_x -> setText(part -> property("x").toString());
-	qle_y -> setText(part -> property("y").toString());
-	orientation -> setCurrentIndex(static_cast<int>(part -> orientation()));
-	qle_number -> setText(part -> number() );
-	qle_name -> setText(part -> nameOfTerminal() );
-	qcheck_name_visible ->setChecked( !part -> nameIsHidden() );
+	qle_x -> setValue(part->property("x").toReal());
+	qle_y -> setValue(part->property("y").toReal());
+	orientation -> setCurrentIndex(orientation->findData(part->property("orientation")));
 	activeConnections(true);
 }
 
@@ -173,15 +141,9 @@ void TerminalEditor::activeConnections(bool active) {
 		connect(qle_x,       SIGNAL(editingFinished()), this, SLOT(updateTerminalX()));
 		connect(qle_y,       SIGNAL(editingFinished()), this, SLOT(updateTerminalY()));
 		connect(orientation, SIGNAL(activated(int)),    this, SLOT(updateTerminalO()));
-		connect(qle_number,  SIGNAL(editingFinished()), this, SLOT(updateTerminalNum()));
-		connect(qle_name,    SIGNAL(editingFinished()), this, SLOT(updateTerminalName()));
-		connect(qcheck_name_visible,    SIGNAL(stateChanged ( int)), this, SLOT(updateTerminalNameVisible()));
 	} else {
 		disconnect(qle_x,       SIGNAL(editingFinished()), this, SLOT(updateTerminalX()));
 		disconnect(qle_y,       SIGNAL(editingFinished()), this, SLOT(updateTerminalY()));
 		disconnect(orientation, SIGNAL(activated(int)),    this, SLOT(updateTerminalO()));
-		disconnect(qle_number,  SIGNAL(editingFinished()), this, SLOT(updateTerminalNum()));
-		disconnect(qle_name,    SIGNAL(editingFinished()), this, SLOT(updateTerminalName()));
-		disconnect(qcheck_name_visible,    SIGNAL(stateChanged ( int)), this, SLOT(updateTerminalNameVisible()));
 	}
 }

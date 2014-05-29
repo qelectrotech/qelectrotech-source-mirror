@@ -162,7 +162,7 @@ void Conductor::segmentsToPath() {
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conductor::updateConductorPath(const QPointF &p1, QET::Orientation o1, const QPointF &p2, QET::Orientation o2) {
+void Conductor::updateConductorPath(const QPointF &p1, Qet::Orientation o1, const QPointF &p2, Qet::Orientation o2) {
 	Q_UNUSED(o1);
 	Q_UNUSED(o2);
 	
@@ -290,9 +290,9 @@ QHash<ConductorSegmentProfile *, qreal> Conductor::shareOffsetBetweenSegments(
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conductor::generateConductorPath(const QPointF &p1, QET::Orientation o1, const QPointF &p2, QET::Orientation o2) {
+void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, const QPointF &p2, Qet::Orientation o2) {
 	QPointF sp1, sp2, depart, newp1, newp2, arrivee, depart0, arrivee0;
-	QET::Orientation ori_depart, ori_arrivee;
+	Qet::Orientation ori_depart, ori_arrivee;
 	
 	// s'assure qu'il n'y a ni points
 	QList<QPointF> points;
@@ -331,38 +331,38 @@ void Conductor::generateConductorPath(const QPointF &p1, QET::Orientation o1, co
 	// commence le vrai trajet
 	if (depart.y() < arrivee.y()) {
 		// trajet descendant
-		if ((ori_depart == QET::North && (ori_arrivee == QET::South || ori_arrivee == QET::West)) || (ori_depart == QET::East && ori_arrivee == QET::West)) {
+		if ((ori_depart == Qet::North && (ori_arrivee == Qet::South || ori_arrivee == Qet::West)) || (ori_depart == Qet::East && ori_arrivee == Qet::West)) {
 			// cas "3"
 			int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
 			while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
 			points << QPointF(ligne_inter_x, depart.y());
 			points << QPointF(ligne_inter_x, arrivee.y());
-		} else if ((ori_depart == QET::South && (ori_arrivee == QET::North || ori_arrivee == QET::East)) || (ori_depart == QET::West && ori_arrivee == QET::East)) {
+		} else if ((ori_depart == Qet::South && (ori_arrivee == Qet::North || ori_arrivee == Qet::East)) || (ori_depart == Qet::West && ori_arrivee == Qet::East)) {
 			// cas "4"
 			int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
 			while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
 			points << QPointF(depart.x(), ligne_inter_y);
 			points << QPointF(arrivee.x(), ligne_inter_y);
-		} else if ((ori_depart == QET::North || ori_depart == QET::East) && (ori_arrivee == QET::North || ori_arrivee == QET::East)) {
+		} else if ((ori_depart == Qet::North || ori_depart == Qet::East) && (ori_arrivee == Qet::North || ori_arrivee == Qet::East)) {
 			points << QPointF(arrivee.x(), depart.y()); // cas "2"
 		} else {
 			points << QPointF(depart.x(), arrivee.y()); // cas "1"
 		}
 	} else {
 		// trajet montant
-		if ((ori_depart == QET::West && (ori_arrivee == QET::East || ori_arrivee == QET::South)) || (ori_depart == QET::North && ori_arrivee == QET::South)) {
+		if ((ori_depart == Qet::West && (ori_arrivee == Qet::East || ori_arrivee == Qet::South)) || (ori_depart == Qet::North && ori_arrivee == Qet::South)) {
 			// cas "3"
 			int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
 			while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
 			points << QPointF(depart.x(), ligne_inter_y);
 			points << QPointF(arrivee.x(), ligne_inter_y);
-		} else if ((ori_depart == QET::East && (ori_arrivee == QET::West || ori_arrivee == QET::North)) || (ori_depart == QET::South && ori_arrivee == QET::North)) {
+		} else if ((ori_depart == Qet::East && (ori_arrivee == Qet::West || ori_arrivee == Qet::North)) || (ori_depart == Qet::South && ori_arrivee == Qet::North)) {
 			// cas "4"
 			int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
 			while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
 			points << QPointF(ligne_inter_x, depart.y());
 			points << QPointF(ligne_inter_x, arrivee.y());
-		} else if ((ori_depart == QET::West || ori_depart == QET::North) && (ori_arrivee == QET::West || ori_arrivee == QET::North)) {
+		} else if ((ori_depart == Qet::West || ori_depart == Qet::North) && (ori_arrivee == Qet::West || ori_arrivee == Qet::North)) {
 			points << QPointF(depart.x(), arrivee.y()); // cas "2"
 		} else {
 			points << QPointF(arrivee.x(), depart.y()); // cas "1"
@@ -393,19 +393,19 @@ void Conductor::generateConductorPath(const QPointF &p1, QET::Orientation o1, co
 	@param ext_size la taille de la prolongation
 	@return le point correspondant a la borne apres prolongation
 */
-QPointF Conductor::extendTerminal(const QPointF &terminal, QET::Orientation terminal_orientation, qreal ext_size) {
+QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation terminal_orientation, qreal ext_size) {
 	QPointF extended_terminal;
 	switch(terminal_orientation) {
-		case QET::North:
+		case Qet::North:
 			extended_terminal = QPointF(terminal.x(), terminal.y() - ext_size);
 			break;
-		case QET::East:
+		case Qet::East:
 			extended_terminal = QPointF(terminal.x() + ext_size, terminal.y());
 			break;
-		case QET::South:
+		case Qet::South:
 			extended_terminal = QPointF(terminal.x(), terminal.y() + ext_size);
 			break;
-		case QET::West:
+		case Qet::West:
 			extended_terminal = QPointF(terminal.x() - ext_size, terminal.y());
 			break;
 		default: extended_terminal = terminal;

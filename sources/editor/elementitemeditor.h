@@ -40,7 +40,7 @@ class ElementItemEditor : public QWidget {
 	virtual QETElementEditor *elementEditor() const;
 	virtual ElementScene *elementScene() const;
 	virtual QUndoStack &undoStack() const;
-	virtual void addChangePartCommand(const QString &, CustomElementPart *, const QString &, const QVariant &);
+	virtual void addChangePartCommand(const QString &, CustomElementPart *, const char *, const QVariant &);
 	virtual QString elementTypeName() const;
 	virtual void setElementTypeName(const QString &);
 	virtual void detach();

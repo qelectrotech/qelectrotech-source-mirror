@@ -23,7 +23,8 @@
 	This class represents a polygon primitive which may be used to compose the
 	drawing of an electrical element within the element editor.
 */
-class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart {
+class PartPolygon : public CustomElementGraphicPart, public QGraphicsPolygonItem  {
+	Q_OBJECT
 	// constructors, destructor
 	public:
 	PartPolygon(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
@@ -34,7 +35,7 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	
 	// attributes
 	private:
-	bool closed;
+	bool m_closed;
 	
 	// methods
 	public:
@@ -51,15 +52,19 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	const QDomElement toXml(QDomDocument &) const;
 	virtual QRectF boundingRect() const;
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-	void setClosed(bool c);
-	bool isClosed() const;
-	void setProperty(const QString &, const QVariant &);
-	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
 	virtual QRectF sceneGeometricRect() const;
 	virtual void startUserTransformation(const QRectF &);
 	virtual void handleUserTransformation(const QRectF &, const QRectF &);
 	virtual QET::ScalingMethod preferredScalingMethod() const;
+
+	///PROPERTY
+	// Closed (join the first and last point by a line)
+	Q_PROPERTY(bool closed READ isClosed WRITE setClosed)
+		bool isClosed() const {return m_closed;}
+		void setClosed(bool c) {m_closed = c;}
+
+
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);
@@ -67,21 +72,4 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	private:
 	QList<QPointF> saved_points_;
 };
-
-/**
-	Whether the polygon should be closed.
-	@param c true for the polygon to be closed, false otherwise
-*/
-inline void PartPolygon::setClosed(bool c) {
-	closed = c;
-}
-
-/**
-	Indicate whether the polygon is closed.
-	@return true if the polygon is closed, false otherwise
-*/
-inline bool PartPolygon::isClosed() const {
-	return(closed);
-}
-
 #endif

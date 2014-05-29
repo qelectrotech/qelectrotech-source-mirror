@@ -54,7 +54,7 @@ QUndoStack &ElementItemEditor::undoStack() const {
 	@param prop   propriete modifiee
 	@param new_v  nouvelle valeur
 */
-void ElementItemEditor::addChangePartCommand(const QString &desc, CustomElementPart *part, const QString &prop, const QVariant &new_v) {
+void ElementItemEditor::addChangePartCommand(const QString &desc, CustomElementPart *part, const char *prop, const QVariant &new_v) {
 	// ne fait rien si part vaut 0
 	if (!part) return;
 	

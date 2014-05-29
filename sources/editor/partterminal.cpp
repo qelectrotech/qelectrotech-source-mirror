@@ -25,9 +25,9 @@
 	@param scene La scene sur laquelle figure cette borne
 */
 PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
-	CustomElementPart(editor),
+	CustomElementGraphicPart(editor),
 	QGraphicsItem(parent, scene),
-	_orientation(QET::North)
+	m_orientation(Qet::North)
 {
 	updateSecondPoint();
 	setFlags(QGraphicsItem::ItemIsSelectable);
@@ -53,12 +53,7 @@ void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	setPos(QPointF(term_x, term_y));
 	
 	// lit l'orientation de la borne
-	_orientation = QET::orientationFromString(xml_elmt.attribute("orientation"));
-	
-	// Read number and name of terminal from XML
-	number_ = xml_elmt.attribute("number");
-	name_ = xml_elmt.attribute("name");
-	nameHidden_ = xml_elmt.attribute("nameHidden").toInt();
+	m_orientation = Qet::orientationFromString(xml_elmt.attribute("orientation"));
 	
 	updateSecondPoint();
 }
@@ -76,11 +71,8 @@ const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("y", QString("%1").arg(scenePos().y()));
 	
 	// ecrit l'orientation de la borne
-	xml_element.setAttribute("orientation", orientationToString(_orientation));
+	xml_element.setAttribute("orientation", Qet::orientationToString(m_orientation));
 	// Write name and number to XML
-	xml_element.setAttribute("number", number_);
-	xml_element.setAttribute("name", name_);
-	xml_element.setAttribute("nameHidden", nameHidden_);
 	
 	return(xml_element);
 }
@@ -136,119 +128,13 @@ QRectF PartTerminal::boundingRect() const {
 }
 
 /**
-	@return L'orientation de la borne
-*/
-QET::Orientation PartTerminal::orientation() const {
-	return(_orientation);
-}
-
-/**
 	Definit l'orientation de la borne
 	@param ori la nouvelle orientation de la borne
 */
-void PartTerminal::setOrientation(QET::Orientation ori) {
+void PartTerminal::setOrientation(Qet::Orientation ori) {
 	prepareGeometryChange();
-	_orientation = ori;
+	m_orientation = ori;
 	updateSecondPoint();
-}
-
-/**
-	@return Number of terminal
-*/
-QString PartTerminal::number() const {
-	return(number_);
-}
-
-/**
-	set Number of Terminal
-	@param num number of terminal
-*/
-void PartTerminal::setNumber(const QString &num) {
-	number_ = num;
-}
-
-/**
-	@return Name of terminal
-*/
-QString PartTerminal::nameOfTerminal() const {
-	return(name_);
-}
-
-/**
-	set Name of Terminal
-	@param na Name of terminal
-*/
-void PartTerminal::setName(const QString &na) {
-	name_ = na;
-}
-
-/**
- * @brief PartTerminal::nameIsHidden
- * @return 
- */
-bool PartTerminal::nameIsHidden() const {
-	return(nameHidden_);
-}
-/**
- * @brief PartTerminal::setNameHidden
- */
-void PartTerminal::setNameHidden(const bool &nh) {
-	nameHidden_ = nh;
-}
-
-/**
-	Specifie la valeur d'une propriete donnee de la borne
-	@param property propriete a modifier. Valeurs acceptees :
-		* x : abscisse de la borne
-		* y : ordonnee de la borne
-		* orientation : orientation de la borne
-	@param value Valeur a attribuer a la propriete
-*/
-void PartTerminal::setProperty(const QString &property, const QVariant &value) {
-	if (property == "x") {
-		if (!value.canConvert(QVariant::Double)) return;
-		setPos(value.toDouble(), pos().y());
-	} else if (property == "y") {
-		if (!value.canConvert(QVariant::Double)) return;
-		setPos(pos().x(), value.toDouble());
-	} else if (property == "orientation") {
-		if (!value.canConvert(QVariant::Int)) return;
-		setOrientation(static_cast<QET::Orientation>(value.toInt()));
-	} else if (property == "number") {
-		if (!value.canConvert(QVariant::String)) return;
-		setNumber(value.toString());
-	} else if (property == "name") {
-		if (!value.canConvert(QVariant::String)) return;
-		setName(value.toString());
-	} else if (property == "nameHidden") {
-		if (!value.canConvert(QVariant::Int)) return;
-		setNameHidden(value.toInt());
-	}
-}
-
-/**
-	Permet d'acceder a la valeur d'une propriete donnee de la borne
-	@param property propriete lue. Valeurs acceptees :
-		* x : abscisse de la borne
-		* y : ordonnee de la borne
-		* orientation : orientation de la borne
-	@return La valeur de la propriete property
-*/
-QVariant PartTerminal::property(const QString &property) {
-	if (property == "x") {
-		return(scenePos().x());
-	} else if (property == "y") {
-		return(scenePos().y());
-	} else if (property == "orientation") {
-		return(_orientation);
-	} else if (property == "number") {
-		return(number_);
-	} else if (property == "name") {
-		return(name_);
-	} else if (property == "nameHidden") {
-		return(nameHidden_);
-	}
-	return(QVariant());
 }
 
 /**
@@ -271,11 +157,11 @@ QVariant PartTerminal::itemChange(GraphicsItemChange change, const QVariant &val
 */
 void PartTerminal::updateSecondPoint() {
 	qreal ts = 4.0; // terminal size
-	switch(_orientation) {
-		case QET::North: second_point = QPointF(0.0,  ts); break;
-		case QET::East : second_point = QPointF(-ts, 0.0); break;
-		case QET::South: second_point = QPointF(0.0, -ts); break;
-		case QET::West : second_point = QPointF(ts,  0.0); break;
+	switch(m_orientation) {
+		case Qet::North: second_point = QPointF(0.0,  ts); break;
+		case Qet::East : second_point = QPointF(-ts, 0.0); break;
+		case Qet::South: second_point = QPointF(0.0, -ts); break;
+		case Qet::West : second_point = QPointF(ts,  0.0); break;
 	}
 }
 

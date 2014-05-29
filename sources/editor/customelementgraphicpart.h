@@ -18,6 +18,7 @@
 #ifndef CUSTOM_ELEMENT_GRAPHIC_PART_H
 #define CUSTOM_ELEMENT_GRAPHIC_PART_H
 #include <QPainter>
+#include <QObject>
 #include "customelementpart.h"
 #include "styleeditor.h"
 class QETElementEditor;
@@ -26,9 +27,12 @@ typedef CustomElementGraphicPart CEGP;
 	This class represents an element visual/geometric primitive. It provides
 	methods to manage style attributes common to most primitives.
 */
-class CustomElementGraphicPart : public CustomElementPart {
+class CustomElementGraphicPart : public QObject, public CustomElementPart {
+	Q_OBJECT
+
 	public:
 	/// This enum lists the various line styles available to draw primitives.
+	Q_ENUMS(LineStyle)
 	enum LineStyle {
 		NormalStyle, ///< Normal line
 		DashedStyle, ///< Dashed line
@@ -37,6 +41,7 @@ class CustomElementGraphicPart : public CustomElementPart {
 	};
 	
 	/// This enum lists the various line weights available to draw primitives.
+	Q_ENUMS(LineWeight)
 	enum LineWeight {
 		NoneWeight,    ///< Invisible line
 		ThinWeight,   ///< Thin line
@@ -47,6 +52,7 @@ class CustomElementGraphicPart : public CustomElementPart {
 	};
 	
 	/// This enum lists the various filling colors available to draw primitives.
+	Q_ENUMS(Filling)
 	enum Filling {
 		NoneFilling,  ///< No filling (i.e. transparent)
 		BlackFilling, ///< Black filling
@@ -57,6 +63,7 @@ class CustomElementGraphicPart : public CustomElementPart {
 	};
 	
 	/// This enum lists the various line colors available to draw primitives.
+	Q_ENUMS(Color)
 	enum Color {
 		BlackColor, ///< Black line
 		WhiteColor, ///< White line
@@ -95,20 +102,26 @@ class CustomElementGraphicPart : public CustomElementPart {
 	
 	// methods
 	public:
-	void setLineStyle(LineStyle);
-	void setLineWeight(LineWeight);
-	void setFilling(Filling);
-	void setColor(Color);
-	void setAntialiased(bool);
+
+	/// PROPERTY
+	Q_PROPERTY(LineStyle line_style READ lineStyle WRITE setLineStyle)
+		LineStyle lineStyle() const {return _linestyle;}
+		void setLineStyle(const LineStyle ls) {_linestyle = ls;}
+	Q_PROPERTY(LineWeight line_weight READ lineWeight WRITE setLineWeight)
+		LineWeight lineWeight() const {return _lineweight;}
+		void setLineWeight(const LineWeight lw) {_lineweight = lw;}
+	Q_PROPERTY(Filling filling READ filling WRITE setFilling)
+		Filling filling() const {return _filling;}
+		void setFilling(const Filling f) {_filling = f;}
+	Q_PROPERTY(Color color READ color WRITE setColor)
+		Color color() const {return _color;}
+		void setColor(const Color c) {_color = c;}
+	Q_PROPERTY(bool antialias READ antialiased WRITE setAntialiased)
+		bool antialiased() const {return _antialiased;}
+		void setAntialiased(const bool b) {_antialiased = b;}
 	
-	LineStyle lineStyle() const;
-	LineWeight lineWeight() const;
-	Filling filling() const;
-	Color color() const;
-	bool antialiased() const;
-	
-	void setProperty(const QString &, const QVariant &);
-	QVariant property(const QString &);
+	virtual void setProperty(const char *name, const QVariant &value) {QObject::setProperty(name, value);}
+	virtual QVariant property(const char *name) const {return QObject::property(name);}
 	
 	protected:
 	void stylesToXml(QDomElement &) const;
@@ -116,80 +129,4 @@ class CustomElementGraphicPart : public CustomElementPart {
 	void resetStyles();
 	void applyStylesToQPainter(QPainter &) const;
 };
-
-/**
-	Set the primitive line style.
-	@param ls the new line style
-*/
-inline void CustomElementGraphicPart::setLineStyle(LineStyle ls) {
-	_linestyle = ls;
-}
-
-/**
-	Set the primitive line weight.
-	@param lw the new line weight
-*/
-inline void CustomElementGraphicPart::setLineWeight(LineWeight lw) {
-	_lineweight = lw;
-}
-
-/**
-	Set the filling color.
-	@param f the new filling color
-*/
-inline void CustomElementGraphicPart::setFilling(Filling f) {
-	_filling = f;
-}
-
-/**
-	Set the line color.
-	@param c the new line color
-*/
-inline void CustomElementGraphicPart::setColor(Color c) {
-	_color = c;
-}
-
-/**
-	@return the current line style
-*/
-inline CustomElementGraphicPart::LineStyle CustomElementGraphicPart::lineStyle() const {
-	return(_linestyle);
-}
-
-/**
-	@return the current line weight
-*/
-inline CustomElementGraphicPart::LineWeight CustomElementGraphicPart::lineWeight() const {
-	return(_lineweight);
-}
-
-/**
-	@return the current filling color
-*/
-inline CustomElementGraphicPart::Filling CustomElementGraphicPart::filling() const {
-	return(_filling);
-}
-
-/**
-	@return the current line color
-*/
-inline CustomElementGraphicPart::Color CustomElementGraphicPart::color() const {
-	return(_color);
-}
-
-/**
-	Set whether the primitive should be drawn antialiased.
-	@param aa True to enable antialiasing, false to disable it.
-*/
-inline void CustomElementGraphicPart::setAntialiased(bool aa) {
-	_antialiased = aa;
-}
-
-/**
-	@return whether the primitive is drawn antialiased.
-*/
-inline bool CustomElementGraphicPart::antialiased() const {
-	return(_antialiased);
-}
-
 #endif

@@ -98,42 +98,34 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 /// Destructeur
 StyleEditor::~StyleEditor() {
 }
-
 /**
-	Met a jour le style de la partie a partir des donnees du formulaire
-*/
+ * @brief StyleEditor::updatePart
+ * Update the part from the content of the form
+ */
 void StyleEditor::updatePart() {
 	if (!part) return;
-	// applique l'antialiasing
-	part -> setAntialiased(antialiasing -> isChecked());
-	
-	// applique la couleur
-	part -> setColor(static_cast<CEGP::Color>(outline_color -> currentIndex()));
-	
-	// applique le style
-	part -> setLineStyle(static_cast<CEGP::LineStyle>(line_style -> currentIndex()));
-	
-	// applique l'epaisseur
-	part -> setLineWeight(static_cast<CEGP::LineWeight>(size_weight -> currentIndex()));
-
-	// applique le remplissage
-	part -> setFilling(static_cast<CEGP::Filling>(filling_color -> currentIndex()));
+	part->setProperty("antialias",	 antialiasing  -> isChecked());
+	part->setProperty("color",		 outline_color -> itemData(outline_color -> currentIndex()));
+	part->setProperty("line_style",  line_style	   -> itemData(line_style	 -> currentIndex()));
+	part->setProperty("line_weight", size_weight   -> itemData(size_weight	 -> currentIndex()));
+	part->setProperty("filling",	 filling_color -> itemData(filling_color -> currentIndex()));
 }
 
-/// Met a jour l'antialiasing et cree un objet d'annulation
+/// Update antialiasing with undo command
 void StyleEditor::updatePartAntialiasing()   { addChangePartCommand(tr("style antialiasing"), part, "antialias",   antialiasing -> isChecked()); }
-/// Met a jour la couleur du trait et cree un objet d'annulation
-void StyleEditor::updatePartColor()          { addChangePartCommand(tr("style couleur"),      part, "color",       outline_color -> currentIndex());}
-/// Met a jour le style du trait et cree un objet d'annulation
-void StyleEditor::updatePartLineStyle()      { addChangePartCommand(tr("style ligne"),        part, "line-style",  line_style -> currentIndex());}
-/// Met a jour l'epaisseur du trait et cree un objet d'annulation
-void StyleEditor::updatePartLineWeight()     { addChangePartCommand(tr("style epaisseur"),    part, "line-weight", size_weight -> currentIndex());}
-/// Met a jour la couleur de fond et cree un objet d'annulation
-void StyleEditor::updatePartFilling()        { addChangePartCommand(tr("style remplissage"),  part, "filling",     filling_color -> currentIndex());}
+/// Update color with undo command
+void StyleEditor::updatePartColor()          { addChangePartCommand(tr("style couleur"),      part, "color",       outline_color->itemData(outline_color -> currentIndex()));}
+/// Update style with undo command
+void StyleEditor::updatePartLineStyle()      { addChangePartCommand(tr("style ligne"),        part, "line_style",  line_style->itemData(line_style -> currentIndex()));}
+/// Update weight with undo command
+void StyleEditor::updatePartLineWeight()     { addChangePartCommand(tr("style epaisseur"),    part, "line_weight", size_weight->itemData(size_weight -> currentIndex()));}
+/// Update color filling with undo command
+void StyleEditor::updatePartFilling()        { addChangePartCommand(tr("style remplissage"),  part, "filling",     filling_color->itemData(filling_color -> currentIndex()));}
 
 /**
-	Met a jour le formulaire d'edition
-*/
+ * @brief StyleEditor::updateForm
+ * Update the edition form
+ */
 void StyleEditor::updateForm() {
 	if (!part) return;
 	activeConnections(false);

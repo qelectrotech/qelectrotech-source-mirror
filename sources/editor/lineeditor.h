@@ -37,9 +37,9 @@ class LineEditor : public ElementItemEditor {
 	private:
 	PartLine *part;
 	StyleEditor *style_;
-	QLineEdit *x1, *y1, *x2, *y2;
+	QDoubleSpinBox *x1, *y1, *x2, *y2;
 	QComboBox *end1_type, *end2_type;
-	QLineEdit *end1_length, *end2_length;
+	QDoubleSpinBox*end1_length, *end2_length;
 	
 	// methods
 	public:

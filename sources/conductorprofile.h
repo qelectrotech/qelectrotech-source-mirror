@@ -39,9 +39,9 @@ class ConductorProfile {
 	/// Segments composing the conductor
 	QList<ConductorSegmentProfile *> segments;
 	/// Orientation of the start terminal
-	QET::Orientation beginOrientation;
+	Qet::Orientation beginOrientation;
 	/// Orientation of the end terminal.
-	QET::Orientation endOrientation;
+	Qet::Orientation endOrientation;
 	
 	// methods
 	public:

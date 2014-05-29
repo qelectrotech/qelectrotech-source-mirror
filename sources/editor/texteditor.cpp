@@ -30,8 +30,8 @@ TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent
 	ElementItemEditor(editor, parent),
 	part(text)
 {
-	qle_x     = new QLineEdit();
-	qle_y     = new QLineEdit();
+	qle_x     = new QDoubleSpinBox();
+	qle_y     = new QDoubleSpinBox();
 	qle_text  = new QLineEdit();
 	font_size = new QSpinBox();
 	font_size -> setRange(0, 144);
@@ -45,8 +45,8 @@ TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent
 	rotation_angle_label -> setWordWrap(true);
 	rotation_angle_ = QETApp::createTextOrientationSpinBoxWidget();
 	
-	qle_x -> setValidator(new QDoubleValidator(qle_x));
-	qle_y -> setValidator(new QDoubleValidator(qle_y));
+	qle_x -> setRange(-1000, 1000);
+	qle_y -> setRange(-1000, 1000);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout();
 	main_layout -> addWidget(new QLabel(tr("Position : ")));
@@ -128,13 +128,13 @@ void TextEditor::updateText() {
 	if (!part) return;
 	part -> setProperty("size", font_size -> value());
 	part -> setPlainText(qle_text -> text());
-	part -> setPos(qle_x -> text().toDouble(), qle_y -> text().toDouble());
+	part -> setPos(qle_x -> value(), qle_y -> value());
 }
 
 /// Met a jour l'abscisse de la position du texte et cree un objet d'annulation
-void TextEditor::updateTextX() { addChangePartCommand(tr("abscisse"),    part, "x",    qle_x -> text().toDouble()); updateForm(); }
+void TextEditor::updateTextX() { addChangePartCommand(tr("abscisse"),    part, "x",    qle_x -> value()); }
 /// Met a jour l'ordonnee de la position du texte et cree un objet d'annulation
-void TextEditor::updateTextY() { addChangePartCommand(tr("ordonn\351e"), part, "y",    qle_y -> text().toDouble()); updateForm(); }
+void TextEditor::updateTextY() { addChangePartCommand(tr("ordonn\351e"), part, "y",    qle_y -> value()); }
 /// Met a jour le texte et cree un objet d'annulation
 void TextEditor::updateTextT() { addChangePartCommand(tr("contenu"),     part, "text", qle_text -> text());         }
 /// Met a jour la taille du texte et cree un objet d'annulation
@@ -142,7 +142,7 @@ void TextEditor::updateTextS() { addChangePartCommand(tr("taille"),      part, "
 /// Update the text color and create an undo object
 void TextEditor::updateTextC() { addChangePartCommand(tr("couleur", "undo caption"), part, "color", color_ -> checkedId()); }
 /// Met a jour l'angle de rotation du champ de texte et cree un objet d'annulation
-void TextEditor::updateTextRotationAngle() { addChangePartCommand(tr("angle de rotation"), part, "rotation angle", rotation_angle_ -> value()); }
+void TextEditor::updateTextRotationAngle() { addChangePartCommand(tr("angle de rotation"), part, "rotation", rotation_angle_ -> value()); }
 
 /**
 	Met a jour le formulaire a partir du champ de texte
@@ -150,14 +150,14 @@ void TextEditor::updateTextRotationAngle() { addChangePartCommand(tr("angle de r
 void TextEditor::updateForm() {
 	if (!part) return;
 	activeConnections(false);
-	qle_x     -> setText(part -> property("x").toString());
-	qle_y     -> setText(part -> property("y").toString());
+	qle_x     -> setValue(part->property("x").toReal());
+	qle_y     -> setValue(part->property("y").toReal());
 	qle_text  -> setText(part -> property("text").toString());
 	font_size -> setValue(part -> property("size").toInt());
 	if (QAbstractButton *button = color_ -> button(part -> property("color").toBool())) {
 		button -> setChecked(true);
 	}
-	rotation_angle_ -> setValue(part -> property("rotation angle").toDouble());
+	rotation_angle_ -> setValue(part -> property("rotation").toReal());
 	activeConnections(true);
 }
 

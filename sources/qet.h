@@ -18,6 +18,7 @@
 #ifndef _QET_H
 #define _QET_H
 #include <QtXml>
+#include <QObject>
 /**
 	This file provides useful functions and enums that may be used from
 	anywhere else within the QElectroTech application.
@@ -28,8 +29,6 @@ namespace QET {
 	/// QElectroTech displayed version
 	const QString displayedVersion = "0.4-dev";
 	QString license();
-	/// Orientation (used for electrical elements and their terminals)
-	enum Orientation {North, East, South, West};
 	
 	/// Oriented movements
 	enum OrientedMovement {
@@ -73,17 +72,6 @@ namespace QET {
 		Both = 3        ///< Invalid segment
 	};
 	
-	/**
-		This enum lists the various available endings for line primitives when drawing
-		an electrical element.
-	*/
-	enum EndType {
-		None,      ///< Regular line
-		Simple,    ///< Base-less triangle
-		Triangle,  ///< Triangle
-		Circle,    ///< Circle
-		Diamond    ///< Diamond
-	};
 	
 	/**
 		This enums lists the various kind of items users can manage within the
@@ -141,13 +129,6 @@ namespace QET {
 		RelativeToRemainingLength   ///< the length is just a fraction of the length that is still available when other types of lengths have been removed
 	};
 	
-	QET::Orientation nextOrientation(QET::Orientation);
-	QET::Orientation previousOrientation(QET::Orientation);
-	QET::Orientation orientationFromString(const QString &);
-	QString orientationToString(QET::Orientation);
-	bool surLeMemeAxe(QET::Orientation, QET::Orientation);
-	bool estHorizontale(QET::Orientation);
-	bool estVerticale(QET::Orientation);
 	bool lineContainsPoint(const QLineF &, const QPointF &);
 	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = 0);
 	bool attributeIsAnInteger(const QDomElement &, QString , int * = NULL);
@@ -163,8 +144,6 @@ namespace QET {
 	QString unescapeSpaces(const QString &);
 	QString joinWithSpaces(const QStringList &);
 	QStringList splitWithSpaces(const QString &);
-	QString endTypeToString(const QET::EndType &);
-	QET::EndType endTypeFromString(const QString &);
 	QString diagramAreaToString(const QET::DiagramArea &);
 	QET::DiagramArea diagramAreaFromString(const QString &);
 	QString pointerString(void *);
@@ -176,4 +155,35 @@ namespace QET {
 	bool writeXmlFile(QDomDocument &, const QString &, QString * = 0);
 	QPointF graphicsSceneEventPos(QEvent *);
 }
+
+class Qet : public QObject {
+	Q_OBJECT
+	public:
+	///This enum lists the various available endings for line primitives when drawing an electrical element.
+	Q_ENUMS(EndType)
+	enum EndType {
+		None,      ///< Regular line
+		Simple,    ///< Base-less triangle
+		Triangle,  ///< Triangle
+		Circle,    ///< Circle
+		Diamond    ///< Diamond
+	};
+	static QString endTypeToString(const Qet::EndType &);
+	static Qet::EndType endTypeFromString(const QString &);
+
+	/// Orientation (used for electrical elements and their terminals)
+	Q_ENUMS(Orientation)
+	enum Orientation {North,
+					  East,
+					  South,
+					  West};
+	static Qet::Orientation nextOrientation(Qet::Orientation);
+	static Qet::Orientation previousOrientation(Qet::Orientation);
+	static Qet::Orientation orientationFromString(const QString &);
+	static QString orientationToString(Qet::Orientation);
+	static bool surLeMemeAxe(Qet::Orientation, Qet::Orientation);
+	static bool estHorizontale(Qet::Orientation);
+	static bool estVerticale(Qet::Orientation);
+};
+
 #endif

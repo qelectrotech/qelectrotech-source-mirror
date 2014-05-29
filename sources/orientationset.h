@@ -38,8 +38,8 @@ class OrientationSet {
 	bool east_ori;
 	bool south_ori;
 	bool west_ori;
-	QET::Orientation default_ori;
-	QET::Orientation current_ori;
+	Qet::Orientation default_ori;
+	Qet::Orientation current_ori;
 	
 	// methods
 	public:
@@ -51,15 +51,15 @@ class OrientationSet {
 	bool setEast(bool);
 	bool setSouth(bool);
 	bool setWest(bool);
-	QET::Orientation defaultOrientation() const;
-	void setDefaultOrientation(const QET::Orientation &);
-	QET::Orientation current() const;
-	bool setCurrent(QET::Orientation);
-	QET::Orientation next() const;
-	QET::Orientation previous() const;
-	QET::Orientation setNext();
-	QET::Orientation setPrevious();
-	bool accept(QET::Orientation) const;
+	Qet::Orientation defaultOrientation() const;
+	void setDefaultOrientation(const Qet::Orientation &);
+	Qet::Orientation current() const;
+	bool setCurrent(Qet::Orientation);
+	Qet::Orientation next() const;
+	Qet::Orientation previous() const;
+	Qet::Orientation setNext();
+	Qet::Orientation setPrevious();
+	bool accept(Qet::Orientation) const;
 	const OrientationSet operator++(int);
 	const OrientationSet operator--(int);
 	const OrientationSet operator++();
@@ -101,21 +101,21 @@ inline bool OrientationSet::west() const {
 /**
 	@param new_default_orientation The new default orientation
 */
-inline void OrientationSet::setDefaultOrientation(const QET::Orientation& new_default_orientation) {
+inline void OrientationSet::setDefaultOrientation(const Qet::Orientation& new_default_orientation) {
 	default_ori = new_default_orientation;
 }
 
 /**
 	@return the default orientation
 */
-inline QET::Orientation OrientationSet::defaultOrientation() const {
+inline Qet::Orientation OrientationSet::defaultOrientation() const {
 	return(default_ori);
 }
 
 /**
 	@return the current orientation
 */
-inline QET::Orientation OrientationSet::current() const {
+inline Qet::Orientation OrientationSet::current() const {
 	return(current_ori);
 }
 

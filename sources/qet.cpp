@@ -22,30 +22,30 @@
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
 	en orientation. Si la chaine fait plusieurs caracteres, seul le
-	premier est pris en compte. En cas d'incoherence, QET::North est
+	premier est pris en compte. En cas d'incoherence, Qet::North est
 	retourne.
 	@param s Chaine de caractere cense representer une orientation
 	@return l'orientation designee par la chaine de caractere
 */
-QET::Orientation QET::orientationFromString(const QString &s) {
+Qet::Orientation Qet::orientationFromString(const QString &s) {
 	QChar c = s[0];
-	if (c == 'e') return(QET::East);
-	else if (c == 's') return(QET::South);
-	else if (c == 'w') return (QET::West);
-	else return(QET::North);
+	if (c == 'e') return(Qet::East);
+	else if (c == 's') return(Qet::South);
+	else if (c == 'w') return (Qet::West);
+	else return(Qet::North);
 }
 
 /**
 	@param o une orientation
 	@return une chaine de caractere representant l'orientation
 */
-QString QET::orientationToString(QET::Orientation o) {
+QString Qet::orientationToString(Qet::Orientation o) {
 	QString ret;
 	switch(o) {
-		case QET::North: ret = "n"; break;
-		case QET::East : ret = "e"; break;
-		case QET::South: ret = "s"; break;
-		case QET::West : ret = "w"; break;
+		case Qet::North: ret = "n"; break;
+		case Qet::East : ret = "e"; break;
+		case Qet::South: ret = "s"; break;
+		case Qet::West : ret = "w"; break;
 	}
 	return(ret);
 }
@@ -56,9 +56,9 @@ QString QET::orientationToString(QET::Orientation o) {
 	@param b La seconde orientation de Borne
 	@return Un booleen a true si les deux orientations de bornes sont sur le meme axe
 */
-bool QET::surLeMemeAxe(QET::Orientation a, QET::Orientation b) {
-	if ((a == QET::North || a == QET::South) && (b == QET::North || b == QET::South)) return(true);
-	else if ((a == QET::East || a == QET::West) && (b == QET::East || b == QET::West)) return(true);
+bool Qet::surLeMemeAxe(Qet::Orientation a, Qet::Orientation b) {
+	if ((a == Qet::North || a == Qet::South) && (b == Qet::North || b == Qet::South)) return(true);
+	else if ((a == Qet::East || a == Qet::West) && (b == Qet::East || b == Qet::West)) return(true);
 	else return(false);
 }
 
@@ -67,8 +67,8 @@ bool QET::surLeMemeAxe(QET::Orientation a, QET::Orientation b) {
 	@param a L'orientation de borne
 	@return True si l'orientation de borne est horizontale, false sinon
 */
-bool QET::estHorizontale(QET::Orientation a) {
-	return(a == QET::East || a == QET::West);
+bool Qet::estHorizontale(Qet::Orientation a) {
+	return(a == Qet::East || a == Qet::West);
 }
 
 /**
@@ -76,8 +76,8 @@ bool QET::estHorizontale(QET::Orientation a) {
 	@param a L'orientation de borne
 	@return True si l'orientation de borne est verticale, false sinon
 */
-bool QET::estVerticale(QET::Orientation a) {
-	return(a == QET::North || a == QET::South);
+bool Qet::estVerticale(Qet::Orientation a) {
+	return(a == Qet::North || a == Qet::South);
 }
 
 /**
@@ -87,9 +87,9 @@ bool QET::estVerticale(QET::Orientation a) {
 	@param o une orientation
 	@return l'orientation suivante
 */
-QET::Orientation QET::nextOrientation(QET::Orientation o) {
-	if (o < 0 || o > 2) return(QET::North);
-	return((QET::Orientation)(o + 1));
+Qet::Orientation Qet::nextOrientation(Qet::Orientation o) {
+	if (o < 0 || o > 2) return(Qet::North);
+	return((Qet::Orientation)(o + 1));
 }
 
 /**
@@ -99,10 +99,10 @@ QET::Orientation QET::nextOrientation(QET::Orientation o) {
 	@param o une orientation
 	@return l'orientation precedente
 */
-QET::Orientation QET::previousOrientation(QET::Orientation o) {
-	if (o < 0 || o > 3) return(QET::North);
-	if (o == QET::North) return(QET::West);
-	return((QET::Orientation)(o - 1));
+Qet::Orientation Qet::previousOrientation(Qet::Orientation o) {
+	if (o < 0 || o > 3) return(Qet::North);
+	if (o == Qet::North) return(Qet::West);
+	return((Qet::Orientation)(o - 1));
 }
 
 /**
@@ -465,13 +465,13 @@ QStringList QET::splitWithSpaces(const QString &string) {
 	@param end_type un type d'extremite
 	@return une chaine representant le type d'extremite
 */
-QString QET::endTypeToString(const QET::EndType &end_type) {
+QString Qet::endTypeToString(const Qet::EndType &end_type) {
 	switch(end_type) {
-		case QET::Simple:   return("simple");
-		case QET::Triangle: return("triangle");
-		case QET::Circle:   return("circle");
-		case QET::Diamond:  return("diamond");
-		case QET::None:
+		case Qet::Simple:   return("simple");
+		case Qet::Triangle: return("triangle");
+		case Qet::Circle:   return("circle");
+		case Qet::Diamond:  return("diamond");
+		case Qet::None:
 		default:
 			return("none");
 	}
@@ -482,12 +482,12 @@ QString QET::endTypeToString(const QET::EndType &end_type) {
 	@return le type d'extremite correspondant ; si la chaine est invalide,
 	QET::None est retourne.
 */
-QET::EndType QET::endTypeFromString(const QString &string) {
-	if (string == "simple")        return(QET::Simple);
-	else if (string == "triangle") return(QET::Triangle);
-	else if (string == "circle")   return(QET::Circle);
-	else if (string == "diamond")  return(QET::Diamond);
-	else return(QET::None);
+Qet::EndType Qet::endTypeFromString(const QString &string) {
+	if (string == "simple")        return(Qet::Simple);
+	else if (string == "triangle") return(Qet::Triangle);
+	else if (string == "circle")   return(Qet::Circle);
+	else if (string == "diamond")  return(Qet::Diamond);
+	else return(Qet::None);
 }
 
 /**

@@ -29,7 +29,8 @@
 	drawn if the required length for their drawing is longer than the line itself.
 	In case there is room for a single end only, the first one get priority.
 */
-class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
+class PartLine : public CustomElementGraphicPart, public QGraphicsLineItem  {
+	Q_OBJECT
 	// constructors, destructor
 	public:
 	PartLine(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
@@ -40,9 +41,9 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	
 	// attributes
 	private:
-	QET::EndType first_end;
+	Qet::EndType first_end;
 	qreal first_length;
-	QET::EndType second_end;
+	Qet::EndType second_end;
 	qreal second_length;
 	QList<QPointF> saved_points_;
 	
@@ -65,22 +66,48 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	virtual QPointF sceneP2() const;
 	virtual QPainterPath shape() const;
 	virtual QRectF boundingRect() const;
-	virtual void setProperty(const QString &, const QVariant &);
-	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
 	virtual QRectF sceneGeometricRect() const;
 	virtual void startUserTransformation(const QRectF &);
 	virtual void handleUserTransformation(const QRectF &, const QRectF &);
-	virtual void setFirstEndType(const QET::EndType &);
-	virtual QET::EndType firstEndType() const;
-	virtual void setSecondEndType(const QET::EndType &);
-	virtual QET::EndType secondEndType() const;
-	virtual void setFirstEndLength(const qreal &);
-	virtual qreal firstEndLength() const;
-	virtual void setSecondEndLength(const qreal &);
-	virtual qreal secondEndLength() const;
-	static uint requiredLengthForEndType(const QET::EndType &);
+	static uint requiredLengthForEndType(const Qet::EndType &);
 	static QList<QPointF> fourEndPoints(const QPointF &, const QPointF &, const qreal &);
+
+	///PROPERTY
+	// X value of the first point
+	Q_PROPERTY(qreal x1 READ x1 WRITE setX1)
+		qreal x1() const {return sceneP1().x();}
+		void setX1(qreal x1);
+	// Y value of the first point
+	Q_PROPERTY(qreal y1 READ y1 WRITE setY1)
+		qreal y1() const {return sceneP1().y();}
+		void setY1(qreal y1);
+	// X value of the second point
+	Q_PROPERTY(qreal x2 READ x2 WRITE setX2)
+		qreal x2() const {return sceneP2().x();}
+		void setX2(qreal x2);
+	// Y value of the second point
+	Q_PROPERTY(qreal y2 READ y2 WRITE setY2)
+		qreal y2() const {return sceneP2().y();}
+		void setY2(qreal y2);
+	// End type of the first point
+	Q_PROPERTY(Qet::EndType end1 READ firstEndType WRITE setFirstEndType)
+		Qet::EndType firstEndType() const {return first_end;}
+		void setFirstEndType(const Qet::EndType &et) {first_end = et;}
+	// End type of the second point
+	Q_PROPERTY(Qet::EndType end2 READ secondEndType WRITE setSecondEndType)
+		Qet::EndType secondEndType() const {return second_end;}
+		void setSecondEndType(const Qet::EndType &et) {second_end = et;}
+	// Size of end type of first point
+	Q_PROPERTY(qreal length1 READ firstEndLength WRITE setFirstEndLength)
+		qreal firstEndLength() const {return first_length;}
+		void setFirstEndLength(const qreal &l) {first_length = qMin(qAbs(l), line().length());}
+	// Size of end type of the second point
+	Q_PROPERTY(qreal length2 READ secondEndLength WRITE setSecondEndLength)
+		qreal secondEndLength() const {return second_length;}
+		void setSecondEndLength(const qreal &l) {second_length = qMin(qAbs(l), line().length());}
+
+
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);
 	

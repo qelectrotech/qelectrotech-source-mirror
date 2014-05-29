@@ -23,7 +23,8 @@
 	This class represents an ellipse primitive which may be used to compose the
 	drawing of an electrical element within the element editor.
 */
-class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart {
+class PartEllipse : public CustomElementGraphicPart, public QGraphicsEllipseItem {
+	Q_OBJECT
 	// constructors, destructor
 	public:
 	PartEllipse(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
@@ -48,12 +49,28 @@ class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneTopLeft() const;
 	virtual QRectF boundingRect() const;
-	virtual void setProperty(const QString &, const QVariant &);
-	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
 	virtual QRectF sceneGeometricRect() const;
 	virtual void startUserTransformation(const QRectF &);
 	virtual void handleUserTransformation(const QRectF &, const QRectF &);
+
+	///PROPERTY
+	// X value
+	Q_PROPERTY(qreal x READ x WRITE setX)
+		qreal x() const {return mapToScene(rect().center()).x() ;}
+		void setX(const qreal x);
+	// Y value
+	Q_PROPERTY(qreal y READ y WRITE setY)
+		qreal y() const {return mapToScene(rect().center()).y();}
+		void setY(const qreal y);
+	// horizontal diameter
+	Q_PROPERTY(qreal diameter_h READ width WRITE setWidth)
+		qreal width() const {return rect().width();}
+		void setWidth(const qreal w);
+	// vertical diameter
+	Q_PROPERTY(qreal diameter_v READ height WRITE setHeight)
+		qreal height() const {return rect().height();}
+		void setHeight (const qreal h);
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

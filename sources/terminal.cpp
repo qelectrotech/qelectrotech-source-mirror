@@ -35,21 +35,21 @@ const qreal Terminal::terminalSize = 4.0;
 	@param number of terminal
 	@param name of terminal
 */
-void Terminal::init(QPointF pf, QET::Orientation o, QString number, QString name, bool hiddenName) {
+void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name, bool hiddenName) {
 	// definition du pount d'amarrage pour un conducteur
 	dock_conductor_  = pf;
 	
 	// definition de l'orientation de la borne (par defaut : sud)
-	if (o < QET::North || o > QET::West) ori_ = QET::South;
+	if (o < Qet::North || o > Qet::West) ori_ = Qet::South;
 	else ori_ = o;
 	
 	// calcul de la position du point d'amarrage a l'element
 	dock_elmt_ = dock_conductor_;
 	switch(ori_) {
-		case QET::North: dock_elmt_ += QPointF(0, Terminal::terminalSize);  break;
-		case QET::East : dock_elmt_ += QPointF(-Terminal::terminalSize, 0); break;
-		case QET::West : dock_elmt_ += QPointF(Terminal::terminalSize, 0);  break;
-		case QET::South:
+		case Qet::North: dock_elmt_ += QPointF(0, Terminal::terminalSize);  break;
+		case Qet::East : dock_elmt_ += QPointF(-Terminal::terminalSize, 0); break;
+		case Qet::West : dock_elmt_ += QPointF(Terminal::terminalSize, 0);  break;
+		case Qet::South:
 		default        : dock_elmt_ += QPointF(0, -Terminal::terminalSize);
 	}
 	// Number of terminal
@@ -76,7 +76,7 @@ void Terminal::init(QPointF pf, QET::Orientation o, QString number, QString name
 	@param e   Element auquel cette borne appartient
 	@param s   Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(QPointF pf, QET::Orientation o, Element *e, Diagram *s) :
+Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e, Diagram *s) :
 	QGraphicsItem(e, s),
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
@@ -92,7 +92,7 @@ Terminal::Terminal(QPointF pf, QET::Orientation o, Element *e, Diagram *s) :
 	@param e    Element auquel cette borne appartient
 	@param s    Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(qreal pf_x, qreal pf_y, QET::Orientation o, Element *e, Diagram *s) :
+Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e, Diagram *s) :
 	QGraphicsItem(e, s),
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
@@ -110,7 +110,7 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, QET::Orientation o, Element *e, Diagr
 	@param e   Element auquel cette borne appartient
 	@param s   Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(QPointF pf, QET::Orientation o, QString num, QString name, bool hiddenName, Element *e, Diagram *s) :
+Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bool hiddenName, Element *e, Diagram *s) :
 	QGraphicsItem(e, s),
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
@@ -135,7 +135,7 @@ Terminal::~Terminal() {
 	pivote. Sinon elle renvoie son sens normal.
 	@return L'orientation actuelle de la Terminal.
 */
-QET::Orientation Terminal::orientation() const {
+Qet::Orientation Terminal::orientation() const {
 	if (Element *elt = qgraphicsitem_cast<Element *>(parentItem())) {
 		// orientations actuelle et par defaut de l'element
 		int ori_cur = elt -> orientation();
@@ -145,7 +145,7 @@ QET::Orientation Terminal::orientation() const {
 			// angle de rotation de la borne sur la scene, divise par 90
 			int angle = ori_cur + ori_;
 			while (angle >= 4) angle -= 4;
-			return((QET::Orientation)angle);
+			return((Qet::Orientation)angle);
 		}
 	} else return(ori_);
 }
@@ -513,7 +513,7 @@ bool Terminal::valideXml(QDomElement &terminal) {
 	// parse l'orientation
 	int terminal_or = terminal.attribute("orientation").toInt(&conv_ok);
 	if (!conv_ok) return(false);
-	if (terminal_or != QET::North && terminal_or != QET::South && terminal_or != QET::East && terminal_or != QET::West) return(false);
+	if (terminal_or != Qet::North && terminal_or != Qet::South && terminal_or != Qet::East && terminal_or != Qet::West) return(false);
 	
 	// a ce stade, la borne est syntaxiquement correcte
 	return(true);

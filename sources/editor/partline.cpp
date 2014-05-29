@@ -27,9 +27,9 @@
 PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
 	QGraphicsLineItem(parent, scene),
 	CustomElementGraphicPart(editor),
-	first_end(QET::None),
+	first_end(Qet::None),
 	first_length(1.5),
-	second_end(QET::None),
+	second_end(Qet::None),
 	second_length(1.5)
 {
 	setFlags(QGraphicsItem::ItemIsSelectable);
@@ -47,11 +47,11 @@ PartLine::~PartLine() {
 	@param end_type Type d'extremite
 	@return Le nombre de "longueurs" requises pour dessiner une extremite de type end_type
 */
-uint PartLine::requiredLengthForEndType(const QET::EndType &end_type) {
+uint PartLine::requiredLengthForEndType(const Qet::EndType &end_type) {
 	uint length_count_required = 0;
-	if (end_type == QET::Circle || end_type == QET::Diamond) {
+	if (end_type == Qet::Circle || end_type == Qet::Diamond) {
 		length_count_required = 2;
-	} else if (end_type == QET::Simple || end_type == QET::Triangle) {
+	} else if (end_type == Qet::Simple || end_type == Qet::Triangle) {
 		length_count_required = 1;
 	}
 	return(length_count_required);
@@ -102,23 +102,23 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
 	QPointF start_point, stop_point;
 	if (draw_1st_end) {
 		QList<QPointF> four_points1(fourEndPoints(point1, point2, length1));
-		if (first_end == QET::Circle) {
+		if (first_end == Qet::Circle) {
 			painter -> drawEllipse(QRectF(four_points1[0] - QPointF(length1, length1), QSizeF(length1 * 2.0, length1 * 2.0)));
 			start_point = four_points1[1];
-		} else if (first_end == QET::Diamond) {
+		} else if (first_end == Qet::Diamond) {
 			painter -> drawPolygon(QPolygonF() << four_points1[1] << four_points1[2] << point1 << four_points1[3]);
 			start_point = four_points1[1];
-		} else if (first_end == QET::Simple) {
+		} else if (first_end == Qet::Simple) {
 			painter -> drawPolyline(QPolygonF() << four_points1[3] << point1 << four_points1[2]);
 			start_point = point1;
 			
-		} else if (first_end == QET::Triangle) {
+		} else if (first_end == Qet::Triangle) {
 			painter -> drawPolygon(QPolygonF() << four_points1[0] << four_points1[2] << point1 << four_points1[3]);
 			start_point = four_points1[0];
 		}
 		
 		// ajuste le depart selon l'epaisseur du trait
-		if (pen_width && (first_end == QET::Simple || first_end == QET::Circle)) {
+		if (pen_width && (first_end == Qet::Simple || first_end == Qet::Circle)) {
 			start_point = QLineF(start_point, point2).pointAt(pen_width / 2.0 / line_length);
 		}
 	} else {
@@ -128,22 +128,22 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
 	// dessine la seconde extremite
 	if (draw_2nd_end) {
 		QList<QPointF> four_points2(fourEndPoints(point2, point1, length2));
-		if (second_end == QET::Circle) {
+		if (second_end == Qet::Circle) {
 			painter -> drawEllipse(QRectF(four_points2[0] - QPointF(length2, length2), QSizeF(length2 * 2.0, length2 * 2.0)));
 			stop_point = four_points2[1];
-		} else if (second_end == QET::Diamond) {
+		} else if (second_end == Qet::Diamond) {
 			painter -> drawPolygon(QPolygonF() << four_points2[2] << point2 << four_points2[3] << four_points2[1]);
 			stop_point = four_points2[1];
-		} else if (second_end == QET::Simple) {
+		} else if (second_end == Qet::Simple) {
 			painter -> drawPolyline(QPolygonF() << four_points2[3] << point2 << four_points2[2]);
 			stop_point = point2;
-		} else if (second_end == QET::Triangle) {
+		} else if (second_end == Qet::Triangle) {
 			painter -> drawPolygon(QPolygonF() << four_points2[0] << four_points2[2] << point2 << four_points2[3] << four_points2[0]);
 			stop_point = four_points2[0];
 		}
 		
 		// ajuste l'arrivee selon l'epaisseur du trait
-		if (pen_width && (second_end == QET::Simple || second_end == QET::Circle)) {
+		if (pen_width && (second_end == Qet::Simple || second_end == Qet::Circle)) {
 			stop_point = QLineF(point1, stop_point).pointAt((line_length - (pen_width / 2.0)) / line_length);
 		}
 	} else {
@@ -168,9 +168,9 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("y1", QString("%1").arg(p1.y()));
 	xml_element.setAttribute("x2", QString("%1").arg(p2.x()));
 	xml_element.setAttribute("y2", QString("%1").arg(p2.y()));
-	xml_element.setAttribute("end1", QET::endTypeToString(first_end));
+	xml_element.setAttribute("end1", Qet::endTypeToString(first_end));
 	xml_element.setAttribute("length1", QString("%1").arg(first_length));
-	xml_element.setAttribute("end2", QET::endTypeToString(second_end));
+	xml_element.setAttribute("end2", Qet::endTypeToString(second_end));
 	xml_element.setAttribute("length2", QString("%1").arg(second_length));
 	
 	stylesToXml(xml_element);
@@ -195,84 +195,54 @@ void PartLine::fromXml(const QDomElement &qde) {
 			)
 		)
 	);
-	first_end    = QET::endTypeFromString(qde.attribute("end1"));
+	first_end    = Qet::endTypeFromString(qde.attribute("end1"));
 	first_length = qde.attribute("length1", "1.5").toDouble();
-	second_end   = QET::endTypeFromString(qde.attribute("end2"));
+	second_end   = Qet::endTypeFromString(qde.attribute("end2"));
 	second_length = qde.attribute("length2", "1.5").toDouble();
 }
 
 /**
-	Specifie la valeur d'une propriete donnee de la ligne
-	@param property propriete a modifier. Valeurs acceptees :
-		* x1 : abscisse du premier point
-		* y1 : ordonnee du second point
-		* x2 : abscisse du premier point
-		* y2 : ordonnee du second point
-		*end1 : type d'embout du premier point
-		*end2 : type d'embout du second point
-	@param value Valeur a attribuer a la propriete
-*/
-void PartLine::setProperty(const QString &property, const QVariant &value) {
-	CustomElementGraphicPart::setProperty(property, value);
-	if (!value.canConvert(QVariant::Double)) return;
-	QPointF new_p1(sceneP1()), new_p2(sceneP2());
-	bool setline = true;
-	if (property == "x1") {
-		new_p1.setX(value.toDouble());
-	} else if (property == "y1") {
-		new_p1.setY(value.toDouble());
-	} else if (property == "x2") {
-		new_p2.setX(value.toDouble());
-	} else if (property == "y2") {
-		new_p2.setY(value.toDouble());
-	} else {
-		setline = false;
-		if (property == "end1") {
-			setFirstEndType(static_cast<QET::EndType>(value.toUInt()));
-		} else if (property == "end2") {
-			setSecondEndType(static_cast<QET::EndType>(value.toUInt()));
-		} else if (property == "length1") {
-			setFirstEndLength(value.toDouble());
-		} else if (property == "length2") {
-			setSecondEndLength(value.toDouble());
-		}
-	}
-	if (setline) setLine(QLineF(mapFromScene(new_p1), mapFromScene(new_p2)));
-	update();
+ * @brief PartLine::setX1
+ * set X of P1
+ * @param x1
+ */
+void PartLine::setX1(qreal x1) {
+	QPointF p = line().p1();
+	p.setX(x1);
+	setLine(QLineF(p, line().p2()));
 }
 
 /**
-	Permet d'acceder a la valeur d'une propriete donnee de la ligne
-	@param property propriete lue. Valeurs acceptees :
-		* x1 : abscisse du premier point
-		* y1 : ordonnee du second point
-		* x2 : abscisse du premier point
-		* y2 : ordonnee du second point
-	@return La valeur de la propriete property
-*/
-QVariant PartLine::property(const QString &property) {
-	// appelle la methode property de CustomElementGraphicpart pour les styles
-	QVariant style_property = CustomElementGraphicPart::property(property);
-	if (style_property != QVariant()) return(style_property);
-	
-	if (property == "x1") {
-		return(sceneP1().x());
-	} else if (property == "y1") {
-		return(sceneP1().y());
-	} else if (property == "x2") {
-		return(sceneP2().x());
-	} else if (property == "y2") {
-		return(sceneP2().y());
-	} else if (property == "end1") {
-		return(firstEndType());
-	} else if (property == "end2") {
-		return(secondEndType());
-	} else if (property == "length1") {
-		return(firstEndLength());
-	} else if (property == "length2") {
-		return(secondEndLength());
-	}
-	return(QVariant());
+ * @brief PartLine::setY1
+ * set y of P1
+ * @param y1
+ */
+void PartLine::setY1(qreal y1) {
+	QPointF p = line().p1();
+	p.setY(y1);
+	setLine(QLineF(p, line().p2()));
+}
+
+/**
+ * @brief PartLine::setX2
+ * set x of P2
+ * @param x2
+ */
+void PartLine::setX2(qreal x2) {
+	QPointF p = line().p2();
+	p.setX(x2);
+	setLine(QLineF(line().p2(), p));
+}
+
+/**
+ * @brief PartLine::setY2
+ * set y of P2
+ * @param y2
+ */
+void PartLine::setY2(qreal y2) {
+	QPointF p = line().p2();
+	p.setY(y2);
+	setLine(QLineF(line().p2(), p));
 }
 
 /**
@@ -453,11 +423,11 @@ QRectF PartLine::boundingRect() const {
 	r.adjust(0.0, 0.0, 0.1, 0.1);
 	
 	// cas special : les embouts sortent largement du bounding rect originel
-	if (first_end != QET::None) {
+	if (first_end != Qet::None) {
 		r = r.united(firstEndCircleRect());
 	}
 	
-	if (second_end != QET::None) {
+	if (second_end != Qet::None) {
 		r = r.united(secondEndCircleRect());
 	}
 	
@@ -505,34 +475,6 @@ void PartLine::handleUserTransformation(const QRectF &initial_selection_rect, co
 }
 
 /**
-	@param end_type nouveau type d'embout pour l'extremite 1
-*/
-void PartLine::setFirstEndType(const QET::EndType &end_type) {
-	first_end = end_type;
-}
-
-/**
-	@return le type d'embout pour l'extremite 1
-*/
-QET::EndType PartLine::firstEndType() const {
-	return(first_end);
-}
-
-/**
-	@param end_type Nouveau type d'embout pour l'extremite 2
-*/
-void PartLine::setSecondEndType(const QET::EndType &end_type) {
-	second_end = end_type;
-}
-
-/**
-	@return le type d'embout pour l'extremite 2
-*/
-QET::EndType PartLine::secondEndType() const {
-	return(second_end);
-}
-
-/**
 	@return Les quatre points interessants a l'extremite d'une droite
 	Ces points sont, dans l'ordre :
 		* O : point sur la ligne, a une distance length de l'extremite
@@ -560,34 +502,4 @@ QList<QPointF> PartLine::fourEndPoints(const QPointF &end_point, const QPointF &
 	QPointF c(o - v);
 	
 	return(QList<QPointF>() << o << a << b << c);
-}
-
-/**
-	@param length nouvelle longueur de la premiere extremite
-	la longueur de l'extemite ne peut exceder celle de la ligne
-*/
-void PartLine::setFirstEndLength(const qreal &length) {
-	first_length = qMin(qAbs(length), line().length());
-}
-
-/**
-	@return longueur de la premiere extremite
-*/
-qreal PartLine::firstEndLength() const {
-	return(first_length);
-}
-
-/**
-	@param length nouvelle longueur de la seconde extremite
-	la longueur de l'extemite ne peut exceder celle de la ligne
-*/
-void PartLine::setSecondEndLength(const qreal &length) {
-	second_length = qMin(qAbs(length), line().length());
-}
-
-/**
-	@return longueur de la seconde extremite
-*/
-qreal PartLine::secondEndLength() const {
-	return(second_length);
 }

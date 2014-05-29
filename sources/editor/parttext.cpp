@@ -73,7 +73,7 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	
 	qreal default_rotation_angle = 0.0;
 	if (QET::attributeIsAReal(xml_element, "rotation", &default_rotation_angle)) {
-		setRotationAngle(default_rotation_angle);
+		setRotation(default_rotation_angle);
 	}
 	
 	setPos(
@@ -94,43 +94,13 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("size", font().pointSize());
 	// angle de rotation du champ de texte
-	if (rotationAngle()) {
-		xml_element.setAttribute("rotation", QString("%1").arg(rotationAngle()));
+	if (rotation()) {
+		xml_element.setAttribute("rotation", QString("%1").arg(rotation()));
 	}
 	if (!isBlack()) {
 		xml_element.setAttribute("color", "white");
 	}
 	return(xml_element);
-}
-
-/**
-	@return l'angle de rotation de ce champ de texte
-*/
-qreal PartText::rotationAngle() const {
-	return(rotation());
-}
-
-/**
-	@param angle Le nouvel angle de rotation de ce champ de texte
-*/
-void PartText::setRotationAngle(const qreal &angle) {
-	setRotation(QET::correctAngle(angle));
-}
-
-/**
-	@return true or false if this static text is rendered black or white,
-	respectively.
-*/
-bool PartText::isBlack() const {
-	return(defaultTextColor() == Qt::black);
-}
-
-/**
-	@param color whether this static text should be rendered black (true) or white
-	(false).
-*/
-void PartText::setBlack(bool color) {
-	setDefaultTextColor(color ? Qt::black : Qt::white);
 }
 
 /**
@@ -201,72 +171,6 @@ void PartText::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
 	if (e -> button() == Qt::LeftButton) {
 		setEditable(true);
 	}
-}
-
-/**
-	Specifie la valeur d'une propriete donnee du texte statique
-	@param property propriete a modifier. Valeurs acceptees :
-		* x : abscisse de la position
-		* y : ordonnee de la position
-		* size : taille du texte
-		* text : texte
-		* "rotation angle" : amgle de rotation
-	@param value Valeur a attribuer a la propriete
-*/
-void PartText::setProperty(const QString &property, const QVariant &value) {
-	if (property == "x") {
-		if (!value.canConvert(QVariant::Double)) return;
-		setPos(value.toDouble(), pos().y());
-	} else if (property == "y") {
-		if (!value.canConvert(QVariant::Double)) return;
-		setPos(pos().x(), value.toDouble());
-	} else if (property == "size") {
-		if (!value.canConvert(QVariant::Int)) return;
-		setFont(QETApp::diagramTextsFont(value.toInt()));
-		real_font_size_ = value.toInt();
-	} else if (property == "real_size") {
-		if (!value.canConvert(QVariant::Double)) return;
-		setFont(QETApp::diagramTextsFont(value.toInt()));
-		real_font_size_ = value.toDouble();
-	} else if (property == "text") {
-		setPlainText(value.toString());
-	} else if (property == "rotation angle") {
-		setRotationAngle(value.toDouble());
-	} else if (property == "color") {
-		setBlack(value.toBool());
-	}
-	// adjust item position, especially useful when changing text or size
-	adjustItemPosition();
-	update();
-}
-
-/**
-	Permet d'acceder a la valeur d'une propriete donnee du texte statique
-	@param property propriete lue. Valeurs acceptees :
-		* x : abscisse de la position
-		* y : ordonnee de la position
-		* size : taille du texte
-		* text : texte
-		* "rotation angle" : amgle de rotation
-	@return La valeur de la propriete property
-*/
-QVariant PartText::property(const QString &property) {
-	if (property == "x") {
-		return(pos().x());
-	} else if (property == "y") {
-		return(pos().y());
-	} else if (property == "size") {
-		return(font().pointSize());
-	} else if (property == "real_size") {
-		return(real_font_size_);
-	} else if (property == "text") {
-		return(toPlainText());
-	} else if (property == "rotation angle") {
-		return(rotation());
-	} else if (property == "color") {
-		return(isBlack());
-	}
-	return(QVariant());
 }
 
 /**

@@ -24,8 +24,8 @@
 	@param scene La scene sur laquelle figure cet arc
 */
 PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
-	QGraphicsEllipseItem(parent, scene),
 	CustomElementGraphicPart(editor),
+	QGraphicsEllipseItem(parent, scene),
 	_angle(-90),
 	start_angle(0)
 {
@@ -124,77 +124,47 @@ QPointF PartArc::sceneTopLeft() const {
 }
 
 /**
-	Specifie la valeur d'une propriete donnee de l'arc
-	@param property propriete a modifier. Valeurs acceptees :
-		* x : abscisse du centre de l'ellipse dont fait partie l'arc
-		* y : ordonnee du centre de l'ellipse dont fait partie l'arc
-		* diameter_h : diametre horizontal de l'ellipse dont fait partie l'arc
-		* diameter_v : diametre vertical de l'ellipse dont fait partie l'arc
-		* start_angle : angle de depart
-		* angle : taille de l'arc de cercle
-	@param value Valeur a attribuer a la propriete
-*/
-void PartArc::setProperty(const QString &property, const QVariant &value) {
-	CustomElementGraphicPart::setProperty(property, value);
-	if (!value.canConvert(QVariant::Double)) return;
-	if (property == "x") {
-		QRectF current_rect = rect();
-		QPointF current_pos = mapToScene(current_rect.center());
-		setRect(current_rect.translated(value.toDouble() - current_pos.x(), 0.0));
-	} else if (property == "y") {
-		QRectF current_rect = rect();
-		QPointF current_pos = mapToScene(current_rect.center());
-		setRect(current_rect.translated(0.0, value.toDouble() - current_pos.y()));
-	} else if (property == "diameter_h") {
-		qreal new_width = qAbs(value.toDouble());
-		QRectF current_rect = rect();
-		current_rect.translate((new_width - current_rect.width()) / -2.0, 0.0);
-		current_rect.setWidth(new_width);
-		setRect(current_rect);
-	} else if (property == "diameter_v") {
-		qreal new_height = qAbs(value.toDouble());
-		QRectF current_rect = rect();
-		current_rect.translate(0.0, (new_height - current_rect.height()) / -2.0);
-		current_rect.setHeight(new_height);
-		setRect(current_rect);
-	} else if (property == "start_angle") {
-		setStartAngle(value.toInt() );
-	} else if (property == "angle") {
-		setAngle(value.toInt());
-	}
-	update();
+ * @brief PartArc::setX
+ * @param x is the center of the rect bounding this ellipse
+ */
+void PartArc::setX(const qreal x) {
+	QRectF current_rect = rect();
+	QPointF current_pos = mapToScene(current_rect.center());
+	setRect(current_rect.translated(x - current_pos.x(), 0.0));
 }
 
 /**
-	Permet d'acceder a la valeur d'une propriete donnee de l'arc de cercle
-	@param property propriete lue. Valeurs acceptees :
-		* x : abscisse du centre de l'ellipse dont fait partie l'arc
-		* y : ordonnee du centre de l'ellipse dont fait partie l'arc
-		* diameter_h : diametre horizontal de l'ellipse dont fait partie l'arc
-		* diameter_v : diametre vertical de l'ellipse dont fait partie l'arc
-		* start_angle : angle de depart
-		* angle : taille de l'arc de cercle
-	@return La valeur de la propriete property
-*/
-QVariant PartArc::property(const QString &property) {
-	// appelle la methode property de CustomElementGraphicpart pour les styles
-	QVariant style_property = CustomElementGraphicPart::property(property);
-	if (style_property != QVariant()) return(style_property);
-	
-	if (property == "x") {
-		return(mapToScene(rect().center()).x());
-	} else if (property == "y") {
-		return(mapToScene(rect().center()).y());
-	} else if (property == "diameter_h") {
-		return(rect().width());
-	} else if (property == "diameter_v") {
-		return(rect().height());
-	} else if (property == "start_angle") {
-		return(start_angle);
-	} else if (property == "angle") {
-		return(_angle);
-	}
-	return(QVariant());
+ * @brief PartArc::setY
+ * @param y is the center of the rect bounding this ellipse
+ */
+void PartArc::setY(const qreal y) {
+	QRectF current_rect = rect();
+	QPointF current_pos = mapToScene(current_rect.center());
+	setRect(current_rect.translated(0.0, y - current_pos.y()));
+}
+
+/**
+ * @brief PartArc::setWidth
+ * @param w is the width of the rect bounding this ellipse
+ */
+void PartArc::setWidth(const qreal w) {
+	qreal new_width = qAbs(w);
+	QRectF current_rect = rect();
+	current_rect.translate((new_width - current_rect.width()) / -2.0, 0.0);
+	current_rect.setWidth(new_width);
+	setRect(current_rect);
+}
+
+/**
+ * @brief PartArc::setHeight
+ * @param h is the heigth of the rect bounding this ellipse
+ */
+void PartArc::setHeight(const qreal h) {
+	qreal new_height = qAbs(h);
+	QRectF current_rect = rect();
+	current_rect.translate(0.0, (new_height - current_rect.height()) / -2.0);
+	current_rect.setHeight(new_height);
+	setRect(current_rect);
 }
 
 /**
@@ -209,41 +179,6 @@ QVariant PartArc::itemChange(GraphicsItemChange change, const QVariant &value) {
 		}
 	}
 	return(QGraphicsEllipseItem::itemChange(change, value));
-}
-
-/**
-	Permet de modifier l'etendue de l'arc de cercle.
-	Il s'agit d'un angle, exprime en degres.
-	Si l'angle est positif, l'arc s'etendra dans le sens des aiguilles d'une
-	montre.
-	@param a la nouvelle taille de l'arc de cercle
-*/
-void PartArc::setAngle(int a) {
-	_angle = a;
-}
-
-/**
-	Permet de modifier la position de depart de l'arc de cercle.
-	Il s'agit d'un angle, exprime en degres.
-	l'angle "0 degre" est situe a "3 heures".
-	@param a la nouvelle taille de l'arc de cercle
-*/
-void PartArc::setStartAngle(int a) {
-	start_angle = a;
-}
-
-/**
-	@return l'etendue de l'arc de cercle
-*/
-int PartArc::angle() const {
-	return(_angle);
-}
-
-/**
-	@return la position de depart de l'arc de cercle
-*/
-int PartArc::startAngle() const {
-	return(start_angle);
 }
 
 /**

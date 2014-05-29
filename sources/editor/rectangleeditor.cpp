@@ -30,15 +30,15 @@ RectangleEditor::RectangleEditor(QETElementEditor *editor, PartRectangle *rect, 
 {
 	style_ = new StyleEditor(editor);
 	
-	x = new QLineEdit();
-	y = new QLineEdit();
-	w = new QLineEdit();
-	h = new QLineEdit();
+	x = new QDoubleSpinBox();
+	y = new QDoubleSpinBox();
+	w = new QDoubleSpinBox();
+	h = new QDoubleSpinBox();
 	
-	x -> setValidator(new QDoubleValidator(x));
-	y -> setValidator(new QDoubleValidator(y));
-	w -> setValidator(new QDoubleValidator(w));
-	h -> setValidator(new QDoubleValidator(h));
+	x->setRange(-1000, 1000);
+	y->setRange(-1000, 1000);
+	w->setRange(-1000, 1000);
+	h->setRange(-1000, 1000);
 	
 	QVBoxLayout *v_layout = new QVBoxLayout(this);
 	
@@ -101,20 +101,20 @@ CustomElementPart *RectangleEditor::currentPart() const {
 */
 void RectangleEditor::updateRectangle() {
 	if (!part) return;
-	part -> setProperty("x",      x -> text().toDouble());
-	part -> setProperty("y",      y -> text().toDouble());
-	part -> setProperty("width",  w -> text().toDouble());
-	part -> setProperty("height", h -> text().toDouble());
+	part -> setProperty("x",      x -> value());
+	part -> setProperty("y",      y -> value());
+	part -> setProperty("width",  w -> value());
+	part -> setProperty("height", h -> value());
 }
 
 /// Met a jour l'abscisse du coin superieur gauche du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleX() { addChangePartCommand(tr("abscisse"),               part, "x",           x -> text().toDouble());       }
+void RectangleEditor::updateRectangleX() { addChangePartCommand(tr("abscisse"),               part, "x",           x  -> value());       }
 /// Met a jour l'ordonnee du coin superieur gauche du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleY() { addChangePartCommand(tr("ordonn\351e"),            part, "y",           y -> text().toDouble());       }
+void RectangleEditor::updateRectangleY() { addChangePartCommand(tr("ordonn\351e"),            part, "y",           y  -> value());       }
 /// Met a jour la largeur du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleW() { addChangePartCommand(tr("largeur"),                part, "width",       w -> text().toDouble());       }
+void RectangleEditor::updateRectangleW() { addChangePartCommand(tr("largeur"),                part, "width",       w  -> value());       }
 /// Met a jour la hauteur du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleH() { addChangePartCommand(tr("hauteur"),                part, "height",      h -> text().toDouble());       }
+void RectangleEditor::updateRectangleH() { addChangePartCommand(tr("hauteur"),                part, "height",      h  -> value());       }
 
 /**
 	Met a jour le formulaire d'edition
@@ -122,10 +122,10 @@ void RectangleEditor::updateRectangleH() { addChangePartCommand(tr("hauteur"),  
 void RectangleEditor::updateForm() {
 	if (!part) return;
 	activeConnections(false);
-	x -> setText(part -> property("x").toString());
-	y -> setText(part -> property("y").toString());
-	w -> setText(part -> property("width").toString());
-	h -> setText(part -> property("height").toString());
+	x->setValue(part->property("x").toReal());
+	y->setValue(part->property("y").toReal());
+	w->setValue(part->property("width").toReal());
+	h->setValue(part->property("height").toReal());
 	activeConnections(true);
 }
 

@@ -37,7 +37,7 @@ class EllipseEditor : public ElementItemEditor {
 	private:
 	PartEllipse *part;
 	StyleEditor *style_;
-	QLineEdit *x, *y, *h, *v;
+	QDoubleSpinBox *x, *y, *h, *v;
 	
 	// methods
 	public:

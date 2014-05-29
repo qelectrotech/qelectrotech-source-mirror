@@ -35,10 +35,8 @@ class TerminalEditor : public ElementItemEditor {
 	// attributes
 	private:
 	PartTerminal *part;
-	QLineEdit *qle_x, *qle_y;
+	QDoubleSpinBox *qle_x, *qle_y;
 	QComboBox *orientation;
-	QLineEdit *qle_number, *qle_name;
-	QCheckBox *qcheck_name_visible;
 	
 	// methods
 	public:
@@ -50,9 +48,6 @@ class TerminalEditor : public ElementItemEditor {
 	void updateTerminalX();
 	void updateTerminalY();
 	void updateTerminalO();
-	void updateTerminalNum();
-	void updateTerminalName();
-	void updateTerminalNameVisible();
 	void updateForm();
 	
 	private:

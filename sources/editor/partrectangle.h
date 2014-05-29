@@ -23,7 +23,8 @@
 	This class represents a rectangle primitive which may be used to compose the
 	drawing of an electrical element within the element editor.
 */
-class PartRectangle : public QGraphicsRectItem, public CustomElementGraphicPart {
+class PartRectangle :  public CustomElementGraphicPart, public QGraphicsRectItem {
+	Q_OBJECT
 	// constructors, destructor
 	public:
 	PartRectangle(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
@@ -48,12 +49,28 @@ class PartRectangle : public QGraphicsRectItem, public CustomElementGraphicPart 
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneTopLeft() const;
 	virtual QRectF boundingRect() const;
-	virtual void setProperty(const QString &, const QVariant &);
-	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
 	virtual QRectF sceneGeometricRect() const;
 	virtual void startUserTransformation(const QRectF &);
 	virtual void handleUserTransformation(const QRectF &, const QRectF &);
+
+	///PROPERTY
+	// X value
+	Q_PROPERTY(qreal x READ x WRITE setX)
+		qreal x() const {return mapToScene(rect().topLeft()).x();}
+		void setX(qreal x);
+	// Y value
+	Q_PROPERTY(qreal y READ y WRITE setY)
+		qreal y() const {return mapToScene(rect().topLeft()).y();}
+		void setY(qreal y);
+	// Width value
+	Q_PROPERTY(qreal width READ width WRITE setWidth)
+		qreal width() const {return rect().width();}
+		void setWidth(qreal w);
+	// Height value
+	Q_PROPERTY(qreal height READ height WRITE setHeight)
+		qreal height() const { return rect().height();}
+		void setHeight(qreal h);
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

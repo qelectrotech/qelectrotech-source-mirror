@@ -31,6 +31,7 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 	QGraphicsTextItem(parent, scene),
 	CustomElementPart(editor),
 	follow_parent_rotations(true),
+	m_tagg("none"),
 	previous_text(),
 	decorator_(0)
 {
@@ -65,6 +66,8 @@ void PartTextField::fromXml(const QDomElement &xml_element) {
 	
 	setProperty("size", font_size);
 	setPlainText(xml_element.attribute("text"));
+
+	m_tagg = xml_element.attribute("tagg", "none");
 	
 	qreal default_rotation_angle = 0.0;
 	if (QET::attributeIsAReal(xml_element, "rotation", &default_rotation_angle)) {
@@ -90,45 +93,17 @@ const QDomElement PartTextField::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("y", QString("%1").arg(pos().y()));
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("size", font().pointSize());
+	xml_element.setAttribute("tagg", m_tagg);
+
 	// angle de rotation du champ de texte
-	if (rotationAngle()) {
-		xml_element.setAttribute("rotation", QString("%1").arg(rotationAngle()));
+	if (rotation()) {
+		xml_element.setAttribute("rotation", QString("%1").arg(rotation()));
 	}
 	// suivi (ou non) des rotations de l'element parent par le champ de texte
 	if (follow_parent_rotations) {
 		xml_element.setAttribute("rotate", "true");
 	}
 	return(xml_element);
-}
-
-/**
-	@return l'angle de rotation de ce champ de texte
-*/
-qreal PartTextField::rotationAngle() const {
-	return(rotation());
-}
-
-/**
-	@param angle Le nouvel angle de rotation de ce champ de texte
-*/
-void PartTextField::setRotationAngle(const qreal &angle) {
-	setRotation(QET::correctAngle(angle));
-}
-
-/**
-	@return true si le champ de texte suit les rotation de l'element, false
-	sinon
-*/
-bool PartTextField::followParentRotations() {
-	return(follow_parent_rotations);
-}
-
-/**
-	@param  fpr true pour que le champ de texte suive les rotation de
-	l'element, false sinon
-*/
-void PartTextField::setFollowParentRotations(bool fpr) {
-	follow_parent_rotations = fpr;
 }
 
 /**
@@ -243,72 +218,6 @@ void PartTextField::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
 	if (e -> button() == Qt::LeftButton) {
 		setEditable(true);
 	}
-}
-
-/**
-	Specifie la valeur d'une propriete donnee du champ de texte
-	@param property propriete a modifier. Valeurs acceptees :
-		* x : abscisse de la position
-		* y : ordonnee de la position
-		* size : taille du texte
-		* text : texte
-		* rotate : suivi de la rotation de l'element parent
-	@param value Valeur a attribuer a la propriete
-*/
-void PartTextField::setProperty(const QString &property, const QVariant &value) {
-	if (property == "x") {
-		if (!value.canConvert(QVariant::Double)) return;
-		setPos(value.toDouble(), pos().y());
-	} else if (property == "y") {
-		if (!value.canConvert(QVariant::Double)) return;
-		setPos(pos().x(), value.toDouble());
-	} else if (property == "size") {
-		if (!value.canConvert(QVariant::Int)) return;
-		setFont(QETApp::diagramTextsFont(value.toInt()));
-		real_font_size_ = value.toInt();
-	} else if (property == "real_size") {
-		if (!value.canConvert(QVariant::Double)) return;
-		setFont(QETApp::diagramTextsFont(value.toInt()));
-		real_font_size_ = value.toDouble();
-	} else if (property == "text") {
-		setPlainText(value.toString());
-	} else if (property == "rotation angle") {
-		setRotationAngle(value.toDouble());
-	} else if (property == "rotate") {
-		follow_parent_rotations = value.toBool();
-	}
-	// adjust item position, especially useful when changing text or size
-	adjustItemPosition();
-	update();
-}
-
-/**
-	Permet d'acceder a la valeur d'une propriete donnee du champ de texte
-	@param property propriete lue. Valeurs acceptees :
-		* x : abscisse de la position
-		* y : ordonnee de la position
-		* size : taille du texte
-		* text : texte
-		* rotate : suivi de la rotation de l'element parent
-	@return La valeur de la propriete property
-*/
-QVariant PartTextField::property(const QString &property) {
-	if (property == "x") {
-		return(pos().x());
-	} else if (property == "y") {
-		return(pos().y());
-	} else if (property == "size") {
-		return(font().pointSize());
-	} else if (property == "real_size") {
-		return(real_font_size_);
-	} else if (property == "text") {
-		return(toPlainText());
-	} else if (property == "rotation angle") {
-		return(rotation());
-	} else if (property == "rotate") {
-		return(follow_parent_rotations);
-	}
-	return(QVariant());
 }
 
 /**

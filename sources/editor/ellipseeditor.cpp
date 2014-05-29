@@ -31,15 +31,15 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 {
 	style_ = new StyleEditor(editor);
 	
-	x = new QLineEdit();
-	y = new QLineEdit();
-	h = new QLineEdit();
-	v = new QLineEdit();
+	x = new QDoubleSpinBox();
+	y = new QDoubleSpinBox();
+	h = new QDoubleSpinBox();
+	v = new QDoubleSpinBox();
 	
-	x -> setValidator(new QDoubleValidator(x));
-	y -> setValidator(new QDoubleValidator(y));
-	h -> setValidator(new QDoubleValidator(h));
-	v -> setValidator(new QDoubleValidator(v));
+	x->setRange(-1000, 1000);
+	y->setRange(-1000, 1000);
+	h->setRange(-1000, 1000);
+	v->setRange(-1000, 1000);
 	
 	QVBoxLayout *v_layout = new QVBoxLayout(this);
 	
@@ -102,20 +102,20 @@ CustomElementPart *EllipseEditor::currentPart() const {
 */
 void EllipseEditor::updateEllipse() {
 	if (!part) return;
-	part -> setProperty("x", x -> text().toDouble());
-	part -> setProperty("y", y -> text().toDouble());
-	part -> setProperty("diameter_h", h -> text().toDouble());
-	part -> setProperty("diameter_v", v -> text().toDouble());
+	part -> setProperty("x",           x  -> value());
+	part -> setProperty("y",           y  -> value());
+	part -> setProperty("diameter_h",  h  -> value());
+	part -> setProperty("diameter_v",  v  -> value());
 }
 
 /// Met a jour l'abscisse du centre de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseX() { addChangePartCommand(tr("abscisse"),               part, "x",           x -> text().toDouble());       }
+void EllipseEditor::updateEllipseX() { addChangePartCommand(tr("abscisse"),               part, "x",           x -> value());       }
 /// Met a jour l'ordonnee du centre de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseY() { addChangePartCommand(tr("ordonn\351e"),            part, "y",           y -> text().toDouble());       }
+void EllipseEditor::updateEllipseY() { addChangePartCommand(tr("ordonn\351e"),            part, "y",           y -> value());       }
 /// Met a jour le diametre horizontal de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseH() { addChangePartCommand(tr("diam\350tre horizontal"), part, "diameter_h",  h -> text().toDouble());       }
+void EllipseEditor::updateEllipseH() { addChangePartCommand(tr("diam\350tre horizontal"), part, "diameter_h",  h -> value());       }
 /// Met a jour le diametre vertical de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseV() { addChangePartCommand(tr("diam\350tre vertical"),   part, "diameter_v",  v -> text().toDouble());       }
+void EllipseEditor::updateEllipseV() { addChangePartCommand(tr("diam\350tre vertical"),   part, "diameter_v",  v -> value());       }
 
 /**
 	Met a jour le formulaire d'edition
@@ -123,10 +123,10 @@ void EllipseEditor::updateEllipseV() { addChangePartCommand(tr("diam\350tre vert
 void EllipseEditor::updateForm() {
 	if (!part) return;
 	activeConnections(false);
-	x -> setText(part -> property("x").toString());
-	y -> setText(part -> property("y").toString());
-	h -> setText(part -> property("diameter_h").toString());
-	v -> setText(part -> property("diameter_v").toString());
+	x->setValue(part->property("x").toReal());
+	y->setValue(part->property("y").toReal());
+	h->setValue(part->property("diameter_h").toReal());
+	v->setValue(part->property("diameter_v").toReal());
 	activeConnections(true);
 }
 

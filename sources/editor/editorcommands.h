@@ -176,7 +176,7 @@ class AddPartCommand : public ElementEditionCommand {
 class ChangePartCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
-	ChangePartCommand(const QString &, CustomElementPart *, const QString &, const QVariant &, const QVariant &, QUndoCommand * = 0);
+	ChangePartCommand(const QString &, CustomElementPart *, const char *, const QVariant &, const QVariant &, QUndoCommand * = 0);
 	virtual ~ChangePartCommand();
 	private:
 	ChangePartCommand(const ChangePartCommand &);
@@ -191,7 +191,7 @@ class ChangePartCommand : public ElementEditionCommand {
 	/// Changed primitive
 	CustomElementPart *cep;
 	/// Changed property
-	QString property;
+	const char *property;
 	/// Former value
 	QVariant old_value;
 	/// New value

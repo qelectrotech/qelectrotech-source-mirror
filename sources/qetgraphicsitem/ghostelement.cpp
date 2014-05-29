@@ -124,16 +124,16 @@ bool GhostElement::terminalsFromXml(QDomElement &e, QHash<int, Terminal *> &tabl
 		// modifie certains attributs pour que l'analyse par la classe CustomElement reussisse
 		int previous_x_value   = qde.attribute("x").toInt();
 		int previous_y_value   = qde.attribute("y").toInt();
-		int previous_ori_value = qde.attribute("orientation").toInt();
+		Qet::Orientation previous_ori_value = static_cast<Qet::Orientation>(qde.attribute("orientation").toInt());
 		
 		qreal x_add = 0.0, y_add = 0.0;
-		if (previous_ori_value == QET::North)      y_add = -Terminal::terminalSize;
-		else if (previous_ori_value == QET::East)  x_add = Terminal::terminalSize;
-		else if (previous_ori_value == QET::South) y_add = Terminal::terminalSize;
-		else if (previous_ori_value == QET::West)  x_add = -Terminal::terminalSize;
+		if (previous_ori_value == Qet::North)      y_add = -Terminal::terminalSize;
+		else if (previous_ori_value == Qet::East)  x_add = Terminal::terminalSize;
+		else if (previous_ori_value == Qet::South) y_add = Terminal::terminalSize;
+		else if (previous_ori_value == Qet::West)  x_add = -Terminal::terminalSize;
 		qde.setAttribute("x",           previous_x_value + x_add);
 		qde.setAttribute("y",           previous_y_value + y_add);
-		qde.setAttribute("orientation", QET::orientationToString(static_cast<QET::Orientation>(previous_ori_value)));
+		qde.setAttribute("orientation", previous_ori_value);
 		
 		if (Terminal *new_terminal = CustomElement::parseTerminal(qde)) {
 			table_id_adr.insert(qde.attribute("id").toInt(), new_terminal);
