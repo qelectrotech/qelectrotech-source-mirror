@@ -1,6 +1,7 @@
 <definition width="60" version="0.4" hotspot_x="47" hotspot_y="13" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">Section 1 conducteur</name>
+        <name lang="it">Sezione 1 conduttore</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

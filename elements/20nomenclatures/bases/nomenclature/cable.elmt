@@ -1,6 +1,7 @@
 <definition width="120" version="0.4" hotspot_x="51" hotspot_y="15" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="fr">Cable 2 phases+terre</name>
+        <name lang="it">Cavo 2 fasi + terra</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
