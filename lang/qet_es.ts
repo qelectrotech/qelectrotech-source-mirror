@@ -84,7 +84,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="151"/>
         <source>Traduction en néerlandais</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducción al holandés</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
@@ -130,7 +130,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="181"/>
         <source>Documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Documentación</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="199"/>
@@ -2055,7 +2055,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="258"/>
         <source>Belgique-Flemish</source>
-        <translation type="unfinished"></translation>
+        <translation>Bélgica-Flamenca</translation>
     </message>
 </context>
 <context>
@@ -5884,7 +5884,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
         <source>Type de ligne</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de linea</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
@@ -7172,22 +7172,22 @@ Longueur maximale : %2px
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="20"/>
         <source>Représentation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Representación:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="28"/>
         <source>Afficher en croix</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar en cruz</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="35"/>
         <source>Afficher en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar en contactos</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="47"/>
         <source>Option d&apos;affichage en croix</source>
-        <translation type="unfinished"></translation>
+        <translation>Opción de presentación en cruz</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="53"/>
@@ -7197,12 +7197,12 @@ Longueur maximale : %2px
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="68"/>
         <source>Préfixe des contacts de puissance:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefijo de los contactos de potencia:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="75"/>
         <source>Préfixe des contacts temporisés:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefijo de los contactos temporizados: </translation>
     </message>
 </context>
 <context>
