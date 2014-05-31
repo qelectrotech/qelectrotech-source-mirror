@@ -1,0 +1,26 @@
+<definition width="90" version="0.4" hotspot_x="3" hotspot_y="34" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Emergency stop trip switches 2NC</name>
+        <name lang="fr">Arret d'urgence cable 2NC</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="3" y2="-10" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="3" y2="-10" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-15" x1="0" y2="-5" x2="0"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-19" x1="65" y2="1" x2="60" y3="11" x3="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-10" x1="3.78232" y2="-10" x2="62.9025"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="60" y2="-18" x2="66"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="60" y2="-18" x2="60"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-19" x1="25" y2="1" x2="20" y3="11" x3="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="20" y2="-18" x2="26"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="20" y2="-18" x2="20"/>
+        <input x="69" y="-6.5" size="9" text="_" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16" x1="2" y2="-4" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10" x1="2.40361" y2="-10" x2="5.62006"/>
+        <terminal x="20" y="-29" orientation="n"/>
+        <terminal x="20" y="11" orientation="s"/>
+        <terminal x="60" y="-29" orientation="n"/>
+        <terminal x="60" y="11" orientation="s"/>
+    </description>
+</definition>
