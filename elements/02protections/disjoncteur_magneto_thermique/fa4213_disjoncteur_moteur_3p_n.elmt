@@ -3,6 +3,7 @@
         <name lang="de">Motorschutzschalter mit Nulleiter</name>
         <name lang="en">Motor circuit breaker with neutral</name>
         <name lang="fr">Disjoncteur de moteur avec neutre</name>
+        <name lang="cs">Jistič motoru s nulovým vodičem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

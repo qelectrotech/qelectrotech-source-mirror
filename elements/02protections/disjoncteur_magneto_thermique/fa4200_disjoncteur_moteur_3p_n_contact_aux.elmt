@@ -3,6 +3,7 @@
         <name lang="de">Motorschutzschalter mit Nulleiter und  Hilfskontakte</name>
         <name lang="en">Motor circuit breaker with neutral and  auxiliary contact</name>
         <name lang="fr">Disjoncteur de moteur avec neutre et contacts auxiliaire</name>
+        <name lang="cs">Jistič motoru s nulovým vodičem a pomocnými kontakty</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

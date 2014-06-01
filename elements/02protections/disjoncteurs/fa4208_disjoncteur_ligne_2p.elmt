@@ -3,6 +3,7 @@
         <name lang="de">Leitungsschalter 2P</name>
         <name lang="en">Feeder circuit-breaker 2P </name>
         <name lang="fr">Disjoncteur de ligne 2P</name>
+        <name lang="cs">Jistič vedení 2P</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
