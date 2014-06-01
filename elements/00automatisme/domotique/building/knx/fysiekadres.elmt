@@ -1,0 +1,29 @@
+<definition width="120" version="0.4" hotspot_x="6" hotspot_y="25" height="30" link_type="master" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="nl">Fysiek adres KNX</name>
+        <name lang="be">Fysiek adres KNX</name>
+        <name lang="en">Physical address KNX</name>
+        <name lang="fr">Adresse physique KNX</name>
+    </names>
+    <informations>
+		Author: RDS for QelectroTech
+		
+    </informations>
+    <kindInformations>
+        <kindInformation name="state" show="1">NO</kindInformation>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="type" show="1">simple</kindInformation>
+        <kindInformation name="tempoType" show="0"/>
+    </kindInformations>
+    <description>
+        <rect width="21" x="42" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="21" x="21" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="70" y="-9.5" size="9" rotate="true" text="001"/>
+        <rect width="46" x="63" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="3" y="-9.5" size="9" rotate="true" text="F"/>
+        <input x="41" y="-9.5" size="9" rotate="true" text="01"/>
+        <input x="20" y="-9.5" size="9" rotate="true" text="01"/>
+        <rect width="21" x="0" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="-5" nameHidden="24" number="" name="" orientation="n"/>
+    </description>
+</definition>
