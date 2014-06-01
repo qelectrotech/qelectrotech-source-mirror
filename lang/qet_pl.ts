@@ -2056,7 +2056,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="258"/>
         <source>Belgique-Flemish</source>
-        <translation type="unfinished"></translation>
+        <translation>Belgijski-Flamandzki</translation>
     </message>
 </context>
 <context>
@@ -7191,7 +7191,7 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="47"/>
         <source>Option d&apos;affichage en croix</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcje wyświetlania krzyża</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="53"/>
@@ -7201,12 +7201,12 @@ Długość maksymalna : %2px</translation>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="68"/>
         <source>Préfixe des contacts de puissance:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefiks zestyków głównych:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="75"/>
         <source>Préfixe des contacts temporisés:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefiks zestyków zwierających z opóźnieniem:</translation>
     </message>
 </context>
 <context>
