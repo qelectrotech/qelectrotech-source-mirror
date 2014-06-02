@@ -147,7 +147,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="152"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished"></translation>
+        <translation>Traduzione in fiammingo</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="172"/>
@@ -3571,7 +3571,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
         <source>&amp;Récemment ouverts</source>
-        <translation type="unfinished"></translation>
+        <translation>Documenti &amp;recenti</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="801"/>
@@ -5911,7 +5911,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="237"/>
         <source>Échelle</source>
         <comment>shape scale</comment>
-        <translation type="unfinished"></translation>
+        <translation>Scala</translation>
     </message>
 </context>
 <context>
@@ -5945,7 +5945,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="242"/>
         <source>Facteur d&apos;échelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Fattore di scala</translation>
     </message>
 </context>
 <context>
@@ -6473,17 +6473,17 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="68"/>
         <source>tagg :</source>
-        <translation type="unfinished"></translation>
+        <translation>Etichetta: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
         <source>Aucun</source>
-        <translation type="unfinished">Nessuno</translation>
+        <translation>Nessuno</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
         <source>label</source>
-        <translation type="unfinished">etichetta</translation>
+        <translation>etichetta</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
@@ -6513,7 +6513,7 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="145"/>
         <source>tagg</source>
-        <translation type="unfinished"></translation>
+        <translation>etichetta</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="425"/>
