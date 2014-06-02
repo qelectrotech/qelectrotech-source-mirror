@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="199"/>
+        <location filename="../sources/aboutqet.cpp" line="200"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Tento program je pod licencí GNU/GPL.</translation>
     </message>
@@ -70,7 +70,7 @@
         <location filename="../sources/aboutqet.cpp" line="114"/>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <location filename="../sources/aboutqet.cpp" line="116"/>
-        <location filename="../sources/aboutqet.cpp" line="180"/>
+        <location filename="../sources/aboutqet.cpp" line="181"/>
         <source>Développement</source>
         <translation>Vývoj</translation>
     </message>
@@ -145,43 +145,48 @@
         <translation>Překlad do nizozemštiny</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="171"/>
+        <location filename="../sources/aboutqet.cpp" line="152"/>
+        <source>Traduction en flamand</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="172"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Balíčky pro Fedoru a Red Hat</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="172"/>
+        <location filename="../sources/aboutqet.cpp" line="173"/>
         <source>Paquets Mageia</source>
         <translation>Balíčky pro Mageiu</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="174"/>
         <location filename="../sources/aboutqet.cpp" line="175"/>
+        <location filename="../sources/aboutqet.cpp" line="176"/>
         <source>Paquets Gentoo</source>
         <translation>Balíčky pro Gentoo</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="176"/>
+        <location filename="../sources/aboutqet.cpp" line="177"/>
         <source>Paquets OS/2</source>
         <translation>Balíčky pro OS/2</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="177"/>
+        <location filename="../sources/aboutqet.cpp" line="178"/>
         <source>Paquets FreeBSD</source>
         <translation>Balíčky pro FreeBSD</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="178"/>
+        <location filename="../sources/aboutqet.cpp" line="179"/>
         <source>Paquets Archlinux AUR</source>
         <translation>Balíčky pro Archlinux AUR</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="181"/>
+        <location filename="../sources/aboutqet.cpp" line="182"/>
         <source>Documentation</source>
         <translation>Dokumentace</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="173"/>
+        <location filename="../sources/aboutqet.cpp" line="174"/>
         <source>Paquets Debian</source>
         <translation>Balíčky pro Debian</translation>
     </message>
@@ -192,7 +197,7 @@
         <translation>© 2006-2014 Vývojáři QElectroTechu</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="179"/>
+        <location filename="../sources/aboutqet.cpp" line="180"/>
         <source>Icônes</source>
         <translation>Ikony</translation>
     </message>
@@ -2320,52 +2325,52 @@ Provedené změny budou konečné.</translation>
 <context>
     <name>LineEditor</name>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="149"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="146"/>
         <source>abscisse point 1</source>
         <translation>bod na x-ové souřadnici 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="151"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="148"/>
         <source>ordonnée point 1</source>
         <translation>bod na y-ové souřadnici 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="153"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="150"/>
         <source>abscisse point 2</source>
         <translation>bod na x-ové souřadnici 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="155"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="152"/>
         <source>ordonnée point 2</source>
         <translation>bod na y-ové souřadnici 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="76"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="73"/>
         <source>Fin 1</source>
         <translation>Konec 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="79"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="76"/>
         <source>Fin 2</source>
         <translation>Konec 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="157"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="154"/>
         <source>type fin 1</source>
         <translation>typ konce 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="159"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="156"/>
         <source>longueur fin 1</source>
         <translation>délka konce 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="161"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="158"/>
         <source>type fin 2</source>
         <translation>typ konce 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="163"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="160"/>
         <source>longueur fin 2</source>
         <translation>délka konce 2</translation>
     </message>
@@ -3573,6 +3578,11 @@ Dostupné volby:
         <translation>&amp;Projekt</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouverts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="801"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Nezdá se, že by byl soubor, který se pokoušíte otevřít, čitelný. A nelze jej otevřít. Zkontrolujte, prosím, oprávnění k souboru.</translation>
@@ -3930,11 +3940,6 @@ Dostupné volby:
         <source>Permet de visualiser le schéma sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
         <translation>Dovolí zobrazení výkresu bez možnosti jej upravit</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
-        <source>&amp;Récemment ouvert(s)</source>
-        <translation>&amp;Nedávno otevřené</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="785"/>
@@ -5438,31 +5443,31 @@ Co chcete dělat?</translation>
         <translation>Zmenšit obrázek %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1258"/>
+        <location filename="../sources/diagramcommands.cpp" line="1299"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
         <translation>Spojit dvě zprávy o listu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1262"/>
+        <location filename="../sources/diagramcommands.cpp" line="1303"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
         <translation>Upravit křížové odkazy</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1263"/>
-        <location filename="../sources/diagramcommands.cpp" line="1277"/>
+        <location filename="../sources/diagramcommands.cpp" line="1304"/>
+        <location filename="../sources/diagramcommands.cpp" line="1318"/>
         <source>Lier deux Ã©lÃ©ments</source>
         <translation>Spojit dva prvky</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1276"/>
+        <location filename="../sources/diagramcommands.cpp" line="1317"/>
         <source>Editer les référence croisé</source>
         <translation>Upravit křížové odkazy</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1337"/>
-        <location filename="../sources/diagramcommands.cpp" line="1352"/>
+        <location filename="../sources/diagramcommands.cpp" line="1378"/>
+        <location filename="../sources/diagramcommands.cpp" line="1393"/>
         <source>Délier %n élément(s)</source>
         <translation>
             <numerusform>Odpojit %n prvek</numerusform>
@@ -5549,31 +5554,31 @@ Co chcete dělat?</translation>
         <translation>Změna rozměru %1 výchozích čísel</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partarc.h" line="50"/>
+        <location filename="../sources/editor/partarc.h" line="51"/>
         <source>arc</source>
         <comment>element part name</comment>
         <translation>oblouk</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partellipse.h" line="45"/>
+        <location filename="../sources/editor/partellipse.h" line="46"/>
         <source>ellipse</source>
         <comment>element part name</comment>
         <translation>elipsa</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partline.h" line="60"/>
+        <location filename="../sources/editor/partline.h" line="61"/>
         <source>ligne</source>
         <comment>element part name</comment>
         <translation>čára</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partpolygon.h" line="48"/>
+        <location filename="../sources/editor/partpolygon.h" line="49"/>
         <source>polygone</source>
         <comment>element part name</comment>
         <translation>mnohoúhelník</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partterminal.h" line="51"/>
+        <location filename="../sources/editor/partterminal.h" line="50"/>
         <source>borne</source>
         <comment>element part name</comment>
         <translation>zakončení</translation>
@@ -5585,19 +5590,19 @@ Co chcete dělat?</translation>
         <translation>T</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.h" line="48"/>
+        <location filename="../sources/editor/parttext.h" line="49"/>
         <source>texte</source>
         <comment>element part name</comment>
         <translation>text</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="45"/>
+        <location filename="../sources/editor/parttextfield.cpp" line="46"/>
         <source>_</source>
         <comment>default text when adding a textfield in the element editor</comment>
         <translation>_</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.h" line="54"/>
+        <location filename="../sources/editor/parttextfield.h" line="56"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
         <translation>textové pole</translation>
@@ -5687,7 +5692,7 @@ Co chcete dělat?</translation>
         <translation>vyjmout části</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partrectangle.h" line="45"/>
+        <location filename="../sources/editor/partrectangle.h" line="46"/>
         <source>rectangle</source>
         <comment>element part name</comment>
         <translation>obdélník</translation>
@@ -5884,35 +5889,41 @@ Co chcete dělat?</translation>
         <translation>Datum</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Type de ligne</source>
         <comment>shape style</comment>
         <translation>Styl čáry</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="219"/>
         <source>Normal</source>
         <translation>Běžná</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="220"/>
         <source>Tiret</source>
         <translation>Čárkovaná</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="221"/>
         <source>Pointillé</source>
         <translation>Tečkovaná</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
         <source>Traits et points</source>
         <translation>Čárkovaná a tečkovaná</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="223"/>
         <source>Traits points points</source>
         <translation>Čárka, tečka, tečka</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="237"/>
+        <source>Échelle</source>
+        <comment>shape scale</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5933,15 +5944,20 @@ Co chcete dělat?</translation>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
         <translation>Upravit vlastnosti spojení, oblast </translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="231"/>
         <source>Verrouiller la position</source>
         <translation>Zamknout polohu</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="242"/>
+        <source>Facteur d&apos;échelle</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6264,27 +6280,27 @@ Jiná pole se se nepoužívají.</translation>
         <translation>Geometrie:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="124"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="115"/>
         <source>style antialiasing</source>
         <translation>styl vyhlazování</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="126"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="117"/>
         <source>style couleur</source>
         <translation>styl barvy</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="128"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="119"/>
         <source>style ligne</source>
         <translation>styl čáry</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="130"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="121"/>
         <source>style epaisseur</source>
         <translation>styl váhy</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="132"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="123"/>
         <source>style remplissage</source>
         <translation>výplně</translation>
     </message>
@@ -6312,69 +6328,39 @@ Jiná pole se se nepoužívají.</translation>
         <translation>Západ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="46"/>
-        <source>Visible</source>
-        <translation>Viditelný</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="49"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="45"/>
         <source>Position : </source>
         <translation>Poloha:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="52"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="48"/>
         <source>x : </source>
         <translation>x: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="54"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="50"/>
         <source>y : </source>
         <translation>y: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="59"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
         <source>Orientation : </source>
         <translation>Natočení: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="64"/>
-        <source>Nom : </source>
-        <translation>Název: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="70"/>
-        <source>Numéro : </source>
-        <translation>Číslo: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="134"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="116"/>
         <source>abscisse</source>
         <translation>x-ová souřadnice (abscisa)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="136"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="118"/>
         <source>ordonnée</source>
         <translation>y-ová souřadnice (pořadnice, ordináta)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="138"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="120"/>
         <source>orientation</source>
         <translation>Natočení</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="141"/>
-        <source>numéro: </source>
-        <translation>Číslo: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="145"/>
-        <source>nom: </source>
-        <translation>Název: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="149"/>
-        <source>nom visible: </source>
-        <translation>Viditelný název: </translation>
     </message>
 </context>
 <context>
@@ -6453,7 +6439,7 @@ Jiná pole se se nepoužívají.</translation>
         <translation>úhel otáčení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.cpp" line="537"/>
+        <location filename="../sources/editor/parttext.cpp" line="441"/>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>contenu</source>
         <translation>obsah</translation>
@@ -6497,33 +6483,53 @@ Jiná pole se se nepoužívají.</translation>
         <translation>Výchozí text: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="125"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="68"/>
+        <source>tagg :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
+        <source>Aucun</source>
+        <translation type="unfinished">Žádná</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
+        <source>label</source>
+        <translation type="unfinished">Štítek</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
         <source>abscisse</source>
         <translation>x-ová souřadnice (abscisa)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="127"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="136"/>
         <source>ordonnée</source>
         <translation>y-ová souřadnice (pořadnice, ordináta)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="131"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="140"/>
         <source>taille</source>
         <translation>velikost</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="133"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="142"/>
         <source>propriété</source>
         <translation>vlastnost</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="144"/>
         <source>angle de rotation</source>
         <translation>úhel otáčení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="516"/>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="129"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="145"/>
+        <source>tagg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/parttextfield.cpp" line="425"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>contenu</source>
         <translation>obsah</translation>
     </message>

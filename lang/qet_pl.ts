@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="199"/>
+        <location filename="../sources/aboutqet.cpp" line="200"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Ten program jest na licencji GNU/GPL.</translation>
     </message>
@@ -70,7 +70,7 @@
         <location filename="../sources/aboutqet.cpp" line="114"/>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <location filename="../sources/aboutqet.cpp" line="116"/>
-        <location filename="../sources/aboutqet.cpp" line="180"/>
+        <location filename="../sources/aboutqet.cpp" line="181"/>
         <source>Développement</source>
         <translation>Rozwój</translation>
     </message>
@@ -145,43 +145,48 @@
         <translation>Tłumaczenie na holenderski</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="171"/>
+        <location filename="../sources/aboutqet.cpp" line="152"/>
+        <source>Traduction en flamand</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="172"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Pakiety dla Fedory i Red Hata</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="172"/>
+        <location filename="../sources/aboutqet.cpp" line="173"/>
         <source>Paquets Mageia</source>
         <translation>Pakiety dla Mageia</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="174"/>
         <location filename="../sources/aboutqet.cpp" line="175"/>
+        <location filename="../sources/aboutqet.cpp" line="176"/>
         <source>Paquets Gentoo</source>
         <translation>Pakiety dla Gentoo</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="176"/>
+        <location filename="../sources/aboutqet.cpp" line="177"/>
         <source>Paquets OS/2</source>
         <translation>Pakiety dla OS/2</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="177"/>
+        <location filename="../sources/aboutqet.cpp" line="178"/>
         <source>Paquets FreeBSD</source>
         <translation>Pakiety dla FreeBSD</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="178"/>
+        <location filename="../sources/aboutqet.cpp" line="179"/>
         <source>Paquets Archlinux AUR</source>
         <translation>Pakiety dla Archlinux AUR</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="181"/>
+        <location filename="../sources/aboutqet.cpp" line="182"/>
         <source>Documentation</source>
         <translation>Dokumentacja</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="173"/>
+        <location filename="../sources/aboutqet.cpp" line="174"/>
         <source>Paquets Debian</source>
         <translation>Pakiety dla Debiana</translation>
     </message>
@@ -192,7 +197,7 @@
         <translation>© 2006-2014 Programiści QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="179"/>
+        <location filename="../sources/aboutqet.cpp" line="180"/>
         <source>Icônes</source>
         <translation>Ikony</translation>
     </message>
@@ -2320,52 +2325,52 @@ Zmiany zostaną zapisane.</translation>
 <context>
     <name>LineEditor</name>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="149"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="146"/>
         <source>abscisse point 1</source>
         <translation>odciętej punktu 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="151"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="148"/>
         <source>ordonnée point 1</source>
         <translation>rzędnej punktu 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="153"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="150"/>
         <source>abscisse point 2</source>
         <translation>odciętej punktu 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="155"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="152"/>
         <source>ordonnée point 2</source>
         <translation>rzędnej punktu 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="76"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="73"/>
         <source>Fin 1</source>
         <translation>Zakończenie 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="79"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="76"/>
         <source>Fin 2</source>
         <translation>Zakończenie 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="157"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="154"/>
         <source>type fin 1</source>
         <translation>typu zakończenia 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="159"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="156"/>
         <source>longueur fin 1</source>
         <translation>długości zakończenia 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="161"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="158"/>
         <source>type fin 2</source>
         <translation>typu zakończenia 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="163"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="160"/>
         <source>longueur fin 2</source>
         <translation>długości zakończenia 2</translation>
     </message>
@@ -3573,6 +3578,11 @@ Dostępne opcje :
         <translation>&amp;Projekt</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouverts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="801"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Wydaje się, że plik, który próbujesz otworzyć, nie jest do odczytu. Dlatego też nie można go otworzyć. Sprawdź uprawnienia do plików.</translation>
@@ -3930,11 +3940,6 @@ Dostępne opcje :
         <source>Permet de visualiser le schéma sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
         <translation>Podgląd schematu bez możliwości edycji</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
-        <source>&amp;Récemment ouvert(s)</source>
-        <translation>&amp;Ostatnio otwarty</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="785"/>
@@ -5438,31 +5443,31 @@ Co chcesz zrobić ?</translation>
         <translation>pomniejszenie obrazu do %1 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1258"/>
+        <location filename="../sources/diagramcommands.cpp" line="1299"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
         <translation>połączenie 2 odsyłaczy do strony</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1262"/>
+        <location filename="../sources/diagramcommands.cpp" line="1303"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
         <translation>Edytuj odsyłacz</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1263"/>
-        <location filename="../sources/diagramcommands.cpp" line="1277"/>
+        <location filename="../sources/diagramcommands.cpp" line="1304"/>
+        <location filename="../sources/diagramcommands.cpp" line="1318"/>
         <source>Lier deux Ã©lÃ©ments</source>
         <translation>Połącz dwa Ã©lÃ©ments</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1276"/>
+        <location filename="../sources/diagramcommands.cpp" line="1317"/>
         <source>Editer les référence croisé</source>
         <translation>Edytuj odsyłacz</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1337"/>
-        <location filename="../sources/diagramcommands.cpp" line="1352"/>
+        <location filename="../sources/diagramcommands.cpp" line="1378"/>
+        <location filename="../sources/diagramcommands.cpp" line="1393"/>
         <source>Délier %n élément(s)</source>
         <translation>
             <numerusform>rozłączenie %n elementu</numerusform>
@@ -5549,31 +5554,31 @@ Co chcesz zrobić ?</translation>
         <translation>zmaina rozmiaru %1 figur począktowych</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partarc.h" line="50"/>
+        <location filename="../sources/editor/partarc.h" line="51"/>
         <source>arc</source>
         <comment>element part name</comment>
         <translation>łuk</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partellipse.h" line="45"/>
+        <location filename="../sources/editor/partellipse.h" line="46"/>
         <source>ellipse</source>
         <comment>element part name</comment>
         <translation>elipsa</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partline.h" line="60"/>
+        <location filename="../sources/editor/partline.h" line="61"/>
         <source>ligne</source>
         <comment>element part name</comment>
         <translation>linia</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partpolygon.h" line="48"/>
+        <location filename="../sources/editor/partpolygon.h" line="49"/>
         <source>polygone</source>
         <comment>element part name</comment>
         <translation>wielokąt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partterminal.h" line="51"/>
+        <location filename="../sources/editor/partterminal.h" line="50"/>
         <source>borne</source>
         <comment>element part name</comment>
         <translation>terminal</translation>
@@ -5585,19 +5590,19 @@ Co chcesz zrobić ?</translation>
         <translation>T</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.h" line="48"/>
+        <location filename="../sources/editor/parttext.h" line="49"/>
         <source>texte</source>
         <comment>element part name</comment>
         <translation>tekst</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="45"/>
+        <location filename="../sources/editor/parttextfield.cpp" line="46"/>
         <source>_</source>
         <comment>default text when adding a textfield in the element editor</comment>
         <translation>_</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.h" line="54"/>
+        <location filename="../sources/editor/parttextfield.h" line="56"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
         <translation>pole tekstowe</translation>
@@ -5687,7 +5692,7 @@ Co chcesz zrobić ?</translation>
         <translation>wytnij części</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partrectangle.h" line="45"/>
+        <location filename="../sources/editor/partrectangle.h" line="46"/>
         <source>rectangle</source>
         <comment>element part name</comment>
         <translation>prostokąt</translation>
@@ -5884,35 +5889,41 @@ Co chcesz zrobić ?</translation>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Type de ligne</source>
         <comment>shape style</comment>
         <translation>Rodzaj linii</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="219"/>
         <source>Normal</source>
         <translation>Ciągła</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="220"/>
         <source>Tiret</source>
         <translation>Kreskowa</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="221"/>
         <source>Pointillé</source>
         <translation>Kropkowa</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
         <source>Traits et points</source>
         <translation>Kreskowo-kropkowa</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="223"/>
         <source>Traits points points</source>
         <translation>Kreskowa z dwiema kreskami</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="237"/>
+        <source>Échelle</source>
+        <comment>shape scale</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5933,15 +5944,20 @@ Co chcesz zrobić ?</translation>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
         <translation>Edycja właściwości połączenia, Strefy </translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="231"/>
         <source>Verrouiller la position</source>
         <translation>Zablokuj położenie</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="242"/>
+        <source>Facteur d&apos;échelle</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6264,27 +6280,27 @@ Pozostałe pola nie są używane.</translation>
         <translation>Geometria :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="124"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="115"/>
         <source>style antialiasing</source>
         <translation>antyaliasingu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="126"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="117"/>
         <source>style couleur</source>
         <translation>koloru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="128"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="119"/>
         <source>style ligne</source>
         <translation>stylu linii</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="130"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="121"/>
         <source>style epaisseur</source>
         <translation>grubości</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="132"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="123"/>
         <source>style remplissage</source>
         <translation>wypełnienia</translation>
     </message>
@@ -6312,69 +6328,39 @@ Pozostałe pola nie są używane.</translation>
         <translation>Zachód</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="46"/>
-        <source>Visible</source>
-        <translation>Widoczny</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="49"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="45"/>
         <source>Position : </source>
         <translation>Pozycja :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="52"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="48"/>
         <source>x : </source>
         <translation>x : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="54"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="50"/>
         <source>y : </source>
         <translation>y : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="59"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
         <source>Orientation : </source>
         <translation>Orientacja : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="64"/>
-        <source>Nom : </source>
-        <translation>Nazwa : </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="70"/>
-        <source>Numéro : </source>
-        <translation>Numer : </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="134"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="116"/>
         <source>abscisse</source>
         <translation>odciętej</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="136"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="118"/>
         <source>ordonnée</source>
         <translation>rzędnej</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="138"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="120"/>
         <source>orientation</source>
         <translation>orientacji</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="141"/>
-        <source>numéro: </source>
-        <translation>numer : </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="145"/>
-        <source>nom: </source>
-        <translation>nazwa : </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="149"/>
-        <source>nom visible: </source>
-        <translation>nazwa widoczna : </translation>
     </message>
 </context>
 <context>
@@ -6453,7 +6439,7 @@ Pozostałe pola nie są używane.</translation>
         <translation>kąta obrotu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.cpp" line="537"/>
+        <location filename="../sources/editor/parttext.cpp" line="441"/>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>contenu</source>
         <translation>zawartości</translation>
@@ -6497,33 +6483,53 @@ Pozostałe pola nie są używane.</translation>
         <translation>Domyślny tekst : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="125"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="68"/>
+        <source>tagg :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
+        <source>Aucun</source>
+        <translation type="unfinished">Brak</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
+        <source>label</source>
+        <translation type="unfinished">etykieta</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
         <source>abscisse</source>
         <translation>odciętej</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="127"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="136"/>
         <source>ordonnée</source>
         <translation>rzędnej</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="131"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="140"/>
         <source>taille</source>
         <translation>rozmiaru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="133"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="142"/>
         <source>propriété</source>
         <translation>właściwości</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="144"/>
         <source>angle de rotation</source>
         <translation>kąta obrotu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="516"/>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="129"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="145"/>
+        <source>tagg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/parttextfield.cpp" line="425"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>contenu</source>
         <translation>zawartości</translation>
     </message>

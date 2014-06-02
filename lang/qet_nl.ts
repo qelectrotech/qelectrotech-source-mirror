@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="199"/>
+        <location filename="../sources/aboutqet.cpp" line="200"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Dit programma heeft een GNU/GPL licentie.</translation>
     </message>
@@ -70,7 +70,7 @@
         <location filename="../sources/aboutqet.cpp" line="114"/>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <location filename="../sources/aboutqet.cpp" line="116"/>
-        <location filename="../sources/aboutqet.cpp" line="180"/>
+        <location filename="../sources/aboutqet.cpp" line="181"/>
         <source>Développement</source>
         <translation>Ontwikkeling</translation>
     </message>
@@ -145,43 +145,48 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="171"/>
+        <location filename="../sources/aboutqet.cpp" line="152"/>
+        <source>Traduction en flamand</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="172"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Fedora and Red Hat pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="172"/>
+        <location filename="../sources/aboutqet.cpp" line="173"/>
         <source>Paquets Mageia</source>
         <translation>Mageia pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="174"/>
         <location filename="../sources/aboutqet.cpp" line="175"/>
+        <location filename="../sources/aboutqet.cpp" line="176"/>
         <source>Paquets Gentoo</source>
         <translation>Gentoo pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="176"/>
+        <location filename="../sources/aboutqet.cpp" line="177"/>
         <source>Paquets OS/2</source>
         <translation>OS/2 pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="177"/>
+        <location filename="../sources/aboutqet.cpp" line="178"/>
         <source>Paquets FreeBSD</source>
         <translation>FreeBSD pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="178"/>
+        <location filename="../sources/aboutqet.cpp" line="179"/>
         <source>Paquets Archlinux AUR</source>
         <translation>Archlinux AUR pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="181"/>
+        <location filename="../sources/aboutqet.cpp" line="182"/>
         <source>Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="173"/>
+        <location filename="../sources/aboutqet.cpp" line="174"/>
         <source>Paquets Debian</source>
         <translation>Debian pakketten</translation>
     </message>
@@ -192,7 +197,7 @@
         <translation>© 2006-2014 QElectroTech ontwikkelaars</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="179"/>
+        <location filename="../sources/aboutqet.cpp" line="180"/>
         <source>Icônes</source>
         <translation>Iconen</translation>
     </message>
@@ -2320,52 +2325,52 @@ U kunt niet meer terug.</translation>
 <context>
     <name>LineEditor</name>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="149"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="146"/>
         <source>abscisse point 1</source>
         <translation>Horizontale as punt 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="151"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="148"/>
         <source>ordonnée point 1</source>
         <translation>Verticale as punt 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="153"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="150"/>
         <source>abscisse point 2</source>
         <translation>Horizontale as punt 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="155"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="152"/>
         <source>ordonnée point 2</source>
         <translation>Verticale as punt 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="76"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="73"/>
         <source>Fin 1</source>
         <translation>Einde 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="79"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="76"/>
         <source>Fin 2</source>
         <translation>Einde 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="157"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="154"/>
         <source>type fin 1</source>
         <translation>Einde 1 type</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="159"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="156"/>
         <source>longueur fin 1</source>
         <translation>Einde 1 lengte</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="161"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="158"/>
         <source>type fin 2</source>
         <translation>Einde 2 type</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="163"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="160"/>
         <source>longueur fin 2</source>
         <translation>Einde 2 lengte</translation>
     </message>
@@ -3571,6 +3576,11 @@ Beschikbare opties:
         <translation>Project</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <source>&amp;Récemment ouverts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="801"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Onmogelijk om bestand te openen. kijk of u permissie heeft</translation>
@@ -3929,11 +3939,6 @@ Beschikbare opties:
         <source>Permet de visualiser le schéma sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
         <translation>Toestaan om het diagram te bekijken zonder wijziging</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
-        <source>&amp;Récemment ouvert(s)</source>
-        <translation>&amp;Recent geopend(s)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="785"/>
@@ -5434,31 +5439,31 @@ Que désirez vous faire ?</source>
         <translation>Wijzig de eigenschappen van meerdere geleiders </translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1258"/>
+        <location filename="../sources/diagramcommands.cpp" line="1299"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
         <translation>Koppel twee pagina rapporten</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1262"/>
+        <location filename="../sources/diagramcommands.cpp" line="1303"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
         <translation>Wijzig referentie</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1263"/>
-        <location filename="../sources/diagramcommands.cpp" line="1277"/>
+        <location filename="../sources/diagramcommands.cpp" line="1304"/>
+        <location filename="../sources/diagramcommands.cpp" line="1318"/>
         <source>Lier deux Ã©lÃ©ments</source>
         <translation>Koppel twee elementen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1276"/>
+        <location filename="../sources/diagramcommands.cpp" line="1317"/>
         <source>Editer les référence croisé</source>
         <translation>Wijzig Referentie</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1337"/>
-        <location filename="../sources/diagramcommands.cpp" line="1352"/>
+        <location filename="../sources/diagramcommands.cpp" line="1378"/>
+        <location filename="../sources/diagramcommands.cpp" line="1393"/>
         <source>Délier %n élément(s)</source>
         <translation>
             <numerusform>Ontkoppel .%n element</numerusform>
@@ -5466,31 +5471,31 @@ Que désirez vous faire ?</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/partarc.h" line="50"/>
+        <location filename="../sources/editor/partarc.h" line="51"/>
         <source>arc</source>
         <comment>element part name</comment>
         <translation>Arc</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partellipse.h" line="45"/>
+        <location filename="../sources/editor/partellipse.h" line="46"/>
         <source>ellipse</source>
         <comment>element part name</comment>
         <translation>Ellipse</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partline.h" line="60"/>
+        <location filename="../sources/editor/partline.h" line="61"/>
         <source>ligne</source>
         <comment>element part name</comment>
         <translation>Lijn</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partpolygon.h" line="48"/>
+        <location filename="../sources/editor/partpolygon.h" line="49"/>
         <source>polygone</source>
         <comment>element part name</comment>
         <translation>Polygoon</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partterminal.h" line="51"/>
+        <location filename="../sources/editor/partterminal.h" line="50"/>
         <source>borne</source>
         <comment>element part name</comment>
         <translation>Terminal</translation>
@@ -5502,19 +5507,19 @@ Que désirez vous faire ?</source>
         <translation>T</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.h" line="48"/>
+        <location filename="../sources/editor/parttext.h" line="49"/>
         <source>texte</source>
         <comment>element part name</comment>
         <translation>Tekst</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="45"/>
+        <location filename="../sources/editor/parttextfield.cpp" line="46"/>
         <source>_</source>
         <comment>default text when adding a textfield in the element editor</comment>
         <translation>_</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.h" line="54"/>
+        <location filename="../sources/editor/parttextfield.h" line="56"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
         <translation>Tekstveld</translation>
@@ -5678,7 +5683,7 @@ Que désirez vous faire ?</source>
         <translation>Schalen van  %1 primitives </translation>
     </message>
     <message>
-        <location filename="../sources/editor/partrectangle.h" line="45"/>
+        <location filename="../sources/editor/partrectangle.h" line="46"/>
         <source>rectangle</source>
         <comment>element part name</comment>
         <translation>Rechthoek</translation>
@@ -5873,35 +5878,41 @@ Que désirez vous faire ?</source>
         <translation>Datum</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="205"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
         <source>Type de ligne</source>
         <comment>shape style</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="210"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="219"/>
         <source>Normal</source>
         <translation>Normaal</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="211"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="220"/>
         <source>Tiret</source>
         <translation>Strepen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="212"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="221"/>
         <source>Pointillé</source>
         <translation>Punten</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="213"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
         <source>Traits et points</source>
         <translation>Punt streep</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="214"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="223"/>
         <source>Traits points points</source>
         <translation>Punt streep.punt</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="237"/>
+        <source>Échelle</source>
+        <comment>shape scale</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5922,15 +5933,20 @@ Que désirez vous faire ?</source>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="200"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="209"/>
         <source>Éditer les propriétés d&apos;une liaison, Zone </source>
         <comment>window title</comment>
         <translation>Raam titel</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="222"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="231"/>
         <source>Verrouiller la position</source>
         <translation>Grendel Positie</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="242"/>
+        <source>Facteur d&apos;échelle</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6252,27 +6268,27 @@ Een veld bestaat uit een type, een beginwaarde, en een optelgetal.
         <translation>Geometrie:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="124"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="115"/>
         <source>style antialiasing</source>
         <translation>Verscherpings stijl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="126"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="117"/>
         <source>style couleur</source>
         <translation>Kleur stijl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="128"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="119"/>
         <source>style ligne</source>
         <translation>Lijn stijl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="130"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="121"/>
         <source>style epaisseur</source>
         <translation>Dikte stijl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="132"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="123"/>
         <source>style remplissage</source>
         <translation>Vulling stijl</translation>
     </message>
@@ -6300,69 +6316,39 @@ Een veld bestaat uit een type, een beginwaarde, en een optelgetal.
         <translation>West(O)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="46"/>
-        <source>Visible</source>
-        <translation>Zichtbaar</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="49"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="45"/>
         <source>Position : </source>
         <translation>Positie: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="52"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="48"/>
         <source>x : </source>
         <translation>X: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="54"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="50"/>
         <source>y : </source>
         <translation>Y: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="59"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
         <source>Orientation : </source>
         <translation>Orientatie: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="64"/>
-        <source>Nom : </source>
-        <translation>Naam:</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="70"/>
-        <source>Numéro : </source>
-        <translation>Nummer:</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="134"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="116"/>
         <source>abscisse</source>
         <translation>Horizontale as</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="136"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="118"/>
         <source>ordonnée</source>
         <translation>Verticale as</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="138"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="120"/>
         <source>orientation</source>
         <translation>Orientatie</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="141"/>
-        <source>numéro: </source>
-        <translation>Nummer:</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="145"/>
-        <source>nom: </source>
-        <translation>Naam:</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="149"/>
-        <source>nom visible: </source>
-        <translation>Zichtbare naam:</translation>
     </message>
 </context>
 <context>
@@ -6441,7 +6427,7 @@ Een veld bestaat uit een type, een beginwaarde, en een optelgetal.
         <translation>Rotatie hoek</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.cpp" line="537"/>
+        <location filename="../sources/editor/parttext.cpp" line="441"/>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>contenu</source>
         <translation>Inhoud</translation>
@@ -6485,33 +6471,53 @@ Een veld bestaat uit een type, een beginwaarde, en een optelgetal.
         <translation>Standaard tekst: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="125"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="68"/>
+        <source>tagg :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
+        <source>Aucun</source>
+        <translation type="unfinished">Geen</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
+        <source>label</source>
+        <translation type="unfinished">Label</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
         <source>abscisse</source>
         <translation>Horizontale as</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="127"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="136"/>
         <source>ordonnée</source>
         <translation>Verticale as</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="131"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="140"/>
         <source>taille</source>
         <translation>Grootte</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="133"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="142"/>
         <source>propriété</source>
         <translation>Eigenschap</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="144"/>
         <source>angle de rotation</source>
         <translation>Rotatie hoek</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="516"/>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="129"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="145"/>
+        <source>tagg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/parttextfield.cpp" line="425"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>contenu</source>
         <translation>Inhoud</translation>
     </message>
