@@ -4,6 +4,7 @@
         <name lang="be">KNX voeding 160mA</name>
         <name lang="en">KNX power supplies 160mA</name>
         <name lang="fr">KNX alimentations 160mA</name>
+        <name lang="it">Alimentatore KNX 160mA</name>
     </names>
     <informations>
 		Author: RDS for QelectroTech

@@ -4,6 +4,7 @@
         <name lang="be">KNX voeding 320mA</name>
         <name lang="en">KNX power supplies 320mA</name>
         <name lang="fr">KNX alimentations 320mA</name>
+        <name lang="it">Alimentatore KNX 320mA</name>
     </names>
     <informations>
 		Author: RDS for QelectroTech

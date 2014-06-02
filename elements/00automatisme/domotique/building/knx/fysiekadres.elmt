@@ -4,6 +4,7 @@
         <name lang="be">Fysiek adres KNX</name>
         <name lang="en">Physical address KNX</name>
         <name lang="fr">Adresse physique KNX</name>
+        <name lang="it">Indirizzo fisico KNX</name>
     </names>
     <informations>
 		Author: RDS for QelectroTech

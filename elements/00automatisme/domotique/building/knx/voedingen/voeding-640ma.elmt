@@ -4,6 +4,7 @@
         <name lang="be">KNX voeding 640mA</name>
         <name lang="en">KNX power supplies 640mA</name>
         <name lang="fr">KNX alimentations 640mA</name>
+        <name lang="it">Alimentatore KNX 640mA</name>
     </names>
     <informations>
 		Author: RDS for QelectroTech
