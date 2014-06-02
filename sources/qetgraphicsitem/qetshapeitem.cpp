@@ -234,12 +234,12 @@ void QetShapeItem::editProperty()
 	cb.setVisible(false);
 
 	//GroupBox for Scaling
-	QGroupBox scale_groupe(QObject::tr("Scale", "shape scale"));
+	QGroupBox scale_groupe(QObject::tr("\311chelle", "shape scale"));
 	dialog_layout.addWidget(&scale_groupe);
 	QHBoxLayout scale_layout(&scale_groupe);
 
 	QLabel scale_label(&property_dialog);
-	scale_label.setText(tr("Scale Factor"));
+	scale_label.setText(tr("Facteur d'\351chelle"));
 
 	QLineEdit scale_lineedit(&property_dialog);
 	QDoubleValidator scale_val(0.0,1000,3, &property_dialog);
