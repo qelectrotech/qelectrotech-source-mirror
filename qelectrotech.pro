@@ -65,12 +65,12 @@ INCLUDEPATH += sources sources/editor sources/titleblock sources/ui sources/qetg
 
 # Fichiers sources
 HEADERS += sources/*.h   sources/ui/*.h   sources/editor/*.h   sources/titleblock/*.h  sources/richtext/*.h sources/qetgraphicsitem/*.h sources/factory/*.cpp \
-    sources/properties/propertiesinterface.h \
-    sources/properties/xrefproperties.h
+           sources/properties/*.h \
+           sources/editor/ui/*.h
 
 SOURCES += sources/*.cpp sources/editor/*.cpp sources/titleblock/*.cpp sources/richtext/*.cpp sources/ui/*.cpp sources/qetgraphicsitem/*.cpp sources/factory/*.cpp \
-    sources/properties/propertiesinterface.cpp \
-    sources/properties/xrefproperties.cpp
+           sources/properties/*.cpp \
+           sources/editor/ui/*.cpp
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
@@ -85,9 +85,10 @@ TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang
 QT += xml svg network sql
 
 # UI DESIGNER FILES AND GENERATION SOURCES FILES
-FORMS += sources/richtext/addlinkdialog.ui  sources/ui/*.ui \
-    sources/ui/linksingleelementwidget.ui \
-    sources/ui/xrefpropertieswidget.ui
+FORMS += sources/richtext/*.ui \
+         sources/ui/*.ui \
+         sources/editor/ui/*.ui
+
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/
 

@@ -122,43 +122,44 @@ void QETElementEditor::setFileName(const QString &fn) {
 	Met en place les actions
 */
 void QETElementEditor::setupActions() {
-	new_element     = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                  this);
-	open            = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir"),                                   this);
-	open_file       = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir depuis un fichier"),                 this);
-	save            = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"),                              this);
-	save_as         = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous"),                          this);
-	save_as_file    = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),               this);
-	reload          = new QAction(QET::Icons::ViewRefresh,          tr("Recharger"),                                 this);
-	quit            = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter"),                                  this);
-	selectall       = new QAction(QET::Icons::EditSelectAll,        tr("Tout s\351lectionner"),                      this);
-	deselectall     = new QAction(                                  tr("D\351s\351lectionner tout"),                 this);
-	cut             = new QAction(QET::Icons::EditCut,              tr("Co&uper"),                                   this);
-	copy            = new QAction(QET::Icons::EditCopy,             tr("Cop&ier"),                                   this);
-	paste           = new QAction(QET::Icons::EditPaste,            tr("C&oller"),                                   this);
-	paste_in_area   = new QAction(QET::Icons::EditPaste,            tr("C&oller dans la zone..."),                   this);
-	paste_from_file = new QAction(QET::Icons::XmlTextFile,          tr("un fichier"),                                this);
-	paste_from_elmt = new QAction(QET::Icons::Element,              tr("un \351l\351ment"),                          this);
-	inv_select      = new QAction(                                  tr("Inverser la s\351lection"),                  this);
-	edit_delete     = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
-	zoom_in         = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant"),                                this);
-	zoom_out        = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re"),                           this);
-	zoom_fit        = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351"),                            this);
-	zoom_reset      = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom"),                               this);
-	edit_names      = new QAction(QET::Icons::Names,                tr("\311diter les noms"),                        this);
-	edit_author     = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations sur l'auteur"),   this);
-	edit_raise      = new QAction(QET::Icons::Raise,                tr("Rapprocher"),                                this);
-	edit_lower      = new QAction(QET::Icons::Lower,                tr("\311loigner"),                               this);
-	edit_backward   = new QAction(QET::Icons::SendBackward,         tr("Envoyer au fond"),                           this);
-	edit_forward    = new QAction(QET::Icons::BringForward,         tr("Amener au premier plan"),                    this);
-	move            = new QAction(QET::Icons::PartSelect,           tr("D\351placer un objet"),                      this);
-	add_line        = new QAction(QET::Icons::PartLine,             tr("Ajouter une ligne"),                         this);
-	add_rectangle   = new QAction(QET::Icons::PartRectangle,        tr("Ajouter un rectangle"),                      this);
-	add_ellipse     = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une ellipse"),                       this);
-	add_polygon     = new QAction(QET::Icons::PartPolygon,          tr("Ajouter un polygone"),                       this);
-	add_text        = new QAction(QET::Icons::PartText,             tr("Ajouter du texte"),                          this);
-	add_arc         = new QAction(QET::Icons::PartArc,              tr("Ajouter un arc de cercle"),                  this);
-	add_terminal    = new QAction(QET::Icons::Terminal,             tr("Ajouter une borne"),                         this);
-	add_textfield   = new QAction(QET::Icons::PartTextField,        tr("Ajouter un champ de texte"),                 this);
+	new_element       = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                  this);
+	open              = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir"),                                   this);
+	open_file         = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir depuis un fichier"),                 this);
+	save              = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"),                              this);
+	save_as           = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous"),                          this);
+	save_as_file      = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),               this);
+	reload            = new QAction(QET::Icons::ViewRefresh,          tr("Recharger"),                                 this);
+	quit              = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter"),                                  this);
+	selectall         = new QAction(QET::Icons::EditSelectAll,        tr("Tout s\351lectionner"),                      this);
+	deselectall       = new QAction(                                  tr("D\351s\351lectionner tout"),                 this);
+	cut               = new QAction(QET::Icons::EditCut,              tr("Co&uper"),                                   this);
+	copy              = new QAction(QET::Icons::EditCopy,             tr("Cop&ier"),                                   this);
+	paste             = new QAction(QET::Icons::EditPaste,            tr("C&oller"),                                   this);
+	paste_in_area     = new QAction(QET::Icons::EditPaste,            tr("C&oller dans la zone..."),                   this);
+	paste_from_file   = new QAction(QET::Icons::XmlTextFile,          tr("un fichier"),                                this);
+	paste_from_elmt   = new QAction(QET::Icons::Element,              tr("un \351l\351ment"),                          this);
+	inv_select        = new QAction(                                  tr("Inverser la s\351lection"),                  this);
+	edit_delete       = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
+	zoom_in           = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant"),                                this);
+	zoom_out          = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re"),                           this);
+	zoom_fit          = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351"),                            this);
+	zoom_reset        = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom"),                               this);
+	edit_names        = new QAction(QET::Icons::Names,                tr("\311diter les noms"),                        this);
+	edit_author		  = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations sur l'auteur"),   this);
+	m_edit_properties = new QAction(QET::Icons::ElementEdit,		  tr("\311diter les propri\351t\351es de l'\351l\351ment)"), this);
+	edit_raise        = new QAction(QET::Icons::Raise,                tr("Rapprocher"),                                this);
+	edit_lower        = new QAction(QET::Icons::Lower,                tr("\311loigner"),                               this);
+	edit_backward     = new QAction(QET::Icons::SendBackward,         tr("Envoyer au fond"),                           this);
+	edit_forward      = new QAction(QET::Icons::BringForward,         tr("Amener au premier plan"),                    this);
+	move              = new QAction(QET::Icons::PartSelect,           tr("D\351placer un objet"),                      this);
+	add_line          = new QAction(QET::Icons::PartLine,             tr("Ajouter une ligne"),                         this);
+	add_rectangle     = new QAction(QET::Icons::PartRectangle,        tr("Ajouter un rectangle"),                      this);
+	add_ellipse       = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une ellipse"),                       this);
+	add_polygon       = new QAction(QET::Icons::PartPolygon,          tr("Ajouter un polygone"),                       this);
+	add_text          = new QAction(QET::Icons::PartText,             tr("Ajouter du texte"),                          this);
+	add_arc           = new QAction(QET::Icons::PartArc,              tr("Ajouter un arc de cercle"),                  this);
+	add_terminal      = new QAction(QET::Icons::Terminal,             tr("Ajouter une borne"),                         this);
+	add_textfield     = new QAction(QET::Icons::PartTextField,        tr("Ajouter un champ de texte"),                 this);
 	
 	QString add_status_tip = tr("Maintenez la touche Shift enfonc\351e pour effectuer plusieurs ajouts d'affil\351e");
 	add_line      -> setStatusTip(add_status_tip);
@@ -234,6 +235,7 @@ void QETElementEditor::setupActions() {
 	connect(edit_delete,     SIGNAL(triggered()), ce_scene, SLOT(slot_delete()));
 	connect(edit_names,      SIGNAL(triggered()), ce_scene, SLOT(slot_editNames()));
 	connect(edit_author,     SIGNAL(triggered()), ce_scene, SLOT(slot_editAuthorInformations()));
+	connect(m_edit_properties, SIGNAL(triggered()), ce_scene, SLOT(slot_editProperties()));
 	connect(edit_forward,    SIGNAL(triggered()), ce_scene, SLOT(slot_bringForward()));
 	connect(edit_raise,      SIGNAL(triggered()), ce_scene, SLOT(slot_raise()));
 	connect(edit_lower,      SIGNAL(triggered()), ce_scene, SLOT(slot_lower()));
@@ -312,9 +314,13 @@ void QETElementEditor::setupActions() {
 	main_toolbar -> addAction(redo);
 	main_toolbar -> addSeparator();
 	main_toolbar -> addAction(edit_delete);
+
 	view_toolbar -> addAction(zoom_fit);
 	view_toolbar -> addAction(zoom_reset);
+
 	element_toolbar -> addAction(edit_names);
+	element_toolbar -> addAction(m_edit_properties);
+
 	depth_toolbar -> addAction(edit_forward);
 	depth_toolbar -> addAction(edit_raise);
 	depth_toolbar -> addAction(edit_lower);
@@ -390,6 +396,7 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addSeparator();
 	edit_menu -> addAction(edit_names);
 	edit_menu -> addAction(edit_author);
+	edit_menu -> addAction(m_edit_properties);
 	edit_menu -> addSeparator();
 	edit_menu -> addAction(edit_forward);
 	edit_menu -> addAction(edit_raise);
@@ -637,15 +644,17 @@ void QETElementEditor::xmlPreview() {
 }
 
 /**
-	Effectue diverses verifications sur l'element et en informe l'utilisateur.
-	@return true si la situation est ok, false sinon
-*/
+ * @brief QETElementEditor::checkElement
+ * Do several check about element.
+ * If error is occured return false
+ */
 bool QETElementEditor::checkElement() {
 	// liste les avertissements applicables
 	typedef QPair<QString, QString> QETWarning;
 	QList<QETWarning> warnings;
+	QList<QETWarning> errors;
 		
-	/// Avertissement #2 : si l'element ne comporte aucune borne
+	/// Warning #1: Element haven't got terminal
 	if (!ce_scene -> containsTerminals()) {
 		warnings << qMakePair(
 			tr("Absence de borne", "warning title"),
@@ -658,18 +667,33 @@ bool QETElementEditor::checkElement() {
 			)
 		);
 	}
+
+	///Error #1: element is slave or master but havent got input tagged 'label'
+	if(ce_scene -> elementType() == "master" || ce_scene -> elementType() == "slave") {
+		bool wrng = true;
+		foreach (CustomElementPart *cep, ce_scene->primitives()) {
+			if (cep->property("tagg").toString() == "label") wrng = false;
+		}
+		if (wrng) {
+			errors << qMakePair(
+							tr("Absence de champ texte 'label'", "warning title"),
+							tr("Les \351l\351ments ma\356tres ou esclaves doivent poss\351der "
+							   "un champ texte comportant le tagg 'label'", "warning description"));
+		}
+	}
 	
-	if (!warnings.count()) return(true);
+	if (!errors.count() && !warnings.count()) return(true);
+	QList<QETWarning> total = warnings << errors;
 	
-	// affiche les avertissements
+	// Display warnings
 	QString warning_message = tr(
 		"La v\351rification de cet \351l\351ment a g\351n\351r\351 %n avertissement(s)\240:",
 		"message box content",
-		warnings.count()
+		total.count()
 	);
 	
 	warning_message += "<ol>";
-	foreach(QETWarning warning, warnings) {
+	foreach(QETWarning warning, total) {
 		warning_message += "<li>";
 		warning_message += QString(
 			tr("<b>%1</b>\240: %2", "warning title: warning description")
@@ -677,15 +701,12 @@ bool QETElementEditor::checkElement() {
 		warning_message += "</li>";
 	}
 	warning_message += "</ol>";
-	
-	QMessageBox warnings_message_box(this);
-	warnings_message_box.setWindowModality(Qt::WindowModal);
-	warnings_message_box.setWindowFlags(warnings_message_box.windowFlags() | Qt::Sheet);
-	warnings_message_box.setTextFormat(Qt::RichText);
-	warnings_message_box.setWindowTitle(tr("Avertissements", "messagebox title"));
-	warnings_message_box.setText(warning_message);
-	warnings_message_box.exec();
-	return(false);
+
+	QMessageBox::warning(this, tr("Avertissements"), warning_message);
+
+	//if error == 0 that means they are only warning, we return true.
+	if (errors.count() == 0) return(true);
+	return false;
 }
 
 /**
@@ -976,71 +997,84 @@ void QETElementEditor::slot_reload() {
 	@see slot_saveAs()
 */
 bool QETElementEditor::slot_save() {
-	// verification avant d'enregistrer le fichier
-	checkElement();
-	// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
-	if (opened_from_file) {
-		if (filename_.isEmpty()) return(slot_saveAsFile());
-		// sinon on enregistre dans le nom de fichier connu
-		bool result_save = toFile(filename_);
-		if (result_save) ce_scene -> undoStack().setClean();
-		return(result_save);
-	} else {
-		if (location_.isNull()) return(slot_saveAs());
-		// sinon on enregistre a l'emplacement connu
-		bool result_save = toLocation(location_);
-		if (result_save) ce_scene -> undoStack().setClean();
-		return(result_save);
+	// Check element befor writing
+	if (checkElement()) {
+		// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
+		if (opened_from_file) {
+			if (filename_.isEmpty()) return(slot_saveAsFile());
+			// sinon on enregistre dans le nom de fichier connu
+			bool result_save = toFile(filename_);
+			if (result_save) ce_scene -> undoStack().setClean();
+			return(result_save);
+		} else {
+			if (location_.isNull()) return(slot_saveAs());
+			// sinon on enregistre a l'emplacement connu
+			bool result_save = toLocation(location_);
+			if (result_save) ce_scene -> undoStack().setClean();
+			return(result_save);
+		}
 	}
+	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement \340 \351chou\351,\nles conditions requises ne sont pas valides"));
+	return false;
 }
 
 /**
 	Demande une localisation a l'utilisateur et enregistre l'element
 */
 bool QETElementEditor::slot_saveAs() {
-	// demande une localisation a l'utilisateur
-	ElementsLocation location = ElementDialog::getSaveElementLocation(this);
-	if (location.isNull()) return(false);
+	// Check element befor writing
+	if (checkElement()) {
+		// demande une localisation a l'utilisateur
+		ElementsLocation location = ElementDialog::getSaveElementLocation(this);
+		if (location.isNull()) return(false);
 	
-	// tente l'enregistrement
-	bool result_save = toLocation(location);
-	if (result_save) {
-		setLocation(location);
-		ce_scene -> undoStack().setClean();
+		// tente l'enregistrement
+		bool result_save = toLocation(location);
+		if (result_save) {
+			setLocation(location);
+			ce_scene -> undoStack().setClean();
+		}
+	
+		// retourne un booleen representatif de la reussite de l'enregistrement
+		return(result_save);
 	}
-	
-	// retourne un booleen representatif de la reussite de l'enregistrement
-	return(result_save);
+	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement \340 \351chou\351,\nles conditions requises ne sont pas valides"));
+	return (false);
 }
 
 /**
 	Demande un nom de fichier a l'utilisateur et enregistre l'element
 */
 bool QETElementEditor::slot_saveAsFile() {
-	// demande un nom de fichier a l'utilisateur pour enregistrer l'element
-	QString fn = QFileDialog::getSaveFileName(
-		this,
-		tr("Enregistrer sous", "dialog title"),
-		filename_.isEmpty() ? QETApp::customElementsDir() : QDir(filename_).absolutePath(),
-		tr(
-			"\311l\351ments QElectroTech (*.elmt)",
-			"filetypes allowed when saving an element file"
-		)
-	);
-	// si aucun nom n'est entre, renvoie faux.
-	if (fn.isEmpty()) return(false);
-	// si le nom ne se termine pas par l'extension .elmt, celle-ci est ajoutee
-	if (!fn.endsWith(".elmt", Qt::CaseInsensitive)) fn += ".elmt";
-	// tente d'enregistrer le fichier
-	bool result_save = toFile(fn);
-	// si l'enregistrement reussit, le nom du fichier est conserve
-	if (result_save) {
-		setFileName(fn);
-		QETApp::elementsRecentFiles() -> fileWasOpened(fn);
-		ce_scene -> undoStack().setClean();
+	// Check element befor writing
+	if (checkElement()) {
+		// demande un nom de fichier a l'utilisateur pour enregistrer l'element
+		QString fn = QFileDialog::getSaveFileName(
+			this,
+			tr("Enregistrer sous", "dialog title"),
+			filename_.isEmpty() ? QETApp::customElementsDir() : QDir(filename_).absolutePath(),
+			tr(
+				"\311l\351ments QElectroTech (*.elmt)",
+				"filetypes allowed when saving an element file"
+			)
+		);
+		// si aucun nom n'est entre, renvoie faux.
+		if (fn.isEmpty()) return(false);
+		// si le nom ne se termine pas par l'extension .elmt, celle-ci est ajoutee
+		if (!fn.endsWith(".elmt", Qt::CaseInsensitive)) fn += ".elmt";
+		// tente d'enregistrer le fichier
+		bool result_save = toFile(fn);
+		// si l'enregistrement reussit, le nom du fichier est conserve
+		if (result_save) {
+			setFileName(fn);
+			QETApp::elementsRecentFiles() -> fileWasOpened(fn);
+			ce_scene -> undoStack().setClean();
+		}
+		// retourne un booleen representatif de la reussite de l'enregistrement
+		return(result_save);
 	}
-	// retourne un booleen representatif de la reussite de l'enregistrement
-	return(result_save);
+	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement \340 \351chou\351,\nles conditions requises ne sont pas valides"));
+	return false;
 }
 
 /**

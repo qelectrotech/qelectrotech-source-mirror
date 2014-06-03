@@ -22,6 +22,7 @@
 #include "nameslistwidget.h"
 #include "qgimanager.h"
 #include "elementcontent.h"
+#include "diagramcontext.h"
 class CustomElementPart;
 class ElementEditionCommand;
 class ElementPrimitiveDecorator;
@@ -66,6 +67,10 @@ class ElementScene : public QGraphicsScene {
 	NamesList _names;
 	/// Extra informations
 	QString informations_;
+	/// element type
+	QString m_elmt_type;
+	/// element kind info
+	DiagramContext m_elmt_kindInfo;
 	/// QGraphicsItem manager
 	QGIManager qgi_manager;
 	/// Undo stack
@@ -111,6 +116,8 @@ class ElementScene : public QGraphicsScene {
 	void setInternalConnections(bool);
 	QString informations() const;
 	void setInformations(const QString &);
+	QString elementType () const {return m_elmt_type;}
+	DiagramContext elementKindInfo () const {return m_elmt_kindInfo;}
 	virtual int xGrid() const;
 	virtual int yGrid() const;
 	virtual void setGrid(int, int);
@@ -172,6 +179,7 @@ class ElementScene : public QGraphicsScene {
 	void slot_delete();
 	void slot_editNames();
 	void slot_editAuthorInformations();
+	void slot_editProperties();
 	void slot_bringForward();
 	void slot_raise();
 	void slot_lower();

@@ -30,6 +30,7 @@
 #include "editorcommands.h"
 #include "elementcontent.h"
 #include "nameslist.h"
+#include "ui/elementpropertieseditorwidget.h"
 
 /**
 	Constructeur
@@ -40,7 +41,8 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
 	qgi_manager(this),
 	element_editor(editor),
-	decorator_(0)
+	decorator_(0),
+	m_elmt_type("simple")
 {
 	setItemIndexMethod(NoIndex);
 	current_polygon = NULL;
@@ -417,9 +419,16 @@ const QDomDocument ElementScene::toXml(bool all_parts) {
 	root.setAttribute("orientation", "dyyy"); //we keep the orientation for compatibility with previous version of qet
 	root.setAttribute("version", QET::version);
 	root.setAttribute("ic", "true"); //we keep the internal connection for compatibility with previous version of qet
+	root.setAttribute("link_type", m_elmt_type);
 	
 	// noms de l'element
 	root.appendChild(_names.toXml(xml_document));
+
+	if (m_elmt_type == "slave") {
+		QDomElement kindInfo = xml_document.createElement("kindInformations");
+		m_elmt_kindInfo.toXml(kindInfo, "kindInformation");
+		root.appendChild(kindInfo);
+	}
 	
 	// informations complementaires de l'element
 	QDomElement informations_element = xml_document.createElement("informations");
@@ -709,6 +718,15 @@ void ElementScene::slot_editAuthorInformations() {
 }
 
 /**
+ * @brief ElementScene::slot_editProperties
+ * Open dialog to edit the element properties
+ */
+void  ElementScene::slot_editProperties() {
+	ElementPropertiesEditorWidget epew(m_elmt_type, m_elmt_kindInfo);
+	epew.exec();
+}
+
+/**
 	Lance un dialogue pour editer les noms de cet element
 */
 void ElementScene::slot_editNames() {
@@ -918,7 +936,7 @@ QRectF ElementScene::elementContentBoundingRect(const ElementContent &content) c
 	passee, false sinon.
 */
 bool ElementScene::applyInformations(const QDomDocument &xml_document, QString *error_message) {
-	// la racine est supposee etre une definition d'element
+	// Root must be an element definition
 	QDomElement root = xml_document.documentElement();
 	if (root.tagName() != "definition" || root.attribute("type") != "element") {
 		if (error_message) {
@@ -927,10 +945,14 @@ bool ElementScene::applyInformations(const QDomDocument &xml_document, QString *
 		return(false);
 	}
 
-	// extrait les noms de la definition XML
+	//Extract info about element type
+	m_elmt_type = root.attribute("link_type", "simple");
+	m_elmt_kindInfo.fromXml(root.firstChildElement("kindInformations"), "kindInformation");
+
+	//Extract names of xml definition
 	_names.fromXml(root);
 	
-	// extrait les informations complementaires
+	//extract additional informations
 	setInformations(QString());
 	for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
 		QDomElement elmt = node.toElement();

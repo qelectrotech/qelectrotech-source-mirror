@@ -23,7 +23,8 @@
 ReportElement::ReportElement(const ElementsLocation &location, QString link_type,QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)
 {
-	texts().at(0)->setNoEditable();
+	if (!texts().isEmpty())
+		texts().first()->setNoEditable();
 	link_type == "next_report"? link_type_=NextReport : link_type_=PreviousReport;
 	link_type == "next_report"? inverse_report=PreviousReport : inverse_report=NextReport;
 	if (s) {
@@ -108,6 +109,7 @@ void ReportElement::setLabel(QString label) {
  * ie the folio and position of the linked folio report
  */
 void ReportElement::updateLabel() {
+	if (texts().isEmpty()) return;
 	ElementTextItem *text = texts().first();
 
 	if (!connected_elements.isEmpty()){
