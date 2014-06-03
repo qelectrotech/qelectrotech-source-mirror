@@ -3,6 +3,7 @@
         <name lang="de">Leitungsschalter 1P+N </name>
         <name lang="en">Feeder circuit-breaker 1P+N </name>
         <name lang="fr">Disjoncteur de ligne 1P+N </name>
+        <name lang="it">Relè termico 1P+N con contatti ausiliari</name>
         <name lang="cs">Jistič vedení 1P+N</name>
     </names>
     <informations>Author: The QElectroTech team

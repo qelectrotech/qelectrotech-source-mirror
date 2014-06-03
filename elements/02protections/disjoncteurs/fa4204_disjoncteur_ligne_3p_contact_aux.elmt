@@ -3,6 +3,7 @@
         <name lang="de">Leitungsschalter 3P und Hilfskontakte</name>
         <name lang="en">Feeder circuit-breaker 3P and auxiliary contact</name>
         <name lang="fr">Disjoncteur de ligne 3p et contacts auxiliaire</name>
+        <name lang="it">Relè termico 3P con contatto ausiliario</name>
         <name lang="cs">Jistič vedení 3P a pomocné kontakty</name>
     </names>
     <informations>Author: The QElectroTech team

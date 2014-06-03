@@ -3,6 +3,7 @@
         <name lang="de">Leitungsschalter 2P+N mit Hilfskontakte</name>
         <name lang="en">Feeder circuit-breaker 2P+N with auxiliary contact</name>
         <name lang="fr">Disjoncteur de ligne 2P+N avec contacts auxiliaire</name>
+        <name lang="it">Relè termico 2P+N con contatti ausiliari</name>
         <name lang="cs">Jistič vedení 2P+N s pomocnými kontakty</name>
     </names>
     <informations>Author: The QElectroTech team

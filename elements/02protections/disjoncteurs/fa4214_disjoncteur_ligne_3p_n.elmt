@@ -3,6 +3,7 @@
         <name lang="de">Leitungsschalter 3P+N</name>
         <name lang="en">Feeder circuit-breaker 3P+N</name>
         <name lang="fr">Disjoncteur de ligne 3P+N</name>
+        <name lang="it">Relè termico 3P+N</name>
         <name lang="cs">Jistič vedení 3P+N</name>
     </names>
     <informations>Author: The QElectroTech team
