@@ -1080,83 +1080,83 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="14"/>
         <source>Propriété de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Proprietà dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="25"/>
         <source>Type de base :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipologia di base:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="37"/>
         <source>Élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Elemento slave</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="52"/>
         <source>Nombre de contact représenté</source>
-        <translation type="unfinished"></translation>
+        <translation>Contatti presenti</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="59"/>
         <source>Type de contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo di contatto</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="66"/>
         <source>État du contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Stato del contatto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="62"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="71"/>
         <source>Simple</source>
-        <translation type="unfinished">Semplice</translation>
+        <translation>Semplice</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="63"/>
         <source>Maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Master</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="64"/>
         <source>Esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Slave</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="65"/>
         <source>Renvoi de folio suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimento al foglio successivo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="66"/>
         <source>Renvoi de folio précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimento al foglio precedente</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="69"/>
         <source>Normalement ouvert</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalmente aperto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="70"/>
         <source>Normalement fermé</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalmente chiuso</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="72"/>
         <source>Puissance</source>
-        <translation type="unfinished"></translation>
+        <translation>Potenza</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
         <source>Temporisé travail</source>
-        <translation type="unfinished"></translation>
+        <translation>Tempo di lavoro</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="74"/>
         <source>Temporisé repos</source>
-        <translation type="unfinished"></translation>
+        <translation>Tempo di riposo</translation>
     </message>
 </context>
 <context>
@@ -4180,7 +4180,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="149"/>
         <source>Éditer les propriétées de l&apos;élément)</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifica le proprietà dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="154"/>
@@ -4251,13 +4251,13 @@ Opzioni disponibili:
         <location filename="../sources/editor/qetelementeditor.cpp" line="679"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Assenza del campo di testo &quot;etichetta&quot;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="680"/>
         <source>Les éléments maîtres ou esclaves doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gli elementi master o slave devono possedere un campo di testo con il TAG &apos;etichetta&apos;</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="689"/>
@@ -4604,7 +4604,7 @@ Opzioni disponibili:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1041"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1076"/>
         <source>Echec de l&apos;enregistrement</source>
-        <translation type="unfinished"></translation>
+        <translation>Registrazione fallita</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1017"/>
@@ -4612,7 +4612,8 @@ Opzioni disponibili:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1076"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
-        <translation type="unfinished"></translation>
+        <translation>La registrazione non è riuscita,
+le condizioni richieste non sono validi</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1192"/>
@@ -4640,7 +4641,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="705"/>
         <source>Avertissements</source>
-        <translation type="unfinished">Avvisi</translation>
+        <translation>Avvisi</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="970"/>
