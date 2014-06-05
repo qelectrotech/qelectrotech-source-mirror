@@ -39,6 +39,9 @@
 #include "texteditor.h"
 #include "textfieldeditor.h"
 
+#include "partterminal.h"
+#include "parttextfield.h"
+
 #include <QMessageBox>
 /*
 	Nombre maximum de primitives affichees par la "liste des parties"
@@ -668,17 +671,42 @@ bool QETElementEditor::checkElement() {
 		);
 	}
 
-	///Error #1: element is slave or master but havent got input tagged 'label'
+	/// Check master and slave element
 	if(ce_scene -> elementType() == "master" || ce_scene -> elementType() == "slave") {
 		bool wrng = true;
 		foreach (CustomElementPart *cep, ce_scene->primitives()) {
 			if (cep->property("tagg").toString() == "label") wrng = false;
 		}
+		///Error #1: element is slave or master but havent got input tagged 'label'
 		if (wrng) {
 			errors << qMakePair(
 							tr("Absence de champ texte 'label'", "warning title"),
 							tr("Les \351l\351ments ma\356tres ou esclaves doivent poss\351der "
 							   "un champ texte comportant le tagg 'label'", "warning description"));
+		}
+	}
+
+	/// Check folio report element
+	if (ce_scene -> elementType().contains("report")) {
+		int text =0, terminal =0;
+
+		foreach(QGraphicsItem *qgi, ce_scene->items()) {
+			if		(qgraphicsitem_cast<PartTerminal *>(qgi))  terminal ++;
+			else if (qgraphicsitem_cast<PartTextField *>(qgi)) text ++;
+		}
+
+		///Error #2 folio report must have only one terminal
+		if (terminal != 1) {
+			errors << qMakePair (
+						  tr("Absence de borne"),
+						  tr("Les reports de folio doivent poss\351der une seul borne."));
+		}
+
+		///Error #3 folio report must have at least one text
+		if (text <= 0) {
+			errors << qMakePair (
+						  tr("Absence de champ texte"),
+						  tr("Les reports de folio doivent poss\351der au moins un champ texte \351ditable."));
 		}
 	}
 	
