@@ -39,7 +39,15 @@ class DiagramView : public QGraphicsView {
 	DiagramView(Diagram * = 0, QWidget * = 0);
 	virtual ~DiagramView();
 	
-	enum behavior {noAction, addingText, addingImage, addingLine, addingRectangle, addingEllipse, dragView};
+	Q_ENUMS(behavior)
+	enum behavior {noAction		   =1,
+				   addingText	   =2,
+				   addingImage	   =4,
+				   addingLine	   =8,
+				   addingRectangle =16,
+				   addingEllipse   =32,
+				   addingShape	   =56,
+				   dragView        =64};
 
 	private:
 	DiagramView(const DiagramView &);
@@ -55,7 +63,6 @@ class DiagramView : public QGraphicsView {
 	bool fresh_focus_in_;               ///< Indicate the focus was freshly gained
 	ElementsLocation next_location_;
 	QPoint next_position_;
-	QPointF reference_view_;
 	QPointF center_view_;
 	QImage image_to_add_;
 	QetShapeItem *newItem;
@@ -120,8 +127,6 @@ class DiagramView : public QGraphicsView {
 	void selectionChanged();
 	/// Signal emitted after the selection mode changed
 	void modeChanged();
-	/// Signal emitted after a text was added
-	void textAdded(bool);
 	/// Signal emitted after the diagram title changed
 	void titleChanged(DiagramView *, const QString &);
 	/// Signal emitted before integrating an element
@@ -134,14 +139,8 @@ class DiagramView : public QGraphicsView {
 	void editElementRequired(const ElementsLocation &);
 	/// Signal emitted when users want to edit and/or duplicate an existing title block template
 	void editTitleBlockTemplate(const QString &, bool);
-	/// Signal emitted after a image was added
-	void ImageAdded(bool);
-	/// Signal emitted after a line was added
-	void LineAdded(bool);
-	/// Signal emitted after a rectangle was added
-	void RectangleAdded(bool);
-	/// Signal emitted after a ellipse was added
-	void EllipseAdded(bool);
+	/// Signal emitted after an item is added
+	void itemAdded();
 	/// Signal emmitted fater windows selection image have been canceled
 	void ImageAddedCanceled(bool);
 	/// Signal emmitted when diagram must be show

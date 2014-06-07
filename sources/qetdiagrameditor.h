@@ -167,6 +167,7 @@ class QETDiagramEditor : public QETMainWindow {
 	void editSelectedElementInEditor();
 	void showError(const QETResult &);
 	void showError(const QString &);
+	void addItemFinish();
 	
 	// attributes
 	public:
@@ -177,13 +178,6 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *windowed_view_mode; ///< Display projects as windows
 	QAction *mode_selection;     ///< Set edition mode
 	QAction *mode_visualise;     ///< Set visualisation mode
-	QAction *new_file;           ///< Create new project file
-	QAction *open_file;          ///< Open project file
-	QAction *close_file;         ///< Close current project file
-	QAction *save_file;          ///< Save current project
-	QAction *save_file_as;       ///< Save current project as a specific file
-	QAction *save_cur_diagram;   ///< Save current diagram of the current project only
-	QAction *import_diagram;     ///< Importe an existing diagram (not implemented)
 	QAction *export_diagram;     ///< Export diagrams of the current project as imagess
 	QAction *print;              ///< Print diagrams of the current project
 	QAction *quit_editor;        ///< Quit the diagram editor
@@ -192,22 +186,9 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *cut;                ///< Cut selection to clipboard
 	QAction *copy;               ///< Copy selection to clipboard
 	QAction *paste;              ///< Paste clipboard content on the current diagram
-	QAction *select_all;         ///< Select all
-	QAction *select_nothing;     ///< Cancel selection
-	QAction *select_invert;      ///< Invest selection
-	QAction *delete_selection;   ///< Delete selection
-	QAction *rotate_selection;   ///< Rotate selected elements and text items by 90 degrees
-	QAction *rotate_texts;       ///< Direct selected text items to a specific angle
-	QAction *find_element;       ///< Find the selected element in the panel
-	QAction *selection_prop;     ///< Show a dialog describing the selection
 	QAction *conductor_reset;    ///< Reset paths of selected conductors
 	QAction *conductor_default;  ///< Show a dialog to edit default conductor properties
 	QAction *infos_diagram;      ///< Show a dialog to edit diagram properties
-	QAction *add_text;           ///< Tool to add an independent text item on diagrams
-	QAction *add_column;         ///< Increase diagram width by adding an extra column
-	QAction *remove_column;      ///< Decrease diagram width by removing the last column
-	QAction *add_row;            ///< Increase diagram height by adding an extra row
-	QAction *remove_row;         ///< Decrease diagram height by removing the last row
 	QAction *prj_edit_prop;      ///< Edit the properties of the current project.
 	QAction *prj_add_diagram;    ///< Add a diagram to the current project.
 	QAction *prj_del_diagram;    ///< Delete a diagram from the current project
@@ -215,20 +196,33 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *prj_diagramNum;     ///< Numerotation des schemas
 	QAction *prj_diagramList;    ///< Sommaire des schemas
 	QAction *prj_nomenclature;   ///< generate nomenclature
-	QAction *zoom_in;            ///< Zoom in
-	QAction *zoom_out;           ///< Zoom out
-	QAction *zoom_fit;           ///< Adjust zoom to fit the whole diagram, including potential elements outside its borders, in the view
-	QAction *zoom_content;       ///< Adjust zoom to fit all elements in the view, regardless of diagram borders
-	QAction *zoom_reset;         ///< Reset zoom to 1:1
 	QAction *tile_window;        ///< Show MDI subwindows as tile
 	QAction *cascade_window;     ///< Show MDI subwindows as cascade
 	QAction *prev_window;        ///< Switch to the previous document
 	QAction *next_window;        ///< Switch to the next document
-	QAction *add_image;          ///< Tool to add an independent image item on diagrams
-	QAction *add_line;		     ///< Tool to add an independent line shape item on diagrams
-	QAction *add_rectangle;		 ///< Tool to add an independent rectangle shape item on diagrams
-	QAction *add_ellipse;		 ///< Tool to add an independent ellipse shape item on diagrams
 	QAction *edit_selection;	 ///< To edit selected item
+
+	QActionGroup m_add_item_actions_group; ///Action related to adding (add text image shape...)
+
+	QActionGroup m_zoom_actions_group;	     ///Action related to zoom for diagram
+	QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
+
+	QActionGroup m_select_actions_group; ///Action related to global selections
+
+	QActionGroup m_selection_actions_group; ///Action related to edit a selected item
+	QAction *delete_selection;				///< Delete selection
+	QAction *rotate_selection;				///< Rotate selected elements and text items by 90 degrees
+	QAction *rotate_texts;					///< Direct selected text items to a specific angle
+	QAction *find_element;					///< Find the selected element in the panel
+	QAction *selection_prop;				///< Show a dialog describing the selection
+
+	QActionGroup m_row_column_actions_group; /// Action related to add/remove rows/column in diagram
+
+	QActionGroup m_file_actions_group; ///Actions related to file (open, close, save...)
+	QAction *close_file;			   ///< Close current project file
+	QAction *save_file;				   ///< Save current project
+	QAction *save_file_as;			   ///< Save current project as a specific file
+	QAction *save_cur_diagram;		   ///< Save current diagram of the current project only
 
 	private:
 	QMdiArea workspace;
@@ -245,6 +239,7 @@ class QETDiagramEditor : public QETMainWindow {
 	QToolBar *main_bar;
 	QToolBar *view_bar;
 	QToolBar *diagram_bar;
+	QToolBar *m_add_item_toolBar;
 	QUndoGroup undo_group;
 	bool can_update_actions;
 };

@@ -441,6 +441,8 @@ void DiagramView::pasteHere() {
 	 *  click to add an independent text field
 */
 void DiagramView::mousePressEvent(QMouseEvent *e) {
+	rubber_band_origin = mapToScene(e -> pos());
+
 	if (fresh_focus_in_) {
 		switchToVisualisationModeIfNeeded(e);
 		fresh_focus_in_ = false;
@@ -452,25 +454,22 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 				QGraphicsView::mousePressEvent(e);
 				break;
 			case addingText:
-				addDiagramTextAtPos(mapToScene(e -> pos()));
+				addDiagramTextAtPos(rubber_band_origin);
 				current_behavior = noAction;
 				break;
 			case addingImage:
-				addDiagramImageAtPos(mapToScene(e -> pos()));
+				addDiagramImageAtPos(rubber_band_origin);
 				current_behavior = noAction;
 				break;
 			case addingLine:
-				rubber_band_origin = mapToScene(e -> pos());
 				newItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Line, false);
 				scene -> addItem(newItem);
 				break;
 			case addingRectangle:
-				rubber_band_origin = mapToScene(e -> pos());
 				newItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Rectangle);
 				scene -> addItem(newItem);
 				break;
 			case addingEllipse:
-				rubber_band_origin = mapToScene(e -> pos());
 				newItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Ellipse);
 				scene -> addItem(newItem);
 				break;
@@ -487,7 +486,6 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 	// see also mouseMoveEvent() and mouseReleaseEvent()
 	else if (e -> buttons() == Qt::MidButton) {
 		setCursor(Qt::ClosedHandCursor);
-		reference_view_ = mapToScene(e -> pos());
 		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
 		return;
 	}
@@ -500,13 +498,12 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
  */
 void DiagramView::mouseMoveEvent(QMouseEvent *e) {
 	if ((e -> buttons() & Qt::MidButton) == Qt::MidButton) {
-		QPointF move = reference_view_ - mapToScene(e -> pos());
+		QPointF move = rubber_band_origin - mapToScene(e -> pos());
 		this -> centerOn(center_view_ + move);
 		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
 		return;
 	}
-	else if ((e -> buttons() & Qt::LeftButton) &&
-		(current_behavior == addingLine || current_behavior == addingRectangle || current_behavior == addingEllipse)) {
+	else if (e -> buttons() == Qt::LeftButton && current_behavior & addingShape) {
 		QRectF rec = QRectF(rubber_band_origin, mapToScene(e->pos())).normalized();
 		scene ->removeItem(newItem);
 		newItem -> setBoundingRect(rec);
@@ -526,20 +523,14 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
 		setCursor(Qt::ArrowCursor);
 		return;
 	}
-	else if (current_behavior == addingLine || current_behavior == addingRectangle || current_behavior == addingEllipse) {
+	else if (current_behavior & addingShape) {
 		newItem -> setFullyBuilt(true);
-		// le place a la position pos en gerant l'annulation
+		// place it to the good position with an undo command
 		scene -> undoStack().push(new AddShapeCommand(scene, newItem, rubber_band_origin));
 		adjustSceneRect();
-		if (current_behavior == addingLine)
-			emit(LineAdded(false));
-		else if (current_behavior == addingRectangle)
-			emit(RectangleAdded(false));
-		else // ellipse
-			emit(EllipseAdded(false));
+		emit(itemAdded());
 		current_behavior = noAction;
 	}
-
 	else QGraphicsView::mouseReleaseEvent(e);
 }
 
@@ -1306,7 +1297,7 @@ DiagramImageItem *DiagramView::addDiagramImageAtPos(const QPointF &pos) {
 	adjustSceneRect();
 	
 	// emet le signal ImageAdded
-	emit(ImageAdded(false));
+	emit(itemAdded());
 
 	return(Imageitem);
 
@@ -1332,7 +1323,7 @@ IndependentTextItem *DiagramView::addDiagramTextAtPos(const QPointF &pos, const 
 	adjustSceneRect();
 	
 	// emet le signal textAdded
-	emit(textAdded(false));
+	emit(itemAdded());
 
 	return(iti);
 }
@@ -1356,22 +1347,14 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			context_menu -> addSeparator();
 			context_menu -> addAction(qde -> infos_diagram);
 			context_menu -> addAction(qde -> prj_diagramNum);
-			context_menu -> addAction(qde -> add_column);
-			context_menu -> addAction(qde -> remove_column);
-			context_menu -> addAction(qde -> add_row);
-			context_menu -> addAction(qde -> remove_row);
+			context_menu -> addActions(qde -> m_row_column_actions_group.actions());
 		} else {
 			context_menu -> addAction(qde -> cut);
 			context_menu -> addAction(qde -> copy);
 			context_menu -> addSeparator();
 			context_menu -> addAction(qde -> conductor_reset);
 			context_menu -> addSeparator();
-			context_menu -> addAction(qde -> delete_selection);
-			context_menu -> addAction(qde -> rotate_selection);
-			context_menu -> addAction(qde -> rotate_texts);
-			context_menu -> addAction(qde -> edit_selection);
-			context_menu -> addAction(qde -> find_element);
-			context_menu -> addAction(qde -> selection_prop);
+			context_menu -> addActions(qde -> m_selection_actions_group.actions());
 		}
 		
 		// affiche le menu contextuel

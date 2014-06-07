@@ -47,7 +47,13 @@
 QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	QETMainWindow(parent),
 	open_dialog_dir(QDesktopServices::storageLocation(QDesktopServices::DesktopLocation)),
-	can_update_actions(true)
+	can_update_actions(true),
+	m_add_item_actions_group(this),
+	m_zoom_actions_group(this),
+	m_select_actions_group(this),
+	m_selection_actions_group(this),
+	m_row_column_actions_group(this),
+	m_file_actions_group(this)
 {
 	// mise en place de l'interface MDI au centre de l'application
 	setCentralWidget(&workspace);
@@ -185,13 +191,6 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 */
 void QETDiagramEditor::actions() {
 	// icones et labels
-	new_file          = new QAction(QET::Icons::DocumentNew,           tr("&Nouveau"),                             this);
-	open_file         = new QAction(QET::Icons::DocumentOpen,          tr("&Ouvrir"),                              this);
-	close_file        = new QAction(QET::Icons::DocumentClose,         tr("&Fermer"),                              this);
-	save_file         = new QAction(QET::Icons::DocumentSave,          tr("&Enregistrer"),                         this);
-	save_file_as      = new QAction(QET::Icons::DocumentSaveAs,        tr("Enregistrer sous"),                     this);
-	save_cur_diagram  = new QAction(QET::Icons::DocumentSaveAll,       tr("&Enregistrer le sch\351ma courant"),    this);
-	import_diagram    = new QAction(QET::Icons::DocumentImport,        tr("&Importer"),                            this);
 	export_diagram    = new QAction(QET::Icons::DocumentExport,        tr("E&xporter"),                            this);
 	print             = new QAction(QET::Icons::DocumentPrint,         tr("Imprimer"),                             this);
 	quit_editor       = new QAction(QET::Icons::ApplicationExit,       tr("&Quitter"),                             this);
@@ -203,132 +202,187 @@ void QETDiagramEditor::actions() {
 	cut               = new QAction(QET::Icons::EditCut,               tr("Co&uper"),                              this);
 	copy              = new QAction(QET::Icons::EditCopy,              tr("Cop&ier"),                              this);
 	paste             = new QAction(QET::Icons::EditPaste,             tr("C&oller"),                              this);
-	select_all        = new QAction(QET::Icons::EditSelectAll,         tr("Tout s\351lectionner"),                 this);
-	select_nothing    = new QAction(                                   tr("D\351s\351lectionner tout"),            this);
-	select_invert     = new QAction(                                   tr("Inverser la s\351lection"),             this);
-	delete_selection  = new QAction(QET::Icons::EditDelete,            tr("Supprimer"),                            this);
-	rotate_selection  = new QAction(QET::Icons::ObjectRotateRight,     tr("Pivoter"),                              this);
-	rotate_texts      = new QAction(QET::Icons::ObjectRotateRight,     tr("Orienter les textes"),                  this);
-	find_element      = new QAction(                                   tr("Retrouver dans le panel"),              this);
-	edit_selection    = new QAction(QET::Icons::ElementEdit,           tr("\311diter l'item s\351lectionn\351"),   this);
-	selection_prop    = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s de la s\351lection"),  this);
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
-	add_text          = new QAction(QET::Icons::PartTextField,         tr("Ajouter un champ de texte"),            this);
-	add_column        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne"),             this);
-	add_image		  = new QAction(QET::Icons::adding_image,          tr("Ajouter une image"),                    this);
-	add_line		  = new QAction(QET::Icons::PartLine,              tr("Ajouter une liaison mecanique"),        this);
-	add_rectangle	  = new QAction(QET::Icons::PartRectangle,         tr("Ajouter une zone rectangle"),           this);
-	add_ellipse		  = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une zone ellipse"),              this);
-	remove_column     = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne"),             this);
-	add_row           = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne"),               this);
-	remove_row        = new QAction(QET::Icons::EditTableDeleteRow,         tr("Enlever une ligne"),               this);
-	
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du projet"),           this);
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
-
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le sch\351ma"),               this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
 	prj_diagramNum    = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les sch\351mas"),               this);
 	prj_diagramList   = new QAction(QET::Icons::listDrawings,          tr("Ajouter un sommaire"),                  this);
 	prj_nomenclature  = new QAction(QET::Icons::DocumentExport,        tr("Exporter une nomenclature (beta)"),     this);
-	
-	zoom_in           = new QAction(QET::Icons::ZoomIn,                tr("Zoom avant"),                           this);
-	zoom_out          = new QAction(QET::Icons::ZoomOut,               tr("Zoom arri\350re"),                      this);
-	zoom_content      = new QAction(QET::Icons::ZoomDraw,              tr("Zoom sur le contenu"),                  this);
-	zoom_fit          = new QAction(QET::Icons::ZoomFitBest,           tr("Zoom adapt\351"),                       this);
-	zoom_reset        = new QAction(QET::Icons::ZoomOriginal,          tr("Pas de zoom"),                          this);
-	
 	tabbed_view_mode  = new QAction(                                   tr("en utilisant des onglets"),             this);
 	windowed_view_mode= new QAction(                                   tr("en utilisant des fen\352tres"),         this);
-	
 	mode_selection    = new QAction(QET::Icons::PartSelect,            tr("Mode Selection"),                       this);
 	mode_visualise    = new QAction(QET::Icons::ViewMove,              tr("Mode Visualisation"),                   this);
-	
 	tile_window        = new QAction(                                  tr("&Mosa\357que"),                         this);
 	cascade_window     = new QAction(                                  tr("&Cascade"),                             this);
 	next_window        = new QAction(                                  tr("Projet suivant"),                       this);
 	prev_window        = new QAction(                                  tr("Projet pr\351c\351dent"),               this);
 	
-	// raccourcis clavier
-	new_file          -> setShortcut(QKeySequence::New);
-	open_file         -> setShortcut(QKeySequence::Open);
-	close_file        -> setShortcut(QKeySequence::Close);
-	save_file         -> setShortcut(QKeySequence::Save);
-	import_diagram    -> setShortcut(QKeySequence(tr("Ctrl+Shift+I")));
+	///Files action///
+	QAction *new_file  = m_file_actions_group.addAction( QET::Icons::DocumentNew,     tr("&Nouveau")						  );
+	QAction *open_file = m_file_actions_group.addAction( QET::Icons::DocumentOpen,    tr("&Ouvrir")							  );
+	save_file          = m_file_actions_group.addAction( QET::Icons::DocumentSave,    tr("&Enregistrer")					  );
+	save_file_as       = m_file_actions_group.addAction( QET::Icons::DocumentSaveAs,  tr("Enregistrer sous")				  );
+	save_cur_diagram   = m_file_actions_group.addAction( QET::Icons::DocumentSaveAll, tr("&Enregistrer le sch\351ma courant") );
+	close_file         = m_file_actions_group.addAction( QET::Icons::DocumentClose,   tr("&Fermer")							  );
+
+	new_file   -> setShortcut( QKeySequence::New   );
+	open_file  -> setShortcut( QKeySequence::Open  );
+	close_file -> setShortcut( QKeySequence::Close );
+	save_file  -> setShortcut( QKeySequence::Save  );
+
+	new_file         -> setStatusTip( tr("Cr\351e un nouveau sch\351ma", "status bar tip")								 );
+	open_file        -> setStatusTip( tr("Ouvre un sch\351ma existant", "status bar tip")								 );
+	close_file       -> setStatusTip( tr("Ferme le sch\351ma courant", "status bar tip")								 );
+	save_file        -> setStatusTip( tr("Enregistre le projet courant et tous ses sch\351mas", "status bar tip")		 );
+	save_file_as     -> setStatusTip( tr("Enregistre le project courant avec un autre nom de fichier", "status bar tip") );
+	save_cur_diagram -> setStatusTip( tr("Enregistre le sch\351ma courant du projet courant", "status bar tip")			 );
+
+	connect(save_file_as,     SIGNAL( triggered() ), this, SLOT( saveAs()			   ) );
+	connect(save_file,        SIGNAL( triggered() ), this, SLOT( save()				   ) );
+	connect(save_cur_diagram, SIGNAL( triggered() ), this, SLOT( saveCurrentDiagram()  ) );
+	connect(new_file,         SIGNAL( triggered() ), this, SLOT( newProject()		   ) );
+	connect(open_file,        SIGNAL( triggered() ), this, SLOT( openProject()		   ) );
+	connect(close_file,       SIGNAL( triggered() ), this, SLOT( closeCurrentProject() ) );
+
+	///Row Column action///
+	QAction *add_column    = m_row_column_actions_group.addAction( QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne") );
+	QAction *remove_column = m_row_column_actions_group.addAction( QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne") );
+	QAction *add_row       = m_row_column_actions_group.addAction( QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne")   );
+	QAction *remove_row    = m_row_column_actions_group.addAction( QET::Icons::EditTableDeleteRow,         tr("Enlever une ligne")   );
+
+	add_column    -> setStatusTip( tr("Ajoute une colonne au sch\351ma", "status bar tip")		  );
+	remove_column -> setStatusTip( tr("Enl\350ve une colonne au sch\351ma", "status bar tip")	  );
+	add_row       -> setStatusTip( tr("Agrandit le sch\351ma en hauteur", "status bar tip")		  );
+	remove_row    -> setStatusTip( tr("R\351tr\351cit le sch\351ma en hauteur", "status bar tip") );
+
+	connect(add_column,    SIGNAL( triggered() ), this, SLOT( slot_addColumn()	  ) );
+	connect(remove_column, SIGNAL( triggered() ), this, SLOT( slot_removeColumn() ) );
+	connect(add_row,       SIGNAL( triggered() ), this, SLOT( slot_addRow()		  ) );
+	connect(remove_row,    SIGNAL( triggered() ), this, SLOT( slot_removeRow()	  ) );
+
+	///Selections Actions (related to a selected item)///
+	delete_selection  = m_selection_actions_group.addAction( QET::Icons::EditDelete,        tr("Supprimer")							  );
+	rotate_selection  = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Pivoter")							  );
+	rotate_texts      = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Orienter les textes")				  );
+	find_element      = m_selection_actions_group.addAction(                                tr("Retrouver dans le panel")			  );
+	edit_selection    = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("\311diter l'item s\351lectionn\351")  );
+	selection_prop    = m_selection_actions_group.addAction( QET::Icons::DialogInformation, tr("Propri\351t\351s de la s\351lection") );
+
+#ifndef Q_WS_MAC
+	delete_selection -> setShortcut( QKeySequence( Qt::Key_Delete)    );
+#else
+	delete_selection -> setShortcut( QKeySequence( tr("Backspace")  ) );
+#endif
+
+	rotate_selection -> setShortcut( QKeySequence( tr("Space")		) );
+	rotate_texts     -> setShortcut( QKeySequence( tr("Ctrl+Space") ) );
+	selection_prop   -> setShortcut( QKeySequence( tr("Ctrl+J")		) );
+	conductor_reset  -> setShortcut( QKeySequence( tr("Ctrl+K")		) );
+	infos_diagram    -> setShortcut( QKeySequence( tr("Ctrl+L")		) );
+	edit_selection	 -> setShortcut( QKeySequence( tr("Ctrl+E")		) );
+
+	delete_selection -> setStatusTip( tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma", "status bar tip") );
+	rotate_selection -> setStatusTip( tr("Pivote les \351l\351ments et textes s\351lectionn\351s", "status bar tip")       );
+	rotate_texts     -> setStatusTip( tr("Pivote les textes s\351lectionn\351s \340 un angle pr\351cis", "status bar tip") );
+	find_element     -> setStatusTip( tr("Retrouve l'\351l\351ment s\351lectionn\351 dans le panel", "status bar tip")	   );
+	selection_prop   -> setStatusTip( tr("\311dite les propri\351t\351s des objets s\351lectionn\351", "status bar tip")   );
+
+	connect(delete_selection,   SIGNAL( triggered() ), this,       SLOT( slot_delete()				  ) );
+	connect(rotate_selection,   SIGNAL( triggered() ), this,       SLOT( slot_rotate()				  ) );
+	connect(rotate_texts,       SIGNAL( triggered() ), this,       SLOT( slot_rotateTexts()			  ) );
+	connect(find_element,       SIGNAL( triggered() ), this,       SLOT( findSelectedElementInPanel() ) );
+	connect(edit_selection,     SIGNAL( triggered() ), this,       SLOT( slot_editSelection()		  ) );
+	connect(selection_prop,     SIGNAL( triggered() ), this,       SLOT( editSelectionProperties()	  ) );
+
+	///Select Action///
+	QAction *select_all     = m_select_actions_group.addAction( QET::Icons::EditSelectAll, tr("Tout s\351lectionner")	   );
+	QAction *select_nothing = m_select_actions_group.addAction(                            tr("D\351s\351lectionner tout") );
+	QAction *select_invert  = m_select_actions_group.addAction(                            tr("Inverser la s\351lection")  );
+
+	select_all     -> setShortcut( QKeySequence::SelectAll			  );
+	select_nothing -> setShortcut( QKeySequence( tr("Ctrl+Shift+A") ) );
+	select_invert  -> setShortcut( QKeySequence( tr("Ctrl+I")		) );
+
+	select_all     -> setStatusTip( tr("S\351lectionne tous les \351l\351ments du sch\351ma", "status bar tip")																	  );
+	select_nothing -> setStatusTip( tr("D\351s\351lectionne tous les \351l\351ments du sch\351ma", "status bar tip")															  );
+	select_invert  -> setStatusTip( tr("D\351s\351lectionne les \351l\351ments s\351lectionn\351s et s\351lectionne les \351l\351ments non s\351lectionn\351s", "status bar tip") );
+
+	connect(select_all,     SIGNAL( triggered() ), this, SLOT( slot_selectAll()		) );
+	connect(select_nothing, SIGNAL( triggered() ), this, SLOT( slot_selectNothing() ) );
+	connect(select_invert,  SIGNAL( triggered() ), this, SLOT( slot_selectInvert()	) );
+
+	///Zoom actions///
+	QAction *zoom_in      = m_zoom_actions_group.addAction( QET::Icons::ZoomIn,       tr("Zoom avant")			);
+	QAction *zoom_out     = m_zoom_actions_group.addAction( QET::Icons::ZoomOut,      tr("Zoom arri\350re")		);
+	QAction *zoom_content = m_zoom_actions_group.addAction( QET::Icons::ZoomDraw,     tr("Zoom sur le contenu") );
+	QAction *zoom_fit     = m_zoom_actions_group.addAction( QET::Icons::ZoomFitBest,  tr("Zoom adapt\351")		);
+	QAction *zoom_reset   = m_zoom_actions_group.addAction( QET::Icons::ZoomOriginal, tr("Pas de zoom")			);
+	m_zoom_action_toolBar << zoom_content << zoom_fit << zoom_reset;
+
+	zoom_in      -> setShortcut( QKeySequence::ZoomIn         );
+	zoom_out     -> setShortcut( QKeySequence::ZoomOut        );
+	zoom_content -> setShortcut( QKeySequence( tr("Ctrl+8") ) );
+	zoom_fit     -> setShortcut( QKeySequence( tr("Ctrl+9") ) );
+	zoom_reset   -> setShortcut( QKeySequence( tr("Ctrl+0") ) );
+
+	zoom_in      -> setStatusTip(tr("Agrandit le sch\351ma", "status bar tip"));
+	zoom_out     -> setStatusTip(tr("R\351tr\351cit le sch\351ma", "status bar tip"));
+	zoom_content -> setStatusTip(tr("Adapte le zoom de fa\347on \340 afficher tout le contenu ind\351pendamment du cadre"));
+	zoom_fit     -> setStatusTip(tr("Adapte la taille du sch\351ma afin qu'il soit enti\350rement visible", "status bar tip"));
+	zoom_reset   -> setStatusTip(tr("Restaure le zoom par d\351faut", "status bar tip"));
+
+	connect( zoom_in,      SIGNAL( triggered() ), this,       SLOT( slot_zoomIn()      ) );
+	connect( zoom_out,     SIGNAL( triggered() ), this,       SLOT( slot_zoomOut()     ) );
+	connect( zoom_content, SIGNAL( triggered() ), this,       SLOT( slot_zoomContent() ) );
+	connect( zoom_fit,     SIGNAL( triggered() ), this,       SLOT( slot_zoomFit()     ) );
+	connect( zoom_reset,   SIGNAL( triggered() ), this,       SLOT( slot_zoomReset()   ) );
+
+	///Adding action (add text, image, shape...)///
+	m_add_item_actions_group.setExclusive(true);
+
+	QAction *add_text      = m_add_item_actions_group.addAction( QET::Icons::PartTextField, tr("Ajouter un champ de texte")		);
+	QAction *add_image	   = m_add_item_actions_group.addAction( QET::Icons::adding_image,  tr("Ajouter une image")				);
+	QAction *add_line	   = m_add_item_actions_group.addAction( QET::Icons::PartLine,      tr("Ajouter une liaison mecanique") );
+	QAction *add_rectangle = m_add_item_actions_group.addAction( QET::Icons::PartRectangle, tr("Ajouter une zone rectangle")	);
+	QAction *add_ellipse   = m_add_item_actions_group.addAction( QET::Icons::PartEllipse,   tr("Ajouter une zone ellipse")		);
+
+	connect( add_text,      SIGNAL( triggered() ), this, SLOT( slot_addText()      ) );
+	connect( add_image,     SIGNAL( triggered() ), this, SLOT( slot_addImage()     ) );
+	connect( add_line,      SIGNAL( triggered() ), this, SLOT( slot_addLine()      ) );
+	connect( add_rectangle, SIGNAL( triggered() ), this, SLOT( slot_addRectangle() ) );
+	connect( add_ellipse,   SIGNAL( triggered() ), this, SLOT( slot_addEllipse()   ) );
+
+	foreach(QAction *action, m_add_item_actions_group.actions()) action->setCheckable(true);
+
+	///Keyboard shortcut
 	export_diagram    -> setShortcut(QKeySequence(tr("Ctrl+Shift+X")));
 	print             -> setShortcut(QKeySequence(QKeySequence::Print));
 	quit_editor       -> setShortcut(QKeySequence(tr("Ctrl+Q")));
-	
 	undo              -> setShortcut(QKeySequence::Undo);
 	redo              -> setShortcut(QKeySequence::Redo);
 	cut               -> setShortcut(QKeySequence::Cut);
 	copy              -> setShortcut(QKeySequence::Copy);
 	paste             -> setShortcut(QKeySequence::Paste);
-	select_all        -> setShortcut(QKeySequence::SelectAll);
-	select_nothing    -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
-	select_invert     -> setShortcut(QKeySequence(tr("Ctrl+I")));
-#ifndef Q_WS_MAC
-	delete_selection  -> setShortcut(QKeySequence(Qt::Key_Delete));
-#else
-	delete_selection  -> setShortcut(QKeySequence(tr("Backspace")));
-#endif
-	
-	rotate_selection  -> setShortcut(QKeySequence(tr("Space")));
-	rotate_texts      -> setShortcut(QKeySequence(tr("Ctrl+Space")));
-	selection_prop    -> setShortcut(QKeySequence(tr("Ctrl+J")));
-	conductor_reset   -> setShortcut(QKeySequence(tr("Ctrl+K")));
-	infos_diagram     -> setShortcut(QKeySequence(tr("Ctrl+L")));
-	edit_selection	  -> setShortcut(QKeySequence(tr("Ctrl+E")));
 	
 	prj_add_diagram   -> setShortcut(QKeySequence(tr("Ctrl+T")));
-	
-	zoom_in           -> setShortcut(QKeySequence::ZoomIn);
-	zoom_out          -> setShortcut(QKeySequence::ZoomOut);
-	zoom_content      -> setShortcut(QKeySequence(tr("Ctrl+8")));
-	zoom_fit          -> setShortcut(QKeySequence(tr("Ctrl+9")));
-	zoom_reset        -> setShortcut(QKeySequence(tr("Ctrl+0")));
 	
 	next_window       -> setShortcut(QKeySequence::NextChild);
 	prev_window       -> setShortcut(QKeySequence::PreviousChild);
 	
 	// affichage dans la barre de statut
-	new_file          -> setStatusTip(tr("Cr\351e un nouveau sch\351ma", "status bar tip"));
-	open_file         -> setStatusTip(tr("Ouvre un sch\351ma existant", "status bar tip"));
-	close_file        -> setStatusTip(tr("Ferme le sch\351ma courant", "status bar tip"));
-	save_file         -> setStatusTip(tr("Enregistre le projet courant et tous ses sch\351mas", "status bar tip"));
-	save_file_as      -> setStatusTip(tr("Enregistre le project courant avec un autre nom de fichier", "status bar tip"));
-	save_cur_diagram  -> setStatusTip(tr("Enregistre le sch\351ma courant du projet courant", "status bar tip"));
-	import_diagram    -> setStatusTip(tr("Importe un sch\351ma dans le sch\351ma courant", "status bar tip"));
 	export_diagram    -> setStatusTip(tr("Exporte le sch\351ma courant dans un autre format", "status bar tip"));
 	print             -> setStatusTip(tr("Imprime le sch\351ma courant", "status bar tip"));
 	quit_editor       -> setStatusTip(tr("Ferme l'application QElectroTech", "status bar tip"));
-	
 	undo              -> setStatusTip(tr("Annule l'action pr\351c\351dente", "status bar tip"));
 	redo              -> setStatusTip(tr("Restaure l'action annul\351e", "status bar tip"));
 	cut               -> setStatusTip(tr("Transf\350re les \351l\351ments s\351lectionn\351s dans le presse-papier", "status bar tip"));
 	copy              -> setStatusTip(tr("Copie les \351l\351ments s\351lectionn\351s dans le presse-papier", "status bar tip"));
 	paste             -> setStatusTip(tr("Place les \351l\351ments du presse-papier sur le sch\351ma", "status bar tip"));
-	select_all        -> setStatusTip(tr("S\351lectionne tous les \351l\351ments du sch\351ma", "status bar tip"));
-	select_nothing    -> setStatusTip(tr("D\351s\351lectionne tous les \351l\351ments du sch\351ma", "status bar tip"));
-	select_invert     -> setStatusTip(tr("D\351s\351lectionne les \351l\351ments s\351lectionn\351s et s\351lectionne les \351l\351ments non s\351lectionn\351s", "status bar tip"));
-	delete_selection  -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma", "status bar tip"));
-	rotate_selection  -> setStatusTip(tr("Pivote les \351l\351ments et textes s\351lectionn\351s", "status bar tip"));
-	rotate_texts      -> setStatusTip(tr("Pivote les textes s\351lectionn\351s \340 un angle pr\351cis", "status bar tip"));
-	find_element      -> setStatusTip(tr("Retrouve l'\351l\351ment s\351lectionn\351 dans le panel", "status bar tip"));
-	selection_prop    -> setStatusTip(tr("\311dite les propri\351t\351s des objets s\351lectionn\351", "status bar tip"));
 	conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
 	infos_diagram     -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche", "status bar tip"));
-	add_column        -> setStatusTip(tr("Ajoute une colonne au sch\351ma", "status bar tip"));
-	remove_column     -> setStatusTip(tr("Enl\350ve une colonne au sch\351ma", "status bar tip"));
-	add_row           -> setStatusTip(tr("Agrandit le sch\351ma en hauteur", "status bar tip"));
-	remove_row        -> setStatusTip(tr("R\351tr\351cit le sch\351ma en hauteur", "status bar tip"));
-	
-	zoom_in           -> setStatusTip(tr("Agrandit le sch\351ma", "status bar tip"));
-	zoom_out          -> setStatusTip(tr("R\351tr\351cit le sch\351ma", "status bar tip"));
-	zoom_content      -> setStatusTip(tr("Adapte le zoom de fa\347on \340 afficher tout le contenu ind\351pendamment du cadre"));
-	zoom_fit          -> setStatusTip(tr("Adapte la taille du sch\351ma afin qu'il soit enti\350rement visible", "status bar tip"));
-	zoom_reset        -> setStatusTip(tr("Restaure le zoom par d\351faut", "status bar tip"));
 	
 	windowed_view_mode -> setStatusTip(tr("Pr\351sente les diff\351rents projets ouverts dans des sous-fen\352tres", "status bar tip"));
 	tabbed_view_mode   -> setStatusTip(tr("Pr\351sente les diff\351rents projets ouverts des onglets", "status bar tip"));
@@ -342,11 +396,6 @@ void QETDiagramEditor::actions() {
 	prev_window       -> setStatusTip(tr("Active le projet pr\351c\351dent", "status bar tip"));
 	
 	// traitements speciaux
-	add_text           -> setCheckable(true);
-	add_image          -> setCheckable(true);
-	add_line           -> setCheckable(true);
-	add_rectangle      -> setCheckable(true);
-	add_ellipse        -> setCheckable(true);
 	windowed_view_mode -> setCheckable(true);
 	tabbed_view_mode   -> setCheckable(true);
 	mode_selection     -> setCheckable(true);
@@ -365,14 +414,6 @@ void QETDiagramEditor::actions() {
 	
 	// connexion a des slots
 	connect(quit_editor,        SIGNAL(triggered()), this,       SLOT(close())                     );
-	connect(select_all,         SIGNAL(triggered()), this,       SLOT(slot_selectAll())            );
-	connect(select_nothing,     SIGNAL(triggered()), this,       SLOT(slot_selectNothing())        );
-	connect(select_invert,      SIGNAL(triggered()), this,       SLOT(slot_selectInvert())         );
-	connect(delete_selection,   SIGNAL(triggered()), this,       SLOT(slot_delete())               );
-	connect(rotate_selection,   SIGNAL(triggered()), this,       SLOT(slot_rotate())               );
-	connect(rotate_texts,       SIGNAL(triggered()), this,       SLOT(slot_rotateTexts())          );
-	connect(find_element,       SIGNAL(triggered()), this,       SLOT(findSelectedElementInPanel()));
-	connect(edit_selection,     SIGNAL(triggered()), this,       SLOT(slot_editSelection())        );
 	connect(windowed_view_mode, SIGNAL(triggered()), this,       SLOT(setWindowedMode())           );
 	connect(tabbed_view_mode,   SIGNAL(triggered()), this,       SLOT(setTabbedMode())             );
 	connect(mode_selection,     SIGNAL(triggered()), this,       SLOT(slot_setSelectionMode())     );
@@ -384,19 +425,8 @@ void QETDiagramEditor::actions() {
 	connect(prj_diagramNum,     SIGNAL(triggered()), this,       SLOT(diagramNumProject())         );
 	connect(prj_diagramList,    SIGNAL(triggered()), this,       SLOT(addDiagramFolioListToProject()));
 	connect(prj_nomenclature,   SIGNAL(triggered()), this,       SLOT(nomenclatureProject())       );
-	connect(zoom_in,            SIGNAL(triggered()), this,       SLOT(slot_zoomIn())               );
-	connect(zoom_out,           SIGNAL(triggered()), this,       SLOT(slot_zoomOut())              );
-	connect(zoom_content,       SIGNAL(triggered()), this,       SLOT(slot_zoomContent())          );
-	connect(zoom_fit,           SIGNAL(triggered()), this,       SLOT(slot_zoomFit())              );
-	connect(zoom_reset,         SIGNAL(triggered()), this,       SLOT(slot_zoomReset())            );
 	connect(print,              SIGNAL(triggered()), this,       SLOT(printDialog())               );
 	connect(export_diagram,     SIGNAL(triggered()), this,       SLOT(exportDialog())              );
-	connect(save_file_as,       SIGNAL(triggered()), this,       SLOT(saveAs())                    );
-	connect(save_file,          SIGNAL(triggered()), this,       SLOT(save())                      );
-	connect(save_cur_diagram,   SIGNAL(triggered()), this,       SLOT(saveCurrentDiagram())        );
-	connect(new_file,           SIGNAL(triggered()), this,       SLOT(newProject())                );
-	connect(open_file,          SIGNAL(triggered()), this,       SLOT(openProject())               );
-	connect(close_file,         SIGNAL(triggered()), this,       SLOT(closeCurrentProject())       );
 	connect(cut,                SIGNAL(triggered()), this,       SLOT(slot_cut())                  );
 	connect(copy,               SIGNAL(triggered()), this,       SLOT(slot_copy())                 );
 	connect(paste,              SIGNAL(triggered()), this,       SLOT(slot_paste())                );
@@ -404,18 +434,8 @@ void QETDiagramEditor::actions() {
 	connect(cascade_window,     SIGNAL(triggered()), &workspace, SLOT(cascadeSubWindows())         );
 	connect(next_window,        SIGNAL(triggered()), &workspace, SLOT(activateNextSubWindow())     );
 	connect(prev_window,        SIGNAL(triggered()), &workspace, SLOT(activatePreviousSubWindow()) );
-	connect(selection_prop,     SIGNAL(triggered()), this,       SLOT(editSelectionProperties())   );
 	connect(conductor_reset,    SIGNAL(triggered()), this,       SLOT(slot_resetConductors())      );
 	connect(infos_diagram,      SIGNAL(triggered()), this,       SLOT(editCurrentDiagramProperties()));
-	connect(add_text,           SIGNAL(triggered()), this,       SLOT(slot_addText())              );
-	connect(add_image,          SIGNAL(triggered()), this,       SLOT(slot_addImage())              );
-	connect(add_line,          SIGNAL(triggered()), this,       SLOT(slot_addLine())              );
-	connect(add_rectangle,      SIGNAL(triggered()), this,       SLOT(slot_addRectangle())         );
-	connect(add_ellipse,        SIGNAL(triggered()), this,       SLOT(slot_addEllipse())           );
-	connect(add_column,         SIGNAL(triggered()), this,       SLOT(slot_addColumn())            );
-	connect(remove_column,      SIGNAL(triggered()), this,       SLOT(slot_removeColumn())         );
-	connect(add_row,            SIGNAL(triggered()), this,       SLOT(slot_addRow())               );
-	connect(remove_row,         SIGNAL(triggered()), this,       SLOT(slot_removeRow())            );
 }
 
 /**
@@ -454,16 +474,11 @@ void QETDiagramEditor::menus() {
 	insertMenu(settings_menu_, menu_affichage);
 	insertMenu(help_menu_, windows_menu);
 	
-	// menu Fichier
-	menu_fichier -> addAction(new_file);
-	menu_fichier -> addAction(open_file);
+	// File menu
 	QMenu *recentfile = menu_fichier -> addMenu(QET::Icons::DocumentOpenRecent, tr("&R\351cemment ouverts"));
 	recentfile->addActions(QETApp::projectsRecentFiles()->menu()->actions());
 	connect(QETApp::projectsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)), this, SLOT(openRecentFile(const QString &)));
-	menu_fichier -> addAction(save_file);
-	menu_fichier -> addAction(save_file_as);
-	menu_fichier -> addAction(save_cur_diagram);
-	menu_fichier -> addAction(close_file);
+	menu_fichier -> addActions(m_file_actions_group.actions());
 	menu_fichier -> addSeparator();
 	//menu_fichier -> addAction(import_diagram);
 	menu_fichier -> addAction(export_diagram);
@@ -480,23 +495,14 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addAction(copy);
 	menu_edition -> addAction(paste);
 	menu_edition -> addSeparator();
-	menu_edition -> addAction(select_all);
-	menu_edition -> addAction(select_nothing);
-	menu_edition -> addAction(select_invert);
+	menu_edition -> addActions(m_select_actions_group.actions());
 	menu_edition -> addSeparator();
-	menu_edition -> addAction(delete_selection);
-	menu_edition -> addAction(rotate_selection);
-	menu_edition -> addAction(rotate_texts);
-	menu_edition -> addAction(edit_selection);
-	menu_edition -> addAction(selection_prop);
+	menu_edition -> addActions(m_selection_actions_group.actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(conductor_reset);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(infos_diagram);
-	menu_edition -> addAction(add_column);
-	menu_edition -> addAction(remove_column);
-	menu_edition -> addAction(add_row);
-	menu_edition -> addAction(remove_row);
+	menu_edition -> addActions(m_row_column_actions_group.actions());
 	
 	// menu Projet
 	menu_project -> addAction(prj_edit_prop);
@@ -524,11 +530,7 @@ void QETDiagramEditor::menus() {
 	menu_affichage -> addAction(mode_selection);
 	menu_affichage -> addAction(mode_visualise);
 	menu_affichage -> addSeparator();
-	menu_affichage -> addAction(zoom_in);
-	menu_affichage -> addAction(zoom_out);
-	menu_affichage -> addAction(zoom_content);
-	menu_affichage -> addAction(zoom_fit);
-	menu_affichage -> addAction(zoom_reset);
+	menu_affichage -> addActions(m_zoom_actions_group.actions());
 
 	// menu Fenetres
 	slot_updateWindowsMenu();
@@ -547,12 +549,7 @@ void QETDiagramEditor::toolbar() {
 	diagram_bar = new QToolBar(tr("Sch\351ma"), this);
 	diagram_bar -> setObjectName("diagram");
 	
-	main_bar -> addAction(new_file);
-	main_bar -> addAction(open_file);
-	main_bar -> addAction(save_file);
-	main_bar -> addAction(save_file_as);
-	main_bar -> addAction(save_cur_diagram);
-	main_bar -> addAction(close_file);
+	main_bar -> addActions(m_file_actions_group.actions());
 	main_bar -> addAction(print);
 	main_bar -> addSeparator();
 	main_bar -> addAction(undo);
@@ -570,22 +567,20 @@ void QETDiagramEditor::toolbar() {
 	view_bar -> addAction(mode_selection);
 	view_bar -> addAction(mode_visualise);
 	view_bar -> addSeparator();
-	view_bar -> addAction(zoom_content);
-	view_bar -> addAction(zoom_fit);
-	view_bar -> addAction(zoom_reset);
+	view_bar -> addActions(m_zoom_action_toolBar);
 	
 	diagram_bar -> addAction(infos_diagram);
 	diagram_bar -> addAction(conductor_reset);
-	diagram_bar -> addAction(add_text);
-	diagram_bar -> addAction(add_image);
-	diagram_bar -> addAction(add_line);
-	diagram_bar -> addAction(add_rectangle);
-	diagram_bar -> addAction(add_ellipse);
+
+	m_add_item_toolBar = new QToolBar(tr("Ajouter"), this);
+	m_add_item_toolBar->setObjectName("adding");
+	m_add_item_toolBar->addActions(m_add_item_actions_group.actions());
 
 	// ajout de la barre d'outils a la fenetre principale
 	addToolBar(Qt::TopToolBarArea, main_bar);
 	addToolBar(Qt::TopToolBarArea, view_bar);
 	addToolBar(Qt::TopToolBarArea, diagram_bar);
+	addToolBar(Qt::TopToolBarArea, m_add_item_toolBar);
 }
 
 /**
@@ -1158,25 +1153,14 @@ void QETDiagramEditor::slot_updateActions() {
 	prj_diagramNum    -> setEnabled(editable_project);
 	prj_diagramList   -> setEnabled(opened_project);
 	prj_nomenclature  -> setEnabled(editable_project);
-	import_diagram    -> setEnabled(editable_project);
 	export_diagram    -> setEnabled(opened_diagram);
 	print             -> setEnabled(opened_diagram);
-	select_all        -> setEnabled(opened_diagram);
-	select_nothing    -> setEnabled(opened_diagram);
-	select_invert     -> setEnabled(opened_diagram);
-	zoom_in           -> setEnabled(opened_diagram);
-	zoom_out          -> setEnabled(opened_diagram);
-	zoom_content      -> setEnabled(opened_diagram);
-	zoom_fit          -> setEnabled(opened_diagram);
-	zoom_reset        -> setEnabled(opened_diagram);
 	infos_diagram     -> setEnabled(opened_diagram);
-	add_text          -> setEnabled(editable_diagram);
-	add_column        -> setEnabled(editable_diagram);
-	remove_column     -> setEnabled(editable_diagram);
-	add_row           -> setEnabled(editable_diagram);
-	remove_row        -> setEnabled(editable_diagram);
-	add_image         -> setEnabled(editable_diagram);
 	prj_nomenclature  -> setEnabled(editable_project);
+	m_zoom_actions_group.setEnabled(opened_diagram);
+	m_select_actions_group.setEnabled(opened_diagram);
+	m_add_item_actions_group.setEnabled(editable_diagram);
+	m_row_column_actions_group.setEnabled(editable_diagram);
 
 	
 	slot_updateModeActions();
@@ -1534,58 +1518,43 @@ void QETDiagramEditor::slot_resetConductors() {
 }
 
 /**
-	Ajoute un texte au schema courant
-*/
+ * @brief QETDiagramEditor::slot_addText
+ * add text to curent diagram
+ */
 void QETDiagramEditor::slot_addText() {
-	add_image	  -> setChecked(false);
-	add_line	  -> setChecked(false);
-	add_rectangle -> setChecked(false);
-	add_ellipse   -> setChecked(false);
-	if (DiagramView *dv = currentDiagram()) {
-		dv -> addText();
-	}
+	if (DiagramView *dv = currentDiagram()) dv -> addText();
 }
+
 /**
-	Ajoute une image au schema courant
-*/
+ * @brief QETDiagramEditor::slot_addImage
+ * add image to curent diagram
+ */
 void QETDiagramEditor::slot_addImage() {
-	add_text	  -> setChecked(false);
-	add_line	  -> setChecked(false);
-	add_rectangle -> setChecked(false);
-	add_ellipse   -> setChecked(false);
-	if (DiagramView *dv = currentDiagram()) {
-		dv -> addImage();
-	}
+	if (DiagramView *dv = currentDiagram()) dv -> addImage();
 }
 
+/**
+ * @brief QETDiagramEditor::slot_addLine
+ * add line to curent diagram
+ */
 void QETDiagramEditor::slot_addLine() {
-	add_text	  -> setChecked(false);
-	add_image	  -> setChecked(false);
-	add_rectangle -> setChecked(false);
-	add_ellipse   -> setChecked(false);
-	if (DiagramView *dv = currentDiagram()) {
-		dv -> addLine();
-	}
+	if (DiagramView *dv = currentDiagram()) dv -> addLine();
 }
 
+/**
+ * @brief QETDiagramEditor::slot_addRectangle
+ * add recatngle to curent diagram
+ */
 void QETDiagramEditor::slot_addRectangle() {
-	add_text      -> setChecked(false);
-	add_image	  -> setChecked(false);
-	add_line	  -> setChecked(false);
-	add_ellipse   -> setChecked(false);
-	if (DiagramView *dv = currentDiagram()) {
-		dv -> addRectangle();
-	}
+	if (DiagramView *dv = currentDiagram()) dv -> addRectangle();
 }
 
+/**
+ * @brief QETDiagramEditor::slot_addEllipse
+ * add ellipse to curent diagram
+ */
 void QETDiagramEditor::slot_addEllipse() {
-	add_text      -> setChecked(false);
-	add_image	  -> setChecked(false);
-	add_line	  -> setChecked(false);
-	add_rectangle -> setChecked(false);
-	if (DiagramView *dv = currentDiagram()) {
-		dv -> addEllipse();
-	}
+	if (DiagramView *dv = currentDiagram()) dv -> addEllipse();
 }
 
 /**
@@ -1899,12 +1868,8 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv) {
 	undo_group.addStack(&(dv -> diagram() -> undoStack()));
 	connect(dv,              SIGNAL(selectionChanged()),         this,     SLOT(slot_updateComplexActions()));
 	connect(dv,              SIGNAL(modeChanged()),              this,     SLOT(slot_updateModeActions()));
-	connect(dv,              SIGNAL(textAdded(bool)),            add_text, SLOT(setChecked(bool)));
-	connect(dv,              SIGNAL(ImageAdded(bool)),           add_image, SLOT(setChecked(bool)));
-	connect(dv,              SIGNAL(LineAdded(bool)),            add_line, SLOT(setChecked(bool)));
-	connect(dv,              SIGNAL(RectangleAdded(bool)),       add_rectangle, SLOT(setChecked(bool)));
-	connect(dv,              SIGNAL(EllipseAdded(bool)),           add_ellipse, SLOT(setChecked(bool)));
-	connect(dv,				 SIGNAL(ImageAddedCanceled(bool)),   add_image, SLOT(setChecked(bool)));
+	connect(dv,				 SIGNAL(ImageAddedCanceled(bool)),   this,	   SLOT(addItemFinish()));
+	connect(dv,				 SIGNAL(itemAdded()),				 this,	   SLOT(addItemFinish()));
 }
 
 /**
@@ -2008,6 +1973,14 @@ void QETDiagramEditor::showError(const QETResult &result) {
 void QETDiagramEditor::showError(const QString &error) {
 	if (error.isEmpty()) return;
 	QET::MessageBox::critical(this, tr("Erreur", "message box title"), error);
+}
+
+/**
+ * @brief QETDiagramEditor::addItemFinish
+ * Uncheck all action in m_add_item_actions_group
+ */
+void QETDiagramEditor::addItemFinish() {
+	foreach(QAction *action, m_add_item_actions_group.actions()) action->setChecked(false);
 }
 
 /**
