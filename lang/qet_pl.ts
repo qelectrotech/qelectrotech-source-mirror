@@ -1086,7 +1086,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="25"/>
         <source>Type de base :</source>
-        <translation>Typ podstawy :</translation>
+        <translation>Typ zależności :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="37"/>
@@ -1096,23 +1096,23 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="52"/>
         <source>Nombre de contact représenté</source>
-        <translation>Określenie numerów zestyków</translation>
+        <translation>Ilość zestyków</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="59"/>
         <source>Type de contact</source>
-        <translation>Typ zestyków</translation>
+        <translation>Funkcja zestyków</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="66"/>
         <source>État du contact</source>
-        <translation>Stan zestyków</translation>
+        <translation>Typ zestyków</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="62"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="71"/>
         <source>Simple</source>
-        <translation>Prosty</translation>
+        <translation>Nieokreślony</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="63"/>
@@ -3223,7 +3223,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetapp.cpp" line="365"/>
         <source>Référence fabriquant</source>
-        <translation>Typ</translation>
+        <translation>Numer referencyjny</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
