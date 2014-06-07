@@ -8,6 +8,7 @@
         <name lang="es">Cuatro salidas binarias</name>
         <name lang="cs">Čtyři digitální výstupy</name>
         <name lang="nl">Digitaal uitgang, 4 voud</name>
+        <name lang="be">Digitaal uitgang, 4 voud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

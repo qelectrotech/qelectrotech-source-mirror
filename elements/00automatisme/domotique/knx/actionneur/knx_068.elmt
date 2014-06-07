@@ -8,6 +8,7 @@
         <name lang="es">Salida binaria</name>
         <name lang="nl">Digitaal uitgang module, enkel</name>
         <name lang="cs">Digitální výstup</name>
+        <name lang="be">Digitaal uitgang module, enkel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

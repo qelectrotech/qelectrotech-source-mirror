@@ -147,7 +147,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="152"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlaamse vertaling</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="172"/>
@@ -1079,83 +1079,83 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="14"/>
         <source>Propriété de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschappen van het element</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="25"/>
         <source>Type de base :</source>
-        <translation type="unfinished"></translation>
+        <translation>Basis type :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="37"/>
         <source>Élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Slave element</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="52"/>
         <source>Nombre de contact représenté</source>
-        <translation type="unfinished"></translation>
+        <translation>Aantal  contacten</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="59"/>
         <source>Type de contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Soort contact </translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="66"/>
         <source>État du contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Status contact</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="62"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="71"/>
         <source>Simple</source>
-        <translation type="unfinished">Enkel</translation>
+        <translation>Enkel</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="63"/>
         <source>Maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Master</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="64"/>
         <source>Esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Slave</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="65"/>
         <source>Renvoi de folio suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Referentie volgende pagina</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="66"/>
         <source>Renvoi de folio précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Referentie voorgaande pagina</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="69"/>
         <source>Normalement ouvert</source>
-        <translation type="unfinished"></translation>
+        <translation>Normaal open</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="70"/>
         <source>Normalement fermé</source>
-        <translation type="unfinished"></translation>
+        <translation>Normaal gesloten</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="72"/>
         <source>Puissance</source>
-        <translation type="unfinished"></translation>
+        <translation>Vermogen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
         <source>Temporisé travail</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertraagd inschakelen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="74"/>
         <source>Temporisé repos</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertraagd uitschakelen</translation>
     </message>
 </context>
 <context>
@@ -3667,7 +3667,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
         <source>&amp;Récemment ouverts</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Onlangs geopende </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="801"/>
@@ -4193,7 +4193,7 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Éditer les propriétées de l&apos;élément)</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschap element bewerken</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
@@ -4264,13 +4264,13 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
         <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tekst veld met titel &quot;label&quot; ontbreekt</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>Les éléments maîtres ou esclaves doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Masters of slaven elementen moeten een tekstveld hebben met de tagg &apos;label&apos;</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="717"/>
@@ -4537,22 +4537,22 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="701"/>
         <source>Absence de borne</source>
-        <translation type="unfinished">Geen verbindings punt aanwezig</translation>
+        <translation>Terminal object ontbreekt</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="702"/>
         <source>Les reports de folio doivent posséder une seul borne.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afdrukrapport moet minstens één terminal object bevatten.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="708"/>
         <source>Absence de champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst veld ontbreekt</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="709"/>
         <source>Les reports de folio doivent posséder au moins un champ texte éditable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Een afdrukrapport moet minstens één bewerkbaar tekstveld bevatten.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="752"/>
@@ -4637,7 +4637,7 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
         <location filename="../sources/editor/qetelementeditor.cpp" line="1069"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1104"/>
         <source>Echec de l&apos;enregistrement</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewaren mislukt</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1045"/>
@@ -4645,7 +4645,7 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
         <location filename="../sources/editor/qetelementeditor.cpp" line="1104"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewaren mislukt, de benodigde voorwaarden zijn niet voldaan</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1220"/>
@@ -4673,7 +4673,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="733"/>
         <source>Avertissements</source>
-        <translation type="unfinished">Waarschuwingen</translation>
+        <translation>Waarschuwingen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="998"/>
@@ -6063,7 +6063,7 @@ Opnieuw instellen van de  afmetingen</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="237"/>
         <source>Échelle</source>
         <comment>shape scale</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schaal</translation>
     </message>
 </context>
 <context>
@@ -6098,7 +6098,7 @@ Positie vergrendelen</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="242"/>
         <source>Facteur d&apos;échelle</source>
-        <translation type="unfinished"></translation>
+        <translation>SChaal factor</translation>
     </message>
 </context>
 <context>
@@ -6627,17 +6627,17 @@ Een veld bestaat uit een type, een beginwaarde, en een optelgetal.
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="68"/>
         <source>tagg :</source>
-        <translation type="unfinished"></translation>
+        <translation>tagg:</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
         <source>Aucun</source>
-        <translation type="unfinished">Geen</translation>
+        <translation>Geen</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
         <source>label</source>
-        <translation type="unfinished">Label</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
@@ -6667,7 +6667,7 @@ Een veld bestaat uit een type, een beginwaarde, en een optelgetal.
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="145"/>
         <source>tagg</source>
-        <translation type="unfinished"></translation>
+        <translation>tagg</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="425"/>

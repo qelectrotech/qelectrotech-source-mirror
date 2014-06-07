@@ -7,6 +7,7 @@
         <name lang="cs">Střídač knx 400W</name>
         <name lang="pl">Regulator 400W</name>
         <name lang="nl">Regelaar 400Watt</name>
+        <name lang="be">Regelaar 400W KNX</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
