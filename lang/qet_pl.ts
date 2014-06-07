@@ -1112,7 +1112,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="62"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="71"/>
         <source>Simple</source>
-        <translation>Nieokreślony</translation>
+        <translation>Nieokreślona</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="63"/>
