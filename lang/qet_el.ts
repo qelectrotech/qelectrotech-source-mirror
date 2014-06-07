@@ -147,7 +147,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="152"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished"></translation>
+        <translation>Φλαμανδική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="172"/>
@@ -1081,48 +1081,48 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="14"/>
         <source>Propriété de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιδιότητες του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="25"/>
         <source>Type de base :</source>
-        <translation type="unfinished"></translation>
+        <translation>Βασικός τύπος:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="37"/>
         <source>Élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθητικό στοιχείο</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="52"/>
         <source>Nombre de contact représenté</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός επαφών</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="59"/>
         <source>Type de contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος επαφής</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="66"/>
         <source>État du contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατάσταση επαφής</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="62"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="71"/>
         <source>Simple</source>
-        <translation type="unfinished">Απλό</translation>
+        <translation>Απλό</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="63"/>
         <source>Maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Κύριο</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="64"/>
         <source>Esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθητικό</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="65"/>
@@ -1137,27 +1137,27 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="69"/>
         <source>Normalement ouvert</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανονικά ανοικτό</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="70"/>
         <source>Normalement fermé</source>
-        <translation type="unfinished"></translation>
+        <translation>Κανονοκά κλειστό</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="72"/>
         <source>Puissance</source>
-        <translation type="unfinished"></translation>
+        <translation>Ισχύος</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
         <source>Temporisé travail</source>
-        <translation type="unfinished"></translation>
+        <translation>Καθυστέρηση ενεργοποίησης</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="74"/>
         <source>Temporisé repos</source>
-        <translation type="unfinished"></translation>
+        <translation>Καθυστέρηση απενεργοποίησης</translation>
     </message>
 </context>
 <context>
@@ -3667,7 +3667,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
         <source>&amp;Récemment ouverts</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσφάτως ανοιγμένα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="801"/>
@@ -4186,7 +4186,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Éditer les propriétées de l&apos;élément)</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία ιδιοτήτων του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
@@ -4257,13 +4257,13 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Χωρίς πεδίο κειμένου &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>Les éléments maîtres ou esclaves doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Τα κύρια ή βοηθητικά στοιχεία πρέπει να έχουν ένα πεδίο κειμένου με ετικέτα &apos;label&apos;</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="717"/>
@@ -4530,7 +4530,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="701"/>
         <source>Absence de borne</source>
-        <translation type="unfinished">Απουσία ακροδέκτη</translation>
+        <translation>Απουσία ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="702"/>
@@ -4540,7 +4540,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="708"/>
         <source>Absence de champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Απουσία πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="709"/>
@@ -4666,7 +4666,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="733"/>
         <source>Avertissements</source>
-        <translation type="unfinished">Προειδοποιήσεις</translation>
+        <translation>Προειδοποιήσεις</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="998"/>
@@ -6053,7 +6053,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="237"/>
         <source>Échelle</source>
         <comment>shape scale</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κλίμακα</translation>
     </message>
 </context>
 <context>
@@ -6087,7 +6087,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="242"/>
         <source>Facteur d&apos;échelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Συντελεστής κλίμακας</translation>
     </message>
 </context>
 <context>
@@ -6620,7 +6620,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
         <source>Aucun</source>
-        <translation type="unfinished">Κανένα</translation>
+        <translation>Κανένα</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
