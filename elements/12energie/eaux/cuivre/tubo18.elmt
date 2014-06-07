@@ -1,0 +1,12 @@
+<definition width="70" version="0.4" hotspot_x="33" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Tubo Cobre 18</name>
+    </names>
+    <informations/>
+    <description>
+        <rect width="61" x="-29" y="-7.15763" antialias="false" height="14.1576" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-10" y="1" size="4" text="Cu15"/>
+        <terminal x="-29" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="33" y="0" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

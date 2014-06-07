@@ -1,0 +1,24 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="13" height="20" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">صمّام كهربائي 2V "صحي"</name>
+        <name lang="en">Solenoid 2V "health"</name>
+        <name lang="it">Elettrovalvola 2vie acqua sanitaria</name>
+        <name lang="fr">Electro-vanne 2V "sanitaire"</name>
+        <name lang="pl">Elektrozawór dwudrożny</name>
+        <name lang="es">Electroválvula</name>
+        <name lang="nl">Elketrische klep sanitair 2</name>
+        <name lang="cs">Elektrický uzávěr 2V</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="0" x2="0"/>
+        <rect width="8" x="-4" y="-11" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="0" y5="-4" x5="8" y6="4" x6="8" y7="0" x7="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-4" x2="-8" y3="4" x3="-8" y4="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="4" y2="-5" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="8" y2="0" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-11" y2="0" x2="-8"/>
+        <terminal x="-11" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="11" y="0" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

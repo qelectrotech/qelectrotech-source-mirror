@@ -1,0 +1,21 @@
+<definition width="60" version="0.4" hotspot_x="35" hotspot_y="19" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Manguito20-3/4"H</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="4.66359" x="-1.91531" y="-6.36337" antialias="false" height="13.2602" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.49769" x="-29.565" y="-6.36337" antialias="false" height="13.2602" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="23.152" x="-27.0674" y="-10.3414" antialias="false" height="21.2163" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-22" y="22" size="4" text="manguito 20-3/4&quot;H"/>
+        <rect width="11.968" x="3.00035" y="-10.4862" antialias="false" height="19.8247" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8.448" x="6.52035" y="-8.00078" antialias="false" height="14.8539" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="6.85306" x1="7.92835" y2="-7.25809" x2="9.33635"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="6.85306" x1="10.0404" y2="-8.00078" x2="12.1524"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="6.85306" x1="12.1524" y2="-8.00078" x2="14.9683"/>
+        <rect width="2" x="-4" y="-13" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="-29.565" y="0.266721" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="15.9803" y="0.499088" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

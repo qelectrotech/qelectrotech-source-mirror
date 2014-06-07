@@ -1,0 +1,12 @@
+<definition width="30" version="0.4" hotspot_x="18" hotspot_y="5" height="10" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Codo sube</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-4.90353" y2="0" x2="-1.02118"/>
+        <circle x="0" y="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="6"/>
+        <terminal x="-10" y="0" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

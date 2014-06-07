@@ -1,0 +1,30 @@
+<definition width="100" version="0.4" hotspot_x="65" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Calentador solar1</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <circle x="17" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <polygon x4="-1.4325" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="4" x1="-1.4325" y2="37.15" x2="-41" y3="37.15" x3="-1.4325" y4="4.85"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-19.2662" x1="-40.1324" y2="-12.3876" x2="-40.1324"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14.2636" x1="-53.3111" y2="-9.8864" x2="-48.6986"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.63311" x1="-59.2416" y2="-3.63311" x2="-51.9933"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="6.99741" x1="-52.6522" y2="2.62014" x2="-47.3807"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="7.42138" x1="19.5" y2="-5.61978" x2="19.5"/>
+        <ellipse width="32.5" x="-4" y="-30.306" antialias="true" height="31.306" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-2" y="-17" size="7" text="ACS"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.41797" x1="9" y2="-6.5397" x2="9"/>
+        <polygon x4="0.55" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="0" x1="0.55" y2="39" x2="-46" y3="39" x3="0.55" y4="1"/>
+        <circle x="7" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <polygon x4="-47" y5="-2" x5="-1" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:black" y1="-2" x1="-1" y2="-5" x2="-4" y3="34" x3="-50" y4="37"/>
+        <ellipse width="9.22513" x="-44.7449" y="-7.3851" antialias="true" height="8.75454" style="line-style:normal;line-weight:thin;filling:red;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.2584" x1="-30.2483" y2="-4.2584" x2="-23"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5.12143" x1="-40.7913" y2="12" x2="-40.7913"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3.24546" x1="-34.8609" y2="7.62273" x2="-30.2483"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-9.261" x1="-34.8609" y2="-13.6383" x2="-29.5894"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-3" y2="-5" x2="-1"/>
+        <terminal x="9" y="9" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="19.5" y="9" nameHidden="1" number="" name="" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,25 @@
+<definition width="70" version="0.4" hotspot_x="33" hotspot_y="36" height="60" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Manguito-Codo Alpex 20-3/4H</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-20.7183" x1="2.75398" y2="-21.8209" x2="17.2791"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-22.9235" x1="2.75398" y2="-24.0261" x2="17.2791"/>
+        <rect width="4" x="-5" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="20.5773" x="-0.877308" y="-27.334" antialias="false" height="14.334" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="33" x="-17" y="-25" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <rect width="2.36678" x="-27.9256" y="-6.20875" antialias="false" height="12.776" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18.5588" x="-25.5588" y="-10.0415" antialias="false" height="20.4415" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="10" x="-6" y="-14" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <text x="-1" y="10" size="4" text="manguito codo&#xa;16-3/4&quot;H"/>
+        <rect width="14.5252" x="2.75398" y="-27.334" antialias="false" height="9.92352" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-25.1287" x1="2.75398" y2="-26.2314" x2="17.2791"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="1" y2="-10" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="16" y2="-13" x2="19"/>
+        <rect width="2" x="-7" y="-13" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="-27.9256" y="0.17923" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="10" y="-28" nameHidden="0" number="" name="" orientation="n"/>
+    </description>
+</definition>

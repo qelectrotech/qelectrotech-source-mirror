@@ -1,0 +1,14 @@
+<definition width="20" version="0.4" hotspot_x="10" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Fluxor</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <ellipse width="14.08" x="-7" y="-2.68797" antialias="true" height="12.2912" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.26441" x1="0.04" y2="-9.06252" x2="0.04"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.639445" x1="-5.24" y2="7.55467" x2="5.32"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.639445" x1="5.32" y2="7.55467" x2="-5.24"/>
+        <terminal x="0" y="-10" nameHidden="1" number="" name="" orientation="n"/>
+    </description>
+</definition>

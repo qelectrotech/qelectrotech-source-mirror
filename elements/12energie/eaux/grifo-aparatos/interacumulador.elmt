@@ -1,0 +1,26 @@
+<definition width="100" version="0.4" hotspot_x="48" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">خزان ماء أفقي</name>
+        <name lang="en">DHW horizontal</name>
+        <name lang="it">Scambiatore orizzontale ACS</name>
+        <name lang="fr">Ballon ECS horizontal</name>
+        <name lang="pl">Zasobnik poziomy CWU</name>
+        <name lang="es">Interacumulador ACS</name>
+        <name lang="cs">Vodorovný zásobnik ECS</name>
+    </names>
+    <informations/>
+    <description>
+        <polygon x4="43.76" y5="-10.2245" x5="43.76" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-12.6442" x1="43.2925" y2="-12.6442" x2="46.565" y3="-10.2245" x3="46.565" y4="-10.2245"/>
+        <polygon x4="43.76" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="12.8309" x1="43.2925" y2="12.8309" x2="46.565" y3="10.4505" x3="46.565" y4="10.4505"/>
+        <rect width="1.87" x="31.605" y="17.9073" antialias="true" height="3.60663" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4.2075" x="-38.52" y="-21.7657" antialias="true" height="3.60663" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="77.1375" x="-39.455" y="-18.1591" antialias="true" height="36.0663" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-23.56" y="0.23476" size="2" rotate="true" text="interacumulador ACS"/>
+        <arc width="13.09" x="31.605" y="-18.1591" antialias="true" height="36.0663" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <arc width="13.09" x="-46" y="-18.1591" antialias="true" height="36.0663" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <terminal x="-36.65" y="-21.7657" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="32.54" y="21.5139" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="46.565" y="-11.4344" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="46.565" y="11.4153" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,38 @@
+<definition width="50" version="0.4" hotspot_x="17" hotspot_y="30" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Latiguillo 3/8</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="24.6925" x="-11" y="-24.3761" antialias="true" height="26.3877" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="2.00812" x="-3.11625" y="2.27176" antialias="true" height="4.57137" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="2.23125" x="-1.10813" y="-2.58534" antialias="false" height="4.57137" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.79312" x="-4.90125" y="-4.87103" antialias="false" height="9.42849" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.87105" x1="-2.18763" y2="-2.87105" x2="-4.71145"/>
+        <arc width="1.785" x="-2.89313" y="-6.87101" antialias="true" height="3.99996" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.27176" x1="-4.69458" y2="2.27176" x2="-2.2059"/>
+        <arc width="1.56188" x="-2.67" y="-2.87105" antialias="true" height="5.14282" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <arc width="17.255" x="-7.43" y="-19.5445" antialias="true" height="17.0963" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-11.7397" x1="8.04" y2="-10.2531" x2="12.205"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12.1114" x1="11.61" y2="-10.6248" x2="15.18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12.1114" x1="11.61" y2="-10.2531" x2="12.205"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.44829" x1="1.7925" y2="-0.590005" x2="8.04"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4.67824" x1="7.1475" y2="-4.30658" x2="11.9075"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-8.02314" x1="9.23" y2="-10.2531" x2="13.6925"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-0.218348" x1="1.1975" y2="1.63994" x2="3.875"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.81995" x1="3.28" y2="2.0116" x2="1.495"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.79322" x1="7.7425" y2="0.15331" x2="7.1475"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-9.50977" x1="9.5275" y2="-2.44829" x2="10.7175"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.6248" x1="11.3125" y2="-6.90818" x2="12.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10.9964" x1="10.42" y2="-5.04991" x2="12.205"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.90818" x1="8.9325" y2="-1.33332" x2="9.23"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.93492" x1="5.9575" y2="0.896625" x2="5.3625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.19161" x1="4.7675" y2="1.63994" x2="3.5775"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.53652" x1="8.3375" y2="-7.27983" x2="13.0975"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.56327" x1="5.3625" y2="-2.44829" x2="10.42"/>
+        <input x="-8" y="7" size="4" rotate="true" text="latiguillo 3/8"/>
+        <terminal x="-4.90125" y="-0.299648" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="11.75" y="-11.6069" nameHidden="1" number="" name="" orientation="n"/>
+    </description>
+</definition>

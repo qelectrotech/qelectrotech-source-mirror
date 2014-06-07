@@ -1,0 +1,18 @@
+<definition width="40" version="0.4" hotspot_x="17" hotspot_y="34" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Manguito 22 3/4 Macho</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.47646" x1="-5.89155" y2="6.7362" x2="-3.9165"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.47646" x1="-2.27063" y2="6.7362" x2="-0.295575"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.47646" x1="1.02113" y2="6.7362" x2="2.99618"/>
+        <rect width="13.167" x="-9.84165" y="-8.89773" antialias="false" height="17.0552" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10.5336" x="3.32535" y="-12.4509" antialias="false" height="23.4509" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5.92515" x="7.9338" y="-11.0296" antialias="false" height="20.6084" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.47646" x1="-9.1833" y2="6.7362" x2="-7.20825"/>
+        <input x="-10" y="-22" size="4" rotate="true" text="3/4M-22"/>
+        <terminal x="-10.5" y="-0.370132" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="14.5173" y="-0.370132" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,19 @@
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="9" height="20" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Válvula retención</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.59109" x1="-9.6275" y2="-6.80967" x2="-9.6275"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.59109" x1="9.4993" y2="-6.80967" x2="9.4993"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.84131" x1="-9.6275" y2="5.62539" x2="9.2725"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.21904" x1="-5.8475" y2="6.21904" x2="3.6025"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.43809" x1="1.7125" y2="6.21904" x2="4.075"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="1.7125" y2="6.21904" x2="4.075"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="0" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-10"/>
+        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="20" y="0" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

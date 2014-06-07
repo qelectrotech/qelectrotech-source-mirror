@@ -1,0 +1,27 @@
+<definition width="50" version="0.4" hotspot_x="22" hotspot_y="26" height="60" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Press control</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="1.3" x="-16" y="6.42181" antialias="false" height="1.96485" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25.4154" x1="-6.25" y2="23.4505" x2="6.1"/>
+        <ellipse width="1.95" x="-1.05" y="-0.782636" antialias="true" height="1.96485" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23.4505" x1="-6.25" y2="21.4857" x2="6.1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="-4.05738" x1="18.45" y2="4.45696" x2="17.8"/>
+        <rect width="13" x="-6.25" y="19.5208" antialias="false" height="8.51435" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="20.8" x="-10.15" y="17.556" antialias="false" height="1.96485" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="27.95" x="-14.7" y="-13.8816" antialias="false" height="31.4376" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="27.95" x="-14.7" y="-21.741" antialias="true" height="15.0638" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="6.5" x="13.25" y="-5.36728" antialias="false" height="11.1341" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1.95" x="-1.05" y="-4.05738" antialias="true" height="1.96485" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5.85" x="13.9" y="-4.05738" antialias="false" height="8.51435" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="-4.05738" x1="16.5" y2="4.45696" x2="15.85"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="27.3802" x1="-6.25" y2="25.4154" x2="6.1"/>
+        <rect width="5.2" x="-3" y="-5.36728" antialias="false" height="7.8594" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="1.3" x="-16" y="2.49211" antialias="false" height="1.96485" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-0.4" y="28.6901" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="20.4" y="0.527264" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

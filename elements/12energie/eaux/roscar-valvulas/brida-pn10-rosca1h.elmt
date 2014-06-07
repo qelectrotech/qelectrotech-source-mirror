@@ -1,0 +1,22 @@
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="18" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">BridaPN10-1"H</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.51043" x1="-1.276" y2="-3.55012" x2="-2.27425"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="9.3783" x1="-0.27775" y2="9.3783" x2="2.0515"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-11.8358" x1="-0.27775" y2="-11.8358" x2="2.0515"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="12.7457" x1="-0.27775" y2="12.7457" x2="2.0515"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.51043" x1="-2.607" y2="-3.55012" x2="-3.60525"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.51043" x1="-5.60175" y2="-3.55012" x2="-6.6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="4.51043" x1="-4.27075" y2="-3.55012" x2="-5.269"/>
+        <rect width="5.324" x="-6.6" y="-3.14709" antialias="false" height="7.65751" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <rect width="6.32225" x="-6.6" y="-3.95312" antialias="false" height="9.2696" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2.662" x="-0.27775" y="-13.3764" antialias="false" height="27.3764" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-8.46849" x1="-0.27775" y2="-8.46849" x2="2.0515"/>
+        <input x="-9" y="20" size="4" rotate="true" text="Brida"/>
+        <terminal x="-7" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="3" y="0" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

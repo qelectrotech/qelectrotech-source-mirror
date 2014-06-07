@@ -1,0 +1,35 @@
+<definition width="40" version="0.4" hotspot_x="18" hotspot_y="41" height="60" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Valv seg 3/4Hembra</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="12.4" x="-5.624" y="-25.7846" antialias="false" height="6.74725" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0374" x1="-1.624" y2="-25.3348" x2="-1.624"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0374" x1="-3.224" y2="-25.3348" x2="-3.224"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0374" x1="4.344" y2="-25.3348" x2="4.344"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0374" x1="2.776" y2="-25.3348" x2="2.776"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0374" x1="5.744" y2="-25.3348" x2="5.744"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0374" x1="0.376" y2="-25.3348" x2="0.376"/>
+        <rect width="3.2" x="9.976" y="-15.4388" antialias="false" height="13.0447" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <rect width="13.6" x="-6.424" y="-0.145055" antialias="false" height="11.2454" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11.2" x="-5.224" y="2.55385" antialias="false" height="8.54652" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16.3385" x1="8.88696" y2="-16.3385" x2="13.0891"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.49451" x1="8.89164" y2="-1.49451" x2="13.0841"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16.2727" x1="13.176" y2="-1.56571" x2="13.176"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0374" x1="-4.424" y2="-25.3348" x2="-4.424"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16.3385" x1="8.776" y2="-13.6396" x2="5.576"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.49451" x1="8.776" y2="-5.09304" x2="5.576"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16.55" x1="8.776" y2="-18.8075" x2="8.776"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0374" x1="-7.97736" y2="-19.0374" x2="8.72548"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.145055" x1="-7.97736" y2="-0.145055" x2="8.72548"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.232634" x1="8.776" y2="-1.37908" x2="8.776"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0374" x1="-8.04" y2="-0.145055" x2="-8.04"/>
+        <text x="-2.024" y="-8.24176" size="4" text="bar"/>
+        <input x="-7.624" y="-10.2659" size="4" rotate="true" text="_"/>
+        <text x="-12" y="-29" size="4" text="V.seg.3/4&quot;H"/>
+        <terminal x="0.376" y="11.1004" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="13.176" y="-8.24176" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,21 @@
+<definition width="70" version="0.4" hotspot_x="35" hotspot_y="24" height="60" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Manguito25-1"H</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="5.36313" x="10.2321" y="-8.5422" antialias="false" height="18.3799" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.88427" x="-30.5279" y="-9.5422" antialias="false" height="18.3799" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="32.7399" x="-26.6438" y="-15.0562" antialias="false" height="29.4079" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-20" y="27" size="4" text="manguito 25-1&quot;H"/>
+        <rect width="13.7632" x="15.8851" y="-12.8708" antialias="false" height="24.7068" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="9.7152" x="19.9332" y="-10.8118" antialias="false" height="20.589" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="9.77704" x1="21.5524" y2="-9.7824" x2="23.1716"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="9.77704" x1="23.9812" y2="-10.8118" x2="26.41"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="9.77704" x1="26.41" y2="-10.8118" x2="29.6483"/>
+        <rect width="3" x="8" y="-18" antialias="false" height="36" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="-30.5279" y="-0.35228" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="30" y="-1" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

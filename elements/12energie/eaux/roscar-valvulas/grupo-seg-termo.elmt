@@ -1,0 +1,34 @@
+<definition width="60" version="0.4" hotspot_x="15" hotspot_y="34" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Grupo seguridad termo3/4</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="13.6" x="-6.424" y="-30.1451" antialias="false" height="11.2454" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11.2" x="-5.224" y="-29.4461" antialias="false" height="7.54652" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <rect width="11.6" x="-5.424" y="-0.145055" antialias="false" height="11.2454" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16.3385" x1="8.88696" y2="-16.3385" x2="13.0891"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.49451" x1="8.89164" y2="-1.49451" x2="13.0841"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16.2727" x1="13.176" y2="-1.56571" x2="13.176"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16.3385" x1="8.776" y2="-13.6396" x2="5.576"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.49451" x1="8.776" y2="-5.09304" x2="5.576"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16.55" x1="8.776" y2="-18.8075" x2="8.776"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0374" x1="-7.97736" y2="-19.0374" x2="8.72548"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.145055" x1="-7.97736" y2="-0.145055" x2="8.72548"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.232634" x1="8.776" y2="-1.37908" x2="8.776"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.0374" x1="-8.04" y2="-0.145055" x2="-8.04"/>
+        <circle x="-10" y="-16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-8" y2="-16" x2="-13"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="-13" y2="-10" x2="-12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-12" y2="-3" x2="-13"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-13" y2="-3" x2="-11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-11" y2="-13" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-10" y2="-14" x2="-8"/>
+        <rect width="3" x="-1" y="-16" antialias="false" height="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2" y="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="5"/>
+        <input x="11" y="-9" size="4" rotate="true" text="grupo&#xa;termo 3/4&quot;"/>
+        <terminal x="0.376" y="11.1004" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="1" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+    </description>
+</definition>

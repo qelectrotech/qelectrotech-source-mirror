@@ -1,0 +1,21 @@
+<definition width="40" version="0.4" hotspot_x="17" hotspot_y="30" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Rácor 18-3/4</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="4.2075" x="-5.525" y="4.93011" antialias="true" height="8.06989" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="9.35" x="3.3575" y="-6.67037" antialias="false" height="13.6179" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4.675" x="-1.3175" y="-5.15726" antialias="false" height="11.0961" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6.0775" x="6.63" y="-5.15726" antialias="false" height="10.5918" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <rect width="8.8825" x="-10.2" y="-9.19222" antialias="false" height="19.166" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.14853" x1="-3.655" y2="-4.14853" x2="-9.7325"/>
+        <arc width="3.74" x="-5.0575" y="-12.2184" antialias="true" height="8.06989" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.93011" x1="-9.69383" y2="4.93011" x2="-3.69691"/>
+        <arc width="3.2725" x="-4.59" y="-4.14853" antialias="true" height="9.07863" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <input x="-15" y="-16" size="4" rotate="true" text="rácor3/4-18"/>
+        <terminal x="-10.2" y="0.390788" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="12.7075" y="0.390788" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

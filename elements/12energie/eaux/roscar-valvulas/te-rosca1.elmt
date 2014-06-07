@@ -1,0 +1,41 @@
+<definition width="80" version="0.4" hotspot_x="41" hotspot_y="38" height="60" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Te roscar 1"</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="6.72" x="14.56" y="-18.2615" antialias="true" height="7.4523" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="6.72" x="-23.52" y="-18.2615" antialias="true" height="7.4523" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <rect width="11.2" x="21.28" y="-15.1216" antialias="false" height="30.8517" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="6.72" x="-17.92" y="-21.9877" antialias="true" height="7.4523" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="6.72" x="14.56" y="11.5477" antialias="true" height="7.4523" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="11.2" x="-34.72" y="-15.1216" antialias="false" height="30.8517" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8.75806" x="22.6019" y="-9.56716" antialias="false" height="18.6308" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc width="6.72" x="-23.52" y="11.5477" antialias="true" height="7.4523" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.0636" x1="24.797" y2="-9.56716" x2="28.0897"/>
+        <rect width="8.75806" x="-33.3981" y="-9.56716" antialias="false" height="18.6308" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="26.88" x="-14.56" y="-34.9944" antialias="false" height="12.2209" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.0636" x1="26.9922" y2="-9.56716" x2="31.3824"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.0636" x1="22.6019" y2="-9.56716" x2="25.8946"/>
+        <arc width="6.72" x="8.96" y="-21.9877" antialias="true" height="7.4523" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <rect width="20.16" x="-11.2" y="-31.9762" antialias="false" height="7.50451" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-29.1621" x1="-11.2" y2="-31.0382" x2="8.96"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-27.286" x1="-11.2" y2="-29.1621" x2="8.96"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-25.4099" x1="-11.2" y2="-27.286" x2="8.96"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.0636" x1="-31.203" y2="-9.56716" x2="-27.9103"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.0636" x1="-29.0078" y2="-9.56716" x2="-24.6176"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.0636" x1="-33.3981" y2="-9.56716" x2="-30.1054"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.5477" x1="-20.16" y2="11.5477" x2="16.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.8092" x1="-20.16" y2="-10.8092" x2="-12.32"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.8092" x1="9.97373" y2="-10.8092" x2="18.0351"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.2615" x1="-11.2" y2="-10.8092" x2="-11.2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.2615" x1="8.96" y2="-10.8092" x2="8.96"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.8092" x1="8.96" y2="-4.59896" x2="2.24"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.8092" x1="-11.2" y2="-4.59896" x2="-4.48"/>
+        <text x="-19" y="6" size="4" text="Te 1&quot;H"/>
+        <terminal x="-33.6" y="0.369246" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="-1.12" y="-34.4082" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="32.48" y="0.369246" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

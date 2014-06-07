@@ -1,0 +1,28 @@
+<definition width="50" version="0.4" hotspot_x="18" hotspot_y="39" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Termómetro 1/2H</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.75773" x1="-7.4" y2="-7.61688" x2="-7.4"/>
+        <ellipse width="28.8" x="-13.4" y="-35.7256" antialias="true" height="28.8838" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="12.8" x="-6.2" y="-3.32888" antialias="false" height="9.75805" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="9.2" x="-4.2" y="-0.986947" antialias="false" height="7.41612" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.32888" x1="-7.4" y2="-3.32888" x2="7.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.66717" x1="7.8" y2="-6.91984" x2="7.8"/>
+        <ellipse width="32" x="-15" y="-36.8966" antialias="true" height="31.2258" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21.674" x1="0.6" y2="-29.0901" x2="-8.6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.4805" x1="-8.6" y2="-22.0643" x2="0.6"/>
+        <ellipse width="2.4" x="0.2" y="-22.0643" antialias="true" height="2.34193" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-10" y="-12.5" size="3" rotate="true" text="10"/>
+        <text x="-12" y="-21" size="3" text="20"/>
+        <text x="-6" y="-29" size="3" text="30"/>
+        <text x="4" y="-30" size="3" text="40"/>
+        <text x="10" y="-21" size="3" text="50"/>
+        <text x="7" y="-12" size="3" text="60"/>
+        <text x="-3" y="-15" size="4" text="ºC"/>
+        <text x="14" y="-5" size="4" text="1/2&quot;H"/>
+        <terminal x="0.2" y="6.42917" nameHidden="1" number="" name="" orientation="s"/>
+    </description>
+</definition>

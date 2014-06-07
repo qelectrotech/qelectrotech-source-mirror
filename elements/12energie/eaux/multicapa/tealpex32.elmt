@@ -1,0 +1,28 @@
+<definition width="120" version="0.4" hotspot_x="54" hotspot_y="63" height="90" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Te Alpex 32</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <rect width="3" x="28" y="-19" antialias="false" height="35" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="25.806" x="-9.632" y="-53.3485" antialias="false" height="26.5715" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18.216" x="-5.078" y="-23.7772" antialias="false" height="5.3143" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6.072" x="22.246" y="-9.60561" antialias="false" height="17.7143" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="15.18" x="13.138" y="-25.5485" antialias="true" height="15.9429" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <rect width="3.072" x="57.642" y="-9.3771" antialias="false" height="17.7143" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="16.698" x="-5.078" y="-55.663" antialias="false" height="2.3143" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6.072" x="-18.74" y="-9.60561" antialias="false" height="17.7143" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.6432" x="-49.9" y="-8.60561" antialias="false" height="17.7143" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="24.288" x="-46.028" y="-14.6913" antialias="false" height="28.343" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="27.324" x="30.318" y="-14.6913" antialias="false" height="28.343" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="15.18" x="-20.258" y="-25.5485" antialias="true" height="15.9429" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <text x="-2" y="19" size="4" text="Te 32"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.10868" x1="-11.15" y2="8.10868" x2="22.246"/>
+        <rect width="32" x="-12" y="-27" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="3" x="-22" y="-18" antialias="false" height="35" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="-49.9" y="0.251509" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="2.512" y="-55.663" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="60.714" y="-0.51993" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

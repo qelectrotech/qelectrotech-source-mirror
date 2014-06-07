@@ -1,0 +1,26 @@
+<definition width="40" version="0.4" hotspot_x="19" hotspot_y="32" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Manguito 22 1" Hembra</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="7.44855" x1="-2.32442" y2="-6.96012" x2="-4.20385"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="7.44855" x1="-7.96265" y2="-6.96012" x2="-9.8421"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="7.44855" x1="-5.4568" y2="-6.96012" x2="-7.3362"/>
+        <rect width="10.0236" x="-12.348" y="-7.3856" antialias="false" height="15.5547" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="7.44855" x1="-10.4686" y2="-6.96012" x2="-12.348"/>
+        <rect width="6.6" x="5.926" y="-9.13323" antialias="false" height="18.3126" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.85644" x1="1.30794" y2="-10.1908" x2="3.726"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.3147" x1="12.526" y2="-10.3147" x2="3.726"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.69989" x1="12.526" y2="-9.65913" x2="12.526"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.3608" x1="3.66161" y2="10.3608" x2="12.5957"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.02643" x1="1.30794" y2="10.3608" x2="3.726"/>
+        <rect width="11.2765" x="-12.348" y="-9.69442" antialias="false" height="20.1722" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.69442" x1="-1.07147" y2="-8.25356" x2="0.807937"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.4778" x1="-1.07147" y2="8.31646" x2="0.807937"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.1133" x1="0.807937" y2="3.63741" x2="0.807937"/>
+        <input x="-12" y="-18" size="4" rotate="true" text="1&quot;H-22"/>
+        <terminal x="-12.348" y="0.244216" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="12.826" y="0.472517" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

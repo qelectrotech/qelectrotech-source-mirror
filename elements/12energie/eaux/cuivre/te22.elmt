@@ -1,0 +1,22 @@
+<definition width="60" version="0.4" hotspot_x="27" hotspot_y="32" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Te cobre 22</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="8.55" x="16.44" y="-9.83725" antialias="false" height="20.8373" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8.55" x="-18.9" y="-10.4326" antialias="false" height="20.8373" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="20.52" x="-6.93" y="-22.935" antialias="false" height="7.73955" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.02325" x1="-9.66948" y2="8.02325" x2="16.3202"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.5833" x1="-3.51" y2="-8.66471" x2="-3.51"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.0512" x1="-10.1501" y2="-8.0512" x2="-3.72654"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.0512" x1="10.3138" y2="-8.0512" x2="16.2843"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.5833" x1="10.17" y2="-8.66471" x2="10.17"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.69305" x1="1.62" y2="-8.0512" x2="-3.51"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.69305" x1="5.61" y2="-8.0512" x2="10.17"/>
+        <text x="-5" y="5" size="4" text="Te 22"/>
+        <terminal x="-18.9" y="-0.311652" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="24.99" y="-0.311652" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="3" y="-24" nameHidden="0" number="" name="" orientation="n"/>
+    </description>
+</definition>
