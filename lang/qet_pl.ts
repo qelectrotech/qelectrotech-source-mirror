@@ -1081,83 +1081,83 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="14"/>
         <source>Propriété de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Właściwości elementu</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="25"/>
         <source>Type de base :</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ podstawy :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="37"/>
         <source>Élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Element podrzędny</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="52"/>
         <source>Nombre de contact représenté</source>
-        <translation type="unfinished"></translation>
+        <translation>Określenie numerów zestyków</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="59"/>
         <source>Type de contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ zestyków</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="66"/>
         <source>État du contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Stan zestyków</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="62"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="71"/>
         <source>Simple</source>
-        <translation type="unfinished">Prosty</translation>
+        <translation>Prosty</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="63"/>
         <source>Maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Nadrzędny</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="64"/>
         <source>Esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Podrzędny</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="65"/>
         <source>Renvoi de folio suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Odsylacz do następnej strony</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="66"/>
         <source>Renvoi de folio précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Odsyłacz do poprzedniej strony</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="69"/>
         <source>Normalement ouvert</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalnie otwarty</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="70"/>
         <source>Normalement fermé</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalnie zamknięty</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="72"/>
         <source>Puissance</source>
-        <translation type="unfinished"></translation>
+        <translation>Obwody główne</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
         <source>Temporisé travail</source>
-        <translation type="unfinished"></translation>
+        <translation>Opóźnienie przy uruchamianiu</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="74"/>
         <source>Temporisé repos</source>
-        <translation type="unfinished"></translation>
+        <translation>Opóźnienie przy powrocie</translation>
     </message>
 </context>
 <context>
@@ -4183,7 +4183,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Éditer les propriétées de l&apos;élément)</source>
-        <translation type="unfinished"></translation>
+        <translation>Edycja właściowści elementu</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
@@ -4254,13 +4254,13 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brak pola tekstowego ze znacznikiem &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>Les éléments maîtres ou esclaves doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elementy nadrzędne i podrzędne muszą posiadać pole tekstowe ze znacznikiem &apos;label&apos;</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="717"/>
@@ -4529,22 +4529,22 @@ Dostępne opcje :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="701"/>
         <source>Absence de borne</source>
-        <translation type="unfinished">Brak terminala</translation>
+        <translation>Brak terminala</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="702"/>
         <source>Les reports de folio doivent posséder une seul borne.</source>
-        <translation type="unfinished"></translation>
+        <translation>Spis stron musi posiadać co najmniej jeden terminal.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="708"/>
         <source>Absence de champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Brak pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="709"/>
         <source>Les reports de folio doivent posséder au moins un champ texte éditable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Spis stron musi posiadać co najmniej jedno pole tekstowe do edycji.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="752"/>
@@ -4629,7 +4629,7 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1069"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1104"/>
         <source>Echec de l&apos;enregistrement</source>
-        <translation type="unfinished"></translation>
+        <translation>Rejestracja nie powidła się</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1045"/>
@@ -4637,7 +4637,8 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1104"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
-        <translation type="unfinished"></translation>
+        <translation>Rejestracja nie powiodła się,
+wymagane warunki nie zostały spełnione</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1220"/>
@@ -4665,7 +4666,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="733"/>
         <source>Avertissements</source>
-        <translation type="unfinished">Ostrzeżenia</translation>
+        <translation>Ostrzeżenia</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="998"/>
