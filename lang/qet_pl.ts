@@ -4544,7 +4544,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="709"/>
         <source>Les reports de folio doivent posséder au moins un champ texte éditable.</source>
-        <translation>Spis stron musi posiadać co najmniej jedno pole tekstowe do edycji.</translation>
+        <translation>Odsyłacz do strony musi posiadać co najmniej jedno pole tekstowe do edycji.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="752"/>
