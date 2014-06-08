@@ -1,5 +1,7 @@
-<definition width="40" version="0.4" hotspot_x="16" hotspot_y="25" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="20" hotspot_y="25" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Fitting 15-1/2</name>
+        <name lang="fr">Raccord 15-1/2</name>
         <name lang="es">Rácor 15-1/2</name>
     </names>
     <informations>Rafael Ferrando.
@@ -14,8 +16,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <arc width="3.2" x="-4.6" y="-9.81538" antialias="true" height="5.77949" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.39487" x1="-7.82952" y2="3.39487" x2="-3.36801"/>
         <arc width="2.8" x="-4.2" y="-4.0359" antialias="true" height="7.43077" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <input x="-14" y="-12" size="4" rotate="true" text="rácor1/2-15"/>
-        <terminal x="-8.2" y="-0.320513" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="9.8" y="-0.320513" nameHidden="1" number="" name="" orientation="e"/>
+        <input x="-14" y="-12" size="4" rotate="true" text="rácor1/2-15" tagg="none"/>
+        <terminal x="-8.2" y="-0.320513" orientation="w"/>
+        <terminal x="9.8" y="-0.320513" orientation="e"/>
     </description>
 </definition>

@@ -1,5 +1,7 @@
-<definition width="50" version="0.4" hotspot_x="24" hotspot_y="18" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="22" hotspot_y="18" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Elbow-sleeve 1/2 "H-15</name>
+        <name lang="fr">Coude-douille de 1/2 "H-15</name>
         <name lang="es">Manguito-Codo 1/2"H-15</name>
     </names>
     <informations>Rafael Ferrando.
@@ -16,8 +18,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7.31731" x1="-1.99" y2="-8.30353" x2="9.35"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.33109" x1="-1.99" y2="-7.31731" x2="9.35"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.34487" x1="-1.99" y2="-6.33109" x2="9.35"/>
-        <input x="-20" y="20" size="4" rotate="true" text="manguito aco- &#xa;dado1/2H-15"/>
-        <terminal x="-12.7" y="8.20639" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="3.68" y="-10.075" nameHidden="1" number="" name="" orientation="n"/>
+        <input x="-20" y="20" size="4" rotate="true" text="manguito aco- &#xa;dado1/2H-15" tagg="none"/>
+        <terminal x="-12.7" y="8.20639" orientation="w"/>
+        <terminal x="3.68" y="-10.075" orientation="n"/>
     </description>
 </definition>

@@ -1,7 +1,9 @@
-<definition width="50" version="0.4" hotspot_x="16" hotspot_y="20" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="16" hotspot_y="20" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="es">Codo cobre 15</name>
+        <name lang="en">Copper Elbow 15</name>
         <name lang="it">gomito di rame 15</name>
+        <name lang="fr">Cuivre Coude 15</name>
+        <name lang="es">Codo cobre 15</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
@@ -10,8 +12,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <rect width="13" x="4" y="-6.47198" antialias="false" height="6.8393" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <arc width="10.5" x="-4.5" y="-5.00641" antialias="true" height="10.7475" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
         <arc width="29" x="-14" y="-14.2883" antialias="true" height="29.3113" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <input x="5" y="17" size="4" rotate="true" text="codo15"/>
-        <terminal x="-7" y="10.1377" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="10.5" y="-6.9605" nameHidden="1" number="" name="" orientation="n"/>
+        <input x="5" y="17" size="4" rotate="true" text="codo15" tagg="none"/>
+        <terminal x="-7" y="10.1377" orientation="w"/>
+        <terminal x="10.5" y="-6.9605" orientation="n"/>
     </description>
 </definition>

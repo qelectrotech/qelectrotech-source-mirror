@@ -1,12 +1,14 @@
-<definition width="60" version="0.4" hotspot_x="28" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="28" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">15 Copper Tube</name>
+        <name lang="fr">Tube 15 cuivre</name>
         <name lang="es">Tubo cobre 15</name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
         <rect width="48.8" x="-22.6" y="-5.63888" antialias="false" height="11.6389" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-5.8" y="1.56614" size="3" text="Cu15"/>
-        <terminal x="-23.4" y="0.00983577" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="27" y="0.00983577" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-23.4" y="0.00983577" orientation="w"/>
+        <terminal x="27" y="0.00983577" orientation="e"/>
     </description>
 </definition>

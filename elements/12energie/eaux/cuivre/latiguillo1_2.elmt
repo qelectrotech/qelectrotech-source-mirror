@@ -1,7 +1,9 @@
-<definition width="50" version="0.4" hotspot_x="24" hotspot_y="27" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="24" hotspot_y="27" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="es">Rácor 15-1/2</name>
+        <name lang="en">Fitting 15-1/2</name>
         <name lang="it">Raccordo 15-1/2</name>
+        <name lang="fr">Raccord 15-1/2</name>
+        <name lang="es">Rácor 15-1/2</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
@@ -13,10 +15,10 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <arc width="8" x="-8" y="-23" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="-16.0738" y2="9" x2="-4.92003"/>
         <arc width="7" x="-7" y="-9" antialias="true" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <input x="-22" y="21" size="4" rotate="true" text="rácor 15-1/2"/>
+        <input x="-22" y="21" size="4" rotate="true" text="rácor 15-1/2" tagg="none"/>
         <rect width="12" x="10" y="-9" antialias="false" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="8" x="14" y="-7" antialias="false" height="14" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
-        <terminal x="-17" y="0" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="21" y="0" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="-17" y="0" orientation="w"/>
+        <terminal x="21" y="0" orientation="e"/>
     </description>
 </definition>
