@@ -4534,7 +4534,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="702"/>
         <source>Les reports de folio doivent posséder une seul borne.</source>
-        <translation>Spis stron musi posiadać co najmniej jeden terminal.</translation>
+        <translation>Odsyłacz do strony musi posiadać co najmniej jeden terminal.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="708"/>
