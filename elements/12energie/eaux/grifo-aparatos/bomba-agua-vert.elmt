@@ -1,5 +1,7 @@
-<definition width="60" version="0.4" hotspot_x="28" hotspot_y="74" height="110" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="28" hotspot_y="74" height="110" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Vertical Water Pump</name>
+        <name lang="fr">Pompe verticale</name>
         <name lang="es">Bomba agua vertical</name>
     </names>
     <informations>Rafael Ferrando.
@@ -37,7 +39,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <rect width="30" x="-14" y="-29" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <rect width="30" x="-14" y="26" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-58" x1="-19" y2="-47" x2="-19"/>
-        <terminal x="23.7299" y="22.3213" nameHidden="1" number="" name="" orientation="e"/>
-        <terminal x="23.7299" y="-20.6787" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="23.7299" y="22.3213" orientation="e"/>
+        <terminal x="23.7299" y="-20.6787" orientation="e"/>
     </description>
 </definition>

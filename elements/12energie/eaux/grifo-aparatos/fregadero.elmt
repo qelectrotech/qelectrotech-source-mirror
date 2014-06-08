@@ -1,5 +1,7 @@
-<definition width="130" version="0.4" hotspot_x="49" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="130" version="0.4" hotspot_x="49" hotspot_y="39" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Sink 2</name>
+        <name lang="fr">Evier 2</name>
         <name lang="es">Fregadero 2senos</name>
     </names>
     <informations>Rafael Ferrando.
@@ -39,8 +41,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <arc width="13.2" x="-41.4" y="-15.8" antialias="true" height="33.6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
         <rect width="122.4" x="-45" y="-19" antialias="false" height="42" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.2" x1="45" y2="-9.2" x2="71.4"/>
-        <text x="-24" y="31" size="4" text="Fregadero 2senos"/>
-        <terminal x="-14" y="-31" nameHidden="1" number="" name="" orientation="n"/>
-        <terminal x="11" y="-31" nameHidden="1" number="" name="" orientation="n"/>
+        <input x="-11" y="31" size="4" rotate="true" text="Fregadero 2senos" tagg="none"/>
+        <terminal x="-14" y="-31" orientation="n"/>
+        <terminal x="11" y="-31" orientation="n"/>
     </description>
 </definition>

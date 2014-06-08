@@ -1,5 +1,7 @@
-<definition width="70" version="0.4" hotspot_x="35" hotspot_y="37" height="90" type="element" ic="true" orientation="dyyy">
+<definition width="70" version="0.4" hotspot_x="35" hotspot_y="37" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Sink</name>
+        <name lang="fr">Evier</name>
         <name lang="es">Vertedero</name>
     </names>
     <informations>Rafael Ferrando.
@@ -27,8 +29,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15.6136" x1="-27.4286" y2="42.7064" x2="-27.4286"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="43.7" x1="27.3857" y2="43.7" x2="-27.4113"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15.6136" x1="27.4044" y2="42.7064" x2="27.4044"/>
-        <text x="-20.2374" y="21.2" size="4" text="Vertedero"/>
-        <terminal x="-7.65275" y="-29.2" nameHidden="1" number="" name="" orientation="n"/>
-        <terminal x="6.72967" y="-29.2" nameHidden="1" number="" name="" orientation="n"/>
+        <input x="-15" y="22" size="4" rotate="true" text="Vertedero" tagg="none"/>
+        <terminal x="-7.65275" y="-29.2" orientation="n"/>
+        <terminal x="6.72967" y="-29.2" orientation="n"/>
     </description>
 </definition>

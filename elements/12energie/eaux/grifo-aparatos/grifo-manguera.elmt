@@ -1,8 +1,10 @@
-<definition width="70" version="0.4" hotspot_x="29" hotspot_y="21" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="70" version="0.4" hotspot_x="29" hotspot_y="21" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Sink hose</name>
+        <name lang="fr">Robinet </name>
         <name lang="es">Grifo-manguera</name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
         <arc width="24" x="11" y="-4" antialias="true" height="27" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.90151" x1="8.9243" y2="-2.90151" x2="12.4862"/>
@@ -29,9 +31,9 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.6389" x1="2.7" y2="-9.67169" x2="2.7"/>
         <arc width="8" x="19" y="5" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
         <rect width="14" x="24" y="9" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x4="35" y5="11" x5="35" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="11" x1="27" y2="21" x2="28" y3="21" x3="34" y4="11"/>
+        <polygon x4="35" y5="11" x5="35" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="11" x1="27" y2="21" x2="28" y3="21" x3="34" y4="11"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14" x1="28" y2="14" x2="34"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="18" x1="28" y2="18" x2="34"/>
-        <terminal x="-23.9" y="0.667065" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-23.9" y="0.667065" orientation="w"/>
     </description>
 </definition>

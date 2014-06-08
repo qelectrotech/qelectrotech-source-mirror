@@ -1,6 +1,8 @@
-<definition width="150" version="0.4" hotspot_x="73" hotspot_y="37" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="150" version="0.4" hotspot_x="73" hotspot_y="37" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="es">bañera</name>
+        <name lang="en">Bathtub</name>
+        <name lang="fr">Baignoire</name>
+        <name lang="es">Bañera</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
@@ -32,7 +34,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-31.1604" x1="-16" y2="-26.0624" x2="-16"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-31.1604" x1="-12" y2="-26.0624" x2="-12"/>
         <text x="-9" y="8.60404" size="4" text="Bañera"/>
-        <terminal x="-14" y="-32.18" nameHidden="1" number="" name="" orientation="n"/>
-        <terminal x="11" y="-32.18" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="-14" y="-32.18" orientation="n"/>
+        <terminal x="11" y="-32.18" orientation="n"/>
     </description>
 </definition>

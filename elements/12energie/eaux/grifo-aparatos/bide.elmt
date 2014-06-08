@@ -1,5 +1,7 @@
-<definition width="60" version="0.4" hotspot_x="29" hotspot_y="45" height="100" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="29" hotspot_y="45" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Bidet</name>
+        <name lang="fr">Bidé</name>
         <name lang="es">Bidé</name>
     </names>
     <informations>Rafael Ferrando.
@@ -27,7 +29,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="5" y2="-28" x2="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-32" x1="4" y2="-32" x2="7"/>
         <text x="-4" y="27" size="4" text="Bidé"/>
-        <terminal x="-7" y="-38" nameHidden="1" number="" name="" orientation="n"/>
-        <terminal x="9" y="-37" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="-7" y="-38" orientation="n"/>
+        <terminal x="9" y="-37" orientation="n"/>
     </description>
 </definition>

@@ -1,5 +1,7 @@
-<definition width="40" version="0.4" hotspot_x="20" hotspot_y="21" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="21" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Bathroom Sink Faucets</name>
+        <name lang="fr">Robinets de salle de bains évier</name>
         <name lang="es">Grifo Lavabo</name>
     </names>
     <informations>Rafael Ferrando.
@@ -30,7 +32,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <rect width="3.7485" x="-13.149" y="-6.50463" antialias="false" height="2.90914" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <ellipse width="3.3075" x="-13.3695" y="14.3883" antialias="true" height="3.43808" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-13.7333" x2="-9.5769" x3="-7.5704" x4="-9.7202" antialias="false" x5="-13.7333" x6="-15.795" x7="-13.8767" x8="-13.8767" closed="false" y1="19.6777" y2="19.6777" y3="15.9704" y4="12.068" y5="12.068" y6="15.9704" y7="19.6777" y8="19.6777"/>
-        <terminal x="-9.15" y="30.1891" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="8.6" y="30.1891" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="-9.15" y="30.1891" orientation="w"/>
+        <terminal x="8.6" y="30.1891" orientation="e"/>
     </description>
 </definition>
