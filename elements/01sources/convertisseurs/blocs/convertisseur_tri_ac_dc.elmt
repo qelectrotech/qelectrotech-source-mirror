@@ -8,6 +8,7 @@
         <name lang="pl">Prostownik</name>
         <name lang="nl">Wisselspanning driefase > gelijkspanning  AC3 > DC</name>
         <name lang="cs">Usměrňovač - měnič třífázový střídavý proud/stejnosměrný proud</name>
+        <name lang="be">Wisselspanning driefasen > gelijkspanning  AC3 > DC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

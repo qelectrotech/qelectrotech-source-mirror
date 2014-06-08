@@ -9,6 +9,7 @@
         <name lang="pl">Zasilacz</name>
         <name lang="cs">Usměrňovač proudu</name>
         <name lang="nl">Gelijkrichter AC1/DC</name>
+        <name lang="be">Gelijkrichter AC1/DC</name>
     </names>
     <informations>EN 60617: 06-14-03</informations>
     <description>

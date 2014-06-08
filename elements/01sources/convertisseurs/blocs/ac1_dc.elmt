@@ -12,6 +12,7 @@
         <name lang="es">Alterna monofásica > Continua</name>
         <name lang="cs">Usměrňovač - jednofázový střídavý proud > stejnosměrný proud</name>
         <name lang="nl">Wisselspanning > gelijkspanning  AC1 > DC</name>
+        <name lang="be">Wisselspanning > gelijkspanning  AC1 > DC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

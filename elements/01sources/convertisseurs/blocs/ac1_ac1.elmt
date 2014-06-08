@@ -12,6 +12,7 @@
         <name lang="es">Alterna monofásica > Alterna monofásica</name>
         <name lang="cs">Střídavý proud > stejnosměrný proud</name>
         <name lang="nl">Wisselspanning > Wisselspanning  AC1 > AC1</name>
+        <name lang="be">Wisselspanning > Wisselspanning  AC1 > AC1</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

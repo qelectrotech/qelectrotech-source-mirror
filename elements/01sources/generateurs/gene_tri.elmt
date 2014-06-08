@@ -12,6 +12,7 @@
         <name lang="es">Generador trifasico</name>
         <name lang="cs">Třífázový generátor</name>
         <name lang="nl">Generator driefase AC3</name>
+        <name lang="be">Generator driefase AC3</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

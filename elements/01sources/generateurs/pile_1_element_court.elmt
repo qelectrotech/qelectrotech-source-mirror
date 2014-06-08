@@ -9,6 +9,7 @@
         <name lang="cs">Akumulátor 1 prvek (krátký)</name>
         <name lang="nl">Accu DC</name>
         <name lang="el">Μπαταρία (1 στοιχείο, κοντό)</name>
+        <name lang="be">Batterij een element (kort)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

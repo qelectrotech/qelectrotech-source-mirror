@@ -12,6 +12,7 @@
         <name lang="es">Generador de corriente continuo</name>
         <name lang="cs">Generátor stejnosměrného proudu</name>
         <name lang="nl">gelijkspanning generator DC</name>
+        <name lang="be">Generator DC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -8,6 +8,7 @@
         <name lang="pl">Przekształtnik prądu przemiennego</name>
         <name lang="nl">Wisselspanning driefase > wisselspanning eenfase AC3>AC1</name>
         <name lang="cs">Měnič třífázový/jednofázový proud</name>
+        <name lang="be">Wisselspanning drie fasen > wisselspanning een fase AC3>AC1</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

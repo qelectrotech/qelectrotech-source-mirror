@@ -12,6 +12,7 @@
         <name lang="es">Generador</name>
         <name lang="cs">Generátor</name>
         <name lang="nl">Generator AC1</name>
+        <name lang="be">Generator AC1</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
