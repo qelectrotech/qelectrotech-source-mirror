@@ -149,7 +149,7 @@ void QETElementEditor::setupActions() {
 	zoom_reset        = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom"),                               this);
 	edit_names        = new QAction(QET::Icons::Names,                tr("\311diter les noms"),                        this);
 	edit_author		  = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations sur l'auteur"),   this);
-	m_edit_properties = new QAction(QET::Icons::ElementEdit,		  tr("\311diter les propri\351t\351es de l'\351l\351ment)"), this);
+	m_edit_properties = new QAction(QET::Icons::ElementEdit,		  tr("\311diter les propri\351t\351es de l'\351l\351ment"), this);
 	edit_raise        = new QAction(QET::Icons::Raise,                tr("Rapprocher"),                                this);
 	edit_lower        = new QAction(QET::Icons::Lower,                tr("\311loigner"),                               this);
 	edit_backward     = new QAction(QET::Icons::SendBackward,         tr("Envoyer au fond"),                           this);
