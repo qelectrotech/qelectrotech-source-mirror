@@ -1127,7 +1127,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="65"/>
         <source>Renvoi de folio suivant</source>
-        <translation>Odsylacz do następnej strony</translation>
+        <translation>Odsyłacz do następnej strony</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="66"/>
@@ -4534,7 +4534,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="702"/>
         <source>Les reports de folio doivent posséder une seul borne.</source>
-        <translation>Odsyłacz do strony musi posiadać co najmniej jeden terminal.</translation>
+        <translation>Odsyłacz do strony musi posiadać jeden terminal.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="708"/>
@@ -4544,7 +4544,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="709"/>
         <source>Les reports de folio doivent posséder au moins un champ texte éditable.</source>
-        <translation>Odsyłacz do strony musi posiadać co najmniej jedno pole tekstowe do edycji.</translation>
+        <translation>Odsyłacz do strony musi posiadać jedno pole tekstowe do edycji.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="752"/>
