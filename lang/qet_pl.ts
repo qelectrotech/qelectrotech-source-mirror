@@ -2669,7 +2669,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="59"/>
         <source>Référence croisées</source>
-        <translation>Odsyłacz</translation>
+        <translation>Oznaczenia referencyjne</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="100"/>
@@ -2911,7 +2911,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="309"/>
         <source>Référence croisées</source>
-        <translation>Odsyłacz</translation>
+        <translation>Oznaczenie referencyjne</translation>
     </message>
 </context>
 <context>
@@ -4254,7 +4254,7 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
-        <translation>Brak pola tekstowego ze znacznikiem &apos;label&apos;</translation>
+        <translation>Brak pola tekstowego ze znacznikiem &apos;Etykieta&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
@@ -5588,7 +5588,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="1303"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation>Edytuj odsyłacz</translation>
+        <translation>Edytuj oznaczenie referencyjne</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1304"/>
@@ -5599,7 +5599,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1317"/>
         <source>Editer les référence croisé</source>
-        <translation>Edytuj odsyłacz</translation>
+        <translation>edycja oznaczenia referencyjnego</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1378"/>
@@ -6621,7 +6621,7 @@ Pozostałe pola nie są używane.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="68"/>
         <source>tagg :</source>
-        <translation>tag :</translation>
+        <translation>Znacznik :</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
@@ -6631,7 +6631,7 @@ Pozostałe pola nie są używane.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
         <source>label</source>
-        <translation>etykieta</translation>
+        <translation>Etykieta</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
@@ -6661,7 +6661,7 @@ Pozostałe pola nie są używane.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="145"/>
         <source>tagg</source>
-        <translation>tag</translation>
+        <translation>znacznika</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="425"/>
