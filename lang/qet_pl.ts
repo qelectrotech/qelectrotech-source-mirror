@@ -4254,7 +4254,7 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
-        <translation>Brak pola tekstowego ze znacznikiem &apos;Etykieta&apos;</translation>
+        <translation>Brak pola tekstowego ze znacznikiem &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
@@ -6631,7 +6631,7 @@ Pozostałe pola nie są używane.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
         <source>label</source>
-        <translation>Etykieta</translation>
+        <translation>label</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
