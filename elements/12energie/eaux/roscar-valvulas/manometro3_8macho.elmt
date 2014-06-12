@@ -1,6 +1,7 @@
 <definition width="60" version="0.4" hotspot_x="22" hotspot_y="47" height="60" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Manómetro 3/8M</name>
+        <name lang="it">Manometro 3/8 M</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

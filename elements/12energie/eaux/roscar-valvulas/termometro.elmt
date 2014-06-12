@@ -1,6 +1,7 @@
 <definition width="50" version="0.4" hotspot_x="18" hotspot_y="39" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Termómetro 1/2H</name>
+        <name lang="it">Termometro 1/2 F</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

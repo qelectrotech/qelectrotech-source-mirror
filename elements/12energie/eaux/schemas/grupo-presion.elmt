@@ -5,6 +5,7 @@
         <name lang="en">Pump</name>
         <name lang="es">Grupo de Presión</name>
         <name lang="cs">Pumpa</name>
+        <name lang="it">Gruppo pompe</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

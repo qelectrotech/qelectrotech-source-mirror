@@ -1,6 +1,7 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Dilatador</name>
+        <name lang="it">Compensatore dilatazione</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

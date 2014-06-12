@@ -1,6 +1,7 @@
 <definition width="110" version="0.4" hotspot_x="51" hotspot_y="47" height="80" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">CurvaAlpex32</name>
+        <name lang="it">Curva Alpex 32</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

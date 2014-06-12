@@ -1,6 +1,7 @@
 <definition width="50" version="0.4" hotspot_x="22" hotspot_y="36" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Llave latiguillo</name>
+        <name lang="it">Valvola</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

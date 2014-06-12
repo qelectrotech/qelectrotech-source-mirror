@@ -1,6 +1,7 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Grifo caliente</name>
+        <name lang="it">Rubinetto caldo</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

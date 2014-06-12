@@ -1,6 +1,7 @@
 <definition width="30" version="0.4" hotspot_x="14" hotspot_y="35" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Depósito esxpansión</name>
+        <name lang="it">Vaso d'espansione</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

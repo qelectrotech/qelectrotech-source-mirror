@@ -1,6 +1,7 @@
 <definition width="60" version="0.4" hotspot_x="21" hotspot_y="39" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Manómetro 1/2H</name>
+        <name lang="it">Manometro 1/2 F</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

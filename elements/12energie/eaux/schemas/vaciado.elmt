@@ -1,6 +1,7 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="6" height="20" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Vaciado - Vertido</name>
+        <name lang="it">Scarico</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

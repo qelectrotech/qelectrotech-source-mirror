@@ -1,6 +1,7 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="12" height="20" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Llave corte rápido</name>
+        <name lang="it">Valvola taglio rapido</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

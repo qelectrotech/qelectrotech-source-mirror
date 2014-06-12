@@ -1,6 +1,7 @@
 <definition width="30" version="0.4" hotspot_x="16" hotspot_y="18" height="30" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Válvula de Boya</name>
+        <name lang="it">Valvola a galleggiante</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

@@ -1,6 +1,7 @@
 <definition width="20" version="0.4" hotspot_x="9" hotspot_y="21" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Válvula de seguridad</name>
+        <name lang="it">Valvola di sicurezza</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
