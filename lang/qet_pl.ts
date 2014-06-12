@@ -4254,13 +4254,13 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
-        <translation>Brak pola tekstowego ze znacznikiem &apos;label&apos;</translation>
+        <translation>Brak pola tekstowego ze znacznikiem &apos;Etykieta&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>Les éléments maîtres ou esclaves doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation>Elementy nadrzędne i podrzędne muszą posiadać pole tekstowe ze znacznikiem &apos;label&apos;</translation>
+        <translation>Elementy nadrzędne i podrzędne muszą posiadać pole tekstowe ze znacznikiem &apos;Etykieta&apos;</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="717"/>
@@ -6631,7 +6631,7 @@ Pozostałe pola nie są używane.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
         <source>label</source>
-        <translation>label</translation>
+        <translation>Etykieta</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
