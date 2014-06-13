@@ -1,5 +1,7 @@
-<definition width="70" version="0.4" hotspot_x="33" hotspot_y="42" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="70" version="0.4" hotspot_x="33" hotspot_y="42" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Elbow Alpex 20</name>
+        <name lang="fr">Coude Alpex 20</name>
         <name lang="es">Codo Alpex 20</name>
         <name lang="it">Gomito Alpex 20</name>
     </names>
@@ -17,7 +19,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <text x="3" y="20" size="4" text="codo20"/>
         <rect width="29" x="4" y="-13" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <rect width="4" x="-4" y="-8" antialias="false" height="27" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <terminal x="-27.9174" y="6.25662" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="17.7555" y="-34.6065" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-27.9174" y="6.25662" orientation="w"/>
+        <terminal x="17.7555" y="-34.6065" orientation="n"/>
     </description>
 </definition>

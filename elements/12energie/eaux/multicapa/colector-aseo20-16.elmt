@@ -1,5 +1,7 @@
-<definition width="100" version="0.4" hotspot_x="45" hotspot_y="73" height="120" type="element" ic="true" orientation="dyyy">
+<definition width="100" version="0.4" hotspot_x="45" hotspot_y="73" height="120" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">collector Aeo20-16</name>
+        <name lang="fr">collecteur Aeo20-16</name>
         <name lang="es">Colecto Aeo20-16</name>
         <name lang="it">Collettore Aeo20-16</name>
     </names>
@@ -45,10 +47,10 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="10" y2="-21" x2="7"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="-3" y2="-21" x2="0"/>
         <text x="-27" y="-16" size="4" text="16"/>
-        <terminal x="-38" y="-18" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="2.9426" y="-64.5426" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="48.415" y="-18.3989" nameHidden="1" number="" name="" orientation="e"/>
-        <terminal x="-38" y="30" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="47" y="30" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="-38" y="-18" orientation="w"/>
+        <terminal x="2.9426" y="-64.5426" orientation="n"/>
+        <terminal x="48.415" y="-18.3989" orientation="e"/>
+        <terminal x="-38" y="30" orientation="w"/>
+        <terminal x="47" y="30" orientation="e"/>
     </description>
 </definition>

@@ -1,5 +1,7 @@
-<definition width="90" version="0.4" hotspot_x="46" hotspot_y="53" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="90" version="0.4" hotspot_x="46" hotspot_y="53" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Elbow Alpex 25</name>
+        <name lang="fr">Coude Alpex 25</name>
         <name lang="es">CurvaAlpex25</name>
         <name lang="it">Curva Alpex 25</name>
     </names>
@@ -16,7 +18,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.155" x1="-7.5" y2="7.155" x2="-24.06"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="-7.28964" y2="21" x2="-24.254"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="-25.44" y2="7.155" x2="-25.44"/>
-        <terminal x="-26.82" y="14.0775" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="21.48" y="-37.149" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="-26.82" y="14.0775" orientation="w"/>
+        <terminal x="21.48" y="-37.149" orientation="n"/>
     </description>
 </definition>

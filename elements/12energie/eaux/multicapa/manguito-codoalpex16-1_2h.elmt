@@ -1,7 +1,9 @@
-<definition width="60" version="0.4" hotspot_x="34" hotspot_y="31" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="30" hotspot_y="32" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="es">Manguito-Codo Alpex 16-1/2H</name>
+        <name lang="en">Elbow fitting Alpex 16-1/2H</name>
         <name lang="it">Manicotto-gomito Alpex 16-1/2" H </name>
+        <name lang="fr">Raccord Coude Alpex 16-1/2H</name>
+        <name lang="es">Manguito-Codo Alpex 16-1/2H</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
@@ -14,7 +16,6 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <rect width="2" x="-26" y="-4" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="17" x="-24" y="-7" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <arc width="10" x="-6" y="-13" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <text x="-16" y="16" size="4" text="manguito codo&#xa;16-1/2&quot;H"/>
         <rect width="12" x="4" y="-25" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-23" x1="4" y2="-24" x2="16"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="2" y2="-9" x2="4"/>
@@ -26,7 +27,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="7" y2="10" x2="7"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-1" y2="6" x2="2"/>
         <rect width="2" x="-7" y="-9" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <terminal x="-26" y="1" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="10" y="-25" nameHidden="0" number="" name="" orientation="n"/>
+        <input x="-17" y="32" size="4" rotate="true" text="manguito codo&#xa;16-1/2&quot;H" tagg="none"/>
+        <terminal x="-26" y="1" orientation="w"/>
+        <terminal x="10" y="-25" orientation="n"/>
     </description>
 </definition>

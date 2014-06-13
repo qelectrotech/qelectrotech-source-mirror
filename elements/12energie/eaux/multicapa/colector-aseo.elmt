@@ -1,5 +1,7 @@
-<definition width="100" version="0.4" hotspot_x="47" hotspot_y="41" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="100" version="0.4" hotspot_x="47" hotspot_y="41" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="en">Te Alpex 20-16-20</name>
+        <name lang="fr">Te Alpex 20-16-20</name>
         <name lang="es">Te Alpex 20-16-20</name>
         <name lang="it">T Alpex 20-16-20</name>
     </names>
@@ -22,8 +24,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <rect width="2" x="-18" y="-13" antialias="false" height="25" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <rect width="2" x="20" y="-14" antialias="false" height="27" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <rect width="20" x="-9" y="-17" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <terminal x="-40" y="0" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="0.9426" y="-35.8823" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="46.415" y="-0.39891" nameHidden="1" number="" name="" orientation="e"/>
+        <terminal x="-40" y="0" orientation="w"/>
+        <terminal x="0.9426" y="-35.8823" orientation="n"/>
+        <terminal x="46.415" y="-0.39891" orientation="e"/>
     </description>
 </definition>
