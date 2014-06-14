@@ -34,11 +34,19 @@ class Createdxf
 	static void drawCircle(QString,double,double,double,int);
 	static void drawArc(QString,double x,double y,double rad,double startAngle,double endAngle,int color);
 	static void drawDonut(QString,double,double,double,int);
-	static void drawRectangle(QString,double,double,double,double,int);
-	static void drawLine(QString,double,double,double,double,int);
+
+	static void drawArcEllipse (const QString &file_path, qreal x, qreal y, qreal w, qreal h, qreal startAngle, qreal spanAngle, qreal hotspot_x, qreal hotspot_y, qreal rotation_angle, const int &colorcode);
+
+	static void drawEllipse (const QString &filepath, const QRectF &rect, const int &colorcode);
+
+	static void drawRectangle(const QString &filepath,double,double,double,double,const int &colorcode);
+	static void drawRectangle(const QString &filepath, const QRectF &rect, const int &colorcode);
+
+	static void drawLine(const QString &filapath,double,double,double,double, const int &clorcode);
+	static void drawLine(const QString &filepath, const QLineF &line,const int &colorcode);
+
 	static void drawText(QString,QString,double,double,double,double,int);
-	static void drawTextAligned(QString fileName, QString text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign, int colour,
-					 bool leftAlign = false, float scale = 0);
+	static void drawTextAligned(QString fileName, QString text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign, int colour, bool leftAlign = false, float scale = 0);
 
 	static const double sheetWidth;
 	static const double sheetHeight;

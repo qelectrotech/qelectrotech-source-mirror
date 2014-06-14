@@ -50,11 +50,7 @@ Diagram* QetGraphicsItem::diagram() const{
 void QetGraphicsItem::setPos(const QPointF &p) {
 	if (p == pos() || !is_movable_) return;
 	if (scene() && snap_to_grid_) {
-		// arrondit l'abscisse a 10 px pres
-		int p_x = qRound(p.x() / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
-		// arrondit l'ordonnee a 10 px pres
-		int p_y = qRound(p.y() / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
-		QGraphicsItem::setPos(p_x, p_y);
+		QGraphicsItem::setPos(Diagram::snapToGrid(p));
 		emit positionChange(pos());
 	} else QGraphicsItem::setPos(p);
 }

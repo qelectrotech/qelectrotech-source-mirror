@@ -65,7 +65,7 @@ class DiagramView : public QGraphicsView {
 	QPoint next_position_;
 	QPointF center_view_;
 	QImage image_to_add_;
-	QetShapeItem *newItem;
+	QetShapeItem *newShapeItem;
 	QPointF rubber_band_origin;
 	
 	// methods

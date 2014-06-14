@@ -418,9 +418,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	if (!list_shapes.isEmpty()) {
 		QDomElement shapes = document.createElement("shapes");
 		foreach (QetShapeItem *dii, list_shapes) {
-			dii ->setWritingXml(true);
 			shapes.appendChild(dii -> toXml(document));
-			dii ->setWritingXml(false);
 		}
 		racine.appendChild(shapes);
 	}
@@ -1104,6 +1102,20 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
 	diagram_position.setPosition(pos);
 	
 	return(diagram_position);
+}
+
+/**
+ * @brief Diagram::snapToGrid
+ * Return a nearest snap point of p
+ * @param p point to find the nearest snaped point
+ * @return
+ */
+QPointF Diagram::snapToGrid(const QPointF &p) {
+	// arrondit l'abscisse a 10 px pres
+	int p_x = qRound(p.x() / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
+	// arrondit l'ordonnee a 10 px pres
+	int p_y = qRound(p.y() / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
+	return (QPointF(p_x, p_y));
 }
 
 /**

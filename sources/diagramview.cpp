@@ -50,7 +50,7 @@
 	@param diagram Schema a afficher ; si diagram vaut 0, un nouveau Diagram est utilise
 	@param parent Le QWidget parent de cette vue de schema
 */
-DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent), newItem(0){
+DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent), newShapeItem(nullptr){
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	setInteractive(true);
 	current_behavior = noAction;
@@ -462,16 +462,16 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 				current_behavior = noAction;
 				break;
 			case addingLine:
-				newItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Line, false);
-				scene -> addItem(newItem);
+				newShapeItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Line);
+				scene -> addItem(newShapeItem);
 				break;
 			case addingRectangle:
-				newItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Rectangle);
-				scene -> addItem(newItem);
+				newShapeItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Rectangle);
+				scene -> addItem(newShapeItem);
 				break;
 			case addingEllipse:
-				newItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Ellipse);
-				scene -> addItem(newItem);
+				newShapeItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Ellipse);
+				scene -> addItem(newShapeItem);
 				break;
 			case dragView:
 				current_behavior = noAction;
@@ -504,12 +504,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e) {
 		return;
 	}
 	else if (e -> buttons() == Qt::LeftButton && current_behavior & addingShape) {
-		QRectF rec = QRectF(rubber_band_origin, mapToScene(e->pos())).normalized();
-		scene ->removeItem(newItem);
-		newItem -> setBoundingRect(rec);
-		if (current_behavior == addingLine)
-			newItem -> setLineAngle(rubber_band_origin != rec.topLeft() && rubber_band_origin != rec.bottomRight());
-		scene ->addItem(newItem);
+		newShapeItem->setP2(mapToScene(e->pos()));
 	}
 	else QGraphicsView::mouseMoveEvent(e);
 }
@@ -524,10 +519,8 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
 		return;
 	}
 	else if (current_behavior & addingShape) {
-		newItem -> setFullyBuilt(true);
 		// place it to the good position with an undo command
-		scene -> undoStack().push(new AddShapeCommand(scene, newItem, rubber_band_origin));
-		adjustSceneRect();
+		scene -> undoStack().push(new AddShapeCommand(scene, newShapeItem, rubber_band_origin));
 		emit(itemAdded());
 		current_behavior = noAction;
 	}

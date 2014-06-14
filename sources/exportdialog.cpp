@@ -421,7 +421,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	QList<DiagramImageItem *> list_images;
 	QList<QLineF *> list_lines;
 	QList<QRectF *> list_rectangles;
-	QList<QRectF *> list_ellipses;
+	//QList<QRectF *> list_ellipses;
+	QList <QetShapeItem *> list_shapes;
 
 	DiagramFolioList *ptr;
 	if (ptr = dynamic_cast<DiagramFolioList *>(diagram)) {
@@ -482,45 +483,12 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
 				list_images << dii;
 			} else if (QetShapeItem *dii = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
-				if (dii -> getType() == QetShapeItem::Line && dii -> getLine()) {
-					list_lines << dii -> getLine();
-				} else if (dii -> getType() == QetShapeItem::Rectangle && dii -> getRectangle()) {
-					list_rectangles << dii -> getRectangle();
-				} else if (dii -> getEllipse()){
-					 list_ellipses << dii -> getEllipse();
-				}
+				list_shapes << dii;
 			}
 		}
 	}
 
-	//draw lines
-	foreach(QLineF *line, list_lines) {
-		qreal x1 = (line -> p1().x()) * Createdxf::xScale;
-		qreal y1 = Createdxf::sheetHeight - (line -> p1().y()) * Createdxf::yScale;
-		qreal x2 = (line -> p2().x()) * Createdxf::xScale;
-		qreal y2 = Createdxf::sheetHeight - (line -> p2().y()) * Createdxf::yScale;
-		Createdxf::drawLine(file_path, x1, y1, x2, y2, 0);
-	}
-
-	//draw rectangles
-	foreach(QRectF *rect, list_rectangles) {
-		qreal x1 = (rect -> bottomLeft().x()) * Createdxf::xScale;
-		qreal y1 = Createdxf::sheetHeight - (rect -> bottomLeft().y()) * Createdxf::yScale;
-		qreal w = rect -> width() * Createdxf::xScale;
-		qreal h = rect -> height() * Createdxf::yScale;
-		Createdxf::drawRectangle(file_path, x1, y1, w, h, 0);
-	}
-
-	//draw independent ellipses
-	foreach(QRectF *rect, list_ellipses) {
-		qreal x1 = (rect -> topLeft().x()) * Createdxf::xScale;
-		qreal y1 = Createdxf::sheetHeight - (rect -> topLeft().y()) * Createdxf::yScale;
-		qreal w = rect -> width() * Createdxf::xScale;
-		qreal h = rect -> height() * Createdxf::yScale;
-		qreal startAngle = 0;
-		qreal spanAngle = 360;
-		drawDxfArcEllipse(file_path, x1, y1, w, h, startAngle, spanAngle, 0, 0, 0);
-	}
+	foreach (QetShapeItem *qsi, list_shapes) qsi->toDXF(file_path);
 
 	//Draw elements
 	foreach(Element *elmt, list_elements) {
@@ -647,7 +615,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			qreal h = arc -> at(3) * Createdxf::yScale;
 			qreal startAngle = arc -> at(4);
 			qreal spanAngle = arc -> at(5);
-			drawDxfArcEllipse(file_path, x, y, w, h, startAngle, spanAngle, hotspot_x, hotspot_y, rotation_angle);
+			Createdxf::drawArcEllipse(file_path, x, y, w, h, startAngle, spanAngle, hotspot_x, hotspot_y, rotation_angle, 0);
 		}
 	}
 
@@ -717,132 +685,6 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		}
 	}
 	Createdxf::dxfEnd(file_path);
-}
-
-// approximate the ellipse to parts of circles.
-void ExportDialog::drawDxfArcEllipse(QString file_path, qreal x, qreal y, qreal w, qreal h, qreal startAngle,
-									 qreal spanAngle, qreal hotspot_x, qreal hotspot_y, qreal rotation_angle) {
-
-	// vector of parts of arc (stored as a pair of startAngle and spanAngle) for each quadrant.
-	QVector< QPair<qreal,qreal> > arc_parts_vector;
-
-	if (spanAngle > 0) {
-		qreal start = startAngle;
-		qreal span;
-		int i;
-		for ( i = startAngle; i < startAngle+spanAngle; i++ ) {
-			int absolute_theta = (i > 0) ? i : -i;
-			if (absolute_theta == 0 || absolute_theta == 90 ||
-				absolute_theta == 180 || absolute_theta == 270 ||
-				absolute_theta == 360) {
-				span = i - start;
-				QPair<qreal, qreal> newPart(start,span);
-				arc_parts_vector.push_back(newPart);
-				start = i;
-			}
-		}
-		if (start != i) {
-			span = i - start;
-			QPair<qreal, qreal> newPart(start,span);
-			arc_parts_vector.push_back(newPart);
-		}
-	} else {
-		qreal start = startAngle;
-		qreal span;
-		int i;
-		for ( i = startAngle; i > startAngle+spanAngle; i-- ) {
-			int absolute_theta = (i > 0) ? i : -i;
-			if (absolute_theta == 0 || absolute_theta == 90 ||
-				absolute_theta == 180 || absolute_theta == 270 ||
-				absolute_theta == 360) {
-				span = i - start;
-				QPair<qreal, qreal> newPart(start,span);
-				arc_parts_vector.push_back(newPart);
-				start = i;
-			}
-		}
-		if (start != i) {
-			span = i - start;
-			QPair<qreal, qreal> newPart(start,span);
-			arc_parts_vector.push_back(newPart);
-		}
-	}
-
-	for (int i = 0; i < arc_parts_vector.size(); i++) {
-
-		QPair<qreal,qreal> arc = arc_parts_vector[i];
-		if (arc.second == 0)
-			continue;
-		qreal arc_startAngle = arc.first * 3.142/180;
-		qreal arc_spanAngle = arc.second * 3.142/180;
-
-		qreal a = w/2;
-		qreal b = h/2;
-
-		qreal x1 = x + w/2 + a*cos(arc_startAngle);
-		qreal y1 = y - h/2 + b*sin(arc_startAngle);
-		qreal x2 = x + w/2 + a*cos(arc_startAngle + arc_spanAngle);
-		qreal y2 = y - h/2 + b*sin(arc_startAngle + arc_spanAngle);
-
-
-		qreal mid_ellipse_x = x + w/2 + a*cos(arc_startAngle + arc_spanAngle/2);
-		qreal mid_ellipse_y = y - h/2 + b*sin(arc_startAngle + arc_spanAngle/2);
-		qreal mid_line_x = (x1+x2)/2;
-		qreal mid_line_y = (y1+y2)/2;
-
-		qreal x3 = (mid_ellipse_x + mid_line_x)/2;
-		qreal y3 = (mid_ellipse_y + mid_line_y)/2;
-
-		// find circumcenter of points (x1,y1), (x3,y3) and (x2,y2)
-		qreal a1 = 2*x2 - 2*x1;
-		qreal b1 = 2*y2 - 2*y1;
-		qreal c1 = x1*x1 + y1*y1 - x2*x2 - y2*y2;
-
-		qreal a2 = 2*x3 - 2*x1;
-		qreal b2 = 2*y3 - 2*y1;
-		qreal c2 = x1*x1 + y1*y1 - x3*x3 - y3*y3;
-
-		qreal center_x = (b1*c2 - b2*c1) / (a1*b2 - a2*b1);
-		qreal center_y = (a1*c2 - a2*c1) / (b1*a2 - b2*a1);
-
-		qreal radius = sqrt( (x1-center_x)*(x1-center_x) + (y1-center_y)*(y1-center_y) );
-
-		if ( x1 > center_x && y1 > center_y )
-			arc_startAngle = asin( (y1 - center_y) / radius );
-		else if ( x1 > center_x && y1 < center_y )
-			arc_startAngle = 3.142*2 - asin( (center_y - y1) / radius );
-		else if ( x1 < center_x && y1 < center_y )
-			arc_startAngle = 3.142 + asin( (center_y - y1) / radius );
-		else
-			arc_startAngle = 3.142 - asin( (y1 - center_y) / radius );
-
-		qreal arc_endAngle;
-
-		if ( x2 > center_x && y2 > center_y )
-			arc_endAngle = asin( (y2 - center_y) / radius );
-		else if ( x2 > center_x && y2 < center_y )
-			arc_endAngle = 3.142*2 - asin( (center_y - y2) / radius );
-		else if ( x2 < center_x && y2 < center_y )
-			arc_endAngle = 3.142 + asin( (center_y - y2) / radius );
-		else
-			arc_endAngle = 3.142 - asin( (y2 - center_y) / radius );
-
-		if (arc_endAngle < arc_startAngle) {
-			qreal temp = arc_startAngle;
-			arc_startAngle = arc_endAngle;
-			arc_endAngle = temp;
-		}
-
-		QPointF transformed_point = rotation_transformed(center_x, center_y, hotspot_x, hotspot_y, rotation_angle);
-		center_x = transformed_point.x();
-		center_y = transformed_point.y();
-		arc_endAngle *= 180/3.142;
-		arc_startAngle *= 180/3.142;
-		arc_endAngle -= rotation_angle;
-		arc_startAngle -= rotation_angle;
-
-		Createdxf::drawArc(file_path, center_x, center_y, radius, arc_startAngle, arc_endAngle, 0);
-	}
 }
 
 void ExportDialog::fillRow(QString file_path, const QRectF &row_rect, QString author, QString title,

@@ -20,6 +20,7 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QString>
+#include "exportdialog.h"
 
 
 const double Createdxf::sheetWidth = 4000;
@@ -286,7 +287,7 @@ void Createdxf::drawCircle (QString fileName, double radius, double x, double y,
 
 
 /* draw line in DXF Format*/
-void Createdxf::drawLine (QString fileName, double x1, double y1, double x2, double y2, int colour)
+void Createdxf::drawLine (const QString &fileName, double x1, double y1, double x2, double y2,const int &colour)
 {
     if (!fileName.isEmpty()) {
         QFile file(fileName);
@@ -322,8 +323,161 @@ void Createdxf::drawLine (QString fileName, double x1, double y1, double x2, dou
     }
 }
 
+/**
+ * @brief Createdxf::drawLine
+ * Conveniance function to draw line
+ * @param filepath
+ * @param line
+ * @param colorcode
+ */
+void Createdxf::drawLine(const QString &filepath, const QLineF &line, const int &colorcode) {
+	drawLine(filepath, line.p1().x() * xScale,
+					   sheetHeight - (line.p1().y() * yScale),
+					   line.p2().x() * xScale,
+					   sheetHeight - (line.p2().y() * yScale),
+					   colorcode);
+}
+
+void Createdxf::drawArcEllipse(const QString &file_path, qreal x, qreal y, qreal w, qreal h, qreal startAngle, qreal spanAngle, qreal hotspot_x, qreal hotspot_y, qreal rotation_angle, const int &colorcode) {
+	// vector of parts of arc (stored as a pair of startAngle and spanAngle) for each quadrant.
+	QVector< QPair<qreal,qreal> > arc_parts_vector;
+
+	if (spanAngle > 0) {
+		qreal start = startAngle;
+		qreal span;
+		int i;
+		for ( i = startAngle; i < startAngle+spanAngle; i++ ) {
+			int absolute_theta = (i > 0) ? i : -i;
+			if (absolute_theta == 0 || absolute_theta == 90 ||
+				absolute_theta == 180 || absolute_theta == 270 ||
+				absolute_theta == 360) {
+				span = i - start;
+				QPair<qreal, qreal> newPart(start,span);
+				arc_parts_vector.push_back(newPart);
+				start = i;
+			}
+		}
+		if (start != i) {
+			span = i - start;
+			QPair<qreal, qreal> newPart(start,span);
+			arc_parts_vector.push_back(newPart);
+		}
+	} else {
+		qreal start = startAngle;
+		qreal span;
+		int i;
+		for ( i = startAngle; i > startAngle+spanAngle; i-- ) {
+			int absolute_theta = (i > 0) ? i : -i;
+			if (absolute_theta == 0 || absolute_theta == 90 ||
+				absolute_theta == 180 || absolute_theta == 270 ||
+				absolute_theta == 360) {
+				span = i - start;
+				QPair<qreal, qreal> newPart(start,span);
+				arc_parts_vector.push_back(newPart);
+				start = i;
+			}
+		}
+		if (start != i) {
+			span = i - start;
+			QPair<qreal, qreal> newPart(start,span);
+			arc_parts_vector.push_back(newPart);
+		}
+	}
+
+	for (int i = 0; i < arc_parts_vector.size(); i++) {
+
+		QPair<qreal,qreal> arc = arc_parts_vector[i];
+		if (arc.second == 0)
+			continue;
+		qreal arc_startAngle = arc.first * 3.142/180;
+		qreal arc_spanAngle = arc.second * 3.142/180;
+
+		qreal a = w/2;
+		qreal b = h/2;
+
+		qreal x1 = x + w/2 + a*cos(arc_startAngle);
+		qreal y1 = y - h/2 + b*sin(arc_startAngle);
+		qreal x2 = x + w/2 + a*cos(arc_startAngle + arc_spanAngle);
+		qreal y2 = y - h/2 + b*sin(arc_startAngle + arc_spanAngle);
+
+
+		qreal mid_ellipse_x = x + w/2 + a*cos(arc_startAngle + arc_spanAngle/2);
+		qreal mid_ellipse_y = y - h/2 + b*sin(arc_startAngle + arc_spanAngle/2);
+		qreal mid_line_x = (x1+x2)/2;
+		qreal mid_line_y = (y1+y2)/2;
+
+		qreal x3 = (mid_ellipse_x + mid_line_x)/2;
+		qreal y3 = (mid_ellipse_y + mid_line_y)/2;
+
+		// find circumcenter of points (x1,y1), (x3,y3) and (x2,y2)
+		qreal a1 = 2*x2 - 2*x1;
+		qreal b1 = 2*y2 - 2*y1;
+		qreal c1 = x1*x1 + y1*y1 - x2*x2 - y2*y2;
+
+		qreal a2 = 2*x3 - 2*x1;
+		qreal b2 = 2*y3 - 2*y1;
+		qreal c2 = x1*x1 + y1*y1 - x3*x3 - y3*y3;
+
+		qreal center_x = (b1*c2 - b2*c1) / (a1*b2 - a2*b1);
+		qreal center_y = (a1*c2 - a2*c1) / (b1*a2 - b2*a1);
+
+		qreal radius = sqrt( (x1-center_x)*(x1-center_x) + (y1-center_y)*(y1-center_y) );
+
+		if ( x1 > center_x && y1 > center_y )
+			arc_startAngle = asin( (y1 - center_y) / radius );
+		else if ( x1 > center_x && y1 < center_y )
+			arc_startAngle = 3.142*2 - asin( (center_y - y1) / radius );
+		else if ( x1 < center_x && y1 < center_y )
+			arc_startAngle = 3.142 + asin( (center_y - y1) / radius );
+		else
+			arc_startAngle = 3.142 - asin( (y1 - center_y) / radius );
+
+		qreal arc_endAngle;
+
+		if ( x2 > center_x && y2 > center_y )
+			arc_endAngle = asin( (y2 - center_y) / radius );
+		else if ( x2 > center_x && y2 < center_y )
+			arc_endAngle = 3.142*2 - asin( (center_y - y2) / radius );
+		else if ( x2 < center_x && y2 < center_y )
+			arc_endAngle = 3.142 + asin( (center_y - y2) / radius );
+		else
+			arc_endAngle = 3.142 - asin( (y2 - center_y) / radius );
+
+		if (arc_endAngle < arc_startAngle) {
+			qreal temp = arc_startAngle;
+			arc_startAngle = arc_endAngle;
+			arc_endAngle = temp;
+		}
+
+		QPointF transformed_point = ExportDialog::rotation_transformed(center_x, center_y, hotspot_x, hotspot_y, rotation_angle);
+		center_x = transformed_point.x();
+		center_y = transformed_point.y();
+		arc_endAngle *= 180/3.142;
+		arc_startAngle *= 180/3.142;
+		arc_endAngle -= rotation_angle;
+		arc_startAngle -= rotation_angle;
+
+		drawArc(file_path, center_x, center_y, radius, arc_startAngle, arc_endAngle, colorcode);
+	}
+}
+
+/**
+ * @brief Createdxf::drawEllipse
+ * Conveniance function for draw ellipse
+ * @param filepath
+ * @param rect
+ * @param colorcode
+ */
+void Createdxf::drawEllipse(const QString &filepath, const QRectF &rect, const int &colorcode) {
+	drawArcEllipse(filepath, rect.topLeft().x() * xScale,
+						  sheetHeight - (rect.topLeft().y() * yScale),
+						  rect.width() * xScale,
+						  rect.height() * yScale,
+						  0, 360, 0, 0, 0, colorcode);
+}
+
 /* draw rectangle in dxf format */
-void Createdxf::drawRectangle (QString fileName, double x1, double y1, double width, double height, int colour)
+void Createdxf::drawRectangle (const QString &fileName, double x1, double y1, double width, double height, const int &colour)
 {
     if (!fileName.isEmpty()) {
         QFile file(fileName);
@@ -411,6 +565,21 @@ void Createdxf::drawRectangle (QString fileName, double x1, double y1, double wi
             file.close();
         }
     }
+}
+
+/**
+ * @brief Createdxf::drawRectangle
+ * Conveniance function for draw rectangle
+ * @param filepath
+ * @param rect
+ * @param color
+ */
+void Createdxf::drawRectangle(const QString &filepath, const QRectF &rect, const int &colorcode) {
+	drawRectangle(filepath, rect.bottomLeft().x() * xScale,
+							sheetHeight - (rect.bottomLeft().y() * yScale),
+							rect.width() * xScale,
+							rect.height() * yScale,
+							colorcode);
 }
 
 /* draw arc in dx format */

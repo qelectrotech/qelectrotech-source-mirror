@@ -147,7 +147,7 @@ void DiagramImageItem::editProperty() {
 		cb.isChecked() ? is_movable_=false : is_movable_=true;
 		qreal new_scale = slider.value();
 		new_scale /= factor_range;
-		if (scale_ != new_scale) diagram()->undoStack().push(new ImageResizerCommand(this, scale_, new_scale));
+		if (scale_ != new_scale) diagram()->undoStack().push(new ItemResizerCommand(this, scale_, new_scale, tr("une image")));
 	}
 	//...or not
 	else setScale(scale_);

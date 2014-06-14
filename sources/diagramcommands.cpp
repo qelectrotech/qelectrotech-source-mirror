@@ -497,10 +497,10 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	// deplace les shapes
 	foreach (QetShapeItem *dsi, content_to_move.shapes) {
 		dsi -> setPos(dsi -> pos() + actual_movement);
-		QRectF rec = dsi -> boundingRect();
+		/*QRectF rec = dsi -> boundingRect();
 		rec.translate(actual_movement);
 		dsi -> setBoundingRect(rec);
-		dsi -> setPos(dsi -> pos() - actual_movement);
+		dsi -> setPos(dsi -> pos() - actual_movement);*/
 	}
 }
 
@@ -1161,41 +1161,46 @@ void ChangeSeveralConductorsPropertiesCommand::redo() {
 }
 
 /**
- * @brief ImageResizerCommand::ImageResizerCommand Constructor
- * @param image
- * @param old_ old size of image
- * @param new_ new size of image
- * @param parent undocommand parent
+ * @brief ItemResizerCommand::ItemResizerCommand
+ * Change the size of @qgi
+ * @param qgi item to resize
+ * @param old_ old size
+ * @param new_ new size
+ * @param text text to display
+ * @param parent undo parent
  */
-ImageResizerCommand::ImageResizerCommand (DiagramImageItem *image, qreal &old_, qreal &new_, QUndoCommand *parent):
+ItemResizerCommand::ItemResizerCommand (QetGraphicsItem *qgi, qreal &old_, qreal &new_, const QString &text, QUndoCommand *parent):
 	QUndoCommand(parent),
-	image_(image),
-	old_size (old_),
-	new_size (new_),
-	diagram(image->diagram())
+	m_qgi    ( qgi			  ),
+	old_size ( old_			  ),
+	new_size ( new_			  ),
+	diagram  ( qgi->diagram() ),
+	m_text   ( text			  )
 {}
 
 /**
- * @brief ImageResizerCommand::~ImageResizerCommand destructor
+ * @brief ItemResizerCommand::~ItemResizerCommand
  */
-ImageResizerCommand::~ImageResizerCommand() {}
+ItemResizerCommand::~ItemResizerCommand() {}
 
 /**
- * @brief ImageResizerCommand::undo set the old size
+ * @brief ItemResizerCommand::undo
  */
-void ImageResizerCommand::undo() {
+void ItemResizerCommand::undo() {
 	diagram -> showMe();
-	image_ -> setScale(old_size);
+	m_qgi -> setScale(old_size);
+	QUndoCommand::undo();
 }
 
 /**
- * @brief ImageResizerCommand::redo set the new size
+ * @brief ItemResizerCommand::redo
  */
-void ImageResizerCommand::redo() {
+void ItemResizerCommand::redo() {
 	diagram -> showMe();
-	if (old_size<new_size) setText(QObject::tr("Agrandire une image \340 %1 %").arg(new_size*100));
-	else setText(QObject::tr("R\351duire une image \340 %1 %").arg(new_size*100));
-	image_ -> setScale(new_size);
+	if (old_size<new_size) setText(QObject::tr("Agrandire %1 \340 %2 %").arg(m_text).arg(new_size*100));
+	else setText(QObject::tr("R\351duire %1 \340 %2 %").arg(m_text).arg(new_size*100));
+	m_qgi -> setScale(new_size);
+	QUndoCommand::redo();
 }
 
 
@@ -1212,7 +1217,9 @@ ChangeShapeStyleCommand::ChangeShapeStyleCommand(QetShapeItem *shape, Qt::PenSty
 	old_style (old_),
 	new_style (new_),
 	diagram(shape->diagram())
-{}
+{
+	setText(QObject::tr("Changer le style d'une shape"));
+}
 
 /**
  * @brief ChangeShapeStyleCommand::~ChangeShapeStyleCommand destructor
@@ -1236,49 +1243,6 @@ void ChangeShapeStyleCommand::redo() {
 	diagram -> showMe();
 	QUndoCommand::redo();
 }
-
-
-
-/**
- * @brief ChangeShapeScaleCommand::ChangeShapeScaleCommand Constructor
- * @param shape
- * @param scale_factor
- * @param parent undocommand parent
- */
-ChangeShapeScaleCommand::ChangeShapeScaleCommand(QetShapeItem *shape, double scale_factor, QUndoCommand *parent):
-	QUndoCommand(parent),
-	shape_(shape),
-	factor (scale_factor),
-	diagram(shape->diagram())
-{}
-
-/**
- * @brief ChangeShapeScaleCommand::~ChangeShapeScaleCommand destructor
- */
-ChangeShapeScaleCommand::~ChangeShapeScaleCommand() {}
-
-/**
- * @brief ChangeShapeScaleCommand::undo set the old size
- */
-void ChangeShapeScaleCommand::undo() {
-	diagram -> removeItem(shape_);
-	shape_ -> scale(1/factor);
-	diagram -> addItem(shape_);
-	diagram -> showMe();
-	QUndoCommand::undo();
-}
-
-/**
- * @brief ChangeShapeScaleCommand::redo set the new size
- */
-void ChangeShapeScaleCommand::redo() {
-	diagram -> removeItem(shape_);
-	shape_ -> scale(factor);
-	diagram -> addItem(shape_);
-	diagram -> showMe();
-	QUndoCommand::redo();
-}
-
 
 /**
  * @brief LinkElementsCommand::LinkElementsCommand

@@ -1,66 +1,78 @@
+/*
+	Copyright 2006-2014 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
 #ifndef QETSHAPEITEM_H
 #define QETSHAPEITEM_H
 
 #include "qetgraphicsitem.h"
 
+/**
+ * @brief The QetShapeItem class
+ * this class is used to draw a basic shape (line, rectangle, ellipse)
+ * into a diagram, that can be saved to .qet file.
+ */
 class QetShapeItem : public QetGraphicsItem
 {
+	Q_OBJECT
+
 	public:
+	Q_ENUMS(ShapeType)
+	enum ShapeType {Line	  =0,
+					Rectangle =1,
+					Ellipse	  =2};
 
-	enum ShapeType {
-		Line = 0,
-		Rectangle,
-		Ellipse
-	};
-
-	QetShapeItem(QPointF, QPointF = QPointF(0,0), ShapeType = Line, bool lineAngle = false, QGraphicsItem *parent = 0);
-	virtual ~QetShapeItem();
-
-	// attributes
-	public:
 	enum { Type = UserType + 1008 };
 
-	// methods
-	public:
+	QetShapeItem(QPointF, QPointF = QPointF(0,0), ShapeType = Line, QGraphicsItem *parent = 0);
+	virtual ~QetShapeItem();
+
 	/**
-		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
-		QetShapeItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a QetShapeItem
 		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 
+	///METHODS
 	void setStyle(Qt::PenStyle);
-	Qt::PenStyle getStyle() const		{ return _shapeStyle;	   }
-	ShapeType getType()		const		{ return _shapeType;	   }
-	void setBoundingRect(QRectF rec)	{ _boundingRect = rec;	   }
-	void setLineAngle(bool lineAngle)	{ _lineAngle = lineAngle;  }
-	void setFullyBuilt(bool isBuilt);
-	QLineF *getLine();
-	QRectF *getRectangle();
-	QRectF *getEllipse();
-	virtual bool fromXml(const QDomElement &);
-	virtual QDomElement toXml(QDomDocument &document) const;
-	void setWritingXml(bool writing)	{ _writingXml = writing;   }
-	virtual void editProperty();
-	QRectF boundingRect() const;
-	void scale(double factor);
 
-	private:
-	ShapeType    _shapeType;
-	Qt::PenStyle _shapeStyle;
-	QRectF       _boundingRect;
-	bool		 _lineAngle;  // false if line from topleft corner to bottomright corner
-							  // and true if line from topright corner to bottomleft corner
-	bool		 _isFullyBuilt;
-	QPointF		 _origMousePress;
-	bool		 _writingXml;
+	virtual bool	    fromXml (const QDomElement &);
+	virtual QDomElement toXml	(QDomDocument &document) const;
+	virtual bool		toDXF	(const QString &filepath);
+
+	virtual void editProperty();
+
+	void setP2(QPointF P2);
+
+	QRectF boundingRect() const;
+	QPainterPath shape()  const;
 
 	protected:
-	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent *e);
-	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *e);
-	QPainterPath shape() const;
+	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
+	private:
+	void changeGraphicsItem (const ShapeType &newtype);
+
+	private slots:
+	void previewScale(int factor);
+
+	///ATTRIBUTES
+	private:
+	ShapeType    m_shapeType;
+	Qt::PenStyle m_shapeStyle;
+	QPointF		 m_P1, m_P2;
 };
-
 #endif // QETSHAPEITEM_H

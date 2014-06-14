@@ -598,11 +598,11 @@ class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
 	Diagram *diagram;
 };
 
-class ImageResizerCommand : public QUndoCommand {
+class ItemResizerCommand : public QUndoCommand {
 	//constructor and destructor
 	public:
-	ImageResizerCommand (DiagramImageItem *image, qreal &old_, qreal &new_, QUndoCommand *parent = 0);
-	virtual ~ImageResizerCommand();
+	ItemResizerCommand (QetGraphicsItem *qgi, qreal &old_, qreal &new_,const QString  &text, QUndoCommand *parent = 0);
+	virtual ~ItemResizerCommand();
 
 	//methods
 	public:
@@ -611,9 +611,10 @@ class ImageResizerCommand : public QUndoCommand {
 
 	//attributes
 	private:
-	DiagramImageItem *image_;
+	QetGraphicsItem *m_qgi;
 	qreal old_size, new_size;
 	Diagram *diagram;
+	QString m_text;
 };
 
 
@@ -632,24 +633,6 @@ class ChangeShapeStyleCommand : public QUndoCommand {
 	private:
 	QetShapeItem *shape_;
 	Qt::PenStyle old_style, new_style;
-	Diagram *diagram;
-};
-
-class ChangeShapeScaleCommand : public QUndoCommand {
-	//constructor and destructor
-	public:
-	ChangeShapeScaleCommand (QetShapeItem *shape, double scale_factor, QUndoCommand *parent = 0);
-	virtual ~ChangeShapeScaleCommand();
-
-	//methods
-	public:
-	virtual void undo();
-	virtual void redo();
-
-	//attributes
-	private:
-	QetShapeItem *shape_;
-	double factor;
 	Diagram *diagram;
 };
 

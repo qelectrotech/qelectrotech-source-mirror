@@ -156,6 +156,7 @@ class Diagram : public QGraphicsScene {
 	void setBorderOptions(BorderOptions);
 	BorderOptions borderOptions();
 	DiagramPosition convertPosition(const QPointF &);
+	static QPointF snapToGrid(const QPointF &p);
 	
 	bool drawTerminals() const;
 	void setDrawTerminals(bool);
