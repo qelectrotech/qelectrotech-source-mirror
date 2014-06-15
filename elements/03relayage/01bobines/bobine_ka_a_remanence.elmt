@@ -1,8 +1,7 @@
 <definition width="90" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
     <names>
         <name lang="ar">ملف KA  بمحتفظ مغناطيسي</name>
-        <name lang="de">Remanenzrelais&#xd;
-</name>
+        <name lang="de">Remanenzrelais&#xd;</name>
         <name lang="ru">Обмотка</name>
         <name lang="el">Πηνίο με μανδάλωση</name>
         <name lang="en">Coil</name>
@@ -12,6 +11,7 @@
         <name lang="es">Bobina KA de remanencia</name>
         <name lang="cs">Cívka přetrvávajícího relé</name>
         <name lang="nl">spoel remanent</name>
+        <name lang="be">Spoel KA remanent</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

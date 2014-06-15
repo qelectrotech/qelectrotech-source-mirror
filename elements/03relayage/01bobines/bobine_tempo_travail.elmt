@@ -4,13 +4,14 @@
         <name lang="de">elektromechanischer Antrieb mit Ansprechverzögerung</name>
         <name lang="ru">Обмотка</name>
         <name lang="el">Πηνίο χρονικού, καθυστέρησης ενεργοποίησης</name>
-        <name lang="en">Coil</name>
+        <name lang="en">Coil with on delay</name>
         <name lang="it">Bobina di relè ritardato</name>
         <name lang="fr">Bobine tempo travail</name>
         <name lang="pl">Cewka przekaźnika działająca ze zwłoką przy wzbudzeniu</name>
         <name lang="es">Bobina de trabajo temporizado</name>
         <name lang="cs">Cívka relé - práce</name>
         <name lang="nl">mechanisch met opkomvertraging</name>
+        <name lang="nl">Spoel met inschakel vertraging</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

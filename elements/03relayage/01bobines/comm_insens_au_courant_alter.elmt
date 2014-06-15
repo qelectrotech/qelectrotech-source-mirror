@@ -8,6 +8,7 @@
         <name lang="es"> relé insensible a la CA</name>
         <name lang="nl">relais ongevoelig voor wisselspanning</name>
         <name lang="el">Ρελέ με αντοχή σε AC</name>
+        <name lang="be">Relais ongevoelig voor AC (wisselspanning)</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

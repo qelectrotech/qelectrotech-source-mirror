@@ -8,6 +8,7 @@
         <name lang="cs">Relé střídavého proudu</name>
         <name lang="es">Relé de CA</name>
         <name lang="nl">Relais voor wisselspanning</name>
+        <name lang="be">Relais AC (wisselspanning)</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
