@@ -623,7 +623,7 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="150"/>
         <source>une image</source>
-        <translation type="unfinished"></translation>
+        <translation>een afbeelding</translation>
     </message>
 </context>
 <context>
@@ -3792,7 +3792,7 @@ Reinig het project</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="211"/>
         <source>Annoter les schémas</source>
         <translatorcomment>annoter =van (verklarende) noten voorzien</translatorcomment>
-        <translation>Het schema van aantekeningen voorzien</translation>
+        <translation>Schema draad nummering</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
@@ -4025,7 +4025,7 @@ Selecteert elementen</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
         <source>Ajouter</source>
-        <translation type="unfinished"></translation>
+        <translation>toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
@@ -4405,7 +4405,7 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Éditer les propriétées de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>de element eigenschappen bewerken</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="201"/>
@@ -5574,17 +5574,17 @@ Opslaan naar een bestand</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1200"/>
         <source>Agrandire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Vergroten %1 naar %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1201"/>
         <source>Réduire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Verklein van %1 naar %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1221"/>
         <source>Changer le style d&apos;une shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Verander de stijl van een vorm</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1263"/>
@@ -6031,7 +6031,7 @@ Opnieuw instellen van de  afmetingen</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="243"/>
         <source>Type de trait</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lijn type</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="248"/>
@@ -6086,7 +6086,7 @@ Opnieuw instellen van de  afmetingen</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="238"/>
         <source>Éditer les propriétés d&apos;une shape, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>De eigenschappen van een vorm bewerken</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="260"/>
@@ -6097,7 +6097,7 @@ Positie vergrendelen</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="306"/>
         <source>une shape</source>
-        <translation type="unfinished"></translation>
+        <translation>een vorm</translation>
     </message>
 </context>
 <context>
