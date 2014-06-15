@@ -1,4 +1,4 @@
-<definition width="220" version="0.4" hotspot_x="98" hotspot_y="43" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="220" version="0.4" hotspot_x="98" hotspot_y="43" height="80" type="element" ic="true" orientation="dyyy" link_type="master">
     <names>
         <name lang="nl">UPS</name>
         <name lang="be">UPS</name>
@@ -44,7 +44,7 @@
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.5" x1="-40.5" y2="18.5" x2="-80.5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:blue" y1="0" x1="30" y2="9" x2="30"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-0.239243" x1="-30" y2="-9.77916" x2="-30"/>
-        <input x="92" y="-24.5" size="9" rotate="true" text="T_" tagg="label"/>
+        <input x="92" y="-24.5" size="9" rotate="true" text="_" tagg="label"/>
         <rect width="40" x="-20" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="-90" y="-10" orientation="w"/>
         <terminal x="-90" y="10" orientation="w"/>

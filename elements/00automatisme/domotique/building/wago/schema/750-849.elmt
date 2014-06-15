@@ -1,4 +1,4 @@
-<definition width="290" version="0.4" hotspot_x="82" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy">
+<definition width="290" version="0.4" hotspot_x="82" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
     <names>
         <name lang="ar">Wago 750-849</name>
         <name lang="de">Wago 750-849</name>

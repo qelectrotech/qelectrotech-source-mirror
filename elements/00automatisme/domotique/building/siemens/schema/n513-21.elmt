@@ -1,4 +1,4 @@
-<definition width="440" version="0.4" hotspot_x="43" hotspot_y="42" height="100" type="element" ic="true" orientation="dyyy">
+<definition width="440" version="0.4" hotspot_x="43" hotspot_y="42" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
     <names>
         <name lang="nl">N513/21 uitbreidingsmodule op N513/11</name>
         <name lang="be">N513/21 uitbreidingsmodule op N513/11</name>

@@ -1,4 +1,4 @@
-<definition width="430" version="0.4" hotspot_x="38" hotspot_y="42" height="100" type="element" ic="true" orientation="dyyy">
+<definition width="430" version="0.4" hotspot_x="38" hotspot_y="42" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
     <names>
         <name lang="nl">N513/11 basis module (max 4 uitbreidingen)</name>
         <name lang="be">N513/11 basis module (max 4 uitbreidingen)</name>
