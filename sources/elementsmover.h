@@ -23,7 +23,15 @@ class ConductorTextItem;
 class Diagram;
 /**
 	This class manages the interactive movement of different items (elements,
-	conductors, text items) on a particular diagram.
+	conductors, text items etc...) on a particular diagram.
+
+	A movement work in 3 steps:
+	1: beginMovement    -> init a new movement
+	2: continueMovement -> continue the curent movement
+	3: endMovement      -> finish the curent movement
+
+	A movement in progress must finish befor start a new movement. We can know if
+	element mover is ready for a new movement by calling isReady().
 */
 class ElementsMover {
 	// constructors, destructor

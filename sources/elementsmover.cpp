@@ -25,8 +25,8 @@
 #include "qetgraphicsitem/diagramimageitem.h"
 
 /**
-	Constructeur
-*/
+ * @brief ElementsMover::ElementsMover Constructor
+ */
 ElementsMover::ElementsMover() :
 	movement_running_(false),
 	current_movement_(),
@@ -38,50 +38,46 @@ ElementsMover::ElementsMover() :
 }
 
 /**
-	Destructeur
-*/
+ * @brief ElementsMover::~ElementsMover Destructor
+ */
 ElementsMover::~ElementsMover() {
 }
 
 /**
-	@return true si ce gestionnaire de deplacement est pret a etre utilise,
-	false sinon. Un gestionnaire de deplacement est pret a etre utilise a partir
-	du moment ou le mouvement precedemment gere n'est plus en cours.
-*/
+ * @brief ElementsMover::isReady
+ * @return True if this element mover is ready to be used.
+ * A element mover is ready when the previous managed movement is finish.
+ */
 bool ElementsMover::isReady() const {
 	return(!movement_running_);
 }
 
 /**
-	Demarre un nouveau mouvement d'element
-	@param diagram Schema sur lequel se deroule le deplacement
-	@param driver_item Item deplace par la souris et ne necessitant donc pas
-	d'etre deplace lors des appels a continueMovement.
-	@return le nombre d'items concernes par le deplacement, ou -1 si le
-	mouvement n'a pas ete initie
-*/
+ * @brief ElementsMover::beginMovement
+ * Start a new movement
+ * @param diagram diagram where the movement is applied
+ * @param driver_item item moved by mouse and don't be moved by Element mover
+ * @return the numbers of items to be moved or -1 if movement can't be init.
+ */
 int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item) {
-	// il ne doit pas y avoir de mouvement en cours
+	// They must be no movement in progress
 	if (movement_running_) return(-1);
 	
-	// on s'assure que l'on dispose d'un schema pour travailler
+	// Be sure we have diagram to work
 	if (!diagram) return(-1);
 	diagram_ = diagram;
 	
-	// on prend en compte le driver_item
+	// Take count of driver item
 	movement_driver_ = driver_item;
 	
-	// au debut du mouvement, le deplacement est nul
+	// At the beginning of movement, move is NULL
 	current_movement_ = QPointF(0.0, 0.0);
 	
-	// on stocke dans cet objet les items concernes par le deplacement
 	moved_content_ = diagram -> selectedContent();
 	
-	// on a egalement besoin de retenir la position des champs de textes
-	// rattaches a un conducteur (ConductorTextItem) si cette position a ete
-	// personnalisee.
-	// ceci n'est necessaire que pour les conducteurs dont le trajet sera
-	// recalcule a cause du mouvement
+	/* We need to save the position of conductor text (ConductorTextItem)
+	 * if the position is defined by user
+	 * It's needed only for conductors whose the path will be recalculated */
 	foreach(Conductor *conductor, moved_content_.conductorsToUpdate) {
 		if (ConductorTextItem *text_item = conductor -> textItem()) {
 			if (text_item -> wasMovedByUser()) {
@@ -92,82 +88,62 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item) {
 			}
 		}
 	}
-	// on s'assure qu'il y a quelque chose a deplacer
+
 	if (!moved_content_.count()) return(-1);
 	
-	// a ce stade, on dispose de toutes les informations necessaires pour
-	// prendre en compte les mouvements
-	
-	// il y a desormais un mouvement en cours
+	/* At this point, we've got all info to manage movement.
+	 * There is now a move in progress */
 	movement_running_ = true;
 	
 	return(moved_content_.count());
 }
 
 /**
-	Ajoute un mouvement au deplacement en cours. Cette methode
-	@param movement mouvement a ajouter au deplacement en cours
-*/
+ * @brief ElementsMover::continueMovement
+ * Add a move to the current movement.
+ * @param movement movement to applied
+ */
 void ElementsMover::continueMovement(const QPointF &movement) {
-	// un mouvement doit avoir ete initie
-	if (!movement_running_) return;
-	
-	// inutile de faire quoi que ce soit s'il n'y a pas eu de mouvement concret
-	if (movement.isNull()) return;
-	
-	// prise en compte du mouvement
+	if (!movement_running_ || movement.isNull()) return;
+
 	current_movement_ += movement;
-	
-	// deplace les elements selectionnes
-	foreach(Element *element, moved_content_.elements) {
-		if (movement_driver_ && element == movement_driver_) continue;
-		element -> setPos(element -> pos() + movement);
+
+	//Move every movable item, except conductor
+	typedef DiagramContent dc;
+	foreach (QGraphicsItem *qgi, moved_content_.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes)) {
+		if (qgi == movement_driver_) continue;
+		qgi -> setPos(qgi->pos() + movement);
 	}
 	
-	// deplace certains conducteurs
+	// Move some conductors
 	foreach(Conductor *conductor, moved_content_.conductorsToMove) {
 		conductor -> setPos(conductor -> pos() + movement);
 	}
 	
-	// recalcule les autres conducteurs
+	// Recalcul the path of other conductors
 	foreach(Conductor *conductor, moved_content_.conductorsToUpdate) {
 		conductor -> updatePath();
 	}
-	
-	// deplace les champs de texte
-	foreach(IndependentTextItem *text_field, moved_content_.textFields) {
-		if (movement_driver_ && text_field == movement_driver_) continue;
-		text_field -> setPos(text_field -> pos() + movement);
-	}
-
-	//deplace les images
-	foreach(DiagramImageItem *dii, moved_content_.images) {
-		if (movement_driver_ && dii == movement_driver_) continue;
-		dii -> setPos(dii -> pos() + movement);
-	}
-
 }
 
 /**
-	Termine le deplacement en creant un objet d'annulation et en l'ajoutant a
-	la QUndoStack du schema concerne.
-	@see Diagram::undoStack()
-*/
+ * @brief ElementsMover::endMovement
+ * Ended the current movement by creating an undo added to the undostack of the diagram.
+ */
 void ElementsMover::endMovement() {
-	// un mouvement doit avoir ete initie
+	// A movement must be inited
 	if (!movement_running_) return;
 	
-	// inutile de faire quoi que ce soit s'il n'y a pas eu de mouvement concret
+	// No need of an undo command if the movement is NULL
 	if (!current_movement_.isNull()) {
-		// cree un objet d'annulation pour le mouvement ainsi realise
+		// Create an undo object for this new movement
 		MoveElementsCommand *undo_object = new MoveElementsCommand(
 			diagram_,
 			moved_content_,
 			current_movement_
 		);
 		
-		// ajoute les informations necessaires au repositionnement des champs
-		// de textes des conducteurs
+		// Add info needed to the position of conductors texte
 		foreach(ConductorTextItem *text_item, updated_conductors_text_pos_.keys()) {
 			if (text_item -> pos() != updated_conductors_text_pos_[text_item]) {
 				undo_object -> addConductorTextItemMovement(
@@ -181,6 +157,6 @@ void ElementsMover::endMovement() {
 		diagram_ -> undoStack().push(undo_object);
 	}
 	
-	// il n'y a plus de mouvement en cours
+	// There is no movement in progress now
 	movement_running_ = false;
 }

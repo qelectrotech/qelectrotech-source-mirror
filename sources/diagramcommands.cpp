@@ -401,12 +401,13 @@ CutDiagramCommand::~CutDiagramCommand() {
 }
 
 /**
-	Constructeur
-	@param dia Schema sur lequel on deplace des elements
-	@param diagram_content Contenu a deplacer
-	@param m translation subie par les elements
-	@param parent QUndoCommand parent
-*/
+ * @brief MoveElementsCommand::MoveElementsCommand
+ * Constructor
+ * @param dia diagram
+ * @param diagram_content diagram content (contain all items to be moved)
+ * @param m movement to applied
+ * @param parent parent undo command
+ */
 MoveElementsCommand::MoveElementsCommand(
 	Diagram *dia,
 	const DiagramContent &diagram_content,
@@ -438,17 +439,24 @@ MoveElementsCommand::MoveElementsCommand(
 	);
 }
 
-/// Destructeur
+/**
+ * @brief MoveElementsCommand::~MoveElementsCommand
+ * Destructor
+ */
 MoveElementsCommand::~MoveElementsCommand() {
 }
 
-/// annule le deplacement
+/**
+ * @brief MoveElementsCommand::undo
+ */
 void MoveElementsCommand::undo() {
 	diagram -> showMe();
 	move(-movement);
 }
 
-/// refait le deplacement
+/**
+ * @brief MoveElementsCommand::redo
+ */
 void MoveElementsCommand::redo() {
 	diagram -> showMe();
 	if (first_redo) first_redo = false;
@@ -456,51 +464,26 @@ void MoveElementsCommand::redo() {
 }
 
 /**
-	deplace les elements et conducteurs
-	@param actual_movement translation a effectuer sur les elements et conducteurs
-*/
+ * @brief MoveElementsCommand::move
+ * Move item and conductor to @actual_movement
+ * @param actual_movement movement to be applied
+ */
 void MoveElementsCommand::move(const QPointF &actual_movement) {
-	// deplace les elements
-	foreach(Element *element, content_to_move.elements) {
-		element -> setPos(element -> pos() + actual_movement);
+	typedef DiagramContent dc;
+
+	//Move every movable item, except conductor
+	foreach (QGraphicsItem *qgi, content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes)) {
+		qgi -> setPos(qgi->pos() + actual_movement);
 	}
 	
-	// deplace certains conducteurs
+	// Move some conductors
 	foreach(Conductor *conductor, content_to_move.conductorsToMove) {
 		conductor -> setPos(conductor -> pos() + actual_movement);
 	}
 	
-	// recalcule les autres conducteurs
+	// Recalcul the path of other conductor
 	foreach(Conductor *conductor, content_to_move.conductorsToUpdate) {
 		conductor -> updatePath();
-	}
-	
-	// repositionne les textes des conducteurs mis a jour
-	foreach(ConductorTextItem *text_item, moved_conductor_texts_.keys()) {
-		// determine s'il s'agit d'un undo ou d'un redo
-		qreal coef = actual_movement.x() / movement.x();
-		// -1 : undo, 1 : redo
-		QPointF desired_pos = coef > 0 ? moved_conductor_texts_[text_item].second : moved_conductor_texts_[text_item].first;
-		text_item -> setPos(desired_pos);
-	}
-	
-	// deplace les textes
-	foreach(DiagramTextItem *text, content_to_move.textFields) {
-		text -> setPos(text -> pos() + actual_movement);
-	}
-
-	// deplace les images
-	foreach (DiagramImageItem *dii, content_to_move.images) {
-		dii -> setPos(dii -> pos() + actual_movement);
-	}
-
-	// deplace les shapes
-	foreach (QetShapeItem *dsi, content_to_move.shapes) {
-		dsi -> setPos(dsi -> pos() + actual_movement);
-		/*QRectF rec = dsi -> boundingRect();
-		rec.translate(actual_movement);
-		dsi -> setBoundingRect(rec);
-		dsi -> setPos(dsi -> pos() - actual_movement);*/
 	}
 }
 
