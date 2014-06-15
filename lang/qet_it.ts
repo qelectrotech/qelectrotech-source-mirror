@@ -624,7 +624,7 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="150"/>
         <source>une image</source>
-        <translation type="unfinished"></translation>
+        <translation>una immagine</translation>
     </message>
 </context>
 <context>
@@ -4014,7 +4014,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
         <source>Ajouter</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserisci</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
@@ -4392,7 +4392,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Éditer les propriétées de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifica le proprietà dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="201"/>
@@ -5560,17 +5560,17 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1200"/>
         <source>Agrandire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingrandisci di %1 a %2 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1201"/>
         <source>Réduire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Riduci da %1 a %2 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1221"/>
         <source>Changer le style d&apos;une shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambia lo stile di una forma</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1263"/>
@@ -6015,7 +6015,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="243"/>
         <source>Type de trait</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tipo di linea</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="248"/>
@@ -6070,7 +6070,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="238"/>
         <source>Éditer les propriétés d&apos;une shape, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modifica delle proprietà di una forma, Zona </translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="260"/>
@@ -6080,7 +6080,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="306"/>
         <source>une shape</source>
-        <translation type="unfinished"></translation>
+        <translation>una forma</translation>
     </message>
 </context>
 <context>
