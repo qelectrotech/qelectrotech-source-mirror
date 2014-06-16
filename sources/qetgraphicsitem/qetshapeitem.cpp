@@ -142,19 +142,18 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 {
 	Q_UNUSED(option); Q_UNUSED(widget);
 
-	// Disable Antialiasing
-	painter -> setRenderHint(QPainter::Antialiasing, false);
-
-	// TODO for printing line type on Windows
-#ifdef Q_WS_WIN
-	pen.setWidthF(1);
-#endif
-
-
 	QPen pen;
 	pen.setStyle(m_shapeStyle);
 	if (isSelected()) pen.setColor(Qt::red);
+	// Disable Antialiasing
+	painter -> setRenderHint(QPainter::Antialiasing, false);
 	painter->setPen(pen);
+
+	// TODO for printing line type on Windows
+
+#ifdef Q_WS_WIN
+	pen.setWidthF(1);
+#endif
 
 	switch (m_shapeType) {
 		case Line:
