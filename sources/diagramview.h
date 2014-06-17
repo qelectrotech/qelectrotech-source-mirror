@@ -46,8 +46,10 @@ class DiagramView : public QGraphicsView {
 				   addingLine	   =8,
 				   addingRectangle =16,
 				   addingEllipse   =32,
-				   addingShape	   =56,
-				   dragView        =64};
+				   adding2PShape   =56,
+				   addingPolyline  =64,
+				   addingShape	   =120,
+				   dragView        =124};
 
 	private:
 	DiagramView(const DiagramView &);
@@ -67,6 +69,7 @@ class DiagramView : public QGraphicsView {
 	QImage image_to_add_;
 	QetShapeItem *newShapeItem;
 	QPointF rubber_band_origin;
+	bool m_polyline_added;
 	
 	// methods
 	public:
@@ -88,6 +91,7 @@ class DiagramView : public QGraphicsView {
 	void addLine();
 	void addRectangle();
 	void addEllipse();
+	void addPolyline();
 	void editImage();
 	void editShape();
 	IndependentTextItem *addDiagramTextAtPos(const QPointF &, const QString &text = 0);

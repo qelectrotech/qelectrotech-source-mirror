@@ -19,6 +19,7 @@
 #include "diagramcommands.h"
 #include "createdxf.h"
 #include "diagram.h"
+#include "qet.h"
 
 
 /**
@@ -37,6 +38,7 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_P2 (Diagram::snapToGrid(p2))
 
 {
+	if (type == Polyline) m_polygon << m_P1 << m_P2;
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 }
 
@@ -57,11 +59,10 @@ void QetShapeItem::setStyle(Qt::PenStyle newStyle)
 
 /**
  * @brief QetShapeItem::scale
- * Preview the scale of this item to factor
+ * Scale this item by (factor / 100 ).
  * @param factor
  */
 void QetShapeItem::previewScale(int factor) {
-	setTransformOriginPoint(boundingRect().center());
 	if (factor >= 1 && factor <= 200) {
 		qreal new_scale = factor;
 		new_scale /= 100;
@@ -71,14 +72,34 @@ void QetShapeItem::previewScale(int factor) {
 
 /**
  * @brief QetShapeItem::setP2
- * Set the second point of this item
+ * Set the second point of this item.
+ * If this item is a polyline,
+ * the last point of the polyline is replaced by P2.
  * @param P2
  */
 void QetShapeItem::setP2(QPointF P2) {
 	P2 = Diagram::snapToGrid(P2);
-	if (P2 == m_P2) return;
+
+	if (m_shapeType == Polyline) {
+		prepareGeometryChange();
+		m_polygon.replace(m_polygon.size()-1, P2);
+	}
+	else {
+		if (P2 == m_P2) return;
+		prepareGeometryChange();
+		m_P2 = P2;
+	}
+	setTransformOriginPoint(boundingRect().center());
+}
+
+/**
+ * @brief QetShapeItem::setNextPoint
+ * Add a new point to the curent polygon
+ * @param P the new point.
+ */
+void QetShapeItem::setNextPoint(QPointF P) {
 	prepareGeometryChange();
-	m_P2 = P2;
+	m_polygon.append(Diagram::snapToGrid(P));
 	setTransformOriginPoint(boundingRect().center());
 }
 
@@ -87,6 +108,9 @@ void QetShapeItem::setP2(QPointF P2) {
  * @return the bounding rect of this item
  */
 QRectF QetShapeItem::boundingRect() const {
+	if (m_shapeType == Polyline)
+		return ( shape().boundingRect());
+
 	QRectF b(m_P1, m_P2);
 	return b.normalized();
 }
@@ -112,6 +136,9 @@ QPainterPath QetShapeItem::shape() const {
 		case Ellipse:
 			path.addEllipse(boundingRect());
 			break;
+		case Polyline:
+			path.addPolygon(m_polygon);
+			break;
 		default:
 			Q_ASSERT(false);
 			break;
@@ -129,6 +156,7 @@ void QetShapeItem::changeGraphicsItem(const ShapeType &newtype) {
 	if (newtype == m_shapeType) return;
 	prepareGeometryChange();
 	m_shapeType = newtype;
+	setTransformOriginPoint(boundingRect().center());
 }
 
 /**
@@ -145,8 +173,6 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 	QPen pen;
 	pen.setStyle(m_shapeStyle);
 	if (isSelected()) pen.setColor(Qt::red);
-	// Disable Antialiasing
-	painter -> setRenderHint(QPainter::Antialiasing, false);
 	painter->setPen(pen);
 
 	// TODO for printing line type on Windows
@@ -165,6 +191,9 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		case Ellipse:
 			painter->drawEllipse(boundingRect());
 			break;
+		case Polyline:
+			painter->drawPolyline(m_polygon);
+			break;
 	}
 }
 
@@ -178,10 +207,19 @@ bool QetShapeItem::fromXml(const QDomElement &e) {
 	if (e.tagName() != "shape") return (false);
 
 	m_shapeStyle = Qt::PenStyle(e.attribute("style","0").toInt());
-	m_P1.setX(e.attribute("x1", 0).toDouble());
-	m_P1.setY(e.attribute("y1", 0).toDouble());
-	m_P2.setX(e.attribute("x2", 0).toDouble());
-	m_P2.setY(e.attribute("y2", 0).toDouble());
+
+	if (e.attribute("type", "0").toInt() != Polyline) {
+		m_P1.setX(e.attribute("x1", 0).toDouble());
+		m_P1.setY(e.attribute("y1", 0).toDouble());
+		m_P2.setX(e.attribute("x2", 0).toDouble());
+		m_P2.setY(e.attribute("y2", 0).toDouble());
+	}
+
+	else {
+		foreach(QDomElement de, QET::findInDomElement(e, "points", "point")) {
+			m_polygon << QPointF(de.attribute("x", 0).toDouble(), de.attribute("y", 0).toDouble());
+		}
+	}
 
 	changeGraphicsItem(QetShapeItem::ShapeType(e.attribute("type","0").toInt()));
 	return (true);
@@ -199,10 +237,25 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const {
 	//write some attribute
 	result.setAttribute("type", QString::number(m_shapeType));
 	result.setAttribute("style", QString::number(m_shapeStyle));
-	result.setAttribute("x1", mapToScene(m_P1).x());
-	result.setAttribute("y1", mapToScene(m_P1).y());
-	result.setAttribute("x2", mapToScene(m_P2).x());
-	result.setAttribute("y2", mapToScene(m_P2).y());
+
+	if (m_shapeType != Polyline) {
+		result.setAttribute("x1", mapToScene(m_P1).x());
+		result.setAttribute("y1", mapToScene(m_P1).y());
+		result.setAttribute("x2", mapToScene(m_P2).x());
+		result.setAttribute("y2", mapToScene(m_P2).y());
+	}
+
+	else {
+		QDomElement points = document.createElement("points");
+		foreach(QPointF p, m_polygon) {
+			QDomElement point = document.createElement("point");
+			QPointF pf = mapToScene(p);
+			point.setAttribute("x", pf.x());
+			point.setAttribute("y", pf.y());
+			points.appendChild(point);
+		}
+		result.appendChild(points);
+	}
 
 	return(result);
 }

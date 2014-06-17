@@ -54,6 +54,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(pare
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	setInteractive(true);
 	current_behavior = noAction;
+	m_polyline_added = false;
 
 	QString whatsthis = tr(
 		"Ceci est la zone dans laquelle vous concevez vos sch\351mas en y ajoutant"
@@ -448,7 +449,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 		fresh_focus_in_ = false;
 	}
 
-	if (isInteractive() && !scene -> isReadOnly() && e -> buttons() == Qt::LeftButton) {
+	if (isInteractive() && !scene -> isReadOnly() && e -> button() == Qt::LeftButton) {
 		switch (current_behavior) {
 			case noAction:
 				QGraphicsView::mousePressEvent(e);
@@ -473,6 +474,19 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 				newShapeItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Ellipse);
 				scene -> addItem(newShapeItem);
 				break;
+			case addingPolyline:
+				if (!m_polyline_added) {
+					setContextMenuPolicy(Qt::NoContextMenu); //< for finish the polyline we must to right click,
+															 //  We disable the context menu
+					newShapeItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Polyline);
+					scene -> addItem(newShapeItem);
+					m_polyline_added = true;
+				} else {
+					newShapeItem->setNextPoint(Diagram::snapToGrid(rubber_band_origin)); //< this point is ok for pos
+					newShapeItem->setNextPoint(Diagram::snapToGrid(rubber_band_origin)); //< Add new point for next segment. the pos of this point
+																						 //  can be changed by calling QetShapItem::setP2()
+				}
+				break;
 			case dragView:
 				current_behavior = noAction;
 				QGraphicsView::mousePressEvent(e);
@@ -482,13 +496,13 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 				break;
 		}
 	}
-	// workaround for drag view with hold wheel click and drag mouse
-	// see also mouseMoveEvent() and mouseReleaseEvent()
-	else if (e -> buttons() == Qt::MidButton) {
+
+	//Start drag view when hold the middle button
+	else if (e -> button() == Qt::MidButton) {
 		setCursor(Qt::ClosedHandCursor);
-		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
-		return;
+		center_view_ = mapToScene(this -> viewport() -> rect().center());
 	}
+
 	else QGraphicsView::mousePressEvent(e);
 }
 
@@ -497,15 +511,19 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
  * Manage the event move mouse
  */
 void DiagramView::mouseMoveEvent(QMouseEvent *e) {
-	if ((e -> buttons() & Qt::MidButton) == Qt::MidButton) {
+	//Drag the view
+	if (e -> buttons() == Qt::MidButton) {
 		QPointF move = rubber_band_origin - mapToScene(e -> pos());
 		this -> centerOn(center_view_ + move);
-		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
-		return;
+		center_view_ = mapToScene( this -> viewport() -> rect().center() );
 	}
-	else if (e -> buttons() == Qt::LeftButton && current_behavior & addingShape) {
+
+	//Add point P2 to the curent shape
+	else if ( (e -> buttons() == Qt::LeftButton && current_behavior &addingShape) ||
+			  (current_behavior == addingPolyline && m_polyline_added) ) {
 		newShapeItem->setP2(mapToScene(e->pos()));
 	}
+
 	else QGraphicsView::mouseMoveEvent(e);
 }
 
@@ -514,16 +532,28 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e) {
  * Manage event release click mouse
  */
 void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
-	if (e -> button() == Qt::MidButton) {
-		setCursor(Qt::ArrowCursor);
-		return;
-	}
-	else if (current_behavior & addingShape) {
+	//Stop drag view
+	if (e -> button() == Qt::MidButton) setCursor(Qt::ArrowCursor);
+
+	// Add shape define by 2 points
+	else if (current_behavior & adding2PShape) {
 		// place it to the good position with an undo command
 		scene -> undoStack().push(new AddShapeCommand(scene, newShapeItem, rubber_band_origin));
 		emit(itemAdded());
 		current_behavior = noAction;
 	}
+
+	// Add polyline shape
+	else if (e -> button() == Qt::RightButton && current_behavior == addingPolyline) {
+		newShapeItem->setP2(rubber_band_origin);
+		scene -> undoStack().push(new AddShapeCommand(scene, newShapeItem, newShapeItem->scenePos()));
+		emit(itemAdded());
+		current_behavior = noAction;
+		m_polyline_added = false;
+		setContextMenuPolicy(Qt::DefaultContextMenu); //< the polyline is finish,
+													  //  We make context menu available
+	}
+
 	else QGraphicsView::mouseReleaseEvent(e);
 }
 
@@ -1243,6 +1273,13 @@ void DiagramView::addRectangle() {
 */
 void DiagramView::addEllipse() {
 	current_behavior = addingEllipse;
+}
+
+/**
+ * @brief DiagramView::addPolyline
+ */
+void DiagramView::addPolyline() {
+	current_behavior = addingPolyline;
 }
 
 /**

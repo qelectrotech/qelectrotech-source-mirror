@@ -33,7 +33,8 @@ class QetShapeItem : public QetGraphicsItem
 	Q_ENUMS(ShapeType)
 	enum ShapeType {Line	  =0,
 					Rectangle =1,
-					Ellipse	  =2};
+					Ellipse	  =2,
+					Polyline  =3 };
 
 	enum { Type = UserType + 1008 };
 
@@ -55,7 +56,8 @@ class QetShapeItem : public QetGraphicsItem
 
 	virtual void editProperty();
 
-	void setP2(QPointF P2);
+	void setP2		  (QPointF P2);
+	void setNextPoint (QPointF P);
 
 	QRectF boundingRect() const;
 	QPainterPath shape()  const;
@@ -74,5 +76,6 @@ class QetShapeItem : public QetGraphicsItem
 	ShapeType    m_shapeType;
 	Qt::PenStyle m_shapeStyle;
 	QPointF		 m_P1, m_P2;
+	QPolygonF	 m_polygon;
 };
 #endif // QETSHAPEITEM_H

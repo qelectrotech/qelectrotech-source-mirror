@@ -348,12 +348,14 @@ void QETDiagramEditor::actions() {
 	QAction *add_line	   = m_add_item_actions_group.addAction( QET::Icons::PartLine,      tr("Ajouter une liaison mecanique") );
 	QAction *add_rectangle = m_add_item_actions_group.addAction( QET::Icons::PartRectangle, tr("Ajouter une zone rectangle")	);
 	QAction *add_ellipse   = m_add_item_actions_group.addAction( QET::Icons::PartEllipse,   tr("Ajouter une zone ellipse")		);
+	QAction *add_polyline  = m_add_item_actions_group.addAction( QET::Icons::PartPolygon,	tr("Ajouter une zone polyligne")    );
 
 	connect( add_text,      SIGNAL( triggered() ), this, SLOT( slot_addText()      ) );
 	connect( add_image,     SIGNAL( triggered() ), this, SLOT( slot_addImage()     ) );
 	connect( add_line,      SIGNAL( triggered() ), this, SLOT( slot_addLine()      ) );
 	connect( add_rectangle, SIGNAL( triggered() ), this, SLOT( slot_addRectangle() ) );
 	connect( add_ellipse,   SIGNAL( triggered() ), this, SLOT( slot_addEllipse()   ) );
+	connect( add_polyline,  SIGNAL( triggered() ), this, SLOT( slot_addPolyline()  ) );
 
 	foreach(QAction *action, m_add_item_actions_group.actions()) action->setCheckable(true);
 
@@ -1555,6 +1557,14 @@ void QETDiagramEditor::slot_addRectangle() {
  */
 void QETDiagramEditor::slot_addEllipse() {
 	if (DiagramView *dv = currentDiagram()) dv -> addEllipse();
+}
+
+/**
+ * @brief QETDiagramEditor::slot_addPolyline
+ * add polyline to current diagram
+ */
+void QETDiagramEditor::slot_addPolyline() {
+	if (DiagramView *dv = currentDiagram()) dv -> addPolyline();
 }
 
 /**

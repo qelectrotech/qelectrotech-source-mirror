@@ -132,6 +132,7 @@ class QETDiagramEditor : public QETMainWindow {
 	void slot_addLine();
 	void slot_addRectangle();
 	void slot_addEllipse();
+	void slot_addPolyline();
 	void slot_editSelection();
 	void setWindowedMode();
 	void setTabbedMode();
