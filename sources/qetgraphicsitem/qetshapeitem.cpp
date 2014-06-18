@@ -173,6 +173,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 	QPen pen;
 	pen.setStyle(m_shapeStyle);
 	if (isSelected()) pen.setColor(Qt::red);
+	painter -> setRenderHint(QPainter::Antialiasing, false);
 	painter->setPen(pen);
 
 	// TODO for printing line type on Windows
