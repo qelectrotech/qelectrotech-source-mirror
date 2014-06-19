@@ -950,7 +950,7 @@ void QETApp::useSystemPalette(bool use) {
 	// reapplique les feuilles de style
 	setStyleSheet(
 		"QAbstractScrollArea#mdiarea {"
-		"	background-color:#D5D2D1;"
+		"	background-color -> setPalette(initial_palette_);"
 		"	background-image: url(':/ico/mdiarea_bg.png');"
 		"	background-repeat: no-repeat;"
 		"	background-position: center middle;"
