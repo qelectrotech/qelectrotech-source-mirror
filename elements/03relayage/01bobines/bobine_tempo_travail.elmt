@@ -11,7 +11,7 @@
         <name lang="es">Bobina de trabajo temporizado</name>
         <name lang="cs">Cívka relé - práce</name>
         <name lang="nl">mechanisch met opkomvertraging</name>
-        <name lang="nl">Spoel met inschakel vertraging</name>
+        <name lang="be">Spoel met inschakel vertraging</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
