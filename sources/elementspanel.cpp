@@ -79,7 +79,7 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	qp.setColor(QPalette::Base,            Qt::white);
 	qp.setColor(QPalette::AlternateBase,   QColor("#e8e8e8"));
 	qp.setColor(QPalette::Highlight,       QColor("#678db2"));
-	qp.setColor(QPalette::HighlightedText, Qt::white);
+	qp.setColor(QPalette::HighlightedText, Qt::red);
 	setPalette(qp);
 	
 	// we handle double click on items ourselves
@@ -98,9 +98,6 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	
 	setElementsCache(QETApp::collectionCache());
 	
-	// Init ptr of item treeview
-	it_ = 0;
-	it_prev_ = 0;
 }
 
 /**
@@ -135,11 +132,6 @@ bool ElementsPanel::selectedItemIsWritable() const {
 	@return la collection, la categorie ou l'element selectionne(e)
 */
 ElementsCollectionItem *ElementsPanel::selectedItem() const {
-	// change color of drag element
-	if(it_prev_) {
-		it_prev_->setBackgroundColor(0, Qt::white);
-	}
-	
 	ElementsLocation selected_location(selectedElementLocation());
 	if (!selected_location.isNull()) {
 		return(QETApp::collectionItem(selected_location));
@@ -208,19 +200,8 @@ void ElementsPanel::dragMoveEvent(QDragMoveEvent *e) {
 	}
 #endif
 	
-	// Change color on mouse over
-	it_ = itemAt(e -> pos());
-	if(it_prev_){
-		if(it_ != it_prev_){
-			it_->setBackgroundColor(0, Qt::cyan);
-			it_prev_->setBackgroundColor(0, Qt::white);
-			it_prev_ = it_;
-		}
-	}
-	else it_prev_ = it_;
-	
 	e -> accept();
-	/// @todo mettre en valeur le lieu de depot 
+	/// @todo mettre en valeur le lieu de depot
 }
 
 /**
