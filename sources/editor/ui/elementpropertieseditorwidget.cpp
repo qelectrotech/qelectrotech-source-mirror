@@ -45,11 +45,22 @@ ElementPropertiesEditorWidget::~ElementPropertiesEditorWidget()
 	delete ui;
 }
 
+/**
+ * @brief ElementPropertiesEditorWidget::upDateInterface
+ * Update the interface with the curent value
+ */
 void ElementPropertiesEditorWidget::upDateInterface() {
 	ui -> m_base_type_cb -> setCurrentIndex (ui -> m_base_type_cb -> findData (QVariant(m_basic_type)));
-	ui -> m_state_cb	 -> setCurrentIndex (ui -> m_state_cb	  -> findData (m_dc["state"].toString()));
-	ui -> m_type_cb		 -> setCurrentIndex (ui -> m_type_cb	  -> findData (m_dc["type"].toString()));
-	ui -> m_number_ctc	 -> setValue		(m_dc["number"].toInt());
+
+	if (m_basic_type == "slave") {
+		ui -> m_state_cb	 -> setCurrentIndex (ui -> m_state_cb	  -> findData (m_dc["state"].toString()));
+		ui -> m_type_cb		 -> setCurrentIndex (ui -> m_type_cb	  -> findData (m_dc["type"].toString()));
+		ui -> m_number_ctc	 -> setValue		(m_dc["number"].toInt());
+	}
+
+	else if (m_basic_type == "master") {
+		ui -> m_master_type_cb -> setCurrentIndex (ui -> m_master_type_cb -> findData (m_dc["type"]));
+	}
 
 	on_m_base_type_cb_currentIndexChanged(ui->m_base_type_cb->currentIndex());
 }
@@ -72,6 +83,10 @@ void ElementPropertiesEditorWidget::setUpInterface() {
 	ui -> m_type_cb  -> addItem(tr("Puissance"),			QVariant("power"));
 	ui -> m_type_cb  -> addItem(tr("Temporis\351 travail"), QVariant("delayOn"));
 	ui -> m_type_cb  -> addItem(tr("Temporis\351 repos"),	QVariant("delayOff"));
+
+	//Master option
+	ui -> m_master_type_cb -> addItem(tr("Bobine"),				  QVariant("coil"));
+	ui -> m_master_type_cb -> addItem(tr("Organe de protection"), QVariant("protection"));
 }
 
 /**
@@ -86,6 +101,9 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		m_dc.addValue("type",	ui -> m_type_cb  -> itemData(ui -> m_type_cb  -> currentIndex()));
 		m_dc.addValue("number", QVariant(ui -> m_number_ctc -> value()));
 	}
+	else if(m_basic_type == "master") {
+		m_dc.addValue("type", ui -> m_master_type_cb -> itemData(ui -> m_master_type_cb -> currentIndex()));
+	}
 	this->close();
 }
 
@@ -95,10 +113,11 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
  */
 void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int index)
 {
-	if (ui->m_base_type_cb->itemData(index).toString() == "slave") {
-		ui->m_slave_gb->setEnabled(true);
-	} else {
-		ui->m_slave_gb->setEnabled(false);
-	}
+	bool slave = false , master = false;
 
+	if		(ui -> m_base_type_cb -> itemData(index).toString() == "slave")  slave  = true;
+	else if (ui -> m_base_type_cb -> itemData(index).toString() == "master") master = true;
+
+	ui -> m_slave_gb  -> setVisible(slave);
+	ui -> m_master_gb -> setVisible(master);
 }

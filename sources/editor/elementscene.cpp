@@ -424,7 +424,7 @@ const QDomDocument ElementScene::toXml(bool all_parts) {
 	// noms de l'element
 	root.appendChild(_names.toXml(xml_document));
 
-	if (m_elmt_type == "slave") {
+	if (m_elmt_type == "slave" || m_elmt_type == "master") {
 		QDomElement kindInfo = xml_document.createElement("kindInformations");
 		m_elmt_kindInfo.toXml(kindInfo, "kindInformation");
 		root.appendChild(kindInfo);
@@ -722,8 +722,12 @@ void ElementScene::slot_editAuthorInformations() {
  * Open dialog to edit the element properties
  */
 void  ElementScene::slot_editProperties() {
-	ElementPropertiesEditorWidget epew(m_elmt_type, m_elmt_kindInfo);
+	QString type = m_elmt_type;
+	DiagramContext info = m_elmt_kindInfo;
+	ElementPropertiesEditorWidget epew(type, info);
 	epew.exec();
+	if (type != m_elmt_type || info != m_elmt_kindInfo)
+		undoStack().push(new ChangePropertiesCommand(this, type, info));
 }
 
 /**

@@ -38,6 +38,7 @@ class PartArc;
 	border due to its fixed size and its hotspot.
 */
 class ElementScene : public QGraphicsScene {
+	friend class ChangePropertiesCommand;
 	Q_OBJECT
 	
 	// enum

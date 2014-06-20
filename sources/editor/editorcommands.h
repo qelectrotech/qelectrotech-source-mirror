@@ -349,4 +349,17 @@ class ScalePartsCommand : public ElementEditionCommand {
 	bool first_redo;
 };
 
+class ChangePropertiesCommand : public ElementEditionCommand {
+	public:
+	ChangePropertiesCommand (ElementScene *scene, QString type, DiagramContext info, QUndoCommand *parent=0);
+	virtual ~ChangePropertiesCommand ();
+
+	virtual void undo();
+	virtual void redo();
+
+	private:
+	QList <QString> m_type;
+	QList <DiagramContext> m_info;
+};
+
 #endif

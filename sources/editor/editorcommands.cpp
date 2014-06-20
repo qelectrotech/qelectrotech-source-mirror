@@ -660,3 +660,33 @@ void ScalePartsCommand::adjustText() {
 		setText(QObject::tr("redimensionnement de %1 primitives", "undo caption -- %1 always > 1").arg(scaled_primitives_.count()));
 	}
 }
+/**
+ * @brief ChangePropertiesCommand::ChangePropertiesCommand
+ * Change the properties of the drawed element
+ * @param scene: scene to belong the property
+ * @param type: new type of element.
+ * @param context: new info about type.
+ * @param parent: parent undo
+ */
+ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, QString type, DiagramContext info, QUndoCommand *parent) :
+	ElementEditionCommand(scene, 0, parent)
+{
+	m_type << scene->m_elmt_type << type;
+	m_info << scene->m_elmt_kindInfo << info;
+	setText(QObject::tr("Modifier les propri\351t\351s"));
+}
+
+ChangePropertiesCommand::~ChangePropertiesCommand() {}
+
+void ChangePropertiesCommand::undo() {
+	editor_scene_-> m_elmt_type = m_type.first();
+	editor_scene_-> m_elmt_kindInfo = m_info.first();
+}
+
+void ChangePropertiesCommand::redo() {
+	editor_scene_-> m_elmt_type = m_type.last();
+	editor_scene_-> m_elmt_kindInfo = m_info.last();
+}
+
+
+
