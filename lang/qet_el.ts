@@ -624,7 +624,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="150"/>
         <source>une image</source>
-        <translation type="unfinished"></translation>
+        <translation>εικόνα</translation>
     </message>
 </context>
 <context>
@@ -1132,12 +1132,12 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="65"/>
         <source>Renvoi de folio suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναφορά επόμενης σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="66"/>
         <source>Renvoi de folio précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναφορά προηγούμενης σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="69"/>
@@ -4020,7 +4020,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
         <source>Ajouter</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1225"/>
@@ -4398,7 +4398,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Éditer les propriétées de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="201"/>
@@ -4529,7 +4529,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="702"/>
         <source>Les reports de folio doivent posséder une seul borne.</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι αναφορές σελίδας πρέπει να έχουν μόνο έναν αγωγό</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="708"/>
@@ -4539,7 +4539,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="709"/>
         <source>Les reports de folio doivent posséder au moins un champ texte éditable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι αναφορές σελίδας πρέπει να έχουν τουλάχιστον ένα πεδίο κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="752"/>
@@ -4624,7 +4624,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1069"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1104"/>
         <source>Echec de l&apos;enregistrement</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποτυχία αποθήκευσης</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1045"/>
@@ -4632,7 +4632,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1104"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
-        <translation type="unfinished"></translation>
+        <translation>Η αποθήκευση απέτυχε, οι συνθήκες δεν είναι έγκυρες</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1220"/>
@@ -5566,17 +5566,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1200"/>
         <source>Agrandire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Μεγέθυνση %1 à %2 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1201"/>
         <source>Réduire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Σμίκρυνση %1 à %2 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1221"/>
         <source>Changer le style d&apos;une shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή τύπου ενος σχήματος</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1263"/>
@@ -6021,7 +6021,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="243"/>
         <source>Type de trait</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="248"/>
@@ -6076,7 +6076,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="238"/>
         <source>Éditer les propriétés d&apos;une shape, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων ενος σχήματος</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="260"/>
@@ -6086,7 +6086,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="306"/>
         <source>une shape</source>
-        <translation type="unfinished"></translation>
+        <translation>σχήμα</translation>
     </message>
 </context>
 <context>
@@ -6624,7 +6624,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
         <source>label</source>
-        <translation type="unfinished">ετικέτα</translation>
+        <translation>ετικέτα</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
@@ -6736,7 +6736,7 @@ Les autres champs ne sont pas utilisés.</source>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
-        <translation>Οι ακόλουθες μεταβλητές μπορούν να χρησιμοποιηθούν στο πεδίο Σελίδα:
+        <translation>Οι ακόλουθες μεταβλητές μπορούν να χρησιμοποιηθούν στο πεδίο Διάγραμμα:
   - %id: τρέχων αριθμός διαγράμματος στην εργασία
   - %total: συνολικός αριθμός διαγραμμάτων στην εργασία</translation>
     </message>
