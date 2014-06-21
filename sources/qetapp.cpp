@@ -943,21 +943,33 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 void QETApp::useSystemPalette(bool use) {
 	if (use) {
 		setPalette(initial_palette_);
+		setStyleSheet(
+					"QTabBar::tab:!selected { background-color: transparent; }"
+					"QAbstractScrollArea#mdiarea {"
+
+			"	background-color -> setPalette(initial_palette_);"
+			"	background-image: url(':/ico/mdiarea_bg.png');"
+			"	background-repeat: no-repeat;"
+			"	background-position: center middle;"
+			"}"
+		);
 	} else {
 		setPalette(style() -> standardPalette());
-	}
-	
-	// reapplique les feuilles de style
-	setStyleSheet(
-				"QTabBar::tab:!selected { background-color: transparent; }"
-				"QAbstractScrollArea#mdiarea {"
+		setStyleSheet(
+					"QTabBar::tab:!selected { background-color: transparent; }"
+					"QMainWindow{ background-color: #666666; color: #cccccc; }"
+					"QListView{ background-color: #333333;color: #cccccc; }"
+					"QAbstractScrollArea#mdiarea {"
 
-		"	background-color -> setPalette(initial_palette_);"
-		"	background-image: url(':/ico/mdiarea_bg.png');"
-		"	background-repeat: no-repeat;"
-		"	background-position: center middle;"
-		"}"
-	);
+			"	background-color -> setPalette(initial_palette_);"
+			"	background-image: url(':/ico/mdiarea_bg.png');"
+			"	background-repeat: no-repeat;"
+			"	background-position: center middle;"
+			"}"
+		);
+	}
+
+
 }
 
 /**
