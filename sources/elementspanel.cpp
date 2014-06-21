@@ -79,7 +79,7 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	qp.setColor(QPalette::Base,            Qt::white);
 	qp.setColor(QPalette::AlternateBase,   QColor("#e8e8e8"));
 	qp.setColor(QPalette::Highlight,       QColor("#678db2"));
-	qp.setColor(QPalette::HighlightedText, Qt::red);
+	qp.setColor(QPalette::HighlightedText, Qt::white);
 	setPalette(qp);
 	
 	// we handle double click on items ourselves
