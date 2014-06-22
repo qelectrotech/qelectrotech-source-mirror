@@ -132,10 +132,7 @@ bool ElementsPanel::selectedItemIsWritable() const {
 	@return la collection, la categorie ou l'element selectionne(e)
 */
 ElementsCollectionItem *ElementsPanel::selectedItem() const {
-	// change color of drag element
-	if(it_prev_) {
-	it_prev_->setBackgroundColor(0, Qt::white);
-	}
+
 
 	ElementsLocation selected_location(selectedElementLocation());
 	if (!selected_location.isNull()) {
@@ -205,16 +202,6 @@ void ElementsPanel::dragMoveEvent(QDragMoveEvent *e) {
 	}
 #endif
 
-	// Change color on mouse over
-	it_ = itemAt(e -> pos());
-	if(it_prev_){
-			if(it_ != it_prev_){
-			it_->setBackgroundColor(0, Qt::cyan);
-			it_prev_->setBackgroundColor(0, Qt::white);
-			it_prev_ = it_;
-		}
-	}
-	else it_prev_ = it_;
 
 	e -> accept();
 	/// @todo mettre en valeur le lieu de depot

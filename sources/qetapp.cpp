@@ -954,12 +954,12 @@ void QETApp::useSystemPalette(bool use) {
 			"}"
 		);
 	} else {
-		setPalette(style() -> standardPalette());
 		setStyleSheet(
 					"QTabBar::tab:!selected { background-color: transparent; }"
 					"QMainWindow{ background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(43, 75, 116), stop:1 rgb(197, 245, 254)); }"
 					"QListView{ background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(43, 75, 116), stop:1 rgb(130, 160, 210)); }"
 					"QAbstractScrollArea#mdiarea {"
+
 			"	background-color -> setPalette(initial_palette_);"
 			"	background-image: url(':/ico/mdiarea_bg.png');"
 			"	background-repeat: no-repeat;"
