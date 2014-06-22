@@ -959,6 +959,7 @@ void QETApp::useSystemPalette(bool use) {
 					"QMainWindow{ background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(43, 75, 116), stop:1 rgb(197, 245, 254)); }"
 					"QListView{ background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(43, 75, 116), stop:1 rgb(130, 160, 210)); }"
 					"QTreeView{background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(43, 75, 116), stop:1 rgb(197, 245, 254)); }"
+					"QTreeView::item{background-color: rgba(100, 100, 100, 150);}"
 					"QAbstractScrollArea#mdiarea {"
 
 			"	background-color -> setPalette(initial_palette_);"
