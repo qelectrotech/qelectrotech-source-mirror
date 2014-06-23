@@ -954,24 +954,12 @@ void QETApp::useSystemPalette(bool use) {
 			"}"
 		);
 	} else {
-		setStyleSheet(
-					"QTabBar::tab:!selected {background-color: transparent; }"
-					"QMainWindow{background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(43, 75, 116), stop:1 rgb(197, 245, 254)); }"
-					"QListView{background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(43, 75, 116), stop:1 rgb(130, 160, 210)); }"
-					"QTreeView{background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(43, 75, 116), stop:1 rgb(197, 245, 254)); }"
-					"QTreeView::item{background-color: rgba(100, 100, 100, 00);}"
-					"QTreeView::item:hover{background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #e7effd, stop: 1 #cbdaf1); }"
-					"QAbstractScrollArea#mdiarea {"
+		QFile file("style.css");
+		file.open(QFile::ReadOnly);
+		QString styleSheet = QLatin1String(file.readAll());
+		setStyleSheet(styleSheet);
 
-			"	background-color -> setPalette(initial_palette_);"
-			"	background-image: url(':/ico/mdiarea_bg.png');"
-			"	background-repeat: no-repeat;"
-			"	background-position: center middle;"
-			"}"
-		);
 	}
-
-
 }
 
 /**

@@ -229,5 +229,6 @@
         <file>ico/24x16/nl.png</file>
         <file>ico/32x32/simplifyrichtext.png</file>
         <file>ico/24x16/be.png</file>
+        <file>style.css</file>
     </qresource>
 </RCC>
