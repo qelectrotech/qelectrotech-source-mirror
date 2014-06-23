@@ -1,4 +1,4 @@
-<definition width="1000" version="0.4" hotspot_x="7" hotspot_y="6" height="200" type="element" ic="true" orientation="dyyy">
+<definition width="1000" version="0.4" hotspot_x="7" hotspot_y="6" height="200" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">6es7-322-1bh01-0aa0</name>
         <name lang="pt">6es7-322-1bh01-0aa0</name>
@@ -6,7 +6,7 @@
         <name lang="en">6es7-322-1bh01-0aa0</name>
         <name lang="it">6es7-322-1bh01-0aa0</name>
         <name lang="fr">6es7-322-1bh01-0aa0</name>
-        <name lang="pl">6es7-322-1bh01-0aa0</name>
+        <name lang="pl">6ES7 322-1BH01-0AA0</name>
         <name lang="es">6es7-322-1bh01-0aa0</name>
         <name lang="nl">6es7-322-1bh01-0aa0</name>
         <name lang="cs">6es7-322-1bh01-0aa0</name>
@@ -14,13 +14,13 @@
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="520" y="161" size="10" rotation="270" rotate="true" text="2L+"/>
+        <input x="520" y="161" size="10" rotation="270" rotate="true" text="2L+" tagg="none"/>
         <line length1="0" length2="0" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="104" x1="420" y2="112" x2="420"/>
         <line length1="0" length2="0" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="104" x1="920" y2="112" x2="920"/>
         <line length1="0" length2="0" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="104" x1="270" y2="112" x2="270"/>
         <line length1="0" length2="0" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="104" x1="120" y2="112" x2="120"/>
         <line length1="0" length2="0" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="104" x1="170" y2="112" x2="170"/>
-        <input x="572" y="159" size="7" rotation="270" rotate="true" text="QX1.0"/>
+        <input x="572" y="159" size="7" rotation="270" rotate="true" text="QX1.0" tagg="none"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="160" x1="373" y2="160" x2="417"/>
         <rect width="20" x="160" y="93" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="0" length2="0" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="104" x1="320" y2="112" x2="320"/>
@@ -116,29 +116,29 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="0" length2="0" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="104" x1="70" y2="112" x2="70"/>
         <rect width="20" x="60" y="93" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="0" length2="0" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="82" x1="69" y2="82" x2="469"/>
-        <input x="468.55" y="159" size="10" rotation="270" rotate="true" text="1M"/>
-        <input x="20.55" y="159" size="10" rotation="270" rotate="true" text="1L+"/>
-        <input x="495" y="40" size="9" rotate="true" text="A0.0 - A1.0"/>
-        <input x="316" y="41" size="9" rotate="true" text="Carte Sortie 1"/>
-        <input x="956.45" y="186" size="9" rotation="270" rotate="true" text="20"/>
-        <input x="906.45" y="186" size="9" rotation="270" rotate="true" text="19"/>
-        <input x="856.45" y="186" size="9" rotation="270" rotate="true" text="18"/>
-        <input x="806.45" y="186" size="9" rotation="270" rotate="true" text="17"/>
-        <input x="756.45" y="186" size="9" rotation="270" rotate="true" text="16"/>
-        <input x="706.45" y="187" size="9" rotation="270" rotate="true" text="15"/>
-        <input x="656.45" y="186" size="9" rotation="270" rotate="true" text="14"/>
-        <input x="606.45" y="187" size="9" rotation="270" rotate="true" text="13"/>
-        <input x="506.45" y="185" size="9" rotation="270" rotate="true" text="11"/>
-        <input x="556.45" y="185" size="9" rotation="270" rotate="true" text="12"/>
-        <input x="456.45" y="187" size="9" rotation="270" rotate="true" text="10"/>
-        <input x="406" y="175" size="9" rotation="270" rotate="true" text="9"/>
-        <input x="356" y="175" size="9" rotation="270" rotate="true" text="8"/>
-        <input x="306" y="175" size="9" rotation="270" rotate="true" text="7"/>
-        <input x="256" y="176" size="9" rotation="270" rotate="true" text="6"/>
-        <input x="156" y="176" size="9" rotation="270" rotate="true" text="4"/>
-        <input x="56" y="175" size="9" rotation="270" rotate="true" text="2"/>
-        <input x="206" y="176" size="9" rotation="270" rotate="true" text="5"/>
-        <input x="106" y="176" size="9" rotation="270" rotate="true" text="3"/>
+        <input x="468.55" y="159" size="10" rotation="270" rotate="true" text="1M" tagg="none"/>
+        <input x="20.55" y="159" size="10" rotation="270" rotate="true" text="1L+" tagg="none"/>
+        <input x="495" y="40" size="9" rotate="true" text="A0.0 - A1.0" tagg="none"/>
+        <input x="316" y="41" size="9" rotate="true" text="Carte Sortie 1" tagg="none"/>
+        <input x="956.45" y="186" size="9" rotation="270" rotate="true" text="20" tagg="none"/>
+        <input x="906.45" y="186" size="9" rotation="270" rotate="true" text="19" tagg="none"/>
+        <input x="856.45" y="186" size="9" rotation="270" rotate="true" text="18" tagg="none"/>
+        <input x="806.45" y="186" size="9" rotation="270" rotate="true" text="17" tagg="none"/>
+        <input x="756.45" y="186" size="9" rotation="270" rotate="true" text="16" tagg="none"/>
+        <input x="706.45" y="187" size="9" rotation="270" rotate="true" text="15" tagg="none"/>
+        <input x="656.45" y="186" size="9" rotation="270" rotate="true" text="14" tagg="none"/>
+        <input x="606.45" y="187" size="9" rotation="270" rotate="true" text="13" tagg="none"/>
+        <input x="506.45" y="185" size="9" rotation="270" rotate="true" text="11" tagg="none"/>
+        <input x="556.45" y="185" size="9" rotation="270" rotate="true" text="12" tagg="none"/>
+        <input x="456.45" y="187" size="9" rotation="270" rotate="true" text="10" tagg="none"/>
+        <input x="406" y="175" size="9" rotation="270" rotate="true" text="9" tagg="none"/>
+        <input x="356" y="175" size="9" rotation="270" rotate="true" text="8" tagg="none"/>
+        <input x="306" y="175" size="9" rotation="270" rotate="true" text="7" tagg="none"/>
+        <input x="256" y="176" size="9" rotation="270" rotate="true" text="6" tagg="none"/>
+        <input x="156" y="176" size="9" rotation="270" rotate="true" text="4" tagg="none"/>
+        <input x="56" y="175" size="9" rotation="270" rotate="true" text="2" tagg="none"/>
+        <input x="206" y="176" size="9" rotation="270" rotate="true" text="5" tagg="none"/>
+        <input x="106" y="176" size="9" rotation="270" rotate="true" text="3" tagg="none"/>
         <circle x="967.5" y="157.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="817.5" y="157.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="417.5" y="157.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
@@ -159,23 +159,23 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <circle x="117.5" y="157.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="67.5" y="157.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="17.5" y="157.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="7" y="174" size="9" rotation="270" rotate="true" text="1"/>
-        <input x="970.55" y="159" size="10" rotation="270" rotate="true" text="M"/>
-        <input x="919.55" y="160" size="10" rotation="270" rotate="true" text=".7"/>
-        <input x="869.55" y="161" size="10" rotation="270" rotate="true" text=".6"/>
-        <input x="820.55" y="161" size="10" rotation="270" rotate="true" text=".5"/>
-        <input x="770.55" y="159" size="10" rotation="270" rotate="true" text=".4"/>
-        <input x="718.55" y="161" size="10" rotation="270" rotate="true" text=".3"/>
-        <input x="668.55" y="160" size="10" rotation="270" rotate="true" text=".2"/>
-        <input x="619.55" y="161" size="10" rotation="270" rotate="true" text=".1"/>
-        <input x="418.55" y="160" size="10" rotation="270" rotate="true" text=".7"/>
-        <input x="370.55" y="161" size="10" rotation="270" rotate="true" text=".6"/>
-        <input x="320.55" y="160" size="10" rotation="270" rotate="true" text=".5"/>
-        <input x="269.55" y="160" size="10" rotation="270" rotate="true" text=".4"/>
-        <input x="220.55" y="160" size="10" rotation="270" rotate="true" text=".3"/>
-        <input x="160" y="158" size="10" rotation="270" rotate="true" text=".2"/>
-        <input x="115" y="158" size="10" rotation="270" rotate="true" text=".1"/>
-        <input x="70.55" y="159" size="7" rotation="270" rotate="true" text="QX0.0"/>
+        <input x="7" y="174" size="9" rotation="270" rotate="true" text="1" tagg="none"/>
+        <input x="970.55" y="159" size="10" rotation="270" rotate="true" text="M" tagg="none"/>
+        <input x="919.55" y="160" size="10" rotation="270" rotate="true" text=".7" tagg="none"/>
+        <input x="869.55" y="161" size="10" rotation="270" rotate="true" text=".6" tagg="none"/>
+        <input x="820.55" y="161" size="10" rotation="270" rotate="true" text=".5" tagg="none"/>
+        <input x="770.55" y="159" size="10" rotation="270" rotate="true" text=".4" tagg="none"/>
+        <input x="718.55" y="161" size="10" rotation="270" rotate="true" text=".3" tagg="none"/>
+        <input x="668.55" y="160" size="10" rotation="270" rotate="true" text=".2" tagg="none"/>
+        <input x="619.55" y="161" size="10" rotation="270" rotate="true" text=".1" tagg="none"/>
+        <input x="418.55" y="160" size="10" rotation="270" rotate="true" text=".7" tagg="none"/>
+        <input x="370.55" y="161" size="10" rotation="270" rotate="true" text=".6" tagg="none"/>
+        <input x="320.55" y="160" size="10" rotation="270" rotate="true" text=".5" tagg="none"/>
+        <input x="269.55" y="160" size="10" rotation="270" rotate="true" text=".4" tagg="none"/>
+        <input x="220.55" y="160" size="10" rotation="270" rotate="true" text=".3" tagg="none"/>
+        <input x="160" y="158" size="10" rotation="270" rotate="true" text=".2" tagg="none"/>
+        <input x="115" y="158" size="10" rotation="270" rotate="true" text=".1" tagg="none"/>
+        <input x="70.55" y="159" size="7" rotation="270" rotate="true" text="QX0.0" tagg="none"/>
         <text x="674" y="46" size="12" text="6ES7322-1BH01-0AA0"/>
         <text x="42" y="53" size="12" text="DO16 x DC 24V/0.5A"/>
         <text x="42" y="33" size="20" text="SM322"/>
@@ -185,25 +185,25 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="160" x1="23" y2="160" x2="67"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="160" x1="973" y2="160" x2="989"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="84" x1="70" y2="92" x2="70"/>
-        <terminal x="920" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="870" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="820" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="770" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="720" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="670" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="620" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="570" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="520" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="470" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="420" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="370" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="320" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="270" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="220" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="20" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="970" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="70" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="170" y="162" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="120" y="162" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="920" y="162" orientation="s"/>
+        <terminal x="870" y="162" orientation="s"/>
+        <terminal x="820" y="162" orientation="s"/>
+        <terminal x="770" y="162" orientation="s"/>
+        <terminal x="720" y="162" orientation="s"/>
+        <terminal x="670" y="162" orientation="s"/>
+        <terminal x="620" y="162" orientation="s"/>
+        <terminal x="570" y="162" orientation="s"/>
+        <terminal x="520" y="162" orientation="s"/>
+        <terminal x="470" y="162" orientation="s"/>
+        <terminal x="420" y="162" orientation="s"/>
+        <terminal x="370" y="162" orientation="s"/>
+        <terminal x="320" y="162" orientation="s"/>
+        <terminal x="270" y="162" orientation="s"/>
+        <terminal x="220" y="162" orientation="s"/>
+        <terminal x="20" y="162" orientation="s"/>
+        <terminal x="970" y="162" orientation="s"/>
+        <terminal x="70" y="162" orientation="s"/>
+        <terminal x="170" y="162" orientation="s"/>
+        <terminal x="120" y="162" orientation="s"/>
     </description>
 </definition>

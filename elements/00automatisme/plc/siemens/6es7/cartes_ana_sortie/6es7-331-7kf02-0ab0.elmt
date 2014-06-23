@@ -1,7 +1,8 @@
-<definition width="1000" version="0.4" hotspot_x="5" hotspot_y="3" height="170" type="element" ic="true" orientation="dyyy">
+<definition width="1000" version="0.4" hotspot_x="5" hotspot_y="3" height="170" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="fr">6es7-331-7kf02-0ab0</name>
         <name lang="it">6es7-331-7kf02-0ab0</name>
+        <name lang="fr">6es7-331-7kf02-0ab0</name>
+        <name lang="pl">6ES7 331-7KF02-0AB0</name>
     </names>
     <informations></informations>
     <description>
