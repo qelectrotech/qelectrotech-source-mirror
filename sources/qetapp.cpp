@@ -954,11 +954,11 @@ void QETApp::useSystemPalette(bool use) {
 			"}"
 		);
 	} else {
-		QFile file("style.css");
+		QFile file("./style.css");
 		file.open(QFile::ReadOnly);
 		QString styleSheet = QLatin1String(file.readAll());
 		setStyleSheet(styleSheet);
-
+		file.close();
 	}
 }
 
