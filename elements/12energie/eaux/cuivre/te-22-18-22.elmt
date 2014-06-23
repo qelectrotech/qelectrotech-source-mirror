@@ -1,9 +1,10 @@
 <definition width="60" version="0.4" hotspot_x="27" hotspot_y="28" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Te 22-18-22 copper</name>
-        <name lang="fr">Te 22-18-22 cuivre</name>
-        <name lang="es">Te cobre 22-18-22</name>
         <name lang="it">T rame 22-18-22</name>
+        <name lang="fr">Te 22-18-22 cuivre</name>
+        <name lang="pl">Trójnik 22 - 18 - 22</name>
+        <name lang="es">Te cobre 22-18-22</name>
     </names>
     <informations></informations>
     <description>

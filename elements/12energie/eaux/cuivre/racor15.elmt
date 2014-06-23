@@ -1,9 +1,10 @@
 <definition width="50" version="0.4" hotspot_x="21" hotspot_y="30" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Fitting 18-3/4</name>
-        <name lang="fr">Raccord 18-3/4</name>
-        <name lang="es">Rácor 18-3/4</name>
         <name lang="it">Raccordo 18 - 3/4</name>
+        <name lang="fr">Raccord 18-3/4</name>
+        <name lang="pl">Śrubunek 18 - 3/4"</name>
+        <name lang="es">Rácor 18-3/4</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

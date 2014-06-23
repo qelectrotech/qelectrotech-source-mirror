@@ -1,9 +1,10 @@
-<definition width="40" version="0.4" hotspot_x="18" hotspot_y="27" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="19" hotspot_y="27" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Sleeve 15 1/2 Male</name>
-        <name lang="fr">Manchon 15 1/2 Male</name>
-        <name lang="es">Manguito 15 1/2 Macho</name>
         <name lang="it">Riduzione 15 - 1/2 M</name>
+        <name lang="fr">Manchon 15 1/2 Male</name>
+        <name lang="pl">Redukcja 15 - 1/2"</name>
+        <name lang="es">Manguito 15 1/2 Macho</name>
     </names>
     <informations></informations>
     <description>

@@ -1,9 +1,10 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="18" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Copper Hose 15-22</name>
-        <name lang="fr">Cuivre Tuyau 15-22</name>
-        <name lang="es">Manguito cobre 15-22</name>
         <name lang="it">Riduzione 15-22</name>
+        <name lang="fr">Cuivre Tuyau 15-22</name>
+        <name lang="pl">Redukcja 15 - 22</name>
+        <name lang="es">Manguito cobre 15-22</name>
     </names>
     <informations></informations>
     <description>

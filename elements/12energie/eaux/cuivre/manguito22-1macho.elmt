@@ -1,9 +1,10 @@
-<definition width="30" version="0.4" hotspot_x="15" hotspot_y="27" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="16" hotspot_y="27" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Sleeve 22 1 " male</name>
-        <name lang="fr">Manchon 22 1" male</name>
-        <name lang="es">Manguito 22 1" Macho</name>
         <name lang="it">Riduzione 22 - 1" M</name>
+        <name lang="fr">Manchon 22 1" male</name>
+        <name lang="pl">Redukcja 22 - 1"</name>
+        <name lang="es">Manguito 22 1" Macho</name>
     </names>
     <informations></informations>
     <description>

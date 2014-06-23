@@ -1,9 +1,10 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="20" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Te 15 copper</name>
-        <name lang="fr">te 15 cuivre</name>
-        <name lang="es">Te cobre 15</name>
         <name lang="it">T rame 15</name>
+        <name lang="fr">te 15 cuivre</name>
+        <name lang="pl">Trójnik 15</name>
+        <name lang="es">Te cobre 15</name>
     </names>
     <informations></informations>
     <description>

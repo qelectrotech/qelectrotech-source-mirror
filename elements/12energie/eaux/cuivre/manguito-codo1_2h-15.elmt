@@ -1,9 +1,10 @@
 <definition width="50" version="0.4" hotspot_x="22" hotspot_y="18" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Elbow-sleeve 1/2 "H-15</name>
-        <name lang="fr">Coude-douille de 1/2 "H-15</name>
-        <name lang="es">Manguito-Codo 1/2"H-15</name>
         <name lang="it">Riduzione gomito 1/2 F-22</name>
+        <name lang="fr">Coude-douille de 1/2 "H-15</name>
+        <name lang="pl">Kolanko 1/2" - 22</name>
+        <name lang="es">Manguito-Codo 1/2"H-15</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
