@@ -624,7 +624,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="150"/>
         <source>une image</source>
-        <translation type="unfinished"></translation>
+        <translation>obraz</translation>
     </message>
 </context>
 <context>
@@ -3772,17 +3772,17 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="348"/>
         <source>Ajouter une liaison mecanique</source>
-        <translation>Wstaw połączenie mechaniczne</translation>
+        <translation>Wstaw linię</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
         <source>Ajouter une zone rectangle</source>
-        <translation>Wstaw prostokątny obszar</translation>
+        <translation>Wstaw prostokąt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
         <source>Ajouter une zone ellipse</source>
-        <translation>Wstaw eliptyczny obszar</translation>
+        <translation>Wstaw elipsę</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="211"/>
@@ -4017,7 +4017,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
         <source>Ajouter</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstawienie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
@@ -4396,7 +4396,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Éditer les propriétées de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Edycja właściowści elementu</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="201"/>
@@ -5474,7 +5474,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="147"/>
         <source>Ajouter une Shape</source>
         <comment>undo caption</comment>
-        <translation>wstaw figurę</translation>
+        <translation>wstawienie figury</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="187"/>
@@ -5565,17 +5565,17 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1200"/>
         <source>Agrandire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation>powiększenie %1 do %2 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1201"/>
         <source>Réduire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation>pomniejszenie %1 do %2 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1221"/>
         <source>Changer le style d&apos;une shape</source>
-        <translation type="unfinished"></translation>
+        <translation>zmiana właściwości figury</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1263"/>
@@ -5787,8 +5787,8 @@ Co chcesz zrobić ?</translation>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>pola tekstowego</numerusform>
-            <numerusform>%n pól tekstowych</numerusform>
+            <numerusform>pole tekstowe</numerusform>
+            <numerusform>%n póla tekstowe</numerusform>
             <numerusform>%n pól tekstowych</numerusform>
         </translation>
     </message>
@@ -5798,8 +5798,8 @@ Co chcesz zrobić ?</translation>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>%n obrazu</numerusform>
-            <numerusform>%n obrazów</numerusform>
+            <numerusform>%n obraz</numerusform>
+            <numerusform>%n obrazy</numerusform>
             <numerusform>%n obrazów</numerusform>
         </translation>
     </message>
@@ -6027,7 +6027,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="243"/>
         <source>Type de trait</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Typ linii</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="248"/>
@@ -6082,7 +6082,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="238"/>
         <source>Éditer les propriétés d&apos;une shape, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edycja właściwości figury</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="260"/>
@@ -6092,7 +6092,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="306"/>
         <source>une shape</source>
-        <translation type="unfinished"></translation>
+        <translation>figury</translation>
     </message>
 </context>
 <context>
