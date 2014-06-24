@@ -31,7 +31,6 @@ win32 {
 	QET_COMMON_TBT_PATH        = 'titleblocks/'
 	QET_LANG_PATH              = 'lang/'
 	QET_LICENSE_PATH           = './'
-	QET_STYLE_PATH             = './'
 }
 macx {
 	# Chemins MacOS X
