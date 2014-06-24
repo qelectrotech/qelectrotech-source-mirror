@@ -20,6 +20,7 @@ unix {
 	QET_ICONS_PATH             = 'share/icons/hicolor/'
 	QET_MAN_PATH               = 'man/'
 	QET_APPDATA_PATH           = 'share/appdata'
+	QET_STYLE_PATH             = 'share/qelectrotech/'
 }
 win32 {
 	# Chemins Windows
@@ -30,6 +31,7 @@ win32 {
 	QET_COMMON_TBT_PATH        = 'titleblocks/'
 	QET_LANG_PATH              = 'lang/'
 	QET_LICENSE_PATH           = './'
+	QET_STYLE_PATH             = './'
 }
 macx {
 	# Chemins MacOS X
@@ -137,6 +139,9 @@ desktop.files      = misc/qelectrotech.desktop
 appdata.path       = $$join(INSTALL_PREFIX,,,$${QET_APPDATA_PATH})
 appdata.files      = misc/qelectrotech.appdata.xml
 
+style.path       = $$join(INSTALL_PREFIX,,,$${QET_STYLE_PATH})
+style.files      = style.css
+
 icons.path         = $$join(INSTALL_PREFIX,,,$${QET_ICONS_PATH})
 icons.files        = ico/oxygen-icons/16x16   \
                      ico/oxygen-icons/22x22   \
@@ -154,7 +159,7 @@ man.extra          = sh man/compress_man_pages.sh
 INSTALLS += target elements tbt lang copyright
 # Sous Unix, on installe egalement l'icone, un fichier .desktop, des fichiers mime et les pages de manuel
 unix {
-	INSTALLS += desktop mime_xml mime_desktop mime_package icons man examples appdata
+	INSTALLS += desktop mime_xml mime_desktop mime_package icons man examples appdata style
 }
 
 # Options de compilation communes a Unix et MacOS X
