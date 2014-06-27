@@ -54,10 +54,7 @@ void MasterElement::linkToElement(Element *elmt) {
 		connected_elements << elmt;
 		elmt->linkToElement(this);
 
-		if (!cri_) {
-				cri_ = new CrossRefItem(this); //create cross ref item if not yet
-				diagram()->addItem(cri_);
-			}
+		if (!cri_) cri_ = new CrossRefItem(this); //create cross ref item if not yet
 			connect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
 			cri_->updateLabel();
 		}
@@ -91,7 +88,6 @@ void MasterElement::unlinkElement(Element *elmt) {
 		disconnect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
 
 		if (linkedElements().isEmpty()) {
-			diagram()->removeItem(cri_);
 			delete cri_;
 			cri_ = nullptr;
 		}

@@ -19,6 +19,7 @@
 #include "element.h"
 #include "qetapp.h"
 #include "diagramposition.h"
+#include "elementtextitem.h"
 
 //define the height of the header.
 #define header 5
@@ -28,19 +29,24 @@
 /**
  * @brief CrossRefItem::CrossRefItem
  * Default constructor
- * @param elmt element to dispaly the cross ref
- * @param parent parent QetGraphicsItem
+ * @param elmt element to display the cross ref and also parent item.
  */
-CrossRefItem::CrossRefItem(Element *elmt, QGraphicsItem *parent) :
-	QGraphicsObject(parent),
+CrossRefItem::CrossRefItem(Element *elmt) :
+	QGraphicsObject(elmt),
 	m_element (elmt)
 {
 	m_properties = elmt->diagram()->defaultXRefProperties();
-	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable);
-	connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
 	connect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 	connect(elmt->diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 	connect(elmt->diagram(), SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SLOT(setProperties(XRefProperties)));
+
+	//set specific behavior related to the parent item.
+	if(m_properties.snapTo() == XRefProperties::Bottom) {
+		connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
+		connect(elmt, SIGNAL(rotationChanged()),	   this, SLOT(autoPos()));
+	} else {
+		setTextParent();
+	}
 	updateLabel();
 }
 
@@ -49,7 +55,10 @@ CrossRefItem::CrossRefItem(Element *elmt, QGraphicsItem *parent) :
  * Default destructor
  */
 CrossRefItem::~CrossRefItem() {
-	disconnect(m_element, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
+	if(m_properties.snapTo() == XRefProperties::Bottom) {
+		disconnect(m_element, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
+		disconnect(m_element, SIGNAL(rotationChanged()),	   this, SLOT(autoPos()));
+	}
 	disconnect(m_element, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 	disconnect(m_element->diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 	disconnect(m_element->diagram(), SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SLOT(setProperties(XRefProperties)));
@@ -112,6 +121,17 @@ void CrossRefItem::allElementsPositionText(QString &no_str, QString &nc_str, con
 
 void CrossRefItem::setProperties(const XRefProperties &xrp) {
 	if (m_properties != xrp) {
+		if (m_properties.snapTo() != xrp.snapTo()) {
+			if (xrp.snapTo() == XRefProperties::Bottom) {
+				setParentItem(m_element);
+				connect(m_element, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
+				connect(m_element, SIGNAL(rotationChanged()),	   this, SLOT(autoPos()));
+			} else {
+				setTextParent();
+				disconnect(m_element, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
+				disconnect(m_element, SIGNAL(rotationChanged()),	   this, SLOT(autoPos()));
+			}
+		}
 		m_properties = xrp;
 		updateLabel();
 	}
@@ -153,24 +173,28 @@ void CrossRefItem::updateLabel() {
  * Calculate and set position automaticaly.
  */
 void CrossRefItem::autoPos() {
-	if (isSelected() && m_element->isSelected()) return;
-	QRectF border= m_element->diagram()->border();
-	QPointF point;
+	//We calcul the position according to the @snapTo of the xrefproperties
+	if (m_properties.snapTo() == XRefProperties::Bottom) {
+		QRectF border = m_element->diagram()->border();
+		QPointF point = m_element->sceneBoundingRect().center();
 
-	//if this item have parent calcule the position by using mapped point.
-	if(parentItem()) {
-		point = m_element->boundingRect().center();
-		QPointF ypoint_ = mapToParent(mapFromScene(0, border.height() - m_element->diagram()->border_and_titleblock.titleBlockHeight() - boundingRect().height()));
-		point.setY(ypoint_.y());
+		point.setY(border.height() - m_element->diagram()->border_and_titleblock.titleBlockHeight() - boundingRect().height());
+		point.rx() -= (m_bounding_rect.width()/2 + m_bounding_rect.left()); //< we add boundingrect.left because this value can be négative
+
+		setPos(0,0);	//Due to a weird behavior or bug, before set the new position and rotation,
+		setRotation(0); //we must to set the position and rotation at 0.
+		setPos(mapFromScene(point));
+		if (rotation() != - m_element->rotation()) {
+			setRotation(0);
+			setRotation(- m_element->rotation());
+		}
 	}
 	else {
-		point = m_element->sceneBoundingRect().center();
-		point.setY(border.height() - m_element->diagram()->border_and_titleblock.titleBlockHeight() - boundingRect().height());
+		QPointF p = parentItem()->boundingRect().center();
+		p.ry() += parentItem()->boundingRect().height()/2;
+		p.rx() -= (m_bounding_rect.width()/2 + m_bounding_rect.left()); //< we add boundingrect.left because this value can be négative
+		setPos(p);
 	}
-
-	qreal offset = m_bounding_rect.topLeft().x() < 0 ? m_bounding_rect.topLeft().x() : 0;
-	point.setX(point.x() - m_bounding_rect.width()/2 - offset);
-	setPos(point);
 }
 
 /**
@@ -183,39 +207,16 @@ void CrossRefItem::autoPos() {
 void CrossRefItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
 	Q_UNUSED(option);
 	Q_UNUSED(widget);
-
-	//draw the selection rect
-	if (isSelected()) {
-		painter->save();
-		QPen t(Qt::black);
-		t.setStyle(Qt::DashLine);
-		t.setCosmetic(true);
-		painter -> setPen(t);
-		painter -> setRenderHint(QPainter::Antialiasing, false);
-		painter -> drawPath(m_shape_path);
-		painter -> restore();
-	}
 	m_drawing.play(painter);
 }
 
 /**
- * @brief CrossRefItem::mouseMoveEvent
- * handle mouse move event
- * @param e event
+ * @brief CrossRefItem::mouseDoubleClickEvent
+ * @param event
  */
-void CrossRefItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
-	m_element->setHighlighted(true);
-	QGraphicsObject::mouseMoveEvent(e);
-}
-
-/**
- * @brief CrossRefItem::mouseReleaseEvent
- * handle mouse release event
- * @param e event
- */
-void CrossRefItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	m_element->setHighlighted(false);
-	QGraphicsObject::mouseReleaseEvent(e);
+void CrossRefItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+	event->accept();
+	m_element->editProperty();
 }
 
 /**
@@ -524,5 +525,16 @@ void CrossRefItem::checkMustShow() {
 		this->show();
 		return;
 	}
+}
+
+/**
+ * @brief CrossRefItem::setTextParent
+ * Set the text field tagged "label" of m_element
+ * parent of this item
+ */
+void CrossRefItem::setTextParent() {
+	ElementTextItem *eti = m_element->taggedText("label");
+	if (eti) setParentItem(eti);
+	else qDebug() << "CrossRefItem,no texte tagged 'label' found to set has parent";
 }
 

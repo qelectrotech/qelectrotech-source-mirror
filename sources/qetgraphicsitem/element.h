@@ -74,6 +74,8 @@ class Element : public QetGraphicsItem {
 	virtual QList<Conductor *> conductors() const = 0;
 	/// @return the list of text items attached to this element
 	virtual QList<ElementTextItem *> texts() const = 0;
+	/// @return the text field tagged with @tagg or NULL if text field isn't found
+	virtual ElementTextItem* taggedText(const QString &tagg) const = 0;
 	/// @return the list of lines items in this element
 	virtual QList<QLineF *> lines() const = 0;
 	/// @return the list of rectangles items in this element

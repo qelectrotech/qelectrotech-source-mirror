@@ -34,6 +34,11 @@ class XRefProperties : public PropertiesInterface
 		Contacts
 	};
 
+	enum SnapTo {
+		Bottom,
+		Label
+	};
+
 	virtual void toSettings	  (QSettings &settings, const QString = QString()) const;
 	virtual void fromSettings (const QSettings &settings, const QString = QString());
 	virtual void toXml		  (QDomElement &xml_element) const;
@@ -45,8 +50,11 @@ class XRefProperties : public PropertiesInterface
 	void setShowPowerContac (const bool a) {m_show_power_ctc = a;}
 	bool showPowerContact	() const	   {return m_show_power_ctc;}
 
-	void setDisplayHas (const DisplayHas dh) {m_display = dh;}
-	DisplayHas displayHas () const			 {return m_display;}
+	void setDisplayHas	  (const DisplayHas dh) {m_display = dh;}
+	DisplayHas displayHas () const				{return m_display;}
+
+	void setSnapTo (const SnapTo st) {m_snap_to = st;}
+	SnapTo snapTo  () const			 {return m_snap_to;}
 
 	void setPrefix (const QString &key, const QString &value) {m_prefix.insert(key, value);}
 	QString prefix (const QString &key) const {return m_prefix.value(key);}
@@ -54,6 +62,7 @@ class XRefProperties : public PropertiesInterface
 	private:
 	bool m_show_power_ctc;
 	DisplayHas m_display;
+	SnapTo m_snap_to;
 	QHash <QString, QString> m_prefix;
 };
 

@@ -910,18 +910,28 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 /**
  * @brief CustomElement::setTaggedText
  * Set text @newstr to the text tagged with @tagg.
- * If tagg is found return the text item, else return 0.
+ * If tagg is found return the text item, else return NULL.
  * @param tagg required tagg
  * @param newstr new label
  * @param noeditable set editable or not (by default, set editable)
  */
 ElementTextItem* CustomElement::setTaggedText(const QString &tagg, const QString &newstr, const bool noeditable) {
-	foreach (ElementTextItem *eti, list_texts_) {
-		if (eti -> tagg() == tagg) {
-			eti -> setPlainText(newstr);
-			eti -> setNoEditable(noeditable);
-			return eti;
-		}
+	ElementTextItem *eti = taggedText(tagg);
+	if (eti) {
+		eti -> setPlainText(newstr);
+		eti -> setNoEditable(noeditable);
 	}
-	return 0;
+	return eti;
+}
+
+/**
+ * @brief CustomElement::taggedText
+ * return the text field tagged with @tagg or NULL if text field isn't found
+ * @param tagg
+ */
+ElementTextItem* CustomElement::taggedText(const QString &tagg) const {
+	foreach (ElementTextItem *eti, list_texts_) {
+		if (eti -> tagg() == tagg) return eti;
+	}
+	return NULL;
 }

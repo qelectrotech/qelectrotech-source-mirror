@@ -27,8 +27,11 @@ class element;
  * This clas provide an item, for show the cross reference, like the contacts linked to a coil.
  * The item setpos automaticaly when parent move.
  * All slave displayed in cross ref will be updated when folio position change in the project.
- * It's the responsability of the parent to informe displayed slave are moved,
+ * It's the responsability of the master element to informe displayed slave are moved,
  * by calling the slot @updateLabel
+ * By default master element is the parent graphics item of this Xref,
+ * but if the Xref must be snap to the label of master, the label become the parent of this Xref.
+ * This behavior can be changed at anytime by calling setProperties.
  */
 class CrossRefItem : public QGraphicsObject
 {
@@ -36,7 +39,7 @@ class CrossRefItem : public QGraphicsObject
 
 	//Methods
 	public:
-	explicit CrossRefItem(Element *elmt, QGraphicsItem *parent = 0);
+	explicit CrossRefItem(Element *elmt);
 	~CrossRefItem();
 
 	enum { Type = UserType + 1009 };
@@ -63,9 +66,8 @@ class CrossRefItem : public QGraphicsObject
 	void autoPos	   ();
 
 	protected:
-	virtual void paint			   (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-	virtual void mouseMoveEvent	   (QGraphicsSceneMouseEvent *e);
-	virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *e);
+	virtual void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+	virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event );
 
 	private:
 	void buildHeaderContact		();
@@ -76,6 +78,7 @@ class CrossRefItem : public QGraphicsObject
 	void fillCrossRef			(QPainter &painter);
 	void AddExtraInfo			(QPainter &painter);
 	void checkMustShow			();
+	void setTextParent			();
 
 	//Attributes
 	private:

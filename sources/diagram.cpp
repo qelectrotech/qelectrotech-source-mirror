@@ -33,7 +33,6 @@
 #include "qetapp.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
-#include "qetgraphicsitem/crossrefitem.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -101,8 +100,6 @@ Diagram::~Diagram() {
 	foreach(QGraphicsItem *qgi, items()) {
 		if (qgi -> parentItem()) continue;
 		if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
-		else if (qgraphicsitem_cast<CrossRefItem *>(qgi)) continue;
-
 		deletable_items << qgi;
 	}
 

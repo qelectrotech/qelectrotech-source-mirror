@@ -74,6 +74,7 @@ class CustomElement : public FixedElement {
 	bool isNull() const;
 	int state() const;
 	QString name() const;
+	ElementTextItem* taggedText(const QString &tagg) const;
 	
 	protected:
 	virtual bool buildFromXml(const QDomElement &, int * = 0);

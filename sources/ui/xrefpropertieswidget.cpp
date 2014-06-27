@@ -31,6 +31,9 @@ XRefPropertiesWidget::XRefPropertiesWidget(XRefProperties properties, QWidget *p
 	m_properties(properties)
 {
 	ui->setupUi(this);
+
+	ui->m_snap_to_cb->addItem(tr("En bas de page"),					  "bottom");
+	ui->m_snap_to_cb->addItem(tr("Sous le label de l'\351l\351ment"), "label");
 	connect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)), ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
 	updateDisplay();
 }
@@ -62,6 +65,9 @@ void XRefPropertiesWidget::setProperties(const XRefProperties &properties) {
 XRefProperties XRefPropertiesWidget::properties() {
 	if		(ui->m_display_has_cross_rb->isChecked())	 m_properties.setDisplayHas(XRefProperties::Cross);
 	else if (ui->m_display_has_contacts_rb->isChecked()) m_properties.setDisplayHas(XRefProperties::Contacts);
+	if (ui->m_snap_to_cb->itemData(ui->m_snap_to_cb->currentIndex()).toString() == "bottom")
+		 m_properties.setSnapTo(XRefProperties::Bottom);
+	else m_properties.setSnapTo(XRefProperties::Label);
 	m_properties.setShowPowerContac(ui->m_show_power_cb->isChecked());
 	m_properties.setPrefix("power", ui->m_power_prefix_le->text());
 	m_properties.setPrefix("delay", ui->m_delay_prefix_le->text());
@@ -97,6 +103,9 @@ void XRefPropertiesWidget::updateDisplay() {
 		ui->m_display_has_contacts_rb->setChecked(true);
 	}
 
+	if (m_properties.snapTo() == XRefProperties::Bottom)
+		 ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("bottom"));
+	else ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("label"));
 	ui->m_show_power_cb->setChecked(m_properties.showPowerContact());
 	ui->m_power_prefix_le->setText(m_properties.prefix("power"));
 	ui->m_delay_prefix_le->setText(m_properties.prefix("delay"));

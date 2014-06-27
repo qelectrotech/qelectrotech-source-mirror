@@ -22,8 +22,7 @@
  * Default Constructor
  */
 XRefProperties::XRefProperties()
-{
-}
+{}
 
 /**
  * @brief XRefProperties::toSettings
@@ -35,6 +34,8 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
 	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
 	QString display = m_display == Cross? "cross" : "contacts";
 	settings.setValue(prefix + "displayhas", display);
+	QString snap = m_snap_to == Bottom? "bottom" : "label";
+	settings.setValue(prefix + "snapto", snap);
 	settings.setValue(prefix + "powerprefix",  m_prefix.value("power"));
 	settings.setValue(prefix + "delayprefix", m_prefix.value("delay"));
 }
@@ -49,6 +50,8 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 	m_show_power_ctc = settings.value(prefix + "showpowerctc", false).toBool();
 	QString display = settings.value(prefix + "displayhas", "cross").toString();
 	display == "cross"? m_display = Cross : m_display = Contacts;
+	QString snap = settings.value(prefix + "snapto", "label").toString();
+	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
 	m_prefix.insert("power", settings.value(prefix + "powerprefix").toString());
 	m_prefix.insert("delay", settings.value(prefix + "delayprefix").toString());
 }
@@ -62,6 +65,8 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "fasle");
 	QString display = m_display == Cross? "cross" : "contacts";
 	xml_element.setAttribute("displayhas", display);
+	QString snap = m_snap_to == Bottom? "bottom" : "label";
+	xml_element.setAttribute("snapto", snap);
 	xml_element.setAttribute("powerprefix", m_prefix.value("power"));
 	xml_element.setAttribute("delayprefix", m_prefix.value("delay"));
 }
@@ -75,6 +80,8 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
 	QString display = xml_element.attribute("displayhas", "cross");
 	display == "cross"? m_display = Cross : m_display = Contacts;
+	QString snap = xml_element.attribute("snapto", "label");
+	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
 	m_prefix.insert("power", xml_element.attribute("powerprefix"));
 	m_prefix.insert("delay", xml_element.attribute("delayprefix"));
 }
@@ -82,6 +89,7 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 	return (m_show_power_ctc == xrp.m_show_power_ctc &&
 			m_display == xrp.m_display &&
+			m_snap_to == xrp.m_snap_to &&
 			m_prefix == xrp.m_prefix);
 }
 

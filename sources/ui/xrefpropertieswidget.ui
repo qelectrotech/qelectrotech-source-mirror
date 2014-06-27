@@ -21,6 +21,20 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Positionner :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="m_snap_to_cb"/>
+        </item>
+       </layout>
+      </item>
+      <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QRadioButton" name="m_display_has_cross_rb">

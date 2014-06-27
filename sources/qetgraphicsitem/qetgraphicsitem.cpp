@@ -48,11 +48,12 @@ Diagram* QetGraphicsItem::diagram() const{
  * @param p the new position of item
  */
 void QetGraphicsItem::setPos(const QPointF &p) {
-	if (p == pos() || !is_movable_) return;
+	QPointF pp = Diagram::snapToGrid(p);
+	if (pp == pos() || !is_movable_) return;
 	if (scene() && snap_to_grid_) {
-		QGraphicsItem::setPos(Diagram::snapToGrid(p));
+		QGraphicsItem::setPos(pp);
 		emit positionChange(pos());
-	} else QGraphicsItem::setPos(p);
+	} else QGraphicsItem::setPos(pp);
 }
 
 /**
