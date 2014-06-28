@@ -62,7 +62,7 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
  * @param xml_element: QDomElement to use for saving
  */
 void XRefProperties::toXml(QDomElement &xml_element) const {
-	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "fasle");
+	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
 	QString display = m_display == Cross? "cross" : "contacts";
 	xml_element.setAttribute("displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
