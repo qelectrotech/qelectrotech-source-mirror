@@ -92,6 +92,8 @@ class QETProject : public QObject {
 	QDomElement getTemplateXmlDescriptionByName(const QString &);
 	bool setTemplateXmlDescription(const QString &, const QDomElement &);
 	void removeTemplateByName(const QString &);
+
+	///DEFAULT PROPERTIES
 	BorderProperties defaultBorderProperties() const;
 	void setDefaultBorderProperties(const BorderProperties &);
 	TitleBlockProperties defaultTitleBlockProperties() const;
@@ -100,8 +102,11 @@ class QETProject : public QObject {
 	void setDefaultConductorProperties(const ConductorProperties &);
 	QString defaultReportProperties() const;
 	void setDefaultReportProperties (const QString &properties);
-	XRefProperties defaultXrefProperties () const;
-	void setDefaultXRefProperties(const XRefProperties &properties);
+	XRefProperties					defaultXRefProperties (const QString &type) const {return m_default_xref_properties[type];}
+	QHash <QString, XRefProperties> defaultXRefProperties() const					  {return m_default_xref_properties;}
+	void setDefaultXRefProperties(const QString type, const XRefProperties &properties);
+	void setDefaultXRefProperties(QHash <QString, XRefProperties> hash);
+
 	QDomDocument toXml();
 	bool close();
 	QETResult write();
@@ -147,7 +152,7 @@ class QETProject : public QObject {
 	void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
 	void readOnlyChanged(QETProject *, bool);
 	void reportPropertiesChanged(QString);
-	void XRefPropertiesChanged (XRefProperties);
+	void XRefPropertiesChanged ();
 	
 	private slots:
 	void updateDiagramsFolioData();
@@ -206,7 +211,7 @@ class QETProject : public QObject {
 	/// Default report properties
 	QString default_report_properties_;
 	/// Default xref properties
-	XRefProperties m_default_xref_properties;
+	QHash <QString, XRefProperties> m_default_xref_properties;
 	/// Embedded title block templates collection
 	TitleBlockTemplatesProjectCollection titleblocks_;
 	/// project-wide variables that will be made available to child diagrams

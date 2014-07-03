@@ -34,20 +34,27 @@ class XRefPropertiesWidget : public QWidget
 	Q_OBJECT
 
 	public:
-	XRefPropertiesWidget(XRefProperties properties = XRefProperties(), QWidget *parent = 0);
+	XRefPropertiesWidget(QHash <QString, XRefProperties> properties = QHash <QString, XRefProperties>(), QWidget *parent = 0);
 	~XRefPropertiesWidget();
 
-	void setProperties (const XRefProperties &properties);
-	XRefProperties properties();
+	void setProperties (const QHash <QString, XRefProperties> &properties);
+	QHash <QString, XRefProperties> properties();
 
 	void setReadOnly (bool = true);
 
 	private:
+	void buildUi();
+	void saveProperties(int index);
+
+	private slots:
 	void updateDisplay();
+	void typeChanged();
+
 
 	private:
 	Ui::XRefPropertiesWidget *ui;
-	XRefProperties m_properties;
+	QHash <QString, XRefProperties> m_properties;
+	int m_previous_type_index;
 };
 
 #endif // XREFPROPERTIESWIDGET_H

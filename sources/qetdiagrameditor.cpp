@@ -2076,8 +2076,15 @@ QString QETDiagramEditor::defaultReportProperties() {
  * @brief QETDiagramEditor::defaultXRefProperties
  * @return the default setting for Xref
  */
-XRefProperties QETDiagramEditor::defaultXRefProperties() {
-	XRefProperties properties;
-	properties.fromSettings(QETApp::settings(), "diagrameditor/defaultxref");
-	return properties;
+QHash <QString, XRefProperties> QETDiagramEditor::defaultXRefProperties() {
+	QHash <QString, XRefProperties> hash;
+	QStringList keys;
+	keys << "coil" << "protection";
+	foreach (QString key, keys) {
+		XRefProperties properties;
+		QString str("diagrameditor/defaultxref");
+		properties.fromSettings(QETApp::settings(), str += key);
+		hash.insert(key, properties);
+	}
+	return hash;
 }

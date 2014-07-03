@@ -262,8 +262,8 @@ void ProjectNewDiagramConfigPage::applyProjectConf() {
 		modified_project = true;
 	}
 
-	XRefProperties new_xref_properties = xref_ -> properties();
-	if (project_ -> defaultXrefProperties() != new_xref_properties) {
+	QHash<QString, XRefProperties> new_xref_properties = xref_ -> properties();
+	if (project_ -> defaultXRefProperties() != new_xref_properties) {
 		project_ -> setDefaultXRefProperties(new_xref_properties);
 		modified_project = true;
 	}
@@ -288,7 +288,7 @@ void ProjectNewDiagramConfigPage::initWidgets() {
 	conductor_  = new ConductorPropertiesWidget();
 	conductor_  -> setContentsMargins(0, 0, 0, 0);
 	report_		= new ReportPropertieWidget("_");
-	xref_		= new XRefPropertiesWidget(XRefProperties());
+	xref_		= new XRefPropertiesWidget();
 }
 
 /**
@@ -322,7 +322,7 @@ void ProjectNewDiagramConfigPage::readValuesFromProject() {
 	conductor_	-> setConductorProperties  (project_ -> defaultConductorProperties());
 	titleblock_ -> setTitleBlockProperties (project_ -> defaultTitleBlockProperties());
 	report_		-> setReportProperties	   (project_ -> defaultReportProperties());
-	xref_		-> setProperties		   (project_ -> defaultXrefProperties());
+	xref_		-> setProperties		   (project_ -> defaultXRefProperties());
 }
 
 /**

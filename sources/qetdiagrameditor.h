@@ -59,13 +59,13 @@ class QETDiagramEditor : public QETMainWindow {
 	QList<DiagramView *> projectViews() const;
 	QList<QString> editedFiles() const;
 	ProjectView *viewForFile(const QString &) const;
-	static TitleBlockProperties     defaultTitleBlockProperties();
-	static BorderProperties    defaultBorderProperties();
-	static ConductorProperties defaultConductorProperties();
-	static ExportProperties    defaultExportProperties();
-	static ExportProperties    defaultPrintProperties();
-	static QString			   defaultReportProperties();
-	static XRefProperties	   defaultXRefProperties();
+	static TitleBlockProperties			  defaultTitleBlockProperties();
+	static BorderProperties				  defaultBorderProperties();
+	static ConductorProperties			  defaultConductorProperties();
+	static ExportProperties				  defaultExportProperties();
+	static ExportProperties				  defaultPrintProperties();
+	static QString						  defaultReportProperties();
+	static QHash<QString, XRefProperties> defaultXRefProperties();
 	
 	protected:
 	void actions();

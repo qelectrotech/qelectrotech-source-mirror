@@ -87,7 +87,12 @@ void NewDiagramPage::applyConf() {
 	rpw->toSettings(settings, "diagrameditor/defaultreport");
 
 	// default xref properties
-	xrefpw -> properties().toSettings(settings, "diagrameditor/defaultxref");
+	QHash <QString, XRefProperties> hash_xrp = xrefpw -> properties();
+	foreach (QString key, hash_xrp.keys()) {
+		XRefProperties xrp = hash_xrp[key];
+		QString str("diagrameditor/defaultxref");
+		xrp.toSettings(settings, str += key);
+	}
 }
 
 /// @return l'icone de cette page

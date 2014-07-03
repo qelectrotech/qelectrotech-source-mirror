@@ -35,10 +35,10 @@ CrossRefItem::CrossRefItem(Element *elmt) :
 	QGraphicsObject(elmt),
 	m_element (elmt)
 {
-	m_properties = elmt->diagram()->defaultXRefProperties();
+	m_properties = elmt->diagram()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
 	connect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 	connect(elmt->diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
-	connect(elmt->diagram(), SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SLOT(setProperties(XRefProperties)));
+	connect(elmt->diagram(), SIGNAL(XRefPropertiesChanged()), this, SLOT(updateProperties()));
 
 	//set specific behavior related to the parent item.
 	if(m_properties.snapTo() == XRefProperties::Bottom) {
@@ -61,7 +61,7 @@ CrossRefItem::~CrossRefItem() {
 	}
 	disconnect(m_element, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 	disconnect(m_element->diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
-	disconnect(m_element->diagram(), SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SLOT(setProperties(XRefProperties)));
+	disconnect(m_element->diagram(), SIGNAL(XRefPropertiesChanged()), this, SLOT(updateProperties()));
 }
 
 /**
@@ -119,7 +119,13 @@ void CrossRefItem::allElementsPositionText(QString &no_str, QString &nc_str, con
 	}
 }
 
-void CrossRefItem::setProperties(const XRefProperties &xrp) {
+/**
+ * @brief CrossRefItem::updateProperties
+ * update the curent properties
+ */
+void CrossRefItem::updateProperties() {
+	XRefProperties xrp = m_element->diagram()->defaultXRefProperties(m_element->kindInformations()["type"].toString());
+
 	if (m_properties != xrp) {
 		if (m_properties.snapTo() != xrp.snapTo()) {
 			if (xrp.snapTo() == XRefProperties::Bottom) {

@@ -1203,12 +1203,12 @@ QETProject *Diagram::project() const {
 void Diagram::setProject(QETProject *project) {
 	if (project_) {
 		disconnect (project_, SIGNAL(reportPropertiesChanged(QString)),	  this, SIGNAL(reportPropertiesChanged(QString)));
-		disconnect (project_, SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SIGNAL(XRefPropertiesChanged(XRefProperties)));
+		disconnect (project_, SIGNAL(XRefPropertiesChanged()), this, SIGNAL(XRefPropertiesChanged()));
 	}
 	project_ = project;
 	if (project_) {
 		connect (project_, SIGNAL(reportPropertiesChanged(QString)),	  this, SIGNAL(reportPropertiesChanged(QString)));
-		connect (project_, SIGNAL(XRefPropertiesChanged(XRefProperties)), this, SIGNAL(XRefPropertiesChanged(XRefProperties)));
+		connect (project_, SIGNAL(XRefPropertiesChanged()), this, SIGNAL(XRefPropertiesChanged()));
 	}
 }
 

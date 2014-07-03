@@ -451,13 +451,14 @@ void QETProject::setDefaultReportProperties(const QString &properties) {
 	emit reportPropertiesChanged(properties);
 }
 
-XRefProperties QETProject::defaultXrefProperties() const{
-	return m_default_xref_properties;
+void QETProject::setDefaultXRefProperties(const QString type, const XRefProperties &properties) {
+	m_default_xref_properties.insert(type, properties);
+	emit XRefPropertiesChanged();
 }
 
-void QETProject::setDefaultXRefProperties(const XRefProperties &properties) {
-	m_default_xref_properties = properties;
-	emit XRefPropertiesChanged(properties);
+void QETProject::setDefaultXRefProperties(QHash<QString, XRefProperties> hash) {
+	m_default_xref_properties.swap(hash);
+	emit XRefPropertiesChanged();
 }
 
 /**
@@ -1179,7 +1180,7 @@ void QETProject::readDefaultPropertiesXml() {
 			conductors_elmt = child_elmt;
 		} else if (child_elmt.tagName() == "report") {
 			report_elmt = child_elmt;
-		} else if (child_elmt.tagName() == "xref") {
+		} else if (child_elmt.tagName() == "xrefs") {
 			xref_elmt = child_elmt;
 		}
 	}
@@ -1189,7 +1190,13 @@ void QETProject::readDefaultPropertiesXml() {
 	if (!titleblock_elmt.isNull()) default_titleblock_properties_.fromXml(titleblock_elmt);
 	if (!conductors_elmt.isNull()) default_conductor_properties_.fromXml(conductors_elmt);
 	if (!report_elmt.isNull())	   setDefaultReportProperties(report_elmt.attribute("label"));
-	if (!xref_elmt.isNull())	   m_default_xref_properties.fromXml(xref_elmt);
+	if (!xref_elmt.isNull()) {
+		foreach(QDomElement elmt, QET::findInDomElement(xref_elmt, "xref")) {
+			XRefProperties xrp;
+			xrp.fromXml(elmt);
+			m_default_xref_properties.insert(elmt.attribute("type"), xrp);
+		}
+	}
 }
 
 
@@ -1227,9 +1234,15 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	xml_element.appendChild(report_elmt);
 
 	// export default XRef properties
-	QDomElement xref_elmt = xml_document.createElement("xref");
-	defaultXrefProperties().toXml(xref_elmt);
-	xml_element.appendChild(xref_elmt);
+	QDomElement xrefs_elmt = xml_document.createElement("xrefs");
+	foreach (QString key, defaultXRefProperties().keys()) {
+		QDomElement xref_elmt = xml_document.createElement("xref");
+		xref_elmt.setAttribute("type", key);
+		defaultXRefProperties()[key].toXml(xref_elmt);
+		xrefs_elmt.appendChild(xref_elmt);
+	}
+
+	xml_element.appendChild(xrefs_elmt);
 }
 
 /**

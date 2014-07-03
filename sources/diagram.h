@@ -104,7 +104,7 @@ class Diagram : public QGraphicsScene {
 	
 	public:
 	QString		   defaultReportProperties () const {return project_ -> defaultReportProperties();}
-	XRefProperties defaultXRefProperties   () const {return project_ -> defaultXrefProperties();}
+	XRefProperties defaultXRefProperties   (const QString &str) const {return project_ -> defaultXRefProperties(str);}
 	static bool clipboardMayContainDiagram();
 	bool setNumerotation (NumerotationType, NumerotationContext);
 	NumerotationContext getNumerotation (NumerotationType) const;
@@ -213,7 +213,7 @@ class Diagram : public QGraphicsScene {
 	/// Signal emitted when users wish to edit an element from the diagram
 	void editElementRequired(const ElementsLocation &);
 	void reportPropertiesChanged(QString);
-	void XRefPropertiesChanged(XRefProperties);
+	void XRefPropertiesChanged();
 };
 Q_DECLARE_METATYPE(Diagram *)
 

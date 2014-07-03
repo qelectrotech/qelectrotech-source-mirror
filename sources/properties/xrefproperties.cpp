@@ -22,7 +22,11 @@
  * Default Constructor
  */
 XRefProperties::XRefProperties()
-{}
+{
+	m_show_power_ctc = true;
+	m_display = Cross;
+	m_snap_to = Bottom;
+}
 
 /**
  * @brief XRefProperties::toSettings

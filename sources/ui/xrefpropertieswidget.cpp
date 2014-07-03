@@ -25,16 +25,15 @@
  * @param properties: properties to use
  * @param parent: parent widget
  */
-XRefPropertiesWidget::XRefPropertiesWidget(XRefProperties properties, QWidget *parent) :
+XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> properties, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::XRefPropertiesWidget),
 	m_properties(properties)
 {
 	ui->setupUi(this);
-
-	ui->m_snap_to_cb->addItem(tr("En bas de page"),					  "bottom");
-	ui->m_snap_to_cb->addItem(tr("Sous le label de l'\351l\351ment"), "label");
-	connect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)), ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
+	buildUi();
+	connect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)),            ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
+	connect(ui->m_type_cb,              SIGNAL(currentIndexChanged(int)), this,                      SLOT(typeChanged()));
 	updateDisplay();
 }
 
@@ -44,7 +43,8 @@ XRefPropertiesWidget::XRefPropertiesWidget(XRefProperties properties, QWidget *p
  */
 XRefPropertiesWidget::~XRefPropertiesWidget()
 {
-	disconnect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)), ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
+	disconnect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)),            ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
+	disconnect(ui->m_type_cb,              SIGNAL(currentIndexChanged(int)), this,                      SLOT(typeChanged()));
 	delete ui;
 }
 
@@ -53,25 +53,18 @@ XRefPropertiesWidget::~XRefPropertiesWidget()
  * set new properties for this widget
  * @param properties
  */
-void XRefPropertiesWidget::setProperties(const XRefProperties &properties) {
+void XRefPropertiesWidget::setProperties(const QHash <QString, XRefProperties> &properties) {
 	m_properties = properties;
 	updateDisplay();
+	m_previous_type_index = ui->m_type_cb->currentIndex();
 }
 
 /**
  * @brief XRefPropertiesWidget::properties
- * @return the propertie edited by this widget
+ * @return the properties edited by this widget
  */
-XRefProperties XRefPropertiesWidget::properties() {
-	if		(ui->m_display_has_cross_rb->isChecked())	 m_properties.setDisplayHas(XRefProperties::Cross);
-	else if (ui->m_display_has_contacts_rb->isChecked()) m_properties.setDisplayHas(XRefProperties::Contacts);
-	if (ui->m_snap_to_cb->itemData(ui->m_snap_to_cb->currentIndex()).toString() == "bottom")
-		 m_properties.setSnapTo(XRefProperties::Bottom);
-	else m_properties.setSnapTo(XRefProperties::Label);
-	m_properties.setShowPowerContac(ui->m_show_power_cb->isChecked());
-	m_properties.setPrefix("power", ui->m_power_prefix_le->text());
-	m_properties.setPrefix("delay", ui->m_delay_prefix_le->text());
-
+QHash <QString, XRefProperties> XRefPropertiesWidget::properties(){
+	saveProperties(ui->m_type_cb->currentIndex());
 	return m_properties;
 }
 
@@ -81,21 +74,57 @@ XRefProperties XRefPropertiesWidget::properties() {
  * @param ro
  */
 void XRefPropertiesWidget::setReadOnly(bool ro) {
-	ui->m_display_has_cross_rb->setDisabled(ro);
-	ui->m_display_has_contacts_rb->setDisabled(ro);
+	ui->m_type_cb->setDisabled(ro);
+	ui->m_display_gb->setDisabled(ro);
+	ui->m_cross_properties_gb->setDisabled(ro);
 
-	if (m_properties.displayHas() != XRefProperties::Cross)
+	if (!ro && ui->m_display_has_contacts_rb->isChecked()) {
 		ui->m_cross_properties_gb->setDisabled(true);
-	else
-		ui->m_cross_properties_gb->setDisabled(ro);
+	}
+}
+
+/**
+ * @brief XRefPropertiesWidget::buildUi
+ * Build some widget of this ui.
+ */
+void XRefPropertiesWidget::buildUi() {
+	ui -> m_type_cb -> addItem(tr("Bobine"),			   "coil");
+	ui -> m_type_cb -> addItem(tr("Organe de protection"), "protection");
+	ui -> m_snap_to_cb -> addItem(tr("En bas de page"),					  "bottom");
+	ui -> m_snap_to_cb -> addItem(tr("Sous le label de l'\351l\351ment"), "label");
+	m_previous_type_index = ui -> m_type_cb -> currentIndex();
+}
+
+/**
+ * @brief XRefPropertiesWidget::saveProperties
+ * Save the properties of the type define at @index of the combo box m_type_cb
+ * @param index
+ */
+void XRefPropertiesWidget::saveProperties(int index) {
+	QString type = ui->m_type_cb->itemData(index).toString();
+	XRefProperties xrp = m_properties[type];
+
+	if		(ui->m_display_has_cross_rb->isChecked())	 xrp.setDisplayHas(XRefProperties::Cross);
+	else if (ui->m_display_has_contacts_rb->isChecked()) xrp.setDisplayHas(XRefProperties::Contacts);
+	if (ui->m_snap_to_cb->itemData(ui->m_snap_to_cb->currentIndex()).toString() == "bottom")
+		 xrp.setSnapTo(XRefProperties::Bottom);
+	else xrp.setSnapTo(XRefProperties::Label);
+	xrp.setShowPowerContac(ui->m_show_power_cb->isChecked());
+	xrp.setPrefix("power", ui->m_power_prefix_le->text());
+	xrp.setPrefix("delay", ui->m_delay_prefix_le->text());
+
+	m_properties.insert(type, xrp);
 }
 
 /**
  * @brief XRefPropertiesWidget::updateDisplay
- * Update display with the content of the properties
+ * Update display with the curent displayed type.
  */
 void XRefPropertiesWidget::updateDisplay() {
-	XRefProperties::DisplayHas dh = m_properties.displayHas();
+	QString type = ui->m_type_cb->itemData(ui->m_type_cb->currentIndex()).toString();
+	XRefProperties xrp = m_properties[type];
+
+	XRefProperties::DisplayHas dh = xrp.displayHas();
 	if		(dh == XRefProperties::Cross)	 {
 		ui->m_display_has_cross_rb->setChecked(true);
 	}
@@ -103,11 +132,26 @@ void XRefPropertiesWidget::updateDisplay() {
 		ui->m_display_has_contacts_rb->setChecked(true);
 	}
 
-	if (m_properties.snapTo() == XRefProperties::Bottom)
+	if (xrp.snapTo() == XRefProperties::Bottom)
 		 ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("bottom"));
 	else ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("label"));
-	ui->m_show_power_cb->setChecked(m_properties.showPowerContact());
-	ui->m_power_prefix_le->setText(m_properties.prefix("power"));
-	ui->m_delay_prefix_le->setText(m_properties.prefix("delay"));
+	ui->m_show_power_cb->setChecked(xrp.showPowerContact());
+	ui->m_power_prefix_le->setText(xrp.prefix("power"));
+	ui->m_delay_prefix_le->setText(xrp.prefix("delay"));
 	ui->m_cross_properties_gb->setDisabled(!ui->m_display_has_cross_rb->isChecked());
+}
+
+/**
+ * @brief XRefPropertiesWidget::typeChanged
+ * manage the save of the current properties,
+ * when the combo box of type change.
+ */
+void XRefPropertiesWidget::typeChanged() {
+	//save the properties of the previous xref type
+	saveProperties(m_previous_type_index);
+	//update display with the current xref type
+	updateDisplay();
+	//everything is done
+	//previous index is now the current index
+	m_previous_type_index = ui->m_type_cb->currentIndex();
 }
