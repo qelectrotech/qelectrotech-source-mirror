@@ -13,6 +13,9 @@
         <name lang="nl">mechanisch met opkomvertraging</name>
         <name lang="be">Spoel met inschakel vertraging</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">coil</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

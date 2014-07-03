@@ -10,6 +10,9 @@
         <name lang="es">Relé electrónico</name>
         <name lang="be">Electronisch relais</name> 
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">coil</kindInformation>
+    </kindInformations>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="7" y2="-2" x2="0"/>

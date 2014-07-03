@@ -10,6 +10,9 @@
         <name lang="cs">Třífázový jistič</name>
         <name lang="nl">Lastscheider 3</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

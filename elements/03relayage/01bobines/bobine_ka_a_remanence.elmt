@@ -13,6 +13,9 @@
         <name lang="nl">spoel remanent</name>
         <name lang="be">Spoel KA remanent</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">coil</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

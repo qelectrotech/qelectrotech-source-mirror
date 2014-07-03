@@ -12,6 +12,9 @@
         <name lang="nl">spoel met vergrendeling</name>
         <name lang="be">Spoel KA met mechanische vergrendeling</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">coil</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

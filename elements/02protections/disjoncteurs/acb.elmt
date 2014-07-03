@@ -7,6 +7,9 @@
         <name lang="nl">Lastscheider 1 lucht</name>
         <name lang="cs">Jistič řízený vzduchem</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
     <informations>Author: Arun Kishore Eswara
 
 License: Creative Commons By 3.0 

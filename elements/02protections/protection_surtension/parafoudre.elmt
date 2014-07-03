@@ -8,6 +8,9 @@
         <name lang="cs">Bleskojistka, ochrana proti přepětí</name>
         <name lang="nl">Overspanning beveiliging</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
     <informations>EN 60617: 07-22-03</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="0" y2="-20" x2="0"/>

@@ -10,6 +10,9 @@
         <name lang="cs">Omron HDE-M1</name>
         <name lang="nl">Omron HDE-M1</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">coil</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

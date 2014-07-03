@@ -8,6 +8,9 @@
         <name lang="it">Int. Aut. Magneto-termico 1P+N</name>
         <name lang="nl">Lastscheider 1P+N</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

@@ -12,6 +12,9 @@
         <name lang="cs">Odpojovač</name>
         <name lang="nl">Zekeringscheider 3+N</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

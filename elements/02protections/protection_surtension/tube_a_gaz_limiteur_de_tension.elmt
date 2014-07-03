@@ -13,6 +13,9 @@ tube
         <name lang="cs">Souměrný odvaděč přepětí v trubici pro výboj v plynu</name>
         <name lang="nl">Symmetrische gasontlading buis</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
     <informations>EN 60617: 07-22-05</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-2" y2="0" x2="-20"/>

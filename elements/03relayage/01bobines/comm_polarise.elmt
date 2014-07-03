@@ -11,6 +11,9 @@
         <name lang="nl">relay polair</name>
         <name lang="be">Relais gepolariseerd</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">coil</kindInformation>
+    </kindInformations>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-22" x2="-22" x3="-18" x4="-18" antialias="false" x5="-22" x6="-22" x7="-15" x8="-15" x9="-22" y1="-10" y2="-7" y10="-7" y3="-7" y4="7" y5="7" x10="-22" y6="10" y7="10" y8="-10" y9="-10"/>
