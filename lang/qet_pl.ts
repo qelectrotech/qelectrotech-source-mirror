@@ -1116,12 +1116,12 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="84"/>
         <source>Élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Element nadrzędny</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="90"/>
         <source>Type concret</source>
-        <translation type="unfinished"></translation>
+        <translation>Określenie typu</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
@@ -1177,12 +1177,12 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="88"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation>Cewka</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="89"/>
         <source>Organe de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Zabezpieczenie</translation>
     </message>
 </context>
 <context>
@@ -4013,7 +4013,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
         <source>Ajouter une zone polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw wielokąt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="389"/>
@@ -5716,7 +5716,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="676"/>
         <source>Modifier les propriétés</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiana właściowści</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="51"/>
@@ -7347,7 +7347,7 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="22"/>
         <source>Type :</source>
-        <translation type="unfinished">Typ :</translation>
+        <translation>Typ :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
@@ -7357,7 +7357,7 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="42"/>
         <source>Positionner :</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozycja :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
@@ -7392,22 +7392,22 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation>Cewka</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
         <source>Organe de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Zabezpieczenie</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
         <source>En bas de page</source>
-        <translation type="unfinished"></translation>
+        <translation>Dolna</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
         <source>Sous le label de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Pod oznaczeniem elementu</translation>
     </message>
 </context>
 <context>
