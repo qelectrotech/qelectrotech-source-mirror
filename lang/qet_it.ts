@@ -1115,12 +1115,12 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="84"/>
         <source>Élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Elemento Master</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="90"/>
         <source>Type concret</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo di collegamento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
@@ -1176,12 +1176,12 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="88"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation>Bobina</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="89"/>
         <source>Organe de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Protezione</translation>
     </message>
 </context>
 <context>
@@ -4010,7 +4010,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
         <source>Ajouter une zone polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un&apos;area polilinea</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="389"/>
@@ -5710,7 +5710,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="676"/>
         <source>Modifier les propriétés</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifica le proprietà</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="51"/>
@@ -7334,7 +7334,7 @@ Lunghezza massima: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="22"/>
         <source>Type :</source>
-        <translation type="unfinished">Tipo:</translation>
+        <translation>Tipo :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
@@ -7344,7 +7344,7 @@ Lunghezza massima: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="42"/>
         <source>Positionner :</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
@@ -7379,22 +7379,22 @@ Lunghezza massima: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation>Bobina</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
         <source>Organe de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Protezione</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
         <source>En bas de page</source>
-        <translation type="unfinished"></translation>
+        <translation>In fondo alla pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
         <source>Sous le label de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Sull&apos;etichetta dell&apos;elemento</translation>
     </message>
 </context>
 <context>
