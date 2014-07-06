@@ -1114,12 +1114,12 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="84"/>
         <source>Élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Master element</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="90"/>
         <source>Type concret</source>
-        <translation type="unfinished"></translation>
+        <translation>Type </translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
@@ -1175,12 +1175,12 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="88"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation>Spoel</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="89"/>
         <source>Organe de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Beveiliging</translation>
     </message>
 </context>
 <context>
@@ -4020,7 +4020,7 @@ Deselecteert alle geselecteerde elementen en selecteert de niet-geselecteerde el
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
         <source>Ajouter une zone polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een Polylijn toe</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="389"/>
@@ -4242,7 +4242,7 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="164"/>
         <source>Ajouter une borne</source>
-        <translation>Voeg teen klem toe</translation>
+        <translation>Voeg een klem toe</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="165"/>
@@ -4750,8 +4750,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="167"/>
         <source>Maintenez la touche Shift enfoncée pour effectuer plusieurs ajouts d&apos;affilée</source>
-        <translation>
-Houd de Shift-toets ingedrukt om meerdere achtereenvolgende toevoegingen aan te brengen</translation>
+        <translation>Houd de Shift-toets ingedrukt om meerdere achtereenvolgende toevoegingen aan te brengen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="175"/>
@@ -5859,7 +5858,7 @@ Opslaan naar een bestand</translation>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="676"/>
         <source>Modifier les propriétés</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschappen wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/editor/partrectangle.h" line="46"/>
@@ -5963,7 +5962,7 @@ Opnieuw instellen van de  afmetingen</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
         <source>modification des informations complémentaires</source>
         <comment>undo caption</comment>
-        <translation>Wijzig extra informatie</translation>
+        <translation>Wijzig van de extra informatie</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
@@ -7357,7 +7356,7 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="22"/>
         <source>Type :</source>
-        <translation type="unfinished">Type:</translation>
+        <translation>Type:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
@@ -7367,7 +7366,7 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="42"/>
         <source>Positionner :</source>
-        <translation type="unfinished"></translation>
+        <translation>Positie:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
@@ -7402,22 +7401,22 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation>Spoel</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
         <source>Organe de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Beveiliging</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
         <source>En bas de page</source>
-        <translation type="unfinished"></translation>
+        <translation>Onder aan de bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
         <source>Sous le label de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Naast element code</translation>
     </message>
 </context>
 <context>
