@@ -1,9 +1,10 @@
-<definition width="120" version="0.4" hotspot_x="33" hotspot_y="45" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="120" version="0.4" hotspot_x="33" hotspot_y="36" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Οριζόντια αντλία νερού</name>
         <name lang="en">Horizontall Water Pump</name>
+        <name lang="it">Pompa orizzontale</name>
         <name lang="fr">Pompe horizontale</name>
         <name lang="es">Bomba agua horiz-1</name>
-        <name lang="it">Pompa orizzontale</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

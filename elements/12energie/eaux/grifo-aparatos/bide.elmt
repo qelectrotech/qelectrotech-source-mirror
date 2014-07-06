@@ -1,9 +1,10 @@
 <definition width="60" version="0.4" hotspot_x="29" hotspot_y="45" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Μπιντέ</name>
         <name lang="en">Bidet</name>
+        <name lang="it">Bidè</name>
         <name lang="fr">Bidé</name>
         <name lang="es">Bidé</name>
-        <name lang="it">Bidè</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

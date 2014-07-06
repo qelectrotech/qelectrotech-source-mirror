@@ -1,9 +1,10 @@
 <definition width="100" version="0.4" hotspot_x="39" hotspot_y="68" height="110" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Ντούζ</name>
         <name lang="en">Douche</name>
+        <name lang="it">Doccia</name>
         <name lang="fr">Douche</name>
         <name lang="es">Ducha</name>
-        <name lang="it">Doccia</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

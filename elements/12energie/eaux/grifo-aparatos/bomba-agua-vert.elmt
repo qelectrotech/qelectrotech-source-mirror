@@ -1,9 +1,10 @@
 <definition width="60" version="0.4" hotspot_x="28" hotspot_y="74" height="110" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="el">Κάθετη αντλία νερού</name>
         <name lang="en">Vertical Water Pump</name>
+        <name lang="it">Pompa verticale</name>
         <name lang="fr">Pompe verticale</name>
         <name lang="es">Bomba agua vertical</name>
-        <name lang="it">Pompa verticale</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

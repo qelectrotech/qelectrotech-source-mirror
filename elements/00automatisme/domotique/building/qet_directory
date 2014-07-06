@@ -6,5 +6,6 @@
         <name lang="fr">Gestion d'immeubles</name>
         <name lang="it">Gestione edifici</name>
         <name lang="pl">Zarządzanie budynkiem</name>
+        <name lang="el">Διαχείριση κτηρίου</name>
     </names>
 </qet-directory>

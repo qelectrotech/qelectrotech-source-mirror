@@ -1,16 +1,17 @@
-<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
+<definition width="40" version="0.4" hotspot_x="11" hotspot_y="25" height="50" link_type="master" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مفتاح عزل</name>
         <name lang="de">Trennschalter</name>
         <name lang="ru">Выключатель-разъеденитель</name>
         <name lang="pt">Seccionador</name>
+        <name lang="el">Διακόπτης φορτίου</name>
         <name lang="en">Disconnecting switch</name>
         <name lang="it">Sezionatore 3P</name>
         <name lang="fr">Sectionneur</name>
         <name lang="pl">Rozłącznik</name>
         <name lang="es">Seccionador</name>
-        <name lang="cs">Odpojovač</name>
         <name lang="nl">Scheidingsschakelaar</name>
+        <name lang="cs">Odpojovač</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>
