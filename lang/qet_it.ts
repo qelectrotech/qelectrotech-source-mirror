@@ -4010,7 +4010,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
         <source>Ajouter une zone polyligne</source>
-        <translation>Aggiungi un&apos;area polilinea</translation>
+        <translation>Poligono</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="389"/>
