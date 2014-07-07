@@ -1994,22 +1994,22 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="165"/>
         <source>Dessiner la grille</source>
-        <translation>Disegnare la griglia</translation>
+        <translation>Disegna la griglia</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="169"/>
         <source>Dessiner le cadre</source>
-        <translation>Disegnare la cornice</translation>
+        <translation>Disegna la cornice</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="173"/>
         <source>Dessiner le cartouche</source>
-        <translation>Disegnare il cartiglio</translation>
+        <translation>Disegna il cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="177"/>
         <source>Dessiner les bornes</source>
-        <translation>Disegnare i terminali</translation>
+        <translation>Disegna i terminali</translation>
     </message>
 </context>
 <context>
@@ -3778,22 +3778,22 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="347"/>
         <source>Ajouter une image</source>
-        <translation>Aggiungi un&apos;immagine</translation>
+        <translation>Immagine</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="348"/>
         <source>Ajouter une liaison mecanique</source>
-        <translation>Aggiungi un collegamento meccanico</translation>
+        <translation>Collegamento meccanico</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
         <source>Ajouter une zone rectangle</source>
-        <translation>Disegna un rettangolo</translation>
+        <translation>Rettangolo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
         <source>Ajouter une zone ellipse</source>
-        <translation>Disegna un ellisse</translation>
+        <translation>Ellisse</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="211"/>
