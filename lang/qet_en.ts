@@ -1116,12 +1116,12 @@ Apply a text to all of these drivers?</translation>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="84"/>
         <source>Élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Master element</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="90"/>
         <source>Type concret</source>
-        <translation type="unfinished"></translation>
+        <translation>concrete type</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
@@ -1177,12 +1177,12 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="88"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation>coil</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="89"/>
         <source>Organe de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Organ of protection</translation>
     </message>
 </context>
 <context>
@@ -4013,7 +4013,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
         <source>Ajouter une zone polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Add a polyline area</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="389"/>
@@ -5712,7 +5712,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="676"/>
         <source>Modifier les propriétés</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit Properties</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="51"/>
@@ -7338,7 +7338,7 @@ Maximum width: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="22"/>
         <source>Type :</source>
-        <translation type="unfinished">Type:</translation>
+        <translation>Type:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
@@ -7348,7 +7348,7 @@ Maximum width: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="42"/>
         <source>Positionner :</source>
-        <translation type="unfinished"></translation>
+        <translation>Positioning :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
@@ -7383,22 +7383,22 @@ Maximum width: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation>Coil</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
         <source>Organe de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Organ of protection</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
         <source>En bas de page</source>
-        <translation type="unfinished"></translation>
+        <translation>Footer</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
         <source>Sous le label de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Under the label of the element</translation>
     </message>
 </context>
 <context>
