@@ -84,25 +84,35 @@
       </item>
       <item>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="m_delay_prefix_le"/>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="m_power_prefix_le"/>
-        </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>Préfixe des contacts de puissance:</string>
+           <string>Préfixe des contacts de puissance :</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>Préfixe des contacts temporisés:</string>
+           <string>Préfixe des contacts temporisés :</string>
           </property>
          </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="m_delay_prefix_le"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="m_power_prefix_le"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Préfixe des contacts inverseurs :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="m_switch_prefix_le"/>
         </item>
        </layout>
       </item>

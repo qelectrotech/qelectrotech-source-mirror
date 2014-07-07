@@ -79,6 +79,7 @@ void ElementPropertiesEditorWidget::setUpInterface() {
 	// Slave option
 	ui -> m_state_cb -> addItem(tr("Normalement ouvert"),   QVariant("NO"));
 	ui -> m_state_cb -> addItem(tr("Normalement ferm\351"), QVariant("NC"));
+	ui -> m_state_cb -> addItem(tr("Inverseur"),			QVariant("SW"));
 	ui -> m_type_cb  -> addItem(tr("Simple"),				QVariant("simple"));
 	ui -> m_type_cb  -> addItem(tr("Puissance"),			QVariant("power"));
 	ui -> m_type_cb  -> addItem(tr("Temporis\351 travail"), QVariant("delayOn"));

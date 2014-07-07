@@ -92,8 +92,9 @@ QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_p
 	txt += "-";
 	txt += elmt->diagram()->convertPosition(elmt -> scenePos()).toString();
 	if (add_prefix) {
-		if (elmt->kindInformations()["type"].toString() == "power") txt.prepend(m_properties.prefix("power"));
+		if      (elmt->kindInformations()["type"].toString() == "power")        txt.prepend(m_properties.prefix("power"));
 		else if (elmt->kindInformations()["type"].toString().contains("delay")) txt.prepend(m_properties.prefix("delay"));
+		else if (elmt->kindInformations()["state"].toString() == "SW")          txt.prepend(m_properties.prefix("switch"));
 	}
 	return txt;
 }
@@ -111,11 +112,23 @@ void CrossRefItem::allElementsPositionText(QString &no_str, QString &nc_str, con
 	foreach (Element *elmt, m_element->linkedElements()) {
 		QString state = elmt->kindInformations()["state"].toString();
 
-		if (state == "NO") tmp_str = &no_str;
-		else if (state == "NC") tmp_str = &nc_str;
+		//NO and NC are displayed in single place in the cross
+		if (state == "NO" || state == "NC") {
+			if (state == "NO") tmp_str = &no_str;
+			else if (state == "NC") tmp_str = &nc_str;
 
-		if (!tmp_str->isEmpty()) *tmp_str += "\n";
-		*tmp_str += elementPositionText(elmt, add_prefix);
+			if (!tmp_str->isEmpty()) *tmp_str += "\n";
+			*tmp_str += elementPositionText(elmt, add_prefix);
+		}
+
+		//SW are displayed in NC and NO column in the cross
+		else if (state == "SW") {
+			for (int i = 0; i < 2; i++) {
+				tmp_str = i==0? &no_str : &nc_str;
+				if (!tmp_str->isEmpty()) *tmp_str += "\n";
+				*tmp_str += elementPositionText(elmt, add_prefix);
+			}
+		}
 	}
 }
 
@@ -350,7 +363,10 @@ void CrossRefItem::drawHasContacts(QPainter &painter) {
 		for (int i=0; i<info["number"].toInt(); i++) {
 			int option = 0;
 
-			info["state"].toString() == "NO"? option = NO : option = NC;
+			QString state = info["state"].toString();
+				 if (state == "NO") option = NO;
+			else if (state == "NC") option = NC;
+			else if (state == "SW") option = SW;
 
 			QString type = info["type"].toString();
 			if (type == "power") option += Power;
@@ -368,83 +384,111 @@ void CrossRefItem::drawHasContacts(QPainter &painter) {
 
 /**
  * @brief CrossRefItem::drawContact
- * draw one contacte, the type of contact to draw is define in ctc.
- * @param painter painter to use
- * @param ctc option for draw the contact, see enum CONTACTS
+ * Draw one contact, the type of contact to draw is define in @flags.
+ * @param painter, painter to use
+ * @param flags, define how to draw the contact (see enul CONTACTS)
+ * @param str, the text to display for this contact (the position of the contact).
  */
 void CrossRefItem::drawContact(QPainter &painter, int flags, QString str) {
 	int offset = m_drawed_contacts*10;
 
-	//draw the basic line
-	painter.drawLine(0, offset+6, 8, offset+6);
-	painter.drawLine(16, offset+6, 24, offset+6);
+	//Draw NO or NC contact
+	if (flags &NOC) {
+		//draw the basic line
+		painter.drawLine(0, offset+6, 8, offset+6);
+		painter.drawLine(16, offset+6, 24, offset+6);
 
-	///take exemple of this code for display the terminal text
-	/*QFont font = QETApp::diagramTextsFont(4);
-	font.setBold(true);
-	painter.setFont(font);
-	QRectF bt(0, offset, 24, 10);
-	int txt = 10 + m_drawed_contacts;
-	painter.drawText(bt, Qt::AlignLeft|Qt::AlignTop, QString::number(txt));
-	painter.drawText(bt, Qt::AlignRight|Qt::AlignTop, QString::number(txt));
-	painter.setFont(QETApp::diagramTextsFont(5));*/
+		///take exemple of this code for display the terminal text
+		/*QFont font = QETApp::diagramTextsFont(4);
+		font.setBold(true);
+		painter.setFont(font);
+		QRectF bt(0, offset, 24, 10);
+		int txt = 10 + m_drawed_contacts;
+		painter.drawText(bt, Qt::AlignLeft|Qt::AlignTop, QString::number(txt));
+		painter.drawText(bt, Qt::AlignRight|Qt::AlignTop, QString::number(txt));
+		painter.setFont(QETApp::diagramTextsFont(5));*/
 
-	//draw open contact
-	if (flags &NO) {
-		painter.drawLine(8, offset+9, 16, offset+6);
+		//draw open contact
+		if (flags &NO) {
+			painter.drawLine(8, offset+9, 16, offset+6);
+		}
+		//draw close contact
+		if (flags &NC) {
+			QPointF p1[3] = {
+				QPointF(8, offset+6),
+				QPointF(9, offset+6),
+				QPointF(9, offset+2.5)
+			};
+			painter.drawPolyline(p1,3);
+			painter.drawLine(8, offset+3, 16, offset+6);
+		}
+
+		//draw half circle for power contact
+		if (flags &Power) {
+			QRectF arc(4, offset+4, 4, 4);
+			if (flags &NO)
+				painter.drawArc(arc, 180*16, 180*16);
+			else
+				painter.drawArc(arc, 0, 180*16);
+		}
+
+		// draw half circle for delay contact
+		if(flags &Delay) {
+			// for delay on contact
+			if (flags &DelayOn) {
+				if (flags &NO) {
+					painter.drawLine(12, offset+4, 12, offset+6);
+					QRectF r(9.5, offset+1, 5, 3);
+					painter.drawArc(r, 180*16, 180*16);
+				}
+				if (flags &NC) {
+					painter.drawLine(QPointF(13.5, offset+2), QPointF(13.5, offset+3.5));
+					QRectF r(11, offset-1, 5, 3);
+					painter.drawArc(r, 180*16, 180*16);
+				}
+			}
+			// for delay off contact
+			else {
+				if (flags &NO) {
+					painter.drawLine(12, offset+3, 12, offset+6);
+					QRectF r(9.5, offset+2, 5, 3);
+					painter.drawArc(r, 0, 180*16);
+				}
+				if (flags &NC) {
+					painter.drawLine(QPointF(13.5, offset+1), QPointF(13.5, offset+3.5));
+					QRectF r(11, offset, 5, 3);
+					painter.drawArc(r, 0, 180*16);
+				}
+			}
+		}
+
+		painter.drawText(20, offset, 30, 10, Qt::AlignRight | Qt::AlignVCenter, str);
+		++m_drawed_contacts;
 	}
-	//draw close contact
-	if (flags &NC) {
+
+	//Draw a switch contact
+	else if (flags &SW) {
+		//draw the NO side
+		painter.drawLine(0, offset+6, 8, offset+6);
+		//Draw the NC side
 		QPointF p1[3] = {
-			QPointF(8, offset+6),
-			QPointF(9, offset+6),
-			QPointF(9, offset+2.5)
+			QPointF(0, offset+16),
+			QPointF(8, offset+16),
+			QPointF(8, offset+12)
 		};
-		painter.drawPolyline(p1,3);
-		painter.drawLine(8, offset+3, 16, offset+6);
+		painter.drawPolyline(p1, 3);
+		//Draw the common side
+		QPointF p2[3] = {
+			QPointF(7, offset+14),
+			QPointF(16, offset+11),
+			QPointF(24, offset+11),
+		};
+		painter.drawPolyline(p2, 3);
+		//Draw position text
+		painter.drawText(20, offset+5, 30, 10, Qt::AlignRight | Qt::AlignVCenter, str);
+		//a switch contact take place of two normal contact
+		m_drawed_contacts += 2;
 	}
-
-	//draw half circle for power contact
-	if (flags &Power) {
-		QRectF arc(4, offset+4, 4, 4);
-		if (flags &NO)
-			painter.drawArc(arc, 180*16, 180*16);
-		else
-			painter.drawArc(arc, 0, 180*16);
-	}
-
-	// draw half circle for delay contact
-	if(flags &DelayOn || flags &DelayOff) {
-		// for delay on contact
-		if (flags &DelayOn) {
-			if (flags &NO) {
-				painter.drawLine(12, offset+4, 12, offset+6);
-				QRectF r(9.5, offset+1, 5, 3);
-				painter.drawArc(r, 180*16, 180*16);
-			}
-			if (flags &NC) {
-				painter.drawLine(QPointF(13.5, offset+2), QPointF(13.5, offset+3.5));
-				QRectF r(11, offset-1, 5, 3);
-				painter.drawArc(r, 180*16, 180*16);
-			}
-		}
-		// for delay off contact
-		else {
-			if (flags &NO) {
-				painter.drawLine(12, offset+3, 12, offset+6);
-				QRectF r(9.5, offset+2, 5, 3);
-				painter.drawArc(r, 0, 180*16);
-			}
-			if (flags &NC) {
-				painter.drawLine(QPointF(13.5, offset+1), QPointF(13.5, offset+3.5));
-				QRectF r(11, offset, 5, 3);
-				painter.drawArc(r, 0, 180*16);
-			}
-		}
-	}
-
-	painter.drawText(20, offset, 30, 10, Qt::AlignRight | Qt::AlignVCenter, str);
-	++m_drawed_contacts;
 }
 
 /**

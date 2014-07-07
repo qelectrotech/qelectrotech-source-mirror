@@ -110,8 +110,9 @@ void XRefPropertiesWidget::saveProperties(int index) {
 		 xrp.setSnapTo(XRefProperties::Bottom);
 	else xrp.setSnapTo(XRefProperties::Label);
 	xrp.setShowPowerContac(ui->m_show_power_cb->isChecked());
-	xrp.setPrefix("power", ui->m_power_prefix_le->text());
-	xrp.setPrefix("delay", ui->m_delay_prefix_le->text());
+	xrp.setPrefix("power",  ui->m_power_prefix_le->text());
+	xrp.setPrefix("delay",  ui->m_delay_prefix_le->text());
+	xrp.setPrefix("switch", ui->m_switch_prefix_le->text());
 
 	m_properties.insert(type, xrp);
 }
@@ -136,8 +137,9 @@ void XRefPropertiesWidget::updateDisplay() {
 		 ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("bottom"));
 	else ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("label"));
 	ui->m_show_power_cb->setChecked(xrp.showPowerContact());
-	ui->m_power_prefix_le->setText(xrp.prefix("power"));
-	ui->m_delay_prefix_le->setText(xrp.prefix("delay"));
+	ui->m_power_prefix_le-> setText(xrp.prefix("power"));
+	ui->m_delay_prefix_le-> setText(xrp.prefix("delay"));
+	ui->m_switch_prefix_le->setText(xrp.prefix("switch"));
 	ui->m_cross_properties_gb->setDisabled(!ui->m_display_has_cross_rb->isChecked());
 }
 

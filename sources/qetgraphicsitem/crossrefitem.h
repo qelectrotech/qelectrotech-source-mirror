@@ -48,9 +48,12 @@ class CrossRefItem : public QGraphicsObject
 	enum CONTACTS {
 		NO = 1,
 		NC = 2,
-		Power = 4,
-		DelayOn = 8,
-		DelayOff = 16
+		NOC = 3,
+		SW = 4,
+		Power = 8,
+		DelayOn = 16,
+		DelayOff = 32,
+		Delay = 48
 	};
 
 	QRectF boundingRect			() const;

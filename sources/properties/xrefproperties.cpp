@@ -26,6 +26,7 @@ XRefProperties::XRefProperties()
 	m_show_power_ctc = true;
 	m_display = Cross;
 	m_snap_to = Bottom;
+	m_prefix_keys << "power" << "delay" << "switch";
 }
 
 /**
@@ -40,8 +41,9 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
 	settings.setValue(prefix + "displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
 	settings.setValue(prefix + "snapto", snap);
-	settings.setValue(prefix + "powerprefix",  m_prefix.value("power"));
-	settings.setValue(prefix + "delayprefix", m_prefix.value("delay"));
+	foreach (QString key, m_prefix.keys()) {
+		settings.setValue(prefix + key + "prefix", m_prefix.value(key));
+	}
 }
 
 /**
@@ -56,8 +58,9 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = settings.value(prefix + "snapto", "label").toString();
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
-	m_prefix.insert("power", settings.value(prefix + "powerprefix").toString());
-	m_prefix.insert("delay", settings.value(prefix + "delayprefix").toString());
+	foreach (QString key, m_prefix_keys) {
+		m_prefix.insert(key, settings.value(prefix + key + "prefix").toString());
+	}
 }
 
 /**
@@ -71,8 +74,9 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	xml_element.setAttribute("displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
 	xml_element.setAttribute("snapto", snap);
-	xml_element.setAttribute("powerprefix", m_prefix.value("power"));
-	xml_element.setAttribute("delayprefix", m_prefix.value("delay"));
+	foreach (QString key, m_prefix.keys()) {
+		xml_element.setAttribute(key + "prefix", m_prefix.value(key));
+	}
 }
 
 /**
@@ -86,8 +90,9 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = xml_element.attribute("snapto", "label");
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
-	m_prefix.insert("power", xml_element.attribute("powerprefix"));
-	m_prefix.insert("delay", xml_element.attribute("delayprefix"));
+	foreach (QString key, m_prefix_keys) {
+		m_prefix.insert(key, xml_element.attribute(key + "prefix"));
+	}
 }
 
 bool XRefProperties::operator ==(const XRefProperties &xrp) const{

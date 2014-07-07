@@ -19,6 +19,7 @@
 #define XREFPROPERTIES_H
 
 #include "propertiesinterface.h"
+#include <QStringList>
 
 /**
  * @brief The XRefProperties class
@@ -64,6 +65,7 @@ class XRefProperties : public PropertiesInterface
 	DisplayHas m_display;
 	SnapTo m_snap_to;
 	QHash <QString, QString> m_prefix;
+	QStringList m_prefix_keys;
 };
 
 #endif // XREFPROPERTIES_H
