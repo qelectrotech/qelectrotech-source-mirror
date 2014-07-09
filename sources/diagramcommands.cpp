@@ -27,6 +27,7 @@
 #include "qetgraphicsitem/diagramtextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "conductorautonumerotation.h"
+#include <QPropertyAnimation>
 
 /**
 	Constructeur
@@ -418,6 +419,7 @@ MoveElementsCommand::MoveElementsCommand(
 	diagram(dia),
 	content_to_move(diagram_content),
 	movement(m),
+	m_anim_group(nullptr),
 	first_redo(true)
 {
 	QString moved_content_sentence = content_to_move.sentence(
@@ -444,6 +446,7 @@ MoveElementsCommand::MoveElementsCommand(
  * Destructor
  */
 MoveElementsCommand::~MoveElementsCommand() {
+	delete m_anim_group;
 }
 
 /**
@@ -451,7 +454,8 @@ MoveElementsCommand::~MoveElementsCommand() {
  */
 void MoveElementsCommand::undo() {
 	diagram -> showMe();
-	move(-movement);
+		m_anim_group->setDirection(QAnimationGroup::Forward);
+		m_anim_group->start();
 }
 
 /**
@@ -459,8 +463,14 @@ void MoveElementsCommand::undo() {
  */
 void MoveElementsCommand::redo() {
 	diagram -> showMe();
-	if (first_redo) first_redo = false;
-	else move(movement);
+	if (first_redo) {
+		first_redo = false;
+		move(-movement);
+	}
+	else {
+		m_anim_group->setDirection(QAnimationGroup::Backward);
+		m_anim_group->start();
+	}
 }
 
 /**
@@ -473,17 +483,20 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 
 	//Move every movable item, except conductor
 	foreach (QGraphicsItem *qgi, content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes)) {
-		qgi -> setPos(qgi->pos() + actual_movement);
+		if(qgi->toGraphicsObject()) {
+			setupAnimation(qgi->toGraphicsObject(), "pos", qgi->pos(), qgi->pos() + actual_movement);
+		}
+		else qgi -> setPos(qgi->pos() + actual_movement);
 	}
 	
 	// Move some conductors
 	foreach(Conductor *conductor, content_to_move.conductorsToMove) {
-		conductor -> setPos(conductor -> pos() + actual_movement);
+		setupAnimation(conductor, "pos", conductor->pos(), conductor->pos() + actual_movement);
 	}
 	
 	// Recalcul the path of other conductor
 	foreach(Conductor *conductor, content_to_move.conductorsToUpdate) {
-		conductor -> updatePath();
+		setupAnimation(conductor, "animPath", 1, 1);
 	}
 }
 
@@ -501,6 +514,25 @@ void MoveElementsCommand::addConductorTextItemMovement(ConductorTextItem *text_i
 		text_item,
 		qMakePair(old_pos, new_pos)
 	);
+}
+
+/**
+ * @brief MoveElementsCommand::setupAnimation
+ * Set up the animation for this undo command
+ * @param target object to anim
+ * @param propertyName property to animate
+ * @param start value at start
+ * @param end value at end
+ */
+void MoveElementsCommand::setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant start, const QVariant end) {
+	//create animation group if not yet.
+	if (m_anim_group == nullptr) m_anim_group = new QParallelAnimationGroup();
+	QPropertyAnimation *animation = new QPropertyAnimation(target, propertyName);
+	animation->setDuration(300);
+	animation->setStartValue(start);
+	animation->setEndValue(end);
+	animation->setEasingCurve(QEasingCurve::OutQuad);
+	m_anim_group->addAnimation(animation);
 }
 
 /**

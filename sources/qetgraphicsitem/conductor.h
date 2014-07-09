@@ -34,6 +34,9 @@ typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
 class Conductor : public QObject, public QGraphicsPathItem {
 	
 	Q_OBJECT
+
+	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
+	Q_PROPERTY(int animPath READ fakePath WRITE updatePathAnimate)
 	
 	// constructors, destructor
 	public:
@@ -67,6 +70,12 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	Diagram *diagram() const;
 	ConductorTextItem *textItem() const;
 	void updatePath(const QRectF & = QRectF());
+
+	//This method do nothing, it's only made to be used with Q_PROPERTY
+	//It's used to anim the path when is change
+	void updatePathAnimate(const int = 1) {updatePath();}
+	int fakePath() {return 1;}
+
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	QRectF boundingRect() const;
 	virtual QPainterPath shape() const;

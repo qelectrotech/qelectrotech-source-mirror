@@ -245,6 +245,9 @@ class MoveElementsCommand : public QUndoCommand {
 	virtual void redo();
 	virtual void move(const QPointF &);
 	virtual void addConductorTextItemMovement(ConductorTextItem *, const QPointF &, const QPointF &);
+
+	private:
+	void setupAnimation (QObject * target, const QByteArray &propertyName, const QVariant start, const QVariant end);
 	
 	// attributes
 	private:
@@ -254,6 +257,8 @@ class MoveElementsCommand : public QUndoCommand {
 	DiagramContent content_to_move;
 	/// applied movement
 	QPointF movement;
+	///animation group
+	QParallelAnimationGroup *m_anim_group;
 	/**
 		Moving elements impacts their conductors: either they are moved, or their path
 		needs to be generated again, which in turn tends to move their child text
