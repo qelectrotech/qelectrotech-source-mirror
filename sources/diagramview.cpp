@@ -31,7 +31,6 @@
 #include "templatelocation.h"
 #include "qetapp.h"
 #include "qetproject.h"
-#include "borderpropertieswidget.h"
 #include "integrationmoveelementshandler.h"
 #include "integrationmovetemplateshandler.h"
 #include "qetdiagrameditor.h"
@@ -43,6 +42,7 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneMouseEvent>
 #include "factory/elementfactory.h"
+#include "ui/borderpropertieswidget.h"
 
 
 /**
@@ -688,7 +688,7 @@ void DiagramView::editDiagramProperties() {
 	// si le dialogue est accepte
 	if (popup.exec() == QDialog::Accepted && !diagram_is_read_only) {
 		TitleBlockProperties new_titleblock   = titleblock_infos  -> titleBlockProperties();
-		BorderProperties new_border = border_infos -> borderProperties();
+		BorderProperties new_border = border_infos -> properties();
 		ConductorProperties new_conductors = cpw -> conductorProperties();
 		
 		bool adjust_scene = false;

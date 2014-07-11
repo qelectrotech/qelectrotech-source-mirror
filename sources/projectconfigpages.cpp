@@ -238,9 +238,9 @@ QIcon ProjectNewDiagramConfigPage::icon() const {
 void ProjectNewDiagramConfigPage::applyProjectConf() {
 	bool modified_project = false;
 	
-	BorderProperties new_border_prop = border_ -> borderProperties();
+	BorderProperties new_border_prop = border_ -> properties();
 	if (project_ -> defaultBorderProperties() != new_border_prop) {
-		project_ -> setDefaultBorderProperties(border_ -> borderProperties());
+		project_ -> setDefaultBorderProperties(border_ -> properties());
 		modified_project = true;
 	}
 	
@@ -318,7 +318,7 @@ void ProjectNewDiagramConfigPage::initLayout() {
 	Read properties from the edited project then fill widgets with them.
 */
 void ProjectNewDiagramConfigPage::readValuesFromProject() {
-	border_		-> setEditedBorder		   (project_ -> defaultBorderProperties());
+	border_		-> setProperties		   (project_ -> defaultBorderProperties());
 	conductor_	-> setConductorProperties  (project_ -> defaultConductorProperties());
 	titleblock_ -> setTitleBlockProperties (project_ -> defaultTitleBlockProperties());
 	report_		-> setReportProperties	   (project_ -> defaultReportProperties());

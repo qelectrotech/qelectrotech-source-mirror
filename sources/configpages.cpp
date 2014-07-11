@@ -36,7 +36,7 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	QTabWidget *tab_widget = new QTabWidget(this);
 
 	// dimensions by default for diagram
-	bpw = new BorderPropertiesWidget(QETDiagramEditor::defaultBorderProperties());	
+	bpw = new	BorderPropertiesWidget(QETDiagramEditor::defaultBorderProperties());
 	// default titleblock properties
 	ipw = new TitleBlockPropertiesWidget(QETDiagramEditor::defaultTitleBlockProperties(), true);
 	QWidget *diagram_widget = new QWidget();
@@ -75,7 +75,7 @@ void NewDiagramPage::applyConf() {
 	QSettings &settings = QETApp::settings();
 	
 	// dimensions des nouveaux schemas
-	bpw -> borderProperties().toSettings(settings, "diagrameditor/default");
+	bpw -> properties().toSettings(settings, "diagrameditor/default");
 	
 	// proprietes du cartouche
 	ipw-> titleBlockProperties().toSettings(settings, "diagrameditor/default");
