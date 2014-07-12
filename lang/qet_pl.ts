@@ -1286,7 +1286,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
         <location filename="../sources/qetgraphicsitem/elementtextitem.cpp" line="52"/>
         <source>Maintenir ctrl pour déplacer</source>
         <comment>tool tip for element text item</comment>
-        <translation>Przytrzymaj klawisz CTRL, aby wejść</translation>
+        <translation>Przytrzymaj klawisz CTRL, aby zmienić położenie</translation>
     </message>
 </context>
 <context>
