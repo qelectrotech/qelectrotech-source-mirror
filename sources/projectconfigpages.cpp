@@ -244,9 +244,9 @@ void ProjectNewDiagramConfigPage::applyProjectConf() {
 		modified_project = true;
 	}
 	
-	TitleBlockProperties new_tbt_prop = titleblock_ -> titleBlockProperties();
+	TitleBlockProperties new_tbt_prop = titleblock_ -> properties();
 	if (project_ -> defaultTitleBlockProperties() != new_tbt_prop) {
-		project_ -> setDefaultTitleBlockProperties(titleblock_ -> titleBlockProperties());
+		project_ -> setDefaultTitleBlockProperties(titleblock_ -> properties());
 		modified_project = true;
 	}
 	
@@ -320,7 +320,7 @@ void ProjectNewDiagramConfigPage::initLayout() {
 void ProjectNewDiagramConfigPage::readValuesFromProject() {
 	border_		-> setProperties		   (project_ -> defaultBorderProperties());
 	conductor_	-> setConductorProperties  (project_ -> defaultConductorProperties());
-	titleblock_ -> setTitleBlockProperties (project_ -> defaultTitleBlockProperties());
+	titleblock_ -> setProperties (project_ -> defaultTitleBlockProperties());
 	report_		-> setReportProperties	   (project_ -> defaultReportProperties());
 	xref_		-> setProperties		   (project_ -> defaultXRefProperties());
 }

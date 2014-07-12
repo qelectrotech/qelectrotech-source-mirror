@@ -653,7 +653,7 @@ void DiagramView::editDiagramProperties() {
 		titleblock_infos -> setTitleBlockTemplatesVisible(true);
 		// we have to parse again the TitleBlockProperties object, since the
 		// first parsing did not know of our templates
-		titleblock_infos -> setTitleBlockProperties(titleblock);
+		titleblock_infos -> setProperties(titleblock);
 		// relay the signal that requires a title block template edition
 		connect(titleblock_infos, SIGNAL(editTitleBlockTemplate(QString, bool)), this, SIGNAL(editTitleBlockTemplate(QString, bool)));
 	}
@@ -667,27 +667,15 @@ void DiagramView::editDiagramProperties() {
 	connect(&boutons, SIGNAL(accepted()), &popup, SLOT(accept()));
 	connect(&boutons, SIGNAL(rejected()), &popup, SLOT(reject()));
 	
-	// usual layout for these three widgets
-	QHBoxLayout *hlayout1 = new QHBoxLayout();
-	QVBoxLayout *vlayout2 = new QVBoxLayout();
-	
-	vlayout2 -> addWidget(border_infos);
-	vlayout2 -> addWidget(titleblock_infos);
-	vlayout2 -> setSpacing(5);
-	hlayout1 -> addLayout(vlayout2);
-	hlayout1 -> addWidget(cpw);
-	hlayout1 -> setAlignment(cpw, Qt::AlignTop);
-	
-	// ajout dans une disposition verticale
-	QVBoxLayout layout_v(&popup);
-	layout_v.addLayout(hlayout1);
-	layout_v.addStretch();
-	layout_v.addWidget(&boutons);
+	QGridLayout glayout(&popup);
+	glayout.addWidget(border_infos,0,0);
+	glayout.addWidget(titleblock_infos, 1, 0);
+	glayout.addWidget(cpw, 0, 1, 0 ,1, Qt::AlignTop);
+	glayout.addWidget(&boutons, 2, 1);
 
-
-	// si le dialogue est accepte
+	// if dialog is accepted
 	if (popup.exec() == QDialog::Accepted && !diagram_is_read_only) {
-		TitleBlockProperties new_titleblock   = titleblock_infos  -> titleBlockProperties();
+		TitleBlockProperties new_titleblock   = titleblock_infos  -> properties();
 		BorderProperties new_border = border_infos -> properties();
 		ConductorProperties new_conductors = cpw -> conductorProperties();
 		

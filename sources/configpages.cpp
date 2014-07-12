@@ -78,7 +78,7 @@ void NewDiagramPage::applyConf() {
 	bpw -> properties().toSettings(settings, "diagrameditor/default");
 	
 	// proprietes du cartouche
-	ipw-> titleBlockProperties().toSettings(settings, "diagrameditor/default");
+	ipw-> properties().toSettings(settings, "diagrameditor/default");
 	
 	// proprietes par defaut des conducteurs
 	cpw -> conductorProperties().toSettings(settings, "diagrameditor/defaultconductor");
