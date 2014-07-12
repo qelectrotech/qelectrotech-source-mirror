@@ -301,13 +301,13 @@
         <extracomment>pixel
 ----------
 pixel</extracomment>
-        <translation type="unfinished">px</translation>
+        <translation>pixel</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="77"/>
         <source>x</source>
-        <translation type="unfinished">x</translation>
+        <translation>x</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="53"/>
@@ -328,7 +328,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="60"/>
@@ -1164,7 +1164,7 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="82"/>
         <source>Inverseur</source>
-        <translation type="unfinished"></translation>
+        <translation>switch</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="84"/>
@@ -6767,27 +6767,27 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
         <source>Informations des cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Title block properties</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="114"/>
         <source>Folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>Folio :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="121"/>
         <source>Auteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Author :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Available as % filename patterns for title blocks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="137"/>
@@ -6812,49 +6812,51 @@ The other fields are not used.</translation>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Available as %date patterns for title blocks</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="178"/>
         <source>Date fixe :</source>
-        <translation type="unfinished"></translation>
+        <translation>Fixed date :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="187"/>
         <source>Titre :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilte :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="194"/>
         <source>Fichier :</source>
-        <translation type="unfinished"></translation>
+        <translation>File :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="201"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Available as %folio patterns for title blocks</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="211"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
 - %id : numéro du schéma courant dans le projet 
 - %total : nombre total de schémas dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>The following variables can be used in the Folio field:
+- %id: the current diagram number in the project
+- %total: total number of diagrams in the project</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
         <source>Date :</source>
-        <translation type="unfinished"></translation>
+        <translation>Date :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="236"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Available as %author patterns for title blocks</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="243"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Available as %title patterns for title blocks</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="253"/>
@@ -6865,7 +6867,7 @@ The other fields are not used.</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>You may define here your own name/value associations so the title block takes them into account. E.g. associating the volta name with the 1745 value will replace %{volta} with 1745 within the title block.</translation>
     </message>
 </context>
 <context>
@@ -7399,17 +7401,17 @@ Maximum width: %2px
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>Préfixe des contacts de puissance :</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefix of power contacts :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="97"/>
         <source>Préfixe des contacts temporisés :</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefix delayed contacts :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="110"/>
         <source>Préfixe des contacts inverseurs :</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefix changeover contacts :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
