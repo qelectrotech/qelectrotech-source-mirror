@@ -288,55 +288,57 @@
 </context>
 <context>
     <name>BorderPropertiesWidget</name>
-    <message>
-        <location filename="../sources/borderpropertieswidget.cpp" line="98"/>
+    <message utf8="true">
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
         <source>Dimensions du schéma</source>
         <translation>Schema grootte</translation>
     </message>
     <message>
-        <location filename="../sources/borderpropertieswidget.cpp" line="102"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="26"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="74"/>
+        <source>px</source>
+        <comment>pixel</comment>
+        <extracomment>pixel
+----------
+pixel</extracomment>
+        <translation type="unfinished">Px</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="77"/>
+        <source>x</source>
+        <translation type="unfinished">X</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="53"/>
         <source>Colonnes :</source>
         <translation>Kolommen:</translation>
     </message>
-    <message>
-        <location filename="../sources/borderpropertieswidget.cpp" line="115"/>
-        <location filename="../sources/borderpropertieswidget.cpp" line="131"/>
+    <message utf8="true">
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="67"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="90"/>
         <source>Afficher les en-têtes</source>
         <translation>Toon kopteksten</translation>
     </message>
     <message>
-        <location filename="../sources/borderpropertieswidget.cpp" line="118"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="39"/>
         <source>Lignes :</source>
         <translation>Rijen:</translation>
     </message>
     <message>
-        <location filename="../sources/borderpropertieswidget.cpp" line="135"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Vorm</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="60"/>
         <source>Couleur de fond :</source>
         <translation>Achtergrond kleur:</translation>
     </message>
     <message>
-        <location filename="../sources/borderpropertieswidget.cpp" line="136"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="46"/>
         <source>Gris</source>
         <translation>Grijs</translation>
-    </message>
-    <message>
-        <location filename="../sources/borderpropertieswidget.cpp" line="112"/>
-        <location filename="../sources/borderpropertieswidget.cpp" line="128"/>
-        <source>×</source>
-        <comment>multiplication symbol</comment>
-        <translation>×</translation>
-    </message>
-    <message>
-        <location filename="../sources/borderpropertieswidget.cpp" line="113"/>
-        <source>px</source>
-        <comment>unit for cols width</comment>
-        <translation>Px</translation>
-    </message>
-    <message>
-        <location filename="../sources/borderpropertieswidget.cpp" line="129"/>
-        <source>px</source>
-        <comment>unit for rows height</comment>
-        <translation>Px</translation>
     </message>
 </context>
 <context>
@@ -720,49 +722,49 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
         <translation>Schema eigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="961"/>
+        <location filename="../sources/diagramview.cpp" line="949"/>
         <source>Propriétés de la sélection</source>
         <translation>Selectie eigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="963"/>
+        <location filename="../sources/diagramview.cpp" line="951"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>De selectie bevat %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1019"/>
+        <location filename="../sources/diagramview.cpp" line="1007"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Toepassen van deze eigenschappen op alle gelieders van hetzelfde potentiaal</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1016"/>
+        <location filename="../sources/diagramview.cpp" line="1004"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Bewerk de eigenschappen van een geleider</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1081"/>
+        <location filename="../sources/diagramview.cpp" line="1069"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Kies een nieuwe kleur voor de geleider</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1243"/>
+        <location filename="../sources/diagramview.cpp" line="1231"/>
         <source>Selectionner une image...</source>
         <translation>Selecteer een afbeelding...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1243"/>
+        <location filename="../sources/diagramview.cpp" line="1231"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>Afbeelding bestanden (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1251"/>
+        <location filename="../sources/diagramview.cpp" line="1239"/>
         <source>Erreur</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1251"/>
+        <location filename="../sources/diagramview.cpp" line="1239"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation>Kan de afbeelding niet inladen... Sorry: (</translation>
     </message>
@@ -1123,7 +1125,7 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="82"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="83"/>
         <source>Simple</source>
         <translation>Enkel</translation>
     </message>
@@ -1158,27 +1160,32 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
         <translation>Normaal gesloten</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="83"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="82"/>
+        <source>Inverseur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="84"/>
         <source>Puissance</source>
         <translation>Vermogen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="84"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="85"/>
         <source>Temporisé travail</source>
         <translation>Vertraagd inschakelen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="85"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="86"/>
         <source>Temporisé repos</source>
         <translation>Vertraagd uitschakelen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="88"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="89"/>
         <source>Bobine</source>
         <translation>Spoel</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="89"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="90"/>
         <source>Organe de protection</source>
         <translation>Beveiliging</translation>
     </message>
@@ -1221,30 +1228,30 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
         <translation>Polygoon</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="689"/>
+        <location filename="../sources/editor/elementscene.cpp" line="690"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Bewerk auteur informatie</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="693"/>
+        <location filename="../sources/editor/elementscene.cpp" line="694"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>U kunt deze ruimte gebruiken om de auteurs van het element, de licentie, of enige andere informatie die u van belang acht te vermelden.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="750"/>
+        <location filename="../sources/editor/elementscene.cpp" line="751"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>U mag de elementnaam ingeven voor diverse talen.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="947"/>
-        <location filename="../sources/editor/elementscene.cpp" line="987"/>
+        <location filename="../sources/editor/elementscene.cpp" line="948"/>
+        <location filename="../sources/editor/elementscene.cpp" line="988"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translation>Dit XML document is geen element definitie.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="746"/>
+        <location filename="../sources/editor/elementscene.cpp" line="747"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Bewerkende  namen</translation>
@@ -5486,156 +5493,156 @@ Opslaan naar een bestand</translation>
         <translation>Waarschuwing: het element is bewaard in een nieuwere versie van QElectroTech.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="44"/>
+        <location filename="../sources/diagramcommands.cpp" line="45"/>
         <source>ajouter 1 %1</source>
         <comment>undo caption - %1 is an element name</comment>
         <translation>1 toevoegen %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="79"/>
+        <location filename="../sources/diagramcommands.cpp" line="80"/>
         <source>Ajouter un champ de texte</source>
         <comment>undo caption</comment>
         <translation>Een tekst veld toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="113"/>
+        <location filename="../sources/diagramcommands.cpp" line="114"/>
         <source>Ajouter une image</source>
         <comment>undo caption</comment>
         <translation>Een afbeelding toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="147"/>
+        <location filename="../sources/diagramcommands.cpp" line="148"/>
         <source>Ajouter une Shape</source>
         <comment>undo caption</comment>
         <translation>Een figuur/vorm toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="187"/>
+        <location filename="../sources/diagramcommands.cpp" line="188"/>
         <source>ajouter un conducteur</source>
         <comment>undo caption</comment>
         <translation>Een geleider toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="228"/>
+        <location filename="../sources/diagramcommands.cpp" line="229"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation>Verwijder %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="318"/>
+        <location filename="../sources/diagramcommands.cpp" line="319"/>
         <source>coller %1</source>
         <comment>undo caption - %1 is a sentence listing the content to paste</comment>
         <translation>Plak %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="391"/>
+        <location filename="../sources/diagramcommands.cpp" line="392"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
         <translation>Knip %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="434"/>
-        <location filename="../sources/diagramcommands.cpp" line="529"/>
-        <location filename="../sources/diagramcommands.cpp" line="643"/>
+        <location filename="../sources/diagramcommands.cpp" line="436"/>
+        <location filename="../sources/diagramcommands.cpp" line="561"/>
+        <location filename="../sources/diagramcommands.cpp" line="675"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>Verplaats %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="664"/>
+        <location filename="../sources/diagramcommands.cpp" line="696"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
         <translation>Wijzig tekst</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="712"/>
+        <location filename="../sources/diagramcommands.cpp" line="744"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
         <translation>Draai %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="830"/>
+        <location filename="../sources/diagramcommands.cpp" line="862"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
         <translation>Richt %1 naar %2°</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="854"/>
+        <location filename="../sources/diagramcommands.cpp" line="886"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation>Wijzig een geleider</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="911"/>
+        <location filename="../sources/diagramcommands.cpp" line="943"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>Resetten %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="951"/>
+        <location filename="../sources/diagramcommands.cpp" line="983"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
         <translation>Titel blok wijzigen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="984"/>
+        <location filename="../sources/diagramcommands.cpp" line="1016"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
         <translation>Schema groote wijzigen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1013"/>
+        <location filename="../sources/diagramcommands.cpp" line="1045"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Eigenschappen van een geleider wijzigen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1067"/>
+        <location filename="../sources/diagramcommands.cpp" line="1099"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Wijzig de eigenschappen van meerdere geleiders </translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1183"/>
+        <location filename="../sources/diagramcommands.cpp" line="1215"/>
         <source>Agrandire %1 à %2 %</source>
         <translation>Vergroten %1 naar %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1184"/>
+        <location filename="../sources/diagramcommands.cpp" line="1216"/>
         <source>Réduire %1 à %2 %</source>
         <translation>Verklein van %1 naar %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1204"/>
+        <location filename="../sources/diagramcommands.cpp" line="1236"/>
         <source>Changer le style d&apos;une shape</source>
         <translation>Verander de stijl van een vorm</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1246"/>
+        <location filename="../sources/diagramcommands.cpp" line="1278"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
         <translation>Koppel twee pagina&apos;s voor afdrukken</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1250"/>
+        <location filename="../sources/diagramcommands.cpp" line="1282"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
         <translation>Bewerk kruisverwijzing</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1251"/>
-        <location filename="../sources/diagramcommands.cpp" line="1265"/>
+        <location filename="../sources/diagramcommands.cpp" line="1283"/>
+        <location filename="../sources/diagramcommands.cpp" line="1297"/>
         <source>Lier deux Ã©lÃ©ments</source>
         <translation>Koppel twee elementen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1264"/>
+        <location filename="../sources/diagramcommands.cpp" line="1296"/>
         <source>Editer les référence croisé</source>
         <translation>Bewerk kruisverwijzing</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1325"/>
-        <location filename="../sources/diagramcommands.cpp" line="1340"/>
+        <location filename="../sources/diagramcommands.cpp" line="1357"/>
+        <location filename="../sources/diagramcommands.cpp" line="1372"/>
         <source>Délier %n élément(s)</source>
         <translation>
             <numerusform>Ontkoppel .%n element</numerusform>
@@ -6746,116 +6753,135 @@ Een veld bestaat uit een type, een beginwaarde, en een optelgetal.
 <context>
     <name>TitleBlockPropertiesWidget</name>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="174"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="196"/>
         <source>Modèle par défaut</source>
         <translation>Standaard sjabloon</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="278"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="214"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
         <translation>Wijzig dit sjabloon</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="279"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="215"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
         <translation>Kopieer en wijzig dit sjabloon</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="285"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="220"/>
         <source>Title block templates actions</source>
         <translation>Titel blok sjablonen acties</translation>
     </message>
-    <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="290"/>
+    <message utf8="true">
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="55"/>
         <source>Modèle :</source>
         <translation>Sjabloon:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="302"/>
-        <source>Les variables suivantes sont utilisables dans le champ Folio :
-  - %id : numéro du schéma courant dans le projet
-  - %total : nombre total de schémas dans le projet</source>
-        <translation>De volgende variabelen kunnen gebruikt worden in het pagina veld:
-  - %id: pagina nummer in het project
-  - %total: totaal aantal paginas in het project</translation>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
+        <source>Form</source>
+        <translation type="unfinished">Vorm</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="311"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
+        <source>Informations des cartouche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="114"/>
+        <source>Folio :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="121"/>
+        <source>Auteur :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="128"/>
+        <source>Disponible en tant que %filename pour les modèles de cartouches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="137"/>
         <source>Pas de date</source>
         <translation>Zonder datum</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="312"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="144"/>
         <source>Date courante</source>
         <translation>Huidige datum</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="313"/>
-        <source>Date fixe : </source>
-        <translation>Vaste datum: </translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="331"/>
-        <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
-        <translation>Beschikbaar voor titel blok sjablonen:  %1.</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="340"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="151"/>
         <source>Appliquer la date actuelle</source>
         <translation>
 Breng de huidige datum aan</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="341"/>
-        <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
-        <translation>%id en %total kunnen in titel blok sjablonen gebruikt worden als %{folio-id} en %{folio-total}.</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="345"/>
-        <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Hier kunt u uw eigen variabelenamen en bijbehorende waarden voor het titel blok. bijv.  &quot;volta&quot; als naam met de waarde &quot;1745&quot;  %{volta} zal vervangen worden door 1745.</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="358"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="106"/>
         <source>Principales</source>
         <translation>Voornaamste</translation>
     </message>
+    <message utf8="true">
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
+        <source>Disponible en tant que %date pour les modèles de cartouches</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="359"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="178"/>
+        <source>Date fixe :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="187"/>
+        <source>Titre :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="194"/>
+        <source>Fichier :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="201"/>
+        <source>Disponible en tant que %folio pour les modèles de cartouches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="211"/>
+        <source>Les variables suivantes sont utilisables dans le champ Folio :
+- %id : numéro du schéma courant dans le projet 
+- %total : nombre total de schémas dans le projet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
+        <source>Date :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="236"/>
+        <source>Disponible en tant que %author pour les modèles de cartouches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="243"/>
+        <source>Disponible en tant que %title pour les modèles de cartouches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="253"/>
         <source>Personnalisées</source>
         <translation>Gebruiker</translation>
     </message>
-    <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="379"/>
-        <source>Titre : </source>
-        <translation>Titel: </translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="381"/>
-        <source>Auteur : </source>
-        <translation>Auteur: </translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="383"/>
-        <source>Date : </source>
-        <translation>Datum: </translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="385"/>
-        <source>Fichier : </source>
-        <translation>Bestand: </translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="387"/>
-        <source>Folio : </source>
-        <translation>Pagina: </translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="422"/>
-        <source>Informations du cartouche</source>
-        <translation>Titel blok eigenschappen</translation>
+    <message utf8="true">
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
+        <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
+associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7389,14 +7415,19 @@ Maximum breedte: %2px
         <translation>Tonen de vermogen contacten in het kruis</translation>
     </message>
     <message utf8="true">
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="96"/>
-        <source>Préfixe des contacts de puissance:</source>
-        <translation>Voorvoegsel voor de vermogen contacten:</translation>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
+        <source>Préfixe des contacts de puissance :</source>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="103"/>
-        <source>Préfixe des contacts temporisés:</source>
-        <translation>Voorvoegsel voor de hulpcontacten:</translation>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="97"/>
+        <source>Préfixe des contacts temporisés :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="110"/>
+        <source>Préfixe des contacts inverseurs :</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
