@@ -5825,7 +5825,7 @@ Co chcesz zrobić ?</translation>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform>pole tekstowe</numerusform>
-            <numerusform>%n póla tekstowe</numerusform>
+            <numerusform>%n pola tekstowe</numerusform>
             <numerusform>%n pól tekstowych</numerusform>
         </translation>
     </message>
