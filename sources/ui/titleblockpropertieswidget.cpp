@@ -40,6 +40,25 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockPropertie
 }
 
 /**
+ * @brief TitleBlockPropertiesWidget::TitleBlockPropertiesWidget
+ * default constructor with tempalte list
+ * @param tbt_collection template list
+ * @param titleblock properties to edit
+ * @param current_date if true, display the radio button "current date"
+ * @param parent parent widget
+ */
+TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QWidget *parent) :
+	QWidget(parent),
+	ui(new Ui::TitleBlockPropertiesWidget),
+	m_tbt_collection(nullptr)
+{
+	ui->setupUi(this);
+	initDialog(current_date);
+	setTitleBlockTemplatesCollection(tbt_collection);
+	setProperties(titleblock);
+}
+
+/**
  * @brief TitleBlockPropertiesWidget::~TitleBlockPropertiesWidget
  * destructor
  */
@@ -58,11 +77,12 @@ void TitleBlockPropertiesWidget::setProperties(const TitleBlockProperties &prope
 	ui -> m_file_le   -> setText (properties.filename);
 	ui -> m_folio_le  -> setText (properties.folio);
 
-	//About date
-	on_m_fixed_date_rb_toggled(ui->m_fixed_date_rb->isChecked());
-	ui -> m_date_edit -> setDate(QDate::currentDate());
+	//About date	
+	ui -> m_date_now_pb -> setDisabled(true);
+	ui -> m_date_edit   -> setDisabled(true);
+	ui -> m_date_edit   -> setDate(QDate::currentDate());
 
-	if (ui -> m_current_date_rb -> isVisible()) {
+	if (!ui -> m_current_date_rb -> isHidden()) {
 		if(properties.useDate == TitleBlockProperties::CurrentDate)
 			ui -> m_current_date_rb -> setChecked(true);
 		else {
@@ -175,6 +195,7 @@ void TitleBlockPropertiesWidget::setCurrentTitleBlockTemplateName (const QString
  */
 void TitleBlockPropertiesWidget::setTitleBlockTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection) {
 	if (!tbt_collection) return;
+	setTitleBlockTemplatesVisible(true);
 	if (m_tbt_collection && tbt_collection != m_tbt_collection) {
 		// forget any connection with the previous collection
 		disconnect(m_tbt_collection, 0, this, 0);
@@ -271,14 +292,4 @@ void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(QString name) {
  */
 void TitleBlockPropertiesWidget::on_m_date_now_pb_clicked() {
 	ui -> m_date_edit -> setDate(QDate::currentDate());
-}
-
-/**
- * @brief TitleBlockPropertiesWidget::on_m_fixed_date_rb_toggled
- * Disable widget related to fixed date, if radio button
- * current date isn't checked
- */
-void TitleBlockPropertiesWidget::on_m_fixed_date_rb_toggled(bool checked) {
-	ui -> m_date_edit -> setEnabled(checked);
-	ui -> m_date_now_pb -> setEnabled(checked);
 }

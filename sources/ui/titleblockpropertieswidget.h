@@ -35,6 +35,7 @@ class TitleBlockPropertiesWidget : public QWidget
 
 	public:
 		explicit TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QWidget *parent = 0);
+		explicit TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QWidget *parent = 0);
 		~TitleBlockPropertiesWidget();
 
 		void setProperties(const TitleBlockProperties &properties);
@@ -56,7 +57,6 @@ class TitleBlockPropertiesWidget : public QWidget
 		void updateTemplateList();
 		void changeCurrentTitleBlockTemplate(QString name);
 		void on_m_date_now_pb_clicked();
-		void on_m_fixed_date_rb_toggled(bool checked);
 
 	signals:
 		void editTitleBlockTemplate(const QString &, bool);

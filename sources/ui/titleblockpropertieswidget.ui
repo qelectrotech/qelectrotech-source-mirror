@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>508</width>
-    <height>567</height>
+    <width>449</width>
+    <height>387</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -35,7 +35,7 @@
    <item>
     <widget class="QGroupBox" name="m_tbt_gb">
      <property name="title">
-      <string>Informations du cartouche</string>
+      <string>Informations des cartouche</string>
      </property>
      <property name="checkable">
       <bool>false</bool>
@@ -78,7 +78,7 @@
       <item>
        <widget class="QTabWidget" name="tabWidget">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -280,5 +280,38 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
  <resources>
   <include location="../../qelectrotech.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>m_fixed_date_rb</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_date_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>199</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>275</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_fixed_date_rb</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_date_now_pb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>102</x>
+     <y>214</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>401</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
