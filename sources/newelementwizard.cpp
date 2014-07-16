@@ -41,7 +41,7 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 
 #ifdef Q_WS_WIN
 	setWizardStyle(QWizard::AeroStyle);
-#elif Q_WS_MAC
+#elif defined(Q_WS_MAC)
 	setWizardStyle(QWizard::MacStyle);
 #endif
 
