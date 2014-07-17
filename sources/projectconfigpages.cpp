@@ -250,9 +250,9 @@ void ProjectNewDiagramConfigPage::applyProjectConf() {
 		modified_project = true;
 	}
 	
-	ConductorProperties new_conductor_prop = conductor_ -> conductorProperties();
+	ConductorProperties new_conductor_prop = conductor_ -> properties();
 	if (project_ -> defaultConductorProperties() != new_conductor_prop) {
-		project_ -> setDefaultConductorProperties(conductor_ -> conductorProperties());
+		project_ -> setDefaultConductorProperties(conductor_ -> properties());
 		modified_project = true;
 	}
 
@@ -319,7 +319,7 @@ void ProjectNewDiagramConfigPage::initLayout() {
 */
 void ProjectNewDiagramConfigPage::readValuesFromProject() {
 	border_		-> setProperties		   (project_ -> defaultBorderProperties());
-	conductor_	-> setConductorProperties  (project_ -> defaultConductorProperties());
+	conductor_	-> setProperties  (project_ -> defaultConductorProperties());
 	titleblock_ -> setProperties (project_ -> defaultTitleBlockProperties());
 	report_		-> setReportProperties	   (project_ -> defaultReportProperties());
 	xref_		-> setProperties		   (project_ -> defaultXRefProperties());

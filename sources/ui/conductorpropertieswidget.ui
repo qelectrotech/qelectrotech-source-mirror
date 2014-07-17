@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConductorPropertiesWidget</class>
+ <widget class="QWidget" name="ConductorPropertiesWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>430</width>
+    <height>571</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="toolTip">
+   <string comment="Tooltip displaying the meaning of the 'PEN' acronym">Protective Earth Neutral</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="m_type_gb">
+     <property name="title">
+      <string>Type de conducteur</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QRadioButton" name="m_simple_rb">
+        <property name="text">
+         <string>Simple</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="m_multi_rb">
+        <property name="text">
+         <string>Multifilaire</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="m_multi_gb">
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Texte :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="m_text_le"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Taille :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="m_text_size_sb">
+             <property name="minimum">
+              <number>5</number>
+             </property>
+             <property name="maximum">
+              <number>9</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Rotation du texte de conducteur :</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QGridLayout" name="m_text_angle_gl">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Vertical</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Horizontal</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="m_single_rb">
+        <property name="text">
+         <string>Unifilaire</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="m_single_gb">
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>9</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="2" column="2">
+            <widget class="QSlider" name="m_phase_slider">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>3</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="m_neutral_cb">
+             <property name="text">
+              <string>neutre</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../../qelectrotech.qrc">
+               <normaloff>:/ico/16x16/neutral.png</normaloff>:/ico/16x16/neutral.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="m_phase_cb">
+             <property name="text">
+              <string>phase</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../../qelectrotech.qrc">
+               <normaloff>:/ico/16x16/phase.png</normaloff>:/ico/16x16/phase.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="3">
+            <widget class="QSpinBox" name="m_phase_sb">
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>3</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QCheckBox" name="m_pen_cb">
+             <property name="toolTip">
+              <string>Protective Earth Neutral</string>
+             </property>
+             <property name="text">
+              <string>PEN</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="m_earth_cb">
+             <property name="text">
+              <string>terre</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../../qelectrotech.qrc">
+               <normaloff>:/ico/16x16/ground.png</normaloff>:/ico/16x16/ground.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" rowspan="3">
+            <widget class="QLabel" name="m_preview_label">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="m_update_preview_pb">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Apparence du conducteur</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="2" column="1">
+       <widget class="QComboBox" name="m_line_style_cb"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Couleur :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="m_color_pb">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Style :</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../qelectrotech.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>m_multi_rb</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_multi_gb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>73</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>54</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_phase_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>m_phase_sb</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>238</x>
+     <y>324</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>337</x>
+     <y>332</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_phase_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>m_phase_slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>356</x>
+     <y>322</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>207</x>
+     <y>325</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_single_rb</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_single_gb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>192</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>81</x>
+     <y>250</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_phase_cb</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_phase_slider</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>152</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>329</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_phase_cb</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_phase_sb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>106</x>
+     <y>326</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>338</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_earth_cb</sender>
+   <signal>clicked()</signal>
+   <receiver>m_update_preview_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>249</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>228</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_neutral_cb</sender>
+   <signal>clicked()</signal>
+   <receiver>m_update_preview_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>158</x>
+     <y>304</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>269</x>
+     <y>246</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_phase_cb</sender>
+   <signal>clicked()</signal>
+   <receiver>m_update_preview_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>126</x>
+     <y>340</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>254</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pen_cb</sender>
+   <signal>clicked()</signal>
+   <receiver>m_update_preview_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>222</x>
+     <y>276</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>242</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_phase_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>m_update_preview_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>357</x>
+     <y>340</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>305</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

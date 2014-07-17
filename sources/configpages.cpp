@@ -81,7 +81,7 @@ void NewDiagramPage::applyConf() {
 	ipw-> properties().toSettings(settings, "diagrameditor/default");
 	
 	// proprietes par defaut des conducteurs
-	cpw -> conductorProperties().toSettings(settings, "diagrameditor/defaultconductor");
+	cpw -> properties().toSettings(settings, "diagrameditor/defaultconductor");
 
 	// default report propertie
 	rpw->toSettings(settings, "diagrameditor/defaultreport");

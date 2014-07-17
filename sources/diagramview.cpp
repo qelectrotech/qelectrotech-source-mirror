@@ -675,7 +675,7 @@ void DiagramView::editDiagramProperties() {
 	if (popup.exec() == QDialog::Accepted && !diagram_is_read_only) {
 		TitleBlockProperties new_titleblock   = titleblock_infos  -> properties();
 		BorderProperties new_border = border_infos -> properties();
-		ConductorProperties new_conductors = cpw -> conductorProperties();
+		ConductorProperties new_conductors = cpw -> properties();
 		
 		bool adjust_scene = false;
 		
@@ -1016,7 +1016,7 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	// execute le dialogue et met a jour le conducteur
 	if (conductor_dialog.exec() == QDialog::Accepted) {
 		// recupere les nouvelles proprietes
-		ConductorProperties new_properties = cpw -> conductorProperties();
+		ConductorProperties new_properties = cpw -> properties();
 
 		if (new_properties != old_properties) {
 				if (cb_apply_all -> isChecked()) {
