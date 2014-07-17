@@ -470,108 +470,121 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
 <context>
     <name>ConductorPropertiesWidget</name>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="54"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="23"/>
         <source>Type de conducteur</source>
         <translation>Soort geleider</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="61"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="36"/>
         <source>Multifilaire</source>
         <translation>Meerdere geleiders</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="64"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="60"/>
         <source>Texte :</source>
         <translation>Tekst:</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="66"/>
-        <source>Taille</source>
-        <translation>Dikte</translation>
-    </message>
-    <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
-        <source>Rotation du texte sur conducteur :</source>
-        <translation>Hoek van tekst ten opzichte van de geleider :</translation>
-    </message>
-    <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="78"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="101"/>
         <source>Vertical</source>
         <translation>Vertikaal</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="84"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="111"/>
         <source>Horizontal</source>
         <translation>Horizontaal</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="90"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="126"/>
         <source>Unifilaire</source>
         <translation>Enkele geleider</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="96"/>
-        <source>PEN</source>
-        <comment>Protective Earth Neutral</comment>
-        <translation>PEN</translation>
-    </message>
-    <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="97"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="17"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
         <translation>Aarde en Nul samen</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="108"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="186"/>
         <source>phase</source>
         <translation>Fase</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="141"/>
-        <source>Style :</source>
-        <comment>conductor line style</comment>
-        <translation>Stijl:</translation>
-    </message>
-    <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="143"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="127"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translation>Volle lijn</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="144"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="128"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translation>Streep lijn</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="145"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="129"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation>Punten en strepen lijn</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="92"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="217"/>
         <source>terre</source>
         <translation>Aarde</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="94"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="175"/>
         <source>neutre</source>
         <translation>Nul</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="128"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Vorm</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
+        <source>Taille :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="89"/>
+        <source>Rotation du texte de conducteur :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="207"/>
+        <source>Protective Earth Neutral</source>
+        <translation type="unfinished">Aarde en Nul samen</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
+        <source>PEN</source>
+        <translation type="unfinished">PEN</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
+        <source>TextLabel</source>
+        <translation type="unfinished">TekstLabel</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="253"/>
         <source>Apparence du conducteur</source>
         <translation>Geleider weergave</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="135"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="262"/>
         <source>Couleur :</source>
         <translation>Kleur:</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="60"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
+        <source>Style :</source>
+        <translation type="unfinished">Stijl:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="29"/>
         <source>Simple</source>
         <translation>Enkel</translation>
     </message>
@@ -723,49 +736,49 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
         <translation>Schema eigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="949"/>
+        <location filename="../sources/diagramview.cpp" line="947"/>
         <source>Propriétés de la sélection</source>
         <translation>Selectie eigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="951"/>
+        <location filename="../sources/diagramview.cpp" line="949"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>De selectie bevat %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1007"/>
+        <location filename="../sources/diagramview.cpp" line="1005"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Toepassen van deze eigenschappen op alle gelieders van hetzelfde potentiaal</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1004"/>
+        <location filename="../sources/diagramview.cpp" line="1002"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Bewerk de eigenschappen van een geleider</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1069"/>
+        <location filename="../sources/diagramview.cpp" line="1067"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Kies een nieuwe kleur voor de geleider</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1231"/>
+        <location filename="../sources/diagramview.cpp" line="1229"/>
         <source>Selectionner une image...</source>
         <translation>Selecteer een afbeelding...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1231"/>
+        <location filename="../sources/diagramview.cpp" line="1229"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>Afbeelding bestanden (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1239"/>
+        <location filename="../sources/diagramview.cpp" line="1237"/>
         <source>Erreur</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1239"/>
+        <location filename="../sources/diagramview.cpp" line="1237"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation>Kan de afbeelding niet inladen... Sorry: (</translation>
     </message>
@@ -6754,24 +6767,24 @@ Een veld bestaat uit een type, een beginwaarde, en een optelgetal.
 <context>
     <name>TitleBlockPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="196"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="217"/>
         <source>Modèle par défaut</source>
         <translation>Standaard sjabloon</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="214"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="235"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
         <translation>Wijzig dit sjabloon</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="215"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="236"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
         <translation>Kopieer en wijzig dit sjabloon</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="220"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="241"/>
         <source>Title block templates actions</source>
         <translation>Titel blok sjablonen acties</translation>
     </message>
