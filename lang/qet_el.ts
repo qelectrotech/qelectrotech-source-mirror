@@ -301,13 +301,13 @@
         <extracomment>pixel
 ----------
 pixel</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>πιξελ</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="77"/>
         <source>x</source>
-        <translation type="unfinished">x</translation>
+        <translation>χ</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="53"/>
@@ -328,7 +328,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="60"/>
@@ -541,32 +541,32 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Μέγεθος: </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="89"/>
         <source>Rotation du texte de conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Γωνία του κειμένου των αγωγών</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="207"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished">Ουδετέρωση</translation>
+        <translation>Ουδετέρωση</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>PEN</source>
-        <translation type="unfinished">PEN</translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>ΕτικέταΚειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="253"/>
@@ -581,7 +581,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
         <source>Style :</source>
-        <translation type="unfinished">Τεχνοτροπία: </translation>
+        <translation>Τεχνοτροπία: </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="29"/>
@@ -1177,7 +1177,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="82"/>
         <source>Inverseur</source>
-        <translation type="unfinished"></translation>
+        <translation>Διακόπτης</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="84"/>
@@ -6784,27 +6784,27 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
         <source>Informations des cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Πληροφορίες πινακίδας</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="114"/>
         <source>Folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>Σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="121"/>
         <source>Auteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Συγγραφέας:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμο ως %filename στα πρότυπα πινακίδων </translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="137"/>
@@ -6829,49 +6829,51 @@ Les autres champs ne sont pas utilisés.</source>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμο ως %date στα πρότυπα πινακίδων </translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="178"/>
         <source>Date fixe :</source>
-        <translation type="unfinished"></translation>
+        <translation>Σταθερή ημερομηνία</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="187"/>
         <source>Titre :</source>
-        <translation type="unfinished"></translation>
+        <translation>Τίτλος:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="194"/>
         <source>Fichier :</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχείο:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="201"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμο ως %folio στα πρότυπα πινακίδων </translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="211"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
 - %id : numéro du schéma courant dans le projet 
 - %total : nombre total de schémas dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι ακόλουθες μεταβλητές μπορούν να χρησιμοποιηθούν στο πεδίο Σελίδα:
+- %id: τρέχων αριθμός σελίδας στην εργασία
+- %total: συνολικός αριθμός σελίδων στην εργασία</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
         <source>Date :</source>
-        <translation type="unfinished"></translation>
+        <translation>Ημερομηνία: </translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="236"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμο ως %author στα πρότυπα πινακίδων </translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="243"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμο ως %title στα πρότυπα πινακίδων </translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="253"/>
@@ -6882,7 +6884,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Εδώ μπορείτε να καθορίσετε τους δικούς σας συνδιασμούς ονόματος/τιμής ώστε οι πινακίδες να τα λαμβάνουν υπ&apos;όψη, Πχ συνδυάζοντας το όνομα &quot;volta&quot; με την τιμή &quot;1745&quot; θα αντικαταστήσει το %{volta} με το 1745 μέσα στην πινακίδα. </translation>
     </message>
 </context>
 <context>
@@ -7414,17 +7416,17 @@ Longueur maximale : %2px
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>Préfixe des contacts de puissance :</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόθεμα των επαφών ισχύος:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="97"/>
         <source>Préfixe des contacts temporisés :</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόθεμα των επαφών χρονικού:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="110"/>
         <source>Préfixe des contacts inverseurs :</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόθεμα των επαφών διακόπτη:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
