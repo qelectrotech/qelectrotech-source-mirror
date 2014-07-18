@@ -541,32 +541,32 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Size :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="89"/>
         <source>Rotation du texte de conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Angle of conductor labels:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="207"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished">Protective Earth Neutral</translation>
+        <translation>Protective Earth Neutral</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>PEN</source>
-        <translation type="unfinished">PEN</translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
         <source>TextLabel</source>
-        <translation type="unfinished">TextLabel</translation>
+        <translation>TextLabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="253"/>
@@ -581,7 +581,7 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
         <source>Style :</source>
-        <translation type="unfinished">Style:</translation>
+        <translation>Style:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="29"/>
