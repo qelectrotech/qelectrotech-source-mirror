@@ -27,7 +27,6 @@
 #include "qetgraphicsitem/elementtextitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
-#include "titleblockpropertieswidget.h"
 #include "templatelocation.h"
 #include "qetapp.h"
 #include "qetproject.h"
@@ -42,7 +41,7 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneMouseEvent>
 #include "factory/elementfactory.h"
-#include "ui/borderpropertieswidget.h"
+#include "diagrampropertiesdialog.h"
 
 
 /**
@@ -625,83 +624,11 @@ QString DiagramView::title() const {
 }
 
 /**
-	Edite les informations du schema.
-*/
+ * @brief DiagramView::editDiagramProperties
+ * Edit the properties of the viewed digram
+ */
 void DiagramView::editDiagramProperties() {
-	bool diagram_is_read_only = scene -> isReadOnly();
-	
-	// recupere le cartouche et les dimensions du schema
-	TitleBlockProperties  titleblock  = scene -> border_and_titleblock.exportTitleBlock();
-	BorderProperties border = scene -> border_and_titleblock.exportBorder();
-	ConductorProperties conductors = scene -> defaultConductorProperties;
-	
-	// construit le dialogue
-	QDialog popup(diagramEditor());
-	popup.setWindowModality(Qt::WindowModal);
-#ifdef Q_WS_MAC
-	popup.setWindowFlags(Qt::Sheet);
-#endif
-	
-	popup.setWindowTitle(tr("Propri\351t\351s du sch\351ma", "window title"));
-	
-	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, &popup);
-	border_infos -> setReadOnly(diagram_is_read_only);
-	
-	TitleBlockPropertiesWidget  *titleblock_infos;
-	if (QETProject *parent_project = scene -> project()) {
-		titleblock_infos  = new TitleBlockPropertiesWidget(parent_project -> embeddedTitleBlockTemplatesCollection(), titleblock, false, &popup);
-		connect(titleblock_infos, SIGNAL(editTitleBlockTemplate(QString, bool)), this, SIGNAL(editTitleBlockTemplate(QString, bool)));
-	}
-	else
-		titleblock_infos = new TitleBlockPropertiesWidget(titleblock, false, &popup);
-
-	titleblock_infos -> setReadOnly(diagram_is_read_only);
-	
-	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(conductors);
-	cpw -> setReadOnly(diagram_is_read_only);
-	
-	// boutons
-	QDialogButtonBox boutons(diagram_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	connect(&boutons, SIGNAL(accepted()), &popup, SLOT(accept()));
-	connect(&boutons, SIGNAL(rejected()), &popup, SLOT(reject()));
-	
-	QGridLayout glayout(&popup);
-	glayout.addWidget(border_infos,0,0);
-	glayout.addWidget(titleblock_infos, 1, 0);
-	glayout.addWidget(cpw, 0, 1, 0 ,1, Qt::AlignTop);
-	glayout.addWidget(&boutons, 2, 1);
-
-	// if dialog is accepted
-	if (popup.exec() == QDialog::Accepted && !diagram_is_read_only) {
-		TitleBlockProperties new_titleblock   = titleblock_infos  -> properties();
-		BorderProperties new_border = border_infos -> properties();
-		ConductorProperties new_conductors = cpw -> properties();
-		
-		bool adjust_scene = false;
-		
-		// s'il y a des modifications au cartouche
-		if (new_titleblock != titleblock) {
-			scene -> undoStack().push(new ChangeTitleBlockCommand(scene, titleblock, new_titleblock));
-			adjust_scene = true;
-		}
-		
-		// s'il y a des modifications aux dimensions du schema
-		if (new_border != border) {
-			scene -> undoStack().push(new ChangeBorderCommand(scene, border, new_border));
-			adjust_scene = true;
-		}
-		
-		// if modifcations have been made to the conductors properties
-		if (new_conductors != conductors) {
-			/// TODO implement an undo command to allow the user to undo/redo this action
-			scene -> defaultConductorProperties = new_conductors;
-		}
-		// adjustSceneRect shall be called whenever the user accepts the dialog
-		// even if no changes have been made.
-		// Added so that diagram refreshes after back-ground color change.
-		//if (adjust_scene)
-			adjustSceneRect();
-	}
+	DiagramPropertiesDialog::diagramPropertiesDialog(scene, diagramEditor());
 }
 
 /**
