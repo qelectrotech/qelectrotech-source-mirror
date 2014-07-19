@@ -1136,7 +1136,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="90"/>
         <source>Type concret</source>
-        <translation type="unfinished"></translation>
+        <translation>συγκεκριμένος τύπος</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
@@ -1167,17 +1167,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="80"/>
         <source>Normalement ouvert</source>
-        <translation>Κανονικά ανοικτό</translation>
+        <translation>Κανονικά ανοικτή</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
         <source>Normalement fermé</source>
-        <translation>Κανονοκά κλειστό</translation>
+        <translation>Κανονικά κλειστή</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="82"/>
         <source>Inverseur</source>
-        <translation>Διακόπτης</translation>
+        <translation>Μεταγωγική</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="84"/>
@@ -6664,7 +6664,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="68"/>
         <source>tagg :</source>
-        <translation type="unfinished"></translation>
+        <translation>Πινακίδα:</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
@@ -6704,7 +6704,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="145"/>
         <source>tagg</source>
-        <translation type="unfinished"></translation>
+        <translation>Πινακίδα</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="425"/>
