@@ -17,14 +17,17 @@
 */
 #ifndef CONDUCTOR_H
 #define CONDUCTOR_H
-#include <QtGui>
-#include "terminal.h"
-#include "conductorprofile.h"
+
 #include "conductorproperties.h"
-#include "qetdiagrameditor.h"
+
+class ConductorProfile;
+class ConductorSegmentProfile;
+class Diagram;
+class Terminal;
 class ConductorSegment;
 class ConductorTextItem;
 class Element;
+class QETDiagramEditor;
 typedef QPair<QPointF, Qt::Corner> ConductorBend;
 typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
 /**

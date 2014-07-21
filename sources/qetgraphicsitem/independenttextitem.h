@@ -17,8 +17,9 @@
 */
 #ifndef INDEPENDENT_TEXT_ITEM_H
 #define INDEPENDENT_TEXT_ITEM_H
-#include <QtGui>
+
 #include "diagramtextitem.h"
+
 /**
 	This class represents an independent text field on a particular diagram.
 	It may be moved, edited, and rotated.

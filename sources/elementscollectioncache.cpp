@@ -20,6 +20,8 @@
 #include "elementscategory.h"
 #include "elementdefinition.h"
 #include "factory/elementfactory.h"
+#include "element.h"
+#include <QImageWriter>
 
 /**
 	Construct a cache for elements collections.

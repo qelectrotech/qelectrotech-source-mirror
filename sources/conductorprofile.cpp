@@ -18,6 +18,7 @@
 #include "conductorprofile.h"
 #include "qetgraphicsitem/conductor.h"
 #include "conductorsegmentprofile.h"
+#include "terminal.h"
 
 /// Constructeur
 ConductorProfile::ConductorProfile() {

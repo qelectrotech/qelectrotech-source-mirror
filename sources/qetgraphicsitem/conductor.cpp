@@ -24,6 +24,8 @@
 #include "diagram.h"
 #include "diagramcommands.h"
 #include "conductorautonumerotation.h"
+#include "qetdiagrameditor.h"
+#include "terminal.h"
 #define PR(x) qDebug() << #x " = " << x;
 
 bool Conductor::pen_and_brush_initialized = false;

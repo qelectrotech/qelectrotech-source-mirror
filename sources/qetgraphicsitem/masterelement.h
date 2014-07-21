@@ -19,7 +19,8 @@
 #define MASTERELEMENT_H
 
 #include "customelement.h"
-#include "crossrefitem.h"
+
+class CrossRefItem;
 
 class MasterElement : public CustomElement
 {

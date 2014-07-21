@@ -20,6 +20,7 @@
 #include "qetapp.h"
 #include "diagramposition.h"
 #include "elementtextitem.h"
+#include "diagram.h"
 
 //define the height of the header.
 #define header 5

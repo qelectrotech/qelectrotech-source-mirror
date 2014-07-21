@@ -18,6 +18,7 @@
 #include "conductortextitem.h"
 #include "conductor.h"
 #include "diagramcommands.h"
+#include "diagram.h"
 
 /**
 	Constructeur

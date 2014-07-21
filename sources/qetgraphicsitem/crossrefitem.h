@@ -18,9 +18,11 @@
 #ifndef CROSSREFITEM_H
 #define CROSSREFITEM_H
 
-#include "qetgraphicsitem/qetgraphicsitem.h"
+#include <QGraphicsObject>
 #include"properties/xrefproperties.h"
-class element;
+#include <QPicture>
+
+class Element;
 
 /**
  * @brief The CrossRefItem class

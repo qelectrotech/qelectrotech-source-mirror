@@ -19,6 +19,8 @@
 #include "ui_elementselectorwidget.h"
 #include "diagramposition.h"
 #include "qeticons.h"
+#include "diagram.h"
+#include "element.h"
 
 /**
  * @brief ElementSelectorWidget::ElementSelectorWidget

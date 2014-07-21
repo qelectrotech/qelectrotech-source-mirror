@@ -19,7 +19,9 @@
 #define MASTERPROPERTIESWIDGET_H
 
 #include <QWidget>
-#include <qetgraphicsitem/element.h>
+#include "element.h"
+
+class QListWidgetItem;
 
 namespace Ui {
 	class MasterPropertiesWidget;

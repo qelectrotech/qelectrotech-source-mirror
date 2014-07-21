@@ -27,6 +27,7 @@
 #include "qeticons.h"
 #include "templatescollection.h"
 #include "treecoloranimation.h"
+#include "element.h"
 
 /*
 	Lorsque le flag ENABLE_PANEL_DND_CHECKS est defini, le panel d'elements

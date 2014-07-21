@@ -17,8 +17,13 @@
 */
 #ifndef DIAGRAM_TEXT_ITEM_H
 #define DIAGRAM_TEXT_ITEM_H
-#include <QtGui>
-#include "diagram.h"
+
+#include <QGraphicsTextItem>
+
+class Diagram;
+class QDomElement;
+class QDomDocument;
+
 /**
 	This class represents a selectable, movable and editable text field on a
 	diagram.

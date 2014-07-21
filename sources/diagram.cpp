@@ -33,6 +33,7 @@
 #include "qetapp.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
+#include "terminal.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;

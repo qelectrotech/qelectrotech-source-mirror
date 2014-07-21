@@ -19,6 +19,7 @@
 #include "elementtextitem.h"
 #include "diagramposition.h"
 #include "qetproject.h"
+#include "diagram.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, QString link_type,QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)

@@ -17,13 +17,16 @@
 */
 #ifndef ELEMENT_H
 #define ELEMENT_H
-#include <QtGui>
-#include "terminal.h"
+
+#include "qet.h"
 #include "qetgraphicsitem.h"
-#include <QUuid>
+#include "diagramcontext.h"
+
 class Diagram;
 class ElementTextItem;
-
+class QETProject;
+class Terminal;
+class Conductor;
 
 /**
 	This is the base class for electrical elements.

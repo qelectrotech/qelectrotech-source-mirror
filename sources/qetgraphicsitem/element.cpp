@@ -25,6 +25,7 @@
 #include <ui/elementpropertieswidget.h>
 #include "elementprovider.h"
 #include "diagramposition.h"
+#include "terminal.h"
 
 /**
 	Constructeur pour un element sans scene ni parent

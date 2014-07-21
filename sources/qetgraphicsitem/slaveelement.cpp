@@ -19,6 +19,7 @@
 #include "diagramposition.h"
 #include "qetapp.h"
 #include "elementtextitem.h"
+#include "diagram.h"
 
 /**
  * @brief SlaveElement::SlaveElement

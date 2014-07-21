@@ -25,6 +25,7 @@
 #include "titleblockproperties.h"
 #include "qet.h"
 #include "qetgraphicsitem/qetshapeitem.h"
+#include "conductorprofile.h"
 class Diagram;
 class DiagramTextItem;
 class Element;

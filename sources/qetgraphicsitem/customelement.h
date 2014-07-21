@@ -18,11 +18,13 @@
 #ifndef CUSTOM_ELEMENT_H
 #define CUSTOM_ELEMENT_H
 #include "fixedelement.h"
-#include <QtGui>
 #include "nameslist.h"
 #include "elementslocation.h"
+#include <QPicture>
+
 class ElementTextItem;
 class Terminal;
+
 /**
 	This class represents an electrical element; it may be used like a fixed
 	element, the difference being that the CustomElement reads its description

@@ -19,7 +19,8 @@
 #define ELEMENTSELECTORWIDGET_H
 
 #include <QWidget>
-#include "qetgraphicsitem/element.h"
+class Element;
+class QSignalMapper;
 
 namespace Ui {
 	class ElementSelectorWidget;

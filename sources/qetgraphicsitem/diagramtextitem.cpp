@@ -19,8 +19,8 @@
 #include "diagramcommands.h"
 #include "qet.h"
 #include "qetapp.h"
-
 #include "richtext/richtexteditor_p.h"
+#include "diagram.h"
 
 /**
 	Constructeur

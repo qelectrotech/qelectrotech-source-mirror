@@ -17,10 +17,12 @@
 */
 #ifndef ELEMENT_TEXT_ITEM_H
 #define ELEMENT_TEXT_ITEM_H
+
 #include "diagramtextitem.h"
-#include <QtXml>
+
 class Diagram;
 class Element;
+
 /**
 	This class represents a text item attached to an element. Users can change its
 	value, adjust its position (defined relatively to its parent element), and

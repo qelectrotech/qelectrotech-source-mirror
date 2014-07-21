@@ -19,6 +19,7 @@
 #include "conductorautonumerotationwidget.h"
 #include "diagramcommands.h"
 #include "numerotationcontextcommands.h"
+#include "qetdiagrameditor.h"
 
 /**
  *Constructor

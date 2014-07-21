@@ -17,8 +17,11 @@
 */
 #ifndef DIAGRAM_IMAGE_ITEM_H
 #define DIAGRAM_IMAGE_ITEM_H
-#include <QtGui>
+
 #include "qetgraphicsitem.h"
+
+class QDomElement;
+class QDomDocument;
 
 /**
 	This class represents a selectable, movable and editable image on a

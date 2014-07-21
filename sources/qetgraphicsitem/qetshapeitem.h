@@ -20,6 +20,9 @@
 
 #include "qetgraphicsitem.h"
 
+class QDomElement;
+class QDomDocument;
+
 /**
  * @brief The QetShapeItem class
  * this class is used to draw a basic shape (line, rectangle, ellipse)

@@ -22,6 +22,7 @@
 #include "partline.h"
 #include "elementdefinition.h"
 #include <iostream>
+#include "terminal.h"
 
 /**
 	Constructeur de la classe CustomElement. Permet d'instancier un element

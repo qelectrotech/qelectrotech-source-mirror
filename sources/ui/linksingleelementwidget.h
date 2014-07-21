@@ -19,10 +19,11 @@
 #define LINKSINGLEELEMENTWIDGET_H
 
 #include <QWidget>
-#include "elementselectorwidget.h"
+#include "element.h"
 
-class Element;
 class Diagram;
+class QLineEdit;
+class ElementSelectorWidget;
 
 namespace Ui {
 	class LinkSingleElementWidget;

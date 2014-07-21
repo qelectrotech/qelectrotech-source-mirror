@@ -18,9 +18,9 @@
 #include "linksingleelementwidget.h"
 #include "ui_linksingleelementwidget.h"
 #include "diagram.h"
-#include "element.h"
 #include "elementprovider.h"
 #include "diagramcommands.h"
+#include "elementselectorwidget.h"
 
 /**
  * @brief LinkSingleElementWidget::LinkSingleElementWidget

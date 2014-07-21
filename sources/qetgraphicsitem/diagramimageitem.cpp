@@ -17,6 +17,7 @@
 */
 #include "diagramimageitem.h"
 #include "diagramcommands.h"
+#include "diagram.h"
 
 /**
  * @brief DiagramImageItem::DiagramImageItem

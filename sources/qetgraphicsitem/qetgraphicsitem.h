@@ -18,7 +18,9 @@
 #ifndef QETGRAPHICSITEM_H
 #define QETGRAPHICSITEM_H
 
-#include "diagram.h"
+#include <QGraphicsObject>
+
+class Diagram;
 
 class QetGraphicsItem : public QGraphicsObject {
 	Q_OBJECT
@@ -29,7 +31,7 @@ class QetGraphicsItem : public QGraphicsObject {
 	virtual ~QetGraphicsItem() = 0;
 
 	//public methode
-	Diagram* diagram() const;
+	Diagram * diagram() const;
 	virtual void setPos(const QPointF &p);
 	virtual void setPos(qreal x, qreal y);
 	virtual void rotateBy(const qreal &);

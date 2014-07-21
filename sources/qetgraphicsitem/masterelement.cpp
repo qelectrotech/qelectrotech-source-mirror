@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "masterelement.h"
+#include "crossrefitem.h"
 
 /**
  * @brief MasterElement::MasterElement
