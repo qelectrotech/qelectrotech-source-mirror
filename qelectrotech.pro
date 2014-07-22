@@ -46,6 +46,8 @@ macx {
 	QET_DESKTOP_PATH           = 'share/applications/'
 	QET_ICONS_PATH             = 'share/icons/hicolor/'
 	QET_MAN_PATH               = 'man/'
+	ICON                       = 'ico/mac_icon/qelectrotech.icns'
+
 }
 
 # Commenter la ligne ci-dessous pour desactiver l'option --common-elements-dir
