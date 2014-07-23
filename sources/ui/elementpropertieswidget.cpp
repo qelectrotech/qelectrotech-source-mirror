@@ -131,7 +131,7 @@ void elementpropertieswidget::buildInterface() {
 			lsew_ = new LinkSingleElementWidget(element_, this);
 			tab_ -> addTab(lsew_, tr("R\351f\351rence crois\351e (esclave)"));
 			break;
-		case Element::Bornier:
+		case Element::Terminale:
 			break;
 		default:
 			break;

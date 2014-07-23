@@ -1325,6 +1325,13 @@ QSet<Conductor *> Conductor::relatedConductors() const {
  * @return les conducteurs avec lesquels ce conducteur partage
  *  le meme potentiel electrique a l'exception de lui même
  */
+/**
+ * @brief Conductor::relatedPotentialConductors
+ * Return all conductors at the same potential of this conductor, this conductor isn't
+ * part of the returned QSet.
+ * @param t_list, a list of terminal already cheched for the serach of potential.
+ * @return  a QSet of conductor at the same potential.
+ */
 QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_list) {
 	bool declar_t_list = false;
 	if (t_list == 0) {
@@ -1333,46 +1340,31 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_li
 	}
 
 	QSet <Conductor *> other_conductors;
-	//renvoie tous les conducteurs du terminal 1
-	if (!t_list -> contains(terminal1)) {
-		t_list -> append(terminal1);
-		QList <Conductor *> other_conductors_list_t1 = terminal1 -> conductors();
+	QList <Terminal *> this_terminal{terminal1, terminal2};
 
-		//get terminal share the same potential of terminal1
-		Terminal *t1_bis = relatedPotentialTerminal(terminal1);
-		if (t1_bis && !t_list->contains(t1_bis)) {
-			t_list -> append(t1_bis);
-			other_conductors_list_t1 += t1_bis->conductors();
-		}
+	// Return all conductor of terminal 1 and 2
+	foreach (Terminal *terminal, this_terminal) {
+		if (!t_list -> contains(terminal)) {
+			t_list -> append(terminal);
+			QList <Conductor *> other_conductors_list_t = terminal -> conductors();
 
-		other_conductors_list_t1.removeAll(this);
-		//recherche les conducteurs connecté au conducteur déjà trouvé
-		foreach (Conductor *c, other_conductors_list_t1) {
-			other_conductors += c -> relatedPotentialConductors(t_list);
+			//get terminal share the same potential of @terminal, of parent element
+			Terminal *t1_bis = relatedPotentialTerminal(terminal);
+			if (t1_bis && !t_list->contains(t1_bis)) {
+				t_list -> append(t1_bis);
+				other_conductors_list_t += t1_bis->conductors();
+			}
+
+			other_conductors_list_t.removeAll(this);
+			// Research the conductors connected to conductors already found
+			foreach (Conductor *c, other_conductors_list_t) {
+				other_conductors += c -> relatedPotentialConductors(t_list);
+			}
+			other_conductors += other_conductors_list_t.toSet();
 		}
-		other_conductors += other_conductors_list_t1.toSet();
 	}
 
-	//renvoie tous les conducteurs du terminal 2
-	if (!t_list -> contains(terminal2)) {
-		t_list -> append(terminal2);
-		QList <Conductor *> other_conductors_list_t2 = terminal2 -> conductors();
-
-		//get terminal share the same potential of terminal1
-		Terminal *t2_bis = relatedPotentialTerminal(terminal2);
-		if (t2_bis && !t_list->contains(t2_bis)) {
-			t_list -> append(t2_bis);
-			other_conductors_list_t2 += t2_bis->conductors();
-		}
-
-		other_conductors_list_t2.removeAll(this);
-		//recherche les conducteurs connecté au conducteur déjà trouvé
-		foreach (Conductor *c, other_conductors_list_t2) {
-			other_conductors += c -> relatedPotentialConductors(t_list);
-		}
-		other_conductors += other_conductors_list_t2.toSet();
-	}
-	other_conductors.remove(const_cast<Conductor *>(this));
+	other_conductors.remove(this);
 
 	if (declar_t_list) delete t_list;
 	return(other_conductors);
@@ -1380,17 +1372,30 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_li
 
 /**
  * @brief Conductor::relatedPotentialTerminal
- * find another terminal in the same electric potential of terminal @t
+ * Return terminal at the same potential from the same
+ * parent element of @t.
+ * For folio report, return the terminal of linked other report.
+ * For Terminal element, return the other terminal of terminal element.
+ * @param t terminal to start search
+ * @return
  */
 Terminal * Conductor::relatedPotentialTerminal (Terminal *t) {
-	//terminal must have a folio report parent.
+	// If terminal parent element is a folio report.
 	if (t->parentElement()->linkType() & Element::AllReport) {
 		QList <Element *> elmt_list = t->parentElement()->linkedElements();
 		if (!elmt_list.isEmpty()) {
 			return (elmt_list.first()->terminals().first());
 		}
 	}
-	return 0;
+	// If terminal parent element is a Terminal element.
+	if (t->parentElement() -> linkType() & Element::Terminale) {
+		QList <Terminal *> terminals = t->parentElement()->terminals();
+		terminals.removeAll(t);
+		if (!terminals.isEmpty()) return terminals.first();
+		else return nullptr;
+	}
+
+	return nullptr;
 }
 
 /**

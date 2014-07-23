@@ -53,7 +53,7 @@ class Element : public QetGraphicsItem {
 		  AllReport = 6,
 		  Master = 8,
 		  Slave = 16,
-		  Bornier = 32};
+		  Terminale = 32};
 	
 	private:
 	QSize   dimensions;
