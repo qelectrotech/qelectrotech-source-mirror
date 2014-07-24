@@ -75,6 +75,7 @@ void ElementPropertiesEditorWidget::setUpInterface() {
 	ui -> m_base_type_cb -> addItem (tr("Esclave"),							QVariant("slave"));
 	ui -> m_base_type_cb -> addItem (tr("Renvoi de folio suivant"),			QVariant("next_report"));
 	ui -> m_base_type_cb -> addItem (tr("Renvoi de folio pr\351c\351dent"), QVariant("previous_report"));
+	ui -> m_base_type_cb -> addItem (tr("Bornier"),                         QVariant("terminal"));
 
 	// Slave option
 	ui -> m_state_cb -> addItem(tr("Normalement ouvert"),   QVariant("NO"));
