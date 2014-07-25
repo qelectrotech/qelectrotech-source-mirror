@@ -709,7 +709,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="45"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ιδιότητες Διαγράμματος</translation>
     </message>
 </context>
 <context>
@@ -1170,7 +1170,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
         <source>Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτης</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
