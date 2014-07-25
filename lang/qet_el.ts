@@ -425,12 +425,12 @@ pixel</extracomment>
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1287"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1289"/>
         <source>Textes de conducteurs</source>
         <translation>Κείμενα αγωγών</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1288"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1290"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>Θέλετε να εφαρμοστεί το νέο κείμενο
@@ -620,24 +620,24 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
 <context>
     <name>DiagramImageItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="108"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="109"/>
         <source>Éditer les propriétés d&apos;une image</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των ιδιοτήτων της εικόνας</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="113"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="114"/>
         <source>Dimension de l&apos;image</source>
         <comment>image size</comment>
         <translation>Διαστάσεις εικόνας</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="135"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="136"/>
         <source>Verrouiller la position</source>
         <translation>Κλείδωμα της θέσης</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="150"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="151"/>
         <source>une image</source>
         <translation>εικόνα</translation>
     </message>
@@ -704,81 +704,84 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
 </context>
 <context>
+    <name>DiagramPropertiesDialog</name>
+    <message>
+        <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="45"/>
+        <source>Propriétés du schéma</source>
+        <comment>window title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="84"/>
+        <location filename="../sources/diagramview.cpp" line="83"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Επικόλληση εδώ</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="201"/>
+        <location filename="../sources/diagramview.cpp" line="200"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
         <translation>Επιλέξτε τον προσανατολισμό των επιλεγμένων κειμένων</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="59"/>
+        <location filename="../sources/diagramview.cpp" line="58"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Σε αυτή την περιοχή σχεδιάζετε τα διαγράμματά σας προσθέτοντας στοιχεία και αγωγούς μεταξύ των ακροδεκτών. Μπορείτε επίσης να προσθέσετε ανεξάρτητα κείμενα.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="620"/>
+        <location filename="../sources/diagramview.cpp" line="619"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Ανώνυμο</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="645"/>
-        <source>Propriétés du schéma</source>
-        <comment>window title</comment>
-        <translation>Ιδιότητες του διαγράμματος</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="947"/>
+        <location filename="../sources/diagramview.cpp" line="874"/>
         <source>Propriétés de la sélection</source>
         <translation>Ιδιότητες της επιλογής</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="949"/>
+        <location filename="../sources/diagramview.cpp" line="876"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Η επιλογή εμπεριέχει %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1005"/>
+        <location filename="../sources/diagramview.cpp" line="932"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Εφαρμογή ιδιοτήτων σε όλους τους αγωγούς αυτού του δυναμικού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1002"/>
+        <location filename="../sources/diagramview.cpp" line="929"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των ιδιοτήτων του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1067"/>
+        <location filename="../sources/diagramview.cpp" line="994"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Επιλέξτε το νέο χρώμα αυτού του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1229"/>
+        <location filename="../sources/diagramview.cpp" line="1156"/>
         <source>Selectionner une image...</source>
         <translation>Επιλογή εικόνας...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1229"/>
+        <location filename="../sources/diagramview.cpp" line="1156"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>Αρχεία εικόνων (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1237"/>
+        <location filename="../sources/diagramview.cpp" line="1164"/>
         <source>Erreur</source>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1237"/>
+        <location filename="../sources/diagramview.cpp" line="1164"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation>Αδύνατη η φόρτωση της εικόνας...Λυπάμαι :(</translation>
     </message>
@@ -1140,7 +1143,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="83"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="84"/>
         <source>Simple</source>
         <translation>Απλό</translation>
     </message>
@@ -1165,42 +1168,47 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Αναφορά προηγούμενης σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="80"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
+        <source>Bornier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
         <source>Normalement ouvert</source>
         <translation>Κανονικά ανοικτή</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="82"/>
         <source>Normalement fermé</source>
         <translation>Κανονικά κλειστή</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="82"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="83"/>
         <source>Inverseur</source>
         <translation>Μεταγωγική</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="84"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="85"/>
         <source>Puissance</source>
         <translation>Ισχύος</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="85"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="86"/>
         <source>Temporisé travail</source>
         <translation>Καθυστέρηση ενεργοποίησης</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="86"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="87"/>
         <source>Temporisé repos</source>
         <translation>Καθυστέρηση απενεργοποίησης</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="89"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="90"/>
         <source>Bobine</source>
         <translation>Πηνίο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="90"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="91"/>
         <source>Organe de protection</source>
         <translation>Συσκευή προστασίας</translation>
     </message>
@@ -1285,17 +1293,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Φόρμα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="117"/>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="119"/>
         <source>Sans titre</source>
         <translation>Ανώνυμο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="118"/>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="120"/>
         <source>Folio  %1 (%2), position %3.</source>
         <translation>Σελίδα  %1 (%2), θέση %3.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="128"/>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="130"/>
         <source>Voir l&apos;élément</source>
         <translation>Εμφάνιση στοιχείου</translation>
     </message>
@@ -1524,95 +1532,95 @@ Les changements seront définitifs.</source>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="417"/>
+        <location filename="../sources/elementspanel.cpp" line="418"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της εργασίας</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="440"/>
+        <location filename="../sources/elementspanel.cpp" line="441"/>
         <source>Cartouches embarqués</source>
         <translation>Ενσωματωμένες πινακίδες</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="441"/>
+        <location filename="../sources/elementspanel.cpp" line="442"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της ενσωματωμένης συλλογής πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="450"/>
+        <location filename="../sources/elementspanel.cpp" line="451"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
         <translation>Σύρετε και αφήστε αυτό το πρότυπο πινακίδας μέσα στο διάγραμμα για να εφαρμοστεί </translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="462"/>
+        <location filename="../sources/elementspanel.cpp" line="463"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="474"/>
+        <location filename="../sources/elementspanel.cpp" line="475"/>
         <source>Collection embarquée</source>
         <translation>Ενσωματωμένη συλλογή</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="475"/>
+        <location filename="../sources/elementspanel.cpp" line="476"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της ενσωματωμένης συλλογής στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="483"/>
+        <location filename="../sources/elementspanel.cpp" line="484"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
         <translation>Σύρετε και αφήστε αυτό το στοιχείο στο διάγραμμα για να εισάγετε ένα στοιχείο &quot;%1&quot; σε αυτό, διπλό πάτημα για επεξεργασία</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="575"/>
+        <location filename="../sources/elementspanel.cpp" line="576"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής πινακίδων του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="576"/>
+        <location filename="../sources/elementspanel.cpp" line="577"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Αυτή είναι η συλλογή πινακίδων που παρέχεται μαζί με το QElectroTech. Εγκατεστημένη σαν στοιχείο του συστήματος,και δεν μπορείτε να τη προσαρμόσετε.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="584"/>
+        <location filename="../sources/elementspanel.cpp" line="585"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής στοιχείων του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="585"/>
+        <location filename="../sources/elementspanel.cpp" line="586"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Αυτή είναι η συλλογή στοιχείων που παρέχεται μαζί με το QElectroTech. Εγκατεστημένη σαν στοιχείο του συστήματος,και δεν μπορείτε να τη προσαρμόσετε.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="593"/>
+        <location filename="../sources/elementspanel.cpp" line="594"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της προσωπικής σας συλλογής πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="594"/>
+        <location filename="../sources/elementspanel.cpp" line="595"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Αυτή είναι η προσωπική σας συλλογή από πινακίδες --χρησιμοποιήστε τη για να δημιουργήσετε, να αποθηκεύσετε και να επεξεργαστείτε τις δικές σας πινακίδες.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="602"/>
+        <location filename="../sources/elementspanel.cpp" line="603"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της προσωπικής σας συλλογής στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="603"/>
+        <location filename="../sources/elementspanel.cpp" line="604"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Αυτή είναι η προσωπική σας συλλογή από στοιχεία --χρησιμοποιήστε τη για να δημιουργήσετε, να αποθηκεύσετε και να επεξεργαστείτε τις δικά σας στοιχεία.</translation>
@@ -5494,7 +5502,7 @@ Que désirez vous faire ?</source>
         <translation>Το αρχείο κειμένου που περιέχει την άδεια GNU/GPL υπάρχει αλλά δεν μπορεί να ανοιχτεί - αλλα ούτως ή άλλως την έχετε στην καρδιά σας, έτσι δεν είναι;</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/customelement.cpp" line="119"/>
+        <location filename="../sources/qetgraphicsitem/customelement.cpp" line="120"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
         <translation>Προσοχή: Το στοιχείο έχει αποθηκευτεί με μια νεότερη έκδοση του QElectroTech.</translation>
     </message>

@@ -427,12 +427,12 @@ pixel</extracomment>
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1287"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1289"/>
         <source>Textes de conducteurs</source>
         <translation>Texto de los conductores</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1288"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1290"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>¿Quiere aplicar el nuevo texto a los conductores de este potencial?</translation>
@@ -621,24 +621,24 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
 <context>
     <name>DiagramImageItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="108"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="109"/>
         <source>Éditer les propriétés d&apos;une image</source>
         <comment>window title</comment>
         <translation>Editar las propiedades de una imagen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="113"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="114"/>
         <source>Dimension de l&apos;image</source>
         <comment>image size</comment>
         <translation>Tamaño de la imagen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="135"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="136"/>
         <source>Verrouiller la position</source>
         <translation>Bloquear la posición</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="150"/>
+        <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="151"/>
         <source>une image</source>
         <translation type="unfinished"></translation>
     </message>
@@ -705,81 +705,84 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
 </context>
 <context>
+    <name>DiagramPropertiesDialog</name>
+    <message>
+        <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="45"/>
+        <source>Propriétés du schéma</source>
+        <comment>window title</comment>
+        <translation type="unfinished">Propiedades del esquema</translation>
+    </message>
+</context>
+<context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="84"/>
+        <location filename="../sources/diagramview.cpp" line="83"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Pegar aquí</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="59"/>
+        <location filename="../sources/diagramview.cpp" line="58"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Esto es la zona en la cual concibe sus esquemas añadiendo elementos y colocando conductores entre sus terminales. También es posible añadir texto independiente.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="201"/>
+        <location filename="../sources/diagramview.cpp" line="200"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
         <translation>Orientar los textos seleccionados</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="620"/>
+        <location filename="../sources/diagramview.cpp" line="619"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Sin titulo</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="645"/>
-        <source>Propriétés du schéma</source>
-        <comment>window title</comment>
-        <translation>Propiedades del esquema</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="947"/>
+        <location filename="../sources/diagramview.cpp" line="874"/>
         <source>Propriétés de la sélection</source>
         <translation>Propiedades de la selección</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="949"/>
+        <location filename="../sources/diagramview.cpp" line="876"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>La selección contiene %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1005"/>
+        <location filename="../sources/diagramview.cpp" line="932"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Aplicar las propiedades a todos los conductores de este potencial</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1002"/>
+        <location filename="../sources/diagramview.cpp" line="929"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Editar las propiedades de un conductor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1067"/>
+        <location filename="../sources/diagramview.cpp" line="994"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Elegir el nuevo color de este conductor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1229"/>
+        <location filename="../sources/diagramview.cpp" line="1156"/>
         <source>Selectionner une image...</source>
         <translation>Seleccione una imagen ...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1229"/>
+        <location filename="../sources/diagramview.cpp" line="1156"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
         <translation>Archivos de imagen (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1237"/>
+        <location filename="../sources/diagramview.cpp" line="1164"/>
         <source>Erreur</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1237"/>
+        <location filename="../sources/diagramview.cpp" line="1164"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
         <translation>No se puede cargar la imagen...Lo siento :(</translation>
     </message>
@@ -1137,7 +1140,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="83"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="84"/>
         <source>Simple</source>
         <translation type="unfinished">Simple</translation>
     </message>
@@ -1162,42 +1165,47 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="80"/>
-        <source>Normalement ouvert</source>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
+        <source>Bornier</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
-        <source>Normalement fermé</source>
+        <source>Normalement ouvert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="82"/>
+        <source>Normalement fermé</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="83"/>
         <source>Inverseur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="84"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="85"/>
         <source>Puissance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="85"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="86"/>
         <source>Temporisé travail</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="86"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="87"/>
         <source>Temporisé repos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="89"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="90"/>
         <source>Bobine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="90"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="91"/>
         <source>Organe de protection</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1282,17 +1290,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Forma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="117"/>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="119"/>
         <source>Sans titre</source>
         <translation>Sin titulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="118"/>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="120"/>
         <source>Folio  %1 (%2), position %3.</source>
         <translation>Folio  %1 (%2), posición %3.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.cpp" line="128"/>
+        <location filename="../sources/ui/elementselectorwidget.cpp" line="130"/>
         <source>Voir l&apos;élément</source>
         <translation>Ver el elemento</translation>
     </message>
@@ -1521,95 +1529,95 @@ Los cambios no podrían ser revertidos.</translation>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="440"/>
+        <location filename="../sources/elementspanel.cpp" line="441"/>
         <source>Cartouches embarqués</source>
         <translation>Bloques de titulos integrados</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="441"/>
+        <location filename="../sources/elementspanel.cpp" line="442"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
         <translation>Haga doble clic para contraer o expandir la colección de modelos integrados</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="474"/>
+        <location filename="../sources/elementspanel.cpp" line="475"/>
         <source>Collection embarquée</source>
         <translation>Colección integrada</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="475"/>
+        <location filename="../sources/elementspanel.cpp" line="476"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
         <translation>Doble clic para contraer o expandir la colección de elementos integrados</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="417"/>
+        <location filename="../sources/elementspanel.cpp" line="418"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
         <translation>Doble clic para contraer o expandir el proyecto</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="450"/>
+        <location filename="../sources/elementspanel.cpp" line="451"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
         <translation>Haga clic y arrastre el bloque de titulo a su esquema para aplicarlo.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="462"/>
+        <location filename="../sources/elementspanel.cpp" line="463"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
         <translation>Doble clic para contraer o expandir la categoría de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="483"/>
+        <location filename="../sources/elementspanel.cpp" line="484"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
         <translation>clic y arrastre a su esquema para insertar un elemento %1, doble clic para editarlo</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="575"/>
+        <location filename="../sources/elementspanel.cpp" line="576"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Doble clic para reducir o expandir la colección de bloque de titulo de QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="576"/>
+        <location filename="../sources/elementspanel.cpp" line="577"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Esta es la colección de bloques de titulo suministrados con QElectroTech. Se instala como un componente del sistema, simplemente no se puede personalizar.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="584"/>
+        <location filename="../sources/elementspanel.cpp" line="585"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Doble clic para contraer o expandir la colección de elementos QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="585"/>
+        <location filename="../sources/elementspanel.cpp" line="586"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Esta es la colección de elementos que vienen con QElectroTech. Se instala como un componente del sistema, simplemente no se puede personalizar.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="593"/>
+        <location filename="../sources/elementspanel.cpp" line="594"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation>Doble clic para contraer o expandir su colección personal de bloques de titulo</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="594"/>
+        <location filename="../sources/elementspanel.cpp" line="595"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Esta es su colección personal de bloques de titulo - se usa para crear, almacenar y editar sus propios modelos.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="602"/>
+        <location filename="../sources/elementspanel.cpp" line="603"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
         <translation>Doble clic para contraer o expandir su colección personal de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="603"/>
+        <location filename="../sources/elementspanel.cpp" line="604"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Esta es su colección personal de elementos - se usa para crear, almacenar y editar sus propios elementos.</translation>
@@ -5484,7 +5492,7 @@ Que désirez vous faire ?</source>
         <translation>Exportar al portapapeles</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/customelement.cpp" line="119"/>
+        <location filename="../sources/qetgraphicsitem/customelement.cpp" line="120"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
         <translation>Aviso: el elemento fue guardado con una versión mas reciente de QElectroTech.</translation>
     </message>

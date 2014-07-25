@@ -4,7 +4,7 @@
 <context>
     <name>QETElementEditor</name>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="616"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="626"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n partie sélectionnée.</numerusform>
@@ -12,7 +12,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="665"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="717"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -79,8 +79,8 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1378"/>
-        <location filename="../sources/diagramcommands.cpp" line="1393"/>
+        <location filename="../sources/diagramcommands.cpp" line="1357"/>
+        <location filename="../sources/diagramcommands.cpp" line="1372"/>
         <source>Délier %n élément(s)</source>
         <translation>
             <numerusform>Délier %n élément</numerusform>
