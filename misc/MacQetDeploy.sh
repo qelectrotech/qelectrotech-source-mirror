@@ -89,6 +89,42 @@ if [ -e "packaging/mac-osx/${APPNAME}_$revAp.dmg" ] ; then
 fi
 
 
+### Version tag ####################################################
+
+echo
+echo "______________________________________________________________"
+echo "Add version tag:"
+
+echo "Adding the version tag..."
+
+# On sauve l'orginale
+mkdir temp
+cp -Rf "sources/qet.h" "temp/qet.h"
+
+#cd 
+# On modifie l'originale avec le numero de version
+sed -i "" "s/const QString displayedVersion = \"0.4-dev\"/const QString displayedVersion = \"0.4-dev-r$revAp\"/" sources/qet.h
+
+# Apres la compilation 
+cleanVerionTag () {
+    echo
+    echo "______________________________________________________________"
+    echo "Clean version tag:"
+
+    # On remet le code source comme il etait
+    echo "Cleaning version tag..."
+
+    # On supprime le fichier modifier
+    rm -rf "sources/qet.h"
+
+    # On remet l'ancien original
+    cp -Rf "temp/qet.h" "sources/qet.h"
+
+    # On suprime l'ancienne copie
+    rm -rf "temp"
+}
+
+
 ### make install ####################################################
 
 echo
@@ -107,12 +143,20 @@ fi
 
 # genere le Makefile
 echo "Generating new makefile..."
-qmake -spec macx-g++
+qmake -spec macx-g++ 
 
 # compilation
 if [ -e Makefile.Release ] ; then
 	START_TIME=$SECONDS
 	make -f Makefile.Release
+    if [ $? -ne 0 ]; then 
+        cleanVerionTag
+        ELAPSED_TIME=$(($SECONDS - $START_TIME))
+        echo
+        echo "make failed - $(($ELAPSED_TIME/60)) min $(($ELAPSED_TIME%60)) sec"
+        exit 1
+    fi
+    cleanVerionTag
 	ELAPSED_TIME=$(($SECONDS - $START_TIME))
 	echo
 	echo "The time of compilation is $(($ELAPSED_TIME/60)) min $(($ELAPSED_TIME%60)) sec" 
@@ -133,7 +177,7 @@ if [ ! -d $BUNDLE ] ; then
     echo "ERROR: cannot find application bundle \"$BUNDLE\" in current directory"
     exit
 fi
-
+/usr/bin/macdeployqt-4.8 $BUNDLE
 
 ### add file missing #######################################
 
@@ -200,7 +244,7 @@ strip "$imagedir/$APPBIN"
     
 # Creating a disk image from a folder
 echo 'Creating disk image... '
-hdiutil create -quiet -ov -srcfolder $imagedir -format UDBZ -volname "APPNAME" "${APPNAME}_${revAp}.dmg"
+hdiutil create -quiet -ov -srcfolder $imagedir -format UDBZ -volname "${APPNAME}" "${APPNAME}_${revAp}.dmg"
 hdiutil internet-enable -yes -quiet "${APPNAME}_${revAp}.dmg"
 
 # Clean up disk folder

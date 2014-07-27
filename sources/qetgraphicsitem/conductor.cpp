@@ -1340,7 +1340,9 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_li
 	}
 
 	QSet <Conductor *> other_conductors;
-	QList <Terminal *> this_terminal{terminal1, terminal2};
+	// QList <Terminal *> this_terminal{terminal1, terminal2};
+	QList <Terminal *> this_terminal;
+    this_terminal << terminal1 << terminal2;
 
 	// Return all conductor of terminal 1 and 2
 	foreach (Terminal *terminal, this_terminal) {
