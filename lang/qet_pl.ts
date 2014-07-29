@@ -709,7 +709,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="45"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation type="unfinished">Właściwości schematu</translation>
+        <translation>Właściwości schematu</translation>
     </message>
 </context>
 <context>
@@ -1170,7 +1170,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
         <source>Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
