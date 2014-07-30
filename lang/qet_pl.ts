@@ -1185,7 +1185,7 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="83"/>
         <source>Inverseur</source>
-        <translation>Przełącznik</translation>
+        <translation>Przełączny</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="85"/>
