@@ -20,37 +20,18 @@
 #include "diagramcommands.h"
 #include "numerotationcontextcommands.h"
 #include "qetdiagrameditor.h"
+#include "conductor.h"
+#include "diagram.h"
 
 /**
  *Constructor
  * @param c the conductor to apply automatic numerotation
  */
 ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *c) :
-	AutoNumerotation (c -> diagram()),
-	conductor_ (c),
-	conductor_list(c -> relatedPotentialConductors())
-{
-	num_context = diagram_ -> getNumerotation(Diagram::Conductors);
-}
-
-/**
- * Constructor
- * @param d a diagram to apply automatic numerotation
- */
-ConductorAutoNumerotation::ConductorAutoNumerotation(Diagram *d) :
-	AutoNumerotation (d),
-	conductor_ (NULL)
+	m_diagram      (c -> diagram()),
+	conductor_     (c),
+	conductor_list (c -> relatedPotentialConductors())
 {}
-
-/**
- * @param c the conductor to apply automatic numerotation
- */
-void ConductorAutoNumerotation::setConductor(Conductor *c) {
-	conductor_ = c;
-	diagram_ = c -> diagram();
-	conductor_list = c -> relatedPotentialConductors();
-	num_context = diagram_ -> getNumerotation(Diagram::Conductors);
-}
 
 /**
  * @brief ConductorAutoNumerotation::numerate
@@ -60,24 +41,6 @@ void ConductorAutoNumerotation::numerate() {
 	if (!conductor_) return;
 	if (conductor_list.size() >= 1 ) numeratePotential();
 	else if (conductor_ -> properties().type == ConductorProperties::Multi) numerateNewConductor();
-	else return;
-}
-
-/**
- * @brief ConductorAutoNumerotation::numerateDiagram
- * Numerate all conductor in diagram
- */
-void ConductorAutoNumerotation::numerateDiagram() {
-	if (!diagram_) return;
-	//Get all potentials presents in diagram
-	QList <QSet <Conductor *> > potential_list = diagram_ -> potentials();
-	//Browse all potentials and set new numerotation
-	for (int i=0; i < potential_list.size(); ++i) {
-		setConductor (potential_list.at(i).toList().first());
-		NumerotationContextCommands ncc(diagram_, num_context);
-		applyText(ncc.toRepresentedString());
-		diagram_ -> setNumerotation(Diagram::Conductors, ncc.next());
-	}
 }
 
 /**
@@ -99,7 +62,7 @@ void ConductorAutoNumerotation::checkPotential(Conductor *conductor) {
 	if (!eachIsEqual(strl)) {
 		ConductorAutoNumerotationWidget canw(c_list, conductor -> diagramEditor());
 		ConductorAutoNumerotation can(conductor);
-		connect(&canw, SIGNAL(textIsSelected(QString)), &can, SLOT(applyText(QString)));
+		//connect(&canw, SIGNAL(textIsSelected(QString)), &can, SLOT(applyText(QString)));
 		canw.exec();
 	}
 }
@@ -117,7 +80,7 @@ void ConductorAutoNumerotation::applyText(QString t) {
 		ConductorProperties cp = conductor_ -> properties();
 		cp.text = t;
 		ccpc -> setNewSettings(cp);
-		diagram_ -> undoStack().push(ccpc);
+		m_diagram -> undoStack().push(ccpc);
 	}
 	else {
 		QList <Conductor *> clist = conductor_list.toList();
@@ -135,21 +98,7 @@ void ConductorAutoNumerotation::applyText(QString t) {
 		ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(clist);
 		cscpc -> setOldSettings(old_properties);
 		cscpc -> setNewSettings(new_properties);
-		diagram_ -> undoStack().push(cscpc);
-	}
-}
-
-/**
- * @brief Set the default text to all potentials of the diagram
- */
-void ConductorAutoNumerotation::removeNumOfDiagram() {
-	if (!diagram_) return;
-	//Get all potentials presents in diagram
-	QList <QSet <Conductor *> > potential_list = diagram_ -> potentials();
-	//Browse all potentials and set the default text
-	for (int i=0; i < potential_list.size(); i++) {
-		setConductor (potential_list.at(i).toList().first());
-		applyText (diagram_ -> defaultConductorProperties.text);
+		m_diagram -> undoStack().push(cscpc);
 	}
 }
 
@@ -170,8 +119,8 @@ void ConductorAutoNumerotation::numeratePotential() {
 	//the texts isn't identicals
 	else {
 		ConductorAutoNumerotationWidget *canw = new ConductorAutoNumerotationWidget(conductor_list, conductor_ -> diagramEditor());
-		connect(canw, SIGNAL(textIsSelected(QString)),
-				this, SLOT(applyText(QString)));
+		/*connect(canw, SIGNAL(textIsSelected(QString)),
+				this, SLOT(applyText(QString)));*/
 		canw -> exec();
 	}
 }
@@ -181,11 +130,12 @@ void ConductorAutoNumerotation::numeratePotential() {
  * create and apply a new numerotation to @conductor_
  */
 void ConductorAutoNumerotation::numerateNewConductor() {
-	if (!conductor_ || num_context.isEmpty()) return;
+	if (!conductor_ || m_diagram->conductorsAutonumName().isEmpty()) return;
 
-	NumerotationContextCommands ncc (diagram_, num_context);
+	QString name = m_diagram -> conductorsAutonumName();
+	NumerotationContextCommands ncc (m_diagram, m_diagram->project()->conductorAutoNum(name));
 	applyText(ncc.toRepresentedString());
-	diagram_-> setNumerotation(Diagram::Conductors, ncc.next());
+	m_diagram->project()->addConductorAutoNum(name, ncc.next());
 }
 
 /**

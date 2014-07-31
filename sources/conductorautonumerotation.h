@@ -18,25 +18,19 @@
 #ifndef CONDUCTORAUTONUMEROTATION_H
 #define CONDUCTORAUTONUMEROTATION_H
 
-#include "qetgraphicsitem/conductor.h"
-#include "numerotationcontext.h"
-#include "autonumerotation.h"
+#include <QSet>
 
-class ConductorAutoNumerotation: public AutoNumerotation
-{
+class Diagram;
+class Conductor;
+
+class ConductorAutoNumerotation {
 	public:
 	//constructors & destructor
 	ConductorAutoNumerotation (Conductor *);
-	ConductorAutoNumerotation (Diagram *);
 
 	//methods
-	void setConductor(Conductor *);
 	void numerate();
-	void numerateDiagram();
-	void removeNumOfDiagram();
 	static void checkPotential(Conductor *);
-
-	public slots:
 	void applyText(QString);
 
 	private:
@@ -45,7 +39,8 @@ class ConductorAutoNumerotation: public AutoNumerotation
 	void numerateNewConductor ();
 
 	//attributes
-	Conductor *conductor_;
+	Diagram           *m_diagram;
+	Conductor         *conductor_;
 	QSet <Conductor *> conductor_list;
 };
 
