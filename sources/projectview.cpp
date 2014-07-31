@@ -447,8 +447,9 @@ void ProjectView::editProjectProperties() {
 	
 	ConfigDialog properties_dialog(parentWidget());
 	properties_dialog.setWindowTitle(tr("Propri\351t\351s du projet", "window title"));
-	properties_dialog.addPage(new ProjectMainConfigPage(project_));
-	properties_dialog.addPage(new ProjectNewDiagramConfigPage(project_));
+	properties_dialog.addPage(new ProjectMainConfigPage       (project_));
+	properties_dialog.addPage(new ProjectNewDiagramConfigPage (project_));
+	properties_dialog.addPage(new ProjectAutoNumConfigPage    (project_));
 	properties_dialog.exec();
 }
 

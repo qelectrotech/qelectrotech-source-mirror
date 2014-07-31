@@ -115,6 +115,10 @@ void ConductorPropertiesWidget::setReadOnly(const bool &ro) {
 	this->setDisabled(ro);
 }
 
+void ConductorPropertiesWidget::addAutonumWidget(QWidget *widget) {
+	ui->m_autonum_layout->addWidget(widget);
+}
+
 /**
  * @brief ConductorPropertiesWidget::initWidget
  */

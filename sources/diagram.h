@@ -58,63 +58,72 @@ class Diagram : public QGraphicsScene {
 	private:
 	Diagram(const Diagram &diagram);
 	
-	// attributes
+	// ATTRIBUTES
 	public:
-	/**
-		Represents available options when rendering a particular diagram:
-		 * EmptyBorder: display border only
-		 * TitleBlock: display title block
-		 * Columns: display columns
-	*/
-	enum BorderOptions { EmptyBorder, TitleBlock, Columns };
-	/// Represents available option of Numerotation type.
-	enum NumerotationType { Conductors };
-	/// Default properties for new conductors
-	ConductorProperties defaultConductorProperties;
-	/// Diagram dimensions and title block
-	BorderTitleBlock border_and_titleblock;
-	/// abscissa grid step size
-	static const int xGrid;
-	/// ordinate grid step size
-	static const int yGrid;
-	/// margin around the diagram
-	static const qreal margin;
-	/// background color of diagram
-	static QColor background_color;
+		/**
+			Represents available options when rendering a particular diagram:
+			 * EmptyBorder: display border only
+			 * TitleBlock: display title block
+			 * Columns: display columns
+		*/
+		enum BorderOptions { EmptyBorder, TitleBlock, Columns };
+		/// Represents available option of Numerotation type.
+		enum NumerotationType { Conductors };
+		/// Default properties for new conductors
+		ConductorProperties defaultConductorProperties;
+		/// Diagram dimensions and title block
+		BorderTitleBlock border_and_titleblock;
+		/// abscissa grid step size
+		static const int xGrid;
+		/// ordinate grid step size
+		static const int yGrid;
+		/// margin around the diagram
+		static const qreal margin;
+		/// background color of diagram
+		static QColor background_color;
+
 	private:
-	QGraphicsLineItem *conductor_setter_;
-	ElementsMover *elements_mover_;
-	ElementTextsMover *element_texts_mover_;
-	bool draw_grid_;
-	bool use_border_;
-	QGIManager *qgi_manager_;
-	bool draw_terminals_;
-	bool draw_colored_conductors_;
-	QDomDocument xml_document_;
-	QETProject *project_;
-	bool read_only_;
-	qreal diagram_qet_version_;
-	QHash <NumerotationType, NumerotationContext > numerotation_;
+		QGraphicsLineItem *conductor_setter_;
+		ElementsMover     *elements_mover_;
+		ElementTextsMover *element_texts_mover_;
+		QGIManager        *qgi_manager_;
+		QETProject        *project_;
+
+		QDomDocument xml_document_;
+
+		qreal diagram_qet_version_;
+
+		bool draw_grid_;
+		bool use_border_;
+		bool draw_terminals_;
+		bool draw_colored_conductors_;
+		bool read_only_;
+
+		QString m_conductors_autonum_name;
 	
-	// methods
+	// METHODS
 	protected:
-	virtual void drawBackground(QPainter *, const QRectF &);
-	virtual void keyPressEvent(QKeyEvent *);
-	virtual void keyReleaseEvent(QKeyEvent *);
+		virtual void drawBackground(QPainter *, const QRectF &);
+		virtual void keyPressEvent(QKeyEvent *);
+		virtual void keyReleaseEvent(QKeyEvent *);
 	
 	public:
-	QString		   defaultReportProperties () const {return project_ -> defaultReportProperties();}
-	XRefProperties defaultXRefProperties   (const QString &str) const {return project_ -> defaultXRefProperties(str);}
-	static bool clipboardMayContainDiagram();
-	bool setNumerotation (NumerotationType, NumerotationContext);
-	NumerotationContext getNumerotation (NumerotationType) const;
+		//methods related to xref properties
+		QString		   defaultReportProperties () const {return project_ -> defaultReportProperties();}
+		XRefProperties defaultXRefProperties   (const QString &str) const {return project_ -> defaultXRefProperties(str);}
+
+		//methods related to autonum
+		QString conductorsAutonumName() const;
+		void setConductorsAutonumName(const QString &name);
+
+		static bool clipboardMayContainDiagram();
 	
-	// methods related to parent project
-	QETProject *project() const;
-	void setProject(QETProject *);
-	int folioIndex() const;
-	qreal declaredQElectroTechVersion(bool = true) const;
-	void showMe() {emit showDiagram(this);}
+		// methods related to parent project
+		QETProject *project() const;
+		void setProject(QETProject *);
+		int folioIndex() const;
+		qreal declaredQElectroTechVersion(bool = true) const;
+		void showMe() {emit showDiagram(this);}
 	
 	// methods related to read only mode
 	bool isReadOnly() const;
@@ -216,31 +225,6 @@ class Diagram : public QGraphicsScene {
 	void XRefPropertiesChanged();
 };
 Q_DECLARE_METATYPE(Diagram *)
-
-/**
- * @brief Diagram::setNumerotation, store a numerotation type
- * @return true if storage is available
- */
-inline bool Diagram::setNumerotation(Diagram::NumerotationType type, NumerotationContext context) {
-	switch (type) {
-		case Conductors:
-			numerotation_.insert(type, context);
-			return true;
-			break;
-		default:
-			return false;
-			break;
-	}
-}
-
-/**
- * @brief Diagram::getNumerotation
- * @return the NumerotationContext associated with the key.
- * If numerotation_ contains no item with the key, the function returns a default-constructed NumerotationContext
- */
-inline NumerotationContext Diagram::getNumerotation(Diagram::NumerotationType type) const {
-	return numerotation_.value(type);
-}
 
 /**
 	Display or hide the conductor setter, i.e. a dashed conductor stub which appears when creating a conductor between two terminals.

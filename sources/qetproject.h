@@ -37,6 +37,7 @@ class TitleBlockTemplate;
 class XmlElementsCollection;
 class MoveElementsHandler;
 class MoveTitleBlockTemplatesHandler;
+class NumerotationContext;
 
 /**
 	This class represents a QET project. Typically saved as a .qet file, it
@@ -96,16 +97,24 @@ class QETProject : public QObject {
 	///DEFAULT PROPERTIES
 	BorderProperties defaultBorderProperties() const;
 	void setDefaultBorderProperties(const BorderProperties &);
+
 	TitleBlockProperties defaultTitleBlockProperties() const;
 	void setDefaultTitleBlockProperties(const TitleBlockProperties &);
+
 	ConductorProperties defaultConductorProperties() const;
 	void setDefaultConductorProperties(const ConductorProperties &);
+
 	QString defaultReportProperties() const;
 	void setDefaultReportProperties (const QString &properties);
+
 	XRefProperties					defaultXRefProperties (const QString &type) const {return m_default_xref_properties[type];}
 	QHash <QString, XRefProperties> defaultXRefProperties() const					  {return m_default_xref_properties;}
 	void setDefaultXRefProperties(const QString type, const XRefProperties &properties);
 	void setDefaultXRefProperties(QHash <QString, XRefProperties> hash);
+
+	QHash <QString, NumerotationContext> conductorAutoNum() const;
+	void addConductorAutoNum (QString key, NumerotationContext context);
+	NumerotationContext conductorAutoNum(const QString &key) const;
 
 	QDomDocument toXml();
 	bool close();
@@ -218,6 +227,8 @@ class QETProject : public QObject {
 	DiagramContext project_properties_;
 	/// undo stack for this project
 	QUndoStack *undo_stack_;
+	/// Conductor auto numerotation
+	QHash <QString, NumerotationContext> m_conductor_autonum;
 };
 Q_DECLARE_METATYPE(QETProject *)
 #endif

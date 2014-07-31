@@ -30,6 +30,7 @@
 #include "qetmessagebox.h"
 #include "titleblocktemplate.h"
 #include "ui/dialogwaiting.h"
+#include "numerotationcontext.h"
 
 QString QETProject::integration_category_name = "import";
 
@@ -459,6 +460,36 @@ void QETProject::setDefaultXRefProperties(const QString type, const XRefProperti
 void QETProject::setDefaultXRefProperties(QHash<QString, XRefProperties> hash) {
 	m_default_xref_properties.swap(hash);
 	emit XRefPropertiesChanged();
+}
+
+/**
+ * @brief QETProject::conductorAutoNum
+ * @return All value of conductor autonum stored in project
+ */
+QHash <QString, NumerotationContext> QETProject::conductorAutoNum() const {
+	return m_conductor_autonum;
+}
+
+/**
+ * @brief QETProject::addConductorAutoNum
+ * Add a new numerotation context. If key already exist,
+ * replace old context by the new context
+ * @param key
+ * @param context
+ */
+void QETProject::addConductorAutoNum(QString key, NumerotationContext context) {
+	m_conductor_autonum.insert(key, context);
+}
+
+/**
+ * @brief QETProject::conductorAutoNum
+ * Return the numerotation context stored with @key.
+ * If key is not found, return an empty numerotation context
+ * @param key
+ */
+NumerotationContext QETProject::conductorAutoNum (const QString &key) const {
+	if (m_conductor_autonum.contains(key)) return m_conductor_autonum[key];
+	else return NumerotationContext();
 }
 
 /**
@@ -1167,7 +1198,7 @@ void QETProject::readDefaultPropertiesXml() {
 	m_default_xref_properties	   = QETDiagramEditor::defaultXRefProperties();
 	
 	//Read values indicate in project
-	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt;
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums;
 	
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling()) {
 		QDomElement child_elmt = child.toElement();
@@ -1182,10 +1213,12 @@ void QETProject::readDefaultPropertiesXml() {
 			report_elmt = child_elmt;
 		} else if (child_elmt.tagName() == "xrefs") {
 			xref_elmt = child_elmt;
+		} else if (child_elmt.tagName() == "conductors_autonums") {
+			conds_autonums = child_elmt;
 		}
 	}
 	
-	// size, titleblock, conductor, report
+	// size, titleblock, conductor, report, conductor autonum
 	if (!border_elmt.isNull())	   default_border_properties_.fromXml(border_elmt);
 	if (!titleblock_elmt.isNull()) default_titleblock_properties_.fromXml(titleblock_elmt);
 	if (!conductors_elmt.isNull()) default_conductor_properties_.fromXml(conductors_elmt);
@@ -1195,6 +1228,13 @@ void QETProject::readDefaultPropertiesXml() {
 			XRefProperties xrp;
 			xrp.fromXml(elmt);
 			m_default_xref_properties.insert(elmt.attribute("type"), xrp);
+		}
+	}
+	if (!conds_autonums.isNull()) {
+		foreach (QDomElement elmt, QET::findInDomElement(conds_autonums, "conductor_autonum")) {
+			NumerotationContext nc;
+			nc.fromXml(elmt);
+			m_conductor_autonum.insert(elmt.attribute("title"), nc);
 		}
 	}
 }
@@ -1241,8 +1281,16 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 		defaultXRefProperties()[key].toXml(xref_elmt);
 		xrefs_elmt.appendChild(xref_elmt);
 	}
-
 	xml_element.appendChild(xrefs_elmt);
+
+	//Export conductors autonums
+	QDomElement conds_autonums = xml_document.createElement("conductors_autonums");
+	foreach (QString key, conductorAutoNum().keys()) {
+		QDomElement cond_autonum = conductorAutoNum(key).toXml(xml_document, "conductor_autonum");
+		cond_autonum.setAttribute("title", key);
+		conds_autonums.appendChild(cond_autonum);
+	}
+	xml_element.appendChild(conds_autonums);
 }
 
 /**

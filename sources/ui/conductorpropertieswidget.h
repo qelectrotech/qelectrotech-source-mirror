@@ -40,6 +40,8 @@ class ConductorPropertiesWidget : public QWidget
 		ConductorProperties properties() const;
 		void setReadOnly(const bool &ro);
 
+		void addAutonumWidget (QWidget *widget);
+
 	private:
 		void initWidget();
 		void setConductorType(ConductorProperties::ConductorType type);

@@ -57,7 +57,7 @@
            <item>
             <widget class="QLabel" name="label">
              <property name="text">
-              <string>Texte :</string>
+              <string>Texte par defaut :</string>
              </property>
             </widget>
            </item>
@@ -82,6 +82,9 @@
             </widget>
            </item>
           </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="m_autonum_layout"/>
          </item>
          <item>
           <widget class="QLabel" name="label_3">

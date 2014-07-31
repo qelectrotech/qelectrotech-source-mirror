@@ -25,6 +25,8 @@
 #include <QtGui>
 #include "ui/reportpropertiewidget.h"
 #include "ui/xrefpropertieswidget.h"
+#include "selectautonumw.h"
+#include "numerotationcontext.h"
 
 /**
 	Constructor
@@ -88,6 +90,8 @@ void ProjectConfigPage::init() {
 		adjustReadOnly();
 	}
 }
+
+//######################################################################################//
 
 /**
 	Constructor
@@ -200,6 +204,8 @@ void ProjectMainConfigPage::adjustReadOnly() {
 	bool is_read_only = project_ -> isReadOnly();
 	title_value_ -> setReadOnly(is_read_only);
 }
+
+//######################################################################################//
 
 /**
 	Constructor
@@ -334,4 +340,135 @@ void ProjectNewDiagramConfigPage::adjustReadOnly() {
 	titleblock_ -> setReadOnly(is_read_only);
 	conductor_  -> setReadOnly(is_read_only);
 	xref_		-> setReadOnly(is_read_only);
+}
+
+//######################################################################################//
+
+/**
+ * @brief ProjectAutoNumConfigPage::ProjectAutoNumConfigPage
+ * Default constructor
+ * @param project, project to edit
+ * @param parent, parent widget
+ */
+ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project, QWidget *parent) :
+	ProjectConfigPage(project, parent)
+{
+	initWidgets();
+	initLayout();
+	buildConnections();
+	readValuesFromProject();
+}
+
+/**
+ * @brief ProjectAutoNumConfigPage::title
+ * Title of this config page
+ * @return
+ */
+QString ProjectAutoNumConfigPage::title() const {
+	return tr("Auto numerotation");
+}
+
+/**
+ * @brief ProjectAutoNumConfigPage::icon
+ * Icon of this config pafe
+ * @return
+ */
+QIcon ProjectAutoNumConfigPage::icon() const {
+	return QIcon ();
+}
+
+/**
+ * @brief ProjectAutoNumConfigPage::applyProjectConf
+ */
+void ProjectAutoNumConfigPage::applyProjectConf() {}
+
+/**
+ * @brief ProjectAutoNumConfigPage::initWidgets
+ * Init some widget of this page
+ */
+void ProjectAutoNumConfigPage::initWidgets() {
+	m_label = new QLabel(tr("Num\351rotations disponibles :", "availables numerotations"), this);
+	m_context_cb = new QComboBox(this);
+	m_context_cb->addItem(tr("Nouveau"));
+	m_name_le = new QLineEdit(this);
+	m_name_le->setPlaceholderText(tr("Nom de la nouvelle num\351rotation"));
+
+	m_saw = new SelectAutonumW(this);
+}
+
+/**
+ * @brief ProjectAutoNumConfigPage::initLayout
+ * Init the layout of this page
+ */
+void ProjectAutoNumConfigPage::initLayout() {
+	QHBoxLayout *context_layout = new QHBoxLayout();
+	context_layout -> addWidget (m_label);
+	context_layout -> addWidget (m_context_cb);
+	context_layout -> addWidget (m_name_le);
+
+	QVBoxLayout *main_layout = new QVBoxLayout(this);
+	this        -> setLayout (main_layout);
+	main_layout -> addLayout (context_layout);
+	main_layout -> addWidget (m_saw);
+}
+
+/**
+ * @brief ProjectAutoNumConfigPage::readValuesFromProject
+ * Read value stored on project, and update display
+ */
+void ProjectAutoNumConfigPage::readValuesFromProject() {
+	QList <QString> keys = project_->conductorAutoNum().keys();
+	if (keys.isEmpty()) return;
+	foreach (QString str, keys) { m_context_cb -> addItem(str); }
+}
+
+/**
+ * @brief ProjectAutoNumConfigPage::adjustReadOnly
+ * set this config page disable if project is read only
+ */
+void ProjectAutoNumConfigPage::adjustReadOnly() {
+}
+
+/**
+ * @brief ProjectAutoNumConfigPage::buildConnections
+ * setup some connections
+ */
+void ProjectAutoNumConfigPage::buildConnections() {
+	connect(m_context_cb, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext(QString)));
+	connect(m_saw,        SIGNAL (applyPressed()),               this, SLOT (saveContext()));
+}
+
+/**
+ * @brief ProjectAutoNumConfigPage::updateContext
+ * Display the current selected context
+ * @param str, key of context stored in project
+ */
+void ProjectAutoNumConfigPage::updateContext(QString str) {
+	if (str == tr("Nouveau")) {
+		m_saw -> setContext(NumerotationContext());
+		m_name_le -> setText(QString());
+		m_name_le ->setEnabled(true);
+	}
+	else {
+		m_saw ->setContext(project_->conductorAutoNum(str));
+		m_name_le -> setText(str);
+		m_name_le -> setDisabled(true);
+	}
+}
+
+/**
+ * @brief ProjectAutoNumConfigPage::saveContext
+ * Save the current displayed context in project
+ */
+void ProjectAutoNumConfigPage::saveContext() {
+	if (m_context_cb->currentText() == tr("Nouveau")) {
+		if (m_name_le->text().isEmpty()) {
+			m_name_le->setText(tr("Nouvel num\351rotation"));
+		}
+		project_->addConductorAutoNum(m_name_le -> text(), m_saw -> toNumContext());
+		m_context_cb -> addItem(m_name_le -> text());
+	}
+	else {
+		project_->addConductorAutoNum (m_context_cb -> currentText(), m_saw -> toNumContext());
+	}
 }

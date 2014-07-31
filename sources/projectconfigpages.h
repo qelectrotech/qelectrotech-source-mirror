@@ -1,3 +1,5 @@
+
+
 /*
 	Copyright 2006-2014 The QElectroTech Team
 	This file is part of QElectroTech.
@@ -27,6 +29,8 @@ class ConductorPropertiesWidget;
 class DiagramContextWidget;
 class ReportPropertieWidget;
 class XRefPropertiesWidget;
+class SelectAutonumW;
+class QComboBox;
 
 /**
 	This class, derived from ConfigPage, aims at providing the basic skeleton
@@ -146,6 +150,39 @@ class ProjectNewDiagramConfigPage : public ProjectConfigPage {
 	ConductorPropertiesWidget *conductor_;
 	ReportPropertieWidget *report_;
 	XRefPropertiesWidget *xref_;
+};
+
+class ProjectAutoNumConfigPage : public ProjectConfigPage {
+		Q_OBJECT
+
+	//Methods
+	public:
+		ProjectAutoNumConfigPage (QETProject *project, QWidget *parent = 0);
+
+		virtual QString title() const;
+		virtual QIcon   icon() const;
+		virtual void    applyProjectConf();
+
+	protected:
+		virtual void initWidgets();
+		virtual void initLayout();
+		virtual void readValuesFromProject();
+		virtual void adjustReadOnly();
+
+	private:
+		void buildConnections();
+
+	private slots:
+		void updateContext(QString);
+		void saveContext();
+
+	//Attributes
+	private:
+		QLabel         *m_label;
+		QLineEdit      *m_name_le;
+		QComboBox      *m_context_cb;
+		SelectAutonumW *m_saw;
+
 };
 
 #endif

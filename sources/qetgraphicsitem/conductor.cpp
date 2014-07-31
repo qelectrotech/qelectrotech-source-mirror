@@ -23,9 +23,9 @@
 #include "element.h"
 #include "diagram.h"
 #include "diagramcommands.h"
-#include "conductorautonumerotation.h"
 #include "qetdiagrameditor.h"
 #include "terminal.h"
+#include "conductorautonumerotation.h"
 #define PR(x) qDebug() << #x " = " << x;
 
 bool Conductor::pen_and_brush_initialized = false;
@@ -984,7 +984,7 @@ bool Conductor::fromXml(QDomElement &e) {
 			segments_y << segment_length;
 		}
 	}
-	
+
 	// s'il n'y a pas de segments, on renvoie true
 	if (!segments_x.size()) return(true);
 	// les longueurs recueillies doivent etre coherentes avec les positions des bornes
@@ -1321,11 +1321,6 @@ QSet<Conductor *> Conductor::relatedConductors() const {
 }
 
 /**
- * @param t_list terminaux a ne pas inclure dans la recherche
- * @return les conducteurs avec lesquels ce conducteur partage
- *  le meme potentiel electrique a l'exception de lui même
- */
-/**
  * @brief Conductor::relatedPotentialConductors
  * Return all conductors at the same potential of this conductor, this conductor isn't
  * part of the returned QSet.
@@ -1340,9 +1335,8 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_li
 	}
 
 	QSet <Conductor *> other_conductors;
-	// QList <Terminal *> this_terminal{terminal1, terminal2};
 	QList <Terminal *> this_terminal;
-    this_terminal << terminal1 << terminal2;
+	this_terminal << terminal1 << terminal2;
 
 	// Return all conductor of terminal 1 and 2
 	foreach (Terminal *terminal, this_terminal) {

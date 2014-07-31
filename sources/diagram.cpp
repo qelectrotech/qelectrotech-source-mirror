@@ -47,13 +47,13 @@ QColor		Diagram::background_color = Qt::white;
 */
 Diagram::Diagram(QObject *parent) :
 	QGraphicsScene(parent),
+	project_(0),
+	diagram_qet_version_(-1),
 	draw_grid_(true),
 	use_border_(true),
 	draw_terminals_(true),
 	draw_colored_conductors_(true),
-	project_(0),
-	read_only_(false),
-	diagram_qet_version_(-1)
+	read_only_(false)
 {
 	qgi_manager_ = new QGIManager(this);
 	setBackgroundBrush(Qt::white);
@@ -205,6 +205,22 @@ void Diagram::keyReleaseEvent(QKeyEvent *e) {
 }
 
 /**
+ * @brief Diagram::conductorsAutonumName
+ * @return the name of autonum to use.
+ */
+QString Diagram::conductorsAutonumName() const {
+	return m_conductors_autonum_name;
+}
+
+/**
+ * @brief Diagram::setConductorsAutonumName
+ * @param name, name of autonum to use.
+ */
+void Diagram::setConductorsAutonumName(const QString &name) {
+	m_conductors_autonum_name= name;
+}
+
+/**
 	Exporte le schema vers une image
 	@return Une QImage representant le schema
 */
@@ -327,13 +343,6 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		QDomElement default_conductor = document.createElement("defaultconductor");
 		defaultConductorProperties.toXml(default_conductor);
 		racine.appendChild(default_conductor);
-
-		//autonumerotation of conductor
-		if (!getNumerotation(Diagram::Conductors).isEmpty()) {
-			QDomElement autonum = document.createElement("autonum");
-			autonum.appendChild(getNumerotation(Diagram::Conductors).toXml(document, "conductor"));
-			racine.appendChild(autonum);
-		}
 	}
 	document.appendChild(racine);
 	
@@ -503,16 +512,6 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		QDomElement default_conductor_elmt = root.firstChildElement("defaultconductor");
 		if (!default_conductor_elmt.isNull()) {
 			defaultConductorProperties.fromXml(default_conductor_elmt);
-		}
-		// find the first element autonum
-		QDomElement num_auto = root.firstChildElement("autonum");
-		if (!num_auto.isNull()) {
-			QDomElement num_conductor = num_auto.firstChildElement("conductor");
-			//set the auto-numerotation of conductor
-			if (!num_conductor.isNull()) {
-				NumerotationContext nc(num_conductor);
-				setNumerotation(Diagram::Conductors, nc);
-			}
 		}
 	}
 	

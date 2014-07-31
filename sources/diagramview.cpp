@@ -1289,7 +1289,6 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			context_menu -> addAction(paste_here);
 			context_menu -> addSeparator();
 			context_menu -> addAction(qde -> infos_diagram);
-			context_menu -> addAction(qde -> prj_diagramNum);
 			context_menu -> addActions(qde -> m_row_column_actions_group.actions());
 		} else {
 			context_menu -> addAction(qde -> cut);

@@ -20,6 +20,7 @@
 #include "titleblockpropertieswidget.h"
 #include "conductorpropertieswidget.h"
 #include "diagramcommands.h"
+#include "autonumselectorwidget.h"
 
 /**
  * @brief DiagramPropertiesDialog::DiagramPropertiesDialog
@@ -62,6 +63,11 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(conductors, this);
 	cpw -> setReadOnly(diagram_is_read_only);
 
+	//Conductor autonum
+	AutonumSelectorWidget *asw = new AutonumSelectorWidget(diagram -> project() -> conductorAutoNum().keys(), this);
+	asw -> setCurrentItem(diagram -> conductorsAutonumName());
+	cpw->addAutonumWidget(asw);
+
 	// Buttons
 	QDialogButtonBox boutons(diagram_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	connect(&boutons, SIGNAL(accepted()), this, SLOT(accept()));
@@ -70,7 +76,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	QGridLayout glayout(this);
 	glayout.addWidget(border_infos,0,0);
 	glayout.addWidget(titleblock_infos, 1, 0);
-	glayout.addWidget(cpw, 0, 1, 0 ,1, Qt::AlignTop);
+	glayout.addWidget(cpw, 0, 1, 0, 1, Qt::AlignTop);
 	glayout.addWidget(&boutons, 2, 1);
 
 	// if dialog is accepted
@@ -93,6 +99,11 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 		if (new_conductors != conductors) {
 			/// TODO implement an undo command to allow the user to undo/redo this action
 			diagram -> defaultConductorProperties = new_conductors;
+		}
+
+		// Conductor autonum name
+		if (asw -> text() != diagram -> conductorsAutonumName()) {
+			diagram -> setConductorsAutonumName (asw -> text());
 		}
 	}
 }

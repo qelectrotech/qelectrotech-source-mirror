@@ -18,7 +18,7 @@
 #include "dialogautonum.h"
 #include "ui_dialogautonum.h"
 
-#include "conductorautonumerotation.h"
+//#include "conductorautonumerotation.h"
 #include "qetmessagebox.h"
 #include "ui/selectautonumw.h"
 
@@ -34,7 +34,7 @@ DialogAutoNum::DialogAutoNum(Diagram *dg, QWidget *parent) :
 {
 	ui -> setupUi(this);
 	
-	ui -> configuration_layout -> addWidget (new SelectAutonumW(dg_ -> project() -> diagrams(), dg, ui -> configuration_tab));
+	ui -> configuration_layout -> addWidget (new SelectAutonumW());
 
 	dgselect_ = new diagramselection( dg_ -> project(), ui -> annotation_tab);
 	ui -> verticalLayout_Selection -> addWidget(dgselect_);
@@ -74,8 +74,8 @@ void DialogAutoNum::on_pushButton_delete_clicked() {
 	// if yes remove all
 	if( answer ==  QMessageBox::Yes) {
 		for(int i=0; i<listDiag.count(); i++){
-			ConductorAutoNumerotation can(listDiag.at(i));
-			can.removeNumOfDiagram();
+			/*ConductorAutoNumerotation can(listDiag.at(i));
+			can.removeNumOfDiagram();*/
 		}
 	}
 }
@@ -107,8 +107,8 @@ void DialogAutoNum::on_pushButton_annotation_clicked(){
 	// if yes numerate all
 	if( answer ==  QMessageBox::Yes) {
 		foreach (Diagram *d, listDiag) {
-			ConductorAutoNumerotation can(d);
-			can.numerateDiagram();
+			/*ConductorAutoNumerotation can(d);
+			can.numerateDiagram();*/
 		}
 	}
 }

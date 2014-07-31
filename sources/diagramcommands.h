@@ -147,22 +147,22 @@ class AddShapeCommand : public QUndoCommand {
 class AddConductorCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	AddConductorCommand(Diagram *, Conductor *, QUndoCommand * = 0);
-	virtual ~AddConductorCommand();
+		AddConductorCommand(Diagram *, Conductor *, QUndoCommand * = 0);
+		virtual ~AddConductorCommand();
 	private:
-	AddConductorCommand(const AddConductorCommand &);
+		AddConductorCommand(const AddConductorCommand &);
 	
 	// methods
 	public:
-	virtual void undo();
-	virtual void redo();
+		virtual void undo();
+		virtual void redo();
 	
 	// attributes
 	private:
-	/// added conductor
-	Conductor *conductor;
-	/// diagram the conductor is added to
-	Diagram *diagram;
+		/// added conductor
+		Conductor *conductor;
+		/// diagram the conductor is added to
+		Diagram *diagram;
 };
 
 /**

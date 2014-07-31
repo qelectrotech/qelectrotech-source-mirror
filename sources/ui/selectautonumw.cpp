@@ -17,21 +17,27 @@
 */
 #include "selectautonumw.h"
 #include "ui_selectautonumw.h"
-#include "diagram.h"
+#include "numparteditorw.h"
+#include <QMessageBox>
+#include "qdebug.h"
 
 /**
  * Constructor
  */
-SelectAutonumW::SelectAutonumW(const QList <Diagram *> &diagrams, Diagram *current_diagram ,QWidget *parent) :
+SelectAutonumW::SelectAutonumW(QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::SelectAutonumW),
-	diagram_list(diagrams)
+	ui(new Ui::SelectAutonumW)
 {
 	ui->setupUi(this);
+	setContext(NumerotationContext());
+}
 
-	initDiagramChooser();
-	if (current_diagram) ui -> diagram_chooser -> setCurrentIndex (diagram_list.indexOf(current_diagram));
-	setCurrentContext();
+SelectAutonumW::SelectAutonumW(const NumerotationContext &context, QWidget *parent) :
+	QWidget(parent),
+	ui(new Ui::SelectAutonumW)
+{
+	ui->setupUi(this);
+	setContext(context);
 }
 
 /**
@@ -43,35 +49,31 @@ SelectAutonumW::~SelectAutonumW()
 }
 
 /**
- * @brief SelectAutonumW::setDiagramChooser
- * build the content of QComboBox @diagram_chooser.
- */
-void SelectAutonumW::initDiagramChooser() {
-	for (int i=0; i<diagram_list.size(); ++i) {
-		QString diagram_title = diagram_list.at(i) -> title();
-		if (diagram_title.isEmpty()) diagram_title = (tr("Sch\351ma sans titre"));
-		ui -> diagram_chooser -> addItem(diagram_title);
-	}
-}
-
-/**
  * @brief SelectAutonumW::setCurrentContext
  * build the context of current diagram selected in the @diagram_chooser QcomboBox
  */
-void SelectAutonumW::setCurrentContext() {
-	NumerotationContext nc = diagram_list.at(ui->diagram_chooser->currentIndex()) -> getNumerotation(Diagram::Conductors);
+void SelectAutonumW::setContext(const NumerotationContext &context) {
+	m_context = context;
 
-	if (nc.size() == 0) { //@nc contain nothing, build a default numPartEditor
+	qDeleteAll(num_part_list_);
+	num_part_list_.clear();
+
+	if (m_context.size() == 0) { //@context contain nothing, build a default numPartEditor
 		on_add_button_clicked();
-		applyEnable(false);
-		return;
 	}
-	for (int i=0; i<nc.size(); ++i) { //build with the content of @nc
-		NumPartEditorW *part= new NumPartEditorW(nc, i, this);
-		connect (part, SIGNAL(changed()), this, SLOT(applyEnable()));
-		num_part_list_ << part;
-		ui -> editor_layout -> addWidget(part);
+	else {
+		for (int i=0; i<m_context.size(); ++i) { //build with the content of @context
+			NumPartEditorW *part= new NumPartEditorW(m_context, i, this);
+			connect (part, SIGNAL(changed()), this, SLOT(applyEnable()));
+			num_part_list_ << part;
+			ui -> editor_layout -> addWidget(part);
+		}
 	}
+
+	num_part_list_.size() == 1 ?
+				ui -> remove_button -> setDisabled(true):
+				ui -> remove_button -> setEnabled (true);
+
 	applyEnable(false);
 }
 
@@ -95,6 +97,7 @@ void SelectAutonumW::on_add_button_clicked() {
 	connect (part, SIGNAL(changed()), this, SLOT(applyEnable()));
 	num_part_list_ << part;
 	ui -> editor_layout -> addWidget(part);
+	ui -> remove_button -> setEnabled(true);
 }
 
 /**
@@ -107,18 +110,11 @@ void SelectAutonumW::on_remove_button_clicked() {
 		NumPartEditorW *part = num_part_list_.takeLast();
 		disconnect(part, SIGNAL(changed()), this, SLOT(applyEnable()));
 		delete part;
+		if (num_part_list_.size() == 1) {
+			ui -> remove_button -> setDisabled(true);
+		}
 	}
 	applyEnable();
-}
-
-/**
- * @brief SelectAutonumW::on_diagram_chooser_activated
- * Action on diagram_chooser
- */
-void SelectAutonumW::on_diagram_chooser_activated() {
-	foreach(NumPartEditorW *npew, num_part_list_) delete npew;
-	num_part_list_.clear();
-	setCurrentContext();
 }
 
 /**
@@ -130,10 +126,9 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 	int answer = ui -> buttonBox -> buttonRole(button);
 
 	switch (answer) {
-			//reset the displayed context to default context of @diagram_chooser.
+			//Reset the curent context
 		case QDialogButtonBox::ResetRole:
-			on_diagram_chooser_activated();
-			applyEnable(false);
+			setContext(m_context);
 			break;
 			//help dialog
 		case QDialogButtonBox::HelpRole:
@@ -157,9 +152,8 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 
 			//apply the context in the diagram displayed by @diagram_chooser.
 		case QDialogButtonBox::ApplyRole:
-			NumerotationContext nc = toNumContext();
-			diagram_list.at(ui -> diagram_chooser -> currentIndex()) -> setNumerotation(Diagram::Conductors, nc);
 			applyEnable(false);
+			emit applyPressed();
 			break;
 	};
 }

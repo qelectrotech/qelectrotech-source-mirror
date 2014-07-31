@@ -208,7 +208,6 @@ void QETDiagramEditor::actions() {
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le sch\351ma"),               this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
-	prj_diagramNum    = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les sch\351mas"),               this);
 	prj_diagramList   = new QAction(QET::Icons::listDrawings,          tr("Ajouter un sommaire"),                  this);
 	prj_nomenclature  = new QAction(QET::Icons::DocumentExport,        tr("Exporter une nomenclature (beta)"),     this);
 	tabbed_view_mode  = new QAction(                                   tr("en utilisant des onglets"),             this);
@@ -424,7 +423,6 @@ void QETDiagramEditor::actions() {
 	connect(prj_add_diagram,    SIGNAL(triggered()), this,       SLOT(addDiagramToProject())       );
 	connect(prj_del_diagram,    SIGNAL(triggered()), this,       SLOT(removeDiagramFromProject())  );
 	connect(prj_clean,          SIGNAL(triggered()), this,       SLOT(cleanCurrentProject())       );
-	connect(prj_diagramNum,     SIGNAL(triggered()), this,       SLOT(diagramNumProject())         );
 	connect(prj_diagramList,    SIGNAL(triggered()), this,       SLOT(addDiagramFolioListToProject()));
 	connect(prj_nomenclature,   SIGNAL(triggered()), this,       SLOT(nomenclatureProject())       );
 	connect(print,              SIGNAL(triggered()), this,       SLOT(printDialog())               );
@@ -512,7 +510,6 @@ void QETDiagramEditor::menus() {
 	menu_project -> addAction(prj_del_diagram);
 	menu_project -> addAction(prj_clean);
 	menu_project -> addSeparator();
-	menu_project -> addAction(prj_diagramNum);
 	menu_project -> addAction(prj_diagramList);
 	menu_project -> addAction(prj_nomenclature);
 	
@@ -1152,7 +1149,6 @@ void QETDiagramEditor::slot_updateActions() {
 	//prj_add_diagram_foliolist   -> setEnabled(editable_project);
 	prj_del_diagram   -> setEnabled(editable_project);
 	prj_clean         -> setEnabled(editable_project);
-	prj_diagramNum    -> setEnabled(editable_project);
 	prj_diagramList   -> setEnabled(opened_project);
 	prj_nomenclature  -> setEnabled(editable_project);
 	export_diagram    -> setEnabled(opened_diagram);
@@ -1207,7 +1203,6 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	delete_selection -> setEnabled(editable_diagram && deletable_items);
 	rotate_selection -> setEnabled(editable_diagram && dv -> diagram() -> canRotateSelection());
 	selection_prop   -> setEnabled(deletable_items);
-	prj_diagramNum   -> setEnabled(editable_diagram);
 
 	// actions ayant besoin de textes selectionnes
 	int selected_texts = dv ? (dv -> diagram() -> selectedTexts().count()) : 0;
@@ -1808,17 +1803,6 @@ void QETDiagramEditor::cleanCurrentProject() {
 		int clean_count = current_project -> cleanProject();
 		if (clean_count) pa -> reloadAndFilter();
 	}
-}
-
-/**
- * @brief launch dialog for numerate diagram
- */
-void QETDiagramEditor::diagramNumProject() {
-	DialogAutoNum *dg = new DialogAutoNum(currentDiagram()->diagram(), this);
-	dg->setModal(true);
-	dg->exec();
-	
-	delete dg;
 }
 
 /**
