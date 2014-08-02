@@ -229,7 +229,6 @@
         <file>ico/24x16/nl.png</file>
         <file>ico/32x32/simplifyrichtext.png</file>
         <file>ico/24x16/be.png</file>
-        <file>ico/32x32/text-rdf.png</file>
-        <file>ico/32x32/x-kde-nsplugin-generated.png</file>
+        <file>ico/128x128/plasmagik.png</file>
     </qresource>
 </RCC>

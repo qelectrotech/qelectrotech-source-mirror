@@ -374,7 +374,7 @@ QString ProjectAutoNumConfigPage::title() const {
  * @return
  */
 QIcon ProjectAutoNumConfigPage::icon() const {
-	return QIcon ();
+	return QIcon (QET::Icons::AutoNum);
 }
 
 /**
