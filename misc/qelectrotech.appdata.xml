@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2006-2014 The QElectroTech Team -->
 <application>
  <id type="desktop">qelectrotech.desktop</id>
- <licence>CC0</licence>
+ <metadata_license>GPL-2.0+</metadata_license>
+ <project_license>GPL-2.0+</project_license>
  <name>QElectroTech</name>
  <summary>Electrical diagram editor</summary>
  <summary xml:lang="ar">مُحرّر مخططات كهربائية</summary>
