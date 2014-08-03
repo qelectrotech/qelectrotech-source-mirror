@@ -2,6 +2,7 @@
     <names>
         <name lang="en">Fuse NC</name>
         <name lang="fr">Actionné par un fusible NF</name>
+        <name lang="it">Azionato da fusibile NC</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">1</kindInformation>
