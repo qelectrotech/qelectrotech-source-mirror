@@ -709,7 +709,7 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="45"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation type="unfinished">Proprietà dello schema</translation>
+        <translation>Proprietà dello schema</translation>
     </message>
 </context>
 <context>
@@ -1169,7 +1169,7 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
         <source>Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsettiera</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
@@ -2581,7 +2581,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
         <source>Rechercher dans le folio :</source>
-        <translation>Cercare nel foglio</translation>
+        <translation>Cercare nel foglio:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
