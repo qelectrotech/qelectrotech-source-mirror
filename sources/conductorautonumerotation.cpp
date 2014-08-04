@@ -16,12 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorautonumerotation.h"
-#include "conductorautonumerotationwidget.h"
 #include "diagramcommands.h"
 #include "numerotationcontextcommands.h"
 #include "qetdiagrameditor.h"
 #include "conductor.h"
 #include "diagram.h"
+#include "potentialtextsdialog.h"
 
 /**
  *Constructor
@@ -45,10 +45,10 @@ void ConductorAutoNumerotation::numerate() {
 
 /**
  * @brief ConductorAutoNumerotation::checkPotential
- * Check if text of this potential is identical.
+ * Check if eah texts of this potential is identical.
  * If not, ask user how to numerate
  * @param conductor
- * One conductor of this potential.
+ * A conductor of the potential to check.
  */
 void ConductorAutoNumerotation::checkPotential(Conductor *conductor) {
 	//fill list of potential
@@ -60,10 +60,11 @@ void ConductorAutoNumerotation::checkPotential(Conductor *conductor) {
 
 	//check text list, isn't same in potential, ask user what to do
 	if (!eachIsEqual(strl)) {
-		ConductorAutoNumerotationWidget canw(c_list, conductor -> diagramEditor());
-		ConductorAutoNumerotation can(conductor);
-		//connect(&canw, SIGNAL(textIsSelected(QString)), &can, SLOT(applyText(QString)));
-		canw.exec();
+		PotentialTextsDialog ptd(conductor, conductor->diagramEditor());
+		if ( ptd.exec() == QDialog::Accepted ) {
+			ConductorAutoNumerotation can(conductor);
+			can.applyText(ptd.selectedText());
+		}
 	}
 }
 
@@ -118,10 +119,10 @@ void ConductorAutoNumerotation::numeratePotential() {
 	}
 	//the texts isn't identicals
 	else {
-		ConductorAutoNumerotationWidget *canw = new ConductorAutoNumerotationWidget(conductor_list, conductor_ -> diagramEditor());
-		/*connect(canw, SIGNAL(textIsSelected(QString)),
-				this, SLOT(applyText(QString)));*/
-		canw -> exec();
+		PotentialTextsDialog ptd (conductor_, conductor_ -> diagramEditor());
+		if (ptd.exec() == QDialog::Accepted) {
+			applyText(ptd.selectedText());
+		}
 	}
 }
 

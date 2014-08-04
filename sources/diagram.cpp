@@ -339,10 +339,15 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		border_and_titleblock.titleBlockToXml(racine);
 		border_and_titleblock.borderToXml(racine);
 		
-		// type de conducteur par defaut
+		// Default conductor properties
 		QDomElement default_conductor = document.createElement("defaultconductor");
 		defaultConductorProperties.toXml(default_conductor);
 		racine.appendChild(default_conductor);
+
+		// Conductor autonum
+		if (!m_conductors_autonum_name.isEmpty()) {
+			racine.setAttribute("conductorAutonum", m_conductors_autonum_name);
+		}
 	}
 	document.appendChild(racine);
 	
@@ -494,28 +499,34 @@ bool Diagram::initFromXml(QDomElement &document, QPointF position, bool consider
 */
 bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
 	QDomElement root = document;
-	// le premier element doit etre un schema
+	// The first element must be a diagram
 	if (root.tagName() != "diagram") return(false);
 	
-	// lecture des attributs de ce schema
+	// Read attributes of this diagram
 	if (consider_informations) {
+		// Version of diagram
 		bool conv_ok;
 		qreal version_value = root.attribute("version").toDouble(&conv_ok);
 		if (conv_ok) {
 			diagram_qet_version_ = version_value;
 		}
 		
+		// Load border and titleblock
 		border_and_titleblock.titleBlockFromXml(root);
 		border_and_titleblock.borderFromXml(root);
 		
-		// repere le permier element "defaultconductor"
+		// Find the element "defaultconductor".
+		// If found, load default conductor properties.
 		QDomElement default_conductor_elmt = root.firstChildElement("defaultconductor");
 		if (!default_conductor_elmt.isNull()) {
 			defaultConductorProperties.fromXml(default_conductor_elmt);
 		}
+
+		// Load the autonum
+		m_conductors_autonum_name = root.attribute("conductorAutonum");
 	}
 	
-	// si la racine n'a pas d'enfant : le chargement est fini (schema vide)
+	// if child haven't got a child, loading is finish (diagram is empty)
 	if (root.firstChild().isNull()) {
 		write(document);
 		return(true);
