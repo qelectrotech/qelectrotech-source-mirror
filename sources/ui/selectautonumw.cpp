@@ -179,6 +179,7 @@ void SelectAutonumW::applyEnable(bool b) {
 void SelectAutonumW::on_m_next_pb_clicked() {
 	NumerotationContextCommands ncc (toNumContext());
 	setContext(ncc.next());
+	applyEnable(true);
 }
 
 /**
@@ -188,4 +189,5 @@ void SelectAutonumW::on_m_next_pb_clicked() {
 void SelectAutonumW::on_m_previous_pb_clicked() {
 	NumerotationContextCommands ncc (toNumContext());
 	setContext(ncc.previous());
+	applyEnable(true);
 }
