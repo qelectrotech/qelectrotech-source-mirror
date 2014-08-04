@@ -134,7 +134,7 @@ void ConductorAutoNumerotation::numerateNewConductor() {
 	if (!conductor_ || m_diagram->conductorsAutonumName().isEmpty()) return;
 
 	QString name = m_diagram -> conductorsAutonumName();
-	NumerotationContextCommands ncc (m_diagram, m_diagram->project()->conductorAutoNum(name));
+	NumerotationContextCommands ncc (m_diagram->project()->conductorAutoNum(name), m_diagram);
 	applyText(ncc.toRepresentedString());
 	m_diagram->project()->addConductorAutoNum(name, ncc.next());
 }

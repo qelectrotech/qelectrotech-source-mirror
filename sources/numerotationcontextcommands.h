@@ -19,9 +19,9 @@
 #define NUMEROTATIONCONTEXTCOMMANDS_H
 
 #include "numerotationcontext.h"
-#include "diagram.h"
 
 class NumStrategy;
+class Diagram;
 
 /**
  * this class provide methods to handle content of NumerotationContext.
@@ -29,9 +29,10 @@ class NumStrategy;
 class NumerotationContextCommands
 {
 	public:
-	NumerotationContextCommands (Diagram *, const NumerotationContext &);
+	NumerotationContextCommands (const NumerotationContext &, Diagram * = nullptr);
 	~NumerotationContextCommands ();
 	NumerotationContext next ();
+	NumerotationContext previous ();
 	QString toRepresentedString ();
 
 	private:
@@ -45,14 +46,16 @@ class NumerotationContextCommands
 class NumStrategy
 {
 	public:
-	NumStrategy (Diagram *);
+	NumStrategy (Diagram * = nullptr);
 	virtual ~NumStrategy ();
 	virtual QString toRepresentedString (const QString) const = 0;
-	virtual NumerotationContext next (const NumerotationContext &, const int) const = 0;
+	virtual NumerotationContext next     (const NumerotationContext &, const int) const = 0;
+	virtual NumerotationContext previous (const NumerotationContext &, const int) const = 0;
 
 	protected:
 	NumerotationContext nextString (const NumerotationContext &, const int) const;
 	NumerotationContext nextNumber (const NumerotationContext &, const int) const;
+	NumerotationContext previousNumber (const NumerotationContext &, const int) const;
 
 	Diagram *diagram_;
 };
@@ -62,7 +65,8 @@ class UnitNum: public NumStrategy
 	public:
 	UnitNum (Diagram *);
 	QString toRepresentedString(const QString) const;
-	NumerotationContext next (const NumerotationContext &, const int) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
 };
 
 class TenNum: public NumStrategy
@@ -70,7 +74,8 @@ class TenNum: public NumStrategy
 	public:
 	TenNum (Diagram *);
 	QString toRepresentedString(const QString) const;
-	NumerotationContext next (const NumerotationContext &, const int) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
 };
 
 class HundredNum: public NumStrategy
@@ -78,7 +83,8 @@ class HundredNum: public NumStrategy
 	public:
 	HundredNum (Diagram *);
 	QString toRepresentedString(const QString) const;
-	NumerotationContext next (const NumerotationContext &, const int) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
 };
 
 class StringNum: public NumStrategy
@@ -86,7 +92,8 @@ class StringNum: public NumStrategy
 	public:
 	StringNum (Diagram *);
 	QString toRepresentedString(const QString) const;
-	NumerotationContext next (const NumerotationContext &, const int) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
 };
 
 class FolioNum: public NumStrategy
@@ -94,7 +101,8 @@ class FolioNum: public NumStrategy
 	public:
 	FolioNum (Diagram *);
 	QString toRepresentedString(const QString) const;
-	NumerotationContext next (const NumerotationContext &, const int) const;
+	NumerotationContext next     (const NumerotationContext &, const int) const;
+	NumerotationContext previous (const NumerotationContext &, const int) const;
 };
 
 #endif // NUMEROTATIONCONTEXTCOMMANDS_H

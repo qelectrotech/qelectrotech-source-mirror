@@ -16,11 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "numerotationcontextcommands.h"
+#include "diagram.h"
 
 /**
  * @brief Constructor
  */
-NumerotationContextCommands::NumerotationContextCommands(Diagram *d, const NumerotationContext &nc):
+NumerotationContextCommands::NumerotationContextCommands(const NumerotationContext &nc, Diagram *d):
 	diagram_ (d),
 	context_ (nc),
 	strategy_ (NULL)
@@ -49,6 +50,21 @@ NumerotationContext NumerotationContextCommands::next() {
 }
 
 /**
+ * @brief NumerotationContextCommands::previous
+ * @return the previous numerotation context
+ */
+NumerotationContext NumerotationContextCommands::previous() {
+	NumerotationContext contextnum;
+
+	for (int i=0; i<context_.size(); ++i) {
+		QStringList str = context_.itemAt(i);
+		setNumStrategy(str.at(0));
+		contextnum << strategy_ -> previous(context_, i);
+	}
+	return contextnum;
+}
+
+/**
  * @brief NumerotationContextCommands::toFinalString
  * @return the string represented by the numerotation context
  */
@@ -62,7 +78,8 @@ QString NumerotationContextCommands::toRepresentedString() {
 		}
 		return num;
 	}
-	return (diagram_ -> defaultConductorProperties.text);
+	if (diagram_) return (diagram_ -> defaultConductorProperties.text);
+	return QString();
 }
 
 /**
@@ -128,6 +145,18 @@ NumerotationContext NumStrategy::nextNumber (const NumerotationContext &nc, cons
 }
 
 /**
+ * @brief NumStrategy::previousNumber
+ * @return  the previous value of @nc at position @i
+ */
+NumerotationContext NumStrategy::previousNumber(const NumerotationContext &nc, const int i) const {
+	QStringList strl = nc.itemAt(i);
+	NumerotationContext newnc;
+	QString value = QString::number( (strl.at(1).toInt()) - (strl.at(2).toInt()) );
+	newnc.addValue(strl.at(0), value, strl.at(2).toInt());
+	return (newnc);
+}
+
+/**
  * Constructor
  */
 UnitNum::UnitNum(Diagram *d):
@@ -148,6 +177,14 @@ QString UnitNum::toRepresentedString(const QString num) const {
  */
 NumerotationContext UnitNum::next (const NumerotationContext &nc, const int i) const {
 	return (nextNumber(nc, i));
+}
+
+/**
+ * @brief UnitNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext UnitNum::previous(const NumerotationContext &nc, const int i) const {
+	return (previousNumber(nc, i));
 }
 
 /**
@@ -174,6 +211,14 @@ QString TenNum::toRepresentedString(const QString num) const {
  */
 NumerotationContext TenNum::next (const NumerotationContext &nc, const int i) const {
 	return (nextNumber(nc, i));
+}
+
+/**
+ * @brief TenNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext TenNum::previous(const NumerotationContext &nc, const int i) const {
+	return (previousNumber(nc, i));
 }
 
 /**
@@ -208,6 +253,14 @@ NumerotationContext HundredNum::next (const NumerotationContext &nc, const int i
 }
 
 /**
+ * @brief HundredNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext HundredNum::previous(const NumerotationContext &nc, const int i) const {
+	return (previousNumber(nc, i));
+}
+
+/**
  * Constructor
  */
 StringNum::StringNum (Diagram *d):
@@ -227,6 +280,14 @@ QString StringNum::toRepresentedString(const QString str) const {
  * @return the next NumerotationContext nc at position i
  */
 NumerotationContext StringNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * @brief StringNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext StringNum::previous(const NumerotationContext &nc, const int i) const {
 	return (nextString(nc, i));
 }
 
@@ -252,6 +313,14 @@ QString FolioNum::toRepresentedString(const QString str) const {
  * @return the next NumerotationContext nc at position i
  */
 NumerotationContext FolioNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * @brief FolioNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext FolioNum::previous(const NumerotationContext &nc, const int i) const {
 	return (nextString(nc, i));
 }
 

@@ -20,6 +20,7 @@
 #include "numparteditorw.h"
 #include <QMessageBox>
 #include "qdebug.h"
+#include "numerotationcontextcommands.h"
 
 /**
  * Constructor
@@ -134,7 +135,6 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 		case QDialogButtonBox::HelpRole:
 			QMessageBox::information (this, tr("Autonum\351rotation", "title window"),
 																	tr("C'est ici que vous pouvez d\351finir la mani\350re dont sera num\351rot\351 les nouveaux conducteurs.\n"
-																	   "-Chaque Folio poss\350de sa propre m\351thode de num\351rotation.\n"
 																	   "-Une num\351rotation est compos\351e d'une variable minimum.\n"
 																	   "-Vous pouvez ajouter ou supprimer une variable de num\351rotation par le biais des boutons - et +.\n"
 																	   "-Une variable de num\351rotation comprant: un type, une valeur et une incr\351mentation.\n"
@@ -170,4 +170,22 @@ void SelectAutonumW::applyEnable(bool b) {
 	}
 	else
 		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
+}
+
+/**
+ * @brief SelectAutonumW::on_m_next_pb_clicked
+ * Increase NumerotationContext
+ */
+void SelectAutonumW::on_m_next_pb_clicked() {
+	NumerotationContextCommands ncc (toNumContext());
+	setContext(ncc.next());
+}
+
+/**
+ * @brief SelectAutonumW::on_m_previous_pb_clicked
+ * Decrease NumerotationContext
+ */
+void SelectAutonumW::on_m_previous_pb_clicked() {
+	NumerotationContextCommands ncc (toNumContext());
+	setContext(ncc.previous());
 }

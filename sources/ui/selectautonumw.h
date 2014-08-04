@@ -52,6 +52,10 @@ class SelectAutonumW : public QWidget
 		void applyEnable (bool = true);
 
 	//ATTRIBUTS
+		void on_m_next_pb_clicked();
+
+		void on_m_previous_pb_clicked();
+
 	private:
 		Ui::SelectAutonumW *ui;
 		QList <NumPartEditorW *> num_part_list_;

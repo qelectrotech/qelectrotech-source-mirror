@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>432</width>
+    <height>273</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,6 +25,19 @@
         <property name="spacing">
          <number>0</number>
         </property>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item>
          <widget class="QPushButton" name="remove_button">
           <property name="toolTip">
@@ -58,6 +71,47 @@
            <bool>false</bool>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_previous_pb">
+          <property name="toolTip">
+           <string>Précédent</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../qelectrotech.qrc">
+            <normaloff>:/ico/16x16/arrow-left.png</normaloff>:/ico/16x16/arrow-left.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_next_pb">
+          <property name="toolTip">
+           <string>Suivant</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../qelectrotech.qrc">
+            <normaloff>:/ico/16x16/arrow-right.png</normaloff>:/ico/16x16/arrow-right.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
