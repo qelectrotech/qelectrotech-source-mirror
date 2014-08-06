@@ -291,17 +291,17 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="23"/>
         <source>Autonumérotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Numerazione automatica:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="46"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifica la numerazione</translation>
     </message>
 </context>
 <context>
@@ -529,7 +529,7 @@ i conduttori di questo potenziale?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="60"/>
         <source>Texte par defaut :</source>
-        <translation type="unfinished"></translation>
+        <translation>Testo predefinito:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
@@ -2888,24 +2888,24 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.ui" line="14"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished">Testi dei potenziali</translation>
+        <translation>Testo dei conduttori</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/potentialtextsdialog.ui" line="22"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished">I testi di questo potenziale non sono uguali.
+        <translation>I testi associati a questo potenziale non sono tutti uguali.
 Applicare un testo all&apos;insieme dei conduttori?</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source>  : est présent </source>
-        <translation type="unfinished">  : è presente </translation>
+        <translation>  : è presente </translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source> fois.</source>
-        <translation type="unfinished"> volte.</translation>
+        <translation> volte.</translation>
     </message>
 </context>
 <context>
@@ -2922,30 +2922,30 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="368"/>
         <source>Auto numerotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Numerazione automatica</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="390"/>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nemerazioni disponibili:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="392"/>
         <location filename="../sources/projectconfigpages.cpp" line="447"/>
         <location filename="../sources/projectconfigpages.cpp" line="464"/>
         <source>Nouveau</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovo</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="394"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome della nuova numerazione</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="466"/>
         <source>Nouvel numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuova numerazione</translation>
     </message>
 </context>
 <context>
@@ -6274,12 +6274,12 @@ Creare un testo personalizzato con l&apos;aiuto delle variabili:
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="78"/>
         <source>Précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Precedente</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="92"/>
         <source>Suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Successivo</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="131"/>
@@ -6319,7 +6319,20 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Qui è possibile definire la modalità di numerazione dei nuovi conduttori.
+Una numerazione è composta da un valore minimo.
+Si possono aggiungere o eliminare variabili di numerazione con i tasti + e -.
+Una variabile di numerazione comprende: il tipo, il valore e l&apos;incremento.
+
+-il tipo &quot;1 Cifra1 (1)&quot;, &quot;2 Cifre (01)&quot; e &quot;3 Cifre (001)&quot; rappresenta una tipologia numerica con un valore di partenza definito nel campo &quot;Valore&quot;, che s&apos;incrementerà ad ogni nuovo conduttore del valore indicato nel campo &quot;Incremento&quot;.
+-i numeri tra parentesi indicano che il numero generato avrà, rispettivamente, 1,2 o 3 cifre.
+Se il numero impostato nel campo &quot;Valore&quot; ha meno cifre di quelle previste nel campo &quot;Tipo&quot; verranno aggiunti automaticamente 1 o 2 zeri a sinistra.
+
+-Il tipo &quot;Test&quot; rappresenta un testo fisso.
+Il campo &quot;Incremento&quot; non è utilizzato.
+
+-Il tipo &quot;N° Pagina rappresenta il numero della pagina corrente.
+Gli altri campi non sono utilizzati.</translation>
     </message>
 </context>
 <context>
