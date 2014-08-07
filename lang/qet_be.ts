@@ -291,17 +291,17 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="23"/>
         <source>Autonumérotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische nummering :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="46"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerken van de automatisch nummering</translation>
     </message>
 </context>
 <context>
@@ -529,7 +529,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="60"/>
         <source>Texte par defaut :</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard tekst :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
@@ -2895,24 +2895,24 @@ Dit element is al verbonden.</translation>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.ui" line="14"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished">Geleidernummers</translation>
+        <translation>Geleidernummers</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/potentialtextsdialog.ui" line="22"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished">De nummering van deze  geleiders zijn niet gelijk.
+        <translation>De nummering van deze  geleiders zijn niet gelijk.
 Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source>  : est présent </source>
-        <translation type="unfinished">: Dit is </translation>
+        <translation>  : Dit is </translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source> fois.</source>
-        <translation type="unfinished"> keer.</translation>
+        <translation> keer.</translation>
     </message>
 </context>
 <context>
@@ -2929,30 +2929,30 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="368"/>
         <source>Auto numerotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch nummering</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="390"/>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mogelijke nummeringen :</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="392"/>
         <location filename="../sources/projectconfigpages.cpp" line="447"/>
         <location filename="../sources/projectconfigpages.cpp" line="464"/>
         <source>Nouveau</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="394"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam van de nieuwe nummering</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="466"/>
         <source>Nouvel numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe nummering</translation>
     </message>
 </context>
 <context>
@@ -6290,12 +6290,12 @@ Creer uw eigen tekst met de volgende variabelen:
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="78"/>
         <source>Précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorige</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="92"/>
         <source>Suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Volgende</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="131"/>
@@ -6335,7 +6335,18 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hier kunt u bepalen hoe de nieuwe geleiders worden genummerd. 
+-Een nummering bestaat uit een variabele minimum. 
+-U kan deze toevoegen of een variabele nummering verwijderen via de - en + knoppen.
+-Een Variabele nummering bevat:  een type, een waarde en een toename. 
+
+-het types &quot;cijfer 1&quot;, &quot;cijfer 01&quot; en &quot;cijfer 001&quot; staat voor een numerieke velden gedefinieerd in de &quot;Waarde&quot;, die wordt verhoogd met elke nieuwe geleider met de waarde van de  &quot;verhogen&quot;.
+
+ - &quot;cijfer 01&quot; en &quot;cijfer 001&quot; worden respectievelijk vertegenwoordigd in het diagram met twee en drie cijfers minimum. Als het nummer in het veld waarde minder cijfers heeft dan het gekozen, wordt deze voorafgegaan door een of twee 0 . 
+
+-type &quot;Text&quot; is een vaste tekst. Veld &quot;verhogen&quot; wordt niet gebruikt. 
+
+-type &quot;N° folio&quot; staat voor het nummer van de huidige pagina. De andere velden worden niet gebruikt.</translation>
     </message>
 </context>
 <context>
