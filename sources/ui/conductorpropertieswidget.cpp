@@ -222,7 +222,7 @@ void ConductorPropertiesWidget::on_m_color_pb_clicked() {
 void ConductorPropertiesWidget::setColorButton(const QColor &color) {
 	QPalette palette;
 	palette.setColor(QPalette::Button, color);
-	ui -> m_color_pb -> setPalette(palette);
+	ui -> m_color_pb -> setStyleSheet(QString("background-color: %1").arg(color.name()));
 }
 
 /**
