@@ -493,8 +493,8 @@ bool ConductorSegment::hasNextSegment() const {
 QPointF ConductorSegment::middle() const {
 	return(
 		QPointF(
-			(point1.x(), point2.x()),
-			(point1.y(), point2.y())
+			(point1.x()+ point2.x()) / 2.0,
+			(point1.y()+ point2.y()) / 2.0
 		)
 	);
 }
