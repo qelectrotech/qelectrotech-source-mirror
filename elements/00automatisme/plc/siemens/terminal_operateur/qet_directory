@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de">Bedienpanel</name>
         <name lang="en">Operator Panels</name>
         <name lang="fr">Terminal operateur</name>
         <name lang="pl">Panele operatorskie</name>

@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de">Drucksensoren</name>
 	<name lang="cs">Tlaková čidla</name>        
 	<name lang="el">Αισθητήρες πίεσης</name>	
 	<name lang="en">Pressure sensors</name>

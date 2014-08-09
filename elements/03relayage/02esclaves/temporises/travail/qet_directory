@@ -1,7 +1,7 @@
 <qet-directory>
     <names>
         <name lang="ar">تشغيل</name>
-        <name lang="de">Einschaltverzögert</name>
+        <name lang="de">Abfallverzögert</name>
         <name lang="ru">при срабатывании</name>
         <name lang="pt">Interruptores de tempo ligado retardado</name>
         <name lang="en">Switch-on delay</name>

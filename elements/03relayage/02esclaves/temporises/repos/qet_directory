@@ -1,7 +1,7 @@
 <qet-directory>
     <names>
         <name lang="ar">توقّف</name>
-        <name lang="de">Abschaltverzögert</name>
+        <name lang="de">Anzugsverzögert</name>
         <name lang="ru">при возврате</name>
         <name lang="pt">Interruptores de tempo desligado retardado</name>
         <name lang="en">Switch-off delay</name>

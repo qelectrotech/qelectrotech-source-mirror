@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-        <name lang="be">verdeelbord</name>
+	<name lang="de">Aufbauplanzeichnung</name>        
+	<name lang="be">verdeelbord</name>
         <name lang="nl">verdeelbord</name>
         <name lang="fr">tableau de distribution</name>
         <name lang="it">Tabella di distribuzione</name>

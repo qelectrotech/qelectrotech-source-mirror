@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-        <name lang="en">Automation</name>
+        <name lang="de">Gebäudetechnik</name>
+        <name lang="en">Building management</name>
         <name lang="it">Domotica</name>
         <name lang="fr">Domotique</name>
         <name lang="es">automatización</name>

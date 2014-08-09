@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de">Stromwandler</name>
         <name lang="fr">Transformateurs de courant</name>
         <name lang="it">Trasformatori di corrente</name>
         <name lang="en">Current transformer</name>

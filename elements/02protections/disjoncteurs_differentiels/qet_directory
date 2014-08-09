@@ -1,6 +1,6 @@
 <qet-directory>
     <names>
-        <name lang="de">Differenz Lastschalter</name>
+        <name lang="de">Fehlerstromschutzschalter (Lastschalter)</name>
         <name lang="ru">Дифавтоматы</name>
         <name lang="en">Residual Circuit Breaker with Overload</name>
         <name lang="fr">Disjoncteurs différentiels</name>

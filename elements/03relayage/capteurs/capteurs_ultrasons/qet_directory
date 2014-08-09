@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de">Ultraschallsensoren</name>
         <name lang="en">Ultrasonic sensor</name>
         <name lang="fr">Capteurs_ultrasons</name>
         <name lang="ar">حسّاسات فوق صوتيّة</name>

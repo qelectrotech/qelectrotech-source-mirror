@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de">Sicherheitsendschalter</name>
         <name lang="en">Safety interlocks</name>
         <name lang="fr">Interrupteur de position de sécurité</name>
         <name lang="it">Interblocco di sicurezza</name>

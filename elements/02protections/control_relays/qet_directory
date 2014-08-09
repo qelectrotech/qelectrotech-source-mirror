@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de">Überwachungsgeräte</name>
         <name lang="fr">Relais de controle</name>
         <name lang="ar">مُرحلات تحكّم</name>
         <name lang="en">Control relays</name>

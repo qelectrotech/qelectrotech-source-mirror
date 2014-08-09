@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de">Wärmetauscher</name>
         <name lang="fr">Echangeurs</name>
         <name lang="en">Heat exchanger</name>
         <name lang="pl">Wymienniki ciepła</name>
