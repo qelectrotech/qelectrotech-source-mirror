@@ -222,7 +222,7 @@ void ConductorPropertiesWidget::on_m_color_pb_clicked() {
 void ConductorPropertiesWidget::setColorButton(const QColor &color) {
 	QPalette palette;
 	palette.setColor(QPalette::Button, color);
-	ui -> m_color_pb -> setStyleSheet(QString("background-color: %1; min-height: 1.5em;  border-radius: 4px;").arg(color.name()));
+	ui -> m_color_pb -> setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
 }
 
 /**
