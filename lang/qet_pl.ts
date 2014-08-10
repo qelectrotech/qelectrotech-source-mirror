@@ -291,17 +291,17 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="23"/>
         <source>Autonumérotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="46"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished"></translation>
+        <translation>edytuj numerację</translation>
     </message>
 </context>
 <context>
@@ -529,7 +529,7 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="60"/>
         <source>Texte par defaut :</source>
-        <translation type="unfinished"></translation>
+        <translation>Domyślny tekst :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
@@ -2889,24 +2889,24 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.ui" line="14"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished">Oznaczenia dla potencjału</translation>
+        <translation>Oznaczenia dla potencjału</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/potentialtextsdialog.ui" line="22"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished">Oznaczenia dla potencjału elektrycznego nie są identyczne.
+        <translation>Oznaczenia dla potencjału elektrycznego nie są identyczne.
 Jakie oznaczenia przewodów chcesz zastosować?</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source>  : est présent </source>
-        <translation type="unfinished">  : występuje </translation>
+        <translation>  : występuje </translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source> fois.</source>
-        <translation type="unfinished">- krotnie.</translation>
+        <translation>- krotnie.</translation>
     </message>
 </context>
 <context>
@@ -2923,30 +2923,30 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="368"/>
         <source>Auto numerotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="390"/>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation type="unfinished"></translation>
+        <translation>Numeracje dostępne :</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="392"/>
         <location filename="../sources/projectconfigpages.cpp" line="447"/>
         <location filename="../sources/projectconfigpages.cpp" line="464"/>
         <source>Nouveau</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowa</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="394"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa nowej numeracji</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="466"/>
         <source>Nouvel numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowa numeracja</translation>
     </message>
 </context>
 <context>
@@ -6286,12 +6286,12 @@ Utwórz tekst etykiety za pomocą następujących zmiennych :
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="78"/>
         <source>Précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Poprzednia</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="92"/>
         <source>Suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastęna</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="131"/>
@@ -6331,7 +6331,21 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj możesz określić, w jaki sposób nowe przewody będą numerowane. 
+-Numeracja jest złożona co najmniej z jednej zmiennej. 
+-Możesz dodawać lub usuwać zmienne numeracji za pomocą przycisków + lub -. 
+-Zmienną numeracji opisuje: typ, wartość i inkrementacja. 
+
+-Typ &quot;Numer 1&quot;, &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza typ numeru w polu &quot;Wartość&quot;, który jest zwiększany dla każdego nowego przewodu o wartość podaną w polu &quot;Inkrementacja&quot;. 
+-&quot;Numer 01&quot; i &quot;Numer 001&quot; są odpowiednio wyrazane w schemacie poprzez dwie lub trzy cyfry. 
+Jeżeli numer określony w polu &quot;Wartość&quot; ma mniej cyfr niż wybrany typ, zostanie poprzedzony jedną lub dwoma cyframi 0 dla zachowania jego typu.
+
+-Typ &quot;Tekst&quot; oznacza stały tekst.
+Pole &quot;Inkrementacja&quot; nie jest używane.
+
+-Typ &quot;Nr strony&quot; oznacza numer bieżącej strony.
+Pozostałe pola nie są używane.
+</translation>
     </message>
 </context>
 <context>
