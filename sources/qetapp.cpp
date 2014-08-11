@@ -940,7 +940,7 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 	Autodetec Windows style
 	@param Windows style
 */
-#ifdef defined(Q_WS_WIN)
+#ifdef Q_WS_WIN
 			if ((QSysInfo::WindowsVersion >= QSysInfo::WV_VISTA
 				&& QSysInfo::WindowsVersion < QSysInfo::WV_NT_based))
 				style = QLatin1String("WindowsVista");
