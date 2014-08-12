@@ -482,6 +482,15 @@ void QETProject::addConductorAutoNum(QString key, NumerotationContext context) {
 }
 
 /**
+ * @brief QETProject::removeConductorAutonum
+ * Remove the Numerotation Context stored with key
+ * @param key
+ */
+void QETProject::removeConductorAutonum(QString key) {
+	m_conductor_autonum.remove(key);
+}
+
+/**
  * @brief QETProject::conductorAutoNum
  * Return the numerotation context stored with @key.
  * If key is not found, return an empty numerotation context

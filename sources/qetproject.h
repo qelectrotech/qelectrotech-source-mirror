@@ -114,6 +114,7 @@ class QETProject : public QObject {
 
 	QHash <QString, NumerotationContext> conductorAutoNum() const;
 	void addConductorAutoNum (QString key, NumerotationContext context);
+	void removeConductorAutonum (QString key);
 	NumerotationContext conductorAutoNum(const QString &key) const;
 
 	QDomDocument toXml();

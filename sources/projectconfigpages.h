@@ -31,6 +31,7 @@ class ReportPropertieWidget;
 class XRefPropertiesWidget;
 class SelectAutonumW;
 class QComboBox;
+class QPushButton;
 
 /**
 	This class, derived from ConfigPage, aims at providing the basic skeleton
@@ -175,12 +176,13 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 	private slots:
 		void updateContext(QString);
 		void saveContext();
+		void removeContext();
 
 	//Attributes
 	private:
 		QLabel         *m_label;
-		QLineEdit      *m_name_le;
 		QComboBox      *m_context_cb;
+		QPushButton	   *m_remove_pb;
 		SelectAutonumW *m_saw;
 
 };

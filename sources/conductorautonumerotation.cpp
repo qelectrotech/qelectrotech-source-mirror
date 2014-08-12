@@ -133,10 +133,12 @@ void ConductorAutoNumerotation::numeratePotential() {
 void ConductorAutoNumerotation::numerateNewConductor() {
 	if (!conductor_ || m_diagram->conductorsAutonumName().isEmpty()) return;
 
-	QString name = m_diagram -> conductorsAutonumName();
-	NumerotationContextCommands ncc (m_diagram->project()->conductorAutoNum(name), m_diagram);
+	NumerotationContext context = m_diagram->project()->conductorAutoNum(m_diagram -> conductorsAutonumName());
+	if (context.isEmpty()) return;
+
+	NumerotationContextCommands ncc (context, m_diagram);
 	applyText(ncc.toRepresentedString());
-	m_diagram->project()->addConductorAutoNum(name, ncc.next());
+	m_diagram->project()->addConductorAutoNum(m_diagram -> conductorsAutonumName(), ncc.next());
 }
 
 /**

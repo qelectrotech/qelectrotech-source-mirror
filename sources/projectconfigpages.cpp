@@ -388,10 +388,13 @@ void ProjectAutoNumConfigPage::applyProjectConf() {}
  */
 void ProjectAutoNumConfigPage::initWidgets() {
 	m_label = new QLabel(tr("Num\351rotations disponibles :", "availables numerotations"), this);
+
 	m_context_cb = new QComboBox(this);
-	m_context_cb->addItem(tr("Nouveau"));
-	m_name_le = new QLineEdit(this);
-	m_name_le->setPlaceholderText(tr("Nom de la nouvelle num\351rotation"));
+	m_context_cb->setEditable(true);
+	m_context_cb->addItem(tr("Nom de la nouvelle num\351rotation"));
+
+	m_remove_pb = new QPushButton(QET::Icons::EditDelete, QString(), this);
+	m_remove_pb -> setToolTip(tr("Supprimer la num\351rotation"));
 
 	m_saw = new SelectAutonumW(this);
 }
@@ -404,7 +407,7 @@ void ProjectAutoNumConfigPage::initLayout() {
 	QHBoxLayout *context_layout = new QHBoxLayout();
 	context_layout -> addWidget (m_label);
 	context_layout -> addWidget (m_context_cb);
-	context_layout -> addWidget (m_name_le);
+	context_layout -> addWidget (m_remove_pb);
 
 	QVBoxLayout *main_layout = new QVBoxLayout(this);
 	this        -> setLayout (main_layout);
@@ -434,8 +437,9 @@ void ProjectAutoNumConfigPage::adjustReadOnly() {
  * setup some connections
  */
 void ProjectAutoNumConfigPage::buildConnections() {
-	connect(m_context_cb, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext(QString)));
-	connect(m_saw,        SIGNAL (applyPressed()),               this, SLOT (saveContext()));
+	connect (m_context_cb, SIGNAL (currentIndexChanged(QString)), this, SLOT (updateContext(QString)));
+	connect (m_saw,        SIGNAL (applyPressed()),               this, SLOT (saveContext()));
+	connect (m_remove_pb,  SIGNAL(clicked()),                     this, SLOT(removeContext()));
 }
 
 /**
@@ -444,16 +448,8 @@ void ProjectAutoNumConfigPage::buildConnections() {
  * @param str, key of context stored in project
  */
 void ProjectAutoNumConfigPage::updateContext(QString str) {
-	if (str == tr("Nouveau")) {
-		m_saw -> setContext(NumerotationContext());
-		m_name_le -> setText(QString());
-		m_name_le ->setEnabled(true);
-	}
-	else {
-		m_saw ->setContext(project_->conductorAutoNum(str));
-		m_name_le -> setText(str);
-		m_name_le -> setDisabled(true);
-	}
+	if (str == tr("Nom de la nouvelle num\351rotation")) m_saw -> setContext(NumerotationContext());
+	else m_saw ->setContext(project_->conductorAutoNum(str));
 }
 
 /**
@@ -461,14 +457,30 @@ void ProjectAutoNumConfigPage::updateContext(QString str) {
  * Save the current displayed context in project
  */
 void ProjectAutoNumConfigPage::saveContext() {
-	if (m_context_cb->currentText() == tr("Nouveau")) {
-		if (m_name_le->text().isEmpty()) {
-			m_name_le->setText(tr("Nouvel num\351rotation"));
-		}
-		project_->addConductorAutoNum(m_name_le -> text(), m_saw -> toNumContext());
-		m_context_cb -> addItem(m_name_le -> text());
+	// If the text is the default text "Name of new numerotation" save the edited context
+	// With the the name "No name"
+	if (m_context_cb -> currentText() == tr("Nom de la nouvelle num\351rotation")) {
+		project_->addConductorAutoNum (tr("Sans nom"), m_saw -> toNumContext());
+		m_context_cb -> addItem(tr("Sans nom"));
 	}
+	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
+	else if ( !project_ -> conductorAutoNum().keys().contains( m_context_cb->currentText())) {
+		project()->addConductorAutoNum(m_context_cb->currentText(), m_saw->toNumContext());
+		m_context_cb -> addItem(m_context_cb->currentText());
+	}
+	// Else, the text already exist in the autonum of the project, just update the context
 	else {
 		project_->addConductorAutoNum (m_context_cb -> currentText(), m_saw -> toNumContext());
 	}
+}
+
+/**
+ * @brief ProjectAutoNumConfigPage::removeContext
+ * Remove from project the current numerotation context
+ */
+void ProjectAutoNumConfigPage::removeContext() {
+	//if default text, return
+	if ( m_context_cb -> currentText() == tr("Nom de la nouvelle num\351rotation") ) return;
+	project_     -> removeConductorAutonum (m_context_cb -> currentText() );
+	m_context_cb -> removeItem             (m_context_cb -> currentIndex() );
 }
