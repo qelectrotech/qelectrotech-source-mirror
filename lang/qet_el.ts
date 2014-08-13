@@ -291,17 +291,17 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="23"/>
         <source>Autonumérotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="46"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished"></translation>
+        <translation>επεξεργασία αριθμίσεων</translation>
     </message>
 </context>
 <context>
@@ -529,7 +529,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="60"/>
         <source>Texte par defaut :</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπιλεγμένο κείμενο: </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
@@ -2893,24 +2893,24 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.ui" line="14"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished">Κείμενα δυναμικού</translation>
+        <translation>Κείμενα δυναμικού</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/potentialtextsdialog.ui" line="22"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished">Τα κείμενα αυτού του ηλεκτρικού δυναμικού δεν είναι ίδια.
+        <translation>Τα κείμενα αυτού του ηλεκτρικού δυναμικού δεν είναι ίδια.
 Εφαρμογή ενός κειμένου σε όλη την ομάδα αγωγών;</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source>  : est présent </source>
-        <translation type="unfinished">  : αυτό υπάρχει </translation>
+        <translation>  : αυτό υπάρχει </translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source> fois.</source>
-        <translation type="unfinished"> φορές.</translation>
+        <translation> φορές.</translation>
     </message>
 </context>
 <context>
@@ -2927,30 +2927,30 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="368"/>
         <source>Auto numerotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="390"/>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμες αριθμίσεις</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="392"/>
         <location filename="../sources/projectconfigpages.cpp" line="447"/>
         <location filename="../sources/projectconfigpages.cpp" line="464"/>
         <source>Nouveau</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέα</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="394"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα νέας αρίθμισης</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="466"/>
         <source>Nouvel numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Νέα αρίθμιση</translation>
     </message>
 </context>
 <context>
@@ -6280,12 +6280,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="78"/>
         <source>Précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Προηγούμενο</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="92"/>
         <source>Suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Επόμενο</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="131"/>
