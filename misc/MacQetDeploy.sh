@@ -165,6 +165,9 @@ else
     exit
 fi
 
+# On rajoute le numero de version pour "cmd + i"
+sed -i "" "s/<string>Created by Qt\/QMake<\/string>/<string>0.4 dev r$revAp<\/string>/" qelectrotech.app/Contents/Info.plist
+
 
 ### copy over frameworks ############################################
 
@@ -239,6 +242,8 @@ echo 'Copying application bundle and examples... '
 mkdir $imagedir
 cp -Rf $BUNDLE $imagedir
 cp -Rf $EX_Dir $imagedir
+ln -s /Applications $imagedir/Applications
+
 # Elimine les accents, symbole ...
 strip "$imagedir/$APPBIN"
     
