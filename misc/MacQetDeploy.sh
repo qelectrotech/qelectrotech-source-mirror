@@ -101,7 +101,6 @@ echo "Adding the version tag..."
 mkdir temp
 cp -Rf "sources/qet.h" "temp/qet.h"
 
-#cd 
 # On modifie l'originale avec le numero de version
 sed -i "" "s/const QString displayedVersion = \"0.4-dev\"/const QString displayedVersion = \"0.4-dev-r$revAp\"/" sources/qet.h
 
@@ -148,14 +147,28 @@ qmake -spec macx-g++
 # compilation
 if [ -e Makefile.Release ] ; then
 	START_TIME=$SECONDS
-	make -f Makefile.Release
+    
+    # arret du script si erreur de compilation
+    testSuccessBuild () {
+        if [ $? -ne 0 ]; then 
+            cleanVerionTag
+            ELAPSED_TIME=$(($SECONDS - $START_TIME))
+            echo
+            echo "make failed - $(($ELAPSED_TIME/60)) min $(($ELAPSED_TIME%60)) sec"
+            exit 1
+        fi
+    }
+
+    # utilise tout les coeurs pour une compilation plus rapide
+    coeur=$(sysctl hw.ncpu | awk '{print $2}')
     if [ $? -ne 0 ]; then 
-        cleanVerionTag
-        ELAPSED_TIME=$(($SECONDS - $START_TIME))
-        echo
-        echo "make failed - $(($ELAPSED_TIME/60)) min $(($ELAPSED_TIME%60)) sec"
-        exit 1
+        make -f Makefile.Release
+        testSuccessBuild
+    else
+        make -j$(($coeur + 1)) -f Makefile.Release
+        testSuccessBuild
     fi
+	
     cleanVerionTag
 	ELAPSED_TIME=$(($SECONDS - $START_TIME))
 	echo
@@ -220,6 +233,7 @@ echo "Create disk image:"
 
 # Direction
 EX_Dir="examples"
+DOC_Dir="docs/doc-en.pdf"
 imagedir="/tmp/$APPNAME.$$"
 
 # Remove any previous disk folder or DMG
@@ -242,6 +256,11 @@ echo 'Copying application bundle and examples... '
 mkdir $imagedir
 cp -Rf $BUNDLE $imagedir
 cp -Rf $EX_Dir $imagedir
+if [ -e $DOC_Dir ] ; then
+    cp $DOC_Dir $imagedir
+else
+    echo "Documentation in ${DOC_Dir} not find."
+fi
 ln -s /Applications $imagedir/Applications
 
 # Elimine les accents, symbole ...
