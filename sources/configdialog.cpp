@@ -52,7 +52,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	// connexion signaux / slots
 	connect(buttons, SIGNAL(accepted()), this, SLOT(applyConf()));
 	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));
-	connect(pages_list, SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)), this, SLOT(changePage(QListWidgetItem *, QListWidgetItem*)));
+	connect(pages_list, SIGNAL(currentRowChanged(int)), pages_widget, SLOT(setCurrentIndex(int)));
 	
 #ifdef Q_WS_MAC
 	if (parent) {
@@ -63,14 +63,6 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 
 /// Destructeur
 ConfigDialog::~ConfigDialog() {
-}
-
-/**
-	Gere les changements de page dans le dialogue de configuration
-*/
-void ConfigDialog::changePage(QListWidgetItem *current, QListWidgetItem *previous) {
-	if (!current) current = previous;
-	pages_widget -> setCurrentIndex(pages_list -> row(current));
 }
 
 /**
@@ -112,4 +104,13 @@ void ConfigDialog::addPage(ConfigPage *page) {
 	pages << page;
 	pages_widget -> addWidget(page);
 	addPageToList(page);
+}
+
+/**
+ * @brief ConfigDialog::setCurrentPage
+ * Set the current index to @index
+ * @param index
+ */
+void ConfigDialog::setCurrentPage(const int index) {
+	pages_list->setCurrentRow(index);
 }

@@ -42,6 +42,9 @@
    </item>
    <item>
     <widget class="QPushButton" name="m_edit_autonum_pb">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="toolTip">
       <string>éditer les numérotations</string>
      </property>

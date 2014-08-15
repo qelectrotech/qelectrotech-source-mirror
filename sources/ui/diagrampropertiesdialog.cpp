@@ -21,6 +21,8 @@
 #include "conductorpropertieswidget.h"
 #include "diagramcommands.h"
 #include "autonumselectorwidget.h"
+#include "projectpropertiesdialog.h"
+#include "diagram.h"
 
 /**
  * @brief DiagramPropertiesDialog::DiagramPropertiesDialog
@@ -29,7 +31,8 @@
  * @param parent : parent widget
  */
 DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *parent) :
-	QDialog (parent)
+	QDialog (parent),
+	m_diagram (diagram)
 {
 	bool diagram_is_read_only = diagram -> isReadOnly();
 
@@ -64,9 +67,10 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	cpw -> setReadOnly(diagram_is_read_only);
 
 	//Conductor autonum
-	AutonumSelectorWidget *asw = new AutonumSelectorWidget(diagram -> project() -> conductorAutoNum().keys(), this);
-	asw -> setCurrentItem(diagram -> conductorsAutonumName());
-	cpw->addAutonumWidget(asw);
+	m_asw = new AutonumSelectorWidget(diagram -> project() -> conductorAutoNum().keys(), this);
+	m_asw -> setCurrentItem(diagram -> conductorsAutonumName());
+	connect (m_asw, SIGNAL(openAutonumEditor()), this, SLOT(editAutonum()));
+	cpw->addAutonumWidget(m_asw);
 
 	// Buttons
 	QDialogButtonBox boutons(diagram_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -102,8 +106,8 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 		}
 
 		// Conductor autonum name
-		if (asw -> text() != diagram -> conductorsAutonumName()) {
-			diagram -> setConductorsAutonumName (asw -> text());
+		if (m_asw -> text() != diagram -> conductorsAutonumName()) {
+			diagram -> setConductorsAutonumName (m_asw -> text());
 		}
 	}
 }
@@ -116,4 +120,15 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
  */
 void DiagramPropertiesDialog::diagramPropertiesDialog(Diagram *diagram, QWidget *parent) {
 	DiagramPropertiesDialog dialog(diagram, parent);
+}
+
+/**
+ * @brief DiagramPropertiesDialog::editAutonum
+ * Open the autonum editor
+ */
+void DiagramPropertiesDialog::editAutonum() {
+	ProjectPropertiesDialog ppd (m_diagram->project(), this);
+	ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
+	ppd.exec();
+	m_asw -> setItems (m_diagram -> project() -> conductorAutoNum().keys());
 }

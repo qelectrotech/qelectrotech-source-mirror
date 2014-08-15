@@ -35,12 +35,18 @@ class AutonumSelectorWidget : public QWidget
 		Q_OBJECT
 
 	public:
-		explicit AutonumSelectorWidget(QWidget *parent = 0);
-		explicit AutonumSelectorWidget(const QList <QString> &text, QWidget *parent = 0);
+		explicit AutonumSelectorWidget(const QStringList &items, QWidget *parent = 0);
 		~AutonumSelectorWidget();
 
-		void setCurrentItem (const QString &text);
-		QString text() const;
+		void    setCurrentItem (const QString &item);
+		void    setItems       (const QStringList &items);
+		QString text           () const;
+
+	signals:
+		void openAutonumEditor ();
+
+	private slots:
+		void on_m_edit_autonum_pb_clicked();
 
 	private:
 		Ui::AutonumSelectorWidget *ui;

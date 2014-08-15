@@ -20,38 +20,23 @@
 
 /**
  * @brief AutonumSelectorWidget::AutonumSelectorWidget
- * default constructor
- * @param parent, parent widget
- */
-AutonumSelectorWidget::AutonumSelectorWidget(QWidget *parent) :
-	QWidget(parent),
-	ui(new Ui::AutonumSelectorWidget)
-{
-	ui->setupUi(this);
-	ui->m_edit_autonum_pb->setDisabled(true);
-}
-
-/**
- * @brief AutonumSelectorWidget::AutonumSelectorWidget
  * Constructor with texts to fill the combo box
- * @param text, texts for fill the combo box
+ * @param items, items for fill the combo box
  * @param parent, parent widget
  */
-AutonumSelectorWidget::AutonumSelectorWidget(const QList <QString> &text, QWidget *parent) :
+AutonumSelectorWidget::AutonumSelectorWidget(const QStringList &items, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::AutonumSelectorWidget)
 {
 	ui->setupUi(this);
-	ui -> m_available_autonum_cb -> addItems(text);
-	ui->m_edit_autonum_pb->setDisabled(true);
+	ui -> m_available_autonum_cb -> addItems(items);
 }
 
 /**
  * @brief AutonumSelectorWidget::~AutonumSelectorWidget
  * Destructor
  */
-AutonumSelectorWidget::~AutonumSelectorWidget()
-{
+AutonumSelectorWidget::~AutonumSelectorWidget() {
 	delete ui;
 }
 
@@ -59,10 +44,21 @@ AutonumSelectorWidget::~AutonumSelectorWidget()
  * @brief AutonumSelectorWidget::setCurrentItem
  * Set the combo box current index by text.
  * If text doesn't exist, set current index -1
- * @param text, text of index
+ * @param item, item of index
  */
-void AutonumSelectorWidget::setCurrentItem(const QString &text) {
-	ui -> m_available_autonum_cb -> setCurrentIndex( ui -> m_available_autonum_cb -> findText(text));
+void AutonumSelectorWidget::setCurrentItem(const QString &item) {
+	ui -> m_available_autonum_cb -> setCurrentIndex( ui -> m_available_autonum_cb -> findText(item));
+}
+
+/**
+ * @brief AutonumSelectorWidget::setItems
+ * Populate this widget with the content of @items
+ * Previous items is clear.
+ * @param items
+ */
+void AutonumSelectorWidget::setItems(const QStringList &items) {
+	ui -> m_available_autonum_cb -> clear();
+	ui -> m_available_autonum_cb -> addItems(items);
 }
 
 /**
@@ -71,4 +67,13 @@ void AutonumSelectorWidget::setCurrentItem(const QString &text) {
  */
 QString AutonumSelectorWidget::text() const {
 	return ui -> m_available_autonum_cb -> currentText();
+}
+
+/**
+ * @brief AutonumSelectorWidget::on_m_edit_autonum_pb_clicked
+ * Just emit the signal openAutonumEditor.
+ * The owner of AutonumSelectorWidget need to connect the signal.
+ */
+void AutonumSelectorWidget::on_m_edit_autonum_pb_clicked() {
+	emit openAutonumEditor();
 }

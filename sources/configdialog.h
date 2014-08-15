@@ -39,9 +39,9 @@ class ConfigDialog : public QDialog {
 	
 	// methods
 	public slots:
-	void changePage(QListWidgetItem *, QListWidgetItem *);
 	void applyConf();
 	void addPage(ConfigPage *);
+	void setCurrentPage(const int index);
 	
 	private:
 	void buildPagesList();

@@ -17,9 +17,7 @@
 */
 #include "projectview.h"
 #include "qetproject.h"
-#include "configdialog.h"
 #include "closediagramsdialog.h"
-#include "projectconfigpages.h"
 #include "diagramview.h"
 #include "diagram.h"
 #include "diagramprintdialog.h"
@@ -36,6 +34,7 @@
 #include "qettabbar.h"
 #include "qettemplateeditor.h"
 #include "diagramfoliolist.h"
+#include "projectpropertiesdialog.h"
 
 /**
 	Constructeur
@@ -444,13 +443,8 @@ void ProjectView::showDiagram(Diagram *diagram) {
 */
 void ProjectView::editProjectProperties() {
 	if (!project_) return;
-	
-	ConfigDialog properties_dialog(parentWidget());
-	properties_dialog.setWindowTitle(tr("Propri\351t\351s du projet", "window title"));
-	properties_dialog.addPage(new ProjectMainConfigPage       (project_));
-	properties_dialog.addPage(new ProjectNewDiagramConfigPage (project_));
-	properties_dialog.addPage(new ProjectAutoNumConfigPage    (project_));
-	properties_dialog.exec();
+	ProjectPropertiesDialog dialog(project_, parentWidget());
+	dialog.exec();
 }
 
 /**

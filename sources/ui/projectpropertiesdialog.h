@@ -15,32 +15,33 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef DIAGRAMPROPERTIESDIALOG_H
-#define DIAGRAMPROPERTIESDIALOG_H
+#ifndef PROJECTPROPERTIESDIALOG_H
+#define PROJECTPROPERTIESDIALOG_H
 
-#include "qdialog.h"
-
-class Diagram;
-class AutonumSelectorWidget;
+class QETProject;
+class QWidget;
+class ConfigDialog;
 
 /**
- * @brief The DiagramPropertiesDialog class
- * This dialog open a windows for edit properties of a diagram.
+ * @brief The ProjectPropertiesDialog class
+ * this class builds a dialog to edit whole properties of a project
  */
-class DiagramPropertiesDialog : public QDialog {
-		Q_OBJECT
-
+class ProjectPropertiesDialog
+{
 	public:
-		DiagramPropertiesDialog(Diagram *diagram, QWidget *parent = 0);
+		enum Page {
+			Main    = 0,
+			Diagram = 1,
+			Autonum = 2
+		};
 
-		static void diagramPropertiesDialog(Diagram *diagram, QWidget *parent = 0);
-
-	public slots:
-		void editAutonum ();
+		ProjectPropertiesDialog(QETProject *project, QWidget *parent = 0);
+		~ProjectPropertiesDialog();
+		void exec();
+		void setCurrentPage(ProjectPropertiesDialog::Page);
 
 	private:
-		Diagram               *m_diagram;
-		AutonumSelectorWidget *m_asw;
+		ConfigDialog *m_properties_dialog;
 };
 
-#endif // DIAGRAMPROPERTIESDIALOG_H
+#endif // PROJECTPROPERTIESDIALOG_H
