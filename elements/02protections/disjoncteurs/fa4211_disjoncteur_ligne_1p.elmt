@@ -1,14 +1,12 @@
-<definition width="50" version="0.4" hotspot_x="32" hotspot_y="23" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="16" hotspot_y="5" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="de">Leitungsschalter 1P</name>
         <name lang="en">Feeder circuit-breaker 1P</name>
-        <name lang="fr">Disjoncteur de ligne 1P</name>
         <name lang="it">Relè termico 1P</name>
+        <name lang="fr">Disjoncteur de ligne 1P</name>
+        <name lang="pl">Wyłącznik nadprądowy jednobiegunowy</name>
         <name lang="cs">Jistič vedení 1P</name>
     </names>
-    <kindInformations>
-        <kindInformation name="type" show="1">protection</kindInformation>
-    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
@@ -17,10 +15,10 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-7" y2="30" x2="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="10" x2="0"/>
         <text x="8" y="40" size="6" rotation="270" text="2"/>
-        <input x="-26" y="-5.5" size="9" text="Q"/>
+        <input x="-26" y="-5.5" size="9" text="Q" tagg="none"/>
         <text x="8" y="3" size="6" rotation="270" text="1"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="0" y2="31" x2="0"/>
-        <terminal x="0" y="0" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="0" y="40" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="0" orientation="n"/>
+        <terminal x="0" y="40" orientation="s"/>
     </description>
 </definition>
