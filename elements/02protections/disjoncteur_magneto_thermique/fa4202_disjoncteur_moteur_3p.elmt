@@ -1,14 +1,12 @@
-<definition width="110" version="0.4" hotspot_x="50" hotspot_y="15" height="80" type="element" ic="true" orientation="dyyy">
+<definition width="90" version="0.4" hotspot_x="31" hotspot_y="5" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="de">Motorschutzschalter</name>
         <name lang="en">Motor circuit breaker</name>
-        <name lang="fr">Disjoncteur de moteur</name>
         <name lang="it">Salvamotore 3P</name>
+        <name lang="fr">Disjoncteur de moteur</name>
+        <name lang="pl">Wyłącznik silnikowy</name>
         <name lang="cs">Jistič motoru</name>
     </names>
-    <kindInformations>
-        <kindInformation name="type" show="1">protection</kindInformation>
-    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
@@ -33,7 +31,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.95" x1="-28.05" y2="19.95" x2="-28.05"/>
         <text x="35" y="48" size="6" text="I>"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-28" y2="48" x2="-28"/>
-        <input x="-47" y="0.5" size="9" text="Q"/>
+        <input x="-47" y="0.5" size="9" text="Q" tagg="none"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="0" y2="60" x2="0"/>
         <text x="-3" y="48" size="6" text="I>"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="16" x1="-11.3908" y2="16" x2="36.34"/>
@@ -47,11 +45,11 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="-14" y2="19" x2="-14"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="44" x1="-14" y2="19" x2="-14"/>
         <polygon x4="-20" y5="44" x5="-28" y6="44" x6="-28" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="44" x1="-10" y2="44" x2="-16" y3="47" x3="-18" y4="44"/>
-        <terminal x="0" y="0" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="40" y="0" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="40" y="60" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="20" y="60" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="0" y="60" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="0" orientation="n"/>
+        <terminal x="20" y="0" orientation="n"/>
+        <terminal x="40" y="0" orientation="n"/>
+        <terminal x="40" y="60" orientation="s"/>
+        <terminal x="20" y="60" orientation="s"/>
+        <terminal x="0" y="60" orientation="s"/>
     </description>
 </definition>
