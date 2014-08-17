@@ -66,19 +66,19 @@ DEPENDPATH += .
 INCLUDEPATH += sources sources/editor sources/titleblock sources/ui sources/qetgraphicsitem sources/richtext sources/factory sources/properties
 
 # Fichiers sources
-HEADERS += sources/*.h   sources/ui/*.h   sources/editor/*.h   sources/titleblock/*.h  sources/richtext/*.h sources/qetgraphicsitem/*.h sources/factory/*.cpp \
-           sources/properties/*.h \
-           sources/editor/ui/*.h
+HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*.h) $$files(sources/titleblock/*.h) $$files(sources/richtext/*.h) $$files(sources/qetgraphicsitem/*.h) $$files(sources/factory/*.cpp) \
+           $$files(sources/properties/*.h) \
+           $$files(sources/editor/ui/*.h)
 
-SOURCES += sources/*.cpp sources/editor/*.cpp sources/titleblock/*.cpp sources/richtext/*.cpp sources/ui/*.cpp sources/qetgraphicsitem/*.cpp sources/factory/*.cpp \
-           sources/properties/*.cpp \
-           sources/editor/ui/*.cpp
+SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/titleblock/*.cpp) $$files(sources/richtext/*.cpp) $$files(sources/ui/*.cpp) $$files(sources/qetgraphicsitem/*.cpp) $$files(sources/factory/*.cpp) \
+           $$files(sources/properties/*.cpp) \
+           $$files(sources/editor/ui/*.cpp)
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
 
 # Liste des ressources Windows
-RC_FILE = ico/windows_icon/qelectrotech.rc
+#RC_FILE = ico/windows_icon/qelectrotech.rc
 
 # Fichiers de traduction qui seront installes
 TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang/qet_pt.ts lang/qet_cs.ts lang/qet_pl.ts lang/qet_de.ts lang/qet_ro.ts lang/qet_it.ts lang/qet_el.ts lang/qet_nl.ts
@@ -87,9 +87,9 @@ TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang
 QT += xml svg network sql
 
 # UI DESIGNER FILES AND GENERATION SOURCES FILES
-FORMS += sources/richtext/*.ui \
-         sources/ui/*.ui \
-         sources/editor/ui/*.ui
+FORMS += $$files(sources/richtext/*.ui) \
+         $$files(sources/ui/*.ui) \
+         $$files(sources/editor/ui/*.ui)
 
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/
