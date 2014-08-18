@@ -590,10 +590,10 @@ void DiagramView::wheelEvent(QWheelEvent *e) {
 		if (e->buttons() != Qt::MidButton) {
 			if (!(e -> modifiers() & Qt::ControlModifier)) {
 				if (e -> delta() > 0){
-					zoomIn();
+					zoomInSlowly();
 				}
 				else{
-					zoomOut();
+					zoomOutSlowly();
 				}
 				}
 				else {
