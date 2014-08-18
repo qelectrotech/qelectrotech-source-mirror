@@ -121,6 +121,7 @@ class DiagramView : public QGraphicsView {
 	void handleElementDrop(QDropEvent *);
 	void handleTitleBlockDrop(QDropEvent *);
 	void handleTextDrop(QDropEvent *);
+	bool gestureEvent(QGestureEvent *event);
 	QRectF viewedSceneRect() const;
 	bool mustIntegrateElement(const ElementsLocation &) const;
 	bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;
@@ -161,6 +162,8 @@ class DiagramView : public QGraphicsView {
 	void setSelectionMode();
 	void zoomIn();
 	void zoomOut();
+	void zoomInSlowly();
+	void zoomOutSlowly();
 	void zoomFit();
 	void zoomContent();
 	void zoomReset();

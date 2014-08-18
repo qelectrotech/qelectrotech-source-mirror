@@ -43,13 +43,13 @@
 #include "factory/elementfactory.h"
 #include "diagrampropertiesdialog.h"
 
-
 /**
 	Constructeur
 	@param diagram Schema a afficher ; si diagram vaut 0, un nouveau Diagram est utilise
 	@param parent Le QWidget parent de cette vue de schema
 */
 DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent), newShapeItem(nullptr){
+	grabGesture(Qt::PinchGesture);
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	setInteractive(true);
 	current_behavior = noAction;
@@ -356,6 +356,26 @@ void DiagramView::zoomOut() {
 }
 
 /**
+	Agrandit le schema avec le trackpad
+*/
+void DiagramView::zoomInSlowly() {
+	scale(1.02, 1.02);
+	adjustGridToZoom();
+}
+
+/**
+	Retrecit le schema avec le trackpad
+*/
+void DiagramView::zoomOutSlowly() {
+	scale(0.98, 0.98);
+	// Interdit le dezoome plus grand que le schéma
+	if ((mapFromScene(0,0).rx() == 0) && (mapFromScene(0,0).ry() == 0)){
+		fitInView(sceneRect(), Qt::KeepAspectRatio);
+	}
+	adjustGridToZoom();
+}
+
+/**
 	Agrandit ou rectrecit le schema de facon a ce que tous les elements du
 	schema soient visibles a l'ecran. S'il n'y a aucun element sur le schema,
 	le zoom est reinitialise
@@ -563,19 +583,52 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
 void DiagramView::wheelEvent(QWheelEvent *e) {
 	//Zoom and scrolling
 	if (e->buttons() != Qt::MidButton) {
-		if (!(e -> modifiers() & Qt::ControlModifier)) {
-			if (e -> delta() > 0){
-				zoomIn();
-			}
-			else{
-				zoomOut();
+
+#if defined(__APPLE__) && defined(__MACH__)
+			QAbstractScrollArea::wheelEvent(e);
+		#else
+		if (e->buttons() != Qt::MidButton) {
+			if (!(e -> modifiers() & Qt::ControlModifier)) {
+				if (e -> delta() > 0){
+					zoomIn();
+				}
+				else{
+					zoomOut();
+				}
+				}
+				else {
+					QAbstractScrollArea::wheelEvent(e);
+				}
 			}
 		}
-		else {
-			QAbstractScrollArea::wheelEvent(e);
+		#endif
+}
+
+
+/**
+ * Utilise le pincement du trackpad pour zoomer
+ * @brief DiagramView::gestureEvent
+ * @param event
+ * @return
+ */
+
+
+bool DiagramView::gestureEvent(QGestureEvent *event){
+	if (QGesture *gesture = event->gesture(Qt::PinchGesture)) {
+		QPinchGesture *pinch = static_cast<QPinchGesture *>(gesture);
+		if (pinch->changeFlags() & QPinchGesture::ScaleFactorChanged){
+			qreal value = gesture->property("scaleFactor").toReal();
+			if (value > 1){
+				zoomInSlowly();
+			}else{
+				zoomOutSlowly();
+			}
 		}
 	}
+	return true;
 }
+
+
 
 /**
 	Handles "Focus in" events. Reimplemented here to store the fact the focus
@@ -1044,6 +1097,13 @@ void DiagramView::resetConductors() {
 	@param e Evenement
 */
 bool DiagramView::event(QEvent *e) {
+	// By default touch events are converted to mouse events. So
+	// after this event we will get a mouse event also but we want
+	// to handle touch events as gestures only. So we need this safeguard
+	// to block mouse events that are actually generated from touch.
+	if (e->type() == QEvent::Gesture)
+		return gestureEvent(static_cast<QGestureEvent *>(e));
+
 	// fait en sorte que les raccourcis clavier arrivent prioritairement sur la
 	// vue plutot que de remonter vers les QMenu / QAction
 	if (
