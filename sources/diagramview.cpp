@@ -588,8 +588,7 @@ void DiagramView::wheelEvent(QWheelEvent *e) {
 			QAbstractScrollArea::wheelEvent(e);
 	}
 		#else
-		if (e->buttons() != Qt::MidButton) {
-			if (!(e -> modifiers() & Qt::ControlModifier)) {
+		if (!(e -> modifiers() & Qt::ControlModifier)) {
 				if (e -> delta() > 0){
 					zoomInSlowly();
 				}
@@ -601,7 +600,6 @@ void DiagramView::wheelEvent(QWheelEvent *e) {
 					QAbstractScrollArea::wheelEvent(e);
 				}
 			}
-		}
 		#endif
 }
 
