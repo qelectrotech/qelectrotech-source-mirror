@@ -586,6 +586,7 @@ void DiagramView::wheelEvent(QWheelEvent *e) {
 
 #if defined(__APPLE__) && defined(__MACH__)
 			QAbstractScrollArea::wheelEvent(e);
+	}
 		#else
 		if (e->buttons() != Qt::MidButton) {
 			if (!(e -> modifiers() & Qt::ControlModifier)) {
