@@ -352,6 +352,9 @@ void DiagramView::zoomIn() {
 */
 void DiagramView::zoomOut() {
 	scale(0.75, 0.75);
+	if ((mapFromScene(0,0).rx() == 0) && (mapFromScene(0,0).ry() == 0)){
+		fitInView(sceneRect(), Qt::KeepAspectRatio);
+	}
 	adjustGridToZoom();
 }
 
@@ -590,10 +593,10 @@ void DiagramView::wheelEvent(QWheelEvent *e) {
 		#else
 		if (!(e -> modifiers() & Qt::ControlModifier)) {
 				if (e -> delta() > 0){
-					zoomInSlowly();
+					zoomIn();
 				}
 				else{
-					zoomOutSlowly();
+					zoomOut();
 				}
 				}
 				else {
