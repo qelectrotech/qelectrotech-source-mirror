@@ -291,17 +291,17 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="23"/>
         <source>Autonumérotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatické číslování:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="46"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit číslování</translation>
     </message>
 </context>
 <context>
@@ -486,7 +486,7 @@ vodiče s tímto potenciálem?</translation>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="17"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
-        <translation>Protective Earth Neutral (ochranné uzemnění nulovéí)</translation>
+        <translation>Protective Earth Neutral (ochranné uzemnění nulové)</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="189"/>
@@ -524,37 +524,37 @@ vodiče s tímto potenciálem?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="60"/>
         <source>Texte par defaut :</source>
-        <translation type="unfinished"></translation>
+        <translation>Výchozí text:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="92"/>
         <source>Rotation du texte de conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Otočení textu vodičů:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished">Protective Earth Neutral (ochranné uzemnění nulovéí)</translation>
+        <translation>Ochranný vodič nulový</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="213"/>
         <source>PEN</source>
-        <translation type="unfinished">PEN</translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="231"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Textový štítek</translation>
+        <translation>Textový štítek</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="256"/>
@@ -569,7 +569,7 @@ vodiče s tímto potenciálem?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="279"/>
         <source>Style :</source>
-        <translation type="unfinished">Styl:</translation>
+        <translation>Styl:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="29"/>
@@ -697,7 +697,7 @@ vodiče s tímto potenciálem?</translation>
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="46"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation type="unfinished">Vlastnosti výkresu</translation>
+        <translation>Vlastnosti výkresu</translation>
     </message>
 </context>
 <context>
@@ -1158,7 +1158,7 @@ vodiče s tímto potenciálem?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
         <source>Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Svorkový pásek</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
@@ -2889,24 +2889,24 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.ui" line="14"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished">Texty potenciálu</translation>
+        <translation>Označení potenciálu</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/potentialtextsdialog.ui" line="22"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished">Texty tohoto elektrického potenciálu nejsou totožné.
-Použít text na všechny tyto vodiče?</translation>
+        <translation>Označení elektrického potenciálu nejsou totožné.
+Použít označení na všechny tyto vodiče?</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source>  : est présent </source>
-        <translation type="unfinished">: Je toto</translation>
+        <translation>: Je toto</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source> fois.</source>
-        <translation type="unfinished"> krát.</translation>
+        <translation> krát.</translation>
     </message>
 </context>
 <context>
@@ -2923,30 +2923,30 @@ Použít text na všechny tyto vodiče?</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="368"/>
         <source>Auto numerotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatické číslování</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="390"/>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dostupná číslování:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="392"/>
         <location filename="../sources/projectconfigpages.cpp" line="447"/>
         <location filename="../sources/projectconfigpages.cpp" line="464"/>
         <source>Nouveau</source>
-        <translation type="unfinished"></translation>
+        <translation>Nové</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="394"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Název nového číslování</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="466"/>
         <source>Nouvel numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nové číslování</translation>
     </message>
 </context>
 <context>
@@ -6286,12 +6286,12 @@ Vytvořte svůj vlastní text pomocí následujících proměnných:
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="78"/>
         <source>Précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Předchozí</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="92"/>
         <source>Suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Další</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="131"/>
@@ -6331,7 +6331,21 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zde můžete stanovit, jak se budou číslovat nové vodiče.
+- Každý list má svůj vlastní způsob číslování.
+Číselník (kruhová stupnice) je složen z nejmenší proměnné.
+- Můžete přidat nebo smazat proměnnou číslování pomocí tlačítek - a +.
+- Proměnná číslování obsahuje údaje: typ, hodnota a přírůstek.
+
+- Typy &quot;Číslo 1&quot;, &quot;Číslo 01&quot; a &quot;Číslo 001&quot; představují číselný typ stanovený v poli &quot;Hodnota&quot;, který narůstá s každým novým vodičem o hodnotu udanou v poli &quot;Přírůstek&quot;.
+- &quot;Číslo 01&quot; a &quot;Číslo 001&quot;, jsou každé ve výkresu představovány dvěma a třemi číslicemi nejméně.
+Pokud má číslo stanovené v poli Hodnota méně číslic, než kolik jich má vybraný typ, bude uvedeno jednou nebo dvěma nulami 0, aby byl dodržen jeho typ.
+
+- Typ &quot;text&quot; představuje pevný text.
+Pole &quot;Přírůstek&quot; se nepoužívá.
+
+- Typ &quot;Číslo listu&quot; představuje číslo nynějšího listu.
+Jiná pole se nepoužívají.</translation>
     </message>
 </context>
 <context>
