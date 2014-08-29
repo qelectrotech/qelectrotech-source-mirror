@@ -580,30 +580,33 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
 }
 
 /**
+ * @brief DiagramView::gestures
+ * @return
+ */
+bool DiagramView::gestures() const {
+			return(QETApp::settings().value("diagramview/gestures", true).toBool());
+		}
+
+/**
 	Manage wheel event of mouse
 	@param e QWheelEvent
 */
 void DiagramView::wheelEvent(QWheelEvent *e) {
 	//Zoom and scrolling
-	if (e->buttons() != Qt::MidButton) {
-
-#if defined(__APPLE__) && defined(__MACH__)
-			QAbstractScrollArea::wheelEvent(e);
-	}
-		#else
-		if (!(e -> modifiers() & Qt::ControlModifier)) {
+	if (e->buttons() != Qt::MidButton & !gestures ()) {
+		if (!(e -> modifiers() & Qt::ControlModifier )) {
 				if (e -> delta() > 0){
 					zoomIn();
 				}
 				else{
 					zoomOut();
 				}
-				}
-				else {
-					QAbstractScrollArea::wheelEvent(e);
-				}
-			}
-		#endif
+		}
+	}	else {
+			QAbstractScrollArea::wheelEvent(e);
+		}
+
+
 }
 
 

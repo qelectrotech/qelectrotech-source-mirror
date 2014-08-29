@@ -126,7 +126,8 @@ class DiagramView : public QGraphicsView {
 	bool mustIntegrateElement(const ElementsLocation &) const;
 	bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;
 	bool addElementAtPos(const ElementsLocation &, const QPoint &);
-	
+	bool gestures() const;
+
 	signals:
 	/// Signal emitted after the selection changed
 	void selectionChanged();

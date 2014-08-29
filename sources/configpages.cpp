@@ -117,6 +117,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	bool use_system_colors = settings.value("usesystemcolors", "true").toBool();
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	bool integrate_elements = settings.value("diagrameditor/integrate-elements", true).toBool();
+	bool use_trackpad = settings.value("diagramview/gestures", true).toBool();
 	bool highlight_integrated_elements = settings.value("diagrameditor/highlight-integrated-elements", true).toBool();
 	QString default_element_informations = settings.value("elementeditor/default-informations", "").toString();
 	
@@ -126,6 +127,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	projects_view_mode_ = new QGroupBox(tr("Projets"), this);
 	windowed_mode_ = new QRadioButton(tr("Utiliser des fen\352tres"), projects_view_mode_);
 	tabbed_mode_ = new QRadioButton(tr("Utiliser des onglets"), projects_view_mode_);
+	use_trackpad_ = new QCheckBox(tr("Utiliser les gestures du trackpad"), projects_view_mode_);
 	warning_view_mode_ = new QLabel(tr("Ces param\350tres s'appliqueront d\350s la prochaine ouverture d'un \351diteur de sch\351mas."));
 	
 	elements_management_ = new QGroupBox(tr("Gestion des \351l\351ments"), this);
@@ -142,7 +144,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	default_element_infos_textfield_ ->  setAcceptRichText(false);
 	
 	use_system_colors_ -> setChecked(use_system_colors);
-	
+
+	use_trackpad_ -> setChecked(false);
+	use_trackpad_ -> setChecked(use_trackpad);
+
 	if (tabbed) {
 		tabbed_mode_ -> setChecked(true);
 	} else {
@@ -161,6 +166,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	projects_view_mode_layout -> addWidget(windowed_mode_);
 	projects_view_mode_layout -> addWidget(tabbed_mode_);
 	projects_view_mode_layout -> addWidget(warning_view_mode_);
+	projects_view_mode_layout -> addWidget(use_trackpad_);
 	projects_view_mode_ -> setLayout(projects_view_mode_layout);
 	
 	QVBoxLayout *elements_management_layout = new QVBoxLayout();
@@ -215,6 +221,9 @@ void GeneralConfigurationPage::applyConf() {
 		QETApp::instance() -> useSystemPalette(must_use_system_colors);
 	}
 
+	bool was_use_trackpad = settings.value("use_trackpad", "true").toBool();
+	bool must_use_trackpad  = use_trackpad_ -> isChecked();
+	settings.setValue("use_trackpad", must_use_trackpad );
 	settings.setValue("lang", lang_combo_box->itemData(lang_combo_box->currentIndex()).toString());
 	
 	QString view_mode = tabbed_mode_ -> isChecked() ? "tabbed" : "windowed";
@@ -223,6 +232,7 @@ void GeneralConfigurationPage::applyConf() {
 	settings.setValue("diagrameditor/integrate-elements", integrate_elements_ -> isChecked());
 	settings.setValue("diagrameditor/highlight-integrated-elements", highlight_integrated_elements_ -> isChecked());
 	settings.setValue("elementeditor/default-informations", default_element_infos_textfield_ -> toPlainText());
+	settings.setValue("diagramview/gestures", use_trackpad_ -> isChecked());
 }
 
 /// @return l'icone de cette page
