@@ -221,9 +221,6 @@ void GeneralConfigurationPage::applyConf() {
 		QETApp::instance() -> useSystemPalette(must_use_system_colors);
 	}
 
-	bool was_use_trackpad = settings.value("use_trackpad", "true").toBool();
-	bool must_use_trackpad  = use_trackpad_ -> isChecked();
-	settings.setValue("use_trackpad", must_use_trackpad );
 	settings.setValue("lang", lang_combo_box->itemData(lang_combo_box->currentIndex()).toString());
 	
 	QString view_mode = tabbed_mode_ -> isChecked() ? "tabbed" : "windowed";
