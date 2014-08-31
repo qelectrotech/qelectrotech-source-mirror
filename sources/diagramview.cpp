@@ -584,8 +584,8 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
  * @return
  */
 bool DiagramView::gestures() const {
-			return(QETApp::settings().value("diagramview/gestures", true).toBool());
-		}
+	return(QETApp::settings().value("diagramview/gestures", true).toBool());
+}
 
 /**
 	Manage wheel event of mouse
@@ -593,20 +593,14 @@ bool DiagramView::gestures() const {
 */
 void DiagramView::wheelEvent(QWheelEvent *e) {
 	//Zoom and scrolling
-	if (e->buttons() != Qt::MidButton & !gestures ()) {
-		if (!(e -> modifiers() & Qt::ControlModifier )) {
-				if (e -> delta() > 0){
-					zoomIn();
-				}
-				else{
-					zoomOut();
-				}
-		}
-	}	else {
-			QAbstractScrollArea::wheelEvent(e);
-		}
-
-
+	if ( gestures() ) {
+		if (e -> modifiers() & Qt::ControlModifier)
+			e -> delta() > 0 ? zoomInSlowly() : zoomOutSlowly();
+		else
+			QGraphicsView::wheelEvent(e);
+	} else {
+		e -> delta() > 0 ? zoomIn(): zoomOut();
+	}
 }
 
 
