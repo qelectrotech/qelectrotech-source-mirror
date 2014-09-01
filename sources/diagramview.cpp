@@ -584,7 +584,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
  * @return
  */
 bool DiagramView::gestures() const {
-	return(QETApp::settings().value("diagramview/gestures", true).toBool());
+	return(QETApp::settings().value("diagramview/gestures", false).toBool());
 }
 
 /**

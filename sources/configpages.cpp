@@ -117,7 +117,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	bool use_system_colors = settings.value("usesystemcolors", "true").toBool();
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	bool integrate_elements = settings.value("diagrameditor/integrate-elements", true).toBool();
-	bool use_trackpad = settings.value("diagramview/gestures", true).toBool();
+	bool use_trackpad = settings.value("diagramview/gestures", false).toBool();
 	bool highlight_integrated_elements = settings.value("diagrameditor/highlight-integrated-elements", true).toBool();
 	QString default_element_informations = settings.value("elementeditor/default-informations", "").toString();
 	
@@ -145,7 +145,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	
 	use_system_colors_ -> setChecked(use_system_colors);
 
-	use_trackpad_ -> setChecked(false);
 	use_trackpad_ -> setChecked(use_trackpad);
 
 	if (tabbed) {
