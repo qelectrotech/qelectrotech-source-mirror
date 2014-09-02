@@ -108,11 +108,13 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	void autoText();
 	QSet<Conductor *> relatedPotentialConductors(QList <Terminal *> *t_list=0);
 	QETDiagramEditor* diagramEditor() const;
+	void editProperty ();
 	
 	public slots:
 	void displayedTextChanged();
 	
 	protected:
+	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);

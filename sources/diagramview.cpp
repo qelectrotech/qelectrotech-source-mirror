@@ -37,7 +37,6 @@
 #include "qetmessagebox.h"
 #include "qtextorientationspinboxwidget.h"
 #include <QGraphicsObject>
-#include <ui/elementpropertieswidget.h>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneMouseEvent>
 #include "factory/elementfactory.h"
@@ -914,7 +913,7 @@ void DiagramView::editSelectionProperties() {
 													 DiagramContent::SelectedOnly).size()) {
 		// edit conductor
 		if (selection.conductors(DiagramContent::AnyConductor | DiagramContent::SelectedOnly).size())
-			editConductor(selection.conductors().first());
+			selection.conductors().first()->editProperty();
 		// edit element
 		else if (selection.elements.size())
 			selection.elements.toList().first() -> editProperty();
@@ -945,88 +944,6 @@ void DiagramView::editSelectedConductorColor() {
 	QList<Conductor *> selected_conductors = selection.conductors(DiagramContent::AnyConductor | DiagramContent::SelectedOnly);
 	if (selected_conductors.count() == 1) {
 		editConductorColor(selected_conductors.at(0));
-	}
-}
-
-/**
-	Affiche un dialogue permettant d'editer le conducteur selectionne.
-	Ne fait rien s'il y a 0 ou plusieurs conducteurs selectionnes.
-*/
-void DiagramView::editConductor() {
-	QList<Conductor *> selected_conductors(scene -> selectedConductors().toList());
-	
-	// on ne peut editer qu'un conducteur a la fois
-	if (selected_conductors.count() != 1) return;
-	Conductor *edited_conductor = selected_conductors.first();
-	
-	editConductor(edited_conductor);
-}
-
-/**
-	Edite le conducteur passe en parametre
-	@param edited_conductor Conducteur a editer
-*/
-void DiagramView::editConductor(Conductor *edited_conductor) {
-	if (scene -> isReadOnly() || !edited_conductor) return;
-	
-	// initialise l'editeur de proprietes pour le conducteur
-	ConductorProperties old_properties = edited_conductor -> properties();
-	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(old_properties);
-	
-	// l'insere dans un dialogue
-	QDialog conductor_dialog(diagramEditor());
-#ifdef Q_WS_MAC
-	conductor_dialog.setWindowFlags(Qt::Sheet);
-#endif
-	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'un conducteur", "window title"));
-	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
-	dialog_layout -> addWidget(cpw);
-	QCheckBox *cb_apply_all = new QCheckBox(tr("Appliquer les propri\351t\351s \340 l'ensemble des conducteurs de ce potentiel"), &conductor_dialog);
-	cb_apply_all->setChecked(true);
-	dialog_layout -> addStretch();
-	dialog_layout -> addWidget(cb_apply_all);
-	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	dbb -> setParent(&conductor_dialog);
-	dialog_layout -> addWidget(dbb);
-	connect(dbb, SIGNAL(accepted()), &conductor_dialog, SLOT(accept()));
-	connect(dbb, SIGNAL(rejected()), &conductor_dialog, SLOT(reject()));
-	cpw -> setFocus(Qt::ActiveWindowFocusReason);
-	
-	// execute le dialogue et met a jour le conducteur
-	if (conductor_dialog.exec() == QDialog::Accepted) {
-		// recupere les nouvelles proprietes
-		ConductorProperties new_properties = cpw -> properties();
-
-		if (new_properties != old_properties) {
-				if (cb_apply_all -> isChecked()) {
-					QList <Conductor *> conductorslist = edited_conductor -> relatedPotentialConductors().toList();
-					conductorslist << edited_conductor;
-					QList <ConductorProperties> old_properties_list;
-
-					foreach (Conductor *c, conductorslist) {
-						if (c == edited_conductor) {
-							old_properties_list << old_properties;
-						}
-						else {
-							old_properties_list << c -> properties();
-							c -> setProperties(new_properties);
-						}
-					}
-					//initialize the corresponding UndoCommand object
-					ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(conductorslist);
-					cscpc -> setOldSettings(old_properties_list);
-					cscpc -> setNewSettings(new_properties);
-					diagram() -> undoStack().push(cscpc);
-				}
-
-			else {
-				// initialise l'objet UndoCommand correspondant
-				ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(edited_conductor);
-				ccpc -> setOldSettings(old_properties);
-				ccpc -> setNewSettings(new_properties);
-				diagram() -> undoStack().push(ccpc);
-			}
-		}
 	}
 }
 
@@ -1383,7 +1300,7 @@ QETDiagramEditor *DiagramView::diagramEditor() const {
 void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 	BorderTitleBlock &bi = scene -> border_and_titleblock;
 	
-	// recupere le rectangle corespondant au cartouche
+	//Get the rectangle of the titleblock
 	QRectF titleblock_rect(
 		Diagram::margin,
 		Diagram::margin + bi.diagramHeight(),
@@ -1391,7 +1308,7 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 		bi.titleBlockHeight()
 	);
 	
-	// recupere le rectangle correspondant aux en-tetes des colonnes
+	// Get the rectangle of the header column
 	QRectF columns_rect(
 		Diagram::margin,
 		Diagram::margin,
@@ -1399,7 +1316,7 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 		bi.columnsHeaderHeight()
 	);
 	
-	// recupere le rectangle correspondant aux en-tetes des lignes
+	// Get the rectangle of the header row
 	QRectF rows_rect(
 		Diagram::margin,
 		Diagram::margin,
@@ -1407,22 +1324,15 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 		bi.diagramHeight()
 	);
 	
-	// coordonnees du clic par rapport au schema
+	//Get the click pos on the diagram
 	QPointF click_pos = viewportTransform().inverted().map(e -> pos());
 	
-	// detecte le double-clic sur le cartouche ou les colonnes
-	if (QGraphicsItem *qgi = itemAt(e -> pos())) {
-		if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
-			editConductor(c);
-		} else {
-			QGraphicsView::mouseDoubleClickEvent(e);
-		}
-	} else if (titleblock_rect.contains(click_pos) || columns_rect.contains(click_pos) || rows_rect.contains(click_pos)) {
-		// edite les proprietes du schema
+	if (titleblock_rect.contains(click_pos) || columns_rect.contains(click_pos) || rows_rect.contains(click_pos)) {
+		e->accept();
 		editDiagramProperties();
-	} else {
-		QGraphicsView::mouseDoubleClickEvent(e);
+		return;
 	}
+	QGraphicsView::mouseDoubleClickEvent(e);
 }
 
 /**

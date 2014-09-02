@@ -1497,15 +1497,6 @@ void QETDiagramEditor::editSelectionProperties() {
 }
 
 /**
-	Edite les proprietes du conducteur selectionne
-*/
-void QETDiagramEditor::slot_editConductor() {
-	if (DiagramView *dv = currentDiagram()) {
-		dv -> editConductor();
-	}
-}
-
-/**
 	Reinitialise les conducteurs selectionnes
 */
 void QETDiagramEditor::slot_resetConductors() {

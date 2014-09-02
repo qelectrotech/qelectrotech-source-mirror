@@ -26,6 +26,7 @@
 #include "qetdiagrameditor.h"
 #include "terminal.h"
 #include "conductorautonumerotation.h"
+#include "conductorpropertiesdialog.h"
 #define PR(x) qDebug() << #x " = " << x;
 
 bool Conductor::pen_and_brush_initialized = false;
@@ -554,6 +555,16 @@ bool Conductor::valideXml(QDomElement &e){
 	e.attribute("terminal2").toInt(&conv_ok);
 	if (!conv_ok) return(false);
 	return(true);
+}
+
+/**
+ * @brief Conductor::mouseDoubleClickEvent
+ * Action at double click on this item
+ * @param e
+ */
+void Conductor::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
+	e->accept();
+	editProperty();
 }
 
 /**
@@ -1404,6 +1415,13 @@ QETDiagramEditor* Conductor::diagramEditor() const {
 		w = w -> parentWidget();
 	}
 	return(qobject_cast<QETDiagramEditor *>(w));
+}
+
+/**
+ * @brief Conductor::editProperty
+ */
+void Conductor::editProperty() {
+	ConductorPropertiesDialog::PropertiesDialog(this, diagramEditor());
 }
 
 /**

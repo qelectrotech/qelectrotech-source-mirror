@@ -176,8 +176,6 @@ class DiagramView : public QGraphicsView {
 	void updateWindowTitle();
 	void editSelectionProperties();
 	void editSelectedConductorColor();
-	void editConductor();
-	void editConductor(Conductor *);
 	void editConductorColor(Conductor *);
 	void resetConductors();
 	

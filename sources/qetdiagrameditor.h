@@ -125,7 +125,6 @@ class QETDiagramEditor : public QETMainWindow {
 	void slot_addRow();
 	void slot_removeRow();
 	void editSelectionProperties();
-	void slot_editConductor();
 	void slot_resetConductors();
 	void slot_addText();
 	void slot_addImage();
