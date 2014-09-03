@@ -460,12 +460,12 @@ i conduttori di questo potenziale?</translation>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="14"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
-        <translation type="unfinished">Modifica le proprietà di un conduttore</translation>
+        <translation>Modifica delle proprietà di un conduttore</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="33"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished">Applicare le proprietà a tutti i conduttori di questo potenziale</translation>
+        <translation>Applicare le proprietà a tutti i conduttori connessi a questo potenziale</translation>
     </message>
 </context>
 <context>
@@ -2060,7 +2060,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="130"/>
         <source>Utiliser les gestures du trackpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizzare le &quot;gesture&quot; del trakpad</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="131"/>
@@ -2940,13 +2940,13 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="397"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare la numerazione</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="463"/>
         <location filename="../sources/projectconfigpages.cpp" line="464"/>
         <source>Sans nom</source>
-        <translation type="unfinished"></translation>
+        <translation>Senza nome</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="394"/>
@@ -6152,7 +6152,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/ui/projectpropertiesdialog.cpp" line="31"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished">Proprietà del progetto</translation>
+        <translation>Proprietà del progetto</translation>
     </message>
 </context>
 <context>
@@ -6337,7 +6337,7 @@ Una variabile di numerazione comprende: il tipo, il valore e l&apos;incremento.
 -i numeri tra parentesi indicano che il numero generato avrà, rispettivamente, 1,2 o 3 cifre.
 Se il numero impostato nel campo &quot;Valore&quot; ha meno cifre di quelle previste nel campo &quot;Tipo&quot; verranno aggiunti automaticamente 1 o 2 zeri a sinistra.
 
--Il tipo &quot;Test&quot; rappresenta un testo fisso.
+-Il tipo &quot;Testo&quot; rappresenta un testo fisso.
 Il campo &quot;Incremento&quot; non è utilizzato.
 
 -Il tipo &quot;N° Pagina rappresenta il numero della pagina corrente.
