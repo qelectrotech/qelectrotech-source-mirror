@@ -7,7 +7,7 @@
         <location filename="../sources/aboutqet.cpp" line="30"/>
         <source>À propos de QElectrotech</source>
         <comment>window title</comment>
-        <translation>О программе</translation>
+        <translation>О программе QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="37"/>
@@ -42,19 +42,22 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="72"/>
         <source>Compilation : </source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>сборка?</translatorcomment>
+        <translation type="unfinished">Компиляция : </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="94"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
+        <translatorcomment>электронных?</translatorcomment>
         <translation type="unfinished">QElectroTech - приложение для разработки электрических схем.</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="100"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>контакт всего один...</translatorcomment>
+        <translation type="unfinished">Контакты: &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="113"/>
@@ -67,7 +70,7 @@
         <location filename="../sources/aboutqet.cpp" line="116"/>
         <location filename="../sources/aboutqet.cpp" line="181"/>
         <source>Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>Разработка</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="134"/>
@@ -104,81 +107,89 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на румынский</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="143"/>
         <location filename="../sources/aboutqet.cpp" line="144"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на итальянский</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на арабский</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на хорватский</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="147"/>
         <location filename="../sources/aboutqet.cpp" line="150"/>
         <source>Traduction en catalan</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на каталонский</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="148"/>
         <location filename="../sources/aboutqet.cpp" line="149"/>
         <source>Traduction en grec</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на греческий</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="151"/>
         <source>Traduction en néerlandais</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>голландский/нидерландский/немецкий?</translatorcomment>
+        <translation type="unfinished">Перевод на голландский</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="152"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на фламандский</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="172"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>пакеты/архивы?</translatorcomment>
+        <translation type="unfinished">Пакет для Fedora et Red Hat</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="173"/>
         <source>Paquets Mageia</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>пакеты/архивы?</translatorcomment>
+        <translation type="unfinished">Пакет для Mageia</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="175"/>
         <location filename="../sources/aboutqet.cpp" line="176"/>
         <source>Paquets Gentoo</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>пакеты/архивы?</translatorcomment>
+        <translation type="unfinished">Пакет для Gentoo</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="177"/>
         <source>Paquets OS/2</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>пакеты/архивы?</translatorcomment>
+        <translation type="unfinished">Пакет для OS/2</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="178"/>
         <source>Paquets FreeBSD</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>пакеты/архивы?</translatorcomment>
+        <translation type="unfinished">Пакет для FreeBSD</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="179"/>
         <source>Paquets Archlinux AUR</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>пакеты/архивы?</translatorcomment>
+        <translation type="unfinished">Пакет для Archlinux AUR</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="174"/>
         <source>Paquets Debian</source>
-        <translation>Пакет для Debian</translation>
+        <translatorcomment>пакеты/архивы?</translatorcomment>
+        <translation type="unfinished">Пакет для Debian</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="96"/>
@@ -194,7 +205,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="182"/>
         <source>Documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Документация</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="200"/>
@@ -208,19 +219,21 @@
         <location filename="../sources/richtext/addlinkdialog.ui" line="5"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="104"/>
         <source>Insert Link</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>dont know where used</translatorcomment>
+        <translation type="unfinished">Вставьте ссылку</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="105"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>Заголовок:</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="36"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="106"/>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ссылка:=Link:</translatorcomment>
+        <translation>URL:</translation>
     </message>
 </context>
 <context>
@@ -291,17 +304,19 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Форма</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="23"/>
         <source>Autonumérotation :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Авто-нумерация :</translatorcomment>
+        <translation>Автонумерация :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="46"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>context dependent</translatorcomment>
+        <translation type="unfinished">Редактирование нумерации</translation>
     </message>
 </context>
 <context>
@@ -309,7 +324,7 @@
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Форма</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
@@ -324,13 +339,14 @@
         <extracomment>pixel
 ----------
 pixel</extracomment>
+        <translatorcomment>пиксель/пикс./пикселей doesn`t matter</translatorcomment>
         <translation type="unfinished">пикс</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="77"/>
         <source>x</source>
-        <translation type="unfinished">x</translation>
+        <translation>x</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="53"/>
@@ -351,12 +367,13 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="60"/>
         <source>Couleur de fond :</source>
-        <translation type="unfinished"></translation>
+        <translation>Цвет фона</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="46"/>
         <source>Gris</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>if it is gray color then ok.</translatorcomment>
+        <translation type="unfinished">Серый</translation>
     </message>
 </context>
 <context>
@@ -365,79 +382,85 @@ pixel</extracomment>
         <location filename="../sources/closediagramsdialog.cpp" line="81"/>
         <source>Fermer un projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Закрыть проект</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="87"/>
         <source>Les schémas ci-dessous contiennent des modifications non enregistrées. Faut-il les sauvegarder ?</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Схемы-&gt;Диаграммы?</translatorcomment>
+        <translation>Схемы перечисленные ниже содержат несохранённые данные. Хотите их сохранить?</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="96"/>
         <source>Voulez-vous enregistrer le projet ?</source>
         <comment>informative label</comment>
-        <translation type="unfinished">Вы хотите сохранить проект?</translation>
+        <translation>Вы хотите сохранить этот проект?</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="100"/>
         <source>État</source>
         <comment>column header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Состояние</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="101"/>
         <source>Schéma</source>
         <comment>column header</comment>
-        <translation type="unfinished">Схема</translation>
+        <translation>Схема</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="104"/>
         <source>Action</source>
         <comment>column header</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>content dependent</translatorcomment>
+        <translation type="unfinished">Действие</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="107"/>
         <source>Cocher ou décocher toutes les cases à cocher</source>
         <comment>checbox tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Поставить или снять все галочки/флажки/чекбоксы?</translatorcomment>
+        <translation type="unfinished">Поставить или снять все галочки</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="181"/>
         <source>Afficher ce schéma</source>
         <comment>button tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Показать схему</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="220"/>
         <source>Schéma sans titre</source>
         <comment>fallback diagram title</comment>
-        <translation type="unfinished">Безымянная схема</translation>
+        <translation>Безымянная схема</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="229"/>
         <source>Modifié</source>
         <comment>diagram status</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>context dependent</translatorcomment>
+        <translation type="unfinished">Изменено</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="231"/>
         <source>Ajouté, non modifié</source>
         <comment>diagram status</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>content dependent</translatorcomment>
+        <translation type="unfinished">Добавлено, не изменено</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="244"/>
         <source>Enregistrer</source>
         <comment>diagram action</comment>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="246"/>
         <source>Conserver</source>
         <comment>diagram action</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>хранить/сохранять? context dependent</translatorcomment>
+        <translation type="unfinished">Держать</translation>
     </message>
 </context>
 <context>
@@ -445,13 +468,15 @@ pixel</extracomment>
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1289"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>context dependent</translatorcomment>
+        <translation type="unfinished">Текст проводника</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1290"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Вы хотите присвоить новый текст 
+всем проводникам этого потенциала?</translation>
     </message>
 </context>
 <context>
@@ -474,12 +499,12 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="104"/>
         <source>Vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Вертикальный</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="114"/>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Горизонтальный</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="129"/>
@@ -490,7 +515,8 @@ pixel</extracomment>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="17"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>dont know what is this</translatorcomment>
+        <translation type="unfinished">Защитная заземлённая нейтраль</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="189"/>
@@ -501,7 +527,7 @@ pixel</extracomment>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="131"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Сплошная линия</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="132"/>
@@ -513,7 +539,7 @@ pixel</extracomment>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="133"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Точки и тире</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="220"/>
@@ -523,42 +549,48 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="178"/>
         <source>neutre</source>
-        <translation>нейтраль</translation>
+        <translatorcomment>нейтраль?</translatorcomment>
+        <translation type="unfinished">нейтральный</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>context dependent</translatorcomment>
+        <translation type="unfinished">Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="60"/>
         <source>Texte par defaut :</source>
-        <translation type="unfinished"></translation>
+        <translation>Текст по-умолчанию :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="92"/>
         <source>Rotation du texte de conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>context dependent</translatorcomment>
+        <translation type="unfinished">Угол надписи проводника :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>dont know what is this</translatorcomment>
+        <translation type="unfinished">Защитная заземлённая нейтраль</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="213"/>
         <source>PEN</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>?</translatorcomment>
+        <translation type="unfinished">PEN</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="231"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>context dependent</translatorcomment>
+        <translation type="unfinished">Текстовая надпись</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="256"/>
@@ -573,7 +605,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="279"/>
         <source>Style :</source>
-        <translation type="unfinished"></translation>
+        <translation>Стиль :</translation>
     </message>
 </context>
 <context>
@@ -581,19 +613,20 @@ pixel</extracomment>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="142"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation type="unfinished"></translation>
+        <translation>Имена могут содержать только строчные буквы, цифры и точки.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="176"/>
         <source>Nom</source>
         <comment>table header</comment>
+        <translatorcomment>Название? context dependent</translatorcomment>
         <translation type="unfinished">Имя</translation>
     </message>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="176"/>
         <source>Valeur</source>
         <comment>table header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Значение</translation>
     </message>
 </context>
 <context>
@@ -601,7 +634,8 @@ pixel</extracomment>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="153"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Название? context dependent</translatorcomment>
+        <translation>Заголовок</translation>
     </message>
 </context>
 <context>
@@ -610,23 +644,24 @@ pixel</extracomment>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="109"/>
         <source>Éditer les propriétés d&apos;une image</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Свойства изображения</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="114"/>
         <source>Dimension de l&apos;image</source>
         <comment>image size</comment>
-        <translation type="unfinished"></translation>
+        <translation>Размер изображения</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="136"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>context dependent</translatorcomment>
+        <translation type="unfinished">Закрепить положение</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="151"/>
         <source>une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Изображение</translation>
     </message>
 </context>
 <context>
@@ -696,7 +731,7 @@ pixel</extracomment>
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="46"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation type="unfinished">Свойства схемы</translation>
+        <translation>Свойства схемы</translation>
     </message>
 </context>
 <context>
@@ -711,7 +746,7 @@ pixel</extracomment>
         <location filename="../sources/diagramview.cpp" line="929"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
-        <translation>Редактирование своств проводника</translation>
+        <translation type="unfinished">Редактирование свойств проводника</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="874"/>
@@ -722,19 +757,20 @@ pixel</extracomment>
         <location filename="../sources/diagramview.cpp" line="58"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Это поле для построения схем, куда вы добавляете детали и соединения между их выводами. Вы так же можете добавить произвольные надписи.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="200"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation>Вырвнять выделенный текст</translation>
+        <translatorcomment>Choose orientation for selected texts=Выбрать направления для выделенного текста</translatorcomment>
+        <translation type="unfinished">Вырвнять выделенный текст</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="619"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
-        <translation type="unfinished"></translation>
+        <translation>Безымянный</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="876"/>
@@ -745,32 +781,32 @@ pixel</extracomment>
     <message>
         <location filename="../sources/diagramview.cpp" line="932"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Применить свойства ко всем проводникам этого потенциала</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="994"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Выберите новый цвет для этого проводника</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1156"/>
         <source>Selectionner une image...</source>
-        <translation type="unfinished"></translation>
+        <translation>Выберите изображение...</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1156"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Файлы Изображений (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1164"/>
         <source>Erreur</source>
-        <translation type="unfinished">Ошибка</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1164"/>
         <source>Impossible de charger l&apos;image...Désoler :(</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Невозможно загрузить изображение... Извините :(</translation>
     </message>
 </context>
 <context>
@@ -786,83 +822,87 @@ pixel</extracomment>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Аннотация схем</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="42"/>
         <source>Annotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Аннотация</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="50"/>
         <source>Sélection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выбор</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="58"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Проводники</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="75"/>
         <source>Composants</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Компоненты</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Нумерация выбранной схемы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
         <source>Annotation (alpha)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Аннотация (альфа)</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Убрана нумерация выбраной схемы&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
         <source>Supprimer l&apos;annotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Удаление аннотаций</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="147"/>
         <source>Fermer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Закрыть</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Удаление аннотаций проводников</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="68"/>
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вы действительно хотите удалить аннотацию у следующих проводников:
+
+%1 ?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="101"/>
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вы действительно хотите добавить аннотацию к следующим проводникам:
+
+%1 ?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
         <source>Annotation des conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Аннотация проводников</translation>
     </message>
 </context>
 <context>
@@ -870,17 +910,18 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
         <source>Merci de patienter</source>
-        <translation type="unfinished"></translation>
+        <translation>Спасибо за Ваше терпение</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Заголовок/Имя/Название context dependent</translatorcomment>
+        <translation type="unfinished">Заголовок</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ТекстоваяНадпись</translation>
     </message>
 </context>
 <context>
@@ -909,7 +950,7 @@ pixel</extracomment>
         <source>Êtes-vous sûr de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation>Вы уверены, что хотите удалить элемент?
+        <translation>Вы уверены, что хотите удалить этот элемент?
 </translation>
     </message>
     <message>
@@ -1061,17 +1102,19 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>context dependent</translatorcomment>
+        <translation type="unfinished">Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="41"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ТекстоваяНадпись</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="48"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>context dependent</translatorcomment>
+        <translation type="unfinished">Видимый</translation>
     </message>
 </context>
 <context>
@@ -1079,7 +1122,8 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>context dependent</translatorcomment>
+        <translation type="unfinished">Форма</translation>
     </message>
 </context>
 <context>
@@ -1087,113 +1131,113 @@ pixel</extracomment>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="14"/>
         <source>Propriété de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Свойства элемента</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="25"/>
         <source>Type de base :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Основной тип :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="37"/>
         <source>Élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Дочерний элемент</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="52"/>
         <source>Nombre de contact représenté</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить представленное число</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="59"/>
         <source>Type de contact</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Тип переключателя</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="66"/>
         <source>État du contact</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить состояние</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="84"/>
         <source>Élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Главный элемент</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="90"/>
         <source>Type concret</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Конкретный тип</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="84"/>
         <source>Simple</source>
-        <translation type="unfinished">Простой</translation>
+        <translation>Простой</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="74"/>
         <source>Maître</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Главный</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="75"/>
         <source>Esclave</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Дочерний</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="76"/>
         <source>Renvoi de folio suivant</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ссылка на следующий лист</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="77"/>
         <source>Renvoi de folio précédent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ссылка на предыдущий лист</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
         <source>Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Терминальный блок</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
         <source>Normalement ouvert</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Переключатель нормально открыт</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="82"/>
         <source>Normalement fermé</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Переключатель нормально закрыт</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="83"/>
         <source>Inverseur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Переключить</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="85"/>
         <source>Puissance</source>
-        <translation type="unfinished"></translation>
+        <translation>Переключатель</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="86"/>
         <source>Temporisé travail</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Включение с задержкой</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="87"/>
         <source>Temporisé repos</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выключение с задержкой</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="90"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Катушка</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="91"/>
         <source>Organe de protection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Орган защиты</translation>
     </message>
 </context>
 <context>
@@ -1273,22 +1317,22 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/elementselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="119"/>
         <source>Sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Безымянный</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="120"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Лист  %1 (%2), позиция %3.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="130"/>
         <source>Voir l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Смотреть элемент</translation>
     </message>
 </context>
 <context>
@@ -1297,7 +1341,7 @@ pixel</extracomment>
         <location filename="../sources/qetgraphicsitem/elementtextitem.cpp" line="52"/>
         <source>Maintenir ctrl pour déplacer</source>
         <comment>tool tip for element text item</comment>
-        <translation type="unfinished"></translation>
+        <translation>Удерживайте CTRL для перемещения</translation>
     </message>
 </context>
 <context>
@@ -1517,96 +1561,96 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanel.cpp" line="441"/>
         <source>Cartouches embarqués</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Включённые надписи</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="442"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Кликните дважды чтобы свернуть или развенуть включённую коллекцию надписей</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="475"/>
         <source>Collection embarquée</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Включенная коллекция</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="476"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Кликните дважды чтобы свернуть или развенуть включённую коллекцию элементов</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="418"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Кликните дважды чтобы свернуть или развенуть проект</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="451"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Перетащите эту надпись на схему чтобы применить её.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="463"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Кликните дважды чтобы свернуть или развенуть категорию элементов</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="484"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Перетащите этот элемент на схему чтобы вставить элемент &quot;%1&quot; в неё, кликните дважды для редактирования</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="576"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Кликните дважды чтобы свернуть или развенуть коллекцию надписей от QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="577"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Эта колекция надписей предоставлена вместе с QElectroTech. Она установлена как системный компонент и вы не можете изменить её.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="585"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Кликните дважды чтобы свернуть или развенуть коллекцию элементов от QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="586"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Эта колекция элементов предоставлена вместе с QElectroTech. Она установлена как системный компонент и вы не можете изменить её.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="594"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Кликните дважды чтобы свернуть или развенуть вашу собственную коллекцию надписей</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="595"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Это ваша коллекция надписей. Используйте её для создания, хранения и редактирования ваших собственных надписей.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="603"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Кликните дважды чтобы свернуть или развенуть вашу собственную коллекцию элементов</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="604"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Это ваша коллекция элементов. Используйте её для создания, хранения и редактирования ваших собственных элементов.</translation>
     </message>
 </context>
 <context>
@@ -1614,12 +1658,13 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>какую?</translatorcomment>
+        <translation type="unfinished">Открыть директорию</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Copier le chemin</source>
-        <translation type="unfinished"></translation>
+        <translation>Копировать полный путь в буфер обмена</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="58"/>
@@ -1664,12 +1709,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Ouvrir un fichier élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открыть файл элемента</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Basculer vers ce projet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Активировать этот проект</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
@@ -1709,17 +1754,17 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Nouveau modèle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Новый шаблон</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Éditer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать этот шаблон</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Supprimer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Удалить этот шаблон</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
@@ -1761,13 +1806,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanelwidget.cpp" line="643"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Чтение...</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="666"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
-        <translation type="unfinished"></translation>
+        <translation>Загрузка: %p%</translation>
     </message>
 </context>
 <context>
@@ -1868,23 +1913,24 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="433"/>
         <source>Auteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Автор</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="434"/>
         <location filename="../sources/exportdialog.cpp" line="706"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Имя/Название/Заглавие</translatorcomment>
+        <translation type="unfinished">Название</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="435"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Лист</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="436"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Дата</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="770"/>
@@ -1980,7 +2026,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="146"/>
         <source>DXF (*.dxf)</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF (*.dxf)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
@@ -2070,22 +2116,22 @@ Les changements seront définitifs.</source>
         <location filename="../sources/configpages.cpp" line="133"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выделять недавно добавленные элементы в панели</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="135"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Каждый элемент содержит информацию о его авторах, его лицензии, или любую другую информацию, которую вы сочтёте полезной. Вы можете установить значение по умолчанию этого поля для вновь создаваемых элементов:</translation>
+        <translation type="unfinished">Элемент может содержать информацию о его авторах, его лицензии, или любую другую информацию, которую вы сочтёте полезной. Вы можете установить значение по умолчанию этого поля для вновь создаваемых элементов:</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="174"/>
         <source>Langue</source>
-        <translation type="unfinished">Язык</translation>
+        <translation>Язык</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="177"/>
         <source>La nouvelle langue sera pris en compte au prochain lancement de QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Новый язык будет применён при следующем запуске QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="235"/>
@@ -2096,87 +2142,89 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="243"/>
         <source>Système</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Система?</translatorcomment>
+        <translation type="unfinished">Системный</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="247"/>
         <source>Arabe</source>
-        <translation type="unfinished"></translation>
+        <translation>Арабский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="248"/>
         <source>Catalan</source>
-        <translation type="unfinished"></translation>
+        <translation>Каталонский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="249"/>
         <source>Tchèque</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Чешский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="250"/>
         <source>Allemand</source>
-        <translation type="unfinished"></translation>
+        <translation>Немецкий</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="251"/>
         <source>Grec</source>
-        <translation type="unfinished"></translation>
+        <translation>Греческий</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="252"/>
         <source>Anglais</source>
-        <translation type="unfinished"></translation>
+        <translation>Английский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
         <source>Espagnol</source>
-        <translation type="unfinished"></translation>
+        <translation>Испанский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="254"/>
         <source>Français</source>
-        <translation type="unfinished"></translation>
+        <translation>Французский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="255"/>
         <source>Croate</source>
-        <translation type="unfinished"></translation>
+        <translation>Хорватский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="256"/>
         <source>Italien</source>
-        <translation type="unfinished"></translation>
+        <translation>Итальянский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="257"/>
         <source>Polonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Польский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="258"/>
         <source>Portugais</source>
-        <translation type="unfinished"></translation>
+        <translation>Португальский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="259"/>
         <source>Roumains</source>
-        <translation type="unfinished"></translation>
+        <translation>Румынский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="260"/>
         <source>Russe</source>
-        <translation type="unfinished"></translation>
+        <translation>Русский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="261"/>
         <source>Slovène</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Словенский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="262"/>
         <source>Pays-Bas</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Немецкий/Нидерландский</translatorcomment>
+        <translation type="unfinished">Голландский</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="263"/>
@@ -2196,19 +2244,19 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="242"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Это проект QElectroTech project, т.е. файл, содержащий несколько схем и листов. Он так же содержит шаблоны элементов и надписей, использованные в этих схемах/листах.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="304"/>
         <source>Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Это коллекция, включенная в файл проекта. Она содержит элементы, использованные в схемах родительского объекта.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="309"/>
         <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Эта категория элементов автоматически интегрирует в проект каждый элемент, использованный в схеме этого проекта.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="368"/>
@@ -2220,41 +2268,42 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="375"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="454"/>
         <source>Modèles de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Шаблоны заголовков</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="544"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Шаблон &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="545"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Это шаблон заголовка, кторый может быть применён к схеме.</translatorcomment>
+        <translation type="unfinished">Это надпись, которая может быть добавлена в схему.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="730"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Это - категория элементов - простой контейнер для организации коллекции элементов</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="884"/>
         <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Это элемент, который может быть добавлен в схему.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1168"/>
         <source>%1 [non utilisé dans le projet]</source>
-        <translation type="unfinished">%1 [не используется в проекте]</translation>
+        <translation>%1 [не используется в проекте]</translation>
     </message>
 </context>
 <context>
@@ -2309,13 +2358,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="45"/>
         <source>Impossible d&apos;accéder à la catégorie parente</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Невозможно получить родительскую категорию</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
         <source>Impossible d&apos;obtenir la description XML de ce modèle</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Невозможно получить XML-описание этого шаблона</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="86"/>
@@ -2326,37 +2375,40 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??</translatorcomment>
+        <translation type="unfinished">Добавление шаблона заголовка</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Шаблон уже был добавлен в проект. Однако версия, которую вы пытаетесь применить отличается. Что вы хотите сделать?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
         <source>Utiliser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Использовать уже добавленный шаблон</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="173"/>
         <source>Intégrer le modèle déposé</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??</translatorcomment>
+        <translation type="unfinished">Добавление перетаскиваемого шаблона</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="183"/>
         <source>Écraser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Удалить уже добавленный шаблон</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="193"/>
         <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??</translatorcomment>
+        <translation type="unfinished">Использовать совместно два шаблона</translation>
     </message>
 </context>
 <context>
@@ -2560,47 +2612,51 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
         <source>Rechercher dans le folio :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Найти на листе :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
         <source>Voir cet élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Просмотреть этот элемент</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
         <source>Voir l&apos;élément lié</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Просмотреть связанный элемент</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="81"/>
         <source>Tous</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??</translatorcomment>
+        <translation type="unfinished">Все</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="86"/>
         <source>Sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Безымянный</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="120"/>
         <source>Cet élément est déjà lié.</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>соединён??</translatorcomment>
+        <translation type="unfinished">Элемент уже привязан.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="121"/>
         <source>Délier</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??</translatorcomment>
+        <translation type="unfinished">Отцепить</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="137"/>
         <source>Rechercher</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Найти??</translatorcomment>
+        <translation type="unfinished">Поиск</translation>
     </message>
 </context>
 <context>
@@ -2608,39 +2664,41 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Форма</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
         <source>Délier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Развязать??</translatorcomment>
+        <translation type="unfinished">Отвязать выбранный элемент</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
         <source>Lier l&apos;élément séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??</translatorcomment>
+        <translation type="unfinished">Привязать выбранный элемент</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
         <source>Éléments disponibles</source>
-        <translation type="unfinished"></translation>
+        <translation>Доступные элементы</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
         <source>Éléments liés</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Связанные элементы</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="118"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="132"/>
         <source>Sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Безымянный</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="119"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="133"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Лист  %1 (%2), позиция %3.</translation>
     </message>
 </context>
 <context>
@@ -2653,13 +2711,14 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="34"/>
         <source>Texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Текст</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="37"/>
         <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>???</translatorcomment>
+        <translation type="unfinished">Этот список позволяет Вам вписать короткий текст, который может быть переведён на другие языки. Для этого он ассоциирует коды языков ISO 639-1 (например &quot;en&quot; для Английского) и переводы введенного текста с этими языками.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
@@ -2670,7 +2729,8 @@ Les changements seront définitifs.</source>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
         <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??</translatorcomment>
+        <translation type="unfinished">Эта кнопка добавляет ассоциацию с языком/переводом к вышестоящему списку.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="88"/>
@@ -2695,17 +2755,18 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="51"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Проводник</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="55"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>???</translatorcomment>
+        <translation type="unfinished">Отчёт</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="59"/>
         <source>Référence croisées</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ссылка</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="105"/>
@@ -2731,7 +2792,8 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="97"/>
         <source>Étape 1/3 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Шаг 1 из 5: Родительская категория {1/4 ?} {1/3 ?}</translation>
+        <translatorcomment>Шаг 1 из 5: Родительская категория {1/4 ?} {1/3 ?}</translatorcomment>
+        <translation type="unfinished">Шаг 1 из 3: Родительская категория</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="98"/>
@@ -2743,7 +2805,8 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="114"/>
         <source>Étape 2/3 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Шаг 2 из 5: Имя файла {2/4 ?} {2/3 ?}</translation>
+        <translatorcomment>Шаг 2 из 5: Имя файла {2/4 ?} {2/3 ?}</translatorcomment>
+        <translation type="unfinished">Шаг 2 из 3: Имя файла</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="115"/>
@@ -2765,7 +2828,8 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="137"/>
         <source>Étape 3/3 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Шаг 3 из 5: Имя элемента {3/4 ?} {3/3 ?}</translation>
+        <translatorcomment>Шаг 3 из 5: Имя элемента {3/4 ?} {3/3 ?}</translatorcomment>
+        <translation type="unfinished">Шаг 3 из 3: Имя элемента</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="138"/>
@@ -2811,32 +2875,33 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="33"/>
         <source>Chiffre 1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Числовой 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="38"/>
         <source>Chiffre 01</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Числовой 01</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="43"/>
         <source>Chiffre 001</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Числовой 001</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="48"/>
         <source>Texte</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Текст</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="53"/>
         <source>N° folio</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>№ схемы?</translatorcomment>
+        <translation type="unfinished">№ листа</translation>
     </message>
 </context>
 <context>
@@ -2884,23 +2949,26 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.ui" line="14"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??</translatorcomment>
+        <translation type="unfinished">Тексты потенциалов</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/potentialtextsdialog.ui" line="22"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Тексты электрических потенциалов не совпадают.
+Применить текст ко всем проводникам?</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source>  : est présent </source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??????????</translatorcomment>
+        <translation type="unfinished">: это</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source> fois.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">верно.</translation>
     </message>
 </context>
 <context>
@@ -2917,30 +2985,31 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="368"/>
         <source>Auto numerotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Авто-нумерация</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="390"/>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Доступные нумерации :</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="392"/>
         <location filename="../sources/projectconfigpages.cpp" line="447"/>
         <location filename="../sources/projectconfigpages.cpp" line="464"/>
         <source>Nouveau</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??</translatorcomment>
+        <translation type="unfinished">Новая</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="394"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Назовите новую нумерацию</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="466"/>
         <source>Nouvel numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Новая нумерация</translation>
     </message>
 </context>
 <context>
@@ -2955,19 +3024,21 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/projectconfigpages.cpp" line="161"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Заголовок проекта:</translatorcomment>
+        <translation type="unfinished">Название проекта:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="163"/>
         <source>Ce titre sera disponible pour tous les schémas de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>???</translatorcomment>
+        <translation type="unfinished">Этот заголовок доступен для всех дочерних диаграмм как %projecttitle.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="165"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ниже вы можете определить свойства, которые будут доступны всем дочерним схемам. (обычно для использования в штампах).</translation>
     </message>
 </context>
 <context>
@@ -2992,17 +3063,18 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="313"/>
         <source>Conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Проводник</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="314"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>?</translatorcomment>
+        <translation type="unfinished">Отчёт</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="315"/>
         <source>Référence croisées</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ссылка</translation>
     </message>
 </context>
 <context>
@@ -3011,7 +3083,8 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/projectview.cpp" line="246"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Этот проект был изменён.
+Хотите сохранить изменения?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="379"/>
@@ -3052,7 +3125,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="663"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Удалить неиспользуемые шаблоны в проекте</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="664"/>
@@ -3086,7 +3159,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/projectview.cpp" line="294"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">нет активных проектов</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="713"/>
@@ -3112,13 +3185,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="106"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Загрузка...Инициализация кэша коллекций элементов</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="114"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Загрузка...Чтение коллекций элементов</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="121"/>
@@ -3136,54 +3209,56 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="179"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR</comment>
-        <translation type="unfinished"></translation>
+        <translation>LTR</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="289"/>
         <source>Collection QET</source>
-        <translation type="unfinished">Коллекция QET</translation>
+        <translation>Коллекция QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="303"/>
         <source>Collection utilisateur</source>
-        <translation type="unfinished">Коллекция пользователя</translation>
+        <translation>Коллекция пользователя</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="362"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Метка</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="363"/>
         <source>Commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Аннотация</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="364"/>
         <source>Fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Производитель</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="365"/>
         <source>Référence fabriquant</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ссылка производителя</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Référence fabriquant machine</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??</translatorcomment>
+        <translation type="unfinished">Ссылка производителя оборудования</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="377"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>?</translatorcomment>
+        <translation>Штампы.QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="390"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>Штампы пользователя</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="812"/>
@@ -3219,7 +3294,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="1206"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation type="unfinished">Настройка QElectroTech</translation>
+        <translation>Настройка QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1331"/>
@@ -3278,13 +3353,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="1413"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Скрыть редактор штампов</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1414"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Показать редактор штампов</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1415"/>
@@ -3331,19 +3406,20 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="1524"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>??</translatorcomment>
+        <translation type="unfinished">Редактирование штампов</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1589"/>
         <source>Usage : </source>
-        <translation>Usage: </translation>
+        <translation>Использование: </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1589"/>
         <source> [options] [fichier]...
 
 </source>
-        <translation> [options] [file]...
+        <translation> [настройки] [файл]...
 
 </translation>
     </message>
@@ -3356,39 +3432,41 @@ Options disponibles :
   -v, --version                 Afficher la version
   --license                     Afficher la licence
 </source>
-        <translation>QElectroTech, an application to design electric diagrams.
+        <translation>QElectroTech, программа для черчения электрических схем.
 
-Available options: 
-  --help                        Display this help
-  -v, --version                 Display the version
-  --license                     Display the license
+Доступные опции: 
+  --help                        Показать эту справку
+  -v, --version                 Показать версию
+  --license                     Показать лицензию
 </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1596"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
-        <translation>  --common-elements-dir=DIR     Define the elements collection directory
+        <translation>  --common-elements-dir=DIR     Задаёт директорию с коллекцией элементов
 </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1599"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --common-tbt-dir=DIR          Задаёт директорию с коллекцией штампов
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1602"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
-        <translation>  --config-dir=DIR              Define configuration directory
+        <translation>  --config-dir=DIR              Задаёт директирию конфигураций
 </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1604"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
-        <translation>  --lang-dir=DIR                Define the language files directory</translation>
+        <translation>  --lang-dir=DIR                Задаёт директорию с языковыми файлами
+</translation>
     </message>
 </context>
 <context>
@@ -3426,13 +3504,13 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="107"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Кликните, чтобы откатить изменения в схеме</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="108"/>
         <source>Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Эта панель показывает список изменений, произведённых над схемой. Клик по изменению вернёт схему в состояние, которое было на тот момент.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="223"/>
@@ -3557,22 +3635,22 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="346"/>
         <source>Ajouter une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить изображение</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="347"/>
         <source>Ajouter une liaison mecanique</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить механическое соединение</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="348"/>
         <source>Ajouter une zone rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить прямоугольную область</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
         <source>Ajouter une zone ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить область в форме эллипса</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="251"/>
@@ -3612,12 +3690,12 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="211"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить заключение</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Exporter une nomenclature (beta)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Экспортировать номенклатуру</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
@@ -3632,7 +3710,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
         <source>Zoom sur le contenu</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Увеличить выбранное</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
@@ -3647,12 +3725,12 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
         <source>en utilisant des onglets</source>
-        <translation>использовать вкладки</translation>
+        <translation>Использовать вкладки</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="214"/>
         <source>en utilisant des fenêtres</source>
-        <translation>использовать окна</translation>
+        <translation>Использовать окна</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="215"/>
@@ -3737,7 +3815,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
         <source>Ctrl+8</source>
-        <translation type="unfinished">Ctrl+8</translation>
+        <translation>Ctrl+8</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="327"/>
@@ -3771,12 +3849,12 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Найти выбранный элемент в панели</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="332"/>
         <source>Adapte le zoom de façon à afficher tout le contenu indépendamment du cadre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Установить увеличение так, чтобы всё содержимое отображалось независимо от рамки</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="779"/>
@@ -3788,7 +3866,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="781"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Похоже, что файл %1, который вы пытаетесь открыть не существует.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="808"/>
@@ -3898,12 +3976,12 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>&amp;Enregistrer le schéma courant</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сохранить &amp;текущую схему</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="270"/>
         <source>Éditer l&apos;item sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать выбранный элемент</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="284"/>
@@ -3914,19 +3992,19 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="238"/>
         <source>Enregistre le projet courant et tous ses schémas</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить текущий проект вместе с его дочерними схемами</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="239"/>
         <source>Enregistre le project courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить текущий проект используя другое имя файла</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="240"/>
         <source>Enregistre le schéma courant du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить текущую схему текущего проекта</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="287"/>
@@ -3938,7 +4016,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="288"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Повернуть выбранный текст на определённый угол</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="386"/>
@@ -3997,7 +4075,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
         <source>Ajouter une zone polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить область в виде многоугольника</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="388"/>
@@ -4075,7 +4153,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="478"/>
         <source>&amp;Récemment ouverts</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Недавно открытое</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="516"/>
@@ -4125,7 +4203,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="574"/>
         <source>Ajouter</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавление</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="692"/>
@@ -4163,25 +4241,25 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="1222"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать элемент</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1227"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать текстовое поле</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1232"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать изображение</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1238"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать выбранный объект</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1414"/>
@@ -4589,13 +4667,13 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Нет текстового поля &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>Les éléments maîtres ou esclaves doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Главные или дочерние элементы должны иметь текстовое поле с тегом &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="701"/>
@@ -4605,17 +4683,17 @@ Available options:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="702"/>
         <source>Les reports de folio doivent posséder une seul borne.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Лист отчёта должен иметь один терминал.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="708"/>
         <source>Absence de champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Нет текстового поля</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="709"/>
         <source>Les reports de folio doivent posséder au moins un champ texte éditable.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Лист отчёта должен иметь по крайней мере одно редактируемое текстовое поле.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="717"/>
@@ -4709,14 +4787,14 @@ Available options:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="980"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Похоже, что файл %1, который вы пытаетесь открыть не существует.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1045"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1069"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1104"/>
         <source>Echec de l&apos;enregistrement</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Регистрация не удалась</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1045"/>
@@ -4724,7 +4802,8 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1104"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Запись не удалась,
+условия не верные</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1220"/>
@@ -4752,7 +4831,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Éditer les propriétées de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать свойства элемента</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="357"/>
@@ -4777,7 +4856,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="733"/>
         <source>Avertissements</source>
-        <translation type="unfinished">Предупреждение</translation>
+        <translation type="unfinished">Предупреждения</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="998"/>
@@ -4849,7 +4928,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetmainwindow.cpp" line="49"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Позволяет завать различные параметры QElectroTech</translation>
+        <translation type="unfinished">Позволяет задавать различные параметры QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="58"/>
@@ -4910,7 +4989,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="131"/>
         <source>Ctrl+Shift+F</source>
-        <translation type="unfinished">Ctrl+Shift+F</translation>
+        <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="143"/>
@@ -5104,7 +5183,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetproject.cpp" line="307"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 [изменён]</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="705"/>
@@ -5114,19 +5193,19 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="716"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Не удалось получить доступ к элементу для интеграции</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="920"/>
         <source>Liste des Schémas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Список схем</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1035"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Похоже, что этот документ был сохранён более новой версией QElectroTech. Открытие может завершиться неудачно. Что вы хотите сделать?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="733"/>
@@ -5137,7 +5216,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetproject.cpp" line="807"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Произошла ошибка во время интеграции шаблона.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1034"/>
@@ -5148,7 +5227,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="1089"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;b&gt; Открытие проекта ... &lt;/ b&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1525"/>
@@ -5162,31 +5241,31 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="110"/>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сохранить текущий шаблон?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="112"/>
         <source>Voulez-vous enregistrer le modèle %1 ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Хотите сохранить шаблон %1?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="162"/>
         <source>nouveau_modele</source>
         <comment>template name suggestion when duplicating the default one</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">новый_шаблон</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="170"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Дублировать шаблон штампа</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="171"/>
         <source>Pour dupliquer ce modèle, entrez le nom voulu pour sa copie</source>
         <comment>input dialog text</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Для того, чтобы дублировать этот шаблон, пожалуйста, введите имя для этой копии</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="328"/>
@@ -5204,7 +5283,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="330"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открыть из файла</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="331"/>
@@ -5222,7 +5301,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="333"/>
         <source>Enregistrer vers un fichier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сохранить в файл</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="334"/>
@@ -5234,7 +5313,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="340"/>
         <source>Gérer les logos</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Управление логотипом</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
@@ -5264,19 +5343,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="365"/>
         <source>Ctrl+T</source>
         <comment>shortcut to manage embedded logos</comment>
-        <translation type="unfinished">Ctrl+T</translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="367"/>
         <source>Ctrl+J</source>
         <comment>shortcut to merge cells</comment>
-        <translation type="unfinished">Ctrl+J</translation>
+        <translation>Ctrl+J</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="368"/>
         <source>Ctrl+K</source>
         <comment>shortcut to split merged cell</comment>
-        <translation type="unfinished">Ctrl+K</translation>
+        <translation>Ctrl+K</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="821"/>
@@ -5288,13 +5367,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="823"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Шаблоны штампов (*%1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="348"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Объединить ячейки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="337"/>
@@ -5318,91 +5397,91 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
         <source>Éditer les informations complémentaires</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать дополнительную информацию</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="346"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить ст&amp;року</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="347"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить &amp;столбец</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Раз&amp;делить ячейки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="356"/>
         <source>Ctrl+Shift+O</source>
         <comment>shortcut to open a template from a file</comment>
-        <translation type="unfinished">Ctrl+Shift+O</translation>
+        <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="358"/>
         <source>Ctrl+Shift+S</source>
         <comment>shortcut to save a template to a file</comment>
-        <translation type="unfinished">Ctrl+Shift+S</translation>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="359"/>
         <source>Ctrl+Q</source>
         <comment>shortcut to quit</comment>
-        <translation type="unfinished">Ctrl+Q</translation>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="366"/>
         <source>Ctrl+Y</source>
         <comment>shortcut to edit extra information</comment>
-        <translation type="unfinished">Ctrl+Y</translation>
+        <translation>Ctrl+Y</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="371"/>
         <source>Ctrl+9</source>
         <comment>shortcut to enable fit zoom</comment>
-        <translation type="unfinished">Ctrl+9</translation>
+        <translation>Ctrl+9</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="372"/>
         <source>Ctrl+0</source>
         <comment>shortcut to reset zoom</comment>
-        <translation type="unfinished">Ctrl+0</translation>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="400"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;Файл</translation>
+        <translation>&amp;Файл</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="401"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;Правка</translation>
+        <translation>&amp;Правка</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="402"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;Вид</translation>
+        <translation>&amp;Вид</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="441"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Инструменты</translation>
+        <translation>Инструменты</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="449"/>
         <source>Édition</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Правка</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="458"/>
@@ -5420,13 +5499,14 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="478"/>
         <source>Annulations</source>
         <comment>dock title</comment>
+        <translatorcomment>Отменить</translatorcomment>
         <translation type="unfinished">История</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="497"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Свойства ячейки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="565"/>
@@ -5438,31 +5518,32 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="568"/>
         <source>[Lecture seule]</source>
         <comment>window title tag</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">[Только чтение]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="571"/>
         <source>%1 %2</source>
         <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="650"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>QElectroTech - Редактор шаблонов штампов</translatorcomment>
+        <translation type="unfinished">QElectroTech - Редактор штампов</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="665"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="742"/>
         <source>Ouvrir un modèle</source>
         <comment>File &gt; open dialog window title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Открыть шаблон штампа</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="761"/>
@@ -5474,24 +5555,24 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="763"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech шаблоны штампов (*%1);;XML файлы (*.xml);; Все файлы (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="802"/>
         <source>Enregistrer le modèle sous</source>
         <comment>dialog window title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сохранить шаблон как</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="922"/>
         <source>Éditer les informations complémentaires</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить дополнительную информацию</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="926"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вы можете использовать это поле, чтобы указать авторов этого шаблона, его лицензию или любую другую информацию, которую вы считаете полезной.</translation>
     </message>
 </context>
 <context>
@@ -5533,13 +5614,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="114"/>
         <source>Ajouter une image</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Добавить изображение</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="148"/>
         <source>Ajouter une Shape</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить фигуру</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="188"/>
@@ -5551,7 +5632,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="229"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
-        <translation>удалёно: %1</translation>
+        <translation>удалено: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="319"/>
@@ -5571,7 +5652,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="675"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
-        <translation>перемещено: %1</translation>
+        <translation type="unfinished">перемещено: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="696"/>
@@ -5625,54 +5706,54 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1099"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить свойства нескольних проводников</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1215"/>
         <source>Agrandire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Увеличить %1 до %2 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1216"/>
         <source>Réduire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Уменьшить %1 до %2 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1236"/>
         <source>Changer le style d&apos;une shape</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить стиль фигуры</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1278"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Связать два отчёта на листе</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1282"/>
         <source>Editer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать ссылку</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1283"/>
         <location filename="../sources/diagramcommands.cpp" line="1297"/>
         <source>Lier deux Ã©lÃ©ments</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Связать два элемента</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1296"/>
         <source>Editer les référence croisé</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать ссылку</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/diagramcommands.cpp" line="1357"/>
         <location filename="../sources/diagramcommands.cpp" line="1372"/>
         <source>Délier %n élément(s)</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Отцепить %n элемент(ов)</numerusform>
+            <numerusform>Отцепить %n элемента</numerusform>
+            <numerusform>Отцепить %n элементов</numerusform>
         </translation>
     </message>
     <message>
@@ -5756,18 +5837,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="658"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">масштабировать %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="660"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>объектов?</translatorcomment>
+        <translation type="unfinished">масштабировать %1 примитивов</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="676"/>
         <source>Modifier les propriétés</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить свойства</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="51"/>
@@ -5910,9 +5992,9 @@ Que désirez vous faire ?</source>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n изображений</numerusform>
+            <numerusform>%n изображения</numerusform>
+            <numerusform>%n изображений</numerusform>
         </translation>
     </message>
     <message>
@@ -5929,7 +6011,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="613"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно открыть файл %1 для записи, возникла ошибка %2.</translation>
     </message>
     <message>
         <location filename="../sources/terminal.cpp" line="69"/>
@@ -5946,82 +6028,82 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimension.cpp" line="37"/>
         <source>%1px</source>
         <comment>titleblock: absolute width</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1пикс</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimension.cpp" line="39"/>
         <source>%1%</source>
         <comment>titleblock: width relative to total length</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1%</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimension.cpp" line="41"/>
         <source>%1% du restant</source>
         <comment>titleblock: width relative to remaining length</comment>
-        <translation type="unfinished"></translation>
+        <translation>осталось %1%</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="415"/>
         <source>Insertion d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Вставка строки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="417"/>
         <source>Suppression d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Удаление строки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="421"/>
         <source>Insertion d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Вставка столбца</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="423"/>
         <source>Suppression d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Удаление столбца</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="556"/>
         <source>Modification d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактирование строки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="558"/>
         <source>Modification d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактирование столбца</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="623"/>
         <source>Fusion de %1 cellules</source>
         <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Слияние %1 ячеек</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="763"/>
         <source>Séparation d&apos;une cellule en %1</source>
         <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Разъединение ячейки на %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
         <source>modification des informations complémentaires</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">изменить дополнительную информацию</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Вырезать %n ячеек</numerusform>
+            <numerusform>Вырезать %n ячейки</numerusform>
+            <numerusform>Вырезать %n ячеек</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -6029,90 +6111,91 @@ Que désirez vous faire ?</source>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Вставить %n ячеек</numerusform>
+            <numerusform>Вставить %n ячейки</numerusform>
+            <numerusform>Вставить %n ячеек</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="120"/>
         <source>type</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">тип</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="122"/>
         <source>nom</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">имя</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="124"/>
         <source>logo</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">заголовок</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="126"/>
         <source>label</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">метка</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="128"/>
         <source>affichage du label</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">отображение метки</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="130"/>
         <source>valeur affichée</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">отображаемое значение</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="132"/>
         <source>alignement du texte</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">выравнивание текста</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="134"/>
         <source>taille du texte</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">размер шрифта</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="136"/>
         <source>ajustement horizontal</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">горизонтальная регулировка</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="226"/>
         <source>Auteur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Автор</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="227"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Название</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="228"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Страница??</translatorcomment>
+        <translation type="unfinished">Лист</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="229"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Дата</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="305"/>
         <source>Type de trait</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Стиль линии</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="310"/>
@@ -6132,18 +6215,18 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="313"/>
         <source>Traits et points</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Точки и тире</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="314"/>
         <source>Traits points points</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Тире-точка-точка</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="327"/>
         <source>Échelle</source>
         <comment>shape scale</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Масштаб</translation>
     </message>
 </context>
 <context>
@@ -6167,17 +6250,17 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="300"/>
         <source>Éditer les propriétés d&apos;une shape, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменение свойств формы, Zone </translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="322"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Закрепить положение</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="368"/>
         <source>une shape</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">фигура</translation>
     </message>
 </context>
 <context>
@@ -6228,12 +6311,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Метка страницы отчёта</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -6242,7 +6325,11 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вы можете задать определённую метку для отчётов листа.
+Создайте свой текст, используя следующие переменные:
+%f: число листов
+%l: номер строки
+%c: номер столбца</translation>
     </message>
 </context>
 <context>
@@ -6250,53 +6337,53 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Форма</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="44"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Удалить изменяющуюся нумерацию&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="61"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Добавить изменяющуюся нумерацию&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="20"/>
         <source>Définition</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Задание</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="78"/>
         <source>Précédent</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Предыдущий</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="92"/>
         <source>Suivant</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Следующий</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="131"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Тип</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="141"/>
         <source>Valeur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Значение</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="157"/>
         <source>Incrémentation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Инкремент</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="136"/>
         <source>Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Авто-нумерация</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="137"/>
@@ -6315,7 +6402,22 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>OMG</translatorcomment>
+        <translation type="unfinished">Здесь вы можете задать как будут нумероваться новые элементы.
+-Каждый лист имеет свой собственный метод нумерации.
+Набор состоит из минимума переменных.
+-Вы можете добавлять или удалять переменную нумерации нажатием клавиш &quot;+&quot; и &quot;-&quot;
+Переменная-нумерация состоит из: типа, значения и инкремента.
+
+-Типы &quot;Числовой 1&quot;, &quot;Числовой 01&quot; и &quot;Числовой 001&quot; обозначают числовой тип, заданный в поле &quot;Значение&quot;, которое увеличивается для каждого нового элемента на заданное в поле &quot;инкремент&quot; значение.
+-&quot;Числовой 01&quot; и &quot;Числовой 001&quot; показываются на схеме двумя или тремя цифрами.
+Если число, указанное в поле &quot;Значение&quot; имеет меньше цифр, чем в выбранном типе, оно будет дополняться нулями слева.
+
+-Тип &quot;Текст&quot; является текстом.
+Поля инкремента не используются.
+
+Тип  &quot;N°. portfolio&quot; обозначает номер текущего листа.
+Остальные поля не используются.</translation>
     </message>
 </context>
 <context>
@@ -6336,19 +6438,19 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="35"/>
         <source>Vert</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Зелёный</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="36"/>
         <source>Rouge</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Красный</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="37"/>
         <source>Bleu</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Синий</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="41"/>
@@ -6372,7 +6474,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="44"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Точки и тире</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="49"/>
@@ -6396,13 +6498,13 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Forte</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Жирный</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сильный</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
@@ -6426,19 +6528,19 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Vert</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Зелёный</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Красный</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="62"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Синий</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="65"/>
@@ -6453,7 +6555,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="86"/>
         <source>Épaisseur : </source>
-        <translation>Вес : </translation>
+        <translation type="unfinished">Толщина: </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="78"/>
@@ -6463,42 +6565,42 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="72"/>
         <source>Apparence :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Внешний вид:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="75"/>
         <source>Contour :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Контур:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Géométrie :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Геометрия:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="115"/>
         <source>style antialiasing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">стиль сглаживания</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="117"/>
         <source>style couleur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">стиль цвета</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="119"/>
         <source>style ligne</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">стиль линии</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="121"/>
         <source>style epaisseur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">стиль толщины</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="123"/>
         <source>style remplissage</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">стиль заливки</translation>
     </message>
 </context>
 <context>
@@ -6582,7 +6684,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="44"/>
         <source>Angle de rotation : </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Угол поворота: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="52"/>
@@ -6607,7 +6709,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="67"/>
         <source>Couleur : </source>
-        <translation type="unfinished">Цвет : </translation>
+        <translation type="unfinished">Цвет: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="74"/>
@@ -6633,7 +6735,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/texteditor.cpp" line="143"/>
         <source>couleur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">цвет</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="145"/>
@@ -6687,7 +6789,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="68"/>
         <source>tagg :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Тэг: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
@@ -6697,7 +6799,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
         <source>label</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">метка</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
@@ -6727,7 +6829,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="145"/>
         <source>tagg</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">тэг</translation>
     </message>
 </context>
 <context>
@@ -6742,25 +6844,25 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="125"/>
         <source>Absolu</source>
         <comment>a traditional, absolute measure</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Абсолютный</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="126"/>
         <source>Relatif au total</source>
         <comment>a percentage of the total width</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Относительно всего</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="127"/>
         <source>Relatif au restant</source>
         <comment>a percentage of what remains from the total width</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Относительно оставшегося</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="167"/>
         <source>%</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="171"/>
@@ -6774,54 +6876,55 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="217"/>
         <source>Modèle par défaut</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Шаблон по умолчанию</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="235"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать шаблон</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="236"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Дублировать и редактировать этот шаблон</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="241"/>
         <source>Title block templates actions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Действия над шаблонами штампов</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="55"/>
         <source>Modèle :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Шаблон:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
         <source>Informations des cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настройки штампа</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="114"/>
         <source>Folio :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Лист :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="121"/>
         <source>Auteur :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Автор :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>???</translatorcomment>
+        <translation type="unfinished">Доступен как %filename шаблоны для штампов</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="137"/>
@@ -6836,44 +6939,46 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="151"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вписать текущую дату</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="106"/>
         <source>Principales</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Главный</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Доступен как %date шаблоны для штампов</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="178"/>
         <source>Date fixe :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Точная дата :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="187"/>
         <source>Titre :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Название :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="194"/>
         <source>Fichier :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Файл :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="201"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Доступен как %folio шаблоны для штампов</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="211"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
 - %id : numéro du schéma courant dans le projet 
 - %total : nombre total de schémas dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Следующие переменные могут быть использованы в полях листов:
+- %id: текущий номер схемы в проекте.
+- %total число схем в проекте</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -6908,12 +7013,12 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblocktemplate.cpp" line="1364"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
-        <translation type="unfinished"></translation>
+        <translation> %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblocktemplate.cpp" line="1366"/>
         <source> %1</source>
-        <translation type="unfinished"></translation>
+        <translation> %1</translation>
     </message>
 </context>
 <context>
@@ -6921,33 +7026,33 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="49"/>
         <source>Type de cellule :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Тип ячейки:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
         <source>Vide</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Пусто</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="52"/>
         <source>Texte</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Текст</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="63"/>
         <source>Logo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Логотип</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
         <source>Aucun logo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Нет логотипа</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="66"/>
         <source>Gérer les logos</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Управление логотипами</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="56"/>
@@ -6957,18 +7062,18 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Предупреждение: границы пустых ячеек не отображаются на итоговой схеме.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
         <source>Afficher un label :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Отображать метку:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="76"/>
         <source>Editer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактировать</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="73"/>
@@ -6978,7 +7083,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
         <source>Alignement :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выравнивание :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
@@ -6988,17 +7093,17 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
         <source>Gauche</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Лево</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="81"/>
         <source>Centré</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Центр</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="82"/>
         <source>Droite</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Право</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="86"/>
@@ -7008,59 +7113,59 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
         <source>Haut</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Верх</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="89"/>
         <source>Milieu</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Середина</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="90"/>
         <source>Bas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Низ</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="94"/>
         <source>Police :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Шрифт :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
         <source>Ajuster la taille de police si besoin</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настройка размера шрифта, если необходимо</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
         <source>Label de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Метка для ячейки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="258"/>
         <source>Valeur de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Значение для ячейки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Следующие переменные доступны по умолчанию: &lt;ul&gt;&lt;li&gt;%{author}: автор листа&lt;/li&gt;&lt;li&gt;%{date}: дата листа&lt;/li&gt;&lt;li&gt;%{title}: заглавие листа&lt;/li&gt;&lt;li&gt;%{filename}: имя файла проекта&lt;/li&gt;&lt;li&gt;%{folio}: информация к листу&lt;/li&gt;&lt;li&gt;%{folio-id}: индекс листа в проекте&lt;/li&gt;&lt;li&gt;%{folio-total}: количество листов в проекте&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Каждая ячейка шаблона отображает значение, опционально предшествующее метке. Обе могут быть переведены на другие языки.&lt;br/&gt;То, что вы сейчас редактируете - это &lt;em&gt;шаблон&lt;/em&gt; штампа, избегайте введения информации непосредственно: используйте переменные. Например %{variable-name}, которые могут быть в последствии заменены адекватными значениями из листа.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
         <source>Aucun logo</source>
         <comment>text displayed in the combo box when a template has no logo</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Нет логотипа</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="422"/>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактирование ячейки: %1</translation>
     </message>
 </context>
 <context>
@@ -7069,14 +7174,14 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Удалить шаблон штампа?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Вы действительно хотите удалить этот шаблон штампа (%1)?</translation>
     </message>
 </context>
 <context>
@@ -7085,13 +7190,13 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="96"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Исходная коллекция</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="97"/>
         <source>Modèle existant</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Существующий шаблон</translation>
     </message>
 </context>
 <context>
@@ -7100,13 +7205,13 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="79"/>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">или новое имя</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="91"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Новый шаблон (введите его название)</translation>
     </message>
 </context>
 <context>
@@ -7114,32 +7219,32 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="75"/>
         <source>Gestionnaire de logos</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактор логотипов</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="78"/>
         <source>Logos embarqués dans ce modèle :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Логотипы, вслюченные в этот шаблон:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="87"/>
         <source>Ajouter un logo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить логотип</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="88"/>
         <source>Exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Экспортировать этот логотип</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
         <source>Supprimer ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Удалить этот логотип</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="90"/>
         <source>Propriétés</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Настройки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="91"/>
@@ -7156,83 +7261,83 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="94"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="254"/>
         <source>Type :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Тип:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="188"/>
         <source>Logo déjà existant</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Логотип уже существует</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="194"/>
         <source>Remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Заменить</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="214"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Логотип с названием &quot;%1&quot; уже существует. Хотите заменить его или хотите ввести другое имя для нового логотипа?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="250"/>
         <source>Type : %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Тип: %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="267"/>
         <source>Choisir une image / un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить изображение</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="269"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Векторная графика (*.svg);;Растровая графика (*.png *.jpg *.jpeg *.gif *.xpm);;Все файлы (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="276"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="308"/>
         <source>Erreur</source>
-        <translation type="unfinished">Ошибка</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="276"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно открыть указанный файл</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="300"/>
         <source>Choisir un fichier pour exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выберите файл для экспорта этого логотипа</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="302"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Все файлы (*);;Векторная графика (*.svg);;Растровая графика (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="308"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Невозможно экспортировать в указанный файл</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="335"/>
         <source>Renommer un logo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Переименовать логотип</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="340"/>
         <source>Vous devez saisir un nouveau nom.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вы должны ввести новое имя.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="349"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Имя не может быть пустым.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="358"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Введённое имя уже используется для другого логотипа.</translation>
     </message>
 </context>
 <context>
@@ -7241,7 +7346,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="332"/>
         <source>Changer la largeur de la colonne</source>
         <comment>window title when changing a column with</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить ширину столбца</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="333"/>
@@ -7253,7 +7358,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="358"/>
         <source>Changer la hauteur de la ligne</source>
         <comment>window title when changing a row height</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить высоту строки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="359"/>
@@ -7265,88 +7370,88 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="535"/>
         <source>Ajouter une colonne (avant)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить столбец (до)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="536"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить строку (до)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="537"/>
         <source>Ajouter une colonne (après)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить столбец (после)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="538"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Добавить строку (после)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="539"/>
         <source>Modifier les dimensions de cette colonne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить размеры столбца</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="540"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить размеры строки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="541"/>
         <source>Supprimer cette colonne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Удалить этот столбец</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="542"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Удалить эту строку</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="543"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить ширину при просмотре</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="608"/>
         <source>[%1px]</source>
         <comment>content of the extra cell added when the total width of cells is less than the preview width</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">[%1пикс]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="618"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greather than the preview width</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">[%1пикс]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="671"/>
         <source>%1px</source>
         <comment>format displayed in rows helper cells</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1пикс</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="733"/>
         <source>%1px</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1пикс</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="784"/>
         <source>Changer la largeur de l&apos;aperçu</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Изменить ширину</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="785"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ширина:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="933"/>
@@ -7354,20 +7459,22 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Минимальная ширина: %1пикс
+Максимальная ширина: %2пикс</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="940"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Минимальная ширина: %1пикс
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Общая ширина: %1пикс</translation>
     </message>
 </context>
 <context>
@@ -7376,13 +7483,13 @@ Longueur maximale : %2px
         <location filename="../sources/titleblock/templatescollection.cpp" line="120"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Штампы безымянного проекта (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Штампы проекта &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -7390,77 +7497,77 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="22"/>
         <source>Type :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Тип:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
         <source>Représentation:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Представление:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="42"/>
         <source>Positionner :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Позиционирование:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
         <source>Afficher en croix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Показывать крест</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
         <source>Afficher en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Видеть контакты</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="75"/>
         <source>Option d&apos;affichage en croix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Опция показа крестов</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="81"/>
         <source>Afficher les contacts de puissance dans la croix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Показывать силовые контакты на кресте</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>Préfixe des contacts de puissance :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Префикс для силовых контактов :</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="97"/>
         <source>Préfixe des contacts temporisés :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Префикс контактов с задержкой:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="110"/>
         <source>Préfixe des contacts inverseurs :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Префикс для контактов переключения:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Катушка</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
         <source>Organe de protection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Орган защиты</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
         <source>En bas de page</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Внизу</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
         <source>Sous le label de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Под маркой элемента</translation>
     </message>
 </context>
 <context>
@@ -7469,13 +7576,13 @@ Longueur maximale : %2px
         <location filename="../sources/xmlelementscollection.cpp" line="69"/>
         <source>Collection du projet sans titre (id %1)</source>
         <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Коллекция безымянного проекта (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/xmlelementscollection.cpp" line="77"/>
         <source>Collection du projet &quot;%1&quot;</source>
         <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Коллекция проекта &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -7483,37 +7590,39 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Текстовая метка</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="30"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Безымянный проект</translation>
+        <translation>Безымянный проект</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="32"/>
         <source>Projet : </source>
-        <translation type="unfinished"></translation>
+        <translation>Проект : </translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Sélection</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>context dependent</translatorcomment>
+        <translation type="unfinished">Выбрать</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Nom</source>
+        <translatorcomment>Название?</translatorcomment>
         <translation type="unfinished">Имя</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">Безымянная схема</translation>
+        <translation>Безымянная схема</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="102"/>
@@ -7523,7 +7632,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Sélectionner tout</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбрать все</translation>
     </message>
 </context>
 <context>
@@ -7531,17 +7640,17 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="107"/>
         <source>Propriétés de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Свойства элемента</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Référence croisée (maitre)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ссылка (главный)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ссылка (дочерний)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="140"/>
@@ -7556,6 +7665,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="54"/>
         <source>Élément</source>
+        <translatorcomment>Элемент</translatorcomment>
         <translation type="unfinished">Элементы</translation>
     </message>
     <message>
@@ -7569,7 +7679,7 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="62"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Лист: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="64"/>
@@ -7596,6 +7706,7 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="67"/>
         <source>Champs de texte : %1
 </source>
+        <translatorcomment>Текстовые поля</translatorcomment>
         <translation type="unfinished">Текстовое поле : %1
 </translation>
     </message>
@@ -7620,13 +7731,13 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="114"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="128"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Информация</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="122"/>
         <source>Report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Отчёт</translation>
     </message>
 </context>
 <context>
@@ -7634,17 +7745,17 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="52"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">НОМЕНКЛАТУРА:</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Ref</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ссылка</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Лист</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
@@ -7655,22 +7766,22 @@ Longueur maximale : %2px
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Désignation
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Описание</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="63"/>
         <source>nomenclature_</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">номенклатура_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Сохранить как ...</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Файлы csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="70"/>
@@ -7682,7 +7793,8 @@ Longueur maximale : %2px
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Невозможно заменить файл!
+</translation>
     </message>
 </context>
 <context>
@@ -7690,7 +7802,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="349"/>
         <source>Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Цвет текста</translation>
     </message>
 </context>
 <context>
@@ -7698,7 +7810,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="291"/>
         <source>Insert HTML entity</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вставка объекта HTML</translation>
     </message>
 </context>
 <context>
@@ -7706,27 +7818,27 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="757"/>
         <source>Edit text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Редактирование текста</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="780"/>
         <source>Rich Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rich-текст</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="781"/>
         <source>Source</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Источник</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="787"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;OK</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="789"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Отмена</translation>
     </message>
 </context>
 <context>
@@ -7734,77 +7846,77 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="456"/>
         <source>CTRL+B</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+B</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="462"/>
         <source>CTRL+I</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+I</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="455"/>
         <source>Texte en gras</source>
-        <translation type="unfinished"></translation>
+        <translation>Жирный</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="461"/>
         <source>Texte en italique</source>
-        <translation type="unfinished"></translation>
+        <translation>Курсивный</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="467"/>
         <source>Texte souligé</source>
-        <translation type="unfinished"></translation>
+        <translation>Подчёркнутый</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="468"/>
         <source>CTRL+U</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+U</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="480"/>
         <source>Left Align</source>
-        <translation type="unfinished"></translation>
+        <translation>Левое выравнивание</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="485"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>По центру</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="490"/>
         <source>Right Align</source>
-        <translation type="unfinished"></translation>
+        <translation>Правое выравнивание</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="495"/>
         <source>Justify</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Выравнивание</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="507"/>
         <source>Superscript</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Надстрочный</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="513"/>
         <source>Subscript</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Подстрочный</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="522"/>
         <source>Insérer un lien</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вставка строки</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="526"/>
         <source>Insert &amp;Image</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Вставка &amp;изображения</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="542"/>
         <source>Simplify Rich Text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Упростить Rich-текст</translation>
     </message>
 </context>
 </TS>
