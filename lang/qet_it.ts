@@ -2624,22 +2624,22 @@ I cambiamenti saranno irreversibili.</translation>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
         <source>Délier l&apos;élément séléctionné</source>
-        <translation></translation>
+        <translation>Scollega l&apos;elemento selezionato</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
         <source>Lier l&apos;élément séléctionné</source>
-        <translation></translation>
+        <translation>Collega l&apos;elemento selezionato</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
         <source>Éléments disponibles</source>
-        <translation></translation>
+        <translation>Elementi disponibili</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
         <source>Éléments liés</source>
-        <translation></translation>
+        <translation>Elementi collegati</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="118"/>
@@ -2935,7 +2935,7 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
         <location filename="../sources/projectconfigpages.cpp" line="390"/>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation>Nemerazioni disponibili:</translation>
+        <translation>Numerazioni disponibili:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="397"/>
