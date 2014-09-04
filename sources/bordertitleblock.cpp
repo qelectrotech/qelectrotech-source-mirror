@@ -660,7 +660,7 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(const DiagramContext &i
 	
 	// ... overridden by the historical and/or dynamically generated fields
 	context.addValue("author",      btb_author_);
-	context.addValue("date",        btb_date_.toString("yyyy/MM/dd"));
+	context.addValue("date",        btb_date_.toString(Qt::ISODate));
 	context.addValue("title",       btb_title_);
 	context.addValue("filename",    btb_filename_);
 	context.addValue("folio",       btb_final_folio_);
