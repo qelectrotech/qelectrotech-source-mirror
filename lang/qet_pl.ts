@@ -460,12 +460,12 @@ dla przewodów o tym samym potencjale ?</translation>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="14"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
-        <translation type="unfinished">Edycja właściwości przewodu</translation>
+        <translation>Edycja właściwości przewodu</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="33"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished">Zastosuj właściwości do wszystkich połączeń tego potencjału</translation>
+        <translation>Zastosuj właściwości do wszystkich połączeń tego potencjału</translation>
     </message>
 </context>
 <context>
@@ -2061,7 +2061,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="130"/>
         <source>Utiliser les gestures du trackpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj gestów dla panelu dotykowego</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="131"/>
@@ -2941,13 +2941,13 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="397"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń numerację</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="463"/>
         <location filename="../sources/projectconfigpages.cpp" line="464"/>
         <source>Sans nom</source>
-        <translation type="unfinished"></translation>
+        <translation>Bez nazwy</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="394"/>
@@ -6164,7 +6164,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/ui/projectpropertiesdialog.cpp" line="31"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished">Właściwości projektu</translation>
+        <translation>Właściwości projektu</translation>
     </message>
 </context>
 <context>
