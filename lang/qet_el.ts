@@ -460,12 +460,12 @@ pixel</extracomment>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="14"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
-        <translation type="unfinished">Επεξεργασία των ιδιοτήτων του αγωγού</translation>
+        <translation>Επεξεργασία των ιδιοτήτων του αγωγού</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="33"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished">Εφαρμογή ιδιοτήτων σε όλους τους αγωγούς αυτού του δυναμικού</translation>
+        <translation>Εφαρμογή ιδιοτήτων σε όλους τους αγωγούς αυτού του δυναμικού</translation>
     </message>
 </context>
 <context>
@@ -2061,7 +2061,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="130"/>
         <source>Utiliser les gestures du trackpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρήση των κινήσεων του trackpad</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="131"/>
@@ -2945,13 +2945,13 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="397"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή της αρίθμησης</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="463"/>
         <location filename="../sources/projectconfigpages.cpp" line="464"/>
         <source>Sans nom</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανώνυμο</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="394"/>
@@ -6158,7 +6158,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/ui/projectpropertiesdialog.cpp" line="31"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished">Ιδιότητες της εργασίας</translation>
+        <translation>Ιδιότητες της εργασίας</translation>
     </message>
 </context>
 <context>
