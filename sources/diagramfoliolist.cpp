@@ -96,7 +96,7 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 		fillRow(p, row_rect, diagram_list[i] -> border_and_titleblock.author(),
 				diagram_list[i] -> title(),
 				QString::number(diagram_list[i] ->folioIndex()+1),
-				diagram_list[i] -> border_and_titleblock.date().toString("dd/MM/yyyy"));
+				diagram_list[i] -> border_and_titleblock.date().toString(Qt::SystemLocaleShortDate));
 	}
 
 	x0 = list_rectangles_[1] -> topLeft().x();
@@ -113,7 +113,7 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 		fillRow(p, row_rect, diagram_list[i] -> border_and_titleblock.author(),
 				diagram_list[i] -> title(),
 				QString::number(diagram_list[i] ->folioIndex()+1),
-				diagram_list[i] -> border_and_titleblock.date().toString("dd/MM/yyyy"));
+				diagram_list[i] -> border_and_titleblock.date().toString(Qt::SystemLocaleShortDate));
 	}
 
 	border_and_titleblock.draw(p, margin, margin);
