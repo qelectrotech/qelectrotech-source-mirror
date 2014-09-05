@@ -8,5 +8,6 @@
         <name lang="en">Voltage regulators</name>
         <name lang="nl">Spanningsregelaars</name>
         <name lang="el">Ρυθμιστές τάσης</name>
+        <name lang="ru">Регуляторы напряжения</name>
     </names>
 </qet-directory>

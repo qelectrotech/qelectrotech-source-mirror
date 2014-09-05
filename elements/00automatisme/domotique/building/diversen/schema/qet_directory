@@ -1,10 +1,12 @@
 <qet-directory>
     <names>
-	<name lang="de">Schaltzeichen</name>        
-	<name lang="be">schema</name>
+        <name lang="de">Schaltzeichen</name>
+        <name lang="be">schema</name>
+        <name lang="el">Σχέδιο</name>
         <name lang="en">schema</name>
+        <name lang="it">schema</name>
         <name lang="fr">schema</name>
-        <name lang="it">Schema</name>
         <name lang="nl">schema</name>
+        <name lang="ru">схема</name>
     </names>
 </qet-directory>

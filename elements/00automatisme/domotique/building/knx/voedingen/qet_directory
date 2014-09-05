@@ -1,10 +1,11 @@
-<qet-directory>
+﻿<qet-directory>
     <names>
         <name lang="de">Versorgungen</name>
-        <name lang="nl">Voedingen</name>
         <name lang="be">Voedingen</name>
         <name lang="en">Power Supplies</name>
-        <name lang="fr">Alimentations</name>
         <name lang="it">Alimentatori</name>
+        <name lang="fr">Alimentations</name>
+        <name lang="nl">Voedingen</name>
+        <name lang="ru">Источники питания</name>
     </names>
 </qet-directory>

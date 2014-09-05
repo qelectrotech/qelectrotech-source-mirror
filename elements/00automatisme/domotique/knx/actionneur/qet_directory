@@ -10,5 +10,6 @@
         <name lang="cs">Ovladač</name>
         <name lang="nl">Actuator</name>
         <name lang="be">Schakel actor</name>
+        <name lang="ru">Приводы</name>
     </names>
 </qet-directory>

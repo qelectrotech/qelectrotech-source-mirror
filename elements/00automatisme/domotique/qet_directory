@@ -1,13 +1,14 @@
 <qet-directory>
     <names>
         <name lang="de">Gebäudetechnik</name>
+        <name lang="be">Domotica</name>
+        <name lang="el">Αυτοματισμός</name>
         <name lang="en">Building management</name>
         <name lang="it">Domotica</name>
         <name lang="fr">Domotique</name>
-        <name lang="es">automatización</name>
-        <name lang="el">Αυτοματισμός</name>
         <name lang="pl">Αυτomatyka budynkowa</name>
+        <name lang="es">automatización</name>
         <name lang="cs">Automatizace</name>
-        <name lang="be">Domotica</name>
+        <name lang="ru">Автоматизация</name>
     </names>
 </qet-directory>

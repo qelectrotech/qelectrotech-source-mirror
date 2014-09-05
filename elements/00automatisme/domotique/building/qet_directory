@@ -1,11 +1,12 @@
 <qet-directory>
     <names>
-        <name lang="en">Gebäudetechnik</name>
-        <name lang="nl">Gebouwen beheer</name>
         <name lang="be">Gebouwen beheer</name>
-        <name lang="fr">Gestion d'immeubles</name>
-        <name lang="it">Gestione edifici</name>
-        <name lang="pl">Zarządzanie budynkiem</name>
+        <name lang="ru">Строительство</name>
         <name lang="el">Διαχείριση κτηρίου</name>
+        <name lang="en">Gebäudetechnik</name>
+        <name lang="it">Gestione edifici</name>
+        <name lang="fr">Gestion d'immeubles</name>
+        <name lang="pl">Zarządzanie budynkiem</name>
+        <name lang="nl">Gebouwen beheer</name>
     </names>
 </qet-directory>
