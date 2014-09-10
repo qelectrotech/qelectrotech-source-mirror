@@ -1,6 +1,8 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="57" height="140" type="element" orientation="dyyy">
     <names>
+        <name lang="en">DHT 11/22</name>
         <name lang="fr">DHT 11/22</name>
+        <name lang="it">Sensore DHT 11/22</name>
     </names>
     <informations></informations>
     <description>
