@@ -89,7 +89,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="152"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducción en flamenco</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="172"/>
@@ -293,17 +293,17 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="23"/>
         <source>Autonumérotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeración automática:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="49"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar la numeración</translation>
     </message>
 </context>
 <context>
@@ -321,13 +321,13 @@
         <extracomment>pixel
 ----------
 pixel</extracomment>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="77"/>
         <source>x</source>
-        <translation type="unfinished">x</translation>
+        <translation>x</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="53"/>
@@ -348,7 +348,8 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translatorcomment>Formulario</translatorcomment>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="60"/>
@@ -461,12 +462,12 @@ pixel</extracomment>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="14"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
-        <translation type="unfinished">Editar las propiedades de un conductor</translation>
+        <translation>Editar las propiedades de un conductor</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="33"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished">Aplicar las propiedades a todos los conductores de este potencial</translation>
+        <translation>Aplicar las propiedades a todos los conductores de este potencial</translation>
     </message>
 </context>
 <context>
@@ -543,37 +544,39 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translatorcomment>Formulario</translatorcomment>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="60"/>
         <source>Texte par defaut :</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto predeterminado:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="92"/>
         <source>Rotation du texte de conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotación de texto del conductor:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished">Protección tierra neutral</translation>
+        <translation>Protección tierra neutral</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="213"/>
         <source>PEN</source>
-        <translation type="unfinished">PEN</translation>
+        <translatorcomment>Protección tierra neutral</translatorcomment>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="231"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Etiqueta de texto</translation>
+        <translation>Etiqueta de texto</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="256"/>
@@ -588,7 +591,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="279"/>
         <source>Style :</source>
-        <translation type="unfinished">Estilo:</translation>
+        <translation>Estilo:</translation>
     </message>
 </context>
 <context>
@@ -641,7 +644,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="151"/>
         <source>une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Una imagen</translation>
     </message>
 </context>
 <context>
@@ -711,7 +714,7 @@ pixel</extracomment>
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="49"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation type="unfinished">Propiedades del esquema</translation>
+        <translation>Propiedades del esquema</translation>
     </message>
 </context>
 <context>
@@ -1091,113 +1094,116 @@ pixel</extracomment>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="14"/>
         <source>Propriété de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Propiedad del elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="25"/>
         <source>Type de base :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de base:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="37"/>
         <source>Élément esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Elemento esclavo</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="52"/>
         <source>Nombre de contact représenté</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre del contacto representado</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="59"/>
         <source>Type de contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo del contacto</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="66"/>
         <source>État du contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Estado del contacto</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="84"/>
         <source>Élément maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Elemento maestro</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="90"/>
         <source>Type concret</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo concreto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="84"/>
         <source>Simple</source>
-        <translation type="unfinished">Simple</translation>
+        <translation>Simple</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="74"/>
         <source>Maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Maestro</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="75"/>
         <source>Esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Esclavo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="76"/>
         <source>Renvoi de folio suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia del folio siguiente</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="77"/>
         <source>Renvoi de folio précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia del folio anterior</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
         <source>Bornier</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Bloque de terminales</translatorcomment>
+        <translation>Terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
         <source>Normalement ouvert</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalmente abierto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="82"/>
         <source>Normalement fermé</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalmente cerrado</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="83"/>
         <source>Inverseur</source>
-        <translation type="unfinished"></translation>
+        <translation>Inversor</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="85"/>
         <source>Puissance</source>
-        <translation type="unfinished"></translation>
+        <translation>Potencia</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="86"/>
         <source>Temporisé travail</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Temporizador de trabajo</translatorcomment>
+        <translation type="unfinished">Temporizador de encendido</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="87"/>
         <source>Temporisé repos</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Temporizador de apagado</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="90"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation>Bobina</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="91"/>
         <source>Organe de protection</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Protección del cuerpo</translatorcomment>
+        <translation type="unfinished">Unidad de protección</translation>
     </message>
 </context>
 <context>
@@ -2059,7 +2065,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="130"/>
         <source>Utiliser les gestures du trackpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilice los gestos del trackpad</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="131"/>
@@ -2899,24 +2905,24 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/ui/potentialtextsdialog.ui" line="14"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished">Textos de potencial</translation>
+        <translation>Textos de potencial</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/potentialtextsdialog.ui" line="22"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished">Los textos del potencial eléctrico no son idénticos.
+        <translation>Los textos del potencial eléctrico no son idénticos.
 ¿Aplicar un texto a cada uno de estos conductores?</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source>  : est présent </source>
-        <translation type="unfinished">: está presente</translation>
+        <translation>: está presente</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source> fois.</source>
-        <translation type="unfinished">veces.</translation>
+        <translation>valor.</translation>
     </message>
 </context>
 <context>
@@ -2933,24 +2939,25 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="368"/>
         <source>Auto numerotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeración automática</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="390"/>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation type="unfinished"></translation>
+        <translation>Numeración disponible:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="397"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Suprimir</translatorcomment>
+        <translation>Borrar la numeración</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="463"/>
         <location filename="../sources/projectconfigpages.cpp" line="464"/>
         <source>Sans nom</source>
-        <translation type="unfinished"></translation>
+        <translation>Sin nombre</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="394"/>
@@ -2958,7 +2965,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/projectconfigpages.cpp" line="462"/>
         <location filename="../sources/projectconfigpages.cpp" line="483"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de la nueva numeración</translation>
     </message>
 </context>
 <context>
@@ -3785,7 +3792,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
         <source>Ajouter une zone polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar una zona polilínea</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="464"/>
@@ -3860,7 +3867,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="574"/>
         <source>Ajouter</source>
-        <translation type="unfinished"></translation>
+        <translation>Añadir</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="692"/>
@@ -4194,7 +4201,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="478"/>
         <source>&amp;Récemment ouverts</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Recientemente abiertos</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="779"/>
@@ -4466,33 +4473,33 @@ Opciones disponibles:
         <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Falta campo de texto &apos;etiqueta&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>Les éléments maîtres ou esclaves doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Los elementos maestros o esclavo deben tener un campo de texto con la etiqueta &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="701"/>
         <source>Absence de borne</source>
-        <translation type="unfinished">Falta de conector</translation>
+        <translation>Falta de conector</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="702"/>
         <source>Les reports de folio doivent posséder une seul borne.</source>
-        <translation type="unfinished"></translation>
+        <translation>Los reportes de folio deben tener una sola terminal.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="708"/>
         <source>Absence de champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Falta campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="709"/>
         <source>Les reports de folio doivent posséder au moins un champ texte éditable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Los informes de folio deben tener al menos un campo de texto editable.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="717"/>
@@ -4523,7 +4530,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Éditer les propriétées de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar las propiedades del elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="210"/>
@@ -4719,7 +4726,7 @@ Opciones disponibles:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1069"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1104"/>
         <source>Echec de l&apos;enregistrement</source>
-        <translation type="unfinished"></translation>
+        <translation>Fallo al guardar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1045"/>
@@ -4727,7 +4734,8 @@ Opciones disponibles:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1104"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
-        <translation type="unfinished"></translation>
+        <translation>Fallo al guardar,
+Las condiciones requeridas no son validas</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1220"/>
@@ -4755,7 +4763,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="733"/>
         <source>Avertissements</source>
-        <translation type="unfinished">Advertencias</translation>
+        <translation>Advertencias</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="998"/>
@@ -5662,17 +5670,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1215"/>
         <source>Agrandire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Agrandar %1 à %2 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1216"/>
         <source>Réduire %1 à %2 %</source>
-        <translation type="unfinished"></translation>
+        <translation>Reducir %1 à %2 %</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1236"/>
         <source>Changer le style d&apos;une shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambiar el estilo de una forma</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1278"/>
@@ -5788,7 +5796,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="676"/>
         <source>Modifier les propriétés</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar las propiedades</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="51"/>
@@ -6123,7 +6131,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="305"/>
         <source>Type de trait</source>
         <comment>shape style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de línea</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="310"/>
@@ -6154,13 +6162,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="327"/>
         <source>Échelle</source>
         <comment>shape scale</comment>
-        <translation type="unfinished"></translation>
+        <translation>Escala</translation>
     </message>
     <message>
         <location filename="../sources/ui/projectpropertiesdialog.cpp" line="31"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished">Propiedades del proyecto</translation>
+        <translation>Propiedades del proyecto</translation>
     </message>
 </context>
 <context>
@@ -6184,7 +6192,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="300"/>
         <source>Éditer les propriétés d&apos;une shape, Zone </source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Editar las propiedades de una forma, zona</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="322"/>
@@ -6194,7 +6202,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="368"/>
         <source>une shape</source>
-        <translation type="unfinished"></translation>
+        <translation>una forma</translation>
     </message>
 </context>
 <context>
@@ -6291,12 +6299,12 @@ Crear su propio texto, utilizando las siguientes variables
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="78"/>
         <source>Précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Anterior</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="92"/>
         <source>Suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Siguiente</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="131"/>
@@ -6707,12 +6715,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
         <source>Aucun</source>
-        <translation type="unfinished">Ninguno</translation>
+        <translation>Ninguno</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
         <source>label</source>
-        <translation type="unfinished">etiqueta</translation>
+        <translation>etiqueta</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
@@ -6822,27 +6830,27 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
         <source>Informations des cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Información del proyecto</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="114"/>
         <source>Folio :</source>
-        <translation type="unfinished"></translation>
+        <translation>Folio:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="121"/>
         <source>Auteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Disponible como %nombre de archivo para los modelos del proyecto</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="137"/>
@@ -6867,49 +6875,51 @@ Les autres champs ne sont pas utilisés.</source>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Disponible como %fecha para los modelos del proyecto</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="178"/>
         <source>Date fixe :</source>
-        <translation type="unfinished"></translation>
+        <translation>Fecha fija:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="187"/>
         <source>Titre :</source>
-        <translation type="unfinished"></translation>
+        <translation>Titulo:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="194"/>
         <source>Fichier :</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivo:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="201"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Disponible como %folio para los modelos del proyecto</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="211"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
 - %id : numéro du schéma courant dans le projet 
 - %total : nombre total de schémas dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Las siguientes variables son utilizables en el campo Folio:
+- %id : número del esquema actual en el proyecto
+- %total : número total de esquemas en el proyecto</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
         <source>Date :</source>
-        <translation type="unfinished"></translation>
+        <translation>Fecha:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="236"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Disponible como %autor para los modelos del proyecto</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="243"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Disponible como %titulo para los modelos del proyecto</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="253"/>
@@ -6920,7 +6930,8 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquí puede definir sus propias asociaciones de nombre/valor para que sea tomado en cuenta en el proyecto. Ejemplo:
+asociar el nombre de &quot;volta&quot; y el valor &quot;1745&quot; reemplazara %{volta} por 1745 dentro del proyecto. </translation>
     </message>
 </context>
 <context>
@@ -7418,7 +7429,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="22"/>
         <source>Type :</source>
-        <translation type="unfinished">Tipo:</translation>
+        <translation>Tipo:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
@@ -7428,7 +7439,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="42"/>
         <source>Positionner :</source>
-        <translation type="unfinished"></translation>
+        <translation>Posición:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
@@ -7453,22 +7464,22 @@ Longueur maximale : %2px
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>Préfixe des contacts de puissance :</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefijo de los contactos de potencia:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="97"/>
         <source>Préfixe des contacts temporisés :</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefijo de contactos temporizados:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="110"/>
         <source>Préfixe des contacts inverseurs :</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefijo de contactos inversores:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
         <source>Bobine</source>
-        <translation type="unfinished"></translation>
+        <translation>Bobina</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
@@ -7478,12 +7489,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
         <source>En bas de page</source>
-        <translation type="unfinished"></translation>
+        <translation>Abajo de la pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
         <source>Sous le label de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Bajo la etiqueta del elemento</translation>
     </message>
 </context>
 <context>
