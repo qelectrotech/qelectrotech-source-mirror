@@ -1027,10 +1027,6 @@ void QETProject::readProjectXml() {
 	// la racine du document XML est sensee etre un element "project"
 	if (root_elmt.tagName() == "project") {
 
-		// if there is an attribute for folioSheetQuantity, then set it accordingly.
-		// If not, then the value remains at the initial value of zero.
-		if (root_elmt.hasAttribute("folioSheetQuantity"))
-			addNewDiagramFolioList();
 
 		// mode d'ouverture normal
 		if (root_elmt.hasAttribute("version")) {
@@ -1067,10 +1063,15 @@ void QETProject::readProjectXml() {
 	
 	// load the project-wide properties
 	readProjectPropertiesXml();
-	
+
 	// charge les proprietes par defaut pour les nouveaux schemas
 	readDefaultPropertiesXml();
 	
+	// if there is an attribute for folioSheetQuantity, then set it accordingly.
+	// If not, then the value remains at the initial value of zero.
+	if (root_elmt.hasAttribute("folioSheetQuantity"))
+		addNewDiagramFolioList();
+
 	// load the embedded titleblock templates
 	readEmbeddedTemplatesXml();
 	
@@ -1079,7 +1080,7 @@ void QETProject::readProjectXml() {
 	
 	// charge les schemas
 	readDiagramsXml();
-	
+
 	state_ = Ok;
 }
 
