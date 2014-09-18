@@ -1698,15 +1698,13 @@ void QETDiagramEditor::addDiagramToProject() {
 	}
 }
 
+/**
+ * @brief QETDiagramEditor::addDiagramFolioListToProject
+ * Add new folio list to project
+ */
 void QETDiagramEditor::addDiagramFolioListToProject() {
-	ProjectView *current_project = currentProject();
-	if (current_project && current_project -> project() -> getFolioSheetsQuantity() == 0) {
-
-		// The number of folio sheets depend on the number of diagrams in the project.
-		int diagram_qty = current_project -> diagrams().size();
-		for (int i = 0; i <= diagram_qty/58; i++)
+	if (ProjectView *current_project = currentProject())
 			current_project -> addNewDiagramFolioList();
-	}
 }
 
 /**

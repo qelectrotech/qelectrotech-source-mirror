@@ -914,29 +914,39 @@ Diagram *QETProject::addNewDiagram() {
  * Add new diagram folio list
  * @return the created diagram
  */
-Diagram *QETProject::addNewDiagramFolioList() {
-	// do nothing if project is read only
-	if (isReadOnly()) return(0);
+QList <Diagram *> QETProject::addNewDiagramFolioList() {
+	// do nothing if project is read only or folio sheet is alredy created
+	QList <Diagram *> diagram_list;
 
-	//create new diagram
-	Diagram *diagram_folio_list = new DiagramFolioList(this);
+	if (!isReadOnly() && getFolioSheetsQuantity() == 0) {
 
-	// setup default properties
-	diagram_folio_list -> border_and_titleblock.importBorder(defaultBorderProperties());
-	diagram_folio_list -> border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
-	diagram_folio_list -> defaultConductorProperties = defaultConductorProperties();
+		//reset the number of folio sheet
+		setFolioSheetsQuantity(0);
 
-	diagram_folio_list -> border_and_titleblock.setTitle(tr("Liste des Sch\351mas"));
-	// no need to display rows and columns
-	diagram_folio_list -> border_and_titleblock.displayRows(false);
-	diagram_folio_list -> border_and_titleblock.displayColumns(false);
+		int diagCount = diagrams().size();
+		for (int i = 0; i <= diagCount/58; i++) {
 
+			//create new diagram
+			Diagram *diagram_folio_list = new DiagramFolioList(this);
 
-	addDiagram(diagram_folio_list);
-	setFolioSheetsQuantity( getFolioSheetsQuantity()+1 );
+			// setup default properties
+			diagram_folio_list -> border_and_titleblock.importBorder(defaultBorderProperties());
+			diagram_folio_list -> border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
+			diagram_folio_list -> defaultConductorProperties = defaultConductorProperties();
 
-	emit(diagramAdded(this, diagram_folio_list));
-	return(diagram_folio_list);
+			diagram_folio_list -> border_and_titleblock.setTitle(tr("Liste des Sch\351mas"));
+			// no need to display rows and columns
+			diagram_folio_list -> border_and_titleblock.displayRows(false);
+			diagram_folio_list -> border_and_titleblock.displayColumns(false);
+
+			addDiagram(diagram_folio_list);
+			setFolioSheetsQuantity( getFolioSheetsQuantity()+1 );
+			emit(diagramAdded(this, diagram_folio_list));
+			diagram_list << diagram_folio_list;
+		}
+	}
+
+	return(diagram_list);
 }
 
 /**
@@ -1027,7 +1037,6 @@ void QETProject::readProjectXml() {
 	// la racine du document XML est sensee etre un element "project"
 	if (root_elmt.tagName() == "project") {
 
-
 		// mode d'ouverture normal
 		if (root_elmt.hasAttribute("version")) {
 			bool conv_ok;
@@ -1063,15 +1072,10 @@ void QETProject::readProjectXml() {
 	
 	// load the project-wide properties
 	readProjectPropertiesXml();
-
+	
 	// charge les proprietes par defaut pour les nouveaux schemas
 	readDefaultPropertiesXml();
 	
-	// if there is an attribute for folioSheetQuantity, then set it accordingly.
-	// If not, then the value remains at the initial value of zero.
-	if (root_elmt.hasAttribute("folioSheetQuantity"))
-		addNewDiagramFolioList();
-
 	// load the embedded titleblock templates
 	readEmbeddedTemplatesXml();
 	
@@ -1081,6 +1085,12 @@ void QETProject::readProjectXml() {
 	// charge les schemas
 	readDiagramsXml();
 
+	// if there is an attribute for folioSheetQuantity, then set it accordingly.
+	// If not, then the value remains at the initial value of zero.
+	if (root_elmt.attribute("folioSheetQuantity","0").toInt()) {
+		addNewDiagramFolioList();
+	}
+	
 	state_ = Ok;
 }
 

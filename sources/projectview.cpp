@@ -295,8 +295,9 @@ QETResult ProjectView::noProjectResult() const {
 }
 
 /**
-	Ajoute un nouveau schema au ProjectView
-*/
+ * @brief ProjectView::addNewDiagram
+ * Add new diagram to project view
+ */
 void ProjectView::addNewDiagram() {
 	if (project_ -> isReadOnly()) return;
 	
@@ -309,13 +310,20 @@ void ProjectView::addNewDiagram() {
 	showDiagram(new_diagram_view);
 }
 
+/**
+ * @brief ProjectView::addNewDiagramFolioList
+ * Add new diagram folio list to project
+ */
 void ProjectView::addNewDiagramFolioList() {
 	if (project_ -> isReadOnly()) return;
 
-	Diagram *new_diagram = project_ -> addNewDiagramFolioList();
-	DiagramView *new_diagram_view = new DiagramView(new_diagram);
-	addDiagram(new_diagram_view, true);
-	showDiagram(new_diagram_view);
+	QList <Diagram *> list = project_ -> addNewDiagramFolioList();
+	int size = list.size();
+	for (int i = 0; i < size; i++) {
+		DiagramView *new_diagram_view = new DiagramView(list.takeLast());
+		addDiagram(new_diagram_view, true);
+		showDiagram(new_diagram_view);
+	}
 }
 
 /**
@@ -352,8 +360,7 @@ void ProjectView::addDiagram(DiagramView *diagram, bool front) {
 	emit(diagramAdded(diagram));
 	// move tab to front if wanted
 	if (front) {
-		tabs_->moveTab(tabs_->count()-1, project_ -> getFolioSheetsQuantity()-1);
-		//diagram -> diagram() -> project() -> setFolioSheetsQuantity(true);
+		tabs_->moveTab(tabs_->count()-1, 0);
 	}
 }
 
