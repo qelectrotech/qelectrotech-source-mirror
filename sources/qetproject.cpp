@@ -1030,7 +1030,7 @@ void QETProject::readProjectXml() {
 		// if there is an attribute for folioSheetQuantity, then set it accordingly.
 		// If not, then the value remains at the initial value of zero.
 		if (root_elmt.hasAttribute("folioSheetQuantity"))
-			setFolioSheetsQuantity(root_elmt.attribute("folioSheetQuantity","0").toInt());
+			addNewDiagramFolioList();
 
 		// mode d'ouverture normal
 		if (root_elmt.hasAttribute("version")) {
@@ -1128,13 +1128,6 @@ void QETProject::readDiagramsXml() {
 		d->initElementsLinks();
 	}
 
-	// If the folio sheets quantity is non-zero, then add the folio sheets
-	if (getFolioSheetsQuantity()) {
-		setFolioSheetsQuantity(0);
-		int diagCount = diagrams().size();
-		for (int i = 0; i <= diagCount/58; i++)
-			addNewDiagramFolioList();
-	}
 
 	//delete dialog object
 	delete dlgWaiting;
