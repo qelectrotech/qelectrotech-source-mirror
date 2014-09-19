@@ -316,13 +316,14 @@ void ProjectView::addNewDiagram() {
  */
 void ProjectView::addNewDiagramFolioList() {
 	if (project_ -> isReadOnly()) return;
-
-	QList <Diagram *> list = project_ -> addNewDiagramFolioList();
-	int size = list.size();
-	for (int i = 0; i < size; i++) {
-		DiagramView *new_diagram_view = new DiagramView(list.takeLast());
-		addDiagram(new_diagram_view, true);
+	int i = 0; //< Each new diagram is added  to the end of the project.
+			   //< We use @i to move the folio list at the beginning of the project
+	foreach (Diagram *d, project_ -> addNewDiagramFolioList()) {
+		DiagramView *new_diagram_view = new DiagramView(d);
+		addDiagram(new_diagram_view);
 		showDiagram(new_diagram_view);
+		tabs_->moveTab(diagrams().size()-1, i);
+		i++;
 	}
 }
 
@@ -337,7 +338,7 @@ void ProjectView::addNewDiagramFolioList() {
  * @param front: true add page at front
  *				 false add page at back
  */
-void ProjectView::addDiagram(DiagramView *diagram, bool front) {
+void ProjectView::addDiagram(DiagramView *diagram) {
 	if (!diagram) return;
 
 	// check diagram isn't present in the project
@@ -358,10 +359,6 @@ void ProjectView::addDiagram(DiagramView *diagram, bool front) {
 	
 	// signal diagram was added
 	emit(diagramAdded(diagram));
-	// move tab to front if wanted
-	if (front) {
-		tabs_->moveTab(tabs_->count()-1, 0);
-	}
 }
 
 /**
@@ -769,9 +766,13 @@ void ProjectView::initLayout() {
 	layout_ -> addWidget(tabs_);
 }
 
+
 /**
-	Charge les schemas du projet
-*/
+ * @brief ProjectView::loadDiagrams
+ * Load diagrams of project.
+ * We create a diagram view for each diagram,
+ * and add it to the project view.
+ */
 void ProjectView::loadDiagrams() {
 	if (!project_) return;
 	
@@ -781,11 +782,18 @@ void ProjectView::loadDiagrams() {
 		DiagramView *sv = new DiagramView(diagram);
 		addDiagram(sv);
 	}
+
+	// If project have the folios list, move it at the beginning of the project
+	if (project_ -> getFolioSheetsQuantity()) {
+		for (int i = 0; i < project_->getFolioSheetsQuantity(); i++)
+		tabs_ -> moveTab(diagrams().size()-1, 0);
+	}
 }
 
 /**
-	Met a jour le titre du ProjectView
-*/
+ * @brief ProjectView::updateWindowTitle
+ * Update the project view title
+ */
 void ProjectView::updateWindowTitle() {
 	QString title;
 	if (project_) {

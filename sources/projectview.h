@@ -61,7 +61,7 @@ class ProjectView : public QWidget {
 	public slots:
 	void addNewDiagram();
 	void addNewDiagramFolioList();
-	void addDiagram(DiagramView *, bool front=false);
+	void addDiagram(DiagramView *);
 	void removeDiagram(DiagramView *);
 	void removeDiagram(Diagram *);
 	void showDiagram(DiagramView *);
