@@ -21,6 +21,8 @@
 #include <diagramposition.h>
 #include <elementprovider.h>
 #include <diagramcommands.h>
+#include <diagram.h>
+#include <element.h>
 
 /**
  * @brief MasterPropertiesWidget::MasterPropertiesWidget

@@ -16,7 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementprovider.h"
-#include "QUuid"
+#include "qetproject.h"
+#include "diagram.h"
+#include "qetgraphicsitem/element.h"
 
 /**
  * @brief ElementProvider::ElementProvider Constructor

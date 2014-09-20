@@ -18,9 +18,12 @@
 #ifndef ELEMENTPROVIDER_H
 #define ELEMENTPROVIDER_H
 
-#include "qetproject.h"
-#include "diagram.h"
-#include "qetgraphicsitem/element.h"
+#include <QUuid>
+#include <QList>
+
+class QETProject;
+class Diagram;
+class Element;
 
 /**
   this class can search in the given diagram or project some kind of element

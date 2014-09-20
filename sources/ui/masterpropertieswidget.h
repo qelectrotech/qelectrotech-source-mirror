@@ -19,9 +19,10 @@
 #define MASTERPROPERTIESWIDGET_H
 
 #include <QWidget>
-#include "element.h"
+#include <QHash>
 
 class QListWidgetItem;
+class Element;
 
 namespace Ui {
 	class MasterPropertiesWidget;
