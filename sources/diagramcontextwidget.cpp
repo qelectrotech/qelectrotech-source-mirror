@@ -20,7 +20,6 @@
 #include <QLabel>
 #include <QTableWidget>
 #include <QVBoxLayout>
-#include <QDebug>
 
 /**
 	Constructor
