@@ -118,41 +118,6 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	DiagramContextWidget *project_variables_;
 };
 
-/**
-	This page enables users to configure the default properties of diagrams
-	newly added to the edited project.
-*/
-class ProjectNewDiagramConfigPage : public ProjectConfigPage {
-	Q_OBJECT
-	// Constructor, destructor
-	public:
-	ProjectNewDiagramConfigPage(QETProject *, QWidget * = 0);
-	virtual ~ProjectNewDiagramConfigPage();
-	private:
-	ProjectNewDiagramConfigPage(const ProjectNewDiagramConfigPage &);
-	
-	// methods
-	public:
-	QString title() const;
-	QIcon icon() const;
-	void applyProjectConf();
-	
-	protected:
-	void initWidgets();
-	void initLayout();
-	void readValuesFromProject();
-	void adjustReadOnly();
-	
-	// attributes
-	private:
-	QLabel *informative_label_;
-	BorderPropertiesWidget *border_;
-	TitleBlockPropertiesWidget *titleblock_;
-	ConductorPropertiesWidget *conductor_;
-	ReportPropertieWidget *report_;
-	XRefPropertiesWidget *xref_;
-};
-
 class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		Q_OBJECT
 

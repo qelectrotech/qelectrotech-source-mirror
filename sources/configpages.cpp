@@ -26,81 +26,148 @@
 #include "exportpropertieswidget.h"
 #include "ui/reportpropertiewidget.h"
 #include "ui/xrefpropertieswidget.h"
+#include "qetproject.h"
 
 /**
-	Constructeur
-	@param parent QWidget parent
-*/
-NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
-	// main tab widget
-	QTabWidget *tab_widget = new QTabWidget(this);
+ * @brief NewDiagramPage::NewDiagramPage
+ * Default constructor
+ * @param project, If project, edit the propertie of Project
+ * else edit the properties by default of QElectroTech
+ * @param parent, parent widget
+ */
+NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
+	ConfigPage (parent),
+	m_project  (project)
+{
+	//By default we set the global default properties
 
 	// dimensions by default for diagram
 	bpw = new	BorderPropertiesWidget(QETDiagramEditor::defaultBorderProperties());
 	// default titleblock properties
 	ipw = new TitleBlockPropertiesWidget(QETDiagramEditor::defaultTitleBlockProperties(), true);
-	QWidget *diagram_widget = new QWidget();
-	QVBoxLayout *diagram_layout = new QVBoxLayout(diagram_widget);
-	diagram_layout -> addWidget(bpw);
-	diagram_layout -> addWidget(ipw);
-	tab_widget->addTab(diagram_widget, tr("Sch\351ma"));
-	
 	// default conductor properties
 	cpw = new ConductorPropertiesWidget(QETDiagramEditor::defaultConductorProperties());
-	cpw -> setContentsMargins(0, 0, 0, 0);
-	tab_widget->addTab(cpw, tr("Conducteur"));
-
 	// default propertie of report label
 	rpw = new ReportPropertieWidget(QETDiagramEditor::defaultReportProperties());
-	tab_widget->addTab(rpw, tr("Report de folio"));
-
 	// default properties of xref
 	xrefpw = new XRefPropertiesWidget(QETDiagramEditor::defaultXRefProperties(), this);
-	tab_widget->addTab(xrefpw, tr("R\351f\351rence crois\351es"));
-	
+
+	//If there is a project, we edit his properties
+	if (m_project) {
+		bpw	   -> setProperties		  (m_project -> defaultBorderProperties());
+		cpw	   -> setProperties       (m_project -> defaultConductorProperties());
+		ipw    -> setProperties       (m_project -> defaultTitleBlockProperties());
+		rpw	   -> setReportProperties (m_project -> defaultReportProperties());
+		xrefpw -> setProperties		  (m_project -> defaultXRefProperties());
+	}
+
+	// main tab widget
+	QTabWidget *tab_widget      = new QTabWidget(this);
+	QWidget *diagram_widget     = new QWidget();
+	QVBoxLayout *diagram_layout = new QVBoxLayout(diagram_widget);
+
+	diagram_layout -> addWidget(bpw);
+	diagram_layout -> addWidget(ipw);
+
+	tab_widget -> addTab (diagram_widget, tr("Sch\351ma"));
+	tab_widget -> addTab (cpw,            tr("Conducteur"));
+	tab_widget -> addTab (rpw,            tr("Report de folio"));
+	tab_widget -> addTab (xrefpw,         tr("R\351f\351rence crois\351es"));
+
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	vlayout1->addWidget(tab_widget);
 
 	setLayout(vlayout1);
 }
 
-/// Destructeur
+/**
+ * @brief NewDiagramPage::~NewDiagramPage
+ */
 NewDiagramPage::~NewDiagramPage() {
 }
 
 /**
-	Applique la configuration de cette page
-*/
+ * @brief NewDiagramPage::applyConf
+ * Apply conf for this page.
+ * If there is a project, save in the project,
+ * else save to the default conf of QElectroTech
+ */
 void NewDiagramPage::applyConf() {
-	QSettings &settings = QETApp::settings();
-	
-	// dimensions des nouveaux schemas
-	bpw -> properties().toSettings(settings, "diagrameditor/default");
-	
-	// proprietes du cartouche
-	ipw-> properties().toSettings(settings, "diagrameditor/default");
-	
-	// proprietes par defaut des conducteurs
-	cpw -> properties().toSettings(settings, "diagrameditor/defaultconductor");
+	if (m_project) { //If project we save to the project
+		if (m_project -> isReadOnly()) return;
+		bool modified_project = false;
 
-	// default report propertie
-	rpw->toSettings(settings, "diagrameditor/defaultreport");
+		BorderProperties new_border_prop = bpw -> properties();
+		if (m_project -> defaultBorderProperties() != new_border_prop) {
+			m_project -> setDefaultBorderProperties(bpw -> properties());
+			modified_project = true;
+		}
 
-	// default xref properties
-	QHash <QString, XRefProperties> hash_xrp = xrefpw -> properties();
-	foreach (QString key, hash_xrp.keys()) {
-		XRefProperties xrp = hash_xrp[key];
-		QString str("diagrameditor/defaultxref");
-		xrp.toSettings(settings, str += key);
+		TitleBlockProperties new_tbt_prop = ipw -> properties();
+		if (m_project -> defaultTitleBlockProperties() != new_tbt_prop) {
+			m_project -> setDefaultTitleBlockProperties(ipw -> properties());
+			modified_project = true;
+		}
+
+		ConductorProperties new_conductor_prop = cpw -> properties();
+		if (m_project -> defaultConductorProperties() != new_conductor_prop) {
+			m_project -> setDefaultConductorProperties(cpw -> properties());
+			modified_project = true;
+		}
+
+		QString new_report_prop = rpw -> ReportProperties();
+		if (m_project -> defaultReportProperties() != new_report_prop) {
+			m_project -> setDefaultReportProperties(new_report_prop);
+			modified_project = true;
+		}
+
+		QHash<QString, XRefProperties> new_xref_properties = xrefpw -> properties();
+		if (m_project -> defaultXRefProperties() != new_xref_properties) {
+			m_project -> setDefaultXRefProperties(new_xref_properties);
+			modified_project = true;
+		}
+
+		if (modified_project) {
+			m_project -> setModified(modified_project);
+		}
+
+	} else { //Else we save to the default value
+		QSettings &settings = QETApp::settings();
+
+		// dimensions des nouveaux schemas
+		bpw -> properties().toSettings(settings, "diagrameditor/default");
+
+		// proprietes du cartouche
+		ipw-> properties().toSettings(settings, "diagrameditor/default");
+
+		// proprietes par defaut des conducteurs
+		cpw -> properties().toSettings(settings, "diagrameditor/defaultconductor");
+
+		// default report propertie
+		rpw->toSettings(settings, "diagrameditor/defaultreport");
+
+		// default xref properties
+		QHash <QString, XRefProperties> hash_xrp = xrefpw -> properties();
+		foreach (QString key, hash_xrp.keys()) {
+			XRefProperties xrp = hash_xrp[key];
+			QString str("diagrameditor/defaultxref");
+			xrp.toSettings(settings, str += key);
+		}
 	}
 }
 
-/// @return l'icone de cette page
+/**
+ * @brief NewDiagramPage::icon
+ * @return  icon of this page
+ */
 QIcon NewDiagramPage::icon() const {
 	return(QET::Icons::NewDiagram);
 }
 
-/// @return le titre de cette page
+/**
+ * @brief NewDiagramPage::title
+ * @return title of this page
+ */
 QString NewDiagramPage::title() const {
 	return(tr("Nouveau sch\351ma", "configuration page title"));
 }

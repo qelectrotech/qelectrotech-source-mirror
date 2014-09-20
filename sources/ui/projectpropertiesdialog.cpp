@@ -19,6 +19,7 @@
 #include "configdialog.h"
 #include "projectconfigpages.h"
 #include <QObject>
+#include "configpages.h"
 
 /**
  * @brief ProjectPropertiesDialog::ProjectPropertiesDialog
@@ -30,7 +31,7 @@ ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *p
 	m_properties_dialog = new ConfigDialog (parent);
 	m_properties_dialog -> setWindowTitle(QObject::tr("Propri\351t\351s du projet", "window title"));
 	m_properties_dialog -> addPage(new ProjectMainConfigPage       (project));
-	m_properties_dialog -> addPage(new ProjectNewDiagramConfigPage (project));
+	m_properties_dialog -> addPage(new NewDiagramPage (project));
 	m_properties_dialog -> addPage(new ProjectAutoNumConfigPage    (project));
 }
 
