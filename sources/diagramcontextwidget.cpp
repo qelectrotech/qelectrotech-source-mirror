@@ -20,6 +20,7 @@
 #include <QLabel>
 #include <QTableWidget>
 #include <QVBoxLayout>
+#include <QDebug>
 
 /**
 	Constructor
@@ -171,7 +172,7 @@ void DiagramContextWidget::initWidgets() {
 	format_label -> setWordWrap(true);
 	format_label -> setAlignment(Qt::AlignJustify);
 	
-	table_ = new QTableWidget(0, 2);
+	table_ = new QTableWidget(1, 2);
 	table_ -> setSelectionMode(QAbstractItemView::SingleSelection);
 	table_ -> setHorizontalHeaderLabels(QStringList() << tr("Nom", "table header") << tr("Valeur", "table header"));
 	table_ -> horizontalHeader() -> setStretchLastSection(true);
