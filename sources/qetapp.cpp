@@ -132,6 +132,7 @@ QETApp::QETApp(int &argc, char **argv) :
 QETApp::~QETApp() {
 	elements_recent_files_ -> save();
 	projects_recent_files_ -> save();
+	delete splash_screen_;
 	delete elements_recent_files_;
 	delete projects_recent_files_;
 	if (about_dialog_) {
@@ -1344,7 +1345,7 @@ void QETApp::parseArguments() {
 */
 void QETApp::initSplashScreen() {
 	if (non_interactive_execution_) return;
-	splash_screen_ = new QSplashScreen(QPixmap(":/ico/splash.png"));
+	splash_screen_ = new QSplashScreen(QPixmap(":/ico/splash.png"), Qt::WindowStaysOnTopHint);
 	splash_screen_ -> show();
 	setSplashScreenStep(tr("Chargement...", "splash screen caption"));
 }
