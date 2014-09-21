@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>449</width>
+    <width>528</width>
     <height>387</height>
    </rect>
   </property>
@@ -35,7 +35,7 @@
    <item>
     <widget class="QGroupBox" name="m_tbt_gb">
      <property name="title">
-      <string>Informations des cartouche</string>
+      <string>Informations des cartouches</string>
      </property>
      <property name="checkable">
       <bool>false</bool>

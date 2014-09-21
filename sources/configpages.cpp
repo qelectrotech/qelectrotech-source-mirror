@@ -169,7 +169,7 @@ QIcon NewDiagramPage::icon() const {
  * @return title of this page
  */
 QString NewDiagramPage::title() const {
-	return(tr("Nouveau sch\351ma", "configuration page title"));
+	return(tr("Nouveau projet", "configuration page title"));
 }
 
 
