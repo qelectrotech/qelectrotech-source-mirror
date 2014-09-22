@@ -1,0 +1,31 @@
+<definition width="400" version="0.2" hotspot_x="15" hotspot_y="20" height="150" type="element" orientation="dnnn" >
+    <names>
+        <name lang="fr" >version</name>
+    </names>
+    <description>
+        <input x="317" y="98.5" size="8" rotate="true" text="_" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="311" y2="125" x2="311" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="34" y2="125" x2="34" />
+        <rect width="390" x="-13" y="8" antialias="false" height="117" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+        <text x="-8" y="-2.5" size="8" text="Version" />
+        <text x="317" y="-2" size="8" text="DATE" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="311" y2="7" x2="311" />
+        <text x="65" y="-3" size="8" text="MODIFICATION" />
+        <rect width="390" x="-13" y="-18" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="34" y2="7" x2="34" />
+        <input x="-6" y="25.5" size="8" rotate="true" text="_" />
+        <input x="-6" y="50.5" size="8" rotate="true" text="_" />
+        <input x="-6" y="74.5" size="8" rotate="true" text="_" />
+        <input x="-6" y="98.5" size="8" rotate="true" text="_" />
+        <input x="-6" y="121.5" size="8" rotate="true" text="_" />
+        <input x="40" y="25.5" size="8" rotate="true" text="_" />
+        <input x="40" y="49.5" size="8" rotate="true" text="_" />
+        <input x="40" y="74.5" size="8" rotate="true" text="_" />
+        <input x="40" y="98.5" size="8" rotate="true" text="_" />
+        <input x="40" y="121.5" size="8" rotate="true" text="_" />
+        <input x="317" y="24.5" size="8" rotate="true" text="_" />
+        <input x="317" y="49.5" size="8" rotate="true" text="_" />
+        <input x="317" y="74.5" size="8" rotate="true" text="_" />
+        <input x="317" y="121.5" size="8" rotate="true" text="_" />
+    </description>
+</definition>
