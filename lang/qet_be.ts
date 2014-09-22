@@ -460,12 +460,12 @@ pixel</extracomment>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="14"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
-        <translation type="unfinished">Bewerk de eigenschappen van een geleider</translation>
+        <translation>Bewerk de eigenschappen van een geleider</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="33"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished">Toepassen van deze eigenschappen op alle gelieders van hetzelfde potentiaal</translation>
+        <translation>Toepassen van deze eigenschappen op alle gelieders met hetzelfde potentiaal</translation>
     </message>
 </context>
 <context>
@@ -2062,7 +2062,7 @@ De wijzigingen worden definitief.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="198"/>
         <source>Utiliser les gestures du trackpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Maak gebruik van het trackpad</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="199"/>
@@ -2735,7 +2735,7 @@ Dit element is al verbonden.</translation>
         <location filename="../sources/configpages.cpp" line="173"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw project</translation>
     </message>
 </context>
 <context>
@@ -2953,13 +2953,13 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="260"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder de nummering</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="326"/>
         <location filename="../sources/projectconfigpages.cpp" line="327"/>
         <source>Sans nom</source>
-        <translation type="unfinished"></translation>
+        <translation>Zonder naam</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="257"/>
@@ -6138,7 +6138,7 @@ Opnieuw instellen van de  afmetingen</translation>
         <location filename="../sources/ui/projectpropertiesdialog.cpp" line="32"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished">Project eigenschappen</translation>
+        <translation>Project eigenschappen</translation>
     </message>
 </context>
 <context>
@@ -6855,7 +6855,7 @@ Breng de huidige datum aan</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
         <source>Informations des cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiket informatie</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
