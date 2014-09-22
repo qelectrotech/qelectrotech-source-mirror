@@ -2728,7 +2728,7 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/configpages.cpp" line="173"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nuovo progetto</translation>
     </message>
 </context>
 <context>
@@ -6838,7 +6838,7 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
         <source>Informations des cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Informazioni mostrate nel cartiglio</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
