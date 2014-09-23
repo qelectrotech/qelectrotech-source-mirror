@@ -2729,7 +2729,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/configpages.cpp" line="173"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nowy projekt</translation>
     </message>
 </context>
 <context>
@@ -6851,7 +6851,7 @@ Pozostałe pola nie są używane.
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
         <source>Informations des cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Informacje w tabliczkach rysunkowych</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
