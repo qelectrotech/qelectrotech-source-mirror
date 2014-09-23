@@ -2733,7 +2733,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/configpages.cpp" line="173"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Νέα εργασία</translation>
     </message>
 </context>
 <context>
@@ -6831,7 +6831,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
         <source>Informations des cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Πληροφορίες πινακίδων</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
