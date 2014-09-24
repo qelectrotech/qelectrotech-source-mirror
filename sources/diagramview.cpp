@@ -41,18 +41,18 @@
 #include <QGraphicsSceneMouseEvent>
 #include "factory/elementfactory.h"
 #include "diagrampropertiesdialog.h"
+#include "dveventinterface.h"
 
 /**
 	Constructeur
 	@param diagram Schema a afficher ; si diagram vaut 0, un nouveau Diagram est utilise
 	@param parent Le QWidget parent de cette vue de schema
 */
-DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent), newShapeItem(nullptr){
+DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent) {
 	grabGesture(Qt::PinchGesture);
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	setInteractive(true);
-	current_behavior = noAction;
-	m_polyline_added = false;
+	m_event_interface = nullptr;
 
 	QString whatsthis = tr(
 		"Ceci est la zone dans laquelle vous concevez vos sch\351mas en y ajoutant"
@@ -308,14 +308,12 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
 
 /**
  * @brief DiagramView::handleTextDrop
- *handle the drop of text, html markup are automatically detected.
+ *handle the drop of text
  * @param e the QDropEvent describing the current drag'n drop
  */
 void DiagramView::handleTextDrop(QDropEvent *e) {
-	if (e -> mimeData() -> hasText()) {
-		if (e -> mimeData() -> hasHtml()) addDiagramTextAtPos(e->pos()) -> setHtml(e -> mimeData() -> text());
-		else addDiagramTextAtPos(e -> pos(), e -> mimeData() -> text());
-	}
+	if (scene -> isReadOnly() || (e -> mimeData() -> hasText() == false) ) return;
+	scene -> undoStack().push(new AddTextCommand(scene, new IndependentTextItem (e -> mimeData() -> text()), mapToScene(e->pos())));
 }
 
 /**
@@ -463,63 +461,25 @@ void DiagramView::pasteHere() {
 	 *  click to add an independent text field
 */
 void DiagramView::mousePressEvent(QMouseEvent *e) {
-	rubber_band_origin = mapToScene(e -> pos());
 
 	if (fresh_focus_in_) {
 		switchToVisualisationModeIfNeeded(e);
 		fresh_focus_in_ = false;
 	}
 
-	if (isInteractive() && !scene -> isReadOnly() && e -> button() == Qt::LeftButton) {
-		switch (current_behavior) {
-			case noAction:
-				QGraphicsView::mousePressEvent(e);
-				break;
-			case addingText:
-				addDiagramTextAtPos(rubber_band_origin);
-				current_behavior = noAction;
-				break;
-			case addingImage:
-				addDiagramImageAtPos(rubber_band_origin);
-				current_behavior = noAction;
-				break;
-			case addingLine:
-				newShapeItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Line);
-				scene -> addItem(newShapeItem);
-				break;
-			case addingRectangle:
-				newShapeItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Rectangle);
-				scene -> addItem(newShapeItem);
-				break;
-			case addingEllipse:
-				newShapeItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Ellipse);
-				scene -> addItem(newShapeItem);
-				break;
-			case addingPolyline:
-				if (!m_polyline_added) {
-					setContextMenuPolicy(Qt::NoContextMenu); //< for finish the polyline we must to right click,
-															 //  We disable the context menu
-					newShapeItem = new QetShapeItem(rubber_band_origin, rubber_band_origin, QetShapeItem::Polyline);
-					scene -> addItem(newShapeItem);
-					m_polyline_added = true;
-				} else {
-					newShapeItem->setNextPoint(Diagram::snapToGrid(rubber_band_origin)); //< this point is ok for pos
-					newShapeItem->setNextPoint(Diagram::snapToGrid(rubber_band_origin)); //< Add new point for next segment. the pos of this point
-																						 //  can be changed by calling QetShapItem::setP2()
-				}
-				break;
-			case dragView:
-				current_behavior = noAction;
-				QGraphicsView::mousePressEvent(e);
-				break;
-			default:
-				current_behavior = noAction;
-				break;
+	if (m_event_interface) {
+		if (m_event_interface -> mousePressEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				emit (itemAdded());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
 		}
 	}
 
 	//Start drag view when hold the middle button
-	else if (e -> button() == Qt::MidButton) {
+	if (e -> button() == Qt::MidButton) {
+		rubber_band_origin = mapToScene(e -> pos());
 		setCursor(Qt::ClosedHandCursor);
 		center_view_ = mapToScene(this -> viewport() -> rect().center());
 	}
@@ -532,17 +492,21 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
  * Manage the event move mouse
  */
 void DiagramView::mouseMoveEvent(QMouseEvent *e) {
+
+	if (m_event_interface) {
+		if (m_event_interface -> mouseMoveEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				emit (itemAdded());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
 	//Drag the view
 	if (e -> buttons() == Qt::MidButton) {
 		QPointF move = rubber_band_origin - mapToScene(e -> pos());
 		this -> centerOn(center_view_ + move);
 		center_view_ = mapToScene( this -> viewport() -> rect().center() );
-	}
-
-	//Add point P2 to the curent shape
-	else if ( (e -> buttons() == Qt::LeftButton && current_behavior &addingShape) ||
-			  (current_behavior == addingPolyline && m_polyline_added) ) {
-		newShapeItem->setP2(mapToScene(e->pos()));
 	}
 
 	else QGraphicsView::mouseMoveEvent(e);
@@ -553,27 +517,18 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e) {
  * Manage event release click mouse
  */
 void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
+
+	if (m_event_interface) {
+		if (m_event_interface -> mouseReleaseEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				emit (itemAdded());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
 	//Stop drag view
 	if (e -> button() == Qt::MidButton) setCursor(Qt::ArrowCursor);
-
-	// Add shape define by 2 points
-	else if (current_behavior & adding2PShape) {
-		// place it to the good position with an undo command
-		scene -> undoStack().push(new AddShapeCommand(scene, newShapeItem, rubber_band_origin));
-		emit(itemAdded());
-		current_behavior = noAction;
-	}
-
-	// Add polyline shape
-	else if (e -> button() == Qt::RightButton && current_behavior == addingPolyline) {
-		newShapeItem->setP2(rubber_band_origin);
-		scene -> undoStack().push(new AddShapeCommand(scene, newShapeItem, newShapeItem->scenePos()));
-		emit(itemAdded());
-		current_behavior = noAction;
-		m_polyline_added = false;
-		setContextMenuPolicy(Qt::DefaultContextMenu); //< the polyline is finish,
-													  //  We make context menu available
-	}
 
 	else QGraphicsView::mouseReleaseEvent(e);
 }
@@ -591,6 +546,16 @@ bool DiagramView::gestures() const {
 	@param e QWheelEvent
 */
 void DiagramView::wheelEvent(QWheelEvent *e) {
+	if (m_event_interface) {
+		if (m_event_interface -> wheelEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				emit (itemAdded());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+
 	//Zoom and scrolling
 	if ( gestures() ) {
 		if (e -> modifiers() & Qt::ControlModifier)
@@ -1040,7 +1005,6 @@ bool DiagramView::event(QEvent *e) {
 bool DiagramView::switchToVisualisationModeIfNeeded(QInputEvent *e) {
 	if (isCtrlShifting(e) && !selectedItemHasFocus()) {
 		if (dragMode() != QGraphicsView::ScrollHandDrag) {
-			current_behavior = dragView;
 			setVisualisationMode();
 			return(true);
 		}
@@ -1054,9 +1018,8 @@ bool DiagramView::switchToVisualisationModeIfNeeded(QInputEvent *e) {
 	otherwise.
 */
 bool DiagramView::switchToSelectionModeIfNeeded(QInputEvent *e) {
-	if (current_behavior == dragView && !selectedItemHasFocus() && !isCtrlShifting(e)) {
+	if (!selectedItemHasFocus() && !isCtrlShifting(e)) {
 		setSelectionMode();
-		current_behavior = noAction;
 		return(true);
 	}
 	return(false);
@@ -1092,16 +1055,6 @@ bool DiagramView::selectedItemHasFocus() {
 	);
 }
 
-/**
-	Passe le DiagramView en mode "ajout de texte". Un clic cree alors un
-	nouveau champ de texte.
-*/
-void DiagramView::addText() {
-	if (scene -> isReadOnly()) return;
-	current_behavior = addingText;
-}
-
-
 /**	To edit the text through the htmlEditor
 */
 void DiagramView::editText() {
@@ -1119,56 +1072,6 @@ void DiagramView::editText() {
 	// Test if any text existe..
 	if (texts_to_edit.isEmpty()) return;	
 	else texts_to_edit.at(0)->edit();	
-}
-
-
-/**
-* @brief DiagramView::addImage
-*/
-void DiagramView::addImage() {
-	if (scene -> isReadOnly()) return;
-
-	QString pathPictures = QDesktopServices::storageLocation ( QDesktopServices::PicturesLocation );
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Selectionner une image..."), pathPictures.toStdString().c_str(), tr("Image Files (*.png *.jpg *.bmp *.svg)"));
-	if(fileName.isEmpty()) {
-		emit ImageAddedCanceled(false);
-		return;
-	}
-
-	int ret = image_to_add_.load(fileName);
-	if(!ret){
-		QMessageBox::critical(this, tr("Erreur"), tr("Impossible de charger l'image...D\351soler :("));
-		return;
-	}
-	current_behavior = addingImage;
-}
-
-/**
-* @brief DiagramView::addLine
-*/
-void DiagramView::addLine() {
-	current_behavior = addingLine;
-}
-
-/**
-* @brief DiagramView::addRectangle
-*/
-void DiagramView::addRectangle() {
-	current_behavior = addingRectangle;
-}
-
-/**
-* @brief DiagramView::addEllipse
-*/
-void DiagramView::addEllipse() {
-	current_behavior = addingEllipse;
-}
-
-/**
- * @brief DiagramView::addPolyline
- */
-void DiagramView::addPolyline() {
-	current_behavior = addingPolyline;
 }
 
 /**
@@ -1200,51 +1103,12 @@ void DiagramView::editShape() {
 }
 
 /**
-* @brief DiagramView::addDiagramImageAtPos
-* @param pos
-* @return
-*/
-DiagramImageItem *DiagramView::addDiagramImageAtPos(const QPointF &pos) {
-
-	if (!isInteractive() || scene -> isReadOnly()) return(0);
-
-	// cree un nouveau champ image
-	DiagramImageItem *Imageitem = new DiagramImageItem( QPixmap::fromImage(image_to_add_) );
-
-	// le place a la position pos en gerant l'annulation
-	scene -> undoStack().push(new AddImageCommand(scene, Imageitem, pos));
-	adjustSceneRect();
-	
-	// emet le signal ImageAdded
-	emit(itemAdded());
-
-	return(Imageitem);
-
-}
-
-/**
-	Cree un nouveau champ de texte et le place a la position pos
-	en gerant l'annulation ; enfin, le signal textAdded est emis.
-	@param pos Position du champ de texte ajoute
-	@return le champ de texte ajoute
-*/
-IndependentTextItem *DiagramView::addDiagramTextAtPos(const QPointF &pos, const QString &text) {
-	if (!isInteractive() || scene -> isReadOnly()) return(0);
-	
-	// cree un nouveau champ de texte
-	IndependentTextItem *iti;
-	if (text.isEmpty()) {
-		iti = new IndependentTextItem("_");
-	} else iti = new IndependentTextItem(text);
-	
-	// le place a la position pos en gerant l'annulation
-	scene -> undoStack().push(new AddTextCommand(scene, iti, pos));
-	adjustSceneRect();
-	
-	// emet le signal textAdded
-	emit(itemAdded());
-
-	return(iti);
+ * @brief DiagramView::setEventInterface
+ * Set an event interface to diagram view.
+ */
+void DiagramView::setEventInterface(DVEventInterface *interface) {
+	if (m_event_interface) delete m_event_interface;
+	m_event_interface = interface;
 }
 
 /**
@@ -1295,9 +1159,21 @@ QETDiagramEditor *DiagramView::diagramEditor() const {
 }
 
 /**
-	Gere les double-clics sur le schema
-*/
+ * @brief DiagramView::mouseDoubleClickEvent
+ * @param e
+ */
 void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
+
+	if (m_event_interface) {
+		if (m_event_interface -> mouseDoubleClickEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				emit (itemAdded());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+
 	BorderTitleBlock &bi = scene -> border_and_titleblock;
 	
 	//Get the rectangle of the titleblock

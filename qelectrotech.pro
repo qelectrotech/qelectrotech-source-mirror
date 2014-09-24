@@ -63,16 +63,18 @@ DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
 TEMPLATE = app
 DEPENDPATH += .
-INCLUDEPATH += sources sources/editor sources/titleblock sources/ui sources/qetgraphicsitem sources/richtext sources/factory sources/properties
+INCLUDEPATH += sources sources/editor sources/titleblock sources/ui sources/qetgraphicsitem sources/richtext sources/factory sources/properties sources/dvevent
 
 # Fichiers sources
 HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*.h) $$files(sources/titleblock/*.h) $$files(sources/richtext/*.h) $$files(sources/qetgraphicsitem/*.h) $$files(sources/factory/*.cpp) \
            $$files(sources/properties/*.h) \
-           $$files(sources/editor/ui/*.h)
+           $$files(sources/editor/ui/*.h) \
+           $$files(sources/dvevent/*.h)
 
 SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/titleblock/*.cpp) $$files(sources/richtext/*.cpp) $$files(sources/ui/*.cpp) $$files(sources/qetgraphicsitem/*.cpp) $$files(sources/factory/*.cpp) \
            $$files(sources/properties/*.cpp) \
-           $$files(sources/editor/ui/*.cpp)
+           $$files(sources/editor/ui/*.cpp) \
+           $$files(sources/dvevent/*.cpp)
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc

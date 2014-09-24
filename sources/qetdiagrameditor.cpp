@@ -34,6 +34,10 @@
 #include "genericpanel.h"
 #include "nomenclature.h"
 #include "diagramfoliolist.h"
+#include "qetshapeitem.h"
+#include "dveventaddimage.h"
+#include "dveventaddshape.h"
+#include "dveventaddtext.h"
 
 #include "ui/dialogautonum.h"
 
@@ -1510,7 +1514,8 @@ void QETDiagramEditor::slot_resetConductors() {
  * add text to curent diagram
  */
 void QETDiagramEditor::slot_addText() {
-	if (DiagramView *dv = currentDiagram()) dv -> addText();
+	if (DiagramView *dv = currentDiagram())
+		dv -> setEventInterface(new DVEventAddText(dv));
 }
 
 /**
@@ -1518,7 +1523,15 @@ void QETDiagramEditor::slot_addText() {
  * add image to curent diagram
  */
 void QETDiagramEditor::slot_addImage() {
-	if (DiagramView *dv = currentDiagram()) dv -> addImage();
+	if (DiagramView *dv = currentDiagram()) {
+		DVEventAddImage *event = new DVEventAddImage(dv);
+		if (event -> isNull()) {
+			delete event;
+			m_add_item_actions_group.checkedAction()->setChecked(false);
+		} else {
+		dv -> setEventInterface(event);
+		}
+	}
 }
 
 /**
@@ -1526,15 +1539,16 @@ void QETDiagramEditor::slot_addImage() {
  * add line to curent diagram
  */
 void QETDiagramEditor::slot_addLine() {
-	if (DiagramView *dv = currentDiagram()) dv -> addLine();
+	if (DiagramView *dv = currentDiagram())
+		dv -> setEventInterface(new DVEventAddShape(dv, QetShapeItem::Line));
 }
 
 /**
  * @brief QETDiagramEditor::slot_addRectangle
- * add recatngle to curent diagram
+ * add rectangle to curent diagram
  */
 void QETDiagramEditor::slot_addRectangle() {
-	if (DiagramView *dv = currentDiagram()) dv -> addRectangle();
+	if (DiagramView *dv = currentDiagram()) dv -> setEventInterface(new DVEventAddShape(dv, QetShapeItem::Rectangle));
 }
 
 /**
@@ -1542,7 +1556,7 @@ void QETDiagramEditor::slot_addRectangle() {
  * add ellipse to curent diagram
  */
 void QETDiagramEditor::slot_addEllipse() {
-	if (DiagramView *dv = currentDiagram()) dv -> addEllipse();
+	if (DiagramView *dv = currentDiagram()) dv -> setEventInterface(new DVEventAddShape(dv, QetShapeItem::Ellipse));
 }
 
 /**
@@ -1550,7 +1564,7 @@ void QETDiagramEditor::slot_addEllipse() {
  * add polyline to current diagram
  */
 void QETDiagramEditor::slot_addPolyline() {
-	if (DiagramView *dv = currentDiagram()) dv -> addPolyline();
+	if (DiagramView *dv = currentDiagram()) dv -> setEventInterface(new DVEventAddShape(dv, QetShapeItem::Polyline));
 }
 
 /**
@@ -1851,7 +1865,6 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv) {
 	undo_group.addStack(&(dv -> diagram() -> undoStack()));
 	connect(dv,              SIGNAL(selectionChanged()),         this,     SLOT(slot_updateComplexActions()));
 	connect(dv,              SIGNAL(modeChanged()),              this,     SLOT(slot_updateModeActions()));
-	connect(dv,				 SIGNAL(ImageAddedCanceled(bool)),   this,	   SLOT(addItemFinish()));
 	connect(dv,				 SIGNAL(itemAdded()),				 this,	   SLOT(addItemFinish()));
 }
 
@@ -1963,7 +1976,7 @@ void QETDiagramEditor::showError(const QString &error) {
  * Uncheck all action in m_add_item_actions_group
  */
 void QETDiagramEditor::addItemFinish() {
-	foreach(QAction *action, m_add_item_actions_group.actions()) action->setChecked(false);
+	m_add_item_actions_group.checkedAction()->setChecked(false);
 }
 
 /**

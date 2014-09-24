@@ -20,13 +20,12 @@
 #include <QtGui>
 #include "elementslocation.h"
 #include "templatelocation.h"
-#include "qetgraphicsitem/qetshapeitem.h"
+
 class Conductor;
 class Diagram;
-class Element;
-class IndependentTextItem;
-class DiagramImageItem;
 class QETDiagramEditor;
+class DVEventInterface;
+
 /**
 	This class provides a widget to render an electric diagram in an editable,
 	interactive way.
@@ -38,18 +37,6 @@ class DiagramView : public QGraphicsView {
 	public:
 	DiagramView(Diagram * = 0, QWidget * = 0);
 	virtual ~DiagramView();
-	
-	Q_ENUMS(behavior)
-	enum behavior {noAction		   =1,
-				   addingText	   =2,
-				   addingImage	   =4,
-				   addingLine	   =8,
-				   addingRectangle =16,
-				   addingEllipse   =32,
-				   adding2PShape   =56,
-				   addingPolyline  =64,
-				   addingShape	   =120,
-				   dragView        =124};
 
 	private:
 	DiagramView(const DiagramView &);
@@ -61,15 +48,12 @@ class DiagramView : public QGraphicsView {
 	QAction *paste_here;
 	QAction *find_element_;
 	QPoint paste_here_pos;
-	behavior current_behavior;
 	bool fresh_focus_in_;               ///< Indicate the focus was freshly gained
 	ElementsLocation next_location_;
 	QPoint next_position_;
 	QPointF center_view_;
-	QImage image_to_add_;
-	QetShapeItem *newShapeItem;
 	QPointF rubber_band_origin;
-	bool m_polyline_added;
+	DVEventInterface *m_event_interface;
 	
 	// methods
 	public:
@@ -87,15 +71,9 @@ class DiagramView : public QGraphicsView {
 	bool hasDeletableItems();
 	void addText();
 	void editText();
-	void addImage();
-	void addLine();
-	void addRectangle();
-	void addEllipse();
-	void addPolyline();
 	void editImage();
 	void editShape();
-	IndependentTextItem *addDiagramTextAtPos(const QPointF &, const QString &text = 0);
-	DiagramImageItem *addDiagramImageAtPos(const QPointF &);
+	void setEventInterface (DVEventInterface *interface);
 	
 	protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent *);
@@ -147,8 +125,6 @@ class DiagramView : public QGraphicsView {
 	void editTitleBlockTemplate(const QString &, bool);
 	/// Signal emitted after an item is added
 	void itemAdded();
-	/// Signal emmitted fater windows selection image have been canceled
-	void ImageAddedCanceled(bool);
 	/// Signal emmitted when diagram must be show
 	void showDiagram (Diagram *);
 	
