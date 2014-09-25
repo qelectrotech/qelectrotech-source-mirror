@@ -1055,50 +1055,17 @@ bool DiagramView::selectedItemHasFocus() {
 	);
 }
 
-/**	To edit the text through the htmlEditor
-*/
-void DiagramView::editText() {
-	if (scene -> isReadOnly()) return;
-	// Get text to edit
-	QList<DiagramTextItem *> texts_to_edit;
-	foreach (QGraphicsItem *item, scene -> selectedItems()) {
-		if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
-			texts_to_edit << iti;
-		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
-			// here...
-			texts_to_edit << eti;
-		}
-	}
-	// Test if any text existe..
-	if (texts_to_edit.isEmpty()) return;	
-	else texts_to_edit.at(0)->edit();	
-}
-
 /**
- * @brief DiagramView::editImage
- * open edit image dialog if only one image is selected
+ * @brief DiagramView::editSelection
+ * Edit the selected item if he can be edited and if only  one item is selected
  */
-void DiagramView::editImage() {
-	if (scene -> isReadOnly()) return;
-	QList <QGraphicsItem *> images = diagram() -> selectedContent().items(DiagramContent::Images);
-	if (images.count() != 1) return;
-	DiagramImageItem *image;
-	if ((image = qgraphicsitem_cast<DiagramImageItem *> (images.first()))) {
-		image -> editProperty();
-	}
-}
+void DiagramView::editSelection() {
+	if (scene -> isReadOnly() || scene -> selectedItems().size() != 1 ) return;
 
-/**
- * @brief DiagramView::editShape
- * open edit image dialog if only one shape is selected
- */
-void DiagramView::editShape() {
-	if (scene -> isReadOnly()) return;
-	QList <QGraphicsItem *> shapes = diagram() -> selectedContent().items(DiagramContent::Shapes);
-	if (shapes.count() != 1) return;
-	QetShapeItem *shape;
-	if ((shape = qgraphicsitem_cast<QetShapeItem *> (shapes.first()))) {
-		shape -> editProperty();
+	if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(scene->selectedItems().first())) {
+		iti -> edit();
+	} else if (QetGraphicsItem *qgi = qgraphicsitem_cast<QetGraphicsItem *> (scene->selectedItems().first())) {
+		qgi -> editProperty();
 	}
 }
 

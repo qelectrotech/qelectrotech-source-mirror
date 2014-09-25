@@ -69,10 +69,7 @@ class DiagramView : public QGraphicsView {
 	bool hasSelectedItems();
 	bool hasCopiableItems();
 	bool hasDeletableItems();
-	void addText();
-	void editText();
-	void editImage();
-	void editShape();
+	void editSelection();
 	void setEventInterface (DVEventInterface *interface);
 	
 	protected:

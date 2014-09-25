@@ -1575,14 +1575,7 @@ void QETDiagramEditor::slot_editSelection() {
 	if (DiagramView *dv = currentDiagram()) {
 		DiagramContent dc = dv -> diagram() -> selectedContent();
 		if (dc.count(DiagramContent::SelectedOnly | DiagramContent::All) != 1) return;
-
-		if (dc.count(DiagramContent::Elements)) {
-			findSelectedElementInPanel();
-			editSelectedElementInEditor();
-		}
-		else if (dc.count(DiagramContent::TextFields)) dv -> editText();
-		else if (dc.count(DiagramContent::Images)) dv -> editImage();
-		else if (dc.count(DiagramContent::Shapes)) dv -> editShape();
+		dv->editSelection();
 	}
 }
 
