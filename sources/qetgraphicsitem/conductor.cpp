@@ -1125,29 +1125,80 @@ ConductorSegment *Conductor::middleSegment() {
 }
 
 /**
-	Positionne le texte du conducteur au milieu du segment qui contient le
-	point au milieu du conducteur
-	@see middleSegment()
-*/
+ * @brief Conductor::posForText
+ * Calculate and return the better pos for text.
+ * @param flag : flag is used to know if text pos is near of
+ * a vertical or horizontal conductor segment.
+ */
+QPointF Conductor::posForText(Qt::Orientations &flag) {
+
+	ConductorSegment *segment = segments;
+
+	//Go to first segement
+	while (!segment->isFirstSegment()) {
+		segment = segment->previousSegment();
+	}
+
+
+	QPointF p1 = segment -> firstPoint(); //<First point of conductor
+	ConductorSegment *biggest_segment = segment; //<biggest segment: contain the longest segment of conductor.
+
+	while (segment -> hasNextSegment()) {
+		segment = segment -> nextSegment();
+		if (segment -> length() > biggest_segment -> length())
+			biggest_segment = segment;
+	}
+
+	QPointF p2 = segment -> secondPoint();//<Last point of conductor
+
+	//If the conductor is horizontal or vertical
+	//Return the point at the middle of conductor
+	if (p1.x() == p2.x()) { //<Vertical
+		flag = Qt::Vertical;
+		if (p1.y() > p2.y()) {
+			p1.setY(p1.y() - (length()/2));
+		} else {
+			p1.setY(p1.y() + (length()/2));
+		}
+	} else if (p1.y() == p2.y()) { //<Horizontal
+		flag = Qt::Horizontal;
+		if (p1.x() > p2.x()) {
+			p1.setX(p1.x() - (length()/2));
+		} else {
+			p1.setX(p1.x() + (length()/2));
+		}
+	} else { //Return the point at the middle of biggest segment.
+		p1 = biggest_segment->middle();
+		flag = (biggest_segment->isHorizontal())? Qt::Horizontal : Qt::Vertical;
+	}
+	return p1;
+}
+
+/**
+ * @brief Conductor::calculateTextItemPosition
+ * Move the text at middle of conductor (if is vertical or horizontal)
+ * otherwise, move conductor at the middle of the longest segment of conductor.
+ * If text was moved by user, this function do nothing, except check if text is near conductor.
+ */
 void Conductor::calculateTextItemPosition() {
 	if (!text_item) return;
 	
 	//position
 	if (text_item -> wasMovedByUser()) {
-		// le champ de texte a ete deplace par l'utilisateur :
-		// on verifie qu'il est encore a proximite du conducteur
+		//Text field was moved by user :
+		//we check if text field is yet  near the conductor
 		QPointF text_item_pos = text_item -> pos();
 		QPainterPath near_shape = nearShape();
 		if (!near_shape.contains(text_item_pos)) {
 			text_item -> setPos(movePointIntoPolygon(text_item_pos, near_shape));
 		}
 	} else {
-		// positionnement automatique basique
-		text_item -> setPos(middleSegment() -> middle());
-		//rotation
+		//Position of text is calculated and also is rotation
+		Qt::Orientations rotation;
+		text_item -> setPos(posForText(rotation));
 		if (!text_item -> wasRotateByUser()) {
-			middleSegment() -> isVertical()? text_item -> setRotationAngle(properties_.verti_rotate_text):
-											 text_item -> setRotationAngle(properties_.horiz_rotate_text);
+			rotation == Qt::Vertical ? text_item -> setRotationAngle(properties_.verti_rotate_text):
+									   text_item -> setRotationAngle(properties_.horiz_rotate_text);
 		}
 	}
 }

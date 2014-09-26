@@ -88,6 +88,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	virtual bool isNearConductor(const QPointF &);
 	qreal length();
 	ConductorSegment *middleSegment();
+	QPointF posForText(Qt::Orientations &flag);
 	bool containsPoint(const QPointF &) const;
 	QString text() const;
 	void setText(const QString &);
