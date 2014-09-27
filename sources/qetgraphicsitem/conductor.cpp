@@ -1145,8 +1145,15 @@ QPointF Conductor::posForText(Qt::Orientations &flag) {
 
 	while (segment -> hasNextSegment()) {
 		segment = segment -> nextSegment();
-		if (segment -> length() > biggest_segment -> length())
-			biggest_segment = segment;
+
+		//We must to compare length segment, but they can be negative
+		//so we multiply by -1 to make it positive.
+		int saved = biggest_segment -> length();
+		if (saved < 0) saved *= -1;
+		int curent = segment->length();
+		if (curent < 0) curent *= -1;
+
+		if (curent > saved) biggest_segment = segment;
 	}
 
 	QPointF p2 = segment -> secondPoint();//<Last point of conductor
