@@ -31,7 +31,9 @@
 DVEventAddShape::DVEventAddShape(DiagramView *dv, QetShapeItem::ShapeType shape_type) :
 	DVEventInterface(dv),
 	m_shape_type (shape_type),
-	m_shape_item (nullptr)
+	m_shape_item (nullptr),
+	m_help_horiz (nullptr),
+	m_help_verti (nullptr)
 {}
 
 /**
@@ -42,6 +44,8 @@ DVEventAddShape::~DVEventAddShape() {
 		m_diagram -> removeItem(m_shape_item);
 		delete m_shape_item;
 	}
+	delete m_help_horiz;
+	delete m_help_verti;
 	m_dv -> setContextMenuPolicy(Qt::DefaultContextMenu);
 }
 
@@ -104,6 +108,7 @@ bool DVEventAddShape::mousePressEvent(QMouseEvent *event) {
  * @return : true if this event is managed, otherwise false
  */
 bool DVEventAddShape::mouseMoveEvent(QMouseEvent *event) {
+	updateHelpCross(event->pos());
 	if (!m_running) return false;
 	if (m_shape_item && event -> buttons() == Qt::NoButton) {
 		m_shape_item -> setP2 (m_dv -> mapToScene (event -> pos()));
@@ -127,4 +132,36 @@ bool DVEventAddShape::mouseReleaseEvent(QMouseEvent *event) {
 		return true;
 	}
 	return false;
+}
+
+/**
+ * @brief DVEventAddShape::updateHelpCross
+ * Create and update the position of the cross to help user for draw new shape
+ * @param event
+ */
+void DVEventAddShape::updateHelpCross(const QPoint &p) {
+	//If line isn't created yet, we create it.
+	if (!m_help_horiz || !m_help_verti) {
+		QPen pen;
+		pen.setColor(Qt::yellow);
+		//Add +5 for each line, because the topleft of diagram isn't draw at position (0:0) but (5:5)
+		if (!m_help_horiz) {
+			m_help_horiz = new QGraphicsLineItem(m_diagram -> border_and_titleblock.rowsHeaderWidth() + 5, 0,
+												 m_diagram -> border_and_titleblock.diagramWidth() + 5, 0,
+												 0, m_diagram);
+			m_help_horiz->setPen(pen);
+		}
+		if (!m_help_verti) {
+			m_help_verti = new QGraphicsLineItem(0, m_diagram -> border_and_titleblock.columnsHeaderHeight() + 5,
+												 0, m_diagram -> border_and_titleblock.diagramHeight() + 5,
+												 0, m_diagram);
+			m_help_verti->setPen(pen);
+		}
+	}
+
+	//Update the position of the cross
+	QPointF point = Diagram::snapToGrid(m_dv->mapToScene(p));
+
+	m_help_horiz->setY(point.y());
+	m_help_verti->setX(point.x());
 }
