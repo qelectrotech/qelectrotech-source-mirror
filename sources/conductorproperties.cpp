@@ -223,7 +223,8 @@ ConductorProperties::ConductorProperties() :
 	text_size(9),
 	verti_rotate_text(270),
 	horiz_rotate_text(0),
-	style(Qt::SolidLine)
+	style(Qt::SolidLine),
+	m_show_text(true)
 {
 }
 
@@ -252,6 +253,7 @@ void ConductorProperties::toXml(QDomElement &e) const {
 	}
 	e.setAttribute("num", text);
 	e.setAttribute("numsize", text_size);
+	e.setAttribute("displaytext", m_show_text);
 	e.setAttribute("vertirotatetext", verti_rotate_text);
 	e.setAttribute("horizrotatetext", horiz_rotate_text);
 	
@@ -283,17 +285,19 @@ void ConductorProperties::fromXml(QDomElement &e) {
 		// get specific properties for single conductor
 		singleLineProperties.fromXml(e);
 		type = Single;
-	} else if (e.attribute("type") == typeToString(Simple)) {
-		type = Simple;
 	} else {
 		type = Multi;
 	}
 	// get text field
 	text = e.attribute("num");
 	text_size = e.attribute("numsize", QString::number(9)).toInt();
+	m_show_text = e.attribute("displaytext", QString::number(1)).toInt();
 	verti_rotate_text = e.attribute("vertirotatetext").toDouble();
 	horiz_rotate_text = e.attribute("horizrotatetext").toDouble();
 
+	//Keep retrocompatible with version older than 0,4
+	//If the propertie @type is simple (removed since QET 0,4), we set text no visible.
+	if (e.attribute("type") == "simple") m_show_text = false;
 }
 
 /**
@@ -306,6 +310,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "type", typeToString(type));
 	settings.setValue(prefix + "text", text);
 	settings.setValue(prefix + "textsize", QString::number(text_size));
+	settings.setValue(prefix + "displaytext", m_show_text);
 	settings.setValue(prefix + "vertirotatetext", QString::number(verti_rotate_text));
 	settings.setValue(prefix + "horizrotatetext", QString::number(horiz_rotate_text));
 	singleLineProperties.toSettings(settings, prefix);
@@ -327,14 +332,13 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	QString setting_type = settings.value(prefix + "type", typeToString(Multi)).toString();
 	if (setting_type == typeToString(Single)) {
 		type = Single;
-	} else if (setting_type == typeToString(Simple)) {
-		type = Simple;
 	} else {
 		type = Multi;
 	}
 	singleLineProperties.fromSettings(settings, prefix);
 	text = settings.value(prefix + "text", "_").toString();
 	text_size = settings.value(prefix + "textsize", "7").toInt();
+	m_show_text = settings.value(prefix + "displaytext", true).toBool();
 	verti_rotate_text = settings.value((prefix + "vertirotatetext"), "270").toDouble();
 	horiz_rotate_text = settings.value((prefix + "horizrotatetext"), "0").toDouble();
 
@@ -347,7 +351,6 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 */
 QString ConductorProperties::typeToString(ConductorType t) {
 	switch(t) {
-		case Simple: return("simple");
 		case Single: return("single");
 		case Multi:  return("multi");
 		default: return(QString());
@@ -364,6 +367,7 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const{
 		other.color == color &&\
 		other.style == style &&\
 		other.text == text &&\
+		other.m_show_text == m_show_text &&\
 		other.text_size == text_size &&\
 		other.verti_rotate_text == verti_rotate_text &&\
 		other.horiz_rotate_text == horiz_rotate_text &&\
@@ -376,16 +380,7 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const{
 	@return true si les deux ensembles de proprietes sont differents, false sinon
 */
 bool ConductorProperties::operator!=(const ConductorProperties &other) const{
-	return(
-		other.type != type ||\
-		other.color != color ||\
-		other.style != style ||\
-		other.text != text ||\
-		other.text_size != text_size ||\
-		other.verti_rotate_text != verti_rotate_text ||\
-		other.horiz_rotate_text != horiz_rotate_text ||\
-		other.singleLineProperties != singleLineProperties
-	);
+	return(!(*this == other));
 }
 
 /**

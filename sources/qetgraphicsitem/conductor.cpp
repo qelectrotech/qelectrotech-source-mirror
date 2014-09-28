@@ -1281,33 +1281,45 @@ QString Conductor::text() const {
 }
 
 /**
-	@param t Nouveau texte du conducteur
-*/
+ * @brief Conductor::setText
+ * The text of this conductor
+ * @param t
+ */
 void Conductor::setText(const QString &t) {
-	text_item -> setFontSize(properties_.text_size);
 	text_item -> setPlainText(t);
-
 }
 
-/// @param p les proprietes de ce conducteur
+/**
+ * @brief Conductor::setProperties
+ * Set new properties for this conductor
+ * @param p : properties
+ */
 void Conductor::setProperties(const ConductorProperties &p) {
 	properties_ = p;
 	readProperties();
 }
 
-/// @return les proprietes de ce conducteur
+/**
+ * @brief Conductor::properties
+ * @return the properties of this Conductor
+ */
 ConductorProperties Conductor::properties() const {
 	return(properties_);
 }
 
 /**
-	Relit les proprietes et les applique
-*/
+ * @brief Conductor::readProperties
+ * Read and apply properties
+ */
 void Conductor::readProperties() {
-	// la couleur n'est vraiment applicable que lors du rendu du conducteur
 	setText(properties_.text);
+	text_item -> setFontSize(properties_.text_size);
+	if (properties_.type != ConductorProperties::Multi) {
+		text_item -> setVisible(false);
+	} else {
+		text_item -> setVisible(properties_.m_show_text);
+	}
 	calculateTextItemPosition();
-	text_item -> setVisible(properties_.type == ConductorProperties::Multi);
 }
 
 /**

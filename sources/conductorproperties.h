@@ -70,7 +70,7 @@ class ConductorProperties {
 		 * Single: singleline symbols, no text input
 		 * Multi: text input, no symbol
 	*/
-	enum ConductorType { Simple, Single, Multi };
+	enum ConductorType { Single, Multi };
 	
 	// attributes
 	/// Conductor type
@@ -84,6 +84,7 @@ class ConductorProperties {
 	/// rotation angle texte
 	double verti_rotate_text;
 	double horiz_rotate_text;
+	bool m_show_text;
 	/// conducteur style (Qt::SolidLine or Qt::DashLine)
 	Qt::PenStyle style;
 	

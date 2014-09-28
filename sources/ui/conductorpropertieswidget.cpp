@@ -72,6 +72,7 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	if (index != -1) ui -> m_line_style_cb -> setCurrentIndex(index);
 	ui -> m_text_le      -> setText    (m_properties.text);
 	ui -> m_text_size_sb -> setValue   (m_properties.text_size);
+	ui -> m_show_text_cb -> setChecked (m_properties.m_show_text);
 	ui -> m_earth_cb     -> setChecked (m_properties.singleLineProperties.hasGround);
 	ui -> m_neutral_cb   -> setChecked (m_properties.singleLineProperties.hasNeutral);
 	ui -> m_pen_cb       -> setChecked (m_properties.singleLineProperties.isPen());
@@ -90,13 +91,13 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
  */
 ConductorProperties ConductorPropertiesWidget::properties() const {
 	ConductorProperties properties_;
-	if      (ui -> m_simple_rb -> isChecked()) properties_.type = ConductorProperties::Simple;
-	else if (ui -> m_multi_rb  -> isChecked()) properties_.type = ConductorProperties::Multi;
+	if (ui -> m_multi_rb  -> isChecked()) properties_.type = ConductorProperties::Multi;
 	else if (ui -> m_single_rb -> isChecked()) properties_.type = ConductorProperties::Single;
 	properties_.color = ui->m_color_pb->palette().color(QPalette::Button);
 	properties_.style = static_cast<Qt::PenStyle>(ui->m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).toInt());
 	properties_.text = ui -> m_text_le -> text();
 	properties_.text_size = ui -> m_text_size_sb -> value();
+	properties_.m_show_text = ui -> m_show_text_cb -> isChecked();
 	properties_.verti_rotate_text = m_verti_select -> value();
 	properties_.horiz_rotate_text = m_horiz_select -> value();
 	properties_.singleLineProperties.hasGround = ui -> m_earth_cb -> isChecked();
@@ -145,9 +146,6 @@ void ConductorPropertiesWidget::initWidget() {
  */
 void ConductorPropertiesWidget::setConductorType(ConductorProperties::ConductorType type) {
 	switch (type) {
-		case ConductorProperties::Simple:
-			ui -> m_simple_rb -> setChecked(true);
-			break;
 		case ConductorProperties::Multi:
 			ui -> m_multi_rb -> setChecked(true);
 			break;
