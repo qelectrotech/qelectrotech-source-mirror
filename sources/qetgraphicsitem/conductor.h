@@ -107,7 +107,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	virtual Highlight highlight() const;
 	virtual void setHighlighted(Highlight);
 	void autoText();
-	QSet<Conductor *> relatedPotentialConductors(QList <Terminal *> *t_list=0);
+	QSet<Conductor *> relatedPotentialConductors(const bool all_diagram = true, QList <Terminal *> *t_list=0);
 	QETDiagramEditor* diagramEditor() const;
 	void editProperty ();
 	
@@ -181,6 +181,6 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	static qreal conductor_bound(qreal, qreal, bool);
 	static Qt::Corner movementType(const QPointF &, const QPointF &);
 	static QPointF movePointIntoPolygon(const QPointF &, const QPainterPath &);
-	Terminal * relatedPotentialTerminal (Terminal *);
+	Terminal * relatedPotentialTerminal (Terminal *, const bool all_diagram = true);
 };
 #endif

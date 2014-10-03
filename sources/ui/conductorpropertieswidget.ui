@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>430</width>
-    <height>407</height>
+    <width>570</width>
+    <height>453</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -94,7 +94,22 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="m_autonum_layout"/>
+          <layout class="QVBoxLayout" name="m_autonum_layout">
+           <item>
+            <widget class="QCheckBox" name="m_one_text_per_folio_cb">
+             <property name="text">
+              <string>Afficher un seul texte par potentiel présent sur un folio. (expérimental)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="m_no_one_text_per_folio_cb">
+             <property name="text">
+              <string>Ne pas subir l'option :  afficher un seul texte par potentiel présent sur un folio. (Inactifl)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
           <widget class="QLabel" name="label_3">

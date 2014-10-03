@@ -1188,7 +1188,35 @@ QPointF Conductor::posForText(Qt::Orientations &flag) {
  * If text was moved by user, this function do nothing, except check if text is near conductor.
  */
 void Conductor::calculateTextItemPosition() {
-	if (!text_item) return;
+	if (!text_item || !diagram()) return;
+
+	if (diagram() -> defaultConductorProperties.m_one_text_per_folio == true) {
+		QSet<Conductor *> conductor_list = relatedPotentialConductors(false);
+		Conductor *longuest_conductor = this;
+
+		//Search the longuest conductor
+		foreach (Conductor *c, conductor_list) {
+			if (c -> length() > longuest_conductor -> length()) {
+				longuest_conductor = c;
+			}
+		}
+
+		//The longuest conductor isn't this conductor
+		//we call calculateTextItemPosition of the longuest conductor
+		if(longuest_conductor != this) {
+			longuest_conductor -> calculateTextItemPosition();
+			return;
+		}
+
+		//At this point this conductor is the longuest conductor
+		//we hide all text of conductor_list
+		foreach (Conductor *c, conductor_list) {
+			c -> textItem() -> setVisible(false);
+		}
+	}
+
+	//Make sure text item is visible
+	text_item -> setVisible(true);
 	
 	//position
 	if (text_item -> wasMovedByUser()) {
@@ -1405,10 +1433,12 @@ QSet<Conductor *> Conductor::relatedConductors() const {
  * @brief Conductor::relatedPotentialConductors
  * Return all conductors at the same potential of this conductor, this conductor isn't
  * part of the returned QSet.
+ * @param all_diagram : if true search in all diagram of the project,
+ * false search only in the parent diagram of this conductor
  * @param t_list, a list of terminal already cheched for the serach of potential.
  * @return  a QSet of conductor at the same potential.
  */
-QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_list) {
+QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, QList <Terminal *> *t_list) {
 	bool declar_t_list = false;
 	if (t_list == 0) {
 		declar_t_list = true;
@@ -1426,7 +1456,7 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_li
 			QList <Conductor *> other_conductors_list_t = terminal -> conductors();
 
 			//get terminal share the same potential of @terminal, of parent element
-			Terminal *t1_bis = relatedPotentialTerminal(terminal);
+			Terminal *t1_bis = relatedPotentialTerminal(terminal, all_diagram);
 			if (t1_bis && !t_list->contains(t1_bis)) {
 				t_list -> append(t1_bis);
 				other_conductors_list_t += t1_bis->conductors();
@@ -1435,7 +1465,7 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_li
 			other_conductors_list_t.removeAll(this);
 			// Research the conductors connected to conductors already found
 			foreach (Conductor *c, other_conductors_list_t) {
-				other_conductors += c -> relatedPotentialConductors(t_list);
+				other_conductors += c -> relatedPotentialConductors(all_diagram, t_list);
 			}
 			other_conductors += other_conductors_list_t.toSet();
 		}
@@ -1454,11 +1484,13 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_li
  * For folio report, return the terminal of linked other report.
  * For Terminal element, return the other terminal of terminal element.
  * @param t terminal to start search
+ * @param all_diagram :if true return all related terminal,
+ * false return only terminal in the same diagram of @t
  * @return
  */
-Terminal * Conductor::relatedPotentialTerminal (Terminal *t) {
+Terminal * Conductor::relatedPotentialTerminal (Terminal *t, const bool all_diagram) {
 	// If terminal parent element is a folio report.
-	if (t->parentElement()->linkType() & Element::AllReport) {
+	if (all_diagram && t->parentElement()->linkType() & Element::AllReport) {
 		QList <Element *> elmt_list = t->parentElement()->linkedElements();
 		if (!elmt_list.isEmpty()) {
 			return (elmt_list.first()->terminals().first());

@@ -41,6 +41,8 @@ class ConductorPropertiesWidget : public QWidget
 		void setReadOnly(const bool &ro);
 
 		void addAutonumWidget (QWidget *widget);
+		void setHiddenOneTextPerFolio   (const bool &hide);
+		void setHiddenNoOneTextPerFolio (const bool &hide);
 
 	private:
 		void initWidget();

@@ -224,7 +224,9 @@ ConductorProperties::ConductorProperties() :
 	verti_rotate_text(270),
 	horiz_rotate_text(0),
 	style(Qt::SolidLine),
-	m_show_text(true)
+	m_show_text(true),
+	m_one_text_per_folio(false),
+	m_no_one_text_per_folio(false)
 {
 }
 
@@ -254,6 +256,8 @@ void ConductorProperties::toXml(QDomElement &e) const {
 	e.setAttribute("num", text);
 	e.setAttribute("numsize", text_size);
 	e.setAttribute("displaytext", m_show_text);
+	e.setAttribute("onetextperfolio", m_one_text_per_folio);
+	e.setAttribute("noonetextperfolio", m_no_one_text_per_folio);
 	e.setAttribute("vertirotatetext", verti_rotate_text);
 	e.setAttribute("horizrotatetext", horiz_rotate_text);
 	
@@ -292,6 +296,8 @@ void ConductorProperties::fromXml(QDomElement &e) {
 	text = e.attribute("num");
 	text_size = e.attribute("numsize", QString::number(9)).toInt();
 	m_show_text = e.attribute("displaytext", QString::number(1)).toInt();
+	m_one_text_per_folio = e.attribute("onetextperfolio", QString::number(0)).toInt();
+	m_no_one_text_per_folio = e.attribute("noonetextperfolio", QString::number(0)).toInt();
 	verti_rotate_text = e.attribute("vertirotatetext").toDouble();
 	horiz_rotate_text = e.attribute("horizrotatetext").toDouble();
 
@@ -311,6 +317,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "text", text);
 	settings.setValue(prefix + "textsize", QString::number(text_size));
 	settings.setValue(prefix + "displaytext", m_show_text);
+	settings.setValue(prefix + "onetextperfolio", m_one_text_per_folio);
 	settings.setValue(prefix + "vertirotatetext", QString::number(verti_rotate_text));
 	settings.setValue(prefix + "horizrotatetext", QString::number(horiz_rotate_text));
 	singleLineProperties.toSettings(settings, prefix);
@@ -339,6 +346,7 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	text = settings.value(prefix + "text", "_").toString();
 	text_size = settings.value(prefix + "textsize", "7").toInt();
 	m_show_text = settings.value(prefix + "displaytext", true).toBool();
+	m_one_text_per_folio = settings.value(prefix + "onetextperfolio", false).toBool();
 	verti_rotate_text = settings.value((prefix + "vertirotatetext"), "270").toDouble();
 	horiz_rotate_text = settings.value((prefix + "horizrotatetext"), "0").toDouble();
 
@@ -371,7 +379,9 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const{
 		other.text_size == text_size &&\
 		other.verti_rotate_text == verti_rotate_text &&\
 		other.horiz_rotate_text == horiz_rotate_text &&\
-		other.singleLineProperties == singleLineProperties
+		other.singleLineProperties == singleLineProperties &&\
+		other.m_one_text_per_folio == m_one_text_per_folio &&\
+		other.m_no_one_text_per_folio == m_no_one_text_per_folio
 	);
 }
 

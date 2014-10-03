@@ -85,6 +85,8 @@ class ConductorProperties {
 	double verti_rotate_text;
 	double horiz_rotate_text;
 	bool m_show_text;
+	bool m_one_text_per_folio;
+	bool m_no_one_text_per_folio;
 	/// conducteur style (Qt::SolidLine or Qt::DashLine)
 	Qt::PenStyle style;
 	

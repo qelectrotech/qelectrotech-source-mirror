@@ -36,6 +36,7 @@ ConductorPropertiesDialog::ConductorPropertiesDialog(Conductor *conductor, QWidg
 {
 	ui->setupUi(this);
 	m_cpw = new ConductorPropertiesWidget(conductor->properties());
+	m_cpw -> setHiddenOneTextPerFolio(true);
 	ui -> main_layout -> insertWidget(1, m_cpw);
 }
 

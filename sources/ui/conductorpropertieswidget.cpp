@@ -70,16 +70,20 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	setColorButton(m_properties.color);
 	int index = ui -> m_line_style_cb->findData(m_properties.style);
 	if (index != -1) ui -> m_line_style_cb -> setCurrentIndex(index);
-	ui -> m_text_le      -> setText    (m_properties.text);
-	ui -> m_text_size_sb -> setValue   (m_properties.text_size);
-	ui -> m_show_text_cb -> setChecked (m_properties.m_show_text);
-	ui -> m_earth_cb     -> setChecked (m_properties.singleLineProperties.hasGround);
-	ui -> m_neutral_cb   -> setChecked (m_properties.singleLineProperties.hasNeutral);
-	ui -> m_pen_cb       -> setChecked (m_properties.singleLineProperties.isPen());
-	ui -> m_phase_cb     -> setChecked (m_properties.singleLineProperties.phasesCount());
-	ui -> m_phase_slider -> setValue   (m_properties.singleLineProperties.phasesCount());
-	m_verti_select       -> setValue   (m_properties.verti_rotate_text);
-	m_horiz_select       -> setValue   (m_properties.horiz_rotate_text);
+
+	ui -> m_text_le                  -> setText    (m_properties.text);
+	ui -> m_text_size_sb             -> setValue   (m_properties.text_size);
+	ui -> m_show_text_cb             -> setChecked (m_properties.m_show_text);
+	ui -> m_one_text_per_folio_cb    -> setChecked (m_properties.m_one_text_per_folio);
+	ui -> m_no_one_text_per_folio_cb -> setChecked (m_properties.m_no_one_text_per_folio);
+	ui -> m_earth_cb                 -> setChecked (m_properties.singleLineProperties.hasGround);
+	ui -> m_neutral_cb               -> setChecked (m_properties.singleLineProperties.hasNeutral);
+	ui -> m_pen_cb                   -> setChecked (m_properties.singleLineProperties.isPen());
+	ui -> m_phase_cb                 -> setChecked (m_properties.singleLineProperties.phasesCount());
+	ui -> m_phase_slider             -> setValue   (m_properties.singleLineProperties.phasesCount());
+
+	m_verti_select                   -> setValue   (m_properties.verti_rotate_text);
+	m_horiz_select                   -> setValue   (m_properties.horiz_rotate_text);
 
 	setConductorType(m_properties.type);
 	updatePreview(false);
@@ -93,16 +97,20 @@ ConductorProperties ConductorPropertiesWidget::properties() const {
 	ConductorProperties properties_;
 	if (ui -> m_multi_rb  -> isChecked()) properties_.type = ConductorProperties::Multi;
 	else if (ui -> m_single_rb -> isChecked()) properties_.type = ConductorProperties::Single;
-	properties_.color = ui->m_color_pb->palette().color(QPalette::Button);
-	properties_.style = static_cast<Qt::PenStyle>(ui->m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).toInt());
-	properties_.text = ui -> m_text_le -> text();
-	properties_.text_size = ui -> m_text_size_sb -> value();
-	properties_.m_show_text = ui -> m_show_text_cb -> isChecked();
-	properties_.verti_rotate_text = m_verti_select -> value();
-	properties_.horiz_rotate_text = m_horiz_select -> value();
-	properties_.singleLineProperties.hasGround = ui -> m_earth_cb -> isChecked();
+
+	properties_.color                   = ui->m_color_pb->palette().color(QPalette::Button);
+	properties_.style                   = static_cast<Qt::PenStyle>(ui->m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).toInt());
+	properties_.text                    = ui -> m_text_le -> text();
+	properties_.text_size               = ui -> m_text_size_sb -> value();
+	properties_.m_show_text             = ui -> m_show_text_cb -> isChecked();
+	properties_.m_one_text_per_folio    = ui -> m_one_text_per_folio_cb -> isChecked();
+	properties_.m_no_one_text_per_folio = ui -> m_no_one_text_per_folio_cb -> isChecked();
+	properties_.verti_rotate_text       = m_verti_select -> value();
+	properties_.horiz_rotate_text       = m_horiz_select -> value();
+
+	properties_.singleLineProperties.hasGround  = ui -> m_earth_cb -> isChecked();
 	properties_.singleLineProperties.hasNeutral = ui -> m_neutral_cb -> isChecked();
-	properties_.singleLineProperties.is_pen = ui -> m_pen_cb -> isChecked();
+	properties_.singleLineProperties.is_pen     = ui -> m_pen_cb -> isChecked();
 	properties_.singleLineProperties.setPhasesCount(ui -> m_phase_cb -> isChecked() ? ui -> m_phase_sb -> value() : 0);
 
 	return properties_;
@@ -116,8 +124,28 @@ void ConductorPropertiesWidget::setReadOnly(const bool &ro) {
 	this->setDisabled(ro);
 }
 
+/**
+ * @brief ConductorPropertiesWidget::addAutonumWidget
+ * @param widget
+ */
 void ConductorPropertiesWidget::addAutonumWidget(QWidget *widget) {
 	ui->m_autonum_layout->addWidget(widget);
+}
+
+/**
+ * @brief ConductorPropertiesWidget::setHiddenOneTextPerFolio
+ * @param hide
+ */
+void ConductorPropertiesWidget::setHiddenOneTextPerFolio(const bool &hide) {
+	ui -> m_one_text_per_folio_cb -> setHidden(hide);
+}
+
+/**
+ * @brief ConductorPropertiesWidget::setHiddenNoOneTextPerFolio
+ * @param hide
+ */
+void ConductorPropertiesWidget::setHiddenNoOneTextPerFolio(const bool &hide) {
+	ui -> m_no_one_text_per_folio_cb -> setHidden(hide);
 }
 
 /**

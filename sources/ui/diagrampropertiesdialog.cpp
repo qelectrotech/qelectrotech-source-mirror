@@ -64,6 +64,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 
 	//Conductor widget
 	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(conductors, this);
+	cpw -> setHiddenNoOneTextPerFolio(true);
 	cpw -> setReadOnly(diagram_is_read_only);
 
 	//Conductor autonum
