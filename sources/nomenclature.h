@@ -42,6 +42,7 @@ class nomenclature : public QObject {
 	QETProject *m_project;
 	QList<Diagram *> m_list_diagram;
 	QWidget *m_parent;
+	QMessageBox msgBox;
 	
 	// constructors, destructor
 	public:
