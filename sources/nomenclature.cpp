@@ -50,7 +50,7 @@ bool nomenclature::saveToCSVFile() {
 	
 	//Process...
 	QString data = tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
-	data += tr("Ref") +";"+ tr("Folio") +";"+ tr("Sch\351ma") +";"+ tr("D\351signation")+";"+ tr("Label") +";"+ tr("Commententaire") +";"+ tr("Fabriquant") +";"+ tr("Reference") +";"+ tr("Machine-reference\n");
+	data += tr("Folio") +";"+ tr("Sch\351ma") +";"+ tr("D\351signation")+";"+ tr("Label") +";"+ tr("Commententaire") +";"+ tr("Fabriquant") +";"+ tr("Reference") +";"+ tr("Machine-reference\n");
 	QStringList rows;
 	for(int i=0; i<m_list_diagram.count(); i++){
 		rows = getRows(m_list_diagram.at(i));
@@ -92,13 +92,11 @@ QStringList nomenclature::getRows(Diagram *schema) {
 	QString row;
 	QStringList list;
 	QList<Element *> elements_list;
-	//QList<CustomElement *> elements_list;
-	
+
 	//elements_list = schema->customElements();
 	elements_list = schema->content().elements.toList();
 	for(int j=0;j<elements_list.count();j++){
-		row += QString::number(0) + ";";
-		row += QString::number(0) + ";";
+		row += QString::number(schema->folioIndex()+1) + ";";
 		row += schema->title() + ";";
 		row += elements_list.at(j)->name() + ";";
 		row += elements_list.at(j)->elementInformations()["label"].toString() + ";";
