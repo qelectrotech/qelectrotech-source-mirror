@@ -490,6 +490,11 @@ to all the conductors of this potential?</translation>
         <source>Texte</source>
         <translation>Text</translation>
     </message>
+    <message utf8="true">
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
+        <source>Ne pas subir l&apos;option :  afficher un seul texte par potentiel présent sur un folio. (Inactif)</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="129"/>
         <source>Vertical</source>
@@ -568,11 +573,6 @@ to all the conductors of this potential?</translation>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="101"/>
         <source>Afficher un seul texte par potentiel présent sur un folio. (expérimental)</source>
         <translation>View a single text by potential on a folio. (experimental)</translation>
-    </message>
-    <message utf8="true">
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
-        <source>Ne pas subir l&apos;option :  afficher un seul texte par potentiel présent sur un folio. (Inactifl)</source>
-        <translation>Not to be the option: display a single text by potential on a folio. (Inactive)</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="117"/>
@@ -7727,9 +7727,9 @@ Maximum width: %2px
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
-        <source>Machine-reference
+        <source>Machine-reference 
 </source>
-        <translation>Machine-reference</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -496,6 +496,11 @@ pixel</extracomment>
         <source>Texte</source>
         <translation type="unfinished">نص</translation>
     </message>
+    <message utf8="true">
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
+        <source>Ne pas subir l&apos;option :  afficher un seul texte par potentiel présent sur un folio. (Inactif)</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="129"/>
         <source>Vertical</source>
@@ -576,11 +581,6 @@ pixel</extracomment>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="101"/>
         <source>Afficher un seul texte par potentiel présent sur un folio. (expérimental)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
-        <source>Ne pas subir l&apos;option :  afficher un seul texte par potentiel présent sur un folio. (Inactifl)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7765,7 +7765,7 @@ Longueur maximale : %2px
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
-        <source>Machine-reference
+        <source>Machine-reference 
 </source>
         <translation type="unfinished"></translation>
     </message>

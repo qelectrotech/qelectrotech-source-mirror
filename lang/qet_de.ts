@@ -498,6 +498,11 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <source>Texte</source>
         <translation type="unfinished">Text</translation>
     </message>
+    <message utf8="true">
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
+        <source>Ne pas subir l&apos;option :  afficher un seul texte par potentiel présent sur un folio. (Inactif)</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="129"/>
         <source>Vertical</source>
@@ -547,11 +552,6 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="101"/>
         <source>Afficher un seul texte par potentiel présent sur un folio. (expérimental)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
-        <source>Ne pas subir l&apos;option :  afficher un seul texte par potentiel présent sur un folio. (Inactifl)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7698,7 +7698,7 @@ Maximale Länge: %2px</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
-        <source>Machine-reference
+        <source>Machine-reference 
 </source>
         <translation type="unfinished"></translation>
     </message>
