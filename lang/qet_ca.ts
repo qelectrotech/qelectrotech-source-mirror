@@ -7725,8 +7725,7 @@ Longitud màxima: %2px</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
-        <source>Machine-reference 
-</source>
+        <source>Machine-reference</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -7727,9 +7727,8 @@ Maximum width: %2px
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
-        <source>Machine-reference 
-</source>
-        <translation>Machine-reference </translation>
+        <source>Machine-reference</source>
+        <translation>Machine-reference</translation>
     </message>
 </context>
 <context>
