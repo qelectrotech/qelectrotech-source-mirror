@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>570</width>
-    <height>453</height>
+    <width>633</width>
+    <height>461</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -105,7 +105,7 @@
            <item>
             <widget class="QCheckBox" name="m_no_one_text_per_folio_cb">
              <property name="text">
-              <string>Ne pas subir l'option :  afficher un seul texte par potentiel présent sur un folio. (Inactifl)</string>
+              <string>Ne pas subir l'option :  afficher un seul texte par potentiel présent sur un folio. (Inactif)</string>
              </property>
             </widget>
            </item>
