@@ -46,12 +46,8 @@ nomenclature::~nomenclature() {
 		@param true if success
 */
 bool nomenclature::saveToCSVFile() {
-	if(m_list_diagram.isEmpty())
-		QMessageBox msgBox;
-		msgBox.setText("Le titre du projet est vide, veuillez le remplir.");
-		msgBox.exec();
-		return false;
-
+	if(m_list_diagram.isEmpty()) return false;
+	
 	//Process...
 	QString data = tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
 	data += tr("Folio") +";"+ tr("Sch\351ma") +";"+ tr("D\351signation")+";"+ tr("Label") +";"+ tr("Commententaire") +";"+ tr("Fabriquant") +";"+ tr("Reference") +";"+ tr("Machine-reference\n");
@@ -62,7 +58,7 @@ bool nomenclature::saveToCSVFile() {
 			data += rows.at(j);
 		}
 	}
-
+	
 	// SAVE IN FILE
 	QString name = tr("nomenclature_") + QString(m_project  -> title());
 	QString filename = QFileDialog::getSaveFileName(this->m_parent, tr("Enregister sous... "), name, tr("Fichiers csv (*.csv)"));
