@@ -45,7 +45,7 @@ class nomenclature : public QObject {
 	
 	// constructors, destructor
 	public:
-	nomenclature(QETProject *project =0, QWidget *parent =0);
+	nomenclature(QETProject *project, QWidget *parent =0);
 	virtual ~nomenclature();
 	
 	// attributes
@@ -57,7 +57,8 @@ class nomenclature : public QObject {
 
 	
 	private:
-	QStringList getRows(Diagram *schema);
+	QString getNomenclature ();
+	QString getElementInfo  (const Element *elmt);
 	
 };
 

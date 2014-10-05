@@ -18,6 +18,7 @@
 #include <QtDebug>
 
 #include "nomenclature.h"
+#include "elementprovider.h"
 #define PR(x) qDebug() << #x " = " << x;
 
 /**
@@ -29,10 +30,8 @@ nomenclature::nomenclature(QETProject *project, QWidget *parent):
 	m_project(project)
 {
 	m_parent = parent;
-	if(!m_project->isEmpty()){
-		//get list of schema present in project
-		m_list_diagram = m_project -> diagrams();
-	}
+	//get list of schema present in project
+	m_list_diagram = m_project -> diagrams();
 }
 
 /**
@@ -46,21 +45,11 @@ nomenclature::~nomenclature() {
 		@param true if success
 */
 bool nomenclature::saveToCSVFile() {
-	if(m_list_diagram.isEmpty()) return false;
-	
-	//Process...
-	QString data = tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
-	data += tr("Folio") +";"+ tr("Sch\351ma") +";"+ tr("D\351signation")+";"+ tr("Label") +";"+ tr("Commententaire") +";"+ tr("Fabriquant") +";"+ tr("Reference") +";"+ tr("Machine-reference\n");
-	QStringList rows;
-	for(int i=0; i<m_list_diagram.count(); i++){
-		rows = getRows(m_list_diagram.at(i));
-		for(int j=0;j<rows.count();j++){
-			data += rows.at(j);
-		}
-	}
-	
 	// SAVE IN FILE
 	QString name = tr("nomenclature_") + QString(m_project  -> title());
+	if (!name.endsWith(".csv")) {
+		name += ".csv";
+	}
 	QString filename = QFileDialog::getSaveFileName(this->m_parent, tr("Enregister sous... "), name, tr("Fichiers csv (*.csv)"));
 	QFile file(filename);
 	if( !filename.isEmpty() ) {
@@ -75,7 +64,7 @@ bool nomenclature::saveToCSVFile() {
 		}
 		if (file.open(QIODevice::WriteOnly | QIODevice::Text)){
 			QTextStream stream(&file);
-			stream << data << endl;
+			stream << getNomenclature() << endl;
 		}
 		else return false;
 	}
@@ -85,27 +74,51 @@ bool nomenclature::saveToCSVFile() {
 }
 
 /**
-		gets rows of nomenclature
-		@return the list of rows
-*/
-QStringList nomenclature::getRows(Diagram *schema) {
-	QString row;
-	QStringList list;
-	QList<Element *> elements_list;
+ * @brief nomenclature::getNomenclature
+ * Create and formated a nomenclature to csv file.
+ * @return The QString of nomenclature
+ */
+QString nomenclature::getNomenclature() {
+	//Process...
+	QString data = tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
+	data += tr("Folio") +";"+ tr("Sch\351ma") +";"+ tr("D\351signation")+";"+ tr("Label") +";"+ tr("Commententaire") +";"+ tr("Fabriquant") +";"+ tr("Reference") +";"+ tr("Machine-reference\n");
 
-	//elements_list = schema->customElements();
-	elements_list = schema->content().elements.toList();
-	for(int j=0;j<elements_list.count();j++){
-		row += QString::number(schema->folioIndex()+1) + ";";
-		row += schema->title() + ";";
-		row += elements_list.at(j)->name() + ";";
-		row += elements_list.at(j)->elementInformations()["label"].toString() + ";";
-		row += elements_list.at(j)->elementInformations()["comment"].toString() + ";";
-		row += elements_list.at(j)->elementInformations()["manufacturer"].toString() + ";";
-		row += elements_list.at(j)->elementInformations()["manufacturer-reference"].toString() + ";";
-		row += elements_list.at(j)->elementInformations()["machine-manufacturer-reference"].toString() + "\n";
-		list << row;
+	if(m_list_diagram.isEmpty()) return data;
+
+	foreach (Diagram *d, m_list_diagram) {
+		//Get only simple, master and unlinked slave element.
+		ElementProvider ep(d);
+		QList <Element *> list_elements;
+		list_elements << ep.find(Element::Simple | Element::Master);
+		list_elements << ep.freeElement(Element::Slave);
+
+		foreach (Element *elmt, list_elements) {
+			data += getElementInfo(elmt);
+		}
 	}
-	return list;
+
+	return data;
 }
 
+/**
+ * @brief nomenclature::getElementInfo
+ * @param elmt : the element to getinfo
+ * @return : QString with information about element formated to csv file
+ */
+QString nomenclature::getElementInfo(const Element *elmt) {
+	QString info;
+
+	Diagram *diagram = elmt -> diagram();
+	DiagramContext elmt_info = elmt -> elementInformations();
+
+	info += QString::number(diagram -> folioIndex()+1) + ";";
+	info += diagram -> title() + ";";
+	info += elmt -> name() + ";";
+	info += elmt_info["label"].toString() + ";";
+	info += elmt_info["comment"].toString() + ";";
+	info += elmt_info["manufacturer"].toString() + ";";
+	info += elmt_info["manufacturer-reference"].toString() + ";";
+	info += elmt_info["machine-manufacturer-reference"].toString() + "\n";
+
+	return info;
+}

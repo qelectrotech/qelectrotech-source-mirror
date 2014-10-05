@@ -1806,10 +1806,8 @@ void QETDiagramEditor::cleanCurrentProject() {
  */
 void QETDiagramEditor::nomenclatureProject() {
 	//TODO: Test nomenclature CYRIL F.
-	nomenclature *nomencl= new nomenclature(currentProject()->project() ,this);
-	nomencl->saveToCSVFile();
-	
-	delete nomencl;
+	nomenclature nomencl(currentProject()->project() ,this);
+	nomencl.saveToCSVFile();
 }
 
 /**
