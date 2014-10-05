@@ -213,7 +213,7 @@ void QETDiagramEditor::actions() {
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le sch\351ma"),               this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
 	prj_diagramList   = new QAction(QET::Icons::listDrawings,          tr("Ajouter un sommaire"),                  this);
-	prj_nomenclature  = new QAction(QET::Icons::DocumentExport,        tr("Exporter une nomenclature (beta)"),     this);
+	prj_nomenclature  = new QAction(QET::Icons::DocumentExport,        tr("Exporter une nomenclature"),            this);
 	tabbed_view_mode  = new QAction(                                   tr("en utilisant des onglets"),             this);
 	windowed_view_mode= new QAction(                                   tr("en utilisant des fen\352tres"),         this);
 	mode_selection    = new QAction(QET::Icons::PartSelect,            tr("Mode Selection"),                       this);
