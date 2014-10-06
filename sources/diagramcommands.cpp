@@ -267,30 +267,46 @@ void DeleteElementsCommand::undo() {
 	}
 }
 
-/// refait les suppressions
+/**
+ * @brief DeleteElementsCommand::redo
+ * Redo the delete command
+ */
 void DeleteElementsCommand::redo() {
 	diagram -> showMe();
-	// enleve les conducteurs
+
+	// Remove Conductor
 	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
 		diagram -> removeConductor(c);
+
+		//If option one text per folio is enable, and the text item of
+		//current conductor is visible (that mean the conductor own the single displayed text)
+		//We call adjustTextItemPosition to other conductor at the same potential to keep
+		//a visible text on this potential.
+		if (diagram -> defaultConductorProperties.m_one_text_per_folio && c -> textItem() -> isVisible()) {
+			QList <Conductor *> conductor_list;
+			conductor_list << c -> relatedPotentialConductors(false).toList();
+			if (conductor_list.count()) {
+				conductor_list.first() -> adjustTextItemPosition();
+			}
+		}
 	}
 	
-	// enleve les elements
+	// Remove elements
 	foreach(Element *e, removed_content.elements) {
 		diagram -> removeElement(e);
 	}
 	
-	// enleve les textes
+	// Remove texts
 	foreach(IndependentTextItem *t, removed_content.textFields) {
 		diagram -> removeIndependentTextItem(t);
 	}
 
-	//enleve les images
+	// Remove images
 	foreach(DiagramImageItem *dii, removed_content.images) {
 		diagram -> removeItem(dii);
 	}
 
-	//enleve les shapes
+	// Remove shapes
 	foreach(QetShapeItem *dsi, removed_content.shapes) {
 		diagram -> removeItem(dsi);
 	}
