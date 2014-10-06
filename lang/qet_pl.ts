@@ -483,17 +483,17 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="53"/>
         <source>Texte :</source>
-        <translation type="unfinished">Tekst :</translation>
+        <translation>Tekst :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="60"/>
         <source>Texte</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="108"/>
         <source>Ne pas subir l&apos;option :  afficher un seul texte par potentiel présent sur un folio. (Inactif)</source>
-        <translation type="unfinished"></translation>
+        <translation>Brak opcji:  wyświetlanie jednego tekstu dla potencjału na stronie. (nieaktywna)</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="129"/>
@@ -562,17 +562,17 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="74"/>
         <source>taille</source>
-        <translation type="unfinished">rozmiaru</translation>
+        <translation>rozmiaru</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="87"/>
         <source>Visible</source>
-        <translation type="unfinished">Widoczny</translation>
+        <translation>Widoczny</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="101"/>
         <source>Afficher un seul texte par potentiel présent sur un folio. (expérimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetlanie jednego tekstu dla potencjału na stronie (eksperyment)</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="117"/>
@@ -4002,7 +4002,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
         <source>Exporter une nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportowanie oznaczeń</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="260"/>
@@ -6140,22 +6140,22 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="143"/>
         <source>Selectionner une image...</source>
-        <translation type="unfinished">Wybierz obraz...</translation>
+        <translation>Wybierz obraz...</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="143"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation type="unfinished">Pliki obrazów (*.png *.jpg *.bmp *.svg)</translation>
+        <translation>Pliki obrazów (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="149"/>
         <source>Erreur</source>
-        <translation type="unfinished">Błąd</translation>
+        <translation>Błąd</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="149"/>
         <source>Impossible de charger l&apos;image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie można załadować obrazu.</translation>
     </message>
 </context>
 <context>
@@ -7714,32 +7714,32 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Désignation</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznaczenie</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Label</source>
-        <translation type="unfinished">Etykieta</translation>
+        <translation>Etykieta</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Komentarz</translation>
+        <translation>Komentarz</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Fabriquant</source>
-        <translation type="unfinished">Producent</translation>
+        <translation>Producent</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer katalogowy</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Machine-reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer maszyny</translation>
     </message>
 </context>
 <context>
