@@ -1198,10 +1198,9 @@ void Conductor::calculateTextItemPosition() {
 		foreach (Conductor *c, relatedPotentialConductors(false)) {
 			c -> textItem() -> setVisible(false);
 		}
+		//Make sure text item is visible
+		text_item -> setVisible(true);
 	}
-
-	//Make sure text item is visible
-	text_item -> setVisible(true);
 	
 	//position
 	if (text_item -> wasMovedByUser()) {
