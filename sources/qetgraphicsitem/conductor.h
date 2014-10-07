@@ -86,7 +86,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	virtual QPainterPath nearShape() const;
 	virtual QPainterPath variableShape(const qreal &) const;
 	virtual bool isNearConductor(const QPointF &);
-	qreal length();
+	qreal length() const;
 	ConductorSegment *middleSegment();
 	QPointF posForText(Qt::Orientations &flag);
 	bool containsPoint(const QPointF &) const;
@@ -103,7 +103,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	void setProfiles(const ConductorProfilesGroup &);
 	ConductorProfilesGroup profiles() const;
 	void readProperties();
-	void adjustTextItemPosition();
+	void calculateTextItemPosition();
 	virtual Highlight highlight() const;
 	virtual void setHighlighted(Highlight);
 	void autoText();
@@ -165,12 +165,10 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	void updateConductorPath(const QPointF &, Qet::Orientation, const QPointF &, Qet::Orientation);
 	uint segmentsCount(QET::ConductorSegmentType = QET::Both) const;
 	QList<QPointF> segmentsToPoints() const;
-	QSet<Conductor *> relatedConductors() const;
 	QList<ConductorBend> bends() const;
 	QList<QPointF> junctions() const;
 	void pointsToSegments(QList<QPointF>);
 	bool hasClickedOn(QPointF, QPointF) const;
-	void calculateTextItemPosition();
 	Qt::Corner currentPathType() const;
 	void deleteSegments();
 	static int getCoeff(const qreal &, const qreal &);
@@ -183,4 +181,15 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	static QPointF movePointIntoPolygon(const QPointF &, const QPainterPath &);
 	Terminal * relatedPotentialTerminal (Terminal *, const bool all_diagram = true);
 };
+
+Conductor * longuestConductorInPotential (Conductor *conductor, bool all_diagram = false);
+QList <Conductor *> relatedConductors (const Conductor *conductor);
+
+
+//return true if @a is between or at @b and @c.
+template <typename T>
+bool isBetween (const T a, const T b, const T c) {
+	return (b <= c)? (a >= b && a <= c) : (a <= b && a >= c);
+}
+
 #endif

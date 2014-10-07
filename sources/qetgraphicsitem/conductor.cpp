@@ -1090,18 +1090,11 @@ const QList<ConductorSegment *> Conductor::segmentsList() const {
 }
 
 /**
-	@return La longueur totale du conducteur
-*/
-qreal Conductor::length() {
-	qreal length = 0.0;
-	
-	ConductorSegment *s = segments;
-	while (s -> hasNextSegment()) {
-		length += qAbs(s -> length());
-		s = s -> nextSegment();
-	}
-	
-	return(length);
+ * @brief Conductor::length
+ * @return the length of this conductor
+ */
+qreal Conductor::length() const{
+	return path().length();
 }
 
 /**
@@ -1191,15 +1184,7 @@ void Conductor::calculateTextItemPosition() {
 	if (!text_item || !diagram()) return;
 
 	if (diagram() -> defaultConductorProperties.m_one_text_per_folio == true) {
-		QSet<Conductor *> conductor_list = relatedPotentialConductors(false);
-		Conductor *longuest_conductor = this;
-
-		//Search the longuest conductor
-		foreach (Conductor *c, conductor_list) {
-			if (c -> length() > longuest_conductor -> length()) {
-				longuest_conductor = c;
-			}
-		}
+		Conductor *longuest_conductor = longuestConductorInPotential(this);
 
 		//The longuest conductor isn't this conductor
 		//we call calculateTextItemPosition of the longuest conductor
@@ -1210,7 +1195,7 @@ void Conductor::calculateTextItemPosition() {
 
 		//At this point this conductor is the longuest conductor
 		//we hide all text of conductor_list
-		foreach (Conductor *c, conductor_list) {
+		foreach (Conductor *c, relatedPotentialConductors(false)) {
 			c -> textItem() -> setVisible(false);
 		}
 	}
@@ -1351,15 +1336,6 @@ void Conductor::readProperties() {
 }
 
 /**
-	S'assure que le texte du conducteur est a une position raisonnable
-	Cette methode ne fait rien si ce conducteur n'affiche pas son champ de
-	texte.
-*/
-void Conductor::adjustTextItemPosition() {
-	calculateTextItemPosition();
-}
-
-/**
 	@return true si le conducteur est mis en evidence
 */
 Conductor::Highlight Conductor::highlight() const {
@@ -1417,17 +1393,6 @@ void Conductor::displayedTextChanged() {
 	}
 }
 
-/**
-	@return les conducteurs avec lesquels ce conducteur partage des bornes
-	communes
-*/
-QSet<Conductor *> Conductor::relatedConductors() const {
-	QList<Conductor *> other_conductors_list = terminal1 -> conductors();
-	other_conductors_list += terminal2 -> conductors();
-	QSet<Conductor *> other_conductors = other_conductors_list.toSet();
-	other_conductors.remove(const_cast<Conductor *>(this));
-	return(other_conductors);
-}
 
 /**
  * @brief Conductor::relatedPotentialConductors
@@ -1527,20 +1492,6 @@ void Conductor::editProperty() {
 }
 
 /**
-	@param a reel
-	@param b reel
-	@param c reel
-	@return true si a est entre b et c ou est egal a l'un des deux
-*/
-bool isBetween(qreal a, qreal b, qreal c) {
-	if (b <= c) {
-		return(a >= b && a <= c);
-	} else {
-		return(a <= b && a >= c);
-	}
-}
-
-/**
 	@param a point
 	@param b point
 	@param c point
@@ -1560,7 +1511,7 @@ QList<QPointF> Conductor::junctions() const {
 	QList<QPointF> junctions_list;
 	
 	// pour qu'il y ait des jonctions, il doit y avoir d'autres conducteurs et des bifurcations
-	QSet<Conductor *> other_conductors = relatedConductors();
+	QList<Conductor *> other_conductors = relatedConductors(this);
 	QList<ConductorBend> bends_list = bends();
 	if (other_conductors.isEmpty() || bends_list.isEmpty()) {
 		return(junctions_list);
@@ -1786,4 +1737,33 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 		// aucun projete orthogonal n'a donne quoi que ce soit, on met le texte sur un des coins du polygone
 		return(points.at(point_index));
 	}
+}
+
+/**
+ * @brief longuestConductorInPotential
+ * @param conductor : a conductor in the potential to search
+ * @param all_diagram : true -> search in the whole project, false -> search only in the diagram of conductor
+ * @return the longuest conductor in the same potential of conductor
+ */
+Conductor * longuestConductorInPotential(Conductor *conductor, bool all_diagram) {
+	Conductor *longuest_conductor = conductor;
+	//Search the longuest conductor
+	foreach (Conductor *c, conductor -> relatedPotentialConductors(all_diagram))
+		if (c -> length() > longuest_conductor -> length())
+			longuest_conductor = c;
+
+	return longuest_conductor;
+}
+
+/**
+ * @brief relatedConductors
+ * @param conductor
+ * @return return all conductors who share the same terminals of @conductor given as parametre,
+ * except @conductor himself.
+ */
+QList <Conductor *> relatedConductors(const Conductor *conductor) {
+	QList<Conductor *> other_conductors_list = conductor -> terminal1 -> conductors();
+	other_conductors_list << conductor -> terminal2->conductors();
+	other_conductors_list.removeAll(const_cast<Conductor *> (conductor));
+	return(other_conductors_list);
 }

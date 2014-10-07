@@ -286,7 +286,7 @@ void DeleteElementsCommand::redo() {
 			QList <Conductor *> conductor_list;
 			conductor_list << c -> relatedPotentialConductors(false).toList();
 			if (conductor_list.count()) {
-				conductor_list.first() -> adjustTextItemPosition();
+				conductor_list.first() -> calculateTextItemPosition();
 			}
 		}
 	}
@@ -780,7 +780,7 @@ void RotateElementsCommand::undo() {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(dti)) {
 			cti -> forceRotateByUser(previous_rotate_by_user_[cti]);
 			(cti -> wasRotateByUser()) ? cti -> rotateBy(-applied_rotation_angle_) :
-										 cti -> parentConductor() -> adjustTextItemPosition();
+										 cti -> parentConductor() -> calculateTextItemPosition();
 		}
 		else {dti -> rotateBy(-applied_rotation_angle_);}
 	}

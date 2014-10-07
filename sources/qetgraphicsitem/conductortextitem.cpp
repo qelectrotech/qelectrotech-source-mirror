@@ -128,7 +128,7 @@ void ConductorTextItem::forceMovedByUser(bool moved_by_user) {
 	
 	moved_by_user_ = moved_by_user;
 	if (!moved_by_user && parent_conductor_) {
-		parent_conductor_ -> adjustTextItemPosition();
+		parent_conductor_ -> calculateTextItemPosition();
 	}
 	
 }
@@ -144,7 +144,7 @@ void ConductorTextItem::forceRotateByUser(bool rotate_by_user) {
 
 	rotate_by_user_ = rotate_by_user;
 	if (!rotate_by_user && parent_conductor_) {
-		parent_conductor_ -> adjustTextItemPosition();
+		parent_conductor_ -> calculateTextItemPosition();
 	}
 }
 
