@@ -1,6 +1,7 @@
 <definition width="100" version="0.2" hotspot_x="15" hotspot_y="17" height="30" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >commentaire</name>
+        <name lang="fr">commentaire</name>
+        <name lang="it">commento</name>
     </names>
     <description>
         <input x="-3" y="1.66667" size="10" rotate="true" text="Commentaire" />

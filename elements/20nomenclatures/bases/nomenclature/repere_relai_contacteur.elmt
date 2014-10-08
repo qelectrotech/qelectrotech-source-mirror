@@ -1,6 +1,7 @@
 <definition width="60" version="0.2" hotspot_x="20" hotspot_y="35" height="80" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >désignation relai et repere contact</name>
+        <name lang="fr">désignation relai et repere contact</name>
+        <name lang="it">descrizione relè e riferimento contatto</name>
     </names>
     <description>
         <rect width="45" x="-14" y="-30" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black" />

@@ -1,6 +1,7 @@
 <definition width="400" version="0.2" hotspot_x="15" hotspot_y="20" height="150" type="element" orientation="dnnn" >
     <names>
         <name lang="fr" >version</name>
+        <name lang="it">versione</name>
     </names>
     <description>
         <input x="317" y="98.5" size="8" rotate="true" text="_" />

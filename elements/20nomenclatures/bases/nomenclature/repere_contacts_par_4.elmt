@@ -1,6 +1,7 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="45" height="80" type="element" orientation="dnnn" >
     <names>
         <name lang="fr" >Repère des contacts par 4</name>
+        <name lang="it">Riferimento contatti per 4</name>
     </names>
     <description>
         <input x="-14" y="27.3333" size="5" rotate="true" text="_" />

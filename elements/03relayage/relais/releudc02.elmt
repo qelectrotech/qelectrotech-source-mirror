@@ -1,6 +1,7 @@
 <definition width="70" version="0.4" hotspot_x="20" hotspot_y="34" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ro">Releu DC 01</name>
+        <name lang="it">Relè DC 01</name>
     </names>
     <informations>Angelescu Constantin
 titus0818@yahoo.com</informations>

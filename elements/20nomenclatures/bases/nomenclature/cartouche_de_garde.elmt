@@ -1,6 +1,7 @@
 <definition width="400" version="0.2" hotspot_x="15" hotspot_y="35" height="150" type="element" orientation="dnnn" >
     <names>
         <name lang="fr" >cartouche de garde</name>
+        <name lang="it">cartiglio della protezione</name>
     </names>
     <description>
         <rect width="195" x="185" y="-31" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black" />
