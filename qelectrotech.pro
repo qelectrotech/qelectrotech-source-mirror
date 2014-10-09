@@ -66,7 +66,7 @@ DEPENDPATH += .
 INCLUDEPATH += sources sources/editor sources/titleblock sources/ui sources/qetgraphicsitem sources/richtext sources/factory sources/properties sources/dvevent
 
 # Fichiers sources
-HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*.h) $$files(sources/titleblock/*.h) $$files(sources/richtext/*.h) $$files(sources/qetgraphicsitem/*.h) $$files(sources/factory/*.cpp) \
+HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*.h) $$files(sources/titleblock/*.h) $$files(sources/richtext/*.h) $$files(sources/qetgraphicsitem/*.h) $$files(sources/factory/*.h) \
            $$files(sources/properties/*.h) \
            $$files(sources/editor/ui/*.h) \
            $$files(sources/dvevent/*.h)

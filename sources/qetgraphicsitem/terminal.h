@@ -160,4 +160,6 @@ inline QString Terminal::name() const {
 	return(name_terminal_);
 }
 
+Terminal * relatedPotentialTerminal (const Terminal *terminal, const bool all_diagram = true);
+
 #endif

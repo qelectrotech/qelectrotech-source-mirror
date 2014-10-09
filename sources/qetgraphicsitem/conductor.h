@@ -179,7 +179,6 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	static qreal conductor_bound(qreal, qreal, bool);
 	static Qt::Corner movementType(const QPointF &, const QPointF &);
 	static QPointF movePointIntoPolygon(const QPointF &, const QPainterPath &);
-	Terminal * relatedPotentialTerminal (Terminal *, const bool all_diagram = true);
 };
 
 Conductor * longuestConductorInPotential (Conductor *conductor, bool all_diagram = false);

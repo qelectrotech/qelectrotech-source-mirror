@@ -549,3 +549,33 @@ Element *Terminal::parentElement() const {
 	return(parent_element_);
 }
 
+/**
+ * @brief Conductor::relatedPotentialTerminal
+ * Return terminal at the same potential from the same
+ * parent element of @t.
+ * For folio report, return the terminal of linked other report.
+ * For Terminal element, return the other terminal of terminal element.
+ * @param t terminal to start search
+ * @param all_diagram :if true return all related terminal,
+ * false return only terminal in the same diagram of @t
+ * @return
+ */
+Terminal * relatedPotentialTerminal (const Terminal *terminal, const bool all_diagram) {
+	// If terminal parent element is a folio report.
+	if (all_diagram && terminal -> parentElement() -> linkType() & Element::AllReport) {
+		QList <Element *> elmt_list = terminal -> parentElement() -> linkedElements();
+		if (!elmt_list.isEmpty()) {
+			return (elmt_list.first() -> terminals().first());
+		}
+	}
+	// If terminal parent element is a Terminal element.
+	else if (terminal -> parentElement() -> linkType() & Element::Terminale) {
+		QList <Terminal *> terminals = terminal -> parentElement() -> terminals();
+		terminals.removeAll(const_cast<Terminal *> (terminal));
+		if (!terminals.isEmpty())
+			return terminals.first();
+	}
+
+	return nullptr;
+}
+

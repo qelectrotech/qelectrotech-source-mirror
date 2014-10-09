@@ -1442,36 +1442,6 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 }
 
 /**
- * @brief Conductor::relatedPotentialTerminal
- * Return terminal at the same potential from the same
- * parent element of @t.
- * For folio report, return the terminal of linked other report.
- * For Terminal element, return the other terminal of terminal element.
- * @param t terminal to start search
- * @param all_diagram :if true return all related terminal,
- * false return only terminal in the same diagram of @t
- * @return
- */
-Terminal * Conductor::relatedPotentialTerminal (Terminal *t, const bool all_diagram) {
-	// If terminal parent element is a folio report.
-	if (all_diagram && t->parentElement()->linkType() & Element::AllReport) {
-		QList <Element *> elmt_list = t->parentElement()->linkedElements();
-		if (!elmt_list.isEmpty()) {
-			return (elmt_list.first()->terminals().first());
-		}
-	}
-	// If terminal parent element is a Terminal element.
-	if (t->parentElement() -> linkType() & Element::Terminale) {
-		QList <Terminal *> terminals = t->parentElement()->terminals();
-		terminals.removeAll(t);
-		if (!terminals.isEmpty()) return terminals.first();
-		else return nullptr;
-	}
-
-	return nullptr;
-}
-
-/**
  * @return l'editeur de schemas parent ou 0
  */
 QETDiagramEditor* Conductor::diagramEditor() const {
