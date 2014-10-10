@@ -39,7 +39,7 @@ DVEventAddImage::DVEventAddImage(DiagramView *dv) :
  * @brief DVEventAddImage::~DVEventAddImage
  */
 DVEventAddImage::~DVEventAddImage() {
-	if (m_running) {
+	if (m_running || m_abort) {
 		if (m_is_added) m_diagram -> removeItem(m_image);
 		delete m_image;
 	}

@@ -609,6 +609,15 @@ void DiagramView::focusInEvent(QFocusEvent *e) {
 	mode if needed.
 */
 void DiagramView::keyPressEvent(QKeyEvent *e) {
+	if (m_event_interface) {
+		if (m_event_interface -> keyPressEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				emit (itemAdded());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
 	switchToVisualisationModeIfNeeded(e);
 	QGraphicsView::keyPressEvent(e);
 }
@@ -618,6 +627,15 @@ void DiagramView::keyPressEvent(QKeyEvent *e) {
 	mode if needed.
 */
 void DiagramView::keyReleaseEvent(QKeyEvent *e) {
+	if (m_event_interface) {
+		if (m_event_interface -> KeyReleaseEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				emit (itemAdded());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
 	switchToSelectionModeIfNeeded(e);
 	QGraphicsView::keyReleaseEvent(e);
 }

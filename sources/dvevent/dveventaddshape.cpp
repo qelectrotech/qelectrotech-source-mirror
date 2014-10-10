@@ -40,7 +40,7 @@ DVEventAddShape::DVEventAddShape(DiagramView *dv, QetShapeItem::ShapeType shape_
  * @brief DVEventAddShape::~DVEventAddShape
  */
 DVEventAddShape::~DVEventAddShape() {
-	if (m_running) {
+	if (m_running || m_abort) {
 		m_diagram -> removeItem(m_shape_item);
 		delete m_shape_item;
 	}

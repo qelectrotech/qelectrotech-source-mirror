@@ -20,6 +20,7 @@
 
 class QMouseEvent;
 class QWheelEvent;
+class QKeyEvent;
 class DiagramView;
 class Diagram;
 
@@ -42,6 +43,8 @@ class DVEventInterface
 		virtual bool mouseMoveEvent        (QMouseEvent *event);
 		virtual bool mouseReleaseEvent     (QMouseEvent *event);
 		virtual bool wheelEvent            (QWheelEvent *event);
+		virtual bool keyPressEvent         (QKeyEvent *event);
+		virtual bool KeyReleaseEvent       (QKeyEvent *event);
 		virtual bool isRunning () const;
 		virtual bool isFinish  () const;
 
@@ -49,6 +52,7 @@ class DVEventInterface
 		DiagramView *m_dv;
 		Diagram *m_diagram;
 		bool m_running;
+		bool m_abort;
 };
 
 #endif // DVEVENTINTERFACE_H

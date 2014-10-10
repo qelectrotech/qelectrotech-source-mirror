@@ -22,7 +22,8 @@
 DVEventInterface::DVEventInterface(DiagramView *dv) :
 	m_dv(dv),
 	m_diagram(dv->diagram()),
-	m_running(false)
+	m_running(false),
+	m_abort(false)
 {
 }
 
@@ -49,6 +50,26 @@ bool DVEventInterface::mouseReleaseEvent(QMouseEvent *event) {
 }
 
 bool DVEventInterface::wheelEvent(QWheelEvent *event) {
+	Q_UNUSED (event);
+	return false;
+}
+
+/**
+ * @brief DVEventInterface::keyPressEvent
+ * By default, press escape key abort the curent action
+ * @param event
+ * @return
+ */
+bool DVEventInterface::keyPressEvent(QKeyEvent *event) {
+	if (event->key() == Qt::Key_Escape) {
+		m_running = false;
+		m_abort = true;
+		return true;
+	}
+	return false;
+}
+
+bool DVEventInterface::KeyReleaseEvent(QKeyEvent *event) {
 	Q_UNUSED (event);
 	return false;
 }
