@@ -30,9 +30,9 @@ DVEventAddText::~DVEventAddText() {}
 
 bool DVEventAddText::mousePressEvent(QMouseEvent *event) {
 	if (event->button() == Qt::LeftButton) {
-		m_diagram -> undoStack().push(new AddTextCommand(m_diagram,
-														 new IndependentTextItem("_"),
-														 m_dv -> mapToScene(event -> pos())));
+		m_diagram -> undoStack().push(new AddItemCommand<IndependentTextItem *>(new IndependentTextItem("_"),
+																				m_diagram,
+																				m_dv -> mapToScene(event -> pos())));
 		return true;
 	}
 	return false;

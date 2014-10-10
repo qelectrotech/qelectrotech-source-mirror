@@ -313,7 +313,7 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
  */
 void DiagramView::handleTextDrop(QDropEvent *e) {
 	if (scene -> isReadOnly() || (e -> mimeData() -> hasText() == false) ) return;
-	scene -> undoStack().push(new AddTextCommand(scene, new IndependentTextItem (e -> mimeData() -> text()), mapToScene(e->pos())));
+	scene -> undoStack().push(new AddItemCommand<IndependentTextItem *>(new IndependentTextItem (e -> mimeData() -> text()), scene, mapToScene(e->pos())));
 }
 
 /**
@@ -844,8 +844,8 @@ bool DiagramView::addElementAtPos(const ElementsLocation &location, const QPoint
 		return(false);
 	}
 	
-	// pose de l'element sur le schema
-	diagram() -> undoStack().push(new AddElementCommand(diagram(), el, mapToScene(pos)));
+	//Add element to diagram
+	diagram() -> undoStack().push (new AddItemCommand<Element *>(el, diagram(), mapToScene(pos)));
 	return(true);
 }
 

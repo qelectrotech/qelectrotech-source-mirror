@@ -568,7 +568,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		// charge les caracteristiques de l'element
 		if (nvel_elmt -> fromXml(element_xml, table_adr_id, handle_inputs_rotation)) {
 			// ajout de l'element au schema et a la liste des elements ajoutes
-			addElement(nvel_elmt);
+			addItem(nvel_elmt);
 			added_elements << nvel_elmt;
 		} else {
 			delete nvel_elmt;
@@ -581,7 +581,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	foreach (QDomElement text_xml, QET::findInDomElement(root, "inputs", "input")) {
         	IndependentTextItem *iti = new IndependentTextItem(this);
 		iti -> fromXml(text_xml);
-		addIndependentTextItem(iti);
+		addItem(iti);
 		added_texts << iti;
 	}
 
@@ -727,18 +727,15 @@ void Diagram::initElementsLinks() {
 }
 
 /**
-	Ajoute un element sur le schema
-	@param element Element a ajouter
-*/
-void Diagram::addElement(Element *element) {
+ * @brief Diagram::addItem
+ * Add element to diagram
+ * @param element
+ */
+void Diagram::addItem(Element *element) {
 	if (!element || isReadOnly()) return;
-	
-	// ajoute l'element au schema
-	if (element -> scene() != this) {
-		addItem(element);
-	}
-	
-	// surveille les modifications de ses champs de texte
+
+	if (element -> scene() != this)
+		QGraphicsScene::addItem(element);
 	foreach(ElementTextItem *eti, element -> texts()) {
 		connect(
 			eti,
@@ -750,33 +747,31 @@ void Diagram::addElement(Element *element) {
 }
 
 /**
-	Ajoute un conducteur sur le schema
-	@param conductor Conducteur a ajouter
-*/
-void Diagram::addConductor(Conductor *conductor) {
+ * @brief Diagram::addItem
+ * Add conductor to scene.
+ * @param conductor
+ */
+void Diagram::addItem(Conductor *conductor) {
 	if (!conductor || isReadOnly()) return;
 	
-	// ajoute le conducteur au schema
 	if (conductor -> scene() != this) {
-		addItem(conductor);
+		QGraphicsScene::addItem(conductor);
 		conductor -> terminal1 -> addConductor(conductor);
 		conductor -> terminal2 -> addConductor(conductor);
 	}
 }
 
 /**
-	Aoute un champ de texte independant sur le schema
-	@param iti Champ de texte a ajouter
-*/
-void Diagram::addIndependentTextItem(IndependentTextItem *iti) {
+ * @brief Diagram::addItem
+ * Add text item to diagram
+ * @param iti
+ */
+void Diagram::addItem(IndependentTextItem *iti) {
 	if (!iti || isReadOnly()) return;
 	
-	// ajoute le champ de texte au schema
-	if (iti -> scene() != this) {
-		addItem(iti);
-	}
+	if (iti -> scene() != this)
+		QGraphicsScene::addItem(iti);
 	
-	// surveille les modifications apportees au champ de texte
 	connect(
 		iti,
 		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
@@ -785,28 +780,30 @@ void Diagram::addIndependentTextItem(IndependentTextItem *iti) {
 	);
 }
 
-void Diagram::addDiagramImageItem(DiagramImageItem *dii) {
-	if (!dii || isReadOnly()) return;
-
-	//add image at diagram
-	if (dii -> scene() != this) {
-		addItem(dii);
-	}
+/**
+ * @brief Diagram::addItem
+ * Generique method to add item to scene
+ * @param item
+ */
+void Diagram::addItem(QGraphicsItem *item) {
+	if (!item || isReadOnly()) return;
+	if (item -> scene() != this)
+		QGraphicsScene::addItem(item);
 }
 
 /**
-	Enleve un element du schema
-	@param element Element a enlever
-*/
-void Diagram::removeElement(Element *element) {
+ * @brief Diagram::removeItem
+ * Remove an element from the scene
+ * @param element
+ */
+void Diagram::removeItem(Element *element) {
 	if (!element || isReadOnly()) return;
-	
+
 	// remove all links of element
 	element->unlinkAllElements();
-	// enleve l'element au schema
-	removeItem(element);
-	
-	// arrete la surveillance des modifications de ses champs de texte
+
+	QGraphicsScene::removeItem(element);
+
 	foreach(ElementTextItem *eti, element -> texts()) {
 		disconnect(
 			eti,
@@ -818,37 +815,44 @@ void Diagram::removeElement(Element *element) {
 }
 
 /**
-	Enleve un conducteur du schema
-	@param conductor Conducteur a enlever
-*/
-void Diagram::removeConductor(Conductor *conductor) {
+ * @brief Diagram::removeItem
+ * Remove a conductor from diagram
+ * @param conductor
+ */
+void Diagram::removeItem(Conductor *conductor) {
 	if (!conductor || isReadOnly()) return;
-	
-	// detache le conducteur sans le detruire
+
 	conductor -> terminal1 -> removeConductor(conductor);
 	conductor -> terminal2 -> removeConductor(conductor);
-	
-	// enleve le conducteur du schema
-	removeItem(conductor);
+
+	QGraphicsScene::removeItem(conductor);
 }
 
 /**
-	Enleve un champ de texte independant du schema
-	@param iti Champ de texte a enlever
-*/
-void Diagram::removeIndependentTextItem(IndependentTextItem *iti) {
+ * @brief Diagram::removeItem
+ * Remove text field from diagram
+ * @param iti
+ */
+void Diagram::removeItem(IndependentTextItem *iti) {
 	if (!iti || isReadOnly()) return;
 	
-	// enleve le champ de texte au schema
-	removeItem(iti);
-	
-	// arrete la surveillance des modifications apportees au champ de texte
+	QGraphicsScene::removeItem(iti);
+
 	disconnect(
 		iti,
 		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
 		this,
 		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
 	);
+}
+
+/**
+ * @brief Diagram::removeItem
+ * Generique methode to remove QGraphicsItem from diagram
+ * @param item
+ */
+void Diagram::removeItem(QGraphicsItem *item) {
+	QGraphicsScene::removeItem(item);
 }
 
 void Diagram::titleChanged(const QString &title) {

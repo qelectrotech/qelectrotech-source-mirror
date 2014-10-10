@@ -38,6 +38,8 @@ Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	link_type_ = Simple;
 	uuid_ = QUuid::createUuid();
 	setZValue(10);
+	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+
 }
 
 /**

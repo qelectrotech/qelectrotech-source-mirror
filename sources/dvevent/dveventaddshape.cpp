@@ -76,7 +76,7 @@ bool DVEventAddShape::mousePressEvent(QMouseEvent *event) {
 	// Next left click finish all shape item except the polyline
 	if (m_shape_type != QetShapeItem::Polyline && event->button() == Qt::LeftButton) {
 		m_shape_item -> setP2 (pos);
-		m_diagram -> undoStack().push (new AddShapeCommand(m_diagram, m_shape_item, pos));
+		m_diagram -> undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
 		m_dv -> setContextMenuPolicy(Qt::DefaultContextMenu);
 		m_running = false;
 		return true;
@@ -94,7 +94,7 @@ bool DVEventAddShape::mousePressEvent(QMouseEvent *event) {
 	// m_running is set to false at the release of right button.
 	if (m_shape_type == QetShapeItem::Polyline && event -> button() == Qt::RightButton) {
 		m_shape_item -> setP2 (pos);
-		m_diagram -> undoStack().push(new AddShapeCommand(m_diagram, m_shape_item, pos));
+		m_diagram -> undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
 		return true;
 	}
 

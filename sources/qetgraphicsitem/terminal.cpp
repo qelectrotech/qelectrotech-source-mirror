@@ -407,7 +407,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		// autrement, on pose un conducteur
 		Conductor *new_conductor = new Conductor(this, other_terminal);
 		new_conductor -> setProperties(d -> defaultConductorProperties);
-		d -> undoStack().push(new AddConductorCommand(d, new_conductor));
+		d -> undoStack().push(new AddItemCommand<Conductor *>(new_conductor, d));
 		new_conductor -> autoText();
 	}
 }

@@ -147,14 +147,15 @@ class Diagram : public QGraphicsScene {
 	
 	// methods related to graphics items addition/removal on the diagram
 	void initElementsLinks();
-	void addElement(Element *);
-	void addConductor(Conductor *);
-	void addIndependentTextItem(IndependentTextItem *);
-	void addDiagramImageItem(DiagramImageItem *);
-	
-	void removeElement(Element *);
-	void removeConductor(Conductor *);
-	void removeIndependentTextItem(IndependentTextItem *);
+	virtual void addItem (Element             *element);
+	virtual void addItem (Conductor           *conductor);
+	virtual void addItem (IndependentTextItem *iti);
+	virtual void addItem (QGraphicsItem       *item);
+
+	virtual void removeItem (Element             *element);
+	virtual void removeItem (Conductor           *conductor);
+	virtual void removeItem (IndependentTextItem *iti);
+	virtual void removeItem (QGraphicsItem       *item);
 	
 	// methods related to graphics options
 	ExportProperties applyProperties(const ExportProperties &);

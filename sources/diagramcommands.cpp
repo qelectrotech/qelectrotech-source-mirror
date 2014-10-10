@@ -30,183 +30,31 @@
 #include <QPropertyAnimation>
 
 /**
-	Constructeur
-	@param d Schema auquel on ajoute un element
-	@param elmt Element ajoute
-	@param p Position a laquelle l'element est ajoute
-	@param parent QUndoCommand parent
-*/
-AddElementCommand::AddElementCommand(
-	Diagram *d,
-	Element *elmt,
-	const QPointF &p,
-	QUndoCommand *parent
-) :
-	QUndoCommand(QString(QObject::tr("ajouter 1 %1", "undo caption - %1 is an element name")).arg(elmt -> name()), parent),
-	element(elmt),
-	diagram(d),
-	position(p)
-{
-	diagram -> qgiManager().manage(element);
-}
-
-/// Destructeur
-AddElementCommand::~AddElementCommand() {
-	diagram -> qgiManager().release(element);
-}
-
-/// Annule l'ajout
-void AddElementCommand::undo() {
-	diagram -> showMe();
-	diagram -> removeElement(element);
-}
-
-/// Refait l'ajout
-void AddElementCommand::redo() {
-	diagram -> showMe();
-	diagram -> addElement(element);
-	element -> setPos(position);
-	element -> setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-}
-
-/**
-	Constructeur
-	@param dia Schema auquel on ajoute du texte
-	@param text Texte ajoute
-	@param pos Position a laquelle le texte est ajoute
-	@param parent QUndoCommand parent
-*/
-AddTextCommand::AddTextCommand(Diagram *dia, IndependentTextItem *text, const QPointF &pos, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("Ajouter un champ de texte", "undo caption"), parent),
-	textitem(text),
-	diagram(dia),
-	position(pos)
-{
-	diagram -> qgiManager().manage(textitem);
-}
-
-/// Destructeur
-AddTextCommand::~AddTextCommand() {
-	diagram -> qgiManager().release(textitem);
-}
-
-/// Annule l'ajout
-void AddTextCommand::undo() {
-	diagram -> showMe();
-	diagram -> removeIndependentTextItem(textitem);
-}
-
-/// Refait l'ajout
-void AddTextCommand::redo() {
-	diagram -> showMe();
-	diagram -> addIndependentTextItem(textitem);
-	textitem -> setPos(position);
-}
-
-/**
-	Constructeur
-	@param dia Schema auquel on ajoute une image
-	@param image Image ajoute
-	@param pos Position a laquelle l'image est ajoute
-	@param parent QUndoCommand parent
+ * Specialized template function
  */
-AddImageCommand::AddImageCommand(Diagram *dia, DiagramImageItem *image, const QPointF &pos, QUndoCommand *parent):
-	QUndoCommand(QObject::tr("Ajouter une image", "undo caption"), parent),
-	imageitem(image),
-	diagram(dia),
-	position(pos)
-{
-	diagram -> qgiManager().manage(imageitem);
+template<>
+QString itemText <DiagramImageItem *> (DiagramImageItem *item) {
+	Q_UNUSED(item);
+	return QObject::tr("une image");
 }
-
-///Destructor
-AddImageCommand::~AddImageCommand() {
-	diagram -> qgiManager().release(imageitem);
+template<>
+QString itemText <IndependentTextItem *> (IndependentTextItem *item) {
+	Q_UNUSED(item);
+	return QObject::tr("un champ texte");
 }
-
-///Annule l'ajout
-void AddImageCommand::undo() {
-	diagram -> showMe();
-	diagram -> removeItem(imageitem);
+template<>
+QString itemText <Element *> (Element *item) {
+	return QObject::tr("un \351l\351ment : %1").arg(item->name());
 }
-
-///Refait l'ajout
-void AddImageCommand::redo() {
-	diagram -> showMe();
-	diagram -> addDiagramImageItem(imageitem);
-	imageitem -> setPos(position - imageitem -> boundingRect().center());
+template<>
+QString itemText <QetShapeItem *> (QetShapeItem *item) {
+	Q_UNUSED(item);
+	return QObject::tr("une shape");
 }
-
-/**
-	Constructeur
-	@param dia Schema auquel on ajoute une shape
-	@param shape Shape ajoute
-	@param pos Position a laquelle l'shape est ajoute
-	@param parent QUndoCommand parent
- */
-AddShapeCommand::AddShapeCommand(Diagram *dia, QetShapeItem *shape, const QPointF &pos, QUndoCommand *parent):
-	QUndoCommand(QObject::tr("Ajouter une Shape", "undo caption"), parent),
-	shapeitem(shape),
-	diagram(dia),
-	position(pos)
-{
-	diagram -> qgiManager().manage(shapeitem);
-}
-
-///Destructor
-AddShapeCommand::~AddShapeCommand() {
-	diagram -> qgiManager().release(shapeitem);
-}
-
-///Annule l'ajout
-void AddShapeCommand::undo() {
-	diagram -> showMe();
-	diagram -> removeItem(shapeitem);
-}
-
-///Refait l'ajout
-void AddShapeCommand::redo() {
-	diagram -> showMe();
-	if (shapeitem ->diagram() != diagram)
-		diagram -> addItem(shapeitem);
-	//diagram -> addDiagramImageItem(imageitem);
-	//imageitem -> setPos(position - imageitem -> boundingRect().center());
-}
-
-
-/**
-	Constructeur
-	@param d Schema auquel on ajoute un conducteur
-	@param c Conducteur ajoute
-	@param parent QUndoCommand parent
-*/
-AddConductorCommand::AddConductorCommand(
-	Diagram *d,
-	Conductor *c,
-	QUndoCommand *parent
-) :
-	QUndoCommand(QObject::tr("ajouter un conducteur", "undo caption"), parent),
-	conductor(c),
-	diagram(d)
-{
-	diagram -> qgiManager().manage(conductor);
-}
-
-/// Destructeur
-AddConductorCommand::~AddConductorCommand() {
-	diagram -> qgiManager().release(conductor);
-}
-
-/// Annule l'ajout
-void AddConductorCommand::undo() {
-	diagram -> showMe();
-	diagram -> removeConductor(conductor);
-}
-
-/// Refait l'ajout
-void AddConductorCommand::redo() {
-	diagram -> showMe();
-	diagram -> addConductor(conductor);
+template<>
+QString itemText <Conductor *> (Conductor *item) {
+	Q_UNUSED(item);
+	return QObject::tr("un conducteur");
 }
 
 /**
@@ -245,17 +93,17 @@ void DeleteElementsCommand::undo() {
 	diagram -> showMe();
 	// remet les elements
 	foreach(Element *e, removed_content.elements) {
-		diagram -> addElement(e);
+		diagram -> addItem(e);
 	}
 	
 	// remet les conducteurs
 	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
-		diagram -> addConductor(c);
+		diagram -> addItem(c);
 	}
 	
 	// remet les textes
 	foreach(IndependentTextItem *t, removed_content.textFields) {
-		diagram -> addIndependentTextItem(t);
+		diagram -> addItem(t);
 	}
 
 	foreach(DiagramImageItem *dii, removed_content.images) {
@@ -276,7 +124,7 @@ void DeleteElementsCommand::redo() {
 
 	// Remove Conductor
 	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
-		diagram -> removeConductor(c);
+		diagram -> removeItem(c);
 
 		//If option one text per folio is enable, and the text item of
 		//current conductor is visible (that mean the conductor own the single displayed text)
@@ -293,12 +141,12 @@ void DeleteElementsCommand::redo() {
 	
 	// Remove elements
 	foreach(Element *e, removed_content.elements) {
-		diagram -> removeElement(e);
+		diagram -> removeItem(e);
 	}
 	
 	// Remove texts
 	foreach(IndependentTextItem *t, removed_content.textFields) {
-		diagram -> removeIndependentTextItem(t);
+		diagram -> removeItem(t);
 	}
 
 	// Remove images
@@ -350,16 +198,16 @@ PasteDiagramCommand::~PasteDiagramCommand() {
 void PasteDiagramCommand::undo() {
 	diagram -> showMe();
 	// remove the conductors
-	foreach(Conductor *c, content.conductorsToMove) diagram -> removeConductor(c);
+	foreach(Conductor *c, content.conductorsToMove) diagram -> removeItem(c);
 	
 	// remove the elements
-	foreach(Element *e, content.elements) diagram -> removeElement(e);
+	foreach(Element *e, content.elements) diagram -> removeItem(e);
 	
 	// remove the texts
-	foreach(IndependentTextItem *t, content.textFields) diagram -> removeIndependentTextItem(t);
+	foreach(IndependentTextItem *t, content.textFields) diagram -> removeItem(t);
 
-	// remove the images
-	foreach(DiagramImageItem *dii, content.images) diagram -> removeItem(dii);
+	// remove the images and shapes
+	foreach(QGraphicsItem *qgi, content.items(DiagramContent::Images | DiagramContent::Shapes)) diagram -> removeItem(qgi);
 }
 
 /// refait le coller
@@ -373,21 +221,18 @@ void PasteDiagramCommand::redo() {
 	}
 	else {
 		// paste the elements
-		foreach(Element *e, content.elements) diagram -> addElement(e);
+		foreach(Element *e, content.elements) diagram -> addItem(e);
 		
 		// paste the conductors
-		foreach(Conductor *c, content.conductorsToMove) diagram -> addConductor(c);
+		foreach(Conductor *c, content.conductorsToMove) diagram -> addItem(c);
 		
 		// paste the texts
-		foreach(IndependentTextItem *t, content.textFields) diagram -> addIndependentTextItem(t);
+		foreach(IndependentTextItem *t, content.textFields) diagram -> addItem(t);
 
-		// paste the images
-		foreach(DiagramImageItem *dii, content.images) diagram -> addDiagramImageItem(dii);
+		// paste the images and shapes
+		foreach(QGraphicsItem *qgi, content.items(DiagramContent::Images | DiagramContent::Shapes)) diagram -> addItem(qgi);
 	}
-	foreach(Element *e, content.elements) e -> setSelected(true);
-	foreach(Conductor *c, content.conductorsToMove) c -> setSelected(true);
-	foreach(IndependentTextItem *t, content.textFields) t -> setSelected(true);
-	foreach(DiagramImageItem *dii, content.images) dii -> setSelected(true);
+	foreach (QGraphicsItem *qgi, content.items()) qgi -> setSelected(true);
 }
 
 /**

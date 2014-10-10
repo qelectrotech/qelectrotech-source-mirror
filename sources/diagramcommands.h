@@ -26,7 +26,8 @@
 #include "qet.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "conductorprofile.h"
-class Diagram;
+#include "diagram.h"
+
 class DiagramTextItem;
 class Element;
 class ElementTextItem;
@@ -34,136 +35,52 @@ class IndependentTextItem;
 class DiagramImageItem;
 
 /**
-	This command adds an element to a particular diagram.
-*/
-class AddElementCommand : public QUndoCommand {
-	// constructors, destructor
+ * @brief The AddItemCommand class
+ * This command add an item in a diagram
+ * The item to add is template, but must be QGraphicsItem or derived.
+ */
+template <typename QGI>
+class AddItemCommand : public QUndoCommand {
 	public:
-	AddElementCommand(Diagram *, Element *, const QPointF &, QUndoCommand * = 0);
-	virtual ~AddElementCommand();
+		AddItemCommand(QGI item, Diagram *diagram, const QPointF &pos = QPointF(), QUndoCommand *parent = nullptr) :
+			QUndoCommand (parent),
+			m_item (item),
+			m_diagram (diagram),
+			m_pos(pos)
+		{
+			setText(QObject::tr("Ajouter ") + itemText(item));
+			m_diagram -> qgiManager().manage(m_item);
+		}
+
+		virtual ~AddItemCommand() {
+			m_diagram -> qgiManager().release(m_item);
+		}
+
+		virtual void undo() {
+			m_diagram -> showMe();
+			m_diagram -> removeItem(m_item);
+		}
+
+		virtual void redo() {
+			m_diagram -> showMe();
+			m_diagram -> addItem(m_item);
+			m_item    -> setPos(m_pos);
+		}
+
 	private:
-	AddElementCommand(const AddElementCommand &);
-	
-	// methods
-	public:
-	virtual void undo();
-	virtual void redo();
-	
-	// attributes
-	private:
-	/// added element
-	Element *element;
-	/// diagram the element is added to
-	Diagram *diagram;
-	/// position of the element on the diagram
-	QPointF position;
+		QGI m_item;
+		Diagram *m_diagram;
+		QPointF m_pos;
 };
 
 /**
-	This command adds an independent (i.e. related to neither an element nor a
-	conductor) text item to a particular diagram.
-*/
-class AddTextCommand : public QUndoCommand {
-	// constructors, destructor
-	public:
-	AddTextCommand(Diagram *, IndependentTextItem *, const QPointF &, QUndoCommand * = 0);
-	virtual ~AddTextCommand();
-	private:
-	AddTextCommand(const AddTextCommand &);
-	
-	// methods
-	public:
-	virtual void undo();
-	virtual void redo();
-	
-	// attributes
-	private:
-	/// added text item
-	IndependentTextItem *textitem;
-	/// diagram the text item is added to
-	Diagram *diagram;
-	/// position of the text item on the diagram
-	QPointF position;
-};
-
-/**
-  This command adds an image item to a particular diagram
-*/
-class AddImageCommand : public QUndoCommand {
-	//constructors, destructor
-	public:
-	AddImageCommand (Diagram *, DiagramImageItem *, const QPointF &, QUndoCommand * = 0);
-	virtual ~AddImageCommand();
-	private:
-	AddImageCommand(const AddImageCommand &);
-
-	//methods
-	public:
-	virtual void undo();
-	virtual void redo();
-
-	// attributes
-	private:
-	/// added image item
-	DiagramImageItem *imageitem;
-	/// diagram the image item is added to
-	Diagram *diagram;
-	/// position of the image item on the diagram
-	QPointF position;
-
-};
-
-
-/**
-  This command adds an image item to a particular diagram
-*/
-class AddShapeCommand : public QUndoCommand {
-	//constructors, destructor
-	public:
-	AddShapeCommand (Diagram *, QetShapeItem *, const QPointF &, QUndoCommand * = 0);
-	virtual ~AddShapeCommand();
-	private:
-	AddShapeCommand(const AddShapeCommand &);
-
-	//methods
-	public:
-	virtual void undo();
-	virtual void redo();
-
-	// attributes
-	private:
-	/// added shape item
-	QetShapeItem *shapeitem;
-	/// diagram the image item is added to
-	Diagram *diagram;
-	/// position of the image item on the diagram
-	QPointF position;
-
-};
-
-/**
-	This command adds a conductor to a particular diagram.
-*/
-class AddConductorCommand : public QUndoCommand {
-	// constructors, destructor
-	public:
-		AddConductorCommand(Diagram *, Conductor *, QUndoCommand * = 0);
-		virtual ~AddConductorCommand();
-	private:
-		AddConductorCommand(const AddConductorCommand &);
-	
-	// methods
-	public:
-		virtual void undo();
-		virtual void redo();
-	
-	// attributes
-	private:
-		/// added conductor
-		Conductor *conductor;
-		/// diagram the conductor is added to
-		Diagram *diagram;
-};
+ *Template function: return generique name of a QGraphicsItem.
+ */
+template <typename T>
+QString itemText(T item) {
+	Q_UNUSED (item);
+	return QObject::tr("un item");
+}
 
 /**
 	This command removes content from a particular diagram.
