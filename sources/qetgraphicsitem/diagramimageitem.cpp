@@ -181,6 +181,14 @@ QRectF DiagramImageItem::boundingRect() const {
 }
 
 /**
+ * @brief DiagramImageItem::name
+ * @return the generic name of this item (picture)
+ */
+QString DiagramImageItem::name() const {
+	return tr("une image");
+}
+
+/**
 	Load the image from this xml element
 	@param e xml element that define an image
 */

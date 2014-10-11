@@ -33,6 +33,7 @@ class Element;
 class ElementTextItem;
 class IndependentTextItem;
 class DiagramImageItem;
+class QetGraphicsItem;
 
 /**
  * @brief The AddItemCommand class
@@ -73,14 +74,10 @@ class AddItemCommand : public QUndoCommand {
 		QPointF m_pos;
 };
 
-/**
- *Template function: return generique name of a QGraphicsItem.
- */
-template <typename T>
-QString itemText(T item) {
-	Q_UNUSED (item);
-	return QObject::tr("un item");
-}
+//Return a string to describe a QGraphicsItem
+QString itemText(const QetGraphicsItem     *item);
+QString itemText(const IndependentTextItem *item);
+QString itemText(const Conductor           *item);
 
 /**
 	This command removes content from a particular diagram.

@@ -29,30 +29,16 @@
 #include "conductorautonumerotation.h"
 #include <QPropertyAnimation>
 
-/**
- * Specialized template function
- */
-template<>
-QString itemText <DiagramImageItem *> (DiagramImageItem *item) {
-	Q_UNUSED(item);
-	return QObject::tr("une image");
+QString itemText(const QetGraphicsItem *item) {
+	return item->name();
 }
-template<>
-QString itemText <IndependentTextItem *> (IndependentTextItem *item) {
+
+QString itemText(const IndependentTextItem *item) {
 	Q_UNUSED(item);
 	return QObject::tr("un champ texte");
 }
-template<>
-QString itemText <Element *> (Element *item) {
-	return QObject::tr("un \351l\351ment : %1").arg(item->name());
-}
-template<>
-QString itemText <QetShapeItem *> (QetShapeItem *item) {
-	Q_UNUSED(item);
-	return QObject::tr("une shape");
-}
-template<>
-QString itemText <Conductor *> (Conductor *item) {
+
+QString itemText(const Conductor *item) {
 	Q_UNUSED(item);
 	return QObject::tr("un conducteur");
 }

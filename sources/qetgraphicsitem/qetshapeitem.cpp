@@ -371,3 +371,27 @@ void QetShapeItem::editProperty()
 	//...or not
 	setScale(scale_);
 }
+
+/**
+ * @brief QetShapeItem::name
+ * @return the name of the curent shape.
+ */
+QString QetShapeItem::name() const {
+	switch (m_shapeType) {
+		case Line:
+			return tr("une ligne");
+			break;
+		case Rectangle:
+			return tr("un rectangle");
+			break;
+		case Ellipse:
+			return tr("une \351llipse");
+			break;
+		case Polyline:
+			return tr("une polyligne");
+			break;
+		default:
+			return tr("une shape");
+			break;
+	}
+}

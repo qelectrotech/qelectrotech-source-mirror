@@ -55,6 +55,7 @@ class DiagramImageItem : public QetGraphicsItem {
 	virtual void editProperty();
 	void setPixmap(const QPixmap &pixmap);
 	virtual QRectF boundingRect() const;
+	virtual QString name() const;
 	
 	protected:
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);

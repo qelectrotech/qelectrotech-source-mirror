@@ -58,6 +58,7 @@ class QetShapeItem : public QetGraphicsItem
 	virtual bool		toDXF	(const QString &filepath);
 
 	virtual void editProperty();
+	virtual QString name() const;
 
 	void setP2		  (QPointF P2);
 	void setNextPoint (QPointF P);

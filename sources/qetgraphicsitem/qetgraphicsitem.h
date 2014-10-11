@@ -37,6 +37,7 @@ class QetGraphicsItem : public QGraphicsObject {
 	virtual void rotateBy(const qreal &);
 	virtual void applyRotation(const qreal &);
 	virtual void editProperty (){}
+	virtual QString name()const {return QString("");}
 
 	signals:
 	void positionChange(QPointF);
