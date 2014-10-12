@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>633</width>
-    <height>461</height>
+    <height>470</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,6 +25,9 @@
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QRadioButton" name="m_multi_rb">
+        <property name="toolTip">
+         <string>Multifilaire</string>
+        </property>
         <property name="text">
          <string>Multifilaire</string>
         </property>
@@ -71,7 +74,7 @@
            <item>
             <widget class="QSpinBox" name="m_text_size_sb">
              <property name="toolTip">
-              <string>taille</string>
+              <string>Taille du texte</string>
              </property>
              <property name="minimum">
               <number>5</number>
@@ -83,6 +86,9 @@
            </item>
            <item>
             <widget class="QCheckBox" name="m_show_text_cb">
+             <property name="toolTip">
+              <string>Texte visible</string>
+             </property>
              <property name="text">
               <string>Visible</string>
              </property>
@@ -97,15 +103,21 @@
           <layout class="QVBoxLayout" name="m_autonum_layout">
            <item>
             <widget class="QCheckBox" name="m_one_text_per_folio_cb">
+             <property name="toolTip">
+              <string>activer l'option un texte par potentiel</string>
+             </property>
              <property name="text">
-              <string>Afficher un seul texte par potentiel présent sur un folio. (expérimental)</string>
+              <string>Afficher un texte de potentiel par folio. (expérimental)</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QCheckBox" name="m_no_one_text_per_folio_cb">
+             <property name="toolTip">
+              <string>Ne pas subir l'option un texte par potentiel</string>
+             </property>
              <property name="text">
-              <string>Ne pas subir l'option :  afficher un seul texte par potentiel présent sur un folio. (Inactif)</string>
+              <string>Ne pas subir l'option :  Afficher un texte de potentiel par folio. (expérimental)</string>
              </property>
             </widget>
            </item>
@@ -150,6 +162,9 @@
       </item>
       <item>
        <widget class="QRadioButton" name="m_single_rb">
+        <property name="toolTip">
+         <string>Unifilaire</string>
+        </property>
         <property name="text">
          <string>Unifilaire</string>
         </property>
@@ -186,6 +201,9 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="toolTip">
+              <string>Nombre de phase</string>
+             </property>
              <property name="minimum">
               <number>1</number>
              </property>
@@ -199,6 +217,9 @@
            </item>
            <item row="1" column="1">
             <widget class="QCheckBox" name="m_neutral_cb">
+             <property name="toolTip">
+              <string>Neutre</string>
+             </property>
              <property name="text">
               <string>neutre</string>
              </property>
@@ -210,6 +231,9 @@
            </item>
            <item row="2" column="1">
             <widget class="QCheckBox" name="m_phase_cb">
+             <property name="toolTip">
+              <string>Phase</string>
+             </property>
              <property name="text">
               <string>phase</string>
              </property>
@@ -221,6 +245,9 @@
            </item>
            <item row="2" column="3">
             <widget class="QSpinBox" name="m_phase_sb">
+             <property name="toolTip">
+              <string>Nombre de phase</string>
+             </property>
              <property name="minimum">
               <number>1</number>
              </property>
@@ -241,6 +268,9 @@
            </item>
            <item row="0" column="1">
             <widget class="QCheckBox" name="m_earth_cb">
+             <property name="toolTip">
+              <string>Terre</string>
+             </property>
              <property name="text">
               <string>terre</string>
              </property>
@@ -282,10 +312,17 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="3" column="2">
-       <widget class="QComboBox" name="m_line_style_cb"/>
+       <widget class="QComboBox" name="m_line_style_cb">
+        <property name="toolTip">
+         <string>Style du conducteur</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="1">
        <widget class="QLabel" name="label_6">
+        <property name="toolTip">
+         <string>Couleur du conducteur</string>
+        </property>
         <property name="text">
          <string>Couleur :</string>
         </property>
@@ -293,13 +330,28 @@
       </item>
       <item row="1" column="2">
        <widget class="QPushButton" name="m_color_pb">
+        <property name="toolTip">
+         <string>Couleur du conducteur</string>
+        </property>
+        <property name="accessibleName">
+         <string/>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
        <widget class="QLabel" name="label_7">
+        <property name="toolTip">
+         <string>Style du conducteur</string>
+        </property>
         <property name="text">
          <string>Style :</string>
         </property>

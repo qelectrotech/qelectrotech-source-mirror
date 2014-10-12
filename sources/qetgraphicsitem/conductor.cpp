@@ -1181,27 +1181,35 @@ QPointF Conductor::posForText(Qt::Orientations &flag) {
  * If text was moved by user, this function do nothing, except check if text is near conductor.
  */
 void Conductor::calculateTextItemPosition() {
-	if (!text_item || !diagram()) return;
+	if (!text_item || !diagram() || properties_.type != ConductorProperties::Multi) return;
 
 	if (diagram() -> defaultConductorProperties.m_one_text_per_folio == true) {
+
 		Conductor *longuest_conductor = longuestConductorInPotential(this);
 
 		//The longuest conductor isn't this conductor
 		//we call calculateTextItemPosition of the longuest conductor
 		if(longuest_conductor != this) {
 			longuest_conductor -> calculateTextItemPosition();
-			return;
-		}
+			//This isn't the longuest conductor, if option "m_no_one_text_per_folio" is false we return now
+			//else is true, that mean the text is visible, so we need to calcule position
+			if (properties_.m_no_one_text_per_folio == false) return;
 
-		//At this point this conductor is the longuest conductor
-		//we hide all text of conductor_list
-		foreach (Conductor *c, relatedPotentialConductors(false)) {
-			c -> textItem() -> setVisible(false);
+		} else {
+			//At this point this conductor is the longuest conductor
+			//we hide all text of conductor_list or setVisible according to the
+			//properties of current conductor if option "m_no_one_text_per_folio" is true
+			foreach (Conductor *c, relatedPotentialConductors(false)) {
+				if (c -> properties_.m_no_one_text_per_folio == false)
+					c -> textItem() -> setVisible(false);
+				else
+					c -> textItem() -> setVisible(c -> properties().m_show_text);
+			}
+			//Make sure text item is visible
+			text_item -> setVisible(true);
 		}
-		//Make sure text item is visible
-		text_item -> setVisible(true);
 	}
-	
+
 	//position
 	if (text_item -> wasMovedByUser()) {
 		//Text field was moved by user :
