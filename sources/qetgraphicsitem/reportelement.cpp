@@ -121,6 +121,6 @@ void ReportElement::updateLabel() {
 		label.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
 		text->setPlainText(label);
 	} else {
-		text->setPlainText("_");
+		text->setPlainText("/");
 	}
 }
