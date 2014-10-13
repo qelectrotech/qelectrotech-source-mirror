@@ -111,16 +111,6 @@
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="QCheckBox" name="m_no_one_text_per_folio_cb">
-             <property name="toolTip">
-              <string>Ne pas subir l'option un texte par potentiel</string>
-             </property>
-             <property name="text">
-              <string>Ne pas subir l'option :  Afficher un texte de potentiel par folio. (expérimental)</string>
-             </property>
-            </widget>
-           </item>
           </layout>
          </item>
          <item>

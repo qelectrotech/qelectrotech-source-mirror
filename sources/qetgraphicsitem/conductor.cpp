@@ -1183,7 +1183,8 @@ QPointF Conductor::posForText(Qt::Orientations &flag) {
 void Conductor::calculateTextItemPosition() {
 	if (!text_item || !diagram() || properties_.type != ConductorProperties::Multi) return;
 
-	if (diagram() -> defaultConductorProperties.m_one_text_per_folio == true) {
+	if (diagram() -> defaultConductorProperties.m_one_text_per_folio == true &&
+		relatedPotentialConductors(false).size() > 0) {
 
 		Conductor *longuest_conductor = longuestConductorInPotential(this);
 
@@ -1191,23 +1192,15 @@ void Conductor::calculateTextItemPosition() {
 		//we call calculateTextItemPosition of the longuest conductor
 		if(longuest_conductor != this) {
 			longuest_conductor -> calculateTextItemPosition();
-			//This isn't the longuest conductor, if option "m_no_one_text_per_folio" is false we return now
-			//else is true, that mean the text is visible, so we need to calcule position
-			if (properties_.m_no_one_text_per_folio == false) return;
-
-		} else {
-			//At this point this conductor is the longuest conductor
-			//we hide all text of conductor_list or setVisible according to the
-			//properties of current conductor if option "m_no_one_text_per_folio" is true
-			foreach (Conductor *c, relatedPotentialConductors(false)) {
-				if (c -> properties_.m_no_one_text_per_folio == false)
-					c -> textItem() -> setVisible(false);
-				else
-					c -> textItem() -> setVisible(c -> properties().m_show_text);
-			}
-			//Make sure text item is visible
-			text_item -> setVisible(true);
+			return;
 		}
+
+		//At this point this conductor is the longuest conductor we hide all text of conductor_list
+		foreach (Conductor *c, relatedPotentialConductors(false)) {
+					c -> textItem() -> setVisible(false);
+			}
+		//Make sure text item is visible
+		text_item -> setVisible(true);
 	}
 
 	//position

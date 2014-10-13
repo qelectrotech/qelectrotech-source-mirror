@@ -75,7 +75,6 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	ui -> m_text_size_sb             -> setValue   (m_properties.text_size);
 	ui -> m_show_text_cb             -> setChecked (m_properties.m_show_text);
 	ui -> m_one_text_per_folio_cb    -> setChecked (m_properties.m_one_text_per_folio);
-	ui -> m_no_one_text_per_folio_cb -> setChecked (m_properties.m_no_one_text_per_folio);
 	ui -> m_earth_cb                 -> setChecked (m_properties.singleLineProperties.hasGround);
 	ui -> m_neutral_cb               -> setChecked (m_properties.singleLineProperties.hasNeutral);
 	ui -> m_pen_cb                   -> setChecked (m_properties.singleLineProperties.isPen());
@@ -104,7 +103,6 @@ ConductorProperties ConductorPropertiesWidget::properties() const {
 	properties_.text_size               = ui -> m_text_size_sb -> value();
 	properties_.m_show_text             = ui -> m_show_text_cb -> isChecked();
 	properties_.m_one_text_per_folio    = ui -> m_one_text_per_folio_cb -> isChecked();
-	properties_.m_no_one_text_per_folio = ui -> m_no_one_text_per_folio_cb -> isChecked();
 	properties_.verti_rotate_text       = m_verti_select -> value();
 	properties_.horiz_rotate_text       = m_horiz_select -> value();
 
@@ -141,11 +139,11 @@ void ConductorPropertiesWidget::setHiddenOneTextPerFolio(const bool &hide) {
 }
 
 /**
- * @brief ConductorPropertiesWidget::setHiddenNoOneTextPerFolio
- * @param hide
+ * @brief ConductorPropertiesWidget::setDisabledShowText
+ * @param disable
  */
-void ConductorPropertiesWidget::setHiddenNoOneTextPerFolio(const bool &hide) {
-	ui -> m_no_one_text_per_folio_cb -> setHidden(hide);
+void ConductorPropertiesWidget::setDisabledShowText(const bool &disable) {
+	ui->m_show_text_cb->setDisabled(disable==true? true : false);
 }
 
 /**

@@ -47,7 +47,6 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
 	ipw = new TitleBlockPropertiesWidget(QETDiagramEditor::defaultTitleBlockProperties(), true);
 	// default conductor properties
 	cpw = new ConductorPropertiesWidget(QETDiagramEditor::defaultConductorProperties());
-	cpw -> setHiddenNoOneTextPerFolio(true);
 	// default propertie of report label
 	rpw = new ReportPropertieWidget(QETDiagramEditor::defaultReportProperties());
 	// default properties of xref
