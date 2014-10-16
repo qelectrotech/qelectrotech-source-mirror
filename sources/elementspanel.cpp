@@ -508,6 +508,20 @@ bool ElementsPanel::matchesCurrentFilter(const QTreeWidgetItem *item) const {
 }
 
 /**
+	@return true if \a item matches the  filter, false otherwise
+*/
+bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item, QString filter) const {
+	if (!item) return(false);
+	
+	// no filter => we consider the item matches
+	if (filter.isEmpty()) return(true);
+	
+	bool item_matches = item -> text(0).contains(filter, Qt::CaseInsensitive);
+	
+	return(item_matches);
+}
+
+/**
 	Reloads the following collections:
 	  * common collection
 	  * custom collection
@@ -819,13 +833,37 @@ bool ElementsPanel::scrollToElement(const ElementsLocation &location) {
 }
 
 /**
+	Build filter list for multiple filter
+*/
+void ElementsPanel::buildFilterList() {
+	if (filter_.isEmpty()) return;
+	filter_list_ = filter_.split( '+' );
+	/*
+	qDebug() << "*******************";
+	foreach( QString filter , filter_list_ )	{
+		filter = filter.trimmed();
+		qDebug() << filter;
+	}
+	*/
+}
+
+/**
 	Apply the current filter to a given item.
 */
 void ElementsPanel::applyCurrentFilter(const QList<QTreeWidgetItem *> &items) {
 	if (filter_.isEmpty()) return;
+	buildFilterList();
 	QList<QTreeWidgetItem *> matching_items;
+
 	foreach (QTreeWidgetItem *item, items) {
-		bool item_matches = matchesCurrentFilter(item);
+		bool item_matches = true;
+
+		foreach( QString filter , filter_list_ )	{
+			filter = filter.trimmed();
+			if ( !filter.isEmpty() )	{
+				item_matches &= matchesFilter(item, filter);
+			}
+		}
 		if (item_matches) matching_items << item;
 		item -> setHidden(!item_matches);
 	}

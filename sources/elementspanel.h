@@ -83,6 +83,7 @@ class ElementsPanel : public GenericPanel {
 	void projectWasOpened(QETProject *);
 	void projectWasClosed(QETProject *);
 	bool scrollToElement(const ElementsLocation &);
+	void buildFilterList();
 	void applyCurrentFilter(const QList<QTreeWidgetItem *> &);
 	void ensureHierarchyIsVisible(const QList<QTreeWidgetItem *> &);
 	void scrollToSelectedItem();
@@ -96,6 +97,7 @@ class ElementsPanel : public GenericPanel {
 	void startElementDrag(const ElementsLocation &);
 	void startTitleBlockTemplateDrag(const TitleBlockTemplateLocation &);
 	bool matchesCurrentFilter(const QTreeWidgetItem *) const;
+	bool matchesFilter(const QTreeWidgetItem *, QString) const;
 	
 	protected slots:
 	void firstActivation();
@@ -121,6 +123,7 @@ class ElementsPanel : public GenericPanel {
 	int loading_progress_;                         ///< used to track the loading progress of elements collections
 	bool first_reload_;                            ///< used to distinguish the first time this panel is reloaded
 	QString filter_;                               ///< Currently applied filter
+	QStringList filter_list_;                       ///< Currently applied list of filter
 	QTreeWidgetItem *it_prev_, *it_;
 };
 #endif
