@@ -17,12 +17,16 @@
 */
 #ifndef DIAGRAM_CONTENT_H
 #define DIAGRAM_CONTENT_H
-#include <QtGui>
-#include "qetgraphicsitem/qetshapeitem.h"
+
+#include <QSet>
+
+class QGraphicsItem;
 class Conductor;
 class Element;
 class IndependentTextItem;
 class DiagramImageItem;
+class ElementTextItem;
+class QetShapeItem;
 
 /**
 	This class provides a container that makes the transmission of diagram content
@@ -43,20 +47,23 @@ class DiagramContent {
 	enum Filter {
 		Elements = 1,
 		TextFields = 2,
-		Images = 4,
-		ConductorsToMove = 8,
-		ConductorsToUpdate = 16,
-		OtherConductors = 32,
-		AnyConductor = 56,
-		Shapes = 64,
-		All = 127,
-		SelectedOnly = 128
+		ElementTextFields = 4,
+		Images = 8,
+		ConductorsToMove = 16,
+		ConductorsToUpdate = 32,
+		OtherConductors = 64,
+		AnyConductor = 112,
+		Shapes = 128,
+		All = 255,
+		SelectedOnly = 256
 	};
 	
 	/// Hold electrical elements
 	QSet<Element *> elements;
 	/// Hold independent text items
 	QSet<IndependentTextItem *> textFields;
+	/// Hold element text item
+	QSet <ElementTextItem *> elementTextFields;
 	/// Hold image
 	QSet<DiagramImageItem *> images;
 	/// Hold shape

@@ -47,13 +47,7 @@ class IndependentTextItem : public DiagramTextItem {
 	virtual void fromXml(const QDomElement &);
 	virtual QDomElement toXml(QDomDocument &) const;
 	
-	protected:
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
-	
 	private:
-	bool first_move_;
 	QPointF mouse_to_origin_movement_;
 };
 #endif

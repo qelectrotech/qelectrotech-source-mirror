@@ -16,9 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementtextitem.h"
-#include "diagram.h"
-#include "diagramcommands.h"
 #include "element.h"
+#include <QTextDocument>
 
 /**
 	Constructeur
@@ -29,8 +28,7 @@ ElementTextItem::ElementTextItem(Element *parent_element, Diagram *parent_diagra
 	DiagramTextItem(parent_element, parent_diagram),
 	parent_element_(parent_element),
 	follow_parent_rotations(false),
-	original_rotation_angle_(0.0),
-	first_move_(true)
+	original_rotation_angle_(0.0)
 {build();}
 
 /**
@@ -43,13 +41,10 @@ ElementTextItem::ElementTextItem(const QString &text, Element *parent_element, D
 	DiagramTextItem(text, parent_element, parent_diagram),
 	parent_element_(parent_element),
 	follow_parent_rotations(false),
-	original_rotation_angle_(0.0),
-	first_move_(true)
+	original_rotation_angle_(0.0)
 {build();}
 
 void ElementTextItem::build() {
-	setFlag(QGraphicsItem::ItemIsMovable, false);
-	setToolTip(tr("Maintenir ctrl pour d\351placer", "tool tip for element text item"));
 	adjustItemPosition(1);
 	// ajuste la position du QGraphicsItem lorsque le QTextDocument change
 	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
@@ -82,13 +77,6 @@ void ElementTextItem::setPos(const QPointF &pos) {
 */
 void ElementTextItem::setPos(qreal x, qreal y) {
 	setPos(QPointF(x, y));
-}
-
-/**
-	@return La position (bidouillee) du champ de texte
-*/
-QPointF ElementTextItem::pos() const {
-	return(QGraphicsTextItem::pos());
 }
 
 /**
@@ -211,95 +199,23 @@ void ElementTextItem::applyRotation(const qreal &angle) {
 }
 
 /**
-	Gere le clic sur le champ de texte
-	@param e Objet decrivant l'evenement souris
-*/
-void ElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-	first_move_ = true;
-	if (e -> modifiers() & Qt::ControlModifier) {
-		setSelected(true);
-		setFlag(QGraphicsItem::ItemIsMovable, true);
-	}
-	else DiagramTextItem::mousePressEvent(e);
+ * @brief ElementTextItem::mouseMoveEvent
+ * @param event
+ */
+void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
+	if (parent_element_)
+		parent_element_->setHighlighted(true);
+
+	DiagramTextItem::mouseMoveEvent(event);
 }
 
 /**
-	Gere les mouvements de souris lies au champ de texte
-	@param e Objet decrivant l'evenement souris
-*/
-void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
-	if (textInteractionFlags() & Qt::TextEditable) {
-		DiagramTextItem::mouseMoveEvent(e);
-	} else if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
-		QPointF old_pos = pos();
-		/*
-			Utiliser e -> pos() directement aurait pour effet de positionner
-			l'origine du champ de texte a la position indiquee par le curseur,
-			ce qui n'est pas l'effet recherche
-			Au lieu de cela, on applique a la position actuelle le vecteur
-			definissant le mouvement effectue depuis la derniere position
-			cliquee avec le bouton gauche
-		*/
-		QPointF movement = e -> pos() - e -> buttonDownPos(Qt::LeftButton);
-		
-		/*
-			Les methodes pos() et setPos() travaillent toujours avec les
-			coordonnees de l'item parent (ou de la scene s'il n'y a pas d'item
-			parent). On n'oublie donc pas de mapper le mouvement fraichement
-			calcule sur l'item parent avant de l'appliquer.
-		*/
-		QPointF parent_movement = mapMovementToParent(movement);
-		setPos(pos() + parent_movement);
-		
-		Diagram *diagram_ptr = diagram();
-		if (diagram_ptr) {
-			if (first_move_) {
-				// on signale le debut d'un deplacement d'ElementTextItems au schema parent
-				int moved_texts_count = diagram_ptr -> beginMoveElementTexts(this);
-				
-				// s'il n'y a qu'un seul texte deplace, on met en valeur l'element parent
-				if (moved_texts_count == 1 && parent_element_) {
-					parent_element_ -> setHighlighted(true);
-					parent_element_ -> update();
-				}
-			}
-			
-			/*
-				Comme setPos() n'est pas oblige d'appliquer exactement la
-				valeur qu'on lui fournit, on calcule le mouvement reellement
-				applique.
-			*/
-			QPointF effective_movement = pos() - old_pos;
-			QPointF scene_effective_movement = mapMovementToScene(mapMovementFromParent(effective_movement));
-			
-			// on applique le mouvement subi aux autres textes a deplacer
-			diagram_ptr -> continueMoveElementTexts(scene_effective_movement);
-		}
-	} else e -> ignore();
-	
-	if (first_move_) {
-		first_move_ = false;
-	}
-}
+ * @brief ElementTextItem::mouseReleaseEvent
+ * @param event
+ */
+void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
+	if (parent_element_)
+		parent_element_->setHighlighted(false);
 
-/**
-	Gere le relachement de souris
-	Cette methode cree un objet d'annulation pour le deplacement
-	@param e Objet decrivant l'evenement souris
-*/
-void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	if (Diagram *diagram_ptr = diagram()) {
-		// on arrete de mettre en valeur l'element parent
-		if (parent_element_) {
-			if (parent_element_ -> isHighlighted()) {
-				parent_element_ -> setHighlighted(false);
-			}
-		}
-		
-		diagram_ptr -> endMoveElementTexts();
-	}
-	if (!(e -> modifiers() & Qt::ControlModifier)) {
-		QGraphicsTextItem::mouseReleaseEvent(e);
-	}
-	setFlag(QGraphicsItem::ItemIsMovable, false);
+	DiagramTextItem::mouseReleaseEvent(event);
 }

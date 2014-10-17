@@ -26,7 +26,6 @@
 #include "diagramposition.h"
 #include "qetgraphicsitem/elementtextitem.h"
 #include "elementsmover.h"
-#include "elementtextsmover.h"
 #include "exportdialog.h"
 #include "qetgraphicsitem/ghostelement.h"
 #include "qetgraphicsitem/independenttextitem.h"
@@ -68,7 +67,6 @@ Diagram::Diagram(QObject *parent) :
 	
 	// initialise les objets gerant les deplacements
 	elements_mover_ = new ElementsMover();           // deplacements d'elements/conducteurs/textes
-	element_texts_mover_ = new ElementTextsMover();  // deplacements d'ElementTextItem
 	
 	connect(
 		&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)),
@@ -94,7 +92,6 @@ Diagram::~Diagram() {
 	
 	// delete of object for manage movement
 	delete elements_mover_;
-	delete element_texts_mover_;
 	
 	// list removable items
 	QList<QGraphicsItem *> deletable_items;
@@ -1021,33 +1018,6 @@ void Diagram::endMoveElements() {
 }
 
 /**
-	Initialise un deplacement d'ElementTextItems
-	@param driver_item Item deplace par la souris et ne necessitant donc pas
-	d'etre deplace lors des appels a continueMovement.
-	@see ElementTextsMover
-*/
-int Diagram::beginMoveElementTexts(QGraphicsItem *driver_item) {
-	return(element_texts_mover_ -> beginMovement(this, driver_item));
-}
-
-/**
-	Prend en compte un mouvement composant un deplacement d'ElementTextItems
-	@param movement mouvement a ajouter au deplacement en cours
-	@see ElementTextsMover
-*/
-void Diagram::continueMoveElementTexts(const QPointF &movement) {
-	element_texts_mover_ -> continueMovement(movement);
-}
-
-/**
-	Finalise un deplacement d'ElementTextItems
-	@see ElementTextsMover
-*/
-void Diagram::endMoveElementTexts() {
-	element_texts_mover_ -> endMovement();
-}
-
-/**
 	Permet de savoir si un element est utilise sur un schema
 	@param location Emplacement d'un element
 	@return true si l'element location est utilise sur ce schema, false sinon
@@ -1299,6 +1269,8 @@ DiagramContent Diagram::selectedContent() {
 			dc.elements << elmt;
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
 			dc.textFields << iti;
+		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
+			dc.elementTextFields << eti;
 		} else if (Conductor *c = qgraphicsitem_cast<Conductor *>(item)) {
 			// recupere les conducteurs selectionnes isoles (= non deplacables mais supprimables)
 			if (

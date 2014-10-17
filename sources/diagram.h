@@ -37,7 +37,6 @@ class Element;
 class ElementsLocation;
 class ElementsMover;
 class ElementTextItem;
-class ElementTextsMover;
 class IndependentTextItem;
 class QETProject;
 class Terminal;
@@ -85,7 +84,6 @@ class Diagram : public QGraphicsScene {
 	private:
 		QGraphicsLineItem *conductor_setter_;
 		ElementsMover     *elements_mover_;
-		ElementTextsMover *element_texts_mover_;
 		QGIManager        *qgi_manager_;
 		QETProject        *project_;
 
@@ -191,9 +189,6 @@ class Diagram : public QGraphicsScene {
 	int  beginMoveElements(QGraphicsItem * = 0);
 	void continueMoveElements(const QPointF &);
 	void endMoveElements();
-	int  beginMoveElementTexts(QGraphicsItem * = 0);
-	void continueMoveElementTexts(const QPointF &);
-	void endMoveElementTexts();
 	bool usesElement(const ElementsLocation &);
 	bool usesTitleBlockTemplate(const QString &);
 	

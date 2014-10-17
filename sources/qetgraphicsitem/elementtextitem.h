@@ -45,7 +45,6 @@ class ElementTextItem : public DiagramTextItem {
 	bool follow_parent_rotations;
 	QPointF original_position;
 	qreal original_rotation_angle_;
-	bool first_move_;
 	QString tagg_;
 	
 	// methods
@@ -60,7 +59,6 @@ class ElementTextItem : public DiagramTextItem {
 	QDomElement toXml(QDomDocument &) const;
 	void setPos(const QPointF &);
 	void setPos(qreal, qreal);
-	virtual QPointF pos() const;
 	void setOriginalPos(const QPointF &);
 	QPointF originalPos() const;
 	void setOriginalRotationAngle(const qreal &);
@@ -74,10 +72,9 @@ class ElementTextItem : public DiagramTextItem {
 	
 	protected:
 	virtual void applyRotation(const qreal &);
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
-	virtual void focusOutEvent(QFocusEvent *e) {DiagramTextItem::focusOutEvent(e); setFlag(QGraphicsItem::ItemIsMovable, false);}
+
+	virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
+	virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
 
 	private:
 	void build();

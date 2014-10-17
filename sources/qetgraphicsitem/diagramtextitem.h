@@ -54,7 +54,6 @@ class DiagramTextItem : public QGraphicsTextItem {
 	virtual QDomElement toXml(QDomDocument &) const = 0;
 	virtual void setPos(const QPointF &);
 	virtual void setPos(qreal, qreal);
-	virtual QPointF pos() const;
 	qreal rotationAngle() const;
 	void setRotationAngle(const qreal &);
 	void rotateBy(const qreal &);
@@ -70,7 +69,12 @@ class DiagramTextItem : public QGraphicsTextItem {
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	virtual void focusInEvent(QFocusEvent *);
 	virtual void focusOutEvent(QFocusEvent *);
-	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
+
+	virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
+	virtual void mousePressEvent       (QGraphicsSceneMouseEvent *event);
+	virtual void mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
+	virtual void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
+
 	virtual void applyRotation(const qreal &);
 	
 	signals:
@@ -83,11 +87,13 @@ class DiagramTextItem : public QGraphicsTextItem {
 	void setNonFocusable();
 	void setHtmlText(const QString &);
 	
-	private:
+	protected:
 	/// Previous text value
 	QString previous_text_;
 	/// angle of rotation of the text field
 	qreal rotation_angle_;
 	bool no_editable;
+	bool m_first_move;
+	QPointF m_mouse_to_origin_movement;
 };
 #endif

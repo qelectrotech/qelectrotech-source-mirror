@@ -17,10 +17,12 @@
 */
 #include "diagramcontent.h"
 #include <QGraphicsItem>
-#include "qetgraphicsitem/element.h"
-#include "qetgraphicsitem/independenttextitem.h"
-#include "qetgraphicsitem/conductor.h"
-#include "qetgraphicsitem/diagramimageitem.h"
+#include "element.h"
+#include "independenttextitem.h"
+#include "conductor.h"
+#include "diagramimageitem.h"
+#include "elementtextitem.h"
+#include "qetshapeitem.h"
 
 /**
 	Constructeur par defaut. Ne contient rien.
@@ -34,6 +36,7 @@ DiagramContent::DiagramContent() {
 DiagramContent::DiagramContent(const DiagramContent &other) :
 	elements(other.elements),
 	textFields(other.textFields),
+	elementTextFields(other.elementTextFields),
 	images(other.images),
 	shapes(other.shapes),
 	conductorsToUpdate(other.conductorsToUpdate),
@@ -71,6 +74,7 @@ QList<Conductor *> DiagramContent::conductors(int filter) const {
 void DiagramContent::clear() {
 	elements.clear();
 	textFields.clear();
+	elementTextFields.clear();
 	images.clear();
 	shapes.clear();
 	conductorsToUpdate.clear();
@@ -85,10 +89,13 @@ void DiagramContent::clear() {
 QList<QGraphicsItem *> DiagramContent::items(int filter) const {
 	QList<QGraphicsItem *> items_list;
 	foreach(QGraphicsItem *qgi, conductors(filter)) items_list << qgi;
-	if (filter & Elements)   foreach(QGraphicsItem *qgi, elements)   items_list << qgi;
-	if (filter & TextFields) foreach(QGraphicsItem *qgi, textFields)  items_list << qgi;
-	if (filter & Images) foreach(QGraphicsItem *qgi, images) items_list << qgi;
-	if (filter & Shapes) foreach(QGraphicsItem *qgi, shapes) items_list << qgi;
+
+	if (filter & Elements)          foreach(QGraphicsItem *qgi, elements)           items_list << qgi;
+	if (filter & TextFields)        foreach(QGraphicsItem *qgi, textFields)         items_list << qgi;
+	if (filter & ElementTextFields) foreach(QGraphicsItem *qgi, elementTextFields)  items_list << qgi;
+	if (filter & Images)            foreach(QGraphicsItem *qgi, images)             items_list << qgi;
+	if (filter & Shapes)            foreach(QGraphicsItem *qgi, shapes)             items_list << qgi;
+
 	if (filter & SelectedOnly) {
 		foreach(QGraphicsItem *qgi, items_list) {
 			if (!qgi -> isSelected()) items_list.removeOne(qgi);
@@ -106,6 +113,7 @@ int DiagramContent::count(int filter) const {
 	if (filter & SelectedOnly) {
 		if (filter & Elements)           foreach(Element *element,     elements)                  { if (element   -> isSelected()) ++ count; }
 		if (filter & TextFields)         foreach(DiagramTextItem *dti, textFields)                { if (dti       -> isSelected()) ++ count; }
+		if (filter & ElementTextFields)  foreach(DiagramTextItem *dti, elementTextFields)         { if (dti       -> isSelected()) ++ count; }
 		if (filter & Images)             foreach(DiagramImageItem *dii, images)                   { if (dii       -> isSelected()) ++ count; }
 		if (filter & Shapes)             foreach(QetShapeItem *dsi, shapes)                       { if (dsi       -> isSelected()) ++ count; }
 		if (filter & ConductorsToMove)   foreach(Conductor *conductor, conductorsToMove)          { if (conductor -> isSelected()) ++ count; }
@@ -115,6 +123,7 @@ int DiagramContent::count(int filter) const {
 	else {
 		if (filter & Elements)           count += elements.count();
 		if (filter & TextFields)         count += textFields.count();
+		if (filter & ElementTextFields)  count += elementTextFields.count();
 		if (filter & Images)             count += images.count();
 		if (filter & Shapes)             count += shapes.count();
 		if (filter & ConductorsToMove)   count += conductorsToMove.count();
@@ -133,7 +142,7 @@ int DiagramContent::count(int filter) const {
 QString DiagramContent::sentence(int filter) const {
 	int elements_count   = (filter & Elements) ? elements.count() : 0;
 	int conductors_count = conductors(filter).count();
-	int textfields_count = (filter & TextFields) ? textFields.count() : 0;
+	int textfields_count = (filter & TextFields) ? (textFields.count() + elementTextFields.count()) : 0;
 	int images_count	 = (filter & Images) ? images.count() : 0;
 	int shapes_count	 = (filter & Shapes) ? shapes.count() : 0;
 	

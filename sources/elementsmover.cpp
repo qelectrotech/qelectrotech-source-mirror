@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementsmover.h"
-#include "qetgraphicsitem/conductor.h"
-#include "qetgraphicsitem/conductortextitem.h"
+#include "conductor.h"
+#include "conductortextitem.h"
 #include "diagram.h"
 #include "diagramcommands.h"
-#include "qetgraphicsitem/element.h"
-#include "qetgraphicsitem/independenttextitem.h"
-#include "qetgraphicsitem/diagramimageitem.h"
+#include "element.h"
+#include "independenttextitem.h"
+#include "diagramimageitem.h"
+#include "elementtextitem.h"
 
 /**
  * @brief ElementsMover::ElementsMover Constructor
@@ -74,6 +75,11 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item) {
 	current_movement_ = QPointF(0.0, 0.0);
 	
 	moved_content_ = diagram -> selectedContent();
+
+	if (driver_item -> parentItem()) {
+		if (moved_content_.items().contains(driver_item -> parentItem()))
+			moved_content_.clear();
+	}
 	
 	/* We need to save the position of conductor text (ConductorTextItem)
 	 * if the position is defined by user
@@ -110,8 +116,12 @@ void ElementsMover::continueMovement(const QPointF &movement) {
 
 	//Move every movable item, except conductor
 	typedef DiagramContent dc;
-	foreach (QGraphicsItem *qgi, moved_content_.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes)) {
+	foreach (QGraphicsItem *qgi, moved_content_.items(dc::Elements | dc::TextFields | dc::ElementTextFields | dc::Images | dc::Shapes)) {
 		if (qgi == movement_driver_) continue;
+		if (qgi->parentItem()) {
+			if (moved_content_.items().contains(qgi->parentItem()))
+				continue;
+		}
 		qgi -> setPos(qgi->pos() + movement);
 	}
 	

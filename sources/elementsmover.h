@@ -17,8 +17,10 @@
 */
 #ifndef ELEMENTS_MOVER_H
 #define ELEMENTS_MOVER_H
-#include <QtGui>
+
+#include <QPointF>
 #include "diagramcontent.h"
+
 class ConductorTextItem;
 class Diagram;
 /**

@@ -17,7 +17,6 @@
 */
 #include "diagramtextitem.h"
 #include "diagramcommands.h"
-#include "qet.h"
 #include "qetapp.h"
 #include "richtext/richtexteditor_p.h"
 #include "diagram.h"
@@ -30,7 +29,8 @@
 DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram) :
 	QGraphicsTextItem(parent, parent_diagram),
 	previous_text_(),
-	rotation_angle_(0.0)
+	rotation_angle_(0.0),
+	m_first_move (true)
 {
 	//set Zvalue at 10 to be upper than the DiagramImageItem
 	setZValue(10);
@@ -261,6 +261,64 @@ void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
+ * @brief DiagramTextItem::mousePressEvent
+ * @param event
+ */
+void DiagramTextItem::mousePressEvent (QGraphicsSceneMouseEvent *event) {
+	m_first_move = true;
+	if (event -> modifiers() & Qt::ControlModifier) {
+		setSelected(!isSelected());
+	}
+	QGraphicsTextItem::mousePressEvent(event);
+}
+
+/**
+ * @brief DiagramTextItem::mouseMoveEvent
+ * @param event
+ */
+void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
+	if (textInteractionFlags() & Qt::TextEditable) QGraphicsTextItem::mouseMoveEvent(event);
+
+	else if ((flags() & QGraphicsItem::ItemIsMovable) && (event -> buttons() & Qt::LeftButton)) {
+		Diagram *diagram_ = diagram();
+
+		//This is first move, we signal it to parent diagram
+		if(diagram_ && m_first_move)
+			diagram_ -> beginMoveElements(this);
+
+		QPointF old_pos = pos();
+
+		//Save the pos of item at the beggining of the movement
+		if (m_first_move)
+			m_mouse_to_origin_movement = old_pos - event->buttonDownScenePos(Qt::LeftButton);
+
+		//Set the actual pos
+		setPos(event->scenePos() + m_mouse_to_origin_movement);
+
+		//Update the actual movement for other selected item
+		if (diagram_)
+			diagram_ -> continueMoveElements(pos() - old_pos);
+	}
+
+	else event -> ignore();
+
+	m_first_move = false;
+}
+
+/**
+ * @brief DiagramTextItem::mouseReleaseEvent
+ * @param event
+ */
+void DiagramTextItem::mouseReleaseEvent (QGraphicsSceneMouseEvent *event) {
+	//Signal to diagram movement is finish
+	if (diagram())
+		diagram() -> endMoveElements();
+
+	if (!(event -> modifiers() & Qt::ControlModifier))
+		QGraphicsTextItem::mouseReleaseEvent(event);
+}
+
+/**
 	Effectue la rotation du texte en elle-meme
 	Pour les DiagramTextItem, la rotation s'effectue autour du point (0, 0).
 	Cette methode peut toutefois etre redefinie dans des classes filles
@@ -295,13 +353,6 @@ void DiagramTextItem::setPos(const QPointF &p) {
 */
 void DiagramTextItem::setPos(qreal x, qreal y) {
 	setPos(QPointF(x, y));
-}
-
-/**
-	@return la position du champ de texte
-*/
-QPointF DiagramTextItem::pos() const {
-	return(QGraphicsTextItem::pos());
 }
 
 /// Rend le champ de texte non focusable
