@@ -57,8 +57,6 @@ class ElementTextItem : public DiagramTextItem {
 	void setFollowParentRotations(bool);
 	void fromXml(const QDomElement &);
 	QDomElement toXml(QDomDocument &) const;
-	void setPos(const QPointF &);
-	void setPos(qreal, qreal);
 	void setOriginalPos(const QPointF &);
 	QPointF originalPos() const;
 	void setOriginalRotationAngle(const qreal &);

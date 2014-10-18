@@ -36,6 +36,9 @@ class DiagramTextItem : public QGraphicsTextItem {
 	DiagramTextItem(QGraphicsItem * = 0, Diagram * = 0);
 	DiagramTextItem(const QString &, QGraphicsItem * = 0, Diagram * = 0);
 	virtual ~DiagramTextItem();
+
+	private:
+	void build();
 	
 	// attributes
 	public:
@@ -52,16 +55,12 @@ class DiagramTextItem : public QGraphicsTextItem {
 	Diagram *diagram() const;
 	virtual void fromXml(const QDomElement &) = 0;
 	virtual QDomElement toXml(QDomDocument &) const = 0;
-	virtual void setPos(const QPointF &);
-	virtual void setPos(qreal, qreal);
 	qreal rotationAngle() const;
 	void setRotationAngle(const qreal &);
 	void rotateBy(const qreal &);
 	void edit();
-	QPointF mapMovementToScene(const QPointF &) const;
 	QPointF mapMovementFromScene(const QPointF &) const;
 	QPointF mapMovementToParent(const QPointF &) const;
-	QPointF mapMovementFromParent(const QPointF &) const;
 	void setFontSize(int &s);
 	void setNoEditable(bool e = true) {no_editable = e;}
 	

@@ -32,16 +32,7 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram)
 	rotation_angle_(0.0),
 	m_first_move (true)
 {
-	//set Zvalue at 10 to be upper than the DiagramImageItem
-	setZValue(10);
-	setDefaultTextColor(Qt::black);
-	setFont(QETApp::diagramTextsFont());
-	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
-	setNoEditable(false);
-#if QT_VERSION >= 0x040600
-	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
-#endif
-	connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
+	build();
 }
 
 /**
@@ -55,20 +46,29 @@ DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, Dia
 	previous_text_(text),
 	rotation_angle_(0.0)
 {
+	build();
+}
+
+/// Destructeur
+DiagramTextItem::~DiagramTextItem() {
+}
+
+/**
+ * @brief DiagramTextItem::build
+ * Build this item with default value
+ */
+void DiagramTextItem::build() {
 	//set Zvalue at 10 to be upper than the DiagramImageItem
 	setZValue(10);
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
 	setNoEditable(false);
+	setToolTip(tr("Maintenir ctrl pour un d\351placer librement"));
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
-}
-
-/// Destructeur
-DiagramTextItem::~DiagramTextItem() {
 }
 
 /**
@@ -111,25 +111,6 @@ void DiagramTextItem::rotateBy(const qreal &added_rotation) {
 }
 
 /**
-	Traduit en coordonnees de la scene un mouvement / vecteur initialement
-	exprime en coordonnees locales.
-	@param movement Vecteur exprime en coordonnees locales
-	@return le meme vecteur, exprime en coordonnees de la scene
-*/
-QPointF DiagramTextItem::mapMovementToScene(const QPointF &movement) const {
-	// on definit deux points en coordonnees locales
-	QPointF local_origin(0.0, 0.0);
-	QPointF local_movement_point(movement);
-	
-	// on les mappe sur la scene
-	QPointF scene_origin(mapToScene(local_origin));
-	QPointF scene_movement_point(mapToScene(local_movement_point));
-	
-	// on calcule le vecteur represente par ces deux points
-	return(scene_movement_point - scene_origin);
-}
-
-/**
 	Traduit en coordonnees locales un mouvement / vecteur initialement
 	exprime en coordonnees de la scene.
 	@param movement Vecteur exprime en coordonnees de la scene
@@ -165,25 +146,6 @@ QPointF DiagramTextItem::mapMovementToParent(const QPointF &movement) const {
 	
 	// on calcule le vecteur represente par ces deux points
 	return(parent_movement_point - parent_origin);
-}
-
-/**
-	Traduit en coordonnees locales un mouvement / vecteur initialement
-	exprime en coordonnees du parent.
-	@param movement Vecteur exprime en coordonnees du parent
-	@return le meme vecteur, exprime en coordonnees locales
-*/
-QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
-	// on definit deux points sur le parent
-	QPointF parent_origin(0.0, 0.0);
-	QPointF parent_movement_point(movement);
-	
-	// on les mappe sur ce QGraphicsItem
-	QPointF local_origin(mapFromParent(parent_origin));
-	QPointF local_movement_point(mapFromParent(parent_movement_point));
-	
-	// on calcule le vecteur represente par ces deux points
-	return(local_movement_point - local_origin);
 }
 
 void DiagramTextItem::setFontSize(int &s) {
@@ -269,6 +231,8 @@ void DiagramTextItem::mousePressEvent (QGraphicsSceneMouseEvent *event) {
 	if (event -> modifiers() & Qt::ControlModifier) {
 		setSelected(!isSelected());
 	}
+	//Save the pos of item at the beggining of the movement
+	m_mouse_to_origin_movement = pos() - event->scenePos();
 	QGraphicsTextItem::mousePressEvent(event);
 }
 
@@ -288,12 +252,10 @@ void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 
 		QPointF old_pos = pos();
 
-		//Save the pos of item at the beggining of the movement
-		if (m_first_move)
-			m_mouse_to_origin_movement = old_pos - event->buttonDownScenePos(Qt::LeftButton);
-
 		//Set the actual pos
-		setPos(event->scenePos() + m_mouse_to_origin_movement);
+		QPointF new_pos = event->scenePos() + m_mouse_to_origin_movement;
+		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
+
 
 		//Update the actual movement for other selected item
 		if (diagram_)
@@ -326,33 +288,6 @@ void DiagramTextItem::mouseReleaseEvent (QGraphicsSceneMouseEvent *event) {
 */
 void DiagramTextItem::applyRotation(const qreal &angle) {
 	setRotation(QET::correctAngle(rotation()+angle));
-}
-
-/**
-	Change la position du champ de texte en veillant a ce qu'il
-	reste sur la grille du schema auquel il appartient.
-	@param p Nouvelles coordonnees de l'element
-*/
-void DiagramTextItem::setPos(const QPointF &p) {
-	if (p == pos()) return;
-	// pas la peine de positionner sur la grille si l'element n'est pas sur un Diagram
-	if (scene()) {
-		// arrondit l'abscisse a 10 px pres
-		int p_x = qRound(p.x() / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
-		// arrondit l'ordonnee a 10 px pres
-		int p_y = qRound(p.y() / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
-		QGraphicsTextItem::setPos(p_x, p_y);
-	} else QGraphicsTextItem::setPos(p);
-}
-
-/**
-	Change la position du champ de texte en veillant a ce que l'il
-	reste sur la grille du schema auquel il appartient.
-	@param x Nouvelle abscisse de l'element
-	@param y Nouvelle ordonnee de l'element
-*/
-void DiagramTextItem::setPos(qreal x, qreal y) {
-	setPos(QPointF(x, y));
 }
 
 /// Rend le champ de texte non focusable

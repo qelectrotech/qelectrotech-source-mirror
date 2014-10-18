@@ -53,9 +53,9 @@ class ConductorTextItem : public DiagramTextItem {
 	virtual void forceRotateByUser(bool);
 	
 	protected:
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+	virtual void mousePressEvent   (QGraphicsSceneMouseEvent *event);
+	virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
+	virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
 	
 	// attributes
 	private:
@@ -63,7 +63,5 @@ class ConductorTextItem : public DiagramTextItem {
 	bool moved_by_user_;
 	bool rotate_by_user_;
 	QPointF before_mov_pos_;
-	bool first_move_;
-	QPointF mouse_to_origin_movement_;
 };
 #endif

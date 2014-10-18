@@ -29,12 +29,8 @@ ConductorTextItem::ConductorTextItem(Conductor *parent_conductor, Diagram *paren
 	DiagramTextItem(parent_conductor, parent_diagram),
 	parent_conductor_(parent_conductor),
 	moved_by_user_(false),
-	rotate_by_user_(false),
-	first_move_(true)
-{
-	// par defaut, les DiagramTextItem sont Selectable et Movable
-	// cela nous convient, on ne touche pas a ces flags
-}
+	rotate_by_user_(false)
+{}
 
 /**
 	Constructeur
@@ -46,12 +42,8 @@ ConductorTextItem::ConductorTextItem(const QString &text, Conductor *parent_cond
 	DiagramTextItem(text, parent_conductor, parent_diagram),
 	parent_conductor_(parent_conductor),
 	moved_by_user_(false),
-	rotate_by_user_(false),
-	first_move_(true)
-{
-	// par defaut, les DiagramTextItem sont Selectable et Movable
-	// cela nous convient, on ne touche pas a ces flags
-}
+	rotate_by_user_(false)
+{}
 
 /**
 	Destructeur
@@ -149,65 +141,54 @@ void ConductorTextItem::forceRotateByUser(bool rotate_by_user) {
 }
 
 /**
-	Gere les clics de souris lies au champ de texte
-	@param e Objet decrivant l'evenement souris
-*/
-void ConductorTextItem::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-	if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
-		before_mov_pos_ = pos();
-	}
-	first_move_ = true;
-	DiagramTextItem::mousePressEvent(e);
+ * @brief ConductorTextItem::mousePressEvent
+ * @param event
+ */
+void ConductorTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+	before_mov_pos_ = pos();
+	DiagramTextItem::mousePressEvent(event);
 }
 
 /**
-	Gere les mouvements de souris lies au champ de texte
-	@param e Objet decrivant l'evenement souris
-*/
-void ConductorTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
-	if (textInteractionFlags() & Qt::TextEditable) {
-		QGraphicsTextItem::mouseMoveEvent(e);
-	} else if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
-		if (first_move_) {
-			mouse_to_origin_movement_ = before_mov_pos_ - mapToParent(e -> buttonDownPos(Qt::LeftButton));
-		}
-		
-		QPointF intended_pos = mapToParent(e -> pos()) + mouse_to_origin_movement_;
-		// si ce texte est attache a un conducteur, alors ses mouvements seront
-		// limites a une certaine distance du trace de ce conducteur
+ * @brief ConductorTextItem::mouseMoveEvent
+ * @param event
+ */
+void ConductorTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
+	if (textInteractionFlags() & Qt::TextEditable) QGraphicsTextItem::mouseMoveEvent(event);
+
+	else if ((flags() & QGraphicsItem::ItemIsMovable) && (event -> buttons() & Qt::LeftButton)) {
+
+		QPointF intended_pos = event ->scenePos() + m_mouse_to_origin_movement;
+
 		if (parent_conductor_) {
 			if (parent_conductor_ -> isNearConductor(intended_pos)) {
-				setPos(intended_pos);
+				event->modifiers() == Qt::ControlModifier ? setPos(intended_pos) : setPos(Diagram::snapToGrid(intended_pos));
 				parent_conductor_ -> setHighlighted(Conductor::Normal);
 			} else {
 				parent_conductor_ -> setHighlighted(Conductor::Alert);
 			}
 		}
 		
-	} else e -> ignore();
-	
-	if (first_move_) {
-		first_move_ = false;
 	}
+
+	else event -> ignore();
 }
 
 /**
-	Gere le relachement de souris
-	Cette methode cree un objet d'annulation pour le deplacement
-	@param e Objet decrivant l'evenement souris
-*/
+ * @brief ConductorTextItem::mouseReleaseEvent
+ * @param e
+ */
 void ConductorTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (flags() & QGraphicsItem::ItemIsMovable) {
+
 		if (Diagram *diagram_ptr = diagram()) {
-			// on cree un objet d'annulation correspondant au deplacement qui s'acheve
 			QPointF applied_movement = pos() - before_mov_pos_;
 			
 			if (!applied_movement.isNull()) {
-				// on cree un objet d'annulation seulement pour ce champ de texte
+				//Create an undo object
 				MoveConductorsTextsCommand *undo_object = new MoveConductorsTextsCommand(diagram_ptr);
 				undo_object -> addTextMovement(this, before_mov_pos_, pos(), moved_by_user_);
-				
-				// on active le flag indiquant que ce champ de texte a ete explicitement repositionne par l'utilisateur
+
 				moved_by_user_ = true;
 				
 				diagram_ptr -> undoStack().push(undo_object);

@@ -63,23 +63,6 @@ Element *ElementTextItem::parentElement() const {
 }
 
 /**
-	Modifie la position du champ de texte
-	@param pos La nouvelle position du champ de texte
-*/
-void ElementTextItem::setPos(const QPointF &pos) {
-	QGraphicsTextItem::setPos(pos);
-}
-
-/**
-	Modifie la position du champ de texte
-	@param x La nouvelle abscisse du champ de texte
-	@param y La nouvelle ordonnee du champ de texte
-*/
-void ElementTextItem::setPos(qreal x, qreal y) {
-	setPos(QPointF(x, y));
-}
-
-/**
 	Permet de lire le texte a mettre dans le champ a partir d'un element XML.
 	Cette methode se base sur la position du champ pour assigner ou non la
 	valeur a ce champ.
