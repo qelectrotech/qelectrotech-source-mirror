@@ -306,8 +306,8 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 	sp2 = mapFromScene(p2);
 	
 	// prolonge les bornes
-	newp1 = extendTerminal(sp1, o1);
-	newp2 = extendTerminal(sp2, o2);
+	newp1 = extendTerminal(sp1, o1, 0.0);
+	newp2 = extendTerminal(sp2, o2, 0.0);
 	
 	// distingue le depart de l'arrivee : le trajet se fait toujours de gauche a droite (apres prolongation)
 	if (newp1.x() <= newp2.x()) {
