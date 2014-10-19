@@ -223,11 +223,10 @@ ConductorProperties::ConductorProperties() :
 	text_size(9),
 	verti_rotate_text(270),
 	horiz_rotate_text(0),
-	style(Qt::SolidLine),
 	m_show_text(true),
-	m_one_text_per_folio(false)
-{
-}
+	m_one_text_per_folio(false),
+	style(Qt::SolidLine)
+{}
 
 /**
 	Destructeur

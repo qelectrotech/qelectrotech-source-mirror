@@ -94,7 +94,7 @@ void DialogAutoNum::on_pushButton_annotation_clicked(){
 		if(i+1 < listDiag.count()) diagramsTitle += ", ";
 	}
 	// Ask if user is sure to numerate the conductor
-	QMessageBox::StandardButton answer = QET::MessageBox::warning(
+	QET::MessageBox::warning(
 		this,
 		tr("Annotation des conducteurs", "Attention"),
 		QString(
@@ -103,14 +103,6 @@ void DialogAutoNum::on_pushButton_annotation_clicked(){
 		QMessageBox::Yes | QMessageBox::No,
 		QMessageBox::No
 	);
-	
-	// if yes numerate all
-	if( answer ==  QMessageBox::Yes) {
-		foreach (Diagram *d, listDiag) {
-			/*ConductorAutoNumerotation can(d);
-			can.numerateDiagram();*/
-		}
-	}
 }
 
 /**

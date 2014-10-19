@@ -25,8 +25,8 @@
 	@param scene La scene sur laquelle figure cette ligne
 */
 PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
-	QGraphicsLineItem(parent, scene),
 	CustomElementGraphicPart(editor),
+	QGraphicsLineItem(parent, scene),
 	first_end(Qet::None),
 	first_length(1.5),
 	second_end(Qet::None),

@@ -35,6 +35,8 @@ Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	internal_connections_(false),
 	must_highlight_(false)
 {
+	Q_UNUSED(scene);
+
 	link_type_ = Simple;
 	uuid_ = QUuid::createUuid();
 	setZValue(10);

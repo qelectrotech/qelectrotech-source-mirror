@@ -196,8 +196,6 @@ class QETProject : public QObject {
 	QDomDocument document_root_;
 	/// Diagrams carried by the project
 	QList<Diagram *> diagrams_;
-	/// Folio List Sheets quantity for this project.
-	int folioSheetsQuantity;
 	/// Embedded elements collection
 	XmlElementsCollection *collection_;
 	/// Project title
@@ -230,6 +228,8 @@ class QETProject : public QObject {
 	QUndoStack *undo_stack_;
 	/// Conductor auto numerotation
 	QHash <QString, NumerotationContext> m_conductor_autonum;
+	/// Folio List Sheets quantity for this project.
+	int folioSheetsQuantity;
 };
 Q_DECLARE_METATYPE(QETProject *)
 #endif

@@ -67,6 +67,8 @@ DiagramImageItem::~DiagramImageItem() {
 void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
 	painter -> drawPixmap(pixmap_.rect(),pixmap_);
 
+	Q_UNUSED(option); Q_UNUSED(widget);
+
 	if (isSelected()) {
 		painter -> save();
 		// Annulation des renderhints

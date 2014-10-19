@@ -100,7 +100,7 @@ QList<Diagram *> diagramselection::list_of_DiagramSelected() {
 void diagramselection::on_tableDiagram_customContextMenuRequested(const QPoint &pos){
 	QMenu menu(this);
 	QAction *desl = menu.addAction( tr("D\351s\351lectionner tout") );
-	QAction *sel  = menu.addAction(QIcon(":/ico/16x16/dialog-ok.png"), tr("S\351lectionner tout") );
+	menu.addAction(QIcon(":/ico/16x16/dialog-ok.png"), tr("S\351lectionner tout") );
 	
 	// Exec Menu
 	QAction *ret = menu.exec(ui -> tableDiagram -> viewport() -> mapToGlobal(pos));	

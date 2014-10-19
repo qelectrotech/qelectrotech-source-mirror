@@ -39,10 +39,10 @@
 */
 ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
+	m_elmt_type("simple"),
 	qgi_manager(this),
 	element_editor(editor),
-	decorator_(0),
-	m_elmt_type("simple")
+	decorator_(0)
 {
 	setItemIndexMethod(NoIndex);
 	current_polygon = NULL;

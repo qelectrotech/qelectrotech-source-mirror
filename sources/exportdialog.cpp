@@ -425,7 +425,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	QList <QetShapeItem *> list_shapes;
 
 	DiagramFolioList *ptr;
-	if (ptr = dynamic_cast<DiagramFolioList *>(diagram)) {
+	if ((ptr = dynamic_cast<DiagramFolioList *>(diagram))) {
 		list_lines = ptr -> lines();
 		list_rectangles = ptr -> rectangles();
 

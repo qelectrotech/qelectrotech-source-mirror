@@ -50,14 +50,14 @@
  */
 QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	QETMainWindow(parent),
-	open_dialog_dir(QDesktopServices::storageLocation(QDesktopServices::DesktopLocation)),
-	can_update_actions(true),
-	m_add_item_actions_group(this),
-	m_zoom_actions_group(this),
-	m_select_actions_group(this),
-	m_selection_actions_group(this),
-	m_row_column_actions_group(this),
-	m_file_actions_group(this)
+	m_add_item_actions_group   (this),
+	m_zoom_actions_group       (this),
+	m_select_actions_group     (this),
+	m_selection_actions_group  (this),
+	m_row_column_actions_group (this),
+	m_file_actions_group       (this),
+	open_dialog_dir            (QDesktopServices::storageLocation(QDesktopServices::DesktopLocation)),
+	can_update_actions         (true)
 {
 	// mise en place de l'interface MDI au centre de l'application
 	setCentralWidget(&workspace);
@@ -1820,7 +1820,7 @@ void QETDiagramEditor::removeDiagramFromProject() {
 			bool isFolioList = false;
 
 			// if diagram to remove is a "folio list sheet", then set a flag.
-			if (DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(current_diagram -> diagram()))
+			if (dynamic_cast<DiagramFolioList *>(current_diagram -> diagram()))
 				isFolioList = true;
 
 			current_project -> removeDiagram(current_diagram);
@@ -1828,7 +1828,7 @@ void QETDiagramEditor::removeDiagramFromProject() {
 			// if the removed diagram was a folio sheet, then delete all the remaining folio sheets also.
 			if (isFolioList) {
 				foreach (DiagramView *diag, current_project -> diagrams()) {
-					if (DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diag -> diagram())) {
+					if (dynamic_cast<DiagramFolioList *>(diag -> diagram())) {
 						current_project -> removeDiagram(diag);
 					}
 				}

@@ -662,6 +662,8 @@ void Createdxf::drawText(QString fileName, QString text,double x, double y, doub
 void Createdxf::drawTextAligned(QString fileName, QString text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign,int colour,
 							bool leftAlign, float scale)
 {
+	Q_UNUSED(scale);
+
     if (!fileName.isEmpty()) {
         QFile file(fileName);
         if (!file.open(QFile::Append)) {

@@ -411,6 +411,7 @@ void BorderTitleBlock::draw(QPainter *qp, qreal x, qreal y) {
 }
 
 void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QString &file_path, int color) {
+	Q_UNUSED (width); Q_UNUSED (height); Q_UNUSED (keep_aspect_ratio);
 
 	// Transform to DXF scale.
 	columns_header_height_ *= Createdxf::yScale;
