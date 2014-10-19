@@ -720,10 +720,10 @@ void ChangeConductorCommand::setConductorTextItemMove(const QPointF &pos_before,
 }
 
 /**
-	Constructeur
-	@param cp Conducteurs reinitialises, associes a leur ancien profil
-	@param parent QUndoCommand parent
-*/
+ * @brief ResetConductorCommand::ResetConductorCommand
+ * @param cp
+ * @param parent
+ */
 ResetConductorCommand::ResetConductorCommand(
 	const QHash<Conductor *, ConductorProfilesGroup> &cp,
 	QUndoCommand *parent
@@ -740,11 +740,15 @@ ResetConductorCommand::ResetConductorCommand(
 	);
 }
 
-/// Destructeur
+/**
+ * @brief ResetConductorCommand::~ResetConductorCommand
+ */
 ResetConductorCommand::~ResetConductorCommand() {
 }
 
-/// Annule la reinitialisation des conducteurs
+/**
+ * @brief ResetConductorCommand::undo
+ */
 void ResetConductorCommand::undo() {
 	diagram -> showMe();
 	foreach(Conductor *c, conductors_profiles.keys()) {
@@ -752,10 +756,14 @@ void ResetConductorCommand::undo() {
 	}
 }
 
-/// Refait la reinitialisation des conducteurs
+/**
+ * @brief ResetConductorCommand::redo
+ */
 void ResetConductorCommand::redo() {
 	diagram -> showMe();
 	foreach(Conductor *c, conductors_profiles.keys()) {
+		c -> textItem() -> forceMovedByUser  (false);
+		c -> textItem() -> forceRotateByUser (false);
 		c -> setProfiles(ConductorProfilesGroup());
 	}
 }

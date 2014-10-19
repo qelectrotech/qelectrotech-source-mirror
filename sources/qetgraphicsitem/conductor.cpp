@@ -1633,8 +1633,9 @@ ConductorProfilesGroup Conductor::profiles() const {
 }
 
 /**
-	@param cpg Les nouveaux profils de ce conducteur
-*/
+ * @brief Conductor::setProfiles
+ * @param cpg : the new profils of conductor
+ */
 void Conductor::setProfiles(const ConductorProfilesGroup &cpg) {
 	conductor_profiles = cpg;
 	if (conductor_profiles[currentPathType()].isNull()) {
@@ -1644,7 +1645,7 @@ void Conductor::setProfiles(const ConductorProfilesGroup &cpg) {
 		updateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 		modified_path = true;
 	}
-	if (type() == ConductorProperties::Multi) {
+	if (properties().type == ConductorProperties::Multi) {
 		calculateTextItemPosition();
 	}
 }
