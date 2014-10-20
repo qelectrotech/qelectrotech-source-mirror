@@ -1126,7 +1126,9 @@ ConductorSegment *Conductor::middleSegment() {
  */
 QPointF Conductor::posForText(Qt::Orientations &flag) {
 
-	ConductorSegment *segment = segments;
+	ConductorSegment *segment      = segments;
+	bool all_segment_is_vertical   = true;
+	bool all_segment_is_horizontal = true;
 
 	//Go to first segement
 	while (!segment->isFirstSegment()) {
@@ -1137,8 +1139,14 @@ QPointF Conductor::posForText(Qt::Orientations &flag) {
 	QPointF p1 = segment -> firstPoint(); //<First point of conductor
 	ConductorSegment *biggest_segment = segment; //<biggest segment: contain the longest segment of conductor.
 
+	if (segment -> firstPoint().x() != segment -> secondPoint().x()) all_segment_is_vertical   = false;
+	if (segment -> firstPoint().y() != segment -> secondPoint().y()) all_segment_is_horizontal = false;
+
 	while (segment -> hasNextSegment()) {
 		segment = segment -> nextSegment();
+
+		if (segment -> firstPoint().x() != segment -> secondPoint().x()) all_segment_is_vertical   = false;
+		if (segment -> firstPoint().y() != segment -> secondPoint().y()) all_segment_is_horizontal = false;
 
 		//We must to compare length segment, but they can be negative
 		//so we multiply by -1 to make it positive.
@@ -1154,14 +1162,14 @@ QPointF Conductor::posForText(Qt::Orientations &flag) {
 
 	//If the conductor is horizontal or vertical
 	//Return the point at the middle of conductor
-	if (p1.x() == p2.x()) { //<Vertical
+	if (all_segment_is_vertical) { //<Vertical
 		flag = Qt::Vertical;
 		if (p1.y() > p2.y()) {
 			p1.setY(p1.y() - (length()/2));
 		} else {
 			p1.setY(p1.y() + (length()/2));
 		}
-	} else if (p1.y() == p2.y()) { //<Horizontal
+	} else if (all_segment_is_horizontal) { //<Horizontal
 		flag = Qt::Horizontal;
 		if (p1.x() > p2.x()) {
 			p1.setX(p1.x() - (length()/2));
@@ -1214,13 +1222,24 @@ void Conductor::calculateTextItemPosition() {
 			text_item -> setPos(movePointIntoPolygon(text_item_pos, near_shape));
 		}
 	} else {
-		//Position of text is calculated and also is rotation
+		//Position and rotation of text is calculated.
 		Qt::Orientations rotation;
-		text_item -> setPos(posForText(rotation));
+		QPointF text_pos = posForText(rotation);
+
 		if (!text_item -> wasRotateByUser()) {
 			rotation == Qt::Vertical ? text_item -> setRotationAngle(properties_.verti_rotate_text):
 									   text_item -> setRotationAngle(properties_.horiz_rotate_text);
 		}
+
+		//Adjust the position of text if his rotation
+		//is 0° or 270°, to be exactly centered to the conductor
+		if (text_item -> rotation() == 0)
+			text_pos.rx() -= text_item -> boundingRect().width()/2;
+		else if (text_item -> rotation() == 270)
+			text_pos.ry() += text_item -> boundingRect().width()/2;
+
+		//Finaly set the position of text
+		text_item -> setPos(text_pos);
 	}
 }
 
