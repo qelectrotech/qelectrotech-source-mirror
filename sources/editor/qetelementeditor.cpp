@@ -671,17 +671,20 @@ bool QETElementEditor::checkElement() {
 		);
 	}
 
-	/// Check master and slave element
-	if(ce_scene -> elementType() == "master" || ce_scene -> elementType() == "slave") {
+	/// Check master, slave and simple element
+	if(ce_scene -> elementType() == "master" ||
+	   ce_scene -> elementType() == "slave"  ||
+	   ce_scene -> elementType() == "simple"    ) {
+
 		bool wrng = true;
 		foreach (CustomElementPart *cep, ce_scene->primitives()) {
 			if (cep->property("tagg").toString() == "label") wrng = false;
 		}
-		///Error #1: element is slave or master but havent got input tagged 'label'
+		///Error #1: element is master, slave or simple but havent got input tagged 'label'
 		if (wrng) {
 			errors << qMakePair(
 							tr("Absence de champ texte 'label'", "warning title"),
-							tr("Les \351l\351ments ma\356tres ou esclaves doivent poss\351der "
+							tr("Les \351l\351ments ma\356tres, esclaves  et simple doivent poss\351der "
 							   "un champ texte comportant le tagg 'label'", "warning description"));
 		}
 	}
