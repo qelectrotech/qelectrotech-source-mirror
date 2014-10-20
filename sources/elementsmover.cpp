@@ -76,9 +76,11 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item) {
 	
 	moved_content_ = diagram -> selectedContent();
 
-	if (driver_item -> parentItem()) {
-		if (moved_content_.items().contains(driver_item -> parentItem()))
-			moved_content_.clear();
+	if (driver_item) {
+		if (driver_item -> parentItem()) {
+			if (moved_content_.items().contains(driver_item -> parentItem()))
+				moved_content_.clear();
+		}
 	}
 	
 	/* We need to save the position of conductor text (ConductorTextItem)
