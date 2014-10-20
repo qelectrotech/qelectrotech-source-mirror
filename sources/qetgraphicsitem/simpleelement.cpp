@@ -16,9 +16,37 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "simpleelement.h"
-
+/**
+ * @brief SimpleElement::SimpleElement
+ * @param location
+ * @param qgi
+ * @param s
+ * @param state
+ */
 SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state)
 {
 	link_type_ = Simple;
+	connect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
+}
+
+/**
+ * @brief SimpleElement::~SimpleElement
+ */
+SimpleElement::~SimpleElement() {
+	disconnect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
+}
+
+/**
+ * @brief SimpleElement::updateLabel
+ * update label of this element
+ */
+void SimpleElement::updateLabel() {
+	QString label = elementInformations()["label"].toString();
+	bool	show  = elementInformations().keyMustShow("label");
+
+	// setup the label
+	(label.isEmpty() || !show)?
+				setTaggedText("label", "_", false):
+				setTaggedText("label", label, true);
 }
