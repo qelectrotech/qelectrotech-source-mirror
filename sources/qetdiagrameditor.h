@@ -91,7 +91,6 @@ class QETDiagramEditor : public QETMainWindow {
 	void exportDialog();
 	void save();
 	void saveAs();
-	void saveCurrentDiagram();
 	bool newProject();
 	bool openProject();
 	bool openRecentFile(const QString &);
@@ -220,7 +219,6 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *close_file;			   ///< Close current project file
 	QAction *save_file;				   ///< Save current project
 	QAction *save_file_as;			   ///< Save current project as a specific file
-	QAction *save_cur_diagram;		   ///< Save current diagram of the current project only
 
 	private:
 	QMdiArea workspace;

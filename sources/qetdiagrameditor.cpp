@@ -228,7 +228,6 @@ void QETDiagramEditor::actions() {
 	QAction *open_file = m_file_actions_group.addAction( QET::Icons::DocumentOpen,    tr("&Ouvrir")							  );
 	save_file          = m_file_actions_group.addAction( QET::Icons::DocumentSave,    tr("&Enregistrer")					  );
 	save_file_as       = m_file_actions_group.addAction( QET::Icons::DocumentSaveAs,  tr("Enregistrer sous")				  );
-	save_cur_diagram   = m_file_actions_group.addAction( QET::Icons::DocumentSaveAll, tr("&Enregistrer le sch\351ma courant") );
 	close_file         = m_file_actions_group.addAction( QET::Icons::DocumentClose,   tr("&Fermer")							  );
 
 	new_file   -> setShortcut( QKeySequence::New   );
@@ -241,11 +240,9 @@ void QETDiagramEditor::actions() {
 	close_file       -> setStatusTip( tr("Ferme le sch\351ma courant", "status bar tip")								 );
 	save_file        -> setStatusTip( tr("Enregistre le projet courant et tous ses sch\351mas", "status bar tip")		 );
 	save_file_as     -> setStatusTip( tr("Enregistre le project courant avec un autre nom de fichier", "status bar tip") );
-	save_cur_diagram -> setStatusTip( tr("Enregistre le sch\351ma courant du projet courant", "status bar tip")			 );
 
 	connect(save_file_as,     SIGNAL( triggered() ), this, SLOT( saveAs()			   ) );
 	connect(save_file,        SIGNAL( triggered() ), this, SLOT( save()				   ) );
-	connect(save_cur_diagram, SIGNAL( triggered() ), this, SLOT( saveCurrentDiagram()  ) );
 	connect(new_file,         SIGNAL( triggered() ), this, SLOT( newProject()		   ) );
 	connect(open_file,        SIGNAL( triggered() ), this, SLOT( openProject()		   ) );
 	connect(close_file,       SIGNAL( triggered() ), this, SLOT( closeCurrentProject() ) );
@@ -626,21 +623,6 @@ void QETDiagramEditor::save() {
 void QETDiagramEditor::saveAs() {
 	if (ProjectView *project_view = currentProject()) {
 		QETResult save_file = project_view -> saveAs();
-		if (save_file.isOk()) {
-			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
-		} else {
-			showError(save_file);
-		}
-	}
-}
-
-/**
-	Methode enregistrant tous les schemas.
-	@return true si l'enregistrement a reussi, false sinon
-*/
-void QETDiagramEditor::saveCurrentDiagram() {
-	if (ProjectView *project_view = currentProject()) {
-		QETResult save_file = project_view -> saveCurrentDiagram();
 		if (save_file.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
 		} else {
@@ -1147,7 +1129,6 @@ void QETDiagramEditor::slot_updateActions() {
 	close_file        -> setEnabled(opened_project);
 	save_file         -> setEnabled(editable_project);
 	save_file_as      -> setEnabled(opened_project);
-	save_cur_diagram  -> setEnabled(editable_diagram);
 	prj_edit_prop     -> setEnabled(opened_project);
 	prj_add_diagram   -> setEnabled(editable_project);
 	//prj_add_diagram_foliolist   -> setEnabled(editable_project);

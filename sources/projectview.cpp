@@ -586,14 +586,6 @@ QETResult ProjectView::saveAs(ProjectSaveOptions options) {
 }
 
 /**
-	Save the current diagram.
-	@return A QETResult object reflecting the situation.
-*/
-QETResult ProjectView::saveCurrentDiagram() {
-	return(doSave(CurrentDiagram));
-}
-
-/**
 	Save project content according to \a options, then write the project file. May
 	call saveAs if no filepath was provided before.
 	@param options May be used to specify what should be saved (e.g. modified

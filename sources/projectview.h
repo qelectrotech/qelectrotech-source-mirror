@@ -78,7 +78,6 @@ class ProjectView : public QWidget {
 	void exportProject();
 	QETResult save();
 	QETResult saveAs(ProjectSaveOptions = ProjectSaveOptions(AllDiagrams | ModifiedDiagramsOnly));
-	QETResult saveCurrentDiagram();
 	QETResult doSave(ProjectSaveOptions);
 	void saveDiagrams(const QList<Diagram *> &);
 	int cleanProject();
