@@ -152,7 +152,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	}
 	
 	// si aucun schema n'a ete ouvert jusqu'a maintenant, on ouvre un nouveau schema
-	if (!opened_projects) newProject();
+	//if (!opened_projects) newProject();
 }
 
 /**
