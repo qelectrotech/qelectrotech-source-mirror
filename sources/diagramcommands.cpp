@@ -160,7 +160,7 @@ PasteDiagramCommand::PasteDiagramCommand(
 	QUndoCommand(parent),
 	content(c),
 	diagram(dia),
-	filter(DiagramContent::Elements|DiagramContent::TextFields|DiagramContent::Images|DiagramContent::ConductorsToMove),
+	filter(DiagramContent::Elements|DiagramContent::TextFields|DiagramContent::Images|DiagramContent::ConductorsToMove | DiagramContent::Shapes),
 	first_redo(true)
 {
 	
@@ -351,22 +351,6 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	foreach(Conductor *conductor, content_to_move.conductorsToUpdate) {
 		setupAnimation(conductor, "animPath", 1, 1);
 	}
-}
-
-/**
-	Ajoute un champ de texte de conducteur a deplacer
-	@param text_item Champ de texte a deplacer
-	@param old_pos Position du champ de texte avant le deplacement
-	@param new_pos Position du champ de texte apres le deplacement
-*/
-void MoveElementsCommand::addConductorTextItemMovement(ConductorTextItem *text_item, const QPointF &old_pos, const QPointF &new_pos) {
-	if (moved_conductor_texts_.contains(text_item)) return;
-	if (!text_item -> wasMovedByUser()) return;
-	if (new_pos == old_pos) return;
-	moved_conductor_texts_.insert(
-		text_item,
-		qMakePair(old_pos, new_pos)
-	);
 }
 
 /**

@@ -155,17 +155,6 @@ void ElementsMover::endMovement() {
 			current_movement_
 		);
 		
-		// Add info needed to the position of conductors texte
-		foreach(ConductorTextItem *text_item, updated_conductors_text_pos_.keys()) {
-			if (text_item -> pos() != updated_conductors_text_pos_[text_item]) {
-				undo_object -> addConductorTextItemMovement(
-					text_item,
-					updated_conductors_text_pos_[text_item],
-					text_item -> pos()
-				);
-			}
-		}
-		
 		diagram_ -> undoStack().push(undo_object);
 	}
 	

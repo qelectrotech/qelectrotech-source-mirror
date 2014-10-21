@@ -159,7 +159,6 @@ class MoveElementsCommand : public QUndoCommand {
 	virtual void undo();
 	virtual void redo();
 	virtual void move(const QPointF &);
-	virtual void addConductorTextItemMovement(ConductorTextItem *, const QPointF &, const QPointF &);
 
 	private:
 	void setupAnimation (QObject * target, const QByteArray &propertyName, const QVariant start, const QVariant end);
@@ -174,13 +173,6 @@ class MoveElementsCommand : public QUndoCommand {
 	QPointF movement;
 	///animation group
 	QParallelAnimationGroup *m_anim_group;
-	/**
-		Moving elements impacts their conductors: either they are moved, or their path
-		needs to be generated again, which in turn tends to move their child text
-		items. This attribute holds both new and previous positions for each moved
-		text item.
-	*/
-	QHash<ConductorTextItem *, QPair<QPointF, QPointF> > moved_conductor_texts_;
 	/// prevent the first call to redo()
 	bool first_redo;
 };

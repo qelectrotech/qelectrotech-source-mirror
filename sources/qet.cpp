@@ -273,7 +273,7 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 
 	if (shapes_count) {
 		text += QObject::tr(
-			"%n image(s)",
+			"%n forme(s)",
 			"part of a sentence listing the content of a diagram",
 			shapes_count
 		);

@@ -46,6 +46,7 @@ QGIManager::~QGIManager(){
 	@param qgi QGraphicsItem a gerer
 */
 void QGIManager::manage(QGraphicsItem *qgi) {
+	if (qgi -> parentItem()) return;
 	if (qgi_manager.contains(qgi)) ++ qgi_manager[qgi];
 	else qgi_manager.insert(qgi, 1);
 }
