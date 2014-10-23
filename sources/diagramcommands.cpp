@@ -220,7 +220,8 @@ void PasteDiagramCommand::redo() {
 				e -> rElementInformations().addValue("comment", "");
 
 				//Reset the text field tagged "label
-				e -> taggedText("label") -> setPlainText("_");
+				if (ElementTextItem *eti = e ->taggedText("label"))
+					eti -> setPlainText("_");
 			}
 		}
 	}
