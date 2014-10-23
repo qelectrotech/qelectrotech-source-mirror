@@ -196,14 +196,33 @@ void PasteDiagramCommand::undo() {
 	foreach(QGraphicsItem *qgi, content.items(DiagramContent::Images | DiagramContent::Shapes)) diagram -> removeItem(qgi);
 }
 
-/// refait le coller
+/**
+ * @brief PasteDiagramCommand::redo
+ */
 void PasteDiagramCommand::redo() {
 	diagram -> showMe();
+
 	if (first_redo) {
 		first_redo = false;
-		//this is the first paste, we make new uuid for each element
-		//because old uuid are the uuid of the copied element
-		foreach(Element *e, content.elements) e->newUuid();
+
+		//this is the first paste, we do some actions for the new element
+		foreach(Element *e, content.elements) {
+			//make new uuid, because old uuid are the uuid of the copied element
+			e -> newUuid();
+
+			//Reset the text of report element
+			if (e -> linkType() & Element::AllReport) {
+				if (e->texts().size())
+					e->texts().first()->setPlainText("/");
+			} else {
+				//Reset the information about the label and the comment
+				e -> rElementInformations().addValue("label", "");
+				e -> rElementInformations().addValue("comment", "");
+
+				//Reset the text field tagged "label
+				e -> taggedText("label") -> setPlainText("_");
+			}
+		}
 	}
 	else {
 		// paste the elements

@@ -113,27 +113,28 @@ class Element : public QetGraphicsItem {
 	virtual int linkType() const {return link_type_;} // @return the linkable type
 	void newUuid() {uuid_ = QUuid::createUuid();} 	//create new uuid for this element
 
-		//ATTRIBUTES related to linked element
-		protected:
-	QList <Element *> connected_elements;
-	QList <QUuid> tmp_uuids_link;
-	QUuid uuid_;
-	kind link_type_;
+	//ATTRIBUTES related to linked element
+	protected:
+		QList <Element *> connected_elements;
+		QList <QUuid> tmp_uuids_link;
+		QUuid uuid_;
+		kind link_type_;
 
-		signals:
-	void elementInfoChange(DiagramContext);
+	signals:
+		void elementInfoChange(DiagramContext);
 
-		//METHODS related to information
-		public:
-	DiagramContext elementInformations()const {return element_informations_;}
-	virtual void setElementInformations(DiagramContext dc);
-	DiagramContext kindInformations() const {return kind_informations_;}	//@kind_information_ is used to store more information
-																			//about the herited class like contactelement for know
-																			// kind of contact (simple tempo) or number of contact show by the element.
+	//METHODS related to information
+	public:
+		DiagramContext  elementInformations    ()const              {return element_informations_;}
+		DiagramContext& rElementInformations   ()                   {return element_informations_;}
+		virtual void    setElementInformations (DiagramContext dc);
+		DiagramContext  kindInformations       () const             {return kind_informations_;}	//@kind_information_ is used to store more information
+																									//about the herited class like contactelement for know
+																									// kind of contact (simple tempo) or number of contact show by the element.
 
-		//ATTRIBUTES
-		protected:
-	DiagramContext element_informations_, kind_informations_;
+	//ATTRIBUTES
+	protected:
+		DiagramContext element_informations_, kind_informations_;
 
 	/**
 		Draw this element
