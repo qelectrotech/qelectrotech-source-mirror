@@ -37,14 +37,15 @@ CrossRefItem::CrossRefItem(Element *elmt) :
 	m_element (elmt)
 {
 	m_properties = elmt->diagram()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
-	connect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
-	connect(elmt->diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
-	connect(elmt->diagram(), SIGNAL(XRefPropertiesChanged()), this, SLOT(updateProperties()));
+
+	connect(elmt,                           SIGNAL(elementInfoChange(DiagramContext)),                this, SLOT(updateLabel()));
+	connect(elmt -> diagram() -> project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+	connect(elmt -> diagram(),              SIGNAL(XRefPropertiesChanged()),                          this, SLOT(updateProperties()));
 
 	//set specific behavior related to the parent item.
 	if(m_properties.snapTo() == XRefProperties::Bottom) {
-		connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
-		connect(elmt, SIGNAL(rotationChanged()),	   this, SLOT(autoPos()));
+		connect(elmt, SIGNAL(yChanged()),        this, SLOT(autoPos()));
+		connect(elmt, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
 	} else {
 		setTextParent();
 	}
@@ -57,12 +58,12 @@ CrossRefItem::CrossRefItem(Element *elmt) :
  */
 CrossRefItem::~CrossRefItem() {
 	if(m_properties.snapTo() == XRefProperties::Bottom) {
-		disconnect(m_element, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
-		disconnect(m_element, SIGNAL(rotationChanged()),	   this, SLOT(autoPos()));
+		disconnect(m_element, SIGNAL(yChanged()),        this, SLOT(autoPos()));
+		disconnect(m_element, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
 	}
-	disconnect(m_element, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
-	disconnect(m_element->diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
-	disconnect(m_element->diagram(), SIGNAL(XRefPropertiesChanged()), this, SLOT(updateProperties()));
+	disconnect(m_element,                           SIGNAL(elementInfoChange(DiagramContext)),                this, SLOT(updateLabel()));
+	disconnect(m_element -> diagram() -> project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+	disconnect(m_element -> diagram(),              SIGNAL(XRefPropertiesChanged()),                          this, SLOT(updateProperties()));
 }
 
 /**

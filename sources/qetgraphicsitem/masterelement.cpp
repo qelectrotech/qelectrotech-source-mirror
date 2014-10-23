@@ -56,7 +56,8 @@ void MasterElement::linkToElement(Element *elmt) {
 		elmt->linkToElement(this);
 
 		if (!cri_) cri_ = new CrossRefItem(this); //create cross ref item if not yet
-			connect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
+			connect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));
+			connect(elmt, SIGNAL(yChanged()), cri_, SLOT(updateLabel()));
 			cri_->updateLabel();
 		}
 }
@@ -86,7 +87,8 @@ void MasterElement::unlinkElement(Element *elmt) {
 		elmt->unlinkElement(this);
 
 		//update the graphics cross ref
-		disconnect(elmt, SIGNAL(positionChange(QPointF)), cri_, SLOT(updateLabel()));
+		disconnect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));
+		disconnect(elmt, SIGNAL(yChanged()), cri_, SLOT(updateLabel()));
 
 		if (linkedElements().isEmpty()) {
 			delete cri_;

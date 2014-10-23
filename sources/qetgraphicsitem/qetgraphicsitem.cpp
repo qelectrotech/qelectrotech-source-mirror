@@ -29,8 +29,7 @@ QetGraphicsItem::QetGraphicsItem(QGraphicsItem *parent):
 	is_movable_(true),
 	first_move_(true),
 	snap_to_grid_(true)
-{
-}
+{}
 
 QetGraphicsItem::~QetGraphicsItem()
 {}
@@ -53,7 +52,6 @@ void QetGraphicsItem::setPos(const QPointF &p) {
 	if (pp == pos() || !is_movable_) return;
 	if (scene() && snap_to_grid_) {
 		QGraphicsItem::setPos(pp);
-		emit positionChange(pos());
 	} else QGraphicsItem::setPos(pp);
 }
 

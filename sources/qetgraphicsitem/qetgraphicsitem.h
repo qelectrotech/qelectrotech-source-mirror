@@ -40,7 +40,6 @@ class QetGraphicsItem : public QGraphicsObject {
 	virtual QString name()const {return QString("");}
 
 	signals:
-	void positionChange(QPointF);
 
 	public slots:
 

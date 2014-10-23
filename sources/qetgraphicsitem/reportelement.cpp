@@ -55,7 +55,8 @@ void ReportElement::linkToElement(Element * elmt) {
 	if ((elmt->linkType() == inverse_report) && i) {
 		unlinkAllElements();
 		connected_elements << elmt;
-		connect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
+		connect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
+		connect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
 		connect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 		updateLabel();
 		elmt->linkToElement(this);
@@ -71,7 +72,8 @@ void ReportElement::unlinkAllElements(){
 		QList <Element *> tmp_elmt = connected_elements;
 
 		foreach(Element *elmt, connected_elements) {
-			disconnect(elmt, SIGNAL(positionChange(QPointF)), this, SLOT(updateLabel()));
+			disconnect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
+			disconnect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
 			disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 		}
 		connected_elements.clear();
