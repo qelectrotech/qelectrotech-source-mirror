@@ -17,7 +17,6 @@
 */
 #include "projectview.h"
 #include "qetproject.h"
-#include "closediagramsdialog.h"
 #include "diagramview.h"
 #include "diagram.h"
 #include "diagramprintdialog.h"
