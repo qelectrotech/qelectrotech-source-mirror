@@ -145,18 +145,20 @@ void TextFieldEditor::updateTextFieldRotationAngle() { addChangePartCommand(tr("
 void TextFieldEditor::updateTagg() { addChangePartCommand(tr("tagg"), part, "tagg", m_tagg_cb->itemData(m_tagg_cb->currentIndex()).toString());}
 
 /**
-	Met a jour le formulaire d'edition
-*/
+ * @brief TextFieldEditor::updateForm
+ * Update the value of editor widget
+ */
 void TextFieldEditor::updateForm() {
 	if (!part) return;
 	activeConnections(false);
-	qle_x     -> setValue(part->property("x").toReal());
-	qle_y     -> setValue(part->property("y").toReal());
-	qle_text  -> setText(part -> property("text").toString());
-	font_size -> setValue(part -> property("size").toInt());
-	rotate	  -> setChecked(!part -> property("rotate").toBool());
-	rotation_angle_ -> setValue(part -> property("rotation angle").toDouble());
-	m_tagg_cb->setCurrentIndex(m_tagg_cb->findData(part->property("tagg")));
+
+	qle_x           -> setValue        (part      -> property ("x").toReal());
+	qle_y           -> setValue        (part      -> property ("y").toReal());
+	qle_text        -> setText         (part      -> property ("text").toString());
+	font_size       -> setValue        (part      -> property ("size").toInt());
+	rotate	        -> setChecked      (!part     -> property ("rotate").toBool());
+	rotation_angle_ -> setValue        (part      -> property ("rotation").toDouble());
+	m_tagg_cb       -> setCurrentIndex (m_tagg_cb -> findData (part -> property("tagg")));
 
 	activeConnections(true);
 }
