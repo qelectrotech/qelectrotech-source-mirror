@@ -76,13 +76,6 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item) {
 	
 	moved_content_ = diagram -> selectedContent();
 
-	if (driver_item) {
-		if (driver_item -> parentItem()) {
-			if (moved_content_.items().contains(driver_item -> parentItem()))
-				moved_content_.clear();
-		}
-	}
-
 	if (!moved_content_.count()) return(-1);
 	
 	/* At this point, we've got all info to manage movement.
@@ -104,12 +97,8 @@ void ElementsMover::continueMovement(const QPointF &movement) {
 
 	//Move every movable item, except conductor
 	typedef DiagramContent dc;
-	foreach (QGraphicsItem *qgi, moved_content_.items(dc::Elements | dc::TextFields | dc::ElementTextFields | dc::Images | dc::Shapes)) {
+	foreach (QGraphicsItem *qgi, moved_content_.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes)) {
 		if (qgi == movement_driver_) continue;
-		if (qgi->parentItem()) {
-			if (moved_content_.items().contains(qgi->parentItem()))
-				continue;
-		}
 		qgi -> setPos(qgi->pos() + movement);
 	}
 	

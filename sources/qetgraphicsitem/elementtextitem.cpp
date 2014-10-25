@@ -18,6 +18,8 @@
 #include "elementtextitem.h"
 #include "element.h"
 #include <QTextDocument>
+#include "diagram.h"
+#include "diagramcommands.h"
 
 /**
 	Constructeur
@@ -183,22 +185,76 @@ void ElementTextItem::applyRotation(const qreal &angle) {
 
 /**
  * @brief ElementTextItem::mouseMoveEvent
- * @param event
+ * @param e
  */
-void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
-	if (parent_element_)
-		parent_element_->setHighlighted(true);
+void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
+	if (textInteractionFlags() & Qt::TextEditable) {
+		DiagramTextItem::mouseMoveEvent(e);
+	} else if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
+		QPointF old_pos = pos();
 
-	DiagramTextItem::mouseMoveEvent(event);
+		/*
+		 * Use e -> pos() directly will be have for behavior to pos the origin
+		 * of the text field to the position pointed by the cursor, that isn't the wanted effect.
+		 * Instead of this, we apply to the actual pos,
+		 * the vector defined by the movement of cursor since the last pos clicked by left button
+		 */
+		QPointF movement = e -> pos() - e -> buttonDownPos(Qt::LeftButton);
+
+		/*
+		 * the method pos() and setPos() always work with coordinate of parent item
+		 * (or scene if there isn't parent) we don't forget to map the movemement to parent
+		 * before applyRotation
+		 */
+		QPointF new_pos = pos() + mapMovementToParent(movement);
+		e -> modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
+
+		Diagram *diagram_ptr = diagram();
+		if (diagram_ptr) {
+			if (m_first_move) {
+				//We signal the beginning of movement to the parent diagram
+				int moved_texts_count = diagram_ptr -> beginMoveElementTexts(this);
+
+				//If there is one texte to move, we highlight the parent element.
+				if (moved_texts_count == 1 && parent_element_) {
+					parent_element_ -> setHighlighted(true);
+					parent_element_ -> update();
+				}
+			}
+
+			/*
+				Comme setPos() n'est pas oblige d'appliquer exactement la
+				valeur qu'on lui fournit, on calcule le mouvement reellement
+				applique.
+			*/
+			QPointF effective_movement = pos() - old_pos;
+			QPointF scene_effective_movement = mapMovementToScene(mapMovementFromParent(effective_movement));
+
+			// on applique le mouvement subi aux autres textes a deplacer
+			diagram_ptr -> continueMoveElementTexts(scene_effective_movement);
+		}
+	} else e -> ignore();
+
+	if (m_first_move) {
+		m_first_move = false;
+	}
 }
 
 /**
  * @brief ElementTextItem::mouseReleaseEvent
- * @param event
+ * @param e
  */
-void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
-	if (parent_element_)
-		parent_element_->setHighlighted(false);
+void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
+	if (Diagram *diagram_ptr = diagram()) {
+		if (parent_element_) {
+			if (parent_element_ -> isHighlighted()) {
+				parent_element_ -> setHighlighted(false);
+			}
+		}
 
-	DiagramTextItem::mouseReleaseEvent(event);
+		diagram_ptr -> endMoveElementTexts();
+	}
+	if (!(e -> modifiers() & Qt::ControlModifier)) {
+		QGraphicsTextItem::mouseReleaseEvent(e);
+	}
 }

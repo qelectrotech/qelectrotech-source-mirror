@@ -177,6 +177,33 @@ class MoveElementsCommand : public QUndoCommand {
 	bool first_redo;
 };
 
+class MoveElementsTextsCommand : public QUndoCommand {
+		// constructors, destructor
+	public:
+		MoveElementsTextsCommand(Diagram *, const QSet<ElementTextItem *> &, const QPointF &m, QUndoCommand * = 0);
+		virtual ~MoveElementsTextsCommand();
+
+	private:
+		MoveElementsTextsCommand(const MoveElementsTextsCommand &);
+
+	// methods
+	public:
+		virtual void undo();
+		virtual void redo();
+		virtual void move(const QPointF &);
+
+	// attributes
+	private:
+		/// diagram the movement takes place on.
+		Diagram *diagram;
+		/// text items to be moved
+		QSet<ElementTextItem *> texts_to_move;
+		/// applied movement
+		QPointF movement;
+		/// prevent the first call to redo()
+		bool first_redo;
+};
+
 /**
 	This command moves text items related to conductors on a particular
 	diagram.

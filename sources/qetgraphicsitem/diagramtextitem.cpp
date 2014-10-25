@@ -111,6 +111,25 @@ void DiagramTextItem::rotateBy(const qreal &added_rotation) {
 }
 
 /**
+	Traduit en coordonnees de la scene un mouvement / vecteur initialement
+	exprime en coordonnees locales.
+	@param movement Vecteur exprime en coordonnees locales
+	@return le meme vecteur, exprime en coordonnees de la scene
+*/
+QPointF DiagramTextItem::mapMovementToScene(const QPointF &movement) const {
+	// on definit deux points en coordonnees locales
+	QPointF local_origin(0.0, 0.0);
+	QPointF local_movement_point(movement);
+
+	// on les mappe sur la scene
+	QPointF scene_origin(mapToScene(local_origin));
+	QPointF scene_movement_point(mapToScene(local_movement_point));
+
+	// on calcule le vecteur represente par ces deux points
+	return(scene_movement_point - scene_origin);
+}
+
+/**
 	Traduit en coordonnees locales un mouvement / vecteur initialement
 	exprime en coordonnees de la scene.
 	@param movement Vecteur exprime en coordonnees de la scene
@@ -120,11 +139,11 @@ QPointF DiagramTextItem::mapMovementFromScene(const QPointF &movement) const {
 	// on definit deux points sur la scene
 	QPointF scene_origin(0.0, 0.0);
 	QPointF scene_movement_point(movement);
-	
+
 	// on les mappe sur ce QGraphicsItem
 	QPointF local_origin(mapFromScene(scene_origin));
 	QPointF local_movement_point(mapFromScene(scene_movement_point));
-	
+
 	// on calcule le vecteur represente par ces deux points
 	return(local_movement_point - local_origin);
 }
@@ -139,13 +158,32 @@ QPointF DiagramTextItem::mapMovementToParent(const QPointF &movement) const {
 	// on definit deux points en coordonnees locales
 	QPointF local_origin(0.0, 0.0);
 	QPointF local_movement_point(movement);
-	
+
 	// on les mappe sur la scene
 	QPointF parent_origin(mapToParent(local_origin));
 	QPointF parent_movement_point(mapToParent(local_movement_point));
-	
+
 	// on calcule le vecteur represente par ces deux points
 	return(parent_movement_point - parent_origin);
+}
+
+/**
+	Traduit en coordonnees locales un mouvement / vecteur initialement
+	exprime en coordonnees du parent.
+	@param movement Vecteur exprime en coordonnees du parent
+	@return le meme vecteur, exprime en coordonnees locales
+*/
+QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
+	// on definit deux points sur le parent
+	QPointF parent_origin(0.0, 0.0);
+	QPointF parent_movement_point(movement);
+
+	// on les mappe sur ce QGraphicsItem
+	QPointF local_origin(mapFromParent(parent_origin));
+	QPointF local_movement_point(mapFromParent(parent_movement_point));
+
+	// on calcule le vecteur represente par ces deux points
+	return(local_movement_point - local_origin);
 }
 
 void DiagramTextItem::setFontSize(int &s) {

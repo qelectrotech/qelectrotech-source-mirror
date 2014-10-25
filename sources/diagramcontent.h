@@ -62,8 +62,6 @@ class DiagramContent {
 	QSet<Element *> elements;
 	/// Hold independent text items
 	QSet<IndependentTextItem *> textFields;
-	/// Hold element text item
-	QSet <ElementTextItem *> elementTextFields;
 	/// Hold image
 	QSet<DiagramImageItem *> images;
 	/// Hold shape

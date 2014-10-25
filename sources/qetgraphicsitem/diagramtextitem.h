@@ -59,8 +59,10 @@ class DiagramTextItem : public QGraphicsTextItem {
 	void setRotationAngle(const qreal &);
 	void rotateBy(const qreal &);
 	void edit();
+	QPointF mapMovementToScene(const QPointF &) const;
 	QPointF mapMovementFromScene(const QPointF &) const;
 	QPointF mapMovementToParent(const QPointF &) const;
+	QPointF mapMovementFromParent(const QPointF &) const;
 	void setFontSize(int &s);
 	void setNoEditable(bool e = true) {no_editable = e;}
 	

@@ -71,8 +71,8 @@ class ElementTextItem : public DiagramTextItem {
 	protected:
 	virtual void applyRotation(const qreal &);
 
-	virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
-	virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
+	virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *e);
+	virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *e);
 
 	private:
 	void build();
