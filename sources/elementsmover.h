@@ -57,6 +57,5 @@ class ElementsMover {
 	Diagram *diagram_;
 	QGraphicsItem *movement_driver_;
 	DiagramContent moved_content_;
-	QHash<ConductorTextItem *, QPointF> updated_conductors_text_pos_;
 };
 #endif

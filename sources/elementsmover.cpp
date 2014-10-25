@@ -82,20 +82,6 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item) {
 				moved_content_.clear();
 		}
 	}
-	
-	/* We need to save the position of conductor text (ConductorTextItem)
-	 * if the position is defined by user
-	 * It's needed only for conductors whose the path will be recalculated */
-	foreach(Conductor *conductor, moved_content_.conductorsToUpdate) {
-		if (ConductorTextItem *text_item = conductor -> textItem()) {
-			if (text_item -> wasMovedByUser()) {
-				updated_conductors_text_pos_.insert(
-					text_item,
-					text_item -> pos()
-				);
-			}
-		}
-	}
 
 	if (!moved_content_.count()) return(-1);
 	
