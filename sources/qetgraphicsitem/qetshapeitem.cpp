@@ -174,8 +174,9 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 	pen.setStyle(m_shapeStyle);
 	if (isSelected()) pen.setColor(Qt::red);
 	painter -> setRenderHint(QPainter::Antialiasing, false);
-	painter->setPen(pen);
 	pen.setWidthF(1);
+	painter->setPen(pen);
+
 
 
 	switch (m_shapeType) {
