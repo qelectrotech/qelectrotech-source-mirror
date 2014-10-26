@@ -17,7 +17,6 @@
 */
 #ifndef TITLEBLOCK_PROPERTIES_H
 #define TITLEBLOCK_PROPERTIES_H
-#include <QtCore>
 #include <QtXml>
 #include "diagramcontext.h"
 /**
@@ -42,6 +41,8 @@ class TitleBlockProperties {
 	void fromXml(const QDomElement &);
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
+
+	static TitleBlockProperties defaultProperties();
 	
 	QDate finalDate() const ;
 	

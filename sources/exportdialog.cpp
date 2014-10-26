@@ -22,7 +22,6 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "exportpropertieswidget.h"
-#include "qetdiagrameditor.h"
 #include "createdxf.h"
 #include "conductorsegment.h"
 #include "qetgraphicsitem/conductor.h"
@@ -48,7 +47,7 @@ ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(paren
 	project_ = project;
 	
 	// recupere les parametres d'export definis dans la configuration de l'application
-	ExportProperties default_export_properties = QETDiagramEditor::defaultExportProperties();
+	ExportProperties default_export_properties = ExportProperties::defaultExportProperties();
 	
 	// on utilise le repertoire du projet a exporter si possible
 	if (!project_ -> filePath().isEmpty()) {

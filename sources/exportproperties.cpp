@@ -17,6 +17,7 @@
 */
 #include "exportproperties.h"
 #include <QDesktopServices>
+#include "qetapp.h"
 
 /**
 	Constructeur par defaut :
@@ -74,9 +75,35 @@ void ExportProperties::fromSettings(QSettings &settings, const QString &prefix) 
 	
 	draw_grid               = settings.value(prefix + "drawgrid",              false).toBool();
 	draw_border             = settings.value(prefix + "drawborder",            true ).toBool();
-	draw_titleblock              = settings.value(prefix + "drawtitleblock",             true ).toBool();
+	draw_titleblock         = settings.value(prefix + "drawtitleblock",             true ).toBool();
 	draw_terminals          = settings.value(prefix + "drawterminals",         false).toBool();
 	draw_colored_conductors = settings.value(prefix + "drawcoloredconductors", true ).toBool();
 	
 	exported_area  = QET::diagramAreaFromString(settings.value(prefix + "area", "border").toString());
+}
+
+/**
+ * @brief ExportProperties::defaultProperties
+ * @return the default properties stored in the setting file
+ */
+ExportProperties ExportProperties::defaultExportProperties() {
+	QSettings &settings = QETApp::settings();
+
+	ExportProperties def;
+	def.fromSettings(settings, "export/default");
+
+	return(def);
+}
+
+/**
+ * @brief ExportProperties::defaultPrintProperties
+ * @return the default properties stored in the setting file
+ */
+ExportProperties ExportProperties::defaultPrintProperties() {
+	QSettings &settings = QETApp::settings();
+
+	ExportProperties def;
+	def.fromSettings(settings, "print/default");
+
+	return(def);
 }

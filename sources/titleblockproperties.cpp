@@ -17,6 +17,7 @@
 */
 #include "titleblockproperties.h"
 #include "qet.h"
+#include "qetapp.h"
 
 /**
 	Constructeur. Initialise un objet TitleBlockProperties avec tous les champs
@@ -128,6 +129,19 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	folio    = settings.value(prefix + "folio", "%id/%total").toString();
 	setDateFromString(settings.value(prefix + "date").toString());
 	context.fromSettings(settings, prefix + "properties");
+}
+
+/**
+ * @brief TitleBlockProperties::defaultProperties
+ * Return the default properties stored in the setting file
+ */
+TitleBlockProperties TitleBlockProperties::defaultProperties() {
+	QSettings &settings = QETApp::settings();
+
+	TitleBlockProperties def;
+	def.fromSettings(settings, "diagrameditor/default");
+
+	return(def);
 }
 
 /**

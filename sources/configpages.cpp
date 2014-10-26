@@ -20,13 +20,13 @@
 #include "conductorpropertieswidget.h"
 #include "titleblockpropertieswidget.h"
 #include "qetapp.h"
-#include "qetdiagrameditor.h"
 #include "bordertitleblock.h"
 #include "qeticons.h"
 #include "exportpropertieswidget.h"
 #include "ui/reportpropertiewidget.h"
 #include "ui/xrefpropertieswidget.h"
 #include "qetproject.h"
+#include "reportproperties.h"
 
 /**
  * @brief NewDiagramPage::NewDiagramPage
@@ -42,15 +42,15 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
 	//By default we set the global default properties
 
 	// dimensions by default for diagram
-	bpw = new	BorderPropertiesWidget(QETDiagramEditor::defaultBorderProperties());
+	bpw = new	BorderPropertiesWidget(BorderProperties::defaultProperties());
 	// default titleblock properties
-	ipw = new TitleBlockPropertiesWidget(QETDiagramEditor::defaultTitleBlockProperties(), true);
+	ipw = new TitleBlockPropertiesWidget(TitleBlockProperties::defaultProperties(), true);
 	// default conductor properties
-	cpw = new ConductorPropertiesWidget(QETDiagramEditor::defaultConductorProperties());
+	cpw = new ConductorPropertiesWidget(ConductorProperties::defaultProperties());
 	// default propertie of report label
-	rpw = new ReportPropertieWidget(QETDiagramEditor::defaultReportProperties());
+	rpw = new ReportPropertieWidget(ReportProperties::defaultProperties());
 	// default properties of xref
-	xrefpw = new XRefPropertiesWidget(QETDiagramEditor::defaultXRefProperties(), this);
+	xrefpw = new XRefPropertiesWidget(XRefProperties::defaultProperties(), this);
 
 	//If there is a project, we edit his properties
 	if (m_project) {
@@ -353,7 +353,7 @@ void GeneralConfigurationPage::fillLang(QSettings &settings) {
 */
 ExportConfigPage::ExportConfigPage(QWidget *parent) : ConfigPage(parent) {
 	// epw contient les options d'export
-	epw = new ExportPropertiesWidget(QETDiagramEditor::defaultExportProperties());
+	epw = new ExportPropertiesWidget(ExportProperties::defaultExportProperties());
 	
 	// layout vertical contenant le titre, une ligne horizontale et epw
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
@@ -399,7 +399,7 @@ QString ExportConfigPage::title() const {
 */
 PrintConfigPage::PrintConfigPage(QWidget *parent) : ConfigPage(parent) {
 	// epw contient les options d'export
-	epw = new ExportPropertiesWidget(QETDiagramEditor::defaultPrintProperties());
+	epw = new ExportPropertiesWidget(ExportProperties::defaultPrintProperties());
 	epw -> setPrintingMode(true);
 	
 	// layout vertical contenant le titre, une ligne horizontale et epw

@@ -36,6 +36,8 @@ class BorderProperties {
 	void fromXml(QDomElement &);
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
+
+	static BorderProperties defaultProperties();
 	
 	// attributes
 	int columns_count;            ///< Columns count

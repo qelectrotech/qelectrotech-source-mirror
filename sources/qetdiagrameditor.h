@@ -19,11 +19,6 @@
 #define QET_DIAGRAM_EDITOR_H
 #include <QtGui>
 #include "qetmainwindow.h"
-#include "borderproperties.h"
-#include "conductorproperties.h"
-#include "titleblockproperties.h"
-#include "exportproperties.h"
-#include "properties/xrefproperties.h"
 
 class QETProject;
 class QETResult;
@@ -44,11 +39,18 @@ class QETDiagramEditor : public QETMainWindow {
 	
 	// constructors, destructor
 	public:
-	QETDiagramEditor(const QStringList & = QStringList(), QWidget * = 0);
-	virtual ~QETDiagramEditor();
+		QETDiagramEditor(const QStringList & = QStringList(), QWidget * = 0);
+		virtual ~QETDiagramEditor();
 	
 	private:
-	QETDiagramEditor(const QETDiagramEditor &);
+		QETDiagramEditor(const QETDiagramEditor &);
+
+	private:
+		void setUpElementsPanel ();
+		void setUpUndoStack     ();
+		void setUpActions       ();
+		void setUpToolBar       ();
+		void setUpMenu          ();
 	
 	// methods
 	public:
@@ -59,16 +61,9 @@ class QETDiagramEditor : public QETMainWindow {
 	QList<DiagramView *> projectViews() const;
 	QList<QString> editedFiles() const;
 	ProjectView *viewForFile(const QString &) const;
-	static TitleBlockProperties			  defaultTitleBlockProperties();
-	static BorderProperties				  defaultBorderProperties();
-	static ConductorProperties			  defaultConductorProperties();
-	static ExportProperties				  defaultExportProperties();
-	static ExportProperties				  defaultPrintProperties();
-	static QString						  defaultReportProperties();
-	static QHash<QString, XRefProperties> defaultXRefProperties();
 	
 	protected:
-	void actions();
+	//void actions();
 	virtual bool event(QEvent *);
 	
 	private:
@@ -82,9 +77,6 @@ class QETDiagramEditor : public QETMainWindow {
 	ProjectView *findProject(QETProject *) const;
 	ProjectView *findProject(const QString &) const;
 	QMdiSubWindow *subWindowForWidget(QWidget *) const;
-	
-	void menus();
-	void toolbar();
 	
 	public slots:
 	void printDialog();

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "borderproperties.h"
+#include "qetapp.h"
 
 /**
 	Constructeur. Initialise un objet BorderProperties avec les proprietes par
@@ -119,4 +120,17 @@ void BorderProperties::fromSettings(QSettings &settings, const QString &prefix) 
 	rows_count      = settings.value(prefix + "rows",            rows_count).toInt();
 	rows_height     = qRound(settings.value(prefix + "rowsize",  rows_height).toDouble());
 	display_rows    = settings.value(prefix + "displayrows",     display_rows).toBool();
+}
+
+/**
+ * @brief BorderProperties::defaultProperties
+ * @return the default properties stored in the setting file
+ */
+BorderProperties BorderProperties::defaultProperties() {
+	QSettings &settings = QETApp::settings();
+
+	BorderProperties def;
+	def.fromSettings(settings, "diagrameditor/default");
+
+	return(def);
 }

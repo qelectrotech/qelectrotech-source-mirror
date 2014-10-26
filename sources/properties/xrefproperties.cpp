@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "xrefproperties.h"
+#include "qetapp.h"
 
 /**
  * @brief XRefProperties::XRefProperties
@@ -93,6 +94,28 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 	foreach (QString key, m_prefix_keys) {
 		m_prefix.insert(key, xml_element.attribute(key + "prefix"));
 	}
+}
+
+/**
+ * @brief XRefProperties::defaultProperties
+ * @return the default properties stored in the setting file
+ * For the xref, there is 2 propreties.
+ * For coil, stored with the string "coil" in the returned QHash.
+ * For protection, stored with the string "protection" in the returned QHash.
+ */
+QHash<QString, XRefProperties> XRefProperties::defaultProperties() {
+	QHash <QString, XRefProperties> hash;
+	QStringList keys;
+	keys << "coil" << "protection";
+
+	foreach (QString key, keys) {
+		XRefProperties properties;
+		QString str("diagrameditor/defaultxref");
+		properties.fromSettings(QETApp::settings(), str += key);
+		hash.insert(key, properties);
+	}
+
+	return hash;
 }
 
 bool XRefProperties::operator ==(const XRefProperties &xrp) const{

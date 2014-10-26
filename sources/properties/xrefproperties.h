@@ -45,6 +45,8 @@ class XRefProperties : public PropertiesInterface
 	virtual void toXml		  (QDomElement &xml_element) const;
 	virtual void fromXml	  (const QDomElement &xml_element);
 
+	static QHash<QString, XRefProperties> defaultProperties();
+
 	bool operator == (const XRefProperties &xrp) const;
 	bool operator != (const XRefProperties &xrp) const;
 

@@ -34,6 +34,9 @@ class ExportProperties {
 	public:
 	void toSettings  (QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
+
+	static ExportProperties defaultExportProperties ();
+	static ExportProperties defaultPrintProperties  ();
 	
 	// attributes
 	public:

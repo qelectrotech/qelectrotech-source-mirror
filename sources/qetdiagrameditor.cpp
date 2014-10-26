@@ -38,6 +38,7 @@
 #include "dveventaddimage.h"
 #include "dveventaddshape.h"
 #include "dveventaddtext.h"
+#include "reportproperties.h"
 
 #include "ui/dialogautonum.h"
 
@@ -82,47 +83,11 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	// barre de statut de la fenetre
 	statusBar() -> showMessage(tr("QElectroTech", "status bar message"));
 	
-	// ajout du panel d'Elements en tant que QDockWidget
-	qdw_pa = new QDockWidget(tr("Panel d'\351l\351ments", "dock title"), this);
-	qdw_pa -> setObjectName("elements panel");
-	qdw_pa -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-	qdw_pa -> setFeatures(QDockWidget::AllDockWidgetFeatures);
-	qdw_pa -> setMinimumWidth(160);
-	qdw_pa -> setWidget(pa = new ElementsPanelWidget(qdw_pa));
-	
-	connect(pa, SIGNAL(requestForDiagram(Diagram *)),                     this, SLOT(activateDiagram(Diagram *)));
-	connect(pa, SIGNAL(requestForProject(QETProject *)),                  this, SLOT(activateProject(QETProject *)));
-	connect(pa, SIGNAL(requestForProjectClosing(QETProject *)),           this, SLOT(closeProject(QETProject *)));
-	connect(pa, SIGNAL(requestForProjectPropertiesEdition(QETProject *)), this, SLOT(editProjectProperties(QETProject *)));
-	connect(pa, SIGNAL(requestForDiagramPropertiesEdition(Diagram *)),    this, SLOT(editDiagramProperties(Diagram *)));
-	connect(pa, SIGNAL(requestForNewDiagram(QETProject *)),               this, SLOT(addDiagramToProject(QETProject *)));
-	connect(pa, SIGNAL(requestForDiagramDeletion(Diagram *)),             this, SLOT(removeDiagram(Diagram *)));
-	connect(pa, SIGNAL(requestForDiagramMoveUp(Diagram *)),               this, SLOT(moveDiagramUp(Diagram *)));
-	connect(pa, SIGNAL(requestForDiagramMoveDown(Diagram *)),             this, SLOT(moveDiagramDown(Diagram *)));
-	
-	qdw_undo = new QDockWidget(tr("Annulations", "dock title"));
-	qdw_undo -> setObjectName("diagram_undo");
-	qdw_pa -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-	qdw_undo -> setFeatures(QDockWidget::AllDockWidgetFeatures);
-	qdw_undo -> setMinimumWidth(160);
-	tabifyDockWidget(qdw_pa, qdw_undo);
-	QUndoView *undo_view = new QUndoView(&undo_group, this);
-	undo_view -> setEmptyLabel(tr("Aucune modification"));
-	undo_view -> setStatusTip(tr("Cliquez sur une action pour revenir en arri\350re dans l'\351dition de votre sch\351ma", "Status tip"));
-	undo_view -> setWhatsThis(tr("Ce panneau liste les diff\351rentes actions effectu\351es sur le sch\351ma courant. Cliquer sur une action permet de revenir \340 l'\351tat du sch\351ma juste apr\350s son application.", "\"What's this\" tip"));
-	qdw_undo -> setWidget(undo_view);
-	
-	addDockWidget(Qt::LeftDockWidgetArea, qdw_undo);
-	tabifyDockWidget(qdw_undo, qdw_pa);
-	
-	// mise en place des actions
-	actions();
-	
-	// mise en place de la barre d'outils
-	toolbar();
-	
-	// mise en place des menus
-	menus();
+	setUpElementsPanel();
+	setUpUndoStack();
+	setUpActions();
+	setUpToolBar();
+	setUpMenu();
 	
 	// la fenetre est maximisee par defaut
 	setMinimumSize(QSize(500, 350));
@@ -150,6 +115,8 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 			}
 		}
 	}
+
+	slot_updateActions();
 	
 	// si aucun schema n'a ete ouvert jusqu'a maintenant, on ouvre un nouveau schema
 	//if (!opened_projects) newProject();
@@ -162,43 +129,63 @@ QETDiagramEditor::~QETDiagramEditor() {
 }
 
 /**
-	Permet de quitter l'application lors de la fermeture de la fenetre principale
-	@param qce Le QCloseEvent correspondant a l'evenement de fermeture
-*/
-void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
-	// quitte directement s'il n'y a aucun projet ouvert
-	bool can_quit = true;
-	if (openedProjects().count()) {
-		// s'assure que la fenetre soit visible s'il y a des projets a fermer
-		if (!isVisible() || isMinimized()) {
-			if (isMaximized()) showMaximized();
-			else showNormal();
-		}
-		// sinon demande la permission de fermer chaque projet
-		foreach(ProjectView *project, openedProjects()) {
-			if (!closeProject(project)) {
-				can_quit = false;
-				qce -> ignore();
-				break;
-			}
-		}
-	}
-	if (can_quit) {
-		writeSettings();
-		setAttribute(Qt::WA_DeleteOnClose);
-		qce -> accept();
-	}
+ * @brief QETDiagramEditor::setUpElementsPanel
+ * Setup the element panel and element panel widget
+ */
+void QETDiagramEditor::setUpElementsPanel() {
+	//Add the element panel as a QDockWidget
+	qdw_pa = new QDockWidget(tr("Panel d'\351l\351ments", "dock title"), this);
+
+	qdw_pa -> setObjectName   ("elements panel");
+	qdw_pa -> setAllowedAreas (Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	qdw_pa -> setFeatures     (QDockWidget::AllDockWidgetFeatures);
+	qdw_pa -> setMinimumWidth (160);
+	qdw_pa -> setWidget       (pa = new ElementsPanelWidget(qdw_pa));
+
+
+	connect(pa, SIGNAL(requestForProject                  (QETProject *)), this, SLOT(activateProject(QETProject *)));
+	connect(pa, SIGNAL(requestForProjectClosing           (QETProject *)), this, SLOT(closeProject(QETProject *)));
+	connect(pa, SIGNAL(requestForProjectPropertiesEdition (QETProject *)), this, SLOT(editProjectProperties(QETProject *)));
+	connect(pa, SIGNAL(requestForNewDiagram               (QETProject *)), this, SLOT(addDiagramToProject(QETProject *)));
+
+	connect(pa, SIGNAL(requestForDiagram                  (Diagram *)), this, SLOT(activateDiagram(Diagram *)));
+	connect(pa, SIGNAL(requestForDiagramPropertiesEdition (Diagram *)), this, SLOT(editDiagramProperties(Diagram *)));
+	connect(pa, SIGNAL(requestForDiagramDeletion          (Diagram *)), this, SLOT(removeDiagram(Diagram *)));
+	connect(pa, SIGNAL(requestForDiagramMoveUp            (Diagram *)), this, SLOT(moveDiagramUp(Diagram *)));
+	connect(pa, SIGNAL(requestForDiagramMoveDown          (Diagram *)), this, SLOT(moveDiagramDown(Diagram *)));
 }
 
 /**
-	Mise en place des actions
-*/
-void QETDiagramEditor::actions() {
+ * @brief QETDiagramEditor::setUpUndoStack
+ * Setup the undostack and undo stack widget
+ */
+void QETDiagramEditor::setUpUndoStack() {
+
+	QUndoView *undo_view = new QUndoView(&undo_group, this);
+
+	undo_view -> setEmptyLabel (tr("Aucune modification"));
+	undo_view -> setStatusTip  (tr("Cliquez sur une action pour revenir en arri\350re dans l'\351dition de votre sch\351ma", "Status tip"));
+	undo_view -> setWhatsThis  (tr("Ce panneau liste les diff\351rentes actions effectu\351es sur le sch\351ma courant. Cliquer sur une action permet de revenir \340 l'\351tat du sch\351ma juste apr\350s son application.", "\"What's this\" tip"));
+
+	qdw_undo  = new QDockWidget(tr("Annulations", "dock title"), this);
+	qdw_undo -> setObjectName("diagram_undo");
+
+	qdw_undo -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	qdw_undo -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	qdw_undo -> setMinimumWidth(160);
+	qdw_undo -> setWidget(undo_view);
+}
+
+/**
+ * @brief QETDiagramEditor::setUpActions
+ * Set up all Qaction
+ */
+void QETDiagramEditor::setUpActions() {
 	// icones et labels
 	export_diagram    = new QAction(QET::Icons::DocumentExport,        tr("E&xporter"),                            this);
 	print             = new QAction(QET::Icons::DocumentPrint,         tr("Imprimer"),                             this);
 	quit_editor       = new QAction(QET::Icons::ApplicationExit,       tr("&Quitter"),                             this);
-	
+
 	undo = undo_group.createUndoAction(this, tr("Annuler"));
 	undo -> setIcon(QET::Icons::EditUndo);
 	redo = undo_group.createRedoAction(this, tr("Refaire"));
@@ -222,7 +209,7 @@ void QETDiagramEditor::actions() {
 	cascade_window     = new QAction(                                  tr("&Cascade"),                             this);
 	next_window        = new QAction(                                  tr("Projet suivant"),                       this);
 	prev_window        = new QAction(                                  tr("Projet pr\351c\351dent"),               this);
-	
+
 	///Files action///
 	QAction *new_file  = m_file_actions_group.addAction( QET::Icons::DocumentNew,     tr("&Nouveau")						  );
 	QAction *open_file = m_file_actions_group.addAction( QET::Icons::DocumentOpen,    tr("&Ouvrir")							  );
@@ -368,12 +355,12 @@ void QETDiagramEditor::actions() {
 	cut               -> setShortcut(QKeySequence::Cut);
 	copy              -> setShortcut(QKeySequence::Copy);
 	paste             -> setShortcut(QKeySequence::Paste);
-	
+
 	prj_add_diagram   -> setShortcut(QKeySequence(tr("Ctrl+T")));
-	
+
 	next_window       -> setShortcut(QKeySequence::NextChild);
 	prev_window       -> setShortcut(QKeySequence::PreviousChild);
-	
+
 	// affichage dans la barre de statut
 	export_diagram    -> setStatusTip(tr("Exporte le sch\351ma courant dans un autre format", "status bar tip"));
 	print             -> setStatusTip(tr("Imprime le sch\351ma courant", "status bar tip"));
@@ -385,35 +372,35 @@ void QETDiagramEditor::actions() {
 	paste             -> setStatusTip(tr("Place les \351l\351ments du presse-papier sur le sch\351ma", "status bar tip"));
 	conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
 	infos_diagram     -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche", "status bar tip"));
-	
+
 	windowed_view_mode -> setStatusTip(tr("Pr\351sente les diff\351rents projets ouverts dans des sous-fen\352tres", "status bar tip"));
 	tabbed_view_mode   -> setStatusTip(tr("Pr\351sente les diff\351rents projets ouverts des onglets", "status bar tip"));
-	
+
 	mode_selection    -> setStatusTip(tr("Permet de s\351lectionner les \351l\351ments", "status bar tip"));
 	mode_visualise    -> setStatusTip(tr("Permet de visualiser le sch\351ma sans pouvoir le modifier", "status bar tip"));
-	
+
 	tile_window       -> setStatusTip(tr("Dispose les fen\352tres en mosa\357que", "status bar tip"));
 	cascade_window    -> setStatusTip(tr("Dispose les fen\352tres en cascade", "status bar tip"));
 	next_window       -> setStatusTip(tr("Active le projet suivant", "status bar tip"));
 	prev_window       -> setStatusTip(tr("Active le projet pr\351c\351dent", "status bar tip"));
-	
+
 	// traitements speciaux
 	windowed_view_mode -> setCheckable(true);
 	tabbed_view_mode   -> setCheckable(true);
 	mode_selection     -> setCheckable(true);
 	mode_visualise     -> setCheckable(true);
 	mode_selection     -> setChecked(true);
-	
+
 	grp_visu_sel = new QActionGroup(this);
 	grp_visu_sel -> addAction(mode_selection);
 	grp_visu_sel -> addAction(mode_visualise);
 	grp_visu_sel -> setExclusive(true);
-	
+
 	grp_view_mode = new QActionGroup(this);
 	grp_view_mode -> addAction(windowed_view_mode);
 	grp_view_mode -> addAction(tabbed_view_mode);
 	grp_view_mode -> setExclusive(true);
-	
+
 	// connexion a des slots
 	connect(quit_editor,        SIGNAL(triggered()), this,       SLOT(close())                     );
 	connect(windowed_view_mode, SIGNAL(triggered()), this,       SLOT(setWindowedMode())           );
@@ -440,41 +427,70 @@ void QETDiagramEditor::actions() {
 }
 
 /**
-	Gere les evenements du l'editeur de schema
-	Reimplemente ici pour :
-	  * eviter un conflit sur le raccourci clavier "Ctrl+W" (QKeySequence::Close)
-	@param e Evenement
-*/
-bool QETDiagramEditor::event(QEvent *e) {
-	if (e -> type() == QEvent::ShortcutOverride) {
-		QKeyEvent *shortcut_event = static_cast<QKeyEvent *>(e);
-		if (shortcut_event && shortcut_event -> matches(QKeySequence::Close)) {
-			close_file -> trigger();
-			e -> accept();
-			return(true);
-		}
-	}
-	return(QETMainWindow::event(e));
+ * @brief QETDiagramEditor::setUpToolBar
+ */
+void QETDiagramEditor::setUpToolBar() {
+	main_bar = new QToolBar(tr("Outils"), this);
+	main_bar -> setObjectName("toolbar");
+
+	view_bar = new QToolBar(tr("Affichage"), this);
+	view_bar -> setObjectName("display");
+
+	diagram_bar = new QToolBar(tr("Sch\351ma"), this);
+	diagram_bar -> setObjectName("diagram");
+
+	main_bar -> addActions(m_file_actions_group.actions());
+	main_bar -> addAction(print);
+	main_bar -> addSeparator();
+	main_bar -> addAction(undo);
+	main_bar -> addAction(redo);
+	main_bar -> addSeparator();
+	main_bar -> addAction(cut);
+	main_bar -> addAction(copy);
+	main_bar -> addAction(paste);
+	main_bar -> addSeparator();
+	main_bar -> addAction(delete_selection);
+	main_bar -> addAction(rotate_selection);
+	main_bar -> addAction(selection_prop);
+
+	// Modes selection / visualisation et zoom
+	view_bar -> addAction(mode_selection);
+	view_bar -> addAction(mode_visualise);
+	view_bar -> addSeparator();
+	view_bar -> addActions(m_zoom_action_toolBar);
+
+	diagram_bar -> addAction(infos_diagram);
+	diagram_bar -> addAction(conductor_reset);
+
+	m_add_item_toolBar = new QToolBar(tr("Ajouter"), this);
+	m_add_item_toolBar->setObjectName("adding");
+	m_add_item_toolBar->addActions(m_add_item_actions_group.actions());
+
+	// ajout de la barre d'outils a la fenetre principale
+	addToolBar(Qt::TopToolBarArea, main_bar);
+	addToolBar(Qt::TopToolBarArea, view_bar);
+	addToolBar(Qt::TopToolBarArea, diagram_bar);
+	addToolBar(Qt::TopToolBarArea, m_add_item_toolBar);
 }
 
 /**
-	Mise en place des menus
-*/
-void QETDiagramEditor::menus() {
-	
+ * @brief QETDiagramEditor::setUpMenu
+ */
+void QETDiagramEditor::setUpMenu() {
+
 	QMenu *menu_fichier   = new QMenu(tr("&Fichier"));
 	QMenu *menu_edition   = new QMenu(tr("&\311dition"));
 	QMenu *menu_project   = new QMenu(tr("&Projet"));
 	QMenu *menu_affichage = new QMenu(tr("Afficha&ge"));
 	//QMenu *menu_outils    = new QMenu(tr("O&utils"));
 	windows_menu          = new QMenu(tr("Fe&n\352tres"));
-	
+
 	insertMenu(settings_menu_, menu_fichier);
 	insertMenu(settings_menu_, menu_edition);
 	insertMenu(settings_menu_, menu_project);
 	insertMenu(settings_menu_, menu_affichage);
 	insertMenu(help_menu_, windows_menu);
-	
+
 	// File menu
 	QMenu *recentfile = menu_fichier -> addMenu(QET::Icons::DocumentOpenRecent, tr("&R\351cemment ouverts"));
 	recentfile->addActions(QETApp::projectsRecentFiles()->menu()->actions());
@@ -487,7 +503,7 @@ void QETDiagramEditor::menus() {
 	menu_fichier -> addAction(print);
 	menu_fichier -> addSeparator();
 	menu_fichier -> addAction(quit_editor);
-	
+
 	// menu Edition
 	menu_edition -> addAction(undo);
 	menu_edition -> addAction(redo);
@@ -504,7 +520,7 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(infos_diagram);
 	menu_edition -> addActions(m_row_column_actions_group.actions());
-	
+
 	// menu Projet
 	menu_project -> addAction(prj_edit_prop);
 	menu_project -> addAction(prj_add_diagram);
@@ -513,19 +529,19 @@ void QETDiagramEditor::menus() {
 	menu_project -> addSeparator();
 	menu_project -> addAction(prj_diagramList);
 	menu_project -> addAction(prj_nomenclature);
-	
+
 	main_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
 	view_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
 	diagram_bar -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Sch\351ma"));
 	qdw_pa      -> toggleViewAction() -> setStatusTip(tr("Affiche ou non le panel d'appareils"));
 	qdw_undo    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la liste des modifications"));
-	
+
 	// menu Affichage
 	QMenu *projects_view_mode = menu_affichage -> addMenu(tr("Afficher les projets"));
 	projects_view_mode -> setTearOffEnabled(true);
 	projects_view_mode -> addAction(windowed_view_mode);
 	projects_view_mode -> addAction(tabbed_view_mode);
-	
+
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(mode_selection);
 	menu_affichage -> addAction(mode_visualise);
@@ -537,50 +553,50 @@ void QETDiagramEditor::menus() {
 }
 
 /**
-	Mise en place de la barre d'outils
+	Permet de quitter l'application lors de la fermeture de la fenetre principale
+	@param qce Le QCloseEvent correspondant a l'evenement de fermeture
 */
-void QETDiagramEditor::toolbar() {
-	main_bar = new QToolBar(tr("Outils"), this);
-	main_bar -> setObjectName("toolbar");
-	
-	view_bar = new QToolBar(tr("Affichage"), this);
-	view_bar -> setObjectName("display");
-	
-	diagram_bar = new QToolBar(tr("Sch\351ma"), this);
-	diagram_bar -> setObjectName("diagram");
-	
-	main_bar -> addActions(m_file_actions_group.actions());
-	main_bar -> addAction(print);
-	main_bar -> addSeparator();
-	main_bar -> addAction(undo);
-	main_bar -> addAction(redo);
-	main_bar -> addSeparator();
-	main_bar -> addAction(cut);
-	main_bar -> addAction(copy);
-	main_bar -> addAction(paste);
-	main_bar -> addSeparator();
-	main_bar -> addAction(delete_selection);
-	main_bar -> addAction(rotate_selection);
-	main_bar -> addAction(selection_prop);
-	
-	// Modes selection / visualisation et zoom
-	view_bar -> addAction(mode_selection);
-	view_bar -> addAction(mode_visualise);
-	view_bar -> addSeparator();
-	view_bar -> addActions(m_zoom_action_toolBar);
-	
-	diagram_bar -> addAction(infos_diagram);
-	diagram_bar -> addAction(conductor_reset);
+void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
+	// quitte directement s'il n'y a aucun projet ouvert
+	bool can_quit = true;
+	if (openedProjects().count()) {
+		// s'assure que la fenetre soit visible s'il y a des projets a fermer
+		if (!isVisible() || isMinimized()) {
+			if (isMaximized()) showMaximized();
+			else showNormal();
+		}
+		// sinon demande la permission de fermer chaque projet
+		foreach(ProjectView *project, openedProjects()) {
+			if (!closeProject(project)) {
+				can_quit = false;
+				qce -> ignore();
+				break;
+			}
+		}
+	}
+	if (can_quit) {
+		writeSettings();
+		setAttribute(Qt::WA_DeleteOnClose);
+		qce -> accept();
+	}
+}
 
-	m_add_item_toolBar = new QToolBar(tr("Ajouter"), this);
-	m_add_item_toolBar->setObjectName("adding");
-	m_add_item_toolBar->addActions(m_add_item_actions_group.actions());
-
-	// ajout de la barre d'outils a la fenetre principale
-	addToolBar(Qt::TopToolBarArea, main_bar);
-	addToolBar(Qt::TopToolBarArea, view_bar);
-	addToolBar(Qt::TopToolBarArea, diagram_bar);
-	addToolBar(Qt::TopToolBarArea, m_add_item_toolBar);
+/**
+	Gere les evenements du l'editeur de schema
+	Reimplemente ici pour :
+	  * eviter un conflit sur le raccourci clavier "Ctrl+W" (QKeySequence::Close)
+	@param e Evenement
+*/
+bool QETDiagramEditor::event(QEvent *e) {
+	if (e -> type() == QEvent::ShortcutOverride) {
+		QKeyEvent *shortcut_event = static_cast<QKeyEvent *>(e);
+		if (shortcut_event && shortcut_event -> matches(QKeySequence::Close)) {
+			close_file -> trigger();
+			e -> accept();
+			return(true);
+		}
+	}
+	return(QETMainWindow::event(e));
 }
 
 /**
@@ -607,11 +623,11 @@ void QETDiagramEditor::exportDialog() {
 */
 void QETDiagramEditor::save() {
 	if (ProjectView *project_view = currentProject()) {
-		QETResult save_file = project_view -> save();
-		if (save_file.isOk()) {
+		QETResult saved = project_view -> save();
+		if (saved.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
 		} else {
-			showError(save_file);
+			showError(saved);
 		}
 	}
 }
@@ -641,11 +657,11 @@ bool QETDiagramEditor::newProject() {
 	QETProject *new_project = new QETProject(0);
 	
 	// Set default properties for new diagram
-	new_project -> setDefaultBorderProperties	  (defaultBorderProperties());
-	new_project -> setDefaultConductorProperties  (defaultConductorProperties());
-	new_project -> setDefaultTitleBlockProperties (defaultTitleBlockProperties());
-	new_project -> setDefaultReportProperties	  (defaultReportProperties());
-	new_project -> setDefaultXRefProperties		  (defaultXRefProperties());
+	new_project -> setDefaultBorderProperties	  (BorderProperties::    defaultProperties());
+	new_project -> setDefaultConductorProperties  (ConductorProperties:: defaultProperties());
+	new_project -> setDefaultTitleBlockProperties (TitleBlockProperties::defaultProperties());
+	new_project -> setDefaultReportProperties	  (ReportProperties::    defaultProperties());
+	new_project -> setDefaultXRefProperties		  (XRefProperties::      defaultProperties());
 	
 	// add new diagram
 	new_project -> addNewDiagram();
@@ -1120,6 +1136,7 @@ void QETDiagramEditor::slot_setVisualisationMode() {
 void QETDiagramEditor::slot_updateActions() {
 	DiagramView *dv = currentDiagram();
 	ProjectView *pv = currentProject();
+
 	bool opened_project = pv;
 	bool opened_diagram = dv;
 	bool editable_project = (pv && !pv -> project() -> isReadOnly());
@@ -1159,8 +1176,8 @@ void QETDiagramEditor::slot_updateUndoStack() {
 	ProjectView *pv = currentProject();
 	if (pv && can_update_actions) {
 		undo_group.setActiveStack(pv->project()->undoStack());
-		undo -> setEnabled(undo_group.canUndo());
-		redo -> setEnabled(undo_group.canRedo());
+		undo      -> setEnabled (undo_group.canUndo());
+		redo      -> setEnabled (undo_group.canRedo());
 	}
 }
 
@@ -1282,8 +1299,10 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 	
 	// lie les schemas du projet a l'editeur :
 	// quand on change de schemas a l'interieur d'un projet, on met a jour les menus
-	connect(project_view, SIGNAL(diagramActivated(DiagramView *)), this, SLOT(slot_updateWindowsMenu()));
-	connect(project_view, SIGNAL(diagramActivated(DiagramView *)), this, SLOT(slot_updateActions()));
+	connect(project_view,            SIGNAL(diagramActivated(DiagramView *)),   this, SLOT(slot_updateWindowsMenu()));
+	connect(project_view,            SIGNAL(diagramActivated(DiagramView *)),   this, SLOT(slot_updateActions()));
+	//connect(project_view->project(), SIGNAL(projectModified(QETProject*,bool)), save_file, SLOT(setEnabled(bool)));
+
 	foreach(DiagramView *dv, project_view -> diagrams()) {
 		diagramWasAdded(dv);
 	}
@@ -1949,100 +1968,4 @@ void QETDiagramEditor::showError(const QString &error) {
  */
 void QETDiagramEditor::addItemFinish() {
 	m_add_item_actions_group.checkedAction()->setChecked(false);
-}
-
-/**
-	@return Les proprietes par defaut pour le cartouche d'un schema
-*/
-TitleBlockProperties QETDiagramEditor::defaultTitleBlockProperties() {
-	// accede a la configuration de l'application
-	QSettings &settings = QETApp::settings();
-	
-	TitleBlockProperties def;
-	// lit le cartouche par defaut dans la configuration
-	def.fromSettings(settings, "diagrameditor/default");
-	
-	return(def);
-}
-
-/**
-	@return Les dimensions par defaut d'un schema
-*/
-BorderProperties QETDiagramEditor::defaultBorderProperties() {
-	// accede a la configuration de l'application
-	QSettings &settings = QETApp::settings();
-	
-	BorderProperties def;
-	// lit les dimensions par defaut dans la configuration
-	def.fromSettings(settings, "diagrameditor/default");
-	
-	return(def);
-}
-
-/**
-	@return Les proprietes par defaut d'un conducteur
-*/
-ConductorProperties QETDiagramEditor::defaultConductorProperties() {
-	// accede a la configuration de l'application
-	QSettings &settings = QETApp::settings();
-	
-	ConductorProperties def;
-	// lit les caracteristiques des conducteurs par defaut dans la configuration
-	def.fromSettings(settings, "diagrameditor/defaultconductor");
-	
-	return(def);
-}
-
-/**
-	@return Les parametres d'export par defaut pour un schema
-*/
-ExportProperties QETDiagramEditor::defaultExportProperties() {
-	// accede a la configuration de l'application
-	QSettings &settings = QETApp::settings();
-	
-	ExportProperties def;
-	// lit les caracteristiques des conducteurs par defaut dans la configuration
-	def.fromSettings(settings, "export/default");
-	
-	return(def);
-}
-
-/**
-	@return Les parametres d'impression par defaut pour un schema
-*/
-ExportProperties QETDiagramEditor::defaultPrintProperties() {
-	// accede a la configuration de l'application
-	QSettings &settings = QETApp::settings();
-	
-	ExportProperties def;
-	// lit les caracteristiques des conducteurs par defaut dans la configuration
-	def.fromSettings(settings, "print/default");
-	
-	return(def);
-}
-
-/**
- * @brief QETDiagramEditor::defaultReportProperties
- * @return default folio report properties
- */
-QString QETDiagramEditor::defaultReportProperties() {
-	QSettings &settings= QETApp::settings();
-	return(settings.value("diagrameditor/defaultreportlabel", "%f-%l%c").toString());
-}
-
-/**
- * @brief QETDiagramEditor::defaultXRefProperties
- * @return the default setting for Xref
- */
-QHash <QString, XRefProperties> QETDiagramEditor::defaultXRefProperties() {
-	QHash <QString, XRefProperties> hash;
-	QStringList keys;
-	keys << "coil" << "protection";
-	foreach (QString key, keys) {
-		XRefProperties properties;
-		QString str("diagrameditor/defaultxref");
-		properties.fromSettings(QETApp::settings(), str += key);
-		hash.insert(key, properties);
-	}
-	return hash;
 }

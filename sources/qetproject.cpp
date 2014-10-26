@@ -22,7 +22,6 @@
 #include "xmlelementscollection.h"
 #include "elementscategory.h"
 #include "qetapp.h"
-#include "qetdiagrameditor.h"
 #include "qetresult.h"
 #include "integrationmoveelementshandler.h"
 #include "movetemplateshandler.h"
@@ -31,6 +30,7 @@
 #include "titleblocktemplate.h"
 #include "ui/dialogwaiting.h"
 #include "numerotationcontext.h"
+#include "reportproperties.h"
 
 QString QETProject::integration_category_name = "import";
 
@@ -1204,11 +1204,11 @@ void QETProject::readDefaultPropertiesXml() {
 	QDomElement newdiagrams_elmt = newdiagrams_nodes.at(0).toElement();
 	
 	// By default, use value find in the global conf of QElectroTech
-	default_border_properties_	   = QETDiagramEditor::defaultBorderProperties();
-	default_titleblock_properties_ = QETDiagramEditor::defaultTitleBlockProperties();
-	default_conductor_properties_  = QETDiagramEditor::defaultConductorProperties();
-	default_report_properties_	   = QETDiagramEditor::defaultReportProperties();
-	m_default_xref_properties	   = QETDiagramEditor::defaultXRefProperties();
+	default_border_properties_	   = BorderProperties::    defaultProperties();
+	default_titleblock_properties_ = TitleBlockProperties::defaultProperties();
+	default_conductor_properties_  = ConductorProperties:: defaultProperties();
+	default_report_properties_	   = ReportProperties::    defaultProperties();
+	m_default_xref_properties	   = XRefProperties::      defaultProperties();
 	
 	//Read values indicate in project
 	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums;
