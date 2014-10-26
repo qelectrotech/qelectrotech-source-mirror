@@ -145,12 +145,12 @@ void CrossRefItem::updateProperties() {
 		if (m_properties.snapTo() != xrp.snapTo()) {
 			if (xrp.snapTo() == XRefProperties::Bottom) {
 				setParentItem(m_element);
-				connect(m_element, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
-				connect(m_element, SIGNAL(rotationChanged()),	   this, SLOT(autoPos()));
+				connect(m_element, SIGNAL(yChanged()),        this, SLOT(autoPos()));
+				connect(m_element, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
 			} else {
 				setTextParent();
-				disconnect(m_element, SIGNAL(positionChange(QPointF)), this, SLOT(autoPos()));
-				disconnect(m_element, SIGNAL(rotationChanged()),	   this, SLOT(autoPos()));
+				disconnect(m_element, SIGNAL(yChanged()),        this, SLOT(autoPos()));
+				disconnect(m_element, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
 			}
 		}
 		m_properties = xrp;
@@ -169,7 +169,7 @@ void CrossRefItem::updateLabel() {
 	QPainter qp;
 	qp.begin(&m_drawing);
 	QPen pen_;
-	pen_.setWidthF(0.2);
+	pen_.setWidthF(0.5);
 	qp.setPen(pen_);
 	qp.setFont(QETApp::diagramTextsFont(5));
 
