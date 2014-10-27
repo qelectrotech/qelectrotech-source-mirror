@@ -10,7 +10,6 @@ Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <arc width="59.8" x="-42" y="-37.5" antialias="true" height="58.5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
         <text x="-19" y="15.15" size="4" text="Alpex 20"/>
-        <ellipse width="0" x="39.65" y="1.11" antialias="true" height="1.17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <arc width="35.65" x="-30.5" y="-25.8" antialias="true" height="35.1" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.65425" x1="5.15" y2="-26.5969" x2="5.15"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26.97" x1="5.2604" y2="-26.97" x2="17.6804"/>
