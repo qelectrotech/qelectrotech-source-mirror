@@ -965,12 +965,8 @@ void QETApp::useSystemPalette(bool use) {
 		setStyleSheet(
 					"QTabBar::tab:!selected { background-color: transparent; }"
 					"QAbstractScrollArea#mdiarea {"
-
-			"	background-color -> setPalette(initial_palette_);"
-			"	background-image: url(':/ico/mdiarea_bg.png');"
-			"	background-repeat: no-repeat;"
-			"	background-position: center middle;"
-			"}"
+					"background-color -> setPalette(initial_palette_);"
+					"}"
 		);
 	} else {
 		QFile file(configDir() + "style.css");
