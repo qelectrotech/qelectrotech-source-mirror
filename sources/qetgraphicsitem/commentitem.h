@@ -15,36 +15,43 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef SIMPLEELEMENT_H
-#define SIMPLEELEMENT_H
+#ifndef COMMENTITEM_H
+#define COMMENTITEM_H
 
-#include "customelement.h"
+#include <QGraphicsObject>
+#include <QPicture>
 
-class CommentItem;
-class QETProject;
+class Element;
 
 /**
- * @brief The SimpleElement class
- *this class represente a simple element with no specific attribute
+ * @brief The CommentItem class
+ * This item display the comment of an element
+ * at the bottom of element diagram in a rounded rect
  */
-class SimpleElement : public CustomElement {
+class CommentItem : public QGraphicsObject
+{
+		Q_OBJECT
+	public:
+		explicit CommentItem(Element *elmt);
 
-	Q_OBJECT
-
-	public  :
-		explicit SimpleElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
-		~SimpleElement();
-
-		virtual void initLink(QETProject *project);
+		virtual QRectF boundingRect() const;
 
 	signals:
 
 	public slots:
+		void autoPos();
 		void updateLabel();
 
+	protected:
+		virtual void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+
 	private:
-		CommentItem *m_comment_item;
+		Element *m_element;
+		QPicture m_picture;
+		QRectF   m_bounding_rect;
+		QString  m_comment;
+		bool     m_show;
 
 };
 
-#endif // SIMPLEELEMENT_H
+#endif // COMMENTITEM_H

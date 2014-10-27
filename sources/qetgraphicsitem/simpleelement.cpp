@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "simpleelement.h"
+#include "commentitem.h"
 /**
  * @brief SimpleElement::SimpleElement
  * @param location
@@ -24,7 +25,8 @@
  * @param state
  */
 SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
-	CustomElement(location, qgi, s, state)
+	CustomElement(location, qgi, s, state),
+	m_comment_item (nullptr)
 {
 	link_type_ = Simple;
 	connect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
@@ -35,6 +37,12 @@ SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qg
  */
 SimpleElement::~SimpleElement() {
 	disconnect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
+	if (m_comment_item) delete m_comment_item;
+}
+
+void SimpleElement::initLink(QETProject *project) {
+	CustomElement::initLink(project);
+	updateLabel();
 }
 
 /**
@@ -42,6 +50,7 @@ SimpleElement::~SimpleElement() {
  * update label of this element
  */
 void SimpleElement::updateLabel() {
+	//Label of element
 	QString label = elementInformations()["label"].toString();
 	bool	show  = elementInformations().keyMustShow("label");
 
@@ -49,4 +58,16 @@ void SimpleElement::updateLabel() {
 	(label.isEmpty() || !show)?
 				setTaggedText("label", "_", false):
 				setTaggedText("label", label, true);
+
+	//Comment of element
+	QString comment   = elementInformations()["comment"].toString();
+	bool    must_show = elementInformations().keyMustShow("comment");
+
+	if (!(comment.isEmpty() || !must_show) && !m_comment_item) {
+		m_comment_item = new CommentItem(this);
+	}
+	else if ((comment.isEmpty() || !must_show) && m_comment_item) {
+		delete m_comment_item;
+		m_comment_item = nullptr;
+	}
 }
