@@ -435,22 +435,22 @@ i conduttori di questo potenziale?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="77"/>
         <source>Taille du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensione del testo</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="90"/>
         <source>Texte visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Testo visibile</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="107"/>
         <source>activer l&apos;option un texte par potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>abilitare l&apos;opzione di un solo testo per potenziale</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. (expérimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrare un solo testo del potenziale per ogni pagina. (Sperimentale)</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
@@ -493,7 +493,7 @@ i conduttori di questo potenziale?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
         <source>Taille :</source>
-        <translation>Misura:</translation>
+        <translation>Dimensione:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="93"/>
@@ -509,17 +509,17 @@ i conduttori di questo potenziale?</translation>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="239"/>
         <source>Nombre de phase</source>
-        <translation type="unfinished"></translation>
+        <translation>Numero di fasi</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
         <source>Neutre</source>
-        <translation type="unfinished"></translation>
+        <translation>Neutro</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
         <source>Phase</source>
-        <translation type="unfinished"></translation>
+        <translation>Fasi</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="252"/>
@@ -534,7 +534,7 @@ i conduttori di questo potenziale?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="262"/>
         <source>Terre</source>
-        <translation type="unfinished"></translation>
+        <translation>Terra</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
@@ -550,13 +550,13 @@ i conduttori di questo potenziale?</translation>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="307"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="343"/>
         <source>Style du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Stile del conduttore</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="314"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="324"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Colore del conduttore</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
@@ -698,7 +698,7 @@ i conduttori di questo potenziale?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="67"/>
         <source>Maintenir ctrl pour un déplacer librement</source>
-        <translation type="unfinished"></translation>
+        <translation>Tenere premuto CTRL per spostare liberamente</translation>
     </message>
 </context>
 <context>
@@ -2241,31 +2241,31 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="125"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is an element&apos;s path name</comment>
-        <translation>L&apos;elemento è già stato inserito nel progetto. Tuttavia, la versione che cerchi di piazzare sembra differente. Cosa vuoi fare ?</translation>
+        <translation>L&apos;elemento è già stato integrato nel progetto. Tuttavia, la versione che si vuole inserire sembra differente. Cosa fare ?</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="137"/>
         <source>Utiliser l&apos;élément déjà intégré</source>
         <comment>dialog content</comment>
-        <translation>Usa l&apos;elemento già integrato</translation>
+        <translation>Usare l&apos;elemento già integrato</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="146"/>
         <source>Intégrer l&apos;élément déposé</source>
         <comment>dialog content</comment>
-        <translation>Integrare l&apos;elemento piazzato</translation>
+        <translation>Inserire il nuovo elemento</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="156"/>
         <source>Écraser l&apos;élément déjà intégré</source>
         <comment>dialog content</comment>
-        <translation>Cancellare l&apos;elemento già integrato</translation>
+        <translation>Cancellando l&apos;elemento già integrato</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="166"/>
         <source>Faire cohabiter les deux éléments</source>
         <comment>dialog content</comment>
-        <translation>Far coesistere i due elementi</translation>
+        <translation>Facendo coesistere i due elementi</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="121"/>
@@ -4527,7 +4527,7 @@ Opzioni disponibili:
         <location filename="../sources/editor/qetelementeditor.cpp" line="687"/>
         <source>Les éléments maîtres, esclaves  et simple doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gli elementi master, slave e semplici devono avere un campo di testo con Variabile: &apos;etichetta&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="704"/>
@@ -5464,12 +5464,12 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="38"/>
         <source>un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>un campo di testo</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="43"/>
         <source>un conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>un conduttore</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="63"/>
@@ -5795,8 +5795,8 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/qet.cpp" line="275"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n forma(e)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -6084,7 +6084,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/diagramcommands.h" line="52"/>
         <source>Ajouter </source>
-        <translation type="unfinished"></translation>
+        <translation>Inserisci </translation>
     </message>
 </context>
 <context>
@@ -6124,22 +6124,22 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="379"/>
         <source>une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>una linea</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="382"/>
         <source>un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>un rettangolo</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="385"/>
         <source>une éllipse</source>
-        <translation type="unfinished"></translation>
+        <translation>un&apos;ellisse</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="388"/>
         <source>une polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>un poligono</translation>
     </message>
 </context>
 <context>
@@ -6625,7 +6625,7 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="37"/>
         <source>Ne pas subir les rotations de l&apos;élément parent</source>
-        <translation>Non posso applicare le rotazioni dell&apos;elemento proncipale</translation>
+        <translation>Non segue le rotazioni dell&apos;elemento principale</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
@@ -6660,17 +6660,17 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="68"/>
         <source>tagg :</source>
-        <translation>Etichetta: </translation>
+        <translation>Variabile da associare: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
         <source>Aucun</source>
-        <translation>Nessuno</translation>
+        <translation>Nessuna</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
         <source>label</source>
-        <translation>etichetta</translation>
+        <translation>Etichetta</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
@@ -6685,7 +6685,7 @@ Gli altri campi non sono utilizzati.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="140"/>
         <source>taille</source>
-        <translation>dimensioni</translation>
+        <translation>dimensione</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="142"/>
