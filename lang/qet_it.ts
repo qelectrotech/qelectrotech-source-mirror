@@ -572,7 +572,7 @@ i conduttori di questo potenziale?</translation>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="101"/>
         <source>Afficher un seul texte par potentiel présent sur un folio. (expérimental)</source>
-        <translation>Mostrare un solo testo per ogni potenziale presente nel foglio</translation>
+        <translation type="unfinished">Mostrare un solo testo per ogni potenziale presente nel foglio. (Sperimentale)</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="117"/>
