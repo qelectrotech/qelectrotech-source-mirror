@@ -29,10 +29,7 @@ Bonne utilisation !</informations>
         <rect width="10" x="95" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="85" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="37" y="19" size="9" text="STR 350"/>
-        <rect width="0" x="110" y="186" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="100" y="186" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="170" x1="0" y2="170" x2="120"/>
-        <rect width="0" x="90" y="186" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="106" y="183" size="6" text="16"/>
         <polygon x4="22" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="81" x1="22" y2="81" x2="28" y3="86" x3="25" y4="81"/>
         <text x="96" y="183" size="6" text="15"/>
@@ -54,9 +51,6 @@ Bonne utilisation !</informations>
         <rect width="10" x="75" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="65" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="55" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="80" y="186" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="70" y="186" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="60" y="186" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="76" y="183" size="6" text="13"/>
         <text x="66" y="183" size="6" text="12"/>
         <text x="56" y="183" size="6" text="11"/>

@@ -139,18 +139,6 @@ Bonne utilisation !</informations>
         <text x="77" y="13" size="6" text="4"/>
         <text x="57" y="13" size="6" text="3"/>
         <text x="37" y="13" size="6" text="2"/>
-        <rect width="0" x="240" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="220" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="200" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="180" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="160" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="140" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="120" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="100" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="80" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="60" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="40" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="20" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="17" y="13" size="6" text="1"/>
         <text x="236" y="163" size="6" text="24"/>
         <text x="216" y="163" size="6" text="23"/>

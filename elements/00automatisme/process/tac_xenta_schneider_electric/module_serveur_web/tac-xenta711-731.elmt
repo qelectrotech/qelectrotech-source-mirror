@@ -86,17 +86,6 @@ Bonne utilisation !</informations>
         <rect width="10" x="104" y="155" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="74" y="155" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="45" y="155" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="399" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="370" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="260" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="230" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="200" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="170" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="139" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="109" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="79" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="50" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="395" y="163" size="6" text="20"/>
         <text x="366" y="163" size="6" text="19"/>
         <text x="256" y="163" size="6" text="18"/>
         <text x="226" y="163" size="6" text="17"/>

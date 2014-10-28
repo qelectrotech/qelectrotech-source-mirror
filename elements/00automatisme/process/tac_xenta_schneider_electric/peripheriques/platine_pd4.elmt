@@ -24,7 +24,6 @@ Bonne utilisation !</informations>
         <circle x="40.5279" y="130.528" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.9442"/>
         <circle x="5" y="119" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="20"/>
         <rect width="150" x="0" y="0" antialias="false" height="170" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="0" y="0" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="50" y2="0" x2="50"/>
         <circle x="35.5279" y="30.528" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.9442"/>
         <circle x="25.5279" y="30.528" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.9442"/>
@@ -63,19 +62,9 @@ Bonne utilisation !</informations>
         <rect width="10" x="5" y="155" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="5" y="5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="47" y="13" size="6" text="C"/>
-        <rect width="0" x="140" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="130" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="110" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="100" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="80" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="70" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="50" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="40" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="20" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="37" y="13" size="6" text="4"/>
         <text x="27" y="13" size="6" text="3"/>
         <text x="17" y="13" size="6" text="2"/>
-        <rect width="0" x="10" y="166" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="7" y="13" size="6" text="1"/>
         <text x="137" y="163" size="6" text="4"/>
         <text x="127" y="163" size="6" text="0"/>

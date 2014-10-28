@@ -45,9 +45,6 @@ Bonne utilisation !</informations>
         <rect width="10" x="75" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="65" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="55" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="80" y="186" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="70" y="186" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="60" y="186" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="76" y="183" size="6" text="13"/>
         <text x="66" y="183" size="6" text="12"/>
         <text x="56" y="183" size="6" text="11"/>

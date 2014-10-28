@@ -22,7 +22,6 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="199" y="-26.3333" size="9" text="230 V ac"/>
         <text x="215" y="-8.33333" size="9" text="DI3"/>
         <rect width="53" x="200" y="11" antialias="false" height="31" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="197" y="12" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="232" y="23.6667" size="9" text="23"/>
         <text x="208" y="23.6667" size="9" text="22"/>
         <text x="115" y="-22.3333" size="9" text="ECLAIR"/>

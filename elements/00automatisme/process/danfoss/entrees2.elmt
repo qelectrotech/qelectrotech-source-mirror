@@ -34,7 +34,6 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="-211" y2="-5" x2="-211"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="-191" y2="-5" x2="-191"/>
         <rect width="60" x="-239" y="-50" antialias="false" height="27" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="-239" y="-49" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-199" y="-27.3333" size="9" text="53"/>
         <text x="-218" y="-27.3333" size="9" text="52"/>
         <text x="-237" y="-27.3333" size="9" text="51"/>

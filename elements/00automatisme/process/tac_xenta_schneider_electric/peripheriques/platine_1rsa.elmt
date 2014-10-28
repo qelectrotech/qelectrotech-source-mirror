@@ -37,7 +37,6 @@ Bonne utilisation !</informations>
         <rect width="10" x="65" y="95" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="65" y="5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="37.7639" y="72.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
-        <rect width="0" x="70" y="106" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="20" y="81" size="4" text="AUTO"/>
         <text x="20" y="73" size="4" text="MANU"/>
         <circle x="16.8377" y="27.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="6.3245"/>
@@ -54,11 +53,8 @@ Bonne utilisation !</informations>
         <rect width="10" x="25" y="5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="5" y="95" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="5" y="5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="50" y="106" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="30" y="106" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="45" y="13" size="5" text="YR"/>
         <text x="26" y="13" size="5" text="A2"/>
-        <rect width="0" x="10" y="106" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="6" y="13" size="5" text="A1"/>
         <text x="47" y="103" size="6" text="Y"/>
         <text x="26" y="103" size="6" text="S2"/>

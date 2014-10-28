@@ -20,7 +20,6 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="167" y="4" size="9" text="S6"/>
         <text x="121" y="5" size="9" text="S5"/>
         <rect width="85" x="102" y="-50" antialias="false" height="28" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="103" y="-49" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="123" y="-32" size="9" text="42"/>
         <text x="105" y="-32.3333" size="9" text="41"/>
         <text x="170" y="-32.3333" size="9" text="44"/>

@@ -28,8 +28,6 @@ Bonne utilisation !</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="185" x1="60" y2="190" x2="60"/>
         <rect width="10" x="65" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="55" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="70" y="186" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="60" y="186" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="66" y="183" size="6" text="12"/>
         <text x="56" y="183" size="6" text="11"/>
         <terminal x="60" y="190" orientation="s"/>

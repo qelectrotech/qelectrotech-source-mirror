@@ -34,15 +34,9 @@ Bonne utilisation !</informations>
         <rect width="10" x="45" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="95" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="332" y="229" size="6" rotation="270" text="AO1"/>
-        <rect width="0" x="170" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="223" y="229" size="6" rotation="270" text="LAN B REF"/>
-        <rect width="0" x="150" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="203" y="230" size="6" rotation="270" text="LAN B+"/>
-        <rect width="0" x="70" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="120" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="643" y="229" size="6" rotation="270" text="0 V DC"/>
-        <rect width="0" x="50" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="100" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="502" y="229" size="6" rotation="270" text="AO4 COM"/>
         <text x="166" y="243" size="6" text="71"/>
         <text x="452" y="229" size="6" rotation="270" text="AO3 COM"/>
@@ -71,20 +65,6 @@ Bonne utilisation !</informations>
         <rect width="10" x="215" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="195" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="740" x="0" y="0" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="620" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="479" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="449" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="690" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="640" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="670" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="399" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="349" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="499" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="429" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="379" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="329" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="220" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="200" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="616" y="243" size="6" text="38"/>
         <text x="686" y="243" size="6" text="78"/>
         <text x="475" y="243" size="6" text="37"/>
