@@ -12,7 +12,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="717"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="720"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -52,12 +52,20 @@
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="267"/>
-        <location filename="../sources/qet.cpp" line="275"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform>%n image</numerusform>
             <numerusform>%n image</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="275"/>
+        <source>%n forme(s)</source>
+        <comment>part of a sentence listing the content of a diagram</comment>
+        <translation>
+            <numerusform>%n forme</numerusform>
+            <numerusform>%n formes</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -79,8 +87,8 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1357"/>
-        <location filename="../sources/diagramcommands.cpp" line="1372"/>
+        <location filename="../sources/diagramcommands.cpp" line="1221"/>
+        <location filename="../sources/diagramcommands.cpp" line="1236"/>
         <source>Délier %n élément(s)</source>
         <translation>
             <numerusform>Délier %n élément</numerusform>
