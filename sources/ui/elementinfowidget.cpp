@@ -81,12 +81,17 @@ void ElementInfoWidget::buildInterface() {
  */
 void ElementInfoWidget::fillInfo() {
 	foreach (ElementInfoPartWidget *eipw, eipw_list) {
-		eipw->setText(elmt_info[eipw->key()].toString());
-		eipw->setShow(elmt_info.keyMustShow(eipw->key()));
-		//check "show" if this eipw is label and if elmt_info haven't got value for label.
-		if (eipw->key() == "label" && (elmt_info["label"].toString().isEmpty()))
-			eipw->setShow(true);
-		else if (eipw->key() == "comment" && (elmt_info["comment"].toString().isEmpty()))
-			eipw->setShow(true);
+
+		eipw -> setText (elmt_info[eipw->key()].toString());
+		eipw -> setShow (elmt_info.keyMustShow(eipw->key()));
+
+		//If the current eipw is for label or comment and the text is empty
+		//we force the checkbox to ckecked
+		if (eipw -> key() == "label" || eipw -> key() == "comment") {
+			if (elmt_info[eipw->key()].toString().isEmpty())
+				eipw->setShow(true);
+		}
+		else //< for other eipw we hide the checkbox
+			eipw->setHideShow(true);
 	}
 }

@@ -17,6 +17,7 @@
 */
 #include "masterelement.h"
 #include "crossrefitem.h"
+#include "commentitem.h"
 
 /**
  * @brief MasterElement::MasterElement
@@ -27,10 +28,11 @@
  * @param state int used to know if the creation of element have error
  */
 MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
-	CustomElement(location, qgi, s, state)
+	CustomElement(location, qgi, s, state),
+	cri_ (nullptr),
+	m_ci (nullptr)
 {
 	link_type_ = Master;
-	cri_ = nullptr;
 	connect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 }
 
@@ -40,6 +42,7 @@ MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qg
  */
 MasterElement::~MasterElement() {
 	unlinkAllElements();
+	if (m_ci) delete m_ci;
 	disconnect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 }
 
@@ -56,10 +59,18 @@ void MasterElement::linkToElement(Element *elmt) {
 		elmt->linkToElement(this);
 
 		if (!cri_) cri_ = new CrossRefItem(this); //create cross ref item if not yet
-			connect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));
-			connect(elmt, SIGNAL(yChanged()), cri_, SLOT(updateLabel()));
-			cri_->updateLabel();
+
+		connect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));
+		connect(elmt, SIGNAL(yChanged()), cri_, SLOT(updateLabel()));
+		cri_ -> updateLabel();
+
+		//If there is a comment item, we delete it
+		//because cross ref item display comment too.
+		if (m_ci) {
+			delete m_ci;
+			m_ci = nullptr;
 		}
+	}
 }
 
 /**
@@ -93,6 +104,7 @@ void MasterElement::unlinkElement(Element *elmt) {
 		if (linkedElements().isEmpty()) {
 			delete cri_;
 			cri_ = nullptr;
+			updateLabel();
 		}
 		else {
 			cri_->updateLabel();
@@ -101,8 +113,23 @@ void MasterElement::unlinkElement(Element *elmt) {
 }
 
 /**
+ * @brief MasterElement::initLink
+ * Initialise the links between this element and other element.
+ * @param project
+ */
+void MasterElement::initLink(QETProject *project) {
+	//Create the link with other element if needed
+	CustomElement::initLink(project);
+
+	//If no link that mean there are no cross ref item (cri)
+	//So we call @updateLabel for add comment item (m_ci) if needed.
+	if (!cri_) updateLabel();
+}
+
+/**
  * @brief MasterElement::updateLabel
  * update label of this element
+ * and the comment item if he's displayed.
  */
 void MasterElement::updateLabel() {
 	QString label = elementInformations()["label"].toString();
@@ -112,4 +139,20 @@ void MasterElement::updateLabel() {
 	(label.isEmpty() || !show)?
 				setTaggedText("label", "_", false):
 				setTaggedText("label", label, true);
+
+	if (cri_) return;
+
+	//At this point there isn't a cross ref item displayed,
+	//but if element have comment and must be show, we add a comment item
+
+	QString comment   = elementInformations()["comment"].toString();
+	bool    must_show = elementInformations().keyMustShow("comment");
+
+	if (!(comment.isEmpty() || !must_show) && !m_ci) {
+		m_ci = new CommentItem(this);
+	}
+	else if ((comment.isEmpty() || !must_show) && m_ci) {
+		delete m_ci;
+		m_ci = nullptr;
+	}
 }

@@ -27,20 +27,22 @@ namespace Ui {
 class ElementInfoPartWidget : public QWidget {
 	Q_OBJECT
 
-		//METHODS
-		public:
-	explicit ElementInfoPartWidget(QString key, QString translated_key, QWidget *parent = 0);
-	~ElementInfoPartWidget();
-	QString key() const {return key_;}
-	void setText(const QString &);
-	QString text() const;
-	bool mustShow() const;
-	void setShow(bool);
+	//METHODS
+	public:
+		explicit ElementInfoPartWidget(QString key, QString translated_key, QWidget *parent = 0);
+		~ElementInfoPartWidget();
 
-		//ATTRIBUTES
-		private:
-	Ui::ElementInfoPartWidget *ui;
-	QString key_;
+		QString key         () const {return key_;}
+		void    setText     (const QString &);
+		QString text        () const;
+		bool    mustShow    () const;
+		void    setShow     (const bool &);
+		void    setHideShow (const bool &);
+
+	//ATTRIBUTES
+	private:
+		Ui::ElementInfoPartWidget *ui;
+		QString key_;
 };
 
 #endif // ELEMENTINFOPARTWIDGET_H

@@ -70,6 +70,20 @@ bool ElementInfoPartWidget::mustShow() const  {
 	return (ui->checkBox->isChecked());
 }
 
-void ElementInfoPartWidget::setShow(bool s) {
+/**
+ * @brief ElementInfoPartWidget::setShow
+ * Check or not the ckeck box
+ * @param s true-> checked
+ */
+void ElementInfoPartWidget::setShow(const bool &s) {
 	ui->checkBox->setChecked(s);
+}
+
+/**
+ * @brief ElementInfoPartWidget::setHideShow
+ * Hide or not the check box
+ * @param hide true -> hidden
+ */
+void ElementInfoPartWidget::setHideShow(const bool &hide) {
+	ui -> checkBox -> setHidden(hide);
 }

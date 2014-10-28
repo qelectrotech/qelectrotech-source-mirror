@@ -79,6 +79,15 @@ void CommentItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 }
 
 /**
+ * @brief CommentItem::mouseDoubleClickEvent
+ * @param event
+ */
+void CommentItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+	event     -> accept();
+	m_element -> editProperty();
+}
+
+/**
  * @brief CommentItem::updateLabel
  * update the content of this item
  * (draw this item in a QPicture)

@@ -44,6 +44,7 @@ class CommentItem : public QGraphicsObject
 
 	protected:
 		virtual void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event );
 
 	private:
 		Element *m_element;

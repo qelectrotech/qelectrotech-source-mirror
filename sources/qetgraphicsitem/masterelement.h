@@ -21,25 +21,35 @@
 #include "customelement.h"
 
 class CrossRefItem;
+class CommentItem;
 
+/**
+ * @brief The MasterElement class
+ * This class is a custom element, with extended behavior
+ * to be a master element. Master element can be linked with slave element
+ * and display a cross ref item for know with what other element he is linked
+ */
 class MasterElement : public CustomElement
 {
 	Q_OBJECT
 	
 	public:
-	explicit MasterElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
-	~MasterElement();
-	virtual void linkToElement(Element *elmt);
-	virtual void unlinkAllElements();
-	virtual void unlinkElement(Element *elmt);
+		explicit MasterElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
+		~MasterElement();
+
+		virtual void linkToElement     (Element *elmt);
+		virtual void unlinkAllElements ();
+		virtual void unlinkElement     (Element *elmt);
+		virtual void initLink          (QETProject *project);
 	
 	signals:
 
 	public slots:
-	void updateLabel();
+		void updateLabel();
 
 	private:
-	CrossRefItem *cri_;
+		CrossRefItem *cri_;
+		CommentItem *m_ci;
 };
 
 #endif // MASTERELEMENT_H
