@@ -13,6 +13,11 @@
         <name lang="cs">Tepelné spojovací relé (NO)</name>
         <name lang="nl">Thermisch bediend contact (NO)</name>
     </names>
+    <kindInformations>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="type" show="1">simple</kindInformation>
+        <kindInformation name="state" show="1">NO</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
