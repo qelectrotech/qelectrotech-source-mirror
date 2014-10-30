@@ -109,10 +109,20 @@ void ElementSelectorWidget::buildInterface() {
 	foreach (Element *elmt, elements_list) {
 		//label for the button
 		QString button_text;
+
 		//if element is master and have label, add label to the string
+		//Also to comment
 		if (elmt->linkType() & Element::Master) {
-			QString label = elmt->elementInformations()["label"].toString();
-			if (!label.isEmpty()) button_text += (label + "   ");
+			DiagramContext dc = elmt -> elementInformations();
+
+			if (!dc["label"].toString().isEmpty())
+				button_text = dc["label"].toString() + " ";
+
+			if (!dc["comment"].toString().isEmpty())
+				button_text += dc["comment"].toString();
+
+			if (!button_text.isEmpty())
+				button_text += "\n";
 		}
 
 		QString title = elmt->diagram()->title();
