@@ -16,7 +16,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="0" y2="-20" x2="0"/>
         <polygon x4="0" y5="-8" x5="-2" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-8" x1="-2" y2="-8" x2="-2" y3="-8" x3="2" y4="-2"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
-        <input x="7" y="3.6666" size="9" text="_"/>
+        <input x="7" y="3.6666" size="9" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="4" y2="-10" x2="4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-4" y2="10" x2="4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="4" y2="-10" x2="-4"/>

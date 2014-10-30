@@ -30,7 +30,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="709" y="25" size="9" text="-"/>
         <text x="206" y="25" size="9" text="+"/>
         <text x="410" y="83" size="9" text="EXM-AMI2HT"/>
-        <input x="39" y="76" size="9" rotate="true" text="_"/>
+        <input x="39" y="76" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="0" y="6" orientation="n"/>
         <terminal x="40" y="6" orientation="n"/>
         <terminal x="80" y="6" orientation="n"/>

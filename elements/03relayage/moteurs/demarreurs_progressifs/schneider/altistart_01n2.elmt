@@ -31,7 +31,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="27" y2="80" x2="-10"/>
         <input x="-4" y="18.5" size="4" rotate="true" text="LI1"/>
         <input x="-4" y="38.5" size="4" rotate="true" text="+24"/>
-        <input x="69" y="20.5" size="9" rotate="true" text="_"/>
+        <input x="69" y="20.5" size="9" rotate="true" text="_" tagg="label"/>
         <input x="-4" y="-1.5" size="4" rotate="true" text="R1C"/>
         <circle x="-12.2361" y="7.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
         <input x="-4" y="28.5" size="4" rotate="true" text="LI2"/>

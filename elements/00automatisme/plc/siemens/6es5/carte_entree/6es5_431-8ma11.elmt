@@ -58,7 +58,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <input x="0" y="44.5" size="9" rotate="true" text="6ES5 431-8MA12   DI 8 x DC24V"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="93" y2="-28" x2="167"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-10" y2="60" x2="750"/>
-        <input x="751" y="-16" size="9" rotate="true" text="_"/>
+        <input x="751" y="-16" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="10" y="-31" orientation="n"/>
         <terminal x="90" y="-31" orientation="n"/>
         <terminal x="170" y="-31" orientation="n"/>

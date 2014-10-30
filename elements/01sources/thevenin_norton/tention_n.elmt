@@ -17,7 +17,7 @@
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <input x="12.75" y="3" size="9" text="_"/>
+        <input x="12.75" y="3" size="9" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="20" x2="0"/>
         <terminal x="0" y="-21" nameHidden="0" number="" name="" orientation="n"/>
         <terminal x="0" y="21" nameHidden="0" number="" name="" orientation="s"/>

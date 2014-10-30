@@ -11,7 +11,7 @@
         <input x="328" y="-31" size="7" rotate="true" text="I0.7"/>
         <polygon x4="365" y5="-3" x5="360" y6="-48" x6="360" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="50" x1="360" y2="3" x2="360" y3="0" x3="355" y4="0"/>
         <input x="-365" y="1" size="9" rotate="true" text="/"/>
-        <input x="361" y="-31" size="9" rotate="true" text="_"/>
+        <input x="361" y="-31" size="9" rotate="true" text="_" tagg="label"/>
         <polygon x4="-315" y5="-3" x5="-320" y6="-48" x6="-320" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="50" x1="-320" y2="3" x2="-320" y3="0" x3="-325" y4="0"/>
         <input x="248" y="-31" size="7" rotate="true" text="I0.6"/>
         <input x="168" y="-31" size="7" rotate="true" text="I0.5"/>

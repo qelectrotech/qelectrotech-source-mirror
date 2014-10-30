@@ -14,6 +14,6 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.95" x1="0.0001" y2="0.95" x2="0.0001"/>
         <rect width="6" x="-3" y="2.95" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.95" x1="0.0001" y2="8.95" x2="0.0001"/>
-        <input x="2" y="5.5" size="5" rotate="true" text="_"/>
+        <input x="2" y="5.5" size="5" rotate="true" text="_" tagg="label"/>
     </description>
 </definition>

@@ -23,7 +23,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <arc width="5" x="5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
         <arc width="5" x="0" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
         <arc width="5" x="-5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <text x="13" y="0" size="9" text="_"/>
+        <text x="13" y="0" size="9" text="_" tagg="label"/>
         <terminal x="-10" y="-20" number="" name="" orientation="n"/>
         <terminal x="10" y="-20" number="" name="" orientation="n"/>
         <terminal x="-10" y="10" number="" name="" orientation="s"/>

@@ -14,7 +14,7 @@
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="1" y="-27" size="6" rotate="true" text="_"/>
+        <input x="1" y="-27" size="6" rotate="true" text="_" tagg="label"/>
         <text x="5" y="8" size="6" text="a"/>
         <text x="2" y="3" size="9" text="P"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-11" y2="-18" x2="-4"/>

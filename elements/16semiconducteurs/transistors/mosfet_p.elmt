@@ -21,7 +21,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="4" y2="1" x2="4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="4" y2="-3" x2="4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="2" y2="5" x2="2"/>
-        <input x="12" y="3.6666" size="9" text="_"/>
+        <input x="12" y="3.6666" size="9" text="_" tagg="label"/>
         <terminal x="10" y="-20" orientation="n"/>
         <terminal x="10" y="20" orientation="s"/>
         <terminal x="-10" y="0" orientation="w"/>

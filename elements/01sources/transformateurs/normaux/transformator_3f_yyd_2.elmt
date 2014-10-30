@@ -64,7 +64,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="-5" x2="20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="20" y2="-30" x2="20"/>
-        <input x="54" y="5" size="9" rotate="true" text="_"/>
+        <input x="54" y="5" size="9" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-10" y2="35" x2="-10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-30" y2="35" x2="-30"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-50" y2="35" x2="-50"/>

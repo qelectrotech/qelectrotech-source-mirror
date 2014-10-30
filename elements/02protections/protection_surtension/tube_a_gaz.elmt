@@ -23,7 +23,7 @@ Gasentladungsröhre
         <polygon x4="0" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="2" x1="0" y2="8" x2="-2" y3="8" x3="2" y4="2"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="0" y2="20" x2="0"/>
         <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <input x="12" y="3.6666" size="9" text="_"/>
+        <input x="12" y="3.6666" size="9" text="_" tagg="label"/>
         <terminal x="0" y="-21" orientation="n"/>
         <terminal x="0" y="21" orientation="s"/>
     </description>

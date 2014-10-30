@@ -93,7 +93,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="79" x1="97" y2="74" x2="86"/>
         <text x="45" y="370" size="5" text="DC24V"/>
         <text x="77" y="210" size="5" text="Adress :"/>
-        <input x="83" y="221" size="7" rotate="true" text="_"/>
+        <input x="83" y="221" size="7" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="61.1602" x1="98.9134" y2="61.1602" x2="121.943"/>
         <terminal x="124" y="292" orientation="e"/>
         <terminal x="124" y="307" orientation="e"/>

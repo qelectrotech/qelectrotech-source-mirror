@@ -19,7 +19,7 @@ Bonne utilisation !</informations>
         <text x="66" y="152" size="4" text="10V"/>
         <text x="59" y="152" size="4" text="0 -"/>
         <text x="45" y="152" size="4" text="24V"/>
-        <text x="58" y="19" size="4" text="_"/>
+        <text x="58" y="19" size="4" text="_" tagg="label"/>
         <text x="68" y="22" size="4" text="+"/>
         <text x="46" y="22" size="4" text="0V"/>
         <text x="36" y="22" size="4" text="AC"/>

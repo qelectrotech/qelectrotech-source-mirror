@@ -59,7 +59,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <circle x="7.4999" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="-1" y="44.5" size="9" rotate="true" text="6ES7 321-1BH02-0AA0   DI 16 x DC24V   part 2 of 2"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-10" y2="60" x2="750"/>
-        <input x="751" y="-16" size="9" rotate="true" text="_"/>
+        <input x="751" y="-16" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="10" y="-31" orientation="n"/>
         <terminal x="90" y="-31" orientation="n"/>
         <terminal x="170" y="-31" orientation="n"/>

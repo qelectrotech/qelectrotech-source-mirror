@@ -69,7 +69,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <circle x="87.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="7.4999" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="0" y="14.5" size="9" rotate="true" text="6ES7 334-0CE01-0AA0   AI 4/AO 2 x 8/8BIT   part 2 of 2"/>
-        <input x="751" y="-16" size="9" rotate="true" text="_"/>
+        <input x="751" y="-16" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="90" y="-31" orientation="n"/>
         <terminal x="170" y="-31" orientation="n"/>
         <terminal x="410" y="61" orientation="s"/>

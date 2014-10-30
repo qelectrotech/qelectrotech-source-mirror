@@ -103,7 +103,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <circle x="207.172" y="87.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
         <circle x="227.172" y="87.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="15" y2="46" x2="32"/>
-        <input x="129" y="51" size="9" rotate="true" text="_"/>
+        <input x="129" y="51" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="50" y="-2" nameHidden="0" number="" name="" orientation="n"/>
         <terminal x="70" y="-2" nameHidden="0" number="" name="" orientation="n"/>
         <terminal x="90" y="-2" nameHidden="0" number="" name="" orientation="n"/>

@@ -11,7 +11,7 @@
     <informations>ezza</informations>
     <description>
         <circle x="-10" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <input x="-7" y="-10" size="9" rotate="true" text="_"/>
+        <input x="-7" y="-10" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="0" y="0" orientation="s"/>
         <terminal x="0" y="-20" orientation="n"/>
         <terminal x="10" y="-10" orientation="e"/>

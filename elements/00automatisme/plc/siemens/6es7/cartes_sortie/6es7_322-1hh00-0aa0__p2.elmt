@@ -60,7 +60,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <input x="82" y="49.5" size="5" rotate="true" text="12"/>
         <input x="2" y="49.5" size="5" rotate="true" text="11"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-10" y2="-30" x2="750"/>
-        <input x="751" y="-18" size="9" rotate="true" text="_"/>
+        <input x="751" y="-18" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="10" y="61" orientation="s"/>
         <terminal x="90" y="61" orientation="s"/>
         <terminal x="170" y="61" orientation="s"/>

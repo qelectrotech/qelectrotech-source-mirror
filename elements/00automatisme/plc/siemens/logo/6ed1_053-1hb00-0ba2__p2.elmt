@@ -19,7 +19,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <polygon x4="-75" y5="2" x5="-80" y6="-43" x6="-80" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="55" x1="-80" y2="8" x2="-80" y3="5" x3="-85" y4="5"/>
         <polygon x4="205" y5="2" x5="200" y6="-43" x6="200" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="55" x1="200" y2="8" x2="200" y3="5" x3="195" y4="5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-38" x1="183" y2="-38" x2="200"/>
-        <input x="201" y="-26" size="9" rotate="true" text="_"/>
+        <input x="201" y="-26" size="9" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-38" x1="-80" y2="-38" x2="-63"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-38" x1="103" y2="-38" x2="177"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-38" x1="23" y2="-38" x2="97"/>

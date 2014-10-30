@@ -17,7 +17,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <input x="-69" y="-26" size="7" rotate="true" text="L+"/>
         <input x="365" y="5" size="9" rotate="true" text="/"/>
         <polygon x4="365" y5="2" x5="360" y6="-43" x6="360" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="55" x1="360" y2="8" x2="360" y3="5" x3="355" y4="5"/>
-        <input x="361" y="-26" size="9" rotate="true" text="_"/>
+        <input x="361" y="-26" size="9" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-38" x1="343" y2="-38" x2="360"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-38" x1="-57" y2="-38" x2="17"/>
         <input x="12" y="-26" size="7" rotate="true" text="M"/>

@@ -44,7 +44,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <arc width="5" x="-2.5" y="-47" antialias="true" height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-180"/>
         <text x="10" y="-38.3333" size="5" text="16"/>
         <text x="-19" y="1.6667" size="5" text="3"/>
-        <input x="-28.5" y="122" size="9" rotate="true" text="_"/>
+        <input x="-28.5" y="122" size="9" rotate="true" text="_" tagg="label"/>
         <text x="10" y="21.6667" size="5" text="13"/>
         <rect width="40" x="-20" y="-45" antialias="false" height="150" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="10.5" y="1.66667" size="5" text="14"/>

@@ -94,7 +94,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-138.3" x1="4.505" y2="-141.55" x2="-2.81"/>
         <text x="-30.075" y="50.85" size="3" text="DC24V"/>
         <text x="-8.795" y="-53.15" size="3" text="Adress :"/>
-        <input x="-4.805" y="-46" size="5" rotate="true" text="_"/>
+        <input x="-4.805" y="-46" size="5" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-149.896" x1="5.30589" y2="-149.896" x2="14.6029"/>
         <terminal x="22.46" y="0.15" orientation="e"/>
         <terminal x="22.46" y="9.9" orientation="e"/>

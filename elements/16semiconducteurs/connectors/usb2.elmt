@@ -13,7 +13,7 @@
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="50" y5="-13" x5="50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="17" x1="50" y2="7" x2="40" y3="-3" x3="40" y4="-13"/>
-        <input x="48.5" y="46" size="9" rotate="true" text="_"/>
+        <input x="48.5" y="46" size="9" rotate="true" text="_" tagg="label"/>
         <rect width="60" x="-10" y="-23" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-6" y="24.3333" size="6" text="D-"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-32" x1="0" y2="-24" x2="0"/>

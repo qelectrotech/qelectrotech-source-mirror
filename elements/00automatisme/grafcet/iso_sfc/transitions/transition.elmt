@@ -17,7 +17,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
         <input x="9" y="-7" size="5" rotate="true" text="T###"/>
-        <input x="9" y="7" size="5" rotate="true" text="_"/>
+        <input x="9" y="7" size="5" rotate="true" text="_" tagg="label"/>
         <terminal x="0" y="5" nameHidden="0" number="" name="" orientation="s"/>
         <terminal x="0" y="-5" nameHidden="0" number="" name="" orientation="n"/>
         <terminal x="13" y="0" nameHidden="0" number="" name="" orientation="e"/>

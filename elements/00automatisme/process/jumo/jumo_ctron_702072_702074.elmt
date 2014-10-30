@@ -81,7 +81,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-130" x1="20" y2="-130" x2="15"/>
         <polygon x4="2" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-160" x1="15" y2="-160" x2="7" y3="-150" x3="7" y4="-140"/>
         <polygon antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-130" x1="15" y2="-130" x2="7" y3="-140" x3="7"/>
-        <input x="-64" y="-116.5" size="9" rotate="true" text="_"/>
+        <input x="-64" y="-116.5" size="9" rotate="true" text="_" tagg="label"/>
         <input x="-73" y="-153" size="8" rotate="true" text="Jumo cTron"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="77" x1="-80" y2="53" x2="-80"/>
         <polygon x4="-80" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="173" x1="70" y2="180" x2="70" y3="180" x3="-80" y4="83"/>

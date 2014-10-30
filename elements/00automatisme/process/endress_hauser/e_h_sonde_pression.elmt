@@ -14,7 +14,7 @@
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-15" y="-35" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="70"/>
-        <text x="1" y="-6" size="5" text="_"/>
+        <text x="1" y="-6" size="5" text="_" tagg="label"/>
         <text x="-4" y="-17" size="5" text="CERABAR M"/>
         <text x="-9" y="17" size="5" text="1"/>
         <text x="31" y="17" size="5" text="3"/>

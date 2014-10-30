@@ -17,7 +17,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <input x="268" y="-6" size="7" rotate="true" text="MPI"/>
         <input x="305" y="15" size="9" rotate="true" text="/"/>
         <polygon x4="305" y5="12" x5="300" y6="-33" x6="300" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="65" x1="300" y2="18" x2="300" y3="15" x3="295" y4="15"/>
-        <input x="301" y="-16" size="9" rotate="true" text="_"/>
+        <input x="301" y="-16" size="9" rotate="true" text="_" tagg="label"/>
         <input x="38" y="-6" size="7" rotate="true" text="24V DC"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="8" y2="-13" x2="12"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="283" y2="-28" x2="300"/>

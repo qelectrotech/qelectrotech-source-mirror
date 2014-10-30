@@ -19,7 +19,7 @@
         <polygon x4="765" y5="50" x5="760" y6="5" x6="760" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="103" x1="760" y2="56" x2="760" y3="53" x3="755" y4="53"/>
         <polygon x4="5" y5="50" x5="0" y6="5" x6="0" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="103" x1="0" y2="56" x2="0" y3="53" x3="-5" y4="53"/>
         <input x="732" y="77" size="7" rotate="true" text="M"/>
-        <input x="761" y="22" size="9" rotate="true" text="_"/>
+        <input x="761" y="22" size="9" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="98" x1="743" y2="98" x2="760"/>
         <input x="643" y="77" size="7" rotate="true" text="Q33.7"/>
         <input x="563" y="77" size="7" rotate="true" text="Q33.6"/>

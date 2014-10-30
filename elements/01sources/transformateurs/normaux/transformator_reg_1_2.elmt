@@ -24,7 +24,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <arc width="5" x="5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
         <arc width="5" x="0" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
         <arc width="5" x="-5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <text x="13" y="0" size="9" text="_"/>
+        <text x="13" y="0" size="9" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-7" y2="-12" x2="6"/>
         <polygon x4="8" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-15" x1="8" y2="-12" x2="4" y3="-10" x3="7" y4="-15"/>
         <terminal x="-10" y="-20" orientation="n"/>

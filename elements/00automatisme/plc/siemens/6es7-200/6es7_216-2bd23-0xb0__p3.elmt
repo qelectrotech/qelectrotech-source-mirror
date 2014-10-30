@@ -10,7 +10,7 @@
         <input x="345" y="1.5" size="9" rotate="true" text="/"/>
         <input x="308" y="-29.5" size="7" rotate="true" text="I1.7"/>
         <polygon x4="345" y5="-1.5" x5="340" y6="-46.5" x6="340" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="51.5" x1="340" y2="4.5" x2="340" y3="1.5" x3="335" y4="1.5"/>
-        <input x="341" y="-29.5" size="9" rotate="true" text="_"/>
+        <input x="341" y="-29.5" size="9" rotate="true" text="_" tagg="label"/>
         <polygon x4="-335" y5="-1.5" x5="-340" y6="-46.5" x6="-340" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="51.5" x1="-340" y2="4.5" x2="-340" y3="1.5" x3="-345" y4="1.5"/>
         <input x="228" y="-29.5" size="7" rotate="true" text="I1.6"/>
         <input x="148" y="-29.5" size="7" rotate="true" text="I1.5"/>

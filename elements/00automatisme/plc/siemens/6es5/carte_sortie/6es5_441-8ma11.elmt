@@ -58,7 +58,7 @@
         <input x="14" y="89.5" size="5" rotate="true" text="1"/>
         <input x="10" y="24.5" size="9" rotate="true" text=" 6ES5 441-8MA11   DO 8 x DC24V/05A"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="10" x2="760"/>
-        <input x="761" y="22" size="9" rotate="true" text="_"/>
+        <input x="761" y="22" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="20" y="101" orientation="s"/>
         <terminal x="100" y="101" orientation="s"/>
         <terminal x="180" y="101" orientation="s"/>

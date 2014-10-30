@@ -46,7 +46,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="698" y="142.667" size="9" text="T"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="168.667" x1="697" y2="168.667" x2="707"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="170.667" x1="699" y2="170.667" x2="705"/>
-        <input x="734" y="12.667" size="9" rotate="true" text="_"/>
+        <input x="734" y="12.667" size="9" rotate="true" text="_" tagg="label"/>
         <text x="637" y="13.667" size="9" text="EMPLACEMENT"/>
         <text x="265" y="83.667" size="25" text="CARTE DL/HF"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20" x1="632" y2="0" x2="632"/>

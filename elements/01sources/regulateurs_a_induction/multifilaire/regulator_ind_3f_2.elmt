@@ -31,7 +31,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <arc width="5" x="7.5" y="-15" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <arc width="5" x="7.5" y="-5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <arc width="5" x="7.5" y="0" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <input x="27" y="-5" size="9" rotate="true" text="_"/>
+        <input x="27" y="-5" size="9" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-30" y2="-15" x2="-30"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-10" y2="-15" x2="-10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="-15" x2="10"/>

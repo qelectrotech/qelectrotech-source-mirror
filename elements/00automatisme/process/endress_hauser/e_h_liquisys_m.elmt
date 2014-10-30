@@ -17,7 +17,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <circle x="296.877" y="45.6653" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.24621"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="62.1011" x1="301" y2="51.1011" x2="301"/>
         <circle x="254.877" y="45.6653" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.24621"/>
-        <text x="424" y="76" size="9" text="_"/>
+        <text x="424" y="76" size="9" text="_" tagg="label"/>
         <text x="419" y="57" size="7" text="Liquisys M"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="11" y2="38" x2="28"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="40" y2="5" x2="21"/>

@@ -38,7 +38,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" x1="21" y2="-80" x2="30"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" x1="21" y2="-60" x2="30"/>
         <arc width="5" x="-2.5" y="-127" antialias="true" height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-180"/>
-        <input x="-33.5" y="127" size="9" rotate="true" text="_"/>
+        <input x="-33.5" y="127" size="9" rotate="true" text="_" tagg="label"/>
         <rect width="40" x="-20" y="-125" antialias="false" height="230" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="31" y="-120" orientation="e"/>
         <terminal x="31" y="-100" orientation="e"/>

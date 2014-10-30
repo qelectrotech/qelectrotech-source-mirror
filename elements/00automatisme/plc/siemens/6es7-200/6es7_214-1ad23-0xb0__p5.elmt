@@ -14,7 +14,7 @@
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="511" y="-28" size="9" rotate="true" text="_"/>
+        <input x="511" y="-28" size="9" rotate="true" text="_" tagg="label"/>
         <input x="476" y="37" size="7" rotate="true" text="Q1.1"/>
         <input x="-55" y="4" size="9" rotate="true" text="/"/>
         <polygon x4="-5" y5="0" x5="-10" y6="-45" x6="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="53" x1="-10" y2="6" x2="-10" y3="3" x3="-15" y4="3"/>

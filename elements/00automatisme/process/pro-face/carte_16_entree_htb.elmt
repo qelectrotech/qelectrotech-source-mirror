@@ -60,6 +60,6 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <ellipse width="4" x="23" y="163.335" antialias="true" height="2.65291" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="88" y="171" size="7" rotation="270" text="EXM-DDI16DT"/>
         <rect width="94" x="3" y="2" antialias="false" height="232" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="9" y="21.5" size="9" rotate="true" text="_"/>
+        <input x="9" y="21.5" size="9" rotate="true" text="_" tagg="label"/>
     </description>
 </definition>

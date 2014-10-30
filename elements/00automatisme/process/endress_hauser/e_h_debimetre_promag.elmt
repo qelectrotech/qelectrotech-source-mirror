@@ -24,7 +24,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="129" y2="12" x2="129"/>
         <text x="123" y="25" size="4" text="Pulse OUT"/>
         <input x="-9" y="24" size="6" rotate="true" text="PROMAG _"/>
-        <input x="67" y="20" size="7" rotate="true" text="_"/>
+        <input x="67" y="20" size="7" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="-10" y2="30" x2="200"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="30" x2="-10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="23" y2="-20" x2="47"/>

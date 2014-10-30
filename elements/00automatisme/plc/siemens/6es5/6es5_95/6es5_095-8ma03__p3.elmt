@@ -19,7 +19,7 @@
         <polygon x4="435" y5="8" x5="430" y6="-35" x6="430" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="58" x1="430" y2="14" x2="430" y3="11" x3="425" y4="11"/>
         <input x="-55" y="11" size="9" rotate="true" text="/"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="331" y2="60" x2="331"/>
-        <input x="431" y="-18" size="9" rotate="true" text="_"/>
+        <input x="431" y="-18" size="9" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="251" y2="60" x2="251"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="171" y2="60" x2="171"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="91" y2="60" x2="91"/>

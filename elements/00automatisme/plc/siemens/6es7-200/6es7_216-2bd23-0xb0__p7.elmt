@@ -7,7 +7,7 @@
     </names>
     <informations></informations>
     <description>
-        <input x="235" y="-32" size="9" rotate="true" text="_"/>
+        <input x="235" y="-32" size="9" rotate="true" text="_" tagg="label"/>
         <input x="-235" y="-1" size="9" rotate="true" text="/"/>
         <polygon x4="-185" y5="-5" x5="-190" y6="-50" x6="-190" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="48" x1="-190" y2="1" x2="-190" y3="-2" x3="-195" y4="-2"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="43" x1="-190" y2="43" x2="-173"/>

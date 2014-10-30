@@ -33,7 +33,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="73.374" y2="60" x2="207.678"/>
         <polygon x4="305" y5="12" x5="300" y6="-33" x6="300" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="65" x1="300" y2="18" x2="300" y3="15" x3="295" y4="15"/>
         <input x="260" y="37" size="6" rotate="true" text=" COMM&#xa;PORT 0"/>
-        <input x="301" y="-16" size="9" rotate="true" text="_"/>
+        <input x="301" y="-16" size="9" rotate="true" text="_" tagg="label"/>
         <input x="-4" y="45" size="6" rotate="true" text="  24&#xa;VDC"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="283" y2="60" x2="300"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="53" x1="281" y2="59" x2="281"/>

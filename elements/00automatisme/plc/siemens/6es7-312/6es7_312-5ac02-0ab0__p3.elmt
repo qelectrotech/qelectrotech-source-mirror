@@ -63,7 +63,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <input x="82" y="40.5" size="5" rotate="true" text="12"/>
         <input x="2" y="-31.5" size="5" rotate="true" text="11"/>
         <input x="0" y="5.5" size="9" rotate="true" text="6ES7 312-5AC02-0AB0   DI 10/DO 6xDC24V   part 3 of 3"/>
-        <input x="751" y="-28" size="9" rotate="true" text="_"/>
+        <input x="751" y="-28" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="10" y="-43" orientation="n"/>
         <terminal x="90" y="51" orientation="s"/>
         <terminal x="170" y="51" orientation="s"/>

@@ -24,7 +24,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="5" y="13.3333" size="4" text="PE"/>
         <text x="-14" y="9.33333" size="4" text="N"/>
         <text x="-14" y="-6.66667" size="4" text="L"/>
-        <input x="17.5" y="1.33333" size="9" rotate="true" text="_"/>
+        <input x="17.5" y="1.33333" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="-20" y="-10" orientation="w"/>
         <terminal x="-20" y="10" orientation="w"/>
         <terminal x="10" y="20" orientation="s"/>

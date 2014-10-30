@@ -58,7 +58,7 @@
         <circle x="7.5" y="65.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="84" y="59.5" size="5" rotate="true" text="2"/>
         <input x="4" y="59.5" size="5" rotate="true" text="1"/>
-        <input x="751" y="-8" size="9" rotate="true" text="_"/>
+        <input x="751" y="-8" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="10" y="71" orientation="s"/>
         <terminal x="410" y="71" orientation="s"/>
         <terminal x="250" y="71" orientation="s"/>

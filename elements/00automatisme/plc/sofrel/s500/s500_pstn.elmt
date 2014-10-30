@@ -24,7 +24,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="170" x1="699" y2="170" x2="705"/>
         <text x="396" y="144" size="9" text="L2"/>
         <text x="346" y="144" size="9" text="L1"/>
-        <input x="734" y="13" size="9" rotate="true" text="_"/>
+        <input x="734" y="13" size="9" rotate="true" text="_" tagg="label"/>
         <text x="637" y="14" size="9" text="EMPLACEMENT"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="412" y2="131" x2="412"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="392" y2="131" x2="392"/>

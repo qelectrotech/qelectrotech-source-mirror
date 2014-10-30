@@ -11,7 +11,7 @@
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="23" y="9" size="9" rotate="true" text="_"/>
+        <input x="23" y="9" size="9" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="2" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-12" x1="0" y2="-36" x2="0"/>
         <line length1="2" length2="1.5" antialias="true" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-12" x1="-12" y2="-36" x2="-24"/>
         <circle x="-56" y="-36" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>

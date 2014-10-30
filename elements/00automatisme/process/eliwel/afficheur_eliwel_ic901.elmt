@@ -53,7 +53,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="4" y="46" size="6" text="1"/>
         <text x="15" y="10" size="8" text="ELIWELL"/>
         <input x="122" y="7" size="8" rotate="true" text="IC901"/>
-        <input x="12" y="20" size="7" rotate="true" text="_"/>
+        <input x="12" y="20" size="7" rotate="true" text="_" tagg="label"/>
         <text x="80" y="32" size="7" text="220V"/>
         <terminal x="10" y="52" nameHidden="1" number="" name="" orientation="s"/>
         <terminal x="30" y="52" nameHidden="1" number="" name="" orientation="s"/>

@@ -60,7 +60,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <arc width="5" x="-2.5" y="-127" antialias="true" height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-180"/>
         <text x="10.5" y="-118.333" size="5" text="24"/>
         <text x="-19" y="-78.3333" size="5" text="3"/>
-        <input x="-33.5" y="127" size="9" rotate="true" text="_"/>
+        <input x="-33.5" y="127" size="9" rotate="true" text="_" tagg="label"/>
         <text x="10" y="-58.3333" size="5" text="21"/>
         <rect width="40" x="-20" y="-125" antialias="false" height="230" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="10" y="-78.3333" size="5" text="22"/>
