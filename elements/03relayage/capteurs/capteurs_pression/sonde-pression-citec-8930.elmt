@@ -31,7 +31,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="65" y2="-24" x2="77"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="68" y2="-28" x2="73"/>
         <text x="-22" y="-49" size="7" text="CITEC 8930"/>
-        <input x="-46" y="-36" size="7" rotate="true" text="_"/>
+        <input x="-46" y="-36" size="7" rotate="true" text="_" tagg="label"/>
         <text x="30" y="-13" size="5" rotation="270" text="4 20mA"/>
         <terminal x="10" y="3" nameHidden="0" number="" name="" orientation="s"/>
         <terminal x="30" y="3" nameHidden="0" number="" name="" orientation="s"/>

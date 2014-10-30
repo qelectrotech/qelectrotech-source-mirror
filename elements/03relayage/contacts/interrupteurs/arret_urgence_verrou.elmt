@@ -22,7 +22,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.6666" x1="-4.125" y2="-1.6666" x2="-4.125"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.6667" x1="-0.125" y2="-10.6667" x2="5.875"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21.6667" x1="-0.125" y2="-10.6667" x2="-0.125"/>
-        <input x="6" y="1" size="9" text="_"/>
+        <input x="6" y="1" size="9" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.6666" x1="-7" y2="3.3333" x2="-7"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-1.6666" x1="-7" y2="-1.6666" x2="3"/>
         <terminal x="-0.125" y="-22.6667" orientation="n"/>

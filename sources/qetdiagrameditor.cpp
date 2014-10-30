@@ -383,6 +383,7 @@ void QETDiagramEditor::setUpActions() {
 	cascade_window    -> setStatusTip(tr("Dispose les fen\352tres en cascade", "status bar tip"));
 	next_window       -> setStatusTip(tr("Active le projet suivant", "status bar tip"));
 	prev_window       -> setStatusTip(tr("Active le projet pr\351c\351dent", "status bar tip"));
+	//mode_visualise    -> setShortcut( QKeySequence( tr("Ctrl+Shift") ) );
 
 	// traitements speciaux
 	windowed_view_mode -> setCheckable(true);

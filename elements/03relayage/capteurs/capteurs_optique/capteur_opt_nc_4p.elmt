@@ -12,7 +12,7 @@
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="22.5" y="-0.45" size="9" rotate="true" text="_"/>
+        <input x="22.5" y="-0.45" size="9" rotate="true" text="_" tagg="label"/>
         <text x="12" y="22" size="5" text="WH"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="6" y2="-7" x2="6"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="10" y2="16" x2="10"/>

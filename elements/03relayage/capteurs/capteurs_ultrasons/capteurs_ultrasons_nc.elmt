@@ -22,7 +22,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.05" x1="-23.05" y2="-7.05" x2="-21.05"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="9.9375" y2="-19" x2="15.9375"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="9.9375" y2="-19" x2="9.9375"/>
-        <input x="15.6875" y="-7" size="9" text="_"/>
+        <input x="15.6875" y="-7" size="9" text="_" tagg="label"/>
         <polygon x4="-12.6875" y5="-11" x5="-18.6875" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-11" x1="-18.6875" y2="-17" x2="-12.6875" y3="-11" x3="-6.6875" y4="-5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-11.6875" y2="-7" x2="-11.6875"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-13.6875" y2="-7" x2="-13.6875"/>
