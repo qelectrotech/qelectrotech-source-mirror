@@ -1,0 +1,56 @@
+<definition width="470" version="0.4" hotspot_x="206" hotspot_y="65" height="140" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">XPS-GSKE</name>
+        <name lang="en">XPS-GSKE</name>
+        <name lang="fr">XPS-GSKE</name>
+        <name lang="pl">XPS-GSKE</name>
+        <name lang="cs">XPS-GSKE</name>
+        <name lang="es">XPS-GSKE</name>
+        <name lang="it">XPS-GSKE</name>
+        <name lang="nl">XPS-GSKE</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="466" x="-204" y="-50" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-193" y="53.05" size="6" text="A2"/>
+        <text x="92" y="-38" size="6" text="T22"/>
+        <text x="-192" y="-35.95" size="6" text="A1"/>
+        <text x="233" y="-39" size="6" text="T12"/>
+        <text x="163" y="-39" size="6" text="T21"/>
+        <text x="-156" y="-34.95" size="6" text="13"/>
+        <text x="26" y="-37.95" size="6" text="B1"/>
+        <text x="-124" y="-36" size="6" text="23"/>
+        <text x="-56" y="-37" size="6" text="T11"/>
+        <text x="-124" y="52" size="6" text="24"/>
+        <text x="-155" y="52" size="6" text="14"/>
+        <text x="-95" y="-37" size="6" text="T34"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.75" x1="-160" y2="-9.5" x2="-160"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50.0537" x1="100" y2="-59.4241" x2="100"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50.0537" x1="-90" y2="-59.4241" x2="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.595" x1="-160" y2="-60.0783" x2="-160"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.7011" x1="-130" y2="-59.9803" x2="-130"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50.0537" x1="30" y2="-59.4241" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50.0537" x1="-50" y2="-59.4241" x2="-50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="69.1926" x1="-190" y2="59.8222" x2="-190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50.0537" x1="170" y2="-59.4241" x2="170"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50.0537" x1="240" y2="-59.4241" x2="240"/>
+        <polygon x4="-160" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8" x1="-170" y2="18" x2="-160" y3="70" x3="-160" y4="70"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50.8074" x1="-190" y2="-60.1778" x2="-190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.75" x1="-130" y2="-9.5" x2="-130"/>
+        <polygon x4="-130" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8" x1="-140" y2="18" x2="-130" y3="70" x3="-130" y4="70"/>
+        <input x="-35" y="17" size="9" rotate="true" text="_" tagg="label"/>
+        <text x="112" y="54" size="6" text="PREVENTA GSKE"/>
+        <terminal x="-190" y="-60" orientation="n"/>
+        <terminal x="-160" y="-60" orientation="n"/>
+        <terminal x="-130" y="-60" orientation="n"/>
+        <terminal x="-90" y="-59.2463" orientation="n"/>
+        <terminal x="-50" y="-59.2463" orientation="n"/>
+        <terminal x="30" y="-59.2463" orientation="n"/>
+        <terminal x="100" y="-59.2463" orientation="n"/>
+        <terminal x="170" y="-59.2463" orientation="n"/>
+        <terminal x="240" y="-59.2463" orientation="n"/>
+        <terminal x="-190" y="70" orientation="s"/>
+        <terminal x="-160" y="70" orientation="s"/>
+        <terminal x="-130" y="70" orientation="s"/>
+    </description>
+</definition>
