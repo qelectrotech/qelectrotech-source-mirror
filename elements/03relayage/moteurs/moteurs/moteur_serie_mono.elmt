@@ -1,4 +1,4 @@
-<definition width="70" version="0.3" hotspot_x="25" hotspot_y="45" height="80" type="element" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="24" hotspot_y="48" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">محرّك توالي أحادي الوجه</name>
         <name lang="el">Σειριακό μοτέρ, μονοφασικό</name>
@@ -6,8 +6,8 @@
         <name lang="it">Motore serie, monofase</name>
         <name lang="fr">Moteur série, monophasé</name>
         <name lang="pl">Silnik jednofazowy szeregowy</name>
-        <name lang="cs">Sériový elektromotor, jednofázový</name>
         <name lang="nl">Motor serie 1fase</name>
+        <name lang="cs">Sériový elektromotor, jednofázový</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -20,7 +20,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="-4" y="7" size="8" text="M"/>
         <arc width="7" x="16.5" y="-19" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <arc width="7" x="16.5" y="-14" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <input x="18" y="15" size="9" text="M_"/>
+        <input x="18" y="15" size="9" text="M_" tagg="label"/>
         <arc width="7" x="16.5" y="-24" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39" x1="20" y2="-29" x2="20"/>
         <terminal x="20" y="-40" orientation="n"/>

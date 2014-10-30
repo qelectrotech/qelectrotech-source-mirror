@@ -1,4 +1,4 @@
-<definition width="90" version="0.3" hotspot_x="53" hotspot_y="28" height="70" type="element" orientation="dyyy">
+<definition width="70" version="0.4" hotspot_x="28" hotspot_y="28" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">محرّك ثلاثي الأوجه</name>
         <name lang="de">Drehstrom Motor</name>
@@ -9,8 +9,8 @@
         <name lang="fr">Moteur triphasé</name>
         <name lang="pl">Silnik trójfazowy</name>
         <name lang="es">Motor trifásico</name>
-        <name lang="cs">Trojfázový motor</name>
         <name lang="nl">Draaistroommotor</name>
+        <name lang="cs">Trojfázový motor</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -22,7 +22,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <arc width="9" x="-9" y="21" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="180"/>
         <text x="-10.25" y="18" size="18" text="M"/>
         <ellipse width="46" x="-23" y="-5" antialias="true" height="42" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-51" y="15.5" size="9" text="M_"/>
+        <input x="-51" y="15.5" size="9" text="M_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-5" x2="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.6172" x1="20" y2="5.08526" x2="20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.6" x1="-20" y2="5.06667" x2="-20"/>

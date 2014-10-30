@@ -1,4 +1,4 @@
-<definition width="70" version="0.3" hotspot_x="25" hotspot_y="45" height="80" type="element" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="29" hotspot_y="46" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">محرّك توالي ثلاثي الأوجه</name>
         <name lang="el">Σειριακό μοτέρ, τριφασικό</name>
@@ -6,8 +6,8 @@
         <name lang="it">Motore serie, trifase</name>
         <name lang="fr">Moteur série, triphasé</name>
         <name lang="pl">Silnik trójfazowy szeregowy</name>
-        <name lang="cs">Sériový elektromotor, třífázový</name>
         <name lang="nl">Draaistroommotor Serie 3fasen</name>
+        <name lang="cs">Sériový elektromotor, třífázový</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -27,7 +27,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <arc width="7" x="16.5" y="-14" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <arc width="7" x="-3.5" y="-14" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <arc width="7" x="-23.5" y="-14" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <input x="18" y="15" size="9" text="M_"/>
+        <input x="18" y="15" size="9" text="M_" tagg="label"/>
         <arc width="7" x="16.5" y="-24" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <arc width="7" x="-3.5" y="-24" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <arc width="7" x="-23.5" y="-24" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
