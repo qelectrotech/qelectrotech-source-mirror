@@ -313,7 +313,14 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
  */
 void DiagramView::handleTextDrop(QDropEvent *e) {
 	if (scene -> isReadOnly() || (e -> mimeData() -> hasText() == false) ) return;
-	scene -> undoStack().push(new AddItemCommand<IndependentTextItem *>(new IndependentTextItem (e -> mimeData() -> text()), scene, mapToScene(e->pos())));
+
+	IndependentTextItem *iti = new IndependentTextItem (e -> mimeData() -> text(), scene);
+
+	if (e -> mimeData() -> hasHtml()) {
+		iti -> setHtml (e -> mimeData() -> text());
+	}
+
+	scene -> undoStack().push(new AddItemCommand<IndependentTextItem *>(iti, scene, mapToScene(e->pos())));
 }
 
 /**
