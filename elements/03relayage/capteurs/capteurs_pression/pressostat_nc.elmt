@@ -15,7 +15,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-11" x1="5" y2="9" x2="0" y3="19" x3="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="6"/>
-        <input x="11" y="-11.5" size="8" rotate="true" text="S_"/>
+        <input x="11" y="-11.5" size="8" rotate="true" text="_" tagg="label"/>
         <text x="2" y="20" size="4" text="14"/>
         <text x="2" y="-18" size="4" text="13"/>
         <text x="-27" y="2.5" size="8" text="P"/>

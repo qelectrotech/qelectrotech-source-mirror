@@ -13,7 +13,7 @@
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="11" y="-11.5" size="8" rotate="true" text="S_"/>
+        <input x="11" y="-11.5" size="8" rotate="true" text="_" tagg="label"/>
         <text x="2" y="20" size="4" text="14"/>
         <text x="2" y="-18" size="4" text="13"/>
         <text x="-27" y="2.5" size="8" text="P"/>

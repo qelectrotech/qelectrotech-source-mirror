@@ -1,4 +1,4 @@
-<definition width="300" version="0.3" hotspot_x="113" hotspot_y="55" height="130" type="element" orientation="dyyy">
+<definition width="310" version="0.4" hotspot_x="119" hotspot_y="55" height="130" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Murr Mico 4.6</name>
         <name lang="el">Murr Mico 4.6</name>
@@ -6,8 +6,8 @@
         <name lang="it">Fusibile elettr. Murr Mico 4.6</name>
         <name lang="fr">Murr Mico 4.6</name>
         <name lang="pl">Murr Mico 4.6</name>
-        <name lang="cs">Murr Mico 4.6</name>
         <name lang="nl">Murr Mico 4.6</name>
+        <name lang="cs">Murr Mico 4.6</name>
     </names>
     <informations>@DFP2010</informations>
     <description>
@@ -34,7 +34,7 @@
         <text x="22" y="59" size="5" text="1"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-42" x1="-60" y2="20" x2="-60"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-43" x1="-70" y2="20" x2="-70"/>
-        <input x="-81" y="30" size="8" rotate="true" text="Control Logics"/>
+        <input x="-81" y="30" size="8" rotate="true" text="Control Logics" tagg="none"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="30" x1="-10" y2="30" x2="0"/>
         <rect width="70" x="-80" y="20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="70" y2="65" x2="70"/>
@@ -150,6 +150,7 @@
         <circle x="113.464" y="-32.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.4721"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="36" x1="150" y2="40" x2="150"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="36" x1="101.7" y2="40" x2="101.7"/>
+        <input x="216" y="25" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="-70" y="-47" orientation="n"/>
         <terminal x="-60" y="-47" orientation="n"/>
         <terminal x="-50" y="-47" orientation="n"/>

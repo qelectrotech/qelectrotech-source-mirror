@@ -19,7 +19,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="-8" y2="35" x2="-8"/>
         <input x="20" y="17.6667" size="5" text="___V"/>
         <circle x="-15" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <input x="17.75" y="4" size="9" text="T_"/>
+        <input x="17.75" y="4" size="9" text="_" tagg="label"/>
         <terminal x="8" y="-36" orientation="n"/>
         <terminal x="-8" y="-36" orientation="n"/>
         <terminal x="-8" y="36" orientation="s"/>

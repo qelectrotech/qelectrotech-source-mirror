@@ -13,7 +13,7 @@
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="140" x="0" y="0" antialias="false" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="12" y="33.5" size="9" rotate="true" text="T_"/>
+        <input x="12" y="33.5" size="9" rotate="true" text="_" tagg="label"/>
         <text x="106" y="52" size="5" text="Z2"/>
         <text x="125" y="53" size="5" text="Z1"/>
         <text x="124" y="33" size="5" text="X1"/>

@@ -1,4 +1,4 @@
-<definition width="50" version="0.3" hotspot_x="35" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="39" hotspot_y="37" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">حسّاس سعوي ب 4 أطراف</name>
         <name lang="de">Kapazitiver Sensor 4-Leiter</name>
@@ -8,8 +8,8 @@
         <name lang="fr">Capteur capacitif 4 bornes</name>
         <name lang="pl">Czujnik pojemnościowy czteroprzewodowy</name>
         <name lang="es">Sensor capacitivo 4 terminales</name>
-        <name lang="cs">Kapacitní čidlo se čtyřmi svorkami</name>
         <name lang="nl">Capacitief 4</name>
+        <name lang="cs">Kapacitní čidlo se čtyřmi svorkami</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -30,6 +30,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <polygon x4="-10" y5="-10" x5="-16" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-16" y2="-16" x2="-10" y3="-10" x3="-4" y4="-4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-9" y2="-6" x2="-9"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-11" y2="-6" x2="-11"/>
+        <input x="5" y="-19" size="9" rotate="true" text="_" tagg="label"/>
         <terminal x="-10" y="-30" orientation="n"/>
         <terminal x="13" y="-8" orientation="e"/>
         <terminal x="-10" y="15" orientation="s"/>
