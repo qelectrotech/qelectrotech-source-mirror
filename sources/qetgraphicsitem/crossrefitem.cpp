@@ -56,15 +56,7 @@ CrossRefItem::CrossRefItem(Element *elmt) :
  * @brief CrossRefItem::~CrossRefItem
  * Default destructor
  */
-CrossRefItem::~CrossRefItem() {
-	if(m_properties.snapTo() == XRefProperties::Bottom) {
-		disconnect(m_element, SIGNAL(yChanged()),        this, SLOT(autoPos()));
-		disconnect(m_element, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
-	}
-	disconnect(m_element,                           SIGNAL(elementInfoChange(DiagramContext)),                this, SLOT(updateLabel()));
-	disconnect(m_element -> diagram() -> project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
-	disconnect(m_element -> diagram(),              SIGNAL(XRefPropertiesChanged()),                          this, SLOT(updateProperties()));
-}
+CrossRefItem::~CrossRefItem() {}
 
 /**
  * @brief CrossRefItem::boundingRect
@@ -163,8 +155,10 @@ void CrossRefItem::updateProperties() {
  * Update the content of the item
  */
 void CrossRefItem::updateLabel() {
-	//init the shape
-	m_shape_path= QPainterPath();
+	//init the shape and bounding rect
+	m_shape_path    = QPainterPath();
+	m_bounding_rect = QRectF();
+
 	//init the painter
 	QPainter qp;
 	qp.begin(&m_drawing);
@@ -173,12 +167,14 @@ void CrossRefItem::updateLabel() {
 	qp.setPen(pen_);
 	qp.setFont(QETApp::diagramTextsFont(5));
 
-	XRefProperties::DisplayHas dh = m_properties.displayHas();
-	if (dh == XRefProperties::Cross) {
-		drawHasCross(qp);
-	}
-	else if (dh == XRefProperties::Contacts) {
-		drawHasContacts(qp);
+	//Draw cross or contact, only if master element is linked.
+	if (! m_element->linkedElements().isEmpty()) {
+		XRefProperties::DisplayHas dh = m_properties.displayHas();
+
+		if (dh == XRefProperties::Cross)
+			drawHasCross(qp);
+		else if (dh == XRefProperties::Contacts)
+			drawHasContacts(qp);
 	}
 
 	AddExtraInfo(qp);
@@ -371,8 +367,8 @@ void CrossRefItem::drawHasContacts(QPainter &painter) {
 			else if (state == "SW") option = SW;
 
 			QString type = info["type"].toString();
-			if (type == "power") option += Power;
-			else if (type == "delayOn") option += DelayOn;
+				 if (type == "power")    option += Power;
+			else if (type == "delayOn")  option += DelayOn;
 			else if (type == "delayOff") option += DelayOff;
 
 			drawContact(painter, option, elementPositionText(elmt));

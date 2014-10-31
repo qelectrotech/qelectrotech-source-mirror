@@ -17,7 +17,6 @@
 */
 #include "masterelement.h"
 #include "crossrefitem.h"
-#include "commentitem.h"
 
 /**
  * @brief MasterElement::MasterElement
@@ -29,8 +28,7 @@
  */
 MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
 	CustomElement(location, qgi, s, state),
-	cri_ (nullptr),
-	m_ci (nullptr)
+	cri_ (nullptr)
 {
 	link_type_ = Master;
 	connect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
@@ -42,8 +40,6 @@ MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qg
  */
 MasterElement::~MasterElement() {
 	unlinkAllElements();
-	if (m_ci) delete m_ci;
-	disconnect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 }
 
 /**
@@ -63,13 +59,6 @@ void MasterElement::linkToElement(Element *elmt) {
 		connect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));
 		connect(elmt, SIGNAL(yChanged()), cri_, SLOT(updateLabel()));
 		cri_ -> updateLabel();
-
-		//If there is a comment item, we delete it
-		//because cross ref item display comment too.
-		if (m_ci) {
-			delete m_ci;
-			m_ci = nullptr;
-		}
 	}
 }
 
@@ -101,14 +90,8 @@ void MasterElement::unlinkElement(Element *elmt) {
 		disconnect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));
 		disconnect(elmt, SIGNAL(yChanged()), cri_, SLOT(updateLabel()));
 
-		if (linkedElements().isEmpty()) {
-			delete cri_;
-			cri_ = nullptr;
-			updateLabel();
-		}
-		else {
-			cri_->updateLabel();
-		}
+		if (aboutDeleteXref()) return;
+		cri_ -> updateLabel();
 	}
 }
 
@@ -120,10 +103,7 @@ void MasterElement::unlinkElement(Element *elmt) {
 void MasterElement::initLink(QETProject *project) {
 	//Create the link with other element if needed
 	CustomElement::initLink(project);
-
-	//If no link that mean there are no cross ref item (cri)
-	//So we call @updateLabel for add comment item (m_ci) if needed.
-	if (!cri_) updateLabel();
+	updateLabel();
 }
 
 /**
@@ -140,19 +120,39 @@ void MasterElement::updateLabel() {
 				setTaggedText("label", "_", false):
 				setTaggedText("label", label, true);
 
-	if (cri_) return;
+	//Delete or update the xref
+	if (cri_) {
+		aboutDeleteXref();
+	}
+	else {
+		QString comment   = elementInformations()["comment"].toString();
+		bool    must_show = elementInformations().keyMustShow("comment");
 
-	//At this point there isn't a cross ref item displayed,
-	//but if element have comment and must be show, we add a comment item
+		if (! (comment.isEmpty() || !must_show)) {
+			cri_ = new CrossRefItem(this);
+		}
+	}
+}
+
+/**
+ * @brief MasterElement::aboutDeleteXref
+ * Check if Xref item must be displayed, if not, delete it.
+ * If Xref item is deleted or already not used (nullptr) return true;
+ * Else return false if Xref item is used
+ * @return
+ */
+bool MasterElement::aboutDeleteXref() {
+	if(!cri_) return true;
 
 	QString comment   = elementInformations()["comment"].toString();
 	bool    must_show = elementInformations().keyMustShow("comment");
 
-	if (!(comment.isEmpty() || !must_show) && !m_ci) {
-		m_ci = new CommentItem(this);
+	//Delete Xref item if there isn't reason to display it
+	if (linkedElements().isEmpty() && (comment.isEmpty() || !must_show)) {
+		delete cri_;
+		cri_ = nullptr;
+		return true;
 	}
-	else if ((comment.isEmpty() || !must_show) && m_ci) {
-		delete m_ci;
-		m_ci = nullptr;
-	}
+
+	return false;
 }

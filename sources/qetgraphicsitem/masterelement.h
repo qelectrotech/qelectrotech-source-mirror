@@ -21,7 +21,6 @@
 #include "customelement.h"
 
 class CrossRefItem;
-class CommentItem;
 
 /**
  * @brief The MasterElement class
@@ -48,8 +47,10 @@ class MasterElement : public CustomElement
 		void updateLabel();
 
 	private:
+		bool aboutDeleteXref ();
+
+	private:
 		CrossRefItem *cri_;
-		CommentItem *m_ci;
 };
 
 #endif // MASTERELEMENT_H
