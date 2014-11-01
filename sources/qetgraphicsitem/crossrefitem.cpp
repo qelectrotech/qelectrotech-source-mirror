@@ -40,6 +40,7 @@ CrossRefItem::CrossRefItem(Element *elmt) :
 
 	connect(elmt,                           SIGNAL(elementInfoChange(DiagramContext)),                this, SLOT(updateLabel()));
 	connect(elmt -> diagram() -> project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+	connect(elmt -> diagram() -> project(), SIGNAL(diagramRemoved(QETProject*,Diagram*)),             this, SLOT(updateLabel()));
 	connect(elmt -> diagram(),              SIGNAL(XRefPropertiesChanged()),                          this, SLOT(updateProperties()));
 
 	//set specific behavior related to the parent item.

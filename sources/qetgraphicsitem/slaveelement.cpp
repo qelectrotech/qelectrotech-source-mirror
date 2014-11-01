@@ -60,6 +60,7 @@ void SlaveElement::linkToElement(Element *elmt) {
 		connect(elmt,                 SIGNAL(yChanged()),                                       this, SLOT(updateLabel()));
 		connect(elmt,                 SIGNAL(elementInfoChange(DiagramContext)),                this, SLOT(updateLabel()));
 		connect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+		connect(diagram()->project(), SIGNAL(diagramRemoved(QETProject*,Diagram*)),             this, SLOT(updateLabel()));
 
 		updateLabel();
 		elmt -> linkToElement(this);
@@ -93,6 +94,7 @@ void SlaveElement::unlinkElement(Element *elmt) {
 		disconnect(elmt,                 SIGNAL(yChanged()),                                       this, SLOT(updateLabel()));
 		disconnect(elmt,                 SIGNAL(elementInfoChange(DiagramContext)),                this, SLOT(updateLabel()));
 		disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+		disconnect(diagram()->project(), SIGNAL(diagramRemoved(QETProject*,Diagram*)),             this, SLOT(updateLabel()));
 
 		delete Xref_item; Xref_item = NULL;
 
