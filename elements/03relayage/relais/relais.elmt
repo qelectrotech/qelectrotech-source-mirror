@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="25" height="50" link_type="master" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مُرحّل</name>
         <name lang="de">Spule</name>
@@ -9,19 +9,20 @@
         <name lang="fr">Relais</name>
         <name lang="pl">Cewka</name>
         <name lang="es">Bobina</name>
-        <name lang="cs">Cívka</name>
         <name lang="nl">Spoel</name>
+        <name lang="cs">Cívka</name>
     </names>
+    <kindInformations/>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="4" y="20" size="6" rotate="true" text="_"/>
-        <input x="4" y="-22" size="6" rotate="true" text="_"/>
+        <input x="4" y="20" size="6" rotate="true" text="_" tagg="none"/>
+        <input x="4" y="-22" size="6" rotate="true" text="_" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-8" x2="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="0" y2="20" x2="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="16" y2="-8" x2="16"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-16" y2="8" x2="16"/>
-        <input x="-18" y="1.05" size="8" text="KA1"/>
+        <input x="-18" y="1.05" size="8" text="KA1" tagg="none"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="16" y2="-8" x2="-16"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-16" y2="8" x2="-16"/>
         <terminal x="0" y="-20" orientation="n"/>

@@ -3,5 +3,7 @@
         <name lang="de">Sonstiges</name>
         <name lang="es">Esquemas Agua</name>
         <name lang="it">Idraulica</name>
+        <name lang="fr">Schémas</name>
+        <name lang="en">Water Schemes</name>
     </names>
 </qet-directory>
