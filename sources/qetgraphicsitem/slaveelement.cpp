@@ -55,11 +55,14 @@ void SlaveElement::linkToElement(Element *elmt) {
 	if (elmt->linkType() == Master && !connected_elements.contains(elmt)) {
 		if(!isFree()) unlinkAllElements();
 		connected_elements << elmt;
+
+		connect(elmt,                 SIGNAL(xChanged()),                                       this, SLOT(updateLabel()));
+		connect(elmt,                 SIGNAL(yChanged()),                                       this, SLOT(updateLabel()));
+		connect(elmt,                 SIGNAL(elementInfoChange(DiagramContext)),                this, SLOT(updateLabel()));
+		connect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+
 		updateLabel();
-		connect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
-		connect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
-		connect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
-		elmt->linkToElement(this);
+		elmt -> linkToElement(this);
 	}
 }
 
@@ -85,12 +88,16 @@ void SlaveElement::unlinkElement(Element *elmt) {
 	//Ensure elmt is linked to this element
 	if (connected_elements.contains(elmt)) {
 		connected_elements.removeOne(elmt);
-		disconnect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
-		disconnect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
-		disconnect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
+
+		disconnect(elmt,                 SIGNAL(xChanged()),                                       this, SLOT(updateLabel()));
+		disconnect(elmt,                 SIGNAL(yChanged()),                                       this, SLOT(updateLabel()));
+		disconnect(elmt,                 SIGNAL(elementInfoChange(DiagramContext)),                this, SLOT(updateLabel()));
+		disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+
 		delete Xref_item; Xref_item = NULL;
+
 		updateLabel();
-		elmt->unlinkElement(this);
+		elmt -> unlinkElement(this);
 	}
 }
 
