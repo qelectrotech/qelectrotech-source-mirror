@@ -108,7 +108,7 @@ class Element : public QetGraphicsItem {
 	virtual void linkToElement(Element *) {}
 	virtual void unlinkAllElements() {}
 	virtual void unlinkElement(Element *) {}
-	void initLink(QETProject *);
+	virtual void initLink(QETProject *);
 	QList<Element *> linkedElements ();
 	virtual int linkType() const {return link_type_;} // @return the linkable type
 	void newUuid() {uuid_ = QUuid::createUuid();} 	//create new uuid for this element
