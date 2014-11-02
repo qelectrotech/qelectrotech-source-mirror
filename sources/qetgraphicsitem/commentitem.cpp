@@ -19,6 +19,8 @@
 #include "element.h"
 #include "qetapp.h"
 #include "diagram.h"
+#include "elementtextitem.h"
+#include "qgraphicsitemutility.h"
 #include <QPainter>
 
 /**
@@ -27,13 +29,17 @@
  * element is also the parent item of this item
  */
 CommentItem::CommentItem(Element *elmt) :
-	QGraphicsObject(elmt),
-	m_element (elmt)
+	QGraphicsObject (elmt),
+	m_element       (elmt),
+	m_text_parent   (false)
 {
-	updateLabel();
-	connect(elmt, SIGNAL(yChanged()),                        this, SLOT (autoPos()));
-	connect(elmt, SIGNAL(rotationChanged()),                 this, SLOT (autoPos()));
+	if (! setTextParent() ) {
+		connect(elmt, SIGNAL(yChanged()),                        this, SLOT (autoPos()));
+		connect(elmt, SIGNAL(rotationChanged()),                 this, SLOT (autoPos()));
+	}
 	connect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT (updateLabel()));
+
+	updateLabel();
 }
 
 /**
@@ -49,21 +55,10 @@ QRectF CommentItem::boundingRect() const {
  * Adjust the position of this item.
  */
 void CommentItem::autoPos() {
-	if(!m_element -> diagram()) return;
-
-	QRectF  border = m_element -> diagram() -> border();
-	QPointF point  = m_element -> sceneBoundingRect().center();
-
-	point.setY(border.height() - m_element -> diagram() -> border_and_titleblock.titleBlockHeight() - boundingRect().height());
-	point.rx() -= (m_bounding_rect.width()/2 + m_bounding_rect.left()); //< we add boundingrect.left because this value can be négative
-
-	setPos(0,0);	//Due to a weird behavior or bug, before set the new position and rotation,
-	setRotation(0); //we must to set the position and rotation at 0.
-	setPos(mapFromScene(point));
-	if (rotation() != - m_element -> rotation()) {
-		setRotation(0);
-		setRotation(- m_element -> rotation());
-	}
+	if (m_text_parent)
+		centerToParentBottom(this);
+	else
+		centerToBottomDiagram(this, m_element);
 }
 
 /**
@@ -88,35 +83,54 @@ void CommentItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
+ * @brief CommentItem::setTextParent
+ * Set text tagged "label" of element has parent.
+ * @return true if text has been set has parent.
+ * else return false, the element is the parent of this comment item
+ */
+bool CommentItem::setTextParent() {
+	if (ElementTextItem *eti = m_element->taggedText("label")) {
+		setParentItem(eti);
+		m_text_parent = true;
+		return true;
+	}
+
+	qDebug() << "Comment item: can't found text tagged 'label' from actual parent element to set has parent, "
+				 "comment will be displayed at bottom of diagram";
+	return false;
+}
+
+/**
  * @brief CommentItem::updateLabel
  * update the content of this item
  * (draw this item in a QPicture)
  */
 void CommentItem::updateLabel() {
 	QString comment = m_element -> elementInformations()["comment"].toString();
-	bool    show    = m_element -> elementInformations().keyMustShow("comment");
 
-	if (comment == m_comment && show == m_show) return;
+	if (comment == m_comment && !m_text_parent) return;
 
-	m_comment = comment;
-	m_show    = show;
+	if (comment != m_comment) {
 
-	QPen pen(Qt::black);
-		 pen.setWidthF (0.5);
+		m_comment = comment;
 
-	QPainter painter(&m_picture);
-			 painter.setPen  (pen);
-			 painter.setFont (QETApp::diagramTextsFont(6));
+		QPen pen(Qt::black);
+			 pen.setWidthF (0.5);
 
-	QRectF drawing_rect(QPointF(0,0), QSizeF(100, 100));
-	QRectF text_bounding;
+		QPainter painter(&m_picture);
+				 painter.setPen  (pen);
+				 painter.setFont (QETApp::diagramTextsFont(6));
 
-	painter.drawText(drawing_rect, Qt::TextWordWrap | Qt::AlignHCenter, m_comment, &text_bounding);
+		QRectF drawing_rect(QPointF(0,0), QSizeF(100, 100));
+		QRectF text_bounding;
 
-	text_bounding.adjust(-1,0,1,0); //adjust only for better visual
-	painter.drawRoundedRect(text_bounding, 2, 2);
+		painter.drawText(drawing_rect, Qt::TextWordWrap | Qt::AlignHCenter, m_comment, &text_bounding);
 
-	m_bounding_rect = text_bounding;
+		text_bounding.adjust(-1,0,1,0); //adjust only for better visual
+		painter.drawRoundedRect(text_bounding, 2, 2);
+
+		m_bounding_rect = text_bounding;
+	}
 
 	autoPos();
 }

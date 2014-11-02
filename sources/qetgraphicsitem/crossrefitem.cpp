@@ -21,6 +21,7 @@
 #include "diagramposition.h"
 #include "elementtextitem.h"
 #include "diagram.h"
+#include "qgraphicsitemutility.h"
 
 //define the height of the header.
 #define header 5
@@ -192,27 +193,10 @@ void CrossRefItem::updateLabel() {
  */
 void CrossRefItem::autoPos() {
 	//We calcul the position according to the @snapTo of the xrefproperties
-	if (m_properties.snapTo() == XRefProperties::Bottom) {
-		QRectF border = m_element->diagram()->border();
-		QPointF point = m_element->sceneBoundingRect().center();
-
-		point.setY(border.height() - m_element->diagram()->border_and_titleblock.titleBlockHeight() - boundingRect().height());
-		point.rx() -= (m_bounding_rect.width()/2 + m_bounding_rect.left()); //< we add boundingrect.left because this value can be négative
-
-		setPos(0,0);	//Due to a weird behavior or bug, before set the new position and rotation,
-		setRotation(0); //we must to set the position and rotation at 0.
-		setPos(mapFromScene(point));
-		if (rotation() != - m_element->rotation()) {
-			setRotation(0);
-			setRotation(- m_element->rotation());
-		}
-	}
-	else {
-		QPointF p = parentItem()->boundingRect().center();
-		p.ry() += parentItem()->boundingRect().height()/2;
-		p.rx() -= (m_bounding_rect.width()/2 + m_bounding_rect.left()); //< we add boundingrect.left because this value can be négative
-		setPos(p);
-	}
+	if (m_properties.snapTo() == XRefProperties::Bottom)
+		centerToBottomDiagram(this, m_element);
+	else
+		centerToParentBottom(this);
 }
 
 /**

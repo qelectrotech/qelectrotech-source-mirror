@@ -45,14 +45,14 @@ class CommentItem : public QGraphicsObject
 	protected:
 		virtual void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event );
+		virtual bool setTextParent ();
 
 	private:
 		Element *m_element;
 		QPicture m_picture;
 		QRectF   m_bounding_rect;
 		QString  m_comment;
-		bool     m_show;
-
+		bool     m_text_parent;
 };
 
 #endif // COMMENTITEM_H
