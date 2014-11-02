@@ -458,7 +458,7 @@ void QETProject::setDefaultXRefProperties(const QString type, const XRefProperti
 }
 
 void QETProject::setDefaultXRefProperties(QHash<QString, XRefProperties> hash) {
-	m_default_xref_properties.swap(hash);
+	m_default_xref_properties = hash;
 	emit XRefPropertiesChanged();
 }
 
