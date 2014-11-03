@@ -4473,7 +4473,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="370"/>
         <source>&amp;Récemment ouverts</source>
-        <translation type="unfinished">Προσφάτως ανοιγμένα</translation>
+        <translation>&amp;Προσφάτως ανοιγμένα</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="381"/>
@@ -5809,7 +5809,6 @@ Que désirez vous faire ?</source>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
