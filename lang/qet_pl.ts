@@ -437,22 +437,22 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="77"/>
         <source>Taille du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar tekstu</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="90"/>
         <source>Texte visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst widoczny</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="107"/>
         <source>activer l&apos;option un texte par potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>aktywacja opcji jednego tekstu dla potencjału</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. (expérimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetl jeden tekst potencjału dla strony. (eksperyment)</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
@@ -511,17 +511,17 @@ dla przewodów o tym samym potencjale ?</translation>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="239"/>
         <source>Nombre de phase</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilość faz</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
         <source>Neutre</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewód neutralny</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
         <source>Phase</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewód fazowy</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="252"/>
@@ -536,7 +536,7 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="262"/>
         <source>Terre</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewód uziemiający</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
@@ -552,13 +552,13 @@ dla przewodów o tym samym potencjale ?</translation>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="307"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="343"/>
         <source>Style du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ przewodu</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="314"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="324"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolor przewodu</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
@@ -700,7 +700,7 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="67"/>
         <source>Maintenir ctrl pour un déplacer librement</source>
-        <translation type="unfinished"></translation>
+        <translation>Przytrzymaj CTRL aby dowolnie przesunąć</translation>
     </message>
 </context>
 <context>
@@ -4471,7 +4471,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="370"/>
         <source>&amp;Récemment ouverts</source>
-        <translation type="unfinished">&amp;Ostatnio otwarte</translation>
+        <translation>&amp;Ostatnio otwarte</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="381"/>
@@ -4539,7 +4539,7 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="688"/>
         <source>Les éléments maîtres, esclaves  et simple doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elementy nadrzędne i podrzędne muszą posiadać jedno pole tekstowe ze znacznikiem &apos;etykieta&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="705"/>
@@ -5476,12 +5476,12 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="38"/>
         <source>un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>jedno pole tekstowe</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="43"/>
         <source>un conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>przewód</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="63"/>
@@ -5812,10 +5812,10 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/qet.cpp" line="275"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n kształtu</numerusform>
+            <numerusform>%n kształtów</numerusform>
+            <numerusform>%n kształtów</numerusform>
         </translation>
     </message>
     <message>
@@ -6104,7 +6104,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/diagramcommands.h" line="52"/>
         <source>Ajouter </source>
-        <translation type="unfinished"></translation>
+        <translation>Wstawienie</translation>
     </message>
 </context>
 <context>
@@ -6144,22 +6144,22 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="379"/>
         <source>une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>linia</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="382"/>
         <source>un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>prostokąt</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="385"/>
         <source>une éllipse</source>
-        <translation type="unfinished"></translation>
+        <translation>elipsa</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="388"/>
         <source>une polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>wielokąt</translation>
     </message>
 </context>
 <context>
