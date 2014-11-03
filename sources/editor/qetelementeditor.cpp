@@ -367,7 +367,8 @@ void QETElementEditor::setupMenus() {
 	file_menu    -> addAction(new_element);
 	file_menu    -> addAction(open);
 	file_menu    -> addAction(open_file);
-	file_menu    -> addMenu(QETApp::elementsRecentFiles() -> menu());
+	QMenu *recentfile = file_menu -> addMenu(QET::Icons::DocumentOpenRecent, tr("&R\351cemment ouverts"));
+	recentfile->addActions(QETApp::elementsRecentFiles()->menu()->actions());
 	connect(QETApp::elementsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)), this, SLOT(openRecentFile(const QString &)));
 	file_menu    -> addAction(save);
 	file_menu    -> addAction(save_as);
