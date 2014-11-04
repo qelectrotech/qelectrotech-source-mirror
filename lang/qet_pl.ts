@@ -457,7 +457,7 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
         <source>phase</source>
-        <translation>liniowy</translation>
+        <translation>fazowy</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="158"/>
@@ -516,17 +516,17 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
         <source>Neutre</source>
-        <translation>Przewód neutralny</translation>
+        <translation>Neutralny</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
         <source>Phase</source>
-        <translation>Przewód fazowy</translation>
+        <translation>Fazowy</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="252"/>
         <source>Protective Earth Neutral</source>
-        <translation>Przewód ochronno-neutralny</translation>
+        <translation>Ochronno-neutralny</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="255"/>
@@ -536,7 +536,7 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="262"/>
         <source>Terre</source>
-        <translation>Przewód uziemiający</translation>
+        <translation>Ochronny</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
@@ -568,7 +568,7 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="346"/>
         <source>Style :</source>
-        <translation>Rodzaj :</translation>
+        <translation>Typ :</translation>
     </message>
 </context>
 <context>
@@ -659,7 +659,7 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="230"/>
         <source>Choix du type d&apos;impression</source>
-        <translation>Wybór rodzaju wydruku</translation>
+        <translation>Wybór typu wydruku</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="311"/>
@@ -5813,9 +5813,9 @@ Co chcesz zrobić ?</translation>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>%n kształtu</numerusform>
-            <numerusform>%n kształtów</numerusform>
-            <numerusform>%n kształtów</numerusform>
+            <numerusform>%n figury</numerusform>
+            <numerusform>%n figur</numerusform>
+            <numerusform>%n figur</numerusform>
         </translation>
     </message>
     <message>
@@ -6104,7 +6104,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/diagramcommands.h" line="52"/>
         <source>Ajouter </source>
-        <translation>Wstawienie</translation>
+        <translation>wstawienie </translation>
     </message>
 </context>
 <context>
@@ -6328,7 +6328,7 @@ Pozostałe pola nie są używane.
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Style : </source>
-        <translation>Rodzaj : </translation>
+        <translation>Typ : </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="86"/>
@@ -7185,7 +7185,7 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="267"/>
         <source>Choisir une image / un logo</source>
-        <translation>Wybierz jeden obraz / logo</translation>
+        <translation>Wybierz obraz / logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="269"/>
