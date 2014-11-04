@@ -180,7 +180,7 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
 	addAuthor(contributors, "Cyril Frausti",       "cyril@qelectrotech.org",      tr("D\351veloppement"));
 	addAuthor(contributors, "Arun Kishore Eswara", "eswara.arun@gmail.com",       tr("Documentation"));
-	addAuthor(contributors, "Ren\351 Negre",          "runsys@qelectrotech.org",     tr("D\351veloppement"));
+	addAuthor(contributors, "Ren\351 Negre",       "runsys@qelectrotech.org",     tr("D\351veloppement"));
 	addAuthor(contributors, "Ronny Desmedt",       "r.desmedt@live.be",           tr("D\351veloppement"));
 
 	

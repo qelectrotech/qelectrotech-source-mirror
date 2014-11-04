@@ -102,7 +102,7 @@ mkdir temp
 cp -Rf "sources/qet.h" "temp/qet.h"
 
 # On modifie l'originale avec le numero de version
-sed -i "" "s/const QString displayedVersion = \"0.4-dev\"/const QString displayedVersion = \"0.4-dev-r$revAp\"/" sources/qet.h
+sed -i "" "s/const QString displayedVersion = \"0.4-b\"/const QString displayedVersion = \"0.4-beta-r$revAp\"/" sources/qet.h
 
 # Apres la compilation 
 cleanVerionTag () {
@@ -179,7 +179,7 @@ else
 fi
 
 # On rajoute le numero de version pour "cmd + i"
-sed -i "" "s/<string>Created by Qt\/QMake<\/string>/<string>0.4 dev r$revAp<\/string>/" qelectrotech.app/Contents/Info.plist
+sed -i "" "s/<string>Created by Qt\/QMake<\/string>/<string>0.4 beta r$revAp<\/string>/" qelectrotech.app/Contents/Info.plist
 
 
 ### copy over frameworks ############################################
