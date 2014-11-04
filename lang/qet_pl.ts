@@ -303,7 +303,7 @@
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="49"/>
         <source>éditer les numérotations</source>
-        <translation>edytuj numerację</translation>
+        <translation>Edycja numeracji</translation>
     </message>
 </context>
 <context>
@@ -447,12 +447,12 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="107"/>
         <source>activer l&apos;option un texte par potentiel</source>
-        <translation>aktywacja opcji jednego tekstu dla potencjału</translation>
+        <translation>Aktywacja opcji jednego tekstu dla potencjału</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. (expérimental)</source>
-        <translation>Wyświetl jeden tekst potencjału dla strony. (eksperyment)</translation>
+        <translation>Wyświetl jeden tekst dla potencjału na stronie. (eksperyment)</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
@@ -511,7 +511,7 @@ dla przewodów o tym samym potencjale ?</translation>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="239"/>
         <source>Nombre de phase</source>
-        <translation>Ilość faz</translation>
+        <translation>Ilość przewodów fazowych</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
