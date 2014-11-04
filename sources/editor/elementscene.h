@@ -23,15 +23,17 @@
 #include "qgimanager.h"
 #include "elementcontent.h"
 #include "diagramcontext.h"
+
 class CustomElementPart;
 class ElementEditionCommand;
 class ElementPrimitiveDecorator;
 class QETElementEditor;
-class PartLine;
 class PartRectangle;
 class PartEllipse;
 class PartPolygon;
 class PartArc;
+class ESEventInterface;
+class QKeyEvent;
 /**
 	This class is the canvas allowing the visual edition of an electrial element.
 	It displays the various primitives composing the drawing of the element, the
@@ -43,7 +45,7 @@ class ElementScene : public QGraphicsScene {
 	
 	// enum
 	public:
-	enum Behavior { Normal, Line, Rectangle, Circle, Ellipse, Polygon, Text, Terminal, Arc, TextField, PasteArea };
+	enum Behavior { Normal, Rectangle, Circle, Ellipse, Polygon, Text, Terminal, Arc, TextField, PasteArea };
 	enum ItemOption {
 		SortByZValue = 1,
 		IncludeTerminals = 2,
@@ -64,57 +66,57 @@ class ElementScene : public QGraphicsScene {
 	
 	// attributes
 	private:
-	/// List of localized names
-	NamesList _names;
-	/// Extra informations
-	QString informations_;
-	/// element type
-	QString m_elmt_type;
-	/// element kind info
-	DiagramContext m_elmt_kindInfo;
-	/// QGraphicsItem manager
-	QGIManager qgi_manager;
-	/// Undo stack
-	QUndoStack undo_stack;
-	/**
-		fsi_pos (first selected item pos) : Position of the forst selected item: used
-		to cancel mouse movements; also used to handle movements using keybard
-		arrwows.
-	*/
-	QPointF fsi_pos;
-	QPointF moving_press_pos;
-	bool moving_parts_;
+		/// List of localized names
+		NamesList _names;
+		/// Extra informations
+		QString informations_;
+		/// element type
+		QString m_elmt_type;
+		/// element kind info
+		DiagramContext m_elmt_kindInfo;
+		/// QGraphicsItem manager
+		QGIManager qgi_manager;
+		/// Undo stack
+		QUndoStack undo_stack;
+		/**
+			fsi_pos (first selected item pos) : Position of the forst selected item: used
+			to cancel mouse movements; also used to handle movements using keybard
+			arrwows.
+		*/
+		QPointF fsi_pos;
+		QPointF moving_press_pos;
+		bool moving_parts_;
 	
-	/// Variables related to drawing
-	Behavior behavior;
-	PartLine *current_line;
-	PartRectangle *current_rectangle;
-	PartEllipse *current_ellipse;
-	PartPolygon *current_polygon;
-	PartArc *current_arc;
-	QETElementEditor *element_editor;
+		/// Variables related to drawing
+		ESEventInterface *m_event_interface;
+		Behavior behavior;
+		PartRectangle *current_rectangle;
+		PartEllipse *current_ellipse;
+		PartPolygon *current_polygon;
+		PartArc *current_arc;
+		QETElementEditor *element_editor;
 	
-	/// Variables to manage the paste area on the scene
-	QGraphicsRectItem *paste_area_;
-	QRectF defined_paste_area_;
+		/// Variables to manage the paste area on the scene
+		QGraphicsRectItem *paste_area_;
+		QRectF defined_paste_area_;
 	
-	/// Variables to handle copy/paste with offset
-	QString last_copied_;
+		/// Variables to handle copy/paste with offset
+		QString last_copied_;
 	
-	/// Decorator item displayed when at least one item is selected
-	ElementPrimitiveDecorator *decorator_;
+		/// Decorator item displayed when at least one item is selected
+		ElementPrimitiveDecorator *decorator_;
 	
-	///< Size of the horizontal grid step
-	int x_grid;
-	///< Size of the vertical grid step
-	int y_grid;
+		///< Size of the horizontal grid step
+		int x_grid;
+		///< Size of the vertical grid step
+		int y_grid;
 	
 	// methods
 	public:
+		void setInterface (ESEventInterface *interface);
+		QPointF snapToGrid(QPointF point);
 	void setNames(const NamesList &);
 	NamesList names() const;
-	bool internalConnections();
-	void setInternalConnections(bool);
 	QString informations() const;
 	void setInformations(const QString &);
 	QString elementType () const {return m_elmt_type;}
@@ -140,11 +142,14 @@ class ElementScene : public QGraphicsScene {
 	void copy();
 	void paste();
 	void contextMenu (QContextMenuEvent *event);
+	QETElementEditor* editor() const;
 	
 	protected:
-	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+		virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *);
+		virtual void mousePressEvent   (QGraphicsSceneMouseEvent *);
+		virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *);
+		virtual void keyPressEvent     (QKeyEvent *event);
+
 	virtual void drawForeground(QPainter *, const QRectF &);
 	virtual void endCurrentBehavior(const QGraphicsSceneMouseEvent *);
 	
@@ -156,7 +161,6 @@ class ElementScene : public QGraphicsScene {
 	ElementContent addContentAtPos(const ElementContent &, const QPointF &, QString * = 0);
 	void addPrimitive(QGraphicsItem *);
 	void initPasteArea();
-	void snapToGrid(QPointF &);
 	bool mustSnapToGrid(QGraphicsSceneMouseEvent *);
 	static bool zValueLessThan(QGraphicsItem *, QGraphicsItem *);
 	QMutex *decorator_lock_;
@@ -164,7 +168,6 @@ class ElementScene : public QGraphicsScene {
 	
 	public slots:
 	void slot_move();
-	void slot_addLine();
 	void slot_addRectangle();
 	void slot_addCircle();
 	void slot_addEllipse();

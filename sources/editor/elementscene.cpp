@@ -31,6 +31,9 @@
 #include "elementcontent.h"
 #include "nameslist.h"
 #include "ui/elementpropertieseditorwidget.h"
+#include "eseventinterface.h"
+
+#include <QKeyEvent>
 
 /**
 	Constructeur
@@ -41,6 +44,7 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
 	m_elmt_type("simple"),
 	qgi_manager(this),
+	m_event_interface(nullptr),
 	element_editor(editor),
 	decorator_(0)
 {
@@ -64,13 +68,6 @@ ElementScene::~ElementScene() {
 */
 void ElementScene::slot_move() {
 	behavior = Normal;
-}
-
-/**
-	Passe la scene en mode "ajout de ligne"
-*/
-void ElementScene::slot_addLine() {
-	behavior = Line;
 }
 
 /**
@@ -135,8 +132,19 @@ void ElementScene::slot_addTextField() {
 	@param e objet decrivant l'evenement
 */
 void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
+	if (m_event_interface) {
+		if (m_event_interface -> mouseMoveEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				emit(partsAdded());
+				emit(needNormalMode());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+
 	QPointF event_pos = e -> scenePos();
-	if (mustSnapToGrid(e)) snapToGrid(event_pos);
+	if (mustSnapToGrid(e)) event_pos = snapToGrid(event_pos);
 	
 	if (behavior != Polygon && current_polygon != NULL) current_polygon = NULL;
 	if (behavior == PasteArea) {
@@ -151,9 +159,6 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	QPolygonF temp_polygon;
 	if (e -> buttons() & Qt::LeftButton) {
 		switch(behavior) {
-			case Line:
-				current_line -> setLine(QLineF(current_line -> line().p1(), event_pos));
-				break;
 			case Rectangle:
 				temp_rect = current_rectangle -> rect();
 				temp_rect.setBottomRight(event_pos);
@@ -193,17 +198,23 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	@param e objet decrivant l'evenement
 */
 void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
+	if (m_event_interface) {
+		if (m_event_interface -> mousePressEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				emit(partsAdded());
+				emit(needNormalMode());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
 	QPointF event_pos = e -> scenePos();
-	if (mustSnapToGrid(e)) snapToGrid(event_pos);
+	if (mustSnapToGrid(e)) event_pos = snapToGrid(event_pos);
 	
 	if (behavior != Polygon && current_polygon != NULL) current_polygon = NULL;
 	QPolygonF temp_polygon;
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
-			case Line:
-				current_line = new PartLine(element_editor, 0, this);
-				current_line -> setLine(QLineF(event_pos, event_pos));
-				break;
 			case Rectangle:
 				current_rectangle = new PartRectangle(element_editor, 0, this);
 				current_rectangle -> setRect(QRectF(event_pos, QSizeF(0.0, 0.0)));
@@ -240,8 +251,19 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	@param e objet decrivant l'evenement
 */
 void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
+	if (m_event_interface) {
+		if (m_event_interface -> mouseReleaseEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				emit(partsAdded());
+				emit(needNormalMode());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+
 	QPointF event_pos = e -> scenePos();
-	if (mustSnapToGrid(e)) snapToGrid(event_pos);
+	if (mustSnapToGrid(e)) event_pos = snapToGrid(event_pos);
 	
 	PartTerminal *terminal;
 	PartText *text;
@@ -258,12 +280,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
-			case Line:
-				if (qgiManager().manages(current_line)) break;
-				undo_stack.push(new AddPartCommand(tr("ligne"), this, current_line));
-				emit(partsAdded());
-				endCurrentBehavior(e);
-				break;
 			case Rectangle:
 				if (qgiManager().manages(current_rectangle)) break;
 				current_rectangle -> setRect(current_rectangle -> rect().normalized());
@@ -323,6 +339,25 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 }
 
 /**
+ * @brief ElementScene::keyPressEvent
+ * manage key press event
+ * @param event
+ */
+void ElementScene::keyPressEvent(QKeyEvent *event) {
+	if (m_event_interface) {
+		if (m_event_interface -> keyPressEvent(event)) {
+			if (m_event_interface->isFinish()) {
+				emit(partsAdded());
+				emit(needNormalMode());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+	QGraphicsScene::keyPressEvent(event);
+}
+
+/**
 	Dessine l'arriere-plan de l'editeur, cad l'indicateur de hotspot.
 	@param p Le QPainter a utiliser pour dessiner
 	@param rect Le rectangle de la zone a dessiner
@@ -355,6 +390,16 @@ void ElementScene::endCurrentBehavior(const QGraphicsSceneMouseEvent *event) {
 		behavior = Normal;
 		emit(needNormalMode());
 	}
+}
+
+/**
+ * @brief ElementScene::setInterface
+ * Set a new event interface
+ * @param interface
+ */
+void ElementScene::setInterface(ESEventInterface *interface) {
+	if (m_event_interface) delete m_event_interface;
+	m_event_interface = interface;
 }
 
 /**
@@ -618,6 +663,10 @@ void ElementScene::paste() {
 void ElementScene::contextMenu(QContextMenuEvent *event) {
 	if (behavior == ElementScene::Normal)
 		element_editor -> contextMenu(event);
+}
+
+QETElementEditor* ElementScene::editor() const {
+	return element_editor;
 }
 
 /**
@@ -1097,9 +1146,10 @@ void ElementScene::initPasteArea() {
 	@param point une reference vers un QPointF. Cet objet sera modifie.
 	
 */
-void ElementScene::snapToGrid(QPointF &point) {
+QPointF ElementScene::snapToGrid(QPointF point) {
 	point.rx() = qRound(point.x() / x_grid) * x_grid;
 	point.ry() = qRound(point.y() / y_grid) * y_grid;
+	return point;
 }
 
 /**
