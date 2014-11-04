@@ -38,9 +38,10 @@
 #include "terminaleditor.h"
 #include "texteditor.h"
 #include "textfieldeditor.h"
-
 #include "partterminal.h"
 #include "parttextfield.h"
+
+#include "eseventaddline.h"
 
 #include <QMessageBox>
 /*
@@ -244,7 +245,8 @@ void QETElementEditor::setupActions() {
 	connect(edit_lower,      SIGNAL(triggered()), ce_scene, SLOT(slot_lower()));
 	connect(edit_backward,   SIGNAL(triggered()), ce_scene, SLOT(slot_sendBackward()));
 	connect(move,            SIGNAL(triggered()), ce_scene, SLOT(slot_move()));
-	connect(add_line,        SIGNAL(triggered()), ce_scene, SLOT(slot_addLine()));
+
+	connect(add_line,        SIGNAL(triggered()), this,     SLOT(addLine()));
 	connect(add_rectangle,   SIGNAL(triggered()), ce_scene, SLOT(slot_addRectangle()));
 	connect(add_ellipse,     SIGNAL(triggered()), ce_scene, SLOT(slot_addEllipse()));
 	connect(add_polygon,     SIGNAL(triggered()), ce_scene, SLOT(slot_addPolygon()));
@@ -252,6 +254,7 @@ void QETElementEditor::setupActions() {
 	connect(add_arc,         SIGNAL(triggered()), ce_scene, SLOT(slot_addArc()));
 	connect(add_terminal,    SIGNAL(triggered()), ce_scene, SLOT(slot_addTerminal()));
 	connect(add_textfield,   SIGNAL(triggered()), ce_scene, SLOT(slot_addTextField()));
+
 	connect(move,            SIGNAL(triggered()), this,     SLOT(slot_setRubberBandToView()));
 	connect(add_line,        SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
 	connect(add_rectangle,   SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
@@ -917,6 +920,14 @@ void QETElementEditor::setReadOnly(bool ro) {
 */
 bool QETElementEditor::isReadOnly() const {
 	return(read_only);
+}
+
+/**
+ * @brief QETElementEditor::addLine
+ * Set line creation interface to scene
+ */
+void QETElementEditor::addLine() {
+	ce_scene->setInterface(new ESEventAddLine(ce_scene));
 }
 
 /**

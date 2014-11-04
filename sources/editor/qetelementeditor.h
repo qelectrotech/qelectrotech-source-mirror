@@ -126,6 +126,8 @@ class QETElementEditor : public QETMainWindow {
 	void copyAndPasteXml(const QDomDocument &);
 	
 	public slots:
+		void addLine();
+
 	void slot_new();
 	void slot_open();
 	void slot_openFile();
