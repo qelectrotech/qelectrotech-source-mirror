@@ -139,8 +139,8 @@ void ElementView::zoomReset() {
 */
 void ElementView::adjustSceneRect() {
 	QRectF esgr = scene_ -> elementSceneGeometricRect();
-	QRectF vpbr = mapToScene(this -> viewport() -> rect()).boundingRect();
-	QRectF new_scene_rect = vpbr.adjusted(-vpbr.height()/4, -vpbr.width()/4, vpbr.height()/4, vpbr.width()/4);
+	QRectF vpbr = mapToScene(this -> viewport()->rect()).boundingRect();
+	QRectF new_scene_rect = vpbr.adjusted(-vpbr.width()/4, -vpbr.height()/4, vpbr.width()/4, vpbr.height()/4);
 	setSceneRect(new_scene_rect.united(esgr));
 }
 
@@ -425,29 +425,32 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	qreal zoom_factor = matrix().m11();
 	
 	// choisit la granularite de la grille en fonction du zoom en cours
-	int drawn_x_grid = scene_ -> xGrid();
-	int drawn_y_grid = scene_ -> yGrid();
+	int drawn_x_grid = 1;//scene_ -> xGrid();
+	int drawn_y_grid = 1;//scene_ -> yGrid();
 	bool draw_grid = true;
 	bool draw_cross = false;
-	if (zoom_factor < (4.0/3.0)) {
-		// pas de grille du tout
+
+	if (zoom_factor < (4.0/3.0)) { //< no grid
 		draw_grid = false;
-	} else if (zoom_factor < 4.0) {
-		// grille a 10 px
+	} else if (zoom_factor < 4.0) { //< grid 10*10
 		drawn_x_grid *= 10;
 		drawn_y_grid *= 10;
-	} else if (zoom_factor < 6.0) {
-		// grille a 2 px (avec croix)
+	}else if (zoom_factor < 8.0) { //< grid 5*5
+		drawn_x_grid *= 5;
+		drawn_y_grid *= 5;
+		draw_cross = true;
+	} else if (zoom_factor < 10.0) { //< grid 2*2
 		drawn_x_grid *= 2;
 		drawn_y_grid *= 2;
-		draw_cross = true;
-	} else {
-		// grille a 1 px (avec croix)
+		draw_cross = true;	
+	} else { //< grid 1*1
 		draw_cross = true;
 	}
+
+	scene_->setGrid(drawn_x_grid, drawn_y_grid);
 	
 	if (draw_grid) {
-		// dessine les points de la grille
+		// draw the dot of the grid
 		p -> setPen(Qt::black);
 		p -> setBrush(Qt::NoBrush);
 		qreal limite_x = r.x() + r.width();
