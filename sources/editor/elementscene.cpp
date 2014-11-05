@@ -68,6 +68,7 @@ ElementScene::~ElementScene() {
 */
 void ElementScene::slot_move() {
 	behavior = Normal;
+	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
 }
 
 /**
@@ -75,6 +76,7 @@ void ElementScene::slot_move() {
 */
 void ElementScene::slot_addRectangle() {
 	behavior = Rectangle;
+	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
 }
 
 /**
@@ -82,6 +84,7 @@ void ElementScene::slot_addRectangle() {
 */
 void ElementScene::slot_addCircle() {
 	behavior = Circle;
+	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
 }
 
 /**
@@ -89,6 +92,7 @@ void ElementScene::slot_addCircle() {
 */
 void ElementScene::slot_addEllipse() {
 	behavior = Ellipse;
+	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
 }
 
 /**
@@ -96,6 +100,7 @@ void ElementScene::slot_addEllipse() {
 */
 void ElementScene::slot_addPolygon() {
 	behavior = Polygon;
+	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
 }
 
 
@@ -104,6 +109,7 @@ void ElementScene::slot_addPolygon() {
 */
 void ElementScene::slot_addText() {
 	behavior = Text;
+	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
 }
 
 /**
@@ -111,6 +117,7 @@ void ElementScene::slot_addText() {
 */
 void ElementScene::slot_addTerminal() {
 	behavior = Terminal;
+	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
 }
 
 /**
@@ -118,6 +125,7 @@ void ElementScene::slot_addTerminal() {
 */
 void ElementScene::slot_addArc() {
 	behavior = Arc;
+	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
 }
 
 /**
@@ -125,6 +133,7 @@ void ElementScene::slot_addArc() {
 */
 void ElementScene::slot_addTextField() {
 	behavior = TextField;
+	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
 }
 
 /**

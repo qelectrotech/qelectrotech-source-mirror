@@ -72,18 +72,6 @@ bool ESEventAddLine::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 		return true;
 	}
 
-	//Remove the current line if exist
-	//or finish if no line
-	if (event -> button() == Qt::RightButton) {
-		if (m_line) {
-			delete m_line; m_line = nullptr;
-		}
-		else {
-			m_running = false;
-		}
-		return true;
-	}
-
 	return false;
 }
 
@@ -100,4 +88,18 @@ bool ESEventAddLine::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	QPointF pos = m_scene -> snapToGrid(event -> scenePos());
 	m_line -> setLine(QLineF(m_line->line().p1(), pos));
 	return true;
+}
+
+/**
+ * @brief ESEventAddLine::mouseReleaseEvent
+ * @param event
+ * @return
+ */
+bool ESEventAddLine::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
+	if (event -> button() == Qt::RightButton) {
+		if (m_line) {delete m_line; m_line = nullptr;}
+		else        {m_running = false;}
+		return true;
+	}
+	return false;
 }
