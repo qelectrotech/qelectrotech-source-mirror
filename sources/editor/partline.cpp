@@ -224,6 +224,15 @@ void PartLine::setY1(qreal y1) {
 }
 
 /**
+ * @brief PartLine::setP1
+ * set first point to P1
+ * @param p1
+ */
+void PartLine::setP1(QPointF p1) {
+	setLine(QLineF(p1, line().p2()));
+}
+
+/**
  * @brief PartLine::setX2
  * set x of P2
  * @param x2
@@ -243,6 +252,15 @@ void PartLine::setY2(qreal y2) {
 	QPointF p = line().p2();
 	p.setY(y2);
 	setLine(QLineF(line().p1(), p));
+}
+
+/**
+ * @brief PartLine::setP2
+ * set second point to P2
+ * @param p2
+ */
+void PartLine::setP2(QPointF p2) {
+	setLine(QLineF(line().p1(), p2));
 }
 
 /**

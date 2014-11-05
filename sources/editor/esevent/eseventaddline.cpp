@@ -63,7 +63,6 @@ bool ESEventAddLine::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 		}
 
 		//Add new line to scene
-		m_line  -> setLine(QLineF(m_line->line().p1(), pos));
 		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("ligne"), m_scene, m_line));
 
 		//Set m_line to nullptr for create new line at next mouse press
@@ -82,11 +81,9 @@ bool ESEventAddLine::mousePressEvent(QGraphicsSceneMouseEvent *event) {
  */
 bool ESEventAddLine::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	updateHelpCross (event -> scenePos());
-
 	if (!m_line) return false;
 
-	QPointF pos = m_scene -> snapToGrid(event -> scenePos());
-	m_line -> setLine(QLineF(m_line->line().p1(), pos));
+	m_line -> setP2(m_scene -> snapToGrid(event -> scenePos()));
 	return true;
 }
 

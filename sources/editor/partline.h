@@ -74,35 +74,50 @@ class PartLine : public CustomElementGraphicPart, public QGraphicsLineItem  {
 	static QList<QPointF> fourEndPoints(const QPointF &, const QPointF &, const qreal &);
 
 	///PROPERTY
-	// X value of the first point
+		// X value of the first point
 	Q_PROPERTY(qreal x1 READ x1 WRITE setX1)
 		qreal x1() const {return sceneP1().x();}
 		void setX1(qreal x1);
-	// Y value of the first point
+
+		// Y value of the first point
 	Q_PROPERTY(qreal y1 READ y1 WRITE setY1)
 		qreal y1() const {return sceneP1().y();}
 		void setY1(qreal y1);
-	// X value of the second point
+
+		//pos of firts point
+	Q_PROPERTY(QPointF p1 READ sceneP1 WRITE setP1)
+		void setP1 (QPointF p1);
+
+		// X value of the second point
 	Q_PROPERTY(qreal x2 READ x2 WRITE setX2)
 		qreal x2() const {return sceneP2().x();}
 		void setX2(qreal x2);
-	// Y value of the second point
+
+		// Y value of the second point
 	Q_PROPERTY(qreal y2 READ y2 WRITE setY2)
 		qreal y2() const {return sceneP2().y();}
 		void setY2(qreal y2);
-	// End type of the first point
+
+		//pos of second point
+	Q_PROPERTY(QPointF p2 READ sceneP2 WRITE setP2)
+		void setP2 (QPointF p2);
+
+		// End type of the first point
 	Q_PROPERTY(Qet::EndType end1 READ firstEndType WRITE setFirstEndType)
 		Qet::EndType firstEndType() const {return first_end;}
 		void setFirstEndType(const Qet::EndType &et) {first_end = et;}
-	// End type of the second point
+
+		// End type of the second point
 	Q_PROPERTY(Qet::EndType end2 READ secondEndType WRITE setSecondEndType)
 		Qet::EndType secondEndType() const {return second_end;}
 		void setSecondEndType(const Qet::EndType &et) {second_end = et;}
-	// Size of end type of first point
+
+		// Size of end type of first point
 	Q_PROPERTY(qreal length1 READ firstEndLength WRITE setFirstEndLength)
 		qreal firstEndLength() const {return first_length;}
 		void setFirstEndLength(const qreal &l) {first_length = qMin(qAbs(l), line().length());}
-	// Size of end type of the second point
+
+		// Size of end type of the second point
 	Q_PROPERTY(qreal length2 READ secondEndLength WRITE setSecondEndLength)
 		qreal secondEndLength() const {return second_length;}
 		void setSecondEndLength(const qreal &l) {second_length = qMin(qAbs(l), line().length());}
