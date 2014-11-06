@@ -927,7 +927,7 @@ bool QETElementEditor::isReadOnly() const {
  * Set line creation interface to scene
  */
 void QETElementEditor::addLine() {
-	ce_scene->setInterface(new ESEventAddLine(ce_scene));
+	ce_scene -> setEventInterface(new ESEventAddLine(ce_scene));
 }
 
 /**

@@ -113,7 +113,7 @@ class ElementScene : public QGraphicsScene {
 	
 	// methods
 	public:
-		void setInterface (ESEventInterface *interface);
+		void setEventInterface (ESEventInterface *interface);
 		QPointF snapToGrid(QPointF point);
 	void setNames(const NamesList &);
 	NamesList names() const;

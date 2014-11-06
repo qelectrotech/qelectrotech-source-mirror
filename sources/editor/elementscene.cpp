@@ -402,11 +402,11 @@ void ElementScene::endCurrentBehavior(const QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ElementScene::setInterface
+ * @brief ElementScene::setEventInterface
  * Set a new event interface
  * @param interface
  */
-void ElementScene::setInterface(ESEventInterface *interface) {
+void ElementScene::setEventInterface(ESEventInterface *interface) {
 	if (m_event_interface) delete m_event_interface;
 	m_event_interface = interface;
 }
