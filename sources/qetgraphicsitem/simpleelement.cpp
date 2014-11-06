@@ -55,9 +55,7 @@ void SimpleElement::updateLabel() {
 	bool	show  = elementInformations().keyMustShow("label");
 
 	// setup the label
-	(label.isEmpty() || !show)?
-				setTaggedText("label", "_", false):
-				setTaggedText("label", label, true);
+	if (!label.isEmpty() && show) setTaggedText("label", label, true);
 
 	//Comment of element
 	QString comment   = elementInformations()["comment"].toString();
