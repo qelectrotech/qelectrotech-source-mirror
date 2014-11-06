@@ -42,6 +42,7 @@
 #include "parttextfield.h"
 
 #include "eseventaddline.h"
+#include "eseventaddrect.h"
 
 #include <QMessageBox>
 /*
@@ -246,8 +247,8 @@ void QETElementEditor::setupActions() {
 	connect(edit_backward,   SIGNAL(triggered()), ce_scene, SLOT(slot_sendBackward()));
 	connect(move,            SIGNAL(triggered()), ce_scene, SLOT(slot_move()));
 
-	connect(add_line,        SIGNAL(triggered()), this,     SLOT(addLine()));
-	connect(add_rectangle,   SIGNAL(triggered()), ce_scene, SLOT(slot_addRectangle()));
+	connect(add_line,        SIGNAL(triggered()), this, SLOT(addLine()));
+	connect(add_rectangle,   SIGNAL(triggered()), this, SLOT(addRect()));
 	connect(add_ellipse,     SIGNAL(triggered()), ce_scene, SLOT(slot_addEllipse()));
 	connect(add_polygon,     SIGNAL(triggered()), ce_scene, SLOT(slot_addPolygon()));
 	connect(add_text,        SIGNAL(triggered()), ce_scene, SLOT(slot_addText()));
@@ -928,6 +929,14 @@ bool QETElementEditor::isReadOnly() const {
  */
 void QETElementEditor::addLine() {
 	ce_scene -> setEventInterface(new ESEventAddLine(ce_scene));
+}
+
+/**
+ * @brief QETElementEditor::addRect
+ * Set rectangle creation interface to scene
+ */
+void QETElementEditor::addRect() {
+	ce_scene -> setEventInterface(new ESEventAddRect(ce_scene));
 }
 
 /**

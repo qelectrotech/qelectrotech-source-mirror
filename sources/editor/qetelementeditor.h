@@ -127,6 +127,7 @@ class QETElementEditor : public QETMainWindow {
 	
 	public slots:
 		void addLine();
+		void addRect();
 
 	void slot_new();
 	void slot_open();

@@ -72,14 +72,6 @@ void ElementScene::slot_move() {
 }
 
 /**
-	Passe la scene en mode "ajout de rectangle"
-*/
-void ElementScene::slot_addRectangle() {
-	behavior = Rectangle;
-	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
-}
-
-/**
 	Passe la scene en mode "ajout de cercle"
 */
 void ElementScene::slot_addCircle() {
@@ -168,11 +160,6 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	QPolygonF temp_polygon;
 	if (e -> buttons() & Qt::LeftButton) {
 		switch(behavior) {
-			case Rectangle:
-				temp_rect = current_rectangle -> rect();
-				temp_rect.setBottomRight(event_pos);
-				current_rectangle -> setRect(temp_rect);
-				break;
 			case Ellipse:
 				temp_rect = current_ellipse -> rect();
 				temp_rect.setBottomRight(event_pos);
@@ -224,10 +211,6 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	QPolygonF temp_polygon;
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
-			case Rectangle:
-				current_rectangle = new PartRectangle(element_editor, 0, this);
-				current_rectangle -> setRect(QRectF(event_pos, QSizeF(0.0, 0.0)));
-				break;
 			case Ellipse:
 				current_ellipse = new PartEllipse(element_editor, 0, this);
 				current_ellipse -> setRect(QRectF(event_pos, QSizeF(0.0, 0.0)));
@@ -289,13 +272,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
-			case Rectangle:
-				if (qgiManager().manages(current_rectangle)) break;
-				current_rectangle -> setRect(current_rectangle -> rect().normalized());
-				undo_stack.push(new AddPartCommand(tr("rectangle"), this, current_rectangle));
-				emit(partsAdded());
-				endCurrentBehavior(e);
-				break;
 			case Ellipse:
 				if (qgiManager().manages(current_ellipse)) break;
 				current_ellipse -> setRect(current_ellipse -> rect().normalized());
