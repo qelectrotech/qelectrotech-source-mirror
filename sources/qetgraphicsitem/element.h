@@ -108,12 +108,7 @@ class Element : public QetGraphicsItem {
 	virtual void linkToElement(Element *) {}
 	virtual void unlinkAllElements() {}
 	virtual void unlinkElement(Element *) {}
-
-#if QT_VERSION >= 0x040800
-	virtual void initLink(QETProject *);
-#else
 	void initLink(QETProject *);
-#endif
 
 	QList<Element *> linkedElements ();
 	virtual int linkType() const {return link_type_;} // @return the linkable type
