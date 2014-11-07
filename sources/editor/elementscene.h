@@ -28,7 +28,6 @@ class CustomElementPart;
 class ElementEditionCommand;
 class ElementPrimitiveDecorator;
 class QETElementEditor;
-class PartEllipse;
 class PartPolygon;
 class PartArc;
 class ESEventInterface;
@@ -44,7 +43,7 @@ class ElementScene : public QGraphicsScene {
 	
 	// enum
 	public:
-	enum Behavior { Normal, Circle, Ellipse, Polygon, Text, Terminal, Arc, TextField, PasteArea };
+	enum Behavior { Normal, Circle, Polygon, Text, Terminal, Arc, TextField, PasteArea };
 	enum ItemOption {
 		SortByZValue = 1,
 		IncludeTerminals = 2,
@@ -89,7 +88,6 @@ class ElementScene : public QGraphicsScene {
 		/// Variables related to drawing
 		ESEventInterface *m_event_interface;
 		Behavior behavior;
-		PartEllipse *current_ellipse;
 		PartPolygon *current_polygon;
 		PartArc *current_arc;
 		QETElementEditor *element_editor;
@@ -167,7 +165,6 @@ class ElementScene : public QGraphicsScene {
 	public slots:
 	void slot_move();
 	void slot_addCircle();
-	void slot_addEllipse();
 	void slot_addPolygon();
 	void slot_addText();
 	void slot_addArc();

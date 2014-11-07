@@ -80,14 +80,6 @@ void ElementScene::slot_addCircle() {
 }
 
 /**
-	Passe la scene en mode "ajout d'ellipse"
-*/
-void ElementScene::slot_addEllipse() {
-	behavior = Ellipse;
-	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
-}
-
-/**
 	Passe la scene en mode "ajout de polygone"
 */
 void ElementScene::slot_addPolygon() {
@@ -160,11 +152,6 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	QPolygonF temp_polygon;
 	if (e -> buttons() & Qt::LeftButton) {
 		switch(behavior) {
-			case Ellipse:
-				temp_rect = current_ellipse -> rect();
-				temp_rect.setBottomRight(event_pos);
-				current_ellipse -> setRect(temp_rect);
-				break;
 			case Arc:
 				temp_rect = current_arc -> rect();
 				temp_rect.setBottomRight(event_pos);
@@ -211,11 +198,6 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	QPolygonF temp_polygon;
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
-			case Ellipse:
-				current_ellipse = new PartEllipse(element_editor, 0, this);
-				current_ellipse -> setRect(QRectF(event_pos, QSizeF(0.0, 0.0)));
-				current_ellipse -> setProperty("antialias", true);
-				break;
 			case Arc:
 				current_arc = new PartArc(element_editor, 0, this);
 				current_arc -> setRect(QRectF(event_pos, QSizeF(0.0, 0.0)));
@@ -272,13 +254,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
-			case Ellipse:
-				if (qgiManager().manages(current_ellipse)) break;
-				current_ellipse -> setRect(current_ellipse -> rect().normalized());
-				undo_stack.push(new AddPartCommand(tr("ellipse"), this, current_ellipse));
-				emit(partsAdded());
-				endCurrentBehavior(e);
-				break;
 			case Arc:
 				if (qgiManager().manages(current_arc)) break;
 				current_arc-> setRect(current_arc -> rect().normalized());
