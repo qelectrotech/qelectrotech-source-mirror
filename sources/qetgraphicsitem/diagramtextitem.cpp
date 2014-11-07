@@ -64,7 +64,7 @@ void DiagramTextItem::build() {
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
 	setNoEditable(false);
-	setToolTip(tr("Maintenir ctrl pour un d\351placer librement"));
+	setToolTip(tr("Maintenir ctrl pour un d\351placement libre"));
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif

@@ -1,439 +1,482 @@
-<project title="" version="0.3">
+<project folioSheetQuantity="0" title="" version="0.4">
     <properties/>
     <newdiagrams>
         <border displayrows="true" cols="15" displaycols="true" colsize="50" rows="6" rowsize="80"/>
         <inset title="" folio="%id/%total" author="" filename="" date="null"/>
-        <conductors num="_" vertirotatetext="0" type="multi" horizrotatetext="0"/>
+        <conductors num="_" vertirotatetext="0" displaytext="1" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+        <report label="/%f.%l%c"/>
+        <xrefs>
+            <xref snapto="label" switchprefix="" powerprefix="" displayhas="contacts" type="protection" showpowerctc="false" delayprefix=""/>
+            <xref snapto="bottom" switchprefix="" powerprefix="" displayhas="cross" type="coil" showpowerctc="false" delayprefix=""/>
+        </xrefs>
+        <conductors_autonums/>
     </newdiagrams>
-    <diagram title="General" displayrows="true" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="1" rows="6" author="" filename="" rowsize="80">
-        <defaultconductor num="_" type="multi"/>
+    <diagram title="General" displayrows="true" version="0.4" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="1" rows="6" author="" filename="" date="null" rowsize="80">
+        <defaultconductor num="_" vertirotatetext="0" displaytext="1" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
         <elements>
-            <element x="220" y="370" type="embed://import/grafcet/etape.elmt" orientation="0">
+            <element x="220" y="60" type="embed://import/grafcet2/etape_initiale.elmt" uuid="{290895c8-ebd6-48a0-bce2-fb5ec0e47051}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-21" id="0" orientation="0"/>
-                    <terminal x="0" y="21" id="1" orientation="2"/>
-                    <terminal x="36" y="-10" id="2" orientation="1"/>
-                </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 06"/>
-                </inputs>
-            </element>
-            <element x="220" y="230" type="embed://import/grafcet2/transition.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="1" id="3" orientation="2"/>
-                    <terminal x="0" y="-1" id="4" orientation="0"/>
-                    <terminal x="-8" y="0" id="5" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="15" y="2" text="T 02"/>
-                </inputs>
-            </element>
-            <element x="220" y="280" type="embed://import/grafcet2/macro/etape.elmt" orientation="0">
-                <terminals>
-                    <terminal x="-8" y="39.6667" id="6" orientation="3"/>
-                    <terminal x="0" y="40.6667" id="7" orientation="2"/>
-                    <terminal x="0" y="-21" id="8" orientation="0"/>
-                </terminals>
-                <inputs>
-                    <input x="-30" y="13.6667" text=""/>
-                    <input x="-20" y="-0.333333" text="M 03"/>
-                </inputs>
-            </element>
-            <element x="280" y="360" type="embed://import/grafcet/actions/action.elmt" orientation="0">
-                <terminals>
-                    <terminal x="6" y="0" id="9" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="8" y="2" text="motor off"/>
-                </inputs>
-            </element>
-            <element x="220" y="110" type="embed://import/grafcet2/transition.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="1" id="10" orientation="2"/>
-                    <terminal x="0" y="-1" id="11" orientation="0"/>
-                    <terminal x="-8" y="0" id="12" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="15" y="2" text="T 00"/>
-                </inputs>
-            </element>
-            <element x="440" y="170" type="embed://import/grafcet2/etape.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="-21" id="13" orientation="0"/>
-                    <terminal x="0" y="21" id="14" orientation="2"/>
-                    <terminal x="36" y="-10" id="15" orientation="1"/>
-                </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 02"/>
-                </inputs>
-            </element>
-            <element x="490" y="150" type="embed://import/grafcet/actions/action.elmt" orientation="0">
-                <terminals>
-                    <terminal x="6" y="0" id="16" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="8" y="2" text="lubrification on"/>
-                </inputs>
-            </element>
-            <element x="220" y="170" type="embed://import/grafcet2/etape.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="-21" id="17" orientation="0"/>
-                    <terminal x="0" y="21" id="18" orientation="2"/>
-                    <terminal x="36" y="-10" id="19" orientation="1"/>
-                </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 01"/>
-                </inputs>
-            </element>
-            <element x="220" y="420" type="embed://import/grafcet/saut.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="-1" id="20" orientation="0"/>
-                    <terminal x="-8" y="0" id="21" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="-15" y="45" text="E 00"/>
-                    <input x="15" y="2" text="T 03"/>
-                </inputs>
-            </element>
-            <element x="260" y="160" type="embed://import/grafcet/actions/action.elmt" orientation="0">
-                <terminals>
-                    <terminal x="6" y="0" id="22" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="8" y="2" text="motor on"/>
-                </inputs>
-            </element>
-            <element x="220" y="130" type="embed://import/grafcet2/et.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="1" id="23" orientation="0"/>
-                    <terminal x="4" y="-2" id="24" orientation="1"/>
-                    <terminal x="4" y="2" id="25" orientation="1"/>
-                    <terminal x="0" y="-1" id="26" orientation="2"/>
-                </terminals>
-                <inputs/>
-            </element>
-            <element x="220" y="60" type="embed://import/grafcet2/etape_initiale.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="21" id="27" orientation="2"/>
+                    <terminal x="0" y="21" nameHidden="0" number="" id="0" name="" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="-30" y="14" text=""/>
                     <input x="-20" y="0" text="E 00"/>
                 </inputs>
             </element>
+            <element x="220" y="130" type="embed://import/grafcet2/et.elmt" uuid="{d7760ee4-d015-4bfb-abf4-e29200a216ef}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="1" nameHidden="0" number="" id="1" name="" orientation="0"/>
+                    <terminal x="4" y="-2" nameHidden="0" number="" id="2" name="" orientation="1"/>
+                    <terminal x="4" y="2" nameHidden="0" number="" id="3" name="" orientation="1"/>
+                    <terminal x="0" y="-1" nameHidden="0" number="" id="4" name="" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="260" y="160" type="embed://import/grafcet/actions/action.elmt" uuid="{bb97e0c4-140c-49f4-ba51-3fb12c4335b8}" orientation="0">
+                <terminals>
+                    <terminal x="6" y="0" nameHidden="0" number="" id="5" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="8" y="2" text="motor on"/>
+                </inputs>
+            </element>
+            <element x="220" y="420" type="embed://import/grafcet/saut.elmt" uuid="{0208f0ad-81ff-4937-bc00-bd2c3c50db7f}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-1" nameHidden="0" number="" id="6" name="" orientation="0"/>
+                    <terminal x="-8" y="0" nameHidden="0" number="" id="7" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-15" y="45" text="E 00"/>
+                    <input x="15" y="2" text="T 03"/>
+                </inputs>
+            </element>
+            <element x="220" y="170" type="embed://import/grafcet2/etape.elmt" uuid="{12113ca8-85f5-4358-8548-fe386fa41760}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-21" nameHidden="0" number="" id="8" name="" orientation="0"/>
+                    <terminal x="0" y="21" nameHidden="0" number="" id="9" name="" orientation="2"/>
+                    <terminal x="36" y="-10" nameHidden="0" number="" id="10" name="" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 01"/>
+                </inputs>
+            </element>
+            <element x="490" y="150" type="embed://import/grafcet/actions/action.elmt" uuid="{c09ec501-48a7-4171-b6a5-3ef1f5880177}" orientation="0">
+                <terminals>
+                    <terminal x="6" y="0" nameHidden="0" number="" id="11" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="8" y="2" text="lubrification on"/>
+                </inputs>
+            </element>
+            <element x="440" y="170" type="embed://import/grafcet2/etape.elmt" uuid="{4f75422f-9751-4bb8-98b5-8fd87e5f062c}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-21" nameHidden="0" number="" id="12" name="" orientation="0"/>
+                    <terminal x="0" y="21" nameHidden="0" number="" id="13" name="" orientation="2"/>
+                    <terminal x="36" y="-10" nameHidden="0" number="" id="14" name="" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 02"/>
+                </inputs>
+            </element>
+            <element x="220" y="110" type="embed://import/grafcet2/transition.elmt" uuid="{dc46b143-bf5e-4003-be77-f0f80bfcca64}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="1" nameHidden="0" number="" id="15" name="" orientation="2"/>
+                    <terminal x="0" y="-1" nameHidden="0" number="" id="16" name="" orientation="0"/>
+                    <terminal x="-8" y="0" nameHidden="0" number="" id="17" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="15" y="2" text="T 00"/>
+                </inputs>
+            </element>
+            <element x="280" y="360" type="embed://import/grafcet/actions/action.elmt" uuid="{bcc8a9ca-948b-4074-83a3-e4853e2f210c}" orientation="0">
+                <terminals>
+                    <terminal x="6" y="0" nameHidden="0" number="" id="18" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="8" y="2" text="motor off"/>
+                </inputs>
+            </element>
+            <element x="220" y="280" type="embed://import/grafcet2/macro/etape.elmt" uuid="{1944db54-0a05-4305-8f66-b8ce2c6ed487}" orientation="0">
+                <terminals>
+                    <terminal x="-8" y="39.6667" nameHidden="0" number="" id="19" name="" orientation="3"/>
+                    <terminal x="0" y="40.6667" nameHidden="0" number="" id="20" name="" orientation="2"/>
+                    <terminal x="0" y="-21" nameHidden="0" number="" id="21" name="" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="18" y="42" text="1"/>
+                    <input x="18" y="42" text="1"/>
+                    <input x="-30" y="13.6667" text=""/>
+                    <input x="-20" y="-0.333333" text="M 03"/>
+                </inputs>
+            </element>
+            <element x="220" y="230" type="embed://import/grafcet2/transition.elmt" uuid="{578bf044-62aa-4ed7-b9ac-762b8a88d129}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="1" nameHidden="0" number="" id="22" name="" orientation="2"/>
+                    <terminal x="0" y="-1" nameHidden="0" number="" id="23" name="" orientation="0"/>
+                    <terminal x="-8" y="0" nameHidden="0" number="" id="24" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="15" y="2" text="T 02"/>
+                </inputs>
+            </element>
+            <element x="220" y="370" type="embed://import/grafcet/etape.elmt" uuid="{b9ad5d40-37f7-4af2-b69b-12e97b0142a3}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-21" nameHidden="0" number="" id="25" name="" orientation="0"/>
+                    <terminal x="0" y="21" nameHidden="0" number="" id="26" name="" orientation="2"/>
+                    <terminal x="36" y="-10" nameHidden="0" number="" id="27" name="" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 06"/>
+                </inputs>
+            </element>
         </elements>
         <conductors>
-            <conductor num="_" terminal1="10" terminal2="26" type="multi"/>
-            <conductor num="_" terminal1="7" terminal2="0" type="multi"/>
-            <conductor num="_" terminal1="3" terminal2="8" type="multi"/>
-            <conductor num="_" terminal1="18" terminal2="4" type="multi"/>
-            <conductor num="_" terminal1="14" terminal2="4" type="multi"/>
-            <conductor num="_" terminal1="9" terminal2="2" type="multi"/>
-            <conductor num="_" terminal1="27" terminal2="11" type="multi"/>
-            <conductor num="_" terminal1="1" terminal2="20" type="multi"/>
-            <conductor num="_" terminal1="24" terminal2="13" type="multi"/>
-            <conductor num="_" terminal1="26" terminal2="17" type="multi"/>
-            <conductor num="_" terminal1="25" terminal2="13" type="multi"/>
-            <conductor num="_" terminal1="15" terminal2="16" type="multi"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="14" terminal2="11" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="3" terminal2="12" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="4" terminal2="8" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="2" terminal2="12" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="26" terminal2="6" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="0" terminal2="16" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="18" terminal2="27" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="13" terminal2="23" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="9" terminal2="23" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="22" terminal2="21" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="20" terminal2="25" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="15" terminal2="4" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
         </conductors>
     </diagram>
-    <diagram title="Macro 3" displayrows="true" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="2" rows="6" author="" filename="" rowsize="80">
-        <defaultconductor num="_" type="multi"/>
+    <diagram title="Macro 3" displayrows="true" version="0.4" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="2" rows="6" author="" filename="" date="null" rowsize="80">
+        <defaultconductor num="_" vertirotatetext="0" displaytext="1" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
         <elements>
-            <element x="460" y="160" type="embed://import/grafcet2/etape.elmt" orientation="0">
+            <element x="460" y="310" type="embed://import/grafcet2/etape.elmt" uuid="{3ba984a9-4ca5-4fa2-9a11-85c41ddb349b}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-21" id="0" orientation="0"/>
-                    <terminal x="0" y="21" id="1" orientation="2"/>
-                    <terminal x="36" y="-10" id="2" orientation="1"/>
-                </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 04"/>
-                </inputs>
-            </element>
-            <element x="460" y="390" type="embed://import/grafcet2/transition.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="1" id="3" orientation="2"/>
-                    <terminal x="0" y="-1" id="4" orientation="0"/>
-                    <terminal x="-8" y="0" id="5" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="15" y="2" text="T 31"/>
-                </inputs>
-            </element>
-            <element x="170" y="260" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
-                <terminals>
-                    <terminal x="36" y="0" id="6" orientation="1"/>
-                </terminals>
-                <inputs>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                </inputs>
-            </element>
-            <element x="520" y="160" type="embed://import/grafcet/actions/continue.elmt" orientation="0">
-                <terminals>
-                    <terminal x="7" y="0" id="7" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="25" y="2" text="action"/>
-                </inputs>
-            </element>
-            <element x="170" y="180" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
-                <terminals>
-                    <terminal x="36" y="0" id="8" orientation="1"/>
-                </terminals>
-                <inputs>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                </inputs>
-            </element>
-            <element x="460" y="70" type="embed://import/grafcet2/macro/etape_entree.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="41" id="9" orientation="2"/>
-                    <terminal x="-8" y="40" id="10" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 03"/>
-                </inputs>
-            </element>
-            <element x="520" y="150" type="embed://import/grafcet/actions/continue.elmt" orientation="0">
-                <terminals>
-                    <terminal x="7" y="0" id="11" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="25" y="2" text="action"/>
-                </inputs>
-            </element>
-            <element x="460" y="220" type="embed://import/grafcet2/transition.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="1" id="12" orientation="2"/>
-                    <terminal x="0" y="-1" id="13" orientation="0"/>
-                    <terminal x="-8" y="0" id="14" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="15" y="2" text="T 30"/>
-                </inputs>
-            </element>
-            <element x="520" y="300" type="embed://import/grafcet/actions/continue.elmt" orientation="0">
-                <terminals>
-                    <terminal x="7" y="0" id="15" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="25" y="2" text="action"/>
-                </inputs>
-            </element>
-            <element x="520" y="170" type="embed://import/grafcet/actions/continue.elmt" orientation="0">
-                <terminals>
-                    <terminal x="7" y="0" id="16" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="25" y="2" text="action"/>
-                </inputs>
-            </element>
-            <element x="330" y="220" type="embed://import/automatisme/fonction/et.elmt" orientation="0">
-                <terminals>
-                    <terminal x="36" y="0" id="17" orientation="1"/>
-                    <terminal x="-36" y="-20" id="18" orientation="3"/>
-                    <terminal x="-36" y="20" id="19" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="-46" y="10" text="_"/>
-                    <input x="-46" y="-30" text="_"/>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                </inputs>
-            </element>
-            <element x="170" y="430" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
-                <terminals>
-                    <terminal x="36" y="0" id="20" orientation="1"/>
-                </terminals>
-                <inputs>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                </inputs>
-            </element>
-            <element x="460" y="460" type="embed://import/grafcet2/macro/etape_sortie.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="-21" id="21" orientation="0"/>
-                </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="S 03"/>
-                </inputs>
-            </element>
-            <element x="340" y="390" type="embed://import/automatisme/fonction/ou.elmt" orientation="0">
-                <terminals>
-                    <terminal x="36" y="0" id="22" orientation="1"/>
-                    <terminal x="-36" y="-20" id="23" orientation="3"/>
-                    <terminal x="-36" y="20" id="24" orientation="3"/>
-                </terminals>
-                <inputs>
-                    <input x="-46" y="10" text="_"/>
-                    <input x="-46" y="-30" text="_"/>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                </inputs>
-            </element>
-            <element x="170" y="350" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
-                <terminals>
-                    <terminal x="36" y="0" id="25" orientation="1"/>
-                </terminals>
-                <inputs>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                </inputs>
-            </element>
-            <element x="460" y="310" type="embed://import/grafcet2/etape.elmt" orientation="0">
-                <terminals>
-                    <terminal x="0" y="-21" id="26" orientation="0"/>
-                    <terminal x="0" y="21" id="27" orientation="2"/>
-                    <terminal x="36" y="-10" id="28" orientation="1"/>
+                    <terminal x="0" y="-21" nameHidden="0" number="" id="0" name="" orientation="0"/>
+                    <terminal x="0" y="21" nameHidden="0" number="" id="1" name="" orientation="2"/>
+                    <terminal x="36" y="-10" nameHidden="0" number="" id="2" name="" orientation="1"/>
                 </terminals>
                 <inputs>
                     <input x="-30" y="14" text=""/>
                     <input x="-20" y="0" text="E 05"/>
                 </inputs>
             </element>
-        </elements>
-        <conductors>
-            <conductor num="_" terminal1="12" terminal2="26" type="multi"/>
-            <conductor num="_" terminal1="16" terminal2="2" type="multi"/>
-            <conductor num="_" terminal1="17" terminal2="14" type="multi"/>
-            <conductor num="_" terminal1="2" terminal2="11" type="multi"/>
-            <conductor num="_" terminal1="1" terminal2="13" type="multi"/>
-            <conductor num="_" terminal1="9" terminal2="0" type="multi"/>
-            <conductor num="_" terminal1="28" terminal2="15" type="multi"/>
-            <conductor num="_" terminal1="4" terminal2="27" type="multi"/>
-            <conductor num="_" terminal1="2" terminal2="7" type="multi"/>
-            <conductor num="_" terminal1="3" terminal2="21" type="multi"/>
-            <conductor num="_" terminal1="6" terminal2="19" type="multi"/>
-            <conductor num="_" terminal1="8" terminal2="18" type="multi"/>
-            <conductor num="_" terminal1="20" terminal2="24" type="multi"/>
-            <conductor num="_" terminal1="22" terminal2="5" type="multi"/>
-            <conductor num="_" terminal1="25" terminal2="23" type="multi"/>
-        </conductors>
-    </diagram>
-    <diagram title="Conditions" displayrows="true" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="3" rows="6" author="" filename="" rowsize="80">
-        <defaultconductor num="_" type="multi"/>
-        <elements>
-            <element x="420" y="160" type="embed://import/automatisme/fonction/et.elmt" orientation="0">
+            <element x="170" y="350" type="embed://import/automatisme/fonction/entree.elmt" uuid="{12483728-267f-4c2f-b7ea-4ef02acb67b1}" orientation="0">
                 <terminals>
-                    <terminal x="36" y="0" id="0" orientation="1"/>
-                    <terminal x="-36" y="-20" id="1" orientation="3"/>
-                    <terminal x="-36" y="20" id="2" orientation="3"/>
+                    <terminal x="36" y="0" nameHidden="0" number="" id="3" name="" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                    <input x="-2" y="5" text="I"/>
+                    <input x="-2" y="5" text="I"/>
+                </inputs>
+            </element>
+            <element x="340" y="390" type="embed://import/automatisme/fonction/ou.elmt" uuid="{546bea81-a292-4105-8d0b-e696cbe2b71a}" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" nameHidden="0" number="" id="4" name="" orientation="1"/>
+                    <terminal x="-36" y="-20" nameHidden="0" number="" id="5" name="" orientation="3"/>
+                    <terminal x="-36" y="20" nameHidden="0" number="" id="6" name="" orientation="3"/>
                 </terminals>
                 <inputs>
                     <input x="-46" y="10" text="_"/>
                     <input x="-46" y="-30" text="_"/>
                     <input x="25" y="-10" text="_"/>
                     <input x="-25" y="50" text="_"/>
+                    <input x="-11.5" y="5" text="≥1"/>
+                    <input x="-11.5" y="5" text="≥1"/>
                 </inputs>
             </element>
-            <element x="560" y="160" type="embed://import/automatisme/fonction/sortie.elmt" orientation="0">
+            <element x="460" y="460" type="embed://import/grafcet2/macro/etape_sortie.elmt" uuid="{16ff747c-27ef-4d71-a637-e69948ec7778}" orientation="0">
                 <terminals>
-                    <terminal x="-36" y="0" id="3" orientation="3"/>
+                    <terminal x="0" y="-21" nameHidden="0" number="" id="7" name="" orientation="0"/>
                 </terminals>
                 <inputs>
-                    <input x="-46" y="-10" text="_"/>
-                    <input x="-25" y="50" text="T01"/>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="S 03"/>
                 </inputs>
             </element>
-            <element x="310" y="220" type="embed://import/automatisme/fonction/non.elmt" orientation="0">
+            <element x="170" y="430" type="embed://import/automatisme/fonction/entree.elmt" uuid="{901dcb49-d67c-459d-98dc-f77992b63bfb}" orientation="0">
                 <terminals>
-                    <terminal x="-36" y="0" id="4" orientation="3"/>
-                    <terminal x="36" y="0" id="5" orientation="1"/>
+                    <terminal x="36" y="0" nameHidden="0" number="" id="8" name="" orientation="1"/>
                 </terminals>
                 <inputs>
-                    <input x="-46" y="-10" text="_"/>
                     <input x="25" y="-10" text="_"/>
                     <input x="-25" y="50" text="_"/>
+                    <input x="-2" y="5" text="I"/>
+                    <input x="-2" y="5" text="I"/>
                 </inputs>
             </element>
-            <element x="190" y="220" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
+            <element x="330" y="220" type="embed://import/automatisme/fonction/et.elmt" uuid="{dff2338c-a7d0-4c8e-95bd-fde0887d0b1b}" orientation="0">
                 <terminals>
-                    <terminal x="36" y="0" id="6" orientation="1"/>
+                    <terminal x="36" y="0" nameHidden="0" number="" id="9" name="" orientation="1"/>
+                    <terminal x="-36" y="-20" nameHidden="0" number="" id="10" name="" orientation="3"/>
+                    <terminal x="-36" y="20" nameHidden="0" number="" id="11" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-46" y="10" text="_"/>
+                    <input x="-46" y="-30" text="_"/>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                    <input x="-6" y="5" text="&amp;"/>
+                    <input x="-6" y="5" text="&amp;"/>
+                </inputs>
+            </element>
+            <element x="520" y="170" type="embed://import/grafcet/actions/continue.elmt" uuid="{b216ef62-54ea-4a6b-9900-1987a932f765}" orientation="0">
+                <terminals>
+                    <terminal x="7" y="0" nameHidden="0" number="" id="12" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="2" text="action"/>
+                    <input x="8" y="3" text="="/>
+                    <input x="8" y="3" text="="/>
+                </inputs>
+            </element>
+            <element x="520" y="300" type="embed://import/grafcet/actions/continue.elmt" uuid="{f962fd78-860d-4193-b517-d06bac16cbf5}" orientation="0">
+                <terminals>
+                    <terminal x="7" y="0" nameHidden="0" number="" id="13" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="2" text="action"/>
+                    <input x="8" y="3" text="="/>
+                    <input x="8" y="3" text="="/>
+                </inputs>
+            </element>
+            <element x="460" y="220" type="embed://import/grafcet2/transition.elmt" uuid="{3c0fd8ce-8b1f-4f6f-ab43-1d22d4e6b5d8}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="1" nameHidden="0" number="" id="14" name="" orientation="2"/>
+                    <terminal x="0" y="-1" nameHidden="0" number="" id="15" name="" orientation="0"/>
+                    <terminal x="-8" y="0" nameHidden="0" number="" id="16" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="15" y="2" text="T 30"/>
+                </inputs>
+            </element>
+            <element x="520" y="150" type="embed://import/grafcet/actions/continue.elmt" uuid="{c154f8fa-ee5a-4400-a419-dc5aaaddd6a2}" orientation="0">
+                <terminals>
+                    <terminal x="7" y="0" nameHidden="0" number="" id="17" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="2" text="action"/>
+                    <input x="8" y="3" text="="/>
+                    <input x="8" y="3" text="="/>
+                </inputs>
+            </element>
+            <element x="460" y="70" type="embed://import/grafcet2/macro/etape_entree.elmt" uuid="{b6a9dba6-bded-458f-a948-d0f34ec92671}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="41" nameHidden="0" number="" id="18" name="" orientation="2"/>
+                    <terminal x="-8" y="40" nameHidden="0" number="" id="19" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="19" y="42" text="1"/>
+                    <input x="19" y="42" text="1"/>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 03"/>
+                </inputs>
+            </element>
+            <element x="170" y="180" type="embed://import/automatisme/fonction/entree.elmt" uuid="{dcc4fd4d-cfa8-4f72-9990-a5ae8e83307d}" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" nameHidden="0" number="" id="20" name="" orientation="1"/>
                 </terminals>
                 <inputs>
                     <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="Arrêt urgence"/>
+                    <input x="-25" y="50" text="_"/>
+                    <input x="-2" y="5" text="I"/>
+                    <input x="-2" y="5" text="I"/>
                 </inputs>
             </element>
-            <element x="190" y="100" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
+            <element x="520" y="160" type="embed://import/grafcet/actions/continue.elmt" uuid="{91b0d252-9167-4feb-baf1-25120b97a3ae}" orientation="0">
                 <terminals>
-                    <terminal x="36" y="0" id="7" orientation="1"/>
+                    <terminal x="7" y="0" nameHidden="0" number="" id="21" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="2" text="action"/>
+                    <input x="8" y="3" text="="/>
+                    <input x="8" y="3" text="="/>
+                </inputs>
+            </element>
+            <element x="170" y="260" type="embed://import/automatisme/fonction/entree.elmt" uuid="{82fd394e-304e-44c8-a695-c1cda10c3e21}" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" nameHidden="0" number="" id="22" name="" orientation="1"/>
                 </terminals>
                 <inputs>
                     <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="Bouton start"/>
+                    <input x="-25" y="50" text="_"/>
+                    <input x="-2" y="5" text="I"/>
+                    <input x="-2" y="5" text="I"/>
                 </inputs>
             </element>
-            <element x="290" y="370" type="embed://import/automatisme/lader/input/entree.elmt" orientation="0">
+            <element x="460" y="390" type="embed://import/grafcet2/transition.elmt" uuid="{bdb1cc69-7e03-4f4f-a4fc-c11413f16278}" orientation="0">
                 <terminals>
-                    <terminal x="20" y="0" id="8" orientation="1"/>
-                    <terminal x="-20" y="0" id="9" orientation="3"/>
+                    <terminal x="0" y="1" nameHidden="0" number="" id="23" name="" orientation="2"/>
+                    <terminal x="0" y="-1" nameHidden="0" number="" id="24" name="" orientation="0"/>
+                    <terminal x="-8" y="0" nameHidden="0" number="" id="25" name="" orientation="3"/>
                 </terminals>
                 <inputs>
-                    <input x="-18" y="-10" text="Bouton stop"/>
+                    <input x="15" y="2" text="T 31"/>
                 </inputs>
             </element>
-            <element x="200" y="400" type="embed://import/sources/multifilaire/src_p.elmt" orientation="0">
+            <element x="460" y="160" type="embed://import/grafcet2/etape.elmt" uuid="{68ae6a60-f2ae-4c1b-99c9-1993b2964eb4}" orientation="0">
                 <terminals>
-                    <terminal x="6" y="0" id="10" orientation="1"/>
-                </terminals>
-                <inputs/>
-            </element>
-            <element x="290" y="430" type="embed://import/automatisme/lader/input/entree.elmt" orientation="0">
-                <terminals>
-                    <terminal x="20" y="0" id="11" orientation="1"/>
-                    <terminal x="-20" y="0" id="12" orientation="3"/>
+                    <terminal x="0" y="-21" nameHidden="0" number="" id="26" name="" orientation="0"/>
+                    <terminal x="0" y="21" nameHidden="0" number="" id="27" name="" orientation="2"/>
+                    <terminal x="36" y="-10" nameHidden="0" number="" id="28" name="" orientation="1"/>
                 </terminals>
                 <inputs>
-                    <input x="-18" y="-10" text="Arrêt urgence"/>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 04"/>
                 </inputs>
             </element>
-            <element x="450" y="400" type="embed://import/automatisme/lader/output/sortie.elmt" orientation="0">
+        </elements>
+        <conductors>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="3" terminal2="5" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="4" terminal2="25" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="8" terminal2="6" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="20" terminal2="10" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="22" terminal2="11" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="23" terminal2="7" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="28" terminal2="21" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="24" terminal2="1" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="2" terminal2="13" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="18" terminal2="26" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="27" terminal2="15" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="28" terminal2="17" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="9" terminal2="16" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="12" terminal2="28" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="14" terminal2="0" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+        </conductors>
+    </diagram>
+    <diagram title="Conditions" displayrows="true" version="0.4" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="3" rows="6" author="" filename="" date="null" rowsize="80">
+        <defaultconductor num="_" vertirotatetext="0" displaytext="1" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+        <elements>
+            <element x="450" y="400" type="embed://import/automatisme/lader/output/sortie.elmt" uuid="{3a059f35-2597-48b7-9730-c399198908c5}" orientation="0">
                 <terminals>
-                    <terminal x="-20" y="0" id="13" orientation="3"/>
+                    <terminal x="-20" y="0" nameHidden="0" number="" id="0" name="" orientation="3"/>
                 </terminals>
                 <inputs>
                     <input x="-18" y="-10" text="T03_"/>
                 </inputs>
             </element>
+            <element x="290" y="430" type="embed://import/automatisme/lader/input/entree.elmt" uuid="{c5876a7c-c5c3-4842-baee-050f23a81f6d}" orientation="0">
+                <terminals>
+                    <terminal x="20" y="0" nameHidden="0" number="" id="1" name="" orientation="1"/>
+                    <terminal x="-20" y="0" nameHidden="0" number="" id="2" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-18" y="-10" text="Arrêt urgence"/>
+                </inputs>
+            </element>
+            <element x="200" y="400" type="embed://import/sources/multifilaire/src_p.elmt" uuid="{486f95db-99d4-4148-b8c4-cb7ab5e3ab1d}" orientation="0">
+                <terminals>
+                    <terminal x="6" y="0" nameHidden="0" number="" id="3" name="" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-12" y="3" text="L"/>
+                    <input x="-12" y="3" text="L"/>
+                </inputs>
+            </element>
+            <element x="290" y="370" type="embed://import/automatisme/lader/input/entree.elmt" uuid="{6046d2e7-4cab-4e46-8d15-1ccebefabd3d}" orientation="0">
+                <terminals>
+                    <terminal x="20" y="0" nameHidden="0" number="" id="4" name="" orientation="1"/>
+                    <terminal x="-20" y="0" nameHidden="0" number="" id="5" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-18" y="-10" text="Bouton stop"/>
+                </inputs>
+            </element>
+            <element x="190" y="100" type="embed://import/automatisme/fonction/entree.elmt" uuid="{9681f5f3-8ad4-4fef-b6fe-501ab028fc1f}" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" nameHidden="0" number="" id="6" name="" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="Bouton start"/>
+                    <input x="-2" y="5" text="I"/>
+                    <input x="-2" y="5" text="I"/>
+                </inputs>
+            </element>
+            <element x="190" y="220" type="embed://import/automatisme/fonction/entree.elmt" uuid="{1b95c847-07a9-465c-ad5c-095b93bc3d06}" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" nameHidden="0" number="" id="7" name="" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="Arrêt urgence"/>
+                    <input x="-2" y="5" text="I"/>
+                    <input x="-2" y="5" text="I"/>
+                </inputs>
+            </element>
+            <element x="310" y="220" type="embed://import/automatisme/fonction/non.elmt" uuid="{2ff0c5b1-dd75-4660-b5b5-13df9a365c93}" orientation="0">
+                <terminals>
+                    <terminal x="-36" y="0" nameHidden="0" number="" id="8" name="" orientation="3"/>
+                    <terminal x="36" y="0" nameHidden="0" number="" id="9" name="" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-46" y="-10" text="_"/>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                    <input x="-5" y="5" text="1"/>
+                    <input x="-5" y="5" text="1"/>
+                </inputs>
+            </element>
+            <element x="560" y="160" type="embed://import/automatisme/fonction/sortie.elmt" uuid="{2d78796c-4495-4030-8548-acbdfbefbbc0}" orientation="0">
+                <terminals>
+                    <terminal x="-36" y="0" nameHidden="0" number="" id="10" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-46" y="-10" text="_"/>
+                    <input x="-25" y="50" text="T01"/>
+                    <input x="-6.5" y="5" text="Q"/>
+                    <input x="-6.5" y="5" text="Q"/>
+                </inputs>
+            </element>
+            <element x="420" y="160" type="embed://import/automatisme/fonction/et.elmt" uuid="{39e1f6ea-04f2-4d8f-877e-02cfb7b60f36}" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" nameHidden="0" number="" id="11" name="" orientation="1"/>
+                    <terminal x="-36" y="-20" nameHidden="0" number="" id="12" name="" orientation="3"/>
+                    <terminal x="-36" y="20" nameHidden="0" number="" id="13" name="" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-46" y="10" text="_"/>
+                    <input x="-46" y="-30" text="_"/>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                    <input x="-6" y="5" text="&amp;"/>
+                    <input x="-6" y="5" text="&amp;"/>
+                </inputs>
+            </element>
         </elements>
         <conductors>
-            <conductor num="_" terminal1="10" terminal2="9" type="multi">
-                <segment length="9" orientation="horizontal"/>
-                <segment length="11" orientation="horizontal"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="4" terminal2="0" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="1" terminal2="0" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0">
+                <segment length="0" orientation="horizontal"/>
+                <segment length="56" orientation="horizontal"/>
                 <segment length="-30" orientation="vertical"/>
-                <segment length="27" orientation="horizontal"/>
-                <segment length="9" orientation="horizontal"/>
+                <segment length="56" orientation="horizontal"/>
+                <segment length="0" orientation="horizontal"/>
             </conductor>
-            <conductor num="_" terminal1="0" terminal2="3" type="multi"/>
-            <conductor num="_" terminal1="5" terminal2="2" type="multi"/>
-            <conductor num="_" terminal1="6" terminal2="4" type="multi"/>
-            <conductor num="_" terminal1="7" terminal2="1" type="multi"/>
-            <conductor num="_" terminal1="9" terminal2="12" type="multi">
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="5" terminal2="2" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0">
                 <segment length="-9" orientation="horizontal"/>
                 <segment length="-27" orientation="horizontal"/>
                 <segment length="60" orientation="vertical"/>
                 <segment length="27" orientation="horizontal"/>
                 <segment length="9" orientation="horizontal"/>
             </conductor>
-            <conductor num="_" terminal1="11" terminal2="13" type="multi">
-                <segment length="0" orientation="horizontal"/>
-                <segment length="56" orientation="horizontal"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="6" terminal2="12" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="7" terminal2="8" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="9" terminal2="13" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="11" terminal2="10" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="3" terminal2="5" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0">
+                <segment length="9" orientation="horizontal"/>
+                <segment length="11" orientation="horizontal"/>
                 <segment length="-30" orientation="vertical"/>
-                <segment length="56" orientation="horizontal"/>
-                <segment length="0" orientation="horizontal"/>
+                <segment length="27" orientation="horizontal"/>
+                <segment length="9" orientation="horizontal"/>
             </conductor>
-            <conductor num="_" terminal1="8" terminal2="13" type="multi"/>
         </conductors>
         <inputs>
-            <input x="540" y="290" text="Condition T02 si&#xa; - moteur en marche&#xa; - lubrification en marche&#xa;"/>
+            <input x="360" y="290" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>Condition T02 si - moteur en marche - lubrification en marche &lt;/p>&lt;/body>&lt;/html>"/>
         </inputs>
     </diagram>
     <collection>

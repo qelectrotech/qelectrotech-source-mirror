@@ -1,8 +1,15 @@
-<project title="" version="0.3">
+<project folioSheetQuantity="0" title="" version="0.4">
+    <properties/>
     <newdiagrams>
         <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80"/>
         <inset title="" folio="" author="" filename="" date="null"/>
-        <conductors num="_" type="multi"/>
+        <conductors num="_" vertirotatetext="0" displaytext="1" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+        <report label="/%f.%l%c"/>
+        <xrefs>
+            <xref snapto="label" switchprefix="" powerprefix="" displayhas="contacts" type="protection" showpowerctc="false" delayprefix=""/>
+            <xref snapto="bottom" switchprefix="" powerprefix="" displayhas="cross" type="coil" showpowerctc="false" delayprefix=""/>
+        </xrefs>
+        <conductors_autonums/>
     </newdiagrams>
     <diagram title="Exemple Moteur double sens" displayrows="true" cols="15" folio="" displaycols="true" height="500" colsize="50" order="1" rows="6" author="Benoît A" filename="Exemples QET" rowsize="80">
         <defaultconductor type="simple"/>
