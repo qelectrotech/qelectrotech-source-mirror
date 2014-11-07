@@ -143,7 +143,7 @@ void DVEventAddShape::updateHelpCross(const QPoint &p) {
 	//If line isn't created yet, we create it.
 	if (!m_help_horiz || !m_help_verti) {
 		QPen pen;
-		pen.setColor(Qt::yellow);
+		pen.setColor(Qt::darkBlue);
 		//Add +5 for each line, because the topleft of diagram isn't draw at position (0:0) but (5:5)
 		if (!m_help_horiz) {
 			m_help_horiz = new QGraphicsLineItem(m_diagram -> border_and_titleblock.rowsHeaderWidth() + 5, 0,
