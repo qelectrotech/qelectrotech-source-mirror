@@ -490,7 +490,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Φόρμα</translation>
+        <translation type="unfinished">fΦόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
@@ -5809,8 +5809,8 @@ Que désirez vous faire ?</source>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>%n φόρμα(ες)</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n φόρμα</numerusform>
+            <numerusform>%n φόρμες</numerusform>
         </translation>
     </message>
     <message>
