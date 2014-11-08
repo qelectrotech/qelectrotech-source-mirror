@@ -447,12 +447,12 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="107"/>
         <source>activer l&apos;option un texte par potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενεργοποιεί την επιλογή, ένα κείμενο ανά δυναμικό</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. (expérimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση ενός κειμένου δυναμικού ανά σελίδα (πειραματικό)</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
@@ -700,7 +700,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="67"/>
         <source>Maintenir ctrl pour un déplacer librement</source>
-        <translation type="unfinished"></translation>
+        <translation>Κρατήστε πατημένο το Ctrl για ελεύθερη μετακίνηση</translation>
     </message>
 </context>
 <context>
@@ -3955,7 +3955,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="203"/>
         <source>Exporter une nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή ονοματολογίας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="244"/>
@@ -4540,7 +4540,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="688"/>
         <source>Les éléments maîtres, esclaves  et simple doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Τα κύρια, βοηθητικά και απλά στοιχεία πρέπει να έχουν ένα πεδίο κειμένου με ετικέτα &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="705"/>
@@ -5808,7 +5808,8 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="275"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
+        <translation>
+            <numerusform>%n φόρμα(ες)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -7679,7 +7680,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Κωδικός</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
