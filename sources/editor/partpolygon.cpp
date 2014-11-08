@@ -174,6 +174,45 @@ QET::ScalingMethod PartPolygon::preferredScalingMethod() const {
 }
 
 /**
+ * @brief PartPolygon::addPoint
+ * Add new point to polygon
+ * @param point
+ */
+void PartPolygon::addPoint(const QPointF &point) {
+	QPolygonF poly = polygon();
+	poly << point;
+	setPolygon(poly);
+}
+
+/**
+ * @brief PartPolygon::setLastPoint
+ * Set the last point of polygon to @point
+ * @param point
+ */
+void PartPolygon::setLastPoint(const QPointF &point) {
+	QPolygonF poly = polygon();
+
+	if (poly.size())
+		poly.pop_back();
+
+	poly << point;
+	setPolygon(poly);
+}
+
+/**
+ * @brief PartPolygon::removeLastPoint
+ * Remove the last point of polygon
+ */
+void PartPolygon::removeLastPoint() {
+	QPolygonF poly = polygon();
+
+	if (poly.size())
+		poly.pop_back();
+
+	setPolygon(poly);
+}
+
+/**
 	@return le rectangle delimitant cette partie.
 */
 QRectF PartPolygon::boundingRect() const {

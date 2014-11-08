@@ -28,7 +28,6 @@ class CustomElementPart;
 class ElementEditionCommand;
 class ElementPrimitiveDecorator;
 class QETElementEditor;
-class PartPolygon;
 class PartArc;
 class ESEventInterface;
 class QKeyEvent;
@@ -43,7 +42,7 @@ class ElementScene : public QGraphicsScene {
 	
 	// enum
 	public:
-	enum Behavior { Normal, Circle, Polygon, Text, Terminal, Arc, TextField, PasteArea };
+	enum Behavior { Normal, Circle, Text, Terminal, Arc, TextField, PasteArea };
 	enum ItemOption {
 		SortByZValue = 1,
 		IncludeTerminals = 2,
@@ -88,7 +87,6 @@ class ElementScene : public QGraphicsScene {
 		/// Variables related to drawing
 		ESEventInterface *m_event_interface;
 		Behavior behavior;
-		PartPolygon *current_polygon;
 		PartArc *current_arc;
 		QETElementEditor *element_editor;
 	
@@ -141,10 +139,11 @@ class ElementScene : public QGraphicsScene {
 	QETElementEditor* editor() const;
 	
 	protected:
-		virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *);
-		virtual void mousePressEvent   (QGraphicsSceneMouseEvent *);
-		virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *);
-		virtual void keyPressEvent     (QKeyEvent *event);
+		virtual void mouseMoveEvent         (QGraphicsSceneMouseEvent *);
+		virtual void mousePressEvent       (QGraphicsSceneMouseEvent *);
+		virtual void mouseReleaseEvent     (QGraphicsSceneMouseEvent *);
+		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
+		virtual void keyPressEvent         (QKeyEvent *event);
 
 	virtual void drawForeground(QPainter *, const QRectF &);
 	virtual void endCurrentBehavior(const QGraphicsSceneMouseEvent *);
@@ -165,7 +164,6 @@ class ElementScene : public QGraphicsScene {
 	public slots:
 	void slot_move();
 	void slot_addCircle();
-	void slot_addPolygon();
 	void slot_addText();
 	void slot_addArc();
 	void slot_addTerminal();

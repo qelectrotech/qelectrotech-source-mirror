@@ -23,8 +23,10 @@
 #include "elementscene.h"
 #include "orientationset.h"
 #include "elementslocation.h"
+
 class ElementItemEditor;
 class ElementView;
+
 /**
 	This class represents an element editor, allowing users to draw, change and
 	configure a particular electrical element.
@@ -129,6 +131,7 @@ class QETElementEditor : public QETMainWindow {
 		void addLine();
 		void addRect();
 		void addEllipse();
+		void addPolygon();
 
 	void slot_new();
 	void slot_open();

@@ -44,6 +44,7 @@
 #include "eseventaddline.h"
 #include "eseventaddrect.h"
 #include "eseventaddellipse.h"
+#include "eseventaddpolygon.h"
 
 #include <QMessageBox>
 /*
@@ -251,7 +252,7 @@ void QETElementEditor::setupActions() {
 	connect(add_line,        SIGNAL(triggered()), this, SLOT(addLine()));
 	connect(add_rectangle,   SIGNAL(triggered()), this, SLOT(addRect()));
 	connect(add_ellipse,     SIGNAL(triggered()), this, SLOT(addEllipse()));
-	connect(add_polygon,     SIGNAL(triggered()), ce_scene, SLOT(slot_addPolygon()));
+	connect(add_polygon,     SIGNAL(triggered()), this, SLOT(addPolygon()));
 	connect(add_text,        SIGNAL(triggered()), ce_scene, SLOT(slot_addText()));
 	connect(add_arc,         SIGNAL(triggered()), ce_scene, SLOT(slot_addArc()));
 	connect(add_terminal,    SIGNAL(triggered()), ce_scene, SLOT(slot_addTerminal()));
@@ -946,6 +947,14 @@ void QETElementEditor::addRect() {
  */
 void QETElementEditor::addEllipse() {
 	ce_scene -> setEventInterface(new ESEventAddEllipse(ce_scene));
+}
+
+/**
+ * @brief QETElementEditor::addPolygon
+ * Set polygon creation interface to scene
+ */
+void QETElementEditor::addPolygon() {
+	ce_scene -> setEventInterface(new ESEventAddPolygon(ce_scene));
 }
 
 /**

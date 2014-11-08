@@ -15,33 +15,32 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef ESEVENTADDELLIPSE_H
-#define ESEVENTADDELLIPSE_H
+#ifndef ESEVENTADDPOLYGON_H
+#define ESEVENTADDPOLYGON_H
 
 #include "eseventinterface.h"
-#include <QPointF>
 
 class ElementScene;
-class PartEllipse;
+class PartPolygon;
 class QGraphicsSceneMouseEvent;
 
 /**
- * @brief The ESEventAddEllipse class
- * This ESEvent manage creation of ellpise in an ElementScene
+ * @brief The ESEventAddPolygon class
+ * This ESEvent manage creation of polygon in an ElementScene
  */
-class ESEventAddEllipse : public ESEventInterface
+class ESEventAddPolygon : public ESEventInterface
 {
 	public:
-		ESEventAddEllipse(ElementScene *scene);
-		~ESEventAddEllipse();
+		ESEventAddPolygon(ElementScene *scene);
+		virtual ~ESEventAddPolygon();
 
-		virtual bool mousePressEvent   (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
+		virtual bool mousePressEvent       (QGraphicsSceneMouseEvent *event);
+		virtual bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
+		virtual bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
+		virtual bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
 
 	private:
-		PartEllipse *m_ellipse;
-		QPointF      m_origin;
+		PartPolygon *m_polygon;
 };
 
-#endif // ESEVENTADDELLIPSE_H
+#endif // ESEVENTADDPOLYGON_H

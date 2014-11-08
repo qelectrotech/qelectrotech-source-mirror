@@ -49,7 +49,6 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	decorator_(0)
 {
 	setItemIndexMethod(NoIndex);
-	current_polygon = NULL;
 	setGrid(1, 1);
 	initPasteArea();
 	undo_stack.setClean();
@@ -61,6 +60,7 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 /// Destructeur
 ElementScene::~ElementScene() {
 	delete decorator_lock_;
+	if (m_event_interface) delete m_event_interface;
 }
 
 /**
@@ -78,15 +78,6 @@ void ElementScene::slot_addCircle() {
 	behavior = Circle;
 	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
 }
-
-/**
-	Passe la scene en mode "ajout de polygone"
-*/
-void ElementScene::slot_addPolygon() {
-	behavior = Polygon;
-	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
-}
-
 
 /**
 	Passe la scene en mode "ajout de texte statique"
@@ -139,7 +130,6 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	QPointF event_pos = e -> scenePos();
 	if (mustSnapToGrid(e)) event_pos = snapToGrid(event_pos);
 	
-	if (behavior != Polygon && current_polygon != NULL) current_polygon = NULL;
 	if (behavior == PasteArea) {
 		QRectF current_rect(paste_area_ -> rect());
 		current_rect.moveCenter(event_pos);
@@ -148,8 +138,6 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	}
 	
 	QRectF temp_rect;
-	QPointF temp_point;
-	QPolygonF temp_polygon;
 	if (e -> buttons() & Qt::LeftButton) {
 		switch(behavior) {
 			case Arc:
@@ -157,23 +145,12 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 				temp_rect.setBottomRight(event_pos);
 				current_arc -> setRect(temp_rect);
 				break;
-			case Polygon:
-				if (current_polygon == NULL) break;
-				temp_polygon = current_polygon -> polygon();
-				temp_polygon.pop_back();
-				temp_polygon << event_pos;
-				current_polygon -> setPolygon(temp_polygon);
-				break;
 			case Normal:
 			default:
 				QGraphicsScene::mouseMoveEvent(e);
 		}
-	} else if (behavior == Polygon && current_polygon != NULL) {
-		temp_polygon = current_polygon -> polygon();
-		temp_polygon.pop_back();
-		temp_polygon << event_pos;
-		current_polygon -> setPolygon(temp_polygon);
-	} else QGraphicsScene::mouseMoveEvent(e);
+	}
+	else QGraphicsScene::mouseMoveEvent(e);
 }
 
 /**
@@ -194,24 +171,12 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	QPointF event_pos = e -> scenePos();
 	if (mustSnapToGrid(e)) event_pos = snapToGrid(event_pos);
 	
-	if (behavior != Polygon && current_polygon != NULL) current_polygon = NULL;
-	QPolygonF temp_polygon;
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
 			case Arc:
 				current_arc = new PartArc(element_editor, 0, this);
 				current_arc -> setRect(QRectF(event_pos, QSizeF(0.0, 0.0)));
 				current_arc -> setProperty("antialias", true);
-				break;
-			case Polygon:
-				if (current_polygon == NULL) {
-					current_polygon = new PartPolygon(element_editor, 0, this);
-					temp_polygon = QPolygonF(0);
-				} else temp_polygon = current_polygon -> polygon();
-				// au debut, on insere deux points
-				if (!temp_polygon.count()) temp_polygon << event_pos;
-				temp_polygon << event_pos;
-				current_polygon -> setPolygon(temp_polygon);
 				break;
 			case Normal:
 			default:
@@ -242,7 +207,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	PartTerminal *terminal;
 	PartText *text;
 	PartTextField *textfield;
-	if (behavior != Polygon && current_polygon != NULL) current_polygon = NULL;
 	
 	if (behavior == PasteArea) {
 		defined_paste_area_ = paste_area_ -> rect();
@@ -288,14 +252,23 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 				QGraphicsScene::mouseReleaseEvent(e);
 				moving_parts_ = false;
 		}
-	} else if (e -> button() & Qt::RightButton) {
-		if (behavior == Polygon && current_polygon != NULL) {
-			undo_stack.push(new AddPartCommand(tr("polygone"), this, current_polygon));
-			current_polygon = NULL;
-			emit(partsAdded());
-			endCurrentBehavior(e);
-		} else QGraphicsScene::mouseReleaseEvent(e);
-	} else QGraphicsScene::mouseReleaseEvent(e);
+	}
+	else QGraphicsScene::mouseReleaseEvent(e);
+}
+
+void ElementScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+	if (m_event_interface) {
+		if (m_event_interface -> mouseDoubleClickEvent(event)) {
+			if (m_event_interface->isFinish()) {
+				emit(partsAdded());
+				emit(needNormalMode());
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+
+	QGraphicsScene::mouseDoubleClickEvent(event);
 }
 
 /**

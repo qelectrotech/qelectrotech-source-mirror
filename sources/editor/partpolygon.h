@@ -58,6 +58,10 @@ class PartPolygon : public CustomElementGraphicPart, public QGraphicsPolygonItem
 	virtual void handleUserTransformation(const QRectF &, const QRectF &);
 	virtual QET::ScalingMethod preferredScalingMethod() const;
 
+		void addPoint        (const QPointF &point);
+		void setLastPoint    (const QPointF &point);
+		void removeLastPoint ();
+
 	///PROPERTY
 	// Closed (join the first and last point by a line)
 	Q_PROPERTY(bool closed READ isClosed WRITE setClosed)
