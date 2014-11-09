@@ -80,14 +80,6 @@ void ElementScene::slot_addTerminal() {
 }
 
 /**
-	Passe la scene en mode "ajout de champ de texte"
-*/
-void ElementScene::slot_addTextField() {
-	behavior = TextField;
-	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
-}
-
-/**
 	Gere les mouvements de la souris
 	@param e objet decrivant l'evenement
 */
@@ -155,7 +147,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (mustSnapToGrid(e)) event_pos = snapToGrid(event_pos);
 	
 	PartTerminal *terminal;
-	PartTextField *textfield;
 	
 	if (behavior == PasteArea) {
 		defined_paste_area_ = paste_area_ -> rect();
@@ -171,13 +162,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 				terminal = new PartTerminal(element_editor, 0, this);
 				terminal -> setPos(event_pos);
 				undo_stack.push(new AddPartCommand(tr("borne"), this, terminal));
-				emit(partsAdded());
-				endCurrentBehavior(e);
-				break;
-			case TextField:
-				textfield = new PartTextField(element_editor, 0, this);
-				textfield -> setPos(event_pos);
-				undo_stack.push(new AddPartCommand(tr("champ de texte"), this, textfield));
 				emit(partsAdded());
 				endCurrentBehavior(e);
 				break;
