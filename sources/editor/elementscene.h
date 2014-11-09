@@ -41,7 +41,7 @@ class ElementScene : public QGraphicsScene {
 	
 	// enum
 	public:
-	enum Behavior { Normal, Circle, Text, Terminal, TextField, PasteArea };
+	enum Behavior { Normal, Terminal, TextField, PasteArea };
 	enum ItemOption {
 		SortByZValue = 1,
 		IncludeTerminals = 2,
@@ -161,8 +161,6 @@ class ElementScene : public QGraphicsScene {
 	
 	public slots:
 	void slot_move();
-	void slot_addCircle();
-	void slot_addText();
 	void slot_addTerminal();
 	void slot_addTextField();
 	void slot_select(const ElementContent &);

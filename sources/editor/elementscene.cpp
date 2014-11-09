@@ -72,22 +72,6 @@ void ElementScene::slot_move() {
 }
 
 /**
-	Passe la scene en mode "ajout de cercle"
-*/
-void ElementScene::slot_addCircle() {
-	behavior = Circle;
-	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
-}
-
-/**
-	Passe la scene en mode "ajout de texte statique"
-*/
-void ElementScene::slot_addText() {
-	behavior = Text;
-	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
-}
-
-/**
 	Passe la scene en mode "ajout de borne"
 */
 void ElementScene::slot_addTerminal() {
@@ -147,8 +131,6 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 			return;
 		}
 	}
-	QPointF event_pos = e -> scenePos();
-	if (mustSnapToGrid(e)) event_pos = snapToGrid(event_pos);
 
 	QGraphicsScene::mousePressEvent(e);
 }
@@ -173,7 +155,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (mustSnapToGrid(e)) event_pos = snapToGrid(event_pos);
 	
 	PartTerminal *terminal;
-	PartText *text;
 	PartTextField *textfield;
 	
 	if (behavior == PasteArea) {
@@ -190,13 +171,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 				terminal = new PartTerminal(element_editor, 0, this);
 				terminal -> setPos(event_pos);
 				undo_stack.push(new AddPartCommand(tr("borne"), this, terminal));
-				emit(partsAdded());
-				endCurrentBehavior(e);
-				break;
-			case Text:
-				text = new PartText(element_editor, 0, this);
-				text -> setPos(event_pos);
-				undo_stack.push(new AddPartCommand(tr("texte"), this, text));
 				emit(partsAdded());
 				endCurrentBehavior(e);
 				break;
