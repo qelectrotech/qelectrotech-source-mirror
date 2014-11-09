@@ -54,7 +54,6 @@ bool ESEventAddEllipse::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 		if (!m_ellipse) {
 			m_ellipse = new PartEllipse(m_editor, 0, m_scene);
 			m_ellipse -> setRect(QRectF(pos, pos));
-			m_ellipse -> setProperty("antialias", true);
 			m_origin = pos;
 			return true;
 		}

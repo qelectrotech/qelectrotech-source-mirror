@@ -45,6 +45,7 @@
 #include "eseventaddrect.h"
 #include "eseventaddellipse.h"
 #include "eseventaddpolygon.h"
+#include "eseventaddarc.h"
 
 #include <QMessageBox>
 /*
@@ -254,7 +255,7 @@ void QETElementEditor::setupActions() {
 	connect(add_ellipse,     SIGNAL(triggered()), this, SLOT(addEllipse()));
 	connect(add_polygon,     SIGNAL(triggered()), this, SLOT(addPolygon()));
 	connect(add_text,        SIGNAL(triggered()), ce_scene, SLOT(slot_addText()));
-	connect(add_arc,         SIGNAL(triggered()), ce_scene, SLOT(slot_addArc()));
+	connect(add_arc,         SIGNAL(triggered()), this, SLOT(addArc()));
 	connect(add_terminal,    SIGNAL(triggered()), ce_scene, SLOT(slot_addTerminal()));
 	connect(add_textfield,   SIGNAL(triggered()), ce_scene, SLOT(slot_addTextField()));
 
@@ -955,6 +956,14 @@ void QETElementEditor::addEllipse() {
  */
 void QETElementEditor::addPolygon() {
 	ce_scene -> setEventInterface(new ESEventAddPolygon(ce_scene));
+}
+
+/**
+ * @brief QETElementEditor::addArc
+ * Set arc creation interface to scene
+ */
+void QETElementEditor::addArc() {
+	ce_scene -> setEventInterface(new ESEventAddArc(ce_scene));
 }
 
 /**

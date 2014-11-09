@@ -28,7 +28,6 @@ class CustomElementPart;
 class ElementEditionCommand;
 class ElementPrimitiveDecorator;
 class QETElementEditor;
-class PartArc;
 class ESEventInterface;
 class QKeyEvent;
 /**
@@ -42,7 +41,7 @@ class ElementScene : public QGraphicsScene {
 	
 	// enum
 	public:
-	enum Behavior { Normal, Circle, Text, Terminal, Arc, TextField, PasteArea };
+	enum Behavior { Normal, Circle, Text, Terminal, TextField, PasteArea };
 	enum ItemOption {
 		SortByZValue = 1,
 		IncludeTerminals = 2,
@@ -87,7 +86,6 @@ class ElementScene : public QGraphicsScene {
 		/// Variables related to drawing
 		ESEventInterface *m_event_interface;
 		Behavior behavior;
-		PartArc *current_arc;
 		QETElementEditor *element_editor;
 	
 		/// Variables to manage the paste area on the scene
@@ -165,7 +163,6 @@ class ElementScene : public QGraphicsScene {
 	void slot_move();
 	void slot_addCircle();
 	void slot_addText();
-	void slot_addArc();
 	void slot_addTerminal();
 	void slot_addTextField();
 	void slot_select(const ElementContent &);

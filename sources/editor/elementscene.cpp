@@ -96,14 +96,6 @@ void ElementScene::slot_addTerminal() {
 }
 
 /**
-	Passe la scene en mode "ajout d'arc de cercle"
-*/
-void ElementScene::slot_addArc() {
-	behavior = Arc;
-	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
-}
-
-/**
 	Passe la scene en mode "ajout de champ de texte"
 */
 void ElementScene::slot_addTextField() {
@@ -136,21 +128,8 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		paste_area_ -> setRect(current_rect);
 		return;
 	}
-	
-	QRectF temp_rect;
-	if (e -> buttons() & Qt::LeftButton) {
-		switch(behavior) {
-			case Arc:
-				temp_rect = current_arc -> rect();
-				temp_rect.setBottomRight(event_pos);
-				current_arc -> setRect(temp_rect);
-				break;
-			case Normal:
-			default:
-				QGraphicsScene::mouseMoveEvent(e);
-		}
-	}
-	else QGraphicsScene::mouseMoveEvent(e);
+
+	QGraphicsScene::mouseMoveEvent(e);
 }
 
 /**
@@ -170,19 +149,8 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	}
 	QPointF event_pos = e -> scenePos();
 	if (mustSnapToGrid(e)) event_pos = snapToGrid(event_pos);
-	
-	if (e -> button() & Qt::LeftButton) {
-		switch(behavior) {
-			case Arc:
-				current_arc = new PartArc(element_editor, 0, this);
-				current_arc -> setRect(QRectF(event_pos, QSizeF(0.0, 0.0)));
-				current_arc -> setProperty("antialias", true);
-				break;
-			case Normal:
-			default:
-				QGraphicsScene::mousePressEvent(e);
-		}
-	} else QGraphicsScene::mousePressEvent(e);
+
+	QGraphicsScene::mousePressEvent(e);
 }
 
 /**
@@ -218,13 +186,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
-			case Arc:
-				if (qgiManager().manages(current_arc)) break;
-				current_arc-> setRect(current_arc -> rect().normalized());
-				undo_stack.push(new AddPartCommand(tr("arc"), this, current_arc));
-				emit(partsAdded());
-				endCurrentBehavior(e);
-				break;
 			case Terminal:
 				terminal = new PartTerminal(element_editor, 0, this);
 				terminal -> setPos(event_pos);

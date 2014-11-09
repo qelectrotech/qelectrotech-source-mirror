@@ -132,6 +132,7 @@ class QETElementEditor : public QETMainWindow {
 		void addRect();
 		void addEllipse();
 		void addPolygon();
+		void addArc();
 
 	void slot_new();
 	void slot_open();
