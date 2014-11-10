@@ -81,7 +81,7 @@ class QETElementEditor : public QETMainWindow {
 	QToolBar *parts_toolbar, *main_toolbar, *view_toolbar, *depth_toolbar, *element_toolbar;
 	/// toolbars actions
 	QActionGroup *parts;
-	QAction *move, *add_line, *add_rectangle, *add_ellipse, *add_polygon, *add_text;
+	QAction *add_line, *add_rectangle, *add_ellipse, *add_polygon, *add_text;
 	QAction *add_arc, *add_terminal, *add_textfield;
 	/// minimum window title
 	QString min_title;
@@ -136,6 +136,7 @@ class QETElementEditor : public QETMainWindow {
 		void addText();
 		void addTextField();
 		void addTerminal();
+		void UncheckAddPrimitive();
 
 	void slot_new();
 	void slot_open();
@@ -148,7 +149,6 @@ class QETElementEditor : public QETMainWindow {
 	bool slot_saveAsFile();
 	void slot_setRubberBandToView();
 	void slot_setNoDragToView();
-	void slot_setNormalMode();
 	void slot_updateInformations();
 	void slot_updateMenus();
 	void slot_updateTitle();

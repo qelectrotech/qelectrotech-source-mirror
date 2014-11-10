@@ -80,7 +80,6 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		if (m_event_interface -> mouseMoveEvent(e)) {
 			if (m_event_interface->isFinish()) {
 				emit(partsAdded());
-				emit(needNormalMode());
 				delete m_event_interface; m_event_interface = nullptr;
 			}
 			return;
@@ -109,7 +108,6 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 		if (m_event_interface -> mousePressEvent(e)) {
 			if (m_event_interface->isFinish()) {
 				emit(partsAdded());
-				emit(needNormalMode());
 				delete m_event_interface; m_event_interface = nullptr;
 			}
 			return;
@@ -128,7 +126,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		if (m_event_interface -> mouseReleaseEvent(e)) {
 			if (m_event_interface->isFinish()) {
 				emit(partsAdded());
-				emit(needNormalMode());
 				delete m_event_interface; m_event_interface = nullptr;
 			}
 			return;
@@ -155,7 +152,6 @@ void ElementScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 		if (m_event_interface -> mouseDoubleClickEvent(event)) {
 			if (m_event_interface->isFinish()) {
 				emit(partsAdded());
-				emit(needNormalMode());
 				delete m_event_interface; m_event_interface = nullptr;
 			}
 			return;
@@ -175,7 +171,6 @@ void ElementScene::keyPressEvent(QKeyEvent *event) {
 		if (m_event_interface -> keyPressEvent(event)) {
 			if (m_event_interface->isFinish()) {
 				emit(partsAdded());
-				emit(needNormalMode());
 				delete m_event_interface; m_event_interface = nullptr;
 			}
 			return;
@@ -211,7 +206,12 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &rect) {
  * @param interface
  */
 void ElementScene::setEventInterface(ESEventInterface *interface) {
-	if (m_event_interface) delete m_event_interface;
+	if (m_event_interface) {
+		delete m_event_interface;
+		//We must to re-init because previous interface
+		//Reset his own init when deleted
+		interface->init();
+	}
 	m_event_interface = interface;
 }
 

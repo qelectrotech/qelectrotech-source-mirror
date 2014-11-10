@@ -162,7 +162,6 @@ void QETElementEditor::setupActions() {
 	edit_lower        = new QAction(QET::Icons::Lower,                tr("\311loigner"),                               this);
 	edit_backward     = new QAction(QET::Icons::SendBackward,         tr("Envoyer au fond"),                           this);
 	edit_forward      = new QAction(QET::Icons::BringForward,         tr("Amener au premier plan"),                    this);
-	move              = new QAction(QET::Icons::PartSelect,           tr("D\351placer un objet"),                      this);
 	add_line          = new QAction(QET::Icons::PartLine,             tr("Ajouter une ligne"),                         this);
 	add_rectangle     = new QAction(QET::Icons::PartRectangle,        tr("Ajouter un rectangle"),                      this);
 	add_ellipse       = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une ellipse"),                       this);
@@ -171,16 +170,6 @@ void QETElementEditor::setupActions() {
 	add_arc           = new QAction(QET::Icons::PartArc,              tr("Ajouter un arc de cercle"),                  this);
 	add_terminal      = new QAction(QET::Icons::Terminal,             tr("Ajouter une borne"),                         this);
 	add_textfield     = new QAction(QET::Icons::PartTextField,        tr("Ajouter un champ de texte"),                 this);
-	
-	QString add_status_tip = tr("Maintenez la touche Shift enfonc\351e pour effectuer plusieurs ajouts d'affil\351e");
-	add_line      -> setStatusTip(add_status_tip);
-	add_rectangle -> setStatusTip(add_status_tip);
-	add_ellipse   -> setStatusTip(add_status_tip);
-	add_text      -> setStatusTip(add_status_tip);
-	add_arc       -> setStatusTip(add_status_tip);
-	add_terminal  -> setStatusTip(add_status_tip);
-	add_textfield -> setStatusTip(add_status_tip);
-	add_polygon   -> setStatusTip(tr("Utilisez le bouton droit de la souris pour poser le dernier point du polygone"));
 	
 	undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));
 	redo = ce_scene -> undoStack().createRedoAction(this, tr("Refaire"));
@@ -251,7 +240,6 @@ void QETElementEditor::setupActions() {
 	connect(edit_raise,      SIGNAL(triggered()), ce_scene, SLOT(slot_raise()));
 	connect(edit_lower,      SIGNAL(triggered()), ce_scene, SLOT(slot_lower()));
 	connect(edit_backward,   SIGNAL(triggered()), ce_scene, SLOT(slot_sendBackward()));
-	connect(move,            SIGNAL(triggered()), ce_scene, SLOT(slot_move()));
 
 	connect(add_line,        SIGNAL(triggered()), this, SLOT(addLine()));
 	connect(add_rectangle,   SIGNAL(triggered()), this, SLOT(addRect()));
@@ -261,20 +249,7 @@ void QETElementEditor::setupActions() {
 	connect(add_arc,         SIGNAL(triggered()), this, SLOT(addArc()));
 	connect(add_terminal,    SIGNAL(triggered()), this, SLOT(addTerminal()));
 	connect(add_textfield,   SIGNAL(triggered()), this, SLOT(addTextField()));
-
-	connect(move,            SIGNAL(triggered()), this,     SLOT(slot_setRubberBandToView()));
-	connect(add_line,        SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
-	connect(add_rectangle,   SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
-	connect(add_ellipse,     SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
-	connect(add_polygon,     SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
-	connect(add_text,        SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
-	connect(add_arc,         SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
-	connect(add_terminal,    SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
-	connect(add_textfield,   SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
 	
-	connect(ce_scene,        SIGNAL(needNormalMode()), this, SLOT(slot_setNormalMode()));
-	
-	move          -> setCheckable(true);
 	add_line      -> setCheckable(true);
 	add_rectangle -> setCheckable(true);
 	add_ellipse   -> setCheckable(true);
@@ -285,7 +260,6 @@ void QETElementEditor::setupActions() {
 	add_textfield -> setCheckable(true);
 	
 	parts = new QActionGroup(this);
-	parts -> addAction(move);
 	parts -> addAction(add_line);
 	parts -> addAction(add_rectangle);
 	parts -> addAction(add_ellipse);
@@ -295,11 +269,12 @@ void QETElementEditor::setupActions() {
 	parts -> addAction(add_textfield);
 	parts -> addAction(add_terminal);
 	parts -> setExclusive(true);
+
+	connect (ce_scene, SIGNAL(partsAdded()), this, SLOT(UncheckAddPrimitive()));
 	
 	parts_toolbar = new QToolBar(tr("Parties", "toolbar title"), this);
 	parts_toolbar -> setObjectName("parts");
 	foreach (QAction *action, parts -> actions()) parts_toolbar -> addAction(action);
-	move -> setChecked(true);
 	parts_toolbar -> setAllowedAreas(Qt::AllToolBarAreas);
 	
 	/*
@@ -595,15 +570,6 @@ void QETElementEditor::slot_setRubberBandToView() {
 */
 void QETElementEditor::slot_setNoDragToView() {
 	ce_view -> setDragMode(QGraphicsView::NoDrag);
-}
-
-/**
-	Passe l'editeur en mode normal
-*/
-void QETElementEditor::slot_setNormalMode() {
-	if (!move -> isChecked()) move -> setChecked(true);
-	ce_view -> setDragMode(QGraphicsView::RubberBandDrag);
-	ce_scene -> slot_move();
 }
 
 /**
@@ -991,6 +957,14 @@ void QETElementEditor::addTextField() {
  */
 void QETElementEditor::addTerminal() {
 	ce_scene -> setEventInterface(new ESEventAddTerminal(ce_scene));
+}
+
+/**
+ * @brief QETElementEditor::UncheckAddPrimitive
+ * Uncheck all action related to primitive
+ */
+void QETElementEditor::UncheckAddPrimitive() {
+	foreach(QAction *action, parts->actions()) action -> setChecked(false);
 }
 
 /**

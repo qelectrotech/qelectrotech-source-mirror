@@ -28,8 +28,14 @@ ESEventInterface::ESEventInterface(ElementScene *scene) :
 	m_running    (false),
 	m_abort      (false)
 {
+	init();
+}
+
+void ESEventInterface::init() {
 	foreach (QGraphicsView *qgv, m_scene->views())
 		qgv->setContextMenuPolicy(Qt::NoContextMenu);
+
+	m_editor->slot_setNoDragToView();
 }
 
 ESEventInterface::~ESEventInterface() {
@@ -38,6 +44,8 @@ ESEventInterface::~ESEventInterface() {
 
 	foreach (QGraphicsView *qgv, m_scene->views())
 		qgv->setContextMenuPolicy(Qt::DefaultContextMenu);
+
+	m_editor->slot_setRubberBandToView();
 }
 
 bool ESEventInterface::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {

@@ -60,7 +60,7 @@ bool ESEventAddEllipse::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 
 		//Add ellipse to scene
 		m_ellipse  -> setRect(m_ellipse -> rect().normalized());
-		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Rectangle"), m_scene, m_ellipse));
+		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Ellipse"), m_scene, m_ellipse));
 
 		//Set m_ellipse to nullptr for create new ellipse at next mouse press
 		m_ellipse = nullptr;

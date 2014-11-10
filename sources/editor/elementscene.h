@@ -174,11 +174,6 @@ class ElementScene : public QGraphicsScene {
 	void stackAction(ElementEditionCommand *);
 	
 	signals:
-	/**
-		Signal emitted when the scene requires the element editor to switch back to
-		normal mode.
-	*/
-	void needNormalMode();
 	/// Signal emitted after one or several parts were added
 	void partsAdded();
 	/// Signal emitted after one or several parts were removed

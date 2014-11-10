@@ -32,6 +32,8 @@ class ESEventInterface
 		ESEventInterface(ElementScene *scene);
 		virtual ~ESEventInterface();
 
+		void init();
+
 		virtual bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
 		virtual bool mousePressEvent       (QGraphicsSceneMouseEvent *event);
 		virtual bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
