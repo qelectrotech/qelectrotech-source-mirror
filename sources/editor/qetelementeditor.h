@@ -135,6 +135,7 @@ class QETElementEditor : public QETMainWindow {
 		void addArc();
 		void addText();
 		void addTextField();
+		void addTerminal();
 
 	void slot_new();
 	void slot_open();

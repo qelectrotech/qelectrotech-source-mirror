@@ -72,17 +72,9 @@ void ElementScene::slot_move() {
 }
 
 /**
-	Passe la scene en mode "ajout de borne"
-*/
-void ElementScene::slot_addTerminal() {
-	behavior = Terminal;
-	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
-}
-
-/**
-	Gere les mouvements de la souris
-	@param e objet decrivant l'evenement
-*/
+ * @brief ElementScene::mouseMoveEvent
+ * @param e
+ */
 void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseMoveEvent(e)) {
@@ -109,9 +101,9 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 }
 
 /**
-	Gere les appuis sur les boutons de la souris
-	@param e objet decrivant l'evenement
-*/
+ * @brief ElementScene::mousePressEvent
+ * @param e
+ */
 void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mousePressEvent(e)) {
@@ -128,9 +120,9 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 }
 
 /**
-	Gere les relachements de boutons de la souris
-	@param e objet decrivant l'evenement
-*/
+ * @brief ElementScene::mouseReleaseEvent
+ * @param e
+ */
 void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseReleaseEvent(e)) {
@@ -142,11 +134,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 			return;
 		}
 	}
-
-	QPointF event_pos = e -> scenePos();
-	if (mustSnapToGrid(e)) event_pos = snapToGrid(event_pos);
-	
-	PartTerminal *terminal;
 	
 	if (behavior == PasteArea) {
 		defined_paste_area_ = paste_area_ -> rect();
@@ -155,26 +142,14 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		behavior = Normal;
 		return;
 	}
-	
-	if (e -> button() & Qt::LeftButton) {
-		switch(behavior) {
-			case Terminal:
-				terminal = new PartTerminal(element_editor, 0, this);
-				terminal -> setPos(event_pos);
-				undo_stack.push(new AddPartCommand(tr("borne"), this, terminal));
-				emit(partsAdded());
-				endCurrentBehavior(e);
-				break;
-			case Normal:
-			default:
-				// detecte les deplacements de parties
-				QGraphicsScene::mouseReleaseEvent(e);
-				moving_parts_ = false;
-		}
-	}
-	else QGraphicsScene::mouseReleaseEvent(e);
+
+	QGraphicsScene::mouseReleaseEvent(e);
 }
 
+/**
+ * @brief ElementScene::mouseDoubleClickEvent
+ * @param event
+ */
 void ElementScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseDoubleClickEvent(event)) {
@@ -228,20 +203,6 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &rect) {
 	p -> drawLine(-20, 0, 20, 0);
 	p -> drawLine(0, -20, 0, 20);
 	p -> restore();
-}
-
-/**
-	A partir d'un evenement souris, cette methode regarde si la touche shift est
-	enfoncee ou non. Si oui, elle laisse le comportement en cours (cercle,
-	texte, polygone, ...). Si non, elle repasse en mode normal / selection.
-	@param event objet decrivant l'evenement souris
-*/
-void ElementScene::endCurrentBehavior(const QGraphicsSceneMouseEvent *event) {
-	if (!(event -> modifiers() & Qt::ShiftModifier)) {
-		// la touche Shift n'est pas enfoncee : on demande le mode normal
-		behavior = Normal;
-		emit(needNormalMode());
-	}
 }
 
 /**
@@ -502,14 +463,6 @@ void ElementScene::copy() {
 	
 	// retient le dernier contenu copie
 	last_copied_ = clipboard_content;
-}
-
-/**
-	Gere le fait de coller le contenu du presse-papier = l'importer dans le
-	presse-papier a une position donnee.
-*/
-void ElementScene::paste() {
-	
 }
 
 void ElementScene::contextMenu(QContextMenuEvent *event) {

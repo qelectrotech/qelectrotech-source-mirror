@@ -48,6 +48,7 @@
 #include "eseventaddarc.h"
 #include "eseventaddtext.h"
 #include "eseventaddtextfield.h"
+#include "eseventaddterminal.h"
 
 #include <QMessageBox>
 /*
@@ -258,7 +259,7 @@ void QETElementEditor::setupActions() {
 	connect(add_polygon,     SIGNAL(triggered()), this, SLOT(addPolygon()));
 	connect(add_text,        SIGNAL(triggered()), this, SLOT(addText()));
 	connect(add_arc,         SIGNAL(triggered()), this, SLOT(addArc()));
-	connect(add_terminal,    SIGNAL(triggered()), ce_scene, SLOT(slot_addTerminal()));
+	connect(add_terminal,    SIGNAL(triggered()), this, SLOT(addTerminal()));
 	connect(add_textfield,   SIGNAL(triggered()), this, SLOT(addTextField()));
 
 	connect(move,            SIGNAL(triggered()), this,     SLOT(slot_setRubberBandToView()));
@@ -978,10 +979,18 @@ void QETElementEditor::addText() {
 
 /**
  * @brief QETElementEditor::addTextField
- * Set text field interface to scene
+ * Set text field creation interface to scene
  */
 void QETElementEditor::addTextField() {
 	ce_scene -> setEventInterface(new ESEventAddTextField(ce_scene));
+}
+
+/**
+ * @brief QETElementEditor::addTerminal
+ * Set terminal creation interface to scene
+ */
+void QETElementEditor::addTerminal() {
+	ce_scene -> setEventInterface(new ESEventAddTerminal(ce_scene));
 }
 
 /**

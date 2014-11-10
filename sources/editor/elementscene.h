@@ -41,7 +41,7 @@ class ElementScene : public QGraphicsScene {
 	
 	// enum
 	public:
-	enum Behavior { Normal, Terminal, PasteArea };
+	enum Behavior { Normal, PasteArea };
 	enum ItemOption {
 		SortByZValue = 1,
 		IncludeTerminals = 2,
@@ -81,7 +81,6 @@ class ElementScene : public QGraphicsScene {
 		*/
 		QPointF fsi_pos;
 		QPointF moving_press_pos;
-		bool moving_parts_;
 	
 		/// Variables related to drawing
 		ESEventInterface *m_event_interface;
@@ -132,7 +131,6 @@ class ElementScene : public QGraphicsScene {
 	bool wasCopiedFromThisElement(const QString &);
 	void cut();
 	void copy();
-	void paste();
 	void contextMenu (QContextMenuEvent *event);
 	QETElementEditor* editor() const;
 	
@@ -144,7 +142,6 @@ class ElementScene : public QGraphicsScene {
 		virtual void keyPressEvent         (QKeyEvent *event);
 
 	virtual void drawForeground(QPainter *, const QRectF &);
-	virtual void endCurrentBehavior(const QGraphicsSceneMouseEvent *);
 	
 	private:
 	QRectF elementContentBoundingRect(const ElementContent &) const;
@@ -161,7 +158,6 @@ class ElementScene : public QGraphicsScene {
 	
 	public slots:
 	void slot_move();
-	void slot_addTerminal();
 	void slot_select(const ElementContent &);
 	void slot_selectAll();
 	void slot_deselectAll();
