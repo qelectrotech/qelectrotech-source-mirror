@@ -130,8 +130,9 @@ void QETElementEditor::setFileName(const QString &fn) {
 }
 
 /**
-	Met en place les actions
-*/
+ * @brief QETElementEditor::setupActions
+ * Create action used in Element editor
+ */
 void QETElementEditor::setupActions() {
 	new_element       = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                  this);
 	open              = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir"),                                   this);
@@ -151,25 +152,9 @@ void QETElementEditor::setupActions() {
 	paste_from_elmt   = new QAction(QET::Icons::Element,              tr("un \351l\351ment"),                          this);
 	inv_select        = new QAction(                                  tr("Inverser la s\351lection"),                  this);
 	edit_delete       = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
-	zoom_in           = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant"),                                this);
-	zoom_out          = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re"),                           this);
-	zoom_fit          = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351"),                            this);
-	zoom_reset        = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom"),                               this);
 	edit_names        = new QAction(QET::Icons::Names,                tr("\311diter les noms"),                        this);
 	edit_author		  = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations sur l'auteur"),   this);
 	m_edit_properties = new QAction(QET::Icons::ElementEdit,		  tr("\311diter les propri\351t\351es de l'\351l\351ment"), this);
-	edit_raise        = new QAction(QET::Icons::Raise,                tr("Rapprocher"),                                this);
-	edit_lower        = new QAction(QET::Icons::Lower,                tr("\311loigner"),                               this);
-	edit_backward     = new QAction(QET::Icons::SendBackward,         tr("Envoyer au fond"),                           this);
-	edit_forward      = new QAction(QET::Icons::BringForward,         tr("Amener au premier plan"),                    this);
-	add_line          = new QAction(QET::Icons::PartLine,             tr("Ajouter une ligne"),                         this);
-	add_rectangle     = new QAction(QET::Icons::PartRectangle,        tr("Ajouter un rectangle"),                      this);
-	add_ellipse       = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une ellipse"),                       this);
-	add_polygon       = new QAction(QET::Icons::PartPolygon,          tr("Ajouter un polygone"),                       this);
-	add_text          = new QAction(QET::Icons::PartText,             tr("Ajouter du texte"),                          this);
-	add_arc           = new QAction(QET::Icons::PartArc,              tr("Ajouter un arc de cercle"),                  this);
-	add_terminal      = new QAction(QET::Icons::Terminal,             tr("Ajouter une borne"),                         this);
-	add_textfield     = new QAction(QET::Icons::PartTextField,        tr("Ajouter un champ de texte"),                 this);
 	
 	undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));
 	redo = ce_scene -> undoStack().createRedoAction(this, tr("Refaire"));
@@ -198,18 +183,8 @@ void QETElementEditor::setupActions() {
 	edit_delete       -> setShortcut(QKeySequence(tr("Backspace")));
 #endif
 	
-	zoom_in           -> setShortcut(QKeySequence::ZoomIn);
-	zoom_out          -> setShortcut(QKeySequence::ZoomOut);
-	zoom_fit          -> setShortcut(QKeySequence(tr("Ctrl+9")));
-	zoom_reset        -> setShortcut(QKeySequence(tr("Ctrl+0")));
-	
 	edit_names        -> setShortcut(QKeySequence(tr("Ctrl+E")));
 	edit_author       -> setShortcut(tr("Ctrl+Y"));
-	
-	edit_raise        -> setShortcut(QKeySequence(tr("Ctrl+Shift+Up")));
-	edit_lower        -> setShortcut(QKeySequence(tr("Ctrl+Shift+Down")));
-	edit_backward     -> setShortcut(QKeySequence(tr("Ctrl+Shift+End")));
-	edit_forward      -> setShortcut(QKeySequence(tr("Ctrl+Shift+Home")));
 	
 	connect(new_element,     SIGNAL(triggered()), this,     SLOT(slot_new()));
 	connect(open,            SIGNAL(triggered()), this,     SLOT(slot_open()));
@@ -228,69 +203,99 @@ void QETElementEditor::setupActions() {
 	connect(paste_in_area,   SIGNAL(triggered()), ce_view,  SLOT(pasteInArea()));
 	connect(paste_from_file, SIGNAL(triggered()), this,     SLOT(pasteFromFile()));
 	connect(paste_from_elmt, SIGNAL(triggered()), this,     SLOT(pasteFromElement()));
-	connect(zoom_in,         SIGNAL(triggered()), ce_view,  SLOT(zoomIn()));
-	connect(zoom_out,        SIGNAL(triggered()), ce_view,  SLOT(zoomOut()));
-	connect(zoom_fit,        SIGNAL(triggered()), ce_view,  SLOT(zoomFit()));
-	connect(zoom_reset,      SIGNAL(triggered()), ce_view,  SLOT(zoomReset()));
 	connect(edit_delete,     SIGNAL(triggered()), ce_scene, SLOT(slot_delete()));
 	connect(edit_names,      SIGNAL(triggered()), ce_scene, SLOT(slot_editNames()));
 	connect(edit_author,     SIGNAL(triggered()), ce_scene, SLOT(slot_editAuthorInformations()));
 	connect(m_edit_properties, SIGNAL(triggered()), ce_scene, SLOT(slot_editProperties()));
-	connect(edit_forward,    SIGNAL(triggered()), ce_scene, SLOT(slot_bringForward()));
-	connect(edit_raise,      SIGNAL(triggered()), ce_scene, SLOT(slot_raise()));
-	connect(edit_lower,      SIGNAL(triggered()), ce_scene, SLOT(slot_lower()));
-	connect(edit_backward,   SIGNAL(triggered()), ce_scene, SLOT(slot_sendBackward()));
 
-	connect(add_line,        SIGNAL(triggered()), this, SLOT(addLine()));
-	connect(add_rectangle,   SIGNAL(triggered()), this, SLOT(addRect()));
-	connect(add_ellipse,     SIGNAL(triggered()), this, SLOT(addEllipse()));
-	connect(add_polygon,     SIGNAL(triggered()), this, SLOT(addPolygon()));
-	connect(add_text,        SIGNAL(triggered()), this, SLOT(addText()));
-	connect(add_arc,         SIGNAL(triggered()), this, SLOT(addArc()));
-	connect(add_terminal,    SIGNAL(triggered()), this, SLOT(addTerminal()));
-	connect(add_textfield,   SIGNAL(triggered()), this, SLOT(addTextField()));
-	
-	add_line      -> setCheckable(true);
-	add_rectangle -> setCheckable(true);
-	add_ellipse   -> setCheckable(true);
-	add_polygon   -> setCheckable(true);
-	add_text      -> setCheckable(true);
-	add_arc       -> setCheckable(true);
-	add_terminal  -> setCheckable(true);
-	add_textfield -> setCheckable(true);
-	
-	parts = new QActionGroup(this);
-	parts -> addAction(add_line);
-	parts -> addAction(add_rectangle);
-	parts -> addAction(add_ellipse);
-	parts -> addAction(add_polygon);
-	parts -> addAction(add_arc);
-	parts -> addAction(add_text);
-	parts -> addAction(add_textfield);
-	parts -> addAction(add_terminal);
-	parts -> setExclusive(true);
 
-	connect (ce_scene, SIGNAL(partsAdded()), this, SLOT(UncheckAddPrimitive()));
-	
-	parts_toolbar = new QToolBar(tr("Parties", "toolbar title"), this);
-	parts_toolbar -> setObjectName("parts");
-	foreach (QAction *action, parts -> actions()) parts_toolbar -> addAction(action);
-	parts_toolbar -> setAllowedAreas(Qt::AllToolBarAreas);
-	
 	/*
-	QAction *xml_preview = new QAction(QET::Icons::DialogInformation, tr("XML"), this);
-	connect(xml_preview, SIGNAL(triggered()), this, SLOT(xmlPreview()));
-	parts_toolbar -> addAction(xml_preview);
-	*/
+	 * Action related to change depth of primitive
+	 */
+	m_depth_ag = new QActionGroup(this);
+
+	QAction *edit_forward  = new QAction(QET::Icons::BringForward, tr("Amener au premier plan"), m_depth_ag);
+	QAction *edit_raise    = new QAction(QET::Icons::Raise,        tr("Rapprocher"),             m_depth_ag);
+	QAction *edit_lower    = new QAction(QET::Icons::Lower,        tr("\311loigner"),            m_depth_ag);
+	QAction *edit_backward = new QAction(QET::Icons::SendBackward, tr("Envoyer au fond"),        m_depth_ag);
+
+	edit_raise    -> setShortcut(QKeySequence(tr("Ctrl+Shift+Up")));
+	edit_lower    -> setShortcut(QKeySequence(tr("Ctrl+Shift+Down")));
+	edit_backward -> setShortcut(QKeySequence(tr("Ctrl+Shift+End")));
+	edit_forward  -> setShortcut(QKeySequence(tr("Ctrl+Shift+Home")));
+
+	connect(edit_forward,  SIGNAL(triggered()), ce_scene, SLOT(slot_bringForward() ));
+	connect(edit_raise,    SIGNAL(triggered()), ce_scene, SLOT(slot_raise()        ));
+	connect(edit_lower,    SIGNAL(triggered()), ce_scene, SLOT(slot_lower()        ));
+	connect(edit_backward, SIGNAL(triggered()), ce_scene, SLOT(slot_sendBackward() ));
+
+	depth_toolbar = addToolBar(tr("Profondeur", "toolbar title"));
+	depth_toolbar -> setObjectName("depth_toolbar");
+	depth_toolbar -> addActions(m_depth_ag -> actions());
+	addToolBar(Qt::TopToolBarArea, depth_toolbar);
+
+
+	/*
+	 * Action related to zoom
+	 */
+	m_zoom_ag = new QActionGroup(this);
+
+	QAction *zoom_in    = new QAction(QET::Icons::ZoomIn,       tr("Zoom avant"),      m_zoom_ag);
+	QAction *zoom_out   = new QAction(QET::Icons::ZoomOut,      tr("Zoom arri\350re"), m_zoom_ag);
+	QAction *zoom_fit   = new QAction(QET::Icons::ZoomFitBest,  tr("Zoom adapt\351"),  m_zoom_ag);
+	QAction *zoom_reset = new QAction(QET::Icons::ZoomOriginal, tr("Pas de zoom"),     m_zoom_ag);
+
+	zoom_in    -> setShortcut(QKeySequence::ZoomIn);
+	zoom_out   -> setShortcut(QKeySequence::ZoomOut);
+	zoom_fit   -> setShortcut(QKeySequence(tr("Ctrl+9")));
+	zoom_reset -> setShortcut(QKeySequence(tr("Ctrl+0")));
+
+	connect(zoom_in,    SIGNAL(triggered()), ce_view,  SLOT(zoomIn()    ));
+	connect(zoom_out,   SIGNAL(triggered()), ce_view,  SLOT(zoomOut()   ));
+	connect(zoom_fit,   SIGNAL(triggered()), ce_view,  SLOT(zoomFit()   ));
+	connect(zoom_reset, SIGNAL(triggered()), ce_view,  SLOT(zoomReset() ));
+
+
+	/*
+	 * Action related to primitive creation
+	 */
+	connect (ce_scene, SIGNAL(partsAdded()), this, SLOT(UncheckAddPrimitive()));
+	parts = new QActionGroup(this);
+
+	QAction *add_line      = new QAction(QET::Icons::PartLine,      tr("Ajouter une ligne"),         parts);
+	QAction *add_rectangle = new QAction(QET::Icons::PartRectangle, tr("Ajouter un rectangle"),      parts);
+	QAction *add_ellipse   = new QAction(QET::Icons::PartEllipse,   tr("Ajouter une ellipse"),       parts);
+	QAction *add_polygon   = new QAction(QET::Icons::PartPolygon,   tr("Ajouter un polygone"),       parts);
+	QAction *add_text      = new QAction(QET::Icons::PartText,      tr("Ajouter du texte"),          parts);
+	QAction *add_arc       = new QAction(QET::Icons::PartArc,       tr("Ajouter un arc de cercle"),  parts);
+	QAction *add_terminal  = new QAction(QET::Icons::Terminal,      tr("Ajouter une borne"),         parts);
+	QAction *add_textfield = new QAction(QET::Icons::PartTextField, tr("Ajouter un champ de texte"), parts);
+
+	foreach (QAction *action, parts -> actions()) action -> setCheckable(true);
+
+	connect(add_line,      SIGNAL(triggered()), this, SLOT(addLine()      ));
+	connect(add_rectangle, SIGNAL(triggered()), this, SLOT(addRect()      ));
+	connect(add_ellipse,   SIGNAL(triggered()), this, SLOT(addEllipse()   ));
+	connect(add_polygon,   SIGNAL(triggered()), this, SLOT(addPolygon()   ));
+	connect(add_text,      SIGNAL(triggered()), this, SLOT(addText()      ));
+	connect(add_arc,       SIGNAL(triggered()), this, SLOT(addArc()       ));
+	connect(add_terminal,  SIGNAL(triggered()), this, SLOT(addTerminal()  ));
+	connect(add_textfield, SIGNAL(triggered()), this, SLOT(addTextField() ));
+
 	
+	parts_toolbar =  addToolBar(tr("Parties", "toolbar title"));
+	parts_toolbar -> setAllowedAreas(Qt::AllToolBarAreas);
+	parts_toolbar -> setObjectName("parts");
+	parts_toolbar -> addActions(parts -> actions());
+	addToolBar(Qt::LeftToolBarArea, parts_toolbar);
+
+
 	main_toolbar = new QToolBar(tr("Outils", "toolbar title"), this);
 	main_toolbar -> setObjectName("main_toolbar");
 	view_toolbar = new QToolBar(tr("Affichage", "toolbar title"), this);
 	view_toolbar -> setObjectName("display");
 	element_toolbar = new QToolBar(tr("\311l\351ment", "toolbar title"), this);
 	element_toolbar -> setObjectName("element_toolbar");
-	depth_toolbar = new QToolBar(tr("Profondeur", "toolbar title"), this);
-	depth_toolbar -> setObjectName("depth_toolbar");
 	
 	main_toolbar -> addAction(new_element);
 	main_toolbar -> addAction(open);
@@ -308,17 +313,10 @@ void QETElementEditor::setupActions() {
 
 	element_toolbar -> addAction(edit_names);
 	element_toolbar -> addAction(m_edit_properties);
-
-	depth_toolbar -> addAction(edit_forward);
-	depth_toolbar -> addAction(edit_raise);
-	depth_toolbar -> addAction(edit_lower);
-	depth_toolbar -> addAction(edit_backward);
 	
 	addToolBar(Qt::TopToolBarArea, main_toolbar);
 	addToolBar(Qt::TopToolBarArea, view_toolbar);
 	addToolBar(Qt::TopToolBarArea, element_toolbar);
-	addToolBar(Qt::TopToolBarArea, depth_toolbar);
-	addToolBar(Qt::LeftToolBarArea, parts_toolbar);
 	
 	connect(ce_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateInformations()));
 	connect(ce_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateMenus()));
@@ -336,8 +334,8 @@ void QETElementEditor::setupActions() {
 }
 
 /**
-	Met en place les menus.
-*/
+ * @brief QETElementEditor::setupMenus
+ */
 void QETElementEditor::setupMenus() {
 	file_menu    = new QMenu(tr("&Fichier"),       this);
 	edit_menu    = new QMenu(tr("&\311dition"),    this);
@@ -387,15 +385,9 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addAction(edit_author);
 	edit_menu -> addAction(m_edit_properties);
 	edit_menu -> addSeparator();
-	edit_menu -> addAction(edit_forward);
-	edit_menu -> addAction(edit_raise);
-	edit_menu -> addAction(edit_lower);
-	edit_menu -> addAction(edit_backward);
+	edit_menu -> addActions(m_depth_ag -> actions());
 
-	display_menu -> addAction(zoom_in);
-	display_menu -> addAction(zoom_out);
-	display_menu -> addAction(zoom_fit);
-	display_menu -> addAction(zoom_reset);
+	display_menu -> addActions(m_zoom_ag -> actions());
 	
 	insertMenu(settings_menu_, file_menu);
 	insertMenu(settings_menu_, edit_menu);
@@ -422,10 +414,7 @@ void QETElementEditor::contextMenu(QContextMenuEvent *event) {
 		menu.addAction(paste_in_area);
 		menu.addMenu(paste_from_menu);
 		menu.addSeparator();
-		menu.addAction(edit_forward);
-		menu.addAction(edit_raise);
-		menu.addAction(edit_lower);
-		menu.addAction(edit_backward);
+		menu.addActions(m_depth_ag -> actions());
 		menu.exec(event -> globalPos());
  }
 
@@ -447,15 +436,13 @@ void QETElementEditor::slot_updateMenus() {
 	paste_from_elmt -> setEnabled(!read_only);
 	parts_list      -> setEnabled(!read_only);
 	
-	// actions dependant de la presence de parties selectionnees
+	// Action enabled if primitive selected
 	deselectall     -> setEnabled(selected_items);
 	cut             -> setEnabled(selected_items);
 	copy            -> setEnabled(selected_items);
 	edit_delete     -> setEnabled(selected_items);
-	edit_forward    -> setEnabled(selected_items);
-	edit_raise      -> setEnabled(selected_items);
-	edit_lower      -> setEnabled(selected_items);
-	edit_backward   -> setEnabled(selected_items);
+	foreach (QAction *action, m_depth_ag -> actions())
+		action->setEnabled(selected_items);
 	
 	// actions dependant du contenu du presse-papiers
 	paste           -> setEnabled(clipboard_elmt);

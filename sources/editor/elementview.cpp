@@ -382,23 +382,16 @@ void ElementView::mouseReleaseEvent(QMouseEvent *e) {
 }
 
 /**
-	Gere les actions liees a la rollette de la souris
-	@param e QWheelEvent decrivant l'evenement rollette
-*/
+ * @brief ElementView::wheelEvent
+ * @param e
+ */
 void ElementView::wheelEvent(QWheelEvent *e) {
 	//Zoom and scrolling
-	if (e->buttons() != Qt::MidButton) {
-		if (!(e -> modifiers() & Qt::ControlModifier)) {
-			if (e -> delta() > 0){
-				zoomIn();
-			}
-			else{
-				zoomOut();
-			}
-		}
-		else {
+	if (e -> buttons() != Qt::MidButton) {
+		if (!(e -> modifiers() & Qt::ControlModifier))
+			e -> delta() > 0 ? zoomIn() : zoomOut();
+		else
 			QAbstractScrollArea::wheelEvent(e);
-		}
 	}
 }
 

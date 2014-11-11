@@ -36,10 +36,13 @@ class QETElementEditor : public QETMainWindow {
 	
 	// constructor, destructor
 	public:
-	QETElementEditor(QWidget * = 0);
-	virtual ~QETElementEditor();
+		QETElementEditor(QWidget * = 0);
+		virtual ~QETElementEditor();
 	private:
-	QETElementEditor(const QETElementEditor &);
+		QETElementEditor(const QETElementEditor &);
+		void setupActions();
+		void setupMenus();
+		void setupInterface();
 	
 	// attributes
 	private:
@@ -74,15 +77,10 @@ class QETElementEditor : public QETMainWindow {
 	QAction *cut, *copy, *paste, *paste_in_area, *paste_from_file, *paste_from_elmt;
 	QAction *undo, *redo;
 	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_author, *m_edit_properties;
-	QAction *edit_raise, *edit_lower, *edit_backward, *edit_forward;
-	/// actions for the "display" menu
-	QAction *zoom_in, *zoom_out, *zoom_fit, *zoom_reset;
 	/// toolbars
 	QToolBar *parts_toolbar, *main_toolbar, *view_toolbar, *depth_toolbar, *element_toolbar;
-	/// toolbars actions
-	QActionGroup *parts;
-	QAction *add_line, *add_rectangle, *add_ellipse, *add_polygon, *add_text;
-	QAction *add_arc, *add_terminal, *add_textfield;
+	/// Action group
+	QActionGroup *parts, *m_zoom_ag, *m_depth_ag;
 	/// minimum window title
 	QString min_title;
 	/// filename of the currently edited element
@@ -120,12 +118,9 @@ class QETElementEditor : public QETMainWindow {
 	virtual void firstActivation(QEvent *);
 
 	private:
-	void setupActions();
-	void setupMenus();
-	void setupInterface();
-	bool canClose();
-	QWidget *clearToolsDock();
-	void copyAndPasteXml(const QDomDocument &);
+		bool canClose();
+		QWidget *clearToolsDock();
+		void copyAndPasteXml(const QDomDocument &);
 	
 	public slots:
 		void addLine();
