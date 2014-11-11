@@ -151,13 +151,11 @@ class ElementScene : public QGraphicsScene {
 	ElementContent addContentAtPos(const ElementContent &, const QPointF &, QString * = 0);
 	void addPrimitive(QGraphicsItem *);
 	void initPasteArea();
-	bool mustSnapToGrid(QGraphicsSceneMouseEvent *);
 	static bool zValueLessThan(QGraphicsItem *, QGraphicsItem *);
 	QMutex *decorator_lock_;
 	void centerElementToOrigine();
 	
 	public slots:
-	void slot_move();
 	void slot_select(const ElementContent &);
 	void slot_selectAll();
 	void slot_deselectAll();

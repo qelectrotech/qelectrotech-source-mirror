@@ -35,7 +35,6 @@ ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	zoomReset();
 	connect(scene_, SIGNAL(pasteAreaDefined(const QRectF &)), this, SLOT(pasteAreaDefined(const QRectF &)));
-	connect(scene_, SIGNAL(partsAdded()), this, SLOT(adjustSceneRect()));
 	connect(scene_, SIGNAL(needZoomFit()), this, SLOT(zoomFit()));
 }
 

@@ -48,6 +48,7 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	element_editor(editor),
 	decorator_(0)
 {
+	behavior = Normal;
 	setItemIndexMethod(NoIndex);
 	setGrid(1, 1);
 	initPasteArea();
@@ -61,14 +62,6 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 ElementScene::~ElementScene() {
 	delete decorator_lock_;
 	if (m_event_interface) delete m_event_interface;
-}
-
-/**
-	Passe la scene en mode "selection et deplacement de parties"
-*/
-void ElementScene::slot_move() {
-	behavior = Normal;
-	if (m_event_interface) delete m_event_interface; m_event_interface = nullptr;
 }
 
 /**
@@ -87,7 +80,8 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	}
 
 	QPointF event_pos = e -> scenePos();
-	if (mustSnapToGrid(e)) event_pos = snapToGrid(event_pos);
+	if (!e -> modifiers() & Qt::ControlModifier)
+		event_pos = snapToGrid(event_pos);
 	
 	if (behavior == PasteArea) {
 		QRectF current_rect(paste_area_ -> rect());
@@ -955,16 +949,6 @@ QPointF ElementScene::snapToGrid(QPointF point) {
 	point.rx() = qRound(point.x() / x_grid) * x_grid;
 	point.ry() = qRound(point.y() / y_grid) * y_grid;
 	return point;
-}
-
-/**
-	@param e Evenement souris
-	@return true s'il faut utiliser le snap-to-grid
-	Typiquement, cette methode retourne true si l'evenement souris se produit
-	sans la touche Ctrl enfoncee.
-*/
-bool ElementScene::mustSnapToGrid(QGraphicsSceneMouseEvent *e) {
-	return(!(e -> modifiers() & Qt::ControlModifier));
 }
 
 /**

@@ -486,7 +486,6 @@ void QETElementEditor::slot_updateTitle() {
 void QETElementEditor::setupInterface() {
 	// editeur
 	ce_scene = new ElementScene(this, this);
-	ce_scene -> slot_move();
 	ce_view = new ElementView(ce_scene, this);
 	slot_setRubberBandToView();
 	setCentralWidget(ce_view);
