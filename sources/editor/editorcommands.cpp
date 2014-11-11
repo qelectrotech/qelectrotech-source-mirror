@@ -296,7 +296,6 @@ void AddPartCommand::redo() {
 			part -> setZValue(z);
 		}
 		editor_scene_ -> clearSelection();
-		part -> setSelected(true);
 		first_redo = false;
 		return;
 	}
