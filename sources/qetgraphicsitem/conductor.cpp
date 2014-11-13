@@ -956,9 +956,14 @@ bool Conductor::hasClickedOn(QPointF press_point, QPointF point) const {
 	@return true si le chargement a reussi, false sinon
 */
 bool Conductor::fromXml(QDomElement &e) {
-	// recupere la "configuration" du conducteur
+	//Get the "configuration" of conductor
 	properties_.fromXml(e);
 	readProperties();
+
+	setPos(e.attribute("x", 0).toDouble(),
+		   e.attribute("y", 0).toDouble());
+
+	//Get the pos of text item
 	qreal user_pos_x, user_pos_y;
 	if (
 		QET::attributeIsAReal(e, "userx", &user_pos_x) &&
@@ -997,8 +1002,12 @@ bool Conductor::fromXml(QDomElement &e) {
 		}
 	}
 
-	// s'il n'y a pas de segments, on renvoie true
-	if (!segments_x.size()) return(true);
+	//If there isn't segment we generate automatic path and return true
+	if (!segments_x.size()) {
+		generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
+		return(true);
+	}
+
 	// les longueurs recueillies doivent etre coherentes avec les positions des bornes
 	qreal width = 0.0, height = 0.0;
 	foreach (qreal t, segments_x) width  += t;
@@ -1020,7 +1029,7 @@ bool Conductor::fromXml(QDomElement &e) {
 	/* on recree les segments a partir des donnes XML */
 	// cree la liste de points
 	QList<QPointF> points_list;
-	points_list << t1;
+	points_list << mapFromScene(t1);
 	for (int i = 0 ; i < segments_x.size() ; ++ i) {
 		points_list << QPointF(
 			points_list.last().x() + segments_x.at(i),
@@ -1047,6 +1056,9 @@ bool Conductor::fromXml(QDomElement &e) {
 */
 QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_id) const {
 	QDomElement e = d.createElement("conductor");
+
+	e.setAttribute("x", pos().x());
+	e.setAttribute("y", pos().y());
 	e.setAttribute("terminal1", table_adr_id.value(terminal1));
 	e.setAttribute("terminal2", table_adr_id.value(terminal2));
 	
