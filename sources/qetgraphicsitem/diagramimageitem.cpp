@@ -198,7 +198,7 @@ bool DiagramImageItem::fromXml(const QDomElement &e) {
 	if (e.tagName() != "image") return (false);
 	QDomNode image_node = e.firstChild();
 	if (!image_node.isText()) return (false);
-	is_movable_ = e.attribute("is_movable", "true").toInt ();
+	is_movable_ = (e.attribute("is_movable").toInt());
 
 	//load xml image to QByteArray
 	QByteArray array;
