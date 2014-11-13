@@ -204,6 +204,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 bool QetShapeItem::fromXml(const QDomElement &e) {
 	if (e.tagName() != "shape") return (false);
 
+	is_movable_ = e.attribute("is_movable", "true").toInt ();
 	m_shapeStyle = Qt::PenStyle(e.attribute("style","0").toInt());
 
 	if (e.attribute("type", "0").toInt() != Polyline) {
@@ -235,6 +236,7 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const {
 	//write some attribute
 	result.setAttribute("type", QString::number(m_shapeType));
 	result.setAttribute("style", QString::number(m_shapeStyle));
+	result.setAttribute("is_movable", bool(is_movable_));
 
 	if (m_shapeType != Polyline) {
 		result.setAttribute("x1", mapToScene(m_P1).x());

@@ -198,6 +198,7 @@ bool DiagramImageItem::fromXml(const QDomElement &e) {
 	if (e.tagName() != "image") return (false);
 	QDomNode image_node = e.firstChild();
 	if (!image_node.isText()) return (false);
+	is_movable_ = e.attribute("is_movable", "true").toInt ();
 
 	//load xml image to QByteArray
 	QByteArray array;
@@ -226,6 +227,7 @@ QDomElement DiagramImageItem::toXml(QDomDocument &document) const {
 	result.setAttribute("y", QString("%1").arg(pos().y()));
 	result.setAttribute("rotation", QString("%1").arg(rotation()));
 	result.setAttribute("size", QString("%1").arg(scale()));
+	result.setAttribute("is_movable", bool(is_movable_));
 
 	//write the pixmap in the xml element after he was been transformed to base64
 	QByteArray array;
