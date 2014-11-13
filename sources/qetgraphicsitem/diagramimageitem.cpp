@@ -198,7 +198,6 @@ bool DiagramImageItem::fromXml(const QDomElement &e) {
 	if (e.tagName() != "image") return (false);
 	QDomNode image_node = e.firstChild();
 	if (!image_node.isText()) return (false);
-	is_movable_ = (e.attribute("is_movable").toInt());
 
 	//load xml image to QByteArray
 	QByteArray array;
@@ -212,6 +211,7 @@ bool DiagramImageItem::fromXml(const QDomElement &e) {
 	setScale(e.attribute("size").toDouble());
 	applyRotation(e.attribute("rotation").toDouble());
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
+	is_movable_ = (e.attribute("is_movable").toInt());
 
 	return (true);
 }
