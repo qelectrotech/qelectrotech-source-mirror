@@ -1225,7 +1225,6 @@ void Conductor::calculateTextItemPosition() {
 		QPointF text_item_pos = text_item -> pos();
 		QPainterPath near_shape = nearShape();
 		if (!near_shape.contains(text_item_pos)) {
-			qDebug() << "trop loin";
 			text_item -> setPos(movePointIntoPolygon(text_item_pos, near_shape));
 		}
 	} else {
