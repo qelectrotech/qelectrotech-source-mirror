@@ -951,100 +951,22 @@ bool Conductor::hasClickedOn(QPointF press_point, QPointF point) const {
 }
 
 /**
-	Charge les caracteristiques du conducteur depuis un element XML.
-	@param e Un element XML
-	@return true si le chargement a reussi, false sinon
-*/
+ * @brief Conductor::fromXml
+ * Load the conductor and her information from xml element
+ * @param e
+ * @return true is loading success else return false
+ */
 bool Conductor::fromXml(QDomElement &e) {
-	//Get the "configuration" of conductor
-	properties_.fromXml(e);
-	readProperties();
-
 	setPos(e.attribute("x", 0).toDouble(),
 		   e.attribute("y", 0).toDouble());
 
-	//Get the pos of text item
-	qreal user_pos_x, user_pos_y;
-	if (
-		QET::attributeIsAReal(e, "userx", &user_pos_x) &&
-		QET::attributeIsAReal(e, "usery", &user_pos_y)
-	) {
-		text_item -> forceMovedByUser(true);
-		text_item -> setPos(user_pos_x, user_pos_y);
-	}
-	if (e.hasAttribute("rotation")) {
-		text_item -> setRotationAngle(e.attribute("rotation").toDouble());
-		text_item -> forceRotateByUser(true);
-	}
-	
-	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
-	// les segments non valides sont ignores
-	QList<qreal> segments_x, segments_y;
-	for (QDomNode node = e.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
-		// on s'interesse aux elements XML "segment"
-		QDomElement current_segment = node.toElement();
-		if (current_segment.isNull() || current_segment.tagName() != "segment") continue;
-		
-		// le segment doit avoir une longueur
-		if (!current_segment.hasAttribute("length")) continue;
-		
-		// cette longueur doit etre un reel
-		bool ok;
-		qreal segment_length = current_segment.attribute("length").toDouble(&ok);
-		if (!ok) continue;
-		
-		if (current_segment.attribute("orientation") == "horizontal") {
-			segments_x << segment_length;
-			segments_y << 0.0;
-		} else {
-			segments_x << 0.0;
-			segments_y << segment_length;
-		}
-	}
+	bool return_ = pathFromXml(e);
 
-	//If there isn't segment we generate automatic path and return true
-	if (!segments_x.size()) {
-		generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
-		return(true);
-	}
+	text_item -> fromXml(e);
+	properties_. fromXml(e);
+	readProperties();
 
-	// les longueurs recueillies doivent etre coherentes avec les positions des bornes
-	qreal width = 0.0, height = 0.0;
-	foreach (qreal t, segments_x) width  += t;
-	foreach (qreal t, segments_y) height += t;
-	QPointF t1 = terminal1 -> dockConductor();
-	QPointF t2 = terminal2 -> dockConductor();
-	qreal expected_width  = t2.x() - t1.x();
-	qreal expected_height = t2.y() - t1.y();
-	
-	// on considere que le trajet est incoherent a partir d'une unite de difference avec l'espacement entre les bornes
-	if (
-		qAbs(expected_width  - width)  > 1.0 ||
-		qAbs(expected_height - height) > 1.0
-	) {
-		qDebug() << "Conductor::fromXml : les segments du conducteur ne semblent pas coherents - utilisation d'un trajet automatique";
-		return(false);
-	}
-	
-	/* on recree les segments a partir des donnes XML */
-	// cree la liste de points
-	QList<QPointF> points_list;
-	points_list << mapFromScene(t1);
-	for (int i = 0 ; i < segments_x.size() ; ++ i) {
-		points_list << QPointF(
-			points_list.last().x() + segments_x.at(i),
-			points_list.last().y() + segments_y.at(i)
-		);
-	}
-	
-	pointsToSegments(points_list);
-	
-	// initialise divers parametres lies a la modification des conducteurs
-	modified_path = true;
-	saveProfile(false);
-	
-	segmentsToPath();
-	return(true);
+	return return_;
 }
 
 /**
@@ -1075,16 +997,88 @@ QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_
 		}
 	}
 	
-	// exporte la "configuration" du conducteur
-	properties_.toXml(e);
-	if (text_item -> wasRotateByUser()) {
-		e.setAttribute("rotation", QString("%1").arg(text_item -> rotationAngle()));
-	}
-	if (text_item -> wasMovedByUser()) {
-		e.setAttribute("userx", QString("%1").arg(text_item -> pos().x()));
-		e.setAttribute("usery", QString("%1").arg(text_item -> pos().y()));
-	}
+	// Export the properties and text
+	properties_. toXml(e);
+	text_item -> toXml(e);
+
 	return(e);
+}
+
+/**
+ * @brief Conductor::pathFromXml
+ * Generate the path from xml file
+ * @param e
+ * @return true if generate path success else return false
+ */
+bool Conductor::pathFromXml(const QDomElement &e) {
+	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
+	// les segments non valides sont ignores
+	QList<qreal> segments_x, segments_y;
+	for (QDomNode node = e.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+		// on s'interesse aux elements XML "segment"
+		QDomElement current_segment = node.toElement();
+		if (current_segment.isNull() || current_segment.tagName() != "segment") continue;
+
+		// le segment doit avoir une longueur
+		if (!current_segment.hasAttribute("length")) continue;
+
+		// cette longueur doit etre un reel
+		bool ok;
+		qreal segment_length = current_segment.attribute("length").toDouble(&ok);
+		if (!ok) continue;
+
+		if (current_segment.attribute("orientation") == "horizontal") {
+			segments_x << segment_length;
+			segments_y << 0.0;
+		} else {
+			segments_x << 0.0;
+			segments_y << segment_length;
+		}
+	}
+
+	//If there isn't segment we generate automatic path and return true
+	if (!segments_x.size()) {
+		generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
+		return(true);
+	}
+
+	// les longueurs recueillies doivent etre coherentes avec les positions des bornes
+	qreal width = 0.0, height = 0.0;
+	foreach (qreal t, segments_x) width  += t;
+	foreach (qreal t, segments_y) height += t;
+	QPointF t1 = terminal1 -> dockConductor();
+	QPointF t2 = terminal2 -> dockConductor();
+	qreal expected_width  = t2.x() - t1.x();
+	qreal expected_height = t2.y() - t1.y();
+
+	// on considere que le trajet est incoherent a partir d'une unite de difference avec l'espacement entre les bornes
+	if (
+		qAbs(expected_width  - width)  > 1.0 ||
+		qAbs(expected_height - height) > 1.0
+	) {
+		qDebug() << "Conductor::fromXml : les segments du conducteur ne semblent pas coherents - utilisation d'un trajet automatique";
+		return(false);
+	}
+
+	/* on recree les segments a partir des donnes XML */
+	// cree la liste de points
+	QList<QPointF> points_list;
+	points_list << mapFromScene(t1);
+	for (int i = 0 ; i < segments_x.size() ; ++ i) {
+		points_list << QPointF(
+			points_list.last().x() + segments_x.at(i),
+			points_list.last().y() + segments_y.at(i)
+		);
+	}
+
+	pointsToSegments(points_list);
+
+	// initialise divers parametres lies a la modification des conducteurs
+	modified_path = true;
+	saveProfile(false);
+
+	segmentsToPath();
+	return(true);
 }
 
 /// @return les segments de ce conducteur
@@ -1231,6 +1225,7 @@ void Conductor::calculateTextItemPosition() {
 		QPointF text_item_pos = text_item -> pos();
 		QPainterPath near_shape = nearShape();
 		if (!near_shape.contains(text_item_pos)) {
+			qDebug() << "trop loin";
 			text_item -> setPos(movePointIntoPolygon(text_item_pos, near_shape));
 		}
 	} else {

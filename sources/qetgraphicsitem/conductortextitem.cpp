@@ -60,38 +60,36 @@ Conductor *ConductorTextItem::parentConductor() const {
 }
 
 /**
-	Permet de lire le texte a mettre dans le champ a partir d'un element XML.
-	Cette methode se base sur la position du champ pour assigner ou non la
-	valeur a ce champ.
-	@param e L'element XML representant le champ de texte
-*/
+ * @brief ConductorTextItem::fromXml
+ * Read the properties stored in the xml element given in parameter
+ * @param e
+ */
 void ConductorTextItem::fromXml(const QDomElement &e) {
-	setPlainText(e.attribute("text"));
-	
-	qreal user_pos_x, user_pos_y;
-	if (
-		QET::attributeIsAReal(e, "userx", &user_pos_x) &&
-		QET::attributeIsAReal(e, "usery", &user_pos_y)
-	) {
-		setPos(user_pos_x, user_pos_y);
+	if (e.hasAttribute("userx")) {
+		setPos(e.attribute("userx").toDouble(),
+			   e.attribute("usery").toDouble());
+		moved_by_user_ = true;
 	}
-	
-	setRotationAngle(e.attribute("rotation").toDouble());
+	if (e.hasAttribute("rotation")) {
+		setRotation(e.attribute("rotation").toDouble());
+		rotate_by_user_ = true;
+	}
 }
 
 /**
-	@param document Le document XML a utiliser
-	@return L'element XML representant ce champ de texte
-*/
-QDomElement ConductorTextItem::toXml(QDomDocument &document) const {
-	QDomElement result = document.createElement("input");
-	result.setAttribute("userx", QString("%1").arg(pos().x()));
-	result.setAttribute("usery", QString("%1").arg(pos().y()));
-	result.setAttribute("text", toPlainText());
-	if (rotationAngle()) {
-		result.setAttribute("rotation", QString("%1").arg(rotationAngle()));
+ * @brief ConductorTextItem::toXml
+ * Export the properties of this text in the attribute of the xml element given in parameter
+ * The properties exported are position and rotation (only if moved or rotate by user)
+ * @param xml
+ */
+void ConductorTextItem::toXml(QDomElement &xml) const {
+	if (moved_by_user_) {
+		xml.setAttribute("userx", QString("%1").arg(pos().x()));
+		xml.setAttribute("usery", QString("%1").arg(pos().y()));
 	}
-	return(result);
+	if (rotate_by_user_) {
+		xml.setAttribute("rotation", QString("%1").arg(rotation()));
+	}
 }
 
 /**

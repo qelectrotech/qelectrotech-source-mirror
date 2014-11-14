@@ -54,7 +54,7 @@ class DiagramTextItem : public QGraphicsTextItem {
 	virtual int type() const { return Type; }
 	Diagram *diagram() const;
 	virtual void fromXml(const QDomElement &) = 0;
-	virtual QDomElement toXml(QDomDocument &) const = 0;
+	virtual QDomElement toXml(QDomDocument &) const;
 	qreal rotationAngle() const;
 	void setRotationAngle(const qreal &);
 	void rotateBy(const qreal &);

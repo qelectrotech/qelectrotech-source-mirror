@@ -92,9 +92,15 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	bool containsPoint(const QPointF &) const;
 	QString text() const;
 	void setText(const QString &);
-	static bool valideXml(QDomElement &);
-	bool fromXml(QDomElement &);
-	QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
+
+	public:
+		static bool valideXml (QDomElement &);
+		bool        fromXml   (QDomElement &);
+		QDomElement toXml     (QDomDocument &, QHash<Terminal *, int> &) const;
+	private:
+		bool pathFromXml(const QDomElement &);
+
+	public:
 	const QList<ConductorSegment *> segmentsList() const;
 	void setProperties(const ConductorProperties &);
 	ConductorProperties properties() const;

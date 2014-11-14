@@ -80,6 +80,16 @@ Diagram *DiagramTextItem::diagram() const {
 }
 
 /**
+ * @brief DiagramTextItem::toXml
+ * This method do nothing and return an empty DomElement
+ * This is used to be inherited by child class
+ * @return
+ */
+QDomElement DiagramTextItem::toXml(QDomDocument &) const {
+	return QDomElement();
+}
+
+/**
 	@return l'angle de rotation actuel de ce texte
 */
 qreal DiagramTextItem::rotationAngle() const {

@@ -42,7 +42,7 @@ class ConductorTextItem : public DiagramTextItem {
 	enum { Type = UserType + 1006 };
 	Conductor *parentConductor() const;
 	virtual void fromXml(const QDomElement &);
-	virtual QDomElement toXml(QDomDocument &) const;
+	virtual void toXml  (QDomElement &xml) const;
 	
 	// methods
 	public:
