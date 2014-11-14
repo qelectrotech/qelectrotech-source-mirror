@@ -24,7 +24,7 @@ APPBIN="$BUNDLE/Contents/MacOS/$APPNAME"
 current_dir=$(dirname "$0")
 
 # On se remet au depart 
-cd ${current_dir}/../
+cd "${current_dir}/../"
 
 # Emplacement courant
 current_dir=$(PWD)
@@ -101,8 +101,11 @@ echo "Adding the version tag..."
 mkdir temp
 cp -Rf "sources/qet.h" "temp/qet.h"
 
-# On modifie l'originale avec le numero de version
-sed -i "" "s/const QString displayedVersion = \"0.4-b\"/const QString displayedVersion = \"0.4-beta-r$revAp\"/" sources/qet.h
+# On recupere le numero de version de l'originale 
+tagName=$(sed -n "s/const QString displayedVersion =\(.*\)/\1/p" sources/qet.h  | cut -d\" -f2 | cut -d\" -f1 )
+
+# On modifie l'originale avec le numero de revision du depot svn
+sed -i "" "s/const QString displayedVersion =.*/const QString displayedVersion = \"$tagName r$revAp\";/" sources/qet.h
 
 # Apres la compilation 
 cleanVerionTag () {
@@ -179,7 +182,7 @@ else
 fi
 
 # On rajoute le numero de version pour "cmd + i"
-sed -i "" "s/<string>Created by Qt\/QMake<\/string>/<string>0.4 beta r$revAp<\/string>/" qelectrotech.app/Contents/Info.plist
+sed -i "" "s/<string>Created by Qt\/QMake<\/string>/<string>$tagName r$revAp<\/string>/" qelectrotech.app/Contents/Info.plist
 
 
 ### copy over frameworks ############################################
@@ -241,11 +244,11 @@ echo 'Preparing (removing hold files)... '
 if [ -e "/Volumes/${APPNAME}" ]; then
     hdiutil detach -quiet "/Volumes/${APPNAME}"
 fi
-if [ -e "${APPNAME}_$revAp.dmg" ] ; then
-    rm -f "${APPNAME}_$revAp.dmg"
+if [ -e "${APPNAME} $tagName r$revAp.dmg" ] ; then
+    rm -f "${APPNAME} $tagName r$revAp.dmg"
 fi
-if [ -e "packaging/mac-osx/${APPNAME}_$revAp.dmg" ] ; then
-    rm -f "packaging/mac-osx/${APPNAME}_$revAp.dmg"
+if [ -e "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg" ] ; then
+    rm -f "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg"
 fi
 if [ -e $imagedir ] ; then
     rm -rf $imagedir
@@ -268,13 +271,13 @@ strip "$imagedir/$APPBIN"
     
 # Creating a disk image from a folder
 echo 'Creating disk image... '
-hdiutil create -quiet -ov -srcfolder $imagedir -format UDBZ -volname "${APPNAME}" "${APPNAME}_${revAp}.dmg"
-hdiutil internet-enable -yes -quiet "${APPNAME}_${revAp}.dmg"
+hdiutil create -quiet -ov -srcfolder $imagedir -format UDBZ -volname "${APPNAME}" "${APPNAME} $tagName r$revAp.dmg"
+hdiutil internet-enable -yes -quiet "${APPNAME} $tagName r$revAp.dmg"
 
 # Clean up disk folder
 echo 'Cleaning up... '
-cp -Rf "${APPNAME}_$revAp.dmg" "packaging/mac-osx/${APPNAME}_$revAp.dmg"
-rm -f "${APPNAME}_$revAp.dmg"
+cp -Rf "${APPNAME} $tagName r$revAp.dmg" "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg"
+rm -f "${APPNAME} $tagName r$revAp.dmg"
 rm -rf $imagedir
 rm -rf $BUNDLE
 
