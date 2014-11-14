@@ -576,15 +576,16 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 	}
 	
-	// chargement de tous les textes du fichiers XML
+	// Load text
 	QList<IndependentTextItem *> added_texts;
 	foreach (QDomElement text_xml, QET::findInDomElement(root, "inputs", "input")) {
-        	IndependentTextItem *iti = new IndependentTextItem(this);
+		IndependentTextItem *iti = new IndependentTextItem(this);
 		iti -> fromXml(text_xml);
 		addItem(iti);
 		added_texts << iti;
 	}
 
+	// Load image
 	QList<DiagramImageItem *> added_images;
 	foreach (QDomElement image_xml, QET::findInDomElement(root, "images", "image")) {
 		DiagramImageItem *dii = new DiagramImageItem ();
@@ -593,6 +594,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		added_images << dii;
 	}
 
+	// Load shape
 	QList<QetShapeItem *> added_shapes;
 	foreach (QDomElement shape_xml, QET::findInDomElement(root, "shapes", "shape")) {
 		QetShapeItem *dii = new QetShapeItem (QPointF(0,0));
@@ -600,47 +602,8 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		addItem(dii);
 		added_shapes << dii;
 	}
-	
-	// gere la translation des nouveaux elements et texte si celle-ci est demandee
-	if (position != QPointF()) {
-		// determine quel est le coin superieur gauche du rectangle entourant les elements ajoutes
-		qreal minimum_x = 0, minimum_y = 0;
-		bool init = false;
-		QList<QGraphicsItem *> added_items;
-		foreach (Element *added_element, added_elements) added_items << added_element;
-		foreach (DiagramTextItem *added_text, added_texts) added_items << added_text;
-		foreach (DiagramImageItem *added_image, added_images) added_items << added_image;
-		foreach (QetShapeItem *added_shape, added_shapes) added_items << added_shape;
-		foreach (QGraphicsItem *item, added_items) {
-			QPointF csg = item -> mapToScene(item -> boundingRect()).boundingRect().topLeft();
-			qreal px = csg.x();
-			qreal py = csg.y();
-			if (!init) {
-				minimum_x = px;
-				minimum_y = py;
-				init = true;
-			} else {
-				if (px < minimum_x) minimum_x = px;
-				if (py < minimum_y) minimum_y = py;
-			}
-		}
-		qreal diff_x = position.x() - minimum_x;
-		qreal diff_y = position.y() - minimum_y;
-		foreach (Element *added_element, added_elements) {
-			added_element -> setPos(added_element -> pos().x() + diff_x, added_element -> pos().y() + diff_y);
-		}
-		foreach (DiagramTextItem *added_text, added_texts) {
-			added_text -> setPos(added_text -> pos().x() + diff_x, added_text -> pos().y() + diff_y);
-		}
-		foreach (DiagramImageItem *added_image, added_images) {
-			added_image -> setPos(added_image -> pos().x() + diff_x, added_image -> pos().y() + diff_y);
-		}
-		foreach (QetShapeItem *added_shape, added_shapes) {
-			added_shape -> setPos(added_shape -> pos().x() + diff_x, added_shape -> pos().y() + diff_y);
-		}
-	}
-	
-	// chargement de tous les Conducteurs du fichier XML
+
+	// Load conductor
 	QList<Conductor *> added_conductors;
 	foreach (QDomElement f, QET::findInDomElement(root, "conductors", "conductor")) {
 		if (!Conductor::valideXml(f)) continue;
@@ -666,6 +629,31 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 				}
 			}
 		} else qDebug() << "Diagram::fromXml() : Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";
+	}
+
+	//Translate items if a new position was given in parameter
+	if (position != QPointF()) {
+
+		QList<QGraphicsItem *> added_items;
+		foreach (Element          *added_element, added_elements  ) added_items << added_element;
+		foreach (Conductor        *added_cond,    added_conductors) added_items << added_cond;
+		foreach (QetShapeItem     *added_shape,   added_shapes    ) added_items << added_shape;
+		foreach (DiagramTextItem  *added_text,    added_texts     ) added_items << added_text;
+		foreach (DiagramImageItem *added_image,   added_images    ) added_items << added_image;
+
+		//Get the top left corner of the rectangle that contain all added items
+		QRectF items_rect;
+		foreach (QGraphicsItem *item, added_items) {
+			items_rect = items_rect.united(item -> mapToScene(item -> boundingRect()).boundingRect());
+		}
+
+		QPointF point_ = items_rect.topLeft();
+		QPointF pos_ = Diagram::snapToGrid(QPointF (position.x() - point_.x(),
+													position.y() - point_.y()));
+
+		//Translate all added items
+		foreach (QGraphicsItem *qgi, added_items)
+			qgi -> setPos( qgi -> pos() += pos_);
 	}
 	
 	// remplissage des listes facultatives
