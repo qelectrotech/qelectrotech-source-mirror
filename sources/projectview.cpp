@@ -321,7 +321,7 @@ void ProjectView::addNewDiagramFolioList() {
 		DiagramView *new_diagram_view = new DiagramView(d);
 		addDiagram(new_diagram_view);
 		showDiagram(new_diagram_view);
-		tabs_->moveTab(diagrams().size()-1, i);
+		tabs_->moveTab(diagrams().size()-1, + 1);
 		i++;
 	}
 }
@@ -777,7 +777,7 @@ void ProjectView::loadDiagrams() {
 	// If project have the folios list, move it at the beginning of the project
 	if (project_ -> getFolioSheetsQuantity()) {
 		for (int i = 0; i < project_->getFolioSheetsQuantity(); i++)
-		tabs_ -> moveTab(diagrams().size()-1, 0);
+		tabs_ -> moveTab(diagrams().size()-1, + 1);
 	}
 }
 
