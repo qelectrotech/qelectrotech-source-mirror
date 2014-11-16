@@ -76,8 +76,13 @@ class DiagramTextItem : public QGraphicsTextItem {
 	virtual void mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
 	virtual void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
 
+	virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *);
+	virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *);
+	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
+
 	virtual void applyRotation(const qreal &);
 	
+	bool bMouseOver;
 	signals:
 	/// signal emitted when the text field loses focus
 	void lostFocus();

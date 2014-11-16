@@ -28,10 +28,12 @@
 */
 DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram) :
 	QGraphicsTextItem(parent, parent_diagram),
+	bMouseOver(false),
 	previous_text_(),
 	rotation_angle_(0.0),
 	m_first_move (true)
 {
+	setAcceptsHoverEvents(true);
 	build();
 }
 
@@ -43,10 +45,12 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram)
 */
 DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, Diagram *parent_diagram) :
 	QGraphicsTextItem(text, parent, parent_diagram),
+	bMouseOver(false),
 	previous_text_(text),
 	rotation_angle_(0.0)
 {
 	build();
+	setAcceptsHoverEvents(true);
 }
 
 /// Destructeur
@@ -211,6 +215,24 @@ void DiagramTextItem::setFontSize(int &s) {
 void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 	QGraphicsTextItem::paint(painter, option, widget);
+
+	if ( bMouseOver )		{
+		painter -> save();
+		// Annulation des renderhints
+		painter -> setRenderHint(QPainter::Antialiasing,          false);
+		painter -> setRenderHint(QPainter::TextAntialiasing,      false);
+		painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
+		// Dessin du cadre de selection en gris
+		QPen t;
+		t.setColor(Qt::gray);
+		t.setStyle(Qt::DashDotLine);
+		painter -> setPen(t);
+		// Le dessin se fait a partir du rectangle delimitant
+		//painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+		painter -> drawRoundRect(boundingRect().adjusted(0, 0, 0, 0), 10, 10);
+		painter -> restore();
+	}
+
 }
 
 /**
@@ -366,3 +388,39 @@ void DiagramTextItem::edit() {
 	editor->show();
 }
 
+
+
+/**
+	When mouse over element
+	change bMouseOver to true   (used in paint() function )
+	@param e QGraphicsSceneHoverEvent
+*/
+void DiagramTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
+	Q_UNUSED(e);
+
+	bMouseOver = true;
+	QString str_ToolTip = toPlainText();
+	setToolTip( str_ToolTip );
+	update();
+}
+
+/**
+	When mouse over element leave the position
+	change bMouseOver to false (used in paint() function )
+	@param e QGraphicsSceneHoverEvent
+*/
+void DiagramTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
+	Q_UNUSED(e);
+	//qDebug() << "Leave mouse over";
+	bMouseOver = false;
+	update();
+}
+
+/**
+	Do nothing default function .
+	@param e QGraphicsSceneHoverEvent
+*/
+void DiagramTextItem::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
+	Q_UNUSED(e);
+	QGraphicsTextItem::hoverMoveEvent(e);
+}

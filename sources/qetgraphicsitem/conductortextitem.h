@@ -57,6 +57,11 @@ class ConductorTextItem : public DiagramTextItem {
 	virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
 	virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
 	
+	protected:
+	virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *);
+	virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *);
+	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
+
 	// attributes
 	private:
 	Conductor *parent_conductor_;

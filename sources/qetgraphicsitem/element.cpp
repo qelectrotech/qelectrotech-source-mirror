@@ -33,7 +33,8 @@
 Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	QetGraphicsItem(parent),
 	internal_connections_(false),
-	must_highlight_(false)
+	must_highlight_(false),
+	bMouseOver(false)
 {
 	Q_UNUSED(scene);
 
@@ -41,7 +42,7 @@ Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	uuid_ = QUuid::createUuid();
 	setZValue(10);
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-
+	setAcceptsHoverEvents(true);
 }
 
 /**
@@ -106,6 +107,8 @@ void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 	
 	// Dessin du cadre de selection si necessaire
 	if (isSelected()) drawSelection(painter, options);
+
+	if ( bMouseOver )		drawSelection(painter, options);
 }
 
 /**
@@ -539,4 +542,40 @@ bool comparPos(const Element *elmt1, const Element *elmt2) {
 	if (elmt1->pos().x() == elmt2->pos().x())
 		return elmt1->y() <= elmt2->pos().y();
 	return elmt1->pos().x() <= elmt2->pos().x();
+}
+
+
+/**
+	When mouse over element
+	change bMouseOver to true   (used in paint() function )
+	@param e QGraphicsSceneHoverEvent
+*/
+void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
+	Q_UNUSED(e);
+
+	bMouseOver = true;
+	QString str_ToolTip = name();
+	setToolTip( str_ToolTip );
+	update();
+}
+
+/**
+	When mouse over element leave the position
+	change bMouseOver to false(used in paint() function )
+	@param e QGraphicsSceneHoverEvent
+*/
+void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
+	Q_UNUSED(e);
+	//qDebug() << "Leave mouse over";
+	bMouseOver = false;
+	update();
+}
+
+/**
+	Do nothing default function .
+	@param e QGraphicsSceneHoverEvent
+*/
+void Element::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
+	Q_UNUSED(e);
+	QGraphicsItem::hoverMoveEvent(e);
 }

@@ -186,6 +186,14 @@ class Element : public QetGraphicsItem {
 	void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 	void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
 	void updatePixmap();
+
+	protected:
+	virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *);
+	virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *);
+	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
+
+	bool bMouseOver;
+
 };
 
 bool comparPos(const Element * elmt1, const Element * elmt2);

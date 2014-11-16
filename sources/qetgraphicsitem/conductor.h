@@ -130,6 +130,8 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
 	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	
+	bool				bMouseOver;
+
 	private:
 	/// Functional properties
 	ConductorProperties properties_;

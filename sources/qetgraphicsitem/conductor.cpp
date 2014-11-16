@@ -44,6 +44,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Diagram *parent_diagram) :
 	QGraphicsPathItem(0, parent_diagram),
 	terminal1(p1),
 	terminal2(p2),
+	bMouseOver(false),
 	destroyed_(false),
 	text_item(0),
 	segments(NULL),
@@ -444,6 +445,10 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		}
 	}
 	
+	// if mouse over conductor change size
+	if ( bMouseOver )	conductor_pen.setWidthF(3.0);
+	else				conductor_pen.setWidthF(1.0);
+
 	// affectation du QPen et de la QBrush modifies au QPainter
 	qp -> setBrush(conductor_brush);
 	QPen final_conductor_pen = conductor_pen;
@@ -687,9 +692,8 @@ void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 void Conductor::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
 	segments_squares_scale_ = 2.0;
-	if (isSelected()) {
-		update();
-	}
+	bMouseOver = true;
+	update();
 }
 
 /**
@@ -699,9 +703,8 @@ void Conductor::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
 	segments_squares_scale_ = 1.0;
-	if (isSelected()) {
-		update();
-	}
+	update();
+	bMouseOver = false;
 }
 
 /**
