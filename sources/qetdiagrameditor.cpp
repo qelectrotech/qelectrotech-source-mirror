@@ -1314,7 +1314,6 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 	// gere l'ajout et le retrait de schema du projet
 	connect(project_view, SIGNAL(diagramAdded(DiagramView *)),   this, SLOT(diagramWasAdded(DiagramView *)));
 	connect(project_view, SIGNAL(diagramAdded(DiagramView *)),   this, SLOT(slot_updateActions()));
-	connect(project_view, SIGNAL(diagramAboutToBeRemoved(DiagramView *)), this, SLOT(diagramIsAboutToBeRemoved(DiagramView *)));
 	connect(project_view, SIGNAL(diagramRemoved(DiagramView *)), this, SLOT(diagramWasRemoved(DiagramView *)));
 	connect(project_view, SIGNAL(diagramRemoved(DiagramView *)), this, SLOT(slot_updateActions()));
 	if (QETProject *project = project_view -> project()) {
@@ -1858,15 +1857,6 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv) {
 	connect(dv,              SIGNAL(selectionChanged()),         this,     SLOT(slot_updateComplexActions()));
 	connect(dv,              SIGNAL(modeChanged()),              this,     SLOT(slot_updateModeActions()));
 	connect(dv,				 SIGNAL(itemAdded()),				 this,	   SLOT(addItemFinish()));
-}
-
-/**
-	Gere le retrait d'un schema dans un projet avant que le retrait ne soit effectif
-	@param dv DiagramView concerne
-*/
-void QETDiagramEditor::diagramIsAboutToBeRemoved(DiagramView *dv) {
-	undo_group.removeStack(&(dv -> diagram() -> undoStack()));
-	can_update_actions = false;
 }
 
 /**

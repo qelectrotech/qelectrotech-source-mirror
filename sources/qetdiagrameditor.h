@@ -149,7 +149,6 @@ class QETDiagramEditor : public QETMainWindow {
 	void cleanCurrentProject();
 	void nomenclatureProject();
 	void diagramWasAdded(DiagramView *);
-	void diagramIsAboutToBeRemoved(DiagramView *);
 	void diagramWasRemoved(DiagramView *);
 	void findElementInPanel(const ElementsLocation &);
 	void findSelectedElementInPanel();

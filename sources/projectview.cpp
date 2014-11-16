@@ -388,9 +388,6 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 		}
 	}
 	
-	// notifie le reste du monde que le DiagramView va disparaitre
-	emit(diagramAboutToBeRemoved(diagram_view));
-	
 	// enleve le DiagramView des onglets
 	int diagram_tab_id = diagram_ids_.key(diagram_view);
 	tabs_ -> removeTab(diagram_tab_id);

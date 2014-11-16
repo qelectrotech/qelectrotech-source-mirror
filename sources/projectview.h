@@ -88,7 +88,6 @@ class ProjectView : public QWidget {
 	
 	signals:
 	void diagramAdded(DiagramView *);
-	void diagramAboutToBeRemoved(DiagramView *);
 	void diagramRemoved(DiagramView *);
 	void diagramActivated(DiagramView *);
 	void diagramOrderChanged(ProjectView *, int, int);
