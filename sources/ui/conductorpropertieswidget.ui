@@ -107,7 +107,7 @@
               <string>activer l'option un texte par potentiel</string>
              </property>
              <property name="text">
-              <string>Afficher un texte de potentiel par folio. (expérimental)</string>
+              <string>Afficher un texte de potentiel par folio. </string>
              </property>
             </widget>
            </item>

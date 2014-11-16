@@ -708,18 +708,18 @@ void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 }
 
 /**
-	Gere les mouvements de souris au dessus du conducteur
-	@param e Le QGraphicsSceneHoverEvent decrivant l'evenement
-*/
+ * @brief Conductor::hoverMoveEvent conductor
+ * @param e QGraphicsSceneHoverEvent describing the event
+ */
 void Conductor::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
-	/*
+
 	if (isSelected()) {
-		QPointF hover_point = mapFromScene(e -> pos());
+		QPointF hover_point = mapFromScene(e -> pos()) + scenePos();
 		ConductorSegment *segment = segments;
 		bool cursor_set = false;
 		while (segment -> hasNextSegment()) {
 			if (hasClickedOn(hover_point, segment -> secondPoint())) {
-				setCursor(Qt::CrossCursor);
+				setCursor(Qt::ForbiddenCursor);
 				cursor_set = true;
 			} else if (hasClickedOn(hover_point, segment -> middle())) {
 				setCursor(segment -> isVertical() ? Qt::SplitHCursor : Qt::SplitVCursor);
@@ -729,7 +729,7 @@ void Conductor::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
 		}
 		if (!cursor_set) setCursor(Qt::ArrowCursor);
 	}
-	*/
+
 	QGraphicsPathItem::hoverMoveEvent(e);
 }
 
