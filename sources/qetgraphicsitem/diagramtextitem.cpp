@@ -73,7 +73,6 @@ void DiagramTextItem::build() {
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
-	setAcceptHoverEvents(true);
 }
 
 /**
@@ -214,8 +213,7 @@ void DiagramTextItem::setFontSize(int &s) {
 	@param widget Le QWidget sur lequel on dessine 
 */
 void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-	painter -> setRenderHint(QPainter::Antialiasing, true);
-	//option->
+	painter -> setRenderHint(QPainter::Antialiasing, false);
 	QGraphicsTextItem::paint(painter, option, widget);
 
 	if ( bMouseOver )		{
@@ -234,6 +232,7 @@ void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
 		painter -> drawRoundRect(boundingRect().adjusted(0, 0, 0, 0), 10, 10);
 		painter -> restore();
 	}
+
 }
 
 /**

@@ -27,7 +27,6 @@
 #include "numerotationcontext.h"
 #include "qetproject.h"
 #include "properties/xrefproperties.h"
-#include "binarygrid.h"
 
 class Conductor;
 class CustomElement;
@@ -44,7 +43,6 @@ class Terminal;
 class ConductorTextItem;
 class DiagramImageItem;
 class ElementTextsMover;
-class BinaryGrid;
 /**
 	This class represents an electric diagram. It manages its various child
 	elements, conductors and texts and handles their graphic rendering.
@@ -226,9 +224,6 @@ class Diagram : public QGraphicsScene {
 	void editElementRequired(const ElementsLocation &);
 	void reportPropertiesChanged(QString);
 	void XRefPropertiesChanged();
-
-	public:
-	BinaryGrid*			_binaryGrid;
 };
 Q_DECLARE_METATYPE(Diagram *)
 

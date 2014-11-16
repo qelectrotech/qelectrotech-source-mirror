@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetarguments.h"
-#include "qetapp.h"
 #include "titleblock/templatescollection.h"
 
 /**
@@ -249,9 +248,6 @@ void QETArguments::handleOptionArgument(const QString &option) {
 	} else if (option == QString("--license")) {
 		print_license_ = true;
 		options_ << option;
-		return;
-	} else if (option == QString("--conductor2")) {
-		QETApp::bConductor2 = true;
 		return;
 	}
 	

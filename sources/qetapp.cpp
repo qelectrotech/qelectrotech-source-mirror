@@ -59,7 +59,6 @@ RecentFiles *QETApp::projects_recent_files_ = 0;
 RecentFiles *QETApp::elements_recent_files_ = 0;
 AboutQET *QETApp::about_dialog_ = 0;
 TitleBlockTemplate *QETApp::default_titleblock_template_ = 0;
-bool QETApp::bConductor2 = false;
 
 /**
 	Constructeur

@@ -447,7 +447,6 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	DiagramContent content_pasted;
 	scene -> fromXml(document_xml, pos, false, &content_pasted);
-	qDebug()<< "PASTE" << texte_presse_papier;
 	
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {

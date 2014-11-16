@@ -405,8 +405,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		// on s'arrete la s'il n'est pas possible de relier les bornes
 		if (!canBeLinkedTo(other_terminal)) return;
 		// autrement, on pose un conducteur
-		//Conductor *new_conductor = new Conductor(this, other_terminal);
-		Conductor *new_conductor = new Conductor(this, other_terminal, d);
+		Conductor *new_conductor = new Conductor(this, other_terminal);
 		new_conductor -> setProperties(d -> defaultConductorProperties);
 		d -> undoStack().push(new AddItemCommand<Conductor *>(new_conductor, d));
 		new_conductor -> autoText();

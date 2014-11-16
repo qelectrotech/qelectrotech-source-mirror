@@ -19,7 +19,6 @@
 #define CONDUCTOR_H
 
 #include "conductorproperties.h"
-#include "Mathlib.h"
 
 class ConductorProfile;
 class ConductorSegmentProfile;
@@ -172,35 +171,6 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	void saveProfile(bool = true);
 	void generateConductorPath(const QPointF &, Qet::Orientation, const QPointF &, Qet::Orientation);
 	void updateConductorPath(const QPointF &, Qet::Orientation, const QPointF &, Qet::Orientation);
-
-	void			addPoint(vec2d);
-	void			printVec2d( QString, vec2d );
-	void			printDoubl( QString, double );
-	vec2d 			qPointF2vec2d( QPointF );
-	QPointF 		vec2d2qPointF( vec2d );
-	vec2d 			orientation2vec2d( Qet::Orientation );
-	void			rect2side( vec2d*, vec2d*, QRectF, QPointF );
-	void			rect2side( vec2d*, vec2d*, QRectF );
-	void			rect2corner( vec2d*, vec2d*, vec2d*, vec2d*, QRectF, QPointF );
-	int				sign( double );
-	int				computeSign( vec2d, vec2d, vec2d );
-	bool			isInsideRect( vec2d, vec2d, vec2d );
-	bool			isInsideRect( vec2d, vec2d, vec2d, vec2d );
-	void			computeIntersection( vec2d, vec2d&, vec2d, vec2d );
-	bool			isInsideElement( vec2d, Element* );
-	Element* 		intersectionElement( vec2d&, vec2d, Element* );
-	Element* 		intersectionElements( vec2d&, vec2d );
-	void	 		intersectionConductors( vec2d&, vec2d );
-	void			evaluatePath( vec2d, vec2d&, Element*, double = 10.0 );
-	double			computeSensEvaluatePath( vec2d, vec2d, vec2d );
-	vec2d	 		previousDir();
-	vec2d	 		findNextPoint( vec2d, vec2d&, vec2d, vec2d );
-	vec2d			extendOutOfElement( vec2d, vec2d, Element* );
-	void			snapOnGrid( vec2d& );
-	void 			generateConductorPath2(const QPointF &, Qet::Orientation, const QPointF &, Qet::Orientation);
-	void			smooth( void );
-	void 			updateConductorPath2(const QPointF &, Qet::Orientation, const QPointF &, Qet::Orientation);
-
 	uint segmentsCount(QET::ConductorSegmentType = QET::Both) const;
 	QList<QPointF> segmentsToPoints() const;
 	QList<ConductorBend> bends() const;
@@ -217,29 +187,6 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	static qreal conductor_bound(qreal, qreal, bool);
 	static Qt::Corner movementType(const QPointF &, const QPointF &);
 	static QPointF movePointIntoPolygon(const QPointF &, const QPainterPath &);
-
-	QList <vec2d>				vec2ds;
-	vec2d						north = vec2d( 0.0,-1.0);
-	vec2d						south = vec2d( 0.0, 1.0);
-	vec2d						east  = vec2d( 1.0, 0.0);
-	vec2d						west  = vec2d(-1.0, 0.0);
-
-	int							currentIndice;
-//	Element elementParent1;
-//	Element elementParent2;
-	public:
-	static bool 				bAffPoint;
-	static bool 				bSmooth;
-	static bool 				bDebug;
-	static bool 				bDebugGrid;
-	static int					iIndiceDebug;
-	static Conductor*			lastConductor;
-	static QPointF				P1;
-	static Qet::Orientation		O1;
-	static QPointF				P2;
-	static Qet::Orientation		O2;
-	static void reBuild(void);
-	inline QList<vec2d>			getVec2ds()			{ return vec2ds; }
 };
 
 Conductor * longuestConductorInPotential (Conductor *conductor, bool all_diagram = false);

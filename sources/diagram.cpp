@@ -31,7 +31,6 @@
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetapp.h"
 #include "qetgraphicsitem/diagramimageitem.h"
-#include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "terminal.h"
 #include "elementtextsmover.h"
@@ -79,8 +78,6 @@ Diagram::Diagram(QObject *parent) :
 		&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),
 		this, SLOT(titleChanged(const QString &))
 	);
-
-	_binaryGrid = new BinaryGrid(this);
 }
 
 /**
@@ -108,8 +105,6 @@ Diagram::~Diagram() {
 	}
 
 	qDeleteAll (deletable_items);
-
-	delete _binaryGrid;
 }
 
 /**
@@ -194,35 +189,6 @@ void Diagram::keyReleaseEvent(QKeyEvent *e) {
 	bool transmit_event = true;
 	if (!isReadOnly()) {
 		// detecte le relachement d'une touche de direction ( = deplacement d'elements)
-		if ( e -> key() == Qt::Key_C)	{
-			Conductor::bDebugGrid= !Conductor::bDebugGrid;
-			update();
-		}
-		else if ( e -> key() == Qt::Key_P)	{
-			Conductor::bAffPoint = !Conductor::bAffPoint;
-			update();
-		}
-		else if ( e -> key() == Qt::Key_S)	{
-			Conductor::bSmooth = !Conductor::bSmooth;
-			Conductor::reBuild();
-			update();
-		}
-		else if ( e -> key() == Qt::Key_D)	{
-			Conductor::bDebug = !Conductor::bDebug;
-			Conductor::reBuild();
-			update();
-		}
-		else if ( e -> key() == Qt::Key_Plus)	{
-			Conductor::iIndiceDebug++;
-			Conductor::reBuild();
-			update();
-		}
-		else if ( e -> key() == Qt::Key_Minus)	{
-			Conductor::iIndiceDebug--;
-			Conductor::reBuild();
-			update();
-		}
-
 		if (
 			(e -> key() == Qt::Key_Left || e -> key() == Qt::Key_Right  ||
 			 e -> key() == Qt::Key_Up   || e -> key() == Qt::Key_Down)  &&
