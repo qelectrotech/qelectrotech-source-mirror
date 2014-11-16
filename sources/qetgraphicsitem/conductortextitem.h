@@ -68,5 +68,8 @@ class ConductorTextItem : public DiagramTextItem {
 	bool moved_by_user_;
 	bool rotate_by_user_;
 	QPointF before_mov_pos_;
+
+
+
 };
 #endif

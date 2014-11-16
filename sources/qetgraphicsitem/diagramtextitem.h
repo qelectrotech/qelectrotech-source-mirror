@@ -101,5 +101,6 @@ class DiagramTextItem : public QGraphicsTextItem {
 	bool no_editable;
 	bool m_first_move;
 	QPointF m_mouse_to_origin_movement;
+
 };
 #endif

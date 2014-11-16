@@ -85,7 +85,7 @@ void Element::setHighlighted(bool hl) {
 	@param widget  Le widget sur lequel on dessine
 */
 void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget) {
-	
+
 #ifndef Q_WS_WIN
 	// corrige un bug de rendu ne se produisant que lors du rendu sur QGraphicsScene sous X11 au zoom par defaut
 	static bool must_correct_rendering_bug = QETApp::settings().value("correct-rendering", false).toBool();
@@ -100,6 +100,7 @@ void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		}
 	}
 #endif
+
 	if (must_highlight_) drawHighlight(painter, options);
 	
 	// Dessin de l'element lui-meme
@@ -115,7 +116,16 @@ void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 	@return Le rectangle delimitant le contour de l'element
 */
 QRectF Element::boundingRect() const {
+//	qDebug()  << QRectF(QPointF(-hotspot_coord.x(), -hotspot_coord.y()), dimensions);
+//	qDebug() << "orientation : " << orientation();
 	return(QRectF(QPointF(-hotspot_coord.x(), -hotspot_coord.y()), dimensions));
+}
+
+/**
+	@return Le rectangle delimitant le contour de l'element
+*/
+QRectF Element::boundingRectTrue() const {
+	return mapRectToScene( boundingRect() );
 }
 
 /**
@@ -195,6 +205,7 @@ QPixmap Element::pixmap() {
  * @param angle
  */
 void Element::rotateBy(const qreal &angle) {
+	qDebug() << "Rotation : " << angle;
 	qreal applied_angle = QET::correctAngle(angle);
 	applyRotation(applied_angle + rotation());
 
@@ -263,7 +274,8 @@ void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *o
 	t.setStyle(Qt::DashDotLine);
 	painter -> setPen(t);
 	// Le dessin se fait a partir du rectangle delimitant
-	painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+	//painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+	painter -> drawRoundRect(boundingRect().adjusted(0, 0, 0, 0), 10, 10);
 	painter -> restore();
 }
 
@@ -289,7 +301,8 @@ void Element::drawHighlight(QPainter *painter, const QStyleOptionGraphicsItem *o
 	painter -> setPen(Qt::NoPen);
 	painter -> setBrush(brush);
 	// Le dessin se fait a partir du rectangle delimitant
-	painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+	//painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+	painter -> drawRoundRect(boundingRect().adjusted(0, 0, 0, 0), 10, 10);
 	painter -> restore();
 }
 

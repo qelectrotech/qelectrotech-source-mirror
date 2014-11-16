@@ -131,6 +131,7 @@ class QETApp : public QETSingleApplication {
 	static QList<QETTitleBlockTemplateEditor *> titleBlockTemplateEditors(QETProject *);
 	static QTextOrientationSpinBoxWidget *createTextOrientationSpinBoxWidget();
 	static TitleBlockTemplate *defaultTitleBlockTemplate();
+	static bool bConductor2;
 	
 	protected:
 #ifdef Q_OS_DARWIN

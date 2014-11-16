@@ -150,6 +150,7 @@ class Element : public QetGraphicsItem {
 	virtual void setHighlighted(bool);
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	QRectF boundingRect() const;
+	QRectF boundingRectTrue() const;
 	QSize setSize(int, int);
 	QSize size() const;
 	QPixmap  pixmap();
@@ -181,6 +182,7 @@ class Element : public QetGraphicsItem {
 	void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
 	
 	private:
+	bool bMouseHover;
 	bool internal_connections_;
 	bool must_highlight_;
 	void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
