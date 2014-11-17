@@ -315,13 +315,13 @@ void ProjectView::addNewDiagram() {
  */
 void ProjectView::addNewDiagramFolioList() {
 	if (project_ -> isReadOnly()) return;
-	int i = 0; //< Each new diagram is added  to the end of the project.
-			   //< We use @i to move the folio list at the beginning of the project
+	int i = 1; //< Each new diagram is added  to the end of the project.
+			   //< We use @i to move the folio list at second position in the project
 	foreach (Diagram *d, project_ -> addNewDiagramFolioList()) {
 		DiagramView *new_diagram_view = new DiagramView(d);
 		addDiagram(new_diagram_view);
 		showDiagram(new_diagram_view);
-		tabs_->moveTab(diagrams().size()-1, + 1);
+		tabs_->moveTab(diagrams().size()-1, i);
 		i++;
 	}
 }
