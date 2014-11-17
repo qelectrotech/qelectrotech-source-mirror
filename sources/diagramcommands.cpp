@@ -224,6 +224,13 @@ void PasteDiagramCommand::redo() {
 					eti -> setPlainText("_");
 			}
 		}
+
+		//Reset the text of conductors
+		foreach (Conductor *c, content.conductorsToMove) {
+			ConductorProperties cp = c -> properties();
+			cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
+			c -> setProperties(cp);
+		}
 	}
 	else {
 		// paste the elements
