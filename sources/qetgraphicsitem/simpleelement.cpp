@@ -17,6 +17,7 @@
 */
 #include "simpleelement.h"
 #include "commentitem.h"
+#include "elementtextitem.h"
 /**
  * @brief SimpleElement::SimpleElement
  * @param location
@@ -29,37 +30,47 @@ SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qg
 	m_comment_item (nullptr)
 {
 	link_type_ = Simple;
-	connect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
+	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
 }
 
 /**
  * @brief SimpleElement::~SimpleElement
  */
 SimpleElement::~SimpleElement() {
-	disconnect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
 	if (m_comment_item) delete m_comment_item;
 }
 
+/**
+ * @brief SimpleElement::initLink
+ * @param project
+ * Call init Link from custom element and after
+ * call update label for setup it.
+ */
 void SimpleElement::initLink(QETProject *project) {
 	CustomElement::initLink(project);
-	updateLabel();
+	updateLabel(DiagramContext(), elementInformations());
 }
 
 /**
  * @brief SimpleElement::updateLabel
  * update label of this element
  */
-void SimpleElement::updateLabel() {
+void SimpleElement::updateLabel(DiagramContext old_info, DiagramContext new_info) {
 	//Label of element
-	QString label = elementInformations()["label"].toString();
-	bool	show  = elementInformations().keyMustShow("label");
+	if (old_info["label"].toString() != new_info["label"].toString()) {
+		if (new_info["label"].toString().isEmpty())
+			setTaggedText("label", "_", false);
+		else
+			setTaggedText("label", new_info["label"].toString(), true);
+	}
 
-	// setup the label
-	if (!label.isEmpty() && show) setTaggedText("label", label, true);
+	if (ElementTextItem *eti = taggedText("label")) {
+		new_info["label"].toString().isEmpty() ? eti->setVisible(true) : eti -> setVisible(new_info.keyMustShow("label"));
+	}
 
 	//Comment of element
-	QString comment   = elementInformations()["comment"].toString();
-	bool    must_show = elementInformations().keyMustShow("comment");
+	QString comment   = new_info["comment"].toString();
+	bool    must_show = new_info.keyMustShow("comment");
 
 	if (!(comment.isEmpty() || !must_show) && !m_comment_item) {
 		m_comment_item = new CommentItem(this);

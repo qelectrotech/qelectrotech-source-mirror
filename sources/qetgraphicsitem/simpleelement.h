@@ -40,7 +40,7 @@ class SimpleElement : public CustomElement {
 	signals:
 
 	public slots:
-		void updateLabel();
+		void updateLabel(DiagramContext old_info, DiagramContext new_info);
 
 	private:
 		CommentItem *m_comment_item;

@@ -518,8 +518,9 @@ void Element::initLink(QETProject *prj) {
  * @param dc
  */
 void Element::setElementInformations(DiagramContext dc) {
+	DiagramContext old_info = element_informations_;
 	element_informations_ = dc;
-	emit elementInfoChange(element_informations_);
+	emit elementInfoChange(old_info, element_informations_);
 }
 
 /**

@@ -17,6 +17,7 @@
 */
 #include "masterelement.h"
 #include "crossrefitem.h"
+#include "elementtextitem.h"
 
 /**
  * @brief MasterElement::MasterElement
@@ -31,7 +32,7 @@ MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qg
 	cri_ (nullptr)
 {
 	link_type_ = Master;
-	connect(this, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT(updateLabel()));
+	connect(this, SIGNAL(elementInfoChange(DiagramContext, DiagramContext)), this, SLOT(updateLabel(DiagramContext, DiagramContext)));
 }
 
 /**
@@ -97,13 +98,14 @@ void MasterElement::unlinkElement(Element *elmt) {
 
 /**
  * @brief MasterElement::initLink
- * Initialise the links between this element and other element.
  * @param project
+ * Call init Link from custom element and after
+ * call update label for setup it.
  */
 void MasterElement::initLink(QETProject *project) {
 	//Create the link with other element if needed
 	CustomElement::initLink(project);
-	updateLabel();
+	updateLabel(DiagramContext(), elementInformations());
 }
 
 /**
@@ -111,13 +113,18 @@ void MasterElement::initLink(QETProject *project) {
  * update label of this element
  * and the comment item if he's displayed.
  */
-void MasterElement::updateLabel() {
-	QString label = elementInformations()["label"].toString();
-	bool	show  = elementInformations().keyMustShow("label");
+void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info) {
+	//Label of element
+	if (old_info["label"].toString() != new_info["label"].toString()) {
+		if (new_info["label"].toString().isEmpty())
+			setTaggedText("label", "_", false);
+		else
+			setTaggedText("label", new_info["label"].toString(), true);
+	}
 
-	// setup the label
-	if (!label.isEmpty() && show) setTaggedText("label", label, true);
-
+	if (ElementTextItem *eti = taggedText("label")) {
+		new_info["label"].toString().isEmpty() ? eti->setVisible(true) : eti -> setVisible(new_info.keyMustShow("label"));
+	}
 
 	//Delete or update the xref
 	if (cri_) {
