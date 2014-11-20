@@ -407,12 +407,12 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="56"/>
         <source>Texte :</source>
-        <translation type="unfinished">Texto:</translation>
+        <translation>Texto:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="63"/>
         <source>Texte</source>
-        <translation type="unfinished">Texto</translation>
+        <translation>Texto</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
@@ -439,22 +439,22 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="77"/>
         <source>Taille du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño del texto</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="90"/>
         <source>Texte visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto visible</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="107"/>
         <source>activer l&apos;option un texte par potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>activar la opción un texto por potencial</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. (expérimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar un texto de potencial por folio. (experimental)</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
@@ -503,7 +503,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="93"/>
         <source>Visible</source>
-        <translation type="unfinished">Visible</translation>
+        <translation>Visible</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="119"/>
@@ -514,17 +514,17 @@ pixel</extracomment>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="239"/>
         <source>Nombre de phase</source>
-        <translation type="unfinished"></translation>
+        <translation>Número de fases</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
         <source>Neutre</source>
-        <translation type="unfinished"></translation>
+        <translation>neutro</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
         <source>Phase</source>
-        <translation type="unfinished"></translation>
+        <translation>Fase</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="252"/>
@@ -540,7 +540,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="262"/>
         <source>Terre</source>
-        <translation type="unfinished"></translation>
+        <translation>Tierra</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
@@ -556,13 +556,13 @@ pixel</extracomment>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="307"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="343"/>
         <source>Style du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo del conductor</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="314"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="324"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Color del conductor</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
@@ -704,7 +704,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="67"/>
         <source>Maintenir ctrl pour un déplacer librement</source>
-        <translation type="unfinished"></translation>
+        <translation>Mantener ctrl para un desplazamiento suave</translation>
     </message>
 </context>
 <context>
@@ -1157,12 +1157,13 @@ pixel</extracomment>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="86"/>
         <source>Temporisé travail</source>
         <translatorcomment>Temporizador de trabajo</translatorcomment>
-        <translation type="unfinished">Temporizador de encendido</translation>
+        <translation>Tiempo de trabajo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="87"/>
         <source>Temporisé repos</source>
-        <translation type="unfinished">Temporizador de apagado</translation>
+        <translatorcomment>Tiempo de reposo</translatorcomment>
+        <translation>Tiempo de apagado</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="90"/>
@@ -1173,7 +1174,7 @@ pixel</extracomment>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="91"/>
         <source>Organe de protection</source>
         <translatorcomment>Protección del cuerpo</translatorcomment>
-        <translation type="unfinished">Unidad de protección</translation>
+        <translation>Unidad de protección</translation>
     </message>
 </context>
 <context>
@@ -2699,7 +2700,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
         <location filename="../sources/configpages.cpp" line="173"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nuevo projecto</translation>
     </message>
 </context>
 <context>
@@ -3673,7 +3674,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="203"/>
         <source>Exporter une nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar una nomenclatura</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
@@ -4388,7 +4389,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="370"/>
         <source>&amp;Récemment ouverts</source>
-        <translation type="unfinished">&amp;Recientemente abiertos</translation>
+        <translation>&amp;Recientemente abiertos</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="381"/>
@@ -4567,7 +4568,7 @@ Opciones disponibles:
         <location filename="../sources/editor/qetelementeditor.cpp" line="688"/>
         <source>Les éléments maîtres, esclaves  et simple doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Los elementos maestros, &apos;esclavos&apos; &apos;y simple&apos; deben tener un campo de texto con la &apos;etiqueta&apos; Tagg</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="756"/>
@@ -5485,12 +5486,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="38"/>
         <source>un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Un campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="43"/>
         <source>un conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>un conductor</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="63"/>
@@ -5818,8 +5819,8 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="275"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n forma(s)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -6087,27 +6088,27 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="146"/>
         <source>Selectionner une image...</source>
-        <translation type="unfinished">Seleccione una imagen ...</translation>
+        <translation>Seleccione una imagen ...</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="146"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation type="unfinished">Archivos de imagen (*.png *.jpg *.bmp *.svg)</translation>
+        <translation>Archivos de imagen (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="152"/>
         <source>Erreur</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="152"/>
         <source>Impossible de charger l&apos;image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Imposible cargar la imagen.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.h" line="52"/>
         <source>Ajouter </source>
-        <translation type="unfinished"></translation>
+        <translation>Añadir</translation>
     </message>
 </context>
 <context>
@@ -6147,22 +6148,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="379"/>
         <source>une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Una línea</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="382"/>
         <source>un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>un rectángulo</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="385"/>
         <source>une éllipse</source>
-        <translation type="unfinished"></translation>
+        <translation>una elipse</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="388"/>
         <source>une polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>un polígono</translation>
     </message>
 </context>
 <context>
