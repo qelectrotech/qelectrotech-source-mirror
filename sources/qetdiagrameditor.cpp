@@ -627,6 +627,7 @@ void QETDiagramEditor::save() {
 		QETResult saved = project_view -> save();
 		if (saved.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
+			statusBar()->showMessage(tr("Projet enregistr\351"), 2000);
 		} else {
 			showError(saved);
 		}
@@ -642,6 +643,7 @@ void QETDiagramEditor::saveAs() {
 		QETResult save_file = project_view -> saveAs();
 		if (save_file.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
+			statusBar()->showMessage(tr("Projet enregistr\351"), 2000);
 		} else {
 			showError(save_file);
 		}
