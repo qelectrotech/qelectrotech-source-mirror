@@ -5035,7 +5035,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="593"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation>Project 1% registered in the directory: % 2.</translation>
+        <translation>Project 1% registered in the directory: %2.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="734"/>
