@@ -500,7 +500,7 @@ i conduttori di questo potenziale?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra un solo testo per ogni potenziale del foglio. </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="119"/>
@@ -700,7 +700,7 @@ i conduttori di questo potenziale?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="71"/>
         <source>Maintenir ctrl pour un déplacement libre</source>
-        <translation type="unfinished"></translation>
+        <translation>Tenere premuto CTRL per uno spostare liberamente</translation>
     </message>
 </context>
 <context>
@@ -3996,7 +3996,7 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="630"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="646"/>
         <source>Projet enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>Progetto registrato</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
@@ -5033,7 +5033,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="593"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Progetto %1 registrato nella cartella: %2.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="734"/>
@@ -6052,42 +6052,42 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="65"/>
         <source>Arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Arco</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddellipse.cpp" line="63"/>
         <source>Ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Ellisse</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddline.cpp" line="66"/>
         <source>ligne</source>
-        <translation type="unfinished">linea</translation>
+        <translation>linea</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddpolygon.cpp" line="109"/>
         <source>Polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Poligono</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddrect.cpp" line="61"/>
         <source>Rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Rettangolo</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddterminal.cpp" line="62"/>
         <source>Borne</source>
-        <translation type="unfinished">Terminale</translation>
+        <translation>Terminale</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="62"/>
         <source>Texte</source>
-        <translation type="unfinished">Testo</translation>
+        <translation>Testo</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtextfield.cpp" line="62"/>
         <source>Champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Campo di testo</translation>
     </message>
 </context>
 <context>
