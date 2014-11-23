@@ -588,10 +588,6 @@ QETResult QETProject::write() {
 	document_root_.clear();
 	document_root_.appendChild(document_root_.importNode(toXml().documentElement(), true));
 
-	//inform user about save
-	QMessageBox msgBox;
-	msgBox.setText(QString(tr("Projet %1 enregistr\351 dans le repertoire: %2.").arg(project_title_).arg (file_path_)));
-	msgBox.exec();
 
 	QString error_message;
 	bool writing = QET::writeXmlFile(document_root_, file_path_, &error_message);
