@@ -500,7 +500,7 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetl jeden tekst dla potencjału na stronie. </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="119"/>
@@ -700,7 +700,7 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="71"/>
         <source>Maintenir ctrl pour un déplacement libre</source>
-        <translation type="unfinished"></translation>
+        <translation>Przytrzymaj Ctrl aby dowolnie zmieniać pozycję</translation>
     </message>
 </context>
 <context>
@@ -3999,7 +3999,7 @@ Dostępne opcje :
         <location filename="../sources/qetdiagrameditor.cpp" line="630"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="646"/>
         <source>Projet enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt zapisany</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
@@ -4605,7 +4605,7 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1107"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1142"/>
         <source>Echec de l&apos;enregistrement</source>
-        <translation>Rejestracja nie powidła się</translation>
+        <translation>Zapisanie nie powidło się</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1083"/>
@@ -4613,7 +4613,7 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1142"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
-        <translation>Rejestracja nie powiodła się,
+        <translation>Zapisanie nie powiodło się,
 wymagane warunki nie zostały spełnione</translation>
     </message>
     <message>
@@ -5038,7 +5038,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="593"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt %1 zapisany w kataligu: %2.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="734"/>
@@ -6065,42 +6065,42 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="65"/>
         <source>Arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Łuk</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddellipse.cpp" line="63"/>
         <source>Ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Elipsa</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddline.cpp" line="66"/>
         <source>ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Linia</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddpolygon.cpp" line="109"/>
         <source>Polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Wielokąt</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddrect.cpp" line="61"/>
         <source>Rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Prostokąt</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddterminal.cpp" line="62"/>
         <source>Borne</source>
-        <translation type="unfinished">Terminal</translation>
+        <translation>Terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="62"/>
         <source>Texte</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtextfield.cpp" line="62"/>
         <source>Champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Pole tekstowe</translation>
     </message>
 </context>
 <context>
