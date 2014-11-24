@@ -627,7 +627,12 @@ void QETDiagramEditor::save() {
 		QETResult saved = project_view -> save();
 		if (saved.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
-			statusBar()->showMessage(tr("Projet enregistr\351"), 2000);
+
+			QString title = (project_view -> project() -> title ());
+			if (title.isEmpty()) title = "QElectroTech ";
+			QString filePath = (project_view -> project() -> filePath ());
+
+			statusBar()->showMessage(tr("Projet %1 enregistr\351 dans le repertoire: %2.").arg(title).arg (filePath), 2000);
 		} else {
 			showError(saved);
 		}
@@ -643,7 +648,12 @@ void QETDiagramEditor::saveAs() {
 		QETResult save_file = project_view -> saveAs();
 		if (save_file.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
-			statusBar()->showMessage(tr("Projet enregistr\351"), 2000);
+
+			QString title = (project_view -> project() -> title ());
+			if (title.isEmpty()) title = "QElectroTech ";
+			QString filePath = (project_view -> project() -> filePath ());
+
+			statusBar()->showMessage(tr("Projet %1 enregistr\351 dans le repertoire: %2.").arg(title).arg (filePath), 2000);
 		} else {
 			showError(save_file);
 		}
