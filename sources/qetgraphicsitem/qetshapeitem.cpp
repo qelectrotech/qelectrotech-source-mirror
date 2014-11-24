@@ -169,8 +169,9 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 	Q_UNUSED(option); Q_UNUSED(widget);
 
 	QPen pen(m_shapeStyle);
-	pen.setWidthF(1);
 	painter -> setRenderHint(QPainter::Antialiasing, false);
+	pen.setWidthF(1);
+
 
 	if (m_hovered) {
 		painter->save();
