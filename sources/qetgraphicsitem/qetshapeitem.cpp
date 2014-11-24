@@ -170,6 +170,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 
 	QPen pen(m_shapeStyle);
 	pen.setWidthF(1);
+	painter -> setRenderHint(QPainter::Antialiasing, false);
 
 	if (m_hovered) {
 		painter->save();
