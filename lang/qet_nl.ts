@@ -3433,7 +3433,7 @@ Options disponibles :
         <translation>&amp;Open</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="697"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="707"/>
         <source>Ouvrir un fichier</source>
         <translation>Open een bestand</translation>
     </message>
@@ -3453,7 +3453,7 @@ Options disponibles :
         <translation>&amp;Einde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="699"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="709"/>
         <source>Schémas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>QElectroTech diagrammmen (*.qet);;XML bestanden (*.xml);;Alle bestanden (*)</translation>
     </message>
@@ -3628,12 +3628,18 @@ Options disponibles :
         <translation>recent geopend</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="800"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="635"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="656"/>
+        <source>Projet %1 enregistré dans le repertoire: %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="810"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Bestand openen mislukt permissie?</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="824"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Project kan niet bewaard worden. alleen lezen is mogelijk</translation>
     </message>
@@ -3663,13 +3669,13 @@ Options disponibles :
         <translation>Opschonen project</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="827"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="837"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Project openen mislukt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="829"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="839"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>bestand %1 is geen QElectroTech project bestand. En kan dus niet worden geopend</translation>
@@ -3982,70 +3988,64 @@ Options disponibles :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="630"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="646"/>
-        <source>Projet enregistré</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="794"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="809"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Kan het bestand niet openen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="786"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="796"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>%1 bestand bestaat niet (meer).</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="813"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="823"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Open bestand, alleen lezen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1227"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1237"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Bewerk element</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1232"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1242"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Bewerk tekst veld</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1237"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1247"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Bewerk afbeelding</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1243"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1253"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Bewerk geselecteerd object</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1890"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1900"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Onmogelijk om element te vinden in paneel, het is geopend in een ander venster</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1896"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1906"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Onmogelijk om element te vinden in paneel.... herladen...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1908"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1918"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Onmogelijk om element te vinden in paneel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1955"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1965"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Fout</translation>
@@ -4085,7 +4085,7 @@ Options disponibles :
         <translation>Activeert vorige project</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1420"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1430"/>
         <source>Active le projet « %1 »</source>
         <translation>Activeert project &quot;%1&quot;</translation>
     </message>
@@ -4951,39 +4951,39 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="723"/>
+        <location filename="../sources/qetproject.cpp" line="719"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Onmogelijk om categorie te maken voor elementen integratie</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="751"/>
+        <location filename="../sources/qetproject.cpp" line="747"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>Een fout bij het kopieren van categorie %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="946"/>
+        <location filename="../sources/qetproject.cpp" line="942"/>
         <source>Liste des Schémas</source>
         <translation>Lijst van Diagrammen</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1058"/>
+        <location filename="../sources/qetproject.cpp" line="1054"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>Dit document is met een nieuwere versie van QElectroTech bewaard. Openen kan deels of geheel foutgaan. Wat wilt u doen?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1118"/>
+        <location filename="../sources/qetproject.cpp" line="1114"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation>&lt;b&gt; Openen project ... &lt;/ b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1547"/>
+        <location filename="../sources/qetproject.cpp" line="1543"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Fout bij kopieren van element %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1057"/>
+        <location filename="../sources/qetproject.cpp" line="1053"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Waarschuwing</translation>
@@ -5019,17 +5019,12 @@ Que désirez vous faire ?</source>
         <translation>%1 [gewijzigd]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="593"/>
-        <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetproject.cpp" line="734"/>
+        <location filename="../sources/qetproject.cpp" line="730"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>Onmogelijk om element te bereiken voor integratie</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="825"/>
+        <location filename="../sources/qetproject.cpp" line="821"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Fout bij sjabloon invoegen.</translation>

@@ -3448,7 +3448,7 @@ Dostupné volby:
         <translation>&amp;Otevřít</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="697"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="707"/>
         <source>Ouvrir un fichier</source>
         <translation>Otevřít soubor</translation>
     </message>
@@ -3468,7 +3468,7 @@ Dostupné volby:
         <translation>&amp;Ukončit</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="699"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="709"/>
         <source>Schémas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>Výkresy programu QElectroTech (*.qet);;Soubory XML (*.xml);;Všechny soubory (*)</translation>
     </message>
@@ -3643,12 +3643,18 @@ Dostupné volby:
         <translation>&amp;Nedávno otevřený</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="800"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="635"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="656"/>
+        <source>Projet %1 enregistré dans le repertoire: %2.</source>
+        <translation>Projekt 1% uložený v adresáři: %2.</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="810"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Nezdá se, že by byl soubor, který se pokoušíte otevřít, čitelný. A nelze jej otevřít. Zkontrolujte, prosím, oprávnění k souboru.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="824"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Zdá se, že projekt, který se pokoušíte otevřít, není zapisovatelný. Bude tedy otevřen pouze pro čtení.</translation>
     </message>
@@ -3678,13 +3684,13 @@ Dostupné volby:
         <translation>Vyčistit projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="827"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="837"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Projekt nelze otevřít</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="829"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="839"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>Zdá se, že soubor %1 není souborem projektu QElectroTech. Nemůže být tedy otevřen.</translation>
@@ -3996,70 +4002,64 @@ Dostupné volby:
         <translation>Přidat</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="630"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="646"/>
-        <source>Projet enregistré</source>
-        <translation>Uložený projekt</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="794"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="809"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Soubor nelze otevřít</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="786"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="796"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Zdá se, že soubor %1, který se pokoušíte otevřít, už neexistuje.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="813"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="823"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Otevření souboru pouze pro čtení</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1227"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1237"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Upravit prvek</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1232"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1242"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Upravit textové pole</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1237"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1247"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Upravit obrázek</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1243"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1253"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Upravit vybraný předmět</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1890"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1900"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Tento prvek nelze najít v panelu, protože je, jak se zdá, upravován v jiném okně</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1896"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1906"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Tento prvek nelze najít v panelu... panel se znovu nahrává...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1908"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1918"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Tento prvek nelze najít v panelu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1955"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1965"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Chyba</translation>
@@ -4099,7 +4099,7 @@ Dostupné volby:
         <translation>Spustí předchozí projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1420"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1430"/>
         <source>Active le projet « %1 »</source>
         <translation>Spouští projekt &quot;%1&quot;</translation>
     </message>
@@ -4967,22 +4967,22 @@ podmínky nejsou platné</translation>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="723"/>
+        <location filename="../sources/qetproject.cpp" line="719"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Nelze vytvořit skupinu zaměřenou na začlenění prvků</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="751"/>
+        <location filename="../sources/qetproject.cpp" line="747"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>Během kopírování skupiny se vyskytla chyba %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="946"/>
+        <location filename="../sources/qetproject.cpp" line="942"/>
         <source>Liste des Schémas</source>
         <translation>Seznam výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1058"/>
+        <location filename="../sources/qetproject.cpp" line="1054"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -4990,17 +4990,17 @@ Que désirez vous faire ?</source>
 Co chcete dělat?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1118"/>
+        <location filename="../sources/qetproject.cpp" line="1114"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation>&lt;b&gt;Otevírá se projekt...&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1547"/>
+        <location filename="../sources/qetproject.cpp" line="1543"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Během kopírování prvku se vyskytla chyba %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1057"/>
+        <location filename="../sources/qetproject.cpp" line="1053"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Varování</translation>
@@ -5036,17 +5036,12 @@ Co chcete dělat?</translation>
         <translation>%1 [změněno]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="593"/>
-        <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation>Projekt 1% uložený v adresáři: %2.</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetproject.cpp" line="734"/>
+        <location filename="../sources/qetproject.cpp" line="730"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>Nelze přistupovat k prvku, který má být začleněn</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="825"/>
+        <location filename="../sources/qetproject.cpp" line="821"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Během začleňování vzoru se vyskytla chyba.</translation>
