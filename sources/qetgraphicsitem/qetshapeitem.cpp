@@ -35,16 +35,17 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_shapeType(type),
 	m_shapeStyle(Qt::DashLine),
 	m_P1 (Diagram::snapToGrid(p1)),
-	m_P2 (Diagram::snapToGrid(p2))
+	m_P2 (Diagram::snapToGrid(p2)),
+	m_hovered(false)
 
 {
 	if (type == Polyline) m_polygon << m_P1 << m_P2;
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	setAcceptHoverEvents(true);
 }
 
 QetShapeItem::~QetShapeItem()
-{
-}
+{}
 
 /**
  * @brief QetShapeItem::setStyle
@@ -108,11 +109,7 @@ void QetShapeItem::setNextPoint(QPointF P) {
  * @return the bounding rect of this item
  */
 QRectF QetShapeItem::boundingRect() const {
-	if (m_shapeType == Polyline)
-		return ( shape().boundingRect());
-
-	QRectF b(m_P1, m_P2);
-	return b.normalized();
+	return shape().boundingRect();
 }
 
 /**
@@ -121,20 +118,17 @@ QRectF QetShapeItem::boundingRect() const {
  */
 QPainterPath QetShapeItem::shape() const {
 	QPainterPath path;
-	QPainterPathStroker pps;
 
 	switch (m_shapeType) {
 		case Line:
 			path.moveTo(m_P1);
 			path.lineTo(m_P2);
-			pps.setWidth(10);
-			path = pps.createStroke(path);
 			break;
 		case Rectangle:
-			path.addRect(boundingRect());
+			path.addRect(QRectF(m_P1, m_P2));
 			break;
 		case Ellipse:
-			path.addEllipse(boundingRect());
+			path.addEllipse(QRectF(m_P1, m_P2));
 			break;
 		case Polyline:
 			path.addPolygon(m_polygon);
@@ -144,7 +138,11 @@ QPainterPath QetShapeItem::shape() const {
 			break;
 	}
 
-	return path;
+	QPainterPathStroker pps;
+	pps.setWidth(10);
+	pps.setJoinStyle(Qt::RoundJoin);
+
+	return (pps.createStroke(path));
 }
 
 /**
@@ -170,29 +168,62 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 {
 	Q_UNUSED(option); Q_UNUSED(widget);
 
-	QPen pen;
-	pen.setStyle(m_shapeStyle);
-	if (isSelected()) pen.setColor(Qt::red);
-	painter -> setRenderHint(QPainter::Antialiasing, false);
+	QPen pen(m_shapeStyle);
 	pen.setWidthF(1);
-	painter->setPen(pen);
 
+	if (m_hovered) {
+		painter->save();
+		QColor color(Qt::darkBlue);
+		color.setAlpha(25);
+		painter -> setBrush (QBrush (color));
+		painter -> setPen   (Qt::NoPen);
+		painter -> drawPath (shape());
+		painter -> restore  ();
+	}
+	else if (isSelected()) {
+		pen.setColor(Qt::red);
+	}
 
+	painter -> setPen(pen);
 
 	switch (m_shapeType) {
 		case Line:
 			painter->drawLine(QLineF(m_P1, m_P2));
 			break;
 		case Rectangle:
-			painter->drawRect(boundingRect());
+			painter->drawRect(QRectF(m_P1, m_P2));
 			break;
 		case Ellipse:
-			painter->drawEllipse(boundingRect());
+			painter->drawEllipse(QRectF(m_P1, m_P2));
 			break;
 		case Polyline:
 			painter->drawPolyline(m_polygon);
 			break;
 	}
+}
+
+/**
+ * @brief QetShapeItem::hoverEnterEvent
+ * Handle hover enter event
+ * @param event
+ */
+void QetShapeItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
+	Q_UNUSED(event);
+
+	m_hovered = true;
+	update();
+}
+
+/**
+ * @brief QetShapeItem::hoverLeaveEvent
+ * Handle hover leave event
+ * @param event
+ */
+void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
+	Q_UNUSED(event);
+
+	m_hovered = false;
+	update();
 }
 
 /**

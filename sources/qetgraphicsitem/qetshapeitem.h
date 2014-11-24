@@ -68,6 +68,8 @@ class QetShapeItem : public QetGraphicsItem
 
 	protected:
 	virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+	virtual void hoverEnterEvent (QGraphicsSceneHoverEvent *event);
+	virtual void hoverLeaveEvent (QGraphicsSceneHoverEvent *event);
 
 	private:
 	void changeGraphicsItem (const ShapeType &newtype);
@@ -81,5 +83,6 @@ class QetShapeItem : public QetGraphicsItem
 	Qt::PenStyle m_shapeStyle;
 	QPointF		 m_P1, m_P2;
 	QPolygonF	 m_polygon;
+	bool         m_hovered;
 };
 #endif // QETSHAPEITEM_H
