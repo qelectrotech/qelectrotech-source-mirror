@@ -37,7 +37,7 @@ CommentItem::CommentItem(Element *elmt) :
 		connect(elmt, SIGNAL(yChanged()),                        this, SLOT (autoPos()));
 		connect(elmt, SIGNAL(rotationChanged()),                 this, SLOT (autoPos()));
 	}
-	connect(elmt, SIGNAL(elementInfoChange(DiagramContext)), this, SLOT (updateLabel()));
+	connect(elmt, SIGNAL(elementInfoChange(DiagramContext,DiagramContext)), this, SLOT (updateLabel()));
 
 	updateLabel();
 }
