@@ -62,9 +62,9 @@ bool ESEventAddTerminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Borne"), m_scene, m_terminal));
 
 		//Set new terminal with same rotation
-		qreal rotation = m_terminal -> rotation();
+		Qet::Orientation ori = m_terminal -> orientation();
 		m_terminal = new PartTerminal(m_editor, 0, m_scene);
-		m_terminal -> setRotation(rotation);
+		m_terminal -> setOrientation(ori);
 		m_terminal -> setPos(m_scene -> snapToGrid(event -> scenePos()));
 
 		return true;
@@ -84,8 +84,24 @@ bool ESEventAddTerminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
  */
 bool ESEventAddTerminal::keyPressEvent(QKeyEvent *event) {
 	if (event -> key() == Qt::Key_Space) {
-		m_terminal -> setRotation(m_terminal -> rotation() + 90);
+		switch (m_terminal->orientation()) {
+			case Qet::North :
+				m_terminal -> setOrientation(Qet::East);
+				break;
+			case Qet::East :
+				m_terminal -> setOrientation(Qet::South);
+				break;
+			case Qet::South :
+				m_terminal -> setOrientation(Qet::West);
+				break;
+			case Qet::West :
+				m_terminal -> setOrientation(Qet::North);
+				break;
+			default :
+				m_terminal -> setOrientation(Qet::North);
+				break;
+		}
 		return true;
 	}
-	return false;
+	return (ESEventInterface::keyPressEvent(event));
 }
