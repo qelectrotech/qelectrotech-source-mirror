@@ -296,17 +296,17 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="23"/>
         <source>Autonumérotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische Nummerierung:</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/autonumselectorwidget.ui" line="49"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished"></translation>
+        <translation>Numerierung bearbeiten</translation>
     </message>
 </context>
 <context>
@@ -384,12 +384,12 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="14"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
-        <translation type="unfinished">Leitereigenschaften bearbeiten</translation>
+        <translation>Leitereigenschaften bearbeiten</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="33"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation type="unfinished">Eigenschaften auf alle Verbindungen dieses Potenzials übertragen</translation>
+        <translation>Eigenschaften auf alle Verbindungen dieses Potenzials übertragen</translation>
     </message>
 </context>
 <context>
@@ -413,12 +413,12 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="56"/>
         <source>Texte :</source>
-        <translation type="unfinished">Text:</translation>
+        <translation>Text:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="63"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
@@ -465,22 +465,22 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="93"/>
         <source>Visible</source>
-        <translation type="unfinished">Sichtbar</translation>
+        <translation>Sichtbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="77"/>
         <source>Taille du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Textgröße</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="90"/>
         <source>Texte visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Sichtbarer Text</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="107"/>
         <source>activer l&apos;option un texte par potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Option &quot;ein Text je Potenzial&quot; aktivieren</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="119"/>
@@ -491,17 +491,17 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="239"/>
         <source>Nombre de phase</source>
-        <translation type="unfinished"></translation>
+        <translation>Phasenanzahl</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
         <source>Neutre</source>
-        <translation type="unfinished"></translation>
+        <translation>Neutralleiter</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
         <source>Phase</source>
-        <translation type="unfinished"></translation>
+        <translation>Phase</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
@@ -521,7 +521,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="262"/>
         <source>Terre</source>
-        <translation type="unfinished"></translation>
+        <translation>Erde</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
@@ -537,13 +537,13 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="307"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="343"/>
         <source>Style du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Leiterstil</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="314"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="324"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Leiterfarbe</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
@@ -695,7 +695,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="49"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation type="unfinished">Seiteneigenschaften</translation>
+        <translation>Seiteneigenschaften</translation>
     </message>
 </context>
 <context>
@@ -1132,7 +1132,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
         <source>Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmleiste</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
@@ -1984,7 +1984,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="198"/>
         <source>Utiliser les gestures du trackpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzung vom Touchpad aktivieren</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="199"/>
@@ -2652,7 +2652,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
         <location filename="../sources/configpages.cpp" line="173"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Neues Projekt</translation>
     </message>
 </context>
 <context>
@@ -2825,24 +2825,24 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.ui" line="14"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished">Potenzialbeschriftung</translation>
+        <translation>Potenzialbeschriftung</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/potentialtextsdialog.ui" line="22"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished">Die Potenzialbeschriftungen unterscheiden sich voneinander. Möchten Sie den neuen Text auf alle 
+        <translation>Die Texte von diesem Potenzial unterscheiden sich voneinander. Möchten Sie einen neuen Text auf alle 
 Verbindungen dieses Potenzials anwenden?</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source>  : est présent </source>
-        <translation type="unfinished">  : ist vorhanden </translation>
+        <translation>  : ist vorhanden </translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
         <source> fois.</source>
-        <translation type="unfinished"> mal.</translation>
+        <translation> mal.</translation>
     </message>
 </context>
 <context>
@@ -2859,24 +2859,24 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="231"/>
         <source>Auto numerotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="253"/>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verfügbare Nummerierungen:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="260"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Numerierung löschen</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="326"/>
         <location filename="../sources/projectconfigpages.cpp" line="327"/>
         <source>Sans nom</source>
-        <translation type="unfinished"></translation>
+        <translation>Unbenannt</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="257"/>
@@ -2884,7 +2884,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <location filename="../sources/projectconfigpages.cpp" line="325"/>
         <location filename="../sources/projectconfigpages.cpp" line="346"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Name der neuen Nummerierung</translation>
     </message>
 </context>
 <context>
@@ -3811,7 +3811,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="203"/>
         <source>Exporter une nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Stückliste exportieren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="244"/>
@@ -3974,12 +3974,6 @@ Verfügbare Optionen:
         <translation>Projekte anzeigen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="635"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="656"/>
-        <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="434"/>
         <source>Outils</source>
         <translation>Werkzeuge</translation>
@@ -3998,6 +3992,12 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="466"/>
         <source>Ajouter</source>
         <translation>Einfügen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="635"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="656"/>
+        <source>Projet %1 enregistré dans le repertoire: %2.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="707"/>
@@ -4509,7 +4509,7 @@ Verfügbare Optionen:
         <location filename="../sources/editor/qetelementeditor.cpp" line="650"/>
         <source>Les éléments maîtres, esclaves  et simple doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bauteile vom Typ Master, Slave und Simpel (nicht verwiesen) müssen ein Textfeld &quot;label&quot; beinhalten</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="667"/>
@@ -5403,12 +5403,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="38"/>
         <source>un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>ein Textfeld</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="43"/>
         <source>un conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>ein Leiter</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="63"/>
@@ -5781,9 +5781,9 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="275"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n Form</numerusform>
+            <numerusform>%n Formen</numerusform>
         </translation>
     </message>
     <message>
@@ -5973,38 +5973,38 @@ Que désirez vous faire ?</source>
         <translation>Datum</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="304"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="337"/>
         <source>Type de trait</source>
         <comment>shape style</comment>
         <translation>Linientyp</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="309"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="342"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="310"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="343"/>
         <source>Tiret</source>
         <translation>Strich</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="311"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="344"/>
         <source>Pointillé</source>
         <translation>Gestrichelt</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="312"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="345"/>
         <source>Traits et points</source>
         <translation>Strichpunkt</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="313"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="346"/>
         <source>Traits points points</source>
         <translation>Strich-Punkt-Punkt</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="326"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="359"/>
         <source>Échelle</source>
         <comment>shape scale</comment>
         <translation>Maßstab</translation>
@@ -6013,32 +6013,32 @@ Que désirez vous faire ?</source>
         <location filename="../sources/ui/projectpropertiesdialog.cpp" line="32"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished">Projekteigenschaften</translation>
+        <translation>Projekteigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="146"/>
         <source>Selectionner une image...</source>
-        <translation type="unfinished">Wählen Sie ein Bild aus...</translation>
+        <translation>Ein Bild auswählen...</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="146"/>
         <source>Image Files (*.png *.jpg *.bmp *.svg)</source>
-        <translation type="unfinished">Bilder (*.png *.jpg *.bmp *.svg)</translation>
+        <translation>Bilddateien (*.png *.jpg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="152"/>
         <source>Erreur</source>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="152"/>
         <source>Impossible de charger l&apos;image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Laden vom Bild fehlgeschlagen.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.h" line="52"/>
         <source>Ajouter </source>
-        <translation type="unfinished"></translation>
+        <translation>Einfügen </translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="65"/>
@@ -6099,41 +6099,41 @@ Que désirez vous faire ?</source>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="299"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="332"/>
         <source>Éditer les propriétés d&apos;une shape, Zone </source>
         <comment>window title</comment>
         <translation>Shape-Eingenschaften bearbeiten</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="321"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="354"/>
         <source>Verrouiller la position</source>
         <translation>Position sperren</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="367"/>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="393"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="400"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="426"/>
         <source>une shape</source>
         <translation>ein Shape</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="381"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="414"/>
         <source>une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>eine Zeile</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="384"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="417"/>
         <source>un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>ein Rechteck</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="387"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="420"/>
         <source>une éllipse</source>
-        <translation type="unfinished"></translation>
+        <translation>eine Ellipse</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="390"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="423"/>
         <source>une polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>eine Polylinie</translation>
     </message>
 </context>
 <context>
@@ -6230,12 +6230,12 @@ Folgende Variablen stehen zur Verfügung:
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="78"/>
         <source>Précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorheriges</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="92"/>
         <source>Suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Nächstes</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="131"/>
@@ -6275,7 +6275,17 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hier können die Nummerierungsregeln für neue Leiter definiert werden.
+-eine Nummerierungsregel besteht mindestens aus einer Variable.
+-eine Variable kann mit den Tasten + und - hinzugefügt bzw. gelöscht werden.
+-eine Variable beinhaltet: einen Typ, einen Wert und eine Inkrementierung.
+
+-die Typen &quot;Zahl 1&quot;, &quot;Zahl 01&quot; und &quot;Zahl 001&quot; stehen für die Zahl vom Feld &quot;Wert&quot;, die bei jedem neuen Leiter um den Wert vom Feld &quot;Inkrementierung&quot; inkrementiert wird.
+-die Typen &quot;Zahl 01&quot; und &quot;Zahl 001&quot; werden im Schaltplan mit mindestens 2 bzw. 3 Ziffer dargestellt. Bei Bedarf werden führende 0 automatisch vorangestellt.
+
+-der Typ &quot;Text&quot; steht für einen fest definierten Text. In diesem Fall wird das Feld &quot;Inkrementierung&quot; nicht verwendet.
+
+-der Typ &quot;Seitennummer&quot; steht für die Nummer der aktuellen Seite. Andere Felder werden nicht verwendet.</translation>
     </message>
 </context>
 <context>
@@ -6801,7 +6811,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
         <source>Informations des cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Daten im Plotrahmen</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
@@ -7634,32 +7644,32 @@ Maximale Länge: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Désignation</source>
-        <translation type="unfinished"></translation>
+        <translation>Kennzeichen</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Label</source>
-        <translation type="unfinished">Label</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Kommentar</translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Fabriquant</source>
-        <translation type="unfinished">Hersteller</translation>
+        <translation>Hersteller</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Artikelnummer</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Machine-reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Maschinenbezeichnung</translation>
     </message>
 </context>
 <context>
