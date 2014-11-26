@@ -77,17 +77,18 @@ DeleteElementsCommand::~DeleteElementsCommand() {
 /// annule les suppressions
 void DeleteElementsCommand::undo() {
 	diagram -> showMe();
-	// remet les elements
+
 	foreach(Element *e, removed_content.elements) {
 		diagram -> addItem(e);
+		//Relink this element with other
+		foreach (Element *elmt, m_link_hash[e])
+			e -> linkToElement(elmt);
 	}
 	
-	// remet les conducteurs
 	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
 		diagram -> addItem(c);
 	}
 	
-	// remet les textes
 	foreach(IndependentTextItem *t, removed_content.textFields) {
 		diagram -> addItem(t);
 	}
@@ -113,7 +114,7 @@ void DeleteElementsCommand::redo() {
 		diagram -> removeItem(c);
 
 		//If option one text per folio is enable, and the text item of
-		//current conductor is visible (that mean the conductor own the single displayed text)
+		//current conductor is visible (that mean the conductor have the single displayed text)
 		//We call adjustTextItemPosition to other conductor at the same potential to keep
 		//a visible text on this potential.
 		if (diagram -> defaultConductorProperties.m_one_text_per_folio && c -> textItem() -> isVisible()) {
@@ -127,6 +128,9 @@ void DeleteElementsCommand::redo() {
 	
 	// Remove elements
 	foreach(Element *e, removed_content.elements) {
+		//Get linked element, for relink it at undo
+		if (!e->linkedElements().isEmpty())
+			m_link_hash.insert(e, e->linkedElements());
 		diagram -> removeItem(e);
 	}
 	

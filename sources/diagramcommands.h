@@ -101,6 +101,8 @@ class DeleteElementsCommand : public QUndoCommand {
 	DiagramContent removed_content;
 	/// diagram which the content is removed from
 	Diagram *diagram;
+	/// keep linked element for each removed element linked to other element.
+	QHash <Element *, QList<Element *> > m_link_hash;
 };
 
 /**
