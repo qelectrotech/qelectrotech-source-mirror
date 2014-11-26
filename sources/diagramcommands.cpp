@@ -80,9 +80,13 @@ void DeleteElementsCommand::undo() {
 
 	foreach(Element *e, removed_content.elements) {
 		diagram -> addItem(e);
-		//Relink this element with other
-		foreach (Element *elmt, m_link_hash[e])
-			e -> linkToElement(elmt);
+	}
+
+	//We relink element after every element was added to diagram
+	foreach(Element *e, removed_content.elements) {
+		foreach (Element *elmt, m_link_hash[e]) {
+				e -> linkToElement(elmt);
+		}
 	}
 	
 	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
