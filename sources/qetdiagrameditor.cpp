@@ -627,12 +627,18 @@ void QETDiagramEditor::save() {
 		QETResult saved = project_view -> save();
 		if (saved.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
-
+			//fake progressbar
+			progressBar = new QProgressBar;
+			progressBar -> setAlignment(Qt::AlignLeft);
+			progressBar -> setMaximumSize(180, 19);
+			statusBar()-> addPermanentWidget(progressBar);
+			progressBar -> setFormat(tr("Enregistrement : %p%", "Visual rendering of write files - %p is the progress percentage"));
+			progressBar -> setValue(100);
+			QTimer::singleShot(2000, progressBar, SLOT(hide()));
 			QString title = (project_view -> project() -> title ());
 			if (title.isEmpty()) title = "QElectroTech ";
 			QString filePath = (project_view -> project() -> filePath ());
-
-			statusBar()->showMessage(tr("Projet %1 enregistr\351 dans le repertoire: %2.").arg(title).arg (filePath), 2000);
+			statusBar()-> showMessage(tr("Projet %1 enregistr\351 dans le repertoire: %2.").arg(title).arg (filePath), 2000);
 		} else {
 			showError(saved);
 		}
@@ -648,7 +654,14 @@ void QETDiagramEditor::saveAs() {
 		QETResult save_file = project_view -> saveAs();
 		if (save_file.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
-
+			//fake progressbar
+			progressBar = new QProgressBar;
+			progressBar -> setAlignment(Qt::AlignLeft);
+			progressBar -> setMaximumSize(180, 19);
+			statusBar()-> addPermanentWidget(progressBar);
+			progressBar -> setFormat(tr("Enregistrement : %p%", "Visual rendering of write files - %p is the progress percentage"));
+			progressBar -> setValue(100);
+			QTimer::singleShot(2000, progressBar, SLOT(hide()));
 			QString title = (project_view -> project() -> title ());
 			if (title.isEmpty()) title = "QElectroTech ";
 			QString filePath = (project_view -> project() -> filePath ());
