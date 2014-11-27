@@ -113,13 +113,6 @@ QList<Diagram *> ProjectView::getDiagrams(ProjectSaveOptions options) {
 		}
 	}
 	
-	if (options & ModifiedDiagramsOnly) {
-		foreach (Diagram *diagram, selection) {
-			if (!diagram -> undoStack().isClean() || !diagram -> wasWritten()) continue;
-			selection.removeOne(diagram);
-		}
-	}
-	
 	return(selection);
 }
 
@@ -371,21 +364,17 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 	// verifie que le schema est bien present dans le projet
 	if (!diagram_ids_.values().contains(diagram_view)) return;
 	
-	// demande confirmation a l'utilisateur
-	if (
-		diagram_view -> diagram() -> wasWritten() ||\
-		!diagram_view -> diagram() -> undoStack().isClean()
-	) {
-		int answer = QET::MessageBox::question(
-			this,
-			tr("Supprimer le sch\351ma ?", "message box title"),
-			tr("\312tes-vous s\373r de vouloir supprimer ce sch\351ma du projet ? Ce changement est irr\351versible.", "message box content"),
-			QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
-			QMessageBox::No
-		);
-		if (answer != QMessageBox::Yes) {
-			return;
-		}
+
+	//Ask confirmation to user.
+	int answer = QET::MessageBox::question(
+		this,
+		tr("Supprimer le sch\351ma ?", "message box title"),
+		tr("\312tes-vous s\373r de vouloir supprimer ce sch\351ma du projet ? Ce changement est irr\351versible.", "message box content"),
+		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
+		QMessageBox::No
+	);
+	if (answer != QMessageBox::Yes) {
+		return;
 	}
 	
 	// enleve le DiagramView des onglets

@@ -34,7 +34,6 @@ class ProjectView : public QWidget {
 	
 	public:
 	enum ProjectSaveOption {
-		ModifiedDiagramsOnly = 1,
 		CurrentDiagram = 2,
 		AllDiagramsButCurrent = 4,
 		AllDiagrams = 6
@@ -77,7 +76,7 @@ class ProjectView : public QWidget {
 	void printProject();
 	void exportProject();
 	QETResult save();
-	QETResult saveAs(ProjectSaveOptions = ProjectSaveOptions(AllDiagrams | ModifiedDiagramsOnly));
+	QETResult saveAs(ProjectSaveOptions = ProjectSaveOptions(AllDiagrams));
 	QETResult doSave(ProjectSaveOptions);
 	void saveDiagrams(const QList<Diagram *> &);
 	int cleanProject();
