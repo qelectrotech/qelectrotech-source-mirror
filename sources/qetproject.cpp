@@ -1428,21 +1428,6 @@ bool QETProject::titleBlockTemplateCollectionWasModified() {
 }
 
 /**
-	Cette methode sert a reperer un projet vide, c-a-d un projet identique a ce
-	que l'on obtient en faisant Fichier > Nouveau.
-	@return true si les schemas de ce projet ont ete modifies
-	Concretement, il doit y avoir exactement un schema, dont la pile
-	d'annulation est "clean".
-*/
-bool QETProject::diagramsWereModified() {
-	// il doit y avoir exactement un schema
-	if (diagrams_.count() != 1) return(true);
-	
-	// dont la pile d'annulation est "clean"
-	return(!(diagrams_[0] -> undoStack().isClean() && !diagrams_[0] -> wasWritten()));
-}
-
-/**
 	@return the project-wide properties made available to child diagrams.
 */
 DiagramContext QETProject::projectProperties() {
@@ -1467,12 +1452,15 @@ void QETProject::setProjectProperties(const DiagramContext &context) {
 	@see diagramsWereModified(), embeddedCollectionWasModified()
 */
 bool QETProject::projectWasModified() {
-	if (projectOptionsWereModified()) return(true);
-	if (diagramsWereModified()) return(true);
-	if (embeddedCollectionWasModified()) return(true);
-	if (titleBlockTemplateCollectionWasModified()) return(true);
+
+	if ( projectOptionsWereModified()    ||
+		 !undo_stack_ -> isClean()       ||
+		 embeddedCollectionWasModified() ||
+		 titleBlockTemplateCollectionWasModified() )
+		return(true);
 	
-	return(false);
+	else
+		return(false);
 }
 
 /**

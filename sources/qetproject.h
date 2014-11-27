@@ -137,7 +137,6 @@ class QETProject : public QObject {
 	bool projectOptionsWereModified();
 	bool embeddedCollectionWasModified();
 	bool titleBlockTemplateCollectionWasModified();
-	bool diagramsWereModified();
 	DiagramContext projectProperties();
 	void setProjectProperties(const DiagramContext &);
 	QUndoStack* undoStack() {return undo_stack_;}
