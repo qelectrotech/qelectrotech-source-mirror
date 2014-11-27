@@ -149,7 +149,6 @@ class QETDiagramEditor : public QETMainWindow {
 	void cleanCurrentProject();
 	void nomenclatureProject();
 	void diagramWasAdded(DiagramView *);
-	void diagramWasRemoved(DiagramView *);
 	void findElementInPanel(const ElementsLocation &);
 	void findSelectedElementInPanel();
 	void editElementInEditor(const ElementsLocation &);
@@ -229,6 +228,5 @@ class QETDiagramEditor : public QETMainWindow {
 	QToolBar *diagram_bar;
 	QToolBar *m_add_item_toolBar;
 	QUndoGroup undo_group;
-	bool can_update_actions;
 };
 #endif

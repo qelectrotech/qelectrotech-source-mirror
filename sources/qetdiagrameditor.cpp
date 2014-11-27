@@ -57,8 +57,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_selection_actions_group  (this),
 	m_row_column_actions_group (this),
 	m_file_actions_group       (this),
-	open_dialog_dir            (QDesktopServices::storageLocation(QDesktopServices::DesktopLocation)),
-	can_update_actions         (true)
+	open_dialog_dir            (QDesktopServices::storageLocation(QDesktopServices::DesktopLocation))
 {
 	// mise en place de l'interface MDI au centre de l'application
 	setCentralWidget(&workspace);
@@ -883,6 +882,8 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel) {
 	// cree un ProjectView pour visualiser le projet
 	ProjectView *project_view = new ProjectView(project);
 	addProjectView(project_view);
+
+	undo_group.addStack(project -> undoStack());
 	
 	// met a jour le panel d'elements
 	if (update_panel) {
@@ -1200,7 +1201,7 @@ void QETDiagramEditor::slot_updateActions() {
  */
 void QETDiagramEditor::slot_updateUndoStack() {
 	ProjectView *pv = currentProject();
-	if (pv && can_update_actions) {
+	if (pv) {
 		undo_group.setActiveStack(pv->project()->undoStack());
 		undo      -> setEnabled (undo_group.canUndo());
 		redo      -> setEnabled (undo_group.canRedo());
@@ -1339,7 +1340,6 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 	// gere l'ajout et le retrait de schema du projet
 	connect(project_view, SIGNAL(diagramAdded(DiagramView *)),   this, SLOT(diagramWasAdded(DiagramView *)));
 	connect(project_view, SIGNAL(diagramAdded(DiagramView *)),   this, SLOT(slot_updateActions()));
-	connect(project_view, SIGNAL(diagramRemoved(DiagramView *)), this, SLOT(diagramWasRemoved(DiagramView *)));
 	connect(project_view, SIGNAL(diagramRemoved(DiagramView *)), this, SLOT(slot_updateActions()));
 	if (QETProject *project = project_view -> project()) {
 		// on met aussi les menus a jour quand un projet passe en lecture seule ou non
@@ -1690,6 +1690,7 @@ void QETDiagramEditor::projectWasClosed(ProjectView *project_view) {
 	QETProject *project = project_view -> project();
 	if (project) {
 		pa -> elementsPanel().projectWasClosed(project);
+		undo_group.removeStack(project -> undoStack());
 		QETApp::unregisterProject(project);
 	}
 	project_view -> deleteLater();
@@ -1841,7 +1842,6 @@ void QETDiagramEditor::nomenclatureProject() {
 void QETDiagramEditor::removeDiagramFromProject() {
 	if (ProjectView *current_project = currentProject()) {
 		if (DiagramView *current_diagram = current_project -> currentDiagram()) {
-			can_update_actions = false;
 			bool isFolioList = false;
 
 			// if diagram to remove is a "folio list sheet", then set a flag.
@@ -1878,20 +1878,9 @@ void QETDiagramEditor::removeDiagramFromProject() {
 */
 void QETDiagramEditor::diagramWasAdded(DiagramView *dv) {
 	// quand on change qqc a l'interieur d'un schema, on met a jour les menus
-	undo_group.addStack(&(dv -> diagram() -> undoStack()));
 	connect(dv,              SIGNAL(selectionChanged()),         this,     SLOT(slot_updateComplexActions()));
 	connect(dv,              SIGNAL(modeChanged()),              this,     SLOT(slot_updateModeActions()));
 	connect(dv,				 SIGNAL(itemAdded()),				 this,	   SLOT(addItemFinish()));
-}
-
-/**
-	Gere le retrait d'un schema dans un projet apres que le retrait soit effectif
-	@param dv DiagramView concerne
-*/
-void QETDiagramEditor::diagramWasRemoved(DiagramView *dv) {
-	Q_UNUSED(dv);
-	can_update_actions = true;
-	slot_updateUndoStack();
 }
 
 /**
