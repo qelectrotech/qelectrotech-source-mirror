@@ -74,8 +74,11 @@ svn up
 # recupere le numero de la nouvelle revision
 revAp=$(svnversion | cut -d : -f 2 | tr -d '[:alpha:]')
 
+# On recupere le numero de version de l'originale 
+tagName=$(sed -n "s/const QString displayedVersion =\(.*\)/\1/p" sources/qet.h  | cut -d\" -f2 | cut -d\" -f1 )
+
 # Dmg de la dernière revision déjà créé
-if [ -e "packaging/mac-osx/${APPNAME}_$revAp.dmg" ] ; then
+if [ -e "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg" ] ; then
     echo "There are not new updates, make disk image can"
     echo "take a lot of time (5 min). Can you continu?"
     echo  "[y/n]"
@@ -100,9 +103,6 @@ echo "Adding the version tag..."
 # On sauve l'orginale
 mkdir temp
 cp -Rf "sources/qet.h" "temp/qet.h"
-
-# On recupere le numero de version de l'originale 
-tagName=$(sed -n "s/const QString displayedVersion =\(.*\)/\1/p" sources/qet.h  | cut -d\" -f2 | cut -d\" -f1 )
 
 # On modifie l'originale avec le numero de revision du depot svn
 sed -i "" "s/const QString displayedVersion =.*/const QString displayedVersion = \"$tagName r$revAp\";/" sources/qet.h
@@ -305,6 +305,8 @@ svnversion | grep -q '[MS:]' ; if [ $? -eq 0 ] ; then
     echo This is not the same version as the deposit. 
     echo You can use \'svn diff\' to see the differences. 
     echo And use \'svn revert \<fichier\>\' to delete the difference. 
+    echo To go back, you can use svn update -r 360 
+    echo to go to revision number 360.
     echo
 fi 
 
