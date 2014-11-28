@@ -87,6 +87,8 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	setUpActions();
 	setUpToolBar();
 	setUpMenu();
+
+	tabifyDockWidget(qdw_undo, qdw_pa);
 	
 	// la fenetre est maximisee par defaut
 	setMinimumSize(QSize(500, 350));
@@ -141,6 +143,7 @@ void QETDiagramEditor::setUpElementsPanel() {
 	qdw_pa -> setMinimumWidth (160);
 	qdw_pa -> setWidget       (pa = new ElementsPanelWidget(qdw_pa));
 
+	addDockWidget(Qt::LeftDockWidgetArea, qdw_pa);
 
 	connect(pa, SIGNAL(requestForProject                  (QETProject *)), this, SLOT(activateProject(QETProject *)));
 	connect(pa, SIGNAL(requestForProjectClosing           (QETProject *)), this, SLOT(closeProject(QETProject *)));
@@ -173,6 +176,8 @@ void QETDiagramEditor::setUpUndoStack() {
 	qdw_undo -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	qdw_undo -> setMinimumWidth(160);
 	qdw_undo -> setWidget(undo_view);
+
+	addDockWidget(Qt::LeftDockWidgetArea, qdw_undo);
 }
 
 /**
