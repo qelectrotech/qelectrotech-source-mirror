@@ -81,7 +81,7 @@ bool nomenclature::saveToCSVFile() {
 QString nomenclature::getNomenclature() {
 	//Process...
 	QString data = tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
-	data += tr("Folio") +";"+ tr("Sch\351ma") +";"+ tr("D\351signation")+";"+ tr("Label") +";"+ tr("Commentaire") +";"+ tr("Fabriquant") +";"+ tr("Reference") +";"+ tr("Machine-reference")+"\n";
+	data += tr("Folio") +";"+ tr("Sch\351ma") +";"+ tr("D\351signation qet")+";"+ tr("Label") +";"+ tr("D\351signation")+";"+ tr("Commentaire") +";"+ tr("Fabriquant") +";"+ tr("Reference") +";"+ tr("Machine-reference")+"\n";
 
 	if(m_list_diagram.isEmpty()) return data;
 
@@ -115,6 +115,7 @@ QString nomenclature::getElementInfo(const Element *elmt) {
 	info += diagram -> title() + ";";
 	info += elmt -> name() + ";";
 	info += elmt_info["label"].toString() + ";";
+	info += elmt_info["designation"].toString() + ";";
 	info += elmt_info["comment"].toString() + ";";
 	info += elmt_info["manufacturer"].toString() + ";";
 	info += elmt_info["manufacturer-reference"].toString() + ";";

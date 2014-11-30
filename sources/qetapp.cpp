@@ -346,6 +346,7 @@ QStringList QETApp::elementInfoKeys() {
 	QStringList info_list;
 	info_list << "label"
 			  << "comment"
+			  << "designation"
 			  << "manufacturer"
 			  << "manufacturer-reference"
 			  << "machine-manufacturer-reference";
@@ -362,6 +363,7 @@ QStringList QETApp::elementInfoKeys() {
 QString QETApp::elementTranslatedInfoKey(QString &info) {
 	if (info == "label") return tr("Label");
 	else if (info == "comment") return tr("Commentaire");
+	else if (info == "designation") return tr("D\351signation");
 	else if (info == "manufacturer") return tr("Fabriquant");
 	else if (info == "manufacturer-reference") return tr("R\351f\351rence fabriquant");
 	else if (info == "machine-manufacturer-reference") return tr("R\351f\351rence fabriquant machine");
