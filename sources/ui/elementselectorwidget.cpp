@@ -34,8 +34,9 @@ ElementSelectorWidget::ElementSelectorWidget(QList <Element *> elmt_list, QWidge
 	QWidget(parent),
 	ui(new Ui::ElementSelectorWidget),
 	elements_list(elmt_list),
-	selected_element(0),
-	showed_element(0)
+	selected_element (nullptr),
+	showed_element   (nullptr),
+	m_button_group   (nullptr)
 {
 	qSort(elements_list.begin(), elements_list.end(), comparPos);
 	ui->setupUi(this);
@@ -79,6 +80,7 @@ void ElementSelectorWidget::clear() {
 	content_list.clear();
 	delete sm_;
 	delete sm_show_;
+	delete m_button_group;
 }
 
 /**
@@ -100,10 +102,14 @@ void ElementSelectorWidget::setList(QList<Element *> elmt_list) {
 void ElementSelectorWidget::buildInterface() {
 	//Setup the signal mapper
 	int map_id = 0; //this int is used to map the signal
+
 	sm_ = new QSignalMapper(this);
 	connect(sm_, SIGNAL(mapped(int)), this, SLOT(setSelectedElement(int)));
+
 	sm_show_ = new QSignalMapper(this);
 	connect(sm_show_, SIGNAL(mapped(int)), this, SLOT(showElementFromList(int)));
+
+	m_button_group = new QButtonGroup(this);
 
 	//Build the list
 	foreach (Element *elmt, elements_list) {
@@ -127,22 +133,29 @@ void ElementSelectorWidget::buildInterface() {
 
 		QString title = elmt->diagram()->title();
 		if (title.isEmpty()) title = tr("Sans titre");
-		button_text += QString(tr("Folio\240 %1 (%2), position %3.")).arg(elmt->diagram()->folioIndex() + 1)
+		button_text += QString("Folio %1 (%2), position %3.").arg(elmt->diagram()->folioIndex() + 1)
 																		  .arg(title)
 																		  .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
 
-		//add the button himself
+		//Widget that contain the buttons
 		QWidget *widget = new QWidget(this);
-		QHBoxLayout *hl = new QHBoxLayout(widget);
-		hl->setContentsMargins(0,0,0,0);
-		QRadioButton *rb = new QRadioButton(button_text , widget);
-		QPushButton *pb = new QPushButton(QET::Icons::ZoomDraw,"", widget);
-		pb->setToolTip(tr("Voir l'\351l\351ment"));
-		hl->addWidget(rb);
-		hl->addStretch();
-		hl->addWidget(pb);
-		ui->scroll_layout_->insertWidget(map_id, widget);
 		content_list << widget;
+
+		//Radio button for select element
+		QRadioButton *rb = new QRadioButton(button_text , widget);
+		m_button_group -> addButton(rb);
+
+		//Push button to highlight element
+		QPushButton *pb = new QPushButton(QET::Icons::ZoomDraw,"", widget);
+		pb -> setToolTip(tr("Voir l'\351l\351ment"));
+
+		QHBoxLayout *hl = new QHBoxLayout(widget);
+		hl -> setContentsMargins(0,0,0,0);
+		hl -> addWidget(rb);
+		hl -> addStretch();
+		hl -> addWidget(pb);
+		ui -> scroll_layout_ -> insertWidget(map_id, widget);
+
 		//Add the string for filter this widget
 		QString filter;
 		foreach(QString str, elmt->elementInformations().keys()){

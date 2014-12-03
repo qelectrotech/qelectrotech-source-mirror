@@ -21,6 +21,7 @@
 #include <QWidget>
 class Element;
 class QSignalMapper;
+class QButtonGroup;
 
 namespace Ui {
 	class ElementSelectorWidget;
@@ -59,11 +60,12 @@ class ElementSelectorWidget : public QWidget
 	///Attributes
 	private:
 	Ui::ElementSelectorWidget *ui;
-	QList <Element *> elements_list;
-	QSignalMapper *sm_, *sm_show_;
-	Element *selected_element, *showed_element;
-	QList <QWidget *> content_list;
-	QStringList string_filter;
+	QList <Element *>          elements_list;
+	QSignalMapper             *sm_, *sm_show_;
+	Element                   *selected_element, *showed_element;
+	QList <QWidget *>          content_list;
+	QStringList                string_filter;
+	QButtonGroup               *m_button_group;
 };
 
 #endif // ELEMENTSELECTORWIDGET_H
