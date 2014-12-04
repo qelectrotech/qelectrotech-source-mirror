@@ -46,14 +46,16 @@ class ElementSelectorWidget : public QWidget
 	void clear();
 	void setList(QList <Element *> elmt_list);
 
+	QStringList filter () const;
+
 	public slots:
-	void filter(const QString &str);
+	void filtered(const QString &str);
 
 	private:
 	void buildInterface();
 
 	private slots:
-	void setSelectedElement(const int i) {selected_element = elements_list.at(i);}
+	void setSelectedElement  (const int i) {selected_element = elements_list.at(i);}
 	void showElementFromList (const int i);
 
 
@@ -64,7 +66,9 @@ class ElementSelectorWidget : public QWidget
 	QSignalMapper             *sm_, *sm_show_;
 	Element                   *selected_element, *showed_element;
 	QList <QWidget *>          content_list;
-	QStringList                string_filter;
+	QStringList                in_filter,  //In filter is used inside this class to filter the content of this widget
+							   out_filter; //Out filter is used to return (with the method filter) a list of
+										   //available string to filter the content of this widget
 	QButtonGroup               *m_button_group;
 };
 

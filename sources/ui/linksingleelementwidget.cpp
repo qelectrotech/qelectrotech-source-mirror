@@ -94,8 +94,7 @@ void LinkSingleElementWidget::buildInterface() {
 				ui->button_linked->setDisabled(true) :
 				buildUnlinkButton();
 
-	if(filter_ & Element::Master)
-		buildSearchField();
+	buildSearchField();
 }
 
 /**
@@ -132,12 +131,22 @@ void LinkSingleElementWidget::buildUnlinkButton() {
  * like label or information
  */
 void LinkSingleElementWidget::buildSearchField() {
-	search_field = new QLineEdit(this);
+		//If there isn't string to filter, we remove the search field
+	if (esw_->filter().isEmpty()) {
+		if (search_field) {
+			ui -> header_layout -> removeWidget(search_field);
+			delete search_field;
+			search_field = nullptr;
+		}
+		return;
+	}
+
+	if(!search_field) search_field = new QLineEdit(this);
 #if QT_VERSION >= 0x040700
 	search_field -> setPlaceholderText(tr("Rechercher"));
 #endif
 	setUpCompleter();
-	connect(search_field, SIGNAL(textChanged(QString)), esw_, SLOT(filter(QString)));
+	connect(search_field, SIGNAL(textChanged(QString)), esw_, SLOT(filtered(QString)));
 	ui->header_layout->addWidget(search_field);
 }
 
@@ -177,21 +186,16 @@ QList <Element *> LinkSingleElementWidget::availableElements() {
 
 /**
  * @brief LinkSingleElementWidget::setUpCompleter
- * Setup the completer for the find_field
+ * Setup the completer of search_field
  */
 void LinkSingleElementWidget::setUpCompleter() {
 	if (search_field) {
-		search_field->clear();
-		delete search_field->completer();
+		search_field -> clear();
+		delete search_field -> completer();
 
-		QStringList list;
-		foreach (Element *elmt, availableElements())
-			foreach(QString str, elmt->elementInformations().keys())
-				list << elmt->elementInformations()[str].toString();
-
-		QCompleter *comp = new QCompleter(list, search_field);
-		comp->setCaseSensitivity(Qt::CaseInsensitive);
-		search_field->setCompleter(comp);
+		QCompleter *comp = new QCompleter(esw_ -> filter(), search_field);
+		comp -> setCaseSensitivity(Qt::CaseInsensitive);
+		search_field -> setCompleter(comp);
 	}
 }
 
@@ -201,7 +205,7 @@ void LinkSingleElementWidget::setUpCompleter() {
  */
 void LinkSingleElementWidget::setNewList() {
 	esw_->setList(availableElements());
-	setUpCompleter();
+	buildSearchField();
 }
 
 /**

@@ -21,6 +21,9 @@
 #include "qeticons.h"
 #include "diagram.h"
 #include "element.h"
+#include "terminal.h"
+#include "conductor.h"
+#include "qet.h"
 
 /**
  * @brief ElementSelectorWidget::ElementSelectorWidget
@@ -71,7 +74,8 @@ void ElementSelectorWidget::showElement(Element *elmt) {
  */
 void ElementSelectorWidget::clear() {
 	elements_list.clear();
-	string_filter.clear();
+	in_filter.clear();
+	out_filter.clear();
 	if(showed_element) showed_element->setHighlighted(false);
 	foreach(QWidget *w, content_list) {
 		ui->scroll_layout_->removeWidget(w);
@@ -116,8 +120,10 @@ void ElementSelectorWidget::buildInterface() {
 		//label for the button
 		QString button_text;
 
-		//if element is master and have label, add label to the string
-		//Also to comment
+			/*
+			 * If element is master and have label,
+			 * we add label and comment to the button text
+			 */
 		if (elmt->linkType() & Element::Master) {
 			DiagramContext dc = elmt -> elementInformations();
 
@@ -129,6 +135,42 @@ void ElementSelectorWidget::buildInterface() {
 
 			if (!button_text.isEmpty())
 				button_text += "\n";
+
+				//Add the string for filter this widget
+			QString filter;
+			foreach(QString str, elmt->elementInformations().keys()){
+				QString filter_str = elmt->elementInformations()[str].toString();
+				filter += filter_str;
+				out_filter << filter_str;
+			}
+			in_filter << filter;
+		}
+
+			/*
+			 * If element is a folio report, have conductors docked to his terminal,
+			 * and each conductor have the same text,
+			 * we add this text to the button label and provide it through the filter
+			 */
+		if (elmt -> linkType() & Element::AllReport) {
+				//Report have one terminal, but we check it to prevent assert.
+			if (!elmt -> terminals().isEmpty()) {
+					//We must to have at least one conductor
+				if (!elmt -> terminals().first() -> conductors().isEmpty()) {
+					Conductor *cond = elmt->terminals().first()->conductors().first();
+					QSet <Conductor *> cdr_set = cond -> relatedPotentialConductors();
+					cdr_set << cond;
+
+					QStringList str_list;
+					foreach (Conductor* c, cdr_set)
+						str_list << c->properties().text;
+
+					if (QET::eachStrIsEqual(str_list)) {
+						button_text = tr("N\260 fil : ") + str_list.first() + "\n";
+						in_filter  << str_list.first();
+						out_filter << str_list.first();
+					}
+				}
+			}
 		}
 
 		QString title = elmt->diagram()->title();
@@ -137,15 +179,15 @@ void ElementSelectorWidget::buildInterface() {
 																		  .arg(title)
 																		  .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
 
-		//Widget that contain the buttons
+			//Widget that contain the buttons
 		QWidget *widget = new QWidget(this);
 		content_list << widget;
 
-		//Radio button for select element
+			//Radio button for select element
 		QRadioButton *rb = new QRadioButton(button_text , widget);
 		m_button_group -> addButton(rb);
 
-		//Push button to highlight element
+			//Push button to highlight element
 		QPushButton *pb = new QPushButton(QET::Icons::ZoomDraw,"", widget);
 		pb -> setToolTip(tr("Voir l'\351l\351ment"));
 
@@ -156,17 +198,10 @@ void ElementSelectorWidget::buildInterface() {
 		hl -> addWidget(pb);
 		ui -> scroll_layout_ -> insertWidget(map_id, widget);
 
-		//Add the string for filter this widget
-		QString filter;
-		foreach(QString str, elmt->elementInformations().keys()){
-			filter += elmt->elementInformations()[str].toString();
-		}
-		string_filter << filter;
-
-		//map the radio button signal
+			//map the radio button signal
 		connect(rb, SIGNAL(clicked()), sm_, SLOT(map()));
 		sm_ -> setMapping(rb, map_id);
-		//map the push button show diagram
+			//map the push button show diagram
 		connect(pb, SIGNAL(clicked()), sm_show_, SLOT(map()));
 		sm_show_->setMapping(pb, map_id);
 
@@ -186,17 +221,26 @@ void ElementSelectorWidget::showElementFromList(const int i) {
 
 /**
  * @brief ElementSelectorWidget::filter
+ * @return A stringlist with all available value
+ * to filter the content of this widget;
+ */
+QStringList ElementSelectorWidget::filter() const {
+	return out_filter;
+}
+
+/**
+ * @brief ElementSelectorWidget::filter
  * Filter the content of the list.
  * Give an empty string remove all filter.
  * @param str string to filter
  */
-void ElementSelectorWidget::filter(const QString &str) {
+void ElementSelectorWidget::filtered(const QString &str) {
 	if(str.isEmpty()) {
 		foreach (QWidget *w, content_list) w->setHidden(false);
 	}
 	else {
-		for (int i =0; i<string_filter.size(); i++) {
-			if (string_filter.at(i).contains(str, Qt::CaseInsensitive))
+		for (int i =0; i<in_filter.size(); i++) {
+			if (in_filter.at(i).contains(str, Qt::CaseInsensitive))
 				content_list.at(i)->setHidden(false);
 			else
 				content_list.at(i)->setHidden(true);
