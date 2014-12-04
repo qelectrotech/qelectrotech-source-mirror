@@ -44,6 +44,4 @@ class ConductorAutoNumerotation {
 	QSet <Conductor *> conductor_list;
 };
 
-bool eachIsEqual (const QStringList &);
-
 #endif // CONDUCTORAUTONUMEROTATION_H

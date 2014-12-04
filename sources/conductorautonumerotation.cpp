@@ -22,6 +22,7 @@
 #include "conductor.h"
 #include "diagram.h"
 #include "potentialtextsdialog.h"
+#include "qet.h"
 
 /**
  *Constructor
@@ -51,15 +52,15 @@ void ConductorAutoNumerotation::numerate() {
  * A conductor of the potential to check.
  */
 void ConductorAutoNumerotation::checkPotential(Conductor *conductor) {
-	//fill list of potential
+		//fill list of potential
 	QSet <Conductor *> c_list = conductor->relatedPotentialConductors();
 	c_list << conductor;
-	//fill list of text
+		//fill list of text
 	QStringList strl;
 	foreach (const Conductor *c, c_list) strl<<(c->text());
 
-	//check text list, isn't same in potential, ask user what to do
-	if (!eachIsEqual(strl)) {
+		//check text list, isn't same in potential, ask user what to do
+	if (!QET::eachStrIsEqual(strl)) {
 		PotentialTextsDialog ptd(conductor, conductor->diagramEditor());
 		if ( ptd.exec() == QDialog::Accepted ) {
 			ConductorAutoNumerotation can(conductor);
@@ -110,8 +111,8 @@ void ConductorAutoNumerotation::applyText(QString t) {
 void ConductorAutoNumerotation::numeratePotential() {
 	QStringList strl;
 	foreach (const Conductor *cc, conductor_list) strl<<(cc->text());
-	//the texts is identicals
-	if (eachIsEqual(strl)) {
+		//the texts is identicals
+	if (QET::eachStrIsEqual(strl)) {
 		ConductorProperties cp = conductor_ -> properties();
 		cp.text = strl.at(0);
 		conductor_ -> setProperties(cp);
@@ -139,14 +140,4 @@ void ConductorAutoNumerotation::numerateNewConductor() {
 	NumerotationContextCommands ncc (context, m_diagram);
 	applyText(ncc.toRepresentedString());
 	m_diagram->project()->addConductorAutoNum(m_diagram -> conductorsAutonumName(), ncc.next());
-}
-
-/**
- * @return true if every text of qsl is identical, else false.
- */
-bool eachIsEqual (const QStringList &qsl) {
-	foreach (const QString t, qsl) {
-		if (qsl.at(0) != t) return false;
-	}
-	return true;
 }
