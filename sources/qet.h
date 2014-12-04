@@ -154,6 +154,7 @@ namespace QET {
 	QString titleBlockColumnLengthToString(const TitleBlockColumnLength  &);
 	bool writeXmlFile(QDomDocument &, const QString &, QString * = 0);
 	QPointF graphicsSceneEventPos(QEvent *);
+	bool eachStrIsEqual (const QStringList &qsl);
 }
 
 class Qet : public QObject {

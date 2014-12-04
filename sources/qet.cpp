@@ -683,3 +683,18 @@ QPointF QET::graphicsSceneEventPos(QEvent *event) {
 	}
 	return(event_scene_pos);
 }
+
+/**
+ * @brief QET::eachStrIsEqual
+ * @param qsl list of string to compare
+ * @return true if every string is identical, else false;
+ * The list must not be empty
+ * If the list can be empty, call isEmpty() before calling this function
+ */
+bool QET::eachStrIsEqual(const QStringList &qsl) {
+	if (qsl.size() == 1) return true;
+	foreach (const QString t, qsl) {
+		if (qsl.at(0) != t) return false;
+	}
+	return true;
+}
