@@ -504,14 +504,15 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
 void CrossRefItem::AddExtraInfo(QPainter &painter) {
 	QString comment = m_element-> elementInformations()["comment"].toString();
 	bool must_show = m_element-> elementInformations().keyMustShow("comment");
+
 	if (!comment.isEmpty() && must_show) {
 		painter.save();
 		painter.setFont(QETApp::diagramTextsFont(6));
 
 		QRectF r, text_bounding;
 		qreal center = boundingRect().center().x();
-		r = QRectF(QPointF(center - 50, boundingRect().bottom()),
-				   QPointF(center + 50, boundingRect().bottom() + 50));
+		r = QRectF(QPointF(center - 35, boundingRect().bottom()),
+				   QPointF(center + 35, boundingRect().bottom() + 50));
 		painter.drawText(r, Qt::TextWordWrap | Qt::AlignHCenter, comment, &text_bounding);
 
 		text_bounding.adjust(-1,0,1,0); //adjust only for better visual
