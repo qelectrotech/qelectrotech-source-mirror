@@ -18,6 +18,7 @@
 #include "elementview.h"
 #include "qetelementeditor.h"
 #include "editorcommands.h"
+#include "qetapp.h"
 /**
 	Constructeur
 	@param scene ElementScene visualisee par cette ElementView
@@ -28,6 +29,7 @@ ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 	scene_(scene),
 	offset_paste_count_(0)
 {
+	grabGesture(Qt::PinchGesture);
 	setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
 	setInteractive(true);
 	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
@@ -113,6 +115,22 @@ void ElementView::zoomOut() {
 }
 
 /**
+	Agrandit le schema avec le trackpad
+*/
+void ElementView::zoomInSlowly() {
+    scale(1.02, 1.02);
+	adjustSceneRect();
+}
+
+/**
+	Retrecit le schema avec le trackpad
+*/
+void ElementView::zoomOutSlowly() {
+    scale(0.98, 0.98);
+	adjustSceneRect();
+}
+
+/**
 	Agrandit ou rectrecit le schema de facon a ce que tous les elements du
 	schema soient visibles a l'ecran. S'il n'y a aucun element sur le schema,
 	le zoom est reinitialise
@@ -126,7 +144,7 @@ void ElementView::zoomFit() {
 	Reinitialise le zoom
 */
 void ElementView::zoomReset() {
-	resetSceneRect();
+    resetSceneRect();
 	resetMatrix();
 	scale(4.0, 4.0);
 }
@@ -382,18 +400,72 @@ void ElementView::mouseReleaseEvent(QMouseEvent *e) {
 }
 
 /**
+ * @brief ElementView::gestures
+ * @return
+ */
+bool ElementView::gestures() const {
+	return(QETApp::settings().value("diagramview/gestures", false).toBool());
+}
+
+
+/**
  * @brief ElementView::wheelEvent
  * @param e
  */
 void ElementView::wheelEvent(QWheelEvent *e) {
 	//Zoom and scrolling
-	if (e -> buttons() != Qt::MidButton) {
-		if (!(e -> modifiers() & Qt::ControlModifier))
-			e -> delta() > 0 ? zoomIn() : zoomOut();
+//	if (e -> buttons() != Qt::MidButton) {
+//		if (!(e -> modifiers() & Qt::ControlModifier))
+//			e -> delta() > 0 ? zoomIn() : zoomOut();
+//		else
+//			QAbstractScrollArea::wheelEvent(e);
+//	}
+	if ( gestures() ) {
+		if (e -> modifiers() & Qt::ControlModifier)
+			e -> delta() > 0 ? zoomInSlowly() : zoomOutSlowly();
 		else
-			QAbstractScrollArea::wheelEvent(e);
+            QGraphicsView::wheelEvent(e);
+	} else {
+		e -> delta() > 0 ? zoomIn(): zoomOut();
 	}
 }
+
+/**
+	Gere les evenements de la ElementView
+	@param e Evenement
+*/
+bool ElementView::event(QEvent *e) {
+	// By default touch events are converted to mouse events. So
+	// after this event we will get a mouse event also but we want
+	// to handle touch events as gestures only. So we need this safeguard
+	// to block mouse events that are actually generated from touch.
+	if (e->type() == QEvent::Gesture)
+		return gestureEvent(static_cast<QGestureEvent *>(e));
+
+	return(QGraphicsView::event(e));
+}
+
+/**
+ * Utilise le pincement du trackpad pour zoomer
+ * @brief ElementView::gestureEvent
+ * @param event
+ * @return
+ */
+bool ElementView::gestureEvent(QGestureEvent *event){
+	if (QGesture *gesture = event->gesture(Qt::PinchGesture)) {
+		QPinchGesture *pinch = static_cast<QPinchGesture *>(gesture);
+		if (pinch->changeFlags() & QPinchGesture::ScaleFactorChanged){
+			qreal value = gesture->property("scaleFactor").toReal();
+			if (value > 1){
+				zoomInSlowly();
+			}else{
+				zoomOutSlowly();
+			}
+		}
+	}
+	return true;
+}
+
 
 /**
 	Dessine l'arriere-plan de l'editeur, cad la grille.

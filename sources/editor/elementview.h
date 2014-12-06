@@ -47,6 +47,8 @@ class ElementView : public QGraphicsView {
 	void mousePressEvent(QMouseEvent *);
 	void mouseMoveEvent(QMouseEvent *);
 	void mouseReleaseEvent(QMouseEvent *);
+	bool gestureEvent(QGestureEvent *event);
+	bool event(QEvent *event);
 	void wheelEvent(QWheelEvent *);
 	virtual void drawBackground(QPainter *, const QRectF &);
 	
@@ -58,6 +60,8 @@ class ElementView : public QGraphicsView {
 	void setSelectionMode();
 	void zoomIn();
 	void zoomOut();
+	void zoomInSlowly();
+	void zoomOutSlowly();
 	void zoomFit();
 	void zoomReset();
 	void adjustSceneRect();
@@ -86,6 +90,7 @@ class ElementView : public QGraphicsView {
 	QPointF start_top_left_corner_;
 	QPointF reference_view_;
 	QPointF center_view_;
+	bool gestures() const;
 	bool is_moving_view_;               ///< Indicate whether the visualisation mode has been enabled due to mouse/keyboard interactions
 };
 #endif
