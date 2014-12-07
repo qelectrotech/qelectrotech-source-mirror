@@ -412,12 +412,6 @@ bool ElementView::gestures() const {
  */
 void ElementView::wheelEvent(QWheelEvent *e) {
 	//Zoom and scrolling
-//	if (e -> buttons() != Qt::MidButton) {
-//		if (!(e -> modifiers() & Qt::ControlModifier))
-//			e -> delta() > 0 ? zoomIn() : zoomOut();
-//		else
-//			QAbstractScrollArea::wheelEvent(e);
-//	}
 	if ( gestures() ) {
 		if (e -> modifiers() & Qt::ControlModifier)
 			e -> delta() > 0 ? zoomInSlowly() : zoomOutSlowly();
