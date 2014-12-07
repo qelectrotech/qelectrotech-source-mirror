@@ -129,6 +129,7 @@ void CommentItem::updateLabel() {
 		text_bounding.adjust(-1,0,1,0); //adjust only for better visual
 		painter.drawRoundedRect(text_bounding, 2, 2);
 
+		prepareGeometryChange();
 		m_bounding_rect = text_bounding;
 	}
 

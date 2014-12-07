@@ -157,11 +157,12 @@ void CrossRefItem::updateProperties() {
  * Update the content of the item
  */
 void CrossRefItem::updateLabel() {
-	//init the shape and bounding rect
+		//init the shape and bounding rect
 	m_shape_path    = QPainterPath();
+	prepareGeometryChange();
 	m_bounding_rect = QRectF();
 
-	//init the painter
+		//init the painter
 	QPainter qp;
 	qp.begin(&m_drawing);
 	QPen pen_;
@@ -169,7 +170,7 @@ void CrossRefItem::updateLabel() {
 	qp.setPen(pen_);
 	qp.setFont(QETApp::diagramTextsFont(5));
 
-	//Draw cross or contact, only if master element is linked.
+		//Draw cross or contact, only if master element is linked.
 	if (! m_element->linkedElements().isEmpty()) {
 		XRefProperties::DisplayHas dh = m_properties.displayHas();
 
@@ -183,7 +184,6 @@ void CrossRefItem::updateLabel() {
 	qp.end();
 
 	autoPos();
-	update();
 	checkMustShow();
 }
 
@@ -303,6 +303,7 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter) {
 	}
 
 	m_shape_path.addRect(default_bounding);
+	prepareGeometryChange();
 	m_bounding_rect = default_bounding;
 }
 
@@ -361,6 +362,7 @@ void CrossRefItem::drawHasContacts(QPainter &painter) {
 	}
 
 	QRectF br(0, 0, 50, m_drawed_contacts*10+4);
+	prepareGeometryChange();
 	m_bounding_rect = br;
 	m_shape_path.addRect(br);
 }
@@ -518,6 +520,7 @@ void CrossRefItem::AddExtraInfo(QPainter &painter) {
 		text_bounding.adjust(-1,0,1,0); //adjust only for better visual
 
 		m_shape_path.addRect(text_bounding);
+		prepareGeometryChange();
 		m_bounding_rect = m_bounding_rect.united(text_bounding);
 		painter.drawRoundedRect(text_bounding, 2, 2);
 		painter.restore();
