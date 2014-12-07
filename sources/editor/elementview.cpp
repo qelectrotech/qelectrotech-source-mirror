@@ -119,7 +119,6 @@ void ElementView::zoomOut() {
 */
 void ElementView::zoomInSlowly() {
     scale(1.02, 1.02);
-	adjustSceneRect();
 }
 
 /**
@@ -127,7 +126,6 @@ void ElementView::zoomInSlowly() {
 */
 void ElementView::zoomOutSlowly() {
     scale(0.98, 0.98);
-	adjustSceneRect();
 }
 
 /**
