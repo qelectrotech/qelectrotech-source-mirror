@@ -1215,7 +1215,7 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="168"/>
         <source>N° fil : </source>
-        <translation type="unfinished"></translation>
+        <translation>Nr przewodu: </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="177"/>
@@ -3210,7 +3210,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Désignation</source>
-        <translation type="unfinished">Oznaczenie</translation>
+        <translation>Oznaczenie</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="367"/>
@@ -4011,7 +4011,7 @@ Dostępne opcje :
         <location filename="../sources/qetdiagrameditor.cpp" line="666"/>
         <source>Enregistrement : %p%</source>
         <comment>Visual rendering of write files - %p is the progress percentage</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zapisany: %p%</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
@@ -7717,7 +7717,7 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Désignation qet</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznaczenia QET</translation>
     </message>
 </context>
 <context>
