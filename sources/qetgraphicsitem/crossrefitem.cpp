@@ -32,14 +32,20 @@
  * @brief CrossRefItem::CrossRefItem
  * Default constructor
  * @param elmt element to display the cross ref and also parent item.
+ * elmt must be in a diagram
+ */
+/**
+ * @brief CrossRefItem::CrossRefItem
+ * @param elmt
  */
 CrossRefItem::CrossRefItem(Element *elmt) :
 	QGraphicsObject(elmt),
 	m_element (elmt)
 {
+	Q_ASSERT_X(elmt->diagram(), "CrossRefItem constructor", "Parent element is not in a diagram");
+
 	m_properties = elmt->diagram()->defaultXRefProperties(elmt->kindInformations()["type"].toString());
 
-	connect(elmt,                           SIGNAL(elementInfoChange(DiagramContext, DiagramContext)),this, SLOT(updateLabel()));
 	connect(elmt -> diagram() -> project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
 	connect(elmt -> diagram() -> project(), SIGNAL(diagramRemoved(QETProject*,Diagram*)),             this, SLOT(updateLabel()));
 	connect(elmt -> diagram(),              SIGNAL(XRefPropertiesChanged()),                          this, SLOT(updateProperties()));
@@ -106,6 +112,13 @@ QString CrossRefItem::elementPositionText(const Element *elmt, const bool &add_p
 void CrossRefItem::allElementsPositionText(QString &no_str, QString &nc_str, const bool &add_prefix) const {
 	QString *tmp_str;
 	foreach (Element *elmt, m_element->linkedElements()) {
+			//We continue if element is a power contact and xref propertie
+			//is set to don't show power contact
+		if (m_properties.displayHas() == XRefProperties::Cross &&
+			!m_properties.showPowerContact() &&
+			elmt -> kindInformations()["type"].toString() == "power")
+			continue;
+
 		QString state = elmt->kindInformations()["state"].toString();
 
 		//NO and NC are displayed in single place in the cross
@@ -184,7 +197,6 @@ void CrossRefItem::updateLabel() {
 	qp.end();
 
 	autoPos();
-	checkMustShow();
 }
 
 /**
@@ -274,37 +286,42 @@ void CrossRefItem::buildHeaderContact() {
  * The cross ref item is drawing according to the size of the cross bounding rect.
  */
 void CrossRefItem::setUpCrossBoundingRect(QPainter &painter) {
-	//this is the default size of cross ref item
-	QRectF default_bounding(0, 0, 40, header + cross_min_heigth);
-
-	//No need to calcul if nothing is linked
+		//No need to calcul if nothing is linked
 	if (!m_element->isFree()) {
 
 		QString no_str, nc_str;
 		allElementsPositionText(no_str, nc_str, true);
 
-		//Adjust the size of default_bounding if needed.
-		//We calcule the size by using a single text
-		//because in the method fillCrossRef, the text is draw like this (aka single text)
+			//There is no string to display, we return now
+		if (no_str.isEmpty() && nc_str.isEmpty()) return;
 
-		//Adjust according to the NO
+			//this is the default size of cross ref item
+		QRectF default_bounding(0, 0, 40, header + cross_min_heigth);
+
+			/*
+			 * Adjust the size of default_bounding if needed.
+			 * We calcule the size by using a single text
+			 * because in the method fillCrossRef, the text is draw like this (aka single text)
+			 */
+
+			//Adjust according to the NO
 		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, no_str);
 		if (bounding.height() > default_bounding.height() - header)
 			default_bounding.setHeight(bounding.height() + header); //adjust the height
 		if (bounding.width() > default_bounding.width()/2)
 			default_bounding.setWidth(bounding.width()*2);			//adjust the width
 
-		//Adjust according to the NC
+			//Adjust according to the NC
 		bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, nc_str);
 		if (bounding.height() > default_bounding.height() - header)
 			default_bounding.setHeight(bounding.height() + header); //adjust the heigth
 		if (bounding.width() > default_bounding.width()/2)
 			default_bounding.setWidth(bounding.width()*2);			//adjust the width
-	}
 
-	m_shape_path.addRect(default_bounding);
-	prepareGeometryChange();
-	m_bounding_rect = default_bounding;
+		m_shape_path.addRect(default_bounding);
+		prepareGeometryChange();
+		m_bounding_rect = default_bounding;
+	}
 }
 
 /**
@@ -313,22 +330,25 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter) {
  * @param painter, painter to use
  */
 void CrossRefItem::drawHasCross(QPainter &painter) {
-	//calcul the size of the cross
+		//calcul the size of the cross
 	setUpCrossBoundingRect(painter);
 
-	//draw the cross
+		//Bounding rect is empty that mean there's no contact to draw
+	if (boundingRect().isEmpty()) return;
+
+		//draw the cross
 	QRectF br = boundingRect();
 	painter.drawLine(br.width()/2, 0, br.width()/2, br.height());	//vertical line
 	painter.drawLine(0, header, br.width(), header);	//horizontal line
 
-	//Add the symbolic contacts
+		//Add the symbolic contacts
 	buildHeaderContact();
 	QPointF p((m_bounding_rect.width()/4) - (m_hdr_no_ctc.width()/2), 0);
 	painter.drawPicture (p, m_hdr_no_ctc);
 	p.setX((m_bounding_rect.width() * 3/4) - (m_hdr_nc_ctc.width()/2));
 	painter.drawPicture (p, m_hdr_nc_ctc);
 
-	//and fill it
+		//and fill it
 	fillCrossRef(painter);
 }
 
@@ -338,6 +358,8 @@ void CrossRefItem::drawHasCross(QPainter &painter) {
  * @param painter painter to use
  */
 void CrossRefItem::drawHasContacts(QPainter &painter) {
+	if (m_element -> isFree()) return;
+
 	m_drawed_contacts = 0;
 
 	//Draw each linked contact
@@ -494,8 +516,6 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
 
 	rect_.moveTopLeft(QPointF (middle_cross, header));
 	painter.drawText(rect_, Qt::AlignTop | Qt::AlignRight, nc_str);
-
-
 }
 
 /**
@@ -504,8 +524,8 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
  * @param painter painter to use for draw the text
  */
 void CrossRefItem::AddExtraInfo(QPainter &painter) {
-	QString comment = m_element-> elementInformations()["comment"].toString();
-	bool must_show = m_element-> elementInformations().keyMustShow("comment");
+	QString comment = m_element -> elementInformations()["comment"].toString();
+	bool must_show  = m_element -> elementInformations().keyMustShow("comment");
 
 	if (!comment.isEmpty() && must_show) {
 		painter.save();
@@ -528,43 +548,6 @@ void CrossRefItem::AddExtraInfo(QPainter &painter) {
 }
 
 /**
- * @brief CrossRefItem::checkMustShow
- * Check the propertie of this Xref for know if we
- * must to be show or not
- */
-void CrossRefItem::checkMustShow() {
-	//We always show Xref when is displayed has contact
-	if (m_properties.displayHas() == XRefProperties::Contacts) {
-		this->show();
-		return;
-	}
-
-	//if Xref is display has cross and we must to don't show power contact, check it
-	else if (m_properties.displayHas() == XRefProperties::Cross && !m_properties.showPowerContact()) {
-		bool power = false;
-		foreach (Element *elmt, m_element->linkedElements()) {
-			// contact checked isn't power, show this xref and return;
-			if (elmt->kindInformations()["type"].toString() != "power") {
-				this->show();
-				return;
-			} else {
-				power = true;
-			}
-		}
-		if (power) {
-			this->hide();
-			return;
-		}
-	}
-
-	//By default, show this Xref
-	else {
-		this->show();
-		return;
-	}
-}
-
-/**
  * @brief CrossRefItem::setTextParent
  * Set the text field tagged "label" of m_element
  * parent of this item
@@ -572,6 +555,6 @@ void CrossRefItem::checkMustShow() {
 void CrossRefItem::setTextParent() {
 	ElementTextItem *eti = m_element->taggedText("label");
 	if (eti) setParentItem(eti);
-	else qDebug() << "CrossRefItem,no texte tagged 'label' found to set has parent";
+	else qDebug() << "CrossRefItem,no text tagged 'label' found to set has parent";
 }
 

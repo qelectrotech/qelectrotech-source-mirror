@@ -91,8 +91,8 @@ void MasterElement::unlinkElement(Element *elmt) {
 		disconnect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));
 		disconnect(elmt, SIGNAL(yChanged()), cri_, SLOT(updateLabel()));
 
-		if (aboutDeleteXref()) return;
 		cri_ -> updateLabel();
+		aboutDeleteXref();
 	}
 }
 
@@ -128,6 +128,7 @@ void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info
 
 	//Delete or update the xref
 	if (cri_) {
+		cri_ -> updateLabel();
 		aboutDeleteXref();
 	}
 	else {
@@ -150,11 +151,7 @@ void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info
 bool MasterElement::aboutDeleteXref() {
 	if(!cri_) return true;
 
-	QString comment   = elementInformations()["comment"].toString();
-	bool    must_show = elementInformations().keyMustShow("comment");
-
-	//Delete Xref item if there isn't reason to display it
-	if (linkedElements().isEmpty() && (comment.isEmpty() || !must_show)) {
+	if (cri_ -> boundingRect().isNull()) {
 		delete cri_;
 		cri_ = nullptr;
 		return true;

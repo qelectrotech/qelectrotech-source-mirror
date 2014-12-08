@@ -48,14 +48,14 @@ class CrossRefItem : public QGraphicsObject
 	virtual int type() const { return Type; }
 
 	enum CONTACTS {
-		NO = 1,
-		NC = 2,
-		NOC = 3,
-		SW = 4,
-		Power = 8,
-		DelayOn = 16,
+		NO       = 1,
+		NC       = 2,
+		NOC      = 3,
+		SW       = 4,
+		Power    = 8,
+		DelayOn  = 16,
 		DelayOff = 32,
-		Delay = 48
+		Delay    = 48
 	};
 
 	QRectF boundingRect			() const;
@@ -82,7 +82,6 @@ class CrossRefItem : public QGraphicsObject
 	void drawContact			(QPainter &painter, int flags, QString str = QString());
 	void fillCrossRef			(QPainter &painter);
 	void AddExtraInfo			(QPainter &painter);
-	void checkMustShow			();
 	void setTextParent			();
 
 	//Attributes
