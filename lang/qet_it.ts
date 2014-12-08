@@ -1214,7 +1214,7 @@ i conduttori di questo potenziale?</translation>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="168"/>
         <source>N° fil : </source>
-        <translation type="unfinished"></translation>
+        <translation>N° filo:</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="177"/>
@@ -3207,7 +3207,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Désignation</source>
-        <translation type="unfinished">Descrizione</translation>
+        <translation>Descrizione</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="367"/>
@@ -4008,7 +4008,7 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="666"/>
         <source>Enregistrement : %p%</source>
         <comment>Visual rendering of write files - %p is the progress percentage</comment>
-        <translation type="unfinished"></translation>
+        <translation>Registrazione : %p%</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
@@ -7700,7 +7700,7 @@ Lunghezza massima: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Désignation qet</source>
-        <translation type="unfinished"></translation>
+        <translation>Descrizione qet</translation>
     </message>
 </context>
 <context>
