@@ -95,9 +95,10 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	setWindowState(Qt::WindowMaximized);
 	
 	// connexions signaux / slots pour une interface sensee
-	connect(&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slot_updateWindowsMenu()));
-	connect(&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slot_updateUndoStack()));
-	connect(QApplication::clipboard(), SIGNAL(dataChanged()),              this, SLOT(slot_updatePasteAction()));
+	connect (&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slot_updateWindowsMenu()));
+	connect (&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slot_updateUndoStack()));
+	connect (QApplication::clipboard(), SIGNAL(dataChanged()),                       this, SLOT(slot_updatePasteAction()));
+	connect (&undo_group,               SIGNAL(cleanChanged(bool)),                  this, SLOT(activeUndoStackCleanChanged(bool)));
 	
 	// lecture des parametres
 	readSettings();
@@ -630,6 +631,7 @@ void QETDiagramEditor::save() {
 	if (ProjectView *project_view = currentProject()) {
 		QETResult saved = project_view -> save();
 		if (saved.isOk()) {
+			save_file->setDisabled(true);
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
 			//fake progressbar
 			progressBar = new QProgressBar;
@@ -1176,7 +1178,7 @@ void QETDiagramEditor::slot_updateActions() {
 	
 	// actions ayant juste besoin d'un document ouvert
 	close_file        -> setEnabled(opened_project);
-	save_file         -> setEnabled(editable_project);
+	save_file         -> setEnabled(editable_project && undo_group.activeStack()->count());
 	save_file_as      -> setEnabled(opened_project);
 	prj_edit_prop     -> setEnabled(opened_project);
 	prj_add_diagram   -> setEnabled(editable_project);
@@ -1210,6 +1212,7 @@ void QETDiagramEditor::slot_updateUndoStack() {
 		undo_group.setActiveStack(pv->project()->undoStack());
 		undo      -> setEnabled (undo_group.canUndo());
 		redo      -> setEnabled (undo_group.canRedo());
+		save_file -> setEnabled (undo_group.activeStack()->count() && !pv -> project() -> isReadOnly());
 	}
 }
 
@@ -1978,4 +1981,16 @@ void QETDiagramEditor::showError(const QString &error) {
  */
 void QETDiagramEditor::addItemFinish() {
 	m_add_item_actions_group.checkedAction()->setChecked(false);
+}
+
+/**
+ * @brief QETDiagramEditor::activeUndoStackCleanChanged
+ * Enable the QAction save_file when @clean is set to false
+ * @clean at true do nothing;
+ * @param clean
+ */
+void QETDiagramEditor::activeUndoStackCleanChanged(bool clean) {
+	if (!clean) {
+		save_file -> setEnabled(true);
+	}
 }

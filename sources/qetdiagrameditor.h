@@ -156,6 +156,9 @@ class QETDiagramEditor : public QETMainWindow {
 	void showError(const QETResult &);
 	void showError(const QString &);
 	void addItemFinish();
+
+	private slots:
+	void activeUndoStackCleanChanged (bool clean);
 	
 	// attributes
 	public:
