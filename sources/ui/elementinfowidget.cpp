@@ -18,6 +18,10 @@
 #include "elementinfowidget.h"
 #include "ui_elementinfowidget.h"
 #include "qetapp.h"
+#include "changeelementinformationcommand.h"
+#include "diagram.h"
+#include "elementinfopartwidget.h"
+#include "element.h"
 
 /**
  * @brief ElementInfoWidget::ElementInfoWidget
@@ -48,18 +52,41 @@ ElementInfoWidget::~ElementInfoWidget()
 
 /**
  * @brief ElementInfoWidget::apply
- * Apply the new information
+ * Apply the new information with a new undo command (got with method associatedUndo)
+ * pushed to the stack of element project.
+ * Return true if new info change, else false.
  */
-void ElementInfoWidget::apply() {
-	DiagramContext dc;
+bool ElementInfoWidget::apply() {
+	if (QUndoCommand *undo = associatedUndo()) {
+		element_ -> diagram() -> undoStack().push(undo);
+		return true;
+	}
+	return false;
+}
+
+/**
+ * @brief ElementInfoWidget::associatedUndo
+ * If the edited info is different of the actual element info,
+ * return a QUndoCommand with the change.
+ * If no change return nullptr;
+ * @return
+ */
+QUndoCommand* ElementInfoWidget::associatedUndo() const {
+	DiagramContext new_info;
+	DiagramContext old_info = element_ -> elementInformations();
+
 	foreach (ElementInfoPartWidget *eipw, eipw_list) {
-		//add value only if they're something to store
+			//add value only if they're something to store
 		if (!eipw->text().isEmpty())
-			dc.addValue(eipw->key(),
+			new_info.addValue(eipw->key(),
 						eipw->text(),
 						eipw->mustShow());
 	}
-	element_->setElementInformations(dc);
+
+	if (old_info != new_info) {
+		return (new ChangeElementInformationCommand(element_, old_info, new_info));
+	}
+	return nullptr;
 }
 
 /**

@@ -19,9 +19,12 @@
 #define ELEMENTINFOWIDGET_H
 
 #include <QWidget>
-#include "qetgraphicsitem/element.h"
 #include "diagramcontext.h"
-#include "elementinfopartwidget.h"
+
+class Element;
+class QUndoCommand;
+class ElementInfoPartWidget;
+class ChangeElementInformationCommand;
 
 namespace Ui {
 	class ElementInfoWidget;
@@ -35,20 +38,23 @@ class ElementInfoWidget : public QWidget {
 	Q_OBJECT
 
 		//METHODS
-		public:
-	explicit ElementInfoWidget(Element *elmt, QWidget *parent = 0);
-	~ElementInfoWidget();
-	void apply();
-		private:
-	void buildInterface();
-	void fillInfo();
+	public:
+		explicit ElementInfoWidget(Element *elmt, QWidget *parent = 0);
+		~ElementInfoWidget();
+
+		bool apply();
+		QUndoCommand* associatedUndo () const;
+
+	private:
+		void buildInterface();
+		void fillInfo();
 
 		//ATTRIBUTES
-		private:
-	Ui::ElementInfoWidget *ui;
-	Element *element_;
-	DiagramContext elmt_info;
-	QList <ElementInfoPartWidget *> eipw_list;
+	private:
+		Ui::ElementInfoWidget           *ui;
+		Element                         *element_;
+		DiagramContext                   elmt_info;
+		QList <ElementInfoPartWidget *>  eipw_list;
 };
 
 #endif // ELEMENTINFOWIDGET_H

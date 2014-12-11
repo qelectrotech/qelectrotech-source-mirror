@@ -16,9 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementpropertieswidget.h"
-#include "qetgraphicsitem/ghostelement.h"
+#include "ghostelement.h"
 #include "qeticons.h"
 #include "diagramposition.h"
+#include "diagram.h"
+#include "elementinfowidget.h"
+#include "masterpropertieswidget.h"
+#include "linksingleelementwidget.h"
 
 /**
  * @brief elementpropertieswidget::elementpropertieswidget
@@ -156,21 +160,46 @@ void elementpropertieswidget::buildInterface() {
  * the cliked button
  */
 void elementpropertieswidget::standardButtonClicked(QAbstractButton *button) {
-	int answer = dbb -> buttonRole(button);
+	int  answer = dbb -> buttonRole(button);
+	bool accept = false;
 
 	switch (answer) {
 		case QDialogButtonBox::ResetRole:
 			if (mpw_) mpw_->reset();
 			break;
 		case QDialogButtonBox::ApplyRole:
-			if (eiw_) eiw_->apply();	//element information widget
-			if (mpw_) mpw_->apply();	//master property widget
-			if (lsew_) lsew_->apply();	//link sigle element widget
-			this->accept();
+			accept = true;
+			break;
 		case QDialogButtonBox::RejectRole:
-			this->reject();
+			this -> reject();
+			break;
 		default:
-			this->reject();
+			this -> reject();
+			break;
+	}
+
+	if (accept) {
+		QUndoCommand *a = nullptr;
+		QUndoCommand *b = nullptr;
+
+		if (eiw_) a = eiw_ -> associatedUndo();
+		if (mpw_) b = mpw_ -> associatedUndo();
+		if (lsew_) lsew_ -> apply();
+
+		 //If two undo, we push it in a macro
+		if (a && b) {
+			QUndoStack &stack = element_ -> diagram() -> undoStack();
+			stack.beginMacro(a -> text() + " + " + b -> text());
+			stack.push(a);
+			stack.push(b);
+			stack.endMacro();
+		}
+		else {
+			if (a) element_ -> diagram() -> undoStack().push(a);
+			if (b) element_ -> diagram() -> undoStack().push(b);
+		}
+
+		this -> accept();
 	}
 }
 

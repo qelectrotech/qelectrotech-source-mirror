@@ -53,44 +53,17 @@ MasterPropertiesWidget::~MasterPropertiesWidget()
 
 /**
  * @brief MasterPropertiesWidget::apply
- * Do what we need when apply new conf
+ * If link betwen edited element and other change,
+ * apply the change with a QUndoCommand (got with method associatedUndo)
+ * pushed to the stack of element project.
+ * Return true if link change, else false
  */
-void MasterPropertiesWidget::apply() {
-	QList <Element *> to_link;
-	QList <Element *> linked_ = element_->linkedElements();
-
-	for (int i=0; i<ui->linked_list->count(); i++) {
-		to_link << lwi_hash[ui->linked_list->item(i)];
+bool MasterPropertiesWidget::apply() {
+	if (QUndoCommand *undo = associatedUndo()) {
+		element_ -> diagram() -> undoStack().push(undo);
+		return true;
 	}
-
-	//If same element are find in to_link and linked, that means
-	// element are already linked, so we remove element on the two list
-	//if linked_ contains element at the end of the operation,
-	//that means this element must be unlinked from @element_
-	foreach (Element *elmt, to_link) {
-		if(linked_.contains(elmt)) {
-			to_link.removeAll(elmt);
-			linked_.removeAll(elmt);
-		}
-	}
-
-	// if two list, contain element, we link and unlink @element_ with corresponding
-	//undo command, and add first command for parent of the second, user see only one
-	//undo command
-	if (linked_.count() && to_link.count()) {
-		LinkElementsCommand *lec = new LinkElementsCommand(element_, to_link);
-		new unlinkElementsCommand(element_, linked_, lec);
-		element_->diagram()->undoStack().push(lec);
-	}
-	//Else do the single undo command corresponding to the link.
-	else if (to_link.count()) {
-		LinkElementsCommand *lec = new LinkElementsCommand(element_, to_link);
-		element_->diagram()->undoStack().push(lec);
-	}
-	else if (linked_.count()) {
-		unlinkElementsCommand *uec = new unlinkElementsCommand(element_, linked_);
-		element_->diagram()->undoStack().push(uec);
-	}
+	return false;
 }
 
 /**
@@ -103,6 +76,52 @@ void MasterPropertiesWidget::reset() {
 	}
 	lwi_hash.clear();
 	buildInterface();
+}
+
+/**
+ * @brief MasterPropertiesWidget::associatedUndo
+ * If link between the edited element and other change,
+ * return a QUndoCommand with this change.
+ * If no change return nullptr.
+ * @return
+ */
+QUndoCommand* MasterPropertiesWidget::associatedUndo() const {
+	QList <Element *> to_link;
+	QList <Element *> linked_ = element_->linkedElements();
+
+	for (int i=0; i<ui->linked_list->count(); i++) {
+		to_link << lwi_hash[ui->linked_list->item(i)];
+	}
+
+		//If same element are find in to_link and linked, that means
+		// element are already linked, so we remove element on the two list
+		//if linked_ contains element at the end of the operation,
+		//that means this element must be unlinked from @element_
+	foreach (Element *elmt, to_link) {
+		if(linked_.contains(elmt)) {
+			to_link.removeAll(elmt);
+			linked_.removeAll(elmt);
+		}
+	}
+
+		// if two list, contain element, we link and unlink @element_ with corresponding
+		//undo command, and add first command for parent of the second, user see only one
+		//undo command
+	if (linked_.count() && to_link.count()) {
+		LinkElementsCommand *lec = new LinkElementsCommand(element_, to_link);
+		new unlinkElementsCommand(element_, linked_, lec);
+		return lec;
+	}
+		//Else do the single undo command corresponding to the link.
+	else if (to_link.count()) {
+		return (new LinkElementsCommand(element_, to_link));
+	}
+	else if (linked_.count()) {
+		return (new unlinkElementsCommand(element_, linked_));
+	}
+	else {
+		return nullptr;
+	}
 }
 
 /**

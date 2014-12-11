@@ -71,7 +71,8 @@ INCLUDEPATH += sources \
                sources/properties \
                sources/dvevent \
                sources/editor \
-               sources/editor/esevent
+               sources/editor/esevent \
+               sources/undocommand
 
 
 # Fichiers sources
@@ -79,13 +80,15 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*
            $$files(sources/properties/*.h) \
            $$files(sources/editor/ui/*.h) \
            $$files(sources/editor/esevent/*.h) \
-           $$files(sources/dvevent/*.h)
+           $$files(sources/dvevent/*.h) \
+           $$files(sources/undocommand/*.h)
 
 SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/titleblock/*.cpp) $$files(sources/richtext/*.cpp) $$files(sources/ui/*.cpp) $$files(sources/qetgraphicsitem/*.cpp) $$files(sources/factory/*.cpp) \
            $$files(sources/properties/*.cpp) \
            $$files(sources/editor/ui/*.cpp) \
            $$files(sources/editor/esevent/*.cpp) \
-           $$files(sources/dvevent/*.cpp)
+           $$files(sources/dvevent/*.cpp) \
+           $$files(sources/undocommand/*.cpp)
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc

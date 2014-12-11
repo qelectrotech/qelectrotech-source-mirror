@@ -23,6 +23,7 @@
 
 class QListWidgetItem;
 class Element;
+class QUndoCommand;
 
 namespace Ui {
 	class MasterPropertiesWidget;
@@ -42,8 +43,9 @@ class MasterPropertiesWidget : public QWidget
 	explicit MasterPropertiesWidget(Element *elmt, QWidget *parent = 0);
 	~MasterPropertiesWidget();
 
-	void apply();
+	bool apply();
 	void reset();
+	QUndoCommand* associatedUndo() const;
 
 	private:
 	void buildInterface();

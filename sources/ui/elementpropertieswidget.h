@@ -18,44 +18,49 @@
 #ifndef ELEMENTPROPERTIESWIDGET_H
 #define ELEMENTPROPERTIESWIDGET_H
 
-#include <QtGui>
-#include "qetgraphicsitem/element.h"
-#include "diagram.h"
-#include "elementinfowidget.h"
-#include "masterpropertieswidget.h"
-#include "linksingleelementwidget.h"
+#include <QDialog>
 
-class elementpropertieswidget : public QDialog
-{
+class Diagram;
+class Element;
+class ElementsLocation;
+class ElementInfoWidget;
+class MasterPropertiesWidget;
+class LinkSingleElementWidget;
+class QAbstractButton;
+class QDialogButtonBox;
+class QTabWidget;
+
+class elementpropertieswidget : public QDialog {
 	Q_OBJECT
+
 	public:
-	explicit elementpropertieswidget(Element *elmt, QWidget *parent = 0);
+		explicit elementpropertieswidget(Element *elmt, QWidget *parent = 0);
 
 	private:
-	QWidget* generalWidget();
-	void buildInterface();
+		QWidget* generalWidget();
+		void     buildInterface();
 
 	signals:
-	/// Signal emitted when users wish to locate an element from the diagram within elements collection
-	void findElementRequired(const ElementsLocation &);
-	/// Signal emitted when users wish to edit an element from the diagram
-	void editElementRequired(const ElementsLocation &);
+			/// Signal emitted when users wish to locate an element from the diagram within elements collection
+		void findElementRequired(const ElementsLocation &);
+			/// Signal emitted when users wish to edit an element from the diagram
+		void editElementRequired(const ElementsLocation &);
 
 	public slots:
-	void standardButtonClicked (QAbstractButton *);
-	void findInPanel ();
-	void editElement ();
+		void standardButtonClicked (QAbstractButton *);
+		void findInPanel ();
+		void editElement ();
 
 	private:
-	ElementInfoWidget *eiw_;
-	MasterPropertiesWidget *mpw_;
-	LinkSingleElementWidget *lsew_;
-	QDialogButtonBox *dbb;
-	Element *element_;
-	Diagram *diagram_;
-	QTabWidget *tab_;
-	QPushButton *find_in_panel, *edit_element;
-
+		Element                 *element_;
+		Diagram                 *diagram_;
+		QTabWidget              *tab_;
+		QPushButton             *find_in_panel,
+								*edit_element;
+		QDialogButtonBox        *dbb;
+		ElementInfoWidget       *eiw_;
+		MasterPropertiesWidget  *mpw_;
+		LinkSingleElementWidget *lsew_;
 };
 
 #endif // ELEMENTPROPERTIESWIDGET_H
