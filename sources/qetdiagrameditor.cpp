@@ -624,56 +624,44 @@ void QETDiagramEditor::exportDialog() {
 }
 
 /**
-	Methode enregistrant le schema dans le dernier nom de fichier connu.
-	@return true si l'enregistrement a reussi, false sinon
-*/
+ * @brief QETDiagramEditor::save
+ * Ask the current active project to save
+ */
 void QETDiagramEditor::save() {
 	if (ProjectView *project_view = currentProject()) {
 		QETResult saved = project_view -> save();
+
 		if (saved.isOk()) {
-			save_file->setDisabled(true);
+			save_file -> setDisabled(true);
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
-			//fake progressbar
-			progressBar = new QProgressBar;
-			progressBar -> setAlignment(Qt::AlignLeft);
-			progressBar -> setMaximumSize(180, 19);
-			statusBar()-> addPermanentWidget(progressBar);
-			progressBar -> setFormat(tr("Enregistrement : %p%", "Visual rendering of write files - %p is the progress percentage"));
-			progressBar -> setValue(100);
-			QTimer::singleShot(2000, progressBar, SLOT(hide()));
+
 			QString title = (project_view -> project() -> title ());
 			if (title.isEmpty()) title = "QElectroTech ";
 			QString filePath = (project_view -> project() -> filePath ());
 			statusBar()-> showMessage(tr("Projet %1 enregistr\351 dans le repertoire: %2.").arg(title).arg (filePath), 2000);
-		} else {
+		}
+		else {
 			showError(saved);
 		}
 	}
 }
 
 /**
-	Cette methode demande un nom de fichier a l'utilisateur pour enregistrer le schema
-	@return true si l'enregistrement a reussi, false sinon
-*/
+ * @brief QETDiagramEditor::saveAs
+ * Ask the current active project to save as
+ */
 void QETDiagramEditor::saveAs() {
 	if (ProjectView *project_view = currentProject()) {
 		QETResult save_file = project_view -> saveAs();
 		if (save_file.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
-			//fake progressbar
-			progressBar = new QProgressBar;
-			progressBar -> setAlignment(Qt::AlignLeft);
-			progressBar -> setMaximumSize(180, 19);
-			statusBar()-> addPermanentWidget(progressBar);
-			progressBar -> setFormat(tr("Enregistrement : %p%", "Visual rendering of write files - %p is the progress percentage"));
-			progressBar -> setValue(100);
-			QTimer::singleShot(2000, progressBar, SLOT(hide()));
+
 			QString title = (project_view -> project() -> title ());
 			if (title.isEmpty()) title = "QElectroTech ";
 			QString filePath = (project_view -> project() -> filePath ());
-
 			statusBar()->showMessage(tr("Projet %1 enregistr\351 dans le repertoire: %2.").arg(title).arg (filePath), 2000);
-		} else {
+		}
+		else {
 			showError(save_file);
 		}
 	}
@@ -1745,7 +1733,7 @@ void QETDiagramEditor::addDiagramToProject() {
  */
 void QETDiagramEditor::addDiagramFolioListToProject() {
 	if (ProjectView *current_project = currentProject())
-			current_project -> addNewDiagramFolioList();
+		current_project -> addNewDiagramFolioList();
 }
 
 /**
