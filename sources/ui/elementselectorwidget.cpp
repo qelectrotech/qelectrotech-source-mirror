@@ -152,6 +152,9 @@ void ElementSelectorWidget::buildInterface() {
 			 * we add this text to the button label and provide it through the filter
 			 */
 		if (elmt -> linkType() & Element::AllReport) {
+				//Add empty string to keep the same index with content_list
+				//see how work filtered for more detail why we need this
+			in_filter << "";
 				//Report have one terminal, but we check it to prevent assert.
 			if (!elmt -> terminals().isEmpty()) {
 					//We must to have at least one conductor
@@ -166,6 +169,8 @@ void ElementSelectorWidget::buildInterface() {
 
 					if (QET::eachStrIsEqual(str_list)) {
 						button_text = tr("N\260 fil : ") + str_list.first() + "\n";
+							//Replace the last empty string by the conductor text
+						in_filter.pop_back();
 						in_filter  << str_list.first();
 						out_filter << str_list.first();
 					}
@@ -239,9 +244,10 @@ void ElementSelectorWidget::filtered(const QString &str) {
 		foreach (QWidget *w, content_list) w->setHidden(false);
 	}
 	else {
-		for (int i =0; i<in_filter.size(); i++) {
-			if (in_filter.at(i).contains(str, Qt::CaseInsensitive))
+		for (int i = 0; i<in_filter.size(); i++) {
+			if (in_filter.at(i).contains(str, Qt::CaseInsensitive)) {
 				content_list.at(i)->setHidden(false);
+			}
 			else
 				content_list.at(i)->setHidden(true);
 		}

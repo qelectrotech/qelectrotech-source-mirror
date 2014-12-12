@@ -193,7 +193,9 @@ void LinkSingleElementWidget::setUpCompleter() {
 		search_field -> clear();
 		delete search_field -> completer();
 
-		QCompleter *comp = new QCompleter(esw_ -> filter(), search_field);
+		QStringList filter = esw_->filter();
+		filter.sort();
+		QCompleter *comp = new QCompleter(filter, search_field);
 		comp -> setCaseSensitivity(Qt::CaseInsensitive);
 		search_field -> setCompleter(comp);
 	}
