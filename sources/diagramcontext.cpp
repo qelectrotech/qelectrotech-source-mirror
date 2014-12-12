@@ -96,7 +96,8 @@ bool DiagramContext::keyMustShow(const QString &key) const {
 }
 
 bool DiagramContext::operator==(const DiagramContext &dc) const {
-	return(content_ == dc.content_);
+	return(content_     == dc.content_ &&
+		   content_show == dc.content_show);
 }
 
 bool DiagramContext::operator!=(const DiagramContext &dc) const {
