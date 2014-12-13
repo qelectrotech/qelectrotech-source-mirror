@@ -174,23 +174,42 @@ void ElementTextItem::adjustItemPosition(int new_block_count) {
 }
 
 /**
-	Effetue la rotation du texte en elle-meme
-	Pour les ElementTextItem, la rotation s'effectue autour du milieu du bord
-	gauche du champ de texte.
-	@param angle Angle de la rotation a effectuer
-*/
-void ElementTextItem::applyRotation(const qreal &angle) {
-	QGraphicsTextItem::setRotation(QGraphicsTextItem::rotation() + angle);
+ * @brief ElementTextItem::mouseDoubleClickEvent
+ * @param event
+ */
+void ElementTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+		//If parent is linked, show the linked element
+	if (parent_element_ -> linkType() & (Element::AllReport | Element::Slave) && !parent_element_ -> isFree()) {
+			//Unselect and ungrab mouse to prevent unwanted
+			//move when linked element is in the same scene of this.
+		setSelected(false);
+		ungrabMouse();
+
+			//Show and select the linked element
+		Element *linked = parent_element_ -> linkedElements().first();
+		if (scene() != linked -> scene()) linked -> diagram() -> showMe();
+		linked -> setSelected(true);
+
+			//Zoom to the linked element
+		foreach(QGraphicsView *view, linked -> diagram() -> views()) {
+			QRectF fit = linked -> sceneBoundingRect();
+			fit.adjust(-200, -200, 200, 200);
+			view -> fitInView(fit, Qt::KeepAspectRatioByExpanding);
+		}
+	}
+	else {
+		DiagramTextItem::mouseDoubleClickEvent(event);
+	}
 }
 
 /**
  * @brief ElementTextItem::mouseMoveEvent
  * @param e
  */
-void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
+void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	if (textInteractionFlags() & Qt::TextEditable) {
-		DiagramTextItem::mouseMoveEvent(e);
-	} else if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
+		DiagramTextItem::mouseMoveEvent(event);
+	} else if ((flags() & QGraphicsItem::ItemIsMovable) && (event -> buttons() & Qt::LeftButton)) {
 		QPointF old_pos = pos();
 
 		/*
@@ -199,7 +218,7 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		 * Instead of this, we apply to the actual pos,
 		 * the vector defined by the movement of cursor since the last pos clicked by left button
 		 */
-		QPointF movement = e -> pos() - e -> buttonDownPos(Qt::LeftButton);
+		QPointF movement = event -> pos() - event -> buttonDownPos(Qt::LeftButton);
 
 		/*
 		 * the method pos() and setPos() always work with coordinate of parent item
@@ -207,7 +226,7 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		 * before applyRotation
 		 */
 		QPointF new_pos = pos() + mapMovementToParent(movement);
-		e -> modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
+		event -> modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
 
 		Diagram *diagram_ptr = diagram();
 		if (diagram_ptr) {
@@ -233,7 +252,7 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 			// on applique le mouvement subi aux autres textes a deplacer
 			diagram_ptr -> continueMoveElementTexts(scene_effective_movement);
 		}
-	} else e -> ignore();
+	} else event -> ignore();
 
 	if (m_first_move) {
 		m_first_move = false;
@@ -244,7 +263,7 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
  * @brief ElementTextItem::mouseReleaseEvent
  * @param e
  */
-void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
+void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if (Diagram *diagram_ptr = diagram()) {
 		if (parent_element_) {
 			if (parent_element_ -> isHighlighted()) {
@@ -254,7 +273,47 @@ void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 
 		diagram_ptr -> endMoveElementTexts();
 	}
-	if (!(e -> modifiers() & Qt::ControlModifier)) {
-		QGraphicsTextItem::mouseReleaseEvent(e);
+	if (!(event -> modifiers() & Qt::ControlModifier)) {
+		QGraphicsTextItem::mouseReleaseEvent(event);
 	}
+}
+
+/**
+ * @brief ElementTextItem::hoverEnterEvent
+ * @param event
+ */
+void ElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
+	if (parent_element_ -> linkType() & (Element::AllReport | Element::Slave) && !parent_element_->isFree()) {
+		setDefaultTextColor(Qt::blue);
+
+			//Also color the child text if parent is a slave and linked
+		if (parent_element_-> linkType() == Element::Slave && !parent_element_ -> isFree()) {
+			foreach (QGraphicsItem *qgi, childItems()) {
+				if (QGraphicsTextItem *qgti = qgraphicsitem_cast<QGraphicsTextItem *> (qgi))
+					qgti->setDefaultTextColor(Qt::blue);
+			}
+		}
+	}
+	else {
+		DiagramTextItem::hoverEnterEvent(event);
+	}
+}
+
+/**
+ * @brief ElementTextItem::hoverLeaveEvent
+ * @param event
+ */
+void ElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
+	if (defaultTextColor() != Qt::black)
+		setDefaultTextColor(Qt::black);
+
+		//Also color the child text if parent is a slave and linked
+	if (parent_element_-> linkType() == Element::Slave && !parent_element_ -> isFree()) {
+		foreach (QGraphicsItem *qgi, childItems()) {
+			if (QGraphicsTextItem *qgti = qgraphicsitem_cast<QGraphicsTextItem *> (qgi))
+				qgti->setDefaultTextColor(Qt::black);
+		}
+	}
+
+	DiagramTextItem::hoverLeaveEvent(event);
 }

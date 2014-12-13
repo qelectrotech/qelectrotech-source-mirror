@@ -30,52 +30,51 @@ class Element;
 */
 class ElementTextItem : public DiagramTextItem {
 	Q_OBJECT
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	ElementTextItem(Element * = 0, Diagram * = 0);
-	ElementTextItem(const QString &, Element * = 0, Diagram * = 0);
-	virtual ~ElementTextItem();
+		ElementTextItem(Element * = 0, Diagram * = 0);
+		ElementTextItem(const QString &, Element * = 0, Diagram * = 0);
+		virtual ~ElementTextItem();
 	
-	// attributes
+		// attributes
 	public:
-	enum { Type = UserType + 1003 };
+		enum { Type = UserType + 1003 };
+		virtual int type () const { return Type; }
 	
 	private:
-	Element *parent_element_;
-	bool follow_parent_rotations;
-	QPointF original_position;
-	qreal original_rotation_angle_;
-	QString tagg_;
+		Element *parent_element_;
+		bool     follow_parent_rotations;
+		QPointF  original_position;
+		qreal    original_rotation_angle_;
+		QString  tagg_;
 	
-	// methods
-	public:
-	virtual int type() const { return Type; }
-	Element *parentElement() const;
-	/// @return the rectangle defining the bounds of this text item
-	virtual QRectF boundingRect() const { return(QGraphicsTextItem::boundingRect().adjusted(0.0, -1.1, 0.0, 0.0)); }
-	bool followParentRotations() const;
-	void setFollowParentRotations(bool);
-	void fromXml(const QDomElement &);
-	QDomElement toXml(QDomDocument &) const;
-	void setOriginalPos(const QPointF &);
-	QPointF originalPos() const;
-	void setOriginalRotationAngle(const qreal &);
-	qreal originalRotationAngle() const;
-	virtual void setFont(const QFont &);
-	void setTagg(const QString &str) {tagg_ = str;}
-	QString tagg() const {return tagg_;}
+		// methods
+	public:	
+		Element     *parentElement            () const;
+		void         fromXml                  ( const QDomElement & );
+		QDomElement  toXml                    ( QDomDocument & ) const;
+		void         setOriginalPos           ( const QPointF & );
+		QPointF      originalPos              () const;
+		void         setOriginalRotationAngle ( const qreal & );
+		qreal        originalRotationAngle    () const;
+		virtual void setFont                  ( const QFont & );
+		void         setTagg                  ( const QString &str ) {tagg_ = str;}
+		QString      tagg                     () const               {return tagg_;}
+		void         setFollowParentRotations ( bool fpr);
+		bool         followParentRotations    () const;
 	
 	public slots:
-	void adjustItemPosition(int = 0);
+		void adjustItemPosition(int = 0);
 	
 	protected:
-	virtual void applyRotation(const qreal &);
-
-	virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *e);
-	virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *e);
+		virtual void mouseDoubleClickEvent ( QGraphicsSceneMouseEvent *event );
+		virtual void mouseMoveEvent        ( QGraphicsSceneMouseEvent *event );
+		virtual void mouseReleaseEvent     ( QGraphicsSceneMouseEvent *event );
+		virtual void hoverEnterEvent       ( QGraphicsSceneHoverEvent *event );
+		virtual void hoverLeaveEvent       ( QGraphicsSceneHoverEvent *event );
 
 	private:
-	void build();
+		void build ();
 };
 
 /**
