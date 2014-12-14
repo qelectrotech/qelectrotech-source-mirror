@@ -179,10 +179,11 @@ void ElementTextItem::adjustItemPosition(int new_block_count) {
  */
 void ElementTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport)
+	if ( (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport) && !parent_element_ -> isFree())
 	{
 			//If parent is linked, show the linked element
-		if (parent_element_ -> linkType() & (Element::AllReport | Element::Slave) && !parent_element_ -> isFree()) {
+		if ( parent_element_ -> linkType() & (Element::AllReport | Element::Slave) )
+		{
 				//Unselect and ungrab mouse to prevent unwanted
 				//move when linked element is in the same scene of this.
 			setSelected(false);
