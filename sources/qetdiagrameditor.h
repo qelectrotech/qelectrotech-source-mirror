@@ -214,7 +214,6 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *close_file;			   ///< Close current project file
 	QAction *save_file;				   ///< Save current project
 	QAction *save_file_as;			   ///< Save current project as a specific file
-	QProgressBar *progressBar;
 
 	private:
 	QMdiArea workspace;

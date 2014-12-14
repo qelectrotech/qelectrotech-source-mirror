@@ -681,7 +681,6 @@ void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (!(e -> modifiers() & Qt::ControlModifier)) {
 		QGraphicsPathItem::mouseReleaseEvent(e);
 	}
-	calculateTextItemPosition();
 }
 
 /**
