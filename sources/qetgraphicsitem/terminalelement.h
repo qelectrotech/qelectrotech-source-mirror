@@ -24,7 +24,7 @@ class TerminalElement : public CustomElement
 {
 		Q_OBJECT
 	public:
-		TerminalElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
+		TerminalElement(const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
 		~TerminalElement();
 };
 

@@ -25,8 +25,8 @@
  * @param s parent diagram
  * @param state int used to know if the creation of element have error
  */
-TerminalElement::TerminalElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
-	CustomElement(location, qgi, s, state)
+TerminalElement::TerminalElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
+	CustomElement(location, qgi, state)
 {
 	link_type_ = Terminale;
 }
