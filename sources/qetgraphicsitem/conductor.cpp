@@ -92,7 +92,6 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	// ajout du champ de texte editable
 	text_item = new ConductorTextItem(properties_.text, this);
 	text_item -> setFlag(QGraphicsItem::ItemStacksBehindParent);
-	calculateTextItemPosition();
 	connect(
 		text_item,
 		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
@@ -1337,8 +1336,11 @@ void Conductor::setText(const QString &t) {
  * @param p : properties
  */
 void Conductor::setProperties(const ConductorProperties &p) {
-	properties_ = p;
-	readProperties();
+	if (properties_ != p)
+	{
+		properties_ = p;
+		readProperties();
+	}
 }
 
 /**

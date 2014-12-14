@@ -624,8 +624,8 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 				}
 				if (can_add_conductor) {
 					Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2));
-					c -> fromXml(f);
 					addItem(c);
+					c -> fromXml(f);
 					added_conductors << c;
 				}
 			}
@@ -747,6 +747,7 @@ void Diagram::addItem(Conductor *conductor) {
 		QGraphicsScene::addItem(conductor);
 		conductor -> terminal1 -> addConductor(conductor);
 		conductor -> terminal2 -> addConductor(conductor);
+		conductor -> calculateTextItemPosition();
 	}
 }
 
