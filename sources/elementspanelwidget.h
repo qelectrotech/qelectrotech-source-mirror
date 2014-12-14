@@ -44,7 +44,7 @@ class ElementsPanelWidget : public QWidget {
 	QAction *new_category, *edit_category, *delete_category;
 	QAction *delete_collection;
 	QAction *new_element, *edit_element, *delete_element, *open_element;
-	QAction *prj_activate, *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram, *prj_move_diagram_up, *prj_move_diagram_down;
+	QAction *prj_activate, *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram, *prj_move_diagram_up, *prj_move_diagram_down, *prj_move_diagram_upx10, *prj_move_diagram_downx10;
 	QAction *tbt_add, *tbt_edit, *tbt_remove;
 	QAction *copy_elements_, *move_elements_, *cancel_elements_;
 	QMenu *context_menu;
@@ -67,6 +67,8 @@ class ElementsPanelWidget : public QWidget {
 	void requestForDiagramDeletion(Diagram *);
 	void requestForDiagramMoveUp(Diagram *);
 	void requestForDiagramMoveDown(Diagram *);
+	void requestForDiagramMoveUpx10(Diagram *);
+	void requestForDiagramMoveDownx10(Diagram *);
 	
 	public slots:
 	void clearFilterTextField();
@@ -81,6 +83,8 @@ class ElementsPanelWidget : public QWidget {
 	void deleteDiagram();
 	void moveDiagramUp();
 	void moveDiagramDown();
+	void moveDiagramUpx10();
+	void moveDiagramDownx10();
 	void addTitleBlockTemplate();
 	void editTitleBlockTemplate();
 	void removeTitleBlockTemplate();

@@ -72,6 +72,8 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	prj_del_diagram       = new QAction(QET::Icons::DiagramDelete,             tr("Supprimer ce sch\351ma"),              this);
 	prj_move_diagram_up   = new QAction(QET::Icons::GoUp,                      tr("Remonter ce sch\351ma"),               this);
 	prj_move_diagram_down = new QAction(QET::Icons::GoDown,                    tr("Abaisser ce sch\351ma"),               this);
+	prj_move_diagram_upx10   = new QAction(QET::Icons::GoUp,                   tr("Remonter ce sch\351ma x10"),           this);
+	prj_move_diagram_downx10 = new QAction(QET::Icons::GoDown,                 tr("Abaisser ce sch\351ma x10"),           this);
 	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("Nouveau mod\350le"),                   this);
 	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("\311diter ce mod\350le"),              this);
 	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce mod\350le"),              this);
@@ -118,6 +120,8 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(prj_del_diagram,       SIGNAL(triggered()), this,           SLOT(deleteDiagram()));
 	connect(prj_move_diagram_up,   SIGNAL(triggered()), this,           SLOT(moveDiagramUp()));
 	connect(prj_move_diagram_down, SIGNAL(triggered()), this,           SLOT(moveDiagramDown()));
+	connect(prj_move_diagram_upx10,   SIGNAL(triggered()), this,        SLOT(moveDiagramUpx10()));
+	connect(prj_move_diagram_downx10, SIGNAL(triggered()), this,        SLOT(moveDiagramDownx10()));
 	connect(tbt_add,               SIGNAL(triggered()), this,           SLOT(addTitleBlockTemplate()));
 	connect(tbt_edit,              SIGNAL(triggered()), this,           SLOT(editTitleBlockTemplate()));
 	connect(tbt_remove,            SIGNAL(triggered()), this,           SLOT(removeTitleBlockTemplate()));
@@ -312,6 +316,25 @@ void ElementsPanelWidget::moveDiagramDown() {
 }
 
 /**
+	Emet le signal requestForDiagramMoveUpx10 avec le schema selectionne
+*/
+void ElementsPanelWidget::moveDiagramUpx10() {
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		emit(requestForDiagramMoveUpx10(selected_diagram));
+	}
+}
+
+/**
+	Emet le signal requestForDiagramMoveDownx10 avec le schema selectionne
+*/
+void ElementsPanelWidget::moveDiagramDownx10() {
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		emit(requestForDiagramMoveDownx10(selected_diagram));
+	}
+}
+
+
+/**
 	Opens a template editor to create a new title block template.
 */
 void ElementsPanelWidget::addTitleBlockTemplate() {
@@ -431,6 +454,8 @@ void ElementsPanelWidget::updateButtons() {
 		prj_del_diagram       -> setEnabled(is_writable);
 		prj_move_diagram_up   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_down -> setEnabled(is_writable && diagram_position < project_diagrams_count - 1);
+		prj_move_diagram_upx10   -> setEnabled(is_writable && diagram_position > 10);
+		prj_move_diagram_downx10 -> setEnabled(is_writable && diagram_position < project_diagrams_count - 10);
 		setElementsActionEnabled(false);
 	} else if (current_type == QET::TitleBlockTemplatesCollection) {
 		TitleBlockTemplateLocation location = elements_panel -> templateLocationForItem(current_item);
@@ -533,8 +558,10 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 		case QET::Diagram:
 			context_menu -> addAction(prj_prop_diagram);
 			context_menu -> addAction(prj_del_diagram);
+			context_menu -> addAction(prj_move_diagram_upx10);
 			context_menu -> addAction(prj_move_diagram_up);
 			context_menu -> addAction(prj_move_diagram_down);
+			context_menu -> addAction(prj_move_diagram_downx10);
 			break;
 		case QET::TitleBlockTemplatesCollection:
 			context_menu -> addAction(tbt_add);

@@ -73,6 +73,10 @@ class ProjectView : public QWidget {
 	void moveDiagramUp(Diagram *);
 	void moveDiagramDown(DiagramView *);
 	void moveDiagramDown(Diagram *);
+	void moveDiagramUpx10(DiagramView *);
+	void moveDiagramUpx10(Diagram *);
+	void moveDiagramDownx10(DiagramView *);
+	void moveDiagramDownx10(Diagram *);
 	void printProject();
 	void exportProject();
 	QETResult save();
