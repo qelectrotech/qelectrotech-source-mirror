@@ -177,27 +177,33 @@ void ElementTextItem::adjustItemPosition(int new_block_count) {
  * @brief ElementTextItem::mouseDoubleClickEvent
  * @param event
  */
-void ElementTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-		//If parent is linked, show the linked element
-	if (parent_element_ -> linkType() & (Element::AllReport | Element::Slave) && !parent_element_ -> isFree()) {
-			//Unselect and ungrab mouse to prevent unwanted
-			//move when linked element is in the same scene of this.
-		setSelected(false);
-		ungrabMouse();
+void ElementTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport)
+	{
+			//If parent is linked, show the linked element
+		if (parent_element_ -> linkType() & (Element::AllReport | Element::Slave) && !parent_element_ -> isFree()) {
+				//Unselect and ungrab mouse to prevent unwanted
+				//move when linked element is in the same scene of this.
+			setSelected(false);
+			ungrabMouse();
 
-			//Show and select the linked element
-		Element *linked = parent_element_ -> linkedElements().first();
-		if (scene() != linked -> scene()) linked -> diagram() -> showMe();
-		linked -> setSelected(true);
+				//Show and select the linked element
+			Element *linked = parent_element_ -> linkedElements().first();
+			if (scene() != linked -> scene())
+				linked -> diagram() -> showMe();
+			linked -> setSelected(true);
 
-			//Zoom to the linked element
-		foreach(QGraphicsView *view, linked -> diagram() -> views()) {
-			QRectF fit = linked -> sceneBoundingRect();
-			fit.adjust(-200, -200, 200, 200);
-			view -> fitInView(fit, Qt::KeepAspectRatioByExpanding);
+				//Zoom to the linked element
+			foreach(QGraphicsView *view, linked -> diagram() -> views()) {
+				QRectF fit = linked -> sceneBoundingRect();
+				fit.adjust(-200, -200, 200, 200);
+				view -> fitInView(fit, Qt::KeepAspectRatioByExpanding);
+			}
 		}
 	}
-	else {
+	else
+	{
 		DiagramTextItem::mouseDoubleClickEvent(event);
 	}
 }
@@ -282,19 +288,26 @@ void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
  * @brief ElementTextItem::hoverEnterEvent
  * @param event
  */
-void ElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
-	if (parent_element_ -> linkType() & (Element::AllReport | Element::Slave) && !parent_element_->isFree()) {
-		setDefaultTextColor(Qt::blue);
+void ElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+	if (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport)
+	{
+		foreach (Element *elmt, parent_element_ -> linkedElements())
+			elmt -> setHighlighted(true);
 
-			//Also color the child text if parent is a slave and linked
-		if (parent_element_-> linkType() == Element::Slave && !parent_element_ -> isFree()) {
-			foreach (QGraphicsItem *qgi, childItems()) {
-				if (QGraphicsTextItem *qgti = qgraphicsitem_cast<QGraphicsTextItem *> (qgi))
-					qgti->setDefaultTextColor(Qt::blue);
-			}
+		if (parent_element_ -> linkType() & (Element::AllReport | Element::Slave) && !parent_element_->isFree())
+		{
+			setDefaultTextColor(Qt::blue);
+
+				//Also color the child text if parent is a slave and linked
+			if (parent_element_-> linkType() == Element::Slave && !parent_element_ -> isFree())
+				foreach (QGraphicsItem *qgi, childItems())
+					if (QGraphicsTextItem *qgti = qgraphicsitem_cast<QGraphicsTextItem *> (qgi))
+						qgti -> setDefaultTextColor(Qt::blue);
 		}
 	}
-	else {
+	else
+	{
 		DiagramTextItem::hoverEnterEvent(event);
 	}
 }
@@ -303,16 +316,21 @@ void ElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
  * @brief ElementTextItem::hoverLeaveEvent
  * @param event
  */
-void ElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
-	if (defaultTextColor() != Qt::black)
-		setDefaultTextColor(Qt::black);
+void ElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+	if (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport)
+	{
+		foreach (Element *elmt, parent_element_ -> linkedElements())
+			elmt -> setHighlighted(false);
 
-		//Also color the child text if parent is a slave and linked
-	if (parent_element_-> linkType() == Element::Slave && !parent_element_ -> isFree()) {
-		foreach (QGraphicsItem *qgi, childItems()) {
-			if (QGraphicsTextItem *qgti = qgraphicsitem_cast<QGraphicsTextItem *> (qgi))
-				qgti->setDefaultTextColor(Qt::black);
-		}
+		if (defaultTextColor() != Qt::black)
+			setDefaultTextColor(Qt::black);
+
+			//Also color the child text if parent is a slave and linked
+		if (parent_element_-> linkType() == Element::Slave && !parent_element_ -> isFree())
+			foreach (QGraphicsItem *qgi, childItems())
+				if (QGraphicsTextItem *qgti = qgraphicsitem_cast<QGraphicsTextItem *> (qgi))
+					qgti -> setDefaultTextColor(Qt::black);
 	}
 
 	DiagramTextItem::hoverLeaveEvent(event);
