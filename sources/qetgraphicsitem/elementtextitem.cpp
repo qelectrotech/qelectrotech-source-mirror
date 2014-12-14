@@ -289,15 +289,12 @@ void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
  * @brief ElementTextItem::hoverEnterEvent
  * @param event
  */
-void ElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
-{
-	if (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport)
-	{
-		foreach (Element *elmt, parent_element_ -> linkedElements())
-			elmt -> setHighlighted(true);
+void ElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
 
-		if (parent_element_ -> linkType() & (Element::AllReport | Element::Slave) && !parent_element_->isFree())
-		{
+	if (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport) {
+
+		if (parent_element_ -> linkType() & (Element::AllReport | Element::Slave) && !parent_element_->isFree()) {
+
 			setDefaultTextColor(Qt::blue);
 
 				//Also color the child text if parent is a slave and linked
@@ -307,22 +304,17 @@ void ElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 						qgti -> setDefaultTextColor(Qt::blue);
 		}
 	}
-	else
-	{
-		DiagramTextItem::hoverEnterEvent(event);
-	}
+
+	DiagramTextItem::hoverEnterEvent(event);
 }
 
 /**
  * @brief ElementTextItem::hoverLeaveEvent
  * @param event
  */
-void ElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
-{
-	if (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport)
-	{
-		foreach (Element *elmt, parent_element_ -> linkedElements())
-			elmt -> setHighlighted(false);
+void ElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
+
+	if (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport) {
 
 		if (defaultTextColor() != Qt::black)
 			setDefaultTextColor(Qt::black);

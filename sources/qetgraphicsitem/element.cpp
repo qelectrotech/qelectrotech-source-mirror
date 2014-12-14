@@ -34,7 +34,7 @@ Element::Element(QGraphicsItem *parent) :
 	QetGraphicsItem(parent),
 	internal_connections_(false),
 	must_highlight_(false),
-	bMouseOver(false)
+	m_mouse_over(false)
 {
 	link_type_ = Simple;
 	uuid_ = QUuid::createUuid();
@@ -100,13 +100,11 @@ void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 #endif
 	if (must_highlight_) drawHighlight(painter, options);
 	
-	// Dessin de l'element lui-meme
+		//Draw the element himself
 	paint(painter, options);
 	
-	// Dessin du cadre de selection si necessaire
-	if (isSelected()) drawSelection(painter, options);
-
-	if ( bMouseOver )		drawSelection(painter, options);
+		//Draw the selection rectangle
+	if ( isSelected() || m_mouse_over ) drawSelection(painter, options);
 }
 
 /**
@@ -545,36 +543,34 @@ bool comparPos(const Element *elmt1, const Element *elmt2) {
 
 
 /**
-	When mouse over element
-	change bMouseOver to true   (used in paint() function )
-	@param e QGraphicsSceneHoverEvent
+ * When mouse over element
+ * change m_mouse_over to true   (used in paint() function )
+ * Also highlight linked elements
+ * @param e QGraphicsSceneHoverEvent
 */
 void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
 
-	bMouseOver = true;
-	QString str_ToolTip = name();
-	setToolTip( str_ToolTip );
+	foreach (Element *elmt, linkedElements())
+		elmt -> setHighlighted(true);
+
+	m_mouse_over = true;
+	setToolTip( name() );
 	update();
 }
 
 /**
-	When mouse over element leave the position
-	change bMouseOver to false(used in paint() function )
-	@param e QGraphicsSceneHoverEvent
+ * When mouse over element leave the position
+ * change m_mouse_over to false(used in paint() function )
+ * Also un-highlight linked elements
+ * @param e QGraphicsSceneHoverEvent
 */
 void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
-	//qDebug() << "Leave mouse over";
-	bMouseOver = false;
-	update();
-}
 
-/**
-	Do nothing default function .
-	@param e QGraphicsSceneHoverEvent
-*/
-void Element::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
-	Q_UNUSED(e);
-	QGraphicsItem::hoverMoveEvent(e);
+	foreach (Element *elmt, linkedElements())
+		elmt -> setHighlighted(false);
+
+	m_mouse_over = false;
+	update();
 }

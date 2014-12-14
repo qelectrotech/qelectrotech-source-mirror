@@ -176,21 +176,20 @@ class Element : public QetGraphicsItem {
 	int orientation() const;
 	
 	protected:
-	void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
+		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
 	
 	private:
-	bool internal_connections_;
-	bool must_highlight_;
-	void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
-	void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
-	void updatePixmap();
+		bool internal_connections_;
+		bool must_highlight_;
+		void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
+		void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
+		void updatePixmap();
 
 	protected:
-	virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *);
-	virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *);
-	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
-
-	bool bMouseOver;
+		virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * );
+		virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent * );
+	private:
+		bool m_mouse_over;
 
 };
 
