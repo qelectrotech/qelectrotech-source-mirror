@@ -33,8 +33,8 @@ class DiagramTextItem : public QGraphicsTextItem {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	DiagramTextItem(QGraphicsItem * = 0, Diagram * = 0);
-	DiagramTextItem(const QString &, QGraphicsItem * = 0, Diagram * = 0);
+	DiagramTextItem(QGraphicsItem * = 0);
+	DiagramTextItem(const QString &, QGraphicsItem * = 0);
 	virtual ~DiagramTextItem();
 
 	private:

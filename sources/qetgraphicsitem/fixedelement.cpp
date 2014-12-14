@@ -19,7 +19,7 @@
 /**
 	Constructeur
 */
-FixedElement::FixedElement(QGraphicsItem *parent, Diagram *scene) : Element(parent, scene) {
+FixedElement::FixedElement(QGraphicsItem *parent) : Element(parent) {
 }
 
 /**

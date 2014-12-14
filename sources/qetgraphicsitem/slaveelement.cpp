@@ -29,8 +29,8 @@
  * @param s parent diagram
  * @param state int used to know if the creation of element have error
  */
-SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
-	CustomElement(location, qgi, s, state)
+SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
+	CustomElement(location, qgi, state)
 {
 	Xref_item = NULL;
 	link_type_ = Slave;

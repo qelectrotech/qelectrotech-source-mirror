@@ -27,8 +27,8 @@
  * @param s parent diagram
  * @param state int used to know if the creation of element have error
  */
-MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
-	CustomElement(location, qgi, s, state),
+MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
+	CustomElement(location, qgi, state),
 	cri_ (nullptr)
 {
 	link_type_ = Master;

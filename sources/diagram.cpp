@@ -555,7 +555,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		if (type_id.startsWith("embed://")) element_location.setProject(project_);
 		
 		int state = 0;
-		Element *nvel_elmt = ElementFactory::Instance()->createElement(element_location, 0, this, &state);
+		Element *nvel_elmt = ElementFactory::Instance() -> createElement(element_location, 0, &state);
 		if (state) {
 			QString debug_message = QString("Diagram::fromXml() : Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(state);
 			qDebug() << qPrintable(debug_message);
@@ -579,7 +579,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	// Load text
 	QList<IndependentTextItem *> added_texts;
 	foreach (QDomElement text_xml, QET::findInDomElement(root, "inputs", "input")) {
-		IndependentTextItem *iti = new IndependentTextItem(this);
+		IndependentTextItem *iti = new IndependentTextItem();
 		iti -> fromXml(text_xml);
 		addItem(iti);
 		added_texts << iti;
@@ -623,8 +623,9 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 					}
 				}
 				if (can_add_conductor) {
-					Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2), this);
+					Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2));
 					c -> fromXml(f);
+					addItem(c);
 					added_conductors << c;
 				}
 			}

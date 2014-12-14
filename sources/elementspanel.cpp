@@ -294,7 +294,7 @@ void ElementsPanel::startElementDrag(const ElementsLocation &location) {
 		
 		// element temporaire pour fournir un apercu
 		int elmt_creation_state;
-		Element *temp_elmt = ElementFactory::Instance()->createElement(location, 0, 0, &elmt_creation_state);
+		Element *temp_elmt = ElementFactory::Instance() -> createElement(location, 0, &elmt_creation_state);
 		if (elmt_creation_state) {
 			delete temp_elmt;
 			return;

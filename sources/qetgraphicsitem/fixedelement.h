@@ -17,7 +17,9 @@
 */
 #ifndef ELEMENTFIXE_H
 #define ELEMENTFIXE_H
+
 #include "element.h"
+
 /**
 	This class represents an element having a fixed number of terminals.
 */
@@ -27,7 +29,7 @@ class FixedElement : public Element {
 	
 	// constructors, destructor
 	public:
-	FixedElement(QGraphicsItem * = 0, Diagram * = 0);
+	FixedElement(QGraphicsItem * = 0);
 	virtual ~FixedElement();
 	
 	// methods

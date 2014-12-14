@@ -28,8 +28,8 @@ class IndependentTextItem : public DiagramTextItem {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	IndependentTextItem(Diagram * = 0);
-	IndependentTextItem(const QString &, Diagram* = 0);
+	IndependentTextItem();
+	IndependentTextItem(const QString &);
 	virtual ~IndependentTextItem();
 	
 	// attributes

@@ -44,8 +44,8 @@
 		- 7 : L'analyse d'un element XML decrivant une partie du dessin de l'element a echoue
 		- 8 : Aucune partie du dessin n'a pu etre chargee
 */
-CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
-	FixedElement(qgi, s),
+CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
+	FixedElement(qgi),
 	elmt_state(-1),
 	location_(location),
 	forbid_antialiasing(false)
@@ -759,7 +759,7 @@ Terminal *CustomElement::parseTerminal(QDomElement &e) {
 	else if (e.attribute("orientation") == "e") terminalo = Qet::East;
 	else if (e.attribute("orientation") == "w") terminalo = Qet::West;
 	else return(0);
-	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this, qobject_cast<Diagram *>(scene()));
+	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this);
 	new_terminal -> setZValue(420); // valeur arbitraire pour maintenir les bornes au-dessus des champs de texte
 	list_terminals << new_terminal;
 	return(new_terminal);

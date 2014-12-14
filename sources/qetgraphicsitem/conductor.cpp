@@ -39,9 +39,9 @@ QBrush Conductor::square_brush = QBrush(Qt::darkGreen);
 	@param p2              Seconde Borne a laquelle le conducteur est lie
 	@param parent_diagram  QGraphicsScene a laquelle appartient le conducteur
 */
-Conductor::Conductor(Terminal *p1, Terminal* p2, Diagram *parent_diagram) :
+Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	QObject(),
-	QGraphicsPathItem(0, parent_diagram),
+	QGraphicsPathItem(0),
 	terminal1(p1),
 	terminal2(p2),
 	bMouseOver(false),

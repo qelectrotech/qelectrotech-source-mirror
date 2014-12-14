@@ -22,8 +22,8 @@
 	Constructeur
 	@param parent_diagram Le schema auquel est rattache le champ de texte
 */
-IndependentTextItem::IndependentTextItem(Diagram *parent_diagram) :
-	DiagramTextItem(0, parent_diagram)
+IndependentTextItem::IndependentTextItem() :
+	DiagramTextItem(0)
 {}
 
 /**
@@ -31,8 +31,8 @@ IndependentTextItem::IndependentTextItem(Diagram *parent_diagram) :
 	@param text Le texte affiche par le champ de texte
 	@param parent_diagram Le schema auquel est rattache le champ de texte
 */
-IndependentTextItem::IndependentTextItem(const QString &text, Diagram *parent_diagram) :
-	DiagramTextItem(text, 0, parent_diagram)
+IndependentTextItem::IndependentTextItem(const QString &text) :
+	DiagramTextItem(text, 0)
 {}
 
 /// Destructeur

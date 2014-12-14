@@ -18,7 +18,6 @@
 #ifndef GHOST_ELEMENT_H
 #define GHOST_ELEMENT_H
 #include "customelement.h"
-class Diagram;
 class QGraphicsItem;
 class ElementsLocation;
 class Terminal;
@@ -37,7 +36,7 @@ class GhostElement : public CustomElement {
 	
 	// constructor, destructor
 	public:
-	GhostElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0);
+	GhostElement(const ElementsLocation &, QGraphicsItem * = 0);
 	virtual ~GhostElement();
 	
 	// methods

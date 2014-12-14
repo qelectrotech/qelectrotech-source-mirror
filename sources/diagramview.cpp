@@ -314,7 +314,7 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
 void DiagramView::handleTextDrop(QDropEvent *e) {
 	if (scene -> isReadOnly() || (e -> mimeData() -> hasText() == false) ) return;
 
-	IndependentTextItem *iti = new IndependentTextItem (e -> mimeData() -> text(), scene);
+	IndependentTextItem *iti = new IndependentTextItem (e -> mimeData() -> text());
 
 	if (e -> mimeData() -> hasHtml()) {
 		iti -> setHtml (e -> mimeData() -> text());
@@ -863,7 +863,7 @@ bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocati
 bool DiagramView::addElementAtPos(const ElementsLocation &location, const QPoint &pos) {
 	// construit une instance de l'element correspondant a l'emplacement
 	int state;
-	Element *el = ElementFactory::Instance()->createElement(location, 0, diagram(), &state);
+	Element *el = ElementFactory::Instance()->createElement(location, 0, &state);
 	if (state) {
 		delete el;
 		return(false);

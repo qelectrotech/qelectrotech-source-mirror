@@ -31,13 +31,13 @@ class Terminal : public QGraphicsItem {
 	
 	// constructors, destructor
 	public:
-	Terminal(QPointF,      Qet::Orientation, Element * = 0, Diagram * = 0);
-	Terminal(qreal, qreal, Qet::Orientation, Element * = 0, Diagram * = 0);
-	Terminal(QPointF,      Qet::Orientation, QString number, QString name, bool hiddenName, Element * = 0, Diagram * = 0);
-	virtual ~Terminal();
+		Terminal(QPointF,      Qet::Orientation, Element * = 0);
+		Terminal(qreal, qreal, Qet::Orientation, Element * = 0);
+		Terminal(QPointF,      Qet::Orientation, QString number, QString name, bool hiddenName, Element * = 0);
+		virtual ~Terminal();
 	
 	private:
-	Terminal(const Terminal &);
+		Terminal(const Terminal &);
 	
 	// methods
 	public:

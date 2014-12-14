@@ -196,7 +196,7 @@ QPixmap ElementsCollectionCache::pixmap() const {
 */
 bool ElementsCollectionCache::fetchData(const ElementsLocation &location) {
 	int state;
-	Element *custom_elmt = ElementFactory::Instance()->createElement(location, 0, 0, &state);
+	Element *custom_elmt = ElementFactory::Instance() -> createElement(location, 0, &state);
 	if (state) {
 		qDebug() << "ElementsCollectionCache::fetchData() : Le chargement du composant" << qPrintable(location.toString()) << "a echoue avec le code d'erreur" << state;
 	} else {

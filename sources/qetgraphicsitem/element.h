@@ -22,7 +22,6 @@
 #include "qetgraphicsitem.h"
 #include "diagramcontext.h"
 
-class Diagram;
 class ElementTextItem;
 class QETProject;
 class Terminal;
@@ -31,29 +30,28 @@ class Conductor;
 /**
 	This is the base class for electrical elements.
 */
-class Element : public QetGraphicsItem {
-	
+class Element : public QetGraphicsItem {	
 	Q_OBJECT
 	
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	Element(QGraphicsItem * = 0, Diagram * = 0);
-	virtual ~Element();	
+		Element(QGraphicsItem * = 0);
+		virtual ~Element();
 	private:
-	Element(const Element &);
+		Element(const Element &);
 	
-	// attributes
+		// attributes
 	public:
-	enum { Type = UserType + 1000 };
-	// this enum is use to know the kind of element and
-	// to use flag for element provider class
-	enum kind {Simple = 1,
-		  NextReport = 2,
-		  PreviousReport = 4,
-		  AllReport = 6,
-		  Master = 8,
-		  Slave = 16,
-		  Terminale = 32};
+		enum { Type = UserType + 1000 };
+		// this enum is use to know the kind of element and
+		// to use flag for element provider class
+		enum kind {Simple = 1,
+				   NextReport = 2,
+				   PreviousReport = 4,
+				   AllReport = 6,
+				   Master = 8,
+				   Slave = 16,
+				   Terminale = 32};
 	
 	private:
 	QSize   dimensions;

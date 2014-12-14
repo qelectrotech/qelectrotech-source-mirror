@@ -30,14 +30,12 @@
 /**
 	Constructeur pour un element sans scene ni parent
 */
-Element::Element(QGraphicsItem *parent, Diagram *scene) :
+Element::Element(QGraphicsItem *parent) :
 	QetGraphicsItem(parent),
 	internal_connections_(false),
 	must_highlight_(false),
 	bMouseOver(false)
 {
-	Q_UNUSED(scene);
-
 	link_type_ = Simple;
 	uuid_ = QUuid::createUuid();
 	setZValue(10);

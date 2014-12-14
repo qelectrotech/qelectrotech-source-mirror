@@ -33,41 +33,43 @@ class Diagram;
  */
 class ElementFactory
 {
-	//methods for singleton pattern
+		//methods for singleton pattern
 	public:
-	// return instance of factory
-	static ElementFactory* Instance() {
-		static QMutex mutex;
-		if (!factory_) {
-			mutex.lock();
-			if (!factory_) factory_ = new ElementFactory();
-			mutex.unlock();
+			// return instance of factory
+		static ElementFactory* Instance() {
+			static QMutex mutex;
+			if (!factory_) {
+				mutex.lock();
+				if (!factory_) factory_ = new ElementFactory();
+				mutex.unlock();
+			}
+			return factory_;
 		}
-		return factory_;
-	}
-	// delete the instance of factory
-	static void dropInstance () {
-		static QMutex mutex;
-		if (factory_) {
-			mutex.lock();
-			delete factory_;
-			factory_ = 0;
-			mutex.unlock();
-		}
-	}
-	//attributes
-	private:
-	static ElementFactory* factory_;
 
-	//methods for the class factory himself
+			// delete the instance of factory
+		static void dropInstance () {
+			static QMutex mutex;
+			if (factory_) {
+				mutex.lock();
+				delete factory_;
+				factory_ = 0;
+				mutex.unlock();
+			}
+		}
+
+		//attributes
 	private:
-	ElementFactory() {}
-	ElementFactory (const ElementFactory &);
-	ElementFactory operator= (const ElementFactory &);
-	~ElementFactory() {}
+		static ElementFactory* factory_;
+
+		//methods for the class factory himself
+	private:
+		ElementFactory() {}
+		ElementFactory (const ElementFactory &);
+		ElementFactory operator= (const ElementFactory &);
+		~ElementFactory() {}
 
 	public:
-	Element * createElement (const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
+		Element * createElement (const ElementsLocation &, QGraphicsItem * = 0, int * = 0);
 };
 //ElementFactory ElementFactory::factory_ = 0;
 #endif // ELEMENTFACTORY_H

@@ -41,14 +41,14 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 	Q_PROPERTY(int animPath READ fakePath WRITE updatePathAnimate)
 	
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	Conductor(Terminal *, Terminal *, Diagram * = 0);
-	virtual ~Conductor();
+		Conductor(Terminal *, Terminal *);
+		virtual ~Conductor();
 	
 	private:
-	Conductor(const Conductor &);
-	
+		Conductor(const Conductor &);
+
 	// attributes
 	public:
 	enum { Type = UserType + 1001 };

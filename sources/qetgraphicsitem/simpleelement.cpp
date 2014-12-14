@@ -25,8 +25,8 @@
  * @param s
  * @param state
  */
-SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
-	CustomElement(location, qgi, s, state),
+SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
+	CustomElement(location, qgi, state),
 	m_comment_item (nullptr)
 {
 	link_type_ = Simple;

@@ -20,7 +20,6 @@
 
 #include "diagramtextitem.h"
 
-class Diagram;
 class Element;
 
 /**
@@ -32,8 +31,8 @@ class ElementTextItem : public DiagramTextItem {
 	Q_OBJECT
 		// constructors, destructor
 	public:
-		ElementTextItem(Element * = 0, Diagram * = 0);
-		ElementTextItem(const QString &, Element * = 0, Diagram * = 0);
+		ElementTextItem(Element * = 0);
+		ElementTextItem(const QString &, Element * = 0);
 		virtual ~ElementTextItem();
 	
 		// attributes

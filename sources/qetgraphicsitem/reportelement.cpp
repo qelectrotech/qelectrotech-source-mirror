@@ -21,17 +21,13 @@
 #include "qetproject.h"
 #include "diagram.h"
 
-ReportElement::ReportElement(const ElementsLocation &location, QString link_type,QGraphicsItem *qgi, Diagram *s, int *state) :
-	CustomElement(location, qgi, s, state)
+ReportElement::ReportElement(const ElementsLocation &location, QString link_type,QGraphicsItem *qgi, int *state) :
+	CustomElement(location, qgi, state)
 {
 	if (!texts().isEmpty())
 		texts().first()->setNoEditable();
 	link_type == "next_report"? link_type_=NextReport : link_type_=PreviousReport;
 	link_type == "next_report"? inverse_report=PreviousReport : inverse_report=NextReport;
-	if (s) {
-		label_ = s->defaultReportProperties();
-		connect(s, SIGNAL(reportPropertiesChanged(QString)), this, SLOT(setLabel(QString)));
-	}
 }
 
 ReportElement::~ReportElement() {
@@ -44,22 +40,36 @@ ReportElement::~ReportElement() {
  * @param elmt
  * element to be linked with this
  */
-void ReportElement::linkToElement(Element * elmt) {
-	//ensure elmt isn't already linked
-	bool i=true;
-	if (!this->isFree()){
+void ReportElement::linkToElement(Element * elmt)
+{
+	if (!diagram() && !elmt -> diagram())
+	{
+		qDebug() << "ReportElement : linkToElement : Unable to link this or element to link isn't in a diagram";
+		return;
+	}
+
+		//ensure elmt isn't already linked
+	bool i = true;
+	if (!this -> isFree())
+	{
 		if (connected_elements.first() == elmt) i = false;
 	}
 
-	//ensure elmt is an inverse report of this element
-	if ((elmt->linkType() == inverse_report) && i) {
+		//ensure elmt is an inverse report of this element
+	if ((elmt->linkType() == inverse_report) && i)
+	{
 		unlinkAllElements();
 		connected_elements << elmt;
-		connect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
-		connect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
-		connect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
+
+		connect(elmt,                   SIGNAL( xChanged() ),                                       this, SLOT( updateLabel()     ));
+		connect(elmt,                   SIGNAL( yChanged() ),                                       this, SLOT( updateLabel()     ));
+		connect(diagram(),              SIGNAL( reportPropertiesChanged(QString) ),                 this, SLOT( setLabel(QString) ));
+		connect(diagram() -> project(), SIGNAL( projectDiagramsOrderChanged(QETProject*,int,int) ), this, SLOT( updateLabel()     ));
+
+		label_ = diagram() -> defaultReportProperties();
 		updateLabel();
-		elmt->linkToElement(this);
+
+		elmt -> linkToElement(this);
 	}
 }
 

@@ -76,8 +76,8 @@ void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name
 	@param e   Element auquel cette borne appartient
 	@param s   Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e, Diagram *s) :
-	QGraphicsItem(e, s),
+Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
+	QGraphicsItem(e),
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
 {
@@ -92,8 +92,8 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e, Diagram *s) :
 	@param e    Element auquel cette borne appartient
 	@param s    Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e, Diagram *s) :
-	QGraphicsItem(e, s),
+Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
+	QGraphicsItem(e),
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
 {
@@ -110,8 +110,8 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e, Diagr
 	@param e   Element auquel cette borne appartient
 	@param s   Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bool hiddenName, Element *e, Diagram *s) :
-	QGraphicsItem(e, s),
+Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bool hiddenName, Element *e) :
+	QGraphicsItem(e),
 	parent_element_(e),
 	hovered_color_(Terminal::neutralColor)
 {

@@ -25,8 +25,8 @@
 	@param parent_conductor  Conducteur auquel ce texte est rattache
 	@param parent_diagram    Schema auquel ce texte et son conducteur parent sont rattaches
 */
-ConductorTextItem::ConductorTextItem(Conductor *parent_conductor, Diagram *parent_diagram) :
-	DiagramTextItem(parent_conductor, parent_diagram),
+ConductorTextItem::ConductorTextItem(Conductor *parent_conductor) :
+	DiagramTextItem(parent_conductor),
 	parent_conductor_(parent_conductor),
 	moved_by_user_(false),
 	rotate_by_user_(false)
@@ -40,8 +40,8 @@ ConductorTextItem::ConductorTextItem(Conductor *parent_conductor, Diagram *paren
 	@param parent_conductor  Conducteur auquel ce texte est rattache
 	@param parent_diagram    Schema auquel ce texte et son conducteur parent sont rattaches
 */
-ConductorTextItem::ConductorTextItem(const QString &text, Conductor *parent_conductor, Diagram *parent_diagram) :
-	DiagramTextItem(text, parent_conductor, parent_diagram),
+ConductorTextItem::ConductorTextItem(const QString &text, Conductor *parent_conductor) :
+	DiagramTextItem(text, parent_conductor),
 	parent_conductor_(parent_conductor),
 	moved_by_user_(false),
 	rotate_by_user_(false)

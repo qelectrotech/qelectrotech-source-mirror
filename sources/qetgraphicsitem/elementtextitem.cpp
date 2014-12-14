@@ -26,8 +26,8 @@
 	@param parent_element Le QGraphicsItem parent du champ de texte
 	@param parent_diagram Le schema auquel appartient le champ de texte
 */
-ElementTextItem::ElementTextItem(Element *parent_element, Diagram *parent_diagram) :
-	DiagramTextItem(parent_element, parent_diagram),
+ElementTextItem::ElementTextItem(Element *parent_element) :
+	DiagramTextItem(parent_element),
 	parent_element_(parent_element),
 	follow_parent_rotations(false),
 	original_rotation_angle_(0.0)
@@ -39,8 +39,8 @@ ElementTextItem::ElementTextItem(Element *parent_element, Diagram *parent_diagra
 	@param parent_diagram Le schema auquel appartient le champ de texte
 	@param text Le texte affiche par le champ de texte
 */
-ElementTextItem::ElementTextItem(const QString &text, Element *parent_element, Diagram *parent_diagram) :
-	DiagramTextItem(text, parent_element, parent_diagram),
+ElementTextItem::ElementTextItem(const QString &text, Element *parent_element) :
+	DiagramTextItem(text, parent_element),
 	parent_element_(parent_element),
 	follow_parent_rotations(false),
 	original_rotation_angle_(0.0)
