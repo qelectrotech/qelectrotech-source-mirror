@@ -500,7 +500,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation type="unfinished"></translation>
+        <translation>Geef een text voor geleider per bladzijde. </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="119"/>
@@ -700,7 +700,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="71"/>
         <source>Maintenir ctrl pour un déplacement libre</source>
-        <translation type="unfinished"></translation>
+        <translation>Houdt de CTRL toets ingedrukt om een element vrij te verplaatsen</translation>
     </message>
 </context>
 <context>
@@ -1214,7 +1214,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="171"/>
         <source>N° fil : </source>
-        <translation type="unfinished"></translation>
+        <translation>Nr geleider :</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="182"/>
@@ -1607,12 +1607,12 @@ De wijzigingen worden definitief.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Remonter ce schéma x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstel dit schema x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Abaisser ce schéma x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Verlaag schema x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
@@ -3224,7 +3224,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Désignation</source>
-        <translation type="unfinished">Aanwijzing</translation>
+        <translation>Aanwijzen</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="367"/>
@@ -3665,7 +3665,7 @@ Beschikbare opties:
         <location filename="../sources/qetdiagrameditor.cpp" line="643"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Project %1 bewaard in map %2.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="819"/>
@@ -6067,7 +6067,7 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="152"/>
         <source>Impossible de charger l&apos;image.</source>
-        <translation>Onmogelijk om de afbeelding op te halen</translation>
+        <translation>Onmogelijk om de afbeelding op te halen.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.h" line="52"/>
@@ -6077,47 +6077,47 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="65"/>
         <source>Arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Boog</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddellipse.cpp" line="63"/>
         <source>Ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Ellipse</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddline.cpp" line="66"/>
         <source>ligne</source>
-        <translation type="unfinished">Lijn</translation>
+        <translation>Lijn</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddpolygon.cpp" line="109"/>
         <source>Polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Polygoon</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddrect.cpp" line="61"/>
         <source>Rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechthoek</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddterminal.cpp" line="62"/>
         <source>Borne</source>
-        <translation type="unfinished">Klem</translation>
+        <translation>Klem</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="62"/>
         <source>Texte</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtextfield.cpp" line="62"/>
         <source>Champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst veld</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="35"/>
         <source>Modifier les informations de l&apos;élément : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzigen informatie van element %1</translation>
     </message>
 </context>
 <context>
@@ -7729,7 +7729,7 @@ Maximum breedte: %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Désignation qet</source>
-        <translation type="unfinished"></translation>
+        <translation>Benoem QET</translation>
     </message>
 </context>
 <context>
