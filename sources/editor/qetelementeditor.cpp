@@ -637,7 +637,8 @@ bool QETElementEditor::checkElement() {
 	/// Check master, slave and simple element
 	if(ce_scene -> elementType() == "master" ||
 	   ce_scene -> elementType() == "slave"  ||
-	   ce_scene -> elementType() == "simple"    ) {
+	   ce_scene -> elementType() == "simple" ||
+	   ce_scene -> elementType().contains("report")) {
 
 		bool wrng = true;
 		foreach (CustomElementPart *cep, ce_scene->primitives()) {
@@ -647,7 +648,7 @@ bool QETElementEditor::checkElement() {
 		if (wrng) {
 			errors << qMakePair(
 							tr("Absence de champ texte 'label'", "warning title"),
-							tr("Les \351l\351ments ma\356tres, esclaves  et simple doivent poss\351der "
+							tr("Les \351l\351ments ma\356tres, esclaves, simple et renvoie de folio doivent poss\351der "
 							   "un champ texte comportant le tagg 'label'", "warning description"));
 		}
 	}

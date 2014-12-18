@@ -20,6 +20,8 @@
 
 #include "customelement.h"
 
+class ElementTextItem;
+
 /**
  * @brief The ReportElement class
  *this class represent an element that can be linked to an other ReportElement
@@ -37,8 +39,9 @@ class ReportElement : public CustomElement {
 	virtual void unlinkElement(Element *elmt);
 
 	private:
-	int inverse_report;
-	QString label_;
+	int              inverse_report;
+	QString          label_;
+	ElementTextItem *m_text_field;
 
 	signals:
 

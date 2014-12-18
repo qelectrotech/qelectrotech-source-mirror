@@ -179,7 +179,21 @@ void ElementTextItem::adjustItemPosition(int new_block_count) {
  */
 void ElementTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
-	if ( (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport) && !parent_element_ -> isFree())
+		/*
+		 * Before revision 3559, report element haven't got text tagged label
+		 * so if parent is a report and haven't got text tagged label,
+		 * we know if this text is used has tagged label.
+		 */
+	bool report_text = false;
+	if (parent_element_ -> linkType() & Element::AllReport && !parent_element_ -> taggedText("label"))
+	{
+			//This is the first of list, so this text is used to display
+			//pos of linked report.
+		if (parent_element_ -> texts().first() == this)
+			report_text = true;
+	}
+
+	if ( (tagg_ == "label" || report_text) && !parent_element_ -> isFree())
 	{
 			//If parent is linked, show the linked element
 		if ( parent_element_ -> linkType() & (Element::AllReport | Element::Slave) )
@@ -289,10 +303,24 @@ void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
  * @brief ElementTextItem::hoverEnterEvent
  * @param event
  */
-void ElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
+void ElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+		/*
+		 * Before revision 3559, report element haven't got text tagged label
+		 * so if parent is a report and haven't got text tagged label,
+		 * we know if this text is used has tagged label.
+		 */
+	bool report_text = false;
+	if (parent_element_ -> linkType() & Element::AllReport && !parent_element_ -> taggedText("label"))
+	{
+			//This is the first of list, so this text is used to display
+			//pos of linked report.
+		if (parent_element_ -> texts().first() == this)
+			report_text = true;
+	}
 
-	if (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport) {
-
+	if (tagg_ == "label" || report_text)
+	{
 		if (parent_element_ -> linkType() & (Element::AllReport | Element::Slave) && !parent_element_->isFree()) {
 
 			setDefaultTextColor(Qt::blue);
@@ -312,10 +340,24 @@ void ElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
  * @brief ElementTextItem::hoverLeaveEvent
  * @param event
  */
-void ElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
+void ElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+		/*
+		 * Before revision 3559, report element haven't got text tagged label
+		 * so if parent is a report and haven't got text tagged label,
+		 * we know if this text is used has tagged label.
+		 */
+	bool report_text = false;
+	if (parent_element_ -> linkType() & Element::AllReport && !parent_element_ -> taggedText("label"))
+	{
+			//This is the first of list, so this text is used to display
+			//pos of linked report.
+		if (parent_element_ -> texts().first() == this)
+			report_text = true;
+	}
 
-	if (tagg_ == "label" || parent_element_ -> linkType() & Element::AllReport) {
-
+	if (tagg_ == "label" || report_text)
+	{
 		if (defaultTextColor() != Qt::black)
 			setDefaultTextColor(Qt::black);
 

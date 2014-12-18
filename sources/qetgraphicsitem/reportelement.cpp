@@ -22,10 +22,21 @@
 #include "diagram.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, QString link_type,QGraphicsItem *qgi, int *state) :
-	CustomElement(location, qgi, state)
-{
-	if (!texts().isEmpty())
-		texts().first()->setNoEditable();
+	CustomElement(location, qgi, state),
+	m_text_field (nullptr)
+{	
+		/*
+		 * Get text tagged label. This is work for report
+		 * create after the revision 3559.
+		 * for report create before, we take the first text field
+		 * because report haven't got a text field tagged label
+		 */
+	m_text_field = taggedText("label");
+	if (!m_text_field && !texts().isEmpty())
+		m_text_field = texts().first();
+	if (m_text_field)
+		m_text_field -> setNoEditable();
+
 	link_type == "next_report"? link_type_=NextReport : link_type_=PreviousReport;
 	link_type == "next_report"? inverse_report=PreviousReport : inverse_report=NextReport;
 }
@@ -121,18 +132,21 @@ void ReportElement::setLabel(QString label) {
  * Update the displayed label.
  * ie the folio and position of the linked folio report
  */
-void ReportElement::updateLabel() {
-	if (texts().isEmpty()) return;
-	ElementTextItem *text = texts().first();
+void ReportElement::updateLabel()
+{
+	if (!m_text_field) return;
 
-	if (!connected_elements.isEmpty()){
+	if (!connected_elements.isEmpty())
+	{
 		Element *elmt = connected_elements.at(0);
 		QString label = label_;
 		label.replace("%f", QString::number(elmt->diagram()->folioIndex()+1));
 		label.replace("%c", QString::number(elmt->diagram() -> convertPosition(elmt -> scenePos()).number()));
 		label.replace("%l", elmt->diagram() -> convertPosition(elmt -> scenePos()).letter());
-		text->setPlainText(label);
-	} else {
-		text->setPlainText("/");
+		m_text_field -> setPlainText(label);
+	}
+	else
+	{
+		m_text_field -> setPlainText("/");
 	}
 }
