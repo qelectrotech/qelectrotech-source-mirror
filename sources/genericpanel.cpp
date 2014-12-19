@@ -969,38 +969,40 @@ void GenericPanel::diagramRemoved(QETProject *project, Diagram *diagram) {
 }
 
 /**
-	@param project Projet auquel appartiennent les schemas concernes
-	@param from Index de l'onglet avant le deplacement
-	@param to   Index de l'onglet apres le deplacement
-*/
-void GenericPanel::projectDiagramsOrderChanged(QETProject *project, int from, int to) {
-	// get the item representing the provided project
+ * @brief GenericPanel::projectDiagramsOrderChanged
+ * @param project project where diagram moved
+ * @param from Index of diagram before move
+ * @param to Index of diagram after move
+ */
+void GenericPanel::projectDiagramsOrderChanged(QETProject *project, int from, int to)
+{
+		// get the item representing the provided project
 	QTreeWidgetItem *qtwi_project = itemForProject(project);
 	if (!qtwi_project) return;
 	
-	// get the item representing the moved diagram
+		// get the item representing the moved diagram
 	QTreeWidgetItem *moved_qtwi_diagram = qtwi_project -> child(from);
 	if (!moved_qtwi_diagram) return;
 	
-	// remove the QTWI then insert it back at the adequate location
+		// remove the QTWI then insert it back at the adequate location
 	bool was_selected = moved_qtwi_diagram -> isSelected();
-	qtwi_project -> removeChild(moved_qtwi_diagram);
-	qtwi_project -> insertChild(to, moved_qtwi_diagram);
+	qtwi_project -> removeChild (moved_qtwi_diagram);
+	qtwi_project -> insertChild (to, moved_qtwi_diagram);
 	
-	// update the QTWI labels because they may display the folio index
-	foreach (int diagram_index, QList<int>() << from << to) {
-		QTreeWidgetItem *qtwi_diagram = qtwi_project -> child(diagram_index);
+		// update the QTWI labels because they may display the folio index
+	for (int i = qMin(from, to); i < qMax(from, to) + 1; i++)
+	{
+		QTreeWidgetItem *qtwi_diagram = qtwi_project -> child(i);
 		if (!qtwi_diagram) continue;
-		
+
 		Diagram *diagram = valueForItem<Diagram *>(qtwi_diagram);
-		if (diagram) {
+		if (diagram)
 			updateDiagramItem(qtwi_diagram, diagram);
-		}
 	}
 	
-	if (was_selected) {
+	if (was_selected)
 		setCurrentItem(moved_qtwi_diagram);
-	}
+
 	emit(panelContentChanged());
 }
 
