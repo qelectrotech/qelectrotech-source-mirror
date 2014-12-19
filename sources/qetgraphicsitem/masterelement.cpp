@@ -81,11 +81,14 @@ void MasterElement::unlinkAllElements() {
  * Unlink the given elmt in parametre
  * @param elmt element to unlink from this
  */
-void MasterElement::unlinkElement(Element *elmt) {
-	//Ensure elmt is linked to this element
-	if (connected_elements.contains(elmt)) {
+void MasterElement::unlinkElement(Element *elmt)
+{
+		//Ensure elmt is linked to this element
+	if (connected_elements.contains(elmt))
+	{
 		connected_elements.removeOne(elmt);
-		elmt->unlinkElement(this);
+		elmt -> unlinkElement  (this);
+		elmt -> setHighlighted (false);
 
 		//update the graphics cross ref
 		disconnect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));

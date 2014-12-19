@@ -85,9 +85,11 @@ void SlaveElement::unlinkAllElements() {
  * Unlink the given elmt in parametre
  * @param elmt
  */
-void SlaveElement::unlinkElement(Element *elmt) {
-	//Ensure elmt is linked to this element
-	if (connected_elements.contains(elmt)) {
+void SlaveElement::unlinkElement(Element *elmt)
+{
+		//Ensure elmt is linked to this element
+	if (connected_elements.contains(elmt))
+	{
 		connected_elements.removeOne(elmt);
 
 		disconnect(elmt,                 SIGNAL(xChanged()),                                       this, SLOT(updateLabel()));
@@ -99,7 +101,8 @@ void SlaveElement::unlinkElement(Element *elmt) {
 		delete Xref_item; Xref_item = NULL;
 
 		updateLabel();
-		elmt -> unlinkElement(this);
+		elmt -> unlinkElement  (this) ;
+		elmt -> setHighlighted (false);
 	}
 }
 

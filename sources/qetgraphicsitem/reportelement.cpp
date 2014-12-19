@@ -88,11 +88,13 @@ void ReportElement::linkToElement(Element * elmt)
  * @brief ReportElement::unLinkAllElements
  * Unlink all of the element in the QList connected_elements
  */
-void ReportElement::unlinkAllElements(){
+void ReportElement::unlinkAllElements()
+{
 	if (!isFree()){
 		QList <Element *> tmp_elmt = connected_elements;
 
-		foreach(Element *elmt, connected_elements) {
+		foreach(Element *elmt, connected_elements)
+		{
 			disconnect(elmt, SIGNAL(xChanged()), this, SLOT(updateLabel()));
 			disconnect(elmt, SIGNAL(yChanged()), this, SLOT(updateLabel()));
 			disconnect(diagram()->project(), SIGNAL(projectDiagramsOrderChanged(QETProject*,int,int)), this, SLOT(updateLabel()));
@@ -100,8 +102,10 @@ void ReportElement::unlinkAllElements(){
 		connected_elements.clear();
 		updateLabel();
 
-		foreach(Element *elmt, tmp_elmt){
-			elmt->unlinkAllElements();
+		foreach(Element *elmt, tmp_elmt)
+		{
+			elmt -> setHighlighted(false);
+			elmt -> unlinkAllElements();
 		}
 	}
 }
