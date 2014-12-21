@@ -41,20 +41,23 @@ const qreal Diagram::margin = 5.0;
 
 // static variable to keep track of present background color of the diagram.
 QColor		Diagram::background_color = Qt::white;
+
 /**
-	Constructeur
-	@param parent Le QObject parent du schema
-*/
-Diagram::Diagram(QObject *parent) :
-	QGraphicsScene(parent),
-	project_(0),
-	diagram_qet_version_(-1),
-	draw_grid_(true),
-	use_border_(true),
-	draw_terminals_(true),
-	draw_colored_conductors_(true),
-	read_only_(false)
+ * @brief Diagram::Diagram
+ * Constructor
+ * @param project : The project of this diagram and also parent QObject
+ */
+Diagram::Diagram(QETProject *project) :
+	QGraphicsScene           (project),
+	project_                 (nullptr),
+	diagram_qet_version_     (-1),
+	draw_grid_               (true),
+	use_border_              (true),
+	draw_terminals_          (true),
+	draw_colored_conductors_ (true),
+	read_only_               (false)
 {
+	setProject(project);
 	qgi_manager_ = new QGIManager(this);
 	setBackgroundBrush(Qt::white);
 	conductor_setter_ = new QGraphicsLineItem(0, 0);
@@ -66,18 +69,12 @@ Diagram::Diagram(QObject *parent) :
 	conductor_setter_ -> setPen(t);
 	conductor_setter_ -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
 	
-	// initialise les objets gerant les deplacements
-	elements_mover_ = new ElementsMover();           // deplacements d'elements/conducteurs/textes
-	element_texts_mover_ = new ElementTextsMover();  // deplacements d'ElementTextItem
+		//Init object for manage movement
+	elements_mover_      = new ElementsMover();
+	element_texts_mover_ = new ElementTextsMover();
 
-	connect(
-		&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)),
-		this, SLOT(setTitleBlockTemplate(const QString &))
-	);
-	connect(
-		&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),
-		this, SLOT(titleChanged(const QString &))
-	);
+	connect(&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)), this, SLOT(setTitleBlockTemplate(const QString &)));
+	connect(&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),    this, SLOT(titleChanged(const QString &)));
 }
 
 /**
@@ -1203,18 +1200,24 @@ QETProject *Diagram::project() const {
 
 /**
  * @brief Diagram::setProject
- * @param project: set parent project of this diagram or 0 if this diagram haven't got a parent project
+ * Set parent project of this diagram, project also become the parent QObject of this diagram
+ * @param project new project
  */
-void Diagram::setProject(QETProject *project) {
-	if (project_) {
-		disconnect (project_, SIGNAL(reportPropertiesChanged(QString)),	  this, SIGNAL(reportPropertiesChanged(QString)));
-		disconnect (project_, SIGNAL(XRefPropertiesChanged()), this, SIGNAL(XRefPropertiesChanged()));
+void Diagram::setProject(QETProject *project)
+{
+	if (project_ == project) return;
+
+	if (project_)
+	{
+		disconnect (project_, SIGNAL(reportPropertiesChanged(QString)), this, SIGNAL(reportPropertiesChanged(QString)));
+		disconnect (project_, SIGNAL(XRefPropertiesChanged()),          this, SIGNAL(XRefPropertiesChanged()));
 	}
+
 	project_ = project;
-	if (project_) {
-		connect (project_, SIGNAL(reportPropertiesChanged(QString)),	  this, SIGNAL(reportPropertiesChanged(QString)));
-		connect (project_, SIGNAL(XRefPropertiesChanged()), this, SIGNAL(XRefPropertiesChanged()));
-	}
+	setParent (project);
+
+	connect (project_, SIGNAL(reportPropertiesChanged(QString)), this, SIGNAL(reportPropertiesChanged(QString)));
+	connect (project_, SIGNAL(XRefPropertiesChanged()),          this, SIGNAL(XRefPropertiesChanged()));
 }
 
 /**

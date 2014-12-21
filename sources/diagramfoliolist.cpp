@@ -24,16 +24,12 @@ qreal DiagramFolioList::colWidths[4] = {0.1, 0.55, 0.2, 0.15};
 /**
  * @brief DiagramFolioList::DiagramFolioList
  * Constructor
- * @param project QETproject *: The project from which this constructor was called. Important to setProject().
- * @param parent parent QObject
+ * @param project : The project of this diagram and also parent QObject
  */
-DiagramFolioList::DiagramFolioList( QETProject *project, QObject *parent) : Diagram(parent) {
-	if (project) {
-		setProject(project);
-		id = project -> getFolioSheetsQuantity();
-	}
-	else
-		id = 0;
+DiagramFolioList::DiagramFolioList( QETProject *project) :
+	Diagram(project)
+{
+	id = project -> getFolioSheetsQuantity();
 }
 
 /**

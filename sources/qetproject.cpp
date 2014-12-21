@@ -902,7 +902,7 @@ Diagram *QETProject::addNewDiagram() {
 	if (isReadOnly()) return(0);
 	
 	// cree un nouveau schema
-	Diagram *diagram = new Diagram();
+	Diagram *diagram = new Diagram(this);
 	
 	// lui transmet les parametres par defaut
 	diagram -> border_and_titleblock.importBorder(defaultBorderProperties());
@@ -1120,8 +1120,7 @@ void QETProject::readDiagramsXml() {
 		dlgWaiting->setProgressBar(i+1);
 		if (diagram_nodes.at(i).isElement()) {
 			QDomElement diagram_xml_element = diagram_nodes.at(i).toElement();
-			Diagram *diagram = new Diagram();
-			diagram -> setProject(this);
+			Diagram *diagram = new Diagram(this);
 			bool diagram_loading = diagram -> initFromXml(diagram_xml_element);
 			if (diagram_loading) {
 				dlgWaiting->setDetail( diagram->title() );

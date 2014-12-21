@@ -47,16 +47,16 @@ class ElementTextsMover;
 	This class represents an electric diagram. It manages its various child
 	elements, conductors and texts and handles their graphic rendering.
 */
-class Diagram : public QGraphicsScene {
+class Diagram : public QGraphicsScene
+{
 	Q_OBJECT
 	
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	Diagram(QObject * = 0);
-	virtual ~Diagram();
-	
+		Diagram(QETProject *project);
+		virtual ~Diagram();
 	private:
-	Diagram(const Diagram &diagram);
+		Diagram(const Diagram &diagram);
 	
 	// ATTRIBUTES
 	public:

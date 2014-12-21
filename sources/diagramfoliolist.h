@@ -24,7 +24,7 @@
 class DiagramFolioList : public Diagram
 {
 	public:
-	DiagramFolioList( QETProject *project = 0, QObject *parent = 0);
+	DiagramFolioList(QETProject *project);
 	virtual ~DiagramFolioList();
 	virtual QList<QLineF *> lines() const		{return list_lines_;}
 	virtual QList<QRectF *> rectangles() const	{return list_rectangles_;}
