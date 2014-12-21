@@ -48,11 +48,14 @@
 	@param diagram Schema a afficher ; si diagram vaut 0, un nouveau Diagram est utilise
 	@param parent Le QWidget parent de cette vue de schema
 */
-DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent) {
+DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
+	QGraphicsView     (parent),
+	scene             (diagram),
+	m_event_interface (nullptr)
+{
 	grabGesture(Qt::PinchGesture);
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	setInteractive(true);
-	m_event_interface = nullptr;
 
 	QString whatsthis = tr(
 		"Ceci est la zone dans laquelle vous concevez vos sch\351mas en y ajoutant"
@@ -67,7 +70,6 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(pare
 	setRenderHint(QPainter::TextAntialiasing, true);
 	setRenderHint(QPainter::SmoothPixmapTransform, true);
 	
-	scene = diagram ? diagram : new Diagram(this);
 	setScene(scene);
 	scene -> undoStack().setClean();
 	setWindowIcon(QET::Icons::QETLogo);

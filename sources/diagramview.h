@@ -33,28 +33,29 @@ class DVEventInterface;
 class DiagramView : public QGraphicsView {
 	Q_OBJECT
 	
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	DiagramView(Diagram * = 0, QWidget * = 0);
-	virtual ~DiagramView();
+		DiagramView(Diagram *diagram, QWidget * = 0);
+		virtual ~DiagramView();
 
 	private:
-	DiagramView(const DiagramView &);
+		DiagramView(const DiagramView &);
 	
-	// attributes
-	private:
-	Diagram *scene;
-	QMenu *context_menu;
-	QAction *paste_here;
-	QAction *find_element_;
-	QPoint paste_here_pos;
-	bool fresh_focus_in_;               ///< Indicate the focus was freshly gained
-	ElementsLocation next_location_;
-	QPoint next_position_;
-	QPointF center_view_;
-	QPointF rubber_band_origin;
-	DVEventInterface *m_event_interface;
-	
+		// attributes
+
+		Diagram          *scene;
+		DVEventInterface *m_event_interface;
+		QMenu            *context_menu;
+		QAction          *paste_here;
+		QAction          *find_element_;
+		QPoint            paste_here_pos;
+		QPoint            next_position_;
+		QPointF           center_view_;
+		QPointF           rubber_band_origin;
+		bool              fresh_focus_in_;    ///< Indicate the focus was freshly gained
+		ElementsLocation  next_location_;
+
+
 	// methods
 	public:
 	QString title() const;
