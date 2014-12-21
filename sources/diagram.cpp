@@ -54,8 +54,7 @@ Diagram::Diagram(QETProject *project) :
 	draw_grid_               (true),
 	use_border_              (true),
 	draw_terminals_          (true),
-	draw_colored_conductors_ (true),
-	read_only_               (false)
+	draw_colored_conductors_ (true)
 {
 	setProject(project);
 	qgi_manager_ = new QGIManager(this);
@@ -1246,20 +1245,13 @@ qreal Diagram::declaredQElectroTechVersion(bool fallback_to_project) const {
 }
 
 /**
-	@return true si le schema est en lecture seule
-*/
-bool Diagram::isReadOnly() const {
-	return(read_only_);
-}
-
-/**
-	@param read_only true pour passer le schema en lecture seule, false sinon
-*/
-void Diagram::setReadOnly(bool read_only) {
-	if (read_only_ != read_only) {
-		read_only_ = read_only;
-		emit(readOnlyChanged(read_only_));
-	}
+ * @brief Diagram::isReadOnly
+ * @return  true if this diagram is read only.
+ * This method is same has call Diagram::project() -> isReadOnly()
+ */
+bool Diagram::isReadOnly() const
+{
+	return project_ -> isReadOnly();
 }
 
 /**

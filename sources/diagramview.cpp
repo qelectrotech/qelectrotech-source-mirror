@@ -86,7 +86,6 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	
 	connect(scene, SIGNAL(showDiagram(Diagram*)), this, SIGNAL(showDiagram(Diagram*)));
 	connect(scene, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
-	connect(scene, SIGNAL(readOnlyChanged(bool)), this, SLOT(applyReadOnly()));
 	connect(&(scene -> border_and_titleblock), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
 	connect(&(scene -> border_and_titleblock), SIGNAL(displayChanged()),              this, SLOT(adjustSceneRect()));
 	connect(&(scene -> border_and_titleblock), SIGNAL(diagramTitleChanged(const QString &)), this, SLOT(updateWindowTitle()));

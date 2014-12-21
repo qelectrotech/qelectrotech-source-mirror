@@ -97,7 +97,6 @@ class Diagram : public QGraphicsScene
 		bool use_border_;
 		bool draw_terminals_;
 		bool draw_colored_conductors_;
-		bool read_only_;
 
 		QString m_conductors_autonum_name;
 	
@@ -120,14 +119,11 @@ class Diagram : public QGraphicsScene
 	
 		// methods related to parent project
 		QETProject *project() const;
-		void setProject(QETProject *);
-		int folioIndex() const;
-		qreal declaredQElectroTechVersion(bool = true) const;
-		void showMe() {emit showDiagram(this);}
-	
-	// methods related to read only mode
-	bool isReadOnly() const;
-	void setReadOnly(bool);
+		void        setProject(QETProject *);
+		int         folioIndex() const;
+		qreal       declaredQElectroTechVersion(bool = true) const;
+		void        showMe() {emit showDiagram(this);}
+		bool        isReadOnly() const;
 	
 	// methods related to conductor creation
 	void setConductor(bool);
@@ -213,17 +209,14 @@ class Diagram : public QGraphicsScene
 	void invertSelection();
 	
 	signals:
-	void showDiagram (Diagram *);
-	void written();
-	void readOnlyChanged(bool);
-	void usedTitleBlockTemplateChanged(const QString &);
-	void diagramTitleChanged(Diagram *, const QString &);
-	/// Signal emitted when users wish to locate an element from the diagram within elements collection
-	void findElementRequired(const ElementsLocation &);
-	/// Signal emitted when users wish to edit an element from the diagram
-	void editElementRequired(const ElementsLocation &);
-	void reportPropertiesChanged(QString);
-	void XRefPropertiesChanged();
+		void showDiagram (Diagram *);
+		void written();
+		void usedTitleBlockTemplateChanged(const QString &);
+		void diagramTitleChanged(Diagram *, const QString &);
+		void findElementRequired(const ElementsLocation &);		/// Signal emitted when users wish to locate an element from the diagram within elements collection
+		void editElementRequired(const ElementsLocation &);		/// Signal emitted when users wish to edit an element from the diagram
+		void reportPropertiesChanged(QString);
+		void XRefPropertiesChanged();
 };
 Q_DECLARE_METATYPE(Diagram *)
 

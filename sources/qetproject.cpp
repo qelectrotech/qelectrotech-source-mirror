@@ -607,19 +607,16 @@ bool QETProject::isReadOnly() const {
 }
 
 /**
-	@param read_only true pour passer le projet (schemas et collection)
-	en mode Read Only, false sinon.
-*/
-void QETProject::setReadOnly(bool read_only) {
-	if (read_only_ != read_only) {
-		// memorise le fichier pour lequel ce projet est en lecture seule
-		read_only_file_path_ = file_path_;
-		
-		// applique le nouveau mode aux schemas
-		foreach(Diagram *diagram, diagrams()) {
-			diagram -> setReadOnly(read_only);
-		}
-		
+ * @brief QETProject::setReadOnly
+ * Set this project to read only if @read_only = true
+ * @param read_only
+ */
+void QETProject::setReadOnly(bool read_only)
+{
+	if (read_only_ != read_only)
+	{
+			//keep the file to which this project is read-only
+		read_only_file_path_ = file_path_;		
 		read_only_ = read_only;
 		emit(readOnlyChanged(this, read_only));
 	}
