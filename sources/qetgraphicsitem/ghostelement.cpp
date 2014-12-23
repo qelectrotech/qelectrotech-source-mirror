@@ -73,7 +73,6 @@ bool GhostElement::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr,
 	QRect final_bounding_rect = minimalBoundingRect().united(childrenBoundingRect()).toAlignedRect();
 	setSize(final_bounding_rect.width(), final_bounding_rect.height());
 	setHotspot(QPoint() - final_bounding_rect.topLeft());
-	setInternalConnections(true);
 	
 	// on peut desormais confectionner le rendu de l'element
 	generateDrawings();

@@ -160,9 +160,6 @@ class Element : public QetGraphicsItem {
 	void select();
 	void deselect();	
 	
-	// methods related to internal connections
-	bool internalConnections();
-	void setInternalConnections(bool);
 	virtual void rotateBy(const qreal &);
 	virtual void editProperty();
 	
@@ -179,7 +176,6 @@ class Element : public QetGraphicsItem {
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
 	
 	private:
-		bool internal_connections_;
 		bool must_highlight_;
 		void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 		void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
@@ -197,24 +193,6 @@ bool comparPos(const Element * elmt1, const Element * elmt2);
 
 inline bool Element::isFree() const {
 	return (connected_elements.isEmpty());
-}
-
-/**
-	Indicate whether this element allows internal connections, i.e. whether its
-	terminals can be linked together using a conductor.
-	@return true if internal connections are accepted, false otherwise
-*/
-inline bool Element::internalConnections() {
-	return(internal_connections_);
-}
-
-/**
-	Specify whether this element allows internal connections, i.e. whether its
-	terminals can be linked together using a conductor.
-	@return true for internal connections to be accepted, false otherwise
-*/
-inline void Element::setInternalConnections(bool ic) {
-	internal_connections_ = ic;
 }
 
 /**

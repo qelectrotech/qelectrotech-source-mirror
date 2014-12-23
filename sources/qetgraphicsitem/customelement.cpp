@@ -137,13 +137,12 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 		return(false);
 	}
 	
-	// on peut d'ores et deja specifier la taille et le hotspot
 	setSize(w, h);
 	setHotspot(QPoint(hot_x, hot_y));
-	setInternalConnections(xml_def_elmt.attribute("ic") == "true");
 	
-	// la definition est supposee avoir des enfants
-	if (xml_def_elmt.firstChild().isNull()) {
+		//the definition must have childs
+	if (xml_def_elmt.firstChild().isNull())
+	{
 		if (state) *state = 6;
 		return(false);
 	}

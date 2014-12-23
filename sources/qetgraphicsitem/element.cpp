@@ -32,7 +32,6 @@
 */
 Element::Element(QGraphicsItem *parent) :
 	QetGraphicsItem(parent),
-	internal_connections_(false),
 	must_highlight_(false),
 	m_mouse_over(false)
 {

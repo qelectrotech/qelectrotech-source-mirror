@@ -599,33 +599,28 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		added_shapes << dii;
 	}
 
-	// Load conductor
+		// Load conductor
 	QList<Conductor *> added_conductors;
-	foreach (QDomElement f, QET::findInDomElement(root, "conductors", "conductor")) {
+	foreach (QDomElement f, QET::findInDomElement(root, "conductors", "conductor"))
+	{
 		if (!Conductor::valideXml(f)) continue;
-		// verifie que les bornes que le conducteur relie sont connues
+
+			//Check if terminal that conductor must be linked is know
 		int id_p1 = f.attribute("terminal1").toInt();
 		int id_p2 = f.attribute("terminal2").toInt();
-		if (table_adr_id.contains(id_p1) && table_adr_id.contains(id_p2)) {
-			// pose le conducteur... si c'est possible
+		if (table_adr_id.contains(id_p1) && table_adr_id.contains(id_p2))
+		{
 			Terminal *p1 = table_adr_id.value(id_p1);
 			Terminal *p2 = table_adr_id.value(id_p2);
-			if (p1 != p2) {
-				bool can_add_conductor = true;
-				bool cia = ((Element *)p2 -> parentItem()) -> internalConnections();
-				if (!cia) {
-					foreach(QGraphicsItem *item, p2 -> parentItem() -> children()) {
-						if (item == p1) can_add_conductor = false;
-					}
-				}
-				if (can_add_conductor) {
-					Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2));
-					addItem(c);
-					c -> fromXml(f);
-					added_conductors << c;
-				}
+			if (p1 != p2)
+			{
+				Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2));
+				addItem(c);
+				c -> fromXml(f);
+				added_conductors << c;
 			}
-		} else qDebug() << "Diagram::fromXml() : Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";
+		}
+		else qDebug() << "Diagram::fromXml() : Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";
 	}
 
 	//Translate items if a new position was given in parameter

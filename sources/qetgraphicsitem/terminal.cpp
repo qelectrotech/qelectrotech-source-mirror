@@ -442,22 +442,17 @@ bool Terminal::isLinkedTo(Terminal *other_terminal) {
 }
 
 /**
-	@param other_terminal Autre borne
-	@return true si cette borne peut etre reliee a other_terminal, false sion
-*/
-bool Terminal::canBeLinkedTo(Terminal *other_terminal) {
-	if (other_terminal == this) return(false);
-	
-	// l'autre borne appartient-elle au meme element ?
-	bool same_element = other_terminal -> parentElement() == parentElement();
-	// les connexions internes sont-elles autorisees ?
-	bool internal_connections_allowed = parentElement() -> internalConnections();
-	// les deux bornes sont-elles deja liees ?
-	bool already_linked = isLinkedTo(other_terminal);
-	// la liaison des deux bornes est-elle interdite ?
-	bool link_forbidden = (same_element && !internal_connections_allowed) || already_linked;
-	
-	return(!link_forbidden);
+ * @brief Terminal::canBeLinkedTo
+ * @param other_terminal
+ * @return true if this terminal can be linked to @other_terminal,
+ * otherwise false
+ */
+bool Terminal::canBeLinkedTo(Terminal *other_terminal)
+{
+	if (other_terminal == this || isLinkedTo(other_terminal))
+		return false;
+
+	return true;
 }
 
 /**
