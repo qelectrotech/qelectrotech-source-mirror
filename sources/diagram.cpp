@@ -1182,7 +1182,10 @@ QSet<ConductorTextItem *> Diagram::selectedConductorTexts() const {
 	return(selected_texts);
 }
 
-
+/**
+ * @brief Diagram::selectedElementTexts
+ * @return the list of element texts selected
+ */
 QSet<ElementTextItem*> Diagram::selectedElementTexts() const {
 	QSet<ElementTextItem *> selected_texts;
 	foreach(QGraphicsItem *item, selectedItems()) {
