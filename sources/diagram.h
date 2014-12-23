@@ -180,6 +180,7 @@ class Diagram : public QGraphicsScene
 	QList<Element *> elements() const;
 	QSet<DiagramTextItem *> selectedTexts() const;
 	QSet<ConductorTextItem *> selectedConductorTexts() const;
+	QSet<ElementTextItem*> selectedElementTexts() const;
 	QSet<Conductor *> selectedConductors() const;
 	DiagramContent content() const;
 	DiagramContent selectedContent();

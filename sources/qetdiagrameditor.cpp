@@ -1234,13 +1234,14 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	// actions ayant besoin de textes selectionnes
 	int selected_texts = dv ? (dv -> diagram() -> selectedTexts().count()) : 0;
 	int selected_conductor_texts = dv ? (dv -> diagram() -> selectedConductorTexts().count()) : 0;
+	int selected_element_texts = dv ? (dv -> diagram() -> selectedElementTexts().count()) : 0;
 	rotate_texts -> setEnabled(editable_diagram && selected_texts);
 
 	// actions need only one editable item
 	int selected_image = dv ? dv -> diagram() -> selectedContent().count(DiagramContent::Images) : 0;
 
 	int selected_shape = dv ? dv -> diagram() -> selectedContent().count(DiagramContent::Shapes) : 0;
-	int selected_editable = selected_elements_count + (selected_texts - selected_conductor_texts) + selected_image + selected_shape;
+	int selected_editable = selected_elements_count + (selected_texts - selected_conductor_texts - selected_element_texts) + selected_image + selected_shape;
 
 	if (selected_editable == 1) {
 		edit_selection -> setEnabled(true);
