@@ -44,10 +44,12 @@
 
 #include <QMessageBox>
 
+
 /**
-	constructeur
-	@param files Liste de fichiers a ouvrir
-	@param parent le widget parent de la fenetre principale
+ * @brief QETDiagramEditor::QETDiagramEditor
+ * Constructor
+ * @param files, list of files to open
+ * @param parent, parent widget
  */
 QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	QETMainWindow(parent),
@@ -59,10 +61,10 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_file_actions_group       (this),
 	open_dialog_dir            (QDesktopServices::storageLocation(QDesktopServices::DesktopLocation))
 {
-	// mise en place de l'interface MDI au centre de l'application
+		//Setup the mdi area at center of application
 	setCentralWidget(&workspace);
 	
-	// nomme l'objet afin qu'il soit reperable par les feuilles de style
+		//Set object name to be retrieved by the stylesheets
 	workspace.setBackground(QBrush(Qt::NoBrush));
 	workspace.setObjectName("mdiarea");
 	
@@ -70,16 +72,11 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	workspace.setTabsClosable(true);
 #endif
 	
-	// mise en place du signalmapper
+		//Set the signal mapper
 	connect(&windowMapper, SIGNAL(mapped(QWidget *)), this, SLOT(activateWidget(QWidget *)));
 	
-	// titre de la fenetre
-	setWindowTitle(tr("QElectroTech", "window title"));
-	
-	// icone de la fenetre
+	setWindowTitle(tr("QElectroTech", "window title"));	
 	setWindowIcon(QET::Icons::QETLogo);
-	
-	// barre de statut de la fenetre
 	statusBar() -> showMessage(tr("QElectroTech", "status bar message"));
 	
 	setUpElementsPanel();
@@ -90,38 +87,28 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 
 	tabifyDockWidget(qdw_undo, qdw_pa);
 	
-	// la fenetre est maximisee par defaut
+		//By default the windows is maximised
 	setMinimumSize(QSize(500, 350));
 	setWindowState(Qt::WindowMaximized);
 	
-	// connexions signaux / slots pour une interface sensee
-	connect (&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slot_updateWindowsMenu()));
-	connect (&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slot_updateUndoStack()));
+	connect (&workspace,                SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(subWindowActivated(QMdiSubWindow*)));
 	connect (QApplication::clipboard(), SIGNAL(dataChanged()),                       this, SLOT(slot_updatePasteAction()));
 	connect (&undo_group,               SIGNAL(cleanChanged(bool)),                  this, SLOT(activeUndoStackCleanChanged(bool)));
 	
-	// lecture des parametres
 	readSettings();
-	
-	// affichage
 	show();
 	
-	// si des chemins de fichiers valides sont passes en arguments
+		//If valid file path is given as arguments
 	uint opened_projects = 0;
-	if (files.count()) {
-		// alors on ouvre ces fichiers
-		foreach(QString file, files) {
-			bool project_opening = openAndAddProject(file, false);
-			if (project_opening) {
+	if (files.count())
+	{
+			//So we open this files
+		foreach(QString file, files)
+			if (openAndAddProject(file, false))
 				++ opened_projects;
-			}
-		}
 	}
 
 	slot_updateActions();
-	
-	// si aucun schema n'a ete ouvert jusqu'a maintenant, on ouvre un nouveau schema
-	//if (!opened_projects) newProject();
 }
 
 /**
@@ -1155,38 +1142,36 @@ void QETDiagramEditor::slot_setVisualisationMode() {
 }
 
 /**
-	gere les actions
-*/
-void QETDiagramEditor::slot_updateActions() {
+ * @brief QETDiagramEditor::slot_updateActions
+ * Manage actions
+ */
+void QETDiagramEditor::slot_updateActions()
+{
 	DiagramView *dv = currentDiagram();
 	ProjectView *pv = currentProject();
 
 	bool opened_project = pv;
 	bool opened_diagram = dv;
 	bool editable_project = (pv && !pv -> project() -> isReadOnly());
-	bool editable_diagram = (dv && !dv -> diagram() -> isReadOnly());
-	
-	// actions ayant juste besoin d'un document ouvert
-	close_file        -> setEnabled(opened_project);
-	save_file         -> setEnabled(editable_project && undo_group.activeStack()->count());
-	save_file_as      -> setEnabled(opened_project);
-	prj_edit_prop     -> setEnabled(opened_project);
-	prj_add_diagram   -> setEnabled(editable_project);
-	//prj_add_diagram_foliolist   -> setEnabled(editable_project);
-	prj_del_diagram   -> setEnabled(editable_project);
-	prj_clean         -> setEnabled(editable_project);
-	prj_diagramList   -> setEnabled(opened_project);
-	prj_nomenclature  -> setEnabled(editable_project);
-	export_diagram    -> setEnabled(opened_diagram);
-	print             -> setEnabled(opened_diagram);
-	infos_diagram     -> setEnabled(opened_diagram);
-	prj_nomenclature  -> setEnabled(editable_project);
-	m_zoom_actions_group.setEnabled(opened_diagram);
-	m_select_actions_group.setEnabled(opened_diagram);
-	m_add_item_actions_group.setEnabled(editable_diagram);
-	m_row_column_actions_group.setEnabled(editable_diagram);
 
-	
+	close_file       -> setEnabled(opened_project);
+	save_file_as     -> setEnabled(opened_project);
+	prj_edit_prop    -> setEnabled(opened_project);
+	prj_add_diagram  -> setEnabled(editable_project);
+	prj_del_diagram  -> setEnabled(editable_project);
+	prj_clean        -> setEnabled(editable_project);
+	prj_diagramList  -> setEnabled(opened_project);
+	prj_nomenclature -> setEnabled(editable_project);
+	export_diagram   -> setEnabled(opened_diagram);
+	print            -> setEnabled(opened_diagram);
+	infos_diagram    -> setEnabled(opened_diagram);
+	prj_nomenclature -> setEnabled(editable_project);
+	m_zoom_actions_group.      setEnabled(opened_diagram);
+	m_select_actions_group.    setEnabled(opened_diagram);
+	m_add_item_actions_group.  setEnabled(editable_project);
+	m_row_column_actions_group.setEnabled(editable_project);
+
+	slot_updateUndoStack();
 	slot_updateModeActions();
 	slot_updatePasteAction();
 	slot_updateComplexActions();
@@ -1196,13 +1181,17 @@ void QETDiagramEditor::slot_updateActions() {
  * @brief QETDiagramEditor::slot_updateUndoStack
  * Update the undo stack view
  */
-void QETDiagramEditor::slot_updateUndoStack() {
+void QETDiagramEditor::slot_updateUndoStack()
+{
 	ProjectView *pv = currentProject();
-	if (pv) {
+	if (pv)
+	{
 		undo_group.setActiveStack(pv->project()->undoStack());
-		undo      -> setEnabled (undo_group.canUndo());
-		redo      -> setEnabled (undo_group.canRedo());
-		save_file -> setEnabled (undo_group.activeStack()->count() && !pv -> project() -> isReadOnly());
+		save_file -> setEnabled (undo_group.activeStack() -> count() && !pv -> project() -> isReadOnly());
+	}
+	else
+	{
+		save_file -> setDisabled(true);
 	}
 }
 
@@ -1308,63 +1297,46 @@ void QETDiagramEditor::slot_updatePasteAction() {
 }
 
 /**
-	Ajoute un projet dans l'espace de travail
-	@param project_view Le projet a ajouter dans l'espace de travail
-*/
-void QETDiagramEditor::addProjectView(ProjectView *project_view) {
+ * @brief QETDiagramEditor::addProjectView
+ * Add a new project view to workspace and
+ * build the connection between the projectview / project and this QETDiagramEditor.
+ * @param project_view, project view to add
+ */
+void QETDiagramEditor::addProjectView(ProjectView *project_view)
+{
 	if (!project_view) return;
+
+	foreach(DiagramView *dv, project_view -> diagrams())
+		diagramWasAdded(dv);
 	
-	// on maximise la nouvelle fenetre si la fenetre en cours est inexistante ou bien maximisee
+		//Manage the close event of project
+	connect(project_view, SIGNAL(projectClosed(ProjectView*)), this, SLOT(projectWasClosed(ProjectView *)));
+		//Manage the adding  of diagram
+	connect(project_view, SIGNAL(diagramAdded(DiagramView *)), this, SLOT(diagramWasAdded(DiagramView *)));
+
+	if (QETProject *project = project_view -> project())
+		connect(project, SIGNAL(readOnlyChanged(QETProject *, bool)), this, SLOT(slot_updateActions()));
+	
+		//Manage request for edit or find element and titleblock
+	connect(project_view, SIGNAL(findElementRequired(const ElementsLocation &)),                    this,               SLOT(findElementInPanel(const ElementsLocation &)));
+	connect(project_view, SIGNAL(editElementRequired(const ElementsLocation &)),                    this,               SLOT(editElementInEditor(const ElementsLocation &)));
+	connect(project_view, SIGNAL(editTitleBlockTemplate(const TitleBlockTemplateLocation &, bool)), QETApp::instance(), SLOT(openTitleBlockTemplate(TitleBlockTemplateLocation, bool)));
+	
+		// display error messages sent by the project view
+	connect(project_view, SIGNAL(errorEncountered(QString)), this, SLOT(showError(const QString &)));
+
+		//We maximise the new window if the current window is inexistent or maximized
 	QWidget *current_window = workspace.activeSubWindow();
-	bool maximise = ((!current_window) || (current_window -> windowState() & Qt::WindowMaximized));
-	
-	// ajoute la fenetre
+	bool     maximise       = ((!current_window) || (current_window -> windowState() & Qt::WindowMaximized));
+
+		//Add the new window
 	QMdiSubWindow *sub_window = workspace.addSubWindow(project_view);
 	sub_window -> setWindowIcon(project_view -> windowIcon());
 	sub_window -> systemMenu() -> clear();
-	
-	// lie les schemas du projet a l'editeur :
-	// quand on change de schemas a l'interieur d'un projet, on met a jour les menus
-	connect(project_view,            SIGNAL(diagramActivated(DiagramView *)),   this, SLOT(slot_updateWindowsMenu()));
-	connect(project_view,            SIGNAL(diagramActivated(DiagramView *)),   this, SLOT(slot_updateActions()));
-	//connect(project_view->project(), SIGNAL(projectModified(QETProject*,bool)), save_file, SLOT(setEnabled(bool)));
 
-	foreach(DiagramView *dv, project_view -> diagrams()) {
-		diagramWasAdded(dv);
-	}
-	
-	// gere la fermeture du projet
-	connect(project_view, SIGNAL(projectClosed(ProjectView*)), this, SLOT(projectWasClosed(ProjectView *)));
-	
-	// gere l'ajout et le retrait de schema du projet
-	connect(project_view, SIGNAL(diagramAdded(DiagramView *)),   this, SLOT(diagramWasAdded(DiagramView *)));
-	connect(project_view, SIGNAL(diagramAdded(DiagramView *)),   this, SLOT(slot_updateActions()));
-	connect(project_view, SIGNAL(diagramRemoved(DiagramView *)), this, SLOT(slot_updateActions()));
-	if (QETProject *project = project_view -> project()) {
-		// on met aussi les menus a jour quand un projet passe en lecture seule ou non
-		connect(project, SIGNAL(readOnlyChanged(QETProject *, bool)), this, SLOT(slot_updateActions()));
-	}
-	
-	// gere les demandes consistant a retrouver un element dans le panel
-	connect(project_view, SIGNAL(findElementRequired(const ElementsLocation &)), this, SLOT(findElementInPanel(const ElementsLocation &)));
-	
-	// gere les demandes pour l'edition d'un element
-	connect(project_view, SIGNAL(editElementRequired(const ElementsLocation &)), this, SLOT(editElementInEditor(const ElementsLocation &)));
-	
-	// handles requests to edit and/or duplicate an existing title block template
-	connect(
-		project_view, SIGNAL(editTitleBlockTemplate(const TitleBlockTemplateLocation &, bool)),
-		QETApp::instance(), SLOT(openTitleBlockTemplate(TitleBlockTemplateLocation, bool))
-	);
-	
-	// display error messages sent by the project view
-	connect(project_view, SIGNAL(errorEncountered(QString)), this, SLOT(showError(const QString &)));
-	
-	// affiche la fenetre
+		//Display the new window
 	if (maximise) project_view -> showMaximized();
-	else project_view -> show();
-
-	slot_updateActions();
+	else          project_view -> show();
 }
 
 /**
@@ -1912,14 +1884,15 @@ void QETDiagramEditor::removeDiagramFromProject() {
 }
 
 /**
-	Gere l'ajout d'un schema dans un projet
-	@param dv DiagramView concerne
-*/
-void QETDiagramEditor::diagramWasAdded(DiagramView *dv) {
-	// quand on change qqc a l'interieur d'un schema, on met a jour les menus
-	connect(dv,              SIGNAL(selectionChanged()),         this,     SLOT(slot_updateComplexActions()));
-	connect(dv,              SIGNAL(modeChanged()),              this,     SLOT(slot_updateModeActions()));
-	connect(dv,				 SIGNAL(itemAdded()),				 this,	   SLOT(addItemFinish()));
+ * @brief QETDiagramEditor::diagramWasAdded
+ * Manage the adding of diagram view in a project
+ * @param dv, added diagram view
+ */
+void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
+{
+	connect(dv, SIGNAL(selectionChanged()), this, SLOT(slot_updateComplexActions()));
+	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
+	connect(dv, SIGNAL(itemAdded()),		this, SLOT(addItemFinish()));
 }
 
 /**
@@ -2012,6 +1985,19 @@ void QETDiagramEditor::showError(const QString &error) {
  */
 void QETDiagramEditor::addItemFinish() {
 	m_add_item_actions_group.checkedAction()->setChecked(false);
+}
+
+/**
+ * @brief QETDiagramEditor::subWindowActivated
+ * Slot used to update menu and undo stack when subwindows of MDIarea was activated
+ * @param subWindows
+ */
+void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
+{
+	Q_UNUSED(subWindows);
+
+	slot_updateActions();
+	slot_updateWindowsMenu();
 }
 
 /**
