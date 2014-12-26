@@ -364,12 +364,12 @@ pixel</extracomment>
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1403"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1404"/>
         <source>Textes de conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1404"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1405"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation type="unfinished"></translation>
@@ -593,7 +593,7 @@ pixel</extracomment>
 <context>
     <name>DiagramFolioList</name>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="153"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="149"/>
         <source>Titre</source>
         <translation type="unfinished"></translation>
     </message>
@@ -705,43 +705,43 @@ pixel</extracomment>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="57"/>
+        <location filename="../sources/diagramview.cpp" line="60"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translatorcomment>&quot;Što je to?&quot; savjet</translatorcomment>
         <translation>Područje u kojem ste dizajnirali shemu dodavanjem novih elemenata traži vodiče između svojih priključaka. Također možete dodati neovisan tekst.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="82"/>
+        <location filename="../sources/diagramview.cpp" line="84"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Zalijepi ovdje</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="199"/>
+        <location filename="../sources/diagramview.cpp" line="200"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
         <translation>Orijentacija za označeni tekst</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="660"/>
+        <location filename="../sources/diagramview.cpp" line="661"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="915"/>
+        <location filename="../sources/diagramview.cpp" line="916"/>
         <source>Propriétés de la sélection</source>
         <translation>Odabir svojstva</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="917"/>
+        <location filename="../sources/diagramview.cpp" line="918"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Odabir sadrži %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="953"/>
+        <location filename="../sources/diagramview.cpp" line="954"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Izaberi novu boju za ovaj vodič</translation>
     </message>
@@ -1171,30 +1171,30 @@ pixel</extracomment>
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="538"/>
+        <location filename="../sources/editor/elementscene.cpp" line="537"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Uredi informacije o autoru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="542"/>
+        <location filename="../sources/editor/elementscene.cpp" line="541"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Možete koristiti ovaj prostor za navođenje autora elementa, njegovu licencu ili bilo koje druge informacije koje smatrate korisnima.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="595"/>
+        <location filename="../sources/editor/elementscene.cpp" line="594"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Uredi naziv</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="599"/>
+        <location filename="../sources/editor/elementscene.cpp" line="598"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Možete upisati naziv elementa na nekoliko jezika.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="796"/>
-        <location filename="../sources/editor/elementscene.cpp" line="836"/>
+        <location filename="../sources/editor/elementscene.cpp" line="795"/>
+        <location filename="../sources/editor/elementscene.cpp" line="835"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translation>Ovaj XML dokument nije definicija elementa.</translation>
@@ -2190,7 +2190,7 @@ Promjene su konačne.</translation>
         <translation>Element koji možete umetnuti u shemu.</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="1168"/>
+        <location filename="../sources/genericpanel.cpp" line="1170"/>
         <source>%1 [non utilisé dans le projet]</source>
         <translation>%1 [nekorišteno u projektu]</translation>
     </message>
@@ -4057,51 +4057,51 @@ Dostupne opcije:
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1249"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1250"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1254"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1255"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1259"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1260"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1265"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1266"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1441"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1442"/>
         <source>Active le projet « %1 »</source>
         <translation>Aktiviraj projekt &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1940"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1941"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Ne mogu pronaći element na ploči, izgleda da je uređivan iz drugog prozora</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1946"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1947"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Ne mogu pronaći element na ploči...ponovo učitavam ploču...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1958"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1959"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Ne mogu pronaći element na ploči</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2005"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2006"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation type="unfinished">Greška</translation>
@@ -4508,39 +4508,39 @@ Dostupne opcije:
         <translation>Element ne sadrži priključke. Element mora imati priključke kako bi vodičima bio spojen s ostalim elementima.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="649"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="650"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="650"/>
-        <source>Les éléments maîtres, esclaves  et simple doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
+        <source>Les éléments maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="667"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="668"/>
         <source>Absence de borne</source>
         <translation type="unfinished">Nedostaje priključak</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="668"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="669"/>
         <source>Les reports de folio doivent posséder une seul borne.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="674"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="675"/>
         <source>Absence de champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="675"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="676"/>
         <source>Les reports de folio doivent posséder au moins un champ texte éditable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -4550,181 +4550,181 @@ Dostupne opcije:
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="700"/>
         <source>Avertissements</source>
         <translation type="unfinished">Upozorenje</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="718"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="719"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Datoteka %1 ne postoji.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1427"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="727"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1428"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Nemoguće otvoriti datoteku %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="735"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1431"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="736"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1432"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Datoteka nije važeči XML dokument</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="741"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1437"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="742"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1438"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Greška</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="753"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1400"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="754"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1401"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Verzija samo za čitanje</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="754"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1401"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="755"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1402"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>Nemate dozvolu mijenjati ovaj element. Samo za čitanje je.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="778"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="804"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="815"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="779"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="805"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="816"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Greška</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="779"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="780"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>Ne mogu pisati u datoteku</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="805"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="806"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Nemoguće dohvatiti element</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="816"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="817"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Nemoguće spremiti element</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1016"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1017"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation type="unfinished">Nemoguće otvoriti datoteku</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1018"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1019"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1035"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1036"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Ponovo učitaj element</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1036"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1037"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Element je promijenjen od posljednjeg spremanja. Ako ga ponovo učitate, promjene će biti izgubljene. Želite li zaista ponovo učitati element?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1083"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1107"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1142"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1084"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1108"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1143"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1083"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1107"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1142"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1084"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1108"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1143"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1120"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1121"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Spremi kao</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1122"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1123"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>QElectroTech elementi (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1157"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1158"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Spremi trenutni element?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1159"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1160"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Želite li spremiti element %1?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1258"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1259"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation>Previše dijelova, lista nije stvorena.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1349"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1350"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Otvori datoteku</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1351"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1352"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>QElectroTech elementi (*.elmt);;XML files (*.xml);;Sve datoteke (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1372"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1381"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1457"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1466"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1373"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1382"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1458"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1467"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Nepostojeći element.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1373"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1458"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1374"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1459"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Element ne postoji.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1382"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1467"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1383"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1468"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Izabrana putanje ne poklapa se s elementom.</translation>
@@ -4999,51 +4999,51 @@ les conditions requises ne sont pas valides</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="719"/>
+        <location filename="../sources/qetproject.cpp" line="716"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Nemoguće kreirati kategoriju zavisnu od integracije elementa</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="730"/>
+        <location filename="../sources/qetproject.cpp" line="727"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>Nemoguće dohvatiti element za integriranje</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="747"/>
+        <location filename="../sources/qetproject.cpp" line="744"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>Dogodila se greška tijekom kopiranja kategorije %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="821"/>
+        <location filename="../sources/qetproject.cpp" line="818"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Greška nastala tijekom integracije predloška.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="942"/>
+        <location filename="../sources/qetproject.cpp" line="939"/>
         <source>Liste des Schémas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1053"/>
+        <location filename="../sources/qetproject.cpp" line="1050"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Upozorenje</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1054"/>
+        <location filename="../sources/qetproject.cpp" line="1051"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>Dokument je vjerojatno spremljen s novijom verzijom QElectroTech-a. Otvaranje cijelog ili dijelova može biti neuspješno. Što želite učiniti?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1114"/>
+        <location filename="../sources/qetproject.cpp" line="1111"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1531"/>
+        <location filename="../sources/qetproject.cpp" line="1527"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Greška nastala tijekom kopiranja elementa %1</translation>
     </message>
@@ -5972,22 +5972,22 @@ Que désirez vous faire ?</source>
         <translation>vodoravno podešavanje</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="226"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="222"/>
         <source>Auteur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="227"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="223"/>
         <source>Titre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="228"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="224"/>
         <source>Folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="229"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="225"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>

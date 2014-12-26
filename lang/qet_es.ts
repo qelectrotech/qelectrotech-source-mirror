@@ -367,12 +367,12 @@ pixel</extracomment>
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1403"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1404"/>
         <source>Textes de conducteurs</source>
         <translation>Texto de los conductores</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1404"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1405"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>¿Quiere aplicar el nuevo texto a los conductores de este potencial?</translation>
@@ -598,7 +598,7 @@ pixel</extracomment>
 <context>
     <name>DiagramFolioList</name>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="153"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="149"/>
         <source>Titre</source>
         <translation>Titulo</translation>
     </message>
@@ -710,42 +710,42 @@ pixel</extracomment>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="82"/>
+        <location filename="../sources/diagramview.cpp" line="84"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Pegar aquí</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="57"/>
+        <location filename="../sources/diagramview.cpp" line="60"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Esto es la zona en la cual concibe sus esquemas añadiendo elementos y colocando conductores entre sus terminales. También es posible añadir texto independiente.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="199"/>
+        <location filename="../sources/diagramview.cpp" line="200"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
         <translation>Orientar los textos seleccionados</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="660"/>
+        <location filename="../sources/diagramview.cpp" line="661"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Sin titulo</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="915"/>
+        <location filename="../sources/diagramview.cpp" line="916"/>
         <source>Propriétés de la sélection</source>
         <translation>Propiedades de la selección</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="917"/>
+        <location filename="../sources/diagramview.cpp" line="918"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>La selección contiene %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="953"/>
+        <location filename="../sources/diagramview.cpp" line="954"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Elegir el nuevo color de este conductor</translation>
     </message>
@@ -1180,30 +1180,30 @@ pixel</extracomment>
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="538"/>
+        <location filename="../sources/editor/elementscene.cpp" line="537"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Editar la información sobre el autor</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="542"/>
+        <location filename="../sources/editor/elementscene.cpp" line="541"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Puede utilizar este campo en blanco para indicar los autores de los elementos, su licencia, o cualquier otra información que considere útil.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="599"/>
+        <location filename="../sources/editor/elementscene.cpp" line="598"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Puede especificar el nombre del elemento en varios idiomas.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="796"/>
-        <location filename="../sources/editor/elementscene.cpp" line="836"/>
+        <location filename="../sources/editor/elementscene.cpp" line="795"/>
+        <location filename="../sources/editor/elementscene.cpp" line="835"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translation>Este documento XML no es una definición de elemento.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="595"/>
+        <location filename="../sources/editor/elementscene.cpp" line="594"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Editar los nombres</translation>
@@ -2202,7 +2202,7 @@ Los cambios no podrían ser revertidos.</translation>
         <translation>Esto es un elemento que puede insertar dentro de un esquema.</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="1168"/>
+        <location filename="../sources/genericpanel.cpp" line="1170"/>
         <source>%1 [non utilisé dans le projet]</source>
         <translation>%1 [No se utiliza en el proyecto]</translation>
     </message>
@@ -3787,46 +3787,46 @@ Opciones disponibles:
         <translation>Parece que el proyecto que intenta abrir no es accesible en escritura. Por eso se abrira en sólo lectura.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1249"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1250"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Editar el elemento</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1254"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1255"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Editar el campo de texto</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1259"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1260"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Editar la imagen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1265"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1266"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Editar el objeto seleccionado</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1940"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1941"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Imposible de encontrar este elemento en el panel porque parece que fue editado en otra ventana</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1946"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1947"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Imposible encontrar este elemento en el panel ... recarge el panel ...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1958"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1959"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Imposible encontrar este elemento en el panel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2005"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2006"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Error</translation>
@@ -4125,7 +4125,7 @@ Opciones disponibles:
         <translation>Abriendo el proyecto en sólo lectura</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1441"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1442"/>
         <source>Active le projet « %1 »</source>
         <translation>Activar el proyecto « %1 »</translation>
     </message>
@@ -4373,33 +4373,39 @@ Opciones disponibles:
         <translation>Pegar desde...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="649"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="650"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
         <translation>Falta campo de texto &apos;etiqueta&apos;</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="667"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
+        <source>Les éléments maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
+        <comment>warning description</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="668"/>
         <source>Absence de borne</source>
         <translation>Falta de conector</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="668"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="669"/>
         <source>Les reports de folio doivent posséder une seul borne.</source>
         <translation>Los reportes de folio deben tener una sola terminal.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="674"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="675"/>
         <source>Absence de champ texte</source>
         <translation>Falta campo de texto</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="675"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="676"/>
         <source>Les reports de folio doivent posséder au moins un champ texte éditable.</source>
         <translation>Los informes de folio deben tener al menos un campo de texto editable.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -4408,7 +4414,7 @@ Opciones disponibles:
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
@@ -4541,182 +4547,176 @@ Opciones disponibles:
         <translation>El elemento no tiene ningun conector. Un elemento debe tener conectores para que los conductores puedan conectarse con otros elementos.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="650"/>
-        <source>Les éléments maîtres, esclaves  et simple doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
-        <comment>warning description</comment>
-        <translation>Los elementos maestros, &apos;esclavos&apos; &apos;y simple&apos; deben tener un campo de texto con la &apos;etiqueta&apos; Tagg</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="718"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="719"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>El archivo %1 no existe.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1427"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="727"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1428"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Imposible abrir el archivo %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="735"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1431"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="736"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1432"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Este archivo no es un documento XML válido</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="741"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1437"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="742"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1438"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="753"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1400"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="754"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1401"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Edición en solo lectura</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="754"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1401"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="755"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1402"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>No tiene los privilegios necesarios para editar este elemento. Por eso se abrirá en sólo lectura.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="778"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="804"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="815"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="779"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="805"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="816"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="779"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="780"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>Imposible escribir en el archivo</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="805"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="806"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Imposible acceder al elemento</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="816"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="817"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Imposible guardar el elemento</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1016"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1017"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Imposible de abrir el archivo</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1018"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1019"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Parece que el archivo %1 que usted está intentando abrir no existe.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1083"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1107"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1142"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1084"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1108"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1143"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation>Fallo al guardar</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1083"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1107"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1142"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1084"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1108"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1143"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation>Fallo al guardar,
 Las condiciones requeridas no son validas</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1258"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1259"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation>Demasiado primitivas, lista no generada.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1349"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1350"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Abrir un archivo</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1351"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1352"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>Elementos QElectroTech (*.elmt);;Archivos XML (*.xml);;Todos los archivos (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1035"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1036"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Recargar el elemento</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="700"/>
         <source>Avertissements</source>
         <translation>Advertencias</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1036"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1037"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Editó este elemento. Si recarga las edicciones se perderan. ¿Está seguro de recargar el elemento?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1120"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1121"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Guardar como</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1122"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1123"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>Elementos QElectroTech (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1157"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1158"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Guardar el elemento corriente?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1159"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1160"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>¿Quiere guardar el elemento %1?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1372"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1381"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1457"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1466"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1373"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1382"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1458"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1467"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Elemento inexistente.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1373"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1458"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1374"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1459"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>El elemento no existe.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1382"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1467"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1383"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1468"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>El camino virtual elegido no corresponde a un elemento.</translation>
@@ -4991,39 +4991,39 @@ Las condiciones requeridas no son validas</translation>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="719"/>
+        <location filename="../sources/qetproject.cpp" line="716"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Imposible crear la categoría para agregar los elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="747"/>
+        <location filename="../sources/qetproject.cpp" line="744"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>Un problema ocurrió durante la copia de la categoría %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="942"/>
+        <location filename="../sources/qetproject.cpp" line="939"/>
         <source>Liste des Schémas</source>
         <translation>Lista de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1054"/>
+        <location filename="../sources/qetproject.cpp" line="1051"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>Parece que se ha guaradado este documento con una versión antigua de QElectroTech. Puede ser que no se pueda abrir una parte o la totalidad del documento. ¿Que desea hacer?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1114"/>
+        <location filename="../sources/qetproject.cpp" line="1111"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation>&lt;b&gt;Abrir el proyecto actual...&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1531"/>
+        <location filename="../sources/qetproject.cpp" line="1527"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Un problema ocurrió durante la copia del elemento %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1053"/>
+        <location filename="../sources/qetproject.cpp" line="1050"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Advertencia</translation>
@@ -5059,12 +5059,12 @@ Que désirez vous faire ?</source>
         <translation>%1 [modificado]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="730"/>
+        <location filename="../sources/qetproject.cpp" line="727"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>Impossible accederr al elemento a integrar</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="821"/>
+        <location filename="../sources/qetproject.cpp" line="818"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Un error ocurrio durante la integración del modelo.</translation>
@@ -5989,22 +5989,22 @@ Que désirez vous faire ?</source>
         <translation>ajuste horizontal</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="226"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="222"/>
         <source>Auteur</source>
         <translation>Autor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="227"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="223"/>
         <source>Titre</source>
         <translation>Titulo</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="228"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="224"/>
         <source>Folio</source>
         <translation>Folio</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="229"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="225"/>
         <source>Date</source>
         <translation>Fecha</translation>
     </message>

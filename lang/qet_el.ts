@@ -364,12 +364,12 @@ pixel</extracomment>
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1403"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1404"/>
         <source>Textes de conducteurs</source>
         <translation>Κείμενα αγωγών</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1404"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1405"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>Θέλετε να εφαρμοστεί το νέο κείμενο
@@ -594,7 +594,7 @@ pixel</extracomment>
 <context>
     <name>DiagramFolioList</name>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="153"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="149"/>
         <source>Titre</source>
         <translation>Τίτλος</translation>
     </message>
@@ -706,42 +706,42 @@ pixel</extracomment>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="82"/>
+        <location filename="../sources/diagramview.cpp" line="84"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Επικόλληση εδώ</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="199"/>
+        <location filename="../sources/diagramview.cpp" line="200"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
         <translation>Επιλέξτε τον προσανατολισμό των επιλεγμένων κειμένων</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="57"/>
+        <location filename="../sources/diagramview.cpp" line="60"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Σε αυτή την περιοχή σχεδιάζετε τα διαγράμματά σας προσθέτοντας στοιχεία και αγωγούς μεταξύ των ακροδεκτών. Μπορείτε επίσης να προσθέσετε ανεξάρτητα κείμενα.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="660"/>
+        <location filename="../sources/diagramview.cpp" line="661"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Ανώνυμο</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="915"/>
+        <location filename="../sources/diagramview.cpp" line="916"/>
         <source>Propriétés de la sélection</source>
         <translation>Ιδιότητες της επιλογής</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="917"/>
+        <location filename="../sources/diagramview.cpp" line="918"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Η επιλογή εμπεριέχει %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="953"/>
+        <location filename="../sources/diagramview.cpp" line="954"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Επιλέξτε το νέο χρώμα αυτού του αγωγού</translation>
     </message>
@@ -1176,30 +1176,30 @@ pixel</extracomment>
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="538"/>
+        <location filename="../sources/editor/elementscene.cpp" line="537"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των πληροφοριών του συγγραφέα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="542"/>
+        <location filename="../sources/editor/elementscene.cpp" line="541"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Σε αυτό το πεδίο μπορείτε να ορίσετε, τον συγγραφέα αυτού του στοιχείου, την άδεια χρήσης, ή όποια άλλη πληροφορία θεωρείτε χρήσιμη.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="599"/>
+        <location filename="../sources/editor/elementscene.cpp" line="598"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Μπορείτε να εισάγετε το όνομα του στοιχείου σε πολλές γλώσσες.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="796"/>
-        <location filename="../sources/editor/elementscene.cpp" line="836"/>
+        <location filename="../sources/editor/elementscene.cpp" line="795"/>
+        <location filename="../sources/editor/elementscene.cpp" line="835"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translation>Αυτό το αρχείο XML δεν είναι προσδιορισμός κάποιου στοιχείου.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="595"/>
+        <location filename="../sources/editor/elementscene.cpp" line="594"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των ονομάτων</translation>
@@ -2196,7 +2196,7 @@ Les changements seront définitifs.</source>
         <translation>Αυτό είναι ένα στοιχείο, το οποίο μπορεί να προστεθεί σε ένα διάγραμμα.</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="1168"/>
+        <location filename="../sources/genericpanel.cpp" line="1170"/>
         <source>%1 [non utilisé dans le projet]</source>
         <translation>%1 [δεν χρησιμοποιείται στην εργασία]</translation>
     </message>
@@ -4020,47 +4020,47 @@ Options disponibles :
         <translation>Προσθήκη</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1249"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1250"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Επεξεργασία του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1254"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1255"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Επεξεργασία του πλαισίου κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1259"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1260"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Επεξεργασία εικόνας</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1265"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1266"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Επεξεργασία του επιλεγμένου αντικειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2005"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2006"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1940"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1941"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Αδυναμία εύρεσης του συγκεκριμένου στοιχείου στο σχέδιο, γιατί, μάλλον επεξεργάζεται σε άλλο παράθυρο</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1946"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1947"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Αδυναμία εύρεσης του συγκεκριμένου στοιχείου στον πίνακα... επαναφορτώνεται ο πίνακας...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1958"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1959"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Αδυναμία εύρεσης του συγκεκριμένου στοιχείου στον πίνακα</translation>
     </message>
@@ -4117,7 +4117,7 @@ Options disponibles :
         <translation>Άνοιγμα του αρχείου μόνο για ανάγνωση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1441"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1442"/>
         <source>Active le projet « %1 »</source>
         <translation>Ενεργοποιεί την εργασία « %1 »</translation>
     </message>
@@ -4235,13 +4235,13 @@ Options disponibles :
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="649"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="650"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
         <translation>Χωρίς πεδίο κειμένου &apos;label&apos;</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -4250,7 +4250,7 @@ Options disponibles :
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
@@ -4513,202 +4513,202 @@ Options disponibles :
         <translation>Το στοιχείο δεν περιέχει κάποιον ακροδέκτη. Τα στοιχεία πρέπει μα έχουν ακροδέκτες ώστε να μπορούν να συνδεθούν με άλλα στοιχεία μέσω αγωγών.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="650"/>
-        <source>Les éléments maîtres, esclaves  et simple doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
-        <comment>warning description</comment>
-        <translation>Τα κύρια, βοηθητικά και απλά στοιχεία πρέπει να έχουν ένα πεδίο κειμένου με ετικέτα &apos;label&apos;</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="667"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="668"/>
         <source>Absence de borne</source>
         <translation>Απουσία ακροδέκτη</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="668"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="669"/>
         <source>Les reports de folio doivent posséder une seul borne.</source>
         <translation>Οι αναφορές σελίδας πρέπει να έχουν μόνο έναν αγωγό</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="674"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="675"/>
         <source>Absence de champ texte</source>
         <translation>Απουσία πεδίου κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="675"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="676"/>
         <source>Les reports de folio doivent posséder au moins un champ texte éditable.</source>
         <translation>Οι αναφορές σελίδας πρέπει να έχουν τουλάχιστον ένα πεδίο κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="718"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="719"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Δεν υπάρχει το αρχείο %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1427"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="727"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1428"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Αδυναμία ανοίγματος του αρχείου %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="735"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1431"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="736"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1432"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Αυτό το αρχείο δεν είναι ένα έγκυρο έγγραφο XML</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="741"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1437"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="742"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1438"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="753"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1400"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="754"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1401"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Έκδοση μόνο για ανάγνωση</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="754"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1401"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="755"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1402"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>Δεν επιτρέπεται η μετατροπή αυτού του στοιχείου. Γι αυτό θα ανοιχτεί μόνο για ανάγνωση.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="778"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="804"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="815"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="779"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="805"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="816"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="779"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="780"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>Αδυναμία εγγραφής σε αυτό το αρχείο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="805"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="806"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Αδυναμία εντοπισμού του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="816"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="817"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Αδυναμία αποθήκευσης του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1016"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1017"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Αδυναμία ανοίγματος του αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1018"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1019"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Φαίνεται ότι το αρχείο %1 που προσπαθείτε να ανοίξετε δεν υπάρχει.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1083"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1107"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1142"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1084"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1108"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1143"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation>Αποτυχία αποθήκευσης</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1083"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1107"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1142"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1084"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1108"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1143"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation>Η αποθήκευση απέτυχε, οι συνθήκες δεν είναι έγκυρες</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1258"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1259"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation>Πάρα πολλά τμήματα· ο κατάλογος δεν αποτυπώθηκε.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1349"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1350"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Άνοιγμα αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1351"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1352"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>Στοιχεία του QElectroTech (*.elmt);;Αρχεία XML (*.xml);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1035"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1036"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Επαναφόρτωση του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="699"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
+        <source>Les éléments maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
+        <comment>warning description</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="700"/>
         <source>Avertissements</source>
         <translation>Προειδοποιήσεις</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1036"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1037"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Αυτό το στοιχείο έχει αλλαχθεί, μετά από την τελευταία αποθήκευσή του. Αν το επαναφορτώσετε, αυτές οι αλλαγές θα χαθούν.
 Θέλετε πραγματικά να επαναφορτωθεί αυτό το στοιχείο;</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1120"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1121"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Αποθήκευση ως</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1122"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1123"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>Στοιχεία του QElectroTech (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1157"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1158"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Αποθήκευση του παρόντος διαγράμματος;</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1159"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1160"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Θέλεις να γίνει αποθήκευση του στοιχείου %1;</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1372"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1381"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1457"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1466"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1373"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1382"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1458"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1467"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Μη υπαρκτό στοιχείο.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1373"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1458"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1374"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1459"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Το στοιχείο δεν υπάρχει.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1382"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1467"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1383"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1468"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Η επιλεγμένη εικονική διαδρομή δεν ταιριάζει σε κάποιο στοιχείο.</translation>
@@ -4983,28 +4983,28 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="719"/>
+        <location filename="../sources/qetproject.cpp" line="716"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Δεν είναι δυνατή η δημιουργία της κατηγορίας για την ενσωμάτωση των στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="747"/>
+        <location filename="../sources/qetproject.cpp" line="744"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>Παρουσιάστηκε σφάλμα κατά την αντιγραφή της κατηγορίας %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="821"/>
+        <location filename="../sources/qetproject.cpp" line="818"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Παρουσιάστηκε σφάλμα κατά την ενσωμάτωση του προτύπου.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="942"/>
+        <location filename="../sources/qetproject.cpp" line="939"/>
         <source>Liste des Schémas</source>
         <translation>Κατάλογος διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1054"/>
+        <location filename="../sources/qetproject.cpp" line="1051"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -5012,17 +5012,17 @@ Que désirez vous faire ?</source>
 Τι θα θέλατε να γίνει;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1114"/>
+        <location filename="../sources/qetproject.cpp" line="1111"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation>&lt;b&gt;Άνοιγμα εργασίας...&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1531"/>
+        <location filename="../sources/qetproject.cpp" line="1527"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Παρουσιάστηκε σφάλμα κατά την αντιγραφή του στοιχείου %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1053"/>
+        <location filename="../sources/qetproject.cpp" line="1050"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Προειδοποίηση</translation>
@@ -5058,7 +5058,7 @@ Que désirez vous faire ?</source>
         <translation>%1 [Αλλαγμένο]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="730"/>
+        <location filename="../sources/qetproject.cpp" line="727"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>Αδύνατη η πρόσβαση στο προς ενσωμάτωση στοιχείο</translation>
     </message>
@@ -5978,22 +5978,22 @@ Que désirez vous faire ?</source>
         <translation>οριζόντια προσαρμογή</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="226"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="222"/>
         <source>Auteur</source>
         <translation>Συγγραφέας </translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="227"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="223"/>
         <source>Titre</source>
         <translation>Τίτλος</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="228"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="224"/>
         <source>Folio</source>
         <translation>Σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="229"/>
+        <location filename="../sources/diagramfoliolist.cpp" line="225"/>
         <source>Date</source>
         <translation>Ημερομηνία </translation>
     </message>
