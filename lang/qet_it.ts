@@ -1991,7 +1991,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="198"/>
         <source>Utiliser les gestes du pavé tactile</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizzare le &quot;gestures&quot; del touchpad</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="199"/>
@@ -4647,7 +4647,7 @@ le condizioni richieste non sono validi</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
         <source>Les éléments maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gli elementi &quot;Master&quot;, &quot;Slave&quot;, &quot;Semplice&quot; e &quot;Riferimento al foglio&quot; devono avere un campo di testo associato alla variabile &quot;Etichetta&quot;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="700"/>
