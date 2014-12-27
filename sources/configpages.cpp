@@ -195,7 +195,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	projects_view_mode_ = new QGroupBox(tr("Projets"), this);
 	windowed_mode_ = new QRadioButton(tr("Utiliser des fen\352tres"), projects_view_mode_);
 	tabbed_mode_ = new QRadioButton(tr("Utiliser des onglets"), projects_view_mode_);
-	use_trackpad_ = new QCheckBox(tr("Utiliser les gestures du trackpad"), projects_view_mode_);
+	use_trackpad_ = new QCheckBox(tr("Utiliser les gestes du pav\351 tactile"), projects_view_mode_);
 	warning_view_mode_ = new QLabel(tr("Ces param\350tres s'appliqueront d\350s la prochaine ouverture d'un \351diteur de sch\351mas."));
 	
 	elements_management_ = new QGroupBox(tr("Gestion des \351l\351ments"), this);
