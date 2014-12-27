@@ -1992,7 +1992,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="198"/>
         <source>Utiliser les gestes du pavé tactile</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj gestów gładzika</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="199"/>
@@ -4652,7 +4652,7 @@ wymagane warunki nie zostały spełnione</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
         <source>Les éléments maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elementy nadrzędne i podrzędne odsyłaczy do stron, muszą posiadać pole tekstowe zawierające znacznik &apos;etykieta&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="700"/>
