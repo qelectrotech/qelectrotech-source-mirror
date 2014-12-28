@@ -426,7 +426,7 @@ vodiče s tímto potenciálem?</translation>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="156"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="159"/>
         <source>Unifilaire</source>
-        <translation>Jednoduché vedení</translation>
+        <translation>Jednopólově</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="17"/>
