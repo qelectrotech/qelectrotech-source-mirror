@@ -5,7 +5,7 @@
         <name lang="it">Salvamotore 3P+N con contatti ausiliari</name>
         <name lang="fr">Disjoncteur de moteur avec neutre et contacts auxiliaire</name>
         <name lang="pl">Wyłącznik silnikowy z zestykami pomocniczymi</name>
-        <name lang="cs">Jistič motoru s nulovým vodičem a pomocnými kontakty</name>
+        <name lang="cs">Motorový spouštěč s nulovým vodičem a pomocnými kontakty</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

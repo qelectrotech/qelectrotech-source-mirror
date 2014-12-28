@@ -5,7 +5,7 @@
         <name lang="it">Salvamotore 3P</name>
         <name lang="fr">Disjoncteur de moteur</name>
         <name lang="pl">Wyłącznik silnikowy</name>
-        <name lang="cs">Jistič motoru</name>
+        <name lang="cs">Motorový spouštěč</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

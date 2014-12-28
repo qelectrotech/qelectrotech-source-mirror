@@ -7,7 +7,7 @@
         <name lang="fr">Disjoncteur différentiel magnéto-thermique</name>
         <name lang="pl">Wyłącznik różnicowoprądowy z członem nadprądowym</name>
         <name lang="nl">Aardlekschakelaar + automaat</name>
-        <name lang="cs">Rozdílový magnetotepelný jistič</name>
+        <name lang="cs">Proudový chránič s nadproudovou ochranou magnetotepelný</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

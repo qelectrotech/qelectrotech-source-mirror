@@ -5,7 +5,7 @@
         <name lang="it">Salvamotore 3P+N</name>
         <name lang="fr">Disjoncteur de moteur avec neutre</name>
         <name lang="pl">Wyłącznik silnikowy</name>
-        <name lang="cs">Jistič motoru s nulovým vodičem</name>
+        <name lang="cs">Motorový spouštěč s nulovým vodičem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

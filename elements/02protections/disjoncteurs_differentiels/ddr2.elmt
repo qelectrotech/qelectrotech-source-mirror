@@ -9,7 +9,7 @@
         <name lang="fr">Disjoncteur différentiel</name>
         <name lang="pl">Wyłącznik różnicowoprądowy</name>
         <name lang="es">Dispositivo diferenciale residual</name>
-        <name lang="cs">Rozdílový jistič</name>
+        <name lang="cs">Proudový chránič s nadproudovou ochranou</name>
         <name lang="nl">Aardlekschakelaar + automaat</name>
     </names>
     <kindInformations>
