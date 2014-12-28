@@ -1215,7 +1215,7 @@ vodiče s tímto potenciálem?</translation>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="171"/>
         <source>N° fil : </source>
-        <translation type="unfinished"></translation>
+        <translation>Č. listu: </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="182"/>
@@ -1607,12 +1607,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Remonter ce schéma x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Posunout tento výkres nahoru x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Abaisser ce schéma x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Posunout tento výkres dolů x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
@@ -1992,7 +1992,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="198"/>
         <source>Utiliser les gestes du pavé tactile</source>
-        <translation type="unfinished"></translation>
+        <translation>Používat posunky pro dotykovou plochu</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="199"/>
@@ -3220,7 +3220,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Désignation</source>
-        <translation type="unfinished">Označení</translation>
+        <translation>Označení</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="367"/>
@@ -4652,7 +4652,7 @@ podmínky nejsou platné</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
         <source>Les éléments maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Prvky: nadřízené, podřízené, jednoduché a odkazy na listy musí mít textové pole obsahující značku &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="700"/>
@@ -6115,7 +6115,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="35"/>
         <source>Modifier les informations de l&apos;élément : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit údaje o prvku: %1</translation>
     </message>
 </context>
 <context>
@@ -7722,7 +7722,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Désignation qet</source>
-        <translation type="unfinished"></translation>
+        <translation>Označení qet</translation>
     </message>
 </context>
 <context>
