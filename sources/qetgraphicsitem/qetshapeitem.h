@@ -60,8 +60,12 @@ class QetShapeItem : public QetGraphicsItem
 	virtual void editProperty();
 	virtual QString name() const;
 
-	void setP2		  (QPointF P2);
+	void setP2 (QPointF P2);
+
+		//Methods available for polygon shape
+	int  pointsCount   () const;
 	void setNextPoint (QPointF P);
+	void removePoints (int number = 1);
 
 	QRectF boundingRect() const;
 	QPainterPath shape()  const;

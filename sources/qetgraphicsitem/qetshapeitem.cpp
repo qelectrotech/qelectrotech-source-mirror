@@ -94,6 +94,15 @@ void QetShapeItem::setP2(QPointF P2) {
 }
 
 /**
+ * @brief QetShapeItem::pointCount
+ * @return the number of point in the polygon
+ */
+int QetShapeItem::pointsCount() const
+{
+	return m_polygon.size();
+}
+
+/**
  * @brief QetShapeItem::setNextPoint
  * Add a new point to the curent polygon
  * @param P the new point.
@@ -102,6 +111,29 @@ void QetShapeItem::setNextPoint(QPointF P) {
 	prepareGeometryChange();
 	m_polygon.append(Diagram::snapToGrid(P));
 	setTransformOriginPoint(boundingRect().center());
+}
+
+/**
+ * @brief QetShapeItem::removePoints
+ * Number of point to remove on the polygon
+ * If @number is superior to number of polygon points-2,
+ * all points of polygon will be removed except the first two (minimum point for the polygon);
+ */
+void QetShapeItem::removePoints(int number)
+{
+	if (pointsCount() == 2 || number < 1) return;
+	if ((pointsCount()-2) < number)
+		number = pointsCount() - 2;
+
+	int i = 0;
+	do
+	{
+		i++;
+		prepareGeometryChange();
+		m_polygon.pop_back();
+		setTransformOriginPoint(boundingRect().center());
+
+	} while (i < number);
 }
 
 /**

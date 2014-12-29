@@ -28,17 +28,18 @@ class DVEventAddShape : public DVEventInterface
 	public:
 		DVEventAddShape(DiagramView *dv, QetShapeItem::ShapeType shape_type);
 		virtual ~DVEventAddShape ();
-		virtual bool mousePressEvent   (QMouseEvent *event);
-		virtual bool mouseMoveEvent    (QMouseEvent *event);
-		virtual bool mouseReleaseEvent (QMouseEvent *event);
+		virtual bool mousePressEvent       (QMouseEvent *event);
+		virtual bool mouseMoveEvent        (QMouseEvent *event);
+		virtual bool mouseReleaseEvent     (QMouseEvent *event);
+		virtual bool mouseDoubleClickEvent (QMouseEvent *event);
 
 	private:
 		void updateHelpCross (const QPoint &p);
 
 	protected:
-		QetShapeItem::ShapeType m_shape_type;
-		QetShapeItem *m_shape_item;
-		QGraphicsLineItem *m_help_horiz, *m_help_verti;
+		QetShapeItem::ShapeType  m_shape_type;
+		QetShapeItem            *m_shape_item;
+		QGraphicsLineItem       *m_help_horiz, *m_help_verti;
 };
 
 #endif // DVEVENTADDSHAPE_H

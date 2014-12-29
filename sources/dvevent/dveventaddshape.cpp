@@ -34,13 +34,17 @@ DVEventAddShape::DVEventAddShape(DiagramView *dv, QetShapeItem::ShapeType shape_
 	m_shape_item (nullptr),
 	m_help_horiz (nullptr),
 	m_help_verti (nullptr)
-{}
+{
+	m_dv -> setContextMenuPolicy(Qt::NoContextMenu);
+}
 
 /**
  * @brief DVEventAddShape::~DVEventAddShape
  */
-DVEventAddShape::~DVEventAddShape() {
-	if (m_running || m_abort) {
+DVEventAddShape::~DVEventAddShape()
+{
+	if (m_running || m_abort)
+	{
 		m_diagram -> removeItem(m_shape_item);
 		delete m_shape_item;
 	}
@@ -55,48 +59,42 @@ DVEventAddShape::~DVEventAddShape() {
  * @param event : event of mouse press
  * @return : true if this event is managed, otherwise false
  */
-bool DVEventAddShape::mousePressEvent(QMouseEvent *event) {
-
+bool DVEventAddShape::mousePressEvent(QMouseEvent *event)
+{
 	if (!m_dv->isInteractive() && m_diagram->isReadOnly()) return false;
 
 	QPointF pos = m_dv->mapToScene(event->pos());
 
-	//@m_running false => shape isn't created yet, we create a new shape
-	if (m_running == false && event -> button() == Qt::LeftButton) {
-		m_shape_item = new QetShapeItem(pos, pos, m_shape_type);
-		m_dv -> setContextMenuPolicy (Qt::NoContextMenu);
-		m_diagram -> addItem (m_shape_item);
-		m_running = true;
+		//Action for left mouse click
+	if (event -> button() == Qt::LeftButton)
+	{
+			//Create shape item
+		if (!m_shape_item)
+		{
+			m_shape_item = new QetShapeItem(pos, pos, m_shape_type);
+			m_diagram -> addItem (m_shape_item);
+			m_running = true;
+			return true;
+		}
+
+			//If current item isn't a polyline, add it with an undo command
+		if (m_shape_type != QetShapeItem::Polyline)
+		{
+			m_shape_item -> setP2 (pos);
+			m_diagram -> undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
+			m_shape_item = nullptr; //< set to nullptr for create new shape at next left clic
+		}
+			//Else add a new point to polyline
+		else
+		{
+			m_shape_item -> setNextPoint (pos);
+		}
+
 		return true;
 	}
 
-	//At this point m_shape_item must be created
-	if (!m_shape_item) return false;
-
-	// Next left click finish all shape item except the polyline
-	if (m_shape_type != QetShapeItem::Polyline && event->button() == Qt::LeftButton) {
-		m_shape_item -> setP2 (pos);
-		m_diagram -> undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
-		m_dv -> setContextMenuPolicy(Qt::DefaultContextMenu);
-		m_running = false;
+	if (event -> button() == Qt::RightButton)
 		return true;
-	}
-
-	// Next left click create new segment for polyline
-	if (m_shape_type == QetShapeItem::Polyline && event -> button() == Qt::LeftButton) {
-		m_shape_item -> setNextPoint (Diagram::snapToGrid(pos)); //< this point is ok for pos
-		m_shape_item -> setNextPoint (Diagram::snapToGrid(pos)); //< Add new point for next segment. the pos of this point
-																 //< can be changed by calling QetShapItem::setP2()
-		return true;
-	}
-
-	// If shape item is polyline and click is right button, the shape item is finish
-	// m_running is set to false at the release of right button.
-	if (m_shape_type == QetShapeItem::Polyline && event -> button() == Qt::RightButton) {
-		m_shape_item -> setP2 (pos);
-		m_diagram -> undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
-		return true;
-	}
 
 	return false;
 }
@@ -107,13 +105,17 @@ bool DVEventAddShape::mousePressEvent(QMouseEvent *event) {
  * @param event : event of mouse move
  * @return : true if this event is managed, otherwise false
  */
-bool DVEventAddShape::mouseMoveEvent(QMouseEvent *event) {
+bool DVEventAddShape::mouseMoveEvent(QMouseEvent *event)
+{
 	updateHelpCross(event->pos());
 	if (!m_running) return false;
-	if (m_shape_item && event -> buttons() == Qt::NoButton) {
+
+	if (m_shape_item && event -> buttons() == Qt::NoButton)
+	{
 		m_shape_item -> setP2 (m_dv -> mapToScene (event -> pos()));
 		return true;
 	}
+
 	return false;
 }
 
@@ -123,14 +125,53 @@ bool DVEventAddShape::mouseMoveEvent(QMouseEvent *event) {
  * @param event : event of mouse release
  * @return : true if this event is managed, otherwise false
  */
-bool DVEventAddShape::mouseReleaseEvent(QMouseEvent *event) {
-	//When the shape is polyline, we set default context menu to diagram view
-	//only when the right button is released
-	if (m_shape_type == QetShapeItem::Polyline && event -> button() == Qt::RightButton ) {
-		m_dv -> setContextMenuPolicy(Qt::DefaultContextMenu);
+bool DVEventAddShape::mouseReleaseEvent(QMouseEvent *event)
+{
+	if (event -> button() == Qt::RightButton)
+	{
+			//If shape is created, we manage right click
+		if (m_shape_item)
+		{
+				//Shape is a polyline and have three points or more we just remove the last point
+			if (m_shape_type == QetShapeItem::Polyline && (m_shape_item -> pointsCount() >= 3) )
+			{
+				m_shape_item -> removePoints();
+				m_shape_item -> setP2(m_dv -> mapToScene (event -> pos())); //Set the new last point under the cursor
+				return true;
+			}
+
+				//For other case, we remove item from scene
+			m_diagram -> removeItem(m_shape_item);
+			delete m_shape_item;
+			m_shape_item = nullptr;
+			return true;
+		}
+
+			//Else (no shape), we set to false the running status
+			//for indicate to the owner of this event that everything is done
 		m_running = false;
 		return true;
 	}
+
+	return false;
+}
+
+/**
+ * @brief DVEventAddShape::mouseDoubleClickEvent
+ * @param event
+ * @return
+ */
+bool DVEventAddShape::mouseDoubleClickEvent(QMouseEvent *event)
+{
+		//If current item is a polyline, add it with an undo command
+	if (m_shape_item && m_shape_type == QetShapeItem::Polyline && event -> button() == Qt::LeftButton)
+	{
+		m_shape_item -> setP2 (m_dv -> mapToScene (event -> pos()));
+		m_diagram -> undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
+		m_shape_item = nullptr; //< set to nullptr for create new shape at next left clic
+		return true;
+	}
+
 	return false;
 }
 
@@ -139,21 +180,27 @@ bool DVEventAddShape::mouseReleaseEvent(QMouseEvent *event) {
  * Create and update the position of the cross to help user for draw new shape
  * @param event
  */
-void DVEventAddShape::updateHelpCross(const QPoint &p) {
-	//If line isn't created yet, we create it.
-	if (!m_help_horiz || !m_help_verti) {
+void DVEventAddShape::updateHelpCross(const QPoint &p)
+{
+		//If line isn't created yet, we create it.
+	if (!m_help_horiz || !m_help_verti)
+	{
 		QPen pen;
 		pen.setWidthF(0.4);
 		pen.setCosmetic(true);
 		pen.setColor(Qt::darkGray);
-		//Add +5 for each line, because the topleft of diagram isn't draw at position (0:0) but (5:5)
-		if (!m_help_horiz) {
+
+			//Add +5 for each line, because the topleft of diagram isn't draw at position (0:0) but (5:5)
+		if (!m_help_horiz)
+		{
 			m_help_horiz = new QGraphicsLineItem(m_diagram -> border_and_titleblock.rowsHeaderWidth() + 5, 0,
 												 m_diagram -> border_and_titleblock.diagramWidth() + 5, 0,
 												 0, m_diagram);
 			m_help_horiz->setPen(pen);
 		}
-		if (!m_help_verti) {
+
+		if (!m_help_verti)
+		{
 			m_help_verti = new QGraphicsLineItem(0, m_diagram -> border_and_titleblock.columnsHeaderHeight() + 5,
 												 0, m_diagram -> border_and_titleblock.diagramHeight() + 5,
 												 0, m_diagram);
@@ -161,7 +208,7 @@ void DVEventAddShape::updateHelpCross(const QPoint &p) {
 		}
 	}
 
-	//Update the position of the cross
+		//Update the position of the cross
 	QPointF point = Diagram::snapToGrid(m_dv->mapToScene(p));
 
 	m_help_horiz->setY(point.y());
