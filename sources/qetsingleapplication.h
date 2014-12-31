@@ -49,7 +49,11 @@ class QETSingleApplication : public QApplication {
 	private:
 	bool is_running_;
 	QString unique_key_;
+	#if defined (Q_OS_OS2)
+	#define QT_NO_SHAREDMEMORY
+	#else
 	QSharedMemory shared_memory_;
+	#endif
 	QLocalServer *local_server_;
 	static const int timeout_;
 };

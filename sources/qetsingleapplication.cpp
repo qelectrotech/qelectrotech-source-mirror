@@ -31,6 +31,10 @@ QETSingleApplication::QETSingleApplication(int &argc, char **argv, const QString
 	unique_key_(unique_key)
 {
 	// verifie s'il y a un segment de memoire partage correspondant a la cle unique
+#if defined (Q_OS_OS2)
+#define QT_NO_SHAREDMEMORY
+	{
+#else
 	shared_memory_.setKey(unique_key_);
 	if (shared_memory_.attach()) {
 		// oui : l'application est deja en cours d'execution
@@ -44,7 +48,7 @@ QETSingleApplication::QETSingleApplication(int &argc, char **argv, const QString
 			qDebug() << "QETSingleApplication::QETSingleApplication() : Impossible de cr\351er l'instance unique" << qPrintable(unique_key_);
 			return;
 		}
-		
+#endif
 		// initialisation d'un serveur local pour recevoir les messages des autres instances
 		local_server_ = new QLocalServer(this);
 		connect(local_server_, SIGNAL(newConnection()), this, SLOT(receiveMessage()));
