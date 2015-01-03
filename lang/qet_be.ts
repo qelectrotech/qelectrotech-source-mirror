@@ -1993,7 +1993,7 @@ De wijzigingen worden definitief.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="198"/>
         <source>Utiliser les gestes du pavé tactile</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik de gebaren voor touchpad</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="199"/>
@@ -4659,7 +4659,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
         <source>Les éléments maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>De elementen master, slaven, simpel en folio moeten een tekstveld met daarin de Tagg &apos;label&apos; hebben</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="700"/>
