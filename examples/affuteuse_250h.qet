@@ -1003,11 +1003,11 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
     <newdiagrams>
         <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80"/>
         <inset title="" folio="%id/%total" author="" filename="" date="null"/>
-        <conductors num="_" vertirotatetext="270" displaytext="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+        <conductors num="_" vertirotatetext="270" displaytext="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="1"/>
         <report label="%f-%l%c"/>
         <xrefs>
             <xref snapto="label" switchprefix="" powerprefix="" displayhas="contacts" type="protection" showpowerctc="false" delayprefix=""/>
-            <xref snapto="bottom" switchprefix="" powerprefix="" displayhas="cross" type="coil" showpowerctc="false" delayprefix=""/>
+            <xref snapto="bottom" switchprefix="" powerprefix="" displayhas="contacts" type="coil" showpowerctc="false" delayprefix=""/>
         </xrefs>
         <conductors_autonums/>
     </newdiagrams>
@@ -1112,7 +1112,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">IC60N D32</elementInformation>
-                    <elementInformation name="comment" show="1">DISJONCTEUR GENERAL</elementInformation>
+                    <elementInformation name="comment" show="0">DISJONCTEUR GENERAL</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">D1</elementInformation>
                 </elementInformations>
@@ -1301,7 +1301,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">GV2-ME6</elementInformation>
-                    <elementInformation name="comment" show="1">GV2 MOTEUR DESCENTE BROCHE</elementInformation>
+                    <elementInformation name="comment" show="0">GV2 MOTEUR DESCENTE BROCHE</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">Q4</elementInformation>
                 </elementInformations>
@@ -1381,7 +1381,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">GV2-ME22</elementInformation>
-                    <elementInformation name="comment" show="1">GV2 MOTEUR BROCHE</elementInformation>
+                    <elementInformation name="comment" show="0">GV2 MOTEUR BROCHE</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">Q3</elementInformation>
                 </elementInformations>
@@ -1418,7 +1418,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">GV2-ME7</elementInformation>
-                    <elementInformation name="comment" show="1">GV2 TRANSLATION CHARIOT</elementInformation>
+                    <elementInformation name="comment" show="0">GV2 TRANSLATION CHARIOT</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">Q2</elementInformation>
                 </elementInformations>
@@ -1455,7 +1455,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">GV2-ME5</elementInformation>
-                    <elementInformation name="comment" show="1">GV2 MOTEUR POMPE</elementInformation>
+                    <elementInformation name="comment" show="0">GV2 MOTEUR POMPE</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">Q1</elementInformation>
                 </elementInformations>
@@ -1949,115 +1949,115 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
         </elements>
         <conductors>
-            <conductor num="95" vertirotatetext="270" displaytext="1" terminal1="39" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="94" vertirotatetext="270" displaytext="1" terminal1="7" terminal2="41" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="69" terminal2="46" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="8" terminal2="36" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="9" terminal2="35" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="36" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="35" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="100" terminal2="28" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="51" userx="450" terminal2="15" usery="120" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="50" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="33" terminal2="30" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="34" userx="770" terminal2="32" usery="520" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="49" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="57" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="56" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="55" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="L26" vertirotatetext="270" displaytext="1" terminal1="3" terminal2="14" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="L25" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="18" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="63" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="62" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="L24" vertirotatetext="270" displaytext="1" terminal1="1" terminal2="16" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="61" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="L23" vertirotatetext="270" displaytext="1" terminal1="99" terminal2="0" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="L22" vertirotatetext="270" displaytext="1" terminal1="98" terminal2="4" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="L21" vertirotatetext="270" displaytext="1" terminal1="97" terminal2="2" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="44" terminal2="40" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="45" terminal2="42" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="48" terminal2="92" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="47" terminal2="88" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
-            <conductor num="63" vertirotatetext="270" displaytext="1" terminal1="86" userx="690" terminal2="72" usery="480" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="62" vertirotatetext="270" displaytext="1" terminal1="87" userx="670" terminal2="70" usery="480" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="61" vertirotatetext="270" displaytext="1" terminal1="85" userx="650" terminal2="68" usery="480" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="92" vertirotatetext="270" displaytext="1" terminal1="91" userx="450" terminal2="76" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="93" vertirotatetext="270" displaytext="1" terminal1="90" userx="470" terminal2="78" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="83" vertirotatetext="270" displaytext="1" terminal1="94" userx="290" terminal2="80" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="82" vertirotatetext="270" displaytext="1" terminal1="95" userx="270" terminal2="82" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="73" terminal2="110" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="75" userx="450" terminal2="112" usery="460" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="81" vertirotatetext="270" displaytext="1" terminal1="93" userx="250" terminal2="84" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="77" terminal2="114" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="109" terminal2="60" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="91" vertirotatetext="270" displaytext="1" terminal1="89" userx="430" terminal2="74" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="111" terminal2="59" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="127" terminal2="66" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="113" terminal2="58" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="121" terminal2="54" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="129" terminal2="65" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="123" userx="670" terminal2="53" usery="320" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="131" terminal2="64" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="125" userx="690" terminal2="52" usery="320" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="133" terminal2="37" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="115" terminal2="60" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="95" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="39" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="94" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="7" terminal2="41" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="69" terminal2="46" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="8" terminal2="36" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="9" terminal2="35" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="36" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="35" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="100" terminal2="28" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="51" userx="450" terminal2="15" usery="120" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="50" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="33" terminal2="30" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="34" userx="770" terminal2="32" usery="520" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="49" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="57" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="56" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="55" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="L26" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="3" terminal2="14" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="L25" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="18" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="63" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="62" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="L24" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="1" terminal2="16" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="61" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="L23" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="99" terminal2="0" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="L22" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="98" terminal2="4" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="L21" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="97" terminal2="2" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="44" terminal2="40" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="45" terminal2="42" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="48" terminal2="92" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="47" terminal2="88" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
+            <conductor num="63" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="86" userx="690" terminal2="72" usery="480" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="62" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="87" userx="670" terminal2="70" usery="480" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="61" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="85" userx="650" terminal2="68" usery="480" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="92" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="91" userx="450" terminal2="76" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="93" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="90" userx="470" terminal2="78" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="83" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="94" userx="290" terminal2="80" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="82" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="95" userx="270" terminal2="82" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="73" terminal2="110" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="75" userx="450" terminal2="112" usery="460" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="81" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="93" userx="250" terminal2="84" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="77" terminal2="114" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="109" terminal2="60" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="91" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="89" userx="430" terminal2="74" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="111" terminal2="59" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="127" terminal2="66" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="113" terminal2="58" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="121" terminal2="54" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="129" terminal2="65" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="123" userx="670" terminal2="53" usery="320" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="131" terminal2="64" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="125" userx="690" terminal2="52" usery="320" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="133" terminal2="37" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="115" terminal2="60" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="vertical"/>
                 <segment length="-21" orientation="vertical"/>
                 <segment length="-100" orientation="horizontal"/>
                 <segment length="-71" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="137" terminal2="38" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="117" terminal2="59" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="137" terminal2="38" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="117" terminal2="59" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="vertical"/>
                 <segment length="-31" orientation="vertical"/>
                 <segment length="-100" orientation="horizontal"/>
                 <segment length="-61" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="67" terminal2="122" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="83" terminal2="128" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="81" terminal2="130" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="43" userx="670" terminal2="124" usery="410" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="31" terminal2="134" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="119" terminal2="58" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="67" terminal2="122" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="83" terminal2="128" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="81" terminal2="130" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="43" userx="670" terminal2="124" usery="410" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="31" terminal2="134" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="119" terminal2="58" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="vertical"/>
                 <segment length="-41" orientation="vertical"/>
                 <segment length="-100" orientation="horizontal"/>
                 <segment length="-51" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="29" terminal2="138" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="71" userx="690" terminal2="126" usery="460" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="79" userx="350" terminal2="132" usery="470" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="116" terminal2="77" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="29" terminal2="138" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="71" userx="690" terminal2="126" usery="460" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="79" userx="350" terminal2="132" usery="470" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="116" terminal2="77" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="4" orientation="vertical"/>
                 <segment length="26" orientation="vertical"/>
                 <segment length="-60" orientation="horizontal"/>
                 <segment length="46" orientation="vertical"/>
                 <segment length="4" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="118" terminal2="75" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="118" terminal2="75" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="4" orientation="vertical"/>
                 <segment length="36" orientation="vertical"/>
                 <segment length="-100" orientation="horizontal"/>
                 <segment length="36" orientation="vertical"/>
                 <segment length="4" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="120" terminal2="73" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="120" terminal2="73" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="41" orientation="vertical"/>
                 <segment length="-140" orientation="horizontal"/>
                 <segment length="21" orientation="vertical"/>
                 <segment length="9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="142" terminal2="141" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="144" terminal2="146" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="147" terminal2="149" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="47" terminal2="148" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="48" terminal2="145" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="150" terminal2="96" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="150" terminal2="143" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="142" terminal2="141" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="144" terminal2="146" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="147" terminal2="149" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="47" terminal2="148" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="48" terminal2="145" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="150" terminal2="96" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="150" terminal2="143" type="multi" horizrotatetext="0" style="line-style: dashed;" numsize="7" onetextperfolio="0"/>
         </conductors>
         <inputs>
             <input x="540" y="50" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>&lt;span style=&quot; font-family:'DejaVu Sans'; font-size:6pt;&quot;>repartiteur&lt;/span>&lt;/p>&lt;/body>&lt;/html>"/>
@@ -2078,14 +2078,14 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             <input x="750" y="190" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>1/1.5 A&lt;/p>&lt;/body>&lt;/html>"/>
         </inputs>
         <shapes>
-            <shape type="1" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="0" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="0" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="1" style="2" y1="70" x1="240" y2="140" x2="910"/>
+            <shape type="1" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="0" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="0" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="1" style="2" is_movable="0" y1="70" x1="240" y2="140" x2="910"/>
         </shapes>
     </diagram>
     <diagram title="General commande" displayrows="true" version="0.4" cols="17" folio="%id/%total" displaycols="true" height="660" colsize="60" order="3" rows="8" author="TDP" filename="250 H" titleblocktemplate="DIN_A4_copy" date="20140315" rowsize="80">
-        <defaultconductor num="_" vertirotatetext="270" displaytext="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+        <defaultconductor num="_" vertirotatetext="270" displaytext="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="1"/>
         <elements>
             <element x="520" y="190" type="embed://import/20nomenclatures/references/ref_voyant_2_h.elmt" uuid="{64e75978-d1a8-4cac-a104-63ddc378b23f}" orientation="0">
                 <terminals/>
@@ -2127,7 +2127,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">05828</elementInformation>
-                    <elementInformation name="comment" show="1">protection secondaire 4A gl</elementInformation>
+                    <elementInformation name="comment" show="0">protection secondaire 4A gl</elementInformation>
                     <elementInformation name="manufacturer" show="0">LEGRAND</elementInformation>
                     <elementInformation name="label" show="1">FU1</elementInformation>
                 </elementInformations>
@@ -2144,7 +2144,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">C60ND1A</elementInformation>
-                    <elementInformation name="comment" show="1">protection primaire transformateur</elementInformation>
+                    <elementInformation name="comment" show="0">protection primaire transformateur</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">D2</elementInformation>
                 </elementInformations>
@@ -2164,7 +2164,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">42302</elementInformation>
-                    <elementInformation name="comment" show="1">transformateur commande 220/400 24v 63VA</elementInformation>
+                    <elementInformation name="comment" show="0">transformateur commande 220/400 24v 63VA</elementInformation>
                     <elementInformation name="manufacturer" show="0">LEGRAND</elementInformation>
                     <elementInformation name="label" show="1">T1</elementInformation>
                 </elementInformations>
@@ -2276,53 +2276,41 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
         </elements>
         <conductors>
-            <conductor num="7" vertirotatetext="270" displaytext="1" terminal1="23" userx="290" terminal2="19" usery="500" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
-                <segment length="-9" orientation="horizontal"/>
-                <segment length="-258" orientation="horizontal"/>
-                <segment length="-1" orientation="vertical"/>
-                <segment length="-9" orientation="vertical"/>
-            </conductor>
-            <conductor num="1" vertirotatetext="270" displaytext="1" terminal1="10" userx="190" terminal2="9" usery="230" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="7" vertirotatetext="270" displaytext="1" rotation="0" terminal1="24" userx="450" terminal2="23" usery="480" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="1" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="21" terminal2="9" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="1"/>
+            <conductor num="5" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="17" terminal2="3" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="1"/>
+            <conductor num="2" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="22" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="1"/>
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="23" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="1"/>
+            <conductor num="1" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="10" userx="190" terminal2="9" usery="230" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" rotation="0" terminal1="24" userx="450" terminal2="23" usery="480" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="horizontal"/>
                 <segment length="-28" orientation="horizontal"/>
                 <segment length="20" orientation="vertical"/>
                 <segment length="28" orientation="horizontal"/>
                 <segment length="9" orientation="horizontal"/>
             </conductor>
-            <conductor num="5" vertirotatetext="270" displaytext="1" rotation="0" terminal1="20" userx="450" terminal2="17" usery="550" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="5" x="0" vertirotatetext="270" y="0" displaytext="1" rotation="0" terminal1="20" userx="450" terminal2="17" usery="550" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="horizontal"/>
                 <segment length="-28" orientation="horizontal"/>
                 <segment length="20" orientation="vertical"/>
                 <segment length="28" orientation="horizontal"/>
                 <segment length="9" orientation="horizontal"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="8" terminal2="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="6" terminal2="0" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="12" terminal2="14" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="2" vertirotatetext="270" displaytext="1" terminal1="13" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="5" vertirotatetext="270" displaytext="1" terminal1="17" userx="170" terminal2="3" usery="490" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
-                <segment length="-22.3333" orientation="horizontal"/>
-                <segment length="-31.3333" orientation="horizontal"/>
-                <segment length="0" orientation="horizontal"/>
-                <segment length="-233.333" orientation="horizontal"/>
-                <segment length="-154.333" orientation="vertical"/>
-                <segment length="-45.667" orientation="vertical"/>
-            </conductor>
-            <conductor num="6" vertirotatetext="270" displaytext="1" terminal1="18" terminal2="4" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="4" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="11" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="3" vertirotatetext="270" displaytext="1" terminal1="2" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="3" vertirotatetext="270" displaytext="1" terminal1="14" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="1" vertirotatetext="270" displaytext="1" terminal1="21" terminal2="9" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="7" vertirotatetext="270" displaytext="1" terminal1="23" userx="420" terminal2="16" usery="540" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="8" terminal2="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="6" terminal2="0" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="12" terminal2="14" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="2" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="13" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="6" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="18" terminal2="4" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="4" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="11" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="3" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="2" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="3" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="14" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="23" userx="420" terminal2="16" usery="540" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="horizontal"/>
                 <segment length="-28" orientation="horizontal"/>
                 <segment length="20" orientation="vertical"/>
                 <segment length="28" orientation="horizontal"/>
                 <segment length="9" orientation="horizontal"/>
             </conductor>
-            <conductor num="2" vertirotatetext="270" displaytext="1" terminal1="22" userx="300" terminal2="7" usery="210" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="5" vertirotatetext="270" displaytext="1" terminal1="25" userx="420" terminal2="17" usery="610" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="5" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="25" userx="420" terminal2="17" usery="610" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="horizontal"/>
                 <segment length="0" orientation="horizontal"/>
                 <segment length="-28" orientation="horizontal"/>
@@ -2382,7 +2370,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">XY2CH 13270</elementInformation>
-                    <elementInformation name="comment" show="1">ARRET D'URGENCE CABLE</elementInformation>
+                    <elementInformation name="comment" show="0">ARRET D'URGENCE CABLE</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">ATU_CABLE</elementInformation>
                 </elementInformations>
@@ -2430,7 +2418,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">ZB4 B44</elementInformation>
-                    <elementInformation name="comment" show="1">ARRET D'URGENCE SUR BROCHE</elementInformation>
+                    <elementInformation name="comment" show="0">ARRET D'URGENCE SUR BROCHE</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">ATU_BROCHE</elementInformation>
                 </elementInformations>
@@ -2568,7 +2556,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">ZB4 BW36</elementInformation>
-                    <elementInformation name="comment" show="1">BP REARMEMENT</elementInformation>
+                    <elementInformation name="comment" show="0">BP REARMEMENT</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">S2</elementInformation>
                 </elementInformations>
@@ -2642,89 +2630,89 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
         </elements>
         <conductors>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="10" terminal2="5" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="8" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="14" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="4" terminal2="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="6" terminal2="3" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="2" terminal2="16" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="15" terminal2="21" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="5" vertirotatetext="270" displaytext="1" terminal1="18" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="7" vertirotatetext="270" displaytext="1" terminal1="20" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="13" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="9" vertirotatetext="270" displaytext="1" terminal1="9" terminal2="24" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="10" vertirotatetext="270" displaytext="1" terminal1="11" terminal2="25" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="10" terminal2="5" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="8" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="14" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" terminal2="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="6" terminal2="3" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="2" terminal2="16" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="15" terminal2="21" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="5" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="18" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="20" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="13" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="9" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="9" terminal2="24" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="10" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="11" terminal2="25" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="69" orientation="vertical"/>
                 <segment length="171" orientation="vertical"/>
                 <segment length="40" orientation="horizontal"/>
                 <segment length="-70" orientation="vertical"/>
                 <segment length="0" orientation="horizontal"/>
             </conductor>
-            <conductor num="25" vertirotatetext="270" displaytext="1" terminal1="37" userx="460" terminal2="23" usery="460" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="43" vertirotatetext="270" displaytext="1" terminal1="33" terminal2="39" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="44" vertirotatetext="270" displaytext="1" terminal1="38" terminal2="32" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="7" vertirotatetext="270" displaytext="1" terminal1="28" userx="420" terminal2="17" usery="240" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="25" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="37" userx="460" terminal2="23" usery="460" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="43" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="33" terminal2="39" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="44" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="38" terminal2="32" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="28" userx="420" terminal2="17" usery="240" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-31.5" orientation="vertical"/>
                 <segment length="-228.5" orientation="vertical"/>
                 <segment length="-240" orientation="horizontal"/>
                 <segment length="24.5" orientation="vertical"/>
                 <segment length="-31.5" orientation="vertical"/>
             </conductor>
-            <conductor num="26" vertirotatetext="270" displaytext="1" terminal1="40" terminal2="31" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="7" vertirotatetext="270" displaytext="1" terminal1="29" userx="460" terminal2="28" usery="240" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="26" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="40" terminal2="31" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="29" userx="460" terminal2="28" usery="240" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="vertical"/>
                 <segment length="-251" orientation="vertical"/>
                 <segment length="-40" orientation="horizontal"/>
                 <segment length="251" orientation="vertical"/>
                 <segment length="9" orientation="vertical"/>
             </conductor>
-            <conductor num="5" vertirotatetext="270" displaytext="1" terminal1="22" userx="380" terminal2="12" usery="210" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="5" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="22" userx="380" terminal2="12" usery="210" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-31.5" orientation="vertical"/>
                 <segment length="-208.5" orientation="vertical"/>
                 <segment length="-240" orientation="horizontal"/>
                 <segment length="4.5" orientation="vertical"/>
                 <segment length="-31.5" orientation="vertical"/>
             </conductor>
-            <conductor num="8" vertirotatetext="270" displaytext="1" terminal1="36" terminal2="27" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="25" vertirotatetext="270" displaytext="1" terminal1="37" terminal2="41" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="8" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="36" terminal2="27" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="25" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="37" terminal2="41" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="horizontal"/>
                 <segment length="-208" orientation="horizontal"/>
                 <segment length="-70" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="7" vertirotatetext="270" displaytext="1" terminal1="42" userx="660" terminal2="29" usery="140" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="42" userx="660" terminal2="29" usery="140" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="vertical"/>
                 <segment length="-91" orientation="vertical"/>
                 <segment length="-360" orientation="horizontal"/>
                 <segment length="251" orientation="vertical"/>
                 <segment length="9" orientation="vertical"/>
             </conductor>
-            <conductor num="25" vertirotatetext="270" displaytext="1" terminal1="45" terminal2="41" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="25" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="45" terminal2="41" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="210" orientation="vertical"/>
                 <segment length="-120" orientation="horizontal"/>
                 <segment length="-70" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="45" vertirotatetext="270" displaytext="1" terminal1="46" terminal2="43" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="25" vertirotatetext="270" displaytext="1" terminal1="47" terminal2="45" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="45" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="46" terminal2="43" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="25" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="47" terminal2="45" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="30" orientation="vertical"/>
                 <segment length="-80" orientation="horizontal"/>
                 <segment length="-30" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="48" terminal2="43" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="44" terminal2="49" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="48" terminal2="43" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="44" terminal2="49" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
         </conductors>
         <inputs>
             <input x="230" y="500" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>Xps ac_5121&lt;/p>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>24 V&lt;/p>&lt;/body>&lt;/html>"/>
         </inputs>
         <shapes>
-            <shape type="1" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="1" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="1" style="2" y1="170" x1="110" y2="210" x2="240"/>
-            <shape type="1" style="2" y1="230" x1="110" y2="270" x2="240"/>
+            <shape type="1" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="1" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="1" style="2" is_movable="0" y1="170" x1="110" y2="210" x2="240"/>
+            <shape type="1" style="2" is_movable="0" y1="230" x1="110" y2="270" x2="240"/>
         </shapes>
     </diagram>
     <diagram title="Commande" displayrows="true" version="0.4" cols="19" folio="%id/%total" displaycols="true" height="820" colsize="60" order="5" rows="10" author="TDP" filename="250 H" titleblocktemplate="DIN_A4_copy" date="20140310" rowsize="80">
@@ -2744,7 +2732,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             <property name="date" show="1"></property>
             <property name="date1" show="1"></property>
         </properties>
-        <defaultconductor num="_" vertirotatetext="270" displaytext="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+        <defaultconductor num="_" vertirotatetext="270" displaytext="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="1"/>
         <elements>
             <element x="370" y="270" type="embed://import/03relayage/02esclaves/auxiliary_contacts/con_simple-20140521202502.elmt" uuid="{747e260c-c78d-4dec-bfea-a8b8909d3b91}" orientation="0">
                 <terminals>
@@ -2755,7 +2743,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="2.75" y="3" text="dcy"/>
                 </inputs>
                 <links_uuids>
-                    <link_uuid uuid="{9f4a481b-4c45-4a80-8aaf-9a5fc1cd295d}"/>
+                    <link_uuid uuid="{42903138-bdc0-47e4-b55c-c4a3e6738398}"/>
                 </links_uuids>
             </element>
             <element x="320" y="390" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{5268d09e-19c6-483b-87f6-1b8920558753}" orientation="2">
@@ -2796,34 +2784,13 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="2.75" y="3" text="dcy"/>
                 </inputs>
                 <links_uuids>
-                    <link_uuid uuid="{9f4a481b-4c45-4a80-8aaf-9a5fc1cd295d}"/>
+                    <link_uuid uuid="{42903138-bdc0-47e4-b55c-c4a3e6738398}"/>
                 </links_uuids>
-            </element>
-            <element x="420" y="680" type="embed://import/03relayage/01bobines/bobine3-20140521203148.elmt" uuid="{9f4a481b-4c45-4a80-8aaf-9a5fc1cd295d}" orientation="0">
-                <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="10" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="11" name="_" orientation="2"/>
-                </terminals>
-                <inputs>
-                    <input x="2" y="19.3333" text="A2"/>
-                    <input x="2" y="-16.6667" text="A1"/>
-                    <input x="25" y="3.3333" text="dcy"/>
-                </inputs>
-                <links_uuids>
-                    <link_uuid uuid="{05609511-bbf1-4c37-bfd2-e1c849589b5d}"/>
-                    <link_uuid uuid="{747e260c-c78d-4dec-bfea-a8b8909d3b91}"/>
-                </links_uuids>
-                <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">CA2KN40B7</elementInformation>
-                    <elementInformation name="comment" show="1">depart cycle</elementInformation>
-                    <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
-                    <elementInformation name="label" show="1">dcy</elementInformation>
-                </elementInformations>
             </element>
             <element x="450" y="410" type="embed://import/03relayage/contacts/poussoirs/poussoir.elmt" uuid="{a5336929-1c3e-44da-949c-18616fc0c5eb}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="12" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="13" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="10" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="11" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" text="G"/>
@@ -2831,8 +2798,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="910" y="410" type="embed://import/03relayage/contacts/poussoirs/poussoir.elmt" uuid="{3958e2c2-76eb-49a7-a871-13e621806c37}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="14" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="15" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="12" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="13" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" text="D"/>
@@ -2840,8 +2807,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="350" y="50" type="embed://import/03relayage/contacts/relais_thermique/contact_relais-20140422181809.elmt" uuid="{9cc65ba6-8862-4cc7-b2dc-b14359669b2b}" orientation="3">
                 <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="16" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="17" name="_" orientation="2"/>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="14" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="15" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" userrotation="-270" userx="12.7" usery="-8.05" text="Q2"/>
@@ -2849,8 +2816,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="170" y="110" type="embed://import/03relayage/contacts/interrupteurs/contact_002.elmt" uuid="{0b49f5c3-80e1-486b-a7e6-0baa267ab409}" orientation="3">
                 <terminals>
-                    <terminal x="10" y="-16" nameHidden="0" number="_" id="18" name="_" orientation="0"/>
-                    <terminal x="10" y="16" nameHidden="0" number="_" id="19" name="_" orientation="2"/>
+                    <terminal x="10" y="-16" nameHidden="0" number="_" id="16" name="_" orientation="0"/>
+                    <terminal x="10" y="16" nameHidden="0" number="_" id="17" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="-9" y="-5" text="1"/>
@@ -2862,8 +2829,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="170" y="50" type="embed://import/03relayage/02esclaves/auxiliary_contacts/con_simple_nf.elmt" uuid="{3ffab449-48bd-4360-aeb5-4912035803c3}" orientation="3">
                 <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="20" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="21" name="_" orientation="2"/>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="18" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="19" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5.75" y="3" userrotation="-270" userx="14.45" usery="-34.3625" text="ntr 800d"/>
@@ -2871,8 +2838,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="270" y="270" type="embed://import/03relayage/02esclaves/auxiliary_contacts/con_simple.elmt" uuid="{cf8bfe42-450b-486e-afb6-7bb96cc6c5fb}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="22" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="23" name="_" orientation="2"/>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="20" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="21" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" userx="-46.25" usery="6" text="ppe"/>
@@ -2883,8 +2850,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="630" y="270" type="embed://import/03relayage/02esclaves/auxiliary_contacts/con_simple.elmt" uuid="{bf61ed3f-552c-4c06-8a0f-f1b0f1f9026a}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="24" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="25" name="_" orientation="2"/>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="22" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="23" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" text="ga"/>
@@ -2895,8 +2862,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="630" y="620" type="embed://import/03relayage/02esclaves/auxiliary_contacts/con_simple_nf.elmt" uuid="{b55a3b83-d8a7-4c5f-995a-aa037c422d89}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="26" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="27" name="_" orientation="2"/>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="24" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="25" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5.75" y="3" text="dr"/>
@@ -2907,8 +2874,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="740" y="620" type="embed://import/03relayage/02esclaves/auxiliary_contacts/con_simple_nf.elmt" uuid="{c8ac2ae9-021e-4464-9cb8-a499a84b4f81}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="28" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="29" name="_" orientation="2"/>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="26" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="27" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5.75" y="3" text="ga"/>
@@ -2919,8 +2886,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="740" y="270" type="embed://import/03relayage/02esclaves/auxiliary_contacts/con_simple.elmt" uuid="{54fdd71d-225e-4d2d-839a-ffd6df6e8f16}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="30" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="31" name="_" orientation="2"/>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="28" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="29" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" text="dr"/>
@@ -2931,15 +2898,15 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="670" y="680" type="embed://import/03relayage/contacts/puissance/verrouillage-meca.elmt" uuid="{5d4addef-d72d-4b5c-a99b-3f8f803a28a0}" orientation="0">
                 <terminals>
-                    <terminal x="8" y="0" nameHidden="0" number="_" id="32" name="_" orientation="3"/>
-                    <terminal x="17" y="0" nameHidden="0" number="_" id="33" name="_" orientation="1"/>
+                    <terminal x="8" y="0" nameHidden="0" number="_" id="30" name="_" orientation="3"/>
+                    <terminal x="17" y="0" nameHidden="0" number="_" id="31" name="_" orientation="1"/>
                 </terminals>
                 <inputs/>
             </element>
             <element x="740" y="580" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{0e42db39-efd9-4756-bd05-012e694373e4}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-6" nameHidden="0" number="_" id="34" name="_" orientation="0"/>
-                    <terminal x="0" y="6" nameHidden="0" number="_" id="35" name="_" orientation="2"/>
+                    <terminal x="0" y="-6" nameHidden="0" number="_" id="32" name="_" orientation="0"/>
+                    <terminal x="0" y="6" nameHidden="0" number="_" id="33" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5" y="8" text=""/>
@@ -2948,8 +2915,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="630" y="580" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{53feb801-c552-4b7b-98aa-2ac42ed07eb5}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-6" nameHidden="0" number="_" id="36" name="_" orientation="0"/>
-                    <terminal x="0" y="6" nameHidden="0" number="_" id="37" name="_" orientation="2"/>
+                    <terminal x="0" y="-6" nameHidden="0" number="_" id="34" name="_" orientation="0"/>
+                    <terminal x="0" y="6" nameHidden="0" number="_" id="35" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5" y="8" text=""/>
@@ -2958,8 +2925,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="740" y="470" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{970ae38a-1460-4638-9664-1179edab03cc}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-6" nameHidden="0" number="_" id="38" name="_" orientation="0"/>
-                    <terminal x="0" y="6" nameHidden="0" number="_" id="39" name="_" orientation="2"/>
+                    <terminal x="0" y="-6" nameHidden="0" number="_" id="36" name="_" orientation="0"/>
+                    <terminal x="0" y="6" nameHidden="0" number="_" id="37" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5" y="8" userx="19.625" usery="23.1875" text=""/>
@@ -2968,8 +2935,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="630" y="470" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{01504bbb-8f1a-4072-8e82-b3ba2d123bdc}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-6" nameHidden="0" number="_" id="40" name="_" orientation="0"/>
-                    <terminal x="0" y="6" nameHidden="0" number="_" id="41" name="_" orientation="2"/>
+                    <terminal x="0" y="-6" nameHidden="0" number="_" id="38" name="_" orientation="0"/>
+                    <terminal x="0" y="6" nameHidden="0" number="_" id="39" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5" y="8" text=""/>
@@ -2978,8 +2945,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="740" y="530" type="embed://import/03relayage/contacts/fin_de_course/fin_de_course_nf.elmt" uuid="{33bb8ccd-c0a4-482a-a92d-7383febdba35}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="42" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="43" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="40" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="41" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5.75" y="3" userrotation="270" userx="20.375" usery="18.1875" text="FC_D"/>
@@ -2987,8 +2954,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="630" y="530" type="embed://import/03relayage/contacts/fin_de_course/fin_de_course_nf.elmt" uuid="{f9357771-e4d8-4f33-87d8-16c70020f36d}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="44" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="45" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="42" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="43" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5.75" y="3" userrotation="270" userx="-15.625" usery="17.0625" text="FC_G"/>
@@ -2996,8 +2963,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="840" y="270" type="embed://import/03relayage/contacts/fin_de_course/fin_de_course_no.elmt" uuid="{32ecaf4e-0d29-4683-a6e7-ea0294d161d3}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="46" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="47" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="44" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="45" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" userrotation="270" userx="21.3125" usery="9.9375" text="FC_G"/>
@@ -3005,8 +2972,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="530" y="270" type="embed://import/03relayage/contacts/fin_de_course/fin_de_course_no.elmt" uuid="{2364bb2f-9c4f-4be2-b4db-b0b83a4c9ec1}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="48" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="49" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="46" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="47" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" userrotation="270" userx="-25.375" usery="8.625" text="FC_D"/>
@@ -3014,8 +2981,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="980" y="680" type="embed://import/03relayage/01bobines/bobine3.elmt" uuid="{b8018241-18e1-45c8-bd80-13424c28ea6b}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="50" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="51" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="48" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="49" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2" y="19.3333" text="A2"/>
@@ -3036,8 +3003,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="740" y="680" type="embed://import/03relayage/01bobines/bobine3.elmt" uuid="{c399093d-7c67-41f9-93b1-0e810ba90f08}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="52" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="53" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="50" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="51" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2" y="19.3333" text="A2"/>
@@ -3059,8 +3026,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="630" y="680" type="embed://import/03relayage/01bobines/bobine3.elmt" uuid="{82a41abd-075c-42a9-924b-67034794f4d1}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="54" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="55" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="52" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="53" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2" y="19.3333" text="A2"/>
@@ -3081,8 +3048,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="320" y="680" type="embed://import/03relayage/01bobines/bobine3.elmt" uuid="{d80d7f8c-9e68-4e2e-bbbc-b3945e914e88}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="56" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="57" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="54" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="55" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2" y="19.3333" text="A2"/>
@@ -3103,8 +3070,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="210" y="680" type="embed://import/03relayage/01bobines/bobine3.elmt" uuid="{d1040550-dc57-4fb4-8e56-53c6dc1b5996}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="58" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="59" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="56" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="57" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2" y="19.3333" text="A2"/>
@@ -3124,14 +3091,28 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="320" y="270" type="embed://import/03relayage/contacts/poussoirs/poussoir.elmt" uuid="{e47d1281-8b68-4045-9eb8-aecda4bee5b5}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" nameHidden="0" number="_" id="60" name="_" orientation="0"/>
-                    <terminal x="0" y="17" nameHidden="0" number="_" id="61" name="_" orientation="2"/>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="58" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="59" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" text="MA"/>
                 </inputs>
             </element>
             <element x="860" y="410" type="embed://import/nouvel_element.elmt" uuid="{9cdb3c10-389d-46cb-9146-d2690f29b76c}" orientation="0">
+                <terminals>
+                    <terminal x="-19.75" y="-17.7833" nameHidden="0" number="_" id="60" name="_" orientation="0"/>
+                    <terminal x="-19.75" y="16.2167" nameHidden="0" number="_" id="61" name="_" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="-17.75" y="18.55" text="A2"/>
+                    <input x="-17.75" y="-17.45" text="A1"/>
+                    <input x="-10" y="-3" text="T"/>
+                    <input x="-10" y="-3" text="T"/>
+                    <input x="-32" y="6" text="0"/>
+                    <input x="-32" y="6" text="0"/>
+                </inputs>
+            </element>
+            <element x="550" y="410" type="embed://import/nouvel_element.elmt" uuid="{40a2ffb7-fcf5-4863-bebf-f3e41197f4f6}" orientation="0">
                 <terminals>
                     <terminal x="-19.75" y="-17.7833" nameHidden="0" number="_" id="62" name="_" orientation="0"/>
                     <terminal x="-19.75" y="16.2167" nameHidden="0" number="_" id="63" name="_" orientation="2"/>
@@ -3145,24 +3126,10 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="-32" y="6" text="0"/>
                 </inputs>
             </element>
-            <element x="550" y="410" type="embed://import/nouvel_element.elmt" uuid="{40a2ffb7-fcf5-4863-bebf-f3e41197f4f6}" orientation="0">
-                <terminals>
-                    <terminal x="-19.75" y="-17.7833" nameHidden="0" number="_" id="64" name="_" orientation="0"/>
-                    <terminal x="-19.75" y="16.2167" nameHidden="0" number="_" id="65" name="_" orientation="2"/>
-                </terminals>
-                <inputs>
-                    <input x="-17.75" y="18.55" text="A2"/>
-                    <input x="-17.75" y="-17.45" text="A1"/>
-                    <input x="-10" y="-3" text="T"/>
-                    <input x="-10" y="-3" text="T"/>
-                    <input x="-32" y="6" text="0"/>
-                    <input x="-32" y="6" text="0"/>
-                </inputs>
-            </element>
             <element x="530" y="300" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{cecab614-4344-47d6-bd4d-8ce2115e4884}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-6" nameHidden="0" number="_" id="66" name="_" orientation="0"/>
-                    <terminal x="0" y="6" nameHidden="0" number="_" id="67" name="_" orientation="2"/>
+                    <terminal x="0" y="-6" nameHidden="0" number="_" id="64" name="_" orientation="0"/>
+                    <terminal x="0" y="6" nameHidden="0" number="_" id="65" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5" y="8" text=""/>
@@ -3171,8 +3138,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="840" y="300" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{edef2d49-36fb-466b-9155-a1e538e7a82d}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-6" nameHidden="0" number="_" id="68" name="_" orientation="0"/>
-                    <terminal x="0" y="6" nameHidden="0" number="_" id="69" name="_" orientation="2"/>
+                    <terminal x="0" y="-6" nameHidden="0" number="_" id="66" name="_" orientation="0"/>
+                    <terminal x="0" y="6" nameHidden="0" number="_" id="67" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5" y="8" text=""/>
@@ -3181,7 +3148,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="70" y="50" type="embed://import/06renvoi/01previous_folio.elmt" uuid="{6c897823-3ba6-4085-a891-a53837ec45d6}" orientation="0">
                 <terminals>
-                    <terminal x="9" y="0" nameHidden="0" number="_" id="70" name="_" orientation="1"/>
+                    <terminal x="9" y="0" nameHidden="0" number="_" id="68" name="_" orientation="1"/>
                 </terminals>
                 <inputs>
                     <input x="-44" y="0" text="5-G16"/>
@@ -3192,7 +3159,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="70" y="720" type="embed://import/06renvoi/01previous_folio.elmt" uuid="{7a2cd679-2623-4e73-b2f7-6a72b81171ef}" orientation="0">
                 <terminals>
-                    <terminal x="9" y="0" nameHidden="0" number="_" id="71" name="_" orientation="1"/>
+                    <terminal x="9" y="0" nameHidden="0" number="_" id="69" name="_" orientation="1"/>
                 </terminals>
                 <inputs>
                     <input x="-44" y="0" text="5-G16"/>
@@ -3203,8 +3170,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="110" y="50" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{7a5dd468-c123-433e-8ed0-f114a0bdb2f6}" orientation="1">
                 <terminals>
-                    <terminal x="0" y="-6" nameHidden="0" number="_" id="72" name="_" orientation="0"/>
-                    <terminal x="0" y="6" nameHidden="0" number="_" id="73" name="_" orientation="2"/>
+                    <terminal x="0" y="-6" nameHidden="0" number="_" id="70" name="_" orientation="0"/>
+                    <terminal x="0" y="6" nameHidden="0" number="_" id="71" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5" y="8" userrotation="-90" userx="12.05" usery="13.95" text=""/>
@@ -3213,8 +3180,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="230" y="50" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{dff0ef02-ef15-457c-9079-6efe8c36e01e}" orientation="1">
                 <terminals>
-                    <terminal x="0" y="-6" nameHidden="0" number="_" id="74" name="_" orientation="0"/>
-                    <terminal x="0" y="6" nameHidden="0" number="_" id="75" name="_" orientation="2"/>
+                    <terminal x="0" y="-6" nameHidden="0" number="_" id="72" name="_" orientation="0"/>
+                    <terminal x="0" y="6" nameHidden="0" number="_" id="73" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5" y="8" userrotation="-90" userx="12.05" usery="13.95" text=""/>
@@ -3223,8 +3190,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="320" y="90" type="embed://import/03relayage/contacts/relais_thermique/contact_relais.elmt" uuid="{3f7b5d42-b285-449e-a2a4-163cd6d1f609}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="76" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="77" name="_" orientation="2"/>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="74" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="75" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" userx="-47.25" usery="2" text="Q1"/>
@@ -3232,8 +3199,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="320" y="510" type="embed://import/03relayage/contacts/relais_thermique/contact_relais.elmt" uuid="{c51e9062-b2e0-49cd-976b-58b88964167c}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="78" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="79" name="_" orientation="2"/>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="76" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="77" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" userx="-41.25" usery="3" text="Q3"/>
@@ -3241,14 +3208,26 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="980" y="360" type="embed://import/03relayage/contacts/relais_thermique/contact_relais.elmt" uuid="{7775164a-d64c-4a94-b999-7e9144c8e627}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="80" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="81" name="_" orientation="2"/>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="78" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="79" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" userx="-43.25" usery="3" text="Q4"/>
                 </inputs>
             </element>
             <element x="530" y="340" type="embed://import/03relayage/02esclaves/auxiliary_contacts/con_simple-20140424013727.elmt" uuid="{110ddbed-e690-4e31-bfd3-14822f25ac37}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="80" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="81" name="_" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="2.75" y="3" text="desc"/>
+                </inputs>
+                <links_uuids>
+                    <link_uuid uuid="{b8018241-18e1-45c8-bd80-13424c28ea6b}"/>
+                </links_uuids>
+            </element>
+            <element x="840" y="340" type="embed://import/03relayage/02esclaves/auxiliary_contacts/con_simple-20140424013727.elmt" uuid="{c31d1c1a-a8e7-4824-bd68-02d4e05efa99}" orientation="0">
                 <terminals>
                     <terminal x="0" y="-16" nameHidden="0" number="_" id="82" name="_" orientation="0"/>
                     <terminal x="0" y="16" nameHidden="0" number="_" id="83" name="_" orientation="2"/>
@@ -3260,22 +3239,10 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <link_uuid uuid="{b8018241-18e1-45c8-bd80-13424c28ea6b}"/>
                 </links_uuids>
             </element>
-            <element x="840" y="340" type="embed://import/03relayage/02esclaves/auxiliary_contacts/con_simple-20140424013727.elmt" uuid="{c31d1c1a-a8e7-4824-bd68-02d4e05efa99}" orientation="0">
-                <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="84" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="85" name="_" orientation="2"/>
-                </terminals>
-                <inputs>
-                    <input x="2.75" y="3" text="desc"/>
-                </inputs>
-                <links_uuids>
-                    <link_uuid uuid="{b8018241-18e1-45c8-bd80-13424c28ea6b}"/>
-                </links_uuids>
-            </element>
             <element x="440" y="150" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{2dbda757-ae8b-472e-b76d-76bb2efb877a}" orientation="1">
                 <terminals>
-                    <terminal x="0" y="-6" nameHidden="0" number="_" id="86" name="_" orientation="0"/>
-                    <terminal x="0" y="6" nameHidden="0" number="_" id="87" name="_" orientation="2"/>
+                    <terminal x="0" y="-6" nameHidden="0" number="_" id="84" name="_" orientation="0"/>
+                    <terminal x="0" y="6" nameHidden="0" number="_" id="85" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5" y="8" userrotation="-90" userx="9.55" usery="11.45" text=""/>
@@ -3284,8 +3251,8 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="690" y="80" type="embed://import/03relayage/02esclaves/auxiliary_contacts/con_simple-20140521204523.elmt" uuid="{506b14f7-2273-4157-b5e4-30f4840ed1bb}" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-16" nameHidden="0" number="_" id="88" name="_" orientation="0"/>
-                    <terminal x="0" y="16" nameHidden="0" number="_" id="89" name="_" orientation="2"/>
+                    <terminal x="0" y="-16" nameHidden="0" number="_" id="86" name="_" orientation="0"/>
+                    <terminal x="0" y="16" nameHidden="0" number="_" id="87" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="2.75" y="3" text="br"/>
@@ -3296,7 +3263,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="120" y="190" type="embed://import/06renvoi/02next_folio-20140521204700.elmt" uuid="{16716212-c92e-4483-b458-848ddb986ebc}" orientation="0">
                 <terminals>
-                    <terminal x="-9" y="0" nameHidden="0" number="_" id="90" name="_" orientation="3"/>
+                    <terminal x="-9" y="0" nameHidden="0" number="_" id="88" name="_" orientation="3"/>
                 </terminals>
                 <inputs>
                     <input x="6" y="0" text="6-E8"/>
@@ -3307,7 +3274,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="120" y="210" type="embed://import/06renvoi/02next_folio-20140521204705.elmt" uuid="{a1407c04-15b9-4406-82ad-cca540f2b6dd}" orientation="0">
                 <terminals>
-                    <terminal x="-9" y="0" nameHidden="0" number="_" id="91" name="_" orientation="3"/>
+                    <terminal x="-9" y="0" nameHidden="0" number="_" id="89" name="_" orientation="3"/>
                 </terminals>
                 <inputs>
                     <input x="6" y="0" text="6-E15"/>
@@ -3318,7 +3285,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="450" y="350" type="embed://import/06renvoi/01previous_folio-20140521204742.elmt" uuid="{7d7410d9-bf47-44d1-90c8-0c572c2a2143}" orientation="1">
                 <terminals>
-                    <terminal x="9" y="0" nameHidden="0" number="_" id="92" name="_" orientation="1"/>
+                    <terminal x="9" y="0" nameHidden="0" number="_" id="90" name="_" orientation="1"/>
                 </terminals>
                 <inputs>
                     <input x="-44" y="0" text="6-C2"/>
@@ -3329,7 +3296,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
             <element x="910" y="350" type="embed://import/06renvoi/01previous_folio-20140521204844.elmt" uuid="{fc0694aa-1357-4f43-93fd-8ca6e3bb32dd}" orientation="1">
                 <terminals>
-                    <terminal x="9" y="0" nameHidden="0" number="_" id="93" name="_" orientation="1"/>
+                    <terminal x="9" y="0" nameHidden="0" number="_" id="91" name="_" orientation="1"/>
                 </terminals>
                 <inputs>
                     <input x="-44" y="0" text="6-C2"/>
@@ -3338,173 +3305,192 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <link_uuid uuid="{a1407c04-15b9-4406-82ad-cca540f2b6dd}"/>
                 </links_uuids>
             </element>
-            <element x="420" y="370" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{e57a329a-be86-45bf-bac5-618fa561c444}" orientation="2">
+            <element x="420" y="390" type="embed://import/03relayage/bornes/bornes/borne_continuite.elmt" uuid="{e57a329a-be86-45bf-bac5-618fa561c444}" orientation="2">
                 <terminals>
-                    <terminal x="0" y="-6" nameHidden="0" number="_" id="94" name="_" orientation="0"/>
-                    <terminal x="0" y="6" nameHidden="0" number="_" id="95" name="_" orientation="2"/>
+                    <terminal x="0" y="-6" nameHidden="0" number="_" id="92" name="_" orientation="0"/>
+                    <terminal x="0" y="6" nameHidden="0" number="_" id="93" name="_" orientation="2"/>
                 </terminals>
                 <inputs>
                     <input x="5" y="8" userrotation="-180" userx="13" usery="6.9" text=""/>
                     <input x="5" y="-5" userrotation="-180" userx="28.25" usery="-18.1" text="50"/>
                 </inputs>
             </element>
+            <element x="420" y="680" type="embed://import/03relayage/01bobines/bobine3.elmt" uuid="{42903138-bdc0-47e4-b55c-c4a3e6738398}" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" nameHidden="0" number="_" id="94" name="_" orientation="0"/>
+                    <terminal x="0" y="17" nameHidden="0" number="_" id="95" name="_" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="2" y="19.3333" text="A2"/>
+                    <input x="2" y="-16.6667" userx="3.23047" usery="-18.043" text="A1"/>
+                    <input x="25" y="3.3333" text="dcy"/>
+                </inputs>
+                <links_uuids>
+                    <link_uuid uuid="{05609511-bbf1-4c37-bfd2-e1c849589b5d}"/>
+                    <link_uuid uuid="{747e260c-c78d-4dec-bfea-a8b8909d3b91}"/>
+                </links_uuids>
+                <elementInformations>
+                    <elementInformation name="comment" show="1">depart cycle</elementInformation>
+                    <elementInformation name="label" show="1">dcy</elementInformation>
+                </elementInformations>
+            </element>
         </elements>
         <conductors>
-            <conductor num="16" vertirotatetext="270" displaytext="1" terminal1="61" terminal2="23" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="16" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="59" terminal2="21" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="10" orientation="vertical"/>
                 <segment length="-50" orientation="horizontal"/>
                 <segment length="-11" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="50" vertirotatetext="270" displaytext="1" terminal1="1" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="50" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="1" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="11" orientation="vertical"/>
                 <segment length="50" orientation="horizontal"/>
                 <segment length="-10" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="16" vertirotatetext="270" displaytext="1" terminal1="78" terminal2="58" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="15" vertirotatetext="270" displaytext="1" terminal1="60" terminal2="22" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="16" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="76" terminal2="56" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="15" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="58" terminal2="20" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="vertical"/>
                 <segment length="-20" orientation="vertical"/>
                 <segment length="-50" orientation="horizontal"/>
                 <segment length="21" orientation="vertical"/>
                 <segment length="9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="vertical"/>
                 <segment length="-21" orientation="vertical"/>
                 <segment length="50" orientation="horizontal"/>
                 <segment length="20" orientation="vertical"/>
                 <segment length="9" orientation="vertical"/>
             </conductor>
-            <conductor num="16" vertirotatetext="270" displaytext="1" terminal1="78" terminal2="2" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="16" vertirotatetext="270" displaytext="1" terminal1="3" terminal2="61" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="15" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="77" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="15" vertirotatetext="270" displaytext="1" terminal1="60" terminal2="4" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="15" terminal2="63" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="16" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="76" terminal2="2" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="16" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="3" terminal2="59" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="15" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="75" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="15" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="58" terminal2="4" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="13" terminal2="61" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="10" orientation="vertical"/>
                 <segment length="-69.75" orientation="horizontal"/>
                 <segment length="-10.7833" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="13" terminal2="65" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="11" terminal2="63" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="10" orientation="vertical"/>
                 <segment length="80.25" orientation="horizontal"/>
                 <segment length="-10.7833" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="11" terminal2="71" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="17" vertirotatetext="270" displaytext="1" terminal1="56" terminal2="79" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="&#xa;" vertirotatetext="270" displaytext="1" terminal1="30" terminal2="9" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="16" terminal2="76" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="&#xa;" vertirotatetext="270" displaytext="1" terminal1="24" terminal2="9" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="&#xa;" vertirotatetext="270" displaytext="1" terminal1="46" terminal2="30" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="17" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="54" terminal2="77" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="&#xa;" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="28" terminal2="9" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="14" terminal2="74" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="&#xa;" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="22" terminal2="9" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="&#xa;" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="44" terminal2="28" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="vertical"/>
                 <segment length="-20" orientation="vertical"/>
                 <segment length="-100" orientation="horizontal"/>
                 <segment length="21" orientation="vertical"/>
                 <segment length="9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="20" terminal2="72" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="18" terminal2="72" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="75" terminal2="21" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="19" terminal2="21" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="66" terminal2="49" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="68" terminal2="47" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="40" terminal2="25" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="65" terminal2="25" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="18" terminal2="70" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="16" terminal2="70" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="73" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="17" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="64" terminal2="47" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="66" terminal2="45" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="38" terminal2="23" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="63" terminal2="23" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="10.7833" orientation="vertical"/>
                 <segment length="99.75" orientation="horizontal"/>
                 <segment length="-151" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="38" terminal2="31" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="63" terminal2="31" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="36" terminal2="29" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="61" terminal2="29" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="10.7833" orientation="vertical"/>
                 <segment length="-100.25" orientation="horizontal"/>
                 <segment length="-151" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="54" userx="610" terminal2="27" usery="580" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="52" userx="720" terminal2="29" usery="580" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="28" terminal2="35" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="26" terminal2="37" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="44" terminal2="41" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="36" terminal2="45" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="43" terminal2="34" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="42" terminal2="39" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="25" vertirotatetext="270" displaytext="1" terminal1="53" userx="860" terminal2="51" usery="720" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="52" userx="610" terminal2="25" usery="580" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="50" userx="720" terminal2="27" usery="580" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="26" terminal2="33" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="24" terminal2="35" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="42" terminal2="39" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="34" terminal2="43" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="41" terminal2="32" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="40" terminal2="37" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="25" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="51" userx="860" terminal2="49" usery="720" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="6" orientation="vertical"/>
                 <segment length="13" orientation="vertical"/>
                 <segment length="240" orientation="horizontal"/>
                 <segment length="-19" orientation="vertical"/>
                 <segment length="1.13687e-13" orientation="vertical"/>
             </conductor>
-            <conductor num="25" vertirotatetext="270" displaytext="1" terminal1="53" userx="570" terminal2="55" usery="641" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="25" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="51" userx="570" terminal2="53" usery="641" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="10" orientation="vertical"/>
                 <segment length="-110" orientation="horizontal"/>
                 <segment length="-10" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="55" userx="410" terminal2="57" usery="660" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="25" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="53" userx="410" terminal2="55" usery="660" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="10" orientation="vertical"/>
                 <segment length="-310" orientation="horizontal"/>
                 <segment length="-10" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="57" terminal2="59" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="25" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="55" terminal2="57" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="9" orientation="vertical"/>
                 <segment length="10" orientation="vertical"/>
                 <segment length="-110" orientation="horizontal"/>
                 <segment length="-10" orientation="vertical"/>
                 <segment length="-9" orientation="vertical"/>
             </conductor>
-            <conductor num="25" vertirotatetext="270" displaytext="1" terminal1="71" terminal2="59" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="8" vertirotatetext="270" displaytext="1" terminal1="73" terminal2="70" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="13" vertirotatetext="270" displaytext="1" terminal1="76" terminal2="74" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="82" terminal2="67" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="210" vertirotatetext="270" displaytext="1" terminal1="64" userx="510" terminal2="83" usery="390" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="84" terminal2="69" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="310" vertirotatetext="270" displaytext="1" terminal1="62" userx="820" terminal2="85" usery="400" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="20" vertirotatetext="270" displaytext="1" terminal1="48" userx="660" terminal2="24" usery="220" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="25" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="69" terminal2="57" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="8" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="71" terminal2="68" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="13" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="74" terminal2="72" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="80" terminal2="65" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="210" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="62" userx="510" terminal2="81" usery="390" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="82" terminal2="67" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="310" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="60" userx="820" terminal2="83" usery="400" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="20" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="46" userx="660" terminal2="22" usery="220" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="vertical"/>
                 <segment length="-20" orientation="vertical"/>
                 <segment length="100" orientation="horizontal"/>
                 <segment length="21" orientation="vertical"/>
                 <segment length="9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="87" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="19" vertirotatetext="270" displaytext="1" terminal1="86" terminal2="8" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="18" vertirotatetext="270" displaytext="1" terminal1="88" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="19" vertirotatetext="270" displaytext="1" terminal1="8" terminal2="89" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="8" vertirotatetext="270" displaytext="1" terminal1="90" terminal2="70" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="91" terminal2="90" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="85" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="19" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="84" terminal2="8" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="18" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="86" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="19" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="8" terminal2="87" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="8" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="88" terminal2="68" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="89" terminal2="88" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="horizontal"/>
                 <segment length="-8" orientation="horizontal"/>
                 <segment length="-20" orientation="vertical"/>
                 <segment length="8" orientation="horizontal"/>
                 <segment length="9" orientation="horizontal"/>
             </conductor>
-            <conductor num="8" vertirotatetext="270" displaytext="1" terminal1="92" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="35" vertirotatetext="270" displaytext="1" terminal1="81" terminal2="50" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="&#xa;" vertirotatetext="270" displaytext="1" terminal1="80" terminal2="46" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="8" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="90" terminal2="10" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="35" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="79" terminal2="48" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="&#xa;" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="78" terminal2="44" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="vertical"/>
                 <segment length="-111" orientation="vertical"/>
                 <segment length="-140" orientation="horizontal"/>
                 <segment length="20" orientation="vertical"/>
                 <segment length="9" orientation="vertical"/>
             </conductor>
-            <conductor num="8" vertirotatetext="270" displaytext="1" terminal1="93" terminal2="14" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="50" vertirotatetext="270" displaytext="1" terminal1="95" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="50" vertirotatetext="270" displaytext="1" terminal1="10" terminal2="94" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="8" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="91" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="50" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="93" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="25" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="95" terminal2="69" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="1"/>
+            <conductor num="50" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="94" terminal2="92" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="1"/>
         </conductors>
         <inputs>
             <input x="420" y="580" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>&lt;br />&lt;/p>&lt;/body>&lt;/html>"/>
@@ -3518,14 +3504,14 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             <input x="180" y="110" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>&lt;span style=&quot; font-family:'DejaVu Sans'; font-size:6pt;&quot;>manu&lt;/span>&lt;/p>&lt;/body>&lt;/html>"/>
         </inputs>
         <shapes>
-            <shape type="0" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="0" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="0" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="0" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="0" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="1" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="1" style="2" y1="30" x1="120" y2="150" x2="210"/>
-            <shape type="3" style="2">
+            <shape type="0" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="0" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="0" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="0" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="0" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="1" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="1" style="2" is_movable="0" y1="30" x1="120" y2="150" x2="210"/>
+            <shape type="3" style="2" is_movable="0">
                 <points>
                     <point x="530" y="270"/>
                     <point x="550" y="270"/>
@@ -3535,7 +3521,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <point x="730" y="530"/>
                 </points>
             </shape>
-            <shape type="3" style="2">
+            <shape type="3" style="2" is_movable="0">
                 <points>
                     <point x="830" y="270"/>
                     <point x="810" y="270"/>
@@ -3693,7 +3679,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <inputs/>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">R72A90-A</elementInformation>
-                    <elementInformation name="comment" show="1">AMPEREMETRE BROCHE</elementInformation>
+                    <elementInformation name="comment" show="0">AMPEREMETRE BROCHE</elementInformation>
                     <elementInformation name="manufacturer" show="0">SOCOMEC</elementInformation>
                     <elementInformation name="label" show="1">A1</elementInformation>
                 </elementInformations>
@@ -3774,7 +3760,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </inputs>
                 <elementInformations>
                     <elementInformation name="manufacturer-reference" show="0">NTR 800 D</elementInformation>
-                    <elementInformation name="comment" show="1">COMPTEUR PASSES</elementInformation>
+                    <elementInformation name="comment" show="0">COMPTEUR PASSES</elementInformation>
                     <elementInformation name="manufacturer" show="0">CROUZET</elementInformation>
                     <elementInformation name="label" show="1">ntrd_800d</elementInformation>
                 </elementInformations>
@@ -3871,38 +3857,38 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
         </elements>
         <conductors>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="39" terminal2="0" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="1" terminal2="40" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="2" terminal2="44" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="3" terminal2="41" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="4" userx="480" terminal2="43" usery="300" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="42" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="95" vertirotatetext="270" displaytext="1" terminal1="13" userx="600" terminal2="8" usery="60" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="94" vertirotatetext="270" displaytext="1" terminal1="12" userx="490" terminal2="9" usery="60" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="39" terminal2="0" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="1" terminal2="40" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="2" terminal2="44" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="3" terminal2="41" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" userx="480" terminal2="43" usery="300" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="42" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="95" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="13" userx="600" terminal2="8" usery="60" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="94" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="12" userx="490" terminal2="9" usery="60" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="0" orientation="horizontal"/>
                 <segment length="-29" orientation="horizontal"/>
                 <segment length="0" orientation="horizontal"/>
                 <segment length="-27" orientation="horizontal"/>
                 <segment length="0" orientation="horizontal"/>
             </conductor>
-            <conductor num="2" vertirotatetext="270" displaytext="1" terminal1="14" userx="610" terminal2="16" usery="110" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="42" vertirotatetext="270" displaytext="1" terminal1="7" userx="490" terminal2="18" usery="150" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="1" vertirotatetext="270" displaytext="1" terminal1="15" userx="490" terminal2="6" usery="110" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="2" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="14" userx="610" terminal2="16" usery="110" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="42" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="7" userx="490" terminal2="18" usery="150" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="1" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="15" userx="490" terminal2="6" usery="110" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="0" orientation="horizontal"/>
                 <segment length="-29" orientation="horizontal"/>
                 <segment length="0" orientation="horizontal"/>
                 <segment length="-27" orientation="horizontal"/>
                 <segment length="0" orientation="horizontal"/>
             </conductor>
-            <conductor num="5" vertirotatetext="270" displaytext="1" terminal1="17" userx="610" terminal2="19" usery="150" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="5" vertirotatetext="270" displaytext="1" terminal1="24" terminal2="10" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="7" vertirotatetext="270" displaytext="1" terminal1="25" terminal2="11" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="39" vertirotatetext="270" displaytext="1" terminal1="33" terminal2="32" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="34" terminal2="38" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="40" vertirotatetext="270" displaytext="1" terminal1="37" userx="290" terminal2="22" usery="410" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="31" terminal2="36" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="35" terminal2="48" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="37" vertirotatetext="270" displaytext="1" terminal1="47" userx="210" terminal2="20" usery="390" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="5" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="17" userx="610" terminal2="19" usery="150" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="5" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="24" terminal2="10" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="25" terminal2="11" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="39" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="33" terminal2="32" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="34" terminal2="38" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="40" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="37" userx="290" terminal2="22" usery="410" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="31" terminal2="36" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="35" terminal2="48" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="37" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="47" userx="210" terminal2="20" usery="390" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
         </conductors>
         <inputs>
             <input x="220" y="550" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>&lt;br />&lt;/p>&lt;/body>&lt;/html>"/>
@@ -3923,9 +3909,9 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             <input x="540" y="200" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>V2-bis&lt;/p>&lt;/body>&lt;/html>"/>
         </inputs>
         <shapes>
-            <shape type="0" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="0" style="2" y1="0" x1="0" y2="0" x2="0"/>
-            <shape type="1" style="2" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="0" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="0" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
+            <shape type="1" style="2" is_movable="0" y1="0" x1="0" y2="0" x2="0"/>
         </shapes>
     </diagram>
     <diagram title="Signalisation defauts" displayrows="true" version="0.4" cols="17" folio="%id/%total" displaycols="true" height="660" colsize="60" order="7" rows="8" author="TDP" filename="" titleblocktemplate="DIN_A4_copy" date="20140525" rowsize="80">
@@ -3997,14 +3983,14 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
         </elements>
         <conductors>
-            <conductor num="7" vertirotatetext="270" displaytext="1" terminal1="2" terminal2="4" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="7" vertirotatetext="270" displaytext="1" terminal1="8" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="7" vertirotatetext="270" displaytext="1" terminal1="4" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="42" vertirotatetext="270" displaytext="1" terminal1="1" terminal2="3" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="7" vertirotatetext="270" displaytext="1" terminal1="2" terminal2="0" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="42" vertirotatetext="270" displaytext="1" terminal1="9" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="42" vertirotatetext="270" displaytext="1" terminal1="7" terminal2="5" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="42" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="3" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="2" terminal2="4" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="8" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="42" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="1" terminal2="3" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="7" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="2" terminal2="0" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="42" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="9" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="42" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="7" terminal2="5" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="42" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="3" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
         </conductors>
         <inputs>
             <input x="100" y="340" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>bp rearmement&lt;/p>&lt;/body>&lt;/html>"/>
@@ -4203,22 +4189,22 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
         </elements>
         <conductors>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="6" terminal2="11" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="6" terminal2="10" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="6" terminal2="9" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="6" terminal2="8" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="4" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="4" terminal2="14" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="4" terminal2="13" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="4" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="7" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="7" terminal2="18" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="7" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="7" terminal2="16" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="23" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="22" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="21" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="20" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="6" terminal2="11" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="6" terminal2="10" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="6" terminal2="9" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="6" terminal2="8" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" terminal2="14" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" terminal2="13" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="7" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="7" terminal2="18" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="7" terminal2="17" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="7" terminal2="16" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="23" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="22" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="21" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="20" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
         </conductors>
     </diagram>
     <diagram title="bornier organes" displayrows="true" version="0.4" cols="17" folio="%id/%total" displaycols="true" height="660" colsize="60" order="9" rows="8" author="TDP" filename="250 H" titleblocktemplate="DIN_A4_copy" date="20140315" rowsize="80">
@@ -4449,36 +4435,36 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
         </elements>
         <conductors>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="1" terminal2="0" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="4" terminal2="8" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="21" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="22" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="24" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="1" terminal2="34" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="2" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="23" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="4" terminal2="3" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="1" terminal2="33" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="2" terminal2="20" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="1" terminal2="26" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="4" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="2" terminal2="18" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="36" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="2" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="37" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="4" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="1" terminal2="25" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="4" terminal2="10" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="2" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="5" terminal2="38" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="13" terminal2="11" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="1" terminal2="0" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" terminal2="8" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="21" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="22" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="24" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="1" terminal2="34" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="2" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="23" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" terminal2="3" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="1" terminal2="33" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="2" terminal2="20" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="1" terminal2="26" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="2" terminal2="18" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="36" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="2" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="37" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="1" terminal2="25" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="4" terminal2="10" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="2" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="5" terminal2="38" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="13" terminal2="11" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0">
                 <segment length="-9" orientation="vertical"/>
                 <segment length="-21" orientation="vertical"/>
                 <segment length="100" orientation="horizontal"/>
                 <segment length="21" orientation="vertical"/>
                 <segment length="9" orientation="vertical"/>
             </conductor>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="39" terminal2="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="39" terminal2="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
         </conductors>
     </diagram>
     <diagram title="bornier pupitre" displayrows="true" version="0.4" cols="17" folio="%id/%total" displaycols="true" height="660" colsize="60" order="10" rows="8" author="TDP" filename="250 H" titleblocktemplate="DIN_A4_copy" date="20140311" rowsize="80">
@@ -4653,25 +4639,25 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </element>
         </elements>
         <conductors>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="3" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="2" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="8" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="5" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="11" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="10" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="9" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="16" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="14" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="13" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="4" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="18" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
-            <conductor num="" vertirotatetext="270" displaytext="1" terminal1="0" terminal2="20" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="3" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="2" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="1" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="8" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="7" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="6" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="5" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="12" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="11" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="10" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="9" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="16" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="15" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="14" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="13" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="4" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="19" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="18" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
+            <conductor num="" x="0" vertirotatetext="270" y="0" displaytext="1" terminal1="0" terminal2="20" type="multi" horizrotatetext="0" numsize="7" onetextperfolio="0"/>
         </conductors>
     </diagram>
     <diagram title="reserve" displayrows="true" version="0.4" cols="17" folio="%id/%total" displaycols="true" height="660" colsize="60" order="11" rows="8" author="TDP" filename="" titleblocktemplate="DIN_A4_copy" date="20140627" rowsize="80">
@@ -5997,7 +5983,12 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="pl">Cewka</name>
                                 <name lang="es">Bobina</name>
                                 <name lang="cs">Cívka</name>
+                                <name lang="nl">Spoel</name>
+                                <name lang="be">Relais spoel (algemeen)</name>
                             </names>
+                            <kindInformations>
+                                <kindInformation name="type" show="1">coil</kindInformation>
+                            </kindInformations>
                             <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <description>
@@ -7875,7 +7866,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="02next_folio.elmt">
-                    <definition width="40" version="0.3" hotspot_x="18" hotspot_y="15" height="30" link_type="next_report" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.4" hotspot_x="21" hotspot_y="10" height="20" link_type="next_report" type="element" ic="true" orientation="dyyy">
                         <names>
                             <name lang="ar">الصفحة التالية</name>
                             <name lang="de">Nächste Seite</name>
@@ -7885,6 +7876,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="fr">Folio suivant</name>
                             <name lang="pl">Wyjście adresowe</name>
                             <name lang="es">Folio siguiente</name>
+                            <name lang="nl">Referentie volgend</name>
                             <name lang="cs">Další list</name>
                         </names>
                         <informations>Author: The QElectroTech team
@@ -7892,8 +7884,8 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <description>
                             <polygon x4="-9" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" closed="false" y1="-4" x1="-9" y2="4" x2="-9" y3="0" x3="2" y4="-4"/>
                             <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-9" y2="0" x2="-12"/>
-                            <input x="6" y="0" size="9" rotate="true" text="/"/>
-                            <terminal x="-13" y="0" nameHidden="0" number="" name="" orientation="w"/>
+                            <input x="6" y="0" size="9" rotate="true" text="/" tagg="label"/>
+                            <terminal x="-13" y="0" orientation="w"/>
                         </description>
                     </definition>
                 </element>
@@ -7946,7 +7938,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="01previous_folio.elmt">
-                    <definition width="70" version="0.3" hotspot_x="49" hotspot_y="15" height="30" link_type="previous_report" type="element" ic="true" orientation="dyyy">
+                    <definition width="20" version="0.4" hotspot_x="3" hotspot_y="10" height="20" link_type="previous_report" type="element" ic="true" orientation="dyyy">
                         <names>
                             <name lang="ar">الصفحة السابقة</name>
                             <name lang="de">Vorherige Seite</name>
@@ -7956,6 +7948,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="fr">Folio précédent</name>
                             <name lang="pl">Wejście adresowe</name>
                             <name lang="es">folio anterior</name>
+                            <name lang="nl">Referentie Vorig</name>
                             <name lang="cs">Předchozí list</name>
                         </names>
                         <informations>Author: The QElectroTech team
@@ -7963,8 +7956,8 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <description>
                             <polygon x4="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" closed="false" y1="-4" x1="-1" y2="4" x2="-1" y3="0" x3="9" y4="-4"/>
                             <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="9" y2="0" x2="12"/>
-                            <input x="-44" y="0" size="9" rotate="true" text="/"/>
-                            <terminal x="13" y="0" nameHidden="0" number="" name="" orientation="e"/>
+                            <input x="-44" y="0" size="9" rotate="true" text="/" tagg="label"/>
+                            <terminal x="13" y="0" orientation="e"/>
                         </description>
                     </definition>
                 </element>
