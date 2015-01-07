@@ -169,7 +169,9 @@ class Diagram : public QGraphicsScene
 	bool drawColoredConductors() const;
 	void setDrawColoredConductors(bool);
 	
-	QRectF border() const;
+		QRectF border      () const;
+		QRectF drawingRect () const;
+
 	QString title() const;
 	bool toPaintDevice(QPaintDevice &, int = -1, int = -1, Qt::AspectRatioMode = Qt::KeepAspectRatio);
 	QSize imageSize() const;

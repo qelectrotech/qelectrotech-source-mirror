@@ -63,6 +63,37 @@ bool Qet::surLeMemeAxe(Qet::Orientation a, Qet::Orientation b) {
 }
 
 /**
+ * @brief Qet::isOpposed
+ * @param a
+ * @param b
+ * @return true if a and b is opposed, else false;
+ */
+bool Qet::isOpposed(Qet::Orientation a, Qet::Orientation b)
+{
+	bool result = false;
+
+	switch (a)
+	{
+		case Qet::North:
+			if (b == Qet::South) result = true;
+			break;
+		case Qet::East:
+			if (b == Qet::West) result = true;
+			break;
+		case Qet::South:
+			if (b == Qet::North) result = true;
+			break;
+		case Qet::West:
+			if (b == Qet::East) result = true;
+			break;
+		default:
+			break;
+	}
+
+	return result;
+}
+
+/**
 	Indique si une orientation de borne est horizontale (Est / Ouest).
 	@param a L'orientation de borne
 	@return True si l'orientation de borne est horizontale, false sinon

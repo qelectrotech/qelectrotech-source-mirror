@@ -78,8 +78,10 @@ void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name
 */
 Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 	QGraphicsItem(e),
-	parent_element_(e),
-	hovered_color_(Terminal::neutralColor)
+	m_draw_help_line(false),
+	m_help_line     (nullptr),
+	parent_element_ (e),
+	hovered_color_  (Terminal::neutralColor)
 {
 	init(pf, o, "_", "_", false);
 }
@@ -94,8 +96,10 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 */
 Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	QGraphicsItem(e),
-	parent_element_(e),
-	hovered_color_(Terminal::neutralColor)
+	m_draw_help_line (false),
+	m_help_line      (nullptr),
+	parent_element_  (e),
+	hovered_color_   (Terminal::neutralColor)
 {
 	init(QPointF(pf_x, pf_y), o, "_", "_", false);
 }
@@ -267,8 +271,89 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 		p -> setRenderHint(QPainter::Antialiasing, true);
 		p -> drawEllipse(QRectF(c.x() - 2.5, c.y() - 2.5, 5.0, 5.0));
 	} else p -> drawPoint(c);
+
+
+		//Draw help line if needed, only if there isn't conductor
+		//docked to this terminal
+	if (m_draw_help_line && conductors().isEmpty())
+	{
+		if (!m_help_line)
+			m_help_line = new QGraphicsLineItem(this);
+
+		QLineF line(HelpLine());
+
+		Terminal *t = alignedWithTerminal();
+		if (t)
+		{
+			line.setP2(t -> dockConductor());
+			m_help_line -> setPen(QPen (Qt::darkGreen));
+		}
+		else
+		{
+			m_help_line -> setPen(QPen (Qt::darkBlue));
+		}
+
+			//Map the line (in scene coordinate) to help_line coordinate
+		line.setP1(m_help_line -> mapFromScene(line.p1()));
+		line.setP2(m_help_line -> mapFromScene(line.p2()));
+		m_help_line -> setLine(line);
+	}
 	
 	p -> restore();
+}
+
+/**
+ * @brief Terminal::drawHelpLine
+ * @param draw : true, display the help line
+ * false, hide it.
+ */
+void Terminal::drawHelpLine(bool draw)
+{
+	if (m_draw_help_line == draw) return;
+
+	m_draw_help_line = draw;
+
+	if (!draw && m_help_line)
+	{
+		delete m_help_line;
+		m_help_line = nullptr;
+	}
+
+	//update();
+}
+
+/**
+ * @brief Terminal::HelpLine
+ * @return a line with coordinate P1 the dock point of conductor
+ * and P2 the border of diagram, according to the orientation of terminal
+ * The line is in scene coordinate;
+ */
+QLineF Terminal::HelpLine() const
+{
+	QPointF scene_dock = dockConductor();
+	QRectF  rect       = diagram() -> drawingRect();
+
+	QLineF line(scene_dock , QPointF());
+
+		//Set te second point of line to the edge of diagram,
+		//according with the orientation of this terminal
+	switch (orientation())
+	{
+		case Qet::North:
+			line.setP2(QPointF(scene_dock.x(), rect.top()));
+			break;
+		case Qet::East:
+			line.setP2(QPointF(rect.right() , scene_dock.y()));
+			break;
+		case Qet::South:
+			line.setP2(QPointF(scene_dock.x(), rect.bottom()));
+			break;
+		case Qet::West:
+			line.setP2(QPointF(rect.left(), scene_dock.y()));
+			break;
+	}
+
+	return line;
 }
 
 /**
@@ -287,6 +372,68 @@ QRectF Terminal::boundingRect() const {
 		*br_ = QRectF(origin, QSizeF(w, h));
 	}
 	return(*br_);
+}
+
+/**
+ * @brief Terminal::alignedWithTerminal
+ * If this terminal is aligned with an other terminal
+ * and is orientation is opposed return the other terminal
+ * else return nullptr
+ * @return
+ */
+Terminal* Terminal::alignedWithTerminal() const
+{
+	QLineF line(HelpLine());
+
+	QPainterPath path;
+	path.moveTo(line.p1());
+	path.lineTo(line.p2());
+
+		//Get all QGraphicsItem in the alignement of this terminal
+	QList <QGraphicsItem *> qgi_list = diagram() -> items(path);
+
+		//Remove all terminals of the parent element
+	foreach (Terminal *t, parent_element_ -> terminals())
+		qgi_list.removeAll(t);
+
+	if (qgi_list.isEmpty()) return nullptr;
+
+		//Get terminals only if orientation is opposed with this terminal
+	QList <Terminal *>  available_terminals;
+	foreach (QGraphicsItem *qgi, qgi_list)
+	{
+		if (Terminal *tt = qgraphicsitem_cast <Terminal *> (qgi))
+		{
+				//Call QET::lineContainsPoint to be sure the line intersect
+				//the dock point and not an other part of terminal
+			if (Qet::isOpposed(orientation(), tt -> orientation()) &&
+				QET::lineContainsPoint(line, tt -> dockConductor()))
+			{
+				available_terminals << tt;
+			}
+		}
+	}
+
+	if (available_terminals.isEmpty())   return nullptr;
+	if (available_terminals.size() == 1) return (available_terminals.first());
+
+		//Available_terminals have several terminals, we get the nearest terminal
+	line.setP2(available_terminals.first() -> dockConductor());
+	qreal     current_lenght   = line.length();
+	Terminal *nearest_terminal = available_terminals.takeFirst();
+
+		//Search the nearest terminal to this one
+	foreach (Terminal *terminal, available_terminals)
+	{
+		line.setP2(terminal -> dockConductor());
+		if (line.length() < current_lenght)
+		{
+			current_lenght   = line.length();
+			nearest_terminal = terminal;
+		}
+	}
+
+	return nearest_terminal;
 }
 
 /**

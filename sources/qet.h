@@ -180,11 +180,14 @@ class Qet : public QObject {
 					  West};
 	static Qet::Orientation nextOrientation(Qet::Orientation);
 	static Qet::Orientation previousOrientation(Qet::Orientation);
-	static Qet::Orientation orientationFromString(const QString &);
-	static QString orientationToString(Qet::Orientation);
-	static bool surLeMemeAxe(Qet::Orientation, Qet::Orientation);
-	static bool estHorizontale(Qet::Orientation);
-	static bool estVerticale(Qet::Orientation);
+
+	static Qet::Orientation orientationFromString (const QString &);
+	static QString          orientationToString   (Qet::Orientation);
+
+	static bool surLeMemeAxe   (Qet::Orientation, Qet::Orientation);
+	static bool isOpposed      (Qet::Orientation a, Qet::Orientation b);
+	static bool estHorizontale (Qet::Orientation);
+	static bool estVerticale   (Qet::Orientation);
 };
 
 #endif

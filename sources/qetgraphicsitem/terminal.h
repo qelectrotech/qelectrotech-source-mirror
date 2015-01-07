@@ -41,23 +41,22 @@ class Terminal : public QGraphicsItem {
 	
 	// methods
 	public:
-	/**
-		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
-		Terminal
-		@return the QGraphicsItem type
-	*/
-	virtual int type() const { return Type; }
+			//Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a Terminal
+			//@return the QGraphicsItem type
+		virtual int type() const { return Type; }
 	
-	// implementation of QGraphicsItem pure virtual methods
-	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-	QRectF boundingRect() const;
+		void   paint        (QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+		void   drawHelpLine (bool draw = true);
+		QLineF HelpLine     () const;
+		QRectF boundingRect () const;
 	
-	// methods to manage conductors attached to the terminal
-	bool addConductor(Conductor *);
-	void removeConductor(Conductor *);
-	int conductorsCount() const;
-	Diagram *diagram() const;
-	Element *parentElement() const;
+			// methods to manage conductors attached to the terminal
+		Terminal* alignedWithTerminal () const;
+		bool      addConductor        (Conductor *);
+		void      removeConductor     (Conductor *);
+		int       conductorsCount     () const;
+		Diagram  *diagram             () const;
+		Element  *parentElement       () const;
 	
 	QList<Conductor *> conductors() const;
 	Qet::Orientation orientation() const;
@@ -101,6 +100,9 @@ class Terminal : public QGraphicsItem {
 	static QColor forbiddenColor;
 	
 	private:
+		bool               m_draw_help_line;
+		QGraphicsLineItem *m_help_line;
+
 	/// Parent electrical element
 	Element *parent_element_;
 	/// docking point for conductors

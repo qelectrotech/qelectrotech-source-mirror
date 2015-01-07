@@ -930,9 +930,12 @@ void Diagram::invertSelection() {
 }
 
 /**
-	@return Le rectangle (coordonnees par rapport a la scene) delimitant le bord du schema
-*/
-QRectF Diagram::border() const {
+ * @brief Diagram::border
+ * @return The rectangle (coordinates relative to the scene)
+ * delimiting the edge of the diagram
+ */
+QRectF Diagram::border() const
+{
 	return(
 		QRectF(
 			margin,
@@ -941,6 +944,32 @@ QRectF Diagram::border() const {
 			border_and_titleblock.borderHeight()
 		)
 	);
+}
+
+/**
+ * @brief Diagram::drawingRect
+ * @return The rectangle (coordinates relative to the scene)
+ * delimiting the drawing area of the diagram.
+ * It's like border without columns, rows, and titleblock
+ */
+QRectF Diagram::drawingRect() const
+{
+	QPointF topleft(margin, margin);
+	QSizeF size;
+	size.setWidth (border_and_titleblock.columnsTotalWidth());
+	size.setHeight(border_and_titleblock.rowsTotalHeight());
+
+	if (border_and_titleblock.rowsAreDisplayed())
+		topleft.rx() += border_and_titleblock.rowsHeaderWidth();
+	else
+		size.rwidth() += border_and_titleblock.rowsHeaderWidth();
+
+	if (border_and_titleblock.columnsAreDisplayed())
+		topleft.ry() += border_and_titleblock.columnsHeaderHeight();
+	else
+		size.rheight() += border_and_titleblock.columnsHeaderHeight();
+
+	return (QRectF (topleft, size));
 }
 
 /**
