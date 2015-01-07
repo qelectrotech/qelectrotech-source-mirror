@@ -42,9 +42,18 @@ class Element : public QetGraphicsItem {
 	
 		// attributes
 	public:
+			/**
+			 * Enable the use of qgraphicsitem_cast to safely cast
+			 * a QGraphicsItem into an Element.
+			 * @return the QGraphicsItem type
+			 */
 		enum { Type = UserType + 1000 };
-		// this enum is use to know the kind of element and
-		// to use flag for element provider class
+		virtual int type() const { return Type; }
+
+			/**
+			 * @brief The kind enum
+			 * Used to know the kind of this element (master, slave, report ect...)
+			 */
 		enum kind {Simple = 1,
 				   NextReport = 2,
 				   PreviousReport = 4,
@@ -54,44 +63,35 @@ class Element : public QetGraphicsItem {
 				   Terminale = 32};
 	
 	private:
-	QSize   dimensions;
-	QPoint  hotspot_coord;
-	QPixmap preview;
+		QSize   dimensions;
+		QPoint  hotspot_coord;
+		QPixmap preview;
 
-	
-	// methods
+		// methods
 	public:
-	/**
-		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into an
-		Element.
-		@return the QGraphicsItem type
-	*/
-	virtual int type() const { return Type; }
-	
-	// pure virtual methods to be defined in derived classes
-	/// @return the list of terminals for this element
+		/// @return the list of terminals for this element
 	virtual QList<Terminal *> terminals() const = 0;
-	/// @return the list of conductors attached to this element
+		/// @return the list of conductors attached to this element
 	virtual QList<Conductor *> conductors() const = 0;
-	/// @return the list of text items attached to this element
+		/// @return the list of text items attached to this element
 	virtual QList<ElementTextItem *> texts() const = 0;
-	/// @return the text field tagged with @tagg or NULL if text field isn't found
+		/// @return the text field tagged with @tagg or NULL if text field isn't found
 	virtual ElementTextItem* taggedText(const QString &tagg) const = 0;
-	/// @return the list of lines items in this element
+		/// @return the list of lines items in this element
 	virtual QList<QLineF *> lines() const = 0;
-	/// @return the list of rectangles items in this element
+		/// @return the list of rectangles items in this element
 	virtual QList<QRectF *> rectangles() const = 0;
-	/// @return the list of bounding rectangles for circles items in this element
+		/// @return the list of bounding rectangles for circles items in this element
 	virtual QList<QRectF *> circles() const = 0;
-	/// @return the list of polygons in this element
+		/// @return the list of polygons in this element
 	virtual QList<QVector<QPointF> *> polygons() const = 0;	
-	/// @return the list of arcs in this element
+		/// @return the list of arcs in this element
 	virtual QList<QVector<qreal> *> arcs() const = 0;
-	/// @return the current number of terminals of this element
+		/// @return the current number of terminals of this element
 	virtual int terminalsCount() const = 0;
-	/// @return the minimum number of terminals for this element
+		/// @return the minimum number of terminals for this element
 	virtual int minTerminalsCount() const = 0;
-	/// @return the maximum number of terminals for this element
+		/// @return the maximum number of terminals for this element
 	virtual int maxTerminalsCount() const = 0;
 
 
@@ -101,22 +101,22 @@ class Element : public QetGraphicsItem {
 	 *like the linked element or information about this element
 	 */
 		//METHODS related to linked element
-		public:
-	bool isFree () const;
-	virtual void linkToElement(Element *) {}
-	virtual void unlinkAllElements() {}
-	virtual void unlinkElement(Element *) {}
-	virtual void initLink(QETProject *);
-	QList<Element *> linkedElements ();
-	virtual int linkType() const {return link_type_;} // @return the linkable type
-	void newUuid() {uuid_ = QUuid::createUuid();} 	//create new uuid for this element
+	public:
+				bool isFree            () const;
+		virtual void linkToElement     (Element *) {}
+		virtual void unlinkAllElements () {}
+		virtual void unlinkElement     (Element *) {}
+		virtual void initLink          (QETProject *);
+		QList<Element *> linkedElements ();
+		virtual int linkType() const {return link_type_;} // @return the linkable type
+		void newUuid() {uuid_ = QUuid::createUuid();} 	//create new uuid for this element
 
-	//ATTRIBUTES related to linked element
+		//ATTRIBUTES related to linked element
 	protected:
 		QList <Element *> connected_elements;
-		QList <QUuid> tmp_uuids_link;
-		QUuid uuid_;
-		kind link_type_;
+		QList <QUuid>     tmp_uuids_link;
+		QUuid             uuid_;
+		kind              link_type_;
 
 	signals:
 		void elementInfoChange(DiagramContext old_info, DiagramContext new_info);
@@ -182,8 +182,11 @@ class Element : public QetGraphicsItem {
 		void updatePixmap();
 
 	protected:
-		virtual void hoverEnterEvent ( QGraphicsSceneHoverEvent * );
-		virtual void hoverLeaveEvent ( QGraphicsSceneHoverEvent * );
+		virtual void mouseMoveEvent    ( QGraphicsSceneMouseEvent *event );
+		virtual void mouseReleaseEvent ( QGraphicsSceneMouseEvent *event );
+		virtual void hoverEnterEvent   ( QGraphicsSceneHoverEvent * );
+		virtual void hoverLeaveEvent   ( QGraphicsSceneHoverEvent * );
+
 	private:
 		bool m_mouse_over;
 

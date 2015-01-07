@@ -494,9 +494,18 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	return(element);
 }
 
-// Initialise link for this element
-void Element::initLink(QETProject *prj) {
-	// if nothing to link return now
+/**
+ * @brief Element::initLink
+ * Initialise the link between this element and other elements.
+ * This method can be call once because init the link according to
+ * uuid store in a private list, after link, the list is clear, so
+ * call another time do nothing.
+ *
+ * @param prj, ownership project of this element and other element to be linked
+ */
+void Element::initLink(QETProject *prj)
+{
+		// if nothing to link return now
 	if (tmp_uuids_link.isEmpty()) return;
 
 	ElementProvider ep(prj);
@@ -540,6 +549,23 @@ bool comparPos(const Element *elmt1, const Element *elmt2) {
 	return elmt1->pos().x() <= elmt2->pos().x();
 }
 
+void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	QetGraphicsItem::mouseMoveEvent(event);
+	foreach (Terminal *t, terminals())
+	{
+		t -> drawHelpLine(true);
+	}
+}
+
+void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	QetGraphicsItem::mouseReleaseEvent(event);
+	foreach (Terminal *t, terminals())
+	{
+		t -> drawHelpLine(false);
+	}
+}
 
 /**
  * When mouse over element
