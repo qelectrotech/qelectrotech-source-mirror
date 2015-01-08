@@ -22,39 +22,36 @@
 
 class Diagram;
 
-class QetGraphicsItem : public QGraphicsObject {
+class QetGraphicsItem : public QGraphicsObject
+{
 	Q_OBJECT
 
 	public:
-	//constructor destructor
-	QetGraphicsItem(QGraphicsItem *parent = 0);
-	virtual ~QetGraphicsItem() = 0;
+			//constructor destructor
+		QetGraphicsItem(QGraphicsItem *parent = 0);
+		virtual ~QetGraphicsItem() = 0;
 
-	//public methode
-	Diagram * diagram() const;
-	virtual void setPos(const QPointF &p);
-	virtual void setPos(qreal x, qreal y);
-	virtual void rotateBy(const qreal &);
-	virtual void applyRotation(const qreal &);
-	virtual void editProperty (){}
-	virtual QString name()const {return QString("");}
+			//public methode
+				Diagram *diagram       () const;
+		virtual void     setPos        (const QPointF &p);
+		virtual void     setPos        (qreal x, qreal y);
+		virtual void     rotateBy      (const qreal &);
+		virtual void     applyRotation (const qreal &);
+		virtual void     editProperty  ()      {}
+		virtual QString  name       ()const {return QString("");}
 
-	signals:
-
-	public slots:
-
-	//protected method
+		//protected method
 	protected:
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent *e);
-	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e);
-	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *e);
-	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *e);
+		virtual void mousePressEvent(QGraphicsSceneMouseEvent *e);
+		virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e);
+		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *e);
+		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *e);
 
 	protected:
-	bool is_movable_;
-	bool first_move_;
-	bool snap_to_grid_;
-	QPointF mouse_to_origin_movement_;
+		bool is_movable_;
+		bool first_move_;
+		bool snap_to_grid_;
+		QPointF mouse_to_origin_movement_;
 
 };
 

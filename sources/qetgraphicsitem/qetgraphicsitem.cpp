@@ -90,11 +90,20 @@ void QetGraphicsItem::applyRotation(const qreal &angle) {
  *handle the mouse click
  * @param e
  */
-void QetGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-	first_move_ = true;
-	if (e -> modifiers() & Qt::ControlModifier) {
-		setSelected(!isSelected());
+void QetGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent *e)
+{
+	if (e -> button() == Qt::LeftButton)
+	{
+			//Disable views context menu
+		if (scene())
+			foreach (QGraphicsView *view, scene()->views())
+				view->setContextMenuPolicy(Qt::NoContextMenu);
+
+		first_move_ = true;
+		if (e -> modifiers() & Qt::ControlModifier)
+			setSelected(!isSelected());
 	}
+
 	QGraphicsItem::mousePressEvent(e);
 }
 
@@ -148,5 +157,13 @@ void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
  */
 void QetGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (diagram()) diagram() -> endMoveElements();
-	if (!(e -> modifiers() & Qt::ControlModifier)) QGraphicsItem::mouseReleaseEvent(e);
+
+	if (!(e -> modifiers() & Qt::ControlModifier))
+		QGraphicsItem::mouseReleaseEvent(e);
+
+		//Enable views context menu
+	if (e -> button() == Qt::LeftButton)
+		if (scene())
+			foreach (QGraphicsView *view, scene()->views())
+				view -> setContextMenuPolicy(Qt::DefaultContextMenu);
 }
