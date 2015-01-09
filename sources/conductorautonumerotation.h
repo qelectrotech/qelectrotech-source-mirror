@@ -22,26 +22,29 @@
 
 class Diagram;
 class Conductor;
+class QUndoCommand;
 
-class ConductorAutoNumerotation {
+class ConductorAutoNumerotation
+{
 	public:
-	//constructors & destructor
-	ConductorAutoNumerotation (Conductor *);
+		//constructors & destructor
+		ConductorAutoNumerotation (Conductor *conductor, Diagram *diagram, QUndoCommand *undo_parent = nullptr);
 
-	//methods
-	void numerate();
-	static void checkPotential(Conductor *);
-	void applyText(QString);
+			//methods
+		void        numerate       ();
+		static void checkPotential (Conductor *);
+		void        applyText      (QString);
 
 	private:
-	//methods
-	void numeratePotential ();
-	void numerateNewConductor ();
+			//methods
+		void numeratePotential ();
+		void numerateNewConductor ();
 
-	//attributes
-	Diagram           *m_diagram;
-	Conductor         *conductor_;
-	QSet <Conductor *> conductor_list;
+		//attributes
+		Diagram            *m_diagram;
+		Conductor          *conductor_;
+		QSet <Conductor *>  conductor_list;
+		QUndoCommand       *m_parent_undo;
 };
 
 #endif // CONDUCTORAUTONUMEROTATION_H

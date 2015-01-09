@@ -94,6 +94,7 @@ class Element : public QetGraphicsItem {
 		/// @return the maximum number of terminals for this element
 	virtual int maxTerminalsCount() const = 0;
 
+		QList <QPair <Terminal *, Terminal *> > AlignedFreeTerminals () const;
 
 	/**
 	 *related method and attributes,
@@ -121,7 +122,7 @@ class Element : public QetGraphicsItem {
 	signals:
 		void elementInfoChange(DiagramContext old_info, DiagramContext new_info);
 
-	//METHODS related to information
+		//METHODS related to information
 	public:
 		DiagramContext  elementInformations    ()const              {return element_informations_;}
 		DiagramContext& rElementInformations   ()                   {return element_informations_;}

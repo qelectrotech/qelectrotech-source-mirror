@@ -24,6 +24,7 @@
 #include "independenttextitem.h"
 #include "diagramimageitem.h"
 #include "elementtextitem.h"
+#include "conductorautonumerotation.h"
 
 /**
  * @brief ElementsMover::ElementsMover Constructor
@@ -116,23 +117,47 @@ void ElementsMover::continueMovement(const QPointF &movement) {
 /**
  * @brief ElementsMover::endMovement
  * Ended the current movement by creating an undo added to the undostack of the diagram.
+ * If there is only one element moved, we try to auto-connect new conductor from this element
+ * and other possible element.
  */
-void ElementsMover::endMovement() {
-	// A movement must be inited
+void ElementsMover::endMovement()
+{
+		// A movement must be inited
 	if (!movement_running_) return;
 	
-	// No need of an undo command if the movement is NULL
+		// No need of an undo command if the movement is NULL
 	if (!current_movement_.isNull()) {
-		// Create an undo object for this new movement
+			// Create an undo object for this new movement
 		MoveElementsCommand *undo_object = new MoveElementsCommand(
 			diagram_,
 			moved_content_,
 			current_movement_
 		);
+
+			//There is only one element moved, we try auto connection of conductor;
+		typedef DiagramContent dc;
+		if (moved_content_.items(dc::TextFields | dc::Images | dc::Shapes).size() == 0 &&
+			moved_content_.items(dc::Elements).size() == 1)
+		{
+			Element *elmt = moved_content_.elements.toList().first();
+
+			while (!elmt -> AlignedFreeTerminals().isEmpty())
+			{
+				QPair <Terminal *, Terminal *> pair = elmt->AlignedFreeTerminals().takeFirst();
+
+				Conductor *conductor = new Conductor(pair.first, pair.second);
+				conductor -> setProperties(diagram_ -> defaultConductorProperties);
+					//Create an undo object for each new auto conductor, with undo_object for parent;
+				new AddItemCommand<Conductor *>(conductor, diagram_, QPointF(), undo_object);
+					//Autonum the new conductor, the undo command associated for this, have for parent undo_object
+				ConductorAutoNumerotation can  (conductor, diagram_, undo_object);
+				can.numerate();
+			};
+		}
 		
 		diagram_ -> undoStack().push(undo_object);
 	}
 	
-	// There is no movement in progress now
+		// There is no movement in progress now
 	movement_running_ = false;
 }

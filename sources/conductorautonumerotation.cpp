@@ -25,13 +25,20 @@
 #include "qet.h"
 
 /**
- *Constructor
- * @param c the conductor to apply automatic numerotation
+ * @brief ConductorAutoNumerotation::ConductorAutoNumerotation
+ * Constructor of autonum, after create a class, call numerate to apply the autonum.
+ * When autonum is applyed, they do with an undo command added to the stack of diagram.
+ * If you give a parent_undo at constructor, the undo command create in this class have parent_undo for parent,
+ * and wasn't added to the stack of diagram (it's the responsabillty of the parent_undo)
+ * @param conductor   : the conductor to apply automatic numerotation
+ * @param diagram     : the diagram of conductor
+ * @param parent_undo : parent undo command
  */
-ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *c) :
-	m_diagram      (c -> diagram()),
-	conductor_     (c),
-	conductor_list (c -> relatedPotentialConductors())
+ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *conductor, Diagram *diagram, QUndoCommand *parent_undo) :
+	m_diagram      (diagram),
+	conductor_     (conductor),
+	conductor_list (conductor -> relatedPotentialConductors()),
+	m_parent_undo  (parent_undo)
 {}
 
 /**
@@ -63,7 +70,7 @@ void ConductorAutoNumerotation::checkPotential(Conductor *conductor) {
 	if (!QET::eachStrIsEqual(strl)) {
 		PotentialTextsDialog ptd(conductor, conductor->diagramEditor());
 		if ( ptd.exec() == QDialog::Accepted ) {
-			ConductorAutoNumerotation can(conductor);
+			ConductorAutoNumerotation can(conductor, conductor -> diagram());
 			can.applyText(ptd.selectedText());
 		}
 	}
@@ -75,32 +82,39 @@ void ConductorAutoNumerotation::checkPotential(Conductor *conductor) {
  */
 void ConductorAutoNumerotation::applyText(QString t) {
 	if (!conductor_) return;
-	if (conductor_list.empty()) {
-		//initialize the corresponding UndoCommand object
-		ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand (conductor_);
+
+	if (conductor_list.empty())
+	{
+			//initialize the corresponding UndoCommand object
+		ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand (conductor_, m_parent_undo);
 		ccpc -> setOldSettings (conductor_ -> properties());
 		ConductorProperties cp = conductor_ -> properties();
 		cp.text = t;
 		ccpc -> setNewSettings(cp);
-		m_diagram -> undoStack().push(ccpc);
+		if (!m_parent_undo)
+			m_diagram -> undoStack().push(ccpc);
 	}
-	else {
+	else
+	{
 		QList <Conductor *> clist = conductor_list.toList();
 		clist << conductor_;
 		QList <ConductorProperties> old_properties, new_properties;
 		ConductorProperties cp;
 
-		foreach (Conductor *c, clist) {
+		foreach (Conductor *c, clist)
+		{
 			old_properties << c -> properties();
 			cp = c -> properties();
 			cp.text = t;
 			new_properties << cp;
 		}
-		//initialize the corresponding UndoCommand object
-		ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(clist);
+
+			//initialize the corresponding UndoCommand object
+		ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(clist, m_parent_undo);
 		cscpc -> setOldSettings(old_properties);
 		cscpc -> setNewSettings(new_properties);
-		m_diagram -> undoStack().push(cscpc);
+		if (!m_parent_undo)
+			m_diagram -> undoStack().push(cscpc);
 	}
 }
 

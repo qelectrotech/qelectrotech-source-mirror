@@ -60,12 +60,14 @@ class AddItemCommand : public QUndoCommand {
 		virtual void undo() {
 			m_diagram -> showMe();
 			m_diagram -> removeItem(m_item);
+			QUndoCommand::undo();
 		}
 
 		virtual void redo() {
 			m_diagram -> showMe();
 			m_diagram -> addItem(m_item);
 			m_item    -> setPos(m_pos);
+			QUndoCommand::redo();
 		}
 
 	private:
@@ -149,21 +151,21 @@ class CutDiagramCommand : public DeleteElementsCommand {
 	This command moves some content on a particular diagram.
 */
 class MoveElementsCommand : public QUndoCommand {
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	MoveElementsCommand(Diagram *, const DiagramContent &, const QPointF &m, QUndoCommand * = 0);
-	virtual ~MoveElementsCommand();
+		MoveElementsCommand(Diagram *, const DiagramContent &, const QPointF &m, QUndoCommand * = 0);
+		virtual ~MoveElementsCommand();
 	private:
-	MoveElementsCommand(const MoveElementsCommand &);
+		MoveElementsCommand(const MoveElementsCommand &);
 	
-	// methods
+		// methods
 	public:
-	virtual void undo();
-	virtual void redo();
-	virtual void move(const QPointF &);
+		virtual void undo();
+		virtual void redo();
+		virtual void move(const QPointF &);
 
 	private:
-	void setupAnimation (QObject * target, const QByteArray &propertyName, const QVariant start, const QVariant end);
+		void setupAnimation (QObject * target, const QByteArray &propertyName, const QVariant start, const QVariant end);
 	
 	// attributes
 	private:
@@ -471,7 +473,6 @@ class ChangeConductorPropertiesCommand : public QUndoCommand {
 	bool old_settings_set;
 	/// track whether post-change properties were set
 	bool new_settings_set;
-	Diagram *diagram;
 };
 
 /**
@@ -507,7 +508,6 @@ class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
 	bool old_settings_set;
 	/// track whether post-change properties were set
 	bool new_settings_set;
-	Diagram *diagram;
 };
 
 class ItemResizerCommand : public QUndoCommand {

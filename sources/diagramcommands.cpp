@@ -297,12 +297,12 @@ MoveElementsCommand::MoveElementsCommand(
 	const QPointF &m,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(parent),
-	diagram(dia),
-	content_to_move(diagram_content),
-	movement(m),
-	m_anim_group(nullptr),
-	first_redo(true)
+	QUndoCommand    (parent),
+	diagram         (dia),
+	content_to_move (diagram_content),
+	movement        (m),
+	m_anim_group    (nullptr),
+	first_redo      (true)
 {
 	QString moved_content_sentence = content_to_move.sentence(
 		DiagramContent::Elements |
@@ -336,8 +336,9 @@ MoveElementsCommand::~MoveElementsCommand() {
  */
 void MoveElementsCommand::undo() {
 	diagram -> showMe();
-		m_anim_group->setDirection(QAnimationGroup::Forward);
-		m_anim_group->start();
+	m_anim_group->setDirection(QAnimationGroup::Forward);
+	m_anim_group->start();
+	QUndoCommand::undo();
 }
 
 /**
@@ -353,6 +354,7 @@ void MoveElementsCommand::redo() {
 		m_anim_group->setDirection(QAnimationGroup::Backward);
 		m_anim_group->start();
 	}
+	QUndoCommand::redo();
 }
 
 /**
@@ -924,8 +926,7 @@ ChangeConductorPropertiesCommand::ChangeConductorPropertiesCommand(Conductor *c,
 	QUndoCommand(QObject::tr("modifier les propri\351t\351s d'un conducteur", "undo caption"), parent),
 	conductor(c),
 	old_settings_set(false),
-	new_settings_set(false),
-	diagram(c->diagram())
+	new_settings_set(false)
 {
 }
 
@@ -950,7 +951,7 @@ void ChangeConductorPropertiesCommand::setNewSettings(const ConductorProperties 
 	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
 */
 void ChangeConductorPropertiesCommand::undo() {
-	diagram -> showMe();
+	if (conductor -> diagram()) conductor -> diagram() -> showMe();
 	if (old_settings_set && new_settings_set) {
 		conductor -> setProperties(old_properties);
 		conductor -> update();
@@ -962,7 +963,7 @@ void ChangeConductorPropertiesCommand::undo() {
 	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
 */
 void ChangeConductorPropertiesCommand::redo() {
-	diagram -> showMe();
+	if (conductor -> diagram()) conductor -> diagram() -> showMe();
 	if (old_settings_set && new_settings_set) {
 		conductor -> setProperties(new_properties);
 		conductor -> update();
@@ -978,8 +979,7 @@ ChangeSeveralConductorsPropertiesCommand::ChangeSeveralConductorsPropertiesComma
 	QUndoCommand(QObject::tr("modifier les propri\351t\351s de plusieurs conducteurs", "undo caption"), parent),
 	conductors(c),
 	old_settings_set(false),
-	new_settings_set(false),
-	diagram(c.first()->diagram())
+	new_settings_set(false)
 {
 }
 
@@ -1015,7 +1015,7 @@ void ChangeSeveralConductorsPropertiesCommand::setNewSettings(const ConductorPro
 	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
 */
 void ChangeSeveralConductorsPropertiesCommand::undo() {
-	//diagram -> showMe();
+	if (conductors.first() -> diagram()) conductors.first() -> diagram() -> showMe();
 	if (old_settings_set && new_settings_set) {
 		int i=0;
 		foreach(Conductor *c, conductors) {
@@ -1031,7 +1031,7 @@ void ChangeSeveralConductorsPropertiesCommand::undo() {
 	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
 */
 void ChangeSeveralConductorsPropertiesCommand::redo() {
-	//diagram -> showMe();
+	if (conductors.first() -> diagram()) conductors.first() -> diagram() -> showMe();
 	if (old_settings_set && new_settings_set) {
 
 		//new propertie are the same for each conductor

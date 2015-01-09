@@ -1381,36 +1381,32 @@ void Conductor::setHighlighted(Conductor::Highlight hl) {
 }
 
 /**
- * @brief Conductor::autoText
- *lance l'autoNumerotation sur ce conducteur
- */
-void Conductor::autoText() {
-	ConductorAutoNumerotation can(this);
-	can.numerate();
-}
-
-/**
 	Met a jour les proprietes du conducteur apres modification du champ de texte affiche
 */
 void Conductor::displayedTextChanged() {
 	// verifie que le texte a reellement change
 	if (text_item -> toPlainText() == properties_.text) return;
 	
-	if (Diagram *my_diagram = diagram()) {
+	if (Diagram *my_diagram = diagram())
+	{
 		int qmbreturn=0;
-		//if conductor isn't alone at this potential
-		//ask user to apply text on every conductors of this potential
-		if (relatedPotentialConductors().size() >= 1){
+			//if conductor isn't alone at this potential
+			//ask user to apply text on every conductors of this potential
+		if (relatedPotentialConductors().size() >= 1)
+		{
 			qmbreturn = QMessageBox::question(diagramEditor(), tr("Textes de conducteurs"),
 											  tr("Voulez-vous appliquer le nouveau texte \n"
 												 "\340 l'ensemble des conducteurs de ce potentiel ?"),
 											  QMessageBox::No| QMessageBox::Yes, QMessageBox::Yes);
-			if (qmbreturn == QMessageBox::Yes){
-				ConductorAutoNumerotation can(this);
+			if (qmbreturn == QMessageBox::Yes)
+			{
+				ConductorAutoNumerotation can(this, my_diagram);
 				can.applyText(text_item -> toPlainText());
 			}
 		}
-		if (qmbreturn == 0 || qmbreturn == QMessageBox::No) {
+
+		if (qmbreturn == 0 || qmbreturn == QMessageBox::No)
+		{
 			// initialise l'objet UndoCommand correspondant
 			ConductorProperties new_properties(properties_);
 			new_properties.text = text_item -> toPlainText();

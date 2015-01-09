@@ -21,6 +21,7 @@
 #include "qetgraphicsitem/conductor.h"
 #include "diagramcommands.h"
 #include "qetapp.h"
+#include "conductorautonumerotation.h"
 
 QColor Terminal::neutralColor      = QColor(Qt::blue);
 QColor Terminal::allowedColor      = QColor(Qt::darkGreen);
@@ -527,35 +528,44 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	other_terminal -> update();
 }
 
+
 /**
-	Gere le fait qu'on relache la souris sur la Borne.
-	@param e L'evenement souris correspondant
-*/
-void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	//setCursor(Qt::ArrowCursor);
+ * @brief Terminal::mouseReleaseEvent
+ * @param e
+ */
+void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
+{
 	previous_terminal_ = 0;
-	hovered_color_  = neutralColor;
-	// verifie que la scene est bien un Diagram
-	if (Diagram *d = diagram()) {
-		// on arrete de dessiner l'apercu du conducteur
+	hovered_color_     = neutralColor;
+
+	if (Diagram *d = diagram())
+	{
+			//Stop conductor preview
 		d -> setConductor(false);
-		// on recupere l'element sous le pointeur lors du MouseReleaseEvent
+
+			//Get item under cursor
 		QGraphicsItem *qgi = d -> itemAt(e -> scenePos());
-		// s'il n'y a rien, on arrete la
 		if (!qgi) return;
-		// idem si l'element obtenu n'est pas une borne
+
+			//Element must be a terminal
 		Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
 		if (!other_terminal) return;
-		// on remet la couleur de hover a sa valeur par defaut
+
 		other_terminal -> hovered_color_ = neutralColor;
-		other_terminal -> hovered_ = false;
-		// on s'arrete la s'il n'est pas possible de relier les bornes
+		other_terminal -> hovered_       = false;
+
+			//We stop her if we can't link this terminal with other terminal
 		if (!canBeLinkedTo(other_terminal)) return;
-		// autrement, on pose un conducteur
+
+			//Create conductor
 		Conductor *new_conductor = new Conductor(this, other_terminal);
 		new_conductor -> setProperties(d -> defaultConductorProperties);
-		d -> undoStack().push(new AddItemCommand<Conductor *>(new_conductor, d));
-		new_conductor -> autoText();
+		QUndoCommand *undo = new AddItemCommand<Conductor *>(new_conductor, d);
+			//Autonum it
+		ConductorAutoNumerotation can (new_conductor, d, undo);
+		can.numerate();
+			//Add undo command to the parent diagram
+		d -> undoStack().push(undo);
 	}
 }
 

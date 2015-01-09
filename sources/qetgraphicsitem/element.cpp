@@ -495,6 +495,31 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 }
 
 /**
+ * @brief Element::AlignedFreeTerminals
+ * @return a list of terminal (owned by this element) aligned to other terminal (from other element)
+ * The first Terminal of QPair is a Terminal owned by this element,
+ * this terminal haven't got any conductor docked.
+ * The second Terminal of QPair is a Terminal owned by an other element,
+ * which is aligned with the first Terminal. The second Terminal can have or not docked conductors.
+ */
+QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
+{
+	QList <QPair <Terminal *, Terminal *> > list;
+
+	foreach (Terminal *terminal, terminals())
+	{
+		if (terminal->conductors().isEmpty())
+		{
+			Terminal *other_terminal = terminal -> alignedWithTerminal();
+			if (other_terminal)
+				list << qMakePair(terminal, other_terminal);
+		}
+	}
+
+	return list;
+}
+
+/**
  * @brief Element::initLink
  * Initialise the link between this element and other elements.
  * This method can be call once because init the link according to
@@ -549,6 +574,10 @@ bool comparPos(const Element *elmt1, const Element *elmt2) {
 	return elmt1->pos().x() <= elmt2->pos().x();
 }
 
+/**
+ * @brief Element::mouseMoveEvent
+ * @param event
+ */
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseMoveEvent(event);
@@ -558,6 +587,10 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	}
 }
 
+/**
+ * @brief Element::mouseReleaseEvent
+ * @param event
+ */
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseReleaseEvent(event);
