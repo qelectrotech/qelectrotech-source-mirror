@@ -6,6 +6,7 @@
         <name lang="it">Alimentatori</name>
         <name lang="fr">Alimentations</name>
         <name lang="nl">Voedingen</name>
+        <name lang="pl">Rozdzielnice</name>
         <name lang="ru">Источники питания</name>
     </names>
 </qet-directory>

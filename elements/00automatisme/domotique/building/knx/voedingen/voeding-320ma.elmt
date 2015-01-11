@@ -1,11 +1,13 @@
-<definition width="120" version="0.4" hotspot_x="50" hotspot_y="54" height="100" type="element" ic="true" orientation="dyyy"link_type="master">
+<definition width="100" version="0.4" hotspot_x="49" hotspot_y="45" height="90" link_type="master" type="element" orientation="dyyy">
     <names>
-        <name lang="nl">KNX voeding 320mA</name>
         <name lang="be">KNX voeding 320mA</name>
         <name lang="en">KNX power supplies 320mA</name>
-        <name lang="fr">KNX alimentations 320mA</name>
         <name lang="it">Alimentatore KNX 320mA</name>
+        <name lang="fr">KNX alimentations 320mA</name>
+        <name lang="pl">Zasilacz 320 mA</name>
+        <name lang="nl">KNX voeding 320mA</name>
     </names>
+    <kindInformations/>
     <informations>
 		Author: RDS for QelectroTech
 		
@@ -28,12 +30,12 @@
         <arc width="10" x="-35" y="-35" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39.6097" x1="20" y2="39.5772" x2="20"/>
         <rect width="12" x="24" y="-36" antialias="false" height="72" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <input x="41" y="-34.5" size="9" rotate="true" text="T_" tagg='label'/>
+        <input x="41" y="-34.5" size="9" rotate="true" text="T_" tagg="label"/>
         <text x="33" y="23" size="5" rotation="270" color="white" text="KNX 30V DC"/>
-        <terminal x="-45" y="-20" nameHidden="0" number="" name="L" orientation="w"/>
-        <terminal x="-45" y="0" nameHidden="0" number="" name="N" orientation="w"/>
-        <terminal x="-44" y="20" nameHidden="0" number="" name="PE" orientation="w"/>
-        <terminal x="45" y="-10" nameHidden="0" number="" name="+" orientation="e"/>
-        <terminal x="45" y="10" nameHidden="0" number="" name="-" orientation="e"/>
+        <terminal x="-45" y="-20" orientation="w"/>
+        <terminal x="-45" y="0" orientation="w"/>
+        <terminal x="-44" y="20" orientation="w"/>
+        <terminal x="45" y="-10" orientation="e"/>
+        <terminal x="45" y="10" orientation="e"/>
     </description>
 </definition>

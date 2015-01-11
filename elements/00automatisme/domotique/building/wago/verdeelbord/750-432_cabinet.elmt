@@ -1,10 +1,11 @@
-<definition width="340" version="0.4" hotspot_x="113" hotspot_y="11" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="310" version="0.4" hotspot_x="113" hotspot_y="10" height="50" link_type="simple" type="element" orientation="dyyy">
     <names>
         <name lang="de">750-432</name>
         <name lang="be">750-432</name>
         <name lang="en">750-432</name>
-        <name lang="fr">750-432</name>
         <name lang="it">750-432</name>
+        <name lang="fr">750-432</name>
+        <name lang="pl">Wago 750-432</name>
         <name lang="nl">750-432</name>
     </names>
     <informations>

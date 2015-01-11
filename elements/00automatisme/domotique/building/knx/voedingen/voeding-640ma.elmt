@@ -1,11 +1,13 @@
-<definition width="120" version="0.4" hotspot_x="50" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
+<definition width="100" version="0.4" hotspot_x="49" hotspot_y="46" height="100" link_type="master" type="element" orientation="dyyy">
     <names>
-        <name lang="nl">KNX voeding 640mA</name>
         <name lang="be">KNX voeding 640mA</name>
         <name lang="en">KNX power supplies 640mA</name>
-        <name lang="fr">KNX alimentations 640mA</name>
         <name lang="it">Alimentatore KNX 640mA</name>
+        <name lang="fr">KNX alimentations 640mA</name>
+        <name lang="pl">Zasilacz 640 mA</name>
+        <name lang="nl">KNX voeding 640mA</name>
     </names>
+    <kindInformations/>
     <informations>
 		Author: RDS for QelectroTech
 		
@@ -30,12 +32,12 @@
         <rect width="12" x="24" y="-36" antialias="false" height="72" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <input x="41" y="-34.5" size="9" rotate="true" text="T_" tagg="label"/>
         <text x="33" y="23" size="5" rotation="270" color="white" text="KNX 30V DC"/>
-        <terminal x="-45" y="-20" nameHidden="0" number="" name="L" orientation="w"/>
-        <terminal x="-45" y="0" nameHidden="0" number="" name="N" orientation="w"/>
-        <terminal x="-44" y="20" nameHidden="0" number="" name="PE" orientation="w"/>
-        <terminal x="45" y="-10" nameHidden="0" number="" name="+" orientation="e"/>
-        <terminal x="45" y="10" nameHidden="0" number="" name="-" orientation="e"/>
-        <terminal x="-10" y="45" nameHidden="1" number="" name="+30VDC" orientation="s"/>
-        <terminal x="10" y="45" nameHidden="0" number="" name="-30VDC" orientation="s"/>
+        <terminal x="-45" y="-20" orientation="w"/>
+        <terminal x="-45" y="0" orientation="w"/>
+        <terminal x="-44" y="20" orientation="w"/>
+        <terminal x="45" y="-10" orientation="e"/>
+        <terminal x="45" y="10" orientation="e"/>
+        <terminal x="-10" y="45" orientation="s"/>
+        <terminal x="10" y="45" orientation="s"/>
     </description>
 </definition>

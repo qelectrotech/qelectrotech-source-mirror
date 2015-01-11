@@ -6,6 +6,7 @@
         <name lang="fr">IP réseau</name>
         <name lang="it">Network IP</name>
         <name lang="en">IP network</name>
+        <name lang="pl">Sieć TCP/IP</name>
         <name lang="el">Δίκτυο IP</name>
     </names>
 </qet-directory>
