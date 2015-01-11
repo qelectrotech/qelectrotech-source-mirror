@@ -45,20 +45,24 @@ class NumerotationContext;
 	collection. This collection enables users to export diagrams on remote
 	machines without wondering whether required elements are available to them.
 */
-class QETProject : public QObject {
-	Q_OBJECT
+class QETProject : public QObject
+{
+		Q_OBJECT
+
+		Q_PROPERTY(bool autoConductor READ autoConductor WRITE setAutoConductor)
 	
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	QETProject(int = 1, QObject * = 0);
-	QETProject(const QString &, QObject * = 0);
-	QETProject(const QDomElement &, QObject * = 0);
-	virtual ~QETProject();
+		QETProject (int = 1,             QObject * = 0);
+		QETProject (const QString &,     QObject * = 0);
+		QETProject (const QDomElement &, QObject * = 0);
+		virtual ~QETProject();
 	
 	private:
-	QETProject(const QETProject &);
+		QETProject(const QETProject &);
+		void init ();
 	
-	// enums
+		// enums
 	public:
 	/**
 		This enum lists possible states for a particular project.
@@ -72,74 +76,77 @@ class QETProject : public QObject {
 		FileOpenDiscard       = 5  /// the user cancelled the file opening
 	};
 	
-	// methods
+		// methods
 	public:
-	ProjectState state() const;
-	QList<Diagram *> diagrams() const;
-	int getFolioSheetsQuantity() const; /// get the folio sheets quantity for this project
-	void setFolioSheetsQuantity(int);   /// set the folio sheets quantity for this project
-	int folioIndex(const Diagram *) const;
-	ElementsCollection *embeddedCollection() const;
-	TitleBlockTemplatesProjectCollection *embeddedTitleBlockTemplatesCollection();
-	QString filePath();
-	void setFilePath(const QString &);
-	QString currentDir() const;
-	QString pathNameTitle() const;
-	QString title() const;
-	qreal declaredQElectroTechVersion();
-	void setTitle(const QString &);
-	QList<QString> embeddedTitleBlockTemplates();
-	const TitleBlockTemplate *getTemplateByName(const QString &template_name);
-	QDomElement getTemplateXmlDescriptionByName(const QString &);
-	bool setTemplateXmlDescription(const QString &, const QDomElement &);
-	void removeTemplateByName(const QString &);
+		ProjectState state() const;
+		QList<Diagram *> diagrams() const;
+		int getFolioSheetsQuantity() const; /// get the folio sheets quantity for this project
+		void setFolioSheetsQuantity(int);   /// set the folio sheets quantity for this project
+		int folioIndex(const Diagram *) const;
+		ElementsCollection *embeddedCollection() const;
+		TitleBlockTemplatesProjectCollection *embeddedTitleBlockTemplatesCollection();
+		QString filePath();
+		void setFilePath(const QString &);
+		QString currentDir() const;
+		QString pathNameTitle() const;
+		QString title() const;
+		qreal declaredQElectroTechVersion();
+		void setTitle(const QString &);
+		QList<QString> embeddedTitleBlockTemplates();
+		const TitleBlockTemplate *getTemplateByName(const QString &template_name);
+		QDomElement getTemplateXmlDescriptionByName(const QString &);
+		bool setTemplateXmlDescription(const QString &, const QDomElement &);
+		void removeTemplateByName(const QString &);
 
-	///DEFAULT PROPERTIES
-	BorderProperties defaultBorderProperties() const;
-	void setDefaultBorderProperties(const BorderProperties &);
+			///DEFAULT PROPERTIES
+		BorderProperties defaultBorderProperties() const;
+		void             setDefaultBorderProperties(const BorderProperties &);
 
-	TitleBlockProperties defaultTitleBlockProperties() const;
-	void setDefaultTitleBlockProperties(const TitleBlockProperties &);
+		TitleBlockProperties defaultTitleBlockProperties() const;
+		void                 setDefaultTitleBlockProperties(const TitleBlockProperties &);
 
-	ConductorProperties defaultConductorProperties() const;
-	void setDefaultConductorProperties(const ConductorProperties &);
+		ConductorProperties defaultConductorProperties() const;
+		void                setDefaultConductorProperties(const ConductorProperties &);
 
-	QString defaultReportProperties() const;
-	void setDefaultReportProperties (const QString &properties);
+		QString defaultReportProperties() const;
+		void    setDefaultReportProperties (const QString &properties);
 
-	XRefProperties					defaultXRefProperties (const QString &type) const {return m_default_xref_properties[type];}
-	QHash <QString, XRefProperties> defaultXRefProperties() const					  {return m_default_xref_properties;}
-	void setDefaultXRefProperties(const QString type, const XRefProperties &properties);
-	void setDefaultXRefProperties(QHash <QString, XRefProperties> hash);
+		XRefProperties					defaultXRefProperties (const QString &type) const {return m_default_xref_properties[type];}
+		QHash <QString, XRefProperties> defaultXRefProperties() const					  {return m_default_xref_properties;}
+		void setDefaultXRefProperties(const QString type, const XRefProperties &properties);
+		void setDefaultXRefProperties(QHash <QString, XRefProperties> hash);
 
-	QHash <QString, NumerotationContext> conductorAutoNum() const;
-	void addConductorAutoNum (QString key, NumerotationContext context);
-	void removeConductorAutonum (QString key);
-	NumerotationContext conductorAutoNum(const QString &key) const;
+		QHash <QString, NumerotationContext> conductorAutoNum() const;
+		void addConductorAutoNum (QString key, NumerotationContext context);
+		void removeConductorAutonum (QString key);
+		NumerotationContext conductorAutoNum(const QString &key) const;
 
-	QDomDocument toXml();
-	bool close();
-	QETResult write();
-	bool isReadOnly() const;
-	void setReadOnly(bool);
-	bool isEmpty() const;
-	bool ensureIntegrationCategoryExists();
-	ElementsCategory *integrationCategory() const;
-	QString integrateElement(const QString &, QString &);
-	QString integrateElement(const QString &, MoveElementsHandler *, QString &);
-	QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
-	bool usesElement(const ElementsLocation &);
-	bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
-	void cleanUnusedTitleBlocKTemplates();
-	void cleanUnusedElements(MoveElementsHandler *);
-	void cleanEmptyCategories(MoveElementsHandler *);
-	bool projectWasModified();
-	bool projectOptionsWereModified();
-	bool embeddedCollectionWasModified();
-	bool titleBlockTemplateCollectionWasModified();
-	DiagramContext projectProperties();
-	void setProjectProperties(const DiagramContext &);
-	QUndoStack* undoStack() {return undo_stack_;}
+		bool autoConductor    () const;
+		void setAutoConductor (bool ac);
+
+		QDomDocument toXml();
+		bool close();
+		QETResult write();
+		bool isReadOnly() const;
+		void setReadOnly(bool);
+		bool isEmpty() const;
+		bool ensureIntegrationCategoryExists();
+		ElementsCategory *integrationCategory() const;
+		QString integrateElement(const QString &, QString &);
+		QString integrateElement(const QString &, MoveElementsHandler *, QString &);
+		QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
+		bool usesElement(const ElementsLocation &);
+		bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
+		void cleanUnusedTitleBlocKTemplates();
+		void cleanUnusedElements(MoveElementsHandler *);
+		void cleanEmptyCategories(MoveElementsHandler *);
+		bool projectWasModified();
+		bool projectOptionsWereModified();
+		bool embeddedCollectionWasModified();
+		bool titleBlockTemplateCollectionWasModified();
+		DiagramContext projectProperties();
+		void setProjectProperties(const DiagramContext &);
+		QUndoStack* undoStack() {return undo_stack_;}
 	
 	public slots:
 	void componentWritten();
@@ -229,6 +236,7 @@ class QETProject : public QObject {
 	QHash <QString, NumerotationContext> m_conductor_autonum;
 	/// Folio List Sheets quantity for this project.
 	int folioSheetsQuantity;
+	bool m_auto_conductor;
 };
 Q_DECLARE_METATYPE(QETProject *)
 #endif

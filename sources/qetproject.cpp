@@ -41,13 +41,14 @@ QString QETProject::integration_category_name = "import";
 	@param parent QObject parent
 */
 QETProject::QETProject(int diagrams, QObject *parent) :
-	QObject(parent),
-	collection_(0),
-	project_qet_version_(-1),
-	modified_(false),
-	read_only_(false),
-	titleblocks_(this),
-	folioSheetsQuantity(0)
+	QObject              (parent),
+	collection_          (0     ),
+	project_qet_version_ (-1    ),
+	modified_            (false ),
+	read_only_           (false ),
+	titleblocks_         (this  ),
+	folioSheetsQuantity  (0     ),
+	m_auto_conductor     (true  )
 {
 	// 0 a n schema(s) vide(s)
 	int diagrams_count = qMax(0, diagrams);
@@ -75,13 +76,14 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	@param parent QObject parent
 */
 QETProject::QETProject(const QString &path, QObject *parent) :
-	QObject(parent),
-	collection_(0),
-	project_qet_version_(-1),
-	modified_(false),
-	read_only_(false),
-	titleblocks_(this),
-	folioSheetsQuantity(0)
+	QObject              (parent),
+	collection_          (0     ),
+	project_qet_version_ (-1    ),
+	modified_            (false ),
+	read_only_           (false ),
+	titleblocks_         (this  ),
+	folioSheetsQuantity  (0     ),
+	m_auto_conductor     (true  )
 {
 	// ouvre le fichier
 	QFile project_file(path);
@@ -118,13 +120,14 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	L'element XML fourni est copie et conserve dans la classe.
 */
 QETProject::QETProject(const QDomElement &xml_element, QObject *parent) :
-	QObject(parent),
-	collection_(0),
-	project_qet_version_(-1),
-	modified_(false),
-	read_only_(false),
-	titleblocks_(this),
-	folioSheetsQuantity(0)
+	QObject              (parent),
+	collection_          (0     ),
+	project_qet_version_ (-1    ),
+	modified_            (false ),
+	read_only_           (false ),
+	titleblocks_         (this  ),
+	folioSheetsQuantity  (0     ),
+	m_auto_conductor     (true  )
 {
 	// copie le contenu XML
 	document_root_.appendChild(document_root_.importNode(xml_element, true));
@@ -503,6 +506,28 @@ void QETProject::removeConductorAutonum(QString key) {
 NumerotationContext QETProject::conductorAutoNum (const QString &key) const {
 	if (m_conductor_autonum.contains(key)) return m_conductor_autonum[key];
 	else return NumerotationContext();
+}
+
+/**
+ * @brief QETProject::autoConductor
+ * @return true if use of auto conductor is authorized.
+ * See also Q_PROPERTY autoConductor
+ */
+bool QETProject::autoConductor() const
+{
+	return m_auto_conductor;
+}
+
+/**
+ * @brief QETProject::setAutoConductor
+ * @param ac
+ * Enable the use of auto conductor if true
+ * See also Q_PROPERTY autoConductor
+ */
+void QETProject::setAutoConductor(bool ac)
+{
+	if (ac != m_auto_conductor)
+		m_auto_conductor = ac;
 }
 
 /**

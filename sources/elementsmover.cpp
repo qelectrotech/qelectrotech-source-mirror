@@ -134,10 +134,12 @@ void ElementsMover::endMovement()
 			current_movement_
 		);
 
-			//There is only one element moved, we try auto connection of conductor;
+			//There is only one element moved, and project authorize auto conductor,
+			//we try auto connection of conductor;
 		typedef DiagramContent dc;
 		if (moved_content_.items(dc::TextFields | dc::Images | dc::Shapes).size() == 0 &&
-			moved_content_.items(dc::Elements).size() == 1)
+			moved_content_.items(dc::Elements).size() == 1 &&
+			diagram_ -> project() -> autoConductor())
 		{
 			Element *elmt = moved_content_.elements.toList().first();
 

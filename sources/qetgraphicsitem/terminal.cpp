@@ -280,18 +280,21 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 	{
 		if (!m_help_line)
 			m_help_line = new QGraphicsLineItem(this);
+		m_help_line -> setPen(QPen (Qt::darkBlue));
 
 		QLineF line(HelpLine());
 
-		Terminal *t = alignedWithTerminal();
-		if (t)
+		if (Diagram *dia = diagram())
 		{
-			line.setP2(t -> dockConductor());
-			m_help_line -> setPen(QPen (Qt::darkGreen));
-		}
-		else
-		{
-			m_help_line -> setPen(QPen (Qt::darkBlue));
+			if (dia -> project() -> autoConductor())
+			{
+				Terminal *t = alignedWithTerminal();
+				if (t)
+				{
+					line.setP2(t -> dockConductor());
+					m_help_line -> setPen(QPen (Qt::darkGreen));
+				}
+			}
 		}
 
 			//Map the line (in scene coordinate) to help_line coordinate

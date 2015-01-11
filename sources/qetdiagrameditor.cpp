@@ -188,6 +188,13 @@ void QETDiagramEditor::setUpActions() {
 	copy              = new QAction(QET::Icons::EditCopy,              tr("Cop&ier"),                              this);
 	paste             = new QAction(QET::Icons::EditPaste,             tr("C&oller"),                              this);
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
+
+	m_auto_conductor = new QAction   (QET::Icons::ConductorSettings, tr("Cr\351ation automatique de conducteur(s)","Tool tip of auto conductor"), this);
+	m_auto_conductor -> setStatusTip (tr("Utiliser la cr\351ation automatique de conducteur(s) quand cela est possible", "Status tip of auto conductor"));
+	m_auto_conductor -> setCheckable (true);
+	m_auto_conductor -> setDisabled  (true);
+	connect(m_auto_conductor, SIGNAL(triggered(bool)), this, SLOT(slot_autoConductor(bool)));
+
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du projet"),           this);
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
@@ -199,10 +206,10 @@ void QETDiagramEditor::setUpActions() {
 	windowed_view_mode= new QAction(                                   tr("en utilisant des fen\352tres"),         this);
 	mode_selection    = new QAction(QET::Icons::PartSelect,            tr("Mode Selection"),                       this);
 	mode_visualise    = new QAction(QET::Icons::ViewMove,              tr("Mode Visualisation"),                   this);
-	tile_window        = new QAction(                                  tr("&Mosa\357que"),                         this);
-	cascade_window     = new QAction(                                  tr("&Cascade"),                             this);
-	next_window        = new QAction(                                  tr("Projet suivant"),                       this);
-	prev_window        = new QAction(                                  tr("Projet pr\351c\351dent"),               this);
+	tile_window       = new QAction(                                  tr("&Mosa\357que"),                          this);
+	cascade_window    = new QAction(                                  tr("&Cascade"),                              this);
+	next_window       = new QAction(                                  tr("Projet suivant"),                        this);
+	prev_window       = new QAction(                                  tr("Projet pr\351c\351dent"),                this);
 
 	///Files action///
 	QAction *new_file  = m_file_actions_group.addAction( QET::Icons::DocumentNew,     tr("&Nouveau")						  );
@@ -454,8 +461,9 @@ void QETDiagramEditor::setUpToolBar() {
 	view_bar -> addSeparator();
 	view_bar -> addActions(m_zoom_action_toolBar);
 
-	diagram_bar -> addAction(infos_diagram);
-	diagram_bar -> addAction(conductor_reset);
+	diagram_bar -> addAction (infos_diagram);
+	diagram_bar -> addAction (conductor_reset);
+	diagram_bar -> addAction (m_auto_conductor);
 
 	m_add_item_toolBar = new QToolBar(tr("Ajouter"), this);
 	m_add_item_toolBar->setObjectName("adding");
@@ -1179,6 +1187,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_add_item_actions_group.  setEnabled(editable_project);
 	m_row_column_actions_group.setEnabled(editable_project);
 
+
 	slot_updateUndoStack();
 	slot_updateModeActions();
 	slot_updatePasteAction();
@@ -1266,18 +1275,21 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	}
 }
 
-
 /**
-	Gere les actions relatives au mode du schema
-*/
+ * @brief QETDiagramEditor::slot_updateModeActions
+ * Manage action who need an opened diagram or project to be updated
+ */
 void QETDiagramEditor::slot_updateModeActions() {
 	DiagramView *dv = currentDiagram();
 	
-	// actions ayant aussi besoin d'un document ouvert et de la connaissance de son mode
-	if (!dv) {
+	if (!dv)
+	{
 		grp_visu_sel -> setEnabled(false);
-	} else {
-		switch((int)(dv -> dragMode())) {
+	}
+	else
+	{
+		switch((int)(dv -> dragMode()))
+		{
 			case QGraphicsView::NoDrag:
 				grp_visu_sel -> setEnabled(false);
 				break;
@@ -1291,6 +1303,15 @@ void QETDiagramEditor::slot_updateModeActions() {
 				break;
 		}
 	}
+
+
+	if (ProjectView *pv = currentProject())
+	{
+		m_auto_conductor -> setEnabled (true);
+		m_auto_conductor -> setChecked (pv -> project() -> autoConductor());
+	}
+	else
+		m_auto_conductor -> setDisabled(true);
 }
 
 /**
@@ -1511,6 +1532,17 @@ void QETDiagramEditor::slot_resetConductors() {
 	if (DiagramView *dv = currentDiagram()) {
 		dv -> resetConductors();
 	}
+}
+
+/**
+ * @brief QETDiagramEditor::slot_autoConductor
+ * @param ac
+ * Update the auto conductor status of current project;
+ */
+void QETDiagramEditor::slot_autoConductor(bool ac)
+{
+	if (ProjectView *pv = currentProject())
+		pv -> project() -> setAutoConductor(ac);
 }
 
 /**

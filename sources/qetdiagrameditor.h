@@ -115,6 +115,7 @@ class QETDiagramEditor : public QETMainWindow {
 		void slot_removeRow();
 		void editSelectionProperties();
 		void slot_resetConductors();
+		void slot_autoConductor(bool ac);
 		void slot_addText();
 		void slot_addImage();
 		void slot_addLine();
@@ -179,6 +180,7 @@ class QETDiagramEditor : public QETMainWindow {
 		QAction *copy;               ///< Copy selection to clipboard
 		QAction *paste;              ///< Paste clipboard content on the current diagram
 		QAction *conductor_reset;    ///< Reset paths of selected conductors
+		QAction *m_auto_conductor;   ///< Enable/Disable the use of auto conductor
 		QAction *conductor_default;  ///< Show a dialog to edit default conductor properties
 		QAction *infos_diagram;      ///< Show a dialog to edit diagram properties
 		QAction *prj_edit_prop;      ///< Edit the properties of the current project.
