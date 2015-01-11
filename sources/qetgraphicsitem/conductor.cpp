@@ -329,7 +329,7 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 	// debut du trajet
 	points << depart0;
 	
-	// prolongement de la borne de depart 
+	// prolongement de la borne de depart
 	points << depart;
 	
 	// commence le vrai trajet
@@ -414,7 +414,7 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 			break;
 		default: extended_terminal = terminal;
 	}
-	return(extended_terminal);
+	return(Diagram::snapToGrid(extended_terminal));
 }
 
 /**
