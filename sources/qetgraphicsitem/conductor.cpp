@@ -1469,10 +1469,13 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 }
 
 /**
- * @return l'editeur de schemas parent ou 0
+ * @brief Conductor::diagramEditor
+ * @return The parent diagram editor or nullptr;
  */
 QETDiagramEditor* Conductor::diagramEditor() const {
-	if (diagram()->views().isEmpty()) return 0;
+	if (!diagram())                     return nullptr;
+	if (diagram() -> views().isEmpty()) return nullptr;
+
 	QWidget *w = const_cast<QGraphicsView *>(diagram() -> views().at(0));
 	while (w -> parentWidget() && !w -> isWindow()) {
 		w = w -> parentWidget();
