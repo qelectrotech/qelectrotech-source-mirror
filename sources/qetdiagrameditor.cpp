@@ -1128,17 +1128,25 @@ void QETDiagramEditor::slot_rotateTexts() {
 }
 
 /**
-	Effectue l'action "mode selection" sur le schema en cours
-*/
-void QETDiagramEditor::slot_setSelectionMode() {
-	if(currentDiagram()) currentDiagram() -> setSelectionMode();
+ * @brief QETDiagramEditor::slot_setSelectionMode
+ * Set all diagram view of the current project to selection mode
+ */
+void QETDiagramEditor::slot_setSelectionMode()
+{
+	if (ProjectView *pv = currentProject())
+		foreach(DiagramView *dv, pv -> diagrams())
+			dv -> setSelectionMode();
 }
 
 /**
-	Effectue l'action "mode visualisation" sur le schema en cours
-*/
-void QETDiagramEditor::slot_setVisualisationMode() {
-	if(currentDiagram()) currentDiagram() -> setVisualisationMode();
+ * @brief QETDiagramEditor::slot_setVisualisationMode
+ * Set all diagram view of the current project to visualisation mode
+ */
+void QETDiagramEditor::slot_setVisualisationMode()
+{
+	if (ProjectView *pv = currentProject())
+		foreach(DiagramView *dv, pv -> diagrams())
+			dv -> setVisualisationMode();
 }
 
 /**

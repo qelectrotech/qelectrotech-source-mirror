@@ -52,18 +52,16 @@ class QETDiagramEditor : public QETMainWindow {
 		void setUpToolBar       ();
 		void setUpMenu          ();
 	
-	// methods
+		// methods
 	public:
-	void closeEvent(QCloseEvent *);
-	QList<ProjectView *> openedProjects() const;
-	void addProjectView(ProjectView *);
-	bool openAndAddProject(const QString &, bool = true, bool = true);
-	QList<DiagramView *> projectViews() const;
-	QList<QString> editedFiles() const;
-	ProjectView *viewForFile(const QString &) const;
+		void                 closeEvent        (QCloseEvent *);
+		QList<ProjectView *> openedProjects    () const;
+		void                 addProjectView    (ProjectView *);
+		bool                 openAndAddProject (const QString &, bool = true, bool = true);
+		QList<QString>       editedFiles       () const;
+		ProjectView         *viewForFile       (const QString &) const;
 	
 	protected:
-	//void actions();
 	virtual bool event(QEvent *);
 	
 	private:
