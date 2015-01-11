@@ -12,5 +12,6 @@
         <name lang="it">Impianti civili</name>
         <name lang="el">Οικιακά</name>
         <name lang="nl">Huisinstallatie</name>
+        <name lang="be">Huishoudelijke installatie</name>
     </names>
 </qet-directory>

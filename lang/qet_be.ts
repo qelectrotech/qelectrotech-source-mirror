@@ -3941,13 +3941,13 @@ Deselecteert alle geselecteerde elementen en selecteert de niet-geselecteerde el
         <location filename="../sources/qetdiagrameditor.cpp" line="192"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch creatie van geleiders</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="193"/>
         <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
         <comment>Status tip of auto conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Maak gebruik van automatische creatie van geleider(s) indien mogelijk</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="204"/>
