@@ -1015,7 +1015,7 @@ void ChangeSeveralConductorsPropertiesCommand::setNewSettings(const ConductorPro
 	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
 */
 void ChangeSeveralConductorsPropertiesCommand::undo() {
-	if (conductors.first() -> diagram()) conductors.first() -> diagram() -> showMe();
+	if (conductors.first() -> diagram()) conductors.first() -> diagram();
 	if (old_settings_set && new_settings_set) {
 		int i=0;
 		foreach(Conductor *c, conductors) {
@@ -1031,7 +1031,7 @@ void ChangeSeveralConductorsPropertiesCommand::undo() {
 	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
 */
 void ChangeSeveralConductorsPropertiesCommand::redo() {
-	if (conductors.first() -> diagram()) conductors.first() -> diagram() -> showMe();
+	if (conductors.first() -> diagram()) conductors.first() -> diagram();
 	if (old_settings_set && new_settings_set) {
 
 		//new propertie are the same for each conductor
