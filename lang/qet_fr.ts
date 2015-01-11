@@ -12,7 +12,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="683"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -24,7 +24,7 @@
 <context>
     <name>QObject</name>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="207"/>
+        <location filename="../sources/qet.cpp" line="238"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -33,7 +33,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="230"/>
+        <location filename="../sources/qet.cpp" line="261"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -42,7 +42,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="252"/>
+        <location filename="../sources/qet.cpp" line="283"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -51,7 +51,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="267"/>
+        <location filename="../sources/qet.cpp" line="298"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -60,7 +60,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="275"/>
+        <location filename="../sources/qet.cpp" line="306"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
