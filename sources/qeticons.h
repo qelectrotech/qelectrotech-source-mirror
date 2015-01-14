@@ -35,6 +35,7 @@ namespace QET {
 		extern QIcon ArrowLeftDouble;
 		extern QIcon ArrowRight;
 		extern QIcon ArrowRightDouble;
+		extern QIcon Autoconnect;
 		extern QIcon BringForward;
 		extern QIcon Cancel;
 		extern QIcon Conductor;

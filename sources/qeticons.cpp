@@ -28,6 +28,7 @@ namespace QET {
 		QIcon ArrowLeftDouble;
 		QIcon ArrowRight;
 		QIcon ArrowRightDouble;
+		QIcon Autoconnect;
 		QIcon BringForward;
 		QIcon Cancel;
 		QIcon Conductor;
@@ -198,6 +199,7 @@ void QET::Icons::initIcons() {
 	ArrowRight          .addFile(":/ico/22x22/arrow-right.png");
 	ArrowRightDouble    .addFile(":/ico/16x16/arrow-right-double.png");
 	ArrowRightDouble    .addFile(":/ico/22x22/arrow-right-double.png");
+	Autoconnect         .addFile(":/ico/22x22/autoconnect.png");
 	BringForward        .addFile(":/ico/22x22/bring_forward.png");
 	Cancel              .addFile(":/ico/16x16/item_cancel.png");
 	Conductor           .addFile(":/ico/22x22/conductor.png");

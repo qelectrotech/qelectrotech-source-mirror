@@ -230,5 +230,6 @@
         <file>ico/32x32/simplifyrichtext.png</file>
         <file>ico/24x16/be.png</file>
         <file>ico/128x128/plasmagik.png</file>
+        <file>ico/22x22/autoconnect.png</file>
     </qresource>
 </RCC>

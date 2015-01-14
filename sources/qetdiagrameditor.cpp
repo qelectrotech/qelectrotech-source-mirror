@@ -189,7 +189,7 @@ void QETDiagramEditor::setUpActions() {
 	paste             = new QAction(QET::Icons::EditPaste,             tr("C&oller"),                              this);
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
 
-	m_auto_conductor = new QAction   (QET::Icons::ConductorSettings, tr("Cr\351ation automatique de conducteur(s)","Tool tip of auto conductor"), this);
+	m_auto_conductor = new QAction   (QET::Icons::Autoconnect, tr("Cr\351ation automatique de conducteur(s)","Tool tip of auto conductor"), this);
 	m_auto_conductor -> setStatusTip (tr("Utiliser la cr\351ation automatique de conducteur(s) quand cela est possible", "Status tip of auto conductor"));
 	m_auto_conductor -> setCheckable (true);
 	m_auto_conductor -> setDisabled  (true);
