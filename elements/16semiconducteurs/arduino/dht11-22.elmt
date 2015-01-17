@@ -2,6 +2,7 @@
     <names>
         <name lang="en">DHT 11/22</name>
         <name lang="fr">DHT 11/22</name>
+        <name lang="pl">Czujnik DHT 11/22</name>
         <name lang="it">Sensore DHT 11/22</name>
     </names>
     <informations></informations>
