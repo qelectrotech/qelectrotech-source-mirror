@@ -184,10 +184,10 @@ class Qet : public QObject {
 	static Qet::Orientation orientationFromString (const QString &);
 	static QString          orientationToString   (Qet::Orientation);
 
-	static bool surLeMemeAxe   (Qet::Orientation, Qet::Orientation);
-	static bool isOpposed      (Qet::Orientation a, Qet::Orientation b);
-	static bool estHorizontale (Qet::Orientation);
-	static bool estVerticale   (Qet::Orientation);
+	static bool surLeMemeAxe (Qet::Orientation, Qet::Orientation);
+	static bool isOpposed    (Qet::Orientation a, Qet::Orientation b);
+	static bool isHorizontal (Qet::Orientation);
+	static bool isVertical   (Qet::Orientation);
 };
 
 #endif

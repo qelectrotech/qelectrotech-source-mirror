@@ -102,6 +102,7 @@ class Terminal : public QGraphicsItem {
 	private:
 		bool               m_draw_help_line;
 		QGraphicsLineItem *m_help_line;
+		QGraphicsLineItem *m_help_line_a;
 
 	/// Parent electrical element
 	Element *parent_element_;

@@ -94,20 +94,20 @@ bool Qet::isOpposed(Qet::Orientation a, Qet::Orientation b)
 }
 
 /**
-	Indique si une orientation de borne est horizontale (Est / Ouest).
-	@param a L'orientation de borne
-	@return True si l'orientation de borne est horizontale, false sinon
-*/
-bool Qet::estHorizontale(Qet::Orientation a) {
+ * @brief Qet::isHorizontal
+ * @param a
+ * @return true if @a is horizontal, else false.
+ */
+bool Qet::isHorizontal(Qet::Orientation a) {
 	return(a == Qet::East || a == Qet::West);
 }
 
 /**
-	Indique si une orientation de borne est verticale (Nord / Sud).
-	@param a L'orientation de borne
-	@return True si l'orientation de borne est verticale, false sinon
-*/
-bool Qet::estVerticale(Qet::Orientation a) {
+ * @brief Qet::isVertical
+ * @param a
+ * @return true if @a is vertical, else false.
+ */
+bool Qet::isVertical(Qet::Orientation a) {
 	return(a == Qet::North || a == Qet::South);
 }
 

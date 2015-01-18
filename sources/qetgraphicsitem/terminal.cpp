@@ -81,6 +81,7 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 	QGraphicsItem(e),
 	m_draw_help_line(false),
 	m_help_line     (nullptr),
+	m_help_line_a   (nullptr),
 	parent_element_ (e),
 	hovered_color_  (Terminal::neutralColor)
 {
@@ -99,6 +100,7 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	QGraphicsItem(e),
 	m_draw_help_line (false),
 	m_help_line      (nullptr),
+	m_help_line_a    (nullptr),
 	parent_element_  (e),
 	hovered_color_   (Terminal::neutralColor)
 {
@@ -116,9 +118,12 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	@param s   Scene sur laquelle figure cette borne
 */
 Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bool hiddenName, Element *e) :
-	QGraphicsItem(e),
-	parent_element_(e),
-	hovered_color_(Terminal::neutralColor)
+	QGraphicsItem    (e),
+	m_draw_help_line (false),
+	m_help_line      (nullptr),
+	m_help_line_a    (nullptr),
+	parent_element_  (e),
+	hovered_color_   (Terminal::neutralColor)
 {
 	init(pf, o, num, name, hiddenName);
 }
@@ -273,34 +278,64 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 		p -> drawEllipse(QRectF(c.x() - 2.5, c.y() - 2.5, 5.0, 5.0));
 	} else p -> drawPoint(c);
 
-
-		//Draw help line if needed, only if there isn't conductor
-		//docked to this terminal
-	if (m_draw_help_line && conductors().isEmpty())
+		//Draw help line if needed,
+	if (diagram() && m_draw_help_line)
 	{
-		if (!m_help_line)
-			m_help_line = new QGraphicsLineItem(this);
-		m_help_line -> setPen(QPen (Qt::darkBlue));
-
-		QLineF line(HelpLine());
-
-		if (Diagram *dia = diagram())
+			//Draw the help line with same orientation of terminal
+			//Only if there isn't docked conductor
+		if (conductors().isEmpty())
 		{
-			if (dia -> project() -> autoConductor())
+			if (!m_help_line)
+				m_help_line = new QGraphicsLineItem(this);
+			QPen pen(Qt::darkBlue);
+
+			QLineF line(HelpLine());
+
+			if (diagram() -> project() -> autoConductor())
 			{
 				Terminal *t = alignedWithTerminal();
 				if (t)
 				{
 					line.setP2(t -> dockConductor());
-					m_help_line -> setPen(QPen (Qt::darkGreen));
+					pen.setColor(Qt::darkGreen);
 				}
 			}
+
+				//Map the line (in scene coordinate) to m_help_line coordinate
+			line.setP1(m_help_line -> mapFromScene(line.p1()));
+			line.setP2(m_help_line -> mapFromScene(line.p2()));
+			m_help_line -> setPen(pen);
+			m_help_line -> setLine(line);
 		}
 
-			//Map the line (in scene coordinate) to help_line coordinate
-		line.setP1(m_help_line -> mapFromScene(line.p1()));
-		line.setP2(m_help_line -> mapFromScene(line.p2()));
-		m_help_line -> setLine(line);
+			//Draw the help line perpendicular to the terminal
+		if (!m_help_line_a)
+		{
+			m_help_line_a = new QGraphicsLineItem(this);
+			QPen pen;
+			pen.setColor(Qt::darkGray);
+			pen.setStyle(Qt::DotLine);
+			m_help_line_a -> setPen(pen);
+		}
+
+		QRectF rect = diagram() -> drawingRect();
+		QLineF line;
+
+		if (Qet::isHorizontal(orientation()))
+		{
+			line.setP1(QPointF(dockConductor().x(), rect.topLeft().y()));
+			line.setP2(QPointF(dockConductor().x(), rect.bottomLeft().y()));
+		}
+		else
+		{
+			line.setP1(QPointF(rect.topLeft().x(), dockConductor().y()));
+			line.setP2(QPointF(rect.topRight().x(), dockConductor().y()));
+		}
+
+			//Map the line (in scene coordinate) to m_help_line_a coordinate
+		line.setP1(m_help_line_a -> mapFromScene(line.p1()));
+		line.setP2(m_help_line_a -> mapFromScene(line.p2()));
+		m_help_line_a -> setLine(line);
 	}
 	
 	p -> restore();
@@ -317,13 +352,19 @@ void Terminal::drawHelpLine(bool draw)
 
 	m_draw_help_line = draw;
 
-	if (!draw && m_help_line)
+	if (!draw)
 	{
-		delete m_help_line;
-		m_help_line = nullptr;
+		if (m_help_line)
+		{
+			delete m_help_line;
+			m_help_line = nullptr;
+		}
+		if (m_help_line_a)
+		{
+			delete m_help_line_a;
+			m_help_line_a = nullptr;
+		}
 	}
-
-	//update();
 }
 
 /**
