@@ -414,7 +414,7 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 			break;
 		default: extended_terminal = terminal;
 	}
-	return(Diagram::snapToGrid(extended_terminal));
+	return(extended_terminal);
 }
 
 /**
