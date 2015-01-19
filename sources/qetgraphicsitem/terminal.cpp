@@ -313,8 +313,9 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 		{
 			m_help_line_a = new QGraphicsLineItem(this);
 			QPen pen;
+			pen.setWidthF(0.2);
+			pen.setCosmetic(true);
 			pen.setColor(Qt::darkGray);
-			pen.setStyle(Qt::DotLine);
 			m_help_line_a -> setPen(pen);
 		}
 
@@ -337,7 +338,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 		line.setP2(m_help_line_a -> mapFromScene(line.p2()));
 		m_help_line_a -> setLine(line);
 	}
-	
+
 	p -> restore();
 }
 
