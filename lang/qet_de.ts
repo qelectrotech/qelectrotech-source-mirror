@@ -7568,43 +7568,50 @@ Maximale Länge: %2px</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="63"/>
         <source>Nom : %1
 </source>
-        <translation>Name: %1</translation>
+        <translation>Name: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="66"/>
         <source>Folio : %1
 </source>
-        <translation>Seite: %1</translation>
+        <translation>Seite: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="68"/>
         <source>Position : %1
 </source>
-        <translation>Position: %1</translation>
+        <translation>Position: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="69"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation>Abmessungen: %1×%2</translation>
+        <translation>Abmessungen: %1×%2
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="70"/>
         <source>Bornes : %1
 </source>
-        <translation>Anschlüsse: %1</translation>
+        <translation>Anschlüsse: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="71"/>
         <source>Champs de texte : %1
 </source>
-        <translation>Textfelder: %1</translation>
+        <translation>Textfelder: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="74"/>
         <source>Emplacement : %1
 </source>
-        <translation>Position: %1</translation>
+        <translation>Position: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="92"/>
