@@ -313,7 +313,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 		{
 			m_help_line_a = new QGraphicsLineItem(this);
 			QPen pen;
-			pen.setWidthF(0.2);
+			pen.setWidthF(0.4);
 			pen.setCosmetic(true);
 			pen.setColor(Qt::darkGray);
 			m_help_line_a -> setPen(pen);
