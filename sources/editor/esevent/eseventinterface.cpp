@@ -105,7 +105,9 @@ void ESEventInterface::updateHelpCross(const QPointF &p) {
 	//If line isn't created yet, we create it.
 	if (!m_help_horiz || !m_help_verti) {
 		QPen pen;
-		pen.setColor(Qt::darkBlue);
+		pen.setWidthF(0.4);
+		pen.setCosmetic(true);
+		pen.setColor(Qt::darkGray);
 		if (!m_help_horiz) {
 			m_help_horiz = new QGraphicsLineItem(-10000, 0, 10000, 0, 0, m_scene);
 			m_help_horiz -> setPen(pen);
