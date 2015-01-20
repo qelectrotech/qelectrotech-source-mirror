@@ -1,6 +1,7 @@
 <definition width="40" version="0.4" hotspot_x="12" hotspot_y="22" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Aspersor riego</name>
+        <name lang="pl">Zraszacz</name>
         <name lang="it">Innaffiatore</name>
     </names>
     <informations>Rafael Ferrando.

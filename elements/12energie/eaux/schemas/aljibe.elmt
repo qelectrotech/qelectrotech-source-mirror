@@ -1,6 +1,7 @@
 <definition width="70" version="0.4" hotspot_x="34" hotspot_y="20" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">Aljibe</name>
+        <name lang="pl">Zbiornik</name>
         <name lang="it">Vasca</name>
     </names>
     <informations>Rafael Ferrando.
