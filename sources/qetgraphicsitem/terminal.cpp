@@ -288,8 +288,6 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 			if (!m_help_line)
 				m_help_line = new QGraphicsLineItem(this);
 			QPen pen;
-			pen.setWidthF(0.4);
-			pen.setCosmetic(true);
 			pen.setColor(Qt::darkBlue);
 
 			QLineF line(HelpLine());
@@ -300,8 +298,6 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 				if (t)
 				{
 					line.setP2(t -> dockConductor());
-					pen.setWidthF(0.4);
-					pen.setCosmetic(true);
 					pen.setColor(Qt::darkGreen);
 				}
 			}
@@ -318,8 +314,6 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 		{
 			m_help_line_a = new QGraphicsLineItem(this);
 			QPen pen;
-			pen.setWidthF(0.4);
-			pen.setCosmetic(true);
 			pen.setColor(Qt::darkGray);
 			m_help_line_a -> setPen(pen);
 		}
