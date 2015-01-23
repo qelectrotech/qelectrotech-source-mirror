@@ -125,40 +125,44 @@ void ElementsMover::endMovement()
 		// A movement must be inited
 	if (!movement_running_) return;
 	
-		// No need of an undo command if the movement is NULL
-	if (!current_movement_.isNull()) {
-			// Create an undo object for this new movement
-		MoveElementsCommand *undo_object = new MoveElementsCommand(
-			diagram_,
-			moved_content_,
-			current_movement_
-		);
+	QUndoCommand *undo_object = nullptr;
 
-			//There is only one element moved, and project authorize auto conductor,
-			//we try auto connection of conductor;
-		typedef DiagramContent dc;
-		if (moved_content_.items(dc::TextFields | dc::Images | dc::Shapes).size() == 0 &&
-			moved_content_.items(dc::Elements).size() == 1 &&
-			diagram_ -> project() -> autoConductor())
+		//Create undo move if there is a movement
+	if (!current_movement_.isNull())
+		undo_object = new MoveElementsCommand(diagram_, moved_content_, current_movement_);
+
+		//There is only one element moved, and project authorize auto conductor,
+		//we try auto connection of conductor;
+	typedef DiagramContent dc;
+	if (moved_content_.items(dc::TextFields | dc::Images | dc::Shapes).size() == 0 &&
+		moved_content_.items(dc::Elements).size() == 1 &&
+		diagram_ -> project() -> autoConductor())
+	{
+		Element *elmt = moved_content_.elements.toList().first();
+
+		while (!elmt -> AlignedFreeTerminals().isEmpty())
 		{
-			Element *elmt = moved_content_.elements.toList().first();
+			QPair <Terminal *, Terminal *> pair = elmt -> AlignedFreeTerminals().takeFirst();
 
-			while (!elmt -> AlignedFreeTerminals().isEmpty())
-			{
-				QPair <Terminal *, Terminal *> pair = elmt->AlignedFreeTerminals().takeFirst();
+			Conductor *conductor = new Conductor(pair.first, pair.second);
+			conductor -> setProperties(diagram_ -> defaultConductorProperties);
 
-				Conductor *conductor = new Conductor(pair.first, pair.second);
-				conductor -> setProperties(diagram_ -> defaultConductorProperties);
-					//Create an undo object for each new auto conductor, with undo_object for parent;
+				//Create an undo object for each new auto conductor, with undo_object for parent if exist
+				//Else the first undo for this auto conductor become the undo_object
+			if (undo_object)
 				new AddItemCommand<Conductor *>(conductor, diagram_, QPointF(), undo_object);
-					//Autonum the new conductor, the undo command associated for this, have for parent undo_object
-				ConductorAutoNumerotation can  (conductor, diagram_, undo_object);
-				can.numerate();
-			};
-		}
-		
-		diagram_ -> undoStack().push(undo_object);
+			else
+				undo_object = new AddItemCommand<Conductor *>(conductor, diagram_, QPointF());
+
+				//Autonum the new conductor, the undo command associated for this, have for parent undo_object
+			ConductorAutoNumerotation can  (conductor, diagram_, undo_object);
+			can.numerate();
+		};
 	}
+
+		//Add undo_object if exist
+	if (undo_object)
+		diagram_ -> undoStack().push(undo_object);
 	
 		// There is no movement in progress now
 	movement_running_ = false;
