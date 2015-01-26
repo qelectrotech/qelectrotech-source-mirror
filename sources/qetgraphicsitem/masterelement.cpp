@@ -90,7 +90,7 @@ void MasterElement::unlinkElement(Element *elmt)
 		elmt -> unlinkElement  (this);
 		elmt -> setHighlighted (false);
 
-		//update the graphics cross ref
+			//update the graphics cross ref
 		disconnect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));
 		disconnect(elmt, SIGNAL(yChanged()), cri_, SLOT(updateLabel()));
 
@@ -149,10 +149,14 @@ void MasterElement::updateLabel(DiagramContext old_info, DiagramContext new_info
  * Check if Xref item must be displayed, if not, delete it.
  * If Xref item is deleted or already not used (nullptr) return true;
  * Else return false if Xref item is used
+ * NOTICE : Xref can display nothing but not be deleted so far.
+ * For exemple, if Xref is display has cross, only power contact are linked and
+ * option show power contact is disable, the cross isn't draw.
  * @return
  */
 bool MasterElement::aboutDeleteXref() {
 	if(!cri_) return true;
+	if(!linkedElements().isEmpty()) return false;
 
 	if (cri_ -> boundingRect().isNull()) {
 		delete cri_;
