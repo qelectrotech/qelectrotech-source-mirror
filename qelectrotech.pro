@@ -89,7 +89,7 @@ SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/
            $$files(sources/properties/*.cpp) \
            $$files(sources/editor/ui/*.cpp) \
            $$files(sources/editor/esevent/*.cpp) \
-           $$files(sources/editor/graphicspart/*.h) \
+           $$files(sources/editor/graphicspart/*.cpp) \
            $$files(sources/dvevent/*.cpp) \
            $$files(sources/undocommand/*.cpp)
 
