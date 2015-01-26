@@ -72,6 +72,7 @@ INCLUDEPATH += sources \
                sources/dvevent \
                sources/editor \
                sources/editor/esevent \
+               sources/editor/graphicspart \
                sources/undocommand
 
 
@@ -80,6 +81,7 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*
            $$files(sources/properties/*.h) \
            $$files(sources/editor/ui/*.h) \
            $$files(sources/editor/esevent/*.h) \
+           $$files(sources/editor/graphicspart/*.h) \
            $$files(sources/dvevent/*.h) \
            $$files(sources/undocommand/*.h)
 
@@ -87,6 +89,7 @@ SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/
            $$files(sources/properties/*.cpp) \
            $$files(sources/editor/ui/*.cpp) \
            $$files(sources/editor/esevent/*.cpp) \
+           $$files(sources/editor/graphicspart/*.h) \
            $$files(sources/dvevent/*.cpp) \
            $$files(sources/undocommand/*.cpp)
 
