@@ -2646,13 +2646,13 @@ Les changements seront définitifs.</source>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="74"/>
-        <source>Report de folio</source>
-        <translation>Αναφορά σελίδας</translation>
+        <source>Reports de folio</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="75"/>
-        <source>Référence croisées</source>
-        <translation>Παραπομπές</translation>
+        <source>Références croisées</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="172"/>
@@ -2795,38 +2795,38 @@ Les changements seront définitifs.</source>
 <context>
     <name>PolygonEditor</name>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="34"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="35"/>
         <source>Polygone fermé</source>
         <translation>Κλειστό πολύγωνο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="41"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="42"/>
         <source>x</source>
         <translation>x</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="41"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="42"/>
         <source>y</source>
         <translation>y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="49"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="50"/>
         <source>Points du polygone :</source>
         <translation>Σημεία του πολύγωνου:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="93"/>
         <source>fermeture du polygone</source>
         <translation>Κλείσιμο πολυγώνου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="78"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="78"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="79"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
         <translation>Το πολύγωνο πρέπει να διαθέτει τουλάχιστον δύο σημεία.</translation>
@@ -3144,6 +3144,21 @@ Options disponibles :
 </translation>
     </message>
     <message>
+        <location filename="../sources/qetapp.cpp" line="367"/>
+        <source>Fabricant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="368"/>
+        <source>Référence fabricant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="369"/>
+        <source>Référence fabricant machine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetapp.cpp" line="1223"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
@@ -3230,21 +3245,6 @@ Options disponibles :
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Désignation</source>
         <translation>Περιγραφή</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="367"/>
-        <source>Fabriquant</source>
-        <translation>Κατασκευαστής</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="368"/>
-        <source>Référence fabriquant</source>
-        <translation>Κωδικός κατασκευαστή</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="369"/>
-        <source>Référence fabriquant machine</source>
-        <translation>Πλήρης κωδικός κατασκευαστή</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="380"/>
@@ -4182,11 +4182,6 @@ Options disponibles :
         <translation>&amp;Διαγραφή</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
-        <source>Éditer les noms</source>
-        <translation>Επεξεργασία των ονομάτων</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="265"/>
         <source>Ajouter une ligne</source>
         <translation>Προσθήκη γραμμής</translation>
@@ -4394,11 +4389,6 @@ Options disponibles :
         <translation>Επεξεργασία των πληροφοριών του συγγραφέα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
-        <source>Éditer les propriétées de l&apos;élément</source>
-        <translation>Επεξεργασία των ιδιοτήτων του στοιχείου</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="183"/>
         <source>Backspace</source>
         <translation>Υπαναχώρηση</translation>
@@ -4437,6 +4427,16 @@ Options disponibles :
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>Βάθος</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
+        <source>Éditer le nom et les traductions de l&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
+        <source>Éditer les propriétés de l&apos;élément</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="340"/>
@@ -5673,55 +5673,55 @@ Que désirez vous faire ?</source>
         <translation>Επεξεργασία των ιδιοτήτων</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partarc.h" line="51"/>
+        <location filename="../sources/editor/graphicspart/partarc.h" line="51"/>
         <source>arc</source>
         <comment>element part name</comment>
         <translation>τόξο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partellipse.h" line="46"/>
+        <location filename="../sources/editor/graphicspart/partellipse.h" line="46"/>
         <source>ellipse</source>
         <comment>element part name</comment>
         <translation>έλλειψη</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partline.h" line="61"/>
+        <location filename="../sources/editor/graphicspart/partline.h" line="61"/>
         <source>ligne</source>
         <comment>element part name</comment>
         <translation>γραμμή</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partpolygon.h" line="49"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.h" line="49"/>
         <source>polygone</source>
         <comment>element part name</comment>
         <translation>πολύγωνο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partterminal.h" line="50"/>
+        <location filename="../sources/editor/graphicspart/partterminal.h" line="50"/>
         <source>borne</source>
         <comment>element part name</comment>
         <translation>ακροδέκτης</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.cpp" line="49"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="49"/>
         <source>T</source>
         <comment>default text when adding a text in the element editor</comment>
         <translation>Κ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.h" line="49"/>
+        <location filename="../sources/editor/graphicspart/parttext.h" line="49"/>
         <source>texte</source>
         <comment>element part name</comment>
         <translation>κείμενο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="46"/>
+        <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="46"/>
         <source>_</source>
         <comment>default text when adding a textfield in the element editor</comment>
         <translation>_</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.h" line="56"/>
+        <location filename="../sources/editor/graphicspart/parttextfield.h" line="56"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
         <translation>πεδίο_κειμένου</translation>
@@ -5815,7 +5815,7 @@ Que désirez vous faire ?</source>
         <translation>αποκοπή τμημάτων</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partrectangle.h" line="46"/>
+        <location filename="../sources/editor/graphicspart/partrectangle.h" line="46"/>
         <source>rectangle</source>
         <comment>element part name</comment>
         <translation>παραλληλόγραμμο</translation>
@@ -6181,42 +6181,42 @@ Que désirez vous faire ?</source>
 <context>
     <name>RectangleEditor</name>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="46"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="47"/>
         <source>Coin supérieur gauche : </source>
         <translation>Πάνω αριστερή γωνία:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
         <source>Dimensions : </source>
         <translation>Διαστάσεις:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="53"/>
         <source>Largeur :</source>
         <translation>Πλάτος:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="54"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
         <source>Hauteur :</source>
         <translation>Ύψος:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="111"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="112"/>
         <source>abscisse</source>
         <translation>τετμημένη</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="113"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="114"/>
         <source>ordonnée</source>
         <translation>τεταγμένη</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="115"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="116"/>
         <source>largeur</source>
         <translation>πλάτος</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="117"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="118"/>
         <source>hauteur</source>
         <translation>ύψος</translation>
     </message>
@@ -6637,7 +6637,7 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>γωνία περιστροφής</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.cpp" line="441"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="441"/>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>contenu</source>
         <translation>περιεχόμενο</translation>
@@ -6726,7 +6726,7 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>Πινακίδα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="425"/>
+        <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="425"/>
         <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>contenu</source>
         <translation>περιεχόμενο</translation>
@@ -7544,6 +7544,11 @@ Longueur maximale : %2px
         <translation>Παραπομπές (master)</translation>
     </message>
     <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
+        <source>Informations</source>
+        <translation type="unfinished">Πληροφορίες</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
         <source>Référence croisée (esclave)</source>
         <translation>Παραπομπές (slave)</translation>
@@ -7623,7 +7628,6 @@ Longueur maximale : %2px
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
         <source>Information</source>
         <translation>Πληροφορίες</translation>
     </message>
@@ -7697,8 +7701,8 @@ Longueur maximale : %2px
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
-        <source>Fabriquant</source>
-        <translation>Κατασκευαστής</translation>
+        <source>Fabricant</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>

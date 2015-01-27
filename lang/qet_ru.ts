@@ -2689,14 +2689,13 @@ Les changements seront définitifs.</source>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="74"/>
-        <source>Report de folio</source>
-        <translatorcomment>???</translatorcomment>
-        <translation type="unfinished">Отчёт</translation>
+        <source>Reports de folio</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="75"/>
-        <source>Référence croisées</source>
-        <translation type="unfinished">Ссылка</translation>
+        <source>Références croisées</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="172"/>
@@ -2843,39 +2842,39 @@ Les changements seront définitifs.</source>
 <context>
     <name>PolygonEditor</name>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="34"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="35"/>
         <source>Polygone fermé</source>
         <translation>Замкнутый полигон</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="41"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="42"/>
         <source>x</source>
         <translation>x</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="41"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="42"/>
         <source>y</source>
         <translation>y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="49"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="50"/>
         <source>Points du polygone :</source>
         <translation>Точки полигона :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="78"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="78"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="79"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
         <translation>Полигон долен содержать минимум две точки.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="93"/>
         <source>fermeture du polygone</source>
         <translation>Замыкание полигона</translation>
     </message>
@@ -3133,19 +3132,18 @@ Voulez-vous enregistrer les modifications ?</source>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="367"/>
-        <source>Fabriquant</source>
-        <translation>Производитель</translation>
+        <source>Fabricant</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="368"/>
-        <source>Référence fabriquant</source>
-        <translation type="unfinished">Ссылка производителя</translation>
+        <source>Référence fabricant</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="369"/>
-        <source>Référence fabriquant machine</source>
-        <translatorcomment>??</translatorcomment>
-        <translation type="unfinished">Ссылка производителя оборудования</translation>
+        <source>Référence fabricant machine</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="380"/>
@@ -4309,11 +4307,6 @@ Options disponibles :
         <translation>Восстановить масштаб</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
-        <source>Éditer les noms</source>
-        <translation>Редактировать имена</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="156"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <translation>Редактировать информацию об авторе</translation>
@@ -4487,6 +4480,16 @@ Options disponibles :
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>Глубина</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
+        <source>Éditer le nom et les traductions de l&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
+        <source>Éditer les propriétés de l&apos;élément</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="353"/>
@@ -4724,11 +4727,6 @@ les conditions requises ne sont pas valides</source>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Перезагрузить элемент</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
-        <source>Éditer les propriétées de l&apos;élément</source>
-        <translation type="unfinished">Редактировать свойства элемента</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="340"/>
@@ -5729,61 +5727,61 @@ Que désirez vous faire ?</source>
         <translation type="unfinished">Изменить свойства</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partarc.h" line="51"/>
+        <location filename="../sources/editor/graphicspart/partarc.h" line="51"/>
         <source>arc</source>
         <comment>element part name</comment>
         <translation>дуга</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partellipse.h" line="46"/>
+        <location filename="../sources/editor/graphicspart/partellipse.h" line="46"/>
         <source>ellipse</source>
         <comment>element part name</comment>
         <translation>элипс</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partline.h" line="61"/>
+        <location filename="../sources/editor/graphicspart/partline.h" line="61"/>
         <source>ligne</source>
         <comment>element part name</comment>
         <translation>линия</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partpolygon.h" line="49"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.h" line="49"/>
         <source>polygone</source>
         <comment>element part name</comment>
         <translation>полигон</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partrectangle.h" line="46"/>
+        <location filename="../sources/editor/graphicspart/partrectangle.h" line="46"/>
         <source>rectangle</source>
         <comment>element part name</comment>
         <translation>прямоугольник</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partterminal.h" line="50"/>
+        <location filename="../sources/editor/graphicspart/partterminal.h" line="50"/>
         <source>borne</source>
         <comment>element part name</comment>
         <translation>вывод</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.cpp" line="49"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="49"/>
         <source>T</source>
         <comment>default text when adding a text in the element editor</comment>
         <translation>HL1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.h" line="49"/>
+        <location filename="../sources/editor/graphicspart/parttext.h" line="49"/>
         <source>texte</source>
         <comment>element part name</comment>
         <translation>текст</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="46"/>
+        <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="46"/>
         <source>_</source>
         <comment>default text when adding a textfield in the element editor</comment>
         <translation>Т</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.h" line="56"/>
+        <location filename="../sources/editor/graphicspart/parttextfield.h" line="56"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
         <translation>текстовое поле</translation>
@@ -6249,42 +6247,42 @@ Que désirez vous faire ?</source>
 <context>
     <name>RectangleEditor</name>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="46"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="47"/>
         <source>Coin supérieur gauche : </source>
         <translation>Верхний-левый угол : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
         <source>Dimensions : </source>
         <translation>Размер : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="53"/>
         <source>Largeur :</source>
         <translation>Ширина :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="54"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
         <source>Hauteur :</source>
         <translation>Всота :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="111"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="112"/>
         <source>abscisse</source>
         <translation>абсцисса</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="113"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="114"/>
         <source>ordonnée</source>
         <translation>ордината</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="115"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="116"/>
         <source>largeur</source>
         <translation>ширина</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="117"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="118"/>
         <source>hauteur</source>
         <translation>всота</translation>
     </message>
@@ -6647,7 +6645,7 @@ Les autres champs ne sont pas utilisés.</source>
 <context>
     <name>TextEditor</name>
     <message>
-        <location filename="../sources/editor/parttext.cpp" line="441"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="441"/>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>contenu</source>
         <translation>содержимое</translation>
@@ -6729,7 +6727,7 @@ Les autres champs ne sont pas utilisés.</source>
 <context>
     <name>TextFieldEditor</name>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="425"/>
+        <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="425"/>
         <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>contenu</source>
         <translation>содержимое</translation>
@@ -7631,6 +7629,11 @@ Longueur maximale : %2px
         <translation type="unfinished">Ссылка (главный)</translation>
     </message>
     <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
+        <source>Informations</source>
+        <translation type="unfinished">Информация</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
         <source>Référence croisée (esclave)</source>
         <translation type="unfinished">Ссылка (дочерний)</translation>
@@ -7712,7 +7715,6 @@ Longueur maximale : %2px
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
         <source>Information</source>
         <translation type="unfinished">Информация</translation>
     </message>
@@ -7785,8 +7787,8 @@ Longueur maximale : %2px
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
-        <source>Fabriquant</source>
-        <translation type="unfinished">Производитель</translation>
+        <source>Fabricant</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>

@@ -2641,13 +2641,13 @@ I cambiamenti saranno irreversibili.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="74"/>
-        <source>Report de folio</source>
-        <translation>Riferimento di pagina</translation>
+        <source>Reports de folio</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="75"/>
-        <source>Référence croisées</source>
-        <translation>Riferimenti incrociati</translation>
+        <source>Références croisées</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="172"/>
@@ -2790,38 +2790,38 @@ I cambiamenti saranno irreversibili.</translation>
 <context>
     <name>PolygonEditor</name>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="34"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="35"/>
         <source>Polygone fermé</source>
         <translation>Poligono chiuso</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="41"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="42"/>
         <source>x</source>
         <translation>x</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="41"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="42"/>
         <source>y</source>
         <translation>y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="49"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="50"/>
         <source>Points du polygone :</source>
         <translation>Punti del poligono:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="93"/>
         <source>fermeture du polygone</source>
         <translation>Chiusura del poligono</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="78"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Errore</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="78"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="79"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
         <translation>Il poligono deve contenere almeno due punti.</translation>
@@ -3139,6 +3139,21 @@ Opzioni disponibili:
 </translation>
     </message>
     <message>
+        <location filename="../sources/qetapp.cpp" line="367"/>
+        <source>Fabricant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="368"/>
+        <source>Référence fabricant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="369"/>
+        <source>Référence fabricant machine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetapp.cpp" line="1613"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
@@ -3218,21 +3233,6 @@ Opzioni disponibili:
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Désignation</source>
         <translation>Descrizione</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="367"/>
-        <source>Fabriquant</source>
-        <translation>Costruttore</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="368"/>
-        <source>Référence fabriquant</source>
-        <translation>Riferimento costruttore</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="369"/>
-        <source>Référence fabriquant machine</source>
-        <translation>Riferimento costruttore della macchina</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="380"/>
@@ -4176,11 +4176,6 @@ Opzioni disponibili:
         <translation>Cancella (&amp;s)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
-        <source>Éditer les noms</source>
-        <translation>Modifica nomi</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="265"/>
         <source>Ajouter une ligne</source>
         <translation>Disegna una linea</translation>
@@ -4388,11 +4383,6 @@ Opzioni disponibili:
         <translation>Modifica le informazioni sull&apos;autore</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
-        <source>Éditer les propriétées de l&apos;élément</source>
-        <translation>Modifica le proprietà dell&apos;elemento</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="183"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
@@ -4431,6 +4421,16 @@ Opzioni disponibili:
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>Profondità</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
+        <source>Éditer le nom et les traductions de l&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
+        <source>Éditer les propriétés de l&apos;élément</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="340"/>
@@ -5667,55 +5667,55 @@ Cosa vuoi fare?</translation>
         <translation>Modifica le proprietà</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partarc.h" line="51"/>
+        <location filename="../sources/editor/graphicspart/partarc.h" line="51"/>
         <source>arc</source>
         <comment>element part name</comment>
         <translation>arco</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partellipse.h" line="46"/>
+        <location filename="../sources/editor/graphicspart/partellipse.h" line="46"/>
         <source>ellipse</source>
         <comment>element part name</comment>
         <translation>ellissi</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partline.h" line="61"/>
+        <location filename="../sources/editor/graphicspart/partline.h" line="61"/>
         <source>ligne</source>
         <comment>element part name</comment>
         <translation>linea</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partpolygon.h" line="49"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.h" line="49"/>
         <source>polygone</source>
         <comment>element part name</comment>
         <translation>poligono</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partterminal.h" line="50"/>
+        <location filename="../sources/editor/graphicspart/partterminal.h" line="50"/>
         <source>borne</source>
         <comment>element part name</comment>
         <translation>terminale</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.cpp" line="49"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="49"/>
         <source>T</source>
         <comment>default text when adding a text in the element editor</comment>
         <translation>T</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.h" line="49"/>
+        <location filename="../sources/editor/graphicspart/parttext.h" line="49"/>
         <source>texte</source>
         <comment>element part name</comment>
         <translation>testo</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="46"/>
+        <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="46"/>
         <source>_</source>
         <comment>default text when adding a textfield in the element editor</comment>
         <translation>_</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.h" line="56"/>
+        <location filename="../sources/editor/graphicspart/parttextfield.h" line="56"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
         <translation>campo testo</translation>
@@ -5809,7 +5809,7 @@ Cosa vuoi fare?</translation>
         <translation>taglia le parti</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partrectangle.h" line="46"/>
+        <location filename="../sources/editor/graphicspart/partrectangle.h" line="46"/>
         <source>rectangle</source>
         <comment>element part name</comment>
         <translation>rettangolo</translation>
@@ -6175,42 +6175,42 @@ Cosa vuoi fare?</translation>
 <context>
     <name>RectangleEditor</name>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="46"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="47"/>
         <source>Coin supérieur gauche : </source>
         <translation>Angolo superiore sinistro:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
         <source>Dimensions : </source>
         <translation>Dimensioni:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="53"/>
         <source>Largeur :</source>
         <translation>Larghezza:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="54"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
         <source>Hauteur :</source>
         <translation>Altezza:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="111"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="112"/>
         <source>abscisse</source>
         <translation>ascissa</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="113"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="114"/>
         <source>ordonnée</source>
         <translation>ordinata</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="115"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="116"/>
         <source>largeur</source>
         <translation>larghezza</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="117"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="118"/>
         <source>hauteur</source>
         <translation>altezza</translation>
     </message>
@@ -6644,7 +6644,7 @@ Gli altri campi non sono utilizzati.</translation>
         <translation>angolo di rotazione</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.cpp" line="441"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="441"/>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>contenu</source>
         <translation>contenuto</translation>
@@ -6733,7 +6733,7 @@ Gli altri campi non sono utilizzati.</translation>
         <translation>etichetta</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="425"/>
+        <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="425"/>
         <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
         <source>contenu</source>
         <translation>contenuto</translation>
@@ -7551,6 +7551,11 @@ Lunghezza massima: %2px</translation>
         <translation>Riferimento incrociato (master)</translation>
     </message>
     <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
+        <source>Informations</source>
+        <translation type="unfinished">Informazioni</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
         <source>Référence croisée (esclave)</source>
         <translation>Riferimento incrociato (slave)</translation>
@@ -7630,7 +7635,6 @@ Lunghezza massima: %2px</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
         <source>Information</source>
         <translation>Informazioni</translation>
     </message>
@@ -7704,8 +7708,8 @@ Lunghezza massima: %2px</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
-        <source>Fabriquant</source>
-        <translation>Costruttore</translation>
+        <source>Fabricant</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
