@@ -423,7 +423,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation type="unfinished"></translation>
+        <translation>Nur eine Potenzialbeschriftung je Seite anzeigen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
@@ -703,7 +703,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="71"/>
         <source>Maintenir ctrl pour un déplacement libre</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg gedrückt halten zum freien Bewegen</translation>
     </message>
 </context>
 <context>
@@ -1217,7 +1217,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="171"/>
         <source>N° fil : </source>
-        <translation type="unfinished"></translation>
+        <translation>Draht-Nr.:</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="182"/>
@@ -1639,12 +1639,12 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Remonter ce schéma x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Seite 10 Positionen nach oben verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Abaisser ce schéma x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Seite 10 Positionen nach unten verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
@@ -1994,7 +1994,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="198"/>
         <source>Utiliser les gestes du pavé tactile</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesten vom Touchpad aktivieren</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="199"/>
@@ -2573,7 +2573,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message utf8="true">
         <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
         <source>Éléments liés</source>
-        <translation>Verbundene Bauteile</translation>
+        <translation>Gebundene Bauteile</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="139"/>
@@ -2645,7 +2645,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="74"/>
         <source>Report de folio</source>
-        <translation>Abbruchstelle</translation>
+        <translation>Abbruchstellen</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="75"/>
@@ -3074,7 +3074,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Désignation</source>
-        <translation type="unfinished">Kennzeichen</translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="367"/>
@@ -3487,17 +3487,17 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Ajouter une liaison mecanique</source>
-        <translation>Mechanische Verbindung einfügen</translation>
+        <translation>Linie einfügen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Ajouter une zone rectangle</source>
-        <translation>Rechteckiger Bereich einfügen</translation>
+        <translation>Rechteck einfügen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
         <source>Ajouter une zone ellipse</source>
-        <translation>Ellipsenformiger Bereich einfügen</translation>
+        <translation>Ellipse einfügen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="240"/>
@@ -3827,13 +3827,13 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="192"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatische Leiterverbindung aktivieren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="193"/>
         <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
         <comment>Status tip of auto conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wenn möglich, automatische Leiterverbindung benutzen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="204"/>
@@ -4024,7 +4024,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="638"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="659"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt %1 gespeichert im Pfad: %2.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="711"/>
@@ -4458,7 +4458,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="353"/>
         <source>&amp;Récemment ouverts</source>
-        <translation type="unfinished">&amp;Zuletzt geöffnet</translation>
+        <translation>&amp;Zuletzt geöffnet</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="364"/>
@@ -4536,7 +4536,7 @@ Verfügbare Optionen:
         <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
         <source>Les éléments maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bauteile vom Typ Master, Slave, Einfach und Abbruchstelle müssen ein Textfeld &quot;label&quot; beinhalten</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="668"/>
@@ -6070,47 +6070,47 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="65"/>
         <source>Arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Bogen</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddellipse.cpp" line="63"/>
         <source>Ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Ellipse</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddline.cpp" line="66"/>
         <source>ligne</source>
-        <translation type="unfinished">Linie</translation>
+        <translation>Linie</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddpolygon.cpp" line="109"/>
         <source>Polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Polygon</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddrect.cpp" line="61"/>
         <source>Rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechteck</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddterminal.cpp" line="62"/>
         <source>Borne</source>
-        <translation type="unfinished">Anschluss</translation>
+        <translation>Anschluss</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="62"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtextfield.cpp" line="62"/>
         <source>Champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Textfeld</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="35"/>
         <source>Modifier les informations de l&apos;élément : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ändern der Informationen vom Bauteil: %1</translation>
     </message>
 </context>
 <context>
@@ -7713,7 +7713,7 @@ Maximale Länge: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Désignation qet</source>
-        <translation type="unfinished"></translation>
+        <translation>QET-Bezeichnung</translation>
     </message>
 </context>
 <context>
