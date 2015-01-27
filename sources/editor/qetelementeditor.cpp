@@ -152,9 +152,9 @@ void QETElementEditor::setupActions() {
 	paste_from_elmt   = new QAction(QET::Icons::Element,              tr("un \351l\351ment"),                          this);
 	inv_select        = new QAction(                                  tr("Inverser la s\351lection"),                  this);
 	edit_delete       = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
-	edit_names        = new QAction(QET::Icons::Names,                tr("\311diter les noms"),                        this);
+	edit_names        = new QAction(QET::Icons::Names,                tr("\311diter le nom et les traductions de l'\351l\351ment"), this);
 	edit_author		  = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations sur l'auteur"),   this);
-	m_edit_properties = new QAction(QET::Icons::ElementEdit,		  tr("\311diter les propri\351t\351es de l'\351l\351ment"), this);
+	m_edit_properties = new QAction(QET::Icons::ElementEdit,          tr("\311diter les propri\351t\351s de l'\351l\351ment"), this);
 	
 	undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));
 	redo = ce_scene -> undoStack().createRedoAction(this, tr("Refaire"));

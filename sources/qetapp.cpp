@@ -364,9 +364,9 @@ QString QETApp::elementTranslatedInfoKey(QString &info) {
 	if (info == "label") return tr("Label");
 	else if (info == "comment") return tr("Commentaire");
 	else if (info == "designation") return tr("D\351signation");
-	else if (info == "manufacturer") return tr("Fabriquant");
-	else if (info == "manufacturer-reference") return tr("R\351f\351rence fabriquant");
-	else if (info == "machine-manufacturer-reference") return tr("R\351f\351rence fabriquant machine");
+	else if (info == "manufacturer") return tr("Fabricant");
+	else if (info == "manufacturer-reference") return tr("R\351f\351rence fabricant");
+	else if (info == "machine-manufacturer-reference") return tr("R\351f\351rence fabricant machine");
 	return (info);
 }
 

@@ -129,7 +129,7 @@ void elementpropertieswidget::buildInterface() {
 			mpw_ = new MasterPropertiesWidget(element_, this);
 			tab_ -> addTab(mpw_, tr("R\351f\351rence crois\351e (maitre)"));
 			eiw_ = new ElementInfoWidget(element_, this);
-			tab_ -> addTab(eiw_, tr("Information"));
+			tab_ -> addTab(eiw_, tr("Informations"));
 			break;
 		case Element::Slave:
 			lsew_ = new LinkSingleElementWidget(element_, this);

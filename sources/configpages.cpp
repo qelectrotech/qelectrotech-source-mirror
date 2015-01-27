@@ -71,8 +71,8 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
 
 	tab_widget -> addTab (diagram_widget, tr("Sch\351ma"));
 	tab_widget -> addTab (cpw,            tr("Conducteur"));
-	tab_widget -> addTab (rpw,            tr("Report de folio"));
-	tab_widget -> addTab (xrefpw,         tr("R\351f\351rence crois\351es"));
+	tab_widget -> addTab (rpw,            tr("Reports de folios"));
+	tab_widget -> addTab (xrefpw,         tr("R\351f\351rences crois\351es"));
 
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	vlayout1->addWidget(tab_widget);
