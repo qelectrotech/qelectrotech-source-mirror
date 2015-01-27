@@ -17,6 +17,7 @@
 */
 #include "rectangleeditor.h"
 #include "partrectangle.h"
+#include "styleeditor.h"
 
 /**
 	Constructeur

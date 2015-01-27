@@ -20,6 +20,7 @@
 #include "elementscene.h"
 #include "editorcommands.h"
 #include "qetmessagebox.h"
+#include "styleeditor.h"
 
 /**
 	Constructeur

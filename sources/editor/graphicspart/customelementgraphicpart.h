@@ -17,116 +17,90 @@
 */
 #ifndef CUSTOM_ELEMENT_GRAPHIC_PART_H
 #define CUSTOM_ELEMENT_GRAPHIC_PART_H
-#include <QPainter>
+
 #include <QObject>
 #include "customelementpart.h"
-#include "styleeditor.h"
+
 class QETElementEditor;
-typedef CustomElementGraphicPart CEGP;
+class QPainter;
+
 /**
-	This class represents an element visual/geometric primitive. It provides
-	methods to manage style attributes common to most primitives.
-*/
-class CustomElementGraphicPart : public QObject, public CustomElementPart {
-	Q_OBJECT
+ * @brief The CustomElementGraphicPart class
+ * This class is the base for all home-made primitive like line, rectangle, ellipse etc....
+ * It provides methods and enums to manage style attributes available for primitive (color, pen style, etc...)
+ */
+class CustomElementGraphicPart : public QObject, public CustomElementPart
+{
+		Q_OBJECT
+
+			//Made this Q_ENUMS to be used by the Q_PROPERTY system.
+		Q_ENUMS (LineStyle)
+		Q_ENUMS (LineWeight)
+		Q_ENUMS (Filling)
+		Q_ENUMS (Color)
+
+		Q_PROPERTY(LineStyle line_style   READ lineStyle   WRITE setLineStyle)
+		Q_PROPERTY(LineWeight line_weight READ lineWeight  WRITE setLineWeight)
+		Q_PROPERTY(Filling filling        READ filling     WRITE setFilling)
+		Q_PROPERTY(Color color            READ color       WRITE setColor)
+		Q_PROPERTY(bool antialias         READ antialiased WRITE setAntialiased)
 
 	public:
-	/// This enum lists the various line styles available to draw primitives.
-	Q_ENUMS(LineStyle)
-	enum LineStyle {
-		NormalStyle, ///< Normal line
-		DashedStyle, ///< Dashed line
-		DottedStyle,  ///< Dotted line
-		DashdottedStyle  ///< Dashdotted  line
-	};
-	
-	/// This enum lists the various line weights available to draw primitives.
-	Q_ENUMS(LineWeight)
-	enum LineWeight {
-		NoneWeight,    ///< Invisible line
-		ThinWeight,   ///< Thin line
-		NormalWeight, ///< Normal line 1px
-		UltraWeight, ///< Normal line 2px
-		BigWeight    ///< Big Line
+			//Line style
+		enum LineStyle {NormalStyle, DashedStyle, DottedStyle, DashdottedStyle};
 
-	};
+			//Line weight : invisible, 0px, 1px, 2px, 5px
+		enum LineWeight {NoneWeight, ThinWeight, NormalWeight, UltraWeight, BigWeight};
+
+			//Filling color of the part : NoneFilling -> No filling (i.e. transparent)
+		enum Filling { NoneFilling, BlackFilling, WhiteFilling, GreenFilling, RedFilling, BlueFilling};
+
+			//Line color
+		enum Color {BlackColor, WhiteColor, GreenColor, RedColor, BlueColor};
 	
-	/// This enum lists the various filling colors available to draw primitives.
-	Q_ENUMS(Filling)
-	enum Filling {
-		NoneFilling,  ///< No filling (i.e. transparent)
-		BlackFilling, ///< Black filling
-		WhiteFilling,  ///< White filling
-		GreenFilling, ///< Green filling
-		RedFilling,  ///< Red filling
-		BlueFilling  ///< Green filling
-	};
-	
-	/// This enum lists the various line colors available to draw primitives.
-	Q_ENUMS(Color)
-	enum Color {
-		BlackColor, ///< Black line
-		WhiteColor, ///< White line
-		GreenColor, ///< Green line
-		RedColor,  ///<  Red line
-		BlueColor  ///<  Blue line
-	};
-	
-	// constructors, destructor
-	public:
-	/**
-		Constructor
-		@param editor Element editor this primitive lives in.
-	*/
-	CustomElementGraphicPart(QETElementEditor *editor) :
-		CustomElementPart(editor),
-		_linestyle(NormalStyle),
-		_lineweight(NormalWeight),
-		_filling(NoneFilling),
-		_color(BlackColor),
-		_antialiased(false)
-	{
-	};
-	
-	/// Destructor
-	virtual ~CustomElementGraphicPart() {
-	};
-	
-	// attributes
-	private:
-	LineStyle _linestyle;
-	LineWeight _lineweight;
-	Filling _filling ;
-	Color _color;
-	bool _antialiased;
-	
-	// methods
+
+		// constructors, destructor
 	public:
 
-	/// PROPERTY
-	Q_PROPERTY(LineStyle line_style READ lineStyle WRITE setLineStyle)
-		LineStyle lineStyle() const {return _linestyle;}
-		void setLineStyle(const LineStyle ls) {_linestyle = ls;}
-	Q_PROPERTY(LineWeight line_weight READ lineWeight WRITE setLineWeight)
-		LineWeight lineWeight() const {return _lineweight;}
-		void setLineWeight(const LineWeight lw) {_lineweight = lw;}
-	Q_PROPERTY(Filling filling READ filling WRITE setFilling)
-		Filling filling() const {return _filling;}
-		void setFilling(const Filling f) {_filling = f;}
-	Q_PROPERTY(Color color READ color WRITE setColor)
-		Color color() const {return _color;}
-		void setColor(const Color c) {_color = c;}
-	Q_PROPERTY(bool antialias READ antialiased WRITE setAntialiased)
-		bool antialiased() const {return _antialiased;}
+		CustomElementGraphicPart(QETElementEditor *editor);
+		virtual ~CustomElementGraphicPart();
+
+			//Getter and setter
+		LineStyle lineStyle    () const             {return _linestyle;}
+		void      setLineStyle (const LineStyle ls) {_linestyle = ls;}
+
+		LineWeight lineWeight    () const              {return _lineweight;}
+		void       setLineWeight (const LineWeight lw) {_lineweight = lw;}
+
+		Filling filling   () const          {return _filling;}
+		void    setFilling(const Filling f) {_filling = f;}
+
+		Color color   () const        {return _color;}
+		void  setColor(const Color c) {_color = c;}
+
+		bool antialiased   () const       {return _antialiased;}
 		void setAntialiased(const bool b) {_antialiased = b;}
-	
-	virtual void setProperty(const char *name, const QVariant &value) {QObject::setProperty(name, value);}
-	virtual QVariant property(const char *name) const {return QObject::property(name);}
-	
+			//End of getter and setter
+
+
+			//Rediriged to QObject Q_PROPERTY system
+		virtual void     setProperty (const char *name, const QVariant &value) {QObject::setProperty(name, value);}
+		virtual QVariant property    (const char *name) const                  {return QObject::property(name);}
+
 	protected:
-	void stylesToXml(QDomElement &) const;
-	void stylesFromXml(const QDomElement &);
-	void resetStyles();
-	void applyStylesToQPainter(QPainter &) const;
+		void stylesToXml  (QDomElement &) const;
+		void stylesFromXml(const QDomElement &);
+		void resetStyles  ();
+		void applyStylesToQPainter(QPainter &) const;
+	
+		// attributes
+	private:
+		LineStyle _linestyle;
+		LineWeight _lineweight;
+		Filling _filling ;
+		Color _color;
+		bool _antialiased;
 };
+
+typedef CustomElementGraphicPart CEGP;
 #endif
