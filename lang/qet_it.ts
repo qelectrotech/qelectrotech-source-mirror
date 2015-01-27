@@ -2642,12 +2642,12 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="74"/>
         <source>Reports de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimenti di pagina</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="75"/>
         <source>Références croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimenti incrociati</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="172"/>
@@ -3141,17 +3141,17 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetapp.cpp" line="367"/>
         <source>Fabricant</source>
-        <translation type="unfinished"></translation>
+        <translation>Costruttore</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="368"/>
         <source>Référence fabricant</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimento costruttore</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="369"/>
         <source>Référence fabricant machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimento costruttore macchina</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1613"/>
@@ -4425,12 +4425,12 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
         <source>Éditer le nom et les traductions de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificara il nome e le traduzioni dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
         <source>Éditer les propriétés de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare le propietà dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="340"/>
@@ -7553,7 +7553,7 @@ Lunghezza massima: %2px</translation>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
         <source>Informations</source>
-        <translation type="unfinished">Informazioni</translation>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
@@ -7709,7 +7709,7 @@ Lunghezza massima: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Fabricant</source>
-        <translation type="unfinished"></translation>
+        <translation>Costruttore</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
