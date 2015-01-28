@@ -1,0 +1,43 @@
+<definition width="120" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true" orientation="dnnn">
+    <names>
+        <name lang="ar">مُناور</name>
+        <name lang="el">Χειριστήριο</name>
+        <name lang="en">Lever switch 2 poles 2 directions tentative</name>
+        <name lang="de">Hebelschalter 2-polig 2 Richtungen tastend</name>
+        <name lang="it">Manipolatore</name>
+        <name lang="fr">Manipulateur</name>
+        <name lang="pl">Manipulator dwukierunkowy z powrotem samoczynnym</name>
+        <name lang="cs">Manipulátor</name>
+        <name lang="nl">Manipulator</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="55" y2="0" x2="56"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="62" y2="0" x2="65"/>
+        <polygon x4="62" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="62" y2="2" x2="62" y3="0" x3="56" y4="-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="44" y2="0" x2="45"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="35" y2="0" x2="37"/>
+        <polygon x4="38" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="38" y2="2" x2="38" y3="0" x3="44" y4="-2"/>
+        <circle x="70.5" y="-3.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>
+        <circle x="22.5" y="-3.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>
+        <polygon x4="65" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-2" x1="65" y2="2" x2="65" y3="0" x3="70" y4="-2"/>
+        <polygon x4="35" antialias="true" style="line-style:dashed;line-weight:thin;filling:black;color:black" y1="-2" x1="35" y2="2" x2="35" y3="0" x3="30" y4="-2"/>
+        <text x="24.25" y="2" size="4" text="A"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-12" y2="0" x2="17"/>
+        <text x="48.25" y="2.5" size="5" text="0"/>
+        <text x="72.5" y="2" size="4" text="B"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-12" y2="0" x2="15"/>
+        <circle x="-11" y="10.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10" x1="-15" y2="10" x2="-10"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="15" y2="10" x2="20" y3="20" x3="20"/>
+        <input x="78" y="0.5" size="9" text="_" tagg="label"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="20" y="-20" orientation="n"/>
+        <terminal x="20" y="20" orientation="s"/>
+    </description>
+</definition>

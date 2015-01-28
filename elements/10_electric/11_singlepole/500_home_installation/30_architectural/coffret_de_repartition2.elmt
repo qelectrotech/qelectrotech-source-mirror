@@ -1,0 +1,30 @@
+<definition width="40" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">صندوق توزيع</name>
+        <name lang="el">Κουτί διανομής</name>
+        <name lang="en">Assembly</name>
+        <name lang="de">Verteiler mit 4 Strängen</name>
+        <name lang="it">Scatola di derivazione</name>
+        <name lang="fr">Coffret de repartition</name>
+        <name lang="pl">Rozdzielnica</name>
+        <name lang="cs">Rozvodna</name>
+        <name lang="nl">Verdeler</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="-1" y2="45" x2="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="1" y2="45" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="0" y2="45" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="0" y2="40" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="20" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-20" x2="10"/>
+        <terminal x="10" y="20" orientation="e"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="10" y="-20" orientation="e"/>
+        <terminal x="-10" y="10" orientation="w"/>
+        <terminal x="10" y="40" orientation="e"/>
+    </description>
+</definition>

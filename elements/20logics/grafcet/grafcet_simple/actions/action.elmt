@@ -1,0 +1,22 @@
+<definition width="140" version="0.3" hotspot_x="0" hotspot_y="15" height="30" type="element" ic="true" orientation="dnyn">
+    <names>
+        <name lang="ar">فعل</name>
+        <name lang="de">Aktion</name>
+        <name lang="pt">acção</name>
+        <name lang="el">Ενέργεια</name>
+        <name lang="en">action</name>
+        <name lang="it">Azione</name>
+        <name lang="fr">action</name>
+        <name lang="pl">Działanie</name>
+        <name lang="es">acción</name>
+        <name lang="cs">Čin</name>
+        <name lang="nl">Actie</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="8" y="2" size="8" text="action"/>
+        <rect width="125" x="7" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="2" y="0" orientation="w"/>
+    </description>
+</definition>

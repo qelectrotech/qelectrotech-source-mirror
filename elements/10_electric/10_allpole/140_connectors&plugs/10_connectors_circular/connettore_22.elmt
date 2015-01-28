@@ -1,0 +1,81 @@
+<definition width="90" version="0.4" hotspot_x="45" hotspot_y="45" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="it">Connettore maschio 22 Pin</name>
+        <name lang="en">22 Pin Male Connector</name>
+        <name lang="de">Rundstecker 22-polig</name>
+        <name lang="fr">Connecteur male 22 broches</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="19" y="7" size="4" text="W"/>
+        <text x="21" y="-3" size="4" text="V"/>
+        <text x="20" y="18" size="4" text="X"/>
+        <text x="20" y="-13" size="4" text="U"/>
+        <arc width="80" x="-40" y="-40" antialias="true" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" start="87" angle="-354"/>
+        <text x="-10" y="22" size="4" text="I"/>
+        <circle x="-16.5" y="17.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-3.5" y="20.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7"/>
+        <circle x="-16.5" y="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-3.5" y="4.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7"/>
+        <circle x="-3.5" y="-11.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7"/>
+        <circle x="24.5" y="-7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-3.5" y="-27.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7"/>
+        <circle x="11.5" y="17.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text x="-11" y="-18" size="4" text="E"/>
+        <circle x="24.5" y="2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="11.5" y="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="11.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="24.5" y="13.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="24.5" y="-17.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="11.5" y="-22.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="11.5" y="-12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-16.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-29.5" y="-7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-29.5" y="1.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-16.5" y="-22.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-29.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <polygon x4="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-39.5" x1="-2" y2="-35.5" x2="-2" y3="-35.5" x3="2" y4="-39.5"/>
+        <circle x="-29.5" y="-17.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-16.5" y="-12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text x="-24" y="-13" size="4" text="A"/>
+        <text x="-11" y="-8" size="4" text="F"/>
+        <text x="-24" y="6" size="4" text="C"/>
+        <text x="-11" y="2" size="4" text="G"/>
+        <text x="7" y="-19" size="4" text="N"/>
+        <text x="-2" y="20" size="4" text="M"/>
+        <text x="-1" y="4" size="4" text="L"/>
+        <text x="-24" y="-3" size="4" text="B"/>
+        <text x="-11" y="12" size="4" text="H"/>
+        <text x="7" y="2" size="4" text="R"/>
+        <text x="8" y="12" size="4" text="S"/>
+        <text x="-1" y="-16" size="4" text="J"/>
+        <text x="-24" y="17" size="4" text="D"/>
+        <text x="7" y="-8" size="4" text="P"/>
+        <text x="8" y="22" size="4" text="T"/>
+        <text x="-1" y="0" size="4" text="K"/>
+        <input x="45" y="4.5" size="9" rotate="true" text="_" tagg="none"/>
+        <terminal x="0" y="-27" orientation="n"/>
+        <terminal x="-16" y="0" orientation="w"/>
+        <terminal x="-16" y="-20" orientation="w"/>
+        <terminal x="-16" y="-10" orientation="w"/>
+        <terminal x="-29" y="15" orientation="w"/>
+        <terminal x="-29" y="-15" orientation="w"/>
+        <terminal x="-29" y="-5" orientation="w"/>
+        <terminal x="0" y="-11" orientation="n"/>
+        <terminal x="-29" y="4" orientation="w"/>
+        <terminal x="-16" y="20" orientation="w"/>
+        <terminal x="-16" y="10" orientation="w"/>
+        <terminal x="16" y="0" orientation="e"/>
+        <terminal x="16" y="-20" orientation="e"/>
+        <terminal x="16" y="-10" orientation="e"/>
+        <terminal x="16" y="20" orientation="e"/>
+        <terminal x="16" y="10" orientation="e"/>
+        <terminal x="29" y="16" orientation="e"/>
+        <terminal x="29" y="-15" orientation="e"/>
+        <terminal x="29" y="-5" orientation="e"/>
+        <terminal x="29" y="5" orientation="e"/>
+        <terminal x="0" y="11" orientation="s"/>
+        <terminal x="0" y="27" orientation="s"/>
+    </description>
+</definition>

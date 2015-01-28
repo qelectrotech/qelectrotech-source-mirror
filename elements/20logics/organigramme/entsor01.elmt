@@ -1,0 +1,21 @@
+<definition width="110" version="0.3" hotspot_x="15" hotspot_y="15" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="el">Είσοδος/Έξοδος</name>
+        <name lang="en">Input / Output</name>
+        <name lang="it">Ingresso/uscita</name>
+        <name lang="fr">Entrée/Sortie</name>
+        <name lang="pl">Blok wejścia/wyjścia</name>
+        <name lang="es">Entrada/Salida</name>
+        <name lang="cs">Vstup/Výstup</name>
+        <name lang="nl">Ingang / Uitgang</name>
+    </names>
+    <informations>ezza</informations>
+    <description>
+        <polygon x4="80" y5="30" x5="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="-10" y2="0" x2="0" y3="0" x3="90" y4="30"/>
+        <input x="-6" y="13.5" size="9" rotate="true" text="Entrée-Sortie"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="40" y2="31" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="40" y2="-1" x2="40"/>
+        <terminal x="40" y="40" orientation="s"/>
+        <terminal x="40" y="-10" orientation="n"/>
+    </description>
+</definition>

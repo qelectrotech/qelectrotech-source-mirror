@@ -1,0 +1,22 @@
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="40" height="80" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">عدّاد زمني(en_60617)</name>
+        <name lang="de">Betriebsstundenzähler (en_60617)</name>
+        <name lang="el">Ωρόμετρο (en_60617)</name>
+        <name lang="en">Hour counter(en_60617) </name>
+        <name lang="it">Conta tempo (en_60617)</name>
+        <name lang="fr">Compteur horaire (en_60617)</name>
+        <name lang="pl">Licznik godzin (en_60617)</name>
+        <name lang="cs">Počítadlo hodin (en_60617)</name>
+        <name lang="nl">Bedrijfsurenteller (en_60617)</name>
+    </names>
+    <informations>https://github.com/jonasstein/qelectrotech-symbols
+EN 60617</informations>
+    <description>
+        <text x="-4" y="12" size="9" text="h"/>
+        <rect width="40" x="-20" y="-10" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="40" x="-20" y="-30" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="-34" orientation="n"/>
+        <terminal x="0" y="34" orientation="s"/>
+    </description>
+</definition>

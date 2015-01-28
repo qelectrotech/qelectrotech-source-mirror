@@ -1,0 +1,25 @@
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">And</name>
+        <name lang="de">Und</name>
+        <name lang="pt">E (And)</name>
+        <name lang="el">Και (AND)</name>
+        <name lang="en">And</name>
+        <name lang="it">And</name>
+        <name lang="fr">Et</name>
+        <name lang="pl">And</name>
+        <name lang="es">Y</name>
+        <name lang="cs">A (And)</name>
+        <name lang="nl">EN</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="0" y2="2" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="0" y2="-2" x2="7"/>
+        <terminal x="0" y="-3" orientation="n"/>
+        <terminal x="8" y="-2" orientation="e"/>
+        <terminal x="8" y="2" orientation="e"/>
+        <terminal x="0" y="3" orientation="s"/>
+    </description>
+</definition>

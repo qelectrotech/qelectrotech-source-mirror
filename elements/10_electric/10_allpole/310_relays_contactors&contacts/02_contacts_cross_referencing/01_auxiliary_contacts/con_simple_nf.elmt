@@ -1,0 +1,32 @@
+<definition width="30" version="0.3" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="slave">
+    <names>
+        <name lang="ar">مُلامس بسيط (NC)</name>
+        <name lang="de">Öffner</name>
+        <name lang="ru">Проктой контакт (НЗ)</name>
+        <name lang="pt">Contacto simples (NC)</name>
+        <name lang="el">Απλή επαφή, κλειστή</name>
+        <name lang="en">Simple contact (NC)</name>
+        <name lang="it">Contatto semplice (NC)</name>
+        <name lang="fr">Contact simple (NF)</name>
+        <name lang="pl">Zestyk rozwierny</name>
+        <name lang="es">Contactor simple (NC)</name>
+        <name lang="cs">Jednoduché spojení (NC)</name>
+        <name lang="nl">contact normaal gesloten enkel simpel (NC)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <kindInformations>
+        <kindInformation name="state" show="1">NC</kindInformation>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="type" show="1">simple</kindInformation>
+        <kindInformation name="tempoType" show="0"></kindInformation>
+    </kindInformations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="5" y2="10" x2="0" y3="20" x3="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="0" y2="-9" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9" x2="0"/>
+        <input x="5.75" y="3" size="9" text="_" tagg="label"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
+    </description>
+</definition>

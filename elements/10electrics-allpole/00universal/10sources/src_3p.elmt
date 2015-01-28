@@ -1,0 +1,29 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مصدر ثلاثي القطبيّة</name>
+        <name lang="de">Drehstrom</name>
+        <name lang="ru">Трёхполюсный</name>
+        <name lang="pt">Fonte tripolar</name>
+        <name lang="en">Three-pole source</name>
+        <name lang="it">Sorgente tripolare</name>
+        <name lang="fr">Source tripolaire</name>
+        <name lang="pl">Linia trójfazowa (trójprzewodowa)</name>
+        <name lang="es">Fuente tripolar</name>
+        <name lang="cs">Třípólový zdroj</name>
+        <name lang="nl">3fasen</name>
+        <name lang="el">Τριφασικό</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="20" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+        <text x="-12" y="23" size="5" text="L3"/>
+        <text x="-12" y="3" size="5" text="L2"/>
+        <text x="-12" y="-17" size="5" text="L1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-20" x2="10"/>
+        <terminal x="10" y="-20" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="10" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="10" y="20" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

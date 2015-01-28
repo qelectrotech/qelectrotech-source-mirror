@@ -1,0 +1,63 @@
+<definition width="180" version="0.3" hotspot_x="15" hotspot_y="34" height="70" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مجس موصليّة  CLS40</name>
+        <name lang="el">Αισθητήρας αγωγιμότητας CLS40</name>
+        <name lang="en">conductivity sensor CLS40</name>
+        <name lang="it">sensore conduttività CLS40</name>
+        <name lang="fr">Sonde conductivité CLS40</name>
+        <name lang="pl">Czujnik przewodności CLS40</name>
+        <name lang="es">CLS40 Sensor de conductividad</name>
+        <name lang="cs">Čidlo vodivosti  CLS40</name>
+        <name lang="nl">Geleidbaarheids sensor CLS40</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="108" y="-18" size="7" rotate="true" text="CLS40"/>
+        <text x="-6" y="-16" size="7" text="Endress+Hauser "/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="160" y2="21" x2="160"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-10" y2="20" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-10" y2="-30" x2="160"/>
+        <text x="149.1" y="20" size="5" rotation="270" text="Marron"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="80" y2="30" x2="80"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="143" y2="21" x2="160"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="63" y2="21" x2="77"/>
+        <text x="131" y="20" size="5" rotation="270" text="Jaune"/>
+        <text x="69" y="20" size="5" rotation="270" text="Gris"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="123" y2="21" x2="137"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="43" y2="21" x2="57"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="140" y2="30" x2="140"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="60" y2="30" x2="60"/>
+        <circle x="137.172" y="18.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
+        <circle x="57.1716" y="18.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
+        <text x="91" y="20" size="5" rotation="270" text="Vert"/>
+        <text x="9" y="20" size="5" rotation="270" text="Orange"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="103" y2="21" x2="117"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="0" y2="30" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="83" y2="21" x2="97"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="23" y2="21" x2="37"/>
+        <text x="111" y="20" size="5" rotation="270" text="Blanc"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="3" y2="21" x2="17"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="-10" y2="21" x2="-3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="120" y2="30" x2="120"/>
+        <text x="50" y="20" size="5" rotation="270" text="Rouge"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="100" y2="30" x2="100"/>
+        <text x="29" y="19" size="5" rotation="270" text="Rose"/>
+        <circle x="117.172" y="18.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="40" y2="30" x2="40"/>
+        <circle x="97.1716" y="18.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="20" y2="30" x2="20"/>
+        <circle x="77.1716" y="18.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
+        <circle x="37.1716" y="18.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
+        <circle x="17.1716" y="18.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
+        <circle x="-2.82843" y="18.1716" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
+        <terminal x="0" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="20" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="40" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="60" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="80" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="100" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="120" y="30" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="140" y="30" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>

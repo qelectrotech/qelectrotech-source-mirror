@@ -1,0 +1,32 @@
+<definition width="50" version="0.3" hotspot_x="5" hotspot_y="35" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مفتاح ب 3 وضعيات بما في ذلك خط محايد</name>
+        <name lang="de">Wahlschalter 3 Positionen</name>
+        <name lang="ru">Переключатель 3-х позиционный со средним положением</name>
+        <name lang="pt">Interruptor 3 posições com neutro</name>
+        <name lang="el">Διακόπτης 3 θέσεων, 1-0-2</name>
+        <name lang="en">Switch 3 positions including neutral</name>
+        <name lang="it">Interruttore a 3 posizioni, centrale neutra</name>
+        <name lang="fr">Interrupteur 3 positions dont neutre</name>
+        <name lang="pl">Zestyk przełączny, otwrty w pozycji pośredniej</name>
+        <name lang="es">Interruptor 3 posiciones incluso neutro</name>
+        <name lang="cs">Třípolohový spínač včetně nulové</name>
+        <name lang="nl">Op/Neer contact 3 pos (NO/NO)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="10" y2="4" x2="8" y3="4" x3="12"/>
+        <input x="22" y="-7" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="10" y2="1" x2="10"/>
+        <circle x="18.5" y="-1.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <circle x="8.5" y="-16.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <circle x="-1.5" y="-1.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="0" y2="10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="20" y2="10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="10" y2="-30" x2="10"/>
+        <terminal x="0" y="10" orientation="s"/>
+        <terminal x="20" y="10" orientation="s"/>
+        <terminal x="10" y="-30" orientation="n"/>
+    </description>
+</definition>

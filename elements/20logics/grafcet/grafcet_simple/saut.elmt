@@ -1,0 +1,26 @@
+<definition width="70" version="0.3" hotspot_x="23" hotspot_y="25" height="100" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">قفز</name>
+        <name lang="de">Sprung</name>
+        <name lang="pt">Saltar</name>
+        <name lang="el">Άλμα</name>
+        <name lang="en">jump</name>
+        <name lang="it">Salto</name>
+        <name lang="fr">saut</name>
+        <name lang="pl">Skok</name>
+        <name lang="es">Saltar</name>
+        <name lang="cs">Skok</name>
+        <name lang="nl">Sprong</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-20" y="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="0" y2="19" x2="0"/>
+        <input x="-15" y="45" size="10" rotate="true" text="E 00"/>
+        <input x="15" y="2" size="8" rotate="true" text="T 00"/>
+        <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <terminal x="0" y="-5" orientation="n"/>
+        <terminal x="-12" y="0" orientation="w"/>
+    </description>
+</definition>

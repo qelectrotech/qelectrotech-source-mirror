@@ -1,0 +1,34 @@
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="25" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">ملف حلقي بثلاث أقطاب</name>
+        <name lang="de">Stromwandler 3-polig</name>
+        <name lang="pt">Núcleo toroidal de 3 polos</name>
+        <name lang="el">Τοροειδές πηνίο 3 πόλων</name>
+        <name lang="en">3-poles toroidal core</name>
+        <name lang="it">Toroide a 3 poli</name>
+        <name lang="fr">Tore 3 pôles</name>
+        <name lang="pl">Przekładnik prądowy trójtorowy</name>
+        <name lang="es">Núcleo toroide 3 polos</name>
+        <name lang="cs">Prstencové jádro se třemi póly</name>
+        <name lang="nl">Stroomtransformator ringkern 3AC</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="5" y2="-10" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="14" y2="-10" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="14" y2="0" x2="10"/>
+        <ellipse width="40" x="-30" y="-2.5" antialias="true" height="5" style="line-style:dashed;line-weight:thin;filling:white;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-10" y2="10" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="0" y2="10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-20" y2="10" x2="-20"/>
+        <terminal x="0" y="-16" orientation="n"/>
+        <terminal x="0" y="11" orientation="s"/>
+        <terminal x="15" y="0" orientation="e"/>
+        <terminal x="15" y="-10" orientation="e"/>
+        <terminal x="-10" y="-16" orientation="n"/>
+        <terminal x="-10" y="11" orientation="s"/>
+        <terminal x="-20" y="-16" orientation="n"/>
+        <terminal x="-20" y="11" orientation="s"/>
+    </description>
+</definition>

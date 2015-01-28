@@ -1,0 +1,13 @@
+<definition width="20" version="0.4" hotspot_x="12" hotspot_y="8" height="20" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Corner</name>
+        <name lang="fr">Coin</name>
+        <name lang="it">Angolo</name>
+        <name lang="cs">Roh</name>
+    </names>
+    <informations></informations>
+    <description>
+        <terminal x="0" y="4" nameHidden="1" number="" name="" orientation="s"/>
+        <terminal x="-4" y="0" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

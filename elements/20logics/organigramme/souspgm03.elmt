@@ -1,0 +1,23 @@
+<definition width="110" version="0.3" hotspot_x="15" hotspot_y="15" height="80" type="element" orientation="dyyy">
+    <names>
+        <name lang="el">Υποπρόγραμμα</name>
+        <name lang="en">subprogram</name>
+        <name lang="it">Processo predefinito</name>
+        <name lang="fr">sous programme</name>
+        <name lang="pl">Blok fragmentu</name>
+        <name lang="es">Subprograma 03</name>
+        <name lang="cs">Pod program</name>
+        <name lang="nl">Subprogramma</name>
+    </names>
+    <informations>ezza</informations>
+    <description>
+        <rect width="100" x="-10" y="0.15447" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="5" y="23.5" size="9" rotate="true" text="sous pgm"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="40" y2="51" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.89565" x1="40" y2="-0.113043" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-4" y2="50" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="84" y2="50" x2="84"/>
+        <terminal x="40" y="60" orientation="s"/>
+        <terminal x="40" y="-10" orientation="n"/>
+    </description>
+</definition>

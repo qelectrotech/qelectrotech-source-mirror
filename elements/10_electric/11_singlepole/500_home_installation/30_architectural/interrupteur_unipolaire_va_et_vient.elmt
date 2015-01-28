@@ -1,0 +1,23 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مفتاح أحادي القطب (مبدّل طرف سلم)</name>
+        <name lang="de">Serienschalter 1-polig
+</name>
+        <name lang="el">Διακόπτης εναλλαγής (αλέ-ρετούρ)</name>
+        <name lang="en">Two-way single pole switch
+</name>
+        <name lang="it">Deviatore unipolare</name>
+        <name lang="fr">Interrupteur unipolaire va-et-vient
+</name>
+        <name lang="pl">Łącznik schodowy</name>
+        <name lang="cs">Schodišťový jednopólový vypínač</name>
+        <name lang="nl">Serieschakelaar (1)</name>
+    </names>
+    <informations>EN 60617: 11-14-06</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="-2" y2="30" x2="-9" y3="28" x3="-12"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="2" y2="-1" x2="9" y3="1" x3="12"/>
+        <circle x="-5" y="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <terminal x="0" y="10" orientation="n"/>
+    </description>
+</definition>

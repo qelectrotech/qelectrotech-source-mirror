@@ -1,0 +1,39 @@
+<definition width="100" version="0.3" hotspot_x="48" hotspot_y="30" height="60" type="element" ic="true" orientation="dnny">
+    <names>
+        <name lang="el">Πηνίο ρελέ με πολικότητα</name>
+        <name lang="en">Polarized relay</name>
+        <name lang="de">Relais polarisiert mit Wechsler</name>
+        <name lang="it">Relè polarizzato</name>
+        <name lang="fr">Relais polarisé fonctionnant pour un seul sens du courant et retournant en position de repos après coupure</name>
+        <name lang="pl">Przekaźnik spolaryzowany, działający przy jednym kierunku prądu w cewce</name>
+        <name lang="es">Relé polarizado, de trabajo en una dirección de la corriente en la bobina</name>
+        <name lang="cs">Polarizované relé, pracující v jednom směru proudu v cívce</name>
+        <name lang="nl">Polair relais</name>
+    </names>
+    <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="34.5" y="-16.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-5" y2="0" x2="25"/>
+        <circle x="-13.5" y="13.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3"/>
+        <input x="19.5" y="-15.45" size="4" text="2"/>
+        <input x="20" y="16" size="4" text="3"/>
+        <input x="0" y="-16" size="4" text="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="10" y2="-9" x2="23"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-42" x2="-42" x3="-38" x4="-38" antialias="false" x5="-42" x6="-42" x7="-35" x8="-35" x9="-42" y1="-10" y10="-7" y2="-7" y3="-7" y4="7" y5="7" x10="-42" y6="10" y7="10" y8="-10" y9="-10"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="30" y2="10" x2="30" y3="-10" x3="20"/>
+        <rect width="7" x="-42" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-9" x2="10"/>
+        <rect width="30" x="-35" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="30" y2="-10" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-20" y2="10" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-20" y2="-10" x2="-20"/>
+        <input x="-34" y="18" size="4" text="A2"/>
+        <input x="-34" y="-17" size="4" text="A1"/>
+        <input x="31" y="0.5" size="9" text="_" tagg="label"/>
+        <terminal x="-20" y="-20" orientation="n"/>
+        <terminal x="-20" y="20" orientation="s"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="30" y="-20" orientation="n"/>
+        <terminal x="30" y="20" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,68 @@
+<definition width="80" version="0.3" hotspot_x="40" hotspot_y="50" height="190" type="element" orientation="ydyy">
+    <names>
+        <name lang="ar">دائرة مدمجة 16 دبوس, مُرقّمة</name>
+        <name lang="de">Integrierte Schaltung 16 Anschlüsse nummeriert</name>
+        <name lang="el">Ολοκληρωμένο κύκλωμα 16 ακροδεκτών, αριθμημένο</name>
+        <name lang="en">Integrated Circuit, 16 pins, numbered</name>
+        <name lang="it">Circuito integrato, 16 pin numerati</name>
+        <name lang="fr">Circuit integré 16 broches , numerotées</name>
+        <name lang="pl">Układ scalony, 16 nóżek (ponumerowany)</name>
+        <name lang="cs">Integrovaný obvod, 16 očíslovaných kolíků</name>
+        <name lang="nl">IC 16 pin nummers</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-30" y2="0" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="-30" y2="80" x2="-21"/>
+        <text x="13" y="100.667" size="5" text="9"/>
+        <text x="10" y="80.6667" size="5" text="10"/>
+        <text x="10" y="60.6667" size="5" text="11"/>
+        <text x="10" y="40.6667" size="5" text="12"/>
+        <text x="-18" y="60.6667" size="5" text="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="100" x1="-30" y2="100" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="21" y2="40" x2="30"/>
+        <text x="-19" y="-18.3333" size="5" text="2"/>
+        <text x="-18" y="40.6667" size="5" text="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="21" y2="60" x2="30"/>
+        <text x="-19" y="-38.3333" size="5" text="1"/>
+        <text x="-18" y="100.667" size="5" text="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-30" y2="60" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="21" y2="80" x2="30"/>
+        <text x="10" y="-18.3333" size="5" text="15"/>
+        <text x="-18" y="80.6667" size="5" text="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-30" y2="40" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="100" x1="21" y2="100" x2="30"/>
+        <text x="-18.5" y="21.6667" size="5" text="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-30" y2="20" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-30" y2="-20" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-30" y2="-40" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="21" y2="-40" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="21" y2="-20" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="21" y2="0" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="21" y2="20" x2="30"/>
+        <arc width="5" x="-2.5" y="-47" antialias="true" height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-180"/>
+        <text x="10" y="-38.3333" size="5" text="16"/>
+        <text x="-19" y="1.6667" size="5" text="3"/>
+        <input x="-28.5" y="122" size="9" rotate="true" text="_" tagg="label"/>
+        <text x="10" y="21.6667" size="5" text="13"/>
+        <rect width="40" x="-20" y="-45" antialias="false" height="150" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="10.5" y="1.66667" size="5" text="14"/>
+        <terminal x="31" y="-40" orientation="e"/>
+        <terminal x="31" y="-20" orientation="e"/>
+        <terminal x="31" y="0" orientation="e"/>
+        <terminal x="31" y="20" orientation="e"/>
+        <terminal x="-31" y="-40" orientation="w"/>
+        <terminal x="-31" y="20" orientation="w"/>
+        <terminal x="-31" y="-20" orientation="w"/>
+        <terminal x="31" y="40" orientation="e"/>
+        <terminal x="31" y="60" orientation="e"/>
+        <terminal x="31" y="80" orientation="e"/>
+        <terminal x="31" y="100" orientation="e"/>
+        <terminal x="-31" y="40" orientation="w"/>
+        <terminal x="-31" y="100" orientation="w"/>
+        <terminal x="-31" y="60" orientation="w"/>
+        <terminal x="-31" y="80" orientation="w"/>
+        <terminal x="-31" y="0" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,20 @@
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مفتاح أحادي القطب</name>
+        <name lang="el">Μονός διακόπτης</name>
+        <name lang="en">Single pole switch</name>
+        <name lang="de">Schalter 1-polig</name>
+        <name lang="it">Interruttore unipolare</name>
+        <name lang="fr">Interrupteur unipolaire</name>
+        <name lang="pl">Łącznik jednobiegunowy</name>
+        <name lang="cs">Jednopólový spínač</name>
+        <name lang="nl">Schakelaar (1)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="2" y2="-10" x2="10" y3="-8" x3="12"/>
+        <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <terminal x="0" y="-3" orientation="n"/>
+    </description>
+</definition>

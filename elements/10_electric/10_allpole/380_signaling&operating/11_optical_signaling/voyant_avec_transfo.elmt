@@ -1,0 +1,25 @@
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">مصباح بمُحوّل</name>
+        <name lang="el">Λυχνία με μετασχηματιστή</name>
+        <name lang="en">Light with transformer</name>
+        <name lang="de">Meldeleuchte mit Transformator</name>
+        <name lang="it">Luce con trasformatore</name>
+        <name lang="fr">Voyant avec transformateur</name>
+        <name lang="pl">Wskaźnik optyczny transformatorowy</name>
+        <name lang="cs">Světlo s transformátorem (elektrickým měničem)</name>
+        <name lang="nl">Lamp met transformator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <circle x="7" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="24.03" y2="7.03" x2="9.97"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="9.97" y2="7.03" x2="24.03"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

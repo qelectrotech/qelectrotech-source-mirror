@@ -1,0 +1,33 @@
+<definition width="250" version="0.4" hotspot_x="125" hotspot_y="123" height="250" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">HMI TACTILE 1</name>
+        <name lang="en">Touch panel 1</name>
+        <name lang="de">Touchpanel 1</name>
+        <name lang="it">HMI TATTILE 1</name>
+        <name lang="fr">HMI TACTILE 1</name>
+        <name lang="pl">HMI TACTILE 1</name>
+        <name lang="es">HMI TÁCTIL 1</name>
+        <name lang="cs">HMI TACTILE 1</name>
+        <name lang="nl">HMI Aanraakscherm groot</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-87" y="113" size="4" rotate="true" text="-_"/>
+        <arc width="15" x="-120" y="105.5" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <input x="-67" y="113" size="4" rotate="true" text="PE_"/>
+        <arc width="15" x="-120" y="-120" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="15" x="105" y="105.5" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="15" x="105" y="-120" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-120" x1="-112" y2="-120" x2="112"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-113" x1="-120" y2="112" x2="-120"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-112.984" x1="120" y2="111.983" x2="120"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="120.5" x1="-113.45" y2="120.5" x2="111.404"/>
+        <rect width="200" x="-100" y="-100" antialias="false" height="200" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-28" y="-8.5" size="5" rotate="true" text="MARQUE_"/>
+        <input x="-106" y="113" size="4" rotate="true" text="+_"/>
+        <terminal x="-100" y="121" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-80" y="121" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="-60" y="121" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>

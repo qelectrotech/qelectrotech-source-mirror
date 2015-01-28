@@ -1,0 +1,60 @@
+<definition width="80" version="0.3" hotspot_x="40" hotspot_y="110" height="230" type="element" orientation="ydyy">
+    <names>
+        <name lang="ar">دائرة مدمجة 20 دبوس</name>
+        <name lang="de">Integrierte Schaltung 20 Anschlüsse</name>
+        <name lang="el">Ολοκληρωμένο κύκλωμα 20 ακροδεκτών</name>
+        <name lang="en">Integrated Circuit, 20 pins</name>
+        <name lang="it">Circuito integrato, 20 pin</name>
+        <name lang="fr">Circuit integré 20 broches </name>
+        <name lang="pl">Układ scalony, 20 nóżek</name>
+        <name lang="cs">Integrovaný obvod, 20 kolíků</name>
+        <name lang="nl">IC 20 pin</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="21" y2="60" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-30" y2="60" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" x1="-30" y2="-60" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="21" y2="80" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="-30" y2="80" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-30" y2="20" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-30" y2="40" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="21" y2="-20" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="21" y2="0" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-30" y2="0" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="21" y2="20" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-30" y2="-20" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="21" y2="40" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-30" y2="-40" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" x1="-30" y2="-80" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-100" x1="-30" y2="-100" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-100" x1="21" y2="-100" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" x1="21" y2="-80" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" x1="21" y2="-60" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="21" y2="-40" x2="30"/>
+        <arc width="5" x="-2.5" y="-107" antialias="true" height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-180"/>
+        <input x="-30.5" y="102" size="9" rotate="true" text="_" tagg="label"/>
+        <rect width="40" x="-20" y="-105" antialias="false" height="190" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="31" y="-100" orientation="e"/>
+        <terminal x="31" y="-80" orientation="e"/>
+        <terminal x="31" y="-60" orientation="e"/>
+        <terminal x="31" y="-40" orientation="e"/>
+        <terminal x="-31" y="-100" orientation="w"/>
+        <terminal x="-31" y="-40" orientation="w"/>
+        <terminal x="-31" y="-80" orientation="w"/>
+        <terminal x="31" y="-20" orientation="e"/>
+        <terminal x="31" y="0" orientation="e"/>
+        <terminal x="31" y="20" orientation="e"/>
+        <terminal x="31" y="40" orientation="e"/>
+        <terminal x="-31" y="-20" orientation="w"/>
+        <terminal x="-31" y="40" orientation="w"/>
+        <terminal x="-31" y="0" orientation="w"/>
+        <terminal x="-31" y="20" orientation="w"/>
+        <terminal x="-31" y="-60" orientation="w"/>
+        <terminal x="-31" y="80" orientation="w"/>
+        <terminal x="-31" y="60" orientation="w"/>
+        <terminal x="31" y="60" orientation="e"/>
+        <terminal x="31" y="80" orientation="e"/>
+    </description>
+</definition>

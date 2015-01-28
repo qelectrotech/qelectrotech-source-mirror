@@ -1,0 +1,22 @@
+<definition width="40" version="0.3" hotspot_x="15" hotspot_y="5" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">رابط</name>
+        <name lang="el">Σύνδεσμος</name>
+        <name lang="en">Connector</name>
+        <name lang="de">Stecker</name>
+        <name lang="it">Connettore</name>
+        <name lang="fr">Connecteur</name>
+        <name lang="pl">Złącze</name>
+        <name lang="cs">Spojka</name>
+        <name lang="nl">Connector</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="10" x2="0"/>
+        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="0" y2="5" x2="10" y3="15" x3="10" y4="10"/>
+        <terminal x="-10" y="10" orientation="w"/>
+        <terminal x="20" y="10" orientation="e"/>
+    </description>
+</definition>

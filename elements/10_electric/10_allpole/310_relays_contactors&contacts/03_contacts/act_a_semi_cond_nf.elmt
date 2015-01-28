@@ -1,0 +1,28 @@
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Electronic switching device with NC contact </name>
+        <name lang="de">Öffner Halbleiter betätigt</name>
+        <name lang="it">Contatto a comando elettronico (NC)</name>
+        <name lang="fr">Dispositif de commande à semi-conducteur NC</name>
+        <name lang="pl">Zestyk rozwierny sterowany elektronicznie</name>
+        <name lang="cs">Přepínací zařízení s kontaktem NC řízené elektronicky</name>
+        <name lang="nl">Electronisch contact (NC)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="20" x="-30" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-10" y2="0" x2="3"/>
+        <input x="-10" y="16" size="4" text="2"/>
+        <input x="-10" y="-16" size="4" text="1"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="0" y2="10" x2="0" y3="-10" x3="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="0" y2="-9" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9" x2="0"/>
+        <input x="8" y="0.5" size="9" text="_" tagg="label"/>
+        <polygon x4="-16" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-3" x1="-16" y2="-1" x2="-20" y3="1" x3="-20" y4="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3" x1="-20" y2="3" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" x1="-24" y2="0" x2="-20"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,33 @@
+<definition width="50" version="0.4" hotspot_x="17" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Three-phase transformer Yd</name>
+        <name lang="de">Transformator Stern/Dreieck</name>
+        <name lang="it">Trasformatore 3F Yd (forma 1)</name>
+        <name lang="fr">Transformateur triphasé etoile triangle</name>
+        <name lang="pl">Transformator tyrójfazowy Yd (forma 1)</name>
+        <name lang="es">Transformador trifásico Yd</name>
+        <name lang="cs">Třífázový autotransformátor Yd, hvězda trojúhelník (forma 1)</name>
+        <name lang="nl">driefasen transformator Ster driehoek</name>
+        <name lang="el">Τριφασικός μετασχηματιστής, αστέρας τρίγωνο</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="-4" y2="-13" x2="0" y3="-16" x3="4"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" x1="-5" y2="31" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="-5" y2="-31" x2="5"/>
+        <circle x="-15" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31" x1="-5" y2="27" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-31" x1="-5" y2="-35" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-9" x2="0"/>
+        <circle x="-15" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="-5" y2="-33" x2="5"/>
+        <polygon x4="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="-4" y2="16" x2="4" y3="9" x3="0" y4="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="0" y2="-25" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x1="-5" y2="29" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="0" y2="40" x2="0"/>
+        <input x="17" y="0" size="9" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="-40" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="40" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>

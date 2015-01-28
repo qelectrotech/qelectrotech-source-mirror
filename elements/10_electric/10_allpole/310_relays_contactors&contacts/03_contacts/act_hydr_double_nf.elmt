@@ -1,0 +1,29 @@
+<definition width="50" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Contact NC pneumatically or hydraulically controlled, two-way</name>
+        <name lang="de">Öffner Zylinder betätigt 2 Richtungen</name>
+        <name lang="fr">Contact NC à commande pneumatique ou hydraulique, dans les deux sens</name>
+        <name lang="pl">Zestyk rozwierny sterowany pneumatycznie lub hydraulicznie, dwukierunkowy</name>
+        <name lang="cs">Kontakt NC řízený pneumaticky nebo hydraulicky, dvoucestný</name>
+        <name lang="it">Contatto NC a comando pneumatico o idraulico, nei 2 sensi</name>
+        <name lang="nl">pneumatisch/hydraulisch 2 pos (NC)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-20" y2="0" x2="3"/>
+        <input x="-10" y="16" size="4" text="2"/>
+        <rect width="20" x="-30" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input x="-10" y="-16" size="4" text="1"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="0" y2="10" x2="0" y3="-10" x3="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="0" y2="-9" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9" x2="0"/>
+        <input x="8" y="0.5" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="-20" y2="5" x2="-20"/>
+        <polygon x4="-12" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-8" x1="-12" y2="-9" x2="-16" y3="-7" x3="-16" y4="-8"/>
+        <polygon x4="-28" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-8" x1="-28" y2="-9" x2="-24" y3="-7" x3="-24" y4="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-8" x1="-24" y2="-8" x2="-16"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
+    </description>
+</definition>

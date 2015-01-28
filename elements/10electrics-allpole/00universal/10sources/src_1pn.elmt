@@ -1,0 +1,26 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مصدر وحيد القطبية + محايد N</name>
+        <name lang="de">Wechselstrom L + N</name>
+        <name lang="ru">Однополюсный + нейтраль</name>
+        <name lang="pt">Fonte unipolar + neutro</name>
+        <name lang="en">Single-pole source + neutral</name>
+        <name lang="it">Sorgente unipolare + neutro</name>
+        <name lang="fr">Source unipolaire + neutre</name>
+        <name lang="pl">Linia jednofazowa (dwuprzewodowa)</name>
+        <name lang="es">Fuente unipolo + neutro</name>
+        <name lang="cs">Jednopólový zdroj + nulový</name>
+        <name lang="nl">Wisselspanning L + nul N</name>
+        <name lang="el">Μονοφασικό + Ουδέτερος</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="10" x2="10"/>
+        <text x="-12" y="13" size="5" text="N"/>
+        <text x="-12" y="-7" size="5" text="L"/>
+        <terminal x="10" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="10" y="10" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

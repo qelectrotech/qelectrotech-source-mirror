@@ -1,0 +1,18 @@
+<definition width="30" version="0.3" hotspot_x="0" hotspot_y="10" height="20" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">قفل ميكانيكي</name>
+        <name lang="el">Μηχανική μανδάλωση</name>
+        <name lang="en">Mechanical lock</name>
+        <name lang="de">Mechanische Verriegelung</name>
+        <name lang="it">blocco meccanico</name>
+        <name lang="fr">Verrouillage Mécannique</name>
+        <name lang="pl">Blokada mechaniczna</name>
+        <name lang="cs">Mechanický zámek</name>
+        <name lang="nl">mechanisch grendel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="8" y2="-7" x2="18" y3="4" x3="13" y4="-7"/>
+    </description>
+</definition>

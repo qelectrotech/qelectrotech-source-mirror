@@ -1,0 +1,30 @@
+<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">حسّاس حثّي NC</name>
+        <name lang="el">Επαγωγικός αισθητήρας, κλειστή επαφή</name>
+        <name lang="en">Inductif sensor  NC</name>
+        <name lang="de">Induktiver Sensor 2-Leiter Öffner</name>
+        <name lang="it">Sensore induttivo NC</name>
+        <name lang="fr">Capteur inductif NC</name>
+        <name lang="pl">Czujnik indukcyjny rozwierny</name>
+        <name lang="es">Sensor inductivo NC</name>
+        <name lang="cs">Indukční čidlo NC</name>
+        <name lang="nl">Inductief contact 2 (NC)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-11" x1="-2.6875" y2="-11" x2="9.3125"/>
+        <text x="-19" y="-14" size="4" text="e"/>
+        <text x="-21.6875" y="-14" size="9" text="F"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="15" y2="0" x2="10" y3="10" x3="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="9.9375" y2="-19" x2="15.9375"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="9.9375" y2="-19" x2="9.9375"/>
+        <input x="15.6875" y="-7" size="9" text="_" tagg="label"/>
+        <polygon x4="-12.6875" y5="-11" x5="-18.6875" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-11" x1="-18.6875" y2="-17" x2="-12.6875" y3="-11" x3="-6.6875" y4="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-11.6875" y2="-7" x2="-11.6875"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-13.6875" y2="-7" x2="-13.6875"/>
+        <terminal x="10" y="-30" orientation="n"/>
+        <terminal x="10" y="10" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,30 @@
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="40" type="element" ic="true" orientation="dnnn">
+    <names>
+        <name lang="ar">واتميتر أفقي</name>
+        <name lang="de">Wattmeter waagerecht</name>
+        <name lang="ru">Ватметр (горизонтальный)</name>
+        <name lang="pt">Wattímetro horizontal</name>
+        <name lang="el">Βατόμετρο οριζόντιο</name>
+        <name lang="en">Horizontal wattmeter</name>
+        <name lang="it">Wattmetro orizzontale</name>
+        <name lang="fr">Wattmètre horizontal</name>
+        <name lang="pl">Watomierz (poziomo)</name>
+        <name lang="es">Vatímetro horizontal</name>
+        <name lang="cs">Wattmetr, vodorovný</name>
+        <name lang="nl">Wattmeter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7.5" x1="7.5" y2="15" x2="10" y3="20" x3="10"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7.5" x1="-7.5" y2="15" x2="-10" y3="20" x3="-10"/>
+        <polygon x4="2.5" y5="-6" x5="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6" x1="-5" y2="6" x2="-2.5" y3="0" x3="0" y4="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-21" y2="0" x2="-10"/>
+        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <terminal x="-21" y="0" orientation="w"/>
+        <terminal x="21" y="0" orientation="e"/>
+        <terminal x="-10" y="20" orientation="s"/>
+        <terminal x="10" y="20" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,25 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">سمّاعة</name>
+        <name lang="el">Ηχείο</name>
+        <name lang="en">Speaker</name>
+        <name lang="de">Lautsprecher</name>
+        <name lang="it">Altoparlante</name>
+        <name lang="fr">Haut-parleur</name>
+        <name lang="pl">Głośnik</name>
+        <name lang="cs">Tlampač</name>
+        <name lang="nl">Luidspreker</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="3" y5="-8" x5="3" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8" x1="3" y2="-14" x2="11" y3="14" x3="11" y4="8"/>
+        <rect width="6" x="-3" y="-8" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-3" y2="-5" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-3" y2="5" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-10" y2="-11" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-10" y2="5" x2="-10"/>
+        <terminal x="-10" y="-14" orientation="n"/>
+        <terminal x="-10" y="14" orientation="s"/>
+    </description>
+</definition>

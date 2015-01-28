@@ -1,0 +1,28 @@
+<definition width="40" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Contact NO pneumatically or hydraulically controlled, one-way</name>
+        <name lang="de">Schliesser Zylinder betätigt 1 Richtung</name>
+        <name lang="fr">Actionné par énergie hydraulique ou
+pneumatique, à simple effet</name>
+        <name lang="pl">Zestyk zwierny sterowany pneumatycznie lub hydraulicznie, jednokierunkowy</name>
+        <name lang="cs">Kontakt NO řízený pneumaticky nebo hydraulicky, jednocestný</name>
+        <name lang="it">Contatto NO a comando pneumatico o idraulico</name>
+        <name lang="nl">pneumatisch/hydraulisch 1 pos (NO)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-10" y="16" size="4" text="4"/>
+        <rect width="20" x="-30" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input x="-10" y="-16" size="4" text="3"/>
+        <input x="1" y="0.5" size="9" text="_" tagg="label"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="-20" y2="5" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-3"/>
+        <polygon x4="-12" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-8" x1="-12" y2="-9" x2="-16" y3="-7" x3="-16" y4="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-8" x1="-28" y2="-8" x2="-16"/>
+        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="0" y="-20" orientation="n"/>
+    </description>
+</definition>

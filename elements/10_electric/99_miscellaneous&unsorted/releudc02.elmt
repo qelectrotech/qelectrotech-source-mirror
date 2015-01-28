@@ -1,0 +1,39 @@
+<definition width="70" version="0.4" hotspot_x="20" hotspot_y="34" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ro">Releu DC 01</name>
+        <name lang="de">Relais DC 01</name>
+        <name lang="en">Relay DC 01</name>
+        <name lang="fr">Relais DC 01</name>
+        <name lang="it">Relè DC 01</name>
+    </names>
+    <informations>Angelescu Constantin
+titus0818@yahoo.com</informations>
+    <description>
+        <polygon x4="33.2704" y5="-6.46065" x5="33.2704" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-6.46065" x1="33.2704" y2="-4.28123" x2="33.2704" y3="-5.49203" x3="34.9521" y4="-6.46065"/>
+        <polygon x4="37.8284" y5="-6.64699" x5="37.8284" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-6.64699" x1="37.8284" y2="-4.50374" x2="37.8284" y3="-5.36104" x3="36.3612" y4="-6.64699"/>
+        <rect width="20" x="-10" y="-19" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="0" y2="-19" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="0" y2="21" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17.4837" x1="-15" y2="5.55349" x2="-15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.42222" x1="14" y2="-15.5333" x2="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-15" y2="-4" x2="14"/>
+        <polygon x4="20.0027" y5="-6.46065" x5="20.0027" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-6.46065" x1="20.0027" y2="-4.28123" x2="20.0027" y3="-5.49202" x3="21.6844" y4="-6.46065"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.45876" x1="20.0027" y2="18.577" x2="20.0027"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.45455" x1="33.2704" y2="19.4442" x2="33.2704"/>
+        <polygon x4="24.5607" y5="-6.64699" x5="24.5607" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-6.64699" x1="24.5607" y2="-4.40568" x2="24.5607" y3="-5.3022" x3="22.9365" y4="-6.64699"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.28123" x1="24.4253" y2="-2.10182" x2="24.4253"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.66593" x1="24.4253" y2="-1.66593" x2="28.8478"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.85674" x1="28.8478" y2="19.4632" x2="28.8478"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.28123" x1="37.6929" y2="-2.10182" x2="37.6929"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.10182" x1="37.6929" y2="-2.10182" x2="42.1155"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.29025" x1="42.1155" y2="19.4606" x2="42.1155"/>
+        <text x="19" y="-7" size="4" text="ND"/>
+        <text x="32" y="-7" size="4" text="ND"/>
+        <terminal x="0" y="-29" orientation="n"/>
+        <terminal x="0" y="30" orientation="s"/>
+        <terminal x="20.0027" y="20.1282" orientation="s"/>
+        <terminal x="33.2704" y="20.1282" orientation="s"/>
+        <terminal x="42.1155" y="20.1282" orientation="s"/>
+        <terminal x="28.8478" y="20.1282" orientation="s"/>
+    </description>
+</definition>

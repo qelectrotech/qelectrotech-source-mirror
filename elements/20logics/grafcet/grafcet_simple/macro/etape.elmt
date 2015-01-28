@@ -1,0 +1,30 @@
+<definition width="90" version="0.3" hotspot_x="45" hotspot_y="30" height="90" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">ماكرو خطوة</name>
+        <name lang="de">Makro Schritt</name>
+        <name lang="pt">Etapa Macro</name>
+        <name lang="el">Βήμα Makro</name>
+        <name lang="en">Macro step</name>
+        <name lang="it">Macro</name>
+        <name lang="fr">Macro etape</name>
+        <name lang="pl">Krok makro</name>
+        <name lang="es">Macro etapa</name>
+        <name lang="cs">Makro krok</name>
+        <name lang="nl">Macro Stap</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17" x1="-35" y2="17" x2="35"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-35" y2="-18" x2="35"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.6667" x1="0" y2="38.6667" x2="0"/>
+        <text x="18" y="42" size="8" text="1"/>
+        <input x="-30" y="13.6667" size="6" rotate="true" text=""/>
+        <rect width="26" x="-13" y="37.6667" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <input x="-20" y="-0.3333" size="10" rotate="true" text="M 00"/>
+        <rect width="70" x="-35" y="-20.3333" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-12" y="39.6667" orientation="w"/>
+        <terminal x="0" y="44.6667" orientation="s"/>
+        <terminal x="0" y="-25" orientation="n"/>
+    </description>
+</definition>

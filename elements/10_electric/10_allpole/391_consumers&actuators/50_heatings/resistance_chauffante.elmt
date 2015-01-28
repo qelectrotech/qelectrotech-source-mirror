@@ -1,0 +1,26 @@
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مقاومة تسخين</name>
+        <name lang="el">Αντίσταση θέρμανσης</name>
+        <name lang="en">Resistance heating</name>
+        <name lang="de">Heizwiderstand</name>
+        <name lang="it">Resistenza di riscaldamento</name>
+        <name lang="fr">Résistance chauffante</name>
+        <name lang="pl">Grzejnik rezystancyjny</name>
+        <name lang="nl">Verwarmingsweerstand</name>
+        <name lang="cs">Vytápěcí odpor</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-5" y2="4" x2="-5"/>
+        <rect width="20" x="-10" y="-4" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="5" y2="4" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="0" y2="4" x2="0"/>
+        <input x="-10.5" y="-9.6667" size="9" rotate="true" text="R_" tagg="label"/>
+        <terminal x="-21" y="0" orientation="w"/>
+        <terminal x="21" y="0" orientation="e"/>
+    </description>
+</definition>

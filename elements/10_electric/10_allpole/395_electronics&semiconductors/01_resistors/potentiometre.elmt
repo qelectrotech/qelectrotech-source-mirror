@@ -1,0 +1,28 @@
+<definition width="60" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">بوتونسيومتر</name>
+        <name lang="el">Ποτενσιόμετρο</name>
+        <name lang="en">Potentiometer</name>
+        <name lang="de">Potentiometer</name>
+        <name lang="it">Potenziometro</name>
+        <name lang="fr">Potentiomètre</name>
+        <name lang="pl">Potencjometr</name>
+        <name lang="cs">Potenciometr</name>
+        <name lang="nl">Potentiometer</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="-15" y2="0" x2="-5"/>
+        <input x="7.5" y="3.3333" size="9" rotate="true" text="R_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="4" y2="-10" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-4" y2="10" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="4" y2="-10" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-4" y2="10" x2="-4"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+        <terminal x="-16" y="0" orientation="w"/>
+    </description>
+</definition>
