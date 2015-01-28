@@ -1,7 +1,8 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="de">Kabelader</name>
-        <name lang="fr">fil de câble</name>
+        <name lang="en">Wire of cable</name>
+        <name lang="fr">Fil de cable</name>
     </names>
     <informations></informations>
     <description>

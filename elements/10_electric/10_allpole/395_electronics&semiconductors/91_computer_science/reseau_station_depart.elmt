@@ -1,0 +1,28 @@
+<definition width="80" version="0.3" hotspot_x="34" hotspot_y="72" height="160" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">RESEAU STATION TETE</name>
+        <name lang="en">Network station first</name>
+        <name lang="de">Netzwerkstation Anfang</name>
+        <name lang="it">RETE Stazione di partenza</name>
+        <name lang="fr">RESEAU STATION TETE</name>
+        <name lang="pl">RESEAU STATION TETE</name>
+        <name lang="es">Estación de Red Principal</name>
+        <name lang="cs">RESEAU STATION TETE</name>
+        <name lang="nl">Netwerk Station eerste</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-14" y="-55.5" size="5" rotate="true" text="ADR : _"/>
+        <arc width="4.5" x="-31.2" y="76.575" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <arc width="4.5" x="-31.2" y="-70" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="4.5" x="36.3" y="76.575" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="4.5" x="36.3" y="-70" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-70" x1="-28.8" y2="-70" x2="38.4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65.45" x1="-31.2" y2="80.8" x2="-31.2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65.4396" x1="40.8" y2="80.789" x2="40.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="86.325" x1="-29.2351" y2="86.325" x2="38.2212"/>
+        <input x="-20" y="44.5" size="5" rotate="true" text="STATION_"/>
+        <terminal x="40.8" y="10" orientation="e"/>
+    </description>
+</definition>

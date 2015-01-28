@@ -1,0 +1,31 @@
+<definition width="160" version="0.3" hotspot_x="0" hotspot_y="0" height="160" type="element" orientation="dnnn">
+    <names>
+        <name lang="ar">توقيف طارئ</name>
+        <name lang="en">Label - Emergency stopping - en</name>
+        <name lang="de">Schild Not-Aus englisch</name>
+        <name lang="fr">Etiquette - Arrêt d'urgence - en</name>
+        <name lang="pl">Etykieta - Zatrzymanie awaryjne - en</name>
+        <name lang="cs">Štítek - nouzové zastavení - en</name>
+        <name lang="it">Etichetta - Emergency stop (en)</name>
+        <name lang="nl">Label Noodstop (en)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="12.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="135"/>
+        <circle x="40" y="40" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="80"/>
+        <text x="33.9183" y="70.5649" size="16" rotation="292" text="M"/>
+        <text x="111.101" y="132.145" size="16" rotation="322" text="P"/>
+        <text x="86.8087" y="140.164" size="16" rotation="-14" text="O"/>
+        <text x="60.1319" y="137.648" size="16" rotation="14" text="T"/>
+        <text x="38.4748" y="124.376" size="16" rotation="37" text="S"/>
+        <text x="119.981" y="55.7351" size="16" rotation="68" text="C"/>
+        <text x="126.02" y="71.3489" size="16" rotation="89" text="Y"/>
+        <text x="33.9795" y="87.6511" size="16" rotation="269" text="E"/>
+        <text x="108.361" y="42.532" size="16" rotation="45" text="N"/>
+        <text x="92.7788" y="34.6776" size="16" rotation="24" text="E"/>
+        <text x="73" y="33" size="16" text="G"/>
+        <text x="55.3587" y="39.7035" size="16" rotation="337" text="R"/>
+        <text x="41.8492" y="52.435" size="16" rotation="315" text="E"/>
+    </description>
+</definition>

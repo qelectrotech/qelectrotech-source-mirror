@@ -1,0 +1,62 @@
+<definition width="50" version="0.3" hotspot_x="3" hotspot_y="95" height="100" type="element" orientation="dyyy">
+    <names>
+        <name lang="el">GV2ME</name>
+        <name lang="en">GV2ME</name>
+        <name lang="it">GV2ME</name>
+        <name lang="fr">GV2ME</name>
+        <name lang="pl">GV2ME</name>
+        <name lang="cs">GV2ME</name>
+        <name lang="nl">GV2ME</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="16" y="-85" size="3" text="3L2"/>
+        <text x="32" y="-85" size="3" text="5L3"/>
+        <text x="17" y="-6" size="3" text="4T2"/>
+        <text x="1" y="-6" size="3" text="2T1"/>
+        <text x="34" y="-6" size="3" text="6T3"/>
+        <rect width="45" x="0" y="-90" antialias="false" height="85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="24" y="-34" antialias="false" height="8" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="14" x="2" y="-68" antialias="false" height="24" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" x1="35.5" y2="-80" x2="40.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="4.5" y2="-15" x2="9.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" x1="19.5" y2="-80" x2="24.5"/>
+        <circle x="34" y="-84" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <circle x="35" y="-19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-60" x1="7" y2="-60" x2="11"/>
+        <circle x="18" y="-84" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="36.5" y2="-15" x2="41.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="20.5" y2="-15" x2="25.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="39" y2="-13" x2="39"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-82" x1="38" y2="-78" x2="38"/>
+        <circle x="19" y="-19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-82" x1="22" y2="-78" x2="22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="23" y2="-13" x2="23"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="7" y2="-13" x2="7"/>
+        <circle x="3" y="-19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65" x1="32" y2="-49" x2="32"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65" x1="32" y2="-65" x2="43"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-70" x1="0" y2="-70" x2="44"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="0" y2="-25" x2="45"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65" x1="43" y2="-49" x2="43"/>
+        <arc width="11" x="32" y="-50" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-68" x1="18" y2="-52" x2="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-68" x1="18" y2="-68" x2="29"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-68" x1="29" y2="-52" x2="29"/>
+        <arc width="11" x="18" y="-53" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <text x="35" y="-66" size="3" text="ON"/>
+        <text x="32" y="-43" size="3" text="start"/>
+        <text x="18" y="-43" size="3" text="stop"/>
+        <circle x="5" y="-64" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-62" x1="9" y2="-58" x2="9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-63" x1="37.5" y2="-59" x2="37.5"/>
+        <circle x="21.2639" y="-65.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
+        <circle x="2" y="-84" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <input x="-2" y="-37.5" size="3" rotate="true" text="GV2ME"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" x1="3.5" y2="-80" x2="8.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-82" x1="6" y2="-78" x2="6"/>
+        <input x="21" y="-29.5" size="4" rotate="true" text="QM "/>
+        <text x="1" y="-85" size="3" text="1L1"/>
+    </description>
+</definition>

@@ -1,0 +1,35 @@
+<definition width="160" version="0.3" hotspot_x="0" hotspot_y="0" height="160" type="element" orientation="dnnn">
+    <names>
+        <name lang="ar">توقيف طارئ</name>
+        <name lang="en">Label - Emergency stopping - pl</name>
+        <name lang="de">Schild Not-Aus polnisch</name>
+        <name lang="fr">Etiquette - Arrêt d'urgence - pl</name>
+        <name lang="pl">Etykieta - Zatrzymanie awaryjne - pl</name>
+        <name lang="cs">Štítek - nouzové zastavení - pl</name>
+        <name lang="it">Etichetta - Zatrzymanie awaryjne (pl)</name>
+        <name lang="nl">Label Noodstop (pl)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="12.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="135"/>
+        <circle x="40" y="40" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="80"/>
+        <text x="133.03" y="109.234" size="16" rotation="291" text="Y"/>
+        <text x="117.849" y="126.435" size="16" rotation="314" text="N"/>
+        <text x="102.272" y="136.189" size="16" rotation="333" text="J"/>
+        <text x="82.4578" y="140.523" size="16" rotation="351" text="Y"/>
+        <text x="60.8199" y="137.771" size="16" rotation="11" text="R"/>
+        <text x="44.4935" y="129.128" size="16" rotation="29" text="A"/>
+        <text x="26.8062" y="111.126" size="16" rotation="50" text="W"/>
+        <text x="19.9806" y="92.7351" size="16" rotation="72" text="A"/>
+        <text x="125.159" y="68.6522" size="14" rotation="85" text="K"/>
+        <text x="122.687" y="61.1009" size="16" rotation="70" text="I"/>
+        <text x="113.629" y="46.8349" size="16" rotation="53" text="N"/>
+        <text x="100.946" y="38.3181" size="16" rotation="33" text="Z"/>
+        <text x="81.5118" y="32.8698" size="16" rotation="10" text="C"/>
+        <text x="61.1423" y="37.0597" size="16" rotation="-15" text="&#x104;"/>
+        <text x="46.3636" y="46.9136" size="16" rotation="321" text="&#x141;"/>
+        <text x="36.6584" y="61.4436" size="16" rotation="301" text="Y"/>
+        <text x="31.8698" y="81.4882" size="16" rotation="280" text="W"/>
+    </description>
+</definition>

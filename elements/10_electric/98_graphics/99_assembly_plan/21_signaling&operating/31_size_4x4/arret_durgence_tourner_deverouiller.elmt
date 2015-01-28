@@ -1,0 +1,26 @@
+<definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Emergency stop turned unlocked</name>
+        <name lang="de">Not-Aus Taster mit Drehentriegelung</name>
+        <name lang="fr">Arret d'urgence tourné dévérouillé</name>
+        <name lang="pl">Łącznik awaryjny odblokowywany przez obracanie</name>
+        <name lang="cs">Nouzové zastavení odblokované obrácením</name>
+        <name lang="ar">توقيف طوارئ - دوران للإطلاق</name>
+        <name lang="it">Arresto d'emergenza, sblocco a rotazione</name>
+        <name lang="nl">Knop Noodstop draai reset</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="50" x="-25" y="-25" antialias="true" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-60" angle="-100"/>
+        <arc width="50" x="-25" y="-25" antialias="true" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" start="60" angle="-100"/>
+        <arc width="50" x="-25" y="-25" antialias="true" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-100"/>
+        <circle x="-36" y="-36" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="72"/>
+        <circle x="-38" y="-38" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="76"/>
+        <circle x="-12" y="-12" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="24"/>
+        <circle x="-40" y="-40" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="80"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-24.8065" x1="3.23586" y2="-24.3065" x2="6.23586"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="12.2753" x1="-22.3248" y2="6.67531" x2="-24.1248"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="14.5784" x1="20.0095" y2="17.5784" x2="18.0095"/>
+    </description>
+</definition>

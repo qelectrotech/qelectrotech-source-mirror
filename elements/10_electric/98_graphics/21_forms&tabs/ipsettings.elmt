@@ -1,0 +1,49 @@
+<definition width="220" version="0.4" hotspot_x="5" hotspot_y="27" height="130" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="nl">IP settings</name>
+        <name lang="be">IP settings</name>
+        <name lang="de">IP Einstellungen</name>
+        <name lang="fr">IP settings</name>
+        <name lang="it">Configurazione IP</name>
+        <name lang="en">IP settings</name>
+    </names>
+    <informations/>
+    <description>
+        <rect width="40" x="160" y="10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="40" x="80" y="10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="40" x="120" y="10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" x="10" y="10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" x="10" y="40" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" x="10" y="70" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="164" y="20.5" size="9" rotate="true" text="255"/>
+        <rect width="40" x="80" y="40" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="40" x="80" y="70" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="124" y="20.5" size="9" rotate="true" text="255"/>
+        <input x="84" y="20.5" size="9" rotate="true" text="255"/>
+        <rect width="40" x="120" y="40" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="40" x="120" y="70" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="40" x="40" y="10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="40" x="160" y="70" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="40" x="160" y="40" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="124" y="50.5" size="9" rotate="true" text="255"/>
+        <input x="124" y="80.5" size="9" rotate="true" text="255"/>
+        <input x="84" y="80.5" size="9" rotate="true" text="255"/>
+        <input x="84" y="50.5" size="9" rotate="true" text="255"/>
+        <input x="18" y="20.5" size="4" rotate="true" text="IP"/>
+        <input x="164" y="80.5" size="9" rotate="true" text="255"/>
+        <input x="164" y="50.5" size="9" rotate="true" text="255"/>
+        <rect width="40" x="40" y="70" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="40" x="40" y="40" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="44" y="20.5" size="9" rotate="true" text="255"/>
+        <input x="7" y="80.5" size="4" rotate="true" text="Gateway"/>
+        <input x="7" y="50.5" size="4" rotate="true" text="SUB net"/>
+        <input x="44" y="50.5" size="9" rotate="true" text="255"/>
+        <input x="44" y="80.5" size="9" rotate="true" text="255"/>
+        <rect width="210" x="0" y="0" antialias="false" height="100" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="210" x="0" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="33" y="-10.5" size="9" rotate="true" text="NETWERK settings"/>
+        <terminal x="10" y="25" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="10" y="55" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="10" y="85" nameHidden="1" number="" name="" orientation="n"/>
+    </description>
+</definition>

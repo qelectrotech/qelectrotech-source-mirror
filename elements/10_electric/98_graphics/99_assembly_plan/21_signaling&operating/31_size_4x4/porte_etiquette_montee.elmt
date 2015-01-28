@@ -1,0 +1,24 @@
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="53" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">حامل مُلصق أعلى</name>
+        <name lang="el">Ετικέτα, πάνω</name>
+        <name lang="en">Label holder mounted</name>
+        <name lang="de">Schild Pfeil nach oben</name>
+        <name lang="it">Etichetta - Salita</name>
+        <name lang="fr">Porte étiquette montée</name>
+        <name lang="pl">Góra</name>
+        <name lang="cs">Nahoru</name>
+        <name lang="nl">Label houder vast</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-42" x1="-1" y2="-26" x2="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-41" x1="1" y2="-26" x2="1"/>
+        <line length1="2" length2="4" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-26" x1="0" y2="-46" x2="0"/>
+        <rect width="40" x="-20" y="-48" antialias="false" height="24" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50" x1="-22" y2="-50" x2="22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="22" y2="-50" x2="22"/>
+        <line length1="3" length2="3" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-22" y2="-50" x2="-22"/>
+    </description>
+</definition>

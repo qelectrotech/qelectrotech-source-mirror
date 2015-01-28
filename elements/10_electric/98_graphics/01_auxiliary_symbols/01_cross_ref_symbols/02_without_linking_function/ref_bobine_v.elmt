@@ -1,0 +1,20 @@
+<definition width="20" version="0.4" hotspot_x="8" hotspot_y="11" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مرجع ملف (عمودي)</name>
+        <name lang="en">Reference coil v</name>
+        <name lang="it">Riferimento bobine / (verticale)</name>
+        <name lang="fr">Reference bobine v</name>
+        <name lang="pl">Odsyłacz 4 (pionowo)</name>
+        <name lang="es">Referencia bobina v</name>
+        <name lang="cs">Srovnávací cívka (svislá)</name>
+        <name lang="nl">referentie spoel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="2.9667" y2="-6" x2="2.9667"/>
+        <rect width="6" x="-0.0334" y="-4" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="2.9667" y2="2" x2="2.9667"/>
+        <input x="-4.0334" y="6.5" size="5" rotate="true" text="_" tagg="label"/>
+    </description>
+</definition>

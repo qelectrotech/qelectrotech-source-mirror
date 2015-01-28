@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de">Hydraulik</name>
         <name lang="fr">Hydraulique</name>
         <name lang="en">Hydraulic</name>\
         <name lang="el">Υδραυλικά</name>
@@ -8,6 +9,5 @@
         <name lang="it">Idraulica</name>
         <name lang="nl">Hydrauliek</name>
         <name lang="ru">Гидравлика</name>
-        <name lang="de">Hydraulik</name>
     </names>
 </qet-directory>

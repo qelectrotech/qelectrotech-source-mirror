@@ -1,0 +1,26 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="el">Φίλτρο Schaff</name>
+        <name lang="en">Filter Schaffner</name>
+        <name lang="it">Filtro Schaff</name>
+        <name lang="fr">Filtre_schaff</name>
+        <name lang="pl">Filtr Schaff</name>
+        <name lang="cs">Filtr Schaff</name>
+        <name lang="nl">Filter Schaffner</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="13" y5="19" x5="13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="19" x1="-13" y2="26" x2="-6" y3="26" x3="6" y4="19"/>
+        <rect width="26" x="-13" y="-23" antialias="false" height="41" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-3" y="-29" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26" x1="-3" y2="-26" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="0" y2="-24" x2="0"/>
+        <rect width="20" x="-10.5" y="-20" antialias="false" height="35" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="4" y="8" size="8" rotation="-90" text="Filtre"/>
+        <circle x="-3" y="19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22" x1="-3" y2="22" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x1="0" y2="24" x2="0"/>
+        <polygon x4="13" y5="-23" x5="13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-23" x1="-13" y2="-30" x2="-6" y3="-30" x3="6" y4="-23"/>
+    </description>
+</definition>

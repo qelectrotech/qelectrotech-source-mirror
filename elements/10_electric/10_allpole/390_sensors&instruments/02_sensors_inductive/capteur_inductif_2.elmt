@@ -1,7 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">حسّاس حثّي بطرفين</name>
-        <name lang="be">Induktiver Sensor 2-Leiter</name>
+        <name lang="de">Induktiver Sensor 2-Leiter</name>
         <name lang="el">Επαγωγικός αισθητήρας, 2 ακροδέκτες, ανοικτή επαφή</name>
         <name lang="en">Inductive sensor 2 terminals</name>
         <name lang="de">Induktiver Sensor 2-Leiter Schliesser</name>

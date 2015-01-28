@@ -1,7 +1,8 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="de">Verdrahtung</name>
-        <name lang="fr">filerie</name>
+        <name lang="en">Wiring</name>
+        <name lang="fr">Filerie</name>
     </names>
     <informations></informations>
     <description>

@@ -1,0 +1,20 @@
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مفتاح ضاغط</name>
+        <name lang="el">Μπουτόν</name>
+        <name lang="en">Pushbutton</name>
+        <name lang="de">Drucktaster</name>
+        <name lang="it">Pulsante</name>
+        <name lang="fr">Bouton poussoir</name>
+        <name lang="pl">Przycisk</name>
+        <name lang="cs">Tlačítko</name>
+        <name lang="nl">Drukknop</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-14" y="-14" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="28"/>
+        <circle x="-20" y="-20" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="40"/>
+        <circle x="-22" y="-22" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="44"/>
+    </description>
+</definition>
