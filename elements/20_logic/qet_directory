@@ -1,7 +1,8 @@
 <qet-directory>
     <names>
+        <name lang="de">Logik</name>
+        <name lang="el">Λογικά κυκλώματα</name>
         <name lang="en">Logic</name>
         <name lang="fr">Logique</name>
-        <name lang="de">Logik</name>
     </names>
 </qet-directory>
