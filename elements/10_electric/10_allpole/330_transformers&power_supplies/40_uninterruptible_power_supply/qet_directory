@@ -2,6 +2,7 @@
     <names>
         <name lang="en">Uninterruptible power supplies</name>
         <name lang="fr">Alimentations sans interruption</name>
+        <name lang="pl">Zasilacze awaryjne</name>
         <name lang="de">Unterbrechungsfreie Stromversorgungen</name>
     </names>
 </qet-directory>
