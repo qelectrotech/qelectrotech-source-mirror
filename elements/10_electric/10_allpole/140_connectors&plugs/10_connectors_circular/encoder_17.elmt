@@ -1,9 +1,10 @@
-<definition width="90" version="0.4" hotspot_x="45" hotspot_y="45" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="110" version="0.3" hotspot_x="44" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="it">Encoder maschio 17 Pin</name>
-        <name lang="en">Encoder plug 17 Pin</name>
         <name lang="de">Rundstecker 17-polig</name>
+        <name lang="en">Encoder plug 17 Pin</name>
+        <name lang="it">Encoder maschio 17 Pin</name>
         <name lang="fr">Fiche codeur 17 broches</name>
+        <name lang="pl">Złącze enkodera</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -44,7 +45,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="-11" y="0" size="4" text="P"/>
         <text x="7" y="0" size="4" text="T"/>
         <text x="22" y="2" size="4" text="K"/>
-        <input x="47" y="2" size="9" rotate="true" text="_" tagg="none"/>
+        <input x="47" y="2" size="9" rotate="true" text="_"/>
         <terminal x="0" y="-32" orientation="n"/>
         <terminal x="29" y="15" orientation="e"/>
         <terminal x="-28" y="15" orientation="w"/>

@@ -1,9 +1,10 @@
-<definition width="90" version="0.4" hotspot_x="45" hotspot_y="45" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="110" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="it">Connettore maschio 22 Pin</name>
-        <name lang="en">22 Pin Male Connector</name>
         <name lang="de">Rundstecker 22-polig</name>
+        <name lang="en">22 Pin Male Connector</name>
+        <name lang="it">Connettore maschio 22 Pin</name>
         <name lang="fr">Connecteur male 22 broches</name>
+        <name lang="pl">Złącze dwudziestodwustykowe</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -54,7 +55,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="7" y="-8" size="4" text="P"/>
         <text x="8" y="22" size="4" text="T"/>
         <text x="-1" y="0" size="4" text="K"/>
-        <input x="45" y="4.5" size="9" rotate="true" text="_" tagg="none"/>
+        <input x="45" y="4.5" size="9" rotate="true" text="_"/>
         <terminal x="0" y="-27" orientation="n"/>
         <terminal x="-16" y="0" orientation="w"/>
         <terminal x="-16" y="-20" orientation="w"/>

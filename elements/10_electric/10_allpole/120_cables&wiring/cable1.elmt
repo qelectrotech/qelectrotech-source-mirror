@@ -1,8 +1,9 @@
-<definition width="120" version="0.4" hotspot_x="50" hotspot_y="15" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="120" version="0.3" hotspot_x="50" hotspot_y="15" height="50" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="fr">Cable 3 phases+terre</name>
         <name lang="de">Kabel 4G</name>
         <name lang="it">Cavo 3 fasi + terra</name>
+        <name lang="fr">Cable 3 phases+terre</name>
+        <name lang="pl">Oznaczenie przewodu czterożyłowego</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
