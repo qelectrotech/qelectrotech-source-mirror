@@ -1,4 +1,4 @@
-<definition width="130" version="0.3" hotspot_x="70" hotspot_y="35" height="80" type="element" orientation="dyyy" link_type="master">
+<definition width="130" version="0.3" hotspot_x="66" hotspot_y="39" height="80" type="element" orientation="dyyy">
     <names>
         <name lang="ar">قاطع تفاضلي</name>
         <name lang="de">Fehlerstromschutzschalter 4P</name>
@@ -9,12 +9,9 @@
         <name lang="fr">Disjoncteur différentiel</name>
         <name lang="pl">Wyłącznik różnicowoprądowy czterobiegunowy</name>
         <name lang="es">Dispositivo diferenciale residual</name>
-        <name lang="cs">Rozdílový jistič</name>
         <name lang="nl">Aardlekschakelaar</name>
+        <name lang="cs">Rozdílový jistič</name>
     </names>
-    <kindInformations>
-        <kindInformation name="type" show="1">protection</kindInformation>
-    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
@@ -54,15 +51,17 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="20" y2="-20" x2="20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-20" y2="-20" x2="-20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-20" x2="0"/>
-        <input x="43" y="-9.5" size="9" text="_" tagg="label"/>
+        <input x="43" y="-9.5" size="9" text="_"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-52" y2="4" x2="40"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-10" x1="-34" y2="-10" x2="37"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22" x1="40" y2="22" x2="-52"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-4" x1="-40" y2="30" x2="-40"/>
-        <text x="-56" y="16" size="6" text="I&#x394;"/>
+        <text x="-56" y="16" size="6" text="IΔ"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-52" y2="7" x2="-52"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x1="-52" y2="22" x2="-52"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="13" x1="-43" y2="13" x2="-40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="40" y2="10" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="40" y2="16" x2="-20"/>
         <terminal x="-20" y="-30" orientation="n"/>
         <terminal x="-20" y="30" orientation="s"/>
         <terminal x="0" y="-30" orientation="n"/>
