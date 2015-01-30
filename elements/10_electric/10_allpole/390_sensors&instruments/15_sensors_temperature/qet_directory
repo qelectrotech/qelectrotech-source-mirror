@@ -2,6 +2,7 @@
     <names>
         <name lang="de">Sensoren Temperatur</name>
         <name lang="en">Sensors temperature</name>
+        <name lang="pl">Czujniki temperatury</name>
         <name lang="fr">Capteurs température</name>
     </names>
 </qet-directory>
