@@ -1,0 +1,19 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="2" height="10" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">أنابيب شعريّة</name>
+        <name lang="en">Capillary tubing</name>
+        <name lang="fr">Capillaire</name>
+        <name lang="pl">Kapilara</name>
+        <name lang="cs">Vlásečnicové trubky</name>
+        <name lang="it">Capillare</name>
+        <name lang="nl">Capilair pijpje</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-3" y="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="10"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,22 @@
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Cylinder bellows</name>
+        <name lang="fr">Pneuride</name>
+        <name lang="pl">Siłownik mieszkowy</name>
+        <name lang="cs">Vlnovcový válec (válcový měch)</name>
+        <name lang="ar">اسطوانة منفاخ</name>
+        <name lang="it">Cilindro a soffietto</name>
+        <name lang="nl">Cilnder luchtzak</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="30" x="20" y="-20" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="10" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.05" x1="-10.05" y2="-20.05" x2="49.95"/>
+        <arc width="30" x="-10" y="-20" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="20" x2="20"/>
+        <polygon x4="18" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="18" y2="10" x2="22" y3="6" x3="20" y4="10"/>
+        <terminal x="20" y="20" orientation="s"/>
+    </description>
+</definition>

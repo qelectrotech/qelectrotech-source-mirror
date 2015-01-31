@@ -1,0 +1,27 @@
+<definition width="40" version="0.4" hotspot_x="19" hotspot_y="24" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">ترنزيستور ثنائي القطبيّة PNP</name>
+        <name lang="en">Bipolar transistor PNP</name>
+        <name lang="it">Transistor bipolare PNP</name>
+        <name lang="fr">Transistor bipolaire PNP</name>
+        <name lang="pl">Tranzystor biopolarny PNP</name>
+        <name lang="ro">Tranzistor PNP cu radiator</name>
+        <name lang="nl">Transistor bipolare PNP</name>
+        <name lang="cs">Dvoupólový tranzistor PNP</name>
+    </names>
+    <informations>Author: titus
+titus0818@yahoo.com</informations>
+    <description>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="2" x1="0" y2="8" x2="8.925" y3="12.2" x3="8.925"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="-10"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3" x1="0" y2="-8.14777" x2="8.82" y3="-11.7512" x3="8.82"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="5" x2="0"/>
+        <circle x="-8" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="22"/>
+        <input x="15" y="-1.5" size="9" rotate="true" text="_" tagg="none"/>
+        <circle x="-10" y="-13" antialias="false" style="line-style:dotted;line-weight:normal;filling:none;color:black" diameter="26"/>
+        <polygon x4="3.25" y5="3" x5="2" y6="3" x6="4.5" y7="3" x7="4.5" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="3" x1="5.75" y2="6.75" x2="3.25" y3="6.75" x3="3.25" y4="6.75"/>
+        <terminal x="9" y="-16" orientation="n"/>
+        <terminal x="9" y="17" orientation="s"/>
+        <terminal x="-13" y="0" orientation="w"/>
+    </description>
+</definition>

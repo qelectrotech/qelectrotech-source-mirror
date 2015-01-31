@@ -1,0 +1,41 @@
+<definition width="150" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Distributor 3 / 3 Control, Electromagnetic</name>
+        <name lang="fr">Distributeur 3 / 3 de contrôle, commande électromagnétique</name>
+        <name lang="pl">Zawór sterujący 3/3, sterowany elektromagnetycznie, ustalany sprężynami w położeniu środkowym</name>
+        <name lang="cs">Řídící rozdělovač 3/3, řízený elektromagneticky</name>
+        <name lang="ar">مُوزّع تحكم 3/3 , تحكم كهرومغناطيسي</name>
+        <name lang="it">Distributore 3/3 di controllo, elettromagnetico</name>
+        <name lang="nl">Klep elektrisch 3/3</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.1" x1="69.95" y2="5.1" x2="69.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="50" y2="5" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="50" y2="-30" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="5" x2="20"/>
+        <rect width="90" x="15" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="18" y2="5" x2="22"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="110" y2="10" x2="120"/>
+        <polygon x4="105" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="105" y2="10" x2="125" y3="-5" x3="125" y4="-5"/>
+        <polygon x4="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="15" y2="10" x2="-5" y3="-5" x3="-5" y4="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="100" y2="5" x2="100"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.1" x1="67.95" y2="5.1" x2="71.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="48" y2="5" x2="52"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.95" x1="45.05" y2="10.05" x2="45.05"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="98" y2="5" x2="102"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.95" x1="48.05" y2="-14.95" x2="52.05"/>
+        <polygon x4="9" y5="-12" x5="11" y6="-20" x6="13" y7="-15" x7="15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="3" y2="-20" x2="5" y3="-12" x3="7" y4="-20"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="6" x2="37"/>
+        <polygon x4="40" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="10" x1="40" y2="6" x2="35" y3="4" x3="38" y4="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="80" y2="-15" x2="80"/>
+        <polygon x4="111" y5="-12" x5="113" y6="-20" x6="115" y7="-15" x7="117" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="105" y2="-20" x2="107" y3="-12" x3="109" y4="-20"/>
+        <polygon x4="80.05" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.95" x1="80.05" y2="-14.95" x2="78.05" y3="-14.95" x3="82.05" y4="-19.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.95" x1="75.05" y2="10.05" x2="75.05"/>
+        <terminal x="50" y="20" orientation="s"/>
+        <terminal x="69.95" y="20.1" orientation="s"/>
+        <terminal x="50" y="-30" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,27 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مقبس أحادي الوجه لخزانة</name>
+        <name lang="en">Socket cabinet</name>
+        <name lang="de">Steckdose Schaltschrank 1P+N+PE</name>
+        <name lang="fr">PC mono armoire</name>
+        <name lang="pl">Gniazdo wtyczkowe</name>
+        <name lang="cs">Zásuvka jednopólová skříň</name>
+        <name lang="it">Presa monofase da pannello</name>
+        <name lang="nl">Contact 1AC + aarde</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-6" y2="-16" x2="-6"/>
+        <circle x="-6" y="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle x="-8" y="-8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="16"/>
+        <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="0" y2="10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="6" y2="-16" x2="6"/>
+        <circle x="-1.5" y="-6.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3"/>
+        <circle x="2" y="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <terminal x="-6" y="-17" orientation="n"/>
+        <terminal x="6" y="-17" orientation="n"/>
+        <terminal x="0" y="17" orientation="s"/>
+    </description>
+</definition>

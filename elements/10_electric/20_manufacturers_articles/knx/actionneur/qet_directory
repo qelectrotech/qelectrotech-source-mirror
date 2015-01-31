@@ -1,0 +1,15 @@
+<qet-directory>
+    <names>
+        <name lang="de">Aktoren</name>
+        <name lang="pt">Actuador</name>
+        <name lang="en">Actuator</name>
+        <name lang="it">Attuatori</name>
+        <name lang="fr">Actionneur</name>
+        <name lang="pl">Aktuatory</name>
+        <name lang="es">Accionador</name>
+        <name lang="cs">Ovladač</name>
+        <name lang="nl">Actuator</name>
+        <name lang="be">Schakel actor</name>
+        <name lang="ru">Приводы</name>
+    </names>
+</qet-directory>

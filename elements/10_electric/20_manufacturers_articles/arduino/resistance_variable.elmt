@@ -1,0 +1,35 @@
+<definition width="60" version="0.3" hotspot_x="15" hotspot_y="25" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="el">Μεταβλητή αντίσταση</name>
+        <name lang="en">Adjustable resistance</name>
+        <name lang="it">Resistenza variabile</name>
+        <name lang="fr">Potar</name>
+        <name lang="pl">Rezystor regulacyjny</name>
+        <name lang="cs">Rezistor regulační</name>
+        <name lang="nl">Potentiometer</name>
+    </names>
+    <informations>ezza</informations>
+    <description>
+        <arc width="30" x="0" y="-15" antialias="true" height="30" style="line-style:dotted;line-weight:thin;filling:none;color:black" start="-30" angle="-300"/>
+        <rect width="43" x="-8" y="-23" antialias="false" height="46" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <arc width="40" x="-5" y="-20" antialias="true" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-30" angle="-300"/>
+        <arc width="40" x="-5" y="-20" antialias="true" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-30" angle="-300"/>
+        <arc width="37" x="-3.5" y="-18.5" antialias="true" height="37" style="line-style:dotted;line-weight:thin;filling:none;color:black" start="-30" angle="-300"/>
+        <arc width="34" x="-2" y="-17" antialias="true" height="34" style="line-style:dotted;line-weight:thin;filling:none;color:black" start="-30" angle="-300"/>
+        <arc width="26" x="2" y="-13" antialias="true" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-30" angle="-300"/>
+        <circle x="29" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="29" y="9" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="29" y="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <input x="-8" y="23" size="7" text="10K"/>
+        <rect width="12" x="20" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="27" y2="-9" x2="32"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="27" y2="9" x2="32"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-4" x2="-3" x3="-3" x4="1" antialias="false" x5="1" x6="4" x7="6" x8="4" x9="1" y1="0" y2="-1" y10="3" y3="-3" y11="3" y4="-3" y12="2" y5="-2" x10="1" y13="2" y6="-2" x11="-3" y14="1" y7="0" x12="-3" y15="1" y8="2" x13="-3" y9="2" x14="-4" x15="-4"/>
+        <circle x="7.7889" y="-7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14.4222"/>
+        <rect width="4" x="13" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="5" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="30" y="-10" orientation="e"/>
+        <terminal x="30" y="10" orientation="e"/>
+        <terminal x="30" y="0" orientation="e"/>
+    </description>
+</definition>

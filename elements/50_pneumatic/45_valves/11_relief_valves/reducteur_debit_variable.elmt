@@ -1,0 +1,24 @@
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="40" height="80" type="element" orientation="dnnn">
+    <names>
+        <name lang="en">Adjustable throttle valve</name>
+        <name lang="fr">Réducteur de
+débit variable
+</name>
+        <name lang="pl">Zawór dławiący nastawialny</name>
+        <name lang="cs">Nastavitelná škrtící klapka</name>
+        <name lang="ar">مُخفّض تدفّق قابل للتعديل</name>
+        <name lang="it">Riduttore di flusso regolabile</name>
+        <name lang="nl">Smoring regelbaar</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="30"/>
+        <polygon x4="16" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-8" x1="16" y2="-6" x2="18" y3="-10" x3="20" y4="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="-7" x2="17"/>
+        <arc width="30" x="-5" y="-32" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-45" angle="-90"/>
+        <arc width="30" x="-5" y="2" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-225" angle="-90"/>
+        <terminal x="30" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+    </description>
+</definition>

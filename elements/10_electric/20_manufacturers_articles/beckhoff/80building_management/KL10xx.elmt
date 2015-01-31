@@ -1,0 +1,73 @@
+<definition width="510" version="0.4" hotspot_x="36" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
+    <names>
+        <name lang="ar">Beckhoff KL/KS10xx DI</name>
+        <name lang="de">Beckhoff KL/KS10xx DI</name>
+        <name lang="ru">Beckhoff KL/KS10xx DI</name>
+        <name lang="pt">Beckhoff KL/KS10xx DI</name>
+        <name lang="el">Beckhoff KL/KS10xx DI</name>
+        <name lang="en">Beckhoff KL/KS10xx DI</name>
+        <name lang="it">Beckhoff KL/KS10xx DI</name>
+        <name lang="fr">Beckhoff KL/KS10xx DI</name>
+        <name lang="pl">Beckhoff KL/KS10xx DI</name>
+        <name lang="es">Beckhoff KL/KS10xx DI</name>
+        <name lang="nl">Beckhoff KL/KS10xx DI</name>
+        <name lang="cs">Beckhoff KL/KS10xx DI</name>
+    </names>
+    <informations>
+		Author:RDS for QelectroTech
+		Ref: KL1002
+		Ref: KL1012
+		Ref: KS1002
+		Ref: KS1012
+    </informations>
+    <kindInformations>
+        <kindInformation name="state" show="1">NO</kindInformation>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="type" show="1">simple</kindInformation>
+        <kindInformation name="tempoType" show="0"></kindInformation>
+    </kindInformations>
+    <description>
+        <rect width="480" x="-30" y="-40" antialias="false" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:green" y1="-38.9694" x1="210" y2="38.9669" x2="210"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:green" y1="-39.9694" x1="260" y2="37.9669" x2="260"/>
+        <rect width="53" x="-14.25" y="-36.917" antialias="false" height="13.9673" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <arc width="6" x="207" y="41" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <text x="-11" y="-26" size="6" color="white" text="KL/KS 10xx"/>
+        <arc width="6" x="257" y="41" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="6" x="157" y="41" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-84"/>
+        <arc width="6" x="157" y="41" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <rect width="12" x="436.75" y="-38.95" antialias="false" height="78" style="line-style:normal;line-weight:normal;filling:green;color:green"/>
+        <rect width="12" x="-29.25" y="-38.95" antialias="false" height="78" style="line-style:normal;line-weight:normal;filling:green;color:green"/>
+        <text x="446.75" y="12.05" size="6" rotation="270" text="K-BUS"/>
+        <text x="-19.25" y="12.05" size="6" rotation="270" text="K-BUS"/>
+        <text x="381" y="38" size="4" text="PE"/>
+        <text x="341" y="38" size="4" text="0V"/>
+        <text x="281" y="38" size="4" text="+24VDC"/>
+        <text x="241" y="38" size="4" text="DI 2"/>
+        <text x="181" y="38" size="4" text="PE"/>
+        <text x="141" y="38" size="4" text="0V"/>
+        <text x="81" y="38" size="4" text="+24VDC"/>
+        <text x="41" y="38" size="4" text="DI 1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:green" y1="-39.9694" x1="160" y2="37.9669" x2="160"/>
+        <input x="0" y="1" size="7" rotate="true" text="KL10_"/>
+        <input x="451" y="-27.5" size="9" rotate="true" text="_" tagg="label"/>
+        <input x="451" y="-07.5" size="9" rotate="true" text="_" tagg="comment"/>
+        <input x="451" y="27.5" size="9" rotate="true" text="_" tagg="manufacturer"/>
+        <input x="451" y="47.5" size="9" rotate="true" text="_" tagg="manufacturer-reference"/>
+        <input x="451" y="67.5" size="9" rotate="true" text="_" tagg="machine-manufacturer-reference"/>
+        <terminal x="260" y="-45" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="210" y="-45" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="40" y="45" nameHidden="0" number="1" name="1" orientation="s"/>
+        <terminal x="80" y="45" nameHidden="0" number="2" name="2" orientation="s"/>
+        <terminal x="140" y="45" nameHidden="0" number="3" name="3" orientation="s"/>
+        <terminal x="180" y="45" nameHidden="0" number="4" name="4" orientation="s"/>
+        <terminal x="240" y="45" nameHidden="0" number="5" name="5" orientation="s"/>
+        <terminal x="280" y="45" nameHidden="0" number="6" name="6" orientation="s"/>
+        <terminal x="340" y="45" nameHidden="0" number="5" name="5" orientation="s"/>
+        <terminal x="380" y="45" nameHidden="0" number="6" name="6" orientation="s"/>
+        <terminal x="160" y="-45" nameHidden="1" number="" name="" orientation="n"/>
+        <terminal x="160" y="41" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="210" y="41" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="260" y="41" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>

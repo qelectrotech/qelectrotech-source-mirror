@@ -1,0 +1,20 @@
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="15" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Manual valve</name>
+        <name lang="fr">vanne manuelle</name>
+        <name lang="pl">Zawór (symbol ogólny)</name>
+        <name lang="cs">Ruční klapka</name>
+        <name lang="ar">صمّام  يدوي</name>
+        <name lang="it">Valvola manuale</name>
+        <name lang="nl">Klep hand</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10.125" y2="0" x2="-19.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10.0459" y2="0" x2="19.459"/>
+        <polygon x4="9.8877" y5="-10.0459" x5="-9.8085" y6="-9.8085" x6="-9.5712" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10.0459" x1="-10.0459" y2="9.8877" x2="-10.0459" y3="-10.0459" x3="9.8877" y4="9.8085"/>
+        <terminal x="-19.3799" y="0" orientation="w"/>
+        <terminal x="19.459" y="0" orientation="e"/>
+    </description>
+</definition>

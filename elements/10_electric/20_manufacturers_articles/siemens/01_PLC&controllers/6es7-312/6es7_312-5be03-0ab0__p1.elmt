@@ -1,0 +1,45 @@
+<definition width="340" version="0.3" hotspot_x="15" hotspot_y="45" height="120" type="element" ic="true" orientation="dnnn">
+    <names>
+        <name lang="ar">6ES7 312-5BE03-0AB0 (part 1/3)</name>
+        <name lang="pt">6ES7 312-5BE03-0AB0 (parte 1/3)</name>
+        <name lang="el">6ES7 312-5BE03-0AB0 (μέρος 1/3)</name>
+        <name lang="en">6ES7 312-5BE03-0AB0 (part 1/3)</name>
+        <name lang="it">6ES7 312-5BE03-0AB0 (parte 1/3)</name>
+        <name lang="fr">6ES7 312-5BE03-0AB0 (part 1/3)</name>
+        <name lang="pl">6ES7 312-5BE03-0AB0 (część 1/3)</name>
+        <name lang="es">6ES7 312-5BE03-0AB0 (parte 1/3)</name>
+        <name lang="cs">6ES7 312-5BE03-0AB0 (část 1/3)</name>
+        <name lang="nl">6ES7 312-5BE03-0AB0 (deel 1/3)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="305" y="15" size="9" rotate="true" text="/"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="33" y2="-28" x2="277"/>
+        <polygon x4="305" y5="12" x5="300" y6="-33" x6="300" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="65" x1="300" y2="18" x2="300" y3="15" x3="295" y4="15"/>
+        <input x="268" y="-6" size="7" rotate="true" text="MPI"/>
+        <input x="301" y="-16" size="9" rotate="true" text="_" tagg="label"/>
+        <input x="-2" y="-6" size="7" rotate="true" text="24V DC"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="283" y2="-28" x2="300"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="281" y2="-29" x2="281"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="279" y2="-29" x2="279"/>
+        <input x="23" y="-18.5" size="5" rotate="true" text="M"/>
+        <input x="0" y="24.5" size="9" text="CPU 312C"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="280" y2="-29" x2="280"/>
+        <arc width="6" x="277" y="-32" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <circle x="7.4999" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="13" y2="-28" x2="27"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="60" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="-28" x2="7"/>
+        <input x="272" y="-18.5" size="5" rotate="true" text="X1"/>
+        <input x="2" y="-18.5" size="5" rotate="true" text="L+"/>
+        <circle x="27.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <input x="0" y="45.5" size="9" rotate="true" text="6ES7 312-5BE03-0AB0   part 1 of 3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-10" y2="60" x2="300"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-35" x1="277" y2="-31" x2="283"/>
+        <text x="273" y="-35" size="4" text="9"/>
+        <terminal x="280" y="-35" orientation="n"/>
+        <terminal x="30" y="-31" orientation="n"/>
+        <terminal x="10" y="-31" orientation="n"/>
+    </description>
+</definition>

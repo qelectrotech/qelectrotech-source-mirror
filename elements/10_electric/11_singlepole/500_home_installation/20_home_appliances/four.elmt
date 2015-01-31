@@ -1,0 +1,25 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+    <names>
+        <name lang="ar">فرن</name>
+        <name lang="de">Elektrischer Ofen</name>
+        <name lang="ru">Духовой шкаф</name>
+        <name lang="pt">Forno eléctrico</name>
+        <name lang="el">Ηλεκτρικός φούρνος</name>
+        <name lang="en">Electric oven</name>
+        <name lang="it">Forno elettrico</name>
+        <name lang="fr">Four électrique</name>
+        <name lang="pl">Piekarnik elektryczny</name>
+        <name lang="es">Horno eléctrico</name>
+        <name lang="cs">Elektrická kamna</name>
+        <name lang="nl">Elektrische oven</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-3.1622" y="12.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="6.3245"/>
+        <rect width="24" x="-12" y="-1" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
+        <terminal x="0" y="-13" orientation="n"/>
+    </description>
+</definition>

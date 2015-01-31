@@ -1,0 +1,49 @@
+<definition width="60" version="0.4" hotspot_x="24" hotspot_y="35" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">محرّك سداسي الأوجه</name>
+        <name lang="de">6-Phasen Motor</name>
+        <name lang="ru">Шестифазный эл. мотор</name>
+        <name lang="pt">Motor de seis fases (duplo enrolamento)</name>
+        <name lang="en">Six-phase engine</name>
+        <name lang="it">Motore trifase doppio avvolgimento</name>
+        <name lang="fr">Moteur triphasé (double enroulement)</name>
+        <name lang="pl">Silnik trójfazowy</name>
+        <name lang="es">Motor de seis fases</name>
+        <name lang="nl">DraaistroomMotor 3 fasen 6 aansluitingen</name>
+        <name lang="cs">Šestifázový motor</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="4" x="4" y="4.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <arc width="33" x="-16" y="-16" antialias="true" height="32" style="line-style:normal;line-weight:normal;filling:none;color:black" start="27" angle="-60"/>
+        <text x="24" y="-23" size="4" text="W1"/>
+        <text x="4" y="-24" size="4" text="V1"/>
+        <text x="24" y="28" size="4" text="W2"/>
+        <text x="-16" y="28" size="4" text="U2"/>
+        <text x="4" y="28" size="4" text="V2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="0" y2="30" x2="0"/>
+        <text x="-6" y="0" size="11" text="M"/>
+        <input x="50" y="0.5" size="9" text="M_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-15" x2="0"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-30" x1="-20" y2="-20" x2="-20" y3="-11" x3="-11"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-30" x1="20" y2="-20" x2="20" y3="-11" x3="11"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="30" x1="-20" y2="20" x2="-20" y3="11" x3="-11"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="30" x1="20" y2="20" x2="20" y3="11" x3="11"/>
+        <text x="-16" y="-23" size="4" text="U1"/>
+        <polygon x4="24" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="17" y2="0" x2="24" y3="5" x3="24" y4="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="20" y2="5" x2="28"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="21" y2="7" x2="27"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="23" y2="9" x2="25"/>
+        <text x="-8" y="11" size="9" text="3"/>
+        <arc width="4" x="0" y="4.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <terminal x="-20" y="30" orientation="s"/>
+        <terminal x="20" y="30" orientation="s"/>
+        <terminal x="-20" y="-30" orientation="n"/>
+        <terminal x="20" y="-30" orientation="n"/>
+        <terminal x="0" y="-31" orientation="n"/>
+        <terminal x="0" y="30" orientation="s"/>
+        <terminal x="24" y="0" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,35 @@
+<definition width="90" version="0.3" hotspot_x="10" hotspot_y="8" height="140" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="el">Ηλεκτρόδια αισθητήρα στάθμης Bamo STE</name>
+        <name lang="en">Bamo probe resistive ste</name>
+        <name lang="it">Sonda resistiva BAMO STE</name>
+        <name lang="fr">Bamo_sonde_resistif_ste</name>
+        <name lang="pl">Czujnik rezystancyjny Bamo STE</name>
+        <name lang="es">Bamo sonda resistiva ste</name>
+        <name lang="cs">Rezistivní čidlo Bamo STE</name>
+        <name lang="nl">vloeistofniveau sensor Bamo STE</name>
+    </names>
+    <informations>Rafart Renaud</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="123" x1="57" y2="123" x2="63"/>
+        <rect width="80" x="-5" y="-5" antialias="false" height="130" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="121" x1="55" y2="121" x2="65"/>
+        <text x="-4" y="124" size="7" text="BAC"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="119" x1="53" y2="119" x2="67"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="10" y2="112" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="109" x1="60" y2="119" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="112" x1="11" y2="112" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="112" x1="60" y2="12" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="22" x1="10" y2="32" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="32" x1="20" y2="22" x2="34"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="22" x1="34" y2="34" x2="43"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34" x1="43" y2="21" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="5" x1="20" y2="100" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="4" x1="34" y2="26" x2="34"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="5" x1="50" y2="60" x2="50"/>
+        <terminal x="60" y="108" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="50" y="0" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="34" y="0" nameHidden="0" number="" name="" orientation="n"/>
+    </description>
+</definition>

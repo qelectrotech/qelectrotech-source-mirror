@@ -1,0 +1,116 @@
+<definition width="200" version="0.3" hotspot_x="1" hotspot_y="0" height="240" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Head  HTB Proface</name>
+        <name lang="it">Modulo HTB Proface</name>
+        <name lang="fr">Tete HTB Proface</name>
+        <name lang="pl">Moduł THB Pro-face</name>
+        <name lang="es">Modulo THB Interface</name>
+        <name lang="cs">Modul HTB Proface</name>
+        <name lang="nl">Module HTB Proface</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <ellipse width="2.75" x="38.8" y="182.5" antialias="true" height="3.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.55" x="43.475" y="159.25" antialias="true" height="0.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="61" x="9" y="90" antialias="false" height="125" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="26" x="150" y="12" antialias="false" height="62" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="106" y="187" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="107" y="201" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.55" x="43.475" y="166.75" antialias="true" height="0.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.55" x="38.525" y="170.5" antialias="true" height="0.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.55" x="43.475" y="175" antialias="true" height="0.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.55" x="38.525" y="163" antialias="true" height="0.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.55" x="38.525" y="148" antialias="true" height="0.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="106" y="172" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="93" y="44" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="158" y="23" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="106" y="158" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="28" x="101" y="140" antialias="false" height="89" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="106" y="144" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="158" y="65" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="158" y="30" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="158" y="58" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="158" y="37" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="158" y="51" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="158" y="44" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.55" x="38.525" y="155.5" antialias="true" height="0.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="158" y="115" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="158" y="101" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="13" x="34" y="61" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="13" x="49" y="35" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="28" x="62" y="220" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="111" y="44" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="28" x="34" y="220" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="68" y="233" size="9" text="PE"/>
+        <text x="10" y="233" size="9" text="24V"/>
+        <text x="42" y="233" size="9" text="0V"/>
+        <ellipse width="0.55" x="43.475" y="143.5" antialias="true" height="0.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0.55" x="45.95" y="138.25" antialias="false" height="44.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="18" y="82" size="6" text="BAUD RATE"/>
+        <rect width="18" x="107" y="215" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="45" y="56" size="6" text="ONES"/>
+        <rect width="18" x="158" y="157" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="0.55" x="43.475" y="151" antialias="true" height="0.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="113" y="160.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle x="113" y="146.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle x="165" y="103.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <rect width="11" x="111" y="58" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="114" y="217.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <rect width="11" x="93" y="58" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="113" y="189.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle x="113" y="174.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="51" y2="37" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="73" x1="36" y2="63" x2="45"/>
+        <circle x="114" y="203.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle x="165" y="117.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <rect width="18" x="158" y="143" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="111" y="51" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="158" y="171" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="189" x="6" y="2" antialias="false" height="232" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="93" y="51" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="159" y="214" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="28" x="6" y="220" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="93" y="37" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="11" x="111" y="37" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="93" y="30" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="159" y="200" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="13" x="19" y="35" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="111" y="30" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="158" y="186" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="111" y="23" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="21" y2="37" x2="30"/>
+        <rect width="11" x="93" y="23" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="11" x="111" y="65" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="17" y="30" size="9" text="ADRESS"/>
+        <circle x="166" y="216.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <text x="15" y="56" size="6" text="TENS"/>
+        <rect width="11" x="93" y="65" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="11" x="111" y="16" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="165" y="173.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle x="166" y="202.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <rect width="61" x="9" y="14" antialias="false" height="76" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="93" y="16" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="165" y="188.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <rect width="0.55" x="35.5" y="145" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="145" x1="35.5" y2="137.5" x2="46.5"/>
+        <circle x="165" y="145.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle x="165" y="159.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="175" x1="35.5" y2="182.5" x2="46.5"/>
+        <rect width="22.55" x="30" y="130" antialias="false" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2.75" x="38.8" y="133.75" antialias="true" height="3.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="24" y="191" size="9" rotation="270" text="CAN OPEN"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="79" x1="70" y2="79" x2="194"/>
+        <rect width="43" x="87" y="12" antialias="false" height="62" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="11" x="158" y="16" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="28" x="153" y="97" antialias="false" height="132" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="158" y="129" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="165" y="131.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <input x="75" y="126.5" size="9" rotate="true" text="HTB_"/>
+        <text x="98" y="92" size="7" text="HTB1C0DM9LP"/>
+        <terminal x="20" y="236" orientation="s"/>
+        <terminal x="50" y="236" orientation="s"/>
+        <terminal x="80" y="236" orientation="s"/>
+        <terminal x="5" y="160" orientation="w"/>
+    </description>
+</definition>

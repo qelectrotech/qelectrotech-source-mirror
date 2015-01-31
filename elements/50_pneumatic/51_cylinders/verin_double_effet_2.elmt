@@ -1,0 +1,33 @@
+<definition width="80" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Double acting actuator with unilateral inhibition constant values</name>
+        <name lang="fr">Double effet actionneur avec inhibition unilatérale des valeurs constantes</name>
+        <name lang="pl">Siłownik pneumatyczny dwustronnego działania z jednostronnym hamowaniem o stałej wartości</name>
+        <name lang="cs">Dvojčinné poháněcí zařízení s jednostranným brzděním o stálé hodnotě</name>
+        <name lang="ar">اسطوانة بفعل مزدوج بتثبيط من جانب واحد ثابت</name>
+        <name lang="it">Azionatore doppio effetto con inibizione unilaterale dei valori costanti</name>
+        <name lang="nl">Cilinder met doorlopende stang en buffers</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="52" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-12" x1="-2" y2="-20" x2="-2" y3="-20" x3="52" y4="-12"/>
+        <polygon x4="27" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="27" y2="-16" x2="32" y3="-4" x3="32" y4="-4"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="15" y2="-17" x2="33"/>
+        <polygon x4="52" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-8" x1="-2" y2="0" x2="-2" y3="0" x3="52" y4="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="32" y2="-12" x2="60"/>
+        <polygon x4="23" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="22" y2="-16" x2="18" y3="-4" x3="18" y4="-4"/>
+        <polygon x4="31" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-17" x1="31" y2="-15" x2="33" y3="-20" x3="36" y4="-17"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-10" y2="-12" x2="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="32" y2="-8" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-10" y2="-8" x2="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="50" y2="10" x2="50"/>
+        <polygon x4="48" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="48" y2="0" x2="52" y3="-4" x3="50" y4="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="10" x2="0"/>
+        <polygon x4="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-2" y2="0" x2="2" y3="-4" x3="0" y4="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="27" y2="0" x2="27"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="23" y2="0" x2="23"/>
+        <terminal x="0" y="10" orientation="s"/>
+        <terminal x="50" y="10" orientation="s"/>
+    </description>
+</definition>

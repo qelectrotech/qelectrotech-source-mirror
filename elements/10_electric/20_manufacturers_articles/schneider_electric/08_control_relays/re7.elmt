@@ -1,0 +1,54 @@
+<definition width="150" version="0.3" hotspot_x="5" hotspot_y="5" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">RE7</name>
+        <name lang="el">Χρονικό  Schneider RE7</name>
+        <name lang="en">RE7</name>
+        <name lang="it">Temporizz. Schneider RE7</name>
+        <name lang="fr">RE7</name>
+        <name lang="pl">RE7</name>
+        <name lang="cs">RE7</name>
+        <name lang="nl">RE7</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="140" x="0" y="0" antialias="false" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="12" y="33.5" size="9" rotate="true" text="_" tagg="label"/>
+        <text x="106" y="52" size="5" text="Z2"/>
+        <text x="125" y="53" size="5" text="Z1"/>
+        <text x="124" y="33" size="5" text="X1"/>
+        <text x="124" y="13" size="5" text="Y1"/>
+        <text x="26" y="52" size="5" text="A2"/>
+        <text x="46" y="14" size="5" text="B2"/>
+        <text x="26" y="14" size="5" text="B1"/>
+        <text x="6" y="14" size="5" text="A1"/>
+        <text x="80" y="54" size="5" text="18"/>
+        <text x="60" y="54" size="5" text="16"/>
+        <text x="69" y="17" size="5" text="15"/>
+        <circle x="134.5" y="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="134.5" y="27.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="134.5" y="47.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="107.5" y="54.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="77.5" y="0.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="87.5" y="54.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="67.5" y="54.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="27.5" y="54.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="47.5" y="0.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="27.5" y="0.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="7.5" y="0.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <polygon x4="76" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="55" x1="70" y2="34" x2="70" y3="34" x3="76" y4="34"/>
+        <polygon x4="84" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="54" x1="90" y2="34" x2="90" y3="34" x3="84" y4="34"/>
+        <polygon x4="73" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="5" x1="80" y2="24" x2="80" y3="36" x3="73" y4="36"/>
+        <terminal x="10" y="3" orientation="n"/>
+        <terminal x="30" y="3" orientation="n"/>
+        <terminal x="50" y="3" orientation="n"/>
+        <terminal x="80" y="3" orientation="n"/>
+        <terminal x="137" y="10" orientation="e"/>
+        <terminal x="137" y="30" orientation="e"/>
+        <terminal x="137" y="50" orientation="e"/>
+        <terminal x="110" y="57" orientation="s"/>
+        <terminal x="90" y="57" orientation="s"/>
+        <terminal x="70" y="57" orientation="s"/>
+        <terminal x="30" y="57" orientation="s"/>
+    </description>
+</definition>

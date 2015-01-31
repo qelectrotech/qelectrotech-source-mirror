@@ -1,0 +1,24 @@
+<definition width="70" version="0.3" hotspot_x="30" hotspot_y="40" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Bellow actuators</name>
+        <name lang="fr">Vérins à soufflet</name>
+        <name lang="pl">Siłownik mieszkowy</name>
+        <name lang="cs">Měchové zdviháky, měchová poháněcí zařízení</name>
+        <name lang="ar">اسطوانة بمنفاخ</name>
+        <name lang="it">Cilindro a soffietto</name>
+        <name lang="nl">Cilinder Balg</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="20" x="5" y="-36" antialias="true" height="24" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" angle="180"/>
+        <arc width="20" x="-23" y="-36" antialias="true" height="24" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <input x="13" y="8" size="9" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-36" x1="-24" y2="-36" x2="24"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-24" y2="-12" x2="24"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-16" y2="-12" x2="-12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="12" y2="-12" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="0" x2="0"/>
+        <terminal x="0" y="0" orientation="s"/>
+    </description>
+</definition>

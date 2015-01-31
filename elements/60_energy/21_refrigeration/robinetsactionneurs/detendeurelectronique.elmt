@@ -1,0 +1,23 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="22" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مُخفّض ضغط الكتروني</name>
+        <name lang="en">Electronic expansion valve</name>
+        <name lang="fr">Détendeur électronique</name>
+        <name lang="pl">Zaór elektroniczny</name>
+        <name lang="cs">Elektrický redukční ventil</name>
+        <name lang="it">A controllo elettronico</name>
+        <name lang="nl">Expansieventiel elektronisch</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-5.83095" y="-17.831" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="11.6619"/>
+        <text x="-3.5" y="-11" size="3" text="TCE"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:white;color:black" x1="2" x2="0" x3="-2" x4="-10" antialias="false" x5="-10" x6="10" x7="10" x8="-2" x9="0" y1="1" y2="3" y10="0" y3="1" y4="5" y5="-5" x10="0" y6="5" y7="-5" y8="1" y9="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-6" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-11"/>
+        <terminal x="-11" y="0" orientation="w"/>
+        <terminal x="11" y="0" orientation="e"/>
+    </description>
+</definition>

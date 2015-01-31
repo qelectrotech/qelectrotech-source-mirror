@@ -1,0 +1,37 @@
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">حسّاس حثّي 3 أطراف</name>
+        <name lang="be">Induktiver Sensor 3-Leiter</name>
+        <name lang="el">Επαγωγικός αισθητήρας, 3 ακροδέκτες, ανοικτή επαφή</name>
+        <name lang="en">Inductive sensor 3 terminals</name>
+        <name lang="de">Induktiver Sensor 3-Leiter Schliesser</name>
+        <name lang="it">Sensore induttivo a 3 terminali</name>
+        <name lang="fr">Capteur inductif 3 fils</name>
+        <name lang="pl">Czujnik indukcyjny trójprzewodowy, zwierny</name>
+        <name lang="es">Sensor inductivo 2, 3 terminales NA</name>
+        <name lang="cs">Indukční čidlo se třemi svorkami</name>
+        <name lang="nl">Inductief 3</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="41" x="-20" y="-16" antialias="true" height="32" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="4" x="3" y="5.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="13" y2="-10" x2="18"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="6" y2="-10" x2="12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="3" y2="-10" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-13" y2="1" x2="-13"/>
+        <polygon x4="2" y5="-13" x5="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-13" x1="-8" y2="-3" x2="-18" y3="7" x3="-8" y4="-3"/>
+        <arc width="4" x="11" y="5.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-180"/>
+        <arc width="4" x="7" y="5.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-1" y2="8" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="15.5" y2="8" x2="18.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-2.5" y2="1" x2="-2.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-16" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="-10" y2="30" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="10" y2="30" x2="10"/>
+        <terminal x="0" y="-30" orientation="n"/>
+        <terminal x="-10" y="30" orientation="s"/>
+        <terminal x="10" y="30" orientation="s"/>
+    </description>
+</definition>

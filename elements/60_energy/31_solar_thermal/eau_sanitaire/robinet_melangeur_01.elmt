@@ -1,0 +1,27 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">خلاّط حنفيّة</name>
+        <name lang="en">Mixer tap</name>
+        <name lang="fr">Robinet melangeur</name>
+        <name lang="pl">Bateria mieszająca</name>
+        <name lang="cs">Směšovací baterie</name>
+        <name lang="it">Miscelatrore</name>
+        <name lang="nl">Mengkraan</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-9" x1="2" y2="-7" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="-2" y2="7" x2="-2"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-5" y2="-4" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="4" y2="-4" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-4" y2="2" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="3" y2="2" x2="-2"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="1" y2="7" x2="1"/>
+        <arc width="3" x="-1.5" y="-12" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-100" angle="-200"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10" x1="2" y2="-8" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10" x1="1" y2="-6" x2="1"/>
+        <terminal x="-2" y="7" orientation="s"/>
+        <terminal x="1" y="7" orientation="s"/>
+    </description>
+</definition>

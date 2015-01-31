@@ -1,0 +1,28 @@
+<definition width="50" version="0.4" hotspot_x="15" hotspot_y="35" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Purgador 3/8 Macho</name>
+        <name lang="it">Sfiato 3/8 M</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.59253" x1="-2.11542" y2="0.771282" x2="3.25138"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24.5961" x1="6.8" y2="-27.8811" x2="6.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24.5961" x1="8.55" y2="-27.8811" x2="8.55"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24.5961" x1="9.6" y2="-27.8811" x2="9.6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24.5961" x1="5.05" y2="-27.8811" x2="5.05"/>
+        <rect width="5.81402" x="-2.33904" y="0.223785" antialias="false" height="6.02247" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.68752" x1="-2.11542" y2="1.86628" x2="3.25138"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.15126" x1="-2.11542" y2="4.33001" x2="3.25138"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.05627" x1="-2.11542" y2="3.23502" x2="3.25138"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.24626" x1="-2.11542" y2="5.42501" x2="3.25138"/>
+        <rect width="12.6" x="-5.8" y="-2.3312" antialias="false" height="2.55499" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="21" x="-10" y="-22.0411" antialias="false" height="19.7099" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4.55" x="4.35" y="-23.8661" antialias="false" height="1.82499" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="7.35" x="2.95" y="-28.9761" antialias="false" height="5.10997" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24.5961" x1="4" y2="-27.8811" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.3911" x1="-10" y2="-18.3911" x2="10.65"/>
+        <input x="9" y="0" size="4" rotate="true" text="3/8&quot;M"/>
+        <terminal x="0.567981" y="6.52" nameHidden="1" number="" name="" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,46 @@
+<definition width="100" version="0.3" hotspot_x="55" hotspot_y="40" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">حسّاس حثّي</name>
+        <name lang="el">Επαγωγικός αισθητήρας</name>
+        <name lang="en">Inductif sensor</name>
+        <name lang="de">Induktiver Sensor 3-Leiter mit Stecker</name>
+        <name lang="it">Sensore induttivo</name>
+        <name lang="fr">Inductif</name>
+        <name lang="pl">Czujnik indukcyjny</name>
+        <name lang="es">Sensor inductivo</name>
+        <name lang="cs">Indukční čidlo</name>
+        <name lang="nl">Inductief</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-51" y="-4.3333" size="9" rotate="true" text="_" tagg="label"/>
+        <rect width="40" x="-20" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="-15" y2="-5" x2="-15" y3="-4" x3="-15" y4="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-12" y2="-15" x2="-13"/>
+        <rect width="8" x="25" y="-18" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-4" y5="-10" x5="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-10" y2="-16" x2="-4" y3="-10" x3="2" y4="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="20" x2="-20"/>
+        <polygon x4="15" y5="6" x5="14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="14" x1="3" y2="14" x2="9" y3="6" x3="9" y4="6"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-13" x2="-15" x3="-15" x4="-14" antialias="false" x5="-15" x6="-14" x7="-13" x8="-14" x9="-14" closed="false" y1="-5" y2="-5" y10="-15" y3="-6" y11="-16" y4="-6" y12="-14" y5="-16" x10="-13" y6="-15" x11="-13" y7="-15" x12="-15" y8="-15" y9="-14"/>
+        <polygon x4="33" y5="-15" x5="25" y6="-16" x6="25" y7="-16" x7="32" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-17" x1="26" y2="-17" x2="32" y3="-17" x3="33" y4="-15"/>
+        <polygon x4="-4" y5="-6" x5="-2" y6="-14" x6="-2" y7="-16" x7="-4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="-4" y2="-14" x2="-6" y3="-6" x3="-6" y4="-4"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-12" x2="-16" x3="-16" x4="-12" antialias="false" x5="-12" x6="-14" x7="-14" x8="-12" x9="-12" closed="false" y1="-16" y2="-16" y3="-4" y4="-4" y5="-6" y6="-6" y7="-14" y8="-14" y9="-16"/>
+        <text x="21" y="-19" size="6" text="+"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="21" y2="-16" x2="24"/>
+        <text x="27" y="11.6667" size="8" text="4"/>
+        <text x="27" y="-4.3333" size="8" text="3"/>
+        <text x="28" y="-21.3333" size="8" text="1"/>
+        <text x="21" y="12" size="6" text="A"/>
+        <text x="21" y="-4" size="6" text="-"/>
+        <rect width="8" x="25" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8" x="25" y="14" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="33" y5="17" x5="25" y6="16" x6="25" y7="16" x7="32" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="15" x1="26" y2="15" x2="32" y3="15" x3="33" y4="17"/>
+        <polygon x4="33" y5="1" x5="25" y6="0" x6="25" y7="0" x7="32" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="26" y2="-1" x2="32" y3="-1" x3="33" y4="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="21" y2="16" x2="24"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="21" y2="0" x2="24"/>
+        <terminal x="33" y="0" orientation="e"/>
+        <terminal x="33" y="16" orientation="e"/>
+        <terminal x="33" y="-16" orientation="e"/>
+    </description>
+</definition>

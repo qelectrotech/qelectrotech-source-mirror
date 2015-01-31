@@ -1,0 +1,19 @@
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
+    <names>
+        <name lang="en">Free key bolt out maneuver blocked</name>
+        <name lang="fr">Cle libre  pene sorti manoeuvre bloquée</name>
+        <name lang="pl">Klucz dostępny, wyjście niedozwolone</name>
+        <name lang="cs">Klíč dostupný, výstup nedovolen</name>
+        <name lang="ar">المفتاح متاح خرج المناورة محظور</name>
+        <name lang="it">Chiave libera, manovra bloccata</name>
+        <name lang="nl">Slot sleutel uit geblokt </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="8" y2="8" x2="-8"/>
+        <rect width="22" x="18" y="-4" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <circle x="-7.0710" y="-7.0710" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14.1421"/>
+        <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

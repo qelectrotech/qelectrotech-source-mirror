@@ -1,0 +1,64 @@
+<definition width="190" version="0.3" hotspot_x="0" hotspot_y="10" height="80" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="de">S7-1200-signalboard-sb1221-I-4x24vdc-200khz/3A</name>
+        <name lang="en">S7-1200-signalboard-sb1221-I-4x24vdc-200khz/3A</name>
+        <name lang="it">S7-1200 pannello signali sb1221-I-4x24vdc 200kHz/3A</name>
+        <name lang="cs">S7-1200 signálová deska sb1221-I-4x24vdc 200kHz/3A</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input x="39" y="11" size="4" rotate="true" text="SB1221, 24VDC, 200kHz"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" x1="91" y2="26" x2="100"/>
+        <input x="169" y="15" size="6" rotate="true" text="M"/>
+        <input x="170" y="45" size="6" rotate="true" text=".2"/>
+        <input x="168" y="4" size="6" rotate="true" text="L+"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="45" x1="111" y2="36" x2="120"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" x1="91" y2="46" x2="100"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="65" x1="111" y2="56" x2="120"/>
+        <input x="170" y="25" size="6" rotate="true" text=".0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="169.027" y2="10" x2="123.975"/>
+        <input x="41" y="39" size="4" rotate="true" text="Supply&#xa;24V 48mA&#xa;5V 40mA"/>
+        <circle x="123.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <rect width="10" x="110" y="35" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="90" y="45" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="123.5" y="46.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <rect width="10" x="110" y="55" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="170" y="35" size="6" rotate="true" text=".1"/>
+        <input x="170" y="56" size="6" rotate="true" text=".3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="44" x1="110" y2="35" x2="119"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="64" x1="110" y2="55" x2="119"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="36" x1="120" y2="36" x2="124"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="90" y2="45" x2="99"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="56" x1="120" y2="56" x2="124"/>
+        <circle x="123.5" y="35.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <rect width="10" x="90" y="25" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="100" y2="47" x2="124"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="34" x1="90" y2="25" x2="99"/>
+        <input x="6" y="23" size="6" rotate="true" text="#?"/>
+        <line length1="1.5" length2="2.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="120" y2="60" x2="170"/>
+        <input x="1" y="6.5" size="9" rotate="true" text="-K?"/>
+        <input x="145" y="55" size="6" rotate="true" text="I?.?"/>
+        <input x="145" y="45" size="6" rotate="true" text="I?.?"/>
+        <line length1="2.5" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="95" y2="60" x2="110"/>
+        <line length1="2.5" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="75" y2="50" x2="90"/>
+        <line length1="1.5" length2="2.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="100" y2="50" x2="170"/>
+        <line length1="1.5" length2="2.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="120" y2="40" x2="170"/>
+        <input x="122" y="30" size="4" rotate="true" text="24V+&#xa; 7mA"/>
+        <input x="80" y="21" size="4" rotate="true" text="500V 1min"/>
+        <input x="145" y="35" size="6" rotate="true" text="I?.?"/>
+        <input x="145" y="25" size="6" rotate="true" text="I?.?"/>
+        <line length1="2.5" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="95" y2="40" x2="110"/>
+        <line length1="2.5" length2="1.5" antialias="false" end1="simple" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="75" y2="30" x2="90"/>
+        <line length1="1.5" length2="2.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="100.017" y2="30" x2="170.982"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="27" x1="100" y2="27" x2="124"/>
+        <circle x="123.5" y="26.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="124" y2="55" x2="124"/>
+        <line length1="1.5" length2="2.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="170.295" y2="20" x2="134.728"/>
+        <terminal x="170" y="30" orientation="e"/>
+        <terminal x="170" y="50" orientation="e"/>
+        <terminal x="170" y="40" orientation="e"/>
+        <terminal x="170" y="60" orientation="e"/>
+        <terminal x="170" y="20" orientation="e"/>
+        <terminal x="170" y="10" orientation="e"/>
+    </description>
+</definition>

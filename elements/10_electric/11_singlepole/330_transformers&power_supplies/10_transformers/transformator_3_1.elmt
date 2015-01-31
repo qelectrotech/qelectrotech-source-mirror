@@ -1,0 +1,30 @@
+<definition width="70" version="0.3" hotspot_x="27" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">محوّل ثلاثي الأوجه</name>
+        <name lang="de">Transformator Drehstrom</name>
+        <name lang="ru">Трёхфазный трансформатор</name>
+        <name lang="pt">Transformador trifásico</name>
+        <name lang="el">Τριφασικός μετασχηματιστής</name>
+        <name lang="en">Three-phase transducer</name>
+        <name lang="it">Trasformatore trifase</name>
+        <name lang="fr">Transformateur triphasé</name>
+        <name lang="pl">Transformator trójfazowy</name>
+        <name lang="es">Transformador trifásico</name>
+        <name lang="cs">Třífázový transformátor</name>
+        <name lang="nl">driefasen transformator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-25" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <circle x="-15" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <circle x="-5" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="10" y2="25" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="-10" y2="40" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="0" y2="-25" x2="0"/>
+        <input x="27" y="0" size="9" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="-40" number="" name="" orientation="n"/>
+        <terminal x="-10" y="40" number="" name="" orientation="s"/>
+        <terminal x="10" y="40" number="" name="" orientation="s"/>
+    </description>
+</definition>

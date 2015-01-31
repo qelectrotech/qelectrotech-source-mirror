@@ -1,0 +1,26 @@
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="25" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">محرّك</name>
+        <name lang="de">Motor</name>
+        <name lang="ru">Эл. мотор</name>
+        <name lang="pt">Motor</name>
+        <name lang="el">Μοτέρ</name>
+        <name lang="en">Engine</name>
+        <name lang="it">Motore</name>
+        <name lang="fr">Moteur</name>
+        <name lang="pl">Silnik</name>
+        <name lang="es">Motor</name>
+        <name lang="nl">Motor</name>
+        <name lang="cs">Motor</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="18" y="0" size="9" rotate="true" text="M_" tagg="label"/>
+        <circle x="-10.5" y="-10.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="21"/>
+        <circle x="-13" y="-13" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="26"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-20" x2="0"/>
+        <text x="-8.25" y="7" size="14" text="M"/>
+        <terminal x="0" y="-21" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,17 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
+    <names>
+        <name lang="en">Key prisoner open device</name>
+        <name lang="fr">Appareil ouvert Clef prisonniere</name>
+        <name lang="pl">Urządzenie otwarte, klucz niedostępny</name>
+        <name lang="cs">Zařízení odemčeno, klíč nedostupný</name>
+        <name lang="ar">جهاز مفتوح, مفتاج سجين</name>
+        <name lang="it">Apparecchio a chiave, aperto</name>
+        <name lang="nl">Sleutelvanger open</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="10" x1="-10" y2="-10" x2="10" y3="10" x3="10" y4="10"/>
+        <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+    </description>
+</definition>

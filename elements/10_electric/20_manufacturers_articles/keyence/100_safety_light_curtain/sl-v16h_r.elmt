@@ -1,0 +1,55 @@
+<definition width="90" version="0.3" hotspot_x="24" hotspot_y="34" height="200" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">(SL-V16H R)</name>
+        <name lang="el">SL-V16H (Δέκτης)</name>
+        <name lang="en">SL-V16H (R)</name>
+        <name lang="it">SL-V16H (R)</name>
+        <name lang="fr">SL-V16H (R)</name>
+        <name lang="pl">SL-V16H (R)</name>
+        <name lang="es">SL-V16H (R)</name>
+        <name lang="cs">SL-V16H (R)</name>
+        <name lang="nl">SL-V16H (R)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-20" y2="-30" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="160" x1="-20" y2="160" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="130" x1="50" y2="130" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="110" x1="50" y2="110" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" x1="50" y2="90" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="50" y2="70" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="50" y2="50" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="50" y2="30" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="50" y2="10" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="50" y2="-10" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="50" y2="160" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-20" y2="160" x2="-20"/>
+        <input x="9" y="129.5" size="5" rotate="true" text="EDM input"/>
+        <input x="33" y="109.5" size="5" rotate="true" text="0V"/>
+        <input x="-8" y="89" size="5" rotate="true" text="communication&#xa;wire 2"/>
+        <input x="49" y="82.5" size="5" rotate="true" text="6"/>
+        <input x="-6" y="152" size="7" rotate="true" text="receiver"/>
+        <input x="50" y="102.5" size="5" rotate="true" text="7"/>
+        <input x="50" y="122.5" size="5" rotate="true" text="8"/>
+        <input x="-13" y="142.5" size="9" rotate="true" text="SL-V16H"/>
+        <input x="50" y="-17.5" size="5" rotate="true" text="1"/>
+        <input x="50" y="2.5" size="5" rotate="true" text="2"/>
+        <input x="50" y="22.5" size="5" rotate="true" text="3"/>
+        <input x="50" y="42.5" size="5" rotate="true" text="4"/>
+        <input x="50" y="62.5" size="5" rotate="true" text="5"/>
+        <input x="25" y="10.5" size="5" rotate="true" text="+24V"/>
+        <input x="8" y="49.5" size="5" rotate="true" text="reset input"/>
+        <input x="-8" y="69" size="5" rotate="true" text="communication&#xa;wire 1"/>
+        <input x="16" y="29.5" size="5" rotate="true" text="OSSD 1"/>
+        <input x="16" y="-10.5" size="5" rotate="true" text="OSSD 2"/>
+        <terminal x="60" y="-10" orientation="e"/>
+        <terminal x="60" y="10" orientation="e"/>
+        <terminal x="60" y="30" orientation="e"/>
+        <terminal x="60" y="50" orientation="e"/>
+        <terminal x="60" y="70" orientation="e"/>
+        <terminal x="60" y="90" orientation="e"/>
+        <terminal x="60" y="110" orientation="e"/>
+        <terminal x="60" y="130" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,55 @@
+<definition width="100" version="0.3" hotspot_x="-1" hotspot_y="0" height="240" type="element" orientation="dyyy">
+    <names>
+        <name lang="el">BMX P34 2030</name>
+        <name lang="en">BMX P34 2030</name>
+        <name lang="it">BMX P34 2030</name>
+        <name lang="fr">BMX P34 2030</name>
+        <name lang="pl">BMX P34 2030</name>
+        <name lang="es">BMX P34 2030</name>
+        <name lang="cs">BMX P34 2030</name>
+        <name lang="nl">BMX P34 2030</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <ellipse width="1" x="23" y="202.25" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1" x="23" y="196.4" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1" x="23" y="208.75" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1" x="23" y="189.9" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1" x="28.5" y="212.65" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1" x="28.5" y="193.15" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1" x="28.5" y="206.15" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="1" x="28.5" y="199.65" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="89" x1="27.5" y2="121" x2="27.5"/>
+        <text x="94" y="230" size="7" rotation="270" text="BMX P34 2030"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="73" x1="74.5" y2="89" x2="74.5"/>
+        <text x="66" y="144" size="7" text="ETH"/>
+        <text x="38" y="115" size="7" rotation="270" text="MEM"/>
+        <rect width="15" x="46" y="130" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="44" y="138" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="94" x="3" y="2" antialias="false" height="232" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="92" x="4" y="2" antialias="false" height="47" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="10" x="70" y="70" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="73" x1="74" y2="89" x2="74"/>
+        <arc width="11" x="16.5" y="82" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:blue;color:black" start="180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="89" x1="16" y2="121" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="121" x1="16" y2="121" x2="27"/>
+        <polygon x4="18" y5="87" x5="19" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="87" x1="18" y2="87" x2="25" y3="92" x3="21" y4="87"/>
+        <polygon x4="96" y5="137" x5="97" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" closed="false" y1="138" x1="96" y2="145" x2="96" y3="141" x3="88" y4="138"/>
+        <text x="88" y="91" size="7" rotation="270" text="USB"/>
+        <input x="9" y="63.5" size="9" rotate="true" text="CPU_"/>
+        <rect width="23" x="15" y="173" antialias="false" height="54.6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="181.29" x1="31.5" y2="219.973" x2="31.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="187.796" x1="21" y2="212.817" x2="21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="180.8" x1="31.5" y2="187.95" x2="21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="219.8" x1="31.5" y2="212.65" x2="21"/>
+        <ellipse width="1" x="28.5" y="186.65" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="16" y="167" size="7" text="CAN"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="233" x1="40" y2="140" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="139" x1="44" y2="139" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="231" x1="10" y2="198" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="197" x1="10" y2="197" x2="15"/>
+        <terminal x="40" y="235" orientation="s"/>
+        <terminal x="10" y="235" orientation="s"/>
+    </description>
+</definition>

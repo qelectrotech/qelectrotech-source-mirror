@@ -1,0 +1,27 @@
+<definition width="90" version="0.3" hotspot_x="15" hotspot_y="45" height="90" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Two-way flow controller with temperature compensation, with a variable output flow rate</name>
+        <name lang="fr">Régulateur de débit à deux voies avec compensation de température, avec un débit variable de sortie</name>
+        <name lang="pl">Regulator przepływu dwudrogowy z wyrównaniem temperatury, ze zmiennym wyjściowym natężeniem przepływu</name>
+        <name lang="cs">Dvoucestný ovladač průtoku s vyrovnáním teploty, s proměnlivou výstupní průtokovou rychlostí</name>
+        <name lang="ar">مُخفّض تدفق بمسارين و بتعويض حراري خرج التدفّق قابل للتعديل</name>
+        <name lang="it">Regolatore di flusso, con compensazione di temperatura e uscita variabile</name>
+        <name lang="nl">stromingsregelaar met temperatuurcompensatie</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="30" x="15" y="-30" antialias="false" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-20" x2="40"/>
+        <circle x="38.5" y="-21.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3"/>
+        <arc width="30" x="32" y="-15" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-135" angle="-90"/>
+        <polygon x4="38" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-10" x1="38" y2="-8" x2="40" y3="-12" x3="42" y4="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="-10" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="30" y2="-40" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31" x1="30" y2="40" x2="30"/>
+        <polygon x4="28" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="24.5" x1="28" y2="24.5" x2="32" y3="29.5" x3="30" y4="24.5"/>
+        <arc width="30" x="-2" y="-15" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="45" angle="-90"/>
+        <terminal x="30" y="-40" orientation="n"/>
+        <terminal x="30" y="40" orientation="s"/>
+    </description>
+</definition>

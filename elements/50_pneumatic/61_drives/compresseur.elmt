@@ -1,0 +1,22 @@
+<definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Compressor</name>
+        <name lang="fr">Compresseur
+</name>
+        <name lang="pl">Sprężarka</name>
+        <name lang="cs">Kompresor</name>
+        <name lang="ar">ضاغط</name>
+        <name lang="it">Compressore</name>
+        <name lang="nl">Compressor</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-5" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <polygon x4="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="6" y2="-12" x2="14" y3="-20" x3="10" y4="-12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="25" y2="-4" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="25" y2="-6" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="-20" x2="10"/>
+        <terminal x="10" y="-30" orientation="n"/>
+    </description>
+</definition>

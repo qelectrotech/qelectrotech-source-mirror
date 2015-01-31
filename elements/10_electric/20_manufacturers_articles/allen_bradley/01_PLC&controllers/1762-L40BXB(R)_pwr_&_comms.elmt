@@ -1,0 +1,59 @@
+<definition width="340" version="0.3" hotspot_x="16" hotspot_y="39" height="110" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
+        <name lang="pt">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
+        <name lang="el">1762-L40BXB(R)  - (Τροφοδοσία &amp; Επικοινωνία)</name>
+        <name lang="en">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
+        <name lang="it">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
+        <name lang="fr">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
+        <name lang="pl">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
+        <name lang="es">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
+        <name lang="cs">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
+        <name lang="nl">1762-L40BXB(R)  - (PWR &amp; COMMS)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="45" x1="68" y2="45" x2="72"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="42.8233" y2="60" x2="67.1082"/>
+        <arc width="6" x="208" y="56" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="52" x1="208" y2="56" x2="214"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="43" x1="69" y2="43" x2="71"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="47" x1="66" y2="47" x2="74"/>
+        <input x="24" y="45" size="6" rotate="true" text=" VDC&#xa;NEUT"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="57" x1="70" y2="47" x2="70"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="53" x1="211" y2="59" x2="211"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="53" x1="212" y2="59" x2="212"/>
+        <circle x="67.5" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="214.045" y2="60" x2="277.034"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="53" x1="210" y2="59" x2="210"/>
+        <input x="191" y="37" size="6" rotate="true" text="  HMI&#xa;PORT 1"/>
+        <input x="305" y="15" size="9" rotate="true" text="/"/>
+        <text x="204" y="53" size="4" text="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="73.374" y2="60" x2="207.678"/>
+        <polygon x4="305" y5="12" x5="300" y6="-33" x6="300" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="65" x1="300" y2="18" x2="300" y3="15" x3="295" y4="15"/>
+        <input x="260" y="37" size="6" rotate="true" text=" COMM&#xa;PORT 0"/>
+        <input x="301" y="-16" size="9" rotate="true" text="_" tagg="label"/>
+        <input x="-4" y="45" size="6" rotate="true" text="  24&#xa;VDC"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="283" y2="60" x2="300"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="53" x1="281" y2="59" x2="281"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="53" x1="279" y2="59" x2="279"/>
+        <input x="1" y="-13" size="9" text="MicroLogix 1200"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="53" x1="280" y2="59" x2="280"/>
+        <arc width="6" x="277" y="56" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <circle x="7.4999" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="12.8217" y2="60" x2="37.1099"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="60" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-10" y2="60" x2="7"/>
+        <circle x="37.5" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <input x="1" y="8" size="9" rotate="true" text="1762-L40BXB(R) -  PWR &amp; COMMS"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-9" y2="-28" x2="301"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="52" x1="277" y2="56" x2="283"/>
+        <text x="273" y="53" size="4" text="8"/>
+        <terminal x="280" y="54" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="40" y="57" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="57" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="211" y="54" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="70" y="63" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>

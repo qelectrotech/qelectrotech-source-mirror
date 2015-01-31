@@ -1,0 +1,56 @@
+<definition width="150" version="0.3" hotspot_x="0" hotspot_y="40" height="100" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">i11-S213</name>
+        <name lang="en">i11-S213</name>
+        <name lang="fr">i11-S213</name>
+        <name lang="pl">i11-S213</name>
+        <name lang="es">i11-S213</name>
+        <name lang="cs">i11-S213</name>
+        <name lang="it">i11-S213</name>
+        <name lang="nl">i11-S213</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="124" y2="48" x2="140"/>
+        <arc width="8" x="56" y="6" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-270"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="64" y2="10" x2="60" y3="6" x3="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="124" y2="-28" x2="140"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="10" x1="60" y2="10" x2="118"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="103" y2="48" x2="118"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="103" y2="-28" x2="118"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="45" x1="121" y2="20" x2="121" y3="0" x3="116"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="121" y2="0" x2="121"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="45" x1="80" y2="20" x2="80" y3="-1" x3="85"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="45" x1="100" y2="20" x2="100" y3="-1" x3="105"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="80" y2="0" x2="86"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="100" y2="0" x2="106"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="80" y2="-25" x2="80"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="100" y2="-25" x2="100"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="83" y2="48" x2="97"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="83" y2="-28" x2="97"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="10" y2="48" x2="77"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="140" y2="48" x2="140"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="10" y2="48" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="10" y2="-28" x2="77"/>
+        <input x="95" y="49" size="7" rotation="270" rotate="true" text="52"/>
+        <input x="74" y="-11" size="7" rotation="270" rotate="true" text="32"/>
+        <circle x="118.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="97.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <input x="116" y="49" size="7" rotation="270" rotate="true" text="44"/>
+        <input x="95" y="-11" size="7" rotation="270" rotate="true" text="51"/>
+        <input x="116" y="-11" size="7" rotation="270" rotate="true" text="43"/>
+        <input x="74" y="49" size="7" rotation="270" rotate="true" text="31"/>
+        <circle x="118.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="77.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="97.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="77.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <input x="15" y="24.5" size="9" rotate="true" text="i11-S213"/>
+        <terminal x="80" y="-31" orientation="n"/>
+        <terminal x="100" y="-31" orientation="n"/>
+        <terminal x="80" y="51" orientation="s"/>
+        <terminal x="100" y="51" orientation="s"/>
+        <terminal x="121" y="51" orientation="s"/>
+        <terminal x="121" y="-31" orientation="n"/>
+    </description>
+</definition>

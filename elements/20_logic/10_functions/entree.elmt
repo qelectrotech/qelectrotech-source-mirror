@@ -1,0 +1,26 @@
+<definition width="80" version="0.3" hotspot_x="30" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">دخل</name>
+        <name lang="de">Eingang</name>
+        <name lang="ru">Вход</name>
+        <name lang="pt">Entrada</name>
+        <name lang="el">Είσοδος</name>
+        <name lang="en">Input</name>
+        <name lang="it">Ingresso</name>
+        <name lang="fr">Entrée</name>
+        <name lang="pl">Wejście</name>
+        <name lang="es">Entrada</name>
+        <name lang="cs">Vstup</name>
+        <name lang="nl">Ingang</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="20"/>
+        <input x="25" y="-10" size="8" rotate="true" text="_"/>
+        <input x="-25" y="50" size="9" rotate="true" text="_"/>
+        <text x="-2" y="5" size="12" text="I"/>
+        <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="40" y="0" orientation="e"/>
+    </description>
+</definition>

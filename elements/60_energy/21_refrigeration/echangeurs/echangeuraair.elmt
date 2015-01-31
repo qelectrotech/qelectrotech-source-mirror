@@ -1,0 +1,38 @@
+<definition width="60" version="0.3" hotspot_x="25" hotspot_y="25" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مُبادل هوائي</name>
+        <name lang="el">Εναλλάκτης θερμότητας</name>
+        <name lang="en">Air heat exchanger</name>
+        <name lang="it">Scambiatore ad aria</name>
+        <name lang="fr">Echangeur à air</name>
+        <name lang="pl">Wymiennik powietrza</name>
+        <name lang="cs">Výměník horkého vzduchu</name>
+        <name lang="nl">Lucht warmte wisselaar</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="19" y="-1.66667" size="5" text="_" tagg="label"/>
+        <rect width="36" x="-18" y="-20" antialias="false" height="48" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="-14" y2="24" x2="-14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="7" y2="24" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="14" y2="24" x2="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="-7" y2="24" x2="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="0" y2="24" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-19" y2="20" x2="19"/>
+        <circle x="-15" y="-17" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="7" y2="5" x2="13"/>
+        <arc width="2" x="-2" y="-2" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-7" y2="5" x2="-13"/>
+        <arc width="12" x="0" y="-7" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <arc width="12" x="-7" y="-2" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="12" x="-12" y="-7" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="2" x="-7" y="3" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <arc width="12" x="-5" y="-2" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="2" x="0" y="-2" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="2" x="5" y="3" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <ellipse width="5" x="-2.5" y="-11.5" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-19" y="20" orientation="w"/>
+        <terminal x="19" y="20" orientation="e"/>
+    </description>
+</definition>

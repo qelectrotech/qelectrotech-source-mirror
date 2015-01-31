@@ -1,0 +1,27 @@
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Filter with purge</name>
+        <name lang="fr">Filtre avec purge</name>
+        <name lang="pl">Zawór spustowy oddzielacza, ze spustem siłą mięśni</name>
+        <name lang="cs">Filtr s čištěním</name>
+        <name lang="ar">مُرشّح بمصرف</name>
+        <name lang="it">Filtro con spurgo</name>
+        <name lang="nl">Filter met wateraftap</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="20" y2="-3" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="20" y2="-10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="20" y2="-17" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="20" y2="-24" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="20" x2="20"/>
+        <polygon x4="20" y5="-10" x5="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-30" x2="20" y3="-10" x3="40" y4="10"/>
+        <line length1="0.1" length2="0.1" antialias="false" end1="circle" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="9" y2="-1" x2="31"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="40" y2="-10" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="0"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+        <terminal x="50" y="-10" orientation="e"/>
+        <terminal x="20" y="20" orientation="s"/>
+    </description>
+</definition>

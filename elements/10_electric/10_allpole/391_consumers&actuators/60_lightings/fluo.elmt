@@ -1,0 +1,19 @@
+<definition width="20" version="0.4" hotspot_x="9" hotspot_y="75" height="170" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Fluorescent tube</name>
+        <name lang="de">Leuchtstoffröhre</name>
+        <name lang="fr">Tube fluorescent</name>
+        <name lang="it">Tubo fluorescente</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="9" x="-4" y="70" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="180"/>
+        <rect width="11" x="-5" y="-61" antialias="false" height="140" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-58" x1="0" y2="-67" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="76" x1="0" y2="86" x2="0"/>
+        <arc width="9" x="-4" y="-57" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-180"/>
+        <input x="-60" y="10" size="9" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="-67" orientation="n"/>
+        <terminal x="0" y="86" orientation="s"/>
+    </description>
+</definition>

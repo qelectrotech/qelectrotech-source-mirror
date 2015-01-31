@@ -1,0 +1,31 @@
+<definition width="80" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dnyn">
+    <names>
+        <name lang="ar">وصلة USB  نسخة 1 و 2</name>
+        <name lang="de">USB Bauteil, USB 1 und 2</name>
+        <name lang="en">USB connector, USB version 1 and 2</name>
+        <name lang="fr">USB Connecteur ,USB version 1 et 2</name>
+        <name lang="pl">Złącze USB, wersja 1 i 2</name>
+        <name lang="cs">Spojka USB, USB 1 a 2</name>
+        <name lang="it">Connettore USB 1 e 2</name>
+        <name lang="nl">USB 1 2</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="50" y5="-13" x5="50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="17" x1="50" y2="7" x2="40" y3="-3" x3="40" y4="-13"/>
+        <input x="48.5" y="46" size="9" rotate="true" text="_" tagg="label"/>
+        <rect width="60" x="-10" y="-23" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-6" y="24.3333" size="6" text="D-"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-32" x1="0" y2="-24" x2="0"/>
+        <text x="-8" y="-14.6667" size="6" text="Vusb"/>
+        <text x="29" y="-14.6667" size="6" text="GND"/>
+        <text x="35" y="24.3333" size="6" text="D+"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="28" x1="40" y2="36" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="28" x1="0" y2="36" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-32" x1="40" y2="-24" x2="40"/>
+        <terminal x="0" y="-33" orientation="n"/>
+        <terminal x="0" y="37" orientation="s"/>
+        <terminal x="40" y="-33" orientation="n"/>
+        <terminal x="40" y="37" orientation="s"/>
+    </description>
+</definition>

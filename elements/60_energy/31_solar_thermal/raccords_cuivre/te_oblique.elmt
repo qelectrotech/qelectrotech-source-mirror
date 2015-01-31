@@ -1,0 +1,20 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">رابط  T  بانحراف</name>
+        <name lang="en">Ty crowbar</name>
+        <name lang="fr">Té pied de biche</name>
+        <name lang="pl">Złączka T</name>
+        <name lang="cs">Šikmý spojovací článek T</name>
+        <name lang="it">Raccordo a T inclinato</name>
+        <name lang="nl">Y stuk </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-11" y2="0" x2="1"/>
+        <arc width="12" x="-12" y="-12" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <terminal x="1" y="0" orientation="e"/>
+        <terminal x="-11" y="0" orientation="w"/>
+        <terminal x="0" y="-6" orientation="n"/>
+    </description>
+</definition>

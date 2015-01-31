@@ -1,0 +1,18 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dynn">
+    <names>
+        <name lang="el">Κιβώτιο μίξης</name>
+        <name lang="en">Mixing box</name>
+        <name lang="it">Box di miscelazione</name>
+        <name lang="fr">Boîte malaxage</name>
+        <name lang="pl">Komora mieszania</name>
+        <name lang="cs">Smíchávací komora</name>
+        <name lang="nl">Mengkast</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="20" x="-10" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+    </description>
+</definition>

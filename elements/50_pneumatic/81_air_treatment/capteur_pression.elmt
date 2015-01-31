@@ -1,0 +1,27 @@
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Pressure Transmitter</name>
+        <name lang="fr">Capteur de pression</name>
+        <name lang="pl">Przetwornik ciśnienia</name>
+        <name lang="cs">Přenašeč tlaku</name>
+        <name lang="ar">حسّاس ضغط</name>
+        <name lang="it">Sensore di pressione</name>
+        <name lang="nl">Drukzender</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="34.5" y="-0.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="1"/>
+        <circle x="34.5" y="-7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="1"/>
+        <rect width="30" x="10" y="-25" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="35" y2="-12" x2="35"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="5" x1="35" y2="0" x2="35" y3="-6" x3="32"/>
+        <polygon x4="46" y5="-17" x5="48" y6="-25" x6="50" y7="-20" x7="52" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="40" y2="-25" x2="42" y3="-17" x3="44" y4="-25"/>
+        <polygon x4="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="10" y2="-7" x2="10" y3="-10" x3="16" y4="-13"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="11" y2="-24" x2="39"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="-6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="6" y2="-10" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-2" y2="-10" x2="2"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,33 @@
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="55" height="130" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Switch IMB</name>
+        <name lang="fr">Interrupteur IMB</name>
+        <name lang="pl">Rozłącznik IMB</name>
+        <name lang="cs">Přerušovač IMB</name>
+        <name lang="ar">مفتاح IMB</name>
+        <name lang="it">Interruttore IMB</name>
+        <name lang="nl">Onderbreker IMB</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="10" y2="70" x2="21"/>
+        <polygon x4="9.7" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-30" x1="1.7" y2="-16" x2="9.7" y3="70" x3="9.7" y4="70"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="-10.8" y2="-23" x2="-10.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="-12.8" y2="-25" x2="-11.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="-13.8" y2="-21" x2="-13.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="-17.8" y2="-24" x2="-17.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="-15.8" y2="-23" x2="-15.8"/>
+        <circle x="8.7" y="-32" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-32" x1="7.7" y2="-32" x2="11.7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" x1="9.7" y2="55" x2="4.7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="4.7" y2="60" x2="4.7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="2.95" y2="60" x2="2.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" x1="-0.3" y2="55" x2="2.7"/>
+        <arc width="10" x="-10.3" y="50" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-42" x1="9.7" y2="-32" x2="9.7"/>
+        <terminal x="9.7" y="-42" orientation="n"/>
+        <terminal x="9.7" y="-42" orientation="n"/>
+        <terminal x="21" y="70" orientation="e"/>
+    </description>
+</definition>

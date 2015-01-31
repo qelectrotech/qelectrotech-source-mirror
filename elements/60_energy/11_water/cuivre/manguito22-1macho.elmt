@@ -1,0 +1,22 @@
+<definition width="30" version="0.4" hotspot_x="16" hotspot_y="27" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Sleeve 22 1 " male</name>
+        <name lang="it">Riduzione 22 - 1" M</name>
+        <name lang="fr">Manchon 22 1" male</name>
+        <name lang="pl">Redukcja 22 - 1"</name>
+        <name lang="es">Manguito 22 1" Macho</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.54584" x1="-7.47677" y2="7.49165" x2="-5.85"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.54584" x1="-4.4944" y2="7.49165" x2="-2.86764"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.54584" x1="-1.78313" y2="7.49165" x2="-0.156377"/>
+        <rect width="10.8451" x="-10.7303" y="-9.04957" antialias="false" height="18.045" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8.316" x="0.11475" y="-11.0508" antialias="false" height="22.0508" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4.67775" x="3.753" y="-9.71437" antialias="false" height="19.378" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.54584" x1="-10.188" y2="7.49165" x2="-8.56128"/>
+        <input x="-13" y="-17" size="4" rotate="true" text="1&quot;M-22" tagg="none"/>
+        <terminal x="-10.8" y="0.308713" orientation="w"/>
+        <terminal x="8.9505" y="0.308713" orientation="e"/>
+    </description>
+</definition>

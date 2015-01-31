@@ -1,0 +1,25 @@
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">فجوة شرارة</name>
+        <name lang="de">Funkenstrecke</name>
+        <name lang="ru">Разрядник</name>
+        <name lang="pt">Descarregador de faísca</name>
+        <name lang="en">Spark-gap</name>
+        <name lang="it">Scaricatore</name>
+        <name lang="fr">Éclateur</name>
+        <name lang="pl">Iskiernik</name>
+        <name lang="es">Descargador de chispa</name>
+        <name lang="cs">Jiskřiště</name>
+        <name lang="nl">Vonkbrug</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="10" x1="-3" y2="2" x2="0" y3="10" x3="3"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10" x1="-3" y2="-2" x2="0" y3="-10" x3="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-5" x2="0"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

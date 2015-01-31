@@ -1,0 +1,46 @@
+<definition width="70" version="0.3" hotspot_x="34" hotspot_y="40" height="100" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">نقطة توزيع TN-C &lt; TN-S </name>
+        <name lang="de">Netz TNC > TNS</name>
+        <name lang="ru">Распределительный пункт TN-C >TN-S</name>
+        <name lang="en">Distribution point TN-C >TN-S</name>
+        <name lang="it">Punto di distribuzione TN-C</name>
+        <name lang="fr">Point de distribution TN-C >TN-S</name>
+        <name lang="pl">Linia trójfazowa (TN-C-S)</name>
+        <name lang="es">Punto de distribución TN-C > TN-S</name>
+        <name lang="cs">Bod rozdělení TN-C > TN-S</name>
+        <name lang="nl">Net TN-C > TN-S</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="24" y2="-30" x2="28"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="24" y2="50" x2="28"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="24" y2="30" x2="28"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="24" y2="10" x2="28"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="24" y2="-10" x2="28"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="-6" y2="54" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="52" x1="-8" y2="52" x2="-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-10" y2="50" x2="0"/>
+        <text x="13" y="53" size="5" text="PE"/>
+        <text x="13" y="33" size="5" text="N"/>
+        <text x="13" y="13" size="5" text="L3"/>
+        <text x="13" y="-7" size="5" text="L2"/>
+        <text x="13" y="-27" size="5" text="L1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-13" y2="10" x2="12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="7" y2="50" x2="12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-13" y2="-10" x2="12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="-13" y2="30" x2="12"/>
+        <text x="-30" y="33" size="5" text="PEN"/>
+        <text x="-30" y="13" size="5" text="L3"/>
+        <text x="-30" y="-7" size="5" text="L2"/>
+        <text x="-30" y="-27" size="5" text="L1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-13" y2="-30" x2="12"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="50" x1="7" y2="30" x2="-5" y3="49" x3="-5"/>
+        <terminal x="30" y="50" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="30" y="-30" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="30" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="30" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="30" y="30" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,22 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">عدّاد أحادي الوجه 220V </name>
+        <name lang="el">Μονοφασικός μετρητής</name>
+        <name lang="en">220V single phase meter</name>
+        <name lang="de">Zähler einphasig</name>
+        <name lang="it">Contatore monofase 230V</name>
+        <name lang="fr">Compteur 220V monophase</name>
+        <name lang="pl">Licznik jednofazowy</name>
+        <name lang="cs">Jednofázové počítadlo 220V</name>
+        <name lang="nl">KWh meter 230V</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="20" x="-10" y="5" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="20" x="-10" y="-20" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" x="-15" y="-25" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="-29" orientation="n"/>
+        <terminal x="0" y="18" orientation="s"/>
+    </description>
+</definition>

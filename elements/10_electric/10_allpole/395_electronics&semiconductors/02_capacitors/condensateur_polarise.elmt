@@ -1,0 +1,27 @@
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">مُكثّف مُستقطب </name>
+        <name lang="el">Ηλεκτρολυτικός πυκνωτής</name>
+        <name lang="en">Polarized Capacitor</name>
+        <name lang="de">Kondensator gepolt</name>
+        <name lang="it">Condensatore elettrolitico</name>
+        <name lang="fr">Condensateur polarisé</name>
+        <name lang="pl">Kondensator elektrolityczny</name>
+        <name lang="cs">Polarizovaný kondenzátor</name>
+        <name lang="nl">Condensator electrolyitisch</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="-8" y="-6.3333" size="6" text="+"/>
+        <rect width="12" x="-6" y="-3" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="8" y2="-3" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-8" y2="-3" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="0" y2="-20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="0" y2="20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-8" y2="3" x2="8"/>
+        <input x="10.75" y="3" size="9" text="_" tagg="label"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

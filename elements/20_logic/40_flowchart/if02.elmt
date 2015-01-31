@@ -1,0 +1,24 @@
+<definition width="140" version="0.3" hotspot_x="15" hotspot_y="35" height="100" type="element" orientation="dyyy">
+    <names>
+        <name lang="el">ΑΝ 02</name>
+        <name lang="en">IF 02</name>
+        <name lang="it">Decisione (IF)</name>
+        <name lang="fr">IF 02</name>
+        <name lang="pl">Blok decyzyjny, warunkowy</name>
+        <name lang="es">Bloque de decisión condicional 02</name>
+        <name lang="cs">IF 02</name>
+        <name lang="nl">IF 02 Beslissing</name>
+    </names>
+    <informations>ezza</informations>
+    <description>
+        <polygon x4="50" y5="10" x5="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="-10" y2="-30" x2="50" y3="10" x3="110" y4="50"/>
+        <text x="109" y="8" size="5" text="N"/>
+        <input x="14" y="8.5" size="9" rotate="true" text="IF..............."/>
+        <text x="54" y="53" size="5" text="O"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="59" x1="50" y2="50" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="120" y2="10" x2="110"/>
+        <terminal x="50" y="60" orientation="s"/>
+        <terminal x="120" y="10" orientation="e"/>
+        <terminal x="50" y="-30" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,47 @@
+<definition width="100" version="0.3" hotspot_x="50" hotspot_y="70" height="140" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مرجل خشب</name>
+        <name lang="el">Καυστήρας ξύλου</name>
+        <name lang="en">Wood boiler</name>
+        <name lang="it">Caldaia a legna</name>
+        <name lang="fr">Chaudière Bois</name>
+        <name lang="pl">Kocioł</name>
+        <name lang="cs">Kotel na dřevo</name>
+        <name lang="nl">boiler hout</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="70" x="-35" y="-60" antialias="false" height="120" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="35" y2="50" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="35" y2="-40" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-40" y2="50" x2="-36"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-35" y2="-40" x2="-40"/>
+        <circle x="-3.60555" y="-29.6056" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
+        <circle x="-7.28011" y="-33.2801" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14.5602"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-55" x1="-18" y2="-55" x2="-19"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-55" x1="-22" y2="-55" x2="-21"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-57" x1="-20" y2="-56" x2="-20"/>
+        <circle x="-23.6056" y="-58.6056" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" x1="37" y2="47" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-66" x1="13" y2="-61" x2="39"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="24" x2="24" x3="25" x4="25" antialias="false" x5="24" x6="24" x7="25" x8="25" x9="20" closed="false" y1="-60" y2="-62" y10="-65" y3="-62" y11="-64" y4="-63" y12="-63" y5="-63" x10="20" y13="-63" y6="-64" x11="21" y14="-62" y7="-65" x12="21" y15="-62" y8="-67" x13="20" y16="-61" y9="-67" x14="20" y17="-61" x15="21" x16="21" x17="21"/>
+        <ellipse width="2" x="-26" y="-32" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="14.5858" y="46.5858" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.82843"/>
+        <ellipse width="9" x="-4.5" y="43.5" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="15" y5="25" x5="-14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="25" x1="-15" y2="50" x2="-18" y3="50" x3="18" y4="25"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-27" x2="-27" x3="25" x4="25" antialias="true" x5="27" x6="27" x7="25" x8="25" x9="-26" y1="19" y2="56" y3="56" y4="54" y5="54" y6="21" y7="21" y8="19" y9="19"/>
+        <rect width="58" x="-29" y="17" antialias="false" height="41" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-31" y2="-2" x2="30"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-29" x2="-29" x3="27" x4="27" antialias="false" x5="29" x6="29" x7="27" x8="27" x9="-28" closed="false" y1="-48" y2="-4" y3="-4" y4="-6" y5="-6" y6="-46" y7="-46" y8="-48" y9="-48"/>
+        <rect width="70" x="-35" y="-60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="-35" y="-50" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2" x="-25" y="29" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-31" y2="15" x2="30"/>
+        <rect width="4" x="31" y="-50" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-40" y="-40" orientation="w"/>
+        <terminal x="-40" y="50" orientation="w"/>
+        <terminal x="40" y="-40" orientation="e"/>
+        <terminal x="40" y="50" orientation="e"/>
+    </description>
+</definition>

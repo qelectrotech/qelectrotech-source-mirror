@@ -1,0 +1,25 @@
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Llave equilibrado</name>
+        <name lang="it">Valvola di equilibratura</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="9.8222" y2="0" x2="19.1926"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.05603" x1="-9.625" y2="-4.54821" x2="-9.625"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.32928" x1="-2.925" y2="7.99348" x2="-2.925"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.32216" x1="3.15" y2="8.00119" x2="3.15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.4681" x1="7.1" y2="8.34117" x2="7.1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.05603" x1="9.603" y2="-4.54821" x2="9.603"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.5727" x1="-9.625" y2="5.0826" x2="9.375"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.0826" x1="-9.625" y2="-4.5727" x2="9.375"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.136259" x1="-0.125" y2="-6.97426" x2="-0.125"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.33137" x1="-4.875" y2="-7.33137" x2="4.625"/>
+        <arc width="9.975" x="-4.875" y="-10.09" antialias="true" height="5.51732" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.4079" x1="-6.875" y2="8.40639" x2="-6.875"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-19.2789" y2="0" x2="-10.6979"/>
+        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="20" y="0" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

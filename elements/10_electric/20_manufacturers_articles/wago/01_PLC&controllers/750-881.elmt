@@ -1,0 +1,97 @@
+<definition width="290" version="0.4" hotspot_x="82" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
+    <names>
+        <name lang="ar">Wago 750-881</name>
+        <name lang="de">Wago 750-881</name>
+        <name lang="ru">Wago 750-881</name>
+        <name lang="pt">Wago 750-881</name>
+        <name lang="el">Wago 750-881</name>
+        <name lang="en">Wago 750-881</name>
+        <name lang="it">Wago 750-881</name>
+        <name lang="fr">Wago 750-881</name>
+        <name lang="pl">Wago 750-881</name>
+        <name lang="es">Wago 750-881</name>
+        <name lang="nl">Wago 750-881</name>
+        <name lang="cs">Wago 750-881</name>
+    </names>
+    <informations>
+		Author: RDS for QelectroTech
+		Ref: 750-881
+    </informations>
+    <description>
+        <text x="39" y="30" size="4" text="-"/>
+        <rect width="220" x="-31" y="-40" antialias="false" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="19" y="30" size="4" text="+"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.0647" x1="150" y2="40.07" x2="150"/>
+        <text x="-4" y="30" size="4" text="24V"/>
+        <rect width="90" x="31" y="-34.9674" antialias="false" height="19.9674" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="98" y="30" size="4" text="+"/>
+        <rect width="50" x="-80" y="-40" antialias="false" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-79" y="17" size="4" text="X2"/>
+        <text x="79" y="30" size="4" text="0V"/>
+        <text x="-79" y="-12" size="4" text="X1"/>
+        <text x="138" y="30" size="4" text="PE"/>
+        <text x="58" y="30" size="4" text="PE"/>
+        <rect width="12" x="176" y="-39" antialias="false" height="78" style="line-style:normal;line-weight:normal;filling:green;color:green"/>
+        <text x="119" y="30" size="4" text="-"/>
+        <rect width="46" x="-26" y="-33.9673" antialias="false" height="13.9673" style="line-style:normal;line-weight:normal;filling:green;color:green"/>
+        <rect width="5" x="71" y="-30" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="81" y="-25" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <rect width="5" x="61" y="-29.9783" antialias="false" height="9.98915" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="51" y="-29.9783" antialias="false" height="9.98915" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="41" y="-24.9837" antialias="false" height="4.99457" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <text x="73" y="-32" size="2" text="4"/>
+        <rect width="5" x="61" y="-24.9837" antialias="false" height="4.99457" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <text x="63" y="-31.9761" size="2" text="3"/>
+        <text x="43" y="-31.9761" size="2" text="1"/>
+        <rect width="5" x="71" y="-25" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <text x="53" y="-31.9761" size="2" text="2"/>
+        <text x="35" y="-21" size="2" text="OFF"/>
+        <rect width="5" x="101" y="-25" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <rect width="5" x="91" y="-25" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <rect width="5" x="111" y="-25" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <text x="113" y="-32" size="2" text="8"/>
+        <text x="93" y="-32" size="2" text="6"/>
+        <text x="103" y="-32" size="2" text="7"/>
+        <text x="83" y="-32" size="2" text="5"/>
+        <rect width="30" x="-70" y="-30" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="81" y="-30" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" x="-70" y="0" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="91" y="-30" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="101" y="-30" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="111" y="-30" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="-68" y="-9" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="20" x="-62" y="-28" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text x="39" y="38" size="4" text="3"/>
+        <text x="-58" y="-12" size="4" color="white" text="RJ45"/>
+        <rect width="4" x="-68" y="-28" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="-68" y="-19" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="4" x="-68" y="21" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="19" y="38" size="4" text="2"/>
+        <text x="-1" y="38" size="4" text="1"/>
+        <text x="98" y="38" size="4" text="6"/>
+        <text x="79" y="38" size="4" text="5"/>
+        <text x="138" y="38" size="4" text="8"/>
+        <text x="58" y="38" size="4" text="4"/>
+        <text x="119" y="38" size="4" text="7"/>
+        <text x="-19" y="-23" size="6" text="750-881"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.0647" x1="-10" y2="39.07" x2="-10"/>
+        <rect width="20" x="-62" y="2" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="190" y="-34.5" size="9" rotate="true" text="_" tagg="label"/>
+        <text x="-58" y="18" size="4" color="white" text="RJ45"/>
+        <rect width="4" x="-68" y="2" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" x="-68" y="11" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="5" x="41" y="-29.9783" antialias="false" height="9.98915" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="35" y="-28" size="2" text="ON"/>
+        <rect width="5" x="51" y="-24.9837" antialias="false" height="4.99457" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <text x="187" y="12" size="6" rotation="270" text="K-BUS"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="150"/>
+        <terminal x="60" y="45" orientation="s"/>
+        <terminal x="100" y="45" orientation="s"/>
+        <terminal x="80" y="45" orientation="s"/>
+        <terminal x="120" y="45" orientation="s"/>
+        <terminal x="140" y="45" orientation="s"/>
+        <terminal x="0" y="45" orientation="s"/>
+        <terminal x="40" y="45" orientation="s"/>
+        <terminal x="20" y="45" orientation="s"/>
+    </description>
+</definition>

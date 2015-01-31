@@ -1,0 +1,27 @@
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="25" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">محرّك أحادي الوجه</name>
+        <name lang="de">Wechselstrom Motor</name>
+        <name lang="ru">Однофазный эл. мотор</name>
+        <name lang="pt">Motor monofásico</name>
+        <name lang="el">Μονοφασικό μοτέρ</name>
+        <name lang="en">One-phase engine</name>
+        <name lang="it">Motore monofase</name>
+        <name lang="fr">Moteur monophasé</name>
+        <name lang="pl">Silnik jednofazowy</name>
+        <name lang="es">Motor monofásico</name>
+        <name lang="cs">Jednofázový motor</name>
+        <name lang="nl">Motor 1AC</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="-5" y="19" size="18" text="M"/>
+        <circle x="-9.25" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <input x="24" y="15" size="9" text="M_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="10" y2="-4.25" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="0.25" y2="-4" x2="0.25"/>
+        <terminal x="0.25" y="-21" orientation="n"/>
+        <terminal x="10" y="-21" orientation="n"/>
+    </description>
+</definition>

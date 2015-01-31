@@ -1,0 +1,19 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مُحرّك</name>
+        <name lang="de">Motor</name>
+        <name lang="el">Ηλεκτροκινητήρας</name>
+        <name lang="en">Motor</name>
+        <name lang="it">Motore</name>
+        <name lang="fr">Moteur</name>
+        <name lang="pl">Silnik</name>
+        <name lang="cs">Motor</name>
+        <name lang="nl">Motor</name>
+    </names>
+    <informations>EN 60617: 06-04-01</informations>
+    <description>
+        <circle x="-12" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="24"/>
+        <text x="-5" y="-4" size="9" text="M"/>
+        <terminal x="0" y="-20" orientation="n"/>
+    </description>
+</definition>

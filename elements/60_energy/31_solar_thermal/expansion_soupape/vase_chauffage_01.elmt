@@ -1,0 +1,25 @@
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">إناء تسخين 01</name>
+        <name lang="en">Heating Vase 01</name>
+        <name lang="fr">Vase Chauffage 01</name>
+        <name lang="pl">Naczynie wzbiorcze</name>
+        <name lang="cs">Nádoba, ohřívání 01</name>
+        <name lang="it">Vaso di espansione 10L</name>
+        <name lang="nl">Expansie tank</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-13" y="25" size="7" rotate="true" text="10L"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.1" x1="0" y2="20.1" x2="0"/>
+        <polygon x4="1" y5="-17.9" x5="1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-17.9" x1="-1" y2="-19.9" x2="-1" y3="-19.9" x3="1" y4="-17.9"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.9" x1="20" y2="10.1" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.1" x1="-20" y2="1.1" x2="20"/>
+        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="1.1" x1="0" y2="9.1" x2="-5" y3="9.1" x3="5" y4="1.1"/>
+        <arc width="40" x="-20" y="-18.4" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="40" x="-20" y="3.6" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.9" x1="-20" y2="10.1" x2="-20"/>
+        <terminal x="0" y="-18.9" orientation="n"/>
+    </description>
+</definition>

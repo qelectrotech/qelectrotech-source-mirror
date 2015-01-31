@@ -1,0 +1,32 @@
+<definition width="80" version="0.3" hotspot_x="40" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Control valve normally open 2-2</name>
+        <name lang="fr">Distributeur Normalement ouvert 2-2</name>
+        <name lang="pl">Zawór sterujący normalnie otwarty 2/2</name>
+        <name lang="cs">Regulativní ventil obvykle otevřený 2/2</name>
+        <name lang="ar">مّوزّع عاديّا مفتوح 2-2</name>
+        <name lang="it">Valvola di controllo NO 2-2</name>
+        <name lang="nl">P -&gt; A, gesloten NO 2-2</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.6836" x1="10" y2="-15.3164" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.8007" x1="26.6836" y2="4.8515" x2="30.5859"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.6406" x1="24.2578" y2="-5.8007" x2="26.5781"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.3164" x1="20.1" y2="4.6835" x2="24.1"/>
+        <polygon x4="-20" y5="-10.3164" x5="-20" y6="-10.3164" x6="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.3164" x1="-20" y2="-10.3164" x2="20" y3="9.6835" x3="20" y4="9.6835"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.8164" x1="-32" y2="4.1835" x2="-23"/>
+        <polygon x4="-35" y5="-5.3164" x5="-20" y6="-5.3164" x6="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5.3164" x1="-20" y2="4.6835" x2="-20" y3="4.6835" x3="-35" y4="-5.3164"/>
+        <polygon x4="10" y5="-10.3164" x5="10" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10.3164" x1="10" y2="-5.3164" x2="12.5" y3="-5.3164" x3="7.5" y4="-10.3164"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.3164" x1="-12" y2="-5.3164" x2="-7.9999"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15.3164" x1="-9.9999" y2="-5.3164" x2="-9.9999"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.6835" x1="-12" y2="4.6835" x2="-7.9999"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.6836" x1="-9.9999" y2="4.6835" x2="-9.9999"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.3164" x1="-1.25e-06" y2="9.6835" x2="-1.25e-06"/>
+        <terminal x="10" y="14.6836" orientation="s"/>
+        <terminal x="-9.9999" y="14.6836" orientation="s"/>
+        <terminal x="10" y="-15.3164" orientation="n"/>
+        <terminal x="-9.9999" y="-15.3164" orientation="n"/>
+    </description>
+</definition>

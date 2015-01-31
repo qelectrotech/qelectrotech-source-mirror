@@ -1,0 +1,18 @@
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="10" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">اتجاه سائل</name>
+        <name lang="en">Sense fluid 2</name>
+        <name lang="fr">Sens fluide</name>
+        <name lang="pl">Kierunek przepływu cieczy</name>
+        <name lang="cs">Směr průtoku kapaliny</name>
+        <name lang="it">Direzione</name>
+        <name lang="nl">vloeistof richting</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="1" y2="0" x2="14"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="1" y2="0" x2="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-25" y2="0" x2="14"/>
+    </description>
+</definition>

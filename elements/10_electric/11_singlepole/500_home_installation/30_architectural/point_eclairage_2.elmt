@@ -1,0 +1,21 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">وحدة إضاءة مستقلّة للسلامة</name>
+        <name lang="de">Sicherheitsleuchte mit eingebauter Stromversorgung</name>
+        <name lang="el">Αυτόνομο φωτιστικό ασφαλείας</name>
+        <name lang="en">Self-containned emmergency lighting luminaire</name>
+        <name lang="it">Apparecchio autonomo per illuminazione di emergenza</name>
+        <name lang="fr">Bloc autonome d'éclairage de sécurité</name>
+        <name lang="pl">Oświetlenie ewakuacyjne autonomiczne</name>
+        <name lang="cs">Bezpečnostní světla se zabudovanou dodávkou elektrického proudu</name>
+        <name lang="nl">Noodlamp automatisch met accu</name>
+    </names>
+    <informations>EN 60617: 11-15-12</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-8" y2="-18" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-8" y2="-2" x2="8"/>
+        <rect width="20" x="-10" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-1.5" y="-11.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+    </description>
+</definition>

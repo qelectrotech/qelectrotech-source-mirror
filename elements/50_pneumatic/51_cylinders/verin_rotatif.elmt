@@ -1,0 +1,28 @@
+<definition width="70" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Rotary actuators</name>
+        <name lang="fr">Vérins rotatif</name>
+        <name lang="pl">Silnik pneumatyczny o ruchu wachadłowym</name>
+        <name lang="cs">Otáčivé poháněcí zařízení</name>
+        <name lang="ar">مُشغّل دوار</name>
+        <name lang="it">Cilindro rotativo</name>
+        <name lang="nl">Cilnder rotatie (luchtmotor)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="35" x="-5" y="-27" antialias="true" height="35" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" angle="180"/>
+        <polygon x4="30" y5="-6" x5="30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-14" x1="30" y2="-14" x2="46" y3="-6" x3="46" y4="-6"/>
+        <arc width="4" x="36" y="-14" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" angle="180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="12" y2="8" x2="12"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-23" x1="12.5" y2="-20" x2="17.5" y3="-17" x3="12.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="12" y2="0" x2="0"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3" x1="12.5" y2="0" x2="18" y3="3" x3="12.5"/>
+        <input x="32" y="19" size="9" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="37" y2="-5" x2="38"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-15" x1="38" y2="-21" x2="37"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-20" x2="12"/>
+        <terminal x="0" y="-20" orientation="w"/>
+        <terminal x="0" y="0" orientation="w"/>
+    </description>
+</definition>

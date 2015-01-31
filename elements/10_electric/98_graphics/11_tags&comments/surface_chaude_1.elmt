@@ -1,0 +1,24 @@
+<definition width="40" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dnnn">
+    <names>
+        <name lang="el">Θερμή επιφάνεια</name>
+        <name lang="en">hot surface</name>
+        <name lang="de">Hinweis heiße Oberfläche klein</name>
+        <name lang="it">Superfice calda</name>
+        <name lang="fr">Surface chaude</name>
+        <name lang="pl">Gorąca powierzchnia</name>
+        <name lang="cs">Horký povrch</name>
+        <name lang="nl">Gevaar heet</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="27" x1="16" y2="27" x2="24"/>
+        <arc width="2" x="21" y="18.25" antialias="true" height="3.5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="2" x="21" y="21.75" antialias="true" height="3.5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" angle="-180"/>
+        <arc width="2" x="19" y="18.25" antialias="true" height="3.5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-90" angle="-180"/>
+        <arc width="2" x="17" y="18.25" antialias="true" height="3.5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-90" angle="-180"/>
+        <polygon x4="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="30" x2="10" y3="30" x3="30" y4="10"/>
+        <arc width="2" x="19" y="21.75" antialias="true" height="3.5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" angle="-180"/>
+        <arc width="2" x="17" y="21.75" antialias="true" height="3.5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" angle="-180"/>
+    </description>
+</definition>

@@ -1,0 +1,22 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">عدّاد زمني</name>
+        <name lang="de">Betriebsstundenzähler</name>
+        <name lang="el">Ωρόμετρο</name>
+        <name lang="en">Hour counter</name>
+        <name lang="it">Conta tempo</name>
+        <name lang="fr">Compteur horaire</name>
+        <name lang="pl">Licznik godzin</name>
+        <name lang="cs">Počítadlo hodin</name>
+        <name lang="nl">Bedrijfsurenteller</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="-3" y="2.3333" size="9" text="h"/>
+        <rect width="30" x="-15" y="-11" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" x="-15" y="-19" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="-23" orientation="n"/>
+        <terminal x="0" y="15" orientation="s"/>
+    </description>
+</definition>

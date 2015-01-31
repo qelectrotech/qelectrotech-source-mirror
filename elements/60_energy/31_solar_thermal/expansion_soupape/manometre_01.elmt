@@ -1,0 +1,31 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مقياس ضغط</name>
+        <name lang="en">Manometer</name>
+        <name lang="fr">Manomètre </name>
+        <name lang="pl">Manometr</name>
+        <name lang="cs">Tlakoměr</name>
+        <name lang="it">Manometro</name>
+        <name lang="nl">Drukmeter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="1" y5="7.75" x5="1" y6="7.75" x6="1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7.75" x1="-1" y2="10.75" x2="-1" y3="10.75" x3="-1" y4="10.75"/>
+        <text x="-4" y="3.75" size="4" text="bar"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.75" x1="0" y2="11.75" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.25" x1="-3" y2="-4.25" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.25" x1="-3" y2="-2.25" x2="-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.25" x1="-3" y2="-0.25" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.75" x1="6" y2="2.75" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.75" x1="-6" y2="2.75" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.25" x1="6" y2="-7.25" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.25" x1="-6" y2="-7.25" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.25" x1="0" y2="-9.25" x2="0"/>
+        <circle x="-8.60233" y="-10.8523" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="17.2047"/>
+        <circle x="-10" y="-12.25" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.25" x1="7" y2="-2.25" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.25" x1="-8" y2="-2.25" x2="-7"/>
+        <terminal x="0" y="11.75" orientation="s"/>
+    </description>
+</definition>

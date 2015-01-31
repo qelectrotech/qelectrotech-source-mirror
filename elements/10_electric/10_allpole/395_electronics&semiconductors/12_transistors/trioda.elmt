@@ -1,0 +1,27 @@
+<definition width="60" version="0.4" hotspot_x="26" hotspot_y="36" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">triode</name>
+        <name lang="fr">triode</name>
+        <name lang="it">Triodo</name>
+        <name lang="ro">trioda</name>
+    </names>
+    <informations>titus
+titus0818@yahoo.com</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="-5" x1="-10" y2="-5" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="0" y2="-5" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-1" x1="-18.1129" y2="-1" x2="18.1224"/>
+        <arc width="24" x="-12" y="2" antialias="true" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="11.5317" y2="11" x2="22.5073"/>
+        <arc width="12" x="-6" y="7" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.096" x1="-6" y2="20.896" x2="-6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="6" y2="21" x2="6"/>
+        <ellipse width="42" x="-21" y="-20" antialias="true" height="41" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="13" y2="-1" x2="23"/>
+        <terminal x="0" y="-28" orientation="n"/>
+        <terminal x="26" y="-1" orientation="e"/>
+        <terminal x="26" y="11" orientation="e"/>
+        <terminal x="6" y="25" orientation="s"/>
+        <terminal x="-6" y="25" orientation="s"/>
+    </description>
+</definition>

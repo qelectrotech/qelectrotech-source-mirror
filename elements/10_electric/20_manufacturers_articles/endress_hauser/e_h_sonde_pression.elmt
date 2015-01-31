@@ -1,0 +1,38 @@
+<definition width="80" version="0.3" hotspot_x="20" hotspot_y="41" height="100" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مجس ضغط Cerabar M</name>
+        <name lang="el">Αισθητήρας πίεσης Cerabar M</name>
+        <name lang="en">Pressure Sensor Cerabar M</name>
+        <name lang="it">Sensore di conduttività Cerabar M</name>
+        <name lang="fr">Sonde pression Cerabar M</name>
+        <name lang="pl">Przetwornik ciśnienia Cerabar M</name>
+        <name lang="es">Cerabar M Sensor de presión</name>
+        <name lang="cs">Tlakové čidlo Cerabar M</name>
+        <name lang="nl">Druk sensor Cerabar M</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-15" y="-35" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="70"/>
+        <text x="1" y="-6" size="5" text="_"/>
+        <text x="-4" y="-17" size="5" text="CERABAR M"/>
+        <text x="-9" y="17" size="5" text="1"/>
+        <text x="31" y="17" size="5" text="3"/>
+        <text x="11" y="17" size="5" text="2"/>
+        <text x="17" y="7" size="7" text="-"/>
+        <text x="-4" y="10" size="7" text="+"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="40" y2="50" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="20" y2="50" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="0" y2="50" x2="0"/>
+        <circle x="-3.60555" y="16.3944" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="41" y2="8" x2="39"/>
+        <circle x="36.3944" y="16.3944" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
+        <circle x="16.3944" y="16.3944" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="37" y2="6" x2="43"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="36" y2="4" x2="44"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="4" x2="40"/>
+        <terminal x="0" y="50" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="20" y="50" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="40" y="50" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>

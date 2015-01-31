@@ -1,0 +1,26 @@
+<definition width="60" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">مصباح</name>
+        <name lang="de">Leuchte</name>
+        <name lang="ru">Лампа</name>
+        <name lang="pt">Lâmpada</name>
+        <name lang="el">Λυχνία</name>
+        <name lang="en">Light</name>
+        <name lang="it">Luce</name>
+        <name lang="fr">Lampe</name>
+        <name lang="pl">Lampa</name>
+        <name lang="es">Lámpara</name>
+        <name lang="cs">Světlo</name>
+        <name lang="nl">Lamp</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="7.03" y2="7.03" x2="-7.03"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="-7.03" y2="7.03" x2="7.03"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+        <input x="15" y="3" size="9" text="H_"/>
+        <terminal x="0" y="-21" orientation="n"/>
+    </description>
+</definition>

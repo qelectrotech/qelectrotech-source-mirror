@@ -1,0 +1,25 @@
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="60" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">دايود بانهيار في الإتجاهين</name>
+        <name lang="de">Bidirektionale Avalanchediode</name>
+        <name lang="en">Avalanche diode bidirectional</name>
+        <name lang="fr">Diode à avalanche bidirectionnelle</name>
+        <name lang="pl">Dioda lawinowa dwukierunkowa</name>
+        <name lang="cs">Lavinová dvojsměrná dioda</name>
+        <name lang="it">Diodo a valanga bidirezionale</name>
+        <name lang="nl">Diode avalanche 2 richting</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="5" y2="2" x2="5"/>
+        <polygon x4="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="15" x1="5" y2="15" x2="-5" y3="5" x3="0" y4="15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="29" x1="0" y2="-20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-5" y2="8" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-5" y2="5" x2="5"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-5" y2="-5" x2="5" y3="5" x3="0"/>
+        <input x="8" y="5.6666" size="9" text="_" tagg="label"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="30" orientation="s"/>
+    </description>
+</definition>

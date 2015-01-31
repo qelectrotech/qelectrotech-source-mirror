@@ -1,0 +1,28 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="ndny">
+    <names>
+        <name lang="ar">مُنفّس</name>
+        <name lang="en">Trap</name>
+        <name lang="fr">Purgeur</name>
+        <name lang="pl">Odpowietrznik</name>
+        <name lang="cs">Vypouštěcí kohout</name>
+        <name lang="it">Sfiato</name>
+        <name lang="nl">luchtvanger</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="3.5" y2="-11" x2="3.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="-7" y2="-11" x2="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="3" y2="-16" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="4" y2="-15" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="5" y2="-15" x2="5"/>
+        <rect width="2" x="-1" y="10" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="14" x="-7" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="18" x="-9" y="-13" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="0" y2="-11" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="-4" y2="-11" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="6.5" y2="-11" x2="6.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="-1" y2="-11" x2="-1"/>
+        <terminal x="0" y="13" orientation="s"/>
+    </description>
+</definition>

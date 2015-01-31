@@ -1,0 +1,19 @@
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مُؤقت</name>
+        <name lang="de">Zeitrelais</name>
+        <name lang="el">Χρονικό</name>
+        <name lang="en">timer</name>
+        <name lang="it">Temporizzatore</name>
+        <name lang="fr">Minuterie</name>
+        <name lang="pl">Datownik czasu</name>
+        <name lang="cs">Časový spínač</name>
+        <name lang="nl">Tijdrelais</name>
+    </names>
+    <informations>EN 60617: 11-14-13</informations>
+    <description>
+        <text x="8" y="-6" size="9" text="t"/>
+        <rect width="40" x="-10" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="10" y="-20" orientation="n"/>
+    </description>
+</definition>

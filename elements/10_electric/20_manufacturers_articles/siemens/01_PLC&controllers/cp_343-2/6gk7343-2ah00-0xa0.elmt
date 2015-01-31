@@ -1,0 +1,44 @@
+<definition width="230" version="0.3" hotspot_x="15" hotspot_y="45" height="110" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">6GK7343-2AH00-0XA0</name>
+        <name lang="pt">6GK7343-2AH00-0XA0</name>
+        <name lang="el">6GK7343-2AH00-0XA0</name>
+        <name lang="en">6GK7343-2AH00-0XA0</name>
+        <name lang="it">6GK7343-2AH00-0XA0</name>
+        <name lang="fr">6GK7343-2AH00-0XA0</name>
+        <name lang="pl">6GK7343-2AH00-0XA0</name>
+        <name lang="es">6GK7343-2AH00-0XA0</name>
+        <name lang="cs">6GK7343-2AH00-0XA0</name>
+        <name lang="nl">6GK7343-2AH00-0XA0</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="122" y="-19.5" size="5" rotate="true" text="17"/>
+        <input x="182" y="-19.5" size="5" rotate="true" text="20"/>
+        <input x="163" y="-19.5" size="5" rotate="true" text="19"/>
+        <input x="142" y="-19.5" size="5" rotate="true" text="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="209" y2="-28" x2="191"/>
+        <input x="163" y="-8" size="7" rotate="true" text="+"/>
+        <input x="123" y="-8" size="7" rotate="true" text="+"/>
+        <input x="144" y="-8" size="7" rotate="true" text="-"/>
+        <input x="184" y="-8" size="7" rotate="true" text="-"/>
+        <input x="0" y="24.5" size="9" rotate="true" text="CP 343-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-10" y2="60" x2="210"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="210" y2="60" x2="210"/>
+        <input x="0" y="44.5" size="9" rotate="true" text="6GK7343-2AH00-0XAO"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="173" y2="-28" x2="187"/>
+        <circle x="187.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="133" y2="-28" x2="147"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="153" y2="-28" x2="167"/>
+        <circle x="167.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="147.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="-28" x2="127"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="60" x2="-10"/>
+        <circle x="127.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <terminal x="130" y="-31" orientation="n"/>
+        <terminal x="150" y="-31" orientation="n"/>
+        <terminal x="170" y="-31" orientation="n"/>
+        <terminal x="190" y="-31" orientation="n"/>
+    </description>
+</definition>

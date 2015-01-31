@@ -1,0 +1,28 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">Thermovar</name>
+        <name lang="en">Thermovar</name>
+        <name lang="fr">Thermovar</name>
+        <name lang="pl">Thermovar</name>
+        <name lang="cs">Thermovar</name>
+        <name lang="it">Valvola 3vie Thermovar</name>
+        <name lang="nl">Mengklep Thermovar</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="22" x="-11" y="-11" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-11" y="-5" size="3" text="Termovar"/>
+        <arc width="5" x="-2" y="1" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="4" y2="0" x2="-5"/>
+        <polygon x4="8" y5="0" x5="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="8" y2="-3" x2="5" y3="3" x3="5" y4="0"/>
+        <rect width="10" x="-6" y="-1" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="14" x="-7" y="11" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="-14" y="-9" antialias="false" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="11" y="-9" antialias="false" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-14" y="0" orientation="w"/>
+        <terminal x="14" y="0" orientation="e"/>
+        <terminal x="0" y="14" orientation="s"/>
+    </description>
+</definition>

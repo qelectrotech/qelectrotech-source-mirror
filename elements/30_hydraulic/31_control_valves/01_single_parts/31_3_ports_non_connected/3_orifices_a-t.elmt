@@ -1,0 +1,23 @@
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مسارات A -&gt; T 3</name>
+        <name lang="en">3 holes A-&gt;T</name>
+        <name lang="fr">3 orifices A-&gt;T</name>
+        <name lang="pl">3 otwory A -&gt; T</name>
+        <name lang="cs">3 otvory A -&gt; T</name>
+        <name lang="it">3 fori A -&gt; T</name>
+        <name lang="nl">A -&gt; T</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-2" y2="5" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="5" x2="0"/>
+        <rect width="30" x="-5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="6" x2="17"/>
+        <polygon x4="20" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="10" x1="20" y2="6" x2="15" y3="4" x3="18" y4="10"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="20" y="10" orientation="s"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

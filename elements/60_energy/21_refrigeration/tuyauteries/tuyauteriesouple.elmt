@@ -1,0 +1,27 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="10" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">أنابيب مرنة</name>
+        <name lang="el">Εύκαμπτη σωλήνα</name>
+        <name lang="en">flexible piping</name>
+        <name lang="it">Tubatura flessibile</name>
+        <name lang="fr">Tuyauterie souple</name>
+        <name lang="pl">Przewód elestyczny</name>
+        <name lang="cs">Pružné potrubí</name>
+        <name lang="nl">Flexibele Pijp</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="5" x="-7.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="5" x="-12.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-220" angle="-50"/>
+        <arc width="5" x="-17" y="-5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-35" angle="-45"/>
+        <arc width="5" x="7.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-50"/>
+        <arc width="5" x="12" y="-5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-50"/>
+        <arc width="5" x="7.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <arc width="5" x="-12.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <arc width="5" x="2.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="5" x="-2.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <terminal x="15" y="0" orientation="e"/>
+        <terminal x="-15" y="0" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,18 @@
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
+    <names>
+        <name lang="en">Key missing bolt free entry maneuver</name>
+        <name lang="fr">Cle absente pene entree manoeuvre libre</name>
+        <name lang="pl">Brak klucza, wejście dozwolone</name>
+        <name lang="cs">Klíči chybí zástrčka, vstup dovolen</name>
+        <name lang="ar">المفتاح مفقود الدخول للمناورة حر</name>
+        <name lang="it">Chiave assente, manovra libera</name>
+        <name lang="nl">Slot missende sleutel in vrij</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="4" x="19" y="-8" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="40" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-7.0710" y="-7.0710" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14.1421"/>
+    </description>
+</definition>

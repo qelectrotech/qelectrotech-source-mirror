@@ -1,0 +1,21 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
+    <names>
+        <name lang="el">Εξαγωγή</name>
+        <name lang="en">Exhaust air</name>
+        <name lang="it">Scarico aria</name>
+        <name lang="fr">Échappement d'air</name>
+        <name lang="pl">Wyrzutnia powietrza</name>
+        <name lang="cs">Výfuk vzduchu</name>
+        <name lang="nl">Uitlaat lucht</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="0" y2="-2" x2="0"/>
+        <polygon x4="-1.5" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-9" x1="-1.5" y2="-9" x2="1.5" y3="-14" x3="0" y4="-9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="0" y2="20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="3" y2="12" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-3" y2="12" x2="-3"/>
+        <terminal x="0" y="20" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,23 @@
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">قاعدة قابس تيّار (قدرة) بغطاء عازل  (EN 60617 11-13-0x)</name>
+        <name lang="de">Schutzkontaktsteckdose mit Abdeckung (EN 60617 11-13-0x)</name>
+        <name lang="el">Πρίζα με αγωγό προστασίας και κάλυμμα</name>
+        <name lang="en">covered isolated ground receptacle with  (EN 60617 11-13-0x)</name>
+        <name lang="it">Presa di corrente con contatto di protezione e coperchio (EN 60617 11-13-0x)</name>
+        <name lang="fr">Socle de prise de courant (puissance) avec volet d'obturation (EN 60617 11-13-0x)</name>
+        <name lang="pl">Gniazdo wtykowe ze stykiem ochronnym i z pokrywą</name>
+        <name lang="cs">Krytá izolovaná zásuvka (EN 60617 11-13-0x)</name>
+        <name lang="nl">contactdoos randaarde deksel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="20" y2="20" x2="10"/>
+        <arc width="20" x="-10" y="9.5" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="0" y2="-7" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="-10" y2="9" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-10" y2="20" x2="-20"/>
+        <terminal x="0" y="-10" orientation="n"/>
+    </description>
+</definition>

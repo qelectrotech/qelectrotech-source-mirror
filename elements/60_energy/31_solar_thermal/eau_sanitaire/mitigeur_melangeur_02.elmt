@@ -1,0 +1,33 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">خلاّط 02 ECS</name>
+        <name lang="en">Mixer 02 ECS</name>
+        <name lang="fr">Mitigeur02 ECS</name>
+        <name lang="pl">Mieszacz CWU</name>
+        <name lang="cs">Směšovač 02 ECS</name>
+        <name lang="it">Valvola miscelatrice ACS 2</name>
+        <name lang="nl">Mengklep 2</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="20" x="-14" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-14" y="-1.5" size="2" rotate="true" text="Mitigeur"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-1" y2="0" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-10" y2="1" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-11" y2="0" x2="-9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="7" y2="3" x2="10"/>
+        <rect width="4" x="-2" y="5" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-16" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="16" y2="5" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="16" y2="-5" x2="7"/>
+        <arc width="3" x="14.5" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="7" y2="-3" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="7" y2="-1" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="7" y2="1" x2="10"/>
+        <rect width="4" x="-12" y="5" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="7" orientation="s"/>
+        <terminal x="-10" y="7" orientation="s"/>
+        <terminal x="-16" y="0" orientation="w"/>
+    </description>
+</definition>

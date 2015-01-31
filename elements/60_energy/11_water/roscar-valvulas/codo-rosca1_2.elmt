@@ -1,0 +1,29 @@
+<definition width="40" version="0.4" hotspot_x="22" hotspot_y="18" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Codo roscar1/2</name>
+        <name lang="it">Gomito filettato 1/2"</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="3.78" x="-7.03" y="-1.58722" antialias="true" height="3.91744" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
+        <arc width="3.78" x="-5.77" y="-3.54595" antialias="true" height="3.91744" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="6.3" x="-13.33" y="0.063327" antialias="false" height="16.2178" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="3.78" x="-7.03" y="14.0826" antialias="true" height="3.91744" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <rect width="4.92641" x="-12.5864" y="2.98313" antialias="false" height="9.79361" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="15.12" x="-3.88" y="-10.3832" antialias="false" height="6.42415" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="5.985" x="-7.975" y="-4.85595" antialias="true" height="7.01712" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="28.35" x="-19" y="-16.1394" antialias="true" height="30.237" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="3.78" x="9.35" y="-3.54595" antialias="true" height="3.91744" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <rect width="11.34" x="-1.99" y="-8.79664" antialias="false" height="3.94488" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7.31731" x1="-1.99" y2="-8.30353" x2="9.35"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.33109" x1="-1.99" y2="-7.31731" x2="9.35"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.34487" x1="-1.99" y2="-6.33109" x2="9.35"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="12.7767" x1="-11.3517" y2="2.98313" x2="-9.49952"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="12.7767" x1="-10.1169" y2="2.98313" x2="-7.64738"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="12.7767" x1="-12.5864" y2="2.98313" x2="-10.7343"/>
+        <input x="-13" y="23" size="4" rotate="true" text="codo1/2"/>
+        <terminal x="-12.7" y="8.20639" nameHidden="1" number="" name="" orientation="w"/>
+        <terminal x="3.68" y="-10.075" nameHidden="1" number="" name="" orientation="n"/>
+    </description>
+</definition>

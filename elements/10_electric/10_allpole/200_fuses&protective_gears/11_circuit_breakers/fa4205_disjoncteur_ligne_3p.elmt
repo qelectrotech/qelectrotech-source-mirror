@@ -1,0 +1,43 @@
+<definition width="70" version="0.4" hotspot_x="16" hotspot_y="5" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="de">Leitungsschutzschalter 3P </name>
+        <name lang="en">Feeder circuit-breaker 3P</name>
+        <name lang="it">Relè termico 3P</name>
+        <name lang="fr">Disjoncteur de ligne 3p</name>
+        <name lang="pl">Wyłącznik nadprądowy trójbiegunowy</name>
+        <name lang="cs">Jistič vedení 3P</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="39" x1="20" y2="30" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="40" y2="31" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="10" x2="20"/>
+        <polygon x4="-12.8" y5="10" x5="-11.4" y6="11.4" x6="-14.3" y7="11.4" x7="-14.3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7.7" x1="-6.5" y2="8.7" x2="-8.6" y3="6" x3="-10" y4="7.3"/>
+        <polygon x4="7.2" y5="10" x5="8.6" y6="11.4" x6="5.7" y7="11.4" x7="5.7" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7.7" x1="13.5" y2="8.7" x2="11.4" y3="6" x3="10" y4="7.3"/>
+        <polygon x4="27.2" y5="10" x5="28.6" y6="11.4" x6="25.7" y7="11.4" x7="25.7" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7.7" x1="33.5" y2="8.7" x2="31.4" y3="6" x3="30" y4="7.3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="10" x2="40"/>
+        <line length1="1.5" length2="2.5" antialias="true" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="15" y2="16.5" x2="7.5"/>
+        <line length1="1.5" length2="2.5" antialias="true" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="35" y2="16.5" x2="27.5"/>
+        <line length1="1.5" length2="2.5" antialias="true" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="-5" y2="16.5" x2="-12.5"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-7" y2="30" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="33" y2="30" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="13" y2="30" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="10" x2="0"/>
+        <text x="49" y="41" size="6" rotation="270" text="6"/>
+        <text x="33" y="40" size="6" rotation="270" text="4"/>
+        <text x="49" y="3" size="6" rotation="270" text="5"/>
+        <text x="33" y="3" size="6" rotation="270" text="3"/>
+        <text x="13" y="40" size="6" rotation="270" text="2"/>
+        <input x="-26" y="-5.5" size="9" text="Q" tagg="none"/>
+        <text x="13" y="3" size="6" rotation="270" text="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="21" x1="-2.09128" y2="21" x2="37.9321"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="0" y2="31" x2="0"/>
+        <terminal x="0" y="0" orientation="n"/>
+        <terminal x="0" y="40" orientation="s"/>
+        <terminal x="20" y="0" orientation="n"/>
+        <terminal x="20" y="40" orientation="s"/>
+        <terminal x="40" y="0" orientation="n"/>
+        <terminal x="40" y="40" orientation="s"/>
+    </description>
+</definition>

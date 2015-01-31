@@ -1,0 +1,34 @@
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="40" height="70" type="element" ic="true" orientation="dnny">
+    <names>
+        <name lang="ar">محوّل أحادي الوجه</name>
+        <name lang="de">Transformator einphasig</name>
+        <name lang="ru">Однофазный трансформатор</name>
+        <name lang="pt">Transformador monofásico</name>
+        <name lang="en">Single phase transducer</name>
+        <name lang="it">Trasformatore monofase</name>
+        <name lang="fr">Transformateur monophasé</name>
+        <name lang="pl">Transformator jednofazowy</name>
+        <name lang="es">Transformador monofásica</name>
+        <name lang="cs">Jednofázový transformátor</name>
+        <name lang="nl">eenfase transformator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="26" y="17" size="5" text="___V"/>
+        <ellipse width="30" x="-5" y="-7" antialias="true" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="26" y="-10" size="5" text="___V"/>
+        <ellipse width="30" x="-5" y="-26" antialias="true" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="24" y="3" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="0" y2="-24" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="0" y2="25" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="20" y2="-24" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="20" y2="25" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="1" y2="-5" x2="-8"/>
+        <terminal x="0" y="-36" orientation="n"/>
+        <terminal x="20" y="26" orientation="s"/>
+        <terminal x="0" y="26" orientation="s"/>
+        <terminal x="20" y="-36" orientation="n"/>
+        <terminal x="-10" y="-5" orientation="w"/>
+    </description>
+</definition>

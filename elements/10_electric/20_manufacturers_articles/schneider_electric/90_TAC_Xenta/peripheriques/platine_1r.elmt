@@ -1,0 +1,56 @@
+<definition width="60" version="0.3" hotspot_x="0" hotspot_y="0" height="110" type="element" orientation="dnnn">
+    <names>
+        <name lang="ar">لوحة 1R</name>
+        <name lang="en">Platinum 1R</name>
+        <name lang="fr">Platine_1R</name>
+        <name lang="pl">Płyta 1R</name>
+        <name lang="cs">Deska 1R</name>
+        <name lang="es">Platino 1R</name> 
+        <name lang="it">Platinum 1R</name>
+        <name lang="nl">Platinum 1R</name>
+    </names>
+    <informations>Auteur : C V C 71&#xd;&#xd;
+Langue : Fr&#xd;&#xd;
+&#xd;&#xd;
+Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;&#xd;
+&#xd;&#xd;
+Bonne utilisation !</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="20" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="77" x1="0" y2="77" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="92" x1="0" y2="92" x2="40"/>
+        <rect width="40" x="0" y="0" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="85" x1="36" y2="85" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="85" x1="4" y2="85" x2="0"/>
+        <rect width="10" x="25" y="80" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="5" y="80" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="17.7639" y="47.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
+        <text x="10" y="63" size="5" text="AUTO"/>
+        <text x="26" y="88" size="6" text="A3"/>
+        <text x="6" y="88" size="6" text="11"/>
+        <text x="28" y="53" size="5" text="0"/>
+        <text x="11" y="43" size="5" text="MANU"/>
+        <circle x="16.8377" y="26.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="6.3245"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="105" x1="30" y2="110" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="30" y2="0" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="105" x1="10" y2="110" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="10" y2="0" x2="10"/>
+        <input x="46" y="53.5" size="9" rotate="true" text="_"/>
+        <rect width="10" x="25" y="95" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="25" y="5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="5" y="95" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="5" y="5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="0" x="30" y="106" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="26" y="13" size="5" text="A2"/>
+        <rect width="0" x="10" y="106" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="6" y="13" size="5" text="A1"/>
+        <text x="26" y="103" size="6" text="14"/>
+        <text x="6" y="103" size="6" text="12"/>
+        <terminal x="10" y="0" orientation="n"/>
+        <terminal x="10" y="110" orientation="s"/>
+        <terminal x="30" y="0" orientation="n"/>
+        <terminal x="30" y="110" orientation="s"/>
+        <terminal x="0" y="85" orientation="w"/>
+        <terminal x="40" y="85" orientation="e"/>
+    </description>
+</definition>

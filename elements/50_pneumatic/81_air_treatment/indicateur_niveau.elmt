@@ -1,0 +1,19 @@
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Liquid Level Indicator</name>
+        <name lang="fr">Indicateur de niveau de liquide</name>
+        <name lang="pl">Wskaźnik poziomu cieczy</name>
+        <name lang="cs">Ukazatel hladiny kapaliny</name>
+        <name lang="ar">مُؤشّر مستوى سائل</name>
+        <name lang="it">Indicatore del livello del liquido</name>
+        <name lang="nl">Vloeistofniveau aanwijzer</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-5" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <arc width="30" x="-5" y="-30" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-45" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="10" y2="30" x2="10"/>
+        <terminal x="10" y="30" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,32 @@
+<definition width="100" version="0.4" hotspot_x="44" hotspot_y="56" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Washing machine</name>
+        <name lang="fr">Lave linge</name>
+        <name lang="es">Lavadora</name>
+        <name lang="it">Lavatrice</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="20" x="30" y="-11" antialias="true" height="45" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39.8808" x1="16.7229" y2="-39.8808" x2="18.198"/>
+        <arc width="15" x="33" y="-9" antialias="true" height="41" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <ellipse width="10.6207" x="20.0861" y="-46.478" antialias="true" height="11.8749" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="47" y="9" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10.6207" x="1.49981" y="-45.1586" antialias="false" height="9.23602" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-46.478" x1="18.7585" y2="-45.1586" x2="20.0861"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-49.8206" x1="25.3965" y2="-48.3545" x2="25.3965"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35.9226" x1="20.0861" y2="-34.6031" x2="18.7585"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35.9226" x1="30.7069" y2="-34.6031" x2="32.0344"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39.8808" x1="25.3965" y2="-42.5197" x2="28.0517"/>
+        <rect width="13.2759" x="-33.0176" y="-42.5197" antialias="false" height="3.95829" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="79.6556" x="-39.6556" y="-51.7557" antialias="false" height="19.7915" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-43.8391" x1="32.0344" y2="-45.1586" x2="34.6896"/>
+        <rect width="79.6556" x="-39.6556" y="-31.9643" antialias="false" height="71.2493" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="37.1726" x="-18.4141" y="-16.1311" antialias="true" height="34.3052" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="48.1209" x="-24.052" y="-20.7568" antialias="true" height="44.2086" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3.98278" x="24.0689" y="-2.93678" antialias="false" height="5.27772" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-29" y="30" size="4" rotate="true" text="Lavadora" tagg="none"/>
+        <terminal x="49" y="11" orientation="n"/>
+    </description>
+</definition>

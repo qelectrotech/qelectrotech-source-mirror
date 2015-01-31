@@ -1,0 +1,40 @@
+<definition width="120" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Valve 5 / 2, driven by the pressure in both directions</name>
+        <name lang="fr">Electrovanne 5 / 2, entraînée par la pression dans les deux directions</name>
+        <name lang="pl">Zawór sterujący 5/2, sterowany za pomocą ciśnienia w obu kierunkach</name>
+        <name lang="cs">Elektromagnetický ventil 5/2, řízený za pomoci tlaku v obou směrech</name>
+        <name lang="ar">صمّام بتحكّم كهربائي 5/2 متحرّك بالضغط في الاتجاهين</name>
+        <name lang="it">Elettroalvola 5/2 controllata dalla pressione nei due sensi</name>
+        <name lang="nl">Klep 5/2 luchtbediend</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.85" x1="50" y2="-20.15" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="5" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="68" y2="5" x2="72"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="96" y2="-5" x2="91"/>
+        <polygon x4="75.05" y5="10.05" x5="75.05" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.05" x1="75.05" y2="10.05" x2="15.05" y3="-19.95" x3="15.05" y4="-19.95"/>
+        <polygon x4="48" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="4.85" x1="48" y2="4.85" x2="52" y3="9.85" x3="50" y4="4.85"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="18" y2="5" x2="22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="70" y2="5" x2="70"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="80" y2="-5" x2="75"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="15" y2="-5" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="88" y2="-5" x2="83"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-1" y2="-5" x2="-6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="7" y2="-5" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="70" y2="-30" x2="70"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="50" y2="10" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="40" y2="-20" x2="40"/>
+        <polygon x4="38" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="5" x1="38" y2="5" x2="42" y3="10" x3="40" y4="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="50" y2="-30" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="60" y2="10" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.95" x1="45.05" y2="10.05" x2="45.05"/>
+        <terminal x="50" y="-30" orientation="n"/>
+        <terminal x="50" y="20" orientation="s"/>
+        <terminal x="60" y="20" orientation="s"/>
+        <terminal x="70" y="-30" orientation="n"/>
+        <terminal x="70" y="20" orientation="s"/>
+    </description>
+</definition>

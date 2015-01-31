@@ -1,0 +1,43 @@
+<definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny">
+    <names>
+        <name lang="ar">محول ثلاثي الأوجه + خط محايد</name>
+        <name lang="el">Μετασχηματιστής τριφασικός + ουδέτερος</name>
+        <name lang="en">Three-phase + neutral transducer</name>
+        <name lang="de">Transformator Drehstrom + Neutralleiter</name>
+        <name lang="it">Trasformatore trifase + neutro</name>
+        <name lang="fr">Transformateur triphasé + neutre</name>
+        <name lang="pl">Transformator trójfazowy</name>
+        <name lang="cs">Třífázový transformátor + neutrální</name>
+        <name lang="nl">driefase transformator + Nul</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="-12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="35" x1="-34" y2="30" x2="-34" y3="19" x3="-27" y4="19"/>
+        <text x="-16" y="-31.6667" size="4" text="A1"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="21" x1="11" y2="30" x2="17" y3="35" x3="17"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="21" x1="-11" y2="30" x2="-17" y3="35" x3="-17"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-21" x1="-11" y2="-30" x2="-17" y3="-35" x3="-17"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-21" x1="11" y2="-30" x2="17" y3="-35" x3="17"/>
+        <text x="2" y="34.3333" size="4" text="B2"/>
+        <text x="-16" y="34.3333" size="4" text="A2"/>
+        <text x="18" y="-31.6667" size="4" text="C1"/>
+        <text x="1" y="-31.6667" size="4" text="B1"/>
+        <circle x="-15" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <text x="18" y="34.3333" size="4" text="C2"/>
+        <text x="-33" y="35.3333" size="4" text="N"/>
+        <input x="20" y="17" size="5" rotate="true" text="___V"/>
+        <input x="20" y="-13" size="5" rotate="true" text="___V"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="0" y2="35" x2="0"/>
+        <circle x="-15" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <input x="17.75" y="4" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="0" y2="-25" x2="0"/>
+        <terminal x="17" y="-36" orientation="n"/>
+        <terminal x="0" y="-36" orientation="n"/>
+        <terminal x="-17" y="-36" orientation="n"/>
+        <terminal x="-17" y="36" orientation="s"/>
+        <terminal x="0" y="36" orientation="s"/>
+        <terminal x="17" y="36" orientation="s"/>
+        <terminal x="-34" y="36" orientation="s"/>
+    </description>
+</definition>

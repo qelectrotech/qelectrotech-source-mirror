@@ -1,0 +1,27 @@
+<definition width="70" version="0.3" hotspot_x="35" hotspot_y="35" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Variable displacement hydraulic pump</name>
+        <name lang="fr">Pompe debit variable</name>
+        <name lang="pl">Pompa o zmiennej wydajności i jednym kiekunku tłoczenia</name>
+        <name lang="cs">Vodní čerpadlo s proměnlivým výkonem</name>
+        <name lang="ar">مضخّة بتدفق مُتغيّر</name>
+        <name lang="it">Pompa a portata variabile</name>
+        <name lang="nl">Pomp variabel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="26" y="-17" size="8" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.9336" x1="19.8281" y2="-17.7188" x2="16.4531"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.8281" x1="19.8281" y2="-16.3477" x2="17.6133"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.0391" x1="-20.0391" y2="-19.8281" x2="19.8281"/>
+        <circle x="-20" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
+        <polygon x4="4.1633" y5="-19.459" x5="4.1633" y6="-19.459" x6="4.1633" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-19.9336" x1="0.2373" y2="-15.0095" x2="-2.2543" y3="-15.0095" x3="2.2543" y4="-19.5776"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="24.5" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.4" x1="0" y2="-24.5" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20.5" y2="0" x2="-24.5"/>
+        <terminal x="0" y="-24.4" orientation="n"/>
+        <terminal x="0" y="24.4" orientation="s"/>
+        <terminal x="-24.4" y="0" orientation="w"/>
+    </description>
+</definition>

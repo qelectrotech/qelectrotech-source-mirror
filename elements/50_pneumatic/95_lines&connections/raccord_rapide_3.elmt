@@ -1,0 +1,26 @@
+<definition width="60" version="0.4" hotspot_x="15" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">رابط سريع بصمّام ضدّ الرجع</name>
+        <name lang="el">Ταχυσύνδεσμος με ανεπίστροφη βαλβίδα</name>
+        <name lang="en">Quick coupling with check valve</name>
+        <name lang="it">Raccordo rapido con valvola ritegno</name>
+        <name lang="fr">Raccord rapide avec un clapet anti-retour</name>
+        <name lang="pl">Szybkozłączka z mechanicznie otwieranymi zaworami zwrotnymi - połączona</name>
+        <name lang="nl">Snelkoppeling met klep</name>
+        <name lang="cs">Rychlé spojení s pojistným ventilem</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="22" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <rect width="34" x="-2" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="8.8817" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="7" y2="0" x2="12" y3="5" x3="7"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="5" x1="23" y2="0" x2="18" y3="-5" x3="23"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="15" y2="2" x2="15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="40"/>
+        <terminal x="40" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="40" y="0" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

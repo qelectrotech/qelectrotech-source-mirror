@@ -1,0 +1,53 @@
+<definition width="300" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">لوحة مخارج CD12</name>
+        <name lang="de">CD12 Ausgangskarte</name>
+        <name lang="pt">Carta de saídas CD12</name>
+        <name lang="el">Κάρτα εξόδων CD12</name>
+        <name lang="en">CD12 output board</name>
+        <name lang="it">Scheda uscite CD12</name>
+        <name lang="fr">CD12 carte sorties</name>
+        <name lang="pl">Karta wyjść CD12</name>
+        <name lang="es">CD12 tarjeta de salida</name>
+        <name lang="cs">Karta CD12 výstupy</name>
+        <name lang="nl">CD12 uitgangskaart</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="298" x="1" y="1" antialias="false" height="38" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="47" y="24.5" size="8" text="O1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x1="50" y2="30" x2="59"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="40" y2="40" x2="40"/>
+        <text x="226" y="24.5" size="8" text="O 4"/>
+        <text x="167" y="24.5" size="8" text="O 3"/>
+        <text x="106" y="24.5" size="8" text="O 2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x1="110" y2="30" x2="119"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="70" y2="40" x2="70"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x1="170" y2="30" x2="179"/>
+        <text x="79" y="11.6667" size="8" text="CROUZET CD12 Carte sorties"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="40" y2="30" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="60" y2="30" x2="70"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x1="230" y2="30" x2="239"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="100" y2="40" x2="100"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="220" y2="40" x2="220"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="160" y2="40" x2="160"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="190" y2="40" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="130" y2="40" x2="130"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="250" y2="40" x2="250"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="220" y2="30" x2="230"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="160" y2="30" x2="170"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="100" y2="30" x2="110"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="180" y2="30" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="120" y2="30" x2="130"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="240" y2="30" x2="250"/>
+        <terminal x="70" y="40" orientation="s"/>
+        <terminal x="100" y="40" orientation="s"/>
+        <terminal x="130" y="40" orientation="s"/>
+        <terminal x="160" y="40" orientation="s"/>
+        <terminal x="40" y="40" orientation="s"/>
+        <terminal x="190" y="40" orientation="s"/>
+        <terminal x="250" y="40" orientation="s"/>
+        <terminal x="220" y="40" orientation="s"/>
+    </description>
+</definition>

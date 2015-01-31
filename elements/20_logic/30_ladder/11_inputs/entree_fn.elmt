@@ -1,0 +1,28 @@
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
+    <names>
+        <name lang="ar">دخل (حافة نازلة)</name>
+        <name lang="de">Eingang (fallende Flanke)</name>
+        <name lang="ru">Вход (задний фронт)</name>
+        <name lang="pt">Entrada (descendente)</name>
+        <name lang="el">Είσοδος (αρνητικός παλμός)</name>
+        <name lang="en">Input (down front)</name>
+        <name lang="it">Ingresso (fronte discendente)</name>
+        <name lang="fr">Entrée (front descendant)</name>
+        <name lang="pl">Wejście (zbocze opadające)</name>
+        <name lang="es">Entrada (descendente)</name>
+        <name lang="cs">Vstup (klesající)</name>
+        <name lang="nl">Ingang (neergaande flank)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="-4.25" y="5.25" size="9" text="N"/>
+        <input x="-18" y="-10" size="9" rotate="true" text="_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="10" y2="-5" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-10" y2="5" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="24"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-24" y2="0" x2="-10"/>
+        <terminal x="24" y="0" orientation="e"/>
+        <terminal x="-24" y="0" orientation="w"/>
+    </description>
+</definition>

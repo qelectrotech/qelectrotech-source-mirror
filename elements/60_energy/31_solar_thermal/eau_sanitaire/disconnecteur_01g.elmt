@@ -1,0 +1,29 @@
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">صمّام منع ارتجاع " يسار"</name>
+        <name lang="en">Backflow</name>
+        <name lang="fr">Disconnecteur "gauche"</name>
+        <name lang="pl">Zawór odcinający powrót CWU</name>
+        <name lang="cs">Zpětný tok</name>
+        <name lang="it">Riflusso SX</name>
+        <name lang="nl">Terugstroombeveiliging</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="40" x="-20" y="-10" antialias="false" height="20" style="line-style:dotted;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-4" y2="-8" x2="3"/>
+        <polygon x4="6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="6" y2="-7" x2="17" y3="7" x3="17" y4="0"/>
+        <polygon x4="-17" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-17" y2="-7" x2="-6" y3="7" x3="-6" y4="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-17"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="1" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-17" y2="7" x2="-17"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="0" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="6" y2="7" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-5" y2="0" x2="5"/>
+        <text x="-18" y="-12" size="4" text="disconnecteur"/>
+        <terminal x="20" y="0" orientation="e"/>
+        <terminal x="-20" y="0" orientation="w"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

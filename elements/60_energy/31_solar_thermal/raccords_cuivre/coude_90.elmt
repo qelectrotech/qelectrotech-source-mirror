@@ -1,0 +1,19 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">كوع ب 90 درجة</name>
+        <name lang="el">Γωνία 90°</name>
+        <name lang="en">Elbow at 90</name>
+        <name lang="it">Gomito 90°</name>
+        <name lang="fr">Coude à 90</name>
+        <name lang="pl">Kolanko 90</name>
+        <name lang="cs">Koleno 90</name>
+        <name lang="nl">Hoek 90</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="12" x="-12" y="-12" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <terminal x="-6" y="0" orientation="w"/>
+        <terminal x="0" y="-6" orientation="n"/>
+    </description>
+</definition>

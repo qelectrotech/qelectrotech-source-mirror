@@ -1,0 +1,84 @@
+<definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="260" type="element" orientation="dnnn">
+    <names>
+        <name lang="ar">CPU 312</name>
+        <name lang="pt">CPU 312</name>
+        <name lang="el">CPU 312</name>
+        <name lang="en">CPU 312</name>
+        <name lang="it">CPU 312</name>
+        <name lang="fr">CPU 312</name>
+        <name lang="pl">CPU 312</name>
+        <name lang="es">CPU 312</name>
+        <name lang="cs">CPU 312</name>
+        <name lang="nl">CPU 312</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="22" y="42" size="4" text="PUSH"/>
+        <rect width="80" x="-10" y="-30" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="65.5" y2="87" x2="65.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="70" y2="50" x2="65.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="87" x1="-5.5" y2="87" x2="65.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-5.5" y2="87" x2="-5.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-10" y2="50" x2="-5.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="62" x1="4" y2="81" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="62" x1="7" y2="81" x2="7"/>
+        <text x="9" y="110" size="6" text="S7-300"/>
+        <text x="4" y="102" size="7" text="SIMATIC"/>
+        <arc width="3" x="4" y="60" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="3" x="4" y="80" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <rect width="6" x="12" y="69.75" antialias="false" height="2.5" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <rect width="8" x="11" y="63" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-1" y="-13" size="4" text="SF"/>
+        <polygon x4="35" y5="37" x5="27" y6="33" x6="23" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="33" x1="23" y2="28" x2="23" y3="28" x3="35" y4="37"/>
+        <text x="23" y="64" size="4" text="MRES"/>
+        <text x="-1" y="19" size="4" text="FRCE"/>
+        <text x="-1" y="8" size="4" text="DC 5V"/>
+        <polygon x4="34" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="36" x1="34" y2="29" x2="34" y3="32.5" x3="31" y4="36"/>
+        <text x="23" y="82" size="4" text="STOP"/>
+        <text x="-1" y="39" size="4" text="STOP"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="35" x1="17" y2="34" x2="18"/>
+        <text x="23" y="73" size="4" text="RUN"/>
+        <text x="-1" y="29" size="4" text="RUN"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="42" x1="17" y2="43" x2="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="42" x1="16" y2="43" x2="15"/>
+        <rect width="1" x="16" y="35" antialias="false" height="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="34" x1="15" y2="35" x2="16"/>
+        <rect width="3" x="15" y="32" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="15.5" y="-13" antialias="false" height="45" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="3" x="15" y="34" antialias="false" height="9" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="5" x="14" y="-14" antialias="false" height="58" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="23" y="-8" size="7" text="SIEMENS"/>
+        <rect width="44" x="22" y="-18" antialias="false" height="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="49" y="206" size="4" text="X"/>
+        <text x="49" y="214" size="4" text="3"/>
+        <text x="56" y="206" size="4" text="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="208" x1="48" y2="208" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="202" x1="54" y2="214" x2="54"/>
+        <text x="56" y="214" size="4" text="4"/>
+        <input x="-12" y="216" size="3" rotate="true" text="312-1AD10-0AB0"/>
+        <input x="-9" y="-23" size="4" rotate="true" text="CPU312"/>
+        <circle x="-4" y="205" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <rect width="12" x="-8" y="201" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="-8" y="-18.25" antialias="false" height="58.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.25" x1="-2" y2="-12.25" x2="-8"/>
+        <circle x="-6.4" y="4.35" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.8"/>
+        <circle x="-6.4" y="25.35" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.8"/>
+        <circle x="-6.4" y="35.85" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.8"/>
+        <circle x="-6.4" y="14.85" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.8"/>
+        <circle x="-6.4" y="-16.65" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.8"/>
+        <circle x="-6.4" y="-6.15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.75" x1="-2" y2="2.75" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.75" x1="-2" y2="-7.75" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23.75" x1="-2" y2="23.75" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.75" x1="-2" y2="8.75" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13.25" x1="-2" y2="13.25" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="29.75" x1="-2" y2="29.75" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.25" x1="-2" y2="19.25" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="34.25" x1="-2" y2="34.25" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.75" x1="-2" y2="-1.75" x2="-8"/>
+        <terminal x="40" y="220" orientation="s"/>
+        <terminal x="20" y="220" orientation="s"/>
+        <terminal x="30" y="220" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,40 @@
+<definition width="50" version="0.3" hotspot_x="5" hotspot_y="35" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="el">Βάση PF</name>
+        <name lang="en">Base PF</name>
+        <name lang="it">Base PF</name>
+        <name lang="fr">embase PF</name>
+        <name lang="pl">Podstawa PF</name>
+        <name lang="cs">Patice PF</name>
+        <name lang="nl">Basis PF</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="22.25" y="-28.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.5"/>
+        <circle x="12.25" y="-28.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.5"/>
+        <circle x="12.25" y="13.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.5"/>
+        <circle x="32.25" y="-28.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.5"/>
+        <rect width="40" x="0" y="-30" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26" x1="24" y2="-26" x2="26"/>
+        <circle x="32.25" y="13.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26" x1="34" y2="-26" x2="36"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26" x1="14" y2="-26" x2="16"/>
+        <circle x="22.25" y="13.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="35" y2="-25" x2="35"/>
+        <circle x="2.25" y="-28.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="25" y2="-25" x2="25"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="15" y2="-25" x2="15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="34" y2="16" x2="36"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26" x1="4" y2="-26" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="24" y2="16" x2="26"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="5" y2="-25" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="14" y2="16" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="25" y2="17" x2="25"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="15" y2="17" x2="15"/>
+        <circle x="2.25" y="13.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="35" y2="17" x2="35"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="4" y2="16" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="5" y2="17" x2="5"/>
+    </description>
+</definition>

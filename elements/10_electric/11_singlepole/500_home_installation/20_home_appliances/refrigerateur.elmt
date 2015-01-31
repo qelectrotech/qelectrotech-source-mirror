@@ -1,0 +1,24 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+    <names>
+        <name lang="ar">ثلاّجة</name>
+        <name lang="el">Ψυγείο</name>
+        <name lang="en">Refrigerator</name>
+        <name lang="de">Kühlschrank</name>
+        <name lang="it">Frigorifero</name>
+        <name lang="fr">Réfrigérateur</name>
+        <name lang="pl">Chłodziarka</name>
+        <name lang="cs">Lednička, chladnička</name>
+        <name lang="nl">Koelkast</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="-2" y2="9" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="-2" y2="13" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-3" y2="11" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="0" y2="14" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
+        <terminal x="0" y="-13" orientation="n"/>
+    </description>
+</definition>

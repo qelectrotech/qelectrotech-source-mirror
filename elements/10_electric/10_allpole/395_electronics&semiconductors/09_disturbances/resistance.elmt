@@ -1,0 +1,28 @@
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">مُقاومة</name>
+        <name lang="de">Widerstand</name>
+        <name lang="ru">Резистор</name>
+        <name lang="pt">Resistência</name>
+        <name lang="el">Αντίσταση</name>
+        <name lang="en">Resistor</name>
+        <name lang="it">Resistenza</name>
+        <name lang="fr">Résistance</name>
+        <name lang="pl">Rezystor</name>
+        <name lang="es">Resistencia</name>
+        <name lang="cs">Odporník</name>
+        <name lang="nl">Weerstand</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="10" x1="4" y2="-10" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="10" x1="-4" y2="10" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-10" x1="4" y2="-10" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-10" x1="-4" y2="10" x2="-4"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,26 @@
+<definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">دياك</name>
+        <name lang="de">Diak</name>
+        <name lang="en">Diac</name>
+        <name lang="it">Diac</name>
+        <name lang="fr">Diac</name>
+        <name lang="pl">Diak</name>
+        <name lang="cs">Diak</name>
+        <name lang="nl">Diac</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="-20" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="10" y2="20" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="1" y2="0" x2="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="18" y2="5" x2="2"/>
+        <polygon x4="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="8" y2="5" x2="13" y3="-5" x3="18" y4="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="1" y2="-5" x2="17"/>
+        <polygon x4="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="6" y2="5" x2="1" y3="5" x3="11" y4="-5"/>
+        <input x="21" y="3.6666" size="9" text="_" tagg="label"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="10" y="20" orientation="s"/>
+    </description>
+</definition>

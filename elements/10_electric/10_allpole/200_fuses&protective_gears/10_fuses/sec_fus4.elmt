@@ -1,0 +1,43 @@
+<definition width="100" version="0.3" hotspot_x="31" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy" link_type="master">
+    <names>
+        <name lang="ar">مفتاح عزل بمصهرات</name>
+        <name lang="de">Sicherungstrenner 3-polig</name>
+        <name lang="ru">Выключатель-предохранитель</name>
+        <name lang="pt">Seccionador</name>
+        <name lang="en">switchfuses</name>
+        <name lang="it">Sezionatore con fusibile 3P</name>
+        <name lang="fr">Porte fusible tri</name>
+        <name lang="pl">Odłącznik bezpiecznikowy</name>
+        <name lang="es">Seccionador</name>
+        <name lang="cs">Odpojovač</name>
+        <name lang="nl">Zekeringscheider 3</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-25" y2="10" x2="-20" y3="20" x3="-20"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="15" y2="10" x2="20" y3="20" x3="20"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>
+        <polygon x4="18.19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.51" x1="14.31" y2="5.49" x2="16.81" y3="4.51" x3="20.69" y4="-5.49"/>
+        <polygon x4="-1.81" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.51" x1="-5.69" y2="5.49" x2="-3.19" y3="4.51" x3="0.69" y4="-5.49"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="18" y2="-10" x2="22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-2" y2="-10" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+        <polygon x4="-21.81" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.51" x1="-25.69" y2="5.49" x2="-23.19" y3="4.51" x3="-19.31" y4="-5.49"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-20" y2="-10" x2="-20"/>
+        <input x="40" y="0.5" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-18" y2="-10" x2="-22"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="0" y2="0" x2="15"/>
+        <terminal x="-20" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-20" y="20" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="0" y="20" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="20" y="20" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="20" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+    </description>
+</definition>

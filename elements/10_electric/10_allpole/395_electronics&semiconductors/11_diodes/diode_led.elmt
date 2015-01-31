@@ -1,0 +1,30 @@
+<definition width="40" version="0.3" hotspot_x="12" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">دايود ضاوي LED</name>
+        <name lang="de">LED</name>
+        <name lang="ru">Светодиод</name>
+        <name lang="pt">LED</name>
+        <name lang="el">Δίοδος LED</name>
+        <name lang="en">LED</name>
+        <name lang="it">LED</name>
+        <name lang="fr">DEL</name>
+        <name lang="pl">Dioda elektroluminescencyjna (LED)</name>
+        <name lang="es">LED</name>
+        <name lang="cs">Svítící dioda (světelná emisní dioda - LED)</name>
+        <name lang="nl">LED</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="2" x1="-7" y2="1" x2="-9" y3="0" x3="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="-7" y2="1" x2="-5.25"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-2.5" x1="-9" y2="-3.5" x2="-7" y3="-1.5" x3="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.5" x1="-7" y2="-2.5" x2="-5.25"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-5" y2="5" x2="5"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-5" y2="-5" x2="5" y3="5" x3="0"/>
+        <input x="7.75" y="3" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="20" x2="0"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

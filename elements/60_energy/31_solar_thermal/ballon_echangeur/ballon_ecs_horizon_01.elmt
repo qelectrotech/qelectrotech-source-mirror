@@ -1,0 +1,27 @@
+<definition width="230" version="0.3" hotspot_x="125" hotspot_y="75" height="160" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">خزان ماء أفقي</name>
+        <name lang="en">DHW horizontal</name>
+        <name lang="fr">Ballon ECS horizontal</name>
+        <name lang="pl">Zasobnik poziomy CWU</name>
+        <name lang="cs">Vodorovný zásobnik ECS</name>
+        <name lang="it">Scambiatore orizzontale ACS</name>
+        <name lang="nl">Boiler elektrisch</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="84" y5="-18" x5="84" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-22" x1="83" y2="-22" x2="90" y3="-18" x3="90" y4="-18"/>
+        <polygon x4="84" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="42" x1="83" y2="42" x2="90" y3="38" x3="90" y4="38"/>
+        <rect width="4" x="58" y="60" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="-92" y="-50" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="165" x="-94" y="-40" antialias="true" height="100" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-60" y="11" size="7" rotate="true" text="Ballon ECS"/>
+        <arc width="28" x="58" y="-40" antialias="true" height="100" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <arc width="28" x="-108" y="-40" antialias="true" height="100" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <terminal x="-90" y="-50" orientation="n"/>
+        <terminal x="60" y="70" orientation="s"/>
+        <terminal x="90" y="-20" orientation="e"/>
+        <terminal x="90" y="40" orientation="e"/>
+    </description>
+</definition>

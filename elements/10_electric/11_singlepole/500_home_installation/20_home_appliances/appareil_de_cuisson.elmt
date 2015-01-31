@@ -1,0 +1,29 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="50" type="element" orientation="dnnn">
+    <names>
+        <name lang="ar">جهاز طبخ</name>
+        <name lang="el">Μαγειρείο</name>
+        <name lang="en">Cooking Appliance</name>
+        <name lang="de">Kochgerät</name>
+        <name lang="it">Cucina</name>
+        <name lang="fr">Appareil de cuisson</name>
+        <name lang="pl">Kuchenka</name>
+        <name lang="cs">Spotřebič na vaření</name>
+        <name lang="nl">Kook apparaat</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20.7775" x1="-2.3114" y2="14.7775" x2="3.6885"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="19.0445" x1="-3.822" y2="13.0445" x2="2.1779"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="17.733" x1="-4.2669" y2="12.733" x2="0.733"/>
+        <circle x="-4.4721" y="12.5279" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="8.9442"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="16" x1="-4" y2="13" x2="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="21" x1="1" y2="18" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="21.0445" x1="-1" y2="16.0445" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20" x1="-3" y2="14" x2="3"/>
+        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="24" x2="-12" y3="24" x3="12" y4="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="0" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-12" y2="5" x2="12"/>
+        <terminal x="0" y="-12" orientation="n"/>
+    </description>
+</definition>

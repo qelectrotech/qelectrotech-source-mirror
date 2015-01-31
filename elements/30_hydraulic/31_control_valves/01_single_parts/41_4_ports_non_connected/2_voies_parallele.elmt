@@ -1,0 +1,24 @@
+<definition width="40" version="0.3" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">4سارات مُتّصلة 2</name>
+        <name lang="en">4 ports parallel</name>
+        <name lang="fr">4 voies parallèles</name>
+        <name lang="pl">4 drogi</name>
+        <name lang="cs">4 cesty souběžné</name>
+        <name lang="it">4 porte parallele</name>
+        <name lang="nl">4 P -&gt; A, B -&gt; T </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="-15" x2="10"/>
+        <polygon x4="10.05" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.95" x1="10.05" y2="-14.95" x2="8.05" y3="-14.95" x3="12.05" y4="-19.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="30" y2="-20" x2="30"/>
+        <polygon x4="28" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="5" x1="28" y2="5" x2="32" y3="10" x3="30" y4="5"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="30" y="-20" orientation="n"/>
+        <terminal x="10" y="10" orientation="s"/>
+        <terminal x="30" y="10" orientation="s"/>
+    </description>
+</definition>

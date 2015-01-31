@@ -1,0 +1,31 @@
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">سخّان ECS بلوحات</name>
+        <name lang="en">ECS heater plates</name>
+        <name lang="fr">Réchauffeur ECS à Plaques</name>
+        <name lang="pl">Płytowy wymiennik CWU</name>
+        <name lang="cs">Deskový ohřívač ECS</name>
+        <name lang="it">Riscaldatore ACS a placche</name>
+        <name lang="nl">Tank met plaatwisselaar</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="25" y="-18" size="4" text="ECS"/>
+        <text x="25" y="28" size="4" text="EF"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="-26.55" y2="30" x2="-19.55"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-27.55" y2="-30" x2="-20.55"/>
+        <circle x="19" y="-31" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-21" y="-31" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-21" y="29" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="19" y="29" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <rect width="40" x="-20" y="-33" antialias="true" height="65" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" x2="10" x3="-5" x4="10" antialias="true" x5="-5" x6="10" x7="-5" x8="10" x9="20" closed="false" y1="-30" y2="-30" y10="30" y3="-20" y4="-10" y5="0" x10="20" y6="10" y7="20" y8="30" y9="30"/>
+        <polygon style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-20" x2="5" x3="-10" x4="5" antialias="true" x5="-10" x6="5" x7="-10" x8="5" x9="-20" closed="false" y1="-30" y2="-30" y10="30" y3="-20" y4="-10" y5="0" x10="-20" y6="10" y7="20" y8="30" y9="30"/>
+        <text x="18" y="9" size="4" text="Plaques"/>
+        <terminal x="-20" y="-30" orientation="w"/>
+        <terminal x="-20" y="30" orientation="w"/>
+        <terminal x="20" y="-30" orientation="e"/>
+        <terminal x="20" y="30" orientation="e"/>
+    </description>
+</definition>

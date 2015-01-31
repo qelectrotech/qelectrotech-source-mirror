@@ -1,0 +1,24 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مفتاح بمُؤشر ضوئي</name>
+        <name lang="de">Schalter mit Kontrolleuchte
+</name>
+        <name lang="el">Διακόπτης φωτιζόμενος</name>
+        <name lang="en">Switch with pilot light
+</name>
+        <name lang="it">Interruttore con lampada spia</name>
+        <name lang="fr">Interrupteur à lampe témoin
+</name>
+        <name lang="pl">Łącznik podświetlany</name>
+        <name lang="cs">Spínač s kontrolním světlem</name>
+        <name lang="nl">Schakelaar met lamp</name>
+    </names>
+    <informations>EN 60617: 11-14-02</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-3" y2="2" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="3" y2="2" x2="-3"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="2" y2="-11" x2="9"/>
+        <circle x="-5" y="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <terminal x="0" y="0" orientation="n"/>
+    </description>
+</definition>

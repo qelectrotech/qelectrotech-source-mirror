@@ -1,0 +1,23 @@
+<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">ترنزيستور ثنائي القطبيّة PNP</name>
+        <name lang="en">Transistor bipolar PNP</name>
+        <name lang="fr">Transistor bipolaire PNP</name>
+        <name lang="pl">Tranzystor biopolarny PNP</name>
+        <name lang="cs">Dvoupólový tranzistor PNP</name>
+        <name lang="it">Transistor bipolare PNP</name>
+        <name lang="nl">Transistor bipolare PNP</name>
+    </names>
+    <informations>EN 60617: 05-05-01</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6" x1="7" y2="-5" x2="3" y3="-9" x3="4"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="3" x1="1" y2="12" x2="10" y3="20" x3="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="1" y2="0" x2="-10"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3" x1="1" y2="-12" x2="10" y3="-20" x3="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="1" y2="5" x2="1"/>
+        <input x="13" y="2" size="8" text="_" tagg="label"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="10" y="20" orientation="s"/>
+        <terminal x="-10" y="0" orientation="w"/>
+    </description>
+</definition>

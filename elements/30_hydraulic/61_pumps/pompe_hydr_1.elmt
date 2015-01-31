@@ -1,0 +1,26 @@
+<definition width="80" version="0.4" hotspot_x="11" hotspot_y="35" height="60" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مضخّة هيدروليكية 1</name>
+        <name lang="el">Υδραυλική αντλία 1</name>
+        <name lang="en">Hydraulic pump 1</name>
+        <name lang="it">Pompa idraulica 1</name>
+        <name lang="fr">Pompe hydraulique 1</name>
+        <name lang="pl">Pompa hydrauliczna o jednym kierunku przepływu, o stałej objętości i o jednym kierunku obrotów</name>
+        <name lang="cs">Vodní čerpadlo 1</name>
+        <name lang="nl">Pomp 1</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-5" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <polygon x4="6" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-12" x1="6" y2="-12" x2="14" y3="-20" x3="10" y4="-12"/>
+        <polygon x4="34" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-16" x1="34" y2="-13" x2="37" y3="-19" x3="40" y4="-16"/>
+        <arc width="30" x="32" y="-20" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-135" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="20" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="25" y2="-4" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="25" y2="-6" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="-20" x2="10"/>
+        <terminal x="10" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="20" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>

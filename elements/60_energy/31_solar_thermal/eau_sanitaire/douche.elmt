@@ -1,0 +1,27 @@
+<definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">دش</name>
+        <name lang="en">shower</name>
+        <name lang="fr">Douche</name>
+        <name lang="pl">Prysznic</name>
+        <name lang="cs">Sprcha</name>
+        <name lang="it">Doccia</name>
+        <name lang="nl">Douche</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-5" y="0" size="3" rotate="true" text="douche"/>
+        <polygon x4="-9" y5="8" x5="-9" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="-1" y2="-3" x2="-2" y3="-3" x3="-9" y4="8"/>
+        <polygon x4="-1" y5="6" x5="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-1" y2="-2" x2="8" y3="-2" x3="-1" y4="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2" x1="5" y2="4" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1" x1="8" y2="1" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="6" x1="1" y2="8" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="5" x1="2" y2="7" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" x1="7" y2="2" x2="9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1" x1="6" y2="3" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="3" y2="6" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="4" y2="5" x2="6"/>
+        <terminal x="-9" y="8" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,46 @@
+<definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Servo-valve, double solenoid</name>
+        <name lang="fr">Servo-valve, double électrovanne</name>
+        <name lang="pl">Serwozawór sterowany elektromagnetycznie, dwoma cewkami</name>
+        <name lang="cs">Servoventil řízený elektromagneticky, se dvěma cívkami</name>
+        <name lang="ar">صمّام مُضاعف</name>
+        <name lang="it">Servo-valvola, doppio solenoide</name>
+        <name lang="nl">Klep servo 4/3, elektrisch dubbel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="5" y2="-22" x2="95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="5" y2="12" x2="95"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="70" y2="-17" x2="88"/>
+        <rect width="90" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="90" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-20" x1="90" y2="-16" x2="85" y3="-14" x3="88" y4="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="40" y2="-30" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="70" y2="6" x2="87"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.1" x1="59.95" y2="5.1" x2="59.95"/>
+        <polygon x4="90" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="10" x1="90" y2="6" x2="85" y3="4" x3="88" y4="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="40" y2="5" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="19" y2="-17" x2="11"/>
+        <polygon x4="20" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="10" x1="20" y2="6" x2="17" y3="5" x3="20" y4="10"/>
+        <polygon x4="10" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-20" x1="10" y2="-15" x2="10" y3="-16" x3="13" y4="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="30" y2="5" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="5" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="8" y2="5" x2="12"/>
+        <polygon x4="30.05" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.95" x1="30.05" y2="-14.95" x2="28.05" y3="-14.95" x3="32.05" y4="-19.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="60" y2="-30" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.95" x1="58.05" y2="-14.95" x2="62.05"/>
+        <polygon x4="28" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="4.85" x1="28" y2="4.85" x2="32" y3="9.85" x3="30" y4="4.85"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.1" x1="57.95" y2="5.1" x2="61.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="38" y2="5" x2="42"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.95" x1="35.05" y2="10.05" x2="35.05"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.95" x1="38.05" y2="-14.95" x2="42.05"/>
+        <polygon x4="-1" y5="10" x5="1" y6="2" x6="3" y7="7" x7="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7" x1="-7" y2="2" x2="-5" y3="10" x3="-3" y4="2"/>
+        <polygon x4="101" y5="10" x5="103" y6="2" x6="105" y7="7" x7="107" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7" x1="95" y2="2" x2="97" y3="10" x3="99" y4="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.95" x1="65.05" y2="10.05" x2="65.05"/>
+        <terminal x="40" y="20" orientation="s"/>
+        <terminal x="59.95" y="20.1" orientation="s"/>
+        <terminal x="40" y="-30" orientation="n"/>
+        <terminal x="60" y="-30" orientation="n"/>
+    </description>
+</definition>

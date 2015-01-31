@@ -1,0 +1,34 @@
+<definition width="60" version="0.4" hotspot_x="30" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">محول ثلاثي الأوجه - أحادي الوجه</name>
+        <name lang="el">Μετατροπέας τριφασικό AC/ μονοφασικό AC</name>
+        <name lang="en">Three phase converter single phase</name>
+        <name lang="de">Umrichter AC/AC 3-phasig</name>
+        <name lang="it">Convertitore AC trifase / AC monofase</name>
+        <name lang="fr">Convertisseur tri mono</name>
+        <name lang="pl">Przekształtnik prądu przemiennego</name>
+        <name lang="nl">Wisselspanning driefase > wisselspanning eenfase AC3>AC1</name>
+        <name lang="cs">Měnič třífázový/jednofázový proud</name>
+        <name lang="be">Wisselspanning drie fasen > wisselspanning een fase AC3>AC1</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="40" x="-20" y="-30" antialias="false" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="5" x="11.5" y="10.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-175"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="20" y2="30" x2="-20"/>
+        <arc width="5" x="6.5" y="10.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-175"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-25" y2="0" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-20" y2="-20" x2="-25"/>
+        <arc width="5" x="-11.5" y="-25.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-175"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="25" y2="10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="20" y2="-10" x2="25"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-25" y2="20" x2="-20"/>
+        <arc width="5" x="-16.5" y="-25.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-175"/>
+        <terminal x="-25" y="-20" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="25" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="25" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-25" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-26" y="20" nameHidden="0" number="" name="" orientation="w"/>
+    </description>
+</definition>

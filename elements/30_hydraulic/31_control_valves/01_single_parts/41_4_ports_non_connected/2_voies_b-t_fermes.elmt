@@ -1,0 +1,26 @@
+<definition width="50" version="0.3" hotspot_x="10" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مسارات -B-T مُغلقة</name>
+        <name lang="en">4 ports - B-T close</name>
+        <name lang="fr">4 voies - B-T fermés</name>
+        <name lang="pl">4 drogi - B-T zamknięte</name>
+        <name lang="cs">4 cesty - B-T zavřené</name>
+        <name lang="it">4 porte - B-T chiuse</name>
+        <name lang="nl">4 P -&gt; A</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="27.975" y2="-15" x2="31.975"/>
+        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="30" y2="10" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="30" y2="-15" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.075" x1="9.95" y2="-14.925" x2="9.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.95" x1="27.925" y2="4.95" x2="31.925"/>
+        <polygon x4="10" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.875" x1="10" y2="-14.875" x2="8" y3="-14.875" x3="12" y4="-19.875"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="30" y="-20" orientation="n"/>
+        <terminal x="10" y="10" orientation="s"/>
+        <terminal x="30" y="10" orientation="s"/>
+    </description>
+</definition>

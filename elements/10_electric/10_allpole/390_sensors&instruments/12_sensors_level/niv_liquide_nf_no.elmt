@@ -1,0 +1,31 @@
+<definition width="60" version="0.3" hotspot_x="38" hotspot_y="31" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">NC/NO Actuated by the level of a liquid</name>
+        <name lang="de">Niveauschalter Wechsler</name>
+        <name lang="it">Azionato dal livello di un liquido NC/NO</name>
+        <name lang="fr">Actionné par le niveau d'un liquide NF/NO</name>
+        <name lang="pl">Zestyk przełączny sterowany poziomem cieczy</name>
+        <name lang="es">Accionado por el nivel de un liquido NC/NA</name>
+        <name lang="cs">Ovládáno hladinou kapaliny NC/NO</name>
+        <name lang="nl">vloeistofniveau 3 (NC)/(NO)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="12" x="-32" y="-4.5" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-20" angle="-140"/>
+        <arc width="12" x="-32" y="-2.5" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-200" angle="-140"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="-26" y2="-3" x2="-26"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="-20" y2="-9" x2="-7"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="0" y2="10" x2="0" y3="-10" x3="-10"/>
+        <input x="-10" y="16" size="4" text="3"/>
+        <input x="-30" y="-16" size="4" text="1"/>
+        <input x="-10" y="-16" size="4" text="2"/>
+        <input x="1" y="0.5" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-20" y2="-9" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-5"/>
+        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="-20" y="-20" orientation="n"/>
+    </description>
+</definition>

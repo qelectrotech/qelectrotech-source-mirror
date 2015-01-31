@@ -1,0 +1,21 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">قاعدة مقبس تيّار (قدرة) مع محوّل عزل</name>
+        <name lang="de">Steckdose mit Trenntrafo</name>
+        <name lang="el">Ρευματοδότης με μετασχημαστιστή απομόνωσης</name>
+        <name lang="en"> Socket outlet (power) with isolating transformer</name>
+        <name lang="it">Presa con trasformatore d’isolamento</name>
+        <name lang="fr">Socle de prise de courant (puissance) avec
+transformateur de séparation</name>
+        <name lang="pl">Gniazdo z transformatorem separacyjnym</name>
+        <name lang="cs">Zásuvka s oddělovacím transformátorem</name>
+        <name lang="nl">wandcontactdoos met transformator</name>
+    </names>
+    <informations>EN 60617: 11-13-08</informations>
+    <description>
+        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <arc width="20" x="-10" y="0" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
+        <terminal x="0" y="-20" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,46 @@
+<definition width="400" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">لوحة مداخل CD12</name>
+        <name lang="de">CD12 Eingangskarte</name>
+        <name lang="pt">Carta de entradas CD12</name>
+        <name lang="el">Κάρτα εισόδων CD 12</name>
+        <name lang="en">CD12 input board</name>
+        <name lang="it">Scheda ingressi CD12</name>
+        <name lang="fr">CD12 carte entrées</name>
+        <name lang="pl">Karta wejść CD12</name>
+        <name lang="es">CD12 tarjeta de entrada</name>
+        <name lang="cs">Karta CD12 vstupy</name>
+        <name lang="nl">CD12 ingangskaart</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="125" y="32" size="8" text="CROUZET CD12 Carte entrées"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="130" y2="0" x2="130"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="190" y2="0" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="160" y2="0" x2="160"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="220" y2="0" x2="220"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="70" y2="0" x2="70"/>
+        <text x="126" y="19.3333" size="7" text="I1       I2        I3       I4"/>
+        <rect width="400" x="0" y="0" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="68" y="16.6667" size="8" text="-"/>
+        <text x="28" y="34.6667" size="8" text="24 VDC"/>
+        <text x="273" y="19.3333" size="7" text=" Ib       Ic       Id        Ie"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="30" y2="0" x2="30"/>
+        <text x="27" y="17.6667" size="8" text="+"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="310" y2="0" x2="310"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="340" y2="0" x2="340"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="280" y2="0" x2="280"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="370" y2="0" x2="370"/>
+        <terminal x="70" y="0" orientation="n"/>
+        <terminal x="30" y="0" orientation="n"/>
+        <terminal x="190" y="0" orientation="n"/>
+        <terminal x="130" y="0" orientation="n"/>
+        <terminal x="160" y="0" orientation="n"/>
+        <terminal x="220" y="0" orientation="n"/>
+        <terminal x="340" y="0" orientation="n"/>
+        <terminal x="280" y="0" orientation="n"/>
+        <terminal x="370" y="0" orientation="n"/>
+        <terminal x="310" y="0" orientation="n"/>
+    </description>
+</definition>

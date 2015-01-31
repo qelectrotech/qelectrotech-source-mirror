@@ -1,0 +1,26 @@
+<definition width="60" version="0.4" hotspot_x="36" hotspot_y="44" height="70" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مضخة</name>
+        <name lang="el">Αντλία</name>
+        <name lang="en">Pump</name>
+        <name lang="es">Grupo de Presión</name>
+        <name lang="cs">Pumpa</name>
+        <name lang="it">Gruppo pompe</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="6" x="10" y="-17" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <polygon x4="0.05" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10.6927" x1="0.05" y2="-18.1636" x2="-12.55" y3="-3.2217" x3="-12.55" y4="-10.6927"/>
+        <polygon x4="0.05" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="10.3073" x1="0.05" y2="2.83639" x2="-12.55" y3="17.7783" x3="-12.55" y4="10.3073"/>
+        <ellipse width="19.6209" x="-18.1604" y="-20.6809" antialias="true" height="19.9766" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="19.6209" x="-18.1604" y="0.31908" antialias="true" height="19.9766" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-31.9433" y2="0" x2="17.6052"/>
+        <ellipse width="12" x="4" y="-24" antialias="true" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="10" y2="0" x2="10"/>
+        <arc width="6" x="4" y="-17" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <input x="-25" y="-30" size="4" rotate="true" text="_" tagg="label"/>
+        <terminal x="18" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-28" y="0" nameHidden="1" number="" name="" orientation="w"/>
+    </description>
+</definition>

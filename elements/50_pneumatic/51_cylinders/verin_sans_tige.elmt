@@ -1,0 +1,34 @@
+<definition width="100" version="0.3" hotspot_x="15" hotspot_y="30" height="80" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Rodless cylinders double-acting with 
+        adjustable cushioning at both ends of stroke 
+        (linear drive tire)</name>
+        <name lang="fr">
+Vérin sans tige double effet avec amortissement réglable aux deux fins de course (entraînement linéaire pneumatique)</name>
+        <name lang="pl">Siłownik pneumatyczny beztłoczyskowy ze sprzężeniem mechanicznym i hamowaniem dwustronnym nastawialnym</name>
+        <name lang="cs">Beztyčové dvojčinné válce s nastavitelnou tlumicí vrstvou na obou koncích zdvihu (přímočarý vzduchový pohon)</name>
+        <name lang="ar">اسطوانة بدون ذراع بفعل مزدوج و بإخماد قابل للتعديل عند نهايتي المشوار  (تحريك خطّي نيوماتي)</name>
+        <name lang="it">Cilindro senza stelo, doppio effetto, con ammortizzazione regolabile ai fine corsa (azionamento pneumatico lineare)</name>
+        <name lang="nl">Cilnder stangloos magneetkoppeling met buffer</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="72" y5="30" x5="72" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="72" y2="30" x2="-12" y3="-10" x3="-12" y4="-10"/>
+        <polygon x4="20" y5="-20" x5="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-20" x2="40" y3="40" x3="40" y4="40"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="22" y2="4" x2="35"/>
+        <polygon x4="40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="40" y2="20" x2="55" y3="0" x3="55" y4="0"/>
+        <polygon x4="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="20" y2="20" x2="5" y3="0" x3="5" y4="0"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" x1="23" x2="23" x3="37" x4="37" antialias="false" x5="35" x6="35" x7="25" x8="25" x9="23" y1="-9" y2="-3" y3="-3" y4="-9" y5="-9" y6="-6" y7="-6" y8="-9" y9="-9"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" x1="25" x2="35" x3="35" x4="37" antialias="false" x5="37" x6="23" x7="23" x8="25" x9="25" y1="25" y2="25" y3="28" y4="28" y5="22" y6="22" y7="28" y8="28" y9="26"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" x1="23" x2="23" x3="37" x4="37" antialias="false" x5="35" x6="35" x7="25" x8="25" x9="23" y1="32" y2="38" y3="38" y4="32" y5="32" y6="35" y7="35" y8="32" y9="32"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" x1="25" x2="35" x3="35" x4="37" antialias="false" x5="37" x6="23" x7="23" x8="25" x9="25" y1="-15" y2="-15" y3="-12" y4="-12" y5="-18" y6="-18" y7="-12" y8="-12" y9="-14"/>
+        <polygon x4="34" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="3" x1="34" y2="5" x2="36" y3="0" x3="39" y4="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="70" y2="40" x2="70"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="-10" y2="40" x2="-10"/>
+        <polygon x4="68" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="68" y2="30" x2="72" y3="26" x3="70" y4="30"/>
+        <polygon x4="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="-12" y2="30" x2="-8" y3="26" x3="-10" y4="30"/>
+        <terminal x="-10" y="40" orientation="s"/>
+        <terminal x="70" y="40" orientation="s"/>
+    </description>
+</definition>

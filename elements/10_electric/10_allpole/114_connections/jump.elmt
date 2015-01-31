@@ -1,0 +1,15 @@
+<definition width="10" version="0.3" hotspot_x="5" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Jump</name>
+        <name lang="it">Salto</name>
+        <name lang="fr">Saut</name>
+        <name lang="pl">Brak połączenia</name>
+        <name lang="cs">Skok</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="6" x="-3" y="-3" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <terminal x="0" y="7" orientation="s"/>
+        <terminal x="0" y="-7" orientation="n"/>
+    </description>
+</definition>

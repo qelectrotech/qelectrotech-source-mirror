@@ -1,0 +1,29 @@
+<definition width="70" version="0.4" hotspot_x="37" hotspot_y="45" height="80" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مُحوّل ذاتي</name>
+        <name lang="de">Spartransformator</name>
+        <name lang="en">Auto-transformer</name>
+        <name lang="it">Autotrasformatore</name>
+        <name lang="fr">Autotransformateur</name>
+        <name lang="pl">Autotransformator</name>
+        <name lang="es">Autotransformador 1fase</name>
+        <name lang="cs">Autotransformátor</name>
+        <name lang="nl">Autotransformator</name>
+        <name lang="el">Αυτομετασχηματιστής</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.05" x1="-5.05" y2="-34.05" x2="4.95"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22" x1="-5" y2="18" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28.05" x1="-5.05" y2="-32.05" x2="4.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="0" y2="-25" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="0" y2="30" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="-5" y2="20" x2="5"/>
+        <input x="17" y="0" size="9" rotate="true" text="_" tagg="label"/>
+        <arc width="50" x="-35" y="-27.5" antialias="true" height="55" style="line-style:normal;line-weight:normal;filling:none;color:black" start="66" angle="-65"/>
+        <terminal x="0" y="-40" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="30" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>

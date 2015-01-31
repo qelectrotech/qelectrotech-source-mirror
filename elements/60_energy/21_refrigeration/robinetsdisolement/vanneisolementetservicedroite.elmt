@@ -1,0 +1,23 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">صمّام عزل و خدمة اليمين</name>
+        <name lang="en">Isolation valve and right service</name>
+        <name lang="fr">Vanne d'isolement et service droite</name>
+        <name lang="pl">Zawór odcinający wersja prawa</name>
+        <name lang="cs">Izolační ventil, pravá služba</name>
+        <name lang="it">Valvole di intercettazione e servizio (DX)</name>
+        <name lang="nl">Isolatie afsluiter serviceaansluiting rechts</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="10" y2="-5" x2="10"/>
+        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6" x1="8" y2="-7" x2="8" y3="-7" x3="12" y4="-6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-11"/>
+        <polygon x4="-10" y5="-4" x5="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y1="-5" x1="-10" y2="5" x2="10" y3="-5" x3="10" y4="5"/>
+        <circle x="-1.5" y="-1.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3"/>
+        <terminal x="-11" y="0" orientation="w"/>
+        <terminal x="11" y="0" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,23 @@
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="10" height="30" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">توصيلة مرنة</name>
+        <name lang="el">Εύκαμπτη σύνδεση</name>
+        <name lang="en">Flexible Connection</name>
+        <name lang="it">Connessione flessibile</name>
+        <name lang="fr">Connection souple</name>
+        <name lang="pl">Przewód giętki</name>
+        <name lang="nl">Buigzame leiding</name>
+        <name lang="cs">Pružné spojení</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-20" y2="10" x2="-10"/>
+        <circle x="8.85" y="8.85" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
+        <circle x="-11.15" y="8.85" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
+        <arc width="23" x="-11.5" y="-7.5" antialias="true" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-35" angle="-110"/>
+        <terminal x="20" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="-20" y="10" nameHidden="0" number="" name="" orientation="w"/>
+    </description>
+</definition>

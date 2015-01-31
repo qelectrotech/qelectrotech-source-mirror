@@ -1,0 +1,22 @@
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="24" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Acometida</name>
+        <name lang="it">Presa</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-10" y2="11" x2="10.9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.86251" x1="-10" y2="6.86251" x2="10.9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.41157" x1="-2.3" y2="0.412131" x2="-2.3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.0332937" x1="-2.0287" y2="-0.0332937" x2="1.89776"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.0332937" x1="9.928" y2="-0.0332937" x2="17.5363"/>
+        <input x="-12" y="-11.1025" size="4" rotate="true" text="Ø_"/>
+        <polygon x4="9" y5="-4" x5="2" y6="-4" x6="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="2" y2="4" x2="2" y3="-4" x3="9" y4="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="5.48" y2="-5" x2="5.48"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2.97578" x1="14" y2="2.97578" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="18" y2="2.97578" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1.95157" x1="18" y2="2.97578" x2="20"/>
+        <terminal x="20" y="0" nameHidden="1" number="" name="" orientation="e"/>
+    </description>
+</definition>

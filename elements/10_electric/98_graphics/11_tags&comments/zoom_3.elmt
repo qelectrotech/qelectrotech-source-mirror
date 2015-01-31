@@ -1,0 +1,24 @@
+<definition width="90" version="0.3" hotspot_x="42" hotspot_y="26" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">Zoom 2</name>
+        <name lang="en">Comment</name>
+        <name lang="de">Kommentar</name>
+        <name lang="it">Zoom 2</name>
+        <name lang="fr">Commentaire</name>
+        <name lang="pl">Zoom 2</name>
+        <name lang="es">Zoom 2</name>
+        <name lang="cs">Zoom 2</name>
+        <name lang="nl">Commentaar</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-11" y2="40" x2="-40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-40" y2="20" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0.3349" y2="20" x2="17.7205"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-11" y2="20" x2="-40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.4" x1="-40" y2="-1.3692" x2="-40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="0" x1="-40" y2="-22" x2="-40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="20" x1="18" y2="20" x2="46"/>
+    </description>
+</definition>

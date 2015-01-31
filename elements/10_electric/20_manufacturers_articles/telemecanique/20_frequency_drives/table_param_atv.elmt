@@ -1,0 +1,54 @@
+<definition width="230" version="0.4" hotspot_x="16" hotspot_y="46" height="200" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Parametry ATV11</name>
+        <name lang="fr">Parametres ATV11</name>
+        <name lang="it">Parametri ATV11</name>
+        <name lang="pl">Parametry ATV11</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input x="31" y="100" size="8" rotate="true" text="30"/>
+        <input x="-9" y="100" size="8" rotate="true" text="HSP"/>
+        <input x="31" y="80" size="8" rotate="true" text="15"/>
+        <input x="-9" y="80" size="8" rotate="true" text="LSP"/>
+        <input x="31" y="60" size="8" rotate="true" text="2,0"/>
+        <input x="-9" y="60" size="8" rotate="true" text="dEC"/>
+        <input x="31" y="39.5" size="8" rotate="true" text="1,5"/>
+        <input x="-9" y="40" size="8" rotate="true" text="ACC"/>
+        <input x="31" y="20" size="8" rotate="true" text="50"/>
+        <input x="-9" y="20" size="8" rotate="true" text="bFr"/>
+        <input x="131" y="100" size="8" rotate="true" text="0,77"/>
+        <input x="91" y="100" size="8" rotate="true" text="COS"/>
+        <input x="131" y="80" size="8" rotate="true" text="3,5"/>
+        <input x="91" y="80" size="8" rotate="true" text="nSL"/>
+        <input x="131" y="60" size="8" rotate="true" text="1,1"/>
+        <input x="91" y="60" size="8" rotate="true" text="Cli"/>
+        <input x="131" y="40" size="8" rotate="true" text="0,5"/>
+        <input x="91" y="40" size="8" rotate="true" text="nCr"/>
+        <input x="-1" y="138" size="7" rotate="true" text="pozostałe parametry - nastawy fabryczne"/>
+        <input x="131" y="20" size="8" rotate="true" text="50,0"/>
+        <input x="91" y="20" size="8" rotate="true" text="FrS"/>
+        <input x="31" y="120" size="8" rotate="true" text="400"/>
+        <input x="-9" y="120" size="8" rotate="true" text="UnS"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="30" y2="130" x2="30"/>
+        <text x="36" y="6" size="10" text="Wartość"/>
+        <text x="-2" y="6" size="10" text="Kod"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-10" y2="-40" x2="190"/>
+        <input x="26" y="-25.5" size="12" rotate="true" text="Parametry ATV11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="190" y2="145" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="110" x1="-10" y2="110" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-10" y2="50" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="-10" y2="70" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="130" x1="-10" y2="130" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="-10" y2="30" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="89.95" x1="-10" y2="89.95" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="9.95" x2="190"/>
+        <text x="136" y="6" size="10" text="Wartość"/>
+        <text x="99" y="6" size="10" text="Kod"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="130" y2="130" x2="130"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="90" y2="130" x2="90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="145" x1="-10" y2="145" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="190"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-10" y2="145" x2="-10"/>
+    </description>
+</definition>

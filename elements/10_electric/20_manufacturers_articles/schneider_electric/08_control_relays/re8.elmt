@@ -1,0 +1,40 @@
+<definition width="90" version="0.3" hotspot_x="5" hotspot_y="5" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">RE8</name>
+        <name lang="el">Χρονικό Schneider RE8</name>
+        <name lang="en">RE8</name>
+        <name lang="it">Temporizz. Schneider RE8</name>
+        <name lang="fr">RE8</name>
+        <name lang="pl">RE8</name>
+        <name lang="es">RE8</name>
+        <name lang="cs">RE8</name>
+        <name lang="nl">Timer RE8</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="80" x="0" y="0" antialias="false" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="2" y="32.5" size="9" rotate="true" text="_" tagg="label"/>
+        <text x="26" y="52" size="5" text="A2"/>
+        <text x="26" y="14" size="5" text="B1"/>
+        <text x="6" y="14" size="5" text="A1"/>
+        <text x="60" y="54" size="5" text="18"/>
+        <text x="40" y="54" size="5" text="16"/>
+        <text x="49" y="17" size="5" text="15"/>
+        <circle x="57.5" y="0.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="67.5" y="54.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="47.5" y="54.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="27.5" y="54.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="27.5" y="0.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="7.5" y="0.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <polygon x4="56" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="54" x1="50" y2="34" x2="50" y3="34" x3="56" y4="34"/>
+        <polygon x4="64" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="54" x1="70" y2="34" x2="70" y3="34" x3="64" y4="34"/>
+        <polygon x4="53" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="5" x1="60" y2="24" x2="60" y3="36" x3="53" y4="36"/>
+        <terminal x="10" y="3" orientation="n"/>
+        <terminal x="30" y="3" orientation="n"/>
+        <terminal x="60" y="3" orientation="n"/>
+        <terminal x="70" y="57" orientation="s"/>
+        <terminal x="50" y="57" orientation="s"/>
+        <terminal x="30" y="57" orientation="s"/>
+    </description>
+</definition>

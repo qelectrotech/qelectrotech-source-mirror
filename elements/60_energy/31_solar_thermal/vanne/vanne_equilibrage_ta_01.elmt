@@ -1,0 +1,26 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">صمّام ضبط توازن T,A</name>
+        <name lang="en">Balancing valve T.A</name>
+        <name lang="fr">vanne d'équilibrage T.A.</name>
+        <name lang="pl">Zawór T.A.</name>
+        <name lang="cs">Uzávěr T.A.</name>
+        <name lang="it">Valvola di bilanciamento T.A.</name>
+        <name lang="nl">Klep balans T.A.</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-10" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="3" y2="-9" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10" x1="6" y2="-4" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="3" y2="-7" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="1" y2="-4" x2="-1"/>
+        <input x="-10" y="6.5" size="4" text="1 - 8"/>
+        <circle x="0.5" y="-7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <circle x="-1.5" y="-4.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
+        <polygon x4="10" y5="-5" x5="-10" y6="-5" x6="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-10" y2="5" x2="-10" y3="-5" x3="10" y4="5"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="10" y="0" orientation="e"/>
+    </description>
+</definition>

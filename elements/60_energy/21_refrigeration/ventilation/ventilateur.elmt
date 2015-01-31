@@ -1,0 +1,22 @@
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
+    <names>
+        <name lang="el">Ανεμιστήρας</name>
+        <name lang="en">Ventilator</name>
+        <name lang="it">Ventilatore</name>
+        <name lang="fr">Ventilateur</name>
+        <name lang="pl">Wentylator</name>
+        <name lang="cs">Větrák</name>
+        <name lang="nl">Ventilator</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="5" x2="1" y3="5" x3="18" y4="-10"/>
+        <rect width="40" x="-10" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="2.66454e-15" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <terminal x="30" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="10" y="20" orientation="s"/>
+    </description>
+</definition>

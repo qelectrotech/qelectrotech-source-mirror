@@ -1,0 +1,19 @@
+<definition width="40" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dnnn">
+    <names>
+        <name lang="el">Κίνδυνος ηλεκτροπληξίας</name>
+        <name lang="en">Danger electric</name>
+        <name lang="de">Hinweis elektrische Gefahr klein</name>
+        <name lang="it">Pericolo elettrico</name>
+        <name lang="fr">Danger electrique</name>
+        <name lang="pl">Pod napięciem</name>
+        <name lang="cs">Pod napětím</name>
+        <name lang="nl">Gevaar elektrisch klein</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="30" x2="10" y3="30" x3="30" y4="10"/>
+        <polygon x4="18" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="25.9" x1="18" y2="26.1" x2="19" y3="28" x3="17.8" y4="26"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" x1="19" x2="22" x3="19" x4="21" antialias="true" x5="18.5" x6="19.5" x7="18" x8="19" y1="18" y2="18" y3="22.5" y4="22" y5="26" y6="23" y7="23.5" y8="18"/>
+    </description>
+</definition>

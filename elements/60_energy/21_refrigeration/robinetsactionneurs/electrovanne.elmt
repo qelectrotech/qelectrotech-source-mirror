@@ -1,0 +1,27 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="22" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">صمّام كهربائي</name>
+        <name lang="el">Ηλεκτροβάνα</name>
+        <name lang="en">solenoid</name>
+        <name lang="it">Comando elettrico</name>
+        <name lang="fr">Electrovanne</name>
+        <name lang="pl">Elektrozawór</name>
+        <name lang="cs">Elektrický ventil</name>
+        <name lang="nl">Elektrisch</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-3" y2="-9" x2="3"/>
+        <arc width="6" x="-3" y="-10" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-3" y2="-15" x2="-3"/>
+        <arc width="6" x="-3" y="-18" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="3" y2="-15" x2="3"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:white;color:black" x1="2" x2="0" x3="-2" x4="-10" antialias="false" x5="-10" x6="10" x7="10" x8="-2" x9="0" y1="1" y2="3" y10="0" y3="1" y4="5" y5="-5" x10="0" y6="5" y7="-5" y8="1" y9="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-4" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-11"/>
+        <terminal x="-11" y="0" orientation="w"/>
+        <terminal x="11" y="0" orientation="e"/>
+    </description>
+</definition>

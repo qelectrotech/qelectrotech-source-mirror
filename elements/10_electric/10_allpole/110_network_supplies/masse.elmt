@@ -1,0 +1,27 @@
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="15" height="20" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">هيكل معدني</name>
+        <name lang="de">Masse</name>
+        <name lang="ru">Шасси</name>
+        <name lang="pt">Massa</name>
+        <name lang="en">Chassis</name>
+        <name lang="it">Massa</name>
+        <name lang="fr">Masse</name>
+        <name lang="pl">Masa</name>
+        <name lang="es">Masa</name>
+        <name lang="cs">Kostra</name>
+        <name lang="nl">Massa</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.5" x1="7.5" y2="3" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-1" y2="0.5" x2="1.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-7" y2="0.5" x2="-4.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="2" y2="0.5" x2="4.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-4" y2="0.5" x2="-1.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="0" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="0" x2="0"/>
+        <terminal x="0" y="-11" orientation="n"/>
+    </description>
+</definition>

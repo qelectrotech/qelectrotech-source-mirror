@@ -1,0 +1,48 @@
+<definition width="150" version="0.3" hotspot_x="75" hotspot_y="120" height="260" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">بالون مبادل نسخة 2</name>
+        <name lang="en">balloon version 2</name>
+        <name lang="fr">ballon version 2</name>
+        <name lang="pl">Zasobnik z wymiennikiem 2</name>
+        <name lang="cs">Zásobnik s výměníkem 2</name>
+        <name lang="it">Scambiatore di calore</name>
+        <name lang="nl">Boiler 2</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="105" x1="-57" y2="105" x2="-51"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="28" x1="-55" y2="28" x2="-49"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-53" x1="-56" y2="-53" x2="-50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-55" y2="-13" x2="-49"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-56" y2="7" x2="-50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="86" x1="-55" y2="86" x2="-49"/>
+        <rect width="120" x="-58" y="-94" antialias="true" height="201" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-74" x1="-56" y2="-74" x2="-50"/>
+        <circle x="-1.5" y="118.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <circle x="-1.5" y="-111.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <circle x="48.5" y="89.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <circle x="49.5" y="-81.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <polygon x4="30" y5="80" x5="-46" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="-46" y2="30" x2="30" y3="50" x3="-31" y4="70"/>
+        <polygon x4="30" y5="0" x5="-47" y6="0" x6="-46" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-60" x1="-46" y2="-50" x2="29" y3="-30" x3="-30" y4="-11"/>
+        <arc width="120" x="-58" y="-112.5" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <circle x="-53.75" y="-83.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
+        <circle x="-53.875" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
+        <circle x="-53.75" y="16.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
+        <circle x="-53.75" y="-63.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
+        <circle x="-53.75" y="-23.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
+        <input x="-2" y="9" size="7" rotate="true" text="  Ballon&#xa;Echangeurs"/>
+        <circle x="-53.75" y="76.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
+        <polygon x4="41.875" y5="120.75" x5="41.875" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="115.75" x1="56.875" y2="130.75" x2="56.875" y3="130.75" x3="41.875" y4="120.75"/>
+        <polygon x4="-38.125" y5="120.75" x5="-38.125" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="115.75" x1="-53.125" y2="130.75" x2="-53.125" y3="130.75" x3="-38.125" y4="120.75"/>
+        <arc width="120" x="-58.125" y="89.25" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <circle x="-53.75" y="96.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
+        <terminal x="-50" y="100" orientation="w"/>
+        <terminal x="-50" y="0" orientation="w"/>
+        <terminal x="-50" y="80" orientation="w"/>
+        <terminal x="-50" y="20" orientation="w"/>
+        <terminal x="-50" y="-80" orientation="w"/>
+        <terminal x="-50" y="-60" orientation="w"/>
+        <terminal x="-50" y="-20" orientation="w"/>
+    </description>
+</definition>

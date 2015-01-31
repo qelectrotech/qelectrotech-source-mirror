@@ -1,0 +1,31 @@
+<definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Valve 4 / 3 control, open in mid-position</name>
+        <name lang="fr">Vanne 4 / 3 de contrôle, open à la mi-position</name>
+        <name lang="pl">Zawór sterujący 4/3, zamknięty w położeniu środkowym, z przekryciem ujemnym, z nieskończoną liczbą połączeń pośrednich</name>
+        <name lang="cs">Řídící ventil 4/3, uzavřený ve středové poloze</name>
+        <name lang="ar">صمّام تحكّم 4/3 , مغلق عند منتصف الموضع</name>
+        <name lang="it">Valvola 4/3 di controllo, aperto in posizione intermedia</name>
+        <name lang="nl">Klep 4/3 open in stop (niet bruikbaar)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="38.85" y="-6.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
+        <circle x="58.85" y="-6.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
+        <rect width="90" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="40" y2="-5" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="40" y2="20" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="60" y2="20" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="5" y2="-22" x2="95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="5" y2="12" x2="95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.95" x1="35.05" y2="10.05" x2="35.05"/>
+        <polygon x4="-1" y5="10" x5="1" y6="2" x6="3" y7="7" x7="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7" x1="-7" y2="2" x2="-5" y3="10" x3="-3" y4="2"/>
+        <polygon x4="101" y5="10" x5="103" y6="2" x6="105" y7="7" x7="107" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7" x1="95" y2="2" x2="97" y3="10" x3="99" y4="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.95" x1="65.05" y2="10.05" x2="65.05"/>
+        <terminal x="40" y="20" orientation="s"/>
+        <terminal x="59.95" y="20.1" orientation="s"/>
+        <terminal x="40" y="-30" orientation="n"/>
+        <terminal x="60" y="-30" orientation="n"/>
+    </description>
+</definition>

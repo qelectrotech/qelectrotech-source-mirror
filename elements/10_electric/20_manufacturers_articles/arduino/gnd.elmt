@@ -1,0 +1,16 @@
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="el">Γείωση</name>
+        <name lang="en">ground</name>
+        <name lang="it">Massa</name>
+        <name lang="fr">groupement masse</name>
+        <name lang="pl">Masa</name>
+        <name lang="cs">Masa</name>
+        <name lang="nl">Nul</name>
+    </names>
+    <informations>ezza</informations>
+    <description>
+        <rect width="6" x="-3" y="-3" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="0" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,32 @@
+<definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="el">Τροφοδοτικό</name>
+        <name lang="en">Power supply</name>
+        <name lang="it">Alimentatore</name>
+        <name lang="fr">Alimentation</name>
+        <name lang="pl">Zasilacz</name>
+        <name lang="es">Fuente de alimentación</name>
+        <name lang="cs">Napájení</name>
+        <name lang="nl">Voeding</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="5" x="-0.5" y="-11.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-15" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="6" y2="8" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="6" y2="10" x2="16"/>
+        <arc width="5" x="-5.5" y="-11.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <terminal x="-10" y="10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-10" y="-10" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="20" y="10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="20" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+    </description>
+</definition>

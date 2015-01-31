@@ -1,0 +1,32 @@
+<definition width="40" version="0.22" hotspot_x="10" hotspot_y="40" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">4 ports parallel connected</name>
+        <name lang="fr">4 voies parallèles connectées</name>
+        <name lang="cs">4 cesty souběžné spojené</name>
+        <name lang="pl">4 drogi równoległe, połączone</name>
+        <name lang="ar">سرات مُتوازية مُتّصلة 2</name>
+        <name lang="it">4 porte parallele connesse</name>
+        <name lang="nl">4 P -&gt; A, B -&gt; T </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="20" y2="10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="20" y2="-20" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-20" x2="0"/>
+        <polygon x4="0.025" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.975" x1="0.025" y2="-14.975" x2="-1.975" y3="-14.975" x3="2.025" y4="-19.975"/>
+        <rect width="30" x="-5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.975" x1="19.975" y2="-20.025" x2="19.975"/>
+        <input x="-10" y="-25.5" size="5" rotate="true" text="a"/>
+        <polygon x4="17.975" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="4.975" x1="17.975" y2="4.975" x2="21.975" y3="9.975" x3="19.975" y4="4.975"/>
+        <input x="18" y="15.5" size="5" rotate="true" text="t"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.975" x1="-0.025" y2="-15.025" x2="-0.025"/>
+        <input x="-10" y="15.5" size="5" rotate="true" text="p"/>
+        <input x="18" y="-25.5" size="5" rotate="true" text="b"/>
+        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="20" y="20" orientation="s"/>
+        <terminal x="20" y="-30" orientation="n"/>
+        <terminal x="0" y="-30" orientation="n"/>
+    </description>
+</definition>

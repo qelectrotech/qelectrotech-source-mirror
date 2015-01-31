@@ -1,0 +1,36 @@
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="57" height="140" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">DHT 11/22</name>
+        <name lang="fr">DHT 11/22</name>
+        <name lang="it">Sensore DHT 11/22</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="6" x="-3" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-3" y="31" size="4" rotation="270" text="DATA"/>
+        <rect width="6" x="-3" y="8" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="-3" y="-3" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="-3" y="-13" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="11" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="50" x="-25" y="-28" antialias="false" height="65" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="8" y="31" size="4" rotation="270" text="N.C."/>
+        <rect width="3" x="15" y="33" antialias="false" height="44" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="4" y="33" antialias="false" height="44" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="-7" y="33" antialias="false" height="44" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="11" y="8" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="11" y="-13" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="11" y="-3" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="-14" y="-40" size="7" rotate="true" text="DHT"/>
+        <rect width="6" x="-17" y="8" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="-17" y="-13" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="-17" y="-3" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="-18" y="33" antialias="false" height="44" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" x="-17" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-14" y="31" size="4" rotation="270" text="VCC"/>
+        <text x="19" y="30" size="4" rotation="270" text="GND"/>
+        <terminal x="-16.5" y="70" orientation="n"/>
+        <terminal x="-5.5" y="70" orientation="n"/>
+        <terminal x="5.5" y="70" orientation="n"/>
+        <terminal x="16.5" y="70" orientation="n"/>
+    </description>
+</definition>

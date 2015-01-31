@@ -1,0 +1,30 @@
+<definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">valve 2 / 2, with lever</name>
+        <name lang="fr">Electrovanne 2 / 2, à levier</name>
+        <name lang="pl">Zawór sterujący 2/2, sterowany dźwignią</name>
+        <name lang="cs">Elektromagnetický ventil (solenoid) 2/2, s pákou</name>
+        <name lang="ar">صمّام بتحكم كهربائي 2/2 , برافعة</name>
+        <name lang="it">Elettrovalvola 2/2</name>
+        <name lang="nl">klep hefboom 2/2</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-12" y="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-26" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="-10" y2="-16" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-20" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="48" y2="5" x2="52"/>
+        <polygon x4="65.05" y5="10.05" x5="65.05" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.05" x1="65.05" y2="10.05" x2="5.05" y3="-19.95" x3="5.05" y4="-19.95"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="50" y2="-30" x2="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.95" x1="48.05" y2="-14.95" x2="52.05"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="50" y2="5" x2="50"/>
+        <polygon x4="20.05" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.95" x1="20.05" y2="-14.95" x2="18.05" y3="-14.95" x3="22.05" y4="-19.95"/>
+        <polygon x4="20.05" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="10.05" x1="20.05" y2="5.05" x2="22.05" y3="5.05" x3="18.05" y4="10.05"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.95" x1="35.05" y2="10.05" x2="35.05"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.95" x1="20.05" y2="5.05" x2="20.05"/>
+        <terminal x="50" y="-30" orientation="n"/>
+        <terminal x="50" y="20" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,30 @@
+<definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">تبادل مباشر C</name>
+        <name lang="en">C direct exchange</name>
+        <name lang="fr">C échange direct</name>
+        <name lang="pl">C Wymiennik pośredni</name>
+        <name lang="cs">C přímý výměník</name>
+        <name lang="it">C Scambio diretto</name>
+        <name lang="nl">type C tank wisselaar direct</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="-40" y="-22" size="9" text="C"/>
+        <circle x="21" y="-8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <circle x="21" y="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <circle x="-30" y="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <polygon x4="23" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="23" y2="-7" x2="26" y3="-1" x3="26" y4="-4"/>
+        <polygon x4="23" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="23" y2="21" x2="26" y3="27" x3="26" y4="24"/>
+        <polygon x4="-28" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-28" y2="7" x2="-25" y3="13" x3="-25" y4="10"/>
+        <rect width="32" x="-16" y="-29.5" antialias="false" height="59" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" x2="43" x3="33" x4="43" antialias="true" x5="33" x6="43" x7="23" x8="10" closed="false" y1="4.5" y2="4.5" y3="9.5" y4="14.5" y5="19.5" y6="24.5" y7="24.5" y8="24.5"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" x2="42" x3="32" x4="42" antialias="true" x5="32" x6="42" x7="22" x8="10" closed="false" y1="-23.5" y2="-23.5" y3="-18.5" y4="-13.5" y5="-8.5" y6="-3.5" y7="-3.5" y8="-3.5"/>
+        <text x="-35" y="2.5" size="4" text="solaire"/>
+        <text x="18" y="16.5" size="4" text="chauff."/>
+        <text x="21" y="-10.5" size="4" text="ECS"/>
+        <text x="-14" y="-20.5" size="4" text="ballon"/>
+        <polygon x4="-43" y5="5.5" x5="-33" y6="10.5" x6="-43" y7="10.5" x7="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.5" x1="-10" y2="-9.5" x2="-43" y3="-4.5" x3="-33" y4="0.5"/>
+    </description>
+</definition>

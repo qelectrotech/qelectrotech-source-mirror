@@ -1,0 +1,26 @@
+<definition width="40" version="0.3" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مسارات -P  -&gt; B  مُتصلة 2</name>
+        <name lang="en">4 ports - P -&gt; B connected</name>
+        <name lang="fr">4 voies - P -&gt; B relies</name>
+        <name lang="pl">4 drogi - P -&gt; B połączone</name>
+        <name lang="cs">4 cesty - P -&gt; B spojené</name>
+        <name lang="it">4 porte - P -&gt; B connesse</name>
+        <name lang="nl">4 P -&gt; B</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-15" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.1" x1="9.85" y2="-16.9" x2="27.85"/>
+        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="29.85" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.9" x1="29.85" y2="-15.9" x2="24.85" y3="-13.9" x3="27.85" y4="-19.9"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.95" x1="29.925" y2="9.95" x2="29.925"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.95" x1="27.925" y2="4.95" x2="31.925"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="7.975" y2="-15" x2="11.975"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="30" y="-20" orientation="n"/>
+        <terminal x="10" y="10" orientation="s"/>
+        <terminal x="30" y="10" orientation="s"/>
+    </description>
+</definition>

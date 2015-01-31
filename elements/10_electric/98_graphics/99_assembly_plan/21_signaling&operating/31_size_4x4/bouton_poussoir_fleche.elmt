@@ -1,0 +1,23 @@
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مفتاح ضاغط سهم</name>
+        <name lang="el">Μπουτόν, βέλος πάνω</name>
+        <name lang="en">Arrow button</name>
+        <name lang="de">Drucktaster mit Pfeil</name>
+        <name lang="it">Pulsante freccia</name>
+        <name lang="fr">Bouton poussoir flèche</name>
+        <name lang="pl">Przycisk ze strzałką</name>
+        <name lang="cs">Tlačítko se šipkou</name>
+        <name lang="nl">Knop pijl</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="1" y2="-6" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-1" y2="-6" x2="-1"/>
+        <line length1="4" length2="8" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="14" x1="0" y2="-14" x2="0"/>
+        <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="30"/>
+        <circle x="-20" y="-20" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="40"/>
+        <circle x="-22" y="-22" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="44"/>
+    </description>
+</definition>

@@ -1,0 +1,27 @@
+<definition width="90" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Quick opening valves with mechanical feedback</name>
+        <name lang="fr">Vannes à ouverture rapide avec rétroaction mécanique</name>
+        <name lang="pl">Szybkozłączka z mechanicznie otwieranymi zaworami zwrotnymi - rozłączona</name>
+        <name lang="cs">Rychle se otevírající klapky s mechanickým zpětným působením</name>
+        <name lang="ar">صمّام بفتح سريع و بارتداد خلفي ميكانيكي</name>
+        <name lang="it">Valvola ad apertura rapida con feedback meccanico</name>
+        <name lang="nl">Snelkoppeling met kleppen</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="20" x="40" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="5" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <circle x="47" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="34" y2="2" x2="34"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="26"/>
+        <rect width="20" x="0" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="34" y2="0" x2="70"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="10" y2="0" x2="15" y3="5" x3="10"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="5" x1="50" y2="0" x2="45" y3="-5" x3="50"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="26" y2="2" x2="26"/>
+        <terminal x="70" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,63 @@
+<definition width="410" version="0.3" hotspot_x="24" hotspot_y="15" height="110" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="el">Αισθητήρας στάθμης ES 2001Bamo</name>
+        <name lang="en">Relay level resistive ES 2001</name>
+        <name lang="it">Relè di livello resistivo BAMO ES 2001</name>
+        <name lang="fr">Relais niveau resistif ES 2001</name>
+        <name lang="pl">Przekaźnik kontroli poziomu ES 2001Bamo</name>
+        <name lang="es">Relevador de nivel resistivo</name>
+        <name lang="cs">Rezistivní úroveň relé ES 2001Bamo</name>
+        <name lang="nl">niveau weerstand relais ES2001</name>
+    </names>
+    <informations>Rafart Renaud</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="100" y2="50" x2="100"/>
+        <text x="257" y="26" size="5" text="1 On : Sécu. travail"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="130" y2="50" x2="130"/>
+        <input x="103" y="1" size="9" rotate="true" text="8"/>
+        <text x="257" y="35" size="5" text="2 Off : 1-70K"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="121" y2="50" x2="130"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="110" y2="30" x2="110"/>
+        <text x="257" y="45" size="5" text="2 On : 5-150K"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="110" y2="52" x2="124"/>
+        <input x="170" y="1" size="9" rotate="true" text="11"/>
+        <text x="364" y="44" size="9" text="5"/>
+        <input x="92" y="75.5" size="9" rotate="true" text="7"/>
+        <input x="190" y="75.5" size="9" rotate="true" text="12"/>
+        <input x="123" y="75.5" size="9" rotate="true" text="9"/>
+        <input x="159" y="75.5" size="9" rotate="true" text="10"/>
+        <text x="364" y="64" size="9" text="6"/>
+        <rect width="400" x="-20" y="-10" antialias="false" height="100" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input x="39" y="9" size="9" rotate="true" text="3&#xa;L1(+)"/>
+        <rect width="13" x="263" y="70" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text x="-15" y="24" size="9" text="Relais"/>
+        <text x="-15" y="68" size="9" text="ES2001"/>
+        <input x="40" y="68" size="9" rotate="true" text="N(-)&#xa;2"/>
+        <rect width="40" x="256" y="50" antialias="false" height="30" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="40" x="256" y="50" antialias="false" height="15" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="253" y="73" size="9" rotation="270" text="ON"/>
+        <rect width="13" x="263" y="55" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text x="310" y="61" size="9" rotation="270" text="2"/>
+        <text x="310" y="76" size="9" rotation="270" text="1"/>
+        <text x="257" y="17" size="5" text="1 Off : Sécu. repos"/>
+        <text x="-15" y="53" size="9" text="résistif"/>
+        <text x="364" y="24" size="9" text="4"/>
+        <text x="-15" y="38" size="9" text="de niveau"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="170" y2="50" x2="170"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="200" y2="50" x2="200"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="191" y2="50" x2="200"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="180" y2="30" x2="180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="180" y2="52" x2="194"/>
+        <terminal x="46" y="-10" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="46" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="110" y="-10" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="180" y="-10" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="99" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="130" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="170" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="200" y="89" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="380" y="20" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="379" y="40" nameHidden="0" number="" name="" orientation="e"/>
+        <terminal x="379" y="60" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

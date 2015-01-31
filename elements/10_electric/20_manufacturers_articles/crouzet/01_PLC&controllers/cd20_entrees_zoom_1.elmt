@@ -1,0 +1,54 @@
+<definition width="810" version="0.3" hotspot_x="5" hotspot_y="6" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">لوحة مداخل CD20 zoom </name>
+        <name lang="de">CD20 Eingangskarte (zoom)</name>
+        <name lang="pt">Carta de entradas zoom CD20</name>
+        <name lang="el">Κάρτα εισόδων CD20</name>
+        <name lang="en">CD20 zoom input board</name>
+        <name lang="it">Scheda ingressi CD20 ingrandita</name>
+        <name lang="fr">CD20 zoom carte entrées</name>
+        <name lang="pl">Karta wejść CD20 (powiększona)</name>
+        <name lang="es">CD20 tarjeta de entrada ampliada</name>
+        <name lang="cs">Karta CD20 zoom vstupy</name>
+        <name lang="nl">CD20 ingangskaart lang</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="690" y2="0" x2="690"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="360" y2="0" x2="360"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="740" y2="0" x2="740"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="540" y2="0" x2="540"/>
+        <text x="384" y="34.6667" size="8" text="CROUZET CD20 Carte entrées"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="410" y2="0" x2="410"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="590" y2="0" x2="590"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="490" y2="0" x2="490"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="640" y2="0" x2="640"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="70" y2="0" x2="70"/>
+        <text x="156" y="24.3333" size="7" text="I1              I2              I3              I4              I5              I6"/>
+        <rect width="800" x="0" y="0" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="68" y="16.6667" size="8" text="-"/>
+        <text x="28" y="34.6667" size="8" text="24 VDC"/>
+        <text x="483" y="24.3333" size="7" text=" IB             IC              ID              IE             IF             IG"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="30" y2="0" x2="30"/>
+        <text x="27" y="17.6667" size="8" text="+"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="210" y2="0" x2="210"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="260" y2="0" x2="260"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="160" y2="0" x2="160"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="310" y2="0" x2="310"/>
+        <terminal x="640" y="0" orientation="n"/>
+        <terminal x="690" y="0" orientation="n"/>
+        <terminal x="160" y="0" orientation="n"/>
+        <terminal x="410" y="0" orientation="n"/>
+        <terminal x="740" y="0" orientation="n"/>
+        <terminal x="70" y="0" orientation="n"/>
+        <terminal x="30" y="0" orientation="n"/>
+        <terminal x="310" y="0" orientation="n"/>
+        <terminal x="260" y="0" orientation="n"/>
+        <terminal x="490" y="0" orientation="n"/>
+        <terminal x="360" y="0" orientation="n"/>
+        <terminal x="210" y="0" orientation="n"/>
+        <terminal x="590" y="0" orientation="n"/>
+        <terminal x="540" y="0" orientation="n"/>
+    </description>
+</definition>

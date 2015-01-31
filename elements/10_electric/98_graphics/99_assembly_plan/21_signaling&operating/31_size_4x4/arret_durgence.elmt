@@ -1,0 +1,20 @@
+<definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Emergency Stop</name>
+        <name lang="de">Not-Aus Taster</name>
+        <name lang="fr">Arret d'urgence</name>
+        <name lang="pl">Przycisk awaryjny</name>
+        <name lang="cs">Nouzové zastavení</name>
+        <name lang="ar">توقيف طارئ</name>
+        <name lang="it">Arresto d'emergenza</name>
+        <name lang="nl">Knop Noodstop</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-38" y="-38" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="76"/>
+        <circle x="-40" y="-40" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="80"/>
+        <circle x="-36" y="-36" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="72"/>
+        <circle x="-12" y="-12" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="24"/>
+    </description>
+</definition>

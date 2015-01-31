@@ -1,0 +1,22 @@
+<definition width="50" version="0.3" hotspot_x="10" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">فوهات مغلقة 2</name>
+        <name lang="en">2 ports close</name>
+        <name lang="fr">2 orifices fermes</name>
+        <name lang="pl">2 drogi, zamknięty</name>
+        <name lang="cs">2 otvory zavřené</name>
+        <name lang="it">2 porte chiuse</name>
+        <name lang="nl">2 gesloten</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.95" x1="18.05" y2="-14.95" x2="22.05"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="20" y2="10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-15" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="18" y2="5" x2="22"/>
+        <terminal x="20" y="-20" orientation="n"/>
+        <terminal x="20" y="10" orientation="s"/>
+    </description>
+</definition>

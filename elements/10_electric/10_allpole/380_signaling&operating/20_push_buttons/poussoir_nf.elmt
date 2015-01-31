@@ -1,0 +1,28 @@
+<definition width="40" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">زرّ ضاغط (NC)</name>
+        <name lang="de">Drucktaster Öffner</name>
+        <name lang="ru">Кнопка (НЗ)</name>
+        <name lang="pt">Botão de pressão (NC)</name>
+        <name lang="el">Μπουτόν, κλειστή επαφή</name>
+        <name lang="en">Push-button (NC)</name>
+        <name lang="it">Pulsante (NC)</name>
+        <name lang="fr">Bouton poussoir (NF)</name>
+        <name lang="pl">Łącznik przyciskowy z powrotem samoczynnym</name>
+        <name lang="es">Pulsador (NC)</name>
+        <name lang="cs">Tlačítko (NC)</name>
+        <name lang="nl">Drukknop (NC)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="5" y2="10" x2="0" y3="20" x3="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="0" y2="-9" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9" x2="0"/>
+        <input x="5.75" y="3" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-10" y2="0" x2="3"/>
+        <polygon x4="-7" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-5" x1="-7" y2="-5" x2="-10" y3="5" x3="-10" y4="5"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,20 @@
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مفتاح حاكم جهد</name>
+        <name lang="de">Dimmer</name>
+        <name lang="el">Ρυθμιζόμενος διακόπτης (dimmer)</name>
+        <name lang="en">Dimmer</name>
+        <name lang="it">Variatore (dimmer)</name>
+        <name lang="fr">Interrupteur gradateur</name>
+        <name lang="pl">Ściemniacz</name>
+        <name lang="cs">Reostat</name>
+        <name lang="nl">Dimmer</name>
+    </names>
+    <informations>EN 60617: 11-14-08</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="2" y2="-9" x2="8"/>
+        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-3" x1="0" y2="-3" x2="9" y3="-7" x3="9" y4="-3"/>
+        <circle x="-5" y="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <terminal x="0" y="0" orientation="n"/>
+    </description>
+</definition>

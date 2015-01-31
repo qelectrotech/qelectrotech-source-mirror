@@ -1,0 +1,28 @@
+<definition width="60" version="0.4" hotspot_x="21" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">مُحوّل بمقبس متوسط على ملف </name>
+        <name lang="de">Transformator mit Mittenanzapfung an einer Wicklung</name>
+        <name lang="el">Μετασχηματιστής με μεσαία λήψη στο ένα τύλιγμα</name>
+        <name lang="en">Transformer with centre tapping on one winding</name>
+        <name lang="it">Trasformatore monofase con presa centrale su un avvolgimento</name>
+        <name lang="fr">Transformateur avec prise médiane sur un enroulement</name>
+        <name lang="pl">Transformator z przewodem środkowym</name>
+        <name lang="es">Transformador con derivación central en una bobina</name>
+        <name lang="cs">Jednofázový transformátor s odbočkou z vinutí uprostřed</name>
+        <name lang="nl">transformator met middenaftakking </name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-15" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <circle x="-15" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="0" y2="-25" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="0" y2="40" x2="0"/>
+        <input x="17" y="-21" size="9" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-5" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="30" y2="-10" x2="0"/>
+        <terminal x="0" y="-40" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="0" y="40" nameHidden="0" number="" name="" orientation="s"/>
+        <terminal x="30" y="-10" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

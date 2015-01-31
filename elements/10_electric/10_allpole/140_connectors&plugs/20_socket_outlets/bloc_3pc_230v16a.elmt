@@ -1,0 +1,47 @@
+<definition width="120" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مجموعة 3PC 2P+T 220V 16A</name>
+        <name lang="de">Steckdose 3-fach P+N+PE 230V 16A</name>
+        <name lang="en">Plugs 3 PC 2P+T 230v 16A</name>
+        <name lang="fr">Bloc 3 PC 2P+T 230v 16A</name>
+        <name lang="pl">Potrójne gniazdo wtyczkowe (modułowe)</name>
+        <name lang="cs">Blok 3 PC 2P+T 230v 16A</name>
+        <name lang="it">Blocco 3 prese di corrente 220V 16A</name>
+        <name lang="nl">Contactdoos 3voudig 230V 16A</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="69.25" y="3.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
+        <circle x="59.25" y="6.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
+        <circle x="49.25" y="9.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="30" y2="4" x2="110"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="20" y2="7" x2="100"/>
+        <circle x="29.25" y="3.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="10" x2="90"/>
+        <circle x="19.25" y="6.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
+        <circle x="9.25" y="9.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5"/>
+        <rect width="2" x="59" y="19" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="2" x="99" y="19" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text x="5" y="34.3333" size="4" text="Bloc 3 x PC 230V 16A"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="60" y2="19" x2="60"/>
+        <rect width="2" x="19" y="19" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="100" y2="19" x2="100"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="110" y2="17" x2="110"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="70" y2="17" x2="70"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="19" x2="20"/>
+        <arc width="6" x="87" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="30" y2="17" x2="30"/>
+        <arc width="6" x="47" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="50" y2="17" x2="50"/>
+        <arc width="6" x="7" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="90" y2="17" x2="90"/>
+        <arc width="6" x="67" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="17" x2="10"/>
+        <arc width="6" x="107" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <arc width="6" x="27" y="17" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <terminal x="20" y="0" orientation="n"/>
+        <terminal x="10" y="0" orientation="n"/>
+        <terminal x="30" y="0" orientation="n"/>
+    </description>
+</definition>

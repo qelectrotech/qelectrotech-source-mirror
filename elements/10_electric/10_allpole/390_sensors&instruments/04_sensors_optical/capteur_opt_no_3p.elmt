@@ -1,0 +1,39 @@
+<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">حسّاس بصري (NO)</name>
+        <name lang="en">Optic sensor (NO)</name>
+        <name lang="de">Lichtsensor 3-Leiter Schliesser</name>
+        <name lang="fr">Capteur optique  (NO)</name>
+        <name lang="pl">Czujnik optyczny trójprzewodowy, zwierny</name>
+        <name lang="es">Sensor óptico 3 terminales NA</name>
+        <name lang="cs">Optické čidlo třídrátové (NO)</name>
+        <name lang="it">Sensore ottico (NC)</name>
+        <name lang="nl">Fotocel 2 (NC)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="22.5" y="1.55" size="9" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="0.2" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="10" y2="1" x2="7"/>
+        <line length1="1.5" length2="0.2" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="8" y2="2" x2="5"/>
+        <polygon x4="12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="11" x1="12" y2="5" x2="12" y3="8" x3="5" y4="11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-1" y2="8" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="12" y2="8" x2="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="5" y2="11" x2="5"/>
+        <text x="-8" y="-20" size="5" text="BR"/>
+        <text x="2" y="22" size="5" text="BK"/>
+        <text x="12" y="-20" size="5" text="BL"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="0" y2="16" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-6" y2="5" x2="-6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-10" y2="5" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="10" y2="-30" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="-10" y2="-30" x2="-10"/>
+        <rect width="40" x="-20" y="-15" antialias="false" height="31" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-7" x1="6" y2="-10" x2="13" y3="-10" x3="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="3" y2="-10" x2="6"/>
+        <polygon x4="2" y5="-13" x5="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-13" x1="-8" y2="-3" x2="-18" y3="7" x3="-8" y4="-3"/>
+        <terminal x="10" y="-30" orientation="n"/>
+        <terminal x="-10" y="-30" orientation="n"/>
+        <terminal x="0" y="30" orientation="s"/>
+    </description>
+</definition>

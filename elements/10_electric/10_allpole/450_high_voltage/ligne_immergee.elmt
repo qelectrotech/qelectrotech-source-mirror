@@ -1,0 +1,21 @@
+<definition width="50" version="0.4" hotspot_x="15" hotspot_y="15" height="20" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">خط مغمور</name>
+        <name lang="de">Leiter im Gewässer,Seekabel</name>
+        <name lang="el">Βυθισμένη γραμμή</name>
+        <name lang="en">Line immersed</name>
+        <name lang="it">Linea immersa</name>
+        <name lang="fr">Ligne immergée</name>
+        <name lang="pl">Linia podwodna</name>
+        <name lang="nl">Onderwater lijn</name>
+        <name lang="cs">Ponořený vodič, mořský kabel</name>
+    </names>
+    <informations>EN 60617: 11-03-02</informations>
+    <description>
+        <arc width="10" x="2" y="-13" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-45" angle="-90"/>
+        <arc width="10" x="9" y="-13" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-45" angle="-90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="30"/>
+        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="30" y="0" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

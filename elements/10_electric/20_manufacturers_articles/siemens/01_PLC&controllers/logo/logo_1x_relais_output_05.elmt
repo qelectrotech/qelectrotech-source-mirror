@@ -1,0 +1,24 @@
+<definition width="100" version="0.3" hotspot_x="15" hotspot_y="5" height="130" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Logo-1x-relais-output/05</name>
+        <name lang="fr">Logo-1x-relais-output/05</name>
+        <name lang="it">Logo 1x relais OUT/05</name>
+        <name lang="cs">Logo 1x relais OUT/05</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="30" x="4" y="30" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="67" y="112" size="6" rotation="270" rotate="true" text="Q?:?"/>
+        <input x="67" y="30" size="6" rotation="270" rotate="true" text="Q?:?"/>
+        <input x="3.25" y="41.3" size="6" rotate="true" text="PLC;&#xa;Q?"/>
+        <input x="2.25" y="71.3" size="6" rotate="true" text="?"/>
+        <input x="-4.75" y="20.8" size="9" rotate="true" text="-? /"/>
+        <rect width="40" x="34" y="30" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="70" x="4" y="56" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" x1="60" y2="86" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="60" y2="34" x2="60"/>
+        <polygon x4="60" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="36" x1="55" y2="45" x2="60" y3="55" x3="60" y4="55"/>
+        <terminal x="60" y="30" orientation="n"/>
+        <terminal x="60" y="90" orientation="s"/>
+    </description>
+</definition>

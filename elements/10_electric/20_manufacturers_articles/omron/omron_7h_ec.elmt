@@ -1,0 +1,41 @@
+<definition width="150" version="0.3" hotspot_x="15" hotspot_y="14" height="90" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">OMRON 7HEC</name>
+        <name lang="pt">OMRON 7H EC</name>
+        <name lang="el">Μετρητής OMRON 7H EC</name>
+        <name lang="en">OMRON 7H EC</name>
+        <name lang="it">OMRON 7H EC</name>
+        <name lang="fr">OMRON 7H EC</name>
+        <name lang="pl">OMRON 7H EC</name>
+        <name lang="es">OMRON 7H EC</name>
+        <name lang="cs">OMRON 7H EC</name>
+        <name lang="nl">OMRON 7H EC</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="4" y="60.5" size="5" rotate="true" text="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-10" x1="130" y2="67" x2="130"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="67" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="-10" x2="130"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="67" x1="34" y2="67" x2="88"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="67" x1="113" y2="67" x2="130"/>
+        <input x="104" y="60.5" size="5" rotate="true" text="4"/>
+        <input x="84" y="60.5" size="5" rotate="true" text="3"/>
+        <input x="24" y="60.5" size="5" rotate="true" text="2"/>
+        <input x="81" y="51" size="7" rotate="true" text="RESET"/>
+        <circle x="7.7639" y="64.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
+        <input x="0" y="51" size="7" rotate="true" text="COUNT"/>
+        <circle x="87.764" y="64.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
+        <circle x="27.7639" y="64.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
+        <circle x="107.764" y="64.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="67" x1="93" y2="67" x2="107"/>
+        <input x="13" y="4.5" size="9" rotate="true" text="OMRON 7H EC"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="67" x1="13" y2="67" x2="27"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="67" x1="-10" y2="67" x2="7"/>
+        <terminal x="10" y="70" orientation="s"/>
+        <terminal x="30" y="70" orientation="s"/>
+        <terminal x="90" y="70" orientation="s"/>
+        <terminal x="110" y="70" orientation="s"/>
+    </description>
+</definition>

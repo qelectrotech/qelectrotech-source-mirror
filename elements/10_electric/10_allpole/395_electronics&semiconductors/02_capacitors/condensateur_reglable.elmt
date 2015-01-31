@@ -1,0 +1,25 @@
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">مُكثّف مُتغيّر</name>
+        <name lang="de">Kondensator mit einstellbarer Kapazität</name>
+        <name lang="el">Μεταβλητός πυκνωτής</name>
+        <name lang="en">Adjustable capacitor
+</name>
+        <name lang="it">Condensatore variabile</name>
+        <name lang="fr">Condensateur réglable
+</name>
+        <name lang="pl">Kondensator regulacyjny</name>
+        <name lang="cs">Nastavitelný kondenzátor</name>
+        <name lang="nl">Condensator variabel</name>
+    </names>
+    <informations>EN 60617: 04-02-07</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="triangle" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-3" x1="-6" y2="-17" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="-20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="0" y2="0" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-5" y2="-8" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-5" y2="-12" x2="5"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="0" orientation="s"/>
+    </description>
+</definition>

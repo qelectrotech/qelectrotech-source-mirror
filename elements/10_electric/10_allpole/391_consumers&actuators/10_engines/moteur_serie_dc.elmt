@@ -1,0 +1,32 @@
+<definition width="50" version="0.4" hotspot_x="24" hotspot_y="38" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">محرّك توالي مستمرّ</name>
+        <name lang="el">Σειριακό μοτέρ συνεχούς</name>
+        <name lang="en">Series motor DC</name>
+        <name lang="it">Motore CC</name>
+        <name lang="fr">Moteur série,DC</name>
+        <name lang="pl">Silnik szeregowy prądu stałego</name>
+        <name lang="nl">Motor DC Serie</name>
+        <name lang="cs">Sériový elektromotor, stejnosměrný proud</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-30" x1="-20" y2="10" x2="-20" y3="10" x3="-15" y4="10"/>
+        <polygon x4="16" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="1" x1="20" y2="10" x2="20" y3="10" x3="16" y4="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="6" y2="14" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="0" y2="14" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-9" y2="14" x2="-3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-9" y2="12" x2="10"/>
+        <circle x="-15" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <arc width="7" x="16.5" y="-19" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <text x="-4" y="7" size="8" text="M"/>
+        <arc width="7" x="16.5" y="-9" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <arc width="7" x="16.5" y="-4" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <input x="19" y="16.5" size="9" text="M_" tagg="label"/>
+        <arc width="7" x="16.5" y="-14" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="20" y2="-19" x2="20"/>
+        <terminal x="20" y="-30" orientation="n"/>
+        <terminal x="-20" y="-30" orientation="n"/>
+    </description>
+</definition>

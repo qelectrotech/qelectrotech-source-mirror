@@ -1,0 +1,28 @@
+<definition width="40" version="0.3" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مسارات - مُغلقة 4</name>
+        <name lang="en">4 holes - closed</name>
+        <name lang="fr">4 orifices - fermés</name>
+        <name lang="pl">4 otwory, zamknięty</name>
+        <name lang="cs">4 otvory - zavřené</name>
+        <name lang="it">4 fori - chiusi</name>
+        <name lang="nl">4  midden gesloten</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="30" y2="-15" x2="30"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-15" x2="10"/>
+        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.95" x1="29.925" y2="9.95" x2="29.925"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.95" x1="9.925" y2="9.95" x2="9.925"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.95" x1="27.925" y2="4.95" x2="31.925"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.95" x1="7.925" y2="4.95" x2="11.925"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="27.975" y2="-15" x2="31.975"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="7.975" y2="-15" x2="11.975"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="30" y="-20" orientation="n"/>
+        <terminal x="30" y="10" orientation="s"/>
+        <terminal x="10" y="10" orientation="s"/>
+    </description>
+</definition>

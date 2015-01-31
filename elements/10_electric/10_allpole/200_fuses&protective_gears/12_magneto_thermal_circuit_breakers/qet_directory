@@ -1,0 +1,13 @@
+<qet-directory>
+    <names>
+        <name lang="de">Motorschutzschalter</name>
+        <name lang="en">Magneto-thermal circuit breaker GV</name>
+        <name lang="fr">Disjoncteur magnéto-thermique GV</name>
+        <name lang="ar">GV قواطع مغناطسية-حرارية</name>
+        <name lang="pl">Wyłączniki silnikowe</name>
+        <name lang="cs">Magnetotepelný jistič GV</name>
+        <name lang="it">Interr. magnetotermici</name>
+        <name lang="el">Θερμομαγνητικά ρελέ</name>
+        <name lang="nl">Motorbeveiligingsschakelaar GV</name>
+    </names>
+</qet-directory>

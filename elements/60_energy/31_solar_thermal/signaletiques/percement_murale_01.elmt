@@ -1,0 +1,22 @@
+<definition width="40" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">ممر حائطي</name>
+        <name lang="en">Passage wall</name>
+        <name lang="fr">Passage murale </name>
+        <name lang="pl">Przejście przez ścianę</name>
+        <name lang="cs">Přechod přes stěnu</name>
+        <name lang="it">Passaggio a muro</name>
+        <name lang="nl">Doorgang Muur</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-20" y2="0" x2="-16" y3="-5" x3="-13"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-20" x2="-4" y3="-10" x3="-10"/>
+        <rect width="12" x="-16" y="-17" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-14.2426" y="-14.2426" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.48528"/>
+        <input x="-3" y="1" size="8" rotate="true" text="A"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="-10" y="-20" orientation="e"/>
+    </description>
+</definition>

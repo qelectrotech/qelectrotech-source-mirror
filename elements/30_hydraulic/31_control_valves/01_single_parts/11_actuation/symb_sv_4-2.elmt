@@ -1,0 +1,29 @@
+<definition width="80" version="0.22" hotspot_x="0" hotspot_y="40" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Servovalve 4-2</name>
+        <name lang="fr">Symbolisation Servovalve 4-2</name>
+        <name lang="cs">Servoventil 4/2</name>
+        <name lang="pl">Serwozawór 4/2</name>
+        <name lang="ar">صمّام محكوم 4-2</name>
+        <name lang="it">Servo-valvola 4-2</name>
+        <name lang="nl">klep servo 4-2</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="60" y2="20" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="40" y2="10" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="60" y2="-30" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="40" y2="-30" x2="40"/>
+        <input x="58" y="17.5" size="5" rotate="true" text="t"/>
+        <input x="30" y="17.5" size="5" rotate="true" text="p"/>
+        <input x="58" y="-27.5" size="5" rotate="true" text="b"/>
+        <input x="30" y="-27.5" size="5" rotate="true" text="a"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="5" y2="12" x2="65"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22.3333" x1="5" y2="-22.3333" x2="65"/>
+        <terminal x="40" y="20" orientation="s"/>
+        <terminal x="60" y="20" orientation="s"/>
+        <terminal x="60" y="-30" orientation="n"/>
+        <terminal x="40" y="-30" orientation="n"/>
+    </description>
+</definition>

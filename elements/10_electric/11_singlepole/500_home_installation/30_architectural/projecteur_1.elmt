@@ -1,0 +1,21 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">عاكس</name>
+        <name lang="de">Scheinwerfer</name>
+        <name lang="el">Προβολέας</name>
+        <name lang="en">Projector</name>
+        <name lang="it">Faro</name>
+        <name lang="fr">Projecteur</name>
+        <name lang="pl">Projektor, symbol ogólny</name>
+        <name lang="cs">Světlomet</name>
+        <name lang="nl">Projector</name>
+    </names>
+    <informations>EN 60617: 11-15-07</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-3" y2="-7" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-3" y2="-13" x2="3"/>
+        <circle x="-4.5" y="-14.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="9"/>
+        <arc width="20" x="-10" y="-20" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,25 @@
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="34" height="110" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">عدّاد طاقة</name>
+        <name lang="el">Μετρητής ενέργειας, Κιλοβατώρες (KWh)</name>
+        <name lang="en">Energy meter with pulse output</name>
+        <name lang="it">Misuratore di Kwh</name>
+        <name lang="fr">Compteur d’énergie à Impulsion</name>
+        <name lang="pl">Licznik energii</name>
+        <name lang="cs">Počítadlo energie</name>
+        <name lang="be">Energie meter met pulse contact</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="32" x="-6" y="-30" antialias="false" height="101" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="32" x="-6" y="-14" antialias="false" height="68" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="15" y="33" size="10" rotation="270" text="kWh"/>
+        <rect width="16" x="2" y="-5" antialias="false" height="48" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal x="0" y="53" orientation="s"/>
+        <terminal x="20" y="53" orientation="s"/>
+        <terminal x="0" y="70" orientation="s"/>
+        <terminal x="20" y="70" orientation="s"/>
+        <terminal x="0" y="-29" orientation="n"/>
+        <terminal x="20" y="-29" orientation="n"/>
+    </description>
+</definition>

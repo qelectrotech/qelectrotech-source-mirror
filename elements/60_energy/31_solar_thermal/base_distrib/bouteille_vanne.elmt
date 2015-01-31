@@ -1,0 +1,39 @@
+<definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">اسطوانة و صمّام E</name>
+        <name lang="en">E cylinder and valve</name>
+        <name lang="fr">E bouteille et vanne</name>
+        <name lang="pl">E zasobniki z zaworem</name>
+        <name lang="cs">E zásobníky s uzávěrem</name>
+        <name lang="it">E cilindro e valvola</name>
+        <name lang="nl">type E pijp en kleppen wisselaar</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="-43" y="-22" size="9" text="E"/>
+        <text x="25" y="-22" size="4" text="stock"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31" x1="33" y2="31" x2="40"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="21" x1="2" y2="31" x2="2" y3="31" x3="33"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="42" y2="-27" x2="37"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-14" x1="2" y2="-27" x2="2" y3="-27" x3="37"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="-7" y2="5" x2="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-1" y2="3" x2="-7"/>
+        <rect width="3" x="-2" y="6" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="3" x="-2" y="-4" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="4" y5="0" x5="-5" y6="0" x6="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-5" y2="0" x2="4" y3="6" x3="-5" y4="6"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="12" x2="41" x3="41" x4="45" antialias="false" x5="38" x6="44" x7="38" x8="43" x9="38" closed="false" y1="-13.2" y2="-13.2" y10="12.8" y3="-6.2" y11="21.8" y4="-3.2" y12="21.8" y5="-1.2" x10="41" y13="21.8" y6="1.8" x11="41" y7="3.8" x12="12" y8="6.8" x13="13" y9="9.8"/>
+        <rect width="32" x="-18" y="-16.2" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="24" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.8" x1="24" y2="18.8" x2="27" y3="24.8" x3="27" y4="21.8"/>
+        <polygon x4="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13.8" x1="-30" y2="10.8" x2="-27" y3="16.8" x3="-27" y4="13.8"/>
+        <circle x="22" y="17.8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <circle x="-32" y="9.8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <rect width="32" x="-18" y="11.8" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-37" y="5.8" size="4" text="solaire"/>
+        <text x="37" y="12.8" size="4" text="chauff."/>
+        <text x="11" y="5.8" size="4" text="ECS"/>
+        <text x="-22" y="-20" size="4" text="bouteille"/>
+        <polygon x4="-45" y5="8.8" x5="-35" y6="13.8" x6="-45" y7="13.8" x7="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6.2" x1="-12" y2="-6.2" x2="-45" y3="-1.2" x3="-35" y4="3.8"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="12" x2="32" x3="22" x4="32" antialias="true" x5="22" x6="32" x7="12" x8="12" closed="false" y1="-6.2" y2="-6.2" y3="-1.2" y4="3.8" y5="8.8" y6="13.8" y7="13.8" y8="13.8"/>
+    </description>
+</definition>

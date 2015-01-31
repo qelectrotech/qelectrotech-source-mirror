@@ -1,0 +1,54 @@
+<definition width="60" version="0.4" hotspot_x="34" hotspot_y="73" height="170" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">cRIO bus CAN</name>
+        <name lang="it">cRIO 9853 - modulo CAN-bus</name>
+        <name lang="fr">cRIO bus CAN</name>
+        <name lang="pl">cRIO 9853 - porty High-Speed CAN</name>
+        <name lang="es">cRIO 9853 - puertos CAN</name>
+        <name lang="cs">cRIO 9853 - modul CAN-bus</name>
+        <name lang="nl">cRIO bus CAN</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="-8" y="-63" size="5" text=" bus&#xa;CAN"/>
+        <text x="-6" y="-31" size="3" text="Port 1"/>
+        <circle x="0" y="-23" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <text x="-6" y="14" size="3" text="Port 2"/>
+        <rect width="40" x="-20" y="-50" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-3" y="-9" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-3" y="-13" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-2" y="-1" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
+        <circle x="0" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-3" y="-21" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="0" y="-7" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-3" y="-17" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="0" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="0" y="-19" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-5" y2="-24" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="-5" y2="-25" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="4" y2="-25" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="4" y2="-4" x2="-5"/>
+        <circle x="-2" y="-30" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
+        <circle x="0" y="23" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-2" y="45" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
+        <circle x="-3" y="37" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-3" y="33" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="0" y="35" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-3" y="25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="0" y="39" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-3" y="29" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="0" y="31" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="0" y="27" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="42" x1="-5" y2="22" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22" x1="-5" y2="21" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="43" x1="4" y2="21" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="43" x1="4" y2="42" x2="-5"/>
+        <circle x="-2" y="16" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
+        <input x="-29" y="77" size="9" rotate="true" text="NI cRIO&#xa;  9853"/>
+        <text x="-13" y="-42" size="5" text="NI 9853"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40" x1="-20" y2="-40" x2="20"/>
+        <terminal x="-2" y="32" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="-2" y="-14" nameHidden="0" number="" name="" orientation="w"/>
+    </description>
+</definition>

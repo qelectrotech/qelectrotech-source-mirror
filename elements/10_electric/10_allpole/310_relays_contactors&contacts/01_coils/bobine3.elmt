@@ -1,0 +1,31 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dnny" link_type="master">
+    <names>
+        <name lang="ar">ملف</name>
+        <name lang="de">Spule</name>
+        <name lang="ru">Обмотка</name>
+        <name lang="el">Πηνίο</name>
+        <name lang="en">Coil</name>
+        <name lang="it">Bobina</name>
+        <name lang="fr">Bobine</name>
+        <name lang="pl">Cewka</name>
+        <name lang="es">Bobina</name>
+        <name lang="cs">Cívka</name>
+        <name lang="nl">Spoel</name>
+        <name lang="be">Relais spoel (algemeen)</name> 
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">coil</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="28" x="-14" y="-8" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-8" x2="0"/>
+        <input x="2" y="19.3333" size="4" rotate="true" text="A2"/>
+        <input x="2" y="-16.6667" size="4" rotate="true" text="A1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="0" y2="20" x2="0"/>
+        <input x="25" y="3.3333" size="9" text="_" tagg="label"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

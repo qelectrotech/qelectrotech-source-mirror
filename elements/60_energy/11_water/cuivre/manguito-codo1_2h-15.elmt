@@ -1,0 +1,27 @@
+<definition width="50" version="0.4" hotspot_x="22" hotspot_y="18" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Elbow-sleeve 1/2 "H-15</name>
+        <name lang="it">Riduzione gomito 1/2 F-22</name>
+        <name lang="fr">Coude-douille de 1/2 "H-15</name>
+        <name lang="pl">Kolanko 1/2" - 22</name>
+        <name lang="es">Manguito-Codo 1/2"H-15</name>
+    </names>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc width="3.78" x="-5.77" y="-3.54595" antialias="true" height="3.91744" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+        <rect width="9.3" x="-14.33" y="2.06333" antialias="false" height="12.2178" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="7.92641" x="-14.5864" y="3.98313" antialias="false" height="8.79361" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="15.12" x="-3.88" y="-10.3832" antialias="false" height="6.42415" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="5.985" x="-7.975" y="-4.85595" antialias="true" height="7.01712" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="28.35" x="-19" y="-16.1394" antialias="true" height="30.237" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+        <arc width="3.78" x="9.35" y="-3.54595" antialias="true" height="3.91744" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+        <rect width="11.34" x="-1.99" y="-8.79664" antialias="false" height="3.94488" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7.31731" x1="-1.99" y2="-8.30353" x2="9.35"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.33109" x1="-1.99" y2="-7.31731" x2="9.35"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.34487" x1="-1.99" y2="-6.33109" x2="9.35"/>
+        <input x="-20" y="20" size="4" rotate="true" text="manguito aco- &#xa;dado1/2H-15" tagg="none"/>
+        <terminal x="-12.7" y="8.20639" orientation="w"/>
+        <terminal x="3.68" y="-10.075" orientation="n"/>
+    </description>
+</definition>

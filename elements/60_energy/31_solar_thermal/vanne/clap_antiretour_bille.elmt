@@ -1,0 +1,23 @@
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">صمّام ضدّ الرجع بكرة</name>
+        <name lang="el">Ανεπίστροφη βαλβίδα μπίλιας</name>
+        <name lang="en">Check valve ball</name>
+        <name lang="it">Valvola di ritegno</name>
+        <name lang="fr">clapet anti-retour à bille</name>
+        <name lang="pl">Zawór zwrotny kulowy</name>
+        <name lang="cs">Kuličkový pojistný ventil</name>
+        <name lang="nl">Terugslagklep kogel</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-4" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6" x1="6" y2="-6" x2="-6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="4" y2="0" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="0" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="3" y2="4" x2="3"/>
+        <terminal x="-7" y="0" orientation="w"/>
+        <terminal x="7" y="0" orientation="e"/>
+    </description>
+</definition>

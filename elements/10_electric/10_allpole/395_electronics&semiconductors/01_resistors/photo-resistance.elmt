@@ -1,0 +1,26 @@
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">مُقاومة ضوئيّة</name>
+        <name lang="de">Photowiderstand</name>
+        <name lang="el">Φωτοαντίσταση</name>
+        <name lang="en">Light dependent resistor LDR</name>
+        <name lang="it">Fotoresistore</name>
+        <name lang="fr">Photorésistance</name>
+        <name lang="pl">Fotorezystor</name>
+        <name lang="cs">Fotoodporník</name>
+        <name lang="nl">Weerstand lichtgevoelig LDR</name>
+    </names>
+    <informations>EN 60617: 05-06-01</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="-1" y2="-7" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="10" y2="-19" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-8" x1="-4" y2="-3" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="10" y2="21" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="14" y2="-9" x2="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="6" y2="11" x2="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="14" y2="-9" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="6" y2="11" x2="6"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="10" y="22" orientation="s"/>
+    </description>
+</definition>

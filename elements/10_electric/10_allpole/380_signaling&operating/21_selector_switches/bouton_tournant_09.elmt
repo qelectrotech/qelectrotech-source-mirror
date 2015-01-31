@@ -1,0 +1,38 @@
+<definition width="90" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">زرّ دوّار بوضعين باسترداد من اليمين إلى اليسار , سحب المفتاح إلى اليسار </name>
+        <name lang="el">Διακόπτης 2 θέσεων με επαναφορά αριστερά, αφαίρεση κλειδιού στην αριστερή θέση</name>
+        <name lang="en">Turning button 2 position spring return from right to left, key withdrawal left</name>
+        <name lang="de">Öffner/Schliesser 2 Stellungen Schlüssel betätigt tastend</name>
+        <name lang="it">Selettore a chiave, 2 posizioni, ritorno a molla a SX, estrazione chiave a SX</name>
+        <name lang="fr">Bouton tournant 2 positions à rappel de droite à gauche, retrait de la clé à gauche</name>
+        <name lang="pl">Łącznik obrotowy przełączny z samoczynnym powrotem, uruchamiany kluczykiem</name>
+        <name lang="es">Switch selector_9 posiciones fijas con llave LH</name>
+        <name lang="cs">Otočný přepínač s 2 polohami se samočinným navrácením, uvedený do provozu klíčkem</name>
+        <name lang="nl">draaischakelaar 2 standen terugverend stand 1 sleutel grendel in stand 2</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="30" y2="10" x2="30" y3="-10" x3="36"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="30" y2="-9" x2="37"/>
+        <line length1="1.5" length2="0.5" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4" x1="15" y2="-4" x2="11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="30" y2="-9" x2="30"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="50" y2="10" x2="50" y3="-10" x3="44"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-6" y2="0" x2="11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="50" y2="-9" x2="50"/>
+        <input x="55" y="2.5" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="3" x1="13" y2="-3" x2="17"/>
+        <text x="6" y="-5" size="4" text="1"/>
+        <polygon x4="-6" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="0" x1="-8" y2="4" x2="-9" y3="4" x3="-5" y4="0"/>
+        <polygon x4="22" y5="0" x5="47" antialias="true" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="0" x1="15" y2="0" x2="18" y3="3" x3="20" y4="0"/>
+        <circle x="-9.2361" y="-4.236" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4.4721"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="13" y2="-3" x2="9"/>
+        <polygon x4="3" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="4" x1="-3" y2="4" x2="0" y3="-4" x3="0" y4="-4"/>
+        <text x="17" y="-5" size="4" text="2"/>
+        <terminal x="50" y="-20" orientation="n"/>
+        <terminal x="50" y="20" orientation="s"/>
+        <terminal x="30" y="-20" orientation="n"/>
+        <terminal x="30" y="20" orientation="s"/>
+    </description>
+</definition>

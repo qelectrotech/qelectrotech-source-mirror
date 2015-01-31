@@ -1,0 +1,30 @@
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="40" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="el">Μεταγωγική επαφή χρονοδιακόπτη</name>
+        <name lang="en">Contact NC/NO-controlled clock</name>
+        <name lang="de">Wechsler zeitgesteuert</name>
+        <name lang="it">Contatto NC/NO comandato da orologio</name>
+        <name lang="fr">Commande par horloge électrique NO/NF</name>
+        <name lang="pl">Zestyk przełączny sterowany zegarem</name>
+        <name lang="cs">Kontakt NC/NO řízený elektrickými hodinami</name>
+        <name lang="nl">Klok contact (NC/NO)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-10" x1="-20" y2="-10" x2="-5"/>
+        <circle x="-30" y="-15" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="-20" y2="-19" x2="-7"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="0" y2="0" x2="0" y3="-20" x3="-10"/>
+        <input x="-10" y="6" size="4" text="3"/>
+        <input x="-30" y="-26" size="4" text="1"/>
+        <input x="-10" y="-26" size="4" text="2"/>
+        <input x="1" y="-9.5" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-20" y2="-19" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-20" x2="0"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-10" x1="-29" y2="-10" x2="-25" y3="-14" x3="-25"/>
+        <terminal x="0" y="10" orientation="s"/>
+        <terminal x="0" y="-30" orientation="n"/>
+        <terminal x="-20" y="-30" orientation="n"/>
+    </description>
+</definition>

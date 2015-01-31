@@ -1,0 +1,27 @@
+<definition width="60" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">مراقب دائم للعزل</name>
+        <name lang="de">ICC</name>
+        <name lang="ru">Контроль изоляции</name>
+        <name lang="pt">Dispositivo de guarda de isolamento</name>
+        <name lang="en">Guard isolation</name>
+        <name lang="it">Controllo isolamento</name>
+        <name lang="fr">CPI</name>
+        <name lang="pl">UKSI</name>
+        <name lang="es">Aparato de vigilencia de aislamiento</name>
+        <name lang="cs">Kontrola izolace</name>
+        <name lang="nl">Isolatiebewaking</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="3" y2="-5" x2="5" y3="-3" x3="0"/>
+        <circle x="-9" y="-9" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-5" y2="-4" x2="4"/>
+        <text x="-31.5" y="4.75" size="9" text="CPI"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.5" x1="0" y2="20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9.5" x2="0"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,27 @@
+<definition width="40" version="0.4" hotspot_x="16" hotspot_y="19" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="es">Machón 3/4</name>
+        <name lang="it">Maschio 3/4</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="-1.5" y2="-5.8858" x2="-3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="14" y2="-5.8858" x2="12.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="12" y2="-5.8858" x2="10.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="-3.5" y2="-5.8858" x2="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="-8" y2="-5.8858" x2="-9.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="7.5" y2="-5.8858" x2="6"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="-6" y2="-5.8858" x2="-7.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="5.2235" x1="9.5" y2="-5.8858" x2="8"/>
+        <rect width="8.5" x="5.5" y="-5.8858" antialias="false" height="11.1093" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <rect width="8.5" x="-10" y="-5.8858" antialias="false" height="11.1093" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
+        <rect width="10" x="4" y="-8.10766" antialias="false" height="14.9975" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-10" y="-8.10766" antialias="false" height="14.9975" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="0" y="-13.1068" antialias="false" height="26.1068" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.44126" x1="0" y2="-6.44126" x2="3.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.2235" x1="0" y2="5.2235" x2="4"/>
+        <input x="-14" y="18" size="4" rotate="true" text="machón3/4&quot;"/>
+        <terminal x="-10" y="-0.331151" nameHidden="0" number="" name="" orientation="w"/>
+        <terminal x="14" y="-0.331151" nameHidden="0" number="" name="" orientation="e"/>
+    </description>
+</definition>

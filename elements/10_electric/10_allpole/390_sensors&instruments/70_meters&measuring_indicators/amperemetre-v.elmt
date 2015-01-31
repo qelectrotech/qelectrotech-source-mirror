@@ -1,0 +1,27 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
+    <names>
+        <name lang="ar">أمبيرمتر عمودي</name>
+        <name lang="de">Amperemeter senkrecht</name>
+        <name lang="ru">Амперметр (вертикальный)</name>
+        <name lang="pt">Amperímetro vertical</name>
+        <name lang="el">Αμπερόμετρο κατακόρυφο</name>
+        <name lang="en">Vertical ammeter</name>
+        <name lang="it">Amperometro verticale</name>
+        <name lang="fr">Ampèremètre vertical</name>
+        <name lang="pl">Amperomierz (pionowo)</name>
+        <name lang="es">Amperímetro vertical</name>
+        <name lang="cs">Svislý ampérmetr</name>
+        <name lang="nl">Amperemeter</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-1.75" y2="0" x2="1.75"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="21" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="0" y2="-10" x2="0"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="6" x1="-5" y2="-6" x2="0" y3="6" x3="5"/>
+        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

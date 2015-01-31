@@ -1,0 +1,26 @@
+<definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">ترنزيستور ثنائي القطبيّة ببوابة معزولة IBGT</name>
+        <name lang="de">Bipolar Transistor IGBT</name>
+        <name lang="en">Bipolar transistor IGBT</name>
+        <name lang="fr">Transistor bipolaire à grille isolée IGBT</name>
+        <name lang="pl">Tranzystor biopolarny IGBT</name>
+        <name lang="cs">Dvoupólový tranzistor IGBT</name>
+        <name lang="it">transistor bipolare IGBT</name>
+        <name lang="nl">transistor bipolare IGBT</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="-2" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="6" x1="-2" y2="10" x2="-6" y3="12" x3="0" y4="6"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="3" x1="-9" y2="12" x2="0" y3="20" x3="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-11" y2="0" x2="-20"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3" x1="-9" y2="-12" x2="0" y3="-20" x3="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-11" y2="5" x2="-11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-9.5" y2="5" x2="-9.5"/>
+        <input x="3" y="3.6666" size="9" text="_" tagg="label"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="-20" y="0" orientation="w"/>
+    </description>
+</definition>

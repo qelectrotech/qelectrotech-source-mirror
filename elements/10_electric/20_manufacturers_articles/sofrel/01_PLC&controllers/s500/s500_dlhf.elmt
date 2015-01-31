@@ -1,0 +1,65 @@
+<definition width="760" version="0.3" hotspot_x="5" hotspot_y="3" height="180" type="element" orientation="dnyn">
+    <names>
+        <name lang="ar">لوحة DL/HF</name>
+        <name lang="pt">Carta DL/HF</name>
+        <name lang="el">Κάρτα επικοινωνίας DL/HF</name>
+        <name lang="en">Board DL/HF</name>
+        <name lang="it">Scheda DL/HF</name>
+        <name lang="fr">Carte DL/HF</name>
+        <name lang="pl">Karta DL/HF</name>
+        <name lang="es">Tarjeta DL/HF</name>
+        <name lang="cs">Karta DL/HF</name>
+        <name lang="nl">Kaart DL/HF</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="750" x="0" y="0" antialias="false" height="150" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="610" y="142" size="7" text="CD-"/>
+        <text x="578" y="142" size="7" text="CD+"/>
+        <text x="457" y="142.333" size="7" text="BF-"/>
+        <text x="422" y="142" size="7" text="BF+"/>
+        <text x="284" y="142.333" size="7" text="AL-"/>
+        <text x="253" y="142.667" size="7" text="AL+"/>
+        <text x="126" y="144" size="9" text="L2"/>
+        <text x="96" y="143" size="9" text="L1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="90" y2="150" x2="90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="111" y2="150" x2="111"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="129" x1="121" y2="149" x2="121"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="129" x1="144" y2="149" x2="144"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="577" y2="150" x2="577"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="600" y2="150" x2="600"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="608" y2="150" x2="608"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="630" y2="150" x2="630"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="281" y2="150" x2="281"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="420" y2="150" x2="420"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="475" y2="150" x2="475"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="443" y2="150" x2="443"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="453" y2="150" x2="453"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="271" y2="150" x2="271"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="301" y2="150" x2="301"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="251" y2="150" x2="251"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="692" y2="150" x2="692"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="712" y2="150" x2="712"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="149.667" x1="702" y2="167.667" x2="702"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="172.667" x1="701" y2="172.667" x2="703"/>
+        <text x="698" y="142.667" size="9" text="T"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="168.667" x1="697" y2="168.667" x2="707"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="170.667" x1="699" y2="170.667" x2="705"/>
+        <input x="734" y="12.667" size="9" rotate="true" text="_" tagg="label"/>
+        <text x="637" y="13.667" size="9" text="EMPLACEMENT"/>
+        <text x="265" y="83.667" size="25" text="CARTE DL/HF"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20" x1="632" y2="0" x2="632"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" x1="732" y2="20" x2="732"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="0" y2="130" x2="750"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20" x1="0" y2="20" x2="750"/>
+        <terminal x="100" y="151" orientation="s"/>
+        <terminal x="130" y="151" orientation="s"/>
+        <terminal x="260" y="151" orientation="s"/>
+        <terminal x="290" y="151" orientation="s"/>
+        <terminal x="430" y="151" orientation="s"/>
+        <terminal x="460" y="151" orientation="s"/>
+        <terminal x="590" y="151" orientation="s"/>
+        <terminal x="620" y="151" orientation="s"/>
+    </description>
+</definition>

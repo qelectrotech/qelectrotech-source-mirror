@@ -1,0 +1,30 @@
+<definition width="130" version="0.3" hotspot_x="6" hotspot_y="183" height="190" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Ground</name>
+        <name lang="de">Fundamenterder</name>
+        <name lang="it">Terra</name>
+        <name lang="fr">Terre</name>
+        <name lang="pl">Uziemienie</name>
+        <name lang="cs">Uzemnění</name>
+        <name lang="nl">Aarde meting</name>
+    </names>
+    <informations>cbh41</informations>
+    <description>
+        <rect width="120" x="0" y="-85" antialias="false" height="85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="0" y2="-15" x2="120"/>
+        <input x="29" y="-34.5" size="7" rotate="true" text="100"/>
+        <input x="-2" y="-53.5" size="7" rotate="true" text="Valeur Mesurée"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-45" x1="0" y2="-45" x2="120"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65" x1="0" y2="-65" x2="120"/>
+        <text x="66" y="-30" size="7" text="Ohms"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-170" x1="60" y2="-170" x2="120"/>
+        <text x="2" y="-69" size="7" text="Terre Générale"/>
+        <text x="36" y="-2" size="5" text="01/01/2012"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-176" x1="60" y2="-140" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-140" x1="30" y2="-140" x2="91"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-130" x1="40" y2="-130" x2="80"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-120" x1="50" y2="-120" x2="70"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-110" x1="59" y2="-110" x2="61"/>
+        <terminal x="60" y="-176" nameHidden="0" number="" name="" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,22 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="10" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">صمّام ضدّ العودة</name>
+        <name lang="el">Ανεπίστροφη βαλβίδα</name>
+        <name lang="en">Check valve</name>
+        <name lang="it">valvola di ritegno</name>
+        <name lang="fr">Clapet anti-retour</name>
+        <name lang="pl">Zawór zwrotny</name>
+        <name lang="cs">Pojistné ventily</name>
+        <name lang="nl">Controle klep</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="5" x1="-10" y2="-5" x2="-10" y3="5" x3="10" y4="-5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="11"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-11"/>
+        <circle x="-11.5" y="-6.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3"/>
+        <terminal x="-11" y="0" orientation="w"/>
+        <terminal x="11" y="0" orientation="e"/>
+    </description>
+</definition>

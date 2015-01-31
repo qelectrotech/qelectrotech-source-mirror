@@ -1,0 +1,34 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">ميزان حرارة عمودي</name>
+        <name lang="en">Vertical thermometer</name>
+        <name lang="fr">Thermomètre Vertical </name>
+        <name lang="pl">Termometr</name>
+        <name lang="cs">Svislý teploměr</name>
+        <name lang="it">Termometro verticale</name>
+        <name lang="nl">Thermometer vertikaal</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16" x1="-1" y2="-16" x2="1"/>
+        <text x="-1" y="-16" size="2" text="°c"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-17" x1="0" y2="7" x2="0"/>
+        <rect width="4" x="-2" y="-17" antialias="false" height="24" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13" x1="0" y2="22" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="12" x2="0"/>
+        <rect width="2" x="-1" y="10" antialias="false" height="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="8" x="-4" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2" x1="-1" y2="2" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="-1" y2="4" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2" x1="-1" y2="-2" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" x1="-1" y2="0" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6" x1="-1" y2="-6" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4" x1="-1" y2="-4" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14" x1="-1" y2="-14" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-8" x1="-1" y2="-8" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10" x1="-1" y2="-10" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="-1" y2="-12" x2="1"/>
+        <terminal x="0" y="23" orientation="s"/>
+    </description>
+</definition>

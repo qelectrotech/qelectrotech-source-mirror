@@ -1,0 +1,23 @@
+<definition width="40" version="0.4" hotspot_x="15" hotspot_y="18" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">Copper Hose 15-18</name>
+        <name lang="it">Riduzione 15-18</name>
+        <name lang="fr">Cuivre Tuyau 15-18</name>
+        <name lang="pl">Redukcja 15 - 18</name>
+        <name lang="es">Manguito cobre 15-18</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="9" y2="6" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="5" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="9" y2="-6" x2="10"/>
+        <rect width="8.8" x="-9.6" y="-5.63888" antialias="false" height="11.6389" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="7.8" x="10.4" y="-6.63888" antialias="false" height="13.6389" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-5" y="-8" size="3" text="Cu15-18"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-5" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="1" y2="-6" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="1" y2="6" x2="8"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="19" y="0" orientation="e"/>
+    </description>
+</definition>

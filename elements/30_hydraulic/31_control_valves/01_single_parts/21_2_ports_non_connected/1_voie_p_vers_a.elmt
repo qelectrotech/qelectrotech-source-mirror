@@ -1,0 +1,20 @@
+<definition width="50" version="0.3" hotspot_x="10" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">فوهات موصلة 2</name>
+        <name lang="en">2 ports open directional</name>
+        <name lang="fr">2 orifices passant</name>
+        <name lang="pl">2 drogi, otwarty</name>
+        <name lang="cs">2 otvory otevřené usměrněné</name>
+        <name lang="it">2 porte aperte</name>
+        <name lang="nl">2 P -&gt; A</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10.075" x1="19.95" y2="-14.925" x2="19.95"/>
+        <polygon x4="20" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.875" x1="20" y2="-14.875" x2="18" y3="-14.875" x3="22" y4="-19.875"/>
+        <terminal x="20" y="-20" orientation="n"/>
+        <terminal x="20" y="10" orientation="s"/>
+    </description>
+</definition>

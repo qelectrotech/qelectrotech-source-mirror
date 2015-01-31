@@ -1,0 +1,16 @@
+<definition width="60" version="0.4" hotspot_x="28" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="en">22 Copper Tube</name>
+        <name lang="it">Tubo rame 22</name>
+        <name lang="fr">Tube 22 cuivre</name>
+        <name lang="pl">Mufa 22</name>
+        <name lang="es">Tubo Cobre 22</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="48.8" x="-22.4" y="-9.99447" antialias="false" height="17.9945" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-8" y="0.930742" size="4" text="Cu22"/>
+        <terminal x="-23" y="0" orientation="w"/>
+        <terminal x="27" y="0" orientation="e"/>
+    </description>
+</definition>

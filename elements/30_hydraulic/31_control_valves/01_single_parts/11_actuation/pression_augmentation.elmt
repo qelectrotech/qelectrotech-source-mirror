@@ -1,0 +1,20 @@
+<definition width="50" version="0.3" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Increase in air pressure</name>
+        <name lang="fr">Augmentation de la pression de l'air</name>
+        <name lang="pl">Sterowane przez wzrost ciśnienia</name>
+        <name lang="cs">Řízeno nárůstem tlaku</name>
+        <name lang="ar">رفع ضغط الهواء</name>
+        <name lang="it">Aumento di pressione</name>
+        <name lang="nl">Lucht Stijgend</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-4" y2="5" x2="-3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-16" y2="5" x2="-14"/>
+        <polygon x4="-14" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-14" y2="10" x2="-14" y3="5" x3="-4" y4="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-25" y2="5" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="1" y2="5" x2="5"/>
+    </description>
+</definition>

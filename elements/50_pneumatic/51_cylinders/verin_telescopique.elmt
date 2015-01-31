@@ -1,0 +1,22 @@
+<definition width="90" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Cylinder (engine) telescopic single acting pneumatic</name>
+        <name lang="fr">Cylindre (moteur) telescopique pneumatique simple effet</name>
+        <name lang="pl">Cylinder (siłownik) teleskowpowy pneumatyczny jednostronnego działania</name>
+        <name lang="cs">Vysunovatelný jednočinný vzduchový válec (motor)</name>
+        <name lang="ar">اسطوانة (محرك) تيليسكوبي نيوماتي بفعل وحيد</name>
+        <name lang="it">Cilindro (motore) telescopico, effetto singolo</name>
+        <name lang="nl">Cilnder telescoop 1 richting</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="0" y2="-16" x2="55" y3="-12" x3="55"/>
+        <polygon x4="-12" y5="0" x5="42" y6="-4" x6="42" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-16" x1="42" y2="-20" x2="42" y3="-20" x3="-12" y4="0"/>
+        <polygon x4="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-12" x1="20" y2="-12" x2="70" y3="-8" x3="70" y4="-8"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="0" y2="-4" x2="55" y3="-8" x3="55"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="10" x2="-10"/>
+        <polygon x4="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="0" x2="-8" y3="-4" x3="-10" y4="0"/>
+        <terminal x="-10" y="10" orientation="s"/>
+    </description>
+</definition>

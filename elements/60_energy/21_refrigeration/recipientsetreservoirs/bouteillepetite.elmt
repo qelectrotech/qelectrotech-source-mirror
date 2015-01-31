@@ -1,0 +1,27 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">قارورة صغيرة</name>
+        <name lang="el">Μικρή φιάλη</name>
+        <name lang="en">Litle bottle</name>
+        <name lang="it">Bottiglia piccola</name>
+        <name lang="fr">Bouteille petite</name>
+        <name lang="pl">Mała butla</name>
+        <name lang="cs">Malá láhev</name>
+        <name lang="nl">Kleine tank</name>
+    </names>
+    <informations>Rotation possible</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-7" y2="7" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-7" y2="-7" x2="7"/>
+        <arc width="5" x="5" y="-7" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <arc width="5" x="-10" y="-7" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="-4" y="-7" orientation="n"/>
+        <terminal x="-4" y="7" orientation="s"/>
+        <terminal x="4" y="-7" orientation="n"/>
+        <terminal x="4" y="7" orientation="s"/>
+        <terminal x="9" y="-4" orientation="e"/>
+        <terminal x="9" y="4" orientation="e"/>
+    </description>
+</definition>
