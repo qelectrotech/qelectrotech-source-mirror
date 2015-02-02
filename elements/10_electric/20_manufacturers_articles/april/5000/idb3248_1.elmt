@@ -1,6 +1,7 @@
 <definition width="980" version="0.4" hotspot_x="27" hotspot_y="45" height="130" link_type="simple" type="element" orientation="dyyy">
     <names>
         <name lang="en">IDB3248_1</name>
+        <name lang="pl">IDB3248</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
