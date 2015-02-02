@@ -1,8 +1,10 @@
-<definition width="40" version="0.4" hotspot_x="22" hotspot_y="18" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="23" hotspot_y="19" height="40" link_type="simple" type="element" orientation="dyyy">
     <names>
-        <name lang="es">Codo roscar1/2</name>
+        <name lang="en">Elbow 1/2"</name>
         <name lang="it">Gomito filettato 1/2"</name>
+        <name lang="fr">Coude 1/2"</name>
         <name lang="pl">Kolanko gwintowane 1/2"</name>
+        <name lang="es">Codo roscar1/2</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
@@ -23,8 +25,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="12.7767" x1="-11.3517" y2="2.98313" x2="-9.49952"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="12.7767" x1="-10.1169" y2="2.98313" x2="-7.64738"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="12.7767" x1="-12.5864" y2="2.98313" x2="-10.7343"/>
-        <input x="-13" y="23" size="4" rotate="true" text="codo1/2"/>
-        <terminal x="-12.7" y="8.20639" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="3.68" y="-10.075" nameHidden="1" number="" name="" orientation="n"/>
+        <input x="-13" y="23" size="4" rotate="true" text="codo1/2" tagg="label"/>
+        <terminal x="-12.7" y="8.20639" orientation="w"/>
+        <terminal x="3.68" y="-10.075" orientation="n"/>
     </description>
 </definition>

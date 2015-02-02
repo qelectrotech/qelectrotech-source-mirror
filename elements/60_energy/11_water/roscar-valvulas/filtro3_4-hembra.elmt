@@ -1,4 +1,4 @@
-<definition width="60" version="0.4" hotspot_x="27" hotspot_y="36" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="29" hotspot_y="34" height="50" link_type="simple" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مُرشّح بغربال</name>
         <name lang="en">Filter Screens</name>
@@ -32,8 +32,8 @@
         <rect width="7.92" x="-20.6" y="-8.11007" antialias="false" height="20.1101" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="6.864" x="-20.6" y="-5.87563" antialias="false" height="15.6411" style="line-style:dotted;line-weight:normal;filling:none;color:red"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:red" y1="-5.13081" x1="-20.6" y2="9.76556" x2="-18.488"/>
-        <input x="-23" y="17.5" size="9" rotate="true" text="filtro3/4&quot;"/>
-        <terminal x="-20.6" y="0.827747" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="22.696" y="0.827747" nameHidden="0" number="" name="" orientation="e"/>
+        <input x="-23" y="17.5" size="9" rotate="true" text="filtro3/4&quot;" tagg="label"/>
+        <terminal x="-20.6" y="0.827747" orientation="w"/>
+        <terminal x="22.696" y="0.827747" orientation="e"/>
     </description>
 </definition>

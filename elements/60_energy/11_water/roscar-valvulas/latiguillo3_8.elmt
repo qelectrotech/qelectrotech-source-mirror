@@ -1,8 +1,10 @@
-<definition width="50" version="0.4" hotspot_x="17" hotspot_y="30" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="13" hotspot_y="28" height="40" link_type="simple" type="element" orientation="dyyy">
     <names>
-        <name lang="es">Latiguillo 3/8</name>
+        <name lang="en">Flexible tube 3/8"</name>
         <name lang="it">Tubo flessibile 3/8</name>
+        <name lang="fr">Flexible 3/8"</name>
         <name lang="pl">Wąż giętki 3/8"</name>
+        <name lang="es">Latiguillo 3/8</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
@@ -33,8 +35,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.19161" x1="4.7675" y2="1.63994" x2="3.5775"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.53652" x1="8.3375" y2="-7.27983" x2="13.0975"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.56327" x1="5.3625" y2="-2.44829" x2="10.42"/>
-        <input x="-8" y="7" size="4" rotate="true" text="latiguillo 3/8"/>
-        <terminal x="-4.90125" y="-0.299648" nameHidden="1" number="" name="" orientation="w"/>
-        <terminal x="11.75" y="-11.6069" nameHidden="1" number="" name="" orientation="n"/>
+        <input x="-8" y="7" size="4" rotate="true" text="latiguillo 3/8" tagg="label"/>
+        <terminal x="-4.90125" y="-0.299648" orientation="w"/>
+        <terminal x="11.75" y="-11.6069" orientation="n"/>
     </description>
 </definition>

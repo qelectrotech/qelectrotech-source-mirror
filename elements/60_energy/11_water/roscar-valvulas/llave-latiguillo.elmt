@@ -1,8 +1,10 @@
-<definition width="50" version="0.4" hotspot_x="22" hotspot_y="36" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="11" hotspot_y="25" height="60" link_type="simple" type="element" orientation="dyyy">
     <names>
-        <name lang="es">Llave latiguillo</name>
+        <name lang="en">Valve</name>
         <name lang="it">Valvola</name>
+        <name lang="fr">Soupape</name>
         <name lang="pl">Zawór</name>
+        <name lang="es">Llave latiguillo</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
@@ -37,8 +39,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.37242" x1="9" y2="4.66861" x2="7.5"/>
         <rect width="9.5" x="-4" y="-11.5337" antialias="false" height="1.94428" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.7009" x1="-4.5" y2="-6.99709" x2="-4.5"/>
-        <input x="-16" y="-24" size="4" rotate="true" text="llave latiguillo"/>
-        <terminal x="12.5" y="0.131947" nameHidden="1" number="" name="" orientation="e"/>
-        <terminal x="0.5" y="26.7038" nameHidden="1" number="" name="" orientation="s"/>
+        <input x="-16" y="-24" size="4" rotate="true" text="llave latiguillo" tagg="label"/>
+        <terminal x="12.5" y="0.131947" orientation="e"/>
+        <terminal x="0.5" y="26.7038" orientation="s"/>
     </description>
 </definition>

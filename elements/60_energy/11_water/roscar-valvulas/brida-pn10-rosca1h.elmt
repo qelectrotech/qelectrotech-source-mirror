@@ -1,8 +1,10 @@
-<definition width="30" version="0.4" hotspot_x="14" hotspot_y="18" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="20" version="0.4" hotspot_x="12" hotspot_y="19" height="40" link_type="simple" type="element" orientation="dyyy">
     <names>
-        <name lang="es">BridaPN10-1"H</name>
+        <name lang="en">Flange PN 10-1"</name>
         <name lang="it">Flangia PN10-1" F</name>
+        <name lang="fr">Bride PN 10-1"</name>
         <name lang="pl">Kołnierz PN 10-1"</name>
+        <name lang="es">BridaPN10-1"H</name>
     </names>
     <informations></informations>
     <description>
@@ -17,8 +19,8 @@
         <rect width="6.32225" x="-6.6" y="-3.95312" antialias="false" height="9.2696" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="2.662" x="-0.27775" y="-13.3764" antialias="false" height="27.3764" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:red" y1="-8.46849" x1="-0.27775" y2="-8.46849" x2="2.0515"/>
-        <input x="-9" y="20" size="4" rotate="true" text="Brida"/>
-        <terminal x="-7" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="3" y="0" nameHidden="1" number="" name="" orientation="e"/>
+        <input x="-9" y="20" size="4" rotate="true" text="Brida" tagg="label"/>
+        <terminal x="-7" y="0" orientation="w"/>
+        <terminal x="3" y="0" orientation="e"/>
     </description>
 </definition>

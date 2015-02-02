@@ -1,8 +1,10 @@
-<definition width="60" version="0.4" hotspot_x="15" hotspot_y="34" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="34" height="50" link_type="simple" type="element" orientation="dyyy">
     <names>
-        <name lang="es">Grupo seguridad termo3/4</name>
+        <name lang="en">Safety group 3/4</name>
         <name lang="it">Gruppo di sicurezza termo 3/4</name>
+        <name lang="fr">Groupe de securité 3/4</name>
         <name lang="pl">Zawór bezpieczeństwa 3/4"</name>
+        <name lang="es">Grupo seguridad termo3/4</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
@@ -29,8 +31,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-10" y2="-14" x2="-8"/>
         <rect width="3" x="-1" y="-16" antialias="false" height="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="-2" y="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="5"/>
-        <input x="11" y="-9" size="4" rotate="true" text="grupo&#xa;termo 3/4&quot;"/>
-        <terminal x="0.376" y="11.1004" nameHidden="1" number="" name="" orientation="s"/>
-        <terminal x="1" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <input x="11" y="-9" size="4" rotate="true" text="grupo&#xa;termo 3/4&quot;" tagg="label"/>
+        <terminal x="0.376" y="11.1004" orientation="s"/>
+        <terminal x="1" y="-30" orientation="n"/>
     </description>
 </definition>

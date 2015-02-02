@@ -1,8 +1,10 @@
-<definition width="60" version="0.4" hotspot_x="25" hotspot_y="59" height="90" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="25" hotspot_y="60" height="80" link_type="simple" type="element" orientation="dyyy">
     <names>
-        <name lang="es">Valv compuerta 1!</name>
+        <name lang="en">Valve</name>
         <name lang="it">Valvola di regolazione 1"</name>
+        <name lang="fr">Vanne</name>
         <name lang="pl">Zawór regulacyjny 1"</name>
+        <name lang="es">Valv compuerta 1!</name>
     </names>
     <informations></informations>
     <description>
@@ -35,8 +37,8 @@
         <rect width="9.1" x="0.529978" y="-39.2681" antialias="false" height="7.44065" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.6563" x1="-3.96039" y2="-20.3852" x2="-3.96039"/>
         <rect width="24.2242" x="-7.35606" y="-23.9968" antialias="false" height="2.60423" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-21" y="19" size="4" rotate="true" text="valv.compuerta1&quot;"/>
-        <terminal x="-20.8333" y="-1.79741" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="31.5782" y="-1.79741" nameHidden="0" number="" name="" orientation="e"/>
+        <input x="-21" y="19" size="4" rotate="true" text="valv.compuerta1&quot;" tagg="label"/>
+        <terminal x="-20.8333" y="-1.79741" orientation="w"/>
+        <terminal x="31.5782" y="-1.79741" orientation="e"/>
     </description>
 </definition>
