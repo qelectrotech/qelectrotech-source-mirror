@@ -1,7 +1,8 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="29" height="70" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="es">Tapon 3/4</name>
+        <name lang="es">Tapon 1</name>
         <name lang="it">Tappo 1"</name>
+        <name lang="pl">Korek 1"</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
