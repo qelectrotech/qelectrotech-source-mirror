@@ -1,6 +1,7 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="14" height="20" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="es">LLave vivenda</name>
+        <name lang="pl">Zawór basenowy</name>
         <name lang="it">Valvola</name>
     </names>
     <informations>Rafael Ferrando.
