@@ -3,7 +3,8 @@
         <name lang="en">Inverter</name>
         <name lang="de">Wechselrichter</name>
         <name lang="fr">Onduleur</name>
-        <name lang="it">Falownik</name>
+        <name lang="it">Inverter</name>
+        <name lang="pl">Falownik</name>
         <name lang="cs">Střídač</name>
     </names>
     <informations>Author: Arun Kishore Eswara
