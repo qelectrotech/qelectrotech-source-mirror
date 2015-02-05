@@ -8,5 +8,6 @@
         <name lang="cs">Elektrogenerátorové skupiny</name>
         <name lang="pl">Rezerwowe źródła zasilania</name>
         <name lang="ru">Генераторы с двигателями</name>
+        <name lang="nl">Stromaggregaten</name>
     </names>
 </qet-directory>
