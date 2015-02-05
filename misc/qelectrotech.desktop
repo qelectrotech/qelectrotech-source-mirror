@@ -1,6 +1,5 @@
 [Desktop Entry]
 Version=1.0
-Encoding=UTF-8
 Name=QElectroTech 
 TryExec=qelectrotech
 Exec=qelectrotech %F
@@ -9,6 +8,7 @@ Terminal=false
 Type=Application
 MimeType=application/x-qet-project;application/x-qet-element;application/x-qet-titleblock;
 Categories=Office;Qt;Graphics;2DGraphics;VectorGraphics;Education;Science;Electricity;Engineering;
+Keywords=Graphics;Science;Electricity;Engineering;
 Comment=Edit electrical diagrams.
 Comment[de]=Zeichenprogramm für Schaltpläne
 Comment[fr]=Éditer des schémas électriques.
