@@ -3,6 +3,7 @@
         <name lang="en">Emergency stop trip switches NC+NO</name>
         <name lang="de">Taster Öffner/Schliesser</name>
         <name lang="fr">Arret d'urgence cable NC+NO</name>
+        <name lang="pl">Wyłącznik bezpieczeństwa</name>
         <name lang="it">Arresto d'emergenza a cavo NC+NO</name>
     </names>
     <informations></informations>

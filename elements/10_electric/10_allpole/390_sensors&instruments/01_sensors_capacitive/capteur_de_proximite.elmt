@@ -4,6 +4,7 @@
         <name lang="de" >Näherungsschalter Schliesser</name>
         <name lang="fr" >Capteur de proximité NO</name>
         <name lang="es" >Final de carrera</name>
+        <name lang="pl">Czujnik zbliżeniowy</name>
         <name lang="it">Sensore di prossimità</name>
     </names>
     <description>
