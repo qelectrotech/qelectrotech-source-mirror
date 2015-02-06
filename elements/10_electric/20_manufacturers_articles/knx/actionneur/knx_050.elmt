@@ -1,7 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Shutter actuator, 2-fold</name>
-        <name lang="it">Attuatore tapparella, 2 vie</name>
+        <name lang="it">Attuatore tapparella, 2 can</name>
         <name lang="fr">Commande de l'obturateur, deux canaux</name>
         <name lang="pl">Sterownik żaluzji, dwukanałowy</name>
         <name lang="es">Accionador de obturación, 2 vias</name>

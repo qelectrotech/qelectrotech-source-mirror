@@ -1,7 +1,7 @@
 <definition width="70" version="0.4" hotspot_x="28" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">IR-Rec/Dec with 4-fold PB</name>
-        <name lang="it">Ric. IR/Decoder, pulsante 4 vie</name>
+        <name lang="it">Ric. IR/Decoder + pulsante 4 can</name>
         <name lang="fr">Recepteur/decodeur IR 4 sorties</name>
         <name lang="pl">Nadajnik / dekoder podczerwieni, czterokanałowy</name>
         <name lang="es">IR Receptor/decodificador 4 salidas</name>

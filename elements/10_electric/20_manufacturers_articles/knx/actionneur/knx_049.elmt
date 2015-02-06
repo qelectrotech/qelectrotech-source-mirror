@@ -1,7 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Shutter actuator, single</name>
-        <name lang="it">Attuatore tapparella, 1 via</name>
+        <name lang="it">Attuatore tapparella, 1 can</name>
         <name lang="fr">Actionneur d'obturation</name>
         <name lang="pl">Sterownik żaluzji</name>
         <name lang="es">Accionador de obturación, 1 via</name>
