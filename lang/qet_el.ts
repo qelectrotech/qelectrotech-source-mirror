@@ -4664,7 +4664,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
         <source>Les éléments maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Τα κύρια, βοηθητικά, απλά στοιχεία και οι αναφορές σελίδας πρέπει να εμπεριέχουν ένα πεδίο κειμένου με ετικέτα &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="700"/>
