@@ -1,0 +1,37 @@
+<definition width="140" version="0.4" hotspot_x="20" hotspot_y="32" height="520" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Terminal_5G1</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <ellipse width="8" x="108" y="151" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="83.182" x="20.0419" y="-20.5764" antialias="false" height="90.8236" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="262.482" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="52.0794" y2="181.758" x2="52.0794"/>
+        <text x="87.5994" y="120.2" size="9" rotation="270" text="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.5764" x1="61.83" y2="70.2471" x2="61.83"/>
+        <input x="52.149" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <text x="45.8112" y="120.2" size="9" rotation="270" text="2"/>
+        <input x="94.2155" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="93.8676" y2="181.758" x2="93.8676"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="72.9735" y2="181.758" x2="72.9735"/>
+        <input x="74.6451" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.5764" x1="83.0027" y2="70.2471" x2="83.0027"/>
+        <text x="66.0088" y="120.2" size="9" rotation="270" text="3"/>
+        <rect width="36.0381" x="-15.9962" y="-26.8509" antialias="false" height="102.281" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="32.5783" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.5764" x1="40.9359" y2="70.2471" x2="40.9359"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="31.1854" y2="181.758" x2="31.1854"/>
+        <text x="24.2207" y="120.2" size="9" rotation="270" text="1"/>
+        <input x="2" y="42" size="14" rotation="270" rotate="true" text="1A1" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="181.758" x1="29.9568" y2="181.758" x2="92.5996"/>
+        <rect width="18.7744" x="65.17" y="323.751" antialias="false" height="85.7592" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="323.357" x1="72.692" y2="182.203" x2="72.692"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="409.805" x1="74.01" y2="481.796" x2="74.01"/>
+        <input x="62" y="258" size="9" rotation="270" rotate="true" text="5 G1" tagg="none"/>
+        <input x="75.478" y="378.436" size="9" rotation="270" rotate="true" text="1P1" tagg="none"/>
+        <input x="70" y="578" size="9" rotation="270" rotate="true" text="_" tagg="none"/>
+        <polygon x4="92.93" y5="181.76" x5="92.93" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="153" x1="111.899" y2="181.76" x2="111.899" y3="181.76" x3="92.93" y4="181.76"/>
+    </description>
+</definition>

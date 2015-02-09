@@ -1,0 +1,44 @@
+<definition width="180" version="0.4" hotspot_x="18" hotspot_y="32" height="520" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Terminal_7G1</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <ellipse width="8" x="151.133" y="149.688" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="126.182" x="20.0419" y="-20.5764" antialias="false" height="90.8236" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="135.656" y2="181.758" x2="135.656"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="52.0794" y2="181.758" x2="52.0794"/>
+        <text x="87.5994" y="120.2" size="9" rotation="270" text="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.5764" x1="61.83" y2="70.2471" x2="61.83"/>
+        <input x="52.149" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <text x="45.8112" y="120.2" size="9" rotation="270" text="2"/>
+        <input x="136.282" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <input x="94.2155" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="93.8676" y2="181.758" x2="93.8676"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.5764" x1="103.897" y2="70.2471" x2="103.897"/>
+        <input x="116.712" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="72.9735" y2="181.758" x2="72.9735"/>
+        <text x="129.387" y="120.2" size="9" rotation="270" text="6"/>
+        <input x="74.6451" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.5764" x1="125.07" y2="70.2471" x2="125.07"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.5764" x1="83.0027" y2="70.2471" x2="83.0027"/>
+        <text x="66.0088" y="120.2" size="9" rotation="270" text="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="114.762" y2="181.758" x2="114.762"/>
+        <text x="107.797" y="120.2" size="9" rotation="270" text="5"/>
+        <rect width="36.0381" x="-15.9962" y="-26.8509" antialias="false" height="102.281" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="32.5783" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.5764" x1="40.9359" y2="70.2471" x2="40.9359"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="31.1854" y2="181.758" x2="31.1854"/>
+        <text x="24.2207" y="120.2" size="9" rotation="270" text="1"/>
+        <input x="2" y="42" size="14" rotation="270" rotate="true" text="1A1" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="181.758" x1="30.4687" y2="181.758" x2="136.045"/>
+        <rect width="18.7744" x="86.17" y="323.751" antialias="false" height="85.7592" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="323.357" x1="93.692" y2="182.203" x2="93.692"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="409.805" x1="95.01" y2="481.796" x2="95.01"/>
+        <input x="83" y="258" size="9" rotation="270" rotate="true" text="7 G1" tagg="none"/>
+        <input x="96.478" y="378.436" size="9" rotation="270" rotate="true" text="1P1" tagg="none"/>
+        <input x="91" y="579" size="9" rotation="270" rotate="true" text="_" tagg="none"/>
+        <polygon x4="135.93" y5="181.76" x5="135.93" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="153" x1="154.899" y2="181.76" x2="154.899" y3="181.76" x3="135.93" y4="181.76"/>
+    </description>
+</definition>
