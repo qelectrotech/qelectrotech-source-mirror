@@ -51,7 +51,8 @@ bool ESEventAddPolygon::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 
 		//create new polygon
 		if (!m_polygon) {
-			m_polygon = new PartPolygon(m_editor, 0, m_scene);
+			m_polygon = new PartPolygon(m_editor);
+			m_scene -> addItem(m_polygon);
 			m_polygon -> addPoint(pos);
 		}
 

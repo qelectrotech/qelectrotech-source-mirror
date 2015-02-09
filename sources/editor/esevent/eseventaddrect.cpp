@@ -44,23 +44,29 @@ ESEventAddRect::~ESEventAddRect() {
  * @param event
  * @return
  */
-bool ESEventAddRect::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-	if (event -> button() == Qt::LeftButton) {
+bool ESEventAddRect::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (event -> button() == Qt::LeftButton)
+	{
 		if(!m_running) m_running = true;
 		QPointF pos = m_scene->snapToGrid(event -> scenePos());
 
-		//create new rectangle
-		if (!m_rect) {
-			m_rect = new PartRectangle(m_editor, 0, m_scene);
+			//create new rectangle, pos isn't define,
+			//so m_rect.pos = 0,0 , that mean event.scenePos is in same coordinate of item
+			//we don't need to map point for m_rect
+		if (!m_rect)
+		{
+			m_rect = new PartRectangle(m_editor);
+			m_scene -> addItem(m_rect);
 			m_rect -> setRect(QRectF(pos, pos));
 			return true;
 		}
 
-		//Add rectangle to scene
+			//Add rectangle to scene
 		m_rect  -> setRect(m_rect -> rect().normalized());
 		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Rectangle"), m_scene, m_rect));
 
-		//Set m_rect to nullptr for create new rectangle at next mouse press
+			//Set m_rect to nullptr for create new rectangle at next mouse press
 		m_rect = nullptr;
 
 		return true;
@@ -77,7 +83,7 @@ bool ESEventAddRect::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	updateHelpCross(event -> scenePos());
 	if (!m_rect) return false;
 
-	QRectF rect(m_rect -> rect().topLeft(), m_scene->snapToGrid(event -> scenePos()));
+	QRectF rect(m_rect->rectTopLeft(), m_scene->snapToGrid(event -> scenePos()));
 	m_rect -> setRect(rect);
 	return true;
 }

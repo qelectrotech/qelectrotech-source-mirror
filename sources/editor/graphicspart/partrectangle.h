@@ -17,65 +17,69 @@
 */
 #ifndef PART_RECTANGLE_H
 #define PART_RECTANGLE_H
-#include <QtGui>
-#include "customelementgraphicpart.h"
-/**
-	This class represents a rectangle primitive which may be used to compose the
-	drawing of an electrical element within the element editor.
-*/
-class PartRectangle :  public CustomElementGraphicPart, public QGraphicsRectItem {
-	Q_OBJECT
-	// constructors, destructor
-	public:
-	PartRectangle(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
-	virtual ~PartRectangle();
-	
-	private:
-	PartRectangle(const PartRectangle &);
-	
-	// methods
-	public:
-	enum { Type = UserType + 1109 };
-	/**
-		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
-		PartRectangle.
-		@return the QGraphicsItem type
-	*/
-	virtual int type() const { return Type; }
-	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
-	virtual QString name() const { return(QObject::tr("rectangle", "element part name")); }
-	virtual QString xmlName() const { return(QString("rect")); }
-	virtual const QDomElement toXml(QDomDocument &) const;
-	virtual void fromXml(const QDomElement &);
-	virtual QPointF sceneTopLeft() const;
-	virtual QRectF boundingRect() const;
-	virtual bool isUseless() const;
-	virtual QRectF sceneGeometricRect() const;
-	virtual void startUserTransformation(const QRectF &);
-	virtual void handleUserTransformation(const QRectF &, const QRectF &);
 
-	///PROPERTY
-	// X value
-	Q_PROPERTY(qreal x READ x WRITE setX)
-		qreal x() const {return mapToScene(rect().topLeft()).x();}
-		void setX(qreal x);
-	// Y value
-	Q_PROPERTY(qreal y READ y WRITE setY)
-		qreal y() const {return mapToScene(rect().topLeft()).y();}
-		void setY(qreal y);
-	// Width value
-	Q_PROPERTY(qreal width READ width WRITE setWidth)
-		qreal width() const {return rect().width();}
-		void setWidth(qreal w);
-	// Height value
-	Q_PROPERTY(qreal height READ height WRITE setHeight)
-		qreal height() const { return rect().height();}
-		void setHeight(qreal h);
-	
-	protected:
-	QVariant itemChange(GraphicsItemChange, const QVariant &);
+#include "customelementgraphicpart.h"
+
+/**
+ * This class represents a rectangle primitive which may be used to compose the
+ * drawing of an electrical element within the element editor.
+ * All coordinates is in item coordinate, except pos()
+*/
+class PartRectangle :  public CustomElementGraphicPart
+{
+		Q_OBJECT
+
+		Q_PROPERTY(QPointF rectTopLeft READ rectTopLeft WRITE setRectTopLeft)
+		Q_PROPERTY(qreal width         READ width       WRITE setWidth)
+		Q_PROPERTY(qreal height        READ height      WRITE setHeight)
+
+		// constructors, destructor
+	public:
+		PartRectangle(QETElementEditor *, QGraphicsItem *parent = 0);
+		virtual ~PartRectangle();
 	
 	private:
-	QList<QPointF> saved_points_;
+		PartRectangle(const PartRectangle &);
+	
+		// methods
+	public:
+		enum { Type = UserType + 1109 };
+			/**
+			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartRectangle.
+			 * @return the QGraphicsItem type
+			 */
+		virtual int     type  () const { return Type; }
+		virtual void    paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+		virtual QString name  () const { return(QObject::tr("rectangle", "element part name")); }
+
+		virtual QString           xmlName () const { return(QString("rect")); }
+		virtual const QDomElement toXml   (QDomDocument &) const;
+		virtual void              fromXml (const QDomElement &);
+
+		QRectF rect() const;
+		void   setRect(const QRectF &rect);
+
+		QPointF rectTopLeft    () const;
+		void    setRectTopLeft (const QPointF &point);
+
+		qreal width    () const {return rect().width();}
+		void  setWidth (qreal w);
+
+		qreal height    () const { return rect().height();}
+		void  setHeight (qreal h);
+
+		virtual QRectF  sceneGeometricRect() const;
+		virtual QPointF sceneTopLeft() const;
+
+		virtual QPainterPath shape () const;
+		virtual QRectF boundingRect() const;
+		virtual bool   isUseless() const;
+
+		virtual void startUserTransformation(const QRectF &);
+		virtual void handleUserTransformation(const QRectF &, const QRectF &);
+	
+	private:
+		QRectF m_rect;
+		QList<QPointF> saved_points_;
 };
 #endif

@@ -17,67 +17,59 @@
 */
 #ifndef PART_TERMINAL_H
 #define PART_TERMINAL_H
+
 #include "customelementgraphicpart.h"
-#include "qet.h"
-#include <QtGui>
+
 /**
 	This class represents a terminal which may be used to compose the drawing of
 	an electrical element within the element editor.
 */
-class PartTerminal : public CustomElementGraphicPart, public QGraphicsItem {
-	Q_OBJECT
-	public:
-	// constructors, destructor
-	PartTerminal(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
-	virtual ~PartTerminal();
-	private:
-	PartTerminal(const PartTerminal &);
-	
-	// attributes
-	private:
-	Qet::Orientation m_orientation;
-	QPointF second_point;
-	
-	// methods
-	public:
-	enum { Type = UserType + 1106 };
-	/**
-		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
-		PartTerminal.
-		@return the QGraphicsItem type
-	*/
-	virtual int type() const { return Type; }
-	virtual QString name() const { return(QObject::tr("borne", "element part name")); }
-	virtual QString xmlName() const { return(QString("terminal")); }
-	virtual void fromXml(const QDomElement &);
-	virtual const QDomElement toXml(QDomDocument &) const;
-	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-	virtual QRectF boundingRect() const;
-	
-	/*virtual void setProperty(const QString &, const QVariant &);
-	virtual QVariant property(const QString &);*/
-	virtual bool isUseless() const;
-	virtual QRectF sceneGeometricRect() const;
-	virtual void startUserTransformation(const QRectF &);
-	virtual void handleUserTransformation(const QRectF &, const QRectF &);
+class PartTerminal : public CustomElementGraphicPart
+{
+		Q_OBJECT
 
-	///PROPERTY
-	// X value
-	Q_PROPERTY(qreal x READ x WRITE setX)
-	// Y value
-	Q_PROPERTY(qreal y READ y WRITE setY)
-	// Horientation value
-	Q_PROPERTY(Qet::Orientation orientation READ orientation WRITE setOrientation)
+		Q_PROPERTY(Qet::Orientation orientation READ orientation WRITE setOrientation)
+
+	public:
+		// constructors, destructor
+		PartTerminal(QETElementEditor *editor, QGraphicsItem *parent = 0);
+		virtual ~PartTerminal();
+	private:
+		PartTerminal(const PartTerminal &);
+	
+		// attributes
+	private:
+		Qet::Orientation m_orientation;
+		QPointF second_point;
+	
+		// methods
+	public:
+		enum { Type = UserType + 1106 };
+			/**
+			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartTerminal.
+			 * @return the QGraphicsItem type
+			 */
+		virtual int type() const { return Type; }
+		virtual QString name() const { return(QObject::tr("borne", "element part name")); }
+		virtual QString xmlName() const { return(QString("terminal")); }
+		virtual void fromXml(const QDomElement &);
+		virtual const QDomElement toXml(QDomDocument &) const;
+		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+
+		virtual QPainterPath shape() const;
+		virtual QRectF boundingRect() const;
+		virtual bool isUseless() const;
+		virtual QRectF sceneGeometricRect() const;
+		virtual void startUserTransformation(const QRectF &);
+		virtual void handleUserTransformation(const QRectF &, const QRectF &);
+
 		Qet::Orientation orientation() const {return m_orientation;}
 		void setOrientation(Qet::Orientation ori);
 	
-	protected:
-	QVariant itemChange(GraphicsItemChange, const QVariant &);
+	private:
+		void updateSecondPoint();
 	
 	private:
-	void updateSecondPoint();
-	
-	private:
-	QPointF saved_position_;
+		QPointF saved_position_;
 };
 #endif

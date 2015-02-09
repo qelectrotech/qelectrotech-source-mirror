@@ -57,8 +57,10 @@ bool ESEventAddLine::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 
 		//Create new line
 		if (!m_line) {
-			m_line = new PartLine(m_editor, 0, m_scene);
-			m_line  -> setLine(QLineF(pos, pos));
+			m_line = new PartLine(m_editor);
+			m_scene -> addItem(m_line);
+			m_line -> setP1(pos);
+			m_line -> setP2(pos);
 			return true;
 		}
 

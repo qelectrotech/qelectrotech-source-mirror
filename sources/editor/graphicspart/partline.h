@@ -17,7 +17,7 @@
 */
 #ifndef PART_LINE_H
 #define PART_LINE_H
-#include <QtGui>
+
 #include "customelementgraphicpart.h"
 #include "qet.h"
 /**
@@ -29,11 +29,20 @@
 	drawn if the required length for their drawing is longer than the line itself.
 	In case there is room for a single end only, the first one get priority.
 */
-class PartLine : public CustomElementGraphicPart, public QGraphicsLineItem  {
-	Q_OBJECT
+class PartLine : public CustomElementGraphicPart
+{
+		Q_OBJECT
+
+		Q_PROPERTY(QPointF p1 READ p1 WRITE setP1)
+		Q_PROPERTY(QPointF p2 READ p2 WRITE setP2)
+		Q_PROPERTY(Qet::EndType end1 READ firstEndType WRITE setFirstEndType)
+		Q_PROPERTY(Qet::EndType end2 READ secondEndType WRITE setSecondEndType)
+		Q_PROPERTY(qreal length1 READ firstEndLength WRITE setFirstEndLength)
+		Q_PROPERTY(qreal length2 READ secondEndLength WRITE setSecondEndLength)
+
 	// constructors, destructor
 	public:
-	PartLine(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
+	PartLine(QETElementEditor *, QGraphicsItem * = 0);
 	virtual ~PartLine();
 	
 	private:
@@ -41,95 +50,60 @@ class PartLine : public CustomElementGraphicPart, public QGraphicsLineItem  {
 	
 	// attributes
 	private:
-	Qet::EndType first_end;
-	qreal first_length;
-	Qet::EndType second_end;
-	qreal second_length;
-	QList<QPointF> saved_points_;
+
 	
 	// methods
 	public:
-	enum { Type = UserType + 1104 };
+		enum { Type = UserType + 1104 };
 	
-	/**
-		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
-		PartLine.
-		@return the QGraphicsItem type
-	*/
-	virtual int type() const { return Type; }
-	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
-	virtual QString name() const { return(QObject::tr("ligne", "element part name")); }
-	virtual QString xmlName() const { return(QString("line")); }
-	virtual const QDomElement toXml(QDomDocument &) const;
-	virtual void fromXml(const QDomElement &);
-	virtual QPointF sceneP1() const;
-	virtual QPointF sceneP2() const;
-	virtual QPainterPath shape() const;
-	virtual QRectF boundingRect() const;
-	virtual bool isUseless() const;
-	virtual QRectF sceneGeometricRect() const;
-	virtual void startUserTransformation(const QRectF &);
-	virtual void handleUserTransformation(const QRectF &, const QRectF &);
-	static uint requiredLengthForEndType(const Qet::EndType &);
-	static QList<QPointF> fourEndPoints(const QPointF &, const QPointF &, const qreal &);
+		 /**
+		  * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartLine.
+		  * @return the QGraphicsItem type
+		  */
+		virtual int type() const { return Type; }
+		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+		virtual QString name() const { return(QObject::tr("ligne", "element part name")); }
+		virtual QString xmlName() const { return(QString("line")); }
+		virtual const QDomElement toXml(QDomDocument &) const;
+		virtual void fromXml(const QDomElement &);
+		virtual QPointF sceneP1() const;
+		virtual QPointF sceneP2() const;
+		virtual QPainterPath shape() const;
+		virtual QRectF boundingRect() const;
+		virtual bool isUseless() const;
+		virtual QRectF sceneGeometricRect() const;
+		virtual void startUserTransformation(const QRectF &);
+		virtual void handleUserTransformation(const QRectF &, const QRectF &);
+		static uint requiredLengthForEndType(const Qet::EndType &);
+		static QList<QPointF> fourEndPoints(const QPointF &, const QPointF &, const qreal &);
 
-	///PROPERTY
-		// X value of the first point
-	Q_PROPERTY(qreal x1 READ x1 WRITE setX1)
-		qreal x1() const {return sceneP1().x();}
-		void setX1(qreal x1);
-
-		// Y value of the first point
-	Q_PROPERTY(qreal y1 READ y1 WRITE setY1)
-		qreal y1() const {return sceneP1().y();}
-		void setY1(qreal y1);
-
-		//pos of firts point
-	Q_PROPERTY(QPointF p1 READ sceneP1 WRITE setP1)
-		void setP1 (QPointF p1);
-
-		// X value of the second point
-	Q_PROPERTY(qreal x2 READ x2 WRITE setX2)
-		qreal x2() const {return sceneP2().x();}
-		void setX2(qreal x2);
-
-		// Y value of the second point
-	Q_PROPERTY(qreal y2 READ y2 WRITE setY2)
-		qreal y2() const {return sceneP2().y();}
-		void setY2(qreal y2);
-
-		//pos of second point
-	Q_PROPERTY(QPointF p2 READ sceneP2 WRITE setP2)
-		void setP2 (QPointF p2);
-
-		// End type of the first point
-	Q_PROPERTY(Qet::EndType end1 READ firstEndType WRITE setFirstEndType)
+		QPointF p1() const;
+		void setP1 (const QPointF &p1);
+		QPointF p2 () const;
+		void setP2 (const QPointF &p2);
 		Qet::EndType firstEndType() const {return first_end;}
 		void setFirstEndType(const Qet::EndType &et) {first_end = et;}
-
-		// End type of the second point
-	Q_PROPERTY(Qet::EndType end2 READ secondEndType WRITE setSecondEndType)
 		Qet::EndType secondEndType() const {return second_end;}
 		void setSecondEndType(const Qet::EndType &et) {second_end = et;}
-
-		// Size of end type of first point
-	Q_PROPERTY(qreal length1 READ firstEndLength WRITE setFirstEndLength)
 		qreal firstEndLength() const {return first_length;}
-		void setFirstEndLength(const qreal &l) {first_length = qMin(qAbs(l), line().length());}
-
-		// Size of end type of the second point
-	Q_PROPERTY(qreal length2 READ secondEndLength WRITE setSecondEndLength)
+		void setFirstEndLength(const qreal &l) {first_length = qMin(qAbs(l), m_line.length());}
 		qreal secondEndLength() const {return second_length;}
-		void setSecondEndLength(const qreal &l) {second_length = qMin(qAbs(l), line().length());}
-
-
-	protected:
-	QVariant itemChange(GraphicsItemChange, const QVariant &);
+		void setSecondEndLength(const qreal &l) {second_length = qMin(qAbs(l), m_line.length());}
 	
 	private:
-	QList<QPointF> fourShapePoints() const;
-	QRectF firstEndCircleRect() const;
-	QRectF secondEndCircleRect() const;
-	void debugPaint(QPainter *);
+		QPainterPath path() const;
+
+		QList<QPointF> fourShapePoints() const;
+		QRectF firstEndCircleRect() const;
+		QRectF secondEndCircleRect() const;
+		void debugPaint(QPainter *);
+
+		Qet::EndType first_end;
+		qreal        first_length;
+
+		Qet::EndType second_end;
+		qreal        second_length;
+		QList<QPointF> saved_points_;
+		QLineF m_line;
 };
 #endif

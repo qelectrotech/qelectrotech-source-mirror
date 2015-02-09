@@ -18,19 +18,22 @@
 #ifndef CUSTOM_ELEMENT_GRAPHIC_PART_H
 #define CUSTOM_ELEMENT_GRAPHIC_PART_H
 
-#include <QObject>
+#include <QGraphicsObject>
 #include "customelementpart.h"
 
 class QETElementEditor;
 class QPainter;
+
 
 /**
  * @brief The CustomElementGraphicPart class
  * This class is the base for all home-made primitive like line, rectangle, ellipse etc....
  * It provides methods and enums to manage style attributes available for primitive (color, pen style, etc...)
  */
-class CustomElementGraphicPart : public QObject, public CustomElementPart
+class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPart
 {
+		#define SHADOWS_HEIGHT 4.0
+
 		Q_OBJECT
 
 			//Made this Q_ENUMS to be used by the Q_PROPERTY system.
@@ -62,8 +65,10 @@ class CustomElementGraphicPart : public QObject, public CustomElementPart
 		// constructors, destructor
 	public:
 
-		CustomElementGraphicPart(QETElementEditor *editor);
+		CustomElementGraphicPart(QETElementEditor *editor, QGraphicsItem *parent = 0);
 		virtual ~CustomElementGraphicPart();
+
+		static void drawCross (const QPointF &center, QPainter *painter);
 
 			//Getter and setter
 		LineStyle lineStyle    () const             {return _linestyle;}
@@ -71,6 +76,7 @@ class CustomElementGraphicPart : public QObject, public CustomElementPart
 
 		LineWeight lineWeight    () const              {return _lineweight;}
 		void       setLineWeight (const LineWeight lw) {_lineweight = lw;}
+		qreal      penWeight     () const;
 
 		Filling filling   () const          {return _filling;}
 		void    setFilling(const Filling f) {_filling = f;}
@@ -92,8 +98,14 @@ class CustomElementGraphicPart : public QObject, public CustomElementPart
 		void stylesFromXml(const QDomElement &);
 		void resetStyles  ();
 		void applyStylesToQPainter(QPainter &) const;
-	
+		void drawShadowShape (QPainter *painter);
+
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value);
+		void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
+
 		// attributes
+		bool m_hovered;
 	private:
 		LineStyle _linestyle;
 		LineWeight _lineweight;

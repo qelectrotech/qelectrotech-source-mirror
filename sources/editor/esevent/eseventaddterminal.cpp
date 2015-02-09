@@ -29,7 +29,8 @@
 ESEventAddTerminal::ESEventAddTerminal(ElementScene *scene) :
 	ESEventInterface(scene)
 {
-	m_terminal = new PartTerminal(m_editor, 0, m_scene);
+	m_terminal = new PartTerminal(m_editor);
+	m_scene -> addItem(m_terminal);
 	m_running  = true;
 }
 
@@ -63,7 +64,8 @@ bool ESEventAddTerminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 
 		//Set new terminal with same rotation
 		Qet::Orientation ori = m_terminal -> orientation();
-		m_terminal = new PartTerminal(m_editor, 0, m_scene);
+		m_terminal = new PartTerminal(m_editor);
+		m_scene -> addItem(m_terminal);
 		m_terminal -> setOrientation(ori);
 		m_terminal -> setPos(m_scene -> snapToGrid(event -> scenePos()));
 

@@ -120,6 +120,22 @@ CustomElementPart *LineEditor::currentPart() const {
 }
 
 /**
+ * @brief LineEditor::editedP1
+ * @return The edited P1 in item coordinate
+ */
+QPointF LineEditor::editedP1() const {
+	return part -> mapFromScene(x1->value(), y1->value());
+}
+
+/**
+ * @brief LineEditor::editedP2
+ * @return The edited P2 in item coordinate
+ */
+QPointF LineEditor::editedP2() const {
+	return part -> mapFromScene(x2->value(), y2->value());
+}
+
+/**
 	Met a jour la ligne a partir des donnees du formulaire
 */
 void LineEditor::updateLine() {
@@ -128,28 +144,18 @@ void LineEditor::updateLine() {
 	part -> setProperty("length1", end1_length -> value());
 	part -> setProperty("end2",	   end2_type   -> itemData(end2_type->currentIndex()));
 	part -> setProperty("length2", end2_length -> value());
-	part -> setLine(
-		QLineF(
-			part -> mapFromScene(
-				x1 -> value(),
-				y1 -> value()
-			),
-			part -> mapFromScene(
-				x2 -> value(),
-				y2 -> value()
-			)
-		)
-	);
+	part -> setProperty("p1", editedP1());
+	part -> setProperty("p2", editedP2());
 }
 
 /// Met a jour l'abscisse du premier point de la ligne et cree un objet d'annulation
-void LineEditor::updateLineX1() { addChangePartCommand(tr("abscisse point 1"),    part, "x1", x1 -> value()); }
+void LineEditor::updateLineX1() { addChangePartCommand(tr("abscisse point 1"),    part, "p1", editedP1()); }
 /// Met a jour l'ordonnee du premier point de la ligne et cree un objet d'annulation
-void LineEditor::updateLineY1() { addChangePartCommand(tr("ordonn\351e point 1"), part, "y1", y1 -> value()); }
+void LineEditor::updateLineY1() { addChangePartCommand(tr("ordonn\351e point 1"), part, "p1", editedP1()); }
 /// Met a jour l'abscisse du second point de la ligne et cree un objet d'annulation
-void LineEditor::updateLineX2() { addChangePartCommand(tr("abscisse point 2"),    part, "x2", x2 -> value()); }
+void LineEditor::updateLineX2() { addChangePartCommand(tr("abscisse point 2"),    part, "p2", editedP2()); }
 /// Met a jour l'ordonnee du second point de la ligne et cree un objet d'annulation
-void LineEditor::updateLineY2() { addChangePartCommand(tr("ordonn\351e point 2"), part, "y2", y2 -> value()); }
+void LineEditor::updateLineY2() { addChangePartCommand(tr("ordonn\351e point 2"), part, "p2", editedP2()); }
 /// Met a jour le type de la premiere extremite
 void LineEditor::updateLineEndType1() {   addChangePartCommand(tr("type fin 1"),     part, "end1",    end1_type -> itemData(end1_type->currentIndex()));   }
 /// Met a jour la longueur de la premiere extremite

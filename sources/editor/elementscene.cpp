@@ -849,15 +849,15 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document, QStri
 				QDomElement qde = n.toElement();
 				if (qde.isNull()) continue;
 				CustomElementPart *cep;
-				if      (qde.tagName() == "line")     cep = new PartLine     (element_editor, 0, 0);
-				else if (qde.tagName() == "rect")     cep = new PartRectangle(element_editor, 0, 0);
-				else if (qde.tagName() == "ellipse")  cep = new PartEllipse  (element_editor, 0, 0);
-				else if (qde.tagName() == "circle")   cep = new PartEllipse  (element_editor, 0, 0);
-				else if (qde.tagName() == "polygon")  cep = new PartPolygon  (element_editor, 0, 0);
-				else if (qde.tagName() == "terminal") cep = new PartTerminal (element_editor, 0, 0);
-				else if (qde.tagName() == "text")     cep = new PartText     (element_editor, 0, 0);
-				else if (qde.tagName() == "input")    cep = new PartTextField(element_editor, 0, 0);
-				else if (qde.tagName() == "arc")      cep = new PartArc      (element_editor, 0, 0);
+				if      (qde.tagName() == "line")     cep = new PartLine     (element_editor);
+				else if (qde.tagName() == "rect")     cep = new PartRectangle(element_editor);
+				else if (qde.tagName() == "ellipse")  cep = new PartEllipse  (element_editor);
+				else if (qde.tagName() == "circle")   cep = new PartEllipse  (element_editor);
+				else if (qde.tagName() == "polygon")  cep = new PartPolygon  (element_editor);
+				else if (qde.tagName() == "terminal") cep = new PartTerminal (element_editor);
+				else if (qde.tagName() == "text")     cep = new PartText     (element_editor);
+				else if (qde.tagName() == "input")    cep = new PartTextField(element_editor);
+				else if (qde.tagName() == "arc")      cep = new PartArc      (element_editor);
 				else continue;
 				if (QGraphicsItem *qgi = dynamic_cast<QGraphicsItem *>(cep)) {
 					if (!qgi -> zValue()) qgi -> setZValue(z++);

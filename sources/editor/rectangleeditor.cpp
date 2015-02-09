@@ -98,24 +98,31 @@ CustomElementPart *RectangleEditor::currentPart() const {
 }
 
 /**
+ * @brief RectangleEditor::topLeft
+ * @return The edited topLeft already mapped to part coordinate
+ */
+QPointF RectangleEditor::editedTopLeft() const {
+	return part -> mapFromScene(x->value(), y->value());
+}
+
+/**
 	Met a jour le rectangle a partir des donnees du formulaire
 */
 void RectangleEditor::updateRectangle() {
 	if (!part) return;
-	part -> setProperty("x",      x -> value());
-	part -> setProperty("y",      y -> value());
+	part -> setProperty("rectTopLeft", editedTopLeft());
 	part -> setProperty("width",  w -> value());
 	part -> setProperty("height", h -> value());
 }
 
 /// Met a jour l'abscisse du coin superieur gauche du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleX() { addChangePartCommand(tr("abscisse"),               part, "x",           x  -> value());       }
+void RectangleEditor::updateRectangleX() { addChangePartCommand(tr("abscisse"),               part, "rectTopLeft", editedTopLeft());}
 /// Met a jour l'ordonnee du coin superieur gauche du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleY() { addChangePartCommand(tr("ordonn\351e"),            part, "y",           y  -> value());       }
+void RectangleEditor::updateRectangleY() { addChangePartCommand(tr("ordonn\351e"),            part, "rectTopLeft", editedTopLeft());}
 /// Met a jour la largeur du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleW() { addChangePartCommand(tr("largeur"),                part, "width",       w  -> value());       }
+void RectangleEditor::updateRectangleW() { addChangePartCommand(tr("largeur"),                part, "width",       w  -> value());}
 /// Met a jour la hauteur du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleH() { addChangePartCommand(tr("hauteur"),                part, "height",      h  -> value());       }
+void RectangleEditor::updateRectangleH() { addChangePartCommand(tr("hauteur"),                part, "height",      h  -> value());}
 
 /**
 	Met a jour le formulaire d'edition
@@ -123,8 +130,9 @@ void RectangleEditor::updateRectangleH() { addChangePartCommand(tr("hauteur"),  
 void RectangleEditor::updateForm() {
 	if (!part) return;
 	activeConnections(false);
-	x->setValue(part->property("x").toReal());
-	y->setValue(part->property("y").toReal());
+	QPointF p = part->mapToScene(part->property("rectTopLeft").toPointF());
+	x->setValue(p.x());
+	y->setValue(p.y());
 	w->setValue(part->property("width").toReal());
 	h->setValue(part->property("height").toReal());
 	activeConnections(true);

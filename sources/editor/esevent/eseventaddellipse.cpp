@@ -50,19 +50,20 @@ bool ESEventAddEllipse::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 		if(!m_running) m_running = true;
 		QPointF pos = m_scene->snapToGrid(event -> scenePos());
 
-		//create new ellpise
+			//create new ellpise
 		if (!m_ellipse) {
-			m_ellipse = new PartEllipse(m_editor, 0, m_scene);
-			m_ellipse -> setRect(QRectF(pos, pos));
-			m_origin = pos;
+			m_ellipse = new PartEllipse(m_editor);
+			m_scene -> addItem(m_ellipse);
+			m_ellipse -> setPos(pos);
+			m_origin = m_new_pos = pos;
 			return true;
 		}
 
-		//Add ellipse to scene
-		m_ellipse  -> setRect(m_ellipse -> rect().normalized());
+			//Add ellipse to scene
+		m_ellipse -> setRect(m_ellipse -> rect().normalized());
 		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Ellipse"), m_scene, m_ellipse));
 
-		//Set m_ellipse to nullptr for create new ellipse at next mouse press
+			//Set m_ellipse to nullptr for create new ellipse at next mouse press
 		m_ellipse = nullptr;
 
 		return true;
@@ -79,15 +80,16 @@ bool ESEventAddEllipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	updateHelpCross(event -> scenePos());
 	if (!m_ellipse) return false;
 
-	QPointF mouse_pos = m_scene -> snapToGrid(event -> scenePos());
+	QPointF pos = m_scene -> snapToGrid(event -> scenePos());
+	if (pos == m_new_pos) return true;
+	m_new_pos = pos;
 
-	qreal width  = (mouse_pos.x() - m_origin.x())*2;
-	qreal height = (mouse_pos.y() - m_origin.y())*2;
+	qreal width  = (m_new_pos.x() - m_origin.x())*2;
+	qreal height = (m_new_pos.y() - m_origin.y())*2;
+		//calculates the position of the rectangle so that its center is at position (0,0) of m_ellipse
+	QPointF center(-width/2, -height/2);
 
-	QPointF pos(m_origin.x() - width/2,
-				m_origin.y() - height/2);
-
-	m_ellipse -> setRect(QRectF(pos, QSizeF(width, height)));
+	m_ellipse -> setRect(QRectF(center, QSizeF(width, height)));
 	return true;
 }
 

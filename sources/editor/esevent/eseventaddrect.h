@@ -19,6 +19,7 @@
 #define ESEVENTADDRECT_H
 
 #include "eseventinterface.h"
+#include <QPointF>
 
 class ElementScene;
 class PartRectangle;

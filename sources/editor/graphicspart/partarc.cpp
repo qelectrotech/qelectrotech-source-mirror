@@ -18,68 +18,68 @@
 #include "partarc.h"
 
 /**
-	Constructeur
-	@param editor L'editeur d'element concerne
-	@param parent Le QGraphicsItem parent de cet arc
-	@param scene La scene sur laquelle figure cet arc
-*/
-PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
-	CustomElementGraphicPart(editor),
-	QGraphicsEllipseItem(parent, scene),
-	_angle(-90),
-	start_angle(0)
+ * @brief PartArc::PartArc
+ * Constructor
+ * @param editor : QETElementEditor of this part
+ * @param parent : parent item
+ */
+PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent) :
+	AbstractPartEllipse(editor, parent)
 {
-	setFlags(QGraphicsItem::ItemIsSelectable);
-#if QT_VERSION >= 0x040600
-	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
-#endif
-	setAcceptedMouseButtons(Qt::LeftButton);
-}
-
-/// Destructeur
-PartArc::~PartArc() {
+	m_start_angle = 0;
+	m_span_angle = -1440;
 }
 
 /**
-	Dessine l'arc de cercle
-	@param painter QPainter a utiliser pour rendre le dessin
-	@param options Options pour affiner le rendu
-	@param widget Widget sur lequel le rendu est effectue
-*/
-void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+ * @brief PartArc::~PartArc
+ * Destructor
+ */
+PartArc::~PartArc() {}
+
+/**
+ * @brief PartArc::paint
+ * Draw this arc
+ * @param painter
+ * @param options
+ * @param widget
+ */
+void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
+{
 	Q_UNUSED(widget);
+
 	applyStylesToQPainter(*painter);
-	// enleve systematiquement la couleur de fond
+
+		//Always remove the brush
 	painter -> setBrush(Qt::NoBrush);
 	QPen t = painter -> pen();
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
 	painter -> setPen(t);
 	
-	if (isSelected()) {
-		// dessine l'ellipse en noir
+	if (isSelected())
+	{
+			//Draw the ellipse in black
 		painter -> drawEllipse(rect());
-		
-		// dessine l'arc en rouge
+
+			//Draw the arc in red
 		t.setColor(Qt::red);
 		painter -> setPen(t);
 	}
 	
-	painter -> drawArc(rect(), start_angle * 16, _angle * 16);
-	if (isSelected()) {
-		// dessine la croix au centre de l'ellipse
-		painter -> setRenderHint(QPainter::Antialiasing, false);
-		painter -> setPen((painter -> brush().color() == QColor(Qt::black) && painter -> brush().isOpaque()) ? Qt::yellow : Qt::blue);
-		QPointF center = rect().center();
-		painter -> drawLine(QLineF(center.x() - 2.0, center.y(), center.x() + 2.0, center.y()));
-		painter -> drawLine(QLineF(center.x(), center.y() - 2.0, center.x(), center.y() + 2.0));
-	}
+	painter -> drawArc(m_rect, m_start_angle, m_span_angle);
+
+	if (m_hovered)
+		drawShadowShape(painter);
+
+	if (isSelected())
+		drawCross(m_rect.center(), painter);
 }
 
 /**
-	Exporte l'arc de cercle en XML
-	@param xml_document Document XML a utiliser pour creer l'element XML
-	@return un element XML decrivant l'arc de cercle
-*/
+ * @brief PartArc::toXml
+ * Export this arc in xml
+ * @param xml_document : Xml document to use for create the xml element.
+ * @return : an xml element that describe this arc
+ */
 const QDomElement PartArc::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("arc");
 	QPointF top_left(sceneTopLeft());
@@ -87,144 +87,41 @@ const QDomElement PartArc::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
 	xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
 	xml_element.setAttribute("height", QString("%1").arg(rect().height()));
-	xml_element.setAttribute("start", QString("%1").arg(start_angle));
-	xml_element.setAttribute("angle", QString("%1").arg(_angle));
+		//to maintain compatibility with the previous version, we write the angle in degrees.
+	xml_element.setAttribute("start", QString("%1").arg(m_start_angle / 16));
+	xml_element.setAttribute("angle", QString("%1").arg(m_span_angle / 16));
 	stylesToXml(xml_element);
 	return(xml_element);
 }
 
 /**
-	Importe les proprietes d'un arc de cercle depuis un element XML
-	@param qde Element XML a lire
-*/
+ * @brief PartArc::fromXml
+ * Import the properties of this arc from a xml element.
+ * @param qde : Xml document to use.
+ */
 void PartArc::fromXml(const QDomElement &qde) {
 	stylesFromXml(qde);
-	setRect(
-		QRectF(
-			mapFromScene(
-				qde.attribute("x", "0").toDouble(),
-				qde.attribute("y", "0").toDouble()
-			),
-			QSizeF(
-				qde.attribute("width",  "0").toDouble(),
-				qde.attribute("height", "0").toDouble()
-			)
-		)
-	);
-	setStartAngle(qde.attribute("start", "0").toInt());
-	setAngle(qde.attribute("angle", "-90").toInt());
+	m_rect = QRectF(mapFromScene(qde.attribute("x", "0").toDouble(),
+								 qde.attribute("y", "0").toDouble()),
+					QSizeF(qde.attribute("width",  "0").toDouble(),
+						   qde.attribute("height", "0").toDouble()) );
+
+	m_start_angle = qde.attribute("start", "0").toInt() * 16;
+	m_span_angle  = qde.attribute("angle", "-1440").toInt() * 16;
 }
 
 /**
-	@return le coin superieur gauche du rectangle dans lequel s'inscrit
-	l'ellipse dont fait partie cet arc, dans les coordonnees de la scene.
-*/
-QPointF PartArc::sceneTopLeft() const {
-	return(mapToScene(rect().topLeft()));
-}
-
-/**
- * @brief PartArc::setX
- * @param x is the center of the rect bounding this ellipse
+ * @brief PartArc::shape
+ * @return the shape of this item
  */
-void PartArc::setX(const qreal x) {
-	QRectF current_rect = rect();
-	QPointF current_pos = mapToScene(current_rect.center());
-	setRect(current_rect.translated(x - current_pos.x(), 0.0));
-}
+QPainterPath PartArc::shape() const
+{
+	QPainterPath shape;
+	shape.arcMoveTo(m_rect, m_start_angle/16);
+	shape.arcTo(m_rect, m_start_angle/16, m_span_angle/16);
 
-/**
- * @brief PartArc::setY
- * @param y is the center of the rect bounding this ellipse
- */
-void PartArc::setY(const qreal y) {
-	QRectF current_rect = rect();
-	QPointF current_pos = mapToScene(current_rect.center());
-	setRect(current_rect.translated(0.0, y - current_pos.y()));
-}
+	QPainterPathStroker pps;
+	pps.setWidth(penWeight());
 
-/**
- * @brief PartArc::setWidth
- * @param w is the width of the rect bounding this ellipse
- */
-void PartArc::setWidth(const qreal w) {
-	qreal new_width = qAbs(w);
-	QRectF current_rect = rect();
-	current_rect.translate((new_width - current_rect.width()) / -2.0, 0.0);
-	current_rect.setWidth(new_width);
-	setRect(current_rect);
-}
-
-/**
- * @brief PartArc::setHeight
- * @param h is the heigth of the rect bounding this ellipse
- */
-void PartArc::setHeight(const qreal h) {
-	qreal new_height = qAbs(h);
-	QRectF current_rect = rect();
-	current_rect.translate(0.0, (new_height - current_rect.height()) / -2.0);
-	current_rect.setHeight(new_height);
-	setRect(current_rect);
-}
-
-/**
-	Gere les changements intervenant sur cette partie
-	@param change Type de changement
-	@param value Valeur numerique relative au changement
-*/
-QVariant PartArc::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged) {
-			updateCurrentPartEditor();
-		}
-	}
-	return(QGraphicsEllipseItem::itemChange(change, value));
-}
-
-/**
-	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
-	conservee / enregistree.
-	Un arc est pertinent des lors que ses dimensions et son etendue ne sont
-	pas nulles.
-*/
-bool PartArc::isUseless() const {
-	return(rect().isNull() || !angle());
-}
-
-/**
-	@return the minimum, margin-less rectangle this part can fit into, in scene
-	coordinates. It is different from boundingRect() because it is not supposed
-	to imply any margin, and it is different from shape because it is a regular
-	rectangle, not a complex shape.
-*/
-QRectF PartArc::sceneGeometricRect() const {
-	return(mapToScene(rect()).boundingRect());
-}
-
-/**
-	Start the user-induced transformation, provided this primitive is contained
-	within the \a initial_selection_rect bounding rectangle.
-*/
-void PartArc::startUserTransformation(const QRectF &initial_selection_rect) {
-	Q_UNUSED(initial_selection_rect)
-	saved_points_.clear();
-	saved_points_ << mapToScene(rect().topLeft()) << mapToScene(rect().bottomRight());
-}
-
-/**
-	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
-*/
-void PartArc::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
-	QList<QPointF> mapped_points = mapPoints(initial_selection_rect, new_selection_rect, saved_points_);
-	setRect(QRectF(mapFromScene(mapped_points.at(0)), mapFromScene(mapped_points.at(1))));
-}
-
-/**
-	@return le rectangle delimitant cette partie.
-*/
-QRectF PartArc::boundingRect() const {
-	qreal adjust = 1.5;
-	QRectF r(QGraphicsEllipseItem::boundingRect().normalized());
-	r.adjust(-adjust, -adjust, adjust, adjust);
-	return(r);
+	return (pps.createStroke(shape));
 }

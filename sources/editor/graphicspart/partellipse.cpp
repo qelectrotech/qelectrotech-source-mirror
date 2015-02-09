@@ -18,188 +18,113 @@
 #include "partellipse.h"
 
 /**
-	Constructeur
-	@param editor L'editeur d'element concerne
-	@param parent Le QGraphicsItem parent de cette ellipse
-	@param scene La scene sur laquelle figure cette ellipse
-*/
-PartEllipse::PartEllipse(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : CustomElementGraphicPart(editor), QGraphicsEllipseItem(parent, scene) {
-	setFlags(QGraphicsItem::ItemIsSelectable);
-#if QT_VERSION >= 0x040600
-	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
-#endif
-	setAcceptedMouseButtons(Qt::LeftButton);
-}
-
-/// Destructeur
-PartEllipse::~PartEllipse() {
-}
+ * @brief PartEllipse::PartEllipse
+ * Constructor
+ * @param editor : QETElementEditor of this part
+ * @param parent : parent item
+ */
+PartEllipse::PartEllipse(QETElementEditor *editor, QGraphicsItem *parent) :
+	AbstractPartEllipse(editor, parent)
+{}
 
 /**
-	Dessine l'ellipse
-	@param painter QPainter a utiliser pour rendre le dessin
-	@param options Options pour affiner le rendu
-	@param widget Widget sur lequel le rendu est effectue
-*/
-void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+ * @brief PartEllipse::~PartEllipse
+ * Destructor
+ */
+PartEllipse::~PartEllipse() {}
+
+/**
+ * @brief PartEllipse::paint
+ * Draw this ellpise
+ * @param painter
+ * @param options
+ * @param widget
+ */
+void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
+{
 	Q_UNUSED(widget);
 	applyStylesToQPainter(*painter);
+
 	QPen t = painter -> pen();
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
-	if (isSelected()) {
+
+	if (isSelected())
 		t.setColor(Qt::red);
-	}
+
 	painter -> setPen(t);
 	painter -> drawEllipse(rect());
-	if (isSelected()) {
-		painter -> setRenderHint(QPainter::Antialiasing, false);
-		painter -> setPen((painter -> brush().color() == QColor(Qt::black) && painter -> brush().isOpaque()) ? Qt::yellow : Qt::blue);
-		QPointF center = rect().center();
-		painter -> drawLine(QLineF(center.x() - 2.0, center.y(), center.x() + 2.0, center.y()));
-		painter -> drawLine(QLineF(center.x(), center.y() - 2.0, center.x(), center.y() + 2.0));
-	}
+
+	if (m_hovered)
+		drawShadowShape(painter);
+
+	if (isSelected())
+		drawCross(m_rect.center(), painter);
 }
 
 /**
-	Exporte l'ellipse en XML
-	@param xml_document Document XML a utiliser pour creer l'element XML
-	@return un element XML decrivant l'ellipse
-*/
-const QDomElement PartEllipse::toXml(QDomDocument &xml_document) const {
+ * @brief PartEllipse::toXml
+ * Export this ellipse in xml
+ * @param xml_document : Xml document to use for create the xml element.
+ * @return : an xml element that describe this ellipse
+ */
+const QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
+{
 	QDomElement xml_element;
-	if (qFuzzyCompare(rect().width(), rect().height())) {
+	if (qFuzzyCompare(rect().width(), rect().height()))
+	{
 		xml_element = xml_document.createElement("circle");
 		xml_element.setAttribute("diameter", QString("%1").arg(rect().width()));
-	} else {
+	}
+	else
+	{
 		xml_element = xml_document.createElement("ellipse");
 		xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
 		xml_element.setAttribute("height", QString("%1").arg(rect().height()));
 	}
+
 	QPointF top_left(sceneTopLeft());
 	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
 	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+
 	stylesToXml(xml_element);
+
 	return(xml_element);
 }
 
 /**
-	Importe les proprietes d'une ellipse depuis un element XML
-	@param qde Element XML a lire
-*/
-void PartEllipse::fromXml(const QDomElement &qde) {
+ * @brief PartEllipse::fromXml
+ * Import the properties of this ellipse from a xml element.
+ * @param qde : Xml document to use.
+ */
+void PartEllipse::fromXml(const QDomElement &qde)
+{
 	stylesFromXml(qde);
 	qreal width, height;
-	if (qde.tagName() == "ellipse") {
+
+	if (qde.tagName() == "ellipse")
+	{
 		width = qde.attribute("width",  "0").toDouble();
 		height = qde.attribute("height", "0").toDouble();
-	} else {
+	}
+	else
 		width = height = qde.attribute("diameter", "0").toDouble();
-	}
-	setRect(
-		QRectF(
-			mapFromScene(
-				qde.attribute("x", "0").toDouble(),
-				qde.attribute("y", "0").toDouble()
-			),
-			QSizeF(width, height)
-		)
-	);
-}
 
-void PartEllipse::setX(const qreal x) {
-	QRectF current_rect = rect();
-	QPointF current_pos = mapToScene(current_rect.center());
-	setRect(current_rect.translated(x - current_pos.x(), 0.0));
-}
-
-void PartEllipse::setY(const qreal y) {
-	QRectF current_rect = rect();
-	QPointF current_pos = mapToScene(current_rect.center());
-	setRect(current_rect.translated(0.0, y - current_pos.y()));
-}
-
-void PartEllipse::setWidth(const qreal w) {
-	qreal new_width = qAbs(w);
-	QRectF current_rect = rect();
-	current_rect.translate((new_width - current_rect.width()) / -2.0, 0.0);
-	current_rect.setWidth(new_width);
-	setRect(current_rect);
-}
-
-void PartEllipse::setHeight(const qreal h) {
-	qreal new_height = qAbs(h);
-	QRectF current_rect = rect();
-	current_rect.translate(0.0, (new_height - current_rect.height()) / -2.0);
-	current_rect.setHeight(new_height);
-	setRect(current_rect);
+	m_rect = QRectF(mapFromScene(qde.attribute("x", "0").toDouble(),
+								 qde.attribute("y", "0").toDouble()),
+					QSizeF(width, height));
 }
 
 /**
-	Gere les changements intervenant sur cette partie
-	@param change Type de changement
-	@param value Valeur numerique relative au changement
-*/
-QVariant PartEllipse::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged) {
-			updateCurrentPartEditor();
-		}
-	}
-	return(QGraphicsEllipseItem::itemChange(change, value));
-}
+ * @brief PartEllipse::shape
+ * @return the shape of this item
+ */
+QPainterPath PartEllipse::shape() const
+{
+	QPainterPath shape;
+	shape.addEllipse(m_rect);
 
-/**
-	@return le coin superieur gauche du rectangle dans lequel s'inscrit
-	l'ellipse, dans les coordonnees de la scene.
-*/
-QPointF PartEllipse::sceneTopLeft() const {
-	return(mapToScene(rect().topLeft()));
-}
+	QPainterPathStroker pps;
+	pps.setWidth(penWeight());
 
-/**
-	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
-	conservee / enregistree.
-	Une ellipse est pertinente des lors que ses dimensions ne sont pas nulles
-*/
-bool PartEllipse::isUseless() const {
-	return(rect().isNull());
-}
-
-/**
-	@return the minimum, margin-less rectangle this part can fit into, in scene
-	coordinates. It is different from boundingRect() because it is not supposed
-	to imply any margin, and it is different from shape because it is a regular
-	rectangle, not a complex shape.
-*/
-QRectF PartEllipse::sceneGeometricRect() const {
-	return(mapToScene(rect()).boundingRect());
-}
-
-/**
-	Start the user-induced transformation, provided this primitive is contained
-	within the \a initial_selection_rect bounding rectangle.
-*/
-void PartEllipse::startUserTransformation(const QRectF &initial_selection_rect) {
-	Q_UNUSED(initial_selection_rect)
-	// we keep track of our own rectangle at the moment in scene coordinates too
-	saved_points_.clear();
-	saved_points_ << mapToScene(rect().topLeft()) << mapToScene(rect().bottomRight());
-}
-
-/**
-	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
-*/
-void PartEllipse::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
-	QList<QPointF> mapped_points = mapPoints(initial_selection_rect, new_selection_rect, saved_points_);
-	setRect(QRectF(mapFromScene(mapped_points.at(0)), mapFromScene(mapped_points.at(1))));
-}
-
-/**
-	@return le rectangle delimitant cette partie.
-*/
-QRectF PartEllipse::boundingRect() const {
-	qreal adjust = 1.5;
-	QRectF r(QGraphicsEllipseItem::boundingRect().normalized());
-	r.adjust(-adjust, -adjust, adjust, adjust);
-	return(r);
+	return (pps.createStroke(shape));
 }

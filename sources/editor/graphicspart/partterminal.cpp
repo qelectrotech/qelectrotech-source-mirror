@@ -24,16 +24,11 @@
 	@param parent Le QGraphicsItem parent de cette borne
 	@param scene La scene sur laquelle figure cette borne
 */
-PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
-	CustomElementGraphicPart(editor),
-	QGraphicsItem(parent, scene),
+PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent) :
+	CustomElementGraphicPart(editor, parent),
 	m_orientation(Qet::North)
 {
 	updateSecondPoint();
-	setFlags(QGraphicsItem::ItemIsSelectable);
-#if QT_VERSION >= 0x040600
-	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
-#endif
 	setZValue(100000);
 }
 
@@ -107,23 +102,37 @@ void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, Q
 	p -> setBrush(Terminal::neutralColor);
 	p -> drawPoint(QPointF(0.0, 0.0));
 	p -> restore();
+
+	if (m_hovered)
+		drawShadowShape(p);
 }
 
 /**
-	@return le rectangle delimitant cette partie.
-*/
-QRectF PartTerminal::boundingRect() const {
-	QPointF p1, p2;
-	if (second_point.x() <= 0.0 && second_point.y() <= 0.0) {
-		p1 = second_point;
-		p2 = QPointF(0.0, 0.0);
-	} else {
-		p1 = QPointF(0.0, 0.0);
-		p2 = second_point;
-	}
-	QRectF br;
-	br.setTopLeft    (p1 - QPointF(2.0, 2.0));
-	br.setBottomRight(p2 + QPointF(2.0, 2.0));
+ * @brief PartTerminal::shape
+ * @return the shape of this item
+ */
+QPainterPath PartTerminal::shape() const
+{
+	QPainterPath shape;
+	shape.lineTo(second_point);
+
+	QPainterPathStroker pps;
+	pps.setWidth(1);
+
+	return (pps.createStroke(shape));
+}
+
+/**
+ * @brief PartTerminal::boundingRect
+ * @return the bounding rect of this item
+ */
+QRectF PartTerminal::boundingRect() const
+{
+	QRectF br(QPointF(0, 0), second_point);
+	br = br.normalized();
+
+	qreal adjust = (SHADOWS_HEIGHT + 1) / 2;
+	br.adjust(-adjust, -adjust, adjust, adjust);
 	return(br);
 }
 
@@ -135,20 +144,6 @@ void PartTerminal::setOrientation(Qet::Orientation ori) {
 	prepareGeometryChange();
 	m_orientation = ori;
 	updateSecondPoint();
-}
-
-/**
-	Gere les changements intervenant sur cette partie
-	@param change Type de changement
-	@param value Valeur numerique relative au changement
-*/
-QVariant PartTerminal::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged) {
-			updateCurrentPartEditor();
-		}
-	}
-	return(QGraphicsItem::itemChange(change, value));
 }
 
 /**

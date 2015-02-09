@@ -18,148 +18,80 @@
 #include "partline.h"
 #include <cmath>
 
+
 /**
-	Constructeur
-	@param editor L'editeur d'element concerne
-	@param parent Le QGraphicsItem parent de cette ligne
-	@param scene La scene sur laquelle figure cette ligne
-*/
-PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
-	CustomElementGraphicPart(editor),
-	QGraphicsLineItem(parent, scene),
+ * @brief PartLine::PartLine
+ * Constructor
+ * @param editor : QETElementEditor of this part
+ * @param parent : parent item
+ */
+PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent) :
+	CustomElementGraphicPart(editor, parent),
 	first_end(Qet::None),
 	first_length(1.5),
 	second_end(Qet::None),
 	second_length(1.5)
-{
-	setFlags(QGraphicsItem::ItemIsSelectable);
-#if QT_VERSION >= 0x040600
-	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
-#endif
-	setAcceptedMouseButtons(Qt::LeftButton);
-}
+{}
 
 /// Destructeur
-PartLine::~PartLine() {
-}
+PartLine::~PartLine() {}
 
 /**
-	@param end_type Type d'extremite
-	@return Le nombre de "longueurs" requises pour dessiner une extremite de type end_type
-*/
-uint PartLine::requiredLengthForEndType(const Qet::EndType &end_type) {
+ * @brief PartLine::requiredLengthForEndType
+ * @param end_type
+ * @return the number of "length" needed to draw a extremity of type Qet::EndType.
+ */
+uint PartLine::requiredLengthForEndType(const Qet::EndType &end_type)
+{
 	uint length_count_required = 0;
-	if (end_type == Qet::Circle || end_type == Qet::Diamond) {
+
+	if (end_type == Qet::Circle || end_type == Qet::Diamond)
 		length_count_required = 2;
-	} else if (end_type == Qet::Simple || end_type == Qet::Triangle) {
+	else if (end_type == Qet::Simple || end_type == Qet::Triangle)
 		length_count_required = 1;
-	}
+
 	return(length_count_required);
 }
 
 /**
-	Dessine la ligne
-	@param painter QPainter a utiliser pour rendre le dessin
-	@param options Options pour affiner le rendu
-	@param widget Widget sur lequel le rendu est effectue
-*/
-void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+ * @brief PartLine::paint
+ * Draw this line
+ * @param painter
+ * @param options
+ * @param widget
+ */
+void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
+{
 	Q_UNUSED(widget);
-	// inutile de dessiner une ligne nulle
-	if (line().p1() == line().p2()) return;
+	if (isUseless()) return;
+
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
 	t.setJoinStyle(Qt::MiterJoin);
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
-	if (isSelected()) {
+
+	if (isSelected())
 		t.setColor(Qt::red);
-	}
+
 	painter -> setPen(t);
 	
-	QPointF point1(line().p1());
-	QPointF point2(line().p2());
-	
-	qreal line_length(line().length());
-	qreal pen_width = painter -> pen().widthF();
-	
-	qreal length1 = first_length;
-	qreal length2 = second_length;
-	
-	//debugPaint(painter);
-	
-	// determine s'il faut dessiner les extremites
-	bool draw_1st_end, draw_2nd_end;
-	qreal reduced_line_length = line_length - (length1 * requiredLengthForEndType(first_end));
-	draw_1st_end = first_end && reduced_line_length >= 0;
-	if (draw_1st_end) {
-		reduced_line_length -= (length2 * requiredLengthForEndType(second_end));
-	} else {
-		reduced_line_length = line_length - (length2 * requiredLengthForEndType(second_end));
-	}
-	draw_2nd_end = second_end && reduced_line_length >= 0;
-	
-	// dessine la premiere extremite
-	QPointF start_point, stop_point;
-	if (draw_1st_end) {
-		QList<QPointF> four_points1(fourEndPoints(point1, point2, length1));
-		if (first_end == Qet::Circle) {
-			painter -> drawEllipse(QRectF(four_points1[0] - QPointF(length1, length1), QSizeF(length1 * 2.0, length1 * 2.0)));
-			start_point = four_points1[1];
-		} else if (first_end == Qet::Diamond) {
-			painter -> drawPolygon(QPolygonF() << four_points1[1] << four_points1[2] << point1 << four_points1[3]);
-			start_point = four_points1[1];
-		} else if (first_end == Qet::Simple) {
-			painter -> drawPolyline(QPolygonF() << four_points1[3] << point1 << four_points1[2]);
-			start_point = point1;
-			
-		} else if (first_end == Qet::Triangle) {
-			painter -> drawPolygon(QPolygonF() << four_points1[0] << four_points1[2] << point1 << four_points1[3]);
-			start_point = four_points1[0];
-		}
-		
-		// ajuste le depart selon l'epaisseur du trait
-		if (pen_width && (first_end == Qet::Simple || first_end == Qet::Circle)) {
-			start_point = QLineF(start_point, point2).pointAt(pen_width / 2.0 / line_length);
-		}
-	} else {
-		start_point = point1;
-	}
-	
-	// dessine la seconde extremite
-	if (draw_2nd_end) {
-		QList<QPointF> four_points2(fourEndPoints(point2, point1, length2));
-		if (second_end == Qet::Circle) {
-			painter -> drawEllipse(QRectF(four_points2[0] - QPointF(length2, length2), QSizeF(length2 * 2.0, length2 * 2.0)));
-			stop_point = four_points2[1];
-		} else if (second_end == Qet::Diamond) {
-			painter -> drawPolygon(QPolygonF() << four_points2[2] << point2 << four_points2[3] << four_points2[1]);
-			stop_point = four_points2[1];
-		} else if (second_end == Qet::Simple) {
-			painter -> drawPolyline(QPolygonF() << four_points2[3] << point2 << four_points2[2]);
-			stop_point = point2;
-		} else if (second_end == Qet::Triangle) {
-			painter -> drawPolygon(QPolygonF() << four_points2[0] << four_points2[2] << point2 << four_points2[3] << four_points2[0]);
-			stop_point = four_points2[0];
-		}
-		
-		// ajuste l'arrivee selon l'epaisseur du trait
-		if (pen_width && (second_end == Qet::Simple || second_end == Qet::Circle)) {
-			stop_point = QLineF(point1, stop_point).pointAt((line_length - (pen_width / 2.0)) / line_length);
-		}
-	} else {
-		stop_point = point2;
-	}
-	
-	painter -> drawLine(start_point, stop_point);
+	if (first_end || second_end)
+		painter -> drawPath(path());
+	else
+		painter -> drawLine(m_line);
+
+	if (m_hovered)
+		drawShadowShape(painter);
 }
 
 /**
-	Exporte la ligne en XML
-	@param xml_document Document XML a utiliser pour creer l'element XML
-	@return un element XML decrivant la ligne
-*/
-const QDomElement PartLine::toXml(QDomDocument &xml_document) const {
-	
+ * @brief PartLine::toXml
+ * Export this line in xml
+ * @param xml_document : Xml document to use for create the xml element.
+ * @return an xml element that describe this line
+ */
+const QDomElement PartLine::toXml(QDomDocument &xml_document) const
+{
 	QPointF p1(sceneP1());
 	QPointF p2(sceneP2());
 	
@@ -178,49 +110,29 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const {
 }
 
 /**
-	Importe les proprietes d'une ligne depuis un element XML
-	@param qde Element XML a lire
-*/
+ * @brief PartLine::fromXml
+ * Import the properties of this line from a xml element.
+ * @param qde : Xml document to use
+ */
 void PartLine::fromXml(const QDomElement &qde) {
 	stylesFromXml(qde);
-	setLine(
-		QLineF(
-			mapFromScene(
-				qde.attribute("x1", "0").toDouble(),
-				qde.attribute("y1", "0").toDouble()
-			),
-			mapFromScene(
-				qde.attribute("x2", "0").toDouble(),
-				qde.attribute("y2", "0").toDouble()
-			)
-		)
-	);
-	first_end    = Qet::endTypeFromString(qde.attribute("end1"));
-	first_length = qde.attribute("length1", "1.5").toDouble();
-	second_end   = Qet::endTypeFromString(qde.attribute("end2"));
+	m_line = QLineF(mapFromScene(qde.attribute("x1", "0").toDouble(),
+								 qde.attribute("y1", "0").toDouble()),
+					mapFromScene(qde.attribute("x2", "0").toDouble(),
+								 qde.attribute("y2", "0").toDouble()));
+
+	first_end     = Qet::endTypeFromString(qde.attribute("end1"));
+	first_length  = qde.attribute("length1", "1.5").toDouble();
+	second_end    = Qet::endTypeFromString(qde.attribute("end2"));
 	second_length = qde.attribute("length2", "1.5").toDouble();
 }
 
 /**
- * @brief PartLine::setX1
- * set X of P1
- * @param x1
+ * @brief PartLine::p1
+ * @return the point p1 of line.
  */
-void PartLine::setX1(qreal x1) {
-	QPointF p = line().p1();
-	p.setX(x1);
-	setLine(QLineF(p, line().p2()));
-}
-
-/**
- * @brief PartLine::setY1
- * set y of P1
- * @param y1
- */
-void PartLine::setY1(qreal y1) {
-	QPointF p = line().p1();
-	p.setY(y1);
-	setLine(QLineF(p, line().p2()));
+QPointF PartLine::p1() const {
+	return m_line.p1();
 }
 
 /**
@@ -228,30 +140,19 @@ void PartLine::setY1(qreal y1) {
  * set first point to P1
  * @param p1
  */
-void PartLine::setP1(QPointF p1) {
-	setLine(QLineF(p1, line().p2()));
+void PartLine::setP1(const QPointF &p1)
+{
+	if (p1 == m_line.p1()) return;
+	prepareGeometryChange();
+	m_line.setP1(p1);
 }
 
 /**
- * @brief PartLine::setX2
- * set x of P2
- * @param x2
+ * @brief PartLine::p2
+ * @return  the point p2 of line
  */
-void PartLine::setX2(qreal x2) {
-	QPointF p = line().p2();
-	p.setX(x2);
-	setLine(QLineF(line().p1(), p));
-}
-
-/**
- * @brief PartLine::setY2
- * set y of P2
- * @param y2
- */
-void PartLine::setY2(qreal y2) {
-	QPointF p = line().p2();
-	p.setY(y2);
-	setLine(QLineF(line().p1(), p));
+QPointF PartLine::p2() const {
+	return m_line.p2();
 }
 
 /**
@@ -259,105 +160,91 @@ void PartLine::setY2(qreal y2) {
  * set second point to P2
  * @param p2
  */
-void PartLine::setP2(QPointF p2) {
-	setLine(QLineF(line().p1(), p2));
+void PartLine::setP2(const QPointF &p2)
+{
+	if (p2 == m_line.p2()) return;
+	prepareGeometryChange();
+	m_line.setP2(p2);
 }
 
 /**
-	Gere les changements intervenant sur cette partie
-	@param change Type de changement
-	@param value Valeur numerique relative au changement
-*/
-QVariant PartLine::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged) {
-			updateCurrentPartEditor();
-		}
-	}
-	return(QGraphicsLineItem::itemChange(change, value));
-}
-
-/**
-	@return le premier point, dans les coordonnees de la scene.
-*/
+ * @brief PartLine::sceneP1
+ * @return the point p1 in scene coordinate
+ */
 QPointF PartLine::sceneP1() const {
-	return(mapToScene(line().p1()));
+	return(mapToScene(p1()));
 }
 
 /**
-	@return le second point, dans les coordonnees de la scene.
-*/
+ * @brief PartLine::sceneP2
+ * @return the point p2 in scen coordinate
+ */
 QPointF PartLine::sceneP2() const {
-	return(mapToScene(line().p2()));
+	return(mapToScene(p2()));
 }
 
 /**
-	@return la forme selectionnable de la ligne
-*/
-QPainterPath PartLine::shape() const {
-	QList<QPointF> points = fourShapePoints();
-	QPainterPath t;
-	t.setFillRule(Qt::WindingFill);
-	t.moveTo(points.at(0));
-	t.lineTo(points.at(1));
-	t.lineTo(points.at(2));
-	t.lineTo(points.at(3));
-	t.lineTo(points.at(0));
-	
-	// n'en fait pas plus si la ligne se ramene a un point
-	if (line().p1() == line().p2()) return(t);
-	
-	// ajoute un cercle pour l'extremite 1 si besoin
-	if (first_end) {
-		QPainterPath t2;
-		t2.addEllipse(firstEndCircleRect());
-		t.addPath(t2.subtracted(t));
+ * @brief PartLine::shape
+ * @return the shape of this item
+ */
+QPainterPath PartLine::shape() const
+{
+	QPainterPath shape;
+
+		//We calcul path only if there is an end type
+		//Else we just draw a line
+	if (first_end || second_end)
+		shape.addPath(path());
+	else
+	{
+		shape.moveTo(m_line.p1());
+		shape.lineTo(m_line.p2());
 	}
-	
-	// ajoute un cercle pour l'extremite 2 si besoin
-	if (second_end) {
-		QPainterPath t2;
-		t2.addEllipse(secondEndCircleRect());
-		t.addPath(t2.subtracted(t));
-	}
-	
-	return(t);
+
+	QPainterPathStroker pps;
+	pps.setWidth(penWeight());
+
+	return (pps.createStroke(shape));
 }
 
 /**
-	@return une liste contenant les deux points de la droite + les 4 points entourant ces deux points
-*/
-QList<QPointF> PartLine::fourShapePoints() const {
+ * @brief PartLine::fourShapePoints
+ * @return a list with the two points that delimite the line
+ * + the four points surrounding these two points
+ */
+QList<QPointF> PartLine::fourShapePoints() const
+{
 	const qreal marge = 2.0;
-	// on a donc A(xa , ya) et B(xb, yb)
-	QPointF a = line().p1();
-	QPointF b = line().p2();
+
+	QPointF a = m_line.p1();
+	QPointF b = m_line.p2();
 	
 	QList<QPointF> result;
 	
-	// cas particulier : la droite se ramene a un point
-	if (a == b) {
+		//Special case, the line is defined by one point
+	if (a == b)
+	{
 		result << QPointF(a.x() - marge, a.y() - marge);
 		result << QPointF(a.x() - marge, a.y() + marge);
 		result << QPointF(a.x() + marge, a.y() + marge);
 		result << QPointF(a.x() + marge, a.y() - marge);
-	} else {
-		
-		// on calcule le vecteur AB : (xb-xa, yb-ya)
+	}
+	else
+	{
+			//We calcule the vector AB : (xb-xa, yb-ya)
 		QPointF v_ab = b - a;
 		
-		// et la distance AB : racine des coordonnees du vecteur au carre
+			//And the distance AB: root of the coordinates of the vector squared
 		qreal ab = sqrt(pow(v_ab.x(), 2) + pow(v_ab.y(), 2));
 		
-		// ensuite on definit le vecteur u(a, b) qui est egal au vecteur AB divise
-		// par sa longueur et multiplie par la longueur de la marge  que tu veux
-		// laisser
+			//Next, we define the vector u(a, b) wich is equal to the vector AB divided
+			//by is length and multiplied by the length of marge.
 		QPointF u = v_ab / ab * marge;
 		
-		// on definit le vecteur v(-b , a) qui est perpendiculaire a AB
+			//We define the vector v(-b, a) wich is perpendicular to AB
 		QPointF v(-u.y(), u.x());
-		QPointF m = -u + v; // on a le vecteur M = -u + v
-		QPointF n = -u - v; // et le vecteur N=-u-v
+		QPointF m = -u + v; // we have vector M = -u + v
+		QPointF n = -u - v; // and vector N=-u-v
 		QPointF h =  a + m; // H = A + M
 		QPointF k =  a + n; // K = A + N
 		QPointF i =  b - n; // I = B - N
@@ -369,14 +256,14 @@ QList<QPointF> PartLine::fourShapePoints() const {
 }
 
 /**
-	@return le rectangle encadrant l'integralite de la premiere extremite
-*/
-QRectF PartLine::firstEndCircleRect() const {
-	QList<QPointF> interesting_points = fourEndPoints(
-		line().p1(),
-		line().p2(),
-		first_length
-	);
+ * @brief PartLine::firstEndCircleRect
+ * @return the rectangle bordering the entirety of the first extremity
+ */
+QRectF PartLine::firstEndCircleRect() const
+{
+	QList<QPointF> interesting_points = fourEndPoints(m_line.p1(),
+													  m_line.p2(),
+													  first_length);
 	
 	QRectF end_rect(
 		interesting_points[0] - QPointF(first_length, first_length),
@@ -387,14 +274,13 @@ QRectF PartLine::firstEndCircleRect() const {
 }
 
 /**
-	@return le rectangle encadrant l'integralite de la seconde extremite
-*/
+ * @brief PartLine::secondEndCircleRect
+ * @return the rectangle bordering the entirety of the second extremity
+ */
 QRectF PartLine::secondEndCircleRect() const {
-	QList<QPointF> interesting_points = fourEndPoints(
-		line().p2(),
-		line().p1(),
-		second_length
-	);
+	QList<QPointF> interesting_points = fourEndPoints(m_line.p2(),
+													  m_line.p1(),
+													  second_length);
 	
 	QRectF end_rect(
 		interesting_points[0] - QPointF(second_length, second_length),
@@ -405,13 +291,15 @@ QRectF PartLine::secondEndCircleRect() const {
 }
 
 /**
-	Affiche differentes composantes du dessin :
-	  - le boundingRect
-	  - les point speciaux a chaque extremite
-	  - la quadrature du cercle a chaque extremite, meme si celle-ci est d'un
-	  autre type
-*/
-void PartLine::debugPaint(QPainter *painter) {
+ * @brief PartLine::debugPaint
+ * Display several composante of the drawing
+ * -the bounding rect
+ * -special points at each extremity
+ * -the quadrature of the circle at each extremity, even if itself is an other type
+ * @param painter
+ */
+void PartLine::debugPaint(QPainter *painter)
+{
 	painter -> save();
 	painter -> setPen(Qt::gray);
 	painter -> drawRect(boundingRect());
@@ -421,103 +309,229 @@ void PartLine::debugPaint(QPainter *painter) {
 	painter -> drawRect(secondEndCircleRect());
 	
 	painter -> setPen(Qt::red);
-	foreach(QPointF pointy, fourEndPoints(line().p1(), line().p2(), first_length)) {
+
+	foreach(QPointF pointy, fourEndPoints(p1(), p2(), first_length))
 		painter -> drawEllipse(pointy, 0.1, 0.1);
-	}
-	foreach(QPointF pointy, fourEndPoints(line().p2(), line().p1(), second_length)) {
+
+	foreach(QPointF pointy, fourEndPoints(p2(), p1(), second_length))
 		painter -> drawEllipse(pointy, 0.1, 0.1);
-	}
 	
 	painter -> restore();
 }
 
 /**
-	@return le rectangle delimitant cette partie.
-*/
-QRectF PartLine::boundingRect() const {
-	QRectF r(QGraphicsLineItem::boundingRect());
-	
-	// le rectangle ainsi obtenu ne doit pas avoir une dimension nulle
-	r.adjust(0.0, 0.0, 0.1, 0.1);
-	
-	// cas special : les embouts sortent largement du bounding rect originel
-	if (first_end != Qet::None) {
-		r = r.united(firstEndCircleRect());
-	}
-	
-	if (second_end != Qet::None) {
-		r = r.united(secondEndCircleRect());
-	}
-	
-	// la taille du bounding rect est ajustee avec une certaine marge
-	qreal adjust = 1.2;
-	r.adjust(-adjust, -adjust, adjust, adjust);
-	return(r);
+ * @brief PartLine::boundingRect
+ * @return the bounding rect of this part
+ */
+QRectF PartLine::boundingRect() const
+{	
+	QRectF bound;
+	if (first_end || second_end)
+		bound = path().boundingRect();
+	else
+		bound = QRectF (m_line.p1(), m_line.p2());
+
+	qreal adjust = (SHADOWS_HEIGHT + penWeight()) / 2;
+		//We add 0.5 because CustomElementGraphicPart::drawShadowShape
+		//draw a shape bigger of 0.5 when pen weight is to 0.
+	if (penWeight() == 0) adjust += 0.5;
+
+	bound = bound.normalized();
+	bound.adjust(-adjust, -adjust, adjust, adjust);
+	return bound;
 }
 
 /**
-	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
-	conservee / enregistree.
-	Une ligne est pertinente des lors que ses deux points sont differents
-*/
+ * @brief PartLine::isUseless
+ * @return true if this part is irrelevant and does not deserve to be Retained / registered.
+ * A line is relevant when is two point is different
+ */
 bool PartLine::isUseless() const {
-	return(sceneP1() == sceneP2());
+	return(m_line.p1() == m_line.p2());
 }
 
 /**
-	@return the minimum, margin-less rectangle this part can fit into, in scene
-	coordinates. It is different from boundingRect() because it is not supposed
-	to imply any margin, and it is different from shape because it is a regular
-	rectangle, not a complex shape.
-*/
+ * @brief PartLine::sceneGeometricRect
+ * @return the minimum, margin-less rectangle this part can fit into, in scene
+ * coordinates. It is different from boundingRect() because it is not supposed
+ * to imply any margin, and it is different from shape because it is a regular
+ * rectangle, not a complex shape.
+ */
 QRectF PartLine::sceneGeometricRect() const {
 	return(QRectF(sceneP1(), sceneP2()));
 }
 
 /**
-	Start the user-induced transformation, provided this primitive is contained
-	within the \a initial_selection_rect bounding rectangle.
-*/
-void PartLine::startUserTransformation(const QRectF &initial_selection_rect) {
+ * @brief PartLine::startUserTransformation
+ * Start the user-induced transformation, provided this primitive is contained
+ * within the \a initial_selection_rect bounding rectangle.
+ * @param initial_selection_rect
+ */
+void PartLine::startUserTransformation(const QRectF &initial_selection_rect)
+{
 	Q_UNUSED(initial_selection_rect)
 	saved_points_.clear();
 	saved_points_ << sceneP1() << sceneP2();
 }
 
 /**
-	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
-*/
-void PartLine::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
+ * @brief PartLine::handleUserTransformation
+ * Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
+ * @param initial_selection_rect
+ * @param new_selection_rect
+ */
+void PartLine::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect)
+{
 	QList<QPointF> mapped_points = mapPoints(initial_selection_rect, new_selection_rect, saved_points_);
-	setLine(QLineF(mapFromScene(mapped_points.at(0)), mapFromScene(mapped_points.at(1))));
+	prepareGeometryChange();
+	m_line = QLineF(mapFromScene(mapped_points.at(0)), mapFromScene(mapped_points.at(1)));
 }
 
 /**
-	@return Les quatre points interessants a l'extremite d'une droite
-	Ces points sont, dans l'ordre :
-		* O : point sur la ligne, a une distance length de l'extremite
-		* A : point sur la ligne a une distance 2 x length de l'extremite
-		* B : point a une distance length de O - O est le projete de B sur la droite
-		* C : point a une distance length de O - O est le projete de C sur la droite
-		B et C sont situes de part et d'autre de la ligne
-	@param end_point Extremite concernee
-	@param other_point Autre point permettant de definir une ligne
-	@param length Longueur a utiliser entre l'extremite et le point O
-*/
-QList<QPointF> PartLine::fourEndPoints(const QPointF &end_point, const QPointF &other_point, const qreal &length) {
-	// vecteur et longueur de la ligne 
+ * @brief PartLine::fourEndPoints
+ * Return the four interesting point needed to draw the shape
+ * at extremity of line (circle, diamond, arrow, triangle)
+ * This points are in order :
+ *		O : point on the line, at a distance 'length' of the extremity
+ *		A : point on the line at a 'length' of 2x the extremity length
+ *		B : point at a distance of length O - O is the projection of B on the line
+ *		C : point at a distance of length O - O is the projection of C on the line
+ * @param end_point : The concerned extremity
+ * @param other_point : other needed point to define the line
+ * @param length : length to use between the extremity and the point O
+ * @return
+ */
+QList<QPointF> PartLine::fourEndPoints(const QPointF &end_point, const QPointF &other_point, const qreal &length)
+{
+		//Vector and length of the line
 	QPointF line_vector = end_point - other_point;
 	qreal line_length = sqrt(pow(line_vector.x(), 2) + pow(line_vector.y(), 2));
-	
-	// vecteur unitaire et vecteur perpendiculaire
+
+		//Unitary vector and perpendicular vector
 	QPointF u(line_vector / line_length * length);
 	QPointF v(-u.y(), u.x());
 	
-	// points O, A, B et C
+		// points O, A, B, C
 	QPointF o(end_point - u);
 	QPointF a(o - u);
 	QPointF b(o + v);
 	QPointF c(o - v);
 	
 	return(QList<QPointF>() << o << a << b << c);
+}
+
+/**
+ * @brief PartLine::path
+ * @return this line has a QPainterPath.
+ * It's notably use when this line have an end type (circle, triangle etc....),
+ * because return a QPainterPath with end already draw.
+ * Else if there isn't an end type get P1 and P2 of line is better (faster).
+ */
+QPainterPath PartLine::path() const
+{
+	QPainterPath path;
+
+	QPointF point1(m_line.p1());
+	QPointF point2(m_line.p2());
+
+	qreal line_length(m_line.length());
+	qreal pen_width = penWeight();
+
+	qreal length1 = first_length;
+	qreal length2 = second_length;
+
+	//debugPaint(painter);
+
+		//Determine if we must to draw extremity
+	qreal reduced_line_length = line_length - (length1 * requiredLengthForEndType(first_end));
+	bool draw_1st_end = first_end && reduced_line_length >= 0;
+
+	if (draw_1st_end)
+		reduced_line_length -= (length2 * requiredLengthForEndType(second_end));
+	else
+		reduced_line_length = line_length - (length2 * requiredLengthForEndType(second_end));
+
+
+		//Draw the first extremity
+	QPointF start_point;
+	if (draw_1st_end)
+	{
+		QList<QPointF> four_points1(fourEndPoints(point1, point2, length1));
+
+		if (first_end == Qet::Circle)
+		{
+			path.addEllipse(QRectF(four_points1[0] - QPointF(length1, length1), QSizeF(length1 * 2.0, length1 * 2.0)));
+			start_point = four_points1[1];
+		}
+		else if (first_end == Qet::Diamond)
+		{
+			path.addPolygon(QPolygonF() << four_points1[1] << four_points1[2] << point1 << four_points1[3] << four_points1[1]);
+			start_point = four_points1[1];
+		}
+		else if (first_end == Qet::Simple)
+		{
+			path.addPolygon(QPolygonF() << four_points1[3] << point1 << four_points1[2]);
+			start_point = point1;
+
+		}
+		else if (first_end == Qet::Triangle)
+		{
+			path.addPolygon(QPolygonF() << four_points1[0] << four_points1[2] << point1 << four_points1[3] << four_points1[0]);
+			start_point = four_points1[0];
+		}
+
+			//Adjust the start point according to the pen width
+		if (pen_width && (first_end == Qet::Simple || first_end == Qet::Circle))
+			start_point = QLineF(start_point, point2).pointAt(pen_width / 2.0 / line_length);
+	}
+	else
+	{
+		start_point = point1;
+	}
+
+		//Draw the second extremity
+	QPointF stop_point;
+	bool draw_2nd_end = second_end && reduced_line_length >= 0;
+	if (draw_2nd_end)
+	{
+		QList<QPointF> four_points2(fourEndPoints(point2, point1, length2));
+
+		if (second_end == Qet::Circle)
+		{
+			path.addEllipse(QRectF(four_points2[0] - QPointF(length2, length2), QSizeF(length2 * 2.0, length2 * 2.0)));
+			stop_point = four_points2[1];
+		}
+		else if (second_end == Qet::Diamond)
+		{
+			path.addPolygon(QPolygonF() << four_points2[2] << point2 << four_points2[3] << four_points2[1] << four_points2[2]);
+			stop_point = four_points2[1];
+		}
+		else if (second_end == Qet::Simple)
+		{
+			path.addPolygon(QPolygonF() << four_points2[3] << point2 << four_points2[2]);
+			stop_point = point2;
+		}
+		else if (second_end == Qet::Triangle)
+		{/**
+	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
+	conservee / enregistree.
+	Une ligne est pertinente des lors que ses deux points sont differents
+*/
+			path.addPolygon(QPolygonF() << four_points2[0] << four_points2[2] << point2 << four_points2[3] << four_points2[0]);
+			stop_point = four_points2[0];
+		}
+
+			//Adjust the end point accordint to the pen width
+		if (pen_width && (second_end == Qet::Simple || second_end == Qet::Circle))
+			stop_point = QLineF(point1, stop_point).pointAt((line_length - (pen_width / 2.0)) / line_length);
+	}
+	else
+	{
+		stop_point = point2;
+	}
+
+	path.moveTo(start_point);
+	path.lineTo(stop_point);
+
+	return path;
 }

@@ -24,41 +24,44 @@ class StyleEditor;
 /**
 	This class provides a widget to edit lines within the element editor.
 */
-class LineEditor : public ElementItemEditor {
+class LineEditor : public ElementItemEditor
+{
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	LineEditor(QETElementEditor *, PartLine * = 0, QWidget * = 0);
-	virtual ~LineEditor();
+		LineEditor(QETElementEditor *, PartLine * = 0, QWidget * = 0);
+		virtual ~LineEditor();
 	private:
-	LineEditor(const LineEditor &);
+		LineEditor(const LineEditor &);
 	
 	// attributes
 	private:
-	PartLine *part;
-	StyleEditor *style_;
-	QDoubleSpinBox *x1, *y1, *x2, *y2;
-	QComboBox *end1_type, *end2_type;
-	QDoubleSpinBox*end1_length, *end2_length;
+		PartLine *part;
+		StyleEditor *style_;
+		QDoubleSpinBox *x1, *y1, *x2, *y2;
+		QComboBox *end1_type, *end2_type;
+		QDoubleSpinBox*end1_length, *end2_length;
 	
 	// methods
 	public:
-	virtual bool setPart(CustomElementPart *);
-	virtual CustomElementPart *currentPart() const;
+		virtual bool setPart(CustomElementPart *);
+		virtual CustomElementPart *currentPart() const;
+		QPointF editedP1() const;
+		QPointF editedP2() const;
 	
 	public slots:
-	void updateLine();
-	void updateLineX1();
-	void updateLineY1();
-	void updateLineX2();
-	void updateLineY2();
-	void updateLineEndType1();
-	void updateLineEndLength1();
-	void updateLineEndType2();
-	void updateLineEndLength2();
-	void updateForm();
+		void updateLine();
+		void updateLineX1();
+		void updateLineY1();
+		void updateLineX2();
+		void updateLineY2();
+		void updateLineEndType1();
+		void updateLineEndLength1();
+		void updateLineEndType2();
+		void updateLineEndLength2();
+		void updateForm();
 	
 	private:
-	void activeConnections(bool);
+		void activeConnections(bool);
 };
 #endif

@@ -16,66 +16,89 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partpolygon.h"
-#include "qet.h"
 
 /**
-	Constructeur
-	@param editor L'editeur d'element concerne
-	@param parent Le QGraphicsItem parent de ce polygone
-	@param scene La scene sur laquelle figure ce polygone
-*/
-PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : 
-	CustomElementGraphicPart(editor),
-	QGraphicsPolygonItem(parent, scene),
+ * @brief PartPolygon::PartPolygon
+ * Constructor
+ * @param editor : editor of this item
+ * @param parent : parent item
+ */
+PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent) :
+	CustomElementGraphicPart(editor, parent),
 	m_closed(false)
-{
-	setFlags(QGraphicsItem::ItemIsSelectable);
-#if QT_VERSION >= 0x040600
-	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
-#endif
-	setAcceptedMouseButtons(Qt::LeftButton);
-}
+{}
 
-/// Destructeur
-PartPolygon::~PartPolygon() {
+/**
+ * @brief PartPolygon::~PartPolygon
+ */
+PartPolygon::~PartPolygon() {}
+
+/**
+ * @brief PartPolygon::paint
+ * Draw this polygon
+ * @param painter
+ * @param options
+ * @param widget
+ */
+void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
+{
+	Q_UNUSED(widget);
+
+	applyStylesToQPainter(*painter);
+
+	QPen t = painter -> pen();
+	t.setCosmetic(options && options -> levelOfDetail < 1.0);
+	if (isSelected()) t.setColor(Qt::red);
+	painter -> setPen(t);
+
+	m_closed ? painter -> drawPolygon (m_polygon) :
+			   painter -> drawPolyline(m_polygon);
+
+	if (m_hovered)
+		drawShadowShape(painter);
 }
 
 /**
-	Importe les proprietes d'un polygone depuis un element XML
-	@param qde Element XML a lire
-*/
-void PartPolygon::fromXml(const QDomElement &qde) {
+ * @brief PartPolygon::fromXml
+ * Import the properties of this polygon from a xml element
+ * @param qde : Xml document to use
+ */
+void PartPolygon::fromXml(const QDomElement &qde)
+{
 	stylesFromXml(qde);
+
 	int i = 1;
-	while(true) {
-		if (
-			QET::attributeIsAReal(qde, QString("x%1").arg(i)) &&\
-			QET::attributeIsAReal(qde, QString("y%1").arg(i))
-		) ++ i;
+	while(true)
+	{
+		if (QET::attributeIsAReal(qde, QString("x%1").arg(i)) &&\
+			QET::attributeIsAReal(qde, QString("y%1").arg(i)))
+			++ i;
+
 		else break;
 	}
 	
 	QPolygonF temp_polygon;
-	for (int j = 1 ; j < i ; ++ j) {
-		temp_polygon << QPointF(
-			qde.attribute(QString("x%1").arg(j)).toDouble(),
-			qde.attribute(QString("y%1").arg(j)).toDouble()
-		);
+	for (int j = 1 ; j < i ; ++ j)
+	{
+		temp_polygon << QPointF(qde.attribute(QString("x%1").arg(j)).toDouble(),
+								qde.attribute(QString("y%1").arg(j)).toDouble());
 	}
-	setPolygon(temp_polygon);
+	m_polygon = temp_polygon;
 	
 	m_closed = qde.attribute("closed") != "false";
 }
 
 /**
-	Exporte le polygone en XML
-	@param xml_document Document XML a utiliser pour creer l'element XML
-	@return un element XML decrivant le polygone
-*/
-const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const {
+ * @brief PartPolygon::toXml
+ * Export this polygin in xml
+ * @param xml_document : Xml document to use for create the xml element
+ * @return an xml element that describe this polygon
+ */
+const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const
+{
 	QDomElement xml_element = xml_document.createElement("polygon");
 	int i = 1;
-	foreach(QPointF point, polygon()) {
+	foreach(QPointF point, m_polygon) {
 		point = mapToScene(point);
 		xml_element.setAttribute(QString("x%1").arg(i), QString("%1").arg(point.x()));
 		xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(point.y()));
@@ -87,90 +110,84 @@ const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const {
 }
 
 /**
-	Dessine le polygone
-	@param painter QPainter a utiliser pour rendre le dessin
-	@param options Options pour affiner le rendu
-	@param widget Widget sur lequel le rendu est effectue
-*/
-void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget) {
-	Q_UNUSED(widget);
-	applyStylesToQPainter(*painter);
-	QPen t = painter -> pen();
-	t.setCosmetic(options && options -> levelOfDetail < 1.0);
-	if (isSelected()) t.setColor(Qt::red);
-	painter -> setPen(t);
-	if (m_closed) painter -> drawPolygon(polygon());
-	else painter -> drawPolyline(polygon());
-}
+ * @brief PartPolygon::isUseless
+ * @return true if this part is irrelevant and does not deserve to be Retained / registered.
+ * A polygon is relevant when he have 2 differents points
+ */
+bool PartPolygon::isUseless() const
+{
+	if (m_polygon.count() < 2) return(true);
 
-/**
-	Gere les changements intervenant sur cette partie
-	@param change Type de changement
-	@param value Valeur numerique relative au changement
-*/
-QVariant PartPolygon::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged) {
-			updateCurrentPartEditor();
-		}
-	}
-	return(QGraphicsPolygonItem::itemChange(change, value));
-}
+	for (int i = 1 ; i < m_polygon.count() ; ++ i)
+		if (m_polygon[i] != m_polygon[i-1]) return(false);
 
-/**
-	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
-	conservee / enregistree.
-	Un polygone est pertinent des lors qu'il possede deux points differents.
-*/
-bool PartPolygon::isUseless() const {
-	QPolygonF poly(polygon());
-	
-	if (polygon().count() < 2) return(true);
-	
-	QPointF previous_point;
-	for (int i = 1 ; i < poly.count() ; ++ i) {
-		if (poly[i] != poly[i-1]) return(false);
-	}
-	
 	return(true);
 }
 
 /**
-	@return the minimum, margin-less rectangle this part can fit into, in scene
-	coordinates. It is different from boundingRect() because it is not supposed
-	to imply any margin, and it is different from shape because it is a regular
-	rectangle, not a complex shape.
-*/
+ * @brief PartPolygon::sceneGeometricRect
+ * @return the minimum, margin-less rectangle this part can fit into, in scene
+ * coordinates. It is different from boundingRect() because it is not supposed
+ * to imply any margin, and it is different from shape because it is a regular
+ * rectangle, not a complex shape.
+ */
 QRectF PartPolygon::sceneGeometricRect() const {
-	return(mapToScene(polygon().boundingRect()).boundingRect());
+	return(mapToScene(m_polygon.boundingRect()).boundingRect());
 }
 
 /**
-	Start the user-induced transformation, provided this primitive is contained
-	within the \a initial_selection_rect bounding rectangle.
-*/
-void PartPolygon::startUserTransformation(const QRectF &initial_selection_rect) {
+ * @brief PartPolygon::startUserTransformation
+ * Start the user-induced transformation, provided this primitive is contained
+ * within the initial_selection_rect bounding rectangle.
+ * @param initial_selection_rect
+ */
+void PartPolygon::startUserTransformation(const QRectF &initial_selection_rect)
+{
 	Q_UNUSED(initial_selection_rect)
-	saved_points_ = mapToScene(polygon()).toList();
+	saved_points_ = mapToScene(m_polygon).toList();
 }
 
 /**
-	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
-*/
-void PartPolygon::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
+ * @brief PartPolygon::handleUserTransformation
+ * Handle the user-induced transformation from initial_selection_rect to new_selection_rect
+ * @param initial_selection_rect
+ * @param new_selection_rect
+ */
+void PartPolygon::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect)
+{
 	QList<QPointF> mapped_points = mapPoints(initial_selection_rect, new_selection_rect, saved_points_);
-	setPolygon(mapFromScene(QPolygonF(mapped_points.toVector())));
+	m_polygon = (mapFromScene(QPolygonF(mapped_points.toVector())));
 }
 
 /**
-	@reimp CustomElementPart::preferredScalingMethod
-	This method is called by the decorator when it needs to determine the best
-	way to interactively scale a primitive. It is typically called when only a
-	single primitive is being scaled.
-	This reimplementation systematically returns QET::RoundScaleRatios.
-*/
+ * @brief PartPolygon::preferredScalingMethod
+ * This method is called by the decorator when it needs to determine the best
+ * way to interactively scale a primitive. It is typically called when only a
+ * single primitive is being scaled.
+ * @return : This reimplementation systematically returns QET::RoundScaleRatios.
+ */
 QET::ScalingMethod PartPolygon::preferredScalingMethod() const {
 	return(QET::RoundScaleRatios);
+}
+
+/**
+ * @brief PartPolygon::polygon
+ * @return the item's polygon, or an empty polygon if no polygon has been set.
+ */
+QPolygonF PartPolygon::polygon() const {
+	return m_polygon;
+}
+
+/**
+ * @brief PartPolygon::setPolygon
+ * Sets the item's polygon to be the given polygon.
+ * @param polygon
+ */
+void PartPolygon::setPolygon(const QPolygonF &polygon)
+{
+	if (m_polygon == polygon) return;
+	prepareGeometryChange();
+	m_polygon = polygon;
 }
 
 /**
@@ -178,10 +195,10 @@ QET::ScalingMethod PartPolygon::preferredScalingMethod() const {
  * Add new point to polygon
  * @param point
  */
-void PartPolygon::addPoint(const QPointF &point) {
-	QPolygonF poly = polygon();
-	poly << point;
-	setPolygon(poly);
+void PartPolygon::addPoint(const QPointF &point)
+{
+	prepareGeometryChange();
+	m_polygon << point;
 }
 
 /**
@@ -189,35 +206,59 @@ void PartPolygon::addPoint(const QPointF &point) {
  * Set the last point of polygon to @point
  * @param point
  */
-void PartPolygon::setLastPoint(const QPointF &point) {
-	QPolygonF poly = polygon();
+void PartPolygon::setLastPoint(const QPointF &point)
+{
+	if (m_polygon.size())
+		m_polygon.pop_back();
 
-	if (poly.size())
-		poly.pop_back();
-
-	poly << point;
-	setPolygon(poly);
+	prepareGeometryChange();
+	m_polygon << point;
 }
 
 /**
  * @brief PartPolygon::removeLastPoint
  * Remove the last point of polygon
  */
-void PartPolygon::removeLastPoint() {
-	QPolygonF poly = polygon();
-
-	if (poly.size())
-		poly.pop_back();
-
-	setPolygon(poly);
+void PartPolygon::removeLastPoint()
+{
+	if (m_polygon.size())
+	{
+		prepareGeometryChange();
+		m_polygon.pop_back();
+	}
 }
 
 /**
-	@return le rectangle delimitant cette partie.
-*/
-QRectF PartPolygon::boundingRect() const {
-	qreal adjust = 1.5;
-	QRectF r(QGraphicsPolygonItem::boundingRect());
+ * @brief PartPolygon::shape
+ * @return the shape of this item
+ */
+QPainterPath PartPolygon::shape() const
+{
+	QPainterPath shape;
+	shape.addPolygon(m_polygon);
+
+	if (m_closed)
+		shape.lineTo(m_polygon.first());
+
+	QPainterPathStroker pps;
+	pps.setWidth(penWeight());
+
+	return (pps.createStroke(shape));
+}
+
+/**
+ * @brief PartPolygon::boundingRect
+ * @return the bounding rect of this item
+ */
+QRectF PartPolygon::boundingRect() const
+{
+	QRectF r = m_polygon.boundingRect();
+
+	qreal adjust = (SHADOWS_HEIGHT + penWeight()) / 2;
+		//We add 0.5 because CustomElementGraphicPart::drawShadowShape
+		//draw a shape bigger of 0.5 when pen weight is to 0.
+	if (penWeight() == 0) adjust += 0.5;
+
 	r.adjust(-adjust, -adjust, adjust, adjust);
 	return(r);
 }

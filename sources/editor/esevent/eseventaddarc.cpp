@@ -45,30 +45,36 @@ ESEventAddArc::~ESEventAddArc() {
  * @param event
  * @return
  */
-bool ESEventAddArc::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-	if (event -> button() == Qt::LeftButton) {
+bool ESEventAddArc::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (event -> button() == Qt::LeftButton)
+	{
 		if(!m_running) m_running = true;
 		QPointF pos = m_scene->snapToGrid(event -> scenePos());
 
-		//create new arc
-		if (!m_arc) {
-			m_arc = new PartArc(m_editor, 0, m_scene);
-			m_arc -> setRect(QRectF(pos, pos));
-			m_arc -> setAngle(90);
+			//create new arc
+		if (!m_arc)
+		{
+			m_arc = new PartArc(m_editor);
+			m_scene -> addItem(m_arc);
+			m_arc -> setPos(pos);
+			m_arc -> setProperty("startAngle", 0);
+			m_arc -> setProperty("spanAngle", 1440);
 			m_arc -> setProperty("antialias", true);
 			m_origin = pos;
 			return true;
 		}
 
-		//Add arc to scene
+			//At this point, m_arc is finish, we add it with an undo command
 		m_arc -> setRect(m_arc->rect().normalized());
 		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Arc"), m_scene, m_arc));
 
-		//Set m_arc to nullptr for create new ellipse at next mouse press
+			//Set m_arc to nullptr for create new ellipse at next mouse press
 		m_arc = nullptr;
 
 		return true;
 	}
+
 	return false;
 }
 
@@ -120,67 +126,78 @@ bool ESEventAddArc::keyPressEvent(QKeyEvent *event) {
  * @brief ESEventAddArc::updateArc
  * Redraw the arc with curent value
  */
-void ESEventAddArc::updateArc() {
-
+void ESEventAddArc::updateArc()
+{
 	qreal width  = (m_mouse_pos.x() - m_origin.x())*2;
 	if (width < 0) width *= -1;
 	qreal height = (m_mouse_pos.y() - m_origin.y())*2;
 	if (height < 0) height *= -1;
 
-	QPointF pos_ = m_origin;
+	QPointF pos_ = m_arc -> mapFromScene(m_origin);
 
 	//Draw arc inverted
-	if (m_inverted) {
+	if (m_inverted)
+	{
 		//Adjust the start angle to be snapped at the origin point of draw
-		if (m_mouse_pos.y() > m_origin.y()) {
-
-			if (m_mouse_pos.x() > m_origin.x()) {
+		if (m_mouse_pos.y() > m_origin.y())
+		{
+			if (m_mouse_pos.x() > m_origin.x())
+			{
 				pos_.ry() -= height/2;
-				m_arc->setStartAngle(180);
+				m_arc->setStartAngle(2880);
 			}
-			else {
+			else
+			{
 				pos_.rx() -= width/2;
-				m_arc->setStartAngle(90);
+				m_arc->setStartAngle(1440);
 			}
 		}
-		else {
-			if (m_mouse_pos.x() > m_origin.x()) {
+		else
+		{
+			if (m_mouse_pos.x() > m_origin.x())
+			{
 				pos_.ry() -= height;
 				pos_.rx() -= width/2;
-				m_arc->setStartAngle(270);
+				m_arc->setStartAngle(4320);
 			}
-			else {
+			else
+			{
 				pos_.rx() -= width;
 				pos_.ry() -= height/2;
 				m_arc->setStartAngle(0);
 			}
 		}
 	}
-
-	//Draw arc non inverted
-	else {
-		//Adjust the start angle to be snapped at the origin point of draw
-		if (m_mouse_pos.y() > m_origin.y()) {
-
-			if (m_mouse_pos.x() > m_origin.x()) {
+		//Draw arc non inverted
+	else
+	{
+			//Adjust the start angle to be snapped at the origin point of draw
+		if (m_mouse_pos.y() > m_origin.y())
+		{
+			if (m_mouse_pos.x() > m_origin.x())
+			{
 				pos_.rx() -= width/2;
 				m_arc->setStartAngle(0);
 			}
-			else {
+			else
+			{
 				pos_.rx() -= width;
 				pos_.ry() -= height/2;
-				m_arc->setStartAngle(270);
+				m_arc->setStartAngle(4320);
 			}
 		}
-		else {
-			if (m_mouse_pos.x() > m_origin.x()) {
+		else
+		{
+			if (m_mouse_pos.x() > m_origin.x())
+			{
 				pos_.ry() -= height/2;
-				m_arc->setStartAngle(90);
+				m_arc->setStartAngle(1440);
 			}
-			else {
+			else
+			{
 				pos_.rx() -= width/2;
 				pos_.ry() -= height;
-				m_arc->setStartAngle(180);
+				m_arc->setStartAngle(2880);
 			}
 		}
 	}

@@ -20,22 +20,63 @@
 /**
  * @brief CustomElementGraphicPart::CustomElementGraphicPart
  * Default constructor.
+ * By default, item is selectable, send geometry change (Qt > 4.6),
+ * accept mouse left button and accept hover event
  * @param editor QETElement editor that belong this.
  */
-CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor) :
+CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor, QGraphicsItem *parent) :
+	QGraphicsObject (parent),
 	CustomElementPart(editor),
+	m_hovered (false),
 	_linestyle(NormalStyle),
 	_lineweight(NormalWeight),
 	_filling(NoneFilling),
 	_color(BlackColor),
 	_antialiased(false)
-{}
+{
+	setFlags(QGraphicsItem::ItemIsSelectable);
+#if QT_VERSION >= 0x040600
+	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
+#endif
+	setAcceptedMouseButtons(Qt::LeftButton);
+	setAcceptHoverEvents(true);
+}
 
 /**
  * @brief CustomElementGraphicPart::~CustomElementGraphicPart
  * Destructor
  */
 CustomElementGraphicPart::~CustomElementGraphicPart() {}
+
+/**
+ * @brief CustomElementGraphicPart::drawCross
+ * Draw a cross at pos center
+ * @param center : center of cross
+ * @param painter : painter to use for draw cross,
+ * the painter state is restored at end of this method.
+ */
+void CustomElementGraphicPart::drawCross(const QPointF &center, QPainter *painter)
+{
+	painter -> save();
+	painter -> setRenderHint(QPainter::Antialiasing, false);
+	painter -> setPen((painter -> brush().color() == QColor(Qt::black) && painter -> brush().isOpaque()) ? Qt::yellow : Qt::blue);
+	painter -> drawLine(QLineF(center.x() - 2.0, center.y(), center.x() + 2.0, center.y()));
+	painter -> drawLine(QLineF(center.x(), center.y() - 2.0, center.x(), center.y() + 2.0));
+	painter -> restore();
+}
+
+/**
+ * @brief CustomElementGraphicPart::penWeight
+ * @return the weight of pen
+ */
+qreal CustomElementGraphicPart::penWeight() const
+{
+	if      (_lineweight == NoneWeight || _lineweight == ThinWeight) return 0;
+	else if (_lineweight == NormalWeight) return 1;
+	else if (_lineweight == UltraWeight)  return 2;
+	else if (_lineweight == BigWeight)    return 5;
+	return 1;
+}
 
 /**
  * @brief CustomElementGraphicPart::stylesToXml
@@ -205,4 +246,70 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	
 	painter.setPen(pen);
 	painter.setBrush(brush);
+}
+
+/**
+ * @brief CustomElementGraphicPart::drawShadowShape
+ * Draw a transparent blue shadow arround the shape of this item.
+ * The QPainterPathStroker used to draw shadows have a width of SHADOWS_HEIGHT
+ * Be carefull if penWeight of this item is to 0 the outline of strock is bigger of 0.5
+ * @param painter : painter to use for draw this shadows
+ */
+void CustomElementGraphicPart::drawShadowShape(QPainter *painter)
+{
+		//@FIXME if pen weight is 0, the strock outline is SHADOWS_HEIGHT/2 + 0.5
+		//may be because shape have no line weight
+	QPainterPathStroker strock;
+	strock.setWidth(SHADOWS_HEIGHT);
+	strock.setJoinStyle(Qt::RoundJoin);
+
+	painter->save();
+	QColor color(Qt::darkBlue);
+	color.setAlpha(50);
+	painter -> setBrush (QBrush (color));
+	painter -> setPen   (Qt::NoPen);
+	painter -> drawPath (strock.createStroke(shape()));
+	painter -> restore  ();
+}
+
+/**
+ * @brief CustomElementGraphicPart::itemChange
+ * Reimplemented from QGraphicsObject.
+ * If the item position change call updateCurrentPartEditor()
+ * the change is always send to QGraphicsObject
+ * @param change
+ * @param value
+ * @return the returned value of QGraphicsObject::itemChange
+ */
+QVariant CustomElementGraphicPart::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+	if (scene())
+		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged)
+			updateCurrentPartEditor();
+
+	return(QGraphicsObject::itemChange(change, value));
+}
+
+/**
+ * @brief CustomElementGraphicPart::hoverEnterEvent
+ * Reimplemented from QGraphicsObject.
+ * Set m_hovered to true
+ * @param event
+ */
+void CustomElementGraphicPart::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+	m_hovered = true;
+	QGraphicsObject::hoverEnterEvent(event);
+}
+
+/**
+ * @brief CustomElementGraphicPart::hoverLeaveEvent
+ * Reimplemented from QGraphicsObject.
+ * Set m_hovered to false
+ * @param event
+ */
+void CustomElementGraphicPart::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+	m_hovered = false;
+	QGraphicsObject::hoverLeaveEvent(event);
 }

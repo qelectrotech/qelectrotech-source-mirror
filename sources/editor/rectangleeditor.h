@@ -43,6 +43,7 @@ class RectangleEditor : public ElementItemEditor {
 	public:
 	virtual bool setPart(CustomElementPart *);
 	virtual CustomElementPart *currentPart() const;
+	QPointF editedTopLeft () const;
 	
 	public slots:
 	void updateRectangle();

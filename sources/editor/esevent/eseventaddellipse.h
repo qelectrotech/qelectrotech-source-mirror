@@ -41,7 +41,7 @@ class ESEventAddEllipse : public ESEventInterface
 
 	private:
 		PartEllipse *m_ellipse;
-		QPointF      m_origin;
+		QPointF      m_origin, m_new_pos;
 };
 
 #endif // ESEVENTADDELLIPSE_H

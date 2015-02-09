@@ -567,8 +567,7 @@ void ChangeInformationsCommand::redo() {
 ScalePartsCommand::ScalePartsCommand(ElementScene *scene, QUndoCommand * parent) :
 	ElementEditionCommand(scene, 0, parent),
 	first_redo(true)
-{
-}
+{}
 
 /**
 	Destructor

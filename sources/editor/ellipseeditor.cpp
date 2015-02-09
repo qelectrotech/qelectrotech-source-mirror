@@ -102,16 +102,16 @@ CustomElementPart *EllipseEditor::currentPart() const {
 */
 void EllipseEditor::updateEllipse() {
 	if (!part) return;
-	part -> setProperty("x",           x  -> value());
-	part -> setProperty("y",           y  -> value());
+	part -> setProperty("centerX",     x  -> value());
+	part -> setProperty("centerY",     y  -> value());
 	part -> setProperty("diameter_h",  h  -> value());
 	part -> setProperty("diameter_v",  v  -> value());
 }
 
 /// Met a jour l'abscisse du centre de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseX() { addChangePartCommand(tr("abscisse"),               part, "x",           x -> value());       }
+void EllipseEditor::updateEllipseX() { addChangePartCommand(tr("abscisse"),               part, "centerX",           x -> value());       }
 /// Met a jour l'ordonnee du centre de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseY() { addChangePartCommand(tr("ordonn\351e"),            part, "y",           y -> value());       }
+void EllipseEditor::updateEllipseY() { addChangePartCommand(tr("ordonn\351e"),            part, "centerY",           y -> value());       }
 /// Met a jour le diametre horizontal de l'ellipse et cree un objet d'annulation
 void EllipseEditor::updateEllipseH() { addChangePartCommand(tr("diam\350tre horizontal"), part, "diameter_h",  h -> value());       }
 /// Met a jour le diametre vertical de l'ellipse et cree un objet d'annulation
@@ -123,8 +123,8 @@ void EllipseEditor::updateEllipseV() { addChangePartCommand(tr("diam\350tre vert
 void EllipseEditor::updateForm() {
 	if (!part) return;
 	activeConnections(false);
-	x->setValue(part->property("x").toReal());
-	y->setValue(part->property("y").toReal());
+	x->setValue(part->property("centerX").toReal());
+	y->setValue(part->property("centerY").toReal());
 	h->setValue(part->property("diameter_h").toReal());
 	v->setValue(part->property("diameter_v").toReal());
 	activeConnections(true);
