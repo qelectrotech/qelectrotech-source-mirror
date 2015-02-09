@@ -86,7 +86,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <rect width="18.7744" x="202.17" y="323.751" antialias="false" height="85.7592" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="323.357" x1="209.692" y2="182.203" x2="209.692"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="409.805" x1="211.01" y2="481.796" x2="211.01"/>
-        <input x="199" y="241" size="9" rotation="270" rotate="true" text="12G1" tagg="none"/>
+        <input x="199" y="241" size="9" rotation="270" rotate="true" text="19G1" tagg="none"/>
         <input x="212.478" y="378.436" size="9" rotation="270" rotate="true" text="1P1" tagg="none"/>
         <input x="207" y="579" size="9" rotation="270" rotate="true" text="_" tagg="none"/>
         <polygon x4="385.93" y5="181.76" x5="385.93" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="153" x1="404.899" y2="181.76" x2="404.899" y3="181.76" x3="385.93" y4="181.76"/>
