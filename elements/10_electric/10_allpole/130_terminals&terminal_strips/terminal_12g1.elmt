@@ -1,6 +1,7 @@
 <definition width="290" version="0.4" hotspot_x="21" hotspot_y="32" height="520" link_type="simple" type="element" orientation="dyyy">
     <names>
         <name lang="en">Terminal 12G1</name>
+        <name lang="pl">Listwa zaciskowa 12G</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

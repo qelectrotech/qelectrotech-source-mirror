@@ -1,6 +1,7 @@
 <definition width="430" version="0.4" hotspot_x="19" hotspot_y="32" height="520" link_type="simple" type="element" orientation="dyyy">
     <names>
         <name lang="en">Terminal_19G1</name>
+        <name lang="pl">Listwa zaciskowa 19G</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
