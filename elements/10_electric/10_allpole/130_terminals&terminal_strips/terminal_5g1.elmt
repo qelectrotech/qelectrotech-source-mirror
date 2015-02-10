@@ -1,6 +1,7 @@
 <definition width="140" version="0.4" hotspot_x="20" hotspot_y="32" height="520" link_type="simple" type="element" orientation="dyyy">
     <names>
         <name lang="en">Terminal_5G1</name>
+        <name lang="fr">Bornier cable 5G1</name>
         <name lang="pl">Listwa zaciskowa 5G</name>
     </names>
     <informations>Author: The QElectroTech team
@@ -8,7 +9,6 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <ellipse width="8" x="108" y="151" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <rect width="83.182" x="20.0419" y="-20.5764" antialias="false" height="90.8236" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="262.482" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="52.0794" y2="181.758" x2="52.0794"/>
         <text x="87.5994" y="120.2" size="9" rotation="270" text="4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.5764" x1="61.83" y2="70.2471" x2="61.83"/>

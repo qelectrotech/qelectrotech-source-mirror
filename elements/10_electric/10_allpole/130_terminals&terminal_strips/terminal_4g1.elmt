@@ -1,0 +1,34 @@
+<definition width="120" version="0.4" hotspot_x="24" hotspot_y="32" height="520" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Terminal_4G1</name>
+        <name lang="fr">Bornier cable 4G1</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <ellipse width="8" x="83" y="151" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="63.182" x="16.0419" y="-20.5764" antialias="false" height="90.8236" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.75" x1="48.68" y2="181.76" x2="48.68"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.5764" x1="57.83" y2="70.2471" x2="57.83"/>
+        <input x="48.149" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <text x="41.8112" y="120.2" size="9" rotation="270" text="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="68.9735" y2="181.758" x2="68.9735"/>
+        <input x="70.6451" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <text x="62.0088" y="120.2" size="9" rotation="270" text="3"/>
+        <rect width="36.0381" x="-19.9962" y="-26.8509" antialias="false" height="102.281" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="28.5783" y="43" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.5764" x1="36.9359" y2="70.2471" x2="36.9359"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70.7517" x1="27.1854" y2="181.758" x2="27.1854"/>
+        <text x="20.2207" y="120.2" size="9" rotation="270" text="1"/>
+        <input x="-2" y="42" size="14" rotation="270" rotate="true" text="1A1" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="181.758" x1="27.1329" y2="181.758" x2="69.4235"/>
+        <rect width="18.7744" x="41.17" y="322.751" antialias="false" height="85.7592" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="322.357" x1="48.692" y2="181.203" x2="48.692"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="408.805" x1="50.01" y2="480.796" x2="50.01"/>
+        <input x="38" y="257" size="9" rotation="270" rotate="true" text="4 G1" tagg="none"/>
+        <input x="51.478" y="377.436" size="9" rotation="270" rotate="true" text="1P1" tagg="none"/>
+        <input x="44" y="578" size="9" rotation="270" rotate="true" text="_" tagg="none"/>
+        <polygon x4="67.93" y5="181.76" x5="67.93" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="153" x1="86.899" y2="181.76" x2="86.899" y3="181.76" x3="67.93" y4="181.76"/>
+        <terminal x="50" y="480" orientation="s"/>
+    </description>
+</definition>

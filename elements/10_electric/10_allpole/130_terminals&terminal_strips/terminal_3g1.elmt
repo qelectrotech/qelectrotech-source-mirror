@@ -1,0 +1,30 @@
+<definition width="100" version="0.4" hotspot_x="24" hotspot_y="29" height="520" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Terminal_3G1</name>
+        <name lang="fr">Bornier cable 3G1</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <ellipse width="8" x="63" y="153" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="42.182" x="17.0419" y="-18.5764" antialias="false" height="90.8236" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="72.7517" x1="49.0794" y2="183.758" x2="49.0794"/>
+        <input x="49.149" y="45" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <text x="42.8112" y="122.2" size="9" rotation="270" text="2"/>
+        <rect width="36.0381" x="-18.9962" y="-24.8509" antialias="false" height="102.281" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="29.5783" y="45" size="9" rotation="270" rotate="true" text="" tagg="none"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.5764" x1="37.9359" y2="72.2471" x2="37.9359"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="72.7517" x1="28.1854" y2="183.758" x2="28.1854"/>
+        <text x="21.2207" y="122.2" size="9" rotation="270" text="1"/>
+        <input x="-1" y="44" size="14" rotation="270" rotate="true" text="1A1" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="183.758" x1="29.0713" y2="183.758" x2="49.4851"/>
+        <rect width="18.7744" x="41.17" y="325.751" antialias="false" height="85.7592" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="325.357" x1="48.692" y2="184.203" x2="48.692"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="411.805" x1="50.01" y2="483.796" x2="50.01"/>
+        <input x="38" y="260" size="9" rotation="270" rotate="true" text="3 G1" tagg="none"/>
+        <input x="51.478" y="380.436" size="9" rotation="270" rotate="true" text="1P1" tagg="none"/>
+        <input x="41" y="578" size="9" rotation="270" rotate="true" text="_" tagg="none"/>
+        <polygon x4="47.93" y5="183.76" x5="47.93" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="155" x1="66.899" y2="183.76" x2="66.899" y3="183.76" x3="47.93" y4="183.76"/>
+        <terminal x="50" y="484" orientation="s"/>
+    </description>
+</definition>
