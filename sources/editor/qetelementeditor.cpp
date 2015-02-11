@@ -614,92 +614,104 @@ void QETElementEditor::xmlPreview() {
  * Do several check about element.
  * If error is occured return false
  */
-bool QETElementEditor::checkElement() {
-	// liste les avertissements applicables
+bool QETElementEditor::checkElement()
+{
+		//List of warning and error
 	typedef QPair<QString, QString> QETWarning;
 	QList<QETWarning> warnings;
 	QList<QETWarning> errors;
-		
-	/// Warning #1: Element haven't got terminal
-	if (!ce_scene -> containsTerminals()) {
+
+		/// Warning #1: Element haven't got terminal
+		/// (except for report, because report must have one terminal and this checking is do below)
+	if (!ce_scene -> containsTerminals() && !ce_scene -> elementType().contains("report"))
+	{
 		warnings << qMakePair(
 			tr("Absence de borne", "warning title"),
 			tr(
-				"L'\351l\351ment ne comporte aucune borne. Un \351l\351ment "
-				"doit comporter des bornes afin de pouvoir \351tre reli\351 "
-				"\340 d'autres \351l\351ments par l'interm\351diaire de "
-				"conducteurs.",
+				"<br>En l'absence de borne, l'\351l\351ment ne pourra \352tre"
+				" reli\351 \340 d'autres \351l\351ments par l'interm\351diaire de conducteurs.",
 				"warning description"
 			)
 		);
 	}
 
-	/// Check master, slave and simple element
+		/// Check master, slave, simple and report element
 	if(ce_scene -> elementType() == "master" ||
 	   ce_scene -> elementType() == "slave"  ||
 	   ce_scene -> elementType() == "simple" ||
-	   ce_scene -> elementType().contains("report")) {
-
+	   ce_scene -> elementType().contains("report"))
+	{
 		bool wrng = true;
-		foreach (CustomElementPart *cep, ce_scene->primitives()) {
+		foreach (CustomElementPart *cep, ce_scene->primitives())
 			if (cep->property("tagg").toString() == "label") wrng = false;
-		}
-		///Error #1: element is master, slave or simple but havent got input tagged 'label'
+
+			///Error #1: element is master, slave or simple but havent got input tagged 'label'
 		if (wrng) {
 			errors << qMakePair(
 							tr("Absence de champ texte 'label'", "warning title"),
-							tr("Les \351l\351ments ma\356tres, esclaves, simple et renvoie de folio doivent poss\351der "
-							   "un champ texte comportant le tagg 'label'", "warning description"));
+							tr("<br><b>Erreur</b \240> :"
+							   "<br>Les \351l\351ments de type ma\356tres, esclaves, simple et renvoie de folio doivent poss\351der un champ texte comportant le tagg 'label'."
+							   "<br><b>Solution</b> :"
+							   "<br>Ins\351rer un champ texte et lui attribuer le tagg 'label'", "warning description"));
 		}
 	}
 
-	/// Check folio report element
-	if (ce_scene -> elementType().contains("report")) {
+		/// Check folio report element
+	if (ce_scene -> elementType().contains("report"))
+	{
 		int text =0, terminal =0;
 
-		foreach(QGraphicsItem *qgi, ce_scene->items()) {
+		foreach(QGraphicsItem *qgi, ce_scene->items())
+		{
 			if		(qgraphicsitem_cast<PartTerminal *>(qgi))  terminal ++;
 			else if (qgraphicsitem_cast<PartTextField *>(qgi)) text ++;
 		}
 
-		///Error #2 folio report must have only one terminal
-		if (terminal != 1) {
-			errors << qMakePair (
-						  tr("Absence de borne"),
-						  tr("Les reports de folio doivent poss\351der une seul borne."));
-		}
-
-		///Error #3 folio report must have at least one text
-		if (text <= 0) {
-			errors << qMakePair (
-						  tr("Absence de champ texte"),
-						  tr("Les reports de folio doivent poss\351der au moins un champ texte \351ditable."));
+			///Error #2 folio report must have only one terminal
+		if (terminal != 1)
+		{
+			errors << qMakePair (tr("Absence de borne"),
+								 tr("<br><b>Erreur</b> :"
+									"<br>Les reports de folio doivent poss\351der une seul borne."
+									"<br><b>Solution</b> :"
+									"<br>Verifier que l'\351l\351ment ne poss\350de qu'une seul borne"));
 		}
 	}
-	
+
 	if (!errors.count() && !warnings.count()) return(true);
+
+		// Display warnings
+	QString dialog_message = tr("La v\351rification de cet \351l\351ment a g\351n\351r\351", "message box content");
+
+	if (errors.size())
+		dialog_message += QString(tr(" %n erreur(s)", "errors", errors.size()));
+
+	if (warnings.size())
+	{
+		if (errors.size())
+			dialog_message += QString (tr(" et"));
+
+		dialog_message += QString (tr(" %n avertissment(s)", "warnings", warnings.size()));
+	}
+	dialog_message += " :";
+
+	dialog_message += "<ol>";
 	QList<QETWarning> total = warnings << errors;
-	
-	// Display warnings
-	QString warning_message = tr(
-		"La v\351rification de cet \351l\351ment a g\351n\351r\351 %n avertissement(s)\240:",
-		"message box content",
-		total.count()
-	);
-	
-	warning_message += "<ol>";
 	foreach(QETWarning warning, total) {
-		warning_message += "<li>";
-		warning_message += QString(
+		dialog_message += "<li>";
+		dialog_message += QString(
 			tr("<b>%1</b>\240: %2", "warning title: warning description")
 		).arg(warning.first).arg(warning.second);
-		warning_message += "</li>";
+		dialog_message += "</li>";
 	}
-	warning_message += "</ol>";
+	dialog_message += "</ol>";
 
-	QMessageBox::warning(this, tr("Avertissements"), warning_message);
+	if (errors.size())
+		QMessageBox::critical(this, tr("Erreurs"), dialog_message);
+	else
+		QMessageBox::warning(this, tr("Avertissements"), dialog_message);
 
-	//if error == 0 that means they are only warning, we return true.
+		//if error == 0 that means they are only warning, we return true.
 	if (errors.count() == 0) return(true);
 	return false;
 }
