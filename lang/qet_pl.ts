@@ -4242,7 +4242,7 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="630"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;W przypadku braku terminala element nie może być połączony z innymi elementami za pomocą przewodów.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
@@ -4517,48 +4517,48 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="652"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b  &gt; :&lt;br&gt;Elementy nadrzędne, podrzędne i nieokreślone, odsyłacze do stron muszą zawierać pole tekstowe posiadające znacznik &apos;Etykieta&apos;,&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt; :&lt;br&gt;Wstaw pole tekstowe i nadaj mu znacznik &apos;Etykieta&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="674"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b&gt; :&lt;br&gt;Odsyłacze do stron muszą zawierać jeden terminal.&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt; :&lt;br&gt;Sprawdź czy element zawiera tylko jeden terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Weryfikacja elementu zakończona</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="687"/>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> %n błąd</numerusform>
+            <numerusform> %n błędy</numerusform>
+            <numerusform> %n błędów</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="692"/>
         <source> et</source>
-        <translation type="unfinished"></translation>
+        <translation> i</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source> %n avertissment(s)</source>
         <comment>warnings</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> %n ostrzeżenie</numerusform>
+            <numerusform> %n ostrzeżenia</numerusform>
+            <numerusform> %n ostrzeżeń</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="710"/>
         <source>Erreurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Błędy</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="673"/>
