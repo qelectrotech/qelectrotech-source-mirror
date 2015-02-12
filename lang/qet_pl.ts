@@ -1130,7 +1130,7 @@ dla przewodów o tym samym potencjale ?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
         <source>Bornier</source>
-        <translation>Terminal</translation>
+        <translation>Zacisk</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="81"/>
