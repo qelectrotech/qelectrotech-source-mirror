@@ -4239,7 +4239,7 @@ Opzioni disponibili:
         <location filename="../sources/editor/qetelementeditor.cpp" line="630"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;In assenza di terminale, l&apos;elemento non potrà essere collegato ad altri per mezzo di conduttori.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
@@ -4513,46 +4513,46 @@ Opzioni disponibili:
         <location filename="../sources/editor/qetelementeditor.cpp" line="652"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Errore&lt;/b  &gt;:&lt;br&gt;Gli elementi di tipo master, slave, semplice e riferimento devono possedere un campo di testo che abbia l&apos;etichetta  &apos;label&apos;.&lt;br&gt;&lt;b&gt;Soluzione&lt;/b&gt; :&lt;br&gt;Inserire un campo di testo a cui attribuire l&apos;etichetta &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="674"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Errore&lt;/b&gt; :&lt;br&gt;I riferimenti al foglio devono avere un solo terminale.&lt;br&gt;&lt;b&gt;Soluzione&lt;/b&gt; :&lt;br&gt;Verificare che l&apos;elemento ne possieda un solo</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>La verifica di questo elemento ha generato</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="687"/>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> %n errore</numerusform>
+            <numerusform> %n errori</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="692"/>
         <source> et</source>
-        <translation type="unfinished"></translation>
+        <translation> e</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source> %n avertissment(s)</source>
         <comment>warnings</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> %n avvertimento</numerusform>
+            <numerusform> %n avvertimenti</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="710"/>
         <source>Erreurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Errori</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="673"/>
