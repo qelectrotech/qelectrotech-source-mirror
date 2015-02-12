@@ -1,4 +1,4 @@
-<definition width="70" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
+<definition width="40" version="0.4" hotspot_x="18" hotspot_y="24" height="50" link_type="master" type="element" orientation="dyyy">
     <names>
         <name lang="ar">قاطع أحادي الوجه</name>
         <name lang="de">Lastschalter 2P</name>
@@ -7,8 +7,8 @@
         <name lang="fr">Disjoncteur mono</name>
         <name lang="pl">Wyłącznik</name>
         <name lang="es">Interruptor magnetotérmico</name>
-        <name lang="cs">Jistič 2</name>
         <name lang="nl">Lastscheider 2</name>
+        <name lang="cs">Jistič 2</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>
@@ -16,26 +16,24 @@
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="12" y="20" size="4" text="4"/>
-        <text x="2" y="20" size="4" text="2"/>
-        <text x="12" y="-18" size="4" text="3"/>
-        <text x="2" y="-18" size="4" text="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="2" y2="-10" x2="-2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-2" y2="-10" x2="2"/>
-        <input x="15" y="4.3333" size="4" text="Calibre __A"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="0" x1="-2" y2="0" x2="7"/>
-        <input x="14" y="-7.3333" size="9" text="_" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-12" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-12" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="20" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="5" y2="10" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="12" y2="-10" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="8" y2="-10" x2="12"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
-        <terminal x="10" y="-21" orientation="n"/>
-        <terminal x="10" y="21" orientation="s"/>
+        <polygon x4="5" y5="-10" x5="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="10" y2="10" x2="10" y3="-10" x3="5" y4="-10"/>
+        <text x="-8" y="18" size="4" text="2"/>
+        <text x="12" y="18" size="4" text="4"/>
+        <text x="13" y="-15" size="4" text="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-10" x2="10"/>
+        <polygon x4="-15" y5="-10" x5="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="-10" y2="10" x2="-10" y3="-10" x3="-15" y4="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-10" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="12" y2="-12" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-8" y2="-12" x2="-12"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="12" y2="-8" x2="8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-8" y2="-8" x2="-12"/>
+        <input x="17" y="5" size="4" text="Calibre __A" tagg="none"/>
+        <input x="16" y="-6.6666" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-12" y2="0" x2="7"/>
+        <text x="-8" y="-15" size="4" text="1"/>
+        <terminal x="-10" y="-20" orientation="n"/>
+        <terminal x="-10" y="20" orientation="s"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="10" y="20" orientation="s"/>
     </description>
 </definition>
