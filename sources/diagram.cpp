@@ -1134,11 +1134,23 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
  */
 QPointF Diagram::snapToGrid(const QPointF &p) {
 	// arrondit l'abscisse a 10 px pres
+	if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier) == true) {
+	// arrondit l'abscisse a 1 px pres
+	int p_x = qRound(p.x());
+	// arrondit l'ordonnee a 1 px pres
+	int p_y = qRound(p.y());
+	return (QPointF(p_x, p_y));
+	}
+	else if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier) == false) {
+	// arrondit l'ordonnee a 10 px pres
 	int p_x = qRound(p.x() / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
 	// arrondit l'ordonnee a 10 px pres
 	int p_y = qRound(p.y() / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
 	return (QPointF(p_x, p_y));
+	}
 }
+
+
 
 /**
 	Definit s'il faut afficher ou non les bornes
