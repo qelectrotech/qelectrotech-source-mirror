@@ -1132,22 +1132,20 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
  * @param p point to find the nearest snaped point
  * @return
  */
-QPointF Diagram::snapToGrid(const QPointF &p) {
-	// arrondit l'abscisse a 10 px pres
-	if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier) == true) {
-	// arrondit l'abscisse a 1 px pres
-	int p_x = qRound(p.x());
-	// arrondit l'ordonnee a 1 px pres
-	int p_y = qRound(p.y());
-	return (QPointF(p_x, p_y));
+QPointF Diagram::snapToGrid(const QPointF &p)
+{
+		//Return a point rounded to the nearest pixel
+	if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
+	{
+		int p_x = qRound(p.x());
+		int p_y = qRound(p.y());
+		return (QPointF(p_x, p_y));
 	}
-	else if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier) == false) {
-	// arrondit l'ordonnee a 10 px pres
-	int p_x = qRound(p.x() / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
-	// arrondit l'ordonnee a 10 px pres
-	int p_y = qRound(p.y() / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
+
+		//Return a point snapped to the grid
+	int p_x = qRound(p.x() / Diagram::xGrid) * Diagram::xGrid;
+	int p_y = qRound(p.y() / Diagram::yGrid) * Diagram::yGrid;
 	return (QPointF(p_x, p_y));
-	}
 }
 
 
