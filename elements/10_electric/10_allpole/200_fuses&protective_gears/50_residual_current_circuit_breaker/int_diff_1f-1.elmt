@@ -30,8 +30,6 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <arc width="6" x="17.5" y="10" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <input x="-10" y="29" size="4" text="2" tagg="none"/>
         <input x="10" y="-26" size="4" text="3" tagg="none"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="-35" y2="34" x2="-35"/>
-        <polygon x4="-25" y5="30" x5="-20" antialias="true" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="30" x1="-35" y2="30" x2="-29" y3="33" x3="-27" y4="30"/>
         <input x="-10" y="-26" size="4" text="1" tagg="none"/>
         <rect width="12" x="-26" y="-16" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="10" y="29" size="4" text="4" tagg="none"/>
@@ -43,7 +41,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="20" y2="-20" x2="20"/>
         <input x="23" y="-9.5" size="9" text="_" tagg="label"/>
         <rect width="18" x="-41" y="7" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-4" x1="-20" y2="30" x2="-20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-4" x1="-20" y2="13" x2="-20"/>
         <text x="-36" y="16" size="6" text="IΔ"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-32" y2="4" x2="20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22" x1="-32" y2="22" x2="20"/>
