@@ -112,60 +112,148 @@ void StyleEditor::updatePart() {
 }
 
 /// Update antialiasing with undo command
-void StyleEditor::updatePartAntialiasing()   { addChangePartCommand(tr("style antialiasing"), part, "antialias",   antialiasing -> isChecked()); }
+void StyleEditor::updatePartAntialiasing()
+{
+	if (part)
+		addChangePartCommand(tr("style antialiasing"), part, "antialias",   antialiasing -> isChecked());
+	else if (!m_part_list.isEmpty())
+		addChangePartCommand(tr("style antialiasing"), m_cep_list, "antialias",   antialiasing -> isChecked());
+}
+
 /// Update color with undo command
-void StyleEditor::updatePartColor()          { addChangePartCommand(tr("style couleur"),      part, "color",       outline_color->itemData(outline_color -> currentIndex()));}
+void StyleEditor::updatePartColor()
+{
+	if (part)
+		addChangePartCommand(tr("style couleur"), part, "color", outline_color->itemData(outline_color -> currentIndex()));
+	else if (!m_part_list.isEmpty())
+		addChangePartCommand(tr("style couleur"), m_cep_list, "color", outline_color->itemData(outline_color -> currentIndex()));
+}
+
 /// Update style with undo command
-void StyleEditor::updatePartLineStyle()      { addChangePartCommand(tr("style ligne"),        part, "line_style",  line_style->itemData(line_style -> currentIndex()));}
+void StyleEditor::updatePartLineStyle()
+{
+	if (part)
+		addChangePartCommand(tr("style ligne"), part, "line_style", line_style->itemData(line_style -> currentIndex()));
+	else if (!m_part_list.isEmpty())
+		addChangePartCommand(tr("style ligne"), m_cep_list, "line_style", line_style->itemData(line_style -> currentIndex()));
+}
+
 /// Update weight with undo command
-void StyleEditor::updatePartLineWeight()     { addChangePartCommand(tr("style epaisseur"),    part, "line_weight", size_weight->itemData(size_weight -> currentIndex()));}
+void StyleEditor::updatePartLineWeight()
+{
+	if (part)
+		addChangePartCommand(tr("style epaisseur"), part, "line_weight", size_weight->itemData(size_weight -> currentIndex()));
+	else if (!m_part_list.isEmpty())
+		addChangePartCommand(tr("style epaisseur"), m_cep_list, "line_weight", size_weight->itemData(size_weight -> currentIndex()));
+}
+
 /// Update color filling with undo command
-void StyleEditor::updatePartFilling()        { addChangePartCommand(tr("style remplissage"),  part, "filling",     filling_color->itemData(filling_color -> currentIndex()));}
+void StyleEditor::updatePartFilling()
+{
+	if(part)
+		addChangePartCommand(tr("style remplissage"), part, "filling", filling_color->itemData(filling_color -> currentIndex()));
+	else if (!m_part_list.isEmpty())
+		addChangePartCommand(tr("style remplissage"), m_cep_list, "filling", filling_color->itemData(filling_color -> currentIndex()));
+}
 
 /**
  * @brief StyleEditor::updateForm
- * Update the edition form
+ * Update the edition form according to the value of edited part(s)
  */
-void StyleEditor::updateForm() {
-	if (!part) return;
+void StyleEditor::updateForm()
+{
+	if (!part && m_part_list.isEmpty()) return;
 	activeConnections(false);
-	// lit l'antialiasing
-	antialiasing -> setChecked(part -> antialiased());
-	
-	// lit la couleur
-	outline_color -> setCurrentIndex(part -> color());
-	
-	// lit le style
-	line_style -> setCurrentIndex(part -> lineStyle());
-	
-	// lit l'epaisseur
-	size_weight -> setCurrentIndex(part -> lineWeight());
 
-	// lit le remplissage
-	filling_color -> setCurrentIndex(part -> filling());
+	if (part)
+	{
+		antialiasing -> setChecked(part -> antialiased());
+		outline_color -> setCurrentIndex(part -> color());
+		line_style    -> setCurrentIndex(part -> lineStyle());
+		size_weight   -> setCurrentIndex(part -> lineWeight());
+		filling_color -> setCurrentIndex(part -> filling());
+	}
+	else if (m_part_list.size())
+	{
+		CustomElementGraphicPart *first_part = m_part_list.first();
+		antialiasing -> setChecked(first_part -> antialiased());
+		outline_color -> setCurrentIndex(first_part -> color());
+		line_style    -> setCurrentIndex(first_part -> lineStyle());
+		size_weight   -> setCurrentIndex(first_part -> lineWeight());
+		filling_color -> setCurrentIndex(first_part -> filling());
+
+		foreach (CustomElementGraphicPart *cegp, m_part_list)
+		{
+			if (first_part -> antialiased() != cegp -> antialiased()) antialiasing -> setChecked(false);
+			if (first_part -> color()       != cegp -> color())      outline_color -> setCurrentIndex(-1);
+			if (first_part -> lineStyle()   != cegp -> lineStyle())  line_style    -> setCurrentIndex(-1);
+			if (first_part -> lineWeight()  != cegp -> lineWeight()) size_weight   -> setCurrentIndex(-1);
+			if (first_part -> filling()     != cegp -> filling())    filling_color -> setCurrentIndex(-1);
+		}
+	}
+
 	activeConnections(true);
 }
 
 /**
-	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
-	qu'un editeur peut accepter ou refuser d'editer une primitive.
-	L'editeur de ligne acceptera d'editer la primitive new_part s'il s'agit d'un
-	objet de la classe CustomElementGraphicPart.
-	@param new_part Nouvelle primitive a editer
-	@return true si l'editeur a accepter d'editer la primitive, false sinon
-*/
+ * @brief StyleEditor::setPart
+ * Set the part to edit by this editor.
+ * Note : editor can accept or refuse to edit a part
+ * @param new_part : part to edit
+ * @return  true if editor accept to edit this CustomElementPart otherwise false
+ */
 bool StyleEditor::setPart(CustomElementPart *new_part) {
-	if (!new_part) {
-		part = 0;
+	m_part_list.clear();
+
+	if (!new_part)
+	{
+		part = nullptr;
 		return(true);
 	}
-	if (CustomElementGraphicPart *part_graphic = dynamic_cast<CustomElementGraphicPart *>(new_part)) {
+
+	if (CustomElementGraphicPart *part_graphic = dynamic_cast<CustomElementGraphicPart *>(new_part))
+	{
 		part = part_graphic;
 		updateForm();
 		return(true);
-	} else {
-		return(false);
 	}
+
+	return(false);
+}
+
+/**
+ * @brief StyleEditor::setParts
+ * Set several parts to edit by this editor.
+ * Note : editor can accept or refuse to edit several parts.
+ * @param part_list
+ * @return true if every customeElementPart stored in part_list can
+ * be edited by this part editor, otherwise return false
+ * (see StyleEditor::isStyleEditable)
+ */
+bool StyleEditor::setParts(QList<CustomElementPart *> part_list)
+{
+	if (part_list.isEmpty()) return false;
+	if (part_list.size() == 1) return setPart(part_list.first());
+
+	part = nullptr;
+	m_part_list.clear();
+	m_cep_list.clear();
+
+	if (!isStyleEditable(part_list)) return false;
+
+	foreach (CustomElementPart *cep, part_list)
+	{
+		if (CustomElementGraphicPart *cegp = dynamic_cast<CustomElementGraphicPart *>(cep))
+			m_part_list << cegp;
+		else
+			return false;
+	}
+
+	foreach (CustomElementGraphicPart *cegp, m_part_list)
+		m_cep_list << cegp;
+
+	updateForm();
+	return true;
 }
 
 /**
@@ -173,6 +261,23 @@ bool StyleEditor::setPart(CustomElementPart *new_part) {
 */
 CustomElementPart *StyleEditor::currentPart() const {
 	return(part);
+}
+
+/**
+ * @brief StyleEditor::isStyleEditable
+ * @param cep_list
+ * @return true if all of the content of cep_list can be edited by style editor, else return false.
+ */
+bool StyleEditor::isStyleEditable(QList<CustomElementPart *> cep_list)
+{
+	QStringList str;
+	str << "arc" << "ellipse" << "line" << "polygon" << "rect";
+
+	foreach (CustomElementPart *cep, cep_list)
+		if (!str.contains(cep -> xmlName()))
+			return false;
+
+	return true;
 }
 
 /**

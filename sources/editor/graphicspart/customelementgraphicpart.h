@@ -61,7 +61,6 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 			//Line color
 		enum Color {BlackColor, WhiteColor, GreenColor, RedColor, BlueColor};
 	
-
 		// constructors, destructor
 	public:
 
@@ -71,21 +70,21 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		static void drawCross (const QPointF &center, QPainter *painter);
 
 			//Getter and setter
-		LineStyle lineStyle    () const             {return _linestyle;}
-		void      setLineStyle (const LineStyle ls) {_linestyle = ls;}
+		LineStyle lineStyle    () const {return _linestyle;}
+		void      setLineStyle (const LineStyle ls);
 
-		LineWeight lineWeight    () const              {return _lineweight;}
-		void       setLineWeight (const LineWeight lw) {_lineweight = lw;}
+		LineWeight lineWeight    () const {return _lineweight;}
+		void       setLineWeight (const LineWeight lw);
 		qreal      penWeight     () const;
 
-		Filling filling   () const          {return _filling;}
-		void    setFilling(const Filling f) {_filling = f;}
+		Filling filling   () const {return _filling;}
+		void    setFilling(const Filling f);
 
-		Color color   () const        {return _color;}
-		void  setColor(const Color c) {_color = c;}
+		Color color   () const {return _color;}
+		void  setColor(const Color c);
 
-		bool antialiased   () const       {return _antialiased;}
-		void setAntialiased(const bool b) {_antialiased = b;}
+		bool antialiased   () const {return _antialiased;}
+		void setAntialiased(const bool b);
 			//End of getter and setter
 
 

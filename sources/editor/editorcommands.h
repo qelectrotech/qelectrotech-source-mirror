@@ -26,31 +26,33 @@
 #include <QtGui>
 
 /**
-	ElementEditionCommand is the base class for all commands classes involved in
+ * @brief The ElementEditionCommand class
+ * 	ElementEditionCommand is the base class for all commands classes involved in
 	the edition of an electrical element. It provides commonly required methods
 	and attributes, such as accessors to the modified scene and view.
-*/
-class ElementEditionCommand : public QUndoCommand {
-	// constructors, destructor
+ */
+class ElementEditionCommand : public QUndoCommand
+{
+		// constructors, destructor
 	public:
-	ElementEditionCommand(ElementScene * = 0, ElementView * = 0, QUndoCommand * = 0);
-	ElementEditionCommand(const QString &, ElementScene * = 0, ElementView * = 0, QUndoCommand * = 0);
-	virtual ~ElementEditionCommand();
+		ElementEditionCommand(ElementScene * = 0, ElementView * = 0, QUndoCommand * = 0);
+		ElementEditionCommand(const QString &, ElementScene * = 0, ElementView * = 0, QUndoCommand * = 0);
+		virtual ~ElementEditionCommand();
 	private:
-	ElementEditionCommand(const ElementEditionCommand &);
+		ElementEditionCommand(const ElementEditionCommand &);
 	
-	// methods
+		// methods
 	public:
-	ElementScene *elementScene() const;
-	void setElementScene(ElementScene *);
-	ElementView *elementView() const;
-	void setElementView(ElementView *);
+		ElementScene *elementScene() const;
+		void setElementScene(ElementScene *);
+		ElementView *elementView() const;
+		void setElementView(ElementView *);
 	
-	// attributes
+		// attributes
 	protected:
-	/// Element editor/view/scene the command should take place on
-	ElementScene *editor_scene_;
-	ElementView *editor_view_;
+		/// Element editor/view/scene the command should take place on
+		ElementScene *editor_scene_;
+		ElementView *editor_view_;
 };
 
 /**

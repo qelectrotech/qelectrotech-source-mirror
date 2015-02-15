@@ -26,41 +26,47 @@ class CustomElementGraphicPart;
 	Its appendWidget() method makes the insertion of another widget below it
 	easier.
 */
-class StyleEditor : public ElementItemEditor {
-	Q_OBJECT
-	// constructors, destructor
+class StyleEditor : public ElementItemEditor
+{
+		Q_OBJECT
+		// constructors, destructor
 	public:
-	StyleEditor(QETElementEditor *, CustomElementGraphicPart * = 0, QWidget * = 0);
-	virtual ~StyleEditor();
+		StyleEditor(QETElementEditor *, CustomElementGraphicPart * = 0, QWidget * = 0);
+		virtual ~StyleEditor();
 	
 	private:
-	StyleEditor(const StyleEditor &);
+		StyleEditor(const StyleEditor &);
 	
-	// attributes
+		// attributes
 	private:
-	CustomElementGraphicPart *part;
-	QVBoxLayout *main_layout;
-	QRadioButton *black_color, *white_color,  *normal_style, *dashed_style, *dashdotted_style, *dotted_style, *green_color, *red_color, *blue_color;
-	QRadioButton *none_weight, *thin_weight, *normal_weight, *no_filling;
-	QRadioButton *black_filling, *white_filling, *green_filling, *red_filling, *blue_filling;
-	QCheckBox *antialiasing;
-	QComboBox *filling_color, *outline_color, *size_weight, *line_style;
+		CustomElementGraphicPart *part;
+		QList <CustomElementGraphicPart *> m_part_list;
+		QList <CustomElementPart *> m_cep_list;
+		QVBoxLayout *main_layout;
+		QRadioButton *black_color, *white_color,  *normal_style, *dashed_style, *dashdotted_style, *dotted_style, *green_color, *red_color, *blue_color;
+		QRadioButton *none_weight, *thin_weight, *normal_weight, *no_filling;
+		QRadioButton *black_filling, *white_filling, *green_filling, *red_filling, *blue_filling;
+		QCheckBox *antialiasing;
+		QComboBox *filling_color, *outline_color, *size_weight, *line_style;
 	
-	// methods
+		// methods
 	public:
-	virtual bool setPart(CustomElementPart *);
-	virtual CustomElementPart *currentPart() const;
+		virtual bool setPart(CustomElementPart *);
+		virtual bool setParts(QList<CustomElementPart *>);
+		virtual CustomElementPart *currentPart() const;
+
+		static bool isStyleEditable (QList <CustomElementPart *> cep_list);
 	
 	public slots:
-	void updatePart();
-	void updateForm();
-	void updatePartAntialiasing();
-	void updatePartColor();
-	void updatePartLineStyle();
-	void updatePartLineWeight();
-	void updatePartFilling();
+		void updatePart();
+		void updateForm();
+		void updatePartAntialiasing();
+		void updatePartColor();
+		void updatePartLineStyle();
+		void updatePartLineWeight();
+		void updatePartFilling();
 	
 	private:
-	void activeConnections(bool);
+		void activeConnections(bool);
 };
 #endif

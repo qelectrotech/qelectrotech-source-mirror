@@ -26,31 +26,38 @@ class CustomElementPart;
 	provides methods to access the editor itself, the undo stack, the edition
 	scene and even a method to easily take a ChangePartCommand into account.
 */
-class ElementItemEditor : public QWidget {
-	Q_OBJECT
-	// constructors, destructor
+class ElementItemEditor : public QWidget
+{
+		Q_OBJECT
+		// constructors, destructor
 	public:
-	ElementItemEditor(QETElementEditor *, QWidget * = 0);
-	virtual ~ElementItemEditor() {};
+		ElementItemEditor(QETElementEditor *, QWidget * = 0);
+		virtual ~ElementItemEditor() {};
 	private:
-	ElementItemEditor(const ElementItemEditor &);
+		ElementItemEditor(const ElementItemEditor &);
 	
-	// methods
+		// methods
 	public:
-	virtual QETElementEditor *elementEditor() const;
-	virtual ElementScene *elementScene() const;
-	virtual QUndoStack &undoStack() const;
-	virtual void addChangePartCommand(const QString &, CustomElementPart *, const char *, const QVariant &);
-	virtual QString elementTypeName() const;
-	virtual void setElementTypeName(const QString &);
-	virtual void detach();
-	virtual bool setPart(CustomElementPart *) = 0;
-	virtual CustomElementPart *currentPart() const = 0;
-	virtual void updateForm() = 0;
+		virtual QETElementEditor *elementEditor() const;
+		virtual ElementScene *elementScene() const;
+		virtual QUndoStack &undoStack() const;
+
+		virtual void addChangePartCommand(const QString &, CustomElementPart *, const char *, const QVariant &);
+		virtual void addChangePartCommand(const QString &, QList<CustomElementPart *>, const char *, const QVariant &);
+
+		virtual QString elementTypeName() const;
+		virtual void setElementTypeName(const QString &);
+		virtual void detach();
+
+		virtual bool setPart(CustomElementPart *) = 0;
+		virtual bool setParts(QList <CustomElementPart *>) {return false;}
+
+		virtual CustomElementPart *currentPart() const = 0;
+		virtual void updateForm() = 0;
 	
-	// attributes
+		// attributes
 	private:
-	QETElementEditor *element_editor;
-	QString element_type_name;
+		QETElementEditor *element_editor;
+		QString element_type_name;
 };
 #endif

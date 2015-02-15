@@ -40,6 +40,7 @@
 #include "textfieldeditor.h"
 #include "partterminal.h"
 #include "parttextfield.h"
+#include "styleeditor.h"
 
 #include "eseventaddline.h"
 #include "eseventaddrect.h"
@@ -499,6 +500,7 @@ void QETElementEditor::setupInterface() {
 	editors_["terminal"]  = new TerminalEditor(this);
 	editors_["text"]      = new TextEditor(this);
 	editors_["input"]     = new TextFieldEditor(this);
+	editors_["style"]     = new StyleEditor(this);
 	
 	// panel sur le cote pour editer les parties
 	tools_dock = new QDockWidget(tr("Informations", "dock title"), this);
@@ -565,33 +567,73 @@ void QETElementEditor::slot_setNoDragToView() {
 */
 void QETElementEditor::slot_updateInformations() {
 	QList<QGraphicsItem *> selected_qgis = ce_scene -> selectedItems();
+	QList<CustomElementPart *> cep_list;
+	bool style_editable = false;
+
+		//Test if part are editable by style editor
+	if (selected_qgis.size() >= 2)
+	{
+		style_editable = true;
+		foreach (QGraphicsItem *qgi, selected_qgis)
+		{
+			if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi))
+				cep_list << cep;
+			else
+				style_editable = false;
+		}
+		if (style_editable)
+			style_editable = StyleEditor::isStyleEditable(cep_list);
+
+	}
 	
 	clearToolsDock();
 	
-	// s'il n'y a qu'une seule primitive selectionnee
-	if (selected_qgis.size() == 1) {
+		//There's one selected item
+	if (selected_qgis.size() == 1)
+	{
 		QGraphicsItem *qgi = selected_qgis.first();
-		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi)) {
+		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi))
+		{
 			// on en ajoute le widget d'edition
 			QString selection_xml_name = selection -> xmlName();
 			ElementItemEditor *selection_editor = editors_[selection_xml_name];
-			if (selection_editor) {
-				if (selection_editor -> setPart(selection)) {
+			if (selection_editor)
+			{
+				if (selection_editor -> setPart(selection))
+				{
 					tools_dock_scroll_area_ -> setWidget(selection_editor);
 					tools_dock_stack_ -> setCurrentIndex(1);
-				} else {
+				}
+				else
+				{
 					qDebug() << "Editor refused part.";
 				}
 			}
 		}
-	} else {
-		default_informations -> setText(
-			tr(
-				"%n partie(s) s\351lectionn\351e(s).",
-				"",
-				selected_qgis.size()
-			)
-		);
+	}
+		//There's several parts selecteds and all can be edited by style editor.
+	else if (style_editable)
+	{
+		ElementItemEditor *selection_editor = editors_["style"];
+		if (selection_editor)
+		{
+			if (selection_editor -> setParts(cep_list))
+			{
+				tools_dock_scroll_area_ -> setWidget(selection_editor);
+				tools_dock_stack_ -> setCurrentIndex(1);
+			}
+			else
+			{
+				qDebug() << "Editor refused part.";
+			}
+		}
+	}
+		//Else we only display the number of selected items
+	else
+	{
+		default_informations -> setText(tr("%n partie(s) s\351lectionn\351e(s).",
+										   "",
+										   selected_qgis.size()));
 		default_informations -> setAlignment(Qt::AlignHCenter | Qt::AlignTop);
 		tools_dock_stack_ -> setCurrentIndex(0);
 	}

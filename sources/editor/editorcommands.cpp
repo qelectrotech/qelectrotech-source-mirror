@@ -331,14 +331,22 @@ ChangePartCommand::ChangePartCommand(
 ChangePartCommand::~ChangePartCommand() {
 }
 
-/// Annule le changement
-void ChangePartCommand::undo() {
+/**
+ * @brief ChangePartCommand::undo
+ */
+void ChangePartCommand::undo()
+{
 	cep -> setProperty(property, old_value);
+	ElementEditionCommand::undo();
 }
 
-/// Refait le changement
-void ChangePartCommand::redo() {
+/**
+ * @brief ChangePartCommand::redo
+ */
+void ChangePartCommand::redo()
+{
 	cep -> setProperty(property, new_value);
+	ElementEditionCommand::redo();
 }
 
 /**

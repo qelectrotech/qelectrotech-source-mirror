@@ -66,6 +66,30 @@ void CustomElementGraphicPart::drawCross(const QPointF &center, QPainter *painte
 }
 
 /**
+ * @brief CustomElementGraphicPart::setLineStyle
+ * Set line style to ls
+ * @param ls
+ */
+void CustomElementGraphicPart::setLineStyle(const LineStyle ls)
+{
+	if (_linestyle == ls) return;
+	_linestyle = ls;
+	update();
+}
+
+/**
+ * @brief CustomElementGraphicPart::setLineWeight
+ * Set line weight to lw
+ * @param lw
+ */
+void CustomElementGraphicPart::setLineWeight(const LineWeight lw)
+{
+	if (_lineweight == lw) return;
+	_lineweight = lw;
+	update();
+}
+
+/**
  * @brief CustomElementGraphicPart::penWeight
  * @return the weight of pen
  */
@@ -76,6 +100,42 @@ qreal CustomElementGraphicPart::penWeight() const
 	else if (_lineweight == UltraWeight)  return 2;
 	else if (_lineweight == BigWeight)    return 5;
 	return 1;
+}
+
+/**
+ * @brief CustomElementGraphicPart::setFilling
+ * Set filling to f
+ * @param f
+ */
+void CustomElementGraphicPart::setFilling(const Filling f)
+{
+	if (_filling == f) return;
+	_filling = f;
+	update();
+}
+
+/**
+ * @brief CustomElementGraphicPart::setColor
+ * Set color to c
+ * @param c
+ */
+void CustomElementGraphicPart::setColor(const Color c)
+{
+	if (_color == c) return;
+	_color = c;
+	update();
+}
+
+/**
+ * @brief CustomElementGraphicPart::setAntialiased
+ * Set antialias to b
+ * @param b
+ */
+void CustomElementGraphicPart::setAntialiased(const bool b)
+{
+	if (_antialiased == b) return;
+	_antialiased = b;
+	update();
 }
 
 /**

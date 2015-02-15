@@ -75,6 +75,38 @@ void ElementItemEditor::addChangePartCommand(const QString &desc, CustomElementP
 	);
 }
 
+/**
+ * @brief ElementItemEditor::addChangePartCommand
+ * Add a ChangePartCommand with child for each part of part_list to the undo stack
+ * @param undo_text : text of undo command to display
+ * @param part_list : list of parts to modify
+ * @param property : QProperty (of CustomElementPart) to modify
+ * @param new_value : the new value of the QProperty
+ */
+void ElementItemEditor::addChangePartCommand(const QString &undo_text, QList<CustomElementPart *> part_list, const char *property, const QVariant &new_value)
+{
+	if (part_list.isEmpty()) return;
+
+		//Get only the parts concerned  by modification
+	QList <CustomElementPart *> updated_part;
+	foreach (CustomElementPart *cep, part_list)
+		if (cep->property(property) != new_value)
+			updated_part << cep;
+
+		//There is not part to modify
+	if(updated_part.isEmpty()) return;
+
+		//Set the first part has parent undo
+	CustomElementPart *p_cep = updated_part.takeFirst();
+	QUndoCommand *parent_undo = new ChangePartCommand (undo_text, p_cep, property, p_cep->property(property), new_value);
+
+		//And other parts are just child of parent
+	foreach (CustomElementPart *cep, updated_part)
+		new ChangePartCommand (undo_text, cep, property, cep->property(property), new_value, parent_undo);
+
+	undoStack().push(parent_undo);
+}
+
 /// @return Le nom du type d'element edite
 QString ElementItemEditor::elementTypeName() const {
 	return(element_type_name);
