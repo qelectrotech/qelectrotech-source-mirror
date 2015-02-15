@@ -4,6 +4,7 @@
         <name lang="fr">Interfaces homme/machine</name>
         <name lang="it">Interfaccia uomo/macchina (HMI)</name>
         <name lang="de">Mensch/Maschine-Schnittstellen</name>
+        <name lang="pl">Mens/Interfejsy człowiek-urządzenie</name>
         <name lang="nl">Mens/Machine Interface</name>
     </names>
 </qet-directory>
