@@ -1,6 +1,7 @@
 <definition width="120" version="0.4" hotspot_x="58" hotspot_y="60" height="120" link_type="simple" type="element" orientation="dyyy">
     <names>
         <name lang="en">NE555</name>
+        <name lang="pl">NE555</name>
     </names>
     <informations></informations>
     <description>
