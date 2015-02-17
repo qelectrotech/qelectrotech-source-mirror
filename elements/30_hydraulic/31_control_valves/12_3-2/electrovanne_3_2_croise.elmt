@@ -1,0 +1,38 @@
+<definition width="70" version="0.4" hotspot_x="32" hotspot_y="24" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">موزع 2/3</name>
+        <name lang="en">Control valve 3-2</name>
+        <name lang="it">Valvola di controllo 3-2</name>
+        <name lang="fr">Distributeur 3-2</name>
+        <name lang="pl">Zawór sterujący 3/2</name>
+        <name lang="nl">P -> A, A -> T 3-2</name>
+        <name lang="cs">Regulativní ventil 3/2</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="5" y="19" size="6" text="t"/>
+        <polygon x4="-15" y5="-10" x5="-15" y6="-10.5" x6="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-15" y2="-10" x2="25" y3="10" x3="25" y4="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="18" y2="7" x2="22"/>
+        <text x="24" y="18" size="6" text="p"/>
+        <text x="21" y="-11" size="6" text="a"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.8007" x1="31.6836" y2="4.8515" x2="35.5859"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.6406" x1="29.2578" y2="-5.8007" x2="31.5781"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.3164" x1="25.1" y2="4.6835" x2="29.1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.8164" x1="-27" y2="4.1835" x2="-18"/>
+        <polygon x4="-30" y5="-5.3164" x5="-15" y6="-5.3164" x6="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5.3164" x1="-15" y2="4.6835" x2="-15" y3="4.6835" x3="-30" y4="-5.3164"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="5" y2="10" x2="5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-12" y2="7" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10" x1="20" y2="9" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="20" y2="10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-10" y2="10" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="10.0578" x1="0" y2="-9.05333" x2="0"/>
+        <input x="-37" y="-26.5" size="9" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="15" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="15" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="20" y2="-10" x2="20"/>
+        <terminal x="10" y="15" orientation="s"/>
+        <terminal x="20" y="15" orientation="s"/>
+        <terminal x="20" y="-15" orientation="n"/>
+    </description>
+</definition>

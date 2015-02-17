@@ -423,7 +423,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation>Nur eine Potenzialbeschriftung je Seite anzeigen.</translation>
+        <translation>Nur eine Potenzialbeschriftung je Folie anzeigen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
@@ -695,7 +695,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="49"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation>Seiteneigenschaften</translation>
+        <translation>Folieneigenschaften</translation>
     </message>
 </context>
 <context>
@@ -754,7 +754,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/diagramschooser.cpp" line="165"/>
         <source>Schéma sans titre</source>
-        <translation>Schaltplan ohne Titel</translation>
+        <translation>Folie ohne Titel</translation>
     </message>
 </context>
 <context>
@@ -762,7 +762,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation>Schaltplananmerkung</translation>
+        <translation>Leiterbeschriftung</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
@@ -772,7 +772,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="42"/>
         <source>Annotation</source>
-        <translation>Anmerkung</translation>
+        <translation>Beschriftung</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="50"/>
@@ -792,22 +792,22 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nummerierung des ausgewählten Schaltplans&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nummerierung der ausgewählten Folien&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
         <source>Annotation (alpha)</source>
-        <translation>Anmerkung (alpha)</translation>
+        <translation>Beschriftung (alpha)</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nummerierung im ausgewählten Schaltplan entfernt&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nummerierung in ausgewählten Folien entfernen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
         <source>Supprimer l&apos;annotation</source>
-        <translation>Anmerkung löschen</translation>
+        <translation>Beschriftung löschen</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="147"/>
@@ -1465,7 +1465,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
         <location filename="../sources/elementspanel.cpp" line="451"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation>Ziehen und Ablegen vom Plotrahmen auf die Seite, um ihn anzuwenden.</translation>
+        <translation>Ziehen und Ablegen vom Plotrahmen auf die Folie, um ihn anzuwenden.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="463"/>
@@ -1488,7 +1488,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
         <location filename="../sources/elementspanel.cpp" line="484"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation>Ziehen und Ablegen vom Bauteil « %1 » auf die Seite, um ihn einzufügen. Doppelklick zum Bearbeiten</translation>
+        <translation>Ziehen und Ablegen vom Bauteil « %1 » auf die Folie, um ihn einzufügen. Doppelklick zum Bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="590"/>
@@ -1614,37 +1614,37 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Propriétés du schéma</source>
-        <translation>Seiteneigenschaften</translation>
+        <translation>Folieneigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Ajouter un schéma</source>
-        <translation>neue Seite hinzufügen</translation>
+        <translation>neue Folie hinzufügen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Supprimer ce schéma</source>
-        <translation>Seite löschen</translation>
+        <translation>Folie löschen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Remonter ce schéma</source>
-        <translation>Seite nach oben verschieben</translation>
+        <translation>Folie nach oben verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Abaisser ce schéma</source>
-        <translation>Seite nach unten verschieben</translation>
+        <translation>Folie nach unten verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Remonter ce schéma x10</source>
-        <translation>Seite 10 Positionen nach oben verschieben</translation>
+        <translation>Folie 10 Positionen nach oben verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Abaisser ce schéma x10</source>
-        <translation>Seite 10 Positionen nach unten verschieben</translation>
+        <translation>Folie 10 Positionen nach unten verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
@@ -1778,7 +1778,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="75"/>
         <source>Choisissez les schémas que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation>Wählen Sie die zu exportierenden Blätter und ihre Maße:</translation>
+        <translation>Wählen Sie die zu exportierenden Folien und ihre Maße:</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="78"/>
@@ -1793,7 +1793,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="141"/>
         <source>Schéma</source>
-        <translation>Seite</translation>
+        <translation>Folie</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="142"/>
@@ -1819,7 +1819,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="434"/>
         <source>Folio</source>
-        <translation>Seite</translation>
+        <translation>Folie</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="435"/>
@@ -1836,7 +1836,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
         <location filename="../sources/exportdialog.cpp" line="770"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
-        <translation>Sie müssen einen einmaligen Dateinamen für jede zu exportierende Seite vergeben.</translation>
+        <translation>Sie müssen einen einmaligen Dateinamen für jede zu exportierende Folie vergeben.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="785"/>
@@ -2141,7 +2141,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
         <location filename="../sources/genericpanel.cpp" line="242"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Dies ist ein QElectroTech-Projekt. Es trägt die Dateierweiterung .qet und beinhaltet ein oder mehrere Blätter. Außerdem sind die in diesem Projekt benutzten Bauteile und Plotrahmen auch in der .qet-Datei mit integriert.</translation>
+        <translation>Dies ist ein QElectroTech-Projekt. Es trägt die Dateierweiterung .qet und beinhaltet eine oder mehrere Folie(n). Außerdem sind die in diesem Projekt benutzten Bauteile und Plotrahmen auch in der .qet-Datei mit integriert.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="304"/>
@@ -2153,13 +2153,13 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
         <location filename="../sources/genericpanel.cpp" line="309"/>
         <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Diese Bauteilkategorie beinhaltet automatisch sämtliche Bauteile, die auf den Blättern des Projekts dargestellt sind.</translation>
+        <translation>Diese Bauteilkategorie beinhaltet automatisch sämtliche Bauteile, die im Projekt verwendet werden.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="368"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation>Seite ohne Titel</translation>
+        <translation>Folie ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="375"/>
@@ -2182,7 +2182,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
         <location filename="../sources/genericpanel.cpp" line="545"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Diese Plotrahmenvorlage kann auf eine Seite angewendet werden.</translation>
+        <translation>Diese Plotrahmenvorlage kann auf eine Folie angewendet werden.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="730"/>
@@ -2194,7 +2194,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
         <location filename="../sources/genericpanel.cpp" line="884"/>
         <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Dies ist ein Bauteil, das auf eine Seite hinzugefügt werden kann.</translation>
+        <translation>Dies ist ein Bauteil, das auf eine Folie hinzugefügt werden kann.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1170"/>
@@ -2510,7 +2510,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
         <source>Rechercher dans le folio :</source>
-        <translation>In der Seite suchen: </translation>
+        <translation>In der Folie suchen: </translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
@@ -2585,7 +2585,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="140"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="154"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation>Seite  %1 (%2), Position %3.</translation>
+        <translation>Folie  %1 (%2), Position %3.</translation>
     </message>
 </context>
 <context>
@@ -2635,7 +2635,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="72"/>
         <source>Schéma</source>
-        <translation>Seite</translation>
+        <translation>Folie</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="73"/>
@@ -2656,7 +2656,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
         <location filename="../sources/configpages.cpp" line="172"/>
         <source>Nouveau schéma</source>
         <comment>configuration page title</comment>
-        <translation>Neue Seite</translation>
+        <translation>Neue Folie</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="173"/>
@@ -2787,7 +2787,7 @@ Die Änderungen können nicht rückgängig gemacht werden.</translation>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="53"/>
         <source>N° folio</source>
-        <translation>Seitenzahl</translation>
+        <translation>Foliennummer</translation>
     </message>
 </context>
 <context>
@@ -2875,7 +2875,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <location filename="../sources/projectconfigpages.cpp" line="253"/>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation>Verfügbare Nummerierungen:</translation>
+        <translation>Verfügbare Nummerierungsregeln:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="260"/>
@@ -2894,7 +2894,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <location filename="../sources/projectconfigpages.cpp" line="325"/>
         <location filename="../sources/projectconfigpages.cpp" line="346"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation>Name der neuen Nummerierung</translation>
+        <translation>Name der neuen Nummerierungsregel</translation>
     </message>
 </context>
 <context>
@@ -2915,13 +2915,13 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <location filename="../sources/projectconfigpages.cpp" line="163"/>
         <source>Ce titre sera disponible pour tous les schémas de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation>Der Titel wird aller Seiten des Projektes als %projecttitle bereitgestellt.</translation>
+        <translation>Der Titel wird aller Folien des Projektes als %projecttitle bereitgestellt.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="165"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>Definieren Sie hier benutzerdefinierte Einstellungen, die für alle Seiten des Projektes gelten (typisch für Plotrahmendaten).</translation>
+        <translation>Definieren Sie hier benutzerdefinierte Einstellungen, die für alle Folien des Projektes gelten (typisch für Plotrahmendaten).</translation>
     </message>
 </context>
 <context>
@@ -2954,13 +2954,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/projectview.cpp" line="371"/>
         <source>Supprimer le schéma ?</source>
         <comment>message box title</comment>
-        <translation>Seite löschen?</translation>
+        <translation>Folie löschen?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="372"/>
         <source>Êtes-vous sûr de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation>Möchten Sie wirklich diese Seite endgültig löschen? Die Änderung kann nicht rückgängig gemacht werden.</translation>
+        <translation>Möchten Sie wirklich diese Folie endgültig löschen? Die Änderung kann nicht rückgängig gemacht werden.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="562"/>
@@ -3004,13 +3004,13 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="730"/>
         <source>Ajouter un schéma</source>
-        <translation>Seite einfügen</translation>
+        <translation>Folie einfügen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="744"/>
         <source>Ce projet ne contient aucun schéma</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation>Dieses Projekt hat keine Seiten</translation>
+        <translation>Dieses Projekt beinhaltet keine Folien</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="821"/>
@@ -3119,7 +3119,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="817"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation>Seite</translation>
+        <translation>Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="818"/>
@@ -3273,7 +3273,7 @@ Options disponibles :
   -v, --version                 Afficher la version
   --license                     Afficher la licence
 </source>
-        <translation>QElectroTech, ein Programm zum Erstellen von Schaltplänen.
+        <translation>QElectroTech, ein Programm, um Schaltpläne zu erstellen.
 
 Verfügbare Optionen: 
   --help                         Zeige diese Hilfe
@@ -3347,7 +3347,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="160"/>
         <source>Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Dieses Panel listet die ausgeführten Aktionen auf der aktuellen Seite auf. Klicken Sie auf eine Aktion, um die Bearbeitung auf deren Zustand wieder herzustellen.</translation>
+        <translation>Dieses Panel listet die ausgeführten Aktionen auf der aktuellen Folie auf. Klicken Sie auf eine Aktion, um die Bearbeitung auf deren Zustand wieder herzustellen.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="215"/>
@@ -3462,7 +3462,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="198"/>
         <source>Propriétés du schéma</source>
-        <translation>Seiteneigenschaften</translation>
+        <translation>Folieneigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
@@ -3522,12 +3522,12 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Ajouter un schéma</source>
-        <translation>Seite einfügen</translation>
+        <translation>Folie einfügen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
         <source>Supprimer le schéma</source>
-        <translation>Seite löschen</translation>
+        <translation>Folie löschen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
@@ -3557,7 +3557,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
         <source>Zoom adapté</source>
-        <translation>Seite einpassen</translation>
+        <translation>Folie einpassen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
@@ -3683,25 +3683,25 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="226"/>
         <source>Crée un nouveau schéma</source>
         <comment>status bar tip</comment>
-        <translation>erstellt eine neue Seite</translation>
+        <translation>erstellt ein neues Projekt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Ouvre un schéma existant</source>
         <comment>status bar tip</comment>
-        <translation>öffnet eine bereits existierende Seite</translation>
+        <translation>öffnet ein bereits existierendes Projekt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Ferme le schéma courant</source>
         <comment>status bar tip</comment>
-        <translation>schließt die aktuelle Seite</translation>
+        <translation>schließt das aktuelle Projekt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>Enregistre le projet courant et tous ses schémas</source>
         <comment>status bar tip</comment>
-        <translation>speichert das aktuelle Projekt und alle darin enthaltenen Seiten</translation>
+        <translation>speichert das aktuelle Projekt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
@@ -3713,13 +3713,13 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="366"/>
         <source>Exporte le schéma courant dans un autre format</source>
         <comment>status bar tip</comment>
-        <translation>exportiert die aktuelle Seite in ein anderes Format</translation>
+        <translation>exportiert das aktuelle Projekt in ein anderes Format</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="367"/>
         <source>Imprime le schéma courant</source>
         <comment>status bar tip</comment>
-        <translation>druckt die aktuelle Seite aus</translation>
+        <translation>druckt das aktuelle Projekt aus</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="368"/>
@@ -3755,13 +3755,13 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="373"/>
         <source>Place les éléments du presse-papier sur le schéma</source>
         <comment>status bar tip</comment>
-        <translation>fügt den Inhalt der Zwischenablage in die Seite ein</translation>
+        <translation>fügt den Inhalt der Zwischenablage in die Folie ein</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="297"/>
         <source>Sélectionne tous les éléments du schéma</source>
         <comment>status bar tip</comment>
-        <translation>wählt den ganzen Inhalt der Seite aus</translation>
+        <translation>wählt den ganzen Inhalt der Folie aus</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
@@ -3779,7 +3779,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="275"/>
         <source>Enlève les éléments sélectionnés du schéma</source>
         <comment>status bar tip</comment>
-        <translation>entfernt die Auswahl von der Seite</translation>
+        <translation>entfernt die Auswahl von der Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
@@ -3821,7 +3821,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="244"/>
         <source>Ajoute une colonne au schéma</source>
         <comment>status bar tip</comment>
-        <translation>fügt eine Spalte zur Seite ein</translation>
+        <translation>fügt eine Spalte zur Folie ein</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="192"/>
@@ -3844,42 +3844,42 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="245"/>
         <source>Enlève une colonne au schéma</source>
         <comment>status bar tip</comment>
-        <translation>entfernt eine Spalte der Seite</translation>
+        <translation>entfernt eine Spalte der Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="246"/>
         <source>Agrandit le schéma en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Vergrößert die Seite in der Höhe</translation>
+        <translation>Vergrößert die Folie in der Höhe</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="247"/>
         <source>Rétrécit le schéma en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Verkleinert die Seite in der Höhe</translation>
+        <translation>Verkleinert die Folie in der Höhe</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
         <source>Agrandit le schéma</source>
         <comment>status bar tip</comment>
-        <translation>Vergrößert die Seite</translation>
+        <translation>Vergrößert die Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
         <source>Rétrécit le schéma</source>
         <comment>status bar tip</comment>
-        <translation>Verkleinert die Seite</translation>
+        <translation>Verkleinert die Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="321"/>
         <source>Adapte le zoom de façon à afficher tout le contenu indépendamment du cadre</source>
-        <translation>passt die Ansicht auf den Inhalt der Seite ein, ohne den Plotrahmen zu berücksichtigen</translation>
+        <translation>passt die Ansicht auf den Inhalt der Folie ein, ohne den Plotrahmen zu berücksichtigen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="322"/>
         <source>Adapte la taille du schéma afin qu&apos;il soit entièrement visible</source>
         <comment>status bar tip</comment>
-        <translation>passt die Ansicht auf die Seitengröße ein, so dass die Seite vollständig sichtbar wird</translation>
+        <translation>passt die Ansicht auf die Foliengröße ein, so dass die Folie vollständig sichtbar wird</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
@@ -3914,7 +3914,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="381"/>
         <source>Permet de visualiser le schéma sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
-        <translation>zeigt die Seite an, ohne diese bearbeiten zu können</translation>
+        <translation>zeigt die Folie an, ohne diese bearbeiten zu können</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="383"/>
@@ -4238,7 +4238,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="245"/>
         <source>Zoom adapté</source>
-        <translation>Seite einpassen</translation>
+        <translation>Folie einpassen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="246"/>
@@ -4535,46 +4535,46 @@ Verfügbare Optionen:
         <location filename="../sources/editor/qetelementeditor.cpp" line="630"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;Ohne Anschlüsse kann das Bauteil nicht mit anderen Bauteilen mittels Leiter verbunden werden.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="652"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Fehler&lt;/b  &gt;: &lt;br&gt;Bauteile vom Typ Master, Slave, einfach und Abbruchstelle müssen ein als &apos;label&apos; definiertes Textfeld beinhalten&apos;.&lt;br&gt;&lt;b&gt;Lösung&lt;/b&gt;: &lt;br&gt;Ein Textfeld einfügen und als &apos;label&apos; definieren</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="674"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Fehler&lt;/b&gt;: &lt;br&gt;Abbruchstellen dürfen nur einen Anschluss haben.&lt;br&gt;&lt;b&gt;Lösung&lt;/b&gt;: &lt;br&gt;Prüfen, dass das Bauteil nur einen Anschluss hat</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Die Überprüfung dieses bauteils generierte</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="687"/>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> %n Fehler</numerusform>
+            <numerusform> %n Fehler</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="692"/>
         <source> et</source>
-        <translation type="unfinished"></translation>
+        <translation> und</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source> %n avertissment(s)</source>
         <comment>warnings</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> %n Warnung</numerusform>
+            <numerusform> %n Warnungen</numerusform>
         </translation>
     </message>
     <message>
@@ -4586,7 +4586,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="710"/>
         <source>Erreurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="712"/>
@@ -4854,7 +4854,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="169"/>
         <source>Schémas à imprimer :</source>
-        <translation>Zu druckende Seiten:</translation>
+        <translation>Zu druckende Folien:</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="171"/>
@@ -4870,7 +4870,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="173"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="363"/>
         <source>Cacher la liste des schémas</source>
-        <translation>Seitenliste verbergen</translation>
+        <translation>Folienliste verbergen</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
@@ -4886,7 +4886,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="176"/>
         <source>Ajuster la page</source>
-        <translation>Seite anpassen</translation>
+        <translation>Folie anpassen</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="177"/>
@@ -4911,37 +4911,37 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="182"/>
         <source>Première page</source>
-        <translation>Erste Seite</translation>
+        <translation>Erste Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="183"/>
         <source>Page précédente</source>
-        <translation>Vorherige Seite</translation>
+        <translation>Vorherige Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="184"/>
         <source>Page suivante</source>
-        <translation>Nächste Seite</translation>
+        <translation>Nächste Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="185"/>
         <source>Dernière page</source>
-        <translation>Letzte Seite</translation>
+        <translation>Letzte Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="186"/>
         <source>Afficher une seule page</source>
-        <translation>Nur eine Seite anzeigen</translation>
+        <translation>Nur eine Folie anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="187"/>
         <source>Afficher deux pages</source>
-        <translation>Zwei Seiten anzeigen</translation>
+        <translation>Zwei Folien anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="188"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation>Alle Seiten anzeigen</translation>
+        <translation>Alle Folien anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="189"/>
@@ -4971,12 +4971,12 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="244"/>
         <source>Adapter le schéma à la page</source>
-        <translation>Seite auf Blattgröße anpassen</translation>
+        <translation>Folie auf Blattgröße anpassen</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="245"/>
         <source>Si cette option est cochée, le schéma sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation>Wenn angewählt, wird die Seite auf die gesamte druckbare Blattfläche vergrößert oder verkleinert.</translation>
+        <translation>Wenn angewählt, wird die Folie auf die gesamte druckbare Blattfläche vergrößert oder verkleinert.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="261"/>
@@ -4986,7 +4986,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="365"/>
         <source>Afficher la liste des schémas</source>
-        <translation>Seitenliste anzeigen</translation>
+        <translation>Folienliste anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="381"/>
@@ -5055,7 +5055,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="964"/>
         <source>Liste des Schémas</source>
-        <translation>Seitenliste</translation>
+        <translation>Folienliste</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1075"/>
@@ -5518,7 +5518,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="897"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
-        <translation>Seitengröße bearbeiten</translation>
+        <translation>Foliengröße bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="926"/>
@@ -5736,12 +5736,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1034"/>
         <source>Schéma sans titre</source>
-        <translation>Seite ohne Titel</translation>
+        <translation>Folie ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1036"/>
         <source>schema</source>
-        <translation>Seite</translation>
+        <translation>Folie</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1061"/>
@@ -6007,7 +6007,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="224"/>
         <source>Folio</source>
-        <translation>Seite</translation>
+        <translation>Folie</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="225"/>
@@ -6247,7 +6247,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %c : le numéro de colonne</source>
         <translation>Sie können ein eigenes Label für die Querverweise definieren.
 Folgende Variablen stehen zur Verfügung:
-%f : Seitennummer 
+%f : Foliennummer 
 %l : Zeilennummer
 %c : Spaltennummer</translation>
     </message>
@@ -6323,16 +6323,16 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
         <translation>Hier können die Nummerierungsregeln für neue Leiter definiert werden.
--eine Nummerierungsregel besteht mindestens aus einer Variable.
--eine Variable kann mit den Tasten + und - hinzugefügt bzw. gelöscht werden.
--eine Variable beinhaltet: einen Typ, einen Wert und eine Inkrementierung.
+- eine Nummerierungsregel besteht mindestens aus einer Variable.
+- eine Variable kann mit den Tasten + und - hinzugefügt bzw. gelöscht werden.
+- eine Variable beinhaltet: einen Typ, einen Wert und eine Inkrementierung.
 
--die Typen &quot;Zahl 1&quot;, &quot;Zahl 01&quot; und &quot;Zahl 001&quot; stehen für die Zahl vom Feld &quot;Wert&quot;, die bei jedem neuen Leiter um den Wert vom Feld &quot;Inkrementierung&quot; inkrementiert wird.
--die Typen &quot;Zahl 01&quot; und &quot;Zahl 001&quot; werden im Schaltplan mit mindestens 2 bzw. 3 Ziffer dargestellt. Bei Bedarf werden führende 0 automatisch vorangestellt.
+- die Typen &quot;Zahl 1&quot;, &quot;Zahl 01&quot; und &quot;Zahl 001&quot; stehen für die Zahl vom Feld &quot;Wert&quot;, die bei jedem neuen Leiter um den Wert vom Feld &quot;Inkrementierung&quot; inkrementiert wird.
+- die Typen &quot;Zahl 01&quot; und &quot;Zahl 001&quot; werden im Schaltplan mit mindestens 2 bzw. 3 Ziffer dargestellt. Bei Bedarf werden führende 0 automatisch vorangestellt.
 
--der Typ &quot;Text&quot; steht für einen fest definierten Text. In diesem Fall wird das Feld &quot;Inkrementierung&quot; nicht verwendet.
+- der Typ &quot;Text&quot; steht für einen fest definierten Text. In diesem Fall wird das Feld &quot;Inkrementierung&quot; nicht verwendet.
 
--der Typ &quot;Seitennummer&quot; steht für die Nummer der aktuellen Seite. Andere Felder werden nicht verwendet.</translation>
+- der Typ &quot;Foliennummer&quot; steht für die Nummer der aktuellen Folie. Andere Felder werden nicht verwendet.</translation>
     </message>
 </context>
 <context>
@@ -6823,7 +6823,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="114"/>
         <source>Folio :</source>
-        <translation>Seite: </translation>
+        <translation>Folie: </translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="121"/>
@@ -6890,9 +6890,9 @@ Les autres champs ne sont pas utilisés.</source>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
 - %id : numéro du schéma courant dans le projet 
 - %total : nombre total de schémas dans le projet</source>
-        <translation>Folgende Variablen können im Datenfeld Seite benutzt werden:
-- %id : Nummer der aktuellen Seite im Projekt
-- %total : Gesamtanzahl der Seiten im Projekt</translation>
+        <translation>Folgende Variablen können im Datenfeld &quot;Folie&quot; benutzt werden:
+- %id : Nummer der aktuellen Folie im Projekt
+- %total : Gesamtanzahl der Folien im Projekt</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="226"/>
@@ -6967,7 +6967,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
-        <translation>Hinweis: die Umrandung leerer Zellen wird auf der Seite nicht dargestellt.</translation>
+        <translation>Hinweis: die Umrandung leerer Zellen wird auf der Folie nicht dargestellt.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
@@ -7075,12 +7075,12 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Standardmäßig stehen die folgenden Variablen zur Verfügung: &lt;ul&gt;&lt;li&gt;%{author}: Author der Seite&lt;/li&gt;&lt;li&gt;%{date}: Datum der Seite&lt;/li&gt;&lt;li&gt;%{title}: Titel der Seite&lt;/li&gt;&lt;li&gt;%{filename}: Dateiname des Projekts&lt;/li&gt;&lt;li&gt;%{folio}: Informationen der Seite&lt;/li&gt;&lt;li&gt;%{folio-id}: Nummer der Seite im Projekt&lt;/li&gt;&lt;li&gt;%{folio-total}: Gesamte Seitenzahl im Projekt&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation>Standardmäßig stehen die folgenden Variablen zur Verfügung: &lt;ul&gt;&lt;li&gt;%{author}: Author der Folie&lt;/li&gt;&lt;li&gt;%{date}: Datum der Folie&lt;/li&gt;&lt;li&gt;%{title}: Titel der Folie&lt;/li&gt;&lt;li&gt;%{filename}: Dateiname des Projekts&lt;/li&gt;&lt;li&gt;%{folio}: Informationen der Folie&lt;/li&gt;&lt;li&gt;%{folio-id}: Nummer der Folie im Projekt&lt;/li&gt;&lt;li&gt;%{folio-total}: Gesamte Folienanzahl im Projekt&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Jede Zelle vom Plotrahmen zeigt einen Wert und optional ein vorangestelltes Label an. Beide können in verschiedenen Sprachen übersetzt werden.&lt;br/&gt;Gerade wird eine &lt;em&gt;Vorlage&lt;/em&gt; für Plotrahmen bearbeitet. Tragen Sie keine rohen Daten ein: nutzen Sie eher Variablen mit der Form %{Variablenname}, um deren Werte im Plotrahmen auf der Seite anzuzeigen.</translation>
+        <translation>Jede Zelle vom Plotrahmen zeigt einen Wert und optional ein vorangestelltes Label an. Beide können in verschiedenen Sprachen übersetzt werden.&lt;br/&gt;Gerade wird eine &lt;em&gt;Vorlage&lt;/em&gt; für Plotrahmen bearbeitet. Tragen Sie keine rohen Daten ein: nutzen Sie eher Variablen mit der Form %{Variablenname}, um deren Werte im Plotrahmen auf der Folie anzuzeigen.</translation>
     </message>
 </context>
 <context>
@@ -7476,7 +7476,7 @@ Maximale Länge: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
         <source>En bas de page</source>
-        <translation>Im unteren Bereich der Seite</translation>
+        <translation>Im unteren Bereich der Folie</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
@@ -7534,7 +7534,7 @@ Maximale Länge: %2px</translation>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
         <source>Schéma sans titre</source>
-        <translation>Seite ohne Titel</translation>
+        <translation>Folie ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="102"/>
@@ -7595,7 +7595,7 @@ Maximale Länge: %2px</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="66"/>
         <source>Folio : %1
 </source>
-        <translation>Seite: %1
+        <translation>Folie: %1
 </translation>
     </message>
     <message>
@@ -7665,12 +7665,12 @@ Maximale Länge: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Folio</source>
-        <translation>Seite</translation>
+        <translation>Folie</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Schéma</source>
-        <translation>Schaltplan</translation>
+        <translation>Folientitel</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="49"/>
