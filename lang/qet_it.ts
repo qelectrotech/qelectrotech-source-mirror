@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="204"/>
+        <location filename="../sources/aboutqet.cpp" line="205"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Questo programma è rilasciato sotto licenza GNU/GPL.</translation>
     </message>
@@ -70,9 +70,9 @@
         <location filename="../sources/aboutqet.cpp" line="114"/>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <location filename="../sources/aboutqet.cpp" line="116"/>
-        <location filename="../sources/aboutqet.cpp" line="182"/>
-        <location filename="../sources/aboutqet.cpp" line="184"/>
+        <location filename="../sources/aboutqet.cpp" line="183"/>
         <location filename="../sources/aboutqet.cpp" line="185"/>
+        <location filename="../sources/aboutqet.cpp" line="186"/>
         <source>Développement</source>
         <translation>Sviluppo</translation>
     </message>
@@ -180,16 +180,21 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="180"/>
+        <source>Paquets MAC OS X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="181"/>
         <source>Paquets Archlinux AUR</source>
         <translation>Pacchetti per Archlinux AUR</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="183"/>
+        <location filename="../sources/aboutqet.cpp" line="184"/>
         <source>Documentation</source>
         <translation>Documentazione</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="186"/>
+        <location filename="../sources/aboutqet.cpp" line="187"/>
         <source>Collection d&apos;éléments</source>
         <translation>Collezione di elementi</translation>
     </message>
@@ -205,7 +210,7 @@
         <translation>© 2006-2014 Gli sviluppatori di QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="181"/>
+        <location filename="../sources/aboutqet.cpp" line="182"/>
         <source>Icônes</source>
         <translation>Icone</translation>
     </message>
