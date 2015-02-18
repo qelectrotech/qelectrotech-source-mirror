@@ -181,7 +181,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="180"/>
         <source>Paquets MAC OS X</source>
-        <translation type="unfinished"></translation>
+        <translation>Pakiety dla MAC OS X</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="181"/>
