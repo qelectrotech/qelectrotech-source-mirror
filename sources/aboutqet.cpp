@@ -139,6 +139,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Markus Budde",               "markus.budde@msn.com",        tr("Traduction en allemand"));
 	addAuthor(translators, "Jonas Stein",                "news@jonasstein.de",          tr("Traduction en allemand"));
 	addAuthor(translators, "Noah Braden",                "",                            tr("Traduction en allemand"));
+	addAuthor(translators, "Nuri",                       "nuri@qelectrotech.org",       tr("Traduction en allemand"));
 	addAuthor(translators, "Gabi Mandoc",                "gabriel.mandoc@gic.ro",       tr("Traduction en roumain"));
 	addAuthor(translators, "Alessandro Conti",           "dr.slump@alexconti.it",       tr("Traduction en italien"));
 	addAuthor(translators, "Silvio",                     "silvio@qelectrotech.org",     tr("Traduction en italien"));
@@ -182,6 +183,7 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Arun Kishore Eswara", "eswara.arun@gmail.com",       tr("Documentation"));
 	addAuthor(contributors, "Ren\351 Negre",       "runsys@qelectrotech.org",     tr("D\351veloppement"));
 	addAuthor(contributors, "Ronny Desmedt",       "r.desmedt@live.be",           tr("D\351veloppement"));
+	addAuthor(contributors, "Nuri",                "nuri@qelectrotech.org",       tr("Collection d'\351l\351ments"));
 
 	
 	contributors -> setOpenExternalLinks(true);
