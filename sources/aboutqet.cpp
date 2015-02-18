@@ -177,6 +177,7 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Mbit",                 "",                           tr("Paquets Gentoo"));
 	addAuthor(contributors, "Elbert",               "",                           tr("Paquets OS/2"));
 	addAuthor(contributors, "zloidemon",            "",                           tr("Paquets FreeBSD"));
+	addAuthor(contributors, "Yoann Varenne",        "yoann@tuxfamily.org",        tr("Paquets MAC OS X"));
 	addAuthor(contributors, "Chipsterjulien",       "",                           tr("Paquets Archlinux AUR"));
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
 	addAuthor(contributors, "Cyril Frausti",       "cyril@qelectrotech.org",      tr("D\351veloppement"));
