@@ -191,7 +191,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="186"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolekcja elementów</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="175"/>
