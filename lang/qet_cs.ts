@@ -181,7 +181,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="180"/>
         <source>Paquets MAC OS X</source>
-        <translation type="unfinished"></translation>
+        <translation>Balíčky pro MAC OS X</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="181"/>
@@ -196,7 +196,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="187"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Sbírka prvků</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="175"/>
@@ -4253,7 +4253,7 @@ Dostupné volby:
         <location filename="../sources/editor/qetelementeditor.cpp" line="672"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;V nepřítomnosti koncovky může být prvek spojen s jinými prvky prostřednictvím vodičů.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
@@ -4528,48 +4528,48 @@ Dostupné volby:
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt; &lt;b&gt;Chyba&lt;/b  &gt; :&lt;br&gt;Nadřízené prvky, podřízené prvky, jednoduché a odkazy na listy musí mít textové pole obsahující značku &apos;label&apos;  &lt;br&gt;&lt;b&gt;Řešení&lt;/b&gt; :&lt;br&gt; Vložte textové pole a dejte mu název &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt; &lt;b&gt;Chyba&lt;/b  &gt; :&lt;br&gt;Odkazy na listy musí mít jednoduchou koncovku  &lt;br&gt;&lt;b&gt;Řešení&lt;/b&gt; :&lt;br&gt; Ověřte, že prvek má jen jednu koncovku</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ověření tohoto prvku vytvořilo</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="729"/>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> %n chybu</numerusform>
+            <numerusform> %n chyby</numerusform>
+            <numerusform> %n chyb</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="734"/>
         <source> et</source>
-        <translation type="unfinished"></translation>
+        <translation> a</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="736"/>
         <source> %n avertissment(s)</source>
         <comment>warnings</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> %n varování</numerusform>
+            <numerusform> %n varování</numerusform>
+            <numerusform> %n varování</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="752"/>
         <source>Erreurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyby</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="715"/>
