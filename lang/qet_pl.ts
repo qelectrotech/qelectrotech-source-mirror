@@ -3163,7 +3163,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetapp.cpp" line="369"/>
         <source>Référence fabricant machine</source>
-        <translation>Numer seryjny</translation>
+        <translation>Numer referencyjny urządzenia</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1613"/>
