@@ -148,7 +148,6 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Eduard Amor\363s",           "amoros@marmenuda.com",        tr("Traduction en catalan"));
 	addAuthor(translators, "Nikos Papadopoylos",         "231036448@freemail.gr",       tr("Traduction en grec"));
 	addAuthor(translators, "Yannis Gyftomitros",         "yang@hellug.gr",              tr("Traduction en grec"));
-	addAuthor(translators, "Eduard Amoros",              "",                            tr("Traduction en catalan"));
 	addAuthor(translators, "Paul Van Deelen",            "shooter@home.nl",             tr("Traduction en n\351erlandais"));
 	addAuthor(translators, "Ronny Desmedt",              "r.desmedt@live.be",           tr("Traduction en flamand"));
 
