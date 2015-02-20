@@ -1,3 +1,32 @@
+====== ChangeLog from 0.3 to 0.4 ======
+In the official collection, there are now 2298 elements, and 376 catégoris for a total of 2674 files.
+
+* We have removed the flag '-fno-ipa-sra "This settled the compilation problems on Mac OS X and FreeBSD clang.
+* The official collection has been redesigned, through the work of Nuri a new structure is in place.
+* A menu has been added, allowing you to change the application language.
+* we added a summary creation tool.
+* Added button "export the nomenclature" transforms data from diagrams to CSV file for spreadsheet.
+ Arun wrote a detailed manual and quality in English.
+* New tools have been added, they can create mechanical connections and draw cabinets, desks, junction boxes, or areas on the schematic (line tool, rectangle, ellipse, polygon type: respect for style dashes).
+* An aid in positioning cross, drawing, was added.
+* The locked state images and basic forms (basic shapes) is now stored in the project.
+* The "control" during the movement of an element, text field disables snapping to the grid, for free positioning.
+It is now possible to choose the background folios in white or gray.
+* Add supports trackpad gestures (multitouch).
+The dates of the cartridges are now using the short system date and date format according to the language detected setting in the OS.
+We take advantage of the transition to standard C ++ 11, and a big cleanup in the code was done.
+* The undo action or redo the undo stack are now animated graphically.
+When the action save, save as, the status bar displays the name and path of the backup job.
+Qet is now able to come to load a style sheet (stylesheet) directly from the conf directory.
+* A DXF export has been added, the entire project folios can be exported in this format.
+* Added reports folio, Cross references.
+* Added a variable font size on the text of conductors.
+* Added new properties to all conductors at the same potential, even through referrals.
+* When several conductors have the same value potential equalization, it is not useful to display on all conductors.
+* Added button to activates the automatic connection of the conductors of the element when moving it.
+* Numbering rules are now available for the entire project.
+Qet detects the Windows version and applies the appropriate graphic style, depending on the version of Windows.
+
 
 ====== ChangeLog from 0.3 rc to 0.3 ======
 First, the collection of symbols has made a big step forward, with about 1560 new elements. 
