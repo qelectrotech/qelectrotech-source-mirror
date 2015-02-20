@@ -6,5 +6,6 @@
         <name lang="pl">Napędy</name>
         <name lang="en">Drives</name>
         <name lang="nl">Aandrijvingen</name>
+        <name lang="cs">Pohony</name>
     </names>
 </qet-directory>
