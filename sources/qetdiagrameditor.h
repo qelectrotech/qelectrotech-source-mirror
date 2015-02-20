@@ -207,7 +207,6 @@ class QETDiagramEditor : public QETMainWindow {
 		QAction *rotate_selection;				///< Rotate selected elements and text items by 90 degrees
 		QAction *rotate_texts;					///< Direct selected text items to a specific angle
 		QAction *find_element;					///< Find the selected element in the panel
-		QAction *selection_prop;				///< Show a dialog describing the selection
 
 		QActionGroup m_row_column_actions_group; /// Action related to add/remove rows/column in diagram
 

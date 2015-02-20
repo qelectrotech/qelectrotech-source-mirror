@@ -1088,11 +1088,17 @@ bool DiagramView::selectedItemHasFocus() {
 void DiagramView::editSelection() {
 	if (scene -> isReadOnly() || scene -> selectedItems().size() != 1 ) return;
 
-	if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(scene->selectedItems().first())) {
+	QGraphicsItem *item = scene->selectedItems().first();
+
+		//We use dynamic_cast instead of qgraphicsitem_cast for QetGraphicsItem
+		//because they haven't got they own type().
+		//Use qgraphicsitem_cast will have weird behavior for this class.
+	if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item))
 		iti -> edit();
-	} else if (QetGraphicsItem *qgi = qgraphicsitem_cast<QetGraphicsItem *> (scene->selectedItems().first())) {
+	else if (QetGraphicsItem *qgi = dynamic_cast<QetGraphicsItem *> (item))
 		qgi -> editProperty();
-	}
+	else if (Conductor *c = qgraphicsitem_cast<Conductor *>(item))
+		c -> editProperty();
 }
 
 /**
