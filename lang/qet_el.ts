@@ -4561,8 +4561,9 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="736"/>
         <source> %n avertissment(s)</source>
         <comment>warnings</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> %n προειδοποίηση</numerusform>
+            <numerusform> %n προειδοποιήσεις</numerusform>
         </translation>
     </message>
     <message>
