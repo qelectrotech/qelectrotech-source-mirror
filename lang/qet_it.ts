@@ -181,7 +181,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="180"/>
         <source>Paquets MAC OS X</source>
-        <translation type="unfinished"></translation>
+        <translation>Pacchetti MAC OS X</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="181"/>
@@ -207,7 +207,7 @@
         <location filename="../sources/aboutqet.cpp" line="96"/>
         <source>© 2006-2014 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation>© 2006-2014 Gli sviluppatori di QElectroTech</translation>
+        <translation>© 2006-2015 Gli sviluppatori di QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="182"/>
