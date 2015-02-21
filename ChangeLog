@@ -6,7 +6,7 @@ In the official collection, there are now 2298 elements, and 376 catégoris for 
 * A menu has been added, allowing you to change the application language.
 * we added a summary creation tool.
 * Added button "export the nomenclature" transforms data from diagrams to CSV file for spreadsheet.
- Arun wrote a detailed manual and quality in English.
+ Arun wrote a detailed manual in English.
 * New tools have been added, they can create mechanical connections and draw cabinets, desks, junction boxes, or areas on the schematic (line tool, rectangle, ellipse, polygon type: respect for style dashes).
 * An aid in positioning cross, drawing, was added.
 * The locked state images and basic forms (basic shapes) is now stored in the project.
