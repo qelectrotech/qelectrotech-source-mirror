@@ -20,7 +20,7 @@ When the action save, save as, the status bar displays the name and path of the 
 Qet is now able to come to load a style sheet (stylesheet) directly from the conf directory.
 * A DXF export has been added, the entire project folios can be exported in this format.
 * Added reports folio, Cross references.
-* Added a variable font size on the text of conductors.
+* Added a variable font size for text of conductors.
 * Added new properties to all conductors at the same potential, even through referrals.
 * When several conductors have the same value potential equalization, it is not useful to display on all conductors.
 * Added button to activates the automatic connection of the conductors of the element when moving it.
