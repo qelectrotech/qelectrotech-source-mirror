@@ -4256,7 +4256,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="672"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;Λόγω απουσίας ακροδέκτη, το στοιχείο δεν θα μπορεί να συνδεθεί με άλλα στοιχεία μέσω αγωγών.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
@@ -4530,18 +4530,18 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Σφάλμα&lt;/b  &gt; :&lt;br&gt;Τα κύρια, βοηθητικά, απλά στοιχεία και οι αναφορές σελίδας πρέπει να περιέχουν ένα πεδίο κειμένου με πινακίδα &apos;ετικέτα&apos;.&lt;br&gt;&lt;b&gt;Λύση&lt;/b&gt; :&lt;br&gt;Εισάγετε ένα πεδίο κειμένου και ορίστε το ως &apos;ετικέτα&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Σφάλμα&lt;/b&gt; :&lt;br&gt;Οι αναφορές σελίδας πρέπει να έχουν ένα μοναδικό ακροδέκτη.&lt;br&gt;&lt;b&gt;Λύση&lt;/b&gt; :&lt;br&gt;Βεβαιωθείτε ότι το στοιχείο έχει ένα μοναδικό ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ο έλεγχος του στοιχείου επέστρεψε</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="729"/>
