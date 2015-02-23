@@ -4262,7 +4262,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
-        <translation>Χωρίς πεδίο κειμένου &apos;label&apos;</translation>
+        <translation>Χωρίς πεδίο κειμένου &apos;ετικέτα&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="745"/>
@@ -4548,14 +4548,14 @@ Options disponibles :
         <source> %n erreur(s)</source>
         <comment>errors</comment>
         <translation>
-            <numerusform> %n σφάλμα(τα)</numerusform>
-            <numerusform></numerusform>
+            <numerusform> %n σφάλμα</numerusform>
+            <numerusform> %n σφάλματα</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="734"/>
         <source> et</source>
-        <translation>και</translation>
+        <translation> και</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="736"/>
