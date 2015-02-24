@@ -1,6 +1,7 @@
 <definition width="190" version="0.3" hotspot_x="15" hotspot_y="85" height="180" type="element" orientation="dyyy">
     <names>
         <name lang="en">BVS OI-3-001-E</name>
+        <name lang="cs">BVS OI-3-001-E</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

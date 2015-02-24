@@ -1,6 +1,7 @@
 <definition width="160" version="0.4" hotspot_x="65" hotspot_y="75" height="150" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">8930</name>
+        <name lang="cs">8930</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

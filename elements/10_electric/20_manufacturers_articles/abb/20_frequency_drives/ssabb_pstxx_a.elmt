@@ -1,6 +1,7 @@
 <definition width="470" version="0.4" hotspot_x="5" hotspot_y="7" height="120" link_type="simple" type="element" orientation="dyyy">
     <names>
         <name lang="en">ABB PST</name>
+        <name lang="cs">ABB PST</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
