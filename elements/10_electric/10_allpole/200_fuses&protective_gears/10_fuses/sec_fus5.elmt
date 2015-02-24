@@ -1,16 +1,17 @@
-<definition width="120" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy" link_type="master">
+<definition width="80" version="0.4" hotspot_x="41" hotspot_y="24" height="50" link_type="master" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مفتاح عزل رباعي بثلاث مصهرات</name>
         <name lang="de">Sicherungstrenner 3-polig + N</name>
         <name lang="ru">Выключатель-предохранитель</name>
         <name lang="pt">Seccionador</name>
+        <name lang="el">Ασφαλειοδιακόπτης</name>
         <name lang="en">switchfuses</name>
         <name lang="it">Sezionatore con fusibile 3P+N</name>
         <name lang="fr">Porte fusibles tri + N</name>
         <name lang="pl">Odłącznik bezpiecznikowy</name>
         <name lang="es">Seccionador</name>
-        <name lang="cs">Odpojovač</name>
         <name lang="nl">Zekeringscheider 3+N</name>
+        <name lang="cs">Odpojovač</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>
@@ -37,13 +38,13 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-32" y2="0" x2="-15"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-11" y2="0" x2="5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="10" y2="0" x2="25"/>
-        <terminal x="-10" y="-20" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="10" y="20" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="30" y="20" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="30" y="-20" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="10" y="-20" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-30" y="20" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-10" y="20" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-30" y="-20" nameHidden="0" number="" name="" orientation="n"/>
+        <terminal x="-10" y="-20" orientation="n"/>
+        <terminal x="10" y="20" orientation="s"/>
+        <terminal x="30" y="20" orientation="s"/>
+        <terminal x="30" y="-20" orientation="n"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="-30" y="20" orientation="s"/>
+        <terminal x="-10" y="20" orientation="s"/>
+        <terminal x="-30" y="-20" orientation="n"/>
     </description>
 </definition>
