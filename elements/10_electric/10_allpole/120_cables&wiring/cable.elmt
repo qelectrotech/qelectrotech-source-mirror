@@ -4,6 +4,7 @@
         <name lang="it">Cavo 2 fasi + terra</name>
         <name lang="fr">Cable 2 phases+terre</name>
         <name lang="pl">Oznaczenie przewodu czterożyłowego</name>
+        <name lang="cs">Označení drátového propojení - 2 fáze + země</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

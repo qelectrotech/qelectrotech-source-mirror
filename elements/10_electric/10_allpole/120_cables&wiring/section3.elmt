@@ -4,6 +4,7 @@
         <name lang="it">Sezione 3 conduttori</name>
         <name lang="fr">Section 3 conducteurs</name>
         <name lang="pl">Oznaczenie pola przekroju przewodu trójżyłowego</name>
+        <name lang="cs">Označení drátového propojení 3 vodiče</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="fr">Dynamo-tachymétrique</name>
         <name lang="de">Dynamo</name>
         <name lang="pl">Prądnica tachometryczna</name>
+        <name lang="cs">Dynamo</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

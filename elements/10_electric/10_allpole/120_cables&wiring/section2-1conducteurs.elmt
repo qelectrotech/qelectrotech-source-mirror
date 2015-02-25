@@ -4,6 +4,7 @@
         <name lang="it">Sezione 2 conduttori</name>
         <name lang="fr">Section 2 conducteurs</name>
         <name lang="pl">Oznaczenie pola przekroju przewodu dwużyłowego</name>
+        <name lang="cs">Označení drátového propojení 2 vodiče</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

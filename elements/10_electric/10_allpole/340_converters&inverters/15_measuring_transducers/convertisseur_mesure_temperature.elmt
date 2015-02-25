@@ -9,7 +9,7 @@
         <name lang="fr">Convertisseur de mesure Pt100/TC</name>
         <name lang="pl">Przetwornik temperatury</name>
         <name lang="es">Convertidor de temperatura</name>
-        <name lang="cs">Převodník měření</name>
+        <name lang="cs">Převodník teploty Pt100/TC</name>
         <name lang="nl">Converter temperatuur Pt100/TC</name>
     </names>
     <informations>Author: The QElectroTech team
