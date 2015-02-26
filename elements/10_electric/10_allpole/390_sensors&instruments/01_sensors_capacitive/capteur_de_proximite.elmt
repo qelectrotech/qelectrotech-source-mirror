@@ -6,6 +6,7 @@
         <name lang="es" >Final de carrera</name>
         <name lang="pl">Czujnik zbliżeniowy</name>
         <name lang="it">Sensore di prossimità</name>
+        <name lang="cs">Čidlo přiblížení</name>
     </names>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-6" y2="0" x2="-3" />
