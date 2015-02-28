@@ -121,7 +121,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="180"/>
         <source>Paquets MAC OS X</source>
-        <translation type="unfinished"></translation>
+        <translation>Paquetes MAC OS X</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="181"/>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="187"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Colección de elementos</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="205"/>
@@ -514,7 +514,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar un texto de potencial por folio. </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="119"/>
@@ -669,7 +669,7 @@ pixel</extracomment>
         <location filename="../sources/diagramprintdialog.cpp" line="225"/>
         <source>Impression vers un fichier au format PostScript (PS)</source>
         <comment>Print type choice</comment>
-        <translation>Impresión a un archivo PostScript (PS)</translation>
+        <translation>Impresión a un archivo en formato PostScript (PS)</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="230"/>
@@ -715,7 +715,7 @@ pixel</extracomment>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="71"/>
         <source>Maintenir ctrl pour un déplacement libre</source>
-        <translation type="unfinished"></translation>
+        <translation>Mantener ctrl para un desplazamiento libre</translation>
     </message>
 </context>
 <context>
@@ -1637,12 +1637,12 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Remonter ce schéma x10</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Subir este esquema x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Abaisser ce schéma x10</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bajar este esquema x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
@@ -2008,7 +2008,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="198"/>
         <source>Utiliser les gestes du pavé tactile</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilice los gestos del touchpad</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="199"/>
@@ -2664,12 +2664,12 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/configpages.cpp" line="74"/>
         <source>Reports de folio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Reportes de folio</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="75"/>
         <source>Références croisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencias cruzadas</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="172"/>
@@ -3045,17 +3045,17 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="367"/>
         <source>Fabricant</source>
-        <translation type="unfinished"></translation>
+        <translation>Fabricante</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="368"/>
         <source>Référence fabricant</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia del fabricante</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="369"/>
         <source>Référence fabricant machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Referencia del fabricante de la maquina</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1423"/>
@@ -3256,7 +3256,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Désignation</source>
-        <translation type="unfinished"></translation>
+        <translation>Designación</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="380"/>
@@ -3661,13 +3661,13 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="192"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Creación automática de conductor (s)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="193"/>
         <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
         <comment>Status tip of auto conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Utilizar creación automática de conductor(s)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="204"/>
@@ -4127,7 +4127,7 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="638"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="659"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Proyecto %1 guardar en el directorio: %2.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="798"/>
@@ -4456,12 +4456,12 @@ Opciones disponibles:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="156"/>
         <source>Éditer le nom et les traductions de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Edite el nombre y las traducciones del elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="158"/>
         <source>Éditer les propriétés de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar las propiedades de los elementos</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="341"/>
@@ -4654,13 +4654,13 @@ Las condiciones requeridas no son validas</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="672"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;En ausencia de Terminal, el elemento no puede relacionarse con otros componentes a través de conductores.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;br&gt;&lt;b&gt;Error&lt;/b  &gt; :&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
@@ -4679,7 +4679,6 @@ Las condiciones requeridas no son validas</translation>
         <comment>errors</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4692,7 +4691,6 @@ Las condiciones requeridas no son validas</translation>
         <source> %n avertissment(s)</source>
         <comment>warnings</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
