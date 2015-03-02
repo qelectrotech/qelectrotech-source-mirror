@@ -58,7 +58,7 @@ bool TitleBlockTemplateDeleter::exec() {
 		tr("Supprimer le modèle de cartouche ?", "message box title"),
 		QString(
 			tr(
-				"Êtes-vous s\373r de vouloir supprimer ce modèle de cartouche (%1) ?\n",
+				"Êtes-vous sur de vouloir supprimer ce modèle de cartouche (%1) ?\n",
 				"message box content"
 			)
 		).arg(name),

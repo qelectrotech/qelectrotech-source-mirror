@@ -369,7 +369,7 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 	int answer = QET::QetMessageBox::question(
 		this,
 		tr("Supprimer le schéma ?", "message box title"),
-		tr("Êtes-vous s\373r de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.", "message box content"),
+		tr("Êtes-vous sur de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.", "message box content"),
 		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 		QMessageBox::No
 	);
