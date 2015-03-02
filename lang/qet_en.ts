@@ -882,7 +882,7 @@ to all the conductors of this potential?</translation>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Do you really wish to delete this element ?</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="70"/>
@@ -1298,21 +1298,23 @@ to all the conductors of this potential?</translation>
         <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
         <source>Êtes-vous sûr  de vouloir vider cette collection ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Do you really want to empty this collection?</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="77"/>
         <source>Êtes-vous sûr  de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Do you really want to delete the category?
+Every elements and categories from this category will be deleted.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="91"/>
         <source>Êtes-vous vraiment sur de vouloir supprimer cette catégorie ?
 Les changements seront définitifs.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Do you really really want to delete this category?
+Changes will be definitive.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="104"/>
@@ -2198,7 +2200,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/ghostelement.cpp" line="37"/>
         <source>&lt;u&gt;Élément manquant :&lt;/u&gt; %1</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;u&gt;Missing element :&lt;/u&gt; %1</translation>
     </message>
 </context>
 <context>
@@ -2302,13 +2304,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="70"/>
         <source>La catégorie « %1 » (%2) existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>The category « %1 » (%2) already exists. What do you wish to do?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="118"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>The element « %1 » already exists. What do you wish to do?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
@@ -2577,7 +2579,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="140"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="154"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished"></translation>
+        <translation>Folio  %1 (%2), position %3.</translation>
     </message>
 </context>
 <context>
@@ -2901,7 +2903,7 @@ Apply a text to all of these drivers?</translation>
         <location filename="../sources/projectconfigpages.cpp" line="161"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Project title :</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="163"/>
@@ -2986,7 +2988,7 @@ Do you want to save changes?</translation>
         <location filename="../sources/projectview.cpp" line="372"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Do you really want to delete this diagram from the project? This change is irreversible.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="730"/>
@@ -4045,7 +4047,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="1276"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edit conductor</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1283"/>
@@ -4056,7 +4058,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1454"/>
         <source>Active le projet « %1 »</source>
-        <translation type="unfinished"></translation>
+        <translation>Activates the project « %1 »</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1965"/>
@@ -4537,13 +4539,13 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Error&lt;/b  &gt; :&lt;br&gt;Masters-type elements, slaves, simple and  folio reports must have a text field containing the tagg &apos;label&apos; &lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insert a text field and give it the tagg &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="745"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; : %2</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="773"/>
@@ -4842,7 +4844,7 @@ the conditions are not valid</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
         <source>Schémas à imprimer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagrams to print :</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
@@ -4993,7 +4995,7 @@ the conditions are not valid</translation>
         <location filename="../sources/qetproject.cpp" line="281"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Project « %1 »</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="743"/>
@@ -5567,7 +5569,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1162"/>
         <location filename="../sources/diagramcommands.cpp" line="1176"/>
         <source>Lier deux éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Link two elements</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1175"/>
@@ -6177,22 +6179,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="47"/>
         <source>Coin supérieur gauche : </source>
-        <translation type="unfinished"></translation>
+        <translation>Top left corner :</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
         <source>Dimensions : </source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensions : </translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="53"/>
         <source>Largeur :</source>
-        <translation type="unfinished">Width:</translation>
+        <translation>Width:</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
         <source>Hauteur :</source>
-        <translation type="unfinished">Height:</translation>
+        <translation>Height:</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="119"/>
@@ -7093,7 +7095,8 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <source>Êtes-vous sûr  de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Do you really want to delete this title block template (%1) ?
+</translation>
     </message>
 </context>
 <context>
@@ -7371,14 +7374,16 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Minimum length : %1px
+Maximum length : %2px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="940"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Minimum length : %1px
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
@@ -7549,43 +7554,50 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="63"/>
         <source>Nom : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Name : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="66"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Folio : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="68"/>
         <source>Position : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Position : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="69"/>
         <source>Dimensions : %1�%2
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensions : %1 x %2
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="70"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Terminals : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="71"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Text fields : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="74"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Location : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="111"/>
