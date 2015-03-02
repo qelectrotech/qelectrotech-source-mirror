@@ -875,7 +875,7 @@
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="57"/>
-        <source>Êtes-vous sur de vouloir supprimer cet élément ?
+        <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
@@ -1284,12 +1284,6 @@
         <translation>Isprazniti kategoriju?</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
-        <source>Êtes-vous sur de vouloir vider cette collection ?</source>
-        <comment>message box content</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="76"/>
         <location filename="../sources/elementscategorydeleter.cpp" line="90"/>
         <source>Supprimer la catégorie ?</source>
@@ -1297,8 +1291,14 @@
         <translation>Brisati kategoriju?</translation>
     </message>
     <message>
+        <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
+        <source>Êtes-vous sûr  de vouloir vider cette collection ?</source>
+        <comment>message box content</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="77"/>
-        <source>Êtes-vous sur de vouloir supprimer la catégorie ?
+        <source>Êtes-vous sûr  de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
@@ -2925,12 +2925,6 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>Obrisati shemu?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="372"/>
-        <source>Êtes-vous sur de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
-        <comment>message box content</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/projectview.cpp" line="562"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
@@ -2985,6 +2979,12 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/projectview.cpp" line="285"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="372"/>
+        <source>Êtes-vous sûr  de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
+        <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7071,7 +7071,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
-        <source>Êtes-vous sur de vouloir supprimer ce modèle de cartouche (%1) ?
+        <source>Êtes-vous sûr  de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
