@@ -94,7 +94,7 @@ void TitleBlockTemplateLocationChooser::init() {
 	
 	form_layout_ = new QFormLayout();
 	form_layout_ -> addRow(tr("Collection parente",   "used in save as form"), collections_);
-	form_layout_ -> addRow(tr("Mod\350le existant",   "used in save as form"), templates_);
+	form_layout_ -> addRow(tr("Modèle existant",   "used in save as form"), templates_);
 	setLayout(form_layout_);
 }
 

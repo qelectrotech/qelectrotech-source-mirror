@@ -17,7 +17,7 @@
 */
 #ifndef ARC_EDITOR_H
 #define ARC_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 #include "elementitemeditor.h"
 class PartArc;
 class StyleEditor;

@@ -58,9 +58,9 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	setInteractive(true);
 
 	QString whatsthis = tr(
-		"Ceci est la zone dans laquelle vous concevez vos sch\351mas en y ajoutant"
-		" des \351l\351ments et en posant des conducteurs entre leurs bornes. Il est"
-		" \351galement possible d'ajouter des textes ind\351pendants.",
+		"Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant"
+		" des éléments et en posant des conducteurs entre leurs bornes. Il est"
+		" également possible d'ajouter des textes indépendants.",
 		"\"What's this?\" tip"
 	);
 	setWhatsThis(whatsthis);
@@ -194,10 +194,10 @@ void DiagramView::rotateTexts() {
 	// demande un angle a l'utilisateur
 	QDialog ori_text_dialog(diagramEditor());
 	ori_text_dialog.setSizeGripEnabled(false);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	ori_text_dialog.setWindowFlags(Qt::Sheet);
 #endif
-	ori_text_dialog.setWindowTitle(tr("Orienter les textes s\351lectionn\351s", "window title"));
+	ori_text_dialog.setWindowTitle(tr("Orienter les textes sélectionnés", "window title"));
 // 	ori_text_dialog.setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	
 	
@@ -911,12 +911,12 @@ void DiagramView::editSelectionProperties() {
 	}
 	
 	else {
-		QET::MessageBox::information(
+		QET::QetMessageBox::information(
 			this,
-			tr("Propri\351t\351s de la s\351lection"),
+			tr("Propriétés de la sélection"),
 			QString(
 				tr(
-					"La s\351lection contient %1.",
+					"La sélection contient %1.",
 					"%1 is a sentence listing the selected objects"
 				)
 			).arg(selection.sentence(DiagramContent::All | DiagramContent::SelectedOnly))
@@ -952,7 +952,7 @@ void DiagramView::editConductorColor(Conductor *edited_conductor) {
 	// prepare a color dialog showing the initial conductor color
 	QColorDialog *color_dialog = new QColorDialog(this);
 	color_dialog -> setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	color_dialog -> setWindowFlags(Qt::Sheet);
 #endif
 	color_dialog -> setCurrentColor(initial_properties.color);
@@ -1105,9 +1105,9 @@ void DiagramView::editSelection() {
  * @brief DiagramView::setEventInterface
  * Set an event interface to diagram view.
  */
-void DiagramView::setEventInterface(DVEventInterface *interface) {
+void DiagramView::setEventInterface(DVEventInterface *event_interface) {
 	if (m_event_interface) delete m_event_interface;
-	m_event_interface = interface;
+	m_event_interface = event_interface;
 }
 
 /**
@@ -1115,7 +1115,7 @@ void DiagramView::setEventInterface(DVEventInterface *interface) {
 	@param e Evenement decrivant la demande de menu contextuel
 */
 void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
-	if (QGraphicsItem *qgi = scene -> itemAt(mapToScene(e -> pos()))) {
+	if (QGraphicsItem *qgi = scene -> itemAt(mapToScene(e -> pos()), transform())) {
 		if (!qgi -> isSelected()) scene -> clearSelection();
 		qgi -> setSelected(true);
 	}

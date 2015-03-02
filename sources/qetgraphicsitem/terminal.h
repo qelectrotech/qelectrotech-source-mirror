@@ -17,7 +17,7 @@
 */
 #ifndef TERMINAL_H
 #define TERMINAL_H
-#include <QtGui>
+#include <QtWidgets>
 #include <QtXml>
 #include "qet.h"
 class Conductor;

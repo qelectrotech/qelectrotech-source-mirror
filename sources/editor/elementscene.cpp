@@ -187,7 +187,9 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &rect) {
 	p -> setRenderHint(QPainter::TextAntialiasing, true);
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 	
-	p -> setPen(Qt::red);
+	QPen pen(Qt::red);
+	pen.setCosmetic(true);
+	p -> setPen(pen);
 	p -> setBrush(Qt::NoBrush);
 	p -> drawLine(-20, 0, 20, 0);
 	p -> drawLine(0, -20, 0, 20);
@@ -199,14 +201,14 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &rect) {
  * Set a new event interface
  * @param interface
  */
-void ElementScene::setEventInterface(ESEventInterface *interface) {
+void ElementScene::setEventInterface(ESEventInterface *event_interface) {
 	if (m_event_interface) {
 		delete m_event_interface;
 		//We must to re-init because previous interface
 		//Reset his own init when deleted
-		interface->init();
+		event_interface->init();
 	}
-	m_event_interface = interface;
+	m_event_interface = event_interface;
 }
 
 /**
@@ -530,15 +532,15 @@ void ElementScene::slot_editAuthorInformations() {
 	// cree un dialogue
 	QDialog dialog_author(element_editor);
 	dialog_author.setModal(true);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	dialog_author.setWindowFlags(Qt::Sheet);
 #endif
 	dialog_author.setMinimumSize(400, 260);
-	dialog_author.setWindowTitle(tr("\311diter les informations sur l'auteur", "window title"));
+	dialog_author.setWindowTitle(tr("Éditer les informations sur l'auteur", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_author);
 	
 	// ajoute un champ explicatif au dialogue
-	QLabel *information_label = new QLabel(tr("Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l'\351l\351ment, sa licence, ou tout autre renseignement que vous jugerez utile."));
+	QLabel *information_label = new QLabel(tr("Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l'élément, sa licence, ou tout autre renseignement que vous jugerez utile."));
 	information_label -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	information_label -> setWordWrap(true);
 	dialog_layout -> addWidget(information_label);
@@ -586,16 +588,16 @@ void ElementScene::slot_editNames() {
 	
 	// cree un dialogue
 	QDialog dialog(element_editor);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	dialog.setWindowFlags(Qt::Sheet);
 #endif
 	dialog.setModal(true);
 	dialog.setMinimumSize(400, 330);
-	dialog.setWindowTitle(tr("\311diter les noms", "window title"));
+	dialog.setWindowTitle(tr("Éditer les noms", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog);
 	
 	// ajoute un champ explicatif au dialogue
-	QLabel *information_label = new QLabel(tr("Vous pouvez sp\351cifier le nom de l'\351l\351ment dans plusieurs langues."));
+	QLabel *information_label = new QLabel(tr("Vous pouvez spécifier le nom de l'élément dans plusieurs langues."));
 	information_label -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	information_label -> setWordWrap(true);
 	dialog_layout -> addWidget(information_label);
@@ -792,7 +794,7 @@ bool ElementScene::applyInformations(const QDomDocument &xml_document, QString *
 	QDomElement root = xml_document.documentElement();
 	if (root.tagName() != "definition" || root.attribute("type") != "element") {
 		if (error_message) {
-			*error_message = tr("Ce document XML n'est pas une d\351finition d'\351l\351ment.", "error message");
+			*error_message = tr("Ce document XML n'est pas une définition d'élément.", "error message");
 		}
 		return(false);
 	}
@@ -832,7 +834,7 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document, QStri
 	QDomElement root = xml_document.documentElement();
 	if (root.tagName() != "definition" || root.attribute("type") != "element") {
 		if (error_message) {
-			*error_message = tr("Ce document XML n'est pas une d\351finition d'\351l\351ment.", "error message");
+			*error_message = tr("Ce document XML n'est pas une définition d'élément.", "error message");
 		}
 		return(loaded_parts);
 	}
@@ -968,9 +970,9 @@ void ElementScene::centerElementToOrigine() {
 	int center_y = qRound(size.center().y());
 
 	//define the movement of translation
-	int move_x = center_x - (qRound(center_x) %10);
+	int move_x = center_x - (center_x %10);
 	if (center_x < 0) move_x -= 10;
-	int move_y = center_y - (qRound(center_y) %10);
+	int move_y = center_y - (center_y %10);
 	if (center_y < 0) move_y -= 10;
 
 		//move each primitive by @move

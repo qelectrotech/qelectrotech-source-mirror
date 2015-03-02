@@ -534,13 +534,13 @@ qreal TitleBlockTemplateView::zoomFactor() const {
 void TitleBlockTemplateView::init() {
 	add_column_before_    = new QAction(QET::Icons::EditTableInsertColumnLeft,  tr("Ajouter une colonne (avant)",              "context menu"), this);
 	add_row_before_       = new QAction(QET::Icons::EditTableInsertRowAbove,    tr("Ajouter une ligne (avant)",                "context menu"), this);
-	add_column_after_     = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne (apr\350s)",           "context menu"), this);
-	add_row_after_        = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne (apr\350s)",             "context menu"), this);
+	add_column_after_     = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne (après)",           "context menu"), this);
+	add_row_after_        = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne (après)",             "context menu"), this);
 	edit_column_dim_      = new QAction(                                        tr("Modifier les dimensions de cette colonne", "context menu"), this);
 	edit_row_dim_         = new QAction(                                        tr("Modifier les dimensions de cette ligne",   "context menu"), this);
 	delete_column_        = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Supprimer cette colonne",                  "context menu"), this);
 	delete_row_           = new QAction(QET::Icons::EditTableDeleteRow,         tr("Supprimer cette ligne",                    "context menu"), this);
-	change_preview_width_ = new QAction(                                        tr("Modifier la largeur de cet aper\347u",     "context menu"), this);
+	change_preview_width_ = new QAction(                                        tr("Modifier la largeur de cet aperçu",     "context menu"), this);
 	
 	connect(add_column_before_,    SIGNAL(triggered()), this, SLOT(addColumnBefore()));
 	connect(add_row_before_,       SIGNAL(triggered()), this, SLOT(addRowBefore()));
@@ -781,8 +781,8 @@ void TitleBlockTemplateView::refresh() {
 */
 void TitleBlockTemplateView::changePreviewWidth() {
 	TitleBlockDimensionWidget dialog(false, this);
-	dialog.setWindowTitle(tr("Changer la largeur de l'aper\347u"));
-	dialog.label() -> setText(tr("Largeur de l'aper\347u :"));
+	dialog.setWindowTitle(tr("Changer la largeur de l'aperçu"));
+	dialog.label() -> setText(tr("Largeur de l'aperçu :"));
 	dialog.setValue(TitleBlockDimension(preview_width_));
 	if (dialog.exec() == QDialog::Accepted) {
 		setPreviewWidth(dialog.value().value);
@@ -931,14 +931,14 @@ void TitleBlockTemplateView::updateDisplayedMinMaxWidth() {
 	if (max_width != -1) {
 		min_max_width_sentence = QString(
 			tr(
-				"Longueur minimale\240: %1px\nLongueur maximale\240: %2px\n",
+				"Longueur minimale : %1px\nLongueur maximale : %2px\n",
 				"tooltip showing the minimum and/or maximum width of the edited template"
 			)
 		).arg(min_width).arg(max_width);
 	} else {
 		min_max_width_sentence = QString(
 			tr(
-				"Longueur minimale\240: %1px\n",
+				"Longueur minimale : %1px\n",
 				"tooltip showing the minimum width of the edited template"
 			)
 		).arg(min_width);
@@ -993,7 +993,7 @@ void TitleBlockTemplateView::updateTotalWidthLabel() {
 	if (!total_width_helper_cell_) return;
 	total_width_helper_cell_ -> label = QString(
 		tr(
-			"Largeur totale pour cet aper\347u : %1px",
+			"Largeur totale pour cet aperçu : %1px",
 			"displayed at the top of the preview when editing a title block template"
 		)
 	).arg(preview_width_);

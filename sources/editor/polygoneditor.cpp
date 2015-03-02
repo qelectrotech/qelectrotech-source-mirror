@@ -32,7 +32,7 @@ PolygonEditor::PolygonEditor(QETElementEditor *editor, PartPolygon *p, QWidget *
 	ElementItemEditor(editor, parent),
 	part(p),
 	points_list(this),
-	close_polygon(tr("Polygone ferm\351"), this)
+	close_polygon(tr("Polygone fermé"), this)
 {
 	style_ = new StyleEditor(editor);
 	
@@ -73,7 +73,7 @@ void PolygonEditor::updatePolygonPoints() {
 	if (!part) return;
 	QVector<QPointF> points = getPointsFromTree();
 	if (points.count() < 2) {
-		QET::MessageBox::warning(
+		QET::QetMessageBox::warning(
 			this,
 			tr("Erreur", "message box title"),
 			tr("Le polygone doit comporter au moins deux points.", "message box content")

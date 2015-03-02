@@ -42,7 +42,7 @@ namespace QET {
 		extern QIcon ConductorSettings;
 		extern QIcon Configure;
 		extern QIcon ConfigureToolbars;
-		extern QIcon CopyFile;
+		extern QIcon IC_CopyFile;
 		extern QIcon DefaultConductor;
 		extern QIcon DiagramAdd;
 		extern QIcon Diagram;
@@ -106,7 +106,7 @@ namespace QET {
 		extern QIcon HotSpot;
 		extern QIcon InsertImage;
 		extern QIcon Lower;
-		extern QIcon MoveFile;
+		extern QIcon IC_MoveFile;
 		extern QIcon Names;
 		extern QIcon Neutral;
 		extern QIcon NewDiagram;

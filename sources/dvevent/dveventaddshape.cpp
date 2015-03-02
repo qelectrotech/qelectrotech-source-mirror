@@ -194,17 +194,17 @@ void DVEventAddShape::updateHelpCross(const QPoint &p)
 		if (!m_help_horiz)
 		{
 			m_help_horiz = new QGraphicsLineItem(m_diagram -> border_and_titleblock.rowsHeaderWidth() + 5, 0,
-												 m_diagram -> border_and_titleblock.diagramWidth() + 5, 0,
-												 0, m_diagram);
+												 m_diagram -> border_and_titleblock.diagramWidth() + 5, 0);
 			m_help_horiz->setPen(pen);
+			m_diagram -> addItem(m_help_horiz);
 		}
 
 		if (!m_help_verti)
 		{
 			m_help_verti = new QGraphicsLineItem(0, m_diagram -> border_and_titleblock.columnsHeaderHeight() + 5,
-												 0, m_diagram -> border_and_titleblock.diagramHeight() + 5,
-												 0, m_diagram);
+												 0, m_diagram -> border_and_titleblock.diagramHeight() + 5);
 			m_help_verti->setPen(pen);
+			m_diagram -> addItem(m_help_verti);
 		}
 	}
 

@@ -17,7 +17,7 @@
 */
 #ifndef ELEMENTS_PANEL_WIDGET_H
 #define ELEMENTS_PANEL_WIDGET_H
-#include <QtGui>
+#include <QtWidgets>
 #include "elementspanel.h"
 /**
 	This class embeds an elements panel under a toolbar providing various actions

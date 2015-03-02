@@ -29,7 +29,8 @@
 ESEventAddText::ESEventAddText(ElementScene *scene) :
 	ESEventInterface(scene)
 {
-	m_text = new PartText(m_editor, 0, m_scene);
+	m_text = new PartText(m_editor);
+	m_scene -> addItem(m_text);
 	m_running = true;
 }
 
@@ -62,7 +63,8 @@ bool ESEventAddText::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Texte"), m_scene, m_text));
 
 		//Set new text
-		m_text = new PartText(m_editor, 0, m_scene);
+		m_text = new PartText(m_editor);
+		m_scene -> addItem(m_text);
 		m_text -> setPos(m_scene -> snapToGrid(event -> scenePos()));
 
 		return true;

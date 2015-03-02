@@ -18,7 +18,7 @@
 #ifndef TITLEBLOCK_SLASH_INTEGRATION_MOVE_TEMPLATES_HANDLER_H
 #define TITLEBLOCK_SLASH_INTEGRATION_MOVE_TEMPLATES_HANDLER_H
 #include "movetemplateshandler.h"
-#include <QtGui>
+#include <QtWidgets>
 /**
 	This class implements the interface defined by
 	MoveTitleBlockTemplatesHandler to ease the integration of title block

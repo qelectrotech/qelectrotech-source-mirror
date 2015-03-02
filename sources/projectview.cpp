@@ -234,7 +234,7 @@ int ProjectView::tryClosingDiagrams() {
 	if (title.isEmpty()) title = "QElectroTech ";
 
 	int close_dialog = QMessageBox::question(this, title,
-								   tr("Le projet \340 \351t\351 modifi\351.\n"
+								   tr("Le projet à été modifié.\n"
 									  "Voulez-vous enregistrer les modifications ?"),
 								   QMessageBox::Save | QMessageBox::Discard
 								   | QMessageBox::Cancel,
@@ -260,7 +260,7 @@ QString ProjectView::askUserForFilePath(bool assign) {
 		this,
 		tr("Enregistrer sous", "dialog title"),
 		project_ -> currentDir(),
-		tr("Sch\351ma QElectroTech (*.qet)", "filetypes allowed when saving a diagram file")
+		tr("Schéma QElectroTech (*.qet)", "filetypes allowed when saving a diagram file")
 	);
 	
 	// if no filepath is provided, return an empty string
@@ -282,7 +282,7 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	view is not associated to any project.
 */
 QETResult ProjectView::noProjectResult() const {
-	QETResult no_project(tr("aucun projet affich\351", "error message"), false);
+	QETResult no_project(tr("aucun projet affiché", "error message"), false);
 	return(no_project);
 }
 
@@ -366,10 +366,10 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 	
 
 	//Ask confirmation to user.
-	int answer = QET::MessageBox::question(
+	int answer = QET::QetMessageBox::question(
 		this,
-		tr("Supprimer le sch\351ma ?", "message box title"),
-		tr("\312tes-vous s\373r de vouloir supprimer ce sch\351ma du projet ? Ce changement est irr\351versible.", "message box content"),
+		tr("Supprimer le schéma ?", "message box title"),
+		tr("Êtes-vous s\373r de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.", "message box content"),
 		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 		QMessageBox::No
 	);
@@ -581,7 +581,7 @@ void ProjectView::exportProject() {
 	if (!project_) return;
 	
 	ExportDialog ed(project_, parentWidget());
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	ed.setWindowFlags(Qt::Sheet);
 #endif
 	ed.exec();
@@ -668,7 +668,7 @@ int ProjectView::cleanProject() {
 	
 	// s'assure que le schema n'est pas en lecture seule
 	if (project_ -> isReadOnly()) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
 			tr("Projet en lecture seule", "message box title"),
 			tr("Ce projet est en lecture seule. Il n'est donc pas possible de le nettoyer.", "message box content")
@@ -677,9 +677,9 @@ int ProjectView::cleanProject() {
 	}
 	
 	// construit un petit dialogue pour parametrer le nettoyage
-	QCheckBox *clean_tbt        = new QCheckBox(tr("Supprimer les mod\350les de cartouche inutilis\351s dans le projet"));
-	QCheckBox *clean_elements   = new QCheckBox(tr("Supprimer les \351l\351ments inutilis\351s dans le projet"));
-	QCheckBox *clean_categories = new QCheckBox(tr("Supprimer les cat\351gories vides"));
+	QCheckBox *clean_tbt        = new QCheckBox(tr("Supprimer les modèles de cartouche inutilisés dans le projet"));
+	QCheckBox *clean_elements   = new QCheckBox(tr("Supprimer les éléments inutilisés dans le projet"));
+	QCheckBox *clean_categories = new QCheckBox(tr("Supprimer les catégories vides"));
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
 	clean_tbt        -> setChecked(true);
@@ -687,7 +687,7 @@ int ProjectView::cleanProject() {
 	clean_categories -> setChecked(true);
 	
 	QDialog clean_dialog(parentWidget());
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	clean_dialog.setWindowFlags(Qt::Sheet);
 #endif
 	
@@ -727,7 +727,7 @@ int ProjectView::cleanProject() {
 	Initialize actions for this widget.
 */
 void ProjectView::initActions() {
-	add_new_diagram_ = new QAction(QET::Icons::Add, tr("Ajouter un sch\351ma"), this);
+	add_new_diagram_ = new QAction(QET::Icons::Add, tr("Ajouter un schéma"), this);
 	connect(add_new_diagram_, SIGNAL(triggered()), this, SLOT(addNewDiagram()));
 }
 
@@ -742,7 +742,7 @@ void ProjectView::initWidgets() {
 	fallback_widget_ = new QWidget();
 	fallback_label_ = new QLabel(
 		tr(
-			"Ce projet ne contient aucun sch\351ma",
+			"Ce projet ne contient aucun schéma",
 			"label displayed when a project contains no diagram"
 		)
 	);
@@ -775,7 +775,7 @@ void ProjectView::initLayout() {
 	fallback_widget_layout_ -> addWidget(fallback_label_);
 	
 	layout_ = new QVBoxLayout(this);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	layout_ -> setContentsMargins(0, 8, 0, 0);
 #else
 	layout_ -> setContentsMargins(0, 0, 0, 0);

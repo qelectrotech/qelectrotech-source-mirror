@@ -17,7 +17,7 @@
 */
 #ifndef PART_TEXTFIELD_H
 #define PART_TEXTFIELD_H
-#include <QtGui>
+#include <QtWidgets>
 #include "customelementpart.h"
 #include "qetapp.h"
 class TextFieldEditor;

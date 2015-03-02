@@ -280,7 +280,7 @@ void ElementsCategory::copy(MoveElementsDescription *mvt_desc) {
 	// verifie que la source et la destination ne sont pas identiques
 	if (target_category == this || target_category -> isChildOf(this)) {
 		if (handler) {
-			handler -> errorWithACategory(this, tr("La copie d'une cat\351gorie vers elle-m\352me ou vers l'une de ses sous-cat\351gories n\'est pas g\351r\351e."));
+			handler -> errorWithACategory(this, tr("La copie d'une catégorie vers elle-même ou vers l'une de ses sous-catégories n\'est pas gérée."));
 		}
 		return;
 	}
@@ -469,13 +469,13 @@ void ElementsCategory::move(MoveElementsDescription *mvt_desc) {
 	
 	// empeche le deplacement s'il s'agit d'une categorie racine
 	if (isRootCategory()) {
-		if (handler) handler -> errorWithACategory(this, tr("Il n'est pas possible de d\351placer une collection."));
+		if (handler) handler -> errorWithACategory(this, tr("Il n'est pas possible de déplacer une collection."));
 		return;
 	}
 	
 	// empeche le deplacement de la categorie dans une sous-categorie
 	if (target_category == this || target_category -> isChildOf(this)) {
-		if (handler) handler -> errorWithACategory(this, tr("Le d\351placement d'une cat\351gorie dans une de ses sous-cat\351gories n'est pas possible."));
+		if (handler) handler -> errorWithACategory(this, tr("Le déplacement d'une catégorie dans une de ses sous-catégories n'est pas possible."));
 		return;
 	}
 	
@@ -553,7 +553,7 @@ void ElementsCategory::move(MoveElementsDescription *mvt_desc) {
 		bool category_deletion = remove();
 		mvt_desc -> setSourceItemDeleted(category_deletion);
 		if (!category_deletion && handler) {
-			handler -> errorWithACategory(this, tr("La suppression de cette cat\351gorie a \351chou\351."));
+			handler -> errorWithACategory(this, tr("La suppression de cette catégorie a échoué."));
 		}
 	}
 }
@@ -580,7 +580,7 @@ void ElementsCategory::deleteUnusedElements(MoveElementsHandler *handler) {
 		if (!parent_project -> usesElement(element -> location())) {
 			bool element_deletion = element -> remove();
 			if (!element_deletion && handler) {
-				handler -> errorWithAnElement(element, tr("Impossible de supprimer l'\351l\351ment"));
+				handler -> errorWithAnElement(element, tr("Impossible de supprimer l'élément"));
 			}
 		}
 	}
@@ -601,7 +601,7 @@ void ElementsCategory::deleteEmptyCategories(MoveElementsHandler *handler) {
 		if (!sub_category -> isEmpty()) {
 			bool category_deletion = sub_category -> remove();
 			if (!category_deletion && handler) {
-				handler -> errorWithACategory(sub_category, tr("Impossible de supprimer la cat\351gorie"));
+				handler -> errorWithACategory(sub_category, tr("Impossible de supprimer la catégorie"));
 			}
 		}
 	}

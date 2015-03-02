@@ -64,7 +64,7 @@ void PotentialTextsDialog::buildRadioList() {
 
 	//create a new radio button for each text of @conductorList
 	for (QMultiMap<int, QString>::ConstIterator it = m_texts.constEnd()-1; it != m_texts.constBegin()-1; --it) {
-		QRadioButton *rb= new QRadioButton(it.value() + tr("  : est pr\351sent ") + QString::number(it.key()) + tr(" fois."), this);
+		QRadioButton *rb= new QRadioButton(it.value() + tr("  : est présent ") + QString::number(it.key()) + tr(" fois."), this);
 		if (it == m_texts.constEnd()-1) {
 			rb -> setChecked(true);
 			m_selected_text = it.value();

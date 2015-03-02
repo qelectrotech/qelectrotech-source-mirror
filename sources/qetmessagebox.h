@@ -26,7 +26,7 @@ namespace QET {
 		provided, these methodes ensure the dialog box is "window modal" and has the
 		Qt:Sheet flag, thus enabling a better MacOS integration.
 	*/
-	namespace MessageBox {
+	namespace QetMessageBox {
 		QMessageBox::StandardButton critical   (QWidget *, const QString &, const QString &, QMessageBox::StandardButtons = QMessageBox::Ok, QMessageBox::StandardButton = QMessageBox::NoButton);
 		QMessageBox::StandardButton information(QWidget *, const QString &, const QString &, QMessageBox::StandardButtons = QMessageBox::Ok, QMessageBox::StandardButton = QMessageBox::NoButton);
 		QMessageBox::StandardButton question   (QWidget *, const QString &, const QString &, QMessageBox::StandardButtons = QMessageBox::Ok, QMessageBox::StandardButton = QMessageBox::NoButton);

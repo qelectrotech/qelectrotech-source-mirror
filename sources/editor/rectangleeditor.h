@@ -17,7 +17,7 @@
 */
 #ifndef RECTANGLE_EDITOR_H
 #define RECTANGLE_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 #include "elementitemeditor.h"
 class PartRectangle;
 class StyleEditor;

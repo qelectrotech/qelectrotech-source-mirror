@@ -246,7 +246,7 @@ void QTextOrientationWidget::paintEvent(QPaintEvent *event) {
 void QTextOrientationWidget::mouseMoveEvent(QMouseEvent *event) {
 	if (read_only_) return;
 	
-	bool drawn_angle_hovered = positionIsASquare(event -> posF(), &highlight_angle_);
+	bool drawn_angle_hovered = positionIsASquare(event -> localPos(), &highlight_angle_);
 	
 	if (must_highlight_angle_ != drawn_angle_hovered) {
 		must_highlight_angle_ = drawn_angle_hovered;
@@ -262,7 +262,7 @@ void QTextOrientationWidget::mouseReleaseEvent(QMouseEvent *event) {
 	if (read_only_) return;
 	
 	double clicked_angle;
-	bool drawn_angle_clicked = positionIsASquare(event -> posF(), &clicked_angle);
+	bool drawn_angle_clicked = positionIsASquare(event -> localPos(), &clicked_angle);
 	
 	if (drawn_angle_clicked) {
 		setOrientation(clicked_angle);

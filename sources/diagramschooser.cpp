@@ -162,7 +162,7 @@ void DiagramsChooser::updateList() {
 	foreach(Diagram *diagram, project_ -> diagrams()) {
 		// titre du schema
 		QString diagram_title = diagram -> title();
-		if (diagram_title.isEmpty()) diagram_title = tr("Sch\351ma sans titre");
+		if (diagram_title.isEmpty()) diagram_title = tr("Schéma sans titre");
 		
 		QCheckBox *checkbox = new QCheckBox(diagram_title);
 		checkbox -> setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum));

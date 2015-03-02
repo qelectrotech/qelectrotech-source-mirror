@@ -507,7 +507,9 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	
 	if (draw_grid) {
 		// draw the dot of the grid
-		p -> setPen(Qt::black);
+		QPen pen(Qt::black);
+		pen.setCosmetic(true);
+		p -> setPen(pen);
 		p -> setBrush(Qt::NoBrush);
 		qreal limite_x = r.x() + r.width();
 		qreal limite_y = r.y() + r.height();

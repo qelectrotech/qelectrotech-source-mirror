@@ -148,7 +148,7 @@ ElementsCollectionItem *ElementsCollection::copy(ElementsCategory *target_catego
 ElementsCollectionItem *ElementsCollection::move(ElementsCategory *, MoveElementsHandler *handler) {
 	if (ElementsCategory *root = rootCategory()) {
 		if (handler) {
-			handler -> errorWithACategory(root, tr("Il n'est pas possible de d\351placer une collection."));
+			handler -> errorWithACategory(root, tr("Il n'est pas possible de déplacer une collection."));
 		}
 	}
 	return(0);

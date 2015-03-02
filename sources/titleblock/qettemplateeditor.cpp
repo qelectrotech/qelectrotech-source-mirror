@@ -105,12 +105,12 @@ bool QETTitleBlockTemplateEditor::openForDuplication() const {
 bool QETTitleBlockTemplateEditor::canClose() {
 	if (undo_stack_ -> isClean()) return(true);
 	// ask the user whether he wants to save the current template
-	QMessageBox::StandardButton answer = QET::MessageBox::question(
+	QMessageBox::StandardButton answer = QET::QetMessageBox::question(
 		this,
-		tr("Enregistrer le mod\350le en cours ?", "dialog title"),
+		tr("Enregistrer le modèle en cours ?", "dialog title"),
 		QString(
 			tr(
-				"Voulez-vous enregistrer le mod\350le %1 ?",
+				"Voulez-vous enregistrer le modèle %1 ?",
 				"dialog content - %1 is a title block template name"
 			)
 		).arg(location_.name()),
@@ -167,8 +167,8 @@ void QETTitleBlockTemplateEditor::duplicateCurrentLocation() {
 	bool accepted = false;
 	QString new_template_name = QInputDialog::getText(
 		this,
-		tr("Dupliquer un mod\350le de cartouche", "input dialog title"),
-		tr("Pour dupliquer ce mod\350le, entrez le nom voulu pour sa copie", "input dialog text"),
+		tr("Dupliquer un modèle de cartouche", "input dialog title"),
+		tr("Pour dupliquer ce modèle, entrez le nom voulu pour sa copie", "input dialog text"),
 		QLineEdit::Normal,
 		proposed_name,
 		&accepted
@@ -337,16 +337,16 @@ void QETTitleBlockTemplateEditor::initActions() {
 	cut_            = new QAction(QET::Icons::EditCut,              tr("Co&uper", "menu entry"),                      this);
 	copy_           = new QAction(QET::Icons::EditCopy,             tr("Cop&ier", "menu entry"),                      this);
 	paste_          = new QAction(QET::Icons::EditPaste,            tr("C&oller", "menu entry"),                      this);
-	edit_logos_     = new QAction(QET::Icons::InsertImage,          tr("G\351rer les logos", "menu entry"),           this);
-	edit_info_      = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations compl\351mentaires", "menu entry"), this);
+	edit_logos_     = new QAction(QET::Icons::InsertImage,          tr("Gérer les logos", "menu entry"),           this);
+	edit_info_      = new QAction(QET::Icons::UserInformations,     tr("Éditer les informations complémentaires", "menu entry"), this);
 	zoom_in_        = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant",                   "menu entry"), this);
-	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re",              "menu entry"), this);
-	zoom_fit_       = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351",               "menu entry"), this);
+	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom arrière",              "menu entry"), this);
+	zoom_fit_       = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapté",               "menu entry"), this);
 	zoom_reset_     = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom",                  "menu entry"), this);
 	add_row_        = new QAction(QET::Icons::EditTableInsertRowAbove,    tr("Ajouter une &ligne",      "menu entry"), this);
 	add_col_        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une &colonne",    "menu entry"), this);
 	merge_cells_    = new QAction(QET::Icons::EditTableCellMerge,   tr("&Fusionner les cellules",      "menu entry"), this);
-	split_cell_     = new QAction(QET::Icons::EditTableCellSplit,   tr("&S\351parer les cellules",     "menu entry"), this);
+	split_cell_     = new QAction(QET::Icons::EditTableCellSplit,   tr("&Séparer les cellules",     "menu entry"), this);
 	
 	undo_ -> setIcon(QET::Icons::EditUndo);
 	redo_ -> setIcon(QET::Icons::EditRedo);
@@ -398,7 +398,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 */
 void QETTitleBlockTemplateEditor::initMenus() {
 	file_menu_    = new QMenu(tr("&Fichier",        "menu title"), this);
-	edit_menu_    = new QMenu(tr("&\311dition",     "menu title"), this);
+	edit_menu_    = new QMenu(tr("&Édition",     "menu title"), this);
 	display_menu_ = new QMenu(tr("Afficha&ge",      "menu title"), this);
 	
 	file_menu_    -> addAction(new_);
@@ -446,7 +446,7 @@ void QETTitleBlockTemplateEditor::initToolbars() {
 	main_toolbar -> addAction(save_as_);
 	addToolBar(Qt::TopToolBarArea, main_toolbar);
 	
-	QToolBar *edit_toolbar = new QToolBar(tr("\311dition", "toolbar title"), this);
+	QToolBar *edit_toolbar = new QToolBar(tr("Édition", "toolbar title"), this);
 	edit_toolbar -> setObjectName("tbt_edit_toolbar");
 	edit_toolbar -> addAction(undo_);
 	edit_toolbar -> addAction(redo_);
@@ -494,7 +494,7 @@ void QETTitleBlockTemplateEditor::initWidgets() {
 	
 	// cell edition widget at the bottom
 	template_cell_editor_widget_ = new TitleBlockTemplateCellWidget(tb_template_);
-	template_cell_editor_dock_widget_ = new QDockWidget(tr("Propri\351t\351s de la cellule", "dock title"), this);
+	template_cell_editor_dock_widget_ = new QDockWidget(tr("Propriétés de la cellule", "dock title"), this);
 	template_cell_editor_dock_widget_ -> setObjectName("tbt_celleditor_dock");
 	template_cell_editor_dock_widget_ -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	template_cell_editor_dock_widget_ -> setWidget(template_cell_editor_widget_);
@@ -562,7 +562,7 @@ QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const {
 	if (!titleblock_title.isEmpty()) {
 		QString tag;
 		if (!undo_stack_ -> isClean()) {
-			tag = tr("[Modifi\351]", "window title tag");
+			tag = tr("[Modifié]", "window title tag");
 		}
 		if (read_only_) {
 			tag = tr("[Lecture seule]", "window title tag");
@@ -648,7 +648,7 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 	// base title
 	QString min_title(
 		tr(
-			"QElectroTech - \311diteur de mod\350le de cartouche",
+			"QElectroTech - Éditeur de modèle de cartouche",
 			"titleblock template editor: base window title"
 		)
 	);
@@ -739,7 +739,7 @@ bool QETTitleBlockTemplateEditor::saveAs(const QString &filepath) {
 */
 void QETTitleBlockTemplateEditor::open() {
 	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser(
-		tr("Ouvrir un mod\350le", "File > open dialog window title"),
+		tr("Ouvrir un modèle", "File > open dialog window title"),
 		true
 	);
 	if (location.isValid()) {
@@ -761,7 +761,7 @@ void QETTitleBlockTemplateEditor::openFromFile() {
 		tr("Ouvrir un fichier", "dialog title"),
 		initial_dir,
 		tr(
-			"Mod\350les de cartouches QElectroTech (*%1);;"
+			"Modèles de cartouches QElectroTech (*%1);;"
 			"Fichiers XML (*.xml);;"
 			"Tous les fichiers (*)",
 			"filetypes allowed when opening a title block template file - %1 is the .titleblock extension"
@@ -799,7 +799,7 @@ bool QETTitleBlockTemplateEditor::save() {
 */
 bool QETTitleBlockTemplateEditor::saveAs() {
 	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser(
-		tr("Enregistrer le mod\350le sous", "dialog window title"),
+		tr("Enregistrer le modèle sous", "dialog window title"),
 		false
 	);
 	if (location.isValid()) {
@@ -821,7 +821,7 @@ bool QETTitleBlockTemplateEditor::saveAsFile() {
 		tr("Enregistrer sous", "dialog title"),
 		initial_dir,
 		tr(
-			"Mod\350les de cartouches QElectroTech (*%1)",
+			"Modèles de cartouches QElectroTech (*%1)",
 			"filetypes allowed when saving a title block template file - %1 is the .titleblock extension"
 		).arg(QString(TITLEBLOCKS_FILE_EXTENSION))
 	);
@@ -915,11 +915,11 @@ void QETTitleBlockTemplateEditor::editTemplateInformation() {
 	
 	QDialog dialog_author(this);
 	dialog_author.setModal(true);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	dialog_author.setWindowFlags(Qt::Sheet);
 #endif
 	dialog_author.setMinimumSize(400, 260);
-	dialog_author.setWindowTitle(tr("\311diter les informations compl\351mentaires", "window title"));
+	dialog_author.setWindowTitle(tr("Éditer les informations complémentaires", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_author);
 	
 	// explanation label

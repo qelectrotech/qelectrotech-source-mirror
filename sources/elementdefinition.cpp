@@ -381,7 +381,7 @@ void ElementDefinition::copy(MoveElementsDescription *mvt_desc) {
 	element_copy = target_category -> createElement(mvt_desc -> finalDestinationInternalName());
 	if (!element_copy) {
 		if (handler) {
-			handler -> errorWithAnElement(this, tr("L'\351l\351ment cible n'a pu \352tre cr\351\351."));
+			handler -> errorWithAnElement(this, tr("L'élément cible n'a pu être créé."));
 		}
 		return;
 	}
@@ -463,7 +463,7 @@ void ElementDefinition::move(MoveElementsDescription *mvt_desc) {
 	bool element_deletion = remove();
 	mvt_desc -> setSourceItemDeleted(element_deletion);
 	if (!element_deletion && handler) {
-		handler -> errorWithAnElement(this, tr("La suppression de cet \351l\351ment a \351chou\351."));
+		handler -> errorWithAnElement(this, tr("La suppression de cet élément a échoué."));
 	}
 }
 

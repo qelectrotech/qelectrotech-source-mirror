@@ -17,7 +17,7 @@
 */
 #ifndef Q_TEXT_ORIENTATION_SPINBOX_WIDGET_H
 #define Q_TEXT_ORIENTATION_SPINBOX_WIDGET_H
-#include <QtGui>
+#include <QtWidgets>
 #include "qtextorientationwidget.h"
 /**
 	This class provides a widget grouping a QTextOrientationWidget and QSpinBox

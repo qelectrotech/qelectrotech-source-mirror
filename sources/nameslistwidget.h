@@ -17,7 +17,7 @@
 */
 #ifndef NAMES_LIST_WIDGET_H
 #define NAMES_LIST_WIDGET_H
-#include <QtGui>
+#include <QtWidgets>
 #include "nameslist.h"
 /**
 	This class provides a widget enabling users to enter localized names for

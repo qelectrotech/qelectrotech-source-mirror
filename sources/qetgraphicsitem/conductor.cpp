@@ -87,7 +87,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	// calcul du rendu du conducteur
 	generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable);
-	setAcceptsHoverEvents(true);
+	setAcceptHoverEvents(true);
 	
 	// ajout du champ de texte editable
 	text_item = new ConductorTextItem(properties_.text, this);
@@ -477,7 +477,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	}
 	
 	// decalage ideal pour le rendu centre d'un carre / cercle de 2.0 px de cote / diametre
-	qreal pretty_offset = (options -> levelOfDetail == 1 ? 1.0 : 1.0);
+	qreal pretty_offset = 1.0;
 	
 	// dessin des points d'accroche du conducteur si celui-ci est selectionne
 	if (isSelected()) {
@@ -1396,7 +1396,7 @@ void Conductor::displayedTextChanged() {
 		{
 			qmbreturn = QMessageBox::question(diagramEditor(), tr("Textes de conducteurs"),
 											  tr("Voulez-vous appliquer le nouveau texte \n"
-												 "\340 l'ensemble des conducteurs de ce potentiel ?"),
+												 "à l'ensemble des conducteurs de ce potentiel ?"),
 											  QMessageBox::No| QMessageBox::Yes, QMessageBox::Yes);
 			if (qmbreturn == QMessageBox::Yes)
 			{

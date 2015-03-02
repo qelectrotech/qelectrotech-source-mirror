@@ -31,7 +31,7 @@ ConductorTextItem::ConductorTextItem(Conductor *parent_conductor) :
 	moved_by_user_(false),
 	rotate_by_user_(false)
 {
-	setAcceptsHoverEvents(true);
+	setAcceptHoverEvents(true);
 }
 
 /**
@@ -208,13 +208,13 @@ void ConductorTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 
 /**
 	When mouse over element
-	change bMouseOver to true   (used in paint() function )
+	change m_mouse_hover to true   (used in paint() function )
 	@param e  QGraphicsSceneHoverEvent
 */
 void ConductorTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
 
-	bMouseOver = true;
+	m_mouse_hover = true;
 	QString str_ToolTip = toPlainText();
 	setToolTip( str_ToolTip );
 	update();
@@ -222,13 +222,13 @@ void ConductorTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 
 /**
 	When mouse over element leave the position
-	change bMouseOver to false(used in paint() function )
+	change m_mouse_hover to false(used in paint() function )
 	@param e  QGraphicsSceneHoverEvent
 */
 void ConductorTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
 	//qDebug() << "Leave mouse over";
-	bMouseOver = false;
+	m_mouse_hover = false;
 	update();
 }
 

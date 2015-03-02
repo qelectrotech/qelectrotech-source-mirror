@@ -17,7 +17,7 @@
 */
 #ifndef TITLEBLOCK_SLASH_TEMPLATE_CELLS_SET_H
 #define TITLEBLOCK_SLASH_TEMPLATE_CELLS_SET_H
-#include <QtGui>
+#include <QtWidgets>
 class TitleBlockCell;
 class TitleBlockTemplateVisualCell;
 class TitleBlockTemplateView;

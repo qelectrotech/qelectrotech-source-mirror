@@ -88,7 +88,7 @@ void TitleBlockTemplateLocationSaver::updateTemplates() {
 	if (!current_collection) return;
 	
 	TitleBlockTemplateLocationChooser::updateTemplates();
-	templates_ -> insertItem(0, tr("Nouveau mod\350le (entrez son nom)", "combox box entry"), QVariant(false));
+	templates_ -> insertItem(0, tr("Nouveau modèle (entrez son nom)", "combox box entry"), QVariant(false));
 	templates_ -> insertSeparator(1);
 	
 	updateNewName();

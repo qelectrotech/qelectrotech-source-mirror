@@ -24,6 +24,9 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 
+#include <QPrinter>
+#include <QPrintDialog>
+
 /**
 	Constructeur
 	@param project Schema a imprimer
@@ -119,24 +122,31 @@ void DiagramPrintDialog::exec() {
 	if (printer_choice_ -> isChecked()) {
 		// affichage du dialogue d'impression standard pour parametrer l'imprimante
 		QPrintDialog print_dialog(printer_, parentWidget());
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 		print_dialog.setWindowFlags(Qt::Sheet);
 #endif
 		print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
 		print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintShowPageSize);
 		if (print_dialog.exec() == QDialog::Rejected) return;
-	} else if (pdf_choice_ -> isChecked()) {
+	}
+	else
+	{
 		printer_ -> setOutputFormat(QPrinter::PdfFormat);
 		printer_ -> setOutputFileName(filepath_field_ -> text());
-	} else {
-		printer_ -> setOutputFormat(QPrinter::PostScriptFormat);
-		printer_ -> setOutputFileName(filepath_field_ -> text());
 	}
+		//@TODO remove code below
+		//post script isn't suported anymore in Qt5
+//	else
+//	{
+//		printer_ -> setOutputFormat(QPrinter::PostScriptFormat);
+//		printer_ -> setOutputFileName(filepath_field_ -> text());
+//	}
 	loadPageSetupForCurrentPrinter();
 	
-	// Apercu avant impression
-#if defined Q_WS_X11
-	// suite a quelques soucis avec xfwm, on se contente d'une fenetre sous X11
+	//Preview before print
+#if defined Q_OS_LINUX
+	//Due to some bug with xfwm, we display this dialog has a windows on linux os (X11)
+	//@TODO see if we must this line with graphic server wayland
 	QETPrintPreviewDialog preview_dialog(project_, printer_, parentWidget(), Qt::Window);
 #else
 	QETPrintPreviewDialog preview_dialog(project_, printer_, parentWidget());
@@ -211,18 +221,18 @@ int DiagramPrintDialog::verticalPagesCount(Diagram *diagram, const ExportPropert
 void DiagramPrintDialog::buildPrintTypeDialog() {
 	// initialisation des widgets
 	dialog_           = new QDialog(parentWidget());
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	dialog_ -> setWindowFlags(Qt::Sheet);
 #endif
 	
-	printtype_label_  = new QLabel(tr("Quel type d'impression d\351sirez-vous effectuer ?"));
+	printtype_label_  = new QLabel(tr("Quel type d'impression désirez-vous effectuer ?"));
 	printer_icon_     = new QLabel();
 	pdf_icon_         = new QLabel();
-	ps_icon_          = new QLabel();
+//	ps_icon_          = new QLabel();
 	printtype_choice_ = new QButtonGroup();
 	printer_choice_   = new QRadioButton(tr("Impression sur une imprimante physique",               "Print type choice"));
 	pdf_choice_       = new QRadioButton(tr("Impression vers un fichier au format PDF",             "Print type choice"));
-	ps_choice_        = new QRadioButton(tr("Impression vers un fichier au format PostScript (PS)", "Print type choice"));
+//	ps_choice_        = new QRadioButton(tr("Impression vers un fichier au format PostScript (PS)", "Print type choice"));
 	filepath_field_   = new QLineEdit();
 	browse_button_    = new QPushButton("...");
 	buttons_          = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -230,17 +240,17 @@ void DiagramPrintDialog::buildPrintTypeDialog() {
 	dialog_ -> setWindowTitle(tr("Choix du type d'impression"));
 	printer_icon_ -> setPixmap(QET::Icons::Printer.pixmap(32, 32));
 	pdf_icon_     -> setPixmap(QET::Icons::PDF.pixmap(32, 32));
-	ps_icon_      -> setPixmap(QET::Icons::EPS.pixmap(32, 32));
+//	ps_icon_      -> setPixmap(QET::Icons::EPS.pixmap(32, 32));
 	printtype_choice_ -> addButton(printer_choice_);
 	printtype_choice_ -> addButton(pdf_choice_);
-	printtype_choice_ -> addButton(ps_choice_);
+//	printtype_choice_ -> addButton(ps_choice_);
 	printer_choice_ -> setChecked(true);
 	if (!file_name_.isEmpty()) filepath_field_ -> setText(file_name_ + ".pdf");
 	
 	// connexions signaux / slots
 	connect(printer_choice_, SIGNAL(toggled(bool)), this,    SLOT(updatePrintTypeDialog()));
 	connect(pdf_choice_,     SIGNAL(toggled(bool)), this,    SLOT(updatePrintTypeDialog()));
-	connect(ps_choice_,      SIGNAL(toggled(bool)), this,    SLOT(updatePrintTypeDialog()));
+//	connect(ps_choice_,      SIGNAL(toggled(bool)), this,    SLOT(updatePrintTypeDialog()));
 	connect(browse_button_,  SIGNAL(clicked(bool)), this,    SLOT(browseFilePrintTypeDialog()));
 	connect(buttons_,        SIGNAL(accepted()),    this,    SLOT(acceptPrintTypeDialog()));
 	connect(buttons_,        SIGNAL(rejected()),    dialog_, SLOT(reject()));
@@ -256,8 +266,8 @@ void DiagramPrintDialog::buildPrintTypeDialog() {
 	glayout0_ -> addWidget(printer_choice_, 0, 1);
 	glayout0_ -> addWidget(pdf_icon_,       1, 0);
 	glayout0_ -> addWidget(pdf_choice_,     1, 1);
-	glayout0_ -> addWidget(ps_icon_,        2, 0);
-	glayout0_ -> addWidget(ps_choice_,      2, 1);
+//	glayout0_ -> addWidget(ps_icon_,        2, 0);
+//	glayout0_ -> addWidget(ps_choice_,      2, 1);
 	glayout0_ -> addLayout(hlayout0_,       3, 1);
 	
 	vlayout0_ -> addWidget(printtype_label_);
@@ -281,18 +291,23 @@ void DiagramPrintDialog::updatePrintTypeDialog() {
 	browse_button_  -> setEnabled(file_print);
 	
 	// on corrige eventuellement l'extension du fichier deja selectionne
-	if (file_print) {
+	if (file_print)
+	{
 		QString filepath = filepath_field_ -> text();
-		if (!filepath.isEmpty()) {
-			if (pdf_choice_ -> isChecked() && filepath.endsWith(".ps")) {
+		if (!filepath.isEmpty())
+		{
+			if (pdf_choice_ -> isChecked() && filepath.endsWith(".ps"))
+			{
 				QRegExp re("\\.ps$", Qt::CaseInsensitive);
 				filepath.replace(re, ".pdf");
 				filepath_field_ -> setText(filepath);
-			} else if (ps_choice_ -> isChecked() && filepath.endsWith(".pdf")) {
-				QRegExp re("\\.pdf$", Qt::CaseInsensitive);
-				filepath.replace(re, ".ps");
-				filepath_field_ -> setText(filepath);
 			}
+//			else if (ps_choice_ -> isChecked() && filepath.endsWith(".pdf"))
+//			{
+//				QRegExp re("\\.pdf$", Qt::CaseInsensitive);
+//				filepath.replace(re, ".ps");
+//				filepath_field_ -> setText(filepath);
+//			}
 		}
 	}
 }
@@ -306,10 +321,10 @@ void DiagramPrintDialog::acceptPrintTypeDialog() {
 	if (file_print) {
 		// un fichier doit avoir ete entre
 		if (filepath_field_ -> text().isEmpty()) {
-			QET::MessageBox::information(
+			QET::QetMessageBox::information(
 				parentWidget(),
 				tr("Fichier manquant", "message box title"),
-				tr("Vous devez indiquer le chemin du fichier PDF/PS \340 cr\351er.", "message box content")
+				tr("Vous devez indiquer le chemin du fichier PDF/PS à créer.", "message box content")
 			);
 		} else dialog_ -> accept();
 	} else {
@@ -326,14 +341,16 @@ void DiagramPrintDialog::browseFilePrintTypeDialog() {
 	QString extension;
 	QString filter;
 	if (printer_choice_ -> isChecked()) return;
-	else if (pdf_choice_ -> isChecked()) {
+	else if (pdf_choice_ -> isChecked())
+	{
 		extension = ".pdf";
 		filter    = tr("Fichiers PDF (*.pdf)",       "file filter");
 	}
-	else if (ps_choice_ -> isChecked()) {
-		extension = ".ps";
-		filter    = tr("Fichiers PostScript (*.ps)", "file filter");
-	}
+//	else if (ps_choice_ -> isChecked())
+//	{
+//		extension = ".ps";
+//		filter    = tr("Fichiers PostScript (*.ps)", "file filter");
+//	}
 	
 	QString filepath = QFileDialog::getSaveFileName(
 		parentWidget(),
@@ -609,8 +626,10 @@ QString DiagramPrintDialog::settingsSectionName(const QPrinter *printer) {
 		return(printer -> printerName().replace(" ", "_"));
 	} else if (printer_format == QPrinter::PdfFormat) {
 		return("QET_PDF_Printing");
-	} else if (printer_format == QPrinter::PostScriptFormat) {
-		return("QET_PS_Printing");
 	}
+	//@TODO remove code below
+//	else if (printer_format == QPrinter::PostScriptFormat) {
+//		return("QET_PS_Printing");
+//	}
 	return(QString());
 }

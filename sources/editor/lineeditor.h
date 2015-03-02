@@ -17,7 +17,7 @@
 */
 #ifndef LINE_EDITOR_H
 #define LINE_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 #include "elementitemeditor.h"
 class PartLine;
 class StyleEditor;

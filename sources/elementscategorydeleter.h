@@ -19,7 +19,7 @@
 #define ELEMENTS_CATEGORY_DELETER_H
 #include "fileelementscategory.h"
 #include "elementslocation.h"
-#include <QtGui>
+#include <QtWidgets>
 /**
 	This class provide an abstract way to delete an elements category along with
 	its child elements and subcategories. It always requires a double confirmation

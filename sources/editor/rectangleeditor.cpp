@@ -44,15 +44,15 @@ RectangleEditor::RectangleEditor(QETElementEditor *editor, PartRectangle *rect, 
 	QVBoxLayout *v_layout = new QVBoxLayout(this);
 	
 	QGridLayout *grid = new QGridLayout();
-	grid -> addWidget(new QLabel(tr("Coin sup\351rieur gauche\240: ")), 0, 0, 1, 4);
+	grid -> addWidget(new QLabel(tr("Coin supérieur gauche : ")), 0, 0, 1, 4);
 	grid -> addWidget(new QLabel("x"),                                  1, 0, Qt::AlignRight);
 	grid -> addWidget(x,                                                1, 1);
 	grid -> addWidget(new QLabel("y"),                                  1, 2);
 	grid -> addWidget(y,                                                1, 3);
-	grid -> addWidget(new QLabel(tr("Dimensions\240: ")),               2, 0, 1, 4);
-	grid -> addWidget(new QLabel(tr("Largeur\240:")),                   3, 0);
+	grid -> addWidget(new QLabel(tr("Dimensions : ")),               2, 0, 1, 4);
+	grid -> addWidget(new QLabel(tr("Largeur :")),                   3, 0);
 	grid -> addWidget(w,                                                3, 1);
-	grid -> addWidget(new QLabel(tr("Hauteur\240:")),                   4, 0);
+	grid -> addWidget(new QLabel(tr("Hauteur :")),                   4, 0);
 	grid -> addWidget(h,                                                4, 1);
 	
 	v_layout -> addWidget(style_);
@@ -118,7 +118,7 @@ void RectangleEditor::updateRectangle() {
 /// Met a jour l'abscisse du coin superieur gauche du rectangle et cree un objet d'annulation
 void RectangleEditor::updateRectangleX() { addChangePartCommand(tr("abscisse"),               part, "rectTopLeft", editedTopLeft());}
 /// Met a jour l'ordonnee du coin superieur gauche du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleY() { addChangePartCommand(tr("ordonn\351e"),            part, "rectTopLeft", editedTopLeft());}
+void RectangleEditor::updateRectangleY() { addChangePartCommand(tr("ordonnée"),            part, "rectTopLeft", editedTopLeft());}
 /// Met a jour la largeur du rectangle et cree un objet d'annulation
 void RectangleEditor::updateRectangleW() { addChangePartCommand(tr("largeur"),                part, "width",       w  -> value());}
 /// Met a jour la hauteur du rectangle et cree un objet d'annulation

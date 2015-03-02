@@ -34,9 +34,9 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	qle_text  = new QLineEdit();
 	font_size = new QSpinBox();
 	font_size -> setRange(0, 144);
-	rotate    = new QCheckBox(tr("Ne pas subir les rotations de l'\351l\351ment parent"));
+	rotate    = new QCheckBox(tr("Ne pas subir les rotations de l'élément parent"));
 	rotate -> setChecked(true);
-	QLabel *rotation_angle_label = new QLabel(tr("Angle de rotation par d\351faut : "));
+	QLabel *rotation_angle_label = new QLabel(tr("Angle de rotation par défaut : "));
 	rotation_angle_label -> setWordWrap(true);
 	rotation_angle_ = QETApp::createTextOrientationSpinBoxWidget();
 	
@@ -59,7 +59,7 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	main_layout -> addLayout(fs);
 	
 	QHBoxLayout *t = new QHBoxLayout();
-	t -> addWidget(new QLabel(tr("Texte par d\351faut : ")));
+	t -> addWidget(new QLabel(tr("Texte par défaut : ")));
 	t -> addWidget(qle_text);
 	main_layout -> addLayout(t);
 
@@ -133,13 +133,13 @@ void TextFieldEditor::updateTextField() {
 /// Met a jour l'abscisse de la position du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldX() { addChangePartCommand(tr("abscisse"),        part, "x",      qle_x -> value()); }
 /// Met a jour l'ordonnee de la position du champ de texte et cree un objet d'annulation
-void TextFieldEditor::updateTextFieldY() { addChangePartCommand(tr("ordonn\351e"),     part, "y",      qle_y -> value()); }
+void TextFieldEditor::updateTextFieldY() { addChangePartCommand(tr("ordonnée"),     part, "y",      qle_y -> value()); }
 /// Met a jour le texte du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldT() { addChangePartCommand(tr("contenu"),         part, "text",   qle_text -> text());         }
 /// Met a jour la taille du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldS() { addChangePartCommand(tr("taille"),          part, "size",   font_size -> value());       }
 /// Met a jour la taille du champ de texte et cree un objet d'annulation
-void TextFieldEditor::updateTextFieldR() { addChangePartCommand(tr("propri\351t\351"), part, "rotate", !rotate -> isChecked());     }
+void TextFieldEditor::updateTextFieldR() { addChangePartCommand(tr("propriété"), part, "rotate", !rotate -> isChecked());     }
 /// Met a jour l'angle de rotation du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldRotationAngle() { addChangePartCommand(tr("angle de rotation"), part, "rotation_angle", rotation_angle_ -> value()); }
 void TextFieldEditor::updateTagg() { addChangePartCommand(tr("tagg"), part, "tagg", m_tagg_cb->itemData(m_tagg_cb->currentIndex()).toString());}

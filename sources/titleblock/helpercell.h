@@ -17,7 +17,7 @@
 */
 #ifndef TITLEBLOCK_SLASH_HELPER_CELL_H
 #define TITLEBLOCK_SLASH_HELPER_CELL_H
-#include <QtGui>
+#include <QtWidgets>
 #include "qet.h"
 
 /**

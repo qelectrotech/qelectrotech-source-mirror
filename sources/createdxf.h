@@ -19,7 +19,7 @@
 #define CREATEDXF_H
 #include <QString>
 #include <QtCore>
-#include <QtGui>
+#include <QtWidgets>
 
 
 /* This class exports the project to DXF Format */

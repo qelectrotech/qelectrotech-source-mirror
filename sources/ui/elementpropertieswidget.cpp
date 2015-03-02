@@ -53,25 +53,25 @@ QWidget* elementpropertieswidget::generalWidget() {
 	// type de l'element
 	QString description_string;
 	if (ghost_element) {
-		description_string += tr("\311l\351ment manquant");
+		description_string += tr("Élément manquant");
 	} else {
-		description_string += tr("\311l\351ment");
+		description_string += tr("Élément");
 	}
 	description_string += "\n";
 
 	// some element characteristic
-	description_string += QString(tr("Nom\240: %1\n")).arg(element_ -> name());
+	description_string += QString(tr("Nom : %1\n")).arg(element_ -> name());
 	int folio_index = diagram_ -> folioIndex();
 	if (folio_index != -1) {
-		description_string += QString(tr("Folio\240: %1\n")).arg(folio_index + 1);
+		description_string += QString(tr("Folio : %1\n")).arg(folio_index + 1);
 	}
-	description_string += QString(tr("Position\240: %1\n")).arg(diagram_ -> convertPosition(element_ -> scenePos()).toString());
-	description_string += QString(tr("Dimensions\240: %1\327%2\n")).arg(element_ -> size().width()).arg(element_ -> size().height());
-	description_string += QString(tr("Bornes\240: %1\n")).arg(element_ -> terminals().count());
-	description_string += QString(tr("Champs de texte\240: %1\n")).arg(element_ -> texts().count());
+	description_string += QString(tr("Position : %1\n")).arg(diagram_ -> convertPosition(element_ -> scenePos()).toString());
+	description_string += QString(tr("Dimensions : %1\327%2\n")).arg(element_ -> size().width()).arg(element_ -> size().height());
+	description_string += QString(tr("Bornes : %1\n")).arg(element_ -> terminals().count());
+	description_string += QString(tr("Champs de texte : %1\n")).arg(element_ -> texts().count());
 
 	if (custom_element) {
-		description_string += QString(tr("Emplacement\240: %1\n")).arg(custom_element -> location().toString());
+		description_string += QString(tr("Emplacement : %1\n")).arg(custom_element -> location().toString());
 	}
 
 	// widget himself
@@ -91,7 +91,7 @@ QWidget* elementpropertieswidget::generalWidget() {
 	//button widget
 	find_in_panel = new QPushButton(QET::Icons::ZoomDraw, tr("Retrouver dans le panel"), general_widget);
 	connect(find_in_panel, SIGNAL(clicked()), this, SLOT(findInPanel()));
-	edit_element = new QPushButton(QET::Icons::ElementEdit, tr("\311diter l'\351l\351ment"), general_widget);
+	edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Éditer l'élément"), general_widget);
 	connect(edit_element, SIGNAL(clicked()), this, SLOT(editElement()));
 	QHBoxLayout *hlayout_ = new QHBoxLayout;
 	hlayout_->addWidget(find_in_panel);
@@ -108,7 +108,7 @@ QWidget* elementpropertieswidget::generalWidget() {
  */
 void elementpropertieswidget::buildInterface() {
 
-	setWindowTitle(tr("Propri\351t\351s de l'\351l\351ment"));
+	setWindowTitle(tr("Propriétés de l'élément"));
 	tab_ = new QTabWidget(this);
 
 	//Add tab according to the element
@@ -127,13 +127,13 @@ void elementpropertieswidget::buildInterface() {
 			break;
 		case Element::Master:
 			mpw_ = new MasterPropertiesWidget(element_, this);
-			tab_ -> addTab(mpw_, tr("R\351f\351rence crois\351e (maitre)"));
+			tab_ -> addTab(mpw_, tr("Référence croisée (maitre)"));
 			eiw_ = new ElementInfoWidget(element_, this);
 			tab_ -> addTab(eiw_, tr("Informations"));
 			break;
 		case Element::Slave:
 			lsew_ = new LinkSingleElementWidget(element_, this);
-			tab_ -> addTab(lsew_, tr("R\351f\351rence crois\351e (esclave)"));
+			tab_ -> addTab(lsew_, tr("Référence croisée (esclave)"));
 			break;
 		case Element::Terminale:
 			break;
@@ -141,7 +141,7 @@ void elementpropertieswidget::buildInterface() {
 			break;
 	}
 
-	tab_ -> addTab(generalWidget(), tr("G\351n\351ral"));
+	tab_ -> addTab(generalWidget(), tr("Général"));
 
 	dbb = new QDialogButtonBox(QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::Reset,
 							   Qt::Horizontal, this);

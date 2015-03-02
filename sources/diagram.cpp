@@ -59,14 +59,16 @@ Diagram::Diagram(QETProject *project) :
 	setProject(project);
 	qgi_manager_ = new QGIManager(this);
 	setBackgroundBrush(Qt::white);
-	conductor_setter_ = new QGraphicsLineItem(0, 0);
+	conductor_setter_ = new QGraphicsLineItem(0);
 	conductor_setter_ -> setZValue(1000000);
-	QPen t;
-	t.setColor(Qt::black);
-	t.setWidthF(1.5);
-	t.setStyle(Qt::DashLine);
-	conductor_setter_ -> setPen(t);
-	conductor_setter_ -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
+//	QPen t;
+//	t.setColor(Qt::black);
+//	t.setWidthF(1.5);
+//	t.setStyle(Qt::DashLine);
+	QPen pen(Qt::NoBrush, 1.5, Qt::DashLine);
+	pen.setColor(Qt::black);
+	conductor_setter_ -> setPen(pen);
+	//conductor_setter_ -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
 	
 		//Init object for manage movement
 	elements_mover_      = new ElementsMover();
@@ -123,12 +125,13 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> drawRect(r);
 	
 	if (draw_grid_) {
-		// dessine les points de la grille
-		// if background color is black, then grid spots shall be white, else they shall be black in color.
-		if (Diagram::background_color == Qt::black)
-			p -> setPen(Qt::white);
-		else
-			p -> setPen(Qt::black);
+			//Draw the point of the grid
+			// if background color is black, then grid spots shall be white, else they shall be black in color.
+		QPen pen;
+		Diagram::background_color == Qt::black? pen.setColor(Qt::white) : pen.setColor(Qt::black);
+		pen.setCosmetic(true);
+		p->setPen(pen);
+
 		p -> setBrush(Qt::NoBrush);
 		qreal limite_x = r.x() + r.width();
 		qreal limite_y = r.y() + r.height();

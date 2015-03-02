@@ -54,10 +54,10 @@ bool ElementsCategoryDeleter::exec() {
 	
 	// gere le cas ou la suppression d'une collection est demandee
 	if (category -> isCollection()) {
-		QMessageBox::StandardButton answer_0 = QET::MessageBox::question(
+		QMessageBox::StandardButton answer_0 = QET::QetMessageBox::question(
 			this,
 			tr("Vider la collection ?", "message box title"),
-			tr("\312tes-vous s\373r de vouloir vider cette collection ?", "message box content"),
+			tr("Êtes-vous s\373r de vouloir vider cette collection ?", "message box content"),
 			QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel
 		);
 		if (answer_0 != QMessageBox::Yes) return(false);
@@ -71,13 +71,13 @@ bool ElementsCategoryDeleter::exec() {
 	
 	// avertissement pour la suppression d'une collection
 	// confirmation #1
-	QMessageBox::StandardButton answer_1 = QET::MessageBox::question(
+	QMessageBox::StandardButton answer_1 = QET::QetMessageBox::question(
 		this,
-		tr("Supprimer la cat\351gorie ?", "message box title"),
+		tr("Supprimer la catégorie ?", "message box title"),
 		tr(
-			"\312tes-vous s\373r de vouloir supprimer la cat\351gorie ?\nTous "
-			"les \351l\351ments et les cat\351gories contenus dans cette "
-			"cat\351gorie seront supprim\351s.",
+			"Êtes-vous s\373r de vouloir supprimer la catégorie ?\nTous "
+			"les éléments et les catégories contenus dans cette "
+			"catégorie seront supprimés.",
 			"message box content"
 		),
 		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel
@@ -85,12 +85,12 @@ bool ElementsCategoryDeleter::exec() {
 	if (answer_1 != QMessageBox::Yes) return(false);
 	
 	// confirmation #2
-	QMessageBox::StandardButton answer_2 = QET::MessageBox::question(
+	QMessageBox::StandardButton answer_2 = QET::QetMessageBox::question(
 		this,
-		tr("Supprimer la cat\351gorie ?", "message box title"),
+		tr("Supprimer la catégorie ?", "message box title"),
 		tr(
-			"\312tes-vous vraiment s\373r de vouloir supprimer cette "
-			"cat\351gorie ?\nLes changements seront d\351finitifs.",
+			"Êtes-vous vraiment s\373r de vouloir supprimer cette "
+			"catégorie ?\nLes changements seront définitifs.",
 			"message box content"
 		),
 		QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel
@@ -99,10 +99,10 @@ bool ElementsCategoryDeleter::exec() {
 	
 	// supprime la categorie
 	if (!category -> remove()) {
-		QET::MessageBox::warning(
+		QET::QetMessageBox::warning(
 			this,
-			tr("Suppression de la cat\351gorie", "message box title"),
-			tr("La suppression de la cat\351gorie a \351chou\351.", "message box content")
+			tr("Suppression de la catégorie", "message box title"),
+			tr("La suppression de la catégorie a échoué.", "message box content")
 		);
 		return(false);
 	}

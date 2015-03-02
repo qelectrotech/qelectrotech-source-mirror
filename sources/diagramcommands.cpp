@@ -316,7 +316,7 @@ MoveElementsCommand::MoveElementsCommand(
 	setText(
 		QString(
 			QObject::tr(
-				"d\351placer %1",
+				"déplacer %1",
 				"undo caption - %1 is a sentence listing the moved content"
 			).arg(moved_content_sentence)
 		)
@@ -432,7 +432,7 @@ MoveElementsTextsCommand::MoveElementsTextsCommand(
 		setText(
 				QString(
 						QObject::tr(
-								"d\351placer %1",
+								"déplacer %1",
 								"undo caption - %1 is a sentence listing the moved content"
 						).arg(moved_content_sentence)
 				)
@@ -546,7 +546,7 @@ void MoveConductorsTextsCommand::regenerateTextLabel() {
 	setText(
 		QString(
 			QObject::tr(
-				"d\351placer %1",
+				"déplacer %1",
 				"undo caption - %1 is a sentence listing the moved content"
 			).arg(moved_content_sentence)
 		)
@@ -733,7 +733,7 @@ void RotateTextsCommand::defineCommandName() {
 	setText(
 		QString(
 			QObject::tr(
-				"orienter %1 \340 %2\260",
+				"orienter %1 à %2°",
 				"undo caption - %1 looks like '42 texts', %2 is a rotation angle"
 			)
 		).arg(QET::ElementsAndConductorsSentence(0, 0, texts_to_rotate.count()))
@@ -814,7 +814,7 @@ ResetConductorCommand::ResetConductorCommand(
 {
 	setText(
 		QObject::tr(
-			"R\351initialiser %1",
+			"Réinitialiser %1",
 			"undo caption - %1 is a sentence listing the reset content"
 		).arg(QET::ElementsAndConductorsSentence(0, cp.count()))
 	);
@@ -894,7 +894,7 @@ void ChangeTitleBlockCommand::redo() {
 	@param parent QUndoCommand parent
 */
 ChangeBorderCommand::ChangeBorderCommand(Diagram *dia, const BorderProperties &old_bp, const BorderProperties &new_bp, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("modifier les dimensions du sch\351ma", "undo caption"), parent),
+	QUndoCommand(QObject::tr("modifier les dimensions du schéma", "undo caption"), parent),
 	diagram(dia),
 	old_properties(old_bp),
 	new_properties(new_bp)
@@ -923,7 +923,7 @@ void ChangeBorderCommand::redo() {
 	@param parent QUndoCommand parent
 */
 ChangeConductorPropertiesCommand::ChangeConductorPropertiesCommand(Conductor *c, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("modifier les propri\351t\351s d'un conducteur", "undo caption"), parent),
+	QUndoCommand(QObject::tr("modifier les propriétés d'un conducteur", "undo caption"), parent),
 	conductor(c),
 	old_settings_set(false),
 	new_settings_set(false)
@@ -976,7 +976,7 @@ void ChangeConductorPropertiesCommand::redo() {
 	@param parent QUndoCommand parent
 */
 ChangeSeveralConductorsPropertiesCommand::ChangeSeveralConductorsPropertiesCommand(QList<Conductor *>c, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("modifier les propri\351t\351s de plusieurs conducteurs", "undo caption"), parent),
+	QUndoCommand(QObject::tr("modifier les propriétés de plusieurs conducteurs", "undo caption"), parent),
 	conductors(c),
 	old_settings_set(false),
 	new_settings_set(false)
@@ -1091,8 +1091,8 @@ void ItemResizerCommand::undo() {
  */
 void ItemResizerCommand::redo() {
 	diagram -> showMe();
-	if (old_size<new_size) setText(QObject::tr("Agrandire %1 \340 %2 %").arg(m_text).arg(new_size*100));
-	else setText(QObject::tr("R\351duire %1 \340 %2 %").arg(m_text).arg(new_size*100));
+	if (old_size<new_size) setText(QObject::tr("Agrandire %1 à %2 %").arg(m_text).arg(new_size*100));
+	else setText(QObject::tr("Réduire %1 à %2 %").arg(m_text).arg(new_size*100));
 	m_qgi -> setScale(new_size);
 	QUndoCommand::redo();
 }
@@ -1158,7 +1158,7 @@ LinkElementsCommand::LinkElementsCommand(Element *elmt1, Element *elmt2, QUndoCo
 							"title for undo LinkElementsCommand if two elements are folio report"));
 	}
 	else if (element_->linkType() & (Element::Master|Element::Slave))
-			setText(QObject::tr("Editer les r\351f\351rence crois\351", "edite the cross reference"));
+			setText(QObject::tr("Editer les référence croisé", "edite the cross reference"));
 	else	setText(QObject::tr("Lier deux éléments"));
 
 	previous_linked = elmt1->linkedElements();
@@ -1172,7 +1172,7 @@ LinkElementsCommand::LinkElementsCommand(Element *elmt1, QList<Element *> &elmtL
 	first_redo(true)
 {
 	if (element_->linkType() & (Element::Master|Element::Slave))
-				 setText(QObject::tr("Editer les r\351f\351rence crois\351"));
+				 setText(QObject::tr("Editer les référence croisé"));
 	else setText(QObject::tr("Lier deux éléments"));
 	previous_linked = elmt1->linkedElements();
 }
@@ -1233,7 +1233,7 @@ unlinkElementsCommand::unlinkElementsCommand(Element *elmt1, Element *elmt2, QUn
 {
 	if (elmt2) elmt_list << elmt2;
 	else elmt_list << elmt1->linkedElements();
-	setText(QObject::tr("D\351lier %n \351l\351ment(s)", "", elmt_list.size()));
+	setText(QObject::tr("Délier %n élément(s)", "", elmt_list.size()));
 }
 
 /**
@@ -1248,7 +1248,7 @@ unlinkElementsCommand::unlinkElementsCommand(Element *elmt1, QList<Element *> &e
 	element_(elmt1),
 	elmt_list(elmtList)
 {
-	setText(QObject::tr("D\351lier %n \351l\351ment(s)", "", elmt_list.size()));
+	setText(QObject::tr("Délier %n élément(s)", "", elmt_list.size()));
 }
 
 /**

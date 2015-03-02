@@ -18,7 +18,7 @@
 #ifndef TITLEBLOCK_SLASH_TEMPLATE_DELETER_H
 #define TITLEBLOCK_SLASH_TEMPLATE_DELETER_H
 #include "templatelocation.h"
-#include <QtGui>
+#include <QtWidgets>
 /**
 	This class is an abstraction layer to delete an existing title block
 	template.

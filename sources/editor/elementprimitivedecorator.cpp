@@ -88,8 +88,10 @@ void ElementPrimitiveDecorator::paint(QPainter *painter, const QStyleOptionGraph
 	Q_UNUSED(widget)
 	painter -> save();
 	
-	// paint the original bounding rect
-	painter -> setPen(Qt::DashLine);
+		// paint the original bounding rect
+	QPen pen(Qt::DashLine);
+	pen.setCosmetic(true);
+	painter -> setPen(pen);
 	//QGraphicsItemGroup::paint(painter, option, widget);
 	painter -> drawRect(modified_bounding_rect_);
 	drawSquares(painter, option, widget);

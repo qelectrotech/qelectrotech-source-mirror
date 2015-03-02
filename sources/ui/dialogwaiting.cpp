@@ -46,6 +46,7 @@ DialogWaiting::~DialogWaiting() {
  */
 void DialogWaiting::setProgressBar(int val){
 	ui->progressBar->setValue(val);
+	qApp->processEvents();
 }
 
 /**

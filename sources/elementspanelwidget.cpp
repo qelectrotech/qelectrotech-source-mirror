@@ -54,31 +54,31 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	
 	// initialise les actions
 	open_directory        = new QAction(QET::Icons::DocumentOpen,              tr("Ouvrir le dossier correspondant"),     this);
-	copy_path             = new QAction(QET::Icons::CopyFile,                  tr("Copier le chemin"),                    this);
+	copy_path             = new QAction(QET::Icons::IC_CopyFile,                  tr("Copier le chemin"),                    this);
 	reload                = new QAction(QET::Icons::ViewRefresh,               tr("Recharger les collections"),           this);
-	new_category          = new QAction(QET::Icons::FolderNew,                 tr("Nouvelle cat\351gorie"),               this);
-	edit_category         = new QAction(QET::Icons::FolderEdit,                tr("\311diter la cat\351gorie"),           this);
-	delete_category       = new QAction(QET::Icons::FolderDelete,              tr("Supprimer la cat\351gorie"),           this);
+	new_category          = new QAction(QET::Icons::FolderNew,                 tr("Nouvelle catégorie"),               this);
+	edit_category         = new QAction(QET::Icons::FolderEdit,                tr("Éditer la catégorie"),           this);
+	delete_category       = new QAction(QET::Icons::FolderDelete,              tr("Supprimer la catégorie"),           this);
 	delete_collection     = new QAction(QET::Icons::FolderDelete,              tr("Vider la collection"),                 this);
-	new_element           = new QAction(QET::Icons::ElementNew,                tr("Nouvel \351l\351ment"),                this);
-	edit_element          = new QAction(QET::Icons::ElementEdit,               tr("\311diter l'\351l\351ment"),           this);
-	delete_element        = new QAction(QET::Icons::ElementDelete,             tr("Supprimer l'\351l\351ment"),           this);
-	open_element          = new QAction(QET::Icons::DocumentImport,            tr("Ouvrir un fichier \351l\351ment"),     this);
+	new_element           = new QAction(QET::Icons::ElementNew,                tr("Nouvel élément"),                this);
+	edit_element          = new QAction(QET::Icons::ElementEdit,               tr("Éditer l'élément"),           this);
+	delete_element        = new QAction(QET::Icons::ElementDelete,             tr("Supprimer l'élément"),           this);
+	open_element          = new QAction(QET::Icons::DocumentImport,            tr("Ouvrir un fichier élément"),     this);
 	prj_activate          = new QAction(QET::Icons::ProjectFile,               tr("Basculer vers ce projet"),             this);
 	prj_close             = new QAction(QET::Icons::DocumentClose,             tr("Fermer ce projet"),                    this);
-	prj_edit_prop         = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du projet"),          this);
-	prj_prop_diagram      = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du sch\351ma"),       this);
-	prj_add_diagram       = new QAction(QET::Icons::DiagramAdd,                tr("Ajouter un sch\351ma"),                this);
-	prj_del_diagram       = new QAction(QET::Icons::DiagramDelete,             tr("Supprimer ce sch\351ma"),              this);
-	prj_move_diagram_up   = new QAction(QET::Icons::GoUp,                      tr("Remonter ce sch\351ma"),               this);
-	prj_move_diagram_down = new QAction(QET::Icons::GoDown,                    tr("Abaisser ce sch\351ma"),               this);
-	prj_move_diagram_upx10   = new QAction(QET::Icons::GoUp,                   tr("Remonter ce sch\351ma x10"),           this);
-	prj_move_diagram_downx10 = new QAction(QET::Icons::GoDown,                 tr("Abaisser ce sch\351ma x10"),           this);
-	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("Nouveau mod\350le"),                   this);
-	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("\311diter ce mod\350le"),              this);
-	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce mod\350le"),              this);
-	move_elements_        = new QAction(QET::Icons::MoveFile,                  tr("D\351placer dans cette cat\351gorie"), this);
-	copy_elements_        = new QAction(QET::Icons::CopyFile,                  tr("Copier dans cette cat\351gorie"),      this);
+	prj_edit_prop         = new QAction(QET::Icons::DialogInformation,         tr("Propriétés du projet"),          this);
+	prj_prop_diagram      = new QAction(QET::Icons::DialogInformation,         tr("Propriétés du schéma"),       this);
+	prj_add_diagram       = new QAction(QET::Icons::DiagramAdd,                tr("Ajouter un schéma"),                this);
+	prj_del_diagram       = new QAction(QET::Icons::DiagramDelete,             tr("Supprimer ce schéma"),              this);
+	prj_move_diagram_up   = new QAction(QET::Icons::GoUp,                      tr("Remonter ce schéma"),               this);
+	prj_move_diagram_down = new QAction(QET::Icons::GoDown,                    tr("Abaisser ce schéma"),               this);
+	prj_move_diagram_upx10   = new QAction(QET::Icons::GoUp,                   tr("Remonter ce schéma x10"),           this);
+	prj_move_diagram_downx10 = new QAction(QET::Icons::GoDown,                 tr("Abaisser ce schéma x10"),           this);
+	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("Nouveau modèle"),                   this);
+	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("Éditer ce modèle"),              this);
+	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce modèle"),              this);
+	move_elements_        = new QAction(QET::Icons::IC_MoveFile,                  tr("Déplacer dans cette catégorie"), this);
+	copy_elements_        = new QAction(QET::Icons::IC_CopyFile,                  tr("Copier dans cette catégorie"),      this);
 	cancel_elements_      = new QAction(QET::Icons::Cancel,                    tr("Annuler"),                             this);
 	erase_textfield       = new QAction(QET::Icons::EditClearLocationBar,      tr("Effacer le filtre"),                   this);
 
@@ -92,12 +92,13 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	filter_toolbar -> addWidget(filter_label);
 	filter_toolbar -> addWidget(filter_textfield);
 	
+	//@TODO remove the commented code below
 	// ajoute une petite marge a la droite du champ pour filtrer lorsque le style CleanLooks est utilise
-	if (qobject_cast<QCleanlooksStyle *>(QApplication::style())) {
-		int l, t, r, b;
-		filter_toolbar -> getContentsMargins(&l, &t, &r, &b);
-		filter_toolbar -> setContentsMargins (l, t, r + 4, b);
-	}
+//	if (qobject_cast<QCleanlooksStyle *>(QApplication::style())) {
+//		int l, t, r, b;
+//		filter_toolbar -> getContentsMargins(&l, &t, &r, &b);
+//		filter_toolbar -> setContentsMargins (l, t, r + 4, b);
+//	}
 	
 	context_menu = new QMenu(this);
 	
@@ -497,10 +498,10 @@ void ElementsPanelWidget::setElementsActionEnabled(bool enable) {
 int ElementsPanelWidget::launchCategoriesManager() {
 	QDialog new_category_dialog(this);
 	new_category_dialog.setMinimumSize(480, 280);
-	new_category_dialog.setWindowTitle(tr("Gestionnaire de cat\351gories", "window title"));
+	new_category_dialog.setWindowTitle(tr("Gestionnaire de catégories", "window title"));
 	
 	QVBoxLayout *layout = new QVBoxLayout(&new_category_dialog);
-	QLabel *explication = new QLabel(tr("Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les cat\351gories."));
+	QLabel *explication = new QLabel(tr("Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories."));
 	explication -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	explication -> setWordWrap(true);
 	layout -> addWidget(explication);

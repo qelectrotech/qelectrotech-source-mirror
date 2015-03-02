@@ -82,7 +82,7 @@ class DiagramTextItem : public QGraphicsTextItem {
 
 	virtual void applyRotation(const qreal &);
 	
-	bool bMouseOver;
+	bool m_mouse_hover;
 	signals:
 	/// signal emitted when the text field loses focus
 	void lostFocus();

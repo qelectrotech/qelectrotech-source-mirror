@@ -17,7 +17,7 @@
 */
 #ifndef Q_TEXT_ORIENTATION_WIDGET_H
 #define Q_TEXT_ORIENTATION_WIDGET_H
-#include <QtGui>
+#include <QtWidgets>
 /**
 	This class provides a visual representation of a text orientation.
 */

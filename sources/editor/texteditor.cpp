@@ -134,7 +134,7 @@ void TextEditor::updateText() {
 /// Met a jour l'abscisse de la position du texte et cree un objet d'annulation
 void TextEditor::updateTextX() { addChangePartCommand(tr("abscisse"),    part, "x",    qle_x -> value()); }
 /// Met a jour l'ordonnee de la position du texte et cree un objet d'annulation
-void TextEditor::updateTextY() { addChangePartCommand(tr("ordonn\351e"), part, "y",    qle_y -> value()); }
+void TextEditor::updateTextY() { addChangePartCommand(tr("ordonnée"), part, "y",    qle_y -> value()); }
 /// Met a jour le texte et cree un objet d'annulation
 void TextEditor::updateTextT() { addChangePartCommand(tr("contenu"),     part, "text", qle_text -> text());         }
 /// Met a jour la taille du texte et cree un objet d'annulation

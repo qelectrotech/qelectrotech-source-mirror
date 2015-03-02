@@ -23,7 +23,7 @@
 #include "elementscene.h"
 #include "elementcontent.h"
 #include "qgimanager.h"
-#include <QtGui>
+#include <QtWidgets>
 
 /**
  * @brief The ElementEditionCommand class

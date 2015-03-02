@@ -17,7 +17,7 @@
 */
 #ifndef NEW_ELEMENT_WIZARD_H
 #define NEW_ELEMENT_WIZARD_H
-#include <QtGui>
+#include <QtWidgets>
 class ElementsCategoriesWidget;
 class ElementsCategory;
 class NamesListWidget;

@@ -115,7 +115,7 @@ void TerminalEditor::updateTerminal() {
 /// Met a jour l'abscisse de la position de la borne et cree un objet d'annulation
 void TerminalEditor::updateTerminalX() { addChangePartCommand(tr("abscisse"),    part, "x",           qle_x -> value()); }
 /// Met a jour l'ordonnee de la position de la borne et cree un objet d'annulation
-void TerminalEditor::updateTerminalY() { addChangePartCommand(tr("ordonn\351e"), part, "y",           qle_y -> value()); }
+void TerminalEditor::updateTerminalY() { addChangePartCommand(tr("ordonnée"), part, "y",           qle_y -> value()); }
 /// Met a jour l'orientation de la borne et cree un objet d'annulation
 void TerminalEditor::updateTerminalO() { addChangePartCommand(tr("orientation"), part, "orientation", orientation -> itemData(orientation -> currentIndex())); }
 /// update Number and name, create cancel object

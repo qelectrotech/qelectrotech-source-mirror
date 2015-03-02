@@ -70,7 +70,7 @@ void QFileNameEdit::init() {
 	setValidator(validator_);
 	tooltip_text_ = QString(
 		tr(
-			"Les caract\350res autoris\351s sont : \n"
+			"Les caractères autorisés sont : \n"
 			" - les chiffres [0-9]\n"
 			" - les minuscules [a-z]\n"
 			" - le tiret [-], l'underscore [_] et le point [.]\n",

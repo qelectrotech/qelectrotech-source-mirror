@@ -17,7 +17,7 @@
 */
 #ifndef ELEMENT_TEXTS_MOVER_H
 #define ELEMENT_TEXTS_MOVER_H
-#include <QtGui>
+#include <QtWidgets>
 #include "diagramcontent.h"
 class ElementTextItem;
 class Diagram;

@@ -32,6 +32,8 @@
 #include "numerotationcontext.h"
 #include "reportproperties.h"
 
+#include <QStandardPaths>
+
 QString QETProject::integration_category_name = "import";
 
 /**
@@ -255,7 +257,7 @@ void QETProject::setFilePath(const QString &filepath) {
 QString QETProject::currentDir() const {
 	QString current_directory;
 	if (file_path_.isEmpty()) {
-		current_directory = QDesktopServices::storageLocation(QDesktopServices::DesktopLocation);
+		current_directory = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 	} else {
 		current_directory = QFileInfo(file_path_).absoluteDir().absolutePath();
 	}
@@ -277,7 +279,7 @@ QString QETProject::pathNameTitle() const {
 	if (!project_title_.isEmpty()) {
 		final_title = QString(
 			tr(
-				"Projet \253\240%1\240\273",
+				"Projet « %1 »",
 				"displayed title for a ProjectView - %1 is the project title"
 			)
 		).arg(project_title_);
@@ -308,7 +310,7 @@ QString QETProject::pathNameTitle() const {
 	if (modified_) {
 		final_title = QString(
 			tr(
-				"%1 [modifi\351]",
+				"%1 [modifié]",
 				"displayed title for a modified project - %1 is a displayable title"
 			)
 		).arg(final_title);
@@ -738,7 +740,7 @@ QString QETProject::integrateElement(const QString &elmt_location, QString &erro
 QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandler *handler, QString &error_message) {
 	// on s'assure que le projet a une categorie dediee aux elements importes automatiquement
 	if (!ensureIntegrationCategoryExists()) {
-		error_message = tr("Impossible de cr\351er la cat\351gorie pour l'int\351gration des \351l\351ments");
+		error_message = tr("Impossible de créer la catégorie pour l'intégration des éléments");
 		return(QString());
 	}
 	
@@ -749,7 +751,7 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 	ElementsCollectionItem *integ_item = QETApp::collectionItem(ElementsLocation::locationFromString(elmt_path));
 	ElementDefinition *integ_elmt = integ_item ? integ_item -> toElement() : 0;
 	if (!integ_item || !integ_elmt) {
-		error_message = tr("Impossible d'acc\351der \340 l'\351l\351ment \340 int\351grer");
+		error_message = tr("Impossible d'accéder à l'élément à intégrer");
 		return(QString());
 	}
 	
@@ -766,7 +768,7 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 			// la categorie cible n'existe pas : on la cree par recopie
 			ElementsCollectionItem *result_cat = par_cat -> copy(target_cat, handler, false);
 			if (!result_cat || !result_cat -> isCategory()) {
-				error_message = QString(tr("Un probl\350me s'est produit pendant la copie de la cat\351gorie %1")).arg(par_cat -> location().toString());
+				error_message = QString(tr("Un problème s'est produit pendant la copie de la catégorie %1")).arg(par_cat -> location().toString());
 				return(QString());
 			}
 			target_cat = result_cat -> toCategory();
@@ -840,7 +842,7 @@ QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation
 		src_tbt.getTemplateXmlDescription()
 	);
 	if (!integration) {
-		handler -> errorWithATemplate(src_tbt, tr("Une erreur s'est produite durant l'int\351gration du mod\350le.", "error message"));
+		handler -> errorWithATemplate(src_tbt, tr("Une erreur s'est produite durant l'intégration du modèle.", "error message"));
 		target_name = QString();
 	}
 	return(target_name);
@@ -961,7 +963,7 @@ QList <Diagram *> QETProject::addNewDiagramFolioList() {
 			diagram_folio_list -> border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 			diagram_folio_list -> defaultConductorProperties = defaultConductorProperties();
 
-			diagram_folio_list -> border_and_titleblock.setTitle(tr("Liste des Sch\351mas"));
+			diagram_folio_list -> border_and_titleblock.setTitle(tr("Liste des Schémas"));
 			// no need to display rows and columns
 			diagram_folio_list -> border_and_titleblock.displayRows(false);
 			diagram_folio_list -> border_and_titleblock.displayColumns(false);
@@ -1070,15 +1072,15 @@ void QETProject::readProjectXml() {
 			project_qet_version_ = root_elmt.attribute("version").toDouble(&conv_ok);
 			if (conv_ok && QET::version.toDouble() < project_qet_version_) {
 				
-				int ret = QET::MessageBox::warning(
+				int ret = QET::QetMessageBox::warning(
 					0,
 					tr("Avertissement", "message box title"),
 					tr(
-						"Ce document semble avoir \351t\351 enregistr\351 avec "
-						"une version ult\351rieure de QElectroTech. Il est "
+						"Ce document semble avoir été enregistré avec "
+						"une version ultérieure de QElectroTech. Il est "
 						"possible que l'ouverture de tout ou partie de ce "
-						"document \351choue.\n"
-						"Que d\351sirez vous faire ?",
+						"document échoue.\n"
+						"Que désirez vous faire ?",
 						"message box content"
 					),
 					QMessageBox::Open | QMessageBox::Cancel
@@ -1129,6 +1131,7 @@ void QETProject::readDiagramsXml() {
 	// map destinee a accueillir les schemas
 	QMultiMap<int, Diagram *> loaded_diagrams;
 	
+	//@TODO try to solve a weird bug (dialog is black) since port to Qt5 with the DialogWaiting
 	//show DialogWaiting
 	DialogWaiting* dlgWaiting = new DialogWaiting();
 	dlgWaiting -> setModal(true);
@@ -1138,19 +1141,24 @@ void QETProject::readDiagramsXml() {
 	// recherche les schemas dans le projet
 	QDomNodeList diagram_nodes = document_root_.elementsByTagName("diagram");
 	dlgWaiting->setProgressBarRange(0, diagram_nodes.length());
-	for (uint i = 0 ; i < diagram_nodes.length() ; ++ i) {
+	for (int i = 0 ; i < diagram_nodes.length() ; ++ i)
+	{
 		dlgWaiting->setProgressBar(i+1);
-		if (diagram_nodes.at(i).isElement()) {
+		if (diagram_nodes.at(i).isElement())
+		{
 			QDomElement diagram_xml_element = diagram_nodes.at(i).toElement();
 			Diagram *diagram = new Diagram(this);
 			bool diagram_loading = diagram -> initFromXml(diagram_xml_element);
-			if (diagram_loading) {
+			if (diagram_loading)
+			{
 				dlgWaiting->setDetail( diagram->title() );
 				// recupere l'attribut order du schema
 				int diagram_order = -1;
 				if (!QET::attributeIsAnInteger(diagram_xml_element, "order", &diagram_order)) diagram_order = 500000;
 				loaded_diagrams.insert(diagram_order, diagram);
-			} else {
+			}
+			else
+			{
 				delete diagram;
 			}
 		}
@@ -1378,17 +1386,17 @@ NamesList QETProject::namesListForIntegrationCategory() {
 	const QChar russian_data[24] = { 0x0418, 0x043C, 0x043F, 0x043E, 0x0440, 0x0442, 0x0438, 0x0440, 0x043E, 0x0432, 0x0430, 0x043D, 0x043D, 0x044B, 0x0435, 0x0020, 0x044D, 0x043B, 0x0435, 0x043C, 0x0435, 0x043D, 0x0442, 0x044B };
 	const QChar greek_data[18] = { 0x0395, 0x03b9, 0x03c3, 0x03b7, 0x03b3, 0x03bc, 0x03ad, 0x03bd, 0x03b1, 0x0020, 0x03c3, 0x03c4, 0x03bf, 0x03b9, 0x03c7, 0x03b5, 0x03af, 0x03b1 };
 
-	names.addName("fr", "\311l\351ments import\351s");
+	names.addName("fr", "Éléments importés");
 	names.addName("en", "Imported elements");
 	names.addName("de", "Importierte elemente");
 	names.addName("es", "Elementos importados");
 	names.addName("ru", QString(russian_data, 24));
-	names.addName("cs", "Zaveden\351 prvky");
+	names.addName("cs", "Zavedené prvky");
 	names.addName("pl", "Elementy importowane");
 	names.addName("pt", "elementos importados");
 	names.addName("it", "Elementi importati");
 	names.addName("el", QString(greek_data, 18));
-	names.addName("nl", "Elementen ge\357mporteerd");
+	names.addName("nl", "Elementen geïmporteerd");
 	names.addName("hr", "Uvezeni elementi");
 	names.addName("ca", "Elements importats");
 	names.addName("ro", "Elemente importate");
@@ -1549,7 +1557,7 @@ ElementsLocation QETProject::copyElementWithHandler(
 	ElementsCollectionItem *result_item = integ_elmt -> copy(target_cat, handler);
 	ElementDefinition *result_elmt = result_item ? result_item -> toElement() : 0;
 	if (!result_item || !result_elmt) {
-		error_message = QString(tr("Un probl\350me s'est produit pendant la copie de l'\351l\351ment %1")).arg(integ_elmt -> location().toString());
+		error_message = QString(tr("Un problème s'est produit pendant la copie de l'élément %1")).arg(integ_elmt -> location().toString());
 		return(ElementsLocation());
 	}
 	return(result_elmt -> location());

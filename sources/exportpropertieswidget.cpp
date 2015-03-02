@@ -157,7 +157,7 @@ void ExportPropertiesWidget::build() {
 	export_border = new QRadioButton(tr("Exporter le cadre"), groupbox_options);
 	optionshlayout -> addWidget(export_border, 0, 0);
 	exported_content_choices -> addButton(export_border);
-	export_elements = new QRadioButton(tr("Exporter les \351l\351ments"), groupbox_options);
+	export_elements = new QRadioButton(tr("Exporter les éléments"), groupbox_options);
 	optionshlayout -> addWidget(export_elements, 0, 1);
 	exported_content_choices -> addButton(export_elements);
 	

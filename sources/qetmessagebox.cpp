@@ -20,8 +20,8 @@
 /**
 	@see Documentation Qt pour QMessageBox::critical
 */
-QMessageBox::StandardButton QET::MessageBox::critical   (QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
-#ifdef Q_WS_MAC
+QMessageBox::StandardButton QET::QetMessageBox::critical   (QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
+#ifdef Q_OS_MAC
 	QMessageBox message_box(QMessageBox::Critical, title, text, buttons, parent, Qt::Sheet);
 	message_box.setWindowModality(Qt::WindowModal);
 #else
@@ -35,8 +35,8 @@ QMessageBox::StandardButton QET::MessageBox::critical   (QWidget *parent, const 
 /**
 	@see Documentation Qt pour QMessageBox::information
 */
-QMessageBox::StandardButton QET::MessageBox::information(QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
-#ifdef Q_WS_MAC
+QMessageBox::StandardButton QET::QetMessageBox::information(QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
+#ifdef Q_OS_MAC
 	QMessageBox message_box(QMessageBox::Information, title, text, buttons, parent, Qt::Sheet);
 	message_box.setWindowModality(Qt::WindowModal);
 #else
@@ -50,8 +50,8 @@ QMessageBox::StandardButton QET::MessageBox::information(QWidget *parent, const 
 /**
 	@see Documentation Qt pour QMessageBox::question
 */
-QMessageBox::StandardButton QET::MessageBox::question   (QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
-#ifdef Q_WS_MAC
+QMessageBox::StandardButton QET::QetMessageBox::question   (QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
+#ifdef Q_OS_MAC
 	QMessageBox message_box(QMessageBox::Question, title, text, buttons, parent, Qt::Sheet);
 	message_box.setWindowModality(Qt::WindowModal);
 #else
@@ -65,8 +65,8 @@ QMessageBox::StandardButton QET::MessageBox::question   (QWidget *parent, const 
 /**
 	@see Documentation Qt pour QMessageBox::warning
 */
-QMessageBox::StandardButton QET::MessageBox::warning    (QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
-#ifdef Q_WS_MAC
+QMessageBox::StandardButton QET::QetMessageBox::warning    (QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
+#ifdef Q_OS_MAC
 	QMessageBox message_box(QMessageBox::Warning, title, text, buttons, parent, Qt::Sheet);
 	message_box.setWindowModality(Qt::WindowModal);
 #else

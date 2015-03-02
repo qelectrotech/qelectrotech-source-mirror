@@ -53,12 +53,12 @@ bool TitleBlockTemplateDeleter::exec() {
 	}
 	
 	// require confirmation from the user
-	QMessageBox::StandardButton answer = QET::MessageBox::question(
+	QMessageBox::StandardButton answer = QET::QetMessageBox::question(
 		this,
-		tr("Supprimer le mod\350le de cartouche ?", "message box title"),
+		tr("Supprimer le modèle de cartouche ?", "message box title"),
 		QString(
 			tr(
-				"\312tes-vous s\373r de vouloir supprimer ce mod\350le de cartouche (%1) ?\n",
+				"Êtes-vous s\373r de vouloir supprimer ce modèle de cartouche (%1) ?\n",
 				"message box content"
 			)
 		).arg(name),

@@ -29,11 +29,12 @@
 	@param scene La scene sur laquelle figure ce texte statique
 */
 PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene *scene) :
-	QGraphicsTextItem(parent, scene),
+	QGraphicsTextItem(parent),
 	CustomElementPart(editor),
 	previous_text(),
 	decorator_(0)
 {
+	Q_UNUSED(scene)
 #if QT_VERSION >= 0x040500
 	document() -> setDocumentMargin(1.0);
 #endif

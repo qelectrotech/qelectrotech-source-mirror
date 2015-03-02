@@ -17,15 +17,22 @@
 */
 #ifndef DIAGRAM_PRINT_DIALOG_H
 #define DIAGRAM_PRINT_DIALOG_H
-#include <QtGui>
+#include <QtWidgets>
+
 #include "qetproject.h"
 #include "diagram.h"
 #include "exportproperties.h"
+
+class QPrinter;
+
 /**
 	This class implements both the dialog allowing users to configure the printing
 	of a project file and the printing itself.
 */
-class DiagramPrintDialog : public QWidget {
+class DiagramPrintDialog : public QWidget
+{
+		//@TODO Remove definitely the commented lines in this class related to post script
+
 	Q_OBJECT
 	// Constructors, destructor
 	public:
@@ -75,11 +82,11 @@ class DiagramPrintDialog : public QWidget {
 	QHBoxLayout *hlayout0_;
 	QLabel *printer_icon_;
 	QLabel *pdf_icon_;
-	QLabel *ps_icon_;
+//	QLabel *ps_icon_;
 	QButtonGroup *printtype_choice_;
 	QRadioButton *printer_choice_;
 	QRadioButton *pdf_choice_;
-	QRadioButton *ps_choice_;
+//	QRadioButton *ps_choice_;
 	QLineEdit *filepath_field_;
 	QPushButton *browse_button_;
 	QDialogButtonBox *buttons_;

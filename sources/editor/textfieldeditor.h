@@ -17,7 +17,7 @@
 */
 #ifndef TEXTFIELD_EDITOR_H
 #define TEXTFIELD_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 #include "elementitemeditor.h"
 class PartTextField;
 class QTextOrientationSpinBoxWidget;

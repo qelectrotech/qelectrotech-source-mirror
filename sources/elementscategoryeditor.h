@@ -17,7 +17,7 @@
 */
 #ifndef ELEMENTS_CATEGORY_EDITOR_H
 #define ELEMENTS_CATEGORY_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 #include "elementslocation.h"
 class ElementsCategory;
 class NamesListWidget;

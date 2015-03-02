@@ -68,7 +68,7 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	m_properties = properties;
 
 	setColorButton(m_properties.color);
-	int index = ui -> m_line_style_cb->findData(m_properties.style);
+	int index = ui -> m_line_style_cb -> findData(QPen(m_properties.style));
 	if (index != -1) ui -> m_line_style_cb -> setCurrentIndex(index);
 
 	ui -> m_text_le                  -> setText    (m_properties.text);
@@ -97,8 +97,8 @@ ConductorProperties ConductorPropertiesWidget::properties() const {
 	if (ui -> m_multi_rb  -> isChecked()) properties_.type = ConductorProperties::Multi;
 	else if (ui -> m_single_rb -> isChecked()) properties_.type = ConductorProperties::Single;
 
-	properties_.color                   = ui->m_color_pb->palette().color(QPalette::Button);
-	properties_.style                   = static_cast<Qt::PenStyle>(ui->m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).toInt());
+	properties_.color                   = ui -> m_color_pb->palette().color(QPalette::Button);
+	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
 	properties_.text                    = ui -> m_text_le -> text();
 	properties_.text_size               = ui -> m_text_size_sb -> value();
 	properties_.m_show_text             = ui -> m_show_text_cb -> isChecked();
@@ -155,9 +155,9 @@ void ConductorPropertiesWidget::initWidget() {
 	m_horiz_select = QETApp::createTextOrientationSpinBoxWidget();
 	ui -> m_text_angle_gl -> addWidget(m_horiz_select, 2, 1,  Qt::AlignHCenter);
 
-	ui -> m_line_style_cb -> addItem(tr("Trait plein", "conductor style: solid line"), Qt::SolidLine);
-	ui -> m_line_style_cb -> addItem(tr("Trait en pointill\351s", "conductor style: dashed line"), Qt::DashLine);
-	ui -> m_line_style_cb -> addItem(tr("Traits et points", "conductor style: dashed and dotted line"), Qt::DashDotLine);
+	ui -> m_line_style_cb -> addItem(tr("Trait plein", "conductor style: solid line"), QPen(Qt::SolidLine));
+	ui -> m_line_style_cb -> addItem(tr("Trait en pointillés", "conductor style: dashed line"), QPen(Qt::DashLine));
+	ui -> m_line_style_cb -> addItem(tr("Traits et points", "conductor style: dashed and dotted line"), QPen(Qt::DashDotLine));
 
 	ui -> m_update_preview_pb -> setHidden(true);
 	//Check this checkbox for init the associated groupbox

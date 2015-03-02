@@ -103,7 +103,7 @@ QETApp::QETApp(int &argc, char **argv) :
 	setQuitOnLastWindowClosed(false);
 	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
 	
-	setSplashScreenStep(tr("Chargement... Initialisation du cache des collections d'\351l\351ments", "splash screen caption"));
+	setSplashScreenStep(tr("Chargement... Initialisation du cache des collections d'éléments", "splash screen caption"));
 	if (!collections_cache_) {
 		QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
 		collections_cache_ = new ElementsCollectionCache(cache_path, this);
@@ -111,14 +111,14 @@ QETApp::QETApp(int &argc, char **argv) :
 	}
 	
 	// loads known collections into memory (this does not include items rendering made in elements panels)
-	setSplashScreenStep(tr("Chargement... Lecture des collections d'\351l\351ments", "splash screen caption"));
+	setSplashScreenStep(tr("Chargement... Lecture des collections d'éléments", "splash screen caption"));
 	foreach(ElementsCollection *collection, availableCollections()) {
 		collection -> reload();
 	}
 	
 	// on ouvre soit les fichiers passes en parametre soit un nouvel editeur de projet
 	if (qet_arguments_.files().isEmpty()) {
-		setSplashScreenStep(tr("Chargement... \311diteur de sch\351mas", "splash screen caption"));
+		setSplashScreenStep(tr("Chargement... Éditeur de schémas", "splash screen caption"));
 		new QETDiagramEditor();
 	} else {
 		setSplashScreenStep(tr("Chargement... Ouverture des fichiers", "splash screen caption"));
@@ -363,10 +363,10 @@ QStringList QETApp::elementInfoKeys() {
 QString QETApp::elementTranslatedInfoKey(QString &info) {
 	if (info == "label") return tr("Label");
 	else if (info == "comment") return tr("Commentaire");
-	else if (info == "designation") return tr("D\351signation");
+	else if (info == "designation") return tr("Désignation");
 	else if (info == "manufacturer") return tr("Fabricant");
-	else if (info == "manufacturer-reference") return tr("R\351f\351rence fabricant");
-	else if (info == "machine-manufacturer-reference") return tr("R\351f\351rence fabricant machine");
+	else if (info == "manufacturer-reference") return tr("Référence fabricant");
+	else if (info == "machine-manufacturer-reference") return tr("Référence fabricant machine");
 	return (info);
 }
 
@@ -943,9 +943,9 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 	Autodetec Windows style
 	@param Windows style
 */
-#if defined(Q_WS_WIN) && defined(Q_WS_WINCE)
+#if defined(Q_OS_WIN) && defined(Q_OS_WINCE)
 
-if defined(Q_WS_WIN)
+if defined(Q_OS_WIN)
 			if ((QSysInfo::WindowsVersion >= QSysInfo::WV_VISTA
 				&& QSysInfo::WindowsVersion < QSysInfo::WV_NT_based))
 				style = QLatin1String("WindowsVista");
@@ -1255,7 +1255,7 @@ void QETApp::aboutQET() {
 	
 	// associe le dialogue a un eventuel widget parent
 	if (parent_widget) {
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 		about_dialog_ -> setWindowFlags(Qt::Sheet);
 #endif
 		about_dialog_ -> setParent(parent_widget, about_dialog_ -> windowFlags());
@@ -1373,11 +1373,12 @@ void QETApp::initLanguage() {
 */
 void QETApp::initStyle() {
 	initial_palette_ = palette();
-	
-	// lorsque le style Plastique est active, on le remplace par une version amelioree
-	if (qobject_cast<QPlastiqueStyle *>(style())) {
-		setStyle(new QETStyle());
-	}
+
+	//@TODO remove the code below
+//	// lorsque le style Plastique est active, on le remplace par une version amelioree
+//	if (qobject_cast<QPlastiqueStyle *>(style())) {
+//		setStyle(new QETStyle());
+//	}
 	
 	// applique ou non les couleurs de l'environnement
 	useSystemPalette(settings().value("usesystemcolors", true).toBool());
@@ -1416,24 +1417,24 @@ void QETApp::initConfiguration() {
 	Construit l'icone dans le systray et son menu
 */
 void QETApp::initSystemTray() {
-	setSplashScreenStep(tr("Chargement... ic\364ne du systray", "splash screen caption"));
+	setSplashScreenStep(tr("Chargement... icône du systray", "splash screen caption"));
 	// initialisation des menus de l'icone dans le systray
 	menu_systray = new QMenu(tr("QElectroTech", "systray menu title"));
 	
 	quitter_qet       = new QAction(QET::Icons::ApplicationExit,       tr("&Quitter"),                                        this);
 	reduce_appli      = new QAction(QET::Icons::Hide,    tr("&Masquer"),                                        this);
 	restore_appli     = new QAction(QET::Icons::Restore,  tr("&Restaurer"),                                      this);
-	reduce_diagrams   = new QAction(QET::Icons::Hide,    tr("&Masquer tous les \351diteurs de sch\351ma"),      this);
-	restore_diagrams  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les \351diteurs de sch\351ma"),    this);
-	reduce_elements   = new QAction(QET::Icons::Hide,    tr("&Masquer tous les \351diteurs d'\351l\351ment"),   this);
-	restore_elements  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les \351diteurs d'\351l\351ment"), this);
-	reduce_templates  = new QAction(QET::Icons::Hide,      tr("&Masquer tous les \351diteurs de cartouche",   "systray submenu entry"), this);
-	restore_templates = new QAction(QET::Icons::Restore,   tr("&Restaurer tous les \351diteurs de cartouche", "systray submenu entry"), this);
-	new_diagram       = new QAction(QET::Icons::WindowNew, tr("&Nouvel \351diteur de sch\351ma"),                 this);
-	new_element       = new QAction(QET::Icons::WindowNew, tr("&Nouvel \351diteur d'\351l\351ment"),              this);
+	reduce_diagrams   = new QAction(QET::Icons::Hide,    tr("&Masquer tous les éditeurs de schéma"),      this);
+	restore_diagrams  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les éditeurs de schéma"),    this);
+	reduce_elements   = new QAction(QET::Icons::Hide,    tr("&Masquer tous les éditeurs d'élément"),   this);
+	restore_elements  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les éditeurs d'élément"), this);
+	reduce_templates  = new QAction(QET::Icons::Hide,      tr("&Masquer tous les éditeurs de cartouche",   "systray submenu entry"), this);
+	restore_templates = new QAction(QET::Icons::Restore,   tr("&Restaurer tous les éditeurs de cartouche", "systray submenu entry"), this);
+	new_diagram       = new QAction(QET::Icons::WindowNew, tr("&Nouvel éditeur de schéma"),                 this);
+	new_element       = new QAction(QET::Icons::WindowNew, tr("&Nouvel éditeur d'élément"),              this);
 	
 	quitter_qet   -> setStatusTip(tr("Ferme l'application QElectroTech"));
-	reduce_appli  -> setToolTip(tr("R\351duire QElectroTech dans le systray"));
+	reduce_appli  -> setToolTip(tr("Réduire QElectroTech dans le systray"));
 	restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
 	
 	connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(quitQET()));
@@ -1519,7 +1520,7 @@ void QETApp::buildSystemTrayMenu() {
 	menu_systray -> addAction(every_editor_reduced ? restore_appli : reduce_appli);
 	
 	// ajoute les editeurs de schemas dans un sous-menu
-	QMenu *diagrams_submenu = menu_systray -> addMenu(tr("\311diteurs de sch\351mas"));
+	QMenu *diagrams_submenu = menu_systray -> addMenu(tr("Éditeurs de schémas"));
 	diagrams_submenu -> addAction(reduce_diagrams);
 	diagrams_submenu -> addAction(restore_diagrams);
 	diagrams_submenu -> addAction(new_diagram);
@@ -1528,7 +1529,7 @@ void QETApp::buildSystemTrayMenu() {
 	addWindowsListToMenu<QETDiagramEditor>(diagrams_submenu, diagrams);
 	
 	// ajoute les editeurs d'elements au menu
-	QMenu *elements_submenu = menu_systray -> addMenu(tr("\311diteurs d'\351l\351ment"));
+	QMenu *elements_submenu = menu_systray -> addMenu(tr("Éditeurs d'élément"));
 	elements_submenu -> addAction(reduce_elements);
 	elements_submenu -> addAction(restore_elements);
 	elements_submenu -> addAction(new_element);
@@ -1538,7 +1539,7 @@ void QETApp::buildSystemTrayMenu() {
 	addWindowsListToMenu<QETElementEditor>(elements_submenu, elements);
 	
 	// add title block template editors in a submenu
-	QMenu *tbtemplates_submenu = menu_systray -> addMenu(tr("\311diteurs de cartouche", "systray menu entry"));
+	QMenu *tbtemplates_submenu = menu_systray -> addMenu(tr("Éditeurs de cartouche", "systray menu entry"));
 	tbtemplates_submenu -> addAction(reduce_templates);
 	tbtemplates_submenu -> addAction(restore_templates);
 	reduce_templates  -> setEnabled(!tbtemplates.isEmpty() && !every_template_reduced);
@@ -1604,7 +1605,7 @@ bool QETApp::event(QEvent *e) {
 void QETApp::printHelp() {
 	QString help(
 		tr("Usage : ") + QFileInfo(applicationFilePath()).fileName() + tr(" [options] [fichier]...\n\n") +
-		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.\n\n"
+		tr("QElectroTech, une application de réalisation de schémas électriques.\n\n"
 		"Options disponibles : \n"
 		"  --help                        Afficher l'aide sur les options\n"
 		"  -v, --version                 Afficher la version\n"
@@ -1637,50 +1638,51 @@ void QETApp::printLicense() {
 	std::cout << qPrintable(QET::license()) << std::endl;
 }
 
-/// Constructeur
-QETStyle::QETStyle() : QPlastiqueStyle() {
-}
+//@TODO remove code below
+///// Constructeur
+//QETStyle::QETStyle() : QPlastiqueStyle() {
+//}
 
-/// Destructeur
-QETStyle::~QETStyle() {
-}
+///// Destructeur
+//QETStyle::~QETStyle() {
+//}
 
-/// Gere les parametres de style
-int QETStyle::styleHint(StyleHint hint, const QStyleOption *option, const QWidget *widget, QStyleHintReturn *returndata) const {
-	if (hint == QStyle::SH_DialogButtonBox_ButtonsHaveIcons) {
-		return(int(true));
-	} else {
-		return(QPlastiqueStyle::styleHint(hint, option, widget, returndata));
-	}
-}
+///// Gere les parametres de style
+//int QETStyle::styleHint(StyleHint hint, const QStyleOption *option, const QWidget *widget, QStyleHintReturn *returndata) const {
+//	if (hint == QStyle::SH_DialogButtonBox_ButtonsHaveIcons) {
+//		return(int(true));
+//	} else {
+//		return(QPlastiqueStyle::styleHint(hint, option, widget, returndata));
+//	}
+//}
 
-/// Gere les icones standard
-QIcon QETStyle::standardIconImplementation(StandardPixmap standardIcon, const QStyleOption *option, const QWidget* widget) const {
-	switch(standardIcon) {
-		case QStyle::SP_DialogSaveButton:
-			return(QET::Icons::DocumentSave);
-		case QStyle::SP_DialogOpenButton:
-			return(QET::Icons::DocumentOpen);
-		case QStyle::SP_DialogCancelButton:
-			return(QET::Icons::DialogCancel);
-		case QStyle::SP_DialogOkButton:
-		case QStyle::SP_DialogApplyButton:
-			return(QET::Icons::DialogOk);
-		case QStyle::SP_DialogCloseButton:
-			return(QET::Icons::DocumentClose);
-		case QStyle::SP_DialogYesButton:
-			return(QET::Icons::Allowed);
-		case QStyle::SP_DialogNoButton:
-			return(QET::Icons::Forbidden);
-		case QStyle::SP_DialogResetButton:
-			return(QET::Icons::EditUndo);
-		case QStyle::SP_DialogHelpButton:
-		case QStyle::SP_DialogDiscardButton:
-			return(QIcon());
-		default:
-			return(QPlastiqueStyle::standardIconImplementation(standardIcon, option, widget));
-	}
-}
+///// Gere les icones standard
+//QIcon QETStyle::standardIconImplementation(StandardPixmap standardIcon, const QStyleOption *option, const QWidget* widget) const {
+//	switch(standardIcon) {
+//		case QStyle::SP_DialogSaveButton:
+//			return(QET::Icons::DocumentSave);
+//		case QStyle::SP_DialogOpenButton:
+//			return(QET::Icons::DocumentOpen);
+//		case QStyle::SP_DialogCancelButton:
+//			return(QET::Icons::DialogCancel);
+//		case QStyle::SP_DialogOkButton:
+//		case QStyle::SP_DialogApplyButton:
+//			return(QET::Icons::DialogOk);
+//		case QStyle::SP_DialogCloseButton:
+//			return(QET::Icons::DocumentClose);
+//		case QStyle::SP_DialogYesButton:
+//			return(QET::Icons::Allowed);
+//		case QStyle::SP_DialogNoButton:
+//			return(QET::Icons::Forbidden);
+//		case QStyle::SP_DialogResetButton:
+//			return(QET::Icons::EditUndo);
+//		case QStyle::SP_DialogHelpButton:
+//		case QStyle::SP_DialogDiscardButton:
+//			return(QIcon());
+//		default:
+//			return(QPlastiqueStyle::standardIconImplementation(standardIcon, option, widget));
+//	}
+//}
 
 /// @return une reference vers les parametres de QElectroTEch
 QSettings &QETApp::settings() {

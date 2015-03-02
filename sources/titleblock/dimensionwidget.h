@@ -17,7 +17,7 @@
 */
 #ifndef TITLEBLOCK_SLASH_DIMENSION_WIDGET_H
 #define TITLEBLOCK_SLASH_DIMENSION_WIDGET_H
-#include <QtGui>
+#include <QtWidgets>
 #include "dimension.h"
 
 /**

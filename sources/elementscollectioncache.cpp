@@ -96,7 +96,7 @@ QString ElementsCollectionCache::locale() const {
 	@return True if the format change was accepted, false otherwise.
 */
 bool ElementsCollectionCache::setPixmapStorageFormat(const QString &format) {
-	if (QImageWriter::supportedImageFormats().contains(format.toAscii())) { 
+	if (QImageWriter::supportedImageFormats().contains(format.toLatin1())) {
 		pixmap_storage_format_= format;
 		return(true);
 	}

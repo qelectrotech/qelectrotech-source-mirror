@@ -28,12 +28,12 @@
 */
 DiagramTextItem::DiagramTextItem(QGraphicsItem *parent) :
 	QGraphicsTextItem(parent),
-	bMouseOver(false),
+	m_mouse_hover(false),
 	previous_text_(),
 	rotation_angle_(0.0),
 	m_first_move (true)
 {
-	setAcceptsHoverEvents(true);
+	setAcceptHoverEvents(true);
 	build();
 }
 
@@ -45,12 +45,12 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent) :
 */
 DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent) :
 	QGraphicsTextItem(text, parent),
-	bMouseOver(false),
+	m_mouse_hover(false),
 	previous_text_(text),
 	rotation_angle_(0.0)
 {
 	build();
-	setAcceptsHoverEvents(true);
+	setAcceptHoverEvents(true);
 }
 
 /// Destructeur
@@ -68,7 +68,7 @@ void DiagramTextItem::build() {
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
 	setNoEditable(false);
-	setToolTip(tr("Maintenir ctrl pour un d\351placement libre"));
+	setToolTip(tr("Maintenir ctrl pour un déplacement libre"));
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
@@ -205,31 +205,35 @@ void DiagramTextItem::setFontSize(int &s) {
 }
 
 /**
-	Dessine le champ de texte.
-	Cette methode delegue simplement le travail a QGraphicsTextItem::paint apres
-	avoir desactive l'antialiasing.
-	@param painter Le QPainter a utiliser pour dessiner le champ de texte
-	@param option Les options de style pour le champ de texte
-	@param widget Le QWidget sur lequel on dessine 
-*/
-void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+ * @brief DiagramTextItem::paint
+ * Draw this text field. This method draw the text by calling QGraphicsTextItem::paint.
+ * If text is hovered, this method draw the bounding rect in grey
+ * @param painter : painter to use
+ * @param option : style option
+ * @param widget : widget where must to draw
+ */
+void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 	QGraphicsTextItem::paint(painter, option, widget);
 
-	if ( bMouseOver )		{
+	if (m_mouse_hover && !isSelected())
+	{
 		painter -> save();
-		// Annulation des renderhints
+
+			//Disable renderhints
 		painter -> setRenderHint(QPainter::Antialiasing,          false);
 		painter -> setRenderHint(QPainter::TextAntialiasing,      false);
 		painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
-		// Dessin du cadre de selection en gris
+
+			//Draw the selected rect in grey
 		QPen t;
 		t.setColor(Qt::gray);
 		t.setStyle(Qt::DashDotLine);
+		t.setCosmetic(true);
 		painter -> setPen(t);
-		// Le dessin se fait a partir du rectangle delimitant
-		//painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
-		painter -> drawRoundRect(boundingRect().adjusted(0, 0, 0, 0), 10, 10);
+		painter -> drawRoundRect(boundingRect(), 10, 10);
+
 		painter -> restore();
 	}
 
@@ -392,13 +396,13 @@ void DiagramTextItem::edit() {
 
 /**
 	When mouse over element
-	change bMouseOver to true   (used in paint() function )
+	change m_mouse_hover to true   (used in paint() function )
 	@param e QGraphicsSceneHoverEvent
 */
 void DiagramTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
 
-	bMouseOver = true;
+	m_mouse_hover = true;
 	QString str_ToolTip = toPlainText();
 	setToolTip( str_ToolTip );
 	update();
@@ -406,13 +410,13 @@ void DiagramTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 
 /**
 	When mouse over element leave the position
-	change bMouseOver to false (used in paint() function )
+	change m_mouse_hover to false (used in paint() function )
 	@param e QGraphicsSceneHoverEvent
 */
 void DiagramTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
 	//qDebug() << "Leave mouse over";
-	bMouseOver = false;
+	m_mouse_hover = false;
 	update();
 }
 

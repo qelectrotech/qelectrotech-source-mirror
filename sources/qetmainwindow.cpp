@@ -46,7 +46,7 @@ void QETMainWindow::initCommonActions() {
 	QETApp *qet_app = QETApp::instance();
 	
 	configure_action_ = new QAction(QET::Icons::Configure, tr("&Configurer QElectroTech"), this);
-	configure_action_ -> setStatusTip(tr("Permet de r\351gler diff\351rents param\350tres de QElectroTech", "status bar tip"));
+	configure_action_ -> setStatusTip(tr("Permet de régler différents paramètres de QElectroTech", "status bar tip"));
 	connect(configure_action_,  SIGNAL(triggered()), qet_app, SLOT(configureQET()));
 	
 	fullscreen_action_ = new QAction(this);
@@ -55,12 +55,12 @@ void QETMainWindow::initCommonActions() {
 	
 	whatsthis_action_ = QWhatsThis::createAction(this);
 	
-	about_qet_ = new QAction(QET::Icons::QETLogo, tr("\300 &propos de QElectroTech"), this);
+	about_qet_ = new QAction(QET::Icons::QETLogo, tr("À &propos de QElectroTech"), this);
 	about_qet_ -> setStatusTip(tr("Affiche des informations sur QElectroTech", "status bar tip"));
 	connect(about_qet_,  SIGNAL(triggered()), qet_app, SLOT(aboutQET()));
 	
-	about_qt_ = new QAction(QET::Icons::QtLogo,  tr("\300 propos de &Qt"), this);
-	about_qt_ -> setStatusTip(tr("Affiche des informations sur la biblioth\350que Qt", "status bar tip"));
+	about_qt_ = new QAction(QET::Icons::QtLogo,  tr("À propos de &Qt"), this);
+	about_qt_ -> setStatusTip(tr("Affiche des informations sur la bibliothèque Qt", "status bar tip"));
 	connect(about_qt_, SIGNAL(triggered()), qet_app, SLOT(aboutQt()));
 }
 
@@ -120,13 +120,13 @@ void QETMainWindow::toggleFullScreen() {
 */
 void QETMainWindow::updateFullScreenAction() {
 	if (windowState() & Qt::WindowFullScreen) {
-		fullscreen_action_ -> setText(tr("Sortir du &mode plein \351cran"));
+		fullscreen_action_ -> setText(tr("Sortir du &mode plein écran"));
 		fullscreen_action_ -> setIcon(QET::Icons::FullScreenExit);
-		fullscreen_action_ -> setStatusTip(tr("Affiche QElectroTech en mode fen\352tr\351", "status bar tip"));
+		fullscreen_action_ -> setStatusTip(tr("Affiche QElectroTech en mode fenêtré", "status bar tip"));
 	} else {
-		fullscreen_action_ -> setText(tr("Passer en &mode plein \351cran"));
+		fullscreen_action_ -> setText(tr("Passer en &mode plein écran"));
 		fullscreen_action_ -> setIcon(QET::Icons::FullScreenEnter);
-		fullscreen_action_ -> setStatusTip(tr("Affiche QElectroTech en mode plein \351cran", "status bar tip"));
+		fullscreen_action_ -> setStatusTip(tr("Affiche QElectroTech en mode plein écran", "status bar tip"));
 	}
 	fullscreen_action_ -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
 }

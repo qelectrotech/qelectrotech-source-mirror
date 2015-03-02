@@ -11,18 +11,18 @@
 #define UI_ADDLINKDIALOG_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QDialog>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QFormLayout>
-#include <QtGui/QFrame>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QSpacerItem>
-#include <QtGui/QVBoxLayout>
+#include <QAction>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QFormLayout>
+#include <QFrame>
+#include <QHeaderView>
+#include <QLabel>
+#include <QLineEdit>
+#include <QSpacerItem>
+#include <QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
@@ -101,9 +101,9 @@ public:
 
     void retranslateUi(QDialog *AddLinkDialog)
     {
-        AddLinkDialog->setWindowTitle(QApplication::translate("AddLinkDialog", "Insert Link", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("AddLinkDialog", "Title:", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("AddLinkDialog", "URL:", 0, QApplication::UnicodeUTF8));
+		AddLinkDialog->setWindowTitle(QApplication::translate("AddLinkDialog", "Insert Link", 0));
+		label->setText(QApplication::translate("AddLinkDialog", "Title:", 0));
+		label_2->setText(QApplication::translate("AddLinkDialog", "URL:", 0));
     } // retranslateUi
 
 };

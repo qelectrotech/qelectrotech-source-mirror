@@ -48,7 +48,7 @@
 #include "richtexteditor_p.h"
 #include "ui_addlinkdialog.h"
 
-#include <QtDesigner/QDesignerFormEditorInterface>
+//#include <QtDesigner/QDesignerFormEditorInterface>
 
 #include <QtCore/QList>
 #include <QtCore/QMap>
@@ -57,24 +57,24 @@
 #include <QtCore/QXmlStreamWriter>
 #include <QtCore/QXmlStreamAttributes>
 
-#include <QtGui/QAction>
-#include <QtGui/QColorDialog>
-#include <QtGui/QComboBox>
+#include <QAction>
+#include <QColorDialog>
+#include <QComboBox>
 #include <QtGui/QFontDatabase>
 #include <QtGui/QTextCursor>
 #include <QtGui/QPainter>
 #include <QtGui/QIcon>
-#include <QtGui/QMenu>
+#include <QMenu>
 #include <QtGui/QMoveEvent>
-#include <QtGui/QTabWidget>
+#include <QTabWidget>
 #include <QtGui/QTextDocument>
 #include <QtGui/QTextBlock>
-#include <QtGui/QToolBar>
-#include <QtGui/QToolButton>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QPushButton>
-#include <QtGui/QDialogButtonBox>
+#include <QToolBar>
+#include <QToolButton>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPushButton>
+#include <QDialogButtonBox>
 
 QT_BEGIN_NAMESPACE
 
@@ -464,7 +464,7 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 
     m_underline_action = createCheckableAction(
 	QIcon(":/ico/32x32/format-text-underline.png"),
-			tr("Texte soulig\351"), editor, SLOT(setFontUnderline(bool)), this);
+			tr("Texte souligé"), editor, SLOT(setFontUnderline(bool)), this);
     m_underline_action->setShortcut(tr("CTRL+U"));
     addAction(m_underline_action);
 
@@ -519,7 +519,7 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 
     // Insert hyperlink and image buttons
 
-	m_link_action->setText(tr("Ins\351rer un lien"));
+	m_link_action->setText(tr("Insérer un lien"));
     connect(m_link_action, SIGNAL(triggered()), SLOT(insertLink()));
     addAction(m_link_action);
 
@@ -731,7 +731,6 @@ void RichTextEditor::setDefaultFont(QFont font)
 QString RichTextEditor::text(Qt::TextFormat format) const
 {
     switch (format) {
-    case Qt::LogText:
     case Qt::PlainText:
         return toPlainText();
     case Qt::RichText:

@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "integrationmoveelementshandler.h"
-#include <QtGui>
+#include <QtWidgets>
 #include "elementscategory.h"
 #include "elementdefinition.h"
 #include "qfilenameedit.h"
@@ -118,14 +118,14 @@ QET::Action IntegrationMoveElementsHandler::askUser(ElementDefinition *src, Elem
 void IntegrationMoveElementsHandler::initDialog() {
 	if (integ_dialog_) return;
 	integ_dialog_ = new QDialog(parent_widget_);
-	integ_dialog_ -> setWindowTitle(tr("Int\351gration d'un \351l\351ment"));
+	integ_dialog_ -> setWindowTitle(tr("Intégration d'un élément"));
 	
 	dialog_label_ = new QLabel(
 		QString(
 			tr(
-				"L'\351l\351ment a d\351j\340 \351t\351 "
-				"int\351gr\351 dans le projet. Toutefois, la version que vous "
-				"tentez de poser semble diff\351rente. Que souhaitez-vous "
+				"L'élément a déjà été "
+				"intégré dans le projet. Toutefois, la version que vous "
+				"tentez de poser semble différente. Que souhaitez-vous "
 				"faire ?",
 				"dialog content - %1 is an element's path name"
 			)
@@ -135,7 +135,7 @@ void IntegrationMoveElementsHandler::initDialog() {
 	use_existing_elmt_ = new QRadioButton(
 		QString(
 			tr(
-				"Utiliser l'\351l\351ment d\351j\340 int\351gr\351",
+				"Utiliser l'élément déjà intégré",
 				"dialog content"
 			)
 		)
@@ -144,7 +144,7 @@ void IntegrationMoveElementsHandler::initDialog() {
 	integrate_new_element_ = new QRadioButton(
 		QString(
 			tr(
-				"Int\351grer l'\351l\351ment d\351pos\351",
+				"Intégrer l'élément déposé",
 				"dialog content"
 			)
 		)
@@ -154,7 +154,7 @@ void IntegrationMoveElementsHandler::initDialog() {
 	erase_element_ = new QRadioButton(
 		QString(
 			tr(
-				"\311craser l'\351l\351ment d\351j\340 int\351gr\351",
+				"Écraser l'élément déjà intégré",
 				"dialog content"
 			)
 		)
@@ -164,7 +164,7 @@ void IntegrationMoveElementsHandler::initDialog() {
 	integrate_both_ = new QRadioButton(
 		QString(
 			tr(
-				"Faire cohabiter les deux \351l\351ments",
+				"Faire cohabiter les deux éléments",
 				"dialog content"
 			)
 		)

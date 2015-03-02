@@ -17,7 +17,7 @@
 */
 #ifndef QET_TAB_BAR_H
 #define QET_TAB_BAR_H
-#include <QtGui>
+#include <QtWidgets>
 #include <QTabBar>
 /**
 	This class provides a tab bar.

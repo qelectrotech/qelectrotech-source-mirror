@@ -42,8 +42,8 @@ IntegrationMoveTitleBlockTemplatesHandler::~IntegrationMoveTitleBlockTemplatesHa
 	@return the action to be done if the target template already exists
 */
 QET::Action IntegrationMoveTitleBlockTemplatesHandler::templateAlreadyExists(const TitleBlockTemplateLocation &src, const TitleBlockTemplateLocation &dst) {
-	QString no_parent_collection_error_message(tr("Impossible d'acc\351der \340 la cat\351gorie parente", "error message"));
-	QString cant_get_xml_description_error_message(tr("Impossible d'obtenir la description XML de ce mod\350le", "error message"));
+	QString no_parent_collection_error_message(tr("Impossible d'accéder à la catégorie parente", "error message"));
+	QString cant_get_xml_description_error_message(tr("Impossible d'obtenir la description XML de ce modèle", "error message"));
 	
 	// we'll need the parent collection of both templates
 	TitleBlockTemplatesCollection *src_tbt_parent_collection = src.parentCollection();
@@ -80,8 +80,8 @@ QET::Action IntegrationMoveTitleBlockTemplatesHandler::templateAlreadyExists(con
 	@param message Error message.
 */
 QET::Action IntegrationMoveTitleBlockTemplatesHandler::errorWithATemplate(const TitleBlockTemplateLocation &tbt, const QString &message) {
-	QString error_message = QString("Une erreur s'est produite avec le mod\350le %1\240: %2").arg(tbt.toString()).arg(message);
-	QET::MessageBox::critical(
+	QString error_message = QString("Une erreur s'est produite avec le modèle %1 : %2").arg(tbt.toString()).arg(message);
+	QET::QetMessageBox::critical(
 		parent_widget_,
 		tr("Erreur", "message box title"),
 		error_message,
@@ -145,14 +145,14 @@ QET::Action IntegrationMoveTitleBlockTemplatesHandler::askUser(const TitleBlockT
 void IntegrationMoveTitleBlockTemplatesHandler::initDialog() {
 	if (integ_dialog_) return;
 	integ_dialog_ = new QDialog(parent_widget_);
-	integ_dialog_ -> setWindowTitle(tr("Int\351gration d'un mod\350le de cartouche"));
+	integ_dialog_ -> setWindowTitle(tr("Intégration d'un modèle de cartouche"));
 	
 	dialog_label_ = new QLabel(
 		QString(
 			tr(
-				"Le mod\350le a d\351j\340 \351t\351 "
-				"int\351gr\351 dans le projet. Toutefois, la version que vous "
-				"tentez d'appliquer semble diff\351rente. Que souhaitez-vous "
+				"Le modèle a déjà été "
+				"intégré dans le projet. Toutefois, la version que vous "
+				"tentez d'appliquer semble différente. Que souhaitez-vous "
 				"faire ?",
 				"dialog content - %1 is a title block template name"
 			)
@@ -162,7 +162,7 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog() {
 	use_existing_template_ = new QRadioButton(
 		QString(
 			tr(
-				"Utiliser le mod\350le d\351j\340 int\351gr\351",
+				"Utiliser le modèle déjà intégré",
 				"dialog content"
 			)
 		)
@@ -171,7 +171,7 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog() {
 	integrate_new_template_ = new QRadioButton(
 		QString(
 			tr(
-				"Int\351grer le mod\350le d\351pos\351",
+				"Intégrer le modèle déposé",
 				"dialog content"
 			)
 		)
@@ -181,7 +181,7 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog() {
 	erase_template_ = new QRadioButton(
 		QString(
 			tr(
-				"\311craser le mod\350le d\351j\340 int\351gr\351",
+				"Écraser le modèle déjà intégré",
 				"dialog content"
 			)
 		)
@@ -191,7 +191,7 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog() {
 	integrate_both_ = new QRadioButton(
 		QString(
 			tr(
-				"Faire cohabiter les deux mod\350les",
+				"Faire cohabiter les deux modèles",
 				"dialog content"
 			)
 		)

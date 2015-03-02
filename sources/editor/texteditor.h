@@ -17,7 +17,7 @@
 */
 #ifndef TEXT_EDITOR_H
 #define TEXT_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 #include "elementitemeditor.h"
 class PartText;
 class QTextOrientationSpinBoxWidget;

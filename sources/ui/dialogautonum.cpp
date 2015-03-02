@@ -61,7 +61,7 @@ void DialogAutoNum::on_pushButton_delete_clicked() {
 		if(i+1 < listDiag.count()) diagramsTitle += ", ";
 	}
 	// Ask if user is sure to delete the conductor numerotation
-	QMessageBox::StandardButton answer = QET::MessageBox::critical(
+	QMessageBox::StandardButton answer = QET::QetMessageBox::critical(
 		this,
 		tr("Suppression des annotations conducteurs", "Attention"),
 		QString(
@@ -94,7 +94,7 @@ void DialogAutoNum::on_pushButton_annotation_clicked(){
 		if(i+1 < listDiag.count()) diagramsTitle += ", ";
 	}
 	// Ask if user is sure to numerate the conductor
-	QET::MessageBox::warning(
+	QET::QetMessageBox::warning(
 		this,
 		tr("Annotation des conducteurs", "Attention"),
 		QString(

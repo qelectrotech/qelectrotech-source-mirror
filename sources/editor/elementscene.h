@@ -17,7 +17,7 @@
 */
 #ifndef ELEMENT_SCENE_H
 #define ELEMENT_SCENE_H
-#include <QtGui>
+#include <QtWidgets>
 #include <QtXml>
 #include "nameslistwidget.h"
 #include "qgimanager.h"
@@ -104,7 +104,7 @@ class ElementScene : public QGraphicsScene {
 	
 	// methods
 	public:
-		void setEventInterface (ESEventInterface *interface);
+		void setEventInterface (ESEventInterface *event_interface);
 		QPointF snapToGrid(QPointF point);
 	void setNames(const NamesList &);
 	NamesList names() const;

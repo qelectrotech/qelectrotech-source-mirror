@@ -17,7 +17,7 @@
 */
 #ifndef CUSTOM_ELEMENT_EDITOR_H
 #define CUSTOM_ELEMENT_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 #include "qetmainwindow.h"
 #include "qet.h"
 #include "elementscene.h"

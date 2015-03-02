@@ -17,7 +17,7 @@
 */
 #ifndef TERMINAL_EDITOR_H
 #define TERMINAL_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 #include "elementitemeditor.h"
 class PartTerminal;
 /**

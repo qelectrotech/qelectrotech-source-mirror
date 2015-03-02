@@ -137,7 +137,7 @@ void MasterPropertiesWidget::buildInterface() {
 		QString widget_text;
 		QString title = elmt->diagram()->title();
 		if (title.isEmpty()) title = tr("Sans titre");
-		widget_text += QString(tr("Folio\240 %1 (%2), position %3.")).arg(elmt->diagram()->folioIndex() + 1)
+		widget_text += QString(tr("Folio  %1 (%2), position %3.")).arg(elmt->diagram()->folioIndex() + 1)
 																	  .arg(title)
 																	  .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
 		QListWidgetItem *lwi_ = new QListWidgetItem(elmt->pixmap(), widget_text);
@@ -151,7 +151,7 @@ void MasterPropertiesWidget::buildInterface() {
 		QString widget_text;
 		QString title = elmt->diagram()->title();
 		if (title.isEmpty()) title = tr("Sans titre");
-		widget_text += QString(tr("Folio\240 %1 (%2), position %3.")).arg(elmt->diagram()->folioIndex() + 1)
+		widget_text += QString(tr("Folio  %1 (%2), position %3.")).arg(elmt->diagram()->folioIndex() + 1)
 																	  .arg(title)
 																	  .arg(elmt->diagram() -> convertPosition(elmt -> scenePos()).toString());
 		QListWidgetItem *lwi_ = new QListWidgetItem(elmt->pixmap(), widget_text);

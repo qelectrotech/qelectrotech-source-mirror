@@ -22,7 +22,7 @@
 #include "conductorpropertieswidget.h"
 #include "diagramcontextwidget.h"
 #include "titleblockpropertieswidget.h"
-#include <QtGui>
+#include <QtWidgets>
 #include "ui/reportpropertiewidget.h"
 #include "ui/xrefpropertieswidget.h"
 #include "selectautonumw.h"
@@ -114,7 +114,7 @@ ProjectMainConfigPage::~ProjectMainConfigPage() {
 	@return the title for this page
 */
 QString ProjectMainConfigPage::title() const {
-	return(tr("G\351n\351ral", "configuration page title"));
+	return(tr("Général", "configuration page title"));
 }
 
 /**
@@ -158,12 +158,12 @@ QString ProjectMainConfigPage::projectTitle() const {
 	Initialize widgets displayed by the page.
 */
 void ProjectMainConfigPage::initWidgets() {
-	title_label_ = new QLabel(tr("Titre du projet\240:", "label when configuring"));
+	title_label_ = new QLabel(tr("Titre du projet :", "label when configuring"));
 	title_value_ = new QLineEdit();
-	title_information_ = new QLabel(tr("Ce titre sera disponible pour tous les sch\351mas de ce projet en tant que %projecttitle.", "informative label"));
+	title_information_ = new QLabel(tr("Ce titre sera disponible pour tous les schémas de ce projet en tant que %projecttitle.", "informative label"));
 	project_variables_label_ = new QLabel(
 		tr(
-			"Vous pouvez d\351finir ci-dessous des propri\351t\351s personnalis\351es qui seront disponibles pour tous les sch\351mas de ce projet (typiquement pour les cartouches).",
+			"Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).",
 			 "informative label"
 		)
 	);
@@ -250,14 +250,14 @@ void ProjectAutoNumConfigPage::applyProjectConf() {}
  * Init some widget of this page
  */
 void ProjectAutoNumConfigPage::initWidgets() {
-	m_label = new QLabel(tr("Num\351rotations disponibles :", "availables numerotations"), this);
+	m_label = new QLabel(tr("Numérotations disponibles :", "availables numerotations"), this);
 
 	m_context_cb = new QComboBox(this);
 	m_context_cb->setEditable(true);
-	m_context_cb->addItem(tr("Nom de la nouvelle num\351rotation"));
+	m_context_cb->addItem(tr("Nom de la nouvelle numérotation"));
 
 	m_remove_pb = new QPushButton(QET::Icons::EditDelete, QString(), this);
-	m_remove_pb -> setToolTip(tr("Supprimer la num\351rotation"));
+	m_remove_pb -> setToolTip(tr("Supprimer la numérotation"));
 
 	m_saw = new SelectAutonumW(this);
 }
@@ -311,7 +311,7 @@ void ProjectAutoNumConfigPage::buildConnections() {
  * @param str, key of context stored in project
  */
 void ProjectAutoNumConfigPage::updateContext(QString str) {
-	if (str == tr("Nom de la nouvelle num\351rotation")) m_saw -> setContext(NumerotationContext());
+	if (str == tr("Nom de la nouvelle numérotation")) m_saw -> setContext(NumerotationContext());
 	else m_saw ->setContext(project_->conductorAutoNum(str));
 }
 
@@ -322,7 +322,7 @@ void ProjectAutoNumConfigPage::updateContext(QString str) {
 void ProjectAutoNumConfigPage::saveContext() {
 	// If the text is the default text "Name of new numerotation" save the edited context
 	// With the the name "No name"
-	if (m_context_cb -> currentText() == tr("Nom de la nouvelle num\351rotation")) {
+	if (m_context_cb -> currentText() == tr("Nom de la nouvelle numérotation")) {
 		project_->addConductorAutoNum (tr("Sans nom"), m_saw -> toNumContext());
 		m_context_cb -> addItem(tr("Sans nom"));
 	}
@@ -343,7 +343,7 @@ void ProjectAutoNumConfigPage::saveContext() {
  */
 void ProjectAutoNumConfigPage::removeContext() {
 	//if default text, return
-	if ( m_context_cb -> currentText() == tr("Nom de la nouvelle num\351rotation") ) return;
+	if ( m_context_cb -> currentText() == tr("Nom de la nouvelle numérotation") ) return;
 	project_     -> removeConductorAutonum (m_context_cb -> currentText() );
 	m_context_cb -> removeItem             (m_context_cb -> currentIndex() );
 }

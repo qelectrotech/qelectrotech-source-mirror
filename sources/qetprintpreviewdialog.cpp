@@ -21,6 +21,9 @@
 #include "exportpropertieswidget.h"
 #include "qeticons.h"
 
+#include <QPrintPreviewWidget>
+#include <QPageSetupDialog>
+
 /**
 	Constructeur
 	@param project Projet a imprimer
@@ -33,7 +36,7 @@ QETPrintPreviewDialog::QETPrintPreviewDialog(QETProject *project, QPrinter *prin
 	project_(project),
 	printer_(printer)
 {
-	setWindowTitle(tr("QElectroTech : Aper\347u avant impression"));
+	setWindowTitle(tr("QElectroTech : Aperçu avant impression"));
 	build();
 	
 	connect(preview_,       SIGNAL(paintRequested(QPrinter *)), this,     SLOT(requestPaint(QPrinter *)));
@@ -90,14 +93,14 @@ void QETPrintPreviewDialog::previousPage() {
 */
 void QETPrintPreviewDialog::nextPage() {
 	int preview_next_page = preview_ -> currentPage() + 1;
-	preview_ -> setCurrentPage(qMin(preview_next_page, preview_ -> numPages()));
+	preview_ -> setCurrentPage(qMin(preview_next_page, preview_ -> pageCount()));
 }
 
 /**
 	Passe a la derniere page
 */
 void QETPrintPreviewDialog::lastPage() {
-	preview_ -> setCurrentPage(preview_ -> numPages());
+	preview_ -> setCurrentPage(preview_ -> pageCount());
 }
 
 /**
@@ -166,26 +169,26 @@ void QETPrintPreviewDialog::selectNoDiagram() {
 */
 void QETPrintPreviewDialog::build() {
 	preview_ = new QPrintPreviewWidget(printer_);
-	diagrams_label_       = new QLabel(tr("Sch\351mas \340 imprimer\240:"));
+	diagrams_label_       = new QLabel(tr("Schémas à imprimer :"));
 	diagrams_list_        = new DiagramsChooser(project_);
 	diagrams_select_all_  = new QPushButton(tr("Tout cocher"));
-	diagrams_select_none_ = new QPushButton(tr("Tout d\351cocher"));
-	toggle_diagrams_list_ = new QAction(QET::Icons::Diagram,              tr("Cacher la liste des sch\351mas"),            this);
+	diagrams_select_none_ = new QPushButton(tr("Tout décocher"));
+	toggle_diagrams_list_ = new QAction(QET::Icons::Diagram,              tr("Cacher la liste des schémas"),            this);
 	toggle_print_options_ = new QAction(QET::Icons::Configure,            tr("Cacher les options d'impression"),           this);
 	adjust_width_         = new QAction(QET::Icons::ViewFitWidth,         tr("Ajuster la largeur"),                        this);
 	adjust_page_          = new QAction(QET::Icons::ViewFitWindow,        tr("Ajuster la page"),                           this);
-	zoom_out_             = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re"),                           this);
+	zoom_out_             = new QAction(QET::Icons::ZoomOut,              tr("Zoom arrière"),                           this);
 	zoom_box_             = new QComboBox(this);
 	zoom_in_              = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant"),                                this);
 	landscape_            = new QAction(QET::Icons::PrintLandscape,       tr("Paysage"),                                   this);
 	portrait_             = new QAction(QET::Icons::PrintPortrait,        tr("Portrait"),                                  this);
-	first_page_           = new QAction(QET::Icons::ArrowLeftDouble,      tr("Premi\350re page"),                          this);
-	previous_page_        = new QAction(QET::Icons::ArrowLeft,            tr("Page pr\351c\351dente"),                     this);
+	first_page_           = new QAction(QET::Icons::ArrowLeftDouble,      tr("Première page"),                          this);
+	previous_page_        = new QAction(QET::Icons::ArrowLeft,            tr("Page précédente"),                     this);
 	next_page_            = new QAction(QET::Icons::ArrowRight,           tr("Page suivante"),                             this);
-	last_page_            = new QAction(QET::Icons::ArrowRightDouble,     tr("Derni\350re page"),                          this);
+	last_page_            = new QAction(QET::Icons::ArrowRightDouble,     tr("Dernière page"),                          this);
 	single_page_view_     = new QAction(QET::Icons::SinglePage,           tr("Afficher une seule page"),                   this);
 	facing_pages_view_    = new QAction(QET::Icons::PrintTwoPages,        tr("Afficher deux pages"),                       this);
-	all_pages_view_       = new QAction(QET::Icons::PrintAllPages,        tr("Afficher un aper\347u de toutes les pages"), this);
+	all_pages_view_       = new QAction(QET::Icons::PrintAllPages,        tr("Afficher un aperçu de toutes les pages"), this);
 	page_setup_           = new QAction(QET::Icons::DocumentPrintFrame,   tr("Mise en page"),                              this);
 	
 	toggle_diagrams_list_ -> setCheckable(true);
@@ -235,16 +238,16 @@ void QETPrintPreviewDialog::build() {
 	use_full_page_ = new QCheckBox(tr("Utiliser toute la feuille"));
 	use_full_page_ -> setChecked(printer_ -> fullPage());
 	use_full_page_label_ = new QLabel(tr(
-		"Si cette option est coch\351e, les marges de la feuille seront "
-		"ignor\351es et toute sa surface sera utilis\351e pour l'impression. "
-		"Cela peut ne pas \352tre support\351 par votre imprimante."
+		"Si cette option est cochée, les marges de la feuille seront "
+		"ignorées et toute sa surface sera utilisée pour l'impression. "
+		"Cela peut ne pas être supporté par votre imprimante."
 	));
 	use_full_page_label_ -> setWordWrap(true);
 	use_full_page_label_ -> setContentsMargins(20, 0, 0, 0);
-	fit_diagram_to_page_ = new QCheckBox(tr("Adapter le sch\351ma \340 la page"));
+	fit_diagram_to_page_ = new QCheckBox(tr("Adapter le schéma à la page"));
 	fit_diagram_to_page_label_ = new QLabel(tr(
-		"Si cette option est coch\351e, le sch\351ma sera agrandi ou "
-		"r\351tr\351ci de fa\347on \340 remplir toute la surface imprimable "
+		"Si cette option est cochée, le schéma sera agrandi ou "
+		"rétréci de façon à remplir toute la surface imprimable "
 		"d'une et une seule page."
 	));
 	fit_diagram_to_page_label_ -> setWordWrap(true);
@@ -360,9 +363,9 @@ void QETPrintPreviewDialog::setDiagramsListVisible(bool display) {
 	diagrams_select_none_ -> setVisible(display);
 	
 	if (display) {
-		toggle_diagrams_list_ -> setText(tr("Cacher la liste des sch\351mas"));
+		toggle_diagrams_list_ -> setText(tr("Cacher la liste des schémas"));
 	} else {
-		toggle_diagrams_list_ -> setText(tr("Afficher la liste des sch\351mas"));
+		toggle_diagrams_list_ -> setText(tr("Afficher la liste des schémas"));
 	}
 }
 

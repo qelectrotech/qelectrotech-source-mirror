@@ -28,13 +28,14 @@
 	@param scene La scene sur laquelle figure ce champ de texte
 */
 PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
-	QGraphicsTextItem(parent, scene),
+	QGraphicsTextItem(parent),
 	CustomElementPart(editor),
 	follow_parent_rotations(true),
 	m_tagg("none"),
 	previous_text(),
 	decorator_(0)
 {
+	Q_UNUSED(scene);
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	real_font_size_ = font().pointSize();

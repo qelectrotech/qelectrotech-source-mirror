@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "interactivemoveelementshandler.h"
-#include <QtGui>
+#include <QtWidgets>
 #include "elementscategory.h"
 #include "elementdefinition.h"
 #include "qfilenameedit.h"
@@ -68,7 +68,7 @@ QET::Action InteractiveMoveElementsHandler::categoryAlreadyExists(ElementsCatego
 	QLabel *question_label = new QLabel(
 		QString(
 			tr(
-				"La cat\351gorie \253\240%1\240\273 (%2) existe d\351j\340. "
+				"La catégorie « %1 » (%2) existe déjà. "
 				"Que souhaitez-vous faire ?",
 				"dialog content"
 			)
@@ -116,7 +116,7 @@ QET::Action InteractiveMoveElementsHandler::elementAlreadyExists(ElementDefiniti
 	QLabel *question_label = new QLabel(
 		QString(
 			tr(
-				"L'\351l\351ment \253\240%1\240\273 existe d\351j\340. "
+				"L'élément « %1 » existe déjà. "
 				"Que souhaitez-vous faire ?",
 				"dialog content"
 			)
@@ -149,7 +149,7 @@ QET::Action InteractiveMoveElementsHandler::elementAlreadyExists(ElementDefiniti
 	@return QET::Retry, QET::Ignore ou QET::Abort
 */
 QET::Action InteractiveMoveElementsHandler::categoryIsNotReadable(ElementsCategory *category) {
-	QString message = QString(tr("La cat\351gorie %1 n'est pas accessible en lecture.", "message box content")).arg(category -> location().toString());
+	QString message = QString(tr("La catégorie %1 n'est pas accessible en lecture.", "message box content")).arg(category -> location().toString());
 	return(retryErrorMessage(message));
 }
 
@@ -159,7 +159,7 @@ QET::Action InteractiveMoveElementsHandler::categoryIsNotReadable(ElementsCatego
 	@return QET::Retry, QET::Ignore ou QET::Abort
 */
 QET::Action InteractiveMoveElementsHandler::elementIsNotReadable(ElementDefinition *element) {
-	QString message = QString(tr("L'\351l\351ment %1 n'est pas accessible en lecture.", "message box content")).arg(element -> location().toString());
+	QString message = QString(tr("L'élément %1 n'est pas accessible en lecture.", "message box content")).arg(element -> location().toString());
 	return(retryErrorMessage(message));
 }
 
@@ -169,7 +169,7 @@ QET::Action InteractiveMoveElementsHandler::elementIsNotReadable(ElementDefiniti
 	@return QET::Retry, QET::Ignore ou QET::Abort
 */
 QET::Action InteractiveMoveElementsHandler::categoryIsNotWritable(ElementsCategory *category) {
-	QString message = QString(tr("La cat\351gorie %1 n'est pas accessible en \351criture.", "message box content")).arg(category -> location().toString());
+	QString message = QString(tr("La catégorie %1 n'est pas accessible en écriture.", "message box content")).arg(category -> location().toString());
 	return(retryErrorMessage(message));
 }
 
@@ -179,7 +179,7 @@ QET::Action InteractiveMoveElementsHandler::categoryIsNotWritable(ElementsCatego
 	@return QET::Retry, QET::Ignore ou QET::Abort
 */
 QET::Action InteractiveMoveElementsHandler::elementIsNotWritable(ElementDefinition *element) {
-	QString message = QString(tr("L'\351l\351ment %1 n'est pas accessible en \351criture.", "message box content")).arg(element -> location().toString());
+	QString message = QString(tr("L'élément %1 n'est pas accessible en écriture.", "message box content")).arg(element -> location().toString());
 	return(retryErrorMessage(message));
 }
 
@@ -191,7 +191,7 @@ QET::Action InteractiveMoveElementsHandler::elementIsNotWritable(ElementDefiniti
 */
 QET::Action InteractiveMoveElementsHandler::errorWithACategory(ElementsCategory *category, const QString &message) {
 	QString category_location = category -> location().toString();
-	QString error_message = QString("Une erreur s'est produite avec la cat\351gorie %1\240: %2").arg(category_location).arg(message);
+	QString error_message = QString("Une erreur s'est produite avec la catégorie %1 : %2").arg(category_location).arg(message);
 	simpleErrorMessage(error_message);
 	return(QET::Ignore);
 }
@@ -204,7 +204,7 @@ QET::Action InteractiveMoveElementsHandler::errorWithACategory(ElementsCategory 
 */
 QET::Action InteractiveMoveElementsHandler::errorWithAnElement(ElementDefinition *element, const QString &message) {
 	QString element_location = element -> location().toString();
-	QString error_message = QString("Une erreur s'est produite avec l'\351l\351ment %1\240: %2").arg(element_location).arg(message);
+	QString error_message = QString("Une erreur s'est produite avec l'élément %1 : %2").arg(element_location).arg(message);
 	simpleErrorMessage(error_message);
 	return(QET::Ignore);
 }
@@ -240,8 +240,8 @@ void InteractiveMoveElementsHandler::initConflictDialog() {
 	
 	// initialisation des boutons
 	rename_button_     = new QPushButton(tr("Renommer"));
-	erase_button_      = new QPushButton(tr("\311craser"));
-	erase_all_button_  = new QPushButton(tr("\311craser tout"));
+	erase_button_      = new QPushButton(tr("Écraser"));
+	erase_all_button_  = new QPushButton(tr("Écraser tout"));
 	ignore_button_     = new QPushButton(tr("Ignorer"));
 	ignore_all_button_ = new QPushButton(tr("Ignorer tout"));
 	abort_button_      = new QPushButton(tr("Annuler"));
@@ -357,7 +357,7 @@ QWidget *InteractiveMoveElementsHandler::conflictDialogMainWidget() const {
 	@return L'action choisie par l'utilisateur
 */
 QET::Action InteractiveMoveElementsHandler::retryErrorMessage(const QString &message) const {
-	int todo = QET::MessageBox::critical(
+	int todo = QET::QetMessageBox::critical(
 		parent_widget_,
 		tr("Erreur", "message box title"),
 		message,
@@ -379,7 +379,7 @@ QET::Action InteractiveMoveElementsHandler::retryErrorMessage(const QString &mes
 	@param message Message d'erreur a afficher
 */
 void InteractiveMoveElementsHandler::simpleErrorMessage(const QString &message) const {
-	QET::MessageBox::critical(
+	QET::QetMessageBox::critical(
 		parent_widget_,
 		tr("Erreur", "message box title"),
 		message,

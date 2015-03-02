@@ -91,7 +91,7 @@ void XRefPropertiesWidget::buildUi() {
 	ui -> m_type_cb -> addItem(tr("Bobine"),			   "coil");
 	ui -> m_type_cb -> addItem(tr("Organe de protection"), "protection");
 	ui -> m_snap_to_cb -> addItem(tr("En bas de page"),					  "bottom");
-	ui -> m_snap_to_cb -> addItem(tr("Sous le label de l'\351l\351ment"), "label");
+	ui -> m_snap_to_cb -> addItem(tr("Sous le label de l'élément"), "label");
 	m_previous_type_index = ui -> m_type_cb -> currentIndex();
 }
 

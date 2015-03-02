@@ -133,21 +133,21 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 			break;
 			//help dialog
 		case QDialogButtonBox::HelpRole:
-			QMessageBox::information (this, tr("Autonum\351rotation", "title window"),
-																	tr("C'est ici que vous pouvez d\351finir la mani\350re dont sera num\351rot\351 les nouveaux conducteurs.\n"
-																	   "-Une num\351rotation est compos\351e d'une variable minimum.\n"
-																	   "-Vous pouvez ajouter ou supprimer une variable de num\351rotation par le biais des boutons - et +.\n"
-																	   "-Une variable de num\351rotation comprant: un type, une valeur et une incr\351mentation.\n"
+			QMessageBox::information (this, tr("Autonumérotation", "title window"),
+																	tr("C'est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.\n"
+																	   "-Une numérotation est composée d'une variable minimum.\n"
+																	   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
+																	   "-Une variable de numérotation comprant: un type, une valeur et une incrémentation.\n"
 
-																	   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", repr\351sente un type num\351rique d\351finie dans le champs \"Valeur\", "
-																	   "qui s'incr\351mente \340 chaque nouveau conducteur de la valeur du champ \"Incr\351mentation\".\n"
-																	   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement repr\351sent\351 sur le sch\351ma par deux et trois digits minimum.\n"
-																	   "Si le chiffre d\351finie dans le champs Valeur poss\351de moins de digits que le type choisit,"
-																	   "celui-ci sera pr\351c\351d\351 par un ou deux 0 afin de respecter son type.\n"
+																	   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représente un type numérique définie dans le champs \"Valeur\", "
+																	   "qui s'incrémente à chaque nouveau conducteur de la valeur du champ \"Incrémentation\".\n"
+																	   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représenté sur le schéma par deux et trois digits minimum.\n"
+																	   "Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,"
+																	   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
 
-																	   "\n-Le type \"Texte\", repr\351sente un texte fixe.\nLe champs \"Incr\351mentation\" n'est pas utilis\351.\n"
+																	   "\n-Le type \"Texte\", représente un texte fixe.\nLe champs \"Incrémentation\" n'est pas utilisé.\n"
 
-																	   "\n-Le type \"N\260 folio\" repr\351sente le n\260 du folio en cours.\nLes autres champs ne sont pas utilis\351s.",
+																	   "\n-Le type \"N° folio\" représente le n° du folio en cours.\nLes autres champs ne sont pas utilisés.",
 																	   "help dialog about the autonumerotation"));
 
 			//apply the context in the diagram displayed by @diagram_chooser.

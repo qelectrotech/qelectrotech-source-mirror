@@ -31,10 +31,10 @@ ElementsCategoriesWidget::ElementsCategoriesWidget(QWidget *parent) : QWidget(pa
 	elementscategorieslist = new ElementsCategoriesList(false, QET::All, this);
 	
 	// actions
-	action_reload = new QAction(QET::Icons::ViewRefresh,    tr("Recharger les cat\351gories"), this);
-	action_new    = new QAction(QET::Icons::FolderNew,    tr("Nouvelle cat\351gorie"),       this);
-	action_open   = new QAction(QET::Icons::FolderEdit,   tr("\311diter la cat\351gorie"),   this);
-	action_delete = new QAction(QET::Icons::FolderDelete, tr("Supprimer la cat\351gorie"),   this);
+	action_reload = new QAction(QET::Icons::ViewRefresh,    tr("Recharger les catégories"), this);
+	action_new    = new QAction(QET::Icons::FolderNew,    tr("Nouvelle catégorie"),       this);
+	action_open   = new QAction(QET::Icons::FolderEdit,   tr("Éditer la catégorie"),   this);
+	action_delete = new QAction(QET::Icons::FolderDelete, tr("Supprimer la catégorie"),   this);
 	
 	// initialise la barre d'outils
 	toolbar = new QToolBar(this);

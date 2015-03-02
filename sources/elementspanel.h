@@ -17,7 +17,7 @@
 */
 #ifndef PANELAPPAREILS_H
 #define PANELAPPAREILS_H
-#include <QtGui>
+#include <QtWidgets>
 #include "genericpanel.h"
 #include "elementslocation.h"
 #include "templatelocation.h"

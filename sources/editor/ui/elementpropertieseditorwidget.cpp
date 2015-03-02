@@ -71,20 +71,20 @@ void ElementPropertiesEditorWidget::upDateInterface() {
 void ElementPropertiesEditorWidget::setUpInterface() {
 	// Type combo box
 	ui -> m_base_type_cb -> addItem (tr("Simple"),							QVariant("simple"));
-	ui -> m_base_type_cb -> addItem (tr("Ma\356tre"),						QVariant("master"));
+	ui -> m_base_type_cb -> addItem (tr("Maître"),						QVariant("master"));
 	ui -> m_base_type_cb -> addItem (tr("Esclave"),							QVariant("slave"));
 	ui -> m_base_type_cb -> addItem (tr("Renvoi de folio suivant"),			QVariant("next_report"));
-	ui -> m_base_type_cb -> addItem (tr("Renvoi de folio pr\351c\351dent"), QVariant("previous_report"));
+	ui -> m_base_type_cb -> addItem (tr("Renvoi de folio précédent"), QVariant("previous_report"));
 	ui -> m_base_type_cb -> addItem (tr("Bornier"),                         QVariant("terminal"));
 
 	// Slave option
 	ui -> m_state_cb -> addItem(tr("Normalement ouvert"),   QVariant("NO"));
-	ui -> m_state_cb -> addItem(tr("Normalement ferm\351"), QVariant("NC"));
+	ui -> m_state_cb -> addItem(tr("Normalement fermé"), QVariant("NC"));
 	ui -> m_state_cb -> addItem(tr("Inverseur"),			QVariant("SW"));
 	ui -> m_type_cb  -> addItem(tr("Simple"),				QVariant("simple"));
 	ui -> m_type_cb  -> addItem(tr("Puissance"),			QVariant("power"));
-	ui -> m_type_cb  -> addItem(tr("Temporis\351 travail"), QVariant("delayOn"));
-	ui -> m_type_cb  -> addItem(tr("Temporis\351 repos"),	QVariant("delayOff"));
+	ui -> m_type_cb  -> addItem(tr("Temporisé travail"), QVariant("delayOn"));
+	ui -> m_type_cb  -> addItem(tr("Temporisé repos"),	QVariant("delayOff"));
 
 	//Master option
 	ui -> m_master_type_cb -> addItem(tr("Bobine"),				  QVariant("coil"));

@@ -35,7 +35,7 @@ namespace QET {
 		QIcon ConductorSettings;
 		QIcon Configure;
 		QIcon ConfigureToolbars;
-		QIcon CopyFile;
+		QIcon IC_CopyFile;
 		QIcon DefaultConductor;
 		QIcon DiagramAdd;
 		QIcon Diagram;
@@ -99,7 +99,7 @@ namespace QET {
 		QIcon HotSpot;
 		QIcon InsertImage;
 		QIcon Lower;
-		QIcon MoveFile;
+		QIcon IC_MoveFile;
 		QIcon Names;
 		QIcon Neutral;
 		QIcon NewDiagram;
@@ -208,7 +208,7 @@ void QET::Icons::initIcons() {
 	Configure           .addFile(":/ico/22x22/configure.png");
 	ConfigureToolbars   .addFile(":/ico/16x16/configure-toolbars.png");
 	ConfigureToolbars   .addFile(":/ico/22x22/configure-toolbars.png");
-	CopyFile            .addFile(":/ico/16x16/item_copy.png");
+	IC_CopyFile            .addFile(":/ico/16x16/item_copy.png");
 	DefaultConductor    .addFile(":/ico/22x22/conductor3.png");
 	DiagramAdd          .addFile(":/ico/22x22/diagram_add.png");
 	Diagram             .addFile(":/ico/diagram.png");
@@ -329,7 +329,7 @@ void QET::Icons::initIcons() {
 	HotSpot             .addFile(":/ico/22x22/hotspot.png");
 	InsertImage         .addFile(":/ico/22x22/insert-image.png");
 	Lower               .addFile(":/ico/22x22/lower.png");
-	MoveFile            .addFile(":/ico/16x16/item_move.png");
+	IC_MoveFile            .addFile(":/ico/16x16/item_move.png");
 	Names               .addFile(":/ico/22x22/names.png");
 	Neutral             .addFile(":/ico/16x16/neutral.png");
 	NewDiagram          .addFile(":/ico/128x128/diagram.png");

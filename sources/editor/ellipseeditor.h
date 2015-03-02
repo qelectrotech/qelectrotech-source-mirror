@@ -17,7 +17,7 @@
 */
 #ifndef ELLIPSE_EDITOR_H
 #define ELLIPSE_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 #include "elementitemeditor.h"
 class PartEllipse;
 class StyleEditor;

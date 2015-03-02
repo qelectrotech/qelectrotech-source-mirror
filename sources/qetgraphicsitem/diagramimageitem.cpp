@@ -108,7 +108,7 @@ void DiagramImageItem::editProperty() {
 
 	//the dialog
 	QDialog property_dialog(diagram()->views().at(0));
-	property_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'une image", "window title"));
+	property_dialog.setWindowTitle(tr("Éditer les propriétés d'une image", "window title"));
 	//the main layout
 	QVBoxLayout dialog_layout(&property_dialog);
 
@@ -201,7 +201,7 @@ bool DiagramImageItem::fromXml(const QDomElement &e) {
 
 	//load xml image to QByteArray
 	QByteArray array;
-	array = QByteArray::fromBase64(e.text().toAscii());
+	array = QByteArray::fromBase64(e.text().toLatin1());
 
 	//Set QPixmap from the @array
 	QPixmap pixmap;

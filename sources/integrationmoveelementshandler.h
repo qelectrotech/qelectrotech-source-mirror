@@ -18,7 +18,7 @@
 #ifndef INTEGRATION_MOVE_ELEMENTS_HANDLER_H
 #define INTEGRATION_MOVE_ELEMENTS_HANDLER_H
 #include "basicmoveelementshandler.h"
-#include <QtGui>
+#include <QtWidgets>
 /**
 	This class implements the MoveElementsHandler Strategy class.
 	It acts like a BasiMoveElementsHandler configured to answer QET::Abort to any question.

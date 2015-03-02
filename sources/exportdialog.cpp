@@ -57,7 +57,7 @@ ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(paren
 	// la taille minimale du dialogue est fixee
 	setMinimumSize(800, 390);
 	resize(minimumSize());
-	setWindowTitle(tr("Exporter les sch\351mas du projet", "window title"));
+	setWindowTitle(tr("Exporter les schémas du projet", "window title"));
 
 	// options d'export, dans le widget epw
 	epw = new ExportPropertiesWidget(default_export_properties);
@@ -72,11 +72,11 @@ ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(paren
 	// disposition des elements
 
 	QHBoxLayout *hLayout = new QHBoxLayout();
-	hLayout -> addWidget(new QLabel(tr("Choisissez les sch\351mas que vous d\351sirez exporter ainsi que leurs dimensions :")));
+	hLayout -> addWidget(new QLabel(tr("Choisissez les schémas que vous désirez exporter ainsi que leurs dimensions :")));
 	selectAll   = new QPushButton();
 	deSelectAll = new QPushButton();
 	selectAll   -> setText(tr("Tout cocher"));
-	deSelectAll -> setText(tr("Tout d\351cocher"));
+	deSelectAll -> setText(tr("Tout décocher"));
 	hLayout -> addWidget(selectAll);
 	hLayout -> addWidget(deSelectAll);
 	connect(selectAll,   SIGNAL(clicked()),            this, SLOT(slot_selectAllClicked()));
@@ -138,7 +138,7 @@ QWidget *ExportDialog::initDiagramsListPart() {
 	diagrams_list_layout_ = new QGridLayout();
 	
 	int line_count = 0;
-	diagrams_list_layout_ -> addWidget(new QLabel(tr("Sch\351ma")),        line_count, 1, Qt::AlignHCenter | Qt::AlignVCenter);
+	diagrams_list_layout_ -> addWidget(new QLabel(tr("Schéma")),        line_count, 1, Qt::AlignHCenter | Qt::AlignVCenter);
 	diagrams_list_layout_ -> addWidget(new QLabel(tr("Nom de fichier")),   line_count, 2, Qt::AlignHCenter | Qt::AlignVCenter);
 	diagrams_list_layout_ -> addWidget(new QLabel(tr("Dimensions")),       line_count, 3, Qt::AlignHCenter | Qt::AlignVCenter);
 	
@@ -764,12 +764,12 @@ void ExportDialog::slot_export() {
 		}
 	}
 	if (filenames.count() != diagrams_to_export.count()) {
-		QET::MessageBox::warning(
+		QET::QetMessageBox::warning(
 			this,
 			tr("Noms des fichiers cibles", "message box title"),
 			tr(
 				"Vous devez entrer un nom de fichier non vide et unique pour chaque "
-				"sch\351ma \340 exporter.",
+				"schéma à exporter.",
 				"message box content"
 			)
 		);
@@ -780,10 +780,10 @@ void ExportDialog::slot_export() {
 	
 	QDir target_dir_path(epw -> exportProperties().destination_directory);
 	if (!target_dir_path.exists()) {
-		QET::MessageBox::warning(
+		QET::QetMessageBox::warning(
 			this,
-			tr("Dossier non sp\351cifi\351", "message box title"),
-			tr("Vous devez sp\351cifier le chemin du dossier dans lequel seront enregistr\351s les fichiers images.", "message box content"),
+			tr("Dossier non spécifié", "message box title"),
+			tr("Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.", "message box content"),
 			QMessageBox::Ok
 		);
 		return;
@@ -822,13 +822,13 @@ void ExportDialog::exportDiagram(ExportDiagramLine *diagram_line) {
 	
 	// verifie qu'il est possible d'ecrire dans le fichier en question
 	if (file_infos.exists() && !file_infos.isWritable()) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
-			tr("Impossible d'\351crire dans ce fichier", "message box title"),
+			tr("Impossible d'écrire dans ce fichier", "message box title"),
 			QString(
 				tr(
 					"Il semblerait que vous n'ayez pas les permissions "
-					"n\351cessaires pour \351crire dans le fichier %1.",
+					"nécessaires pour écrire dans le fichier %1.",
 					"message box content"
 				)
 			).arg(diagram_path),
@@ -942,7 +942,7 @@ void ExportDialog::slot_previewDiagram(int diagram_id) {
 	
 	// initialise un dialogue
 	QDialog preview_dialog;
-	preview_dialog.setWindowTitle(tr("Aper\347u"));
+	preview_dialog.setWindowTitle(tr("Aperçu"));
 	preview_dialog.setWindowState(preview_dialog.windowState() | Qt::WindowMaximized);
 	
 	QGraphicsScene *preview_scene = new QGraphicsScene();
@@ -1031,7 +1031,7 @@ ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia, QSize diagram_s
 	
 	// titre et nom de fichier du schema
 	QString diagram_title = diagram -> title();
-	if (diagram_title.isEmpty()) diagram_title = QObject::tr("Sch\351ma sans titre");
+	if (diagram_title.isEmpty()) diagram_title = QObject::tr("Schéma sans titre");
 	QString diagram_filename = diagram -> title();
 	if (diagram_filename.isEmpty()) diagram_filename = QObject::tr("schema");
 	diagram_filename = QET::stringToFileName(diagram_filename);
@@ -1062,14 +1062,14 @@ ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia, QSize diagram_s
 	
 	reset_size = new QPushButton();
 	reset_size -> setIcon(QET::Icons::Start);
-	reset_size -> setToolTip(QObject::tr("R\351initialiser les dimensions"));
+	reset_size -> setToolTip(QObject::tr("Réinitialiser les dimensions"));
 	
 	preview = new QPushButton();
 	preview -> setIcon(QET::Icons::ZoomOriginal);
-	preview -> setToolTip(QObject::tr("Aper\347u"));
+	preview -> setToolTip(QObject::tr("Aperçu"));
 	
 	clipboard = new QPushButton();
-	clipboard -> setIcon(QET::Icons::CopyFile);
+	clipboard -> setIcon(QET::Icons::IC_CopyFile);
 	clipboard -> setToolTip(QObject::tr("Exporter vers le presse-papier"));
 }
 

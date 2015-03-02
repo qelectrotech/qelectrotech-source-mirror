@@ -17,7 +17,7 @@
 */
 #ifndef STYLE_EDITOR_H
 #define STYLE_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 #include "elementitemeditor.h"
 class CustomElementGraphicPart;
 /**

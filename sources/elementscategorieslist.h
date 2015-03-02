@@ -17,7 +17,7 @@
 */
 #ifndef ELEMENTS_CATEGORIES_LIST_H
 #define ELEMENTS_CATEGORIES_LIST_H
-#include <QtGui>
+#include <QtWidgets>
 #include "qet.h"
 #include "elementslocation.h"
 #include "genericpanel.h"

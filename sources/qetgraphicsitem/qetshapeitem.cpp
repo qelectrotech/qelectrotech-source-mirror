@@ -361,7 +361,7 @@ void QetShapeItem::editProperty()
 
 	//the dialog
 	QDialog property_dialog(diagram()->views().at(0));
-	property_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'une shape, Zone ", "window title"));
+	property_dialog.setWindowTitle(tr("Éditer les propriétés d'une shape, Zone ", "window title"));
 	//the main layout
 	QVBoxLayout dialog_layout(&property_dialog);
 
@@ -373,7 +373,7 @@ void QetShapeItem::editProperty()
 	QComboBox style_combo(&property_dialog);
 	style_combo.addItem(QObject::tr("Normal"));
 	style_combo.addItem(QObject::tr("Tiret"));
-	style_combo.addItem(QObject::tr("Pointill\351"));
+	style_combo.addItem(QObject::tr("Pointillé"));
 	style_combo.addItem(QObject::tr("Traits et points"));
 	style_combo.addItem(QObject::tr("Traits points points"));
 
@@ -388,7 +388,7 @@ void QetShapeItem::editProperty()
 	dialog_layout.addWidget(&cb);
 
 	//GroupBox for Scaling
-	QGroupBox scale_groupe(QObject::tr("\311chelle", "shape scale"));
+	QGroupBox scale_groupe(QObject::tr("Échelle", "shape scale"));
 	dialog_layout.addWidget(&scale_groupe);
 	QHBoxLayout scale_layout(&scale_groupe);
 
@@ -449,7 +449,7 @@ QString QetShapeItem::name() const {
 			return tr("un rectangle");
 			break;
 		case Ellipse:
-			return tr("une \351llipse");
+			return tr("une éllipse");
 			break;
 		case Polyline:
 			return tr("une polyligne");

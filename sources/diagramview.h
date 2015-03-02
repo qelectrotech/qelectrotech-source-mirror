@@ -17,7 +17,7 @@
 */
 #ifndef DIAGRAMVIEW_H
 #define DIAGRAMVIEW_H
-#include <QtGui>
+#include <QtWidgets>
 #include "elementslocation.h"
 #include "templatelocation.h"
 
@@ -71,7 +71,7 @@ class DiagramView : public QGraphicsView {
 	bool hasCopiableItems();
 	bool hasDeletableItems();
 	void editSelection();
-	void setEventInterface (DVEventInterface *interface);
+	void setEventInterface (DVEventInterface *event_interface);
 	
 	protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent *);

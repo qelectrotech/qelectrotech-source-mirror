@@ -236,7 +236,7 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 	QString text;
 	if (elements_count) {
 		text += QObject::tr(
-			"%n \351l\351ment(s)",
+			"%n élément(s)",
 			"part of a sentence listing the content of a diagram",
 			elements_count
 		);
@@ -359,11 +359,11 @@ QString QET::license() {
 	QString txt_license;
 	// verifie que le fichier existe
 	if (!file_license -> exists()) {
-		txt_license = QString(QObject::tr("Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute fa\347on, vous la connaissez par coeur non ?"));
+		txt_license = QString(QObject::tr("Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?"));
 	} else {
 		// ouvre le fichier en mode texte et en lecture seule
 		if (!file_license -> open(QIODevice::ReadOnly | QIODevice::Text)) {
-			txt_license = QString(QObject::tr("Le fichier texte contenant la licence GNU/GPL existe mais n'a pas pu \352tre ouvert - bon bah de toute fa\347on, vous la connaissez par coeur non ?"));
+			txt_license = QString(QObject::tr("Le fichier texte contenant la licence GNU/GPL existe mais n'a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?"));
 		} else {
 			// charge le contenu du fichier dans une QString
 			QTextStream in(file_license);
@@ -602,7 +602,7 @@ bool QET::compareCanonicalFilePaths(const QString &first, const QString &second)
 	QString second_canonical_path = QFileInfo(second).canonicalFilePath();
 	if (second_canonical_path.isEmpty()) return(false);
 	
-#ifdef Q_WS_WIN
+#ifdef Q_OS_WIN
 	// sous Windows, on ramene les chemins en minuscules
 	first_canonical_path  = first_canonical_path.toLower();
 	second_canonical_path = second_canonical_path.toLower();
@@ -642,7 +642,7 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 		if (error_message) {
 			*error_message = QString(
 				QObject::tr(
-					"Impossible d'ouvrir le fichier %1 en \351criture, erreur %2 rencontr\351e.",
+					"Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
 					"error message when attempting to write an XML file"
 				)
 			).arg(filepath).arg(file.error());

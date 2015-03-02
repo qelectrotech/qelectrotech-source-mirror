@@ -17,7 +17,7 @@
 */
 #ifndef DIAGRAMS_CHOOSER_H
 #define DIAGRAMS_CHOOSER_H
-#include <QtGui>
+#include <QtWidgets>
 class QETProject;
 class Diagram;
 /**

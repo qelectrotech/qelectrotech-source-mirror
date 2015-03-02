@@ -17,7 +17,7 @@
 */
 #ifndef PROJECT_VIEW_H
 #define PROJECT_VIEW_H
-#include <QtGui>
+#include <QtWidgets>
 #include "templatelocation.h"
 #include "qetresult.h"
 class QETProject;

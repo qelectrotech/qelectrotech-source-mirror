@@ -42,10 +42,10 @@ ElementsCategoryEditor::ElementsCategoryEditor(const ElementsLocation &category_
 	if (category_item) category_item = category_item -> toCategory();
 	
 	if (!category_item || !category_item -> isCategory()) {
-		QET::MessageBox::warning(
+		QET::QetMessageBox::warning(
 			this,
-			tr("Cat\351gorie inexistante", "message box title"),
-			tr("La cat\351gorie demand\351e n'existe pas. Abandon.", "message box content")
+			tr("Catégorie inexistante", "message box title"),
+			tr("La catégorie demandée n'existe pas. Abandon.", "message box content")
 		);
 		return;
 	} else {
@@ -53,7 +53,7 @@ ElementsCategoryEditor::ElementsCategoryEditor(const ElementsLocation &category_
 	}
 	
 	if (mode_edit) {
-		setWindowTitle(tr("\311diter une cat\351gorie", "window title"));
+		setWindowTitle(tr("Éditer une catégorie", "window title"));
 		connect(buttons, SIGNAL(accepted()), this, SLOT(acceptUpdate()));
 		
 		// edition de categorie = affichage des noms deja existants
@@ -61,21 +61,21 @@ ElementsCategoryEditor::ElementsCategoryEditor(const ElementsLocation &category_
 		internal_name_ -> setText(category -> pathName());
 		internal_name_ -> setReadOnly(true);
 	} else {
-		setWindowTitle(tr("Cr\351er une nouvelle cat\351gorie", "window title"));
+		setWindowTitle(tr("Créer une nouvelle catégorie", "window title"));
 		connect(buttons, SIGNAL(accepted()), this, SLOT(acceptCreation()));
 		
 		// nouvelle categorie = une ligne pre-machee
 		NamesList cat_names;
-		cat_names.addName(QLocale::system().name().left(2), tr("Nom de la nouvelle cat\351gorie", "default name when creating a new category"));
+		cat_names.addName(QLocale::system().name().left(2), tr("Nom de la nouvelle catégorie", "default name when creating a new category"));
 		names_list -> setNames(cat_names);
 	}
 	
 	// gestion de la lecture seule
 	if (!category -> isWritable()) {
-		QET::MessageBox::warning(
+		QET::QetMessageBox::warning(
 			this,
-			tr("\311dition en lecture seule", "message box title"),
-			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cette cat\351gorie. Elle sera donc ouverte en lecture seule.", "message box content")
+			tr("Édition en lecture seule", "message box title"),
+			tr("Vous n'avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.", "message box content")
 		);
 		names_list -> setReadOnly(true);
 		internal_name_ -> setReadOnly(true);
@@ -107,7 +107,7 @@ void ElementsCategoryEditor::buildDialog() {
 	internal_name_layout -> addWidget(internal_name_);
 	
 	editor_layout -> addLayout(internal_name_layout);
-	editor_layout -> addWidget(new QLabel(tr("Vous pouvez sp\351cifier un nom par langue pour la cat\351gorie.")));
+	editor_layout -> addWidget(new QLabel(tr("Vous pouvez spécifier un nom par langue pour la catégorie.")));
 	editor_layout -> addWidget(names_list);
 	editor_layout -> addWidget(buttons);
 }
@@ -124,10 +124,10 @@ void ElementsCategoryEditor::acceptCreation() {
 	
 	// exige un nom de dossier de la part de l'utilisateur
 	if (!internal_name_ -> isValid()) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
 			tr("Nom interne manquant", "message box title"),
-			tr("Vous devez sp\351cifier un nom interne.", "message box content")
+			tr("Vous devez spécifier un nom interne.", "message box content")
 		);
 		return;
 	}
@@ -135,12 +135,12 @@ void ElementsCategoryEditor::acceptCreation() {
 	
 	// verifie que le nom interne n'est pas deja pris
 	if (category -> category(dirname)) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
-			tr("Nom interne d\351j\340 utilis\351", "message box title"),
+			tr("Nom interne déjà utilisé", "message box title"),
 			tr(
-				"Le nom interne que vous avez choisi est d\351j\340 utilis\351 "
-				"par une cat\351gorie existante. Veuillez en choisir un autre.",
+				"Le nom interne que vous avez choisi est déjà utilisé "
+				"par une catégorie existante. Veuillez en choisir un autre.",
 				"message box content"
 			)
 		);
@@ -150,10 +150,10 @@ void ElementsCategoryEditor::acceptCreation() {
 	// cree la nouvelle categorie
 	ElementsCategory *new_category = category -> createCategory(dirname);
 	if (!new_category) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
-			tr("Impossible de cr\351er la cat\351gorie", "message box content")
+			tr("Impossible de créer la catégorie", "message box content")
 		);
 		return;
 	}
@@ -166,10 +166,10 @@ void ElementsCategoryEditor::acceptCreation() {
 	
 	// ecriture de la 
 	if (!new_category -> write()) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
-			tr("Impossible d'enregistrer la cat\351gorie", "message box content")
+			tr("Impossible d'enregistrer la catégorie", "message box content")
 		);
 		return;
 	}

@@ -17,7 +17,7 @@
 */
 #ifndef TITLEBLOCK_SLASH_TEMPLATE_LOGO_MANAGER
 #define TITLEBLOCK_SLASH_TEMPLATE_LOGO_MANAGER
-#include <QtGui>
+#include <QtWidgets>
 class TitleBlockTemplate;
 
 /**

@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementdialog.h"
-#include <QtGui>
+#include <QtWidgets>
 #include "qetapp.h"
 #include "elementscategorieslist.h"
 #include "elementscollectionitem.h"
@@ -41,7 +41,7 @@ ElementDialog::ElementDialog(uint mode, QWidget *parentWidget, QObject *parent) 
 {
 	dialog_  = new QDialog(parentWidget);
 	dialog_ -> setWindowModality(Qt::WindowModal);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	dialog_ -> setWindowFlags(Qt::Sheet);
 #endif
 	buttons_ = new QDialogButtonBox();
@@ -60,17 +60,17 @@ ElementDialog::ElementDialog(uint mode, QWidget *parentWidget, QObject *parent) 
 	
 	// titre et label
 	if (!mode) {
-		title_ = tr("Ouvrir un \351l\351ment", "dialog title");
-		label_ = tr("Choisissez l'\351l\351ment que vous souhaitez ouvrir.", "dialog content");
+		title_ = tr("Ouvrir un élément", "dialog title");
+		label_ = tr("Choisissez l'élément que vous souhaitez ouvrir.", "dialog content");
 	} else if (mode == 1) {
-		title_ = tr("Enregistrer un \351l\351ment", "dialog title");
-		label_ = tr("Choisissez l'\351l\351ment dans lequel vous souhaitez enregistrer votre d\351finition.", "dialog content");
+		title_ = tr("Enregistrer un élément", "dialog title");
+		label_ = tr("Choisissez l'élément dans lequel vous souhaitez enregistrer votre définition.", "dialog content");
 	} else if (mode == 2) {
-		title_ = tr("Ouvrir une cat\351gorie", "dialog title");
-		label_ = tr("Choisissez une cat\351gorie.", "dialog content");
+		title_ = tr("Ouvrir une catégorie", "dialog title");
+		label_ = tr("Choisissez une catégorie.", "dialog content");
 	} else {
-		title_ = tr("Enregistrer une cat\351gorie", "dialog title");
-		label_ = tr("Choisissez une cat\351gorie.", "dialog content");
+		title_ = tr("Enregistrer une catégorie", "dialog title");
+		label_ = tr("Choisissez une catégorie.", "dialog content");
 	}
 	
 	// mode ouverture / enregistrement
@@ -240,10 +240,10 @@ void ElementDialog::checkDialog() {
 		// on verifie d'abord que l'utilisateur a choisi quelque chose
 		ElementsLocation location = list_ -> selectedLocation();
 		if (location.isNull()) {
-			QET::MessageBox::critical(
+			QET::QetMessageBox::critical(
 				dialog_,
-				tr("Pas de s\351lection", "message box title"),
-				tr("Vous devez s\351lectionner un \351l\351ment.", "message box content")
+				tr("Pas de sélection", "message box title"),
+				tr("Vous devez sélectionner un élément.", "message box content")
 			);
 			return;
 		}
@@ -251,20 +251,20 @@ void ElementDialog::checkDialog() {
 		// on verifie donc que la selection existe
 		ElementsCollectionItem *item = QETApp::collectionItem(location);
 		if (!item) {
-			QET::MessageBox::critical(
+			QET::QetMessageBox::critical(
 				dialog_,
-				tr("S\351lection inexistante", "message box title"),
-				tr("La s\351lection n'existe pas.", "message box content")
+				tr("Sélection inexistante", "message box title"),
+				tr("La sélection n'existe pas.", "message box content")
 			);
 			return;
 		}
 		
 		// puis on verifie qu'il s'agit bien d'un element
 		if (!item -> isElement()) {
-			QET::MessageBox::critical(
+			QET::QetMessageBox::critical(
 				dialog_,
-				tr("S\351lection incorrecte", "message box title"),
-				tr("La s\351lection n'est pas un \351l\351ment.", "message box content")
+				tr("Sélection incorrecte", "message box title"),
+				tr("La sélection n'est pas un élément.", "message box content")
 			);
 			return;
 		}
@@ -278,10 +278,10 @@ void ElementDialog::checkDialog() {
 		*/
 		ElementsLocation location = list_ -> selectedLocation();
 		if (location.isNull()) {
-			QET::MessageBox::critical(
+			QET::QetMessageBox::critical(
 				dialog_,
-				tr("Pas de s\351lection", "message box title"),
-				tr("Vous devez s\351lectionner une cat\351gorie ou un \351l\351ment.", "message box content")
+				tr("Pas de sélection", "message box title"),
+				tr("Vous devez sélectionner une catégorie ou un élément.", "message box content")
 			);
 			return;
 		}
@@ -289,10 +289,10 @@ void ElementDialog::checkDialog() {
 		// on verifie donc que la selection existe
 		ElementsCollectionItem *item = QETApp::collectionItem(location);
 		if (!item) {
-			QET::MessageBox::critical(
+			QET::QetMessageBox::critical(
 				dialog_,
-				tr("S\351lection inexistante", "message box title"),
-				tr("La s\351lection n'existe pas.", "message box content")
+				tr("Sélection inexistante", "message box title"),
+				tr("La sélection n'existe pas.", "message box content")
 			);
 			return;
 		}
@@ -302,23 +302,23 @@ void ElementDialog::checkDialog() {
 			QString element_name(textfield_ -> text());
 			// si on a une categorie (ou une collection), il nous faut un nom d'element
 			if (element_name.isEmpty()) {
-				QET::MessageBox::critical(
+				QET::QetMessageBox::critical(
 					dialog_,
 					tr("Nom manquant", "message box title"),
-					tr("Vous devez entrer un nom pour l'\351l\351ment", "message box content")
+					tr("Vous devez entrer un nom pour l'élément", "message box content")
 				);
 				return;
 			}
 			
 			// ce nom d'element doit etre valide
 			if (QET::containsForbiddenCharacters(element_name)) {
-				QET::MessageBox::critical(
+				QET::QetMessageBox::critical(
 					dialog_,
 					tr("Nom invalide", "message box title"),
 					QString(
 						tr(
-							"Vous ne pouvez pas utiliser les caract\350res "
-							"suivants dans le nom de l'\351l\351ment : %1"
+							"Vous ne pouvez pas utiliser les caractères "
+							"suivants dans le nom de l'élément : %1"
 						)
 					).arg(QET::forbiddenCharactersString(true))
 				);
@@ -340,10 +340,10 @@ void ElementDialog::checkDialog() {
 		
 		// si l'element existe, on demande confirmation pour son ecrasement
 		if (element_already_exists) {
-			QMessageBox::StandardButton answer = QET::MessageBox::question(
+			QMessageBox::StandardButton answer = QET::QetMessageBox::question(
 				dialog_,
-				tr("\311craser l'\351l\351ment ?", "message box title"),
-				tr("L'\351l\351ment existe d\351j\340. Voulez-vous l'\351craser ?", "message box content"),
+				tr("Écraser l'élément ?", "message box title"),
+				tr("L'élément existe déjà. Voulez-vous l'écraser ?", "message box content"),
 				QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 				QMessageBox::No
 			);

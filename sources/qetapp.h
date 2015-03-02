@@ -19,7 +19,7 @@
 #define QET_APP_H
 #include "qetsingleapplication.h"
 #include <QTranslator>
-#include <QtGui>
+#include <QtWidgets>
 #include "elementslocation.h"
 #include "templatelocation.h"
 #include "qetarguments.h"
@@ -236,18 +236,19 @@ class QETApp : public QETSingleApplication {
 	static QETProject *projectFromString(const QString &);
 };
 
-/**
-	This class represents the custom QElectroTech style.
-	It implements simple modification such as extra standard icons.
-*/
-class QETStyle : public QPlastiqueStyle {
-	Q_OBJECT
-	public:
-	QETStyle();
-	virtual ~QETStyle();
-	virtual int styleHint(StyleHint hint, const QStyleOption * = 0, const QWidget * = 0, QStyleHintReturn * = 0) const;
+//TODO remove code below
+///**
+//	This class represents the custom QElectroTech style.
+//	It implements simple modification such as extra standard icons.
+//*/
+//class QETStyle : public QPlastiqueStyle {
+//	Q_OBJECT
+//	public:
+//	QETStyle();
+//	virtual ~QETStyle();
+//	virtual int styleHint(StyleHint hint, const QStyleOption * = 0, const QWidget * = 0, QStyleHintReturn * = 0) const;
 	
-	protected slots:
-	virtual QIcon standardIconImplementation(StandardPixmap, const QStyleOption * = 0, const QWidget * = 0) const;
-};
+//	protected slots:
+//	virtual QIcon standardIconImplementation(StandardPixmap, const QStyleOption * = 0, const QWidget * = 0) const;
+//};
 #endif

@@ -45,7 +45,7 @@ QETSingleApplication::QETSingleApplication(int &argc, char **argv, const QString
 		
 		// initialisation du segment de memoire partage
 		if (!shared_memory_.create(1)) {
-			qDebug() << "QETSingleApplication::QETSingleApplication() : Impossible de cr\351er l'instance unique" << qPrintable(unique_key_);
+			qDebug() << "QETSingleApplication::QETSingleApplication() : Impossible de créer l'instance unique" << qPrintable(unique_key_);
 			return;
 		}
 #endif

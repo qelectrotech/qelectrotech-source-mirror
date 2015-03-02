@@ -17,12 +17,16 @@
 */
 #ifndef QET_PRINT_PREVIEW_DIALOG
 #define QET_PRINT_PREVIEW_DIALOG
-#include <QtGui>
+#include <QtWidgets>
 #include "exportproperties.h"
+
 class Diagram;
 class DiagramsChooser;
 class ExportPropertiesWidget;
 class QETProject;
+class QPrintPreviewWidget;
+class QPrinter;
+
 /**
 	This class provides a dialog for users to refine printing options for a
 	particular project by relying on a visual print preview.

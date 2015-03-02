@@ -17,7 +17,7 @@
 */
 #ifndef TITLEBLOCK_SLASH_GRID_LAYOUT_ANIMATION_H
 #define TITLEBLOCK_SLASH_GRID_LAYOUT_ANIMATION_H
-#include <QtGui>
+#include <QtWidgets>
 
 /**
 	This class allows animating a dimension change for a QGraphicsGridLayout

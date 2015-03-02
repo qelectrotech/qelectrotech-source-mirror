@@ -40,7 +40,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	line_style = new QComboBox(this);
 	line_style -> addItem(tr("Normal",       "element part line style"), CustomElementGraphicPart::NormalStyle);
 	line_style -> addItem(tr("Tiret",        "element part line style"), CustomElementGraphicPart::DashedStyle);
-	line_style -> addItem(tr("Pointill\351", "element part line style"), CustomElementGraphicPart::DottedStyle);
+	line_style -> addItem(tr("Pointillé", "element part line style"), CustomElementGraphicPart::DottedStyle);
 	line_style -> addItem(tr("Traits et points", "element part line style"), CustomElementGraphicPart::DashdottedStyle);
 	//normal_style -> setChecked(true);
 	
@@ -50,7 +50,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	size_weight -> addItem(tr("Fine", "element part weight"),  CustomElementGraphicPart::ThinWeight);
 	size_weight -> addItem(tr("Normale", "element part weight"),  CustomElementGraphicPart::NormalWeight);
 	size_weight -> addItem(tr("Forte", "element part weight"),  CustomElementGraphicPart::UltraWeight);
-	size_weight -> addItem(tr("\311lev\351", "element part weight"),  CustomElementGraphicPart::BigWeight);
+	size_weight -> addItem(tr("Élevé", "element part weight"),  CustomElementGraphicPart::BigWeight);
 
 	// remplissage
 	filling_color = new QComboBox (this);
@@ -83,14 +83,14 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	style_layout -> addWidget(new QLabel(tr("Style : ")), 0, Qt::AlignRight);
 	style_layout -> addWidget(line_style);
 	style_layout -> addSpacing(10);
-	style_layout -> addWidget(new QLabel(tr("\311paisseur : ")), 0, Qt::AlignRight);
+	style_layout -> addWidget(new QLabel(tr("Épaisseur : ")), 0, Qt::AlignRight);
 	style_layout -> addWidget(size_weight);
 	main_layout -> addLayout(style_layout);
 
 	main_layout -> addWidget(antialiasing);
 
 	main_layout -> addSpacing(10);
-	main_layout -> addWidget(new QLabel("<u>" + tr("G\351om\351trie :") + "</u> "));
+	main_layout -> addWidget(new QLabel("<u>" + tr("Géométrie :") + "</u> "));
 	main_layout -> addStretch();
 	setLayout(main_layout);
 }

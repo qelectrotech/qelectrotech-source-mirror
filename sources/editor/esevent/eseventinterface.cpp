@@ -109,12 +109,14 @@ void ESEventInterface::updateHelpCross(const QPointF &p) {
 		pen.setCosmetic(true);
 		pen.setColor(Qt::darkGray);
 		if (!m_help_horiz) {
-			m_help_horiz = new QGraphicsLineItem(-10000, 0, 10000, 0, 0, m_scene);
+			m_help_horiz = new QGraphicsLineItem(-10000, 0, 10000, 0);
 			m_help_horiz -> setPen(pen);
+			m_scene -> addItem(m_help_horiz);
 		}
 		if (!m_help_verti) {
-			m_help_verti = new QGraphicsLineItem(0, -10000, 0, 10000, 0, m_scene);
+			m_help_verti = new QGraphicsLineItem(0, -10000, 0, 10000);
 			m_help_verti -> setPen(pen);
+			m_scene -> addItem(m_help_verti);
 		}
 	}
 

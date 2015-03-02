@@ -17,7 +17,7 @@
 */
 #ifndef QET_DIAGRAM_EDITOR_H
 #define QET_DIAGRAM_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 #include "qetmainwindow.h"
 
 class QETProject;

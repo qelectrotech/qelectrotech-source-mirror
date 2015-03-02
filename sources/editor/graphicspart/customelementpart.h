@@ -17,7 +17,7 @@
 */
 #ifndef CUSTOM_ELEMENT_PART_H
 #define CUSTOM_ELEMENT_PART_H
-#include <QtGui>
+#include <QtWidgets>
 #include <QtXml>
 #include <QImage>
 #include "qet.h"

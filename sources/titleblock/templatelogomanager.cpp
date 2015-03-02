@@ -19,6 +19,8 @@
 #include "titleblocktemplate.h"
 #include "qeticons.h"
 
+#include <QStandardPaths>
+
 /**
 	Constructor
 	@param managed_template Title block template this widget manages logos for.
@@ -70,12 +72,12 @@ void TitleBlockTemplateLogoManager::emitLogosChangedSignal() {
 	Initialize widgets composing the Logo manager
 */
 void TitleBlockTemplateLogoManager::initWidgets() {
-	open_dialog_dir_ = QDesktopServices::storageLocation(QDesktopServices::DesktopLocation);
+	open_dialog_dir_ = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 	
 	setWindowTitle(tr("Gestionnaire de logos"));
 	setWindowIcon(QET::Icons::InsertImage);
 	setWindowFlags(Qt::Dialog);
-	logos_label_ = new QLabel(tr("Logos embarqu\351s dans ce mod\350le :"));
+	logos_label_ = new QLabel(tr("Logos embarqués dans ce modèle :"));
 	logos_view_ = new QListWidget();
 	logos_view_ -> setViewMode(QListView::IconMode);
 	logos_view_ -> setGridSize(iconsize() * 1.4);
@@ -87,7 +89,7 @@ void TitleBlockTemplateLogoManager::initWidgets() {
 	add_button_ = new QPushButton(QET::Icons::Add, tr("Ajouter un logo"));
 	export_button_ = new QPushButton(QET::Icons::DocumentExport, tr("Exporter ce logo"));
 	delete_button_ = new QPushButton(QET::Icons::Remove, tr("Supprimer ce logo"));
-	logo_box_ = new QGroupBox(tr("Propri\351t\351s"));
+	logo_box_ = new QGroupBox(tr("Propriétés"));
 	logo_name_label_ = new QLabel(tr("Nom :"));
 	logo_name_ = new QLineEdit();
 	rename_button_ = new QPushButton(QET::Icons::EditRename, tr("Renommer"));
@@ -185,7 +187,7 @@ QString TitleBlockTemplateLogoManager::confirmLogoName(const QString &initial_na
 	while (managed_template_ -> logos().contains(name)) {
 		if (!rename_dialog) {
 			rename_dialog = new QDialog(this);
-			rename_dialog -> setWindowTitle(tr("Logo d\351j\340 existant"));
+			rename_dialog -> setWindowTitle(tr("Logo déjà existant"));
 			
 			rd_label = new QLabel();
 			rd_label -> setWordWrap(true);
@@ -212,9 +214,9 @@ QString TitleBlockTemplateLogoManager::confirmLogoName(const QString &initial_na
 		}
 		rd_label -> setText(
 			QString(tr(
-				"Il existe d\351j\340 un logo portant le nom \"%1\" au sein de "
-				"ce mod\350le de cartouche. Voulez-vous le remplacer ou "
-				"pr\351f\351rez-vous sp\351cifier un autre nom pour ce nouveau "
+				"Il existe déjà un logo portant le nom \"%1\" au sein de "
+				"ce modèle de cartouche. Voulez-vous le remplacer ou "
+				"préférez-vous spécifier un autre nom pour ce nouveau "
 				"logo ?"
 			)).arg(name)
 		);
@@ -273,7 +275,7 @@ void TitleBlockTemplateLogoManager::addLogo() {
 	// that filepath needs to point to a valid, readable file
 	QFileInfo filepath_info(filepath);
 	if (!filepath_info.exists() || !filepath_info.isReadable()) {
-		QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'ouvrir le fichier sp\351cifi\351"));
+		QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'ouvrir le fichier spécifié"));
 		return;
 	}
 	
@@ -305,7 +307,7 @@ void TitleBlockTemplateLogoManager::exportLogo() {
 	
 	bool save_logo = managed_template_ -> saveLogoToFile(current_logo, filepath);
 	if (!save_logo) {
-		QMessageBox::critical(this, tr("Erreur"), QString(tr("Impossible d'exporter vers le fichier sp\351cifi\351")));
+		QMessageBox::critical(this, tr("Erreur"), QString(tr("Impossible d'exporter vers le fichier spécifié")));
 	} else {
 		open_dialog_dir_ = QDir(filepath);
 	}
@@ -346,7 +348,7 @@ void TitleBlockTemplateLogoManager::renameLogo() {
 		QMessageBox::warning(
 			this,
 			warning_title,
-			tr("Le nouveau nom ne peut pas \352tre vide.")
+			tr("Le nouveau nom ne peut pas être vide.")
 		);
 		return;
 	}
@@ -355,7 +357,7 @@ void TitleBlockTemplateLogoManager::renameLogo() {
 		QMessageBox::warning(
 			this,
 			warning_title,
-			tr("Le nom saisi est d\351j\340 utilis\351 par un autre logo.")
+			tr("Le nom saisi est déjà utilisé par un autre logo.")
 		);
 		return;
 	}

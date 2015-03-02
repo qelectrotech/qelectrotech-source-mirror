@@ -127,7 +127,7 @@ QString TitleBlockCell::attributeName(const QString &attribute) {
 	} else if (attribute == "displaylabel") {
 		return(QObject::tr("affichage du label", "title block cell property human name"));
 	} else if (attribute == "value") {
-		return(QObject::tr("valeur affich\351e", "title block cell property human name"));
+		return(QObject::tr("valeur affichée", "title block cell property human name"));
 	} else if (attribute == "alignment") {
 		return(QObject::tr("alignement du texte", "title block cell property human name"));
 	} else if (attribute == "fontsize") {

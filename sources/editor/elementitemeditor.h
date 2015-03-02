@@ -17,7 +17,7 @@
 */
 #ifndef ELEMENT_ITEM_EDITOR_H
 #define ELEMENT_ITEM_EDITOR_H
-#include <QtGui>
+#include <QtWidgets>
 class QETElementEditor;
 class ElementScene;
 class CustomElementPart;

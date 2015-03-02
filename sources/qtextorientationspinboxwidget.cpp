@@ -104,7 +104,7 @@ void QTextOrientationSpinBoxWidget::build() {
 	
 	spin_box_ = new QDoubleSpinBox();
 	spin_box_ -> setRange(-360.0, 360.0);
-	spin_box_ -> setSuffix("\260");
+	spin_box_ -> setSuffix("°");
 	
 	// met en place les relations entre le SpinBox et le QTextOrientationWidget
 	connect(spin_box_,           SIGNAL(valueChanged(double)),       orientation_widget_, SLOT(setOrientation(double)));

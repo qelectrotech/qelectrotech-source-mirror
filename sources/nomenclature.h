@@ -18,7 +18,7 @@
 #ifndef NOMENCLATURE_H
 #define NOMENCLATURE_H
 
-#include <QtGui>
+#include <QtWidgets>
 
 #include "qetproject.h"
 #include "diagram.h"

@@ -32,7 +32,7 @@ ChangeElementInformationCommand::ChangeElementInformationCommand(Element *elmt, 
 	m_old_info   (old_info),
 	m_new_info   (new_info)
 {
-	setText(QObject::tr("Modifier les informations de l'\351l\351ment : %1").arg(elmt -> name()));
+	setText(QObject::tr("Modifier les informations de l'élément : %1").arg(elmt -> name()));
 }
 
 /**

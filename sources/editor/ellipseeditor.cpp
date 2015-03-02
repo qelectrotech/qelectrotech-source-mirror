@@ -49,7 +49,7 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 	grid -> addWidget(x,                                 1, 1);
 	grid -> addWidget(new QLabel("y"),                   1, 2);
 	grid -> addWidget(y,                                 1, 3);
-	grid -> addWidget(new QLabel(tr("Diam\350tres : ")), 2, 0);
+	grid -> addWidget(new QLabel(tr("Diamètres : ")), 2, 0);
 	grid -> addWidget(new QLabel(tr("horizontal :")),    3, 0);
 	grid -> addWidget(h,                                 3, 1);
 	grid -> addWidget(new QLabel(tr("vertical :")),      4, 0);
@@ -111,11 +111,11 @@ void EllipseEditor::updateEllipse() {
 /// Met a jour l'abscisse du centre de l'ellipse et cree un objet d'annulation
 void EllipseEditor::updateEllipseX() { addChangePartCommand(tr("abscisse"),               part, "centerX",           x -> value());       }
 /// Met a jour l'ordonnee du centre de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseY() { addChangePartCommand(tr("ordonn\351e"),            part, "centerY",           y -> value());       }
+void EllipseEditor::updateEllipseY() { addChangePartCommand(tr("ordonnée"),            part, "centerY",           y -> value());       }
 /// Met a jour le diametre horizontal de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseH() { addChangePartCommand(tr("diam\350tre horizontal"), part, "diameter_h",  h -> value());       }
+void EllipseEditor::updateEllipseH() { addChangePartCommand(tr("diamètre horizontal"), part, "diameter_h",  h -> value());       }
 /// Met a jour le diametre vertical de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseV() { addChangePartCommand(tr("diam\350tre vertical"),   part, "diameter_v",  v -> value());       }
+void EllipseEditor::updateEllipseV() { addChangePartCommand(tr("diamètre vertical"),   part, "diameter_v",  v -> value());       }
 
 /**
 	Met a jour le formulaire d'edition

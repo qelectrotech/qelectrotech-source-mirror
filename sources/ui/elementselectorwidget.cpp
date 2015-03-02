@@ -168,7 +168,7 @@ void ElementSelectorWidget::buildInterface() {
 						str_list << c->properties().text;
 
 					if (QET::eachStrIsEqual(str_list)) {
-						button_text = tr("N\260 fil : ") + str_list.first() + "\n";
+						button_text = tr("N° fil : ") + str_list.first() + "\n";
 							//Replace the last empty string by the conductor text
 						in_filter.pop_back();
 						in_filter  << str_list.first();
@@ -194,7 +194,7 @@ void ElementSelectorWidget::buildInterface() {
 
 			//Push button to highlight element
 		QPushButton *pb = new QPushButton(QET::Icons::ZoomDraw,"", widget);
-		pb -> setToolTip(tr("Voir l'\351l\351ment"));
+		pb -> setToolTip(tr("Voir l'élément"));
 
 		QHBoxLayout *hl = new QHBoxLayout(widget);
 		hl -> setContentsMargins(0,0,0,0);

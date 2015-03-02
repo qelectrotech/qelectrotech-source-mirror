@@ -15,7 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QtGui>
+#include <QtWidgets>
 #include "qettabwidget.h"
 #include "aboutqet.h"
 #include "qet.h"
@@ -27,14 +27,14 @@
 */
 AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	// Titre, taille, comportement...
-	setWindowTitle(tr("\300 propos de QElectrotech", "window title"));
+	setWindowTitle(tr("À propos de QElectrotech", "window title"));
 	setMinimumWidth(680);
 	setMinimumHeight(690);
 	setModal(true);
 	
 	// Trois onglets
 	QETTabWidget *tabs = new QETTabWidget(this);
-	tabs -> addTab(aboutTab(),        tr("\300 &propos",       "tab title"));
+	tabs -> addTab(aboutTab(),        tr("À &propos",          "tab title"));
 	tabs -> addTab(authorsTab(),      tr("A&uteurs",           "tab title"));
 	tabs -> addTab(translatorsTab(),  tr("&Traducteurs",       "tab title"));
 	tabs -> addTab(contributorsTab(), tr("&Contributeurs",     "tab title"));
@@ -91,13 +91,13 @@ QWidget *AboutQET::title() const {
 */
 QWidget *AboutQET::aboutTab() const {
 	QLabel *about = new QLabel(
-		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.", "about tab, description line") +
+		tr("QElectroTech, une application de réalisation de schémas électriques.", "about tab, description line") +
 		"<br><br>" +
-		tr("\251 2006-2014 Les d\351veloppeurs de QElectroTech", "about tab, developers line") +
+		tr("2006-2015 Les développeurs de QElectroTech", "about tab, developers line") +
 		"<br><br>"
 		"<a href=\"http://qelectrotech.org/\">http://qelectrotech.org/</a>"
 		"<br><br>" +
-		tr("Contact\240: <a href=\"mailto:qet@lists.tuxfamily.org\">qet@lists.tuxfamily.org</a>", "about tab, contact line")
+		tr("Contact : <a href=\"mailto:qet@lists.tuxfamily.org\">qet@lists.tuxfamily.org</a>", "about tab, contact line")
 	);
 	about -> setAlignment(Qt::AlignCenter);
 	about -> setOpenExternalLinks(true);
@@ -110,10 +110,10 @@ QWidget *AboutQET::aboutTab() const {
 */
 QWidget *AboutQET::authorsTab() const {
 	QLabel *authors = new QLabel();
-	addAuthor(authors, "Beno\356t Ansieau",  "benoit@qelectrotech.org",     tr("Id\351e originale"));
-	addAuthor(authors, "Laurent Trinques",   "scorpio@qelectrotech.org",    tr("D\351veloppement"));
-	addAuthor(authors, "Joshua Claveau",     "Joshua@qelectrotech.org",     tr("D\351veloppement"));
-	addAuthor(authors, "Abhishek Bansal",    "abhishek@qelectrotech.org",   tr("D\351veloppement"));
+	addAuthor(authors, "Benoît Ansieau",     "benoit@qelectrotech.org",     tr("Idée originale"));
+	addAuthor(authors, "Laurent Trinques",   "scorpio@qelectrotech.org",    tr("Développement"));
+	addAuthor(authors, "Joshua Claveau",     "Joshua@qelectrotech.org",     tr("Développement"));
+	addAuthor(authors, "Abhishek Bansal",    "abhishek@qelectrotech.org",   tr("Développement"));
 
 
 	authors -> setOpenExternalLinks(true);
@@ -133,8 +133,8 @@ QWidget *AboutQET::translatorsTab() const {
 	
 	addAuthor(translators, "Alfredo Carreto",            "electronicos_mx@yahoo.com.mx",tr("Traduction en espagnol"));
 	addAuthor(translators, "Yuriy Litkevich",            "yuriy@qelectrotech.org",      tr("Traduction en russe"));
-	addAuthor(translators, "Jos\351 Carlos Martins",     "jose@qelectrotech.org",       tr("Traduction en portugais"));
-	addAuthor(translators, "Pavel Fric",                 "pavelfric@seznam.cz",         tr("Traduction en tch\350que"));
+	addAuthor(translators, "José Carlos Martins",        "jose@qelectrotech.org",       tr("Traduction en portugais"));
+	addAuthor(translators, "Pavel Fric",                 "pavelfric@seznam.cz",         tr("Traduction en tchèque"));
 	addAuthor(translators, "Pawe&#x0142; &#x015A;miech", "pawel32640@gmail.com",        tr("Traduction en polonais"));
 	addAuthor(translators, "Markus Budde",               "markus.budde@msn.com",        tr("Traduction en allemand"));
 	addAuthor(translators, "Jonas Stein",                "news@jonasstein.de",          tr("Traduction en allemand"));
@@ -145,10 +145,10 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Silvio",                     "silvio@qelectrotech.org",     tr("Traduction en italien"));
 	addAuthor(translators, "Mohamed Souabni",            "souabnimohamed@yahoo.fr",     tr("Traduction en arabe"));
 	addAuthor(translators, "Antun Marakovi&#x0107;",     "antun.marakovic@lolaribar.hr",tr("Traduction en croate"));
-	addAuthor(translators, "Eduard Amor\363s",           "amoros@marmenuda.com",        tr("Traduction en catalan"));
+	addAuthor(translators, "Eduard Amorós",              "amoros@marmenuda.com",        tr("Traduction en catalan"));
 	addAuthor(translators, "Nikos Papadopoylos",         "231036448@freemail.gr",       tr("Traduction en grec"));
 	addAuthor(translators, "Yannis Gyftomitros",         "yang@hellug.gr",              tr("Traduction en grec"));
-	addAuthor(translators, "Paul Van Deelen",            "shooter@home.nl",             tr("Traduction en n\351erlandais"));
+	addAuthor(translators, "Paul Van Deelen",            "shooter@home.nl",             tr("Traduction en néerlandais"));
 	addAuthor(translators, "Ronny Desmedt",              "r.desmedt@live.be",           tr("Traduction en flamand"));
 
 
@@ -178,12 +178,12 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "zloidemon",            "",                           tr("Paquets FreeBSD"));
 	addAuthor(contributors, "Yoann Varenne",        "yoann@tuxfamily.org",        tr("Paquets MAC OS X"));
 	addAuthor(contributors, "Chipsterjulien",       "",                           tr("Paquets Archlinux AUR"));
-	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
-	addAuthor(contributors, "Cyril Frausti",       "cyril@qelectrotech.org",      tr("D\351veloppement"));
+	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Icônes"));
+	addAuthor(contributors, "Cyril Frausti",       "cyril@qelectrotech.org",      tr("Développement"));
 	addAuthor(contributors, "Arun Kishore Eswara", "eswara.arun@gmail.com",       tr("Documentation"));
-	addAuthor(contributors, "Ren\351 Negre",       "runsys@qelectrotech.org",     tr("D\351veloppement"));
-	addAuthor(contributors, "Ronny Desmedt",       "r.desmedt@live.be",           tr("D\351veloppement"));
-	addAuthor(contributors, "Nuri",                "nuri@qelectrotech.org",       tr("Collection d'\351l\351ments"));
+	addAuthor(contributors, "René Negre",          "runsys@qelectrotech.org",     tr("Développement"));
+	addAuthor(contributors, "Ronny Desmedt",       "r.desmedt@live.be",           tr("Développement"));
+	addAuthor(contributors, "Nuri",                "nuri@qelectrotech.org",       tr("Collection d'éléments"));
 
 	
 	contributors -> setOpenExternalLinks(true);

@@ -39,7 +39,7 @@ Element::Element(QGraphicsItem *parent) :
 	uuid_ = QUuid::createUuid();
 	setZValue(10);
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-	setAcceptsHoverEvents(true);
+	setAcceptHoverEvents(true);
 }
 
 /**
@@ -83,7 +83,7 @@ void Element::setHighlighted(bool hl) {
 */
 void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget) {
 	
-#ifndef Q_WS_WIN
+#ifndef Q_OS_WIN
 	// corrige un bug de rendu ne se produisant que lors du rendu sur QGraphicsScene sous X11 au zoom par defaut
 	static bool must_correct_rendering_bug = QETApp::settings().value("correct-rendering", false).toBool();
 	if (must_correct_rendering_bug) {
@@ -256,6 +256,7 @@ void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *o
 	QPen t;
 	t.setColor(Qt::gray);
 	t.setStyle(Qt::DashDotLine);
+	t.setCosmetic(true);
 	painter -> setPen(t);
 	// Le dessin se fait a partir du rectangle delimitant
 	painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);

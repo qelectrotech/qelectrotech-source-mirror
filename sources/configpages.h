@@ -17,7 +17,7 @@
 */
 #ifndef CONFIG_PAGES_H
 #define CONFIG_PAGES_H
-#include <QtGui>
+#include <QtWidgets>
 #include "configpage.h"
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;

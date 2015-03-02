@@ -17,7 +17,7 @@
 */
 #ifndef PART_TEXT_H
 #define PART_TEXT_H
-#include <QtGui>
+#include <QtWidgets>
 #include "customelementpart.h"
 #include "qetapp.h"
 class TextEditor;

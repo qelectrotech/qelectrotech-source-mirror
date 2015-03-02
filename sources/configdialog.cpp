@@ -54,7 +54,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));
 	connect(pages_list, SIGNAL(currentRowChanged(int)), pages_widget, SLOT(setCurrentIndex(int)));
 	
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	if (parent) {
 		setWindowFlags(Qt::Sheet);
 	}

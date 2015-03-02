@@ -17,7 +17,7 @@
 */
 #ifndef TITLEBLOCK_SLASH_LOCATION_CHOOSER_H
 #define TITLEBLOCK_SLASH_LOCATION_CHOOSER_H
-#include <QtGui>
+#include <QtWidgets>
 #include "templatelocation.h"
 class TitleBlockTemplateCollection;
 

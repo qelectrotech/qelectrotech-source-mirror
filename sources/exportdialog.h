@@ -17,7 +17,7 @@
 */
 #ifndef EXPORTDIALOG_H
 #define EXPORTDIALOG_H
-#include <QtGui>
+#include <QtWidgets>
 #include "diagram.h"
 #include "qetproject.h"
 class QSvgGenerator;

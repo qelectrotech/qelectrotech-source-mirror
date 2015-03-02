@@ -39,14 +39,14 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 {
 	setOptions(options() & ~QWizard::NoCancelButton);
 
-#ifdef Q_WS_WIN
+#ifdef Q_OS_WIN
 	setWizardStyle(QWizard::AeroStyle);
-#elif defined(Q_WS_MAC)
+#elif defined(Q_OS_MAC)
 	setWizardStyle(QWizard::MacStyle);
 #endif
 
 	setPixmap(LogoPixmap, QPixmap(":/ico/256x256/qelectrotech.png").scaled(64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-	setWindowTitle(tr("Cr\351er un nouvel \351l\351ment : Assistant", "window title"));
+	setWindowTitle(tr("Créer un nouvel élément : Assistant", "window title"));
 	setButtonText(QWizard::NextButton, tr("&Suivant >"));
 	addPage(buildStep1());
 	addPage(buildStep2());
@@ -94,8 +94,8 @@ bool NewElementWizard::preselectCategory(ElementsCategory *category) {
 QWizardPage *NewElementWizard::buildStep1() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Category);
-	page -> setTitle(tr("\311tape 1/3 : Cat\351gorie parente", "wizard page title"));
-	page -> setSubTitle(tr("S\351lectionnez une cat\351gorie dans laquelle enregistrer le nouvel \351l\351ment.", "wizard page subtitle"));
+	page -> setTitle(tr("Étape 1/3 : Catégorie parente", "wizard page title"));
+	page -> setSubTitle(tr("Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
 	categories_list = new ElementsCategoriesWidget();
@@ -111,13 +111,13 @@ QWizardPage *NewElementWizard::buildStep1() {
 QWizardPage *NewElementWizard::buildStep2() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Filename);
-	page -> setTitle(tr("\311tape 2/3 : Nom du fichier", "wizard page title"));
-	page -> setSubTitle(tr("Indiquez le nom du fichier dans lequel enregistrer le nouvel \351l\351ment.", "wizard page subtitle"));
+	page -> setTitle(tr("Étape 2/3 : Nom du fichier", "wizard page title"));
+	page -> setSubTitle(tr("Indiquez le nom du fichier dans lequel enregistrer le nouvel élément.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
 	qle_filename = new QFileNameEdit(tr("nouvel_element"));
 	qle_filename -> selectAll();
-	QLabel *explication2 = new QLabel(tr("Vous n'\352tes pas oblig\351 de pr\351ciser l'extension *.elmt. Elle sera ajout\351e automatiquement."));
+	QLabel *explication2 = new QLabel(tr("Vous n'êtes pas obligé de préciser l'extension *.elmt. Elle sera ajoutée automatiquement."));
 	explication2 -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	explication2 -> setWordWrap(true);
 	layout -> addWidget(qle_filename);
@@ -134,13 +134,13 @@ QWizardPage *NewElementWizard::buildStep2() {
 QWizardPage *NewElementWizard::buildStep3() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Names);
-	page -> setTitle(tr("\311tape 3/3 : Noms de l'\351l\351ment", "wizard page title"));
-	page -> setSubTitle(tr("Indiquez le ou les noms de l'\351l\351ment.", "wizard page subtitle"));
+	page -> setTitle(tr("Étape 3/3 : Noms de l'élément", "wizard page title"));
+	page -> setSubTitle(tr("Indiquez le ou les noms de l'élément.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
 	element_names = new NamesListWidget();
 	NamesList hash_name;
-	hash_name.addName(QLocale::system().name().left(2), tr("Nom du nouvel \351l\351ment", "default name when creating a new element"));
+	hash_name.addName(QLocale::system().name().left(2), tr("Nom du nouvel élément", "default name when creating a new element"));
 	element_names -> setNames(hash_name);
 	layout -> addWidget(element_names);
 	
@@ -179,10 +179,10 @@ bool NewElementWizard::validStep1() {
 	}
 	
 	if (!step1_ok) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			parentWidget(),
 			tr("Erreur", "message box title"),
-			tr("Vous devez s\351lectionner une cat\351gorie.", "message box content")
+			tr("Vous devez sélectionner une catégorie.", "message box content")
 		);
 	}
 	return(step1_ok);
@@ -199,7 +199,7 @@ bool NewElementWizard::validStep2() {
 	
 	// un nom doit avoir ete entre
 	if (file_name.isEmpty()) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
 			tr("Vous devez entrer un nom de fichier", "message box content")
@@ -211,20 +211,20 @@ bool NewElementWizard::validStep2() {
 	
 	// le nom de fichier contient peut etre des caracteres interdits
 	if (QET::containsForbiddenCharacters(file_name)) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
-			tr("Merci de ne pas utiliser les caract\350res suivants : \\ / : * ? \" < > |", "message box content")
+			tr("Merci de ne pas utiliser les caractères suivants : \\ / : * ? \" < > |", "message box content")
 		);
 		return(false);
 	}
 	
 	// le fichier existe peut etre deja
 	if (chosen_category -> element(file_name)) {
-		QMessageBox::StandardButton answer = QET::MessageBox::question(
+		QMessageBox::StandardButton answer = QET::QetMessageBox::question(
 			this,
-			"\311craser le fichier ?",
-			"Le fichier existe d\351j\340. Souhaitez-vous l'\351craser ?",
+			"Écraser le fichier ?",
+			"Le fichier existe déjà. Souhaitez-vous l'écraser ?",
 			QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 			QMessageBox::No
 		);

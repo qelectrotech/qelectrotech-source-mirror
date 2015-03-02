@@ -17,7 +17,7 @@
 */
 #ifndef TREE_COLOR_ANIMATION_H
 #define TREE_COLOR_ANIMATION_H
-#include <QtGui>
+#include <QtWidgets>
 
 /**
 	This class allows animating a background color change for a

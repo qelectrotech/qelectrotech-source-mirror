@@ -19,7 +19,7 @@
 #define ELEMENT_DELETER_H
 #include "elementscategory.h"
 #include "elementslocation.h"
-#include <QtGui>
+#include <QtWidgets>
 /**
 	This class provides an abstract way to delete an element from its parent
 	collection. Especially, it requires a confirmation from users.

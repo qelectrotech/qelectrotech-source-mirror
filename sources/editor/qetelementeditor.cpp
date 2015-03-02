@@ -66,7 +66,7 @@
 QETElementEditor::QETElementEditor(QWidget *parent) :
 	QETMainWindow(parent),
 	read_only(false),
-	min_title(tr("QElectroTech - \311diteur d'\351l\351ment", "window title")),
+	min_title(tr("QElectroTech - Éditeur d'élément", "window title")),
 	opened_from_file(false)
 {
 	setWindowTitle(min_title);
@@ -143,19 +143,19 @@ void QETElementEditor::setupActions() {
 	save_as_file      = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),               this);
 	reload            = new QAction(QET::Icons::ViewRefresh,          tr("Recharger"),                                 this);
 	quit              = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter"),                                  this);
-	selectall         = new QAction(QET::Icons::EditSelectAll,        tr("Tout s\351lectionner"),                      this);
-	deselectall       = new QAction(                                  tr("D\351s\351lectionner tout"),                 this);
+	selectall         = new QAction(QET::Icons::EditSelectAll,        tr("Tout sélectionner"),                      this);
+	deselectall       = new QAction(                                  tr("Désélectionner tout"),                 this);
 	cut               = new QAction(QET::Icons::EditCut,              tr("Co&uper"),                                   this);
 	copy              = new QAction(QET::Icons::EditCopy,             tr("Cop&ier"),                                   this);
 	paste             = new QAction(QET::Icons::EditPaste,            tr("C&oller"),                                   this);
 	paste_in_area     = new QAction(QET::Icons::EditPaste,            tr("C&oller dans la zone..."),                   this);
 	paste_from_file   = new QAction(QET::Icons::XmlTextFile,          tr("un fichier"),                                this);
-	paste_from_elmt   = new QAction(QET::Icons::Element,              tr("un \351l\351ment"),                          this);
-	inv_select        = new QAction(                                  tr("Inverser la s\351lection"),                  this);
+	paste_from_elmt   = new QAction(QET::Icons::Element,              tr("un élément"),                          this);
+	inv_select        = new QAction(                                  tr("Inverser la sélection"),                  this);
 	edit_delete       = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
-	edit_names        = new QAction(QET::Icons::Names,                tr("\311diter le nom et les traductions de l'\351l\351ment"), this);
-	edit_author		  = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations sur l'auteur"),   this);
-	m_edit_properties = new QAction(QET::Icons::ElementEdit,          tr("\311diter les propri\351t\351s de l'\351l\351ment"), this);
+	edit_names        = new QAction(QET::Icons::Names,                tr("Éditer le nom et les traductions de l'élément"), this);
+	edit_author		  = new QAction(QET::Icons::UserInformations,     tr("Éditer les informations sur l'auteur"),   this);
+	m_edit_properties = new QAction(QET::Icons::ElementEdit,          tr("Éditer les propriétés de l'élément"), this);
 	
 	undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));
 	redo = ce_scene -> undoStack().createRedoAction(this, tr("Refaire"));
@@ -178,7 +178,7 @@ void QETElementEditor::setupActions() {
 	copy              -> setShortcut(QKeySequence::Copy);
 	paste             -> setShortcut(QKeySequence::Paste);
 	paste_in_area     -> setShortcut(tr("Ctrl+Shift+V"));
-#ifndef Q_WS_MAC
+#ifndef Q_OS_MAC
 	edit_delete       -> setShortcut(QKeySequence(Qt::Key_Delete));
 #else
 	edit_delete       -> setShortcut(QKeySequence(tr("Backspace")));
@@ -217,7 +217,7 @@ void QETElementEditor::setupActions() {
 
 	QAction *edit_forward  = new QAction(QET::Icons::BringForward, tr("Amener au premier plan"), m_depth_ag);
 	QAction *edit_raise    = new QAction(QET::Icons::Raise,        tr("Rapprocher"),             m_depth_ag);
-	QAction *edit_lower    = new QAction(QET::Icons::Lower,        tr("\311loigner"),            m_depth_ag);
+	QAction *edit_lower    = new QAction(QET::Icons::Lower,        tr("Éloigner"),            m_depth_ag);
 	QAction *edit_backward = new QAction(QET::Icons::SendBackward, tr("Envoyer au fond"),        m_depth_ag);
 
 	edit_raise    -> setShortcut(QKeySequence(tr("Ctrl+Shift+Up")));
@@ -242,8 +242,8 @@ void QETElementEditor::setupActions() {
 	m_zoom_ag = new QActionGroup(this);
 
 	QAction *zoom_in    = new QAction(QET::Icons::ZoomIn,       tr("Zoom avant"),      m_zoom_ag);
-	QAction *zoom_out   = new QAction(QET::Icons::ZoomOut,      tr("Zoom arri\350re"), m_zoom_ag);
-	QAction *zoom_fit   = new QAction(QET::Icons::ZoomFitBest,  tr("Zoom adapt\351"),  m_zoom_ag);
+	QAction *zoom_out   = new QAction(QET::Icons::ZoomOut,      tr("Zoom arrière"), m_zoom_ag);
+	QAction *zoom_fit   = new QAction(QET::Icons::ZoomFitBest,  tr("Zoom adapté"),  m_zoom_ag);
 	QAction *zoom_reset = new QAction(QET::Icons::ZoomOriginal, tr("Pas de zoom"),     m_zoom_ag);
 
 	zoom_in    -> setShortcut(QKeySequence::ZoomIn);
@@ -295,7 +295,7 @@ void QETElementEditor::setupActions() {
 	main_toolbar -> setObjectName("main_toolbar");
 	view_toolbar = new QToolBar(tr("Affichage", "toolbar title"), this);
 	view_toolbar -> setObjectName("display");
-	element_toolbar = new QToolBar(tr("\311l\351ment", "toolbar title"), this);
+	element_toolbar = new QToolBar(tr("Élément", "toolbar title"), this);
 	element_toolbar -> setObjectName("element_toolbar");
 	
 	main_toolbar -> addAction(new_element);
@@ -339,7 +339,7 @@ void QETElementEditor::setupActions() {
  */
 void QETElementEditor::setupMenus() {
 	file_menu    = new QMenu(tr("&Fichier"),       this);
-	edit_menu    = new QMenu(tr("&\311dition"),    this);
+	edit_menu    = new QMenu(tr("&Édition"),    this);
 	display_menu = new QMenu(tr("Afficha&ge"),     this);
 	tools_menu   = new QMenu(tr("O&utils"),        this);
 	
@@ -351,7 +351,7 @@ void QETElementEditor::setupMenus() {
 	file_menu    -> addAction(new_element);
 	file_menu    -> addAction(open);
 	file_menu    -> addAction(open_file);
-	QMenu *recentfile = file_menu -> addMenu(QET::Icons::DocumentOpenRecent, tr("&R\351cemment ouverts"));
+	QMenu *recentfile = file_menu -> addMenu(QET::Icons::DocumentOpenRecent, tr("&Récemment ouverts"));
 	recentfile->addActions(QETApp::elementsRecentFiles()->menu()->actions());
 	connect(QETApp::elementsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)), this, SLOT(openRecentFile(const QString &)));
 	file_menu    -> addAction(save);
@@ -462,7 +462,7 @@ void QETElementEditor::slot_updateTitle() {
 	QString title = min_title;
 	title += " - " + ce_scene -> names().name() + " ";
 	if (!filename_.isEmpty() || !location_.isNull()) {
-		if (!ce_scene -> undoStack().isClean()) title += tr("[Modifi\351]", "window title tag");
+		if (!ce_scene -> undoStack().isClean()) title += tr("[Modifié]", "window title tag");
 	}
 	if (isReadOnly()) title += tr(" [lecture seule]", "window title tag");
 	setWindowTitle(title);
@@ -542,7 +542,7 @@ void QETElementEditor::setupInterface() {
 	slot_createPartsList();
 	
 	// barre d'etat
-	statusBar() -> showMessage(tr("\311diteur d'\351l\351ments", "status bar message"));
+	statusBar() -> showMessage(tr("Éditeur d'éléments", "status bar message"));
 }
 
 /**
@@ -631,7 +631,7 @@ void QETElementEditor::slot_updateInformations() {
 		//Else we only display the number of selected items
 	else
 	{
-		default_informations -> setText(tr("%n partie(s) s\351lectionn\351e(s).",
+		default_informations -> setText(tr("%n partie(s) sélectionnée(s).",
 										   "",
 										   selected_qgis.size()));
 		default_informations -> setAlignment(Qt::AlignHCenter | Qt::AlignTop);
@@ -644,7 +644,7 @@ void QETElementEditor::slot_updateInformations() {
 	une boite de dialogue.
 */
 void QETElementEditor::xmlPreview() {
-	QET::MessageBox::information(
+	QET::QetMessageBox::information(
 		this,
 		"Export XML",
 		ce_scene -> toXml().toString(4)
@@ -670,8 +670,8 @@ bool QETElementEditor::checkElement()
 		warnings << qMakePair(
 			tr("Absence de borne", "warning title"),
 			tr(
-				"<br>En l'absence de borne, l'\351l\351ment ne pourra \352tre"
-				" reli\351 \340 d'autres \351l\351ments par l'interm\351diaire de conducteurs.",
+				"<br>En l'absence de borne, l'élément ne pourra être"
+				" relié à d'autres éléments par l'intermédiaire de conducteurs.",
 				"warning description"
 			)
 		);
@@ -691,10 +691,10 @@ bool QETElementEditor::checkElement()
 		if (wrng) {
 			errors << qMakePair(
 							tr("Absence de champ texte 'label'", "warning title"),
-							tr("<br><b>Erreur</b \240> :"
-							   "<br>Les \351l\351ments de type ma\356tres, esclaves, simple et renvoie de folio doivent poss\351der un champ texte comportant le tagg 'label'."
+							tr("<br><b>Erreur</b  > :"
+							   "<br>Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg 'label'."
 							   "<br><b>Solution</b> :"
-							   "<br>Ins\351rer un champ texte et lui attribuer le tagg 'label'", "warning description"));
+							   "<br>Insérer un champ texte et lui attribuer le tagg 'label'", "warning description"));
 		}
 	}
 
@@ -714,16 +714,16 @@ bool QETElementEditor::checkElement()
 		{
 			errors << qMakePair (tr("Absence de borne"),
 								 tr("<br><b>Erreur</b> :"
-									"<br>Les reports de folio doivent poss\351der une seul borne."
+									"<br>Les reports de folio doivent posséder une seul borne."
 									"<br><b>Solution</b> :"
-									"<br>Verifier que l'\351l\351ment ne poss\350de qu'une seul borne"));
+									"<br>Verifier que l'élément ne possède qu'une seul borne"));
 		}
 	}
 
 	if (!errors.count() && !warnings.count()) return(true);
 
 		// Display warnings
-	QString dialog_message = tr("La v\351rification de cet \351l\351ment a g\351n\351r\351", "message box content");
+	QString dialog_message = tr("La vérification de cet élément a généré", "message box content");
 
 	if (errors.size())
 		dialog_message += QString(tr(" %n erreur(s)", "errors", errors.size()));
@@ -742,7 +742,7 @@ bool QETElementEditor::checkElement()
 	foreach(QETWarning warning, total) {
 		dialog_message += "<li>";
 		dialog_message += QString(
-			tr("<b>%1</b>\240: %2", "warning title: warning description")
+			tr("<b>%1</b> : %2", "warning title: warning description")
 		).arg(warning.first).arg(warning.second);
 		dialog_message += "</li>";
 	}
@@ -793,7 +793,7 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	}
 	
 	if (!state) {
-		QET::MessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
+		QET::QetMessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
 		return;
 	}
 	
@@ -803,10 +803,10 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	
 	// gestion de la lecture seule
 	if (!infos_file.isWritable()) {
-		QET::MessageBox::warning(
+		QET::QetMessageBox::warning(
 			this,
-			tr("\311dition en lecture seule", "message box title"),
-			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cet \351lement. Il sera donc ouvert en lecture seule.", "message box content")
+			tr("Édition en lecture seule", "message box title"),
+			tr("Vous n'avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.", "message box content")
 		);
 		setReadOnly(true);
 	} else {
@@ -828,10 +828,10 @@ bool QETElementEditor::toFile(const QString &fn) {
 	QDomDocument element_xml = ce_scene -> toXml();
 	bool writing = QET::writeXmlFile(element_xml, fn);
 	if (!writing) {
-		QET::MessageBox::warning(
+		QET::QetMessageBox::warning(
 			this,
 			tr("Erreur", "message box title"),
-			tr("Impossible d'\351crire dans ce fichier", "message box content")
+			tr("Impossible d'écrire dans ce fichier", "message box content")
 		);
 	}
 	return(writing);
@@ -854,10 +854,10 @@ bool QETElementEditor::toLocation(const ElementsLocation &location) {
 	}
 	
 	if (!element) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
-			tr("Impossible d'atteindre l'\351l\351ment", "message box content")
+			tr("Impossible d'atteindre l'élément", "message box content")
 		);
 		return(false);
 	}
@@ -865,10 +865,10 @@ bool QETElementEditor::toLocation(const ElementsLocation &location) {
 	// enregistre l'element
 	element -> setXml(ce_scene -> toXml().documentElement());
 	if (!element -> write()) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
-			tr("Impossible d'enregistrer l'\351l\351ment", "message box content")
+			tr("Impossible d'enregistrer l'élément", "message box content")
 		);
 		return(false);
 	}
@@ -1066,7 +1066,7 @@ void QETElementEditor::openElement(const QString &filepath) {
 	// we have to test the file existence here because QETApp::openElementFiles()
 	// will discard non-existent files through QFileInfo::canonicalFilePath()
 	if (!QFile::exists(filepath)) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
 			tr("Impossible d'ouvrir le fichier", "message box title"),
 			QString(
@@ -1085,10 +1085,10 @@ void QETElementEditor::slot_reload() {
 	// s'il ya des modifications, on demande a l'utilisateur s'il est certain
 	// de vouloir recharger
 	if (!ce_scene -> undoStack().isClean()) {
-		QMessageBox::StandardButton answer = QET::MessageBox::question(
+		QMessageBox::StandardButton answer = QET::QetMessageBox::question(
 			this,
-			tr("Recharger l'\351l\351ment", "dialog title"),
-			tr("Vous avez efffectu\351 des modifications sur cet \351l\351ment. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l'\351l\351ment ?", "dialog content"),
+			tr("Recharger l'élément", "dialog title"),
+			tr("Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l'élément ?", "dialog content"),
 			QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 			QMessageBox::Cancel
 		);
@@ -1135,7 +1135,7 @@ bool QETElementEditor::slot_save() {
 			return(result_save);
 		}
 	}
-	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement \340 \351chou\351,\nles conditions requises ne sont pas valides"));
+	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement à échoué,\nles conditions requises ne sont pas valides"));
 	return false;
 }
 
@@ -1159,7 +1159,7 @@ bool QETElementEditor::slot_saveAs() {
 		// retourne un booleen representatif de la reussite de l'enregistrement
 		return(result_save);
 	}
-	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement \340 \351chou\351,\nles conditions requises ne sont pas valides"));
+	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement à échoué,\nles conditions requises ne sont pas valides"));
 	return (false);
 }
 
@@ -1175,7 +1175,7 @@ bool QETElementEditor::slot_saveAsFile() {
 			tr("Enregistrer sous", "dialog title"),
 			filename_.isEmpty() ? QETApp::customElementsDir() : QDir(filename_).absolutePath(),
 			tr(
-				"\311l\351ments QElectroTech (*.elmt)",
+				"Éléments QElectroTech (*.elmt)",
 				"filetypes allowed when saving an element file"
 			)
 		);
@@ -1194,7 +1194,7 @@ bool QETElementEditor::slot_saveAsFile() {
 		// retourne un booleen representatif de la reussite de l'enregistrement
 		return(result_save);
 	}
-	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement \340 \351chou\351,\nles conditions requises ne sont pas valides"));
+	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement à échoué,\nles conditions requises ne sont pas valides"));
 	return false;
 }
 
@@ -1207,12 +1207,12 @@ bool QETElementEditor::slot_saveAsFile() {
 bool QETElementEditor::canClose() {
 	if (ce_scene -> undoStack().isClean()) return(true);
 	// demande d'abord a l'utilisateur s'il veut enregistrer l'element en cours
-	QMessageBox::StandardButton answer = QET::MessageBox::question(
+	QMessageBox::StandardButton answer = QET::QetMessageBox::question(
 		this,
-		tr("Enregistrer l'\351l\351ment en cours ?", "dialog title"),
+		tr("Enregistrer l'élément en cours ?", "dialog title"),
 		QString(
 			tr(
-				"Voulez-vous enregistrer l'\351l\351ment %1 ?",
+				"Voulez-vous enregistrer l'élément %1 ?",
 				"dialog content - %1 is an element name"
 			)
 		).arg(ce_scene -> names().name()),
@@ -1310,7 +1310,7 @@ void QETElementEditor::slot_createPartsList() {
 			}
 		}
 	} else {
-		parts_list -> addItem(new QListWidgetItem(tr("Trop de primitives, liste non g\351n\351r\351e.")));
+		parts_list -> addItem(new QListWidgetItem(tr("Trop de primitives, liste non générée.")));
 	}
 	parts_list -> blockSignals(false);
 }
@@ -1404,7 +1404,7 @@ QString QETElementEditor::getOpenElementFileName(QWidget *parent, const QString 
 		tr("Ouvrir un fichier", "dialog title"),
 		initial_dir.isEmpty() ? QETApp::customElementsDir() : initial_dir,
 		tr(
-			"\311l\351ments QElectroTech (*.elmt);;"
+			"Éléments QElectroTech (*.elmt);;"
 			"Fichiers XML (*.xml);;"
 			"Tous les fichiers (*)",
 			"filetypes allowed when opening an element file"
@@ -1422,19 +1422,19 @@ void QETElementEditor::fromLocation(const ElementsLocation &location) {
 	ElementsCollectionItem *item = QETApp::collectionItem(location);
 	ElementDefinition *element = 0;
 	if (!item) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
-			tr("\311l\351ment inexistant.", "message box title"),
-			tr("L'\351l\351ment n'existe pas.", "message box content")
+			tr("Élément inexistant.", "message box title"),
+			tr("L'élément n'existe pas.", "message box content")
 		);
 		return;
 	}
 	
 	if (!item -> isElement() || !(element = qobject_cast<ElementDefinition *>(item)) || element -> isNull()) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
-			tr("\311l\351ment inexistant.", "message box title"),
-			tr("Le chemin virtuel choisi ne correspond pas \340 un \351l\351ment.", "message box content")
+			tr("Élément inexistant.", "message box title"),
+			tr("Le chemin virtuel choisi ne correspond pas à un élément.", "message box content")
 		);
 		return;
 	}
@@ -1450,10 +1450,10 @@ void QETElementEditor::fromLocation(const ElementsLocation &location) {
 	
 	// gestion de la lecture seule
 	if (!element -> isWritable()) {
-		QET::MessageBox::warning(
+		QET::QetMessageBox::warning(
 			this,
-			tr("\311dition en lecture seule", "message box title"),
-			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cet \351lement. Il sera donc ouvert en lecture seule.", "message box content")
+			tr("Édition en lecture seule", "message box title"),
+			tr("Vous n'avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.", "message box content")
 		);
 		setReadOnly(true);
 	} else {
@@ -1489,7 +1489,7 @@ void QETElementEditor::pasteFromFile() {
 	}
 	
 	if (!error_message.isEmpty()) {
-		QET::MessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
+		QET::QetMessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
 	}
 	copyAndPasteXml(xml_document);
 }
@@ -1507,19 +1507,19 @@ void QETElementEditor::pasteFromElement() {
 	ElementsCollectionItem *item = QETApp::collectionItem(location);
 	ElementDefinition *element = 0;
 	if (!item) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
-			tr("\311l\351ment inexistant.", "message box title"),
-			tr("L'\351l\351ment n'existe pas.", "message box content")
+			tr("Élément inexistant.", "message box title"),
+			tr("L'élément n'existe pas.", "message box content")
 		);
 		return;
 	}
 	
 	if (!item -> isElement() || !(element = qobject_cast<ElementDefinition *>(item)) || element -> isNull()) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
-			tr("\311l\351ment inexistant.", "message box title"),
-			tr("Le chemin virtuel choisi ne correspond pas \340 un \351l\351ment.", "message box content")
+			tr("Élément inexistant.", "message box title"),
+			tr("Le chemin virtuel choisi ne correspond pas à un élément.", "message box content")
 		);
 		return;
 	}

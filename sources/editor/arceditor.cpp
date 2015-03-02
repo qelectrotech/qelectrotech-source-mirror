@@ -52,12 +52,12 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) :
 	grid -> addWidget(x,                                      1, 1);
 	grid -> addWidget(new QLabel("y"),                        1, 2);
 	grid -> addWidget(y,                                      1, 3);
-	grid -> addWidget(new QLabel(tr("Diam\350tres : ")),      2, 0);
+	grid -> addWidget(new QLabel(tr("Diamètres : ")),      2, 0);
 	grid -> addWidget(new QLabel(tr("horizontal :")),         3, 0);
 	grid -> addWidget(h,                                      3, 1);
 	grid -> addWidget(new QLabel(tr("vertical :")),           4, 0);
 	grid -> addWidget(v,                                      4, 1);
-	grid -> addWidget(new QLabel(tr("Angle de d\351part :")), 5, 0);
+	grid -> addWidget(new QLabel(tr("Angle de départ :")), 5, 0);
 	grid -> addWidget(start_angle,                            5, 1);
 	grid -> addWidget(new QLabel(tr("Angle :")),              6, 0);
 	grid -> addWidget(angle,                                  6, 1);
@@ -121,13 +121,13 @@ void ArcEditor::updateArc() {
 /// Met a jour l'abscisse du centre de l'arc et cree un objet d'annulation
 void ArcEditor::updateArcX() { addChangePartCommand(tr("abscisse"),               part, "centerX",     x  -> value()); }
 /// Met a jour l'ordonnee du centre de l'arc et cree un objet d'annulation
-void ArcEditor::updateArcY() { addChangePartCommand(tr("ordonn\351e"),            part, "centerY",     y  -> value()); }
+void ArcEditor::updateArcY() { addChangePartCommand(tr("ordonnée"),            part, "centerY",     y  -> value()); }
 /// Met a jour le diametre horizontal de l'arc et cree un objet d'annulation
-void ArcEditor::updateArcH() { addChangePartCommand(tr("diam\350tre horizontal"), part, "diameter_h",  h  -> value()); }
+void ArcEditor::updateArcH() { addChangePartCommand(tr("diamètre horizontal"), part, "diameter_h",  h  -> value()); }
 /// Met a jour le diametre vertical de l'arc et cree un objet d'annulation
-void ArcEditor::updateArcV() { addChangePartCommand(tr("diam\350tre vertical"),   part, "diameter_v",  v  -> value()); }
+void ArcEditor::updateArcV() { addChangePartCommand(tr("diamètre vertical"),   part, "diameter_v",  v  -> value()); }
 /// Met a jour l'angle de depart de l'arc et cree un objet d'annulation
-void ArcEditor::updateArcS() { addChangePartCommand(tr("angle de d\351part"),     part, "startAngle", ((start_angle -> value() * -1) + 90) * 16); }
+void ArcEditor::updateArcS() { addChangePartCommand(tr("angle de départ"),     part, "startAngle", ((start_angle -> value() * -1) + 90) * 16); }
 /// Met a jour l'etendue de l'arc et cree un objet d'annulation
 void ArcEditor::updateArcA() { addChangePartCommand(tr("angle"),                  part, "spanAngle",  angle -> value() * -16); }
 

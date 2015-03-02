@@ -17,7 +17,7 @@
 */
 #ifndef DIAGRAM_H
 #define DIAGRAM_H
-#include <QtGui>
+#include <QtWidgets>
 #include <QtXml>
 #include <QHash>
 #include "bordertitleblock.h"

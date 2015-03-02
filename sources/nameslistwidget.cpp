@@ -35,11 +35,11 @@ NamesListWidget::NamesListWidget(QWidget *parent) : QWidget(parent), read_only(f
 	tree_names -> setHeaderLabels(headers);
 	tree_names -> setWhatsThis(
 		tr(
-			"Cette liste vous permet de saisir un court texte de fa\347on \340 ce"
+			"Cette liste vous permet de saisir un court texte de façon à ce"
 			" qu'il soit traduisible dans d'autres langues. Pour ce faire, elle"
 			" associe des codes ISO 639-1 de langues (ex. : \"fr\" pour"
-			" fran\347ais) aux traductions du texte en question dans ces"
-			" m\352mes langues.",
+			" français) aux traductions du texte en question dans ces"
+			" mêmes langues.",
 			"\"What's this\" tip"
 		)
 	);
@@ -83,7 +83,7 @@ void NamesListWidget::addLine() {
 bool NamesListWidget::checkOneName() {
 	updateHash();
 	if (!hash_names.count()) {
-		QET::MessageBox::critical(
+		QET::QetMessageBox::critical(
 			this,
 			tr("Il doit y avoir au moins un nom.", "message box title"),
 			tr("Vous devez entrer au moins un nom.", "message box content")

@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "exportproperties.h"
-#include <QDesktopServices>
 #include "qetapp.h"
+
+#include <QStandardPaths>
 
 /**
 	Constructeur par defaut :
@@ -28,7 +29,7 @@
 	  * la zone exportee est le schema avec son cadre et son cartouche
 */
 ExportProperties::ExportProperties() :
-	destination_directory(QDesktopServices::storageLocation(QDesktopServices::DesktopLocation)),
+	destination_directory(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)),
 	format("PNG"),
 	draw_grid(false),
 	draw_border(true),
@@ -67,7 +68,7 @@ void ExportProperties::toSettings(QSettings &settings, const QString &prefix) co
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
 void ExportProperties::fromSettings(QSettings &settings, const QString &prefix) {
-	QString desktop_path = QDesktopServices::storageLocation(QDesktopServices::DesktopLocation);
+	QString desktop_path = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 	destination_directory.setPath(settings.value(prefix + "path", desktop_path).toString());
 	if (!destination_directory.exists()) destination_directory.setPath(desktop_path);
 	

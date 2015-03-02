@@ -17,7 +17,7 @@
 */
 #ifndef DIAGRAM_COMMANDS_H
 #define DIAGRAM_COMMANDS_H
-#include <QtGui>
+#include <QtWidgets>
 #include "borderproperties.h"
 #include "qetgraphicsitem/conductor.h"
 #include "conductorproperties.h"

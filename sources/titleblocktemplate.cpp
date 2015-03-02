@@ -285,7 +285,7 @@ bool TitleBlockTemplate::loadLogo(const QDomElement &xml_element) {
 		QTextStream xml_to_byte_array(&logo_data);
 		svg_element.save(xml_to_byte_array, 0);
 	} else if (logo_storage == "base64") {
-		logo_data = QByteArray::fromBase64(xml_element.text().toAscii());
+		logo_data = QByteArray::fromBase64(xml_element.text().toLatin1());
 	} else {
 		return(false);
 	}

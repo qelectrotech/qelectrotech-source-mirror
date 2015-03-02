@@ -51,10 +51,10 @@ bool ElementDeleter::exec() {
 	if (!element || !element -> isElement()) return(false);
 	
 	// confirmation #1
-	QMessageBox::StandardButton answer_1 = QET::MessageBox::question(
+	QMessageBox::StandardButton answer_1 = QET::QetMessageBox::question(
 		this,
-		tr("Supprimer l'\351l\351ment ?", "message box title"),
-		tr("\312tes-vous s\373r de vouloir supprimer cet \351l\351ment ?\n", "message box content"),
+		tr("Supprimer l'élément ?", "message box title"),
+		tr("Êtes-vous s\373r de vouloir supprimer cet élément ?\n", "message box content"),
 		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel
 	);
 	if (answer_1 != QMessageBox::Yes) return(false);
@@ -65,10 +65,10 @@ bool ElementDeleter::exec() {
 	
 	// supprime l'element
 	if (!element -> remove()) {
-		QET::MessageBox::warning(
+		QET::QetMessageBox::warning(
 			this,
-			tr("Suppression de l'\351l\351ment", "message box title"),
-			tr("La suppression de l'\351l\351ment a \351chou\351.", "message box content")
+			tr("Suppression de l'élément", "message box title"),
+			tr("La suppression de l'élément a échoué.", "message box content")
 		);
 		return(false);
 	}

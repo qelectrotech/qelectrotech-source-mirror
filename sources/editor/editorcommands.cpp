@@ -227,7 +227,7 @@ MovePartsCommand::MovePartsCommand(
 	const QList<QGraphicsItem *> parts,
 	QUndoCommand *parent
 ) :
-	ElementEditionCommand(QObject::tr("d\351placement", "undo caption"), scene, 0, parent),
+	ElementEditionCommand(QObject::tr("déplacement", "undo caption"), scene, 0, parent),
 	movement(m),
 	first_redo(true)
 {
@@ -444,7 +444,7 @@ ChangeZValueCommand::ChangeZValueCommand(
 		setText(QObject::tr("rapprocher", "undo caption"));
 		applyRaise(items_list);
 	} else if (option == Lower) {
-		setText(QObject::tr("\351loigner", "undo caption"));
+		setText(QObject::tr("éloigner", "undo caption"));
 		applyLower(items_list);
 	} else if (option == SendBackward) {
 		setText(QObject::tr("envoyer au fond", "undo caption"));
@@ -679,7 +679,7 @@ ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, QString ty
 {
 	m_type << scene->m_elmt_type << type;
 	m_info << scene->m_elmt_kindInfo << info;
-	setText(QObject::tr("Modifier les propri\351t\351s"));
+	setText(QObject::tr("Modifier les propriétés"));
 }
 
 ChangePropertiesCommand::~ChangePropertiesCommand() {}

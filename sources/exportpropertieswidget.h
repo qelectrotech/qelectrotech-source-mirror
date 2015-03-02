@@ -17,7 +17,7 @@
 */
 #ifndef EXPORT_PROPERTIES_WIDGET_H
 #define EXPORT_PROPERTIES_WIDGET_H
-#include <QtGui>
+#include <QtWidgets>
 #include "exportproperties.h"
 
 /**

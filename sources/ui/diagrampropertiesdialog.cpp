@@ -42,11 +42,11 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	ConductorProperties  conductors = diagram -> defaultConductorProperties;
 
 	setWindowModality(Qt::WindowModal);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 	setWindowFlags(Qt::Sheet);
 #endif
 
-	setWindowTitle(tr("Propri\351t\351s du sch\351ma", "window title"));
+	setWindowTitle(tr("Propriétés du schéma", "window title"));
 
 	//Border widget
 	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, this);

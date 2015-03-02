@@ -57,13 +57,13 @@ void TitleBlockTemplateCellWidget::initWidgets() {
 	name_input_ = new QLineEdit();
 	
 	// widgets specific to empty cells
-	empty_label_ = new QLabel(tr("Attention : les bordures des cellules vides n'apparaissent pas lors du rendu final sur le sch\351ma."));
+	empty_label_ = new QLabel(tr("Attention : les bordures des cellules vides n'apparaissent pas lors du rendu final sur le schéma."));
 	
 	// widgets specific to logo cells
 	logo_label_ = new QLabel(tr("Logo"));
 	logo_input_ = new QComboBox();
 	logo_input_ -> addItem(tr("Aucun logo"));
-	add_logo_input_ = new QPushButton(QET::Icons::InsertImage, tr("G\351rer les logos"));
+	add_logo_input_ = new QPushButton(QET::Icons::InsertImage, tr("Gérer les logos"));
 	
 	// widgets specific to text cells
 	label_checkbox_ = new QCheckBox(tr("Afficher un label :"));
@@ -78,7 +78,7 @@ void TitleBlockTemplateCellWidget::initWidgets() {
 	horiz_align_label_ = new QLabel(tr("horizontal :"));
 	horiz_align_input_ = new QComboBox();
 	horiz_align_input_ -> addItem(tr("Gauche"),      Qt::AlignLeft);
-	horiz_align_input_ -> addItem(tr("Centr\351"),   Qt::AlignHCenter);
+	horiz_align_input_ -> addItem(tr("Centré"),   Qt::AlignHCenter);
 	horiz_align_input_ -> addItem(tr("Droite"),      Qt::AlignRight);
 	horiz_align_indexes_.insert(Qt::AlignLeft,    0);
 	horiz_align_indexes_.insert(Qt::AlignHCenter, 1);
@@ -419,7 +419,7 @@ void TitleBlockTemplateCellWidget::emitModification(const QString &attribute, co
 	ModifyTitleBlockCellCommand *command = new ModifyTitleBlockCellCommand(edited_cell_);
 	command -> addModification(attribute, new_value);
 	command -> setText(
-		tr("\311dition d'une cellule : %1", "label of and undo command when editing a cell")
+		tr("Édition d'une cellule : %1", "label of and undo command when editing a cell")
 		.arg(TitleBlockCell::attributeName(attribute))
 	);
 	emit(cellModified(command));
@@ -431,7 +431,7 @@ void TitleBlockTemplateCellWidget::emitModification(const QString &attribute, co
 */
 QString TitleBlockTemplateCellWidget::defaultVariablesString() const {
 	QString def_var_string = tr(
-		"Par d\351faut, les variables suivantes sont disponibles :"
+		"Par défaut, les variables suivantes sont disponibles :"
 		"<ul>"
 		"<li>%{author} : auteur du folio</li>"
 		"<li>%{date} : date du folio</li>"
@@ -451,14 +451,14 @@ QString TitleBlockTemplateCellWidget::defaultVariablesString() const {
 QString TitleBlockTemplateCellWidget::labelValueInformationString() const {
 	QString lab_val_inf_string = tr(
 		"Chaque cellule d'un cartouche affiche une valeur, optionnellement "
-		"pr\351c\351d\351e d'un label. Tous deux peuvent \352tre traduits en "
+		"précédée d'un label. Tous deux peuvent être traduits en "
 		"plusieurs langues."
 		"<br/>"
-		"Comme ce que vous \351ditez actuellement est un "
-		"<em>mod\350le</em> de cartouche, ne saisissez pas directement des "
-		"donn\351es brutes : ins\351rez plut\364t des variables sous la forme "
-		"%{nom-de-variable}, qui seront ensuite remplac\351es par les valeurs "
-		"ad\351quates sur le folio."
+		"Comme ce que vous éditez actuellement est un "
+		"<em>modèle</em> de cartouche, ne saisissez pas directement des "
+		"données brutes : insérez plutôt des variables sous la forme "
+		"%{nom-de-variable}, qui seront ensuite remplacées par les valeurs "
+		"adéquates sur le folio."
 	);
 	return(lab_val_inf_string);
 }

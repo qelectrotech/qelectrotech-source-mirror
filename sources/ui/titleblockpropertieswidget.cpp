@@ -214,7 +214,7 @@ void TitleBlockPropertiesWidget::setTitleBlockTemplatesCollection(TitleBlockTemp
  */
 void TitleBlockPropertiesWidget::setTitleBlockTemplatesList(const QStringList &tbt) {
 	ui -> m_tbt_cb ->clear();
-	ui -> m_tbt_cb -> addItem(QET::Icons::TitleBlock, tr("Mod\350le par d\351faut"));
+	ui -> m_tbt_cb -> addItem(QET::Icons::TitleBlock, tr("Modèle par défaut"));
 	foreach (QString tbt_name, tbt) {
 		ui -> m_tbt_cb -> addItem(QET::Icons::TitleBlock, tbt_name, tbt_name);
 	}
@@ -232,8 +232,8 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date) {
 	setTitleBlockTemplatesVisible(false);
 	ui -> m_current_date_rb -> setVisible(current_date);
 
-	m_tbt_edit = new QAction(tr("\311diter ce mod\350le", "menu entry"), this);
-	m_tbt_duplicate = new QAction(tr("Dupliquer et editer ce mod\350le", "menu entry"), this);
+	m_tbt_edit = new QAction(tr("Éditer ce modèle", "menu entry"), this);
+	m_tbt_duplicate = new QAction(tr("Dupliquer et editer ce modèle", "menu entry"), this);
 
 	connect(m_tbt_edit, SIGNAL(triggered()), this, SLOT(editCurrentTitleBlockTemplate()));
 	connect(m_tbt_duplicate, SIGNAL(triggered()), this, SLOT(duplicateCurrentTitleBlockTemplate()));

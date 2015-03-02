@@ -34,7 +34,7 @@ GhostElement::GhostElement(
 	CustomElement(location, qgi)
 {
 	QString tooltip_string = QString(
-		tr("<u>\311l\351ment manquant\240:</u> %1")
+		tr("<u>Élément manquant :</u> %1")
 	).arg(location_.toString());
 	setToolTip(tooltip_string);
 }

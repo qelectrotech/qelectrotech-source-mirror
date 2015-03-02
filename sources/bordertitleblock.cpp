@@ -680,7 +680,7 @@ QString BorderTitleBlock::incrementLetters(const QString &string) {
 		QChar last_digit(string.at(string.count() - 1));
 		if (last_digit != 'Z') {
 			// incremente le dernier digit
-			last_digit = last_digit.toAscii() + 1;
+			last_digit = last_digit.toLatin1() + 1;
 			return(first_digits + QString(last_digit));
 		} else {
 			return(incrementLetters(first_digits) + "A");

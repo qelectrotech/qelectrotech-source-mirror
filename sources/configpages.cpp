@@ -69,10 +69,10 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
 	diagram_layout -> addWidget(bpw);
 	diagram_layout -> addWidget(ipw);
 
-	tab_widget -> addTab (diagram_widget, tr("Sch\351ma"));
+	tab_widget -> addTab (diagram_widget, tr("Schéma"));
 	tab_widget -> addTab (cpw,            tr("Conducteur"));
 	tab_widget -> addTab (rpw,            tr("Reports de folio"));
-	tab_widget -> addTab (xrefpw,         tr("R\351f\351rences crois\351es"));
+	tab_widget -> addTab (xrefpw,         tr("Références croisées"));
 
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	vlayout1->addWidget(tab_widget);
@@ -169,7 +169,7 @@ QIcon NewDiagramPage::icon() const {
  * @return title of this page
  */
 QString NewDiagramPage::title() const {
-	if (m_project) return(tr("Nouveau sch\351ma", "configuration page title"));
+	if (m_project) return(tr("Nouveau schéma", "configuration page title"));
 	return(tr("Nouveau projet", "configuration page title"));
 }
 
@@ -190,21 +190,21 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	QString default_element_informations = settings.value("elementeditor/default-informations", "").toString();
 	
 	appearance_ = new QGroupBox(tr("Apparence"), this);
-	use_system_colors_ = new QCheckBox(tr("Utiliser les couleurs du syst\350me"), appearance_);
+	use_system_colors_ = new QCheckBox(tr("Utiliser les couleurs du système"), appearance_);
 	
 	projects_view_mode_ = new QGroupBox(tr("Projets"), this);
-	windowed_mode_ = new QRadioButton(tr("Utiliser des fen\352tres"), projects_view_mode_);
+	windowed_mode_ = new QRadioButton(tr("Utiliser des fenêtres"), projects_view_mode_);
 	tabbed_mode_ = new QRadioButton(tr("Utiliser des onglets"), projects_view_mode_);
-	use_trackpad_ = new QCheckBox(tr("Utiliser les gestes du pav\351 tactile"), projects_view_mode_);
-	warning_view_mode_ = new QLabel(tr("Ces param\350tres s'appliqueront d\350s la prochaine ouverture d'un \351diteur de sch\351mas."));
+	use_trackpad_ = new QCheckBox(tr("Utiliser les gestes du pavé tactile"), projects_view_mode_);
+	warning_view_mode_ = new QLabel(tr("Ces paramètres s'appliqueront dès la prochaine ouverture d'un éditeur de schémas."));
 	
-	elements_management_ = new QGroupBox(tr("Gestion des \351l\351ments"), this);
-	integrate_elements_ = new QCheckBox(tr("Int\351grer automatiquement les \351l\351ments dans les projets (recommand\351)"));
-	highlight_integrated_elements_ = new QCheckBox(tr("Mettre en valeur dans le panel les \351l\351ments fra\356chement int\351gr\351s", "configuration option"));
+	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
+	integrate_elements_ = new QCheckBox(tr("Intégrer automatiquement les éléments dans les projets (recommandé)"));
+	highlight_integrated_elements_ = new QCheckBox(tr("Mettre en valeur dans le panel les éléments fraîchement intégrés", "configuration option"));
 	default_element_infos_label_ = new QLabel(
 		tr(
-			"Chaque \351l\351ment embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. "
-			"Vous pouvez sp\351cifier ici la valeur par d\351faut de ce champ pour les \351l\351ments que vous cr\351erez :"
+			"Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. "
+			"Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :"
 		)
 	);
 	default_element_infos_label_ -> setWordWrap(true);
@@ -306,7 +306,7 @@ QIcon GeneralConfigurationPage::icon() const {
 
 /// @return le titre de cette page
 QString GeneralConfigurationPage::title() const {
-	return(tr("G\351n\351ral", "configuration page title"));
+	return(tr("Général", "configuration page title"));
 }
 
 /**
@@ -314,25 +314,25 @@ QString GeneralConfigurationPage::title() const {
  * fill all available lang in @lang_combo_box
  */
 void GeneralConfigurationPage::fillLang(QSettings &settings) {
-	lang_combo_box->addItem(QET::Icons::translation,  tr("Syst\350me"), "system");
+	lang_combo_box->addItem(QET::Icons::translation,  tr("Système"), "system");
 	lang_combo_box->insertSeparator(1);
 
 	// all lang available on lang directory
 	lang_combo_box->addItem(QET::Icons::ar,           tr("Arabe"), "ar");
 	lang_combo_box->addItem(QET::Icons::catalonia,    tr("Catalan"), "ca");
-	lang_combo_box->addItem(QET::Icons::cs,           tr("Tch\350que"), "cs");
+	lang_combo_box->addItem(QET::Icons::cs,           tr("Tchèque"), "cs");
 	lang_combo_box->addItem(QET::Icons::de,           tr("Allemand"), "de");
 	lang_combo_box->addItem(QET::Icons::gr,           tr("Grec"), "el");
 	lang_combo_box->addItem(QET::Icons::en,           tr("Anglais"), "en");
 	lang_combo_box->addItem(QET::Icons::es,           tr("Espagnol"), "es");
-	lang_combo_box->addItem(QET::Icons::fr,           tr("Fran\347ais"), "fr");
+	lang_combo_box->addItem(QET::Icons::fr,           tr("Français"), "fr");
 	lang_combo_box->addItem(QET::Icons::hr,           tr("Croate"), "hr");
 	lang_combo_box->addItem(QET::Icons::it,           tr("Italien"), "it");
 	lang_combo_box->addItem(QET::Icons::pl,           tr("Polonais"), "pl");
 	lang_combo_box->addItem(QET::Icons::pt,           tr("Portugais"), "pt");
 	lang_combo_box->addItem(QET::Icons::ro,           tr("Roumains"), "ro");
 	lang_combo_box->addItem(QET::Icons::ru,           tr("Russe"), "ru");
-	lang_combo_box->addItem(QET::Icons::sl,           tr("Slov\350ne"), "sl");
+	lang_combo_box->addItem(QET::Icons::sl,           tr("Slovène"), "sl");
 	lang_combo_box->addItem(QET::Icons::nl,           tr("Pays-Bas"), "nl");
 	lang_combo_box->addItem(QET::Icons::be,           tr("Belgique-Flemish"), "be");
 

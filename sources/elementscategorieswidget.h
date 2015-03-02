@@ -17,7 +17,7 @@
 */
 #ifndef ELEMENTS_CATEGORIES_WIDGET_H
 #define ELEMENTS_CATEGORIES_WIDGET_H
-#include <QtGui>
+#include <QtWidgets>
 class ElementsCategoriesList;
 /**
 	This class provides a widget listing available elements categories along

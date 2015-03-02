@@ -45,16 +45,16 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 	
 	end1_type = new QComboBox();
 	end1_type -> addItem(QET::Icons::EndLineNone,     tr("Normale",                "type of the 1st end of a line"), Qet::None    );
-	end1_type -> addItem(QET::Icons::EndLineSimple,   tr("Fl\350che simple",       "type of the 1st end of a line"), Qet::Simple  );
-	end1_type -> addItem(QET::Icons::EndLineTriangle, tr("Fl\350che triangulaire", "type of the 1st end of a line"), Qet::Triangle);
+	end1_type -> addItem(QET::Icons::EndLineSimple,   tr("Flèche simple",       "type of the 1st end of a line"), Qet::Simple  );
+	end1_type -> addItem(QET::Icons::EndLineTriangle, tr("Flèche triangulaire", "type of the 1st end of a line"), Qet::Triangle);
 	end1_type -> addItem(QET::Icons::EndLineCircle,   tr("Cercle",                 "type of the 1st end of a line"), Qet::Circle  );
-	end1_type -> addItem(QET::Icons::EndLineDiamond,  tr("Carr\351",               "type of the 1st end of a line"), Qet::Diamond );
+	end1_type -> addItem(QET::Icons::EndLineDiamond,  tr("Carré",               "type of the 1st end of a line"), Qet::Diamond );
 	end2_type = new QComboBox();
 	end2_type -> addItem(QET::Icons::EndLineNone,     tr("Normale",                "type of the 2nd end of a line"), Qet::None    );
-	end2_type -> addItem(QET::Icons::EndLineSimple,   tr("Fl\350che simple",       "type of the 2nd end of a line"), Qet::Simple  );
-	end2_type -> addItem(QET::Icons::EndLineTriangle, tr("Fl\350che triangulaire", "type of the 2nd end of a line"), Qet::Triangle);
+	end2_type -> addItem(QET::Icons::EndLineSimple,   tr("Flèche simple",       "type of the 2nd end of a line"), Qet::Simple  );
+	end2_type -> addItem(QET::Icons::EndLineTriangle, tr("Flèche triangulaire", "type of the 2nd end of a line"), Qet::Triangle);
 	end2_type -> addItem(QET::Icons::EndLineCircle,   tr("Cercle",                 "type of the 2nd end of a line"), Qet::Circle  );
-	end2_type -> addItem(QET::Icons::EndLineDiamond,  tr("Carr\351",               "type of the 2nd end of a line"), Qet::Diamond );
+	end2_type -> addItem(QET::Icons::EndLineDiamond,  tr("Carré",               "type of the 2nd end of a line"), Qet::Diamond );
 	
 	end1_length = new QDoubleSpinBox();
 	end2_length = new QDoubleSpinBox();
@@ -151,11 +151,11 @@ void LineEditor::updateLine() {
 /// Met a jour l'abscisse du premier point de la ligne et cree un objet d'annulation
 void LineEditor::updateLineX1() { addChangePartCommand(tr("abscisse point 1"),    part, "p1", editedP1()); }
 /// Met a jour l'ordonnee du premier point de la ligne et cree un objet d'annulation
-void LineEditor::updateLineY1() { addChangePartCommand(tr("ordonn\351e point 1"), part, "p1", editedP1()); }
+void LineEditor::updateLineY1() { addChangePartCommand(tr("ordonnée point 1"), part, "p1", editedP1()); }
 /// Met a jour l'abscisse du second point de la ligne et cree un objet d'annulation
 void LineEditor::updateLineX2() { addChangePartCommand(tr("abscisse point 2"),    part, "p2", editedP2()); }
 /// Met a jour l'ordonnee du second point de la ligne et cree un objet d'annulation
-void LineEditor::updateLineY2() { addChangePartCommand(tr("ordonn\351e point 2"), part, "p2", editedP2()); }
+void LineEditor::updateLineY2() { addChangePartCommand(tr("ordonnée point 2"), part, "p2", editedP2()); }
 /// Met a jour le type de la premiere extremite
 void LineEditor::updateLineEndType1() {   addChangePartCommand(tr("type fin 1"),     part, "end1",    end1_type -> itemData(end1_type->currentIndex()));   }
 /// Met a jour la longueur de la premiere extremite

@@ -18,7 +18,7 @@
 #ifndef CONDUCTOR_PROPERTIES_H
 #define CONDUCTOR_PROPERTIES_H
 #include "qet.h"
-#include <QtGui>
+#include <QtWidgets>
 #include <QtXml>
 /**
 	This class represents the properties of a singleline conductor.

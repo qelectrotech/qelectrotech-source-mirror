@@ -21,6 +21,7 @@
 #include "diagramview.h"
 #include "diagram.h"
 #include <QObject>
+#include <QStandardPaths>
 
 /**
  * @brief DVEventAddImage::DVEventAddImage
@@ -142,7 +143,7 @@ void DVEventAddImage::openDialog() {
 	if (m_diagram -> isReadOnly()) return;
 
 	//Open dialog for select image
-	QString pathPictures = QDesktopServices::storageLocation ( QDesktopServices::PicturesLocation );
+	QString pathPictures = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
 	QString fileName = QFileDialog::getOpenFileName(m_dv, QObject::tr("Selectionner une image..."), pathPictures, QObject::tr("Image Files (*.png *.jpg *.bmp *.svg)"));
 
 	if (fileName.isEmpty()) return;

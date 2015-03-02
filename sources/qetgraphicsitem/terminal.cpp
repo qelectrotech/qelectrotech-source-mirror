@@ -64,7 +64,7 @@ void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name
 	br_ = new QRectF();
 	previous_terminal_ = 0;
 	// divers
-	setAcceptsHoverEvents(true);
+	setAcceptHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
 	hovered_ = false;
 	setToolTip(QObject::tr("Borne", "tooltip"));
@@ -228,7 +228,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 	
 	p -> save();
 	
-#ifndef Q_WS_WIN
+#ifndef Q_OS_WIN
 	// corrige un bug de rendu ne se produisant que lors du rendu sur QGraphicsScene sous X11 au zoom par defaut
 	static bool must_correct_rendering_bug = QETApp::settings().value("correct-rendering", false).toBool();
 	if (must_correct_rendering_bug) {
@@ -588,7 +588,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 		d -> setConductor(false);
 
 			//Get item under cursor
-		QGraphicsItem *qgi = d -> itemAt(e -> scenePos());
+		QGraphicsItem *qgi = d -> itemAt(e -> scenePos(), QTransform());
 		if (!qgi) return;
 
 			//Element must be a terminal

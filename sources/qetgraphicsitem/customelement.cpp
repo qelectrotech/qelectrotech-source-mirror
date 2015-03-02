@@ -117,9 +117,9 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 		qreal element_version = xml_def_elmt.attribute("version").toDouble(&conv_ok);
 		if (conv_ok && QET::version.toDouble() < element_version) {
 			std::cerr << qPrintable(
-				QObject::tr("Avertissement : l'\351l\351ment "
-				" a \351t\351 enregistr\351 avec une version"
-				" ult\351rieure de QElectroTech.")
+				QObject::tr("Avertissement : l'élément "
+				" a été enregistré avec une version"
+				" ultérieure de QElectroTech.")
 			) << std::endl;
 		}
 	}

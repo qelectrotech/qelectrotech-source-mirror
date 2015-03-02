@@ -81,7 +81,7 @@ bool nomenclature::saveToCSVFile() {
 QString nomenclature::getNomenclature() {
 	//Process...
 	QString data = tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
-	data += tr("Folio") +";"+ tr("Sch\351ma") +";"+ tr("D\351signation qet")+";"+ tr("Label") +";"+ tr("D\351signation")+";"+ tr("Commentaire") +";"+ tr("Fabricant") +";"+ tr("Reference") +";"+ tr("Machine-reference")+"\n";
+	data += tr("Folio") +";"+ tr("Schéma") +";"+ tr("Désignation qet")+";"+ tr("Label") +";"+ tr("Désignation")+";"+ tr("Commentaire") +";"+ tr("Fabricant") +";"+ tr("Reference") +";"+ tr("Machine-reference")+"\n";
 
 	if(m_list_diagram.isEmpty()) return data;
 

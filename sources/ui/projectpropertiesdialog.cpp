@@ -29,7 +29,7 @@
  */
 ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *parent) {
 	m_properties_dialog = new ConfigDialog (parent);
-	m_properties_dialog -> setWindowTitle(QObject::tr("Propri\351t\351s du projet", "window title"));
+	m_properties_dialog -> setWindowTitle(QObject::tr("Propriétés du projet", "window title"));
 	m_properties_dialog -> addPage(new ProjectMainConfigPage       (project));
 	m_properties_dialog -> addPage(new NewDiagramPage (project));
 	m_properties_dialog -> addPage(new ProjectAutoNumConfigPage    (project));
