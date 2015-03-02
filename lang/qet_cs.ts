@@ -879,7 +879,7 @@ vodiče s tímto potenciálem?</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="57"/>
-        <source>Êtes-vous s�r de vouloir supprimer cet élément ?
+        <source>Êtes-vous sur de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
@@ -1288,6 +1288,12 @@ vodiče s tímto potenciálem?</translation>
         <translation>Vyprázdnit sbírku?</translation>
     </message>
     <message>
+        <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
+        <source>Êtes-vous sur de vouloir vider cette collection ?</source>
+        <comment>message box content</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="76"/>
         <location filename="../sources/elementscategorydeleter.cpp" line="90"/>
         <source>Supprimer la catégorie ?</source>
@@ -1295,21 +1301,15 @@ vodiče s tímto potenciálem?</translation>
         <translation>Smazat skupinu?</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
-        <source>Êtes-vous s�r de vouloir vider cette collection ?</source>
-        <comment>message box content</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="77"/>
-        <source>Êtes-vous s�r de vouloir supprimer la catégorie ?
+        <source>Êtes-vous sur de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="91"/>
-        <source>Êtes-vous vraiment s�r de vouloir supprimer cette catégorie ?
+        <source>Êtes-vous vraiment sur de vouloir supprimer cette catégorie ?
 Les changements seront définitifs.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
@@ -2941,6 +2941,12 @@ Voulez-vous enregistrer les modifications ?</source>
 Chcete uložit změny?</translation>
     </message>
     <message>
+        <location filename="../sources/projectview.cpp" line="372"/>
+        <source>Êtes-vous sur de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
+        <comment>message box content</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/projectview.cpp" line="673"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
@@ -2980,12 +2986,6 @@ Chcete uložit změny?</translation>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
         <translation>Źádný činný projekt</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="372"/>
-        <source>Êtes-vous s�r de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
-        <comment>message box content</comment>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="730"/>
@@ -7103,7 +7103,7 @@ Přiřazení názvu volta a hodnoty 1745 nahradí v záhlaví výkresu %{volta} 
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
-        <source>Êtes-vous s�r de vouloir supprimer ce modèle de cartouche (%1) ?
+        <source>Êtes-vous sur de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>

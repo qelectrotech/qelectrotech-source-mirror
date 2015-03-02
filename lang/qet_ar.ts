@@ -887,7 +887,7 @@
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="57"/>
-        <source>Êtes-vous s�r de vouloir supprimer cet élément ?
+        <source>Êtes-vous sur de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
@@ -1320,6 +1320,12 @@
         <translation>إفراغ الصنف ؟</translation>
     </message>
     <message>
+        <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
+        <source>Êtes-vous sur de vouloir vider cette collection ?</source>
+        <comment>message box content</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="76"/>
         <location filename="../sources/elementscategorydeleter.cpp" line="90"/>
         <source>Supprimer la catégorie ?</source>
@@ -1328,21 +1334,15 @@
         <translation>حذف الصنف ؟</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
-        <source>Êtes-vous s�r de vouloir vider cette collection ?</source>
-        <comment>message box content</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="77"/>
-        <source>Êtes-vous s�r de vouloir supprimer la catégorie ?
+        <source>Êtes-vous sur de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="91"/>
-        <source>Êtes-vous vraiment s�r de vouloir supprimer cette catégorie ?
+        <source>Êtes-vous vraiment sur de vouloir supprimer cette catégorie ?
 Les changements seront définitifs.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
@@ -2964,6 +2964,12 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>حذف المخطط ؟</translation>
     </message>
     <message>
+        <location filename="../sources/projectview.cpp" line="372"/>
+        <source>Êtes-vous sur de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
+        <comment>message box content</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/projectview.cpp" line="562"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
@@ -3019,12 +3025,6 @@ Voulez-vous enregistrer les modifications ?</source>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
         <translation>لا وجود لمشروع معروض</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="372"/>
-        <source>Êtes-vous s�r de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
-        <comment>message box content</comment>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="730"/>
@@ -7146,7 +7146,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
-        <source>Êtes-vous s�r de vouloir supprimer ce modèle de cartouche (%1) ?
+        <source>Êtes-vous sur de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>

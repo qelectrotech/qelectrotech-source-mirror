@@ -879,7 +879,7 @@ tuturor conductorilor cu același potențial ?</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="57"/>
-        <source>Êtes-vous s�r de vouloir supprimer cet élément ?
+        <source>Êtes-vous sur de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
@@ -1288,6 +1288,12 @@ tuturor conductorilor cu același potențial ?</translation>
         <translation>Se golește colecția ?</translation>
     </message>
     <message>
+        <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
+        <source>Êtes-vous sur de vouloir vider cette collection ?</source>
+        <comment>message box content</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="76"/>
         <location filename="../sources/elementscategorydeleter.cpp" line="90"/>
         <source>Supprimer la catégorie ?</source>
@@ -1295,21 +1301,15 @@ tuturor conductorilor cu același potențial ?</translation>
         <translation>Se șterge categoria?</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
-        <source>Êtes-vous s�r de vouloir vider cette collection ?</source>
-        <comment>message box content</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="77"/>
-        <source>Êtes-vous s�r de vouloir supprimer la catégorie ?
+        <source>Êtes-vous sur de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="91"/>
-        <source>Êtes-vous vraiment s�r de vouloir supprimer cette catégorie ?
+        <source>Êtes-vous vraiment sur de vouloir supprimer cette catégorie ?
 Les changements seront définitifs.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
@@ -2931,6 +2931,12 @@ Doriți să se salveze modificările ?</translation>
         <translation>Se șterge schema ?</translation>
     </message>
     <message>
+        <location filename="../sources/projectview.cpp" line="372"/>
+        <source>Êtes-vous sur de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
+        <comment>message box content</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/projectview.cpp" line="562"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
@@ -2986,12 +2992,6 @@ Doriți să se salveze modificările ?</translation>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
         <translation>nici un proiect activ</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="372"/>
-        <source>Êtes-vous s�r de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
-        <comment>message box content</comment>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="730"/>
@@ -7097,7 +7097,7 @@ asociind numele &quot;volta&quot; cu valoarea &quot;1745&quot; se va înlocui %{
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
-        <source>Êtes-vous s�r de vouloir supprimer ce modèle de cartouche (%1) ?
+        <source>Êtes-vous sur de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
