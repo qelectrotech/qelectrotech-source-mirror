@@ -57,7 +57,7 @@ bool ElementsCategoryDeleter::exec() {
 		QMessageBox::StandardButton answer_0 = QET::QetMessageBox::question(
 			this,
 			tr("Vider la collection ?", "message box title"),
-			tr("Êtes-vous sur de vouloir vider cette collection ?", "message box content"),
+			tr("Êtes-vous sûr  de vouloir vider cette collection ?", "message box content"),
 			QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel
 		);
 		if (answer_0 != QMessageBox::Yes) return(false);
@@ -75,7 +75,7 @@ bool ElementsCategoryDeleter::exec() {
 		this,
 		tr("Supprimer la catégorie ?", "message box title"),
 		tr(
-			"Êtes-vous sur de vouloir supprimer la catégorie ?\nTous "
+			"Êtes-vous sûr  de vouloir supprimer la catégorie ?\nTous "
 			"les éléments et les catégories contenus dans cette "
 			"catégorie seront supprimés.",
 			"message box content"

@@ -54,7 +54,7 @@ bool ElementDeleter::exec() {
 	QMessageBox::StandardButton answer_1 = QET::QetMessageBox::question(
 		this,
 		tr("Supprimer l'élément ?", "message box title"),
-		tr("Êtes-vous sur de vouloir supprimer cet élément ?\n", "message box content"),
+		tr("Êtes-vous sûr  de vouloir supprimer cet élément ?\n", "message box content"),
 		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel
 	);
 	if (answer_1 != QMessageBox::Yes) return(false);
