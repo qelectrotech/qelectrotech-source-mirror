@@ -7581,7 +7581,7 @@ Longueur maximale : %2px
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="69"/>
-        <source>Dimensions : %1�%2
+        <source>Dimensions : %1*%2
 </source>
         <translation type="unfinished"></translation>
     </message>

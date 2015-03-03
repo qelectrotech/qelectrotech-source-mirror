@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fr">
+<TS version="2.1" language="fr">
 <context>
     <name>QETElementEditor</name>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="589"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="634"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n partie sélectionnée.</numerusform>
@@ -12,12 +12,21 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
-        <source>La vérification de cet élément a généré %n avertissement(s) :</source>
-        <comment>message box content</comment>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="729"/>
+        <source> %n erreur(s)</source>
+        <comment>errors</comment>
         <translation>
-            <numerusform>La vérification de cet élément a généré %n avertissement :</numerusform>
-            <numerusform>La vérification de cet élément a généré %n avertissements :</numerusform>
+            <numerusform> %n erreur</numerusform>
+            <numerusform> %n erreurs</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/editor/qetelementeditor.cpp" line="736"/>
+        <source> %n avertissment(s)</source>
+        <comment>warnings</comment>
+        <translation>
+            <numerusform> %n avertissment</numerusform>
+            <numerusform> %n avertissments</numerusform>
         </translation>
     </message>
 </context>
