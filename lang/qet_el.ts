@@ -64,13 +64,13 @@
         <location filename="../sources/aboutqet.cpp" line="96"/>
         <source>2006-2015 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished"></translation>
+        <translation>2006-2015 Οι προγραμματιστές του QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="100"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επικοινωνία : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="114"/>
@@ -201,7 +201,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="186"/>
         <source>Collection d&apos;éléments</source>
-        <translation>Σηλλογή στοιχείων</translation>
+        <translation>Συλλογή στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="174"/>
@@ -882,7 +882,8 @@
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Είστε σίγουρος ότι θέλετε να διαγράψετε αυτό το στοιχείο;
+</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="70"/>
@@ -1298,21 +1299,23 @@
         <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
         <source>Êtes-vous sûr  de vouloir vider cette collection ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Είστε σίγουρος ότι θέλετε να αδιάσετε αυτή τη συλλογή;</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="77"/>
         <source>Êtes-vous sûr  de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Είστε σίγουρος ότι θέλετε να διαγράψετε την κατηγορία;
+Όλα τα στοιχεία και οι κατηγορίες που περιέχονται σε αυτή την κατηγορία θα διαγραφούν.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="91"/>
         <source>Êtes-vous vraiment sur de vouloir supprimer cette catégorie ?
 Les changements seront définitifs.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Είστε σίγουρος ότι θέλετε να διαγράψετε αυτή την κατηγορία;
+Οι αλλαγές θα είναι μόνιμες.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="104"/>
@@ -2199,7 +2202,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/ghostelement.cpp" line="37"/>
         <source>&lt;u&gt;Élément manquant :&lt;/u&gt; %1</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;u&gt;Λείπει το στοιχείο:&lt;/u&gt; %1</translation>
     </message>
 </context>
 <context>
@@ -2305,13 +2308,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="70"/>
         <source>La catégorie « %1 » (%2) existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Η κατηγορία «% 1» (2%) υπάρχει ήδη. Τι θα θέλατε να κάνετε;</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="118"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Το στοιχείο «% 1» (2%) υπάρχει ήδη. Τι θα θέλατε να κάνετε;</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
@@ -2580,7 +2583,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="140"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="154"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished"></translation>
+        <translation>Σελίδα  %1 (%2), θέση %3.</translation>
     </message>
 </context>
 <context>
@@ -2904,7 +2907,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/projectconfigpages.cpp" line="161"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Τίτλος εργασίας:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="163"/>
@@ -2989,7 +2992,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/projectview.cpp" line="372"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Είστε σίγουρος ότι θέλετε να διαγράψετε αυτό το διάγραμμα του έργου; Αυτή η αλλαγή είναι μη αναστρέψιμη.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="730"/>
@@ -4029,7 +4032,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="1276"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1283"/>
@@ -4040,7 +4043,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1454"/>
         <source>Active le projet « %1 »</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενεργοποιεί την εργασία « %1 »</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2030"/>
@@ -4545,7 +4548,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="745"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; : %2</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="773"/>
@@ -4844,7 +4847,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
         <source>Schémas à imprimer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγράμματα προς εκτύπωση:</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
@@ -4995,7 +4998,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetproject.cpp" line="281"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εργασία « %1 »</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="743"/>
@@ -5570,7 +5573,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1162"/>
         <location filename="../sources/diagramcommands.cpp" line="1176"/>
         <source>Lier deux éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνδεση δυο στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1175"/>
@@ -6180,22 +6183,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="47"/>
         <source>Coin supérieur gauche : </source>
-        <translation type="unfinished"></translation>
+        <translation>Επάνω αριστερή γωνία:</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
         <source>Dimensions : </source>
-        <translation type="unfinished"></translation>
+        <translation>Διαστάσεις:</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="53"/>
         <source>Largeur :</source>
-        <translation type="unfinished">Πλάτος:</translation>
+        <translation>Πλάτος:</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
         <source>Hauteur :</source>
-        <translation type="unfinished">Ύψος:</translation>
+        <translation>Ύψος:</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="119"/>
@@ -7082,7 +7085,8 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <source>Êtes-vous sûr  de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Είστε σίγουρος ότι θέλετε να διαγράψετε αυτό το πρότυπο πινακίδας (%1);
+</translation>
     </message>
 </context>
 <context>
@@ -7360,14 +7364,17 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ελάχιστο πλάτος: %1px
+Μέγιστο πλάτος: %2px
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="940"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ελάχιστο πλάτος: %1px
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
@@ -7538,37 +7545,43 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="63"/>
         <source>Nom : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="66"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Σελίδα: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="68"/>
         <source>Position : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Θέση: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="70"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Ακροδέκτες: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="71"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Πεδία κειμένου: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="74"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Τοποθέτηση: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="111"/>
@@ -7609,7 +7622,8 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="69"/>
         <source>Dimensions : %1*%2
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Διαστάσεις: %1*%2
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="92"/>
