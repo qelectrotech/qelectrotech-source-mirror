@@ -1052,7 +1052,7 @@ ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia, QSize diagram_s
 	height -> setSuffix(tr("px"));
 	height -> setValue(diagram_size.height());
 	
-	x_label = new QLabel("\327");
+	x_label = new QLabel("*");
 	
 	keep_ratio = new QPushButton();
 	keep_ratio -> setCheckable(true);

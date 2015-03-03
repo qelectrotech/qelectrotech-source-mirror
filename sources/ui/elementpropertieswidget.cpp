@@ -66,7 +66,7 @@ QWidget* elementpropertieswidget::generalWidget() {
 		description_string += QString(tr("Folio : %1\n")).arg(folio_index + 1);
 	}
 	description_string += QString(tr("Position : %1\n")).arg(diagram_ -> convertPosition(element_ -> scenePos()).toString());
-	description_string += QString(tr("Dimensions : %1\327%2\n")).arg(element_ -> size().width()).arg(element_ -> size().height());
+	description_string += QString(tr("Dimensions : %1*%2\n")).arg(element_ -> size().width()).arg(element_ -> size().height());
 	description_string += QString(tr("Bornes : %1\n")).arg(element_ -> terminals().count());
 	description_string += QString(tr("Champs de texte : %1\n")).arg(element_ -> texts().count());
 
