@@ -73,6 +73,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	prj_move_diagram_up   = new QAction(QET::Icons::GoUp,                      tr("Remonter ce schéma"),               this);
 	prj_move_diagram_down = new QAction(QET::Icons::GoDown,                    tr("Abaisser ce schéma"),               this);
 	prj_move_diagram_upx10   = new QAction(QET::Icons::GoUp,                   tr("Remonter ce schéma x10"),           this);
+	prj_move_diagram_top   = new QAction(QET::Icons::GoUp,                     tr("Remonter ce schéma au debut"),               this);
 	prj_move_diagram_downx10 = new QAction(QET::Icons::GoDown,                 tr("Abaisser ce schéma x10"),           this);
 	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("Nouveau modèle"),                   this);
 	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("Éditer ce modèle"),              this);
@@ -121,6 +122,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(prj_del_diagram,       SIGNAL(triggered()), this,           SLOT(deleteDiagram()));
 	connect(prj_move_diagram_up,   SIGNAL(triggered()), this,           SLOT(moveDiagramUp()));
 	connect(prj_move_diagram_down, SIGNAL(triggered()), this,           SLOT(moveDiagramDown()));
+	connect(prj_move_diagram_top,  SIGNAL(triggered()), this,           SLOT(moveDiagramUpTop()));
 	connect(prj_move_diagram_upx10,   SIGNAL(triggered()), this,        SLOT(moveDiagramUpx10()));
 	connect(prj_move_diagram_downx10, SIGNAL(triggered()), this,        SLOT(moveDiagramDownx10()));
 	connect(tbt_add,               SIGNAL(triggered()), this,           SLOT(addTitleBlockTemplate()));
@@ -299,6 +301,17 @@ void ElementsPanelWidget::deleteDiagram() {
 }
 
 /**
+	Emet le signal requestForDiagramMoveUpTop avec le schema selectionne
++ */
+void ElementsPanelWidget::moveDiagramUpTop() {
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		emit(requestForDiagramMoveUpTop(selected_diagram));
+	}
+}
+
+
+
+/**
 	Emet le signal requestForDiagramMoveUp avec le schema selectionne
 */
 void ElementsPanelWidget::moveDiagramUp() {
@@ -455,6 +468,7 @@ void ElementsPanelWidget::updateButtons() {
 		prj_del_diagram       -> setEnabled(is_writable);
 		prj_move_diagram_up   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_down -> setEnabled(is_writable && diagram_position < project_diagrams_count - 1);
+		prj_move_diagram_top   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_upx10   -> setEnabled(is_writable && diagram_position > 10);
 		prj_move_diagram_downx10 -> setEnabled(is_writable && diagram_position < project_diagrams_count - 10);
 		setElementsActionEnabled(false);
@@ -559,6 +573,7 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 		case QET::Diagram:
 			context_menu -> addAction(prj_prop_diagram);
 			context_menu -> addAction(prj_del_diagram);
+			context_menu -> addAction(prj_move_diagram_top);
 			context_menu -> addAction(prj_move_diagram_upx10);
 			context_menu -> addAction(prj_move_diagram_up);
 			context_menu -> addAction(prj_move_diagram_down);

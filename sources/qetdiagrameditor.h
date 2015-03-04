@@ -145,6 +145,7 @@ class QETDiagramEditor : public QETMainWindow {
 		void removeDiagramFromProject();
 		void moveDiagramUp(Diagram *);
 		void moveDiagramDown(Diagram *);
+		void moveDiagramUpTop(Diagram *);
 		void moveDiagramUpx10(Diagram *);
 		void moveDiagramDownx10(Diagram *);
 		void cleanCurrentProject();

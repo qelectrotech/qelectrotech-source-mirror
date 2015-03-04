@@ -144,6 +144,7 @@ void QETDiagramEditor::setUpElementsPanel() {
 	connect(pa, SIGNAL(requestForDiagramDeletion          (Diagram *)), this, SLOT(removeDiagram(Diagram *)));
 	connect(pa, SIGNAL(requestForDiagramMoveUp            (Diagram *)), this, SLOT(moveDiagramUp(Diagram *)));
 	connect(pa, SIGNAL(requestForDiagramMoveDown          (Diagram *)), this, SLOT(moveDiagramDown(Diagram *)));
+	connect(pa, SIGNAL(requestForDiagramMoveUpTop         (Diagram *)), this, SLOT(moveDiagramUpTop(Diagram *)));
 	connect(pa, SIGNAL(requestForDiagramMoveUpx10         (Diagram *)), this, SLOT(moveDiagramUpx10(Diagram *)));
 	connect(pa, SIGNAL(requestForDiagramMoveDownx10       (Diagram *)), this, SLOT(moveDiagramDownx10(Diagram *)));
 }
@@ -1835,6 +1836,25 @@ void QETDiagramEditor::moveDiagramDown(Diagram *diagram) {
 		// recupere la vue sur ce projet
 		if (ProjectView *project_view = findProject(diagram_project)) {
 			project_view -> moveDiagramDown(diagram);
+		}
+	}
+}
+
+/**
+	Change l'ordre des schemas d'un projet, en decalant le schema vers le haut /
+	la gauche en position 0
+	@param diagram Schema a decaler vers le haut / la gauche en position 0
+ */
+void QETDiagramEditor::moveDiagramUpTop(Diagram *diagram) {
+	if (!diagram) return;
+
+	// recupere le projet contenant le schema
+	if (QETProject *diagram_project = diagram -> project()) {
+		if (diagram_project -> isReadOnly()) return;
+
+		// recupere la vue sur ce projet
+		if (ProjectView *project_view = findProject(diagram_project)) {
+			project_view -> moveDiagramUpTop(diagram);
 		}
 	}
 }

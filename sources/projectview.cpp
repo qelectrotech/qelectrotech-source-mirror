@@ -502,6 +502,28 @@ void ProjectView::moveDiagramDown(Diagram *diagram) {
 }
 
 /**
+	Deplace le schema diagram_view vers le haut / la gauche en position 0
+*/
+void ProjectView::moveDiagramUpTop(DiagramView *diagram_view) {
+	if (!diagram_view) return;
+
+	int diagram_view_position = diagram_ids_.key(diagram_view);
+	if (!diagram_view_position) {
+		// le schema est le premier du projet
+		return;
+	}
+	tabs_ -> moveTab(diagram_view_position, (diagrams().size()-1, 0));
+}
+
+/**
+	Deplace le schema diagram vers le haut / la gauche en position 0
+*/
+void ProjectView::moveDiagramUpTop(Diagram *diagram) {
+	moveDiagramUpTop(findDiagram(diagram));
+}
+
+
+/**
 	Deplace le schema diagram_view vers le haut / la gauche x10
 */
 void ProjectView::moveDiagramUpx10(DiagramView *diagram_view) {
