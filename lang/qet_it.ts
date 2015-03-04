@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="it_IT">
+<TS version="2.0" language="it_IT">
 <context>
     <name>AboutQET</name>
     <message>
@@ -1607,7 +1607,7 @@ Le modifiche saranno definitive.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Remonter ce schéma au debut</source>
-        <translation type="unfinished"></translation>
+        <translation>Riportare questo schema all&apos;inizio</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
