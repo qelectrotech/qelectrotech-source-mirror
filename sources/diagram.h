@@ -43,6 +43,8 @@ class Terminal;
 class ConductorTextItem;
 class DiagramImageItem;
 class ElementTextsMover;
+class DiagramEventInterface;
+
 /**
 	This class represents an electric diagram. It manages its various child
 	elements, conductors and texts and handles their graphic rendering.
@@ -99,14 +101,23 @@ class Diagram : public QGraphicsScene
 		bool draw_colored_conductors_;
 
 		QString m_conductors_autonum_name;
+		DiagramEventInterface *m_event_interface;
 	
 	// METHODS
 	protected:
 		virtual void drawBackground(QPainter *, const QRectF &);
-		virtual void keyPressEvent(QKeyEvent *);
-		virtual void keyReleaseEvent(QKeyEvent *);
+
+		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
+		virtual void mousePressEvent       (QGraphicsSceneMouseEvent *event);
+		virtual void mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
+		virtual void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
+		virtual void wheelEvent            (QGraphicsSceneWheelEvent *event);
+		virtual void keyPressEvent   (QKeyEvent *);
+		virtual void keyReleaseEvent (QKeyEvent *);
 	
 	public:
+		void setEventInterface (DiagramEventInterface *event_interface);
+
 		//methods related to xref properties
 		QString		   defaultReportProperties () const {return project_ -> defaultReportProperties();}
 		XRefProperties defaultXRefProperties   (const QString &str) const {return project_ -> defaultXRefProperties(str);}

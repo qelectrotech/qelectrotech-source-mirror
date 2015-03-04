@@ -42,6 +42,7 @@
 #include "factory/elementfactory.h"
 #include "diagrampropertiesdialog.h"
 #include "dveventinterface.h"
+#include "diagrameventaddelement.h"
 
 /**
 	Constructeur
@@ -287,11 +288,15 @@ void DiagramView::handleElementDrop(QDropEvent *e) {
 	// verifie qu'il existe un element correspondant a cet emplacement
 	ElementsCollectionItem *dropped_item = QETApp::collectionItem(location);
 	if (!dropped_item) return;
+
+	diagram()->setEventInterface(new DiagramEventAddElement(location, diagram(), mapToScene(e->pos())));
+		//Set focus to the view to get event
+	this->setFocus();
 	
-	next_location_ = location;
-	next_position_ = e-> pos();
+//	next_location_ = location;
+//	next_position_ = e-> pos();
 	
-	emit(aboutToAddElement());
+//	emit(aboutToAddElement());
 }
 
 /**

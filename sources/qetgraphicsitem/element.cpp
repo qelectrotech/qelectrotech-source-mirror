@@ -76,6 +76,17 @@ void Element::setHighlighted(bool hl) {
 }
 
 /**
+ * @brief Element::displayHelpLine
+ * Display the help line of each terminal if b is true
+ * @param b
+ */
+void Element::displayHelpLine(bool b)
+{
+	foreach (Terminal *t, terminals())
+		t->drawHelpLine(b);
+}
+
+/**
 	Methode principale de dessin de l'element
 	@param painter Le QPainter utilise pour dessiner l'elment
 	@param options Les options de style a prendre en compte

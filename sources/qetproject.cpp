@@ -169,6 +169,27 @@ QETProject::~QETProject() {
 }
 
 /**
+ * @brief QETProject::integrateElementToProject
+ * Return true if we must to integarte the element to the project otherwise false
+ * @param location : element location
+ * @param project : project to test
+ * @return
+ */
+bool QETProject::integrateElementToProject(const ElementsLocation &location, const QETProject *project)
+{
+		//Integration element must be enable
+	bool auto_integration_enabled = QETApp::settings().value("diagrameditor/integrate-elements", true).toBool();
+
+		//the element belongs there a project and if so, is this another project of the project given by parameter?
+	bool elmt_from_project = location.project();
+	bool elmt_from_another_project = elmt_from_project && location.project() != project;
+
+	bool must_integrate_element = (elmt_from_another_project || (auto_integration_enabled && !elmt_from_project));
+
+	return(must_integrate_element);
+}
+
+/**
 	Cette methode peut etre utilisee pour tester la bonne ouverture d'un projet
 	@return l'etat du projet
 	@see ProjectState

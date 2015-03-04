@@ -34,6 +34,7 @@
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "terminal.h"
 #include "elementtextsmover.h"
+#include "diagrameventinterface.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -54,17 +55,15 @@ Diagram::Diagram(QETProject *project) :
 	draw_grid_               (true),
 	use_border_              (true),
 	draw_terminals_          (true),
-	draw_colored_conductors_ (true)
+	draw_colored_conductors_ (true),
+	m_event_interface (nullptr)
 {
 	setProject(project);
 	qgi_manager_ = new QGIManager(this);
 	setBackgroundBrush(Qt::white);
 	conductor_setter_ = new QGraphicsLineItem(0);
 	conductor_setter_ -> setZValue(1000000);
-//	QPen t;
-//	t.setColor(Qt::black);
-//	t.setWidthF(1.5);
-//	t.setStyle(Qt::DashLine);
+
 	QPen pen(Qt::NoBrush, 1.5, Qt::DashLine);
 	pen.setColor(Qt::black);
 	conductor_setter_ -> setPen(pen);
@@ -93,6 +92,8 @@ Diagram::~Diagram() {
 	// delete of object for manage movement
 	delete elements_mover_;
 	delete element_texts_mover_;
+
+	if (m_event_interface) delete m_event_interface;
 	
 	// list removable items
 	QList<QGraphicsItem *> deletable_items;
@@ -155,10 +156,115 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 }
 
 /**
-	Gere les enfoncements de touches du clavier
-	@param e QKeyEvent decrivant l'evenement clavier
-*/
-void Diagram::keyPressEvent(QKeyEvent *e) {
+ * @brief Diagram::mouseDoubleClickEvent
+ * This event is managed by diagram event interface if any.
+ * @param event :
+ */
+void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_event_interface) {
+		if (m_event_interface -> mouseDoubleClickEvent(event)) {
+			if (m_event_interface->isFinish()) {
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+
+	QGraphicsScene::mouseDoubleClickEvent(event);
+}
+
+/**
+ * @brief Diagram::mousePressEvent
+ * This event is managed by diagram event interface if any.
+ * @param event
+ */
+void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_event_interface) {
+		if (m_event_interface -> mousePressEvent(event)) {
+			if (m_event_interface->isFinish()) {
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+
+	QGraphicsScene::mousePressEvent(event);
+}
+
+/**
+ * @brief Diagram::mouseMoveEvent
+ * This event is managed by diagram event interface if any.
+ * @param event
+ */
+void Diagram::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_event_interface) {
+		if (m_event_interface -> mouseMoveEvent(event)) {
+			if (m_event_interface->isFinish()) {
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+
+	QGraphicsScene::mouseMoveEvent(event);
+}
+
+/**
+ * @brief Diagram::mouseReleaseEvent
+ * This event is managed by diagram event interface if any.
+ * @param event
+ */
+void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_event_interface) {
+		if (m_event_interface -> mouseReleaseEvent(event)) {
+			if (m_event_interface->isFinish()) {
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+
+	QGraphicsScene::mouseReleaseEvent(event);
+}
+
+/**
+ * @brief Diagram::wheelEvent
+ * This event is managed by diagram event interface if any.
+ * @param event
+ */
+void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
+{
+	if (m_event_interface) {
+		if (m_event_interface -> wheelEvent(event)) {
+			if (m_event_interface->isFinish()) {
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+}
+
+/**
+ * @brief Diagram::keyPressEvent
+ * This event is managed by diagram event interface if any.
+ * Else move selected elements
+ * @param e
+ */
+void Diagram::keyPressEvent(QKeyEvent *e)
+{
+	if (m_event_interface) {
+		if (m_event_interface -> keyPressEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+
 	bool transmit_event = true;
 	if (!isReadOnly()) {
 		QPointF movement;
@@ -181,10 +287,22 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 }
 
 /**
-	Gere les relachements de touches du clavier
-	@param e QKeyEvent decrivant l'evenement clavier
-*/
-void Diagram::keyReleaseEvent(QKeyEvent *e) {
+ * @brief Diagram::keyReleaseEvent
+ * This event is managed by diagram event interface if any.
+ * Else move selected element
+ * @param e
+ */
+void Diagram::keyReleaseEvent(QKeyEvent *e)
+{
+	if (m_event_interface) {
+		if (m_event_interface -> KeyReleaseEvent(e)) {
+			if (m_event_interface->isFinish()) {
+				delete m_event_interface; m_event_interface = nullptr;
+			}
+			return;
+		}
+	}
+
 	bool transmit_event = true;
 	if (!isReadOnly()) {
 		// detecte le relachement d'une touche de direction ( = deplacement d'elements)
@@ -201,6 +319,24 @@ void Diagram::keyReleaseEvent(QKeyEvent *e) {
 	if (transmit_event) {
 		QGraphicsScene::keyReleaseEvent(e);
 	}
+}
+
+/**
+ * @brief Diagram::setEventInterface
+ * Set event_interface has current interface.
+ * Diagram become the ownership of event_interface
+ * If there is a previous interface, they will be delete before
+ * and call init() to the new interface.
+ * @param event_interface
+ */
+void Diagram::setEventInterface(DiagramEventInterface *event_interface)
+{
+	if (m_event_interface)
+	{
+		delete m_event_interface;
+		event_interface -> init();
+	}
+	m_event_interface = event_interface;
 }
 
 /**

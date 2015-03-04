@@ -73,7 +73,8 @@ INCLUDEPATH += sources \
                sources/editor \
                sources/editor/esevent \
                sources/editor/graphicspart \
-               sources/undocommand
+               sources/undocommand \
+               sources/diagramevent
 
 
 # Fichiers sources
@@ -83,7 +84,8 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*
            $$files(sources/editor/esevent/*.h) \
            $$files(sources/editor/graphicspart/*.h) \
            $$files(sources/dvevent/*.h) \
-           $$files(sources/undocommand/*.h)
+           $$files(sources/undocommand/*.h) \
+           $$files(sources/diagramevent/*.h)
 
 SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/titleblock/*.cpp) $$files(sources/richtext/*.cpp) $$files(sources/ui/*.cpp) $$files(sources/qetgraphicsitem/*.cpp) $$files(sources/factory/*.cpp) \
            $$files(sources/properties/*.cpp) \
@@ -91,7 +93,8 @@ SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/
            $$files(sources/editor/esevent/*.cpp) \
            $$files(sources/editor/graphicspart/*.cpp) \
            $$files(sources/dvevent/*.cpp) \
-           $$files(sources/undocommand/*.cpp)
+           $$files(sources/undocommand/*.cpp) \
+           $$files(sources/diagramevent/*.cpp)
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc

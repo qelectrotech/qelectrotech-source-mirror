@@ -75,6 +75,8 @@ class QETProject : public QObject
 		ProjectParsingFailed  = 4, /// the parsing of the XML content failed
 		FileOpenDiscard       = 5  /// the user cancelled the file opening
 	};
+
+	static bool integrateElementToProject (const ElementsLocation &location, const QETProject *project);
 	
 		// methods
 	public:
