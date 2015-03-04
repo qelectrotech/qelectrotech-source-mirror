@@ -1588,7 +1588,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Remonter ce schéma au debut</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση στην αρχή</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
@@ -4547,7 +4547,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Σφάλμα&lt;/b  &gt; :&lt;br&gt;Τα στοιχεία του τύπου κύρια, βοηθητικά, απλά και αναφορά σελίδας πρέπει να έχουν ένα πεδίο κειμένου με πινακίδα &apos;ετικέτα&apos;.&lt;br&gt;&lt;b&gt;Λύση&lt;/b&gt;:&lt;br&gt;Προσθέστε ένα πεδίο κειμένου και δηλώστε το ως &apos;ετικέτα&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="745"/>
