@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<TS version="2.0" language="de_DE">
 <context>
     <name>AboutQET</name>
     <message>
@@ -1640,7 +1640,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Remonter ce schéma au debut</source>
-        <translation type="unfinished"></translation>
+        <translation>Folie ganz nach oben verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
@@ -7629,7 +7629,7 @@ Maximale Länge: %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="69"/>
         <source>Dimensions : %1*%2
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Abmessungen: %1*%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="92"/>
