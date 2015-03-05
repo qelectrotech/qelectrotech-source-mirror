@@ -45,9 +45,15 @@ class ElementInfoWidget : public QWidget {
 		bool apply();
 		QUndoCommand* associatedUndo () const;
 
+	protected:
+		virtual bool event(QEvent *event);
+
 	private:
 		void buildInterface();
 		void fillInfo();
+
+	private slots:
+		void firstActivated();
 
 		//ATTRIBUTES
 	private:
@@ -55,6 +61,7 @@ class ElementInfoWidget : public QWidget {
 		Element                         *element_;
 		DiagramContext                   elmt_info;
 		QList <ElementInfoPartWidget *>  eipw_list;
+		bool m_first_activation;
 };
 
 #endif // ELEMENTINFOWIDGET_H

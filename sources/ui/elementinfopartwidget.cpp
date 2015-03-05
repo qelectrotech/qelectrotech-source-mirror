@@ -87,3 +87,11 @@ void ElementInfoPartWidget::setShow(const bool &s) {
 void ElementInfoPartWidget::setHideShow(const bool &hide) {
 	ui -> checkBox -> setHidden(hide);
 }
+
+/**
+ * @brief ElementInfoPartWidget::setFocusTolineEdit
+ * Set the focus to the line edit
+ */
+void ElementInfoPartWidget::setFocusTolineEdit() {
+	ui->line_edit->setFocus();
+}

@@ -33,7 +33,8 @@ ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::ElementInfoWidget),
 	element_(elmt),
-	elmt_info(elmt->elementInformations())
+	elmt_info(elmt->elementInformations()),
+	m_first_activation (true)
 {
 	ui->setupUi(this);
 	buildInterface();
@@ -90,6 +91,27 @@ QUndoCommand* ElementInfoWidget::associatedUndo() const {
 }
 
 /**
+ * @brief ElementInfoWidget::event
+ * Reimplemented from QWidget::event
+ * Only give focus to the first line edit at first activation.
+ * After send the event to QWidget.
+ * @param event
+ * @return
+ */
+bool ElementInfoWidget::event(QEvent *event)
+{
+	if (m_first_activation)
+	{
+		if (event -> type() == QEvent::WindowActivate || event -> type() == QEvent::Show)
+		{
+			QTimer::singleShot(250, this, SLOT(firstActivated()));
+			m_first_activation = false;
+		}
+	}
+	return(QWidget::event(event));
+}
+
+/**
  * @brief ElementInfoWidget::buildInterface
  * Build the widget
  */
@@ -121,4 +143,13 @@ void ElementInfoWidget::fillInfo() {
 		else //< for other eipw we hide the checkbox
 			eipw->setHideShow(true);
 	}
+}
+
+/**
+ * @brief ElementInfoWidget::firstActivated
+ * Slot activated when this widget is show.
+ * Set the focus to the first line edit provided by this widget
+ */
+void ElementInfoWidget::firstActivated() {
+	eipw_list.first() -> setFocusTolineEdit();
 }

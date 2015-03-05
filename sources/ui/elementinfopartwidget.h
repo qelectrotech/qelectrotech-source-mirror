@@ -38,6 +38,7 @@ class ElementInfoPartWidget : public QWidget {
 		bool    mustShow    () const;
 		void    setShow     (const bool &);
 		void    setHideShow (const bool &);
+		void    setFocusTolineEdit();
 
 	//ATTRIBUTES
 	private:
