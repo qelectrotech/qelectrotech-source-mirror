@@ -22,7 +22,6 @@
 #include "diagramprintdialog.h"
 #include "exportdialog.h"
 #include "qetapp.h"
-#include "qettabwidget.h"
 #include "qetelementeditor.h"
 #include "interactivemoveelementshandler.h"
 #include "borderpropertieswidget.h"
@@ -34,6 +33,8 @@
 #include "qettemplateeditor.h"
 #include "diagramfoliolist.h"
 #include "projectpropertiesdialog.h"
+
+#include <QTabWidget>
 
 /**
 	Constructeur
@@ -120,7 +121,7 @@ QList<Diagram *> ProjectView::getDiagrams(ProjectSaveOptions options) {
 	@return le schema actuellement active
 */
 DiagramView *ProjectView::currentDiagram() const {
-	int current_tab_index = tabs_ -> currentIndex();
+	int current_tab_index = m_tab -> currentIndex();
 	return(diagram_ids_[current_tab_index]);
 }
 
@@ -314,7 +315,7 @@ void ProjectView::addNewDiagramFolioList() {
 		DiagramView *new_diagram_view = new DiagramView(d);
 		addDiagram(new_diagram_view);
 		showDiagram(new_diagram_view);
-		tabs_->moveTab(diagrams().size()-1, i);
+		m_tab->tabBar()->moveTab(diagrams().size()-1, i);
 		i++;
 	}
 }
@@ -337,7 +338,7 @@ void ProjectView::addDiagram(DiagramView *diagram) {
 	if (diagram_ids_.values().contains(diagram)) return;
 	
 	// Add new tab for the diagram
-	tabs_ -> addTab(diagram, QET::Icons::Diagram, diagram -> title());
+	m_tab -> addTab(diagram, QET::Icons::Diagram, diagram -> title());
 	diagram -> setFrameStyle(QFrame::Plain | QFrame::NoFrame);
 
 	diagrams_ << diagram;
@@ -379,7 +380,7 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 	
 	// enleve le DiagramView des onglets
 	int diagram_tab_id = diagram_ids_.key(diagram_view);
-	tabs_ -> removeTab(diagram_tab_id);
+	m_tab -> removeTab(diagram_tab_id);
 	diagrams_.removeAll(diagram_view);
 	rebuildDiagramsMap();
 	
@@ -412,7 +413,7 @@ void ProjectView::removeDiagram(Diagram *diagram) {
 */
 void ProjectView::showDiagram(DiagramView *diagram) {
 	if (!diagram) return;
-	tabs_ -> setCurrentWidget(diagram);
+	m_tab -> setCurrentWidget(diagram);
 }
 
 /**
@@ -422,7 +423,7 @@ void ProjectView::showDiagram(DiagramView *diagram) {
 void ProjectView::showDiagram(Diagram *diagram) {
 	if (!diagram) return;
 	if (DiagramView *diagram_view = findDiagram(diagram)) {
-		tabs_ -> setCurrentWidget(diagram_view);
+		m_tab -> setCurrentWidget(diagram_view);
 	}
 }
 
@@ -470,7 +471,7 @@ void ProjectView::moveDiagramUp(DiagramView *diagram_view) {
 		// le schema est le premier du projet
 		return;
 	}
-	tabs_ -> moveTab(diagram_view_position, diagram_view_position - 1);
+	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position - 1);
 }
 
 /**
@@ -491,7 +492,7 @@ void ProjectView::moveDiagramDown(DiagramView *diagram_view) {
 		// le schema est le dernier du projet
 		return;
 	}
-	tabs_ -> moveTab(diagram_view_position, diagram_view_position + 1);
+	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position + 1);
 }
 
 /**
@@ -500,28 +501,6 @@ void ProjectView::moveDiagramDown(DiagramView *diagram_view) {
 void ProjectView::moveDiagramDown(Diagram *diagram) {
 	moveDiagramDown(findDiagram(diagram));
 }
-
-/**
-	Deplace le schema diagram_view vers le haut / la gauche en position 0
-*/
-void ProjectView::moveDiagramUpTop(DiagramView *diagram_view) {
-	if (!diagram_view) return;
-
-	int diagram_view_position = diagram_ids_.key(diagram_view);
-	if (!diagram_view_position) {
-		// le schema est le premier du projet
-		return;
-	}
-	tabs_ -> moveTab(diagram_view_position, (diagrams().size(), 0));
-}
-
-/**
-	Deplace le schema diagram vers le haut / la gauche en position 0
-*/
-void ProjectView::moveDiagramUpTop(Diagram *diagram) {
-	moveDiagramUpTop(findDiagram(diagram));
-}
-
 
 /**
 	Deplace le schema diagram_view vers le haut / la gauche x10
@@ -534,7 +513,7 @@ void ProjectView::moveDiagramUpx10(DiagramView *diagram_view) {
 		// le schema est le premier du projet
 		return;
 	}
-	tabs_ -> moveTab(diagram_view_position, diagram_view_position - 10);
+	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position - 10);
 }
 
 /**
@@ -555,7 +534,7 @@ void ProjectView::moveDiagramDownx10(DiagramView *diagram_view) {
 		// le schema est le dernier du projet
 		return;
 	}
-	tabs_ -> moveTab(diagram_view_position, diagram_view_position + 10);
+	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position + 10);
 }
 
 /**
@@ -771,22 +750,20 @@ void ProjectView::initWidgets() {
 	fallback_label_ -> setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 	
 	// initialize tabs
-	tabs_ = new QETTabWidget();
-	tabs_ -> setMovable(true);
+	m_tab = new QTabWidget(this);
+	m_tab -> setMovable(true);
 	
-	QToolButton *add_new_diagram_button = new QToolButton();
+	QToolButton *add_new_diagram_button = new QToolButton;
 	add_new_diagram_button -> setDefaultAction(add_new_diagram_);
 	add_new_diagram_button -> setAutoRaise(true);
-	tabs_ -> setCornerWidget(add_new_diagram_button, Qt::TopRightCorner);
+	m_tab -> setCornerWidget(add_new_diagram_button, Qt::TopRightCorner);
 	
-	connect(tabs_, SIGNAL(currentChanged(int)),   this, SLOT(tabChanged(int)));
-	connect(tabs_, SIGNAL(tabDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
-	connect(tabs_, SIGNAL(firstTabInserted()),    this, SLOT(firstTabInserted()));
-	connect(tabs_, SIGNAL(lastTabRemoved()),      this, SLOT(lastTabRemoved()));
-	connect(tabs_, SIGNAL(tabMoved(int, int)),    this, SLOT(tabMoved(int, int)));
+	connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
+	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
+	connect(m_tab->tabBar(), SIGNAL(tabMoved(int, int)), this, SLOT(tabMoved(int, int)));
 	
 	fallback_widget_ -> setVisible(false);
-	tabs_ -> setVisible(false);
+	m_tab -> setVisible(false);
 }
 
 /**
@@ -804,7 +781,7 @@ void ProjectView::initLayout() {
 #endif
 	layout_ -> setSpacing(0);
 	layout_ -> addWidget(fallback_widget_);
-	layout_ -> addWidget(tabs_);
+	layout_ -> addWidget(m_tab);
 }
 
 
@@ -827,7 +804,7 @@ void ProjectView::loadDiagrams() {
 	// If project have the folios list, move it at the beginning of the project
 	if (project_ -> getFolioSheetsQuantity()) {
 		for (int i = 0; i < project_->getFolioSheetsQuantity(); i++)
-		tabs_ -> moveTab(diagrams().size()-1, + 1);
+		m_tab -> tabBar() -> moveTab(diagrams().size()-1, + 1);
 	}
 }
 
@@ -853,7 +830,7 @@ void ProjectView::adjustReadOnlyState() {
 	bool editable = !(project_ -> isReadOnly());
 	
 	// prevent users from moving existing diagrams
-	tabs_ -> setMovable(editable);
+	m_tab -> setMovable(editable);
 	// prevent users from adding new diagrams
 	add_new_diagram_ -> setEnabled(editable);
 	
@@ -869,7 +846,7 @@ void ProjectView::adjustReadOnlyState() {
 void ProjectView::updateTabTitle(DiagramView *diagram, const QString &diagram_title) {
 	int diagram_tab_id = diagram_ids_.key(diagram, -1);
 	if (diagram_tab_id != -1) {
-		tabs_ -> setTabText(diagram_tab_id, diagram_title);
+		m_tab -> setTabText(diagram_tab_id, diagram_title);
 	}
 }
 
@@ -928,17 +905,25 @@ void ProjectView::rebuildDiagramsMap() {
 	diagram_ids_.clear();
 	
 	foreach(DiagramView *diagram_view, diagrams_) {
-		int dv_idx = tabs_ -> indexOf(diagram_view);
+		int dv_idx = m_tab -> indexOf(diagram_view);
 		if (dv_idx == -1) continue;
 		diagram_ids_.insert(dv_idx, diagram_view);
 	}
 }
 
 /**
-	Gere les changements d'onglets
-	@param tab_id Index de l'onglet actif
-*/
+ * @brief ProjectView::tabChanged
+ * Manage the tab change.
+ * If tab_id == -1 (there is no diagram opened),
+ * we display the fallback widget.
+ * @param tab_id
+ */
 void ProjectView::tabChanged(int tab_id) {
+	if (tab_id == -1)
+		setDisplayFallbackWidget(true);
+	else if(m_tab->count() == 1)
+		setDisplayFallbackWidget(false);
+
 	emit(diagramActivated(diagram_ids_[tab_id]));
 }
 
@@ -955,20 +940,6 @@ void ProjectView::tabDoubleClicked(int tab_id) {
 }
 
 /**
-	Gere le fait que le premier schema d'un projet soit insere
-*/
-void ProjectView::firstTabInserted() {
-	setDisplayFallbackWidget(false);
-}
-
-/**
-	Gere le fait que le dernier schema d'un projet soit enleve
-*/
-void ProjectView::lastTabRemoved() {
-	setDisplayFallbackWidget(true);
-}
-
-/**
 	@param fallback true pour afficher le widget de fallback, false pour
 	afficher les onglets.
 	Le widget de Fallback est le widget affiche lorsque le projet ne comporte
@@ -976,5 +947,5 @@ void ProjectView::lastTabRemoved() {
 */
 void ProjectView::setDisplayFallbackWidget(bool fallback) {
 	fallback_widget_ -> setVisible(fallback);
-	tabs_ -> setVisible(!fallback);
+	m_tab -> setVisible(!fallback);
 }

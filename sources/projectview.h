@@ -24,7 +24,7 @@ class QETProject;
 class DiagramView;
 class Diagram;
 class ElementsLocation;
-class QETTabWidget;
+class QTabWidget;
 /**
 	This class provides a widget displaying the diagrams of a particular
 	project using tabs.
@@ -73,8 +73,6 @@ class ProjectView : public QWidget {
 	void moveDiagramUp(Diagram *);
 	void moveDiagramDown(DiagramView *);
 	void moveDiagramDown(Diagram *);
-	void moveDiagramUpTop(DiagramView *);
-	void moveDiagramUpTop(Diagram *);
 	void moveDiagramUpx10(DiagramView *);
 	void moveDiagramUpx10(Diagram *);
 	void moveDiagramDownx10(DiagramView *);
@@ -119,8 +117,6 @@ class ProjectView : public QWidget {
 	private slots:
 	void tabChanged(int);
 	void tabDoubleClicked(int);
-	void firstTabInserted();
-	void lastTabRemoved();
 	void setDisplayFallbackWidget(bool);
 	void adjustReadOnlyState();
 	
@@ -131,7 +127,7 @@ class ProjectView : public QWidget {
 	QVBoxLayout *layout_;
 	QWidget *fallback_widget_;
 	QLabel *fallback_label_;
-	QETTabWidget *tabs_;
+	QTabWidget *m_tab;
 	QMap<int, DiagramView *> diagram_ids_;
 	QList<DiagramView *> diagrams_;
 };
