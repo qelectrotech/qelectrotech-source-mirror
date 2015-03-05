@@ -15,11 +15,15 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QtWidgets>
-#include "qettabwidget.h"
 #include "aboutqet.h"
 #include "qet.h"
 #include "qeticons.h"
+
+#include <QTabWidget>
+#include <QDialogButtonBox>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QTextEdit>
 
 /**
 	Constructeur
@@ -33,7 +37,7 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	setModal(true);
 	
 	// Trois onglets
-	QETTabWidget *tabs = new QETTabWidget(this);
+	QTabWidget *tabs = new QTabWidget(this);
 	tabs -> addTab(aboutTab(),        tr("À &propos",          "tab title"));
 	tabs -> addTab(authorsTab(),      tr("A&uteurs",           "tab title"));
 	tabs -> addTab(translatorsTab(),  tr("&Traducteurs",       "tab title"));
