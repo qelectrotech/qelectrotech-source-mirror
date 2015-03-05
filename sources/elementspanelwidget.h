@@ -38,7 +38,7 @@ class ElementsPanelWidget : public QWidget {
 	// attributes
 	private:
 	ElementsPanel *elements_panel;
-	QToolBar *toolbar, *filter_toolbar;
+	QToolBar *toolbar;
 	QAction *open_directory, *copy_path;
 	QAction *reload;
 	QAction *new_category, *edit_category, *delete_category;
@@ -48,7 +48,6 @@ class ElementsPanelWidget : public QWidget {
 	QAction *tbt_add, *tbt_edit, *tbt_remove;
 	QAction *copy_elements_, *move_elements_, *cancel_elements_;
 	QMenu *context_menu;
-	QAction *erase_textfield;
 	QLineEdit *filter_textfield;
 	ElementsCollectionItem *dnd_item_src_, *dnd_item_dst_;
 	QProgressBar *progress_bar_;
@@ -72,7 +71,6 @@ class ElementsPanelWidget : public QWidget {
 	void requestForDiagramMoveDownx10(Diagram *);
 	
 	public slots:
-	void clearFilterTextField();
 	void openDirectoryForSelectedItem();
 	void copyPathForSelectedItem();
 	void reloadAndFilter();

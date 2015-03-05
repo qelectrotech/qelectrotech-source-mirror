@@ -81,17 +81,14 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	move_elements_        = new QAction(QET::Icons::IC_MoveFile,                  tr("Déplacer dans cette catégorie"), this);
 	copy_elements_        = new QAction(QET::Icons::IC_CopyFile,                  tr("Copier dans cette catégorie"),      this);
 	cancel_elements_      = new QAction(QET::Icons::Cancel,                    tr("Annuler"),                             this);
-	erase_textfield       = new QAction(QET::Icons::EditClearLocationBar,      tr("Effacer le filtre"),                   this);
 
 	reload            -> setShortcut(Qt::Key_F5);
 
 	// initialise le champ de texte pour filtrer avec une disposition horizontale
-	QLabel *filter_label = new QLabel(tr("Filtrer : "), this);
 	filter_textfield = new QLineEdit(this);
-	filter_toolbar = new QToolBar("filter");
-	filter_toolbar -> addAction(erase_textfield);
-	filter_toolbar -> addWidget(filter_label);
-	filter_toolbar -> addWidget(filter_textfield);
+	filter_textfield -> setClearButtonEnabled(true);
+	filter_textfield -> setPlaceholderText(tr("Filtrer"));
+
 	
 	//@TODO remove the commented code below
 	// ajoute une petite marge a la droite du champ pour filtrer lorsque le style CleanLooks est utilise
@@ -131,8 +128,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(move_elements_,        SIGNAL(triggered()), this,           SLOT(moveElements()));
 	connect(copy_elements_,        SIGNAL(triggered()), this,           SLOT(copyElements()));
 	
-	connect(erase_textfield,       SIGNAL(triggered()),                 this,             SLOT(clearFilterTextField()));
-	connect(filter_textfield,      SIGNAL(textEdited(const QString &)), this,             SLOT(filterEdited(const QString &)));
+	connect(filter_textfield,      SIGNAL(textChanged(const QString &)), this,             SLOT(filterEdited(const QString &)));
 	
 	connect(elements_panel,        SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
 	connect(elements_panel,        SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
@@ -176,7 +172,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	vlayout -> setMargin(0);
 	vlayout -> setSpacing(0);
 	vlayout -> addWidget(toolbar);
-	vlayout -> addWidget(filter_toolbar);
+	vlayout -> addWidget(filter_textfield);
 	vlayout -> addWidget(elements_panel);
 	vlayout -> addWidget(progress_bar_);
 	vlayout -> setStretchFactor(elements_panel, 75000);
@@ -190,16 +186,6 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	Destructeur
 */
 ElementsPanelWidget::~ElementsPanelWidget() {
-}
-
-/**
-	Vide le champ de texte permettant a l'utilisateur de filtrer, donne le
-	focus a ce champ et annule le filtrage.
-*/
-void ElementsPanelWidget::clearFilterTextField() {
-	filter_textfield -> clear();
-	filter_textfield -> setFocus();
-	filterEdited(QString());
 }
 
 /**
