@@ -254,6 +254,7 @@ void ProjectAutoNumConfigPage::initWidgets() {
 
 	m_context_cb = new QComboBox(this);
 	m_context_cb->setEditable(true);
+	m_context_cb->lineEdit()->setClearButtonEnabled(true);
 	m_context_cb->addItem(tr("Nom de la nouvelle numérotation"));
 
 	m_remove_pb = new QPushButton(QET::Icons::EditDelete, QString(), this);
