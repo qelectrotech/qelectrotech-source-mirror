@@ -73,6 +73,8 @@ class ProjectView : public QWidget {
 	void moveDiagramUp(Diagram *);
 	void moveDiagramDown(DiagramView *);
 	void moveDiagramDown(Diagram *);
+	void moveDiagramUpTop(DiagramView *);
+	void moveDiagramUpTop(Diagram *);
 	void moveDiagramUpx10(DiagramView *);
 	void moveDiagramUpx10(Diagram *);
 	void moveDiagramDownx10(DiagramView *);

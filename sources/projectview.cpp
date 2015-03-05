@@ -29,7 +29,6 @@
 #include "conductorpropertieswidget.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
-#include "qettabbar.h"
 #include "qettemplateeditor.h"
 #include "diagramfoliolist.h"
 #include "projectpropertiesdialog.h"
@@ -500,6 +499,29 @@ void ProjectView::moveDiagramDown(DiagramView *diagram_view) {
 */
 void ProjectView::moveDiagramDown(Diagram *diagram) {
 	moveDiagramDown(findDiagram(diagram));
+}
+
+/*
+ * Deplace le schema diagram_view vers le haut / la gauche en position 0
+ */
+void ProjectView::moveDiagramUpTop(DiagramView *diagram_view)
+{
+	if (!diagram_view) return;
+
+	int diagram_view_position = diagram_ids_.key(diagram_view);
+	if (!diagram_view_position) {
+		// le schema est le premier du projet
+		return;
+	}
+	m_tab -> tabBar() -> moveTab(diagram_view_position, (diagrams().size(), 0));
+}
+
+/*
+ * Deplace le schema diagram vers le haut / la gauche en position 0
+ */
+void ProjectView::moveDiagramUpTop(Diagram *diagram)
+{
+	moveDiagramUpTop(findDiagram(diagram));
 }
 
 /**
