@@ -190,20 +190,19 @@ void DVEventAddShape::updateHelpCross(const QPoint &p)
 		pen.setCosmetic(true);
 		pen.setColor(Qt::darkGray);
 
-			//Add +5 for each line, because the topleft of diagram isn't draw at position (0:0) but (5:5)
+		QRectF rect = m_diagram -> drawingRect();
+
 		if (!m_help_horiz)
 		{
-			m_help_horiz = new QGraphicsLineItem(m_diagram -> border_and_titleblock.rowsHeaderWidth() + 5, 0,
-												 m_diagram -> border_and_titleblock.diagramWidth() + 5, 0);
-			m_help_horiz->setPen(pen);
+			m_help_horiz = new QGraphicsLineItem(rect.topLeft().x(), 0, rect.topRight().x(), 0);
+			m_help_horiz -> setPen(pen);
 			m_diagram -> addItem(m_help_horiz);
 		}
 
 		if (!m_help_verti)
 		{
-			m_help_verti = new QGraphicsLineItem(0, m_diagram -> border_and_titleblock.columnsHeaderHeight() + 5,
-												 0, m_diagram -> border_and_titleblock.diagramHeight() + 5);
-			m_help_verti->setPen(pen);
+			m_help_verti = new QGraphicsLineItem(0, rect.topLeft().y(), 0, rect.bottomLeft().y());
+			m_help_verti -> setPen(pen);
 			m_diagram -> addItem(m_help_verti);
 		}
 	}
