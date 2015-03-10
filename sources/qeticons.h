@@ -61,6 +61,7 @@ namespace QET {
 		extern QIcon DocumentSave;
 		extern QIcon DocumentSaveAll;
 		extern QIcon DocumentSaveAs;
+		extern QIcon DocumentSpreadsheet;
 		extern QIcon East;
 		extern QIcon EditClear;
 		extern QIcon EditClearLocationBar;
@@ -134,6 +135,7 @@ namespace QET {
 		extern QIcon PrintPortrait;
 		extern QIcon PrintTwoPages;
 		extern QIcon Project;
+		extern QIcon Projects;
 		extern QIcon ProjectFile;
 		extern QIcon QETIcon;
 		extern QIcon QETLogo;

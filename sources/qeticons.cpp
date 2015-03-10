@@ -45,6 +45,7 @@ namespace QET {
 		QIcon DialogOk;
 		QIcon DocumentClose;
 		QIcon DocumentExport;
+		QIcon DocumentSpreadsheet;
 		QIcon DocumentImport;
 		QIcon DocumentNew;
 		QIcon DocumentOpen;
@@ -125,6 +126,7 @@ namespace QET {
 		QIcon PrintPortrait;
 		QIcon PrintTwoPages;
 		QIcon Project;
+		QIcon Projects;
 		QIcon ProjectFile;
 		QIcon QETIcon;
 		QIcon QETLogo;
@@ -222,6 +224,7 @@ void QET::Icons::initIcons() {
 	DocumentClose       .addFile(":/ico/22x22/document-close.png");
 	DocumentExport      .addFile(":/ico/16x16/document-export.png");
 	DocumentExport      .addFile(":/ico/22x22/document-export.png");
+	DocumentSpreadsheet .addFile(":/ico/22x22/qelectrotab-into.png");
 	DocumentExport      .addFile(":/ico/128x128/document-export.png");
 	DocumentImport      .addFile(":/ico/16x16/document-import.png");
 	DocumentImport      .addFile(":/ico/22x22/document-import.png");
@@ -329,7 +332,7 @@ void QET::Icons::initIcons() {
 	HotSpot             .addFile(":/ico/22x22/hotspot.png");
 	InsertImage         .addFile(":/ico/22x22/insert-image.png");
 	Lower               .addFile(":/ico/22x22/lower.png");
-	IC_MoveFile            .addFile(":/ico/16x16/item_move.png");
+	IC_MoveFile         .addFile(":/ico/16x16/item_move.png");
 	Names               .addFile(":/ico/22x22/names.png");
 	Neutral             .addFile(":/ico/16x16/neutral.png");
 	NewDiagram          .addFile(":/ico/128x128/diagram.png");
@@ -355,6 +358,7 @@ void QET::Icons::initIcons() {
 	PrintLandscape      .addFile(":/ico/22x22/landscape.png");
 	PrintPortrait       .addFile(":/ico/22x22/portrait.png");
 	PrintTwoPages       .addFile(":/ico/22x22/two_pages.png");
+	Projects            .addFile(":/ico/128x128/project.png");
 	ProjectFile         .addFile(":/ico/oxygen-icons/16x16/mimetypes/application-x-qet-project.png");
 	ProjectFile         .addFile(":/ico/oxygen-icons/22x22/mimetypes/application-x-qet-project.png");
 	ProjectFile         .addFile(":/ico/oxygen-icons/32x32/mimetypes/application-x-qet-project.png");

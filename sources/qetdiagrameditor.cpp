@@ -189,7 +189,7 @@ void QETDiagramEditor::setUpActions() {
 	cut               = new QAction(QET::Icons::EditCut,               tr("Co&uper"),                              this);
 	copy              = new QAction(QET::Icons::EditCopy,              tr("Cop&ier"),                              this);
 	paste             = new QAction(QET::Icons::EditPaste,             tr("C&oller"),                              this);
-	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("Réinitialiser les conducteurs"),     this);
+	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("Réinitialiser les conducteurs"),        this);
 
 	m_auto_conductor = new QAction   (QET::Icons::Autoconnect, tr("Création automatique de conducteur(s)","Tool tip of auto conductor"), this);
 	m_auto_conductor -> setStatusTip (tr("Utiliser la création automatique de conducteur(s) quand cela est possible", "Status tip of auto conductor"));
@@ -197,21 +197,21 @@ void QETDiagramEditor::setUpActions() {
 	m_auto_conductor -> setDisabled  (true);
 	connect(m_auto_conductor, SIGNAL(triggered(bool)), this, SLOT(slot_autoConductor(bool)));
 
-	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du schéma"),        this);
-	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du projet"),           this);
-	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un schéma"),                 this);
-	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le schéma"),               this);
+	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du schéma"),                 this);
+	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du projet"),                 this);
+	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un schéma"),                    this);
+	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le schéma"),                  this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
 	prj_diagramList   = new QAction(QET::Icons::listDrawings,          tr("Ajouter un sommaire"),                  this);
-	prj_nomenclature  = new QAction(QET::Icons::DocumentExport,        tr("Exporter une nomenclature"),            this);
+	prj_nomenclature  = new QAction(QET::Icons::DocumentSpreadsheet,   tr("Exporter une nomenclature"),            this);
 	tabbed_view_mode  = new QAction(                                   tr("en utilisant des onglets"),             this);
-	windowed_view_mode= new QAction(                                   tr("en utilisant des fenêtres"),         this);
+	windowed_view_mode= new QAction(                                   tr("en utilisant des fenêtres"),            this);
 	mode_selection    = new QAction(QET::Icons::PartSelect,            tr("Mode Selection"),                       this);
 	mode_visualise    = new QAction(QET::Icons::ViewMove,              tr("Mode Visualisation"),                   this);
-	tile_window       = new QAction(                                  tr("&Mosaïque"),                          this);
-	cascade_window    = new QAction(                                  tr("&Cascade"),                              this);
-	next_window       = new QAction(                                  tr("Projet suivant"),                        this);
-	prev_window       = new QAction(                                  tr("Projet précédent"),                this);
+	tile_window       = new QAction(                                   tr("&Mosaïque"),                            this);
+	cascade_window    = new QAction(                                   tr("&Cascade"),                             this);
+	next_window       = new QAction(                                   tr("Projet suivant"),                       this);
+	prev_window       = new QAction(                                   tr("Projet précédent"),                     this);
 
 	///Files action///
 	QAction *new_file  = m_file_actions_group.addAction( QET::Icons::DocumentNew,     tr("&Nouveau")						  );
