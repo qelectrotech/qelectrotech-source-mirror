@@ -383,7 +383,10 @@ void DiagramTextItem::setHtmlText(const QString &txt) {
  */
 void DiagramTextItem::edit() {
 	//Open the HtmlEditor
-	qdesigner_internal::RichTextEditorDialog *editor = new qdesigner_internal::RichTextEditorDialog();
+	QWidget *parent = nullptr;
+	if (scene() && scene()->views().size())
+		parent = scene()->views().first();
+	qdesigner_internal::RichTextEditorDialog *editor = new qdesigner_internal::RichTextEditorDialog(parent);
 	// connect the in/out
 	connect(editor, SIGNAL(applyEditText(const QString &)), this, SLOT(setHtmlText(const QString &)));
 	// load the Html txt
