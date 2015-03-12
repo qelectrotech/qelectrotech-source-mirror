@@ -29,6 +29,7 @@ namespace QET {
 		// using the extern keyword enables access to static objects from outside the
 		// namespace
 		extern QIcon Add;
+		extern QIcon AddFolio;
 		extern QIcon Allowed;
 		extern QIcon ApplicationExit;
 		extern QIcon ArrowLeft;

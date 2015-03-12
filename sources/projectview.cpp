@@ -750,7 +750,7 @@ int ProjectView::cleanProject() {
 	Initialize actions for this widget.
 */
 void ProjectView::initActions() {
-	add_new_diagram_ = new QAction(QET::Icons::Add, tr("Ajouter un schéma"), this);
+	add_new_diagram_ = new QAction(QET::Icons::AddFolio, tr("Ajouter un schéma"), this);
 	connect(add_new_diagram_, SIGNAL(triggered()), this, SLOT(addNewDiagram()));
 }
 
@@ -759,7 +759,7 @@ void ProjectView::initActions() {
 */
 void ProjectView::initWidgets() {
 	setObjectName("ProjectView");
-	setWindowIcon(QET::Icons::ProjectFile);
+	setWindowIcon(QET::Icons::ProjectFileGP);
 	
 	// initialize the "fallback" widget
 	fallback_widget_ = new QWidget();

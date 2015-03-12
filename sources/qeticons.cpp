@@ -22,6 +22,7 @@
 namespace QET {
 	namespace Icons {
 		QIcon Add;
+		QIcon AddFolio;
 		QIcon Allowed;
 		QIcon ApplicationExit;
 		QIcon ArrowLeft;
@@ -193,6 +194,7 @@ void QET::Icons::initIcons() {
 	
 	Add                 .addFile(":/ico/16x16/list-add.png");
 	Add                 .addFile(":/ico/22x22/list-add.png");
+	AddFolio            .addFile(":/ico/16x16/folio-new.png");
 	Allowed             .addFile(":/ico/16x16/user-online.png");
 	ApplicationExit     .addFile(":/ico/16x16/application-exit.png");
 	ApplicationExit     .addFile(":/ico/22x22/application-exit.png");

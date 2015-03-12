@@ -241,5 +241,6 @@
         <file>ico/22x22/project-WH-delete.png</file>
         <file>ico/22x22/project-WH-close.png</file>
         <file>ico/22x22/project-WH.png</file>
+        <file>ico/16x16/folio-new.png</file>
     </qresource>
 </RCC>
