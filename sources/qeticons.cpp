@@ -130,6 +130,7 @@ namespace QET {
 		QIcon ProjectNew;
 		QIcon Projects;
 		QIcon ProjectFile;
+		QIcon ProjectFileGP;
 		QIcon QETIcon;
 		QIcon QETLogo;
 		QIcon QETOxygenLogo;
@@ -369,6 +370,7 @@ void QET::Icons::initIcons() {
 	ProjectFile         .addFile(":/ico/oxygen-icons/22x22/mimetypes/application-x-qet-project.png");
 	ProjectFile         .addFile(":/ico/oxygen-icons/32x32/mimetypes/application-x-qet-project.png");
 	QETIcon             .addFile(":/ico/256x256/qelectrotech.png");
+	ProjectFileGP       .addFile(":/ico/16x16/project-WH.png");
 	QETLogo             .addFile(":/ico/16x16/qet.png");
 	QETLogo             .addFile(":/ico/256x256/qet.png");
 	QETOxygenLogo       .addFile(":/ico/oxygen-icons/128x128/apps/qelectrotech.png");

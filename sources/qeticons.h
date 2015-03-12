@@ -137,6 +137,7 @@ namespace QET {
 		extern QIcon Project;
 		extern QIcon ProjectClose;
 		extern QIcon ProjectFile;
+		extern QIcon ProjectFileGP;
 		extern QIcon ProjectNew;
 		extern QIcon Projects;
 		extern QIcon QETIcon;

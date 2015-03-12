@@ -1109,7 +1109,7 @@ QIcon GenericPanel::defaultIcon(QET::ItemType type) {
 	} else if (type == QET::Diagram) {
 		return(QET::Icons::Diagram);
 	} else if (type == QET::Project) {
-		return(QIcon(QET::Icons::ProjectFile.pixmap(QSize(16, 16))));
+		return(QIcon(QET::Icons::ProjectFileGP.pixmap(QSize(16, 16))));
 	}
 	return(QIcon());
 }
