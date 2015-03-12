@@ -233,5 +233,13 @@
         <file>ico/22x22/autoconnect.png</file>
         <file>ico/128x128/project.png</file>
         <file>ico/22x22/qelectrotab-into.png</file>
+        <file>ico/16x16/project-WH-new.png</file>
+        <file>ico/16x16/project-WH-delete.png</file>
+        <file>ico/16x16/project-WH-close.png</file>
+        <file>ico/16x16/project-WH.png</file>
+        <file>ico/22x22/project-WH-new.png</file>
+        <file>ico/22x22/project-WH-delete.png</file>
+        <file>ico/22x22/project-WH-close.png</file>
+        <file>ico/22x22/project-WH.png</file>
     </qresource>
 </RCC>

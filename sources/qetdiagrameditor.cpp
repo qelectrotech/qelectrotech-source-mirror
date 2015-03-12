@@ -214,11 +214,11 @@ void QETDiagramEditor::setUpActions() {
 	prev_window       = new QAction(                                   tr("Projet précédent"),                     this);
 
 	///Files action///
-	QAction *new_file  = m_file_actions_group.addAction( QET::Icons::DocumentNew,     tr("&Nouveau")						  );
+	QAction *new_file  = m_file_actions_group.addAction( QET::Icons::ProjectNew,     tr("&Nouveau")						  );
 	QAction *open_file = m_file_actions_group.addAction( QET::Icons::DocumentOpen,    tr("&Ouvrir")							  );
 	save_file          = m_file_actions_group.addAction( QET::Icons::DocumentSave,    tr("&Enregistrer")					  );
 	save_file_as       = m_file_actions_group.addAction( QET::Icons::DocumentSaveAs,  tr("Enregistrer sous")				  );
-	close_file         = m_file_actions_group.addAction( QET::Icons::DocumentClose,   tr("&Fermer")							  );
+	close_file         = m_file_actions_group.addAction( QET::Icons::ProjectClose,   tr("&Fermer")							  );
 
 	new_file   -> setShortcut( QKeySequence::New   );
 	open_file  -> setShortcut( QKeySequence::Open  );
