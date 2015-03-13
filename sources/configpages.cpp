@@ -161,6 +161,7 @@ void NewDiagramPage::applyConf() {
  * @return  icon of this page
  */
 QIcon NewDiagramPage::icon() const {
+	if (m_project) return(QET::Icons::NewDiagram);
 	return(QET::Icons::Projects);
 }
 
