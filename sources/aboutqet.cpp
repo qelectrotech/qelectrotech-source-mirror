@@ -176,18 +176,21 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Remi Collet",         "remi@fedoraproject.org",      tr("Paquets Fedora et Red Hat"));
 	addAuthor(contributors, "Trem",                "trem@mageia.org",             tr("Paquets Mageia"));
 	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",    tr("Paquets Debian"));
+	addAuthor(contributors, "Denis Briand",        "debian@denis-briand.fr",      tr("Paquets Debian"));
 	addAuthor(contributors, "Markos Chandras",     "hwoarang@gentoo.org.",        tr("Paquets Gentoo"));
-	addAuthor(contributors, "Mbit",                 "",                           tr("Paquets Gentoo"));
-	addAuthor(contributors, "Elbert",               "",                           tr("Paquets OS/2"));
-	addAuthor(contributors, "zloidemon",            "",                           tr("Paquets FreeBSD"));
-	addAuthor(contributors, "Yoann Varenne",        "yoann@tuxfamily.org",        tr("Paquets MAC OS X"));
-	addAuthor(contributors, "Chipsterjulien",       "",                           tr("Paquets Archlinux AUR"));
+	addAuthor(contributors, "Mbit",                "",                            tr("Paquets Gentoo"));
+	addAuthor(contributors, "Elbert",              "",                            tr("Paquets OS/2"));
+	addAuthor(contributors, "zloidemon",           "",                            tr("Paquets FreeBSD"));
+	addAuthor(contributors, "Yoann Varenne",       "yoann@tuxfamily.org",         tr("Paquets MAC OS X"));
+	addAuthor(contributors, "Chipsterjulien",      "",                            tr("Paquets Archlinux AUR"));
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Icônes"));
 	addAuthor(contributors, "Cyril Frausti",       "cyril@qelectrotech.org",      tr("Développement"));
 	addAuthor(contributors, "Arun Kishore Eswara", "eswara.arun@gmail.com",       tr("Documentation"));
 	addAuthor(contributors, "René Negre",          "runsys@qelectrotech.org",     tr("Développement"));
 	addAuthor(contributors, "Ronny Desmedt",       "r.desmedt@live.be",           tr("Développement"));
 	addAuthor(contributors, "Nuri",                "nuri@qelectrotech.org",       tr("Collection d'éléments"));
+	addAuthor(contributors, "Ronny Desmedt",       "r.desmedt@live.be",           tr("Convertisseur DXF"));
+
 
 	
 	contributors -> setOpenExternalLinks(true);
