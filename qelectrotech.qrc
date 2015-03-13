@@ -242,5 +242,7 @@
         <file>ico/22x22/project-WH-close.png</file>
         <file>ico/22x22/project-WH.png</file>
         <file>ico/16x16/folio-new.png</file>
+        <file>ico/48x48/document-print-frame.png</file>
+        <file>ico/22x22/Actions-player-time-icon.png</file>
     </qresource>
 </RCC>

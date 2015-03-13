@@ -242,7 +242,7 @@ void QET::Icons::initIcons() {
 	DocumentPrint       .addFile(":/ico/16x16/document-print.png");
 	DocumentPrint       .addFile(":/ico/22x22/document-print.png");
 	DocumentPrintFrame  .addFile(":/ico/16x16/document-print-frame.png");
-	DocumentPrintFrame  .addFile(":/ico/22x22/document-print-frame.png");
+	DocumentPrintFrame  .addFile(":/ico/48x48/document-print-frame.png");
 	DocumentSave        .addFile(":/ico/16x16/document-save.png");
 	DocumentSave        .addFile(":/ico/22x22/document-save.png");
 	DocumentSaveAll     .addFile(":/ico/16x16/document-save-all.png");
