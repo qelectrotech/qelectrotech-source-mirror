@@ -23,7 +23,7 @@
 */
 ExportPropertiesWidget::ExportPropertiesWidget(QWidget *parent) : QWidget(parent) {
 	setMinimumWidth(680);
-	setMinimumHeight(690);
+	setMinimumHeight(720);
 	build();
 	setExportProperties(ExportProperties());
 }
@@ -34,8 +34,6 @@ ExportPropertiesWidget::ExportPropertiesWidget(QWidget *parent) : QWidget(parent
 	@param parent QWidget parent
 */
 ExportPropertiesWidget::ExportPropertiesWidget(const ExportProperties &export_properties, QWidget *parent) : QWidget(parent) {
-	setMinimumWidth(680);
-	setMinimumHeight(690);
 	build();
 	setExportProperties(export_properties);
 }
