@@ -134,12 +134,13 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		p->setPen(pen);
 
 		p -> setBrush(Qt::NoBrush);
-		qreal limite_x = r.x() + r.width();
-		qreal limite_y = r.y() + r.height();
+		QRectF rect = drawingRect().intersected(r);
+		qreal limite_x = rect.x() + rect.width();
+		qreal limite_y = rect.y() + rect.height();
 		
-		int g_x = (int)ceil(r.x());
+		int g_x = (int)ceil(rect.x());
 		while (g_x % xGrid) ++ g_x;
-		int g_y = (int)ceil(r.y());
+		int g_y = (int)ceil(rect.y());
 		while (g_y % yGrid) ++ g_y;
 		
 		QPolygon points;
