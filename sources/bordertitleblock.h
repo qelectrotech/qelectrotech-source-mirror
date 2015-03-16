@@ -31,64 +31,60 @@ class TitleBlockTemplateRenderer;
 	This class represents the border and the titleblock which frame a
 	particular electric diagram.
 */
-class BorderTitleBlock : public QObject {
-	Q_OBJECT
+class BorderTitleBlock : public QObject
+{
+		Q_OBJECT
 	
-	// constructors, destructor
 	public:
-	BorderTitleBlock(QObject * = 0);
-	virtual ~BorderTitleBlock();
+		BorderTitleBlock(QObject * = 0);
+		virtual ~BorderTitleBlock();
 	
 	private:
-	BorderTitleBlock(const BorderTitleBlock &);
+		BorderTitleBlock(const BorderTitleBlock &);
 	
-	// methods
+		//METHODS
+	public:	
+		void draw(QPainter *painter);
+		void drawDxf(int, int, bool, QString &, int);
+	
+		//METHODS TO GET DIMENSION
+		//COLUMNS
+			/// @return the number of columns
+		int   columnsCount() const { return(columns_count_); }
+			/// @return the columns width, in pixels
+		qreal columnsWidth() const { return(columns_width_); }
+			/// @return the total width of all columns, headers excluded
+		qreal columnsTotalWidth() const { return(columns_count_ * columns_width_); }
+			/// @return the column headers height, in pixels
+		qreal columnsHeaderHeight() const { return(columns_header_height_); }
+	
+		//ROWS
+			/// @return the number of rows
+		int rowsCount() const { return(rows_count_); }
+			/// @return the rows height, in pixels
+		qreal rowsHeight() const { return(rows_height_); }
+			/// @return the total height of all rows, headers excluded
+		qreal rowsTotalHeight() const { return(rows_count_ * rows_height_); }
+			/// @return la rows header width, in pixels
+		qreal rowsHeaderWidth() const { return(rows_header_width_); }
+	
+		// border - title block = diagram
+			/// @return the diagram width, i.e. the width of the border without title block
+		qreal diagramWidth() const { return(columnsTotalWidth() + rowsHeaderWidth()); }
+			/// @return the diagram height, i.e. the height of the border without title block
+		qreal diagramHeight() const { return(rowsTotalHeight() + columnsHeaderHeight()); }
+	
+		// title block
+		qreal titleBlockHeight() const;
+
+		QRectF titleBlockRect () const;
+	private:
+		QRectF titleBlockRectForQPainter () const;
+
 	public:
-	static int   minNbColumns();
-	static qreal minColumnsWidth();
-	static int   minNbRows();
-	static qreal minRowsHeight();
-	
-	void draw(QPainter *, qreal = 0.0, qreal = 0.0);	
-	void drawDxf(int, int, bool, QString &, int);
-	
-	// methods to get dimensions
-	// columns
-	/// @return the number of columns
-	int   columnsCount() const { return(columns_count_); }
-	/// @return the columns width, in pixels
-	qreal columnsWidth() const { return(columns_width_); }
-	/// @return the total width of all columns, headers excluded
-	qreal columnsTotalWidth() const { return(columns_count_ * columns_width_); }
-	/// @return the column headers height, in pixels
-	qreal columnsHeaderHeight() const { return(columns_header_height_); }
-	
-	// rows
-	/// @return the number of rows
-	int rowsCount() const { return(rows_count_); }
-	/// @return the rows height, in pixels
-	qreal rowsHeight() const { return(rows_height_); }
-	/// @return the total height of all rows, headers excluded
-	qreal rowsTotalHeight() const { return(rows_count_ * rows_height_); }
-	/// @return la rows header width, in pixels
-	qreal rowsHeaderWidth() const { return(rows_header_width_); }
-	
-	// border - title block = diagram
-	/// @return the diagram width, i.e. the width of the border without title block
-	qreal diagramWidth() const { return(columnsTotalWidth() + rowsHeaderWidth()); }
-	/// @return the diagram height, i.e. the height of the border without title block
-	qreal diagramHeight() const { return(rowsTotalHeight() + columnsHeaderHeight()); }
-	
-	// title block
-	/// @return the title block width
-	qreal titleBlockWidth()  const { return(titleblock_width_); }
-	qreal titleBlockHeight() const;
-	
-	// border + title block
-	/// @return the border width
-	qreal borderWidth()  const { return(diagramWidth()); }
-	/// @return the border height
-	qreal borderHeight() const { return(diagramHeight() + titleBlockHeight()); }
+		QRectF borderRect () const;
+		qreal borderWidth () const;
+		qreal borderHeight() const;
 	
 	// methods to get title block basic data
 	/// @return the value of the title block "Author" field
@@ -113,10 +109,6 @@ class BorderTitleBlock : public QObject {
 	bool borderIsDisplayed() const { return(display_border_); }
 	
 	// methods to set dimensions
-	void addColumn();
-	void addRow();
-	void removeColumn();
-	void removeRow();
 	void setColumnsCount(int);
 	void setRowsCount(int);
 	void setColumnsWidth(const qreal &);
@@ -124,8 +116,6 @@ class BorderTitleBlock : public QObject {
 	void setColumnsHeaderHeight(const qreal &);
 	void setRowsHeaderWidth(const qreal &);
 	void setDiagramHeight(const qreal &);
-	void setTitleBlockWidth(const qreal &);
-	void adjustTitleBlockToColumns();
 	
 	DiagramPosition convertPosition(const QPointF &);
 	
@@ -206,43 +196,42 @@ class BorderTitleBlock : public QObject {
 	*/
 	void needTitleBlockTemplate(const QString &);
 	
-	// attributes
+		// attributes
 	private:
-	// titleblock basic data
-	QString btb_author_;
-	QDate   btb_date_;
-	QString btb_title_;
-	QString btb_folio_;
-	QString btb_final_folio_;
-	int folio_index_;
-	int folio_total_;
-	QString btb_filename_;
-	DiagramContext additional_fields_;
+			// titleblock basic data
+		QString btb_author_;
+		QDate   btb_date_;
+		QString btb_title_;
+		QString btb_folio_;
+		QString btb_final_folio_;
+		int folio_index_;
+		int folio_total_;
+		QString btb_filename_;
+		DiagramContext additional_fields_;
+		Qt::Edge m_edge;
 	
-	// border dimensions (rows and columns)
-	// columns: number and dimensions
-	int columns_count_;
-	qreal columns_width_;
-	qreal columns_header_height_;
+		// border dimensions (rows and columns)
+		// columns: number and dimensions
+		int columns_count_;
+		qreal columns_width_;
+		qreal columns_header_height_;
 	
-	// rows: number and dimensions
-	int rows_count_;
-	qreal rows_height_;
-	qreal rows_header_width_;
+		// rows: number and dimensions
+		int rows_count_;
+		qreal rows_height_;
+		qreal rows_header_width_;
 	
-	// title block dimensions
-	qreal titleblock_width_;
-	qreal titleblock_height_;
+		// title block dimensions
+		qreal titleblock_height_;
 	
-	// rectangles used for drawing operations
-	QRectF diagram_rect_;
-	QRectF titleblock_rect_;
+		// rectangles used for drawing operations
+		QRectF diagram_rect_;
 	
-	// display options
-	bool display_titleblock_;
-	bool display_columns_;
-	bool display_rows_;
-	bool display_border_;
-	TitleBlockTemplateRenderer *titleblock_template_renderer_;
+		// display options
+		bool display_titleblock_;
+		bool display_columns_;
+		bool display_rows_;
+		bool display_border_;
+		TitleBlockTemplateRenderer *titleblock_template_renderer_;
 };
 #endif

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>528</width>
-    <height>387</height>
+    <height>439</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -108,10 +108,10 @@
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
            <layout class="QGridLayout" name="gridLayout_4">
-            <item row="5" column="1">
-             <widget class="QLabel" name="label_6">
-              <property name="text">
-               <string>Folio :</string>
+            <item row="5" column="2">
+             <widget class="QLineEdit" name="m_folio_le">
+              <property name="toolTip">
+               <string>Disponible en tant que %folio pour les modèles de cartouches</string>
               </property>
              </widget>
             </item>
@@ -122,10 +122,28 @@
               </property>
              </widget>
             </item>
-            <item row="4" column="2">
-             <widget class="QLineEdit" name="m_file_le">
-              <property name="toolTip">
-               <string>Disponible en tant que %filename pour les modèles de cartouches</string>
+            <item row="7" column="1">
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Afficher :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="2">
+             <widget class="QLabel" name="label_7">
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="text">
+               <string>Les variables suivantes sont utilisables dans le champ Folio :
+- %id : numéro du schéma courant dans le projet 
+- %total : nombre total de schémas dans le projet</string>
+              </property>
+              <property name="scaledContents">
+               <bool>false</bool>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
               </property>
              </widget>
             </item>
@@ -181,45 +199,6 @@
               </item>
              </layout>
             </item>
-            <item row="1" column="1">
-             <widget class="QLabel" name="label_2">
-              <property name="text">
-               <string>Titre :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QLabel" name="label_5">
-              <property name="text">
-               <string>Fichier :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="2">
-             <widget class="QLineEdit" name="m_folio_le">
-              <property name="toolTip">
-               <string>Disponible en tant que %folio pour les modèles de cartouches</string>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="2">
-             <widget class="QLabel" name="label_7">
-              <property name="frameShape">
-               <enum>QFrame::NoFrame</enum>
-              </property>
-              <property name="text">
-               <string>Les variables suivantes sont utilisables dans le champ Folio :
-- %id : numéro du schéma courant dans le projet 
-- %total : nombre total de schémas dans le projet</string>
-              </property>
-              <property name="scaledContents">
-               <bool>false</bool>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-              </property>
-             </widget>
-            </item>
             <item row="3" column="1">
              <widget class="QLabel" name="label_4">
               <property name="text">
@@ -230,10 +209,10 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="2">
-             <widget class="QLineEdit" name="m_author_le">
-              <property name="toolTip">
-               <string>Disponible en tant que %author pour les modèles de cartouches</string>
+            <item row="4" column="1">
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>Fichier :</string>
               </property>
              </widget>
             </item>
@@ -242,6 +221,48 @@
               <property name="toolTip">
                <string>Disponible en tant que %title pour les modèles de cartouches</string>
               </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Titre :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QLineEdit" name="m_author_le">
+              <property name="toolTip">
+               <string>Disponible en tant que %author pour les modèles de cartouches</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>Folio :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="2">
+             <widget class="QLineEdit" name="m_file_le">
+              <property name="toolTip">
+               <string>Disponible en tant que %filename pour les modèles de cartouches</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="2">
+             <widget class="QComboBox" name="m_display_at_cb">
+              <item>
+               <property name="text">
+                <string>Bas</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Droite (expérimental)</string>
+               </property>
+              </item>
              </widget>
             </item>
            </layout>

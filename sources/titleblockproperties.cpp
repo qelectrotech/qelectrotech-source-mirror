@@ -25,7 +25,8 @@
 */
 TitleBlockProperties::TitleBlockProperties() :
 	date(),
-	useDate(UseDateValue)
+	useDate(UseDateValue),
+	display_at(Qt::BottomEdge)
 {
 }
 
@@ -47,7 +48,8 @@ bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 		ip.filename == filename &&\
 		ip.folio == folio &&\
 		ip.template_name == template_name &&\
-		ip.context == context
+		ip.context == context &&\
+		ip.display_at == display_at
 	);
 }
 
@@ -70,6 +72,7 @@ void TitleBlockProperties::toXml(QDomElement &e) const {
 	e.setAttribute("filename", filename);
 	e.setAttribute("folio",    folio);
 	e.setAttribute("date",     exportDate());
+	e.setAttribute("displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
 	if (!template_name.isEmpty()) {
 		e.setAttribute("titleblocktemplate", template_name);
 	}
@@ -92,6 +95,7 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
 	if (e.hasAttribute("folio"))       folio    = e.attribute("folio");
 	if (e.hasAttribute("date"))        setDateFromString(e.attribute("date"));
+	if (e.hasAttribute("displayAt")) display_at = (e.attribute("displayAt") == "bottom" ? Qt::BottomEdge : Qt::RightEdge);
 	
 	// reads the template used to render the title block
 	if (e.hasAttribute("titleblocktemplate")) template_name = e.attribute("titleblocktemplate");
@@ -114,6 +118,7 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix + "filename", filename);
 	settings.setValue(prefix + "folio",    folio);
 	settings.setValue(prefix + "date",     exportDate());
+	settings.setValue(prefix + "displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
 	context.toSettings(settings, prefix + "properties");
 }
 
@@ -128,6 +133,7 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	filename = settings.value(prefix + "filename").toString();
 	folio    = settings.value(prefix + "folio", "%id/%total").toString();
 	setDateFromString(settings.value(prefix + "date").toString());
+	display_at = (settings.value(prefix + "displayAt", QVariant("bottom")).toString() == "bottom" ? Qt::BottomEdge : Qt::RightEdge);
 	context.fromSettings(settings, prefix + "properties");
 }
 

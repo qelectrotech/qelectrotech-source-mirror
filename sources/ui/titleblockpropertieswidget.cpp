@@ -76,6 +76,7 @@ void TitleBlockPropertiesWidget::setProperties(const TitleBlockProperties &prope
 	ui -> m_author_le -> setText (properties.author);
 	ui -> m_file_le   -> setText (properties.filename);
 	ui -> m_folio_le  -> setText (properties.folio);
+	ui -> m_display_at_cb -> setCurrentIndex(properties.display_at == Qt::BottomEdge ? 0 : 1);
 
 	//About date	
 	ui -> m_date_now_pb -> setDisabled(true);
@@ -126,6 +127,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const {
 	prop.author   = ui -> m_author_le -> text();
 	prop.filename = ui -> m_file_le   -> text();
 	prop.folio    = ui -> m_folio_le  -> text();
+	prop.display_at = ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge : Qt::RightEdge;
 
 	if (ui->m_no_date_rb->isChecked()) {
 		prop.useDate = TitleBlockProperties::UseDateValue;

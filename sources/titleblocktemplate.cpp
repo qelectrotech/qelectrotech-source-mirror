@@ -1228,8 +1228,11 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 	QList<int> widths = columnsWidth(titleblock_width);
 	int titleblock_height = height();
 	
-	// prepare the QPainter
-	painter.setPen(Qt::black);
+	painter.save();
+		//Setup the QPainter
+	QPen pen(Qt::black);
+	pen.setCosmetic(true);
+	painter.setPen(pen);
 	painter.setBrush(Qt::white);
 	
 	// draw the titleblock border
@@ -1256,6 +1259,7 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 			renderCell(painter, *cells_[i][j], diagram_context, cell_rect);
 		}
 	}
+	painter.restore();
 }
 
 /**

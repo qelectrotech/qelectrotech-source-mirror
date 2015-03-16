@@ -1180,14 +1180,6 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 
 	BorderTitleBlock &bi = scene -> border_and_titleblock;
 	
-	//Get the rectangle of the titleblock
-	QRectF titleblock_rect(
-		Diagram::margin,
-		Diagram::margin + bi.diagramHeight(),
-		bi.titleBlockWidth(),
-		bi.titleBlockHeight()
-	);
-	
 	// Get the rectangle of the header column
 	QRectF columns_rect(
 		Diagram::margin,
@@ -1207,7 +1199,7 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 	//Get the click pos on the diagram
 	QPointF click_pos = viewportTransform().inverted().map(e -> pos());
 	
-	if (titleblock_rect.contains(click_pos) || columns_rect.contains(click_pos) || rows_rect.contains(click_pos)) {
+	if (bi.titleBlockRect().contains(click_pos) || columns_rect.contains(click_pos) || rows_rect.contains(click_pos)) {
 		e->accept();
 		editDiagramProperties();
 		return;

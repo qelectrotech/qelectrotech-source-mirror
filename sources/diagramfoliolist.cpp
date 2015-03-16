@@ -112,7 +112,7 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 				diagram_list[i] -> border_and_titleblock.date().toString(Qt::SystemLocaleShortDate));
 	}
 
-	border_and_titleblock.draw(p, margin, margin);
+	border_and_titleblock.draw(p);
 	p -> restore();
 }
 

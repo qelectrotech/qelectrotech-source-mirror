@@ -152,7 +152,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		p -> drawPoints(points);
 	}
 	
-	if (use_border_) border_and_titleblock.draw(p, margin, margin);
+	if (use_border_) border_and_titleblock.draw(p);
 	p -> restore();
 }
 
@@ -1074,16 +1074,8 @@ void Diagram::invertSelection() {
  * @return The rectangle (coordinates relative to the scene)
  * delimiting the edge of the diagram
  */
-QRectF Diagram::border() const
-{
-	return(
-		QRectF(
-			margin,
-			margin,
-			border_and_titleblock.borderWidth(),
-			border_and_titleblock.borderHeight()
-		)
-	);
+QRectF Diagram::border() const {
+	return border_and_titleblock.borderRect();
 }
 
 /**

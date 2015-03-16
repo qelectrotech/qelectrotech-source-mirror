@@ -55,6 +55,7 @@ class TitleBlockProperties {
 	DateManagement useDate;   ///< Wheter to use the date attribute
 	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
 	DiagramContext context;   ///< Container for the additional, user-defined fields
+	Qt::Edge display_at;       ///< Edge to display the titleblock
 	
 	private:
 	QString exportDate() const;
