@@ -3318,7 +3318,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="536"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
-        <translation>Mostra o no il pannello degli elementi</translation>
+        <translation>Mostra o no il pannello Elementi</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="241"/>
@@ -3578,7 +3578,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="537"/>
         <source>Affiche ou non la liste des modifications</source>
-        <translation>Mostra o nascondi la lista delle modifiche</translation>
+        <translation>Mostra o nascondi lacronologia delle modifiche</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="243"/>
@@ -3707,13 +3707,13 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="127"/>
         <source>Panel d&apos;éléments</source>
         <comment>dock title</comment>
-        <translation>Pannello degli elementi</translation>
+        <translation>Elementi</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="164"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation>Lista azioni</translation>
+        <translation>Cronologia</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="161"/>
@@ -5486,13 +5486,13 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/diagramcommands.cpp" line="548"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
-        <translation>spostato %1</translation>
+        <translation>Spostato %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="569"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
-        <translation>modifica il testo</translation>
+        <translation>Modifica il testo</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="617"/>
@@ -5510,7 +5510,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/diagramcommands.cpp" line="759"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
-        <translation>modifica un conduttore</translation>
+        <translation>Modifica un conduttore</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="816"/>
@@ -5522,19 +5522,19 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/diagramcommands.cpp" line="864"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation>modifica il cartiglio</translation>
+        <translation>Modifica il cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="897"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
-        <translation>modifica le dimensioni dello schema</translation>
+        <translation>Modifica le dimensioni dello schema</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="926"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>modifica le proprietà di un conduttore</translation>
+        <translation>Modifica le proprietà di un conduttore</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="979"/>
@@ -5611,19 +5611,19 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="322"/>
         <source>modification %1</source>
         <comment>undo caption</comment>
-        <translation>modifica %1</translation>
+        <translation>Modifica %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="365"/>
         <source>modification points polygone</source>
         <comment>undo caption</comment>
-        <translation>modifica punti del poligono</translation>
+        <translation>Modifica punti del poligono</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="399"/>
         <source>modification noms</source>
         <comment>undo caption</comment>
-        <translation>modifica nome</translation>
+        <translation>Modifica nome</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="441"/>
@@ -5653,7 +5653,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="550"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
-        <translation>modifica informazioni ausiliarie</translation>
+        <translation type="unfinished">Modifica informazioni ausiliarie</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="664"/>
