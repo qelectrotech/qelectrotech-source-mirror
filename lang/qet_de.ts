@@ -1097,7 +1097,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="90"/>
         <source>Type concret</source>
-        <translation>Konkreter Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="73"/>
@@ -1118,12 +1118,12 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="76"/>
         <source>Renvoi de folio suivant</source>
-        <translation>abgehende Abbruchstelle</translation>
+        <translation>abgehender Folienverweis</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="77"/>
         <source>Renvoi de folio précédent</source>
-        <translation>ankommende Abbruchstelle</translation>
+        <translation>ankommender Folienverweis</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
@@ -1449,7 +1449,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/elementspanel.cpp" line="441"/>
         <source>Cartouches embarqués</source>
-        <translation>eingebettete Plotrahmen</translation>
+        <translation>eingebettete Zeichnungsköpfe</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="442"/>
@@ -1461,7 +1461,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/elementspanel.cpp" line="451"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation>Ziehen und Ablegen vom Plotrahmen auf die Folie, um ihn anzuwenden.</translation>
+        <translation>Ziehen und Ablegen vom Zeichnungskopf auf die Folie, um ihn anzuwenden.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="463"/>
@@ -1490,13 +1490,13 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/elementspanel.cpp" line="590"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
-        <translation>Doppelklick zum Öffnen oder Schließen der Sammlung &quot;QElectroTech-Plotrahmen&quot;</translation>
+        <translation>Doppelklick zum Öffnen oder Schließen der Sammlung &quot;QElectroTech-Zeichnungsköpfe&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="591"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Diese Sammlung von Plotrahmen kommt standardmäßig mit QElectroTech. Sie ist fester Bestandteil vom System und kann nicht verändert werden.</translation>
+        <translation>Diese Sammlung von Zeichnungsköpfen kommt standardmäßig mit QElectroTech. Sie ist fester Bestandteil vom System und kann nicht verändert werden.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="599"/>
@@ -1514,13 +1514,13 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/elementspanel.cpp" line="608"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
-        <translation>Doppelklick zum Öffnen oder Schließen Ihrer persönlichen Plotrahmen-Sammlung</translation>
+        <translation>Doppelklick zum Öffnen oder Schließen Ihrer persönlichen Zeichnungskopf-Sammlung</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="609"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Dies ist Ihre persönliche Plotrahmen-Sammlung. Benutzen Sie sie, um Ihre eigenen Plotrahmen zu erstellen, ablegen und bearbeiten.</translation>
+        <translation>Dies ist Ihre persönliche Zeichnungskopf-Sammlung. Benutzen Sie sie, um Ihre eigenen Zeichnungsköpfe zu erstellen, ablegen und bearbeiten.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="617"/>
@@ -1650,17 +1650,17 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
         <source>Nouveau modèle</source>
-        <translation>Neuer Plotrahmen</translation>
+        <translation>Neuer Zeichnungskopf</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="79"/>
         <source>Éditer ce modèle</source>
-        <translation>Plotrahmen bearbeiten</translation>
+        <translation>Zeichnungskopf bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="80"/>
         <source>Supprimer ce modèle</source>
-        <translation>Plotrahmen löschen</translation>
+        <translation>Zeichnungskopf löschen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="81"/>
@@ -1769,7 +1769,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/exportdialog.cpp" line="60"/>
         <source>Exporter les schémas du projet</source>
         <comment>window title</comment>
-        <translation>Schaltpläne exportieren</translation>
+        <translation>Folien exportieren</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="70"/>
@@ -1855,7 +1855,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/exportdialog.cpp" line="827"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
-        <translation>Schreiben in diese Datei nicht möglich</translation>
+        <translation>Schreiben in dieser Datei nicht möglich</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="829"/>
@@ -1932,7 +1932,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="157"/>
         <source>Exporter le cadre</source>
-        <translation>Plotrahmen exportieren</translation>
+        <translation>Zeichnungsrahmen exportieren</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="160"/>
@@ -1947,17 +1947,17 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="169"/>
         <source>Dessiner le cadre</source>
-        <translation>Plotrahmen zeichnen</translation>
+        <translation>Zeichnungsrahmen zeichnen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="173"/>
         <source>Dessiner le cartouche</source>
-        <translation>Inset zeichnen</translation>
+        <translation>Zeichnungskopf zeichnen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="177"/>
         <source>Dessiner les bornes</source>
-        <translation>Anschlüsse zeichnen</translation>
+        <translation>Bauteilanschlüsse zeichnen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="181"/>
@@ -2142,7 +2142,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/genericpanel.cpp" line="242"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Dies ist ein QElectroTech-Projekt. Es trägt die Dateierweiterung .qet und beinhaltet eine oder mehrere Folie(n). Außerdem sind die in diesem Projekt benutzten Bauteile und Plotrahmen auch in der .qet-Datei mit integriert.</translation>
+        <translation>Dies ist ein QElectroTech-Projekt. Es trägt die Dateierweiterung .qet und beinhaltet eine oder mehrere Folie(n). Außerdem sind die in diesem Projekt benutzten Bauteile und Zeichnungsköpfe auch in der .qet-Datei mit integriert.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="304"/>
@@ -2171,7 +2171,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/genericpanel.cpp" line="454"/>
         <source>Modèles de cartouche</source>
-        <translation>Plotrahmenvorlagen</translation>
+        <translation>Zeichnungskopf-Vorlagen</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="544"/>
@@ -2183,7 +2183,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/genericpanel.cpp" line="545"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Diese Plotrahmenvorlage kann auf eine Folie angewendet werden.</translation>
+        <translation>Diese Zeichnungskopf-Vorlage kann auf eine Folie angewendet werden.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="730"/>
@@ -2272,13 +2272,13 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation>Plotrahmenvorlage einbetten</translation>
+        <translation>Zeichnungskopf-Vorlage einbetten</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation>Die Plotrahmenvorlage wurde bereits in das Projekt eingebettet. Es gibt aber vermutlich Versionsunterschiede. Wie möchten Sie vorgehen?</translation>
+        <translation>Die Zeichnungskopf-Vorlage wurde bereits in das Projekt eingebettet. Es gibt aber vermutlich Versionsunterschiede. Wie möchten Sie vorgehen?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
@@ -2646,7 +2646,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/configpages.cpp" line="74"/>
         <source>Reports de folio</source>
-        <translation>Abbruchstellen</translation>
+        <translation>Folienverweise</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="75"/>
@@ -2870,7 +2870,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="231"/>
         <source>Auto numerotation</source>
-        <translation>Automatische Nummerierung</translation>
+        <translation>Auto-Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="253"/>
@@ -2922,7 +2922,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <location filename="../sources/projectconfigpages.cpp" line="165"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>Definieren Sie hier benutzerdefinierte Einstellungen, die für alle Folien des Projektes gelten (typisch für Plotrahmendaten).</translation>
+        <translation>Tragen Sie hier benutzerdefinierte Einstellungen ein, die für alle Folien des Projektes gelten (typisch für Daten im Zeichnungskopf).</translation>
     </message>
 </context>
 <context>
@@ -2984,7 +2984,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="702"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation>Im Projekt unbenutzte Plotrahmenvorlagen löschen</translation>
+        <translation>Im Projekt unbenutzte Zeichnungskopf-Vorlagen löschen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="703"/>
@@ -3096,13 +3096,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="380"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation>QET-Plotrahmen</translation>
+        <translation>QET-Zeichnungsköpfe</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="393"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
-        <translation>Benutzer-Plotrahmen</translation>
+        <translation>Benutzer-Zeichnungsköpfe</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="815"/>
@@ -3197,13 +3197,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="1431"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>&amp;Verstecke alle Plotrahmeneditoren</translation>
+        <translation>&amp;Verstecke alle Zeichnungskopf-Editoren</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1432"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>&amp;Zeige alle Plotrahmeneditoren</translation>
+        <translation>&amp;Zeige alle Zeichnungskopf-Editoren</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1433"/>
@@ -3250,7 +3250,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="1542"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
-        <translation>Plotrahmeneditor</translation>
+        <translation>Zeichnungskopf-Editor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1607"/>
@@ -3292,7 +3292,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetapp.cpp" line="1617"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation>  --common-tbt-dir=DIR          Setzt Pfad zur Sammlung der Plotrahmenvorlagen</translation>
+        <translation>  --common-tbt-dir=DIR          Pfad zur Zeichnungskopf-Sammlung setzen</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1620"/>
@@ -3800,7 +3800,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="373"/>
         <source>Édite les informations affichées par le cartouche</source>
         <comment>status bar tip</comment>
-        <translation>bearbeitet die Plotrahmendaten</translation>
+        <translation>Bearbeitet die Folieneigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="246"/>
@@ -3858,7 +3858,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
         <source>Adapte le zoom de façon à afficher tout le contenu indépendamment du cadre</source>
-        <translation>passt die Ansicht auf den Inhalt der Folie ein, ohne den Plotrahmen zu berücksichtigen</translation>
+        <translation>Passt die Ansicht auf den Inhalt der Folie ein, ohne den Zeichnungsrahmen zu berücksichtigen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
@@ -4521,7 +4521,7 @@ Verfügbare Optionen:
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation>&lt;br&gt;&lt;b&gt;Fehler&lt;/b  &gt; :&lt;br&gt;Bauteile vom Typ Master, Slave, Einfach und Abbruchstelle müssen ein als &quot;Label&quot; makiertes Textfeld beinhalten.&lt;br&gt;&lt;b&gt;Lösung&lt;/b&gt; :&lt;br&gt;Textfeld einfügen und als &quot;Label&quot; markieren</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Fehler&lt;/b  &gt; :&lt;br&gt;Bauteile vom Typ Master, Slave, Einfach und Folienverweis müssen ein als &quot;Label&quot; makiertes Textfeld beinhalten.&lt;br&gt;&lt;b&gt;Lösung&lt;/b&gt; :&lt;br&gt;Textfeld einfügen und als &quot;Label&quot; markieren</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="715"/>
@@ -4537,7 +4537,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation>&lt;br&gt;&lt;b&gt;Fehler&lt;/b&gt;: &lt;br&gt;Abbruchstellen dürfen nur einen Anschluss haben.&lt;br&gt;&lt;b&gt;Lösung&lt;/b&gt;: &lt;br&gt;Prüfen, dass das Bauteil nur einen Anschluss hat</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Fehler&lt;/b&gt;: &lt;br&gt;Folienverweise dürfen nur einen Anschluss haben.&lt;br&gt;&lt;b&gt;Lösung&lt;/b&gt;: &lt;br&gt;Prüfen, dass das Bauteil nur einen Anschluss hat</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
@@ -5096,7 +5096,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="170"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
-        <translation>Plotrahmenvorlage kopieren</translation>
+        <translation>Zeichnungskopf-Vorlage kopieren</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="171"/>
@@ -5354,7 +5354,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="650"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
-        <translation>QElectroTech - Plotrahmeneditor</translation>
+        <translation>QElectroTech - Zeichnungskopf-Editor</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="665"/>
@@ -5378,7 +5378,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="763"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
-        <translation>QElectroTech-Plotrahmenvorlagen (*%1);;XML-Dateien (*.xml);;Alle Dateien (*)</translation>
+        <translation>QElectroTech-Zeichnungskopf-Vorlagen (*%1);;XML-Dateien (*.xml);;Alle Dateien (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="802"/>
@@ -5396,7 +5396,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="823"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
-        <translation>QElectroTech Plotrahmenvorlagen (*%1)</translation>
+        <translation>QElectroTech Zeichnungskopf-Vorlagen (*%1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="922"/>
@@ -5407,7 +5407,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="926"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation>Sie können dieses freie Textfeld benutzen, um die Autoren, die Lizenz, oder jede weitere nützliche Information über den Plotrahmen zu speichern.</translation>
+        <translation>Sie können dieses freie Textfeld benutzen, um die Autoren, die Lizenz, oder jede weitere nützliche Information über den Zeichnungskopf zu speichern.</translation>
     </message>
 </context>
 <context>
@@ -5503,7 +5503,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="864"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation>Plotrahmen bearbeiten</translation>
+        <translation>Zeichnungskopf bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="897"/>
@@ -5542,7 +5542,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1157"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation>Zwei Abbruchstellen verbinden</translation>
+        <translation>Zwei Folienverweise verbinden</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1161"/>
@@ -6227,7 +6227,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation>Label der Abbruchstelle</translation>
+        <translation>Querverweistext der Folienverweise</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -6236,7 +6236,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>Sie können ein eigenes Label für die Querverweise definieren.
+        <translation>Sie können einen eigenen Querverweistext für die Folienverweise definieren.
 Folgende Variablen stehen zur Verfügung:
 %f : Foliennummer 
 %l : Zeilennummer
@@ -6804,7 +6804,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="241"/>
         <source>Title block templates actions</source>
-        <translation>Aktionen zum Plotrahmen</translation>
+        <translation>Aktionen zum Zeichnungskopf</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="55"/>
@@ -6829,7 +6829,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation>Für Plotrahmenvorlagen als %filename verfügbar</translation>
+        <translation>Für Zeichnungskopf-Vorlagen als %filename verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="137"/>
@@ -6854,12 +6854,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
         <source>Informations des cartouches</source>
-        <translation>Daten im Plotrahmen</translation>
+        <translation>Daten im Zeichnungskopf</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation>Für Plotrahmenvorlagen als %date verfügbar</translation>
+        <translation>Für Zeichnungskopf-Vorlagen als %date verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="178"/>
@@ -6879,7 +6879,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="201"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation>Für Plotrahmenvorlagen als %folio verfügbar</translation>
+        <translation>Für Zeichnungskopf-Vorlagen als %folio verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="211"/>
@@ -6898,12 +6898,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="236"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation>Für Plotrahmenvorlage als %author verfügbar</translation>
+        <translation>Für Zeichnungskopf-Vorlage als %author verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="243"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation>Für Plotrahmenvorlagen als %title verfügbar</translation>
+        <translation>Für Zeichnungskopf-Vorlagen als %title verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="253"/>
@@ -6914,8 +6914,8 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Hier können Sie Ihre eigenen Kombinationen Variablen/Werte für die Einträge der Datenfelder im Plotrahmen definieren. Zum Beispiel: 
-die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt im Plotrahmen %{volta} durch 1745 ersetzen.</translation>
+        <translation>Hier können Sie Ihre eigenen Kombinationen Variablen/Werte für die Einträge der Datenfelder im Zeichnungskopf definieren. Zum Beispiel: 
+die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt im Zeichnungskopf %{volta} durch 1745 ersetzen.</translation>
     </message>
 </context>
 <context>
@@ -7076,7 +7076,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Jede Zelle vom Plotrahmen zeigt einen Wert und optional ein vorangestelltes Label an. Beide können in verschiedenen Sprachen übersetzt werden.&lt;br/&gt;Gerade wird eine &lt;em&gt;Vorlage&lt;/em&gt; für Plotrahmen bearbeitet. Tragen Sie keine rohen Daten ein: nutzen Sie eher Variablen mit der Form %{Variablenname}, um deren Werte im Plotrahmen auf der Folie anzuzeigen.</translation>
+        <translation>Jede Zelle vom Zeichnungskopf zeigt einen Wert und optional ein vorangestelltes Label an. Beide können in verschiedenen Sprachen übersetzt werden.&lt;br/&gt;Gerade wird eine &lt;em&gt;Vorlage&lt;/em&gt; für Zeichnungskopf bearbeitet. Tragen Sie keine rohen Daten ein: nutzen Sie eher Variablen mit der Form %{Variablenname}, um deren Werte im Zeichnungskopf auf der Folie anzuzeigen.</translation>
     </message>
 </context>
 <context>
@@ -7085,14 +7085,14 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation>Plotrahmenvorlage löschen?</translation>
+        <translation>Zeichnungskopf-Vorlage löschen?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation>Möchten Sie wirklich diese Plotrahmenvorlage (%1) löschen?
+        <translation>Möchten Sie wirklich diese Zeichnungskopf-Vorlage (%1) löschen?
 </translation>
     </message>
 </context>
@@ -7188,7 +7188,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="216"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation>Es existiert bereits ein Logo mit dem Namen &quot;%1&quot; in dieser Plotrahmenvorlage. Vorhandenes Logo ersetzen oder neues Logo umbenennen?</translation>
+        <translation>Es existiert bereits ein Logo mit dem Namen &quot;%1&quot; in dieser Zeichnungskopf-Vorlage. Vorhandenes Logo ersetzen oder neues Logo umbenennen?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="252"/>
@@ -7396,13 +7396,13 @@ Maximale Länge: %2px
         <location filename="../sources/titleblock/templatescollection.cpp" line="120"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Plotrahmen vom Projekt ohne Titel (id %1)</translation>
+        <translation>Zeichnungsköpfe vom Projekt ohne Titel (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation>Plotrahmen vom Projekt &quot;%1&quot;</translation>
+        <translation>Zeichnungsköpfe vom Projekt &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -7650,7 +7650,7 @@ Maximale Länge: %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="122"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Report de folio</source>
-        <translation>Abbruchstelle</translation>
+        <translation>Folienverweis</translation>
     </message>
 </context>
 <context>
