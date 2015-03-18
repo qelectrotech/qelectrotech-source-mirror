@@ -48,6 +48,7 @@ class DiagramEventAddElement : public DiagramEventInterface
 	private:
 		ElementsLocation m_location;
 		Element *m_element;
+		QString m_integrate_path;
 };
 
 #endif // DIAGRAMEVENTADDELEMENT_H

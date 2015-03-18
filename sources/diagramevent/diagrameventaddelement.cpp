@@ -175,9 +175,9 @@ bool DiagramEventAddElement::buildElement()
 	{
 		QString error_msg;
 		IntegrationMoveElementsHandler *integ_handler = new IntegrationMoveElementsHandler();
-		QString integ_path = m_diagram -> project() -> integrateElement(m_location.toString(), integ_handler, error_msg);
+		m_integrate_path = m_diagram -> project() -> integrateElement(m_location.toString(), integ_handler, error_msg);
 		delete integ_handler;
-		if (integ_path.isEmpty())
+		if (m_integrate_path.isEmpty())
 		{
 			qDebug() << "DiagramView::addDroppedElement : Impossible d'ajouter l'element. Motif : " << qPrintable(error_msg);
 			return false;
@@ -204,7 +204,12 @@ bool DiagramEventAddElement::buildElement()
 void DiagramEventAddElement::addElement()
 {
 	int state;
-	Element *element = ElementFactory::Instance() -> createElement(m_location, 0, &state);
+	Element *element;
+	if (m_integrate_path.isEmpty())
+		element = ElementFactory::Instance() -> createElement(m_location, 0, &state);
+	else
+		element = ElementFactory::Instance() -> createElement(ElementsLocation::locationFromString(m_integrate_path), 0, &state);
+
 		//Build failed
 	if (state)
 	{
