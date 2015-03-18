@@ -54,12 +54,10 @@ bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_f
 		return false;
 	}
 
-	QRectF  border = element_to_follow -> diagram() -> border();
+	QRectF  border = element_to_follow -> diagram() -> border_and_titleblock.insideBorderRect();
 	QPointF point  = element_to_follow -> sceneBoundingRect().center();
 
-	point.setY(border.height() -
-			   element_to_follow -> diagram() -> border_and_titleblock.titleBlockHeight() -
-			   item_to_center -> boundingRect().height());
+	point.setY(border.bottom() - item_to_center -> boundingRect().height() - 5);
 
 	point.rx() -= (item_to_center -> boundingRect().width()/2 +
 				   item_to_center -> boundingRect().left()); //< we add boundingrect.left because this value can be négative

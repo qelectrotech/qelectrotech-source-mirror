@@ -66,22 +66,15 @@ BorderTitleBlock::~BorderTitleBlock() {
 }
 
 /**
-	@return la hauteur du cartouche
-*/
-qreal BorderTitleBlock::titleBlockHeight() const {
-	return(titleblock_template_renderer_ -> height());
-}
-
-/**
  * @brief BorderTitleBlock::titleBlockRect
  * @return the rectangle of the titleblock in scene coordinate.
  */
 QRectF BorderTitleBlock::titleBlockRect() const
 {
 	if (m_edge == Qt::BottomEdge)
-		return QRectF(diagram_rect_.bottomLeft(), QSize(diagram_rect_.width(), titleBlockHeight()));
+		return QRectF(diagram_rect_.bottomLeft(), QSize(diagram_rect_.width(), titleblock_template_renderer_ -> height()));
 	else
-		return QRectF(diagram_rect_.topRight(), QSize(titleBlockHeight(), diagram_rect_.height()));
+		return QRectF(diagram_rect_.topRight(), QSize(titleblock_template_renderer_ -> height(), diagram_rect_.height()));
 }
 
 /**
@@ -99,32 +92,71 @@ QRectF BorderTitleBlock::titleBlockRectForQPainter() const
 	if (m_edge == Qt::BottomEdge) //Rect at bottom have same position and dimension of displayed rect
 		return titleBlockRect();
 	else
-		return QRectF (diagram_rect_.bottomRight(), QSize(diagram_rect_.height(), titleBlockHeight()));
+		return QRectF (diagram_rect_.bottomRight(), QSize(diagram_rect_.height(), titleblock_template_renderer_ -> height()));
 
 }
 
 /**
- * @brief BorderTitleBlock::borderRect
+ * @brief BorderTitleBlock::borderAndTitleBlockRect
  * @return the bounding rectangle of diagram and titleblock.
+ * It's like unite outsideBorderRect and titleBlockRect.
+ * The rect is in scene coordinate
  */
-QRectF BorderTitleBlock::borderRect() const {
+QRectF BorderTitleBlock::borderAndTitleBlockRect() const {
 	return diagram_rect_ | titleBlockRect();
 }
 
 /**
- * @brief BorderTitleBlock::borderWidth
- * @return the border width
+ * @brief BorderTitleBlock::columnsRect
+ * @return The columns rect in scene coordinate.
+ * If column is not displayed, return a null QRectF
  */
-qreal BorderTitleBlock::borderWidth() const {
-	return borderRect().width();
+QRectF BorderTitleBlock::columnsRect() const
+{
+	if (!display_columns_) return QRectF();
+	return QRectF (Diagram::margin, Diagram::margin, (columns_count_*columns_width_) + rows_header_width_, columns_header_height_);
 }
 
 /**
- * @brief BorderTitleBlock::borderHeight
- * @return the border height
+ * @brief BorderTitleBlock::rowsRect
+ * @return The rows rect in scene coordinate.
+ * If row is not displayed, return a null QRectF
  */
-qreal BorderTitleBlock::borderHeight() const {
-	return borderRect().height();
+QRectF BorderTitleBlock::rowsRect() const
+{
+	if (!display_rows_) return QRectF();
+	return QRectF (Diagram::margin, Diagram::margin, rows_header_width_, (rows_count_*rows_height_) + columns_header_height_);
+}
+
+/**
+ * @brief BorderTitleBlock::outsideBorderRect
+ * @return The rect of outside border (diagram with columns and rows)
+ * The rect is in scene coordinate
+ */
+QRectF BorderTitleBlock::outsideBorderRect() const
+{
+	return QRectF (Diagram::margin, Diagram::margin,
+				  (columns_width_*columns_count_) + rows_header_width_,
+				  (rows_height_*rows_count_) + columns_header_height_);
+}
+
+/**
+ * @brief BorderTitleBlock::insideBorderRect
+ * @return The rect of the inside border, in other word, the drawing area.
+ * This method take care about if rows or columns are displayed or not.
+ * The rect is in scene coordinate
+ */
+QRectF BorderTitleBlock::insideBorderRect() const
+{
+	qreal left = Diagram::margin;
+	qreal top  = Diagram::margin;
+	qreal width  = columns_width_*columns_count_;
+	qreal height = rows_height_*rows_count_;
+
+	display_rows_ ? left += rows_header_width_ : width += rows_header_width_;
+	display_columns_ ? top += columns_header_height_ : height += columns_header_height_;
+
+	return QRectF (left, top, width, height);
 }
 
 /**
@@ -609,31 +641,23 @@ void BorderTitleBlock::setDiagramHeight(const qreal &height) {
 }
 
 /**
-	@param pos Position cartesienne (ex : 10.3, 45.2) a transformer en position
-	dans la grille (ex : B2)
-	@return la position dans la grille correspondant a pos
-*/
-DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos) {
-	// recupere le rectangle quadrille par les en-tetes
-	QRectF grid_rect(
-		rowsHeaderWidth(),
-		columnsHeaderHeight(),
-		diagramWidth(),
-		diagramHeight()
-	);
-	
-	if (!grid_rect.contains(pos)) {
-		return(DiagramPosition("", 0));
-	}
-	
-	QPointF relative_pos = pos - grid_rect.topLeft();
+ * @brief BorderTitleBlock::convertPosition
+ * Convert a Point in cartesian coordinate (x : 12.5, 56.9) to a point in grid coordinate (ex : B2)
+ * @param pos : position to convert
+ * @return the converted point in grid coordinate.
+ */
+DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
+{
+	if(!insideBorderRect().contains(pos))
+		return (DiagramPosition("", 0));
+
+	QPointF relative_pos = pos - insideBorderRect().topLeft();
 	int row_number    = int(ceil(relative_pos.x() / columnsWidth()));
 	int column_number = int(ceil(relative_pos.y() / rowsHeight()));
 	
 	QString letter = "A";
-	for (int i = 1 ; i < column_number ; ++ i) {
+	for (int i = 1 ; i < column_number ; ++ i)
 		letter = incrementLetters(letter);
-	}
 	
 	return(DiagramPosition(letter, row_number));
 }

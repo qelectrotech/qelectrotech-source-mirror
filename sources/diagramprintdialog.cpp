@@ -92,9 +92,9 @@ QString DiagramPrintDialog::docName() const {
 QRect DiagramPrintDialog::diagramRect(Diagram *diagram, const ExportProperties &options) const {
 	if (!diagram) return(QRect());
 	
-	QRectF diagram_rect = diagram -> border();
+	QRectF diagram_rect = diagram -> border_and_titleblock.borderAndTitleBlockRect();
 	if (!options.draw_titleblock) {
-		qreal titleblock_height = diagram -> border_and_titleblock.titleBlockHeight();
+		qreal titleblock_height = diagram -> border_and_titleblock.titleBlockRect().height();
 		diagram_rect.setHeight(diagram_rect.height() - titleblock_height);
 	}
 	

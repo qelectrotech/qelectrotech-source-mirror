@@ -190,7 +190,7 @@ void DVEventAddShape::updateHelpCross(const QPoint &p)
 		pen.setCosmetic(true);
 		pen.setColor(Qt::darkGray);
 
-		QRectF rect = m_diagram -> drawingRect();
+		QRectF rect = m_diagram -> border_and_titleblock.insideBorderRect();
 
 		if (!m_help_horiz)
 		{

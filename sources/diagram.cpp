@@ -134,7 +134,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		p->setPen(pen);
 
 		p -> setBrush(Qt::NoBrush);
-		QRectF rect = drawingRect().intersected(r);
+		QRectF rect = border_and_titleblock.insideBorderRect().intersected(r);
 		qreal limite_x = rect.x() + rect.width();
 		qreal limite_y = rect.y() + rect.height();
 		
@@ -372,8 +372,8 @@ bool Diagram::toPaintDevice(QPaintDevice &pix, int width, int height, Qt::Aspect
 		source_area = QRectF(
 			0.0,
 			0.0,
-			border_and_titleblock.borderWidth () + 2.0 * margin,
-			border_and_titleblock.borderHeight() + 2.0 * margin
+			border_and_titleblock.borderAndTitleBlockRect().width()  + 2.0 * margin,
+			border_and_titleblock.borderAndTitleBlockRect().height() + 2.0 * margin
 		);
 	}
 	
@@ -415,8 +415,8 @@ QSize Diagram::imageSize() const {
 		image_width  = items_rect.width();
 		image_height = items_rect.height();
 	} else {
-		image_width  = border_and_titleblock.borderWidth();
-		image_height = border_and_titleblock.borderHeight();
+		image_width  = border_and_titleblock.borderAndTitleBlockRect().width();
+		image_height = border_and_titleblock.borderAndTitleBlockRect().height();
 	}
 	
 	image_width  += 2.0 * margin;
@@ -1070,41 +1070,6 @@ void Diagram::invertSelection() {
 }
 
 /**
- * @brief Diagram::border
- * @return The rectangle (coordinates relative to the scene)
- * delimiting the edge of the diagram
- */
-QRectF Diagram::border() const {
-	return border_and_titleblock.borderRect();
-}
-
-/**
- * @brief Diagram::drawingRect
- * @return The rectangle (coordinates relative to the scene)
- * delimiting the drawing area of the diagram.
- * It's like border without columns, rows, and titleblock
- */
-QRectF Diagram::drawingRect() const
-{
-	QPointF topleft(margin, margin);
-	QSizeF size;
-	size.setWidth (border_and_titleblock.columnsTotalWidth());
-	size.setHeight(border_and_titleblock.rowsTotalHeight());
-
-	if (border_and_titleblock.rowsAreDisplayed())
-		topleft.rx() += border_and_titleblock.rowsHeaderWidth();
-	else
-		size.rwidth() += border_and_titleblock.rowsHeaderWidth();
-
-	if (border_and_titleblock.columnsAreDisplayed())
-		topleft.ry() += border_and_titleblock.columnsHeaderHeight();
-	else
-		size.rheight() += border_and_titleblock.columnsHeaderHeight();
-
-	return (QRectF (topleft, size));
-}
-
-/**
 	@return le titre du cartouche
 */
 QString Diagram::title() const {
@@ -1246,11 +1211,8 @@ ExportProperties Diagram::applyProperties(const ExportProperties &new_properties
 	@return la position dans la grille correspondant a pos
 */
 DiagramPosition Diagram::convertPosition(const QPointF &pos) {
-	// decale la position pour prendre en compte les marges en haut a gauche du schema
-	QPointF final_pos = pos - QPointF(margin, margin);
-	
 	// delegue le calcul au BorderTitleBlock
-	DiagramPosition diagram_position = border_and_titleblock.convertPosition(final_pos);
+	DiagramPosition diagram_position = border_and_titleblock.convertPosition(pos);
 	
 	// embarque la position cartesienne
 	diagram_position.setPosition(pos);

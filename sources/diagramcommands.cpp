@@ -876,14 +876,14 @@ ChangeTitleBlockCommand::~ChangeTitleBlockCommand() {
 void ChangeTitleBlockCommand::undo() {
 	diagram -> showMe();
 	diagram -> border_and_titleblock.importTitleBlock(old_titleblock);
-	diagram -> invalidate(diagram -> border());
+	diagram -> invalidate(diagram -> border_and_titleblock.borderAndTitleBlockRect());
 }
 
 /// Refait la modification de cartouche
 void ChangeTitleBlockCommand::redo() {
 	diagram -> showMe();
 	diagram -> border_and_titleblock.importTitleBlock(new_titleblock);
-	diagram -> invalidate(diagram -> border());
+	diagram -> invalidate(diagram -> border_and_titleblock.borderAndTitleBlockRect());
 }
 
 /**

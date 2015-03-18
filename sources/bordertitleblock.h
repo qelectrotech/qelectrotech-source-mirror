@@ -73,18 +73,17 @@ class BorderTitleBlock : public QObject
 		qreal diagramWidth() const { return(columnsTotalWidth() + rowsHeaderWidth()); }
 			/// @return the diagram height, i.e. the height of the border without title block
 		qreal diagramHeight() const { return(rowsTotalHeight() + columnsHeaderHeight()); }
-	
-		// title block
-		qreal titleBlockHeight() const;
 
 		QRectF titleBlockRect () const;
 	private:
 		QRectF titleBlockRectForQPainter () const;
 
 	public:
-		QRectF borderRect () const;
-		qreal borderWidth () const;
-		qreal borderHeight() const;
+		QRectF borderAndTitleBlockRect () const;
+		QRectF columnsRect () const;
+		QRectF rowsRect () const;
+		QRectF outsideBorderRect() const;
+		QRectF insideBorderRect() const;
 	
 	// methods to get title block basic data
 	/// @return the value of the title block "Author" field

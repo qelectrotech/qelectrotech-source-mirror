@@ -318,7 +318,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 			m_help_line_a -> setPen(pen);
 		}
 
-		QRectF rect = diagram() -> drawingRect();
+		QRectF rect = diagram() -> border_and_titleblock.insideBorderRect();
 		QLineF line;
 
 		if (Qet::isHorizontal(orientation()))
@@ -376,7 +376,7 @@ void Terminal::drawHelpLine(bool draw)
 QLineF Terminal::HelpLine() const
 {
 	QPointF scene_dock = dockConductor();
-	QRectF  rect       = diagram() -> drawingRect();
+	QRectF  rect       = diagram() -> border_and_titleblock.insideBorderRect();
 
 	QLineF line(scene_dock , QPointF());
 
