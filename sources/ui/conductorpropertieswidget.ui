@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="toolTip">
-   <string comment="Tooltip displaying the meaning of the 'PEN' acronym">Protective Earth Neutral</string>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="m_type_gb">
