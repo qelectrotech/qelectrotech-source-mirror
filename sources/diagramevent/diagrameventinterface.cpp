@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventinterface.h"
+#include "diagram.h"
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>
 
@@ -25,6 +26,7 @@ DiagramEventInterface::DiagramEventInterface(Diagram *diagram) :
 	m_running(false),
 	m_abort(false)
 {
+	m_diagram -> clearSelection();
 }
 
 DiagramEventInterface::~DiagramEventInterface() {};
