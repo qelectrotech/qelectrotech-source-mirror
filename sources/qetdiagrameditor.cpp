@@ -331,10 +331,10 @@ void QETDiagramEditor::setUpActions() {
 
 	QAction *add_text      = m_add_item_actions_group.addAction( QET::Icons::PartTextField, tr("Ajouter un champ de texte")		);
 	QAction *add_image	   = m_add_item_actions_group.addAction( QET::Icons::adding_image,  tr("Ajouter une image")				);
-	QAction *add_line	   = m_add_item_actions_group.addAction( QET::Icons::PartLine,      tr("Ajouter une liaison mecanique") );
-	QAction *add_rectangle = m_add_item_actions_group.addAction( QET::Icons::PartRectangle, tr("Ajouter une zone rectangle")	);
-	QAction *add_ellipse   = m_add_item_actions_group.addAction( QET::Icons::PartEllipse,   tr("Ajouter une zone ellipse")		);
-	QAction *add_polyline  = m_add_item_actions_group.addAction( QET::Icons::PartPolygon,	tr("Ajouter une zone polyligne")    );
+    QAction *add_line	   = m_add_item_actions_group.addAction( QET::Icons::PartLine,      tr("Ajouter une ligne") );
+    QAction *add_rectangle = m_add_item_actions_group.addAction( QET::Icons::PartRectangle, tr("Ajouter un rectangle")	);
+    QAction *add_ellipse   = m_add_item_actions_group.addAction( QET::Icons::PartEllipse,   tr("Ajouter une ellipse")		);
+    QAction *add_polyline  = m_add_item_actions_group.addAction( QET::Icons::PartPolygon,	tr("Ajouter une polyligne")    );
 
 	connect( add_text,      SIGNAL( triggered() ), this, SLOT( slot_addText()      ) );
 	connect( add_image,     SIGNAL( triggered() ), this, SLOT( slot_addImage()     ) );
