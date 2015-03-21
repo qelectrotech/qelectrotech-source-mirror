@@ -66,7 +66,7 @@ void diagramselection::load_TableDiagram() {
 		QTableWidgetItem *item_State = new QTableWidgetItem();
 
 		QString diagram_title = list_diagram_.at(i) -> title();
-		if (diagram_title.isEmpty()) diagram_title = tr("Schéma sans titre");
+        if (diagram_title.isEmpty()) diagram_title = tr("Folio sans titre");
 
 		item_Name  -> setData(Qt::DisplayRole, diagram_title);
 		item_State -> setData(Qt::CheckStateRole, Qt::Checked);

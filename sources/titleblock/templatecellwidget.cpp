@@ -57,7 +57,7 @@ void TitleBlockTemplateCellWidget::initWidgets() {
 	name_input_ = new QLineEdit();
 	
 	// widgets specific to empty cells
-	empty_label_ = new QLabel(tr("Attention : les bordures des cellules vides n'apparaissent pas lors du rendu final sur le schéma."));
+    empty_label_ = new QLabel(tr("Attention : les bordures des cellules vides n'apparaissent pas lors du rendu final sur le folio."));
 	
 	// widgets specific to logo cells
 	logo_label_ = new QLabel(tr("Logo"));

@@ -69,7 +69,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
 	diagram_layout -> addWidget(bpw);
 	diagram_layout -> addWidget(ipw);
 
-	tab_widget -> addTab (diagram_widget, tr("Schéma"));
+    tab_widget -> addTab (diagram_widget, tr("Folio"));
 	tab_widget -> addTab (cpw,            tr("Conducteur"));
 	tab_widget -> addTab (rpw,            tr("Reports de folio"));
 	tab_widget -> addTab (xrefpw,         tr("Références croisées"));
@@ -170,7 +170,7 @@ QIcon NewDiagramPage::icon() const {
  * @return title of this page
  */
 QString NewDiagramPage::title() const {
-	if (m_project) return(tr("Nouveau schéma", "configuration page title"));
+    if (m_project) return(tr("Nouveau folio", "configuration page title"));
 	return(tr("Nouveau projet", "configuration page title"));
 }
 

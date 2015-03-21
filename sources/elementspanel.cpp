@@ -449,7 +449,7 @@ QTreeWidgetItem *ElementsPanel::updateTemplateItem(QTreeWidgetItem *tb_template_
 	item -> setStatusTip(
 		0,
 		tr(
-			"Cliquer-déposez ce modèle de cartouche sur un schéma pour l'y appliquer.",
+            "Glissez-déposez ce modèle de cartouche sur un folio pour l'y appliquer.",
 			"Status tip displayed when selecting a title block template"
 		)
 	);
@@ -482,7 +482,7 @@ QTreeWidgetItem *ElementsPanel::updateElementItem(QTreeWidgetItem *element_qtwi,
 	QTreeWidgetItem *item = GenericPanel::updateElementItem(element_qtwi, element, options, freshly_created);
 	
 	QString status_tip = tr(
-		"Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l'éditer",
+        "Glissez-déposez cet élément « %1 » sur un folio pour l'y insérer, double-cliquez dessus pour l'éditer",
 		"Status tip displayed in the status bar when selecting an element"
 	);
 	item -> setStatusTip(0, status_tip.arg(item -> text(0)));

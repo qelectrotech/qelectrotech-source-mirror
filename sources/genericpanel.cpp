@@ -239,7 +239,7 @@ QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi, 
 		);
 	}
 	project_qtwi -> setToolTip(0, final_tooltip);
-	QString project_whatsthis = tr("Ceci est un projet QElectroTech, c'est-à-dire un fichier d'extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.", "\"What's this\" tip");
+    QString project_whatsthis = tr("Ceci est un projet QElectroTech, c'est-à-dire un fichier d'extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.", "\"What's this\" tip");
 	project_qtwi -> setWhatsThis(0, project_whatsthis);
 	return(updateItem(project_qtwi, options, freshly_created));
 }
@@ -365,7 +365,7 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, 
 	
 	QString displayed_title = diagram -> title();
 	if (displayed_title.isEmpty()) {
-		displayed_title = tr("Schéma sans titre", "Fallback label when a diagram has no title");
+        displayed_title = tr("Folio sans titre", "Fallback label when a diagram has no title");
 	}
 	
 	QString displayed_label;
@@ -543,7 +543,7 @@ QTreeWidgetItem *GenericPanel::updateTemplateItem(QTreeWidgetItem *tb_template_q
 	Q_UNUSED(options)
 	tb_template_qtwi -> setText(0, tr("Modèle \"%1\"", "used to display a title block template").arg(tb_template.name()));
 	QString tbt_whatsthis = tr(
-		"Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.",
+        "Ceci est un modèle de cartouche, qui peut être appliqué à un folio.",
 		"\"What's this\" tip"
 	);
 	tb_template_qtwi -> setWhatsThis(0, tbt_whatsthis);

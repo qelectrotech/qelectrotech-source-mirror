@@ -160,10 +160,10 @@ QString ProjectMainConfigPage::projectTitle() const {
 void ProjectMainConfigPage::initWidgets() {
 	title_label_ = new QLabel(tr("Titre du projet :", "label when configuring"));
 	title_value_ = new QLineEdit();
-	title_information_ = new QLabel(tr("Ce titre sera disponible pour tous les schémas de ce projet en tant que %projecttitle.", "informative label"));
+    title_information_ = new QLabel(tr("Ce titre sera disponible pour tous les folios de ce projet en tant que %projecttitle.", "informative label"));
 	project_variables_label_ = new QLabel(
 		tr(
-			"Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).",
+            "Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).",
 			 "informative label"
 		)
 	);

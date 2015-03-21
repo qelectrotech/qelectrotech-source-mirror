@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>528</width>
-    <height>439</height>
+    <width>530</width>
+    <height>450</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -136,8 +136,8 @@
               </property>
               <property name="text">
                <string>Les variables suivantes sont utilisables dans le champ Folio :
-- %id : numéro du schéma courant dans le projet 
-- %total : nombre total de schémas dans le projet</string>
+- %id : numéro du folio courant dans le projet 
+- %total : nombre total de folios dans le projet</string>
               </property>
               <property name="scaledContents">
                <bool>false</bool>

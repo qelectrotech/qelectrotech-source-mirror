@@ -894,7 +894,7 @@ void ChangeTitleBlockCommand::redo() {
 	@param parent QUndoCommand parent
 */
 ChangeBorderCommand::ChangeBorderCommand(Diagram *dia, const BorderProperties &old_bp, const BorderProperties &new_bp, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("modifier les dimensions du schéma", "undo caption"), parent),
+    QUndoCommand(QObject::tr("modifier les dimensions du folio", "undo caption"), parent),
 	diagram(dia),
 	old_properties(old_bp),
 	new_properties(new_bp)

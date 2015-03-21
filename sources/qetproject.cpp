@@ -984,7 +984,7 @@ QList <Diagram *> QETProject::addNewDiagramFolioList() {
 			diagram_folio_list -> border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 			diagram_folio_list -> defaultConductorProperties = defaultConductorProperties();
 
-			diagram_folio_list -> border_and_titleblock.setTitle(tr("Liste des Schémas"));
+            diagram_folio_list -> border_and_titleblock.setTitle(tr("Liste des Folios"));
 			// no need to display rows and columns
 			diagram_folio_list -> border_and_titleblock.displayRows(false);
 			diagram_folio_list -> border_and_titleblock.displayColumns(false);

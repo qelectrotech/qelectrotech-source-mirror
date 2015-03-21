@@ -381,7 +381,7 @@ void DiagramView::zoomInSlowly() {
 */
 void DiagramView::zoomOutSlowly() {
 	scale(0.98, 0.98);
-	// Interdit le dezoome plus grand que le schéma
+    // Interdit le dezoome plus grand que le folio
 	if ((mapFromScene(0,0).rx() == 0) && (mapFromScene(0,0).ry() == 0)){
 		fitInView(sceneRect(), Qt::KeepAspectRatio);
 	}

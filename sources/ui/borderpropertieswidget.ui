@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>412</width>
+    <width>480</width>
     <height>300</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    <item>
     <widget class="QGroupBox" name="border_gb">
      <property name="title">
-      <string>Dimensions du schéma</string>
+      <string>Dimensions du folio</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="2">

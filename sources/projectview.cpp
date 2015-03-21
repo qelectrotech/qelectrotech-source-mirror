@@ -260,7 +260,7 @@ QString ProjectView::askUserForFilePath(bool assign) {
 		this,
 		tr("Enregistrer sous", "dialog title"),
 		project_ -> currentDir(),
-		tr("Schéma QElectroTech (*.qet)", "filetypes allowed when saving a diagram file")
+        tr("Projet QElectroTech (*.qet)", "filetypes allowed when saving a project file")
 	);
 	
 	// if no filepath is provided, return an empty string
@@ -368,8 +368,8 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 	//Ask confirmation to user.
 	int answer = QET::QetMessageBox::question(
 		this,
-		tr("Supprimer le schéma ?", "message box title"),
-		tr("Êtes-vous sûr  de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.", "message box content"),
+        tr("Supprimer le folio ?", "message box title"),
+        tr("Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.", "message box content"),
 		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 		QMessageBox::No
 	);
@@ -750,7 +750,7 @@ int ProjectView::cleanProject() {
 	Initialize actions for this widget.
 */
 void ProjectView::initActions() {
-	add_new_diagram_ = new QAction(QET::Icons::AddFolio, tr("Ajouter un schéma"), this);
+    add_new_diagram_ = new QAction(QET::Icons::AddFolio, tr("Ajouter un folio"), this);
 	connect(add_new_diagram_, SIGNAL(triggered()), this, SLOT(addNewDiagram()));
 }
 
@@ -765,7 +765,7 @@ void ProjectView::initWidgets() {
 	fallback_widget_ = new QWidget();
 	fallback_label_ = new QLabel(
 		tr(
-			"Ce projet ne contient aucun schéma",
+            "Ce projet ne contient aucun folio",
 			"label displayed when a project contains no diagram"
 		)
 	);

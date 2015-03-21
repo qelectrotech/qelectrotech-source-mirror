@@ -118,7 +118,7 @@ QETApp::QETApp(int &argc, char **argv) :
 	
 	// on ouvre soit les fichiers passes en parametre soit un nouvel editeur de projet
 	if (qet_arguments_.files().isEmpty()) {
-		setSplashScreenStep(tr("Chargement... Éditeur de schémas", "splash screen caption"));
+        setSplashScreenStep(tr("Chargement... Éditeur de schéma", "splash screen caption"));
 		new QETDiagramEditor();
 	} else {
 		setSplashScreenStep(tr("Chargement... Ouverture des fichiers", "splash screen caption"));

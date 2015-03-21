@@ -169,11 +169,11 @@ void QETPrintPreviewDialog::selectNoDiagram() {
 */
 void QETPrintPreviewDialog::build() {
 	preview_ = new QPrintPreviewWidget(printer_);
-	diagrams_label_       = new QLabel(tr("Schémas à imprimer :"));
+    diagrams_label_       = new QLabel(tr("Folios à imprimer :"));
 	diagrams_list_        = new DiagramsChooser(project_);
 	diagrams_select_all_  = new QPushButton(tr("Tout cocher"));
 	diagrams_select_none_ = new QPushButton(tr("Tout décocher"));
-	toggle_diagrams_list_ = new QAction(QET::Icons::Diagram,              tr("Cacher la liste des schémas"),            this);
+    toggle_diagrams_list_ = new QAction(QET::Icons::Diagram,              tr("Cacher la liste des folios"),            this);
 	toggle_print_options_ = new QAction(QET::Icons::Configure,            tr("Cacher les options d'impression"),           this);
 	adjust_width_         = new QAction(QET::Icons::ViewFitWidth,         tr("Ajuster la largeur"),                        this);
 	adjust_page_          = new QAction(QET::Icons::ViewFitWindow,        tr("Ajuster la page"),                           this);
@@ -244,9 +244,9 @@ void QETPrintPreviewDialog::build() {
 	));
 	use_full_page_label_ -> setWordWrap(true);
 	use_full_page_label_ -> setContentsMargins(20, 0, 0, 0);
-	fit_diagram_to_page_ = new QCheckBox(tr("Adapter le schéma à la page"));
+    fit_diagram_to_page_ = new QCheckBox(tr("Adapter le folio à la page"));
 	fit_diagram_to_page_label_ = new QLabel(tr(
-		"Si cette option est cochée, le schéma sera agrandi ou "
+        "Si cette option est cochée, le folio sera agrandi ou "
 		"rétréci de façon à remplir toute la surface imprimable "
 		"d'une et une seule page."
 	));
@@ -363,9 +363,9 @@ void QETPrintPreviewDialog::setDiagramsListVisible(bool display) {
 	diagrams_select_none_ -> setVisible(display);
 	
 	if (display) {
-		toggle_diagrams_list_ -> setText(tr("Cacher la liste des schémas"));
+        toggle_diagrams_list_ -> setText(tr("Cacher la liste des folios"));
 	} else {
-		toggle_diagrams_list_ -> setText(tr("Afficher la liste des schémas"));
+        toggle_diagrams_list_ -> setText(tr("Afficher la liste des folios"));
 	}
 }
 
