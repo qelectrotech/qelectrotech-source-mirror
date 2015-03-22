@@ -362,7 +362,7 @@
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
         <source>Dimensions du folio</source>
-        <translation>Rozmiar schematu</translation>
+        <translation>Rozmiar arkusza</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="60"/>
@@ -508,7 +508,7 @@ dla przewodów o tym samym potencjale?</translation>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="107"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation>Wyświetl jeden tekst dla potencjału na stronie. </translation>
+        <translation>Pokaż jeden tekst dla potencjału w arkuszu. </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="116"/>
@@ -688,7 +688,7 @@ dla przewodów o tym samym potencjale?</translation>
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="49"/>
         <source>Propriétés du folio</source>
         <comment>window title</comment>
-        <translation>Właściwości strony</translation>
+        <translation>Właściwości arkusza</translation>
     </message>
 </context>
 <context>
@@ -747,7 +747,7 @@ dla przewodów o tym samym potencjale?</translation>
     <message>
         <location filename="../sources/diagramschooser.cpp" line="165"/>
         <source>Folio sans titre</source>
-        <translation>Tytuł strony</translation>
+        <translation>Tytuł arkusza</translation>
     </message>
 </context>
 <context>
@@ -785,7 +785,7 @@ dla przewodów o tym samym potencjale?</translation>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ponumeruj zaznaczone strony&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ponumeruj zaznaczone arkusze&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
@@ -795,7 +795,7 @@ dla przewodów o tym samym potencjale?</translation>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Usuń numerację zaznaczonych stron&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Usuń numerację zaznaczonych arkuszy&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
@@ -1115,12 +1115,12 @@ dla przewodów o tym samym potencjale?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="76"/>
         <source>Renvoi de folio suivant</source>
-        <translation>Odsyłacz do następnej strony</translation>
+        <translation>Odsyłacz do następnego arkusza</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="77"/>
         <source>Renvoi de folio précédent</source>
-        <translation>Odsyłacz do poprzedniej strony</translation>
+        <translation>Odsyłacz do poprzedniego arkusza</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="78"/>
@@ -1634,42 +1634,42 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Propriétés du folio</source>
-        <translation>Właściwości strony</translation>
+        <translation>Właściwości arkusza</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Ajouter un folio</source>
-        <translation>Powiększ stronę</translation>
+        <translation>Powiększ arkusz</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Supprimer ce folio</source>
-        <translation>Usuń stronę</translation>
+        <translation>Usuń arkusz</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Remonter ce folio</source>
-        <translation>Przenieś stronę w górę</translation>
+        <translation>Przenieś arkusz w górę</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Abaisser ce folio</source>
-        <translation>Przenieś stronę w dół</translation>
+        <translation>Przenieś arkusz w dół</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Remonter ce folio x10</source>
-        <translation>Przenieś stronę w górę o 10</translation>
+        <translation>Przenieś arkusz w górę o 10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Remonter ce folio au debut</source>
-        <translation>Przenieś stronę na początek</translation>
+        <translation>Przenieś arkusz na początek</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Abaisser ce folio x10</source>
-        <translation>Przenieś stronę w dół o 10</translation>
+        <translation>Przenieś arkusz w dół o 10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
@@ -1797,7 +1797,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="434"/>
         <source>Folio</source>
-        <translation>Strona</translation>
+        <translation>Arkusz</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="435"/>
@@ -1820,12 +1820,12 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/exportdialog.cpp" line="60"/>
         <source>Exporter les folios du projet</source>
         <comment>window title</comment>
-        <translation>Eksportowanie stron projektu</translation>
+        <translation>Eksportowanie arkuszy projektu</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="75"/>
         <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation>Wybierz strony do wyeksportowania i ich rozmiar:</translation>
+        <translation>Wybierz arkusze do wyeksportowania i ich rozmiar:</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="78"/>
@@ -1840,13 +1840,13 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="141"/>
         <source>Titre du folio</source>
-        <translation>Tytuł strony</translation>
+        <translation>Tytuł arkusza</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="770"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
-        <translation>Musisz podać nieużywaną nazwę pliku dla eksportowanych stron.</translation>
+        <translation>Musisz podać nieużywaną nazwę pliku dla eksportowanych arkuszy.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="785"/>
@@ -2146,13 +2146,13 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/genericpanel.cpp" line="242"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Projekt QElectroTech o rozszerzeniu .qet może zawierać wiele stron. Wraz z projektem zapisane są używane elementy i szablony tabliczek rysunkowych.</translation>
+        <translation>Projekt QElectroTech o rozszerzeniu .qet może zawierać wiele arkuszy. Wraz z projektem zapisane są również używane elementy i szablony tabliczek rysunkowych.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="368"/>
         <source>Folio sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation>Strona bez tytułu</translation>
+        <translation>Arkusz bez tytułu</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="375"/>
@@ -2503,7 +2503,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
         <source>Rechercher dans le folio :</source>
-        <translation>Znajdź na stronie:</translation>
+        <translation>Znajdź w arkuszu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
@@ -2578,7 +2578,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="140"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="154"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation>Strona  %1 (%2), pozycja %3.</translation>
+        <translation>Arkusz  %1 (%2), pozycja %3.</translation>
     </message>
 </context>
 <context>
@@ -2628,7 +2628,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="72"/>
         <source>Folio</source>
-        <translation>Strona</translation>
+        <translation>Arkusz</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="73"/>
@@ -2638,7 +2638,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="74"/>
         <source>Reports de folio</source>
-        <translation>Odsyłacze do stron</translation>
+        <translation>Odsyłacze do arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="75"/>
@@ -2649,7 +2649,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/configpages.cpp" line="173"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
-        <translation>Nowa strona</translation>
+        <translation>Nowy arkusz</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="174"/>
@@ -2780,7 +2780,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="53"/>
         <source>N° folio</source>
-        <translation>Nr strony</translation>
+        <translation>Nr arkusza</translation>
     </message>
 </context>
 <context>
@@ -2908,13 +2908,13 @@ Jakie oznaczenia przewodów chcesz zastosować?</translation>
         <location filename="../sources/projectconfigpages.cpp" line="163"/>
         <source>Ce titre sera disponible pour tous les folios de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation>Ten tytuł będzie dostępny dla wszystkich stron projektu jako %projecttitle.</translation>
+        <translation>Ten tytuł będzie dostępny dla wszystkich arkuszy projektu jako %projecttitle.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="165"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>Tutaj możesz zdefiniować właściwości niestandardowe, które będą dostępne we wszystkich stronach tego projektu (zwykle w tabliczkach rysunkowych).</translation>
+        <translation>Tutaj możesz zdefiniować właściwości niestandardowe, które będą dostępne we wszystkich arkuszach tego projektu (zwykle w tabliczkach rysunkowych).</translation>
     </message>
 </context>
 <context>
@@ -2946,13 +2946,13 @@ Czy chcesz zapisać zmiany?</translation>
         <location filename="../sources/projectview.cpp" line="371"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
-        <translation>Usunąć stronę?</translation>
+        <translation>Usunąć arkusz?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="372"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation>Czy na pewno chcesz usunąć tę stronę z projektu? Zmiana będzie nieodwracalna.</translation>
+        <translation>Czy na pewno chcesz usunąć ten arkusz z projektu? Zmiana będzie nieodwracalna.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="696"/>
@@ -2980,13 +2980,13 @@ Czy chcesz zapisać zmiany?</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="753"/>
         <source>Ajouter un folio</source>
-        <translation>Wstaw stronę</translation>
+        <translation>Wstaw arkusz</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="767"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation>Ten projekt nie zawiera stron</translation>
+        <translation>Ten projekt nie zawiera arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="261"/>
@@ -3436,22 +3436,22 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="162"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Ten panel zawiera listę czynności wykonanych na aktualnej stronie. Kliknij wykonaną czynność z listy aby powrócić do etapu edycji schematu po jej zastosowaniu.</translation>
+        <translation>Ten panel zawiera listę czynności wykonanych w bieżącym arkuszu. Kliknij wykonaną czynność z listy aby powrócić do etapu edycji schematu po jej zastosowaniu.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Propriétés du folio</source>
-        <translation>Właściwości strony</translation>
+        <translation>Właściwości arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
         <source>Ajouter un folio</source>
-        <translation>Wstaw stronę</translation>
+        <translation>Wstaw arkusz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="203"/>
         <source>Supprimer le folio</source>
-        <translation>Usuń stronę</translation>
+        <translation>Usuń arkusz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="210"/>
@@ -3484,129 +3484,129 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
         <source>Ferme le projet courant</source>
         <comment>status bar tip</comment>
-        <translation>Zamyka aktualny projekt</translation>
+        <translation>Zamyka bieżący projekt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
-        <translation>Zapisuje aktualny projekt i wszystkie strony należące do projektu</translation>
+        <translation>Zapisuje bieżący projekt i wszystkie arkusze należące do projektu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
         <source>Enregistre le projet courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
-        <translation>Zapisuje aktualny projekt z inną nazwą pliku</translation>
+        <translation>Zapisuje bieżący projekt z inną nazwą pliku</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="246"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation>Wstawia kolumnę do strony</translation>
+        <translation>Wstawia kolumnę do arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="247"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation>Usuwa kolumnę ze strony</translation>
+        <translation>Usuwa kolumnę z arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dodaje wiersz do arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Usuwa wiersz z arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="275"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
-        <translation>Usuwa zaznaczenie elementów na stronie</translation>
+        <translation>Usuwa zaznaczenie elementów w arkuszu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="295"/>
         <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zaznacza wszystkie elementy w arkuszu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Usuwa zaznaczenie wszystkich elementów w arkuszu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
         <source>Agrandit le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Powiększa arkusz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="318"/>
         <source>Rétrécit le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Pomniejsza arkusz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
         <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostosowuje powiększenie w celu pokazania całej zawartości bez obramowania</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
         <source>Adapte le zoom exactement sur le cadre du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dostosowuje powiększenie do obramowania arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
         <source>Ajouter un rectangle</source>
-        <translation type="unfinished">Wstaw prostokąt</translation>
+        <translation>Wstaw prostokąt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Ajouter une ellipse</source>
-        <translation type="unfinished">Wstaw elipsę</translation>
+        <translation>Wstaw elipsę</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Ajouter une polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw wielokąt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="364"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eksportuje bieżącą arkusz do innego formatu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="365"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Drukuje jeden lub więcej arkuszy bieżącego projektu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="371"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wkleja elementy ze schowka do arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="373"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edytuje właściwości arkusza (rozmiar, informacje w tabliczce rysunkowej, właściwości przewodu...)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="379"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podgląd arkusza bez możliwości edycji</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="433"/>
@@ -4001,7 +4001,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="710"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekty QElectroTech (*.qet);;Pliki XML (*.xml);;Wszystkie pliki (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="795"/>
@@ -4491,7 +4491,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b&gt; :&lt;br&gt;Odsyłacze do stron muszą zawierać jeden terminal.&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt; :&lt;br&gt;Sprawdź czy element zawiera tylko jeden terminal</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b&gt; :&lt;br&gt;Odsyłacze do arkuszy muszą zawierać jeden terminal.&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt; :&lt;br&gt;Sprawdź czy element zawiera tylko jeden terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
@@ -4538,7 +4538,7 @@ Dostępne opcje:
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b  &gt; :&lt;br&gt;Elementy nadrzędne, podrzędne i nieokreślone oraz odsyłacze do stron muszą zawierać pole tekstowe posiadające znacznik tagg &apos;Etykieta&apos;.&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt; :&lt;br&gt;Wstaw pole tekstowe i nadaj mu znacznik le tagg &apos;Etykieta&apos;</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Błąd&lt;/b  &gt; :&lt;br&gt;Elementy nadrzędne, podrzędne i nieokreślone oraz odsyłacze do arkuszy muszą zawierać pole tekstowe posiadające znacznik tagg &apos;Etykieta&apos;.&lt;br&gt;&lt;b&gt;Rozwiązanie&lt;/b&gt; :&lt;br&gt;Wstaw pole tekstowe i nadaj mu znacznik le tagg &apos;Etykieta&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="745"/>
@@ -4690,7 +4690,7 @@ wymagane warunki nie zostały spełnione</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1212"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
-        <translation>Zapisać aktualny element?</translation>
+        <translation>Zapisać bieżący element?</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1214"/>
@@ -4853,13 +4853,13 @@ wymagane warunki nie zostały spełnione</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Arkusze do druku:</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="176"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="366"/>
         <source>Cacher la liste des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukryj listę arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="177"/>
@@ -4875,7 +4875,7 @@ wymagane warunki nie zostały spełnione</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="179"/>
         <source>Ajuster la page</source>
-        <translation>Dostosuj do strony</translation>
+        <translation>Dostosuj do arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="180"/>
@@ -4905,7 +4905,7 @@ wymagane warunki nie zostały spełnione</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="186"/>
         <source>Page précédente</source>
-        <translation>Poprzednia strona</translation>
+        <translation>Poprzedna strona</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="187"/>
@@ -4960,17 +4960,17 @@ wymagane warunki nie zostały spełnione</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="247"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostosuj arkusz do strony</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="248"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeżeli ta opcja jest zaznaczona, arkusz zostanie powiększony lub pomniejszony w celu dopasowania wydruku do strony.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="368"/>
         <source>Afficher la liste des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż listę arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="264"/>
@@ -4980,7 +4980,7 @@ wymagane warunki nie zostały spełnione</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="384"/>
         <source>Afficher les options d&apos;impression</source>
-        <translation>Wyświetl opcje drukowania</translation>
+        <translation>Pokaż opcje drukowania</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="411"/>
@@ -5068,7 +5068,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="987"/>
         <source>Liste des Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista Arkuszy</translation>
     </message>
 </context>
 <context>
@@ -5077,7 +5077,7 @@ Co chcesz zrobić?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="110"/>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
-        <translation>Zapisać aktualny szablon?</translation>
+        <translation>Zapisać bieżący szablon?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="112"/>
@@ -5524,7 +5524,7 @@ Co chcesz zrobić?</translation>
         <location filename="../sources/diagramcommands.cpp" line="897"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>zmiana rozmiaru arkusza</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="926"/>
@@ -5557,7 +5557,7 @@ Co chcesz zrobić?</translation>
         <location filename="../sources/diagramcommands.cpp" line="1157"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation>połączenie 2 odsyłaczy do strony</translation>
+        <translation>połączenie 2 odsyłaczy do arkusza</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1161"/>
@@ -5825,7 +5825,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1034"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Tytuł arkusza</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1036"/>
@@ -6006,7 +6006,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="224"/>
         <source>Folio</source>
-        <translation>Strona</translation>
+        <translation>Arkusz</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="225"/>
@@ -6246,7 +6246,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %c : le numéro de colonne</source>
         <translation>Tutaj możesz zdefiniować etykietę dla odsyłaczy.
 Utwórz tekst etykiety za pomocą następujących zmiennych:
-%f : numer strony 
+%f : numer arkusza 
 %l : numer wiersza
 %c : numer kolumny</translation>
     </message>
@@ -6333,7 +6333,7 @@ Jeżeli numer określony w polu &quot;Wartość&quot; ma mniej cyfr niż wybrany
 -Typ &quot;Tekst&quot; oznacza stały tekst.
 Pole &quot;Inkrementacja&quot; nie jest używane.
 
--Typ &quot;Nr strony&quot; oznacza numer bieżącej strony.
+-Typ &quot;Nr arkusza&quot; oznacza numer bieżącego arkusza.
 Pozostałe pola nie są używane.
 </translation>
     </message>
@@ -6831,7 +6831,7 @@ Pozostałe pola nie są używane.
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="243"/>
         <source>Folio :</source>
-        <translation>Strona:</translation>
+        <translation>Arkusz:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="121"/>
@@ -6871,14 +6871,16 @@ Pozostałe pola nie są używane.
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="128"/>
         <source>Afficher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozycja:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="138"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Następujące zmienne są wykorzystywane w polu Arkusz:
+- %id : numer bieżącego arkusza w schemacie 
+- %total : łączna liczba arkuszy w projekcie</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
@@ -6923,12 +6925,12 @@ Pozostałe pola nie są używane.
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
         <source>Bas</source>
-        <translation type="unfinished">Dół</translation>
+        <translation>Dolna</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="263"/>
         <source>Droite (expérimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>Prawa (eksperyment)</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="274"/>
@@ -6983,7 +6985,7 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Uwaga: obramowania pustych komórek będą niewidoczne w arkuszu.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
@@ -7084,12 +7086,12 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Domyślnie dostępne są następujące zmienne: &lt;ul&gt;&lt;li&gt;%{author} : autor strony&lt;/li&gt;&lt;li&gt;%{date} : data strony&lt;/li&gt;&lt;li&gt;%{title} : tytuł strony&lt;/li&gt;&lt;li&gt;%{filename} : nazwa pliku projektu&lt;/li&gt;&lt;li&gt;%{folio} : względne oznaczenie strony&lt;/li&gt;&lt;li&gt;%{folio-id} : numer strony w projekcie&lt;/li&gt;&lt;li&gt;%{folio-total} : całkowita liczba stron projektu&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation>Domyślnie dostępne są następujące zmienne: &lt;ul&gt;&lt;li&gt;%{author} : autor arkusza&lt;/li&gt;&lt;li&gt;%{date} : data arkusza&lt;/li&gt;&lt;li&gt;%{title} : tytuł arkusza&lt;/li&gt;&lt;li&gt;%{filename} : nazwa pliku projektu&lt;/li&gt;&lt;li&gt;%{folio} : względne oznaczenie arkusza&lt;/li&gt;&lt;li&gt;%{folio-id} : numer arkusza w projekcie&lt;/li&gt;&lt;li&gt;%{folio-total} : całkowita liczba arkuszy projektu&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Zawartość komórki tabliczki rysunkowej może być opcjonalnie poprzedzona etykietą. Obie mogą być przetłumaczone na kilka języków.&lt;br/&gt;Aktualnie edytujesz &lt;em&gt;szablon&lt;/em&gt; tabliczki rysunkowej, nie należy wprowadzać bezpośrednio surowych danych zamiast zmiennych w postaci %{nazwa-zmiennej}, która następnie zostanie zastąpiona przez odpowiednie wartości dla strony.</translation>
+        <translation>Zawartość komórki tabliczki rysunkowej może być opcjonalnie poprzedzona etykietą. Obie mogą być przetłumaczone na kilka języków.&lt;br/&gt;Aktualnie edytujesz &lt;em&gt;szablon&lt;/em&gt; tabliczki rysunkowej, nie należy wprowadzać bezpośrednio surowych danych zamiast zmiennych w postaci %{nazwa-zmiennej}, która następnie zostanie zastąpiona przez odpowiednie wartości dla arkusza.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
@@ -7395,7 +7397,8 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Długość minimalna: %1px
+Długość maksymalna: %2px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="940"/>
@@ -7554,7 +7557,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Arkusz bez tytułu</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="102"/>
@@ -7579,7 +7582,7 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="66"/>
         <source>Folio : %1
 </source>
-        <translation>Strona: %1</translation>
+        <translation>Arkusz: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="68"/>
@@ -7665,7 +7668,7 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="122"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Report de folio</source>
-        <translation>Odsyłacze do stron</translation>
+        <translation>Odsyłacze do arkuszy</translation>
     </message>
 </context>
 <context>
@@ -7742,12 +7745,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>N° de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Nr arkusza</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Titre de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Tytuł arkusza</translation>
     </message>
 </context>
 <context>
