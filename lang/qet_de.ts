@@ -213,7 +213,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="192"/>
         <source>Convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF Konverter</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="211"/>
@@ -365,7 +365,7 @@
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
         <source>Dimensions du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folienmaße</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="60"/>
@@ -691,7 +691,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="49"/>
         <source>Propriétés du folio</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Folieneigenschaften</translation>
     </message>
 </context>
 <context>
@@ -750,7 +750,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
     <message>
         <location filename="../sources/diagramschooser.cpp" line="165"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Folie ohne Titel</translation>
     </message>
 </context>
 <context>
@@ -1478,13 +1478,13 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/elementspanel.cpp" line="451"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ziehen/ablegen, um die Zeichnungskopf auf die Folie anzuwenden.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="484"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ziehen/ablegen, um das Bauteil &quot;%1&quot; auf die Folie einzufügen. Doppelklick, um es zu bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="590"/>
@@ -1610,47 +1610,47 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Propriétés du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folieneigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Ajouter un folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue Folie einfügen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Supprimer ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folie löschen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Remonter ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folie 1 Position nach oben verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Abaisser ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folie 1 Position nach unten verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Remonter ce folio x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Folie 10 Positionen nach oben verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Remonter ce folio au debut</source>
-        <translation type="unfinished"></translation>
+        <translation>Folie zum Anfang verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Abaisser ce folio x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Folie 10 Positionen nach unten verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="90"/>
         <source>Filtrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
@@ -1779,17 +1779,17 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/exportdialog.cpp" line="60"/>
         <source>Exporter les folios du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Folien vom Projekt exportieren</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="75"/>
         <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl der zu exportierenden Folien und deren Abmessungen:</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="141"/>
         <source>Titre du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folientitel</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="142"/>
@@ -1832,7 +1832,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/exportdialog.cpp" line="770"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Die Dateinamen der zu exportierenden Folien müssen einmalig und nicht leer sein.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="785"/>
@@ -2149,13 +2149,13 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/genericpanel.cpp" line="242"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Das ist ein QElectroTech-Projekt : eine *.qet Datei, in der Folien, eingebettete Bauteile und eingebettete Zeichnungsköpfe gespeichert sind.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="368"/>
         <source>Folio sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Folie ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="375"/>
@@ -2178,7 +2178,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/genericpanel.cpp" line="545"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Das ist eine Zeichnungskopf-Vorlage, die auf eine Folie angewendet werden kann.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="730"/>
@@ -2631,7 +2631,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/configpages.cpp" line="72"/>
         <source>Folio</source>
-        <translation type="unfinished">Folie</translation>
+        <translation>Folie</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="73"/>
@@ -2652,7 +2652,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
         <location filename="../sources/configpages.cpp" line="173"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Neue Folie</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="174"/>
@@ -2911,13 +2911,13 @@ Verbindungen dieses Potenzials anwenden?</translation>
         <location filename="../sources/projectconfigpages.cpp" line="163"/>
         <source>Ce titre sera disponible pour tous les folios de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Das Titel ist für alle Folien des Projekts als Variable %projecttitle verfügbar.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="165"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerdefinierte Eigenschaften können erstellt werden. Sie sind für alle Folien des Projekts verfügbar (typischerweise für Zeichnungsköpfe).</translation>
     </message>
 </context>
 <context>
@@ -2944,19 +2944,19 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/projectview.cpp" line="263"/>
         <source>Projet QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a project file</comment>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech-Projekt (*.qet)</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="371"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Folie löschen?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="372"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Möchten Sie wirklich diese Folie vom Projekt löschen? Dies kann nicht rückgängig gemacht werden.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="585"/>
@@ -3000,13 +3000,13 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="753"/>
         <source>Ajouter un folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue Folie einfügen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="767"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Projekt beinhaltet keine Folie</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="842"/>
@@ -3033,7 +3033,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="121"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lade... Schaltplaneditor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="124"/>
@@ -3373,7 +3373,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="162"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Diese Liste protokolliert alle auf der aktuellen Folie ausgeführten Änderungen. Die Auswahl eines Eintrags führt die Änderungen bis zu diesem Eintrag zurück.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>
@@ -3413,77 +3413,77 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Propriétés du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folieneigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
         <source>Ajouter un folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue Folie einfügen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="203"/>
         <source>Supprimer le folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folie löschen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Crée un nouveau projet</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Erstellt ein neues Projekt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>Ouvre un projet existant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Öffnet ein existierendes Projekt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
         <source>Ferme le projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schliesst das aktuelle Projekt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Speichert das aktuelle Projekt und alle seine Folien</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
         <source>Enregistre le projet courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Speichert das aktuelle Projekt unter einem anderen Dateinamen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="246"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fügt eine neue Spalte zur Folie hinzu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="247"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Löscht eine Spalte der Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vergrössert die Höhe der Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verkleinert die Höhe der Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="275"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Entfernt die ausgewählten Bauteile von der Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="287"/>
@@ -3645,51 +3645,51 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="295"/>
         <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wählt alle Bauteile der Folie aus</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wählt alle Bauteile der Folie ab</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
         <source>Agrandit le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vergrössert die Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="318"/>
         <source>Rétrécit le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verkleinert die Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
         <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Passt die Ansicht auf den Inhalt der Folie an, unabhängig vom Folienrahmen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
         <source>Adapte le zoom exactement sur le cadre du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Passt die Ansicht genau auf den Folienrahmen an</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
         <source>Ajouter un rectangle</source>
-        <translation type="unfinished">Rechteck einfügen</translation>
+        <translation>Rechteck einfügen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Ajouter une ellipse</source>
-        <translation type="unfinished">Ellipse einfügen</translation>
+        <translation>Ellipse einfügen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Ajouter une polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Polylinie einfügen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
@@ -3949,7 +3949,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="710"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech-Projekte (*.qet);;XML-Dateien (*.xml);;Alle Dateien (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1455"/>
@@ -3965,31 +3965,31 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="364"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aktuelle Folie in ein anderes Format exportieren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="365"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Druckt eine oder mehrere Folien des aktuellen Projekts</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="371"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fügt den Inhalt der Zwischenablage auf die Folio ein</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="373"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeitet die Folieneigenschaften (Maße, Zeichnungskopf-Daten, Leitereigenschaften...)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="379"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wechselt in das Ansichtsmodus, in dem die Folie nicht bearbeitet werden kann</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="436"/>
@@ -4846,13 +4846,13 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zu druckende Folien:</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="176"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="366"/>
         <source>Cacher la liste des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Folienliste verbergen</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="177"/>
@@ -4953,17 +4953,17 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="247"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished"></translation>
+        <translation>Passt die Folie an die Blattgröße an</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="248"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wenn angewählt, werden die Folien vergrössert bzw. verkleinert, so dass sie die gesamte Druckfläche der Blätter füllen.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="368"/>
         <source>Afficher la liste des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Folienliste anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="264"/>
@@ -5037,7 +5037,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="987"/>
         <source>Liste des Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Inhaltsverzeichnis</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1098"/>
@@ -5500,7 +5500,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="897"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Folienmaße ändern</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="926"/>
@@ -5718,7 +5718,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1034"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Folie ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1036"/>
@@ -6850,14 +6850,16 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="128"/>
         <source>Afficher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzeigen:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="138"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Folgende Variablen können im Textfeld &quot;Folie&quot; benutzt werden:
+- %id: Foliennummer im aktuellen Projekt
+- %total: Anzahl der Folien im aktuellen Projekt</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
@@ -6902,12 +6904,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
         <source>Bas</source>
-        <translation type="unfinished">Unten</translation>
+        <translation>unten</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="263"/>
         <source>Droite (expérimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>rechts (experimentell)</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="274"/>
@@ -6967,7 +6969,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Achtung: der Rahmen von leeren Zellen wird nicht auf der Folie angezeigt.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
@@ -7537,7 +7539,7 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Folie ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="102"/>
@@ -7729,12 +7731,12 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>N° de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Foliennummer</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Titre de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Folientitel</translation>
     </message>
 </context>
 <context>
