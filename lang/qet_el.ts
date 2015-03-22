@@ -206,7 +206,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="192"/>
         <source>Convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετατροπέας DXF</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="178"/>
@@ -330,13 +330,13 @@
         <source>px</source>
         <comment>pixel</comment>
         <extracomment>pixel</extracomment>
-        <translation>πιξελ</translation>
+        <translation> εικονοστοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="77"/>
         <source>x</source>
-        <translation>χ</translation>
+        <translation>x</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="53"/>
@@ -362,7 +362,7 @@
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
         <source>Dimensions du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαστάσεις σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="60"/>
@@ -688,7 +688,7 @@
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="49"/>
         <source>Propriétés du folio</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ιδιότητες σελίδας</translation>
     </message>
 </context>
 <context>
@@ -747,7 +747,7 @@
     <message>
         <location filename="../sources/diagramschooser.cpp" line="165"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανώνυμη σελίδα</translation>
     </message>
 </context>
 <context>
@@ -1442,7 +1442,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="418"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
-        <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της εργασίας</translation>
+        <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση του έργου</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="441"/>
@@ -1476,13 +1476,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="451"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε το πρότυπο πινακίδας στη σελίδα για να το εφαρμόσετε.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="484"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε και αφήστε το στοιχείο « %1 » μέσα στη σελίδα για να το εισάγετε, ή διπλό πάτημα για επεξεργασία</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="590"/>
@@ -1605,12 +1605,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Fermer ce projet</source>
-        <translation>Κλείσιμο της εργασίας</translation>
+        <translation>Κλείσιμο του έργου</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Propriétés du projet</source>
-        <translation>Ιδιότητες της εργασίας</translation>
+        <translation>Ιδιότητες του έργου</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
@@ -1630,47 +1630,47 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Basculer vers ce projet</source>
-        <translation>Ενεργοποίηση αυτής της εργασίας</translation>
+        <translation>Ενεργοποίηση αυτού του έργου</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Propriétés du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιδιότητες σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Ajouter un folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Supprimer ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Remonter ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση πάνω</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Abaisser ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση κάτω</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Remonter ce folio x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση πάνω x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Remonter ce folio au debut</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση στην αρχή</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Abaisser ce folio x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση κάτω x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
@@ -1695,7 +1695,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="90"/>
         <source>Filtrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Φιλτράρισμα</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="501"/>
@@ -1821,12 +1821,12 @@ Les changements seront définitifs.</source>
         <location filename="../sources/exportdialog.cpp" line="60"/>
         <source>Exporter les folios du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή σελίδων του έργου</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="75"/>
         <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε τις σελίδες που θέλετε να εξαχθούν, και καθορίστε το μέγεθός τους:</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="78"/>
@@ -1841,13 +1841,13 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="141"/>
         <source>Titre du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Τίτλος σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="770"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πρέπει να δώσετε ένα μοναδικό, όχι κενό, όνομα σε κάθε σελίδα που θέλετε να εξάγετε.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="785"/>
@@ -1973,7 +1973,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="196"/>
         <source>Projets</source>
-        <translation>Εργασίες</translation>
+        <translation>Έργα</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="197"/>
@@ -2003,7 +2003,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="203"/>
         <source>Intégrer automatiquement les éléments dans les projets (recommandé)</source>
-        <translation>Αυτόματη ενσωμάτωση των στοιχείων στην εργασία (συνιστώμενο)</translation>
+        <translation>Αυτόματη ενσωμάτωση των στοιχείων στο έργο (συνιστώμενο)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="204"/>
@@ -2136,25 +2136,25 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="304"/>
         <source>Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Αυτή είναι μια συλλογή ενσωματωμένη στο αρχείο εργασίας.αποθηκεύει και διαχειρίζεται στοιχεία που χρησιμοποιούνται από διαγράμματα της γονικής εργασίας.</translation>
+        <translation>Αυτή είναι μια συλλογή ενσωματωμένη στο αρχείο έργου. Αποθηκεύει και διαχειρίζεται στοιχεία που χρησιμοποιούνται από διαγράμματα του γονικού έργου.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="309"/>
         <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Αυτή η κατηγορία στοιχείων ενσωματώνει αυτόματα κάθε στοιχείο που χρησιμοποιείται από διαγράμματα αυτής της εργασίας.</translation>
+        <translation>Αυτή η κατηγορία στοιχείων ενσωματώνει αυτόματα κάθε στοιχείο που χρησιμοποιείται από διαγράμματα αυτού του έργου..</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="242"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό είναι ένα αρχείο έργο του QElectroTech με επέκταση .qet. αποτελούμενο από διάφορες σελίδες. Εμπεριέχει επίσης τα στοιχεία και τις πινακίδες που αποτελούν αυτές τις σελίδες.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="368"/>
         <source>Folio sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ανώνυμη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="375"/>
@@ -2177,7 +2177,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="545"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό είναι ένα πρότυπο πινακίδας, το οποίο μπορει να εφαρμοστεί σε μια σελίδα.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="730"/>
@@ -2194,7 +2194,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1170"/>
         <source>%1 [non utilisé dans le projet]</source>
-        <translation>%1 [δεν χρησιμοποιείται στην εργασία]</translation>
+        <translation>%1 [δεν χρησιμοποιείται στο έργο]</translation>
     </message>
 </context>
 <context>
@@ -2211,7 +2211,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="125"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is an element&apos;s path name</comment>
-        <translation>Το στοιχείο έχει, ήδη, ενσωματωθεί στην εργασία. 
+        <translation>Το στοιχείο έχει, ήδη, ενσωματωθεί στο έργο. 
 Όμως, η έκδοση, την οποία προσπαθείτε να τοποθετήσετε, φαίνεται να είναι διαφορετική.
 
 Τι θα θέλατε να γίνει;</translation>
@@ -2275,7 +2275,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation>Το πρότυπο έχει ήδη ενσωματωθεί στην εργασία. Ωστόσο, η έκδοση που προσπαθείτε να εφαρμόσετε μοιάζει να είναι διαφορετική. Τι θα θέλατε να γίνει;</translation>
+        <translation>Το πρότυπο έχει ήδη ενσωματωθεί στο έργο. Ωστόσο, η έκδοση που προσπαθείτε να εφαρμόσετε μοιάζει να είναι διαφορετική. Τι θα θέλατε να γίνει;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
@@ -2633,7 +2633,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="72"/>
         <source>Folio</source>
-        <translation type="unfinished">Σελίδα</translation>
+        <translation>Σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="73"/>
@@ -2654,13 +2654,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/configpages.cpp" line="173"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Νέα σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="174"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
-        <translation>Νέα εργασία</translation>
+        <translation>Νέο έργο</translation>
     </message>
 </context>
 <context>
@@ -2907,19 +2907,19 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/projectconfigpages.cpp" line="161"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
-        <translation>Τίτλος εργασίας:</translation>
+        <translation>Τίτλος έργου:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="163"/>
         <source>Ce titre sera disponible pour tous les folios de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτός ο τίτλος θα είναι διαθέσιμος σε όλες τις σελίδες του έργου ως %projecttitle.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="165"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπορείτε να ορίσετε προσαρμοσμένες ιδιότητες οι οποίες θα είναι διαθέσιμες σε όλες τις σελίδες του έργου (συνήθως για χρήση στις πινακίδες)</translation>
     </message>
 </context>
 <context>
@@ -2927,7 +2927,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="704"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
-        <translation>Διαγραφή των αχρησιμοποίητων στοιχείων της εργασίας</translation>
+        <translation>Διαγραφή των αχρησιμοποίητων στοιχείων του έργου</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="705"/>
@@ -2938,60 +2938,60 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/projectview.cpp" line="237"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation>Η εργασία έχει τροποποιηθεί.
+        <translation>Το έργο έχει τροποποιηθεί.
 Θέλετε να αποθηκευτούν οι αλλαγές;</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="263"/>
         <source>Projet QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a project file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Έργο QElectroTech (*.qet)</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="371"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή σελίδας;</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="372"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Είστε σίγουρος ότι θέλετε να διαγράψετε αυτή την σελίδατου έργου; Οι διαγραφή είναι μη αναστρέψιμη.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="696"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
-        <translation>Εργασία μόνο για ανάγνωση</translation>
+        <translation>Έργο μόνο για ανάγνωση</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="697"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
-        <translation>Αυτή η εργασία είναι μόνο για ανάγνωση. Κατά συνέπεια, δεν μπορεί να καθαριστεί.</translation>
+        <translation>Αυτό το έργο είναι μόνο για ανάγνωση. Κατά συνέπεια, δεν μπορεί να καθαριστεί.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="703"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation>Διαγραφή των μη χρησιμοποιούμενων προτύπων από την εργασία</translation>
+        <translation>Διαγραφή των μη χρησιμοποιούμενων προτύπων από το έργο</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="717"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
-        <translation>Καθαρισμός της εργασίας</translation>
+        <translation>Καθαρισμός του έργου</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="753"/>
         <source>Ajouter un folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="767"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation type="unfinished"></translation>
+        <translation>Το έργο δεν περιέχει σελίδες</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="261"/>
@@ -3003,19 +3003,19 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/projectview.cpp" line="285"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
-        <translation>Ανενεργή εργασία</translation>
+        <translation>Χωρίς έργο προς εμφάνιση</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="842"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
-        <translation>Εργασία</translation>
+        <translation>Έργο</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="585"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation>εργασία</translation>
+        <translation>έργο</translation>
     </message>
 </context>
 <context>
@@ -3202,7 +3202,7 @@ Options disponibles :
         <location filename="../sources/qetapp.cpp" line="121"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Φόρτωση ... Επεξεργαστής διαγραμμάτων</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="124"/>
@@ -3606,7 +3606,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="483"/>
         <source>&amp;Projet</source>
-        <translation>Ερ&amp;γασία</translation>
+        <translation>Έρ&amp;γο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="495"/>
@@ -3617,7 +3617,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="635"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="656"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation>Η εργασία %1 αποθηκεύτηκε στον κατάλογο: %2.</translation>
+        <translation>Το έργο %1 αποθηκεύτηκε στον κατάλογο: %2.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
@@ -3627,7 +3627,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="825"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
-        <translation>Η εργασία, την οποία προσπαθείτε να ανοίξετε, δεν φαίνεται να είναι εγγράψιμη. Θα ανοιχτεί μόνο για ανάγνωση.</translation>
+        <translation>Το έργο, το οποίο προσπαθείτε να ανοίξετε, δεν φαίνεται να είναι εγγράψιμο. Θα ανοιχτεί μόνο για ανάγνωση.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="207"/>
@@ -3642,29 +3642,29 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="540"/>
         <source>Afficher les projets</source>
-        <translation>Προβολή των εργασιών</translation>
+        <translation>Προβολή των έργων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
         <source>Propriétés du projet</source>
-        <translation>Ιδιότητες της εργασίας</translation>
+        <translation>Ιδιότητες του έργου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="204"/>
         <source>Nettoyer le projet</source>
-        <translation>Καθαρισμός της εργασίας</translation>
+        <translation>Καθαρισμός του έργου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="838"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
-        <translation>Αδυναμία ανοίγματος της εργασίας</translation>
+        <translation>Αδυναμία ανοίγματος του έργου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="840"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
-        <translation>Το αρχείο %1 δεν δείχνει να είναι αρχείο εργασίας QElectroTech. Κατά συνέπεια, δεν μπορεί να ανοιχτεί.</translation>
+        <translation>Το αρχείο %1 δεν δείχνει να είναι αρχείο έργου QElectroTech. Κατά συνέπεια, δεν μπορεί να ανοιχτεί.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="79"/>
@@ -3821,13 +3821,13 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="375"/>
         <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
         <comment>status bar tip</comment>
-        <translation>Δείχνει τις διάφορες ανοιγμένες εργασίες, σε παράθυρα</translation>
+        <translation>Εμφανίζει τα διάφορα ανοιγμένα έργα, σε παράθυρα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="376"/>
         <source>Présente les différents projets ouverts des onglets</source>
         <comment>status bar tip</comment>
-        <translation>Δείχνει τις διάφορες ανοιγμένες εργασίες, σε καρτέλες</translation>
+        <translation>Εμφανίζει τα διάφορα ανοιγμένα έργα, σε καρτέλες</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="378"/>
@@ -3873,7 +3873,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1455"/>
         <source>Active le projet « %1 »</source>
-        <translation>Ενεργοποιεί την εργασία « %1 »</translation>
+        <translation>Ενεργοποιεί το έργο « %1 »</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2050"/>
@@ -3911,190 +3911,190 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
         <source>Projet suivant</source>
-        <translation>Επόμενη εργασία</translation>
+        <translation>Επόμενο έργο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="162"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το παράθυρο εμφανίζει τις διάφορες δράσεις που γίνονται στην τρέχουσα σελίδα. Πατήστε σε μια δράση για να επιστρέψετε στην κατάσταση της σελίδας αμέσως μετά την εφαρμογή.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Propriétés du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιδιότητες σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
         <source>Ajouter un folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="203"/>
         <source>Supprimer le folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="214"/>
         <source>Projet précédent</source>
-        <translation>Προηγούμενη εργασία</translation>
+        <translation>Προηγούμενο έργο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Crée un nouveau projet</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία νέου έργου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>Ouvre un projet existant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα υπάρχοντος έργου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
         <source>Ferme le projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κλείσιμο τρέχοντος έργου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση τρέχοντος έργου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
         <source>Enregistre le projet courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση του τρέχοντος έργου με διαφορετικό όνομα αρχείου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="246"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη στήλης στη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="247"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Απομάκρυνση στήλης από τη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεκτείνει το ύψος της σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Συρρικνώνει το ύψος της σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="275"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διαγράφει τα επιλεγμένα στοιχεία από τη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="295"/>
         <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέγει όλα τα στοιχεία τις σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αποεπιλεγει όλα των στοιχεία τις σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
         <source>Agrandit le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεκτείνει τη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="318"/>
         <source>Rétrécit le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Συρρικνώνει τη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
         <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμογή της εστίασης έτσι ώστε να εμφανιστούν όλα τα περιεχόμενα της σελίδας ανεξάρτητα από το πλαίσιο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
         <source>Adapte le zoom exactement sur le cadre du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμογή της εστίασης στο μέγεθος του πλαισίου της σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
         <source>Ajouter un rectangle</source>
-        <translation type="unfinished">Προσθήκη παραλληλόγραμμου</translation>
+        <translation>Προσθήκη παραλληλόγραμμου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Ajouter une ellipse</source>
-        <translation type="unfinished">Προσθήκη έλλειψης</translation>
+        <translation>Προσθήκη έλλειψης</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Ajouter une polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη πολυγραμμής</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="364"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εξάγει την τρέχουσα σελίδα σε διαφορετική μορφή</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="365"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εκτυπώνει μία ή περισσότερες σελίδες του τρέχοντος έργου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="371"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επικολλάει τα περιεχόμενα του προχείρου στη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="373"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργαστείτε τις ιδιότητες της σελίδας (διαστάσεις, πληροφορίες πινακίδας, ιδιότητες αγωγών...)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="379"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επιτρέπει την προβολή της σελίδας χωρίς να είναι δυνατή η μετατροπή της</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="383"/>
         <source>Active le projet suivant</source>
         <comment>status bar tip</comment>
-        <translation>Ενεργοποιεί την επόμενη εργασία</translation>
+        <translation>Ενεργοποιεί το επόμενο έργο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="384"/>
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
-        <translation>Ενεργοποιεί την προηγούμενη εργασία</translation>
+        <translation>Ενεργοποιεί το προηγούμενο έργο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="710"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Έργα QElectroTech (*.qet);;Αρχεία XML (*.xml);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="795"/>
@@ -4853,13 +4853,13 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία προς εκτύπωση:</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="176"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="366"/>
         <source>Cacher la liste des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόκρυψη της λίστας των αρχείων</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="177"/>
@@ -4960,17 +4960,17 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="247"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμογή στη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="248"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αν αυτή η επιλογή είναι ενεργοποιημένη, το διάγραμμα θα επεκταθεί ή θα συρρικνωθεί ώστε να εκτυπωθεί σε μία και μόνο σελίδα.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="368"/>
         <source>Afficher la liste des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση της λίστας των αρχείων</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="264"/>
@@ -4994,7 +4994,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetproject.cpp" line="302"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
-        <translation>Εργασία « %1 »</translation>
+        <translation>Έργο « %1 »</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="764"/>
@@ -5023,7 +5023,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="1160"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Άνοιγμα εργασίας...&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;Άνοιγμα έργου...&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1581"/>
@@ -5040,13 +5040,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetproject.cpp" line="309"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
-        <translation>Εργασία %1</translation>
+        <translation>Έργο %1</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="316"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
-        <translation>Ανώνυμη εργασία</translation>
+        <translation>Ανώνυμο έργο</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="325"/>
@@ -5068,7 +5068,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="987"/>
         <source>Liste des Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Λίστα αρχείων</translation>
     </message>
 </context>
 <context>
@@ -5524,7 +5524,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="897"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή των διαστάσεων της σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="926"/>
@@ -5819,7 +5819,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1034"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανώνυμη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1036"/>
@@ -6046,7 +6046,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/ui/projectpropertiesdialog.cpp" line="32"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
-        <translation>Ιδιότητες της εργασίας</translation>
+        <translation>Ιδιότητες του έργου</translation>
     </message>
     <message>
         <location filename="../sources/dvevent/dveventaddimage.cpp" line="147"/>
@@ -6849,14 +6849,16 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="128"/>
         <source>Afficher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Προβολή:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="138"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι ακόλουθες μεταβλητές μπορούν να χρησιμοποιηθούν στο πεδίο Σελίδα:
+- %id: αριθμός τρέχουσας σελίδας του έργου
+- %total: σύνολο σελίδων του έργου</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
@@ -6901,12 +6903,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
         <source>Bas</source>
-        <translation type="unfinished">Κάτω</translation>
+        <translation>Κάτω</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="263"/>
         <source>Droite (expérimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεξιά (Πειραματικό)</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="274"/>
@@ -6965,7 +6967,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προειδοποίηση: τα περιγράμματα των κενών κελιών δεν θα εμφανίζονται στην τελική αποτύπωση της σελίδας.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
@@ -7073,7 +7075,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Οι παρακάτω μεταβλητές είναι διαθέσιμες ως προεπιλογή: &lt;ul&gt;&lt;li&gt;%{author}: συγγραφέας διαγράμματος&lt;/li&gt;&lt;li&gt;%{date}: ημερομηνία διαγράμματος&lt;/li&gt;&lt;li&gt;%{title}: τίτλος διαγράμματος&lt;/li&gt;&lt;li&gt;%{filename}: όνομα αρχείου του έργου&lt;/li&gt;&lt;li&gt;%{folio}: σχετικές πληροφορίες διαγράμματος&lt;/li&gt;&lt;li&gt;%{folio-id}: θέση διαγράμματος μέσα στο έργο&lt;/li&gt;&lt;li&gt;%{folio-total}: συνολικός αριθμός διαγραμμάτων μέσα στο έργο&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation>Οι παρακάτω μεταβλητές είναι διαθέσιμες ως προεπιλογή: &lt;ul&gt;&lt;li&gt;%{author}: συγγραφέας σελίδας&lt;/li&gt;&lt;li&gt;%{date}: ημερομηνία σελίδας&lt;/li&gt;&lt;li&gt;%{title}: τίτλος σελίδας&lt;/li&gt;&lt;li&gt;%{filename}: όνομα αρχείου του έργου&lt;/li&gt;&lt;li&gt;%{folio}: σχετικές πληροφορίες σελίδας&lt;/li&gt;&lt;li&gt;%{folio-id}: θέση σελίδας μέσα στο έργο&lt;/li&gt;&lt;li&gt;%{folio-total}: συνολικός αριθμός σελίδων μέσα στο έργο&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
@@ -7398,13 +7400,13 @@ Longueur maximale : %2px
         <location filename="../sources/titleblock/templatescollection.cpp" line="120"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Πινακίδες ανώνυμης εργασίας (id %1)</translation>
+        <translation>Πινακίδες ανώνυμου έργου (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation>Πινακίδες της εργασίας &quot;%1&quot;</translation>
+        <translation>Πινακίδες του έργου &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -7491,13 +7493,13 @@ Longueur maximale : %2px
         <location filename="../sources/xmlelementscollection.cpp" line="69"/>
         <source>Collection du projet sans titre (id %1)</source>
         <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Συλλογές ανώνυμης εργασίας (id %1)</translation>
+        <translation>Συλλογή ανώνυμου έργου (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/xmlelementscollection.cpp" line="77"/>
         <source>Collection du projet &quot;%1&quot;</source>
         <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation>Συλλογές της εργασίας (id %1)</translation>
+        <translation>Συλλογή του έργου (id %1)</translation>
     </message>
 </context>
 <context>
@@ -7515,12 +7517,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="30"/>
         <source>Projet sans titre</source>
-        <translation>Ανώνυμη εργασία</translation>
+        <translation>Ανώνυμο έργο</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="32"/>
         <source>Projet : </source>
-        <translation>Εργασία:</translation>
+        <translation>Έργο:</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
@@ -7535,7 +7537,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανώνυμη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="102"/>
@@ -7730,12 +7732,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>N° de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>N° σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Titre de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Τίτλος σελίδας</translation>
     </message>
 </context>
 <context>
