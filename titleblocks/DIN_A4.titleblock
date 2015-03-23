@@ -1,7 +1,6 @@
 <titleblocktemplate name="DIN_A4">
     <information></information>
     <logos>
-        <logo storage="" type="svg" name="logo.svg"/>
         <logo storage="xml" type="svg" name="Qet.svg">
             <svg width="600.000000pt" version="1.0" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" height="600.000000pt" viewBox="0 0 600.000000 600.000000">
                 <metadata>
@@ -45,19 +44,19 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="en">%date</translation>
             </value>
             <label>
-                <translation lang="en">Date</translation>
-                <translation lang="fr">Date</translation>
-                <translation lang="it">Data</translation>
-                <translation lang="hr">Datum</translation>
-                <translation lang="pl">Data</translation>
                 <translation lang="ar">تاريخ</translation>
+                <translation lang="de">Datum</translation>
+                <translation lang="ru">Дата</translation>
+                <translation lang="pt">Data</translation>
+                <translation lang="en">Date</translation>
+                <translation lang="hr">Datum</translation>
+                <translation lang="it">Data</translation>
+                <translation lang="fr">Date</translation>
+                <translation lang="pl">Data</translation>
+                <translation lang="es">Fecha</translation>
+                <translation lang="ro">Data</translation>
                 <translation lang="ca">Data</translation>
                 <translation lang="cs">Datum</translation>
-                <translation lang="de">Datum</translation>
-                <translation lang="es">Fecha</translation>
-                <translation lang="pt">Data</translation>
-                <translation lang="ro">Data</translation>
-                <translation lang="ru">Дата</translation>
             </label>
         </field>
         <field valign="center" row="0" fontsize="6" hadjust="true" col="5" name="DATE1" displaylabel="false" align="left">
@@ -71,19 +70,19 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="en">%date</translation>
             </value>
             <label>
-                <translation lang="en">Date</translation>
-                <translation lang="fr">Date</translation>
-                <translation lang="it">Data</translation>
-                <translation lang="hr">Datum</translation>
-                <translation lang="pl">Data</translation>
                 <translation lang="ar">تاريخ</translation>
+                <translation lang="de">Datum</translation>
+                <translation lang="ru">Дата</translation>
+                <translation lang="pt">Data</translation>
+                <translation lang="en">Date</translation>
+                <translation lang="hr">Datum</translation>
+                <translation lang="it">Data</translation>
+                <translation lang="fr">Date</translation>
+                <translation lang="pl">Data</translation>
+                <translation lang="es">Fecha</translation>
+                <translation lang="ro">Data</translation>
                 <translation lang="ca">Data</translation>
                 <translation lang="cs">Datum</translation>
-                <translation lang="de">Datum</translation>
-                <translation lang="es">Fecha</translation>
-                <translation lang="pt">Data</translation>
-                <translation lang="ro">Data</translation>
-                <translation lang="ru">Дата</translation>
             </label>
         </field>
         <logo rowspan="2" row="0" col="8" name="" resource="Qet.svg"/>
@@ -92,19 +91,19 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="en">%title</translation>
             </value>
             <label>
-                <translation lang="en">Title</translation>
-                <translation lang="fr">Titre</translation>
-                <translation lang="it">Titolo</translation>
-                <translation lang="hr">Naslov</translation>
-                <translation lang="pl">Tytuł</translation>
                 <translation lang="ar">عنوان</translation>
+                <translation lang="de">Titel</translation>
+                <translation lang="ru">Название</translation>
+                <translation lang="pt">Título</translation>
+                <translation lang="en">Title</translation>
+                <translation lang="hr">Naslov</translation>
+                <translation lang="it">Titolo</translation>
+                <translation lang="fr">Titre</translation>
+                <translation lang="pl">Tytuł</translation>
+                <translation lang="es">Título</translation>
+                <translation lang="ro">Titlu</translation>
                 <translation lang="ca">Títol</translation>
                 <translation lang="cs">Název</translation>
-                <translation lang="de">Titel</translation>
-                <translation lang="es">Título</translation>
-                <translation lang="pt">Título</translation>
-                <translation lang="ro">Titlu</translation>
-                <translation lang="ru">Название</translation>
             </label>
         </field>
         <field valign="center" rowspan="1" row="0" colspan="1" fontsize="6" hadjust="true" col="10" name="FICHIER" displaylabel="false" align="left">
@@ -112,45 +111,43 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="en">%filename</translation>
             </value>
             <label>
-                <translation lang="en">File</translation>
-                <translation lang="fr">Fichier</translation>
-                <translation lang="it">File</translation>
-                <translation lang="hr">Datoteka</translation>
-                <translation lang="pl">Plik</translation>
                 <translation lang="ar">ملف</translation>
+                <translation lang="de">Datei</translation>
+                <translation lang="ru">Файл</translation>
+                <translation lang="pt">Ficheiro</translation>
+                <translation lang="en">File</translation>
+                <translation lang="hr">Datoteka</translation>
+                <translation lang="it">File</translation>
+                <translation lang="fr">Fichier</translation>
+                <translation lang="pl">Plik</translation>
+                <translation lang="es">Archivo</translation>
+                <translation lang="ro">Fisier</translation>
                 <translation lang="ca">Fitxer</translation>
                 <translation lang="cs">Soubor</translation>
-                <translation lang="de">Datei</translation>
-                <translation lang="es">Archivo</translation>
-                <translation lang="pt">Ficheiro</translation>
-                <translation lang="ro">Fisier</translation>
-                <translation lang="ru">Файл</translation>
             </label>
         </field>
         <field valign="center" row="0" colspan="1" fontsize="6" hadjust="true" col="12" name="label4" displaylabel="false" align="left">
             <value>
+                <translation lang="en">%filename</translation>
                 <translation lang="fr">%label4</translation>
             </value>
-            <value>
-                <translation lang="en">%filename</translation>
-            </value>
             <label>
-                <translation lang="en">File</translation>
-                <translation lang="fr">Fichier</translation>
-                <translation lang="it">File</translation>
-                <translation lang="hr">Datoteka</translation>
-                <translation lang="pl">Plik</translation>
                 <translation lang="ar">ملف</translation>
+                <translation lang="de">Datei</translation>
+                <translation lang="ru">Файл</translation>
+                <translation lang="pt">Ficheiro</translation>
+                <translation lang="en">File</translation>
+                <translation lang="hr">Datoteka</translation>
+                <translation lang="it">File</translation>
+                <translation lang="fr">Fichier</translation>
+                <translation lang="pl">Plik</translation>
+                <translation lang="es">Archivo</translation>
+                <translation lang="ro">Fisier</translation>
                 <translation lang="ca">Fitxer</translation>
                 <translation lang="cs">Soubor</translation>
-                <translation lang="de">Datei</translation>
-                <translation lang="es">Archivo</translation>
-                <translation lang="pt">Ficheiro</translation>
-                <translation lang="ro">Fisier</translation>
-                <translation lang="ru">Файл</translation>
             </label>
         </field>
-	    <field valign="center" row="1" fontsize="9" hadjust="true" col="0" name="" displaylabel="true" align="center">
+        <field valign="center" row="1" fontsize="9" hadjust="true" col="0" name="" displaylabel="true" align="center">
             <value/>
             <label/>
         </field>
@@ -232,23 +229,23 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             <label/>
         </field>
         <field valign="center" row="2" fontsize="6" hadjust="true" col="13" name="FOLIO" displaylabel="true" align="left">
-           <value>
+            <value>
                 <translation lang="en">%{folio-id}</translation>
             </value>
             <label>
-                <translation lang="en">Folio</translation>
-                <translation lang="fr">Folio</translation>
-                <translation lang="it">Foglio</translation>
-                <translation lang="hr">List</translation>
-                <translation lang="pl">Strona</translation>
                 <translation lang="ar">صفحة</translation>
+                <translation lang="de">Seite</translation>
+                <translation lang="ru">Фолио</translation>
+                <translation lang="pt">Folha</translation>
+                <translation lang="en">Folio</translation>
+                <translation lang="hr">List</translation>
+                <translation lang="it">Foglio</translation>
+                <translation lang="fr">Folio</translation>
+                <translation lang="pl">Arkusz</translation>
+                <translation lang="es">Folio</translation>
+                <translation lang="ro">Pagina</translation>
                 <translation lang="ca">Folio</translation>
                 <translation lang="cs">Folio</translation>
-                <translation lang="de">Seite</translation>
-                <translation lang="es">Folio</translation>
-                <translation lang="pt">Folha</translation>
-                <translation lang="ro">Pagina</translation>
-                <translation lang="ru">Фолио</translation>
             </label>
         </field>
         <field valign="center" row="3" fontsize="5" hadjust="true" col="0" name="rev" displaylabel="false" align="center">
@@ -270,19 +267,19 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="en">%date</translation>
             </value>
             <label>
-                <translation lang="en">Date</translation>
-                <translation lang="fr">Date</translation>
-                <translation lang="it">Data</translation>
-                <translation lang="hr">Datum</translation>
-                <translation lang="pl">Data</translation>
                 <translation lang="ar">تاريخ</translation>
+                <translation lang="de">Datum</translation>
+                <translation lang="ru">Дата</translation>
+                <translation lang="pt">Data</translation>
+                <translation lang="en">Date</translation>
+                <translation lang="hr">Datum</translation>
+                <translation lang="it">Data</translation>
+                <translation lang="fr">Date</translation>
+                <translation lang="pl">Data</translation>
+                <translation lang="es">Fecha</translation>
+                <translation lang="ro">Data</translation>
                 <translation lang="ca">Data</translation>
                 <translation lang="cs">Datum</translation>
-                <translation lang="de">Datum</translation>
-                <translation lang="es">Fecha</translation>
-                <translation lang="pt">Data</translation>
-                <translation lang="ro">Data</translation>
-                <translation lang="ru">Дата</translation>
             </label>
         </field>
         <field valign="center" row="3" fontsize="6" hadjust="true" col="3" name="FIRME" displaylabel="true" align="center">
@@ -327,21 +324,21 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             <value>
                 <translation lang="fr">%{folio-total}</translation>
             </value>
-	    <label>
-                <translation lang="en">Folio</translation>
-                <translation lang="fr">Folio</translation>
-                <translation lang="it">Foglio</translation>
-                <translation lang="hr">List</translation>
-                <translation lang="pl">Strona</translation>
+            <label>
                 <translation lang="ar">صفحة</translation>
+                <translation lang="de">Seite</translation>
+                <translation lang="ru">Фолио</translation>
+                <translation lang="pt">Folha</translation>
+                <translation lang="en">Folio</translation>
+                <translation lang="hr">List</translation>
+                <translation lang="it">Foglio</translation>
+                <translation lang="fr">Folio</translation>
+                <translation lang="pl">Arkusz</translation>
+                <translation lang="es">Folio</translation>
+                <translation lang="ro">Pagina</translation>
                 <translation lang="ca">Folio</translation>
                 <translation lang="cs">Folio</translation>
-                <translation lang="de">Seite</translation>
-                <translation lang="es">Folio</translation>
-                <translation lang="pt">Folha</translation>
-                <translation lang="ro">Pagina</translation>
-                <translation lang="ru">Фолио</translation>
             </label>
-            </field>
+        </field>
     </grid>
 </titleblocktemplate>
