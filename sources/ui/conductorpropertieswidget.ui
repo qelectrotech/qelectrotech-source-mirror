@@ -59,6 +59,9 @@
              <property name="toolTip">
               <string>Texte</string>
              </property>
+             <property name="clearButtonEnabled">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item>
