@@ -50,7 +50,6 @@ class DiagramView : public QGraphicsView {
 		QAction          *find_element_;
 		QPoint            paste_here_pos;
 		QPoint            next_position_;
-		QPointF           center_view_;
 		QPointF           rubber_band_origin;
 		bool              fresh_focus_in_;    ///< Indicate the focus was freshly gained
 		ElementsLocation  next_location_;

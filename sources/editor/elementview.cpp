@@ -360,14 +360,13 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	@param e QMouseEvent decrivant l'evenement souris
 */
 void ElementView::mousePressEvent(QMouseEvent *e) {
-	// Select visualisation or selection mode
-	if (e -> buttons() == Qt::MidButton) {
-		setCursor(Qt::ClosedHandCursor);
-		reference_view_ = mapToScene(e -> pos());
-		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
-		return;
+	if (e->buttons() == Qt::MidButton)
+	{
+		setCursor( (Qt::ClosedHandCursor));
+		reference_view_ = e->pos();
 	}
-	QGraphicsView::mousePressEvent(e);
+	else
+		QGraphicsView::mousePressEvent(e);
 }
 
 /**
@@ -375,14 +374,17 @@ void ElementView::mousePressEvent(QMouseEvent *e) {
  * Manage the event move mouse
  */
 void ElementView::mouseMoveEvent(QMouseEvent *e) {
-	if ((e -> buttons() & Qt::MidButton) == Qt::MidButton) {
-		QPointF move = reference_view_ - mapToScene(e -> pos());
-		this -> centerOn(center_view_ + move);
-		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
-		adjustSceneRect();
-		return;
+	if (e->buttons() == Qt::MidButton)
+	{
+		QScrollBar *h = horizontalScrollBar();
+		QScrollBar *v = verticalScrollBar();
+		QPointF pos = reference_view_ - e -> pos();
+		reference_view_ = e -> pos();
+		h -> setValue(h -> value() + pos.x());
+		v -> setValue(v -> value() + pos.y());
 	}
-	QGraphicsView::mouseMoveEvent(e);
+	else
+		QGraphicsView::mouseMoveEvent(e);
 }
 
 /**

@@ -89,8 +89,6 @@ class ElementView : public QGraphicsView {
 	int offset_paste_count_;
 	QPointF start_top_left_corner_;
 	QPointF reference_view_;
-	QPointF center_view_;
 	bool gestures() const;
-	bool is_moving_view_;               ///< Indicate whether the visualisation mode has been enabled due to mouse/keyboard interactions
 };
 #endif

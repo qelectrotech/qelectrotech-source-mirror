@@ -470,7 +470,7 @@ void DiagramView::pasteHere() {
 }
 
 /**
-	Manage the events press click mouse :
+	Manage the events press click :
 	 *  click to add an independent text field
 */
 void DiagramView::mousePressEvent(QMouseEvent *e) {
@@ -490,11 +490,11 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 		}
 	}
 
-	//Start drag view when hold the middle button
-	if (e -> button() == Qt::MidButton) {
-		rubber_band_origin = mapToScene(e -> pos());
+		//Start drag view when hold the middle button
+	if (e->button() == Qt::MidButton)
+	{
+		rubber_band_origin = e->pos();
 		setCursor(Qt::ClosedHandCursor);
-		center_view_ = mapToScene(this -> viewport() -> rect().center());
 	}
 
 	else QGraphicsView::mousePressEvent(e);
@@ -515,11 +515,16 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e) {
 			return;
 		}
 	}
-	//Drag the view
-	if (e -> buttons() == Qt::MidButton) {
-		QPointF move = rubber_band_origin - mapToScene(e -> pos());
-		this -> centerOn(center_view_ + move);
-		center_view_ = mapToScene( this -> viewport() -> rect().center() );
+
+		//Drag the view
+	if (e->buttons() == Qt::MidButton)
+	{
+		QScrollBar *h = horizontalScrollBar();
+		QScrollBar *v = verticalScrollBar();
+		QPointF pos = rubber_band_origin - e -> pos();
+		rubber_band_origin = e -> pos();
+		h -> setValue(h -> value() + pos.x());
+		v -> setValue(v -> value() + pos.y());
 	}
 
 	else QGraphicsView::mouseMoveEvent(e);
