@@ -186,18 +186,19 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	bool use_system_colors = settings.value("usesystemcolors", "true").toBool();
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	bool integrate_elements = settings.value("diagrameditor/integrate-elements", true).toBool();
+	bool grid_outside = settings.value("diagrameditor/draw-grid-outside-of-border", false).toBool();
 	bool use_trackpad = settings.value("diagramview/gestures", false).toBool();
 	bool highlight_integrated_elements = settings.value("diagrameditor/highlight-integrated-elements", true).toBool();
 	QString default_element_informations = settings.value("elementeditor/default-informations", "").toString();
 	
 	appearance_ = new QGroupBox(tr("Apparence"), this);
 	use_system_colors_ = new QCheckBox(tr("Utiliser les couleurs du système"), appearance_);
-	
 	projects_view_mode_ = new QGroupBox(tr("Projets"), this);
 	windowed_mode_ = new QRadioButton(tr("Utiliser des fenêtres"), projects_view_mode_);
 	tabbed_mode_ = new QRadioButton(tr("Utiliser des onglets"), projects_view_mode_);
 	use_trackpad_ = new QCheckBox(tr("Utiliser les gestes du pavé tactile"), projects_view_mode_);
 	warning_view_mode_ = new QLabel(tr("Ces paramètres s'appliqueront dès la prochaine ouverture d'un éditeur de schémas."));
+	m_grid_outside_border = new QCheckBox(tr("Dessiner la grille au-delà des bords du folio"), this);
 	
 	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
 	integrate_elements_ = new QCheckBox(tr("Intégrer automatiquement les éléments dans les projets (recommandé)"));
@@ -221,6 +222,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	} else {
 		windowed_mode_ -> setChecked(true);
 	}
+
+	m_grid_outside_border -> setChecked(grid_outside);
 	
 	integrate_elements_ -> setChecked(integrate_elements);
 	highlight_integrated_elements_ -> setChecked(highlight_integrated_elements);
@@ -230,7 +233,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	appearance_layout -> addWidget(use_system_colors_);
 	appearance_ -> setLayout(appearance_layout);
 	
-	QVBoxLayout *projects_view_mode_layout = new QVBoxLayout();
+	QVBoxLayout *projects_view_mode_layout = new QVBoxLayout;
+	projects_view_mode_layout -> addWidget(m_grid_outside_border);
 	projects_view_mode_layout -> addWidget(windowed_mode_);
 	projects_view_mode_layout -> addWidget(tabbed_mode_);
 	projects_view_mode_layout -> addWidget(warning_view_mode_);
@@ -298,6 +302,7 @@ void GeneralConfigurationPage::applyConf() {
 	settings.setValue("diagrameditor/highlight-integrated-elements", highlight_integrated_elements_ -> isChecked());
 	settings.setValue("elementeditor/default-informations", default_element_infos_textfield_ -> toPlainText());
 	settings.setValue("diagramview/gestures", use_trackpad_ -> isChecked());
+	settings.setValue("diagrameditor/draw-grid-outside-of-border", m_grid_outside_border->isChecked());
 }
 
 /// @return l'icone de cette page

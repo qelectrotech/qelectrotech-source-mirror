@@ -134,7 +134,11 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		p->setPen(pen);
 
 		p -> setBrush(Qt::NoBrush);
-		QRectF rect = border_and_titleblock.insideBorderRect().intersected(r);
+
+		QRectF rect = QETApp::settings().value("diagrameditor/draw-grid-outside-of-border", false).toBool() ?
+						  r :
+						  border_and_titleblock.insideBorderRect().intersected(r);
+
 		qreal limite_x = rect.x() + rect.width();
 		qreal limite_y = rect.y() + rect.height();
 		
