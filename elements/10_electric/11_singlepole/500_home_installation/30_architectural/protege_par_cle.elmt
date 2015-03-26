@@ -1,0 +1,21 @@
+<definition link_type="simple" hotspot_x="15" hotspot_y="18" type="element" height="50" orientation="dyyy" version="0.5" width="30">
+    <names>
+        <name lang="de">Schlüsselbetätigung</name>
+        <name lang="it">Comando a chiave</name>
+        <name lang="cs">Klíčový spínač</name>
+        <name lang="el">Λειτουργία με κλειδί</name>
+        <name lang="ar">جهاز تحكّم أو مُراقبة بمفتاح</name>
+        <name lang="pl">Łącznik sterowany kluczem</name>
+        <name lang="en">Operated by key</name>
+        <name lang="fr">Dispositif de commande ou de contrôle par clé,</name>
+        <name lang="nl">sleutelschakelaar</name>
+    </names>
+    <informations>EN 60617: 11-14-15</informations>
+    <description>
+        <polygon antialias="true" y1="9" y2="17" y3="17" x1="-2" y4="9" x2="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="6" closed="false" x4="2"/>
+        <rect antialias="false" x="-13" y="-10" height="35" style="line-style:normal;line-weight:normal;filling:none;color:black" width="26"/>
+        <circle antialias="true" x="-5" y="-1" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="_" tagg="label" x="15" y="5" rotate="true" size="8"/>
+        <terminal x="0" y="-10" orientation="n"/>
+    </description>
+</definition>

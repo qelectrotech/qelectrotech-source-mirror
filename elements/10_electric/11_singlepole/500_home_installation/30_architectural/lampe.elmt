@@ -1,0 +1,25 @@
+<definition link_type="simple" hotspot_x="15" hotspot_y="26" type="element" height="30" orientation="dyyy" version="0.5" width="30">
+    <names>
+        <name lang="pt">Lâmpada</name>
+        <name lang="de">Leuchte</name>
+        <name lang="it">Lampada</name>
+        <name lang="cs">Světlo</name>
+        <name lang="el">Λάμπα</name>
+        <name lang="ar">مصباح</name>
+        <name lang="pl">Lampa</name>
+        <name lang="en">Light</name>
+        <name lang="fr">Lampe</name>
+        <name lang="ru">Лампа</name>
+        <name lang="es">Lámpara</name>
+        <name lang="nl">Lamp</name>
+    </names>
+    <informations>EN 60617: 11-15-03&#xd;
+</informations>
+    <description>
+        <circle antialias="true" x="-10" y="-20" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" length1="1.5" end2="none" y1="-17.03" length2="1.5" y2="-2.97" x1="7.03" x2="-7.03" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" length1="1.5" end2="none" y1="-17.03" length2="1.5" y2="-2.97" x1="-7.03" x2="7.03" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="_" tagg="label" x="10" y="-10" rotate="true" size="8"/>
+        <terminal x="0" y="-20" orientation="n"/>
+    </description>
+</definition>
