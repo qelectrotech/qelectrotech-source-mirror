@@ -194,11 +194,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	appearance_ = new QGroupBox(tr("Apparence"), this);
 	use_system_colors_ = new QCheckBox(tr("Utiliser les couleurs du système"), appearance_);
 	projects_view_mode_ = new QGroupBox(tr("Projets"), this);
-	windowed_mode_ = new QRadioButton(tr("Utiliser des fenêtres"), projects_view_mode_);
-	tabbed_mode_ = new QRadioButton(tr("Utiliser des onglets"), projects_view_mode_);
+    windowed_mode_ = new QRadioButton(tr("Utiliser des fenêtres (appliqué au prochain lancement de QElectroTech)"), projects_view_mode_);
+    tabbed_mode_ = new QRadioButton(tr("Utiliser des onglets (appliqué au prochain lancement de QElectroTech)"), projects_view_mode_);
 	use_trackpad_ = new QCheckBox(tr("Utiliser les gestes du pavé tactile"), projects_view_mode_);
-	warning_view_mode_ = new QLabel(tr("Ces paramètres s'appliqueront dès la prochaine ouverture d'un éditeur de schémas."));
-	m_grid_outside_border = new QCheckBox(tr("Dessiner la grille au-delà des bords du folio"), this);
+    m_grid_outside_border = new QCheckBox(tr("Dessiner la grille au-delà du cadre du folio"), this);
 	
 	elements_management_ = new QGroupBox(tr("Gestion des éléments"), this);
 	integrate_elements_ = new QCheckBox(tr("Intégrer automatiquement les éléments dans les projets (recommandé)"));
@@ -234,11 +233,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	appearance_ -> setLayout(appearance_layout);
 	
 	QVBoxLayout *projects_view_mode_layout = new QVBoxLayout;
-	projects_view_mode_layout -> addWidget(m_grid_outside_border);
 	projects_view_mode_layout -> addWidget(windowed_mode_);
 	projects_view_mode_layout -> addWidget(tabbed_mode_);
-	projects_view_mode_layout -> addWidget(warning_view_mode_);
-	projects_view_mode_layout -> addWidget(use_trackpad_);
+    projects_view_mode_layout -> addWidget(m_grid_outside_border);
+    projects_view_mode_layout -> addWidget(use_trackpad_);
 	projects_view_mode_ -> setLayout(projects_view_mode_layout);
 	
 	QVBoxLayout *elements_management_layout = new QVBoxLayout();
@@ -252,7 +250,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	lang_group_box = new QGroupBox(tr("Langue"), this);
 	QHBoxLayout *lang_layout = new QHBoxLayout(lang_group_box);
 	lang_combo_box = new QComboBox();
-	lang_label = new QLabel(tr("La nouvelle langue sera pris en compte au prochain lancement de QElectroTech."));
+    lang_label = new QLabel(tr("La nouvelle langue sera prise en compte au prochain lancement de QElectroTech."));
 	lang_layout->addWidget(lang_combo_box);
 	lang_layout->addWidget(lang_label);
 	fillLang(settings);

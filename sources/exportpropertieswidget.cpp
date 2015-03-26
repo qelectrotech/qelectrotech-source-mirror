@@ -156,10 +156,10 @@ void ExportPropertiesWidget::build() {
 	
 	// Choix de la zone du schema a exporter
 	exported_content_choices = new QButtonGroup(groupbox_options);
-	export_border = new QRadioButton(tr("Exporter le cadre"), groupbox_options);
+    export_border = new QRadioButton(tr("Exporter entièrement le folio"), groupbox_options);
 	optionshlayout -> addWidget(export_border, 0, 0);
 	exported_content_choices -> addButton(export_border);
-	export_elements = new QRadioButton(tr("Exporter les éléments"), groupbox_options);
+    export_elements = new QRadioButton(tr("Exporter seulement les éléments"), groupbox_options);
 	optionshlayout -> addWidget(export_elements, 0, 1);
 	exported_content_choices -> addButton(export_elements);
 	

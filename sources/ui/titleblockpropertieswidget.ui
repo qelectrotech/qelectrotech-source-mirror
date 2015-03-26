@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>530</width>
-    <height>450</height>
+    <height>452</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -253,14 +253,17 @@
             </item>
             <item row="7" column="2">
              <widget class="QComboBox" name="m_display_at_cb">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <item>
                <property name="text">
-                <string>Bas</string>
+                <string>en bas</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Droite (expérimental)</string>
+                <string>à droite (expérimental)</string>
                </property>
               </item>
              </widget>
