@@ -6042,7 +6042,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="378"/>
         <source>Traits points points</source>
-        <translation>Kreskowa z dwiema kreskami</translation>
+        <translation>Kreskowa z dwiema kropkami</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="391"/>
