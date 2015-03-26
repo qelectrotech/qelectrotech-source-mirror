@@ -33,6 +33,7 @@ TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent
 	qle_x     = new QDoubleSpinBox();
 	qle_y     = new QDoubleSpinBox();
 	qle_text  = new QLineEdit();
+	qle_text  ->setClearButtonEnabled(true);
 	font_size = new QSpinBox();
 	font_size -> setRange(0, 144);
 	black_color_ = new QRadioButton(tr("Noir", "element text part color"));

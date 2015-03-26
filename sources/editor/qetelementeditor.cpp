@@ -154,7 +154,7 @@ void QETElementEditor::setupActions() {
 	inv_select        = new QAction(                                  tr("Inverser la sélection"),                  this);
 	edit_delete       = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
 	edit_names        = new QAction(QET::Icons::Names,                tr("Éditer le nom et les traductions de l'élément"), this);
-	edit_author		  = new QAction(QET::Icons::UserInformations,     tr("Éditer les informations sur l'auteur"),   this);
+	edit_author       = new QAction(QET::Icons::UserInformations,     tr("Éditer les informations sur l'auteur"),   this);
 	m_edit_properties = new QAction(QET::Icons::ElementEdit,          tr("Éditer les propriétés de l'élément"), this);
 	
 	undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));

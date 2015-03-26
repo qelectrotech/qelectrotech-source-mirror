@@ -32,6 +32,7 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	qle_x     = new QDoubleSpinBox();
 	qle_y     = new QDoubleSpinBox();
 	qle_text  = new QLineEdit();
+	qle_text  ->setClearButtonEnabled(true);
 	font_size = new QSpinBox();
 	font_size -> setRange(0, 144);
 	rotate    = new QCheckBox(tr("Ne pas subir les rotations de l'élément parent"));
