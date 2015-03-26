@@ -1,0 +1,17 @@
+<definition width="40" version="0.4" hotspot_x="12" hotspot_y="19" height="40" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Ultrasonic detector</name>        
+	<name lang="fr">Détecteur ultrasons</name>
+	<name lang="de">Ultraschalldetektor</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="4" x="14.5" y="-9.5" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="90"/>
+        <arc width="4" x="14.5" y="-9.5" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" angle="90"/>
+        <arc width="4" x="18.5" y="-11.5" antialias="true" height="24" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="90"/>
+        <arc width="4" x="18.5" y="-13.5" antialias="true" height="28" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" angle="90"/>
+        <polygon x4="13" y5="-9" x5="13" y6="-9" x6="13" y7="-9" x7="13" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="13" y2="1" x2="-7" y3="11" x3="13" y4="-9"/>
+        <input x="-47" y="1" size="9" rotate="true" text="DM" tagg="label"/>
+        <terminal x="-6" y="1" orientation="w"/>
+    </description>
+</definition>

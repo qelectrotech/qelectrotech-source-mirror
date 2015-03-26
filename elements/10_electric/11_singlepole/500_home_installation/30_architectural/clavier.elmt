@@ -1,0 +1,19 @@
+<definition link_type="simple" hotspot_x="25" hotspot_y="26" type="element" height="50" orientation="dyyy" version="0.5" width="50">
+    <names>
+        <name lang="en">Keyboard</name>
+        <name lang="fr">Clavier</name>
+        <name lang="de">Tastatur</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect antialias="false" x="-20" y="-20" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" width="40"/>
+        <line antialias="false" end1="none" length1="1.5" end2="none" y1="-20" length2="1.5" y2="20" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" length1="1.5" end2="none" y1="-20" length2="1.5" y2="20" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" length1="1.5" end2="none" y1="-20" length2="1.5" y2="20" x1="10" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" length1="1.5" end2="none" y1="-10" length2="1.5" y2="-10" x1="-20" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" length1="1.5" end2="none" y1="0" length2="1.5" y2="0" x1="-20" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" length1="1.5" end2="none" y1="10" length2="1.5" y2="10" x1="-20" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="CL" tagg="label" x="-60" y="-5" rotate="true" size="9"/>
+        <terminal x="0" y="-20" orientation="n"/>
+    </description>
+</definition>

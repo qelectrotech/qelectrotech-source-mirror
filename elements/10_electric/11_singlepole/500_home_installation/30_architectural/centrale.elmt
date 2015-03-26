@@ -1,0 +1,13 @@
+<definition link_type="simple" hotspot_x="20" hotspot_y="21" type="element" height="40" orientation="dyyy" version="0.5" width="40">
+    <names>
+        <name lang="en">Central system</name>
+        <name lang="fr">Centrale</name>
+        <name lang="de">Zentrales System</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input text="_" tagg="label" x="15" y="0" rotate="true" size="9"/>
+        <rect antialias="false" x="-15" y="-15" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" width="30"/>
+        <terminal x="0" y="-15" orientation="n"/>
+    </description>
+</definition>

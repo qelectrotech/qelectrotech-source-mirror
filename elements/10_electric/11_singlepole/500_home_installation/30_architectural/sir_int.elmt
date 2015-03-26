@@ -1,0 +1,16 @@
+<definition width="50" version="0.4" hotspot_x="26" hotspot_y="25" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Siren indoor</name>        
+	<name lang="fr">Sirène intérieure</name>
+	<name lang="de">Hupe Innenbereich</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="30" x="-20" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="-20" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="20" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="20" y2="10" x2="10"/>
+        <input x="-60" y="-0.5" size="9" rotate="true" text="SIR" tagg="label"/>
+        <terminal x="-20" y="-10" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,13 @@
+<definition width="10" version="0.4" hotspot_x="5" hotspot_y="11" height="20" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Magnetic contact</name>        
+	<name lang="fr">Contact Magnetique</name>
+        <name lang="de">Magnetkontakt</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input x="-31" y="0.5" size="9" rotate="true" text="CM" tagg="label"/>
+        <rect width="6" x="-3" y="-6" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="0" y="-6" orientation="n"/>
+    </description>
+</definition>
