@@ -2,6 +2,7 @@
     <names>
         <name lang="en">PIR detector</name>        
 	<name lang="fr">Détecteur PIR</name>
+        <name lang="it">Sensore infrarosso (PIR)</name>
         <name lang="de">PIR-Melder</name>
     </names>
     <informations></informations>

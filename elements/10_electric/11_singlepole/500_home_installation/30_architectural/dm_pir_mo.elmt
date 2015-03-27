@@ -2,6 +2,7 @@
     <names>
         <name lang="en">PIR motion detector</name>        
 	<name lang="fr">Détecteur PIR mouvements</name>
+        <name lang="it">Sensore a doppia tesnologia</name>
         <name lang="de">PIR-Bewegungsmelder</name>        
     </names>
     <informations></informations>

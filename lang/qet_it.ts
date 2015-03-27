@@ -2175,7 +2175,7 @@ Le modifiche saranno definitive.</translation>
         <location filename="../sources/genericpanel.cpp" line="545"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Questo è un modello di cartiglio, che può essere applicato ad una pagina</translation>
+        <translation>Questo è un modello di cartiglio, che può essere applicato ad una pagina.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="730"/>

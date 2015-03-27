@@ -2,6 +2,7 @@
     <names>
         <name lang="en">PIR ultrasonic detector</name>        
 	<name lang="fr">Détecteur PIR ultrasons</name>
+        <name lang="it">Sensore PIR + ultrasuoni</name>
         <name lang="de">PIR-Ulltraschallmelder</name>
     </names>
     <informations></informations>
