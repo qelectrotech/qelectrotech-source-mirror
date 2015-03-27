@@ -53,6 +53,7 @@ class DiagramView : public QGraphicsView {
 		QPointF           rubber_band_origin;
 		bool              fresh_focus_in_;    ///< Indicate the focus was freshly gained
 		ElementsLocation  next_location_;
+		bool m_first_activation;
 
 
 	// methods

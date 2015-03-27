@@ -199,6 +199,7 @@ void BorderTitleBlock::borderToXml(QDomElement &xml_elmt) {
 	@param xml_elmt the XML element values will be read from
 */
 void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
+	QRectF old_rect = diagram_rect_;
 	bool ok;
 	// columns count
 	int cols_count = xml_elmt.attribute("cols").toInt(&ok);
@@ -228,6 +229,11 @@ void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
 	displayRows(xml_elmt.attribute("displayrows") != "false");
 
 	updateRectangles();
+
+		//We emit signal even if diagram_rect not change
+		//For calcul the scene rect when diagram load the first time the border.
+	if (old_rect == diagram_rect_)
+		emit(borderChanged(old_rect, old_rect));
 }
 
 /**

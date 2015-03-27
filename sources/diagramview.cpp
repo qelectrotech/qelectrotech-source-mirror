@@ -52,7 +52,8 @@
 DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	QGraphicsView     (parent),
 	scene             (diagram),
-	m_event_interface (nullptr)
+	m_event_interface (nullptr),
+	m_first_activation (true)
 {
 	grabGesture(Qt::PinchGesture);
 	setAttribute(Qt::WA_DeleteOnClose, true);
@@ -87,8 +88,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	
 	connect(scene, SIGNAL(showDiagram(Diagram*)), this, SIGNAL(showDiagram(Diagram*)));
 	connect(scene, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
-	connect(&(scene -> border_and_titleblock), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
-	connect(&(scene -> border_and_titleblock), SIGNAL(displayChanged()),              this, SLOT(adjustSceneRect()));
+	connect(scene, SIGNAL(sceneRectChanged(QRectF)), this, SLOT(adjustSceneRect()));
 	connect(&(scene -> border_and_titleblock), SIGNAL(diagramTitleChanged(const QString &)), this, SLOT(updateWindowTitle()));
 	connect(diagram, SIGNAL(editElementRequired(ElementsLocation)), this, SIGNAL(editElementRequired(ElementsLocation)));
 	connect(diagram, SIGNAL(findElementRequired(ElementsLocation)), this, SIGNAL(findElementRequired(ElementsLocation)));
@@ -395,7 +395,7 @@ void DiagramView::zoomOutSlowly() {
 */
 void DiagramView::zoomFit() {
 	adjustSceneRect();
-	fitInView(sceneRect(), Qt::KeepAspectRatio);
+	fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
 	adjustGridToZoom();
 }
 
@@ -772,25 +772,17 @@ void DiagramView::removeRow() {
 }
 
 /**
-	Ajuste le sceneRect (zone du schema visualisee par le DiagramView) afin que
-	celui inclut a la fois les elements dans et en dehors du cadre et le cadre
-	lui-meme.
-*/
-void DiagramView::adjustSceneRect() {
-	QRectF old_scene_rect = sceneRect();
-	
-	// rectangle delimitant l'ensemble des elements
-	QRectF elements_bounding_rect = scene -> itemsBoundingRect();
-	
-	// rectangle contenant le cadre = colonnes + cartouche
-	QRectF border_bounding_rect = scene -> border_and_titleblock.borderAndTitleBlockRect().adjusted(-Diagram::margin, -Diagram::margin, Diagram::margin, Diagram::margin);
-	
-	// ajuste la sceneRect
-	QRectF new_scene_rect = elements_bounding_rect.united(border_bounding_rect);
-	setSceneRect(new_scene_rect);
-	
-	// met a jour la scene
-	scene -> update(old_scene_rect.united(new_scene_rect));
+ * @brief DiagramView::adjustSceneRect
+ * Calcul and set the area of the scene visualized by this view
+ * The area are diagram sceneRect * 2.
+ */
+void DiagramView::adjustSceneRect()
+{
+	QRectF scene_rect = scene->sceneRect();
+	scene_rect.adjust(-Diagram::margin, -Diagram::margin, Diagram::margin, Diagram::margin);
+	scene_rect.setWidth(scene_rect.width()*2);
+	scene_rect.setHeight(scene_rect.height()*2);
+	setSceneRect(scene_rect);
 }
 
 /**
@@ -1013,7 +1005,22 @@ void DiagramView::resetConductors() {
 	Gere les evenements de la DiagramView
 	@param e Evenement
 */
+/**
+ * @brief DiagramView::event
+ * Manage the event on this diagram view.
+ * -At first activation (QEvent::WindowActivate or QEvent::Show) we zoomFit.
+ * -Convert event interpreted to mouse event to gesture event if needed.
+ * -send Shortcut to view (by default send to QMenu /QAction)
+ * @param e the event.
+ * @return
+ */
 bool DiagramView::event(QEvent *e) {
+	if (Q_UNLIKELY(m_first_activation)) {
+		if (e -> type() == QEvent::Show) {
+			zoomFit();
+			m_first_activation = false;
+		}
+	}
 	// By default touch events are converted to mouse events. So
 	// after this event we will get a mouse event also but we want
 	// to handle touch events as gestures only. So we need this safeguard

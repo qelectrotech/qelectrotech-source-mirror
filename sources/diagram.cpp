@@ -67,7 +67,6 @@ Diagram::Diagram(QETProject *project) :
 	QPen pen(Qt::NoBrush, 1.5, Qt::DashLine);
 	pen.setColor(Qt::black);
 	conductor_setter_ -> setPen(pen);
-	//conductor_setter_ -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
 	
 		//Init object for manage movement
 	elements_mover_      = new ElementsMover();
@@ -75,6 +74,11 @@ Diagram::Diagram(QETProject *project) :
 
 	connect(&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)), this, SLOT(setTitleBlockTemplate(const QString &)));
 	connect(&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),    this, SLOT(titleChanged(const QString &)));
+	connect(&border_and_titleblock, &BorderTitleBlock::borderChanged, [this]() {
+		QRectF old_rect = this->sceneRect();
+		this->setSceneRect(border_and_titleblock.borderAndTitleBlockRect().united(this->itemsBoundingRect()));
+		this->update(old_rect.united(this->sceneRect()));
+	});
 }
 
 /**
