@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it_IT">
+<TS version="2.1" language="it_IT">
 <context>
     <name>AboutQET</name>
     <message>
@@ -427,38 +427,38 @@ i conduttori di questo potenziale?</translation>
         <translation>Testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="128"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
         <source>Vertical</source>
         <translation>Verticale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="138"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="141"/>
         <source>Horizontal</source>
         <translation>Orizzontale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="153"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="156"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="159"/>
         <source>Unifilaire</source>
         <translation>Unifilare</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="74"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="77"/>
         <source>Taille du texte</source>
         <translation>Dimensione del testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="87"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="90"/>
         <source>Texte visible</source>
         <translation>Testo visibile</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="104"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="107"/>
         <source>activer l&apos;option un texte par potentiel</source>
         <translation>abilitare l&apos;opzione di un solo testo per potenziale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="228"/>
         <source>phase</source>
         <translation>fase</translation>
     </message>
@@ -481,12 +481,12 @@ i conduttori di questo potenziale?</translation>
         <translation>Punto e linea</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="262"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="265"/>
         <source>terre</source>
         <translation>terra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="214"/>
         <source>neutre</source>
         <translation>neutro</translation>
     </message>
@@ -496,85 +496,85 @@ i conduttori di questo potenziale?</translation>
         <translation>Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="67"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="70"/>
         <source>Taille :</source>
         <translation>Dimensione:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="90"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="93"/>
         <source>Visible</source>
         <translation>Visibile</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="107"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="110"/>
         <source>Afficher un texte de potentiel par folio. </source>
         <translation>Mostra un solo testo per ogni potenziale nella pagina </translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="116"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="119"/>
         <source>Rotation du texte de conducteur :</source>
         <translation>Rotazione del testo del conduttore:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="192"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="236"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="239"/>
         <source>Nombre de phase</source>
         <translation>Numero di fasi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="208"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
         <source>Neutre</source>
         <translation>Neutro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="222"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
         <source>Phase</source>
         <translation>Fasi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="249"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="252"/>
         <source>Protective Earth Neutral</source>
         <translation>Neutro con funzione di terra (sistema TN-C)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="252"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="255"/>
         <source>PEN</source>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="259"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="262"/>
         <source>Terre</source>
         <translation>Terra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="273"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
         <source>TextLabel</source>
         <translation>Etichetta</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="298"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="301"/>
         <source>Apparence du conducteur</source>
         <translation>Aspetto del conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="304"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="307"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="343"/>
         <source>Style du conducteur</source>
         <translation>Stile del conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="311"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="321"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="314"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="324"/>
         <source>Couleur du conducteur</source>
         <translation>Colore del conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="314"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
         <source>Couleur :</source>
         <translation>Colore:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="343"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="346"/>
         <source>Style :</source>
         <translation>Stile:</translation>
     </message>
@@ -702,13 +702,13 @@ i conduttori di questo potenziale?</translation>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="85"/>
+        <location filename="../sources/diagramview.cpp" line="86"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Incollare qui</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="61"/>
+        <location filename="../sources/diagramview.cpp" line="62"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Questa è l&apos;area in cui si progettano gli schemi con l&apos;aggiunta di elementi, unendo i loro terminali tramite i conduttori. È anche possibile aggiungere dei testi indipendenti.</translation>
@@ -731,7 +731,7 @@ i conduttori di questo potenziale?</translation>
         <translation>La selezione contiene %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="666"/>
+        <location filename="../sources/diagramview.cpp" line="676"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Senza titolo</translation>
@@ -1749,7 +1749,7 @@ Le modifiche saranno definitive.</translation>
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="394"/>
+        <location filename="../sources/configpages.cpp" line="397"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>Esporta</translation>
@@ -1922,19 +1922,19 @@ Le modifiche saranno definitive.</translation>
         <translation>Opzioni di rendering</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
-        <source>Conserver les couleurs des conducteurs</source>
-        <translation>Mantenere i colori dei conduttori</translation>
-    </message>
-    <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="159"/>
-        <source>Exporter le cadre</source>
-        <translation>Esportare la struttura</translation>
+        <source>Exporter entièrement le folio</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="162"/>
-        <source>Exporter les éléments</source>
-        <translation>Esportare gli elementi</translation>
+        <source>Exporter seulement les éléments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
+        <source>Conserver les couleurs des conducteurs</source>
+        <translation>Mantenere i colori dei conduttori</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="167"/>
@@ -1960,12 +1960,12 @@ Le modifiche saranno definitive.</translation>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="193"/>
+        <location filename="../sources/configpages.cpp" line="194"/>
         <source>Apparence</source>
         <translation>Aspetto</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="194"/>
+        <location filename="../sources/configpages.cpp" line="195"/>
         <source>Utiliser les couleurs du système</source>
         <translation>Usare i colori di sistema</translation>
     </message>
@@ -1975,24 +1975,9 @@ Le modifiche saranno definitive.</translation>
         <translation>Progetti</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="197"/>
-        <source>Utiliser des fenêtres</source>
-        <translation>Usare le finestre</translation>
-    </message>
-    <message>
-        <location filename="../sources/configpages.cpp" line="198"/>
-        <source>Utiliser des onglets</source>
-        <translation>Usare le linguette</translation>
-    </message>
-    <message>
         <location filename="../sources/configpages.cpp" line="199"/>
         <source>Utiliser les gestes du pavé tactile</source>
         <translation>Utilizzare le &quot;gestures&quot; del touchpad</translation>
-    </message>
-    <message>
-        <location filename="../sources/configpages.cpp" line="200"/>
-        <source>Ces paramètres s&apos;appliqueront dès la prochaine ouverture d&apos;un éditeur de schémas.</source>
-        <translation>Queste impostazioni saranno applicate al prossimo riavvio.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="202"/>
@@ -2016,108 +2001,123 @@ Le modifiche saranno definitive.</translation>
         <translation>Ogni elemento incorpora informazioni sull&apos;autore, la licenza e ogni altra informazione utile, in un campo di testo liberamente editabile. Specificare qui il valore predefinito del campo di testo per l&apos;elemento che si vuole creare:</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="248"/>
+        <location filename="../sources/configpages.cpp" line="250"/>
         <source>Langue</source>
         <translation>Lingua</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="251"/>
-        <source>La nouvelle langue sera pris en compte au prochain lancement de QElectroTech.</source>
-        <translation>La nuova lingua sarà attiva dal prossimo avvio di QElectroTech.</translation>
+        <location filename="../sources/configpages.cpp" line="197"/>
+        <source>Utiliser des fenêtres (appliqué au prochain lancement de QElectroTech)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="310"/>
+        <location filename="../sources/configpages.cpp" line="198"/>
+        <source>Utiliser des onglets (appliqué au prochain lancement de QElectroTech)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/configpages.cpp" line="200"/>
+        <source>Autoriser le dézoom au delà du folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/configpages.cpp" line="253"/>
+        <source>La nouvelle langue sera prise en compte au prochain lancement de QElectroTech.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/configpages.cpp" line="313"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Generale</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="318"/>
+        <location filename="../sources/configpages.cpp" line="321"/>
         <source>Système</source>
         <translation>Sistema</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="322"/>
+        <location filename="../sources/configpages.cpp" line="325"/>
         <source>Arabe</source>
         <translation>Arabo</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="323"/>
+        <location filename="../sources/configpages.cpp" line="326"/>
         <source>Catalan</source>
         <translation>Catalano</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="324"/>
+        <location filename="../sources/configpages.cpp" line="327"/>
         <source>Tchèque</source>
         <translation>Ceco</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="325"/>
+        <location filename="../sources/configpages.cpp" line="328"/>
         <source>Allemand</source>
         <translation>Tedesco</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="326"/>
+        <location filename="../sources/configpages.cpp" line="329"/>
         <source>Grec</source>
         <translation>Greco</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="327"/>
+        <location filename="../sources/configpages.cpp" line="330"/>
         <source>Anglais</source>
         <translation>Inglese</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="328"/>
+        <location filename="../sources/configpages.cpp" line="331"/>
         <source>Espagnol</source>
         <translation>Spagnolo</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="329"/>
+        <location filename="../sources/configpages.cpp" line="332"/>
         <source>Français</source>
         <translation>Francese</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="330"/>
+        <location filename="../sources/configpages.cpp" line="333"/>
         <source>Croate</source>
         <translation>Croato</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="331"/>
+        <location filename="../sources/configpages.cpp" line="334"/>
         <source>Italien</source>
         <translation>Italiano</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="332"/>
+        <location filename="../sources/configpages.cpp" line="335"/>
         <source>Polonais</source>
         <translation>Polacco</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="333"/>
+        <location filename="../sources/configpages.cpp" line="336"/>
         <source>Portugais</source>
         <translation>Portoghese</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="334"/>
+        <location filename="../sources/configpages.cpp" line="337"/>
         <source>Roumains</source>
         <translation>Rumeno</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="335"/>
+        <location filename="../sources/configpages.cpp" line="338"/>
         <source>Russe</source>
         <translation>Russo</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="336"/>
+        <location filename="../sources/configpages.cpp" line="339"/>
         <source>Slovène</source>
         <translation>Sloveno</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="337"/>
+        <location filename="../sources/configpages.cpp" line="340"/>
         <source>Pays-Bas</source>
         <translation>Paesi bassi</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="338"/>
+        <location filename="../sources/configpages.cpp" line="341"/>
         <source>Belgique-Flemish</source>
         <translation>Belga-Fiammingo</translation>
     </message>
@@ -2851,7 +2851,7 @@ Applicare un testo all&apos;insieme dei conduttori?</translation>
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="448"/>
+        <location filename="../sources/configpages.cpp" line="451"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
         <translation>Stampa</translation>
@@ -6573,81 +6573,81 @@ Gli altri campi non sono utilizzati.</translation>
 <context>
     <name>TextEditor</name>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="38"/>
+        <location filename="../sources/editor/texteditor.cpp" line="39"/>
         <source>Noir</source>
         <comment>element text part color</comment>
         <translation>Nero</translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="39"/>
+        <location filename="../sources/editor/texteditor.cpp" line="40"/>
         <source>Blanc</source>
         <comment>element text part color</comment>
         <translation>Bianco</translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="44"/>
+        <location filename="../sources/editor/texteditor.cpp" line="45"/>
         <source>Angle de rotation : </source>
         <translation>Angolo di rotazione:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="52"/>
+        <location filename="../sources/editor/texteditor.cpp" line="53"/>
         <source>Position : </source>
         <translation>Posizione: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="55"/>
+        <location filename="../sources/editor/texteditor.cpp" line="56"/>
         <source>x : </source>
         <translation>x: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="57"/>
+        <location filename="../sources/editor/texteditor.cpp" line="58"/>
         <source>y : </source>
         <translation>y: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="62"/>
+        <location filename="../sources/editor/texteditor.cpp" line="63"/>
         <source>Taille : </source>
         <translation>Dimensioni: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="67"/>
+        <location filename="../sources/editor/texteditor.cpp" line="68"/>
         <source>Couleur : </source>
         <translation>Colore: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="74"/>
+        <location filename="../sources/editor/texteditor.cpp" line="75"/>
         <source>Texte : </source>
         <translation>Testo: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="135"/>
+        <location filename="../sources/editor/texteditor.cpp" line="136"/>
         <source>abscisse</source>
         <translation>ascissa</translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="137"/>
+        <location filename="../sources/editor/texteditor.cpp" line="138"/>
         <source>ordonnée</source>
         <translation>ordinata</translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="141"/>
+        <location filename="../sources/editor/texteditor.cpp" line="142"/>
         <source>taille</source>
         <translation>dimensione</translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="143"/>
+        <location filename="../sources/editor/texteditor.cpp" line="144"/>
         <source>couleur</source>
         <comment>undo caption</comment>
         <translation>colore</translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="145"/>
+        <location filename="../sources/editor/texteditor.cpp" line="146"/>
         <source>angle de rotation</source>
         <translation>angolo di rotazione</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="442"/>
-        <location filename="../sources/editor/texteditor.cpp" line="139"/>
+        <location filename="../sources/editor/texteditor.cpp" line="140"/>
         <source>contenu</source>
         <translation>contenuto</translation>
     </message>
@@ -6655,88 +6655,88 @@ Gli altri campi non sono utilizzati.</translation>
 <context>
     <name>TextFieldEditor</name>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="37"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="38"/>
         <source>Ne pas subir les rotations de l&apos;élément parent</source>
         <translation>Non segue le rotazioni dell&apos;elemento principale</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="40"/>
         <source>Angle de rotation par défaut : </source>
         <translation>Angolo di rotazione predefinito:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="47"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="48"/>
         <source>Position : </source>
         <translation>Posizione: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="50"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="51"/>
         <source>x : </source>
         <translation>x: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="52"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="53"/>
         <source>y : </source>
         <translation>y: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="57"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="58"/>
         <source>Taille : </source>
         <translation>Dimensioni: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="62"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="63"/>
         <source>Texte par défaut : </source>
         <translation>Testo predefinito: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="68"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="69"/>
         <source>tagg :</source>
         <translation>Variabile da associare: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="70"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
         <source>Aucun</source>
         <translation>Nessuna</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="72"/>
         <source>label</source>
         <translation>Etichetta</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="134"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
         <source>abscisse</source>
         <translation>ascissa</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="136"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="137"/>
         <source>ordonnée</source>
         <translation>ordinata</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="140"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="141"/>
         <source>taille</source>
         <translation>dimensione</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="142"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="143"/>
         <source>propriété</source>
         <translation>proprietà</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="144"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="145"/>
         <source>angle de rotation</source>
         <translation>angolo di rotazione</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="145"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="146"/>
         <source>tagg</source>
         <translation>etichetta</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="426"/>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="138"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="139"/>
         <source>contenu</source>
         <translation>contenuto</translation>
     </message>
@@ -6884,6 +6884,21 @@ Gli altri campi non sono utilizzati.</translation>
         <translation>Titolo:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="257"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
+        <source>en bas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="266"/>
+        <source>à droite (expérimental)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="215"/>
         <source>Fichier :</source>
         <translation>File:</translation>
@@ -6909,22 +6924,12 @@ Gli altri campi non sono utilizzati.</translation>
         <translation>Disponibile come %title per i modelli di cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
-        <source>Bas</source>
-        <translation>Basso</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="263"/>
-        <source>Droite (expérimental)</source>
-        <translation>Destra (sperimentale)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="274"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="277"/>
         <source>Personnalisées</source>
         <translation>Personalizzazioni</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="282"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="285"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>È possibile definire delle associazioni nome/valore personalizzate da utilizzare nel cartiglio. Esempio: associando il nome &quot;volta&quot; al valore &quot;1745&quot; invece di %{volta} apparirà il numero 1745 nel cartiglio.</translation>
