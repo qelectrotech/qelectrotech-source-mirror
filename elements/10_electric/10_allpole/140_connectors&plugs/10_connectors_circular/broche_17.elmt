@@ -1,18 +1,18 @@
-<definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" orientation="dyyy">
+<definition type="element" link_type="simple" hotspot_x="45" hotspot_y="45" orientation="dyyy" version="0.5" width="90" height="90">
     <names>
-        <name lang="el">17 ακροδεκτών</name>
         <name lang="en">Pin 17</name>
+        <name lang="fr">Broche_17</name>
+        <name lang="nl">Rond 17Pins</name>
+        <name lang="cs">Zástrčka 17 kolíků</name>
         <name lang="de">Rundstecker 17-polig</name>
         <name lang="it">Circolare 17 Pin</name>
-        <name lang="fr">Broche_17</name>
+        <name lang="el">17 ακροδεκτών</name>
         <name lang="pl">Złącze sidemnastostykowe</name>
-        <name lang="cs">Zástrčka 17 kolíků</name>
-        <name lang="nl">Rond 17Pins</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="80" x="-40" y="-40" antialias="true" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" start="87" angle="-354"/>
+        <arc x="-40" y="-40" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" start="87" width="80" angle="-354" height="80"/>
         <circle x="10.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="-12.5" y="27.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="27.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
@@ -24,7 +24,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <circle x="-17.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="-11.5" y="-17.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <polygon x4="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-39.5" x1="-2" y2="-35.5" x2="-2" y3="-35.5" x3="2" y4="-39.5"/>
+        <polygon y3="-35.5" closed="false" x1="-2" y4="-39.5" antialias="false" x2="-2" x3="2" x4="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39.5" y2="-35.5"/>
         <circle x="-15.5" y="-32.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="6.5" y="-17.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="-16.5" y="12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
@@ -48,6 +48,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="-11" y="1" size="4" text="11"/>
         <text x="4" y="1" size="4" text="10"/>
         <text x="35" y="1" size="4" text="8"/>
+        <input x="60" tagg="label" y="20" size="8" rotate="true" text="_"/>
         <terminal x="0" y="-32" orientation="n"/>
         <terminal x="0" y="-2" orientation="n"/>
         <terminal x="0" y="17" orientation="s"/>
