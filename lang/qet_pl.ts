@@ -3872,7 +3872,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="205"/>
         <source>Ajouter un sommaire</source>
-        <translation>Wstaw spis schematów</translation>
+        <translation>Wstaw spis arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
