@@ -350,41 +350,46 @@ void DiagramView::setSelectionMode() {
 }
 
 /**
-	Agrandit le schema (+33% = inverse des -25 % de zoomMoins())
-*/
+ * @brief DiagramView::zoomIn
+ * Zoom in the current folio
+ */
 void DiagramView::zoomIn() {
-	scale(4.0/3.0, 4.0/3.0);
+	scale(1.15, 1.15);
 	adjustGridToZoom();
 }
 
 /**
-	Retrecit le schema (-25% = inverse des +33 % de zoomPlus())
-*/
+ * @brief DiagramView::zoomOut
+ * Zoom out the current folio.
+ * If zoom-out-beyond-of-folio is true in common setting, the zoom out is infinite
+ * else zoom out is stopped when the entire folio is visible.
+ */
 void DiagramView::zoomOut() {
-	scale(0.75, 0.75);
-	if ((mapFromScene(0,0).rx() == 0) && (mapFromScene(0,0).ry() == 0)){
-		fitInView(sceneRect(), Qt::KeepAspectRatio);
-	}
+	if (QETApp::settings().value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ||
+		(horizontalScrollBar()->maximum() || verticalScrollBar()->maximum()) )
+		scale(0.85, 0.85);
+
 	adjustGridToZoom();
 }
 
 /**
-	Agrandit le schema avec le trackpad
-*/
+ * @brief DiagramView::zoomInSlowly
+ * Like zoomIn but more slowly
+ */
 void DiagramView::zoomInSlowly() {
 	scale(1.02, 1.02);
 	adjustGridToZoom();
 }
 
 /**
-	Retrecit le schema avec le trackpad
-*/
+ * @brief DiagramView::zoomOutSlowly
+ * Like zoomOut but more slowly
+ */
 void DiagramView::zoomOutSlowly() {
-	scale(0.98, 0.98);
-    // Interdit le dezoome plus grand que le folio
-	if ((mapFromScene(0,0).rx() == 0) && (mapFromScene(0,0).ry() == 0)){
-		fitInView(sceneRect(), Qt::KeepAspectRatio);
-	}
+	if (QETApp::settings().value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ||
+		(horizontalScrollBar()->maximum() || verticalScrollBar()->maximum()) )
+		scale(0.98, 0.98);
+
 	adjustGridToZoom();
 }
 
@@ -780,8 +785,6 @@ void DiagramView::adjustSceneRect()
 {
 	QRectF scene_rect = scene->sceneRect();
 	scene_rect.adjust(-Diagram::margin, -Diagram::margin, Diagram::margin, Diagram::margin);
-	scene_rect.setWidth(scene_rect.width()*2);
-	scene_rect.setHeight(scene_rect.height()*2);
 	setSceneRect(scene_rect);
 }
 

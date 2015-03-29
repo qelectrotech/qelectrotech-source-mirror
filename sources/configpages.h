@@ -89,7 +89,7 @@ class GeneralConfigurationPage : public ConfigPage {
 	QGroupBox *projects_view_mode_;
 	QRadioButton *windowed_mode_;
 	QRadioButton *tabbed_mode_;
-	QCheckBox *m_grid_outside_border;
+	QCheckBox *m_zoom_out_beyond_folio;
 	QLabel *warning_view_mode_;
 	QGroupBox *elements_management_;
 	QCheckBox *integrate_elements_;

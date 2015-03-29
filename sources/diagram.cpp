@@ -139,7 +139,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 
 		p -> setBrush(Qt::NoBrush);
 
-		QRectF rect = QETApp::settings().value("diagrameditor/draw-grid-outside-of-border", false).toBool() ?
+			//If user allow zoom out beyond of folio, we draw grid outside of border.
+		QRectF rect = QETApp::settings().value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ?
 						  r :
 						  border_and_titleblock.insideBorderRect().intersected(r);
 
