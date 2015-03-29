@@ -1,5 +1,6 @@
-<definition width="30" version="0.4" hotspot_x="21" hotspot_y="15" height="30" link_type="simple" type="element" orientation="dyyy">
+<definition link_type="simple" hotspot_x="21" hotspot_y="15" orientation="dyyy" width="30" height="30" version="0.5" type="element">
     <names>
+        <name lang="el">Ανιχνευτής κραδασμών</name>
         <name lang="en">Vibrations detector</name>
         <name lang="fr">Détecteur de vibrations</name>
         <name lang="it">Rilevatore di vibrazioni</name>
@@ -7,9 +8,9 @@
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-15" y2="10" x2="-15"/>
-        <input x="-44" y="-0.5" size="9" rotate="true" text="DV" tagg="label"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-15" x2="0" x3="0" x4="-15" antialias="false" x5="-15" x6="-15" x7="-15" x8="-15" y1="0" y2="-10" y3="10" y4="0" y5="0" y6="0" y7="0" y8="0"/>
+        <line end2="none" y1="-10" y2="10" x1="-15" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" end1="none"/>
+        <input size="9" x="-44" y="-0.5" rotate="true" text="DV" tagg="label"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" y2="-10" antialias="false" y3="10" y4="0" y5="0" y6="0" x1="-15" y7="0" x2="0" y8="0" x3="0" x4="-15" x5="-15" x6="-15" x7="-15" x8="-15"/>
         <terminal x="0" y="0" orientation="n"/>
     </description>
 </definition>

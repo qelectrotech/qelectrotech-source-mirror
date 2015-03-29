@@ -6278,7 +6278,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="131"/>
         <source>Type</source>
-        <translation>Τύπος:</translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="141"/>
@@ -6313,7 +6313,20 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εδώ μπορείτε να ορίσετε το πως θα αριθμούνται οι νέοι αγωγοί.
+-Μια αρίθμηση αποτελείται από τουλάχιστον μία μεταβλητή.
+-Μπορείτε να προσθέσετε ή να αφαιρέσετε μεταβλητές αρίθμησης μέσω των κουμπιών + και -.
+-Μια μεταβλητή αρίθμησης αποτελείται από: έναν τύπο, μια τιμή και μια αύξηση.
+
+-Οι τύποι &quot;Αριθμοί 1&quot;, &quot;Αριθμοί 01&quot; και &quot;Αριθμοί 001&quot; αντιπροσωπεύουν έναν αριθμητικό τύπο ορισμένο στο πεδίο &quot;Τιμή&quot;, η οποία αυξάνει για κάθε νεό αγωγό με την τιμή της &quot;Αύξησης&quot;.
+-Οι &quot;Αριθμοί 01&quot; και &quot;Αριθμοί 001&quot;, εμφανίζονται στο διάγραμμα με τουλάχιστον δύο και τρία ψηφία αντίστοιχα.
+Αν ο αριθμός που ορίστηκε στο πεδίο Τιμή έχει λιγότερα ψηφία από τον επιλεγμένο τύπο, θα συμπληρωθεί με ένα ή δύο 0 ώστε να ανταποκρίνεται στον τύπο του.
+
+-Ο τύπος &quot;Κείμενο&quot; είναι ένα σταθερό κείμενο.
+Το πεδίο &quot;Αύξηση&quot; δεν χρησιμοποιείται.
+
+-Ο τύπος &quot;N°.σελίδας&quot; αντιπροσωπεύει τον τρέχοντα αριθμό σελίδας.
+Τα υπόλοιπα πεδία δεν χρησιμοποιούνται.</translation>
     </message>
 </context>
 <context>

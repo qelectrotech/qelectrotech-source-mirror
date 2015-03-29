@@ -1,27 +1,28 @@
-<definition width="50" version="0.4" hotspot_x="16" hotspot_y="25" height="50" link_type="simple" type="element" orientation="dyyy">
+<definition hotspot_y="25" height="50" width="50" version="0.5" orientation="dyyy" type="element" link_type="simple" hotspot_x="16">
     <names>
-        <name lang="en">Siren outdoor with flash light</name>        
-	<name lang="fr">Sirène extérieure avec flash</name>
         <name lang="it">Sirena esterna con lampeggiatore</name>
         <name lang="de">Hupe Aussenbereich mit Blitzlicht</name>
+        <name lang="el">Εξωτερική σειρήνα με φάρο</name>
+        <name lang="en">Siren outdoor with flash light</name>
+        <name lang="fr">Sirène extérieure avec flash</name>
     </names>
     <informations></informations>
     <description>
-        <rect width="30" x="-10" y="-9.75" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.75" x1="20" y2="-19.75" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.75" x1="30" y2="20.25" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.25" x1="30" y2="10.25" x2="20"/>
-        <input x="-50" y="-0.25" size="9" rotate="true" text="SIR" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-9.5" y2="0" x2="-7.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-7.5" y2="2" x2="-7.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-5.5" y2="4" x2="-5.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-5.5" y2="0" x2="-3.5"/>
-        <arc width="10" x="5" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="90"/>
-        <arc width="10" x="5" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" angle="90"/>
-        <arc width="10" x="5" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="90"/>
-        <arc width="10" x="5" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="7" y2="-3" x2="13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="7" y2="3" x2="13"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" width="30" x="-10" y="-9.75" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-9.75" end1="none" y2="-19.75" end2="none" x1="20" antialias="false" x2="30"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-19.75" end1="none" y2="20.25" end2="none" x1="30" antialias="false" x2="30"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="20.25" end1="none" y2="10.25" end2="none" x1="30" antialias="false" x2="20"/>
+        <input size="9" rotate="true" x="-50" y="-0.25" text="SIR" tagg="label"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="0" end1="none" y2="0" end2="none" x1="-9.5" antialias="false" x2="-7.5"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-2" end1="none" y2="2" end2="none" x1="-7.5" antialias="false" x2="-7.5"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-4" end1="none" y2="4" end2="none" x1="-5.5" antialias="false" x2="-5.5"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="0" end1="none" y2="0" end2="none" x1="-5.5" antialias="false" x2="-3.5"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" start="0" width="10" x="5" angle="90" y="-5" antialias="true"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" start="270" width="10" x="5" angle="90" y="-5" antialias="true"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" start="180" width="10" x="5" angle="90" y="-5" antialias="true"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" start="90" width="10" x="5" angle="90" y="-5" antialias="true"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="3" end1="none" y2="-3" end2="none" x1="7" antialias="false" x2="13"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-3" end1="none" y2="3" end2="none" x1="7" antialias="false" x2="13"/>
         <terminal x="-10" y="-9.75" orientation="n"/>
     </description>
 </definition>

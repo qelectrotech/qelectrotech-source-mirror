@@ -1,14 +1,15 @@
-<definition width="10" version="0.4" hotspot_x="5" hotspot_y="11" height="20" link_type="simple" type="element" orientation="dyyy">
+<definition link_type="simple" height="20" hotspot_x="5" hotspot_y="11" width="10" orientation="dyyy" version="0.5" type="element">
     <names>
-        <name lang="en">Magnetic contact</name>        
-	<name lang="fr">Contact Magnetique</name>
+        <name lang="fr">Contact Magnetique</name>
         <name lang="it">Contatto magnetico</name>
         <name lang="de">Magnetkontakt</name>
+        <name lang="el">Μαγνητική επαφή</name>
+        <name lang="en">Magnetic contact</name>
     </names>
     <informations></informations>
     <description>
-        <input x="-31" y="0.5" size="9" rotate="true" text="CM" tagg="label"/>
-        <rect width="6" x="-3" y="-6" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="-31" y="0.5" rotate="true" size="9" text="CM" tagg="label"/>
+        <rect x="-3" y="-6" height="12" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" width="6"/>
         <terminal x="0" y="-6" orientation="n"/>
     </description>
 </definition>
