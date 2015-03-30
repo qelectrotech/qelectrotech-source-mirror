@@ -2020,8 +2020,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="200"/>
         <source>Autoriser le dézoom au delà du folio</source>
-        <translatorcomment>Δυνατότητα αποεστίασης πέρα από τη σελίδα</translatorcomment>
-        <translation></translation>
+        <translation>Δυνατότητα αποεστίασης πέρα από τη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
