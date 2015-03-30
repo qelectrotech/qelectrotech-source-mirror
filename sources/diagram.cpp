@@ -74,11 +74,8 @@ Diagram::Diagram(QETProject *project) :
 
 	connect(&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)), this, SLOT(setTitleBlockTemplate(const QString &)));
 	connect(&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),    this, SLOT(titleChanged(const QString &)));
-	connect(&border_and_titleblock, &BorderTitleBlock::borderChanged, [this]() {
-		QRectF old_rect = this->sceneRect();
-		this->setSceneRect(border_and_titleblock.borderAndTitleBlockRect().united(this->itemsBoundingRect()));
-		this->update(old_rect.united(this->sceneRect()));
-	});
+	connect(&border_and_titleblock, SIGNAL(borderChanged(QRectF,QRectF)), this, SLOT(adjustSceneRect()));
+	adjustSceneRect();
 }
 
 /**
@@ -805,7 +802,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		content_ptr -> images			= added_images.toSet();
 		content_ptr -> shapes			= added_shapes.toSet();
 	}
-	
+	adjustSceneRect();
 	return(true);
 }
 
@@ -1184,6 +1181,17 @@ bool Diagram::usesElement(const ElementsLocation &location) {
 */
 bool Diagram::usesTitleBlockTemplate(const QString &name) {
 	return(name == border_and_titleblock.titleBlockTemplateName());
+}
+
+/**
+ * @brief Diagram::adjustSceneRect
+ * Recalcul and adjust the size of the scene
+ */
+void Diagram::adjustSceneRect()
+{
+	QRectF old_rect = sceneRect();
+	setSceneRect(border_and_titleblock.borderAndTitleBlockRect().united(itemsBoundingRect()));
+	update(old_rect.united(sceneRect()));
 }
 
 /**
