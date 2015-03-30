@@ -1,0 +1,31 @@
+<definition hotspot_y="29" link_type="simple" type="element" width="40" height="50" orientation="dyyy" version="0.5" hotspot_x="25">
+    <names>
+        <name lang="en">2n7000</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" x4="-6" y1="-5" x1="-6" x3="-2" x2="-2" y2="-7" y3="-3" y4="-5"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="0" x1="-8.5455" length1="1.5" x2="-18.4545" y2="0"/>
+        <polygon antialias="false" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-4" x3="0" x2="0" y2="-5" y3="15"/>
+        <polygon antialias="false" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="-6" x3="0" x2="0" y2="-9" y3="-25"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-1" x1="-6" length1="1.5" x2="0" y2="-1"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-2" x1="-6" length1="1.5" x2="-6" y2="0"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-6" x1="-6" length1="1.5" x2="-6" y2="-4"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-10" x1="-6" length1="1.5" x2="-6" y2="-8"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-10" x1="-8" length1="1.5" x2="-8" y2="0"/>
+        <input text="_" tagg="label" size="5" x="7" y="9.5"/>
+        <circle antialias="true" diameter="22" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11" y="-16"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-8" x1="3.3125" length1="1.5" x2="6.6875" y2="-8"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="1" x1="1" length1="1.5" x2="5" y2="1"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-2.28571" x1="5" length1="1.5" x2="5" y2="0.2857"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-12" x1="0" length1="1.5" x2="5" y2="-12"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-12" x1="5" length1="1.5" x2="5" y2="-9"/>
+        <polygon antialias="true" x6="5.1214" style="line-style:normal;line-weight:normal;filling:black;color:black" x5="5.1214" x4="5.1214" y1="-7.96429" y5="-7.96429" x1="5.1214" x3="7" x2="3.2429" y6="-7.96429" y2="-3" y3="-3" y4="-7.96429"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-8" x1="3" length1="1.5" x2="2" y2="-7"/>
+        <line antialias="false" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-8" x1="7" length1="1.5" x2="8" y2="-9"/>
+        <terminal orientation="n" x="0" y="-25"/>
+        <terminal orientation="s" x="0" y="15"/>
+        <terminal orientation="w" x="-19.5556" y="0"/>
+    </description>
+</definition>
