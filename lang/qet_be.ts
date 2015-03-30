@@ -64,13 +64,13 @@
         <location filename="../sources/aboutqet.cpp" line="100"/>
         <source>2006-2015 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished"></translation>
+        <translation>2006-2015 De ontwikkelaars van QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="104"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="118"/>
@@ -186,7 +186,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="184"/>
         <source>Paquets MAC OS X</source>
-        <translation type="unfinished"></translation>
+        <translation>MAC OS X pakketten</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="185"/>
@@ -201,12 +201,12 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="191"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Collectie elementen</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="192"/>
         <source>Convertisseur DXF</source>
-        <translation type="unfinished"></translation>
+        <translation>DXF converter</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="178"/>
@@ -363,7 +363,7 @@
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
         <source>Dimensions du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Afmetingen schema</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="60"/>
@@ -688,7 +688,7 @@
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="49"/>
         <source>Propriétés du folio</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schema eigenschappen</translation>
     </message>
 </context>
 <context>
@@ -747,7 +747,7 @@
     <message>
         <location filename="../sources/diagramschooser.cpp" line="165"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema/bladzijde zonder titel</translation>
     </message>
 </context>
 <context>
