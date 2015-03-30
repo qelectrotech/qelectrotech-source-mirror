@@ -1925,12 +1925,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="159"/>
         <source>Exporter entièrement le folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή ολόκληρης της σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="162"/>
         <source>Exporter seulement les éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή των στοιχείων μόνο</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
@@ -2010,22 +2010,23 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="197"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρήση παραθύρων (διαθέσιμο στην επόμενη εκκίνηση του QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="198"/>
         <source>Utiliser des onglets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρήση καρτελών (διαθέσιμο στην επόμενη εκκίνηση του QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="200"/>
         <source>Autoriser le dézoom au delà du folio</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Δυνατότητα αποεστίασης πέρα από τη σελίδα</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="253"/>
         <source>La nouvelle langue sera prise en compte au prochain lancement de QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>Η νέα γλώσσα θα είναι διαθέσιμη στην επόμενη εκκίνηση του QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="313"/>
@@ -6891,17 +6892,17 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="257"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt; &lt;head/&gt;&lt;body&gt;&lt;p&gt;Εμφανίζει την πινακίδα κάτω (οριζόντια) ή δεξιά (κάθετα)στη σελίδα.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
         <source>en bas</source>
-        <translation type="unfinished"></translation>
+        <translation>κάτω</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="266"/>
         <source>à droite (expérimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>δεξιά (πειραματικό)</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="215"/>
