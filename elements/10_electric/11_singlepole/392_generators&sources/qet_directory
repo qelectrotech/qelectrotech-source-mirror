@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru">Генераторы и источники питания</name>
         <name lang="en">Generators and sources</name>
         <name lang="fr">Générateurs et sources</name>
         <name lang="it">Generatori e sorgenti</name>
@@ -8,5 +9,6 @@
         <name lang="nl">Generatoren en Voedingen</name>
         <name lang="el">Γεννήτριες και πηγές</name>
         <name lang="cs">Generátory a zdroje</name>
+        <name lang="ru">Генераторы и источники питания</name>
     </names>
 </qet-directory>
