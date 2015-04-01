@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru">Датчики давления</name>
         <name lang="de">Sensoren Druck</name>
         <name lang="el">Αισθητήρες πίεσης</name>
         <name lang="en">Sensors pressure</name>

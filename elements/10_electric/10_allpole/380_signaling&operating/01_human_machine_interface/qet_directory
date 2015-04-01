@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru">Интерфейсы человек-машина</name>
         <name lang="en">Human/machine interfaces</name>
         <name lang="fr">Interfaces homme/machine</name>
         <name lang="it">Interfaccia uomo/macchina (HMI)</name>

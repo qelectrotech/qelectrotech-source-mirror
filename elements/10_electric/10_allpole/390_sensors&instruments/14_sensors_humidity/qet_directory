@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru">Датчики влажности</name>
         <name lang="de">Sensoren Feuchte</name>
         <name lang="el">Αισθητήρες υγρασίας</name>
         <name lang="en">Sensors humidity</name>

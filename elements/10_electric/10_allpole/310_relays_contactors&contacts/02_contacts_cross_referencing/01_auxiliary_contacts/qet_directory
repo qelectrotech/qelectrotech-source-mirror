@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru">Внешние</name>
         <name lang="de">Hilfsglieder</name>
         <name lang="el">Βοηθητικές επαφές</name>
         <name lang="en">Auxiliary</name>

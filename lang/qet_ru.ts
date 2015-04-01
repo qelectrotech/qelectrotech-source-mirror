@@ -6855,34 +6855,34 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="219"/>
         <source>Modèle par défaut</source>
-        <translation type="unfinished">Шаблон по умолчанию</translation>
+        <translation>Шаблон по умолчанию</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="237"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Редактировать шаблон</translation>
+        <translation>Редактировать шаблон</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="238"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Дублировать и редактировать этот шаблон</translation>
+        <translation>Дублировать и редактировать этот шаблон</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="243"/>
         <source>Title block templates actions</source>
-        <translation type="unfinished">Действия над шаблонами штампов</translation>
+        <translation>Действия над шаблонами штампов</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="55"/>
         <source>Modèle :</source>
-        <translation type="unfinished">Шаблон:</translation>
+        <translation>Шаблон:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Форма</translation>
+        <translation>Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="243"/>
@@ -6892,116 +6892,118 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="121"/>
         <source>Auteur :</source>
-        <translation type="unfinished">Автор :</translation>
+        <translation>Автор :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="250"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
         <translatorcomment>???</translatorcomment>
-        <translation type="unfinished">Доступен как %filename шаблоны для штампов</translation>
+        <translation>Доступен как %filename шаблон для штампа</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="155"/>
         <source>Pas de date</source>
-        <translation type="unfinished">Нет даты</translation>
+        <translation>Нет даты</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="162"/>
         <source>Date courante</source>
-        <translation type="unfinished">Текущая дата</translation>
+        <translation>Текущая дата</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="169"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished">Вписать текущую дату</translation>
+        <translation>Установить текущую дату</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="106"/>
         <source>Principales</source>
-        <translation type="unfinished">Главный</translation>
+        <translation>Главный</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="38"/>
         <source>Informations des cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация штампа</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="128"/>
         <source>Afficher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="138"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>В поле Страница могут быть использованы следующие переменные:
+- %id: номер текущей страницы в проекте.
+- %total: количество страниц в проекте</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="183"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished">Доступен как %date шаблоны для штампов</translation>
+        <translation>Доступен как %date шаблон для штампа</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="196"/>
         <source>Date fixe :</source>
-        <translation type="unfinished">Точная дата :</translation>
+        <translation>Точная дата :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="229"/>
         <source>Titre :</source>
-        <translation type="unfinished">Название :</translation>
+        <translation>Название :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="215"/>
         <source>Fichier :</source>
-        <translation type="unfinished">Файл :</translation>
+        <translation>Файл :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="114"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches</source>
-        <translation type="unfinished">Доступен как %folio шаблоны для штампов</translation>
+        <translation>Доступен как %folio шаблон для штампа</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="205"/>
         <source>Date :</source>
-        <translation type="unfinished">Дата :</translation>
+        <translation>Дата :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="236"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished">Доступен как %author шаблон для штампов</translation>
+        <translation>Доступен как %author шаблон для штампа</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="222"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished">Доступен как %title шаблон для штампов</translation>
+        <translation>Доступен как %title шаблон для штампа</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="257"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt; &lt;head/&gt;&lt;body&gt;&lt;p&gt; Показывать штамп внизу (горизонтально) или справа (вертикально) страницы &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
         <source>en bas</source>
-        <translation type="unfinished"></translation>
+        <translation>внизу</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="266"/>
         <source>à droite (expérimental)</source>
-        <translation type="unfinished"></translation>
+        <translation>справа (экспериментально)</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="277"/>
         <source>Personnalisées</source>
-        <translation type="unfinished">Обычный</translation>
+        <translation>Пользовательский</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="285"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished">Вы можете задать здесь свои собственные ассоциации имени/значения чтобы штамп учитывал их. Например: ассоциация имени &quot;volta&quot; с значением &quot;1745&quot; будет заменять строку %{volta} числом 1745 внутри штампа.</translation>
+        <translation>Вы можете задать здесь свои собственные сочетания имени/значения для использования в штампе. Например: сочетание имени &quot;volta&quot; с значением &quot;1745&quot; будет заменять строку %{volta} числом 1745 внутри штампа.</translation>
     </message>
 </context>
 <context>
@@ -7023,146 +7025,146 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="49"/>
         <source>Type de cellule :</source>
-        <translation type="unfinished">Тип ячейки:</translation>
+        <translation>Тип ячейки:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
         <source>Vide</source>
-        <translation type="unfinished">Пусто</translation>
+        <translation>Пусто</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="52"/>
         <source>Texte</source>
-        <translation type="unfinished">Текст</translation>
+        <translation>Текст</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="63"/>
         <source>Logo</source>
-        <translation type="unfinished">Логотип</translation>
+        <translation>Логотип</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Предупреждение: края пустых ячеек не появятся при окончательной отрисовке страницы.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
         <source>Aucun logo</source>
-        <translation type="unfinished">Нет логотипа</translation>
+        <translation>Нет логотипа</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="66"/>
         <source>Gérer les logos</source>
-        <translation type="unfinished">Управление логотипами</translation>
+        <translation>Управление логотипами</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="56"/>
         <source>Nom :</source>
-        <translation type="unfinished">Имя :</translation>
+        <translation>Имя :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
         <source>Afficher un label :</source>
-        <translation type="unfinished">Отображать метку:</translation>
+        <translation>Показать метку:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="76"/>
         <source>Editer</source>
-        <translation type="unfinished">Редактировать</translation>
+        <translation>Редактировать</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="73"/>
         <source>Texte :</source>
-        <translation type="unfinished">Текст :</translation>
+        <translation>Текст :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
         <source>Alignement :</source>
-        <translation type="unfinished">Выравнивание :</translation>
+        <translation>Выравнивание :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
         <source>horizontal :</source>
-        <translation type="unfinished">Горизонтальное :</translation>
+        <translation>Горизонтальное :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
         <source>Gauche</source>
-        <translation type="unfinished">Лево</translation>
+        <translation>Лево</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="81"/>
         <source>Centré</source>
-        <translation type="unfinished">Центр</translation>
+        <translation>Центр</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="82"/>
         <source>Droite</source>
-        <translation type="unfinished">Право</translation>
+        <translation>Право</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="86"/>
         <source>vertical :</source>
-        <translation type="unfinished">Вертикальное :</translation>
+        <translation>Вертикальное :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
         <source>Haut</source>
-        <translation type="unfinished">Верх</translation>
+        <translation>Верх</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="89"/>
         <source>Milieu</source>
-        <translation type="unfinished">Середина</translation>
+        <translation>Центр</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="90"/>
         <source>Bas</source>
-        <translation type="unfinished">Низ</translation>
+        <translation>Низ</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="94"/>
         <source>Police :</source>
-        <translation type="unfinished">Шрифт :</translation>
+        <translation>Шрифт :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
         <source>Ajuster la taille de police si besoin</source>
-        <translation type="unfinished">Подстраивать размер шрифта, если необходимо</translation>
+        <translation>Подстраивать размер шрифта, если необходимо</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
         <source>Label de cette cellule</source>
-        <translation type="unfinished">Метка для ячейки</translation>
+        <translation>Метка для ячейки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="258"/>
         <source>Valeur de cette cellule</source>
-        <translation type="unfinished">Значение для ячейки</translation>
+        <translation>Значение для ячейки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished">Следующие переменные доступны по умолчанию: &lt;ul&gt;&lt;li&gt;%{author}: автор страницы&lt;/li&gt;&lt;li&gt;%{date}: дата страницы&lt;/li&gt;&lt;li&gt;%{title}: название страницы&lt;/li&gt;&lt;li&gt;%{filename}: имя файла проекта&lt;/li&gt;&lt;li&gt;%{folio}: информация к странице&lt;/li&gt;&lt;li&gt;%{folio-id}: индекс страницы в проекте&lt;/li&gt;&lt;li&gt;%{folio-total}: количество страниц в проекте&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation>Следующие переменные доступны по умолчанию: &lt;ul&gt;&lt;li&gt;%{author}: автор страницы&lt;/li&gt;&lt;li&gt;%{date}: дата страницы&lt;/li&gt;&lt;li&gt;%{title}: название страницы&lt;/li&gt;&lt;li&gt;%{filename}: имя файла проекта&lt;/li&gt;&lt;li&gt;%{folio}: информация к странице&lt;/li&gt;&lt;li&gt;%{folio-id}: индекс страницы в проекте&lt;/li&gt;&lt;li&gt;%{folio-total}: количество страниц в проекте&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation type="unfinished">Каждая ячейка шаблона отображает значение, опционально предшествующее метке. Обе могут быть переведены на другие языки.&lt;br/&gt;То, что вы сейчас редактируете - это &lt;em&gt;шаблон&lt;/em&gt; штампа, избегайте введения информации непосредственно: используйте переменные. Например %{variable-name}, которые могут быть в последствии заменены адекватными значениями из страницы.</translation>
+        <translation>Каждая ячейка шаблона отображает значение, опционально предшествуемая меткой. Они могут быть переведены на другие языки.&lt;br/&gt;Поскольку вы сейчас редактируете &lt;em&gt;шаблон штампа&lt;/em&gt;, избегайте ввода информации непосредственно: используйте переменные. Например %{variable-name}, которые могут быть в последствии заменены адекватными значениями из страницы.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
         <source>Aucun logo</source>
         <comment>text displayed in the combo box when a template has no logo</comment>
-        <translation type="unfinished">Нет логотипа</translation>
+        <translation>Нет логотипа</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="422"/>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
-        <translation type="unfinished">Редактирование ячейки: %1</translation>
+        <translation>Редактирование ячейки: %1</translation>
     </message>
 </context>
 <context>
@@ -7178,7 +7180,8 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <source>Êtes-vous sûr  de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Вы действительно хотите удалить шаблон штампа (%1) ?
+</translation>
     </message>
 </context>
 <context>
@@ -7187,13 +7190,13 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="96"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished">Исходная коллекция</translation>
+        <translation>Исходная коллекция</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="97"/>
         <source>Modèle existant</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished">Существующий шаблон</translation>
+        <translation>Существующий шаблон</translation>
     </message>
 </context>
 <context>
@@ -7202,13 +7205,13 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="79"/>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished">или новое имя</translation>
+        <translation>или новое имя</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="91"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
-        <translation type="unfinished">Новый шаблон (введите его название)</translation>
+        <translation>Новый шаблон (задайте его имя)</translation>
     </message>
 </context>
 <context>
@@ -7216,74 +7219,74 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="77"/>
         <source>Gestionnaire de logos</source>
-        <translation type="unfinished">Редактор логотипов</translation>
+        <translation>Управление логотипами</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="80"/>
         <source>Logos embarqués dans ce modèle :</source>
-        <translation type="unfinished">Логотипы, включённые в этот шаблон:</translation>
+        <translation>Логотипы, включённые в этот шаблон:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
         <source>Ajouter un logo</source>
-        <translation type="unfinished">Добавить логотип</translation>
+        <translation>Добавить логотип</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="90"/>
         <source>Exporter ce logo</source>
-        <translation type="unfinished">Экспортировать этот логотип</translation>
+        <translation>Экспортировать этот логотип</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="91"/>
         <source>Supprimer ce logo</source>
-        <translation type="unfinished">Удалить этот логотип</translation>
+        <translation>Удалить этот логотип</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="92"/>
         <source>Propriétés</source>
-        <translation type="unfinished">Настройки</translation>
+        <translation>Свойства</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="93"/>
         <source>Nom :</source>
-        <translation type="unfinished">Имя :</translation>
+        <translation>Имя :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="95"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="197"/>
         <source>Renommer</source>
-        <translation type="unfinished">Переименовать</translation>
+        <translation>Переименовать</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="96"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="256"/>
         <source>Type :</source>
-        <translation type="unfinished">Тип:</translation>
+        <translation>Тип:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="190"/>
         <source>Logo déjà existant</source>
-        <translation type="unfinished">Логотип уже существует</translation>
+        <translation>Логотип уже существует</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="196"/>
         <source>Remplacer</source>
-        <translation type="unfinished">Заменить</translation>
+        <translation>Заменить</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="216"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation type="unfinished">Логотип с названием &quot;%1&quot; уже существует. Хотите заменить его или хотите ввести другое имя для нового логотипа?</translation>
+        <translation>Логотип &quot;%1&quot; уже существует. Хотите заменить его или хотите ввести другое имя для нового логотипа?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="252"/>
         <source>Type : %1</source>
-        <translation type="unfinished">Тип: %1</translation>
+        <translation>Тип: %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="269"/>
         <source>Choisir une image / un logo</source>
-        <translation>Добавить изображение</translation>
+        <translation>Выберите изображение/логотип</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="271"/>
@@ -7304,7 +7307,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="302"/>
         <source>Choisir un fichier pour exporter ce logo</source>
-        <translation type="unfinished">Выберите файл для экспорта этого логотипа</translation>
+        <translation>Выберите файл для экспорта этого логотипа</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="304"/>
@@ -7314,27 +7317,27 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="310"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
-        <translation type="unfinished">Невозможно экспортировать в указанный файл</translation>
+        <translation>Невозможно экспортировать в указанный файл</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="337"/>
         <source>Renommer un logo</source>
-        <translation type="unfinished">Переименовать логотип</translation>
+        <translation>Переименовать логотип</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="342"/>
         <source>Vous devez saisir un nouveau nom.</source>
-        <translation type="unfinished">Вы должны ввести новое имя.</translation>
+        <translation>Вы должны ввести новое имя.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="351"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
-        <translation type="unfinished">Имя не может быть пустым.</translation>
+        <translation>Имя не может быть пустым.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="360"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
-        <translation type="unfinished">Введённое имя уже используется для другого логотипа.</translation>
+        <translation>Введённое имя уже используется другим логотипом.</translation>
     </message>
 </context>
 <context>
@@ -7343,73 +7346,73 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="332"/>
         <source>Changer la largeur de la colonne</source>
         <comment>window title when changing a column with</comment>
-        <translation type="unfinished">Изменить ширину столбца</translation>
+        <translation>Изменить ширину столбца</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="333"/>
         <source>Largeur :</source>
         <comment>text before the spinbox to change a column width</comment>
-        <translation type="unfinished">Ширина :</translation>
+        <translation>Ширина :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="358"/>
         <source>Changer la hauteur de la ligne</source>
         <comment>window title when changing a row height</comment>
-        <translation type="unfinished">Изменить высоту строки</translation>
+        <translation>Изменить высоту строки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="359"/>
         <source>Hauteur :</source>
         <comment>text before the spinbox to change a row height</comment>
-        <translation type="unfinished">Высота :</translation>
+        <translation>Высота :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="535"/>
         <source>Ajouter une colonne (avant)</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Добавить столбец (до)</translation>
+        <translation>Добавить столбец (перед)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="536"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Добавить строку (до)</translation>
+        <translation>Добавить строку (перед)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="537"/>
         <source>Ajouter une colonne (après)</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Добавить столбец (после)</translation>
+        <translation>Добавить столбец (после)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="538"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Добавить строку (после)</translation>
+        <translation>Добавить строку (после)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="539"/>
         <source>Modifier les dimensions de cette colonne</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Изменить размеры столбца</translation>
+        <translation>Изменить размер столбца</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="540"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Изменить размеры строки</translation>
+        <translation>Изменить размер строки</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="541"/>
         <source>Supprimer cette colonne</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Удалить этот столбец</translation>
+        <translation>Удалить этот столбец</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="542"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Удалить эту строку</translation>
+        <translation>Удалить эту строку</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="543"/>
@@ -7421,34 +7424,34 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="608"/>
         <source>[%1px]</source>
         <comment>content of the extra cell added when the total width of cells is less than the preview width</comment>
-        <translation type="unfinished">[%1пикс]</translation>
+        <translation>[%1пикс]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="618"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greather than the preview width</comment>
-        <translation type="unfinished">[%1пикс]</translation>
+        <translation>[%1пикс]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="671"/>
         <source>%1px</source>
         <comment>format displayed in rows helper cells</comment>
-        <translation type="unfinished">%1пикс</translation>
+        <translation>%1пикс</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="733"/>
         <source>%1px</source>
-        <translation type="unfinished">%1пикс</translation>
+        <translation>%1пикс</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="784"/>
         <source>Changer la largeur de l&apos;aperçu</source>
-        <translation type="unfinished">Изменить ширину</translation>
+        <translation>Изменить ширину</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="785"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation type="unfinished">Ширина:</translation>
+        <translation>Ширина:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="933"/>
@@ -7456,20 +7459,21 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Минимальная длина : %1пикс
+Максимальная длина : %2пикс</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="940"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Минимальная длина : %1пикс</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
-        <translation type="unfinished">Общая ширина: %1пикс</translation>
+        <translation>Общая ширина: %1пикс</translation>
     </message>
 </context>
 <context>
@@ -7478,13 +7482,13 @@ Longueur maximale : %2px
         <location filename="../sources/titleblock/templatescollection.cpp" line="120"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished">Штампы безымянного проекта (id %1)</translation>
+        <translation>Штампы безымянного проекта (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished">Штампы проекта &quot;%1&quot;</translation>
+        <translation>Штампы проекта &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -7492,27 +7496,27 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Форма</translation>
+        <translation>Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="22"/>
         <source>Type :</source>
-        <translation type="unfinished">Тип:</translation>
+        <translation>Тип:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
         <source>Représentation:</source>
-        <translation type="unfinished">Представление:</translation>
+        <translation>Представление:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="42"/>
         <source>Positionner :</source>
-        <translation type="unfinished">Позиционирование:</translation>
+        <translation>Расположение:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
         <source>Afficher en croix</source>
-        <translation type="unfinished">Показывать крест</translation>
+        <translation>Показывать крест</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
@@ -7527,42 +7531,42 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="81"/>
         <source>Afficher les contacts de puissance dans la croix</source>
-        <translation type="unfinished">Показывать силовые контакты на кресте</translation>
+        <translation>Показывать силовые контакты на кресте</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>Préfixe des contacts de puissance :</source>
-        <translation type="unfinished">Префикс для силовых контактов :</translation>
+        <translation>Префикс силовых контактов :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="97"/>
         <source>Préfixe des contacts temporisés :</source>
-        <translation type="unfinished">Префикс контактов с задержкой:</translation>
+        <translation>Префикс контактов с задержкой:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="110"/>
         <source>Préfixe des contacts inverseurs :</source>
-        <translation type="unfinished">Префикс для контактов переключения:</translation>
+        <translation>Префикс контактов переключения:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
         <source>Bobine</source>
-        <translation type="unfinished">Катушка</translation>
+        <translation>Катушка</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
         <source>Organe de protection</source>
-        <translation type="unfinished">Орган защиты</translation>
+        <translation>Орган защиты</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
         <source>En bas de page</source>
-        <translation type="unfinished">Внизу</translation>
+        <translation>Внизу</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
         <source>Sous le label de l&apos;élément</source>
-        <translation type="unfinished">Под маркой элемента</translation>
+        <translation>Под меткой элемента</translation>
     </message>
 </context>
 <context>
@@ -7571,13 +7575,13 @@ Longueur maximale : %2px
         <location filename="../sources/xmlelementscollection.cpp" line="69"/>
         <source>Collection du projet sans titre (id %1)</source>
         <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished">Коллекция безымянного проекта (id %1)</translation>
+        <translation>Коллекция безымянного проекта (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/xmlelementscollection.cpp" line="77"/>
         <source>Collection du projet &quot;%1&quot;</source>
         <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished">Коллекция проекта &quot;%1&quot;</translation>
+        <translation>Коллекция проекта &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -7585,12 +7589,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Форма</translation>
+        <translation>Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Текстовая метка</translation>
+        <translation>Текстовая метка</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="30"/>
@@ -7606,23 +7610,23 @@ Longueur maximale : %2px
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Sélection</source>
         <translatorcomment>context dependent</translatorcomment>
-        <translation type="unfinished">Выбрать</translation>
+        <translation>Выбор</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Nom</source>
         <translatorcomment>Название?</translatorcomment>
-        <translation type="unfinished">Имя</translation>
+        <translation>Имя</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Страница без имени</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="102"/>
         <source>Désélectionner tout</source>
-        <translation type="unfinished">Снять выделение</translation>
+        <translation>Снять выделение</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
@@ -7636,100 +7640,106 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="63"/>
         <source>Nom : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Имя : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="66"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Страница : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="68"/>
         <source>Position : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Позиция : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="70"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Выводы : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="71"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Текстовые поля : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="74"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Расположение : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="111"/>
         <source>Propriétés de l&apos;élément</source>
-        <translation type="unfinished">Свойства элемента</translation>
+        <translation>Свойства элемента</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="130"/>
         <source>Référence croisée (maitre)</source>
-        <translation type="unfinished">Ссылка (главный)</translation>
+        <translation>Ссылка (главный)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
         <source>Informations</source>
-        <translation type="unfinished">Информация</translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished">Ссылка (дочерний)</translation>
+        <translation>Ссылка (дочерний)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="144"/>
         <source>Général</source>
-        <translation type="unfinished">Общее</translation>
+        <translation>Общее</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="56"/>
         <source>Élément manquant</source>
-        <translation type="unfinished">Отсутствует элемент</translation>
+        <translation>Отсутствует элемент</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="58"/>
         <source>Élément</source>
         <translatorcomment>Элемент</translatorcomment>
-        <translation type="unfinished">Элементы</translation>
+        <translation>Элементы</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="69"/>
         <source>Dimensions : %1*%2
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Размеры : %1*%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="92"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Найти в панели</translation>
+        <translation>Найти в панели</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="94"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Редактировать элемент</translation>
+        <translation>Редактировать элемент</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
         <source>Information</source>
-        <translation type="unfinished">Информация</translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="122"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Report de folio</source>
-        <translation type="unfinished">Отчёт</translation>
+        <translation>Отчёт</translation>
     </message>
 </context>
 <context>
@@ -7737,34 +7747,35 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="83"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished">НОМЕНКЛАТУРА:</translation>
+        <translation>ДОКУМЕНТАЦИЯ:</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="49"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">номенклатура_</translation>
+        <translation>документация_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Сохранить как ...</translation>
+        <translation>Сохранить как ...</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Файлы csv (*.csv)</translation>
+        <translation>Файлы csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="59"/>
         <source>Erreur</source>
-        <translation type="unfinished">Ошибка</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="60"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Невозможно заменить файл!
+        <translation>Невозможно заменить файл!
+
 </translation>
     </message>
     <message>
@@ -7775,12 +7786,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Label</source>
-        <translation type="unfinished">Метка</translation>
+        <translation>Метка</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Аннотация</translation>
+        <translation>Коментарий</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
@@ -7805,12 +7816,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>N° de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>№ страницы</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Titre de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Название страницы</translation>
     </message>
 </context>
 <context>
@@ -7826,7 +7837,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="291"/>
         <source>Insert HTML entity</source>
-        <translation type="unfinished">Вставка объекта HTML</translation>
+        <translation>Вставка объекта HTML</translation>
     </message>
 </context>
 <context>
@@ -7834,27 +7845,27 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="756"/>
         <source>Edit text</source>
-        <translation type="unfinished">Редактирование текста</translation>
+        <translation>Редактировать текста</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="779"/>
         <source>Rich Text</source>
-        <translation type="unfinished">Rich-текст</translation>
+        <translation>Rich-текст</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="780"/>
         <source>Source</source>
-        <translation type="unfinished">Источник</translation>
+        <translation>Источник</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="786"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="788"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Отмена</translation>
+        <translation>&amp;Отмена</translation>
     </message>
 </context>
 <context>
@@ -7877,7 +7888,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="461"/>
         <source>Texte en italique</source>
-        <translation>Курсивный</translation>
+        <translation>Курсив</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="467"/>
@@ -7907,32 +7918,32 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="495"/>
         <source>Justify</source>
-        <translation type="unfinished">Выравнивание</translation>
+        <translation>Выравнивание по ширине</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="507"/>
         <source>Superscript</source>
-        <translation type="unfinished">Надстрочный</translation>
+        <translation>Надстрочный</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="513"/>
         <source>Subscript</source>
-        <translation type="unfinished">Подстрочный</translation>
+        <translation>Подстрочный</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="522"/>
         <source>Insérer un lien</source>
-        <translation type="unfinished">Вставка строки</translation>
+        <translation>Вставка строки</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="526"/>
         <source>Insert &amp;Image</source>
-        <translation type="unfinished">Вставка &amp;изображения</translation>
+        <translation>Вставка &amp;изображения</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="542"/>
         <source>Simplify Rich Text</source>
-        <translation type="unfinished">Упростить Rich-текст</translation>
+        <translation>Упростить Rich-текст</translation>
     </message>
 </context>
 </TS>

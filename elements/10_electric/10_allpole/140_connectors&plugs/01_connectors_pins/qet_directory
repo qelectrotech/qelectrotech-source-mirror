@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru">Контакты разъемов</name>
         <name lang="de">Steckkontakte</name>
         <name lang="en">Connector pins</name>
         <name lang="el">Ακίδες συνδέσμων</name>

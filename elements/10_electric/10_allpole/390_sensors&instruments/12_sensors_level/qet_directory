@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru">Датчики уровня</name>
         <name lang="de">Sensoren Niveau</name>
         <name lang="el">Αισθητήρες στάθμης</name>
         <name lang="en">Sensors level</name>

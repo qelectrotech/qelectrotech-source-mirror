@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru">Подвод питания, сеть</name>
         <name lang="en">Network supplies</name>
         <name lang="fr">Sources réseau</name>
         <name lang="it">Alimentazione da rete</name>

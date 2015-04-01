@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru">Таймеры</name>
         <name lang="de">Zeitschalter</name>
         <name lang="en">Timers</name>
         <name lang="pl">Przekaźniki czasowe</name>
