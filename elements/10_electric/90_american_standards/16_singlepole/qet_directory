@@ -1,12 +1,13 @@
 <qet-directory>
     <names>
+        <name lang="nl">Enkel polig</name>
+        <name lang="ru">Однополюсные</name>
+        <name lang="de">Einpolig</name>
+        <name lang="el">Μονογραμμικό</name>
+        <name lang="pl">Schematy jednoliniowe</name>
+        <name lang="cs">Jednopólové</name>
+        <name lang="it">Unifilare</name>
         <name lang="en">Single pole</name>
         <name lang="fr">Unifilaire</name>
-        <name lang="it">Unifilare</name>
-        <name lang="pl">Schematy jednoliniowe</name>
-        <name lang="de">Einpolig</name>
-        <name lang="nl">Enkel polig</name>
-        <name lang="el">Μονογραμμικό</name>
-        <name lang="cs">Jednopólové</name>
     </names>
 </qet-directory>

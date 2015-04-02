@@ -1,10 +1,11 @@
 <qet-directory>
     <names>
-        <name lang="en">Human/machine interfaces</name>
-        <name lang="fr">Interfaces homme/machine</name>
-        <name lang="it">Interfaccia uomo/macchina (HMI)</name>
+        <name lang="nl">Mens/Machine Interface</name>
+        <name lang="ru">Интерфейсы человек-машина</name>
         <name lang="de">Mensch/Maschine-Schnittstellen</name>
         <name lang="pl">Mens/Interfejsy człowiek-urządzenie</name>
-        <name lang="nl">Mens/Machine Interface</name>
+        <name lang="it">Interfaccia uomo/macchina (HMI)</name>
+        <name lang="en">Human/machine interfaces</name>
+        <name lang="fr">Interfaces homme/machine</name>
     </names>
 </qet-directory>

@@ -1,11 +1,12 @@
 <qet-directory>
     <names>
+        <name lang="nl">Veiligheids schakelaarsloten</name>
+        <name lang="ru">Защитные блокировки</name>
         <name lang="de">Sicherheitsschalter</name>
-        <name lang="en">Safety interlocks</name>
-        <name lang="fr">Interrupteurs de sécurité</name>
-        <name lang="it">Interblocchi di sicurezza</name>
         <name lang="pl">Blokady bezpieczeństwa</name>
         <name lang="cs">Bezpečnostní zábrany</name>
-        <name lang="nl">Veiligheids schakelaarsloten</name>
+        <name lang="it">Interblocchi di sicurezza</name>
+        <name lang="en">Safety interlocks</name>
+        <name lang="fr">Interrupteurs de sécurité</name>
     </names>
 </qet-directory>

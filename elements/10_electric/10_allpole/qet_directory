@@ -1,12 +1,13 @@
 <qet-directory>
     <names>
-        <name lang="en">All-pole</name>
-        <name lang="fr">Multifilaire</name>
-        <name lang="it">Multifilare</name>
         <name lang="pl">Schematy wieloliniowe</name>
-        <name lang="de">Allpolig</name>
-        <name lang="el">Πολυγραμμικό</name>
-        <name lang="nl">Veel polig</name>
         <name lang="cs">Vícežilový</name>
+        <name lang="it">Multifilare</name>
+        <name lang="el">Πολυγραμμικό</name>
+        <name lang="fr">Multifilaire</name>
+        <name lang="de">Allpolig</name>
+        <name lang="en">All-pole</name>
+        <name lang="nl">Veel polig</name>
+        <name lang="ru">Многополюсные</name>
     </names>
 </qet-directory>

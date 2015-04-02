@@ -1,10 +1,11 @@
 <qet-directory>
     <names>
-        <name lang="en">Manufacturers articles</name>
-        <name lang="fr">Articles constructeurs</name>
-        <name lang="it">Marchi produttori</name>
-        <name lang="pl">Urządzenia producentów</name>
+        <name lang="ru">База изделий производителей</name>
         <name lang="de">Herstellerartikel</name>
         <name lang="el">Κατασκευαστές υλικού</name>
+        <name lang="pl">Urządzenia producentów</name>
+        <name lang="it">Marchi produttori</name>
+        <name lang="en">Manufacturers articles</name>
+        <name lang="fr">Articles constructeurs</name>
     </names>
 </qet-directory>

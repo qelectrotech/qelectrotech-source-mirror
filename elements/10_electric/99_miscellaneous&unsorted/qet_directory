@@ -1,12 +1,13 @@
 <qet-directory>
     <names>
+        <name lang="nl">Diverse en ongesorteerd</name>
+        <name lang="ru">Разное и несортированное</name>
+        <name lang="de">Sonstiges und unsortiert</name>
+        <name lang="el">Διάφορα και αταξινόμητα</name>
+        <name lang="pl">Różne</name>
+        <name lang="cs">Různé</name>
+        <name lang="it">Varie non classificate</name>
         <name lang="en">Miscellaneous and unsorted</name>
         <name lang="fr">Divers et non classés</name>
-        <name lang="it">Varie non classificate</name>
-        <name lang="de">Sonstiges und unsortiert</name>
-        <name lang="pl">Różne</name>
-        <name lang="el">Διάφορα και αταξινόμητα</name>
-        <name lang="nl">Diverse en ongesorteerd</name>
-        <name lang="cs">Různé</name>
     </names>
 </qet-directory>

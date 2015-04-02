@@ -1,11 +1,12 @@
 <qet-directory>
     <names>
-        <name lang="en">Graphics</name>
-        <name lang="fr">Graphisme</name>
-        <name lang="it">Grafica</name>
-        <name lang="pl">Oznaczenia</name>
+        <name lang="nl">Grafisch</name>
+        <name lang="ru">Графика</name>
         <name lang="de">Grafik</name>
         <name lang="el">Γραφικά</name>
-        <name lang="nl">Grafisch</name>
+        <name lang="pl">Oznaczenia</name>
+        <name lang="it">Grafica</name>
+        <name lang="en">Graphics</name>
+        <name lang="fr">Graphisme</name>
     </names>
 </qet-directory>

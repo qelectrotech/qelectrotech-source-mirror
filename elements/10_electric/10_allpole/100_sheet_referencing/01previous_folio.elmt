@@ -1,6 +1,7 @@
 <definition width="70" version="0.3" hotspot_x="49" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy"
 link_type="previous_report">
     <names>
+        <name lang="ru">Предыдущая страница</name>
         <name lang="ar">الصفحة السابقة</name>
         <name lang="de">Vorherige Folie</name>
         <name lang="el">Προηγούμενη σελίδα</name>

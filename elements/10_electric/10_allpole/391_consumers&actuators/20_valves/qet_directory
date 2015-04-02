@@ -1,13 +1,13 @@
 <qet-directory>
     <names>
-        <name lang="ru">Клапана</name>
+        <name lang="nl">Kleppen</name>
+        <name lang="ru">Клапаны</name>
+        <name lang="de">Ventile</name>
+        <name lang="el">Βαλβίδες</name>
+        <name lang="pl">Elektrozawory</name>
+        <name lang="cs">Elektrostavidla</name>
+        <name lang="it">Valvole</name>
         <name lang="en">Valves</name>
         <name lang="fr">Vannes</name>
-        <name lang="it">Valvole</name>
-        <name lang="pl">Elektrozawory</name>
-        <name lang="de">Ventile</name>
-        <name lang="nl">Kleppen</name>
-        <name lang="el">Βαλβίδες</name>
-        <name lang="cs">Elektrostavidla</name>
     </names>
 </qet-directory>

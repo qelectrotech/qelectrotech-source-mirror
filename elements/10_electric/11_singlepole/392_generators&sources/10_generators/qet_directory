@@ -1,13 +1,13 @@
 <qet-directory>
     <names>
+        <name lang="nl">Generatoren</name>
+        <name lang="ru">Генераторы</name>
+        <name lang="de">Generatoren</name>
+        <name lang="el">Γεννήτριες</name>
+        <name lang="pl">Generatory</name>
+        <name lang="cs">Generátory</name>
+        <name lang="it">Generatori</name>
         <name lang="en">Generators</name>
         <name lang="fr">Générateurs</name>
-        <name lang="it">Generatori</name>
-        <name lang="pl">Generatory</name>
-        <name lang="de">Generatoren</name>
-        <name lang="nl">Generatoren</name>
-        <name lang="el">Γεννήτριες</name>
-        <name lang="cs">Generátory</name>
-        <name lang="ru">Генераторы</name>
     </names>
 </qet-directory>

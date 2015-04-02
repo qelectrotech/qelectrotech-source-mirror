@@ -1,10 +1,11 @@
 <qet-directory>
     <names>
+        <name lang="nl">PLC en controllers</name>
+        <name lang="ru">ПЛК и схемы управления</name>
+        <name lang="de">SPS und Steuerungen</name>
+        <name lang="cs">API a příkazy</name>
+        <name lang="it">PLC e contollori</name>
         <name lang="en">PLC and controllers</name>
         <name lang="fr">API et commandes</name>
-        <name lang="it">PLC e contollori</name>
-        <name lang="de">SPS und Steuerungen</name>
-        <name lang="nl">PLC en controllers</name>
-        <name lang="cs">API a příkazy</name>
     </names>
 </qet-directory>

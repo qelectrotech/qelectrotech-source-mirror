@@ -1,12 +1,13 @@
 <qet-directory>
     <names>
-        <name lang="de">Logik</name>
-        <name lang="el">Λογικά κυκλώματα</name>
-        <name lang="en">Logic</name>
         <name lang="pl">Programowanie</name>
-        <name lang="fr">Logique</name>
-        <name lang="it">Logica</name>
-        <name lang="nl">Logica</name>
         <name lang="cs">Logika</name>
+        <name lang="it">Logica</name>
+        <name lang="el">Λογικά κυκλώματα</name>
+        <name lang="fr">Logique</name>
+        <name lang="de">Logik</name>
+        <name lang="en">Logic</name>
+        <name lang="nl">Logica</name>
+        <name lang="ru">Логика</name>
     </names>
 </qet-directory>

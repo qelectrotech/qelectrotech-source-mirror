@@ -1,8 +1,9 @@
 <qet-directory>
     <names>
+        <name lang="ru">Предохранители и элементы защиты</name>
+        <name lang="de">Sicherungen und Schutzeinrichtungen</name>
+        <name lang="it">Fusibili e protezioni</name>
         <name lang="en">Fuses and protective gears</name>
         <name lang="fr">Fusibles et protections</name>
-        <name lang="it">Fusibili e protezioni</name>
-        <name lang="de">Sicherungen und Schutzeinrichtungen</name>
     </names>
 </qet-directory>

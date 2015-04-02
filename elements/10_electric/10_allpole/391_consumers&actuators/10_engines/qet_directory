@@ -1,17 +1,16 @@
 <qet-directory>
     <names>
-        <name lang="ru">Двигатели</name>
-        <name lang="ar">محرّك</name>
-        <name lang="de">Motoren</name>
-        <name lang="ru">Эл. мотор</name>
-        <name lang="pt">Motor</name>
-        <name lang="el">Μοτέρ</name>
-        <name lang="en">Engines</name>
-        <name lang="it">Motori</name>
-        <name lang="fr">Moteurs</name>
-        <name lang="pl">Silniki</name>
-        <name lang="es">Motor</name>
-        <name lang="cs">Motor</name>
         <name lang="nl">Motor</name>
+        <name lang="ru">Двигатели</name>
+        <name lang="es">Motor</name>
+        <name lang="de">Motoren</name>
+        <name lang="el">Μοτέρ</name>
+        <name lang="pt">Motor</name>
+        <name lang="pl">Silniki</name>
+        <name lang="cs">Motor</name>
+        <name lang="it">Motori</name>
+        <name lang="ar">محرّك</name>
+        <name lang="en">Engines</name>
+        <name lang="fr">Moteurs</name>
     </names>
 </qet-directory>
