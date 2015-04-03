@@ -3119,7 +3119,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Désignation</source>
-        <translation>Указание</translation>
+        <translation>Назначение</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="367"/>
@@ -3129,12 +3129,13 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="368"/>
         <source>Référence fabricant</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация производителя</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="369"/>
         <source>Référence fabricant machine</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>поставщика оборудования?</translatorcomment>
+        <translation>Информация производителя машины/оборудования</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="380"/>
@@ -7418,7 +7419,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="543"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
-        <translation type="unfinished">Изменить ширину при просмотре</translation>
+        <translation>Изменить ширину при просмотре</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="608"/>
@@ -7526,7 +7527,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="75"/>
         <source>Option d&apos;affichage en croix</source>
-        <translation type="unfinished">Опция показа крестов</translation>
+        <translation>Настройки отображения крестов</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="81"/>
@@ -7781,7 +7782,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Désignation</source>
-        <translation type="unfinished"></translation>
+        <translation>Назначение</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
@@ -7796,17 +7797,17 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Fabricant</source>
-        <translation type="unfinished"></translation>
+        <translation>Производитель</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Machine-reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация по машине</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
