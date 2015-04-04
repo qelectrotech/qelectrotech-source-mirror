@@ -3007,100 +3007,100 @@ Voulez-vous enregistrer les modifications ?</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1424"/>
+        <location filename="../sources/qetapp.cpp" line="1426"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Sair</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1425"/>
+        <location filename="../sources/qetapp.cpp" line="1427"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Esconder</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1426"/>
+        <location filename="../sources/qetapp.cpp" line="1428"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Ver</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1427"/>
+        <location filename="../sources/qetapp.cpp" line="1429"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Esconder os editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1428"/>
+        <location filename="../sources/qetapp.cpp" line="1430"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Mostrar os editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1429"/>
+        <location filename="../sources/qetapp.cpp" line="1431"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Esconder os editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1430"/>
+        <location filename="../sources/qetapp.cpp" line="1432"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Mostrar os editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1431"/>
+        <location filename="../sources/qetapp.cpp" line="1433"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Esconder todos os editores de moldura</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1432"/>
+        <location filename="../sources/qetapp.cpp" line="1434"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Mostrar todos os editores de molduras</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1433"/>
+        <location filename="../sources/qetapp.cpp" line="1435"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Novo editor de esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1434"/>
+        <location filename="../sources/qetapp.cpp" line="1436"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Novo editor de elemento</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1436"/>
+        <location filename="../sources/qetapp.cpp" line="1438"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Fechar QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1437"/>
+        <location filename="../sources/qetapp.cpp" line="1439"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Minimizar QElectroTech para a bandeja de sistema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1438"/>
+        <location filename="../sources/qetapp.cpp" line="1440"/>
         <source>Restaurer QElectroTech</source>
         <translation>Restaurar QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1523"/>
+        <location filename="../sources/qetapp.cpp" line="1525"/>
         <source>Éditeurs de schémas</source>
         <translation>Editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1532"/>
+        <location filename="../sources/qetapp.cpp" line="1534"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1542"/>
+        <location filename="../sources/qetapp.cpp" line="1544"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Editores de molduras</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1607"/>
+        <location filename="../sources/qetapp.cpp" line="1609"/>
         <source>Usage : </source>
         <translation>Utilização: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1608"/>
+        <location filename="../sources/qetapp.cpp" line="1610"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -3117,7 +3117,7 @@ Opções disponiveis:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1607"/>
+        <location filename="../sources/qetapp.cpp" line="1609"/>
         <source> [options] [fichier]...
 
 </source>
@@ -3126,42 +3126,42 @@ Opções disponiveis:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="367"/>
+        <location filename="../sources/qetapp.cpp" line="368"/>
         <source>Fabricant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="368"/>
+        <location filename="../sources/qetapp.cpp" line="369"/>
         <source>Référence fabricant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="369"/>
+        <location filename="../sources/qetapp.cpp" line="370"/>
         <source>Référence fabricant machine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1614"/>
+        <location filename="../sources/qetapp.cpp" line="1616"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Define a directoria da colecção de elementos
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1617"/>
+        <location filename="../sources/qetapp.cpp" line="1619"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Definir a pasta da colecção de modelos de molduras¶</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1620"/>
+        <location filename="../sources/qetapp.cpp" line="1622"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Define a directoria de configuração
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1622"/>
+        <location filename="../sources/qetapp.cpp" line="1624"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Define a directoria dos ficheiros de linguagem</translation>
@@ -3207,88 +3207,93 @@ Opções disponiveis:
         <translation>Colecção do Utilizador</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="364"/>
+        <location filename="../sources/qetapp.cpp" line="365"/>
         <source>Label</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="365"/>
+        <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Commentaire</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="366"/>
+        <location filename="../sources/qetapp.cpp" line="367"/>
         <source>Désignation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="380"/>
+        <location filename="../sources/qetapp.cpp" line="371"/>
+        <source>Localisation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="382"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation>Molduras QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="393"/>
+        <location filename="../sources/qetapp.cpp" line="395"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation>Molduras do utilizador</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="815"/>
+        <location filename="../sources/qetapp.cpp" line="817"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="816"/>
+        <location filename="../sources/qetapp.cpp" line="818"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="817"/>
+        <location filename="../sources/qetapp.cpp" line="819"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="818"/>
+        <location filename="../sources/qetapp.cpp" line="820"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Eléctrico</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="819"/>
+        <location filename="../sources/qetapp.cpp" line="821"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1223"/>
+        <location filename="../sources/qetapp.cpp" line="1225"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation type="unfinished">Configurar QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1348"/>
+        <location filename="../sources/qetapp.cpp" line="1350"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>A carregar...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1420"/>
+        <location filename="../sources/qetapp.cpp" line="1422"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>A carregar... Ícone da bandeja de sistema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1422"/>
+        <location filename="../sources/qetapp.cpp" line="1424"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1454"/>
+        <location filename="../sources/qetapp.cpp" line="1456"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -3553,6 +3558,11 @@ Opções disponiveis:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
+        <source>Ajouter une ligne droite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
         <source>Ajouter un rectangle</source>
         <translation type="unfinished">Adicionar um rectângulo</translation>
@@ -3719,7 +3729,6 @@ Opções disponiveis:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="243"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
         <source>Ajouter une ligne</source>
         <translation>Adicionar uma linha</translation>
     </message>
@@ -7709,6 +7718,11 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Titre de folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <source>Localisation</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
