@@ -3140,7 +3140,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="371"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Расположение</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="382"/>
@@ -3958,7 +3958,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
         <source>Ajouter une ligne droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить прямую линию</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="375"/>
@@ -7821,7 +7821,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Désignation qet</source>
-        <translation type="unfinished"></translation>
+        <translation>Назначение.qet</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
@@ -7836,7 +7836,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Расположение</translation>
     </message>
 </context>
 <context>
