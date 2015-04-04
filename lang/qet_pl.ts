@@ -3235,7 +3235,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetapp.cpp" line="371"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokalizacja</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="382"/>
@@ -3571,7 +3571,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
         <source>Ajouter une ligne droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw linię prostą</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
@@ -7769,7 +7769,7 @@ Długość maksymalna: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokalizacja</translation>
     </message>
 </context>
 <context>
