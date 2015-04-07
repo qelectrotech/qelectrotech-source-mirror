@@ -3244,7 +3244,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetapp.cpp" line="371"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέση</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="382"/>
@@ -4041,7 +4041,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
         <source>Ajouter une ligne droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη ευθείας γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
@@ -7769,7 +7769,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέση</translation>
     </message>
 </context>
 <context>
