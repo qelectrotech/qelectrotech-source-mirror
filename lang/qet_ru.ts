@@ -3745,7 +3745,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Ajouter une polyligne</source>
-        <translation>Добавить полигон</translation>
+        <translation>Добавить ломаную линию</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
@@ -6244,7 +6244,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="455"/>
         <source>une polyligne</source>
-        <translation>полигон</translation>
+        <translation>ломаная линия</translation>
     </message>
 </context>
 <context>
