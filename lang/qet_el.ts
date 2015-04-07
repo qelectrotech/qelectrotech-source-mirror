@@ -319,7 +319,7 @@
     <message>
         <location filename="../sources/ui/autonumselectorwidget.ui" line="49"/>
         <source>éditer les numérotations</source>
-        <translation>επεξεργασία αριθμίσεων</translation>
+        <translation>επεξεργασία αριθμήσεων</translation>
     </message>
 </context>
 <context>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="46"/>
         <source>Gris</source>
-        <translation>Γκρί</translation>
+        <translation>Γκρι</translation>
     </message>
 </context>
 <context>
@@ -566,7 +566,7 @@
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="314"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="324"/>
         <source>Couleur du conducteur</source>
-        <translation>Χρώμμα αγωγού</translation>
+        <translation>Χρώμα αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="317"/>
@@ -790,7 +790,7 @@
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
         <source>Annotation (alpha)</source>
-        <translation>Σήμανση (αλφα)</translation>
+        <translation>Σήμανση (άλφα)</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
@@ -818,7 +818,7 @@
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation>Θέλετε πραγματικά να διαγράψετε τη σήμανση αγωγών:
+        <translation>Θέλετε πράγματι να διαγράψετε τη σήμανση αγωγών:
 
 %1 ?</translation>
     </message>
@@ -827,7 +827,7 @@
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation>Θέλετε πραγματικά να σημάνετε τους αγωγούς:
+        <translation>Θέλετε πράγματι να σημάνετε τους αγωγούς:
 
 %1;</translation>
     </message>
@@ -1299,7 +1299,7 @@
         <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
         <source>Êtes-vous sûr  de vouloir vider cette collection ?</source>
         <comment>message box content</comment>
-        <translation>Είστε σίγουρος ότι θέλετε να αδιάσετε αυτή τη συλλογή;</translation>
+        <translation>Είστε σίγουρος ότι θέλετε να αδειάσετε αυτή τη συλλογή;</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="77"/>
@@ -1406,7 +1406,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="141"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
-        <translation>Το εσωτερικό όνομα που επιλέξατε χρησιμοποιείται, ήδη, από μία άλλη κατηγορία. Παρακαλώ, όριστε κάποιο άλλο.</translation>
+        <translation>Το εσωτερικό όνομα που επιλέξατε χρησιμοποιείται, ήδη, από μία άλλη κατηγορία. Παρακαλώ, ορίστε κάποιο άλλο.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="155"/>
@@ -2177,7 +2177,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="545"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Αυτό είναι ένα πρότυπο πινακίδας, το οποίο μπορει να εφαρμοστεί σε μια σελίδα.</translation>
+        <translation>Αυτό είναι ένα πρότυπο πινακίδας, το οποίο μπορεί να εφαρμοστεί σε μια σελίδα.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="730"/>
@@ -2410,32 +2410,32 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="73"/>
         <source>Fin 1</source>
-        <translation>Άκρη 1</translation>
+        <translation>Άκρο 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="76"/>
         <source>Fin 2</source>
-        <translation>Άκρη 2</translation>
+        <translation>Άκρο 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="160"/>
         <source>type fin 1</source>
-        <translation>μορφή, τέλος 1</translation>
+        <translation>μορφή, άκρο 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="162"/>
         <source>longueur fin 1</source>
-        <translation>μήκος, τέλος 1</translation>
+        <translation>μήκος, άκρο 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="164"/>
         <source>type fin 2</source>
-        <translation>μορφή, τέλος 2</translation>
+        <translation>μορφή, άκρο 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="166"/>
         <source>longueur fin 2</source>
-        <translation>μήκος, τέλος 2</translation>
+        <translation>μήκος, άκρο 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="47"/>
@@ -2873,7 +2873,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/projectconfigpages.cpp" line="253"/>
         <source>Numérotations disponibles :</source>
         <comment>availables numerotations</comment>
-        <translation>Διαθέσιμες αριθμίσεις</translation>
+        <translation>Διαθέσιμες αριθμήσεις</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="261"/>
@@ -2892,7 +2892,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/projectconfigpages.cpp" line="326"/>
         <location filename="../sources/projectconfigpages.cpp" line="347"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation>Όνομα νέας αρίθμισης</translation>
+        <translation>Όνομα νέας αρίθμησης</translation>
     </message>
 </context>
 <context>
@@ -2957,7 +2957,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/projectview.cpp" line="372"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation>Είστε σίγουρος ότι θέλετε να διαγράψετε αυτή την σελίδατου έργου; Οι διαγραφή είναι μη αναστρέψιμη.</translation>
+        <translation>Είστε σίγουρος ότι θέλετε να διαγράψετε αυτή την σελίδα του έργου; Οι διαγραφή είναι μη αναστρέψιμη.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="696"/>
@@ -3766,7 +3766,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="368"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
-        <translation>Επαναφέρει την αναιρεμένη πράξη</translation>
+        <translation>Επαναφέρει την προηγούμενη αναίρεση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
@@ -3893,7 +3893,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1991"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
-        <translation>Αδυναμία εύρεσης του συγκεκριμένου στοιχείου στον πίνακα... επαναφορτώνεται ο πίνακας...</translation>
+        <translation>Αδυναμία εύρεσης του συγκεκριμένου στοιχείου στον πίνακα... επαναφόρτωση πίνακα...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2003"/>
@@ -4013,7 +4013,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation>Αποεπιλεγει όλα των στοιχεία τις σελίδας</translation>
+        <translation>Αποεπιλέγει όλα τα στοιχεία τις σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
@@ -5445,7 +5445,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="362"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation>Το αρχείο κειμένου που περιέχει την άδεια GNU/GPL δεν μπορεί να βρεθεί - αλλα ούτως ή άλλως την έχετε στην καρδιά σας, έτσι δεν είναι;</translation>
+        <translation>Το αρχείο κειμένου που περιέχει την άδεια GNU/GPL δεν μπορεί να βρεθεί - αλλά ούτως ή άλλως την έχετε στην καρδιά σας, έτσι δεν είναι;</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="366"/>
@@ -5539,7 +5539,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="926"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>μετατροπή των ιδιοτήτων ενος αγωγού</translation>
+        <translation>μετατροπή των ιδιοτήτων ενός αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="979"/>
@@ -5560,7 +5560,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1115"/>
         <source>Changer le style d&apos;une shape</source>
-        <translation>Αλλαγή τύπου ενος σχήματος</translation>
+        <translation>Αλλαγή τύπου ενός σχήματος</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1157"/>
@@ -6149,7 +6149,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="364"/>
         <source>Éditer les propriétés d&apos;une shape, Zone </source>
         <comment>window title</comment>
-        <translation>Επεξεργασία των ιδιοτήτων ενος σχήματος</translation>
+        <translation>Επεξεργασία των ιδιοτήτων ενός σχήματος</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="386"/>
@@ -6327,7 +6327,7 @@ Les autres champs ne sont pas utilisés.</source>
 -Μπορείτε να προσθέσετε ή να αφαιρέσετε μεταβλητές αρίθμησης μέσω των κουμπιών + και -.
 -Μια μεταβλητή αρίθμησης αποτελείται από: έναν τύπο, μια τιμή και μια αύξηση.
 
--Οι τύποι &quot;Αριθμοί 1&quot;, &quot;Αριθμοί 01&quot; και &quot;Αριθμοί 001&quot; αντιπροσωπεύουν έναν αριθμητικό τύπο ορισμένο στο πεδίο &quot;Τιμή&quot;, η οποία αυξάνει για κάθε νεό αγωγό με την τιμή της &quot;Αύξησης&quot;.
+-Οι τύποι &quot;Αριθμοί 1&quot;, &quot;Αριθμοί 01&quot; και &quot;Αριθμοί 001&quot; αντιπροσωπεύουν έναν αριθμητικό τύπο ορισμένο στο πεδίο &quot;Τιμή&quot;, η οποία αυξάνει για κάθε νέο αγωγό με την τιμή της &quot;Αύξησης&quot;.
 -Οι &quot;Αριθμοί 01&quot; και &quot;Αριθμοί 001&quot;, εμφανίζονται στο διάγραμμα με τουλάχιστον δύο και τρία ψηφία αντίστοιχα.
 Αν ο αριθμός που ορίστηκε στο πεδίο Τιμή έχει λιγότερα ψηφία από τον επιλεγμένο τύπο, θα συμπληρωθεί με ένα ή δύο 0 ώστε να ανταποκρίνεται στον τύπο του.
 
