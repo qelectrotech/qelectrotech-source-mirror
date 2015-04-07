@@ -754,7 +754,7 @@
         <location filename="../sources/diagramview.cpp" line="676"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
-        <translation>Безымянный</translation>
+        <translation>Без имени</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="923"/>
@@ -1245,7 +1245,7 @@
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="182"/>
         <source>Sans titre</source>
-        <translation>Безымянный</translation>
+        <translation>Без имени</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementselectorwidget.cpp" line="197"/>
@@ -2561,7 +2561,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="86"/>
         <source>Sans titre</source>
-        <translation>Безымянный</translation>
+        <translation>Без имени</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="119"/>
@@ -2615,7 +2615,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="139"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="153"/>
         <source>Sans titre</source>
-        <translation>Безымянный</translation>
+        <translation>Без имени</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="140"/>
@@ -5063,7 +5063,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetproject.cpp" line="316"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
-        <translation>Безымянный проект</translation>
+        <translation>Проект без имени</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="325"/>
@@ -7609,7 +7609,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="30"/>
         <source>Projet sans titre</source>
-        <translation>Безымянный проект</translation>
+        <translation>Проект без имени</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="32"/>
