@@ -31,6 +31,7 @@
 #include "ui/dialogwaiting.h"
 #include "numerotationcontext.h"
 #include "reportproperties.h"
+#include "integrationmovetemplateshandler.h"
 
 #include <QStandardPaths>
 
@@ -445,12 +446,18 @@ TitleBlockProperties QETProject::defaultTitleBlockProperties() const {
 }
 
 /**
-	Permet de specifier le cartouche par defaut utilise lors de la creation
-	d'un nouveau schema dans ce projet.
-	@param titleblock Cartouche d'un schema
-*/
+ * @brief QETProject::setDefaultTitleBlockProperties
+ * Specify the title block to be used at the creation of a new diagram for this project
+ * @param titleblock
+ */
 void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titleblock) {
 	default_titleblock_properties_ = titleblock;
+		//Integrate the title block in this project
+	if (!titleblock.template_name.isEmpty())
+	{
+		QScopedPointer<IntegrationMoveTitleBlockTemplatesHandler> m(new IntegrationMoveTitleBlockTemplatesHandler);
+		integrateTitleBlockTemplate(QETApp::commonTitleBlockTemplatesCollection()->location(titleblock.template_name), m.data());
+	}
 }
 
 /**
@@ -843,7 +850,8 @@ QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation
 	
 	// check whether a TBT having the same name already exists within this project
 	QString target_name = dst_tbt.name();
-	while (titleblocks_.templates().contains(target_name)) {
+	while (titleblocks_.templates().contains(target_name))
+	{
 		QET::Action action = handler -> templateAlreadyExists(src_tbt, dst_tbt);
 		if (action == QET::Retry) {
 			continue;

@@ -143,7 +143,9 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const {
 	}
 
 	if (!currentTitleBlockTemplateName().isEmpty())
+	{
 		prop.template_name = currentTitleBlockTemplateName();
+	}
 
 	prop.context = m_dcw -> context();
 

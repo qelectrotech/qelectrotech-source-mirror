@@ -108,10 +108,11 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 }
 
 /**
-	Exporte le cartouche dans une configuration.
-	@param settings Parametres a ecrire
-	@param prefix prefixe a ajouter devant les noms des parametres
-*/
+ * @brief TitleBlockProperties::toSettings
+ * Export the TitleBlockProperties into a QSettings
+ * @param settings : setting to use
+ * @param prefix : name to use as prefix for this property
+ */
 void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix) const {
 	settings.setValue(prefix + "title",    title);
 	settings.setValue(prefix + "author",   author);
@@ -119,6 +120,7 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix + "folio",    folio);
 	settings.setValue(prefix + "date",     exportDate());
 	settings.setValue(prefix + "displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
+	settings.setValue(prefix + "titleblocktemplate", template_name.isEmpty()? QString() : template_name);
 	context.toSettings(settings, prefix + "properties");
 }
 
@@ -134,6 +136,7 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	folio    = settings.value(prefix + "folio", "%id/%total").toString();
 	setDateFromString(settings.value(prefix + "date").toString());
 	display_at = (settings.value(prefix + "displayAt", QVariant("bottom")).toString() == "bottom" ? Qt::BottomEdge : Qt::RightEdge);
+	template_name = settings.value(prefix + "titleblocktemplate").toString();
 	context.fromSettings(settings, prefix + "properties");
 }
 
