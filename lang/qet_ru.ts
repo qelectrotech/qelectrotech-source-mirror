@@ -72,10 +72,9 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="118"/>
         <location filename="../sources/aboutqet.cpp" line="119"/>
-        <location filename="../sources/aboutqet.cpp" line="120"/>
-        <location filename="../sources/aboutqet.cpp" line="187"/>
-        <location filename="../sources/aboutqet.cpp" line="189"/>
+        <location filename="../sources/aboutqet.cpp" line="188"/>
         <location filename="../sources/aboutqet.cpp" line="190"/>
+        <location filename="../sources/aboutqet.cpp" line="193"/>
         <source>Développement</source>
         <translation>Разработка</translation>
     </message>
@@ -86,131 +85,132 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Traduction en russe</source>
         <translation>Перевод на русский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Traduction en portugais</source>
         <translation>Перевод на португальский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en tchèque</source>
         <translation>Перевод на чешский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="142"/>
+        <location filename="../sources/aboutqet.cpp" line="143"/>
         <source>Traduction en polonais</source>
         <translation>Перевод на польский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
         <location filename="../sources/aboutqet.cpp" line="144"/>
         <location filename="../sources/aboutqet.cpp" line="145"/>
         <location filename="../sources/aboutqet.cpp" line="146"/>
+        <location filename="../sources/aboutqet.cpp" line="147"/>
         <source>Traduction en allemand</source>
         <translation>Перевод на немецкий</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="147"/>
+        <location filename="../sources/aboutqet.cpp" line="148"/>
         <source>Traduction en roumain</source>
         <translation>Перевод на румынский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="148"/>
         <location filename="../sources/aboutqet.cpp" line="149"/>
+        <location filename="../sources/aboutqet.cpp" line="150"/>
         <source>Traduction en italien</source>
         <translation>Перевод на итальянский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="150"/>
+        <location filename="../sources/aboutqet.cpp" line="151"/>
         <source>Traduction en arabe</source>
         <translation>Перевод на арабский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="151"/>
+        <location filename="../sources/aboutqet.cpp" line="152"/>
         <source>Traduction en croate</source>
         <translation>Перевод на хорватский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="152"/>
+        <location filename="../sources/aboutqet.cpp" line="153"/>
         <source>Traduction en catalan</source>
         <translation>Перевод на каталонский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="153"/>
         <location filename="../sources/aboutqet.cpp" line="154"/>
+        <location filename="../sources/aboutqet.cpp" line="155"/>
         <source>Traduction en grec</source>
         <translation>Перевод на греческий</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="155"/>
+        <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Traduction en néerlandais</source>
         <translatorcomment>голландский/нидерландский/немецкий?</translatorcomment>
         <translation>Перевод на голландский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="156"/>
+        <location filename="../sources/aboutqet.cpp" line="157"/>
         <source>Traduction en flamand</source>
         <translation>Перевод на фламандский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="176"/>
+        <location filename="../sources/aboutqet.cpp" line="177"/>
         <source>Paquets Fedora et Red Hat</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для Fedora и Red Hat</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="177"/>
+        <location filename="../sources/aboutqet.cpp" line="178"/>
         <source>Paquets Mageia</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для Mageia</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="180"/>
         <location filename="../sources/aboutqet.cpp" line="181"/>
+        <location filename="../sources/aboutqet.cpp" line="182"/>
         <source>Paquets Gentoo</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для Gentoo</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="182"/>
+        <location filename="../sources/aboutqet.cpp" line="183"/>
         <source>Paquets OS/2</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для OS/2</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="183"/>
+        <location filename="../sources/aboutqet.cpp" line="184"/>
         <source>Paquets FreeBSD</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для FreeBSD</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="184"/>
+        <location filename="../sources/aboutqet.cpp" line="185"/>
         <source>Paquets MAC OS X</source>
         <translation>Пакеты для MAC OS X</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="185"/>
+        <location filename="../sources/aboutqet.cpp" line="186"/>
         <source>Paquets Archlinux AUR</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для Archlinux AUR</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="178"/>
         <location filename="../sources/aboutqet.cpp" line="179"/>
+        <location filename="../sources/aboutqet.cpp" line="180"/>
         <source>Paquets Debian</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="186"/>
+        <location filename="../sources/aboutqet.cpp" line="187"/>
         <source>Icônes</source>
         <translation>Значки</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="188"/>
+        <location filename="../sources/aboutqet.cpp" line="189"/>
         <source>Documentation</source>
         <translation>Документация</translation>
     </message>
@@ -225,7 +225,7 @@
         <translation>Конвертер DXF</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="211"/>
+        <location filename="../sources/aboutqet.cpp" line="212"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Эта программа распространяется на условиях лицкезии GNU/GPL.</translation>
     </message>
@@ -5054,81 +5054,81 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="309"/>
+        <location filename="../sources/qetproject.cpp" line="310"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Проект %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="316"/>
+        <location filename="../sources/qetproject.cpp" line="317"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Проект без имени</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="325"/>
+        <location filename="../sources/qetproject.cpp" line="326"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [только чтение]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="333"/>
+        <location filename="../sources/qetproject.cpp" line="334"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [изменён]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="764"/>
+        <location filename="../sources/qetproject.cpp" line="771"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Невозможно создать категорию для интеграции элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="775"/>
+        <location filename="../sources/qetproject.cpp" line="782"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>Не удалось получить доступ к элементу для интеграции</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1099"/>
+        <location filename="../sources/qetproject.cpp" line="1107"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>Похоже, что этот документ был сохранён более новой версией QElectroTech. Открытие может завершиться неудачно. Что вы хотите сделать?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="792"/>
+        <location filename="../sources/qetproject.cpp" line="799"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>При копировании категории произошла ошибка %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="302"/>
+        <location filename="../sources/qetproject.cpp" line="303"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
         <translation>Проект « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="866"/>
+        <location filename="../sources/qetproject.cpp" line="874"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Во время интеграции шаблона произошла ошибка.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="987"/>
+        <location filename="../sources/qetproject.cpp" line="995"/>
         <source>Liste des Folios</source>
         <translation>Список страниц</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1098"/>
+        <location filename="../sources/qetproject.cpp" line="1106"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1160"/>
+        <location filename="../sources/qetproject.cpp" line="1168"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation>&lt;b&gt; Открытие проекта ... &lt;/ b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1581"/>
+        <location filename="../sources/qetproject.cpp" line="1589"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>При копировании элемента произошла ошибка %1</translation>
     </message>
@@ -6863,24 +6863,24 @@ Les autres champs ne sont pas utilisés.</source>
 <context>
     <name>TitleBlockPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="219"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="221"/>
         <source>Modèle par défaut</source>
         <translation>Шаблон по умолчанию</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="237"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="239"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
         <translation>Редактировать шаблон</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="238"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="240"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
         <translation>Дублировать и редактировать этот шаблон</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="243"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="245"/>
         <source>Title block templates actions</source>
         <translation>Действия над шаблонами штампов</translation>
     </message>
