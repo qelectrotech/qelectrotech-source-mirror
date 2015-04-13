@@ -3,6 +3,7 @@
         <name lang="en">Ultrasonic detector</name>        
 	<name lang="fr">Détecteur ultrasons</name>
         <name lang="it">Sensore ad ultrasuoni</name>
+        <name lang="pl">Czujnik ultradźwiękowy</name>
 	<name lang="de">Ultraschalldetektor</name>
     </names>
     <informations></informations>
