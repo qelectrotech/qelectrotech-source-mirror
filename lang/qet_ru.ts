@@ -2683,7 +2683,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="74"/>
         <source>Reports de folio</source>
-        <translation>Адреса на странице</translation>
+        <translation>Точки разрыва</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="75"/>
@@ -4554,7 +4554,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation>&lt;br&gt;&lt;b&gt;Ошибка&lt;/b  &gt; :&lt;br&gt;Главные элементы, дочерние, простые и адреса на странице должны иметь поле, содержащее тег &apos;label&apos; &lt;br&gt;&lt;b&gt;Решение&lt;/b&gt; :&lt;br&gt;Вставьте текстовое поле и задайте в нем тег &apos;label&apos;</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Ошибка&lt;/b  &gt; :&lt;br&gt;Главные элементы, дочерние, простые и точки разрыва должны иметь поле, содержащее тег &apos;label&apos; &lt;br&gt;&lt;b&gt;Решение&lt;/b&gt; :&lt;br&gt;Вставьте текстовое поле и задайте в нем тег &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="715"/>
@@ -4707,7 +4707,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation>&lt;br&gt; &lt;b&gt; Ошибка &lt;/ b&gt;: &lt;br&gt; Адрес на странице должен иметь один вывод &lt;br&gt; &lt;b&gt; Решение &lt;/ b&gt; :&lt;br&gt; Проверьте, чтобы у элемента был только один вывод</translation>
+        <translation>&lt;br&gt; &lt;b&gt; Ошибка &lt;/ b&gt;: &lt;br&gt; Точки разрыва должны иметь один вывод &lt;br&gt; &lt;b&gt; Решение &lt;/ b&gt; :&lt;br&gt; Проверьте, чтобы у элемента был только один вывод</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
@@ -5605,7 +5605,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="1157"/>
         <source>Lier deux reports de folio</source>
         <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation>Связать два адреса на странице</translation>
+        <translation>Связать две точки разрыва на странице</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1161"/>
@@ -6300,7 +6300,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation>Формат адреса на странице</translation>
+        <translation>Формат точки разрыва</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -6309,7 +6309,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>Вы можете задать определённый формат адресов на странице.
+        <translation>Вы можете задать определённый формат подписей точек разрыва.
 Впишите свой текст, используя следующие переменные:
 %f: номер страницы
 %l: номер строки
@@ -7749,7 +7749,7 @@ Longueur maximale : %2px
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="122"/>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
         <source>Report de folio</source>
-        <translation>Адрес на странице</translation>
+        <translation>Точка разрыва</translation>
     </message>
 </context>
 <context>
