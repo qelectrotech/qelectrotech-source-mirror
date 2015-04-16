@@ -1,6 +1,7 @@
 <definition hotspot_y="29" link_type="simple" type="element" width="40" height="50" orientation="dyyy" version="0.5" hotspot_x="25">
     <names>
         <name lang="en">2n7000</name>
+        <name lang="pl">2N7000</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
