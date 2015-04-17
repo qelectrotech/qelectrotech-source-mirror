@@ -44,7 +44,9 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
 	// dimensions by default for diagram
 	bpw = new BorderPropertiesWidget(BorderProperties::defaultProperties());
 	// default titleblock properties
-	ipw = new TitleBlockPropertiesWidget(QETApp::commonTitleBlockTemplatesCollection(), TitleBlockProperties::defaultProperties(), true);
+	QList <TitleBlockTemplatesCollection *> c;
+	c << QETApp::commonTitleBlockTemplatesCollection() << QETApp::customTitleBlockTemplatesCollection();
+	ipw = new TitleBlockPropertiesWidget(c, TitleBlockProperties::defaultProperties(), true);
 	// default conductor properties
 	cpw = new ConductorPropertiesWidget(ConductorProperties::defaultProperties());
 	// default propertie of report label
