@@ -500,7 +500,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="265"/>
         <source>terre</source>
-        <translation>земля</translation>
+        <translation>заземление</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="214"/>
@@ -555,7 +555,7 @@
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="252"/>
         <source>Protective Earth Neutral</source>
         <translatorcomment>dont know what is this</translatorcomment>
-        <translation>Защитная заземлённая нейтраль</translation>
+        <translation>Глухо заземлённая нейтраль</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="255"/>
@@ -566,7 +566,7 @@
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="262"/>
         <source>Terre</source>
-        <translation>Земля</translation>
+        <translation>Заземление</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="276"/>
