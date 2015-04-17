@@ -19,6 +19,7 @@
 #define TITLEBLOCK_PROPERTIES_H
 #include <QtXml>
 #include "diagramcontext.h"
+#include "qet.h"
 /**
 	This class provides a container for the properties of a particular title
 	block, i.e. title, author, date, filename, folio, template, custom
@@ -56,6 +57,7 @@ class TitleBlockProperties {
 	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
 	DiagramContext context;   ///< Container for the additional, user-defined fields
 	Qt::Edge display_at;       ///< Edge to display the titleblock
+	QET::QetCollection collection; ///<Specify the location of the title block
 	
 	private:
 	QString exportDate() const;

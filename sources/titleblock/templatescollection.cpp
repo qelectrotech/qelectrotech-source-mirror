@@ -67,6 +67,23 @@ void TitleBlockTemplatesCollection::setProtocol(const QString &protocol) {
 }
 
 /**
+ * @brief TitleBlockTemplatesCollection::collection
+ * @return the collection where is stored this collection.
+ */
+QET::QetCollection TitleBlockTemplatesCollection::collection() const {
+	return m_collection;
+}
+
+/**
+ * @brief TitleBlockTemplatesCollection::setCollection
+ * Set the storage of this collection
+ * @param c
+ */
+void TitleBlockTemplatesCollection::setCollection(QET::QetCollection c) {
+	m_collection = c;
+}
+
+/**
 	@return the project this collection is affiliated to, or 0 if this
 	collection is not related to any project.
 */
@@ -96,6 +113,7 @@ TitleBlockTemplatesProjectCollection::TitleBlockTemplatesProjectCollection(QETPr
 	TitleBlockTemplatesCollection(parent),
 	project_(project)
 {
+	m_collection = QET::QetCollection::Embendded;
 }
 
 /**

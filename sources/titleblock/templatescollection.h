@@ -21,6 +21,7 @@
 #include <QtCore>
 #include <QtXml>
 #include "templatelocation.h"
+#include "qet.h"
 class TitleBlockTemplate;
 class QETProject;
 
@@ -55,6 +56,8 @@ class TitleBlockTemplatesCollection : public QObject {
 	virtual void setTitle(const QString &);
 	virtual QString protocol() const;
 	virtual void setProtocol(const QString &);
+	virtual QET::QetCollection collection () const;
+	virtual void setCollection (QET::QetCollection);
 	virtual QETProject *parentProject();
 	virtual QList<TitleBlockTemplateLocation> templatesLocations();
 	
@@ -68,6 +71,7 @@ class TitleBlockTemplatesCollection : public QObject {
 	QString title_;
 	/// Protocol used to designate this collection
 	QString protocol_;
+	QET::QetCollection m_collection;
 	/// Already parsed embedded titleblock templates
 	QHash<QString, TitleBlockTemplate *> titleblock_templates_;
 };

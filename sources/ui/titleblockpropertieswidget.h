@@ -21,6 +21,7 @@
 #include <QWidget>
 #include "titleblockproperties.h"
 #include "diagramcontextwidget.h"
+#include "qet.h"
 
 class QMenu;
 class TitleBlockTemplatesCollection;
@@ -36,6 +37,7 @@ class TitleBlockPropertiesWidget : public QWidget
 	public:
 		explicit TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QWidget *parent = 0);
 		explicit TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QWidget *parent = 0);
+		explicit TitleBlockPropertiesWidget(QList <TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QWidget *parent = 0);
 		~TitleBlockPropertiesWidget();
 
 		void setProperties(const TitleBlockProperties &properties);
@@ -43,19 +45,18 @@ class TitleBlockPropertiesWidget : public QWidget
 
 		void setTitleBlockTemplatesVisible(const bool &visible);
 		void setReadOnly (const bool &ro);
-		void setTitleBlockTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection);
 
 	private:
+		void addCollection (TitleBlockTemplatesCollection *tbt_collection);
 		QString currentTitleBlockTemplateName () const;
-		void setCurrentTitleBlockTemplateName (const QString &name);
-		void setTitleBlockTemplatesList(const QStringList &tbt);
 		void initDialog(const bool &current_date);
+		int getIndexFor (const QString &tbt_name, const QET::QetCollection collection) const;
 
 	private slots:
 		void editCurrentTitleBlockTemplate();
 		void duplicateCurrentTitleBlockTemplate();
 		void updateTemplateList();
-		void changeCurrentTitleBlockTemplate(QString name);
+		void changeCurrentTitleBlockTemplate(int);
 		void on_m_date_now_pb_clicked();
 
 	signals:
@@ -64,9 +65,10 @@ class TitleBlockPropertiesWidget : public QWidget
 	private:
 		Ui::TitleBlockPropertiesWidget *ui;
 		DiagramContextWidget *m_dcw;
-		TitleBlockTemplatesCollection *m_tbt_collection;
 		QAction *m_tbt_edit, *m_tbt_duplicate;
 		QMenu *m_tbt_menu;
+		QList <TitleBlockTemplatesCollection *> m_tbt_collection_list;
+		QList <QET::QetCollection> m_map_index_to_collection_type;
 };
 
 #endif // TITLEBLOCKPROPERTIESWIDGET_H

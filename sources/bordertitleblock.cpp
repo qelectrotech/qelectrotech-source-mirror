@@ -244,6 +244,7 @@ TitleBlockProperties BorderTitleBlock::exportTitleBlock() {
 	ip.template_name = titleBlockTemplateName();
 	ip.display_at = m_edge;
 	ip.context = additional_fields_;
+	ip.collection = QET::QetCollection::Embendded;
 	
 	return(ip);
 }

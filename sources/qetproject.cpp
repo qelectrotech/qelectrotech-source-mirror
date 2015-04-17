@@ -455,8 +455,11 @@ void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titl
 		//Integrate the title block in this project
 	if (!titleblock.template_name.isEmpty())
 	{
+		TitleBlockTemplatesFilesCollection *collection = nullptr;
+		collection = titleblock.collection == QET::QetCollection::Common ? QETApp::commonTitleBlockTemplatesCollection() :
+																		   QETApp::customTitleBlockTemplatesCollection();
 		QScopedPointer<IntegrationMoveTitleBlockTemplatesHandler> m(new IntegrationMoveTitleBlockTemplatesHandler);
-		integrateTitleBlockTemplate(QETApp::commonTitleBlockTemplatesCollection()->location(titleblock.template_name), m.data());
+		integrateTitleBlockTemplate(collection -> location(titleblock.template_name), m.data());
 	}
 }
 

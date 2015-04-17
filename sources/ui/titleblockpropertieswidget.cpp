@@ -31,8 +31,7 @@
  */
 TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock, bool current_date, QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::TitleBlockPropertiesWidget),
-	m_tbt_collection(nullptr)
+	ui(new Ui::TitleBlockPropertiesWidget)
 {
 	ui->setupUi(this);
 	initDialog(current_date);
@@ -49,12 +48,32 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockPropertie
  */
 TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::TitleBlockPropertiesWidget),
-	m_tbt_collection(nullptr)
+	ui(new Ui::TitleBlockPropertiesWidget)
 {
 	ui->setupUi(this);
 	initDialog(current_date);
-	setTitleBlockTemplatesCollection(tbt_collection);
+	addCollection(tbt_collection);
+	updateTemplateList();
+	setProperties(titleblock);
+}
+
+/**
+ * @brief TitleBlockPropertiesWidget::TitleBlockPropertiesWidget
+ * Default constructor with several template collection
+ * @param tbt_collection template list
+ * @param titleblock properties to edit
+ * @param current_date if true, display the radio button "current date"
+ * @param parent parent widget
+ */
+TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(QList<TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QWidget *parent) :
+	QWidget(parent),
+	ui(new Ui::TitleBlockPropertiesWidget)
+{
+	ui->setupUi(this);
+	initDialog(current_date);
+	foreach (TitleBlockTemplatesCollection *c, tbt_collection)
+		addCollection(c);
+	updateTemplateList();
 	setProperties(titleblock);
 }
 
@@ -108,11 +127,14 @@ void TitleBlockPropertiesWidget::setProperties(const TitleBlockProperties &prope
 		}
 	} //About date
 
-	if (!properties.template_name.isEmpty()) {
-		int matching_index = ui -> m_tbt_cb -> findData (properties.template_name);
-		if (matching_index != -1)
-			ui -> m_tbt_cb -> setCurrentIndex(matching_index);
+		//Set the current titleblock if any
+	int index = 0;
+	if (!properties.template_name.isEmpty())
+	{
+		index = getIndexFor(properties.template_name, properties.collection);
+		if (index == -1) index = 0;
 	}
+	ui -> m_tbt_cb -> setCurrentIndex(index);
 
 	m_dcw -> setContext(properties.context);
 }
@@ -145,6 +167,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const {
 	if (!currentTitleBlockTemplateName().isEmpty())
 	{
 		prop.template_name = currentTitleBlockTemplateName();
+		prop.collection = m_map_index_to_collection_type.at(ui->m_tbt_cb->currentIndex());
 	}
 
 	prop.context = m_dcw -> context();
@@ -182,46 +205,14 @@ QString TitleBlockPropertiesWidget::currentTitleBlockTemplateName() const {
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::setCurrentTitleBlockTemplateName
- * set the current title block "name", if "name" doesn't match, this method do nothing
- * @param name
- */
-void TitleBlockPropertiesWidget::setCurrentTitleBlockTemplateName (const QString &name) {
-	int index = ui -> m_tbt_cb -> findData(name);
-	if (index != -1)
-		ui -> m_tbt_cb -> setCurrentIndex(index);
-}
-
-/**
- * @brief TitleBlockPropertiesWidget::setTitleBlockTemplatesCollection
- * Set the collection of title block
+ * @brief TitleBlockPropertiesWidget::addCollection
+ * add a collection of title block available in the combo box
  * @param tbt_collection
  */
-void TitleBlockPropertiesWidget::setTitleBlockTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection) {
-	if (!tbt_collection) return;
-	setTitleBlockTemplatesVisible(true);
-	if (m_tbt_collection && tbt_collection != m_tbt_collection) {
-		// forget any connection with the previous collection
-		disconnect(m_tbt_collection, 0, this, 0);
-	}
-
-	m_tbt_collection = tbt_collection;
-	updateTemplateList();
-	connect(m_tbt_collection, SIGNAL(changed(TitleBlockTemplatesCollection*,QString)), this, SLOT(updateTemplateList()));
-}
-
-/**
- * @brief TitleBlockPropertiesWidget::setTitleBlockTemplatesList
- * Set the list of title block used.
- * Fill the combo box of title box with each name of title block.
- * @param tbt
- */
-void TitleBlockPropertiesWidget::setTitleBlockTemplatesList(const QStringList &tbt) {
-	ui -> m_tbt_cb ->clear();
-	ui -> m_tbt_cb -> addItem(QET::Icons::TitleBlock, tr("Modèle par défaut"));
-	foreach (QString tbt_name, tbt) {
-		ui -> m_tbt_cb -> addItem(QET::Icons::TitleBlock, tbt_name, tbt_name);
-	}
+void TitleBlockPropertiesWidget::addCollection(TitleBlockTemplatesCollection *tbt_collection)
+{
+	if (!tbt_collection || m_tbt_collection_list.contains(tbt_collection)) return;
+	m_tbt_collection_list << tbt_collection;
 }
 
 /**
@@ -247,7 +238,24 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date) {
 	m_tbt_menu -> addAction(m_tbt_duplicate);
 	ui -> m_tbt_pb -> setMenu(m_tbt_menu);
 
-	connect(ui->m_tbt_cb, SIGNAL(currentIndexChanged(QString)), this, SLOT(changeCurrentTitleBlockTemplate(QString)));
+	connect(ui->m_tbt_cb, SIGNAL(currentIndexChanged(int)), this, SLOT(changeCurrentTitleBlockTemplate(int)));
+}
+
+/**
+ * @brief TitleBlockPropertiesWidget::getIndexFor
+ * Find the index of the combo box for the title block @tbt_name available on the collection @collection
+ * @param tbt_name : title block name
+ * @param collection : title block collection
+ * @return the index of the title block or -1 if no match
+ */
+int TitleBlockPropertiesWidget::getIndexFor(const QString &tbt_name, const QET::QetCollection collection) const
+{
+	for (int i = 0; i<ui->m_tbt_cb->count(); i++) {
+		if (ui->m_tbt_cb->itemData(i).toString() == tbt_name)
+			if (m_map_index_to_collection_type.at(i) == collection)
+				return i;
+	}
+	return -1;
 }
 
 void TitleBlockPropertiesWidget::editCurrentTitleBlockTemplate() {
@@ -260,33 +268,70 @@ void TitleBlockPropertiesWidget::duplicateCurrentTitleBlockTemplate() {
 
 /**
  * @brief TitleBlockPropertiesWidget::updateTemplateList
- * Update the title block template list
+ * Update the title block template list available in the combo box
  */
-void TitleBlockPropertiesWidget::updateTemplateList() {
-	if (!m_tbt_collection) return;
+void TitleBlockPropertiesWidget::updateTemplateList()
+{
+	ui -> m_tbt_cb ->clear();
 
-	QString current_template_name = currentTitleBlockTemplateName();
-	setTitleBlockTemplatesList(m_tbt_collection -> templates());
-	setCurrentTitleBlockTemplateName(current_template_name);
+	if (m_tbt_collection_list.isEmpty())
+	{
+		setTitleBlockTemplatesVisible(false);
+		return;
+	}
+	setTitleBlockTemplatesVisible(true);
+
+		//Add the default title block
+	m_map_index_to_collection_type.clear();
+	m_map_index_to_collection_type.append(QET::QetCollection::Common);
+	ui -> m_tbt_cb -> addItem(QET::Icons::QETLogo, tr("Modèle par défaut"));
+
+		//Add every title block stored in m_tbt_collection_list
+	foreach (TitleBlockTemplatesCollection *tbt_c, m_tbt_collection_list)
+	{
+		QIcon icon;
+		QET::QetCollection qc = tbt_c -> collection();
+		if (qc == QET::QetCollection::Common)
+			icon = QET::Icons::QETLogo;
+		else if (qc == QET::QetCollection::Custom)
+			icon = QET::Icons::Home;
+		else if (qc == QET::QetCollection::Embendded)
+			icon = QET::Icons::TitleBlock;
+
+		foreach(QString tbt_name, tbt_c -> templates())
+		{
+			m_map_index_to_collection_type.append(qc);
+			ui -> m_tbt_cb -> addItem(icon, tbt_name, tbt_name);
+		}
+	}
 }
 
 /**
  * @brief TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate
  * Load the additionnal field of title block "text"
  */
-void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(QString name) {
-	// delete all entry
+void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(int index)
+{
 	m_dcw -> clear();
-	// get template
-	TitleBlockTemplate *tpl = m_tbt_collection -> getTemplate( name );
+
+	QET::QetCollection qc = m_map_index_to_collection_type.at(index);
+	TitleBlockTemplatesCollection *collection = nullptr;
+	foreach (TitleBlockTemplatesCollection *c, m_tbt_collection_list)
+		if (c -> collection() == qc)
+			collection = c;
+
+	if (!collection) return;
+
+		// get template
+	TitleBlockTemplate *tpl = collection -> getTemplate(ui -> m_tbt_cb -> currentText());
 	if(tpl != 0) {
-		// get all template fields
+			// get all template fields
 		QStringList fields = tpl -> listOfVariables();
-		// set fields to additional_fields_ widget
+			// set fields to additional_fields_ widget
 		DiagramContext templateContext;
 		for(int i =0; i<fields.count(); i++)
 			templateContext.addValue(fields.at(i), "");
-		m_dcw->setContext(templateContext);
+		m_dcw -> setContext(templateContext);
 	}
 }
 

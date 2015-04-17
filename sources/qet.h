@@ -128,6 +128,16 @@ namespace QET {
 		RelativeToTotalLength,      ///< the length is just a fraction of the total available length
 		RelativeToRemainingLength   ///< the length is just a fraction of the length that is still available when other types of lengths have been removed
 	};
+
+		///Enum used to specify the origin of a collection of thing (title block, element etc...)
+	enum QetCollection {
+		Common,		///< From common collection
+		Custom,		///< From user collection
+		Embendded	///< From an embeddded collection (a project for exemple)
+	};
+
+	QString qetCollectionToString (const QetCollection &c);
+	QetCollection qetCollectionFromString (const QString &str);
 	
 	bool lineContainsPoint(const QLineF &, const QPointF &);
 	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = 0);

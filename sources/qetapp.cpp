@@ -381,6 +381,7 @@ TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection(
 		common_tbt_collection_ = new TitleBlockTemplatesFilesCollection(QETApp::commonTitleBlockTemplatesDir());
 		common_tbt_collection_ -> setTitle(tr("Cartouches QET", "title of the title block templates collection provided by QElectroTech"));
 		common_tbt_collection_ -> setProtocol(QETAPP_COMMON_TBT_PROTOCOL);
+		common_tbt_collection_ -> setCollection(QET::QetCollection::Common);
 	}
 	return(common_tbt_collection_);
 }
@@ -394,6 +395,7 @@ TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection(
 		custom_tbt_collection_ = new TitleBlockTemplatesFilesCollection(QETApp::customTitleBlockTemplatesDir());
 		custom_tbt_collection_ -> setTitle(tr("Cartouches utilisateur", "title of the user's title block templates collection"));
 		custom_tbt_collection_ -> setProtocol(QETAPP_CUSTOM_TBT_PROTOCOL);
+		custom_tbt_collection_ -> setCollection(QET::QetCollection::Custom);
 	}
 	return(custom_tbt_collection_);
 }

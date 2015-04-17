@@ -26,7 +26,8 @@
 TitleBlockProperties::TitleBlockProperties() :
 	date(),
 	useDate(UseDateValue),
-	display_at(Qt::BottomEdge)
+	display_at(Qt::BottomEdge),
+	collection (QET::QetCollection::Common)
 {
 }
 
@@ -49,7 +50,8 @@ bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 		ip.folio == folio &&\
 		ip.template_name == template_name &&\
 		ip.context == context &&\
-		ip.display_at == display_at
+		ip.display_at == display_at &&\
+		ip.collection == collection
 	);
 }
 
@@ -73,8 +75,10 @@ void TitleBlockProperties::toXml(QDomElement &e) const {
 	e.setAttribute("folio",    folio);
 	e.setAttribute("date",     exportDate());
 	e.setAttribute("displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
-	if (!template_name.isEmpty()) {
+	if (!template_name.isEmpty())
+	{
 		e.setAttribute("titleblocktemplate", template_name);
+		e.setAttribute("titleblocktemplateCollection", QET::qetCollectionToString(collection));
 	}
 	
 	if (context.keys().count()) {
@@ -97,8 +101,12 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("date"))        setDateFromString(e.attribute("date"));
 	if (e.hasAttribute("displayAt")) display_at = (e.attribute("displayAt") == "bottom" ? Qt::BottomEdge : Qt::RightEdge);
 	
-	// reads the template used to render the title block
-	if (e.hasAttribute("titleblocktemplate")) template_name = e.attribute("titleblocktemplate");
+		// reads the template used to render the title block
+	if (e.hasAttribute("titleblocktemplate"))
+	{
+		template_name = e.attribute("titleblocktemplate");
+		collection = QET::qetCollectionFromString(e.attribute("titleblocktemplateCollection"));
+	}
 	
 	// reads the additional fields used to fill the title block
 	context.clear();
@@ -121,6 +129,7 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix + "date",     exportDate());
 	settings.setValue(prefix + "displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
 	settings.setValue(prefix + "titleblocktemplate", template_name.isEmpty()? QString() : template_name);
+	settings.setValue(prefix + "titleblocktemplateCollection", QET::qetCollectionToString(collection));
 	context.toSettings(settings, prefix + "properties");
 }
 
@@ -137,6 +146,7 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	setDateFromString(settings.value(prefix + "date").toString());
 	display_at = (settings.value(prefix + "displayAt", QVariant("bottom")).toString() == "bottom" ? Qt::BottomEdge : Qt::RightEdge);
 	template_name = settings.value(prefix + "titleblocktemplate").toString();
+	collection = QET::qetCollectionFromString(settings.value(prefix + "titleblocktemplateCollection").toString());
 	context.fromSettings(settings, prefix + "properties");
 }
 

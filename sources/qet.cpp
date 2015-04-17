@@ -729,3 +729,41 @@ bool QET::eachStrIsEqual(const QStringList &qsl) {
 	}
 	return true;
 }
+
+/**
+ * @brief QET::qetCollectionToString
+ * @param c QetCollection value to convert
+ * @return The QetCollection enum value converted to a QString
+ */
+QString QET::qetCollectionToString(const QET::QetCollection &c)
+{
+	switch (c)
+	{
+		case Common :
+			return "common";
+		case Custom :
+			return "custom";
+		case Embendded :
+			return "embendded";
+		default:
+			return "common";
+	}
+}
+
+/**
+ * @brief QET::qetCollectionFromString
+ * @param str string to convert
+ * @return The corresponding QetCollection value from a string.
+ * If the string don't match anything, we return the failsafe value QetCollection::Common
+ */
+QET::QetCollection QET::qetCollectionFromString(const QString &str)
+{
+	if (str == "common")
+		return QetCollection::Common;
+	else if (str == "custom")
+		return QetCollection::Custom;
+	else if (str == "embendded")
+		return QetCollection::Embendded;
+	else
+		return QetCollection::Common;
+}
