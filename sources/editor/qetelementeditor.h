@@ -111,7 +111,7 @@ class QETElementEditor : public QETMainWindow {
 	void writeSettings();
 	static QPointF pasteOffset();
 	static QString getOpenElementFileName(QWidget * = 0, const QString & = QString());
-	void contextMenu(QContextMenuEvent *event);
+	void contextMenu(QPoint p);
 
 	protected:
 	void closeEvent(QCloseEvent *);

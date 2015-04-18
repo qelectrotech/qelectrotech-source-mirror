@@ -399,7 +399,7 @@ void QETElementEditor::setupMenus() {
  * @brief QETElementEditor::contextMenuEvent
  * @param event
  */
-void QETElementEditor::contextMenu(QContextMenuEvent *event) {
+void QETElementEditor::contextMenu(QPoint p) {
 		QMenu menu(this);
 		menu.addAction(undo);
 		menu.addAction(redo);
@@ -416,7 +416,7 @@ void QETElementEditor::contextMenu(QContextMenuEvent *event) {
 		menu.addMenu(paste_from_menu);
 		menu.addSeparator();
 		menu.addActions(m_depth_ag -> actions());
-		menu.exec(event -> globalPos());
+		menu.exec(p);
  }
 
 
