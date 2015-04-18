@@ -174,6 +174,17 @@ void ElementScene::keyPressEvent(QKeyEvent *event) {
 }
 
 /**
+ * @brief ElementScene::contextMenuEvent
+ * Display the context menu event, only if behavior are Normal
+ * @param event
+ */
+void ElementScene::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
+{
+	if (behavior == ElementScene::Normal)
+		element_editor -> contextMenu(event->screenPos());
+}
+
+/**
 	Dessine l'arriere-plan de l'editeur, cad l'indicateur de hotspot.
 	@param p Le QPainter a utiliser pour dessiner
 	@param rect Le rectangle de la zone a dessiner
@@ -209,6 +220,16 @@ void ElementScene::setEventInterface(ESEventInterface *event_interface) {
 		event_interface->init();
 	}
 	m_event_interface = event_interface;
+}
+
+/**
+ * @brief ElementScene::setBehavior
+ * Modifie the current behavior of this scene
+ * @param b
+ */
+void ElementScene::setBehavior(ElementScene::Behavior b)
+{
+	behavior = b;
 }
 
 /**
@@ -458,11 +479,6 @@ void ElementScene::copy() {
 	
 	// retient le dernier contenu copie
 	last_copied_ = clipboard_content;
-}
-
-void ElementScene::contextMenu(QContextMenuEvent *event) {
-	if (behavior == ElementScene::Normal)
-		element_editor -> contextMenu(event);
 }
 
 QETElementEditor* ElementScene::editor() const {

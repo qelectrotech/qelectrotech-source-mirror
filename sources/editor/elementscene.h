@@ -41,7 +41,7 @@ class ElementScene : public QGraphicsScene {
 	
 	// enum
 	public:
-	enum Behavior { Normal, PasteArea };
+	enum Behavior { Normal, PasteArea, AddPart };
 	enum ItemOption {
 		SortByZValue = 1,
 		IncludeTerminals = 2,
@@ -105,6 +105,7 @@ class ElementScene : public QGraphicsScene {
 	// methods
 	public:
 		void setEventInterface (ESEventInterface *event_interface);
+		void setBehavior (ElementScene::Behavior);
 		QPointF snapToGrid(QPointF point);
 	void setNames(const NamesList &);
 	NamesList names() const;
@@ -131,7 +132,6 @@ class ElementScene : public QGraphicsScene {
 	bool wasCopiedFromThisElement(const QString &);
 	void cut();
 	void copy();
-	void contextMenu (QContextMenuEvent *event);
 	QETElementEditor* editor() const;
 	
 	protected:
@@ -140,8 +140,9 @@ class ElementScene : public QGraphicsScene {
 		virtual void mouseReleaseEvent     (QGraphicsSceneMouseEvent *);
 		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
 		virtual void keyPressEvent         (QKeyEvent *event);
+		virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
 
-	virtual void drawForeground(QPainter *, const QRectF &);
+		virtual void drawForeground(QPainter *, const QRectF &);
 	
 	private:
 	QRectF elementContentBoundingRect(const ElementContent &) const;

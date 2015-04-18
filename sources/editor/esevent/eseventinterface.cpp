@@ -31,20 +31,26 @@ ESEventInterface::ESEventInterface(ElementScene *scene) :
 	init();
 }
 
-void ESEventInterface::init() {
-	foreach (QGraphicsView *qgv, m_scene->views())
-		qgv->setContextMenuPolicy(Qt::NoContextMenu);
-
+/**
+ * @brief ESEventInterface::init
+ * Init this event interface
+ */
+void ESEventInterface::init()
+{
+	m_scene->setBehavior(ElementScene::Behavior::AddPart);
 	m_editor->slot_setNoDragToView();
 }
 
-ESEventInterface::~ESEventInterface() {
+/**
+ * @brief ESEventInterface::~ESEventInterface
+ * Destructor
+ */
+ESEventInterface::~ESEventInterface()
+{
 	delete m_help_horiz;
 	delete m_help_verti;
 
-	foreach (QGraphicsView *qgv, m_scene->views())
-		qgv->setContextMenuPolicy(Qt::DefaultContextMenu);
-
+	m_scene->setBehavior(ElementScene::Behavior::Normal);
 	m_editor->slot_setRubberBandToView();
 }
 

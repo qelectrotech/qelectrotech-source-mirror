@@ -41,7 +41,6 @@ class ElementView : public QGraphicsView {
 	ElementScene *scene() const;
 	void setScene(ElementScene *);
 	QRectF viewedSceneRect() const;
-	void contextMenuEvent(QContextMenuEvent *event);
 	
 	protected:
 	void mousePressEvent(QMouseEvent *);
