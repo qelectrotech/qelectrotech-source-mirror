@@ -72,8 +72,8 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseMoveEvent(e)) {
 			if (m_event_interface->isFinish()) {
-				emit(partsAdded());
 				delete m_event_interface; m_event_interface = nullptr;
+				emit(partsAdded());
 			}
 			return;
 		}
@@ -101,8 +101,8 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mousePressEvent(e)) {
 			if (m_event_interface->isFinish()) {
-				emit(partsAdded());
 				delete m_event_interface; m_event_interface = nullptr;
+				emit(partsAdded());
 			}
 			return;
 		}
@@ -119,8 +119,8 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseReleaseEvent(e)) {
 			if (m_event_interface->isFinish()) {
-				emit(partsAdded());
 				delete m_event_interface; m_event_interface = nullptr;
+				emit(partsAdded());
 			}
 			return;
 		}
@@ -145,8 +145,8 @@ void ElementScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseDoubleClickEvent(event)) {
 			if (m_event_interface->isFinish()) {
-				emit(partsAdded());
 				delete m_event_interface; m_event_interface = nullptr;
+				emit(partsAdded());
 			}
 			return;
 		}
@@ -164,8 +164,8 @@ void ElementScene::keyPressEvent(QKeyEvent *event) {
 	if (m_event_interface) {
 		if (m_event_interface -> keyPressEvent(event)) {
 			if (m_event_interface->isFinish()) {
-				emit(partsAdded());
 				delete m_event_interface; m_event_interface = nullptr;
+				emit(partsAdded());
 			}
 			return;
 		}
