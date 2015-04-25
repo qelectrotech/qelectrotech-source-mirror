@@ -743,8 +743,8 @@ QString QET::qetCollectionToString(const QET::QetCollection &c)
 			return "common";
 		case Custom :
 			return "custom";
-		case Embendded :
-			return "embendded";
+		case Embedded :
+			return "embedded";
 		default:
 			return "common";
 	}
@@ -762,8 +762,8 @@ QET::QetCollection QET::qetCollectionFromString(const QString &str)
 		return QetCollection::Common;
 	else if (str == "custom")
 		return QetCollection::Custom;
-	else if (str == "embendded")
-		return QetCollection::Embendded;
+	else if (str == "embedded")
+		return QetCollection::Embedded;
 	else
 		return QetCollection::Common;
 }

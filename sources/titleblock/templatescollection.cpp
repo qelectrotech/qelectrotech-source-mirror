@@ -113,7 +113,7 @@ TitleBlockTemplatesProjectCollection::TitleBlockTemplatesProjectCollection(QETPr
 	TitleBlockTemplatesCollection(parent),
 	project_(project)
 {
-	m_collection = QET::QetCollection::Embendded;
+	m_collection = QET::QetCollection::Embedded;
 }
 
 /**

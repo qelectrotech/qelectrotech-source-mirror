@@ -295,7 +295,7 @@ void TitleBlockPropertiesWidget::updateTemplateList()
 			icon = QET::Icons::QETLogo;
 		else if (qc == QET::QetCollection::Custom)
 			icon = QET::Icons::Home;
-		else if (qc == QET::QetCollection::Embendded)
+		else if (qc == QET::QetCollection::Embedded)
 			icon = QET::Icons::TitleBlock;
 
 		foreach(QString tbt_name, tbt_c -> templates())

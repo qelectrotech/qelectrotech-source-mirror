@@ -464,7 +464,7 @@ void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titl
 			case QET::Custom :
 				collection = QETApp::customTitleBlockTemplatesCollection();
 				break;
-			case QET::Embendded :
+			case QET::Embedded :
 				//Titleblock is already embedded to project
 				return;
 			default:

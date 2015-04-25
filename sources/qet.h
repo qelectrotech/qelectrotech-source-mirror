@@ -133,7 +133,7 @@ namespace QET {
 	enum QetCollection {
 		Common,		///< From common collection
 		Custom,		///< From user collection
-		Embendded	///< From an embeddded collection (a project for exemple)
+		Embedded	///< From an embedded collection (a project for exemple)
 	};
 
 	QString qetCollectionToString (const QetCollection &c);
