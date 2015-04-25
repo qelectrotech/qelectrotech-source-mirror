@@ -46,6 +46,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent) :
 	// default titleblock properties
 	QList <TitleBlockTemplatesCollection *> c;
 	c << QETApp::commonTitleBlockTemplatesCollection() << QETApp::customTitleBlockTemplatesCollection();
+	if (m_project) c << m_project->embeddedTitleBlockTemplatesCollection();
 	ipw = new TitleBlockPropertiesWidget(c, TitleBlockProperties::defaultProperties(), true);
 	// default conductor properties
 	cpw = new ConductorPropertiesWidget(ConductorProperties::defaultProperties());
