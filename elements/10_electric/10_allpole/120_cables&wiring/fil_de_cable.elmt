@@ -6,6 +6,7 @@
         <name lang="it">Conduttore di un cavo</name>
         <name lang="pl">Połączenie przewodu</name>
         <name lang="cs">Vedení kabelu</name>
+	<name lang="ru">Жила кабеля</name>
     </names>
     <informations></informations>
     <description>

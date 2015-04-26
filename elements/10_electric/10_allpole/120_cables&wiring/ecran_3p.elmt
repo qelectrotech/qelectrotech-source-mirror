@@ -9,6 +9,7 @@
         <name lang="cs">Obrazovka</name>
         <name lang="nl">Scherm</name>
         <name lang="el">Πλέγμα</name>
+	<name lang="ru">Экран</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
