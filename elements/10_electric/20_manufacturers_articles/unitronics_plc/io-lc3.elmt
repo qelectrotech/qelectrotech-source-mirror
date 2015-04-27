@@ -1,6 +1,7 @@
 <definition width="750" height="110" type="element" version="0.5" hotspot_x="15" hotspot_y="52" link_type="simple" orientation="dyyy">
     <names>
         <name lang="en">IO-LC3</name>
+        <name lang="cs">IO-LC3</name>
     </names>
     <informations></informations>
     <description>

@@ -1,6 +1,7 @@
 <definition hotspot_y="52" type="element" height="110" version="0.5" orientation="dyyy" hotspot_x="15" link_type="simple" width="750">
     <names>
         <name lang="en">IO-AO6X</name>
+        <name lang="cs">IO-AO6X</name>
     </names>
     <informations></informations>
     <description>

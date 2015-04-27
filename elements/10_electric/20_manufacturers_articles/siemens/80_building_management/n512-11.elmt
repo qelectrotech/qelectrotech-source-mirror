@@ -5,6 +5,7 @@
         <name lang="fr">module de base (max 4 extensions)</name>
         <name lang="it">Modulo base N512/11</name>
         <name lang="en">basic module (max 4 extensions)</name>
+        <name lang="cs">Základní modul (nejvíce 4 rozšíření)</name>
     </names>
     <informations>
 		Author: RDS for QelectroTech

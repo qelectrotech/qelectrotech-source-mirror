@@ -1,6 +1,7 @@
 <definition orientation="dyyy" version="0.5" link_type="simple" height="110" hotspot_y="52" type="element" width="390" hotspot_x="15">
     <names>
         <name lang="en">IO-AI8</name>
+        <name lang="cs">IO-AI8</name>
     </names>
     <informations></informations>
     <description>

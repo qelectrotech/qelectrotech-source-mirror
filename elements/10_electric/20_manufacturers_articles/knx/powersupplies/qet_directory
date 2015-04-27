@@ -7,5 +7,6 @@
         <name lang="fr">Alimentations</name>
         <name lang="nl">Voedingen</name>
         <name lang="ru">Источники питания</name>
+        <name lang="cs">Dodávky elektřiny</name>
     </names>
 </qet-directory>

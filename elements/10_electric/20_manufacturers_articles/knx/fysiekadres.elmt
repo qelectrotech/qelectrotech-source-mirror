@@ -5,6 +5,7 @@
         <name lang="en">Physical address KNX</name>
         <name lang="fr">Adresse physique KNX</name>
         <name lang="it">Indirizzo fisico KNX</name>
+        <name lang="cs">Fyzická adresa KNX</name>
     </names>
     <informations>
 		Author: RDS for QelectroTech

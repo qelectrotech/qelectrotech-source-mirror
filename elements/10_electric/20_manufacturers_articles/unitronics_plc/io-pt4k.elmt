@@ -1,6 +1,7 @@
 <definition hotspot_x="15" hotspot_y="52" orientation="dyyy" width="510" height="110" type="element" version="0.5" link_type="simple">
     <names>
         <name lang="en">IO-PT400</name>
+        <name lang="cs">IO-PT400</name>
     </names>
     <informations></informations>
     <description>

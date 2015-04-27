@@ -1,6 +1,7 @@
 <definition link_type="simple" hotspot_x="15" height="130" hotspot_y="59" version="0.5" width="600" orientation="dyyy" type="element">
     <names>
         <name lang="en">IO-RO16</name>
+        <name lang="cs">IO-RO16</name>
     </names>
     <informations></informations>
     <description>

@@ -1,6 +1,7 @@
 <definition orientation="dyyy" hotspot_x="15" type="element" version="0.5" link_type="simple" height="110" width="690" hotspot_y="52">
     <names>
         <name lang="en">IO-DI8-RO4</name>
+        <name lang="cs">IO-DI8-RO4</name>
     </names>
     <informations></informations>
     <description>

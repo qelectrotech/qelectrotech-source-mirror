@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>AboutQET</name>
     <message>
@@ -3235,7 +3235,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetapp.cpp" line="371"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Umístění</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="382"/>
@@ -3571,7 +3571,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
         <source>Ajouter une ligne droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat přímku</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
@@ -7777,7 +7777,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Umístění</translation>
     </message>
 </context>
 <context>
