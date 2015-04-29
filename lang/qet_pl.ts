@@ -3240,7 +3240,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetapp.cpp" line="373"/>
         <source>Fonction</source>
-        <translation type="unfinished"></translation>
+        <translation>Funkcja</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="384"/>
@@ -7734,7 +7734,7 @@ Długość maksymalna: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Fonction</source>
-        <translation type="unfinished"></translation>
+        <translation>Funkcja</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
