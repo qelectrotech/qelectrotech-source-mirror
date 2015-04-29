@@ -1174,30 +1174,30 @@ Verbindungen dieses Potenzials anwenden?</translation>
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="539"/>
+        <location filename="../sources/editor/elementscene.cpp" line="555"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Informationen über Autoren bearbeiten</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="543"/>
+        <location filename="../sources/editor/elementscene.cpp" line="559"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Sie können dieses freie Textfeld benutzen, um die Autoren, die Lizenz, oder jede weitere nützliche Information zu speichern.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="596"/>
+        <location filename="../sources/editor/elementscene.cpp" line="612"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Namen bearbeiten</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="600"/>
+        <location filename="../sources/editor/elementscene.cpp" line="616"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Sie können den Namen des Bauteiles in verschiedenen Sprachen eingeben.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="797"/>
-        <location filename="../sources/editor/elementscene.cpp" line="837"/>
+        <location filename="../sources/editor/elementscene.cpp" line="813"/>
+        <location filename="../sources/editor/elementscene.cpp" line="853"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translation>Dieses XML-Dokument ist keine gültige Bauteildefinition.</translation>
@@ -1752,7 +1752,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="397"/>
+        <location filename="../sources/configpages.cpp" line="400"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>Exportieren</translation>
@@ -1963,164 +1963,164 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="194"/>
+        <location filename="../sources/configpages.cpp" line="197"/>
         <source>Apparence</source>
         <translation>Darstellung</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="195"/>
+        <location filename="../sources/configpages.cpp" line="198"/>
         <source>Utiliser les couleurs du système</source>
         <translation>Farben vom Betriebssystem verwenden</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="196"/>
+        <location filename="../sources/configpages.cpp" line="199"/>
         <source>Projets</source>
         <translation>Projekte</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="199"/>
+        <location filename="../sources/configpages.cpp" line="202"/>
         <source>Utiliser les gestes du pavé tactile</source>
         <translation>Gesten vom Touchpad aktivieren</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="202"/>
+        <location filename="../sources/configpages.cpp" line="205"/>
         <source>Gestion des éléments</source>
         <translation>Bauteilverwaltung</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="203"/>
+        <location filename="../sources/configpages.cpp" line="206"/>
         <source>Intégrer automatiquement les éléments dans les projets (recommandé)</source>
         <translation>Bauteile in die Projekte automatisch integrieren (empfohlen)</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="204"/>
+        <location filename="../sources/configpages.cpp" line="207"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
         <translation>neu zum Projekt hinzugefügte Bauteile im Panel hervorheben</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="206"/>
+        <location filename="../sources/configpages.cpp" line="209"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Jedes Bauteil enthält Informationen über den Autor, die Lizenz und weitere nützlichen Hinweise in einem frei definierbaren Textfeld. Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen  Bauteile definiert werden:</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="250"/>
+        <location filename="../sources/configpages.cpp" line="253"/>
         <source>Langue</source>
         <translation>Sprache</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="197"/>
+        <location filename="../sources/configpages.cpp" line="200"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de QElectroTech)</source>
         <translation>In Fenster öffnen (erst nach einem Neustart von QElectroTech wirksam)</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="198"/>
+        <location filename="../sources/configpages.cpp" line="201"/>
         <source>Utiliser des onglets (appliqué au prochain lancement de QElectroTech)</source>
         <translation>In Reiter öffnen (erst nach einem Neustart von QElectroTech wirksam)</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="200"/>
+        <location filename="../sources/configpages.cpp" line="203"/>
         <source>Autoriser le dézoom au delà du folio</source>
         <translation>Ansicht verkleinern über die Folie hinaus erlauben</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="253"/>
+        <location filename="../sources/configpages.cpp" line="256"/>
         <source>La nouvelle langue sera prise en compte au prochain lancement de QElectroTech.</source>
         <translation>Die neu einsgestellte Sprache wird erst nach einem Neustart von QElectroTech angezeigt.</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="313"/>
+        <location filename="../sources/configpages.cpp" line="316"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Allgemein</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="321"/>
+        <location filename="../sources/configpages.cpp" line="324"/>
         <source>Système</source>
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="325"/>
+        <location filename="../sources/configpages.cpp" line="328"/>
         <source>Arabe</source>
         <translation>Arabisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="326"/>
+        <location filename="../sources/configpages.cpp" line="329"/>
         <source>Catalan</source>
         <translation>Katalanisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="327"/>
+        <location filename="../sources/configpages.cpp" line="330"/>
         <source>Tchèque</source>
         <translation>Tschechisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="328"/>
+        <location filename="../sources/configpages.cpp" line="331"/>
         <source>Allemand</source>
         <translation>Deutsch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="329"/>
+        <location filename="../sources/configpages.cpp" line="332"/>
         <source>Grec</source>
         <translation>Grieschisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="330"/>
+        <location filename="../sources/configpages.cpp" line="333"/>
         <source>Anglais</source>
         <translation>Englisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="331"/>
+        <location filename="../sources/configpages.cpp" line="334"/>
         <source>Espagnol</source>
         <translation>Spanisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="332"/>
+        <location filename="../sources/configpages.cpp" line="335"/>
         <source>Français</source>
         <translation>Französisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="333"/>
+        <location filename="../sources/configpages.cpp" line="336"/>
         <source>Croate</source>
         <translation>Kroatisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="334"/>
+        <location filename="../sources/configpages.cpp" line="337"/>
         <source>Italien</source>
         <translation>Italienisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="335"/>
+        <location filename="../sources/configpages.cpp" line="338"/>
         <source>Polonais</source>
         <translation>Polnisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="336"/>
+        <location filename="../sources/configpages.cpp" line="339"/>
         <source>Portugais</source>
         <translation>Portugesisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="337"/>
+        <location filename="../sources/configpages.cpp" line="340"/>
         <source>Roumains</source>
         <translation>Rumänisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="338"/>
+        <location filename="../sources/configpages.cpp" line="341"/>
         <source>Russe</source>
         <translation>Russisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="339"/>
+        <location filename="../sources/configpages.cpp" line="342"/>
         <source>Slovène</source>
         <translation>Slowenisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="340"/>
+        <location filename="../sources/configpages.cpp" line="343"/>
         <source>Pays-Bas</source>
         <translation>Niederländisch</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="341"/>
+        <location filename="../sources/configpages.cpp" line="344"/>
         <source>Belgique-Flemish</source>
         <translation>Belgien-Flandern</translation>
     </message>
@@ -2629,33 +2629,33 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
 <context>
     <name>NewDiagramPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="72"/>
+        <location filename="../sources/configpages.cpp" line="75"/>
         <source>Folio</source>
         <translation>Folie</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="73"/>
+        <location filename="../sources/configpages.cpp" line="76"/>
         <source>Conducteur</source>
         <translation>Leiter</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="74"/>
+        <location filename="../sources/configpages.cpp" line="77"/>
         <source>Reports de folio</source>
         <translation>Folienverweise</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="75"/>
+        <location filename="../sources/configpages.cpp" line="78"/>
         <source>Références croisées</source>
         <translation>Querverweise</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="173"/>
+        <location filename="../sources/configpages.cpp" line="176"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
         <translation>Neue Folie</translation>
     </message>
     <message>
-        <location filename="../sources/configpages.cpp" line="174"/>
+        <location filename="../sources/configpages.cpp" line="177"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
         <translation>Neues Projekt</translation>
@@ -2854,7 +2854,7 @@ Verbindungen dieses Potenzials anwenden?</translation>
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/configpages.cpp" line="451"/>
+        <location filename="../sources/configpages.cpp" line="454"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
         <translation>Druck</translation>
@@ -3058,207 +3058,212 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>Benutzersammlung</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="365"/>
+        <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="366"/>
+        <location filename="../sources/qetapp.cpp" line="367"/>
         <source>Commentaire</source>
         <translation>Kommentar</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="367"/>
+        <location filename="../sources/qetapp.cpp" line="368"/>
         <source>Désignation</source>
         <translation>Beschreibung</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="368"/>
+        <location filename="../sources/qetapp.cpp" line="369"/>
         <source>Fabricant</source>
         <translation>Hersteller</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="369"/>
+        <location filename="../sources/qetapp.cpp" line="370"/>
         <source>Référence fabricant</source>
         <translation>Artikelnummer Hersteller</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="370"/>
+        <location filename="../sources/qetapp.cpp" line="371"/>
         <source>Référence fabricant machine</source>
         <translation>Artikelnummer Maschinenhersteller</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="371"/>
+        <location filename="../sources/qetapp.cpp" line="372"/>
         <source>Localisation</source>
         <translation>Ort</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="382"/>
+        <location filename="../sources/qetapp.cpp" line="373"/>
+        <source>Fonction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="384"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation>QET-Zeichnungsköpfe</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="395"/>
+        <location filename="../sources/qetapp.cpp" line="398"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation>Benutzer-Zeichnungsköpfe</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="817"/>
+        <location filename="../sources/qetapp.cpp" line="821"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="818"/>
+        <location filename="../sources/qetapp.cpp" line="822"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="819"/>
+        <location filename="../sources/qetapp.cpp" line="823"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Folie</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="820"/>
+        <location filename="../sources/qetapp.cpp" line="824"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Elektrik</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="821"/>
+        <location filename="../sources/qetapp.cpp" line="825"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1225"/>
+        <location filename="../sources/qetapp.cpp" line="1229"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech Einstellungen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1350"/>
+        <location filename="../sources/qetapp.cpp" line="1354"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Lade...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1422"/>
+        <location filename="../sources/qetapp.cpp" line="1426"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Lade... Symbole des Systemsbenachrichtigungsfelds</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1424"/>
+        <location filename="../sources/qetapp.cpp" line="1428"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1426"/>
+        <location filename="../sources/qetapp.cpp" line="1430"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Beenden</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1427"/>
+        <location filename="../sources/qetapp.cpp" line="1431"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Verstecken</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1428"/>
+        <location filename="../sources/qetapp.cpp" line="1432"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Zeigen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1429"/>
+        <location filename="../sources/qetapp.cpp" line="1433"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Verstecke alle Schaltplaneditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1430"/>
+        <location filename="../sources/qetapp.cpp" line="1434"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Zeige alle Schaltplaneditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1431"/>
+        <location filename="../sources/qetapp.cpp" line="1435"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Verstecke alle Bauteileditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1432"/>
+        <location filename="../sources/qetapp.cpp" line="1436"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Zeige alle Bauteileditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1433"/>
+        <location filename="../sources/qetapp.cpp" line="1437"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Verstecke alle Zeichnungskopf-Editoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1434"/>
+        <location filename="../sources/qetapp.cpp" line="1438"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Zeige alle Zeichnungskopf-Editoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1435"/>
+        <location filename="../sources/qetapp.cpp" line="1439"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Neuer Schaltplaneditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1436"/>
+        <location filename="../sources/qetapp.cpp" line="1440"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Neuer Bauteileditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1438"/>
+        <location filename="../sources/qetapp.cpp" line="1442"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Anwendung QElectroTech schließen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1439"/>
+        <location filename="../sources/qetapp.cpp" line="1443"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>QElectroTech in Systembenachrichtigungsfeld minimieren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1440"/>
+        <location filename="../sources/qetapp.cpp" line="1444"/>
         <source>Restaurer QElectroTech</source>
         <translation>QElectroTech wiederherstellen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1456"/>
+        <location filename="../sources/qetapp.cpp" line="1460"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1525"/>
+        <location filename="../sources/qetapp.cpp" line="1529"/>
         <source>Éditeurs de schémas</source>
         <translation>Schaltplaneditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1534"/>
+        <location filename="../sources/qetapp.cpp" line="1538"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Bauteileditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1544"/>
+        <location filename="../sources/qetapp.cpp" line="1548"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Zeichnungskopf-Editor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1609"/>
+        <location filename="../sources/qetapp.cpp" line="1613"/>
         <source>Usage : </source>
         <translation>Verwendung: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1609"/>
+        <location filename="../sources/qetapp.cpp" line="1613"/>
         <source> [options] [fichier]...
 
 </source>
@@ -3266,7 +3271,7 @@ Voulez-vous enregistrer les modifications ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1610"/>
+        <location filename="../sources/qetapp.cpp" line="1614"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -3283,25 +3288,25 @@ Verfügbare Optionen:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1616"/>
+        <location filename="../sources/qetapp.cpp" line="1620"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Setzt Pfad zur Bauteilsammlung</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1619"/>
+        <location filename="../sources/qetapp.cpp" line="1623"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Pfad zur Zeichnungskopf-Sammlung setzen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1622"/>
+        <location filename="../sources/qetapp.cpp" line="1626"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Setzt Pfad zur Konfiguration</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1624"/>
+        <location filename="../sources/qetapp.cpp" line="1628"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Setzt Pfad zu den Sprachdateien</translation>
@@ -5023,51 +5028,51 @@ les conditions requises ne sont pas valides</source>
         <translation>%1 [geändert]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="771"/>
+        <location filename="../sources/qetproject.cpp" line="787"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Erstellen der Bauteilkategorie nicht möglich</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="782"/>
+        <location filename="../sources/qetproject.cpp" line="798"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>Zugriff auf das Bauteil nicht möglich</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="799"/>
+        <location filename="../sources/qetproject.cpp" line="815"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>Ein Problem ist beim Kopieren der Kategorie %1 aufgetretten</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="874"/>
+        <location filename="../sources/qetproject.cpp" line="890"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Ein Fehler ist beim Einfügen der Vorlage aufgetretten.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="995"/>
+        <location filename="../sources/qetproject.cpp" line="1011"/>
         <source>Liste des Folios</source>
         <translation>Inhaltsverzeichnis</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1106"/>
+        <location filename="../sources/qetproject.cpp" line="1122"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Warnung</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1107"/>
+        <location filename="../sources/qetproject.cpp" line="1123"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>Das Dokument wurde vermutlich mit einer nachfolgenden Version von QElectroTech erstellt. Möglicherweise wird das Öffnen ganz oder teilweise scheitern. Wie möchten Sie vorgehen?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1168"/>
+        <location filename="../sources/qetproject.cpp" line="1184"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation>&lt;b&gt;Projekt wird geöffnet...&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1589"/>
+        <location filename="../sources/qetproject.cpp" line="1605"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Ein Problem ist beim Kopieren des Bauteils %1 aufgetretten</translation>
     </message>
@@ -6785,24 +6790,24 @@ Les autres champs ne sont pas utilisés.</source>
 <context>
     <name>TitleBlockPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="221"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="287"/>
         <source>Modèle par défaut</source>
         <translation>Standardvorlage</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="239"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="230"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
         <translation>Vorlage bearbeiten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="240"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="231"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
         <translation>Vorlage kopieren und bearbeiten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="245"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="236"/>
         <source>Title block templates actions</source>
         <translation>Aktionen zum Zeichnungskopf</translation>
     </message>
@@ -7413,13 +7418,13 @@ Maximale Länge: %2px
 <context>
     <name>TitleBlockTemplatesProjectCollection</name>
     <message>
-        <location filename="../sources/titleblock/templatescollection.cpp" line="120"/>
+        <location filename="../sources/titleblock/templatescollection.cpp" line="138"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
         <translation>Zeichnungsköpfe vom Projekt ohne Titel (id %1)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
+        <location filename="../sources/titleblock/templatescollection.cpp" line="146"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
         <translation>Zeichnungsköpfe vom Projekt &quot;%1&quot;</translation>
@@ -7708,37 +7713,42 @@ Maximale Länge: %2px
         <translation>Überschreiben der Datei nicht möglich!</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Désignation</source>
         <translation>Kennzeichen</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <location filename="../sources/nomenclature.cpp" line="94"/>
+        <source>Fonction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Commentaire</source>
         <translation>Kommentar</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Fabricant</source>
         <translation>Hersteller</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Reference</source>
         <translation>Artikelnummer</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Machine-reference</source>
         <translation>Maschinenbezeichnung</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>Désignation qet</source>
         <translation>QET-Bezeichnung</translation>
     </message>
@@ -7748,12 +7758,12 @@ Maximale Länge: %2px
         <translation>Foliennummer</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <location filename="../sources/nomenclature.cpp" line="85"/>
         <source>Titre de folio</source>
         <translation>Folientitel</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="84"/>
+        <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Localisation</source>
         <translation>Ort</translation>
     </message>
