@@ -350,7 +350,8 @@ QStringList QETApp::elementInfoKeys() {
 			  << "manufacturer"
 			  << "manufacturer-reference"
 			  << "machine-manufacturer-reference"
-			  << "location";
+			  << "location"
+			  << "function";
 	return info_list;
 }
 
@@ -369,6 +370,7 @@ QString QETApp::elementTranslatedInfoKey(QString &info) {
 	else if (info == "manufacturer-reference") return tr("Référence fabricant");
 	else if (info == "machine-manufacturer-reference") return tr("Référence fabricant machine");
 	else if (info == "location") return tr("Localisation");
+	else if (info == "function") return tr("Fonction");
 	return (info);
 }
 

@@ -81,7 +81,17 @@ bool nomenclature::saveToCSVFile() {
 QString nomenclature::getNomenclature() {
 	//Process...
 	QString data = tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
-	data += tr("N° de folio") +";"+ tr("Titre de folio") +";"+ tr("Désignation qet")+";"+ tr("Label") +";"+ tr("Désignation")+";"+ tr("Commentaire") +";"+ tr("Fabricant") +";"+ tr("Reference") +";"+ tr("Machine-reference") +";"+tr("Localisation")+"\n";
+	data += tr("N° de folio") +";"
+	""+ tr("Titre de folio") +";"
+	""+ tr("Désignation qet") +";"
+	""+ tr("Label") +";"
+	""+ tr("Désignation") +";"
+	""+ tr("Commentaire") +";"
+	""+ tr("Fabricant") +";"
+	""+ tr("Reference") +";"
+	""+ tr("Machine-reference") +";"
+	""+ tr("Localisation") +";"
+	""+ tr("Fonction") +"\n";
 
 
 	if(m_list_diagram.isEmpty()) return data;
@@ -121,7 +131,8 @@ QString nomenclature::getElementInfo(const Element *elmt) {
 	info += elmt_info["manufacturer"].toString() + ";";
 	info += elmt_info["manufacturer-reference"].toString() + ";";
 	info += elmt_info["machine-manufacturer-reference"].toString() + ";";
-	info += elmt_info["location"].toString() + "\n";
+	info += elmt_info["location"].toString() + ";";
+	info += elmt_info["function"].toString() + "\n";
 
 	return info;
 }
