@@ -3060,7 +3060,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="366"/>
         <source>Label</source>
-        <translation>Label</translation>
+        <translation>Betriebsmittelkennzeichen</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="367"/>
@@ -3095,7 +3095,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="373"/>
         <source>Fonction</source>
-        <translation type="unfinished"></translation>
+        <translation>Funktionstext</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="384"/>
@@ -4520,13 +4520,13 @@ Verfügbare Optionen:
         <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
         <source>Absence de champ texte &apos;label&apos;</source>
         <comment>warning title</comment>
-        <translation>Kein Textfeld &quot;label&quot; vorhanden</translation>
+        <translation>Kein Textfeld &quot;Betriebsmittelkennzeichen&quot; vorhanden</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation>&lt;br&gt;&lt;b&gt;Fehler&lt;/b  &gt; :&lt;br&gt;Bauteile vom Typ Master, Slave, Einfach und Folienverweis müssen ein als &quot;Label&quot; makiertes Textfeld beinhalten.&lt;br&gt;&lt;b&gt;Lösung&lt;/b&gt; :&lt;br&gt;Textfeld einfügen und als &quot;Label&quot; markieren</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Fehler&lt;/b  &gt; :&lt;br&gt;Bauteile vom Typ Master, Slave, Einfach und Folienverweis müssen ein als &quot;Betriebsmittelkennzeichen&quot; makiertes Textfeld beinhalten.&lt;br&gt;&lt;b&gt;Lösung&lt;/b&gt; :&lt;br&gt;Textfeld einfügen und als &quot;Betriebsmittelkennzeichen&quot; markieren</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="715"/>
@@ -7533,7 +7533,7 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
         <source>TextLabel</source>
-        <translation>Textlabel</translation>
+        <translation>TextLabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="30"/>
@@ -7715,17 +7715,17 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Désignation</source>
-        <translation>Kennzeichen</translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Fonction</source>
-        <translation type="unfinished"></translation>
+        <translation>Funktionstext</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Label</source>
-        <translation>Label</translation>
+        <translation>Betriebsmittelkennzeichen</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
@@ -7745,12 +7745,12 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Machine-reference</source>
-        <translation>Maschinenbezeichnung</translation>
+        <translation>Artikelnummer Maschinenhersteller</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>Désignation qet</source>
-        <translation>QET-Bezeichnung</translation>
+        <translation>Bauteilbezeichnung</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="84"/>
