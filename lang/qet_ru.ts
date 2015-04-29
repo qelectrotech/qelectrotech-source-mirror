@@ -3145,7 +3145,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="373"/>
         <source>Fonction</source>
-        <translation type="unfinished"></translation>
+        <translation>Функция</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="384"/>
@@ -7801,7 +7801,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Fonction</source>
-        <translation type="unfinished"></translation>
+        <translation>Функция</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
