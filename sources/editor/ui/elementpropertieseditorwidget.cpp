@@ -89,6 +89,7 @@ void ElementPropertiesEditorWidget::setUpInterface() {
 	//Master option
 	ui -> m_master_type_cb -> addItem(tr("Bobine"),				  QVariant("coil"));
 	ui -> m_master_type_cb -> addItem(tr("Organe de protection"), QVariant("protection"));
+	ui -> m_master_type_cb -> addItem(tr("Commutateur / bouton"), QVariant("commutator"));
 }
 
 /**

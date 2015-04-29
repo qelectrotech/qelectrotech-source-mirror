@@ -106,7 +106,7 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 QHash<QString, XRefProperties> XRefProperties::defaultProperties() {
 	QHash <QString, XRefProperties> hash;
 	QStringList keys;
-	keys << "coil" << "protection";
+	keys << "coil" << "protection" << "commutator";
 
 	foreach (QString key, keys) {
 		XRefProperties properties;
