@@ -15,7 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "elementpropertieswidget.h"
+#include "elementpropertiesdialog.h"
 #include "ghostelement.h"
 #include "qeticons.h"
 #include "diagramposition.h"
@@ -25,12 +25,12 @@
 #include "linksingleelementwidget.h"
 
 /**
- * @brief elementpropertieswidget::elementpropertieswidget
+ * @brief ElementPropertiesDialog::ElementPropertiesDialog
  * default constructor
  * @param elmt
  * @param parent
  */
-elementpropertieswidget::elementpropertieswidget(Element *elmt, QWidget *parent) :
+ElementPropertiesDialog::ElementPropertiesDialog(Element *elmt, QWidget *parent) :
 	QDialog(parent),
 	element_ (elmt),
 	diagram_ (elmt->diagram())
@@ -42,11 +42,11 @@ elementpropertieswidget::elementpropertieswidget(Element *elmt, QWidget *parent)
 }
 
 /**
- * @brief elementpropertieswidget::generalWidget
+ * @brief ElementPropertiesDialog::generalWidget
  * build the widget for the tab général
  * @return
  */
-QWidget* elementpropertieswidget::generalWidget() {
+QWidget* ElementPropertiesDialog::generalWidget() {
 	CustomElement *custom_element = qobject_cast<CustomElement *>(element_);
 	GhostElement  *ghost_element  = qobject_cast<GhostElement  *>(element_);
 
@@ -102,11 +102,11 @@ QWidget* elementpropertieswidget::generalWidget() {
 }
 
 /**
- * @brief elementpropertieswidget::buildInterface
+ * @brief ElementPropertiesDialog::buildInterface
  *build the interface of this dialog, the main tab can have
  *different tab according to the edited element
  */
-void elementpropertieswidget::buildInterface() {
+void ElementPropertiesDialog::buildInterface() {
 
 	setWindowTitle(tr("Propriétés de l'élément"));
 	tab_ = new QTabWidget(this);
@@ -154,12 +154,12 @@ void elementpropertieswidget::buildInterface() {
 }
 
 /**
- * @brief elementpropertieswidget::standardButtonClicked
+ * @brief ElementPropertiesDialog::standardButtonClicked
  * apply action when click in the dialog standard button box
  * @param button
  * the cliked button
  */
-void elementpropertieswidget::standardButtonClicked(QAbstractButton *button) {
+void ElementPropertiesDialog::standardButtonClicked(QAbstractButton *button) {
 	int  answer = dbb -> buttonRole(button);
 	bool accept = false;
 
@@ -204,10 +204,10 @@ void elementpropertieswidget::standardButtonClicked(QAbstractButton *button) {
 }
 
 /**
- * @brief elementpropertieswidget::findInPanel
+ * @brief ElementPropertiesDialog::findInPanel
  * Slot
  */
-void elementpropertieswidget::findInPanel() {
+void ElementPropertiesDialog::findInPanel() {
 	if (CustomElement *custom_element = qobject_cast<CustomElement *>(element_)) {
 		emit findElementRequired(custom_element->location());
 	}
@@ -215,10 +215,10 @@ void elementpropertieswidget::findInPanel() {
 }
 
 /**
- * @brief elementpropertieswidget::editElement
+ * @brief ElementPropertiesDialog::editElement
  * Slot
  */
-void elementpropertieswidget::editElement() {
+void ElementPropertiesDialog::editElement() {
 	if (CustomElement *custom_element = qobject_cast<CustomElement *>(element_)) {
 		emit findElementRequired(custom_element->location());
 		emit editElementRequired(custom_element->location());

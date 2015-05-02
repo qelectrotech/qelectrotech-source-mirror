@@ -30,11 +30,11 @@ class QAbstractButton;
 class QDialogButtonBox;
 class QTabWidget;
 
-class elementpropertieswidget : public QDialog {
+class ElementPropertiesDialog : public QDialog {
 	Q_OBJECT
 
 	public:
-		explicit elementpropertieswidget(Element *elmt, QWidget *parent = 0);
+		explicit ElementPropertiesDialog(Element *elmt, QWidget *parent = 0);
 
 	private:
 		QWidget* generalWidget();

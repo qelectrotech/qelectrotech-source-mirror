@@ -31,7 +31,7 @@
  * @param parent
  */
 MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
-	QWidget(parent),
+	PropertiesEditorWidget(parent),
 	ui(new Ui::MasterPropertiesWidget),
 	element_(elmt)
 {
@@ -58,12 +58,9 @@ MasterPropertiesWidget::~MasterPropertiesWidget()
  * pushed to the stack of element project.
  * Return true if link change, else false
  */
-bool MasterPropertiesWidget::apply() {
-	if (QUndoCommand *undo = associatedUndo()) {
+void MasterPropertiesWidget::apply() {
+	if (QUndoCommand *undo = associatedUndo())
 		element_ -> diagram() -> undoStack().push(undo);
-		return true;
-	}
-	return false;
 }
 
 /**

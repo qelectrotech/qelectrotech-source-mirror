@@ -30,7 +30,7 @@
  * @param parent parent widget
  */
 ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
-	QWidget(parent),
+	PropertiesEditorWidget(parent),
 	ui(new Ui::ElementInfoWidget),
 	element_(elmt),
 	elmt_info(elmt->elementInformations()),
@@ -55,14 +55,11 @@ ElementInfoWidget::~ElementInfoWidget()
  * @brief ElementInfoWidget::apply
  * Apply the new information with a new undo command (got with method associatedUndo)
  * pushed to the stack of element project.
- * Return true if new info change, else false.
  */
-bool ElementInfoWidget::apply() {
-	if (QUndoCommand *undo = associatedUndo()) {
+void ElementInfoWidget::apply()
+{
+	if (QUndoCommand *undo = associatedUndo())
 		element_ -> diagram() -> undoStack().push(undo);
-		return true;
-	}
-	return false;
 }
 
 /**

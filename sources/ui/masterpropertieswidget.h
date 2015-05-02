@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QHash>
+#include <propertieseditorwidget.h>
 
 class QListWidgetItem;
 class Element;
@@ -35,7 +36,7 @@ namespace Ui {
  * This class embenddedthe undo/redo command when apply new connection.
  */
 
-class MasterPropertiesWidget : public QWidget
+class MasterPropertiesWidget : public PropertiesEditorWidget
 {
 	Q_OBJECT
 
@@ -43,7 +44,7 @@ class MasterPropertiesWidget : public QWidget
 	explicit MasterPropertiesWidget(Element *elmt, QWidget *parent = 0);
 	~MasterPropertiesWidget();
 
-	bool apply();
+	void apply();
 	void reset();
 	QUndoCommand* associatedUndo() const;
 

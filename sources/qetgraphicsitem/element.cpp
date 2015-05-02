@@ -22,7 +22,7 @@
 #include "elementtextitem.h"
 #include "diagramcommands.h"
 #include <QtDebug>
-#include <ui/elementpropertieswidget.h>
+#include <elementpropertiesdialog.h>
 #include "elementprovider.h"
 #include "diagramposition.h"
 #include "terminal.h"
@@ -51,7 +51,7 @@ Element::~Element() {
 void Element::editProperty() {
 	if (diagram())
 		if(!diagram()->isReadOnly()){
-			elementpropertieswidget epw (this, diagram()->views().first());
+			ElementPropertiesDialog epw (this, diagram()->views().first());
 			connect(&epw, SIGNAL(editElementRequired(ElementsLocation)), diagram(), SIGNAL(editElementRequired(ElementsLocation)));
 			connect(&epw, SIGNAL(findElementRequired(ElementsLocation)), diagram(), SIGNAL(findElementRequired(ElementsLocation)));
 			epw.exec();

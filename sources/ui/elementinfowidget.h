@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include "diagramcontext.h"
+#include "propertieseditorwidget.h"
 
 class Element;
 class QUndoCommand;
@@ -34,7 +35,8 @@ namespace Ui {
  * @brief The ElementInfoWidget class
  * this class is a widget to edit an element informations.
  */
-class ElementInfoWidget : public QWidget {
+class ElementInfoWidget : public PropertiesEditorWidget
+{
 	Q_OBJECT
 
 		//METHODS
@@ -42,7 +44,7 @@ class ElementInfoWidget : public QWidget {
 		explicit ElementInfoWidget(Element *elmt, QWidget *parent = 0);
 		~ElementInfoWidget();
 
-		bool apply();
+		void apply();
 		QUndoCommand* associatedUndo () const;
 
 	protected:
