@@ -46,7 +46,8 @@ class MasterPropertiesWidget : public PropertiesEditorWidget
 
 	void apply();
 	void reset();
-	QUndoCommand* associatedUndo() const;
+	QUndoCommand *associatedUndo () const;
+	QString title() const {return tr("Référence croisée (maitre)");}
 
 	private:
 	void buildInterface();

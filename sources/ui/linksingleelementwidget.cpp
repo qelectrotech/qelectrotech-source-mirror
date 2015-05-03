@@ -31,7 +31,7 @@
  * the parent widget
  */
 LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent) :
-	QWidget(parent),
+	PropertiesEditorWidget(parent),
 	ui(new Ui::LinkSingleElementWidget),
 	element_(elmt),
 	esw_(0),
@@ -67,10 +67,32 @@ LinkSingleElementWidget::~LinkSingleElementWidget()
  * Apply the new property of the edited element
  */
 void LinkSingleElementWidget::apply() {
+	QUndoCommand *undo = associatedUndo();
+	if (undo)
+		element_->diagram()->undoStack().push(undo);
+}
+
+/**
+ * @brief LinkSingleElementWidget::associatedUndo
+ * @return the undo command associated to the current edition
+ * if there isn't change, return nulptr
+ */
+QUndoCommand *LinkSingleElementWidget::associatedUndo() const
+{
 	if (esw_->selectedElement())
-		element_->diagram()->undoStack().push(new LinkElementsCommand(element_, esw_->selectedElement()));
+		return new LinkElementsCommand(element_, esw_->selectedElement());
 	else if (unlink_)
-		element_->diagram()->undoStack().push(new unlinkElementsCommand(element_));
+		return new unlinkElementsCommand(element_);
+
+	return nullptr;
+}
+
+QString LinkSingleElementWidget::title() const
+{
+	if (element_->linkType() == Element::AllReport)
+		return tr("Report de folio");
+	else
+		return tr("Référence croisée (esclave)");
 }
 
 /**

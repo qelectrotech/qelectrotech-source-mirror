@@ -28,10 +28,19 @@ PropertiesEditorWidget::PropertiesEditorWidget(QWidget *parent) :
 {}
 
 /**
- * @brief PropertiesEditorWidget::assosiatedUndo
- * By default, return an empty undo command
- * @return an empty undo command
+ * @brief PropertiesEditorWidget::associatedUndo
+ * By default, return a nullptr
+ * @return nullptr
  */
-QUndoCommand *PropertiesEditorWidget::assosiatedUndo() {
-	return new QUndoCommand();
+QUndoCommand *PropertiesEditorWidget::associatedUndo() const{
+	return nullptr;
+}
+
+/**
+ * @brief PropertiesEditorWidget::title
+ * @return the title of this editor
+ */
+QString PropertiesEditorWidget::title() const
+{
+	return QString();
 }

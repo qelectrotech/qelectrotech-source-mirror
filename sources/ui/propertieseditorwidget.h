@@ -33,9 +33,10 @@ class PropertiesEditorWidget : public QWidget
 	public:
 		explicit PropertiesEditorWidget(QWidget *parent = 0);
 
-		void apply() {}
-		void reset() {}
-		virtual QUndoCommand *assosiatedUndo ();
+		virtual void apply() {}
+		virtual void reset() {}
+		virtual QUndoCommand *associatedUndo () const;
+		virtual QString title() const;
 };
 
 #endif // PROPERTIESEDITORWIDGET_H

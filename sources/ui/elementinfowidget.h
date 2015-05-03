@@ -45,7 +45,8 @@ class ElementInfoWidget : public PropertiesEditorWidget
 		~ElementInfoWidget();
 
 		void apply();
-		QUndoCommand* associatedUndo () const;
+		QUndoCommand *associatedUndo () const;
+		QString title() const {return tr("Informations");}
 
 	protected:
 		virtual bool event(QEvent *event);

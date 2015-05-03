@@ -18,7 +18,7 @@
 #ifndef LINKSINGLEELEMENTWIDGET_H
 #define LINKSINGLEELEMENTWIDGET_H
 
-#include <QWidget>
+#include "propertieseditorwidget.h"
 #include "element.h"
 
 class Diagram;
@@ -39,15 +39,18 @@ namespace Ui {
  * If the element is already linked, the widget ask user to unlink.
  * This widget embedded the diagram command for undo/redo the action
  */
-class LinkSingleElementWidget : public QWidget
+class LinkSingleElementWidget : public PropertiesEditorWidget
 {
 	Q_OBJECT
 
 	///Methods
 	public:
-	explicit LinkSingleElementWidget(Element *elmt, QWidget *parent = 0);
-	~LinkSingleElementWidget();
-	void apply();
+		explicit LinkSingleElementWidget(Element *elmt, QWidget *parent = 0);
+		~LinkSingleElementWidget();
+
+		void apply();
+		QUndoCommand *associatedUndo() const;
+		QString title() const;
 
 	private:
 	void buildInterface();
