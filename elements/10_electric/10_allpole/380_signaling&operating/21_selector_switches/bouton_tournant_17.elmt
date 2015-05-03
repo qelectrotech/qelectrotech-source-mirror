@@ -11,6 +11,9 @@
         <name lang="cs">Otočný přepínač se 3 pevnými polohami, otevřený v prostřední poloze se samočinným navrácením</name>
         <name lang="nl">Keuzeschakelaar 3 standen terugverend stand 0 (NO/NC)</name>
     </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">commutator</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

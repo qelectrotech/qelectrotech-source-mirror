@@ -9,6 +9,9 @@
         <name lang="it">Arresto d'emergenza</name>
         <name lang="nl">Nooddrukknop trekreset</name>
     </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">commutator</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

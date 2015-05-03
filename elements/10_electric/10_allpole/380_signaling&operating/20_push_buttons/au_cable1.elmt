@@ -7,6 +7,9 @@
         <name lang="it">Arresto d'emergenza a cavo 2NC</name>
         <name lang="cs">Bezpečnostní přepínače 2NC</name>
     </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">commutator</kindInformation>
+    </kindInformations>
     <informations></informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-12" x1="3" y2="-10" x2="2"/>

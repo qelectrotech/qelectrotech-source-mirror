@@ -8,6 +8,9 @@
         <name lang="cs">Spínač - 3 polohy</name>
         <name lang="nl">keuzeschakelaar 3 pos (NO/NO)</name>
     </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">commutator</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

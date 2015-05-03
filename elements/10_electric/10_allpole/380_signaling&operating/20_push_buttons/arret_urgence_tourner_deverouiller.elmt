@@ -9,6 +9,9 @@
         <name lang="it">Arresto d'emergenza con sblocco a rotazione</name>
         <name lang="nl">Noodstop drukknop met draaireset</name>
     </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">commutator</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
