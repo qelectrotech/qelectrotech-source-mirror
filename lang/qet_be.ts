@@ -882,7 +882,8 @@
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bent u zeker dat u dit element wilt verwijderen ?
+</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="70"/>
@@ -1299,21 +1300,23 @@ Het is niet mogelijk om een collectie te verplaatsen.</translation>
         <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
         <source>Êtes-vous sûr  de vouloir vider cette collection ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bent u zeker dat u  deze collectie wilt leeg maken ?</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="77"/>
         <source>Êtes-vous sûr  de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bent u zeker dat u deze categorie wilt verwijderen ?
+Alle elementen in deze categorie en de categorie zlef worden verwijderd.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="91"/>
         <source>Êtes-vous vraiment sur de vouloir supprimer cette catégorie ?
 Les changements seront définitifs.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bent u zeer zeker dat u deze categorie wilt verwijderen ?
+de verwijdering is definitief.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="104"/>
@@ -1451,7 +1454,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="451"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer en sleep het sjabloon van de etiket en plaats het in het gewenste schema.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="475"/>
@@ -1480,7 +1483,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="484"/>
         <source>Glissez-déposez cet élément « %1 » sur un folio pour l&apos;y insérer, double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer en sleep element &quot; %1&quot; naar het gewenste schema, dubbel klik er op om het te bewerken</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="590"/>
@@ -1633,42 +1636,42 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Propriétés du folio</source>
-        <translation type="unfinished">Schema eigenschappen</translation>
+        <translation>Schema eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Ajouter un folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema bladzijde toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Supprimer ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema bladzijde verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Remonter ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstel schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Abaisser ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaats schema lager</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Remonter ce folio x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstel het schema 10x</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Remonter ce folio au debut</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaats schema bladzijde vooraan</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Abaisser ce folio x10</source>
-        <translation type="unfinished"></translation>
+        <translation>Verlaag schema baldzijde 10x</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
@@ -1693,7 +1696,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="90"/>
         <source>Filtrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="501"/>
@@ -1820,12 +1823,12 @@ Les changements seront définitifs.</source>
         <location filename="../sources/exportdialog.cpp" line="60"/>
         <source>Exporter les folios du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exporteer de schema bladzijden</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="75"/>
         <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer de schema bladzijden die u wilt exporteren, alsook de afmetingen :</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="78"/>
@@ -1840,13 +1843,13 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="141"/>
         <source>Titre du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel van de schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="770"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>U mot voor elke blazijde een unique bestandsnaam geven.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="785"/>
@@ -1924,12 +1927,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="159"/>
         <source>Exporter entièrement le folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporteer alle schema bladzijden</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="162"/>
         <source>Exporter seulement les éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporteer enkel de elementen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
@@ -2008,22 +2011,22 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="200"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik vensters (wordt toegepast bij de volgende heropstart van QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="201"/>
         <source>Utiliser des onglets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik tabs (wordt toegepast bij de volgende heropstart van QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="203"/>
         <source>Autoriser le dézoom au delà du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitzomen voorbij het schema kader toestaan</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="256"/>
         <source>La nouvelle langue sera prise en compte au prochain lancement de QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>De nieuwe taal wordt toegpast bij de volgende heropstart van QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="316"/>
@@ -2148,13 +2151,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="242"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dit is een QElectroTech project, een bestandsnaam met de extensie qet bevat meerdere schema baldzijden.Het bevat ook schema elementen en titelhoeken welke gebruikt worden op de verschillende schema bladzijden.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="368"/>
         <source>Folio sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Schema/bladzijde zonder titel</translation>
+        <translation>Schema/bladzijde zonder titel</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="375"/>
@@ -2177,7 +2180,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="545"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dit is een titelhoek welke u kan toepassen op een schema bladzijde.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="730"/>
@@ -2202,7 +2205,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/ghostelement.cpp" line="37"/>
         <source>&lt;u&gt;Élément manquant :&lt;/u&gt; %1</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;u&gt;Ontbrekend element : &lt;u&gt;%1</translation>
     </message>
 </context>
 <context>
@@ -2307,13 +2310,13 @@ Geen toegang tot de bovenliggende categorie</translation>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="70"/>
         <source>La catégorie « %1 » (%2) existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>De categorie &quot; %1 &quot; (%2) bestaat reeds. Wat wilt u doen ?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="118"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Het element &quot; %1 &quot; bestaat reeds. Wat wilt u doen ?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
@@ -2583,7 +2586,7 @@ Dit element is al verbonden.</translation>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="140"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="154"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema bladzijde %1 (%2), positie %3</translation>
     </message>
 </context>
 <context>
@@ -2633,7 +2636,7 @@ Dit element is al verbonden.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="75"/>
         <source>Folio</source>
-        <translation type="unfinished">Pagina</translation>
+        <translation>Schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="76"/>
@@ -2654,7 +2657,7 @@ Dit element is al verbonden.</translation>
         <location filename="../sources/configpages.cpp" line="176"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="177"/>
@@ -2907,19 +2910,19 @@ Wilt u de tekst gelijk maken voor alle geleiders met hezelfde potentiaal?</trans
         <location filename="../sources/projectconfigpages.cpp" line="161"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Titel van het project :</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="163"/>
         <source>Ce titre sera disponible pour tous les folios de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Deze titel i beschikbaar op alle schema bladzijden van het project bij gebruik van %projecttitle.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="165"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>U kan hier uw persoonlijke eigenschappen definieren welke beschikbaar zijn voor alle schema bladzijden in het project (enkel beschikbaar voor de titelhoekken).</translation>
     </message>
 </context>
 <context>
@@ -2945,19 +2948,19 @@ Wilt u wijzigingen bewaren?</translation>
         <location filename="../sources/projectview.cpp" line="263"/>
         <source>Projet QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a project file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Project QElectroTech (*.qet)</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="371"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verijderen van schema bladzijde ?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="372"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bent u zeker dat u deze schema bladzijde wilt verwijderen? deze wijziging kan niet ongedaan gemaakt worden.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="696"/>
@@ -2985,13 +2988,13 @@ Wilt u wijzigingen bewaren?</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="753"/>
         <source>Ajouter un folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Een schema bladzijde toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="767"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dit project bevat geen enkele schem bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="261"/>
@@ -3196,7 +3199,7 @@ Beschikbare opties:
         <location filename="../sources/qetapp.cpp" line="121"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Opladen... schema beheer</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="124"/>
@@ -3238,12 +3241,12 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetapp.cpp" line="372"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaats</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="373"/>
         <source>Fonction</source>
-        <translation type="unfinished"></translation>
+        <translation>Functie</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="384"/>
@@ -3449,22 +3452,22 @@ Beschikbare opties:
         <location filename="../sources/qetdiagrameditor.cpp" line="162"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dit paneel bevat de verschillende acties welke toegpast zij op de huidige schema bladzijde. Klikken op één van deze acties brengt het schema terug naar de inhoud juist na het toepassen van deze actie.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Propriétés du folio</source>
-        <translation type="unfinished">Schema eigenschappen</translation>
+        <translation>Schema eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
         <source>Ajouter un folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema bladzijde toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="203"/>
         <source>Supprimer le folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema baldzijde verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="210"/>
@@ -3485,134 +3488,134 @@ Beschikbare opties:
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Crée un nouveau projet</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw project aanmaken</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>Ouvre un projet existant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bestaand project openen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
         <source>Ferme le projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Het huidige project sluiten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bewaar het huidige project en al zijn schema bladzijden</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
         <source>Enregistre le projet courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bewaar het huidige project met een andere naam</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="246"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een kolom toe</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="247"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder een kolom</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vergroot het schema in de hoogte</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verklein het schema in de hoogte</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="275"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder de geselecteerde elementen van het schema</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="295"/>
         <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer alle elementen op deze schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer niets op deze schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
         <source>Agrandit le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vergroot  deze schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="318"/>
         <source>Rétrécit le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verklein deze schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
         <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitzomen toegestaan buiten het schema kader</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
         <source>Adapte le zoom exactement sur le cadre du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Pas de zoom waarde aan aan de exacte afmetingen van het schema kader</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
         <source>Ajouter une ligne droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijn toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
         <source>Ajouter un rectangle</source>
-        <translation type="unfinished">Rechthoek toevoegen</translation>
+        <translation>Rechthoek toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Ajouter une ellipse</source>
-        <translation type="unfinished">Voeg ellipse toe</translation>
+        <translation>Voeg ellipse toe</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Ajouter une polyligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Polulijn toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="364"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exporteer de huidige schemabladzijde naar een ander formaat</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="365"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Afdrukken van één of meerdere  schema bladzijden van het huidige project</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="371"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Plaat elementen op het klembord</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="373"/>
