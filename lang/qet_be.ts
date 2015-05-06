@@ -1057,7 +1057,7 @@
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="49"/>
         <source>Informations</source>
-        <translation type="unfinished">Informatie</translation>
+        <translation>Informatie</translation>
     </message>
 </context>
 <context>
@@ -1176,7 +1176,7 @@
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="92"/>
         <source>Commutateur / bouton</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakelaar / drukknop</translation>
     </message>
 </context>
 <context>
@@ -1184,69 +1184,76 @@
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
         <source>Général</source>
-        <translation type="unfinished">Algemeen</translation>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="155"/>
         <source>Élément manquant</source>
-        <translation type="unfinished">Ontbrekend element</translation>
+        <translation>Ontbrekend element</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="157"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="162"/>
         <source>Nom : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Naam : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="165"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Bladzijde : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="167"/>
         <source>Position : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Positie : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="168"/>
         <source>Dimensions : %1*%2
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Afmetingen : %1*%2
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="169"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmen : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="170"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst veld : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="173"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Positie : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="193"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Vind terug in verzameliing</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="195"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Bewerken element</translation>
+        <translation>Bewerken element</translation>
     </message>
 </context>
 <context>
@@ -2605,12 +2612,12 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="93"/>
         <source>Report de folio</source>
-        <translation type="unfinished">Rapport pagina</translation>
+        <translation>Rapport pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="95"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished">Kruisverwijzing (Onderdeel)</translation>
+        <translation>Kruisverwijzing (Onderdeel)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="103"/>
@@ -2681,7 +2688,7 @@ Dit element is al verbonden.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="50"/>
         <source>Référence croisée (maitre)</source>
-        <translation type="unfinished">Kruisverwijzing (Basis)</translation>
+        <translation>Kruisverwijzing (Basis)</translation>
     </message>
 </context>
 <context>
@@ -3716,13 +3723,13 @@ Beschikbare opties:
         <location filename="../sources/qetdiagrameditor.cpp" line="373"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk de bladzijde eigenschappen (afmetingen, informatie op de etiket, eigenschappen van de geleiders...)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="379"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>U kan deze bladzijde alleen lezen en niet wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="433"/>
@@ -4120,7 +4127,7 @@ Selecteert elementen</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="710"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Project QElectroTech (*.qet);;Bestand XML (*.xml);;Alle bestanden (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="795"/>
@@ -4164,7 +4171,7 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
         <location filename="../sources/qetdiagrameditor.cpp" line="1277"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk geleiders</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1284"/>
@@ -4175,7 +4182,7 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1455"/>
         <source>Active le projet « %1 »</source>
-        <translation type="unfinished"></translation>
+        <translation>Activeer project &quot; %1 &quot;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1985"/>
@@ -4344,7 +4351,7 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
         <location filename="../sources/editor/qetelementeditor.cpp" line="672"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;Bij de afwezigheid van contact klem, is het niet mogelijk het element te verbinden met andere element door middel van geleiders.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
@@ -4611,41 +4618,41 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="716"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Fout&lt;/b&gt;:&lt;br&gt;de schema bladzijde moet minstens 1 verbindingscontact bevatten.&lt;br&gt;&lt;b&gt;Oplossing&lt;/b&gt;:&lt;br&gt;Zie het element na of het minstens 1 verbindingscontact bevat</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>De controle van dit element is gebeurd</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="729"/>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n fout</numerusform>
+            <numerusform>%n fouten</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="734"/>
         <source> et</source>
-        <translation type="unfinished"></translation>
+        <translation> en</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="736"/>
         <source> %n avertissment(s)</source>
         <comment>warnings</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n waarschuwing</numerusform>
+            <numerusform>%n waarschuwingen</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="752"/>
         <source>Erreurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Fouten</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="715"/>
@@ -4656,13 +4663,13 @@ Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</transl
         <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b  &gt; :&lt;br&gt;Les éléments de type maîtres, esclaves, simple et renvoie de folio doivent posséder un champ texte comportant le tagg &apos;label&apos;.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Insérer un champ texte et lui attribuer le tagg &apos;label&apos;</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;br&gt;&lt;b&gt;Fout&lt;/b  &gt;:&lt;br&gt; De elementen van het type master, slave, simpel en terugkeer van de bladzijde moeten een tekstveld met de tagg &apos;label&apos; bevatten.&lt;br&gt;&lt;b&gt;Oplossing&lt;/b&gt;:&lt;br&gt;voeg een tekstveld toe en geef de tagg de naam &apos;label&apos;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="745"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="773"/>
@@ -4970,13 +4977,13 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladzijden afdrukken :</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="176"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="366"/>
         <source>Cacher la liste des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijden lijst van bladzijden</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="177"/>
@@ -5077,17 +5084,17 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="247"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished"></translation>
+        <translation>aanpassenschema bladzijde aan bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="248"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Als deze optie aan gekruist is, schema wordt aangepast aan de beschibare afdrukruimte op het gekozen papier formaat.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="368"/>
         <source>Afficher la liste des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Geef de lijst van schema bladzijden weer</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="264"/>
@@ -5111,7 +5118,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetproject.cpp" line="303"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Project &quot; %1 &quot;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="787"/>
@@ -5185,7 +5192,7 @@ Wat wilt u doen?</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="1011"/>
         <source>Liste des Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijst van schema bladzijden</translation>
     </message>
 </context>
 <context>
@@ -5642,7 +5649,7 @@ Opslaan naar een bestand</translation>
         <location filename="../sources/diagramcommands.cpp" line="897"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de afmetingen van het schema kader</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="926"/>
@@ -5687,7 +5694,7 @@ Opslaan naar een bestand</translation>
         <location filename="../sources/diagramcommands.cpp" line="1162"/>
         <location filename="../sources/diagramcommands.cpp" line="1176"/>
         <source>Lier deux éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkt 2 elementen</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="1175"/>
@@ -5938,7 +5945,7 @@ Opslaan naar een bestand</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1034"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">Schema/bladzijde zonder titel</translation>
+        <translation>Schema/bladzijde zonder titel</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1036"/>
