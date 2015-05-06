@@ -1086,7 +1086,7 @@
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="49"/>
         <source>Informations</source>
-        <translation type="unfinished">Информация</translation>
+        <translation>Информация</translation>
     </message>
 </context>
 <context>
@@ -1205,7 +1205,7 @@
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="92"/>
         <source>Commutateur / bouton</source>
-        <translation type="unfinished"></translation>
+        <translation>Переключатель / кнопка</translation>
     </message>
 </context>
 <context>
@@ -1213,75 +1213,75 @@
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
         <source>Général</source>
-        <translation type="unfinished">Общее</translation>
+        <translation>Общее</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="155"/>
         <source>Élément manquant</source>
-        <translation type="unfinished">Отсутствует элемент</translation>
+        <translation>Отсутствует элемент</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="157"/>
         <source>Élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Элемент</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="162"/>
         <source>Nom : %1
 </source>
-        <translation type="unfinished">Имя : %1
+        <translation>Имя : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="165"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished">Страница : %1
+        <translation>Страница : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="167"/>
         <source>Position : %1
 </source>
-        <translation type="unfinished">Позиция : %1
+        <translation>Позиция : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="168"/>
         <source>Dimensions : %1*%2
 </source>
-        <translation type="unfinished">Размеры : %1*%2</translation>
+        <translation>Размеры : %1*%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="169"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished">Выводы : %1
+        <translation>Выводы : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="170"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished">Текстовые поля : %1
+        <translation>Текстовые поля : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="173"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished">Расположение : %1
+        <translation>Расположение : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="193"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Найти в панели</translation>
+        <translation>Найти в панели</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="195"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Редактировать элемент</translation>
+        <translation>Редактировать элемент</translation>
     </message>
 </context>
 <context>
@@ -2641,12 +2641,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="93"/>
         <source>Report de folio</source>
-        <translation type="unfinished">Точка разрыва</translation>
+        <translation>Точка разрыва</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="95"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished">Ссылка (дочерний)</translation>
+        <translation>Ссылка (дочерний)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="103"/>
@@ -2722,7 +2722,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="50"/>
         <source>Référence croisée (maitre)</source>
-        <translation type="unfinished">Ссылка (главный)</translation>
+        <translation>Ссылка (главный)</translation>
     </message>
 </context>
 <context>
@@ -7677,7 +7677,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
         <source>Commutateur / bouton</source>
-        <translation type="unfinished"></translation>
+        <translation>Переключатель / кнопка</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="96"/>
