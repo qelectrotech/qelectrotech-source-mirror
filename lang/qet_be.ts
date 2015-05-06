@@ -1054,6 +1054,11 @@
         <source>Form</source>
         <translation>Vorm</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/elementinfowidget.h" line="49"/>
+        <source>Informations</source>
+        <translation type="unfinished">Informatie</translation>
+    </message>
 </context>
 <context>
     <name>ElementPropertiesEditorWidget</name>
@@ -1167,6 +1172,81 @@
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="91"/>
         <source>Organe de protection</source>
         <translation>Beveiliging</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="92"/>
+        <source>Commutateur / bouton</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ElementPropertiesWidget</name>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
+        <source>Général</source>
+        <translation type="unfinished">Algemeen</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="155"/>
+        <source>Élément manquant</source>
+        <translation type="unfinished">Ontbrekend element</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="157"/>
+        <source>Élément</source>
+        <translation type="unfinished">Element</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="162"/>
+        <source>Nom : %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="165"/>
+        <source>Folio : %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="167"/>
+        <source>Position : %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="168"/>
+        <source>Dimensions : %1*%2
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="169"/>
+        <source>Bornes : %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="170"/>
+        <source>Champs de texte : %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="173"/>
+        <source>Emplacement : %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="193"/>
+        <source>Retrouver dans le panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="195"/>
+        <source>Éditer l&apos;élément</source>
+        <translation type="unfinished">Bewerken element</translation>
     </message>
 </context>
 <context>
@@ -2523,28 +2603,38 @@ Geen toegang tot de bovenliggende categorie</translation>
         <translation>Toon het verbonden element</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="81"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="93"/>
+        <source>Report de folio</source>
+        <translation type="unfinished">Rapport pagina</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="95"/>
+        <source>Référence croisée (esclave)</source>
+        <translation type="unfinished">Kruisverwijzing (Onderdeel)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="103"/>
         <source>Tous</source>
         <translation>Alles</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="86"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="108"/>
         <source>Sans titre</source>
         <translation>Ongetiteld</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="119"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="141"/>
         <source>Cet élément est déjà lié.</source>
         <translation>
 Dit element is al verbonden.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="120"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="142"/>
         <source>Délier</source>
         <translation>Verbinding verbreken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="146"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="168"/>
         <source>Rechercher</source>
         <translation>Zoeken</translation>
     </message>
@@ -2577,16 +2667,21 @@ Dit element is al verbonden.</translation>
         <translation>Elementen met relatie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="139"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="153"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="136"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="150"/>
         <source>Sans titre</source>
         <translation>Zonder titel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="140"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="154"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="137"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="151"/>
         <source>Folio  %1 (%2), position %3.</source>
         <translation>Schema bladzijde %1 (%2), positie %3</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.h" line="50"/>
+        <source>Référence croisée (maitre)</source>
+        <translation type="unfinished">Kruisverwijzing (Basis)</translation>
     </message>
 </context>
 <context>
@@ -7508,22 +7603,27 @@ Longueur maximale : %2px
         <translation>Voorvoegsel voor omkeer contact :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
         <source>Bobine</source>
         <translation>Spoel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
         <source>Organe de protection</source>
         <translation>Beveiliging</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
+        <source>Commutateur / bouton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="96"/>
         <source>En bas de page</source>
         <translation>Onder aan de bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="97"/>
         <source>Sous le label de l&apos;élément</source>
         <translation>Naast element code</translation>
     </message>
@@ -7592,107 +7692,6 @@ Longueur maximale : %2px
     </message>
 </context>
 <context>
-    <name>elementpropertieswidget</name>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="63"/>
-        <source>Nom : %1
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="66"/>
-        <source>Folio : %1
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="68"/>
-        <source>Position : %1
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="70"/>
-        <source>Bornes : %1
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="71"/>
-        <source>Champs de texte : %1
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="74"/>
-        <source>Emplacement : %1
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="111"/>
-        <source>Propriétés de l&apos;élément</source>
-        <translation>Element eigenschappen</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="130"/>
-        <source>Référence croisée (maitre)</source>
-        <translation>Kruisverwijzing (Basis)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
-        <source>Informations</source>
-        <translation>Informatie</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
-        <source>Référence croisée (esclave)</source>
-        <translation>Kruisverwijzing (Onderdeel)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="144"/>
-        <source>Général</source>
-        <translation>Algemeen</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="56"/>
-        <source>Élément manquant</source>
-        <translation>Ontbrekend element</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="58"/>
-        <source>Élément</source>
-        <translation>Element</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="69"/>
-        <source>Dimensions : %1*%2
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="92"/>
-        <source>Retrouver dans le panel</source>
-        <translation>Zoeken in het panel</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="94"/>
-        <source>Éditer l&apos;élément</source>
-        <translation>Bewerken element</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
-        <source>Information</source>
-        <translation>Informatie</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="122"/>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
-        <source>Report de folio</source>
-        <translation>Rapport pagina</translation>
-    </message>
-</context>
-<context>
     <name>nomenclature</name>
     <message>
         <location filename="../sources/nomenclature.cpp" line="83"/>
@@ -7736,7 +7735,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Fonction</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Functie</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
@@ -7781,7 +7780,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Plaats</translation>
     </message>
 </context>
 <context>

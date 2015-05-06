@@ -1053,6 +1053,11 @@ vodiče s tímto potenciálem?</translation>
         <source>Form</source>
         <translation>Formulář</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/elementinfowidget.h" line="49"/>
+        <source>Informations</source>
+        <translation type="unfinished">Informace</translation>
+    </message>
 </context>
 <context>
     <name>ElementPropertiesEditorWidget</name>
@@ -1166,6 +1171,88 @@ vodiče s tímto potenciálem?</translation>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="91"/>
         <source>Organe de protection</source>
         <translation>Ochrana</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="92"/>
+        <source>Commutateur / bouton</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ElementPropertiesWidget</name>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
+        <source>Général</source>
+        <translation type="unfinished">Obecné</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="155"/>
+        <source>Élément manquant</source>
+        <translation type="unfinished">Chybějící prvek</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="157"/>
+        <source>Élément</source>
+        <translation type="unfinished">Prvek</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="162"/>
+        <source>Nom : %1
+</source>
+        <translation type="unfinished">Název: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="165"/>
+        <source>Folio : %1
+</source>
+        <translation type="unfinished">List: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="167"/>
+        <source>Position : %1
+</source>
+        <translation type="unfinished">Poloha: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="168"/>
+        <source>Dimensions : %1*%2
+</source>
+        <translation type="unfinished">Rozměry: %1*%2
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="169"/>
+        <source>Bornes : %1
+</source>
+        <translation type="unfinished">Svorky: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="170"/>
+        <source>Champs de texte : %1
+</source>
+        <translation type="unfinished">Textová pole: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="173"/>
+        <source>Emplacement : %1
+</source>
+        <translation type="unfinished">Umístění: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="193"/>
+        <source>Retrouver dans le panel</source>
+        <translation type="unfinished">Najít v panelu</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="195"/>
+        <source>Éditer l&apos;élément</source>
+        <translation type="unfinished">Upravit prvek</translation>
     </message>
 </context>
 <context>
@@ -2516,27 +2603,37 @@ Změny budou konečné.</translation>
         <translation>Vidět spojený prvek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="81"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="93"/>
+        <source>Report de folio</source>
+        <translation type="unfinished">Zpráva o listu</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="95"/>
+        <source>Référence croisée (esclave)</source>
+        <translation type="unfinished">Křížové odkazy (podřízené)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="103"/>
         <source>Tous</source>
         <translation>Vše</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="86"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="108"/>
         <source>Sans titre</source>
         <translation>Bez názvu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="119"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="141"/>
         <source>Cet élément est déjà lié.</source>
         <translation>Tento prvek je již spojen.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="120"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="142"/>
         <source>Délier</source>
         <translation>Odpojit</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="146"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="168"/>
         <source>Rechercher</source>
         <translation>Hledat</translation>
     </message>
@@ -2569,16 +2666,21 @@ Změny budou konečné.</translation>
         <translation>Spojené prvky</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="139"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="153"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="136"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="150"/>
         <source>Sans titre</source>
         <translation>Bez názvu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="140"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="154"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="137"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="151"/>
         <source>Folio  %1 (%2), position %3.</source>
         <translation>List %1 (%2), poloha %3.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.h" line="50"/>
+        <source>Référence croisée (maitre)</source>
+        <translation type="unfinished">Křížové odkazy (hlavní)</translation>
     </message>
 </context>
 <context>
@@ -7508,22 +7610,27 @@ Největší délka: %2px</translation>
         <translation>Předpona přepínacích kontaktů:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="91"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
         <source>Bobine</source>
         <translation>Cívka</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="92"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
         <source>Organe de protection</source>
         <translation>Ochrana</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="93"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
+        <source>Commutateur / bouton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="96"/>
         <source>En bas de page</source>
         <translation>Zápatí</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="97"/>
         <source>Sous le label de l&apos;élément</source>
         <translation>Pod označením prvku</translation>
     </message>
@@ -7589,114 +7696,6 @@ Největší délka: %2px</translation>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Sélectionner tout</source>
         <translation>Vybrat vše</translation>
-    </message>
-</context>
-<context>
-    <name>elementpropertieswidget</name>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="63"/>
-        <source>Nom : %1
-</source>
-        <translation>Název: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="66"/>
-        <source>Folio : %1
-</source>
-        <translation>List: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="68"/>
-        <source>Position : %1
-</source>
-        <translation>Poloha: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="70"/>
-        <source>Bornes : %1
-</source>
-        <translation>Svorky: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="71"/>
-        <source>Champs de texte : %1
-</source>
-        <translation>Textová pole: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="74"/>
-        <source>Emplacement : %1
-</source>
-        <translation>Umístění: %1
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="111"/>
-        <source>Propriétés de l&apos;élément</source>
-        <translation>Vlastnosti prvku</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="130"/>
-        <source>Référence croisée (maitre)</source>
-        <translation>Křížové odkazy (hlavní)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="132"/>
-        <source>Informations</source>
-        <translation>Informace</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
-        <source>Référence croisée (esclave)</source>
-        <translation>Křížové odkazy (podřízené)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="144"/>
-        <source>Général</source>
-        <translation>Obecné</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="56"/>
-        <source>Élément manquant</source>
-        <translation>Chybějící prvek</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="58"/>
-        <source>Élément</source>
-        <translation>Prvek</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="69"/>
-        <source>Dimensions : %1*%2
-</source>
-        <translation>Rozměry: %1*%2
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="92"/>
-        <source>Retrouver dans le panel</source>
-        <translation>Najít v panelu</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="94"/>
-        <source>Éditer l&apos;élément</source>
-        <translation>Upravit prvek</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="118"/>
-        <source>Information</source>
-        <translation>Informace</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="122"/>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="126"/>
-        <source>Report de folio</source>
-        <translation>Zpráva o listu</translation>
     </message>
 </context>
 <context>
