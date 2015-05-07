@@ -1056,7 +1056,7 @@ dla przewodów o tym samym potencjale?</translation>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="49"/>
         <source>Informations</source>
-        <translation type="unfinished">Informacje</translation>
+        <translation>Informacje</translation>
     </message>
 </context>
 <context>
@@ -1175,7 +1175,7 @@ dla przewodów o tym samym potencjale?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="92"/>
         <source>Commutateur / bouton</source>
-        <translation type="unfinished"></translation>
+        <translation>łącznik pokrętny/przyciskowy</translation>
     </message>
 </context>
 <context>
@@ -1183,69 +1183,69 @@ dla przewodów o tym samym potencjale?</translation>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="136"/>
         <source>Général</source>
-        <translation type="unfinished">Ogólne</translation>
+        <translation>Ogólne</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="155"/>
         <source>Élément manquant</source>
-        <translation type="unfinished">Brak elementu</translation>
+        <translation>Brak elementu</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="157"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="162"/>
         <source>Nom : %1
 </source>
-        <translation type="unfinished">Nazwa: %1</translation>
+        <translation>Nazwa: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="165"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished">Arkusz: %1</translation>
+        <translation>Arkusz: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="167"/>
         <source>Position : %1
 </source>
-        <translation type="unfinished">Pozycja: %1</translation>
+        <translation>Pozycja: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="168"/>
         <source>Dimensions : %1*%2
 </source>
-        <translation type="unfinished">Wymiary: %1*%2</translation>
+        <translation>Wymiary: %1*%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="169"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished">Zacisk: %1</translation>
+        <translation>Zacisk: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="170"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished">Pole tekstowe: %1</translation>
+        <translation>Pole tekstowe: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="173"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished">Położenie: %1</translation>
+        <translation>Położenie: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="193"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Znajdź w panelu</translation>
+        <translation>Znajdź w panelu</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="195"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Edytuj element</translation>
+        <translation>Edytuj element</translation>
     </message>
 </context>
 <context>
@@ -2598,12 +2598,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="93"/>
         <source>Report de folio</source>
-        <translation type="unfinished">Odsyłacze do arkuszy</translation>
+        <translation>Odsyłacze do arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="95"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished">Odsyłacz (podrzędny)</translation>
+        <translation>Odsyłacz (podrzędny)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="103"/>
@@ -2673,7 +2673,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="50"/>
         <source>Référence croisée (maitre)</source>
-        <translation type="unfinished">Odsyłacz (nadrzędny)</translation>
+        <translation>Odsyłacz (nadrzędny)</translation>
     </message>
 </context>
 <context>
@@ -7613,7 +7613,7 @@ Długość maksymalna: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
         <source>Commutateur / bouton</source>
-        <translation type="unfinished"></translation>
+        <translation>Łącznik popkrętny/przyciskowy</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="96"/>
