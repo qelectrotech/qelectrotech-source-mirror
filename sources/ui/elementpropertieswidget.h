@@ -18,7 +18,7 @@
 #ifndef ELEMENTPROPERTIESWIDGET_H
 #define ELEMENTPROPERTIESWIDGET_H
 
-#include "propertieseditorwidget.h"
+#include "PropertiesEditor/propertieseditorwidget.h"
 
 class Element;
 class Diagram;

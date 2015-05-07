@@ -1,0 +1,57 @@
+/*
+	Copyright 2006-2015 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
+#ifndef SELECTIONPROPERTIESDOCKWIDGET_H
+#define SELECTIONPROPERTIESDOCKWIDGET_H
+
+#include <QDockWidget>
+
+class PropertiesEditorWidget;
+class QAbstractButton;
+
+namespace Ui {
+	class PropertiesEditorDockWidget;
+}
+
+class PropertiesEditorDockWidget : public QDockWidget
+{
+		Q_OBJECT
+
+	public:
+		explicit PropertiesEditorDockWidget(QWidget *parent = 0);
+		~PropertiesEditorDockWidget();
+
+		virtual void clear();
+		virtual void apply();
+		virtual void reset();
+		bool addEditor (PropertiesEditorWidget *editor, int index = 0);
+		bool removeEditor (PropertiesEditorWidget *editor);
+		void setDisabledButtonBox(bool b = true);
+		void setEnabledButtonBox (bool b = true);
+
+
+	private slots:
+		void on_buttonBox_clicked(QAbstractButton *button);
+
+	protected:
+		QList <PropertiesEditorWidget *> m_editor_list;
+
+	private:
+		Ui::PropertiesEditorDockWidget *ui;
+};
+
+#endif // SELECTIONPROPERTIESDOCKWIDGET_H

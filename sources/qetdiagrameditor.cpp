@@ -39,6 +39,7 @@
 #include "dveventaddshape.h"
 #include "dveventaddtext.h"
 #include "reportproperties.h"
+#include "diagrampropertieseditordockwidget.h"
 
 #include "ui/dialogautonum.h"
 
@@ -82,6 +83,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	
 	setUpElementsPanel();
 	setUpUndoStack();
+	setUpSelectionPropertiesEditor();
 	setUpActions();
 	setUpToolBar();
 	setUpMenu();
@@ -170,6 +172,17 @@ void QETDiagramEditor::setUpUndoStack() {
 	qdw_undo -> setWidget(undo_view);
 
 	addDockWidget(Qt::LeftDockWidgetArea, qdw_undo);
+}
+
+/**
+ * @brief QETDiagramEditor::setUpSelectionPropertiesEditor
+ * Setup the dock for edit the current selection
+ */
+void QETDiagramEditor::setUpSelectionPropertiesEditor()
+{
+	m_selection_properties_editor = new DiagramPropertiesEditorDockWidget(this);
+	m_selection_properties_editor -> setObjectName("diagram_properties_editor_dock_widget");
+	addDockWidget(Qt::RightDockWidgetArea, m_selection_properties_editor);
 }
 
 /**
@@ -727,7 +740,7 @@ bool QETDiagramEditor::openProject() {
 bool QETDiagramEditor::closeProject(ProjectView *project_view) {
 	if (project_view) {
 		activateProject(project_view);
-		if (QMdiSubWindow *sub_window = subWindowForWidget(project_view)) {
+		if (QMdiSubWindow *sub_window = subWindowForWidget(project_view)){
 			return(sub_window -> close());
 		}
 	}
@@ -1217,7 +1230,7 @@ void QETDiagramEditor::slot_updateUndoStack()
 void QETDiagramEditor::slot_updateComplexActions() {
 	DiagramView *dv = currentDiagram();
 	bool editable_diagram = (dv && !dv -> diagram() -> isReadOnly());
-	
+
 		//Number of selected conductors
 	int selected_conductors_count = dv ? dv -> diagram() -> selectedConductors().count() : 0;
 	conductor_reset  -> setEnabled(editable_diagram && selected_conductors_count);
@@ -1961,7 +1974,7 @@ void QETDiagramEditor::removeDiagramFromProject() {
  */
 void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 {
-	connect(dv, SIGNAL(selectionChanged()), this, SLOT(slot_updateComplexActions()));
+	connect(dv, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
 	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
 	connect(dv, SIGNAL(itemAdded()),		this, SLOT(addItemFinish()));
 }
@@ -2069,6 +2082,19 @@ void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 
 	slot_updateActions();
 	slot_updateWindowsMenu();
+}
+
+/**
+ * @brief QETDiagramEditor::selectionChanged
+ * This slot is called when a diagram selection was changed.
+ */
+void QETDiagramEditor::selectionChanged()
+{
+	slot_updateComplexActions();
+
+	DiagramView *dv = currentDiagram();
+	if (dv && dv->diagram())
+		m_selection_properties_editor->setDiagram(dv->diagram());
 }
 
 /**

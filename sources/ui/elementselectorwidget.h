@@ -55,8 +55,9 @@ class ElementSelectorWidget : public QWidget
 	void buildInterface();
 
 	private slots:
-	void setSelectedElement  (const int i) {selected_element = elements_list.at(i);}
-	void showElementFromList (const int i);
+		void setSelectedElement  (const int i) {selected_element = elements_list.at(i);}
+		void showElementFromList (const int i);
+		void showedElementWasDeleted ();
 
 
 	///Attributes

@@ -33,7 +33,8 @@
 MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	PropertiesEditorWidget(parent),
 	ui(new Ui::MasterPropertiesWidget),
-	element_(elmt)
+	element_(elmt),
+	m_showed_element (nullptr)
 {
 	ui->setupUi(this);
 	buildInterface();
@@ -47,7 +48,8 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
  */
 MasterPropertiesWidget::~MasterPropertiesWidget()
 {
-	foreach(Element *elmt, lwi_hash.values()) elmt->setHighlighted(false);
+	if (m_showed_element) m_showed_element->setHighlighted(false);
+	//foreach(Element *elmt, lwi_hash.values()) elmt->setHighlighted(false);
 	delete ui;
 }
 
@@ -184,9 +186,24 @@ void MasterPropertiesWidget::on_unlink_button_clicked() {
  * Show the element corresponding to the given QListWidgetItem
  * @param lwi
  */
-void MasterPropertiesWidget::showElementFromLWI(QListWidgetItem *lwi) {
-	foreach(Element *elmt, lwi_hash.values()) elmt->setHighlighted(false);
-	Element *elmt = lwi_hash[lwi];
-	elmt->diagram()->showMe();
-	elmt->setHighlighted(true);
+void MasterPropertiesWidget::showElementFromLWI(QListWidgetItem *lwi)
+{
+	if (m_showed_element)
+	{
+		disconnect(m_showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
+		m_showed_element -> setHighlighted(false);
+	}
+
+	m_showed_element = lwi_hash[lwi];
+	m_showed_element->diagram()->showMe();
+	m_showed_element->setHighlighted(true);
+	connect(m_showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
+}
+
+/**
+ * @brief MasterPropertiesWidget::showedElementWasDeleted
+ * Set to nullptr the current showed element when he was deleted
+ */
+void MasterPropertiesWidget::showedElementWasDeleted() {
+	m_showed_element = nullptr;
 }

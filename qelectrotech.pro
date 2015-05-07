@@ -61,6 +61,8 @@ DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
 ######################################################################
 
+include(sources/PropertiesEditor/PropertiesEditor.pri)
+
 TEMPLATE = app
 DEPENDPATH += .
 INCLUDEPATH += sources \

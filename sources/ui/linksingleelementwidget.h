@@ -18,7 +18,7 @@
 #ifndef LINKSINGLEELEMENTWIDGET_H
 #define LINKSINGLEELEMENTWIDGET_H
 
-#include "propertieseditorwidget.h"
+#include "PropertiesEditor/propertieseditorwidget.h"
 #include "element.h"
 
 class Diagram;

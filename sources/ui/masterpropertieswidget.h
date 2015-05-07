@@ -20,7 +20,7 @@
 
 #include <QWidget>
 #include <QHash>
-#include <propertieseditorwidget.h>
+#include "PropertiesEditor/propertieseditorwidget.h"
 
 class QListWidgetItem;
 class Element;
@@ -53,14 +53,16 @@ class MasterPropertiesWidget : public PropertiesEditorWidget
 	void buildInterface();
 
 	private slots:
-	void on_link_button_clicked();
-	void on_unlink_button_clicked();
-	void showElementFromLWI(QListWidgetItem *lwi);
+		void on_link_button_clicked();
+		void on_unlink_button_clicked();
+		void showElementFromLWI(QListWidgetItem *lwi);
+		void showedElementWasDeleted ();
 
 	private:
 	Ui::MasterPropertiesWidget *ui;
 	Element *element_;
 	QHash <QListWidgetItem *, Element *> lwi_hash;
+	Element *m_showed_element;
 };
 
 #endif // MASTERPROPERTIESWIDGET_H

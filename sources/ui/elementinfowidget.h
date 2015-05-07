@@ -20,7 +20,7 @@
 
 #include <QWidget>
 #include "diagramcontext.h"
-#include "propertieseditorwidget.h"
+#include "PropertiesEditor/propertieseditorwidget.h"
 
 class Element;
 class QUndoCommand;

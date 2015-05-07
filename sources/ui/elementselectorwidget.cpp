@@ -62,10 +62,15 @@ ElementSelectorWidget::~ElementSelectorWidget()
  * @param elmt
  */
 void ElementSelectorWidget::showElement(Element *elmt) {
-	if (showed_element) showed_element->setHighlighted(false);
+	if (showed_element)
+	{
+		disconnect(showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
+		showed_element->setHighlighted(false);
+	}
 	elmt->diagram()->showMe();
 	elmt->setHighlighted(true);
 	showed_element = elmt;
+	connect(showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
 }
 
 /**
@@ -222,6 +227,14 @@ void ElementSelectorWidget::buildInterface() {
 void ElementSelectorWidget::showElementFromList(const int i) {
 	if (elements_list.size() >= i)
 		showElement(elements_list.at(i));
+}
+
+/**
+ * @brief ElementSelectorWidget::showedElementWasDeleted
+ * Set to nullptr the current showed element when he was deleted
+ */
+void ElementSelectorWidget::showedElementWasDeleted() {
+	showed_element = nullptr;
 }
 
 /**
