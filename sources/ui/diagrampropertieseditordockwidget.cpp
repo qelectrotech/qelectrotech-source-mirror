@@ -19,6 +19,8 @@
 #include "elementpropertieswidget.h"
 #include "diagram.h"
 #include "element.h"
+#include "diagramimageitem.h"
+#include "imagepropertieswidget.h"
 
 /**
  * @brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget
@@ -69,11 +71,15 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 {
 	if (!m_diagram) return;
 	clear();
+
 	if (m_diagram->selectedItems().size() == 1)
 	{
 		QGraphicsItem *item = m_diagram->selectedItems().first();
+
 		if (Element *elmt = dynamic_cast<Element*>(item))
 			addEditor(new ElementPropertiesWidget(elmt, this));
+		else if (DiagramImageItem *image = dynamic_cast<DiagramImageItem *>(item))
+			addEditor(new ImagePropertiesWidget(image, this));
 	}
 }
 

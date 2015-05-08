@@ -32,11 +32,15 @@ class QetGraphicsItem : public QGraphicsObject
 		virtual ~QetGraphicsItem() = 0;
 
 			//public methode
-				Diagram *diagram       () const;
+		Diagram *diagram       () const;
 		virtual void     setPos        (const QPointF &p);
 		virtual void     setPos        (qreal x, qreal y);
 		virtual void     rotateBy      (const qreal &);
 		virtual void     applyRotation (const qreal &);
+
+		virtual bool isMovable () const {return is_movable_;}
+		virtual void setMovable (bool movable) { is_movable_ = movable;}
+
 		virtual void     editProperty  ()      {}
 		virtual QString  name       ()const {return QString("");}
 

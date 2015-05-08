@@ -60,11 +60,6 @@ class DiagramImageItem : public QetGraphicsItem {
 	protected:
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	
-	signals:
-
-	private slots:
-	void PreviewScale(int);
-	
 	protected:
 	QPixmap pixmap_;
 };
