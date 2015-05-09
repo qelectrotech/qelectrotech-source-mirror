@@ -37,6 +37,7 @@ class PropertiesEditorWidget : public QWidget
 		virtual void reset() {}
 		virtual QUndoCommand *associatedUndo () const;
 		virtual QString title() const;
+		virtual void updateUi() {}
 };
 
 #endif // PROPERTIESEDITORWIDGET_H

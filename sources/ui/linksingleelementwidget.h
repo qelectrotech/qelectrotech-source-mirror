@@ -51,14 +51,15 @@ class LinkSingleElementWidget : public PropertiesEditorWidget
 		void apply();
 		QUndoCommand *associatedUndo() const;
 		QString title() const;
+		void updateUi();
 
 	private:
-	void buildInterface();
-	void buildList();
-	void buildUnlinkButton();
-	void buildSearchField();
-	QList <Element *> availableElements();
-	void setUpCompleter();
+		void buildInterface();
+		void buildList();
+		void buildLinkUnlinkButton();
+		void buildSearchField();
+		QList <Element *> availableElements();
+		void setUpCompleter();
 
 	private slots:
 	void setNewList();

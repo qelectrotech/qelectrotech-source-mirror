@@ -81,6 +81,7 @@ void ElementSelectorWidget::clear() {
 	elements_list.clear();
 	in_filter.clear();
 	out_filter.clear();
+	selected_element = nullptr;
 	if(showed_element) showed_element->setHighlighted(false);
 	foreach(QWidget *w, content_list) {
 		ui->scroll_layout_->removeWidget(w);

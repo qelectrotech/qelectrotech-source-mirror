@@ -57,8 +57,7 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent)
  * @brief LinkSingleElementWidget::~LinkSingleElementWidget
  * Default destructor
  */
-LinkSingleElementWidget::~LinkSingleElementWidget()
-{
+LinkSingleElementWidget::~LinkSingleElementWidget() {
 	delete ui;
 }
 
@@ -66,7 +65,8 @@ LinkSingleElementWidget::~LinkSingleElementWidget()
  * @brief LinkSingleElementWidget::apply
  * Apply the new property of the edited element
  */
-void LinkSingleElementWidget::apply() {
+void LinkSingleElementWidget::apply()
+{
 	QUndoCommand *undo = associatedUndo();
 	if (undo)
 		element_->diagram()->undoStack().push(undo);
@@ -96,14 +96,28 @@ QString LinkSingleElementWidget::title() const
 }
 
 /**
+ * @brief LinkSingleElementWidget::updateUi
+ * Update the content of this widget
+ */
+void LinkSingleElementWidget::updateUi()
+{
+	setNewList();
+	buildLinkUnlinkButton();
+	buildSearchField();
+	unlink_ = false;
+}
+
+/**
  * @brief LinkSingleElementWidget::buildInterface
  * Build the interface of this widget
  */
-void LinkSingleElementWidget::buildInterface() {
+void LinkSingleElementWidget::buildInterface()
+{
 	ui->folio_combo_box->addItem(tr("Tous"));
 
-	//Fill the combo box for filter the result by folio
-	foreach (Diagram *d, diagram_list) {
+		//Fill the combo box for filter the result by folio
+	foreach (Diagram *d, diagram_list)
+	{
 		QString title = d->title();
 		if (title.isEmpty()) title = tr("Sans titre");
 		title.prepend(QString::number(d->folioIndex() + 1) + " ");
@@ -111,11 +125,7 @@ void LinkSingleElementWidget::buildInterface() {
 	}
 
 	buildList();
-
-	element_->isFree() ?
-				ui->button_linked->setDisabled(true) :
-				buildUnlinkButton();
-
+	buildLinkUnlinkButton();
 	buildSearchField();
 }
 
@@ -125,26 +135,42 @@ void LinkSingleElementWidget::buildInterface() {
  * the list is fill with the element find in the
  * required folio (folio selected with the combo box)
  */
-void LinkSingleElementWidget::buildList() {
+void LinkSingleElementWidget::buildList()
+{
 	esw_ = new ElementSelectorWidget(availableElements(), this);
 	ui->content_layout->addWidget(esw_);
 }
 
 /**
- * @brief LinkSingleElementWidget::buildUnlinkButton
- * Build a widget with button 'unlink' if the edited
- * element is already linked with a master element
+ * @brief LinkSingleElementWidget::buildLinkUnlinkButton
+ * Build the button link or unlink according to the current edited
+ * element, if is already linked with a master element or not
  */
-void LinkSingleElementWidget::buildUnlinkButton() {
-	unlink_widget = new QWidget(this);
-	QHBoxLayout *unlink_layout = new QHBoxLayout(unlink_widget);
-	QLabel *lb = new QLabel(tr("Cet élément est déjà lié."), unlink_widget);
-	QPushButton *pb = new QPushButton(tr("Délier"), unlink_widget);
-	connect(pb, SIGNAL(clicked()), this, SLOT(unlinkClicked()));
-	unlink_layout->addWidget(lb);
-	unlink_layout->addStretch();
-	unlink_layout->addWidget(pb);
-	ui->main_layout->insertWidget(0, unlink_widget);
+void LinkSingleElementWidget::buildLinkUnlinkButton()
+{
+	if (element_->isFree())
+	{
+		ui->button_linked->setEnabled(true);
+		if (unlink_widget)
+		{
+			ui->main_layout->removeWidget(unlink_widget);
+			delete unlink_widget; unlink_widget = nullptr;
+		}
+	}
+	else if (!unlink_widget)
+	{
+		ui->button_linked->setDisabled(true);
+		unlink_widget = new QWidget(this);
+		QHBoxLayout *unlink_layout = new QHBoxLayout(unlink_widget);
+		QLabel *lb = new QLabel(tr("Cet élément est déjà lié."), unlink_widget);
+		QPushButton *pb = new QPushButton(tr("Délier"), unlink_widget);
+		connect(pb, SIGNAL(clicked()), this, SLOT(unlinkClicked()));
+		unlink_layout->addWidget(lb);
+		unlink_layout->addStretch();
+		unlink_layout->addWidget(pb);
+		ui->main_layout->insertWidget(0, unlink_widget);
+	}
+
 }
 
 /**
@@ -152,7 +178,8 @@ void LinkSingleElementWidget::buildUnlinkButton() {
  * Build a line edit for search element by they information,
  * like label or information
  */
-void LinkSingleElementWidget::buildSearchField() {
+void LinkSingleElementWidget::buildSearchField()
+{
 		//If there isn't string to filter, we remove the search field
 	if (esw_->filter().isEmpty()) {
 		if (search_field) {
@@ -163,13 +190,14 @@ void LinkSingleElementWidget::buildSearchField() {
 		return;
 	}
 
-	if(!search_field) search_field = new QLineEdit(this);
-#if QT_VERSION >= 0x040700
-	search_field -> setPlaceholderText(tr("Rechercher"));
-#endif
+	if(!search_field)
+	{
+		search_field = new QLineEdit(this);
+		search_field -> setPlaceholderText(tr("Rechercher"));
+		connect(search_field, SIGNAL(textChanged(QString)), esw_, SLOT(filtered(QString)));
+		ui->header_layout->addWidget(search_field);
+	}
 	setUpCompleter();
-	connect(search_field, SIGNAL(textChanged(QString)), esw_, SLOT(filtered(QString)));
-	ui->header_layout->addWidget(search_field);
 }
 
 /**
@@ -178,29 +206,32 @@ void LinkSingleElementWidget::buildSearchField() {
  * to be linked with the edited element.
  * This methode take care of the combo box "find in diagram"
  */
-QList <Element *> LinkSingleElementWidget::availableElements() {
+QList <Element *> LinkSingleElementWidget::availableElements()
+{
 	QList <Element *> elmt_list;
-	//if element isn't free and unlink isn't pressed, return an empty list
+		//if element isn't free and unlink isn't pressed, return an empty list
 	if (!element_->isFree() && !unlink_) return elmt_list;
 
 	int i = ui->folio_combo_box->currentIndex();
-	//find in all diagram of this project
-	if (i == 0) {
+		//find in all diagram of this project
+	if (i == 0)
+	{
 		ElementProvider ep(element_->diagram()->project());
 		if (filter_ & Element::AllReport)
 			elmt_list = ep.freeElement(filter_);
 		else
 			elmt_list = ep.find(filter_);
 	}
-	//find in single diagram
-	else {
+		//find in single diagram
+	else
+	{
 		ElementProvider ep (diagram_list.at(i-1));
 		if (filter_ & Element::AllReport)
 			elmt_list = ep.freeElement(filter_);
 		else
 			elmt_list = ep.find(filter_);
 	}
-	//If element is linked, remove is parent from the list
+		//If element is linked, remove is parent from the list
 	if(!element_->isFree()) elmt_list.removeAll(element_->linkedElements().first());
 
 	return elmt_list;
@@ -210,8 +241,10 @@ QList <Element *> LinkSingleElementWidget::availableElements() {
  * @brief LinkSingleElementWidget::setUpCompleter
  * Setup the completer of search_field
  */
-void LinkSingleElementWidget::setUpCompleter() {
-	if (search_field) {
+void LinkSingleElementWidget::setUpCompleter()
+{
+	if (search_field)
+	{
 		search_field -> clear();
 		delete search_field -> completer();
 
@@ -227,7 +260,8 @@ void LinkSingleElementWidget::setUpCompleter() {
  * @brief LinkSingleElementWidget::setNewList
  * Set the list according to the selected diagram in the combo_box
  */
-void LinkSingleElementWidget::setNewList() {
+void LinkSingleElementWidget::setNewList()
+{
 	esw_->setList(availableElements());
 	buildSearchField();
 }
@@ -236,10 +270,10 @@ void LinkSingleElementWidget::setNewList() {
  * @brief LinkSingleElementWidget::unlinkClicked
  * Action when 'unlink' button is clicked
  */
-void LinkSingleElementWidget::unlinkClicked() {
+void LinkSingleElementWidget::unlinkClicked()
+{
 	ui->main_layout->removeWidget(unlink_widget);
-	delete unlink_widget;
-	unlink_widget = 0;
+	delete unlink_widget; unlink_widget = nullptr;
 	unlink_ = true;
 	setNewList();
 }
@@ -256,7 +290,8 @@ void LinkSingleElementWidget::on_button_this_clicked() {
  * @brief FolioReportProperties::on_button_linked_clicked
  * Action when push button "linked report" is clicked
  */
-void LinkSingleElementWidget::on_button_linked_clicked() {
+void LinkSingleElementWidget::on_button_linked_clicked()
+{
 	if (element_->isFree()) return;
 	esw_->showElement(element_->linkedElements().first());
 }
