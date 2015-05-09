@@ -54,8 +54,8 @@ void ElementPropertiesWidget::apply()
 	QList <QUndoCommand *> undo_list;
 
 	foreach (PropertiesEditorWidget *pew, m_list_editor)
-		if (pew->associatedUndo())
-			undo_list << pew->associatedUndo();
+		if (QUndoCommand *undo = pew->associatedUndo())
+			undo_list << undo;
 
 	if (undo_list.isEmpty()) return;
 
@@ -66,6 +66,9 @@ void ElementPropertiesWidget::apply()
 	stack.beginMacro(str);
 	foreach(QUndoCommand *uc, undo_list) stack.push(uc);
 	stack.endMacro();
+
+	foreach(PropertiesEditorWidget *pew, m_list_editor)
+		pew->updateUi();
 }
 
 /**
