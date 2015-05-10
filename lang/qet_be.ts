@@ -2683,7 +2683,7 @@ Dit element is al verbonden.</translation>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="137"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="151"/>
         <source>Folio  %1 (%2), position %3.</source>
-        <translation>Schema bladzijde %1 (%2), positie %3</translation>
+        <translation>Schema bladzijde %1 (%2), positie %3.</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="50"/>
@@ -4853,7 +4853,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="149"/>
         <source>Cop&amp;ier</source>
-        <translation>Kopieer</translation>
+        <translation>Kop&amp;ieer</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="150"/>
@@ -4903,7 +4903,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="62"/>
         <source>À propos de &amp;Qt</source>
-        <translation>Over Qt</translation>
+        <translation>Over &amp;Qt</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="63"/>
@@ -5334,7 +5334,7 @@ Opslaan naar een bestand</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="348"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
-        <translation>Cellen samenvoegen</translation>
+        <translation>Cellen samenvoegen &amp;f</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="337"/>
@@ -5364,7 +5364,7 @@ Opslaan naar een bestand</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="346"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
-        <translation>Rij toevoegen</translation>
+        <translation>Rij toevoegen &amp;l</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="347"/>
@@ -5376,7 +5376,7 @@ Opslaan naar een bestand</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
-        <translation>Cellen splitsen</translation>
+        <translation>Cellen &amp;splitsen</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="356"/>
@@ -5424,7 +5424,7 @@ Opslaan naar een bestand</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="401"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
-        <translation>Wijzig</translation>
+        <translation>Wijzig &amp;e</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="402"/>
@@ -5825,8 +5825,8 @@ Opslaan naar een bestand</translation>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>%n vorm(en)</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n vorm</numerusform>
+            <numerusform>%n vormen</numerusform>
         </translation>
     </message>
     <message>
@@ -7910,7 +7910,7 @@ Maximale lengte : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="526"/>
         <source>Insert &amp;Image</source>
-        <translation>Toevoegen afbeelding</translation>
+        <translation>Toevoegen afbeelding &amp;i</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="542"/>
