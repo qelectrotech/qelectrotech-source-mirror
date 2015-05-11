@@ -171,6 +171,7 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_filling == GreenFilling) css_like_styles += "green";
 	else if (_filling == BlueFilling)  css_like_styles += "blue";
 	else if (_filling == RedFilling)   css_like_styles += "red";
+	else if (_filling == GrayFilling)  css_like_styles += "gray";
 
 	
 	css_like_styles += ";color:";
@@ -179,7 +180,8 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_color == GreenColor) css_like_styles += "green";
 	else if (_color == RedColor)   css_like_styles += "red";
 	else if (_color == BlueColor)  css_like_styles += "blue";
-	
+	else if (_color == GrayColor)  css_like_styles += "gray";
+
 	qde.setAttribute("style", css_like_styles);
 	qde.setAttribute("antialias", _antialiased ? "true" : "false");
 }
@@ -226,6 +228,7 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 			else if (style_value == "red")   _filling = RedFilling;
 			else if (style_value == "green") _filling = GreenFilling;
 			else if (style_value == "blue")  _filling = BlueFilling;
+			else if (style_value == "gray")  _filling = GrayFilling;
 			else if (style_value == "none")  _filling = NoneFilling;
 		}
 		else if (style_name == "color")
@@ -235,6 +238,7 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 			else if (style_value == "green") _color = GreenColor;
 			else if (style_value == "red")   _color = RedColor;
 			else if (style_value == "blue")  _color = BlueColor;
+			else if (style_value == "gray")  _color = GrayColor;
 		}
 	}
 		//Get antialiasing
@@ -290,6 +294,7 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 		else if (_filling == GreenFilling) brush.setColor(Qt::green);
 		else if (_filling == RedFilling)   brush.setColor(Qt::red);
 		else if (_filling == BlueFilling)  brush.setColor(Qt::blue);
+		else if (_filling == GrayFilling)  brush.setColor(Qt::gray);
 	}
 	
 		//Apply pen color
@@ -298,6 +303,7 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	else if (_color == GreenColor) pen.setColor(QColor(Qt::green));
 	else if (_color == RedColor)   pen.setColor(QColor(Qt::red));
 	else if (_color == BlueColor)  pen.setColor(QColor(Qt::blue));
+	else if (_color == GrayColor)  pen.setColor(QColor(Qt::gray));
 	
 		//Apply antialiasing
 	painter.setRenderHint(QPainter::Antialiasing,          _antialiased);

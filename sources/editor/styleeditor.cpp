@@ -35,6 +35,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	outline_color -> addItem(tr("Vert", "element part color"), CustomElementGraphicPart::GreenColor);
 	outline_color -> addItem(tr("Rouge", "element part color"), CustomElementGraphicPart::RedColor);
 	outline_color -> addItem(tr("Bleu", "element part color"), CustomElementGraphicPart::BlueColor);
+	outline_color -> addItem(tr("Gris", "element part color"), CustomElementGraphicPart::GrayColor);
 
 	// style
 	line_style = new QComboBox(this);
@@ -60,6 +61,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	filling_color -> addItem(tr("Vert", "element part filling"), CustomElementGraphicPart::GreenFilling);
 	filling_color -> addItem(tr("Rouge", "element part filling"), CustomElementGraphicPart::RedFilling);
 	filling_color -> addItem(tr("Bleu", "element part filling"), CustomElementGraphicPart::BlueFilling);
+	filling_color -> addItem(tr("Gris", "element part filling"), CustomElementGraphicPart::GrayFilling);
 
 	// antialiasing
 	antialiasing = new QCheckBox(tr("Antialiasing"));
