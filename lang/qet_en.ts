@@ -6530,7 +6530,7 @@ The other fields are not used.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Marron</source>
         <comment>element part color</comment>
-        <translation>Brun</translation>
+        <translation>Brown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
@@ -6638,7 +6638,7 @@ The other fields are not used.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="67"/>
         <source>Marron</source>
         <comment>element part filling</comment>
-        <translation>Brun</translation>
+        <translation>Brown</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="68"/>
