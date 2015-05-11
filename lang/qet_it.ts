@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="it_IT">
+<TS version="2.0" language="it_IT">
 <context>
     <name>AboutQET</name>
     <message>
@@ -2270,7 +2270,7 @@ Le modifiche saranno definitive.</translation>
     <message>
         <location filename="../sources/ui/imagepropertiesdialog.ui" line="14"/>
         <source>Éditer les propriétés de image</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare le proprietà dell&apos;immagine</translation>
     </message>
 </context>
 <context>
@@ -2278,27 +2278,27 @@ Le modifiche saranno definitive.</translation>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Bloccare la posizione</translation>
+        <translation>Posizione fissa</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
         <source>Dimension de l&apos;image</source>
-        <translation type="unfinished">Dimensioni di un&apos;immagine</translation>
+        <translation>Dimensioni dell&apos;immagine</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="50"/>
         <source>%</source>
-        <translation type="unfinished">%</translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="103"/>
         <source>une image</source>
-        <translation type="unfinished">una immagine</translation>
+        <translation>un&apos;immagine</translation>
     </message>
 </context>
 <context>
@@ -3131,7 +3131,7 @@ Salvare le modifiche?</translation>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
         <source>Propriété de la séléction</source>
-        <translation type="unfinished"></translation>
+        <translation>Proprietà della selezione</translation>
     </message>
 </context>
 <context>
@@ -6515,19 +6515,19 @@ Gli altri campi non sono utilizzati.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="38"/>
         <source>Gris</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Grigio</translation>
+        <translation>Grigio</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Marron</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Marrone</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
         <source>Jaune</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Giallo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="44"/>
@@ -6623,19 +6623,19 @@ Gli altri campi non sono utilizzati.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Gris</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Grigio</translation>
+        <translation>Grigio</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="67"/>
         <source>Marron</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Marrone</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="68"/>
         <source>Jaune</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Giallo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="78"/>
@@ -6668,7 +6668,7 @@ Gli altri campi non sono utilizzati.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="142"/>
         <location filename="../sources/editor/styleeditor.cpp" line="144"/>
         <source>style ligne</source>
-        <translation>stile liea</translation>
+        <translation>stile linea</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="151"/>
