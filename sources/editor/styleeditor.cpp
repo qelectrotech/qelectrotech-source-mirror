@@ -64,7 +64,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	filling_color -> addItem(tr("Rouge", "element part filling"), CustomElementGraphicPart::RedFilling);
 	filling_color -> addItem(tr("Bleu", "element part filling"), CustomElementGraphicPart::BlueFilling);
 	filling_color -> addItem(tr("Gris", "element part filling"), CustomElementGraphicPart::GrayFilling);
-	filling_color -> addItem(tr("marron", "element part filling"), CustomElementGraphicPart::BrunFilling);
+	filling_color -> addItem(tr("Marron", "element part filling"), CustomElementGraphicPart::BrunFilling);
 	filling_color -> addItem(tr("Jaune", "element part filling"), CustomElementGraphicPart::YellowFilling);
 
 	// antialiasing
