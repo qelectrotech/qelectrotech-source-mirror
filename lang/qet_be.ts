@@ -2282,7 +2282,7 @@ de verwijdering is definitief.</translation>
     <message>
         <location filename="../sources/ui/imagepropertiesdialog.ui" line="14"/>
         <source>Éditer les propriétés de image</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeelding eigenschappen bewerken</translation>
     </message>
 </context>
 <context>
@@ -2290,28 +2290,28 @@ de verwijdering is definitief.</translation>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">
+        <translation>
 Positie vergrendelen</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
         <source>Dimension de l&apos;image</source>
-        <translation type="unfinished">Afbeeldings grootte</translation>
+        <translation>Afmetingen afbeelding</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="50"/>
         <source>%</source>
-        <translation type="unfinished">%</translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="103"/>
         <source>une image</source>
-        <translation type="unfinished">een afbeelding</translation>
+        <translation>een afbeelding</translation>
     </message>
 </context>
 <context>
@@ -3147,7 +3147,7 @@ Wilt u wijzigingen bewaren?</translation>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
         <source>Propriété de la séléction</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschappen van het geselecteerde</translation>
     </message>
 </context>
 <context>
@@ -3761,7 +3761,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="446"/>
         <source>Outils</source>
-        <translation>Gereedschappen</translation>
+        <translation type="unfinished">Gereedschappen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
@@ -3918,7 +3918,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="508"/>
         <source>&amp;Récemment ouverts</source>
-        <translation>&amp;Onlangs geopende </translation>
+        <translation>&amp;Onlangs geopende projecten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="648"/>
@@ -6538,19 +6538,19 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="38"/>
         <source>Gris</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Grijs</translation>
+        <translation>Grijs</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Marron</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bruin</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
         <source>Jaune</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Geel</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="44"/>
@@ -6646,19 +6646,19 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Gris</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Grijs</translation>
+        <translation>Grijs</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="67"/>
         <source>Marron</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bruin</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="68"/>
         <source>Jaune</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Geel</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="78"/>
