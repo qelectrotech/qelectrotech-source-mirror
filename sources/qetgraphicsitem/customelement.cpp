@@ -823,6 +823,8 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 			- blue  : remplissage bleu
 			- green : remplissage vert
 			- gray : remplissage gris
+			- brun : remplissage marron
+			- yellow : remplissage jaune
 			- none : pas de remplissage [par defaut]
 		- color : couleur du trait et du texte
 			- white : trait noir [par defaut]
@@ -831,6 +833,8 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 			- blue  : trait bleu
 			- green : trait vert
 			- gray : trait gris
+			- brun : trait marron
+			- yellow : trait jaune
 			
 	Les autres valeurs ne sont pas prises en compte.
 	@param e L'element XML a parser
@@ -885,6 +889,12 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 				} else if (style_value == "gray") {
 					brush.setStyle(Qt::SolidPattern);
 					brush.setColor(Qt::gray);
+				} else if (style_value == "brun") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(QColor(97, 44, 0));
+				} else if (style_value == "yellow") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(Qt::yellow);
 				} else if (style_value == "none") {
 					brush.setStyle(Qt::NoBrush);
 				}
@@ -901,6 +911,11 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 					pen.setColor(Qt::green);
 				}else if (style_value == "gray") {
 					pen.setColor(Qt::gray);
+				}else if (style_value == "brun") {
+					pen.setColor(QColor(97, 44, 0));
+				}else if (style_value == "yellow") {
+					pen.setColor(Qt::yellow);
+
 				}
 			}
 		}

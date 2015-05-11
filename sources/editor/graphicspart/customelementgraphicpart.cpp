@@ -172,8 +172,10 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_filling == BlueFilling)  css_like_styles += "blue";
 	else if (_filling == RedFilling)   css_like_styles += "red";
 	else if (_filling == GrayFilling)  css_like_styles += "gray";
+	else if (_filling == BrunFilling)  css_like_styles += "brun";
+	else if (_filling == YellowFilling)  css_like_styles += "yellow";
 
-	
+
 	css_like_styles += ";color:";
 	if      (_color == WhiteColor) css_like_styles += "white";
 	else if (_color == BlackColor) css_like_styles += "black";
@@ -181,6 +183,8 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_color == RedColor)   css_like_styles += "red";
 	else if (_color == BlueColor)  css_like_styles += "blue";
 	else if (_color == GrayColor)  css_like_styles += "gray";
+	else if (_color == BrunColor)  css_like_styles += "brun";
+	else if (_color == YellowColor)  css_like_styles += "yellow";
 
 	qde.setAttribute("style", css_like_styles);
 	qde.setAttribute("antialias", _antialiased ? "true" : "false");
@@ -229,6 +233,8 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 			else if (style_value == "green") _filling = GreenFilling;
 			else if (style_value == "blue")  _filling = BlueFilling;
 			else if (style_value == "gray")  _filling = GrayFilling;
+			else if (style_value == "brun")  _filling = BrunFilling;
+			else if (style_value == "yellow")  _filling = YellowFilling;
 			else if (style_value == "none")  _filling = NoneFilling;
 		}
 		else if (style_name == "color")
@@ -239,6 +245,8 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 			else if (style_value == "red")   _color = RedColor;
 			else if (style_value == "blue")  _color = BlueColor;
 			else if (style_value == "gray")  _color = GrayColor;
+			else if (style_value == "brun")  _color = BrunColor;
+			else if (style_value == "yellow")  _color = YellowColor;
 		}
 	}
 		//Get antialiasing
@@ -295,6 +303,8 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 		else if (_filling == RedFilling)   brush.setColor(Qt::red);
 		else if (_filling == BlueFilling)  brush.setColor(Qt::blue);
 		else if (_filling == GrayFilling)  brush.setColor(Qt::gray);
+		else if (_filling == BrunFilling)  brush.setColor(QColor(97, 44, 0));
+		else if (_filling == YellowFilling)  brush.setColor(Qt::yellow);
 	}
 	
 		//Apply pen color
@@ -304,6 +314,8 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	else if (_color == RedColor)   pen.setColor(QColor(Qt::red));
 	else if (_color == BlueColor)  pen.setColor(QColor(Qt::blue));
 	else if (_color == GrayColor)  pen.setColor(QColor(Qt::gray));
+	else if (_color == BrunColor)  pen.setColor(QColor(97, 44, 0));
+	else if (_color == YellowColor)  pen.setColor(QColor(Qt::yellow));
 	
 		//Apply antialiasing
 	painter.setRenderHint(QPainter::Antialiasing,          _antialiased);
