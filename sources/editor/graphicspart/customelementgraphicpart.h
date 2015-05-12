@@ -56,10 +56,10 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		enum LineWeight {NoneWeight, ThinWeight, NormalWeight, UltraWeight, BigWeight};
 
 			//Filling color of the part : NoneFilling -> No filling (i.e. transparent)
-		enum Filling { NoneFilling, BlackFilling, WhiteFilling, GreenFilling, RedFilling, BlueFilling, GrayFilling, BrunFilling, YellowFilling};
+		enum Filling { NoneFilling, BlackFilling, WhiteFilling, GreenFilling, RedFilling, BlueFilling, GrayFilling, BrunFilling, YellowFilling, CyanFilling, MagentaFilling, LightgrayFilling, OrangeFilling, PurpleFilling };
 
 			//Line color
-		enum Color {BlackColor, WhiteColor, GreenColor, RedColor, BlueColor, GrayColor, BrunColor, YellowColor};
+		enum Color {BlackColor, WhiteColor, GreenColor, RedColor, BlueColor, GrayColor, BrunColor, YellowColor, CyanColor, MagentaColor, LightgrayColor, OrangeColor, PurpleColor};
 	
 		// constructors, destructor
 	public:

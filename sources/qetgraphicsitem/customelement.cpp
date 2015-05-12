@@ -825,6 +825,10 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 			- gray : remplissage gris
 			- brun : remplissage marron
 			- yellow : remplissage jaune
+			- cyan : remplissage cyan
+			- lightgray : remplissage gris clair
+			- orange : remplissage orange
+			- purple : remplissage violet
 			- none : pas de remplissage [par defaut]
 		- color : couleur du trait et du texte
 			- white : trait noir [par defaut]
@@ -835,6 +839,10 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 			- gray : trait gris
 			- brun : trait marron
 			- yellow : trait jaune
+			- cyan : trait cyan
+			- lightgray : trait gris clair
+			- orange : trait orange
+			- purple : trait violet
 			
 	Les autres valeurs ne sont pas prises en compte.
 	@param e L'element XML a parser
@@ -895,6 +903,21 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 				} else if (style_value == "yellow") {
 					brush.setStyle(Qt::SolidPattern);
 					brush.setColor(Qt::yellow);
+				} else if (style_value == "cyan") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(Qt::cyan);
+				} else if (style_value == "magenta") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(Qt::magenta);
+				} else if (style_value == "lightgray") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(Qt::lightGray);
+				} else if (style_value == "orange") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(QColor(255, 128, 0));
+				} else if (style_value == "purple") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(QColor(136, 28, 168));
 				} else if (style_value == "none") {
 					brush.setStyle(Qt::NoBrush);
 				}
@@ -915,7 +938,16 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 					pen.setColor(QColor(97, 44, 0));
 				}else if (style_value == "yellow") {
 					pen.setColor(Qt::yellow);
-
+				}else if (style_value == "cyan") {
+					pen.setColor(Qt::cyan);
+				}else if (style_value == "magenta") {
+					pen.setColor(Qt::magenta);
+				}else if (style_value == "lightgray") {
+					pen.setColor(Qt::lightGray);
+				}else if (style_value == "orange") {
+					pen.setColor(QColor(255, 128, 0));
+				}else if (style_value == "purple") {
+					pen.setColor(QColor(136, 28, 168));
 				}
 			}
 		}

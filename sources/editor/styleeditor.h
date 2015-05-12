@@ -43,9 +43,9 @@ class StyleEditor : public ElementItemEditor
 		QList <CustomElementGraphicPart *> m_part_list;
 		QList <CustomElementPart *> m_cep_list;
 		QVBoxLayout *main_layout;
-		QRadioButton *black_color, *white_color,  *normal_style, *dashed_style, *dashdotted_style, *dotted_style, *green_color, *red_color, *blue_color, *gray_color, *brun_color, *yellow_color;
+		QRadioButton *black_color, *white_color,  *normal_style, *dashed_style, *dashdotted_style, *dotted_style, *green_color, *red_color, *blue_color, *gray_color, *brun_color, *yellow_color, *cyan_color, *magenta_color, *gris_clair_color, orange_color, *violet_color;
 		QRadioButton *none_weight, *thin_weight, *normal_weight, *no_filling;
-		QRadioButton *black_filling, *white_filling, *green_filling, *red_filling, *blue_filling, *gray_filling, *brun_filling, *yellow_filling;
+		QRadioButton *black_filling, *white_filling, *green_filling, *red_filling, *blue_filling, *gray_filling, *brun_filling, *yellow_filling, *cyan_filling, *magenta_filling, *gris_clair_filling, orange_filling, *violet_filling;
 		QCheckBox *antialiasing;
 		QComboBox *filling_color, *outline_color, *size_weight, *line_style;
 	

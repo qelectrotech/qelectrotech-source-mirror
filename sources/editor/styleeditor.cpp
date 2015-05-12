@@ -38,6 +38,11 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	outline_color -> addItem(tr("Gris", "element part color"), CustomElementGraphicPart::GrayColor);
 	outline_color -> addItem(tr("Marron", "element part color"), CustomElementGraphicPart::BrunColor);
 	outline_color -> addItem(tr("Jaune", "element part color"), CustomElementGraphicPart::YellowColor);
+	outline_color -> addItem(tr("Cyan", "element part color"), CustomElementGraphicPart::CyanColor);
+	outline_color -> addItem(tr("Magenta", "element part color"), CustomElementGraphicPart::MagentaColor);
+	outline_color -> addItem(tr("Gris clair", "element part color"), CustomElementGraphicPart::LightgrayColor);
+	outline_color -> addItem(tr("Orange", "element part color"), CustomElementGraphicPart::OrangeColor);
+	outline_color -> addItem(tr("Violet", "element part color"), CustomElementGraphicPart::PurpleColor);
 
 	// style
 	line_style = new QComboBox(this);
@@ -66,6 +71,11 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	filling_color -> addItem(tr("Gris", "element part filling"), CustomElementGraphicPart::GrayFilling);
 	filling_color -> addItem(tr("Marron", "element part filling"), CustomElementGraphicPart::BrunFilling);
 	filling_color -> addItem(tr("Jaune", "element part filling"), CustomElementGraphicPart::YellowFilling);
+	filling_color -> addItem(tr("Cyan", "element part filling"), CustomElementGraphicPart::CyanFilling);
+	filling_color -> addItem(tr("Magenta", "element part filling"), CustomElementGraphicPart::MagentaFilling);
+	filling_color -> addItem(tr("Gris clair", "element part filling"), CustomElementGraphicPart::LightgrayFilling);
+	filling_color -> addItem(tr("Orange", "element part filling"), CustomElementGraphicPart::OrangeFilling);
+	filling_color -> addItem(tr("Violet", "element part filling"), CustomElementGraphicPart::PurpleFilling);
 
 	// antialiasing
 	antialiasing = new QCheckBox(tr("Antialiasing"));

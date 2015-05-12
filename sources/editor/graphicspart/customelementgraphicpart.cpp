@@ -173,7 +173,11 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_filling == RedFilling)   css_like_styles += "red";
 	else if (_filling == GrayFilling)  css_like_styles += "gray";
 	else if (_filling == BrunFilling)  css_like_styles += "brun";
-	else if (_filling == YellowFilling)  css_like_styles += "yellow";
+	else if (_filling == CyanFilling)  css_like_styles += "cyan";
+	else if (_filling == MagentaFilling)  css_like_styles += "magenta";
+	else if (_filling == LightgrayFilling)  css_like_styles += "lightgray";
+	else if (_filling == OrangeFilling)  css_like_styles += "orange";
+	else if (_filling == PurpleFilling)  css_like_styles += "purple";
 
 
 	css_like_styles += ";color:";
@@ -185,6 +189,11 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_color == GrayColor)  css_like_styles += "gray";
 	else if (_color == BrunColor)  css_like_styles += "brun";
 	else if (_color == YellowColor)  css_like_styles += "yellow";
+	else if (_color == CyanColor)  css_like_styles += "cyan";
+	else if (_color == MagentaColor)  css_like_styles += "magenta";
+	else if (_color == LightgrayColor)  css_like_styles += "lightgray";
+	else if (_color == OrangeColor)  css_like_styles += "orange";
+	else if (_color == PurpleColor)  css_like_styles += "purple";
 
 	qde.setAttribute("style", css_like_styles);
 	qde.setAttribute("antialias", _antialiased ? "true" : "false");
@@ -235,6 +244,11 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 			else if (style_value == "gray")  _filling = GrayFilling;
 			else if (style_value == "brun")  _filling = BrunFilling;
 			else if (style_value == "yellow")  _filling = YellowFilling;
+			else if (style_value == "cyan")  _filling = CyanFilling;
+			else if (style_value == "magenta")  _filling = MagentaFilling;
+			else if (style_value == "lightgray")  _filling = LightgrayFilling;
+			else if (style_value == "orange")  _filling = OrangeFilling;
+			else if (style_value == "purple")  _filling = PurpleFilling;
 			else if (style_value == "none")  _filling = NoneFilling;
 		}
 		else if (style_name == "color")
@@ -247,6 +261,11 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 			else if (style_value == "gray")  _color = GrayColor;
 			else if (style_value == "brun")  _color = BrunColor;
 			else if (style_value == "yellow")  _color = YellowColor;
+			else if (style_value == "cyan")  _color = CyanColor;
+			else if (style_value == "magenta")  _color = MagentaColor;
+			else if (style_value == "lightgray")  _color = LightgrayColor;
+			else if (style_value == "orange")  _color = OrangeColor;
+			else if (style_value == "purple")  _color = PurpleColor;
 		}
 	}
 		//Get antialiasing
@@ -305,6 +324,11 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 		else if (_filling == GrayFilling)  brush.setColor(Qt::gray);
 		else if (_filling == BrunFilling)  brush.setColor(QColor(97, 44, 0));
 		else if (_filling == YellowFilling)  brush.setColor(Qt::yellow);
+		else if (_filling == CyanFilling)  brush.setColor(Qt::cyan);
+		else if (_filling == MagentaFilling)  brush.setColor(Qt::magenta);
+		else if (_filling == LightgrayFilling)  brush.setColor(Qt::lightGray);
+		else if (_filling == OrangeFilling)  brush.setColor(QColor(255, 128, 0));
+		else if (_filling == PurpleFilling)  brush.setColor(QColor(136, 28, 168));
 	}
 	
 		//Apply pen color
@@ -316,6 +340,11 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	else if (_color == GrayColor)  pen.setColor(QColor(Qt::gray));
 	else if (_color == BrunColor)  pen.setColor(QColor(97, 44, 0));
 	else if (_color == YellowColor)  pen.setColor(QColor(Qt::yellow));
+	else if (_color == CyanColor)  pen.setColor(Qt::cyan);
+	else if (_color == MagentaColor)  pen.setColor(Qt::magenta);
+	else if (_color == LightgrayColor)  pen.setColor(Qt::lightGray);
+	else if (_color == OrangeColor)  pen.setColor(QColor(255, 128, 0));
+	else if (_color == PurpleColor)  pen.setColor(QColor(136, 28, 168));
 	
 		//Apply antialiasing
 	painter.setRenderHint(QPainter::Antialiasing,          _antialiased);
