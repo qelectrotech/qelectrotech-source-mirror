@@ -2270,7 +2270,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/imagepropertiesdialog.ui" line="14"/>
         <source>Éditer les propriétés de image</source>
-        <translation type="unfinished"></translation>
+        <translation>Edycja właściwości obrazu</translation>
     </message>
 </context>
 <context>
@@ -2278,27 +2278,27 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Zablokuj położenie</translation>
+        <translation>Zablokuj położenie</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
         <source>Dimension de l&apos;image</source>
-        <translation type="unfinished">Rozmiar obrazu</translation>
+        <translation>Rozmiar obrazu</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="50"/>
         <source>%</source>
-        <translation type="unfinished">%</translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="103"/>
         <source>une image</source>
-        <translation type="unfinished">obraz</translation>
+        <translation>obraz</translation>
     </message>
 </context>
 <context>
@@ -3131,7 +3131,7 @@ Czy chcesz zapisać zmiany?</translation>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
         <source>Propriété de la séléction</source>
-        <translation type="unfinished"></translation>
+        <translation>Właściwości zaznaczonego obiektu</translation>
     </message>
 </context>
 <context>
@@ -6529,49 +6529,49 @@ Pozostałe pola nie są używane.
         <location filename="../sources/editor/styleeditor.cpp" line="38"/>
         <source>Gris</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Szary</translation>
+        <translation>Szary</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Marron</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brązowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
         <source>Jaune</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Żółty</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="41"/>
         <source>Cyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zielononiebieski</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="42"/>
         <source>Magenta</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="43"/>
         <source>Gris clair</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Jasnoszary</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="44"/>
         <source>Orange</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Pomarańczowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
         <source>Violet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fioletowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="49"/>
@@ -6667,49 +6667,49 @@ Pozostałe pola nie są używane.
         <location filename="../sources/editor/styleeditor.cpp" line="71"/>
         <source>Gris</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Szary</translation>
+        <translation>Szary</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="72"/>
         <source>Marron</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brązowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Jaune</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Żółty</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Cyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zielononiebieski</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="75"/>
         <source>Magenta</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="76"/>
         <source>Gris clair</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Jasnoszary</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="77"/>
         <source>Orange</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Pomarańczowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="78"/>
         <source>Violet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fioletowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="88"/>
