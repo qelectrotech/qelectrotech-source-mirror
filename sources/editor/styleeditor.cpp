@@ -76,6 +76,10 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	filling_color -> addItem(tr("Gris clair", "element part filling"), CustomElementGraphicPart::LightgrayFilling);
 	filling_color -> addItem(tr("Orange", "element part filling"), CustomElementGraphicPart::OrangeFilling);
 	filling_color -> addItem(tr("Violet", "element part filling"), CustomElementGraphicPart::PurpleFilling);
+	filling_color -> addItem(tr("Lignes Horizontales", "element part filling"), CustomElementGraphicPart::HorFilling);
+	filling_color -> addItem(tr("Lignes Verticales", "element part filling"), CustomElementGraphicPart::VerFilling);
+	filling_color -> addItem(tr("Hachures gauche", "element part filling"), CustomElementGraphicPart::BdiagFilling);
+	filling_color -> addItem(tr("Hachures droite", "element part filling"), CustomElementGraphicPart::FdiagFilling);
 
 	// antialiasing
 	antialiasing = new QCheckBox(tr("Antialiasing"));

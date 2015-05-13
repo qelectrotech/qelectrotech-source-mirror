@@ -178,6 +178,10 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_filling == LightgrayFilling)  css_like_styles += "lightgray";
 	else if (_filling == OrangeFilling)  css_like_styles += "orange";
 	else if (_filling == PurpleFilling)  css_like_styles += "purple";
+	else if (_filling == HorFilling) css_like_styles += "hor";
+	else if (_filling == VerFilling) css_like_styles += "ver";
+	else if (_filling == BdiagFilling) css_like_styles += "bdiag";
+	else if (_filling == FdiagFilling) css_like_styles += "fdiag";
 
 
 	css_like_styles += ";color:";
@@ -249,6 +253,10 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 			else if (style_value == "lightgray")  _filling = LightgrayFilling;
 			else if (style_value == "orange")  _filling = OrangeFilling;
 			else if (style_value == "purple")  _filling = PurpleFilling;
+			else if (style_value == "hor")  _filling = HorFilling;
+			else if (style_value == "ver")  _filling = VerFilling;
+			else if (style_value == "bdiag")  _filling = BdiagFilling;
+			else if (style_value == "fdiag")  _filling = FdiagFilling;
 			else if (style_value == "none")  _filling = NoneFilling;
 		}
 		else if (style_name == "color")
@@ -313,6 +321,10 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 
 		//Apply brush color
 	if (_filling == NoneFilling) brush.setStyle(Qt::NoBrush);
+	else if (_filling == HorFilling) brush.setStyle(Qt::HorPattern);
+	else if (_filling == VerFilling) brush.setStyle(Qt::VerPattern);
+	else if (_filling == BdiagFilling) brush.setStyle(Qt::BDiagPattern);
+	else if (_filling == FdiagFilling) brush.setStyle(Qt::FDiagPattern);
 	else
 	{
 		brush.setStyle(Qt::SolidPattern);

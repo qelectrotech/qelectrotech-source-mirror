@@ -918,6 +918,18 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 				} else if (style_value == "purple") {
 					brush.setStyle(Qt::SolidPattern);
 					brush.setColor(QColor(136, 28, 168));
+				}else if (style_value == "hor") {
+					brush.setStyle(Qt::HorPattern);
+					brush.setColor(Qt::black);
+				} else if (style_value == "ver") {
+					brush.setStyle(Qt::VerPattern);
+					brush.setColor(Qt::black);
+				} else if (style_value == "bdiag") {
+					brush.setStyle(Qt::BDiagPattern);
+					brush.setColor(Qt::black);
+				} else if (style_value == "fdiag") {
+					brush.setStyle(Qt::FDiagPattern);
+					brush.setColor(Qt::black);
 				} else if (style_value == "none") {
 					brush.setStyle(Qt::NoBrush);
 				}
