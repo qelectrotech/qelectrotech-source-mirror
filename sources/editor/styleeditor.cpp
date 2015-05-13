@@ -43,6 +43,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	outline_color -> addItem(tr("Gris clair", "element part color"), CustomElementGraphicPart::LightgrayColor);
 	outline_color -> addItem(tr("Orange", "element part color"), CustomElementGraphicPart::OrangeColor);
 	outline_color -> addItem(tr("Violet", "element part color"), CustomElementGraphicPart::PurpleColor);
+	outline_color -> addItem(tr("Aucun", "element part color"), CustomElementGraphicPart::NoneColor);
 
 	// style
 	line_style = new QComboBox(this);

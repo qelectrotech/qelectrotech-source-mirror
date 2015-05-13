@@ -843,6 +843,11 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 			- lightgray : trait gris clair
 			- orange : trait orange
 			- purple : trait violet
+			- lignes Horizontales
+			- lignes Verticales
+			- hachures gauche
+			- hachures  droite
+			- none : pas de contour
 			
 	Les autres valeurs ne sont pas prises en compte.
 	@param e L'element XML a parser
@@ -960,6 +965,8 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 					pen.setColor(QColor(255, 128, 0));
 				}else if (style_value == "purple") {
 					pen.setColor(QColor(136, 28, 168));
+				} else if (style_value == "none") {
+					pen.setBrush(Qt::transparent);
 				}
 			}
 		}

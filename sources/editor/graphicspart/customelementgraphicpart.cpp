@@ -198,6 +198,8 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_color == LightgrayColor)  css_like_styles += "lightgray";
 	else if (_color == OrangeColor)  css_like_styles += "orange";
 	else if (_color == PurpleColor)  css_like_styles += "purple";
+	else if (_color == NoneColor)  css_like_styles += "none";
+
 
 	qde.setAttribute("style", css_like_styles);
 	qde.setAttribute("antialias", _antialiased ? "true" : "false");
@@ -274,6 +276,7 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 			else if (style_value == "lightgray")  _color = LightgrayColor;
 			else if (style_value == "orange")  _color = OrangeColor;
 			else if (style_value == "purple")  _color = PurpleColor;
+			else if (style_value == "none")  _color = NoneColor;
 		}
 	}
 		//Get antialiasing
@@ -357,6 +360,7 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	else if (_color == LightgrayColor)  pen.setColor(Qt::lightGray);
 	else if (_color == OrangeColor)  pen.setColor(QColor(255, 128, 0));
 	else if (_color == PurpleColor)  pen.setColor(QColor(136, 28, 168));
+	else if (_color == NoneColor)  pen.setBrush(Qt::transparent);
 	
 		//Apply antialiasing
 	painter.setRenderHint(QPainter::Antialiasing,          _antialiased);

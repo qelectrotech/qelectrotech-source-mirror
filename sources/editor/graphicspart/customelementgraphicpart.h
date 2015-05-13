@@ -59,7 +59,7 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		enum Filling { NoneFilling, BlackFilling, WhiteFilling, GreenFilling, RedFilling, BlueFilling, GrayFilling, BrunFilling, YellowFilling, CyanFilling, MagentaFilling, LightgrayFilling, OrangeFilling, PurpleFilling, HorFilling, VerFilling, BdiagFilling, FdiagFilling};
 
 			//Line color
-		enum Color {BlackColor, WhiteColor, GreenColor, RedColor, BlueColor, GrayColor, BrunColor, YellowColor, CyanColor, MagentaColor, LightgrayColor, OrangeColor, PurpleColor};
+		enum Color {BlackColor, WhiteColor, GreenColor, RedColor, BlueColor, GrayColor, BrunColor, YellowColor, CyanColor, MagentaColor, LightgrayColor, OrangeColor, PurpleColor, NoneColor};
 	
 		// constructors, destructor
 	public:
