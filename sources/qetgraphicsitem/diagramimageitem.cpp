@@ -142,7 +142,8 @@ bool DiagramImageItem::fromXml(const QDomElement &e) {
 
 	setScale(e.attribute("size").toDouble());
 	applyRotation(e.attribute("rotation").toDouble());
-	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
+		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
+	QGraphicsObject::setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	is_movable_ = (e.attribute("is_movable").toInt());
 
 	return (true);

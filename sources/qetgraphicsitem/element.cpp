@@ -417,8 +417,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	//load informations
 	element_informations_.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
 
-	// position, selection
-	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
+		//Position and selection.
+		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
+	QGraphicsObject::setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	
 	// orientation
