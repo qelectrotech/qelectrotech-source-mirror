@@ -34,7 +34,7 @@ ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
 	ui(new Ui::ElementInfoWidget),
 	element_(elmt),
 	elmt_info(elmt->elementInformations()),
-	m_first_activation (true)
+	m_first_activation (false)
 {
 	ui->setupUi(this);
 	buildInterface();
