@@ -685,10 +685,11 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		project_ -> state() == QETProject::ProjectParsingRunning
 	);
 	
-	// chargement de tous les elements du fichier XML
+		//Load all elements from the XML
 	QList<Element *> added_elements;
 	QHash<int, Terminal *> table_adr_id;
-	foreach (QDomElement element_xml, QET::findInDomElement(root, "elements", "element")) {
+	foreach (QDomElement element_xml, QET::findInDomElement(root, "elements", "element"))
+	{
 		if (!Element::valideXml(element_xml)) continue;
 		
 		// cree un element dont le type correspond a l'id type
@@ -698,7 +699,8 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		
 		int state = 0;
 		Element *nvel_elmt = ElementFactory::Instance() -> createElement(element_location, 0, &state);
-		if (state) {
+		if (state)
+		{
 			QString debug_message = QString("Diagram::fromXml() : Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(state);
 			qDebug() << qPrintable(debug_message);
 			delete nvel_elmt;
@@ -760,10 +762,15 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			Terminal *p2 = table_adr_id.value(id_p2);
 			if (p1 != p2)
 			{
-				Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2));
-				addItem(c);
-				c -> fromXml(f);
-				added_conductors << c;
+				Conductor *c = new Conductor(p1, p2);
+				if (c->isValid())
+				{
+					addItem(c);
+					c -> fromXml(f);
+					added_conductors << c;
+				}
+				else
+					delete c;
 			}
 		}
 		else qDebug() << "Diagram::fromXml() : Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";

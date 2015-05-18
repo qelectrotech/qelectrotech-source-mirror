@@ -45,6 +45,8 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	public:
 		Conductor(Terminal *, Terminal *);
 		virtual ~Conductor();
+
+		bool isValid() const;
 	
 	private:
 		Conductor(const Conductor &);
@@ -164,6 +166,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	qreal segments_squares_scale_;
 	/// Define whether and how the conductor should be highlighted
 	Highlight must_highlight_;
+	bool m_valid;
 	
 	private:
 	void segmentsToPath();

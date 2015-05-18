@@ -59,12 +59,11 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	setZValue(9);
 	previous_z_value = zValue();
 
-	// ajout du conducteur a la liste de conducteurs de chacune des deux bornes
+		//Add this conductor to the list of conductor of each of the two terminal
 	bool ajout_p1 = terminal1 -> addConductor(this);
 	bool ajout_p2 = terminal2 -> addConductor(this);
-	
-	// en cas d'echec de l'ajout (conducteur deja existant notamment)
-	if (!ajout_p1 || !ajout_p2) return;
+		//m_valid become false if the conductor can't be added to terminal (conductor already exist)
+	m_valid = (!ajout_p1 || !ajout_p2) ? false : true;
 	
 	// attributs de dessin par defaut (communs a tous les conducteurs)
 	if (!pen_and_brush_initialized) {
@@ -111,6 +110,15 @@ Conductor::~Conductor() {
 	
 	// supprime les segments
 	deleteSegments();
+}
+
+/**
+ * @brief Conductor::isValid
+ * @return true if conductor is valid else false;
+ * A non valid conductor, is a conductor without two terminal
+ */
+bool Conductor::isValid() const {
+	return m_valid;
 }
 
 /**
