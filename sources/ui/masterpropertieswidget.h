@@ -25,6 +25,8 @@
 class QListWidgetItem;
 class Element;
 class QUndoCommand;
+class QETProject;
+class Diagram;
 
 namespace Ui {
 	class MasterPropertiesWidget;
@@ -44,25 +46,26 @@ class MasterPropertiesWidget : public PropertiesEditorWidget
 	explicit MasterPropertiesWidget(Element *elmt, QWidget *parent = 0);
 	~MasterPropertiesWidget();
 
+	void setElement (Element *element);
 	void apply();
 	void reset();
 	QUndoCommand *associatedUndo () const;
 	QString title() const {return tr("Référence croisée (maitre)");}
 
-	private:
-	void buildInterface();
-
 	private slots:
+		void buildInterface();
 		void on_link_button_clicked();
 		void on_unlink_button_clicked();
 		void showElementFromLWI(QListWidgetItem *lwi);
 		void showedElementWasDeleted ();
+		void diagramWasdeletedFromProject();
 
 	private:
 	Ui::MasterPropertiesWidget *ui;
-	Element *element_;
+	Element *m_element;
 	QHash <QListWidgetItem *, Element *> lwi_hash;
 	Element *m_showed_element;
+	QETProject *m_project;
 };
 
 #endif // MASTERPROPERTIESWIDGET_H

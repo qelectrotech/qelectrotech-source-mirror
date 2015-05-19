@@ -33,13 +33,20 @@
 MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	PropertiesEditorWidget(parent),
 	ui(new Ui::MasterPropertiesWidget),
-	element_(elmt),
-	m_showed_element (nullptr)
+	m_element(elmt),
+	m_showed_element (nullptr),
+	m_project(nullptr)
 {
+	if(Q_LIKELY(elmt->diagram() && elmt->diagram()->project()))
+	{
+		m_project = elmt->diagram()->project();
+		connect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)), this, SLOT(diagramWasdeletedFromProject()));
+	}
+
 	ui->setupUi(this);
-	buildInterface();
 	connect(ui->free_list,		SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(showElementFromLWI(QListWidgetItem*)));
 	connect(ui->linked_list,	SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(showElementFromLWI(QListWidgetItem*)));
+	buildInterface();
 }
 
 /**
@@ -49,8 +56,20 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 MasterPropertiesWidget::~MasterPropertiesWidget()
 {
 	if (m_showed_element) m_showed_element->setHighlighted(false);
-	//foreach(Element *elmt, lwi_hash.values()) elmt->setHighlighted(false);
 	delete ui;
+}
+
+/**
+ * @brief MasterPropertiesWidget::setElement
+ * Set the element to be edited
+ * @param element
+ */
+void MasterPropertiesWidget::setElement(Element *element)
+{
+	if (m_element == element) return;
+	if (m_showed_element) {m_showed_element->setHighlighted(false); m_showed_element = nullptr;}
+	m_element = element;
+	buildInterface();
 }
 
 /**
@@ -62,7 +81,7 @@ MasterPropertiesWidget::~MasterPropertiesWidget()
  */
 void MasterPropertiesWidget::apply() {
 	if (QUndoCommand *undo = associatedUndo())
-		element_ -> diagram() -> undoStack().push(undo);
+		m_element -> diagram() -> undoStack().push(undo);
 }
 
 /**
@@ -86,7 +105,7 @@ void MasterPropertiesWidget::reset() {
  */
 QUndoCommand* MasterPropertiesWidget::associatedUndo() const {
 	QList <Element *> to_link;
-	QList <Element *> linked_ = element_->linkedElements();
+	QList <Element *> linked_ = m_element->linkedElements();
 
 	for (int i=0; i<ui->linked_list->count(); i++) {
 		to_link << lwi_hash[ui->linked_list->item(i)];
@@ -95,7 +114,7 @@ QUndoCommand* MasterPropertiesWidget::associatedUndo() const {
 		//If same element are find in to_link and linked, that means
 		// element are already linked, so we remove element on the two list
 		//if linked_ contains element at the end of the operation,
-		//that means this element must be unlinked from @element_
+		//that means this element must be unlinked from @m_element
 	foreach (Element *elmt, to_link) {
 		if(linked_.contains(elmt)) {
 			to_link.removeAll(elmt);
@@ -103,20 +122,20 @@ QUndoCommand* MasterPropertiesWidget::associatedUndo() const {
 		}
 	}
 
-		// if two list, contain element, we link and unlink @element_ with corresponding
+		// if two list, contain element, we link and unlink @m_element with corresponding
 		//undo command, and add first command for parent of the second, user see only one
 		//undo command
 	if (linked_.count() && to_link.count()) {
-		LinkElementsCommand *lec = new LinkElementsCommand(element_, to_link);
-		new unlinkElementsCommand(element_, linked_, lec);
+		LinkElementsCommand *lec = new LinkElementsCommand(m_element, to_link);
+		new unlinkElementsCommand(m_element, linked_, lec);
 		return lec;
 	}
 		//Else do the single undo command corresponding to the link.
 	else if (to_link.count()) {
-		return (new LinkElementsCommand(element_, to_link));
+		return (new LinkElementsCommand(m_element, to_link));
 	}
 	else if (linked_.count()) {
-		return (new unlinkElementsCommand(element_, linked_));
+		return (new unlinkElementsCommand(m_element, linked_));
 	}
 	else {
 		return nullptr;
@@ -127,11 +146,19 @@ QUndoCommand* MasterPropertiesWidget::associatedUndo() const {
  * @brief MasterPropertiesWidget::buildInterface
  * Build the interface of the widget
  */
-void MasterPropertiesWidget::buildInterface() {
-	//build the free list
-	ElementProvider elmt_prov(element_->diagram()->project());
+void MasterPropertiesWidget::buildInterface()
+{
+	ui->free_list->clear();
+	ui->linked_list->clear();
+	lwi_hash.clear();
 
-	foreach(Element *elmt, elmt_prov.freeElement(Element::Slave)) {
+	if (Q_UNLIKELY(!m_project)) return;
+
+	ElementProvider elmt_prov(m_project);
+
+		//Build the list of free available element
+	foreach(Element *elmt, elmt_prov.freeElement(Element::Slave))
+	{
 		//label for list widget
 		QString widget_text;
 		QString title = elmt->diagram()->title();
@@ -144,8 +171,9 @@ void MasterPropertiesWidget::buildInterface() {
 		ui->free_list->addItem(lwi_);
 	}
 
-	//build the linked list
-	foreach(Element *elmt, element_->linkedElements()) {
+		//Build the list of already linked element
+	foreach(Element *elmt, m_element->linkedElements())
+	{
 		//label for list widget
 		QString widget_text;
 		QString title = elmt->diagram()->title();
@@ -206,4 +234,16 @@ void MasterPropertiesWidget::showElementFromLWI(QListWidgetItem *lwi)
  */
 void MasterPropertiesWidget::showedElementWasDeleted() {
 	m_showed_element = nullptr;
+}
+
+/**
+ * @brief MasterPropertiesWidget::diagramWasdeletedFromProject
+ * This slot is called when a diagram is removed from the parent project of edited element
+ * to update the content of this widget
+ */
+void MasterPropertiesWidget::diagramWasdeletedFromProject()
+{
+		//We use a timer because if the removed diagram contain slave element linked to the edited element
+		//we must to wait for this elements be unlinked, else the linked list provide deleted elements.
+	QTimer::singleShot(10, this, SLOT(buildInterface()));
 }
