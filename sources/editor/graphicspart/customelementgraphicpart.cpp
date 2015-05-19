@@ -173,6 +173,7 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_filling == RedFilling)   css_like_styles += "red";
 	else if (_filling == GrayFilling)  css_like_styles += "gray";
 	else if (_filling == BrunFilling)  css_like_styles += "brun";
+	else if (_filling == YellowFilling)  css_like_styles += "yellow";
 	else if (_filling == CyanFilling)  css_like_styles += "cyan";
 	else if (_filling == MagentaFilling)  css_like_styles += "magenta";
 	else if (_filling == LightgrayFilling)  css_like_styles += "lightgray";
