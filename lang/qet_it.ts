@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it_IT">
+<TS version="2.1" language="it_IT">
 <context>
     <name>AboutQET</name>
     <message>
@@ -1181,43 +1181,50 @@ i conduttori di questo potenziale?</translation>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="165"/>
         <source>Nom : %1
 </source>
-        <translation>Nome : %1</translation>
+        <translation>Nome : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="168"/>
         <source>Folio : %1
 </source>
-        <translation>Pagina : %1</translation>
+        <translation>Pagina : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="170"/>
         <source>Position : %1
 </source>
-        <translation>Posizione : %1</translation>
+        <translation>Posizione : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="171"/>
         <source>Dimensions : %1*%2
 </source>
-        <translation>Dimensioni : %1*%2</translation>
+        <translation>Dimensioni : %1*%2
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="172"/>
         <source>Bornes : %1
 </source>
-        <translation>Terminali : %1</translation>
+        <translation>Terminali : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="173"/>
         <source>Champs de texte : %1
 </source>
-        <translation>Campo di testo : %1</translation>
+        <translation>Campo di testo : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="176"/>
         <source>Emplacement : %1
 </source>
-        <translation>Posizione : %1</translation>
+        <translation>Posizione : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="196"/>
@@ -3509,7 +3516,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="495"/>
         <source>&amp;Édition</source>
-        <translation>Modifica (&amp;E)</translation>
+        <translation>&amp;Modifica</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="255"/>
