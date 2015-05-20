@@ -187,10 +187,10 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	vlayout_->addWidget(label);
 
 	//widget for the pixmap
-//	QLabel *pix = new QLabel(general_widget);
-//	pix->setPixmap(m_element->pixmap());
-//	vlayout_->addWidget(pix, 0, Qt::AlignHCenter);
-//	vlayout_ -> addStretch();
+	QLabel *pix = new QLabel(general_widget);
+	pix->setPixmap(m_element->pixmap().scaled (34, 34, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+	vlayout_->addWidget(pix, 0, Qt::AlignHCenter);
+	vlayout_ -> addStretch();
 
 		//button widget
 	QPushButton *find_in_panel = new QPushButton(QET::Icons::ZoomDraw, tr("Retrouver dans le panel"), general_widget);
