@@ -48,13 +48,13 @@ class LinkSingleElementWidget : public PropertiesEditorWidget
 		explicit LinkSingleElementWidget(Element *elmt, QWidget *parent = 0);
 		~LinkSingleElementWidget();
 
+		void setElement (Element *element);
 		void apply();
 		QUndoCommand *associatedUndo() const;
 		QString title() const;
 		void updateUi();
 
 	private:
-		void buildInterface();
 		void buildList();
 		void buildLinkUnlinkButton();
 		void buildSearchField();
@@ -62,15 +62,17 @@ class LinkSingleElementWidget : public PropertiesEditorWidget
 		void setUpCompleter();
 
 	private slots:
-	void setNewList();
-	void unlinkClicked();
-	void on_button_this_clicked();
-	void on_button_linked_clicked();
+		void buildInterface();
+		void setNewList();
+		void unlinkClicked();
+		void on_button_this_clicked();
+		void on_button_linked_clicked();
+		void diagramWasRemovedFromProject();
 
 	///Attributes
 	private:
 	Ui::LinkSingleElementWidget *ui;
-	Element *element_;
+	Element *m_element;
 	ElementSelectorWidget *esw_;
 	QList <Diagram *> diagram_list;
 	QWidget *unlink_widget;
