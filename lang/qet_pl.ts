@@ -6577,7 +6577,7 @@ Pozostałe pola nie są używane.
         <location filename="../sources/editor/styleeditor.cpp" line="46"/>
         <source>Aucun</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Brak</translation>
+        <translation>Brak</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
@@ -6721,25 +6721,25 @@ Pozostałe pola nie są używane.
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Lignes Horizontales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Linie poziome</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Lignes Verticales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Linie pionowe</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Hachures gauche</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Pochylone w lewo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Hachures droite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Pochylone w prawo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
