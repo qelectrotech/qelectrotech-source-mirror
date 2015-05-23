@@ -379,12 +379,12 @@
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1397"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1405"/>
         <source>Textes de conducteurs</source>
         <translation>Geleider tekst</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1398"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1406"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>Wil je de nieuwe tekst toe passen op alle geleiders met het zelfde potentiaal?</translation>
@@ -2629,38 +2629,38 @@ Geen toegang tot de bovenliggende categorie</translation>
         <translation>Toon het verbonden element</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="93"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="113"/>
         <source>Report de folio</source>
         <translation>Rapport pagina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="95"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="115"/>
         <source>Référence croisée (esclave)</source>
         <translation>Kruisverwijzing (Onderdeel)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="116"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="269"/>
         <source>Tous</source>
         <translation>Alles</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="122"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="275"/>
         <source>Sans titre</source>
         <translation>Ongetiteld</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="165"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="167"/>
         <source>Cet élément est déjà lié.</source>
         <translation>
 Dit element is al verbonden.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="166"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="168"/>
         <source>Délier</source>
         <translation>Verbinding verbreken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="196"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="198"/>
         <source>Rechercher</source>
         <translation>Zoeken</translation>
     </message>
@@ -2693,19 +2693,19 @@ Dit element is al verbonden.</translation>
         <translation>Elementen met relatie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="138"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="152"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="165"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="180"/>
         <source>Sans titre</source>
         <translation>Zonder titel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="139"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="153"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="166"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="181"/>
         <source>Folio  %1 (%2), position %3.</source>
         <translation>Schema bladzijde %1 (%2), positie %3.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.h" line="50"/>
+        <location filename="../sources/ui/masterpropertieswidget.h" line="53"/>
         <source>Référence croisée (maitre)</source>
         <translation>Kruisverwijzing (Basis)</translation>
     </message>
@@ -6485,22 +6485,22 @@ Les autres champs ne sont pas utilisés.</source>
 <context>
     <name>StyleEditor</name>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="81"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="86"/>
         <source>Antialiasing</source>
         <translation>Verscherpen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="99"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="104"/>
         <source>Style : </source>
         <translation>Stijl: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="102"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="107"/>
         <source>Épaisseur : </source>
         <translation>Dikte (diepte): </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="94"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="99"/>
         <source>Remplissage :</source>
         <translation>Vulling:</translation>
     </message>
@@ -6583,185 +6583,215 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>Purper</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="49"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="46"/>
+        <source>Aucun</source>
+        <comment>element part color</comment>
+        <translation type="unfinished">Geen</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Normal</source>
         <comment>element part line style</comment>
         <translation>Normaal</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
         <translation>Streep</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
         <translation>Punt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
         <translation>Punt streep</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation>Nul</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>Dun</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>Normaal</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Forte</source>
         <comment>element part weight</comment>
         <translation>Dik</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="61"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="62"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
         <translation>Dubbeldik</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="65"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>Geen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="66"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="67"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>Zwart</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="67"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="68"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>Wit</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="68"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="69"/>
         <source>Vert</source>
         <comment>element part filling</comment>
         <translation>Groen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="69"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
         <translation>Rood</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="71"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
         <translation>Blauw</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="71"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="72"/>
         <source>Gris</source>
         <comment>element part filling</comment>
         <translation>Grijs</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="72"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Marron</source>
         <comment>element part filling</comment>
         <translation>Bruin</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Jaune</source>
         <comment>element part filling</comment>
         <translation>Geel</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="74"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="75"/>
         <source>Cyan</source>
         <comment>element part filling</comment>
         <translation>Cyaan</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="75"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="76"/>
         <source>Magenta</source>
         <comment>element part filling</comment>
         <translation>Magenta</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="76"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="77"/>
         <source>Gris clair</source>
         <comment>element part filling</comment>
         <translation>Licht grijs</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="77"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="78"/>
         <source>Orange</source>
         <comment>element part filling</comment>
         <translation>Oranje</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="78"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="79"/>
         <source>Violet</source>
         <comment>element part filling</comment>
         <translation>Purper</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="88"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="80"/>
+        <source>Lignes Horizontales</source>
+        <comment>element part filling</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="81"/>
+        <source>Lignes Verticales</source>
+        <comment>element part filling</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="82"/>
+        <source>Hachures gauche</source>
+        <comment>element part filling</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="83"/>
+        <source>Hachures droite</source>
+        <comment>element part filling</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Apparence :</source>
         <translation>Voorkomen:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="91"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="96"/>
         <source>Contour :</source>
         <translation>Omtrek:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="109"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="114"/>
         <source>Géométrie :</source>
         <translation>Geometrie:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="134"/>
-        <location filename="../sources/editor/styleeditor.cpp" line="136"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="139"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="141"/>
         <source>style antialiasing</source>
         <translation>Verscherpings stijl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
-        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="148"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="150"/>
         <source>style couleur</source>
         <translation>Kleur stijl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="152"/>
-        <location filename="../sources/editor/styleeditor.cpp" line="154"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="157"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="159"/>
         <source>style ligne</source>
         <translation>Lijn stijl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="161"/>
-        <location filename="../sources/editor/styleeditor.cpp" line="163"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="166"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="168"/>
         <source>style epaisseur</source>
         <translation>Dikte stijl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="170"/>
-        <location filename="../sources/editor/styleeditor.cpp" line="172"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="175"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="177"/>
         <source>style remplissage</source>
         <translation>Vulling stijl</translation>
     </message>
