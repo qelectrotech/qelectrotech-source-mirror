@@ -6619,7 +6619,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="46"/>
         <source>Aucun</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Нет</translation>
+        <translation>Нет</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
@@ -6757,25 +6757,25 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Lignes Horizontales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Горизонтальные линии</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Lignes Verticales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Вертикальные линии</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Hachures gauche</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Штриховка влево</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Hachures droite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Штриховка вправо</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="86"/>
