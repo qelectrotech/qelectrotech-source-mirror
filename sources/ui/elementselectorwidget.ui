@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>300</width>
+    <height>400</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>300</width>
+    <height>400</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -27,8 +33,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>380</width>
-        <height>280</height>
+        <width>280</width>
+        <height>380</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="scroll_layout_">
