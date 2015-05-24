@@ -6575,7 +6575,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="46"/>
         <source>Aucun</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Κανένα</translation>
+        <translation>Κανένα</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
@@ -6719,13 +6719,13 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Lignes Horizontales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Οριζόντιες γραμμές</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Lignes Verticales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Κάθετες γραμμές</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
