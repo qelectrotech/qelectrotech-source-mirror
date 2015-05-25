@@ -4642,7 +4642,7 @@ Verfügbare Optionen:
         <location filename="../sources/editor/qetelementeditor.cpp" line="671"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
-        <translation>Abschluss nicht vorhanden</translation>
+        <translation>Anschluss nicht vorhanden</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
@@ -4676,7 +4676,7 @@ Verfügbare Optionen:
         <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
-        <translation>Die Überprüfung dieses bauteils generierte</translation>
+        <translation>Die Überprüfung dieses Bauteils generierte</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="729"/>
@@ -6543,7 +6543,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="46"/>
         <source>Aucun</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Keine</translation>
+        <translation>Keine</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
@@ -6681,25 +6681,25 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Lignes Horizontales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Waagerechte Linien</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Lignes Verticales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Senkrechte Linien</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Hachures gauche</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schraffur links</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Hachures droite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schraffur rechts</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="86"/>
