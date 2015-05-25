@@ -29,7 +29,8 @@
  */
 DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget(QWidget *parent) :
 	PropertiesEditorDockWidget(parent),
-	m_diagram(nullptr)
+	m_diagram(nullptr),
+	m_edited_qgi_type(UnknowQGIType)
 {}
 
 /**
@@ -43,7 +44,6 @@ DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget(QWidget *pa
 void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 {
 	if (m_diagram == diagram) return;
-	clear();
 
 	if (m_diagram)
 	{
@@ -59,7 +59,10 @@ void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 		selectionChanged();
 	}
 	else
+	{
 		m_diagram = nullptr;
+		clear();
+	}
 }
 
 /**
@@ -70,17 +73,37 @@ void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 void DiagramPropertiesEditorDockWidget::selectionChanged()
 {
 	if (!m_diagram) return;
-	clear();
 
-	if (m_diagram->selectedItems().size() == 1)
+	if (m_diagram->selectedItems().size() == 1) //We can open an editor only when there is one selected item
 	{
 		QGraphicsItem *item = m_diagram->selectedItems().first();
 
 		if (Element *elmt = dynamic_cast<Element*>(item))
+		{
+			if (m_edited_qgi_type == ElementQGIType && editors().size() == 1)
+			{
+				ElementPropertiesWidget *epw = dynamic_cast<ElementPropertiesWidget*>(editors().first());
+				if (epw) //In this case we only update each editor widget with the new element instead of create new widget.
+				{
+					epw->setElement(elmt);
+					return;
+				}
+			}
+			clear();
+			m_edited_qgi_type = ElementQGIType;
 			addEditor(new ElementPropertiesWidget(elmt, this));
+		}
 		else if (DiagramImageItem *image = dynamic_cast<DiagramImageItem *>(item))
+		{
+			clear();
+			m_edited_qgi_type = ImageQGIType;
 			addEditor(new ImagePropertiesWidget(image, this));
+		}
+		else
+			clear();
 	}
+	else
+		clear();
 }
 
 /**

@@ -105,6 +105,14 @@ bool PropertiesEditorDockWidget::addEditor(PropertiesEditorWidget *editor, int i
 }
 
 /**
+ * @brief PropertiesEditorDockWidget::editors
+ * @return all editor used in this dock
+ */
+QList<PropertiesEditorWidget *> PropertiesEditorDockWidget::editors() const {
+	return m_editor_list;
+}
+
+/**
  * @brief PropertiesEditorDockWidget::removeEditor
  * Remove @editor from this dock. The editor wasn't delete a the end of this method
  * If the editor was the last on this widget, we disabled the button box

@@ -18,8 +18,9 @@
 #ifndef LINKSINGLEELEMENTWIDGET_H
 #define LINKSINGLEELEMENTWIDGET_H
 
-#include "PropertiesEditor/propertieseditorwidget.h"
 #include "element.h"
+#include "abstractelementpropertieseditorwidget.h"
+
 
 class Diagram;
 class QLineEdit;
@@ -39,7 +40,7 @@ namespace Ui {
  * If the element is already linked, the widget ask user to unlink.
  * This widget embedded the diagram command for undo/redo the action
  */
-class LinkSingleElementWidget : public PropertiesEditorWidget
+class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 {
 	Q_OBJECT
 
@@ -72,7 +73,6 @@ class LinkSingleElementWidget : public PropertiesEditorWidget
 	///Attributes
 	private:
 	Ui::LinkSingleElementWidget *ui;
-	Element *m_element;
 	ElementSelectorWidget *esw_;
 	QList <Diagram *> diagram_list;
 	QWidget *unlink_widget;

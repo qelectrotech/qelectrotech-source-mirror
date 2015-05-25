@@ -39,6 +39,7 @@ class PropertiesEditorDockWidget : public QDockWidget
 		virtual void apply();
 		virtual void reset();
 		bool addEditor (PropertiesEditorWidget *editor, int index = 0);
+		QList<PropertiesEditorWidget *> editors() const;
 		bool removeEditor (PropertiesEditorWidget *editor);
 		void setDisabledButtonBox(bool b = true);
 		void setEnabledButtonBox (bool b = true);

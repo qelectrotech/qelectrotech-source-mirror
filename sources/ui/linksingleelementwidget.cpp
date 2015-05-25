@@ -31,9 +31,8 @@
  * the parent widget
  */
 LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent) :
-	PropertiesEditorWidget(parent),
+	AbstractElementPropertiesEditorWidget(parent),
 	ui(new Ui::LinkSingleElementWidget),
-	m_element(nullptr),
 	esw_(0),
 	unlink_widget(0),
 	unlink_(false),

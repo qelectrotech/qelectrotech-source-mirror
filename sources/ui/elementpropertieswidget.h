@@ -18,7 +18,7 @@
 #ifndef ELEMENTPROPERTIESWIDGET_H
 #define ELEMENTPROPERTIESWIDGET_H
 
-#include "PropertiesEditor/propertieseditorwidget.h"
+#include "abstractelementpropertieseditorwidget.h"
 
 class Element;
 class Diagram;
@@ -26,12 +26,13 @@ class QTabWidget;
 class ElementsLocation;
 
 
-class ElementPropertiesWidget : public PropertiesEditorWidget
+class ElementPropertiesWidget : public AbstractElementPropertiesEditorWidget
 {
 		Q_OBJECT
 
 	public:
 		explicit ElementPropertiesWidget(Element *elmt, QWidget *parent = 0);
+		void setElement(Element *element);
 		void apply();
 		void reset();
 
@@ -41,6 +42,8 @@ class ElementPropertiesWidget : public PropertiesEditorWidget
 
 	private:
 		void buildGui();
+		void updateUi();
+		void addGeneralWidget();
 		QWidget *generalWidget();
 
 	signals:
@@ -50,10 +53,10 @@ class ElementPropertiesWidget : public PropertiesEditorWidget
 		void editElementRequired(const ElementsLocation &);
 
 	private:
-		Element *m_element;
 		Diagram *m_diagram;
 		QTabWidget *m_tab;
-		QList <PropertiesEditorWidget *> m_list_editor;
+		QList <AbstractElementPropertiesEditorWidget *> m_list_editor;
+		QWidget *m_general_widget;
 };
 
 #endif // ELEMENTPROPERTIESWIDGET_H

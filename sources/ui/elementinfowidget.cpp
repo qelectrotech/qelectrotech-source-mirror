@@ -30,15 +30,13 @@
  * @param parent parent widget
  */
 ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
-	PropertiesEditorWidget(parent),
+	AbstractElementPropertiesEditorWidget(parent),
 	ui(new Ui::ElementInfoWidget),
-	element_(elmt),
-	elmt_info(elmt->elementInformations()),
 	m_first_activation (false)
 {
 	ui->setupUi(this);
 	buildInterface();
-	fillInfo();
+	setElement(elmt);
 }
 
 /**
@@ -52,6 +50,19 @@ ElementInfoWidget::~ElementInfoWidget()
 }
 
 /**
+ * @brief ElementInfoWidget::setElement
+ * Set @element to be the edited element
+ * @param element
+ */
+void ElementInfoWidget::setElement(Element *element)
+{
+	if (m_element == element) return;
+	m_element = element;
+	m_element_info = m_element->elementInformations();
+	fillInfo();
+}
+
+/**
  * @brief ElementInfoWidget::apply
  * Apply the new information with a new undo command (got with method associatedUndo)
  * pushed to the stack of element project.
@@ -59,7 +70,7 @@ ElementInfoWidget::~ElementInfoWidget()
 void ElementInfoWidget::apply()
 {
 	if (QUndoCommand *undo = associatedUndo())
-		element_ -> diagram() -> undoStack().push(undo);
+		m_element -> diagram() -> undoStack().push(undo);
 }
 
 /**
@@ -71,7 +82,7 @@ void ElementInfoWidget::apply()
  */
 QUndoCommand* ElementInfoWidget::associatedUndo() const {
 	DiagramContext new_info;
-	DiagramContext old_info = element_ -> elementInformations();
+	DiagramContext old_info = m_element -> elementInformations();
 
 	foreach (ElementInfoPartWidget *eipw, eipw_list) {
 			//add value only if they're something to store
@@ -82,7 +93,7 @@ QUndoCommand* ElementInfoWidget::associatedUndo() const {
 	}
 
 	if (old_info != new_info) {
-		return (new ChangeElementInformationCommand(element_, old_info, new_info));
+		return (new ChangeElementInformationCommand(m_element, old_info, new_info));
 	}
 	return nullptr;
 }
@@ -122,19 +133,19 @@ void ElementInfoWidget::buildInterface() {
 
 /**
  * @brief ElementInfoWidget::fillInfo
- * fill information fetch in elmt_info to the
+ * fill information fetch in m_element_info to the
  * corresponding line edit
  */
 void ElementInfoWidget::fillInfo() {
 	foreach (ElementInfoPartWidget *eipw, eipw_list) {
 
-		eipw -> setText (elmt_info[eipw->key()].toString());
-		eipw -> setShow (elmt_info.keyMustShow(eipw->key()));
+		eipw -> setText (m_element_info[eipw->key()].toString());
+		eipw -> setShow (m_element_info.keyMustShow(eipw->key()));
 
 		//If the current eipw is for label or comment and the text is empty
 		//we force the checkbox to ckecked
 		if (eipw -> key() == "label" || eipw -> key() == "comment") {
-			if (elmt_info[eipw->key()].toString().isEmpty())
+			if (m_element_info[eipw->key()].toString().isEmpty())
 				eipw->setShow(true);
 		}
 		else //< for other eipw we hide the checkbox

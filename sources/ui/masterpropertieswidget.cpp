@@ -31,22 +31,15 @@
  * @param parent
  */
 MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
-	PropertiesEditorWidget(parent),
+	AbstractElementPropertiesEditorWidget(parent),
 	ui(new Ui::MasterPropertiesWidget),
-	m_element(elmt),
 	m_showed_element (nullptr),
 	m_project(nullptr)
 {
-	if(Q_LIKELY(elmt->diagram() && elmt->diagram()->project()))
-	{
-		m_project = elmt->diagram()->project();
-		connect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)), this, SLOT(diagramWasdeletedFromProject()));
-	}
-
 	ui->setupUi(this);
 	connect(ui->free_list,		SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(showElementFromLWI(QListWidgetItem*)));
 	connect(ui->linked_list,	SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(showElementFromLWI(QListWidgetItem*)));
-	buildInterface();
+	setElement(elmt);
 }
 
 /**
@@ -68,6 +61,15 @@ void MasterPropertiesWidget::setElement(Element *element)
 {
 	if (m_element == element) return;
 	if (m_showed_element) {m_showed_element->setHighlighted(false); m_showed_element = nullptr;}
+	if (m_project) disconnect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)), this, SLOT(diagramWasdeletedFromProject()));
+
+	if(Q_LIKELY(element->diagram() && element->diagram()->project()))
+	{
+		m_project = element->diagram()->project();
+		connect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)), this, SLOT(diagramWasdeletedFromProject()));
+	}
+	else m_project = nullptr;
+
 	m_element = element;
 	buildInterface();
 }

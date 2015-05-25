@@ -20,7 +20,7 @@
 
 #include <QWidget>
 #include <QHash>
-#include "PropertiesEditor/propertieseditorwidget.h"
+#include "abstractelementpropertieseditorwidget.h"
 
 class QListWidgetItem;
 class Element;
@@ -38,7 +38,7 @@ namespace Ui {
  * This class embenddedthe undo/redo command when apply new connection.
  */
 
-class MasterPropertiesWidget : public PropertiesEditorWidget
+class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 {
 	Q_OBJECT
 
@@ -62,7 +62,6 @@ class MasterPropertiesWidget : public PropertiesEditorWidget
 
 	private:
 	Ui::MasterPropertiesWidget *ui;
-	Element *m_element;
 	QHash <QListWidgetItem *, Element *> lwi_hash;
 	Element *m_showed_element;
 	QETProject *m_project;

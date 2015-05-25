@@ -15,31 +15,28 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef DIAGRAMPROPERTIESEDITORDOCKWIDGET_H
-#define DIAGRAMPROPERTIESEDITORDOCKWIDGET_H
+#ifndef ABSTRACTELEMENTPROPERTIESEDITORWIDGET_H
+#define ABSTRACTELEMENTPROPERTIESEDITORWIDGET_H
 
-#include "PropertiesEditor/propertieseditordockwidget.h"
+#include "PropertiesEditor/propertieseditorwidget.h"
 
-class Diagram;
-class QGraphicsItem;
+class Element;
 
-class DiagramPropertiesEditorDockWidget : public PropertiesEditorDockWidget
+/**
+ * @brief The AbstractElementPropertiesEditorWidget class
+ * This class provide common method for all widget used to edit some properties of an element
+ */
+class AbstractElementPropertiesEditorWidget : public PropertiesEditorWidget
 {
 		Q_OBJECT
-
 	public:
-		DiagramPropertiesEditorDockWidget(QWidget *parent = nullptr);
+		explicit AbstractElementPropertiesEditorWidget(QWidget *parent = 0);
+		virtual void setElement(Element *element) =0;
 
-		void setDiagram(Diagram *diagram);
+	protected:
+		Element *m_element;
 
-	private slots:
-		void selectionChanged();
-		void diagramWasDeleted();
 
-	private:
-		enum EditedQGIType {UnknowQGIType, ElementQGIType, ImageQGIType};
-		Diagram *m_diagram;
-		EditedQGIType m_edited_qgi_type;
 };
 
-#endif // DIAGRAMPROPERTIESEDITORDOCKWIDGET_H
+#endif // ABSTRACTELEMENTPROPERTIESEDITORWIDGET_H

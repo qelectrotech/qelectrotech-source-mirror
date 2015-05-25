@@ -36,12 +36,40 @@
  * @param parent
  */
 ElementPropertiesWidget::ElementPropertiesWidget(Element *elmt, QWidget *parent) :
-	PropertiesEditorWidget (parent),
-	m_element (elmt),
+	AbstractElementPropertiesEditorWidget (parent),
 	m_diagram (elmt->diagram()),
-	m_tab (nullptr)
+	m_tab (nullptr),
+	m_general_widget(nullptr)
 {
 	buildGui();
+	setElement(elmt);
+}
+
+/**
+ * @brief ElementPropertiesWidget::setElement
+ * Set @element to be the edited element
+ * @param element
+ */
+void ElementPropertiesWidget::setElement(Element *element)
+{
+	if (m_element == element) return;
+	Element *previous_element = m_element;
+	m_element = element;
+
+	if (previous_element)
+	{
+			//If previous element is same type as new element we just call setElement for each editor
+		if(previous_element->linkType() == m_element->linkType())
+		{
+			foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
+			{
+				aepew->setElement(m_element);
+				addGeneralWidget();
+			}
+			return;
+		}
+	}
+	updateUi();
 }
 
 /**
@@ -109,6 +137,26 @@ void ElementPropertiesWidget::editElement()
 void ElementPropertiesWidget::buildGui()
 {
 	m_tab = new QTabWidget(this);
+	QVBoxLayout *main_layout = new QVBoxLayout(this);
+	main_layout -> addWidget(m_tab);
+	setLayout(main_layout);
+}
+
+/**
+ * @brief ElementPropertiesWidget::updateUi
+ * Update the content of this widget
+ */
+void ElementPropertiesWidget::updateUi()
+{
+		//We keep the current title of the tab, to return to the same tab
+		//if possible, at the end of this method
+	QString tab_text;
+	tab_text = m_tab->tabText(m_tab->currentIndex());
+
+		//Purge the tab widget and delete all widget
+	m_tab->clear();
+	qDeleteAll(m_list_editor); m_list_editor.clear();
+	if(m_general_widget) delete m_general_widget; m_general_widget = nullptr;
 
 		//Add tab according to the element
 	switch (m_element -> linkType())
@@ -136,11 +184,36 @@ void ElementPropertiesWidget::buildGui()
 	}
 
 	foreach (PropertiesEditorWidget *pew, m_list_editor) m_tab->addTab(pew, pew->title());
-	m_tab -> addTab(generalWidget(), tr("Général"));
+	addGeneralWidget();
 
-	QVBoxLayout *main_layout = new QVBoxLayout(this);
-	main_layout -> addWidget(m_tab);
-	setLayout(main_layout);
+	if (!tab_text.isEmpty())
+	{
+		for(int i=0 ; i<m_tab->count() ; ++i)
+		{
+			if (tab_text == m_tab->tabBar()->tabText(i))
+			{
+				m_tab->setCurrentIndex(i);
+				break;
+			}
+		}
+	}
+}
+
+/**
+ * @brief ElementPropertiesWidget::addGeneralWidget
+ * Add or update the general widget on this tab widget
+ */
+void ElementPropertiesWidget::addGeneralWidget()
+{
+	int index = m_tab->currentIndex();
+	if (m_general_widget)
+	{
+		m_tab->removeTab(m_tab->indexOf(m_general_widget));
+		delete m_general_widget;
+	}
+	m_general_widget = generalWidget();
+	m_tab -> addTab(m_general_widget, tr("Général"));
+	m_tab->setCurrentIndex(index);
 }
 
 /**

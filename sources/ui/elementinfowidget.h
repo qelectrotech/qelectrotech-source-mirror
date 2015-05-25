@@ -20,7 +20,7 @@
 
 #include <QWidget>
 #include "diagramcontext.h"
-#include "PropertiesEditor/propertieseditorwidget.h"
+#include "abstractelementpropertieseditorwidget.h"
 
 class Element;
 class QUndoCommand;
@@ -35,7 +35,7 @@ namespace Ui {
  * @brief The ElementInfoWidget class
  * this class is a widget to edit an element informations.
  */
-class ElementInfoWidget : public PropertiesEditorWidget
+class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 {
 	Q_OBJECT
 
@@ -44,6 +44,7 @@ class ElementInfoWidget : public PropertiesEditorWidget
 		explicit ElementInfoWidget(Element *elmt, QWidget *parent = 0);
 		~ElementInfoWidget();
 
+		void setElement(Element *element);
 		void apply();
 		QUndoCommand *associatedUndo () const;
 		QString title() const {return tr("Informations");}
@@ -61,8 +62,7 @@ class ElementInfoWidget : public PropertiesEditorWidget
 		//ATTRIBUTES
 	private:
 		Ui::ElementInfoWidget           *ui;
-		Element                         *element_;
-		DiagramContext                   elmt_info;
+		DiagramContext                   m_element_info;
 		QList <ElementInfoPartWidget *>  eipw_list;
 		bool m_first_activation;
 };
