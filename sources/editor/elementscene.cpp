@@ -80,7 +80,7 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	}
 
 	QPointF event_pos = e -> scenePos();
-	if (!e -> modifiers() & Qt::ControlModifier)
+	if (!(e -> modifiers() & Qt::ControlModifier))
 		event_pos = snapToGrid(event_pos);
 	
 	if (behavior == PasteArea) {
