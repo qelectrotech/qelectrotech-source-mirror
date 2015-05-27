@@ -38,6 +38,16 @@ class PropertiesEditorWidget : public QWidget
 		virtual QUndoCommand *associatedUndo () const;
 		virtual QString title() const;
 		virtual void updateUi() {}
+
+		virtual bool setLiveEdit (bool live_edit);
+		bool isLiveEdit() const;
+
+	private:
+		virtual void enableLiveEdit() {}
+		virtual void disableLiveEdit() {}
+
+	protected:
+		bool m_live_edit;
 };
 
 #endif // PROPERTIESEDITORWIDGET_H
