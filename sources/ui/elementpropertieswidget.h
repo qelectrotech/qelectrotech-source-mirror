@@ -35,6 +35,7 @@ class ElementPropertiesWidget : public AbstractElementPropertiesEditorWidget
 		void setElement(Element *element);
 		void apply();
 		void reset();
+		bool setLiveEdit(bool live_edit);
 
 	public slots:
 		void findInPanel ();

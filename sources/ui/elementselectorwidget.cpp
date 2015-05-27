@@ -220,6 +220,12 @@ void ElementSelectorWidget::buildInterface() {
 	}
 }
 
+void ElementSelectorWidget::setSelectedElement(const int i)
+{
+	selected_element = elements_list.at(i);
+	emit elementSelected(selected_element);
+}
+
 /**
  * @brief ElementSelectorWidget::showElementFromList
  * Show the element at the position i in @elements_list

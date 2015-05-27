@@ -120,6 +120,7 @@ class Element : public QetGraphicsItem {
 		kind              link_type_;
 
 	signals:
+		void linkedElementChanged(); //This signal is emtied when the linked elements with this element change
 		void elementInfoChange(DiagramContext old_info, DiagramContext new_info);
 
 		//METHODS related to information

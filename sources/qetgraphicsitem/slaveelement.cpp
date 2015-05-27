@@ -50,9 +50,11 @@ SlaveElement::~SlaveElement() {
  * For this class element must be a master
  * @param elmt
  */
-void SlaveElement::linkToElement(Element *elmt) {
-	// check if element is master and if isn't already linked
-	if (elmt->linkType() == Master && !connected_elements.contains(elmt)) {
+void SlaveElement::linkToElement(Element *elmt)
+{
+		// check if element is master and if isn't already linked
+	if (elmt->linkType() == Master && !connected_elements.contains(elmt))
+	{
 		if(!isFree()) unlinkAllElements();
 		connected_elements << elmt;
 
@@ -64,6 +66,7 @@ void SlaveElement::linkToElement(Element *elmt) {
 
 		updateLabel();
 		elmt -> linkToElement(this);
+		emit linkedElementChanged();
 	}
 }
 
@@ -71,12 +74,14 @@ void SlaveElement::linkToElement(Element *elmt) {
  * @brief SlaveElement::unlinkAllElements
  * Unlink all of the element in the QList connected_elements
  */
-void SlaveElement::unlinkAllElements() {
-	// if this element is free no need to do something
-	if (!isFree()) {
-		foreach(Element *elmt, connected_elements) {
+void SlaveElement::unlinkAllElements()
+{
+		// if this element is free no need to do something
+	if (!isFree())
+	{
+		foreach(Element *elmt, connected_elements)
 			unlinkElement(elmt);
-		}
+		emit linkedElementChanged();
 	}
 }
 
@@ -103,6 +108,7 @@ void SlaveElement::unlinkElement(Element *elmt)
 		updateLabel();
 		elmt -> unlinkElement  (this) ;
 		elmt -> setHighlighted (false);
+		emit linkedElementChanged();
 	}
 }
 

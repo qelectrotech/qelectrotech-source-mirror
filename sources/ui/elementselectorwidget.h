@@ -48,14 +48,17 @@ class ElementSelectorWidget : public QWidget
 
 	QStringList filter () const;
 
+	signals:
+		void elementSelected (Element *element);
+
 	public slots:
-	void filtered(const QString &str);
+		void filtered(const QString &str);
 
 	private:
-	void buildInterface();
+		void buildInterface();
 
 	private slots:
-		void setSelectedElement  (const int i) {selected_element = elements_list.at(i);}
+		void setSelectedElement  (const int i);
 		void showElementFromList (const int i);
 		void showedElementWasDeleted ();
 

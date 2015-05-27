@@ -49,9 +49,11 @@ MasterElement::~MasterElement() {
  * For this class element must be a slave
  * @param elmt
  */
-void MasterElement::linkToElement(Element *elmt) {	
-	// check if element is slave and if isn't already linked
-	if (elmt->linkType() == Slave && !connected_elements.contains(elmt)) {
+void MasterElement::linkToElement(Element *elmt)
+{
+		// check if element is slave and if isn't already linked
+	if (elmt->linkType() == Slave && !connected_elements.contains(elmt))
+	{
 		connected_elements << elmt;
 		elmt->linkToElement(this);
 
@@ -60,6 +62,7 @@ void MasterElement::linkToElement(Element *elmt) {
 		connect(elmt, SIGNAL(xChanged()), cri_, SLOT(updateLabel()));
 		connect(elmt, SIGNAL(yChanged()), cri_, SLOT(updateLabel()));
 		cri_ -> updateLabel();
+		emit linkedElementChanged();
 	}
 }
 
@@ -67,12 +70,14 @@ void MasterElement::linkToElement(Element *elmt) {
  * @brief MasterElement::unlinkAllElements
  * Unlink all of the element in the QList connected_elements
  */
-void MasterElement::unlinkAllElements() {
-	// if this element is free no need to do something
-	if (!isFree()) {
-		foreach(Element *elmt, connected_elements) {
+void MasterElement::unlinkAllElements()
+{
+		// if this element is free no need to do something
+	if (!isFree())
+	{
+		foreach(Element *elmt, connected_elements)
 			unlinkElement(elmt);
-		}
+		emit linkedElementChanged();
 	}
 }
 
@@ -96,6 +101,7 @@ void MasterElement::unlinkElement(Element *elmt)
 
 		cri_ -> updateLabel();
 		aboutDeleteXref();
+		emit linkedElementChanged();
 	}
 }
 

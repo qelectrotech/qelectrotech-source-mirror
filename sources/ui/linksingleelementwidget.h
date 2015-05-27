@@ -53,17 +53,22 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 		void apply();
 		QUndoCommand *associatedUndo() const;
 		QString title() const;
+
+	public slots:
 		void updateUi();
 
-	private:
+	public:
+		bool setLiveEdit(bool live_edit);
+
+	private :
+		void enableLiveEdit();
+		void disableLiveEdit();
 		void buildList();
-		void buildLinkUnlinkButton();
 		void buildSearchField();
 		QList <Element *> availableElements();
 		void setUpCompleter();
 
 	private slots:
-		void buildInterface();
 		void setNewList();
 		void unlinkClicked();
 		void on_button_this_clicked();
@@ -75,7 +80,6 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 	Ui::LinkSingleElementWidget *ui;
 	ElementSelectorWidget *esw_;
 	QList <Diagram *> diagram_list;
-	QWidget *unlink_widget;
 	bool unlink_;
 	Element::kind filter_;
 	QLineEdit *search_field;

@@ -78,6 +78,7 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 	{
 		QGraphicsItem *item = m_diagram->selectedItems().first();
 
+			//Edit an element
 		if (Element *elmt = dynamic_cast<Element*>(item))
 		{
 			if (m_edited_qgi_type == ElementQGIType && editors().size() == 1)
@@ -93,17 +94,22 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 			m_edited_qgi_type = ElementQGIType;
 			addEditor(new ElementPropertiesWidget(elmt, this));
 		}
+			//Edit an image
 		else if (DiagramImageItem *image = dynamic_cast<DiagramImageItem *>(item))
 		{
 			clear();
 			m_edited_qgi_type = ImageQGIType;
 			addEditor(new ImagePropertiesWidget(image, this));
 		}
+			//Unknow type, we clear the dock
 		else
 			clear();
 	}
 	else
 		clear();
+
+	foreach(PropertiesEditorWidget *pew, editors())
+		pew->setLiveEdit(true);
 }
 
 /**

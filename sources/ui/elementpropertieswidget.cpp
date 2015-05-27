@@ -107,6 +107,17 @@ void ElementPropertiesWidget::reset() {
 	foreach (PropertiesEditorWidget *pew, m_list_editor) pew->reset();
 }
 
+bool ElementPropertiesWidget::setLiveEdit(bool live_edit)
+{
+	if (m_live_edit == live_edit) return true;
+	m_live_edit = live_edit;
+
+	foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
+		aepew->setLiveEdit(m_live_edit);
+
+	return true;
+}
+
 /**
  * @brief ElementPropertiesWidget::findInPanel
  * If m_element is a custom element, emit findElementRequired
@@ -158,7 +169,7 @@ void ElementPropertiesWidget::updateUi()
 	qDeleteAll(m_list_editor); m_list_editor.clear();
 	if(m_general_widget) delete m_general_widget; m_general_widget = nullptr;
 
-		//Add tab according to the element
+		//Create editor according to the type of element
 	switch (m_element -> linkType())
 	{
 		case Element::Simple:
@@ -183,9 +194,15 @@ void ElementPropertiesWidget::updateUi()
 			break;
 	}
 
-	foreach (PropertiesEditorWidget *pew, m_list_editor) m_tab->addTab(pew, pew->title());
+		//Add each editors in tab widget
+	foreach (AbstractElementPropertiesEditorWidget *aepew, m_list_editor)
+	{
+		aepew->setLiveEdit(m_live_edit);
+		m_tab->addTab(aepew, aepew->title());
+	}
 	addGeneralWidget();
 
+		//Go to the tab, edited at the beginning of this method
 	if (!tab_text.isEmpty())
 	{
 		for(int i=0 ; i<m_tab->count() ; ++i)

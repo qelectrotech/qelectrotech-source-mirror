@@ -81,6 +81,7 @@ void ReportElement::linkToElement(Element * elmt)
 		updateLabel();
 
 		elmt -> linkToElement(this);
+		emit linkedElementChanged();
 	}
 }
 
@@ -90,7 +91,8 @@ void ReportElement::linkToElement(Element * elmt)
  */
 void ReportElement::unlinkAllElements()
 {
-	if (!isFree()){
+	if (!isFree())
+	{
 		QList <Element *> tmp_elmt = connected_elements;
 
 		foreach(Element *elmt, connected_elements)
@@ -107,6 +109,7 @@ void ReportElement::unlinkAllElements()
 			elmt -> setHighlighted(false);
 			elmt -> unlinkAllElements();
 		}
+		emit linkedElementChanged();
 	}
 }
 /**
