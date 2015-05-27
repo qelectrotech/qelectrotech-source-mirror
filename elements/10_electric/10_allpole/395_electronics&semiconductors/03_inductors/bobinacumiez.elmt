@@ -1,0 +1,32 @@
+<definition height="60" type="element" version="0.5" width="20" orientation="dyyy" link_type="simple" hotspot_x="8" hotspot_y="29">
+    <names>
+        <name lang="el">Πηνίο</name>
+        <name lang="ar">حثّ</name>
+        <name lang="pl">Cewka</name>
+        <name lang="en">inductor</name>
+        <name lang="fr">Inductance</name>
+        <name lang="ru">Индуктивность</name>
+        <name lang="es">inductor</name>
+        <name lang="nl">Inductor</name>
+        <name lang="pt">Inductância</name>
+        <name lang="cs">Indukční cívka</name>
+        <name lang="de">Induktivität</name>
+        <name lang="it">Induttanza</name>
+        <name lang="ro">bobinacumiez</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc height="5" x="-3.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" start="90" width="7" angle="-180" antialias="true"/>
+        <arc height="5" x="-3.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" start="90" width="7" angle="-180" antialias="true"/>
+        <arc height="5" x="-3.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="5" start="90" width="7" angle="-180" antialias="true"/>
+        <arc height="5" x="-3.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" start="90" width="7" angle="-180" antialias="true"/>
+        <line y1="10" length1="1.5" y2="20" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" end2="none" x2="0" antialias="false"/>
+        <line y1="-20" length1="1.5" y2="-10" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" end2="none" x2="0" antialias="false"/>
+        <line y1="-10.5034" length1="1.5" y2="10.5034" length2="1.5" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="6" end2="none" x2="6" antialias="false"/>
+        <line y1="-9.42857" length1="1.5" y2="-8.57143" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="6" end2="none" x2="6" antialias="false"/>
+        <input tagg="label" rotate="true" x="8" y="8.5" size="9" text="_"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
+    </description>
+</definition>

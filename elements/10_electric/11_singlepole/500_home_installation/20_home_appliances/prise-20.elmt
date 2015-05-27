@@ -1,0 +1,27 @@
+<definition type="element" link_type="simple" height="190" hotspot_x="5" hotspot_y="186" width="130" version="0.5" orientation="dyyy">
+    <names>
+        <name lang="fr">Prise 20 A</name>
+    </names>
+    <informations>cbh41</informations>
+    <description>
+        <rect height="85" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="120" x="0" y="-85"/>
+        <line end1="none" end2="none" antialias="false" y1="-15" y2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length1="1.5" x2="120" length2="1.5"/>
+        <input text="20" tagg="none" rotate="true" size="7" x="29" y="-34.5"/>
+        <input text="Local" tagg="label" rotate="true" size="7" x="-2" y="-53.5"/>
+        <text text=" kA C" size="5" x="58" y="-18"/>
+        <line end1="none" end2="none" antialias="false" y1="-45" y2="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length1="1.5" x2="120" length2="1.5"/>
+        <line end1="none" end2="none" antialias="false" y1="-65" y2="-65" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length1="1.5" x2="120" length2="1.5"/>
+        <text text="A" size="7" x="66" y="-32"/>
+        <line end1="none" end2="none" antialias="false" y1="-170" y2="-170" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="0" length1="1.5" x2="120" length2="1.5"/>
+        <text text="Prise 20 A" size="7" x="2" y="-69"/>
+        <text text=" mm²" size="5" x="58" y="-2"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="60" x="30" y="-160"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8" x="41" y="-139"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8" x="71" y="-139"/>
+        <line end1="none" end2="none" antialias="false" y1="-175" y2="-161" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="60" length1="1.5" x2="60" length2="1.5"/>
+        <rect height="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" x="55" y="-118"/>
+        <input text="3 G 4.0" tagg="none" rotate="true" size="5" x="28" y="-5"/>
+        <input text="4.5" tagg="none" rotate="true" size="5" x="30" y="-20"/>
+        <terminal x="60" y="-180" orientation="n"/>
+    </description>
+</definition>

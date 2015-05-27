@@ -1,0 +1,22 @@
+<definition type="element" orientation="dyyy" link_type="simple" hotspot_x="21" hotspot_y="34" version="0.5" width="40" height="50">
+    <names>
+        <name lang="ro">Comutator bipolar n,d.</name>
+    </names>
+    <informations>Author:titus
+titus0818@yahoo.com</informations>
+    <description>
+        <circle x="-13.5" y="-11" antialias="true" diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon y2="0" y3="10" x1="-15" x2="-10" closed="false" x3="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20"/>
+        <line y2="-20" x1="-10" end1="none" x2="-10" end2="none" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30"/>
+        <polygon y2="0" y3="10" x1="5" x2="10" closed="false" x3="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20"/>
+        <line y2="-20" x1="10" end1="none" x2="10" end2="none" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30"/>
+        <circle x="6.5" y="-11" antialias="true" diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line y2="-11" x1="-13" end1="none" x2="7" end2="none" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-11"/>
+        <line y2="-9" x1="-13" end1="none" x2="7" end2="none" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-9"/>
+        <input rotate="true" tagg="label" size="9" x="16" y="-6.5" text="_"/>
+        <terminal orientation="s" x="10" y="10"/>
+        <terminal orientation="n" x="10" y="-30"/>
+        <terminal orientation="s" x="-10" y="10"/>
+        <terminal orientation="n" x="-10" y="-30"/>
+    </description>
+</definition>

@@ -1,0 +1,16 @@
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="34" height="70" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="ro">piezotransducer</name>
+    </names>
+    <informations>Author:titus
+titus0818@yahoo.com</informations>
+    <description>
+        <circle x="-20" y="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
+        <circle x="-16" y="-16" antialias="false" style="line-style:normal;line-weight:normal;filling:blue;color:black" diameter="32"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="0" y2="28" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29.0385" x1="0" y2="-17.9615" x2="0"/>
+        <input x="23" y="-23.7054" size="9" rotate="true" text="_" tagg="label"/>
+        <terminal x="0" y="-30" orientation="n"/>
+        <terminal x="0" y="30" orientation="s"/>
+    </description>
+</definition>

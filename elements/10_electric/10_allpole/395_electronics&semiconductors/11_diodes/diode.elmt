@@ -1,0 +1,23 @@
+<definition width="20" version="0.4" hotspot_x="10" hotspot_y="24" height="50" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="de">Diode</name>
+        <name lang="en">Diode</name>
+        <name lang="it">Diodo</name>
+        <name lang="fr">Diode</name>
+        <name lang="ro">Dioda</name>
+        <name lang="nl">Diode</name>
+        <name lang="cs">Dioda</name>
+    </names>
+    <informations>titus
+titus0818@yahoo.com</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5.16587" x1="-6.08592" y2="-5.16587" x2="6" y3="5" x3="-0.592319"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-5" y2="5" x2="5"/>
+        <input x="8" y="4.6666" size="9" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-6" y2="5" x2="0"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
+    </description>
+</definition>

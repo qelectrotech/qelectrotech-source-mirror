@@ -1,0 +1,32 @@
+<definition type="element" height="50" version="0.5" width="50" link_type="simple" hotspot_x="24" hotspot_y="34" orientation="dyyy">
+    <names>
+        <name lang="es">Interruptor 3 posiciones</name>
+        <name lang="pt">Interruptor 3 posições</name>
+        <name lang="de">Wahlschalter 3 Positionen</name>
+        <name lang="it">Interruttore a 3 posizioni</name>
+        <name lang="ro">comutatorcu3pozitii</name>
+        <name lang="el">Διακόπτης 3 θέσεων</name>
+        <name lang="en">Switch 3 positions</name>
+        <name lang="fr">Interrupteur 3 positions</name>
+        <name lang="ru">Переключатель 3-х позиционный</name>
+    </names>
+    <informations>Author: titus
+titus0818@yahoo.com
+</informations>
+    <description>
+        <input tagg="label" size="9" x="18" text="_" y="-21.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3" antialias="true" x="18.5" y="-1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" y2="10" antialias="false" x1="20" x2="20" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" y2="1" antialias="true" x1="0" x2="-18" length1="1.5" length2="1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3" antialias="true" x="-1.5" y="-1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3" antialias="true" x="-1.5" y="-21.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3" antialias="true" x="-21.5" y="-1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" y2="10" antialias="false" x1="-20" x2="-20" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" y2="10" antialias="false" x1="0" x2="0" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.4057" y2="-25.5943" antialias="false" x1="0" x2="0" length1="1.5" length2="1.5"/>
+        <terminal x="-20" y="10" orientation="s"/>
+        <terminal x="0" y="10" orientation="s"/>
+        <terminal x="0" y="-30" orientation="n"/>
+        <terminal x="20" y="10" orientation="s"/>
+    </description>
+</definition>

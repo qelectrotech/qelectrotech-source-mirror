@@ -1,0 +1,74 @@
+<definition type="element" height="180" version="0.5" width="80" link_type="simple" hotspot_x="39" hotspot_y="91" orientation="dyyy">
+    <names>
+        <name lang="nl">IC 18 pin nummers</name>
+        <name lang="cs">Integrovaný obvod, 18 očíslovaných kolíků</name>
+        <name lang="de">Integrierte Schaltung 18 Anschlüsse nummeriert</name>
+        <name lang="it">Circuito integrato, 18 pin numerati</name>
+        <name lang="ro">ic18pini</name>
+        <name lang="el">Ολοκληρωμένο κύκλωμα 18 ακροδεκτών, αριθμημένο</name>
+        <name lang="pl">Układ scalony, 18 nóżek (ponumerowany)</name>
+        <name lang="en">Integrated Circuit, 18 pins, numbered</name>
+        <name lang="fr">Circuit integré 18 broches, numerotées</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text size="5" x="-19" text="9" y="80.6667"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" y2="60" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" y2="60" antialias="false" x1="-30" x2="-21" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" y2="-60" antialias="false" x1="-30" x2="-21" length1="1.5" length2="1.5"/>
+        <text size="5" x="9" text="10" y="80.6667"/>
+        <text size="5" x="-18" text="8" y="60.6667"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" y2="80" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" y2="80" antialias="false" x1="-30" x2="-21" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" y2="20" antialias="false" x1="-30" x2="-21" length1="1.5" length2="1.5"/>
+        <text size="5" x="9" text="11" y="60.6667"/>
+        <text size="5" x="10" text="12" y="41.667"/>
+        <text size="5" x="10.5" text="13" y="20.6667"/>
+        <text size="5" x="10" text="14" y="0.6667"/>
+        <text size="5" x="10" text="15" y="-19.3333"/>
+        <text size="5" x="-18" text="5" y="0.6667"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" y2="40" antialias="false" x1="-30" x2="-21" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" y2="-20" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <text size="5" x="-19" text="1" y="-78.3333"/>
+        <text size="5" x="-18" text="4" y="-19.3333"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <text size="5" x="-18" text="7" y="40.667"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" antialias="false" x1="-30" x2="-21" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" y2="20" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <text size="5" x="10" text="18" y="-78.3333"/>
+        <text size="5" x="-18" text="6" y="20.6667"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" y2="-20" antialias="false" x1="-30" x2="-21" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" y2="40" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <text size="5" x="-18.5" text="3" y="-38.3333"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" y2="-40" antialias="false" x1="-30" x2="-21" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" y2="-80" antialias="false" x1="-30" x2="-21" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" y2="-80" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" y2="-60" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" y2="-40" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <arc height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" width="5" angle="-180" antialias="true" x="-2.5" y="-87"/>
+        <text size="5" x="-19" text="2" y="-58.3333"/>
+        <input tagg="label" rotate="true" size="9" x="-30.5" text="_" y="102"/>
+        <text size="5" x="10" text="16" y="-38.3333"/>
+        <rect height="170" style="line-style:normal;line-weight:normal;filling:none;color:black" width="40" antialias="false" x="-20" y="-85"/>
+        <text size="5" x="10" text="17" y="-58.3333"/>
+        <terminal x="31" y="-80" orientation="e"/>
+        <terminal x="31" y="-60" orientation="e"/>
+        <terminal x="31" y="-40" orientation="e"/>
+        <terminal x="-31" y="-40" orientation="w"/>
+        <terminal x="-31" y="-80" orientation="w"/>
+        <terminal x="31" y="-20" orientation="e"/>
+        <terminal x="31" y="0" orientation="e"/>
+        <terminal x="31" y="20" orientation="e"/>
+        <terminal x="31" y="40" orientation="e"/>
+        <terminal x="-31" y="-20" orientation="w"/>
+        <terminal x="-31" y="40" orientation="w"/>
+        <terminal x="-31" y="0" orientation="w"/>
+        <terminal x="-31" y="20" orientation="w"/>
+        <terminal x="-31" y="-60" orientation="w"/>
+        <terminal x="-31" y="80" orientation="w"/>
+        <terminal x="-31" y="60" orientation="w"/>
+        <terminal x="31" y="60" orientation="e"/>
+        <terminal x="31" y="80" orientation="e"/>
+    </description>
+</definition>

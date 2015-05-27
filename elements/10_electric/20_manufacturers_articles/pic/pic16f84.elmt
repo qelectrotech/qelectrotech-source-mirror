@@ -1,0 +1,85 @@
+<definition type="element" height="190" version="0.5" width="80" link_type="simple" hotspot_x="44" hotspot_y="94" orientation="dyyy">
+    <names>
+        <name lang="ro">pic16f84</name>
+    </names>
+    <informations>Author: Angelescu Constantin
+titus0818@yahoo.com</informations>
+    <description>
+        <text size="5" x="-36" text="9" y="76"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" y2="60" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" y2="60" antialias="false" x1="-40" x2="-31" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" y2="-60" antialias="false" x1="-39" x2="-30" length1="1.5" length2="1.5"/>
+        <text size="5" x="20" text="10" y="78"/>
+        <text size="5" x="-36" text="8" y="57"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" y2="80" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" y2="80" antialias="false" x1="-40" x2="-31" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" y2="20" antialias="false" x1="-39" x2="-30" length1="1.5" length2="1.5"/>
+        <text size="5" x="20" text="11" y="58"/>
+        <text size="5" x="20" text="12" y="38"/>
+        <text size="5" x="20" text="13" y="17"/>
+        <text size="5" x="20" text="14" y="-2"/>
+        <text size="5" x="20" text="15" y="-23"/>
+        <text size="5" x="-36" text="5" y="-2"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" y2="40" antialias="false" x1="-40" x2="-31" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" y2="-20" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <text size="5" x="-36" text="1" y="-82"/>
+        <text size="5" x="-37" text="4" y="-22"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <text size="5" x="-36" text="7" y="38"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" antialias="false" x1="-39" x2="-30" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" y2="20" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <text size="5" x="20" text="18" y="-82"/>
+        <text size="5" x="-37" text="6" y="17"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" y2="-20" antialias="false" x1="-40" x2="-31" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" y2="40" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <text size="5" x="-36" text="3" y="-43"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" y2="-40" antialias="false" x1="-40" x2="-31" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" y2="-80" antialias="false" x1="-40" x2="-31" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" y2="-80" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" y2="-60" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <line end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" y2="-40" antialias="false" x1="21" x2="30" length1="1.5" length2="1.5"/>
+        <arc height="5" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" width="5" angle="-180" antialias="true" x="-7.5" y="-87"/>
+        <text size="5" x="-36" text="2" y="-63"/>
+        <input tagg="label" rotate="true" size="9" x="-9" text="_" y="-105.5"/>
+        <text size="5" x="20" text="16" y="-42"/>
+        <rect height="170" style="line-style:normal;line-weight:normal;filling:none;color:black" width="50" antialias="false" x="-30" y="-85"/>
+        <text size="5" x="20" text="17" y="-62"/>
+        <text size="4" x="9" text="RB6" y="49"/>
+        <text size="4" x="9" text="RB7" y="22"/>
+        <text size="4" x="8" text="+VE" y="9"/>
+        <text size="4" x="-29" text="RA4/TOCLK" y="-39"/>
+        <text size="4" x="-29" text="MCLR" y="-11"/>
+        <text size="4" x="-29" text="RA3" y="-51"/>
+        <text size="4" x="-29" text="RA2" y="-71"/>
+        <text size="4" x="9" text="RA1" y="-71"/>
+        <text size="4" x="9" text="RA0" y="-51"/>
+        <text size="4" x="-11" text="OSC1/CLKIN" y="-38"/>
+        <text size="4" x="-16" text="OSC2/CLKOUT" y="-25"/>
+        <text size="4" x="-29" text="-VE" y="9"/>
+        <text size="4" x="9" text="RB5" y="69"/>
+        <text size="4" x="9" text="RB4" y="88"/>
+        <text size="4" x="-29" text="RB3" y="89"/>
+        <text size="4" x="-29" text="RB2" y="69"/>
+        <text size="4" x="-29" text="RB1" y="49"/>
+        <text size="4" x="-29" text="RB0/INT" y="22"/>
+        <text size="8" rotation="270" x="5" text="PIC 16F84" y="33"/>
+        <terminal x="-40" y="0" orientation="w"/>
+        <terminal x="-40" y="20" orientation="w"/>
+        <terminal x="-40" y="-60" orientation="w"/>
+        <terminal x="-40" y="80" orientation="w"/>
+        <terminal x="-40" y="60" orientation="w"/>
+        <terminal x="31" y="60" orientation="e"/>
+        <terminal x="31" y="80" orientation="e"/>
+        <terminal x="31" y="-80" orientation="e"/>
+        <terminal x="31" y="-60" orientation="e"/>
+        <terminal x="31" y="-40" orientation="e"/>
+        <terminal x="-39" y="-40" orientation="w"/>
+        <terminal x="-39" y="-80" orientation="w"/>
+        <terminal x="31" y="-20" orientation="e"/>
+        <terminal x="31" y="0" orientation="e"/>
+        <terminal x="31" y="20" orientation="e"/>
+        <terminal x="31" y="40" orientation="e"/>
+        <terminal x="-39" y="-20" orientation="w"/>
+        <terminal x="-40" y="40" orientation="w"/>
+    </description>
+</definition>
