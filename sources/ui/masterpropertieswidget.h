@@ -43,17 +43,20 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 	Q_OBJECT
 
 	public:
-	explicit MasterPropertiesWidget(Element *elmt, QWidget *parent = 0);
-	~MasterPropertiesWidget();
+		explicit MasterPropertiesWidget(Element *elmt, QWidget *parent = 0);
+		~MasterPropertiesWidget();
 
-	void setElement (Element *element);
-	void apply();
-	void reset();
-	QUndoCommand *associatedUndo () const;
-	QString title() const {return tr("Référence croisée (maitre)");}
+		void setElement (Element *element);
+		void apply();
+		void reset();
+		QUndoCommand *associatedUndo () const;
+		QString title() const {return tr("Référence croisée (maitre)");}
+		bool setLiveEdit(bool live_edit);
+
+	public slots:
+		void updateUi();
 
 	private slots:
-		void buildInterface();
 		void on_link_button_clicked();
 		void on_unlink_button_clicked();
 		void showElementFromLWI(QListWidgetItem *lwi);

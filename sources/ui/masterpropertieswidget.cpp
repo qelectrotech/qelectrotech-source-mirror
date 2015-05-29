@@ -70,8 +70,12 @@ void MasterPropertiesWidget::setElement(Element *element)
 	}
 	else m_project = nullptr;
 
+		//Keep up to date this widget when the linked elements of m_element change
+	if (m_element) disconnect(m_element, &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
 	m_element = element;
-	buildInterface();
+	connect(m_element, &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
+
+	updateUi();
 }
 
 /**
@@ -95,7 +99,7 @@ void MasterPropertiesWidget::reset() {
 		delete lwi;
 	}
 	lwi_hash.clear();
-	buildInterface();
+	updateUi();
 }
 
 /**
@@ -145,10 +149,22 @@ QUndoCommand* MasterPropertiesWidget::associatedUndo() const {
 }
 
 /**
- * @brief MasterPropertiesWidget::buildInterface
+ * @brief MasterPropertiesWidget::setLiveEdit
+ * @param live_edit = true : live edit is enable
+ * else false : live edit is disable.
+ * @return always true because live edit is handled by this editor widget
+ */
+bool MasterPropertiesWidget::setLiveEdit(bool live_edit)
+{
+	m_live_edit = live_edit;
+	return true;
+}
+
+/**
+ * @brief MasterPropertiesWidget::updateUi
  * Build the interface of the widget
  */
-void MasterPropertiesWidget::buildInterface()
+void MasterPropertiesWidget::updateUi()
 {
 	ui->free_list->clear();
 	ui->linked_list->clear();
@@ -193,22 +209,28 @@ void MasterPropertiesWidget::buildInterface()
  * @brief MasterPropertiesWidget::on_link_button_clicked
  * move curent item in the free_list to linked_list
  */
-void MasterPropertiesWidget::on_link_button_clicked() {
-	//take the curent item from free_list and push it to linked_list
+void MasterPropertiesWidget::on_link_button_clicked()
+{
+		//take the curent item from free_list and push it to linked_list
 	ui->linked_list->addItem(
 				ui->free_list->takeItem(
 					ui->free_list->currentRow()));
+
+	if(m_live_edit) apply();
 }
 
 /**
  * @brief MasterPropertiesWidget::on_unlink_button_clicked
  * move curent item in linked_list to free_list
  */
-void MasterPropertiesWidget::on_unlink_button_clicked() {
-	//take the curent item from linked_list and push it to free_list
+void MasterPropertiesWidget::on_unlink_button_clicked()
+{
+		//take the curent item from linked_list and push it to free_list
 	ui->free_list->addItem(
 				ui->linked_list->takeItem(
 					ui->linked_list->currentRow()));
+
+	if(m_live_edit) apply();
 }
 
 /**
@@ -247,5 +269,5 @@ void MasterPropertiesWidget::diagramWasdeletedFromProject()
 {
 		//We use a timer because if the removed diagram contain slave element linked to the edited element
 		//we must to wait for this elements be unlinked, else the linked list provide deleted elements.
-	QTimer::singleShot(10, this, SLOT(buildInterface()));
+	QTimer::singleShot(10, this, SLOT(updateUi()));
 }

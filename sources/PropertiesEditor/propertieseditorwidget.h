@@ -42,7 +42,7 @@ class PropertiesEditorWidget : public QWidget
 		virtual bool setLiveEdit (bool live_edit);
 		bool isLiveEdit() const;
 
-	private:
+	protected:
 		virtual void enableLiveEdit() {}
 		virtual void disableLiveEdit() {}
 
