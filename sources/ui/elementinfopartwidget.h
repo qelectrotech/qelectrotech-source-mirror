@@ -24,7 +24,8 @@ namespace Ui {
 	class ElementInfoPartWidget;
 }
 
-class ElementInfoPartWidget : public QWidget {
+class ElementInfoPartWidget : public QWidget
+{
 	Q_OBJECT
 
 	//METHODS
@@ -39,6 +40,10 @@ class ElementInfoPartWidget : public QWidget {
 		void    setShow     (const bool &);
 		void    setHideShow (const bool &);
 		void    setFocusTolineEdit();
+
+	signals:
+		void textEdited (const QString & text);
+		void textChanged(const QString & text);
 
 	//ATTRIBUTES
 	private:

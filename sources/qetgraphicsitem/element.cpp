@@ -415,7 +415,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	uuid_= QUuid(e.attribute("uuid", QUuid::createUuid().toString()));
 
 	//load informations
-	element_informations_.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
+	m_element_informations.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
 
 		//Position and selection.
 		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
@@ -498,9 +498,9 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	}
 
 	//save information of this element
-	if (! element_informations_.keys().isEmpty()) {
+	if (! m_element_informations.keys().isEmpty()) {
 		QDomElement infos = document.createElement("elementInformations");
-		element_informations_.toXml(infos, "elementInformation");
+		m_element_informations.toXml(infos, "elementInformation");
 		element.appendChild(infos);
 	}
 
@@ -556,13 +556,15 @@ void Element::initLink(QETProject *prj)
 /**
  * @brief Element::setElementInformations
  * Set new information for this element.
- * This method emit @elementInfoChange
+ * If new information is different of current infotmation emit @elementInfoChange
  * @param dc
  */
-void Element::setElementInformations(DiagramContext dc) {
-	DiagramContext old_info = element_informations_;
-	element_informations_ = dc;
-	emit elementInfoChange(old_info, element_informations_);
+void Element::setElementInformations(DiagramContext dc)
+{
+	if (m_element_informations == dc) return;
+	DiagramContext old_info = m_element_informations;
+	m_element_informations = dc;
+	emit elementInfoChange(old_info, m_element_informations);
 }
 
 /**

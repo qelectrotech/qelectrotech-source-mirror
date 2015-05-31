@@ -125,8 +125,8 @@ class Element : public QetGraphicsItem {
 
 		//METHODS related to information
 	public:
-		DiagramContext  elementInformations    ()const              {return element_informations_;}
-		DiagramContext& rElementInformations   ()                   {return element_informations_;}
+		DiagramContext  elementInformations    ()const              {return m_element_informations;}
+		DiagramContext& rElementInformations   ()                   {return m_element_informations;}
 		virtual void    setElementInformations (DiagramContext dc);
 		DiagramContext  kindInformations       () const             {return kind_informations_;}	//@kind_information_ is used to store more information
 																									//about the herited class like contactelement for know
@@ -134,7 +134,7 @@ class Element : public QetGraphicsItem {
 
 	//ATTRIBUTES
 	protected:
-		DiagramContext element_informations_, kind_informations_;
+		DiagramContext m_element_informations, kind_informations_;
 
 	/**
 		Draw this element

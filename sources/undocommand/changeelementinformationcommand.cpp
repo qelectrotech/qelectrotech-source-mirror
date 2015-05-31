@@ -35,6 +35,15 @@ ChangeElementInformationCommand::ChangeElementInformationCommand(Element *elmt, 
 	setText(QObject::tr("Modifier les informations de l'élément : %1").arg(elmt -> name()));
 }
 
+bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
+{
+	if (id() != other->id()) return false;
+	ChangeElementInformationCommand const *undo = static_cast<const ChangeElementInformationCommand*>(other);
+	if (m_element != undo->m_element) return false;
+	m_new_info = undo->m_new_info;
+	return true;
+}
+
 /**
  * @brief ChangeElementInformationCommand::undo
  */

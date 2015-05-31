@@ -32,6 +32,8 @@ class ChangeElementInformationCommand : public QUndoCommand
 	public:
 		ChangeElementInformationCommand(Element *elmt, DiagramContext &old_info, DiagramContext &new_info, QUndoCommand *parent = nullptr);
 
+		virtual int id() const {return 1;}
+		virtual bool mergeWith(const QUndoCommand *other);
 		virtual void undo();
 		virtual void redo();
 

@@ -45,7 +45,7 @@ ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
  */
 ElementInfoWidget::~ElementInfoWidget()
 {
-	qDeleteAll(eipw_list);
+	qDeleteAll(m_eipw_list);
 	delete ui;
 }
 
@@ -57,9 +57,14 @@ ElementInfoWidget::~ElementInfoWidget()
 void ElementInfoWidget::setElement(Element *element)
 {
 	if (m_element == element) return;
+
+	if (m_element)
+		disconnect(m_element, &Element::elementInfoChange, this, &ElementInfoWidget::updateUi);
+
 	m_element = element;
-	m_element_info = m_element->elementInformations();
-	fillInfo();
+	updateUi();
+
+	connect(m_element, &Element::elementInfoChange, this, &ElementInfoWidget::updateUi);
 }
 
 /**
@@ -80,11 +85,13 @@ void ElementInfoWidget::apply()
  * If no change return nullptr;
  * @return
  */
-QUndoCommand* ElementInfoWidget::associatedUndo() const {
+QUndoCommand* ElementInfoWidget::associatedUndo() const
+{
 	DiagramContext new_info;
 	DiagramContext old_info = m_element -> elementInformations();
 
-	foreach (ElementInfoPartWidget *eipw, eipw_list) {
+	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
+	{
 			//add value only if they're something to store
 		if (!eipw->text().isEmpty())
 			new_info.addValue(eipw->key(),
@@ -92,10 +99,28 @@ QUndoCommand* ElementInfoWidget::associatedUndo() const {
 						eipw->mustShow());
 	}
 
-	if (old_info != new_info) {
+	if (old_info != new_info)
 		return (new ChangeElementInformationCommand(m_element, old_info, new_info));
-	}
+
 	return nullptr;
+}
+
+/**
+ * @brief ElementInfoWidget::setLiveEdit
+ * @param live_edit true : enable the live edit mode, false disable
+ * @return always true;
+ */
+bool ElementInfoWidget::setLiveEdit(bool live_edit)
+{
+	if (m_live_edit == live_edit) return true;
+	m_live_edit = live_edit;
+
+	if (m_live_edit)
+		enableLiveEdit();
+	else
+		disableLiveEdit();
+
+	return true;
 }
 
 /**
@@ -120,37 +145,67 @@ bool ElementInfoWidget::event(QEvent *event)
 }
 
 /**
+ * @brief ElementInfoWidget::enableLiveEdit
+ * Enable the live edit mode
+ */
+void ElementInfoWidget::enableLiveEdit()
+{
+	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
+		connect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
+}
+
+/**
+ * @brief ElementInfoWidget::disableLiveEdit
+ * disable the live edit mode
+ */
+void ElementInfoWidget::disableLiveEdit()
+{
+	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
+		disconnect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
+}
+
+/**
  * @brief ElementInfoWidget::buildInterface
  * Build the widget
  */
-void ElementInfoWidget::buildInterface() {
-	foreach (QString str, QETApp::elementInfoKeys()) {
+void ElementInfoWidget::buildInterface()
+{
+	foreach (QString str, QETApp::elementInfoKeys())
+	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETApp::elementTranslatedInfoKey(str), this);
 		ui->scroll_vlayout->addWidget(eipw);
-		eipw_list << eipw;
+		m_eipw_list << eipw;
 	}
 }
 
 /**
- * @brief ElementInfoWidget::fillInfo
+ * @brief ElementInfoWidget::updateUi
  * fill information fetch in m_element_info to the
  * corresponding line edit
  */
-void ElementInfoWidget::fillInfo() {
-	foreach (ElementInfoPartWidget *eipw, eipw_list) {
+void ElementInfoWidget::updateUi()
+{
+		//We disable live edit to avoid wrong undo when we fill the line edit with new text
+	if (m_live_edit) disableLiveEdit();
 
-		eipw -> setText (m_element_info[eipw->key()].toString());
-		eipw -> setShow (m_element_info.keyMustShow(eipw->key()));
+	DiagramContext element_info = m_element->elementInformations();
+	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
+	{
 
-		//If the current eipw is for label or comment and the text is empty
-		//we force the checkbox to ckecked
+		eipw -> setText (element_info[eipw->key()].toString());
+		eipw -> setShow (element_info.keyMustShow(eipw->key()));
+
+			//If the current eipw is for label or comment and the text is empty
+			//we force the checkbox to ckecked
 		if (eipw -> key() == "label" || eipw -> key() == "comment") {
-			if (m_element_info[eipw->key()].toString().isEmpty())
+			if (element_info[eipw->key()].toString().isEmpty())
 				eipw->setShow(true);
 		}
 		else //< for other eipw we hide the checkbox
 			eipw->setHideShow(true);
 	}
+
+	if (m_live_edit) enableLiveEdit();
 }
 
 /**
@@ -159,5 +214,5 @@ void ElementInfoWidget::fillInfo() {
  * Set the focus to the first line edit provided by this widget
  */
 void ElementInfoWidget::firstActivated() {
-	eipw_list.first() -> setFocusTolineEdit();
+	m_eipw_list.first() -> setFocusTolineEdit();
 }

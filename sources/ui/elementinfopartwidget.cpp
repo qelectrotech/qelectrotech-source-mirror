@@ -34,6 +34,10 @@ ElementInfoPartWidget::ElementInfoPartWidget(QString key, QString translated_key
 	ui->setupUi(this);
 	ui->label_->setText(translated_key);
 	if(key == "label") ui->checkBox->setChecked(true);
+
+	connect(ui->line_edit, &QLineEdit::textEdited, this, &ElementInfoPartWidget::textEdited);
+	connect(ui->line_edit, &QLineEdit::textChanged, this, &ElementInfoPartWidget::textChanged);
+
 }
 
 /**

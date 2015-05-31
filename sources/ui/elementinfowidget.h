@@ -19,7 +19,6 @@
 #define ELEMENTINFOWIDGET_H
 
 #include <QWidget>
-#include "diagramcontext.h"
 #include "abstractelementpropertieseditorwidget.h"
 
 class Element;
@@ -48,13 +47,16 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		void apply();
 		QUndoCommand *associatedUndo () const;
 		QString title() const {return tr("Informations");}
+		bool setLiveEdit(bool live_edit);
+		virtual void updateUi();
 
 	protected:
 		virtual bool event(QEvent *event);
+		virtual void enableLiveEdit();
+		virtual void disableLiveEdit();
 
 	private:
 		void buildInterface();
-		void fillInfo();
 
 	private slots:
 		void firstActivated();
@@ -62,8 +64,7 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		//ATTRIBUTES
 	private:
 		Ui::ElementInfoWidget           *ui;
-		DiagramContext                   m_element_info;
-		QList <ElementInfoPartWidget *>  eipw_list;
+		QList <ElementInfoPartWidget *>  m_eipw_list;
 		bool m_first_activation;
 };
 
