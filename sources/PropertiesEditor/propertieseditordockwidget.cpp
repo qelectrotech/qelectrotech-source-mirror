@@ -33,6 +33,7 @@ PropertiesEditorDockWidget::PropertiesEditorDockWidget(QWidget *parent) :
 	ui->setupUi(this);
 	ui->m_main_vlayout->setAlignment(ui->buttonBox, Qt::AlignBottom);
 	ui->buttonBox->setDisabled(true);
+	ui->buttonBox->setVisible (false);
 }
 
 /**
