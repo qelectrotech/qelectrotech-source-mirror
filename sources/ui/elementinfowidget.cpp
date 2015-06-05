@@ -151,7 +151,10 @@ bool ElementInfoWidget::event(QEvent *event)
 void ElementInfoWidget::enableLiveEdit()
 {
 	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
+	{
 		connect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
+		connect(eipw, &ElementInfoPartWidget::showClicked, this, &ElementInfoWidget::apply);
+	}
 }
 
 /**
@@ -161,7 +164,10 @@ void ElementInfoWidget::enableLiveEdit()
 void ElementInfoWidget::disableLiveEdit()
 {
 	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
+	{
 		disconnect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
+		disconnect(eipw, &ElementInfoPartWidget::showClicked, this, &ElementInfoWidget::apply);
+	}
 }
 
 /**

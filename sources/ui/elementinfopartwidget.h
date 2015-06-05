@@ -42,8 +42,9 @@ class ElementInfoPartWidget : public QWidget
 		void    setFocusTolineEdit();
 
 	signals:
-		void textEdited (const QString & text);
-		void textChanged(const QString & text);
+		void textEdited  (const QString & text);
+		void textChanged (const QString & text);
+		void showClicked (bool checked);
 
 	//ATTRIBUTES
 	private:
