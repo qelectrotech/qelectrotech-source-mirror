@@ -547,41 +547,4 @@ class ChangeShapeStyleCommand : public QUndoCommand {
 	Qt::PenStyle old_style, new_style;
 	Diagram *diagram;
 };
-
-class LinkElementsCommand : public QUndoCommand {
-	public:
-	// constructor destructor
-	LinkElementsCommand (Element *elmt1, Element *elmt2, QUndoCommand *parent = 0);
-	LinkElementsCommand (Element *elmt1, QList <Element *> &elmtList, QUndoCommand *parent = 0);
-	virtual ~LinkElementsCommand();
-	//methods
-	virtual void undo();
-	virtual void redo();
-
-	private:
-	//attributes
-	Diagram *diagram_;
-	Element *element_;
-	QList <Element *> elmt_list;
-	QList <Element *> previous_linked;
-	bool first_redo;
-};
-
-class unlinkElementsCommand : public QUndoCommand {
-	public:
-	//constructor destructor
-	unlinkElementsCommand (Element *elmt1, Element *elmt2 = 0, QUndoCommand *parent = 0);
-	unlinkElementsCommand (Element *elmt1, QList <Element *> &elmtList, QUndoCommand *parent = 0);
-	virtual ~unlinkElementsCommand();
-	//methods
-	virtual void undo();
-	virtual void redo();
-
-	private:
-	//attributes
-	Diagram *diagram_;
-	Element *element_;
-	QList <Element *> elmt_list;
-};
-
 #endif

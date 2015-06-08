@@ -20,9 +20,9 @@
 #include <QListWidgetItem>
 #include <diagramposition.h>
 #include <elementprovider.h>
-#include <diagramcommands.h>
 #include <diagram.h>
 #include <element.h>
+#include <linkelementcommand.h>
 
 /**
  * @brief MasterPropertiesWidget::MasterPropertiesWidget
@@ -109,43 +109,35 @@ void MasterPropertiesWidget::reset() {
  * If no change return nullptr.
  * @return
  */
-QUndoCommand* MasterPropertiesWidget::associatedUndo() const {
+QUndoCommand* MasterPropertiesWidget::associatedUndo() const
+{
 	QList <Element *> to_link;
 	QList <Element *> linked_ = m_element->linkedElements();
 
-	for (int i=0; i<ui->linked_list->count(); i++) {
+	for (int i=0; i<ui->linked_list->count(); i++)
 		to_link << lwi_hash[ui->linked_list->item(i)];
+
+		//The two list contain the same element, there is no change
+	if (to_link.size() == linked_.size())
+	{
+		bool equal = true;
+
+		foreach(Element *elmt, to_link)
+			if (!linked_.contains(elmt))
+				equal = false;
+
+		if(equal)
+			return nullptr;
 	}
 
-		//If same element are find in to_link and linked, that means
-		// element are already linked, so we remove element on the two list
-		//if linked_ contains element at the end of the operation,
-		//that means this element must be unlinked from @m_element
-	foreach (Element *elmt, to_link) {
-		if(linked_.contains(elmt)) {
-			to_link.removeAll(elmt);
-			linked_.removeAll(elmt);
-		}
-	}
+	LinkElementCommand *undo = new LinkElementCommand(m_element);
 
-		// if two list, contain element, we link and unlink @m_element with corresponding
-		//undo command, and add first command for parent of the second, user see only one
-		//undo command
-	if (linked_.count() && to_link.count()) {
-		LinkElementsCommand *lec = new LinkElementsCommand(m_element, to_link);
-		new unlinkElementsCommand(m_element, linked_, lec);
-		return lec;
-	}
-		//Else do the single undo command corresponding to the link.
-	else if (to_link.count()) {
-		return (new LinkElementsCommand(m_element, to_link));
-	}
-	else if (linked_.count()) {
-		return (new unlinkElementsCommand(m_element, linked_));
-	}
-	else {
-		return nullptr;
-	}
+	if (to_link.isEmpty())
+		undo->unlinkAll();
+	else
+		undo->setLink(to_link);
+
+	return undo;
 }
 
 /**

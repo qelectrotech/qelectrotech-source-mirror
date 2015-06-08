@@ -19,8 +19,8 @@
 #include "ui_linksingleelementwidget.h"
 #include "diagram.h"
 #include "elementprovider.h"
-#include "diagramcommands.h"
 #include "elementselectorwidget.h"
+#include "linkelementcommand.h"
 
 /**
  * @brief LinkSingleElementWidget::LinkSingleElementWidget
@@ -104,10 +104,17 @@ void LinkSingleElementWidget::apply()
  */
 QUndoCommand *LinkSingleElementWidget::associatedUndo() const
 {
-	if (esw_->selectedElement())
-		return new LinkElementsCommand(m_element, esw_->selectedElement());
-	else if (unlink_)
-		return new unlinkElementsCommand(m_element);
+	if (esw_->selectedElement() || unlink_)
+	{
+		LinkElementCommand *undo = new LinkElementCommand(m_element);
+
+		if (esw_->selectedElement())
+			undo->setLink(esw_->selectedElement());
+		else if (unlink_)
+			undo->unlinkAll();
+
+		return undo;
+	}
 
 	return nullptr;
 }
