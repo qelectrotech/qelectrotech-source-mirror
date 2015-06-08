@@ -1,0 +1,28 @@
+<definition type="element" orientation="dyyy" link_type="master" height="40" width="30" hotspot_x="14" version="0.5" hotspot_y="17">
+    <names>
+        <name lang="en">Energy management</name>
+        <name lang="it">Gestione Energia</name>
+        <name lang="de">Energieverwaltung</name>
+        <name lang="pl">Zarządzanie enerią</name>
+        <name lang="nl">Energiemanagement</name>
+        <name lang="cs">Hospodaření s energií</name>
+        <name lang="fr">Gestion Énergie</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">coil</kindInformation>
+    </kindInformations>
+    <informations>cbh41</informations>
+    <description>
+        <arc y="-2.525" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="2.1" width="3.6" start="-180" angle="-180" x="-1.8"/>
+        <ellipse y="10.775" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" height="4.2" width="7.2" x="-3.6"/>
+        <line end2="none" x2="-1.8" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.12" y2="10.78" antialias="false" x1="-1.8" length2="1.5" length1="1.5" end1="none"/>
+        <line end2="none" x2="1.8" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.12" y2="10.78" antialias="false" x1="1.8" length2="1.5" length1="1.5" end1="none"/>
+        <rect y="5.88" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" height="5.25" width="3.6" x="-1.8"/>
+        <text y="1" size="6" text="°C" x="1"/>
+        <line end2="none" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.28" y2="-2.88" antialias="false" x1="0" length2="1.5" length1="1.5" end1="none"/>
+        <rect y="-6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="23" width="25" x="-12"/>
+        <input y="5" size="6" text="" x="19" tagg="label" rotate="true"/>
+        <input y="-15" size="9" text="_" x="10" tagg="label" rotate="true"/>
+        <terminal y="-8.625" orientation="n" x="0"/>
+    </description>
+</definition>

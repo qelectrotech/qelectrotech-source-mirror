@@ -1,0 +1,45 @@
+<definition hotspot_x="205" hotspot_y="79" width="870" orientation="dyyy" link_type="terminal" height="170" version="0.5" type="element">
+    <names>
+        <name lang="en">ls inverter</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input text="p1                p2                 p3                 p4                 p5                p6                p7                 p8               com                V1                  Vr                  i" y="-57" tagg="none" x="-17" size="6" rotate="true"/>
+        <input text="220/380Vac in" y="-54.5" tagg="none" x="-162" size="6" rotate="true"/>
+        <rect width="860" y="-70" height="150" x="-200" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-70" y2="80" end2="none" antialias="false" end1="none" length2="1.5" length1="1.5" x1="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-45"/>
+        <input text="380Vac 0-400Hz out" y="67" tagg="none" x="-173" size="6" rotate="true"/>
+        <input text="Aout              Moc               MG               24out              3a                 3b               3com" y="67" tagg="none" x="-24" size="6" rotate="true"/>
+        <input text="p1..p8 multifunction programmable  input , Vr=potentiometer input ,V1= voltage input  ,i= 0-20mA input" y="-30" tagg="none" x="-10" size="6" rotate="true"/>
+        <input text="Analog output , Moc = opencollector output , MG = ground 24V out , 3a = relay 1 output, 3b = relay 2 output, 3c =Common relays" y="52.5" tagg="none" x="-26" size="6" rotate="true"/>
+        <input text="LS  iG5A 0.4-22kW inverters " y="-8.5" tagg="none" x="32" size="9" rotate="true"/>
+        <input text="http://www.lsis.com/support/download/detail.aspx?c=2806&amp;t=&amp;l=&amp;p=&amp;d1=&amp;d2=&amp;d3=&amp;qt=&amp;q=ig5a&amp;e=N&amp;n=1" y="30" tagg="none" x="30" size="6" rotate="true"/>
+        <input text="Datasheet see link below" y="18.5" tagg="none" x="29" size="6" rotate="true"/>
+        <input text="_" y="-25" tagg="label" x="-269" size="9" rotate="true"/>
+        <terminal orientation="n" y="-75" x="50"/>
+        <terminal orientation="n" y="-75" x="-190"/>
+        <terminal orientation="n" y="-75" x="-130"/>
+        <terminal orientation="n" y="-75" x="-70"/>
+        <terminal orientation="n" y="-75" x="-10"/>
+        <terminal orientation="s" y="85" x="230"/>
+        <terminal orientation="n" y="-75" x="110"/>
+        <terminal orientation="n" y="-75" x="170"/>
+        <terminal orientation="n" y="-75" x="230"/>
+        <terminal orientation="n" y="-75" x="290"/>
+        <terminal orientation="n" y="-75" x="350"/>
+        <terminal orientation="n" y="-75" x="410"/>
+        <terminal orientation="n" y="-75" x="470"/>
+        <terminal orientation="n" y="-75" x="530"/>
+        <terminal orientation="s" y="85" x="-190"/>
+        <terminal orientation="s" y="85" x="-130"/>
+        <terminal orientation="s" y="85" x="-70"/>
+        <terminal orientation="s" y="85" x="-10"/>
+        <terminal orientation="s" y="85" x="50"/>
+        <terminal orientation="s" y="85" x="110"/>
+        <terminal orientation="s" y="85" x="170"/>
+        <terminal orientation="s" y="85" x="290"/>
+        <terminal orientation="s" y="85" x="350"/>
+        <terminal orientation="n" y="-75" x="590"/>
+        <terminal orientation="n" y="-75" x="650"/>
+    </description>
+</definition>

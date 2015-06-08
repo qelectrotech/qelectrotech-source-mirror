@@ -1,0 +1,85 @@
+<definition width="430" version="0.4" hotspot_x="355" hotspot_y="64" height="130" link_type="simple" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">Crouzet M3</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-109" y2="40" x2="-109"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="0" y2="40" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-220" y2="40" x2="-220"/>
+        <rect width="10" x="-75" y="-60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-69" y2="40" x2="-69"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-180" y2="40" x2="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="40" y2="40" x2="40"/>
+        <input x="-305" y="-11" size="9" rotate="true" text="_" tagg="label"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-109" y2="40" x2="-99"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="0" y2="40" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-220" y2="40" x2="-210"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-190" y2="40" x2="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="30" y2="40" x2="40"/>
+        <rect width="10" x="-115" y="-60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-79" y2="40" x2="-69"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-79" y2="45" x2="-99"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-190" y2="45" x2="-210"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="30" y2="45" x2="10"/>
+        <rect width="10" x="-5" y="50" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-155" y="-60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-195" y="-60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="34.5" y="50" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-234" y="-60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-335" y="-60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-35" y="-60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="5" y="-60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-114.5" y="50" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-75" y="50" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-184.5" y="50" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-224.5" y="50" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="45" y="-60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-295.5" y="50" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="-334.5" y="50" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="35" y="58" size="5" text="O4"/>
+        <text x="-112" y="-51" size="5" text="I4"/>
+        <text x="-153" y="-52" size="5" text="I3"/>
+        <text x="-2" y="58" size="5" text="C"/>
+        <text x="-193" y="-52" size="5" text="I2"/>
+        <text x="-232" y="-52" size="5" text="I1"/>
+        <text x="-191" y="12" size="9" text="CROUZET MILLENIUM 3"/>
+        <text x="-293" y="-52" size="5" text="N"/>
+        <text x="-72" y="-51" size="5" text="I5"/>
+        <text x="-222" y="58" size="5" text="C"/>
+        <text x="-33" y="-51" size="5" text="I6"/>
+        <text x="-75" y="57" size="5" text="O3"/>
+        <text x="-112" y="57" size="5" text="C"/>
+        <text x="-184" y="58" size="5" text="O2"/>
+        <text x="7" y="-51" size="5" text="I7"/>
+        <text x="-295.502" y="58.221" size="5" text="O1"/>
+        <text x="46" y="-51" size="5" text="I8"/>
+        <text x="-332.502" y="58.221" size="5" text="C"/>
+        <text x="-332" y="-52" size="5" text="L"/>
+        <rect width="10" x="-295" y="-60" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="420" x="-350" y="-60" antialias="false" height="120" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-330" y2="40" x2="-330"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-290" y2="40" x2="-290"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-330" y2="40" x2="-320"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-300" y2="40" x2="-290"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-300" y2="45" x2="-320"/>
+        <terminal x="-330" y="-60" orientation="n"/>
+        <terminal x="-230" y="-60" orientation="n"/>
+        <terminal x="-190" y="-60" orientation="n"/>
+        <terminal x="-150" y="-60" orientation="n"/>
+        <terminal x="-110" y="-60" orientation="n"/>
+        <terminal x="-70" y="-60" orientation="n"/>
+        <terminal x="-30" y="-60" orientation="n"/>
+        <terminal x="10" y="-60" orientation="n"/>
+        <terminal x="50" y="-60" orientation="n"/>
+        <terminal x="-290" y="-60" orientation="n"/>
+        <terminal x="-330" y="60" orientation="s"/>
+        <terminal x="-290" y="60" orientation="s"/>
+        <terminal x="-220" y="60" orientation="s"/>
+        <terminal x="-180" y="60" orientation="s"/>
+        <terminal x="-110" y="60" orientation="s"/>
+        <terminal x="-70" y="60" orientation="s"/>
+        <terminal x="0" y="60" orientation="s"/>
+        <terminal x="40" y="60" orientation="s"/>
+    </description>
+</definition>

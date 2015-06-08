@@ -1,0 +1,26 @@
+<definition version="0.5" link_type="simple" width="20" hotspot_x="13" orientation="dyyy" type="element" hotspot_y="27" height="50">
+    <names>
+        <name lang="ar">مجس حرارة</name>
+        <name lang="el">Αισθητήρας θερμοκρασίας</name>
+        <name lang="en">Temperature switch NC</name>
+        <name lang="de">Temperaturschalter Schliesser</name>
+        <name lang="it">Sensore di temperatura</name>
+        <name lang="fr">Thermostat NC</name>
+        <name lang="pl">Czujnik temperatury</name>
+        <name lang="es">Sonda de temperatura</name>
+        <name lang="cs">Teplotní čidlo</name>
+        <name lang="nl">contact temperatuur</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input text="_" size="9" rotate="true" y="-6" x="6" tagg="label"/>
+        <line y2="14.6" x1="0" y1="-0.6" length2="1.5" x2="0" end1="none" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <line y2="-15" x1="0" y1="0" length2="1.5" x2="5" end1="none" antialias="true" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <line y2="-10" x1="0" y1="-10" length2="1.5" x2="5" end1="none" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <line y2="-10" x1="0" y1="-20" length2="1.5" x2="0" end1="none" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <text text="θ" size="6" y="-3" x="-10"/>
+        <input text="" size="9" rotate="true" y="-30" x="-65" tagg="label"/>
+        <terminal orientation="n" y="-20" x="0"/>
+        <terminal orientation="s" y="15" x="0"/>
+    </description>
+</definition>
