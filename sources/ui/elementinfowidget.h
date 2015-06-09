@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include "abstractelementpropertieseditorwidget.h"
+#include "diagramcontext.h"
 
 class Element;
 class QUndoCommand;
@@ -49,6 +50,8 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		QString title() const {return tr("Informations");}
 		bool setLiveEdit(bool live_edit);
 		virtual void updateUi();
+		DiagramContext currentInfo() const;
+
 
 	protected:
 		virtual bool event(QEvent *event);
@@ -60,6 +63,7 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 
 	private slots:
 		void firstActivated();
+		void elementInfoChange();
 
 		//ATTRIBUTES
 	private:

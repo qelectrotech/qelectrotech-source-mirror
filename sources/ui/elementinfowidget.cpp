@@ -59,12 +59,12 @@ void ElementInfoWidget::setElement(Element *element)
 	if (m_element == element) return;
 
 	if (m_element)
-		disconnect(m_element, &Element::elementInfoChange, this, &ElementInfoWidget::updateUi);
+		disconnect(m_element, &Element::elementInfoChange, this, &ElementInfoWidget::elementInfoChange);
 
 	m_element = element;
 	updateUi();
 
-	connect(m_element, &Element::elementInfoChange, this, &ElementInfoWidget::updateUi);
+	connect(m_element, &Element::elementInfoChange, this, &ElementInfoWidget::elementInfoChange);
 }
 
 /**
@@ -87,17 +87,8 @@ void ElementInfoWidget::apply()
  */
 QUndoCommand* ElementInfoWidget::associatedUndo() const
 {
-	DiagramContext new_info;
+	DiagramContext new_info = currentInfo();
 	DiagramContext old_info = m_element -> elementInformations();
-
-	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
-	{
-			//add value only if they're something to store
-		if (!eipw->text().isEmpty())
-			new_info.addValue(eipw->key(),
-						eipw->text(),
-						eipw->mustShow());
-	}
 
 	if (old_info != new_info)
 		return (new ChangeElementInformationCommand(m_element, old_info, new_info));
@@ -215,10 +206,35 @@ void ElementInfoWidget::updateUi()
 }
 
 /**
+ * @brief ElementInfoWidget::currentInfo
+ * @return the info currently edited
+ */
+DiagramContext ElementInfoWidget::currentInfo() const
+{
+	DiagramContext info_;
+
+	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
+		if (!eipw->text().isEmpty()) //add value only if they're something to store
+			info_.addValue(eipw->key(), eipw->text(), eipw->mustShow());
+
+	return info_;
+}
+
+/**
  * @brief ElementInfoWidget::firstActivated
  * Slot activated when this widget is show.
  * Set the focus to the first line edit provided by this widget
  */
 void ElementInfoWidget::firstActivated() {
 	m_eipw_list.first() -> setFocusTolineEdit();
+}
+
+/**
+ * @brief ElementInfoWidget::elementInfoChange
+ * This slot is called when m_element::elementInformation change.
+ */
+void ElementInfoWidget::elementInfoChange()
+{
+	if(currentInfo() != m_element->elementInformations())
+		updateUi();
 }
