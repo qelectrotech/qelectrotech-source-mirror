@@ -25,6 +25,7 @@
 #include "qetgraphicsitem/element.h"
 #include "diagramcontent.h"
 #include "qetgraphicsitem/customelement.h"
+#include "diagramposition.h"
 
 class QETProject;
 class Diagram;
