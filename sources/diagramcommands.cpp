@@ -1054,49 +1054,6 @@ void ChangeSeveralConductorsPropertiesCommand::redo() {
 	}
 }
 
-/**
- * @brief ItemResizerCommand::ItemResizerCommand
- * Change the size of @qgi
- * @param qgi item to resize
- * @param old_ old size
- * @param new_ new size
- * @param text text to display
- * @param parent undo parent
- */
-ItemResizerCommand::ItemResizerCommand (QetGraphicsItem *qgi, qreal &old_, qreal &new_, const QString &text, QUndoCommand *parent):
-	QUndoCommand(parent),
-	m_qgi    ( qgi			  ),
-	old_size ( old_			  ),
-	new_size ( new_			  ),
-	diagram  ( qgi->diagram() ),
-	m_text   ( text			  )
-{}
-
-/**
- * @brief ItemResizerCommand::~ItemResizerCommand
- */
-ItemResizerCommand::~ItemResizerCommand() {}
-
-/**
- * @brief ItemResizerCommand::undo
- */
-void ItemResizerCommand::undo() {
-	diagram -> showMe();
-	m_qgi -> setScale(old_size);
-	QUndoCommand::undo();
-}
-
-/**
- * @brief ItemResizerCommand::redo
- */
-void ItemResizerCommand::redo() {
-	diagram -> showMe();
-	if (old_size<new_size) setText(QObject::tr("Agrandire %1 à %2 %").arg(m_text).arg(new_size*100));
-	else setText(QObject::tr("Réduire %1 à %2 %").arg(m_text).arg(new_size*100));
-	m_qgi -> setScale(new_size);
-	QUndoCommand::redo();
-}
-
 
 /**
  * @brief ChangeShapeStyleCommand::ChangeShapeStyleCommand Constructor

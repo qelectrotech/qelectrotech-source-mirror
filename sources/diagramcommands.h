@@ -510,25 +510,6 @@ class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
 	bool new_settings_set;
 };
 
-class ItemResizerCommand : public QUndoCommand {
-	//constructor and destructor
-	public:
-	ItemResizerCommand (QetGraphicsItem *qgi, qreal &old_, qreal &new_,const QString  &text, QUndoCommand *parent = 0);
-	virtual ~ItemResizerCommand();
-
-	//methods
-	public:
-	virtual void undo();
-	virtual void redo();
-
-	//attributes
-	private:
-	QetGraphicsItem *m_qgi;
-	qreal old_size, new_size;
-	Diagram *diagram;
-	QString m_text;
-};
-
 
 class ChangeShapeStyleCommand : public QUndoCommand {
 	//constructor and destructor

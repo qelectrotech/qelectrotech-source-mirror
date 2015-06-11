@@ -18,8 +18,9 @@
 #include "imagepropertieswidget.h"
 #include "ui_imagepropertieswidget.h"
 #include "diagramimageitem.h"
-#include "diagramcommands.h"
 #include <QUndoCommand>
+#include "itemresizercommand.h"
+#include "diagram.h"
 
 /**
  * @brief ImagePropertiesWidget::ImagePropertiesWidget
@@ -56,10 +57,14 @@ void ImagePropertiesWidget::setImageItem(DiagramImageItem *image)
 	this->setEnabled(true);
 	if (m_image == image) return;
 	if (m_image)
+	{
 		disconnect(m_image, SIGNAL(destroyed()), this, SLOT(imageWasDeleted()));
+		disconnect(m_image, &QGraphicsObject::scaleChanged, this, &ImagePropertiesWidget::updateUi);
+	}
 
 	m_image = image;
 	connect(m_image, SIGNAL(destroyed()), this, SLOT(imageWasDeleted()));
+	connect(m_image, &QGraphicsObject::scaleChanged, this, &ImagePropertiesWidget::updateUi);
 	m_movable = image->isMovable();
 	m_scale = m_image->scale();
 	updateUi();
@@ -74,7 +79,13 @@ void ImagePropertiesWidget::apply()
 	if(!m_image) return;
 
 	if (m_image->diagram())
+	{
+		if (m_live_edit) disconnect(m_image, &QGraphicsObject::scaleChanged, this, &ImagePropertiesWidget::updateUi);
+
 		m_image->diagram()->undoStack().push(associatedUndo());
+
+		if (m_live_edit) connect(m_image, &QGraphicsObject::scaleChanged, this, &ImagePropertiesWidget::updateUi);
+	}
 
 	m_scale = m_image->scale();
 }
@@ -90,6 +101,31 @@ void ImagePropertiesWidget::reset()
 	m_image->setScale(m_scale);
 	m_image->setMovable(m_movable);
 	updateUi();
+}
+
+/**
+ * @brief ImagePropertiesWidget::setLiveEdit
+ * @param live_edit true -> enable live edit
+ *					false -> disable live edit
+ * @return always true
+ */
+bool ImagePropertiesWidget::setLiveEdit(bool live_edit)
+{
+	if (m_live_edit == live_edit) return true;
+	m_live_edit = live_edit;
+
+	if (m_live_edit)
+	{
+		connect (ui->m_scale_slider, &QSlider::sliderReleased, this, &ImagePropertiesWidget::apply);
+		connect (ui->m_scale_sb, &QSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
+	}
+	else
+	{
+		disconnect (ui->m_scale_slider, &QSlider::sliderReleased, this, &ImagePropertiesWidget::apply);
+		disconnect (ui->m_scale_sb, &QSpinBox::editingFinished, this, &ImagePropertiesWidget::apply);
+	}
+
+	return true;
 }
 
 /**
@@ -109,8 +145,9 @@ QUndoCommand* ImagePropertiesWidget::associatedUndo()
  */
 void ImagePropertiesWidget::updateUi()
 {
-	ui->m_scale_slider->setValue(m_scale * 100);
-	ui->m_lock_pos_cb->setChecked(!m_movable);
+	if (!m_image) return;
+	ui->m_scale_slider->setValue(m_image->scale() * 100);
+	ui->m_lock_pos_cb->setChecked(!m_image->isMovable());
 }
 
 /**
@@ -120,8 +157,8 @@ void ImagePropertiesWidget::updateUi()
  */
 void ImagePropertiesWidget::on_m_scale_slider_valueChanged(int value)
 {
-	qreal scale = value;
-	m_image->setScale(scale / 100);
+		qreal scale = value;
+		m_image->setScale(scale / 100);
 }
 
 void ImagePropertiesWidget::imageWasDeleted() {

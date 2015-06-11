@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetshapeitem.h"
+#include "itemresizercommand.h"
 #include "diagramcommands.h"
 #include "createdxf.h"
 #include "diagram.h"

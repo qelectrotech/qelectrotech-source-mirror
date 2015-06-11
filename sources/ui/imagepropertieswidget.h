@@ -42,6 +42,7 @@ class ImagePropertiesWidget : public PropertiesEditorWidget
 
 		void apply();
 		void reset();
+		bool setLiveEdit(bool live_edit);
 		QUndoCommand* associatedUndo();
 
 	private:
