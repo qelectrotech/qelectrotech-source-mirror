@@ -1,32 +1,32 @@
-<definition width="40" version="0.3" hotspot_x="30" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="40" orientation="dyyy" version="0.5" height="50" hotspot_y="24" type="element" hotspot_x="30" link_type="master">
     <names>
         <name lang="ar">زرّ توقف طوارئ - فتح بمفتاح</name>
-        <name lang="en">Emergency stop key release</name>
         <name lang="de">Pilzdrucktaster Öffner mit Schlüsselentriegelung</name>
-        <name lang="fr">Arrêt d'urgence - Déverrouillage à clé</name>
+        <name lang="en">Emergency stop key release</name>
+        <name lang="it">Arresto d'emergenza con sblocco a chiave</name>
         <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>
         <name lang="cs">Nouzové zastavení - uvolnění klíče</name>
-        <name lang="it">Arresto d'emergenza con sblocco a chiave</name>
         <name lang="nl">Noodstop sleutelreset (NC)</name>
+        <name lang="fr">Arrêt d'urgence - Déverrouillage à clé</name>
     </names>
     <kindInformations>
-        <kindInformation show="1" name="type">commutator</kindInformation>
+        <kindInformation name="type" show="1">commutator</kindInformation>
     </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="4" x="-13" y="-3" antialias="false" height="6" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <polygon x4="-16.0364" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-0.190821" x1="-18.0364" y2="3.80918" x2="-19.0364" y3="3.80918" x3="-15.0364" y4="-0.190821"/>
-        <polygon x4="-6" y5="0" x5="-9" antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="0" x1="3" y2="0" x2="-2" y3="3" x3="-4" y4="0"/>
-        <circle x="-19.25" y="-4.4318" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-13" y2="0" x2="-22"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="-22" y2="5" x2="-22"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="5" y2="10" x2="0" y3="20" x3="0"/>
-        <arc width="8" x="-26" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="0" y2="-9" x2="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9" x2="0"/>
-        <input x="8.5" y="2.3333" size="9" text="AU_"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="20" orientation="s"/>
+        <rect antialias="false" width="4" y="-3" height="6" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-13"/>
+        <polygon x1="-18.0364" antialias="true" y3="3.80918" x4="-16.0364" y2="3.80918" y4="-0.190821" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-0.190821" x2="-19.0364" closed="false" x3="-15.0364"/>
+        <polygon x1="3" antialias="false" y3="3" x5="-9" x4="-6" y5="0" y2="0" y4="0" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x2="-2" closed="false" x3="-4"/>
+        <circle antialias="true" y="-4.4318" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4.5" x="-19.25"/>
+        <line x1="-13" antialias="false" length1="1.5" end2="none" y2="0" style="line-style:dashed;line-weight:thin;filling:none;color:black" end1="none" y1="0" x2="-22" length2="1.5"/>
+        <line x1="-22" antialias="false" length1="1.5" end2="none" y2="5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-5" x2="-22" length2="1.5"/>
+        <polygon x1="5" antialias="true" y3="20" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x2="0" closed="false" x3="0"/>
+        <arc antialias="true" width="8" y="-5" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-90" x="-26" angle="-180"/>
+        <line x1="0" antialias="false" length1="1.5" end2="none" y2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y1="-9" x2="6" length2="1.5"/>
+        <line x1="0" antialias="false" length1="1.5" end2="none" y2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y1="-20" x2="0" length2="1.5"/>
+        <input tagg="label" y="2.3333" size="9" text="AU_" x="8.5"/>
+        <terminal orientation="n" y="-20" x="0"/>
+        <terminal orientation="s" y="20" x="0"/>
     </description>
 </definition>
