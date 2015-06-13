@@ -1013,17 +1013,17 @@ i conduttori di questo potenziale?</translation>
 <context>
     <name>ElementInfoPartWidget</name>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="14"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="20"/>
         <source>Form</source>
         <translation>Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="41"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="47"/>
         <source>TextLabel</source>
         <translation>Testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="48"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="57"/>
         <source>Visible</source>
         <translation>Visibile</translation>
     </message>
@@ -1031,12 +1031,12 @@ i conduttori di questo potenziale?</translation>
 <context>
     <name>ElementInfoWidget</name>
     <message>
-        <location filename="../sources/ui/elementinfowidget.ui" line="20"/>
+        <location filename="../sources/ui/elementinfowidget.ui" line="26"/>
         <source>Form</source>
         <translation>Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.h" line="49"/>
+        <location filename="../sources/ui/elementinfowidget.h" line="50"/>
         <source>Informations</source>
         <translation>Informazioni</translation>
     </message>
@@ -1163,76 +1163,76 @@ i conduttori di questo potenziale?</translation>
 <context>
     <name>ElementPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="139"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="232"/>
         <source>Général</source>
         <translation>Generale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="158"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="248"/>
         <source>Élément manquant</source>
         <translation>Elemento mancante</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="160"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="250"/>
         <source>Élément</source>
         <translation>Elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="165"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="255"/>
         <source>Nom : %1
 </source>
         <translation>Nome : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="168"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="258"/>
         <source>Folio : %1
 </source>
         <translation>Pagina : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="170"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="260"/>
         <source>Position : %1
 </source>
         <translation>Posizione : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="171"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="261"/>
         <source>Dimensions : %1*%2
 </source>
         <translation>Dimensioni : %1*%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="172"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="262"/>
         <source>Bornes : %1
 </source>
         <translation>Terminali : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="173"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="263"/>
         <source>Champs de texte : %1
 </source>
         <translation>Campo di testo : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="176"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="266"/>
         <source>Emplacement : %1
 </source>
         <translation>Posizione : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="196"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="286"/>
         <source>Retrouver dans le panel</source>
         <translation>Mostra nello schema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="198"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="288"/>
         <source>Éditer l&apos;élément</source>
         <translation>Modifica l&apos;elemento</translation>
     </message>
@@ -1272,7 +1272,7 @@ i conduttori di questo potenziale?</translation>
 <context>
     <name>ElementSelectorWidget</name>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.ui" line="14"/>
+        <location filename="../sources/ui/elementselectorwidget.ui" line="20"/>
         <source>Form</source>
         <translation>Modulo</translation>
     </message>
@@ -2303,7 +2303,7 @@ Le modifiche saranno definitive.</translation>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.cpp" line="103"/>
+        <location filename="../sources/ui/imagepropertieswidget.cpp" line="139"/>
         <source>une image</source>
         <translation>un&apos;immagine</translation>
     </message>
@@ -2606,52 +2606,52 @@ Le modifiche saranno definitive.</translation>
         <translation>Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
+        <source>Cet élément est déjà lié</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
         <source>Rechercher dans le folio :</source>
         <translation>Cercare nella pagina:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="85"/>
         <source>Voir cet élément</source>
         <translation>Mostra questo elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="92"/>
         <source>Voir l&apos;élément lié</source>
         <translation>Mostra l&apos;elemento collegato</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="113"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="129"/>
         <source>Report de folio</source>
         <translation>Riferimento di pagina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="115"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="131"/>
         <source>Référence croisée (esclave)</source>
         <translation>Riferimento incrociato (slave)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="269"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="143"/>
         <source>Tous</source>
         <translation>Tutti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="275"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="148"/>
         <source>Sans titre</source>
         <translation>Senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="167"/>
-        <source>Cet élément est déjà lié.</source>
-        <translation>L&apos;elemento è già collegato.</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="168"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="45"/>
         <source>Délier</source>
         <translation>Annulla il collegamento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="198"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="249"/>
         <source>Rechercher</source>
         <translation>Cercare</translation>
     </message>
@@ -2659,39 +2659,39 @@ Le modifiche saranno definitive.</translation>
 <context>
     <name>MasterPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="14"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="20"/>
         <source>Form</source>
         <translation>Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="42"/>
         <source>Délier l&apos;élément séléctionné</source>
         <translation>Scollega l&apos;elemento selezionato</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="59"/>
         <source>Lier l&apos;élément séléctionné</source>
         <translation>Collega l&apos;elemento selezionato</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="73"/>
         <source>Éléments disponibles</source>
         <translation>Elementi disponibili</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="83"/>
         <source>Éléments liés</source>
         <translation>Elementi collegati</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="165"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="180"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="175"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="190"/>
         <source>Sans titre</source>
         <translation>Senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="166"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="181"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="176"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="191"/>
         <source>Folio  %1 (%2), position %3.</source>
         <translation>Pagina  %1 (%2), posizione %3.</translation>
     </message>
@@ -5676,51 +5676,19 @@ Cosa vuoi fare?</translation>
         <translation>Modifica le proprietà di più conduttori</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1094"/>
+        <location filename="../sources/undocommand/itemresizercommand.cpp" line="84"/>
         <source>Agrandire %1 à %2 %</source>
         <translation>Ingrandisci di %1 a %2 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1095"/>
+        <location filename="../sources/undocommand/itemresizercommand.cpp" line="85"/>
         <source>Réduire %1 à %2 %</source>
         <translation>Riduci da %1 a %2 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1115"/>
+        <location filename="../sources/diagramcommands.cpp" line="1072"/>
         <source>Changer le style d&apos;une shape</source>
         <translation>Cambia lo stile di una forma</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="1157"/>
-        <source>Lier deux reports de folio</source>
-        <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation>Collegare due riferimenti di pagina</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="1161"/>
-        <source>Editer les référence croisé</source>
-        <comment>edite the cross reference</comment>
-        <translation>Modifica il riferimento incrociato</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="1162"/>
-        <location filename="../sources/diagramcommands.cpp" line="1176"/>
-        <source>Lier deux éléments</source>
-        <translation>Collegare due elementi</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="1175"/>
-        <source>Editer les référence croisé</source>
-        <translation>Modifica il riferimento incrociato</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1236"/>
-        <location filename="../sources/diagramcommands.cpp" line="1251"/>
-        <source>Délier %n élément(s)</source>
-        <translation>
-            <numerusform>Scollegare %n elemento(i)</numerusform>
-            <numerusform></numerusform>
-        </translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -6143,38 +6111,38 @@ Cosa vuoi fare?</translation>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="369"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="370"/>
         <source>Type de trait</source>
         <comment>shape style</comment>
         <translation>Tipo di linea</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="374"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="375"/>
         <source>Normal</source>
         <translation>Normale</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="375"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="376"/>
         <source>Tiret</source>
         <translation>Trattino</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="376"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="377"/>
         <source>Pointillé</source>
         <translation>Punteggiata</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="377"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="378"/>
         <source>Traits et points</source>
         <translation>Punto e linea</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="378"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="379"/>
         <source>Traits points points</source>
         <translation>Linea-punto-punto</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="391"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="392"/>
         <source>Échelle</source>
         <comment>shape scale</comment>
         <translation>Scala</translation>
@@ -6255,6 +6223,12 @@ Cosa vuoi fare?</translation>
         <source>Modifier les informations de l&apos;élément : %1</source>
         <translation>modificare le informazioni dell&apos;elemento: %1</translation>
     </message>
+    <message>
+        <location filename="../sources/undocommand/linkelementcommand.cpp" line="33"/>
+        <source>Éditer les référence croisé</source>
+        <comment>edite the cross reference</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -6274,39 +6248,39 @@ Cosa vuoi fare?</translation>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="364"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="365"/>
         <source>Éditer les propriétés d&apos;une shape, Zone </source>
         <comment>window title</comment>
         <translation>Modifica delle proprietà di una forma, Zona </translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="386"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="387"/>
         <source>Verrouiller la position</source>
         <translation>Bloccare la posizione</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="432"/>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="458"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="433"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="459"/>
         <source>une shape</source>
         <translation>una forma</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="446"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="447"/>
         <source>une ligne</source>
         <translation>una linea</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="449"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="450"/>
         <source>un rectangle</source>
         <translation>un rettangolo</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="452"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="453"/>
         <source>une éllipse</source>
         <translation>un&apos;ellisse</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="455"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="456"/>
         <source>une polyligne</source>
         <translation>un poligono</translation>
     </message>
@@ -7870,37 +7844,42 @@ Lunghezza massima : %2px</translation>
 </translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="88"/>
+        <location filename="../sources/nomenclature.cpp" line="87"/>
+        <source>Position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Désignation</source>
         <translation>Descrizione</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="94"/>
+        <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Fonction</source>
         <translation>Funzione</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="87"/>
+        <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Label</source>
         <translation>Etichetta</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="89"/>
+        <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Commentaire</source>
         <translation>Commento</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="90"/>
+        <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Fabricant</source>
         <translation>Costruttore</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="91"/>
+        <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Reference</source>
         <translation>Riferimento</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="92"/>
+        <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Machine-reference</source>
         <translation>Riferimento-macchina</translation>
     </message>
@@ -7920,7 +7899,7 @@ Lunghezza massima : %2px</translation>
         <translation>Titolo della pagina</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="93"/>
+        <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Localisation</source>
         <translation>Posizione</translation>
     </message>

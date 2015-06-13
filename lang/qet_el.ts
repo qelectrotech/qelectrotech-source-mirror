@@ -1014,17 +1014,17 @@
 <context>
     <name>ElementInfoPartWidget</name>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="14"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="20"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="41"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="47"/>
         <source>TextLabel</source>
         <translation>ΕτικέταΚειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="48"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="57"/>
         <source>Visible</source>
         <translation>Ορατό</translation>
     </message>
@@ -1032,12 +1032,12 @@
 <context>
     <name>ElementInfoWidget</name>
     <message>
-        <location filename="../sources/ui/elementinfowidget.ui" line="20"/>
+        <location filename="../sources/ui/elementinfowidget.ui" line="26"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.h" line="49"/>
+        <location filename="../sources/ui/elementinfowidget.h" line="50"/>
         <source>Informations</source>
         <translation>Πληροφορίες</translation>
     </message>
@@ -1164,76 +1164,76 @@
 <context>
     <name>ElementPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="139"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="232"/>
         <source>Général</source>
         <translation>Γενικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="158"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="248"/>
         <source>Élément manquant</source>
         <translation>Λείπει στοιχείο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="160"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="250"/>
         <source>Élément</source>
         <translation>Στοιχείο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="165"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="255"/>
         <source>Nom : %1
 </source>
         <translation>Όνομα: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="168"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="258"/>
         <source>Folio : %1
 </source>
         <translation>Σελίδα: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="170"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="260"/>
         <source>Position : %1
 </source>
         <translation>Θέση: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="171"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="261"/>
         <source>Dimensions : %1*%2
 </source>
         <translation>Διαστάσεις: %1*%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="172"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="262"/>
         <source>Bornes : %1
 </source>
         <translation>Ακροδέκτες: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="173"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="263"/>
         <source>Champs de texte : %1
 </source>
         <translation>Πεδία κειμένου: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="176"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="266"/>
         <source>Emplacement : %1
 </source>
         <translation>Τοποθέτηση: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="196"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="286"/>
         <source>Retrouver dans le panel</source>
         <translation>Εύρεση στο πλαίσιο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="198"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="288"/>
         <source>Éditer l&apos;élément</source>
         <translation>Επεξεργασία του στοιχείου</translation>
     </message>
@@ -1273,7 +1273,7 @@
 <context>
     <name>ElementSelectorWidget</name>
     <message>
-        <location filename="../sources/ui/elementselectorwidget.ui" line="14"/>
+        <location filename="../sources/ui/elementselectorwidget.ui" line="20"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
@@ -2305,7 +2305,7 @@ Les changements seront définitifs.</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.cpp" line="103"/>
+        <location filename="../sources/ui/imagepropertieswidget.cpp" line="139"/>
         <source>une image</source>
         <translation>εικόνα</translation>
     </message>
@@ -2611,52 +2611,52 @@ Les changements seront définitifs.</source>
         <translation>Φόρμα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="22"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
+        <source>Cet élément est déjà lié</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
         <source>Rechercher dans le folio :</source>
         <translation>Αναζήτηση στη σελίδα:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="52"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="85"/>
         <source>Voir cet élément</source>
         <translation>Προβολή αυτού του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="59"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="92"/>
         <source>Voir l&apos;élément lié</source>
         <translation>Προβολή του συνδεδεμένου στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="113"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="129"/>
         <source>Report de folio</source>
         <translation>Αναφορά σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="115"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="131"/>
         <source>Référence croisée (esclave)</source>
         <translation>Παραπομπές (slave)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="269"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="143"/>
         <source>Tous</source>
         <translation>Όλες</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="275"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="148"/>
         <source>Sans titre</source>
         <translation>Ανώνυμο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="167"/>
-        <source>Cet élément est déjà lié.</source>
-        <translation>Το στοιχείο είναι ήδη συνδεδεμένο.</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="168"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="45"/>
         <source>Délier</source>
         <translation>Αποσύνδεση</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="198"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="249"/>
         <source>Rechercher</source>
         <translation>Αναζήτηση</translation>
     </message>
@@ -2664,39 +2664,39 @@ Les changements seront définitifs.</source>
 <context>
     <name>MasterPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="14"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="20"/>
         <source>Form</source>
         <translation>Φόρμα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="36"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="42"/>
         <source>Délier l&apos;élément séléctionné</source>
         <translation>Αποσύνδεση του επιλεγμένου στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="53"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="59"/>
         <source>Lier l&apos;élément séléctionné</source>
         <translation>Σύνδεση του επιλεγμένου στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="67"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="73"/>
         <source>Éléments disponibles</source>
         <translation>Διαθέσιμα στοιχεία</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="77"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="83"/>
         <source>Éléments liés</source>
         <translation>Συνδεδεμένα στοιχεία</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="165"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="180"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="175"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="190"/>
         <source>Sans titre</source>
         <translation>Ανώνυμο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="166"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="181"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="176"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="191"/>
         <source>Folio  %1 (%2), position %3.</source>
         <translation>Σελίδα  %1 (%2), θέση %3.</translation>
     </message>
@@ -5681,51 +5681,19 @@ Que désirez vous faire ?</source>
         <translation>Επεξεργασία των ιδιοτήτων πολλαπλών αγωγών</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1094"/>
+        <location filename="../sources/undocommand/itemresizercommand.cpp" line="84"/>
         <source>Agrandire %1 à %2 %</source>
         <translation>Μεγέθυνση %1 à %2 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1095"/>
+        <location filename="../sources/undocommand/itemresizercommand.cpp" line="85"/>
         <source>Réduire %1 à %2 %</source>
         <translation>Σμίκρυνση %1 à %2 %</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="1115"/>
+        <location filename="../sources/diagramcommands.cpp" line="1072"/>
         <source>Changer le style d&apos;une shape</source>
         <translation>Αλλαγή τύπου ενός σχήματος</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="1157"/>
-        <source>Lier deux reports de folio</source>
-        <comment>title for undo LinkElementsCommand if two elements are folio report</comment>
-        <translation>Σύνδεση δύο αναφορών σελίδας</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="1161"/>
-        <source>Editer les référence croisé</source>
-        <comment>edite the cross reference</comment>
-        <translation>Επεξεργασία παραπομπής</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="1162"/>
-        <location filename="../sources/diagramcommands.cpp" line="1176"/>
-        <source>Lier deux éléments</source>
-        <translation>Σύνδεση δυο στοιχείων</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="1175"/>
-        <source>Editer les référence croisé</source>
-        <translation>Επεξεργασία παραπομπής</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1236"/>
-        <location filename="../sources/diagramcommands.cpp" line="1251"/>
-        <source>Délier %n élément(s)</source>
-        <translation>
-            <numerusform>Αποσύνδεση %n στοιχείου(ων)</numerusform>
-            <numerusform></numerusform>
-        </translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -6148,38 +6116,38 @@ Que désirez vous faire ?</source>
         <translation>Ημερομηνία </translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="369"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="370"/>
         <source>Type de trait</source>
         <comment>shape style</comment>
         <translation>Τύπος γραμμής</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="374"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="375"/>
         <source>Normal</source>
         <translation>Απλή</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="375"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="376"/>
         <source>Tiret</source>
         <translation>Διακεκομμένη</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="376"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="377"/>
         <source>Pointillé</source>
         <translation>Στίγματα</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="377"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="378"/>
         <source>Traits et points</source>
         <translation>Παύλες και τελείες</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="378"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="379"/>
         <source>Traits points points</source>
         <translation>Παύλα τελεία τελεία</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="391"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="392"/>
         <source>Échelle</source>
         <comment>shape scale</comment>
         <translation>Κλίμακα</translation>
@@ -6260,6 +6228,12 @@ Que désirez vous faire ?</source>
         <source>Modifier les informations de l&apos;élément : %1</source>
         <translation>Επεξεργασία των πληροφοριών του στοιχείου: %1</translation>
     </message>
+    <message>
+        <location filename="../sources/undocommand/linkelementcommand.cpp" line="33"/>
+        <source>Éditer les référence croisé</source>
+        <comment>edite the cross reference</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -6279,39 +6253,39 @@ Que désirez vous faire ?</source>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="364"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="365"/>
         <source>Éditer les propriétés d&apos;une shape, Zone </source>
         <comment>window title</comment>
         <translation>Επεξεργασία των ιδιοτήτων ενός σχήματος</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="386"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="387"/>
         <source>Verrouiller la position</source>
         <translation>Κλείδωμα της θέσης</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="432"/>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="458"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="433"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="459"/>
         <source>une shape</source>
         <translation>σχήμα</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="446"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="447"/>
         <source>une ligne</source>
         <translation>γραμμής</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="449"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="450"/>
         <source>un rectangle</source>
         <translation>ορθογώνιου</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="452"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="453"/>
         <source>une éllipse</source>
         <translation>έλειψης</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="455"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="456"/>
         <source>une polyligne</source>
         <translation>πολυγραμμής</translation>
     </message>
@@ -7878,37 +7852,42 @@ Longueur maximale : %2px
 </translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="88"/>
+        <location filename="../sources/nomenclature.cpp" line="87"/>
+        <source>Position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>Désignation</source>
         <translation>Περιγραφή</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="94"/>
+        <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Fonction</source>
         <translation>Λειτουργία</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="87"/>
+        <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>Label</source>
         <translation>Ετικέτα</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="89"/>
+        <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>Commentaire</source>
         <translation>Σχόλιο</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="90"/>
+        <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>Fabricant</source>
         <translation>Κατασκευαστής</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="91"/>
+        <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>Reference</source>
         <translation>Κωδικός</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="92"/>
+        <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Machine-reference</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7928,7 +7907,7 @@ Longueur maximale : %2px
         <translation>Τίτλος σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="93"/>
+        <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>Localisation</source>
         <translation>Θέση</translation>
     </message>
