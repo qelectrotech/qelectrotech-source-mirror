@@ -2616,7 +2616,7 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
         <source>Cet élément est déjà lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit element is reeds verbonden</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
@@ -6243,7 +6243,7 @@ Opnieuw instellen van de  afmetingen</translation>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="33"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kruisverwijzing bewerken</translation>
     </message>
 </context>
 <context>
@@ -6559,7 +6559,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="46"/>
         <source>Aucun</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Geen</translation>
+        <translation>Geen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
@@ -6703,25 +6703,25 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Lignes Horizontales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Horizontale lijnen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Lignes Verticales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verticale lijnen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Hachures gauche</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>schuin naar links lijnen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Hachures droite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>schuin naar rechts lijnen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
@@ -7869,7 +7869,7 @@ Maximale lengte : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Positie</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
