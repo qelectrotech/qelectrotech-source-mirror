@@ -2608,7 +2608,7 @@ Le modifiche saranno definitive.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
         <source>Cet élément est déjà lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo elemento è già collegato</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
@@ -6227,7 +6227,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="33"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modificare i riferimenti incrociati</translation>
     </message>
 </context>
 <context>
@@ -6544,7 +6544,7 @@ Gli altri campi non sono utilizzati.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="46"/>
         <source>Aucun</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nessuno</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
@@ -6688,25 +6688,25 @@ Gli altri campi non sono utilizzati.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Lignes Horizontales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Linee orizzontali</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Lignes Verticales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Linee verticali</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Hachures gauche</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tratteggio sinistro</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Hachures droite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tratteggio destro</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
@@ -7846,7 +7846,7 @@ Lunghezza massima : %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
