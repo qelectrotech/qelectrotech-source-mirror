@@ -2613,7 +2613,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
         <source>Cet élément est déjà lié</source>
-        <translation type="unfinished">Αυτό το στοιχείο είναι ήδη συνδεδεμένο</translation>
+        <translation>Αυτό το στοιχείο είναι ήδη συνδεδεμένο</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
