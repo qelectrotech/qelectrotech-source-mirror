@@ -2613,7 +2613,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
         <source>Cet élément est déjà lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το στοιχεί είναι ήδη συνδεδεμένο</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
@@ -2638,7 +2638,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="131"/>
         <source>Référence croisée (esclave)</source>
-        <translation>Παραπομπές (slave)</translation>
+        <translation>Διασταυρούμενες αναφορές (slave)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="143"/>
@@ -2703,7 +2703,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="53"/>
         <source>Référence croisée (maitre)</source>
-        <translation>Παραπομπές (master)</translation>
+        <translation>Διασταυρούμενες αναφορές (master)</translation>
     </message>
 </context>
 <context>
@@ -2768,7 +2768,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="78"/>
         <source>Références croisées</source>
-        <translation>Παραπομπές</translation>
+        <translation>Διασταυρούμενες αναφορές</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="176"/>
@@ -6232,7 +6232,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="33"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία διαταυρούμενων αναφορών</translation>
     </message>
 </context>
 <context>
@@ -6705,13 +6705,13 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Hachures gauche</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διαγράμμιση αριστερά</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Hachures droite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διαγράμμιση δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
@@ -7854,7 +7854,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέση</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
@@ -7889,7 +7889,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>Machine-reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Κωδικός μηχανής</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="86"/>
