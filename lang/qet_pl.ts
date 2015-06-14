@@ -2601,7 +2601,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
         <source>Cet élément est déjà lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Element jest już połączony</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
@@ -6232,7 +6232,7 @@ Co chcesz zrobić?</translation>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="33"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edytuj odsyłacz</translation>
     </message>
 </context>
 <context>
@@ -7853,7 +7853,7 @@ Długość maksymalna: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozycja</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
