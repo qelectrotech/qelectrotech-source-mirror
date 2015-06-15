@@ -2643,7 +2643,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
         <source>Cet élément est déjà lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Этот элемент уже связан</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
@@ -6292,7 +6292,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="33"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>Редактировать перекрестную ссылку</translation>
     </message>
 </context>
 <context>
@@ -7917,7 +7917,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Положение</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
