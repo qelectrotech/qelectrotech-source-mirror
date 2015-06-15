@@ -2611,7 +2611,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
         <source>Cet élément est déjà lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Bauteil ist bereits gebunden</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
@@ -2626,7 +2626,7 @@ Die Änderung ist endgültig und kann nicht rückgängig gemacht werden.</transl
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="92"/>
         <source>Voir l&apos;élément lié</source>
-        <translation>verbundenes Bauteil zeigen</translation>
+        <translation>gebundenes Bauteil zeigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="129"/>
@@ -6223,7 +6223,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="33"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>Querverweise bearbeiten</translation>
     </message>
 </context>
 <context>
@@ -7841,7 +7841,7 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Verweis</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
