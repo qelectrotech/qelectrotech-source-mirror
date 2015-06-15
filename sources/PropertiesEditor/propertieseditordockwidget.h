@@ -21,7 +21,6 @@
 #include <QDockWidget>
 
 class PropertiesEditorWidget;
-class QAbstractButton;
 
 namespace Ui {
 	class PropertiesEditorDockWidget;
@@ -41,12 +40,6 @@ class PropertiesEditorDockWidget : public QDockWidget
 		bool addEditor (PropertiesEditorWidget *editor, int index = 0);
 		QList<PropertiesEditorWidget *> editors() const;
 		bool removeEditor (PropertiesEditorWidget *editor);
-		void setDisabledButtonBox(bool b = true);
-		void setEnabledButtonBox (bool b = true);
-
-
-	private slots:
-		void on_buttonBox_clicked(QAbstractButton *button);
 
 	protected:
 		QList <PropertiesEditorWidget *> m_editor_list;

@@ -31,18 +31,7 @@
      <number>0</number>
     </property>
     <item>
-     <layout class="QVBoxLayout" name="m_main_vlayout">
-      <item>
-       <widget class="QDialogButtonBox" name="buttonBox">
-        <property name="standardButtons">
-         <set>QDialogButtonBox::Apply|QDialogButtonBox::RestoreDefaults</set>
-        </property>
-        <property name="centerButtons">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <layout class="QVBoxLayout" name="m_main_vlayout"/>
     </item>
    </layout>
   </widget>

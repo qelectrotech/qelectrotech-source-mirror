@@ -19,8 +19,6 @@
 #include "ui_propertieseditordockwidget.h"
 #include "propertieseditorwidget.h"
 
-#include <QAbstractButton>
-
 /**
  * @brief PropertiesEditorDockWidget::PropertiesEditorDockWidget
  * Constructor
@@ -31,9 +29,6 @@ PropertiesEditorDockWidget::PropertiesEditorDockWidget(QWidget *parent) :
 	ui(new Ui::PropertiesEditorDockWidget)
 {
 	ui->setupUi(this);
-	ui->m_main_vlayout->setAlignment(ui->buttonBox, Qt::AlignBottom);
-	ui->buttonBox->setDisabled(true);
-	ui->buttonBox->setVisible (false);
 }
 
 /**
@@ -61,8 +56,6 @@ void PropertiesEditorDockWidget::clear()
 	}
 
 	m_editor_list.clear();
-
-	ui->buttonBox->setDisabled(true);
 }
 
 /**
@@ -101,7 +94,6 @@ bool PropertiesEditorDockWidget::addEditor(PropertiesEditorWidget *editor, int i
 
 	ui -> m_main_vlayout -> insertWidget(index, editor);
 	m_editor_list << editor;
-	setEnabledButtonBox(true);
 	return true;
 }
 
@@ -126,44 +118,5 @@ bool PropertiesEditorDockWidget::removeEditor(PropertiesEditorWidget *editor)
 	if (result)
 		ui -> m_main_vlayout -> removeWidget(editor);
 
-	if (m_editor_list.isEmpty())
-		setDisabledButtonBox(true);
 	return result;
-}
-
-/**
- * @brief PropertiesEditorDockWidget::setDisabledButtonBox
- * Disabled the button box at bottom of dock
- * @param b
- */
-void PropertiesEditorDockWidget::setDisabledButtonBox(bool b) {
-	ui -> buttonBox -> setDisabled(b);
-}
-
-/**
- * @brief PropertiesEditorDockWidget::setEnabledButtonBox
- * Enabled button box at bottom of dock
- * @param b
- */
-void PropertiesEditorDockWidget::setEnabledButtonBox(bool b) {
-	ui -> buttonBox -> setEnabled(b);
-}
-
-/**
- * @brief PropertiesEditorDockWidget::on_buttonBox_clicked
- * Action when button box button is clciked.
- * If button is ApplyRole : call the apply() method
- * If button is ResetRole : call the reset() method
- * @param button
- */
-void PropertiesEditorDockWidget::on_buttonBox_clicked(QAbstractButton *button)
-{
-	int answer = ui->buttonBox->buttonRole(button);
-
-	switch (answer)
-	{
-		case QDialogButtonBox::ApplyRole: apply(); break;
-		case QDialogButtonBox::ResetRole: reset(); break;
-		default: break;
-	}
 }
