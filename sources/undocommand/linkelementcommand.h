@@ -54,6 +54,7 @@ class LinkElementCommand : public QUndoCommand
 
 	private:
 		Element *m_element;
+		bool m_first_redo;
 		QList<Element *> m_linked_before; //<Linked elements before this command, or when we call "undo"
 		QList<Element *> m_linked_after;  //<Linked elements after this command, or when we recall "redo"
 };

@@ -58,7 +58,7 @@ void ConductorAutoNumerotation::numerate() {
  * @param conductor
  * A conductor of the potential to check.
  */
-void ConductorAutoNumerotation::checkPotential(Conductor *conductor) {
+void ConductorAutoNumerotation::checkPotential(Conductor *conductor, QUndoCommand *parent) {
 		//fill list of potential
 	QSet <Conductor *> c_list = conductor->relatedPotentialConductors();
 	c_list << conductor;
@@ -70,7 +70,7 @@ void ConductorAutoNumerotation::checkPotential(Conductor *conductor) {
 	if (!QET::eachStrIsEqual(strl)) {
 		PotentialTextsDialog ptd(conductor, conductor->diagramEditor());
 		if ( ptd.exec() == QDialog::Accepted ) {
-			ConductorAutoNumerotation can(conductor, conductor -> diagram());
+			ConductorAutoNumerotation can(conductor, conductor -> diagram(), parent);
 			can.applyText(ptd.selectedText());
 		}
 	}

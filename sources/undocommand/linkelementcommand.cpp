@@ -18,6 +18,7 @@
 #include "linkelementcommand.h"
 #include "element.h"
 #include "diagram.h"
+#include "conductorautonumerotation.h"
 
 /**
  * @brief LinkElementCommand::LinkElementCommand
@@ -27,7 +28,8 @@
  */
 LinkElementCommand::LinkElementCommand(Element *element_, QUndoCommand *parent):
 	QUndoCommand(parent),
-	m_element(element_)
+	m_element(element_),
+	m_first_redo (true)
 {
 	m_linked_before = m_linked_after = m_element->linkedElements();
 	setText(QObject::tr("Éditer les référence croisé", "edite the cross reference"));
@@ -40,7 +42,7 @@ LinkElementCommand::LinkElementCommand(Element *element_, QUndoCommand *parent):
  */
 bool LinkElementCommand::mergeWith(const QUndoCommand *other)
 {
-	if (id() != other->id()) return false;
+	if (id() != other->id() || other->childCount()) return false;
 	LinkElementCommand const *undo = static_cast<const LinkElementCommand *> (other);
 	if (m_element != undo->m_element) return false;
 	m_linked_after = undo->m_linked_after;
@@ -204,6 +206,14 @@ void LinkElementCommand::redo()
 {
 	if(m_element->diagram()) m_element->diagram()->showMe();
 	makeLink(m_linked_after);
+
+	if (m_first_redo && (m_element->linkType() & Element::AllReport) \
+		&& m_element->conductors().size() \
+		&& m_linked_after.size() && m_linked_after.first()->conductors().size())
+	{
+		ConductorAutoNumerotation::checkPotential(m_element->conductors().first(), this);
+		m_first_redo = false;
+	}
 	QUndoCommand::redo();
 }
 

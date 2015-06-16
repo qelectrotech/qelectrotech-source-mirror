@@ -190,8 +190,8 @@ bool LinkSingleElementWidget::setLiveEdit(bool live_edit)
 void LinkSingleElementWidget::enableLiveEdit()
 {
 	if (!esw_) return;
-	connect(esw_, &ElementSelectorWidget::elementSelected, this, &LinkSingleElementWidget::apply);
-	connect(ui->m_unlink_pb, &QPushButton::clicked, this, &LinkSingleElementWidget::apply);
+	connect(esw_, &ElementSelectorWidget::elementSelected, this, &LinkSingleElementWidget::apply, Qt::QueuedConnection);
+	connect(ui->m_unlink_pb, &QPushButton::clicked, this, &LinkSingleElementWidget::apply, Qt::QueuedConnection);
 }
 
 /**
