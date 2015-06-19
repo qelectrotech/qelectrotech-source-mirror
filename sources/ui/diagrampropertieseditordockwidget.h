@@ -21,7 +21,6 @@
 #include "PropertiesEditor/propertieseditordockwidget.h"
 
 class Diagram;
-class QGraphicsItem;
 
 class DiagramPropertiesEditorDockWidget : public PropertiesEditorDockWidget
 {
@@ -32,14 +31,17 @@ class DiagramPropertiesEditorDockWidget : public PropertiesEditorDockWidget
 
 		void setDiagram(Diagram *diagram);
 
+	private: //Make this method private because only this class manage the editor widget.
+		bool addEditor(PropertiesEditorWidget *editor, int index = 0) { return PropertiesEditorDockWidget::addEditor(editor, index); }
+		bool removeEditor(PropertiesEditorWidget *editor) { return PropertiesEditorDockWidget::removeEditor(editor); }
+
 	private slots:
 		void selectionChanged();
 		void diagramWasDeleted();
 
 	private:
-		enum EditedQGIType {UnknowQGIType, ElementQGIType, ImageQGIType};
 		Diagram *m_diagram;
-		EditedQGIType m_edited_qgi_type;
+		int m_edited_qgi_type;
 };
 
 #endif // DIAGRAMPROPERTIESEDITORDOCKWIDGET_H

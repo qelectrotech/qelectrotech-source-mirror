@@ -30,7 +30,7 @@
 DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget(QWidget *parent) :
 	PropertiesEditorDockWidget(parent),
 	m_diagram(nullptr),
-	m_edited_qgi_type(UnknowQGIType)
+	m_edited_qgi_type (-1)
 {}
 
 /**
@@ -73,42 +73,47 @@ void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 void DiagramPropertiesEditorDockWidget::selectionChanged()
 {
 	if (!m_diagram) return;
-
-	if (m_diagram->selectedItems().size() == 1) //We can open an editor only when there is one selected item
+		//This editor can edit only one item.
+	if (m_diagram->selectedItems().size() != 1)
 	{
-		QGraphicsItem *item = m_diagram->selectedItems().first();
+		clear();
+		m_edited_qgi_type = -1;
+		return;
+	}
 
-			//Edit an element
-		if (Element *elmt = dynamic_cast<Element*>(item))
-		{
-			if (m_edited_qgi_type == ElementQGIType && editors().size() == 1)
+	QGraphicsItem *item = m_diagram->selectedItems().first();
+	const int type_ = item->type();
+
+	switch (type_)
+	{
+		case Element::Type: {
+				//We already edit an element, just update the editor with a new element
+			if (m_edited_qgi_type == type_)
 			{
-				ElementPropertiesWidget *epw = dynamic_cast<ElementPropertiesWidget*>(editors().first());
-				if (epw) //In this case we only update each editor widget with the new element instead of create new widget.
-				{
-					epw->setElement(elmt);
-					return;
-				}
+				static_cast<ElementPropertiesWidget*>(editors().first())->setElement(static_cast<Element*>(item));
+				return;
 			}
+
 			clear();
-			m_edited_qgi_type = ElementQGIType;
-			addEditor(new ElementPropertiesWidget(elmt, this));
-		}
-			//Edit an image
-		else if (DiagramImageItem *image = dynamic_cast<DiagramImageItem *>(item))
-		{
+			m_edited_qgi_type = type_;
+			ElementPropertiesWidget *epw = new ElementPropertiesWidget(static_cast<Element*>(item), this);
+			connect (epw, &ElementPropertiesWidget::editElementRequired , m_diagram, &Diagram::editElementRequired);
+			connect (epw, &ElementPropertiesWidget::findElementRequired, m_diagram, &Diagram::findElementRequired);
+			addEditor(epw);
+			break; }
+
+		case DiagramImageItem::Type: {
 			clear();
-			m_edited_qgi_type = ImageQGIType;
-			addEditor(new ImagePropertiesWidget(image, this));
-		}
-			//Unknow type, we clear the dock
-		else
+			m_edited_qgi_type = type_;
+			addEditor(new ImagePropertiesWidget(static_cast<DiagramImageItem*>(item), this));
+			break; }
+
+		default:
+			m_edited_qgi_type = -1;
 			clear();
 	}
-	else
-		clear();
 
-	foreach(PropertiesEditorWidget *pew, editors())
+	foreach (PropertiesEditorWidget *pew, editors())
 		pew->setLiveEdit(true);
 }
 
