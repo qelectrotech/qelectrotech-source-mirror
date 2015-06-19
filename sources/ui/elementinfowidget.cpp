@@ -173,6 +173,7 @@ void ElementInfoWidget::buildInterface()
 		ui->scroll_vlayout->addWidget(eipw);
 		m_eipw_list << eipw;
 	}
+	ui->scroll_vlayout->addStretch();
 }
 
 /**
