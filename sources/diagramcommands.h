@@ -509,23 +509,4 @@ class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
 	/// track whether post-change properties were set
 	bool new_settings_set;
 };
-
-
-class ChangeShapeStyleCommand : public QUndoCommand {
-	//constructor and destructor
-	public:
-	ChangeShapeStyleCommand (QetShapeItem *shape, Qt::PenStyle &old_, Qt::PenStyle &new_, QUndoCommand *parent = 0);
-	virtual ~ChangeShapeStyleCommand();
-
-	//methods
-	public:
-	virtual void undo();
-	virtual void redo();
-
-	//attributes
-	private:
-	QetShapeItem *shape_;
-	Qt::PenStyle old_style, new_style;
-	Diagram *diagram;
-};
 #endif
