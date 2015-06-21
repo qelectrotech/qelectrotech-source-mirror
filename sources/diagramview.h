@@ -135,6 +135,7 @@ class DiagramView : public QGraphicsView {
 	void rotateTexts();
 	void setVisualisationMode();
 	void setSelectionMode();
+    void refreshBg();
 	void zoomIn();
 	void zoomOut();
 	void zoomInSlowly();

@@ -210,6 +210,13 @@ void QETDiagramEditor::setUpActions() {
 	m_auto_conductor -> setDisabled  (true);
 	connect(m_auto_conductor, SIGNAL(triggered(bool)), this, SLOT(slot_autoConductor(bool)));
 
+    m_grey_background = new QAction   (QET::Icons::DiagramBg, tr("Couleur de fond blanc/gris","Tool tip of white/grey background button"), this);
+    m_grey_background -> setStatusTip (tr("Affiche la couleur de fond du folio en blanc ou en gris", "Status tip of white/grey background button"));
+    m_grey_background -> setCheckable (true);
+    m_grey_background -> setDisabled  (true);
+    connect(m_grey_background, SIGNAL(triggered(bool)), this, SLOT(slot_whgyBackground(bool)));
+    connect(m_grey_background, SIGNAL(triggered(bool)), this, SLOT(slot_refreshBg()));
+
     infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du folio"),                 this);
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du projet"),                 this);
     prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un folio"),                    this);
@@ -440,6 +447,22 @@ void QETDiagramEditor::setUpActions() {
 }
 
 /**
+ * @brief QETDiagramEditor::slot_whgyBackground
+ * @param checked
+ */
+
+void QETDiagramEditor::slot_whgyBackground(bool checked) {
+    if (checked)
+    {
+        Diagram::background_color = Qt::darkGray;
+    }
+    else
+    {
+        Diagram::background_color = Qt::white;
+    }
+}
+
+/**
  * @brief QETDiagramEditor::setUpToolBar
  */
 void QETDiagramEditor::setUpToolBar() {
@@ -469,6 +492,8 @@ void QETDiagramEditor::setUpToolBar() {
 	view_bar -> addAction(mode_selection);
 	view_bar -> addAction(mode_visualise);
 	view_bar -> addSeparator();
+    view_bar -> addAction (m_grey_background);
+    view_bar -> addSeparator();
 	view_bar -> addActions(m_zoom_action_toolBar);
 
 	diagram_bar -> addAction (infos_diagram);
@@ -1069,6 +1094,13 @@ void QETDiagramEditor::slot_paste() {
 }
 
 /**
+    Do action "refresh background" on the current diagram
+*/
+void QETDiagramEditor::slot_refreshBg() {
+    if(currentDiagram()) currentDiagram() -> refreshBg();
+}
+
+/**
 	Effectue l'action "zoom avant" sur le diagram en cours
 */
 void QETDiagramEditor::slot_zoomIn() {
@@ -1310,10 +1342,12 @@ void QETDiagramEditor::slot_updateModeActions() {
 	if (!dv)
 	{
 		grp_visu_sel -> setEnabled(false);
+        m_grey_background -> setDisabled(true);
 	}
 	else
 	{
-		switch((int)(dv -> dragMode()))
+        m_grey_background -> setEnabled(true);
+        switch((int)(dv -> dragMode()))
 		{
 			case QGraphicsView::NoDrag:
 				grp_visu_sel -> setEnabled(false);

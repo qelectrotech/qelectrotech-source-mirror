@@ -42,7 +42,6 @@ class BorderPropertiesWidget : public QWidget
 		void setReadOnly (const bool &ro);
 
 	private slots:
-		void on_m_grey_bg_cb_clicked(bool checked);
 
 	private:
 		Ui::BorderPropertiesWidget *ui;

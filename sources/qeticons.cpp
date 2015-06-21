@@ -40,7 +40,8 @@ namespace QET {
 		QIcon DefaultConductor;
 		QIcon DiagramAdd;
 		QIcon Diagram;
-		QIcon DiagramDelete;
+        QIcon DiagramBg;
+        QIcon DiagramDelete;
 		QIcon DialogCancel;
 		QIcon DialogInformation;
 		QIcon DialogOk;
@@ -219,7 +220,8 @@ void QET::Icons::initIcons() {
 	DefaultConductor    .addFile(":/ico/22x22/conductor3.png");
 	DiagramAdd          .addFile(":/ico/22x22/diagram_add.png");
 	Diagram             .addFile(":/ico/diagram.png");
-	DiagramDelete       .addFile(":/ico/22x22/diagram_del.png");
+    DiagramBg           .addFile(":/ico/22x22/diagram_bg.png");
+    DiagramDelete       .addFile(":/ico/22x22/diagram_del.png");
 	DialogCancel        .addFile(":/ico/16x16/dialog-cancel.png");
 	DialogCancel        .addFile(":/ico/22x22/dialog-cancel.png");
 	DialogInformation   .addFile(":/ico/22x22/dialog-information.png");

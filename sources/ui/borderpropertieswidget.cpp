@@ -55,7 +55,6 @@ void BorderPropertiesWidget::setProperties(const BorderProperties &bp) {
 	ui -> m_rows_count_sp      ->setValue   (m_properties.rows_count);
 	ui -> m_rows_height_sp     ->setValue   (m_properties.rows_height);
 	ui -> m_display_rows_cb    ->setChecked (m_properties.display_rows);
-	ui -> m_grey_bg_cb         ->setChecked (Diagram::background_color != Qt::white);
 }
 
 /**
@@ -79,15 +78,4 @@ const BorderProperties &BorderPropertiesWidget::properties () {
  */
 void BorderPropertiesWidget::setReadOnly(const bool &ro) {
 	ui->border_gb->setDisabled(ro);
-}
-
-/**
- * @brief BorderPropertiesWidget::on_m_grey_bg_cb_clicked
- * @param checked
- */
-void BorderPropertiesWidget::on_m_grey_bg_cb_clicked(bool checked) {
-	if (checked)
-		Diagram::background_color = Qt::gray;
-	else
-		Diagram::background_color = Qt::white;
 }
