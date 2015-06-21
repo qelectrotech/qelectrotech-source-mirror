@@ -161,7 +161,7 @@ void QETDiagramEditor::setUpUndoStack() {
 
 	undo_view -> setEmptyLabel (tr("Aucune modification"));
 	undo_view -> setStatusTip  (tr("Cliquez sur une action pour revenir en arrière dans l'édition de votre schéma", "Status tip"));
-    undo_view -> setWhatsThis  (tr("Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l'état du schéma juste après son application.", "\"What's this\" tip"));
+	undo_view -> setWhatsThis  (tr("Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l'état du schéma juste après son application.", "\"What's this\" tip"));
 
 	qdw_undo  = new QDockWidget(tr("Annulations", "dock title"), this);
 	qdw_undo -> setObjectName("diagram_undo");
@@ -210,17 +210,17 @@ void QETDiagramEditor::setUpActions() {
 	m_auto_conductor -> setDisabled  (true);
 	connect(m_auto_conductor, SIGNAL(triggered(bool)), this, SLOT(slot_autoConductor(bool)));
 
-    m_grey_background = new QAction   (QET::Icons::DiagramBg, tr("Couleur de fond blanc/gris","Tool tip of white/grey background button"), this);
-    m_grey_background -> setStatusTip (tr("Affiche la couleur de fond du folio en blanc ou en gris", "Status tip of white/grey background button"));
-    m_grey_background -> setCheckable (true);
-    m_grey_background -> setDisabled  (true);
-    connect(m_grey_background, SIGNAL(triggered(bool)), this, SLOT(slot_whgyBackground(bool)));
-    connect(m_grey_background, SIGNAL(triggered(bool)), this, SLOT(slot_refreshBg()));
+	m_grey_background = new QAction   (QET::Icons::DiagramBg, tr("Couleur de fond blanc/gris","Tool tip of white/grey background button"), this);
+	m_grey_background -> setStatusTip (tr("Affiche la couleur de fond du folio en blanc ou en gris", "Status tip of white/grey background button"));
+	m_grey_background -> setCheckable (true);
+	m_grey_background -> setDisabled  (true);
+	connect(m_grey_background, SIGNAL(triggered(bool)), this, SLOT(slot_whgyBackground(bool)));
+	connect(m_grey_background, SIGNAL(triggered(bool)), this, SLOT(slot_refreshBg()));
 
-    infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du folio"),                 this);
+	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du folio"),                 this);
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du projet"),                 this);
-    prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un folio"),                    this);
-    prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le folio"),                  this);
+	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un folio"),                    this);
+	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le folio"),                  this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
 	prj_diagramList   = new QAction(QET::Icons::listDrawings,          tr("Ajouter un sommaire"),                  this);
 	prj_nomenclature  = new QAction(QET::Icons::DocumentSpreadsheet,   tr("Exporter une nomenclature"),            this);
@@ -245,11 +245,11 @@ void QETDiagramEditor::setUpActions() {
 	close_file -> setShortcut( QKeySequence::Close );
 	save_file  -> setShortcut( QKeySequence::Save  );
 
-    new_file         -> setStatusTip( tr("Crée un nouveau projet", "status bar tip")								 );
-    open_file        -> setStatusTip( tr("Ouvre un projet existant", "status bar tip")								 );
-    close_file       -> setStatusTip( tr("Ferme le projet courant", "status bar tip")								 );
-    save_file        -> setStatusTip( tr("Enregistre le projet courant et tous ses folios", "status bar tip")		 );
-    save_file_as     -> setStatusTip( tr("Enregistre le projet courant avec un autre nom de fichier", "status bar tip") );
+	new_file         -> setStatusTip( tr("Crée un nouveau projet", "status bar tip")								 );
+	open_file        -> setStatusTip( tr("Ouvre un projet existant", "status bar tip")								 );
+	close_file       -> setStatusTip( tr("Ferme le projet courant", "status bar tip")								 );
+	save_file        -> setStatusTip( tr("Enregistre le projet courant et tous ses folios", "status bar tip")		 );
+	save_file_as     -> setStatusTip( tr("Enregistre le projet courant avec un autre nom de fichier", "status bar tip") );
 
 	connect(save_file_as,     SIGNAL( triggered() ), this, SLOT( saveAs()			   ) );
 	connect(save_file,        SIGNAL( triggered() ), this, SLOT( save()				   ) );
@@ -263,10 +263,10 @@ void QETDiagramEditor::setUpActions() {
 	QAction *add_row       = m_row_column_actions_group.addAction( QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne")   );
 	QAction *remove_row    = m_row_column_actions_group.addAction( QET::Icons::EditTableDeleteRow,         tr("Enlever une ligne")   );
 
-    add_column    -> setStatusTip( tr("Ajoute une colonne au folio", "status bar tip")		  );
-    remove_column -> setStatusTip( tr("Enlève une colonne au folio", "status bar tip")	  );
-    add_row       -> setStatusTip( tr("Agrandit le folio en hauteur", "status bar tip")		  );
-    remove_row    -> setStatusTip( tr("Rétrécit le folio en hauteur", "status bar tip") );
+	add_column    -> setStatusTip( tr("Ajoute une colonne au folio", "status bar tip")		  );
+	remove_column -> setStatusTip( tr("Enlève une colonne au folio", "status bar tip")	  );
+	add_row       -> setStatusTip( tr("Agrandit le folio en hauteur", "status bar tip")		  );
+	remove_row    -> setStatusTip( tr("Rétrécit le folio en hauteur", "status bar tip") );
 
 	connect(add_column,    SIGNAL( triggered() ), this, SLOT( slot_addColumn()	  ) );
 	connect(remove_column, SIGNAL( triggered() ), this, SLOT( slot_removeColumn() ) );
@@ -292,7 +292,7 @@ void QETDiagramEditor::setUpActions() {
 	infos_diagram    -> setShortcut( QKeySequence( tr("Ctrl+L")		) );
 	edit_selection	 -> setShortcut( QKeySequence( tr("Ctrl+E")		) );
 
-    delete_selection -> setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip") );
+	delete_selection -> setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip") );
 	rotate_selection -> setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip")       );
 	rotate_texts     -> setStatusTip( tr("Pivote les textes sélectionnés à un angle précis", "status bar tip") );
 	find_element     -> setStatusTip( tr("Retrouve l'élément sélectionné dans le panel", "status bar tip")	   );
@@ -312,8 +312,8 @@ void QETDiagramEditor::setUpActions() {
 	select_nothing -> setShortcut( QKeySequence( tr("Ctrl+Shift+A") ) );
 	select_invert  -> setShortcut( QKeySequence( tr("Ctrl+I")		) );
 
-    select_all     -> setStatusTip( tr("Sélectionne tous les éléments du folio", "status bar tip")																	  );
-    select_nothing -> setStatusTip( tr("Désélectionne tous les éléments du folio", "status bar tip")															  );
+	select_all     -> setStatusTip( tr("Sélectionne tous les éléments du folio", "status bar tip")																	  );
+	select_nothing -> setStatusTip( tr("Désélectionne tous les éléments du folio", "status bar tip")															  );
 	select_invert  -> setStatusTip( tr("Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés", "status bar tip") );
 
 	connect(select_all,     SIGNAL( triggered() ), this, SLOT( slot_selectAll()		) );
@@ -334,10 +334,10 @@ void QETDiagramEditor::setUpActions() {
 	zoom_fit     -> setShortcut( QKeySequence( tr("Ctrl+9") ) );
 	zoom_reset   -> setShortcut( QKeySequence( tr("Ctrl+0") ) );
 
-    zoom_in      -> setStatusTip(tr("Agrandit le folio", "status bar tip"));
-    zoom_out     -> setStatusTip(tr("Rétrécit le folio", "status bar tip"));
-    zoom_content -> setStatusTip(tr("Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre"));
-    zoom_fit     -> setStatusTip(tr("Adapte le zoom exactement sur le cadre du folio", "status bar tip"));
+	zoom_in      -> setStatusTip(tr("Agrandit le folio", "status bar tip"));
+	zoom_out     -> setStatusTip(tr("Rétrécit le folio", "status bar tip"));
+	zoom_content -> setStatusTip(tr("Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre"));
+	zoom_fit     -> setStatusTip(tr("Adapte le zoom exactement sur le cadre du folio", "status bar tip"));
 	zoom_reset   -> setStatusTip(tr("Restaure le zoom par défaut", "status bar tip"));
 
 	connect( zoom_in,      SIGNAL( triggered() ), this,       SLOT( slot_zoomIn()      ) );
@@ -352,9 +352,9 @@ void QETDiagramEditor::setUpActions() {
 	QAction *add_text      = m_add_item_actions_group.addAction( QET::Icons::PartTextField, tr("Ajouter un champ de texte")		);
 	QAction *add_image	   = m_add_item_actions_group.addAction( QET::Icons::adding_image,  tr("Ajouter une image")				);
 	QAction *add_line	   = m_add_item_actions_group.addAction( QET::Icons::PartLine,      tr("Ajouter une ligne droite") );
-    QAction *add_rectangle = m_add_item_actions_group.addAction( QET::Icons::PartRectangle, tr("Ajouter un rectangle")	);
-    QAction *add_ellipse   = m_add_item_actions_group.addAction( QET::Icons::PartEllipse,   tr("Ajouter une ellipse")		);
-    QAction *add_polyline  = m_add_item_actions_group.addAction( QET::Icons::PartPolygon,	tr("Ajouter une polyligne")    );
+	QAction *add_rectangle = m_add_item_actions_group.addAction( QET::Icons::PartRectangle, tr("Ajouter un rectangle")	);
+	QAction *add_ellipse   = m_add_item_actions_group.addAction( QET::Icons::PartEllipse,   tr("Ajouter une ellipse")		);
+	QAction *add_polyline  = m_add_item_actions_group.addAction( QET::Icons::PartPolygon,	tr("Ajouter une polyligne")    );
 
 	connect( add_text,      SIGNAL( triggered() ), this, SLOT( slot_addText()      ) );
 	connect( add_image,     SIGNAL( triggered() ), this, SLOT( slot_addImage()     ) );
@@ -381,22 +381,22 @@ void QETDiagramEditor::setUpActions() {
 	prev_window       -> setShortcut(QKeySequence::PreviousChild);
 
 	// affichage dans la barre de statut
-    export_diagram    -> setStatusTip(tr("Exporte le folio courant dans un autre format", "status bar tip"));
-    print             -> setStatusTip(tr("Imprime un ou plusieurs folios du projet courant", "status bar tip"));
+	export_diagram    -> setStatusTip(tr("Exporte le folio courant dans un autre format", "status bar tip"));
+	print             -> setStatusTip(tr("Imprime un ou plusieurs folios du projet courant", "status bar tip"));
 	quit_editor       -> setStatusTip(tr("Ferme l'application QElectroTech", "status bar tip"));
 	undo              -> setStatusTip(tr("Annule l'action précédente", "status bar tip"));
 	redo              -> setStatusTip(tr("Restaure l'action annulée", "status bar tip"));
 	cut               -> setStatusTip(tr("Transfère les éléments sélectionnés dans le presse-papier", "status bar tip"));
 	copy              -> setStatusTip(tr("Copie les éléments sélectionnés dans le presse-papier", "status bar tip"));
-    paste             -> setStatusTip(tr("Place les éléments du presse-papier sur le folio", "status bar tip"));
+	paste             -> setStatusTip(tr("Place les éléments du presse-papier sur le folio", "status bar tip"));
 	conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
-    infos_diagram     -> setStatusTip(tr("Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)", "status bar tip"));
+	infos_diagram     -> setStatusTip(tr("Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)", "status bar tip"));
 
 	windowed_view_mode -> setStatusTip(tr("Présente les différents projets ouverts dans des sous-fenêtres", "status bar tip"));
 	tabbed_view_mode   -> setStatusTip(tr("Présente les différents projets ouverts des onglets", "status bar tip"));
 
 	mode_selection    -> setStatusTip(tr("Permet de sélectionner les éléments", "status bar tip"));
-    mode_visualise    -> setStatusTip(tr("Permet de visualiser le folio sans pouvoir le modifier", "status bar tip"));
+	mode_visualise    -> setStatusTip(tr("Permet de visualiser le folio sans pouvoir le modifier", "status bar tip"));
 
 	tile_window       -> setStatusTip(tr("Dispose les fenêtres en mosaïque", "status bar tip"));
 	cascade_window    -> setStatusTip(tr("Dispose les fenêtres en cascade", "status bar tip"));
@@ -452,14 +452,14 @@ void QETDiagramEditor::setUpActions() {
  */
 
 void QETDiagramEditor::slot_whgyBackground(bool checked) {
-    if (checked)
-    {
-        Diagram::background_color = Qt::darkGray;
-    }
-    else
-    {
-        Diagram::background_color = Qt::white;
-    }
+	if (checked)
+	{
+		Diagram::background_color = Qt::darkGray;
+	}
+	else
+	{
+		Diagram::background_color = Qt::white;
+	}
 }
 
 /**
@@ -492,8 +492,8 @@ void QETDiagramEditor::setUpToolBar() {
 	view_bar -> addAction(mode_selection);
 	view_bar -> addAction(mode_visualise);
 	view_bar -> addSeparator();
-    view_bar -> addAction (m_grey_background);
-    view_bar -> addSeparator();
+	view_bar -> addAction (m_grey_background);
+	view_bar -> addSeparator();
 	view_bar -> addActions(m_zoom_action_toolBar);
 
 	diagram_bar -> addAction (infos_diagram);
@@ -745,7 +745,7 @@ bool QETDiagramEditor::openProject() {
 		this,
 		tr("Ouvrir un fichier"),
 		open_dialog_dir.absolutePath(),
-        tr("Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)")
+		tr("Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)")
 	);
 	if (filepath.isEmpty()) return(false);
 	
@@ -1342,12 +1342,12 @@ void QETDiagramEditor::slot_updateModeActions() {
 	if (!dv)
 	{
 		grp_visu_sel -> setEnabled(false);
-        m_grey_background -> setDisabled(true);
+		m_grey_background -> setDisabled(true);
 	}
 	else
 	{
-        m_grey_background -> setEnabled(true);
-        switch((int)(dv -> dragMode()))
+		m_grey_background -> setEnabled(true);
+		switch((int)(dv -> dragMode()))
 		{
 			case QGraphicsView::NoDrag:
 				grp_visu_sel -> setEnabled(false);

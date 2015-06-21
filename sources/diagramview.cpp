@@ -354,9 +354,9 @@ void DiagramView::setSelectionMode() {
  * Workaround to refresh the background color
  */
 void DiagramView::refreshBg() {
-    scale(2, 2);
-    scale(0.5, 0.5);
-    adjustGridToZoom();
+	scale(2, 2);
+	scale(0.5, 0.5);
+	adjustGridToZoom();
 }
 
 /**

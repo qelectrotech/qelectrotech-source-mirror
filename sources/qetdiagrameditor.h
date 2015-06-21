@@ -118,8 +118,8 @@ class QETDiagramEditor : public QETMainWindow {
 		void editSelectionProperties();
 		void slot_resetConductors();
 		void slot_autoConductor(bool ac);
-        void slot_whgyBackground(bool checked);
-        void slot_refreshBg();
+		void slot_whgyBackground(bool checked);
+		void slot_refreshBg();
 		void slot_addText();
 		void slot_addImage();
 		void slot_addLine();
@@ -188,8 +188,8 @@ class QETDiagramEditor : public QETMainWindow {
 		QAction *conductor_reset;    ///< Reset paths of selected conductors
 		QAction *m_auto_conductor;   ///< Enable/Disable the use of auto conductor
 		QAction *conductor_default;  ///< Show a dialog to edit default conductor properties
-        QAction *m_grey_background;  ///< Switch the background color in white or grey
-        QAction *infos_diagram;      ///< Show a dialog to edit diagram properties
+		QAction *m_grey_background;  ///< Switch the background color in white or grey
+		QAction *infos_diagram;      ///< Show a dialog to edit diagram properties
 		QAction *prj_edit_prop;      ///< Edit the properties of the current project.
 		QAction *prj_add_diagram;    ///< Add a diagram to the current project.
 		QAction *prj_del_diagram;    ///< Delete a diagram from the current project
