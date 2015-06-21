@@ -15,38 +15,30 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef ITEMRESIZERCOMMAND_H
-#define ITEMRESIZERCOMMAND_H
+#ifndef CHANGESHAPESTYLECOMMAND_H
+#define CHANGESHAPESTYLECOMMAND_H
 
 #include <QUndoCommand>
-#include <QPropertyAnimation>
 
-class QetGraphicsItem;
-class Diagram;
+class QetShapeItem;
 
 /**
- * @brief The ItemResizerCommand class
- * This Undo command manage the scale of QetGraphicsItem.
+ * @brief The ChangeShapeStyleCommand class
+ * This class manage undo/redo to change the shape style.
  */
-class ItemResizerCommand : public QUndoCommand
+class ChangeShapeStyleCommand : public QUndoCommand
 {
 	public:
-		ItemResizerCommand (QetGraphicsItem *qgi, const qreal &old_, const qreal &new_,const QString  &text, QUndoCommand *parent = 0);
-		virtual ~ItemResizerCommand();
+		ChangeShapeStyleCommand(QetShapeItem *item, const Qt::PenStyle &old_ps, const Qt::PenStyle new_ps, QUndoCommand *parent = nullptr);
 
-	public:
-		virtual int id() const {return 3;}
-		virtual bool mergeWith(const QUndoCommand *other);
-		virtual void undo();
-		virtual void redo();
+		int id() const {return 4;}
+		bool mergeWith(const QUndoCommand *other);
+		void undo();
+		void redo();
 
 	private:
-		QetGraphicsItem *m_qgi;
-		qreal m_old_size, m_new_size;
-		Diagram *m_diagram;
-		QString m_text;
-		QPropertyAnimation m_animation;
-		bool m_first_redo;
+		QetShapeItem *m_shape;
+		Qt::PenStyle m_old_ps, m_new_ps;
 };
 
-#endif // ITEMRESIZERCOMMAND_H
+#endif // CHANGESHAPESTYLECOMMAND_H

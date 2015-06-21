@@ -1,3 +1,4 @@
 ChangeElementInformationCommand  = 1
 LinkElementCommand = 2
 ItemResizerCommand = 3
+ChangeShapeStyleCommand = 4

@@ -16,11 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetshapeitem.h"
-#include "itemresizercommand.h"
-#include "diagramcommands.h"
 #include "createdxf.h"
 #include "diagram.h"
 #include "qet.h"
+#include "shapegraphicsitempropertieswidget.h"
 
 
 /**
@@ -57,6 +56,7 @@ void QetShapeItem::setStyle(Qt::PenStyle newStyle)
 {
 	m_shapeStyle = newStyle;
 	update();
+	emit styleChanged();
 }
 
 /**
@@ -303,7 +303,6 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const {
 	result.setAttribute("type", QString::number(m_shapeType));
 	result.setAttribute("style", QString::number(m_shapeStyle));
 	result.setAttribute("is_movable", bool(is_movable_));
-
 	if (m_shapeType != Polyline) {
 		result.setAttribute("x1", mapToScene(m_P1).x());
 		result.setAttribute("y1", mapToScene(m_P1).y());
@@ -365,55 +364,8 @@ void QetShapeItem::editProperty()
 	property_dialog.setWindowTitle(tr("Éditer les propriétés d'une shape, Zone ", "window title"));
 	//the main layout
 	QVBoxLayout dialog_layout(&property_dialog);
-
-	//GroupBox for resizer image
-	QGroupBox restyle_groupe(QObject::tr("Type de trait", "shape style"));
-	dialog_layout.addWidget(&restyle_groupe);
-	QHBoxLayout restyle_layout(&restyle_groupe);
-
-	QComboBox style_combo(&property_dialog);
-	style_combo.addItem(QObject::tr("Normal"));
-	style_combo.addItem(QObject::tr("Tiret"));
-	style_combo.addItem(QObject::tr("Pointillé"));
-	style_combo.addItem(QObject::tr("Traits et points"));
-	style_combo.addItem(QObject::tr("Traits points points"));
-
-	// The items have been added in order accordance with Qt::PenStyle.
-	style_combo.setCurrentIndex(int(m_shapeStyle) - 1);
-
-	restyle_layout.addWidget(&style_combo);
-
-	//check box for disable move
-	QCheckBox cb(tr("Verrouiller la position"), &property_dialog);
-	cb.setChecked(!is_movable_);
-	dialog_layout.addWidget(&cb);
-
-	//GroupBox for Scaling
-	QGroupBox scale_groupe(QObject::tr("Échelle", "shape scale"));
-	dialog_layout.addWidget(&scale_groupe);
-	QHBoxLayout scale_layout(&scale_groupe);
-
-	int min_range = 1;
-	int max_range = 200;
-	int factor_range = 100;
-
-		//slider
-	QSlider slider(Qt::Horizontal, &property_dialog);
-	slider.setRange(min_range, max_range);
-	qreal scale_= scale();
-	slider.setValue(scale_*factor_range);
-		//spinbox
-	QSpinBox spin_box(&property_dialog);
-	spin_box.setRange(min_range, max_range);
-	spin_box.setValue(scale_*factor_range);
-	spin_box.setSuffix(" %");
-		//synchro slider with spinbox
-	connect(&slider, SIGNAL(valueChanged(int)), &spin_box, SLOT(setValue(int)));
-	connect(&slider, SIGNAL(valueChanged(int)), this, SLOT(previewScale(int)));
-	connect(&spin_box, SIGNAL(valueChanged(int)), &slider, SLOT(setValue(int)));
-		//add slider and spinbox to layout
-	scale_layout.addWidget(&slider);
-	scale_layout.addWidget(&spin_box);
+	ShapeGraphicsItemPropertiesWidget *sgipw = new ShapeGraphicsItemPropertiesWidget(this, &property_dialog);
+	dialog_layout.addWidget(sgipw);
 
 	//dialog button, box
 	QDialogButtonBox dbb(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -421,20 +373,10 @@ void QetShapeItem::editProperty()
 	connect(&dbb, SIGNAL(accepted()), &property_dialog, SLOT(accept()));
 	connect(&dbb, SIGNAL(rejected()), &property_dialog, SLOT(reject()));
 
-	//dialog is accepted...
-	if (property_dialog.exec() == QDialog::Accepted) {
-		cb.isChecked() ? is_movable_=false : is_movable_=true;
-
-		Qt::PenStyle new_style = Qt::PenStyle(style_combo.currentIndex() + 1);
-		if (new_style != m_shapeStyle) diagram()->undoStack().push(new ChangeShapeStyleCommand(this, m_shapeStyle, new_style));
-
-		qreal scale_factor = slider.value();
-		scale_factor /= factor_range;
-		if (scale_ != scale_factor) diagram()->undoStack().push(new ItemResizerCommand(this, scale_, scale_factor, tr("une shape")));
-		return;
-	}
-	//...or not
-	setScale(scale_);
+	if (property_dialog.exec() == QDialog::Accepted)
+		sgipw->apply();
+	else
+		sgipw->reset();
 }
 
 /**

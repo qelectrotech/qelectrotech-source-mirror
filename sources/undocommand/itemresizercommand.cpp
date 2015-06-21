@@ -28,7 +28,7 @@
  * @param text text to display
  * @param parent undo parent
  */
-ItemResizerCommand::ItemResizerCommand (QetGraphicsItem *qgi, qreal &old_, qreal &new_, const QString &text, QUndoCommand *parent):
+ItemResizerCommand::ItemResizerCommand (QetGraphicsItem *qgi, const qreal &old_, const qreal &new_, const QString &text, QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_qgi (qgi),
 	m_old_size (old_),
@@ -56,7 +56,7 @@ ItemResizerCommand::~ItemResizerCommand() {}
  */
 bool ItemResizerCommand::mergeWith(const QUndoCommand *other)
 {
-	if (id() != other->id()) return false;
+	if (id() != other->id() || other->childCount()) return false;
 	ItemResizerCommand const *undo = static_cast<const ItemResizerCommand *>(other);
 	if (m_qgi != undo->m_qgi) return false;
 	m_new_size = undo->m_new_size;

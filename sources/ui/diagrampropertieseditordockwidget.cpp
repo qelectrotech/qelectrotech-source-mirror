@@ -21,6 +21,8 @@
 #include "element.h"
 #include "diagramimageitem.h"
 #include "imagepropertieswidget.h"
+#include "qetshapeitem.h"
+#include "shapegraphicsitempropertieswidget.h"
 
 /**
  * @brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget
@@ -106,6 +108,18 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 			clear();
 			m_edited_qgi_type = type_;
 			addEditor(new ImagePropertiesWidget(static_cast<DiagramImageItem*>(item), this));
+			break; }
+
+		case QetShapeItem::Type: {
+			if (m_edited_qgi_type == type_)
+			{
+				static_cast<ShapeGraphicsItemPropertiesWidget*>(editors().first())->setItem(static_cast<QetShapeItem*>(item));
+				return;
+			}
+
+			clear();
+			m_edited_qgi_type = type_;
+			addEditor(new ShapeGraphicsItemPropertiesWidget(static_cast<QetShapeItem*>(item), this));
 			break; }
 
 		default:
