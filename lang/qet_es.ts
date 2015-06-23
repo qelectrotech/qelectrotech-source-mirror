@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es">
+<TS version="2.0" language="es">
 <context>
     <name>AboutQET</name>
     <message>
@@ -1370,14 +1370,16 @@
         <source>Êtes-vous sûr  de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
-        <translation>¿Está seguro que quiere eliminar esta categoría?</translation>
+        <translation>¿Está seguro que quiere eliminar esta categoría?
+Todos los elementos y las categorías contenidas dentro de esta categoría serán suprimidas.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="91"/>
         <source>Êtes-vous vraiment sur de vouloir supprimer cette catégorie ?
 Les changements seront définitifs.</source>
         <comment>message box content</comment>
-        <translation>¿Está seguro que quiere eliminar esta categoría?</translation>
+        <translation>translation&gt;¿Está seguro que quiere eliminar esta categoría?
+Los cambios serán definitivos.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="104"/>
@@ -1515,7 +1517,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="451"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation>Arrastre el rótulo sobre el folio para aplicarlo</translation>
+        <translation>Arrastre y coloque el rótulo sobre el folio para aplicarlo.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="475"/>
@@ -1889,7 +1891,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="75"/>
         <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation>Elija los folios que quiere exportar y los tamaños de los mismos</translation>
+        <translation>Elija los folios que quiere exportar y sus dimensiones:</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="78"/>
@@ -1910,7 +1912,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/exportdialog.cpp" line="770"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
-        <translation>Debe ingresar un mombre de fichero único por cada folio a exportar</translation>
+        <translation>Debe ingresar un nombre de archivo único no vacío para cada folio para exportar.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="785"/>
@@ -2077,7 +2079,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="201"/>
         <source>Utiliser des onglets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Utiliza pestañas</translation>
+        <translation>Utilizar pestañas (aplica para el próximo lanzamiento de QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="203"/>
@@ -2087,7 +2089,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="256"/>
         <source>La nouvelle langue sera prise en compte au prochain lancement de QElectroTech.</source>
-        <translation>El nuevo lenguaje será utilizado luego de rearrancar QElectroTech</translation>
+        <translation>El nuevo lenguaje será utilizado la proxima ves que inicie QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="316"/>
@@ -2211,7 +2213,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="242"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Este es un proyecto QElectroTech</translation>
+        <translation>Este es un proyecto QElectroTech, es decir, un archivo con extensión .qet integrado por varios folios. También incorpora los elementos y modelos utilizados en estos folios.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="368"/>
@@ -2241,7 +2243,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="545"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Este es un modelo de rótulo de QElectroTech</translation>
+        <translation>Este es un modelo de rótulo de QElectroTech, que se puede aplicar a una hoja.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="730"/>
