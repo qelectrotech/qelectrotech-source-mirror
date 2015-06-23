@@ -22,10 +22,11 @@
 #include "elementtextitem.h"
 #include "diagramcommands.h"
 #include <QtDebug>
-#include <elementpropertiesdialog.h>
 #include "elementprovider.h"
 #include "diagramposition.h"
 #include "terminal.h"
+#include "PropertiesEditor/propertieseditordialog.h"
+#include "elementpropertieswidget.h"
 
 /**
 	Constructeur pour un element sans scene ni parent
@@ -48,14 +49,15 @@ Element::Element(QGraphicsItem *parent) :
 Element::~Element() {
 }
 
-void Element::editProperty() {
-	if (diagram())
-		if(!diagram()->isReadOnly()){
-			ElementPropertiesDialog epw (this, diagram()->views().first());
-			connect(&epw, SIGNAL(editElementRequired(ElementsLocation)), diagram(), SIGNAL(editElementRequired(ElementsLocation)));
-			connect(&epw, SIGNAL(findElementRequired(ElementsLocation)), diagram(), SIGNAL(findElementRequired(ElementsLocation)));
-			epw.exec();
-		}
+void Element::editProperty()
+{
+	if (diagram() && !diagram()->isReadOnly())
+	{
+		ElementPropertiesWidget *epw = new ElementPropertiesWidget(this);
+		PropertiesEditorDialog dialog(epw, QApplication::activeWindow());
+		connect(epw, &ElementPropertiesWidget::findEditClicked, &dialog, &QDialog::reject);
+		dialog.exec();
+	}
 }
 
 

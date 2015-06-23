@@ -20,6 +20,7 @@
 #include "diagram.h"
 #include "qet.h"
 #include "shapegraphicsitempropertieswidget.h"
+#include "PropertiesEditor/propertieseditordialog.h"
 
 
 /**
@@ -359,24 +360,8 @@ void QetShapeItem::editProperty()
 {
 	if (diagram() -> isReadOnly()) return;
 
-	//the dialog
-	QDialog property_dialog(diagram()->views().at(0));
-	property_dialog.setWindowTitle(tr("Éditer les propriétés d'une shape, Zone ", "window title"));
-	//the main layout
-	QVBoxLayout dialog_layout(&property_dialog);
-	ShapeGraphicsItemPropertiesWidget *sgipw = new ShapeGraphicsItemPropertiesWidget(this, &property_dialog);
-	dialog_layout.addWidget(sgipw);
-
-	//dialog button, box
-	QDialogButtonBox dbb(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	dialog_layout.addWidget(&dbb);
-	connect(&dbb, SIGNAL(accepted()), &property_dialog, SLOT(accept()));
-	connect(&dbb, SIGNAL(rejected()), &property_dialog, SLOT(reject()));
-
-	if (property_dialog.exec() == QDialog::Accepted)
-		sgipw->apply();
-	else
-		sgipw->reset();
+	PropertiesEditorDialog ped(new ShapeGraphicsItemPropertiesWidget(this), diagram()->views().at(0));
+	ped.exec();
 }
 
 /**

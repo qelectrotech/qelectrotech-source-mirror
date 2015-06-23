@@ -48,10 +48,7 @@ class ElementPropertiesWidget : public AbstractElementPropertiesEditorWidget
 		QWidget *generalWidget();
 
 	signals:
-			/// Signal emitted when users wish to locate an element from the diagram within elements collection
-		void findElementRequired(const ElementsLocation &);
-			/// Signal emitted when users wish to edit an element from the diagram
-		void editElementRequired(const ElementsLocation &);
+		void findEditClicked();
 
 	private:
 		Diagram *m_diagram;

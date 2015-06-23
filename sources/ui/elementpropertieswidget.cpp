@@ -124,8 +124,12 @@ bool ElementPropertiesWidget::setLiveEdit(bool live_edit)
  */
 void ElementPropertiesWidget::findInPanel()
 {
-	if (CustomElement *custom_element = qobject_cast<CustomElement *>(m_element))
-		emit findElementRequired(custom_element->location());
+	CustomElement *custom_element = qobject_cast<CustomElement *>(m_element);
+	if (custom_element && m_diagram)
+	{
+		m_diagram->findElementRequired(custom_element->location());
+		emit findEditClicked();
+	}
 }
 
 /**
@@ -134,10 +138,12 @@ void ElementPropertiesWidget::findInPanel()
  */
 void ElementPropertiesWidget::editElement()
 {
-	if (CustomElement *custom_element = qobject_cast<CustomElement *>(m_element))
+	CustomElement *custom_element = qobject_cast<CustomElement *>(m_element);
+	if (custom_element && m_diagram)
 	{
-		emit findElementRequired(custom_element->location());
-		emit editElementRequired(custom_element->location());
+		m_diagram->findElementRequired(custom_element->location());
+		m_diagram->editElementRequired(custom_element->location());
+		emit findEditClicked();
 	}
 }
 

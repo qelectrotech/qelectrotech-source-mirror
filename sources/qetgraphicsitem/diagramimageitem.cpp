@@ -17,7 +17,8 @@
 */
 #include "diagramimageitem.h"
 #include "diagram.h"
-#include "imagepropertiesdialog.h"
+#include "PropertiesEditor/propertieseditordialog.h"
+#include "imagepropertieswidget.h"
 
 /**
  * @brief DiagramImageItem::DiagramImageItem
@@ -85,7 +86,7 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 void DiagramImageItem::editProperty()
 {
 	if (diagram() -> isReadOnly()) return;
-	ImagePropertiesDialog dialog(this, QApplication::activeWindow());
+	PropertiesEditorDialog dialog(new ImagePropertiesWidget(this), QApplication::activeWindow());
 	dialog.exec();
 }
 

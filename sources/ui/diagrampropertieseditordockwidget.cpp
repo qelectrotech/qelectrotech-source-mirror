@@ -98,10 +98,7 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 
 			clear();
 			m_edited_qgi_type = type_;
-			ElementPropertiesWidget *epw = new ElementPropertiesWidget(static_cast<Element*>(item), this);
-			connect (epw, &ElementPropertiesWidget::editElementRequired , m_diagram, &Diagram::editElementRequired);
-			connect (epw, &ElementPropertiesWidget::findElementRequired, m_diagram, &Diagram::findElementRequired);
-			addEditor(epw);
+			addEditor(new ElementPropertiesWidget(static_cast<Element*>(item), this));
 			break; }
 
 		case DiagramImageItem::Type: {
