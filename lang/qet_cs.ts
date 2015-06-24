@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>AboutQET</name>
     <message>
@@ -1038,7 +1038,7 @@ vodiče s tímto potenciálem?</translation>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="50"/>
         <source>Informations</source>
-        <translation type="unfinished">Informace</translation>
+        <translation>Informace</translation>
     </message>
 </context>
 <context>
@@ -1157,7 +1157,7 @@ vodiče s tímto potenciálem?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="92"/>
         <source>Commutateur / bouton</source>
-        <translation type="unfinished"></translation>
+        <translation>Přepínač/Tlačítko</translation>
     </message>
 </context>
 <context>
@@ -1165,76 +1165,76 @@ vodiče s tímto potenciálem?</translation>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="232"/>
         <source>Général</source>
-        <translation type="unfinished">Obecné</translation>
+        <translation>Obecné</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="248"/>
         <source>Élément manquant</source>
-        <translation type="unfinished">Chybějící prvek</translation>
+        <translation>Chybějící prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="250"/>
         <source>Élément</source>
-        <translation type="unfinished">Prvek</translation>
+        <translation>Prvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="255"/>
         <source>Nom : %1
 </source>
-        <translation type="unfinished">Název: %1
+        <translation>Název: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="258"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished">List: %1
+        <translation>List: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="260"/>
         <source>Position : %1
 </source>
-        <translation type="unfinished">Poloha: %1
+        <translation>Poloha: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="261"/>
         <source>Dimensions : %1*%2
 </source>
-        <translation type="unfinished">Rozměry: %1*%2
+        <translation>Rozměry: %1*%2
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="262"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished">Svorky: %1
+        <translation>Svorky: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="263"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished">Textová pole: %1
+        <translation>Textová pole: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="266"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished">Umístění: %1
+        <translation>Umístění: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="286"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Najít v panelu</translation>
+        <translation>Najít v panelu</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="288"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Upravit prvek</translation>
+        <translation>Upravit prvek</translation>
     </message>
 </context>
 <context>
@@ -2277,7 +2277,7 @@ Změny budou konečné.</translation>
     <message>
         <location filename="../sources/ui/imagepropertiesdialog.ui" line="14"/>
         <source>Éditer les propriétés de image</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit vlastnosti obrázku</translation>
     </message>
 </context>
 <context>
@@ -2285,27 +2285,27 @@ Změny budou konečné.</translation>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Zamknout polohu</translation>
+        <translation>Zamknout polohu</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
         <source>Dimension de l&apos;image</source>
-        <translation type="unfinished">Rozměry obrázku</translation>
+        <translation>Rozměry obrázku</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="50"/>
         <source>%</source>
-        <translation type="unfinished">%</translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="139"/>
         <source>une image</source>
-        <translation type="unfinished">Obrázek</translation>
+        <translation>Obrázek</translation>
     </message>
 </context>
 <context>
@@ -2608,7 +2608,7 @@ Změny budou konečné.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="25"/>
         <source>Cet élément est déjà lié</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento prvek je již spojen</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="55"/>
@@ -2628,12 +2628,12 @@ Změny budou konečné.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="129"/>
         <source>Report de folio</source>
-        <translation type="unfinished">Zpráva o listu</translation>
+        <translation>Zpráva o listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="131"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished">Křížové odkazy (podřízené)</translation>
+        <translation>Křížový odkaz (podřízený)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="143"/>
@@ -2698,7 +2698,7 @@ Změny budou konečné.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="53"/>
         <source>Référence croisée (maitre)</source>
-        <translation type="unfinished">Křížové odkazy (hlavní)</translation>
+        <translation>Křížový odkaz (nadřízený)</translation>
     </message>
 </context>
 <context>
@@ -3138,7 +3138,7 @@ Chcete uložit změny?</translation>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
         <source>Propriété de la séléction</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti výběru</translation>
     </message>
 </context>
 <context>
@@ -3368,7 +3368,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetapp.cpp" line="373"/>
         <source>Fonction</source>
-        <translation type="unfinished"></translation>
+        <translation>Funkce</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="384"/>
@@ -6239,7 +6239,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="33"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upravit křížový odkaz</translation>
     </message>
 </context>
 <context>
@@ -6509,55 +6509,55 @@ Jiná pole se nepoužívají.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="38"/>
         <source>Gris</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Šedá</translation>
+        <translation>Šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Marron</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
         <source>Jaune</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="41"/>
         <source>Cyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrozelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="42"/>
         <source>Magenta</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="43"/>
         <source>Gris clair</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Světlešedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="44"/>
         <source>Orange</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
         <source>Violet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fialová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="46"/>
         <source>Aucun</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Žádná</translation>
+        <translation>Žádná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
@@ -6653,73 +6653,73 @@ Jiná pole se nepoužívají.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="72"/>
         <source>Gris</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Šedá</translation>
+        <translation>Šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Marron</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Jaune</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="75"/>
         <source>Cyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrozelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="76"/>
         <source>Magenta</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="77"/>
         <source>Gris clair</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Světlešedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="78"/>
         <source>Orange</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="79"/>
         <source>Violet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fialová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Lignes Horizontales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vodorovné čáry</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Lignes Verticales</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Svislé čáry</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Hachures gauche</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šrafování vlevo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Hachures droite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šrafování vpravo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
@@ -7747,7 +7747,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
         <source>Commutateur / bouton</source>
-        <translation type="unfinished"></translation>
+        <translation>Přepínač/Tlačítko</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="96"/>
@@ -7861,7 +7861,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
@@ -7871,7 +7871,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>Fonction</source>
-        <translation type="unfinished"></translation>
+        <translation>Funkce</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
