@@ -118,8 +118,6 @@ class QETDiagramEditor : public QETMainWindow {
 		void editSelectionProperties();
 		void slot_resetConductors();
 		void slot_autoConductor(bool ac);
-		void slot_whgyBackground(bool checked);
-		void slot_refreshBg();
 		void slot_addText();
 		void slot_addImage();
 		void slot_addLine();

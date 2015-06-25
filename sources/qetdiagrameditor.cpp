@@ -189,8 +189,8 @@ void QETDiagramEditor::setUpSelectionPropertiesEditor()
  * @brief QETDiagramEditor::setUpActions
  * Set up all Qaction
  */
-void QETDiagramEditor::setUpActions() {
-	// icones et labels
+void QETDiagramEditor::setUpActions()
+{
 	export_diagram    = new QAction(QET::Icons::DocumentExport,        tr("E&xporter"),                            this);
 	print             = new QAction(QET::Icons::DocumentPrint,         tr("Imprimer"),                             this);
 	quit_editor       = new QAction(QET::Icons::ApplicationExit,       tr("&Quitter"),                             this);
@@ -207,15 +207,16 @@ void QETDiagramEditor::setUpActions() {
 	m_auto_conductor = new QAction   (QET::Icons::Autoconnect, tr("Création automatique de conducteur(s)","Tool tip of auto conductor"), this);
 	m_auto_conductor -> setStatusTip (tr("Utiliser la création automatique de conducteur(s) quand cela est possible", "Status tip of auto conductor"));
 	m_auto_conductor -> setCheckable (true);
-	m_auto_conductor -> setDisabled  (true);
 	connect(m_auto_conductor, SIGNAL(triggered(bool)), this, SLOT(slot_autoConductor(bool)));
 
 	m_grey_background = new QAction   (QET::Icons::DiagramBg, tr("Couleur de fond blanc/gris","Tool tip of white/grey background button"), this);
 	m_grey_background -> setStatusTip (tr("Affiche la couleur de fond du folio en blanc ou en gris", "Status tip of white/grey background button"));
 	m_grey_background -> setCheckable (true);
-	m_grey_background -> setDisabled  (true);
-	connect(m_grey_background, SIGNAL(triggered(bool)), this, SLOT(slot_whgyBackground(bool)));
-	connect(m_grey_background, SIGNAL(triggered(bool)), this, SLOT(slot_refreshBg()));
+	connect (m_grey_background, &QAction::triggered, [this](bool checked) {
+		Diagram::background_color = checked ? Qt::darkGray : Qt::white;
+		if (this->currentDiagram() &&  this->currentDiagram()->diagram())
+			this->currentDiagram()->diagram()->update();
+	});
 
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du folio"),                 this);
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propriétés du projet"),                 this);
@@ -447,22 +448,6 @@ void QETDiagramEditor::setUpActions() {
 }
 
 /**
- * @brief QETDiagramEditor::slot_whgyBackground
- * @param checked
- */
-
-void QETDiagramEditor::slot_whgyBackground(bool checked) {
-	if (checked)
-	{
-		Diagram::background_color = Qt::darkGray;
-	}
-	else
-	{
-		Diagram::background_color = Qt::white;
-	}
-}
-
-/**
  * @brief QETDiagramEditor::setUpToolBar
  */
 void QETDiagramEditor::setUpToolBar() {
@@ -583,6 +568,8 @@ void QETDiagramEditor::setUpMenu() {
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(mode_selection);
 	menu_affichage -> addAction(mode_visualise);
+	menu_affichage -> addSeparator();
+	menu_affichage -> addAction(m_grey_background);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
 
@@ -1094,13 +1081,6 @@ void QETDiagramEditor::slot_paste() {
 }
 
 /**
-    Do action "refresh background" on the current diagram
-*/
-void QETDiagramEditor::slot_refreshBg() {
-    if(currentDiagram()) currentDiagram() -> refreshBg();
-}
-
-/**
 	Effectue l'action "zoom avant" sur le diagram en cours
 */
 void QETDiagramEditor::slot_zoomIn() {
@@ -1228,6 +1208,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_select_actions_group.    setEnabled(opened_diagram);
 	m_add_item_actions_group.  setEnabled(editable_project);
 	m_row_column_actions_group.setEnabled(editable_project);
+	m_grey_background->setEnabled(opened_diagram);
 
 
 	slot_updateUndoStack();
@@ -1336,17 +1317,14 @@ void QETDiagramEditor::slot_updateComplexActions() {
  * @brief QETDiagramEditor::slot_updateModeActions
  * Manage action who need an opened diagram or project to be updated
  */
-void QETDiagramEditor::slot_updateModeActions() {
+void QETDiagramEditor::slot_updateModeActions()
+{
 	DiagramView *dv = currentDiagram();
 	
 	if (!dv)
-	{
 		grp_visu_sel -> setEnabled(false);
-		m_grey_background -> setDisabled(true);
-	}
 	else
 	{
-		m_grey_background -> setEnabled(true);
 		switch((int)(dv -> dragMode()))
 		{
 			case QGraphicsView::NoDrag:
@@ -1362,7 +1340,6 @@ void QETDiagramEditor::slot_updateModeActions() {
 				break;
 		}
 	}
-
 
 	if (ProjectView *pv = currentProject())
 	{

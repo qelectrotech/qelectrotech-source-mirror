@@ -350,16 +350,6 @@ void DiagramView::setSelectionMode() {
 }
 
 /**
- * @brief DiagramView::refreshBg
- * Workaround to refresh the background color
- */
-void DiagramView::refreshBg() {
-	scale(2, 2);
-	scale(0.5, 0.5);
-	adjustGridToZoom();
-}
-
-/**
  * @brief DiagramView::zoomIn
  * Zoom in the current folio
  */
