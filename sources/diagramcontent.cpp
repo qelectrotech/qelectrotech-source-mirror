@@ -81,6 +81,25 @@ void DiagramContent::clear() {
 }
 
 /**
+ * @brief DiagramContent::removeNonMovableItems
+ * Remove all non movable item.
+ * @return : return the numbers of removed item
+ */
+int DiagramContent::removeNonMovableItems()
+{
+	int count_ = 0;
+
+	foreach(Element *elmt, elements)
+		if (!elmt->isMovable()) elements.remove(elmt); ++count_;
+	foreach(DiagramImageItem *img, images)
+		if (!img->isMovable()) images.remove(img); ++count_;
+	foreach (QetShapeItem *shape, shapes)
+		if (!shape->isMovable()) shapes.remove(shape); ++count_;
+
+	return count_;
+}
+
+/**
 	@param filter Types desires
 	@return la liste des items formant le contenu du schema
 */

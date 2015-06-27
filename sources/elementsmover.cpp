@@ -76,6 +76,7 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item) {
 	current_movement_ = QPointF(0.0, 0.0);
 	
 	moved_content_ = diagram -> selectedContent();
+	moved_content_.removeNonMovableItems();
 
 	if (!moved_content_.count()) return(-1);
 	

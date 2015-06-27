@@ -78,6 +78,7 @@ class DiagramContent {
 	QString sentence(int = All) const;
 	int count(int = All) const;
 	void clear();
+	int removeNonMovableItems();
 };
 QDebug &operator<<(QDebug, DiagramContent &);
 #endif
