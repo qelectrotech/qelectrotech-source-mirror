@@ -256,35 +256,40 @@ void ElementScene::setGrid(int x_g, int y_g) {
 }
 
 /**
-	Exporte l'element en XML
-	@param all_parts Booleen (a vrai par defaut) indiquant si le XML genere doit
-	representer tout l'element ou seulement les elements selectionnes
-	@return un document XML decrivant l'element
-*/
-const QDomDocument ElementScene::toXml(bool all_parts) {
+ * @brief ElementScene::toXml
+ * Export this element as a xml file
+ * @param all_parts (true by default) if true, export the entire element in xml,
+ * if false, only export the selected parts.
+ * @return an xml document that describe the element.
+ */
+const QDomDocument ElementScene::toXml(bool all_parts)
+{
 	QRectF size= elementSceneGeometricRect();
-	//if the element doesn't contains the origin point of the scene
-	//we move the element to the origin for solve this default before saving
-	if (!size.contains(0,0) && all_parts) {
+
+		//if the element doesn't contains the origin point of the scene
+		//we move the element to the origin for solve this default before saving
+	if (!size.contains(0,0) && all_parts)
+	{
 		centerElementToOrigine();
-		//recalcul the size after movement
+			//recalcul the size after movement
 		size= elementSceneGeometricRect();
 	}
 
-	//define the size of the element by the upper multiple of 10
+		//define the size of the element by the upper multiple of 10
 	int upwidth = ((qRound(size.width())/10)*10)+10;
 	if ((qRound(size.width())%10) > 6) upwidth+=10;
 
 	int upheight = ((qRound(size.height())/10)*10)+10;
 	if ((qRound(size.height())%10) > 6) upheight+=10;
 
-	//the margin between the real size of the element and the rectangle that delimits
+		//the margin between the real size of the element and the rectangle that delimits
 	int xmargin = qRound(upwidth - size.width());
 	int ymargin = qRound(upheight - size.height());
 
-	// document XML
+		// document XML
 	QDomDocument xml_document;
-	// racine du document XML
+
+		//Root of xml document
 	QDomElement root = xml_document.createElement("definition");
 	root.setAttribute("type",        "element");
 	root.setAttribute("width",       QString("%1").arg(upwidth));
@@ -294,27 +299,36 @@ const QDomDocument ElementScene::toXml(bool all_parts) {
 	root.setAttribute("orientation", "dyyy"); //we keep the orientation for compatibility with previous version of qet
 	root.setAttribute("version", QET::version);
 	root.setAttribute("link_type", m_elmt_type);
+
+		//Uuid used to compare two elements
+	QDomElement uuid = xml_document.createElement("uuid");
+	uuid.setAttribute("uuid", QUuid::createUuid().toString());
+	root.appendChild(uuid);
 	
-	// noms de l'element
+		//names of element
 	root.appendChild(_names.toXml(xml_document));
 
-	if (m_elmt_type == "slave" || m_elmt_type == "master") {
+	if (m_elmt_type == "slave" || m_elmt_type == "master")
+	{
 		QDomElement kindInfo = xml_document.createElement("kindInformations");
 		m_elmt_kindInfo.toXml(kindInfo, "kindInformation");
 		root.appendChild(kindInfo);
 	}
 	
-	// informations complementaires de l'element
+		//complementary information about the element
 	QDomElement informations_element = xml_document.createElement("informations");
 	root.appendChild(informations_element);
 	informations_element.appendChild(xml_document.createTextNode(informations()));
 	
 	QDomElement description = xml_document.createElement("description");
-	// description de l'element
-	foreach(QGraphicsItem *qgi, zItems()) {
-		// si l'export ne concerne que la selection, on ignore les parties non selectionnees
+
+		//the graphic description of the element
+	foreach(QGraphicsItem *qgi, zItems())
+	{
+			//If the export concerns only the selection, the not selected part is ignored
 		if (!all_parts && !qgi -> isSelected()) continue;
-		if (CustomElementPart *ce = dynamic_cast<CustomElementPart *>(qgi)) {
+		if (CustomElementPart *ce = dynamic_cast<CustomElementPart *>(qgi))
+		{
 			if (ce -> isUseless()) continue;
 			description.appendChild(ce -> toXml(xml_document));
 		}

@@ -218,16 +218,25 @@ ElementDefinition *ElementDefinition::toElement() {
 }
 
 /**
-	@return true si cette definition d'element est egale (en termes de contenu)
-	a la definition d'element other, false sinon.
-*/
-bool ElementDefinition::equals(ElementDefinition &other) {
-	/*
-		Pour le moment, cette methode compare simplement l'export au format
-		texte des documents XML. Cela peut entrainer de faux positifs.
-		Exemple : un espace de plus ou de moins dans le XML n'en change pas
-		forcement la semantique. Mais cela changera l'export au format texte.
-	*/
+ * @brief ElementDefinition::equals
+ * @param other : ElementDefinition to compare with this
+ * @return true if this element definition and other element definition is the same, else false
+ */
+bool ElementDefinition::equals(ElementDefinition &other)
+{
+		//Compare the uuid of the elements
+	QList <QDomElement> this_uuid_dom = QET::findInDomElement(xml(), "uuid");
+	QList <QDomElement> other_uuid_dom = QET::findInDomElement(other.xml(), "uuid");
+	if ((this_uuid_dom.size() == 1) && (other_uuid_dom.size() == 1))
+		return this_uuid_dom.first().attribute("uuid") == other_uuid_dom.first().attribute("uuid") ? true : false;
+
+		//********
+		//The code below is used to keep compatibility with previous version of qet
+		//The uuid store in .elmt file, to compare two elements was created at version svn 4032
+		///@TODO remove this code at version 0.6 or 0.7 (all users should already used the version with uuid)
+		//********
+		//Compare the xml definition transformed in QString. This method can return a false positive (notably with Qt5,
+		//because the attributes of the xml isn't at the same order,with two instance of qet, for the same element)
 	QDomDocument this_xml_document;
 	this_xml_document.appendChild(this_xml_document.importNode(xml(), true));
 	QString this_text = this_xml_document.toString(0);
