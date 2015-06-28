@@ -423,8 +423,8 @@ void BorderTitleBlock::draw(QPainter *painter)
 	painter -> setFont(QETApp::diagramTextsFont());
 	
 		//Draw the empty case at the top left of diagram when there is header
-	if (display_border_ && (display_columns_ || display_rows_)) {
-		painter -> setBrush(Qt::white);
+	if (display_border_ && (display_columns_ || display_rows_))
+	{
 		QRectF first_rectangle(
 			diagram_rect_.topLeft().x(),
 			diagram_rect_.topLeft().y(),

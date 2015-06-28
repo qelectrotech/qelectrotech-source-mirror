@@ -314,7 +314,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 		{
 			m_help_line_a = new QGraphicsLineItem(this);
 			QPen pen;
-			pen.setColor(Qt::darkGray);
+			pen.setColor(Diagram::background_color == Qt::darkGray ? Qt::lightGray : Qt::darkGray);
 			m_help_line_a -> setPen(pen);
 		}
 
