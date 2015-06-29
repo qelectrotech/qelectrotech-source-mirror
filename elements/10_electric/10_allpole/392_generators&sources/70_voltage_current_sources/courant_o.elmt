@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="16" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{48B8BA88-10CB-40AD-9175-1AEFA4BF9D95}"/><names>
         <name lang="ar">مصدر تيّار (قديم)</name>
         <name lang="de">Stromquelle (alt)</name>
         <name lang="ru">Источник тока (старый)</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{67B8407C-BD86-4412-AF56-9F857B42F320}"/><names>
         <name lang="ar">صمّام ضدّ الرجع بزنبرك</name>
         <name lang="en">Check valve to spring</name>
         <name lang="fr">Clapet anti-retour à Ressort </name>

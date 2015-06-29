@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C199D3B8-7AD3-4750-84B4-8F9E8D8CC55D}"/><names>
         <name lang="el"> Διεπαφή KNX / RS 232</name>
         <name lang="en">Serial</name>
         <name lang="it">Interf. seriale</name>

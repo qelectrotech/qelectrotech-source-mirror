@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{35EC168F-4295-463B-812A-496613F70599}"/><names>
         <name lang="ar">نقطة إنتظار لجهاز إضاءة</name>
         <name lang="de">Leuchtenauslaß
 </name>

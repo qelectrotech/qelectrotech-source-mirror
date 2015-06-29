@@ -1,5 +1,5 @@
 <definition width="230" version="0.3" hotspot_x="125" hotspot_y="75" height="160" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6763BCFB-2425-4883-8221-BFEA55510C09}"/><names>
         <name lang="ar">خزان ماء أفقي</name>
         <name lang="en">DHW horizontal</name>
         <name lang="fr">Ballon ECS horizontal</name>

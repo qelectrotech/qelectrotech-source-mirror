@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8D31DC3F-D1D2-427A-AF96-45A34FDB4597}"/><names>
         <name lang="ar">مسارات -P-A  مُغلقة</name>
         <name lang="en">4 ports -P-A close</name>
         <name lang="fr">4 voies - P-A fermés</name>

@@ -1,5 +1,5 @@
 <definition width="120" version="0.4" hotspot_x="58" hotspot_y="60" height="120" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B75C529F-EAA4-4528-988E-C12DB48ECA13}"/><names>
         <name lang="en">NE555</name>
         <name lang="cs">NE555</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BFDA293C-E6A3-4862-A624-8C719E94F325}"/><names>
         <name lang="en">Pump hydraulic motor 1</name>
         <name lang="fr">Pompe-moteur hydraulique 1</name>
         <name lang="pl">Pompa-silnik hydrauliczny o zmiennej objętości roboczej, o jednym kierunku obrotów</name>

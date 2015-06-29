@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="50" height="100" type="element" orientation="ndny">
-    <names>
+<uuid uuid="{A8793BAA-5ACD-4096-81AE-6BB86A6D0DE7}"/><names>
         <name lang="ar">صهريج كهربائي</name>
         <name lang="en">Tank electrical ECS</name>
         <name lang="fr">Ballon electrique ECS "droite"</name>

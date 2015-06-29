@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{1CD31FF0-4FA2-402F-A128-4155E92B8FC0}"/><names>
         <name lang="ar">تأريض</name>
         <name lang="de">Erde</name>
         <name lang="ru">Земля</name>

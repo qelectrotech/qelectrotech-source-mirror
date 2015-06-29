@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{AC3D906B-CE39-4875-8D23-554222A7426B}"/><names>
         <name lang="el">Χρονοδιακόπτης</name>
         <name lang="en">Clock switch</name>
         <name lang="it">Contatto a tempo</name>

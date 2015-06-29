@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DD57B677-2F58-420A-9850-A3277A22E344}"/><names>
         <name lang="ar">هاتف داخلي</name>
         <name lang="el">Ενδοεπικοινωνία</name>
         <name lang="en">Audio intercommunication equipment</name>

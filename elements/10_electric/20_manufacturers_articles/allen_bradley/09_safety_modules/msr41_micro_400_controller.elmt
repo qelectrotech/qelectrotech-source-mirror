@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="6" hotspot_y="55" height="210" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{12722E1F-C272-4397-9CF3-B260B5D794AD}"/><names>
         <name lang="en">msr41 micro 400 controller</name>
         <name lang="it">MSR41 Micro 400 Controller</name>
         <name lang="fr">msr41 micro 400 controller</name>

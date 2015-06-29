@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="37" hotspot_y="45" height="80" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{95DEF352-3813-4DEB-9781-15B6E0D29031}"/><names>
         <name lang="en">Adjustable autotransformer</name>
         <name lang="de">Stell-Spartransformator</name>
         <name lang="it">Autotransformatore monofase regolabile (forma 1)</name>

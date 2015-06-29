@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="33" hotspot_y="35" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3725F242-5FB4-4915-ADB7-3E72F40FCF19}"/><names>
         <name lang="ar">مفتاح دوّار 1-0-2</name>
         <name lang="el">Διακόπτης 3 θέσεων, 1-0-2 με κλειδί</name>
         <name lang="en">Switch 3 positions including neutral</name>

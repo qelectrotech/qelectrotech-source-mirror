@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="55" hotspot_y="155" height="220" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{269D5645-AAF3-40CB-82E4-A46E94B0E5F0}"/><names>
         <name lang="ar">طرف توصيل</name>
         <name lang="de">Klemmleiste</name>
         <name lang="en">Terminal</name>

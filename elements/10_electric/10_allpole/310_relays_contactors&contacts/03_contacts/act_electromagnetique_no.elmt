@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="23" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{99A71355-179F-4655-A609-8DFAC3688E46}"/><names>
         <name lang="el">Ανοικτή επαφή ηλεκτρομαγνητικού ρελέ</name>
         <name lang="en">Electromagnetic relay NO</name>
         <name lang="de">Schliesser elektromagnetisch betätigt</name>

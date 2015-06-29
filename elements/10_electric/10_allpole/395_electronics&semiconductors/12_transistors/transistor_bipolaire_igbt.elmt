@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{D54999F6-6266-43CD-9E5E-8C2ED592429D}"/><names>
         <name lang="ar">ترنزيستور ثنائي القطبيّة ببوابة معزولة IBGT</name>
         <name lang="de">Bipolar Transistor IGBT</name>
         <name lang="en">Bipolar transistor IGBT</name>

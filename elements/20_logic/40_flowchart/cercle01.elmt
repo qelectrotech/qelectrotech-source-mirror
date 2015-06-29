@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B8C06C1F-6EE9-4C62-8087-3DDE24F46CA0}"/><names>
         <name lang="el">Κύκλος</name>
         <name lang="en">circle on</name>
         <name lang="it">riferimento interno</name>

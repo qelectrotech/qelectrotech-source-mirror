@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{E69AC88A-9F58-49B3-95A9-E8E3A29AFF9E}"/><names>
         <name lang="ar">مصباح</name>
         <name lang="de">Meldeleuchte</name>
         <name lang="ru">Лампа</name>

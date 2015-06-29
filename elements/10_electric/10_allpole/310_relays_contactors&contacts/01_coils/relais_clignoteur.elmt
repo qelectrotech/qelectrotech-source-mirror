@@ -1,5 +1,5 @@
 <definition type="element" link_type="master" hotspot_x="28" hotspot_y="24" orientation="dyyy" version="0.5" width="50" height="50">
-    <names>
+<uuid uuid="{0EDACC7A-0D07-4F9D-926D-FD32A61D9B97}"/><names>
         <name lang="en">Flasher relay</name>
         <name lang="fr">Relais clignoteur</name>
         <name lang="cs">Relé blikač</name>

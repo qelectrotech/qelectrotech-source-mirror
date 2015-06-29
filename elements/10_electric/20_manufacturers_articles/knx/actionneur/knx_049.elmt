@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{39548FBA-29D4-4E71-9C6D-17DE4F53B49C}"/><names>
         <name lang="en">Shutter actuator, single</name>
         <name lang="it">Attuatore tapparella, 1 can</name>
         <name lang="fr">Actionneur d'obturation</name>

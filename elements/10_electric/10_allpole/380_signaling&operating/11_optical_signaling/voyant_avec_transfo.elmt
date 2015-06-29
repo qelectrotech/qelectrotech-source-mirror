@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{36B15FAA-1D06-40A8-8A2D-DB2E8D15C14F}"/><names>
         <name lang="ar">مصباح بمُحوّل</name>
         <name lang="el">Λυχνία με μετασχηματιστή</name>
         <name lang="en">Light with transformer</name>

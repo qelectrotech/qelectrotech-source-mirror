@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="10" hotspot_y="50" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D50D671E-E1BF-409D-8F7E-41EBED209E29}"/><names>
         <name lang="en">Piston rod cylinders</name>
         <name lang="fr">Vérins à simple effet</name>
         <name lang="pl">Siłownik jednostronnego działania</name>

@@ -1,5 +1,5 @@
 <definition width="810" version="0.3" hotspot_x="5" hotspot_y="6" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C785ACBA-B2FE-4C8E-84C2-B4D41645EC11}"/><names>
         <name lang="ar">لوحة مداخل CD20 zoom </name>
         <name lang="de">CD20 Eingangskarte (zoom)</name>
         <name lang="pt">Carta de entradas zoom CD20</name>

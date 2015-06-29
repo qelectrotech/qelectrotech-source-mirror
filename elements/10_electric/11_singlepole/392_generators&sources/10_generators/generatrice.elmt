@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{276662F1-CE89-4C9A-91B3-D6276A6EF30E}"/><names>
         <name lang="ar">مُولد</name>
         <name lang="de">Generator</name>
         <name lang="ru">Генератор</name>

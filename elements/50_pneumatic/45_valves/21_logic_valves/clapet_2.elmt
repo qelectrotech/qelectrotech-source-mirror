@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="40" height="70" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{E992193B-9004-4056-8DF1-EF0B802700E5}"/><names>
         <name lang="en">Valve-controlled spring return</name>
         <name lang="fr">Clapet anti-retour a ressort controlé</name>
         <name lang="pl">Zawór zwrotny sterowany, otwierany ciśnieniem, obciążony sprężyną</name>

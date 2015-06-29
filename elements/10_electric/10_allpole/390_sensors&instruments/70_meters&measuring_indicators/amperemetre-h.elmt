@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{57BC97E6-6F82-4D94-9FE4-405C8396F81F}"/><names>
         <name lang="ar">أمبيرمتر أفقي</name>
         <name lang="de">Amperemeter waagerecht</name>
         <name lang="ru">Амперметр (горизонтальный)</name>

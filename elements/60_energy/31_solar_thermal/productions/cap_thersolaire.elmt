@@ -1,5 +1,5 @@
 <definition width="170" version="0.3" hotspot_x="60" hotspot_y="40" height="100" type="element" orientation="ndny">
-    <names>
+<uuid uuid="{1C7BDE0C-413F-4760-9245-498FA685CA90}"/><names>
         <name lang="ar">ألواح تسخين مياه بالطاقة الشمسية</name>
         <name lang="el">Ηλιακοί συλλέκτες</name>
         <name lang="en">Solar water</name>

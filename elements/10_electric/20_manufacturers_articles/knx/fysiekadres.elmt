@@ -1,5 +1,5 @@
 <definition width="120" version="0.4" hotspot_x="6" hotspot_y="25" height="30" link_type="master" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C1635252-4762-4E10-9CEC-3A994621A668}"/><names>
         <name lang="nl">Fysiek adres KNX</name>
         <name lang="be">Fysiek adres KNX</name>
         <name lang="en">Physical address KNX</name>

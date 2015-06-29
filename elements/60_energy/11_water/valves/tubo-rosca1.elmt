@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="35" hotspot_y="18" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6B4315A8-43AF-44EC-9C0C-62035A987068}"/><names>
         <name lang="es">Tubo rosca 1"</name>
         <name lang="it">Tubo filettato 1</name>
         <name lang="pl">Rurka gwintowana 1"</name>

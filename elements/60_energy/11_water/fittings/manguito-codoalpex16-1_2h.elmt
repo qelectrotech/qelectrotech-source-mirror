@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="30" hotspot_y="32" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{AF8022CD-F28D-4A84-8E97-D4E88B8C4A19}"/><names>
         <name lang="en">Elbow fitting Alpex 16-1/2H</name>
         <name lang="it">Manicotto-gomito Alpex 16-1/2" H </name>
         <name lang="fr">Raccord Coude Alpex 16-1/2H</name>

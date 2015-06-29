@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="0" hotspot_y="0" height="170" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{E3E2F0BE-B8FE-4595-A2B9-F9DE71B274C7}"/><names>
         <name lang="ar">مُحول - ARO1</name>
         <name lang="en">ARO1 converter</name>
         <name lang="fr">Convertisseur_ARO1</name>

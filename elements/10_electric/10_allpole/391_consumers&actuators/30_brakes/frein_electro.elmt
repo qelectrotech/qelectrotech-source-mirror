@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="14" hotspot_y="28" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E879A87E-D49D-4E48-A63C-290232AAB058}"/><names>
         <name lang="ar">مكبح كهروميكانيكي</name>
         <name lang="el">Ηλεκτρομηχανικό φρένο</name>
         <name lang="de">Bremse elektromechanisch</name>

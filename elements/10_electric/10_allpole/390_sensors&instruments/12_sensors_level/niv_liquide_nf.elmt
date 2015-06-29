@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="24" hotspot_y="31" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{AF4BE324-CEDE-45E5-B8EF-27E2F8E15783}"/><names>
         <name lang="en">NF Actuated by the level of a liquid</name>
         <name lang="de">Niveauschalter Öffner</name>
         <name lang="it">Azionato dal livello di un liquido NC</name>

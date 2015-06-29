@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{95F6E82D-68AD-4540-A131-22CC7BAA8200}"/><names>
         <name lang="en">Selector circuit</name>
         <name lang="fr">Selecteur de circuit</name>
         <name lang="pl">Przełącznik obiegu (zawór logiczny LUB)</name>

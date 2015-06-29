@@ -1,5 +1,5 @@
 <definition width="140" version="0.3" hotspot_x="15" hotspot_y="35" height="100" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{EDE5800E-3569-4965-A7DD-7683F936039E}"/><names>
         <name lang="el">ΑΝ 02</name>
         <name lang="en">IF 02</name>
         <name lang="it">Decisione (IF)</name>

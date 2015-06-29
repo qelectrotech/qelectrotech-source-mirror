@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="28" hotspot_y="74" height="110" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3EF1378B-DE8E-42EB-9C5E-6C641F61E160}"/><names>
         <name lang="el">Κάθετη αντλία νερού</name>
         <name lang="en">Vertical Water Pump</name>
         <name lang="it">Pompa verticale</name>

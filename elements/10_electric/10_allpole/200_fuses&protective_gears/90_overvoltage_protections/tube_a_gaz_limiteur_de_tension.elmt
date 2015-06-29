@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{A6D3FC7C-1EDC-4213-BF9F-322FE68F7CC9}"/><names>
         <name lang="de">Überspannungsableiter in einer Gasentladungsröhre, symmetrisch</name>
         <name lang="en">Symmetric protective gas discharge tube</name>
         <name lang="it">Limitatore di tensione a gas,simmetrico</name>

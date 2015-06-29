@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="34" height="60" link_type="master" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{913D46E0-6E35-4878-9B5D-5CFBF47C819F}"/><names>
         <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
         <name lang="de">Leitungsschutzschalter 1P+N</name>
         <name lang="en">Circuit-breaker</name>

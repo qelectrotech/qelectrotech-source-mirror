@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{7A20696E-4EC5-4337-B632-326E8B045C00}"/><names>
         <name lang="ar">مفتاح ساعة</name>
         <name lang="de">Zeitschalter Schliesser</name>
         <name lang="el">Επαφή χρονοδιακόπτη</name>

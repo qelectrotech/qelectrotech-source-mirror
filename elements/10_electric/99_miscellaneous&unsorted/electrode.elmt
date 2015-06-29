@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2C47AE3F-2868-4729-8143-E3FF625C8CBC}"/><names>
         <name lang="ar">الكترود</name>
         <name lang="pt">Eléctrodo</name>
         <name lang="el">Ηλεκτρόδιο</name>

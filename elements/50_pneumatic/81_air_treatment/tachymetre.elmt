@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A32B293A-5255-43FF-91B2-A975AA91959D}"/><names>
         <name lang="en">Tachometer</name>
         <name lang="fr">Tachymètre</name>
         <name lang="pl">Obrotomierz do pomiaru częstości obrotów</name>

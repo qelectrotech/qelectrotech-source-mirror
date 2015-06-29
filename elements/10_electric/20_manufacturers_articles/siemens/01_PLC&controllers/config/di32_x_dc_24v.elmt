@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="260" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{58D6F802-7987-4A73-8419-5AF89B3802E9}"/><names>
         <name lang="ar">SM321   DI 32 x DC24V</name>
         <name lang="pt">SM321   DI 32 x DC24V</name>
         <name lang="el">SM321   DI 32 x DC24V</name>

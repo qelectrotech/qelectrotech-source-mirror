@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="0" hotspot_y="30" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D2638F95-6FBA-4949-ACCE-17299D9795DD}"/><names>
         <name lang="en">Terminal Installation 30.1</name>
         <name lang="de">Montageschiene</name>
         <name lang="it">Elenco 30.1</name>

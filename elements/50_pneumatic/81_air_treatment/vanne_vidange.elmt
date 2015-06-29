@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F429D473-BEB1-42A2-B7E3-8F838E702495}"/><names>
         <name lang="en">Separator drain valve</name>
         <name lang="fr">Vanne de vidange</name>
         <name lang="pl">Zawór spustowy oddzielacza, ze spustem siłą mięśni</name>

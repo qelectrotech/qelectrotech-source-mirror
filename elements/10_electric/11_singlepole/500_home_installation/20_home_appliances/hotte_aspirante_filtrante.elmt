@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{C6B6A85A-CFC0-409F-AE24-1A70B347BB6D}"/><names>
         <name lang="ar">شفّاط  بمرشّح</name>
         <name lang="el">Απορροφητήρας</name>
         <name lang="en">Cooker Hood filter</name>

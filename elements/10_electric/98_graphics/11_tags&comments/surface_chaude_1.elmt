@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{03A76BB9-44A3-4362-98E2-2066EE798103}"/><names>
         <name lang="el">Θερμή επιφάνεια</name>
         <name lang="en">hot surface</name>
         <name lang="de">Hinweis heiße Oberfläche klein</name>

@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="60" hotspot_y="100" height="200" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0C80480B-125F-46DE-9234-D693FCBA7242}"/><names>
         <name lang="ar">بالون جامع ECS</name>
         <name lang="en">Combined ball ECS</name>
         <name lang="fr">Ballon Combinée ECS</name>

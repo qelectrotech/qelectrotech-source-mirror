@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{00E6ACDF-60C1-4920-9941-7F55F1AE8BF7}"/><names>
         <name lang="ar">مسارين متقاطعين</name>
         <name lang="en">4 ports cross</name>
         <name lang="fr">4 voies croisées</name>

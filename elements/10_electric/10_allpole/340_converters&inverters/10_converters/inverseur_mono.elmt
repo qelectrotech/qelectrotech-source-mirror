@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{438E0E32-B14B-4134-A9D8-95A9EB7E947D}"/><names>
         <name lang="ar">عاكس اتجاه الوجه أحادي الخط</name>
         <name lang="de">Phasenumkehrer</name>
         <name lang="pt">Inversor de sentido de fase monofilar</name>

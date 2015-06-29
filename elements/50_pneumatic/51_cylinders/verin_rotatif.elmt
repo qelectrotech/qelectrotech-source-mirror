@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B195D64A-D568-4BBD-BF5A-A7AF42D4844A}"/><names>
         <name lang="en">Rotary actuators</name>
         <name lang="fr">Vérins rotatif</name>
         <name lang="pl">Silnik pneumatyczny o ruchu wachadłowym</name>

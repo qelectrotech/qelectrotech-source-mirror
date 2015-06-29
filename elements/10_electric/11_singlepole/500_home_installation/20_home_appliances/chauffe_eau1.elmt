@@ -1,5 +1,5 @@
 <definition hotspot_x="15" hotspot_y="18" orientation="dyyy" width="30" link_type="simple" version="0.5" height="50" type="element">
-    <names>
+<uuid uuid="{3F907826-905E-4431-8781-5F1C06D7FD73}"/><names>
         <name lang="en">Water heater</name>
         <name lang="cs">Ohřívač vody</name>
         <name lang="fr">Chauffe-eau</name>

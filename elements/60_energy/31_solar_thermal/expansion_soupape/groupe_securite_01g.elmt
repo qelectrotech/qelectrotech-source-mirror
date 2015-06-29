@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="30" hotspot_y="20" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F987A046-A123-4AD5-99B3-3385865716C8}"/><names>
         <name lang="ar">مجموعة حماية (يسار)</name>
         <name lang="en">Security Group (left)</name>
         <name lang="fr">Groupe de Sécurité (gauche)</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="5" hotspot_y="5" height="210" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D052C775-997F-4924-9181-4311872EB35A}"/><names>
         <name lang="fr">AST PL 16 10 OR</name>
     </names>
     <informations></informations>

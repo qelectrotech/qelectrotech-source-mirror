@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{429FE656-44BB-43FF-B17F-FEED4A9CE328}"/><names>
         <name lang="ar">بطارية بخليتين</name>
         <name lang="en">Battery 2 elements</name>
         <name lang="de">Batterie 2 Elemente</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="3" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5E2325AA-C5DD-487D-BCA0-A01F9562871A}"/><names>
         <name lang="ar">تسمية مساحة المقطع </name>
         <name lang="de">Verdrahtungsquerschnitt</name>
         <name lang="el">Διατομή αγωγού</name>

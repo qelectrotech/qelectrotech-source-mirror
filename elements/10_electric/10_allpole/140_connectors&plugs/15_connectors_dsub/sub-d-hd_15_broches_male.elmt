@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="40" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DED7C2E0-ACD5-4D48-A319-9F18C1B4133D}"/><names>
         <name lang="ar">رابط توصيلSUB-D HD 15 (ذكري)</name>
         <name lang="el">D-SUB HD 15 ακροδέκτες (αρσενικό)</name>
         <name lang="en">D-SUB HD 15 pin (male)</name>

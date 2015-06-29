@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{FEAC0E81-D660-446A-80C3-6000E32667A7}"/><names>
         <name lang="ar">مُقاومة مُتغيّرة</name>
         <name lang="de">Widerstand einstellbar</name>
         <name lang="el">Μεταβλητή αντίσταση</name>

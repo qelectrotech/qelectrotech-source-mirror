@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="34" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6266AEFF-E6CC-467E-8537-87D3C43492AB}"/><names>
         <name lang="en">ACS-gas heater</name>
         <name lang="fr">Chauffe eau gaz</name>
         <name lang="es">Calentador ACS-gas</name>

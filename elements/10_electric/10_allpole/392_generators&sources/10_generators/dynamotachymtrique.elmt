@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="14" hotspot_y="35" height="70" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{796D89A7-C2A1-4156-9FD5-C0C33CCF2C59}"/><names>
         <name lang="en">Tachodynamo</name>
         <name lang="it">Dinamo tachimetrica</name>
         <name lang="fr">Dynamo-tachymétrique</name>

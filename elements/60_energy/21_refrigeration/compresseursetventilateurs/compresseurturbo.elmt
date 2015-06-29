@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C595380C-A9ED-4FD1-92E1-B940B4EE2029}"/><names>
         <name lang="ar">ضاغط تيربو</name>
         <name lang="el">Συμπιεστής τούρμπο</name>
         <name lang="en">Turbo compressor</name>

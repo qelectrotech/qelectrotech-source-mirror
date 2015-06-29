@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dynn">
-    <names>
+<uuid uuid="{B04C89EA-3D2A-4D33-A1C7-D5480F992611}"/><names>
         <name lang="el">Κιβώτιο μίξης</name>
         <name lang="en">Mixing box</name>
         <name lang="it">Box di miscelazione</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="40" height="80" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{6145476E-82D3-4429-89DA-DE88CE6B2B1A}"/><names>
         <name lang="ar">قاعدة DIN ب 8 أطراف توصيل </name>
         <name lang="de">Rundstecker 8-polig</name>
         <name lang="en">8-pin DIN socket</name>

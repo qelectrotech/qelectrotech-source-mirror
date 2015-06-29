@@ -1,5 +1,5 @@
 <definition width="150" version="0.4" hotspot_x="73" hotspot_y="37" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{43A9C627-492C-4B95-B4D2-E455D29C5B91}"/><names>
         <name lang="el">Μπανιέρα</name>
         <name lang="en">Bathtub</name>
         <name lang="it">Vasca da bagno</name>

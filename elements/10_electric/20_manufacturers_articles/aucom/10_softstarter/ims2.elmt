@@ -1,5 +1,5 @@
 <definition width="400" version="0.3" hotspot_x="15" hotspot_y="25" height="100" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D625B5AB-E48B-49C1-BEB9-D881FEA0EFA0}"/><names>
         <name lang="ar">IMS2</name>
         <name lang="el">IMS2</name>
 	<name lang="en">IMS2</name>

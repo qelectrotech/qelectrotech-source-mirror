@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{5CA82021-7F70-43B0-BE69-0E447B228B3A}"/><names>
         <name lang="ar">خليّة كهرو ضوئية - لاقط</name>
         <name lang="en">Photo-electric sensor receptor</name>
         <name lang="de">Photozelle Empfänger 2-Leiter</name>

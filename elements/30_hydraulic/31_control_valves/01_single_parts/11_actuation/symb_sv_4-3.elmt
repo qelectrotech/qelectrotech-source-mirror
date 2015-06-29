@@ -1,5 +1,5 @@
 <definition width="80" version="0.22" hotspot_x="40" hotspot_y="40" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{43686A52-4C31-439B-BC0F-225E85BBE8EE}"/><names>
         <name lang="en">Servovalve 4-3</name>
         <name lang="fr">Symbolisation Servovalve 4-3</name>
         <name lang="cs">Servoventil 4/3</name>

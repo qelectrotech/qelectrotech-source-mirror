@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="28" hotspot_y="31" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4B5A6F50-9164-4EBD-8792-C1184CD6694F}"/><names>
         <name lang="en">NO Actuated by the level of a liquid</name>
         <name lang="de">Niveauschalter Schliesser</name>
         <name lang="it">Azionato dal livello di un liquido NO</name>

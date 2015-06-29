@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="13" hotspot_y="25" height="50" link_type="slave" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{ABDC4F2F-153C-439E-B8FD-12AA7DF42465}"/><names>
         <name lang="ar">مثلامس مرحل حراري (NO)</name>
         <name lang="de">Relaisschliesser</name>
         <name lang="ru">Контакт теплового реле (НР)</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CF578626-4E85-4BE7-BC4C-3AA32AB21C8F}"/><names>
         <name lang="ar">"صمّام ضغط" يسار</name>
         <name lang="en">Differential valve "left"</name>
         <name lang="fr">Vanne différentielle "gauche"</name>

@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="42" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{79D6E632-0E52-4CD4-A18D-28023653D3F9}"/><names>
         <name lang="ar">خطوة</name>
         <name lang="de">Schritt</name>
         <name lang="pt">Etapa</name>

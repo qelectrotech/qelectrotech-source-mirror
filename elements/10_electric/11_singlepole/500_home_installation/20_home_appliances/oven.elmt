@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnyn">
-    <names>
+<uuid uuid="{9D277A6C-3E54-4D19-99DF-803173E47FFD}"/><names>
         <name lang="de">Elektrobackofen</name>
         <name lang="ru">Печь</name>
         <name lang="el">Φούρνος</name>

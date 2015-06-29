@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="28" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BD7C423A-9127-4E80-AFD7-F829D2E21180}"/><names>
         <name lang="en">Binary Output/IR-Rec.-Dec.</name>
         <name lang="it">Uscita digitale + Ric. IR/Decoder</name>
         <name lang="fr">Recepteur/Decodeur sortie numerique</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="15" hotspot_y="31" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E2EE7718-A0FE-4A93-923E-768D374E2530}"/><names>
         <name lang="ar">مغزل دوّار بكابل</name>
         <name lang="el">Ανέμη με ένα σωλήνα</name>
         <name lang="en">Rotating spindle with a cable</name>

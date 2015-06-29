@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="22" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E33CAA77-D959-45DA-BAF9-6DFC8200F1FD}"/><names>
         <name lang="ar">مُخفّض ضغط بتعديل حراري خارجي</name>
         <name lang="en">TXV external</name>
         <name lang="fr">Détendeur thermostatique externe</name>

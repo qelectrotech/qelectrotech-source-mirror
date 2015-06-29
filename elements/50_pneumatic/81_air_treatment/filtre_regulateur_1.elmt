@@ -1,5 +1,5 @@
 <definition width="170" version="0.3" hotspot_x="25" hotspot_y="65" height="100" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5393C197-C1C7-4E9D-878E-600096DF6D20}"/><names>
         <name lang="en">Filter, regulator, pressure gauge</name>
         <name lang="fr">Filtre, régulateur, manomètre</name>
         <name lang="pl">Zespół elementów przygotowujących płyn (filtr, reduktor, manometr)</name>

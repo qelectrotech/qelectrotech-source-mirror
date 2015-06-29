@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{592C59C7-8F7B-48F1-96D4-1727F42E6AC9}"/><names>
         <name lang="el">Αναλογική είσοδος, μονή</name>
         <name lang="en">Analog input, single</name>
         <name lang="it">Ingresso analogico, 1 can</name>

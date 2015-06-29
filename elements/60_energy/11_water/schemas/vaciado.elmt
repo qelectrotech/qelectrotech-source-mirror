@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="6" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{69280B9E-C733-4B12-A68E-7248F60002E7}"/><names>
         <name lang="es">Vaciado - Vertido</name>
         <name lang="it">Scarico</name>
         <name lang="pl">Spust</name>

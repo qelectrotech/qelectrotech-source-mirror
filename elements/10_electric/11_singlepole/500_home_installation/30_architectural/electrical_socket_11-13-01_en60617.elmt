@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{1DB59A64-5122-4A5E-A1B7-6AFA5F461049}"/><names>
         <name lang="ar">قاعدة قابس تيّار (قدرة ) , رمز عام  (EN 60617 11-13-01)</name>
         <name lang="de">Steckdose allgemein (EN 60617 11-13-01)</name>
         <name lang="el">Ρευματοδότης  (EN 60617: 11-13-01)</name>

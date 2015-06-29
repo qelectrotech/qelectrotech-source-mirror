@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="22" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C1D94033-AFAF-48E9-9432-D22852AEBDC9}"/><names>
         <name lang="ar">مُخفّض ضغط بمعدّل حراري داخلي</name>
         <name lang="en">TXV internal</name>
         <name lang="fr">Détendeur thermostatique interne</name>

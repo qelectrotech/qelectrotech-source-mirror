@@ -1,5 +1,5 @@
 <definition link_type="simple" width="200" orientation="dyyy" height="180" hotspot_x="99" type="element" version="0.5" hotspot_y="81">
-    <names>
+<uuid uuid="{78B4397B-43EC-4795-BBF7-242CBBF25EC0}"/><names>
         <name lang="en">Schneider Touch Screen HMISTU855</name>
         <name lang="fr">Ecran tactile Schneider HMISTU855</name>
     </names>

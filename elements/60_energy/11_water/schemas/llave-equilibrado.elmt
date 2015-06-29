@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4A762824-272B-4B73-B69A-61D078707FB7}"/><names>
         <name lang="es">Llave equilibrado</name>
         <name lang="it">Valvola di equilibratura</name>
         <name lang="pl">Zawór równoważący</name>

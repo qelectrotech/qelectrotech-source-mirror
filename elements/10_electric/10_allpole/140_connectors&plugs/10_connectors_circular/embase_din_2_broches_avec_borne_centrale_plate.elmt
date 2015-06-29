@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{CC705436-C564-491C-B5CB-2281795E2A2D}"/><names>
         <name lang="ar">قاعدة توصيل  DIN بطرفي توصيل أحدهما مركزي</name>
         <name lang="en">2-pin DIN socket with center pin flat</name>
         <name lang="de">Rundstecker 2-polig</name>

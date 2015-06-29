@@ -1,5 +1,5 @@
 <definition width="140" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2D3969D1-FCEB-4FF6-8246-964AA709D969}"/><names>
         <name lang="en">Servo valve controlled by two electromagnetic coils</name>
         <name lang="fr">Servo valve à commande électromagnétique par deux bobines</name>
         <name lang="pl">Serwozawór z przekryciem dodatnim w położeniu środkowym, ustalany w położeniu środkowym sprężynami, sterowany elektromagnetycznie dwiema cewkami</name>

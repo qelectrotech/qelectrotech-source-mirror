@@ -1,5 +1,5 @@
 <definition type="element" height="190" version="0.5" width="80" link_type="simple" hotspot_x="44" hotspot_y="94" orientation="dyyy">
-    <names>
+<uuid uuid="{0F97E859-9603-4AA9-9790-2A2A5A4B0C5A}"/><names>
         <name lang="ro">pic16f84</name>
     </names>
     <informations>Author: Angelescu Constantin

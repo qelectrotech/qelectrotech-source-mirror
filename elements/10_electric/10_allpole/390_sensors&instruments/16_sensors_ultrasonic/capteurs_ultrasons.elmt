@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="27" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{EDF2FB51-E89E-400C-B513-B187431DEFE1}"/><names>
         <name lang="ar">حسّاس فوق صوتي ثلاث أطراف</name>
         <name lang="el">Αισθητήρας υπερήχων με 3 ακροδέκτες</name>
         <name lang="en">Ultrasonic  sensor 3 terminals</name>

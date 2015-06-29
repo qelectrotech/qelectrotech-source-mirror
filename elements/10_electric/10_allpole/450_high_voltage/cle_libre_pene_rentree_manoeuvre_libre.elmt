@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{A8B2E1CB-618C-4FB1-B8F9-4344A60D52FE}"/><names>
         <name lang="en">Latch key free free entry maneuver</name>
         <name lang="fr">Cle libre pene entree manoeuvre libre</name>
         <name lang="pl">Klucz dostępny, wejście dozwolone</name>

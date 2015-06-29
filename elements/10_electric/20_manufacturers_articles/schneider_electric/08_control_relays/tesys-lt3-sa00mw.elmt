@@ -1,5 +1,5 @@
 <definition width="200" version="0.4" hotspot_x="5" hotspot_y="10" height="130" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{19C29F5F-34C1-4B4D-8C31-A151F7775A63}"/><names>
         <name lang="ar">TESYS LT3-SA00MW</name>
         <name lang="be">TESYS LT3-SA00MW</name>
         <name lang="el">TESYS LT3-SA00MW</name>

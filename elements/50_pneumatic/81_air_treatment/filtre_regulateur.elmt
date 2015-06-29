@@ -1,5 +1,5 @@
 <definition width="170" version="0.3" hotspot_x="10" hotspot_y="60" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8AF2ED76-AEF1-4D99-9C1B-56EBD65CB29E}"/><names>
         <name lang="en">Filter pressure regulator</name>
         <name lang="fr">Filtres régulateurs de pression</name>
         <name lang="pl">Zespół przygotowania powietrza (filtr z oddzielaczem, reduktor)</name>

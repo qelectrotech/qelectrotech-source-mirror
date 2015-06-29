@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{640D7C48-5729-4380-AC4B-15087044A2FA}"/><names>
         <name lang="ar">شاشة</name>
         <name lang="en">Screen</name>
         <name lang="de">Schirm</name>

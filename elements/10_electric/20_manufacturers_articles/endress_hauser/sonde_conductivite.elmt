@@ -1,5 +1,5 @@
 <definition width="150" version="0.3" hotspot_x="25" hotspot_y="36" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{ED051F75-ADD2-4CF1-9E9D-3F6B8411B89A}"/><names>
         <name lang="ar">مجس موصليّة CLS40 </name>
         <name lang="en">Conductivity Probe CLS40</name>
         <name lang="it">Sonda conduttiva CLS40</name>

@@ -1,5 +1,5 @@
 <definition type="element" link_type="simple" hotspot_x="10" hotspot_y="11" orientation="dyyy" version="0.5" width="30" height="20">
-    <names>
+<uuid uuid="{D863FF85-93EF-4FA0-B748-1A109CB08E74}"/><names>
         <name lang="en">Connector, 2 pin</name>
         <name lang="fr">Connecteur ,2 broches</name>
         <name lang="nl">Connector 2 pin</name>

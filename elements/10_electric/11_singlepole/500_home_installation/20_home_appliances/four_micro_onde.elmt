@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{A2D61DEE-356B-4749-8A9B-D438DF430F0B}"/><names>
         <name lang="ar">فرن ميكرو موجي</name>
         <name lang="el">Φούρνος μικροκυμάτων</name>
         <name lang="en">Microwave oven</name>

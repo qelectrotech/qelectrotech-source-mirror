@@ -1,5 +1,5 @@
 <definition width="140" version="0.3" hotspot_x="40" hotspot_y="20" height="100" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6D046C7E-92F2-4FE4-A896-9B0924C8E320}"/><names>
         <name lang="ar">مشعاع</name>
         <name lang="en">Steel radiator</name>
         <name lang="fr">Radiateur Acier</name>

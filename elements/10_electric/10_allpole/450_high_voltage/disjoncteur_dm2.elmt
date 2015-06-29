@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="25" hotspot_y="25" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F4258C24-D82D-4A39-A155-82235265F6C3}"/><names>
         <name lang="en">Breaker DM2</name>
         <name lang="fr">Disjoncteur DM2</name>
         <name lang="pl">Wyłącznik DM2</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A35B5B0F-C30D-45F1-AE56-713909F3CE70}"/><names>
         <name lang="ar">زرّ دوُار جنب</name>
         <name lang="el">Περιστροφικός διακόπτης, δεξιά</name>
         <name lang="en">Turning button side</name>

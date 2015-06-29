@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B4E1CBB3-5173-40EA-AE8A-1900AC92432A}"/><names>
         <name lang="ar">مفتاح بمُؤشر ضوئي</name>
         <name lang="de">Schalter mit Kontrolleuchte
 </name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="24" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8A49B5AD-46E3-4741-ADB4-A4E544787F8A}"/><names>
         <name lang="el">Αισθητήρας Κίνησης</name>
         <name lang="en">Movement sensor</name>
         <name lang="it">Sensore infrarosso</name>

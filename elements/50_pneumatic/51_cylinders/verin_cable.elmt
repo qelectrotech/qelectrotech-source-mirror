@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F75016CC-09A6-49F6-80D2-35B4A425997B}"/><names>
         <name lang="en">Pneumatic actuator cable</name>
         <name lang="fr">Verin a cable</name>
         <name lang="pl">Siłownik cięgnowy pneumatyczny z hamowaniem dwustronnym o stałej wartości</name>

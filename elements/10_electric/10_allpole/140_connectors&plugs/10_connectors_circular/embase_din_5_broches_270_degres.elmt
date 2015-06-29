@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{60FC9358-8E9F-42D4-B6AC-7DA0644E26A5}"/><names>
         <name lang="ar">قاعدة DIN  ب 5 نقاط توصيل  270 درجة</name>
         <name lang="en">5-pin DIN socket 270 degrees</name>
         <name lang="de">Rundstecker 5-polig 270°</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="11" hotspot_y="25" height="60" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{361F863F-0D6B-4A21-85A5-361FAAC65371}"/><names>
         <name lang="en">Valve</name>
         <name lang="it">Valvola</name>
         <name lang="fr">Soupape</name>

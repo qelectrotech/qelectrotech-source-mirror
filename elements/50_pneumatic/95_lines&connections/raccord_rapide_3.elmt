@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="15" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{51D3776A-3B8A-4A39-92E1-A5E6129A3277}"/><names>
         <name lang="ar">رابط سريع بصمّام ضدّ الرجع</name>
         <name lang="el">Ταχυσύνδεσμος με ανεπίστροφη βαλβίδα</name>
         <name lang="en">Quick coupling with check valve</name>

@@ -1,5 +1,5 @@
 <definition hotspot_x="199" height="260" link_type="simple" type="element" orientation="dyyy" hotspot_y="140" width="410" version="0.5">
-    <names>
+<uuid uuid="{F2DFBE6D-6934-40E1-A42D-B66583AF4163}"/><names>
         <name lang="en">RaspberryPi</name>
         <name lang="fr">RaspberryPi</name>
     </names>

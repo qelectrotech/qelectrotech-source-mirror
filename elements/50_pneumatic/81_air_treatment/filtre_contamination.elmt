@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F7E731D3-2985-4068-BB93-6FE277D17D31}"/><names>
         <name lang="en">Filter contamination indicator</name>
         <name lang="fr">Filtre avec indicateur de contamination</name>
         <name lang="pl">Filtr ze wskaźnikiem zanieczyszczeń</name>

@@ -1,5 +1,5 @@
 <definition width="270" version="0.4" hotspot_x="158" hotspot_y="83" height="180" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D7C345D5-5EDE-4518-AD31-56CBA105CAF8}"/><names>
         <name lang="en">Diesel Engine</name>
         <name lang="de">Stromaggregat Diesel</name>
         <name lang="fr">Groupe electrogene diesel</name>

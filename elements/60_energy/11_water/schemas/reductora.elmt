@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="9" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{13FD2134-E795-4BDD-8A0B-53F1B9CAF07E}"/><names>
         <name lang="es">Reductora de presión</name>
         <name lang="it">Riduttore di pressione</name>
         <name lang="pl">Reduktor ciśnienia</name>

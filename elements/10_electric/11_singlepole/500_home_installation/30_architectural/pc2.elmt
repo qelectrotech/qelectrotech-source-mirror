@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7B36264B-6165-43EB-8B8B-C8F83C683F60}"/><names>
         <name lang="ar">قاعدة مقبس تيّار (رمز عام)</name>
         <name lang="de">Steckdose</name>
         <name lang="el">Ρευματοδότης απλός</name>

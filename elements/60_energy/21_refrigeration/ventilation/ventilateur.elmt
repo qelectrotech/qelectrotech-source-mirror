@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{05AF061C-E0C8-40D5-BE17-02ECF3BC1B27}"/><names>
         <name lang="el">Ανεμιστήρας</name>
         <name lang="en">Ventilator</name>
         <name lang="it">Ventilatore</name>

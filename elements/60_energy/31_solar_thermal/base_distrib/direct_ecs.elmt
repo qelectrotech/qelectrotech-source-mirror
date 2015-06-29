@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C7E41E71-7B1D-4593-A2B8-EE9E7BAC9A6F}"/><names>
         <name lang="ar">A تبادل غير مباشر / بالون ECS</name>
         <name lang="en">A indirect exchange / DHW tank</name>
         <name lang="fr">A échange indirect / ballon ecs</name>

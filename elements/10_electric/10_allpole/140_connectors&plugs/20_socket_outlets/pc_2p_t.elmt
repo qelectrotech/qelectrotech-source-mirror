@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{1DDAA085-A673-48F4-9860-82E7416B1E5B}"/><names>
         <name lang="ar">Outlet 2P+T</name>
         <name lang="de">Steckdose P+N+PE</name>
         <name lang="en">PC 2P+T</name>

@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="40" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8FAFAD37-A5F7-441E-84FD-081D1F98125F}"/><names>
         <name lang="en">Control valve center open 4-2</name>
         <name lang="fr">Distributeur centre ouvert 4-2</name>
         <name lang="pl">Zawór sterujący otwarty w pozycji środkowej 4/2</name>

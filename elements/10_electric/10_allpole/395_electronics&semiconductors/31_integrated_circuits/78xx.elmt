@@ -1,5 +1,5 @@
 <definition width="40" orientation="dyyy" height="40" link_type="simple" type="element" hotspot_x="20" hotspot_y="14" version="0.5">
-    <names>
+<uuid uuid="{10F6ED11-3343-45F9-BE20-F537FB65D156}"/><names>
         <name lang="ro">78xx</name>
     </names>
     <informations>Author: Angelescu Constantin

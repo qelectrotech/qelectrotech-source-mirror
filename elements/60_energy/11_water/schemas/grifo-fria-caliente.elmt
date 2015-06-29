@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{608F492F-BC86-45F9-A23D-7C77D95C14F8}"/><names>
         <name lang="es">Grifo fria y caliente</name>
         <name lang="it">Rubinetto caldo e freddo</name>
         <name lang="pl">Zawór do wody ciepłej i zimnej</name>

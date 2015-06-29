@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C20F31ED-7B0F-49A1-953F-F36179CE90A2}"/><names>
         <name lang="ar">مُؤقت</name>
         <name lang="de">Zeitrelais</name>
         <name lang="el">Χρονικό</name>

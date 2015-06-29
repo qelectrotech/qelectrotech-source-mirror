@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{6C47C4BB-8CB7-485C-A60A-CED8265FE127}"/><names>
         <name lang="ar">ثايريستور بوابة N</name>
         <name lang="de">rückwärts sperrende Thyristortriode, N-Gate
 (Anode gesteuert)

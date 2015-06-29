@@ -1,5 +1,5 @@
 <definition width="150" version="0.3" hotspot_x="75" hotspot_y="125" height="260" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0A45EAD6-F57D-419C-9C9D-38E47384F93E}"/><names>
         <name lang="ar">خزّان تراتب</name>
         <name lang="en">Stratification storage tank 1000L</name>
         <name lang="fr">ballon 1000L chicane et strat</name>

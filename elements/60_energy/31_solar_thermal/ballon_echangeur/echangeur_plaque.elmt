@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="70" height="120" type="element" orientation="ndny">
-    <names>
+<uuid uuid="{28E47328-C8A1-4181-BA81-679EFBCA822A}"/><names>
         <name lang="ar">لوحة مبادل حراري</name>
         <name lang="en">Plate heat exchanger</name>
         <name lang="fr">Echangeur à Plaques</name>

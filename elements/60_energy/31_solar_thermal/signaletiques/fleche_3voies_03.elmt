@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{695A5C01-FA19-41CB-BDF0-0AA3F9454D31}"/><names>
         <name lang="ar">سهم 3 مسارات 03</name>
         <name lang="en">Arrow 3 way 03</name>
         <name lang="fr">Fléche 3 Voies 03</name>

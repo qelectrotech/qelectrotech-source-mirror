@@ -1,5 +1,5 @@
 <definition width="600" version="0.2" hotspot_x="15" hotspot_y="45" height="310" type="element" orientation="dnnn" >
-    <names>
+<uuid uuid="{5CD952DE-EC1B-46DB-874E-184FB1E87293}"/><names>
         <name lang="fr">Répertoire de folios</name>
         <name lang="de">Inhaltsverzeichnis</name>
         <name lang="en">Table of content</name>

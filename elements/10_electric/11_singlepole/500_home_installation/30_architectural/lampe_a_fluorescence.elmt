@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="5" hotspot_y="20" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F311AB97-04E8-4BCC-A287-F31CFF811D6F}"/><names>
         <name lang="ar">مصباح فليوريسنت</name>
         <name lang="de">Leuchtstofflampe</name>
         <name lang="el">Λάμπα φθορισμού</name>

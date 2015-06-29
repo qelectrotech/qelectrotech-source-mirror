@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{421F368A-CCA9-460C-8D54-1658839B1518}"/><names>
         <name lang="en">Pneumatic Actuator Double (twin)</name>
         <name lang="fr">verin actionneur pneumatique à double tiges</name>
         <name lang="pl">Siłownik pneumatyczny podwójny (twin) dwustronnego działania i bezstykową sygnalizacją położenia tłoka</name>

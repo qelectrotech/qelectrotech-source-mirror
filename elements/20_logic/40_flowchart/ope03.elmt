@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="15" hotspot_y="15" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9774717A-D3EE-42D1-A68F-B1CB2C7646A3}"/><names>
         <name lang="el">Επεξεργασία / Λειτουργίες "3 γραμμές"</name>
         <name lang="en">Treatment / operations "3 lines"</name>
         <name lang="it">Elaborazione "3 righe"</name>

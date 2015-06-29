@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8E547174-A04B-46BA-A7B3-FFADF74EA4E5}"/><names>
         <name lang="ar">حساس سعوي NO</name>
         <name lang="de">Kapazitiver Sensor 2-Leiter Schliesser</name>
         <name lang="el">Χωρητικός αισθητήρας, Ανοικτή επαφή (NO)</name>

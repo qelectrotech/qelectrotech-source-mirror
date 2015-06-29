@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="35" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{98E9FBE6-EA27-4212-A530-9A9C77E4B500}"/><names>
         <name lang="ar">محرّك تيّار مستمرّ</name>
         <name lang="de">Gleichstrom Motor</name>
         <name lang="ru">Эл. мотор постоянного тока</name>

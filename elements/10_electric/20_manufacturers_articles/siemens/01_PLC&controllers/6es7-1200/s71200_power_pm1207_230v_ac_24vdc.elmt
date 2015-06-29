@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="0" hotspot_y="10" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{FEA770EB-406B-4F6F-AF6E-4103D1AEA53B}"/><names>
         <name lang="de">S7-1200-power-pm1207-230v-ac-24vdc</name>
         <name lang="en">S7-1200-power-pm1207-230v-ac-24vdc</name>
         <name lang="it">S7-1200 alimentazieno pm1207 230v ac 24vdc</name>

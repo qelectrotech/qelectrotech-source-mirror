@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="70" height="140" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{629209BB-42AB-40B8-8D48-A3C983839B46}"/><names>
         <name lang="ar">مرجل خشب</name>
         <name lang="el">Καυστήρας ξύλου</name>
         <name lang="en">Wood boiler</name>

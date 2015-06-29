@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A54FD1F3-5964-44E4-81C1-0C1438A3219D}"/><names>
         <name lang="ar">حنفية ماء</name>
         <name lang="en">ECS draw-off valve</name>
         <name lang="fr">robinet puisage ECS</name>

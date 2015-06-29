@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="15" hotspot_y="18" type="element" height="50" orientation="dyyy" version="0.5" width="30">
-    <names>
+<uuid uuid="{C88B8BE7-FFDB-4986-8D1C-6267C00F814C}"/><names>
         <name lang="de">Schlüsselbetätigung</name>
         <name lang="it">Comando a chiave</name>
         <name lang="cs">Klíčový spínač</name>

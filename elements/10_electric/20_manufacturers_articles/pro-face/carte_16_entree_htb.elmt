@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="0" hotspot_y="2" height="240" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5999699B-E8FB-491F-95AE-10134F88834C}"/><names>
         <name lang="en">Card 16DI head HTB</name>
         <name lang="it">Scheda 16DI per modulo HTB</name>
         <name lang="fr">Carte 16DI tete HTB</name>

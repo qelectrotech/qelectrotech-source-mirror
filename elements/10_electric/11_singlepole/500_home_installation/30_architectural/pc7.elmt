@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9F51D499-D817-4E35-BED6-A7E81FF39285}"/><names>
         <name lang="ar">قاعدة مقبس تيّار (قدرة) مع محوّل عزل</name>
         <name lang="de">Steckdose mit Trenntrafo</name>
         <name lang="el">Ρευματοδότης με μετασχημαστιστή απομόνωσης</name>

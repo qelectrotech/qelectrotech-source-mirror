@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{E741DE46-CFFB-4576-9806-F36CA18287E6}"/><names>
         <name lang="ar">ثايريستور ببوابة إطفاء GTO  P  (محكوم من جهة الكاثود)</name>
         <name lang="de">Abschalt-Thyristortriode, P-Gate (Kathode
 gesteuert)

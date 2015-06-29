@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{736D4D03-23AF-45B7-830C-B852FB2DAAC9}"/><names>
         <name lang="es">Termómetro</name>
         <name lang="it">Termometro</name>
         <name lang="pl">Termometr</name>

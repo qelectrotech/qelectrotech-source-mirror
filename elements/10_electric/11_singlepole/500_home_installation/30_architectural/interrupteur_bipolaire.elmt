@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{192E371D-DAD2-4B30-A096-DD6F14C858DA}"/><names>
         <name lang="ar">مفتاح ثنائي القطبيّة</name>
         <name lang="de">Schalter 2-polig
 </name>

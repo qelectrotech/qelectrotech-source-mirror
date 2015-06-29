@@ -1,5 +1,5 @@
 <definition width="40" orientation="dyyy" version="0.5" height="50" hotspot_y="24" type="element" hotspot_x="30" link_type="master">
-    <names>
+<uuid uuid="{58FBFB73-442E-4118-B334-8B9625E0345D}"/><names>
         <name lang="ar">زرّ توقف طوارئ - فتح بمفتاح</name>
         <name lang="de">Pilzdrucktaster Öffner mit Schlüsselentriegelung</name>
         <name lang="en">Emergency stop key release</name>

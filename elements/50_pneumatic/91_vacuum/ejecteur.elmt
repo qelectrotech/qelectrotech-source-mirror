@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="40" hotspot_y="40" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7709865C-6EC0-44A9-A276-86889DD3DAFC}"/><names>
         <name lang="en">Vacuum generators</name>
         <name lang="fr">Générateurs de vide</name>
         <name lang="pl">Generator podciśnienia</name>

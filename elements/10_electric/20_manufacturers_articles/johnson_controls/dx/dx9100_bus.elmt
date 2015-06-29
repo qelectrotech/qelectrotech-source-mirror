@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E3D53A9A-79A4-4105-895F-45114E2C31D1}"/><names>
         <name lang="en">DX9100 Bus N2 / XT</name>
         <name lang="fr">DX9100 Bus N2 / XT</name>
         <name lang="pl">DX9100 - złącze komunikacyjne N2/XT</name>

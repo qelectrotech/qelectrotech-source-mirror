@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="40" hotspot_y="50" height="190" type="element" orientation="ydyy">
-    <names>
+<uuid uuid="{741836C9-1A52-40F2-B4EC-4ED935E6E178}"/><names>
         <name lang="ar">دائرة مدمجة 16 دبوس, مُرقّمة</name>
         <name lang="de">Integrierte Schaltung 16 Anschlüsse nummeriert</name>
         <name lang="el">Ολοκληρωμένο κύκλωμα 16 ακροδεκτών, αριθμημένο</name>

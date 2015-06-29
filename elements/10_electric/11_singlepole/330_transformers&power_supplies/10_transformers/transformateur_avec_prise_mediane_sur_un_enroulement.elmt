@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="24" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A3CE353D-8551-44EB-990E-34405D3413A5}"/><names>
         <name lang="ar">مُحوّل برابط قابل للتعديل</name>
         <name lang="de">Stelltransformator mit Anzapfung</name>
         <name lang="en">Transformer with variable coupling</name>

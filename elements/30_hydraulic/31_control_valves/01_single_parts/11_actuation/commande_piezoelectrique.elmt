@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="5" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{34B41931-45F2-4F0B-B216-7479533C0183}"/><names>
         <name lang="en">Piezoelectric</name>
         <name lang="fr">Piézoélectrique</name>
         <name lang="pl">Piezoelektryczne</name>

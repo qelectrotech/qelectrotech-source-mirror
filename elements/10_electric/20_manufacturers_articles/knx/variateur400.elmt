@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="65" hotspot_y="60" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7783F988-0663-4770-AEC8-275816A96F1D}"/><names>
         <name lang="en">400w inverter knx</name>
         <name lang="it">Regolatore 400w knx</name>
         <name lang="fr">Variateur 400w knx</name>

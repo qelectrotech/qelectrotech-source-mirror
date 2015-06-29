@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{17D620B0-D675-4E00-8002-76A02285B749}"/><names>
         <name lang="en">Contact Motorized NC</name>
         <name lang="fr">Commande par moteur électrique NF</name>
         <name lang="de">Öffner Motor betätigt</name>

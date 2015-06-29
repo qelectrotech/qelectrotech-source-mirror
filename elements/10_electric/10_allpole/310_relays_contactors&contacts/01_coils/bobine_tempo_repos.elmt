@@ -1,5 +1,5 @@
 <definition type="element" link_type="master" hotspot_x="20" hotspot_y="29" orientation="dyyy" version="0.5" width="40" height="60">
-    <names>
+<uuid uuid="{7E996B1F-B537-44D9-A3E9-DB5F30487400}"/><names>
         <name lang="be">Spoel met uitschakel vertraging</name>
         <name lang="en">Coil with off delay</name>
         <name lang="fr">Bobine tempo repos</name>

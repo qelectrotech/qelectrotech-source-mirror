@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{5FC5912D-A466-4E02-8051-7F08868D3FB5}"/><names>
         <name lang="de">Blitzschutz</name>
         <name lang="en">Surge protector</name>
         <name lang="it">Scaricatore</name>

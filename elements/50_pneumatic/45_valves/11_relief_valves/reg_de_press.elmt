@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="5" hotspot_y="5" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5B8D1C5D-A399-49B3-B40A-B59CC58149AB}"/><names>
         <name lang="en">Rressure regulator</name>
         <name lang="fr">Régulateurs de pression</name>
         <name lang="pl">Zespół elementów przygotowujących płyn (reduktor, manometr)</name>

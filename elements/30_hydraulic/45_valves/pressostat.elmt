@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="28" height="50" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9C2E2FBC-5454-4534-8277-11A1361EC118}"/><names>
         <name lang="ar">حسّاس ضغط</name>
         <name lang="en">Pressostat</name>
         <name lang="it">Sensore di pressione</name>

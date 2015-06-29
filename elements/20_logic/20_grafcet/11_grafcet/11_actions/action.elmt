@@ -1,5 +1,5 @@
 <definition width="140" version="0.3" hotspot_x="0" hotspot_y="15" height="30" type="element" ic="true" orientation="dnyn">
-    <names>
+<uuid uuid="{B6D0A559-D83A-42B8-9BD0-982606511638}"/><names>
         <name lang="ar">فعل</name>
         <name lang="de">Aktion</name>
         <name lang="pt">acção</name>

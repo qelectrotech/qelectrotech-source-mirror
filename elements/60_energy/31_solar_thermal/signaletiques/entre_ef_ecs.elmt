@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{63DDF71D-BEF4-4220-B994-CA4F300FC4D7}"/><names>
         <name lang="ar">مدخل ماء بارد</name>
         <name lang="el">Είσοδος κρύου νερού</name>
         <name lang="en">Cold water inlet ECS</name>

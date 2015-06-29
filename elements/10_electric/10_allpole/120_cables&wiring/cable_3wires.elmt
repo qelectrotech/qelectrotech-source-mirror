@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="58" hotspot_y="21" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5693E675-63DE-4FC8-9E3E-F9F917FB68C5}"/><names>
         <name lang="de">Kabel 3x</name>
         <name lang="en">Cable 3 wires</name>
         <name lang="fr">Cable 3 brins</name>

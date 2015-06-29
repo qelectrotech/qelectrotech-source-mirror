@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="48" hotspot_y="13" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0C280525-8848-4E2B-8CAC-33BC72803968}"/><names>
         <name lang="de">Verdrahtungsdefinition 3 Leiter</name>
         <name lang="it">Sezione 3 conduttori</name>
         <name lang="fr">Section 3 conducteurs</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{37F87701-C70D-4AA5-AEFE-69C7F672D455}"/><names>
         <name lang="el">Οθόνη</name>
         <name lang="en">Display</name>
         <name lang="it">Display</name>

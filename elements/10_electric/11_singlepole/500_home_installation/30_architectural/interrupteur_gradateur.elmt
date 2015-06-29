@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{94F1602F-5AB6-4FFB-83C2-166FFD9D89C2}"/><names>
         <name lang="ar">مفتاح حاكم جهد</name>
         <name lang="de">Dimmer</name>
         <name lang="el">Ρυθμιζόμενος διακόπτης (dimmer)</name>

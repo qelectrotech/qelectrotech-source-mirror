@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{47A4335D-E4A3-42B6-A64B-891499FC79D5}"/><names>
         <name lang="ar">تبادل غير مباشر</name>
         <name lang="en">A indirect exchange</name>
         <name lang="fr">A échange indirecte</name>

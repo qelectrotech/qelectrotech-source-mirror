@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="0" hotspot_y="10" height="20" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{EF99036D-F72E-4B15-882C-90551B771A3F}"/><names>
         <name lang="ar">قفل ميكانيكي</name>
         <name lang="el">Μηχανική μανδάλωση</name>
         <name lang="en">Mechanical lock</name>

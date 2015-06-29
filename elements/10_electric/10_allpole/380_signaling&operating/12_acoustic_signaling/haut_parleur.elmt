@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{151C539A-AFCF-45A7-ACB5-C89CEB09F0AE}"/><names>
         <name lang="ar">سمّاعة</name>
         <name lang="el">Ηχείο</name>
         <name lang="en">Speaker</name>

@@ -1,5 +1,5 @@
 <definition type="element" link_type="simple" hotspot_x="39" hotspot_y="34" orientation="dyyy" version="0.5" width="70" height="70">
-    <names>
+<uuid uuid="{5E71E5E9-C1A8-45FD-AF43-27AA4B991889}"/><names>
         <name lang="en">D-SUB HD 15 pin (female)</name>
         <name lang="fr">SUB-D HD 15 broches (femelle)</name>
         <name lang="nl">D-SUB 15 pin vrouw</name>

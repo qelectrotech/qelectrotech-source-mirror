@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A8D10A7C-1030-4006-8F20-717F472E0BC8}"/><names>
         <name lang="ar">حسّاس حثّي بطرفين</name>
         <name lang="be">Induktiver Sensor 2-Leiter</name>
         <name lang="el">Επαγωγικός αισθητήρας, 2 ακροδέκτες, ανοικτή επαφή</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="30" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CB87D36F-2648-4E17-9899-830E0AD43CF4}"/><names>
         <name lang="en">Pedal two voices</name>
         <name lang="fr">Pédale deux voies</name>
         <name lang="pl">Pedał dwukierunkowy</name>

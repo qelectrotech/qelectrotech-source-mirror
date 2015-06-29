@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="14" hotspot_y="35" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{972B460F-68EA-410E-823E-6DFB0CC47E6A}"/><names>
         <name lang="ar">مُحرّك هيدروليكي</name>
         <name lang="el">Υδραυλικός κινητήρας 1</name>
         <name lang="en">Hydraulic motor 1</name>

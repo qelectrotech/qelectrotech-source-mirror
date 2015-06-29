@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="41" hotspot_y="24" height="50" link_type="master" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{27A01C46-4611-4E6C-B2EC-A49CA3D82EE5}"/><names>
         <name lang="ar">مفتاح عزل ثلاثي بمصهرات</name>
         <name lang="de">Sicherungstrenner 3-polig</name>
         <name lang="el">Ασφαλειοδιακόπτης 3P</name>

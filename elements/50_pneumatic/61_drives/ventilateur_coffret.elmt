@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="35" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{50FB48D7-C0D3-4496-B737-7E590AF10B3C}"/><names>
         <name lang="ar">مروحة خزانة</name>
         <name lang="de">Lüfter</name>
         <name lang="en">Fan cabinet</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2569F494-8D39-47AC-BDB9-C8797A890038}"/><names>
         <name lang="ar">أنابيب مرنة</name>
         <name lang="el">Εύκαμπτη σωλήνα</name>
         <name lang="en">flexible piping</name>

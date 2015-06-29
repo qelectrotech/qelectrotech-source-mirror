@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="1" hotspot_y="5" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1222E167-F130-42F1-8FDE-E1C4A727D59D}"/><names>
         <name lang="ar">زمبرك تمركز</name>
         <name lang="el">Ελατήριο</name>
         <name lang="en">Spring</name>

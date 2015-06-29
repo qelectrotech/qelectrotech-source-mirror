@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="36" hotspot_y="13" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3997DE08-D319-4AC5-9384-17E4BC5891FC}"/><names>
         <name lang="en">toilet tank</name>
         <name lang="fr">WC</name>
         <name lang="es">Inodoro tanque</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{34029D33-F39A-4304-A0A6-7CEC7AD41A9F}"/><names>
         <name lang="ar">مقبس</name>
         <name lang="de">Steckdose</name>
         <name lang="ru">Розетка</name>

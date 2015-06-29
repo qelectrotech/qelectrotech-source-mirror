@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="ndny">
-    <names>
+<uuid uuid="{C3331F00-5738-4899-9C75-85D921D9B098}"/><names>
         <name lang="ar">مُنفّس</name>
         <name lang="en">Trap</name>
         <name lang="fr">Purgeur</name>

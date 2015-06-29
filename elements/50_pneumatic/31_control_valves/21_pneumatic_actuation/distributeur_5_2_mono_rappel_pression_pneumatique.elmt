@@ -1,5 +1,5 @@
 <definition width="140" version="0.3" hotspot_x="90" hotspot_y="50" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B103DA7F-B2C7-43DA-9A14-B2D914C16D35}"/><names>
         <name lang="en">5/2-way valve</name>
         <name lang="fr">Distributeurs 5/2 mono rappel pression</name>
         <name lang="pl">Zawór 5/2</name>

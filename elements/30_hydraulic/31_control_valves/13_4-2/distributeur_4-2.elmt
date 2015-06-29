@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="40" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F4F6F4D9-2825-4456-9A8C-99B9C45FDD75}"/><names>
         <name lang="en">Control valve 4-2</name>
         <name lang="fr">Distributeur 4-2</name>
         <name lang="pl">Zawór sterujący 4/2</name>

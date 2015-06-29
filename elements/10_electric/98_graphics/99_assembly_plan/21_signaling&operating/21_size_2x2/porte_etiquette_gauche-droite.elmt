@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{34A2174C-572C-4018-AAA9-7B56C403BD31}"/><names>
         <name lang="ar">حامل مُلصق يسار / يمين</name>
         <name lang="el">Ετικέτα, αριστερά/δεξιά</name>
         <name lang="en">Label holder left / right</name>

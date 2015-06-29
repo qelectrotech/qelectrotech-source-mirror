@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="41" hotspot_y="30" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1781DEA6-FBA1-451A-89B6-61724F3B4F07}"/><names>
         <name lang="ar">مكبح مغناطيسي</name>
         <name lang="el">Μαγνητικό φρένο</name>
         <name lang="en">Magnetic brake</name>

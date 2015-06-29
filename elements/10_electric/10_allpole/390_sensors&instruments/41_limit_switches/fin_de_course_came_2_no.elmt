@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{9AFC79D4-BB8A-4B2C-9BCB-348DD880057C}"/><names>
         <name lang="ar">مفتاح نهاية مشوار بحدبة (NO)</name>
         <name lang="de">Schliesser Einschaltnocken</name>
         <name lang="ru">Концевой контакт (НР)</name>

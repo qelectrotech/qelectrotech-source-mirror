@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="15" hotspot_y="35" height="180" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6A226FA2-82F9-4942-928B-F60B381B1BDE}"/><names>
         <name lang="en">DX9100 DI</name>
         <name lang="fr">DX9100 DI</name>
         <name lang="pl">DX9100 - wejścia cyfrowe</name>

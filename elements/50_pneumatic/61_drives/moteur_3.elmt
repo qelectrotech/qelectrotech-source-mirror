@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{862F4C79-3393-4AAD-8297-3FCE49D98258}"/><names>
         <name lang="en">Pneumatic rotary engine</name>
         <name lang="fr">Moteur pneumatique rotatif</name>
         <name lang="pl">Silnik pneumatyczny o ruchu wachadłowym, o ograniczonym kącie obrotu, o dwóch kierunkach obrotów</name>

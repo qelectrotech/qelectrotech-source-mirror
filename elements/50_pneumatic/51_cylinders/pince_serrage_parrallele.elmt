@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="10" hotspot_y="50" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3E183C69-6872-4BF3-9512-06B71977B245}"/><names>
         <name lang="en">Grippers</name>
         <name lang="fr">Préhenseurs</name>
         <name lang="pl">Chwytak pneumatyczny</name>

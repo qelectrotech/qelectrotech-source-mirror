@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="5" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny" link_type="master">
-    <names>
+<uuid uuid="{E7DFC19F-8179-43A6-B6DE-D3BC839A976F}"/><names>
         <name lang="ar">مرحل حراري</name>
         <name lang="de">Überstromrelais 3P</name>
         <name lang="ru">Тепловое реле</name>

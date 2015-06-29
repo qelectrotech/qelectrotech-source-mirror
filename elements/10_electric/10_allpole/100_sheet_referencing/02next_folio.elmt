@@ -1,6 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="18" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy"
 link_type="next_report">
-    <names>
+<uuid uuid="{717352A1-F3C7-49C7-9A06-51620AB5CA00}"/><names>
         <name lang="ru">Следующая страница</name>
         <name lang="ar">الصفحة التالية</name>
         <name lang="de">Nächste Folie</name>

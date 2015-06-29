@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="36" hotspot_y="72" height="160" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{50AD2912-6B3A-4B2F-93AB-01A12D2DDE32}"/><names>
         <name lang="ar">RESEAU STATION FIN</name>
         <name lang="en">Network Station Last</name>
         <name lang="de">Netzwerkstation Ende</name>

@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="15" height="130" hotspot_y="59" version="0.5" width="600" orientation="dyyy" type="element">
-    <names>
+<uuid uuid="{2F03DF46-8827-42E4-94A4-ACB2BEC4ABA5}"/><names>
         <name lang="en">IO-RO16</name>
         <name lang="cs">IO-RO16</name>
     </names>

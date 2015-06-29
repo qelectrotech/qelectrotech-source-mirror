@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{144A3991-A1B0-4FBF-9CE6-FA6D0EC47947}"/><names>
         <name lang="ar">دايود مكثّف متغيّر (فاراكتور)</name>
         <name lang="de">Kapazitätsdiode
 </name>

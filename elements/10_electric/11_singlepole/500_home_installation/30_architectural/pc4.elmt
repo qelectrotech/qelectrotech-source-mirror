@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{FEE73D3D-4BE8-46CE-BFA3-735B0EFD963A}"/><names>
         <name lang="ar">قاعدة مقبس لطرفية إتّصال</name>
         <name lang="de">Fernmeldesteckdose allgemein</name>
         <name lang="el">Πρίζα τηλεφώνου</name>

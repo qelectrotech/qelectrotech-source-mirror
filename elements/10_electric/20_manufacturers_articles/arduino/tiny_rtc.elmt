@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="50" hotspot_y="52" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{88F0BEBA-8127-437C-8CA0-36AD6BFE9D1E}"/><names>
         <name lang="it">Tiny RTC (orologio e calendario)</name>
         <name lang="fr">Tiny RTC (horloge temps réel)</name>
         <name lang="pl">Tiny RTC</name>

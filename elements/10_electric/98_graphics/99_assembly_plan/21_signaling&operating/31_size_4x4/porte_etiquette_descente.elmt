@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="53" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{83B6ED5A-0FCF-4DFB-A81D-6AFAC4F44A88}"/><names>
         <name lang="ar">حامل ملصق أسفل</name>
         <name lang="el">Ετικέτα, κάτω</name>
         <name lang="en">Label holder descent</name>

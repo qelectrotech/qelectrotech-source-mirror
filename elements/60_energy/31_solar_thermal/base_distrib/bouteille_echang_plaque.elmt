@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="55" hotspot_y="40" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4F472EAB-1CC7-4A64-8C33-33E8723DC43D}"/><names>
         <name lang="ar">مُبادل بألواح 1F</name>
         <name lang="en">Plate heat exchanger 1F</name>
         <name lang="fr">1F echangeur à plaques</name>

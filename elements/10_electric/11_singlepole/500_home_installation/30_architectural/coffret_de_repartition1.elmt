@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E7FF98AC-35A5-4303-B8EA-BF2D11D3B05B}"/><names>
         <name lang="ar">مربع توزيع ب4 قنوات</name>
         <name lang="de">Verteiler mit 4 Strängen</name>
         <name lang="el">Κουτί διανομής 4 γραμμών</name>

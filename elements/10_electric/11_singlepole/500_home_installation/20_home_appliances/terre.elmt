@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="6" hotspot_y="183" height="190" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{898D8977-2D09-4185-A2F6-AA1A5ABBD89E}"/><names>
         <name lang="en">Ground</name>
         <name lang="de">Fundamenterder</name>
         <name lang="it">Terra</name>

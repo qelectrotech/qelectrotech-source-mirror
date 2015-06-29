@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="34" height="60" link_type="master" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{AFE0F3B3-00EE-4EC2-9458-E7934876F42B}"/><names>
         <name lang="ar">قطب ثنائي القطبية قطبين محميين</name>
         <name lang="de">Leitungsschutzschalter 2P</name>
         <name lang="en">Circuit-breaker</name>

@@ -1,5 +1,5 @@
 <definition orientation="dyyy" height="50" hotspot_y="24" version="0.5" type="element" width="30" hotspot_x="22" link_type="master">
-    <names>
+<uuid uuid="{4F4B0EDC-6505-4AE7-A39C-41FBC8336D9C}"/><names>
         <name lang="it">Arresto d'emergenza</name>
         <name lang="nl">Noodstop drukknop (NO)</name>
         <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>

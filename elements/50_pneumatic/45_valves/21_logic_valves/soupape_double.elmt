@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{48E384BA-5D94-421E-92CF-658ECACBF06F}"/><names>
         <name lang="en">Dual signal valve (valve logical AND)</name>
         <name lang="fr">Soupape de signal double (valve logique ET)</name>
         <name lang="pl">Zawór podwójnego sygnału (zawór logiczny I)</name>

@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="13" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{07F3F16D-93D8-491D-A6FC-2D9ECF7F864E}"/><names>
         <name lang="ar">زرّ دوّار مُضيئ, بوضعين</name>
         <name lang="el">Διακόπτης 2 θέσεων, φωτειζόμενος</name>
         <name lang="en">Two-positions luminous rotative button</name>

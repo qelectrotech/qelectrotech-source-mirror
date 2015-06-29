@@ -1,5 +1,5 @@
 <definition width="180" version="0.4" hotspot_x="18" hotspot_y="32" height="520" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DC3C9BE3-B4C2-431A-85CA-40244D09AA67}"/><names>
         <name lang="en">Terminal_7G1</name>
         <name lang="fr">Bornier cable 7G1</name>
         <name lang="it">Morsettiera Cavo 7G1</name>

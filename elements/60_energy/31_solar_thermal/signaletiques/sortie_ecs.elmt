@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{679FC537-6E37-4D2C-B914-A65A5C21AA53}"/><names>
         <name lang="ar">خرج ECS</name>
         <name lang="en">output</name>
         <name lang="fr">sortie ECS</name>

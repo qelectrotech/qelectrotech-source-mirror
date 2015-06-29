@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D632E975-51AB-472B-9DF5-5C52D03D5CA5}"/><names>
         <name lang="ar">صمّام ضبط توازن مع مقياس تدفق</name>
         <name lang="en">Balancing valve with flow meter</name>
         <name lang="fr">Vanne d'équilibrage avec débimètre</name>

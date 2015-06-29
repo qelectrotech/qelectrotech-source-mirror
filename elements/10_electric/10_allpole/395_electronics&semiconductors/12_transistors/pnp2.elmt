@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="25" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{417AEC0E-8A65-4D86-8084-66DE2290BAB6}"/><names>
         <name lang="ar">ترنزيستور PNP</name>
         <name lang="de">PNP Transistor</name>
         <name lang="el">Τρανζίστορ PNP</name>

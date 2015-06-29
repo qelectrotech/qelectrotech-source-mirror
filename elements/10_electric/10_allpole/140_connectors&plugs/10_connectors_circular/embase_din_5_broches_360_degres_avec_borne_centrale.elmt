@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{99EC337E-E72C-43DD-A742-BE92BD1B9552}"/><names>
         <name lang="ar">قاعدة DIN ب 5 أطراف توصيل 360 درجة  بما فيها طرف مركزي</name>
         <name lang="en">5-pin DIN socket 360 degrees with central terminal</name>
         <name lang="de">Rundstecker 5-polig 360°</name>

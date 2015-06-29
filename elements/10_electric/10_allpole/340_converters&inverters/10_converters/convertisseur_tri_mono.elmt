@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="30" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4A038C39-E100-48E8-A673-D47404EBBE12}"/><names>
         <name lang="ar">محول ثلاثي الأوجه - أحادي الوجه</name>
         <name lang="el">Μετατροπέας τριφασικό AC/ μονοφασικό AC</name>
         <name lang="en">Three phase converter single phase</name>

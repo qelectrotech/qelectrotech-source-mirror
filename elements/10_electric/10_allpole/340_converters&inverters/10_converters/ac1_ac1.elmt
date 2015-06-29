@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{34543D92-2D3E-43B0-A49E-59BB756BB655}"/><names>
         <name lang="ar">حاكم جهد أحادي الوجه</name>
         <name lang="de">Umformer AC/AC</name>
         <name lang="ru">Однофазный перем. ток > Однофазный перем. ток</name>

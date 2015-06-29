@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="40" hotspot_y="50" height="110" type="element" orientation="ydyy">
-    <names>
+<uuid uuid="{F05662DD-C435-4BC8-A86D-BA553CDADB2F}"/><names>
         <name lang="ar">دائرة مثدمجة 8 دبابيس, مُرقّمة</name>
         <name lang="de">Integrierte Schaltung 8 Anschlüsse nummeriert</name>
         <name lang="el">Ολοκληρωμένο κύκλωμα 8 ακροδεκτών, αριθμημένο</name>

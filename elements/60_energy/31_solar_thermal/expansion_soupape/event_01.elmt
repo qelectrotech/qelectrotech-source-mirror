@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D4EC606A-86D9-49EC-8BA1-36C92BB70338}"/><names>
         <name lang="ar">إناء حالة مفتوحة</name>
         <name lang="en">Event Open Vase</name>
         <name lang="fr">Event Vase Ouvert</name>

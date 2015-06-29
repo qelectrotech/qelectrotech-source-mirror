@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C9DDB7D5-695B-4AC2-B055-86F6CAC5177F}"/><names>
         <name lang="en">Heater</name>
         <name lang="fr">Chauffe</name>
         <name lang="pl">Nagrzewnica</name>

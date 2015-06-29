@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="21" hotspot_y="24" height="50" link_type="master" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C616C6A6-2298-4485-850B-7C416C78950E}"/><names>
         <name lang="de">Sicherungstrenner 1-polig + N</name>
         <name lang="el">Ασφαλειοδιακόπτης P+N</name>
         <name lang="en">switchfuse P+N</name>

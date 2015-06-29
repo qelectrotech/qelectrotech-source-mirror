@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="29" hotspot_y="34" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B26D1A5E-6D4B-4764-B6AF-7904FAF3C484}"/><names>
         <name lang="en">thermo Electric</name>
         <name lang="fr">Ballon eau chaude</name>
         <name lang="es">Termo Electrico</name>

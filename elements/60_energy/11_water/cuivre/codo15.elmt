@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="16" hotspot_y="20" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9A27B107-C9FE-4B8D-AA79-F688F6A94F75}"/><names>
         <name lang="en">Copper Elbow 15</name>
         <name lang="it">gomito di rame 15</name>
         <name lang="fr">Cuivre Coude 15</name>

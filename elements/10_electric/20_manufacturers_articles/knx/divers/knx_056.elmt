@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{37EF32B9-D1F5-41ED-B4B2-90BFEBEB72B6}"/><names>
         <name lang="en">Binary display</name>
         <name lang="it">Display digitale</name>
         <name lang="fr">Afficheur led</name>

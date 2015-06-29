@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4A92A004-2425-4EC9-9538-7B78DAE05FA5}"/><names>
         <name lang="ar">ضاغط بمكبس</name>
         <name lang="el">Εμβολοφόρος συμπιεστής</name>
         <name lang="en">Piston compressor</name>

@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true" orientation="dnnn">
-    <names>
+<uuid uuid="{73363071-0FB8-410E-A7B9-F6F525C14933}"/><names>
         <name lang="ar">مُناور</name>
         <name lang="el">Χειριστήριο</name>
         <name lang="en">Lever switch 2 poles 2 directions latched</name>

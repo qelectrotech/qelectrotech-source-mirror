@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{DFA0440C-0705-4006-8D94-105CB450D098}"/><names>
         <name lang="ar">ترياك</name>
         <name lang="de">Triak</name>
         <name lang="en">Triac</name>

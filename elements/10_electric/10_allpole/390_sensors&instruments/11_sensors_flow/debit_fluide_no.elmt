@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="22" hotspot_y="31" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{1F992334-2793-4616-8FBF-70F74C5E0D8C}"/><names>
         <name lang="el">Αισθητήρας ροής υγρού, ανοικτή επαφή</name>
         <name lang="en">Actuated by the flow of a fluid NO</name>
         <name lang="de">Durchflussschalter Schliesser</name>

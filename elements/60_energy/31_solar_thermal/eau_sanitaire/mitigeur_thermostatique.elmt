@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4B0073EB-7FD4-4E07-B1D4-125CC2B16830}"/><names>
         <name lang="ar">صمّام خلط ترموستاتي ECS</name>
         <name lang="en">Thermostatic mixing valve ECS</name>
         <name lang="fr">Mitigeur thermostatique ECS</name>

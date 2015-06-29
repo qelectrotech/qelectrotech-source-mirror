@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6B70EA0E-320B-4D7A-BAD0-70B62282719D}"/><names>
         <name lang="ar">ضاغط دوّار</name>
         <name lang="el">Περιστροφικός συμπιεστής</name>
         <name lang="en">Rotary compressor</name>

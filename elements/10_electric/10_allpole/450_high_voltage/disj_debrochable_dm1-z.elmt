@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{003079F8-60A5-4781-B544-6B4178C42EE2}"/><names>
         <name lang="en">DM1-Z withdrawable circuit breaker</name>
         <name lang="fr">Disjoncteur debrochable DM1-Z</name>
         <name lang="pl">Wyłącznik wysuwny DM1-Z</name>

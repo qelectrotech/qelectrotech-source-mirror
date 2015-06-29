@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3567BE70-1979-42DC-A6D4-41DEB0397462}"/><names>
         <name lang="ar">زرّ ضاغط مُضيئ</name>
         <name lang="el">Φωτιζόμενο μπουτόν</name>
         <name lang="en">Illuminated pushbutton</name>

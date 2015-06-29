@@ -1,5 +1,5 @@
 <definition type="element" link_type="simple" hotspot_x="5" hotspot_y="19" orientation="dyyy" version="0.5" width="10" height="50">
-    <names>
+<uuid uuid="{6B7F5E99-EF67-4D6A-AA1B-4C373960C9F6}"/><names>
         <name lang="en">Connector</name>
         <name lang="fr">Connecteur</name>
         <name lang="ru">Соединение (нов.)</name>

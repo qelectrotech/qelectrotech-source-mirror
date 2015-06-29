@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="60" hotspot_y="50" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CF0BCFDC-2619-4767-8130-EB85CF7AAAD4}"/><names>
         <name lang="en">3/2-shut-off valve manuel operated</name>
         <name lang="fr">Vannes d'arrêt 3/2 manuel</name>
         <name lang="pl">Zawór wyłączjący 3/2</name>

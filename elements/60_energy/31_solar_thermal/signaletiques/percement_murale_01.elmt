@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F23AFD6E-0D16-4750-9FBE-76C389D778D4}"/><names>
         <name lang="ar">ممر حائطي</name>
         <name lang="en">Passage wall</name>
         <name lang="fr">Passage murale </name>

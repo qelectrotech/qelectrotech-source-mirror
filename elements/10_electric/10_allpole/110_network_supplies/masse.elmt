@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="15" height="20" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{31415647-B13D-4A06-948E-C50EBC12A61D}"/><names>
         <name lang="ar">هيكل معدني</name>
         <name lang="de">Masse</name>
         <name lang="ru">Шасси</name>

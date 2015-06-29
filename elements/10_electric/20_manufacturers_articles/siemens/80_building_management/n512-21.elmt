@@ -1,5 +1,5 @@
 <definition width="440" version="0.4" hotspot_x="43" hotspot_y="42" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
-    <names>
+<uuid uuid="{37B3BB3B-C6A8-4221-9788-D51E47128E11}"/><names>
         <name lang="nl">N512/21 uitbreidingsmodule op N512/11</name>
         <name lang="it">Modulo N512/21</name>
         <name lang="cs">Rozšiřující modul N512/21</name>

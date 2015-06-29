@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
-    <names>
+<uuid uuid="{A4534DAF-6EB5-4219-960E-0D45A526991F}"/><names>
         <name lang="fr">Double Flux</name>
     </names>
     <informations>cbh41</informations>

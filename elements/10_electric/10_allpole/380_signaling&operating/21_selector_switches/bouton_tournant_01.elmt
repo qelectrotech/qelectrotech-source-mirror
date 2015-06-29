@@ -1,5 +1,5 @@
 <definition orientation="dyyy" height="50" link_type="master" version="0.5" type="element" hotspot_x="13" width="50" hotspot_y="24">
-    <names>
+<uuid uuid="{C83DAB9D-C456-449B-A6DF-5796253E6A23}"/><names>
         <name lang="en">Selector switch 2-position stay put, key withdrawal from LH</name>
         <name lang="it">Selettore a chiave, 2 posizioni stabili, estrazione chiave a SX</name>
         <name lang="el">Διακόπτης επιλογής 2 θέσεων, αφαίρεση κλειδιού στην αριστερή θέση</name>

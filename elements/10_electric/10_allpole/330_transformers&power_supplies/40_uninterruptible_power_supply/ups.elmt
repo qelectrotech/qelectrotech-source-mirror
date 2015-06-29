@@ -1,5 +1,5 @@
 <definition width="220" version="0.4" hotspot_x="98" hotspot_y="43" height="80" type="element" ic="true" orientation="dyyy" link_type="master">
-    <names>
+<uuid uuid="{F3049D0C-277C-43CA-A56C-0921EC69BF02}"/><names>
         <name lang="nl">UPS</name>
         <name lang="be">UPS</name>
         <name lang="en">UPS</name>

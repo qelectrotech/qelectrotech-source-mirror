@@ -1,5 +1,5 @@
 <definition width="230" version="0.4" hotspot_x="16" hotspot_y="46" height="200" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EDC75F60-3AC8-46F6-BE7B-AA575B995305}"/><names>
         <name lang="en">Parametry ATV11</name>
         <name lang="fr">Parametres ATV11</name>
         <name lang="it">Parametri ATV11</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="28" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B5EB93C2-B305-4FD4-8E32-C7AA64AC937A}"/><names>
         <name lang="es">Llave acometida</name>
         <name lang="it">Valvola di attacco</name>
         <name lang="pl">Zawór szybkozamykający</name>

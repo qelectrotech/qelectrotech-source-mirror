@@ -1,5 +1,5 @@
 <definition width="190" version="0.4" hotspot_x="95" hotspot_y="75" height="170" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{976497F5-2155-491D-9225-8D3172F16954}"/><names>
         <name lang="ar">HMI TACTILE 2</name>
         <name lang="en">Touch panel 2</name>
         <name lang="de">Touchpanel 2</name>

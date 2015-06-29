@@ -1,5 +1,5 @@
 <definition width="420" version="0.3" hotspot_x="70" hotspot_y="40" height="140" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0B4AC643-0183-46AA-857D-0A60E2DF150D}"/><names>
         <name lang="ar">مرحل محكوم ذاتيا  PILZ</name>
         <name lang="de">Sicherheitsmodul PILZ</name>
         <name lang="ru">Модуль безопасности PILZ</name>

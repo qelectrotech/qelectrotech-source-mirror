@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F1FA0E63-14A3-43B7-8590-635D7B45E6EA}"/><names>
         <name lang="en">Rapid purge</name>
         <name lang="fr">Purge rapide</name>
         <name lang="pl">Zawór szybkiego spustu</name>

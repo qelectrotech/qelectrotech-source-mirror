@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{6AE9FBA2-BCB0-4728-96A1-047FBB86C432}"/><names>
         <name lang="en">Air drain</name>
         <name lang="fr">Reniflard</name>
         <name lang="pl">Odpowietrznik chwilowy</name>

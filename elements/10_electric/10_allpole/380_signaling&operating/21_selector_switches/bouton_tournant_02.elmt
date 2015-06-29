@@ -1,5 +1,5 @@
 <definition hotspot_x="11" hotspot_y="24" orientation="dyyy" type="element" width="50" height="50" version="0.5" link_type="master">
-    <names>
+<uuid uuid="{E1F5A952-EB89-4F10-89CC-6015D4C7E5B5}"/><names>
         <name lang="de">Öffner 1-polig 2 Stellungen Schlüssel betätigt rastend</name>
         <name lang="es">switch selector_02 posición fija con llave LH</name>
         <name lang="fr">Bouton tournant 2 positions fixes, retrait de la clé à gauche</name>

@@ -1,5 +1,5 @@
 <definition hotspot_y="46" orientation="dyyy" link_type="simple" version="0.5" hotspot_x="495" type="element" width="1010" height="90">
-    <names>
+<uuid uuid="{472FA5D7-7F2B-451D-90B9-4E317854A70C}"/><names>
         <name lang="en">M241 input modules 2/2 Schneider</name>
         <name lang="fr">Cartes entrées M241 Schneider 2/2</name>
     </names>

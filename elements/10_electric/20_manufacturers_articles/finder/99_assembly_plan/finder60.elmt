@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="10" hotspot_y="40" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{038DA06E-9763-41EC-8972-B116862E7BC6}"/><names>
         <name lang="el">Ρελέ τύπου λυχνίας</name>
         <name lang="en">General Purpose Relay</name>
         <name lang="it">Relè ad innesto - Serie 60</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{47843D2B-D454-46F6-9CE4-CD3B59FF7A69}"/><names>
         <name lang="de">Blindverbrauchszähler</name>
         <name lang="el">Μετρητής αέργου ισχύος (βαρόμετρο)</name>
         <name lang="en">reactive energy meter</name>

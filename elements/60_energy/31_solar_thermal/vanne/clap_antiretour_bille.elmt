@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{73FA33A7-2AE7-4FCB-9ABC-A0676864E38A}"/><names>
         <name lang="ar">صمّام ضدّ الرجع بكرة</name>
         <name lang="el">Ανεπίστροφη βαλβίδα μπίλιας</name>
         <name lang="en">Check valve ball</name>

@@ -1,5 +1,5 @@
 <definition link_type="master" type="element" width="30" hotspot_y="31" height="60" orientation="dyyy" version="0.5" hotspot_x="17">
-    <names>
+<uuid uuid="{29C7E3E8-46F8-4DCE-BC4B-512F4632E5C0}"/><names>
         <name lang="pl">Łącznik przyciskowy, odblokowywany kluczykiem (przycisk bezpieczeństwa)</name>
         <name lang="nl">Noodstop grendel</name>
         <name lang="fr">Arrêt d'urgence (VERROU)</name>

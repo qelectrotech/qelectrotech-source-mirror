@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E5D135BD-2F1F-494E-A268-9279B8FB279F}"/><names>
         <name lang="ar">سخّان ماء</name>
         <name lang="be">Heißwassergerät</name>
         <name lang="el">Θερμοσίφωνας</name>

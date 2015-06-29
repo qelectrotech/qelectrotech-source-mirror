@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="2" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3036865E-7070-43CC-99B4-F70CD36FDEEA}"/><names>
         <name lang="ar">خط تحت أرضي</name>
         <name lang="de">Leiter im Erdreich, Erdkabel</name>
         <name lang="el">Υπόγεια γραμμή</name>

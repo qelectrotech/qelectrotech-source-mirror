@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A5FD3C83-D6AD-4CB6-AC13-FB0DC98703ED}"/><names>
         <name lang="ar">زرّ ضاغط مُضيئ</name>
         <name lang="de">Drucktaster beleuchtet</name>
         <name lang="en">Push-button with indicator lamp</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{3B9AE37B-6EEC-4D4D-95DD-088DC32B914B}"/><names>
         <name lang="ar">دايود شوتكي</name>
         <name lang="de">Schottky Diode</name>
         <name lang="en">Schottky diode</name>

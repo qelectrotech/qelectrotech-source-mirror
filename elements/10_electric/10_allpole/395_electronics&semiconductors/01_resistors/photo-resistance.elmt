@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{3E5C979A-3A01-4CDE-9F12-722F33811A32}"/><names>
         <name lang="ar">مُقاومة ضوئيّة</name>
         <name lang="de">Photowiderstand</name>
         <name lang="el">Φωτοαντίσταση</name>

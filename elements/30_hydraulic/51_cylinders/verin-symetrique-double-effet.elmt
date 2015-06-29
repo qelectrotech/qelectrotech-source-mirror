@@ -1,5 +1,5 @@
 <definition width="320" version="0.3" hotspot_x="85" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{07D4B390-BE93-44A3-A64F-F9043C257AFE}"/><names>
         <name lang="en">Double acting cylinders -double ended piston rod</name>
         <name lang="fr">Vérin symétrique double effet</name>
         <name lang="pl">Siłownik symetryczny podwójny</name>

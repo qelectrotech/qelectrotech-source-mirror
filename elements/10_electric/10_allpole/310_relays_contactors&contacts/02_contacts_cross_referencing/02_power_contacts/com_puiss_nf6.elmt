@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="37" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy" link_type="slave">
-    <names>
+<uuid uuid="{E632CD62-7FC5-4F1B-A01B-CBCB1E2C4C31}"/><names>
         <name lang="ar">مُلامس قدرة - كونتكتور (NC)</name>
         <name lang="de">Leistungsöffner 4-polig</name>
         <name lang="ru">Контакт контактора (НЗ)</name>

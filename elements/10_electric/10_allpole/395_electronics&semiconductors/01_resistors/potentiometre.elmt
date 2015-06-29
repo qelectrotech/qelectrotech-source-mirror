@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{D0FBFF02-6751-4877-B0E5-100200C6A776}"/><names>
         <name lang="ar">بوتونسيومتر</name>
         <name lang="el">Ποτενσιόμετρο</name>
         <name lang="en">Potentiometer</name>

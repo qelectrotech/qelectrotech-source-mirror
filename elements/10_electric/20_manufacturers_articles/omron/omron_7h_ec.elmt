@@ -1,5 +1,5 @@
 <definition width="150" version="0.3" hotspot_x="15" hotspot_y="14" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{38B46DD4-9822-4C68-891A-263EB8E3F914}"/><names>
         <name lang="ar">OMRON 7HEC</name>
         <name lang="pt">OMRON 7H EC</name>
         <name lang="el">Μετρητής OMRON 7H EC</name>

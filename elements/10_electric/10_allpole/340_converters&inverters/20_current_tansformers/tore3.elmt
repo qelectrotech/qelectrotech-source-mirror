@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="35" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2DE2E9AA-9875-4C6C-BD18-F79DD08ADAE9}"/><names>
         <name lang="ar">ملف حلقي بثلاث أقطاب</name>
         <name lang="de">Stromwandler 3-polig</name>
         <name lang="pt">Núcleo toroidal de 3 polos</name>

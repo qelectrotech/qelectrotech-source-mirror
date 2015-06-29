@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A257D22D-DC35-48A8-A29F-31F58B2F9DEB}"/><names>
         <name lang="ar">قارورة متوسطة</name>
         <name lang="el">Μέτρια φιάλη</name>
         <name lang="en">Average bottle</name>

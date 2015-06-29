@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2350B5B6-10E1-4A6D-9DB3-736936F1CCED}"/><names>
         <name lang="en">Electronic switching device with N/O contact </name>
         <name lang="de">Schliesser Halbleiter betätigt</name>
         <name lang="fr">Dispositif de commande à semi-conducteur NO</name>

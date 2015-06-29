@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A1C95453-E841-473D-87E7-F0019C4D56E6}"/><names>
         <name lang="ar">مصفاة</name>
         <name lang="el">Κασέτα φίλτρου</name>
         <name lang="en">Cartridge filter</name>

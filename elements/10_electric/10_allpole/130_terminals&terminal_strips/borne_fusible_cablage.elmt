@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="80" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D66B7B8B-D201-46E1-9137-49511D5B1D63}"/><names>
         <name lang="ar">طرف ربط مصهر</name>
         <name lang="de">Sicherungsklemme</name>
         <name lang="en">Terminal fuse</name>

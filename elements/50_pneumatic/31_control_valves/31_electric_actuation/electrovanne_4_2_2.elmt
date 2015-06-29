@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CCD5DB84-2431-4C81-9077-6E89D19F344E}"/><names>
         <name lang="en">Valve 4 / 3 control, open in mid-position</name>
         <name lang="fr">Vanne 4 / 3 de contrôle, open à la mi-position</name>
         <name lang="pl">Zawór sterujący 4/3, zamknięty w położeniu środkowym, z przekryciem ujemnym, z nieskończoną liczbą połączeń pośrednich</name>

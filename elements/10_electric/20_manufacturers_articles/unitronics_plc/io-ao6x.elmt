@@ -1,5 +1,5 @@
 <definition hotspot_y="52" type="element" height="110" version="0.5" orientation="dyyy" hotspot_x="15" link_type="simple" width="750">
-    <names>
+<uuid uuid="{4AA5A85E-1D4B-4177-BEBE-906BC50697B2}"/><names>
         <name lang="en">IO-AO6X</name>
         <name lang="cs">IO-AO6X</name>
     </names>

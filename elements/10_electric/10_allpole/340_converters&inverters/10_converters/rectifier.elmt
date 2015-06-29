@@ -1,5 +1,5 @@
 <definition width="170" version="0.4" hotspot_x="109" hotspot_y="57" height="140" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8D1C290A-6570-4F8C-B55A-77845CE934E4}"/><names>
         <name lang="el">Ανορθωτής</name>
         <name lang="en">Rectifier</name>
         <name lang="de">Gleichrichter</name>

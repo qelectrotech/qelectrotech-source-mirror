@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="28" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9E9F6C69-4498-42C1-B685-BFF5BAD7C420}"/><names>
         <name lang="el">Δέκτης/ Αποκωδικοποιητής υπερύθρων</name>
         <name lang="en">IR Receiver/Decoder</name>
         <name lang="it">Ricevitore IR/Decoder</name>

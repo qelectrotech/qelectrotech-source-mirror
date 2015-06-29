@@ -1,5 +1,5 @@
 <definition width="290" version="0.4" hotspot_x="21" hotspot_y="32" height="520" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4703BDD4-D90B-4E3F-AF60-679EB66DD5E4}"/><names>
         <name lang="en">Terminal 12G1</name>
         <name lang="fr">Bornier cable 12G1</name>
         <name lang="it">Morsettiera Cavo 12

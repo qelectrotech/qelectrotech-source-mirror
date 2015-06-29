@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{49365DF5-96CF-48E5-B877-3517D5ED5F57}"/><names>
         <name lang="ar">مضخة تداول</name>
         <name lang="el">Αναστρέψιμος κυκλοφορητής</name>
         <name lang="en">Reversible circulator</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{35C97D4A-15E7-4E5E-B487-F117075562AD}"/><names>
         <name lang="ar">مفتاح نهاية مشوار (NC) بحدبة دورانية</name>
         <name lang="de">Öffner Steuernocken</name>
         <name lang="ru">Концевой контакт (НЗ)</name>

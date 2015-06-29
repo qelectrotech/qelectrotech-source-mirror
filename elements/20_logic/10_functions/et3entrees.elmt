@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{91F46FB4-2C8F-4B68-B262-853DFF05F6E8}"/><names>
         <name lang="ar">بوابة AND بثلاث مداخل </name>
         <name lang="de">UND 3 Eingänge</name>
         <name lang="ru">И, трёхвходовый</name>

@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="35" hotspot_y="72" height="160" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{32AAC590-84E8-4795-9344-A275C398296E}"/><names>
         <name lang="ar">RESEAU STATION CHAINON</name>
         <name lang="en">Network Station middle</name>
         <name lang="de">Netzwerkstation mitte</name>

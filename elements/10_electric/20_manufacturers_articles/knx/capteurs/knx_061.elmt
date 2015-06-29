@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A535B68B-DF42-4509-BF08-B3010CC23B60}"/><names>
         <name lang="en">Circuit Breaker Alarm</name>
         <name lang="it">Allarme contatto aperto</name>
         <name lang="fr">Alarme - interrupteur ouvert</name>

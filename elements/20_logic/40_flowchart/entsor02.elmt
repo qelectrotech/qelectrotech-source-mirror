@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="15" hotspot_y="15" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{37818D37-D7D0-4B3C-81FE-ED0118195991}"/><names>
         <name lang="el">Είσοδος/Έξοδος "2 γραμμές"</name>
         <name lang="en">Input / Output "two lines"</name>
         <name lang="it">Ingresso/uscita "2 righe"</name>

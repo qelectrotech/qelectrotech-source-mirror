@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7F27C925-A809-4747-94BC-40E7614F08B8}"/><names>
         <name lang="ar">صمّام أمان مع استشعار حراري</name>
         <name lang="en">Thermal safety valve, with sensor</name>
         <name lang="fr">Soupape de sûreté thermique, avec capteur</name>

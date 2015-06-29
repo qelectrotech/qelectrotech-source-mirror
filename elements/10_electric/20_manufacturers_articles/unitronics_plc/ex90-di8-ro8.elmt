@@ -1,5 +1,5 @@
 <definition version="0.5" hotspot_x="15" hotspot_y="52" orientation="dyyy" width="690" height="110" link_type="simple" type="element">
-    <names>
+<uuid uuid="{37143711-E02C-4350-9192-FDF7074CB3AD}"/><names>
         <name lang="en">EX90-DI8-RO8</name>
         <name lang="cs">EX90-DI8-RO8</name>
     </names>

@@ -1,5 +1,5 @@
 <definition width="370" version="0.3" hotspot_x="15" hotspot_y="15" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{91E2068E-E1C7-4E99-846C-645D319DB8FA}"/><names>
         <name lang="en">Geiger detector J305β</name>
         <name lang="fr">Geiger Tube J305β </name>
         <name lang="pl">Detektor Geigera-Müllera J305β</name>

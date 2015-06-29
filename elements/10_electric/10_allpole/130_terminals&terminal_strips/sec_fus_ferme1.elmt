@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="0" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{B215E505-811F-4531-BAA7-5DE657D79A73}"/><names>
         <name lang="ar">مفتاح فصل</name>
         <name lang="de">Trenn- und Sicherungsklemme</name>
         <name lang="en">Disconnecting switch fused</name>

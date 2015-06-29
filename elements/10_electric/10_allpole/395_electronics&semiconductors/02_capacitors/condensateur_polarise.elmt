@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{39DF17C9-226C-4C42-9ABD-5F9281B0FDC9}"/><names>
         <name lang="ar">مُكثّف مُستقطب </name>
         <name lang="el">Ηλεκτρολυτικός πυκνωτής</name>
         <name lang="en">Polarized Capacitor</name>

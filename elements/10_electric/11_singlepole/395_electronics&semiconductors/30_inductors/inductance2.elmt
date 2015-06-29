@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{EF24DFCF-FF7E-406F-AC11-FC17EC91B593}"/><names>
         <name lang="ar">حثّ</name>
         <name lang="de">Induktivität</name>
         <name lang="ru">Индуктивность</name>

@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{FE506B44-1E2D-44BF-8DDB-3A9895DF7A55}"/><names>
         <name lang="en">Lubricator</name>
         <name lang="fr">Lubrificateurs</name>
         <name lang="pl">Smarownica</name>

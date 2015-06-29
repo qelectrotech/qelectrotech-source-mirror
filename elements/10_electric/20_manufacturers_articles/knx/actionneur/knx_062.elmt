@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B908888B-1C3A-43B7-90ED-9AADE7330678}"/><names>
         <name lang="el">Ηλεκτριβαλβίδα</name>
         <name lang="en">Valve</name>
         <name lang="it">Comando valvola</name>

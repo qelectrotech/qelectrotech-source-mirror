@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="24" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{12866EAC-FE8D-4C1C-8E55-738D90FF0EA4}"/><names>
         <name lang="ar">مفتاح-عازل أرضي</name>
         <name lang="de">Erdungsschalter</name>
         <name lang="pt">Interruptor-seccionador de terra</name>

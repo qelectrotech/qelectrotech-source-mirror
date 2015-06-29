@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4C2A6402-BE0B-4D95-9042-93599436F9EA}"/><names>
         <name lang="en">Control air pressure</name>
         <name lang="fr">Commande pression de l'air</name>
         <name lang="pl">Sterowane za pomocą ciśnienia</name>

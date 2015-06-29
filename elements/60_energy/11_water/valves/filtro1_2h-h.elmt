@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="28" height="40" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F6DC3D18-7D67-4A11-A1F4-1967F9527F8E}"/><names>
         <name lang="ar">مُرشّح بغربال</name>
         <name lang="en">Filter Screens</name>
         <name lang="it">Filtro a schermi 1/2 F-F</name>

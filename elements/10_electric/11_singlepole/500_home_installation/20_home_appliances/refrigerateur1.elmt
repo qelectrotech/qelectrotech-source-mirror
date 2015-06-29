@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
-    <names>
+<uuid uuid="{02BAB67A-59A3-468C-A27D-47DA879439F4}"/><names>
         <name lang="fr">Réfrigérateur</name>
     </names>
     <informations>CBH41</informations>

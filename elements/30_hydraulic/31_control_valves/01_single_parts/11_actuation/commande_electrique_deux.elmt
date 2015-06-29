@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2D4E31FF-16E7-478C-9BFA-28AA5E9CA0A5}"/><names>
         <name lang="en">Two electric coil</name>
         <name lang="fr">Electrique deux bobine</name>
         <name lang="pl">Elektryczne (dwie cewki)</name>

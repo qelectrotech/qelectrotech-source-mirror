@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DB2061F3-FF0B-45B4-84E6-822D5E6667AE}"/><names>
         <name lang="ar">سخّان ECS  بغلاف مزدوج</name>
         <name lang="en">ECS heater jacket</name>
         <name lang="fr">Réchauffeur ECS double enveloppe</name>

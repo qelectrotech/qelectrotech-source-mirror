@@ -1,5 +1,5 @@
 <definition width="760" version="0.3" hotspot_x="5" hotspot_y="4" height="160" type="element" orientation="dnyn">
-    <names>
+<uuid uuid="{FEE92675-9569-4BA8-874A-FFF6BECDBCAE}"/><names>
         <name lang="ar">لوحة تغذية </name>
         <name lang="pt">fonte alimentação</name>
         <name lang="el">Τροφοδοτικό</name>

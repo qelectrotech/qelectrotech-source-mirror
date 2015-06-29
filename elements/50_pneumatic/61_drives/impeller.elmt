@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="31" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{844C6484-4F66-47E6-B803-04B20B64ABF8}"/><names>
         <name lang="en">Impeller</name>
         <name lang="fr">Turbine</name>
         <name lang="it">Girante</name>

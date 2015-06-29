@@ -1,5 +1,5 @@
 <definition width="770" version="0.3" hotspot_x="15" hotspot_y="45" height="100" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{D7478CC0-92AB-407E-87ED-6BDB56865920}"/><names>
         <name lang="el">Κάρτα εξόδων (8 έξοδοι)</name>
         <name lang="en">Universal inputs (8 outputs)</name>
         <name lang="de">Allgemeine 8xDO-Karte</name>

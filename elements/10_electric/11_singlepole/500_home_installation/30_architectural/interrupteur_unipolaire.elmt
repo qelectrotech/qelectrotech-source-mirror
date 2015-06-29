@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{70370297-7A6F-4C7B-9C8D-73F103CF54C7}"/><names>
         <name lang="ar">مفتاح أحادي القطب</name>
         <name lang="el">Μονός διακόπτης</name>
         <name lang="en">Single pole switch</name>

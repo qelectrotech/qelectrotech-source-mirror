@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="60" hotspot_y="50" height="100" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8C0241E5-2914-4F2D-918E-7C0701F59E40}"/><names>
         <name lang="ar">سخّان تحت أرضي</name>
         <name lang="en">Underfloor Heating</name>
         <name lang="fr">Plancher Chauffant</name>

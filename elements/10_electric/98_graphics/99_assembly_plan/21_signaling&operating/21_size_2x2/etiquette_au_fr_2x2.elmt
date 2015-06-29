@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="0" hotspot_y="0" height="100" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{5FC2C4F3-EF7D-42B3-95D6-3EFC8A1D4717}"/><names>
         <name lang="ar">توقيف طارئ</name>
         <name lang="el">Στάση κινδύνου - Γαλλικά</name>
         <name lang="en">Label - Emergency stopping - fr</name>

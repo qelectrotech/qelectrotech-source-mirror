@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="40" type="element" ic="true" orientation="dnny">
-    <names>
+<uuid uuid="{E3E24D65-D73C-4C7C-A3A3-1ACA89577BBE}"/><names>
         <name lang="en">Off-page reference</name>
         <name lang="it">Riferimento esterno</name>
         <name lang="fr">Connecteur externe</name>

@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="6" hotspot_y="185" height="190" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E48C9390-D06B-4020-9CF7-9698C391627B}"/><names>
         <name lang="en">Energy management</name>
         <name lang="it">Gestione Energia</name>
         <name lang="fr">Gestion Énergie</name>

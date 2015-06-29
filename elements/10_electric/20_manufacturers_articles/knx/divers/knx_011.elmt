@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4AD64550-3480-4DAC-BE05-F7D76C6EEA6F}"/><names>
         <name lang="el">Ροοστάτης</name>
         <name lang="en">Dimmer</name>
         <name lang="it">Dimmer</name>

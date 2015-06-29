@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="15" hotspot_y="25" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C151B5AB-0792-4244-9AB3-DE2B0E32E35C}"/><names>
         <name lang="el">Εργασία</name>
         <name lang="en">working</name>
         <name lang="it">Preparazione</name>

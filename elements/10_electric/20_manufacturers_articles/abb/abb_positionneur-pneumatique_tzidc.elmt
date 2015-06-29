@@ -1,5 +1,5 @@
 <definition width="170" version="0.4" hotspot_x="5" hotspot_y="3" height="90" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{62CDA46A-F24C-4B87-906B-F23EEE667EDA}"/><names>
         <name lang="en">ABB Pneumatic Positioner TZIDC</name>
         <name lang="fr">ABB_Positionneur-Pneumatique_TZIDC</name>
         <name lang="it">ABB Posizionatore pneumatico TZIDC</name>

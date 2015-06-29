@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="45" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E4EB4201-42BE-4F1B-8386-B5966C34FE6C}"/><names>
         <name lang="en">Two-way flow controller with temperature compensation, with a variable output flow rate</name>
         <name lang="fr">Régulateur de débit à deux voies avec compensation de température, avec un débit variable de sortie</name>
         <name lang="pl">Regulator przepływu dwudrogowy z wyrównaniem temperatury, ze zmiennym wyjściowym natężeniem przepływu</name>

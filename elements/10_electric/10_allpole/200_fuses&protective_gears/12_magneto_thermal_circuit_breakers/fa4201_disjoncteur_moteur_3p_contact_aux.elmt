@@ -1,5 +1,5 @@
 <definition type="element" link_type="master" hotspot_x="33" hotspot_y="10" orientation="dyyy" version="0.5" width="120" height="80">
-    <names>
+<uuid uuid="{7FB51F41-24A1-446E-AFBE-20240FE98A2E}"/><names>
         <name lang="en">Motor circuit breaker with  auxiliary contact</name>
         <name lang="fr">Disjoncteur de moteur avec contacts auxiliaire</name>
         <name lang="cs">Jistič motoru s pomocnými kontakty</name>

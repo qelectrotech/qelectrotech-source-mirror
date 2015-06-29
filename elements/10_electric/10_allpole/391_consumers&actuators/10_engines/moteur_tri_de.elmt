@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="24" hotspot_y="35" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{64E3E9B9-8FF4-45FC-A942-154ABF73BC85}"/><names>
         <name lang="ar">محرّك سداسي الأوجه</name>
         <name lang="de">6-Phasen Motor</name>
         <name lang="ru">Шестифазный эл. мотор</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{D29B7713-461A-42B0-AD50-CEA7447957C6}"/><names>
         <name lang="en">Check valve with spring</name>
         <name lang="fr">Clapet anti-retour avec ressort</name>
         <name lang="pl">Zawór zwrotny obciążony sprężyną</name>

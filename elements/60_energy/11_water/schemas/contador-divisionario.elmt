@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="23" hotspot_y="35" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1C42EF28-4956-410C-A7E0-1126DFFBE636}"/><names>
         <name lang="es">Contador divisionario</name>
         <name lang="it">Flussometro divisionale</name>
         <name lang="pl">Wodomierz</name>

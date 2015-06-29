@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="20" hotspot_y="21" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4A030AC0-E127-4969-B24A-ED1CAA0BE7F9}"/><names>
         <name lang="ar">إنتقاليّة</name>
         <name lang="de">Übergang</name>
         <name lang="pt">transição</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="34" hotspot_y="73" height="170" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D30E2DF0-C17E-4026-ABAF-8FF9D3B344DE}"/><names>
         <name lang="en">cRIO bus CAN</name>
         <name lang="it">cRIO 9853 - modulo CAN-bus</name>
         <name lang="fr">cRIO bus CAN</name>

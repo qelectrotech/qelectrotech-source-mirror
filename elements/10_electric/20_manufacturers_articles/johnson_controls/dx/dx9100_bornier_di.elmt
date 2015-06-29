@@ -1,5 +1,5 @@
 <definition width="140" version="0.3" hotspot_x="25" hotspot_y="40" height="210" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A71E1AD9-EB70-4EAA-9A54-8F81506D3790}"/><names>
         <name lang="en">DX 9100 DI wiring</name>
         <name lang="fr">DX9100 cablage DI</name>
         <name lang="pl">DX9100 - zaciski wejść cyfrowych</name>

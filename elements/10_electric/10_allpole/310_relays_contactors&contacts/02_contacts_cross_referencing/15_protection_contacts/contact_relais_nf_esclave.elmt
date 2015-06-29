@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="9" hotspot_y="25" height="50" link_type="slave" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{AFFD6050-6772-47DE-AD29-95C56CE89459}"/><names>
         <name lang="ar">مُلامس مُرحّل حراري (NC)</name>
         <name lang="de">Relaisöffner</name>
         <name lang="ru">Контакт теплового реле (НЗ)</name>

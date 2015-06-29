@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="35" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
-    <names>
+<uuid uuid="{15AF06A3-5557-4E17-A121-F949CF6E4511}"/><names>
         <name lang="el">Πηνίο χρονικού, καθυστέρηση ενεργοποίησης-απενεργοποίησης</name>
         <name lang="en">Relay delay at activation and rest</name>
         <name lang="de">Relais ansprech- und rückfallverzögert</name>

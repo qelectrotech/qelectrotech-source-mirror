@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{388437EA-29EB-4491-8C97-219CC2E70BC7}"/><names>
         <name lang="ar">جهاز كهرومنزلي</name>
         <name lang="el">Ηλεκτρική συσκευή</name>
         <name lang="en">Appliance</name>

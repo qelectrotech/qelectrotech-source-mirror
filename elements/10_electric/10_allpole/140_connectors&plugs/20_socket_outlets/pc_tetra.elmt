@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{84A46E75-E05A-419B-B333-D9845E9BA204}"/><names>
         <name lang="ar">مقبس رباعي القطبية</name>
         <name lang="en">Socket 3P+N+PE</name>
         <name lang="de">Steckdose 3P+N+PE</name>

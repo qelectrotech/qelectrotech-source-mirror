@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{287A4E3A-69FC-49E5-8FB9-71A19049F216}"/><names>
         <name lang="ar">عاكس أحادي الوجه</name>
         <name lang="de">Wechselrichter</name>
         <name lang="ru">Пост. ток > Однофазный перем. ток</name>

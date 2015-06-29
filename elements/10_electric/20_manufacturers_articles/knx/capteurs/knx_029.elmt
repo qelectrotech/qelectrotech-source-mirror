@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{63A46590-243C-44C1-94F8-68C14C99847E}"/><names>
         <name lang="el">Ψηφιακή/Αναλογική είσοδος, μικτή</name>
         <name lang="en">Binary/Analog input, mix</name>
         <name lang="it">Ingresso digitale/analogico, misto</name>

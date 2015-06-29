@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="35" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{52F685AE-5B2D-43CF-9D57-ED399548B5AA}"/><names>
         <name lang="ar">حسّاس حثّي ب 4 أطراف</name>
         <name lang="de">Induktiver Sensor 4-Leiter</name>
         <name lang="el">Επαγωγικός αισθητήρας, 4 ακροδέκτες</name>

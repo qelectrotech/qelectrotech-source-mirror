@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="15" hotspot_y="35" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{364D8CA2-E6DF-4D30-9D1E-2EB37A88C97C}"/><names>
         <name lang="es">Purgador 3/8 Macho</name>
         <name lang="it">Sfiato 3/8 M</name>
         <name lang="pl">Odpowietrznik 3/8"</name>

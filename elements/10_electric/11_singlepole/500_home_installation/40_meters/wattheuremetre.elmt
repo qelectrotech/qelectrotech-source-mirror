@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="5" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B2D38EA8-7E24-4087-A416-4BCBA9483D1B}"/><names>
         <name lang="ar">عدّاد طاقة فعّالة - وات ساعة متر -</name>
         <name lang="de">Wattstundenzähler</name>
         <name lang="el">Μετρητής βατ/ώρα</name>

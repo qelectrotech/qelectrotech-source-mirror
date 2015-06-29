@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="28" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
-    <names>
+<uuid uuid="{A3CD1303-3206-4137-B91B-7E677DAE3EFD}"/><names>
         <name lang="ar">قاطع مغناطيسي-حراري GV</name>
         <name lang="de">Motorschutzschalter</name>
         <name lang="el">Θερμομαγνητικό</name>

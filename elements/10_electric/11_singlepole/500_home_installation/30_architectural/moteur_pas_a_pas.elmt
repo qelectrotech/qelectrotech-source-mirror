@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{28CF94E8-505F-4ADD-83DE-D03438C867DB}"/><names>
         <name lang="ar">مُحرّك خطوة-خطوة</name>
         <name lang="de">Schrittmotor</name>
         <name lang="el">Βηματικός κινητήρας</name>

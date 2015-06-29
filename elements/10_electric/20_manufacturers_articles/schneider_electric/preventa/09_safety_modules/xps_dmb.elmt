@@ -1,5 +1,5 @@
 <definition width="200" version="0.3" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EA4DB19B-8792-49A5-B2C0-7C7DCB21A18D}"/><names>
         <name lang="ar">XPS-DMB</name>
         <name lang="en">XPS-DMB</name>
         <name lang="fr">XPS-DMB</name>

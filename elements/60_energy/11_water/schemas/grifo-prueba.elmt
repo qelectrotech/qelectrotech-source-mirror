@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="8" hotspot_y="13" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{37600B4B-144F-4670-8A97-92BBA4017E78}"/><names>
         <name lang="es">Grifo de comprobación</name>
         <name lang="it">Rubinetto di controllo</name>
         <name lang="pl">Zawór do regulacyjny</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="8" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4EF99AD4-A319-45C3-B378-84D0A84641BC}"/><names>
         <name lang="en">Current transformer, pulse transformer</name>
         <name lang="de">Stromwandler, Impulswandler</name>
         <name lang="fr">Transformateur de courant, transformateur d'impulsion</name>

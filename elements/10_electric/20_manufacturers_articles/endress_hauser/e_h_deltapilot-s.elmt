@@ -1,5 +1,5 @@
 <definition width="160" version="0.3" hotspot_x="65" hotspot_y="75" height="150" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{53B5C50B-DBFD-475B-A638-1B88BCC8889B}"/><names>
         <name lang="en">Pressure Sensor DeltaPilot S</name>
         <name lang="fr">Sonde Pression DeltaPilot S</name>
         <name lang="it">Sonda di pressione DeltaPilot S</name>

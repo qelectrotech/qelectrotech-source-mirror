@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="ynnd">
-    <names>
+<uuid uuid="{C5A7BA8F-B2BE-4D19-8DD5-917607362AF5}"/><names>
         <name lang="ar">مقياس تدفق بالنبضات</name>
         <name lang="de">Durchflusszähler</name>
         <name lang="en">Flowmeter pulse</name>

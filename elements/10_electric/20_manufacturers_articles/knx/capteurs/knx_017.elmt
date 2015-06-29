@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{84E1DF71-35B7-4B50-900C-6901DDCF61D5}"/><names>
         <name lang="el">Μπουτόν ρολών</name>
         <name lang="en">Shutter switch</name>
         <name lang="it">Pulsante tapparella</name>

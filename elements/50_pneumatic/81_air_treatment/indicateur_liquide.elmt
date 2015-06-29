@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{58A1BF34-5D59-4310-8A7E-77FBEB994424}"/><names>
         <name lang="en">Liquid Level Indicator</name>
         <name lang="fr">Indicateur de niveau de liquide</name>
         <name lang="pl">Wskaźnik poziomu cieczy</name>

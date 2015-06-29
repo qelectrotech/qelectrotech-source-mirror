@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="16" hotspot_y="24" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F3767237-F283-479E-9C66-0EFD66BEF882}"/><names>
         <name lang="en">Ground</name>
         <name lang="ro">Masă</name>
         <name lang="ar">هيكل معدني</name>

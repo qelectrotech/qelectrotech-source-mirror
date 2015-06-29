@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="130" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6E709D45-533A-488E-BCED-492FD81E8A2A}"/><names>
         <name lang="en">Switch PM</name>
         <name lang="fr">Interrupteur PM</name>
         <name lang="pl">Rozłącznik PM</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="5" hotspot_y="5" height="210" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EB4C965C-6137-477B-9683-B84C72A21BA0}"/><names>
         <name lang="fr">CTX DN20 20 230A</name>
     </names>
     <informations></informations>

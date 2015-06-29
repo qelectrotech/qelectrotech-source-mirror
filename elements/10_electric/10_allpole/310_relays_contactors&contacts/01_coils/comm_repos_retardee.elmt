@@ -1,5 +1,5 @@
 <definition type="element" link_type="master" hotspot_x="28" hotspot_y="24" orientation="dyyy" version="0.5" width="50" height="50">
-    <names>
+<uuid uuid="{8190EFBE-72AC-4065-BD1B-1DD4ABED5057}"/><names>
         <name lang="en">Relay delay rest</name>
         <name lang="fr">Relais à mise au repos retardée</name>
         <name lang="es">Relé con retardo de apertura</name>

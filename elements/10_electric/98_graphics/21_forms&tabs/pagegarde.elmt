@@ -1,5 +1,5 @@
 <definition width="430" version="0.4" hotspot_x="4" hotspot_y="23" height="260" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BC87F076-6FB8-4B03-AFA0-EE418A03AEA6}"/><names>
         <name lang="en">Table Title Homepage</name>
         <name lang="de">Deckblatt</name>
         <name lang="it">Tabella pagina principale</name>

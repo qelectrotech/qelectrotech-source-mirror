@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5699D1A1-AF0F-4454-9603-09EAB65FA789}"/><names>
         <name lang="ar">مفتاح أحادي القطب (مبدّل طرف سلم)</name>
         <name lang="de">Serienschalter 1-polig
 </name>

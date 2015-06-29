@@ -1,5 +1,5 @@
 <definition type="element" hotspot_x="13" hotspot_y="24" orientation="dyyy" width="50" height="50" version="0.5" link_type="master">
-    <names>
+<uuid uuid="{3CA12B4D-E4FA-463A-AA51-7172B842A208}"/><names>
         <name lang="it">Selettore a 2 posizioni stabili</name>
         <name lang="pl">Łącznik obrotowy przełączny, uruchamiany kluczykiem z samoczynnym powrotem</name>
         <name lang="cs">Otočný spínač - 2 polohy</name>

@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="12" hotspot_y="29" height="60" link_type="master" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{89D4ADF3-2AE3-4C05-828F-3F49C347A3DE}"/><names>
         <name lang="ar">مفتاح عزل بمصهر</name>
         <name lang="de">Sicherungstrenner 1-polig</name>
         <name lang="ru">Выключатель-предохранитель</name>

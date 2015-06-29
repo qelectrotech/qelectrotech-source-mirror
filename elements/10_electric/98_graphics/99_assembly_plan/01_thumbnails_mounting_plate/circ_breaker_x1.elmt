@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="45" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{736EF73C-89A1-4CE8-88A0-57F36DEA097B}"/><names>
         <name lang="ar">قطب قاطع  دائرة</name>
         <name lang="el">Μικροαυτόματος διακόπτης</name>
         <name lang="en">1-pole circuit breaker</name>

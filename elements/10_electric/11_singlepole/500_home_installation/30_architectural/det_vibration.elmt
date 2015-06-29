@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="21" hotspot_y="15" orientation="dyyy" width="30" height="30" version="0.5" type="element">
-    <names>
+<uuid uuid="{E51333D0-C97A-49EB-81A5-3E1EA2E91800}"/><names>
         <name lang="el">Ανιχνευτής κραδασμών</name>
         <name lang="en">Vibrations detector</name>
         <name lang="fr">Détecteur de vibrations</name>

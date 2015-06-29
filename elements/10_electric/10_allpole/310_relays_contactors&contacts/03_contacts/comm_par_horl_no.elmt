@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="22" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D0241EDC-7CF5-4E5B-826B-3616C05BF481}"/><names>
         <name lang="el">Ανοικτή επαφή χρονοδιακόπτη</name>
         <name lang="en">Contact NO-controlled clock</name>
         <name lang="de">Schliesser zeitgesteuert</name>

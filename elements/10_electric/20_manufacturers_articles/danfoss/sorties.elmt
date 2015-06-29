@@ -1,5 +1,5 @@
 <definition width="610" version="0.3" hotspot_x="347" hotspot_y="75" height="130" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F6998B58-E0C8-4FD4-B491-AE5F2331DEA9}"/><names>
         <name lang="ar">مخارج AKCC 550</name>
         <name lang="el">AKCC 550 - έξοδοι</name>
         <name lang="en">AKCC 550 Outputs</name>

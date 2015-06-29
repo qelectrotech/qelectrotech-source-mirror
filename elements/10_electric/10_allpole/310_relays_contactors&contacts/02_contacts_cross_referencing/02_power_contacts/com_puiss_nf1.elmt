@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="7" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny" link_type="slave">
-    <names>
+<uuid uuid="{7186D8E7-95F1-414D-8259-ABAE817AFD28}"/><names>
         <name lang="ar">مُلامس قدرة كونتكتور (NC)</name>
         <name lang="de">Leistungsöffner 1-polig</name>
         <name lang="ru">Контакт контактора (НЗ)</name>

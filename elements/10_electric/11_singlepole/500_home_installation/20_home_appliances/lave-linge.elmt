@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="6" hotspot_y="185" height="190" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C21F05C5-C699-440D-863F-92DB0D52D2C3}"/><names>
         <name lang="en">Washing machine</name>
         <name lang="de">Waschmaschine</name>
         <name lang="fr">Lave-Linge</name>

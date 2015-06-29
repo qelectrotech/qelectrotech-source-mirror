@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A62D7106-F1E8-4643-9B03-2384858B416F}"/><names>
         <name lang="ar">ضاغط (رمز عام)</name>
         <name lang="el">Συμπιεστής, γενικό σύμβολο</name>
         <name lang="en">Compressor (general)</name>

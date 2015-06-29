@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{2280E8BA-73B8-49C4-B0D3-BF04FECE381F}"/><names>
         <name lang="ar">مقاومة مرتبطة بالجهد (فاريستور)</name>
         <name lang="de">Varistor</name>
         <name lang="en">Varistor</name>

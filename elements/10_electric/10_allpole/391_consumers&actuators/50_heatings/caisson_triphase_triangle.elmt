@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="28" hotspot_y="39" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{300807EF-DF1D-42A1-B425-8E0ED327E683}"/><names>
         <name lang="ar">صندوق ثلاثي الأوجه - مثلثي</name>
         <name lang="el">Κιβώτιο με συνδεσμολογία τριγώνου</name>
         <name lang="de">Heizwiderstand (Drehstrom/Dreieck)</name>

@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="43" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F12F8CBD-2D1B-4A7E-ACBB-972C427C5157}"/><names>
         <name lang="ar">مفتاح بقفل 3 وضعيات</name>
         <name lang="el">Διακόπτης 3 θέσεων, 1-0-2 με κλειδί</name>
         <name lang="en">Key switch 3 positions</name>

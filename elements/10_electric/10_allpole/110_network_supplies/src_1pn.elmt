@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{18B1E8DF-FB93-47E7-9F99-31841B02A3C4}"/><names>
         <name lang="ar">مصدر وحيد القطبية + محايد N</name>
         <name lang="de">Wechselstrom L + N</name>
         <name lang="ru">Однополюсный + нейтраль</name>

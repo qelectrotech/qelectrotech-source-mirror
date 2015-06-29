@@ -1,5 +1,5 @@
 <definition width="400" version="0.22" hotspot_x="200" hotspot_y="110" height="200" type="element" orientation="nydy">
-    <names>
+<uuid uuid="{20662B27-A059-4361-9F2F-DC9F04DD025F}"/><names>
         <name lang="ar">حاكم  siemens RL232</name>
         <name lang="en">temperature control RL232</name>
         <name lang="fr">regul siemens RL232</name>

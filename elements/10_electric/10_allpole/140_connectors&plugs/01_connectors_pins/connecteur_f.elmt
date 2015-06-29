@@ -1,5 +1,5 @@
 <definition type="element" link_type="simple" hotspot_x="5" hotspot_y="18" orientation="dyyy" version="0.5" width="10" height="30">
-    <names>
+<uuid uuid="{315322F0-8C5C-48CA-8825-1B90F4053902}"/><names>
         <name lang="en">Female connector</name>
         <name lang="fr">Connecteur femelle</name>
         <name lang="ru">Гнездо (нов.)</name>

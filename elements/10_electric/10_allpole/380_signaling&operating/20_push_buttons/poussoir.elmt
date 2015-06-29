@@ -1,5 +1,5 @@
 <definition link_type="master" height="60" hotspot_y="29" version="0.5" type="element" hotspot_x="14" orientation="dyyy" width="20">
-    <names>
+<uuid uuid="{B7E19699-CDD6-471B-B99D-8F31818E7C9A}"/><names>
         <name lang="ar">زرّ ضاغط</name>
         <name lang="pt">Botão de pressão (NA)</name>
         <name lang="fr">Bouton poussoir</name>

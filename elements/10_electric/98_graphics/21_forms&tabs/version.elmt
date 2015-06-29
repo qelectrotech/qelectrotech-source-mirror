@@ -1,5 +1,5 @@
 <definition width="400" version="0.2" hotspot_x="15" hotspot_y="20" height="150" type="element" orientation="dnnn" >
-    <names>
+<uuid uuid="{AB07EB5C-1569-4265-9346-A18F09344BE9}"/><names>
         <name lang="fr">Version</name>
         <name lang="de">Versionsverfolgung</name>
         <name lang="en">Version tracking</name>

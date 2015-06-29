@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="33" hotspot_y="34" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C297A460-57FC-4D9F-8568-8EC04E0B9DCF}"/><names>
         <name lang="en">PVCell</name>
         <name lang="fr">Caisson solaire photovoltaïque</name>
         <name lang="de">Photovoltaikmodul</name>

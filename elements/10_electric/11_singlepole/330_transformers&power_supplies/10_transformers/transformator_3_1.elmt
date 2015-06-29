@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="27" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{749DABB0-D0C8-4268-BA3F-E0328BEE972C}"/><names>
         <name lang="ar">محوّل ثلاثي الأوجه</name>
         <name lang="de">Transformator Drehstrom</name>
         <name lang="ru">Трёхфазный трансформатор</name>

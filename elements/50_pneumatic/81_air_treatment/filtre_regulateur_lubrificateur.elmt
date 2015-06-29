@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5A43D0DE-7805-4362-90D6-50CC553D23D7}"/><names>
         <name lang="en">Filter pressure regulator lubricator</name>
         <name lang="fr">Filtres régulateurs de pression lubrificateurs</name>
         <name lang="pl">Zespół przygotowania powietrza (filtr, reduktor, smarownica)</name>

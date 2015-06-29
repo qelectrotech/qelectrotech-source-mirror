@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="16" hotspot_y="22" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B3B8B35A-30FB-4BDD-AACA-0EE890E97E00}"/><names>
         <name lang="ar">صمّام بضغط ثابت (يسار)</name>
         <name lang="el">Βαλβίδα σταθερής πίεσης (αριστερή)</name>
         <name lang="en">Constant pressure valve (left)</name>

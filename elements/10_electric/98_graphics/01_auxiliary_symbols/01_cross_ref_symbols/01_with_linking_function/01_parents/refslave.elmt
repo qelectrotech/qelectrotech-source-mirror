@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="0" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy" link_type="next_report">
-    <names>
+<uuid uuid="{98626512-5462-42B0-BC0C-903735A5C23A}"/><names>
         <name lang="ar">الصفحة التالية</name>
         <name lang="de">Refaus</name>
         <name lang="el">Επόμενη σελίδα</name>

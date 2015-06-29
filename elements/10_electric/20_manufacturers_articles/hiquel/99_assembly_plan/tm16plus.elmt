@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="50" height="100" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{AA10B6C8-7C8E-421C-AA77-28A4CCAA332F}"/><names>
         <name lang="el">Χρονικό πολλαπλών λειτουργιών TM16+</name>
         <name lang="en">Multifunctional timer relay TM16+</name>
         <name lang="fr">Relais tempo multi fonctionction TM16+</name>

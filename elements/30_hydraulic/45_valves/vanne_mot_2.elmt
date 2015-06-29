@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="70" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{84E1C529-9BAD-479E-BDC1-5F17FF012803}"/><names>
         <name lang="en">Motorized three-way valve</name>
         <name lang="fr">Vanne trois voies motorisée</name>
         <name lang="pl">Zawór trójdrogowy sterowany silnikiem</name>

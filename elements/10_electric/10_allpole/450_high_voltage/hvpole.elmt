@@ -1,5 +1,5 @@
 <definition width="150" version="0.4" hotspot_x="70" hotspot_y="93" height="200" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{83719BBA-8A5B-45DA-A074-A34FB37B604B}"/><names>
         <name lang="el">Πυλώνας υψηλής τάσης</name>
         <name lang="en">HV Pole</name>
         <name lang="it">Traliccio</name>

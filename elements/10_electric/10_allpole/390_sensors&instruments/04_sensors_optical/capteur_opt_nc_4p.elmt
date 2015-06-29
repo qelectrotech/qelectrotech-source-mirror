@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DF96C69B-4C84-4B21-ADF4-8701E8F55996}"/><names>
         <name lang="ar">حسّاس بصري (NC)</name>
         <name lang="en">Optic sensor (NC)</name>
         <name lang="de">Lichtsensor 4-Leiter Öffner</name>

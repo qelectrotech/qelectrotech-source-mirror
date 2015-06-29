@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D07956B2-74F4-43D4-807F-4CCD7F975517}"/><names>
         <name lang="el">Τροφοδοτικό + φίλτρο</name>
         <name lang="en">Power Supply + Choke</name>
         <name lang="it">Alimentatore + protezione</name>

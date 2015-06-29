@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D1018189-59A1-408E-8CA9-7BC96DB9F9E1}"/><names>
         <name lang="en">Dryer</name>
         <name lang="fr">Assecheur</name>
         <name lang="pl">Osuszacz</name>

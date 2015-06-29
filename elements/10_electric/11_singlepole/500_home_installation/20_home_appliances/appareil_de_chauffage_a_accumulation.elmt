@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{865CFC6D-0157-4E93-B149-29D48273508D}"/><names>
         <name lang="ar">سخّان بالتراكم</name>
         <name lang="el">Θερμοσυσσωρευτής</name>
         <name lang="en">Heater has accumulated</name>

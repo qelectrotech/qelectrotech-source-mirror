@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{ADBF7030-C12B-4D0F-B40F-9DA8F84149AA}"/><names>
         <name lang="en">Quick opening valves with mechanical feedback</name>
         <name lang="fr">Vannes à ouverture rapide avec rétroaction mécanique</name>
         <name lang="pl">Szybkozłączka z mechanicznie otwieranymi zaworami zwrotnymi - rozłączona</name>

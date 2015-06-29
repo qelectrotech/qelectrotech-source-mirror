@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{D5522F03-04D5-4583-9721-387CF3F4B7EA}"/><names>
         <name lang="ar">دايود زينر</name>
         <name lang="de">Zener Diode</name>
         <name lang="el">Δίοδος ζένερ</name>

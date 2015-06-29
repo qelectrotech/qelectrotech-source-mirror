@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="16" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5F368000-0B60-44FC-B892-595DE1FA0396}"/><names>
         <name lang="es">Valv Pié 3/4Hembra</name>
         <name lang="it">Valvola di piede 3/4 F</name>
         <name lang="pl">Zawór nożny 3/4"</name>

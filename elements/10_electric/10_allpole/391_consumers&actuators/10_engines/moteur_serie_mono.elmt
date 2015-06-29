@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="48" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9301E4D2-62A9-4555-84E3-83DE10F772EC}"/><names>
         <name lang="ar">محرّك توالي أحادي الوجه</name>
         <name lang="el">Σειριακό μοτέρ, μονοφασικό</name>
         <name lang="en">Series motor single phase</name>

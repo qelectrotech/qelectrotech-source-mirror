@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="15" hotspot_y="31" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0D540C49-BEED-45C3-A093-E04AA1076394}"/><names>
         <name lang="ar">مغزل دوّار بثلاث كابلات</name>
         <name lang="el">Ανέμη με 3 σωλήνες</name>
         <name lang="en">Rotating spindle with 3 cables</name>

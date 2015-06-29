@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="43" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{EBEE4CE1-36DD-40D0-AA58-5785CCE80EE2}"/><names>
         <name lang="ar">قاطع دائرة ثلاثي القطب</name>
         <name lang="el">Τριπλός Μικροαυτόματος διακόπτης</name>
         <name lang="en">3-pole circuit breaker</name>

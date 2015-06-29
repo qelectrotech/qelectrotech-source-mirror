@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="18" hotspot_y="24" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{79361D2A-01AC-4C29-A854-7840D8DB291E}"/><names>
         <name lang="ar">صمّام كهربائي 3V  "صحي"</name>
         <name lang="en">Solenoid 3V "health"</name>
         <name lang="it">Elettrovalvola 3vie acqua sanitaria</name>

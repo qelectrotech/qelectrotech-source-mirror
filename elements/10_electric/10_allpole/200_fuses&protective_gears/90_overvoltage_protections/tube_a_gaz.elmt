@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{37CDDD50-6D69-4E00-964F-8FFCCD82B4FC}"/><names>
         <name lang="de">Überspannungsableiter in einer Gasentladungsröhre</name>
         <name lang="en">Protective gas discharge tube</name>
         <name lang="it">Limitatore di tensione a gas</name>

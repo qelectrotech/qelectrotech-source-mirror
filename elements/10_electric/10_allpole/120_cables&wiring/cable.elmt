@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="51" hotspot_y="15" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C177F42C-2650-462C-B65F-E2F0C68B4317}"/><names>
         <name lang="de">Kabel 3G</name>
         <name lang="it">Cavo 2 fasi + terra</name>
         <name lang="fr">Cable 2 phases+terre</name>

@@ -1,5 +1,5 @@
 <definition hotspot_x="205" hotspot_y="79" width="870" orientation="dyyy" link_type="terminal" height="170" version="0.5" type="element">
-    <names>
+<uuid uuid="{1B52898C-6B42-4CB0-B99D-A9B09203F065}"/><names>
         <name lang="en">ls inverter</name>
     </names>
     <informations></informations>

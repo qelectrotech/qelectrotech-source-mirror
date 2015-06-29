@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B313FAF5-AE80-41FB-8B9C-9B28C19EEA7B}"/><names>
         <name lang="en">Single acting cylinder
 </name>
         <name lang="fr">Verin simple effet</name>

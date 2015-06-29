@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="-6" height="10" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{12375393-C7AC-48F5-A845-2539B29EC88A}"/><names>
         <name lang="ar">عنصر مرن</name>
         <name lang="de">Flexibler Elektro-Installationskanal</name>
         <name lang="el">Εύκαμπτο στοιχείο</name>

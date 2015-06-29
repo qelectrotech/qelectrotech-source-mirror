@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C0DC883C-0DC7-41A3-8ACF-A22810F0DDD6}"/><names>
         <name lang="es">Dilatador</name>
         <name lang="it">Compensatore dilatazione</name>
         <name lang="pl">Kompensator rozszerzeń</name>

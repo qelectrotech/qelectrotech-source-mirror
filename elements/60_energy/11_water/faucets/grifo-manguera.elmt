@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="29" hotspot_y="21" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D5C8CAE7-55D7-4FC2-BC0D-ADDCEBBFF60B}"/><names>
         <name lang="en">Sink hose</name>
         <name lang="fr">Robinet </name>
         <name lang="es">Grifo-manguera</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E21C2858-2514-4DFC-B7B2-20C9C98775A2}"/><names>
         <name lang="el">Αναλογική έξοδος. γενικά</name>
         <name lang="en">Analog output, general</name>
         <name lang="it">Uscita analogica, generica</name>

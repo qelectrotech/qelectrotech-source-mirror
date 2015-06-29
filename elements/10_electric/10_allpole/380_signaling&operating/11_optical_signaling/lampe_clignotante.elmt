@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{EADB4C19-8404-4CD6-9836-1BA53904BBB8}"/><names>
         <name lang="ar">مصباح رفّاف</name>
         <name lang="de">Blinkleuchte</name>
         <name lang="ru">Проблесковый маяк</name>

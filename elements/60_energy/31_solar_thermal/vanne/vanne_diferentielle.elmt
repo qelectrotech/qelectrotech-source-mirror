@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="60" type="element" orientation="ndny">
-    <names>
+<uuid uuid="{8C0252A5-4C3C-4D77-AE70-9CF21DD38272}"/><names>
         <name lang="ar">صمّام ضغط تفاضلي</name>
         <name lang="en">Differential valve</name>
         <name lang="fr">Vanne différentielle</name>

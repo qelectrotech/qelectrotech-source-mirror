@@ -1,5 +1,5 @@
 <definition type="element" link_type="master" hotspot_x="28" hotspot_y="24" orientation="dyyy" version="0.5" width="50" height="50">
-    <names>
+<uuid uuid="{27501E46-BEA9-4091-B218-876D1F3C2A77}"/><names>
         <name lang="en">Relay operating delay at excitation</name>
         <name lang="fr">Relais à mise au travail retardée</name>
         <name lang="es">Relé con retrazo en la exitación</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{758E4FD7-9DB2-429F-B357-A6B10F1267F9}"/><names>
         <name lang="ar">مقياس تدفق بمروحة</name>
         <name lang="en">Propeller flowmeter</name>
         <name lang="fr">Débimetre Hélice</name>

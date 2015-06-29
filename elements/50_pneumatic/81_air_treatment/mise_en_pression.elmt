@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="70" hotspot_y="70" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{71A6BEF1-8C44-4B7C-BC92-5384D650A207}"/><names>
         <name lang="en">Filling valve, pneumatically operated</name>
         <name lang="fr">Vannes de mise en pression, commande pneumatique</name>
         <name lang="pl">Zawór napełniający</name>

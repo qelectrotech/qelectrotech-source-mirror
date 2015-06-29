@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="17" hotspot_y="17" height="20" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{141E9851-8DC6-4298-A797-9DF3560FD614}"/><names>
         <name lang="ar">زرّ دوّار بمفتاح</name>
         <name lang="el">Διακόπτης με κλειδί</name>
         <name lang="en">Rotative key-switch</name>

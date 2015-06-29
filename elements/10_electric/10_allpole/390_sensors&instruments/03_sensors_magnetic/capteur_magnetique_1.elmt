@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{327FA900-8D74-4C92-9D1B-631B498AD9CE}"/><names>
         <name lang="ar">حسّاس مغناطيسي ب 3 أطراف</name>
         <name lang="el">Μαγνητικός αισθητήρας, 3 ακροδέκτες</name>
         <name lang="en">Magnetic sensor 3 terminals</name>

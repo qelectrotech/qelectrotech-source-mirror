@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C1E2C02C-51DB-4886-A3A2-A7BB8ED1765D}"/><names>
         <name lang="ar">صمّام ب3 مسارات</name>
         <name lang="en">3-way valve</name>
         <name lang="fr">Vanne 3 voies</name>

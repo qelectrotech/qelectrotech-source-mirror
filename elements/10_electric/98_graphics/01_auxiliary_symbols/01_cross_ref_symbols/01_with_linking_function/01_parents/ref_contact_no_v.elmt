@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="20" hotspot_y="23" height="30" type="element" ic="true" orientation="dyyy" link_type="next_report">
-    <names>
+<uuid uuid="{9727BF87-6823-41B0-97B1-F44EC9A805F3}"/><names>
         <name lang="ar">مرجع مُلامس NO (أفقي)</name>
         <name lang="en">Reference contact NO h</name>
         <name lang="it">Rif. contatto NO _ (verticale)</name>

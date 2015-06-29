@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B04A17A4-328C-44EF-8E30-39EAF1617A5E}"/><names>
         <name lang="ar">مضخّة بصمّام</name>
         <name lang="el">Αντλία με βαλβίδα</name>
         <name lang="en">Pump with Valve</name>

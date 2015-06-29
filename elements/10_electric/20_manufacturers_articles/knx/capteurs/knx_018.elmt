@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{DCC4CA2A-89C6-46A7-B064-0FBE8459EB33}"/><names>
         <name lang="el">Χρονικό</name>
         <name lang="en">Timer</name>
         <name lang="it">Temporizzatore</name>

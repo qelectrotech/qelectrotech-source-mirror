@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D892886A-E1BA-4617-970C-48D4765FDE3E}"/><names>
         <name lang="el">Αισθητήρας ταχύτητας ανέμου</name>
         <name lang="en">Wind speed sensor</name>
         <name lang="it">Sensore anemometro</name>

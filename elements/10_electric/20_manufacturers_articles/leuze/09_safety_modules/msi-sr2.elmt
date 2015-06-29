@@ -1,5 +1,5 @@
 <definition width="200" version="0.3" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D62B42B0-527D-447B-9D30-204F160C5A3C}"/><names>
         <name lang="ar">MSI-SR2</name>
         <name lang="en">MSI-SR2</name>
         <name lang="fr">MSI-SR2</name>

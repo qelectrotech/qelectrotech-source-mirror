@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{EDD11866-AB07-4D3D-B0B7-4BAF841C3271}"/><names>
         <name lang="en">Gate valve shut-off</name>
         <name lang="fr">Vanne d'arrêt</name>
         <name lang="pl">Zawór zasuwowy odcinający</name>

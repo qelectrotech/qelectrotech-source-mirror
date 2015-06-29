@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{368D3812-287E-4380-A7A8-CA0912A260DD}"/><names>
         <name lang="ar">مفتاح بسيط (محمي)</name>
         <name lang="de">Schliesser wasserdicht</name>
         <name lang="ru">Герметичный контакт (НР)</name>

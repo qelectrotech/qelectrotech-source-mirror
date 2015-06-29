@@ -1,5 +1,5 @@
 <definition width="220" version="0.3" hotspot_x="0" hotspot_y="10" height="430" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D1BDF76A-E724-4A6F-A345-FD0AFC3BB2B8}"/><names>
         <name lang="de">S7-1200-cpu-1212-ac-dc-rel/03</name>
         <name lang="en">S7-1200-cpu-1212-ac-dc-rel/03</name>
         <name lang="it">s7-1200 cpu 1212 ac-dc rel/03</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="40" height="80" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{648C5E51-A672-4A68-ACD1-011E3984668D}"/><names>
         <name lang="ar">مصدر ثلاثي القطبيّة + محايد</name>
         <name lang="de">Dreiphasig + Neutral</name>
         <name lang="ru">Трёхполюсный + нейтраль</name>

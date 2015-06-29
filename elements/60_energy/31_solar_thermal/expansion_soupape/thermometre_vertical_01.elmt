@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{859F17D2-DF6C-4990-BF9E-564F640138EB}"/><names>
         <name lang="ar">ميزان حرارة عمودي</name>
         <name lang="en">Vertical thermometer</name>
         <name lang="fr">Thermomètre Vertical </name>

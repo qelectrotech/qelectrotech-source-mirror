@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
-    <names>
+<uuid uuid="{0E0B01D9-DAD0-4440-A892-EF8C6BEC2365}"/><names>
         <name lang="ar">مرحّل مُستقطب</name>
         <name lang="el">Πηνίο ρελέ με πολικότητα</name>
         <name lang="en">Polarized relay</name>

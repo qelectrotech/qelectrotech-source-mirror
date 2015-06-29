@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{650CA69C-24A5-421A-894F-43491EFDB71E}"/><names>
         <name lang="en">Control air pressure drop</name>
         <name lang="fr">Commande chute de pression d'air</name>
         <name lang="pl">Sterowane przez spadek ciśnienia</name>

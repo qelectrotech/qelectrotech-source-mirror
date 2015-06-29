@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B56BFE0E-1C6A-409C-994F-2A865F12852D}"/><names>
         <name lang="ar">حسّاس حثّي ب 3 أطراف</name>
         <name lang="de">Induktiver Sensor 3-Leiter</name>
         <name lang="el">Επαγωγικός αισθητήρας, 3 ακροδέκτες</name>

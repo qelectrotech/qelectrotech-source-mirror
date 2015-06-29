@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="16" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2432D14C-CF41-41B5-9036-CB4A01679B98}"/><names>
         <name lang="fr">Transformateur à couplage réglable</name>
         <name lang="it">Trasformatore regolabile</name>
         <name lang="en">Transformer controllable</name>

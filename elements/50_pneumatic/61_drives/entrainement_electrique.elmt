@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0CD9A22C-859E-4C3D-BABD-C8CAF59B8433}"/><names>
         <name lang="en">Electrical drive</name>
         <name lang="fr">Entrainement electrique</name>
         <name lang="pl">Silnik elektryczny</name>

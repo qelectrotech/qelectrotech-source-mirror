@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CFD6EBE6-7283-440F-A05F-68BF965481C7}"/><names>
         <name lang="en">Valve 5 / 2, driven by the pressure in both directions</name>
         <name lang="fr">Electrovanne 5 / 2, entraînée par la pression dans les deux directions</name>
         <name lang="pl">Zawór sterujący 5/2, sterowany za pomocą ciśnienia w obu kierunkach</name>

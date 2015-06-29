@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{691F8B31-BA71-44E6-87E6-697C4F7EEB62}"/><names>
         <name lang="ar">سخّان أنبوبي</name>
         <name lang="en">ECS tubular heater</name>
         <name lang="fr">réchauffeur ECS tubulaire</name>

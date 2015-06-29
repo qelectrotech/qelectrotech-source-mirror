@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="35" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3979F03E-5FE8-4344-B829-50DA5C13749D}"/><names>
         <name lang="en">Fixed Displacement hydraulic pump</name>
         <name lang="fr">Pompe debit fixe</name>
         <name lang="pl">Pompa o stałej wydajności i jednym kierunku tłoczenia</name>

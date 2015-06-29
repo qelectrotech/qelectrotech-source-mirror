@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{4CC98706-C302-4081-938C-4E04BBBA0EE9}"/><names>
         <name lang="ar">إرجاء دخل</name>
         <name lang="de">Eingang Report</name>
         <name lang="pt">Relatório Entrada</name>

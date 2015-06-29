@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5EE48493-A05A-4EC6-910C-76B63386B1AE}"/><names>
         <name lang="ar">زرّ دوّار مُتمركز</name>
         <name lang="el">Περιστροφικός διακόπτης, κέντρο</name>
         <name lang="en">Turning button centered</name>

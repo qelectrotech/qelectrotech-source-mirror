@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="55" height="130" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8389533C-0E7A-4867-AA05-C69304C6DF1D}"/><names>
         <name lang="en">Switch IMB</name>
         <name lang="fr">Interrupteur IMB</name>
         <name lang="pl">Rozłącznik IMB</name>

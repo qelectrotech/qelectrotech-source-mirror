@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{843F8281-CA22-48A6-95FF-FEB9F2A20064}"/><names>
         <name lang="ar">حامل مُلصق فارغ</name>
         <name lang="el">Ετικέτα, κενή</name>
         <name lang="en">Label holder virgin</name>

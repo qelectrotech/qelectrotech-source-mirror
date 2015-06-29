@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{FCFAA37A-69E7-40EC-AA62-8955019AE758}"/><names>
         <name lang="en">Lock with key still trapped</name>
         <name lang="fr">Serrure avec cle toujours prisionniere</name>
         <name lang="pl">Zamek,  klucz niedostępny</name>

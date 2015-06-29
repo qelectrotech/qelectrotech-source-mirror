@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="37" hotspot_y="32" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0CA3E42E-025F-4B0E-A8BF-33DBDA331327}"/><names>
         <name lang="el">Αισθητήρας ροής</name>
         <name lang="en">Flow sensor pulsmeter</name>
         <name lang="de">Durchfluss Impulszähler</name>

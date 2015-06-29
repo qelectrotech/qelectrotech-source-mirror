@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="2" hotspot_y="1" height="390" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B43BDC5C-5287-4546-878A-A6001229AF8B}"/><names>
         <name lang="el">6ES7 153-1AA03-0XB0</name>
         <name lang="en">Coupleur 153-1AA03-0XB0</name>
         <name lang="it">Interfaccia 153-1AA03-0XB0</name>

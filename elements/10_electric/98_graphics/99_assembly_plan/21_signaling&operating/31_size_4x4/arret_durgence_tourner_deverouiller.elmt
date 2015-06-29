@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{32A3207F-3A8A-4071-806A-203096C5BA57}"/><names>
         <name lang="en">Emergency stop turned unlocked</name>
         <name lang="de">Not-Aus Taster mit Drehentriegelung</name>
         <name lang="fr">Arret d'urgence tourné dévérouillé</name>

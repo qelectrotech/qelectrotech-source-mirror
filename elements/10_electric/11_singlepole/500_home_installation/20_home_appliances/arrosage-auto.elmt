@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="6" hotspot_y="185" height="190" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{78929DB6-A880-4FD8-8006-9CD0E1A0F402}"/><names>
         <name lang="en">self watering</name>
         <name lang="it">Irrigazione automatica</name>
         <name lang="fr">Arrosage auto</name>

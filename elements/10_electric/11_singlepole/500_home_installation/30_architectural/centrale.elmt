@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="20" width="40" hotspot_y="21" version="0.5" type="element" orientation="dyyy" height="40">
-    <names>
+<uuid uuid="{10393BCC-FCC3-4AB3-A246-6CA8F26FE1B6}"/><names>
         <name lang="de">Zentrales System</name>
         <name lang="el">Κεντρικό σύστημα</name>
         <name lang="en">Central system</name>

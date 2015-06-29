@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5230D3B4-E8EA-4096-85FA-FB8A2FA52C80}"/><names>
         <name lang="el">Μονή ψηφιακή έξοδος</name>
         <name lang="en">Binary Output module single</name>
         <name lang="it">Uscita digitale, 1 can</name>

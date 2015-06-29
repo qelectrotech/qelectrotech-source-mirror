@@ -1,5 +1,5 @@
 <definition width="210" version="0.4" hotspot_x="105" hotspot_y="52" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E51BEC9B-78DB-47EC-A910-1EB5EEB12A26}"/><names>
         <name lang="el">ECOdevices</name>
         <name lang="en">ECOdevices</name>
         <name lang="it">ECOdevices</name>

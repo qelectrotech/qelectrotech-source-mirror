@@ -1,5 +1,5 @@
 <definition width="20" height="60" hotspot_y="29" type="element" link_type="master" orientation="dyyy" version="0.5" hotspot_x="12">
-    <names>
+<uuid uuid="{BC493768-9109-4014-955A-EB2E261B530B}"/><names>
         <name lang="it">Pulsante (NC)</name>
         <name lang="pl">Łącznik przyciskowy z powrotem samoczynnym</name>
         <name lang="cs">Tlačítko (NC)</name>

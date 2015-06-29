@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{8CFD2F49-8C54-4700-951A-7EA17F30EC20}"/><names>
         <name lang="ar">مُقاومة</name>
         <name lang="de">Widerstand</name>
         <name lang="ru">Резистор</name>

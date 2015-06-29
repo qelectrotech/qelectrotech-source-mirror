@@ -1,5 +1,5 @@
 <definition width="140" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E17ACBFC-DD5C-43DB-9316-C3B6975B1E57}"/><names>
         <name lang="en">Pneumatic actuator</name>
         <name lang="fr">Verin tandem</name>
         <name lang="pl">Siłownik pneumatyczny czteropołożeniowy i bezstykową sygnalizacją położenia tłoka</name>

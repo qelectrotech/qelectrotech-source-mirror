@@ -1,5 +1,5 @@
 <definition width="10" version="0.3" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4ECE3E5B-9DEF-4B15-8FBD-ABC5C73B3F4D}"/><names>
         <name lang="ar">طرف مزدوج</name>
         <name lang="de">Steckverbindung Buchse + Stecker</name>
         <name lang="ru">Соединение (стар.)</name>

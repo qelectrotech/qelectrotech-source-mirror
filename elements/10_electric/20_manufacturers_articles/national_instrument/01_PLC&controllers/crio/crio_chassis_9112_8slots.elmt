@@ -1,5 +1,5 @@
 <definition width="690" version="0.4" hotspot_x="85" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E3077399-B153-4742-BBB4-C134FEDD61B2}"/><names>
         <name lang="en">chassis cRIO 9112 - 8 slots</name>
         <name lang="it">cRIO 9112 - chassis a 8 slot</name>
         <name lang="fr">châssis cRIO 9112 - 8 slots</name>

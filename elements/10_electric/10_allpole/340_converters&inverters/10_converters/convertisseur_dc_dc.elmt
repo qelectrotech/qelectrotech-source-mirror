@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="35" hotspot_y="44" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E02EF37E-A8F0-4887-B3FC-31C7456D6A16}"/><names>
         <name lang="ar">مقطع : محول مستمر / مستمر</name>
         <name lang="de">Umrichter DC/DC</name>
         <name lang="el">Μετατροπέας DC/DC</name>

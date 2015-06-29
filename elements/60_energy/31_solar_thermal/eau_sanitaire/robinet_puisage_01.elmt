@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{27C054B3-06D1-4A13-B8CE-8C34C41138DC}"/><names>
         <name lang="ar">حنفيّة</name>
         <name lang="en">Faucet</name>
         <name lang="fr">Robinet de Puisage</name>

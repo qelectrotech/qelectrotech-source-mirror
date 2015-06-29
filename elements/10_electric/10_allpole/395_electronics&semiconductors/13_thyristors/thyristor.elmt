@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny">
-    <names>
+<uuid uuid="{92A522B9-4317-42E3-BF0C-E53391AAEE19}"/><names>
         <name lang="ar">ثايريستور</name>
         <name lang="de">Thyristor</name>
         <name lang="ru">Тиристор</name>

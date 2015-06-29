@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="58" hotspot_y="45" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{DDE162FC-A9C2-4D1A-98FE-C8734C14A00D}"/><names>
         <name lang="en">Operațional amplifier 3 pins</name>
         <name lang="de">Operaționsverstärker 3 Anschlüsse</name>
         <name lang="fr">Amplificateur opérationnel </name>

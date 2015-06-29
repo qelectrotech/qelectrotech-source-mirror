@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{46852540-B76B-4074-8E10-CE35AB9BFEBA}"/><names>
         <name lang="ar">غسّالة أواني</name>
         <name lang="el">Πλυντήριο πιάτων</name>
         <name lang="en">Dishwasher</name>

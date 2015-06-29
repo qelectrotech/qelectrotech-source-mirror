@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{05CA1744-E19D-4E4A-A8F7-972F27A760CE}"/><names>
         <name lang="ar">قلاب إلغاء/ إبقاء RS</name>
         <name lang="de">SETZEN/RÜCKSETZEN</name>
         <name lang="ru">Установка/Сброс</name>

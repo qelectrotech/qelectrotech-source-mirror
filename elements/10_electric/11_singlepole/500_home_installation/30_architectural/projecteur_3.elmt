@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="30" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BE3F9D20-9681-4B37-B684-3EFD3E7F16F9}"/><names>
         <name lang="ar">عاكس إضاءة</name>
         <name lang="de">Punktleuchte</name>
         <name lang="en">Floodlight</name>

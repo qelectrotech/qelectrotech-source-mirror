@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C03AC737-736D-41B3-AE2B-76122C0A214C}"/><names>
         <name lang="ar">خلاّط حنفيّة</name>
         <name lang="en">Mixer tap</name>
         <name lang="fr">Robinet melangeur</name>

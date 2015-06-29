@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="40" hotspot_y="34" height="60" link_type="master" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{189A2BE7-D456-4DBD-BF70-A3BF7841745A}"/><names>
         <name lang="ar">قاطع رباعي القطبية</name>
         <name lang="de">Leitungsschutzschalter 4P</name>
         <name lang="en">Circuit-breaker</name>

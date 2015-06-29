@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="13" hotspot_y="43" height="70" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F2C2E4B5-C859-461F-96DF-2162B97D5DF6}"/><names>
         <name lang="en">Current transformer with two secondary windings on a common magnetic circuit</name>
         <name lang="fr">Transformateur de courant, à deux enroulements secondaires sur un circuit magnétique commun</name>
         <name lang="de">Stromwandler mit 2 Wicklungen</name>

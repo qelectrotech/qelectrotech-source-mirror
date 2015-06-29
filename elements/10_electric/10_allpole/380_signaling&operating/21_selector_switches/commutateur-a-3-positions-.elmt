@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="34" hotspot_y="32" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D83085F6-61BC-42CF-A342-35171CA2E14B}"/><names>
         <name lang="en">3 position  switch</name>
         <name lang="de">Drehschalter 2-polig 3 Positionen ein/aus</name>
         <name lang="it">Commutatore a 3 posizioni </name>

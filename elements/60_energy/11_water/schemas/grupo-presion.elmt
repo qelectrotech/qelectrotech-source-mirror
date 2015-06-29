@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="36" hotspot_y="44" height="70" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A43B3C81-2FD5-4C3B-A2DE-C4824ECED032}"/><names>
         <name lang="ar">مضخة</name>
         <name lang="el">Αντλία</name>
         <name lang="en">Pump</name>

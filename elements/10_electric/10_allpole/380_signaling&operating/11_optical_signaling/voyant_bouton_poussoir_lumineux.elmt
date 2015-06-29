@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{0319D98A-1348-4904-A5CB-787A8D6280CD}"/><names>
         <name lang="ar">مُؤشّر ضوئي لمفتاح ضاغط</name>
         <name lang="el">Μπουτόν, φωτειζόμενο με LED</name>
         <name lang="en">LED of an illuminated push-button</name>

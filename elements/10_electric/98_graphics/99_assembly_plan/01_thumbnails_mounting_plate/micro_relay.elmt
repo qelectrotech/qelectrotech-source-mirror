@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="45" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A3916AAF-357D-462A-A424-E69B665C304F}"/><names>
         <name lang="el">Μικρορελέ</name>
         <name lang="en">Micro relay</name>
         <name lang="fr">Embase micro relais</name>

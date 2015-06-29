@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="25" height="50" link_type="master" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{356D5027-E95D-4757-AF35-A8C3D05384EA}"/><names>
         <name lang="el">Τηλεχειριζόμενος διακόπτης</name>
         <name lang="en">Remote controlled switch</name>
         <name lang="de">Stromstossrelais</name>

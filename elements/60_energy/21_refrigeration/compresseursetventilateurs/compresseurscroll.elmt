@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{71E13194-49DA-41AC-A898-444886191022}"/><names>
         <name lang="ar">ضاغط بالانتقال</name>
         <name lang="el">Σπειροειδής συμπιεστής</name>
         <name lang="en">Scroll compressor</name>

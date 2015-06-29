@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BDC3F306-7446-4D48-A39E-7D2487B877DD}"/><names>
         <name lang="ar">مسارات  - P -&gt; T  مُتّصلة 2</name>
         <name lang="en">4 ports - P -&gt; T connected</name>
         <name lang="fr">4 voies - P -&gt; T Relies</name>

@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="15" hotspot_y="15" type="element" orientation="dyyy" height="30" width="50" version="0.5">
-    <names>
+<uuid uuid="{7A06D59C-F949-4729-9487-9AAB7BF6A4F5}"/><names>
         <name lang="el">Ανιχνευτής θραύσης κρυστάλων</name>
         <name lang="en">Glass break detector</name>
         <name lang="fr">Détecteur de bris de vitre</name>

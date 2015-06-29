@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="22" hotspot_y="31" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{10BA781D-7FFD-431D-8F07-825282B90FDB}"/><names>
         <name lang="el">Αισθητήρας ροής αερίου, ανοικτή επαφή</name>
         <name lang="en">Actuated by the flow of a gas NO</name>
         <name lang="de">Gasströmungsschalter Schliesser</name>

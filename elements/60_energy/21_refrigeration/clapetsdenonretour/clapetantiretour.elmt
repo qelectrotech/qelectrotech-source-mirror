@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2B9FB2ED-4DF8-4985-935B-7822336BDCE3}"/><names>
         <name lang="ar">صمّام ضدّ العودة</name>
         <name lang="el">Ανεπίστροφη βαλβίδα</name>
         <name lang="en">Check valve</name>

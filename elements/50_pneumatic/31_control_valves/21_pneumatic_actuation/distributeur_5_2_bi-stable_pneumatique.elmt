@@ -1,5 +1,5 @@
 <definition width="160" version="0.3" hotspot_x="90" hotspot_y="50" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9546B73A-EB7E-4D81-AB0F-2120D94828F9}"/><names>
         <name lang="en">5/2-way valve</name>
         <name lang="fr">Distributeurs 5/2 bistable</name>
         <name lang="pl">Zawór bistabilny 5/2</name>

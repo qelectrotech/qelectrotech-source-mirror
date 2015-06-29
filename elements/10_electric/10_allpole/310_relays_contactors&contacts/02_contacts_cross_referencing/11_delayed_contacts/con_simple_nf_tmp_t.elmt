@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="slave">
-    <names>
+<uuid uuid="{8BC27267-4C79-4DFB-909A-2D2FD602D6E4}"/><names>
         <name lang="ar">مُلامس فصل يفتح متأخرا</name>
         <name lang="de">Öffner ansprechverzögert</name>
         <name lang="ru">Контакт с задержкой при срабатывании (НЗ)</name>

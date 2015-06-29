@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="35" hotspot_y="37" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2D6A9301-0FEF-4B55-BCF5-9FFCD98EA2D4}"/><names>
         <name lang="en">Sink</name>
         <name lang="fr">Evier</name>
         <name lang="es">Vertedero</name>

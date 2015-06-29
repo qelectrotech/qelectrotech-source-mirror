@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="43" hotspot_y="30" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F2D9D49D-E8A6-4AE9-AD59-6D7CA966EB9B}"/><names>
         <name lang="ar">مُبدّل بثلاث وضعيات (1-0-2)</name>
         <name lang="de">Drehschalter 3 Positionen</name>
         <name lang="ru">Переключатель 3-х позиционный со средним положением</name>

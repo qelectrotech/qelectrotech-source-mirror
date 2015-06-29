@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3BD56152-7FBD-4E52-AFB4-131EB70D0E37}"/><names>
         <name lang="ar">مُبدّل وسط سلّم</name>
         <name lang="de">Kreuzschalter
 </name>

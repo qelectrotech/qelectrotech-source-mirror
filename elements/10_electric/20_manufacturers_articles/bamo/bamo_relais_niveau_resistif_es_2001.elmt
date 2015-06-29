@@ -1,5 +1,5 @@
 <definition width="410" version="0.3" hotspot_x="24" hotspot_y="15" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{88CE9CDF-46A3-474D-BC71-785DA4E49B7A}"/><names>
         <name lang="el">Αισθητήρας στάθμης ES 2001Bamo</name>
         <name lang="en">Relay level resistive ES 2001</name>
         <name lang="it">Relè di livello resistivo BAMO ES 2001</name>

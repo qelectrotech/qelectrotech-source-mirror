@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7E2424BC-64A6-412A-A2A4-E483F3782E2E}"/><names>
         <name lang="en">DM1W withdrawable circuit breaker</name>
         <name lang="fr">Disjoncteur debrochable DM-1W</name>
         <name lang="pl">Wyłącznik wysuwny DM-1W</name>

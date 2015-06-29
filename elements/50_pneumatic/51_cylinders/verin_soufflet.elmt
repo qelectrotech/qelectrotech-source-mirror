@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="40" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F364A4A1-1476-40F3-943D-25CA5E24D56C}"/><names>
         <name lang="en">Bellow actuators</name>
         <name lang="fr">Vérins à soufflet</name>
         <name lang="pl">Siłownik mieszkowy</name>

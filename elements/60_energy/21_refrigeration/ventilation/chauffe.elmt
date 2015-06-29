@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dynn">
-    <names>
+<uuid uuid="{B92348D0-5006-45DA-92E7-8C08B0A0F519}"/><names>
         <name lang="el">Θερμαντήρας</name>
         <name lang="en">Heater</name>
         <name lang="it">Riscaldatore</name>

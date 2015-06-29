@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="45" hotspot_y="73" height="120" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E4481734-0458-4A08-B16E-1E1698FCFED7}"/><names>
         <name lang="en">collector Aeo20-16</name>
         <name lang="fr">collecteur Aeo20-16</name>
         <name lang="es">Colecto Aeo20-16</name>

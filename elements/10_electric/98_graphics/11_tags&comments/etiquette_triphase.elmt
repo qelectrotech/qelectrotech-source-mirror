@@ -1,5 +1,5 @@
 <definition width="130" version="0.4" hotspot_x="71" hotspot_y="10" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F8D5265B-E22B-49C6-9C25-B73D215EB89A}"/><names>
         <name lang="ar">علامة مصدر ثلاثي الأطوار</name>
         <name lang="el">Ετικέτα τριφασικού</name>
         <name lang="en">Label three phase</name>

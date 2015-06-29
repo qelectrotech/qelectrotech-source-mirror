@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="12" hotspot_y="19" height="40" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{56CCE89B-E166-46B8-90A9-4B4D8EA7F565}"/><names>
         <name lang="en">Ultrasonic detector</name>        
 	<name lang="fr">Détecteur ultrasons</name>
         <name lang="it">Sensore ad ultrasuoni</name>

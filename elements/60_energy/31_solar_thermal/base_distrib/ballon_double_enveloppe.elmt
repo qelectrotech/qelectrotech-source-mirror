@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C4D6FC91-1312-401B-83E4-FA883BFE56DF}"/><names>
         <name lang="ar">بالون بغلاف مُضاعف C</name>
         <name lang="en">C jacketed flask</name>
         <name lang="fr">C ballon double enveloppe</name>

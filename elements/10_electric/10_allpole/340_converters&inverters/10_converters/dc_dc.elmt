@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{DBBF378C-FB25-4068-BB72-86EC6E2B6B5D}"/><names>
         <name lang="ar">مقطع : محول مستمر/ مستمر</name>
         <name lang="de">Umformer DC/DC</name>
         <name lang="ru">Пост. ток > Пост. ток</name>

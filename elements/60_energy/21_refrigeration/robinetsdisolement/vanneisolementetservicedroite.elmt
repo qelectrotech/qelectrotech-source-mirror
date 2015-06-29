@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{87DDE9B9-7D55-47E9-9544-984103B627EC}"/><names>
         <name lang="ar">صمّام عزل و خدمة اليمين</name>
         <name lang="en">Isolation valve and right service</name>
         <name lang="fr">Vanne d'isolement et service droite</name>

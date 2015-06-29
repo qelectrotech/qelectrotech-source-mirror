@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D2B8F5CB-DB6C-42BA-A239-EB7DBC51E283}"/><names>
         <name lang="en">Cooler</name>
         <name lang="fr">Refroidisseur</name>
         <name lang="pl">Chłodnica</name>

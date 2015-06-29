@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{66B85768-A6FB-4169-98A6-49EE12354DA1}"/><names>
         <name lang="ar">محول قياسات</name>
         <name lang="pt">Conversor de temperatura</name>
         <name lang="el">Μετατροπέας μέτρησης θερμοκρασίας</name>

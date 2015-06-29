@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{40C16898-49EF-45B4-BC09-C4D99BFE080D}"/><names>
         <name lang="el">Fieldbus</name>
         <name lang="en">Fieldbus</name>
         <name lang="it">Bus di campo</name>

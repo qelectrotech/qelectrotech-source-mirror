@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{4D6E19BD-59D2-47B5-AC85-90BA08A18F61}"/><names>
         <name lang="ar">دايود ثايريستور , مكبوح في الإنحياز العكسي</name>
         <name lang="en"> Reverse blocking diode thyristor
 </name>

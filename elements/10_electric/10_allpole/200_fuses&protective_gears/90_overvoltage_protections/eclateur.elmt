@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{703020F7-CAD5-490B-A44B-53D636C57830}"/><names>
         <name lang="ar">فجوة شرارة</name>
         <name lang="de">Funkenstrecke</name>
         <name lang="ru">Разрядник</name>

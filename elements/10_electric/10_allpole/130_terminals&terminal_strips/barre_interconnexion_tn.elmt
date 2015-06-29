@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D8C55A01-AD46-4BAD-8492-5364B19FDDDF}"/><names>
         <name lang="ar">شريط ربط</name>
         <name lang="en">Bar interconnection TN</name>
         <name lang="de">TN-Verbindungsschiene</name>

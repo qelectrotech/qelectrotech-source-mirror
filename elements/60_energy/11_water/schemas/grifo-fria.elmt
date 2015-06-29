@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{81EF68A1-14C8-4073-B0AB-5236C70FE174}"/><names>
         <name lang="es">Grifo fría</name>
         <name lang="it">Rubinetto freddo</name>
         <name lang="pl">Zawór do wody zimnej</name>

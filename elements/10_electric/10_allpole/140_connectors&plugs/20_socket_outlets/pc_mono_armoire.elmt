@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3F371A0C-3C07-4DBE-88AB-FAB6F2B76D61}"/><names>
         <name lang="ar">مقبس أحادي الوجه لخزانة</name>
         <name lang="en">Socket cabinet</name>
         <name lang="de">Steckdose Schaltschrank 1P+N+PE</name>

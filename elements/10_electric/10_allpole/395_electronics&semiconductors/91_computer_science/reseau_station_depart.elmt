@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="34" hotspot_y="72" height="160" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5BE695AB-BBCF-4028-85F3-8CDBFD364E94}"/><names>
         <name lang="ar">RESEAU STATION TETE</name>
         <name lang="en">Network station first</name>
         <name lang="de">Netzwerkstation Anfang</name>

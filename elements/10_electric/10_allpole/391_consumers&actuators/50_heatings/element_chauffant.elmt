@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{60C75AC9-6570-4587-944E-0544B45EDDC1}"/><names>
         <name lang="ar">عنصر تسخين</name>
         <name lang="de">Heizelement</name>
         <name lang="el">Θερμαντικό στοιχείο</name>

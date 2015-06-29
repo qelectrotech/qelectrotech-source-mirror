@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="5" hotspot_y="20" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C8792701-A8AD-420A-B6B0-8BB873608B90}"/><names>
         <name lang="ar">قطر</name>
         <name lang="el">Διάμετρος</name>
         <name lang="en">diameter</name>

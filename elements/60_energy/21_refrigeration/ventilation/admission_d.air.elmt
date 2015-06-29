@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{DB5EB181-A5A6-46A3-8892-25CDE90052F4}"/><names>
         <name lang="el">Εισαγωγή</name>
         <name lang="en">Intake</name>
         <name lang="it">Aspirazione aria</name>

@@ -1,5 +1,5 @@
 <definition width="1010" version="0.3" hotspot_x="55" hotspot_y="35" height="640" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A2883CD1-5DF4-4115-8832-DA7D578EDEB9}"/><names>
         <name lang="en">Grid composition</name>
         <name lang="it">Griglia di composizione</name>
         <name lang="de">Platzierungsraster</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5A9B6FD6-49D2-4F27-B2F3-4F0AFC659A8C}"/><names>
         <name lang="ar">ملف حلقي بقطبين</name>
         <name lang="de">Stromwandler 2-polig</name>
         <name lang="pt">Núcleo toroidal de 2 polos</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D08C0A68-0C7A-4E38-A21C-868527E5B66F}"/><names>
         <name lang="ar">صمّام عزل</name>
         <name lang="el">Βαλβίδα απομόνωσης</name>
         <name lang="en">Isolation valve</name>

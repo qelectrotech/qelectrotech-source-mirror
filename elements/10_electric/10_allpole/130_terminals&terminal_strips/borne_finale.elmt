@@ -1,5 +1,5 @@
 <definition width="10" version="0.4" hotspot_x="4" hotspot_y="15" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A4B7D0BD-2695-47D9-BF64-2DAD82C51772}"/><names>
         <name lang="ar">طرف نهائي</name>
         <name lang="de">Endklemme</name>
         <name lang="ru">Клеммник</name>

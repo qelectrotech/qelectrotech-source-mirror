@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7FFDC6F1-EC74-4F6C-8A4D-DA0EECF0883F}"/><names>
         <name lang="en">Manual valve</name>
         <name lang="fr">vanne manuelle</name>
         <name lang="pl">Zawór (symbol ogólny)</name>

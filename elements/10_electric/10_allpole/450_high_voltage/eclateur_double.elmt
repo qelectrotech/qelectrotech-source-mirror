@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{57897066-5E91-4EC3-AE95-2C45BAFECE35}"/><names>
         <name lang="en">Dual Spark</name>
         <name lang="fr">Eclateur double</name>
         <name lang="pl">Odgromnik trójelektrodowy</name>

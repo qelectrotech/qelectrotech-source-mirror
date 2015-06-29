@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{78EBB5C5-18F8-4DF9-A8F0-6F8EB53CA75F}"/><names>
         <name lang="ar">دايود أحادي النفق</name>
         <name lang="de">Unitunnel-Diode
 </name>

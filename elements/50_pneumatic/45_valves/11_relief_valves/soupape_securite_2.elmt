@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A1D7C3A1-1BBC-44A6-8C2D-28623086BE2B}"/><names>
         <name lang="en">Pressure relief valve adjustable spring</name>
         <name lang="fr">Soupape de sécurité</name>
         <name lang="pl">Zawór ograniczający ciśnienie, trójdrogowy, jednostopniowy, nastawiany sprężyną</name>

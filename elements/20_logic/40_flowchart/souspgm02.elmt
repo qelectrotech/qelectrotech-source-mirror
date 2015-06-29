@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="15" hotspot_y="15" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8E38CEAC-3A88-4F67-AC12-619A737A5960}"/><names>
         <name lang="el">Υποπρόγραμμα</name>
         <name lang="en">subprogram</name>
         <name lang="it">Processo predefinito</name>

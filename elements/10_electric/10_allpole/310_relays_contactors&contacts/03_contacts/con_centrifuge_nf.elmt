@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="22" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{6AC7702F-7D34-45AD-8323-98D2D02C0058}"/><names>
         <name lang="ar">مُلامس طردي (NC)</name>
         <name lang="el">Φυγοκεντρική επαφή, κλειστή</name>
         <name lang="en">Centrifugal contact (NC)</name>

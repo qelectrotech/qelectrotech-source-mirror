@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0D328EF3-81B4-4AD6-8C72-006AD8D2EC9B}"/><names>
         <name lang="el">Modem</name>
         <name lang="en">Modem</name>
         <name lang="it">Interf. Modem</name>

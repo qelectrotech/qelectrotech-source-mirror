@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="17" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2E7C7980-1F5A-4BF2-9924-895504F358E1}"/><names>
         <name lang="en">Three-phase transformer Yd</name>
         <name lang="de">Transformator Stern/Dreieck</name>
         <name lang="it">Trasformatore 3F Yd (forma 1)</name>

@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="38" hotspot_y="24" height="50" link_type="master" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D76A5947-730C-4D94-B869-273CEC01E9E4}"/><names>
         <name lang="ar">قاطع رباعي</name>
         <name lang="de">Lastschalter 4P</name>
         <name lang="en">Circuit-breaker</name>

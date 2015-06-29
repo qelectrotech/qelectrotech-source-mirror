@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="37" hotspot_y="32" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A95D9974-D9BB-4D2A-9497-08BE8438FA79}"/><names>
         <name lang="en">Pressure sensor</name>
         <name lang="de">Drucksensor 3-Leiter</name>
         <name lang="it">Sensore di pressione</name>

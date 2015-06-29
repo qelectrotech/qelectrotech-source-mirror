@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8C5ED795-0501-43B1-B573-590F4D0AA18D}"/><names>
         <name lang="el">Ψηφιακή είσοδος, εξαπλή</name>
         <name lang="en">Binary Input, 6-fold</name>
         <name lang="it">Ingresso digitale, 6 can</name>

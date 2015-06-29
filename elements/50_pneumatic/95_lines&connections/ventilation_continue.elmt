@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{2D47C9A0-2B49-4874-86D2-BB0CDE6589FF}"/><names>
         <name lang="en">Continuous vent</name>
         <name lang="fr">Ventilation continue</name>
         <name lang="pl">Odpowietrznik ciągły</name>

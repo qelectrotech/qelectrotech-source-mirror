@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="10" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F5350DC6-F13D-41BE-B4F5-358BC9717B37}"/><names>
         <name lang="en">Pull button</name>
         <name lang="fr">Tirage bouton</name>
         <name lang="pl">Przycisk wyciągany</name>

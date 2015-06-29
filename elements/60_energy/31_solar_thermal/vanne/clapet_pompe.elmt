@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{936F772E-E72B-4160-A332-BD8BF0E40FC8}"/><names>
         <name lang="ar">صمّام مضخة</name>
         <name lang="en">Valve pump</name>
         <name lang="fr">Clapet pompe</name>

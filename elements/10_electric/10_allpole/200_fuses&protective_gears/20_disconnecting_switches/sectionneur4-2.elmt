@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="11" hotspot_y="25" height="50" link_type="master" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{DE3A4128-B1C1-4890-BEA8-F312C12C8845}"/><names>
         <name lang="ar">مفتاح عزل</name>
         <name lang="de">Trennschalter 3P</name>
         <name lang="ru">Выключатель-разъеденитель</name>

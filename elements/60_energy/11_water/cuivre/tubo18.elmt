@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="33" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{045965AB-EA12-4D8C-AEE1-7126640CAE0E}"/><names>
         <name lang="en">18 Copper Tube</name>
         <name lang="it">Tubo rame 18</name>
         <name lang="fr">Tube cuivre 18</name>

@@ -1,5 +1,5 @@
 <definition height="110" hotspot_y="52" orientation="dyyy" width="510" hotspot_x="15" type="element" version="0.5" link_type="simple">
-    <names>
+<uuid uuid="{6DCEEDF3-2C8F-4AFF-9269-AC19349C1FA8}"/><names>
         <name lang="en">IO-DI8ACH</name>
         <name lang="cs">IO-DI8ACH</name>
     </names>

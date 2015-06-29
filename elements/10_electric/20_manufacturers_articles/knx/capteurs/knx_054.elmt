@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="35" hotspot_y="21" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{CB82DEA8-04C0-44B9-AA3F-8D9A7EBBA58D}"/><names>
         <name lang="el">Αισθητήρας (Φωτ., Υπέρ.), διπλός</name>
         <name lang="en">Sensor (Brightn., PIR), 2-fold</name>
         <name lang="it">Sensore (lumin., IR), 2 can</name>

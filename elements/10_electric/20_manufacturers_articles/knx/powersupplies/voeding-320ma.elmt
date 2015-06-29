@@ -1,5 +1,5 @@
 <definition width="120" version="0.4" hotspot_x="50" hotspot_y="54" height="100" type="element" ic="true" orientation="dyyy"link_type="master">
-    <names>
+<uuid uuid="{89367A67-60DD-4DBD-BC4F-A5CE9D086CD3}"/><names>
         <name lang="nl">KNX voeding 320mA</name>
         <name lang="be">KNX voeding 320mA</name>
         <name lang="en">KNX power supplies 320mA</name>

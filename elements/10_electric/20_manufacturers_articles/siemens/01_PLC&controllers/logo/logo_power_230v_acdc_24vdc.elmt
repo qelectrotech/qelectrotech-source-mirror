@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="0" hotspot_y="10" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{19E50A17-43A4-4502-B9A4-84841CE25F29}"/><names>
         <name lang="de">logo-textdisplay-24v</name>
         <name lang="en">logo-textdisplay-24v</name>
         <name lang="it">Logo Display testo</name>

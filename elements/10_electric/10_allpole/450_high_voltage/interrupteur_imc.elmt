@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="55" height="130" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{04DA66AD-3FA4-4994-9852-80D9B01337A6}"/><names>
         <name lang="en">IMC switch</name>
         <name lang="fr">Interrupteur IMC</name>
         <name lang="pl">Rozłącznik IMC</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{E7A6C637-25FF-49BE-9E0F-5CF214769091}"/><names>
         <name lang="ar">دايود شوكلي</name>
         <name lang="de">Shockley Diode</name>
         <name lang="en">Shockley diode</name>

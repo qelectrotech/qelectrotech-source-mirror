@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="60" hotspot_y="90" height="180" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C7A50C94-48CB-40D2-B35B-0DB2B7C3E8AE}"/><names>
         <name lang="ar">سخّان ماء كهربائي</name>
         <name lang="en">Electric DHW</name>
         <name lang="fr">ballon ECS electrique</name>

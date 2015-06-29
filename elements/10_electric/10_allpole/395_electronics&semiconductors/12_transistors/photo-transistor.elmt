@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{186AAB32-D409-47A7-B430-B5D175E044B8}"/><names>
         <name lang="ar">ترنزيستور ضوئي PNP</name>
         <name lang="de">Phototransistor PNP
 </name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DFD6D2E6-67C7-43A5-82F8-631BE76937F8}"/><names>
         <name lang="ar">ساعة تسجيل</name>
         <name lang="de">Zeiterfassungsgerät</name>
         <name lang="en">Time clock Time recorder</name>

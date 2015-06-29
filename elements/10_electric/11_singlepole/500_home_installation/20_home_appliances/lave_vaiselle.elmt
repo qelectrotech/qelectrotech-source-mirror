@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="50" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{08B3DBE0-4802-44D6-BF0E-27A6DEEFE1E3}"/><names>
         <name lang="ar">غسّالة أواني</name>
         <name lang="de">Geschirrspüler</name>
         <name lang="ru">Посудомоечная машина</name>

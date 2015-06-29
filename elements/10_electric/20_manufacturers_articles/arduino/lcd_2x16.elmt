@@ -1,5 +1,5 @@
 <definition width="260" version="0.3" hotspot_x="25" hotspot_y="30" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{04544352-076E-4CB0-996C-9987921E90B6}"/><names>
         <name lang="en">LCD 2X16</name>
         <name lang="fr">Afficheur LCD 2X16</name>
         <name lang="pl">Wyświetlacz LCD 2x16</name>

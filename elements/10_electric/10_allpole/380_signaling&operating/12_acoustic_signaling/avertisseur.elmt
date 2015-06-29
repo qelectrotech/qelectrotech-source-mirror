@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C7BB71E9-DA4F-498D-801B-464A13F85A61}"/><names>
         <name lang="ar">مُنبّه</name>
         <name lang="de">Warnhupe</name>
         <name lang="ru">Горн</name>

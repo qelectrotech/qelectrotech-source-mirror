@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DB708F51-C38B-498B-A984-E0FE9EA5F16F}"/><names>
         <name lang="el">Αρχή-τέλος προγράμματος</name>
         <name lang="en">Start-End program</name>
         <name lang="it">Inizio-Fine</name>

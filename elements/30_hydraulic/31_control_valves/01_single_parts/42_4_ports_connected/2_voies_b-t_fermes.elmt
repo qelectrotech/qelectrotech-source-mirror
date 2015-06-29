@@ -1,5 +1,5 @@
 <definition width="40" version="0.22" hotspot_x="10" hotspot_y="40" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DD17EFFE-E6DF-431F-AA8A-0DF8FBDF498B}"/><names>
         <name lang="en">4 ports - B-T closed</name>
         <name lang="fr">4 voies - B-T fermés</name>
         <name lang="cs">4 cesty - B-T zavřené</name>

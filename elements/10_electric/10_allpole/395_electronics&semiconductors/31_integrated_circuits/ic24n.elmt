@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="40" hotspot_y="130" height="270" type="element" ic="true" orientation="ydyy">
-    <names>
+<uuid uuid="{87B54813-7D9A-41FE-ADE5-CFAC34358BE3}"/><names>
         <name lang="ar">دائرة مُدمجة 24 دبوس</name>
         <name lang="de">Integrierte Schaltung 24 Anschlüsse nummeriert</name>
         <name lang="el">Ολοκληρωμένο κύκλωμα 24 ακροδεκτών, αριθμημένο</name>

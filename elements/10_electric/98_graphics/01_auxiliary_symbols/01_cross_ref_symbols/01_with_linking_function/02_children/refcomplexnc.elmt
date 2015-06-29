@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="25" hotspot_y="31" height="60" type="element" ic="true" orientation="dyyy" link_type="previous_report"> 
-    <names>
+<uuid uuid="{7D56A4E9-CCAA-4F43-8097-2784D85EF291}"/><names>
         <name lang="en">complex contact NC</name>
         <name lang="it">Contatto NC</name>
         <name lang="fr">Contact NC</name>

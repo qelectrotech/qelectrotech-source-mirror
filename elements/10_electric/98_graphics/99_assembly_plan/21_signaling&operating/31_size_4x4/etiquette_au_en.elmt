@@ -1,5 +1,5 @@
 <definition width="160" version="0.3" hotspot_x="0" hotspot_y="0" height="160" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{73043ECE-C10F-45BB-B603-3CF3F2FE097B}"/><names>
         <name lang="ar">توقيف طارئ</name>
         <name lang="en">Label - Emergency stopping - en</name>
         <name lang="de">Schild Not-Aus englisch</name>

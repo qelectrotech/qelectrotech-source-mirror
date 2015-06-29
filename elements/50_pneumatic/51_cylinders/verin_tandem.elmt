@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4C47190A-3494-4F7A-9F42-6E726F054617}"/><names>
         <name lang="en">Pneumatic Actuator "tandem" double acting 
         with single piston rod and piston contactless signaling</name>
         <name lang="fr">Actionneur pneumatique "tandem" à double effet avec tige de piston unique</name>

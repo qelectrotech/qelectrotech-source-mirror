@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dnyn">
-    <names>
+<uuid uuid="{626A1593-8C07-40DD-94A9-313509BF7350}"/><names>
         <name lang="ar">وصلة USB  نسخة 1 و 2</name>
         <name lang="de">USB Bauteil, USB 1 und 2</name>
         <name lang="en">USB connector, USB version 1 and 2</name>

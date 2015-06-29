@@ -1,5 +1,5 @@
 <definition width="430" version="0.4" hotspot_x="38" hotspot_y="42" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
-    <names>
+<uuid uuid="{12E620CB-B82C-4A2C-BB5C-97AF8DBE35B9}"/><names>
         <name lang="nl">N562/11 basis module (max 4 uitbreidingen)</name>
         <name lang="be">N562/11 basis module (max 4 uitbreidingen)</name>
         <name lang="fr">N562/11 module de base (max 4 extensions)</name>

@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{18465D26-FC6C-4B1F-BCF4-CB1AB8495213}"/><names>
         <name lang="en">Cross</name>
         <name lang="it">Croce</name>
         <name lang="fr">Croix</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="20" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{2C2B1643-374B-4E8B-8ACF-81FCF9513397}"/><names>
         <name lang="ar">زرّ دوّار بمقبض</name>
         <name lang="el">Θέσεις διακόπτη</name>
         <name lang="en">Switch handle and knob positions</name>

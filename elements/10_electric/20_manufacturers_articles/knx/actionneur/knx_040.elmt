@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BBD9E751-05F2-4ED5-83C8-4E4F5E4E6C63}"/><names>
         <name lang="el">Αναλογική έξοδος, τετραπλή</name>
         <name lang="en">Analog output, 4-fold</name>
         <name lang="it">Uscita analogica, 4 can</name>

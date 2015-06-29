@@ -1,5 +1,5 @@
 <definition width="170" version="0.4" hotspot_x="8" hotspot_y="17" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{DC9F907B-497A-4881-AC6C-1C5825F1664C}"/><names>
         <name lang="ar">مستمرّ</name>
         <name lang="de">Aktion</name>
         <name lang="pt">continuo</name>

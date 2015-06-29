@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="30" hotspot_y="14" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{507B4C69-83FB-4922-9316-D19429EB28B9}"/><names>
         <name lang="ar">اسطوانة بفعل واحد - رجوع بزمبرك</name>
         <name lang="el">Έμβολο μονής ενεργείας, επανάταξη με ελατήριο</name>
         <name lang="en">Single acting cylinder - returned by spring</name>

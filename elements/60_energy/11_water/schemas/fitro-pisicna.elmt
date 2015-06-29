@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="14" hotspot_y="10" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BE99FC1E-3663-4815-A534-8433B8949170}"/><names>
         <name lang="es">Filtro piscina</name>
         <name lang="it">Filtro piscina</name>
         <name lang="pl">Filtr basenowy</name>

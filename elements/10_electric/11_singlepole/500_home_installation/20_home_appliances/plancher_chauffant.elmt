@@ -1,5 +1,5 @@
 <definition hotspot_y="17" width="30" height="40" hotspot_x="15" type="element" version="0.5" orientation="dyyy" link_type="simple">
-    <names>
+<uuid uuid="{D4855A4E-E229-4E36-ABDC-6A1D9134B211}"/><names>
         <name lang="en">Heated floor</name>
         <name lang="fr">Plancher chauffant</name>
     </names>

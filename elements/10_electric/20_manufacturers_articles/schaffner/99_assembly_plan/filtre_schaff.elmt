@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{1C77085B-B353-4123-BDC4-A4103AB87629}"/><names>
         <name lang="el">Φίλτρο Schaff</name>
         <name lang="en">Filter Schaffner</name>
         <name lang="it">Filtro Schaff</name>

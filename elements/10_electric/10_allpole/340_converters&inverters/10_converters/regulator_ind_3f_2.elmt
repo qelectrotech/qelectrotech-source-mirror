@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="44" hotspot_y="35" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{7C448B9B-DEAE-497C-A6EF-4078E50A956F}"/><names>
         <name lang="en">Voltage regulator</name>
         <name lang="de">Spannungsregler 3-phasig</name>
         <name lang="fr">Regulateur de tension</name>

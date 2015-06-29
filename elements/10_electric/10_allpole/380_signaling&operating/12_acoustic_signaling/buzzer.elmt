@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DBC41543-B0D1-4043-8F3E-7ECF418BE221}"/><names>
         <name lang="ar">صفّارة</name>
         <name lang="de">Summer</name>
         <name lang="ru">Зуммер</name>

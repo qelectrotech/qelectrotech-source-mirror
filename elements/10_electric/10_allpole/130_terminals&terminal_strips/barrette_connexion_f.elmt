@@ -1,5 +1,5 @@
 <definition width="10" version="0.3" hotspot_x="5" hotspot_y="0" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7499D25C-957E-43F1-8AFE-7E5D0EAE1C89}"/><names>
         <name lang="ar">شريط ربط, مُغلق</name>
         <name lang="de">Trennklemme, Lasche geschlossen</name>
         <name lang="en">Terminal strip, closed</name>

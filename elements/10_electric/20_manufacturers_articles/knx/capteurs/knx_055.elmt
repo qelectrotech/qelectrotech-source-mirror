@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="25" hotspot_y="21" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{906B6EEB-408B-4130-9090-80B983013AE9}"/><names>
         <name lang="el">Αισθητήρας (Φωτ., Υπέρ.), τριπλός</name>
         <name lang="en">Sensor (Brightn., PIR), 3-fold</name>
         <name lang="it">Sensore (lumin., IR), 3 can</name>

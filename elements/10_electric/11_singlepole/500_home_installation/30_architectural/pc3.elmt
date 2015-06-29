@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D2E92D4B-9032-437C-B211-5F9F72AADFB6}"/><names>
         <name lang="ar">قاعدة لعدّة مقابس تيّار</name>
         <name lang="de">Mehrfachsteckdose</name>
         <name lang="el">Ρευματοδότης 3πλος</name>

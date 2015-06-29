@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{ACA67D82-2C0D-4F85-9641-3423D190E81B}"/><names>
         <name lang="el">Μπουτόν μονό</name>
         <name lang="en">Push button, single</name>
         <name lang="it">Pulsante, 1 can</name>

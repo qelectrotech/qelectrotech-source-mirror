@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DAE5D773-EDD3-4B1E-B3C6-EA52895C8623}"/><names>
         <name lang="en">Contact NC pneumatically or hydraulically controlled, two-way</name>
         <name lang="de">Öffner Zylinder betätigt 2 Richtungen</name>
         <name lang="fr">Contact NC à commande pneumatique ou hydraulique, dans les deux sens</name>

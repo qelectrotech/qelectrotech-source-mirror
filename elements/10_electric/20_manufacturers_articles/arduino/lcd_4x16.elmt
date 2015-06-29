@@ -1,5 +1,5 @@
 <definition width="240" version="0.3" hotspot_x="15" hotspot_y="35" height="150" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7BB76EAE-EE16-4E37-AD3A-CF51E1CC3246}"/><names>
         <name lang="ar">شاشة LCD 4X16</name>
         <name lang="en">screen LCD 4X16</name>
         <name lang="fr">Afficheur LCD 4X16</name>

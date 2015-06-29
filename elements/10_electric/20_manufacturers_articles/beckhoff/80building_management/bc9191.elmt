@@ -1,5 +1,5 @@
 <definition width="860" version="0.4" hotspot_x="82" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
-    <names>
+<uuid uuid="{75DC218F-374D-4424-9830-FD5ED1601A1A}"/><names>
         <name lang="ar">Beckhoff BC9191</name>
         <name lang="de">Beckhoff BC9191</name>
         <name lang="ru">Beckhoff BC9191</name>

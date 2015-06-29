@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D5FC9D5C-2942-47F6-AFEE-36B6896D2891}"/><names>
         <name lang="de">Kabelader</name>
         <name lang="en">Wire of cable</name>
         <name lang="fr">Fil de cable</name>

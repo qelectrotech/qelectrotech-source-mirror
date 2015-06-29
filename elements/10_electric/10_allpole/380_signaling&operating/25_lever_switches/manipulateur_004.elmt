@@ -1,5 +1,5 @@
 <definition width="160" version="0.3" hotspot_x="18" hotspot_y="30" height="60" type="element" ic="true" orientation="dnnn">
-    <names>
+<uuid uuid="{D29E63EF-5620-4C79-B5C9-B71CF2E2B62B}"/><names>
         <name lang="ar">مُناور</name>
         <name lang="el">Χειριστήριο</name>
         <name lang="en">Lever switch 4 poles 4 directions tentative</name>

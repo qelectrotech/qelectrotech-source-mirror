@@ -1,5 +1,5 @@
 <definition width="230" version="0.3" hotspot_x="15" hotspot_y="35" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9C79D912-9CF4-43FC-8BFA-58C7B6CBCD0C}"/><names>
         <name lang="ar">Bitop L</name>
         <name lang="el">Bitop L</name>
         <name lang="en">Bitop L</name>

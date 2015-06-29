@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5A5778A0-75C0-4060-94F6-51132B222543}"/><names>
         <name lang="en">Pressure regulator valve </name>
         <name lang="fr">Soupape de sécurité</name>
         <name lang="pl">Zawór ograniczający ciśnienie z upustem</name>

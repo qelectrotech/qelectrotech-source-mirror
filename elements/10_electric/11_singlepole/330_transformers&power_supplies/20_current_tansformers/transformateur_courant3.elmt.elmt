@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="13" hotspot_y="53" height="80" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{45FE38C0-52E9-4EF1-9E2A-ADE61242DECA}"/><names>
         <name lang="en">Current transformer, two cores with a secondary winding on each core</name>
         <name lang="de">Stromwandler 2 Kerne</name>
         <name lang="fr">Transformateur de courant, à deux noyaux avec un enroulement secondaire sur chaque noyau</name>

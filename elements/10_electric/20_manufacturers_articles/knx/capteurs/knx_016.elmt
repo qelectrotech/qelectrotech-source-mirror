@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3032C5D2-102A-4C99-B760-36942A3EE374}"/><names>
         <name lang="el">Αισθητήρας τάσης/έντασης</name>
         <name lang="en">Current/Voltage sensor</name>
         <name lang="it">Sensore corrente/tensione</name>

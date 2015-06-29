@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="40" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F4370B50-2B4D-4164-B2B8-9C53163A9194}"/><names>
         <name lang="ar">عدّاد طاقة فعّالة - وات ساعة متر -(en_60617) </name>
         <name lang="de">Wattstundenzähler (EN 60617)</name>
         <name lang="en">Watt hour meter (en_60617)</name>

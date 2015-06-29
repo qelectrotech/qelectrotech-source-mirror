@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="35" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{06F9AFCD-7F2B-4412-90C3-9362301D5E3D}"/><names>
         <name lang="ar">صمّام لإعادة تدوير ترموستاتي</name>
         <name lang="en">Thermostatic valve Recycling</name>
         <name lang="fr">Vanne de Recyclage Thermostatique</name>

@@ -1,5 +1,5 @@
 <definition width="140" version="0.3" hotspot_x="0" hotspot_y="10" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{42FB556A-4489-4298-BB64-FF7944F6FD73}"/><names>
         <name lang="ar">محرك ساعة</name>
         <name lang="en">Clock motor</name>
         <name lang="de">Motor Uhr</name>

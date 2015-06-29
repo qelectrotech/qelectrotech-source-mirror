@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="70" hotspot_y="110" height="130" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{96C513F9-E1D4-45DE-A1BF-6D9B35479F5B}"/><names>
         <name lang="en">E/P pressure regulator</name>
         <name lang="fr">Modulateurs de pression E/P</name>
         <name lang="pl">Regulator cisnienia</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7D5AE25E-E8E4-4F12-B6C9-A3F9986E3E6B}"/><names>
         <name lang="en">On-page reference</name>
         <name lang="it">Riferimento interno</name>
         <name lang="fr">connecteur interne</name>

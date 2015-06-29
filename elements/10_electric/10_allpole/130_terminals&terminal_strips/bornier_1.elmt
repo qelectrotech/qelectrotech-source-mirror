@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C7F58329-EA65-4779-AD26-CBD7DFE9211C}"/><names>
         <name lang="ar">كتلة نهائيات</name>
         <name lang="en">Terminal block 6x terminals</name>
         <name lang="de">Klemmleiste mit 6x Klemmen</name>

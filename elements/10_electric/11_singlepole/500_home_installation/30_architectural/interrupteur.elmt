@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{AF737DA8-BBE0-47A0-8A2A-9EAD1BDF0E88}"/><names>
         <name lang="ar">مفتاح</name>
         <name lang="de">Schalter</name>
         <name lang="el">Διακόπτης</name>

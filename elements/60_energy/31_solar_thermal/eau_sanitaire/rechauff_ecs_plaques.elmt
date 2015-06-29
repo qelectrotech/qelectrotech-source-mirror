@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{07420B2F-4ECD-4E5A-932B-6286E86D72FF}"/><names>
         <name lang="ar">سخّان ECS بلوحات</name>
         <name lang="en">ECS heater plates</name>
         <name lang="fr">Réchauffeur ECS à Plaques</name>

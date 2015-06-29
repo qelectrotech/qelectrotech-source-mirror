@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{C0E871C3-17DF-4112-8799-47D0ABFF341E}"/><names>
         <name lang="ar">دايود بارتباط حراري</name>
         <name lang="de">Temperaturdiode</name>
         <name lang="en">Temperature sensing diode</name>

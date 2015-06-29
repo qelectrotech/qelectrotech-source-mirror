@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{E8E38332-9A28-424B-8A10-7B32108B435D}"/><names>
         <name lang="ar">موحد أحادي الوجه -2</name>
         <name lang="el">Μονοφασικό εναλλασσόμενο &gt; Συνεχές</name>
         <name lang="en">One-phase alternating &gt; Direct</name>

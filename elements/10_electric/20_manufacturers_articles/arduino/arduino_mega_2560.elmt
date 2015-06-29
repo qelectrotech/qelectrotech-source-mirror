@@ -1,5 +1,5 @@
 <definition width="190" version="0.3" hotspot_x="23" hotspot_y="34" height="400" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{350D9A27-B02F-4213-A1B6-1B0FC1E26F06}"/><names>
         <name lang="en">Arduino Mega 2560</name>
         <name lang="it">Arduino Mega 2560</name>
         <name lang="fr">Arduino Mega 2560</name>

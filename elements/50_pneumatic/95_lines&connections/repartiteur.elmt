@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="7" hotspot_y="39" height="80" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C1486C55-3E01-446E-9265-70E430A2F492}"/><names>
         <name lang="ar">مُوزّع</name>
         <name lang="el">Διανομέας</name>
         <name lang="en">Distributor</name>

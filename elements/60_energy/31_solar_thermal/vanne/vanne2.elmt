@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BD115594-EE30-4675-BC8C-48BB281D1E46}"/><names>
         <name lang="ar">صمّام بمسارين</name>
         <name lang="en">2-way valve</name>
         <name lang="fr">Vanne 2 voies</name>

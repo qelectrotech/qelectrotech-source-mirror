@@ -1,5 +1,5 @@
 <definition width="660" version="0.4" hotspot_x="5" hotspot_y="9" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8AE572E8-D251-49CF-AB41-451AA4B18F74}"/><names>
         <name lang="ar">سطر جدول تسمية</name>
         <name lang="de">Formularzeile</name>
         <name lang="el">Γραμμή πίνακα</name>

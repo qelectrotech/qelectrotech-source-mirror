@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{56918166-6E87-4C9E-A010-F8770EE28327}"/><names>
         <name lang="el">Αισθητήρας φωτεινότητας</name>
         <name lang="en">Brightness sensor</name>
         <name lang="it">Sensore di luminosità</name>

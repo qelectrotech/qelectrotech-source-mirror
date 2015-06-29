@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="26" hotspot_y="24" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{19FB0FDA-E0A0-454F-AFEC-0CB52DC69012}"/><names>
         <name lang="de">Klemmleiste 3P+N+PE</name>
         <name lang="en">Terminal block 3P+N+PE</name>
         <name lang="it">Morsettiera 3P+N+PE</name>

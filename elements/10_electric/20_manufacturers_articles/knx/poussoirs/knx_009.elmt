@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1521E16C-0A0C-4E6C-B681-5ADF8AD71683}"/><names>
         <name lang="el">Μπουτόν τετραπλό</name>
         <name lang="en">Push button, 4-fold</name>
         <name lang="it">Pulsante 4 can</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="45" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B00CCEA5-7CF2-4E21-B766-06CD68C35850}"/><names>
         <name lang="es">Calentador ACS</name>
         <name lang="it">Boiler ACS</name>
         <name lang="pl">Zasobnik CWU</name>

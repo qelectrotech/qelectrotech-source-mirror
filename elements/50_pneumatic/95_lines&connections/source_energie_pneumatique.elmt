@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="5" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{854E7F9C-7F7F-4C77-A466-10255D244BB3}"/><names>
         <name lang="en">Pneumatic energy source</name>
         <name lang="fr">Source d'énergie pneumatique</name>
         <name lang="pl">Źródło energii pneumatycznej, symbol ogólny uprzoszczony</name>

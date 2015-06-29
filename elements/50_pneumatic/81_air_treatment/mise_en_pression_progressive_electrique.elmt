@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="80" hotspot_y="70" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{57367666-A58D-4973-81D0-FD35D10ADCD1}"/><names>
         <name lang="en">Filling valve, with electrical priority circuit</name>
         <name lang="fr">Vannes de mise en pression, avec circuit prioritaire électrique</name>
         <name lang="pl">Zawór napełniający</name>

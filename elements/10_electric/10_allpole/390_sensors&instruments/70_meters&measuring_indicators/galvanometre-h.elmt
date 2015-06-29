@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{813C1D4B-6AE4-4A8A-BFA8-B5B37D92E123}"/><names>
         <name lang="ar">جلفانومتر أفقي</name>
         <name lang="de">Galvanometer waagerecht</name>
         <name lang="pt">Galvanómetro horizontal</name>

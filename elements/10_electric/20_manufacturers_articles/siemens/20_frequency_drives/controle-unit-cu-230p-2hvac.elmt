@@ -1,5 +1,5 @@
 <definition width="720" version="0.4" hotspot_x="15" hotspot_y="35" height="100" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D64FFA3A-99F5-4BCB-85FB-90D856A8413B}"/><names>
         <name lang="ar">CU-230P-2-HVAC</name>
         <name lang="el">CU-230P-2-HVAC</name>
         <name lang="en">CU-230P-2-HVAC</name>

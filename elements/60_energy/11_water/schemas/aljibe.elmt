@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="34" hotspot_y="20" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4F7A4CCE-603B-473D-ADF5-61C438324785}"/><names>
         <name lang="es">Aljibe</name>
         <name lang="it">Vasca</name>
         <name lang="pl">Zbiornik</name>

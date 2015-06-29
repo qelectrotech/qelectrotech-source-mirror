@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="31" hotspot_y="112" orientation="dyyy" version="0.5" width="70" type="element" height="240">
-    <names>
+<uuid uuid="{9C791129-F250-4627-B0C0-5FA9F7250C47}"/><names>
         <name lang="en">Card 4 analog inputs TM3AI4 schneider</name>
         <name lang="fr">Carte 4 entrées analogiques TM3AI4 schneider</name>
     </names>

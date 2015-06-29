@@ -1,5 +1,5 @@
 <definition width="220" version="0.3" hotspot_x="15" hotspot_y="35" height="400" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D05410EA-2194-4CD1-B8DD-C4C128A542B5}"/><names>
         <name lang="en">DX 9100 terminals Com and Power</name>
         <name lang="fr">DX 9100 bornes Com. et Alimentation</name>
         <name lang="pl">DX9100 złącze COM i zasilanie</name>

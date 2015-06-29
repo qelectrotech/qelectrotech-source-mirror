@@ -1,5 +1,5 @@
 <definition width="220" version="0.4" hotspot_x="5" hotspot_y="27" height="130" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B2E8344C-0837-44B8-A26D-08CBE12CBFC2}"/><names>
         <name lang="nl">IP settings</name>
         <name lang="be">IP settings</name>
         <name lang="de">IP Einstellungen</name>

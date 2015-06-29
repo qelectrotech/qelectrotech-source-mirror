@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F3F6057E-7546-488B-B84D-DEB8656073BB}"/><names>
         <name lang="en">Filter</name>
         <name lang="fr">Filtre</name>
         <name lang="pl">Filtr symbol ogólny</name>

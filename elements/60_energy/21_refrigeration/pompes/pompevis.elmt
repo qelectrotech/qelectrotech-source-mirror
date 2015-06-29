@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B5960950-F99B-4646-857B-0A9F9E5E512D}"/><names>
         <name lang="ar">مضخّة لولبية</name>
         <name lang="el">Κοχλιωτή αντλία</name>
         <name lang="en">Screw pump</name>

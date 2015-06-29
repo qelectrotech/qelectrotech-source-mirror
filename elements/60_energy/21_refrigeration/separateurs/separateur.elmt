@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9AC69113-437D-4F5D-AD3A-39596E981CE9}"/><names>
         <name lang="ar">فاصلة</name>
         <name lang="el">Διαχωριστής</name>
         <name lang="en">separator</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{295A9638-3251-4102-81A9-155051E85598}"/><names>
         <name lang="ar">اسم عنصر جديد</name>
         <name lang="el">Βέλος 2</name>
         <name lang="en">Arrow 2</name>

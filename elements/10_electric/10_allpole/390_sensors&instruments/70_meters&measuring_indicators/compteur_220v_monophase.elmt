@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{25B52559-E715-4571-A89A-D50A2674A843}"/><names>
         <name lang="ar">عدّاد أحادي الوجه 220V </name>
         <name lang="el">Μονοφασικός μετρητής</name>
         <name lang="en">220V single phase meter</name>

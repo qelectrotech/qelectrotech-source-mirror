@@ -1,5 +1,5 @@
 <definition width="1160" version="0.3" hotspot_x="7" hotspot_y="11" height="390" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{4F0808D5-7983-4913-A55D-273908046037}"/><names>
         <name lang="ar">واجهة S550</name>
         <name lang="pt">Unidade de telemetria S550</name>
         <name lang="el">Τερματικό S550</name>

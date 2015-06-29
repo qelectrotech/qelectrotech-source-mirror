@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="23" hotspot_y="25" height="50" link_type="slave" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7D9A0CF9-ED6E-4906-AA18-3139898236E6}"/><names>
         <name lang="de">Schliesser thermisch betätigt</name>
         <name lang="el">Θερμικό, ανοικτό</name>
         <name lang="en">Thermal relay NO</name>

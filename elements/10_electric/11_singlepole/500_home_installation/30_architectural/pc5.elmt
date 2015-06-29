@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8A802162-61BA-4853-88C7-0D0D8F3E3B76}"/><names>
         <name lang="ar">قاعدة مقبس تيّار (قدرة) بمفتاح أحادي القطب</name>
         <name lang="de">Steckdose schaltbar</name>
         <name lang="el">Πρίζα και διακόπτης</name>

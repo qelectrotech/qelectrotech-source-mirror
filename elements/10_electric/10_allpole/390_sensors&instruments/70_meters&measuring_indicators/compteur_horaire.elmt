@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{168DCE69-C638-46A5-B7EA-70C1C44A7165}"/><names>
         <name lang="ar">عدّاد زمني</name>
         <name lang="de">Betriebsstundenzähler</name>
         <name lang="el">Ωρόμετρο</name>

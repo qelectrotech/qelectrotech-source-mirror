@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CBB1D945-C7C3-4BB2-BE4A-CC56AA37FAC0}"/><names>
         <name lang="en">Switch fuses Qm</name>
         <name lang="fr">Interrupteur fusibles QM</name>
         <name lang="pl">Rozłącznik z bezpiecznikiem QM</name>

@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="26" width="150" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
-    <names>
+<uuid uuid="{0F303AEA-4F09-4131-9C0D-E3E419FC6209}"/><names>
         <name lang="fr">Alarme</name>
     </names>
     <informations>cbh41</informations>

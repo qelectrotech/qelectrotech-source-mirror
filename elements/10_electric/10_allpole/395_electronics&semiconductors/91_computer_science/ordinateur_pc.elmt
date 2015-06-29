@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="10" hotspot_y="5" height="110" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{556F83D5-48C1-48F6-94C1-864DC0F62771}"/><names>
         <name lang="en">Computer PC</name>
         <name lang="fr">Ordinateur PC</name>
         <name lang="de">Rechner</name>

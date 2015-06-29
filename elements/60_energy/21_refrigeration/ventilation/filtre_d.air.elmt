@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dynn">
-    <names>
+<uuid uuid="{97EF2AC1-EBE5-4251-9F10-E883AD0509F0}"/><names>
         <name lang="el">Φίλτρο αέρα</name>
         <name lang="en">Air filter</name>
         <name lang="it">Filtro aria</name>

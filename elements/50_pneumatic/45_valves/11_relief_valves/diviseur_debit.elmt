@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="45" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4FBF3026-6615-47BC-AE79-CFB70B6BB202}"/><names>
         <name lang="en">Flow divider</name>
         <name lang="fr">Diviseur de débit</name>
         <name lang="pl">Dzielnik strumienia</name>

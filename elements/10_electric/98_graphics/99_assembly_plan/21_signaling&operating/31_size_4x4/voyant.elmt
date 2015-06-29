@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="24" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F2E79BE5-7272-4C58-97CC-E5475E55530E}"/><names>
         <name lang="ar">مُؤشّر ضوئي</name>
         <name lang="el">Λάμπα</name>
         <name lang="en">Light</name>

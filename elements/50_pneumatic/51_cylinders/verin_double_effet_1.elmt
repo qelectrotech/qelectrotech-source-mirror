@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="35" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BE302F3E-1FB5-4C8C-9E3E-69CB11520F6D}"/><names>
         <name lang="en">Double acting actuator stem on both sides</name>
         <name lang="fr">Double effet tige de l'actionneur sur les deux côtés</name>
         <name lang="pl">Siłownik pneumatyczny dwustronnego działania z dwustronnym tłoczyskiem</name>

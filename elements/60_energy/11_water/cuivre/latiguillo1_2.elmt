@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="27" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{58A6F2A5-56BD-4581-BCAC-903FAC11F833}"/><names>
         <name lang="en">Fitting 15-1/2</name>
         <name lang="it">Raccordo 15-1/2</name>
         <name lang="fr">Raccord 15-1/2</name>

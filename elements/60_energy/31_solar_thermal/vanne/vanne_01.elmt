@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D2B422CB-3671-48B5-9DAB-FD6054606CBC}"/><names>
         <name lang="ar">صمّام توقّف</name>
         <name lang="en">Stop valve</name>
         <name lang="fr">Vanne d'arret</name>

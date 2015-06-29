@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BC97CEFC-6505-435F-93FF-16F0DD4A5885}"/><names>
         <name lang="en">Motor in one direction only
 rotation
 Variable</name>

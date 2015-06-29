@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="21" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{48950537-EF5F-4400-83E4-8D8CD60A9265}"/><names>
         <name lang="el">Σύστημα κλειδώματος</name>
         <name lang="en">Lock system</name>
         <name lang="it">Sistema di blocco</name>

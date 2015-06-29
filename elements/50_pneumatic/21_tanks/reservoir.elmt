@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B707478A-340F-43D0-84DA-D3BCF154B28C}"/><names>
         <name lang="en">Tank</name>
         <name lang="fr">Reservoir</name>
         <name lang="pl">Zbiornik pneumatyczny</name>

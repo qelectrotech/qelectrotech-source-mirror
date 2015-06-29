@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8625B40F-B78F-44C5-A831-8BB61BD96B38}"/><names>
         <name lang="en">Pressure gauges</name>
         <name lang="fr">Manomètres</name>
         <name lang="pl">Manometr</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="35" hotspot_y="40" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E525883A-24F6-46F0-88A7-37007CB30EED}"/><names>
         <name lang="el">Μεταγωγική επαφή χρονοδιακόπτη</name>
         <name lang="en">Contact NC/NO-controlled clock</name>
         <name lang="de">Wechsler zeitgesteuert</name>

@@ -1,5 +1,5 @@
 <definition width="150" version="0.3" hotspot_x="60" hotspot_y="50" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C5AD5497-7870-4715-A19D-AF149AE71F14}"/><names>
         <name lang="en">Piston rod cylinders piston rod through</name>
         <name lang="fr">Vérins à tige de piston traversante</name>
         <name lang="pl">Siłownik dwustronnego działania</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{18EE5DC7-BA43-42D7-A203-61FE417A722E}"/><names>
         <name lang="ar">راصد ضغط (برسوستات) - NO</name>
         <name lang="en">Presostat (NO)</name>
         <name lang="de">Druckschalter Schliesser</name>

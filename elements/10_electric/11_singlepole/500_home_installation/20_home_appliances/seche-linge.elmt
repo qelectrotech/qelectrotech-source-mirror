@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
-    <names>
+<uuid uuid="{3C01C65D-0BEA-4755-B3E1-A1932E592BF5}"/><names>
         <name lang="fr">Sèche-Linge</name>
     </names>
     <informations>CBH41</informations>

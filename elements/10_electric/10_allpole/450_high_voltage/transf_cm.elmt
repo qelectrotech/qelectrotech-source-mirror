@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2F5163D7-DA19-42D7-9A6F-FC441B89630C}"/><names>
         <name lang="en">Potential transformer CM</name>
         <name lang="fr">Transformateur de potentiel CM</name>
         <name lang="pl">Transformator CM</name>

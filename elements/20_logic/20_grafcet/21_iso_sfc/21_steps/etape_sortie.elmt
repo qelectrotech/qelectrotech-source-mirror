@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{573B1183-0064-4F09-A4C1-D18630109C20}"/><names>
         <name lang="ar">خطوة خرج</name>
         <name lang="de">Ausgangs Schritt</name>
         <name lang="pt">Etapa de saída</name>

@@ -1,5 +1,5 @@
 <definition type="element" link_type="simple" hotspot_x="45" hotspot_y="45" orientation="dyyy" version="0.5" width="90" height="90">
-    <names>
+<uuid uuid="{9EE4C06A-364C-474F-8EBB-CBA4A9DBD89F}"/><names>
         <name lang="en">22 Pin Male Connector</name>
         <name lang="fr">Connecteur male 22 broches</name>
         <name lang="cs">Kulatá zástrčka 22 kolíků</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="50" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{D38D406D-565A-4A23-B64D-82620DD81B57}"/><names>
         <name lang="en">Motorized valve</name>
         <name lang="fr">Vanne motorisée</name>
         <name lang="pl">Zawór zasuwowy odcinający sterowany silnikiem</name>

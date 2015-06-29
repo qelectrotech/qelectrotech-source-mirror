@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="37" hotspot_y="45" height="80" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{CD391EA6-BCC7-4431-BA5A-5F34B50D2E27}"/><names>
         <name lang="ar">مُحوّل ذاتي</name>
         <name lang="de">Spartransformator</name>
         <name lang="el">Αυτομετασχηματιστής</name>

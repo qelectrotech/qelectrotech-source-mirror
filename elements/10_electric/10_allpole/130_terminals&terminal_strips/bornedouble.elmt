@@ -1,5 +1,5 @@
 <definition width="10" version="0.4" hotspot_x="4" hotspot_y="15" height="40" link_type="terminal" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{67C09183-7D17-4345-963E-DE42C9F33288}"/><names>
         <name lang="ar">طرف توصيل</name>
         <name lang="de">Klemme</name>
         <name lang="ru">Клеммное соединение</name>

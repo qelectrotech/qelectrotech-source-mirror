@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
-    <names>
+<uuid uuid="{C8F71538-24D4-4196-9591-99412F46C78E}"/><names>
         <name lang="ar">مفتاح عزل</name>
         <name lang="de">Lasttrenner 3-polig</name>
         <name lang="ru">Разъеденитель</name>

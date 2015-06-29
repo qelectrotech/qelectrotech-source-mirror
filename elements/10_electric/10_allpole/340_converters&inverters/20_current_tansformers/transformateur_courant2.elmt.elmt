@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="8" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6DD8B385-CDE3-4371-9CFD-D60E314471A9}"/><names>
         <name lang="en">Transformer or current pulse, with three through primary conductors</name>
         <name lang="de">Stromwandler, Impulswandler</name>
         <name lang="fr"> Transformateur d'impulsion ou de courant, avec trois conducteurs primaires traversants</name>

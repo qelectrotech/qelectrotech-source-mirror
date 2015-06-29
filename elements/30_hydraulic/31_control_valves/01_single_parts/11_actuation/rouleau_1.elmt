@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="30" hotspot_y="10" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{927A026D-CB44-448F-88AB-7A745F5E60D8}"/><names>
         <name lang="en">Roll unidirectional</name>
         <name lang="fr">Rouleau unidirectionnel</name>
         <name lang="pl">Rolka jednokierunkowa</name>

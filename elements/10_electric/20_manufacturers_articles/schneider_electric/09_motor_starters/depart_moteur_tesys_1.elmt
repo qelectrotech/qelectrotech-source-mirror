@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="10" hotspot_y="15" height="70" type="element" orientation="dyyy" link_type="master">
-    <names>
+<uuid uuid="{C437DD29-6823-4C70-93E4-1F37E6A6245B}"/><names>
         <name lang="ar">انطلاق محرك TeSys</name>
         <name lang="el">Εκκίνηση μοτέρ, TeSys</name>
         <name lang="en">Start motor TeSys</name>

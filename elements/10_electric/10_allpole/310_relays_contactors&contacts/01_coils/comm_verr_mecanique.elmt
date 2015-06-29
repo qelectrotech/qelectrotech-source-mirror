@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="27" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
-    <names>
+<uuid uuid="{79946E07-4E92-42C6-A474-223CBB1F29C3}"/><names>
         <name lang="el">Πηνίο ρελέ με μηχανική μανδάλωση</name>
         <name lang="en">Relay with mechanical interlock</name>
         <name lang="de">Relais mit mechanischer Verriegelung</name>

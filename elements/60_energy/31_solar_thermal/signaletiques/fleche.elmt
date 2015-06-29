@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="5" height="10" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{170E0C46-1961-4242-A227-D0F6CFBC63F0}"/><names>
         <name lang="ar">اتجاه</name>
         <name lang="el">Κατεύθυνση</name>
         <name lang="en">Direction</name>

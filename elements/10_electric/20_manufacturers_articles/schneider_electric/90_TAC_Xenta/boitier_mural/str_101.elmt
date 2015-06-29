@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="0" hotspot_y="0" height="190" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{65B5CDF6-08E1-4114-9508-051873527408}"/><names>
         <name lang="ar">STR_101</name>
         <name lang="en">STR 101</name>
         <name lang="fr">STR_101</name>

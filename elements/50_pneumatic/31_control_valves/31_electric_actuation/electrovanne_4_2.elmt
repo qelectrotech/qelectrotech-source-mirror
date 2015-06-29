@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{1119BDEE-D3B4-4017-B5DF-91925EC53301}"/><names>
         <name lang="en">Distributor 4 / 2 control, controlled by push button</name>
         <name lang="fr">Distributeur 4 / 2 de contrôle, contrôlé par le bouton poussoir</name>
         <name lang="pl">Zawór sterujący 4/2, sterowany przyciskiem, powrót wymuszony sprężyną</name>

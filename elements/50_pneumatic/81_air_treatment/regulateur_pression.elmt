@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="40" hotspot_y="90" height="110" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{805A5AB9-7E11-4FC5-B0BB-739B202F1997}"/><names>
         <name lang="en">Pressure regulator</name>
         <name lang="fr">Régulateurs de pression</name>
         <name lang="pl">Zawór redukcyjny z manometrem</name>

@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="260" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{5DE2C6F9-C2DA-49B1-86A0-E7CDCF685D2A}"/><names>
         <name lang="ar">CPU 312</name>
         <name lang="pt">CPU 312</name>
         <name lang="el">CPU 312</name>

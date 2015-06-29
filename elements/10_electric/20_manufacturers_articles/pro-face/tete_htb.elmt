@@ -1,5 +1,5 @@
 <definition width="200" version="0.3" hotspot_x="1" hotspot_y="0" height="240" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6C5A5BD9-FE30-4131-8D5E-2622F7C6597A}"/><names>
         <name lang="en">Head  HTB Proface</name>
         <name lang="it">Modulo HTB Proface</name>
         <name lang="fr">Tete HTB Proface</name>

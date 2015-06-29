@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{75FF4924-FA00-434B-B047-B9B5A2EC06C8}"/><names>
         <name lang="en">Analog Pressure</name>
         <name lang="fr">Presssion analogique</name>
         <name lang="pl">Przetwornik analogowo ciśnieniowy</name>

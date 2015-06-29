@@ -1,5 +1,5 @@
 <definition width="10" version="0.3" hotspot_x="5" hotspot_y="10" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{054A0374-5307-4A91-94D1-35F34D1A894A}"/><names>
         <name lang="ar">قابس و مقبس</name>
         <name lang="de">Steckverbindung Buchse + Stecker</name>
         <name lang="en">Plug and socket</name>

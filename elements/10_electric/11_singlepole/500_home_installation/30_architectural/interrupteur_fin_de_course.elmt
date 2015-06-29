@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4A6FEBF8-4571-497C-9DC0-1F7EAC807FD1}"/><names>
         <name lang="ar">مفتاح نهاية مشوار</name>
         <name lang="el">Τερματικός διακόπτης</name>
         <name lang="en">Limit switch</name>

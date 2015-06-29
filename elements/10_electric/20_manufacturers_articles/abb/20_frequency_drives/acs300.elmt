@@ -1,5 +1,5 @@
 <definition width="500" version="0.3" hotspot_x="20" hotspot_y="25" height="100" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E0D65EA0-508A-4763-8D98-4CB860A4FA1F}"/><names>
         <name lang="ar">ACS300</name>
         <name lang="el">ACS300</name>
         <name lang="en">ACS300</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="31" height="60" type="element" orientation="dyyy" link_type="slave">
-    <names>
+<uuid uuid="{6D44F579-875D-4087-8139-4EBEC6C109C8}"/><names>
         <name lang="en">Mirror contact NC</name>
         <name lang="de">Öffner</name>
         <name lang="it">Contatto NC</name>

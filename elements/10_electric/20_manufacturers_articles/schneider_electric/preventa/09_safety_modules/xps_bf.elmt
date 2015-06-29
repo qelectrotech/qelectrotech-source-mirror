@@ -1,5 +1,5 @@
 <definition width="360" version="0.3" hotspot_x="70" hotspot_y="40" height="140" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{328F2185-F830-4198-871C-65F00627AE1C}"/><names>
         <name lang="ar">XPS-BF</name>
         <name lang="en">XPS-BF</name>
         <name lang="fr">XPS-BF</name>

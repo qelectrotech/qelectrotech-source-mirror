@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
-    <names>
+<uuid uuid="{5CC664F7-A8EA-4401-9C05-60C77CB36CBA}"/><names>
         <name lang="ar">مفتاح تفاضلي</name>
         <name lang="de">Fehlerstromschutzschalter 2P</name>
         <name lang="ru">УЗО</name>

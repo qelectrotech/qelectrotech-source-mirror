@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="32" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8C8932D0-2C2F-4432-AF19-6E02B848EC06}"/><names>
         <name lang="es">Valv bola 1"H-H</name>
         <name lang="it">Valvola a sfera 1" F-F</name>
         <name lang="pl">Zawór kulowy 1"</name>

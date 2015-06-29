@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DB03ABDB-3942-4FF2-867E-93A0696FBEC9}"/><names>
         <name lang="ar">صمام ضغط تفاضلي</name>
         <name lang="en">Differential Pressure Valve</name>
         <name lang="fr">Vanne Pression Différentielle</name>

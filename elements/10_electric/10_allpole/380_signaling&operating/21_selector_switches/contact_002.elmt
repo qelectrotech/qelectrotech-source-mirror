@@ -1,5 +1,5 @@
 <definition hotspot_y="24" width="40" orientation="dyyy" type="element" hotspot_x="21" height="50" link_type="master" version="0.5">
-    <names>
+<uuid uuid="{FD39CA24-BF9A-47E7-94E2-5F3EE8BBB0A9}"/><names>
         <name lang="de">Drehschalter 1-polig Öffner ein/aus</name>
         <name lang="it">Selettore a 2 posizioni stabili</name>
         <name lang="pl">Łącznik obrotowy przełączny</name>

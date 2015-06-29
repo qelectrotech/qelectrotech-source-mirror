@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{AED80767-DBBE-4B97-B0BA-CB43ABB9BC32}"/><names>
         <name lang="ar">صمّام ضبط توازن T,A</name>
         <name lang="en">Balancing valve T.A</name>
         <name lang="fr">vanne d'équilibrage T.A.</name>

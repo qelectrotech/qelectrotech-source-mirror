@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
-    <names>
+<uuid uuid="{A72063F2-1DB7-4D9E-AD66-96B41D6430A6}"/><names>
         <name lang="el">Πηνίο εναλλασσόμενου</name>
         <name lang="en">AC Relais</name>
         <name lang="de">Spule mit Wechselstrombetätigung</name>

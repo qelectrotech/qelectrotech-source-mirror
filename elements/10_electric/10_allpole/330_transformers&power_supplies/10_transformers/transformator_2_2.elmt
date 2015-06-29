@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="18" hotspot_y="25" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8B0D5A62-E7FD-4BBD-A471-A1B17B9B6015}"/><names>
         <name lang="el">Μετασχηματιστής δυο τυλιγμάτων</name>
         <name lang="en">Two winding transformer</name>
         <name lang="de">Transformator mit getrennten Wicklungen und Anzapfung</name>

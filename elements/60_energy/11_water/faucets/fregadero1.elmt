@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="38" hotspot_y="39" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{36659B7D-0127-41B7-A469-03027EF59BD9}"/><names>
         <name lang="en">Sink </name>
         <name lang="fr">Evier</name>
         <name lang="es">Fregadero 1seno</name>

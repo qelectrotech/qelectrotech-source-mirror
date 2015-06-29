@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{5C0497F1-DA88-443C-87C5-EBA76CE660AA}"/><names>
         <name lang="en">Free key bolt out maneuver blocked</name>
         <name lang="fr">Cle libre  pene sorti manoeuvre bloquée</name>
         <name lang="pl">Klucz dostępny, wyjście niedozwolone</name>

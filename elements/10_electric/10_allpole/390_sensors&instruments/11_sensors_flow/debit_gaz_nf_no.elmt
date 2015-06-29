@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="32" hotspot_y="31" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0EF894E0-96AE-4E64-B5D9-990828762C26}"/><names>
         <name lang="el">Αισθητήρας ροής αερίου, μεταγωγική επαφή</name>
         <name lang="en">Actuated by the flow of a gas NC/NO</name>
         <name lang="de">Gasströmungsschalter Wechsler</name>

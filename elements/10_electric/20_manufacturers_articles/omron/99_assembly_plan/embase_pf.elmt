@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="5" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{33D5FD92-1175-424C-902A-840CBD8DD9D4}"/><names>
         <name lang="el">Βάση PF</name>
         <name lang="en">Base PF</name>
         <name lang="it">Base PF</name>

@@ -1,5 +1,5 @@
 <definition width="740" version="0.3" hotspot_x="0" hotspot_y="0" height="170" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{864310D2-79A7-418E-A9B8-2F79E5910B52}"/><names>
         <name lang="ar">TAC_Xenta_lib</name>
         <name lang="en">TAC Xenta lib</name>
         <name lang="fr">TAC_Xenta_lib</name>

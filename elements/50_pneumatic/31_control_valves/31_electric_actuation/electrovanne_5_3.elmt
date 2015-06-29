@@ -1,5 +1,5 @@
 <definition width="150" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{EA3BCFB9-03A1-4D92-BF03-51B6F07B157C}"/><names>
         <name lang="en">Solenoid 5 / 3</name>
         <name lang="fr">Electrovanne 5 / 3</name>
         <name lang="pl">Zawór sterujący 5/3, dwustopniowe sterowanie, elektromagnetyczne i przez wzrost ciśnienia, ustalany sprężynami w położeniu środkowym</name>

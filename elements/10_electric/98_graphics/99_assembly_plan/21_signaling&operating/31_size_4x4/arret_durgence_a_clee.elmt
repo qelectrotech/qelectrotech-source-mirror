@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0EAC8606-E0BB-4D59-8642-6FCFCE4B4F65}"/><names>
         <name lang="en">Emergency Stop key to</name>
         <name lang="fr">Arret d'urgence à clef</name>
         <name lang="de">Not-Aus Taster mit Schlüssel</name>

@@ -1,5 +1,5 @@
 <definition width="280" version="0.3" hotspot_x="140" hotspot_y="100" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D57AC39B-9E47-4A0F-94A2-B08E95482B4E}"/><names>
         <name lang="en">2x3/2-way valve NF-NF</name>
         <name lang="fr">Distributeurs 2x3/2 NF-NF</name>
         <name lang="pl">Zawór podwójny 2x3/2 NC-NC</name>

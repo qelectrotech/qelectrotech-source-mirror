@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="25" hotspot_y="40" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{92D57815-D4F4-4B25-99E0-B1C918A3BA01}"/><names>
         <name lang="es">Manguito rosca 1"</name>
         <name lang="it">Manicotto filettato 1</name>
         <name lang="pl">Mufa 1"</name>

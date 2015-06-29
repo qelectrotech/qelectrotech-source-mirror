@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B6E50A54-9AE7-4B6E-A88D-B1A74397D5AC}"/><names>
         <name lang="ar">أمبيرساعة متر </name>
         <name lang="de">Amperestundenzähler</name>
         <name lang="el">Μετρητής κατανάλωσης, Αμπερώρια (Ah)</name>

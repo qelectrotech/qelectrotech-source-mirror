@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="21" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{90C44F7F-326F-41E1-A55B-91F1047E3F16}"/><names>
         <name lang="ar">مُحوّل بمقبس متوسط على ملف </name>
         <name lang="de">Transformator mit Mittenanzapfung an einer Wicklung</name>
         <name lang="el">Μετασχηματιστής με μεσαία λήψη στο ένα τύλιγμα</name>

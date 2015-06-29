@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{32EF2AFC-B6E3-4DF5-8BFD-B68405C502BF}"/><names>
         <name lang="en">Increase in air pressure</name>
         <name lang="fr">Augmentation de la pression de l'air</name>
         <name lang="pl">Sterowane przez wzrost ciśnienia</name>

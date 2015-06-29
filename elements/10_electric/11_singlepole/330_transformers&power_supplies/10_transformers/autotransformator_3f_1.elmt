@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="37" hotspot_y="45" height="80" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{70E3D4C8-CE3A-432A-B4ED-2A2DD196B2A0}"/><names>
         <name lang="en">Three-phase autotransformer Y</name>
         <name lang="de">Spartransformator Stern</name>
         <name lang="it">Autotrasformatore 3F Y (forma 1)</name>

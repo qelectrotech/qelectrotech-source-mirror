@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="45" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D2D1F43F-9C17-4367-8C0C-CEECB34E0058}"/><names>
         <name lang="el">Ρελέ μινιατούρα</name>
         <name lang="en">Miniature plug-in Relay</name>
         <name lang="de">Relais</name>

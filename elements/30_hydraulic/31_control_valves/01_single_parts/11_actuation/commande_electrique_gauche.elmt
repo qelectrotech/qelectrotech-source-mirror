@@ -1,5 +1,5 @@
 <definition width="30" version="0.22" hotspot_x="20" hotspot_y="10" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C9B80997-E931-43B0-9EDB-5E7F578992D7}"/><names>
         <name lang="en">Electrical command left</name>
         <name lang="fr">Commande electrique gauche</name>
         <name lang="pl">Elektryczne (strona lewa)</name>

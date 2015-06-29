@@ -1,5 +1,5 @@
 <definition width="40" version="0.22" hotspot_x="10" hotspot_y="40" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{23BD5AB9-1F74-43EA-A6C8-DB75BAB3DAED}"/><names>
         <name lang="en">4 ports - P -&gt; T connected</name>
         <name lang="fr">4 voies - P -&gt; T Relies</name>
         <name lang="cs">4 cesty - P -&gt; T spojené</name>

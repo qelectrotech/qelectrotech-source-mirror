@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{21080FD8-DD94-49B9-9A74-85E326685AE9}"/><names>
         <name lang="ar">خزّان F</name>
         <name lang="en">F bottle</name>
         <name lang="fr">F bouteille</name>

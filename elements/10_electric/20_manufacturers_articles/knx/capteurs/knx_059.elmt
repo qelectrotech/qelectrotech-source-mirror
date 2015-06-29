@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{327019BF-3674-4DB6-AE34-FB95913F795C}"/><names>
         <name lang="el">Αισθητήρας IR, μονός</name>
         <name lang="en">PIR, single</name>
         <name lang="it">Lumin, IR, 1 can</name>

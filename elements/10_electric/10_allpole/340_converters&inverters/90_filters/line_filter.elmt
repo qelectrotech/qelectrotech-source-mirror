@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="45" hotspot_y="25" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{22A8939B-AD0B-4281-9FCF-B7CA605892E3}"/><names>
         <name lang="ar">خط مرشح</name>
         <name lang="el">Φίλτρο γραμμής</name>
         <name lang="en">Line filter</name>

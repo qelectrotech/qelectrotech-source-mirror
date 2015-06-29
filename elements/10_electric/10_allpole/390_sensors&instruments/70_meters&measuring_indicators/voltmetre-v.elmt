@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{AFDE8211-B6C1-469F-9D1B-F671F58C7DD0}"/><names>
         <name lang="ar">فولتمتر عمودي</name>
         <name lang="de">Voltmeter senkrecht</name>
         <name lang="ru">Вольтметр (вертикальный)</name>

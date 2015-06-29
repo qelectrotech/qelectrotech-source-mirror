@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{7979970C-6F47-4CFF-AE44-3CE1D123F8D3}"/><names>
         <name lang="ar">قاعدة DINب 4 أطراف توصيل </name>
         <name lang="en">4-pin DIN socket</name>
         <name lang="de">Rundstecker 4-polig</name>

@@ -1,5 +1,5 @@
 <definition type="element" height="50" orientation="dyyy" version="0.5" link_type="simple" hotspot_x="17" hotspot_y="23" width="50">
-    <names>
+<uuid uuid="{9048E31B-AC89-4A4B-B6E8-BC7AD289C947}"/><names>
         <name lang="fr">Sirène extérieure</name>
         <name lang="it">Sirena esterna</name>
         <name lang="de">Hupe Aussenbereich</name>

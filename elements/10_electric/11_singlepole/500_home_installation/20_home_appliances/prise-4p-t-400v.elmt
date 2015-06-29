@@ -1,5 +1,5 @@
 <definition type="element" width="130" link_type="simple" hotspot_x="5" hotspot_y="186" height="190" orientation="dyyy" version="0.5">
-    <names>
+<uuid uuid="{FDECFAA0-5812-489A-8DAC-17E1F8C9C938}"/><names>
         <name lang="fr">Prise 4 P+T 400 V</name>
     </names>
     <informations>cbh41</informations>

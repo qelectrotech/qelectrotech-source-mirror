@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="55" hotspot_y="65" height="150" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{47A42816-1E65-4EE9-88EB-C08A38E7930F}"/><names>
         <name lang="en">cRIO 9024 - controller real-time</name>
         <name lang="it">cRIO 9024 - controller real-time</name>
         <name lang="fr">contrôleur cRIO</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{80231031-B5DA-4116-AED8-6BCA28988568}"/><names>
         <name lang="ar">ضاغط ببرغي</name>
         <name lang="el">Κοχλιωτός συμπιεστής</name>
         <name lang="en">Screw compressor</name>

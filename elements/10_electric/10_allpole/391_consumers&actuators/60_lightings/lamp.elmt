@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="14" hotspot_y="33" height="60" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4DB2D527-6F9E-405D-B48E-46604AF24840}"/><names>
         <name lang="de">Lampe</name>
         <name lang="el">Λάμπα</name>
         <name lang="en">Lamp</name>

@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{396F8987-6838-434A-82E9-1B51C5256E2E}"/><names>
         <name lang="en">valve 2 / 2, with lever</name>
         <name lang="fr">Electrovanne 2 / 2, à levier</name>
         <name lang="pl">Zawór sterujący 2/2, sterowany dźwignią, powrót wymuszony sprężyną</name>

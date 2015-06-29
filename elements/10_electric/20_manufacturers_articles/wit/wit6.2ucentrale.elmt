@@ -1,5 +1,5 @@
 <definition width="290" version="0.3" hotspot_x="163" hotspot_y="55" height="150" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{90C34A8E-8670-45A5-A521-8A4C57E3A2B3}"/><names>
         <name lang="en">WIT 6.2 CPU</name>
         <name lang="it">WIT 6.2 CPU</name>
         <name lang="fr">WIT 6.2 Unité centrale</name>

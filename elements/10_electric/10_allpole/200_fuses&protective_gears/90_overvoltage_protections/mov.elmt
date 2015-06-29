@@ -1,5 +1,5 @@
 <definition width="50" version="0.22" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{60D04F0A-33D9-4667-B31D-60CFBDAA42DA}"/><names>
         <name lang="en">Metal-Oxide Varistor</name>
         <name lang="fr">Varistance Metal-Oxide</name>
         <name lang="de">Varistor</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D2C5CDB1-6B8C-40C0-911E-5E2AF1EC1319}"/><names>
         <name lang="en">Gateway</name>
         <name lang="it">Gateway</name>
         <name lang="fr">Passerelle</name>

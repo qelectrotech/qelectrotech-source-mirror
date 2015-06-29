@@ -1,5 +1,5 @@
 <definition type="element" link_type="simple" hotspot_x="33" hotspot_y="5" orientation="dyyy" version="0.5" width="110" height="70">
-    <names>
+<uuid uuid="{C33FE39E-B2EE-4EC0-BC3F-4EB76E9BCEA0}"/><names>
         <name lang="en">Motor circuit breaker with neutral</name>
         <name lang="fr">Disjoncteur de moteur avec neutre</name>
         <name lang="cs">Jistič motoru s nulovým vodičem</name>

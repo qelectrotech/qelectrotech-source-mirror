@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{EA148A7F-8147-4D47-A608-2886E0A6393D}"/><names>
         <name lang="ar">حسّاس فوق صوتي NO</name>
         <name lang="el">Αισθητήρας υπερήχων, ανοικτή επαφή</name>
         <name lang="en">Ultrasonic sensor  NO</name>

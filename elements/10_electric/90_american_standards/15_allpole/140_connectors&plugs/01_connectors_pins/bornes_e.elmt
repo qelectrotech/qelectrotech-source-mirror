@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{338D12B6-7B8E-41A5-B8BF-42AF77F22727}"/><names>
         <name lang="ar">طرف دخل</name>
         <name lang="de">Steckverbindung Stecker</name>
         <name lang="ru">Штырь (стар.)</name>

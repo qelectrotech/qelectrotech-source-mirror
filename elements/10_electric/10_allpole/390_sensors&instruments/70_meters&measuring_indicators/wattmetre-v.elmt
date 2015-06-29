@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" ic="true" orientation="dnnn">
-    <names>
+<uuid uuid="{6BBCA5FA-8C69-43CC-A0DE-DC271598A09C}"/><names>
         <name lang="ar">واتميتر عمودي</name>
         <name lang="de">Wattmeter senkrecht</name>
         <name lang="ru">Ватметр (вертикальный)</name>

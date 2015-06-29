@@ -1,5 +1,5 @@
 <definition width="150" version="0.3" hotspot_x="75" hotspot_y="75" height="260" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3967AF50-C121-4B80-9380-2962B957D153}"/><names>
         <name lang="ar">بالون تراتب</name>
         <name lang="en">Stratification balloon ECS</name>
         <name lang="fr">Ballon Stratification ECS</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{1B9498CB-8FFB-4FEF-89CF-FAA037F11608}"/><names>
         <name lang="ar">أوميتر أفقي</name>
         <name lang="de">Ohmmeter waagerecht</name>
         <name lang="ru">Омметр (горизонтальный)</name>

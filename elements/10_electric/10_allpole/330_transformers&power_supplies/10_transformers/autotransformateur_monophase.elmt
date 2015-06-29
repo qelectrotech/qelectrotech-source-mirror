@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny">
-    <names>
+<uuid uuid="{FD6A2B42-0158-42BC-BB2A-8E0A7195019B}"/><names>
         <name lang="ar">مُحوّل ذاتي أحادي الوجه</name>
         <name lang="el">Αυτομετασχηματιστής μονοφασικός</name>
         <name lang="en">Single phase autotransducer</name>

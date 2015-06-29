@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="41" hotspot_y="14" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5671E6EE-A5E6-4118-8EC1-2F90BD0CEE45}"/><names>
         <name lang="ar">اسطوانة غير متماثلة مزدوج الفعل مع قضيب مُوجّه لليسار</name>
         <name lang="el">Έμβολο διπλής ενεργείας, αριστερά</name>
         <name lang="en">Double acting cylinders left</name>

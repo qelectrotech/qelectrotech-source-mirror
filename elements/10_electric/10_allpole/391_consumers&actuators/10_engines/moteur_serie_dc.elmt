@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="38" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A813FE95-E0F9-42F5-9B57-CEF20FD2D2D3}"/><names>
         <name lang="ar">محرّك توالي مستمرّ</name>
         <name lang="el">Σειριακό μοτέρ συνεχούς</name>
         <name lang="en">Series motor DC</name>

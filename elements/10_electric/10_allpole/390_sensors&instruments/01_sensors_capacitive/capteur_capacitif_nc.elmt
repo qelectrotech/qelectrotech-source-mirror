@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6D3D6551-A927-4B37-BF76-50E44C9CF13B}"/><names>
         <name lang="ar">حساس سعوي NC</name>
         <name lang="de">Kapazitiver Sensor 2-Leiter Öffner</name>
         <name lang="el">Χωρητικός αισθητήρας, κλειστή επαφή (NC)</name>

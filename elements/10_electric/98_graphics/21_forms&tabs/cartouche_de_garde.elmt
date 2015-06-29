@@ -1,5 +1,5 @@
 <definition width="400" version="0.2" hotspot_x="15" hotspot_y="35" height="150" type="element" orientation="dnnn" >
-    <names>
+<uuid uuid="{E0AA79DE-1A11-4229-AA95-F2BC84BF59AA}"/><names>
         <name lang="fr">cartouche de garde</name>
         <name lang="de">Deckblatt</name>
         <name lang="en">Form cover sheet</name>

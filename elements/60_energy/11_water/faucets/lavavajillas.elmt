@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="44" hotspot_y="61" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E35477C6-E13E-4525-887F-D32A235CA86E}"/><names>
         <name lang="en">Dishwasher</name>
         <name lang="fr">Lave-vaisselle</name>
         <name lang="es">Lavavajillas</name>

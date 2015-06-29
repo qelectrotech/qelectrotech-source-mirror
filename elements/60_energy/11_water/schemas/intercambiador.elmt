@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A4D3703E-3A74-4631-8DFD-61602A267AA2}"/><names>
         <name lang="es">Interacambiador calor</name>
         <name lang="it">Scambiatore di calore</name>
         <name lang="pl">Wymiennik ciepła</name>

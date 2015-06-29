@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="24" height="50" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DA87A628-1342-40E8-B71E-D8E348CEFE55}"/><names>
         <name lang="de">Diode</name>
         <name lang="en">Diode</name>
         <name lang="it">Diodo</name>

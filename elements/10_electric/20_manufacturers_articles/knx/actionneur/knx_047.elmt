@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{520B4CC7-EEB3-4EAD-9CE9-429486F5D53E}"/><names>
         <name lang="el">Ψηφιακή έξοδος, τριπλή</name>
         <name lang="en">Binary output, 3-fold</name>
         <name lang="it">Uscita digitale, 3 can</name>

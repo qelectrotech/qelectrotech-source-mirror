@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="37" hotspot_y="20" height="40" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{60B78DB6-63D7-4F17-BD96-7367C2B5FDF0}"/><names>
         <name lang="ar">مّوزّع عاديّا مفتوح 2-2</name>
         <name lang="en">Control valve normally closed 2-2</name>
         <name lang="it">Valvola di controllo NO 2-2</name>

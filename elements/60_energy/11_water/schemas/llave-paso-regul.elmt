@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="18" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E24DC5E6-8599-4CAB-BFAD-D92D4D225634}"/><names>
         <name lang="es">Llave regulación</name>
         <name lang="it">Valvola di regolazione</name>
         <name lang="pl">Zawór regulacyjny</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="29" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{734D8C84-3638-4947-8ABA-8A603AA0EBC8}"/><names>
         <name lang="es">Valv bola 1/2M-M</name>
         <name lang="it">Valvola a sfera 1/2 M-M</name>
         <name lang="pl">Zawór kulowy 1/2"</name>

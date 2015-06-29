@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B9D3AFFC-271C-4AC4-B092-4712126807BE}"/><names>
         <name lang="en">Double acting actuator with unilateral inhibition constant values</name>
         <name lang="fr">Double effet actionneur avec inhibition unilatérale des valeurs constantes</name>
         <name lang="pl">Siłownik pneumatyczny dwustronnego działania z jednostronnym hamowaniem o stałej wartości</name>

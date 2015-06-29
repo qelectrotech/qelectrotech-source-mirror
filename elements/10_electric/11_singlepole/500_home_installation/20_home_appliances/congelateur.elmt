@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{AB6C0E71-3831-4128-AE55-B2E4B15BC66D}"/><names>
         <name lang="ar">مُجمّد</name>
         <name lang="el">Καταψύκτης</name>
         <name lang="en">Freezer</name>

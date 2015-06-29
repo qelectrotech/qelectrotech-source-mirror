@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="42" hotspot_y="26" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9100F66E-E430-4692-A5B7-B8B80B83F5FA}"/><names>
         <name lang="ar">Zoom 2</name>
         <name lang="en">Comment</name>
         <name lang="de">Kommentar</name>

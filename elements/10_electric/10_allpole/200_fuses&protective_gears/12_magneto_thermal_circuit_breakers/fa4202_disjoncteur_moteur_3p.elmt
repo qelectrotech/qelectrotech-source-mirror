@@ -1,5 +1,5 @@
 <definition type="element" link_type="simple" hotspot_x="31" hotspot_y="4" orientation="dyyy" version="0.5" width="90" height="70">
-    <names>
+<uuid uuid="{98ADF831-42F0-4EDE-9267-6733EEBEAF62}"/><names>
         <name lang="en">Motor circuit breaker</name>
         <name lang="fr">Disjoncteur de moteur</name>
         <name lang="cs">Jistič motoru</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{736A128C-D0FD-4498-B882-73517CD02174}"/><names>
         <name lang="ar">قاعدة مقبس تيّار (2) (EN 60617 11-13=01)</name>
         <name lang="de">Mehrfachsteckdose (2) (EN 60617 11-13-01)</name>
         <name lang="el">Ρευματοδότης διπλός</name>

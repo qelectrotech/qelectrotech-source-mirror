@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="65" hotspot_y="85" height="140" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{60AAFA44-88E3-4BE6-87F7-5982CE062C6B}"/><names>
         <name lang="ar">موقد</name>
         <name lang="en">JMO stove</name>
         <name lang="fr">Poele Jmo</name>

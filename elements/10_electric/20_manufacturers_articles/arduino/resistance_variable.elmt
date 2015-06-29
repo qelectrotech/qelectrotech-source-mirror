@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="25" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9C168A14-49F9-4140-93D0-522E367B7691}"/><names>
         <name lang="el">Μεταβλητή αντίσταση</name>
         <name lang="en">Adjustable resistance</name>
         <name lang="it">Resistenza variabile</name>

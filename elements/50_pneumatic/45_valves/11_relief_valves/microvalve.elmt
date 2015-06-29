@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6EE35BEB-BAAE-44F9-8B53-05FB3E48965A}"/><names>
         <name lang="en">Microvalve mechanically</name>
         <name lang="fr">Microvalve a commande mecanique</name>
         <name lang="pl">Zawór dławiacy nastawialny</name>

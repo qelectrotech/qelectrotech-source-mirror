@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="40" hotspot_y="42" height="110" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F9DCC5AE-4BB3-4E7F-AC7E-5AAE3329E9D2}"/><names>
         <name lang="en">Laundry</name>
         <name lang="fr">Evier</name>
         <name lang="es">Lavadero</name>

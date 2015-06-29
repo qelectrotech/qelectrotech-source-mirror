@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="40" height="90" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{176F78E6-3506-40A2-AEE1-7D213732225E}"/><names>
         <name lang="en">Hydraulic accumulator</name>
         <name lang="fr">Bâche pressurisée (accumulateur)</name>
         <name lang="pl">Akumulator hydrauliczny</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{AE1A5072-AE8E-4873-ACBF-D91929F52C44}"/><names>
         <name lang="ar">مفتاح ضاغط</name>
         <name lang="el">Μπουτόν</name>
         <name lang="en">Pushbutton</name>

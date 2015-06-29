@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B32B5892-320F-4D88-B51E-435A2D74DAB6}"/><names>
         <name lang="ar">جرس</name>
         <name lang="de">Klingel</name>
         <name lang="ru">Звонок</name>

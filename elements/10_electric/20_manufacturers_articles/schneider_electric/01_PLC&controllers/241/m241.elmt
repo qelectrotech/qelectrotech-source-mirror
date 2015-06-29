@@ -1,5 +1,5 @@
 <definition hotspot_y="123" width="370" height="270" type="element" version="0.5" hotspot_x="69" orientation="dyyy" link_type="simple">
-    <names>
+<uuid uuid="{3BF7E498-83EB-4FAD-B7ED-1185FC2FC782}"/><names>
         <name lang="fr">Contrôleur TM241CE24T (M241) schneider</name>
         <name lang="en">TM241CE24T controller (M241) schneider</name>
     </names>

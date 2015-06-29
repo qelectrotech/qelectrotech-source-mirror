@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BFCC824A-4719-47C1-8849-2EBED820EA2D}"/><names>
         <name lang="ar">صمّام - تحكّم كهرومغناطييسي</name>
         <name lang="el">Βαλβίδα - Ηλεκτρομαγνητικός έλεγχος</name>
         <name lang="en">Valve - electromagnetic control</name>

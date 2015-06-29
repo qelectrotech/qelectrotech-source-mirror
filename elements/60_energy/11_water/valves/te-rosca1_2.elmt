@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="29" hotspot_y="25" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F9E08E9D-ADA6-4EB2-AE0E-2DE916F2B412}"/><names>
         <name lang="es">Te roscar1/2</name>
         <name lang="it">T Filettato 1/2</name>
         <name lang="pl">Trójnik 1/2"</name>

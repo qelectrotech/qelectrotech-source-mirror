@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{2E8167A0-42A0-4934-9910-ECA73AC3B581}"/><names>
         <name lang="ar">عاكس</name>
         <name lang="de">Scheinwerfer</name>
         <name lang="el">Προβολέας</name>

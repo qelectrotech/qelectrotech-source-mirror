@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="32" hotspot_y="31" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B48AE0B1-9009-4366-98E1-AC0C823FB1C4}"/><names>
         <name lang="el">Αισθητήρας ροής υγρού, μεταγωγική επαφή</name>
         <name lang="en">Actuated by the flow of a fluid NC/NO</name>
         <name lang="de">Durchflussschalter Wechsler</name>

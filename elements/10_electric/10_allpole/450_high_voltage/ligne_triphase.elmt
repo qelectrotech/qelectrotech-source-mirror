@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="0" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{7F01AF62-ABB2-416C-BEDE-FA98B25DD714}"/><names>
         <name lang="ar">خط ثلاثي الأوجه</name>
         <name lang="el">Τριφασική γραμμή</name>
         <name lang="en">Three-phase line</name>

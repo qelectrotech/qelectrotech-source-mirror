@@ -1,5 +1,5 @@
 <definition width="180" version="0.3" hotspot_x="20" hotspot_y="37" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{76B697B0-29FE-4E92-92F0-F8ADB5E6D6C0}"/><names>
         <name lang="en">Actuator 6SX10A</name>
         <name lang="it">Attuatore zennio 6sx10a</name>
         <name lang="fr">Actionneur zennio 6sx10a</name>

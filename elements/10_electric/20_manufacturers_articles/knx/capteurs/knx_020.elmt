@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B702FFA2-3E0B-4463-943C-704F9E18ED0A}"/><names>
         <name lang="el">Θερμοστάτης</name>
         <name lang="en">Thermostat</name>
         <name lang="it">Termostato</name>

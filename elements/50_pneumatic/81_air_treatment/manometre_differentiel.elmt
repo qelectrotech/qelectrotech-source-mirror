@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3C5DA877-9A18-41C4-A94A-EFB27ACD7637}"/><names>
         <name lang="en">Differential Pressure</name>
         <name lang="fr">Manometre de pression différentielle</name>
         <name lang="pl">Manometr różnicowy</name>

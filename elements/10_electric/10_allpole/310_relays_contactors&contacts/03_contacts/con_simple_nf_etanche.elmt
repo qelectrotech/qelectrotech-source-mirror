@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{72DB7D30-4A7A-4AD9-A7E3-F85772EE646D}"/><names>
         <name lang="ar">مفتاح بسيط (NC محمي)</name>
         <name lang="de">Öffner wasserdicht</name>
         <name lang="ru">Герметичный контакт (НЗ)</name>

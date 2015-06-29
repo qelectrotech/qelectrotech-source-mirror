@@ -1,5 +1,5 @@
 <definition width="430" version="0.4" hotspot_x="19" hotspot_y="32" height="520" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A8C79B55-90AC-4F98-81C2-3A20BDBC7B5E}"/><names>
         <name lang="en">Terminal_19G1</name>
         <name lang="fr">Bornier cable 19G1</name>
         <name lang="it">Morsettiera Cavo 19G1</name>

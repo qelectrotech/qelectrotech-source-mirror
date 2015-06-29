@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="39" hotspot_y="37" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{994BCBF6-52B4-44EB-9E10-CD2B1C53796E}"/><names>
         <name lang="ar">حسّاس سعوي ب 4 أطراف</name>
         <name lang="de">Kapazitiver Sensor 4-Leiter</name>
         <name lang="el">Χωρητικός αισθητήρας 4 ακρ</name>

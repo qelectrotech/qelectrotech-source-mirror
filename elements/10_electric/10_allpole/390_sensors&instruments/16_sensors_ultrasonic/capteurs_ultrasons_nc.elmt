@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3379A19A-1997-463C-B1A7-9C1E53762125}"/><names>
         <name lang="ar">حسّاس فوق صوتي NC</name>
         <name lang="el">Αισθητήρας υπερήχων, κλειστή επαφή</name>
         <name lang="en">Ultrasonic sensor  NC</name>

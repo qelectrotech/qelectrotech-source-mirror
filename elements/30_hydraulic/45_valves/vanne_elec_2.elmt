@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="15" hotspot_y="22" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0D36EDED-3765-4072-9E30-C02AFB925CFB}"/><names>
         <name lang="ar">صمّام بثلاث مسارات - تحكّم كهرومغناطيسي</name>
         <name lang="el">Τρίοδη Βαλβίδα - Ηλεκτρομαγνητικός έλεγχος</name>
         <name lang="en">Three-way valve-control electromagnetic</name>

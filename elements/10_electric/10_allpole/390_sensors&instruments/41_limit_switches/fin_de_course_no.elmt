@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{198D2D42-7B11-45B1-B6D5-AAEDC80A4303}"/><names>
         <name lang="ar">مفتاح نهاية مشوار (NO)</name>
         <name lang="de">Schliesser mechanisch</name>
         <name lang="ru">Концевой контакт (НР)</name>

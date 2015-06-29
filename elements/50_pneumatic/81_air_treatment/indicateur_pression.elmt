@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{87E881CD-55B9-4BC2-B486-A94D83E3A7FD}"/><names>
         <name lang="en">Pressure Indicator
 </name>
         <name lang="fr">Indicateur de pression</name>

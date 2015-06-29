@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
-    <names>
+<uuid uuid="{A28D3DBE-8169-4255-AC27-4857F690D837}"/><names>
         <name lang="en">Relay insensitive to AC</name>
         <name lang="de">Relais Wechselstrom-unempfindlich</name>
         <name lang="it">Relè insensibile alla CA</name>

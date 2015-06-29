@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="18" hotspot_y="34" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0A663780-9AD2-4DC8-96EC-8D784D7828FC}"/><names>
         <name lang="en">Sprinkler irrigation</name>
         <name lang="fr">irrigation</name>
         <name lang="es">Aspersor riego</name>

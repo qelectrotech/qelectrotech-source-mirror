@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3B57FF4B-75A9-4D26-95CD-6E6C008C48D8}"/><names>
         <name lang="el">Τροφοδοτικό</name>
         <name lang="en">Power supply</name>
         <name lang="it">Alimentatore</name>

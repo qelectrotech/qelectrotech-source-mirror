@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F09ECA2F-F942-421D-A5FE-367CBC7639B9}"/><names>
         <name lang="en">OR gate</name>
         <name lang="fr">Porte OU</name>
         <name lang="cs">Brána NEBO (OR)</name>

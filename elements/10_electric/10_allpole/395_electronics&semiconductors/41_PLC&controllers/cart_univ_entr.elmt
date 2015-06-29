@@ -1,5 +1,5 @@
 <definition width="770" version="0.3" hotspot_x="15" hotspot_y="35" height="100" type="element" ic="true" orientation="dnnn">
-    <names>
+<uuid uuid="{E4F19393-D97E-41D1-8454-E890C14B223B}"/><names>
         <name lang="el">Κάρτα εισόδων (8 είσοδοι)</name>
         <name lang="en">Universal inputs (8 inputs)</name>
         <name lang="de">Allgemeine 8xDI-Karte</name>

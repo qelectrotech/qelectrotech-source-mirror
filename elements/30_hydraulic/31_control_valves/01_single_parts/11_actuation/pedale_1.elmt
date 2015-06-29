@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="21" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5FC0AF70-8634-4BBB-8899-DAA641D9EA63}"/><names>
         <name lang="ar">دوّاسة</name>
         <name lang="el">Ποδόπληκτρο</name>
         <name lang="en">Pedal</name>

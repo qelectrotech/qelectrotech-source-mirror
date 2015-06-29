@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="slave">
-    <names>
+<uuid uuid="{AB801F9D-7899-491B-A2A4-370D6F54DFA2}"/><names>
         <name lang="ar">مُلامس بسيط (NC)</name>
         <name lang="de">Öffner</name>
         <name lang="ru">Проктой контакт (НЗ)</name>

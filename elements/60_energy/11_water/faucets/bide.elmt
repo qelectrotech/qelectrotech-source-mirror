@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="29" hotspot_y="45" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{CA905E8C-8399-40B7-ABCA-CA38AEDE3AB3}"/><names>
         <name lang="el">Μπιντέ</name>
         <name lang="en">Bidet</name>
         <name lang="it">Bidè</name>

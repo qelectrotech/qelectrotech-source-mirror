@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{A0722DC6-32A6-41D6-A9E3-21C56BCA0EFB}"/><names>
         <name lang="ar">دخل</name>
         <name lang="de">Eingang</name>
         <name lang="ru">Вход</name>

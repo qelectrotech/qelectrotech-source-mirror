@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="27" hotspot_y="29" height="60" type="element" ic="true" orientation="dyyy" link_type="slave">
-    <names>
+<uuid uuid="{CBBB9403-ED03-4CA3-A414-8B3E44A2B60C}"/><names>
         <name lang="ar">مُلامس قدرة- كونتكتور (NO)</name>
         <name lang="de">Leistungsschliesser 2-polig</name>
         <name lang="ru">Контакт контактора (НР)</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{BB0187A7-929C-42A7-9985-B0F24F7DFAC9}"/><names>
         <name lang="en">Valve without spring</name>
         <name lang="fr">Clapet sans ressort</name>
         <name lang="pl">Zawór zwrotny nie obciążony sprężyną</name>

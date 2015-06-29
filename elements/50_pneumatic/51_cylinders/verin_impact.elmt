@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E236A17F-AEDE-4150-9DC8-0F3435050740}"/><names>
         <name lang="en">Pneumatic Actuators Impact</name>
         <name lang="fr">Actionneurs pneumatiques Impact</name>
         <name lang="pl">Siłownik pneumatyczny udarowy</name>

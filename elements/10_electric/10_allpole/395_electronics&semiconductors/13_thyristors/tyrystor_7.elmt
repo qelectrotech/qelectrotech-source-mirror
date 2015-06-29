@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{45166E88-65C5-4018-B632-9005CDCC41B0}"/><names>
         <name lang="ar">ثايريستور ببوابة إطفاء GTO</name>
         <name lang="de">Abschalt-Thyristortriode</name>
         <name lang="en">Turn-off thyristor</name>

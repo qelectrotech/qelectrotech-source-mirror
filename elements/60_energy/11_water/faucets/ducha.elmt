@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="39" hotspot_y="68" height="110" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{655DB369-D0FE-46DA-99B4-59B7DA4E124A}"/><names>
         <name lang="el">Ντούζ</name>
         <name lang="en">Douche</name>
         <name lang="it">Doccia</name>

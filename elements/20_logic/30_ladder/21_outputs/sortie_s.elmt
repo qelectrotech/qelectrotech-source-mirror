@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{90241AA6-FB66-4751-AAF5-4CBEA1AF8C76}"/><names>
         <name lang="ar">خرج (تفعيل)</name>
         <name lang="de">Ausgang (setzen)</name>
         <name lang="ru">Выход (установка)</name>

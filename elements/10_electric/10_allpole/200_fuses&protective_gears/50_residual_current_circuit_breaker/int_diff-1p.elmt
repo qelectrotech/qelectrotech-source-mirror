@@ -1,5 +1,5 @@
 <definition version="0.5" type="element" height="60" link_type="master" hotspot_x="11" orientation="dyyy" hotspot_y="29" width="20">
-    <names>
+<uuid uuid="{77C3C8C4-D90D-419F-B444-B0251D430A54}"/><names>
         <name lang="ar">مفتاح تفاضلي</name>
         <name lang="pl">Rozłącznik różnicowoprądowy</name>
         <name lang="en">Differential switch</name>

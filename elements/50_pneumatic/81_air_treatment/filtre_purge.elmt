@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7DF1DD95-70D7-40E3-BFBC-B700B6289218}"/><names>
         <name lang="en">Filter with purge</name>
         <name lang="fr">Filtre avec purge</name>
         <name lang="pl">Zawór spustowy oddzielacza, ze spustem siłą mięśni</name>

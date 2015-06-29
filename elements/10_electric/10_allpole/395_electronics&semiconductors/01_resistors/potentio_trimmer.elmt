@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="21" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E1C2AC09-B0AE-4268-9268-A3EA3622CF6E}"/><names>
         <name lang="en">Potentiometer trimmer</name>
         <name lang="de">Potentiometer</name>
         <name lang="fr">Potentiometre ajustable</name>

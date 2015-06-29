@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B5BD2EE4-31C5-4FDD-9C56-740B851AAA68}"/><names>
         <name lang="ar">اسطوانة و صمّام E</name>
         <name lang="en">E cylinder and valve</name>
         <name lang="fr">E bouteille et vanne</name>

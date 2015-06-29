@@ -1,5 +1,5 @@
 <definition height="110" type="element" hotspot_x="15" orientation="dyyy" width="750" hotspot_y="52" version="0.5" link_type="simple">
-    <names>
+<uuid uuid="{F74C685E-5F6A-4E15-AF4B-CB07FE9FD2FB}"/><names>
         <name lang="en">IO-AI4-AO2</name>
         <name lang="cs">IO-AI4-AO2</name>
     </names>

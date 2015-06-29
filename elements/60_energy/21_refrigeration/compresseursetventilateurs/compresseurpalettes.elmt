@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8689007D-A403-4060-973C-C8088AF68301}"/><names>
         <name lang="ar">ضاغط بريّش</name>
         <name lang="en">Vane compressor</name>
         <name lang="it">Compressore a palette</name>

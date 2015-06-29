@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D1044B3D-083D-4627-B683-2382A7E7911E}"/><names>
         <name lang="el">Ηλεκτρική θερμάστρα</name>
         <name lang="en">Electrical Heater</name>
         <name lang="it">Riscaldatore elettrico</name>

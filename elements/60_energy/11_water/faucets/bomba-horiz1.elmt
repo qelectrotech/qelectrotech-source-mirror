@@ -1,5 +1,5 @@
 <definition width="120" version="0.4" hotspot_x="33" hotspot_y="36" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0CFFB8DE-1B37-42D2-A496-D46351BD3647}"/><names>
         <name lang="el">Οριζόντια αντλία νερού</name>
         <name lang="en">Horizontall Water Pump</name>
         <name lang="it">Pompa orizzontale</name>

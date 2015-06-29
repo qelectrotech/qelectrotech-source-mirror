@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="10" hotspot_y="10" height="60" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{B1F61907-226D-4053-B105-AB3945A8C37A}"/><names>
         <name lang="el">Κίνδυνος ηλεκτροπληξίας</name>
         <name lang="en">Danger electric</name>
         <name lang="de">Hinweis elektrische Gefahr groß</name>

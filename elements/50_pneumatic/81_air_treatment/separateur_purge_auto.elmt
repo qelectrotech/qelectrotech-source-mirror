@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4BF1429F-7322-4093-9653-689EDF2029E2}"/><names>
         <name lang="en">Separator drain valve with an automatic trigger</name>
         <name lang="fr">Separateur avec purge automatique</name>
         <name lang="pl">Zawór spustowy oddzielacza, ze spustem automatycznym</name>

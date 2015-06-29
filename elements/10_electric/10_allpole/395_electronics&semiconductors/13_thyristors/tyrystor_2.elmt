@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{FEFA3283-66B6-430C-8760-B98A9EC27868}"/><names>
         <name lang="ar">ثايريستور دايود موصل في الانحياز العكسي</name>
         <name lang="de">Thyristordiode, rückwärts leitend
 </name>

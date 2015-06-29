@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="18" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5F169AA6-5D2B-47BF-8890-2F7B5D70E3AB}"/><names>
         <name lang="fr">Transformateur monophasé à deux enroulements avec écran</name>
         <name lang="it">Trasformatore monofase con schermo</name>
         <name lang="en">Transformer with screen</name>

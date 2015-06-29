@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="44" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{FEF0649C-02AF-45D3-9092-C62E532764B1}"/><names>
         <name lang="de">Rundstecker 17-polig</name>
         <name lang="en">Encoder plug 17 Pin</name>
         <name lang="it">Encoder maschio 17 Pin</name>

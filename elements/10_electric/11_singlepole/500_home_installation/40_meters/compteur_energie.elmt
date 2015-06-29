@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="5" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4B96B453-FD4B-4A3F-9827-BD3EF06F20AE}"/><names>
         <name lang="ar">عدّاد طاقة</name>
         <name lang="el">Μετρητής ενέργειας, Κιλοβατώρες (KWh)</name>
         <name lang="en">Energy meter</name>

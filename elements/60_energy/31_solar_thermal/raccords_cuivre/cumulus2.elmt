@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{FBCD486A-7B03-4260-BE2D-7D1C3A21B932}"/><names>
         <name lang="ar">مُراكم كهربائي</name>
         <name lang="en">Electric cumulus</name>
         <name lang="fr">Cumulus electrique</name>

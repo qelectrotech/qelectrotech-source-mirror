@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{D31D65C1-1993-4D3F-B482-D35E117AFDF9}"/><names>
         <name lang="ar">ترياك , بوابة N</name>
         <name lang="en">Reverse blocking Thyristortriode, N-Gate</name>
         <name lang="de">rückwärts sperrende Thyristortriode, N-Gate</name>

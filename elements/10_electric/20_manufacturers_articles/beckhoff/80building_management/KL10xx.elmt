@@ -1,5 +1,5 @@
 <definition width="510" version="0.4" hotspot_x="36" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
-    <names>
+<uuid uuid="{B2229B86-18E6-40E3-A6A1-3FA6EDABFE61}"/><names>
         <name lang="ar">Beckhoff KL/KS10xx DI</name>
         <name lang="de">Beckhoff KL/KS10xx DI</name>
         <name lang="ru">Beckhoff KL/KS10xx DI</name>

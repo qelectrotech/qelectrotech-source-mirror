@@ -1,5 +1,5 @@
 <definition width="10" version="0.4" hotspot_x="4" hotspot_y="29" height="60" link_type="master" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{72CE3EB2-3540-4D89-A42F-B83A4C68E4B2}"/><names>
         <name lang="ar">مصهر</name>
         <name lang="de">Sicherung</name>
         <name lang="ru">Предохранитель</name>

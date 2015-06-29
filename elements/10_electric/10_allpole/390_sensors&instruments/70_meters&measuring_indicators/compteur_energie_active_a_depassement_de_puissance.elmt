@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{03DDA1A0-A780-421C-A95B-BFC94978B335}"/><names>
         <name lang="ar">عدّاد طاقة فعّالة مع تجاوز قدرة</name>
         <name lang="de">Überverbrauchszähler, Spitzenzähler&#xd;</name>
         <name lang="en"> Excess watt-hour meter&#xd;</name>

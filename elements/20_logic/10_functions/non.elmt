@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E341CB60-F1AB-4952-AD28-D6D79B355D78}"/><names>
         <name lang="ar">بوابة النفي</name>
         <name lang="de">NICHT</name>
         <name lang="ru">НЕ</name>

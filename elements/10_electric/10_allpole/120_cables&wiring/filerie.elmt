@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{72AE607F-732D-4708-B844-66DA682C8095}"/><names>
         <name lang="de">Verdrahtung</name>
         <name lang="en">Wiring</name>
         <name lang="it">Conduttura</name>

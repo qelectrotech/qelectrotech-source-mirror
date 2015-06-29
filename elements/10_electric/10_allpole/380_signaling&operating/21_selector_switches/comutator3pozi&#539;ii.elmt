@@ -1,5 +1,5 @@
 <definition type="element" height="50" version="0.5" width="50" link_type="simple" hotspot_x="24" hotspot_y="34" orientation="dyyy">
-    <names>
+<uuid uuid="{D2C838A8-2C15-4977-880A-42CF376AB71B}"/><names>
         <name lang="es">Interruptor 3 posiciones</name>
         <name lang="pt">Interruptor 3 posições</name>
         <name lang="de">Wahlschalter 3 Positionen</name>

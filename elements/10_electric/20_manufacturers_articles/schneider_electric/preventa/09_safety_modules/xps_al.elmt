@@ -1,5 +1,5 @@
 <definition width="160" version="0.3" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4D29C282-BF13-4C8D-A43E-E843C8493D3A}"/><names>
         <name lang="ar">XPS-AL</name>
         <name lang="en">XPS-AL</name>
         <name lang="fr">XPS-AL</name>

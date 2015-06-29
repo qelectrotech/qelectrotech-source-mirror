@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="31" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{948DCC64-A03F-4642-B867-BBB69A74C76A}"/><names>
         <name lang="ar">صمّام معياري</name>
         <name lang="el">Ρυθμιζόμενη βαλβίδα</name>
         <name lang="en">Calibrated valve</name>

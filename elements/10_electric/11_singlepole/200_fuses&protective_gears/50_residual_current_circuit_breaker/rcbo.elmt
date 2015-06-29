@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy" link_type="master">
-    <names>
+<uuid uuid="{A0235679-F59A-4611-A9B6-E140871EAC44}"/><names>
         <name lang="ar">قاطع تفاضلي</name>
         <name lang="de">Kombischalter</name>
         <name lang="ru">Дифавтомат</name>

@@ -1,5 +1,5 @@
 <definition width="800" version="0.3" hotspot_x="25" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{EDF14B03-E7E6-4202-9B6D-F55A751143CB}"/><names>
         <name lang="el">TWDLMDA20DRT (Έξοδοι)</name>
         <name lang="en">TWDLMDA20DRT (Outputs)</name>
         <name lang="it">TWDLMDA20DRT (Uscite)</name>

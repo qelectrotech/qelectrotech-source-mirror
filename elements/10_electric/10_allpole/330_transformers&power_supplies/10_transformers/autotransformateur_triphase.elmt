@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny">
-    <names>
+<uuid uuid="{9B08ABB2-B174-4EB1-93AA-89C65B717272}"/><names>
         <name lang="ar">مُحوّل ذاتي ثلاثي الأوجه</name>
         <name lang="el">Αυτομετασχηματιστής τριφασικός</name>
         <name lang="en">Three-phase autotransducer</name>

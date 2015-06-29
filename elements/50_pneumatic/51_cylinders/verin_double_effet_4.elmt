@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E3E69934-CD4D-4ECD-BD0B-3A6CB2F6D0A0}"/><names>
         <name lang="en">Double acting actuator with brake with two settings</name>
         <name lang="fr">Double effet actionneur avec frein à deux réglages</name>
         <name lang="pl">Siłownik pneumatyczny dwustronnego działania z hamowaniem dwustronnym nastawialnym, z bezstykową sygnalizacją położenia tłoka</name>

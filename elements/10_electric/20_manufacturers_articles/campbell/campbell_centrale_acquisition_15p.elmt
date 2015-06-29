@@ -1,5 +1,5 @@
 <definition width="320" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{50000DBE-84EC-4D2F-A300-0278C5AFB3A6}"/><names>
         <name lang="ar">مركزية رفع بيانات CR1000 15P قناة 2</name>
         <name lang="en">the Central Acquisition Channel 2 CR1000 15P</name>
         <name lang="it">Centale acquisizione Campbell CR1000 15P canale 2</name>

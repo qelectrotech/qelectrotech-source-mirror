@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{F460E14D-5E3C-4B83-8E23-3C19F2302658}"/><names>
         <name lang="ar">مصباح برّاق</name>
         <name lang="el">Φάρος</name>
         <name lang="en">Flashing light</name>

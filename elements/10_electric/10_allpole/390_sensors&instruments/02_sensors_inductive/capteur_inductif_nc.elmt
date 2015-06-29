@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{074A92F0-93E5-4E08-ADC3-40B16BBCFAFB}"/><names>
         <name lang="ar">حسّاس حثّي NC</name>
         <name lang="el">Επαγωγικός αισθητήρας, κλειστή επαφή</name>
         <name lang="en">Inductif sensor  NC</name>

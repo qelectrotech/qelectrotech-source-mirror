@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="30" hotspot_y="34" height="60" link_type="master" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E22BC531-ED13-4C91-BED3-97582C9DA35B}"/><names>
         <name lang="ar">قاطع ثلاثي القطبية</name>
         <name lang="de">Leitungsschutzschalter 3P</name>
         <name lang="en">Circuit-breaker</name>

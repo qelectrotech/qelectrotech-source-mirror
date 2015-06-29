@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="30" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{AB3F8A33-0D61-400D-9739-1C353848E93D}"/><names>
         <name lang="ar">محوّل ضغط / تيّار</name>
         <name lang="pt">Conversor de pressão</name>
         <name lang="el">Μετατροπέας πίεσης / ισχύος</name>

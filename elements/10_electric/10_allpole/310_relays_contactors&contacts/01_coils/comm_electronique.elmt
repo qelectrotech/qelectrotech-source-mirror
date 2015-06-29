@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
-    <names>
+<uuid uuid="{9BED5679-4CC9-4A1D-957D-2D36B51F2E84}"/><names>
         <name lang="el">Ηλεκτρονικό ρελέ</name>
         <name lang="en">Electronic relay</name>
         <name lang="de">Relais elektronisch</name>

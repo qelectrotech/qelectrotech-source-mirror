@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="41" hotspot_y="24" height="50" link_type="master" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8BAB5065-F3F0-4783-B721-C4A028F9D646}"/><names>
         <name lang="ar">مفتاح عزل رباعي بثلاث مصهرات</name>
         <name lang="de">Sicherungstrenner 3-polig + N</name>
         <name lang="ru">Выключатель-предохранитель</name>

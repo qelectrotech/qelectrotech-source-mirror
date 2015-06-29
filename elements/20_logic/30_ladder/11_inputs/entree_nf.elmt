@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{EB78D2C9-36CC-4E58-B190-6C9ECA57AB57}"/><names>
         <name lang="ar">دخل (منطق سالب)</name>
         <name lang="de">Eingang (negative Logik)</name>
         <name lang="ru">Вход (отрицательная логика)</name>

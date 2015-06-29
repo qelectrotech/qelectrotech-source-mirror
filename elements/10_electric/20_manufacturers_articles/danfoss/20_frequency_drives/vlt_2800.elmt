@@ -1,5 +1,5 @@
 <definition width="430" version="0.4" hotspot_x="25" hotspot_y="7" height="100" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{425C817C-8725-4468-B646-58905EC13472}"/><names>
         <name lang="en">VLT 2800</name>
         <name lang="it">Inverter VLT 2800</name>
         <name lang="fr">VLT 2800</name>

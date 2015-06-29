@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
-    <names>
+<uuid uuid="{AC97A00C-D2A7-46B1-89E5-19B02901BC8E}"/><names>
         <name lang="ar">XCS-DMC</name>
         <name lang="de">XCS-DMC</name>
         <name lang="en">XCS-DMC</name>

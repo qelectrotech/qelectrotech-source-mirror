@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{404D9EB3-70F8-495B-9315-9FBE6823378C}"/><names>
         <name lang="en">Electronic switching device with NC contact </name>
         <name lang="de">Öffner Halbleiter betätigt</name>
         <name lang="it">Contatto a comando elettronico (NC)</name>

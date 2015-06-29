@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="25" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{768EDDE3-AD61-44BF-B4BA-C592DB14E366}"/><names>
         <name lang="ar">ترنزيستور NPN</name>
         <name lang="de">NPN Transistor</name>
         <name lang="el">Τρανζίστορ NPN</name>

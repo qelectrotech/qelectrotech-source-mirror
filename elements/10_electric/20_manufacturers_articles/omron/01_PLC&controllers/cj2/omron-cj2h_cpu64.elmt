@@ -1,5 +1,5 @@
 <definition width="240" version="0.3" hotspot_x="8" hotspot_y="288" height="290" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D099A6E3-46CA-477F-B015-128AE74DA369}"/><names>
         <name lang="ar">omron-cj2h_cpu64</name>
         <name lang="el">omron-cj2h_cpu64</name>
         <name lang="en">omron-cj2h_cpu64</name>

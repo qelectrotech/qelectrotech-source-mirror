@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{58E2B629-DE1A-4190-A8B6-C6B2EC386DF6}"/><names>
         <name lang="en">single acting cylinder</name>
         <name lang="fr">verin simple effet</name>
         <name lang="pl">Siłownik pneumatyczny jednostronnego działania pchający</name>

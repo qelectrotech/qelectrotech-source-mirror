@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="5" height="10" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0950FE74-5284-4F9A-9572-D4BCC88418B6}"/><names>
         <name lang="ar">اتجاه سائل</name>
         <name lang="en">Sense fluid</name>
         <name lang="fr">Sens fluide</name>

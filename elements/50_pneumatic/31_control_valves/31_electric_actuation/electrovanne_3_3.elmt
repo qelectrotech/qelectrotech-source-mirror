@@ -1,5 +1,5 @@
 <definition width="150" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{91025573-37BC-4680-B90E-F217201DE6FC}"/><names>
         <name lang="en">Distributor 3 / 3 Control, Electromagnetic</name>
         <name lang="fr">Distributeur 3 / 3 de contrôle, commande électromagnétique</name>
         <name lang="pl">Zawór sterujący 3/3, sterowany elektromagnetycznie, ustalany sprężynami w położeniu środkowym</name>

@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="40" height="70" type="element" ic="true" orientation="dnny">
-    <names>
+<uuid uuid="{A528F4AD-6A0F-4FCD-9128-179C588B35F1}"/><names>
         <name lang="ar">محوّل أحادي الوجه</name>
         <name lang="de">Transformator einphasig</name>
         <name lang="ru">Однофазный трансформатор</name>

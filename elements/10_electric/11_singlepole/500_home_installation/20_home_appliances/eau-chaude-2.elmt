@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
-    <names>
+<uuid uuid="{20651A2C-D3C4-4BA3-97EA-DB569436CD36}"/><names>
         <name lang="fr">Eau Chaude Sanitaire 2</name>
     </names>
     <informations>cbh41</informations>

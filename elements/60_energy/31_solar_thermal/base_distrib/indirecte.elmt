@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{B92EF073-1CD3-49AD-A2AA-C0BE0B35D031}"/><names>
         <name lang="ar">شبه مباشر B</name>
         <name lang="en">B semi-direct</name>
         <name lang="fr">B semi-direct</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{822A0C59-3DA2-4C69-BB27-77B9C2587987}"/><names>
         <name lang="ar">ترنزيستور أحادي القطبية موسفت قناة MOSFET N</name>
         <name lang="de">Unipolar Transistor MOSFET</name>
         <name lang="en">Unipolar transistor MOSFET</name>

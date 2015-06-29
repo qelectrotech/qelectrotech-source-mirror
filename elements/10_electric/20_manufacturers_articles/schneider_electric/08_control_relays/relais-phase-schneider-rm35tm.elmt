@@ -1,5 +1,5 @@
 <definition width="130" version="0.4" hotspot_x="65" hotspot_y="40" height="100" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{8A32AECF-5873-4FEF-943A-A7F560321DA0}"/><names>
         <name lang="en">Motor control relay RM35TM</name>
         <name lang="it">Controllo fasi RM35TM</name>
         <name lang="fr">Relais Phase RM35TM</name>

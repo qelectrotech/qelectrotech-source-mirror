@@ -1,5 +1,5 @@
 <definition width="70" version="0.2" hotspot_x="50" hotspot_y="25" height="50" type="element" orientation="dnny" >
-    <names>
+<uuid uuid="{981CC4E7-DDF9-401E-88D5-E68A4DB27668}"/><names>
         <name lang="en" >Limit switch NO</name>
         <name lang="de" >Näherungsschalter Schliesser</name>
         <name lang="fr" >Capteur de proximité NO</name>

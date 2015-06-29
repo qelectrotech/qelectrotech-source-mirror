@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9E6F4AA1-14BE-4AE2-A127-8D228676071D}"/><names>
         <name lang="ar">ممر نفقي</name>
         <name lang="en">Tunneling transition</name>
         <name lang="fr">Passage percement</name>

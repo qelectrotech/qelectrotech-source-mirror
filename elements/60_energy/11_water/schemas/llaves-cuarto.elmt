@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="22" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6D77FBDA-FB6E-4B2A-A98A-7F782EA2159A}"/><names>
         <name lang="es">Llaves cuarto húmedo</name>
         <name lang="it">Valvola camera</name>
         <name lang="pl">Zespół zaworowy</name>

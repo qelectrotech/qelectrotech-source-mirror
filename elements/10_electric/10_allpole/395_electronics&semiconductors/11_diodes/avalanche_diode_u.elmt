@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{BEE8D483-2F0B-4306-803F-40179DE55270}"/><names>
         <name lang="ar">دايود بانهيار أحادي الإتجاه</name>
         <name lang="de">Avalanchediode</name>
         <name lang="en">Avalanche diode unidirectional</name>

@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{160CEF18-CE51-4DDA-939C-25465A01E0B7}"/><names>
         <name lang="ar">And</name>
         <name lang="de">Und</name>
         <name lang="pt">E (And)</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="4" height="10" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F9FC25F2-8245-4743-BD24-18D3D6517501}"/><names>
         <name lang="el">Επαγωγή</name>
         <name lang="en">Inductor</name>
         <name lang="de">Induktivität</name>

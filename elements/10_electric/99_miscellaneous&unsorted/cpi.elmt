@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{0B25D26A-F1A0-43D2-BB3F-40D32FEA6FD3}"/><names>
         <name lang="ar">مراقب دائم للعزل</name>
         <name lang="de">ICC</name>
         <name lang="ru">Контроль изоляции</name>

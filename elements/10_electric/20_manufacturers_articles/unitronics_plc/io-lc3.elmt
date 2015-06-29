@@ -1,5 +1,5 @@
 <definition width="750" height="110" type="element" version="0.5" hotspot_x="15" hotspot_y="52" link_type="simple" orientation="dyyy">
-    <names>
+<uuid uuid="{E85F69E1-D0B9-450B-A6DD-3740988B5B8A}"/><names>
         <name lang="en">IO-LC3</name>
         <name lang="cs">IO-LC3</name>
     </names>

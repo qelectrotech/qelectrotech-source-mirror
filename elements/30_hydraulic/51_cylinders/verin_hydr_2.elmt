@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="16" hotspot_y="24" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{DB46A2D0-83C1-4696-80B9-BB514AC46C59}"/><names>
         <name lang="ar">اسطوانة هيدروليكية 2</name>
         <name lang="el">Υδραυλικό έμβολο 2</name>
         <name lang="en">hydraulic cylinder 2</name>

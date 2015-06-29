@@ -1,5 +1,5 @@
 <definition width="170" version="0.4" hotspot_x="4" hotspot_y="10" height="70" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5CE05A93-7672-4B91-8C92-E9ABE04A32D2}"/><names>
         <name lang="it">Display ELIWELL IC901</name>  
         <name lang="fr">Afficheur ELIWELL IC901</name>
         <name lang="en">Temperature Controller IC901</name>

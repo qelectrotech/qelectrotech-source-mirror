@@ -1,5 +1,5 @@
 <definition width="190" version="0.3" hotspot_x="90" hotspot_y="50" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{804BF76C-F652-4D42-81CE-7AB11D4F305A}"/><names>
         <name lang="en">5/3-way valve</name>
         <name lang="fr">Distributeurs 5/3 CY</name>
         <name lang="pl">Zawór 5/3</name>

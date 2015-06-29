@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{56DAD24F-09FD-440C-9BB2-03CD0AEA39D7}"/><names>
         <name lang="ar">مُجفّف ملابس</name>
         <name lang="el">Στεγνωτήριο</name>
         <name lang="en">Drying cabinet</name>

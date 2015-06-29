@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{26C8A036-3806-4D56-B630-91EDCB0766BC}"/><names>
         <name lang="ar">مروحة محورية</name>
         <name lang="el">Αξονικός ανεμιστήρας</name>
         <name lang="en">Axial fan</name>

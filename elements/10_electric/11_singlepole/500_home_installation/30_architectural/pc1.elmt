@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7EF0BAC3-7A8A-4626-985B-6E80B982AA05}"/><names>
         <name lang="ar">قاعدة مقبس تيّار بحماية</name>
         <name lang="de">Schutzkontaktsteckdose</name>
         <name lang="el">Ρευματοδότης με προστασία</name>

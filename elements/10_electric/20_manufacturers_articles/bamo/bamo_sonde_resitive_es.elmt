@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="10" hotspot_y="8" height="140" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F08D070E-99BC-4E35-86F5-6C044A55927E}"/><names>
         <name lang="el">Ηλεκτρόδια αισθητήρα στάθμης Bamo STE</name>
         <name lang="en">Bamo probe resistive ste</name>
         <name lang="it">Sonda resistiva BAMO STE</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="10" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BAC0706A-D020-407B-8519-8846555F7799}"/><names>
         <name lang="en">Button press</name>
         <name lang="fr">Bouton de presse</name>
         <name lang="pl">Przycisk wciskany</name>

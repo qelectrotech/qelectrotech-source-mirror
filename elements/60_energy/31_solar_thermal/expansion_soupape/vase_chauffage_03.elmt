@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C1E3E7C4-03E1-4741-B9E7-CE4814179BD7}"/><names>
         <name lang="ar">إناء تسخين دائري</name>
         <name lang="en">Heating circular vase</name>
         <name lang="fr">Vase Chauffage circulaire</name>

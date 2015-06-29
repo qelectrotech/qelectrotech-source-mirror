@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="50" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{4BE801A4-5D47-4C70-B0D0-2B8FE0D80002}"/><names>
         <name lang="ar">موحد أحادي الوجه</name>
         <name lang="de">Umformer AC/DC</name>
         <name lang="ru">Однофазный перем. ток > Пост. ток</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="24" hotspot_y="19" height="40" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2E4A5A2D-5096-4E31-9924-B28AE6B76DE1}"/><names>
         <name lang="en">PIR motion detector</name>        
 	<name lang="fr">Détecteur PIR mouvements</name>
         <name lang="it">Sensore a doppia tesnologia</name>

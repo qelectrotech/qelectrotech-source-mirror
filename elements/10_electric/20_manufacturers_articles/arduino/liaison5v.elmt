@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7BBFEB2E-9388-43A8-B0E0-B208A67F34A0}"/><names>
         <name lang="ar">توصيلة  5V</name>
         <name lang="en">5 volt</name>
         <name lang="fr">Liaisons 5volt</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{EC61CFA8-8EE5-4E0C-BB9C-9D9BB18BA2A6}"/><names>
         <name lang="ar">خلاّط 02 ECS</name>
         <name lang="en">Mixer 02 ECS</name>
         <name lang="fr">Mitigeur02 ECS</name>

@@ -1,6 +1,6 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="32" height="60" type="element" ic="true" orientation="dyyy"
 link_type="previous_report">
-    <names>
+<uuid uuid="{AE2FAE99-2983-4355-926B-86FF0399C07E}"/><names>
         <name lang="ar">الصفحة السابقة</name>
         <name lang="de">Vorherige Seite</name>
         <name lang="el">Προηγούμενη σελίδα</name>

@@ -1,5 +1,5 @@
 <definition width="760" version="0.3" hotspot_x="5" hotspot_y="4" height="180" type="element" orientation="dnyn">
-    <names>
+<uuid uuid="{9C853B04-57FD-4731-9B39-D0655E0F946E}"/><names>
         <name lang="ar">لوحة PSTN</name>
         <name lang="pt">Carta PSTN</name>
         <name lang="el">Κάρτα επικοινωνίας PSTN</name>

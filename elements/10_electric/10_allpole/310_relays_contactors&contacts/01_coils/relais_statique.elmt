@@ -1,5 +1,5 @@
 <definition type="element" link_type="master" hotspot_x="31" hotspot_y="24" orientation="dyyy" version="0.5" width="80" height="50">
-    <names>
+<uuid uuid="{AD62C8DF-56E9-4370-87F3-1C450F3A0BED}"/><names>
         <name lang="en">Solid State relay</name>
         <name lang="fr">Relais solide statique</name>
         <name lang="es">Relé estático</name>

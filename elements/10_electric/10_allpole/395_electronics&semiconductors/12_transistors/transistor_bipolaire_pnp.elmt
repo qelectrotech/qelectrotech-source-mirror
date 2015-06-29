@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{D2160D6F-5DA2-44AD-9956-08913FB8AD65}"/><names>
         <name lang="ar">ترنزيستور ثنائي القطبيّة PNP</name>
         <name lang="en">Bipolar transistor pnp</name>
         <name lang="fr">Transistor bipolaire pnp</name>

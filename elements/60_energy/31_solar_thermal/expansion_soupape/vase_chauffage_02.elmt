@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{02B706D4-0073-4A6A-A345-F92F3DB452DB}"/><names>
         <name lang="ar">إناء تسخين 02</name>
         <name lang="en">Heating Vase 02</name>
         <name lang="fr">Vase Chauffage 02</name>

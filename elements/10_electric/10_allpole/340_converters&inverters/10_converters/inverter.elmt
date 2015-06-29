@@ -1,5 +1,5 @@
 <definition width="130" version="0.4" hotspot_x="33" hotspot_y="62" height="150" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D9C45990-CE4A-4D52-B137-D815D17AEABA}"/><names>
         <name lang="en">Inverter</name>
         <name lang="de">Wechselrichter</name>
         <name lang="fr">Onduleur</name>

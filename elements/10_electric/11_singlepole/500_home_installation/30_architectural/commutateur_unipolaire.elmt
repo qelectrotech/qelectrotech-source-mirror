@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D1442560-82A2-4142-AD83-35FFA084AC9B}"/><names>
         <name lang="ar">مُبدّل وحيد القطبية</name>
         <name lang="de">Serienschalter einpolig</name>
         <name lang="en">Two pole switch

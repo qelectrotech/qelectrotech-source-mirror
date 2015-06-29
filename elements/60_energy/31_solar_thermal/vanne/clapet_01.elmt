@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{C859E3AE-0DE3-404D-B751-4DA892035FE9}"/><names>
         <name lang="ar">صمّام ضدّ الرجع بالجاذبية </name>
         <name lang="en">Check valve to Gravity</name>
         <name lang="fr">Clapet anti-retour à Gravité </name>

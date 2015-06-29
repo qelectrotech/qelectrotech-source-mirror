@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="50" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{2272E7F3-A911-4BF9-9478-31D9E0169F34}"/><names>
         <name lang="en">Three-way valve - manual</name>
         <name lang="fr">Vanne trois voies - commande manuelle</name>
         <name lang="pl">Zawór trójdrogowy sterowany ręcznie</name>

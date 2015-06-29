@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="30" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E9AE851A-19D6-44FC-8832-341DAE9E30AD}"/><names>
         <name lang="ar">موحد ثلاثي الأوجه</name>
         <name lang="el">Μετατροπέας τριφασικό AC/DC</name>
         <name lang="en">AC/DC tri converter</name>

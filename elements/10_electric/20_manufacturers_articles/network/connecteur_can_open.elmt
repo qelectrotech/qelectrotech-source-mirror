@@ -1,5 +1,5 @@
 <definition width="100" version="0.5" hotspot_x="45" hotspot_y="42" height="90" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5188B804-94B0-4EC5-AE1D-FC114C66B02D}"/><names>
         <name lang="en">CANopen connector</name>
         <name lang="fr">Connecteur CANopen</name>
         <name lang="it">Connettore CANopen</name>

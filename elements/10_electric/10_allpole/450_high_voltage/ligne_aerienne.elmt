@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="0" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{FA504232-B520-41E5-961E-41B199ED6368}"/><names>
         <name lang="ar">خط هوائي</name>
         <name lang="de">Leiter, oberirdisch, Freileitung</name>
         <name lang="el">Εναέρια γραμμή</name>

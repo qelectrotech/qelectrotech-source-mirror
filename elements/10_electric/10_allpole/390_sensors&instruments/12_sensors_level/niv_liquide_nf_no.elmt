@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="38" hotspot_y="31" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{905277DA-570D-479C-99A8-E27F59419DE7}"/><names>
         <name lang="en">NC/NO Actuated by the level of a liquid</name>
         <name lang="de">Niveauschalter Wechsler</name>
         <name lang="it">Azionato dal livello di un liquido NC/NO</name>

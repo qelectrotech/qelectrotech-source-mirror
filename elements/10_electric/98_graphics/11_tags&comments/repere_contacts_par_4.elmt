@@ -1,5 +1,5 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="45" height="80" type="element" orientation="dnnn" >
-    <names>
+<uuid uuid="{A3EFE030-9A3F-4841-B4AD-B36C3318E17C}"/><names>
         <name lang="fr">Repère des contacts par 4</name>
         <name lang="de">Kreuz für Kontaktspiegel</name>
         <name lang="pl">Lokalizacja zestyków</name>

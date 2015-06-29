@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="12" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{DB65AB71-32B4-43A7-BFC1-19D4D4649C19}"/><names>
         <name lang="ar">دايود ضاوي LED</name>
         <name lang="de">LED</name>
         <name lang="ru">Светодиод</name>

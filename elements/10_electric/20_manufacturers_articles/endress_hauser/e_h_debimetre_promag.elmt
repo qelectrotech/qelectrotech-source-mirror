@@ -1,5 +1,5 @@
 <definition width="220" version="0.3" hotspot_x="15" hotspot_y="34" height="70" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5DC1124A-F656-4AC6-BA49-950A54138412}"/><names>
         <name lang="ar">مقياس تدفق Promag 50</name>
         <name lang="el">Μετρητής ροής Promag 50</name>
         <name lang="en">Promag 50 Flowmeter</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{542D0FC8-A7A4-4025-9D41-A74E8D90711A}"/><names>
         <name lang="en">Motor with two directions of
 rotation
 variable</name>

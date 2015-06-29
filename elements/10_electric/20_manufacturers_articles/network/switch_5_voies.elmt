@@ -1,5 +1,5 @@
 <definition width="80" version="0.5" hotspot_x="33" hotspot_y="56" height="170" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CFBD72A9-25C1-4EFD-A9A8-7DAC5BF1533E}"/><names>
         <name lang="en">Switch 5-way 24vdc</name>
         <name lang="fr">Switch 5 voies 24vdc</name>
         <name lang="it">Switch 5 porte 24vdc</name>

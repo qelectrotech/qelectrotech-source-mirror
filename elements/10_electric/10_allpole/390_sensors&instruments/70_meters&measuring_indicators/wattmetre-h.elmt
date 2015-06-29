@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="40" type="element" ic="true" orientation="dnnn">
-    <names>
+<uuid uuid="{BFA54DAA-F82C-4030-BF63-A6B09B0CC594}"/><names>
         <name lang="ar">واتميتر أفقي</name>
         <name lang="de">Wattmeter waagerecht</name>
         <name lang="ru">Ватметр (горизонтальный)</name>

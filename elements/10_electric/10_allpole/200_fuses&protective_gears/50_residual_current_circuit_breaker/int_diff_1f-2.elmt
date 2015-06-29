@@ -1,5 +1,5 @@
 <definition width="80" version="0.4" hotspot_x="50" hotspot_y="35" height="70" link_type="master" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DB60A6E3-A722-43BD-89AA-F2A983C09F0C}"/><names>
         <name lang="ar">قاطع تفاضلي</name>
         <name lang="de">Fehlerstromschutzschalter 2P</name>
         <name lang="ru">Дифавтомат</name>

@@ -1,5 +1,5 @@
 <definition width="160" version="0.3" hotspot_x="75" hotspot_y="75" height="150" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{210B9D2B-E03E-4BAF-AB9F-DD1C92A1262F}"/><names>
         <name lang="en">VEGA Pressure Sensor VEGABAR 52 </name>
         <name lang="fr">VEGA Sonde Pression VEGABAR 52 </name>
         <name lang="it">Sonda di pressione VEGABAR 52</name>

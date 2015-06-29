@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{9F87D002-CC7F-4867-BC79-A402FF586683}"/><names>
         <name lang="ar">مجرى صرف</name>
         <name lang="en">Sewer drain</name>
         <name lang="fr">Vidange égout</name>

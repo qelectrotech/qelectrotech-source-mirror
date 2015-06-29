@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{D03280DB-B5F2-4F07-A468-C9CBFD3639E8}"/><names>
         <name lang="ar">راصد ضغط (بريسوستات) HP</name>
         <name lang="el">Πρεσοστάτης υψηλής πίεσης</name>
         <name lang="en">Pressostat HP</name>

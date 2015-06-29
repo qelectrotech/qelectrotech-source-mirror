@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="3" hotspot_y="288" height="290" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{44BEE958-D52E-4A38-94A7-9D92C31D1D6B}"/><names>
         <name lang="ar">OMRON-CJ1W_CLK23</name>
         <name lang="pt">OMRON-CJ1W_CLK23</name>
         <name lang="el">OMRON-CJ1W_CLK23</name>

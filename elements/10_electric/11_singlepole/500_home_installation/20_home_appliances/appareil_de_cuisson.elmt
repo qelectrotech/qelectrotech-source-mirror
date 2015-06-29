@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="50" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{51B71C03-A1CE-4BA8-B3A9-E8B4F4783569}"/><names>
         <name lang="ar">جهاز طبخ</name>
         <name lang="el">Μαγειρείο</name>
         <name lang="en">Cooking Appliance</name>

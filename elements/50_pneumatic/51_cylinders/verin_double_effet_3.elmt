@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="35" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{EEC51889-907B-4CEA-9334-F3915828C4B0}"/><names>
         <name lang="en">Double acting actuator with hollow shaft</name>
         <name lang="fr">Double effet actionneur avec tige creuse </name>
         <name lang="pl">Siłownik pneumatyczny dwustronnego działania z dwustronnym wydrążonym tłoczyskiem i tłokiem</name>

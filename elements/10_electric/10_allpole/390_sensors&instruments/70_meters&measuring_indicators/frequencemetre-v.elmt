@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{8DFD178A-082F-4A9B-B24D-0B1340954A47}"/><names>
         <name lang="ar">مقياس تردد عمودي</name>
         <name lang="de">Frequenzmessgerät senkrecht</name>
         <name lang="pt">Frequenciómetro vertical</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.22" hotspot_x="10" hotspot_y="40" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2A2EF510-CF49-4BAD-BAB5-7F40B7E29C81}"/><names>
         <name lang="en">4 holes - center closed connected</name>
         <name lang="fr">4 orifices - centre fermés connectés</name>
         <name lang="cs">4 otvory - ve středu zavřené spojené</name>

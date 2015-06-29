@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3776938A-A32F-47E9-ABF5-7BF1A2F48393}"/><names>
         <name lang="ar">مضخة صرف صحي</name>
         <name lang="en">Sanitary pump</name>
         <name lang="fr">Circulateur Sanitaire</name>

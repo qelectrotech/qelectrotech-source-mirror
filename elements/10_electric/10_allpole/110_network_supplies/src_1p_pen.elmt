@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="22" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4A078179-DBA7-4BAD-98A0-BBBB96160A50}"/><names>
         <name lang="ar">مصدر وحيد القطبية +PEN</name>
         <name lang="de">Wechselstrom + PEN</name>
         <name lang="ru">Однополюсный + PEN</name>

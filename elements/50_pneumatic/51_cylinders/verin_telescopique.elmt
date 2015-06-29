@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6590B8BA-B891-4F28-BF8B-7F7373B9772D}"/><names>
         <name lang="en">Cylinder (engine) telescopic single acting pneumatic</name>
         <name lang="fr">Cylindre (moteur) telescopique pneumatique simple effet</name>
         <name lang="pl">Cylinder (siłownik) teleskowpowy pneumatyczny jednostronnego działania</name>

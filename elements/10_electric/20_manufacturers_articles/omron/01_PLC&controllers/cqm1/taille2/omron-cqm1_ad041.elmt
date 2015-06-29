@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="9" hotspot_y="346" height="360" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CB5E3985-620A-4C5F-83F1-BF7CF9E7C9BC}"/><names>
         <name lang="ar">omron-cqm1_ad041</name>
         <name lang="pt">omron-cqm1_ad041</name>
         <name lang="el">omron-cqm1_ad041</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{96031622-EF57-4ACD-927F-0DC97A108D07}"/><names>
         <name lang="el">Αναλογική είσοδος, διπλή</name>
         <name lang="en">Analog input, 2-fold</name>
         <name lang="it">Ingresso analogico, 2 can</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
-    <names>
+<uuid uuid="{8706949F-5274-48B7-BF9E-190311F42198}"/><names>
         <name lang="en">Remanence relay</name>
         <name lang="de">Remanenzrelais</name>
         <name lang="it">Relè</name>

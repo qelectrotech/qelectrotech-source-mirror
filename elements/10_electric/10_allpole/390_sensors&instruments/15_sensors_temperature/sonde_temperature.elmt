@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="5" hotspot_y="32" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9895E3B9-B58A-4F62-A22B-30D1BE107003}"/><names>
         <name lang="el">Αισθητήρας θερμοκρασίας</name>
         <name lang="en">Temperature sensor</name>
         <name lang="de">Temperaturfühler</name>

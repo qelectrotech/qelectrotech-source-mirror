@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E126F40D-33EB-4477-A330-111A5694D464}"/><names>
         <name lang="ar">قفل كهربائي</name>
         <name lang="de">Türöffner</name>
         <name lang="el">Ηλεκτρική κλειδαριά</name>

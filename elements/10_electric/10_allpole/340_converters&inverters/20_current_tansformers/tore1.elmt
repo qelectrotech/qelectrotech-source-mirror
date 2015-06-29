@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BB042BB9-89F0-483A-821A-ADEA015087FF}"/><names>
         <name lang="ar">ملف حلقي قطب 1</name>
         <name lang="de">Stromwandler 1-polig</name>
         <name lang="pt">Núcleo toroidal de 1 polo</name>

@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{428D9336-FDAF-43DA-A0B3-3CBBEBD5D15E}"/><names>
         <name lang="ar">مُولّد تيّار مستمرّ</name>
         <name lang="de">Gleichstromgenerator</name>
         <name lang="ru">Генератор постоянного тока</name>

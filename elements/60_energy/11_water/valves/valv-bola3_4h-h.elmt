@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="24" hotspot_y="24" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{081BBB2B-5933-4FCE-942A-329C17350164}"/><names>
         <name lang="es">Valv bola 3/4H-H</name>
         <name lang="it">Valvola a sfera 3/4 F-F</name>
         <name lang="pl">Zawór kulowy 3/4"</name>

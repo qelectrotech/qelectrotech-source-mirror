@@ -1,5 +1,5 @@
 <definition width="90" version="0.4" hotspot_x="16" hotspot_y="24" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{CB1919AE-29C7-4AA2-93BD-23E17B49551C}"/><names>
         <name lang="ar">اسطوانة هيدروليكية تلسكوبية</name>
         <name lang="el">Τηλεσκοπικό Υδραυλικό έμβολο</name>
         <name lang="en">Telescopic hydraulic cylinder</name>

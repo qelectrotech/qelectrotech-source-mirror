@@ -1,5 +1,5 @@
 <definition width="270" version="0.4" hotspot_x="85" hotspot_y="34" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D899EEC8-FEE2-4689-9A26-E6ABD2232BA4}"/><names>
         <name lang="en">Brake-DC Module DOLD BA9034</name>
         <name lang="de">Bremsmodul DOLD BA9034</name>
         <name lang="it">Modulo freno-DC DOLD BA9034</name>

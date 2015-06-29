@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="ndny">
-    <names>
+<uuid uuid="{CA3D1292-71C2-414E-94E0-D3E94B2F90DE}"/><names>
         <name lang="ar">سخّان ECS</name>
         <name lang="en">ECS heater</name>
         <name lang="fr">Réchauffeur ECS</name>

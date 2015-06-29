@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BDD95816-3242-4218-A418-C0DF0E45ACA4}"/><names>
         <name lang="en">Button</name>
         <name lang="fr">Bouton</name>
         <name lang="pl">Przycisk</name>

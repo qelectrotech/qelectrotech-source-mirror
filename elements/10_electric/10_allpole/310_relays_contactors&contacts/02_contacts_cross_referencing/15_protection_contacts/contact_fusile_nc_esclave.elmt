@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="20" hotspot_y="25" height="50" link_type="slave" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2B0984C2-70E4-48AA-A3AD-2D91489EE8E5}"/><names>
         <name lang="en">Fuse NC</name>
         <name lang="de">Öffner sicherungsbetätigt</name>
         <name lang="fr">Actionné par un fusible NF</name>

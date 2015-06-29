@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C643A2E7-366B-4DF0-B31D-59F2820163B3}"/><names>
         <name lang="ar">مضخّة (رمز عام)</name>
         <name lang="el">Αντλία, γενικό σύμβολο</name>
         <name lang="en">Pump general</name>

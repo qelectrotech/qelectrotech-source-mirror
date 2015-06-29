@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D7423CDC-0AC1-4F9C-ACCE-DC718DA599C3}"/><names>
         <name lang="en">Flexible cylinder, pneumatic muscle</name>
         <name lang="fr">Verin flexible ,muscle pneumatique</name>
         <name lang="pl">Muskuł pneumatyczny</name>

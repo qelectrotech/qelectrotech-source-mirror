@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CDDAF712-E0D0-4D42-8CC1-A65E0ECD5253}"/><names>
         <name lang="en">Breaker DM1-A</name>
         <name lang="fr">Disjoncteur DM1-A</name>
         <name lang="pl">Wyłącznik DM1-A</name>

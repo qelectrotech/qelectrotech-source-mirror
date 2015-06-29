@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="8" hotspot_y="13" height="30" type="element" ic="true" orientation="dyyy" link_type="previous_report">
-    <names>
+<uuid uuid="{2CF6A3A0-7067-48C8-A3EB-57B48E9BDFCB}"/><names>
         <name lang="ar">مرجع مُؤشر ضوئي (عمودي)</name>
         <name lang="en">Reference light (vertical)</name>
         <name lang="it">Rif. spia luminosa / (verticale)</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="25" hotspot_y="12" height="30" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D7CBD51D-7395-489A-A98A-5CC5798E9260}"/><names>
         <name lang="en">Selective microphone</name>        
 	<name lang="fr">Microphone sélectif</name>
         <name lang="it">Microfono selettivo</name>

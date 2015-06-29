@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{969E5492-A367-4316-AE23-2CF310577F50}"/><names>
         <name lang="en">Torque meter</name>
         <name lang="fr">Torque metre</name>
         <name lang="pl">Miernik momentu obrotowego</name>

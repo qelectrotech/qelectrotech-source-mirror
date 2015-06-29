@@ -1,5 +1,5 @@
 <definition width="40" orientation="dyyy" type="element" height="60" hotspot_x="34" hotspot_y="29" link_type="master" version="0.5">
-    <names>
+<uuid uuid="{E324DF39-5BE5-4AFB-B775-1AACF70B4B0B}"/><names>
         <name lang="pl">Łącznik obrotowy napędzany kluczykiem</name>
         <name lang="el">Διακόπτης 2 θέσεων, με κλειδί</name>
         <name lang="de">Schlüsselschalter 1-polig ein/aus</name>

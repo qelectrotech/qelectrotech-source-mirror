@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="34" hotspot_y="77" height="180" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D5CF7D7E-3676-4E0C-AE0E-B0EE3DD93B80}"/><names>
         <name lang="en">cRIO 9269 4 outputs Ana</name>
         <name lang="it">cRIO 9269 modulo 4 uscite analogiche</name>
         <name lang="fr">cRIO 9269 4 sorties ana</name>

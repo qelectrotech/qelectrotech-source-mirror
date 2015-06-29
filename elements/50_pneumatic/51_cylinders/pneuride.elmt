@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{35FCFB02-C15B-407E-883D-DB6A4C284D0D}"/><names>
         <name lang="en">Cylinder bellows</name>
         <name lang="fr">Pneuride</name>
         <name lang="pl">Siłownik mieszkowy</name>

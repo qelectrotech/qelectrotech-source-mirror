@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3E3B2D7B-0AB4-42AD-8337-2A1AA807694D}"/><names>
         <name lang="ar">مضخّة متناوبة</name>
         <name lang="el">Παλινδρομική αντλία</name>
         <name lang="en">Reciprocating pump</name>

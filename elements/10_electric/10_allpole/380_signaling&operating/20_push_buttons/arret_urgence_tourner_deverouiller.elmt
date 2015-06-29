@@ -1,5 +1,5 @@
 <definition width="40" type="element" version="0.5" height="50" hotspot_y="24" hotspot_x="30" link_type="master" orientation="dyyy">
-    <names>
+<uuid uuid="{E7209AB6-F537-463E-90EF-A46D979E37FD}"/><names>
         <name lang="fr">Arrêt d'urgence - Tourner déverrouiller</name>
         <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>
         <name lang="nl">Noodstop drukknop met draaireset</name>

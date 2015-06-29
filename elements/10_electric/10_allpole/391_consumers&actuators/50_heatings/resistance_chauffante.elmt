@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{961AEE40-4728-4B3F-923E-F08993065F3D}"/><names>
         <name lang="ar">مقاومة تسخين</name>
         <name lang="el">Αντίσταση θέρμανσης</name>
         <name lang="en">Resistance heating</name>

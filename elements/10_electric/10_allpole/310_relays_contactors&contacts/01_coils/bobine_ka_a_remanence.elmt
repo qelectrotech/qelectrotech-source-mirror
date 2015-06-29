@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny" link_type="master">
-    <names>
+<uuid uuid="{9B67FD6A-14B9-4C0D-9EE1-54C568973CDF}"/><names>
         <name lang="ar">ملف KA  بمحتفظ مغناطيسي</name>
         <name lang="de">Remanenzrelais</name>
         <name lang="ru">Обмотка</name>

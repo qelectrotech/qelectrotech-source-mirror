@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="14" hotspot_y="24" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EB6293FD-5DC3-4238-AF06-DD5CFE41EFDC}"/><names>
         <name lang="en">Sink faucet</name>
         <name lang="fr">Robinet lavabo</name>
         <name lang="es">Grifo lavabo latig</name>

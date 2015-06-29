@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="5" hotspot_y="15" height="30" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8F285EE3-789D-4E0E-8EA8-853191672B9E}"/><names>
         <name lang="en">PIR detector</name>        
 	<name lang="fr">Détecteur PIR</name>
         <name lang="it">Sensore infrarosso (PIR)</name>

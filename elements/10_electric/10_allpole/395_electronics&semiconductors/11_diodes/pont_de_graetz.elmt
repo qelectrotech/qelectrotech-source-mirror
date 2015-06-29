@@ -1,5 +1,5 @@
 <definition width="160" version="0.3" hotspot_x="60" hotspot_y="45" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{22A03DA1-07FA-4DBE-A25D-58447E6F05A9}"/><names>
         <name lang="ar">قنطرة قرايتز</name>
         <name lang="el">Γέφυρα Graetz</name>
         <name lang="en">Graetz bridge</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="4" hotspot_y="34" height="50" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C08E215A-998C-44C4-BE38-6A9E638C7CDB}"/><names>
         <name lang="ar">مفتاح بوضعين</name>
         <name lang="de">Wahlschalter 2 Positionen</name>
         <name lang="ru">Переключатель 2-х позиционный</name>

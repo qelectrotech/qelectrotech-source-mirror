@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="9" hotspot_y="75" height="170" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2115096D-C73A-4431-B76B-82AAF5E988BC}"/><names>
         <name lang="de">Leuchtstoffröhre</name>
         <name lang="el">Λάμπα φθορισμού</name>
         <name lang="en">Fluorescent tube</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{73BA7781-00A7-47BC-8072-3CBB425FEA37}"/><names>
         <name lang="ar">كوع ب 90 درجة شعاع كبير</name>
         <name lang="el">Γωνία 90° μεγάλης ακτίνας</name>
         <name lang="en">Large radius elbow 90</name>

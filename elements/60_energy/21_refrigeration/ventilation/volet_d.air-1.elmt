@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="30" type="element" orientation="dynn">
-    <names>
+<uuid uuid="{C2B0C04E-3BB9-4D83-9DDF-F787F60162F4}"/><names>
         <name lang="el">Διάφραγμα αέρα</name>
         <name lang="en">Air damper</name>
         <name lang="it">Serranda</name>

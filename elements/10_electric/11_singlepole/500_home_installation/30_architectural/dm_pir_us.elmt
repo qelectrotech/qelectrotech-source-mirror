@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="4" hotspot_y="19" height="40" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BAB4F75A-6CBA-4C20-9A20-DCCB881432C6}"/><names>
         <name lang="en">PIR ultrasonic detector</name>        
 	<name lang="fr">Détecteur PIR ultrasons</name>
         <name lang="it">Sensore PIR + ultrasuoni</name>

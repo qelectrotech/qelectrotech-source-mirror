@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="12" hotspot_y="32" height="140" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3554DBE2-DFA1-4208-B953-516165ECC0BF}"/><names>
         <name lang="ar">(C4000 ECO R)</name>
         <name lang="el">C4000 ECO (Δέκτης)</name>
         <name lang="en">C4000 ECO (R)</name>

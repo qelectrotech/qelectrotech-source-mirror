@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{BCA0DD99-F730-483E-B8EC-75BA8F77CE09}"/><names>
         <name lang="ar">Thermovar</name>
         <name lang="en">Thermovar</name>
         <name lang="fr">Thermovar</name>

@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C6EDF3D1-92C7-4752-BA44-EFF0B66DC163}"/><names>
         <name lang="en">Barrier filter with magnetic</name>
         <name lang="fr">Filtre avec barriere magnetique</name>
         <name lang="pl">Filtr z dodatkową przegrodą filtracyjną, magnetyczną</name>

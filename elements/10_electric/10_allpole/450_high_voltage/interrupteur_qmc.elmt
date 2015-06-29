@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5576BE66-48BC-449D-9292-0EC110B81673}"/><names>
         <name lang="en">Switch QMC</name>
         <name lang="fr">Interrupteur QMC</name>
         <name lang="pl">Rozłącznik QMC</name>

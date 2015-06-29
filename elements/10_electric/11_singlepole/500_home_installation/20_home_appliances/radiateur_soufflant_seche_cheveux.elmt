@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{B4ECC45A-5CC1-4D0B-8864-33DFA0881F9E}"/><names>
         <name lang="ar">مشعاع نافخ - مجفف شعر</name>
         <name lang="el">Στεγνωτήρας μαλλιών</name>
         <name lang="en">Fan heater hairdryer</name>

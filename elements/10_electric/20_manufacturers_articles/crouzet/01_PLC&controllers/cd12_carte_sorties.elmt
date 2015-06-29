@@ -1,5 +1,5 @@
 <definition width="300" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4A96774E-5C68-40CC-AE13-3977445973D3}"/><names>
         <name lang="ar">لوحة مخارج CD12</name>
         <name lang="de">CD12 Ausgangskarte</name>
         <name lang="pt">Carta de saídas CD12</name>

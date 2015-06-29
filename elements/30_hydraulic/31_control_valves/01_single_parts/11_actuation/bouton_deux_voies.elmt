@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="10" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{EE0556ED-A9BD-4207-A8B3-F23A2352E187}"/><names>
         <name lang="en">Two-way button</name>
         <name lang="fr">Bouton deux voies</name>
         <name lang="pl">Przycisk o dwuch kierunkach działania</name>

@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="25" hotspot_y="30" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2827E51B-E51A-44C2-8558-95F1BABE214A}"/><names>
         <name lang="en">DX9100 24v.ac</name>
         <name lang="fr">DX9100 24v.ac</name>
         <name lang="pl">DX9100 - zasilanie 24V AC</name>

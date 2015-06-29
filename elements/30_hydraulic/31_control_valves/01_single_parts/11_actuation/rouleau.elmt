@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="18" hotspot_y="3" height="10" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{21AA28FF-6578-42B9-A43B-DF9D6006EE98}"/><names>
         <name lang="ar">اسطوانة لفّ</name>
         <name lang="el">Ράουλο</name>
         <name lang="en">Roll</name>

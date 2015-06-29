@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{47F5612E-978D-47DF-99BB-FA5BD6CA3711}"/><names>
         <name lang="ar">مروحة (رمز عام)</name>
         <name lang="el">Ανεμιστήρας, γενικό σύμβολο</name>
         <name lang="en">Fan general</name>

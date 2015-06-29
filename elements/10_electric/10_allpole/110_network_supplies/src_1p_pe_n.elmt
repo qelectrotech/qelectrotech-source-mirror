@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{131B6CA1-DA3C-46F0-8FD5-B1C47C13C171}"/><names>
         <name lang="ar">مصدر وحيد القطبية + أرضي PE + محايد N</name>
         <name lang="de">Wechselstrom + PE +N</name>
         <name lang="ru">Однополюсный + PE +N</name>

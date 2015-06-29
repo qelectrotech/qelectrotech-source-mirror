@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="57" hotspot_y="35" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{396810BD-A6C5-4149-B06C-63DDCDDBBD80}"/><names>
         <name lang="fr">Transformateur triphasé, couplage étoile-étoile-triangle</name>
         <name lang="it">Trasformatore 3F Yyd</name>
         <name lang="en"> Three-phase transformer Yyd</name>

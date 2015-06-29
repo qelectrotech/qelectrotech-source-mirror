@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9CAB18C3-588F-4B64-82EF-49817326ABED}"/><names>
         <name lang="ar">ثنائي حراري</name>
         <name lang="de">Thermoelement</name>
         <name lang="pt">Termopar</name>

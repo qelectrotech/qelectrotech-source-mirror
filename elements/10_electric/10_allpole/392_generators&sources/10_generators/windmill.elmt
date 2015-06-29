@@ -1,5 +1,5 @@
 <definition width="110" version="0.4" hotspot_x="55" hotspot_y="201" height="260" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{5C2F2CE3-AECC-4886-96BA-AA34DDA71880}"/><names>
         <name lang="el">Ανεμογενήτρια</name>
         <name lang="en">Wind Mill</name>
         <name lang="de">Windkraftanlage</name>

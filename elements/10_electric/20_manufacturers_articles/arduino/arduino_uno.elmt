@@ -1,5 +1,5 @@
 <definition width="200" version="0.3" hotspot_x="30" hotspot_y="35" height="270" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E9A8DB4E-64B1-4FD2-A244-927E85FE8969}"/><names>
         <name lang="en">Arduino Uno</name>
         <name lang="fr">Arduino Uno</name>
         <name lang="pl">Arduino Uno</name>

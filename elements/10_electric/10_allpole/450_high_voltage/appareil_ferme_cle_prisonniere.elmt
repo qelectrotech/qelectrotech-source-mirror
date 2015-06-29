@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{DC79DC0D-D212-4C2C-91BD-B7C6EBAB1E17}"/><names>
         <name lang="en">Key prisoner unit closed</name>
         <name lang="fr">Appareil fermé Clef prisonnière</name>
         <name lang="pl">Urządzenie zamknięte,  klucz niedostępny</name>

@@ -1,5 +1,5 @@
 <definition width="250" version="0.3" hotspot_x="130" hotspot_y="56" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{ED9B148A-0EA8-4DB2-9DD8-DCE0632EC4CB}"/><names>
         <name lang="en">8 relais module</name>
         <name lang="it">Modulo 8 relais</name>
         <name lang="fr">Module 8 relais</name>

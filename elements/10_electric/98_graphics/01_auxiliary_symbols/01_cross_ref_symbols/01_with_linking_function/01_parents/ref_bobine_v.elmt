@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="0" hotspot_y="10" height="30" type="element" ic="true" orientation="dyyy" link_type="next_report">
-    <names>
+<uuid uuid="{1778913B-C7AD-4B3B-8061-6FCEAC1B90DB}"/><names>
         <name lang="ar">مرجع ملف (عمودي)</name>
         <name lang="en">Reference coil v</name>
         <name lang="it">Riferimento bobine / (verticale)</name>

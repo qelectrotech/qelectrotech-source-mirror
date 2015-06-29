@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{DE472EED-C8E4-48F3-BC34-FC436126F9AF}"/><names>
         <name lang="ar">قاعدة توصيل ب3  أطراف 180 درجة </name>
         <name lang="en">3-pin DIN socket 180 degrees</name>
         <name lang="de">Rundstecker 3-polig 180°</name>

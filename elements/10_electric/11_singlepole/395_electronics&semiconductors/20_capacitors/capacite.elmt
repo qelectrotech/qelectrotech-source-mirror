@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{42ECB606-F634-4144-82BB-89822ED0D50B}"/><names>
         <name lang="ar">مُكثّف</name>
         <name lang="de">Kondensator</name>
         <name lang="ru">Конденсатор</name>

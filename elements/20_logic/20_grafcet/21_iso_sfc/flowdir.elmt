@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="5" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{B79AE8FD-2AE2-4F20-87AC-6685805FDE2D}"/><names>
         <name lang="en">flow direction</name>
         <name lang="nl">richting</name>
         <name lang="it">Direzione del flusso</name>

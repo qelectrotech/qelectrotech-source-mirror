@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2FD32D0B-5B5B-4A6F-A20E-AA6838E2E96C}"/><names>
         <name lang="en">Pressure relief valve</name>
         <name lang="fr">Soupape de securité</name>
         <name lang="pl">Zawór ograniczający cisnienie, maksymalny, jednostopniowy</name>

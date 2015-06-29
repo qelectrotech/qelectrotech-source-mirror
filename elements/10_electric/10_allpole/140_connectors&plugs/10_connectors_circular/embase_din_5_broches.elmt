@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{F72CF89C-959F-4DAE-ADB1-E69206A4126F}"/><names>
         <name lang="ar">قاعدة DIN ب5 نقاط توصيل </name>
         <name lang="en">5-pin DIN socket</name>
         <name lang="de">Rundstecker 5-polig</name>

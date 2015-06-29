@@ -1,5 +1,5 @@
 <definition width="530" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D2721AD8-EC5C-4850-9824-5E91E1050EF2}"/><names>
         <name lang="ar">لوحة مخارج CD20</name>
         <name lang="de">CD20 Ausgangskarte</name>
         <name lang="pt">Carta de saídas CD20</name>

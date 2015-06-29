@@ -1,5 +1,5 @@
 <definition width="660" version="0.4" hotspot_x="5" hotspot_y="35" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{AE0E5696-8DFD-458B-966D-19045DB32523}"/><names>
         <name lang="ar">عنوان جدول التسمية</name>
         <name lang="de">Stückliste Kopfzeile grieschisch</name>
         <name lang="el">Επικεφαλίδα πίνακα (Ελληνικά)</name>

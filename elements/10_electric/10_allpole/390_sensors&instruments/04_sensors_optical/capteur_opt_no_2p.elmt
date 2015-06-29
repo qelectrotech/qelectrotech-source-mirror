@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C0C7D337-3624-42EC-9E18-FA3C897A0E26}"/><names>
         <name lang="ar">حسّاس بصري (NO)</name>
         <name lang="en">Optic sensor (NO)</name>
         <name lang="de">Lichtsensor 2-Leiter Schliesser</name>

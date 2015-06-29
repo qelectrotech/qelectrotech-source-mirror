@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="70" hotspot_y="50" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7F022419-A9C1-499E-8428-28967CD236ED}"/><names>
         <name lang="en">2/2-way stop valve</name>
         <name lang="fr">Vanne d'arrêt 2/2</name>
         <name lang="pl">Zawór 2/2</name>

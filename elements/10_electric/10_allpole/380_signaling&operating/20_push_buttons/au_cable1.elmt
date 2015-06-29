@@ -1,5 +1,5 @@
 <definition width="30" hotspot_x="2" orientation="dyyy" height="50" hotspot_y="33" type="element" version="0.5" link_type="master">
-    <names>
+<uuid uuid="{653B8846-5345-4A27-A8D2-9278AF9BBBA7}"/><names>
         <name lang="it">Arresto d'emergenza a cavo 2NC</name>
         <name lang="de">Taster 2 Öffner</name>
         <name lang="en">Emergency stop trip switches 2NC</name>

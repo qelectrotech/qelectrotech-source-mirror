@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{75C854ED-2CD7-49EB-8318-D44C17B69B0F}"/><names>
         <name lang="en">Contactor fuses CRM</name>
         <name lang="fr">Contacteur fusibles CRM</name>
         <name lang="pl">Stycznik z bezpiecznikiem CRM</name>

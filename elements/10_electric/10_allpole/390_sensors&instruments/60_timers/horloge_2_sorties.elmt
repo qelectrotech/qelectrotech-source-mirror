@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="60" hotspot_y="30" height="60" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{9774CAB5-8445-427F-84A0-DC4656AA7D98}"/><names>
         <name lang="ar">ساعة بمخرجين</name>
         <name lang="el">Χρονοδιακόπτης 2 επαφών</name>
         <name lang="en">Timer 2x NC/NO</name>

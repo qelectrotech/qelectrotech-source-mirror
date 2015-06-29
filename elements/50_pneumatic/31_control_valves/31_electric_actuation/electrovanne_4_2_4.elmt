@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3F5E4A0A-3975-48B5-9170-838428554378}"/><names>
         <name lang="en">Servo-valve, double solenoid</name>
         <name lang="fr">Servo-valve, double électrovanne</name>
         <name lang="pl">Serwozawór sterowany elektromagnetycznie, dwoma cewkami</name>

@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{36289049-F331-4A86-BDA3-C3A144C98C29}"/><names>
         <name lang="ar">مفتاح زمني</name>
         <name lang="el">Χρονοδιακόπτης</name>
         <name lang="en">Timer NC/NO</name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="40" height="80" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{4391ED55-5E7C-46A3-B7F7-31F7BA65051E}"/><names>
         <name lang="ar">رابط توصيل أنثوي 12 نقطة - مُشفّر </name>
         <name lang="en">Encoder plug receptacle 12 points</name>
         <name lang="de">Rundstecker 12-polig</name>

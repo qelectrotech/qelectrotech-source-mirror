@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="60" type="element" ic="true" orientation="dnnn">
-    <names>
+<uuid uuid="{72BA7024-E8D1-4136-BD7B-9C5092E96E0C}"/><names>
         <name lang="ar">شخص</name>
         <name lang="de">Mensch</name>
         <name lang="ru">Человек</name>

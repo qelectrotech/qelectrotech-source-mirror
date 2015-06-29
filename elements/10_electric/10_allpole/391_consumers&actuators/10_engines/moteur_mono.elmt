@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="25" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9888C100-95FE-4F26-A9F1-F276D89BFC1D}"/><names>
         <name lang="ar">محرّك أحادي الوجه</name>
         <name lang="de">Wechselstrom Motor</name>
         <name lang="ru">Однофазный эл. мотор</name>

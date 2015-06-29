@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{24BEAD87-AC87-487A-98B3-BA8C12A3A9E5}"/><names>
         <name lang="ar">رابط ضوئي</name>
         <name lang="el">Οπτοζεύκτης</name>
         <name lang="en">Optocoupler</name>

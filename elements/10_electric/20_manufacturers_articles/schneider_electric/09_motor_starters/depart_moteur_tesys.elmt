@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="10" hotspot_y="10" height="60" type="element" orientation="dyyy" link_type="master">
-    <names>
+<uuid uuid="{7AC6B9DA-972D-42D3-A773-52CB81BF1D4B}"/><names>
         <name lang="ar">انطلاق محرك</name>
         <name lang="el">Εκκίνηση μοτέρ</name>
         <name lang="en">Start motor</name>

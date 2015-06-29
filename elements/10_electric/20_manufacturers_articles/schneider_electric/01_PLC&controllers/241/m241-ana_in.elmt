@@ -1,5 +1,5 @@
 <definition hotspot_x="495" hotspot_y="46" width="1010" height="90" type="element" orientation="dyyy" version="0.5" link_type="simple">
-    <names>
+<uuid uuid="{23492350-8A4F-4691-8976-661B55B92F33}"/><names>
         <name lang="en">Analog inputs TM3AI4 Schneider</name>
         <name lang="fr">Entrées analogiques TM3AI4 Schneider</name>
     </names>

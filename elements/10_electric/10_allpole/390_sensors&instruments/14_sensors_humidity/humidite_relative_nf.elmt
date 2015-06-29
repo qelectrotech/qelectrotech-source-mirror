@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="37" hotspot_y="25" height="50" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C330CB17-919B-4262-A03F-13A857D90961}"/><names>
         <name lang="de">Feuchteschalter Öffner</name>
         <name lang="en">NC controlled relative humidity</name>
         <name lang="it">Controllato dall'umidità relativa NC</name>

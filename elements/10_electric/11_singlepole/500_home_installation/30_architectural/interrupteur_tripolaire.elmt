@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C57448C5-CADB-4F7D-8923-C6ACB142A502}"/><names>
         <name lang="ar">مفتاح ثلاثي الأقطاب</name>
         <name lang="el">Τριπλός διακόπτης</name>
         <name lang="en">Switch 3 pole</name>

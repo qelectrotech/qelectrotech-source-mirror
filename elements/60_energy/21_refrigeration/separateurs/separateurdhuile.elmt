@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{AB5F9DCF-96DA-4DD5-A2F4-E18EFA3FAB2F}"/><names>
         <name lang="ar">فاصلة زيت</name>
         <name lang="el">Διαχωριστής λαδιού</name>
         <name lang="en">Oil separator</name>

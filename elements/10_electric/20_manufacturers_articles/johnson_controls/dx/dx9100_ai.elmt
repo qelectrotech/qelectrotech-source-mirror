@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="15" hotspot_y="35" height="260" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{3EA13B67-1FC2-4215-BFF9-6C7815A49C9A}"/><names>
         <name lang="en">DX9100 AI</name>
         <name lang="fr">DX9100 AI</name>
         <name lang="pl">DX9100 - wejścia analogowe</name>

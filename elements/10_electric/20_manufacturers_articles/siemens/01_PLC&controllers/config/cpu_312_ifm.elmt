@@ -1,5 +1,5 @@
 <definition width="170" version="0.3" hotspot_x="5" hotspot_y="20" height="280" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{F4F43B65-5104-428C-9D13-88AEF003CB60}"/><names>
         <name lang="ar">CPU 312 IFM   DI 10/DO 6xDC24V</name>
         <name lang="pt">CPU 312 IFM   DI 10/DO 6xDC24V</name>
         <name lang="el">CPU 312 IFM   DI 10/DO 6xDC24V</name>

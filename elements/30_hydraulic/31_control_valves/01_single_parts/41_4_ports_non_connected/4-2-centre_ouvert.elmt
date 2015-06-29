@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8E1DA1A8-1A4C-4ED4-96D4-737E9C246066}"/><names>
         <name lang="ar">مسارات مركز مفتوح 4</name>
         <name lang="en">4 holes - open center</name>
         <name lang="fr">4 orifices centre ouvert</name>

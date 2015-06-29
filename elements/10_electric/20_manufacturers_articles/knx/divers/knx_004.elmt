@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4071DFC9-0022-42C6-BE97-4516BC6C0186}"/><names>
         <name lang="ar">ملف خانق</name>
         <name lang="de">Drossel</name>
         <name lang="pt">Bloqueio</name>

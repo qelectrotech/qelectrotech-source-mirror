@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="60" hotspot_y="50" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0A144245-7D79-41C2-97B3-E9B611258282}"/><names>
         <name lang="en">4/2-way valve lockable</name>
         <name lang="fr">Distributeurs 4/2 à crantage</name>
         <name lang="pl">Zawór z mechanizmem zapadkowym 4/2</name>

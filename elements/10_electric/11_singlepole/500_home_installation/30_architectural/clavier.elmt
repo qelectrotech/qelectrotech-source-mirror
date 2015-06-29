@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="25" hotspot_y="26" type="element" height="50" orientation="dyyy" version="0.5" width="50">
-    <names>
+<uuid uuid="{5537E303-DBCC-41C8-8D22-45938E7AE8C7}"/><names>
         <name lang="en">Keyboard</name>
         <name lang="fr">Clavier</name>
         <name lang="it">Tastiera</name>

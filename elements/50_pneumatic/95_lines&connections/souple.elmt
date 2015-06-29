@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="10" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6C512631-652F-468C-88E0-4F3F1BFDAD6F}"/><names>
         <name lang="ar">توصيلة مرنة</name>
         <name lang="el">Εύκαμπτη σύνδεση</name>
         <name lang="en">Flexible Connection</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{19CD469F-1854-4CE7-9AFA-08D1CC95761F}"/><names>
         <name lang="el">Κλειστή επαφή ηλεκτρομαγνητικού ρελέ</name>
         <name lang="en">Electromagnetic relay NC</name>
         <name lang="de">Öffner elektromagnetisch betätigt</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{5D7C0AE2-59A9-46F2-BDD6-DC450D0C5DAF}"/><names>
         <name lang="ar">لوحة طبخ</name>
         <name lang="de">Herdplatte</name>
         <name lang="ru">Эл. плита</name>

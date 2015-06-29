@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="17" hotspot_y="5" height="10" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{691F7FE8-0DD0-4019-A474-1138E40AC224}"/><names>
         <name lang="es">Codo baja</name>
         <name lang="it">Gomito basso</name>
         <name lang="pl">Kolanko niskie</name>

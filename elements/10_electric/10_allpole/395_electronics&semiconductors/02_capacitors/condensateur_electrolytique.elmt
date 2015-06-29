@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="11" hotspot_y="25" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{4DEDB8F1-4A68-4DC1-BA5C-F776A31D379D}"/><names>
         <name lang="ar">مُكثّف كيميائي</name>
         <name lang="de">Elektrolytkondensator</name>
         <name lang="el">Πυκνωτής με πολικότητα</name>

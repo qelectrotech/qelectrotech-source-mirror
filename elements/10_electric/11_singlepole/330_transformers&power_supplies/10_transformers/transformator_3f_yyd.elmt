@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="27" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{6BF49970-9929-4E68-856D-0CED538159D8}"/><names>
         <name lang="ar">مُحوّل ثلاثي الأوجه بملفات ثانوية مزدوجة نجمي-نجمي-مثلثي</name>
         <name lang="de">Transformator Stern/Stern/Dreieck</name>
         <name lang="el">Μετασχηματιστής με 2 δευτερεύοντα αστέρας-αστέρας-τρίγωνο</name>

@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="40" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{EA389EFD-3F66-41F7-828D-326DB92E5031}"/><names>
         <name lang="en">Control valve normally open 2-2</name>
         <name lang="fr">Distributeur Normalement ouvert 2-2</name>
         <name lang="pl">Zawór sterujący normalnie otwarty 2/2</name>

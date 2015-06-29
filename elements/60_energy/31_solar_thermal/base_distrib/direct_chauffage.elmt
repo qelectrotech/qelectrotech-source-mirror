@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6F9F778B-62C7-429E-8345-4973C2F537C8}"/><names>
         <name lang="ar">تبادل مباشر C</name>
         <name lang="en">C direct exchange</name>
         <name lang="fr">C échange direct</name>

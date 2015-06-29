@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="10" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EC833A66-8927-41FE-9158-32FE6BE71542}"/><names>
         <name lang="es">Fluxor</name>
         <name lang="it">Scarico</name>
         <name lang="pl">Zawór spłukujący</name>

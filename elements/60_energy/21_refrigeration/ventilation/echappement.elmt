@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{294C7091-A086-4290-8F50-1D2D5090FD5E}"/><names>
         <name lang="el">Εξαγωγή</name>
         <name lang="en">Exhaust air</name>
         <name lang="it">Scarico aria</name>

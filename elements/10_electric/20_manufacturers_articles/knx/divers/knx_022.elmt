@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="19" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2E025DA6-D21D-42F5-B0ED-A448E10A27BC}"/><names>
         <name lang="el">Διεπαφή ISDN</name>
         <name lang="en">ISDN</name>
         <name lang="it">Interf. ISDN</name>

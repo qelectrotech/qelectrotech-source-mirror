@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="26" hotspot_y="20" height="40" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F63FEF97-B141-4DE1-999C-78CA3190DDC6}"/><names>
         <name lang="en">Microwaves detector</name>
         <name lang="fr">Détecteur micro ondes</name>
         <name lang="it">Sensore a microonde</name>

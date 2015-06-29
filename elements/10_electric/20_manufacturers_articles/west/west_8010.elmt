@@ -1,5 +1,5 @@
 <definition width="300" version="0.3" hotspot_x="10" hotspot_y="10" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{3471C9C0-298F-4F5E-9769-CD620626539F}"/><names>
         <name lang="ar">West Indicateur 8010+</name>
         <name lang="en">West Indicator 8010 +</name>
         <name lang="it">Regolatore di temperatura West 8010+</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{255CB9C3-E50A-4A43-B6DB-01B78FA1F7B3}"/><names>
         <name lang="ar">مجس حرارة</name>
         <name lang="el">Αισθητήρας θερμοκρασίας</name>
         <name lang="en">Temperature switch NO</name>

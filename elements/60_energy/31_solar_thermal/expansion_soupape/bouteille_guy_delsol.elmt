@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="50" height="100" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{4A74CE00-6321-4AF2-BDAF-2AD7CFF0D287}"/><names>
         <name lang="ar">خزّان ذاتي التفريغ Guy  Delsol </name>
         <name lang="en">Bottle self-emptying Guy Delsol</name>
         <name lang="fr">Bouteille auto-vidange Guy Delsol</name>

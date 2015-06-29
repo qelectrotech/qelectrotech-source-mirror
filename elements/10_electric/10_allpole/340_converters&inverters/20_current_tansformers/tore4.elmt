@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="45" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7424E7C8-37CB-4C6F-8FA2-A0BEEAE63137}"/><names>
         <name lang="ar">ملف حلقي بأربع أقطاب</name>
         <name lang="de">Stromwandler 4-polig</name>
         <name lang="pt">Núcleo toroidal de 4 polos</name>

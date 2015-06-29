@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{76AC9E0E-B499-43E7-9E44-6F6F96562AC0}"/><names>
         <name lang="ar">قاعدة قابس تيّار (قدرة) بحماية  (EN 60617 11-13-04)</name>
         <name lang="de">Schutzkontaktsteckdose allgemein (EN 60617 11-13-04)</name>
         <name lang="el">Πρίζα με αγωγό προστασίας</name>

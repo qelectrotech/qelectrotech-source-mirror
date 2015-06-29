@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="20" hotspot_y="34" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E9012D1E-F16F-467F-8930-9EBB2D53208F}"/><names>
         <name lang="ro">Releu DC 01</name>
         <name lang="de">Relais DC 01</name>
         <name lang="en">Relay DC 01</name>

@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{C913B3C5-1551-4796-9777-23D2841A4147}"/><names>
         <name lang="ar">مُكثّف مُتغيّر</name>
         <name lang="de">Kondensator mit einstellbarer Kapazität</name>
         <name lang="el">Μεταβλητός πυκνωτής</name>

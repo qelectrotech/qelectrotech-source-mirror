@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="25" hotspot_y="60" height="80" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4B1E3E5F-38D1-41E2-8770-F3A0AC33C45E}"/><names>
         <name lang="en">Valve</name>
         <name lang="it">Valvola di regolazione 1"</name>
         <name lang="fr">Vanne</name>

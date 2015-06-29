@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="25" hotspot_y="25" height="50" link_type="slave" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{30A2CB05-A740-4994-84BE-0F09DA2FF13A}"/><names>
         <name lang="ar">مُلامس NO-NC</name>
         <name lang="de">Wechsler</name>
         <name lang="ru">Проктой контакт (НР)</name>

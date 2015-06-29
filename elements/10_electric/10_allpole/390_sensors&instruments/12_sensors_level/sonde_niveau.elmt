@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="20" hotspot_y="10" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7687BBA7-DCFA-4FCC-85A6-7850E264BD43}"/><names>
         <name lang="ar">مجس مستوى</name>
         <name lang="de">Niveausensor 2-Leiter</name>
         <name lang="en">Level sensor</name>

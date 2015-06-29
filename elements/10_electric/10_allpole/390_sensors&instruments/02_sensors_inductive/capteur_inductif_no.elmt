@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6E3C9C7F-2025-4B69-9227-99BFCAEBDA95}"/><names>
         <name lang="ar">حسّاس حثّي NO</name>
         <name lang="el">Επαγωγικός αισθητήρας, ανοικτή επαφή</name>
         <name lang="en">Inductif sensor  NO</name>

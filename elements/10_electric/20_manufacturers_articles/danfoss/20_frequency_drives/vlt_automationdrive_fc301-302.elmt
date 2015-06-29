@@ -1,5 +1,5 @@
 <definition width="470" version="0.4" hotspot_x="24" hotspot_y="7" height="100" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A5950259-AF00-4F6D-8431-F59C9335A9E6}"/><names>
         <name lang="en">VLT AutomationDrive FC301/302</name>
         <name lang="it">VLT AutomationDrive FC301/302</name>
         <name lang="fr">VLT AutomationDrive FC301/302</name>

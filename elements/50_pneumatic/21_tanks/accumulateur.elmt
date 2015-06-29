@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{57DD08DE-8C97-4808-95FC-9A50855B27A7}"/><names>
         <name lang="en">Tank</name>
         <name lang="fr">Reservoir </name>
         <name lang="pl">Zbiornik pneumatyczny pomocniczy, rezerwowa objętość gazu do uzupełniamia połączonych akumulatorów</name>

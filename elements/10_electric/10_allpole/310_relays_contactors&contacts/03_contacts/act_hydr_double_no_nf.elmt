@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7FE82DA1-A99E-4957-914B-EF525576BA68}"/><names>
         <name lang="en">Contact NC/NO pneumatically or hydraulically controlled, two-way</name>
         <name lang="de">Wechsler Zylinder betätigt 2 Richtungen</name>
         <name lang="fr">Actionné par énergie hydraulique ou

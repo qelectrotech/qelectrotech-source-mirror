@@ -1,5 +1,5 @@
 <definition width="220" version="0.3" hotspot_x="25" hotspot_y="35" height="960" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CF46BC0D-0F81-4BCE-82B7-517F3884FA7F}"/><names>
         <name lang="en">DX 9100 (top terminals)</name>
         <name lang="fr">DX 9100 (bornes haut)</name>
         <name lang="pl">DX9100 (górne zaciski)</name>

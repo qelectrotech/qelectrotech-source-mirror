@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{1D54DC05-44CD-46D2-BAE8-72D81B015869}"/><names>
         <name lang="el">Γείωση</name>
         <name lang="en">ground</name>
         <name lang="it">Massa</name>

@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="46" hotspot_y="13" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{BD2793DE-91DF-4F85-BA62-949374E237EB}"/><names>
         <name lang="de">Verdrahtungsdefinition 2 Leiter</name>
         <name lang="it">Sezione 2 conduttori</name>
         <name lang="fr">Section 2 conducteurs</name>

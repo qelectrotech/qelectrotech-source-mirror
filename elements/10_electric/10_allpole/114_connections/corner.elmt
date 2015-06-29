@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="12" hotspot_y="8" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{36DFFED3-9D7F-41E1-9F8D-44B505E6AA89}"/><names>
         <name lang="en">Corner</name>
         <name lang="it">Angolo</name>
         <name lang="fr">Coin</name>

@@ -1,5 +1,5 @@
 <definition type="element" orientation="dyyy" width="670" hotspot_x="656" height="210" hotspot_y="198" version="0.5" link_type="simple">
-    <names>
+<uuid uuid="{9CF7B32C-D971-406C-9F8A-1AC363815422}"/><names>
         <name lang="ru">Штамп ГОСТ большой</name>
         <name lang="en">GOST title first page</name>
     </names>

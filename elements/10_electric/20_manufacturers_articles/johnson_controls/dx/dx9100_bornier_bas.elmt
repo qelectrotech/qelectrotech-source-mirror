@@ -1,5 +1,5 @@
 <definition width="220" version="0.3" hotspot_x="25" hotspot_y="35" height="550" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{975B2CBE-2E20-4639-BDC5-0A81893F7634}"/><names>
         <name lang="en">DX 9100 (lower terminals)</name>
         <name lang="fr">DX9100 (bornes bas)</name>
         <name lang="pl">DX9100 (dolne zaciski)</name>

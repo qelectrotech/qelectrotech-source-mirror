@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{100EBE75-A6A6-4C96-A837-69E1C5C4437B}"/><names>
         <name lang="en">Flowmeter</name>
         <name lang="fr">Debitmetre</name>
         <name lang="pl">Przepływomierz</name>

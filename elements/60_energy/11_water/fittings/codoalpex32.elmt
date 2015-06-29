@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="38" hotspot_y="65" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1108FCA1-F46C-4497-9873-A51E9ED6BF03}"/><names>
         <name lang="en">Elbow Alpex 32</name>
         <name lang="fr">Coude Alpex 32</name>
         <name lang="es">Codo Alpex 32</name>

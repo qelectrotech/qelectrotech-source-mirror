@@ -1,5 +1,5 @@
 <definition width="100" version="0.4" hotspot_x="65" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{846897C7-19F4-489A-8376-8034CB2B48FA}"/><names>
         <name lang="es">Calentador solar1</name>
         <name lang="it">Scalda acqua solare</name>
         <name lang="pl">Kolektor słoneczny</name>

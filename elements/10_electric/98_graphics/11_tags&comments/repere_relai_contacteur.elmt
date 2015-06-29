@@ -1,5 +1,5 @@
 <definition width="60" version="0.2" hotspot_x="20" hotspot_y="35" height="80" type="element" orientation="dyyy" >
-    <names>
+<uuid uuid="{6C57B039-4C22-4098-BA77-6405661CFFBC}"/><names>
         <name lang="fr">désignation relai et repere contact</name>
         <name lang="de">Rechteck für Kontaktspiegel</name>
         <name lang="pl">Lokalizacja zestyków</name>

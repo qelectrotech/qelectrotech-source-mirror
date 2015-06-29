@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="36" hotspot_y="15" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E765500F-14DC-4D1E-9AE7-E5422FAB4090}"/><names>
         <name lang="en">Hose irrigation</name>
         <name lang="fr">Tuyau d'arrosage</name>
         <name lang="es">Manguera riego</name>

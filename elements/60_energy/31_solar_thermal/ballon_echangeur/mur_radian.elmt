@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="60" height="110" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4D11E7C3-94CD-4D07-B7B8-8EEE43EE84D0}"/><names>
         <name lang="ar">جدار تدفئة</name>
         <name lang="en">Wall heating</name>
         <name lang="fr">Mur chauffant</name>

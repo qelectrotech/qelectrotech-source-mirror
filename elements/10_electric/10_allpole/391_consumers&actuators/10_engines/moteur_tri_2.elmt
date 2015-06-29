@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="28" hotspot_y="28" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{DAFD5CF7-6568-46A8-B0DD-55988B413332}"/><names>
         <name lang="ar">محرّك ثلاثي الأوجه</name>
         <name lang="de">Drehstrom Motor</name>
         <name lang="ru">Трёхфазный эл. мотор</name>

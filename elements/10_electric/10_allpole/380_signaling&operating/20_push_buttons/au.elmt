@@ -1,5 +1,5 @@
 <definition type="element" link_type="master" width="30" version="0.5" height="50" hotspot_x="17" hotspot_y="24" orientation="dyyy">
-    <names>
+<uuid uuid="{F077C39A-7D90-4CCB-BC08-0B09E950839D}"/><names>
         <name lang="fr">Arrêt d'urgence (NF)</name>
         <name lang="ru">Аварийный стоп</name>
         <name lang="nl">Noodstop drukknop (NC)</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2C47CB58-268C-464C-A197-214AD19E2ADB}"/><names>
         <name lang="el">Αντίσταση 1w</name>
         <name lang="en">1W resistor</name>
         <name lang="it">Resistenza 1W</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{2C0ECB75-0D82-4EED-9B6D-D1C7C281EDAA}"/><names>
         <name lang="el">Κίνδυνος, γενικά</name>
         <name lang="en">Danger general</name>
         <name lang="de">Hinweis allgemeine Gefahr klein</name>

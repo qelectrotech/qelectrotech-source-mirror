@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DE33D339-B400-46BE-89D8-CB73EE289070}"/><names>
         <name lang="ar">جرس بضربة واحدة</name>
         <name lang="el">Κουδούνι ενός ήχου</name>
         <name lang="en">1 bell ringer has</name>

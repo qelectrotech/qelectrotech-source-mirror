@@ -1,5 +1,5 @@
 <definition width="380" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1B2FACB0-8003-4CDF-B687-5C3B6F0C087F}"/><names>
         <name lang="ar">مركز رفع بيانات Campbell CR1000 18P  قناة 3</name>
         <name lang="en">Campbell CR1000 18P Central Acquisition Channel 3</name>
         <name lang="it">Centrale acquisizione Campbell CR1000 18P canale 3</name>

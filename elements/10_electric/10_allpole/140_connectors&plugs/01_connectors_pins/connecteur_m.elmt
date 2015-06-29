@@ -1,5 +1,5 @@
 <definition type="element" link_type="simple" hotspot_x="4" hotspot_y="13" orientation="dyyy" version="0.5" width="10" height="30">
-    <names>
+<uuid uuid="{9016050F-26E2-4F2B-8EED-9BDBCF8BE98E}"/><names>
         <name lang="en">Male connector</name>
         <name lang="fr">Connecteur mâle</name>
         <name lang="ru">Штырь (нов.)</name>

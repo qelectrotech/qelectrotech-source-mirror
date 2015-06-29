@@ -1,5 +1,5 @@
 <definition width="210" version="0.4" hotspot_x="113" hotspot_y="57" height="140" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D99B61B0-C3D2-4B6B-99DC-7399F3867006}"/><names>
         <name lang="en">Frequency_converter</name>
         <name lang="de">Frequenzumformer</name>
         <name lang="fr">Convertisseur de fréquence</name>

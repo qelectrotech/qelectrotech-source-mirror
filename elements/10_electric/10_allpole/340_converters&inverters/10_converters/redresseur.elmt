@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="35" hotspot_y="45" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{ED2F66B9-B73C-48A9-A724-262181AB786F}"/><names>
         <name lang="ar">موحد محكوم</name>
         <name lang="de">Gleichrichter</name>
         <name lang="el">Ανορθωτής</name>

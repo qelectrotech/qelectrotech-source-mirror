@@ -1,5 +1,5 @@
 <definition width="130" version="0.3" hotspot_x="6" hotspot_y="185" height="190" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{7408C4F4-56C3-4985-B436-6D86E2A2A180}"/><names>
         <name lang="en">Lighting</name>
         <name lang="de">Beleuchtung</name>
         <name lang="it">Illuminazione</name>

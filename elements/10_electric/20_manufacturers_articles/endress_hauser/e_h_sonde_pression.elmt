@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="20" hotspot_y="41" height="100" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{86063DE5-B414-44C2-9FA6-57AED3A4177D}"/><names>
         <name lang="ar">مجس ضغط Cerabar M</name>
         <name lang="el">Αισθητήρας πίεσης Cerabar M</name>
         <name lang="en">Pressure Sensor Cerabar M</name>

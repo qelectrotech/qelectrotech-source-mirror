@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="7" hotspot_y="35" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{415EF4E7-0136-45E7-9CA8-EEB16EEA0356}"/><names>
         <name lang="ar">مضخّة هيدروليكية 2</name>
         <name lang="el">Υδραυλική αντλία 2</name>
         <name lang="en">Hydraulic pump 2</name>

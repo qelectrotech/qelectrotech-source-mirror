@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="15" hotspot_y="25" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{304818B2-FA67-4835-9A99-51FE413DF801}"/><names>
         <name lang="ar">محرّك</name>
         <name lang="de">Motor</name>
         <name lang="ru">Эл. мотор</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{6816209E-9558-4E17-92D2-9E4E09BCD36B}"/><names>
         <name lang="ar">نقطة إنتظار لجهاز إضاءة حائطي</name>
         <name lang="de">Leuchtenauslaß auf Putz</name>
         <name lang="en">Lighting outlet on wall The symbol is shown with wiring from the left</name>

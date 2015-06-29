@@ -1,5 +1,5 @@
 <definition width="190" version="0.3" hotspot_x="0" hotspot_y="10" height="80" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E9AEDA55-3F32-467B-9ABC-4BA4410A6046}"/><names>
         <name lang="de">S7-1200-signalboard-sb1221-I-4x24vdc-200khz/3A</name>
         <name lang="en">S7-1200-signalboard-sb1221-I-4x24vdc-200khz/3A</name>
         <name lang="it">S7-1200 pannello signali sb1221-I-4x24vdc 200kHz/3A</name>

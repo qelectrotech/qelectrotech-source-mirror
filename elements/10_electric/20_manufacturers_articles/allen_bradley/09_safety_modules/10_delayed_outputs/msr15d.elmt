@@ -1,5 +1,5 @@
 <definition width="260" version="0.3" hotspot_x="55" hotspot_y="35" height="100" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{1CE50623-B420-4E56-A6BF-5798ADBA478F}"/><names>
         <name lang="de">msr15d</name>
         <name lang="ru">msr15d</name>
         <name lang="pt">msr15d</name>

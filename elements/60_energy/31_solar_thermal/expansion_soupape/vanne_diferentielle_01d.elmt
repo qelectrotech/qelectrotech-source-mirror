@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{76499ED6-C0D7-4EBF-BB79-307D79436B54}"/><names>
         <name lang="ar">صمّام تفاضلي</name>
         <name lang="en">Differential valve "right"</name>
         <name lang="fr">Vanne différentielle "droite"</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{D2AAE0BF-ADEB-486C-A31B-8DE9FD160199}"/><names>
         <name lang="ar">دخل (حافة صاعدة)</name>
         <name lang="de">Eingang (steigende Flanke)</name>
         <name lang="ru">Вход (передний фронт)</name>

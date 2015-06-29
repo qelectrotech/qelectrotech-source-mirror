@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{65BC2648-ABC8-441A-B57B-14AB566E173A}"/><names>
         <name lang="ar">مُرشّح بغربال</name>
         <name lang="en">Filter Screens</name>
         <name lang="fr">Filtre à Tamis</name>

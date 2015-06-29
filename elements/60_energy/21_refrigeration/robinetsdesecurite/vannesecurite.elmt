@@ -1,5 +1,5 @@
 <definition width="20" version="0.3" hotspot_x="7" hotspot_y="17" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{2962DCE0-880E-4022-A094-1BBA59F29B15}"/><names>
         <name lang="ar">صمّام أمان</name>
         <name lang="el">Βαλβίδα ασφαλείας</name>
         <name lang="en">Safety valve</name>

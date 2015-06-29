@@ -1,5 +1,5 @@
 <definition type="element" link_type="simple" hotspot_x="45" hotspot_y="45" orientation="dyyy" version="0.5" width="90" height="90">
-    <names>
+<uuid uuid="{5CF8F597-642C-40B0-8416-1A4DFC9F5231}"/><names>
         <name lang="en">Pin 17</name>
         <name lang="fr">Broche_17</name>
         <name lang="nl">Rond 17Pins</name>

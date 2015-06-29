@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="10" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D36B823F-A4B3-4D40-9EA0-AB0418BEBC56}"/><names>
         <name lang="ar">فوهات مغلقة 2</name>
         <name lang="en">2 ports close</name>
         <name lang="fr">2 orifices fermes</name>

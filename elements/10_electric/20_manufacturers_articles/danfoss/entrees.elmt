@@ -1,5 +1,5 @@
 <definition width="520" version="0.3" hotspot_x="322" hotspot_y="60" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A05A4F44-B5DF-4A0F-9008-076D8EAD6399}"/><names>
         <name lang="ar">AKCC550 - مداخل</name>
         <name lang="el">AKCC550 - Είσοδοι</name>
         <name lang="en">AKCC550 inputs</name>

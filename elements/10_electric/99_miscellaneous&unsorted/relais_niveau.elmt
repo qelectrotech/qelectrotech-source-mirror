@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="56" hotspot_y="39" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4432E4DE-F448-4AA5-96DC-53C96F4E6A5C}"/><names>
         <name lang="ar">مُرحّل مستوى</name>
         <name lang="el">Ρελέ στάθμης</name>
         <name lang="en">Level relay</name>

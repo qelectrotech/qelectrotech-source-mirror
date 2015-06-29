@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="18" hotspot_y="13" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{14D3FCF7-807B-4F88-A3B0-7A48147017ED}"/><names>
         <name lang="es">Grifo riego</name>
         <name lang="it">Rubinetto irrigazione</name>
         <name lang="pl">Zawór do nawadniania</name>

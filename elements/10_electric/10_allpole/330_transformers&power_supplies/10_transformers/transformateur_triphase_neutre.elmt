@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny">
-    <names>
+<uuid uuid="{B80D15C0-39D5-4930-8AD7-8DE51626F06E}"/><names>
         <name lang="ar">محول ثلاثي الأوجه + خط محايد</name>
         <name lang="el">Μετασχηματιστής τριφασικός + ουδέτερος</name>
         <name lang="en">Three-phase + neutral transducer</name>

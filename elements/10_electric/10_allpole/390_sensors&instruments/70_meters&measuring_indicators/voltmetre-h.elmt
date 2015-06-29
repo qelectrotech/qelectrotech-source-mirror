@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{69EB0C1C-34E0-44AB-99D8-2EF22206B785}"/><names>
         <name lang="ar">فولتمتر أفقي</name>
         <name lang="de">Voltmeter waagerecht</name>
         <name lang="ru">Вольтметр (горизонтальный)</name>

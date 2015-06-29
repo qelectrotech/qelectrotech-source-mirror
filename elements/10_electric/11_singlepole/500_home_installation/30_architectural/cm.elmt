@@ -1,5 +1,5 @@
 <definition link_type="simple" height="20" hotspot_x="5" hotspot_y="11" width="10" orientation="dyyy" version="0.5" type="element">
-    <names>
+<uuid uuid="{99C9E881-BC31-48B6-8F8D-4C7FBC49C3CC}"/><names>
         <name lang="fr">Contact Magnetique</name>
         <name lang="it">Contatto magnetico</name>
         <name lang="de">Magnetkontakt</name>

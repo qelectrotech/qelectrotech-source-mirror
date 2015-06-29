@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9FA0AE85-8E04-4A78-A71B-1F573F8EA76F}"/><names>
         <name lang="ar">حسّاس مغناطيسي NC</name>
         <name lang="el">Μαγνητικός αισθητήρας, κλειστή επαφή</name>
         <name lang="en">Magnetic sensor NC</name>

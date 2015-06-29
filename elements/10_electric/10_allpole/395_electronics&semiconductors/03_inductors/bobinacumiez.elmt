@@ -1,5 +1,5 @@
 <definition height="60" type="element" version="0.5" width="20" orientation="dyyy" link_type="simple" hotspot_x="8" hotspot_y="29">
-    <names>
+<uuid uuid="{0990D8C1-FF53-4110-AD2E-8020D64EC5F3}"/><names>
         <name lang="el">Πηνίο</name>
         <name lang="ar">حثّ</name>
         <name lang="pl">Cewka</name>

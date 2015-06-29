@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{1DF6CC2E-009C-40B6-A165-FD2494620646}"/><names>
         <name lang="ar">مفتاح</name>
         <name lang="de">Ein-/Ausschalter</name>
         <name lang="ru">Переключатель</name>

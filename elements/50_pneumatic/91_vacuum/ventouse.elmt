@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="10" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{50B210CD-079B-41A0-BA5D-B7DF2A457641}"/><names>
         <name lang="en">Vacuum suction grippers</name>
         <name lang="fr">Ventouses à vide</name>
         <name lang="pl">Przyssawka</name>

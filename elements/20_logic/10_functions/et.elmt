@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="45" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A8516219-BA0C-4E3A-8B13-7E9872E07B21}"/><names>
         <name lang="ar">بوابة  AND</name>
         <name lang="de">UND</name>
         <name lang="ru">И</name>

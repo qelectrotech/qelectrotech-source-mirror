@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EB078AD1-300F-4197-9050-D9DAF49FD3EC}"/><names>
         <name lang="en">Binary/binary</name>
         <name lang="it">ingresso digitale, uscita digitale</name>
         <name lang="fr">Entrée numérique + sortie numérique</name>

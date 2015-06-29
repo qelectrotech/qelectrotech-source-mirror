@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="45" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8324E010-E742-4243-B232-E609B9926CFD}"/><names>
         <name lang="ar">مقياس تدفق</name>
         <name lang="el">Μετρητής ροής</name>
         <name lang="en">Flowmeter</name>

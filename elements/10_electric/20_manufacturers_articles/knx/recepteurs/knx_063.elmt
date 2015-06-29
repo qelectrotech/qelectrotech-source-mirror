@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="28" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{62BD8DCB-2D96-4B23-8A89-2BF224FCEFA7}"/><names>
         <name lang="en">IR-Rec/Dec with 4-fold PB</name>
         <name lang="it">Ric. IR/Decoder + pulsante 4 can</name>
         <name lang="fr">Recepteur/decodeur IR 4 sorties</name>

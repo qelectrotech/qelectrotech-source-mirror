@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="12" hotspot_y="5" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2DAB1B3B-BA32-4491-AD37-117DE9861D9A}"/><names>
         <name lang="en">Combine</name>
         <name lang="it">Collegamento</name>
         <name lang="fr">Jonction</name>

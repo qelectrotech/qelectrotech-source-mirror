@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="15" height="40" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{97124F65-6660-461D-A3C9-7950C33882A1}"/><names>
         <name lang="ar">إرجاء خرج</name>
         <name lang="de">Ausgang Report</name>
         <name lang="pt">Relatório saída</name>

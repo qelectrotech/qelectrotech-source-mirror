@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="0" hotspot_y="10" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{78884A9A-E2C5-43B7-99F5-E09FC71551B4}"/><names>
         <name lang="de">logo-power-230v-acdc-24vdc</name>
         <name lang="en">logo-power-230v-acdc-24vdc</name>
         <name lang="it">Logo aliment. 230V acdc 24vdc</name>

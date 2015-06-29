@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A6302F8C-7BFD-4B54-9AB9-27A6F74E4176}"/><names>
         <name lang="ar">مضخة تداول صحية</name>
         <name lang="en">Circulator health</name>
         <name lang="fr">Circulateur sanitaire</name>

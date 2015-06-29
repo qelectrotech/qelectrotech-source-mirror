@@ -1,5 +1,5 @@
 <definition width="10" version="0.3" hotspot_x="5" hotspot_y="0" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0EE598EC-C72A-43A3-B330-741E2D41940A}"/><names>
         <name lang="ar">قابس و مقبس متعدد الأقطاب, تمثيل أحادي الخط</name>
         <name lang="de">Steckverbindung komplett mit 6 Kontakten</name>
         <name lang="en">Plug and multipolar representation

@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{10D9CFE6-C990-4D57-AD12-A3316E5AA2A9}"/><names>
         <name lang="en">Integral Flowmeter</name>
         <name lang="fr">Debitmetre</name>
         <name lang="pl">Przepływomierz całkujący</name>

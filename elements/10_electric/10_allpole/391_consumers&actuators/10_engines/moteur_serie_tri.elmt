@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="29" hotspot_y="46" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9CE2FF1D-7CF2-4CE1-965F-F577612E1BED}"/><names>
         <name lang="ar">محرّك توالي ثلاثي الأوجه</name>
         <name lang="el">Σειριακό μοτέρ, τριφασικό</name>
         <name lang="en">Series motor three-phase</name>

@@ -1,5 +1,5 @@
 <definition width="860" version="0.3" hotspot_x="55" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5AE6761A-1DFF-469A-A404-FA83EE010E0B}"/><names>
         <name lang="el">TWDLMDA ; 40DTK-CN2,40DUK-CN2 (είσοδοι)</name>
         <name lang="en">TWDLMDA ; 40DTK-CN2,40DUK-CN2 (Inputs)</name>
         <name lang="it">TWDLMDA ; 40DTK-CN2,40DUK-CN1 (ingressi)</name>

@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{46153E5F-237D-447F-9C7E-A0A899A297DB}"/><names>
         <name lang="en">Pressure Transmitter</name>
         <name lang="fr">Capteur de pression</name>
         <name lang="pl">Przetwornik ciśnienia</name>

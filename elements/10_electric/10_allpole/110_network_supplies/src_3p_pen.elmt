@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="23" hotspot_y="41" height="80" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2B437BB6-AE8B-461F-9FC4-14CE5DE1ECDD}"/><names>
         <name lang="ar">مصدر ثلاثي القطبيّة + PEN</name>
         <name lang="de">Drehstrom + PEN</name>
         <name lang="ru">Трёхполюсный + PEN</name>

@@ -1,5 +1,5 @@
 <definition width="190" version="0.3" hotspot_x="23" hotspot_y="34" height="400" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C96AE0B1-E0E8-4A88-925C-9D74219F9831}"/><names>
         <name lang="en">Arduino Mega 2560 Ethernet</name>
         <name lang="it">Arduino Mega 2560 Ethernet</name>
         <name lang="fr"> Arduino Mega 2560 Ethernet</name>

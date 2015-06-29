@@ -1,5 +1,5 @@
 <definition width="470" version="0.4" hotspot_x="5" hotspot_y="7" height="120" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{FC02F4AE-32CE-44B7-BA44-88480674C0CE}"/><names>
         <name lang="en">ABB PSE</name>
         <name lang="cs">ABB PSE</name>
     </names>

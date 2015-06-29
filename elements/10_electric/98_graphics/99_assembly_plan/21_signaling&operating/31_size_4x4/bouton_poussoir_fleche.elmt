@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{10DB6E09-7AD6-4228-A6D0-CB18B88DA033}"/><names>
         <name lang="ar">مفتاح ضاغط سهم</name>
         <name lang="el">Μπουτόν, βέλος πάνω</name>
         <name lang="en">Arrow button</name>

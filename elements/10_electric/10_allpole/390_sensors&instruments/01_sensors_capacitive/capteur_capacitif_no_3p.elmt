@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DBE6757A-EC19-45B4-9599-46A67E60C9B1}"/><names>
         <name lang="ar">حسّاس سعوي ب 3 أطراف NO</name>
         <name lang="el">Χωρητικός αισθητήρας, Ανοικτή επαφή 3 ακρ</name>
         <name lang="en">Capacitive sensor 3 terminals NO</name>

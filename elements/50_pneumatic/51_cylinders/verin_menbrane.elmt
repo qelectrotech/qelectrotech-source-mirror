@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{73F55168-F0F5-49E6-82C2-884922665C6D}"/><names>
         <name lang="en">Diaphragm actuator bracket</name>
         <name lang="fr">Support actionneur à membrane</name>
         <name lang="pl">Siłownik membranowy mocujący</name>

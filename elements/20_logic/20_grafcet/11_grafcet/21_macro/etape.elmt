@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="45" hotspot_y="30" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{D12E539B-06E1-49BD-893F-0A21E4FB4B8B}"/><names>
         <name lang="ar">ماكرو خطوة</name>
         <name lang="de">Makro Schritt</name>
         <name lang="pt">Etapa Macro</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8925461A-FB7B-43E7-BFFF-71733B1D08CF}"/><names>
         <name lang="en">Element electric cable</name>
         <name lang="fr">Element câble électrique</name>
         <name lang="pl">Element elektryczny lub przewód elektryczny</name>

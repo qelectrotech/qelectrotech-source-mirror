@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="25" hotspot_y="31" height="60" type="element" ic="true" orientation="dyyy" link_type="previous_report">
-    <names>
+<uuid uuid="{620F434B-2E51-4FE8-AA01-1E0B8AAAA9F1}"/><names>
         <name lang="en">ref complex contact NO</name>
         <name lang="it">Contatto NO</name>
         <name lang="fr">Contact NO</name>

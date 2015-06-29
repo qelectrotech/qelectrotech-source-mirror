@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{5AC8C51B-530D-48EF-8C53-5BE17650CB50}"/><names>
         <name lang="en">Switch with fuse QMB</name>
         <name lang="fr">Interrupteur à fusible QMB</name>
         <name lang="pl">Rozłącznik z bezpiecznikiem QMB</name>

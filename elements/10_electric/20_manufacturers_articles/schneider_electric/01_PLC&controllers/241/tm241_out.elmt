@@ -1,5 +1,5 @@
 <definition width="1010" hotspot_y="44" orientation="dyyy" link_type="simple" type="element" version="0.5" height="90" hotspot_x="495">
-    <names>
+<uuid uuid="{4C6B505E-A8DE-401A-8BD0-8CB2F643BBA1}"/><names>
         <name lang="fr">Cartes sorties M241 Schneider</name>
         <name lang="en">Output cards M241 Schneider</name>
     </names>

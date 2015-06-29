@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{3C93AE4A-3553-47F8-A0FC-E69730C4D58E}"/><names>
         <name lang="ar">ثايريستور رباعي الأطراف مكبوح في الإنحياز العكسي</name>
         <name lang="de">rückwärts sperrende Thyristortetriode</name>
         <name lang="en">Reverse blocking thyristor tetrode type</name>

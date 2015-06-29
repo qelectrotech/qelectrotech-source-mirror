@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" orientation="dyyy" >
-    <names>
+<uuid uuid="{690E9F84-04E4-4648-BD10-60344AC561ED}"/><names>
         <name lang="ar">صمّام كهربائي</name>
         <name lang="de">Magnetventil</name>
         <name lang="el">Ηλεκτροβαλβίδα</name>

@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{C5966DDB-B3E9-4837-AAC9-8864A878D201}"/><names>
         <name lang="ar">جهاز إنارة للسلامة بدائرة خاصة</name>
         <name lang="de">Vorschaltgerät für Notbeleuchtung</name>
         <name lang="el">Φωτιστικό ασφαλείας, σε ειδικό κύκλωμα</name>

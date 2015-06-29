@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{615953F5-7CE7-4092-B3DA-3FC83AFF7943}"/><names>
         <name lang="ar">مروحة</name>
         <name lang="de">Lüfter</name>
         <name lang="el">Ανεμιστήρας</name>

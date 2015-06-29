@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{F7BF1E07-F503-4B8D-A539-560A2B3F03B4}"/><names>
         <name lang="ar">مُولد ثلاثي الأوجه</name>
         <name lang="de">Drehstromgenerator</name>
         <name lang="ru">Трёхфазный генератор</name>

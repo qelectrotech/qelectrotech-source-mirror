@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="23" hotspot_y="37" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A30AF052-7B26-4B9C-9A32-5F5FFDBC56BA}"/><names>
         <name lang="ar">حسّاس سعوي ب 3 أطراف</name>
         <name lang="de">Kapazitiver Sensor 3-Leiter</name>
         <name lang="el">Χωρητικός αισθητήρας 3 ακρ</name>

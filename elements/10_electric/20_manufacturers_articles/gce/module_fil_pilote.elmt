@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="29" height="60" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{54E2A990-C393-46E7-8CEF-7A9F31DF0DF2}"/><names>
         <name lang="en">Diodes Module Pilot Wire</name>
         <name lang="it">Modulo a diodi pilota</name>
         <name lang="fr">Module Fil Pilote</name>

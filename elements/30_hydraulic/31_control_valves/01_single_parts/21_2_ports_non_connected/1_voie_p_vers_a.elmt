@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="10" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C52ABA8E-624A-4393-AF03-987441A9D3A0}"/><names>
         <name lang="ar">فوهات موصلة 2</name>
         <name lang="en">2 ports open directional</name>
         <name lang="fr">2 orifices passant</name>

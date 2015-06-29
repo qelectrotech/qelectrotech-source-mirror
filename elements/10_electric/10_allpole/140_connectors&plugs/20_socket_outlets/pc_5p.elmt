@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0C71179F-CA5C-4EFC-BC9E-936B0BF0E7D6}"/><names>
         <name lang="ar">ماخذ تيّار 5 أقطاب</name>
         <name lang="en">Outlet 5 poles</name>
         <name lang="de">Steckdose 3P+N+PE</name>

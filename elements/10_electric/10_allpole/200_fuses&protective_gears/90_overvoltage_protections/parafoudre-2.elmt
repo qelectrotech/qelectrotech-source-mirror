@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{358C429E-0BA2-49FB-8C0F-A47559598AD0}"/><names>
         <name lang="ar">حامي من الصواعق</name>
         <name lang="el">Προστασία από υπέρταση</name>
         <name lang="en">Surge protection</name>

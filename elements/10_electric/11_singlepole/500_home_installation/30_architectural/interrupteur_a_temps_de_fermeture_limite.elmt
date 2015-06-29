@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{FC0009F2-D2BA-4B98-B7BB-25D44EFFACD3}"/><names>
         <name lang="ar">مفتاح بزمن غلق محدود أحادي القطب</name>
         <name lang="de">Zeitschalter einpolig
 </name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="20" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DFAEC731-0FCA-48C8-B3A2-E7E0B8873363}"/><names>
         <name lang="ar">صمّام منع ارتجاع " يسار"</name>
         <name lang="en">Backflow</name>
         <name lang="fr">Disconnecteur "gauche"</name>

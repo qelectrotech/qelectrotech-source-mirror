@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="30" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{787436E9-D31C-4DA1-8F45-59063CA2DE54}"/><names>
         <name lang="en">Double acting single rod cylinder with locking pin pneumatic</name>
         <name lang="fr">Double effet avec tige de vérin unique, avec tige de verrouillage pneumatique</name>
         <name lang="pl">Siłownik pneumatyczny dwustronnego działania z jednostronnym tłoczyskiem, z blokadą pneumatyczną tłoczyska</name>

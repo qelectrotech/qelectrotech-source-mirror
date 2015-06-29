@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="260" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{011FCC7C-A726-4216-85C1-1F488F2325A6}"/><names>
         <name lang="ar">SM322   DO 32 x DC24V/0,5A</name>
         <name lang="pt">SM322   DO 32 x DC24V/0,5A</name>
         <name lang="el">SM322   DO 32 x DC24V/0,5A</name>

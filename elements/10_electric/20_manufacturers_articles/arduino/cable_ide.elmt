@@ -1,5 +1,5 @@
 <definition width="190" version="0.3" hotspot_x="25" hotspot_y="35" height="300" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C7184B11-3DE0-4F05-8F7A-2D2998C989C4}"/><names>
         <name lang="el">Καλωδιοταινία LCD Arduino</name>
         <name lang="en">Arduino LCD Ribbon cable</name>
         <name lang="it">Cavo piatto arduino LCD</name>

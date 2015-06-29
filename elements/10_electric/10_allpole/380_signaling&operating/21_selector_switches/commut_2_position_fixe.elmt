@@ -1,5 +1,5 @@
 <definition type="element" hotspot_y="29" link_type="master" orientation="dyyy" hotspot_x="34" version="0.5" height="60" width="40">
-    <names>
+<uuid uuid="{BC0EAD20-CA99-481A-A18B-9301F7CEE90E}"/><names>
         <name lang="fr">Commutateur a 2 positions à clé</name>
         <name lang="en">2 position switch</name>
         <name lang="de">Drehschalter ein/aus</name>

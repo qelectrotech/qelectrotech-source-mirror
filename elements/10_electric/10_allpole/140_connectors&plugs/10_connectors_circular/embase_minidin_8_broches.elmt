@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="40" height="80" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{80223CD7-405A-45E7-B5C5-56ED3946D34F}"/><names>
         <name lang="ar">قاعدة mini-DIN  ب 8 أطراف توصيل</name>
         <name lang="en">Base 8 pin mini-DIN</name>
         <name lang="de">Rundstecker 8-polig</name>

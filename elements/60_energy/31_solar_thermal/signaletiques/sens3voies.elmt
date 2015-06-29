@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A0AD4A43-A7C4-4838-817B-48F35A141D9B}"/><names>
         <name lang="ar">لافتة 3 مسارات</name>
         <name lang="en">signs 3-way valve</name>
         <name lang="fr">signalétique V3voies</name>

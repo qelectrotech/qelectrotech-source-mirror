@@ -1,5 +1,5 @@
 <definition width="30" version="0.4" hotspot_x="20" hotspot_y="25" height="50" link_type="slave" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0BBC7E69-F104-450D-902F-C59FBE7B9974}"/><names>
         <name lang="el">Θερμικό, κλειστό</name>
         <name lang="en">Thermal relay NC</name>
         <name lang="de">Öffner thermisch betätigt</name>

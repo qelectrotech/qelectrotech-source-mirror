@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="40" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E33EE36E-AE62-4C15-B989-0F9363943906}"/><names>
         <name lang="ar">رابط توصيل SUB-D 9 (أنثوي)</name>
         <name lang="el">D-SUB 9 ακροδέκτες (θηλυκό)</name>
         <name lang="en">D-SUB  9 pin (female)</name>

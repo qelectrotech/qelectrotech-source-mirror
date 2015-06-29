@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{ADB41F03-B6E2-4A68-B2D9-42A34237A69A}"/><names>
         <name lang="en">Manometer</name>
         <name lang="fr">Manometre</name>
         <name lang="pl">Manometr</name>

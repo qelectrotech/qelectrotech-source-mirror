@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{08EB5BB4-013C-4823-9B70-E20A5C0CDE5B}"/><names>
         <name lang="ar">عدّد طاقة تفاعليّة - فارساعة متر-</name>
         <name lang="el">Μετρητής, Βαρώρια</name>
         <name lang="en">Var hour meter</name>

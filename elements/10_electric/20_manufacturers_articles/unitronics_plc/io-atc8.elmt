@@ -1,5 +1,5 @@
 <definition hotspot_x="15" height="110" type="element" version="0.5" link_type="simple" hotspot_y="52" width="630" orientation="dyyy">
-    <names>
+<uuid uuid="{953F03CE-C27F-46CD-8264-F27598E00E55}"/><names>
         <name lang="en">IO-ATC8</name>
         <name lang="cs">IO-ATC8</name>
     </names>

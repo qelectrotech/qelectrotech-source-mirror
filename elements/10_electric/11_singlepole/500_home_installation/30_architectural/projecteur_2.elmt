@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{6FB48C10-D262-4377-8051-59C274247622}"/><names>
         <name lang="ar">عاكس بشعاع قليل التباعد</name>
         <name lang="de">Punktleuchte</name>
         <name lang="en">Slightly divergent beam projector</name>

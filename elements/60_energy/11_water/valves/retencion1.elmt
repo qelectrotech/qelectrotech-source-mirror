@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="26" hotspot_y="31" height="50" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{A3B5F091-E075-4B73-B8FB-93BFBDC1109F}"/><names>
         <name lang="es">Valv. retención 1"</name>
         <name lang="it">Valvola di ritegno 1"</name>
         <name lang="pl">Zawór zwrotny 1"</name>

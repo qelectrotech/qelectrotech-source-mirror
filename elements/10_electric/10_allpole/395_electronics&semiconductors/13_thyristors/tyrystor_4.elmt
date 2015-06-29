@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
-    <names>
+<uuid uuid="{981A088B-3567-4DDE-932E-38EBF550E3D6}"/><names>
         <name lang="ar">ثايريستور</name>
         <name lang="de">Thyristortriode</name>
         <name lang="en">Triode thyristor</name>

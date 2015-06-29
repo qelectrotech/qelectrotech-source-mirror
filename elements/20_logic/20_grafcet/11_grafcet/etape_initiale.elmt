@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7DE6BD72-9C63-4FA0-A07E-54C6C9025672}"/><names>
         <name lang="ar">خطوة أوليّة</name>
         <name lang="de">Initialisierungs Schritt</name>
         <name lang="pt">Etapa inicial</name>

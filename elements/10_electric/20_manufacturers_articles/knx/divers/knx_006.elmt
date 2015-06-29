@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{F063E54B-A81D-435D-AB38-FE671BD7F314}"/><names>
         <name lang="en">Line coupler</name>
         <name lang="fr">Coupleur de ligne</name>
         <name lang="it">Accoppiatore di linea</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.4" hotspot_x="15" hotspot_y="29" height="70" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{C0269EBE-DD1A-4DF5-BB01-127E136FDEC2}"/><names>
         <name lang="es">Tapon 1</name>
         <name lang="it">Tappo 1"</name>
         <name lang="pl">Korek 1"</name>

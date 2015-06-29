@@ -1,5 +1,5 @@
 <definition width="40" version="0.22" hotspot_x="0" hotspot_y="40" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{CA19F0EC-25CB-4CDB-8C0E-C4E4825159E8}"/><names>
         <name lang="en">2 ports close</name>
         <name lang="fr">2 orifices obtures</name>
         <name lang="cs">2 otvory uzavřené</name>

@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="60" type="element" orientation="ndny">
-    <names>
+<uuid uuid="{C2D40100-EE15-48FD-B7A7-D1C7915410CE}"/><names>
         <name lang="ar">صمّام تفاضلي</name>
         <name lang="en">differential valve</name>
         <name lang="fr">Soupape différentielle</name>

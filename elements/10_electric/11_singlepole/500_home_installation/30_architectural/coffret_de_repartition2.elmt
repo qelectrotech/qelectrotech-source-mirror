@@ -1,5 +1,5 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{8EB2870E-A524-4720-ADA6-350DF62A5EFF}"/><names>
         <name lang="ar">صندوق توزيع</name>
         <name lang="el">Κουτί διανομής</name>
         <name lang="en">Assembly</name>

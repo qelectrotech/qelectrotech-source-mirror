@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="20" hotspot_y="23" height="30" type="element" ic="true" orientation="dyyy" link_type="next_report">
-    <names>
+<uuid uuid="{FA998F4C-930B-455C-8DB3-AF7E91EC2B3D}"/><names>
         <name lang="ar">مرجع مُلامس NC (عمودي)</name>
         <name lang="en">Reference contact NC (vertical)</name>
         <name lang="it">Rif. contatto NC / (verticale)</name>

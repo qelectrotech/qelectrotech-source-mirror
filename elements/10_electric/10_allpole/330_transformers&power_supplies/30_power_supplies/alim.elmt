@@ -1,5 +1,5 @@
 <definition width="70" version="0.4" hotspot_x="35" hotspot_y="50" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{40BEB69B-748C-4B7C-A448-C8B4F8441B44}"/><names>
         <name lang="ar">موحد محكوم</name>
         <name lang="de">Netzteil AC/DC</name>
         <name lang="be">Gelijkrichter AC1/DC</name>

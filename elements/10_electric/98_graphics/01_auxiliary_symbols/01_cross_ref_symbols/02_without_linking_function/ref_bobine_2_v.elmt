@@ -1,5 +1,5 @@
 <definition width="20" version="0.4" hotspot_x="9" hotspot_y="11" height="30" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EAE91144-E89B-4F9D-B48F-68AB5EBB9FE8}"/><names>
         <name lang="ar">مرجع ملف (عمودي)</name>
         <name lang="en">Reference coil (vertical)</name>
         <name lang="it">Riferimento bonina / (verticale)</name>

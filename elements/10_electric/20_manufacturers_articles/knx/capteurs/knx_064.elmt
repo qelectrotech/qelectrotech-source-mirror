@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="44" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{58C16186-80FF-4983-B7D9-71283747BB76}"/><names>
         <name lang="en">Switch. Act. mod. + PB single</name>
         <name lang="it">Modulo contatto + pulsante</name>
         <name lang="fr">Connecteur de module + bouton poussoir</name>

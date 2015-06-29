@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="40" hotspot_y="110" height="230" type="element" orientation="ydyy">
-    <names>
+<uuid uuid="{EC9588A6-4713-4C27-8856-5EFD6C2E4587}"/><names>
         <name lang="ar">دائرة مدمجة 20 دبوس</name>
         <name lang="de">Integrierte Schaltung 20 Anschlüsse</name>
         <name lang="el">Ολοκληρωμένο κύκλωμα 20 ακροδεκτών</name>

@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="27" hotspot_y="42" height="80" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EB87D947-661A-4B0A-A479-B9C79F408908}"/><names>
         <name lang="ar">إناء تسخين 02</name>
         <name lang="en">Heating Vase 02</name>
         <name lang="it">Vaso di espansione 50L</name>

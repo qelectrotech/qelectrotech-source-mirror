@@ -1,5 +1,5 @@
 <definition width="80" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{DFD1565B-F126-4B61-909B-0AA998713479}"/><names>
         <name lang="en">Translation table double acting pneumatic</name>
         <name lang="fr">Table de translation pneumatique double effet</name>
         <name lang="pl">Siłownik pneumatyczny dwustronnego działania z jednostronnym tłoczyskiem, z zintegrowanym prowadzeniem</name>

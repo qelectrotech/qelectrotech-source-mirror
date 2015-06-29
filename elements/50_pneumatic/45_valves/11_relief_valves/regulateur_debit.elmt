@@ -1,5 +1,5 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="45" height="90" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E9B50896-A0CA-4201-9318-CF06EF2B73F9}"/><names>
         <name lang="en">Two-way flow controller, with a variable output flow rate</name>
         <name lang="fr">Réducteur de debit bidirectionnel reglable</name>
         <name lang="pl">Regulator przepływu dwudrogowy, ze zmiennym wyjściowym natężeniem przepływu</name>

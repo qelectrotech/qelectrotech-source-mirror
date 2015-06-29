@@ -1,5 +1,5 @@
 <definition width="50" version="0.4" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{2A92B8B6-0920-4491-B729-BD548EAA8EE3}"/><names>
         <name lang="el">Μπουτόν, γενικά</name>
         <name lang="en">Push button, general</name>
         <name lang="it">Pulsante, generico</name>

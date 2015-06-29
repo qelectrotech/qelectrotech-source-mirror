@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="slave">
-    <names>
+<uuid uuid="{16876127-B61C-4DE6-9D22-38E3351535EF}"/><names>
         <name lang="ar">مُلامس مُؤقت للفصل (NC) يُغلق مُتأخرا</name>
         <name lang="de">Öffner abfallverzögert</name>
         <name lang="ru">Контакт с задержкой при возврате (НЗ)</name>

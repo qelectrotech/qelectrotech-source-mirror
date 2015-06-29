@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="36" hotspot_y="39" height="80" link_type="simple" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{C2158DD4-A7BE-4324-848C-978BBD9CE2F6}"/><names>
         <name lang="ro">piezotransducer</name>
     </names>
     <informations>Author:titus

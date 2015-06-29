@@ -1,5 +1,5 @@
 <definition width="440" version="0.3" hotspot_x="0" hotspot_y="0" height="170" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{C75B6807-69AF-4ED9-94D7-45B797CB221B}"/><names>
         <name lang="ar">TAC_Xenta_repeater</name>
         <name lang="en">TAC_Xenta_repeater</name>
         <name lang="fr">TAC_Xenta_repeteur</name>

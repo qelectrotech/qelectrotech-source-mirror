@@ -1,5 +1,5 @@
 <definition width="120" version="0.3" hotspot_x="70" hotspot_y="50" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{46E34E0E-FA19-4A98-993F-1064B835F6A3}"/><names>
         <name lang="en">Shut-off valve</name>
         <name lang="fr">Vanne d'arrêt</name>
         <name lang="pl">Zawór wyłączający</name>

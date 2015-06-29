@@ -1,5 +1,5 @@
 <definition width="400" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{E3ACFEA9-AB85-472E-8F9E-C4A2BA5BA9A5}"/><names>
         <name lang="ar">لوحة مداخل CD12</name>
         <name lang="de">CD12 Eingangskarte</name>
         <name lang="pt">Carta de entradas CD12</name>

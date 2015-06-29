@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="34" hotspot_y="77" height="180" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{D5D85E43-C688-4E5B-AA02-9BCDAE6207E7}"/><names>
         <name lang="en">cRIO 9481 to 4 relay outputs 2A</name>
         <name lang="it">cRIO 9481 - modulo 4 uscite a relè 2A</name>
         <name lang="fr">cRIO 9481 - 4 sorties relais 2A</name>

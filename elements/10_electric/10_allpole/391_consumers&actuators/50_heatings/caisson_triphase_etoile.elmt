@@ -1,5 +1,5 @@
 <definition width="60" version="0.4" hotspot_x="29" hotspot_y="40" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{0B7A1F98-5BF5-4B9D-AA1F-8DE924DF39D3}"/><names>
         <name lang="ar">صندوق ثلاثي الأوجه نجمي</name>
         <name lang="el">Κιβώτιο με συνδεσμολογία αστέρα</name>
         <name lang="en">Caisson phase star</name>

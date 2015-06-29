@@ -1,5 +1,5 @@
 <definition link_type="simple" hotspot_x="5" width="130" hotspot_y="186" orientation="dyyy" version="0.5" height="190" type="element">
-    <names>
+<uuid uuid="{F52EC501-8347-4FAC-AE0A-C47B6D44387E}"/><names>
         <name lang="fr">Prise Tri + N 16 A</name>
     </names>
     <informations>cbh41</informations>

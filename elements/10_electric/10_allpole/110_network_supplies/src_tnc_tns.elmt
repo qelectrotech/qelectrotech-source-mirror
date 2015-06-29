@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="34" hotspot_y="40" height="100" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{E9A813AA-7E9B-48A3-85D1-5D3B1A363DC2}"/><names>
         <name lang="ar">نقطة توزيع TN-C &lt; TN-S </name>
         <name lang="de">Netz TNC > TNS</name>
         <name lang="ru">Распределительный пункт TN-C >TN-S</name>

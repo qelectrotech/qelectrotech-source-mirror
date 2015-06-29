@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="34" hotspot_y="20" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0D9A866B-BB7C-453F-9C13-268E3B316B03}"/><names>
         <name lang="en">Ultrasonic module HC-SR04</name>
         <name lang="it">Sensore ultrasonico HC-SR04</name>
         <name lang="fr">Capteur HC-SR04</name>

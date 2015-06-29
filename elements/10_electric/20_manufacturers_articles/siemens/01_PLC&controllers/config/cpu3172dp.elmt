@@ -1,5 +1,5 @@
 <definition width="170" version="0.3" hotspot_x="5" hotspot_y="5" height="260" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{9B67C10A-ADA7-4F7B-BB2E-2AA486925DE2}"/><names>
         <name lang="el">6ES7317-2AJ10-0AB0</name>
         <name lang="fr">6ES7 317-2AJ10-0AB0</name>
         <name lang="it">CPU 6ES7317-2AJ10-0AB0</name>

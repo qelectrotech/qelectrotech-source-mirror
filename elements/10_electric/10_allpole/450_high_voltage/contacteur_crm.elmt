@@ -1,5 +1,5 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="120" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{7F71AE67-EC60-4099-A996-200AAB435FF3}"/><names>
         <name lang="en">Contactor CRM</name>
         <name lang="fr">Contacteur CRM</name>
         <name lang="pl">Stycznik CRM</name>

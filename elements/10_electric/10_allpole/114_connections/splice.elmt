@@ -1,5 +1,5 @@
 <definition width="30" version="0.3" hotspot_x="18" hotspot_y="5" height="20" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{EADA01D8-0429-45A6-9255-BDA504A8EF77}"/><names>
         <name lang="en">Splice</name>
         <name lang="it">Spaziatura</name>
         <name lang="fr">Epissure</name>

@@ -1,5 +1,5 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{4C5A0F6D-23CD-4C90-8B6A-4572BB1BF130}"/><names>
         <name lang="ar">حسّاس مغناطيسي NO</name>
         <name lang="el">Μαγνητικός αισθητήρας, 3 ακροδέκτες, ανοικτή επαφή</name>
         <name lang="de">Magnetischer Sensor 3-Leiter Öffner</name>

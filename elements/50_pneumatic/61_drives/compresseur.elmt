@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{9ACCA1FF-D251-4F94-8CDF-AD37D1F6D3ED}"/><names>
         <name lang="en">Compressor</name>
         <name lang="fr">Compresseur
 </name>

@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
-    <names>
+<uuid uuid="{CB3122E0-EC13-40E2-BA9C-D3D34EAF96EC}"/><names>
         <name lang="ar">قاعدة DIN ب5 نقاط توصيل 180 درجة</name>
         <name lang="en">5-pin DIN socket 180 degrees</name>
         <name lang="de">Rundstecker 5-polig 180°</name>

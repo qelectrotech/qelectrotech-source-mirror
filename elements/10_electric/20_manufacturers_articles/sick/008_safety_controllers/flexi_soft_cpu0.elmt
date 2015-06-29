@@ -1,5 +1,5 @@
 <definition width="110" version="0.3" hotspot_x="-8" hotspot_y="-6" height="150" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{1881A650-10CB-4D7B-BE0E-D06DB6DEEC43}"/><names>
         <name lang="en">MAIN UNIT CPU000</name>
         <name lang="it">UNITÀ CPU000</name>
         <name lang="fr">MAIN UNIT CPU000</name>

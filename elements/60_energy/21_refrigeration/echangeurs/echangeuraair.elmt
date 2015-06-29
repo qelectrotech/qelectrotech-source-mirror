@@ -1,5 +1,5 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="25" height="60" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{A6F6D22B-7399-4579-8F39-28EEE8435A22}"/><names>
         <name lang="ar">مُبادل هوائي</name>
         <name lang="el">Εναλλάκτης θερμότητας</name>
         <name lang="en">Air heat exchanger</name>

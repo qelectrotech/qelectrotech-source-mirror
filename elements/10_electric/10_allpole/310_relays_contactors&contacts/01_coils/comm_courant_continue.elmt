@@ -1,5 +1,5 @@
 <definition type="element" link_type="master" hotspot_x="30" hotspot_y="24" orientation="dyyy" version="0.5" width="50" height="50">
-    <names>
+<uuid uuid="{972B52CC-468F-407B-9CA5-921E4AC26896}"/><names>
         <name lang="be">Relais AC (wisselspanning)</name>
         <name lang="en">DC Relais</name>
         <name lang="fr">Relais à courant alternatif</name>

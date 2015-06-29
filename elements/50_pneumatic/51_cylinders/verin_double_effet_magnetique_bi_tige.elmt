@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="10" hotspot_y="70" height="80" type="element" orientation="dyyy">
-    <names>
+<uuid uuid="{0C45890D-DABB-4B85-9E7F-5EF05C6D6FB8}"/><names>
         <name lang="en">Double piston cylinders</name>
         <name lang="fr">Vérins à piston double</name>
         <name lang="pl">Siłownik pneumatyczny podwójny</name>

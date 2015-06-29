@@ -1,5 +1,5 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
-    <names>
+<uuid uuid="{454963EB-0DEB-4F4C-8957-52990BBABCCE}"/><names>
         <name lang="ar">بواابة OR بثلاث مداخل</name>
         <name lang="de">ODER 3 Eingänge</name>
         <name lang="ru">ИЛИ, трёхвходовый</name>
