@@ -27,7 +27,8 @@ DVEventInterface::DVEventInterface(DiagramView *dv) :
 {
 }
 
-DVEventInterface::~DVEventInterface() {};
+DVEventInterface::~DVEventInterface() {
+}
 
 bool DVEventInterface::mouseDoubleClickEvent(QMouseEvent *event) {
 	Q_UNUSED (event);
