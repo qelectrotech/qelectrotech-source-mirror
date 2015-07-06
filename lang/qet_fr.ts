@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fr">
+<TS version="2.1" language="fr">
 <context>
     <name>QETElementEditor</name>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="634"/>
-        <source>%n partie(s) sÃ©lectionnÃ©e(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <source>%n partie(s) sélectionnée(s).</source>
+        <translation>
+            <numerusform>%n partie sélectionnée.</numerusform>
+            <numerusform>%n parties sélectionnées.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -34,11 +34,11 @@
     <name>QObject</name>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="238"/>
-        <source>%n Ã©lÃ©ment(s)</source>
+        <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n élément</numerusform>
+            <numerusform>%n éléments</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -93,15 +93,6 @@
         <translation>
             <numerusform>Coller %n cellule</numerusform>
             <numerusform>Coller %n cellules</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/diagramcommands.cpp" line="1236"/>
-        <location filename="../sources/diagramcommands.cpp" line="1251"/>
-        <source>DÃ©lier %n Ã©lÃ©ment(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
 </context>
