@@ -4084,13 +4084,13 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hintergrundfarbe weiß/grau</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schalte die Hintergrundfarbe der Folien in weiß oder grau um</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="355"/>
@@ -6180,7 +6180,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/changeshapestylecommand.cpp" line="36"/>
         <source>Changer le style d&apos;une primitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Stil einer Stammfunktion ändern</translation>
     </message>
 </context>
 <context>
@@ -6383,58 +6383,58 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
         <source>Type de trait</source>
-        <translation type="unfinished">Linientyp</translation>
+        <translation>Linientyp</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="27"/>
         <source>Normal</source>
-        <translation type="unfinished">Normal</translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="32"/>
         <source>Tiret</source>
-        <translation type="unfinished">Strich</translation>
+        <translation>Strich</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="37"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Gestrichelt</translation>
+        <translation>Gestrichelt</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="42"/>
         <source>Traits et points</source>
-        <translation type="unfinished"></translation>
+        <translation>Strichpunkt</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="47"/>
         <source>Traits points points</source>
-        <translation type="unfinished">Strich-Punkt-Punkt</translation>
+        <translation>Strich-Punkt-Punkt</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="58"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Position sperren</translation>
+        <translation>Position sperren</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="65"/>
         <source>Échelle</source>
-        <translation type="unfinished">Maßstab</translation>
+        <translation>Maßstab</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="130"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="132"/>
         <source>une shape</source>
-        <translation type="unfinished">ein Shape</translation>
+        <translation>ein Shape</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="48"/>
         <source>Éditer les propriétés d&apos;une primitive </source>
-        <translation type="unfinished"></translation>
+        <translation>Stammfunktioneigenschaften bearbeiten</translation>
     </message>
 </context>
 <context>
