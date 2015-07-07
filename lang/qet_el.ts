@@ -4042,13 +4042,13 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Χρώμα παρασκηνίου λευκό/γκρι</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ενφανίζει το χρώμα παρασκηνίου της σελίδας σε λευκό ή γκρι</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
@@ -6395,53 +6395,53 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
         <source>Type de trait</source>
-        <translation type="unfinished">Τύπος γραμμής</translation>
+        <translation>Τύπος γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="27"/>
         <source>Normal</source>
-        <translation type="unfinished">Απλή</translation>
+        <translation>Απλή</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="32"/>
         <source>Tiret</source>
-        <translation type="unfinished">Διακεκομμένη</translation>
+        <translation>Διακεκομμένη</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="37"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Στίγματα</translation>
+        <translation>Στίγματα</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="42"/>
         <source>Traits et points</source>
-        <translation type="unfinished">Παύλες και τελείες</translation>
+        <translation>Παύλες και τελείες</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="47"/>
         <source>Traits points points</source>
-        <translation type="unfinished">Παύλα τελεία τελεία</translation>
+        <translation>Παύλα τελεία τελεία</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="58"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Κλείδωμα της θέσης</translation>
+        <translation>Κλείδωμα της θέσης</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="65"/>
         <source>Échelle</source>
-        <translation type="unfinished">Κλίμακα</translation>
+        <translation>Κλίμακα</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="130"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="132"/>
         <source>une shape</source>
-        <translation type="unfinished">σχήμα</translation>
+        <translation>σχήμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="48"/>
