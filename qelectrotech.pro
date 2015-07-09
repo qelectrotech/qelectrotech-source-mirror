@@ -62,6 +62,7 @@ DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 ######################################################################
 
 include(sources/PropertiesEditor/PropertiesEditor.pri)
+include(sources/QetGraphicsItemModeler/QetGraphicsItemModeler.pri)
 
 TEMPLATE = app
 DEPENDPATH += .
