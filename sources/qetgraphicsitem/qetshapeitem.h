@@ -61,10 +61,12 @@ class QetShapeItem : public QetGraphicsItem
 		virtual void editProperty();
 		virtual QString name() const;
 
-		void setP2 (QPointF P2);
+		void setP2      (QPointF P2);
+		bool setRect    (const QRectF &rect);
+		bool setPolygon (const QPolygon &polygon);
 
 			//Methods available for polygon shape
-		int  pointsCount   () const;
+		int  pointsCount  () const;
 		void setNextPoint (QPointF P);
 		void removePoints (int number = 1);
 
@@ -73,8 +75,11 @@ class QetShapeItem : public QetGraphicsItem
 
 	protected:
 		virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-		virtual void hoverEnterEvent (QGraphicsSceneHoverEvent *event);
-		virtual void hoverLeaveEvent (QGraphicsSceneHoverEvent *event);
+		virtual void hoverEnterEvent   (QGraphicsSceneHoverEvent *event);
+		virtual void hoverLeaveEvent   (QGraphicsSceneHoverEvent *event);
+		virtual void mousePressEvent   (QGraphicsSceneMouseEvent *event);
+		virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
+		virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
 
 	private:
 		void changeGraphicsItem (const ShapeType &newtype);
@@ -88,6 +93,8 @@ class QetShapeItem : public QetGraphicsItem
 		Qt::PenStyle m_shapeStyle;
 		QPointF		 m_P1, m_P2;
 		QPolygonF	 m_polygon;
-		bool         m_hovered;
+		bool         m_hovered,
+					 m_mouse_grab_handler;
+		int			 m_vector_index;
 };
 #endif // QETSHAPEITEM_H

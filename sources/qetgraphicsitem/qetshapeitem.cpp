@@ -21,7 +21,9 @@
 #include "qet.h"
 #include "shapegraphicsitempropertieswidget.h"
 #include "PropertiesEditor/propertieseditordialog.h"
+#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
+typedef QetGraphicsHandlerUtility QGHU;
 
 /**
  * @brief QetShapeItem::QetShapeItem
@@ -37,7 +39,8 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_shapeStyle(Qt::DashLine),
 	m_P1 (Diagram::snapToGrid(p1)),
 	m_P2 (Diagram::snapToGrid(p2)),
-	m_hovered(false)
+	m_hovered(false),
+	m_mouse_grab_handler(false)
 
 {
 	if (type == Polyline) m_polygon << m_P1 << m_P2;
@@ -93,6 +96,39 @@ void QetShapeItem::setP2(QPointF P2) {
 		m_P2 = P2;
 	}
 	setTransformOriginPoint(boundingRect().center());
+}
+
+/**
+ * @brief QetShapeItem::setRect
+ * Set this item geometry to rect (only available if shape is a rectangle or an ellipse)
+ * @param rect : new rect
+ * @return  : true when shape is rectangle or ellipse, else false
+ */
+bool QetShapeItem::setRect(const QRectF &rect)
+{
+	if (Q_LIKELY(m_shapeType == Rectangle || m_shapeType == Ellipse))
+	{
+		prepareGeometryChange();
+		m_P1 = rect.topLeft();
+		m_P2 = rect.bottomRight();
+		return true;
+	}
+
+	return false;
+}
+
+/**
+ * @brief QetShapeItem::setPolygon
+ * Set this item geometry to polygon (only available if shape is a polyline)
+ * @param polygon : new polygon
+ * @return true if item is polygon, else false
+ */
+bool QetShapeItem::setPolygon(const QPolygon &polygon)
+{
+	if (Q_UNLIKELY(m_shapeType != Polyline)) return false;
+	prepareGeometryChange();
+	m_polygon = polygon;
+	return true;
 }
 
 /**
@@ -175,8 +211,26 @@ QPainterPath QetShapeItem::shape() const {
 	QPainterPathStroker pps;
 	pps.setWidth(10);
 	pps.setJoinStyle(Qt::RoundJoin);
+	path = pps.createStroke(path);
 
-	return (pps.createStroke(path));
+	if (isSelected())
+	{
+		QVector <QPointF> vector;
+
+		if (m_shapeType == Line)
+			vector << m_P1 << m_P2;
+		else if (m_shapeType == Rectangle || m_shapeType == Ellipse) {
+			QRectF rect (m_P1, m_P2);
+			vector << rect.topLeft() << rect.topRight() << rect.bottomRight() << rect.bottomLeft();
+		}
+		else
+			vector = m_polygon;
+
+		foreach(QRectF r, QGHU::handlerRect(vector))
+			path.addRect(r);
+	}
+
+	return (path);
 }
 
 /**
@@ -206,8 +260,9 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 	pen.setWidthF(1);
 
-
-	if (m_hovered) {
+		//Draw hovered shadow
+	if (m_hovered)
+	{
 		painter->save();
 		QColor color(Qt::darkBlue);
 		color.setAlpha(25);
@@ -216,26 +271,54 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		painter -> drawPath (shape());
 		painter -> restore  ();
 	}
-	else if (isSelected()) {
+		//Draw red if selected
+	if (isSelected())
 		pen.setColor(Qt::red);
-	}
 
 	painter -> setPen(pen);
 
-	switch (m_shapeType) {
+		//vector use to draw handler if needed
+	QVector <QPointF> point_vector;
+
+		//Draw the shape
+	switch (m_shapeType)
+	{
 		case Line:
 			painter->drawLine(QLineF(m_P1, m_P2));
+			if (isSelected())
+				point_vector << m_P1 << m_P2;
 			break;
+
 		case Rectangle:
 			painter->drawRect(QRectF(m_P1, m_P2));
+			if (isSelected())
+			{
+				QRectF rect (m_P1, m_P2);
+				point_vector << rect.topLeft() << rect.topRight() << rect.bottomRight() << rect.bottomLeft();
+			}
 			break;
+
 		case Ellipse:
 			painter->drawEllipse(QRectF(m_P1, m_P2));
+			if (isSelected())
+			{
+				QRectF rect (m_P1, m_P2);
+				point_vector << rect.topLeft() << rect.topRight() << rect.bottomRight() << rect.bottomLeft();
+			}
 			break;
+
 		case Polyline:
+		{
 			painter->drawPolyline(m_polygon);
+			point_vector = m_polygon;
+		}
 			break;
 	}
+
+		//Draw handler if shape is selected
+	if (isSelected())
+		foreach(QPointF point, point_vector)
+			painter->drawPixmap(QGHU::posForHandler(point), QGHU::pixmapHandler());
 }
 
 /**
@@ -260,6 +343,119 @@ void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
 
 	m_hovered = false;
 	update();
+}
+
+/**
+ * @brief QetShapeItem::mousePressEvent
+ * Handle mouse press event
+ * @param event
+ */
+void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+		//Shape is selected, we see if user click in a handler
+	if (isSelected())
+	{
+		QVector <QPointF> vector;
+		switch (m_shapeType)
+		{
+			case Line:
+				vector << m_P1 << m_P2;
+				break;
+
+			case Rectangle: {
+				QRectF rect (m_P1, m_P2);
+				vector << rect.topLeft() << rect.topRight() << rect.bottomLeft() << rect.bottomRight();
+			}
+				break;
+
+			case Ellipse: {
+				QRectF rect (m_P1, m_P2);
+				vector << rect.topLeft() << rect.topRight() << rect.bottomLeft() << rect.bottomRight();
+			}
+				break;
+
+			case Polyline:
+				vector = m_polygon;
+				break;
+		}
+
+		m_vector_index = QGHU::pointIsHoverHandler(event->pos(), vector);
+		if (m_vector_index != -1)
+		{
+				//User click on an handler
+			m_mouse_grab_handler = true;
+			return;
+		}
+	}
+
+	QetGraphicsItem::mousePressEvent(event);
+}
+
+/**
+ * @brief QetShapeItem::mouseMoveEvent
+ * Handle move event
+ * @param event
+ */
+void QetShapeItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_mouse_grab_handler)
+	{
+		QPointF new_pos = event->pos();
+		if (event->modifiers() != Qt::ControlModifier)
+			new_pos = mapFromScene(Diagram::snapToGrid(event->scenePos()));
+
+		switch (m_shapeType)
+		{
+			case Line: {
+				prepareGeometryChange();
+				m_vector_index == 0 ? m_P1 = new_pos : m_P2 = new_pos;
+			}
+				break;
+
+			case Rectangle: {
+				QRectF rect(m_P1, m_P2);
+				if (m_vector_index == 0) rect.setTopLeft(new_pos);
+				else if (m_vector_index == 1) rect.setTopRight(new_pos);
+				else if (m_vector_index == 2) rect.setBottomLeft(new_pos);
+				else if (m_vector_index == 3) rect.setBottomRight(new_pos);
+
+				setRect(rect);
+			}
+				break;
+
+			case Ellipse: {
+				QRectF rect(m_P1, m_P2);
+				if (m_vector_index == 0) rect.setTopLeft(new_pos);
+				else if (m_vector_index == 1) rect.setTopRight(new_pos);
+				else if (m_vector_index == 2) rect.setBottomLeft(new_pos);
+				else if (m_vector_index == 3) rect.setBottomRight(new_pos);
+
+				setRect(rect);
+			}
+				break;
+
+			case Polyline: {
+				prepareGeometryChange();
+				m_polygon.replace(m_vector_index, new_pos);
+			}
+				break;
+		}	//End switch
+
+		return;
+	}
+
+	QetGraphicsItem::mouseMoveEvent(event);
+}
+
+/**
+ * @brief QetShapeItem::mouseReleaseEvent
+ * Handle mouse release event
+ * @param event
+ */
+void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	m_mouse_grab_handler = false;
+	QetGraphicsItem::mouseReleaseEvent(event);
 }
 
 /**
@@ -368,22 +564,14 @@ void QetShapeItem::editProperty()
  * @brief QetShapeItem::name
  * @return the name of the curent shape.
  */
-QString QetShapeItem::name() const {
-	switch (m_shapeType) {
-		case Line:
-			return tr("une ligne");
-			break;
-		case Rectangle:
-			return tr("un rectangle");
-			break;
-		case Ellipse:
-			return tr("une éllipse");
-			break;
-		case Polyline:
-			return tr("une polyligne");
-			break;
-		default:
-			return tr("une shape");
-			break;
+QString QetShapeItem::name() const
+{
+	switch (m_shapeType)
+	{
+		case Line:	    return tr("une ligne");	    break;
+		case Rectangle:	return tr("un rectangle");	break;
+		case Ellipse:	return tr("une éllipse");	break;
+		case Polyline:	return tr("une polyligne");	break;
+		default:	    return tr("une shape");	    break;
 	}
 }
