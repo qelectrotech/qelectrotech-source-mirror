@@ -50,7 +50,6 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 		virtual bool setLiveEdit(bool live_edit);
 
 	private slots:
-		void on_m_scale_slider_valueChanged(int value);
 		void on_m_lock_pos_cb_clicked();
 
 	private:
@@ -58,7 +57,6 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 		QetShapeItem *m_shape;
 
 		Qt::PenStyle m_old_pen_style;
-		qreal m_old_scale;
 };
 
 #endif // SHAPEGRAPHICSITEMPROPERTIESWIDGET_H

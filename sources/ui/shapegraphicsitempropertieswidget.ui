@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>175</width>
-    <height>174</height>
+    <width>195</width>
+    <height>183</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,83 +15,50 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QGroupBox" name="groupBox">
-     <property name="title">
-      <string>Type de trait</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QComboBox" name="m_style_cb">
-        <item>
-         <property name="text">
-          <string>Normal</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Tiret</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Pointillé</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Traits et points</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Traits points points</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-     </layout>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Type de trait</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="m_style_cb">
+       <item>
+        <property name="text">
+         <string>Normal</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Tiret</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Pointillé</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Traits et points</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Traits points points</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QCheckBox" name="m_lock_pos_cb">
      <property name="text">
       <string>Verrouiller la position</string>
      </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="groupBox_2">
-     <property name="title">
-      <string>Échelle</string>
-     </property>
-     <property name="checkable">
-      <bool>false</bool>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QSlider" name="m_scale_slider">
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>200</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="m_scale_sb">
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>200</number>
-        </property>
-       </widget>
-      </item>
-     </layout>
     </widget>
    </item>
    <item>
@@ -110,38 +77,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>m_scale_slider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>m_scale_sb</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>174</x>
-     <y>234</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>355</x>
-     <y>234</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_scale_sb</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>m_scale_slider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>355</x>
-     <y>234</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>174</x>
-     <y>234</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

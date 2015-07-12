@@ -64,19 +64,6 @@ void QetShapeItem::setStyle(Qt::PenStyle newStyle)
 }
 
 /**
- * @brief QetShapeItem::scale
- * Scale this item by (factor / 100 ).
- * @param factor
- */
-void QetShapeItem::previewScale(int factor) {
-	if (factor >= 1 && factor <= 200) {
-		qreal new_scale = factor;
-		new_scale /= 100;
-		setScale(new_scale);
-	}
-}
-
-/**
  * @brief QetShapeItem::setP2
  * Set the second point of this item.
  * If this item is a polyline,

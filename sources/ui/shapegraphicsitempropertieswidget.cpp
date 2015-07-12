@@ -19,7 +19,6 @@
 #include "ui_shapegraphicsitempropertieswidget.h"
 #include "qetshapeitem.h"
 #include "diagram.h"
-#include "itemresizercommand.h"
 #include "changeshapestylecommand.h"
 
 /**
@@ -57,17 +56,12 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 	if (shape == m_shape) return;
 
 	if (m_shape)
-	{
-		disconnect(m_shape, &QGraphicsObject::scaleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 		disconnect(m_shape, &QetShapeItem::styleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
-	}
 
 	m_shape = shape;
-	connect(m_shape, &QGraphicsObject::scaleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 	connect(m_shape, &QetShapeItem::styleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 
 	m_old_pen_style = m_shape->penStyle();
-	m_old_scale = m_shape->scale();
 	updateUi();
 }
 
@@ -79,23 +73,16 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 void ShapeGraphicsItemPropertiesWidget::apply()
 {
 	if (m_live_edit)
-	{
-		disconnect(m_shape, &QGraphicsObject::scaleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 		disconnect(m_shape, &QetShapeItem::styleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
-	}
 
 	if (m_shape->diagram())
 		if (QUndoCommand *undo = associatedUndo())
 			m_shape->diagram()->undoStack().push(undo);
 
 	m_old_pen_style = m_shape->penStyle();
-	m_old_scale = m_shape->scale();
 
 	if (m_live_edit)
-	{
-		connect(m_shape, &QGraphicsObject::scaleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 		connect(m_shape, &QetShapeItem::styleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
-	}
 }
 
 /**
@@ -105,34 +92,21 @@ void ShapeGraphicsItemPropertiesWidget::apply()
 void ShapeGraphicsItemPropertiesWidget::reset()
 {
 	m_shape->setStyle(m_old_pen_style);
-	m_shape->setScale(m_old_scale);
 	updateUi();
 }
 
 /**
  * @brief ShapeGraphicsItemPropertiesWidget::associatedUndo
  * @return an undo command that represent the change edited by this widget.
- * The returned undo command can be a ChangeShapeStyleCommand, ItemResizerCommand or
- * a ChangeShapeStyleCommand with a ItemResizerCommand as child.
+ * The returned undo command is a ChangeShapeStyleCommand.
  * If there isn't change, return nullptr
  */
 QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 {
-	QUndoCommand *undo = nullptr;
 	Qt::PenStyle new_style = Qt::PenStyle(ui->m_style_cb->currentIndex() + 1);
-	if (new_style != m_old_pen_style) undo = new ChangeShapeStyleCommand(m_shape, m_old_pen_style, new_style);
+	if (new_style != m_old_pen_style) return (new ChangeShapeStyleCommand(m_shape, m_old_pen_style, new_style));
 
-	qreal value = ui->m_scale_slider->value();
-	value /= 100;
-	if (value != m_old_scale)
-	{
-		if (undo)
-			new ItemResizerCommand(m_shape, m_old_scale, value, tr("une shape"), undo);
-		else
-			undo = new ItemResizerCommand(m_shape, m_old_scale, value, tr("une shape"));
-	}
-
-	return undo;
+	return nullptr;
 }
 
 /**
@@ -142,7 +116,6 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 {
 	ui->m_style_cb->setCurrentIndex(static_cast<int>(m_shape->penStyle()) - 1);
 	ui->m_lock_pos_cb->setChecked(!m_shape->isMovable());
-	ui->m_scale_slider->setValue(m_shape->scale() * 100);
 }
 
 /**
@@ -156,24 +129,11 @@ bool ShapeGraphicsItemPropertiesWidget::setLiveEdit(bool live_edit)
 	m_live_edit = live_edit;
 
 	if (m_live_edit)
-	{
-		connect (ui->m_scale_slider, &QSlider::sliderReleased, this, &ShapeGraphicsItemPropertiesWidget::apply);
-		connect (ui->m_scale_sb, &QSpinBox::editingFinished, this, &ShapeGraphicsItemPropertiesWidget::apply);
 		connect (ui->m_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
-	}
 	else
-	{
-		disconnect (ui->m_scale_slider, &QSlider::sliderReleased, this, &ShapeGraphicsItemPropertiesWidget::apply);
-		disconnect (ui->m_scale_sb, &QSpinBox::editingFinished, this, &ShapeGraphicsItemPropertiesWidget::apply);
 		disconnect (ui->m_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
-	}
 
 	return true;
-}
-
-void ShapeGraphicsItemPropertiesWidget::on_m_scale_slider_valueChanged(int value) {
-	qreal scale = value;
-	m_shape->setScale(scale / 100);
 }
 
 void ShapeGraphicsItemPropertiesWidget::on_m_lock_pos_cb_clicked() {

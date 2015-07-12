@@ -84,9 +84,6 @@ class QetShapeItem : public QetGraphicsItem
 	private:
 		void changeGraphicsItem (const ShapeType &newtype);
 
-	private slots:
-		void previewScale(int factor);
-
 		///ATTRIBUTES
 	private:
 		ShapeType    m_shapeType;
