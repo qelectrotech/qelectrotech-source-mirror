@@ -22,6 +22,7 @@
 
 class QDomElement;
 class QDomDocument;
+class QetShapeGeometryCommand;
 
 /**
  * @brief The QetShapeItem class
@@ -53,6 +54,7 @@ class QetShapeItem : public QetGraphicsItem
 			///METHODS
 		void setStyle(Qt::PenStyle);
 		Qt::PenStyle penStyle() const { return m_shapeStyle;}
+		ShapeType shapeType() const {return m_shapeType;}
 
 		virtual bool	    fromXml (const QDomElement &);
 		virtual QDomElement toXml	(QDomDocument &document) const;
@@ -61,9 +63,10 @@ class QetShapeItem : public QetGraphicsItem
 		virtual void editProperty();
 		virtual QString name() const;
 
-		void setP2      (QPointF P2);
+		void setP2      (const QPointF &P2);
+		void setLine    (const QLineF &line);
 		bool setRect    (const QRectF &rect);
-		bool setPolygon (const QPolygon &polygon);
+		bool setPolygon (const QPolygonF &polygon);
 
 			//Methods available for polygon shape
 		int  pointsCount  () const;
@@ -93,5 +96,6 @@ class QetShapeItem : public QetGraphicsItem
 		bool         m_hovered,
 					 m_mouse_grab_handler;
 		int			 m_vector_index;
+		QetShapeGeometryCommand *m_undo_command;
 };
 #endif // QETSHAPEITEM_H

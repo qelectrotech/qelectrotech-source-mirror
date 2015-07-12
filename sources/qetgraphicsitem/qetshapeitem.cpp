@@ -22,6 +22,7 @@
 #include "shapegraphicsitempropertieswidget.h"
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
+#include "qetshapegeometrycommand.h"
 
 typedef QetGraphicsHandlerUtility QGHU;
 
@@ -40,7 +41,8 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_P1 (Diagram::snapToGrid(p1)),
 	m_P2 (Diagram::snapToGrid(p2)),
 	m_hovered(false),
-	m_mouse_grab_handler(false)
+	m_mouse_grab_handler(false),
+	m_undo_command(nullptr)
 
 {
 	if (type == Polyline) m_polygon << m_P1 << m_P2;
@@ -49,7 +51,9 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 }
 
 QetShapeItem::~QetShapeItem()
-{}
+{
+	if (m_undo_command) delete m_undo_command;
+}
 
 /**
  * @brief QetShapeItem::setStyle
@@ -70,19 +74,34 @@ void QetShapeItem::setStyle(Qt::PenStyle newStyle)
  * the last point of the polyline is replaced by P2.
  * @param P2
  */
-void QetShapeItem::setP2(QPointF P2) {
-	P2 = Diagram::snapToGrid(P2);
-
-	if (m_shapeType == Polyline) {
+void QetShapeItem::setP2(const QPointF &P2)
+{
+	if (m_shapeType == Polyline && m_polygon.last() != P2)
+	{
 		prepareGeometryChange();
 		m_polygon.replace(m_polygon.size()-1, P2);
 	}
-	else {
-		if (P2 == m_P2) return;
+	else if (P2 != m_P2)
+	{
 		prepareGeometryChange();
 		m_P2 = P2;
 	}
 	setTransformOriginPoint(boundingRect().center());
+}
+
+/**
+ * @brief QetShapeItem::setLine
+ * Set item geometry to line (only available for line shape)
+ * @param line
+ */
+void QetShapeItem::setLine(const QLineF &line)
+{
+	if (Q_LIKELY(m_shapeType == Line))
+	{
+		prepareGeometryChange();
+		m_P1 = line.p1();
+		m_P2 = line.p2();
+	}
 }
 
 /**
@@ -110,7 +129,7 @@ bool QetShapeItem::setRect(const QRectF &rect)
  * @param polygon : new polygon
  * @return true if item is polygon, else false
  */
-bool QetShapeItem::setPolygon(const QPolygon &polygon)
+bool QetShapeItem::setPolygon(const QPolygonF &polygon)
 {
 	if (Q_UNLIKELY(m_shapeType != Polyline)) return false;
 	prepareGeometryChange();
@@ -173,26 +192,18 @@ QRectF QetShapeItem::boundingRect() const {
  * @brief QetShapeItem::shape
  * @return the shape of this item
  */
-QPainterPath QetShapeItem::shape() const {
+QPainterPath QetShapeItem::shape() const
+{
 	QPainterPath path;
 
-	switch (m_shapeType) {
-		case Line:
-			path.moveTo(m_P1);
-			path.lineTo(m_P2);
-			break;
-		case Rectangle:
-			path.addRect(QRectF(m_P1, m_P2));
-			break;
-		case Ellipse:
-			path.addEllipse(QRectF(m_P1, m_P2));
-			break;
-		case Polyline:
-			path.addPolygon(m_polygon);
-			break;
-		default:
-			Q_ASSERT(false);
-			break;
+	switch (m_shapeType)
+	{
+		case Line:      path.moveTo(m_P1);
+						path.lineTo(m_P2);                   break;
+		case Rectangle: path.addRect(QRectF(m_P1, m_P2));    break;
+		case Ellipse:   path.addEllipse(QRectF(m_P1, m_P2)); break;
+		case Polyline:  path.addPolygon(m_polygon);          break;
+		default:        Q_ASSERT(false);                     break;
 	}
 
 	QPainterPathStroker pps;
@@ -371,6 +382,14 @@ void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		{
 				//User click on an handler
 			m_mouse_grab_handler = true;
+
+			switch (m_shapeType)
+			{
+				case Line:      m_undo_command = new QetShapeGeometryCommand(this, QLineF(m_P1, m_P2)); break;
+				case Rectangle: m_undo_command = new QetShapeGeometryCommand(this, QRectF(m_P1, m_P2)); break;
+				case Ellipse:   m_undo_command = new QetShapeGeometryCommand(this, QRectF(m_P1, m_P2)); break;
+				case Polyline:  m_undo_command = new QetShapeGeometryCommand(this, m_polygon);          break;
+			}
 			return;
 		}
 	}
@@ -441,7 +460,26 @@ void QetShapeItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	m_mouse_grab_handler = false;
+	if (m_mouse_grab_handler)
+	{
+		m_mouse_grab_handler = false;
+		switch(m_shapeType)
+		{
+			case Line:      m_undo_command->setNewLine(QLineF(m_P1, m_P2)); break;
+			case Rectangle: m_undo_command->setNewRect(QRectF(m_P1, m_P2)); break;
+			case Ellipse:   m_undo_command->setNewRect(QRectF(m_P1, m_P2)); break;
+			case Polyline : m_undo_command->setNewPolygon(m_polygon);       break;
+		}
+
+		if (diagram())
+		{
+			diagram()->undoStack().push(m_undo_command);
+			m_undo_command = nullptr;
+		}
+		else
+			delete m_undo_command;
+	}
+
 	QetGraphicsItem::mouseReleaseEvent(event);
 }
 
