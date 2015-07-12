@@ -1,0 +1,21 @@
+<definition height="50" version="0.5" width="50" link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="25" type="element">
+    <uuid uuid="{fc4be2e6-1797-4b80-a3bf-076e09d98f6c}"/>
+    <names>
+        <name lang="cs">Tlačítko</name>
+        <name lang="it">Pulsante</name>
+        <name lang="el">Μπουτόν</name>
+        <name lang="ar">مفتاح ضاغط</name>
+        <name lang="pl">Przycisk</name>
+        <name lang="en">Pushbutton</name>
+        <name lang="fr">Bouton poussoir jaune</name>
+        <name lang="nl">Drukknop</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle diameter="44" style="line-style:normal;line-weight:normal;filling:yellow;color:black" antialias="true" x="-22" y="-22"/>
+        <circle diameter="28" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" x="-14" y="-14"/>
+        <circle diameter="40" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" x="-20" y="-20"/>
+        <input rotate="true" size="9" x="-22" y="34" text="_" tagg="label"/>
+    </description>
+</definition>

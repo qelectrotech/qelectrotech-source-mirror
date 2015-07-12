@@ -1,0 +1,32 @@
+<definition height="150" version="0.5" width="150" link_type="simple" hotspot_x="74" orientation="dyyy" hotspot_y="66" type="element">
+    <uuid uuid="{e60ff91c-125f-4aec-a3dc-db816bb5f6a3}"/>
+    <names>
+        <name lang="cs">Štítek - nouzové zastavení - en</name>
+        <name lang="it">Etichetta - Emergency stop (en)</name>
+        <name lang="ar">توقيف طارئ</name>
+        <name lang="pl">Etykieta - Zatrzymanie awaryjne - en</name>
+        <name lang="en">Label - Emergency stopping - en</name>
+        <name lang="fr">Etiquette - Arrêt d'urgence - en</name>
+        <name lang="nl">Label Noodstop (en)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle diameter="135" style="line-style:normal;line-weight:normal;filling:yellow;color:black" antialias="true" x="-67.5" y="-57.5"/>
+        <circle diameter="80" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="true" x="-40" y="-30"/>
+        <text size="16" rotation="292" x="-46.0817" y="0.5649" text="M"/>
+        <text size="16" rotation="322" x="31.101" y="62.145" text="P"/>
+        <text size="16" rotation="-14" x="6.8087" y="70.164" text="O"/>
+        <text size="16" rotation="14" x="-19.8681" y="67.648" text="T"/>
+        <text size="16" rotation="37" x="-41.5252" y="54.376" text="S"/>
+        <text size="16" rotation="68" x="39.981" y="-14.2649" text="C"/>
+        <text size="16" rotation="89" x="46.02" y="1.3489" text="Y"/>
+        <text size="16" rotation="269" x="-46.0205" y="17.6511" text="E"/>
+        <text size="16" rotation="45" x="28.361" y="-27.468" text="N"/>
+        <text size="16" rotation="24" x="12.7788" y="-35.3224" text="E"/>
+        <text size="16" x="-7" y="-37" text="G"/>
+        <text size="16" rotation="337" x="-24.6413" y="-30.2965" text="R"/>
+        <text size="16" rotation="315" x="-38.1508" y="-17.565" text="E"/>
+        <input rotate="true" size="9" x="-50" y="100" text="_" tagg="label"/>
+    </description>
+</definition>

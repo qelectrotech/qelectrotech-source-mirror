@@ -1,0 +1,21 @@
+<definition height="50" version="0.5" width="50" link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="25" type="element">
+    <uuid uuid="{3467c4df-d0c0-4ac4-8cb3-0b363e487131}"/>
+    <names>
+        <name lang="cs">Světelný signál</name>
+        <name lang="it">Lampada spia</name>
+        <name lang="el">Λάμπα</name>
+        <name lang="ar">مُؤشّر ضوئي</name>
+        <name lang="pl">Lampka sygnalizacyjna</name>
+        <name lang="en">Light</name>
+        <name lang="fr">Voyant jaune</name>
+        <name lang="nl">Lamp</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle diameter="44" style="line-style:normal;line-weight:normal;filling:yellow;color:black" antialias="true" x="-22" y="-22"/>
+        <arc height="28" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" width="28" angle="-270" antialias="true" x="-14" y="-14"/>
+        <circle diameter="40" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" x="-20" y="-20"/>
+        <input rotate="true" size="9" x="-18" y="44" text="_" tagg="label"/>
+    </description>
+</definition>
