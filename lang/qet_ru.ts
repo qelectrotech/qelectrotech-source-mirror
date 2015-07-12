@@ -3587,13 +3587,13 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Цвет фона белый / серый</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Показывать фон страницы белым или серым</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
@@ -6248,7 +6248,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/changeshapestylecommand.cpp" line="36"/>
         <source>Changer le style d&apos;une primitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменить стиль примитива</translation>
     </message>
 </context>
 <context>
@@ -6456,58 +6456,58 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Форма</translation>
+        <translation>Форма</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
         <source>Type de trait</source>
-        <translation type="unfinished">Стиль линии</translation>
+        <translation>Стиль линии</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="27"/>
         <source>Normal</source>
-        <translation type="unfinished">Обычный</translation>
+        <translation>Обычный</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="32"/>
         <source>Tiret</source>
-        <translation type="unfinished">Пунктир</translation>
+        <translation>Пунктир</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="37"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Точками</translation>
+        <translation>Точками</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="42"/>
         <source>Traits et points</source>
-        <translation type="unfinished">Точки и тире</translation>
+        <translation>Точки и тире</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="47"/>
         <source>Traits points points</source>
-        <translation type="unfinished">Тире-точка-точка</translation>
+        <translation>Тире-точка-точка</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="58"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Закрепить положение</translation>
+        <translation>Закрепить положение</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="65"/>
         <source>Échelle</source>
-        <translation type="unfinished">Масштаб</translation>
+        <translation>Масштаб</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="130"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="132"/>
         <source>une shape</source>
-        <translation type="unfinished">фигура</translation>
+        <translation>фигура</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="48"/>
         <source>Éditer les propriétés d&apos;une primitive </source>
-        <translation type="unfinished"></translation>
+        <translation>Редактировать свойства примитива</translation>
     </message>
 </context>
 <context>
