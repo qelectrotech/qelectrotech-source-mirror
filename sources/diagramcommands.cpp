@@ -74,140 +74,101 @@ DeleteElementsCommand::~DeleteElementsCommand() {
 	diagram -> qgiManager().release(removed_content.items(DiagramContent::All));
 }
 
-/// annule les suppressions
-void DeleteElementsCommand::undo() {
+/**
+ * @brief DeleteElementsCommand::undo
+ * Undo this command
+ */
+void DeleteElementsCommand::undo()
+{
 	diagram -> showMe();
 
-	foreach(Element *e, removed_content.elements) {
-		diagram -> addItem(e);
-	}
+	foreach(QGraphicsItem *item, removed_content.items())
+		diagram->addItem(item);
 
-	//We relink element after every element was added to diagram
-	foreach(Element *e, removed_content.elements) {
-		foreach (Element *elmt, m_link_hash[e]) {
+		//We relink element after every element was added to diagram
+	foreach(Element *e, removed_content.elements)
+		foreach (Element *elmt, m_link_hash[e])
 				e -> linkToElement(elmt);
-		}
-	}
-	
-	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
-		diagram -> addItem(c);
-	}
-	
-	foreach(IndependentTextItem *t, removed_content.textFields) {
-		diagram -> addItem(t);
-	}
-
-	foreach(DiagramImageItem *dii, removed_content.images) {
-		diagram -> addItem(dii);
-	}
-
-	foreach(QetShapeItem *dsi, removed_content.shapes) {
-		diagram -> addItem(dsi);
-	}
 }
 
 /**
  * @brief DeleteElementsCommand::redo
  * Redo the delete command
  */
-void DeleteElementsCommand::redo() {
+void DeleteElementsCommand::redo()
+{
 	diagram -> showMe();
 
-	// Remove Conductor
-	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
-		diagram -> removeItem(c);
-
-		//If option one text per folio is enable, and the text item of
-		//current conductor is visible (that mean the conductor have the single displayed text)
-		//We call adjustTextItemPosition to other conductor at the same potential to keep
-		//a visible text on this potential.
-		if (diagram -> defaultConductorProperties.m_one_text_per_folio && c -> textItem() -> isVisible()) {
+	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor))
+	{
+			//If option one text per folio is enable, and the text item of
+			//current conductor is visible (that mean the conductor have the single displayed text)
+			//We call adjustTextItemPosition to other conductor at the same potential to keep
+			//a visible text on this potential.
+		if (diagram -> defaultConductorProperties.m_one_text_per_folio && c -> textItem() -> isVisible())
+		{
 			QList <Conductor *> conductor_list;
 			conductor_list << c -> relatedPotentialConductors(false).toList();
-			if (conductor_list.count()) {
+			if (conductor_list.count())
 				conductor_list.first() -> calculateTextItemPosition();
-			}
 		}
 	}
 	
-	// Remove elements
-	foreach(Element *e, removed_content.elements) {
-		//Get linked element, for relink it at undo
+	foreach(Element *e, removed_content.elements)
+	{
+			//Get linked element, for relink it at undo
 		if (!e->linkedElements().isEmpty())
 			m_link_hash.insert(e, e->linkedElements());
-		diagram -> removeItem(e);
-	}
-	
-	// Remove texts
-	foreach(IndependentTextItem *t, removed_content.textFields) {
-		diagram -> removeItem(t);
 	}
 
-	// Remove images
-	foreach(DiagramImageItem *dii, removed_content.images) {
-		diagram -> removeItem(dii);
-	}
-
-	// Remove shapes
-	foreach(QetShapeItem *dsi, removed_content.shapes) {
-		diagram -> removeItem(dsi);
-	}
+	foreach(QGraphicsItem *item, removed_content.items())
+		diagram->removeItem(item);
 }
 
 /**
-	Constructeur
-	@param dia Schema sur lequel on colle les elements et conducteurs
-	@param c Contenu a coller sur le schema
-	@param parent QUndoCommand parent
-*/
-PasteDiagramCommand::PasteDiagramCommand(
-	Diagram *dia,
-	const DiagramContent &c,
-	QUndoCommand *parent
-) :
+ * @brief PasteDiagramCommand::PasteDiagramCommand
+ * Constructor
+ * @param dia : diagram where we must to paste
+ * @param c : content to past
+ * @param parent : parent undo command
+ */
+PasteDiagramCommand::PasteDiagramCommand( Diagram *dia, const DiagramContent &c, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	content(c),
 	diagram(dia),
 	filter(DiagramContent::Elements|DiagramContent::TextFields|DiagramContent::Images|DiagramContent::ConductorsToMove | DiagramContent::Shapes),
 	first_redo(true)
 {
-	
-	setText(
-		QString(
-			QObject::tr(
-				"coller %1",
-				"undo caption - %1 is a sentence listing the content to paste"
-			).arg(content.sentence(filter))
-		)
-	);
+	setText(QObject::tr("coller %1", "undo caption - %1 is a sentence listing the content to paste").arg(content.sentence(filter)));
 	diagram -> qgiManager().manage(content.items(filter));
 }
 
-/// Destructeur
+/**
+ * @brief PasteDiagramCommand::~PasteDiagramCommand
+ * Destructor
+ */
 PasteDiagramCommand::~PasteDiagramCommand() {
 	diagram -> qgiManager().release(content.items(filter));
 }
 
-/// annule le coller
-void PasteDiagramCommand::undo() {
+/**
+ * @brief PasteDiagramCommand::undo
+ * Undo this command
+ */
+void PasteDiagramCommand::undo()
+{
 	diagram -> showMe();
-	// remove the conductors
-	foreach(Conductor *c, content.conductorsToMove) diagram -> removeItem(c);
-	
-	// remove the elements
-	foreach(Element *e, content.elements) diagram -> removeItem(e);
-	
-	// remove the texts
-	foreach(IndependentTextItem *t, content.textFields) diagram -> removeItem(t);
 
-	// remove the images and shapes
-	foreach(QGraphicsItem *qgi, content.items(DiagramContent::Images | DiagramContent::Shapes)) diagram -> removeItem(qgi);
+	foreach(QGraphicsItem *item, content.items(filter))
+		diagram->removeItem(item);
 }
 
 /**
  * @brief PasteDiagramCommand::redo
+ * Redo this commnand
  */
-void PasteDiagramCommand::redo() {
+void PasteDiagramCommand::redo()
+{
 	diagram -> showMe();
 
 	if (first_redo) {
@@ -240,18 +201,10 @@ void PasteDiagramCommand::redo() {
 			c -> setProperties(cp);
 		}
 	}
-	else {
-		// paste the elements
-		foreach(Element *e, content.elements) diagram -> addItem(e);
-		
-		// paste the conductors
-		foreach(Conductor *c, content.conductorsToMove) diagram -> addItem(c);
-		
-		// paste the texts
-		foreach(IndependentTextItem *t, content.textFields) diagram -> addItem(t);
-
-		// paste the images and shapes
-		foreach(QGraphicsItem *qgi, content.items(DiagramContent::Images | DiagramContent::Shapes)) diagram -> addItem(qgi);
+	else
+	{
+		foreach (QGraphicsItem *item, content.items(filter))
+			diagram->addItem(item);
 	}
 	foreach (QGraphicsItem *qgi, content.items()) qgi -> setSelected(true);
 }

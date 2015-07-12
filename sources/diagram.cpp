@@ -861,131 +861,78 @@ void Diagram::initElementsLinks() {
 
 /**
  * @brief Diagram::addItem
- * Add element to diagram
- * @param element
- */
-void Diagram::addItem(Element *element) {
-	if (!element || isReadOnly()) return;
-
-	if (element -> scene() != this)
-		QGraphicsScene::addItem(element);
-	foreach(ElementTextItem *eti, element -> texts()) {
-		connect(
-			eti,
-			SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
-			this,
-			SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
-		);
-	}
-}
-
-/**
- * @brief Diagram::addItem
- * Add conductor to scene.
- * @param conductor
- */
-void Diagram::addItem(Conductor *conductor) {
-	if (!conductor || isReadOnly()) return;
-	
-	if (conductor -> scene() != this) {
-		QGraphicsScene::addItem(conductor);
-		conductor -> terminal1 -> addConductor(conductor);
-		conductor -> terminal2 -> addConductor(conductor);
-		conductor -> calculateTextItemPosition();
-	}
-}
-
-/**
- * @brief Diagram::addItem
- * Add text item to diagram
- * @param iti
- */
-void Diagram::addItem(IndependentTextItem *iti) {
-	if (!iti || isReadOnly()) return;
-	
-	if (iti -> scene() != this)
-		QGraphicsScene::addItem(iti);
-	
-	connect(
-		iti,
-		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
-		this,
-		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
-	);
-}
-
-/**
- * @brief Diagram::addItem
- * Generique method to add item to scene
+ * Réimplemented from QGraphicsScene::addItem(QGraphicsItem *item)
+ * Do some specific operation if item need it (for exemple an element)
  * @param item
  */
-void Diagram::addItem(QGraphicsItem *item) {
+void Diagram::addItem(QGraphicsItem *item)
+{
+	if (!item || isReadOnly() || item->scene() == this) return;
+	QGraphicsScene::addItem(item);
+
+	switch (item->type())
+	{
+		case Element::Type:
+		{
+			const Element *elmt = static_cast<const Element*>(item);
+			foreach(ElementTextItem *eti, elmt->texts())
+				connect (eti, &ElementTextItem::diagramTextChanged, this, &Diagram::diagramTextChanged);
+		}
+			break;
+
+		case Conductor::Type:
+		{
+			Conductor *conductor = static_cast<Conductor *>(item);
+			conductor->terminal1->addConductor(conductor);
+			conductor->terminal2->addConductor(conductor);
+			conductor->calculateTextItemPosition();
+		}
+			break;
+
+		case IndependentTextItem::Type:
+		{
+			const IndependentTextItem *text = static_cast<const IndependentTextItem *>(item);
+			connect(text, &IndependentTextItem::diagramTextChanged, this, &Diagram::diagramTextChanged);
+		}
+	}
+}
+
+/**
+ * @brief Diagram::removeItem
+ * Réimplemented from QGraphicsScene::removeItem(QGraphicsItem *item)
+ * Do some specific operation if item need it (for exemple an element)
+ * @param item
+ */
+void Diagram::removeItem(QGraphicsItem *item)
+{
 	if (!item || isReadOnly()) return;
-	if (item -> scene() != this)
-		QGraphicsScene::addItem(item);
-}
 
-/**
- * @brief Diagram::removeItem
- * Remove an element from the scene
- * @param element
- */
-void Diagram::removeItem(Element *element) {
-	if (!element || isReadOnly()) return;
+	switch (item->type())
+	{
+		case Element::Type:
+		{
+			Element *elmt = static_cast<Element *>(item);
+			elmt->unlinkAllElements();
+			foreach(ElementTextItem *text, elmt->texts())
+				disconnect(text, &ElementTextItem::diagramTextChanged, this, &Diagram::diagramTextChanged);
+		}
+			break;
 
-	// remove all links of element
-	element->unlinkAllElements();
+		case Conductor::Type:
+		{
+			Conductor *conductor = static_cast<Conductor *>(item);
+			conductor->terminal1->removeConductor(conductor);
+			conductor->terminal2->removeConductor(conductor);
+		}
+			break;
 
-	QGraphicsScene::removeItem(element);
-
-	foreach(ElementTextItem *eti, element -> texts()) {
-		disconnect(
-			eti,
-			SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
-			this,
-			SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
-		);
+		case IndependentTextItem::Type:
+		{
+			const IndependentTextItem *text = static_cast<const IndependentTextItem *>(item);
+			disconnect(text, &IndependentTextItem::diagramTextChanged, this, &Diagram::diagramTextChanged);
+		}
 	}
-}
 
-/**
- * @brief Diagram::removeItem
- * Remove a conductor from diagram
- * @param conductor
- */
-void Diagram::removeItem(Conductor *conductor) {
-	if (!conductor || isReadOnly()) return;
-
-	conductor -> terminal1 -> removeConductor(conductor);
-	conductor -> terminal2 -> removeConductor(conductor);
-
-	QGraphicsScene::removeItem(conductor);
-}
-
-/**
- * @brief Diagram::removeItem
- * Remove text field from diagram
- * @param iti
- */
-void Diagram::removeItem(IndependentTextItem *iti) {
-	if (!iti || isReadOnly()) return;
-	
-	QGraphicsScene::removeItem(iti);
-
-	disconnect(
-		iti,
-		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
-		this,
-		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
-	);
-}
-
-/**
- * @brief Diagram::removeItem
- * Generique methode to remove QGraphicsItem from diagram
- * @param item
- */
-void Diagram::removeItem(QGraphicsItem *item) {
 	QGraphicsScene::removeItem(item);
 }
 

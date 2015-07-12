@@ -152,17 +152,10 @@ class Diagram : public QGraphicsScene
 	bool wasWritten() const;
 	QDomElement writeXml(QDomDocument &) const;
 	
-	// methods related to graphics items addition/removal on the diagram
+		// methods related to graphics items addition/removal on the diagram
 	void initElementsLinks();
-	virtual void addItem (Element             *element);
-	virtual void addItem (Conductor           *conductor);
-	virtual void addItem (IndependentTextItem *iti);
-	virtual void addItem (QGraphicsItem       *item);
-
-	virtual void removeItem (Element             *element);
-	virtual void removeItem (Conductor           *conductor);
-	virtual void removeItem (IndependentTextItem *iti);
-	virtual void removeItem (QGraphicsItem       *item);
+	virtual void addItem    (QGraphicsItem *item);
+	virtual void removeItem (QGraphicsItem *item);
 	
 	// methods related to graphics options
 	ExportProperties applyProperties(const ExportProperties &);
