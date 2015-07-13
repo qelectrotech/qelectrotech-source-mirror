@@ -84,9 +84,6 @@ class QetShapeItem : public QetGraphicsItem
 		virtual void mouseMoveEvent    (QGraphicsSceneMouseEvent *event);
 		virtual void mouseReleaseEvent (QGraphicsSceneMouseEvent *event);
 
-	private:
-		void changeGraphicsItem (const ShapeType &newtype);
-
 		///ATTRIBUTES
 	private:
 		ShapeType    m_shapeType;

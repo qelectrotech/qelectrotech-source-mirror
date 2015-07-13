@@ -64,6 +64,8 @@ bool DVEventAddShape::mousePressEvent(QMouseEvent *event)
 	if (!m_dv->isInteractive() && m_diagram->isReadOnly()) return false;
 
 	QPointF pos = m_dv->mapToScene(event->pos());
+	if (event->modifiers() != Qt::ControlModifier)
+		pos = Diagram::snapToGrid(pos);
 
 		//Action for left mouse click
 	if (event -> button() == Qt::LeftButton)
@@ -112,7 +114,11 @@ bool DVEventAddShape::mouseMoveEvent(QMouseEvent *event)
 
 	if (m_shape_item && event -> buttons() == Qt::NoButton)
 	{
-		m_shape_item -> setP2 (m_dv -> mapToScene (event -> pos()));
+		QPointF pos = m_dv->mapToScene(event->pos());
+		if (event->modifiers() != Qt::ControlModifier)
+			pos = Diagram::snapToGrid(pos);
+
+		m_shape_item -> setP2 (pos);
 		return true;
 	}
 
@@ -136,7 +142,12 @@ bool DVEventAddShape::mouseReleaseEvent(QMouseEvent *event)
 			if (m_shape_type == QetShapeItem::Polyline && (m_shape_item -> pointsCount() >= 3) )
 			{
 				m_shape_item -> removePoints();
-				m_shape_item -> setP2(m_dv -> mapToScene (event -> pos())); //Set the new last point under the cursor
+
+				QPointF pos = m_dv->mapToScene(event->pos());
+				if (event->modifiers() != Qt::ControlModifier)
+					pos = Diagram::snapToGrid(pos);
+
+				m_shape_item -> setP2(pos); //Set the new last point under the cursor
 				return true;
 			}
 
@@ -166,7 +177,9 @@ bool DVEventAddShape::mouseDoubleClickEvent(QMouseEvent *event)
 		//If current item is a polyline, add it with an undo command
 	if (m_shape_item && m_shape_type == QetShapeItem::Polyline && event -> button() == Qt::LeftButton)
 	{
-		m_shape_item -> setP2 (m_dv -> mapToScene (event -> pos()));
+			//<double clic is used to finish polyline, but they also add two points at the same pos
+			//<(double clic is a double press event), so we remove the last point of polyline
+		m_shape_item->removePoints();
 		m_diagram -> undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
 		m_shape_item = nullptr; //< set to nullptr for create new shape at next left clic
 		return true;

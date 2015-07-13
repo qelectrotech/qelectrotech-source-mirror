@@ -38,8 +38,8 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	QetGraphicsItem(parent),
 	m_shapeType(type),
 	m_shapeStyle(Qt::DashLine),
-	m_P1 (Diagram::snapToGrid(p1)),
-	m_P2 (Diagram::snapToGrid(p2)),
+	m_P1 (p1),
+	m_P2 (p2),
 	m_hovered(false),
 	m_mouse_grab_handler(false),
 	m_undo_command(nullptr)
@@ -229,18 +229,6 @@ QPainterPath QetShapeItem::shape() const
 	}
 
 	return (path);
-}
-
-/**
- * @brief QetShapeItem::changeGraphicsItem
- * Change the curent type of this item to newtype
- * @param newtype
- */
-void QetShapeItem::changeGraphicsItem(const ShapeType &newtype) {
-	if (newtype == m_shapeType) return;
-	prepareGeometryChange();
-	m_shapeType = newtype;
-	setTransformOriginPoint(boundingRect().center());
 }
 
 /**
@@ -508,7 +496,7 @@ bool QetShapeItem::fromXml(const QDomElement &e) {
 		}
 	}
 
-	changeGraphicsItem(QetShapeItem::ShapeType(e.attribute("type","0").toInt()));
+	m_shapeType = QetShapeItem::ShapeType(e.attribute("type","0").toInt());
 	return (true);
 }
 
@@ -518,23 +506,26 @@ bool QetShapeItem::fromXml(const QDomElement &e) {
  * @param document parent document xml
  * @return element xml where is write this item
  */
-QDomElement QetShapeItem::toXml(QDomDocument &document) const {
+QDomElement QetShapeItem::toXml(QDomDocument &document) const
+{
 	QDomElement result = document.createElement("shape");
 
-	//write some attribute
+		//write some attribute
 	result.setAttribute("type", QString::number(m_shapeType));
 	result.setAttribute("style", QString::number(m_shapeStyle));
 	result.setAttribute("is_movable", bool(is_movable_));
-	if (m_shapeType != Polyline) {
-		result.setAttribute("x1", mapToScene(m_P1).x());
-		result.setAttribute("y1", mapToScene(m_P1).y());
-		result.setAttribute("x2", mapToScene(m_P2).x());
-		result.setAttribute("y2", mapToScene(m_P2).y());
+	if (m_shapeType != Polyline)
+	{
+		result.setAttribute("x1", QString::number(mapToScene(m_P1).x()));
+		result.setAttribute("y1", QString::number(mapToScene(m_P1).y()));
+		result.setAttribute("x2", QString::number(mapToScene(m_P2).x()));
+		result.setAttribute("y2", QString::number(mapToScene(m_P2).y()));
 	}
-
-	else {
+	else
+	{
 		QDomElement points = document.createElement("points");
-		foreach(QPointF p, m_polygon) {
+		foreach(QPointF p, m_polygon)
+		{
 			QDomElement point = document.createElement("point");
 			QPointF pf = mapToScene(p);
 			point.setAttribute("x", pf.x());
