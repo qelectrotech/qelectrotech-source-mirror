@@ -21,10 +21,7 @@
 #include "qet.h"
 #include "shapegraphicsitempropertieswidget.h"
 #include "PropertiesEditor/propertieseditordialog.h"
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "qetshapegeometrycommand.h"
-
-typedef QetGraphicsHandlerUtility QGHU;
 
 /**
  * @brief QetShapeItem::QetShapeItem
@@ -42,8 +39,8 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_P2 (p2),
 	m_hovered(false),
 	m_mouse_grab_handler(false),
-	m_undo_command(nullptr)
-
+	m_undo_command(nullptr),
+	m_handler(10)
 {
 	if (type == Polyline) m_polygon << m_P1 << m_P2;
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
@@ -224,7 +221,7 @@ QPainterPath QetShapeItem::shape() const
 		else
 			vector = m_polygon;
 
-		foreach(QRectF r, QGHU::handlerRect(vector))
+		foreach(QRectF r, m_handler.handlerRect(vector))
 			path.addRect(r);
 	}
 
@@ -304,7 +301,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		//Draw handler if shape is selected
 	if (isSelected())
 		foreach(QPointF point, point_vector)
-			painter->drawPixmap(QGHU::posForHandler(point), QGHU::pixmapHandler());
+			m_handler.DrawHandler(painter, point);
 }
 
 /**
@@ -344,28 +341,13 @@ void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		QVector <QPointF> vector;
 		switch (m_shapeType)
 		{
-			case Line:
-				vector << m_P1 << m_P2;
-				break;
-
-			case Rectangle: {
-				QRectF rect (m_P1, m_P2);
-				vector << rect.topLeft() << rect.topRight() << rect.bottomLeft() << rect.bottomRight();
-			}
-				break;
-
-			case Ellipse: {
-				QRectF rect (m_P1, m_P2);
-				vector << rect.topLeft() << rect.topRight() << rect.bottomLeft() << rect.bottomRight();
-			}
-				break;
-
-			case Polyline:
-				vector = m_polygon;
-				break;
+			case Line:      vector << m_P1 << m_P2;                               break;
+			case Rectangle: vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
+			case Ellipse:   vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
+			case Polyline:  vector = m_polygon;                                   break;
 		}
 
-		m_vector_index = QGHU::pointIsHoverHandler(event->pos(), vector);
+		m_vector_index = m_handler.pointIsHoverHandler(event->pos(), vector);
 		if (m_vector_index != -1)
 		{
 				//User click on an handler

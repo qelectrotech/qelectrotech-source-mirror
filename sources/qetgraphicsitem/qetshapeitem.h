@@ -19,6 +19,7 @@
 #define QETSHAPEITEM_H
 
 #include "qetgraphicsitem.h"
+#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 class QDomElement;
 class QDomDocument;
@@ -94,5 +95,6 @@ class QetShapeItem : public QetGraphicsItem
 					 m_mouse_grab_handler;
 		int			 m_vector_index;
 		QetShapeGeometryCommand *m_undo_command;
+		QetGraphicsHandlerUtility m_handler;
 };
 #endif // QETSHAPEITEM_H

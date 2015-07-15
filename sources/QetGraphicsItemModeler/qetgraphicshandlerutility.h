@@ -18,21 +18,34 @@
 #ifndef QETGRAPHICSHANDLERUTILITY_H
 #define QETGRAPHICSHANDLERUTILITY_H
 
-#include <QPixmap>
+#include <QPointF>
+#include <QRectF>
+
+class QPainter;
 
 /**
  * @brief The QetGraphicsHandlerUtility class
- * This class provide some static methods to create and use handler for
+ * This class provide some methods to create and use handler for
  * modify graphics shape like line rectangle etc...
  */
 class QetGraphicsHandlerUtility
 {
 	public:
-		static QPixmap pixmapHandler();
-		static QPointF posForHandler(const QPointF &point);
-		static bool pointIsInHandler (const QPointF &point, const QPointF &key_point);
-		static int pointIsHoverHandler (const QPointF &point, const QVector<QPointF> &vector);
-		static QVector<QRectF> handlerRect (const QVector<QPointF> &vector);
+		QetGraphicsHandlerUtility (qreal size = 1);
+		void setSize(qreal size) {m_size = size;}
+		void DrawHandler (QPainter *painter, const QPointF & point, bool color2 = false);
+		QPointF posForHandler(const QPointF &point) const;
+		bool pointIsInHandler (const QPointF &point, const QPointF &key_point) const;
+		int pointIsHoverHandler (const QPointF &point, const QVector<QPointF> &vector) const;
+		QVector<QRectF> handlerRect (const QVector<QPointF> &vector) const;
+
+	private:
+		QRectF getRect (const QPointF &point) const;
+		qreal m_size;
+		qreal m_zoom_factor;
+
+	public:
+		static QVector <QPointF> pointsForRect (const QRectF & rect);
 };
 
 #endif // QETGRAPHICSHANDLERUTILITY_H
