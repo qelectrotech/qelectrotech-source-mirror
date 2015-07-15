@@ -1358,7 +1358,7 @@ dla przewodów o tym samym potencjale?</translation>
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
         <translation>Czy na pewno chcesz usunąć tę kategorię?
-Wszystkie elementy i kategorie podrzędne zostaną usunięte</translation>
+Wszystkie elementy i kategorie podrzędne zostaną usunięte.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="91"/>
@@ -3555,13 +3555,13 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kolor tła biały / szary</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetla tło arkusza w kolorze białym lub szarym</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
@@ -6189,7 +6189,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/undocommand/changeshapestylecommand.cpp" line="36"/>
         <source>Changer le style d&apos;une primitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiana stylu figury</translation>
     </message>
 </context>
 <context>
@@ -6396,58 +6396,58 @@ Pozostałe pola nie są używane.
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
         <source>Type de trait</source>
-        <translation type="unfinished">Typ linii</translation>
+        <translation>Typ linii</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="27"/>
         <source>Normal</source>
-        <translation type="unfinished">Ciągła</translation>
+        <translation>Ciągła</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="32"/>
         <source>Tiret</source>
-        <translation type="unfinished">Kreskowa</translation>
+        <translation>Kreskowa</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="37"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Kropkowa</translation>
+        <translation>Kropkowa</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="42"/>
         <source>Traits et points</source>
-        <translation type="unfinished">Kreskowo-kropkowa</translation>
+        <translation>Kreskowo-kropkowa</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="47"/>
         <source>Traits points points</source>
-        <translation type="unfinished">Kreskowa z dwiema kropkami</translation>
+        <translation>Kreskowa z dwiema kropkami</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="58"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Zablokuj położenie</translation>
+        <translation>Zablokuj położenie</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="65"/>
         <source>Échelle</source>
-        <translation type="unfinished">Skala</translation>
+        <translation>Skala</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="130"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="132"/>
         <source>une shape</source>
-        <translation type="unfinished">figury</translation>
+        <translation>figury</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="48"/>
         <source>Éditer les propriétés d&apos;une primitive </source>
-        <translation type="unfinished"></translation>
+        <translation>Edycja właściwości figury </translation>
     </message>
 </context>
 <context>
