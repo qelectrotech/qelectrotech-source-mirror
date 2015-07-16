@@ -32,7 +32,8 @@
 	@param parent Parent QGraphicsItem
 */
 ElementPrimitiveDecorator::ElementPrimitiveDecorator(QGraphicsItem *parent):
-	QGraphicsObject(parent)
+	QGraphicsObject(parent),
+	m_handler(10)
 {
 	init();
 }
@@ -66,11 +67,13 @@ QRectF ElementPrimitiveDecorator::internalBoundingRect() const {
 /**
 	@return the outer bounds of the decorator as a rectangle.
 */
-QRectF ElementPrimitiveDecorator::boundingRect() const {
-	const qreal additional_margin = 2.5;
+QRectF ElementPrimitiveDecorator::boundingRect() const
+{
+	QVector<QRectF> rect_vector = m_handler.handlerRect(getResizingsPoints());
 	
 	QRectF rect = effective_bounding_rect_;
-	rect.adjust(-additional_margin, -additional_margin, additional_margin, additional_margin);
+	rect |= rect_vector.first();
+	rect |= rect_vector.last();
 	return(rect);
 }
 
@@ -83,7 +86,8 @@ QRectF ElementPrimitiveDecorator::boundingRect() const {
 	widget that is being painted on; otherwise, it is 0. For cached painting,
 	widget is always 0.
 */
-void ElementPrimitiveDecorator::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+void ElementPrimitiveDecorator::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
 	painter -> save();
@@ -92,9 +96,10 @@ void ElementPrimitiveDecorator::paint(QPainter *painter, const QStyleOptionGraph
 	QPen pen(Qt::DashLine);
 	pen.setCosmetic(true);
 	painter -> setPen(pen);
-	//QGraphicsItemGroup::paint(painter, option, widget);
 	painter -> drawRect(modified_bounding_rect_);
-	drawSquares(painter, option, widget);
+		//Draw the handler
+	foreach (QPointF point, getResizingsPoints())
+		m_handler.DrawHandler(painter, point, decorated_items_.size()-1);
 	
 	// uncomment to draw the real bouding rect (=adjusted internal bounding rect)
 	// painter -> setBrush(QBrush(QColor(240, 0, 0, 127)));
@@ -184,42 +189,47 @@ void ElementPrimitiveDecorator::adjust() {
 	Handle events generated when the mouse hovers over the decorator.
 	@param event Object describing the hover event.
 */
-void ElementPrimitiveDecorator::hoverMoveEvent(QGraphicsSceneHoverEvent *event) {
-	QList<QRectF> rects = getResizingSquares();
-	QPointF pos = event -> pos();
-	
-	if (rects.at(QET::ResizeFromTopLeftCorner).contains(pos) || rects.at(QET::ResizeFromBottomRightCorner).contains(pos)) {
+void ElementPrimitiveDecorator::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+	int p = m_handler.pointIsHoverHandler(event->pos(), getResizingsPoints());
+
+	if (p == 0 || p == 7)
 		setCursor(Qt::SizeFDiagCursor);
-	} else if (rects.at(QET::ResizeFromTopRightCorner).contains(pos) || rects.at(QET::ResizeFromBottomLeftCorner).contains(pos)) {
+	else if (p == 2 || p == 5)
 		setCursor(Qt::SizeBDiagCursor);
-	} else if (rects.at(QET::ResizeFromTopCenterCorner).contains(pos) || rects.at(QET::ResizeFromBottomCenterCorner).contains(pos)) {
+	else if (p == 1 || p ==6)
 		setCursor(Qt::SizeVerCursor);
-	} else if (rects.at(QET::ResizeFromMiddleLeftCorner).contains(pos) || rects.at(QET::ResizeFromMiddleRightCorner).contains(pos)) {
+	else if (p == 3 || p == 4)
 		setCursor(Qt::SizeHorCursor);
-	} else if (internalBoundingRect().contains(pos)) {
+	else if (p == -1 && modified_bounding_rect_.normalized().contains(event->pos()))
 		setCursor(Qt::SizeAllCursor);
-	} else {
+	else
 		setCursor(Qt::ArrowCursor);
-	}
 }
 
 /**
 	Handle event generated when mouse buttons are pressed.
 	@param event Object describing the mouse event
 */
-void ElementPrimitiveDecorator::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-	QList<QRectF> rects = getResizingSquares();
+void ElementPrimitiveDecorator::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
 	QPointF pos = event -> pos();
+	QVector <QPointF> points = getResizingsPoints();
 	
-	current_operation_square_ = resizingSquareAtPos(pos);
+	current_operation_square_ = m_handler.pointIsHoverHandler(pos, points);
 	bool accept = false;
-	if (current_operation_square_ != QET::NoOperation) {
+
+	if (current_operation_square_ != QET::NoOperation)
 		accept = true;
-	} else {
-		if (internalBoundingRect().contains(pos)) {
-			if (CustomElementPart *single_item = singleItem()) {
+	else
+	{
+		if (internalBoundingRect().contains(pos))
+		{
+			if (CustomElementPart *single_item = singleItem())
+			{
 				bool event_accepted = single_item -> singleItemPressEvent(this, event);
-				if (event_accepted) {
+				if (event_accepted)
+				{
 					event -> ignore();
 					return;
 				}
@@ -229,19 +239,21 @@ void ElementPrimitiveDecorator::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		}
 	}
 	
-	if (accept) {
-		if (current_operation_square_ > QET::NoOperation) {
-			first_pos_ = latest_pos_ = mapToScene(rects.at(current_operation_square_).center());
-		} else {
+	if (accept)
+	{
+		if (current_operation_square_ > QET::NoOperation)
+			first_pos_ = latest_pos_ = mapToScene(points.at(current_operation_square_));
+		else
+		{
 			first_pos_ = decorated_items_.at(0) -> toItem() -> scenePos();
 			latest_pos_ = event -> scenePos();
 			mouse_offset_ = event -> scenePos() - first_pos_;
 		}
 		startMovement();
 		event -> accept();
-	} else {
-		event -> ignore();
 	}
+	else
+		event -> ignore();
 }
 
 /**
@@ -264,9 +276,8 @@ void ElementPrimitiveDecorator::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *
 	@param event Object describing the mouse event
 	@see QGraphicsScene::mouseGrabberItem()
 */
-void ElementPrimitiveDecorator::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
-	QList<QRectF> rects = getResizingSquares();
-	
+void ElementPrimitiveDecorator::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
 	QPointF scene_pos = event -> scenePos();
 	QPointF movement = scene_pos - latest_pos_;
 	
@@ -299,7 +310,7 @@ void ElementPrimitiveDecorator::mouseMoveEvent(QGraphicsSceneMouseEvent *event) 
 			QPointF rounded_scene_pos = first_pos_ + rounded_global_movement;
 			
 			// when scaling the selection, consider the center of the currently dragged resizing rectangle
-			QPointF current_position = mapToScene(rects.at(current_operation_square_).center());
+			QPointF current_position = mapToScene(getResizingsPoints().at(current_operation_square_));
 			// determine the final, effective movement
 			movement = rounded_scene_pos - current_position;
 		}
@@ -556,119 +567,30 @@ QRectF ElementPrimitiveDecorator::getSceneBoundingRect(QGraphicsItem *item) cons
 	return(item -> mapRectToScene(item -> boundingRect()));
 }
 
-/**
-	Draw all known resizing squares using \a painter.
-	@param option The option parameter provides style options for the item, such
-	as its state, exposed area and its level-of-detail hints.
-	@param The widget argument is optional. If provided, it points to the
-	widget that is being painted on; otherwise, it is 0. For cached painting,
-	widget is always 0.
-*/
-void ElementPrimitiveDecorator::drawSquares(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-	foreach (QRectF rect, getResizingSquares()) {
-		drawResizeSquare(painter, option, widget, rect);
-	}
-}
-
-/**
-	Draw the provided resizing square \a rect using \a painter.
-	@param option The option parameter provides style options for the item, such
-	as its state, exposed area and its level-of-detail hints.
-	@param The widget argument is optional. If provided, it points to the
-	widget that is being painted on; otherwise, it is 0. For cached painting,
-	widget is always 0.
-*/
-void ElementPrimitiveDecorator::drawResizeSquare(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget, const QRectF &rect) {
-	QColor inner(0xFF, 0xFF, 0xFF);
-	QColor outer(0x00, 0x61, 0xFF);
-	if (decorated_items_.count() > 1) {
-		outer = QColor(0x1A, 0x5C, 0x14);
-	}
-	drawGenericSquare(painter, option, widget, rect, inner, outer);
-}
-
-/**
-	Draw a generic square \a rect using \a painter.
-	@param inner Color used to fill the square
-	@param outer Color usd to draw the outline
-	@param option The option parameter provides style options for the item, such
-	as its state, exposed area and its level-of-detail hints.
-	@param The widget argument is optional. If provided, it points to the
-	widget that is being painted on; otherwise, it is 0. For cached painting,
-	widget is always 0.
-*/
-void ElementPrimitiveDecorator::drawGenericSquare(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget, const QRectF &rect, const QColor &inner, const QColor &outer) {
-	Q_UNUSED(option)
-	Q_UNUSED(widget)
-	// 1.0px will end up to level_of_details px once rendered
-	// qreal level_of_details = option->levelOfDetailFromTransform(painter -> transform());
-	
-	painter -> save();
-	painter -> setBrush(QBrush(inner));
-	QPen square_pen(QBrush(outer), 2.0, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
-	square_pen.setCosmetic(true);
-	painter -> setPen(square_pen);
-	painter -> drawRect(rect);
-	painter -> restore();
-}
-
-/**
-	@return A list containing all known resizing squares, based on the
-	modified_bounding_rect_ attribute. They are ordered following
-	QET::OperationAreas, so it is possible to use positive values from this enum
-	to fetch the corresponding square in the list.
-	@see QET::OperationAreas
-*/
-QList<QRectF> ElementPrimitiveDecorator::getResizingSquares() {
+QVector<QPointF> ElementPrimitiveDecorator::getResizingsPoints() const
+{
 	QRectF primitive_rect = modified_bounding_rect_;
-	QRectF half_primitive_rect1 = primitive_rect;
-	half_primitive_rect1.setHeight(half_primitive_rect1.height() / 2.0);
-	QRectF half_primitive_rect2 = primitive_rect;
-	half_primitive_rect2.setWidth(half_primitive_rect2.width() / 2.0);
-	
-	QList<QRectF> rects;
-	
-	rects << getGenericSquare(primitive_rect.topLeft());
-	rects << getGenericSquare(half_primitive_rect2.topRight());
-	rects << getGenericSquare(primitive_rect.topRight());
-	rects << getGenericSquare(half_primitive_rect1.bottomLeft());
-	rects << getGenericSquare(half_primitive_rect1.bottomRight());
-	rects << getGenericSquare(primitive_rect.bottomLeft());
-	rects << getGenericSquare(half_primitive_rect2.bottomRight());
-	rects << getGenericSquare(primitive_rect.bottomRight());
-	
-	/// TODO cache the rects instead of calculating them again and again?
-	return(rects);
-}
+	QVector <QPointF> vector;
+	QPointF half;
 
-/**
-	@return the square to be drawn to represent \a position
-*/
-QRectF ElementPrimitiveDecorator::getGenericSquare(const QPointF &position) {
-	const qreal square_half_size = 0.5;
-	return(
-		QRectF(
-			position.x() - square_half_size,
-			position.y() - square_half_size,
-			square_half_size * 2.0,
-			square_half_size * 2.0
-		)
-	);
-}
+	vector << primitive_rect.topLeft(); //top left
+	half = primitive_rect.center();
+	half.setY(primitive_rect.top());
+	vector << half; //middle top
+	vector << primitive_rect.topRight(); //top right
+	half = primitive_rect.center();
+	half.setX(primitive_rect.left());
+	vector << half; //middle left
+	half = primitive_rect.center();
+	half.setX(primitive_rect.right());
+	vector << half; //middle right
+	vector << primitive_rect.bottomLeft(); //bottom left
+	half = primitive_rect.center();
+	half.setY(primitive_rect.bottom());
+	vector << half; //middle bottom
+	vector << primitive_rect.bottomRight(); //bottom right
 
-/**
-	@return the index of the square containing the \a position point or -1 if
-	none matches.
-*/
-int ElementPrimitiveDecorator::resizingSquareAtPos(const QPointF &position) {
-	QList<QRectF> rects = getResizingSquares();
-	int current_square = QET::NoOperation;
-	for (int i = 0 ; i < rects.count() ; ++ i) {
-		if (rects.at(i).contains(position)) {
-			current_square = i;
-		}
-	}
-	return(current_square);
+	return vector;
 }
 
 /**

@@ -17,8 +17,11 @@
 */
 #ifndef ELEMENTPRIMITIVEDECORATOR_H
 #define ELEMENTPRIMITIVEDECORATOR_H
+
 #include <QGraphicsObject>
 #include "qet.h"
+#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
+
 class ElementEditionCommand;
 class ElementScene;
 class CustomElementPart;
@@ -34,7 +37,8 @@ class CustomElementPart;
 	  - the new bounding rect, after the user moved or resized items
 	  - the former bounding rect, due to implementation details
 */
-class ElementPrimitiveDecorator : public QGraphicsObject {
+class ElementPrimitiveDecorator : public QGraphicsObject
+{
 	Q_OBJECT
 	
 	public:
@@ -83,12 +87,7 @@ class ElementPrimitiveDecorator : public QGraphicsObject {
 	void translateItems(const QPointF &);
 	void scaleItems(const QRectF &, const QRectF &);
 	QRectF getSceneBoundingRect(QGraphicsItem *) const;
-	void drawSquares(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-	void drawResizeSquare(QPainter *, const QStyleOptionGraphicsItem *, QWidget *, const QRectF &);
-	void drawGenericSquare(QPainter *, const QStyleOptionGraphicsItem *, QWidget *, const QRectF &, const QColor &, const QColor &);
-	QList<QRectF> getResizingSquares();
-	QRectF getGenericSquare(const QPointF &);
-	int resizingSquareAtPos(const QPointF &);
+	QVector <QPointF> getResizingsPoints() const;
 	
 	// attributes
 	private:
@@ -109,6 +108,7 @@ class ElementPrimitiveDecorator : public QGraphicsObject {
 	QPointF mouse_offset_;         ///< Offset between the mouse position and the point to be snapped to grid when moving selection
 	bool moving_by_keys_;          ///< Whether we are currently moving our decorated items using the arrow keys
 	QPointF keys_movement_;           ///< Movement applied to our decorated items using the arrow keys
+	QetGraphicsHandlerUtility m_handler;
 };
 
 #endif
