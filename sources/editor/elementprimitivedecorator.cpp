@@ -97,9 +97,8 @@ void ElementPrimitiveDecorator::paint(QPainter *painter, const QStyleOptionGraph
 	pen.setCosmetic(true);
 	painter -> setPen(pen);
 	painter -> drawRect(modified_bounding_rect_);
-		//Draw the handler
-	foreach (QPointF point, getResizingsPoints())
-		m_handler.DrawHandler(painter, point, decorated_items_.size()-1);
+		//Draw the handlers
+	m_handler.drawHandler(painter, getResizingsPoints(), decorated_items_.size()-1);
 	
 	// uncomment to draw the real bouding rect (=adjusted internal bounding rect)
 	// painter -> setBrush(QBrush(QColor(240, 0, 0, 127)));

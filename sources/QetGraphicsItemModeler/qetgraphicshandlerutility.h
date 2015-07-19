@@ -18,7 +18,6 @@
 #ifndef QETGRAPHICSHANDLERUTILITY_H
 #define QETGRAPHICSHANDLERUTILITY_H
 
-#include <QPointF>
 #include <QRectF>
 
 class QPainter;
@@ -27,13 +26,15 @@ class QPainter;
  * @brief The QetGraphicsHandlerUtility class
  * This class provide some methods to create and use handler for
  * modify graphics shape like line rectangle etc...
+ * They also provide some conveniance static method.
  */
 class QetGraphicsHandlerUtility
 {
 	public:
 		QetGraphicsHandlerUtility (qreal size = 1);
 		void setSize(qreal size) {m_size = size;}
-		void DrawHandler (QPainter *painter, const QPointF & point, bool color2 = false);
+		void drawHandler (QPainter *painter, const QPointF & point, bool color2 = false);
+		void drawHandler(QPainter *painter, const QVector<QPointF> &points, bool color2 = false);
 		QPointF posForHandler(const QPointF &point) const;
 		bool pointIsInHandler (const QPointF &point, const QPointF &key_point) const;
 		int pointIsHoverHandler (const QPointF &point, const QVector<QPointF> &vector) const;
@@ -45,7 +46,8 @@ class QetGraphicsHandlerUtility
 		qreal m_zoom_factor;
 
 	public:
-		static QVector <QPointF> pointsForRect (const QRectF & rect);
+		static QVector <QPointF> pointsForRect (const QRectF &rect);
+		static QRectF rectForPosAtIndex (const QRectF &old_rect, const QPointF &pos, int index);
 };
 
 #endif // QETGRAPHICSHANDLERUTILITY_H

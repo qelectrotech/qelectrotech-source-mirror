@@ -29,12 +29,12 @@ QetGraphicsHandlerUtility::QetGraphicsHandlerUtility(qreal size) :
 {}
 
 /**
- * @brief QetGraphicsHandlerUtility::DrawHandler
+ * @brief QetGraphicsHandlerUtility::drawHandler
  * Draw the handler at pos @point, using the QPainter @painter.
  * @param painter : painter to use for drawing the handler
  * @param point : point to draw the handler
  */
-void QetGraphicsHandlerUtility::DrawHandler(QPainter *painter, const QPointF &point, bool color2)
+void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QPointF &point, bool color2)
 {
 		//Color of handler
 	QColor inner(0xFF, 0xFF, 0xFF);
@@ -51,6 +51,18 @@ void QetGraphicsHandlerUtility::DrawHandler(QPainter *painter, const QPointF &po
 	painter->setPen(square_pen);
 	painter->drawRect(getRect(point));
 	painter->restore();
+}
+
+/**
+ * @brief QetGraphicsHandlerUtility::drawHandler
+ * Conveniance method for void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QPointF &point, bool color2)
+ * @param painter
+ * @param points
+ * @param color2
+ */
+void QetGraphicsHandlerUtility::drawHandler(QPainter *painter, const QVector<QPointF> &points, bool color2) {
+	foreach(QPointF point, points)
+		drawHandler(painter, point, color2);
 }
 
 /**
@@ -109,15 +121,62 @@ QRectF QetGraphicsHandlerUtility::getRect(const QPointF &point) const
 
 /**
  * @brief QetGraphicsHandlerUtility::pointsForRect
- * Return the point of the rect in vector.
- * The point are stored like this :
- * top left, top right, bottom left, bottom right;
+ * Return the keys points of the rectangle, stored in a vector.
+ * The points in the vector are stored like this :
+ * **********
+ *   0---1---2
+ *   |       |
+ *   3       4
+ *   |       |
+ *   5---6---7
+ * ************
  * @param rect
  * @return
  */
 QVector<QPointF> QetGraphicsHandlerUtility::pointsForRect(const QRectF &rect)
 {
 	QVector<QPointF> vector;
-	vector << rect.topLeft() << rect.topRight() << rect.bottomLeft() << rect.bottomRight();
+	QPointF point;
+	vector << rect.topLeft();//*****Top left
+	point = rect.center();
+	point.setY(rect.top());
+	vector << point;//**************Middle top
+	vector << rect.topRight();//****Top right
+	point = rect.center();
+	point.setX(rect.left());
+	vector << point;//**************Middle left
+	point.setX(rect.right());
+	vector << point;//**************Middle right
+	vector << rect.bottomLeft();//**Bottom left
+	point = rect.center();
+	point.setY(rect.bottom());
+	vector <<  point;//*************Middle bottom
+	vector << rect.bottomRight();//*Bottom right
 	return vector;
+}
+
+/**
+ * @brief QetGraphicsHandlerUtility::rectForPosAtIndex
+ * Return a rectangle after modification of the point '@pos' at index '@index' of original rectangle '@old_rect'.
+ * @param old_rect - the rectangle befor modification
+ * @param pos - the new position of a key point
+ * @param index - the index of the key point to modifie see QetGraphicsHandlerUtility::pointsForRect to know
+ * the index of each keys points of a rectangle)
+ * @return : the rectangle with modification. If index is lower than 0 or higher than 7, this method return old_rect.
+ */
+QRectF QetGraphicsHandlerUtility::rectForPosAtIndex(const QRectF &old_rect, const QPointF &pos, int index)
+{
+	if (index < 0 || index > 7) return old_rect;
+
+	QRectF rect = old_rect;
+	if (index == 0) rect.setTopLeft(pos);
+	else if (index == 1) rect.setTop(pos.y());
+	else if (index == 2) rect.setTopRight(pos);
+	else if (index == 3) rect.setLeft(pos.x());
+	else if (index == 4) rect.setRight(pos.x());
+	else if (index == 5) rect.setBottomLeft(pos);
+	else if (index == 6) rect.setBottom(pos.y());
+	else if (index == 7) rect.setBottomRight(pos);
+
+	return rect;
 }

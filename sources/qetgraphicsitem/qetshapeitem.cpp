@@ -260,48 +260,33 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 
 	painter -> setPen(pen);
 
-		//vector use to draw handler if needed
-	QVector <QPointF> point_vector;
-
-		//Draw the shape
+		//Draw the shape and handlers if is selected
 	switch (m_shapeType)
 	{
 		case Line:
 			painter->drawLine(QLineF(m_P1, m_P2));
 			if (isSelected())
-				point_vector << m_P1 << m_P2;
+				m_handler.drawHandler(painter, QVector<QPointF>{m_P1, m_P2});
 			break;
 
 		case Rectangle:
 			painter->drawRect(QRectF(m_P1, m_P2));
 			if (isSelected())
-			{
-				QRectF rect (m_P1, m_P2);
-				point_vector << rect.topLeft() << rect.topRight() << rect.bottomRight() << rect.bottomLeft();
-			}
+				m_handler.drawHandler(painter, m_handler.pointsForRect(QRectF(m_P1, m_P2)));
 			break;
 
 		case Ellipse:
 			painter->drawEllipse(QRectF(m_P1, m_P2));
 			if (isSelected())
-			{
-				QRectF rect (m_P1, m_P2);
-				point_vector << rect.topLeft() << rect.topRight() << rect.bottomRight() << rect.bottomLeft();
-			}
+				m_handler.drawHandler(painter, m_handler.pointsForRect(QRectF(m_P1, m_P2)));
 			break;
 
 		case Polyline:
-		{
 			painter->drawPolyline(m_polygon);
-			point_vector = m_polygon;
-		}
+			if (isSelected())
+				m_handler.drawHandler(painter, m_polygon);
 			break;
 	}
-
-		//Draw handler if shape is selected
-	if (isSelected())
-		foreach(QPointF point, point_vector)
-			m_handler.DrawHandler(painter, point);
 }
 
 /**
@@ -388,26 +373,11 @@ void QetShapeItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 			}
 				break;
 
-			case Rectangle: {
-				QRectF rect(m_P1, m_P2);
-				if (m_vector_index == 0) rect.setTopLeft(new_pos);
-				else if (m_vector_index == 1) rect.setTopRight(new_pos);
-				else if (m_vector_index == 2) rect.setBottomLeft(new_pos);
-				else if (m_vector_index == 3) rect.setBottomRight(new_pos);
+			case Rectangle:
+				setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
 
-				setRect(rect);
-			}
-				break;
-
-			case Ellipse: {
-				QRectF rect(m_P1, m_P2);
-				if (m_vector_index == 0) rect.setTopLeft(new_pos);
-				else if (m_vector_index == 1) rect.setTopRight(new_pos);
-				else if (m_vector_index == 2) rect.setBottomLeft(new_pos);
-				else if (m_vector_index == 3) rect.setBottomRight(new_pos);
-
-				setRect(rect);
-			}
+			case Ellipse:
+				setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
 				break;
 
 			case Polyline: {
