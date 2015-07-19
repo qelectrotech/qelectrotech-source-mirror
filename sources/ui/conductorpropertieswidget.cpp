@@ -35,6 +35,31 @@ ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 }
 
 /**
+ * @brief ConductorPropertiesWidget::event
+ * @param event
+ * @return
+ */
+bool ConductorPropertiesWidget::event(QEvent *event)
+{
+	if (m_first_activation)
+	{
+			if (event -> type() == QEvent::WindowActivate || event -> type() == QEvent::Show)
+			{
+					QTimer::singleShot(10, this, SLOT(firstActivated()));
+					m_first_activation = true;
+			}
+	}
+	return(QWidget::event(event));
+}
+
+/**
+ * @brief ConductorPropertiesWidget::firstActivated
+ */
+void ConductorPropertiesWidget::firstActivated() {
+	ui -> m_text_le -> setFocus();
+}
+
+/**
  * @brief ConductorPropertiesWidget::ConductorPropertiesWidget
  * Constructor with properties
  * @param properties, properties to edit
