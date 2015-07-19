@@ -28,7 +28,8 @@
  */
 ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::ConductorPropertiesWidget)
+	ui(new Ui::ConductorPropertiesWidget),
+	m_first_activation (true)
 {
 	ui->setupUi(this);
 	initWidget();
