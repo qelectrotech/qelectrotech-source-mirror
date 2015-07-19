@@ -29,36 +29,14 @@
 ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::ConductorPropertiesWidget),
-	m_first_activation (true)
+	m_activation (true)
 {
 	ui->setupUi(this);
 	initWidget();
 }
 
-/**
- * @brief ConductorPropertiesWidget::event
- * @param event
- * @return
- */
-bool ConductorPropertiesWidget::event(QEvent *event)
-{
-	if (m_first_activation)
-	{
-			if (event -> type() == QEvent::WindowActivate || event -> type() == QEvent::Show)
-			{
-					QTimer::singleShot(10, this, SLOT(firstActivated()));
-					m_first_activation = true;
-			}
-	}
-	return(QWidget::event(event));
-}
 
-/**
- * @brief ConductorPropertiesWidget::firstActivated
- */
-void ConductorPropertiesWidget::firstActivated() {
-	ui -> m_text_le -> setFocus();
-}
+
 
 /**
  * @brief ConductorPropertiesWidget::ConductorPropertiesWidget
@@ -139,6 +117,24 @@ ConductorProperties ConductorPropertiesWidget::properties() const {
 
 	return properties_;
 }
+
+/**
+ * @brief ConductorPropertiesWidget::event
+ * @param event
+ * @return
+ */
+bool ConductorPropertiesWidget::event(QEvent *event)
+{
+	if (m_activation)
+	{
+			if (event -> type() == QEvent::WindowActivate || event -> type() == QEvent::Show)
+			{
+					ui -> m_text_le -> setFocus();
+			}
+	}
+	return(QWidget::event(event));
+}
+
 
 /**
  * @brief ConductorPropertiesWidget::setReadOnly

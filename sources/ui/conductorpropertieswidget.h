@@ -48,6 +48,8 @@ class ConductorPropertiesWidget : public QWidget
 		void initWidget();
 		void setConductorType(ConductorProperties::ConductorType type);
 
+	protected:
+		virtual bool event(QEvent *event);
 
 	//SLOTS
 	public slots:
@@ -59,14 +61,12 @@ class ConductorPropertiesWidget : public QWidget
 		void on_m_color_pb_clicked();
 		void setColorButton (const QColor &color);
 		void on_m_update_preview_pb_clicked();
-		void firstActivated();
-		virtual bool event(QEvent *event);
 
 	private:
 		Ui::ConductorPropertiesWidget *ui;
 		ConductorProperties m_properties;
 		QTextOrientationSpinBoxWidget *m_verti_select, *m_horiz_select;
-		bool m_first_activation;
+		bool m_activation;
 };
 
 #endif // CONDUCTORPROPERTIESWIDGET_H
