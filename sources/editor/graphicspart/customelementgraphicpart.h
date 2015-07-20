@@ -103,6 +103,10 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
 
+		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+
 		// attributes
 		bool m_hovered;
 	private:
@@ -111,6 +115,7 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		Filling _filling ;
 		Color _color;
 		bool _antialiased;
+		QPointF m_origin_pos, m_mouse_to_origin_pos;
 };
 
 typedef CustomElementGraphicPart CEGP;

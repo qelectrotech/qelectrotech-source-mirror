@@ -19,6 +19,9 @@
 #define PART_RECTANGLE_H
 
 #include "customelementgraphicpart.h"
+#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
+
+class ChangePartCommand;
 
 /**
  * This class represents a rectangle primitive which may be used to compose the
@@ -32,6 +35,7 @@ class PartRectangle :  public CustomElementGraphicPart
 		Q_PROPERTY(QPointF rectTopLeft READ rectTopLeft WRITE setRectTopLeft)
 		Q_PROPERTY(qreal width         READ width       WRITE setWidth)
 		Q_PROPERTY(qreal height        READ height      WRITE setHeight)
+		Q_PROPERTY(QRectF rect         READ rect        WRITE setRect)
 
 		// constructors, destructor
 	public:
@@ -77,9 +81,17 @@ class PartRectangle :  public CustomElementGraphicPart
 
 		virtual void startUserTransformation(const QRectF &);
 		virtual void handleUserTransformation(const QRectF &, const QRectF &);
+
+	protected:
+		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 	
 	private:
 		QRectF m_rect;
 		QList<QPointF> saved_points_;
+		QetGraphicsHandlerUtility m_handler;
+		int m_handler_index;
+		ChangePartCommand *m_undo_command;
 };
 #endif

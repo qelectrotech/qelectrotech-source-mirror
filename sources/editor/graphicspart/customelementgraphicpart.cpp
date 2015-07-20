@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "customelementgraphicpart.h"
+#include "elementscene.h"
+#include "editorcommands.h"
 
 /**
  * @brief CustomElementGraphicPart::CustomElementGraphicPart
@@ -34,7 +36,7 @@ CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor, QGr
 	_color(BlackColor),
 	_antialiased(false)
 {
-	setFlags(QGraphicsItem::ItemIsSelectable);
+	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
@@ -436,4 +438,31 @@ void CustomElementGraphicPart::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
 	m_hovered = false;
 	QGraphicsObject::hoverLeaveEvent(event);
+}
+
+void CustomElementGraphicPart::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if(event->button() == Qt::LeftButton)
+		m_origin_pos = this->pos();
+
+	QGraphicsObject::mousePressEvent(event);
+}
+
+void CustomElementGraphicPart::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if((event->buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable))
+	{
+		QPointF pos = event->scenePos() + (m_origin_pos - event->buttonDownScenePos(Qt::LeftButton));
+		event->modifiers() == Qt::ControlModifier ? setPos(pos) : setPos(elementScene()->snapToGrid(pos));
+	}
+	else
+		QGraphicsObject::mouseMoveEvent(event);
+}
+
+void CustomElementGraphicPart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if((event->button() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable) && m_origin_pos != pos())
+		elementScene()->stackAction(new MovePartsCommand(pos() - m_origin_pos, 0, QList<QGraphicsItem*>{this}));
+
+	QGraphicsObject::mouseReleaseEvent(event);
 }

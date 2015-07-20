@@ -20,6 +20,10 @@
 
 #include "customelementgraphicpart.h"
 #include "qet.h"
+#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
+
+class ChangePartCommand;
+
 /**
 	This class represents a line primitive which may be used to compose the
 	drawing of an electrical element within the element editor. Lines may have
@@ -39,6 +43,7 @@ class PartLine : public CustomElementGraphicPart
 		Q_PROPERTY(Qet::EndType end2 READ secondEndType WRITE setSecondEndType)
 		Q_PROPERTY(qreal length1 READ firstEndLength WRITE setFirstEndLength)
 		Q_PROPERTY(qreal length2 READ secondEndLength WRITE setSecondEndLength)
+		Q_PROPERTY(QLineF line READ line WRITE setLine)
 
 	// constructors, destructor
 	public:
@@ -77,6 +82,8 @@ class PartLine : public CustomElementGraphicPart
 		static uint requiredLengthForEndType(const Qet::EndType &);
 		static QList<QPointF> fourEndPoints(const QPointF &, const QPointF &, const qreal &);
 
+		QLineF line() const;
+		void setLine(const QLineF &line);
 		QPointF p1() const;
 		void setP1 (const QPointF &p1);
 		QPointF p2 () const;
@@ -89,6 +96,11 @@ class PartLine : public CustomElementGraphicPart
 		void setFirstEndLength(const qreal &l) {first_length = qMin(qAbs(l), m_line.length());}
 		qreal secondEndLength() const {return second_length;}
 		void setSecondEndLength(const qreal &l) {second_length = qMin(qAbs(l), m_line.length());}
+
+	protected:
+		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 	
 	private:
 		QPainterPath path() const;
@@ -105,5 +117,8 @@ class PartLine : public CustomElementGraphicPart
 		qreal        second_length;
 		QList<QPointF> saved_points_;
 		QLineF m_line;
+		QetGraphicsHandlerUtility m_handler;
+		int m_handler_index;
+		ChangePartCommand *m_undo_command;
 };
 #endif

@@ -19,6 +19,7 @@
 #define QETGRAPHICSHANDLERUTILITY_H
 
 #include <QRectF>
+#include <QLineF>
 
 class QPainter;
 
@@ -47,7 +48,9 @@ class QetGraphicsHandlerUtility
 
 	public:
 		static QVector <QPointF> pointsForRect (const QRectF &rect);
+		static QVector <QPointF> pointsForLine (const QLineF &line);
 		static QRectF rectForPosAtIndex (const QRectF &old_rect, const QPointF &pos, int index);
+		static QLineF lineForPosAtIndex (const QLineF &old_line, const QPointF &pos, int index);
 };
 
 #endif // QETGRAPHICSHANDLERUTILITY_H

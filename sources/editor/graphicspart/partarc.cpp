@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partarc.h"
+#include "editorcommands.h"
 
 /**
  * @brief PartArc::PartArc
@@ -24,7 +25,9 @@
  * @param parent : parent item
  */
 PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent) :
-	AbstractPartEllipse(editor, parent)
+	AbstractPartEllipse(editor, parent),
+	m_handler(10),
+	m_handler_index(-1)
 {
 	m_start_angle = 0;
 	m_span_angle = -1440;
@@ -34,7 +37,9 @@ PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent) :
  * @brief PartArc::~PartArc
  * Destructor
  */
-PartArc::~PartArc() {}
+PartArc::~PartArc() {
+	if(m_undo_command) delete m_undo_command;
+}
 
 /**
  * @brief PartArc::paint
@@ -71,7 +76,11 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		drawShadowShape(painter);
 
 	if (isSelected())
+	{
 		drawCross(m_rect.center(), painter);
+		if (scene()->selectedItems().size() == 1)
+			m_handler.drawHandler(painter, m_handler.pointsForRect(m_rect));
+	}
 }
 
 /**
@@ -122,6 +131,69 @@ QPainterPath PartArc::shape() const
 
 	QPainterPathStroker pps;
 	pps.setWidth(penWeight());
+	shape = pps.createStroke(shape);
 
-	return (pps.createStroke(shape));
+	if (isSelected())
+		foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
+			shape.addRect(rect);
+
+	return shape;
+}
+
+/**
+ * @brief PartArc::mousePressEvent
+ * Handle mouse press event
+ * @param event
+ */
+void PartArc::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (isSelected() && event->button() == Qt::LeftButton)
+	{
+		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
+
+		if(m_handler_index >= 0 && m_handler_index <= 7) //User click on an handler
+			m_undo_command = new ChangePartCommand(tr("Arc"), this, "rect", QVariant(m_rect));
+		else
+			CustomElementGraphicPart::mousePressEvent(event);
+	}
+	else
+		CustomElementGraphicPart::mousePressEvent(event);
+}
+
+/**
+ * @brief PartArc::mouseMoveEvent
+ * Handle mouse move event
+ * @param event
+ */
+void PartArc::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if(m_handler_index >= 0 && m_handler_index <= 7)
+	{
+		QPointF pos_ = event->modifiers() == Qt::ControlModifier ? event->pos() : mapFromScene(elementScene()->snapToGrid(event->scenePos()));
+		prepareGeometryChange();
+		setRect(m_handler.rectForPosAtIndex(m_rect, pos_, m_handler_index));
+	}
+	else
+		CustomElementGraphicPart::mouseMoveEvent(event);
+}
+
+/**
+ * @brief PartArc::mouseReleaseEvent
+ * Handle mouse release event
+ * @param event
+ */
+void PartArc::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_handler_index >= 0 && m_handler_index <= 7)
+	{
+		if (!m_rect.isValid())
+			m_rect = m_rect.normalized();
+
+		m_undo_command->setNewValue(QVariant(m_rect));
+		elementScene()->stackAction(m_undo_command);
+		m_undo_command = nullptr;
+		m_handler_index = -1;
+	}
+	else
+		CustomElementGraphicPart::mouseReleaseEvent(event);
 }

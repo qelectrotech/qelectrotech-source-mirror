@@ -1031,11 +1031,16 @@ void ElementScene::managePrimitivesGroups() {
 		decorator_ -> hide();
 	}
 	
-	// should we hide the decorator?
+		// should we hide the decorator?
 	QList<QGraphicsItem *> selected_items = zItems(ElementScene::Selected | ElementScene::IncludeTerminals);
-	if (!selected_items.count()) {
+	if (selected_items.size() == 0)
 		decorator_ -> hide();
-	} else {
+	else if (selected_items.size() == 1 &&
+			 selected_items.first()->type() != PartText::Type &&
+			 selected_items.first()->type() != PartTextField::Type)
+		decorator_->hide();
+	else
+	{
 		decorator_ -> setZValue(1000000);
 		decorator_ -> setPos(0, 0);
 		decorator_ -> setItems(selected_items);

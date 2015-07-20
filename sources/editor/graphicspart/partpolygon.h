@@ -20,6 +20,10 @@
 
 #include <QPolygonF>
 #include "customelementgraphicpart.h"
+#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
+
+
+class ChangePartCommand;
 
 /**
  * @brief The PartPolygon class
@@ -31,6 +35,7 @@ class PartPolygon : public CustomElementGraphicPart
 		Q_OBJECT
 
 		Q_PROPERTY(bool closed READ isClosed WRITE setClosed)
+		Q_PROPERTY(QPolygonF polygon READ polygon WRITE setPolygon)
 
 		// constructors, destructor
 	public:
@@ -73,10 +78,18 @@ class PartPolygon : public CustomElementGraphicPart
 
 		bool isClosed  () const {return m_closed;}
 		void setClosed (bool c) {m_closed = c;}
+
+	protected:
+		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 	
 	private:
 		bool m_closed;
 		QList<QPointF> saved_points_;
 		QPolygonF m_polygon;
+		QetGraphicsHandlerUtility m_handler;
+		int m_handler_index;
+		ChangePartCommand *m_undo_command;
 };
 #endif

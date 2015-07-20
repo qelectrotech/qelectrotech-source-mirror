@@ -39,6 +39,7 @@ class AbstractPartEllipse : public CustomElementGraphicPart
 		Q_PROPERTY(qreal centerY    READ centerY    WRITE setCenterY)
 		Q_PROPERTY(qreal diameter_h READ width      WRITE setWidth)
 		Q_PROPERTY(qreal diameter_v READ height     WRITE setHeight)
+		Q_PROPERTY(QRectF rect READ rect WRITE setRect)
 
 		// constructors, destructor
 	public:

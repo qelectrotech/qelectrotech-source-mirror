@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partellipse.h"
+#include "editorcommands.h"
 
 /**
  * @brief PartEllipse::PartEllipse
@@ -24,14 +25,18 @@
  * @param parent : parent item
  */
 PartEllipse::PartEllipse(QETElementEditor *editor, QGraphicsItem *parent) :
-	AbstractPartEllipse(editor, parent)
+	AbstractPartEllipse(editor, parent),
+	m_handler(10),
+	m_handler_index(-1)
 {}
 
 /**
  * @brief PartEllipse::~PartEllipse
  * Destructor
  */
-PartEllipse::~PartEllipse() {}
+PartEllipse::~PartEllipse() {
+	if(m_undo_command) delete m_undo_command;
+}
 
 /**
  * @brief PartEllipse::paint
@@ -58,7 +63,11 @@ void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 		drawShadowShape(painter);
 
 	if (isSelected())
+	{
 		drawCross(m_rect.center(), painter);
+		if (scene()->selectedItems().size() == 1)
+			m_handler.drawHandler(painter, m_handler.pointsForRect(m_rect));
+	}
 }
 
 /**
@@ -125,6 +134,69 @@ QPainterPath PartEllipse::shape() const
 
 	QPainterPathStroker pps;
 	pps.setWidth(penWeight());
+	shape = pps.createStroke(shape);
 
-	return (pps.createStroke(shape));
+	if (isSelected())
+		foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
+			shape.addRect(rect);
+
+	return shape;
+}
+
+/**
+ * @brief PartEllipse::mousePressEvent
+ * Handle mouse press event
+ * @param event
+ */
+void PartEllipse::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (isSelected() && event->button() == Qt::LeftButton)
+	{
+		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
+
+		if(m_handler_index >= 0 && m_handler_index <= 7) //User click on an handler
+			m_undo_command = new ChangePartCommand(tr("Ellipse"), this, "rect", QVariant(m_rect));
+		else
+			CustomElementGraphicPart::mousePressEvent(event);
+	}
+	else
+		CustomElementGraphicPart::mousePressEvent(event);
+}
+
+/**
+ * @brief PartEllipse::mouseMoveEvent
+ * Handle mouse move event
+ * @param event
+ */
+void PartEllipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if(m_handler_index >= 0 && m_handler_index <= 7)
+	{
+		QPointF pos_ = event->modifiers() == Qt::ControlModifier ? event->pos() : mapFromScene(elementScene()->snapToGrid(event->scenePos()));
+		prepareGeometryChange();
+		setRect(m_handler.rectForPosAtIndex(m_rect, pos_, m_handler_index));
+	}
+	else
+		CustomElementGraphicPart::mouseMoveEvent(event);
+}
+
+/**
+ * @brief PartEllipse::mouseReleaseEvent
+ * Handle mouse release event
+ * @param event
+ */
+void PartEllipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_handler_index >= 0 && m_handler_index <= 7)
+	{
+		if (!m_rect.isValid())
+			m_rect = m_rect.normalized();
+
+		m_undo_command->setNewValue(QVariant(m_rect));
+		elementScene()->stackAction(m_undo_command);
+		m_undo_command = nullptr;
+		m_handler_index = -1;
+	}
+	else
+		CustomElementGraphicPart::mouseReleaseEvent(event);
 }

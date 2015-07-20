@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partrectangle.h"
+#include "elementscene.h"
+#include "editorcommands.h"
 
 /**
  * @brief PartRectangle::PartRectangle
@@ -24,13 +26,17 @@
  * @param parent parent item
  */
 PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent) :
-	CustomElementGraphicPart(editor, parent)
+	CustomElementGraphicPart(editor, parent),
+	m_handler(10),
+	m_handler_index(-1)
 {}
 
 /**
  * @brief PartRectangle::~PartRectangle
  */
-PartRectangle::~PartRectangle() {}
+PartRectangle::~PartRectangle() {
+	if(m_undo_command) delete m_undo_command;
+}
 
 /**
  * @brief PartRectangle::paint
@@ -62,7 +68,11 @@ void PartRectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 		drawShadowShape(painter);
 
 	if (isSelected())
+	{
 		drawCross(m_rect.center(), painter);
+		if (scene()->selectedItems().size() == 1)
+			m_handler.drawHandler(painter, m_handler.pointsForRect(m_rect));
+	}
 }
 
 /**
@@ -91,10 +101,13 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 void PartRectangle::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
-	setRect(QRectF(mapFromScene(qde.attribute("x", "0").toDouble(),
-								qde.attribute("y", "0").toDouble()),
-				   QSizeF(qde.attribute("width",  "0").toDouble(),
-						  qde.attribute("height", "0").toDouble())));
+	setPos(mapFromScene(qde.attribute("x", "0").toDouble(),
+						qde.attribute("y", "0").toDouble()));
+
+	QRectF rect(QPointF(0,0), QSizeF(qde.attribute("width",  "0").toDouble(),
+									 qde.attribute("height", "0").toDouble()));
+
+	setRect(rect.normalized());
 }
 
 /**
@@ -241,4 +254,62 @@ void PartRectangle::handleUserTransformation(const QRectF &initial_selection_rec
 {
 	QList<QPointF> mapped_points = mapPoints(initial_selection_rect, new_selection_rect, saved_points_);
 	setRect(QRectF(mapFromScene(mapped_points.at(0)), mapFromScene(mapped_points.at(1))));
+}
+
+/**
+ * @brief PartRectangle::mousePressEvent
+ * Handle mouse press event
+ * @param event
+ */
+void PartRectangle::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (isSelected() && event->button() == Qt::LeftButton)
+	{
+		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
+
+		if(m_handler_index >= 0 && m_handler_index <= 7) //User click on an handler
+			m_undo_command = new ChangePartCommand(tr("Rectangle"), this, "rect", QVariant(m_rect));
+		else
+			CustomElementGraphicPart::mousePressEvent(event);
+	}
+	else
+		CustomElementGraphicPart::mousePressEvent(event);
+}
+
+/**
+ * @brief PartRectangle::mouseMoveEvent
+ * Handle mouse press event
+ * @param event
+ */
+void PartRectangle::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if(m_handler_index >= 0 && m_handler_index <= 7)
+	{
+		QPointF pos_ = event->modifiers() == Qt::ControlModifier ? event->pos() : mapFromScene(elementScene()->snapToGrid(event->scenePos()));
+		prepareGeometryChange();
+		setRect(m_handler.rectForPosAtIndex(m_rect, pos_, m_handler_index));
+	}
+	else
+		CustomElementGraphicPart::mouseMoveEvent(event);
+}
+
+/**
+ * @brief PartRectangle::mouseReleaseEvent
+ * Handle mouse release event
+ * @param event
+ */
+void PartRectangle::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_handler_index >= 0 && m_handler_index <= 7)
+	{
+		if (!m_rect.isValid())
+			m_rect = m_rect.normalized();
+
+		m_undo_command->setNewValue(QVariant(m_rect));
+		elementScene()->stackAction(m_undo_command);
+		m_undo_command = nullptr;
+		m_handler_index = -1;
+	}
+	else
+		CustomElementGraphicPart::mouseReleaseEvent(event);
 }

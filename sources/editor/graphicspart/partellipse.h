@@ -19,6 +19,9 @@
 #define PART_ELLIPSE_H
 
 #include "abstractpartellipse.h"
+#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
+
+class ChangePartCommand;
 
 /**
  * @brief The PartEllipse class
@@ -54,5 +57,15 @@ class PartEllipse : public  AbstractPartEllipse
 		virtual void              fromXml (const QDomElement &);
 
 		virtual QPainterPath shape() const;
+
+	protected:
+		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+
+	private:
+		QetGraphicsHandlerUtility m_handler;
+		int m_handler_index;
+		ChangePartCommand *m_undo_command;
 };
 #endif

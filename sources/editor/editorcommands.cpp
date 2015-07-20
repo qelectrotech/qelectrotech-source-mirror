@@ -322,13 +322,24 @@ ChangePartCommand::ChangePartCommand(
 	ElementEditionCommand(QString(QObject::tr("modification %1", "undo caption")).arg(name), 0, 0, parent),
 	cep(part),
 	property(prop),
-	old_value(old_v),
-	new_value(new_v)
+	m_old_value(old_v),
+	m_new_value(new_v)
 {
 }
 
+ChangePartCommand::ChangePartCommand(const QString &part_name, CustomElementPart *part, const char *property_name, const QVariant &old_value, QUndoCommand *parent) :
+	ElementEditionCommand(QString(QObject::tr("modification %1", "undo caption")).arg(part_name), 0, 0, parent),
+	cep(part),
+	property(property_name),
+	m_old_value(old_value)
+{}
+
 /// Destructeur
 ChangePartCommand::~ChangePartCommand() {
+}
+
+void ChangePartCommand::setNewValue(const QVariant &new_value) {
+	m_new_value = new_value;
 }
 
 /**
@@ -336,7 +347,7 @@ ChangePartCommand::~ChangePartCommand() {
  */
 void ChangePartCommand::undo()
 {
-	cep -> setProperty(property, old_value);
+	cep -> setProperty(property, m_old_value);
 	ElementEditionCommand::undo();
 }
 
@@ -345,7 +356,7 @@ void ChangePartCommand::undo()
  */
 void ChangePartCommand::redo()
 {
-	cep -> setProperty(property, new_value);
+	cep -> setProperty(property, m_new_value);
 	ElementEditionCommand::redo();
 }
 

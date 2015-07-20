@@ -17,6 +17,7 @@
 */
 #include "partline.h"
 #include <cmath>
+#include "editorcommands.h"
 
 
 /**
@@ -30,11 +31,15 @@ PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent) :
 	first_end(Qet::None),
 	first_length(1.5),
 	second_end(Qet::None),
-	second_length(1.5)
+	second_length(1.5),
+	m_handler(10),
+	m_handler_index(-1)
 {}
 
 /// Destructeur
-PartLine::~PartLine() {}
+PartLine::~PartLine() {
+	if(m_undo_command) delete m_undo_command;
+}
 
 /**
  * @brief PartLine::requiredLengthForEndType
@@ -65,13 +70,13 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
 	Q_UNUSED(widget);
 	if (isUseless()) return;
 
+	painter->save();
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
 	t.setJoinStyle(Qt::MiterJoin);
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
 
-	if (isSelected())
-		t.setColor(Qt::red);
+	if (isSelected()) t.setColor(Qt::red);
 
 	painter -> setPen(t);
 	
@@ -82,6 +87,11 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
 
 	if (m_hovered)
 		drawShadowShape(painter);
+
+	if (isSelected() && scene()->selectedItems().size() == 1)
+		m_handler.drawHandler(painter, m_handler.pointsForLine(m_line));
+
+	painter->restore();
 }
 
 /**
@@ -165,6 +175,61 @@ void PartLine::setP2(const QPointF &p2)
 	if (p2 == m_line.p2()) return;
 	prepareGeometryChange();
 	m_line.setP2(p2);
+}
+
+/**
+ * @brief PartLine::mousePressEvent
+ * Handle mouse press event
+ * @param event
+ */
+void PartLine::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if(isSelected() && event->button() == Qt::LeftButton)
+	{
+		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForLine(m_line));
+
+		if(m_handler_index >= 0 && m_handler_index <= 1) //User click on an handler
+			m_undo_command = new ChangePartCommand(tr("Ligne"), this, "line", QVariant(m_line));
+		else
+			CustomElementGraphicPart::mousePressEvent(event);
+	}
+	else
+		CustomElementGraphicPart::mousePressEvent(event);
+}
+
+/**
+ * @brief PartLine::mouseMoveEvent
+ * Handle pouse move event
+ * @param event
+ */
+void PartLine::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if(m_handler_index >= 0 && m_handler_index <= 1)
+	{
+		QPointF pos_ = event->modifiers() == Qt::ControlModifier ? event->pos() : mapFromScene(elementScene()->snapToGrid(event->scenePos()));
+		prepareGeometryChange();
+		setLine(m_handler.lineForPosAtIndex(m_line, pos_, m_handler_index));
+	}
+	else
+		CustomElementGraphicPart::mouseMoveEvent(event);
+}
+
+/**
+ * @brief PartLine::mouseReleaseEvent
+ * Handle mouse release event
+ * @param event
+ */
+void PartLine::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_handler_index >= 0 && m_handler_index <= 1)
+	{
+		m_undo_command->setNewValue(QVariant(m_line));
+		elementScene()->stackAction(m_undo_command);
+		m_undo_command = nullptr;
+		m_handler_index = -1;
+	}
+	else
+		CustomElementGraphicPart::mouseReleaseEvent(event);
 }
 
 /**
@@ -418,6 +483,19 @@ QList<QPointF> PartLine::fourEndPoints(const QPointF &end_point, const QPointF &
 	QPointF c(o - v);
 	
 	return(QList<QPointF>() << o << a << b << c);
+}
+
+QLineF PartLine::line() const {
+	return m_line;
+}
+
+void PartLine::setLine(const QLineF &line)
+{
+	if (m_line != line)
+	{
+		prepareGeometryChange();
+		m_line = line;
+	}
 }
 
 /**

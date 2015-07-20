@@ -156,6 +156,17 @@ QVector<QPointF> QetGraphicsHandlerUtility::pointsForRect(const QRectF &rect)
 }
 
 /**
+ * @brief QetGraphicsHandlerUtility::pointsForLine
+ * The point that define a line in a QVector.
+ * there is two points.
+ * @param line
+ * @return
+ */
+QVector<QPointF> QetGraphicsHandlerUtility::pointsForLine(const QLineF &line) {
+	return (QVector<QPointF> {line.p1(), line.p2()});
+}
+
+/**
  * @brief QetGraphicsHandlerUtility::rectForPosAtIndex
  * Return a rectangle after modification of the point '@pos' at index '@index' of original rectangle '@old_rect'.
  * @param old_rect - the rectangle befor modification
@@ -179,4 +190,18 @@ QRectF QetGraphicsHandlerUtility::rectForPosAtIndex(const QRectF &old_rect, cons
 	else if (index == 7) rect.setBottomRight(pos);
 
 	return rect;
+}
+
+/**
+ * @brief QetGraphicsHandlerUtility::lineForPosAtIndex
+ * Return a line after modification of @pos at index @index of @old_line.
+ * @param old_line
+ * @param pos
+ * @param index
+ * @return
+ */
+QLineF QetGraphicsHandlerUtility::lineForPosAtIndex(const QLineF &old_line, const QPointF &pos, int index) {
+	QLineF line = old_line;
+	index == 0 ? line.setP1(pos) : line.setP2(pos);
+	return line;
 }

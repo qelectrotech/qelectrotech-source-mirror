@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partpolygon.h"
+#include "editorcommands.h"
+
 
 /**
  * @brief PartPolygon::PartPolygon
@@ -25,7 +27,9 @@
  */
 PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent),
-	m_closed(false)
+	m_closed(false),
+	m_handler(10),
+	m_handler_index(-1)
 {}
 
 /**
@@ -56,6 +60,9 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
 	if (m_hovered)
 		drawShadowShape(painter);
+
+	if (isSelected() && scene()->selectedItems().size() == 1)
+		m_handler.drawHandler(painter, m_polygon);
 }
 
 /**
@@ -226,6 +233,61 @@ void PartPolygon::removeLastPoint()
 		prepareGeometryChange();
 		m_polygon.pop_back();
 	}
+}
+
+/**
+ * @brief PartPolygon::mousePressEvent
+ * Handle mouse press event
+ * @param event
+ */
+void PartPolygon::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (isSelected() && event->button() == Qt::LeftButton)
+	{
+		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_polygon);
+
+		if(m_handler_index >= 0) //User click on an handler
+			m_undo_command = new ChangePartCommand(tr("Polygone"), this, "polygon", QVariant(m_polygon));
+		else
+			CustomElementGraphicPart::mousePressEvent(event);
+	}
+	else
+		CustomElementGraphicPart::mousePressEvent(event);
+}
+
+/**
+ * @brief PartPolygon::mouseMoveEvent
+ * Handle mouse move event
+ * @param event
+ */
+void PartPolygon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if(m_handler_index >= 0)
+	{
+		QPointF pos_ = event->modifiers() == Qt::ControlModifier ? event->pos() : mapFromScene(elementScene()->snapToGrid(event->scenePos()));
+		prepareGeometryChange();
+		m_polygon.replace(m_handler_index, pos_);
+	}
+	else
+		CustomElementGraphicPart::mouseMoveEvent(event);
+}
+
+/**
+ * @brief PartPolygon::mouseReleaseEvent
+ * Handle mouse release event
+ * @param event
+ */
+void PartPolygon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_handler_index >= 0)
+	{
+		m_undo_command->setNewValue(QVariant(m_polygon));
+		elementScene()->stackAction(m_undo_command);
+		m_undo_command = nullptr;
+		m_handler_index = -1;
+	}
+	else
+		CustomElementGraphicPart::mouseReleaseEvent(event);
 }
 
 /**
