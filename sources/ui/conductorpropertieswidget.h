@@ -66,7 +66,6 @@ class ConductorPropertiesWidget : public QWidget
 		Ui::ConductorPropertiesWidget *ui;
 		ConductorProperties m_properties;
 		QTextOrientationSpinBoxWidget *m_verti_select, *m_horiz_select;
-		bool m_activation;
 };
 
 #endif // CONDUCTORPROPERTIESWIDGET_H

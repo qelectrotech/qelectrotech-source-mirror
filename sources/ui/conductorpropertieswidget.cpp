@@ -28,8 +28,7 @@
  */
 ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::ConductorPropertiesWidget),
-	m_activation (true)
+	ui(new Ui::ConductorPropertiesWidget)
 {
 	ui->setupUi(this);
 	initWidget();
@@ -125,12 +124,8 @@ ConductorProperties ConductorPropertiesWidget::properties() const {
  */
 bool ConductorPropertiesWidget::event(QEvent *event)
 {
-	if (m_activation)
-	{
-			if (event -> type() == QEvent::WindowActivate || event -> type() == QEvent::Show)
-			{
-					ui -> m_text_le -> setFocus();
-			}
+	if (event->type() == QEvent::WindowActivate) {
+		ui -> m_text_le -> setFocus();
 	}
 	return(QWidget::event(event));
 }
