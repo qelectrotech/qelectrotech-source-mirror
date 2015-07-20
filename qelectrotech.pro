@@ -63,6 +63,7 @@ DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
 include(sources/PropertiesEditor/PropertiesEditor.pri)
 include(sources/QetGraphicsItemModeler/QetGraphicsItemModeler.pri)
+include(sources/QPropertyUndoCommand/QPropertyUndoCommand.pri)
 
 TEMPLATE = app
 DEPENDPATH += .

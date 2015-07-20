@@ -16,7 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partpolygon.h"
-#include "editorcommands.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "elementscene.h"
 
 
 /**
@@ -29,13 +30,16 @@ PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent),
 	m_closed(false),
 	m_handler(10),
-	m_handler_index(-1)
+	m_handler_index(-1),
+	m_undo_command(nullptr)
 {}
 
 /**
  * @brief PartPolygon::~PartPolygon
  */
-PartPolygon::~PartPolygon() {}
+PartPolygon::~PartPolygon() {
+	if(m_undo_command) delete m_undo_command;
+}
 
 /**
  * @brief PartPolygon::paint
@@ -247,7 +251,10 @@ void PartPolygon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_polygon);
 
 		if(m_handler_index >= 0) //User click on an handler
-			m_undo_command = new ChangePartCommand(tr("Polygone"), this, "polygon", QVariant(m_polygon));
+		{
+			m_undo_command = new QPropertyUndoCommand(this, "polygon", QVariant(m_polygon));
+			m_undo_command->setText(tr("Modifier un polygone"));
+		}
 		else
 			CustomElementGraphicPart::mousePressEvent(event);
 	}
@@ -282,7 +289,7 @@ void PartPolygon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	if (m_handler_index >= 0)
 	{
 		m_undo_command->setNewValue(QVariant(m_polygon));
-		elementScene()->stackAction(m_undo_command);
+		elementScene()->undoStack().push(m_undo_command);
 		m_undo_command = nullptr;
 		m_handler_index = -1;
 	}

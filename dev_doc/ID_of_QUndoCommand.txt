@@ -3,3 +3,4 @@ LinkElementCommand = 2
 ItemResizerCommand = 3
 ChangeShapeStyleCommand = 4
 QetShapeGeometryCommand = 5
+QPropertyUndoCommand = 10 000

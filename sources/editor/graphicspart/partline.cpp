@@ -17,7 +17,8 @@
 */
 #include "partline.h"
 #include <cmath>
-#include "editorcommands.h"
+#include "elementscene.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 
 /**
@@ -33,7 +34,8 @@ PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent) :
 	second_end(Qet::None),
 	second_length(1.5),
 	m_handler(10),
-	m_handler_index(-1)
+	m_handler_index(-1),
+	m_undo_command(nullptr)
 {}
 
 /// Destructeur
@@ -189,7 +191,11 @@ void PartLine::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForLine(m_line));
 
 		if(m_handler_index >= 0 && m_handler_index <= 1) //User click on an handler
-			m_undo_command = new ChangePartCommand(tr("Ligne"), this, "line", QVariant(m_line));
+		{
+			m_undo_command = new QPropertyUndoCommand(this, "line", QVariant(m_line));
+			m_undo_command->setText(tr("Modifier une ligne"));
+			m_undo_command->enableAnimation();
+		}
 		else
 			CustomElementGraphicPart::mousePressEvent(event);
 	}
@@ -224,7 +230,7 @@ void PartLine::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	if (m_handler_index >= 0 && m_handler_index <= 1)
 	{
 		m_undo_command->setNewValue(QVariant(m_line));
-		elementScene()->stackAction(m_undo_command);
+		elementScene()->undoStack().push(m_undo_command);
 		m_undo_command = nullptr;
 		m_handler_index = -1;
 	}

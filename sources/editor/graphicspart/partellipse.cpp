@@ -16,7 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partellipse.h"
-#include "editorcommands.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "elementscene.h"
 
 /**
  * @brief PartEllipse::PartEllipse
@@ -27,7 +28,8 @@
 PartEllipse::PartEllipse(QETElementEditor *editor, QGraphicsItem *parent) :
 	AbstractPartEllipse(editor, parent),
 	m_handler(10),
-	m_handler_index(-1)
+	m_handler_index(-1),
+	m_undo_command(nullptr)
 {}
 
 /**
@@ -155,7 +157,11 @@ void PartEllipse::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
 
 		if(m_handler_index >= 0 && m_handler_index <= 7) //User click on an handler
-			m_undo_command = new ChangePartCommand(tr("Ellipse"), this, "rect", QVariant(m_rect));
+		{
+			m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
+			m_undo_command->setText(tr("Modifier une ellipse"));
+			m_undo_command->enableAnimation();
+		}
 		else
 			CustomElementGraphicPart::mousePressEvent(event);
 	}
@@ -193,7 +199,7 @@ void PartEllipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 			m_rect = m_rect.normalized();
 
 		m_undo_command->setNewValue(QVariant(m_rect));
-		elementScene()->stackAction(m_undo_command);
+		elementScene()->undoStack().push(m_undo_command);
 		m_undo_command = nullptr;
 		m_handler_index = -1;
 	}

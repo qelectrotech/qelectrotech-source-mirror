@@ -23,7 +23,7 @@
 #include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 
-class ChangePartCommand;
+class QPropertyUndoCommand;
 
 /**
  * @brief The PartPolygon class
@@ -90,6 +90,6 @@ class PartPolygon : public CustomElementGraphicPart
 		QPolygonF m_polygon;
 		QetGraphicsHandlerUtility m_handler;
 		int m_handler_index;
-		ChangePartCommand *m_undo_command;
+		QPropertyUndoCommand *m_undo_command;
 };
 #endif

@@ -22,7 +22,7 @@
 #include "qet.h"
 #include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
-class ChangePartCommand;
+class QPropertyUndoCommand;
 
 /**
 	This class represents a line primitive which may be used to compose the
@@ -119,6 +119,6 @@ class PartLine : public CustomElementGraphicPart
 		QLineF m_line;
 		QetGraphicsHandlerUtility m_handler;
 		int m_handler_index;
-		ChangePartCommand *m_undo_command;
+		QPropertyUndoCommand *m_undo_command;
 };
 #endif

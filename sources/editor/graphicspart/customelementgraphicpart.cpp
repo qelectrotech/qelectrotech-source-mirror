@@ -17,7 +17,7 @@
 */
 #include "customelementgraphicpart.h"
 #include "elementscene.h"
-#include "editorcommands.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
  * @brief CustomElementGraphicPart::CustomElementGraphicPart
@@ -40,7 +40,6 @@ CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor, QGr
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
-	setAcceptedMouseButtons(Qt::LeftButton);
 	setAcceptHoverEvents(true);
 }
 
@@ -462,7 +461,12 @@ void CustomElementGraphicPart::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void CustomElementGraphicPart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if((event->button() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable) && m_origin_pos != pos())
-		elementScene()->stackAction(new MovePartsCommand(pos() - m_origin_pos, 0, QList<QGraphicsItem*>{this}));
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origin_pos), QVariant(pos()));
+		undo->setText(tr("Déplacer une primitive"));
+		undo->enableAnimation();
+		elementScene()->undoStack().push(undo);
+	}
 
 	QGraphicsObject::mouseReleaseEvent(event);
 }

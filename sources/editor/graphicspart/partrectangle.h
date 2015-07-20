@@ -21,7 +21,7 @@
 #include "customelementgraphicpart.h"
 #include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
-class ChangePartCommand;
+class QPropertyUndoCommand;
 
 /**
  * This class represents a rectangle primitive which may be used to compose the
@@ -92,6 +92,6 @@ class PartRectangle :  public CustomElementGraphicPart
 		QList<QPointF> saved_points_;
 		QetGraphicsHandlerUtility m_handler;
 		int m_handler_index;
-		ChangePartCommand *m_undo_command;
+		QPropertyUndoCommand *m_undo_command;
 };
 #endif

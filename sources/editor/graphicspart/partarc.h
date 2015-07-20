@@ -21,7 +21,7 @@
 #include "abstractpartellipse.h"
 #include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
-class ChangePartCommand;
+class QPropertyUndoCommand;
 
 /**
  * @brief The PartArc class
@@ -65,6 +65,6 @@ class PartArc : public AbstractPartEllipse
 	private:
 		QetGraphicsHandlerUtility m_handler;
 		int m_handler_index;
-		ChangePartCommand *m_undo_command;
+		QPropertyUndoCommand *m_undo_command;
 };
 #endif

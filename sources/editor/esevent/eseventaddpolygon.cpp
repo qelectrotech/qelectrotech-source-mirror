@@ -103,13 +103,16 @@ bool ESEventAddPolygon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
  * @param event
  * @return
  */
-bool ESEventAddPolygon::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	if (event -> button() == Qt::LeftButton) {
-		if (m_polygon) {
-			m_polygon -> addPoint(m_scene -> snapToGrid(event -> scenePos()));
+bool ESEventAddPolygon::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (event -> button() == Qt::LeftButton)
+	{
+		if (m_polygon)
+		{
+			m_polygon->removeLastPoint();
 			m_scene   -> undoStack().push(new AddPartCommand(QObject::tr("Polygone"), m_scene, m_polygon));
 
-			//Set m_polygon to nullptr for create new polygon at next mouse press
+				//Set m_polygon to nullptr for create new polygon at next mouse press
 			m_polygon = nullptr;
 			return true;
 		}

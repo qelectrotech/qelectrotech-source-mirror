@@ -17,7 +17,7 @@
 */
 #include "partrectangle.h"
 #include "elementscene.h"
-#include "editorcommands.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
  * @brief PartRectangle::PartRectangle
@@ -28,7 +28,8 @@
 PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent),
 	m_handler(10),
-	m_handler_index(-1)
+	m_handler_index(-1),
+	m_undo_command(nullptr)
 {}
 
 /**
@@ -268,7 +269,11 @@ void PartRectangle::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
 
 		if(m_handler_index >= 0 && m_handler_index <= 7) //User click on an handler
-			m_undo_command = new ChangePartCommand(tr("Rectangle"), this, "rect", QVariant(m_rect));
+		{
+			m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
+			m_undo_command->setText(tr("Modifier un rectangle"));
+			m_undo_command->enableAnimation();
+		}
 		else
 			CustomElementGraphicPart::mousePressEvent(event);
 	}
@@ -306,7 +311,7 @@ void PartRectangle::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 			m_rect = m_rect.normalized();
 
 		m_undo_command->setNewValue(QVariant(m_rect));
-		elementScene()->stackAction(m_undo_command);
+		elementScene()->undoStack().push(m_undo_command);
 		m_undo_command = nullptr;
 		m_handler_index = -1;
 	}
