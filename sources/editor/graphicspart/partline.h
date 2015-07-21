@@ -74,6 +74,7 @@ class PartLine : public CustomElementGraphicPart
 		virtual QPointF sceneP1() const;
 		virtual QPointF sceneP2() const;
 		virtual QPainterPath shape() const;
+		virtual QPainterPath shadowShape() const;
 		virtual QRectF boundingRect() const;
 		virtual bool isUseless() const;
 		virtual QRectF sceneGeometricRect() const;

@@ -311,6 +311,25 @@ QPainterPath PartPolygon::shape() const
 
 	QPainterPathStroker pps;
 	pps.setWidth(penWeight());
+	shape = pps.createStroke(shape);
+
+	if (isSelected())
+		foreach(QRectF rect, m_handler.handlerRect(m_polygon))
+			shape.addRect(rect);
+
+	return shape;
+}
+
+QPainterPath PartPolygon::shadowShape() const
+{
+	QPainterPath shape;
+	shape.addPolygon(m_polygon);
+
+	if (m_closed)
+		shape.lineTo(m_polygon.first());
+
+	QPainterPathStroker pps;
+	pps.setWidth(penWeight());
 
 	return (pps.createStroke(shape));
 }
@@ -329,5 +348,9 @@ QRectF PartPolygon::boundingRect() const
 	if (penWeight() == 0) adjust += 0.5;
 
 	r.adjust(-adjust, -adjust, adjust, adjust);
+
+	foreach(QRectF rect, m_handler.handlerRect(m_polygon))
+		r |=rect;
+
 	return(r);
 }

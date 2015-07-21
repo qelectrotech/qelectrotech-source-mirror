@@ -55,7 +55,9 @@ class PartArc : public AbstractPartEllipse
 		virtual const QDomElement toXml   (QDomDocument &) const;
 		virtual void              fromXml (const QDomElement &);
 
+		virtual QRectF boundingRect()  const;
 		virtual QPainterPath shape() const;
+		virtual QPainterPath shadowShape() const;
 
 	protected:
 		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);

@@ -61,6 +61,7 @@ class PartPolygon : public CustomElementGraphicPart
 		const QDomElement toXml(QDomDocument &) const;
 
 		virtual QPainterPath shape () const;
+		virtual QPainterPath shadowShape() const;
 		virtual QRectF boundingRect() const;
 		virtual bool isUseless() const;
 		virtual QRectF sceneGeometricRect() const;

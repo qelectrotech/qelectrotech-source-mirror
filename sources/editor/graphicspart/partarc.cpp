@@ -122,6 +122,16 @@ void PartArc::fromXml(const QDomElement &qde) {
 	m_span_angle  = qde.attribute("angle", "-1440").toInt() * 16;
 }
 
+QRectF PartArc::boundingRect() const
+{
+	QRectF r = AbstractPartEllipse::boundingRect();
+
+	foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
+		r |= rect;
+
+	return r;
+}
+
 /**
  * @brief PartArc::shape
  * @return the shape of this item
@@ -141,6 +151,18 @@ QPainterPath PartArc::shape() const
 			shape.addRect(rect);
 
 	return shape;
+}
+
+QPainterPath PartArc::shadowShape() const
+{
+	QPainterPath shape;
+	shape.arcMoveTo(m_rect, m_start_angle/16);
+	shape.arcTo(m_rect, m_start_angle/16, m_span_angle/16);
+
+	QPainterPathStroker pps;
+	pps.setWidth(penWeight());
+
+	return (pps.createStroke(shape));
 }
 
 /**

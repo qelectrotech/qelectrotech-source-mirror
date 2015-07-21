@@ -393,7 +393,7 @@ void CustomElementGraphicPart::drawShadowShape(QPainter *painter)
 	color.setAlpha(50);
 	painter -> setBrush (QBrush (color));
 	painter -> setPen   (Qt::NoPen);
-	painter -> drawPath (strock.createStroke(shape()));
+	painter -> drawPath (strock.createStroke(shadowShape()));
 	painter -> restore  ();
 }
 

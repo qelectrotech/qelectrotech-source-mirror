@@ -202,6 +202,22 @@ QPainterPath PartRectangle::shape() const
 
 	QPainterPathStroker pps;
 	pps.setWidth(penWeight());
+	shape = pps.createStroke(shape);
+
+	if (isSelected())
+		foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
+			shape.addRect(rect);
+
+	return shape;
+}
+
+QPainterPath PartRectangle::shadowShape() const
+{
+	QPainterPath shape;
+	shape.addRect(m_rect);
+
+	QPainterPathStroker pps;
+	pps.setWidth(penWeight());
 
 	return (pps.createStroke(shape));
 }
@@ -219,6 +235,10 @@ QRectF PartRectangle::boundingRect() const
 
 	QRectF r = m_rect.normalized();
 	r.adjust(-adjust, -adjust, adjust, adjust);
+
+	foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
+		r |= rect;
+
 	return(r);
 }
 

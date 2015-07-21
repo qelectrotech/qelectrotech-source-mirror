@@ -76,6 +76,7 @@ class PartRectangle :  public CustomElementGraphicPart
 		virtual QPointF sceneTopLeft() const;
 
 		virtual QPainterPath shape () const;
+		virtual QPainterPath shadowShape() const;
 		virtual QRectF boundingRect() const;
 		virtual bool   isUseless() const;
 

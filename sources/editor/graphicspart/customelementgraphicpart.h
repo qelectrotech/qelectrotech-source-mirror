@@ -92,6 +92,8 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		virtual void     setProperty (const char *name, const QVariant &value) {QObject::setProperty(name, value);}
 		virtual QVariant property    (const char *name) const                  {return QObject::property(name);}
 
+		virtual QPainterPath shadowShape ()const = 0;
+
 	protected:
 		void stylesToXml  (QDomElement &) const;
 		void stylesFromXml(const QDomElement &);

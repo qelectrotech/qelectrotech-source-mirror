@@ -57,6 +57,7 @@ class PartTerminal : public CustomElementGraphicPart
 		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 
 		virtual QPainterPath shape() const;
+		virtual QPainterPath shadowShape() const {return shape();}
 		virtual QRectF boundingRect() const;
 		virtual bool isUseless() const;
 		virtual QRectF sceneGeometricRect() const;

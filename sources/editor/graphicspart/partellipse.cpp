@@ -125,6 +125,16 @@ void PartEllipse::fromXml(const QDomElement &qde)
 					QSizeF(width, height));
 }
 
+QRectF PartEllipse::boundingRect() const
+{
+	QRectF r = AbstractPartEllipse::boundingRect();
+
+	foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForRect(m_rect)))
+		r |= rect;
+
+	return r;
+}
+
 /**
  * @brief PartEllipse::shape
  * @return the shape of this item
@@ -143,6 +153,17 @@ QPainterPath PartEllipse::shape() const
 			shape.addRect(rect);
 
 	return shape;
+}
+
+QPainterPath PartEllipse::shadowShape() const
+{
+	QPainterPath shape;
+	shape.addEllipse(m_rect);
+
+	QPainterPathStroker pps;
+	pps.setWidth(penWeight());
+
+	return (pps.createStroke(shape));
 }
 
 /**

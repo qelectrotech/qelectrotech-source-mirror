@@ -274,6 +274,31 @@ QPainterPath PartLine::shape() const
 
 	QPainterPathStroker pps;
 	pps.setWidth(penWeight());
+	shape = pps.createStroke(shape);
+
+	if (isSelected())
+		foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForLine(m_line)))
+			shape.addRect(rect);
+
+	return shape;
+}
+
+QPainterPath PartLine::shadowShape() const
+{
+	QPainterPath shape;
+
+		//We calcul path only if there is an end type
+		//Else we just draw a line
+	if (first_end || second_end)
+		shape.addPath(path());
+	else
+	{
+		shape.moveTo(m_line.p1());
+		shape.lineTo(m_line.p2());
+	}
+
+	QPainterPathStroker pps;
+	pps.setWidth(penWeight());
 
 	return (pps.createStroke(shape));
 }
@@ -409,6 +434,10 @@ QRectF PartLine::boundingRect() const
 
 	bound = bound.normalized();
 	bound.adjust(-adjust, -adjust, adjust, adjust);
+
+	foreach(QRectF rect, m_handler.handlerRect(m_handler.pointsForLine(m_line)))
+		bound |= rect;
+
 	return bound;
 }
 
