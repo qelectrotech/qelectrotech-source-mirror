@@ -32,7 +32,7 @@
 ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
 	AbstractElementPropertiesEditorWidget(parent),
 	ui(new Ui::ElementInfoWidget),
-	m_first_activation (false)
+	m_first_activation (true)
 {
 	ui->setupUi(this);
 	buildInterface();
