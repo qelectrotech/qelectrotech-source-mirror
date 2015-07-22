@@ -18,6 +18,8 @@
 #include "rectangleeditor.h"
 #include "partrectangle.h"
 #include "styleeditor.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "elementscene.h"
 
 /**
 	Constructeur
@@ -27,7 +29,8 @@
 */
 RectangleEditor::RectangleEditor(QETElementEditor *editor, PartRectangle *rect, QWidget *parent) :
 	ElementItemEditor(editor, parent),
-	part(rect)
+	part(rect),
+	m_locked(false)
 {
 	style_ = new StyleEditor(editor);
 	
@@ -67,32 +70,42 @@ RectangleEditor::~RectangleEditor() {
 }
 
 /**
-	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
-	qu'un editeur peut accepter ou refuser d'editer une primitive.
-	L'editeur de rectangle acceptera d'editer la primitive new_part s'il s'agit
-	d'un objet de la classe PartRectangle.
-	@param new_part Nouvelle primitive a editer
-	@return true si l'editeur a accepter d'editer la primitive, false sinon
-*/
-bool RectangleEditor::setPart(CustomElementPart *new_part) {
-	if (!new_part) {
+ * @brief RectangleEditor::setPart
+ * Specifie to this editor the part to edit.
+ * Note that an editor can accept or refuse to edit a part. This editor accept only partRectangle.
+ * @param new_part
+ * @return
+ */
+bool RectangleEditor::setPart(CustomElementPart *new_part)
+{
+	if (!new_part)
+	{
+		if (part)
+			disconnect(part, &PartRectangle::rectChanged, this, &RectangleEditor::updateForm);
 		part = 0;
 		style_ -> setPart(0);
 		return(true);
 	}
-	if (PartRectangle *part_rectangle = dynamic_cast<PartRectangle *>(new_part)) {
+
+	if (PartRectangle *part_rectangle = dynamic_cast<PartRectangle *>(new_part))
+	{
+		if (part == part_rectangle) return true;
+		if (part)
+			disconnect(part, &PartRectangle::rectChanged, this, &RectangleEditor::updateForm);
 		part = part_rectangle;
 		style_ -> setPart(part);
 		updateForm();
+		connect(part, &PartRectangle::rectChanged, this, &RectangleEditor::updateForm);
 		return(true);
-	} else {
-		return(false);
 	}
+
+	return(false);
 }
 
 /**
-	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
-*/
+ * @brief RectangleEditor::currentPart
+ * @return the curent edited part, or 0 if there is no edited part
+ */
 CustomElementPart *RectangleEditor::currentPart() const {
 	return(part);
 }
@@ -106,52 +119,63 @@ QPointF RectangleEditor::editedTopLeft() const {
 }
 
 /**
-	Met a jour le rectangle a partir des donnees du formulaire
-*/
-void RectangleEditor::updateRectangle() {
-	if (!part) return;
-	part -> setProperty("rectTopLeft", editedTopLeft());
-	part -> setProperty("width",  w -> value());
-	part -> setProperty("height", h -> value());
-}
-
-/// Met a jour l'abscisse du coin superieur gauche du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleX() { addChangePartCommand(tr("abscisse"),               part, "rectTopLeft", editedTopLeft());}
-/// Met a jour l'ordonnee du coin superieur gauche du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleY() { addChangePartCommand(tr("ordonnée"),            part, "rectTopLeft", editedTopLeft());}
-/// Met a jour la largeur du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleW() { addChangePartCommand(tr("largeur"),                part, "width",       w  -> value());}
-/// Met a jour la hauteur du rectangle et cree un objet d'annulation
-void RectangleEditor::updateRectangleH() { addChangePartCommand(tr("hauteur"),                part, "height",      h  -> value());}
-
-/**
-	Met a jour le formulaire d'edition
-*/
-void RectangleEditor::updateForm() {
+ * @brief RectangleEditor::updateForm
+ * Update the values displayed by this widget
+ */
+void RectangleEditor::updateForm()
+{
 	if (!part) return;
 	activeConnections(false);
-	QPointF p = part->mapToScene(part->property("rectTopLeft").toPointF());
+
+	QRectF rect = part->property("rect").toRectF();
+	QPointF p = part->mapToScene(rect.topLeft());
 	x->setValue(p.x());
 	y->setValue(p.y());
-	w->setValue(part->property("width").toReal());
-	h->setValue(part->property("height").toReal());
+	w->setValue(rect.width());
+	h->setValue(rect.height());
+
 	activeConnections(true);
 }
 
 /**
-	Active ou desactive les connexionx signaux/slots entre les widgets internes.
-	@param active true pour activer les connexions, false pour les desactiver
-*/
-void RectangleEditor::activeConnections(bool active) {
-	if (active) {
-		connect(x, SIGNAL(editingFinished()), this, SLOT(updateRectangleX()));
-		connect(y, SIGNAL(editingFinished()), this, SLOT(updateRectangleY()));
-		connect(w, SIGNAL(editingFinished()), this, SLOT(updateRectangleW()));
-		connect(h, SIGNAL(editingFinished()), this, SLOT(updateRectangleH()));
-	} else {
-		disconnect(x, SIGNAL(editingFinished()), this, SLOT(updateRectangleX()));
-		disconnect(y, SIGNAL(editingFinished()), this, SLOT(updateRectangleY()));
-		disconnect(w, SIGNAL(editingFinished()), this, SLOT(updateRectangleW()));
-		disconnect(h, SIGNAL(editingFinished()), this, SLOT(updateRectangleH()));
+ * @brief RectangleEditor::editingFinished
+ * Slot called when a editor widget is finish to be edited
+ * Update the geometry of the rectangle according to value of editing widget.
+ */
+void RectangleEditor::editingFinished()
+{
+	if (m_locked) return;
+	m_locked = true;
+
+	QRectF rect(editedTopLeft(), QSizeF(w->value(), h->value()));
+	QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "rect", part->property("rect"), rect);
+	undo->setText(tr("Modifier un rectangle"));
+	undo->enableAnimation();
+	elementScene()->undoStack().push(undo);
+
+	m_locked = false;
+}
+
+/**
+ * @brief RectangleEditor::activeConnections
+ * Enable/disable connection between editor widget and slot editingFinished
+ * True == enable | false == disable
+ * @param active
+ */
+void RectangleEditor::activeConnections(bool active)
+{
+	if (active)
+	{
+		connect(x, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
+		connect(y, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
+		connect(w, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
+		connect(h, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
+	}
+	else
+	{
+		disconnect(x, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
+		disconnect(y, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
+		disconnect(w, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
+		disconnect(h, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
 	}
 }

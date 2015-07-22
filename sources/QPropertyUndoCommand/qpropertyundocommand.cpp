@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qpropertyundocommand.h"
-#include <QAnimationGroup>
+#include <QPropertyAnimation>
 
 /**
  * @brief QPropertyUndoCommand::QPropertyUndoCommand
@@ -33,12 +33,7 @@ QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property
 	m_old_value(old_value),
 	m_new_value(new_value),
 	m_animate(false)
-{
-	m_animation.setTargetObject(object);
-	m_animation.setPropertyName(property_name);
-	m_animation.setStartValue(old_value);
-	m_animation.setEndValue(new_value);
-}
+{}
 
 /**
  * @brief QPropertyUndoCommand::QPropertyUndoCommand
@@ -55,21 +50,15 @@ QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property
 	m_property_name(property_name),
 	m_old_value(old_value),
 	m_animate(false)
-{
-	m_animation.setTargetObject(object);
-	m_animation.setPropertyName(property_name);
-	m_animation.setStartValue(old_value);
-}
+{}
 
 /**
  * @brief QPropertyUndoCommand::setNewValue
  * Set the new value of the property (set with redo) to @new_value
  * @param new_value
  */
-void QPropertyUndoCommand::setNewValue(const QVariant &new_value)
-{
+void QPropertyUndoCommand::setNewValue(const QVariant &new_value) {
 	m_new_value = new_value;
-	m_animation.setEndValue(new_value);
 }
 
 /**
@@ -93,7 +82,6 @@ bool QPropertyUndoCommand::mergeWith(const QUndoCommand *other)
 	QPropertyUndoCommand const *undo = static_cast<const QPropertyUndoCommand *>(other);
 	if (m_object != undo->m_object || m_property_name != undo->m_property_name) return false;
 	m_new_value = undo->m_new_value;
-	m_animation.setEndValue(m_new_value);
 	return true;
 }
 
@@ -107,8 +95,10 @@ void QPropertyUndoCommand::redo()
 	{
 		if (m_animate)
 		{
-			m_animation.setDirection(QAnimationGroup::Forward);
-			m_animation.start();
+			QPropertyAnimation *animation = new QPropertyAnimation(m_object, m_property_name);
+			animation->setStartValue(m_old_value);
+			animation->setEndValue(m_new_value);
+			animation->start(QAbstractAnimation::DeleteWhenStopped);
 		}
 		else
 			m_object->setProperty(m_property_name, m_new_value);
@@ -127,8 +117,10 @@ void QPropertyUndoCommand::undo()
 	{
 		if (m_animate)
 		{
-			m_animation.setDirection(QAnimationGroup::Backward);
-			m_animation.start();
+			QPropertyAnimation *animation = new QPropertyAnimation(m_object, m_property_name);
+			animation->setStartValue(m_new_value);
+			animation->setEndValue(m_old_value);
+			animation->start(QAbstractAnimation::DeleteWhenStopped);
 		}
 		else
 			m_object->setProperty(m_property_name, m_old_value);

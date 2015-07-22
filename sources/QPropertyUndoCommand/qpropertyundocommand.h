@@ -20,7 +20,6 @@
 
 #include <QUndoCommand>
 #include <QVariant>
-#include <QPropertyAnimation>
 
 class QObject;
 
@@ -50,7 +49,6 @@ class QPropertyUndoCommand : public QUndoCommand
 		const char *m_property_name;
 		QVariant m_old_value, m_new_value;
 		bool m_animate;
-		QPropertyAnimation m_animation;
 };
 
 #endif // QPROPERTYUNDOCOMMAND_H

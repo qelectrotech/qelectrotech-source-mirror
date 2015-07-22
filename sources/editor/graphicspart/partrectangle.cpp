@@ -129,47 +129,7 @@ void PartRectangle::setRect(const QRectF &rect)
 	if (rect == m_rect) return;
 	prepareGeometryChange();
 	m_rect = rect;
-}
-
-/**
- * @brief PartRectangle::rectTopLeft
- * @return the rectangle top left in item coordinate
- */
-QPointF PartRectangle::rectTopLeft() const {
-	return m_rect.topLeft();
-}
-
-/**
- * @brief PartRectangle::setRectTopLeft
- * @param point, set the rectangle top left in item coordinate.
- * The rectangle size is unchanged
- */
-void PartRectangle::setRectTopLeft(const QPointF &point) {
-	m_rect.moveTopLeft(point);
-}
-
-/**
- * @brief PartRectangle::setWidth
- * Sets the width of the rectangle to the given width.
- * The right edge is changed, but not the left one.
- * @param w new value
- */
-void PartRectangle::setWidth(qreal w)
-{
-	prepareGeometryChange();
-	m_rect.setWidth(qAbs(w));
-}
-
-/**
- * @brief PartRectangle::setHeight
- * Sets the height of the rectangle to the given height.
- * The bottom edge is changed, but not the top one.
- * @param h new value
- */
-void PartRectangle::setHeight(qreal h)
-{
-	prepareGeometryChange();
-	m_rect.setHeight(qAbs(h));
+	emit rectChanged();
 }
 
 /**

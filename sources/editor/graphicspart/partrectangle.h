@@ -32,10 +32,7 @@ class PartRectangle :  public CustomElementGraphicPart
 {
 		Q_OBJECT
 
-		Q_PROPERTY(QPointF rectTopLeft READ rectTopLeft WRITE setRectTopLeft)
-		Q_PROPERTY(qreal width         READ width       WRITE setWidth)
-		Q_PROPERTY(qreal height        READ height      WRITE setHeight)
-		Q_PROPERTY(QRectF rect         READ rect        WRITE setRect)
+		Q_PROPERTY(QRectF rect READ rect WRITE setRect)
 
 		// constructors, destructor
 	public:
@@ -44,6 +41,9 @@ class PartRectangle :  public CustomElementGraphicPart
 	
 	private:
 		PartRectangle(const PartRectangle &);
+
+	signals:
+		void rectChanged();
 	
 		// methods
 	public:
@@ -62,15 +62,6 @@ class PartRectangle :  public CustomElementGraphicPart
 
 		QRectF rect() const;
 		void   setRect(const QRectF &rect);
-
-		QPointF rectTopLeft    () const;
-		void    setRectTopLeft (const QPointF &point);
-
-		qreal width    () const {return rect().width();}
-		void  setWidth (qreal w);
-
-		qreal height    () const { return rect().height();}
-		void  setHeight (qreal h);
 
 		virtual QRectF  sceneGeometricRect() const;
 		virtual QPointF sceneTopLeft() const;

@@ -24,36 +24,35 @@ class StyleEditor;
 /**
 	This class provides a widget to edit rectangles within the element editor.
 */
-class RectangleEditor : public ElementItemEditor {
+class RectangleEditor : public ElementItemEditor
+{
 	Q_OBJECT
-	// constructors, destructor
+
+		// constructors, destructor
 	public:
-	RectangleEditor(QETElementEditor *, PartRectangle * = 0, QWidget * = 0);
-	virtual ~RectangleEditor();
+		RectangleEditor(QETElementEditor *, PartRectangle * = 0, QWidget * = 0);
+		virtual ~RectangleEditor();
 	private:
-	RectangleEditor(const RectangleEditor &);
+		RectangleEditor(const RectangleEditor &);
 	
-	// attributes
+		// attributes
 	private:
-	PartRectangle *part;
-	StyleEditor *style_;
-	QDoubleSpinBox *x, *y, *w, *h;
+		PartRectangle *part;
+		StyleEditor *style_;
+		QDoubleSpinBox *x, *y, *w, *h;
+		bool m_locked;
 	
-	// methods
+		// methods
 	public:
-	virtual bool setPart(CustomElementPart *);
-	virtual CustomElementPart *currentPart() const;
-	QPointF editedTopLeft () const;
+		virtual bool setPart(CustomElementPart *);
+		virtual CustomElementPart *currentPart() const;
+		QPointF editedTopLeft () const;
 	
 	public slots:
-	void updateRectangle();
-	void updateRectangleX();
-	void updateRectangleY();
-	void updateRectangleW();
-	void updateRectangleH();
-	void updateForm();
+		void updateForm();
+		void editingFinished();
 	
 	private:
-	void activeConnections(bool);
+		void activeConnections(bool);
 };
 #endif

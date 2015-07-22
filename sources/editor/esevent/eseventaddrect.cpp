@@ -83,7 +83,7 @@ bool ESEventAddRect::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	updateHelpCross(event -> scenePos());
 	if (!m_rect) return false;
 
-	QRectF rect(m_rect->rectTopLeft(), m_scene->snapToGrid(event -> scenePos()));
+	QRectF rect(m_rect->rect().topLeft(), m_scene->snapToGrid(event -> scenePos()));
 	m_rect -> setRect(rect);
 	return true;
 }
