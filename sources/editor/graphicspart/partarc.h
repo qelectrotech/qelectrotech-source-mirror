@@ -38,7 +38,6 @@ class PartArc : public AbstractPartEllipse
 	
 	private:
 		PartArc(const PartArc &);
-		
 		// methods
 	public:
 		enum { Type = UserType + 1101 };

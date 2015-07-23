@@ -17,9 +17,15 @@
 */
 #ifndef POLYGON_EDITOR_H
 #define POLYGON_EDITOR_H
+
 #include "elementitemeditor.h"
+#include <QTreeWidget>
+#include <QCheckBox>
+
 class PartPolygon;
 class StyleEditor;
+class QTreeWidget;
+
 /**
 	This class provides a widget to edit polygons within the element editor.
 */

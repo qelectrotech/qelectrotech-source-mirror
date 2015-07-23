@@ -49,6 +49,11 @@ class AbstractPartEllipse : public CustomElementGraphicPart
 	private:
 		AbstractPartEllipse(const AbstractPartEllipse &);
 
+	signals:
+		void rectChanged();
+		void startAngleChanged();
+		void spanAngleChanged();
+
 		// methods
 	public:
 		virtual void startUserTransformation  (const QRectF &);

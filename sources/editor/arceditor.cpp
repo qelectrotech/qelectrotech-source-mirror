@@ -18,6 +18,8 @@
 #include "arceditor.h"
 #include "styleeditor.h"
 #include "partarc.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "elementscene.h"
 
 /**
 	Constructeur
@@ -27,7 +29,8 @@
 */
 ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) :
 	ElementItemEditor(editor, parent),
-	part(arc)
+	part(arc),
+	m_locked(false)
 {
 	style_ = new StyleEditor(editor);
 	x = new QDoubleSpinBox();
@@ -71,98 +74,147 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) :
 }
 
 /// Destructeur
-ArcEditor::~ArcEditor() {
-}
+ArcEditor::~ArcEditor() {}
 
 /**
-	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
-	qu'un editeur peut accepter ou refuser d'editer une primitive.
-	L'editeur d'arc acceptera d'editer la primitive new_part s'il s'agit d'un
-	objet de la classe PartArc.
-	@param new_part Nouvelle primitive a editer
-	@return true si l'editeur a accepter d'editer la primitive, false sinon
-*/
-bool ArcEditor::setPart(CustomElementPart *new_part) {
-	if (!new_part) {
+ * @brief ArcEditor::setPart
+ * Specifie to this editor the part to edit.
+ * Note that an editor can accept or refuse to edit a part. This editor accept only partArc.
+ * @param new_part
+ * @return
+ */
+bool ArcEditor::setPart(CustomElementPart *new_part)
+{
+	if (!new_part)
+	{
+		if (part)
+		{
+			disconnect(part, &PartArc::rectChanged, this, &ArcEditor::updateForm);
+			disconnect(part, &PartArc::spanAngleChanged, this, &ArcEditor::updateForm);
+			disconnect(part, &PartArc::startAngleChanged, this, &ArcEditor::updateForm);
+		}
 		part = 0;
 		style_ -> setPart(0);
 		return(true);
 	}
-	if (PartArc *part_arc = dynamic_cast<PartArc *>(new_part)) {
+
+	if (PartArc *part_arc = dynamic_cast<PartArc *>(new_part))
+	{
+		if (part == part_arc) return true;
+		if (part)
+		{
+			disconnect(part, &PartArc::rectChanged, this, &ArcEditor::updateForm);
+			disconnect(part, &PartArc::spanAngleChanged, this, &ArcEditor::updateForm);
+			disconnect(part, &PartArc::startAngleChanged, this, &ArcEditor::updateForm);
+		}
 		part = part_arc;
 		style_ -> setPart(part);
 		updateForm();
+		connect(part, &PartArc::rectChanged, this, &ArcEditor::updateForm);
+		connect(part, &PartArc::spanAngleChanged, this, &ArcEditor::updateForm);
+		connect(part, &PartArc::startAngleChanged, this, &ArcEditor::updateForm);
 		return(true);
-	} else {
-		return(false);
 	}
+
+	return(false);
 }
 
 /**
-	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
-*/
+ * @brief ArcEditor::currentPart
+ * @return the curent edited part, or 0 if there is no edited part
+ */
 CustomElementPart *ArcEditor::currentPart() const {
 	return(part);
 }
 
 /**
-	Met a jour l'arc a partir a partir des donnees du formulaire
-*/
-void ArcEditor::updateArc() {
-	if (!part) return;
-	part -> setProperty("centerX",    x  -> value());
-	part -> setProperty("centerY",    y  -> value());
-	part -> setProperty("diameter_h", h  -> value());
-	part -> setProperty("diameter_v", v  -> value());
-	part -> setProperty("startAngle", ((start_angle -> value() * -1) + 90) * 16);
-	part -> setProperty("spanAngle",  angle -> value() * -16);
+ * @brief ArcEditor::updateArcS
+ * Update the start angle of the arc according to  the edited value.
+ */
+void ArcEditor::updateArcS()
+{
+	if (m_locked) return;
+	m_locked = true;
+	QPropertyUndoCommand *undo= new QPropertyUndoCommand(part, "startAngle", part->property("startAngle"), ((start_angle -> value() * -1) + 90) * 16);
+	undo->setText("Modifier l'angle de depart d'un arc");
+	undo->enableAnimation();
+	elementScene()->undoStack().push(undo);
+	m_locked = false;
 }
 
-/// Met a jour l'abscisse du centre de l'arc et cree un objet d'annulation
-void ArcEditor::updateArcX() { addChangePartCommand(tr("abscisse"),               part, "centerX",     x  -> value()); }
-/// Met a jour l'ordonnee du centre de l'arc et cree un objet d'annulation
-void ArcEditor::updateArcY() { addChangePartCommand(tr("ordonnée"),            part, "centerY",     y  -> value()); }
-/// Met a jour le diametre horizontal de l'arc et cree un objet d'annulation
-void ArcEditor::updateArcH() { addChangePartCommand(tr("diamètre horizontal"), part, "diameter_h",  h  -> value()); }
-/// Met a jour le diametre vertical de l'arc et cree un objet d'annulation
-void ArcEditor::updateArcV() { addChangePartCommand(tr("diamètre vertical"),   part, "diameter_v",  v  -> value()); }
-/// Met a jour l'angle de depart de l'arc et cree un objet d'annulation
-void ArcEditor::updateArcS() { addChangePartCommand(tr("angle de départ"),     part, "startAngle", ((start_angle -> value() * -1) + 90) * 16); }
-/// Met a jour l'etendue de l'arc et cree un objet d'annulation
-void ArcEditor::updateArcA() { addChangePartCommand(tr("angle"),                  part, "spanAngle",  angle -> value() * -16); }
+/**
+ * @brief ArcEditor::updateArcA
+ * Update the span angle of the arc according to  the edited value.
+ */
+void ArcEditor::updateArcA()
+{
+	if (m_locked) return;
+	m_locked = true;
+	QPropertyUndoCommand *undo= new QPropertyUndoCommand(part, "spanAngle", part->property("spanAngle"), angle -> value() * -16);
+	undo->setText("Modifier l'angle d'un arc");
+	undo->enableAnimation();
+	elementScene()->undoStack().push(undo);
+	m_locked = false;
+}
 
 /**
-	Met a jour le formulaire d'edition
-*/
-void ArcEditor::updateForm() {
+ * @brief ArcEditor::updateArcRect
+ * Update the geometrie of the rect that define this arc according the the edited values
+ */
+void ArcEditor::updateArcRect()
+{
+	if (m_locked) return;
+	m_locked = true;
+	QPointF point = part->mapFromScene(x->value() - h->value()/2, y->value() - v->value()/2);
+	QRectF rect(point, QSizeF(h->value(), v->value()));
+	QPropertyUndoCommand *undo= new QPropertyUndoCommand(part, "rect", part->property("rect"), rect);
+	undo->setText("Modifier un arc");
+	undo->enableAnimation();
+	elementScene()->undoStack().push(undo);
+	m_locked = false;
+}
+
+/**
+ * @brief ArcEditor::updateForm
+ * Update the value of the widgets
+ */
+void ArcEditor::updateForm()
+{
 	if (!part) return;
 	activeConnections(false);
-	x->setValue(part->property("x").toReal());
-	y->setValue(part->property("y").toReal());
-	h->setValue(part->property("diameter_h").toReal());
-	v->setValue(part->property("diameter_v").toReal());
+	QRectF rect = part->property("rect").toRectF();
+	x->setValue(part->mapToScene(rect.topLeft()).x() + (rect.width()/2));
+	y->setValue(part->mapToScene(rect.topLeft()).y() + (rect.height()/2));
+	h->setValue(rect.width());
+	v->setValue(rect.height());
 	start_angle -> setValue(((part->property("startAngle").toInt() / 16) - 90) * -1);
 	angle -> setValue(part->property("spanAngle").toInt() / -16);
 	activeConnections(true);
 }
 
 /**
-	Active ou desactive les connexionx signaux/slots entre les widgets internes.
-	@param active true pour activer les connexions, false pour les desactiver
-*/
-void ArcEditor::activeConnections(bool active) {
-	if (active) {
-		connect(x,           SIGNAL(editingFinished()), this, SLOT(updateArcX()));
-		connect(y,           SIGNAL(editingFinished()), this, SLOT(updateArcY()));
-		connect(h,           SIGNAL(editingFinished()), this, SLOT(updateArcH()));
-		connect(v,           SIGNAL(editingFinished()), this, SLOT(updateArcV()));
+ * @brief ArcEditor::activeConnections
+ * Enable/disable connection between editor widget and slot editingFinished
+ * True == enable | false == disable
+ * @param active
+ */
+void ArcEditor::activeConnections(bool active)
+{
+	if (active)
+	{
+		connect(x,           SIGNAL(editingFinished()), this, SLOT(updateArcRect()));
+		connect(y,           SIGNAL(editingFinished()), this, SLOT(updateArcRect()));
+		connect(h,           SIGNAL(editingFinished()), this, SLOT(updateArcRect()));
+		connect(v,           SIGNAL(editingFinished()), this, SLOT(updateArcRect()));
 		connect(start_angle, SIGNAL(editingFinished()), this, SLOT(updateArcS()));
 		connect(angle,       SIGNAL(editingFinished()), this, SLOT(updateArcA()));
-	} else {
-		disconnect(x,           SIGNAL(editingFinished()), this, SLOT(updateArcX()));
-		disconnect(y,           SIGNAL(editingFinished()), this, SLOT(updateArcY()));
-		disconnect(h,           SIGNAL(editingFinished()), this, SLOT(updateArcH()));
-		disconnect(v,           SIGNAL(editingFinished()), this, SLOT(updateArcV()));
+	}
+	else
+	{
+		disconnect(x,           SIGNAL(editingFinished()), this, SLOT(updateArcRect()));
+		disconnect(y,           SIGNAL(editingFinished()), this, SLOT(updateArcRect()));
+		disconnect(h,           SIGNAL(editingFinished()), this, SLOT(updateArcRect()));
+		disconnect(v,           SIGNAL(editingFinished()), this, SLOT(updateArcRect()));
 		disconnect(start_angle, SIGNAL(editingFinished()), this, SLOT(updateArcS()));
 		disconnect(angle,       SIGNAL(editingFinished()), this, SLOT(updateArcA()));
 	}

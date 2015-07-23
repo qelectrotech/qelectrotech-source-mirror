@@ -17,10 +17,13 @@
 */
 #ifndef RECTANGLE_EDITOR_H
 #define RECTANGLE_EDITOR_H
-#include <QtWidgets>
+
 #include "elementitemeditor.h"
+
 class PartRectangle;
 class StyleEditor;
+class QDoubleSpinBox;
+
 /**
 	This class provides a widget to edit rectangles within the element editor.
 */

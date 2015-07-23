@@ -118,6 +118,7 @@ void AbstractPartEllipse::setRect(const QRectF &rect)
 	if (rect == m_rect) return;
 	prepareGeometryChange();
 	m_rect = rect;
+	emit rectChanged();
 }
 
 /**
@@ -139,8 +140,9 @@ bool AbstractPartEllipse::isUseless() const {
 void AbstractPartEllipse::setStartAngle(const int &start_angle)
 {
 	if (m_start_angle == start_angle) return;
+	prepareGeometryChange();
 	m_start_angle = start_angle;
-	update();
+	emit startAngleChanged();
 }
 
 /**
@@ -153,8 +155,9 @@ void AbstractPartEllipse::setStartAngle(const int &start_angle)
 void AbstractPartEllipse::setSpanAngle(const int &span_angle)
 {
 	if (m_span_angle == span_angle) return;
+	prepareGeometryChange();
 	m_span_angle = span_angle;
-	update();
+	emit spanAngleChanged();
 }
 
 /**

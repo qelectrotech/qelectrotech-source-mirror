@@ -17,45 +17,48 @@
 */
 #ifndef ARC_EDITOR_H
 #define ARC_EDITOR_H
-#include <QtWidgets>
+
 #include "elementitemeditor.h"
+
 class PartArc;
 class StyleEditor;
+class QDoubleSpinBox;
+class QSpinBox;
+
 /**
 	This class provides a widget to edit elliptical arcs within the element editor.
 */
-class ArcEditor : public ElementItemEditor {
+class ArcEditor : public ElementItemEditor
+{
 	Q_OBJECT
-	// constructors, destructor
+
+		// constructors, destructor
 	public:
-	ArcEditor(QETElementEditor *, PartArc * = 0, QWidget * = 0);
-	virtual ~ArcEditor();
+		ArcEditor(QETElementEditor *, PartArc * = 0, QWidget * = 0);
+		virtual ~ArcEditor();
 	private:
-	ArcEditor(const ArcEditor &);
+		ArcEditor(const ArcEditor &);
 	
-	// attributes
+		// attributes
 	private:
-	PartArc *part;
-	StyleEditor *style_;
-	QDoubleSpinBox *x, *y, *h, *v;
-	QSpinBox *angle, *start_angle;
+		PartArc *part;
+		StyleEditor *style_;
+		QDoubleSpinBox *x, *y, *h, *v;
+		QSpinBox *angle, *start_angle;
+		bool m_locked;
 	
-	// methods
+		// methods
 	public:
-	virtual bool setPart(CustomElementPart *);
-	virtual CustomElementPart *currentPart() const;
+		virtual bool setPart(CustomElementPart *);
+		virtual CustomElementPart *currentPart() const;
 	
 	public slots:
-	void updateArc();
-	void updateArcX();
-	void updateArcY();
-	void updateArcH();
-	void updateArcV();
-	void updateArcS();
-	void updateArcA();
-	void updateForm();
+		void updateArcS();
+		void updateArcA();
+		void updateArcRect();
+		void updateForm();
 	
 	private:
-	void activeConnections(bool);
+		void activeConnections(bool);
 };
 #endif

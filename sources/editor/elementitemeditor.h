@@ -17,10 +17,14 @@
 */
 #ifndef ELEMENT_ITEM_EDITOR_H
 #define ELEMENT_ITEM_EDITOR_H
-#include <QtWidgets>
+
+#include <QWidget>
+
 class QETElementEditor;
 class ElementScene;
 class CustomElementPart;
+class QUndoStack;
+
 /**
 	This is the base class for primitives editors within the element editor. It
 	provides methods to access the editor itself, the undo stack, the edition
