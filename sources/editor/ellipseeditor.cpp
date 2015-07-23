@@ -18,6 +18,8 @@
 #include "ellipseeditor.h"
 #include "styleeditor.h"
 #include "partellipse.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "elementscene.h"
 
 /**
 	Constructeur
@@ -27,7 +29,8 @@
 */
 EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWidget *parent) :
 	ElementItemEditor(editor, parent),
-	part(ellipse)
+	part(ellipse),
+	m_locked(false)
 {
 	style_ = new StyleEditor(editor);
 	
@@ -74,20 +77,28 @@ EllipseEditor::~EllipseEditor() {
 	@param new_part Nouvelle primitive a editer
 	@return true si l'editeur a accepter d'editer la primitive, false sinon
 */
-bool EllipseEditor::setPart(CustomElementPart *new_part) {
-	if (!new_part) {
+bool EllipseEditor::setPart(CustomElementPart *new_part)
+{
+	if (!new_part)
+	{
+		if (part)
+			disconnect(part, &PartEllipse::rectChanged, this, &EllipseEditor::updateForm);
 		part = 0;
 		style_ -> setPart(0);
 		return(true);
 	}
-	if (PartEllipse *part_ellipse = dynamic_cast<PartEllipse *>(new_part)) {
+	if (PartEllipse *part_ellipse = dynamic_cast<PartEllipse *>(new_part))
+	{
+		if (part == part_ellipse) return true;
+		if (part)
+			disconnect(part, &PartEllipse::rectChanged, this, &EllipseEditor::updateForm);
 		part = part_ellipse;
 		style_ -> setPart(part);
 		updateForm();
+		connect(part, &PartEllipse::rectChanged, this, &EllipseEditor::updateForm);
 		return(true);
-	} else {
-		return(false);
 	}
+	return(false);
 }
 
 /**
@@ -97,36 +108,36 @@ CustomElementPart *EllipseEditor::currentPart() const {
 	return(part);
 }
 
-/**
-	Met a jour l'ellipse a partir des donnees du formulaire
-*/
-void EllipseEditor::updateEllipse() {
-	if (!part) return;
-	part -> setProperty("centerX",     x  -> value());
-	part -> setProperty("centerY",     y  -> value());
-	part -> setProperty("diameter_h",  h  -> value());
-	part -> setProperty("diameter_v",  v  -> value());
-}
+void EllipseEditor::editingFinished()
+{
+	if (m_locked) return;
+	m_locked = true;
+	QPointF point = part->mapFromScene(x->value() - h->value()/2, y->value() - v->value()/2);
+	QRectF rect(point, QSizeF(h->value(), v->value()));
 
-/// Met a jour l'abscisse du centre de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseX() { addChangePartCommand(tr("abscisse"),               part, "centerX",           x -> value());       }
-/// Met a jour l'ordonnee du centre de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseY() { addChangePartCommand(tr("ordonnée"),            part, "centerY",           y -> value());       }
-/// Met a jour le diametre horizontal de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseH() { addChangePartCommand(tr("diamètre horizontal"), part, "diameter_h",  h -> value());       }
-/// Met a jour le diametre vertical de l'ellipse et cree un objet d'annulation
-void EllipseEditor::updateEllipseV() { addChangePartCommand(tr("diamètre vertical"),   part, "diameter_v",  v -> value());       }
+	if (rect != part->property("rect"))
+	{
+		QPropertyUndoCommand *undo= new QPropertyUndoCommand(part, "rect", part->property("rect"), rect);
+		undo->setText("Modifier une ellipse");
+		undo->enableAnimation();
+		elementScene()->undoStack().push(undo);
+	}
+
+	m_locked = false;
+}
 
 /**
 	Met a jour le formulaire d'edition
 */
-void EllipseEditor::updateForm() {
+void EllipseEditor::updateForm()
+{
 	if (!part) return;
 	activeConnections(false);
-	x->setValue(part->property("centerX").toReal());
-	y->setValue(part->property("centerY").toReal());
-	h->setValue(part->property("diameter_h").toReal());
-	v->setValue(part->property("diameter_v").toReal());
+	QRectF rect = part->property("rect").toRectF();
+	x->setValue(part->mapToScene(rect.topLeft()).x() + (rect.width()/2));
+	y->setValue(part->mapToScene(rect.topLeft()).y() + (rect.height()/2));
+	h->setValue(rect.width());
+	v->setValue(rect.height());
 	activeConnections(true);
 }
 
@@ -134,16 +145,20 @@ void EllipseEditor::updateForm() {
 	Active ou desactive les connexionx signaux/slots entre les widgets internes.
 	@param active true pour activer les connexions, false pour les desactiver
 */
-void EllipseEditor::activeConnections(bool active) {
-	if (active) {
-		connect(x, SIGNAL(editingFinished()), this, SLOT(updateEllipseX()));
-		connect(y, SIGNAL(editingFinished()), this, SLOT(updateEllipseY()));
-		connect(h, SIGNAL(editingFinished()), this, SLOT(updateEllipseH()));
-		connect(v, SIGNAL(editingFinished()), this, SLOT(updateEllipseV()));
-	} else {
-		disconnect(x, SIGNAL(editingFinished()), this, SLOT(updateEllipseX()));
-		disconnect(y, SIGNAL(editingFinished()), this, SLOT(updateEllipseY()));
-		disconnect(h, SIGNAL(editingFinished()), this, SLOT(updateEllipseH()));
-		disconnect(v, SIGNAL(editingFinished()), this, SLOT(updateEllipseV()));
+void EllipseEditor::activeConnections(bool active)
+{
+	if (active)
+	{
+		connect(x, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
+		connect(y, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
+		connect(h, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
+		connect(v, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
+	}
+	else
+	{
+		disconnect(x, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
+		disconnect(y, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
+		disconnect(h, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
+		disconnect(v, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
 	}
 }

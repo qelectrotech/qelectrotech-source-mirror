@@ -35,10 +35,6 @@ class AbstractPartEllipse : public CustomElementGraphicPart
 		Q_OBJECT
 		Q_PROPERTY(int startAngle   READ startAngle WRITE setStartAngle)
 		Q_PROPERTY(int spanAngle    READ spanAngle  WRITE setSpanAngle)
-		Q_PROPERTY(qreal centerX    READ centerX    WRITE setCenterX)
-		Q_PROPERTY(qreal centerY    READ centerY    WRITE setCenterY)
-		Q_PROPERTY(qreal diameter_h READ width      WRITE setWidth)
-		Q_PROPERTY(qreal diameter_v READ height     WRITE setHeight)
 		Q_PROPERTY(QRectF rect READ rect WRITE setRect)
 
 		// constructors, destructor
@@ -73,20 +69,6 @@ class AbstractPartEllipse : public CustomElementGraphicPart
 
 		int  spanAngle () const {return m_span_angle;}
 		void setSpanAngle (const int &span_angle);
-
-		qreal centerX() const {return mapToScene(rect().center()).x() ;}
-		void  setCenterX(const qreal x);
-
-		qreal centerY() const {return mapToScene(rect().center()).y();}
-		void  setCenterY(const qreal y);
-
-		void setCenter (const QPointF &center);
-
-		qreal width() const {return rect().width();}
-		void  setWidth(const qreal w);
-
-		qreal height() const {return rect().height();}
-		void  setHeight (const qreal h);
 
 	protected:
 		QList<QPointF> saved_points_;

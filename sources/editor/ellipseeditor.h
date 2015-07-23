@@ -17,42 +17,44 @@
 */
 #ifndef ELLIPSE_EDITOR_H
 #define ELLIPSE_EDITOR_H
-#include <QtWidgets>
+
 #include "elementitemeditor.h"
+
 class PartEllipse;
 class StyleEditor;
+class QDoubleSpinBox;
+
 /**
 	This class provides a widget to edit ellipses within the element editor.
 */
-class EllipseEditor : public ElementItemEditor {
+class EllipseEditor : public ElementItemEditor
+{
 	Q_OBJECT
-	// constructors, destructor
+
+		// constructors, destructor
 	public:
-	EllipseEditor(QETElementEditor *, PartEllipse * = 0, QWidget * = 0);
-	virtual ~EllipseEditor();
+		EllipseEditor(QETElementEditor *, PartEllipse * = 0, QWidget * = 0);
+		virtual ~EllipseEditor();
 	private:
-	EllipseEditor(const EllipseEditor &);
+		EllipseEditor(const EllipseEditor &);
 	
-	// attributes
+		// attributes
 	private:
-	PartEllipse *part;
-	StyleEditor *style_;
-	QDoubleSpinBox *x, *y, *h, *v;
+		PartEllipse *part;
+		StyleEditor *style_;
+		QDoubleSpinBox *x, *y, *h, *v;
+		bool m_locked;
 	
-	// methods
+		// methods
 	public:
-	virtual bool setPart(CustomElementPart *);
-	virtual CustomElementPart *currentPart() const;
+		virtual bool setPart(CustomElementPart *);
+		virtual CustomElementPart *currentPart() const;
 	
 	public slots:
-	void updateEllipse();
-	void updateEllipseX();
-	void updateEllipseY();
-	void updateEllipseH();
-	void updateEllipseV();
-	void updateForm();
+		void editingFinished();
+		void updateForm();
 	
 	private:
-	void activeConnections(bool);
+		void activeConnections(bool);
 };
 #endif

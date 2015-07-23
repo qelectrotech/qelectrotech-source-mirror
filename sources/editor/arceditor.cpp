@@ -135,10 +135,16 @@ void ArcEditor::updateArcS()
 {
 	if (m_locked) return;
 	m_locked = true;
-	QPropertyUndoCommand *undo= new QPropertyUndoCommand(part, "startAngle", part->property("startAngle"), ((start_angle -> value() * -1) + 90) * 16);
-	undo->setText("Modifier l'angle de depart d'un arc");
-	undo->enableAnimation();
-	elementScene()->undoStack().push(undo);
+	double value = ((start_angle -> value() * -1) + 90) * 16;
+
+	if (value != part->property("startAngle"))
+	{
+		QPropertyUndoCommand *undo= new QPropertyUndoCommand(part, "startAngle", part->property("startAngle"), value);
+		undo->setText("Modifier l'angle de depart d'un arc");
+		undo->enableAnimation();
+		elementScene()->undoStack().push(undo);
+	}
+
 	m_locked = false;
 }
 
@@ -150,10 +156,16 @@ void ArcEditor::updateArcA()
 {
 	if (m_locked) return;
 	m_locked = true;
-	QPropertyUndoCommand *undo= new QPropertyUndoCommand(part, "spanAngle", part->property("spanAngle"), angle -> value() * -16);
-	undo->setText("Modifier l'angle d'un arc");
-	undo->enableAnimation();
-	elementScene()->undoStack().push(undo);
+	double value = angle -> value() * -16;
+
+	if (value != part->property("spanAngle"))
+	{
+		QPropertyUndoCommand *undo= new QPropertyUndoCommand(part, "spanAngle", part->property("spanAngle"), value);
+		undo->setText("Modifier l'angle d'un arc");
+		undo->enableAnimation();
+		elementScene()->undoStack().push(undo);
+	}
+
 	m_locked = false;
 }
 
@@ -167,10 +179,15 @@ void ArcEditor::updateArcRect()
 	m_locked = true;
 	QPointF point = part->mapFromScene(x->value() - h->value()/2, y->value() - v->value()/2);
 	QRectF rect(point, QSizeF(h->value(), v->value()));
-	QPropertyUndoCommand *undo= new QPropertyUndoCommand(part, "rect", part->property("rect"), rect);
-	undo->setText("Modifier un arc");
-	undo->enableAnimation();
-	elementScene()->undoStack().push(undo);
+
+	if (rect != part->property("rect"))
+	{
+		QPropertyUndoCommand *undo= new QPropertyUndoCommand(part, "rect", part->property("rect"), rect);
+		undo->setText("Modifier un arc");
+		undo->enableAnimation();
+		elementScene()->undoStack().push(undo);
+	}
+
 	m_locked = false;
 }
 
