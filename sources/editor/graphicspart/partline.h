@@ -37,24 +37,25 @@ class PartLine : public CustomElementGraphicPart
 {
 		Q_OBJECT
 
-		Q_PROPERTY(QPointF p1 READ p1 WRITE setP1)
-		Q_PROPERTY(QPointF p2 READ p2 WRITE setP2)
 		Q_PROPERTY(Qet::EndType end1 READ firstEndType WRITE setFirstEndType)
 		Q_PROPERTY(Qet::EndType end2 READ secondEndType WRITE setSecondEndType)
 		Q_PROPERTY(qreal length1 READ firstEndLength WRITE setFirstEndLength)
 		Q_PROPERTY(qreal length2 READ secondEndLength WRITE setSecondEndLength)
 		Q_PROPERTY(QLineF line READ line WRITE setLine)
 
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	PartLine(QETElementEditor *, QGraphicsItem * = 0);
-	virtual ~PartLine();
-	
+		PartLine(QETElementEditor *, QGraphicsItem * = 0);
+		virtual ~PartLine();
 	private:
-	PartLine(const PartLine &);
-	
-	// attributes
-	private:
+		PartLine(const PartLine &);
+
+	signals:
+		void lineChanged();
+		void firstEndTypeChanged();
+		void secondEndTypeChanged();
+		void firstEndLengthChanged();
+		void secondEndLengthChanged();
 
 	
 	// methods
@@ -85,18 +86,14 @@ class PartLine : public CustomElementGraphicPart
 
 		QLineF line() const;
 		void setLine(const QLineF &line);
-		QPointF p1() const;
-		void setP1 (const QPointF &p1);
-		QPointF p2 () const;
-		void setP2 (const QPointF &p2);
 		Qet::EndType firstEndType() const {return first_end;}
-		void setFirstEndType(const Qet::EndType &et) {first_end = et;}
+		void setFirstEndType(const Qet::EndType &et);
 		Qet::EndType secondEndType() const {return second_end;}
-		void setSecondEndType(const Qet::EndType &et) {second_end = et;}
+		void setSecondEndType(const Qet::EndType &et);
 		qreal firstEndLength() const {return first_length;}
-		void setFirstEndLength(const qreal &l) {first_length = qMin(qAbs(l), m_line.length());}
+		void setFirstEndLength(const qreal &l);
 		qreal secondEndLength() const {return second_length;}
-		void setSecondEndLength(const qreal &l) {second_length = qMin(qAbs(l), m_line.length());}
+		void setSecondEndLength(const qreal &l);
 
 	protected:
 		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);

@@ -59,8 +59,7 @@ bool ESEventAddLine::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 		if (!m_line) {
 			m_line = new PartLine(m_editor);
 			m_scene -> addItem(m_line);
-			m_line -> setP1(pos);
-			m_line -> setP2(pos);
+			m_line->setLine(QLineF(pos, pos));
 			return true;
 		}
 
@@ -81,11 +80,14 @@ bool ESEventAddLine::mousePressEvent(QGraphicsSceneMouseEvent *event) {
  * @param event
  * @return
  */
-bool ESEventAddLine::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
+bool ESEventAddLine::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
 	updateHelpCross (event -> scenePos());
 	if (!m_line) return false;
 
-	m_line -> setP2(m_scene -> snapToGrid(event -> scenePos()));
+	QLineF line = m_line->line();
+	line.setP2(m_scene -> snapToGrid(event -> scenePos()));
+	m_line -> setLine(line);
 	return true;
 }
 

@@ -140,46 +140,6 @@ void PartLine::fromXml(const QDomElement &qde) {
 }
 
 /**
- * @brief PartLine::p1
- * @return the point p1 of line.
- */
-QPointF PartLine::p1() const {
-	return m_line.p1();
-}
-
-/**
- * @brief PartLine::setP1
- * set first point to P1
- * @param p1
- */
-void PartLine::setP1(const QPointF &p1)
-{
-	if (p1 == m_line.p1()) return;
-	prepareGeometryChange();
-	m_line.setP1(p1);
-}
-
-/**
- * @brief PartLine::p2
- * @return  the point p2 of line
- */
-QPointF PartLine::p2() const {
-	return m_line.p2();
-}
-
-/**
- * @brief PartLine::setP2
- * set second point to P2
- * @param p2
- */
-void PartLine::setP2(const QPointF &p2)
-{
-	if (p2 == m_line.p2()) return;
-	prepareGeometryChange();
-	m_line.setP2(p2);
-}
-
-/**
  * @brief PartLine::mousePressEvent
  * Handle mouse press event
  * @param event
@@ -243,7 +203,7 @@ void PartLine::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
  * @return the point p1 in scene coordinate
  */
 QPointF PartLine::sceneP1() const {
-	return(mapToScene(p1()));
+	return(mapToScene(m_line.p1()));
 }
 
 /**
@@ -251,7 +211,7 @@ QPointF PartLine::sceneP1() const {
  * @return the point p2 in scen coordinate
  */
 QPointF PartLine::sceneP2() const {
-	return(mapToScene(p2()));
+	return(mapToScene(m_line.p2()));
 }
 
 /**
@@ -406,10 +366,10 @@ void PartLine::debugPaint(QPainter *painter)
 	
 	painter -> setPen(Qt::red);
 
-	foreach(QPointF pointy, fourEndPoints(p1(), p2(), first_length))
+	foreach(QPointF pointy, fourEndPoints(m_line.p1(), m_line.p2(), first_length))
 		painter -> drawEllipse(pointy, 0.1, 0.1);
 
-	foreach(QPointF pointy, fourEndPoints(p2(), p1(), second_length))
+	foreach(QPointF pointy, fourEndPoints(m_line.p2(), m_line.p1(), second_length))
 		painter -> drawEllipse(pointy, 0.1, 0.1);
 	
 	painter -> restore();
@@ -526,11 +486,44 @@ QLineF PartLine::line() const {
 
 void PartLine::setLine(const QLineF &line)
 {
-	if (m_line != line)
-	{
-		prepareGeometryChange();
-		m_line = line;
-	}
+	if (m_line == line) return;
+	prepareGeometryChange();
+	m_line = line;
+	emit lineChanged();
+}
+
+void PartLine::setFirstEndType(const Qet::EndType &et)
+{
+	if (first_end == et) return;
+	prepareGeometryChange();
+	first_end = et;
+	emit firstEndTypeChanged();
+}
+
+void PartLine::setSecondEndType(const Qet::EndType &et)
+{
+	if (second_end == et) return;
+	prepareGeometryChange();
+	second_end = et;
+	emit secondEndTypeChanged();
+}
+
+void PartLine::setFirstEndLength(const qreal &l)
+{
+	qreal length = qMin(qAbs(l), m_line.length());
+	if (first_length == length) return;
+	prepareGeometryChange();
+	first_length = length;
+	emit firstEndLengthChanged();
+}
+
+void PartLine::setSecondEndLength(const qreal &l)
+{
+	qreal length = qMin(qAbs(l), m_line.length());
+	if (second_length == length) return;
+	prepareGeometryChange();
+	second_length = length;
+	emit secondEndLengthChanged();
 }
 
 /**
