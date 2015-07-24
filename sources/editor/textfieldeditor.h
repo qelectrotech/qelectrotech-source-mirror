@@ -17,49 +17,57 @@
 */
 #ifndef TEXTFIELD_EDITOR_H
 #define TEXTFIELD_EDITOR_H
-#include <QtWidgets>
+
 #include "elementitemeditor.h"
+
 class PartTextField;
 class QTextOrientationSpinBoxWidget;
+class QLineEdit;
+class QComboBox;
+class QSpinBox;
+class QDoubleSpinBox;
+class QCheckBox;
+
 /**
 	This class provides a widget to edit text fields within the element editor.
 */
-class TextFieldEditor : public ElementItemEditor {
+class TextFieldEditor : public ElementItemEditor
+{
 	Q_OBJECT
-	// Constructors, destructor
+
+		// Constructors, destructor
 	public:
-	TextFieldEditor(QETElementEditor *, PartTextField * = 0, QWidget * = 0);
-	virtual ~TextFieldEditor();
+		TextFieldEditor(QETElementEditor *, PartTextField * = 0, QWidget * = 0);
+		virtual ~TextFieldEditor();
 	private:
-	TextFieldEditor(const TextFieldEditor &);
+		TextFieldEditor(const TextFieldEditor &);
 	
-	// attributes
+		// attributes
 	private:
-	PartTextField *part;
-	QLineEdit *qle_text;
-	QComboBox *m_tagg_cb;
-	QSpinBox *font_size;
-	QDoubleSpinBox *qle_x, *qle_y;
-	QCheckBox *rotate;
-	QTextOrientationSpinBoxWidget *rotation_angle_;
+		PartTextField *part;
+		QLineEdit *qle_text;
+		QComboBox *m_tagg_cb;
+		QSpinBox *font_size;
+		QDoubleSpinBox *qle_x, *qle_y;
+		QCheckBox *rotate;
+		QTextOrientationSpinBoxWidget *rotation_angle_;
+		bool m_locked;
 	
-	// methods
+		// methods
 	public:
-	virtual bool setPart(CustomElementPart *);
-	virtual CustomElementPart *currentPart() const;
+		virtual bool setPart(CustomElementPart *);
+		virtual CustomElementPart *currentPart() const;
 	
 	public slots:
-	void updateTextField();
-	void updateTextFieldX();
-	void updateTextFieldY();
-	void updateTextFieldT();
-	void updateTextFieldS();
-	void updateTextFieldR();
-	void updateTextFieldRotationAngle();
-	void updateTagg();
-	void updateForm();
+		void updateTextFieldT();
+		void updateTextFieldS();
+		void updateTextFieldR();
+		void updateTextFieldRotationAngle();
+		void updateTagg();
+		void updatePos();
+		void updateForm();
 	
 	private:
-	void activeConnections(bool);
+		void activeConnections(bool);
 };
 #endif

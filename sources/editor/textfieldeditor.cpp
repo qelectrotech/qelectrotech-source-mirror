@@ -19,6 +19,7 @@
 #include "parttextfield.h"
 #include "qtextorientationspinboxwidget.h"
 #include "qetapp.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 /**
 	Constructeur
 	@param editor L'editeur d'element concerne
@@ -27,7 +28,8 @@
 */
 TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfield, QWidget *parent) :
 	ElementItemEditor(editor, parent),
-	part(textfield)
+	part(textfield),
+	m_locked(false)
 {
 	qle_x     = new QDoubleSpinBox();
 	qle_y     = new QDoubleSpinBox();
@@ -98,18 +100,21 @@ TextFieldEditor::~TextFieldEditor() {
 	@param new_part Nouvelle primitive a editer
 	@return true si l'editeur a accepter d'editer la primitive, false sinon
 */
-bool TextFieldEditor::setPart(CustomElementPart *new_part) {
-	if (!new_part) {
+bool TextFieldEditor::setPart(CustomElementPart *new_part)
+{
+	if (!new_part)
+	{
 		part = 0;
 		return(true);
 	}
-	if (PartTextField *part_textfield = dynamic_cast<PartTextField *>(new_part)) {
+	if (PartTextField *part_textfield = dynamic_cast<PartTextField *>(new_part))
+	{
+		if(part == part_textfield) return true;
 		part = part_textfield;
 		updateForm();
 		return(true);
-	} else {
-		return(false);
 	}
+	return(false);
 }
 
 /**
@@ -119,31 +124,95 @@ CustomElementPart *TextFieldEditor::currentPart() const {
 	return(part);
 }
 
-/**
-	Met a jour le champ de texte a partir des donnees du formulaire
-*/
-void TextFieldEditor::updateTextField() {
-	if (!part) return;
-	part -> setProperty("size", font_size -> value());
-	part -> setPlainText(qle_text -> text());
-	part -> setPos(qle_x->value(), qle_y->value());
-	part -> setFollowParentRotations(!rotate -> isChecked());
-	part -> setTagg(m_tagg_cb->itemData(m_tagg_cb->currentIndex()).toString());
+/// Met a jour le texte du champ de texte et cree un objet d'annulation
+void TextFieldEditor::updateTextFieldT()
+{
+	if(m_locked) return;
+	m_locked = true;
+	QString text = qle_text->text();
+	if (text != part->property("text"))
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "text", part->property("text"), text);
+		undo->setText(tr("Modifier le contenu d'un champ texte"));
+		undoStack().push(undo);
+	}
+	m_locked= false;
 }
 
-/// Met a jour l'abscisse de la position du champ de texte et cree un objet d'annulation
-void TextFieldEditor::updateTextFieldX() { addChangePartCommand(tr("abscisse"),        part, "x",      qle_x -> value()); }
-/// Met a jour l'ordonnee de la position du champ de texte et cree un objet d'annulation
-void TextFieldEditor::updateTextFieldY() { addChangePartCommand(tr("ordonnée"),     part, "y",      qle_y -> value()); }
-/// Met a jour le texte du champ de texte et cree un objet d'annulation
-void TextFieldEditor::updateTextFieldT() { addChangePartCommand(tr("contenu"),         part, "text",   qle_text -> text());         }
 /// Met a jour la taille du champ de texte et cree un objet d'annulation
-void TextFieldEditor::updateTextFieldS() { addChangePartCommand(tr("taille"),          part, "size",   font_size -> value());       }
+void TextFieldEditor::updateTextFieldS()
+{
+	if(m_locked) return;
+	m_locked = true;
+	int size = font_size->value();
+	if (size != part->property("size"))
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "size", part->property("size"), size);
+		undo->setText(tr("Modifier la taille d'un champ texte"));
+		undoStack().push(undo);
+	}
+	m_locked= false;
+}
+
 /// Met a jour la taille du champ de texte et cree un objet d'annulation
-void TextFieldEditor::updateTextFieldR() { addChangePartCommand(tr("propriété"), part, "rotate", !rotate -> isChecked());     }
+void TextFieldEditor::updateTextFieldR()
+{
+	if(m_locked) return;
+	m_locked = true;
+	bool rot = !rotate -> isChecked();
+	if (rot != part->property("rotate"))
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "rotate", part->property("rotate"), rot);
+		undo->setText(tr("Modifier les propriétés d'un champ texte"));
+		undoStack().push(undo);
+	}
+	m_locked= false;
+}
+
 /// Met a jour l'angle de rotation du champ de texte et cree un objet d'annulation
-void TextFieldEditor::updateTextFieldRotationAngle() { addChangePartCommand(tr("angle de rotation"), part, "rotation_angle", rotation_angle_ -> value()); }
-void TextFieldEditor::updateTagg() { addChangePartCommand(tr("tagg"), part, "tagg", m_tagg_cb->itemData(m_tagg_cb->currentIndex()).toString());}
+void TextFieldEditor::updateTextFieldRotationAngle()
+{
+	if(m_locked) return;
+	m_locked = true;
+	double rot = rotation_angle_ -> value();
+	if (rot != part->property("rotation_angle"))
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "rotation_angle", part->property("rotation_angle"), rot);
+		undo->setText(tr("Modifier l'angle de rotation d'un champ texte"));
+		undo->enableAnimation();
+		undoStack().push(undo);
+	}
+	m_locked= false;
+}
+void TextFieldEditor::updateTagg()
+{
+	if(m_locked) return;
+	m_locked = true;
+	QVariant var(m_tagg_cb->itemData(m_tagg_cb->currentIndex()).toString());
+	if (var != part->property("tagg"))
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "tagg", part->property("tagg"), var);
+		undo->setText(tr("Modifier le tagg d'un champ texte"));
+		undo->enableAnimation();
+		undoStack().push(undo);
+	}
+	m_locked= false;
+}
+
+void TextFieldEditor::updatePos()
+{
+	if(m_locked) return;
+	m_locked = true;
+	QPointF pos(qle_x->value(), qle_y->value());
+	if (pos != part->pos())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "pos", part->pos(), pos);
+		undo->setText(tr("Déplacer un champ texte"));
+		undo->enableAnimation();
+		undoStack().push(undo);
+	}
+	m_locked= false;
+}
 
 /**
  * @brief TextFieldEditor::updateForm
@@ -168,18 +237,22 @@ void TextFieldEditor::updateForm() {
 	Active ou desactive les connexionx signaux/slots entre les widgets internes.
 	@param active true pour activer les connexions, false pour les desactiver
 */
-void TextFieldEditor::activeConnections(bool active) {
-	if (active) {
-		connect(qle_x,			 SIGNAL(editingFinished()),		   this, SLOT(updateTextFieldX()));
-		connect(qle_y,			 SIGNAL(editingFinished()),		   this, SLOT(updateTextFieldY()));
+void TextFieldEditor::activeConnections(bool active)
+{
+	if (active)
+	{
+		connect(qle_x,			 SIGNAL(editingFinished()),		   this, SLOT(updatePos()));
+		connect(qle_y,			 SIGNAL(editingFinished()),		   this, SLOT(updatePos()));
 		connect(qle_text,		 SIGNAL(editingFinished()),		   this, SLOT(updateTextFieldT()));
 		connect(font_size,		 SIGNAL(editingFinished()),		   this, SLOT(updateTextFieldS()));
 		connect(rotate,			 SIGNAL(stateChanged(int)),		   this, SLOT(updateTextFieldR()));
 		connect(rotation_angle_, SIGNAL(editingFinished()),		   this, SLOT(updateTextFieldRotationAngle()));
 		connect(m_tagg_cb,		 SIGNAL(currentIndexChanged(int)), this, SLOT(updateTagg()));
-	} else {
-		disconnect(qle_x,			SIGNAL(editingFinished()),		  this, SLOT(updateTextFieldX()));
-		disconnect(qle_y,			SIGNAL(editingFinished()),		  this, SLOT(updateTextFieldY()));
+	}
+	else
+	{
+		disconnect(qle_x,			SIGNAL(editingFinished()),		  this, SLOT(updatePos()));
+		disconnect(qle_y,			SIGNAL(editingFinished()),		  this, SLOT(updatePos()));
 		disconnect(qle_text,		SIGNAL(editingFinished()),		  this, SLOT(updateTextFieldT()));
 		disconnect(font_size,		SIGNAL(editingFinished()),		  this, SLOT(updateTextFieldS()));
 		disconnect(rotate,			SIGNAL(stateChanged(int)),		  this, SLOT(updateTextFieldR()));

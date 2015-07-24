@@ -19,6 +19,7 @@
 #include "parttext.h"
 #include "qetapp.h"
 #include "qtextorientationspinboxwidget.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
 	Constructeur
@@ -28,7 +29,8 @@
 */
 TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent) :
 	ElementItemEditor(editor, parent),
-	part(text)
+	part(text),
+	m_locked(false)
 {
 	qle_x     = new QDoubleSpinBox();
 	qle_y     = new QDoubleSpinBox();
@@ -101,18 +103,21 @@ TextEditor::~TextEditor() {
 	@param new_part Nouvelle primitive a editer
 	@return true si l'editeur a accepter d'editer la primitive, false sinon
 */
-bool TextEditor::setPart(CustomElementPart *new_part) {
-	if (!new_part) {
+bool TextEditor::setPart(CustomElementPart *new_part)
+{
+	if (!new_part)
+	{
 		part = 0;
 		return(true);
 	}
-	if (PartText *part_text = dynamic_cast<PartText *>(new_part)) {
+	if (PartText *part_text = dynamic_cast<PartText *>(new_part))
+	{
+		if (part == part_text) return true;
 		part = part_text;
 		updateForm();
 		return(true);
-	} else {
-		return(false);
 	}
+	return(false);
 }
 
 /**
@@ -122,28 +127,81 @@ CustomElementPart *TextEditor::currentPart() const {
 	return(part);
 }
 
-/**
-	Met a jour le champ de texte a partir des donnees du formulaire
-*/
-void TextEditor::updateText() {
-	if (!part) return;
-	part -> setProperty("size", font_size -> value());
-	part -> setPlainText(qle_text -> text());
-	part -> setPos(qle_x -> value(), qle_y -> value());
+/// Met a jour le texte et cree un objet d'annulation
+void TextEditor::updateTextT()
+{
+	if(m_locked) return;
+	m_locked = true;
+	QString text = qle_text->text();
+	if (text != part->property("text"))
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "text", part->property("text"), text);
+		undo->setText(tr("Modifier le contenu d'un champ texte"));
+		undoStack().push(undo);
+	}
+	m_locked= false;
 }
 
-/// Met a jour l'abscisse de la position du texte et cree un objet d'annulation
-void TextEditor::updateTextX() { addChangePartCommand(tr("abscisse"),    part, "x",    qle_x -> value()); }
-/// Met a jour l'ordonnee de la position du texte et cree un objet d'annulation
-void TextEditor::updateTextY() { addChangePartCommand(tr("ordonnée"), part, "y",    qle_y -> value()); }
-/// Met a jour le texte et cree un objet d'annulation
-void TextEditor::updateTextT() { addChangePartCommand(tr("contenu"),     part, "text", qle_text -> text());         }
 /// Met a jour la taille du texte et cree un objet d'annulation
-void TextEditor::updateTextS() { addChangePartCommand(tr("taille"),      part, "size", font_size -> value());       }
+void TextEditor::updateTextS()
+{
+	if(m_locked) return;
+	m_locked = true;
+	int size = font_size->value();
+	if (size != part->property("size"))
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "size", part->property("size"), size);
+		undo->setText(tr("Modifier la taille d'un champ texte"));
+		undo->enableAnimation();
+		undoStack().push(undo);
+	}
+	m_locked= false;
+}
+
 /// Update the text color and create an undo object
-void TextEditor::updateTextC() { addChangePartCommand(tr("couleur", "undo caption"), part, "color", color_ -> checkedId()); }
+void TextEditor::updateTextC()
+{
+	if(m_locked) return;
+	m_locked = true;
+	int color = color_->checkedId();
+	if (color != part->property("color"))
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "color", part->property("color"), color);
+		undo->setText(tr("Modifier la couleur d'un champ texte"));
+		undoStack().push(undo);
+	}
+	m_locked= false;
+}
 /// Met a jour l'angle de rotation du champ de texte et cree un objet d'annulation
-void TextEditor::updateTextRotationAngle() { addChangePartCommand(tr("angle de rotation"), part, "rotation", rotation_angle_ -> value()); }
+void TextEditor::updateTextRotationAngle()
+{
+	if(m_locked) return;
+	m_locked = true;
+	double rot = rotation_angle_->value();
+	if (rot != part->property("rotation"))
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "rotation", part->property("rotation"), rot);
+		undo->setText(tr("Modifier l'angle d'un champ texte"));
+		undo->enableAnimation();
+		undoStack().push(undo);
+	}
+	m_locked= false;
+}
+
+void TextEditor::updatePos()
+{
+	if(m_locked) return;
+	m_locked = true;
+	QPointF pos(qle_x->value(), qle_y->value());
+	if (pos != part->pos())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "pos", part->pos(), pos);
+		undo->setText(tr("Déplacer un champ texte"));
+		undo->enableAnimation();
+		undoStack().push(undo);
+	}
+	m_locked= false;
+}
 
 /**
 	Met a jour le formulaire a partir du champ de texte
@@ -162,16 +220,20 @@ void TextEditor::updateForm() {
 	activeConnections(true);
 }
 
-void TextEditor::activeConnections(bool active) {
-	if (active) {
-		connect(qle_x,     SIGNAL(editingFinished()), this, SLOT(updateTextX()));
-		connect(qle_y,     SIGNAL(editingFinished()), this, SLOT(updateTextY()));
+void TextEditor::activeConnections(bool active)
+{
+	if (active)
+	{
+		connect(qle_x,     SIGNAL(editingFinished()), this, SLOT(updatePos()));
+		connect(qle_y,     SIGNAL(editingFinished()), this, SLOT(updatePos()));
 		connect(qle_text,  SIGNAL(editingFinished()), this, SLOT(updateTextT()));
 		connect(font_size, SIGNAL(editingFinished()), this, SLOT(updateTextS()));
 		connect(rotation_angle_, SIGNAL(editingFinished()), this, SLOT(updateTextRotationAngle()));
-	} else {
-		disconnect(qle_x,     SIGNAL(editingFinished()), this, SLOT(updateTextX()));
-		disconnect(qle_y,     SIGNAL(editingFinished()), this, SLOT(updateTextY()));
+	}
+	else
+	{
+		disconnect(qle_x,     SIGNAL(editingFinished()), this, SLOT(updatePos()));
+		disconnect(qle_y,     SIGNAL(editingFinished()), this, SLOT(updatePos()));
 		disconnect(qle_text,  SIGNAL(editingFinished()), this, SLOT(updateTextT()));
 		disconnect(font_size, SIGNAL(editingFinished()), this, SLOT(updateTextS()));
 		disconnect(rotation_angle_, SIGNAL(editingFinished()), this, SLOT(updateTextRotationAngle()));
