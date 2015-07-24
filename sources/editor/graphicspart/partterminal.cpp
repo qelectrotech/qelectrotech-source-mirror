@@ -140,10 +140,13 @@ QRectF PartTerminal::boundingRect() const
 	Definit l'orientation de la borne
 	@param ori la nouvelle orientation de la borne
 */
-void PartTerminal::setOrientation(Qet::Orientation ori) {
+void PartTerminal::setOrientation(Qet::Orientation ori)
+{
+	if (m_orientation == ori) return;
 	prepareGeometryChange();
 	m_orientation = ori;
 	updateSecondPoint();
+	emit orientationChanged();
 }
 
 /**

@@ -36,6 +36,9 @@ class PartTerminal : public CustomElementGraphicPart
 		virtual ~PartTerminal();
 	private:
 		PartTerminal(const PartTerminal &);
+
+	signals:
+		void orientationChanged();
 	
 		// attributes
 	private:

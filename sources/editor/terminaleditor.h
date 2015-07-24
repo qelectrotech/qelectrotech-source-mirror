@@ -17,9 +17,13 @@
 */
 #ifndef TERMINAL_EDITOR_H
 #define TERMINAL_EDITOR_H
-#include <QtWidgets>
+
 #include "elementitemeditor.h"
+
 class PartTerminal;
+class QDoubleSpinBox;
+class QComboBox;
+
 /**
 	This class provides a widget to edit terminals within the element editor.
 */
@@ -34,9 +38,10 @@ class TerminalEditor : public ElementItemEditor {
 	
 	// attributes
 	private:
-	PartTerminal *part;
-	QDoubleSpinBox *qle_x, *qle_y;
-	QComboBox *orientation;
+		PartTerminal *part;
+		QDoubleSpinBox *qle_x, *qle_y;
+		QComboBox *orientation;
+		bool m_locked;
 	
 	// methods
 	public:
@@ -44,11 +49,9 @@ class TerminalEditor : public ElementItemEditor {
 	virtual CustomElementPart *currentPart() const;
 	
 	public slots:
-	void updateTerminal();
-	void updateTerminalX();
-	void updateTerminalY();
-	void updateTerminalO();
-	void updateForm();
+		void updateTerminalO();
+		void updatePos();
+		void updateForm();
 	
 	private:
 	void activeConnections(bool);

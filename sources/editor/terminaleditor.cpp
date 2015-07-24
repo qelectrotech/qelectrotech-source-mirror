@@ -18,6 +18,7 @@
 #include "terminaleditor.h"
 #include "partterminal.h"
 #include "qeticons.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
 	Constructeur
@@ -27,7 +28,8 @@
 */
 TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWidget *parent) :
 	ElementItemEditor(editor, parent),
-	part(term)
+	part(term),
+	m_locked(false)
 {
 	qle_x = new QDoubleSpinBox();
 	qle_y = new QDoubleSpinBox();
@@ -75,18 +77,26 @@ TerminalEditor::~TerminalEditor() {
 	@param new_part Nouvelle primitive a editer
 	@return true si l'editeur a accepter d'editer la primitive, false sinon
 */
-bool TerminalEditor::setPart(CustomElementPart *new_part) {
-	if (!new_part) {
+bool TerminalEditor::setPart(CustomElementPart *new_part)
+{
+	if (!new_part)
+	{
+		if (part)
+			disconnect(part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
 		part = 0;
 		return(true);
 	}
-	if (PartTerminal *part_terminal = dynamic_cast<PartTerminal *>(new_part)) {
+	if (PartTerminal *part_terminal = dynamic_cast<PartTerminal *>(new_part))
+	{
+		if(part == part_terminal) return true;
+		if (part)
+			disconnect(part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
 		part = part_terminal;
 		updateForm();
+		connect(part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
 		return(true);
-	} else {
-		return(false);
 	}
+	return(false);
 }
 
 /**
@@ -96,28 +106,35 @@ CustomElementPart *TerminalEditor::currentPart() const {
 	return(part);
 }
 
-/**
-	Met a jour la borne a partir des donnees du formulaire
-*/
-void TerminalEditor::updateTerminal() {
-	if (!part) return;
-	part -> setPos(qle_x -> value(), qle_y -> value());
-	part -> setOrientation(
-		static_cast<Qet::Orientation>(
-			orientation -> itemData(
-				orientation -> currentIndex()
-			).toInt()
-		)
-	);
+/// Met a jour l'orientation de la borne et cree un objet d'annulation
+void TerminalEditor::updateTerminalO()
+{
+	if (m_locked) return;
+	m_locked = true;
+	QVariant var(orientation -> itemData(orientation -> currentIndex()));
+	if (var != part->property("orientation"))
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "orientation", part->property("orientation"), var);
+		undo->setText(tr("Modifier l'orientation d'une borne"));
+		undoStack().push(undo);
+	}
+	m_locked = false;
 }
 
-/// WARNING!!!! on addChangePartCommand the prop accept only the simple string! (NOT /:;,?...)
-/// Met a jour l'abscisse de la position de la borne et cree un objet d'annulation
-void TerminalEditor::updateTerminalX() { addChangePartCommand(tr("abscisse"),    part, "x",           qle_x -> value()); }
-/// Met a jour l'ordonnee de la position de la borne et cree un objet d'annulation
-void TerminalEditor::updateTerminalY() { addChangePartCommand(tr("ordonnée"), part, "y",           qle_y -> value()); }
-/// Met a jour l'orientation de la borne et cree un objet d'annulation
-void TerminalEditor::updateTerminalO() { addChangePartCommand(tr("orientation"), part, "orientation", orientation -> itemData(orientation -> currentIndex())); }
+void TerminalEditor::updatePos()
+{
+	if (m_locked) return;
+	m_locked = true;
+	QPointF new_pos(qle_x->value(), qle_y->value());
+	if (new_pos != part->pos())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "pos", part->property("pos"), new_pos);
+		undo->setText(tr("Déplacer une borne"));
+		undo->enableAnimation();
+		undoStack().push(undo);
+	}
+	m_locked=false;
+}
 /// update Number and name, create cancel object
 
 /**
@@ -136,14 +153,18 @@ void TerminalEditor::updateForm() {
 	Active ou desactive les connexionx signaux/slots entre les widgets internes.
 	@param active true pour activer les connexions, false pour les desactiver
 */
-void TerminalEditor::activeConnections(bool active) {
-	if (active) {
-		connect(qle_x,       SIGNAL(editingFinished()), this, SLOT(updateTerminalX()));
-		connect(qle_y,       SIGNAL(editingFinished()), this, SLOT(updateTerminalY()));
+void TerminalEditor::activeConnections(bool active)
+{
+	if (active)
+	{
+		connect(qle_x,       SIGNAL(editingFinished()), this, SLOT(updatePos()));
+		connect(qle_y,       SIGNAL(editingFinished()), this, SLOT(updatePos()));
 		connect(orientation, SIGNAL(activated(int)),    this, SLOT(updateTerminalO()));
-	} else {
-		disconnect(qle_x,       SIGNAL(editingFinished()), this, SLOT(updateTerminalX()));
-		disconnect(qle_y,       SIGNAL(editingFinished()), this, SLOT(updateTerminalY()));
+	}
+	else
+	{
+		disconnect(qle_x,       SIGNAL(editingFinished()), this, SLOT(updatePos()));
+		disconnect(qle_y,       SIGNAL(editingFinished()), this, SLOT(updatePos()));
 		disconnect(orientation, SIGNAL(activated(int)),    this, SLOT(updateTerminalO()));
 	}
 }
