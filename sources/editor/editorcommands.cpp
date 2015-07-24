@@ -304,64 +304,6 @@ void AddPartCommand::redo() {
 
 /**
 	Constructeur
-	@param name   nom de la propriete modifiee
-	@param part   partie modifiee
-	@param prop   propriete modifiee
-	@param old_v  ancienne valeur
-	@param new_v  nouvelle valeur
-	@param parent qUndoCommand parent
-*/
-ChangePartCommand::ChangePartCommand(
-	const QString &name,
-	CustomElementPart *part,
-	const char *prop,
-	const QVariant &old_v,
-	const QVariant &new_v,
-	QUndoCommand *parent
-) :
-	ElementEditionCommand(QString(QObject::tr("modification %1", "undo caption")).arg(name), 0, 0, parent),
-	cep(part),
-	property(prop),
-	m_old_value(old_v),
-	m_new_value(new_v)
-{
-}
-
-ChangePartCommand::ChangePartCommand(const QString &part_name, CustomElementPart *part, const char *property_name, const QVariant &old_value, QUndoCommand *parent) :
-	ElementEditionCommand(QString(QObject::tr("modification %1", "undo caption")).arg(part_name), 0, 0, parent),
-	cep(part),
-	property(property_name),
-	m_old_value(old_value)
-{}
-
-/// Destructeur
-ChangePartCommand::~ChangePartCommand() {
-}
-
-void ChangePartCommand::setNewValue(const QVariant &new_value) {
-	m_new_value = new_value;
-}
-
-/**
- * @brief ChangePartCommand::undo
- */
-void ChangePartCommand::undo()
-{
-	cep -> setProperty(property, m_old_value);
-	ElementEditionCommand::undo();
-}
-
-/**
- * @brief ChangePartCommand::redo
- */
-void ChangePartCommand::redo()
-{
-	cep -> setProperty(property, m_new_value);
-	ElementEditionCommand::redo();
-}
-
-/**
-	Constructeur
 	@param element_scene Element edite
 	@param before Listes des noms avant changement
 	@param after Listes des noms apres changement

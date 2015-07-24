@@ -17,9 +17,14 @@
 */
 #ifndef STYLE_EDITOR_H
 #define STYLE_EDITOR_H
-#include <QtWidgets>
+
 #include "elementitemeditor.h"
+
 class CustomElementGraphicPart;
+class QVBoxLayout;
+class QCheckBox;
+class QComboBox;
+
 /**
 	This class provides a widget to edit styles (color, pen style and thickness,
 	filling, antialiasing) common to most primitives within the element editor.
@@ -55,7 +60,6 @@ class StyleEditor : public ElementItemEditor
 		static bool isStyleEditable (QList <CustomElementPart *> cep_list);
 	
 	public slots:
-		void updatePart();
 		void updateForm();
 		void updatePartAntialiasing();
 		void updatePartColor();
@@ -65,5 +69,6 @@ class StyleEditor : public ElementItemEditor
 	
 	private:
 		void activeConnections(bool);
+		void makeUndo(const QString &undo_text, const char *property_name, const QVariant &new_value);
 };
 #endif

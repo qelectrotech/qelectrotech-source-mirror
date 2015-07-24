@@ -17,6 +17,7 @@
 */
 #include "styleeditor.h"
 #include "customelementgraphicpart.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
 	Constructeur
@@ -119,62 +120,30 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 /// Destructeur
 StyleEditor::~StyleEditor() {
 }
-/**
- * @brief StyleEditor::updatePart
- * Update the part from the content of the form
- */
-void StyleEditor::updatePart() {
-	if (!part) return;
-	part->setProperty("antialias",	 antialiasing  -> isChecked());
-	part->setProperty("color",		 outline_color -> itemData(outline_color -> currentIndex()));
-	part->setProperty("line_style",  line_style	   -> itemData(line_style	 -> currentIndex()));
-	part->setProperty("line_weight", size_weight   -> itemData(size_weight	 -> currentIndex()));
-	part->setProperty("filling",	 filling_color -> itemData(filling_color -> currentIndex()));
-}
 
 /// Update antialiasing with undo command
-void StyleEditor::updatePartAntialiasing()
-{
-	if (part)
-		addChangePartCommand(tr("style antialiasing"), part, "antialias",   antialiasing -> isChecked());
-	else if (!m_part_list.isEmpty())
-		addChangePartCommand(tr("style antialiasing"), m_cep_list, "antialias",   antialiasing -> isChecked());
+void StyleEditor::updatePartAntialiasing() {
+	makeUndo(tr("style antialiasing"), "antialias", antialiasing -> isChecked());
 }
 
 /// Update color with undo command
-void StyleEditor::updatePartColor()
-{
-	if (part)
-		addChangePartCommand(tr("style couleur"), part, "color", outline_color->itemData(outline_color -> currentIndex()));
-	else if (!m_part_list.isEmpty())
-		addChangePartCommand(tr("style couleur"), m_cep_list, "color", outline_color->itemData(outline_color -> currentIndex()));
+void StyleEditor::updatePartColor() {
+	makeUndo(tr("style couleur"),"color", outline_color->itemData(outline_color -> currentIndex()));
 }
 
 /// Update style with undo command
-void StyleEditor::updatePartLineStyle()
-{
-	if (part)
-		addChangePartCommand(tr("style ligne"), part, "line_style", line_style->itemData(line_style -> currentIndex()));
-	else if (!m_part_list.isEmpty())
-		addChangePartCommand(tr("style ligne"), m_cep_list, "line_style", line_style->itemData(line_style -> currentIndex()));
+void StyleEditor::updatePartLineStyle() {
+	makeUndo(tr("style ligne"), "line_style", line_style->itemData(line_style -> currentIndex()));
 }
 
 /// Update weight with undo command
-void StyleEditor::updatePartLineWeight()
-{
-	if (part)
-		addChangePartCommand(tr("style epaisseur"), part, "line_weight", size_weight->itemData(size_weight -> currentIndex()));
-	else if (!m_part_list.isEmpty())
-		addChangePartCommand(tr("style epaisseur"), m_cep_list, "line_weight", size_weight->itemData(size_weight -> currentIndex()));
+void StyleEditor::updatePartLineWeight() {
+	makeUndo(tr("style epaisseur"), "line_weight", size_weight->itemData(size_weight -> currentIndex()));
 }
 
 /// Update color filling with undo command
-void StyleEditor::updatePartFilling()
-{
-	if(part)
-		addChangePartCommand(tr("style remplissage"), part, "filling", filling_color->itemData(filling_color -> currentIndex()));
-	else if (!m_part_list.isEmpty())
-		addChangePartCommand(tr("style remplissage"), m_cep_list, "filling", filling_color->itemData(filling_color -> currentIndex()));
+void StyleEditor::updatePartFilling() {
+	makeUndo(tr("style remplissage"), "filling", filling_color->itemData(filling_color -> currentIndex()));
 }
 
 /**
@@ -318,5 +287,31 @@ void StyleEditor::activeConnections(bool active) {
 		disconnect(size_weight,       SIGNAL(activated(int)), this, SLOT(updatePartLineWeight()));
 		disconnect(filling_color, SIGNAL(activated(int)), this, SLOT(updatePartFilling()));
 		disconnect(antialiasing, SIGNAL(stateChanged(int)),  this, SLOT(updatePartAntialiasing()));
+	}
+}
+
+void StyleEditor::makeUndo(const QString &undo_text, const char *property_name, const QVariant &new_value)
+{
+	QPropertyUndoCommand *undo = nullptr;
+	if (part && (new_value != part->property(property_name)))
+	{
+		undo = new QPropertyUndoCommand(part, property_name, part->property(property_name), new_value);
+		undo->setText(undo_text);
+		undoStack().push(undo);
+		return;
+	}
+	else if (!m_part_list.isEmpty())
+	{
+		foreach (CustomElementGraphicPart *cegp, m_part_list)
+		{
+			if (!undo)
+			{
+				undo = new QPropertyUndoCommand(cegp, property_name, cegp->property(property_name), new_value);
+				undo->setText(undo_text);
+			}
+			else
+				new QPropertyUndoCommand(cegp, property_name, cegp->property(property_name), new_value, undo);
+		}
+		undoStack().push(undo);
 	}
 }

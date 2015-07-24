@@ -170,36 +170,6 @@ class AddPartCommand : public ElementEditionCommand {
 };
 
 /**
-	This command changes a property of a primitive when editing an electrical
-	element.
-*/
-class ChangePartCommand : public ElementEditionCommand
-{
-		// constructors, destructor
-	public:
-		ChangePartCommand(const QString &, CustomElementPart *, const char *, const QVariant &, const QVariant &, QUndoCommand * = 0);
-		ChangePartCommand(const QString &part_name, CustomElementPart *part, const char *property_name, const QVariant &old_value, QUndoCommand *parent = 0);
-		virtual ~ChangePartCommand();
-
-		void setNewValue(const QVariant &new_value);
-
-	private:
-		ChangePartCommand(const ChangePartCommand &);
-	
-		// methods
-	public:
-		virtual void undo();
-		virtual void redo();
-	
-		// attributes
-	private:
-		CustomElementPart *cep;
-		const char *property;
-		QVariant m_old_value;
-		QVariant m_new_value;
-};
-
-/**
 	This command changes the translated names of an electrical element.
 */
 class ChangeNamesCommand : public ElementEditionCommand {
