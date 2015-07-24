@@ -17,9 +17,9 @@
 */
 #include "parttextfield.h"
 #include "textfieldeditor.h"
-#include "editorcommands.h"
 #include "elementprimitivedecorator.h"
 #include "qetapp.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
 	Constructeur
@@ -39,10 +39,7 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	real_font_size_ = font().pointSize();
-	setFlags(QGraphicsItem::ItemIsSelectable);
-#if QT_VERSION >= 0x040600
-	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
-#endif
+	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges);
 	setAcceptHoverEvents(true);
 	setPlainText(QObject::tr("_", "default text when adding a textfield in the element editor"));
 	
@@ -416,21 +413,18 @@ void PartTextField::startEdition() {
 	End text edition, potentially generating a ChangePartCommand if the text
 	has changed.
 */
-void PartTextField::endEdition() {
-	if (!previous_text.isNull()) {
-		// the text was being edited
+void PartTextField::endEdition()
+{
+	if (!previous_text.isNull())
+	{
+			// the text was being edited
 		QString new_text = toPlainText();
-		if (previous_text != new_text) {
-			// the text was changed
-			ChangePartCommand *text_change = new ChangePartCommand(
-				TextFieldEditor::tr("contenu") + " " + name(),
-				this,
-				"text",
-				previous_text,
-				new_text
-			);
+		if (previous_text != new_text)
+		{
+			QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "text", previous_text, new_text);
+			undo->setText(tr("Modifier un champ texte"));
+			undoStack().push(undo);
 			previous_text = QString();
-			undoStack().push(text_change);
 		}
 	}
 	

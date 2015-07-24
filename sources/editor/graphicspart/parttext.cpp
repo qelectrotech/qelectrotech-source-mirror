@@ -17,10 +17,10 @@
 */
 #include "parttext.h"
 #include "texteditor.h"
-#include "editorcommands.h"
 #include "elementprimitivedecorator.h"
 #include "elementscene.h"
 #include "qetapp.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
 	Constructeur
@@ -35,16 +35,11 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	decorator_(0)
 {
 	Q_UNUSED(scene)
-#if QT_VERSION >= 0x040500
 	document() -> setDocumentMargin(1.0);
-#endif
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	real_font_size_ = font().pointSize();
-	setFlags(QGraphicsItem::ItemIsSelectable);
-#if QT_VERSION >= 0x040600
-	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
-#endif
+	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges);
 	setAcceptHoverEvents(true);
 	setDefaultTextColor(Qt::black);
 	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
@@ -432,29 +427,26 @@ void PartText::startEdition() {
 	End text edition, potentially generating a ChangePartCommand if the text
 	has changed.
 */
-void PartText::endEdition() {
-	if (!previous_text.isNull()) {
-		// the text was being edited
+void PartText::endEdition()
+{
+	if (!previous_text.isNull())
+	{
+			// the text was being edited
 		QString new_text = toPlainText();
-		if (previous_text != new_text) {
-			// the text was changed
-			ChangePartCommand *text_change = new ChangePartCommand(
-				TextEditor::tr("contenu") + " " + name(),
-				this,
-				"text",
-				previous_text,
-				new_text
-			);
+		if (previous_text != new_text)
+		{
+			QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "text", previous_text, new_text);
+			undo->setText(tr("Modifier un champ texte"));
+			undoStack().push(undo);
 			previous_text = QString();
-			undoStack().push(text_change);
 		}
 	}
-	
+
 	// deselectionne le texte
 	QTextCursor qtc = textCursor();
 	qtc.clearSelection();
 	setTextCursor(qtc);
-	
+
 	setEditable(false);
 	if (decorator_) {
 		decorator_ -> setFocus();
