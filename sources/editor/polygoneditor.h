@@ -57,7 +57,6 @@ class PolygonEditor : public ElementItemEditor {
 	QVector<QPointF> getPointsFromTree();
 	
 	public slots:
-	void updatePolygon();
 	void updatePolygonPoints();
 	void updatePolygonClosedState();
 	void updateForm();

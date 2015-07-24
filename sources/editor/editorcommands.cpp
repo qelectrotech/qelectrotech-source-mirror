@@ -362,40 +362,6 @@ void ChangePartCommand::redo()
 
 /**
 	Constructeur
-	@param p Polygone edite
-	@param o_points points avant le changement
-	@param n_points points apres le changement
-	@param parent QUndoCommand parent
-*/
-ChangePolygonPointsCommand::ChangePolygonPointsCommand(
-	PartPolygon *p,
-	const QVector<QPointF> &o_points,
-	const QVector<QPointF> &n_points,
-	QUndoCommand *parent
-) :
-	ElementEditionCommand(QObject::tr("modification points polygone", "undo caption"), 0, 0, parent),
-	polygon(p),
-	old_points(o_points),
-	new_points(n_points)
-{
-}
-
-/// Destructeur
-ChangePolygonPointsCommand::~ChangePolygonPointsCommand() {
-}
-
-/// Annule le changement
-void ChangePolygonPointsCommand::undo() {
-	polygon -> setPolygon(old_points);
-}
-
-/// Refait le changement
-void ChangePolygonPointsCommand::redo() {
-	polygon -> setPolygon(new_points);
-}
-
-/**
-	Constructeur
 	@param element_scene Element edite
 	@param before Listes des noms avant changement
 	@param after Listes des noms apres changement

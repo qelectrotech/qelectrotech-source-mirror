@@ -18,12 +18,10 @@
 #ifndef EDITOR_COMMANDS_H
 #define EDITOR_COMMANDS_H
 #include "customelementpart.h"
-#include "partpolygon.h"
 #include "elementview.h"
 #include "elementscene.h"
 #include "elementcontent.h"
 #include "qgimanager.h"
-#include <QtWidgets>
 
 /**
  * @brief The ElementEditionCommand class
@@ -199,32 +197,6 @@ class ChangePartCommand : public ElementEditionCommand
 		const char *property;
 		QVariant m_old_value;
 		QVariant m_new_value;
-};
-
-/**
-	This command changes the points of a polygon when editing an electrical
-	element.
-*/
-class ChangePolygonPointsCommand : public ElementEditionCommand {
-	// constructors, destructor
-	public:
-	ChangePolygonPointsCommand(PartPolygon *, const QVector<QPointF> &, const QVector<QPointF> &, QUndoCommand * = 0);
-	virtual ~ChangePolygonPointsCommand();
-	private:
-	ChangePolygonPointsCommand(const ChangePolygonPointsCommand &);
-	
-	// methods
-	public:
-	virtual void undo();
-	virtual void redo();
-	
-	// attributes
-	/// Changed polygon
-	PartPolygon *polygon;
-	/// Former points
-	QVector<QPointF> old_points;
-	/// New points
-	QVector<QPointF> new_points;
 };
 
 /**

@@ -18,9 +18,9 @@
 #include "polygoneditor.h"
 #include "partpolygon.h"
 #include "elementscene.h"
-#include "editorcommands.h"
 #include "qetmessagebox.h"
 #include "styleeditor.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
 	Constructeur
@@ -59,44 +59,39 @@ PolygonEditor::~PolygonEditor() {
 }
 
 /**
-	Met a jour le polygone a partir des donnees du formulaire : points et etat ferme ou non
-*/
-void PolygonEditor::updatePolygon() {
-	updatePolygonPoints();
-	updatePolygonClosedState();
-}
-
-/**
 	Met a jour les points du polygone et cree un objet d'annulation
 */
-void PolygonEditor::updatePolygonPoints() {
+void PolygonEditor::updatePolygonPoints()
+{
 	if (!part) return;
-	QVector<QPointF> points = getPointsFromTree();
-	if (points.count() < 2) {
-		QET::QetMessageBox::warning(
-			this,
-			tr("Erreur", "message box title"),
-			tr("Le polygone doit comporter au moins deux points.", "message box content")
-		);
+	QPolygonF points = getPointsFromTree();
+	if (points.count() < 2)
+	{
+		QET::QetMessageBox::warning(this, tr("Erreur", "message box title"), tr("Le polygone doit comporter au moins deux points.", "message box content"));
 		return;
 	}
-	undoStack().push(new ChangePolygonPointsCommand(part, part -> polygon(), points));
+
+	if (points != part->polygon())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "polygon", part->property("polygon"), points);
+		undo->setText(tr("Modifier un polygone"));
+		undoStack().push(undo);
+	}
 }
 
 /**
 	Met a jour l'etat ferme ou non du polygone
 */
-void PolygonEditor::updatePolygonClosedState() {
+void PolygonEditor::updatePolygonClosedState()
+{
 	if (!part) return;
-	undoStack().push(
-		new ChangePartCommand(
-			tr("fermeture du polygone"),
-			part,
-			"closed",
-			QVariant(!close_polygon.isChecked()),
-			QVariant(close_polygon.isChecked())
-		)
-	);
+	bool close = close_polygon.isChecked();
+	if (close != part->isClosed())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "closed", part->property("closed"), close);
+		undo->setText(tr("Modifier un polygone"));
+		undoStack().push(undo);
+	}
 }
 
 /**
@@ -126,20 +121,35 @@ void PolygonEditor::updateForm() {
 	@param new_part Nouvelle primitive a editer
 	@return true si l'editeur a accepter d'editer la primitive, false sinon
 */
-bool PolygonEditor::setPart(CustomElementPart *new_part) {
-	if (!new_part) {
+bool PolygonEditor::setPart(CustomElementPart *new_part)
+{
+	if (!new_part)
+	{
+		if (part)
+		{
+			disconnect(part, &PartPolygon::polygonChanged, this, &PolygonEditor::updateForm);
+			disconnect(part, &PartPolygon::closedChange, this, &PolygonEditor::updateForm);
+		}
 		part = 0;
 		style_ -> setPart(0);
 		return(true);
 	}
-	if (PartPolygon *part_polygon = dynamic_cast<PartPolygon *>(new_part)) {
+	if (PartPolygon *part_polygon = dynamic_cast<PartPolygon *>(new_part))
+	{
+		if (part == part_polygon) return true;
+		if (part)
+		{
+			disconnect(part, &PartPolygon::polygonChanged, this, &PolygonEditor::updateForm);
+			disconnect(part, &PartPolygon::closedChange, this, &PolygonEditor::updateForm);
+		}
 		part = part_polygon;
 		style_ -> setPart(part);
 		updateForm();
+		connect(part, &PartPolygon::polygonChanged, this, &PolygonEditor::updateForm);
+		connect(part, &PartPolygon::closedChange, this, &PolygonEditor::updateForm);
 		return(true);
-	} else {
-		return(false);
 	}
+	return(false);
 }
 
 /**

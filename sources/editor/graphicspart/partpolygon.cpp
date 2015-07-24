@@ -199,6 +199,7 @@ void PartPolygon::setPolygon(const QPolygonF &polygon)
 	if (m_polygon == polygon) return;
 	prepareGeometryChange();
 	m_polygon = polygon;
+	emit polygonChanged();
 }
 
 /**
@@ -239,6 +240,14 @@ void PartPolygon::removeLastPoint()
 	}
 }
 
+void PartPolygon::setClosed(bool close)
+{
+	if (m_closed == close) return;
+	prepareGeometryChange();
+	m_closed = close;
+	emit closedChange();
+}
+
 /**
  * @brief PartPolygon::mousePressEvent
  * Handle mouse press event
@@ -274,6 +283,7 @@ void PartPolygon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		QPointF pos_ = event->modifiers() == Qt::ControlModifier ? event->pos() : mapFromScene(elementScene()->snapToGrid(event->scenePos()));
 		prepareGeometryChange();
 		m_polygon.replace(m_handler_index, pos_);
+		emit polygonChanged();
 	}
 	else
 		CustomElementGraphicPart::mouseMoveEvent(event);

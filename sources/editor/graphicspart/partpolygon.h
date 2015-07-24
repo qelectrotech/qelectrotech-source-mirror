@@ -45,6 +45,10 @@ class PartPolygon : public CustomElementGraphicPart
 	private:
 		PartPolygon(const PartPolygon &);
 
+	signals:
+		void closedChange();
+		void polygonChanged();
+
 		// methods
 	public:
 		enum { Type = UserType + 1105 };
@@ -78,7 +82,7 @@ class PartPolygon : public CustomElementGraphicPart
 		void removeLastPoint ();	
 
 		bool isClosed  () const {return m_closed;}
-		void setClosed (bool c) {m_closed = c;}
+		void setClosed (bool close);
 
 	protected:
 		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
