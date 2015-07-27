@@ -1636,7 +1636,7 @@ void QETDiagramEditor::slot_addEllipse() {
  * add polyline to current diagram
  */
 void QETDiagramEditor::slot_addPolyline() {
-	if (DiagramView *dv = currentDiagram()) dv -> setEventInterface(new DVEventAddShape(dv, QetShapeItem::Polyline));
+	if (DiagramView *dv = currentDiagram()) dv -> setEventInterface(new DVEventAddShape(dv, QetShapeItem::Polygon));
 }
 
 /**

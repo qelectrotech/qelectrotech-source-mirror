@@ -80,7 +80,7 @@ bool DVEventAddShape::mousePressEvent(QMouseEvent *event)
 		}
 
 			//If current item isn't a polyline, add it with an undo command
-		if (m_shape_type != QetShapeItem::Polyline)
+		if (m_shape_type != QetShapeItem::Polygon)
 		{
 			m_shape_item -> setP2 (pos);
 			m_diagram -> undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
@@ -139,7 +139,7 @@ bool DVEventAddShape::mouseReleaseEvent(QMouseEvent *event)
 		if (m_shape_item)
 		{
 				//Shape is a polyline and have three points or more we just remove the last point
-			if (m_shape_type == QetShapeItem::Polyline && (m_shape_item -> pointsCount() >= 3) )
+			if (m_shape_type == QetShapeItem::Polygon && (m_shape_item -> pointsCount() >= 3) )
 			{
 				m_shape_item -> removePoints();
 
@@ -175,7 +175,7 @@ bool DVEventAddShape::mouseReleaseEvent(QMouseEvent *event)
 bool DVEventAddShape::mouseDoubleClickEvent(QMouseEvent *event)
 {
 		//If current item is a polyline, add it with an undo command
-	if (m_shape_item && m_shape_type == QetShapeItem::Polyline && event -> button() == Qt::LeftButton)
+	if (m_shape_item && m_shape_type == QetShapeItem::Polygon && event -> button() == Qt::LeftButton)
 	{
 			//<double clic is used to finish polyline, but they also add two points at the same pos
 			//<(double clic is a double press event), so we remove the last point of polyline

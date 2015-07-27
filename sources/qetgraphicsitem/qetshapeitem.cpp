@@ -41,7 +41,7 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_mouse_grab_handler(false),
 	m_handler(10)
 {
-	if (type == Polyline) m_polygon << m_P1 << m_P2;
+	if (type == Polygon) m_polygon << m_P1 << m_P2;
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
 }
@@ -69,7 +69,7 @@ void QetShapeItem::setStyle(Qt::PenStyle newStyle)
  */
 void QetShapeItem::setP2(const QPointF &P2)
 {
-	if (m_shapeType == Polyline && m_polygon.last() != P2)
+	if (m_shapeType == Polygon && m_polygon.last() != P2)
 	{
 		prepareGeometryChange();
 		m_polygon.replace(m_polygon.size()-1, P2);
@@ -123,7 +123,7 @@ bool QetShapeItem::setRect(const QRectF &rect)
  */
 bool QetShapeItem::setPolygon(const QPolygonF &polygon)
 {
-	if (Q_UNLIKELY(m_shapeType != Polyline)) return false;
+	if (Q_UNLIKELY(m_shapeType != Polygon)) return false;
 	prepareGeometryChange();
 	m_polygon = polygon;
 	return true;
@@ -193,7 +193,7 @@ QPainterPath QetShapeItem::shape() const
 						path.lineTo(m_P2);                   break;
 		case Rectangle: path.addRect(QRectF(m_P1, m_P2));    break;
 		case Ellipse:   path.addEllipse(QRectF(m_P1, m_P2)); break;
-		case Polyline:  path.addPolygon(m_polygon);          break;
+		case Polygon:  path.addPolygon(m_polygon);          break;
 		default:        Q_ASSERT(false);                     break;
 	}
 
@@ -275,8 +275,8 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 				m_handler.drawHandler(painter, m_handler.pointsForRect(QRectF(m_P1, m_P2)));
 			break;
 
-		case Polyline:
-			painter->drawPolyline(m_polygon);
+		case Polygon:
+			painter->drawPolygon(m_polygon);
 			if (isSelected())
 				m_handler.drawHandler(painter, m_polygon);
 			break;
@@ -319,7 +319,7 @@ void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			case Line:      vector << m_P1 << m_P2;                               break;
 			case Rectangle: vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
 			case Ellipse:   vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
-			case Polyline:  vector = m_polygon;                                   break;
+			case Polygon:  vector = m_polygon;                                   break;
 		}
 
 		m_vector_index = m_handler.pointIsHoverHandler(event->pos(), vector);
@@ -360,7 +360,7 @@ void QetShapeItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 			case Rectangle: setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index)); break;
 			case Ellipse:   setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index)); break;
 
-			case Polyline:
+			case Polygon:
 				prepareGeometryChange();
 				m_polygon.replace(m_vector_index, new_pos);
 				break;
@@ -391,11 +391,11 @@ void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 					case Line:      undo = new QPropertyUndoCommand(this, "line",QLineF(m_old_P1, m_old_P2), QLineF(m_P1, m_P2)); break;
 					case Rectangle: undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2)); break;
 					case Ellipse:   undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2)); break;
-					case Polyline: break;
+					case Polygon: break;
 				}
 				if (undo) undo->enableAnimation();
 			}
-			else if (m_shapeType == Polyline && (m_polygon != m_old_polygon))
+			else if (m_shapeType == Polygon && (m_polygon != m_old_polygon))
 				undo = new QPropertyUndoCommand(this, "polygon", m_old_polygon, m_polygon);
 
 			if(undo)
@@ -431,19 +431,17 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 			case 0: m_shapeType = Line;      break;
 			case 1: m_shapeType = Rectangle; break;
 			case 2: m_shapeType = Ellipse;   break;
-			case 3: m_shapeType = Polyline;  break;
+			case 3: m_shapeType = Polygon;  break;
 		}
 	}
 		//For version after N°4075, shape is stored with a string
 	else
 	{
-		if      (type == "Line")      m_shapeType = Line;
-		else if (type == "Rectangle") m_shapeType = Rectangle;
-		else if (type == "Ellipse")   m_shapeType = Ellipse;
-		else if (type == "polygon")   m_shapeType = Polyline;
+		QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("ShapeType"));
+		m_shapeType = QetShapeItem::ShapeType(me.keysToValue(type.toStdString().data()));
 	}
 
-	if (m_shapeType != Polyline)
+	if (m_shapeType != Polygon)
 	{
 		m_P1.setX(e.attribute("x1", 0).toDouble());
 		m_P1.setY(e.attribute("y1", 0).toDouble());
@@ -468,18 +466,11 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 	QDomElement result = document.createElement("shape");
 
 		//write some attribute
-	QString type;
-	switch(m_shapeType)
-	{
-		case Line:      type = "Line";      break;
-		case Rectangle: type = "Rectangle"; break;
-		case Ellipse:   type = "Ellipse";   break;
-		case Polyline:  type = "polygon";   break;
-	}
-	result.setAttribute("type", type);
+	QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("ShapeType"));
+	result.setAttribute("type", me.valueToKey(m_shapeType));
 	result.setAttribute("style", QString::number(m_shapeStyle));
 	result.setAttribute("is_movable", bool(is_movable_));
-	if (m_shapeType != Polyline)
+	if (m_shapeType != Polygon)
 	{
 		result.setAttribute("x1", QString::number(mapToScene(m_P1).x()));
 		result.setAttribute("y1", QString::number(mapToScene(m_P1).y()));
@@ -541,7 +532,7 @@ QString QetShapeItem::name() const {
 		case Line:	    return tr("une ligne");
 		case Rectangle:	return tr("un rectangle");
 		case Ellipse:	return tr("une éllipse");
-		case Polyline:	return tr("une polyligne");
+		case Polygon:	return tr("une polyligne");
 		default:	    return tr("une shape");
 	}
 }
