@@ -21,7 +21,7 @@
 #include "qet.h"
 #include "shapegraphicsitempropertieswidget.h"
 #include "PropertiesEditor/propertieseditordialog.h"
-#include "qetshapegeometrycommand.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
  * @brief QetShapeItem::QetShapeItem
@@ -39,7 +39,6 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_P2 (p2),
 	m_hovered(false),
 	m_mouse_grab_handler(false),
-	m_undo_command(nullptr),
 	m_handler(10)
 {
 	if (type == Polyline) m_polygon << m_P1 << m_P2;
@@ -47,10 +46,7 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	setAcceptHoverEvents(true);
 }
 
-QetShapeItem::~QetShapeItem()
-{
-	if (m_undo_command) delete m_undo_command;
-}
+QetShapeItem::~QetShapeItem() {}
 
 /**
  * @brief QetShapeItem::setStyle
@@ -83,22 +79,21 @@ void QetShapeItem::setP2(const QPointF &P2)
 		prepareGeometryChange();
 		m_P2 = P2;
 	}
-	setTransformOriginPoint(boundingRect().center());
 }
 
 /**
  * @brief QetShapeItem::setLine
  * Set item geometry to line (only available for line shape)
  * @param line
+ * @return  : true when shape is a Line, else false
  */
-void QetShapeItem::setLine(const QLineF &line)
+bool QetShapeItem::setLine(const QLineF &line)
 {
-	if (Q_LIKELY(m_shapeType == Line))
-	{
-		prepareGeometryChange();
-		m_P1 = line.p1();
-		m_P2 = line.p2();
-	}
+	if (Q_UNLIKELY(m_shapeType != Line)) return false;
+	prepareGeometryChange();
+	m_P1 = line.p1();
+	m_P2 = line.p2();
+	return true;
 }
 
 /**
@@ -138,8 +133,7 @@ bool QetShapeItem::setPolygon(const QPolygonF &polygon)
  * @brief QetShapeItem::pointCount
  * @return the number of point in the polygon
  */
-int QetShapeItem::pointsCount() const
-{
+int QetShapeItem::pointsCount() const {
 	return m_polygon.size();
 }
 
@@ -148,10 +142,10 @@ int QetShapeItem::pointsCount() const
  * Add a new point to the curent polygon
  * @param P the new point.
  */
-void QetShapeItem::setNextPoint(QPointF P) {
+void QetShapeItem::setNextPoint(QPointF P)
+{
 	prepareGeometryChange();
 	m_polygon.append(Diagram::snapToGrid(P));
-	setTransformOriginPoint(boundingRect().center());
 }
 
 /**
@@ -295,10 +289,8 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
  * @param event
  */
 void QetShapeItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
-	Q_UNUSED(event);
-
 	m_hovered = true;
-	update();
+	QetGraphicsItem::hoverEnterEvent(event);
 }
 
 /**
@@ -307,10 +299,8 @@ void QetShapeItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
  * @param event
  */
 void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
-	Q_UNUSED(event);
-
 	m_hovered = false;
-	update();
+	QetGraphicsItem::hoverLeaveEvent(event);
 }
 
 /**
@@ -337,14 +327,9 @@ void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		{
 				//User click on an handler
 			m_mouse_grab_handler = true;
-
-			switch (m_shapeType)
-			{
-				case Line:      m_undo_command = new QetShapeGeometryCommand(this, QLineF(m_P1, m_P2)); break;
-				case Rectangle: m_undo_command = new QetShapeGeometryCommand(this, QRectF(m_P1, m_P2)); break;
-				case Ellipse:   m_undo_command = new QetShapeGeometryCommand(this, QRectF(m_P1, m_P2)); break;
-				case Polyline:  m_undo_command = new QetShapeGeometryCommand(this, m_polygon);          break;
-			}
+			m_old_P1 = m_P1;
+			m_old_P2 = m_P2;
+			m_old_polygon = m_polygon;
 			return;
 		}
 	}
@@ -367,26 +352,19 @@ void QetShapeItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 		switch (m_shapeType)
 		{
-			case Line: {
+			case Line:
 				prepareGeometryChange();
 				m_vector_index == 0 ? m_P1 = new_pos : m_P2 = new_pos;
-			}
 				break;
 
-			case Rectangle:
-				setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
+			case Rectangle: setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index)); break;
+			case Ellipse:   setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index)); break;
 
-			case Ellipse:
-				setRect(m_handler.rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
-				break;
-
-			case Polyline: {
+			case Polyline:
 				prepareGeometryChange();
 				m_polygon.replace(m_vector_index, new_pos);
-			}
 				break;
 		}	//End switch
-
 		return;
 	}
 
@@ -403,21 +381,29 @@ void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	if (m_mouse_grab_handler)
 	{
 		m_mouse_grab_handler = false;
-		switch(m_shapeType)
-		{
-			case Line:      m_undo_command->setNewLine(QLineF(m_P1, m_P2)); break;
-			case Rectangle: m_undo_command->setNewRect(QRectF(m_P1, m_P2)); break;
-			case Ellipse:   m_undo_command->setNewRect(QRectF(m_P1, m_P2)); break;
-			case Polyline : m_undo_command->setNewPolygon(m_polygon);       break;
-		}
-
 		if (diagram())
 		{
-			diagram()->undoStack().push(m_undo_command);
-			m_undo_command = nullptr;
+			QPropertyUndoCommand *undo = nullptr;
+			if ((m_shapeType & (Line | Rectangle | Ellipse)) && (m_P1 != m_old_P1 || m_P2 != m_old_P2))
+			{
+				switch(m_shapeType)
+				{
+					case Line:      undo = new QPropertyUndoCommand(this, "line",QLineF(m_old_P1, m_old_P2), QLineF(m_P1, m_P2)); break;
+					case Rectangle: undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2)); break;
+					case Ellipse:   undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2)); break;
+					case Polyline: break;
+				}
+				if (undo) undo->enableAnimation();
+			}
+			else if (m_shapeType == Polyline && (m_polygon != m_old_polygon))
+				undo = new QPropertyUndoCommand(this, "polygon", m_old_polygon, m_polygon);
+
+			if(undo)
+			{
+				undo->setText(tr("Modifier %1").arg(name()));
+				diagram()->undoStack().push(undo);
+			}
 		}
-		else
-			delete m_undo_command;
 	}
 
 	QetGraphicsItem::mouseReleaseEvent(event);
@@ -496,23 +482,14 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
  * @param filepath file path of the the dxf document
  * @return true if draw success
  */
-bool QetShapeItem::toDXF(const QString &filepath) {
-	switch (m_shapeType) {
-		case Line:
-			Createdxf::drawLine(filepath, QLineF(mapToScene(m_P1), mapToScene(m_P2)), 0);
-			return true;
-			break;
-		case Rectangle:
-			Createdxf::drawRectangle(filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), 0);
-			return true;
-			break;
-		case Ellipse:
-			Createdxf::drawEllipse(filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), 0);
-			return true;
-			break;
-		default:
-			return false;
-			break;
+bool QetShapeItem::toDXF(const QString &filepath)
+{
+	switch (m_shapeType)
+	{
+		case Line:      Createdxf::drawLine     (filepath, QLineF(mapToScene(m_P1), mapToScene(m_P2)), 0);              return true;
+		case Rectangle: Createdxf::drawRectangle(filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), 0); return true;
+		case Ellipse:   Createdxf::drawEllipse  (filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), 0); return true;
+		default: return false;
 	}
 }
 
@@ -532,14 +509,12 @@ void QetShapeItem::editProperty()
  * @brief QetShapeItem::name
  * @return the name of the curent shape.
  */
-QString QetShapeItem::name() const
-{
-	switch (m_shapeType)
-	{
-		case Line:	    return tr("une ligne");	    break;
-		case Rectangle:	return tr("un rectangle");	break;
-		case Ellipse:	return tr("une éllipse");	break;
-		case Polyline:	return tr("une polyligne");	break;
-		default:	    return tr("une shape");	    break;
+QString QetShapeItem::name() const {
+	switch (m_shapeType) {
+		case Line:	    return tr("une ligne");
+		case Rectangle:	return tr("un rectangle");
+		case Ellipse:	return tr("une éllipse");
+		case Polyline:	return tr("une polyligne");
+		default:	    return tr("une shape");
 	}
 }

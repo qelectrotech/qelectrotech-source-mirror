@@ -23,7 +23,6 @@
 
 class QDomElement;
 class QDomDocument;
-class QetShapeGeometryCommand;
 
 /**
  * @brief The QetShapeItem class
@@ -34,15 +33,19 @@ class QetShapeItem : public QetGraphicsItem
 {
 	Q_OBJECT
 
+		Q_PROPERTY(QRectF rect READ rect WRITE setRect)
+		Q_PROPERTY(QLineF line READ line WRITE setLine)
+		Q_PROPERTY(QPolygonF polygon READ polygon WRITE setPolygon)
+
 	signals:
 		void styleChanged();
 
 	public:
 		Q_ENUMS(ShapeType)
-		enum ShapeType {Line	  =0,
-						Rectangle =1,
-						Ellipse	  =2,
-						Polyline  =3 };
+		enum ShapeType {Line	  =1,
+						Rectangle =2,
+						Ellipse	  =4,
+						Polyline  =8 };
 
 		enum { Type = UserType + 1008 };
 
@@ -65,8 +68,11 @@ class QetShapeItem : public QetGraphicsItem
 		virtual QString name() const;
 
 		void setP2      (const QPointF &P2);
-		void setLine    (const QLineF &line);
+		QLineF line() const{return QLineF(m_P1, m_P2);}
+		bool setLine    (const QLineF &line);
+		QRectF rect() const{return QRectF(m_P1, m_P2);}
 		bool setRect    (const QRectF &rect);
+		QPolygonF polygon() const {return m_polygon;}
 		bool setPolygon (const QPolygonF &polygon);
 
 			//Methods available for polygon shape
@@ -89,12 +95,11 @@ class QetShapeItem : public QetGraphicsItem
 	private:
 		ShapeType    m_shapeType;
 		Qt::PenStyle m_shapeStyle;
-		QPointF		 m_P1, m_P2;
-		QPolygonF	 m_polygon;
+		QPointF		 m_P1, m_P2, m_old_P1, m_old_P2;
+		QPolygonF	 m_polygon, m_old_polygon;
 		bool         m_hovered,
 					 m_mouse_grab_handler;
 		int			 m_vector_index;
-		QetShapeGeometryCommand *m_undo_command;
 		QetGraphicsHandlerUtility m_handler;
 };
 #endif // QETSHAPEITEM_H
