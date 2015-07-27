@@ -415,26 +415,45 @@ void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
  * @param e element where is stored this item
  * @return true if load success
  */
-bool QetShapeItem::fromXml(const QDomElement &e) {
+bool QetShapeItem::fromXml(const QDomElement &e)
+{
 	if (e.tagName() != "shape") return (false);
 
 	is_movable_ = (e.attribute("is_movable").toInt());
 	m_shapeStyle = Qt::PenStyle(e.attribute("style","0").toInt());
 
-	if (e.attribute("type", "0").toInt() != Polyline) {
+	QString type = e.attribute("type");
+		//Compatibility for version older than N°4075, shape type was stored with an int
+	if (type.size() == 1)
+	{
+		switch(e.attribute("type","0").toInt())
+		{
+			case 0: m_shapeType = Line;      break;
+			case 1: m_shapeType = Rectangle; break;
+			case 2: m_shapeType = Ellipse;   break;
+			case 3: m_shapeType = Polyline;  break;
+		}
+	}
+		//For version after N°4075, shape is stored with a string
+	else
+	{
+		if      (type == "Line")      m_shapeType = Line;
+		else if (type == "Rectangle") m_shapeType = Rectangle;
+		else if (type == "Ellipse")   m_shapeType = Ellipse;
+		else if (type == "polygon")   m_shapeType = Polyline;
+	}
+
+	if (m_shapeType != Polyline)
+	{
 		m_P1.setX(e.attribute("x1", 0).toDouble());
 		m_P1.setY(e.attribute("y1", 0).toDouble());
 		m_P2.setX(e.attribute("x2", 0).toDouble());
 		m_P2.setY(e.attribute("y2", 0).toDouble());
 	}
-
-	else {
-		foreach(QDomElement de, QET::findInDomElement(e, "points", "point")) {
+	else
+		foreach(QDomElement de, QET::findInDomElement(e, "points", "point"))
 			m_polygon << QPointF(de.attribute("x", 0).toDouble(), de.attribute("y", 0).toDouble());
-		}
-	}
 
-	m_shapeType = QetShapeItem::ShapeType(e.attribute("type","0").toInt());
 	return (true);
 }
 
@@ -449,7 +468,15 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 	QDomElement result = document.createElement("shape");
 
 		//write some attribute
-	result.setAttribute("type", QString::number(m_shapeType));
+	QString type;
+	switch(m_shapeType)
+	{
+		case Line:      type = "Line";      break;
+		case Rectangle: type = "Rectangle"; break;
+		case Ellipse:   type = "Ellipse";   break;
+		case Polyline:  type = "polygon";   break;
+	}
+	result.setAttribute("type", type);
 	result.setAttribute("style", QString::number(m_shapeStyle));
 	result.setAttribute("is_movable", bool(is_movable_));
 	if (m_shapeType != Polyline)
