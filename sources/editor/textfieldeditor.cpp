@@ -193,7 +193,6 @@ void TextFieldEditor::updateTagg()
 	{
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "tagg", part->property("tagg"), var);
 		undo->setText(tr("Modifier le tagg d'un champ texte"));
-		undo->enableAnimation();
 		undoStack().push(undo);
 	}
 	m_locked= false;
