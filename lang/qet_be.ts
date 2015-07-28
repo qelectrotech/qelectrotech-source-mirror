@@ -3506,7 +3506,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="505"/>
         <source>&amp;Édition</source>
-        <translation>&amp;Editie</translation>
+        <translation>&amp;Bewerken</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="263"/>
@@ -3719,7 +3719,7 @@ Beschikbare opties:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="358"/>
         <source>Ajouter une polyligne</source>
-        <translation>Polulijn toevoegen</translation>
+        <translation>Polylijn toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="385"/>
