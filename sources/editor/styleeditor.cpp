@@ -18,6 +18,11 @@
 #include "styleeditor.h"
 #include "customelementgraphicpart.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include <QComboBox>
+#include <QCheckBox>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QLabel>
 
 /**
 	Constructeur

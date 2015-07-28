@@ -19,6 +19,11 @@
 #include "partterminal.h"
 #include "qeticons.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include <QDoubleSpinBox>
+#include <QComboBox>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QLabel>
 
 /**
 	Constructeur

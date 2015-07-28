@@ -17,14 +17,16 @@
 */
 #ifndef CUSTOM_ELEMENT_PART_H
 #define CUSTOM_ELEMENT_PART_H
-#include <QtWidgets>
-#include <QtXml>
-#include <QImage>
+
 #include "qet.h"
+
 class CustomElement;
 class ElementPrimitiveDecorator;
 class ElementScene;
 class QETElementEditor;
+class QUndoStack;
+class QGraphicsItem;
+class QGraphicsSceneMouseEvent;
 
 /**
 	This abstract class represents a primitive of the visual representation of an
