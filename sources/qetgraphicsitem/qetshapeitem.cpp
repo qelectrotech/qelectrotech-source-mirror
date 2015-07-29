@@ -193,7 +193,7 @@ QPainterPath QetShapeItem::shape() const
 						path.lineTo(m_P2);                   break;
 		case Rectangle: path.addRect(QRectF(m_P1, m_P2));    break;
 		case Ellipse:   path.addEllipse(QRectF(m_P1, m_P2)); break;
-		case Polygon:  path.addPolygon(m_polygon);          break;
+		case Polygon:   path.addPolygon(m_polygon);          break;
 		default:        Q_ASSERT(false);                     break;
 	}
 
@@ -276,7 +276,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 			break;
 
 		case Polygon:
-			painter->drawPolygon(m_polygon);
+			painter->drawPolyline(m_polygon);
 			if (isSelected())
 				m_handler.drawHandler(painter, m_polygon);
 			break;
@@ -293,6 +293,36 @@ void QetShapeItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
 	QetGraphicsItem::hoverEnterEvent(event);
 }
 
+void QetShapeItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+	QVector <QPointF> vector;
+	switch (m_shapeType)
+	{
+		case Line:      vector << m_P1 << m_P2;                               break;
+		case Rectangle: vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
+		case Ellipse:   vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
+		case Polygon:   vector = m_polygon;                                   break;
+	}
+
+	int handler = m_handler.pointIsHoverHandler(event->pos(), vector);
+	if (isSelected() &&  handler >= 0)
+	{
+		if (m_shapeType & (Line | Polygon)) {
+			setCursor(Qt::SizeAllCursor);
+			return;
+		}
+
+		if (handler == 0 || handler == 2 || handler == 5 || handler == 7)
+			setCursor(Qt::SizeAllCursor);
+		else if (handler == 1 || handler == 6)
+			setCursor(Qt::SizeVerCursor);
+		else if (handler == 3 || handler == 4)
+			setCursor(Qt::SizeHorCursor);
+	}
+	else
+		setCursor(Qt::OpenHandCursor);
+}
+
 /**
  * @brief QetShapeItem::hoverLeaveEvent
  * Handle hover leave event
@@ -300,6 +330,7 @@ void QetShapeItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
  */
 void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
 	m_hovered = false;
+	setCursor(Qt::ArrowCursor);
 	QetGraphicsItem::hoverLeaveEvent(event);
 }
 
@@ -310,6 +341,7 @@ void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
  */
 void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+	setCursor(Qt::ClosedHandCursor);
 		//Shape is selected, we see if user click in a handler
 	if (isSelected())
 	{
@@ -404,6 +436,7 @@ void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 				diagram()->undoStack().push(undo);
 			}
 		}
+		setCursor(Qt::OpenHandCursor);
 	}
 
 	QetGraphicsItem::mouseReleaseEvent(event);
