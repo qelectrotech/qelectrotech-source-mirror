@@ -105,13 +105,14 @@ bool CommentItem::setTextParent() {
  * update the content of this item
  * (draw this item in a QPicture)
  */
-void CommentItem::updateLabel() {
+void CommentItem::updateLabel()
+{
 	QString comment = m_element -> elementInformations()["comment"].toString();
 
 	if (comment == m_comment && !m_text_parent) return;
 
-	if (comment != m_comment) {
-
+	if (comment != m_comment)
+	{
 		m_comment = comment;
 
 		QPen pen(Qt::black);
@@ -121,10 +122,9 @@ void CommentItem::updateLabel() {
 				 painter.setPen  (pen);
 				 painter.setFont (QETApp::diagramTextsFont(6));
 
-		QRectF drawing_rect(QPointF(0,0), QSizeF(70, 100));
-		QRectF text_bounding;
+		QRectF text_bounding = painter.boundingRect(QRectF(QPointF(0,0), QSizeF(70, 1)), Qt::TextWordWrap | Qt::AlignHCenter, m_comment);
 
-		painter.drawText(drawing_rect, Qt::TextWordWrap | Qt::AlignHCenter, m_comment, &text_bounding);
+		painter.drawText(text_bounding, Qt::TextWordWrap | Qt::AlignHCenter, m_comment);
 
 		text_bounding.adjust(-1,0,1,0); //adjust only for better visual
 		painter.drawRoundedRect(text_bounding, 2, 2);

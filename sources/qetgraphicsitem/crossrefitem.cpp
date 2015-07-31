@@ -523,19 +523,22 @@ void CrossRefItem::fillCrossRef(QPainter &painter) {
  * Add the comment info of the parent item if needed.
  * @param painter painter to use for draw the text
  */
-void CrossRefItem::AddExtraInfo(QPainter &painter) {
+void CrossRefItem::AddExtraInfo(QPainter &painter)
+{
 	QString comment = m_element -> elementInformations()["comment"].toString();
 	bool must_show  = m_element -> elementInformations().keyMustShow("comment");
 
-	if (!comment.isEmpty() && must_show) {
+	if (!comment.isEmpty() && must_show)
+	{
 		painter.save();
 		painter.setFont(QETApp::diagramTextsFont(6));
 
 		QRectF r, text_bounding;
 		qreal center = boundingRect().center().x();
 		r = QRectF(QPointF(center - 35, boundingRect().bottom()),
-				   QPointF(center + 35, boundingRect().bottom() + 50));
-		painter.drawText(r, Qt::TextWordWrap | Qt::AlignHCenter, comment, &text_bounding);
+				   QPointF(center + 35, boundingRect().bottom() + 1));
+		text_bounding = painter.boundingRect(r, Qt::TextWordWrap | Qt::AlignHCenter, comment);
+		painter.drawText(text_bounding, Qt::TextWordWrap | Qt::AlignHCenter, comment);
 
 		text_bounding.adjust(-1,0,1,0); //adjust only for better visual
 
