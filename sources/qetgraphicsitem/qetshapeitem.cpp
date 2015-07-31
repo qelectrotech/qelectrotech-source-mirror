@@ -176,7 +176,7 @@ void QetShapeItem::removePoints(int number)
  * @return the bounding rect of this item
  */
 QRectF QetShapeItem::boundingRect() const {
-	return shape().boundingRect();
+	return shape().boundingRect().adjusted(-6, -6, 6, 6);
 }
 
 /**
@@ -198,7 +198,7 @@ QPainterPath QetShapeItem::shape() const
 	}
 
 	QPainterPathStroker pps;
-	pps.setWidth(10);
+	pps.setWidth(m_hovered? 10 : 1);
 	pps.setJoinStyle(Qt::RoundJoin);
 	path = pps.createStroke(path);
 
@@ -295,6 +295,8 @@ void QetShapeItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
 
 void QetShapeItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 {
+	if (!isSelected()) return;
+
 	QVector <QPointF> vector;
 	switch (m_shapeType)
 	{
@@ -305,7 +307,7 @@ void QetShapeItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 	}
 
 	int handler = m_handler.pointIsHoverHandler(event->pos(), vector);
-	if (isSelected() &&  handler >= 0)
+	if (handler >= 0)
 	{
 		if (m_shapeType & (Line | Polygon)) {
 			setCursor(Qt::SizeAllCursor);
@@ -330,7 +332,7 @@ void QetShapeItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
  */
 void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
 	m_hovered = false;
-	setCursor(Qt::ArrowCursor);
+	unsetCursor();
 	QetGraphicsItem::hoverLeaveEvent(event);
 }
 
@@ -341,28 +343,31 @@ void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
  */
 void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	setCursor(Qt::ClosedHandCursor);
-		//Shape is selected, we see if user click in a handler
-	if (isSelected())
+	if (event->button() == Qt::LeftButton)
 	{
-		QVector <QPointF> vector;
-		switch (m_shapeType)
+		setCursor(Qt::ClosedHandCursor);
+			//Shape is selected, we see if user click in a handler
+		if (isSelected())
 		{
-			case Line:      vector << m_P1 << m_P2;                               break;
-			case Rectangle: vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
-			case Ellipse:   vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
-			case Polygon:  vector = m_polygon;                                   break;
-		}
+			QVector <QPointF> vector;
+			switch (m_shapeType)
+			{
+				case Line:      vector << m_P1 << m_P2;                               break;
+				case Rectangle: vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
+				case Ellipse:   vector = m_handler.pointsForRect(QRectF(m_P1, m_P2)); break;
+				case Polygon:  vector = m_polygon;                                   break;
+			}
 
-		m_vector_index = m_handler.pointIsHoverHandler(event->pos(), vector);
-		if (m_vector_index != -1)
-		{
-				//User click on an handler
-			m_mouse_grab_handler = true;
-			m_old_P1 = m_P1;
-			m_old_P2 = m_P2;
-			m_old_polygon = m_polygon;
-			return;
+			m_vector_index = m_handler.pointIsHoverHandler(event->pos(), vector);
+			if (m_vector_index != -1)
+			{
+					//User click on an handler
+				m_mouse_grab_handler = true;
+				m_old_P1 = m_P1;
+				m_old_P2 = m_P2;
+				m_old_polygon = m_polygon;
+				return;
+			}
 		}
 	}
 
