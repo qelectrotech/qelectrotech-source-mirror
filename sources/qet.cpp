@@ -541,28 +541,6 @@ QET::DiagramArea QET::diagramAreaFromString(const QString &string) {
 }
 
 /**
-	@param ptr pointeur quelconque
-	@return une representation hexadecimale de l'adresse du pointeur
-*/
-QString QET::pointerString(void *ptr) {
-	static int hexa_digits = -1;
-	
-	if (hexa_digits == -1) {
-		// determine le nombre de bits dans un unsigned long int
-		hexa_digits = std::numeric_limits<unsigned long int>::digits / 4;
-	}
-	
-	return(
-		QString("0x%1").arg(
-			reinterpret_cast<unsigned long int>(ptr),
-			hexa_digits,
-			16,
-			QChar('0')
-		)
-	);
-}
-
-/**
 	Round \a x to the nearest multiple of the invert of \a epsilon.
 	For instance, epsilon = 10 will round to 1/10 = 0.1
 */

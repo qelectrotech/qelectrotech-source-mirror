@@ -584,21 +584,6 @@ void TitleBlockTemplate::initCells() {
 }
 
 /**
-	@return A string representing the titleblock template
-	@see TitleBlockCell::toString()
-*/
-QString TitleBlockTemplate::toString() const {
-	QString str = "\n";
-	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
-		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
-			str += cells_[i][j] -> toString() + "    ";
-		}
-		str += "\n";
-	}
-	return(str);
-}
-
-/**
 	@return the name of this template
 */
 QString TitleBlockTemplate::name() const {

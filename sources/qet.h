@@ -156,7 +156,6 @@ namespace QET {
 	QStringList splitWithSpaces(const QString &);
 	QString diagramAreaToString(const QET::DiagramArea &);
 	QET::DiagramArea diagramAreaFromString(const QString &);
-	QString pointerString(void *);
 	qreal round(qreal, qreal);
 	QPointF roundPoint(const QPointF &, qreal);
 	qreal correctAngle(const qreal &);

@@ -24,16 +24,6 @@ TitleBlockCell::~TitleBlockCell() {
 }
 
 /**
-	@return A string representing the titleblock cell
-*/
-QString TitleBlockCell::toString() const {
-	if (cell_type == TitleBlockCell::EmptyCell) return("TitleBlockCell{null}");
-	QString span_desc = (row_span > 0 || col_span > 0) ? QString("+%1,%2").arg(row_span).arg(col_span) : QET::pointerString(spanner_cell);
-	QString base_desc = QString("TitleBlockCell{ [%1, %2] %3 }").arg(num_row).arg(num_col).arg(span_desc);
-	return(base_desc);
-}
-
-/**
 	@return the type of this cell
 */
 TitleBlockCell::TemplateCellType TitleBlockCell::type() const {

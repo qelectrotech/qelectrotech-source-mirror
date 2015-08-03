@@ -619,7 +619,7 @@ QDomDocument QETProject::toXml() {
 		// Write the diagram to XML only if it is not of type DiagramFolioList.
 		DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
 		if ( !ptr ) {
-			qDebug() << qPrintable(QString("QETProject::toXml() : exporting diagram \"%1\" [%2]").arg(diagram -> title()).arg(QET::pointerString(diagram)));
+			qDebug() << qPrintable(QString("QETProject::toXml() : exporting diagram \"%1\"").arg(diagram -> title())) << "[" << diagram << "]";
 			QDomNode appended_diagram = project_root.appendChild(diagram -> writeXml(xml_doc));
 			appended_diagram.toElement().setAttribute("order", order_num ++);
 		}

@@ -817,8 +817,9 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	Enregistre le schema XML dans son document XML interne et emet le signal
 	written().
 */
-void Diagram::write() {
-	qDebug() << qPrintable(QString("Diagram::write() : saving changes from diagram \"%1\" [%2]").arg(title()).arg(QET::pointerString(this)));
+void Diagram::write()
+{
+	qDebug() << qPrintable(QString("Diagram::write() : saving changes from diagram \"%1\"").arg(title())) << "[" << this << "]";
 	write(toXml().documentElement());
 }
 

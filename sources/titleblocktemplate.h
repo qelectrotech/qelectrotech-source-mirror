@@ -99,7 +99,6 @@ class TitleBlockTemplate : public QObject {
 	void render(QPainter &, const DiagramContext &, int) const;
 	void renderDxf(QRectF &, const DiagramContext &, int, QString &, int) const;
 	void renderCell(QPainter &, const TitleBlockCell &, const DiagramContext &, const QRect &) const;
-	QString toString() const;
 	void applyCellSpans();
 	void forgetSpanning();
 	void forgetSpanning(TitleBlockCell *, bool = true);

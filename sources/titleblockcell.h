@@ -43,7 +43,6 @@ class TitleBlockCell {
 	
 	// methods
 	public:
-	QString toString() const;
 	TemplateCellType type() const;
 	int horizontalAlign() const;
 	int verticalAlign() const;
