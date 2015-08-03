@@ -36,10 +36,7 @@ CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor, QGr
 	_color(BlackColor),
 	_antialiased(false)
 {
-	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable);
-#if QT_VERSION >= 0x040600
-	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
-#endif
+	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemSendsGeometryChanges);
 	setAcceptHoverEvents(true);
 }
 
@@ -427,6 +424,14 @@ void CustomElementGraphicPart::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 	QGraphicsObject::hoverEnterEvent(event);
 }
 
+void CustomElementGraphicPart::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+	if (isSelected())
+		setCursor(Qt::OpenHandCursor);
+
+	QGraphicsObject::hoverMoveEvent(event);
+}
+
 /**
  * @brief CustomElementGraphicPart::hoverLeaveEvent
  * Reimplemented from QGraphicsObject.
@@ -436,6 +441,7 @@ void CustomElementGraphicPart::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 void CustomElementGraphicPart::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
 	m_hovered = false;
+	unsetCursor();
 	QGraphicsObject::hoverLeaveEvent(event);
 }
 

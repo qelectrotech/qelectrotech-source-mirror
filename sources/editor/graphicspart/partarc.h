@@ -59,6 +59,7 @@ class PartArc : public AbstractPartEllipse
 		virtual QPainterPath shadowShape() const;
 
 	protected:
+		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
 		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
 		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);

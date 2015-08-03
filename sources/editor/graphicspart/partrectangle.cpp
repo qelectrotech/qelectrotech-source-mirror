@@ -161,7 +161,7 @@ QPainterPath PartRectangle::shape() const
 	shape.addRect(m_rect);
 
 	QPainterPathStroker pps;
-	pps.setWidth(penWeight());
+	pps.setWidth(m_hovered? penWeight()+SHADOWS_HEIGHT : penWeight());
 	shape = pps.createStroke(shape);
 
 	if (isSelected())
@@ -237,6 +237,29 @@ void PartRectangle::handleUserTransformation(const QRectF &initial_selection_rec
 	setRect(QRectF(mapFromScene(mapped_points.at(0)), mapFromScene(mapped_points.at(1))));
 }
 
+void PartRectangle::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+	if (!isSelected())
+	{
+		CustomElementGraphicPart::hoverMoveEvent(event);
+		return;
+	}
+
+	int handler = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
+
+	if (handler >= 0)
+	{
+		if (handler == 0 || handler == 2 || handler == 5 || handler == 7)
+			setCursor(Qt::SizeAllCursor);
+		else if (handler == 1 || handler == 6)
+			setCursor(Qt::SizeVerCursor);
+		else if (handler == 3 || handler == 4)
+			setCursor(Qt::SizeHorCursor);
+	}
+	else
+		CustomElementGraphicPart::hoverMoveEvent(event);
+}
+
 /**
  * @brief PartRectangle::mousePressEvent
  * Handle mouse press event
@@ -244,21 +267,24 @@ void PartRectangle::handleUserTransformation(const QRectF &initial_selection_rec
  */
 void PartRectangle::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (isSelected() && event->button() == Qt::LeftButton)
+	if (event->button() == Qt::LeftButton)
 	{
-		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
-
-		if(m_handler_index >= 0 && m_handler_index <= 7) //User click on an handler
+		setCursor(Qt::ClosedHandCursor);
+		if(isSelected())
 		{
-			m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
-			m_undo_command->setText(tr("Modifier un rectangle"));
-			m_undo_command->enableAnimation();
+			m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
+
+			if(m_handler_index >= 0 && m_handler_index <= 7) //User click on an handler
+			{
+				m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
+				m_undo_command->setText(tr("Modifier un rectangle"));
+				m_undo_command->enableAnimation();
+				return;
+			}
 		}
-		else
-			CustomElementGraphicPart::mousePressEvent(event);
 	}
-	else
-		CustomElementGraphicPart::mousePressEvent(event);
+
+	CustomElementGraphicPart::mousePressEvent(event);
 }
 
 /**
@@ -285,6 +311,9 @@ void PartRectangle::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void PartRectangle::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+	if (event->button() == Qt::LeftButton)
+		setCursor(Qt::OpenHandCursor);
+
 	if (m_handler_index >= 0 && m_handler_index <= 7)
 	{
 		if (!m_rect.isValid())

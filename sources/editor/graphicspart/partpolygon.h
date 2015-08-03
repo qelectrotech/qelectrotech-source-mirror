@@ -85,6 +85,7 @@ class PartPolygon : public CustomElementGraphicPart
 		void setClosed (bool close);
 
 	protected:
+		virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
 		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
 		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);

@@ -248,6 +248,20 @@ void PartPolygon::setClosed(bool close)
 	emit closedChange();
 }
 
+void PartPolygon::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+	if (!isSelected())
+	{
+		CustomElementGraphicPart::hoverMoveEvent(event);
+		return;
+	}
+
+	if (m_handler.pointIsHoverHandler(event->pos(), m_polygon) >= 0)
+		setCursor(Qt::SizeAllCursor);
+	else
+		CustomElementGraphicPart::hoverMoveEvent(event);
+}
+
 /**
  * @brief PartPolygon::mousePressEvent
  * Handle mouse press event
@@ -255,20 +269,23 @@ void PartPolygon::setClosed(bool close)
  */
 void PartPolygon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (isSelected() && event->button() == Qt::LeftButton)
+	if (event->button() == Qt::LeftButton)
 	{
-		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_polygon);
-
-		if(m_handler_index >= 0) //User click on an handler
+		setCursor(Qt::ClosedHandCursor);
+		if(isSelected())
 		{
-			m_undo_command = new QPropertyUndoCommand(this, "polygon", QVariant(m_polygon));
-			m_undo_command->setText(tr("Modifier un polygone"));
+			m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_polygon);
+
+			if(m_handler_index >= 0) //User click on an handler
+			{
+				m_undo_command = new QPropertyUndoCommand(this, "polygon", QVariant(m_polygon));
+				m_undo_command->setText(tr("Modifier un polygone"));
+				return;
+			}
 		}
-		else
-			CustomElementGraphicPart::mousePressEvent(event);
 	}
-	else
-		CustomElementGraphicPart::mousePressEvent(event);
+
+	CustomElementGraphicPart::mousePressEvent(event);
 }
 
 /**
@@ -296,6 +313,9 @@ void PartPolygon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void PartPolygon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+	if (event->button() == Qt::LeftButton)
+		setCursor(Qt::OpenHandCursor);
+
 	if (m_handler_index >= 0)
 	{
 		m_undo_command->setNewValue(QVariant(m_polygon));
@@ -320,7 +340,7 @@ QPainterPath PartPolygon::shape() const
 		shape.lineTo(m_polygon.first());
 
 	QPainterPathStroker pps;
-	pps.setWidth(penWeight());
+	pps.setWidth(m_hovered? penWeight()+SHADOWS_HEIGHT : penWeight());
 	shape = pps.createStroke(shape);
 
 	if (isSelected())

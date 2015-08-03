@@ -103,6 +103,7 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value);
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
+		void hoverMoveEvent (QGraphicsSceneHoverEvent *event);
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
 
 		virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);

@@ -65,8 +65,14 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 	
 	if (isSelected())
 	{
+		painter->save();
+		QPen pen(Qt::DotLine);
+		pen.setWidth(1);
+		pen.setCosmetic(true);
+		painter->setPen(pen);
 			//Draw the ellipse in black
 		painter -> drawEllipse(rect());
+		painter->restore();
 
 			//Draw the arc in red
 		t.setColor(Qt::red);
@@ -143,7 +149,7 @@ QPainterPath PartArc::shape() const
 	shape.arcTo(m_rect, m_start_angle/16, m_span_angle/16);
 
 	QPainterPathStroker pps;
-	pps.setWidth(penWeight());
+	pps.setWidth(m_hovered? penWeight()+SHADOWS_HEIGHT : penWeight());
 	shape = pps.createStroke(shape);
 
 	if (isSelected())
@@ -165,6 +171,29 @@ QPainterPath PartArc::shadowShape() const
 	return (pps.createStroke(shape));
 }
 
+void PartArc::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+	if (!isSelected())
+	{
+		CustomElementGraphicPart::hoverMoveEvent(event);
+		return;
+	}
+
+	int handler = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
+
+	if (handler >= 0)
+	{
+		if (handler == 0 || handler == 2 || handler == 5 || handler == 7)
+			setCursor(Qt::SizeAllCursor);
+		else if (handler == 1 || handler == 6)
+			setCursor(Qt::SizeVerCursor);
+		else if (handler == 3 || handler == 4)
+			setCursor(Qt::SizeHorCursor);
+	}
+	else
+		CustomElementGraphicPart::hoverMoveEvent(event);
+}
+
 /**
  * @brief PartArc::mousePressEvent
  * Handle mouse press event
@@ -172,21 +201,24 @@ QPainterPath PartArc::shadowShape() const
  */
 void PartArc::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (isSelected() && event->button() == Qt::LeftButton)
+	if (event->button() == Qt::LeftButton)
 	{
-		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
-
-		if(m_handler_index >= 0 && m_handler_index <= 7) //User click on an handler
+		setCursor(Qt::ClosedHandCursor);
+		if (isSelected())
 		{
-			m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
-			m_undo_command->setText(tr("Modifier un arc"));
-			m_undo_command->enableAnimation();
+			m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForRect(m_rect));
+
+			if(m_handler_index >= 0 && m_handler_index <= 7) //User click on an handler
+			{
+				m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
+				m_undo_command->setText(tr("Modifier un arc"));
+				m_undo_command->enableAnimation();
+				return;
+			}
 		}
-		else
-			CustomElementGraphicPart::mousePressEvent(event);
 	}
-	else
-		CustomElementGraphicPart::mousePressEvent(event);
+
+	CustomElementGraphicPart::mousePressEvent(event);
 }
 
 /**
@@ -213,6 +245,9 @@ void PartArc::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void PartArc::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+	if (event->button() == Qt::LeftButton)
+		setCursor(Qt::OpenHandCursor);
+
 	if (m_handler_index >= 0 && m_handler_index <= 7)
 	{
 		if (!m_rect.isValid())

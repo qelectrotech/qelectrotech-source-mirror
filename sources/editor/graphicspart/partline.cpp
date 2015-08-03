@@ -146,21 +146,25 @@ void PartLine::fromXml(const QDomElement &qde) {
  */
 void PartLine::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	if(isSelected() && event->button() == Qt::LeftButton)
+	if(event->button() == Qt::LeftButton)
 	{
-		m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForLine(m_line));
+		setCursor(Qt::ClosedHandCursor);
 
-		if(m_handler_index >= 0 && m_handler_index <= 1) //User click on an handler
+		if (isSelected())
 		{
-			m_undo_command = new QPropertyUndoCommand(this, "line", QVariant(m_line));
-			m_undo_command->setText(tr("Modifier une ligne"));
-			m_undo_command->enableAnimation();
+			m_handler_index = m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForLine(m_line));
+
+			if(m_handler_index >= 0 && m_handler_index <= 1) //User click on an handler
+			{
+				m_undo_command = new QPropertyUndoCommand(this, "line", QVariant(m_line));
+				m_undo_command->setText(tr("Modifier une ligne"));
+				m_undo_command->enableAnimation();
+				return;
+			}
 		}
-		else
-			CustomElementGraphicPart::mousePressEvent(event);
 	}
-	else
-		CustomElementGraphicPart::mousePressEvent(event);
+
+	CustomElementGraphicPart::mousePressEvent(event);
 }
 
 /**
@@ -187,6 +191,9 @@ void PartLine::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void PartLine::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+	if (event->button() == Qt::LeftButton)
+		setCursor(Qt::OpenHandCursor);
+
 	if (m_handler_index >= 0 && m_handler_index <= 1)
 	{
 		m_undo_command->setNewValue(QVariant(m_line));
@@ -233,7 +240,7 @@ QPainterPath PartLine::shape() const
 	}
 
 	QPainterPathStroker pps;
-	pps.setWidth(penWeight());
+	pps.setWidth(m_hovered? penWeight()+SHADOWS_HEIGHT : penWeight());
 	shape = pps.createStroke(shape);
 
 	if (isSelected())
@@ -524,6 +531,20 @@ void PartLine::setSecondEndLength(const qreal &l)
 	prepareGeometryChange();
 	second_length = length;
 	emit secondEndLengthChanged();
+}
+
+void PartLine::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+	if (!isSelected())
+	{
+		CustomElementGraphicPart::hoverMoveEvent(event);
+		return;
+	}
+
+	if (m_handler.pointIsHoverHandler(event->pos(), m_handler.pointsForLine(m_line)) >= 0)
+		setCursor(Qt::SizeAllCursor);
+	else
+		CustomElementGraphicPart::hoverMoveEvent(event);
 }
 
 /**
