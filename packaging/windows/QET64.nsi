@@ -7,14 +7,12 @@
 ;Include Modern UI
 	!include x64.nsh
 	!include "MUI2.nsh"
-	!ifndef PROC
-
-  !define PROC 32 ; to be defined in cmd line
-
+!ifndef PROC
+	!define PROC 32 ; 
 !endif
 
-LangString wrongWow ${LANG_ENGLISH} "This distribution is for ${PROC} bits computers only."
-LangString wrongWow ${LANG_FRENCH} "Ce programme est pour Windows ${PROC} bits seulement."
+LangString wrongArch ${LANG_ENGLISH} "This distribution is for ${PROC} bits computers only."
+LangString wrongArch ${LANG_FRENCH} "Ce programme est pour Windows ${PROC} bits seulement."
 	
 ; MUI Settings
 ;--------------------------------
@@ -161,12 +159,11 @@ SectionEnd
 ;Installer Functions
 
 Function .onInit
-${If} ${RunningX64}
 
+${If} ${RunningX64}
 ${Else}
-    MessageBox MB_OK|MB_ICONSTOP $(wrongWow)
-	Abort $(wrongWow)
-	DetailPrint "This program is only for Windows 64"
+    MessageBox MB_OK|MB_ICONSTOP $(wrongArch)
+	Abort $(wrongArch)
 ${EndIf}
 	!insertmacro MUI_LANGDLL_DISPLAY
 
