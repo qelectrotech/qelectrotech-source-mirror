@@ -18,6 +18,7 @@
 #ifndef QETSHAPEITEM_H
 #define QETSHAPEITEM_H
 
+#include <QPen>
 #include "qetgraphicsitem.h"
 #include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
@@ -33,12 +34,13 @@ class QetShapeItem : public QetGraphicsItem
 {
 	Q_OBJECT
 
+		Q_PROPERTY(QPen pen READ pen WRITE setPen NOTIFY penChanged)
 		Q_PROPERTY(QRectF rect READ rect WRITE setRect)
 		Q_PROPERTY(QLineF line READ line WRITE setLine)
 		Q_PROPERTY(QPolygonF polygon READ polygon WRITE setPolygon)
 
 	signals:
-		void styleChanged();
+		void penChanged();
 
 	public:
 		Q_ENUMS(ShapeType)
@@ -56,8 +58,8 @@ class QetShapeItem : public QetGraphicsItem
 		virtual int type() const { return Type; }
 
 			///METHODS
-		void setStyle(Qt::PenStyle);
-		Qt::PenStyle penStyle() const { return m_shapeStyle;}
+		QPen pen() const {return m_pen;}
+		void setPen(const QPen &pen);
 		ShapeType shapeType() const {return m_shapeType;}
 
 		virtual bool	    fromXml (const QDomElement &);
@@ -95,7 +97,7 @@ class QetShapeItem : public QetGraphicsItem
 		///ATTRIBUTES
 	private:
 		ShapeType    m_shapeType;
-		Qt::PenStyle m_shapeStyle;
+		QPen		 m_pen;
 		QPointF		 m_P1, m_P2, m_old_P1, m_old_P2;
 		QPolygonF	 m_polygon, m_old_polygon;
 		bool         m_hovered,

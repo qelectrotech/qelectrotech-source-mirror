@@ -55,8 +55,6 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 	private:
 		Ui::ShapeGraphicsItemPropertiesWidget *ui;
 		QetShapeItem *m_shape;
-
-		Qt::PenStyle m_old_pen_style;
 };
 
 #endif // SHAPEGRAPHICSITEMPROPERTIESWIDGET_H

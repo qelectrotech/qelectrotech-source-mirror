@@ -19,7 +19,7 @@
 #include "ui_shapegraphicsitempropertieswidget.h"
 #include "qetshapeitem.h"
 #include "diagram.h"
-#include "changeshapestylecommand.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
  * @brief ShapeGraphicsItemPropertiesWidget::ShapeGraphicsItemPropertiesWidget
@@ -56,12 +56,11 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 	if (shape == m_shape) return;
 
 	if (m_shape)
-		disconnect(m_shape, &QetShapeItem::styleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		disconnect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 
 	m_shape = shape;
-	connect(m_shape, &QetShapeItem::styleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+	connect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 
-	m_old_pen_style = m_shape->penStyle();
 	updateUi();
 }
 
@@ -73,25 +72,21 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 void ShapeGraphicsItemPropertiesWidget::apply()
 {
 	if (m_live_edit)
-		disconnect(m_shape, &QetShapeItem::styleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		disconnect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 
 	if (m_shape->diagram())
 		if (QUndoCommand *undo = associatedUndo())
 			m_shape->diagram()->undoStack().push(undo);
 
-	m_old_pen_style = m_shape->penStyle();
-
 	if (m_live_edit)
-		connect(m_shape, &QetShapeItem::styleChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		connect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 }
 
 /**
  * @brief ShapeGraphicsItemPropertiesWidget::reset
  * Reset the change
  */
-void ShapeGraphicsItemPropertiesWidget::reset()
-{
-	m_shape->setStyle(m_old_pen_style);
+void ShapeGraphicsItemPropertiesWidget::reset() {
 	updateUi();
 }
 
@@ -103,10 +98,14 @@ void ShapeGraphicsItemPropertiesWidget::reset()
  */
 QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 {
-	Qt::PenStyle new_style = Qt::PenStyle(ui->m_style_cb->currentIndex() + 1);
-	if (new_style != m_old_pen_style) return (new ChangeShapeStyleCommand(m_shape, m_old_pen_style, new_style));
+	QPen old_pen = m_shape->pen();
+	QPen new_pen = old_pen;
+	new_pen.setStyle(Qt::PenStyle(ui->m_style_cb->currentIndex() + 1));
+	if (new_pen == old_pen) return nullptr;
 
-	return nullptr;
+	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_shape, "pen", old_pen, new_pen);
+	undo->setText(tr("Modifier le type de trait d'une forme"));
+	return undo;
 }
 
 /**
@@ -114,7 +113,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
  */
 void ShapeGraphicsItemPropertiesWidget::updateUi()
 {
-	ui->m_style_cb->setCurrentIndex(static_cast<int>(m_shape->penStyle()) - 1);
+	ui->m_style_cb->setCurrentIndex(static_cast<int>(m_shape->pen().style()) - 1);
 	ui->m_lock_pos_cb->setChecked(!m_shape->isMovable());
 }
 

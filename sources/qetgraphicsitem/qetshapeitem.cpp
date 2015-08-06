@@ -34,7 +34,6 @@
 QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem *parent) :
 	QetGraphicsItem(parent),
 	m_shapeType(type),
-	m_shapeStyle(Qt::DashLine),
 	m_P1 (p1),
 	m_P2 (p2),
 	m_hovered(false),
@@ -44,20 +43,23 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	if (type == Polygon) m_polygon << m_P1 << m_P2;
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
+	m_pen.setStyle(Qt::DashLine);
+	m_pen.setWidthF(1);
 }
 
 QetShapeItem::~QetShapeItem() {}
 
 /**
- * @brief QetShapeItem::setStyle
- * Set the new style of pen for thi item
- * @param newStyle
+ * @brief QetShapeItem::setPen
+ * Set the pen to use for draw the shape
+ * @param pen
  */
-void QetShapeItem::setStyle(Qt::PenStyle newStyle)
+void QetShapeItem::setPen(const QPen &pen)
 {
-	m_shapeStyle = newStyle;
+	if (m_pen == pen) return;
+	m_pen = pen;
 	update();
-	emit styleChanged();
+	emit penChanged();
 }
 
 /**
@@ -233,9 +235,10 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 {
 	Q_UNUSED(option); Q_UNUSED(widget);
 
-	QPen pen(m_shapeStyle);
+	painter->save();
 	painter -> setRenderHint(QPainter::Antialiasing, false);
-	pen.setWidthF(1);
+	m_pen.setColor(isSelected()? Qt::red : Qt::black);
+	painter -> setPen(m_pen);
 
 		//Draw hovered shadow
 	if (m_hovered)
@@ -248,11 +251,6 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 		painter -> drawPath (shape());
 		painter -> restore  ();
 	}
-		//Draw red if selected
-	if (isSelected())
-		pen.setColor(Qt::red);
-
-	painter -> setPen(pen);
 
 		//Draw the shape and handlers if is selected
 	switch (m_shapeType)
@@ -281,6 +279,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 				m_handler.drawHandler(painter, m_polygon);
 			break;
 	}
+	painter->restore();
 }
 
 /**
@@ -458,7 +457,7 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 	if (e.tagName() != "shape") return (false);
 
 	is_movable_ = (e.attribute("is_movable").toInt());
-	m_shapeStyle = Qt::PenStyle(e.attribute("style","0").toInt());
+	m_pen.setStyle(Qt::PenStyle(e.attribute("style","0").toInt()));
 
 	QString type = e.attribute("type");
 		//Compatibility for version older than N°4075, shape type was stored with an int
@@ -506,7 +505,7 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 		//write some attribute
 	QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("ShapeType"));
 	result.setAttribute("type", me.valueToKey(m_shapeType));
-	result.setAttribute("style", QString::number(m_shapeStyle));
+	result.setAttribute("style", QString::number(m_pen.style()));
 	result.setAttribute("is_movable", bool(is_movable_));
 	if (m_shapeType != Polygon)
 	{
