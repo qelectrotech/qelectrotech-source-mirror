@@ -18,9 +18,8 @@
 #include "imagepropertieswidget.h"
 #include "ui_imagepropertieswidget.h"
 #include "diagramimageitem.h"
-#include <QUndoCommand>
-#include "itemresizercommand.h"
 #include "diagram.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
  * @brief ImagePropertiesWidget::ImagePropertiesWidget
@@ -57,13 +56,9 @@ void ImagePropertiesWidget::setImageItem(DiagramImageItem *image)
 	this->setEnabled(true);
 	if (m_image == image) return;
 	if (m_image)
-	{
-		disconnect(m_image, SIGNAL(destroyed()), this, SLOT(imageWasDeleted()));
 		disconnect(m_image, &QGraphicsObject::scaleChanged, this, &ImagePropertiesWidget::updateUi);
-	}
 
 	m_image = image;
-	connect(m_image, SIGNAL(destroyed()), this, SLOT(imageWasDeleted()));
 	connect(m_image, &QGraphicsObject::scaleChanged, this, &ImagePropertiesWidget::updateUi);
 	m_movable = image->isMovable();
 	m_scale = m_image->scale();
@@ -82,7 +77,9 @@ void ImagePropertiesWidget::apply()
 	{
 		if (m_live_edit) disconnect(m_image, &QGraphicsObject::scaleChanged, this, &ImagePropertiesWidget::updateUi);
 
-		m_image->diagram()->undoStack().push(associatedUndo());
+		QUndoCommand *undo = associatedUndo();
+		if (undo)
+			m_image->diagram()->undoStack().push(undo);
 
 		if (m_live_edit) connect(m_image, &QGraphicsObject::scaleChanged, this, &ImagePropertiesWidget::updateUi);
 	}
@@ -130,13 +127,19 @@ bool ImagePropertiesWidget::setLiveEdit(bool live_edit)
 
 /**
  * @brief ImagePropertiesWidget::associatedUndo
- * @return the change in an undo command (ItemResizerCommand)
+ * @return the change in an undo command (ItemResizerCommand).
+ * If there is no change return nullptr
  */
 QUndoCommand* ImagePropertiesWidget::associatedUndo()
 {
+
 	qreal value = ui->m_scale_slider->value();
 	value /= 100;
-	return new ItemResizerCommand(m_image, m_scale, value, tr("une image"));
+	if (m_scale == value) return nullptr;
+	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_image, "scale", m_scale, value);
+	undo->enableAnimation();
+	undo->setText(tr("Modifier la taille d'une image"));
+	return undo;
 }
 
 /**
@@ -159,10 +162,6 @@ void ImagePropertiesWidget::on_m_scale_slider_valueChanged(int value)
 {
 		qreal scale = value;
 		m_image->setScale(scale / 100);
-}
-
-void ImagePropertiesWidget::imageWasDeleted() {
-	m_image = nullptr;
 }
 
 /**

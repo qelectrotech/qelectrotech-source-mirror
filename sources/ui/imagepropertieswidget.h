@@ -18,7 +18,6 @@
 #ifndef IMAGEPROPERTIESWIDGET_H
 #define IMAGEPROPERTIESWIDGET_H
 
-#include <QWidget>
 #include "PropertiesEditor/propertieseditorwidget.h"
 
 class DiagramImageItem;
@@ -50,8 +49,6 @@ class ImagePropertiesWidget : public PropertiesEditorWidget
 
 	private slots:
 		void on_m_scale_slider_valueChanged(int value);
-		void imageWasDeleted();
-
 		void on_m_lock_pos_cb_clicked();
 
 	private:
