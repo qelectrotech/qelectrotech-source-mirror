@@ -16,126 +16,109 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementtextsmover.h"
-#include "conductor.h"
 #include "elementtextitem.h"
 #include "diagram.h"
-#include "diagramcommands.h"
-#include "element.h"
-#include "independenttextitem.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
-	Constructeur
-*/
+ * @brief ElementTextsMover::ElementTextsMover
+ */
 ElementTextsMover::ElementTextsMover() :
 	movement_running_(false),
-	current_movement_(),
-	diagram_(0),
-	movement_driver_(0),
-	moved_texts_()
-{
-	
-}
+	diagram_(nullptr),
+	movement_driver_(nullptr)
+{}
 
 /**
-	Destructeur
-*/
-ElementTextsMover::~ElementTextsMover() {
-}
-
-/**
-	@return true si ce gestionnaire de deplacement est pret a etre utilise,
-	false sinon. Un gestionnaire de deplacement est pret a etre utilise a partir
-	du moment ou le mouvement precedemment gere n'est plus en cours.
-*/
+ * @brief ElementTextsMover::isReady
+ * @return true if this ElementTextsMover is ready to process a new movement.
+ * False if this ElementTextsMover is actually process a movement
+ */
 bool ElementTextsMover::isReady() const {
 	return(!movement_running_);
 }
 
 /**
-	Demarre un nouveau mouvement d'ElementTextItems
-	@param diagram Schema sur lequel se deroule le deplacement
-	@param driver_item Item deplace par la souris et ne necessitant donc pas
-	d'etre deplace lors des appels a continueMovement.
-	@return le nombre d'items concernes par le deplacement, ou -1 si le
-	mouvement n'a pas ete initie
-*/
-int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item) {
-	// il ne doit pas y avoir de mouvement en cours
-	if (movement_running_) return(-1);
-	
-	// on s'assure que l'on dispose d'un schema pour travailler
-	if (!diagram) return(-1);
+ * @brief ElementTextsMover::beginMovement
+ * Begin a movement
+ * @param diagram : diagram where the movement is apply
+ * @param driver_item : item moved by the mouse
+ * @return : the number of moved text (driver_item include), or -1 if this ElementTextsMover can't begin a movement
+ */
+int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
+{
+	if (movement_running_ || !diagram) return(-1);
+
 	diagram_ = diagram;
-	
-	// on prend en compte le driver_item
 	movement_driver_ = driver_item;
-	
-	// au debut du mouvement, le deplacement est nul
-	current_movement_ = QPointF(0.0, 0.0);
-	
-	// on stocke dans cet objet les items concernes par le deplacement
-	moved_texts_.clear();
-	foreach(QGraphicsItem *item, diagram -> selectedItems()) {
-		if (ElementTextItem *text_item = qgraphicsitem_cast<ElementTextItem *>(item)) {
-			moved_texts_ << text_item;
+	m_texts_item_H.clear();
+
+	foreach(QGraphicsItem *item, diagram -> selectedItems())
+	{
+		if (item->type() == ElementTextItem::Type)
+		{
+			ElementTextItem *eti = static_cast<ElementTextItem *> (item);
+			m_texts_item_H.insert(eti, eti->pos());
 		}
 	}
 	
-	// on s'assure qu'il y a quelque chose a deplacer
-	if (!moved_texts_.count()) return(-1);
+	if (!m_texts_item_H.size()) return(-1);
 	
-	// a ce stade, on dispose de toutes les informations necessaires pour
-	// prendre en compte les mouvements
-	
-	// il y a desormais un mouvement en cours
 	movement_running_ = true;
 	
-	return(moved_texts_.count());
+	return(m_texts_item_H.size());
 }
 
 /**
-	Ajoute un mouvement au deplacement en cours. Cette methode
-	@param movement mouvement a ajouter au deplacement en cours
-*/
-void ElementTextsMover::continueMovement(const QPointF &movement) {
-	// un mouvement doit avoir ete initie
-	if (!movement_running_) return;
+ * @brief ElementTextsMover::continueMovement
+ * Add @movement to the current movement
+ * The movement must be in scene coordinate.
+ * @param movement
+ */
+void ElementTextsMover::continueMovement(const QPointF &movement)
+{
+	if (!movement_running_ || movement.isNull()) return;
 	
-	// inutile de faire quoi que ce soit s'il n'y a pas eu de mouvement concret
-	if (movement.isNull()) return;
-	
-	// prise en compte du mouvement
-	current_movement_ += movement;
-	
-	// deplace les elements selectionnes
-	foreach(ElementTextItem *text_item, moved_texts_) {
-		if (movement_driver_ && text_item == movement_driver_) continue;
+	foreach(ElementTextItem *text_item, m_texts_item_H.keys())
+	{
+		if (text_item == movement_driver_) continue;
 		QPointF applied_movement = text_item -> mapMovementToParent(text_item-> mapMovementFromScene(movement));
 		text_item -> setPos(text_item -> pos() + applied_movement);
 	}
 }
 
 /**
-	Termine le deplacement en creant un objet d'annulation et en l'ajoutant a
-	la QUndoStack du schema concerne.
-	@see Diagram::undoStack()
-*/
-void ElementTextsMover::endMovement() {
-	// un mouvement doit avoir ete initie
-	if (!movement_running_) return;
+ * @brief ElementTextsMover::endMovement
+ * Finish the movement by pushing an undo command to the parent diagram of text item
+ */
+void ElementTextsMover::endMovement()
+{
+		//No movement running, or no text to move
+	if (!movement_running_ || m_texts_item_H.isEmpty()) return;
+		//Movement is null
+	ElementTextItem *eti = m_texts_item_H.keys().first();
+	if (eti->pos() == m_texts_item_H.value(eti)) return;
 	
-	// inutile de faire quoi que ce soit s'il n'y a pas eu de mouvement concret
-	if (!current_movement_.isNull()) {
-		// cree un objet d'annulation pour le mouvement ainsi realise
-		MoveElementsTextsCommand*undo_object = new MoveElementsTextsCommand(
-			diagram_,
-			moved_texts_,
-			current_movement_
-		);
-		
-		diagram_ -> undoStack().push(undo_object);
+	QPropertyUndoCommand *undo = nullptr;
+
+	foreach (ElementTextItem *eti, m_texts_item_H.keys())
+	{
+		if (undo)
+		{
+			QPropertyUndoCommand *child_undo = new QPropertyUndoCommand(eti, "pos", m_texts_item_H.value(eti), eti->pos(), undo);
+			child_undo->enableAnimation();
+		}
+		else
+		{
+			undo = new QPropertyUndoCommand(eti, "pos", m_texts_item_H.value(eti), eti->pos());
+			undo->enableAnimation();
+			QString txt = m_texts_item_H.size() == 1? QString(QObject::tr("Déplacer un texte d'élément")) :
+													  QString(QObject::tr("Déplacer %1 textes d'élément").arg(m_texts_item_H.size()));
+			undo->setText(txt);
+		}
 	}
+
+	diagram_->undoStack().push(undo);
 	
-	// il n'y a plus de mouvement en cours
 	movement_running_ = false;
 }

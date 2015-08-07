@@ -17,35 +17,35 @@
 */
 #ifndef ELEMENT_TEXTS_MOVER_H
 #define ELEMENT_TEXTS_MOVER_H
-#include <QtWidgets>
-#include "diagramcontent.h"
+
+#include <QSet>
+#include <QPointF>
+
+class QGraphicsItem;
 class ElementTextItem;
 class Diagram;
+
 /**
 	This class manages the interactive movement of element text items on a
 	particular diagram.
 */
-class ElementTextsMover {
-	// constructors, destructor
+class ElementTextsMover
+{
 	public:
-	ElementTextsMover();
-	virtual ~ElementTextsMover();
+		ElementTextsMover();
 	private:
-	ElementTextsMover(const ElementTextsMover &);
+		ElementTextsMover(const ElementTextsMover &);
 	
-	// methods
 	public:
-	bool isReady() const;
-	int  beginMovement(Diagram *, QGraphicsItem * = 0);
-	void continueMovement(const QPointF &);
-	void endMovement();
+		bool isReady() const;
+		int  beginMovement(Diagram *, QGraphicsItem * = 0);
+		void continueMovement(const QPointF &);
+		void endMovement();
 	
-	// attributes
 	private:
-	bool movement_running_;
-	QPointF current_movement_;
-	Diagram *diagram_;
-	QGraphicsItem *movement_driver_;
-	QSet<ElementTextItem *> moved_texts_;
+		bool movement_running_;
+		Diagram *diagram_;
+		QGraphicsItem *movement_driver_;
+		QHash <ElementTextItem *, QPointF> m_texts_item_H;
 };
 #endif

@@ -363,65 +363,6 @@ void MoveElementsCommand::setupAnimation(QObject *target, const QByteArray &prop
 }
 
 /**
-		Constructeur
-		@param diagram Schema sur lequel on deplace des champs de texte
-		@param texts Liste des textes deplaces
-		@param m translation subie par les elements
-		@param parent QUndoCommand parent
-*/
-MoveElementsTextsCommand::MoveElementsTextsCommand(
-		Diagram *diagram,
-		const QSet<ElementTextItem *> &texts,
-		const QPointF &m,
-		QUndoCommand *parent
-) :
-		QUndoCommand(parent),
-		diagram(diagram),
-		texts_to_move(texts),
-		movement(m),
-		first_redo(true)
-{
-		QString moved_content_sentence = QET::ElementsAndConductorsSentence(0, 0, texts_to_move.count());
-		setText(
-				QString(
-						QObject::tr(
-								"déplacer %1",
-								"undo caption - %1 is a sentence listing the moved content"
-						).arg(moved_content_sentence)
-				)
-		);
-}
-
-/// Destructeur
-MoveElementsTextsCommand::~MoveElementsTextsCommand() {
-}
-
-/// annule le deplacement
-void MoveElementsTextsCommand::undo() {
-		diagram -> showMe();
-		move(-movement);
-}
-
-/// refait le deplacement
-void MoveElementsTextsCommand::redo() {
-		diagram -> showMe();
-		if (first_redo) first_redo = false;
-		else move(movement);
-}
-
-/**
-		deplace les elements et conducteurs
-		@param actual_movement translation a effectuer sur les elements et conducteurs
-*/
-void MoveElementsTextsCommand::move(const QPointF &actual_movement) {
-		// deplace les textes
-		foreach(ElementTextItem *text, texts_to_move) {
-				QPointF applied_movement = text -> mapMovementToParent(text -> mapMovementFromScene(actual_movement));
-				text -> setPos(text -> pos() + applied_movement);
-		}
-}
-
-/**
 	Constructeur
 	@param diagram Schema sur lequel on deplace des champs de texte
 	@param texts Textes deplaces : chaque ConductorTextItem est associe a un
