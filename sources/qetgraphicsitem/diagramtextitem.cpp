@@ -22,63 +22,49 @@
 #include "diagram.h"
 
 /**
-	Constructeur
-	@param parent Le QGraphicsItem parent du champ de texte
-	@param parent_diagram Le schema auquel appartient le champ de texte
-*/
+ * @brief DiagramTextItem::DiagramTextItem
+ * @param parent : parent item
+ */
 DiagramTextItem::DiagramTextItem(QGraphicsItem *parent) :
 	QGraphicsTextItem(parent),
 	m_mouse_hover(false),
 	previous_text_(),
 	rotation_angle_(0.0),
 	m_first_move (true)
-{
-	setAcceptHoverEvents(true);
-	build();
-}
+{ build(); }
 
 /**
-	Constructeur
-	@param text Le texte affiche par le champ de texte
-	@param parent Le QGraphicsItem parent du champ de texte
-	@param parent_diagram Le schema auquel appartient le champ de texte
-*/
+ * @brief DiagramTextItem::DiagramTextItem
+ * @param text : text to display
+ * @param parent : parent item
+ */
 DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent) :
 	QGraphicsTextItem(text, parent),
 	m_mouse_hover(false),
 	previous_text_(text),
 	rotation_angle_(0.0)
-{
-	build();
-	setAcceptHoverEvents(true);
-}
-
-/// Destructeur
-DiagramTextItem::~DiagramTextItem() {
-}
+{ build(); }
 
 /**
  * @brief DiagramTextItem::build
  * Build this item with default value
  */
-void DiagramTextItem::build() {
-	//set Zvalue at 10 to be upper than the DiagramImageItem
+void DiagramTextItem::build()
+{
+		//set Zvalue at 10 to be upper than the DiagramImageItem
 	setZValue(10);
+	setAcceptHoverEvents(true);
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
-	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
+	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemSendsGeometryChanges);
 	setNoEditable(false);
 	setToolTip(tr("Maintenir ctrl pour un déplacement libre"));
-#if QT_VERSION >= 0x040600
-	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
-#endif
-	connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
 }
 
 /**
-	@return le Diagram auquel ce texte appartient, ou 0 si ce texte n'est
-	rattache a aucun schema
-*/
+ * @brief DiagramTextItem::diagram
+ * @return The diagram of this item or 0 if this text isn't in a diagram
+ */
 Diagram *DiagramTextItem::diagram() const {
 	return(qobject_cast<Diagram *>(scene()));
 }
@@ -277,7 +263,7 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	
 	// autorise de nouveau le deplacement du texte
 	setFlag(QGraphicsItem::ItemIsMovable, true);
-	QTimer::singleShot(0, this, SIGNAL(lostFocus()));
+	setFlag(QGraphicsTextItem::ItemIsFocusable, false);
 }
 
 /**
@@ -364,35 +350,19 @@ void DiagramTextItem::applyRotation(const qreal &angle) {
 	setRotation(QET::correctAngle(rotation()+angle));
 }
 
-/// Rend le champ de texte non focusable
-void DiagramTextItem::setNonFocusable() {
-	setFlag(QGraphicsTextItem::ItemIsFocusable, false);
-}
-
-
-/**
- * @brief DiagramTextItem::setHtmlText
- * @param txt
- */
-void DiagramTextItem::setHtmlText(const QString &txt) {
-	setHtml( txt );
-}
-
 /**
  * @brief Edit the text with HtmlEditor
  */
-void DiagramTextItem::edit() {
-	//Open the HtmlEditor
+void DiagramTextItem::edit()
+{
 	QWidget *parent = nullptr;
 	if (scene() && scene()->views().size())
 		parent = scene()->views().first();
-	qdesigner_internal::RichTextEditorDialog *editor = new qdesigner_internal::RichTextEditorDialog(parent);
-	// connect the in/out
-	connect(editor, SIGNAL(applyEditText(const QString &)), this, SLOT(setHtmlText(const QString &)));
-	// load the Html txt
-	editor->setText( toHtml() );
-	// show
-	editor->show();
+
+	qdesigner_internal::RichTextEditorDialog editor(parent);
+	connect(&editor, &qdesigner_internal::RichTextEditorDialog::applyEditText, [this](QString text) {this->setHtml(text);});
+	editor.setText(toHtml());
+	editor.exec();
 }
 
 
