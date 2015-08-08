@@ -7,6 +7,8 @@
 ;Include Modern UI
 	!include x64.nsh
 	!include "MUI2.nsh"
+	!include "FileFunc.nsh"
+	!insertmacro Locate
 !ifndef PROC
 	!define PROC 32 ; 
 !endif
@@ -153,7 +155,15 @@ Section ""
 	
 	; shortcut on the desktop
 	CreateShortCut "$DESKTOP\QElectroTech.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
+	${Locate} "$INSTDIR\elements\" "/L=FD /M=*.elmt" "LocateCallback"
+	IfErrors 0 +2
+	MessageBox MB_OK "Error"
 SectionEnd
+
+Function LocateCallback
+	SetFileAttributes $R9 FILE_ATTRIBUTE_READONLY
+	Push $0
+FunctionEnd
 
 ;--------------------------------
 ;Installer Functions
