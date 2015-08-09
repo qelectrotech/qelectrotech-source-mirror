@@ -19,6 +19,7 @@
 #include "potentialtextsdialog.h"
 #include "ui_potentialtextsdialog.h"
 #include <QSignalMapper>
+#include <QRadioButton>
 
 /**
  * @brief PotentialTextsDialog::PotentialTextsDialog

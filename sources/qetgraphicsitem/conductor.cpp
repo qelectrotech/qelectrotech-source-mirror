@@ -27,6 +27,8 @@
 #include "terminal.h"
 #include "conductorautonumerotation.h"
 #include "conductorpropertiesdialog.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
 #define PR(x) qDebug() << #x " = " << x;
 
 bool Conductor::pen_and_brush_initialized = false;
@@ -1371,6 +1373,7 @@ void Conductor::readProperties() {
 		text_item -> setVisible(properties_.m_show_text);
 	}
 	calculateTextItemPosition();
+	update();
 }
 
 /**
@@ -1415,14 +1418,15 @@ void Conductor::displayedTextChanged() {
 
 		if (qmbreturn == 0 || qmbreturn == QMessageBox::No)
 		{
-			// initialise l'objet UndoCommand correspondant
+			QVariant old_value, new_value;
+			old_value.setValue(properties_);
 			ConductorProperties new_properties(properties_);
 			new_properties.text = text_item -> toPlainText();
+			new_value.setValue(new_properties);
 
-			ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(this);
-			ccpc -> setOldSettings(properties_);
-			ccpc -> setNewSettings(new_properties);
-			my_diagram -> undoStack().push(ccpc);
+			QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "properties", old_value, new_value);
+			undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
+			my_diagram -> undoStack().push(undo);
 		}
 	}
 }

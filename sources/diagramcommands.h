@@ -17,10 +17,9 @@
 */
 #ifndef DIAGRAM_COMMANDS_H
 #define DIAGRAM_COMMANDS_H
-#include <QtWidgets>
+
 #include "borderproperties.h"
 #include "qetgraphicsitem/conductor.h"
-#include "conductorproperties.h"
 #include "diagramcontent.h"
 #include "titleblockproperties.h"
 #include "qet.h"
@@ -416,70 +415,4 @@ class ChangeBorderCommand : public QUndoCommand {
 	BorderProperties new_properties;
 };
 
-/**
-	This command changes the properties for a particular conductor.
-*/
-class ChangeConductorPropertiesCommand : public QUndoCommand {
-	// constructors, destructor
-	public:
-	ChangeConductorPropertiesCommand(Conductor *, QUndoCommand * = 0);
-	virtual ~ChangeConductorPropertiesCommand();
-	private:
-	ChangeConductorPropertiesCommand(const ChangeConductorPropertiesCommand &);
-	
-	// methods
-	public:
-	virtual void undo();
-	virtual void redo();
-	virtual void setOldSettings(const ConductorProperties &);
-	virtual void setNewSettings(const ConductorProperties &);
-	
-	// attributes
-	private:
-	/// modified conductor
-	Conductor *conductor;
-	/// properties before the change
-	ConductorProperties old_properties;
-	/// properties after the change
-	ConductorProperties new_properties;
-	/// track whether pre-change properties were set
-	bool old_settings_set;
-	/// track whether post-change properties were set
-	bool new_settings_set;
-};
-
-/**
-	This command changes the properties for several conductors.
-*/
-class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
-	// constructors, destructor
-	public:
-	ChangeSeveralConductorsPropertiesCommand(QList<Conductor *>, QUndoCommand * = 0);
-	virtual ~ChangeSeveralConductorsPropertiesCommand();
-	private:
-	ChangeSeveralConductorsPropertiesCommand(const ChangeSeveralConductorsPropertiesCommand &);
-
-	// methods
-	public:
-	virtual void undo();
-	virtual void redo();
-	virtual void setOldSettings(const QList<ConductorProperties> &);
-	virtual void setNewSettings(const QList<ConductorProperties> &);
-	virtual void setNewSettings(const ConductorProperties &);
-
-	// attributes
-	private:
-	/// modified conductor
-	QList<Conductor *> conductors;
-	/// properties before the change
-	QList <ConductorProperties> old_properties;
-	/// properties after the change
-	QList <ConductorProperties> new_properties;
-	///  single properties for each conductor
-	ConductorProperties single_new_properties;
-	/// track whether pre-change properties were set
-	bool old_settings_set;
-	/// track whether post-change properties were set
-	bool new_settings_set;
-};
 #endif

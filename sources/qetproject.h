@@ -38,6 +38,7 @@ class XmlElementsCollection;
 class MoveElementsHandler;
 class MoveTitleBlockTemplatesHandler;
 class NumerotationContext;
+class QUndoStack;
 
 /**
 	This class represents a QET project. Typically saved as a .qet file, it

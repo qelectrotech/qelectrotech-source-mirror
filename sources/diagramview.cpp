@@ -43,6 +43,7 @@
 #include "diagrampropertiesdialog.h"
 #include "dveventinterface.h"
 #include "diagrameventaddelement.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
 	Constructeur
@@ -947,14 +948,14 @@ void DiagramView::editSelectedConductorColor() {
 	Edit the color of the given conductor
 	@param edited_conductor Conductor we want to change the color
 */
-void DiagramView::editConductorColor(Conductor *edited_conductor) {
-	if (scene -> isReadOnly()) return;
-	if (!edited_conductor) return;
+void DiagramView::editConductorColor(Conductor *edited_conductor)
+{
+	if (scene -> isReadOnly() || !edited_conductor) return;
 	
-	// store the initial properties of the provided conductor
+		// store the initial properties of the provided conductor
 	ConductorProperties initial_properties = edited_conductor -> properties();
 	
-	// prepare a color dialog showing the initial conductor color
+		// prepare a color dialog showing the initial conductor color
 	QColorDialog *color_dialog = new QColorDialog(this);
 	color_dialog -> setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
 #ifdef Q_OS_MAC
@@ -962,18 +963,21 @@ void DiagramView::editConductorColor(Conductor *edited_conductor) {
 #endif
 	color_dialog -> setCurrentColor(initial_properties.color);
 	
-	// asks the user what color he wishes to apply
-	if (color_dialog -> exec() == QDialog::Accepted) {
+		// asks the user what color he wishes to apply
+	if (color_dialog -> exec() == QDialog::Accepted)
+	{
 		QColor new_color = color_dialog -> selectedColor();
-		if (new_color != initial_properties.color) {
-			// the user chose a different color
-			ConductorProperties new_properties = initial_properties;
-			new_properties.color = new_color;
-			
-			ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(edited_conductor);
-			ccpc -> setOldSettings(initial_properties);
-			ccpc -> setNewSettings(new_properties);
-			diagram() -> undoStack().push(ccpc);
+		if (new_color != initial_properties.color)
+		{
+				// the user chose a different color
+			QVariant old_value, new_value;
+			old_value.setValue(initial_properties);
+			initial_properties.color = new_color;
+			new_value.setValue(initial_properties);
+
+			QPropertyUndoCommand *undo = new QPropertyUndoCommand(edited_conductor, "properties", old_value, new_value);
+			undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
+			diagram() -> undoStack().push(undo);
 		}
 	}
 }

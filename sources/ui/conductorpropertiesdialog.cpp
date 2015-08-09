@@ -18,11 +18,10 @@
 
 #include "conductorpropertiesdialog.h"
 #include "ui_conductorpropertiesdialog.h"
-
 #include "conductor.h"
 #include "conductorpropertieswidget.h"
-#include "diagramcommands.h"
 #include "diagram.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
  * @brief ConductorPropertiesDialog::ConductorPropertiesDialog
@@ -58,36 +57,31 @@ ConductorPropertiesDialog::~ConductorPropertiesDialog()
  * @param conductor, conductor to edit propertie
  * @param parent, parent widget
  */
-void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor, QWidget *parent) {
+void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor, QWidget *parent)
+{
 	ConductorPropertiesDialog cpd (conductor, parent);
 
-	if (cpd.exec() == QDialog::Accepted && cpd.properties() != conductor->properties()) {
+	if (cpd.exec() == QDialog::Accepted && cpd.properties() != conductor->properties())
+	{
+		QVariant old_value, new_value;
+		old_value.setValue(conductor->properties());
+		new_value.setValue(cpd.properties());
 
-		if (cpd.applyAll()) {
-			QList <Conductor *> conductorslist = conductor -> relatedPotentialConductors().toList();
-			conductorslist << conductor;
-			QList <ConductorProperties> old_properties_list;
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(conductor, "properties", old_value, new_value);
+		undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
 
-			foreach (Conductor *c, conductorslist) {
-				if (c == conductor) {
-					old_properties_list << conductor -> properties();
-				} else {
-					old_properties_list << c -> properties();
-					c -> setProperties( cpd.properties() );
-				}
+			//Make undo for all related potiential conductors
+		if (cpd.applyAll() && !conductor->relatedPotentialConductors().isEmpty())
+		{
+			undo->setText(tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
+			foreach (Conductor *cond, conductor->relatedPotentialConductors())
+			{
+				old_value.setValue(cond->properties());
+				new QPropertyUndoCommand (cond, "properties", old_value, new_value, undo);
 			}
-			//initialize the corresponding UndoCommand object
-			ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(conductorslist);
-			cscpc -> setOldSettings(old_properties_list);
-			cscpc -> setNewSettings(cpd.properties());
-			conductor -> diagram() -> undoStack().push(cscpc);
-		} else {
-			// initialize the corresponding UndoCommand object
-			ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(conductor);
-			ccpc -> setOldSettings(conductor -> properties());
-			ccpc -> setNewSettings(cpd.properties());
-			conductor -> diagram() -> undoStack().push(ccpc);
 		}
+
+		conductor->diagram()->undoStack().push(undo);
 	}
 }
 

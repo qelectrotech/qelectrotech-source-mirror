@@ -19,6 +19,7 @@
 #define CONDUCTOR_H
 
 #include "conductorproperties.h"
+#include <QGraphicsPathItem>
 
 class ConductorProfile;
 class ConductorSegmentProfile;
@@ -34,12 +35,13 @@ typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
 	This class represents a conductor, i.e. a wire between two element
 	terminals.
 */
-class Conductor : public QObject, public QGraphicsPathItem {
-	
+class Conductor : public QObject, public QGraphicsPathItem
+{
 	Q_OBJECT
 
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 	Q_PROPERTY(int animPath READ fakePath WRITE updatePathAnimate)
+	Q_PROPERTY(ConductorProperties properties READ properties WRITE setProperties)
 	
 		// constructors, destructor
 	public:

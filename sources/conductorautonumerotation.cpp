@@ -16,13 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorautonumerotation.h"
-#include "diagramcommands.h"
 #include "numerotationcontextcommands.h"
 #include "qetdiagrameditor.h"
 #include "conductor.h"
 #include "diagram.h"
 #include "potentialtextsdialog.h"
 #include "qet.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
  * @brief ConductorAutoNumerotation::ConductorAutoNumerotation
@@ -80,42 +80,34 @@ void ConductorAutoNumerotation::checkPotential(Conductor *conductor, QUndoComman
  * @brief ConductorAutoNumerotation::applyText
  * apply the text @t to @conductor_ and all conductors at the same potential
  */
-void ConductorAutoNumerotation::applyText(QString t) {
+void ConductorAutoNumerotation::applyText(QString t)
+{
 	if (!conductor_) return;
 
-	if (conductor_list.empty())
-	{
-			//initialize the corresponding UndoCommand object
-		ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand (conductor_, m_parent_undo);
-		ccpc -> setOldSettings (conductor_ -> properties());
-		ConductorProperties cp = conductor_ -> properties();
-		cp.text = t;
-		ccpc -> setNewSettings(cp);
-		if (!m_parent_undo)
-			m_diagram -> undoStack().push(ccpc);
-	}
-	else
-	{
-		QList <Conductor *> clist = conductor_list.toList();
-		clist << conductor_;
-		QList <ConductorProperties> old_properties, new_properties;
-		ConductorProperties cp;
+	QVariant old_value, new_value;
+	ConductorProperties cp = conductor_ -> properties();
+	old_value.setValue(cp);
+	cp.text = t;
+	new_value.setValue(cp);
 
-		foreach (Conductor *c, clist)
+	QPropertyUndoCommand *undo = new QPropertyUndoCommand(conductor_, "properties", old_value, new_value, m_parent_undo);
+	undo->setText(QObject::tr("Modifier les propriétés d'un conducteur", "undo caption"));
+
+	if (!conductor_list.isEmpty())
+	{
+		undo->setText(QObject::tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
+		foreach (Conductor *cond, conductor_list)
 		{
-			old_properties << c -> properties();
-			cp = c -> properties();
-			cp.text = t;
-			new_properties << cp;
+			ConductorProperties cp2 = cond -> properties();
+			old_value.setValue(cp2);
+			cp2.text = t;
+			new_value.setValue(cp2);
+			new QPropertyUndoCommand(cond, "properties", old_value, new_value, undo);
 		}
-
-			//initialize the corresponding UndoCommand object
-		ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(clist, m_parent_undo);
-		cscpc -> setOldSettings(old_properties);
-		cscpc -> setNewSettings(new_properties);
-		if (!m_parent_undo)
-			m_diagram -> undoStack().push(cscpc);
 	}
+
+	if (!m_parent_undo)
+		m_diagram->undoStack().push(undo);
 }
 
 /**

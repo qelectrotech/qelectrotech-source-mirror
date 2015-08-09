@@ -17,9 +17,12 @@
 */
 #ifndef CONDUCTOR_PROPERTIES_H
 #define CONDUCTOR_PROPERTIES_H
+
 #include "qet.h"
-#include <QtWidgets>
-#include <QtXml>
+#include <QColor>
+
+class QPainter;
+
 /**
 	This class represents the properties of a singleline conductor.
 */
@@ -109,4 +112,7 @@ class ConductorProperties {
 	void readStyle(const QString &);
 	QString writeStyle() const;
 };
+
+Q_DECLARE_METATYPE(ConductorProperties)
+
 #endif
