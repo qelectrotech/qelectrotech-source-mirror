@@ -1,26 +1,28 @@
 ; Installation script for QET
-; Written by Cyril Frausti
+; Written by QElectroTech Team
 ; Licence : CC-BY-SA - http://creativecommons.org/licenses/by-sa/3.0/
 ; WebSite : http://qelectrotech.org/
 
 ;--------------------------------
 ;Include Modern UI
-	!include "MUI2.nsh"
+	!include "UMUI.nsh"
 	!include "FileFunc.nsh"
 	!insertmacro Locate
+
 	
 ; MUI Settings
 ;--------------------------------
 ;General
 	; General Product Description Definitions
 	!define SOFT_NAME     "QElectroTech"
-	!define SOFT_VERSION  "0.3"
+	!define SOFT_VERSION  "0.5-dev+4092"
 	!define SOFT_WEB_SITE "http://qelectrotech.org/"
 	!define SOFT_BUILD    "1"
 	
 	SetCompressor /final /solid lzma
 	CRCCheck force
 	XPStyle on
+	BrandingText "${SOFT_NAME}-${SOFT_VERSION}-${SOFT_BUILD}"   ; Shows in the Bottom Left of the installer
 	
 	;Name and file
 	Name "${SOFT_NAME} ${SOFT_VERSION}"
@@ -28,7 +30,7 @@
 
 	;Default installation folder
 	InstallDir "$PROGRAMFILES\${SOFT_NAME}"
-  
+
 	;Get installation folder from registry if available
 	InstallDirRegKey HKCU "Software\${SOFT_NAME}" ""
 
@@ -38,9 +40,11 @@
 
 ;--------------------------------
 ;Interface Settings
+
 	!define MUI_ABORTWARNING
-	!define MUI_ICON "install.ico"
-	!define MUI_UNICON "uninstall.ico"
+	!define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\XPUI-install.ico"
+	!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\XPUI-uninstall.ico"
+	!define MUI_LICENSEPAGE_CHECKBOX
 	
 ;--------------------------------
 ;Language Selection Dialog Settings
@@ -54,13 +58,18 @@
 ;Pages
 
 	!insertmacro MUI_PAGE_LICENSE "files\LICENSE"
-	;!insertmacro MUI_PAGE_COMPONENTS
+	;!insertmacro MUI_PAGE_COMPONENTS  #todo listbox to choice components to install.
 	!insertmacro MUI_PAGE_DIRECTORY
 	!insertmacro MUI_PAGE_INSTFILES
 
 	!insertmacro MUI_UNPAGE_CONFIRM
 	!insertmacro MUI_UNPAGE_INSTFILES
-
+	
+; Finish page and checkbox to run QElectroTech
+	!define MUI_FINISHPAGE_RUN "$INSTDIR\Lancer QET.bat"
+	!define MUI_FINISHPAGE_RUN_NOTCHECKED
+	!define MUI_FINISHPAGE_RUN_TEXT "Check to start ${SOFT_NAME}"
+	!insertmacro MUI_PAGE_FINISH
 ;--------------------------------
 ;Languages
 	;Since NSIS 2.26, the language selection dialog of Modern UI hides languages unsupported by the user's selected codepage by default.
@@ -145,6 +154,8 @@ Section ""
 	
 	; shortcut on the desktop
 	CreateShortCut "$DESKTOP\QElectroTech.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
+	
+	;change $INSTDIR\elements\ *.elmt to read-only attribute
 	${Locate} "$INSTDIR\elements\" "/L=FD /M=*.elmt" "LocateCallback"
 	IfErrors 0 +2
 	MessageBox MB_OK "Error"
@@ -170,7 +181,7 @@ FunctionEnd
 
 	;Assign descriptions to sections
 	;!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-	;  !insertmacro MUI_DESCRIPTION_TEXT ${CopyFiles} "CopyFiles"
+	;!insertmacro MUI_DESCRIPTION_TEXT ${CopyFiles} "CopyFiles"
 	;!insertmacro MUI_FUNCTION_DESCRIPTION_END
  
 ;--------------------------------
