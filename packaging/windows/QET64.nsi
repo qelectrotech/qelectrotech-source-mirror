@@ -78,7 +78,12 @@ LangString wrongArch ${LANG_FRENCH} "Ce programme est pour Windows ${PROC} bits 
 
 	!insertmacro MUI_UNPAGE_CONFIRM
 	!insertmacro MUI_UNPAGE_INSTFILES
-
+	
+; Finish page and checkbox to run QElectroTech
+	!define MUI_FINISHPAGE_RUN "$INSTDIR\Lancer QET.bat"
+	!define MUI_FINISHPAGE_RUN_NOTCHECKED
+	!define MUI_FINISHPAGE_RUN_TEXT "Check to start ${SOFT_NAME}"
+	!insertmacro MUI_PAGE_FINISH
 ;--------------------------------
 ;Languages
 	;Since NSIS 2.26, the language selection dialog of Modern UI hides languages unsupported by the user's selected codepage by default.
