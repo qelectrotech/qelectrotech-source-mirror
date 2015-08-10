@@ -21,7 +21,7 @@ LangString wrongArch ${LANG_FRENCH} "Ce programme est pour Windows ${PROC} bits 
 ;General
 	; General Product Description Definitions
 	!define SOFT_NAME     "QElectroTech"
-	!define SOFT_VERSION  "0.5-dev_x86_64-win64+4082"
+	!define SOFT_VERSION  "0.5-dev_x86_64-win64+4094"
 	!define SOFT_WEB_SITE "http://qelectrotech.org/"
 	!define SOFT_BUILD    "1"
 
@@ -29,6 +29,7 @@ LangString wrongArch ${LANG_FRENCH} "Ce programme est pour Windows ${PROC} bits 
 	SetCompressor /final /solid lzma
 	CRCCheck force
 	XPStyle on
+	BrandingText "${SOFT_NAME}-${SOFT_VERSION}-${SOFT_BUILD}"   ; Shows in the Bottom Left of the installer
 	
 	
 	;Name and file
@@ -48,9 +49,16 @@ LangString wrongArch ${LANG_FRENCH} "Ce programme est pour Windows ${PROC} bits 
 ;--------------------------------
 ;Interface Settings
 	!define MUI_ABORTWARNING
-	!define MUI_ICON "install.ico"
-	!define MUI_UNICON "uninstall.ico"
-	
+	!define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\XPUI-install.ico"
+	!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\XPUI-uninstall.ico"
+	!define MUI_LICENSEPAGE_CHECKBOX
+	;!define MUI_ICON ".\images\npp_inst.ico"
+
+	!define MUI_WELCOMEFINISHPAGE_BITMAP ".\images\wizard.bmp"
+	!define MUI_WELCOMEFINISHPAGE_BITMAP_NOSTRETCH
+
+	!define MUI_HEADERIMAGE
+	!define MUI_HEADERIMAGE_BITMAP ".\images\header.bmp" ; optional
 ;--------------------------------
 ;Language Selection Dialog Settings
 
@@ -62,6 +70,7 @@ LangString wrongArch ${LANG_FRENCH} "Ce programme est pour Windows ${PROC} bits 
 ;--------------------------------
 ;Pages
 
+	!insertmacro MUI_PAGE_WELCOME
 	!insertmacro MUI_PAGE_LICENSE "files\LICENSE"
 	;!insertmacro MUI_PAGE_COMPONENTS
 	!insertmacro MUI_PAGE_DIRECTORY
@@ -155,6 +164,8 @@ Section ""
 	
 	; shortcut on the desktop
 	CreateShortCut "$DESKTOP\QElectroTech.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
+	
+	;changing $INSTDIR\elements\ *.elmt to read-only attribute
 	${Locate} "$INSTDIR\elements\" "/L=FD /M=*.elmt" "LocateCallback"
 	IfErrors 0 +2
 	MessageBox MB_OK "Error"
