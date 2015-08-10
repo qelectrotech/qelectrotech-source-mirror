@@ -94,7 +94,6 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	connect(diagram, SIGNAL(editElementRequired(ElementsLocation)), this, SIGNAL(editElementRequired(ElementsLocation)));
 	connect(diagram, SIGNAL(findElementRequired(ElementsLocation)), this, SIGNAL(findElementRequired(ElementsLocation)));
 	
-	connect(this, SIGNAL(aboutToAddElement()), this, SLOT(addDroppedElement()), Qt::QueuedConnection);
 	connect(
 		this, SIGNAL(aboutToSetDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &)),
 		this, SLOT(setDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &)),
@@ -293,11 +292,6 @@ void DiagramView::handleElementDrop(QDropEvent *e) {
 	diagram()->setEventInterface(new DiagramEventAddElement(location, diagram(), mapToScene(e->pos())));
 		//Set focus to the view to get event
 	this->setFocus();
-	
-//	next_location_ = location;
-//	next_position_ = e-> pos();
-	
-//	emit(aboutToAddElement());
 }
 
 /**
@@ -823,33 +817,6 @@ QRectF DiagramView::viewedSceneRect() const {
 }
 
 /**
-	Cette methode permet de determiner s'il faut ou non integrer au projet un
-	element dont on connait l'emplacement.
-	L'element droppe est integre a la collection du projet :
-	  * s'il appartient a un autre projet, quelque soit la specification de
-	  l'utilisateur a ce propos ;
-	  * s'il appartient a la collection commune ou a la collection
-	  personnelle ET que l'utilisateur a autorise l'integration automatique
-	  des elements dans les projets.
-	@param location Emplacement de l'element
-	@return true si l'element doit etre integre, false sinon
-	
-*/
-bool DiagramView::mustIntegrateElement(const ElementsLocation &location) const {
-	// l'utilisateur a-t-il autorise l'integration automatique des elements dans les projets ?
-	bool auto_integration_enabled = QETApp::settings().value("diagrameditor/integrate-elements", true).toBool();
-	
-	// l'element appartient-il a un projet et si oui, est-ce un autre projet ?
-	bool elmt_from_project = location.project();
-	bool elmt_from_another_project = elmt_from_project && location.project() != scene -> project();
-	
-	// faut-il integrer l'element ?
-	bool must_integrate_element = (elmt_from_another_project || (auto_integration_enabled && !elmt_from_project));
-	
-	return(must_integrate_element);
-}
-
-/**
 	@param tbt_loc A title block template location
 	@return true if the title block template needs to be integrated in the
 	parent project before being applied to the current diagram, or false if it
@@ -861,24 +828,6 @@ bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocati
 	if (!tbt_parent_project) return(true);
 	
 	return(tbt_parent_project != scene -> project());
-}
-
-/**
-	@param location Emplacement de l'element a ajouter sur le schema
-	@param pos Position (dans les coordonnees de la vue) a laquelle l'element sera ajoute
-*/
-bool DiagramView::addElementAtPos(const ElementsLocation &location, const QPoint &pos) {
-	// construit une instance de l'element correspondant a l'emplacement
-	int state;
-	Element *el = ElementFactory::Instance()->createElement(location, 0, &state);
-	if (state) {
-		delete el;
-		return(false);
-	}
-	
-	//Add element to diagram
-	diagram() -> undoStack().push (new AddItemCommand<Element *>(el, diagram(), mapToScene(pos)));
-	return(true);
 }
 
 /**
@@ -1208,32 +1157,6 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 		return;
 	}
 	QGraphicsView::mouseDoubleClickEvent(e);
-}
-
-/**
-	Cette methode ajoute l'element designe par l'emplacement location a la
-	position pos. Si necessaire, elle demande l'integration de l'element au
-	projet.
-	@see mustIntegrateElement
-*/
-void DiagramView::addDroppedElement() {
-	ElementsLocation location = next_location_;
-	QPoint pos = next_position_;
-	
-	if (!mustIntegrateElement(location)) {
-		addElementAtPos(location, pos);
-	} else {
-		QString error_msg;
-		IntegrationMoveElementsHandler *integ_handler = new IntegrationMoveElementsHandler(this);
-		QString integ_path = scene -> project() -> integrateElement(location.toString(), integ_handler, error_msg);
-		delete integ_handler;
-		if (integ_path.isEmpty()) {
-			qDebug() << "DiagramView::addDroppedElement : Impossible d'ajouter l'element. Motif : " << qPrintable(error_msg);
-			return;
-		}
-		addElementAtPos(ElementsLocation::locationFromString(integ_path), pos);
-	}
-	adjustSceneRect();
 }
 
 /**

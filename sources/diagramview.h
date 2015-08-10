@@ -17,7 +17,9 @@
 */
 #ifndef DIAGRAMVIEW_H
 #define DIAGRAMVIEW_H
-#include <QtWidgets>
+
+#include <QGraphicsView>
+#include <QClipboard>
 #include "elementslocation.h"
 #include "templatelocation.h"
 
@@ -25,12 +27,16 @@ class Conductor;
 class Diagram;
 class QETDiagramEditor;
 class DVEventInterface;
+class QMenu;
+class QInputEvent;
+class QGestureEvent;
 
 /**
 	This class provides a widget to render an electric diagram in an editable,
 	interactive way.
 */
-class DiagramView : public QGraphicsView {
+class DiagramView : public QGraphicsView
+{
 	Q_OBJECT
 	
 		// constructors, destructor
@@ -49,10 +55,8 @@ class DiagramView : public QGraphicsView {
 		QAction          *paste_here;
 		QAction          *find_element_;
 		QPoint            paste_here_pos;
-		QPoint            next_position_;
 		QPointF           rubber_band_origin;
 		bool              fresh_focus_in_;    ///< Indicate the focus was freshly gained
-		ElementsLocation  next_location_;
 		bool m_first_activation;
 
 
@@ -99,9 +103,7 @@ class DiagramView : public QGraphicsView {
 	void handleTextDrop(QDropEvent *);
 	bool gestureEvent(QGestureEvent *event);
 	QRectF viewedSceneRect() const;
-	bool mustIntegrateElement(const ElementsLocation &) const;
 	bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;
-	bool addElementAtPos(const ElementsLocation &, const QPoint &);
 	bool gestures() const;
 
 	signals:
@@ -111,8 +113,6 @@ class DiagramView : public QGraphicsView {
 	void modeChanged();
 	/// Signal emitted after the diagram title changed
 	void titleChanged(DiagramView *, const QString &);
-	/// Signal emitted before integrating an element
-	void aboutToAddElement();
 	/// Signal emitted before integrating a title block template
 	void aboutToSetDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	/// Signal emitted when users wish to locate an element from the diagram within elements collection
@@ -154,7 +154,6 @@ class DiagramView : public QGraphicsView {
 	void resetConductors();
 	
 	private slots:
-	void addDroppedElement();
 	void setDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	void adjustGridToZoom();
 	void applyReadOnly();
