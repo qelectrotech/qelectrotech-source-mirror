@@ -5,7 +5,8 @@
 
 ;--------------------------------
 ;Include Modern UI
-	!include "UMUI.nsh"
+	;!include "UMUI.nsh"
+	!include "MUI2.nsh"
 	!include "FileFunc.nsh"
 	!insertmacro Locate
 
@@ -15,7 +16,7 @@
 ;General
 	; General Product Description Definitions
 	!define SOFT_NAME     "QElectroTech"
-	!define SOFT_VERSION  "0.5-dev+4092"
+	!define SOFT_VERSION  "0.5-dev+4094"
 	!define SOFT_WEB_SITE "http://qelectrotech.org/"
 	!define SOFT_BUILD    "1"
 	
@@ -45,6 +46,13 @@
 	!define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\XPUI-install.ico"
 	!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\XPUI-uninstall.ico"
 	!define MUI_LICENSEPAGE_CHECKBOX
+	;!define MUI_ICON ".\images\npp_inst.ico"
+
+	!define MUI_WELCOMEFINISHPAGE_BITMAP ".\images\wizard.bmp"
+	!define MUI_WELCOMEFINISHPAGE_BITMAP_NOSTRETCH
+
+	!define MUI_HEADERIMAGE
+	!define MUI_HEADERIMAGE_BITMAP ".\images\header.bmp" ; optional
 	
 ;--------------------------------
 ;Language Selection Dialog Settings
@@ -57,6 +65,7 @@
 ;--------------------------------
 ;Pages
 
+	!insertmacro MUI_PAGE_WELCOME
 	!insertmacro MUI_PAGE_LICENSE "files\LICENSE"
 	;!insertmacro MUI_PAGE_COMPONENTS  #todo listbox to choice components to install.
 	!insertmacro MUI_PAGE_DIRECTORY
@@ -155,7 +164,7 @@ Section ""
 	; shortcut on the desktop
 	CreateShortCut "$DESKTOP\QElectroTech.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
 	
-	;change $INSTDIR\elements\ *.elmt to read-only attribute
+	;changing $INSTDIR\elements\ *.elmt to read-only attribute
 	${Locate} "$INSTDIR\elements\" "/L=FD /M=*.elmt" "LocateCallback"
 	IfErrors 0 +2
 	MessageBox MB_OK "Error"
