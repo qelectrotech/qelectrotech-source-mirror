@@ -9,6 +9,10 @@
 	!include "MUI2.nsh"
 	!include "FileFunc.nsh"
 	!insertmacro Locate
+	!include FileFunc.nsh
+	!insertmacro GetParameters
+	!insertmacro GetOptions
+
 
 	
 ; MUI Settings
@@ -67,7 +71,7 @@
 
 	!insertmacro MUI_PAGE_WELCOME
 	!insertmacro MUI_PAGE_LICENSE "files\LICENSE"
-	!insertmacro MUI_PAGE_COMPONENTS
+	!insertmacro MUI_PAGE_COMPONENTS  #todo listbox to choice components to install.
 	!insertmacro MUI_PAGE_DIRECTORY
 	!insertmacro MUI_PAGE_INSTFILES
 
@@ -111,13 +115,9 @@
 
 	!insertmacro MUI_RESERVEFILE_LANGDLL
 	
-	
-;--------------------------------
-;Components	
-
 SetOverwrite on	
 Section "Main Program"
-;SectionIn RO ; Read only, always installed
+SectionIn RO ; Read only, always installed
 
 Setoutpath "$INSTDIR\bin\"
 File "./files/bin/${SOFT_NAME}.exe"
@@ -148,7 +148,7 @@ Section "Elements" SEC01
 SectionEnd
 
 SetOverwrite on
-Section "Langs" SEC02
+Section "Lang" SEC02
   SetOutPath "$INSTDIR\lang"
   ;SetOverwrite try
   File "./files/lang/*.qm"
@@ -271,7 +271,7 @@ Section "Uninstall"
 	DeleteRegKey HKEY_CLASSES_ROOT "qet_element_file"
 	
 	IfFileExists "$INSTDIR" 0 NoErrorMsg
-	MessageBox MB_OK "Note: $INSTDIR could not be removed!" IDOK 0 ; skipped if file doesn't exist
+	;MessageBox MB_OK "Note: $INSTDIR could not be removed!" IDOK 0 ; skipped if file doesn't exist
 	NoErrorMsg:
 SectionEnd
 
