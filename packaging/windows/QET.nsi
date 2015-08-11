@@ -67,7 +67,7 @@
 
 	!insertmacro MUI_PAGE_WELCOME
 	!insertmacro MUI_PAGE_LICENSE "files\LICENSE"
-	;!insertmacro MUI_PAGE_COMPONENTS  #todo listbox to choice components to install.
+	!insertmacro MUI_PAGE_COMPONENTS
 	!insertmacro MUI_PAGE_DIRECTORY
 	!insertmacro MUI_PAGE_INSTFILES
 
@@ -110,16 +110,68 @@
 	;because this will make your installer start faster.
 
 	!insertmacro MUI_RESERVEFILE_LANGDLL
+	
+	
+;--------------------------------
+;Components	
 
+SetOverwrite on	
+Section "Main Program"
+;SectionIn RO ; Read only, always installed
+
+Setoutpath "$INSTDIR\bin\"
+File "./files/bin/${SOFT_NAME}.exe"
+
+Setoutpath "$INSTDIR"
+File "./files/ChangeLog"
+File "./files/CREDIT"
+File "./files/ELEMENTS.LICENSE"
+File "./files/LICENSE"
+File "./files/qet_uninstall_file_associations.reg"
+File "./files/README"
+File "./files/register_filetypes.bat"
+File "Lancer QET.bat"
+
+SetOutPath "$INSTDIR"
+File /r "./files/ico"
+
+SetOutPath "$INSTDIR"
+File /r "./files/conf"
+
+SectionEnd
+	
+SetOverwrite on
+Section "Elements" SEC01
+  SetOutPath "$INSTDIR"
+  ;SetOverwrite try
+  File /r "./files/elements"
+SectionEnd
+
+SetOverwrite on
+Section "Langs" SEC02
+  SetOutPath "$INSTDIR\lang"
+  ;SetOverwrite try
+  File "./files/lang/*.qm"
+SectionEnd
+
+SetOverwrite on
+Section "Titleblocks" SEC03
+  SetOutPath "$INSTDIR"
+  ;SetOverwrite try
+  File /r "./files/titleblocks"
+SectionEnd
+
+SetOverwrite on
+Section "Examples" SEC04
+  SetOutPath "$INSTDIR"
+  ;SetOverwrite try
+  File /r "./files/examples"
+SectionEnd
 ;--------------------------------
 ;Installer Sections
 
 Section ""
 	SetOutPath "$INSTDIR"  
-	; copy every files in the "files" directory, except the ready-to-use .bat file
-	File /nonfatal /r /x "files\Lancer QET.bat" /x ".svn" "files\*"
-	; add the use-APPDATA .bat file
-	File "Lancer QET.bat"
 	;Store installation folder
 	WriteRegStr HKCU "Software\${SOFT_NAME}" "" $INSTDIR
 	; write uninstall strings
