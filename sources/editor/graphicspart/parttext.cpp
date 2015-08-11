@@ -102,17 +102,11 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const {
 /**
 	@return Les coordonnees du point situe en bas a gauche du texte.
 */
-QPointF PartText::margin() const {
+QPointF PartText::margin() const
+{
 	QFont used_font = font();
 	QFontMetrics qfm(used_font);
-	
-	// marge du texte
-#if QT_VERSION >= 0x040500
 	qreal document_margin = document() -> documentMargin();
-#else
-	// il semblerait qu'avant Qt 4.5, ceci vaille non pas 4.0 mais 2.0
-	qreal document_margin = 2.0;
-#endif
 	
 	QPointF margin(
 		// marge autour du texte

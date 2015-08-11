@@ -506,12 +506,9 @@ void QETProject::setDefaultXRefProperties(const QString type, const XRefProperti
 	emit XRefPropertiesChanged();
 }
 
-void QETProject::setDefaultXRefProperties(QHash<QString, XRefProperties> hash) {
-#if QT_VERSION >= 0x040800
+void QETProject::setDefaultXRefProperties(QHash<QString, XRefProperties> hash)
+{
 	m_default_xref_properties.swap(hash);
-#else
-	m_default_xref_properties = hash;
-#endif
 	emit XRefPropertiesChanged();
 }
 

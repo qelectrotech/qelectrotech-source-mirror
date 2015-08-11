@@ -674,14 +674,8 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	*/
 	QPointF qpainter_offset(0.0, -qfm.ascent());
 	
-	// ajuste le decalage selon la marge du document texte
-#if QT_VERSION >= 0x040500
+		//adjusts the offset by the margin of the text document
 	text_document.setDocumentMargin(0.0);
-#else
-	// il semblerait qu'avant Qt 4.5, le documentMargin vaille 2.0 (et pas 4.0)
-	qpainter_offset.rx() -= 2.0;
-	qpainter_offset.ry() -= 2.0;
-#endif
 	
 	qp.translate(qpainter_offset);
 	

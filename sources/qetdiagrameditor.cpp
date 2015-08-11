@@ -69,10 +69,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 		//Set object name to be retrieved by the stylesheets
 	workspace.setBackground(QBrush(Qt::NoBrush));
 	workspace.setObjectName("mdiarea");
-	
-#if QT_VERSION >= 0x040800
 	workspace.setTabsClosable(true);
-#endif
 	
 		//Set the signal mapper
 	connect(&windowMapper, SIGNAL(mapped(QWidget *)), this, SLOT(activateWidget(QWidget *)));
