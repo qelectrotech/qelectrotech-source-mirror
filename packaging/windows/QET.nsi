@@ -209,14 +209,15 @@ Section ""
 	SetShellVarContext all ; all users
 	; shortcuts in the start menu
 	CreateDirectory "$SMPROGRAMS\${SOFT_NAME}"
+	CreateDirectory "$SMPROGRAMS\${SOFT_NAME}\Manual"
 	CreateShortCut  "$SMPROGRAMS\${SOFT_NAME}\QElectroTech.lnk"           "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
 	CreateShortCut  "$SMPROGRAMS\${SOFT_NAME}\Uninstall QElectroTech.lnk" "$INSTDIR\Uninstall.exe"
 	; TODO : add the QuickStart Guide (or any other documentation) when available
 	
 	; shortcut on the desktop
 	CreateShortCut "$DESKTOP\QElectroTech.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
-	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Manual_English.url" "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/joshua/html/QET.html"
-	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Manual_Russian.url" "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/joshua/html/QET_ru.html"
+	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Manual\Manual_English.url" "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/joshua/html/QET.html"
+	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Manual\Manual_Russian.url" "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/joshua/html/QET_ru.html"
 	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Download.url" "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/builds/"
 	
 	;changing $INSTDIR\elements\ *.elmt to read-only attribute
