@@ -226,9 +226,9 @@ Section ""
 	
 	; shortcut on the desktop
 	CreateShortCut "$DESKTOP\QElectroTech.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
-	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\manual.url" "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/joshua/html/QET.html"
+	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Manual_English.url" "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/joshua/html/QET.html"
+	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Manual_Russian.url" "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/joshua/html/QET_ru.html"
 	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Download.url" "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/builds/"
-	
 	;changing $INSTDIR\elements\ *.elmt to read-only attribute
 	${Locate} "$INSTDIR\elements\" "/L=FD /M=*.elmt" "LocateCallback"
 	IfErrors 0 +2
