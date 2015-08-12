@@ -188,9 +188,9 @@ Section ""
 	Var /GLOBAL final_titleblock_ico
 
 	StrCpy $final_qet_exe     "$INSTDIR\Lancer QET.bat"
-	StrCpy $final_project_ico "$INSTDIR\ico\application-x-qet-project.ico"
-	StrCpy $final_element_ico "$INSTDIR\ico\application-x-qet-element.ico"
-	StrCpy $final_titleblock_ico "$INSTDIR\ico\application-x-qet-titleblock.ico"
+	StrCpy $final_project_ico "$INSTDIR\\ico\application-x-qet-project.ico"
+	StrCpy $final_element_ico "$INSTDIR\\ico\application-x-qet-element.ico"
+	StrCpy $final_titleblock_ico "$INSTDIR\\ico\application-x-qet-titleblock.ico"
 	
 	; write file associations registry keys
 	WriteRegStr   HKEY_CLASSES_ROOT "Applications\qelectrotech.exe\shell\open\command" ""             "$\"$final_qet_exe$\" $\"%1$\""
@@ -212,7 +212,7 @@ Section ""
 	CreateDirectory "$SMPROGRAMS\${SOFT_NAME}"
 	CreateDirectory "$SMPROGRAMS\${SOFT_NAME}\Manual"
 	CreateDirectory "$SMPROGRAMS\${SOFT_NAME}\Upgrade"
-	CreateShortCut  "$SMPROGRAMS\${SOFT_NAME}\QElectroTech.lnk"           "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
+	CreateShortCut  "$SMPROGRAMS\${SOFT_NAME}\QElectroTech.lnk"           "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\\ico\qelectrotech.ico"
 	CreateShortCut  "$SMPROGRAMS\${SOFT_NAME}\Uninstall QElectroTech.lnk" "$INSTDIR\Uninstall.exe"
 	
 	; shortcut on the desktop
