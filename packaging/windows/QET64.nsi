@@ -236,7 +236,7 @@ Section ""
 	
 	${Locate} "$INSTDIR\elements\" "/L=FD /M=*.elmt" "LocateCallback"
 	IfErrors 0 +2
-	MessageBox MB_OK "Error"
+	;MessageBox MB_OK "Error"
 SectionEnd
 
 Function LocateCallback
