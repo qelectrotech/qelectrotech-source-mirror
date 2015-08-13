@@ -244,64 +244,34 @@
 <context>
     <name>ArcEditor</name>
     <message>
-        <location filename="../sources/editor/arceditor.cpp" line="50"/>
+        <location filename="../sources/editor/arceditor.cpp" line="53"/>
         <source>Centre : </source>
         <translation>Centru:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/arceditor.cpp" line="55"/>
+        <location filename="../sources/editor/arceditor.cpp" line="58"/>
         <source>Diamètres : </source>
         <translation>Diametre:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/arceditor.cpp" line="56"/>
+        <location filename="../sources/editor/arceditor.cpp" line="59"/>
         <source>horizontal :</source>
         <translation>orizontal:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/arceditor.cpp" line="58"/>
+        <location filename="../sources/editor/arceditor.cpp" line="61"/>
         <source>vertical :</source>
         <translation>vertical:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/arceditor.cpp" line="60"/>
+        <location filename="../sources/editor/arceditor.cpp" line="63"/>
         <source>Angle de départ :</source>
         <translation>Unghi de pornire:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/arceditor.cpp" line="62"/>
+        <location filename="../sources/editor/arceditor.cpp" line="65"/>
         <source>Angle :</source>
         <translation>Unghi:</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/arceditor.cpp" line="122"/>
-        <source>abscisse</source>
-        <translation>abscisa</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/arceditor.cpp" line="124"/>
-        <source>ordonnée</source>
-        <translation>ordonata</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/arceditor.cpp" line="126"/>
-        <source>diamètre horizontal</source>
-        <translation>diametru orizontal</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/arceditor.cpp" line="128"/>
-        <source>diamètre vertical</source>
-        <translation>diametru vertical</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/arceditor.cpp" line="130"/>
-        <source>angle de départ</source>
-        <translation>unghi de pornire</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/arceditor.cpp" line="132"/>
-        <source>angle</source>
-        <translation>unghi</translation>
     </message>
 </context>
 <context>
@@ -368,16 +338,22 @@
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1405"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1408"/>
         <source>Textes de conducteurs</source>
         <translation>Text conductori</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1406"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1409"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>Doriți să aplicați noul text 
 tuturor conductorilor cu același potențial ?</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1428"/>
+        <source>Modifier les propriétés d&apos;un conducteur</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -391,6 +367,18 @@ tuturor conductorilor cu același potențial ?</translation>
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="33"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
         <translation>Aplică proprietățile tuturor conductorilor cu acest potențial</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="71"/>
+        <source>Modifier les propriétés d&apos;un conducteur</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="76"/>
+        <source>Modifier les propriétés de plusieurs conducteurs</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -453,19 +441,19 @@ tuturor conductorilor cu același potențial ?</translation>
         <translation>faza</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="158"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="175"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translation>Linie continuă</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="159"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="176"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translation>Linie punctată</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="160"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="177"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation>Puncte și linii</translation>
@@ -570,6 +558,14 @@ tuturor conductorilor cu același potențial ?</translation>
     </message>
 </context>
 <context>
+    <name>CustomElementGraphicPart</name>
+    <message>
+        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="472"/>
+        <source>Déplacer une primitive</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DiagramContextWidget</name>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="142"/>
@@ -666,7 +662,7 @@ tuturor conductorilor cu același potențial ?</translation>
 <context>
     <name>DiagramTextItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="71"/>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="61"/>
         <source>Maintenir ctrl pour un déplacement libre</source>
         <translation>Mențineți ctrl apăsat pentru mișcare liberă</translation>
     </message>
@@ -674,13 +670,13 @@ tuturor conductorilor cu același potențial ?</translation>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="62"/>
+        <location filename="../sources/diagramview.cpp" line="63"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Aceasta este zona în care concepeți schemele dumneavoastră prin adăugarea elementelor și conductorilor între terminale. De asemenea puteți adăuga texte independente.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="86"/>
+        <location filename="../sources/diagramview.cpp" line="87"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Lipește aici</translation>
@@ -692,26 +688,32 @@ tuturor conductorilor cu același potențial ?</translation>
         <translation>Orientare texte selectate</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="676"/>
+        <location filename="../sources/diagramview.cpp" line="671"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Nedenumit</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="921"/>
+        <location filename="../sources/diagramview.cpp" line="871"/>
         <source>Propriétés de la sélection</source>
         <translation>Proprietățile selecției</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="923"/>
+        <location filename="../sources/diagramview.cpp" line="873"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Selecția conține %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="959"/>
+        <location filename="../sources/diagramview.cpp" line="909"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Alegeți noua culoare pentru acest conductor</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="928"/>
+        <source>Modifier les propriétés d&apos;un conducteur</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1756,44 +1758,24 @@ Les changements seront définitifs.</source>
 <context>
     <name>EllipseEditor</name>
     <message>
-        <location filename="../sources/editor/ellipseeditor.cpp" line="47"/>
+        <location filename="../sources/editor/ellipseeditor.cpp" line="50"/>
         <source>Centre : </source>
         <translation>Centru : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ellipseeditor.cpp" line="52"/>
+        <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
         <source>Diamètres : </source>
         <translation>Diametre : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ellipseeditor.cpp" line="53"/>
+        <location filename="../sources/editor/ellipseeditor.cpp" line="56"/>
         <source>horizontal :</source>
         <translation>orizontal :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
+        <location filename="../sources/editor/ellipseeditor.cpp" line="58"/>
         <source>vertical :</source>
         <translation>vertical :</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ellipseeditor.cpp" line="112"/>
-        <source>abscisse</source>
-        <translation>abscisa</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ellipseeditor.cpp" line="114"/>
-        <source>ordonnée</source>
-        <translation>ordonata</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ellipseeditor.cpp" line="116"/>
-        <source>diamètre horizontal</source>
-        <translation>diametru orizontal</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ellipseeditor.cpp" line="118"/>
-        <source>diamètre vertical</source>
-        <translation>diametru vertical</translation>
     </message>
 </context>
 <context>
@@ -2276,9 +2258,9 @@ Les changements seront définitifs.</source>
         <translation type="unfinished">%</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.cpp" line="139"/>
-        <source>une image</source>
-        <translation type="unfinished">o imagine</translation>
+        <location filename="../sources/ui/imagepropertieswidget.cpp" line="141"/>
+        <source>Modifier la taille d&apos;une image</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2461,114 +2443,83 @@ Les changements seront définitifs.</source>
 <context>
     <name>LineEditor</name>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="47"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="50"/>
         <source>Normale</source>
         <comment>type of the 1st end of a line</comment>
         <translation>Normală</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="48"/>
-        <source>Flèche simple</source>
-        <comment>type of the 1st end of a line</comment>
-        <translation>Săgeată simplă</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="49"/>
-        <source>Flèche triangulaire</source>
-        <comment>type of the 1st end of a line</comment>
-        <translation>Săgeată triunghiulară</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="50"/>
-        <source>Cercle</source>
-        <comment>type of the 1st end of a line</comment>
-        <translation>Cerc</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="51"/>
+        <source>Flèche simple</source>
+        <comment>type of the 1st end of a line</comment>
+        <translation>Săgeată simplă</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/lineeditor.cpp" line="52"/>
+        <source>Flèche triangulaire</source>
+        <comment>type of the 1st end of a line</comment>
+        <translation>Săgeată triunghiulară</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/lineeditor.cpp" line="53"/>
+        <source>Cercle</source>
+        <comment>type of the 1st end of a line</comment>
+        <translation>Cerc</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/lineeditor.cpp" line="54"/>
         <source>Carré</source>
         <comment>type of the 1st end of a line</comment>
         <translation>Patrat</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="53"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="56"/>
         <source>Normale</source>
         <comment>type of the 2nd end of a line</comment>
         <translation>Normală</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="54"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="57"/>
         <source>Flèche simple</source>
         <comment>type of the 2nd end of a line</comment>
         <translation>Săgeată simplă</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="55"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="58"/>
         <source>Flèche triangulaire</source>
         <comment>type of the 2nd end of a line</comment>
         <translation>Săgeată triunghiulară</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="56"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="59"/>
         <source>Cercle</source>
         <comment>type of the 2nd end of a line</comment>
         <translation>Cerc</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="57"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="60"/>
         <source>Carré</source>
         <comment>type of the 2nd end of a line</comment>
         <translation>Patrat</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="73"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="76"/>
         <source>Fin 1</source>
         <translation>Sfârșit 1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="76"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="79"/>
         <source>Fin 2</source>
         <translation>Sfârșit 2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="152"/>
-        <source>abscisse point 1</source>
-        <translation>abscisa punct 1</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="154"/>
-        <source>ordonnée point 1</source>
-        <translation>ordonata punct 1</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="156"/>
-        <source>abscisse point 2</source>
-        <translation>abscisa punct 2</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="158"/>
-        <source>ordonnée point 2</source>
-        <translation>ordonata punct 2</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="160"/>
-        <source>type fin 1</source>
-        <translation>tip sfârșit 1</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="162"/>
-        <source>longueur fin 1</source>
-        <translation>lungimea capătului 1</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="164"/>
-        <source>type fin 2</source>
-        <translation>tip sfârșit 2</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="166"/>
-        <source>longueur fin 2</source>
-        <translation>lungimea capătului 2</translation>
+        <location filename="../sources/editor/lineeditor.cpp" line="174"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="190"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="207"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="223"/>
+        <location filename="../sources/editor/lineeditor.cpp" line="239"/>
+        <source>Modifier une ligne</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2877,6 +2828,62 @@ Les changements seront définitifs.</source>
     </message>
 </context>
 <context>
+    <name>PartArc</name>
+    <message>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="214"/>
+        <source>Modifier un arc</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PartEllipse</name>
+    <message>
+        <location filename="../sources/editor/graphicspart/partellipse.cpp" line="209"/>
+        <source>Modifier une ellipse</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PartLine</name>
+    <message>
+        <location filename="../sources/editor/graphicspart/partline.cpp" line="160"/>
+        <source>Modifier une ligne</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PartPolygon</name>
+    <message>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="282"/>
+        <source>Modifier un polygone</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PartRectangle</name>
+    <message>
+        <location filename="../sources/editor/graphicspart/partrectangle.cpp" line="280"/>
+        <source>Modifier un rectangle</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PartText</name>
+    <message>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="433"/>
+        <source>Modifier un champ texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PartTextField</name>
+    <message>
+        <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="425"/>
+        <source>Modifier un champ texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PolygonEditor</name>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="35"/>
@@ -2899,21 +2906,22 @@ Les changements seront définitifs.</source>
         <translation>Puncte ale poligonului :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="78"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="70"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Eroare</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="79"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="70"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
         <translation>Poligonul trebuie să conțină cel puțin două puncte.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="93"/>
-        <source>fermeture du polygone</source>
-        <translation>închidere poligon</translation>
+        <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
+        <source>Modifier un polygone</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2931,12 +2939,12 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
 Se aplică un text tutror acestor driveri?</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
+        <location filename="../sources/ui/potentialtextsdialog.cpp" line="68"/>
         <source>  : est présent </source>
         <translation>  : este prezent </translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtextsdialog.cpp" line="67"/>
+        <location filename="../sources/ui/potentialtextsdialog.cpp" line="68"/>
         <source> fois.</source>
         <translation> corect.</translation>
     </message>
@@ -3416,822 +3424,822 @@ Opțiuni disponibile:
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="80"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="77"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="82"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="79"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="129"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="126"/>
         <source>Panel d&apos;éléments</source>
         <comment>dock title</comment>
         <translation>Panou de elemente</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="166"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="163"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Anulări</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="162"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="159"/>
         <source>Aucune modification</source>
         <translation>Nici o modificare</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="163"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="160"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
         <translation>Apăsați pe o acțiune pentru a reveni la modificările efectuate schemei</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="238"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="235"/>
         <source>&amp;Nouveau</source>
         <translation>&amp;Nou</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="239"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="236"/>
         <source>&amp;Ouvrir</source>
         <translation>&amp;Deschide</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="242"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="239"/>
         <source>&amp;Fermer</source>
         <translation>&amp;Închide</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="240"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="237"/>
         <source>&amp;Enregistrer</source>
         <translation>&amp;Salvează</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="241"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="238"/>
         <source>Enregistrer sous</source>
         <translation>Salvează ca</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="194"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="191"/>
         <source>E&amp;xporter</source>
         <translation>E&amp;xportă</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="164"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="161"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="195"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="192"/>
         <source>Imprimer</source>
         <translation>Tipărește</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="196"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="193"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Termină</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="198"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="195"/>
         <source>Annuler</source>
         <translation>Anulează</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="197"/>
         <source>Refaire</source>
         <translation>Refă</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="199"/>
         <source>Co&amp;uper</source>
         <translation>Ta&amp;ie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="203"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Cop&amp;ier</source>
         <translation>Cop&amp;iază</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="204"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
         <source>C&amp;oller</source>
         <translation>Li&amp;pește</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="210"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
         <source>Propriétés du folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="223"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
         <source>Ajouter un folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="224"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
         <source>Supprimer le folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="246"/>
         <source>Crée un nouveau projet</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="250"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="247"/>
         <source>Ouvre un projet existant</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="251"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
         <source>Ferme le projet courant</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="252"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="253"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="250"/>
         <source>Enregistre le projet courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="265"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="269"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="266"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="270"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
         <source>Tout sélectionner</source>
         <translation>Selectează tot</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
         <source>Désélectionner tout</source>
         <translation>Deselectează tot</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
         <source>Inverser la sélection</source>
         <translation>Inversează selecția</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="275"/>
         <source>Supprimer</source>
         <translation>Șterge</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
         <source>Pivoter</source>
         <translation>Rotește</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
         <source>Orienter les textes</source>
         <translation>Orientare texte</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
         <source>Retrouver dans le panel</source>
         <translation>Găsește în panou</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="205"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
         <source>Réinitialiser les conducteurs</source>
         <translation>Reinițializarea conductorilor</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="353"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
         <source>Ajouter un champ de texte</source>
         <translation>Adaugă un câmp text</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="262"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="259"/>
         <source>Ajouter une colonne</source>
         <translation>Adaugă o coloană</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="354"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
         <source>Ajouter une image</source>
         <translation>Adaugă o imagine</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="263"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="260"/>
         <source>Enlever une colonne</source>
         <translation>Elimină o coloană</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="261"/>
         <source>Ajouter une ligne</source>
         <translation>Adaugă un rând</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="265"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="262"/>
         <source>Enlever une ligne</source>
         <translation>Elimină un rând</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
         <source>Propriétés du projet</source>
         <translation>Proprietățile proiectului</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="225"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
         <source>Nettoyer le projet</source>
         <translation>Curăță proiectul</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="226"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="223"/>
         <source>Ajouter un sommaire</source>
         <translation>Adaugă un rezumat</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="322"/>
         <source>Zoom avant</source>
         <translation>Mărește zoom</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
         <source>Zoom arrière</source>
         <translation>Scade zoom</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="327"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="324"/>
         <source>Zoom sur le contenu</source>
         <translation>Focalizare pe conținut</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="328"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
         <source>Zoom adapté</source>
         <translation>Potrivește zoom</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="329"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
         <source>Pas de zoom</source>
         <translation>Fără zoom</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="225"/>
         <source>en utilisant des onglets</source>
         <translation>utilizând file</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="226"/>
         <source>en utilisant des fenêtres</source>
         <translation>utilizând ferestre</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Mode Selection</source>
         <translation>Mod Selectare</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Mode Visualisation</source>
         <translation>Mod Vizualizare</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>&amp;Mosaïque</source>
         <translation>&amp;Mozaic</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="233"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
         <source>&amp;Cascade</source>
         <translation>&amp;Cascadă</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="234"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
         <source>Projet suivant</source>
         <translation>Proiectul următor</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="235"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
         <source>Projet précédent</source>
         <translation>Proiectul anterior</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
         <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
         <source>Agrandit le folio</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="339"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Rétrécit le folio</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="340"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="341"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
         <source>Adapte le zoom exactement sur le cadre du folio</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="356"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="353"/>
         <source>Ajouter un rectangle</source>
         <translation type="unfinished">Adaugă un dreptunghi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="357"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="354"/>
         <source>Ajouter une ellipse</source>
         <translation type="unfinished">Adaugă o elipsă</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="358"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="355"/>
         <source>Ajouter une polyligne</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="370"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="367"/>
         <source>Ctrl+Shift+X</source>
         <translation>Ctrl+Shift+X</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="372"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
         <source>Ctrl+Shift+A</source>
         <translation>Ctrl+Shift+A</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="311"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="287"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="284"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="287"/>
         <source>Space</source>
         <translation>Spațiu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="291"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="288"/>
         <source>Ctrl+Space</source>
         <translation>Ctrl+Spațiu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
         <source>Ctrl+K</source>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="379"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="376"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="331"/>
         <source>Ctrl+8</source>
         <translation>Ctrl+8</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="332"/>
         <source>Ctrl+9</source>
         <translation>Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="333"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
         <translation>Găsește în panou elementul selectat</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="660"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="681"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="657"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="678"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
         <translation>Proiect %1 înregistrat în director: %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="735"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="732"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="820"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="835"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="817"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="832"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Nu se poate deschide fișierul</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="822"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="819"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Se pare că fișierul %1 pe care încercați să-l deschideți nu există sau nu mai există.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="849"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="846"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Deschide proiectul numai pentru citire</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1479"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1476"/>
         <source>Active le projet « %1 »</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2074"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2071"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Eroare</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="387"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="384"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Închide aplicația QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="388"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="385"/>
         <source>Annule l&apos;action précédente</source>
         <comment>status bar tip</comment>
         <translation>Anlează acțiunea precedentă</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="389"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="386"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
         <translation>Refă acțiunea anulată</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="390"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="387"/>
         <source>Transfère les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Transferă elementele selectate în memoria tampon</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="391"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="388"/>
         <source>Copie les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Copiază elementele selectate în memoria tampon</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="318"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
         <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Deselectează elementele selectate și selectează-le pe cele neselectate</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="393"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="390"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
         <translation>Recalculează calea conductorilor, ignorând modificările</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="297"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="294"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Rotește elementele și textele selectate</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Éditer l&apos;item sélectionné</source>
         <translation>Editează elementul selectat</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="294"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="291"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="295"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
         <translation>Rotește textele selectate la un unghi specificat</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="207"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="204"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
         <translation>Creează automat conductor(i)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="205"/>
         <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
         <comment>Status tip of auto conductor</comment>
         <translation>Utilizează crearea automată a conductorilor când este posibil</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="224"/>
         <source>Exporter une nomenclature</source>
         <translation>Exportă o listă de componente</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="342"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="339"/>
         <source>Restaure le zoom par défaut</source>
         <comment>status bar tip</comment>
         <translation>Revenino la factorul de zoom implicit</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="355"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="352"/>
         <source>Ajouter une ligne droite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="396"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="393"/>
         <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
         <comment>status bar tip</comment>
         <translation>Prezentați diferitele proiecte deschise în ferestre</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="397"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="394"/>
         <source>Présente les différents projets ouverts des onglets</source>
         <comment>status bar tip</comment>
         <translation>Prezentați diferitele proiecte deschise în file</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="399"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="396"/>
         <source>Permet de sélectionner les éléments</source>
         <comment>status bar tip</comment>
         <translation>Permite selectarea elementelor</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="402"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="399"/>
         <source>Dispose les fenêtres en mosaïque</source>
         <comment>status bar tip</comment>
         <translation>Dispune ferestrele în mozaic</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="403"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="400"/>
         <source>Dispose les fenêtres en cascade</source>
         <comment>status bar tip</comment>
         <translation>Dispune ferestrele în cascadă</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="404"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="401"/>
         <source>Active le projet suivant</source>
         <comment>status bar tip</comment>
         <translation>Activează proiectul următor</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="405"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="402"/>
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
         <translation>Activează proiectul anterior</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="504"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
         <source>&amp;Fichier</source>
         <translation>&amp;Fișier</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="505"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="502"/>
         <source>&amp;Édition</source>
         <translation>&amp;Editare</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="506"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="503"/>
         <source>&amp;Projet</source>
         <translation>&amp;Proiect</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="507"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="504"/>
         <source>Afficha&amp;ge</source>
         <translation>Afișa&amp;re</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="509"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="506"/>
         <source>Fe&amp;nêtres</source>
         <translation>Feres&amp;tre</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="518"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>&amp;Récemment ouverts</source>
         <translation>Deschise &amp;recent</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="556"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Afișează sau nu bara de unelte principală</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="557"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="554"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
         <translation>Afișează sau nu bara de unelte Vizualizare</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="558"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="555"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
         <translation>Afișează sau nu bara de unelte Schemă</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="559"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="556"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
         <translation>Afișează sau nu panoul de aparate</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="560"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="557"/>
         <source>Affiche ou non la liste des modifications</source>
         <translation>Afișează sau nu lista modificărilor</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="563"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="560"/>
         <source>Afficher les projets</source>
         <translation>Afișează proiectele</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="454"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="451"/>
         <source>Outils</source>
         <translation>Unelte</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="385"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="382"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="386"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="383"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="392"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="389"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="394"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="391"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="400"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="397"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="457"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="454"/>
         <source>Affichage</source>
         <translation>Vizualizare</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="457"/>
         <source>Schéma</source>
         <translation>Schemă</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="488"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="485"/>
         <source>Ajouter</source>
         <translation>Adaugă</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="733"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="730"/>
         <source>Ouvrir un fichier</source>
         <translation>Deschide un fișier</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="836"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="833"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Se pare că fișierul pe care încercați să-l deschideți nu este accesibil pentru citire. Este, în consecință, imposiibil de deschis. Verificați permisiunile asupra fișierului.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="850"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="847"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Se pare că proiectul pe care încercați să-l deschideți nu este accesibil pentru scriere. Va fi deschis numai pentru citire.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="863"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="860"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Nu se poate deschide proiectul</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="865"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="862"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>Se pare că fișierul %1 nu este un proiect QElectroTech. În consecință, nu a putut fi deschis.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1285"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1282"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Editare element</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1291"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1288"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Editare câmp text</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1297"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1294"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Editare imagine</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1303"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1300"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1310"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1307"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Editează obiectele selectate</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2009"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2006"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Imposibil de găsit acest element din panou, se pare că este editat în altă fereastră</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2015"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2012"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Imposibil de găsit acest element din panou... se reîmprospătează panoul...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2027"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2024"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Imposibil de găsit acest element din panou</translation>
     </message>
@@ -5139,24 +5147,24 @@ condițiile nu sunt valide</translation>
         <translation>%1 [modificat]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="787"/>
+        <location filename="../sources/qetproject.cpp" line="784"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Nu s-a putut crea o categorie dedicată pentru integrarea elementelor</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="798"/>
+        <location filename="../sources/qetproject.cpp" line="795"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>Nu se poate accesa elementul pentru a fi integrat</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1123"/>
+        <location filename="../sources/qetproject.cpp" line="1120"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>Acest document apare că a fost salvat cu o nouă versiune de QElectroTech. Tot sau o parte din el poate eșua la deschidere. Ce doriți să faceți ?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="815"/>
+        <location filename="../sources/qetproject.cpp" line="812"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>A intervenit o eroare în timpul copierii categoriei %1</translation>
     </message>
@@ -5167,29 +5175,29 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="890"/>
+        <location filename="../sources/qetproject.cpp" line="887"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>A intervenit o eroare în timpul introducerii modelului.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1011"/>
+        <location filename="../sources/qetproject.cpp" line="1008"/>
         <source>Liste des Folios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1122"/>
+        <location filename="../sources/qetproject.cpp" line="1119"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Avertisment</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1184"/>
+        <location filename="../sources/qetproject.cpp" line="1181"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
         <translation>&lt;b&gt;Se deschide proiectul... &lt;/ b&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1605"/>
+        <location filename="../sources/qetproject.cpp" line="1602"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>A intervenit o eroare în timpul copierii elementului %1</translation>
     </message>
@@ -5556,104 +5564,81 @@ Que désirez vous faire ?</source>
         <translation>Atenție : elementul  a fost salvat cu o versiune mai nouă de QElectroTech.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="38"/>
+        <location filename="../sources/diagramcommands.cpp" line="37"/>
         <source>un champ texte</source>
         <translation>un câmp text</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="43"/>
+        <location filename="../sources/diagramcommands.cpp" line="42"/>
         <source>un conducteur</source>
         <translation>un conductor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="63"/>
+        <location filename="../sources/diagramcommands.cpp" line="62"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation>șterge %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="177"/>
+        <location filename="../sources/diagramcommands.cpp" line="141"/>
         <source>coller %1</source>
         <comment>undo caption - %1 is a sentence listing the content to paste</comment>
         <translation>lipește %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="274"/>
+        <location filename="../sources/diagramcommands.cpp" line="226"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
         <translation>taie %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="318"/>
-        <location filename="../sources/diagramcommands.cpp" line="434"/>
-        <location filename="../sources/diagramcommands.cpp" line="548"/>
+        <location filename="../sources/diagramcommands.cpp" line="270"/>
+        <location filename="../sources/diagramcommands.cpp" line="441"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>mută %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="569"/>
+        <location filename="../sources/diagramcommands.cpp" line="462"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
         <translation>modifică textul</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="617"/>
+        <location filename="../sources/diagramcommands.cpp" line="510"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
         <translation>rotește %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="735"/>
+        <location filename="../sources/diagramcommands.cpp" line="628"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
         <translation>rotește %1 la %2°</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="759"/>
+        <location filename="../sources/diagramcommands.cpp" line="652"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation>modifică un conductor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="816"/>
+        <location filename="../sources/diagramcommands.cpp" line="709"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>Resetează %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="864"/>
+        <location filename="../sources/diagramcommands.cpp" line="757"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
         <translation>modificare cartuș</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="897"/>
+        <location filename="../sources/diagramcommands.cpp" line="790"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="926"/>
-        <source>modifier les propriétés d&apos;un conducteur</source>
-        <comment>undo caption</comment>
-        <translation>modifică proprietățile unui conductor</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="979"/>
-        <source>modifier les propriétés de plusieurs conducteurs</source>
-        <comment>undo caption</comment>
-        <translation>modifică proprietățile mai multor conductoare</translation>
-    </message>
-    <message>
-        <location filename="../sources/undocommand/itemresizercommand.cpp" line="84"/>
-        <source>Agrandire %1 à %2 %</source>
-        <translation>Extinde %1 la %2 %</translation>
-    </message>
-    <message>
-        <location filename="../sources/undocommand/itemresizercommand.cpp" line="85"/>
-        <source>Réduire %1 à %2 %</source>
-        <translation>Redu %1 la %2 %</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -5685,108 +5670,96 @@ Que désirez vous faire ?</source>
         <translation>introdu %1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="322"/>
-        <source>modification %1</source>
-        <comment>undo caption</comment>
-        <translation>modifică %1</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="365"/>
-        <source>modification points polygone</source>
-        <comment>undo caption</comment>
-        <translation>modifică punctele poligonului</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="399"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="318"/>
         <source>modification noms</source>
         <comment>undo caption</comment>
         <translation>modifică numele</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="441"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="360"/>
         <source>amener au premier plan</source>
         <comment>undo caption</comment>
         <translation>adu în prim plan</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="444"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="363"/>
         <source>rapprocher</source>
         <comment>undo caption</comment>
         <translation>crește</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="447"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="366"/>
         <source>éloigner</source>
         <comment>undo caption</comment>
         <translation>micșorează</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="450"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="369"/>
         <source>envoyer au fond</source>
         <comment>undo caption</comment>
         <translation>trimite în spate</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="550"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="469"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
         <translation>modifică informațiile complementare</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="664"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="583"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
         <translation>redimensionează %1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="666"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="585"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
         <translation>redimensionează %1 primitive</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="682"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="601"/>
         <source>Modifier les propriétés</source>
         <translation>Editare proprietăți</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partarc.h" line="50"/>
+        <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
         <source>arc</source>
         <comment>element part name</comment>
         <translation>arc</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partellipse.h" line="51"/>
+        <location filename="../sources/editor/graphicspart/partellipse.h" line="54"/>
         <source>ellipse</source>
         <comment>element part name</comment>
         <translation>elipsă</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partline.h" line="65"/>
+        <location filename="../sources/editor/graphicspart/partline.h" line="71"/>
         <source>ligne</source>
         <comment>element part name</comment>
         <translation>linie</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.h" line="53"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.h" line="62"/>
         <source>polygone</source>
         <comment>element part name</comment>
         <translation>poligon</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partrectangle.h" line="53"/>
+        <location filename="../sources/editor/graphicspart/partrectangle.h" line="57"/>
         <source>rectangle</source>
         <comment>element part name</comment>
         <translation>dreptunghi</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partterminal.h" line="53"/>
+        <location filename="../sources/editor/graphicspart/partterminal.h" line="56"/>
         <source>borne</source>
         <comment>element part name</comment>
         <translation>bornă</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="50"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="45"/>
         <source>T</source>
         <comment>default text when adding a text in the element editor</comment>
         <translation>T</translation>
@@ -5798,7 +5771,7 @@ Que désirez vous faire ?</source>
         <translation>text</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="47"/>
+        <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="44"/>
         <source>_</source>
         <comment>default text when adding a textfield in the element editor</comment>
         <translation>_</translation>
@@ -5920,7 +5893,7 @@ Que désirez vous faire ?</source>
         <translation>Fișierul text conținând licența GNU/GPL există dar nu poate fi deschis - oricum, îl cunoașteți pe dinafară, nu este așa ?</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="644"/>
+        <location filename="../sources/qet.cpp" line="622"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Nu se poate deschide fișierul %1 cu drept de scriere, a intervenit o eroare %2.</translation>
@@ -6024,55 +5997,55 @@ Que désirez vous faire ?</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="120"/>
+        <location filename="../sources/titleblockcell.cpp" line="110"/>
         <source>type</source>
         <comment>title block cell property human name</comment>
         <translation>tip</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="122"/>
+        <location filename="../sources/titleblockcell.cpp" line="112"/>
         <source>nom</source>
         <comment>title block cell property human name</comment>
         <translation>nume</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="124"/>
+        <location filename="../sources/titleblockcell.cpp" line="114"/>
         <source>logo</source>
         <comment>title block cell property human name</comment>
         <translation>logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="126"/>
+        <location filename="../sources/titleblockcell.cpp" line="116"/>
         <source>label</source>
         <comment>title block cell property human name</comment>
         <translation>etichetă</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="128"/>
+        <location filename="../sources/titleblockcell.cpp" line="118"/>
         <source>affichage du label</source>
         <comment>title block cell property human name</comment>
         <translation>afișează eticheta</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="130"/>
+        <location filename="../sources/titleblockcell.cpp" line="120"/>
         <source>valeur affichée</source>
         <comment>title block cell property human name</comment>
         <translation>afișează valoarea</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="132"/>
+        <location filename="../sources/titleblockcell.cpp" line="122"/>
         <source>alignement du texte</source>
         <comment>title block cell property human name</comment>
         <translation>aliniament text</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="134"/>
+        <location filename="../sources/titleblockcell.cpp" line="124"/>
         <source>taille du texte</source>
         <comment>title block cell property human name</comment>
         <translation>dimensiune text</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="136"/>
+        <location filename="../sources/titleblockcell.cpp" line="126"/>
         <source>ajustement horizontal</source>
         <comment>title block cell property human name</comment>
         <translation>ajustare orizontală</translation>
@@ -6124,7 +6097,7 @@ Que désirez vous faire ?</source>
         <translation>Nu se poate încărca imaginea.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.h" line="52"/>
+        <location filename="../sources/diagramcommands.h" line="51"/>
         <source>Ajouter </source>
         <translation>Adaugă </translation>
     </message>
@@ -6139,12 +6112,12 @@ Que désirez vous faire ?</source>
         <translation>Elipsă</translation>
     </message>
     <message>
-        <location filename="../sources/editor/esevent/eseventaddline.cpp" line="68"/>
+        <location filename="../sources/editor/esevent/eseventaddline.cpp" line="67"/>
         <source>ligne</source>
         <translation>linie</translation>
     </message>
     <message>
-        <location filename="../sources/editor/esevent/eseventaddpolygon.cpp" line="110"/>
+        <location filename="../sources/editor/esevent/eseventaddpolygon.cpp" line="113"/>
         <source>Polygone</source>
         <translation>Poligon</translation>
     </message>
@@ -6180,8 +6153,25 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/changeshapestylecommand.cpp" line="36"/>
-        <source>Changer le style d&apos;une primitive</source>
+        <location filename="../sources/conductorautonumerotation.cpp" line="94"/>
+        <source>Modifier les propriétés d&apos;un conducteur</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorautonumerotation.cpp" line="98"/>
+        <source>Modifier les propriétés de plusieurs conducteurs</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="115"/>
+        <source>Déplacer un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="116"/>
+        <source>Déplacer %1 textes d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6203,27 +6193,32 @@ Que désirez vous faire ?</source>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="386"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="573"/>
         <source>une shape</source>
         <translation>o formă</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="374"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="569"/>
         <source>une ligne</source>
         <translation>o linie</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="377"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="439"/>
+        <source>Modifier %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="570"/>
         <source>un rectangle</source>
         <translation>un dreptunghi</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="380"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="571"/>
         <source>une éllipse</source>
         <translation>o elipsă</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="383"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="572"/>
         <source>une polyligne</source>
         <translation>o linie multiplă</translation>
     </message>
@@ -6231,44 +6226,29 @@ Que désirez vous faire ?</source>
 <context>
     <name>RectangleEditor</name>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="47"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="50"/>
         <source>Coin supérieur gauche : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
         <source>Dimensions : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="53"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="56"/>
         <source>Largeur :</source>
         <translation type="unfinished">Lățime :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="58"/>
         <source>Hauteur :</source>
         <translation type="unfinished">Înălțime :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="119"/>
-        <source>abscisse</source>
-        <translation>abscisa</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="121"/>
-        <source>ordonnée</source>
-        <translation>ordonata</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="123"/>
-        <source>largeur</source>
-        <translation>lățime</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/rectangleeditor.cpp" line="125"/>
-        <source>hauteur</source>
-        <translation>înalțime</translation>
+        <location filename="../sources/editor/rectangleeditor.cpp" line="152"/>
+        <source>Modifier un rectangle</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6391,367 +6371,356 @@ The other fields are not used.</translation>
         <translation type="unfinished">Formular</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="22"/>
         <source>Type de trait</source>
         <translation type="unfinished">Tip de linie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="27"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="30"/>
         <source>Normal</source>
         <translation type="unfinished">Normal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="32"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="35"/>
         <source>Tiret</source>
         <translation type="unfinished">Liniat</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="37"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="40"/>
         <source>Pointillé</source>
         <translation type="unfinished">Punctat</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="42"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="45"/>
         <source>Traits et points</source>
         <translation type="unfinished">Puncte și linii</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="47"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="50"/>
         <source>Traits points points</source>
         <translation type="unfinished">Linii puncte puncte</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="58"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="60"/>
         <source>Verrouiller la position</source>
         <translation type="unfinished">Blochează poziția</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="65"/>
-        <source>Échelle</source>
-        <translation type="unfinished">Scală</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="130"/>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="132"/>
-        <source>une shape</source>
-        <translation type="unfinished">o formă</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="48"/>
         <source>Éditer les propriétés d&apos;une primitive </source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="107"/>
+        <source>Modifier le type de trait d&apos;une forme</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StyleEditor</name>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="33"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Noir</source>
         <comment>element part color</comment>
         <translation>Negru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="34"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="40"/>
         <source>Blanc</source>
         <comment>element part color</comment>
         <translation>Alb</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="35"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="41"/>
         <source>Vert</source>
         <comment>element part color</comment>
         <translation>Verde</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="36"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="42"/>
         <source>Rouge</source>
         <comment>element part color</comment>
         <translation>Roșu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="37"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="43"/>
         <source>Bleu</source>
         <comment>element part color</comment>
         <translation>Albastru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="38"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="44"/>
         <source>Gris</source>
         <comment>element part color</comment>
         <translation type="unfinished">Gri</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="39"/>
-        <source>Marron</source>
-        <comment>element part color</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="40"/>
-        <source>Jaune</source>
-        <comment>element part color</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="41"/>
-        <source>Cyan</source>
-        <comment>element part color</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="42"/>
-        <source>Magenta</source>
-        <comment>element part color</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="43"/>
-        <source>Gris clair</source>
-        <comment>element part color</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="44"/>
-        <source>Orange</source>
-        <comment>element part color</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
-        <source>Violet</source>
+        <source>Marron</source>
         <comment>element part color</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="46"/>
+        <source>Jaune</source>
+        <comment>element part color</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="47"/>
+        <source>Cyan</source>
+        <comment>element part color</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="48"/>
+        <source>Magenta</source>
+        <comment>element part color</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="49"/>
+        <source>Gris clair</source>
+        <comment>element part color</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
+        <source>Orange</source>
+        <comment>element part color</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <source>Violet</source>
+        <comment>element part color</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Aucun</source>
         <comment>element part color</comment>
         <translation type="unfinished">Nimic</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Normal</source>
         <comment>element part line style</comment>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
         <translation>Liniat</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
         <translation>Punctat</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="53"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
         <translation>Puncte și linii</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="64"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation>Nul</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="65"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>Subțire</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="61"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="67"/>
         <source>Forte</source>
         <comment>element part weight</comment>
         <translation>Puternic</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="62"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="68"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
         <translation>Înalt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="66"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="72"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>Nimic</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="67"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>Negru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="68"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>Alb</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="69"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="75"/>
         <source>Vert</source>
         <comment>element part filling</comment>
         <translation>Verde</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="76"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
         <translation>Roșu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="71"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="77"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
         <translation>Albastru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="72"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="78"/>
         <source>Gris</source>
         <comment>element part filling</comment>
         <translation type="unfinished">Gri</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="74"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Jaune</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="75"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Cyan</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="76"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Magenta</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="77"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Gris clair</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="78"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="84"/>
         <source>Orange</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="79"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="85"/>
         <source>Violet</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="80"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="86"/>
         <source>Lignes Horizontales</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="81"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="87"/>
         <source>Lignes Verticales</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="82"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="88"/>
         <source>Hachures gauche</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="83"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="89"/>
         <source>Hachures droite</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="86"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="92"/>
         <source>Antialiasing</source>
         <translation>Antialiere</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="104"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="110"/>
         <source>Style : </source>
         <translation>Stil : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="107"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="113"/>
         <source>Épaisseur : </source>
         <translation>Grosime : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="99"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="105"/>
         <source>Remplissage :</source>
         <translation>Umplere :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="79"/>
         <source>Marron</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="93"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="99"/>
         <source>Apparence :</source>
         <translation>Aspect :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="96"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="102"/>
         <source>Contour :</source>
         <translation>Contur :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="114"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="120"/>
         <source>Géométrie :</source>
         <translation>Geometrie :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="139"/>
-        <location filename="../sources/editor/styleeditor.cpp" line="141"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="131"/>
         <source>style antialiasing</source>
         <translation>stil antialiere</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="148"/>
-        <location filename="../sources/editor/styleeditor.cpp" line="150"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>style couleur</source>
         <translation>culoare stil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="157"/>
-        <location filename="../sources/editor/styleeditor.cpp" line="159"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="141"/>
         <source>style ligne</source>
         <translation>stil linie</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="166"/>
-        <location filename="../sources/editor/styleeditor.cpp" line="168"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="146"/>
         <source>style epaisseur</source>
         <translation>stil grosime</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="175"/>
-        <location filename="../sources/editor/styleeditor.cpp" line="177"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="151"/>
         <source>style remplissage</source>
         <translation>stil umplere</translation>
     </message>
@@ -6759,230 +6728,212 @@ The other fields are not used.</translation>
 <context>
     <name>TerminalEditor</name>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="39"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="46"/>
         <source>Nord</source>
         <translation>Nord</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="40"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="47"/>
         <source>Est</source>
         <translation>Est</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="41"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="48"/>
         <source>Sud</source>
         <translation>Sud</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="42"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="49"/>
         <source>Ouest</source>
         <translation>Vest</translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="45"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="52"/>
         <source>Position : </source>
         <translation>Poziție : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="48"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
         <source>x : </source>
         <translation>x : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="50"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="57"/>
         <source>y : </source>
         <translation>y : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
+        <location filename="../sources/editor/terminaleditor.cpp" line="62"/>
         <source>Orientation : </source>
         <translation>Orientare : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="116"/>
-        <source>abscisse</source>
-        <translation>abscisa</translation>
+        <location filename="../sources/editor/terminaleditor.cpp" line="123"/>
+        <source>Modifier l&apos;orientation d&apos;une borne</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="118"/>
-        <source>ordonnée</source>
-        <translation>ordonata</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/terminaleditor.cpp" line="120"/>
-        <source>orientation</source>
-        <translation>orientare</translation>
+        <location filename="../sources/editor/terminaleditor.cpp" line="137"/>
+        <source>Déplacer une borne</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>TextEditor</name>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="442"/>
-        <location filename="../sources/editor/texteditor.cpp" line="140"/>
-        <source>contenu</source>
-        <translation>cuprins</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/texteditor.cpp" line="39"/>
+        <location filename="../sources/editor/texteditor.cpp" line="41"/>
         <source>Noir</source>
         <comment>element text part color</comment>
         <translation>Negru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="40"/>
+        <location filename="../sources/editor/texteditor.cpp" line="42"/>
         <source>Blanc</source>
         <comment>element text part color</comment>
         <translation>Alb</translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="45"/>
+        <location filename="../sources/editor/texteditor.cpp" line="47"/>
         <source>Angle de rotation : </source>
         <translation>Unghi de rotație : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="53"/>
+        <location filename="../sources/editor/texteditor.cpp" line="55"/>
         <source>Position : </source>
         <translation>Poziție : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="56"/>
+        <location filename="../sources/editor/texteditor.cpp" line="58"/>
         <source>x : </source>
         <translation>x : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="58"/>
+        <location filename="../sources/editor/texteditor.cpp" line="60"/>
         <source>y : </source>
         <translation>y : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="63"/>
+        <location filename="../sources/editor/texteditor.cpp" line="65"/>
         <source>Taille : </source>
         <translation>Dimensiune : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="68"/>
+        <location filename="../sources/editor/texteditor.cpp" line="70"/>
         <source>Couleur : </source>
         <translation>Culoare : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="75"/>
+        <location filename="../sources/editor/texteditor.cpp" line="77"/>
         <source>Texte : </source>
         <translation>Text : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="136"/>
-        <source>abscisse</source>
-        <translation>abscisa</translation>
+        <location filename="../sources/editor/texteditor.cpp" line="139"/>
+        <source>Modifier le contenu d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="138"/>
-        <source>ordonnée</source>
-        <translation>ordonata</translation>
+        <location filename="../sources/editor/texteditor.cpp" line="154"/>
+        <source>Modifier la taille d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="142"/>
-        <source>taille</source>
-        <translation>dimensiune</translation>
+        <location filename="../sources/editor/texteditor.cpp" line="170"/>
+        <source>Modifier la couleur d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="144"/>
-        <source>couleur</source>
-        <comment>undo caption</comment>
-        <translation>culoare</translation>
+        <location filename="../sources/editor/texteditor.cpp" line="184"/>
+        <source>Modifier l&apos;angle d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="146"/>
-        <source>angle de rotation</source>
-        <translation>unghi de rotație</translation>
+        <location filename="../sources/editor/texteditor.cpp" line="199"/>
+        <source>Déplacer un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>TextFieldEditor</name>
     <message>
-        <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="426"/>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="139"/>
-        <source>contenu</source>
-        <translation>cuprins</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="38"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="40"/>
         <source>Ne pas subir les rotations de l&apos;élément parent</source>
         <translation>Nu urma rotațiile elementului părinte</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="40"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="42"/>
         <source>Angle de rotation par défaut : </source>
         <translation>Unghi de rotație implicit : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="48"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="50"/>
         <source>Position : </source>
         <translation>Poziție : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="51"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="53"/>
         <source>x : </source>
         <translation>x : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="53"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="55"/>
         <source>y : </source>
         <translation>y : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="58"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="60"/>
         <source>Taille : </source>
         <translation>Dimensiune : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="63"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="65"/>
         <source>Texte par défaut : </source>
         <translation>Text implicit : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="69"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
         <source>tagg :</source>
         <translation>tagg :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="71"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="73"/>
         <source>Aucun</source>
         <translation>Nimic</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="72"/>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="74"/>
         <source>label</source>
         <translation>etichetă</translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
-        <source>abscisse</source>
-        <translation>abscisa</translation>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="136"/>
+        <source>Modifier le contenu d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="137"/>
-        <source>ordonnée</source>
-        <translation>ordonata</translation>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="151"/>
+        <source>Modifier la taille d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="141"/>
-        <source>taille</source>
-        <translation>dimensiune</translation>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="166"/>
+        <source>Modifier les propriétés d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="143"/>
-        <source>propriété</source>
-        <translation>proprietate</translation>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="181"/>
+        <source>Modifier l&apos;angle de rotation d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="145"/>
-        <source>angle de rotation</source>
-        <translation>unghi de rotație</translation>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="195"/>
+        <source>Modifier le tagg d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/textfieldeditor.cpp" line="146"/>
-        <source>tagg</source>
-        <translation>tagg</translation>
+        <location filename="../sources/editor/textfieldeditor.cpp" line="209"/>
+        <source>Déplacer un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7181,13 +7132,13 @@ asociind numele &quot;volta&quot; cu valoarea &quot;1745&quot; se va înlocui %{
 <context>
     <name>TitleBlockTemplate</name>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1366"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1351"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
         <translation> %1 : %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1368"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1353"/>
         <source> %1</source>
         <translation> %1</translation>
     </message>
