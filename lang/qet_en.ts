@@ -353,7 +353,7 @@ to all the conductors of this potential?</translation>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1428"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edit conductor properties</translation>
     </message>
 </context>
 <context>
@@ -372,13 +372,13 @@ to all the conductors of this potential?</translation>
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="71"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edit conductor properties</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="76"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edit the properties of several conductors</translation>
     </message>
 </context>
 <context>
@@ -562,7 +562,7 @@ to all the conductors of this potential?</translation>
     <message>
         <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="472"/>
         <source>Déplacer une primitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Move a primitive</translation>
     </message>
 </context>
 <context>
@@ -713,7 +713,7 @@ to all the conductors of this potential?</translation>
         <location filename="../sources/diagramview.cpp" line="928"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edit conductor properties</translation>
     </message>
 </context>
 <context>
@@ -2269,7 +2269,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="141"/>
         <source>Modifier la taille d&apos;une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Resizing an image</translation>
     </message>
 </context>
 <context>
@@ -2529,7 +2529,7 @@ Changes will be definitive.</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="223"/>
         <location filename="../sources/editor/lineeditor.cpp" line="239"/>
         <source>Modifier une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit a line</translation>
     </message>
 </context>
 <context>
@@ -2842,7 +2842,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partarc.cpp" line="214"/>
         <source>Modifier un arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit an arc</translation>
     </message>
 </context>
 <context>
@@ -2850,7 +2850,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="209"/>
         <source>Modifier une ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit an ellipse</translation>
     </message>
 </context>
 <context>
@@ -2858,7 +2858,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partline.cpp" line="160"/>
         <source>Modifier une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit a line</translation>
     </message>
 </context>
 <context>
@@ -2866,7 +2866,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="282"/>
         <source>Modifier un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Change a polygon</translation>
     </message>
 </context>
 <context>
@@ -2874,7 +2874,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.cpp" line="280"/>
         <source>Modifier un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Change a rectangle</translation>
     </message>
 </context>
 <context>
@@ -2882,7 +2882,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="433"/>
         <source>Modifier un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit the text field</translation>
     </message>
 </context>
 <context>
@@ -2890,7 +2890,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/parttextfield.cpp" line="425"/>
         <source>Modifier un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit the text field</translation>
     </message>
 </context>
 <context>
@@ -2919,7 +2919,7 @@ Changes will be definitive.</translation>
         <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
         <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
         <source>Modifier un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Change a polygon</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="70"/>
@@ -6159,23 +6159,23 @@ Que désirez vous faire ?</source>
         <location filename="../sources/conductorautonumerotation.cpp" line="94"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edit conductor properties</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="98"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edit the properties of several conductors</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="115"/>
         <source>Déplacer un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Move an item text</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="116"/>
         <source>Déplacer %1 textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Move %1 an item text</translation>
     </message>
 </context>
 <context>
@@ -6208,7 +6208,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="439"/>
         <source>Modifier %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="570"/>
@@ -6251,7 +6251,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="152"/>
         <source>Modifier un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Change a rectangle</translation>
     </message>
 </context>
 <context>
@@ -6417,7 +6417,7 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="107"/>
         <source>Modifier le type de trait d&apos;une forme</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the line style of a shape</translation>
     </message>
 </context>
 <context>
@@ -6774,12 +6774,12 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="123"/>
         <source>Modifier l&apos;orientation d&apos;une borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the orientation of a terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="137"/>
         <source>Déplacer une borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Move a terminal</translation>
     </message>
 </context>
 <context>
@@ -6834,27 +6834,27 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Modify the contents of a text field</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="154"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the size of a text field</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="170"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the color of a text field</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="184"/>
         <source>Modifier l&apos;angle d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the angle of a text field</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="199"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Move a text field</translation>
     </message>
 </context>
 <context>
@@ -6912,32 +6912,32 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="136"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Modify the contents of a text field</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="151"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the size of a text field</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="166"/>
         <source>Modifier les propriétés d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit the properties of a text field</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="181"/>
         <source>Modifier l&apos;angle de rotation d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the angle of rotation of a text field</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="195"/>
         <source>Modifier le tagg d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit the tag of a text field</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="209"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Move a text field</translation>
     </message>
 </context>
 <context>
