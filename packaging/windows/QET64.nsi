@@ -230,7 +230,7 @@ Section ""
 	CreateShortCut "$DESKTOP\QElectroTech.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
 	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Manual\Manual_English.url" "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/joshua/html/QET.html"
 	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Manual\Manual_Russian.url" "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/joshua/html/QET_ru.html"
-	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Upgrade\Download.url"      "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/builds/"
+	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Upgrade\Download.url"      "InternetShortcut" "URL" "http://download.tuxfamily.org/qet/builds/nightly/"
 	WriteINIStr "$SMPROGRAMS\${SOFT_NAME}\Donate.url"                "InternetShortcut" "URL" "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZZHC9D7C3MDPC"
 	
 	;changing $INSTDIR\elements\ *.elmt to read-only attribute
