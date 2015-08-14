@@ -216,6 +216,12 @@ Section ""
 	WriteRegDWORD HKEY_CLASSES_ROOT "qet_element_file"                                 "BrowserFlags" 0x00000008
 	WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file\DefaultIcon"                     ""             "$final_element_ico"
 	WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file\shell\open\command"              ""             "$\"$final_qet_exe$\" $\"%1$\""
+	WriteRegStr   HKEY_CLASSES_ROOT ".titleblock"                                      ""             "qet_titleblock_file"
+	WriteRegStr   HKEY_CLASSES_ROOT "qet_titleblock_file"                              ""             "Titleblock QET"
+	WriteRegDWORD HKEY_CLASSES_ROOT "qet_titleblock_file"                              "EditFlags"    0x00000000
+	WriteRegDWORD HKEY_CLASSES_ROOT "qet_titleblock_file"                              "BrowserFlags" 0x00000008
+	WriteRegStr   HKEY_CLASSES_ROOT "qet_titleblock_file\DefaultIcon"                  ""             "$final_titleblock_ico"
+	WriteRegStr   HKEY_CLASSES_ROOT "qet_titleblock_file\shell\open\command"           ""             "$\"$final_qet_exe$\" $\"%1$\""
 	
 	SetShellVarContext all ; all users
 	; shortcuts in the start menu
@@ -319,6 +325,8 @@ Section "Uninstall"
 	DeleteRegKey HKEY_CLASSES_ROOT "qet_diagram_file"
 	DeleteRegKey HKEY_CLASSES_ROOT ".elmt"
 	DeleteRegKey HKEY_CLASSES_ROOT "qet_element_file"
+	DeleteRegKey HKEY_CLASSES_ROOT ".titleblock"
+	DeleteRegKey HKEY_CLASSES_ROOT "qet_titleblock_file"
 	
 	IfFileExists "$INSTDIR" 0 NoErrorMsg
 	;MessageBox MB_OK "Note: $INSTDIR could not be removed!" IDOK 0 ; skipped if file doesn't exist
