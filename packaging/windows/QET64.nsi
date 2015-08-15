@@ -13,9 +13,7 @@
 	!define PROC 32 ; 
 !endif
 
-LangString wrongArch ${LANG_ENGLISH} "This distribution is for ${PROC} bits computers only."
-LangString wrongArch ${LANG_FRENCH} "Ce programme est pour Windows ${PROC} bits seulement."
-	
+
 ; MUI Settings
 ;--------------------------------
 ;General
@@ -284,8 +282,9 @@ Function .onInit
 
 ${If} ${RunningX64}
 ${Else}
-    MessageBox MB_OK|MB_ICONSTOP $(wrongArch)
-	Abort $(wrongArch)
+    MessageBox MB_OK|MB_ICONSTOP \
+    "This version is only for Windows 64 bits computers."
+	Abort 
 ${EndIf}
 	!insertmacro MUI_LANGDLL_DISPLAY
 
