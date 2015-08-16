@@ -1,0 +1,14 @@
+	LangString wrongArch ${LANG_ENGLISH} "This distribution is for 64 bits computers only."
+	LangString wrongArch ${LANG_FRENCH}  "Ce programme est pour Windows 64 bits seulement."
+
+
+
+
+
+
+
+
+
+
+	LangString installed ${LANG_ENGLISH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
+	LangString installed ${LANG_FRENCH}  "${SOFT_NAME} est deja installé. $\n$\nCliquer sur `OK` pour desinstaller l'ancienne version `Annuler` pour annuler cet upgrade." 

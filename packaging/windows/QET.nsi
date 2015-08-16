@@ -6,7 +6,6 @@
 ;--------------------------------
 ;Include Modern UI
 	
-	;!include "UMUI.nsh"
 	!include "MUI2.nsh"
 	!include "FileFunc.nsh"
 	!insertmacro Locate
@@ -143,6 +142,9 @@
 	!insertmacro MUI_LANGUAGE "Estonian"
 
 	!insertmacro MUI_RESERVEFILE_LANGDLL
+	
+	LangString installed ${LANG_ENGLISH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
+	LangString installed ${LANG_FRENCH}  "${SOFT_NAME} est deja installé. $\n$\nCliquer sur `OK` pour desinstaller l'ancienne version `Annuler` pour annuler cet upgrade." 
 ;--------------------------------
 
 	
@@ -170,7 +172,7 @@ SetOutPath "$INSTDIR"
 File /r "./files/conf"
 
 SectionEnd
-	
+
 SetOverwrite on
 Section "Elements" SEC01
   SetOutPath "$INSTDIR"
@@ -280,18 +282,18 @@ Function .onInit
   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SOFT_NAME}" \
   "UninstallString"
   StrCmp $R0 "" done
- 
-  MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION \
-  "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the \
-  previous version or `Cancel` to cancel this upgrade." \
+
+MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION \
+  "$(installed)" \
   IDOK uninst
   Abort
- 
+
+
 ;Run the uninstaller
 uninst:
   ClearErrors
   ExecWait '$R0 _?=$INSTDIR' ;Do not copy the uninstaller to a temp file
- 
+
   IfErrors no_remove_uninstaller done
     ;You can either use Delete /REBOOTOK in the uninstaller or add some code
     ;here to remove the uninstaller. Use a registry key to check
@@ -312,7 +314,7 @@ FunctionEnd
 	;!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
 	;!insertmacro MUI_DESCRIPTION_TEXT ${CopyFiles} "CopyFiles"
 	;!insertmacro MUI_FUNCTION_DESCRIPTION_END
- 
+
 ;--------------------------------
 ;Uninstaller Section
 
@@ -351,5 +353,5 @@ SectionEnd
 Function un.onInit
 
 	!insertmacro MUI_UNGETLANGUAGE
-  
+
 FunctionEnd

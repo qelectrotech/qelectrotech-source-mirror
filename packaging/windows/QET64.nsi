@@ -9,11 +9,17 @@
 	!include "MUI2.nsh"
 	!include "FileFunc.nsh"
 	!insertmacro Locate
+	!include FileFunc.nsh
+	!insertmacro GetParameters
+	!insertmacro GetOptions
+	
+	
 !ifndef PROC
 	!define PROC 32 ; 
 !endif
 
 
+	
 ; MUI Settings
 ;--------------------------------
 ;General
@@ -139,8 +145,14 @@
 	!insertmacro MUI_LANGUAGE "Bosnian"
 	!insertmacro MUI_LANGUAGE "Mongolian"
 	!insertmacro MUI_LANGUAGE "Estonian"
-
 	!insertmacro MUI_RESERVEFILE_LANGDLL
+	
+	LangString wrongArch ${LANG_ENGLISH} "This distribution is for 64 bits computers only."
+	LangString wrongArch ${LANG_FRENCH}  "Ce programme est pour Windows 64 bits seulement."
+
+	LangString installed ${LANG_ENGLISH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
+	LangString installed ${LANG_FRENCH}  "${SOFT_NAME} est deja installé. $\n$\nCliquer sur `OK` pour desinstaller l'ancienne version `Annuler` pour annuler cet upgrade." 
+
 ;--------------------------------
 ;Components
 
@@ -166,9 +178,8 @@ File /r "./files/ico"
 
 SetOutPath "$INSTDIR"
 File /r "./files/conf"
-
 SectionEnd
-	
+
 SetOverwrite on
 Section "Elements" SEC01
   SetOutPath "$INSTDIR"
@@ -279,41 +290,40 @@ FunctionEnd
 ;Installer Functions
 
 Function .onInit
+ !insertmacro MUI_LANGDLL_DISPLAY
 
 ${If} ${RunningX64}
 ${Else}
-    MessageBox MB_OK|MB_ICONSTOP \
-    "This version is only for Windows 64 bits computers."
-	Abort 
+
+    MessageBox MB_OK|MB_ICONSTOP $(wrongArch)
+	Abort $(wrongArch)
 ${EndIf}
-	!insertmacro MUI_LANGDLL_DISPLAY
 
 ;Auto-uninstall old before installing new
   ReadRegStr $R0 HKLM \
   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SOFT_NAME}" \
   "UninstallString"
   StrCmp $R0 "" done
- 
-  MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION \
-  "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the \
-  previous version or `Cancel` to cancel this upgrade." \
+
+ MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION \
+  "$(installed)" \
   IDOK uninst
   Abort
- 
+
 ;Run the uninstaller
 uninst:
   ClearErrors
   ExecWait '$R0 _?=$INSTDIR' ;Do not copy the uninstaller to a temp file
- 
+
   IfErrors no_remove_uninstaller done
     ;You can either use Delete /REBOOTOK in the uninstaller or add some code
     ;here to remove the uninstaller. Use a registry key to check
     ;whether the user has chosen to uninstall. If you are using an uninstaller
     ;components page, make sure all sections are uninstalled.
   no_remove_uninstaller:
- 
+
 done:
-	
+
 FunctionEnd
 
 ;--------------------------------
@@ -364,7 +374,7 @@ SectionEnd
 Function un.onInit
 
 	!insertmacro MUI_UNGETLANGUAGE
-  
+
 FunctionEnd
 
 
