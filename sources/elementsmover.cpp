@@ -146,7 +146,6 @@ void ElementsMover::endMovement()
 			QPair <Terminal *, Terminal *> pair = elmt -> AlignedFreeTerminals().takeFirst();
 
 			Conductor *conductor = new Conductor(pair.first, pair.second);
-			conductor -> setProperties(diagram_ -> defaultConductorProperties);
 
 				//Create an undo object for each new auto conductor, with undo_object for parent if exist
 				//Else the first undo for this auto conductor become the undo_object
@@ -155,9 +154,31 @@ void ElementsMover::endMovement()
 			else
 				undo_object = new AddItemCommand<Conductor *>(conductor, diagram_, QPointF());
 
-				//Autonum the new conductor, the undo command associated for this, have for parent undo_object
-			ConductorAutoNumerotation can  (conductor, diagram_, undo_object);
-			can.numerate();
+				//Get all conductors at the same potential of conductor
+			QSet <Conductor *> conductors_list = conductor->relatedPotentialConductors();
+
+				//Compare the properties of every conductors stored in conductors_list,
+				//if every conductors properties is equal, we use this properties for conductor.
+			ConductorProperties others_properties;
+			bool use_properties = false;
+			if (!conductors_list.isEmpty())
+			{
+				use_properties = true;
+				others_properties = (*conductors_list.begin())->properties();
+				foreach (Conductor *cond, conductors_list)
+					if (cond->properties() != others_properties)
+						use_properties = false;
+			}
+
+			if (use_properties)
+				conductor->setProperties(others_properties);
+			else
+			{
+				conductor -> setProperties(diagram_ -> defaultConductorProperties);
+					//Autonum the new conductor, the undo command associated for this, have for parent undo_object
+				ConductorAutoNumerotation can  (conductor, diagram_, undo_object);
+				can.numerate();
+			}
 		};
 	}
 

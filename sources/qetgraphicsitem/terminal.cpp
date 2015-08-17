@@ -582,35 +582,59 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	previous_terminal_ = 0;
 	hovered_color_     = neutralColor;
 
-	if (Diagram *d = diagram())
+	if (!diagram()) return;
+
+		//Stop conductor preview
+	diagram() -> setConductor(false);
+
+		//Get item under cursor
+	QGraphicsItem *qgi = diagram() -> itemAt(e -> scenePos(), QTransform());
+	if (!qgi) return;
+
+		//Element must be a terminal
+	Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
+	if (!other_terminal) return;
+
+	other_terminal -> hovered_color_ = neutralColor;
+	other_terminal -> hovered_       = false;
+
+		//We stop her if we can't link this terminal with other terminal
+	if (!canBeLinkedTo(other_terminal)) return;
+
+		//Create conductor
+	Conductor *new_conductor = new Conductor(this, other_terminal);
+
+		//Get all conductors at the same potential of new conductors
+	QSet <Conductor *> conductors_list = new_conductor->relatedPotentialConductors();
+
+		//Compare the properties of every conductors stored in conductors_list,
+		//if every conductors properties is equal, we use this properties for the new conductor.
+	ConductorProperties others_properties;
+	bool use_properties = false;
+	if (!conductors_list.isEmpty())
 	{
-			//Stop conductor preview
-		d -> setConductor(false);
-
-			//Get item under cursor
-		QGraphicsItem *qgi = d -> itemAt(e -> scenePos(), QTransform());
-		if (!qgi) return;
-
-			//Element must be a terminal
-		Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
-		if (!other_terminal) return;
-
-		other_terminal -> hovered_color_ = neutralColor;
-		other_terminal -> hovered_       = false;
-
-			//We stop her if we can't link this terminal with other terminal
-		if (!canBeLinkedTo(other_terminal)) return;
-
-			//Create conductor
-		Conductor *new_conductor = new Conductor(this, other_terminal);
-		new_conductor -> setProperties(d -> defaultConductorProperties);
-		QUndoCommand *undo = new AddItemCommand<Conductor *>(new_conductor, d);
-			//Autonum it
-		ConductorAutoNumerotation can (new_conductor, d, undo);
-		can.numerate();
-			//Add undo command to the parent diagram
-		d -> undoStack().push(undo);
+		use_properties = true;
+		others_properties = (*conductors_list.begin())->properties();
+		foreach (Conductor *conductor, conductors_list)
+			if (conductor->properties() != others_properties)
+				use_properties = false;
 	}
+
+
+	QUndoCommand *undo = new AddItemCommand<Conductor *>(new_conductor, diagram());
+
+	if (use_properties)
+		new_conductor->setProperties(others_properties);
+	else
+	{
+		new_conductor -> setProperties(diagram() -> defaultConductorProperties);
+			//Autonum it
+		ConductorAutoNumerotation can (new_conductor, diagram(), undo);
+		can.numerate();
+	}
+
+		//Add undo command to the parent diagram
+	diagram() -> undoStack().push(undo);
 }
 
 /**
