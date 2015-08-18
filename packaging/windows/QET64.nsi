@@ -56,8 +56,7 @@
 	!define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\XPUI-install.ico"
 	!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\XPUI-uninstall.ico"
 	!define MUI_LICENSEPAGE_CHECKBOX
-	;!define MUI_ICON ".\images\npp_inst.ico"
-
+	
 	!define MUI_WELCOMEFINISHPAGE_BITMAP ".\images\wizard.bmp"
 	!define MUI_WELCOMEFINISHPAGE_BITMAP_NOSTRETCH
 
@@ -96,66 +95,26 @@
 	
 	; For consistency, we limit the installer to languages supported by QElectroTech itself
 	!insertmacro MUI_LANGUAGE "English" ;first language is the default language
-	!insertmacro MUI_LANGUAGE "French"
-	!insertmacro MUI_LANGUAGE "TradChinese"
-	!insertmacro MUI_LANGUAGE "Spanish"
-	!insertmacro MUI_LANGUAGE "Hungarian"
-	!insertmacro MUI_LANGUAGE "Russian"
-	!insertmacro MUI_LANGUAGE "German"
-	!insertmacro MUI_LANGUAGE "Dutch"
-	!insertmacro MUI_LANGUAGE "SimpChinese"
-	!insertmacro MUI_LANGUAGE "Italian"
-	!insertmacro MUI_LANGUAGE "Danish"
-	!insertmacro MUI_LANGUAGE "Polish"
-	!insertmacro MUI_LANGUAGE "Czech"
-	!insertmacro MUI_LANGUAGE "Slovenian"
-	!insertmacro MUI_LANGUAGE "Slovak"
-	!insertmacro MUI_LANGUAGE "Swedish"
-	!insertmacro MUI_LANGUAGE "Norwegian"
-	!insertmacro MUI_LANGUAGE "PortugueseBR"
-	!insertmacro MUI_LANGUAGE "Ukrainian"
-	!insertmacro MUI_LANGUAGE "Turkish"
-	!insertmacro MUI_LANGUAGE "Catalan"
-	!insertmacro MUI_LANGUAGE "Arabic"
-	!insertmacro MUI_LANGUAGE "Lithuanian"
-	!insertmacro MUI_LANGUAGE "Finnish"
-	!insertmacro MUI_LANGUAGE "Greek"
-	!insertmacro MUI_LANGUAGE "Romanian"
-	!insertmacro MUI_LANGUAGE "Korean"
-	!insertmacro MUI_LANGUAGE "Hebrew"
-	!insertmacro MUI_LANGUAGE "Portuguese"
-	!insertmacro MUI_LANGUAGE "Farsi"
-	!insertmacro MUI_LANGUAGE "Bulgarian"
-	!insertmacro MUI_LANGUAGE "Indonesian"
-	!insertmacro MUI_LANGUAGE "Japanese"
-	!insertmacro MUI_LANGUAGE "Croatian"
-	!insertmacro MUI_LANGUAGE "Serbian"
-	!insertmacro MUI_LANGUAGE "Thai"
-	!insertmacro MUI_LANGUAGE "NorwegianNynorsk"
-	!insertmacro MUI_LANGUAGE "Belarusian"
-	!insertmacro MUI_LANGUAGE "Albanian"
-	!insertmacro MUI_LANGUAGE "Malay"
-	!insertmacro MUI_LANGUAGE "Galician"
-	!insertmacro MUI_LANGUAGE "Basque"
-	!insertmacro MUI_LANGUAGE "Luxembourgish"
-	!insertmacro MUI_LANGUAGE "Afrikaans"
-	!insertmacro MUI_LANGUAGE "Uzbek"
-	!insertmacro MUI_LANGUAGE "Macedonian"
-	!insertmacro MUI_LANGUAGE "Latvian"
-	!insertmacro MUI_LANGUAGE "Bosnian"
-	!insertmacro MUI_LANGUAGE "Mongolian"
-	!insertmacro MUI_LANGUAGE "Estonian"
+        !insertmacro MUI_LANGUAGE "French"
+        !insertmacro MUI_LANGUAGE "Spanish"
+        !insertmacro MUI_LANGUAGE "Russian"
+        !insertmacro MUI_LANGUAGE "Portuguese"
+        !insertmacro MUI_LANGUAGE "Czech"
+        !insertmacro MUI_LANGUAGE "Polish"
+        !insertmacro MUI_LANGUAGE "Greek"
+        !insertmacro MUI_LANGUAGE "Arabic"
+        !insertmacro MUI_LANGUAGE "German"
+        !insertmacro MUI_LANGUAGE "Italian"
+        !insertmacro MUI_LANGUAGE "Romanian"
+        !insertmacro MUI_LANGUAGE "Catalan"
+        !insertmacro MUI_LANGUAGE "Croatian"
+        ;!insertmacro MUI_LANGUAGE "Nederland"
 	!insertmacro MUI_RESERVEFILE_LANGDLL
 	
-	LangString wrongArch ${LANG_ENGLISH} "This distribution is for 64 bits computers only."
-	LangString wrongArch ${LANG_FRENCH}  "Ce programme est pour Windows 64 bits seulement."
+	!include lang_extra.nsh
+	
 
-	LangString installed ${LANG_ENGLISH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
-	LangString installed ${LANG_FRENCH}  "${SOFT_NAME} est deja installé. $\n$\nCliquer sur `OK` pour desinstaller l'ancienne version `Annuler` pour annuler cet upgrade." 
-
-;--------------------------------
-;Components
-
+	
 SetOverwrite on	
 Section "Main Program"
 SectionIn RO ; Read only, always installed
@@ -178,33 +137,84 @@ File /r "./files/ico"
 
 SetOutPath "$INSTDIR"
 File /r "./files/conf"
+
 SectionEnd
 
 SetOverwrite on
-Section "Elements" SEC01
+SubSection "$(Elements)" 
+;---------------------------
+
+
+SetOverwrite on
+Section "$(Electric)" 
   SetOutPath "$INSTDIR"
-  ;SetOverwrite try
-  File /r "./files/elements"
+  File /r "./files/elements/10_electric"
 SectionEnd
 
 SetOverwrite on
-Section "Lang" SEC02
+Section "$(Logic)" 
+  SetOutPath "$INSTDIR"
+  File /r "./files/elements/20_logic"
+SectionEnd
+
+SetOverwrite on
+Section  "$(Hydraulic)" 
+  SetOutPath "$INSTDIR"
+  File /r "./files/elements/30_hydraulic"
+SectionEnd
+
+
+SetOverwrite on
+Section "$(Pneumatic)" 
+  SetOutPath "$INSTDIR"
+  File /r "./files/elements/50_pneumatic"
+SectionEnd
+
+
+;---------------------------------
+SubSection "$(Energy)" 
+
+SetOverwrite on
+Section  "$(water)" 
+  SetOutPath "$INSTDIR"
+  File /r "./files/elements/60_energy/11_water"
+SectionEnd
+
+SetOverwrite on
+Section  "$(Refrigeration)" 
+  SetOutPath "$INSTDIR"
+  File /r "./files/elements/60_energy/21_refrigeration"
+SectionEnd
+
+SetOverwrite on
+Section  "$(Solar_thermal)" 
+  SetOutPath "$INSTDIR"
+  File /r "./files/elements/60_energy/31_solar_thermal"
+SectionEnd
+
+SubSectionEnd 
+;-------------------------------
+
+SubSectionEnd 
+
+
+
+;---------------------------------
+SetOverwrite on
+Section "$(Lang)" SEC02
   SetOutPath "$INSTDIR\lang"
-  ;SetOverwrite try
   File "./files/lang/*.qm"
 SectionEnd
 
 SetOverwrite on
-Section "Titleblocks" SEC03
+Section "$(Titleblocks)" SEC03
   SetOutPath "$INSTDIR"
-  ;SetOverwrite try
   File /r "./files/titleblocks"
 SectionEnd
 
 SetOverwrite on
-Section "Examples" SEC04
+Section "$(Examples)" SEC04
   SetOutPath "$INSTDIR"
-  ;SetOverwrite try
   File /r "./files/examples"
 SectionEnd
 
