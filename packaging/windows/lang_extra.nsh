@@ -223,5 +223,19 @@
 	LangString Examples          ${LANG_CROATIAN}  "Examples"
 	
 	
+	LangString installed         ${LANG_DUTCH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
+	LangString wrongArch         ${LANG_DUTCH} "This distribution is for 64 bits computers only."
+	LangString Elements          ${LANG_DUTCH}  "Elements"
+	LangString Electric          ${LANG_DUTCH}  "Electric"
+	LangString Logic             ${LANG_DUTCH}  "Logic"
+	LangString Hydraulic         ${LANG_DUTCH}  "Hydraulic"
+	LangString Pneumatic         ${LANG_DUTCH}  "Pneumatic"
+	LangString Energy            ${LANG_DUTCH}  "Energy"
+	LangString water             ${LANG_DUTCH}  "Water"
+	LangString Refrigeration     ${LANG_DUTCH}  "Refrigeration"
+	LangString Solar_thermal     ${LANG_DUTCH}  "Solar_thermal"
+	LangString Lang              ${LANG_DUTCH}  "Lang"
+	LangString Titleblocks       ${LANG_DUTCH}  "Titleblocks"
+	LangString Examples          ${LANG_DUTCH}  "Examples"
 
 	
