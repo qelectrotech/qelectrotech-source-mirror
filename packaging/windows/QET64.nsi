@@ -73,6 +73,7 @@
 ;--------------------------------
 ;Pages
 
+	!define MUI_COMPONENTSPAGE_SMALLDESC
 	!insertmacro MUI_PAGE_WELCOME
 	!insertmacro MUI_PAGE_LICENSE "files\LICENSE"
 	!insertmacro MUI_PAGE_COMPONENTS
@@ -140,10 +141,9 @@ File /r "./files/conf"
 
 SectionEnd
 
+;---------------------------
 SetOverwrite on
 SubSection "$(Elements)" 
-;---------------------------
-
 
 SetOverwrite on
 Section "$(Electric)" 
@@ -170,7 +170,7 @@ Section "$(Pneumatic)"
   File /r "./files/elements/50_pneumatic"
 SectionEnd
 
-
+SubSectionEnd 
 ;---------------------------------
 SubSection "$(Energy)" 
 
@@ -195,11 +195,6 @@ SectionEnd
 SubSectionEnd 
 ;-------------------------------
 
-SubSectionEnd 
-
-
-
-;---------------------------------
 SetOverwrite on
 Section "$(Lang)" SEC02
   SetOutPath "$INSTDIR\lang"
@@ -218,11 +213,9 @@ Section "$(Examples)" SEC04
   File /r "./files/examples"
 SectionEnd
 
-
 ;--------------------------------
-;Installer Sections
 
-;--------------------------------
+
 ;Installer Sections
 
 Section ""

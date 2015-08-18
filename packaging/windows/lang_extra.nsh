@@ -42,7 +42,7 @@
 	LangString Solar_thermal     ${LANG_POLISH}  "Energia słoneczna"
 	LangString Lang              ${LANG_POLISH}  "Język"
 	LangString Titleblocks       ${LANG_POLISH}  "Tabliczki rysunkowe"
-	LangString Examples          ${LANG_FRENCH}  "Przykłady"
+	LangString Examples          ${LANG_POLISH}  "Przykłady"
 
 	LangString installed         ${LANG_GREEK} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
 	LangString wrongArch         ${LANG_GREEK} "This distribution is for 64 bits computers only."
