@@ -180,7 +180,7 @@ Section "$(Pneumatic)"
   File /r "./files/elements/50_pneumatic"
 SectionEnd
 
-SubSectionEnd 
+
 ;---------------------------------
 SubSection "$(Energy)" 
 
@@ -202,6 +202,7 @@ Section  "$(Solar_thermal)"
   File /r "./files/elements/60_energy/31_solar_thermal"
 SectionEnd
 
+SubSectionEnd 
 SubSectionEnd 
 ;-------------------------------
 
