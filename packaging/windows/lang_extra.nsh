@@ -12,9 +12,11 @@
 	LangString Lang              ${LANG_ENGLISH}  "Lang"
 	LangString Titleblocks       ${LANG_ENGLISH}  "Titleblocks"
 	LangString Examples          ${LANG_ENGLISH}  "Examples"
+	LangString Check             ${LANG_ENGLISH}  "Check to start ${SOFT_NAME}"
+	
 	
 	LangString wrongArch         ${LANG_FRENCH}  "Ce programme est pour Windows 64 bits seulement."
-	LangString installed         ${LANG_FRENCH}  "${SOFT_NAME} est deja installé. $\n$\nCliquer sur `OK` pour desinstaller l'ancienne version `Annuler` pour annuler cet upgrade."
+	LangString installed         ${LANG_FRENCH}  "${SOFT_NAME} est deja install�. $\n$\nCliquer sur `OK` pour desinstaller l'ancienne version `Annuler` pour annuler cet upgrade."
 	LangString Elements          ${LANG_FRENCH}  "Elements"
 	LangString Electric          ${LANG_FRENCH}  "Electrique"
 	LangString Logic             ${LANG_FRENCH}  "Logique"
@@ -27,10 +29,11 @@
 	LangString Lang              ${LANG_FRENCH}  "Langues"
 	LangString Titleblocks       ${LANG_FRENCH}  "Cartouches"
 	LangString Examples          ${LANG_FRENCH}  "Exemples"
+	LangString Check             ${LANG_FRENCH}  "Cocher pour lancer ${SOFT_NAME}"
 
 	
-	LangString installed         ${LANG_POLISH}  "${SOFT_NAME} jest już zainstalowany. $\n$\nKliknij `OK` aby odinstalować poprzednią wersję lub `Cancel` aby przerwać aktualizację."
-	LangString wrongArch         ${LANG_POLISH}  "To oprogramowanie jest przeznaczone wyłącznie dla komputerów 64 bitowych."
+	LangString installed         ${LANG_POLISH}  "${SOFT_NAME} jest ju? zainstalowany. $\n$\nKliknij `OK` aby odinstalowa? poprzedni? wersj? lub `Cancel` aby przerwa? aktualizacj?."
+	LangString wrongArch         ${LANG_POLISH}  "To oprogramowanie jest przeznaczone wy??cznie dla komputer�w 64 bitowych."
 	LangString Elements          ${LANG_POLISH}  "Elementy"
 	LangString Electric          ${LANG_POLISH}  "Elektryka"
 	LangString Logic             ${LANG_POLISH}  "Automatyka"
@@ -38,11 +41,12 @@
 	LangString Pneumatic         ${LANG_POLISH}  "Pneumatyka"
 	LangString Energy            ${LANG_POLISH}  "Energia"
 	LangString water             ${LANG_POLISH}  "Woda"
-	LangString Refrigeration     ${LANG_POLISH}  "Chłodnictwo"
-	LangString Solar_thermal     ${LANG_POLISH}  "Energia słoneczna"
-	LangString Lang              ${LANG_POLISH}  "Język"
+	LangString Refrigeration     ${LANG_POLISH}  "Ch?odnictwo"
+	LangString Solar_thermal     ${LANG_POLISH}  "Energia s?oneczna"
+	LangString Lang              ${LANG_POLISH}  "J?zyk"
 	LangString Titleblocks       ${LANG_POLISH}  "Tabliczki rysunkowe"
-	LangString Examples          ${LANG_POLISH}  "Przykłady"
+	LangString Examples          ${LANG_POLISH}  "Przyk?ady"
+	LangString Check             ${LANG_POLISH}  "Check to start ${SOFT_NAME}"
 
 	LangString installed         ${LANG_GREEK} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
 	LangString wrongArch         ${LANG_GREEK} "This distribution is for 64 bits computers only."
@@ -58,6 +62,7 @@
 	LangString Lang              ${LANG_GREEK}  "Lang"
 	LangString Titleblocks       ${LANG_GREEK}  "Titleblocks"
 	LangString Examples          ${LANG_GREEK}  "Examples"
+	LangString Check             ${LANG_GREEK}  "Check to start ${SOFT_NAME}"
 
 	
 	LangString installed         ${LANG_CZECH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -74,6 +79,7 @@
 	LangString Lang              ${LANG_CZECH}  "Lang"
 	LangString Titleblocks       ${LANG_CZECH}  "Titleblocks"
 	LangString Examples          ${LANG_CZECH}  "Examples"
+	LangString Check             ${LANG_CZECH}  "Check to start ${SOFT_NAME}"
 	
 	
 	
@@ -91,11 +97,12 @@
 	LangString Lang              ${LANG_SPANISH}  "Lang"
 	LangString Titleblocks       ${LANG_SPANISH}  "Titleblocks"
 	LangString Examples          ${LANG_SPANISH}  "Examples"
+	LangString Check             ${LANG_SPANISH}  "Check to start ${SOFT_NAME}"
 	
 	
 	
 	LangString installed         ${LANG_GERMAN} "${SOFT_NAME} ist bereits installiert. $\n$\nKlicken Sie auf `OK`, um die alte Version zu deinstallieren, oder auf `Abbrechen`, um das Upgrade abzubrechen." 
-	LangString wrongArch         ${LANG_GERMAN} "Dieses Programm läuft ausschließlich unter Windows 64 Bits."
+	LangString wrongArch         ${LANG_GERMAN} "Dieses Programm l�uft ausschlie�lich unter Windows 64 Bits."
 	LangString Elements          ${LANG_GERMAN}  "Bauteile"
 	LangString Electric          ${LANG_GERMAN}  "Elektrik"
 	LangString Logic             ${LANG_GERMAN}  "Logik"
@@ -103,11 +110,12 @@
 	LangString Pneumatic         ${LANG_GERMAN}  "Pneumatik"
 	LangString Energy            ${LANG_GERMAN}  "Energietechnik"
 	LangString water             ${LANG_GERMAN}  "Wasser"
-	LangString Refrigeration     ${LANG_GERMAN}  "Kältetechnik"
-	LangString Solar_thermal     ${LANG_GERMAN}  "Solar-Wärmetechnik"
+	LangString Refrigeration     ${LANG_GERMAN}  "K�ltetechnik"
+	LangString Solar_thermal     ${LANG_GERMAN}  "Solar-W�rmetechnik"
 	LangString Lang              ${LANG_GERMAN}  "Sprachen"
-	LangString Titleblocks       ${LANG_GERMAN}  "Zeichnungsköpfe"
+	LangString Titleblocks       ${LANG_GERMAN}  "Zeichnungsk�pfe"
 	LangString Examples          ${LANG_GERMAN}  "Beispiele"
+	LangString Check             ${LANG_GERMAN}  "Check to start ${SOFT_NAME}"
 	
 	
 	LangString installed         ${LANG_RUSSIAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -124,6 +132,7 @@
 	LangString Lang              ${LANG_RUSSIAN}  "Lang"
 	LangString Titleblocks       ${LANG_RUSSIAN}  "Titleblocks"
 	LangString Examples          ${LANG_RUSSIAN}  "Examples"
+	LangString Check             ${LANG_RUSSIAN}  "Check to start ${SOFT_NAME}"
 	
 	
 	LangString installed         ${LANG_ARABIC} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -140,6 +149,7 @@
 	LangString Lang              ${LANG_ARABIC}  "Lang"
 	LangString Titleblocks       ${LANG_ARABIC}  "Titleblocks"
 	LangString Examples          ${LANG_ARABIC}  "Examples"
+	LangString Check             ${LANG_ARABIC}  "Check to start ${SOFT_NAME}"
 	
 	
 	LangString installed         ${LANG_CATALAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -156,10 +166,11 @@
 	LangString Lang              ${LANG_CATALAN}  "Lang"
 	LangString Titleblocks       ${LANG_CATALAN}  "Titleblocks"
 	LangString Examples          ${LANG_CATALAN}  "Examples"
+	LangString Check             ${LANG_CATALAN}  "Check to start ${SOFT_NAME}"
 	
 	
-	LangString installed         ${LANG_ITALIAN} "${SOFT_NAME} è già installato. $\n$\nFare click su `OK` per rimuovere la versione precedente o su `Cancel` per annullare questo aggiornamento." 
-	LangString wrongArch         ${LANG_ITALIAN} "Questa distribuzione è riservata ai sistemi a 64 bit."
+	LangString installed         ${LANG_ITALIAN} "${SOFT_NAME} � gi� installato. $\n$\nFare click su `OK` per rimuovere la versione precedente o su `Cancel` per annullare questo aggiornamento." 
+	LangString wrongArch         ${LANG_ITALIAN} "Questa distribuzione � riservata ai sistemi a 64 bit."
 	LangString Elements          ${LANG_ITALIAN}  "Elementi"
 	LangString Electric          ${LANG_ITALIAN}  "Electrica"
 	LangString Logic             ${LANG_ITALIAN}  "Logica"
@@ -171,8 +182,8 @@
 	LangString Solar_thermal     ${LANG_ITALIAN}  "Solare_termico"
 	LangString Lang              ${LANG_ITALIAN}  "Lingua"
 	LangString Titleblocks       ${LANG_ITALIAN}  "Cartigli"
-	LangString Examples          ${LANG_ITALIAN}  "Esempi"
-	
+	LangString Examples          ${LANG_ITALIAN}  "Esempi"	
+	LangString Check             ${LANG_ITALIAN}  "Check to start ${SOFT_NAME}"
 	
 	
 	LangString installed         ${LANG_PORTUGUESE} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -189,6 +200,7 @@
 	LangString Lang              ${LANG_PORTUGUESE}  "Lang"
 	LangString Titleblocks       ${LANG_PORTUGUESE}  "Titleblocks"
 	LangString Examples          ${LANG_PORTUGUESE}  "Examples"
+	LangString Check             ${LANG_PORTUGUESE}  "Check to start ${SOFT_NAME}"
 	
 	
 	LangString installed         ${LANG_ROMANIAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -205,6 +217,7 @@
 	LangString Lang              ${LANG_ROMANIAN}  "Lang"
 	LangString Titleblocks       ${LANG_ROMANIAN}  "Titleblocks"
 	LangString Examples          ${LANG_ROMANIAN}  "Examples"
+	LangString Check             ${LANG_ROMANIAN}  "Check to start ${SOFT_NAME}"
 	
 	
 	LangString installed         ${LANG_CROATIAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -221,6 +234,7 @@
 	LangString Lang              ${LANG_CROATIAN}  "Lang"
 	LangString Titleblocks       ${LANG_CROATIAN}  "Titleblocks"
 	LangString Examples          ${LANG_CROATIAN}  "Examples"
+	LangString Check             ${LANG_CROATIAN}  "Check to start ${SOFT_NAME}"
 	
 	
 
@@ -238,3 +252,5 @@
         LangString Lang              ${LANG_DUTCH}  "Taal"
         LangString Titleblocks       ${LANG_DUTCH}  "Titelblok"
         LangString Examples          ${LANG_DUTCH}  "Voorbeelden"
+        LangString Check             ${LANG_DUTCH}  "Check to start ${SOFT_NAME}"
+        

@@ -96,7 +96,7 @@
 ; Finish page and checkbox to run QElectroTech
 	!define MUI_FINISHPAGE_RUN "$INSTDIR\Lancer QET.bat"
 	!define MUI_FINISHPAGE_RUN_NOTCHECKED
-	!define MUI_FINISHPAGE_RUN_TEXT "Check to start ${SOFT_NAME}"
+	!define MUI_FINISHPAGE_RUN_TEXT "$(Check)"
 	!insertmacro MUI_PAGE_FINISH
 ;--------------------------------
 ;Languages
