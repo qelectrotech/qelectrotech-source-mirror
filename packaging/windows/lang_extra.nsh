@@ -199,7 +199,7 @@
         LangString Lang              ${LANG_PORTUGUESE}  "Lang"
         LangString Titleblocks       ${LANG_PORTUGUESE}  "Titleblocks"
         LangString Examples          ${LANG_PORTUGUESE}  "Examples"
-        LangString Check             ${LANG_PORTUGUESE}  "Check to start ${SOFT_NAME}"
+        LangString Check             ${LANG_PORTUGUESE}  "Avviare ${SOFT_NAME}"
         
         
         LangString installed         ${LANG_ROMANIAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
