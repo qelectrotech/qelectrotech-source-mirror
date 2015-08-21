@@ -19,27 +19,6 @@
         LangString var4              ${LANG_ENGLISH}  "Examples of diagrams"
         
         
-        LangString wrongArch         ${LANG_FRENCH}  "Ce programme est pour Windows 64 bits seulement."
-        LangString installed         ${LANG_FRENCH}  "${SOFT_NAME} est deja installe. $\n$\nCliquer sur `OK` pour desinstaller l'ancienne version `Annuler` pour annuler cet upgrade."
-        LangString Elements          ${LANG_FRENCH}  "Elements"
-        LangString Electric          ${LANG_FRENCH}  "Electrique"
-        LangString Logic             ${LANG_FRENCH}  "Logique"
-        LangString Hydraulic         ${LANG_FRENCH}  "Hydraulique"
-        LangString Pneumatic         ${LANG_FRENCH}  "Pneumatique"
-        LangString Energy            ${LANG_FRENCH}  "Energie"
-        LangString water             ${LANG_FRENCH}  "Eaux"
-        LangString Refrigeration     ${LANG_FRENCH}  "Climatisation"
-        LangString Solar_thermal     ${LANG_FRENCH}  "Thermique & solaire"
-        LangString Lang              ${LANG_FRENCH}  "Langues"
-        LangString Titleblocks       ${LANG_FRENCH}  "Cartouches"
-        LangString Examples          ${LANG_FRENCH}  "Exemples"
-        LangString Check             ${LANG_FRENCH}  "Cocher pour lancer ${SOFT_NAME}"
-        LangString var1              ${LANG_FRENCH}  "Elements de la collection officielle"
-        LangString var2              ${LANG_FRENCH}  "Fichiers de langues"
-        LangString var3              ${LANG_FRENCH}  "Exemples de cartouches"
-        LangString var4              ${LANG_FRENCH}  "Exemples de schemas"
-        
-        
         LangString installed         ${LANG_POLISH}  "${SOFT_NAME} jest już zainstalowany. $\n$\nKliknij `OK` aby odinstalować poprzednią wersję lub `Cancel` aby przerwać aktualizację."
         LangString wrongArch         ${LANG_POLISH}  "To oprogramowanie jest przeznaczone wyłącznie dla komputerów 64 bitowych."
         LangString Elements          ${LANG_POLISH}  "Elementy"

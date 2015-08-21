@@ -63,7 +63,6 @@
 	!define MUI_ABORTWARNING
 	!define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\XPUI-install.ico"
 	!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\XPUI-uninstall.ico"
-	!define MUI_LICENSEPAGE_CHECKBOX
 	
 
 	!define MUI_WELCOMEFINISHPAGE_BITMAP ".\images\wizard.bmp"
@@ -123,6 +122,7 @@
 
 	!insertmacro MUI_RESERVEFILE_LANGDLL
 	!include lang_extra.nsh
+	!include lang_extra_fr.nsh
 	
 
 	
