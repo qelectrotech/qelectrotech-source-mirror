@@ -187,7 +187,7 @@
         LangString var4              ${LANG_CATALAN}  "Examples of diagrams"
         
         
-        LangString installed         ${LANG_ITALIAN} "${SOFT_NAME} &egrave; già installato. $\n$\nFare click su `OK` per rimuovere la versione precedente o su `Cancel` per annullare questo aggiornamento." 
+        LangString installed         ${LANG_ITALIAN} "${SOFT_NAME} &egrave; già installato. $\n$\nFare click su `OK` per rimuovere la versione precedente o su `Annulla` per annullare questo aggiornamento." 
         LangString wrongArch         ${LANG_ITALIAN} "Questa distribuzione &egrave; riservata ai sistemi a 64 bit."
         LangString Elements          ${LANG_ITALIAN}  "Elementi"
         LangString Electric          ${LANG_ITALIAN}  "Electricit&agrave;"
