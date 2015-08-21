@@ -225,7 +225,13 @@ Section "$(Examples)" SEC04
 SectionEnd
 
 ;--------------------------------
-
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC01} $(var1)
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC02} $(var2)
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC03} $(var3)
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC04} $(var4)
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
+;--------------------------------
 
 ;Installer Sections
 

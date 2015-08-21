@@ -13,6 +13,10 @@
         LangString Titleblocks       ${LANG_ENGLISH}  "Titleblocks"
         LangString Examples          ${LANG_ENGLISH}  "Examples"
         LangString Check             ${LANG_ENGLISH}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_ENGLISH}  "Elements of the official collection"
+        LangString var2              ${LANG_ENGLISH}  "languagues files"
+        LangString var3              ${LANG_ENGLISH}  "Examples of cartridges"
+        LangString var4              ${LANG_ENGLISH}  "Examples of diagrams"
         
         
         LangString wrongArch         ${LANG_FRENCH}  "Ce programme est pour Windows 64 bits seulement."
@@ -30,6 +34,10 @@
         LangString Titleblocks       ${LANG_FRENCH}  "Cartouches"
         LangString Examples          ${LANG_FRENCH}  "Exemples"
         LangString Check             ${LANG_FRENCH}  "Cocher pour lancer ${SOFT_NAME}"
+        LangString var1              ${LANG_FRENCH}  "Elements de la collection officielle"
+        LangString var2              ${LANG_FRENCH}  "Fichiers de langues"
+        LangString var3              ${LANG_FRENCH}  "Exemples de cartouches"
+        LangString var4              ${LANG_FRENCH}  "Examples de schemas"
         
         
         LangString installed         ${LANG_POLISH}  "${SOFT_NAME} jest już zainstalowany. $\n$\nKliknij `OK` aby odinstalować poprzednią wersję lub `Cancel` aby przerwać aktualizację."
@@ -47,6 +55,10 @@
         LangString Titleblocks       ${LANG_POLISH}  "Tabliczki rysunkowe"
         LangString Examples          ${LANG_POLISH}  "Przykłady"
         LangString Check             ${LANG_POLISH}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_POLISH}  "Elements of the official collection"
+        LangString var2              ${LANG_POLISH}  "languagues files"
+        LangString var3              ${LANG_POLISH}  "Examples of cartridges"
+        LangString var4              ${LANG_POLISH}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_GREEK} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -64,6 +76,10 @@
         LangString Titleblocks       ${LANG_GREEK}  "Titleblocks"
         LangString Examples          ${LANG_GREEK}  "Examples"
         LangString Check             ${LANG_GREEK}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_GREEK}  "Elements of the official collection"
+        LangString var2              ${LANG_GREEK}  "languagues files"
+        LangString var3              ${LANG_GREEK}  "Examples of cartridges"
+        LangString var4              ${LANG_GREEK}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_CZECH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -81,6 +97,10 @@
         LangString Titleblocks       ${LANG_CZECH}  "Titleblocks"
         LangString Examples          ${LANG_CZECH}  "Examples"
         LangString Check             ${LANG_CZECH}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_CZECH}  "Elements of the official collection"
+        LangString var2              ${LANG_CZECH}  "languagues files"
+        LangString var3              ${LANG_CZECH}  "Examples of cartridges"
+        LangString var4              ${LANG_CZECH}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_SPANISH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -98,6 +118,10 @@
         LangString Titleblocks       ${LANG_SPANISH}  "Titleblocks"
         LangString Examples          ${LANG_SPANISH}  "Examples"
         LangString Check             ${LANG_SPANISH}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_SPANISH}  "Elements of the official collection"
+        LangString var2              ${LANG_SPANISH}  "languagues files"
+        LangString var3              ${LANG_SPANISH}  "Examples of cartridges"
+        LangString var4              ${LANG_SPANISH}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_GERMAN} "${SOFT_NAME} ist bereits installiert. $\n$\nKlicken Sie auf `OK`, um die alte Version zu deinstallieren, oder auf `Abbrechen`, um das Upgrade abzubrechen." 
@@ -115,6 +139,10 @@
         LangString Titleblocks       ${LANG_GERMAN}  "Zeichnungsköpfe"
         LangString Examples          ${LANG_GERMAN}  "Beispiele"
         LangString Check             ${LANG_GERMAN}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_GERMAN}  "Elements of the official collection"
+        LangString var2              ${LANG_GERMAN}  "languagues files"
+        LangString var3              ${LANG_GERMAN}  "Examples of cartridges"
+        LangString var4              ${LANG_GERMAN}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_RUSSIAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -132,6 +160,10 @@
         LangString Titleblocks       ${LANG_RUSSIAN}  "Titleblocks"
         LangString Examples          ${LANG_RUSSIAN}  "Examples"
         LangString Check             ${LANG_RUSSIAN}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_RUSSIAN}  "Elements of the official collection"
+        LangString var2              ${LANG_RUSSIAN}  "languagues files"
+        LangString var3              ${LANG_RUSSIAN}  "Examples of cartridges"
+        LangString var4              ${LANG_RUSSIAN}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_ARABIC} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -149,6 +181,10 @@
         LangString Titleblocks       ${LANG_ARABIC}  "Titleblocks"
         LangString Examples          ${LANG_ARABIC}  "Examples"
         LangString Check             ${LANG_ARABIC}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_ARABIC}  "Elements of the official collection"
+        LangString var2              ${LANG_ARABIC}  "languagues files"
+        LangString var3              ${LANG_ARABIC}  "Examples of cartridges"
+        LangString var4              ${LANG_ARABIC}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_CATALAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -166,6 +202,10 @@
         LangString Titleblocks       ${LANG_CATALAN}  "Titleblocks"
         LangString Examples          ${LANG_CATALAN}  "Examples"
         LangString Check             ${LANG_CATALAN}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_CATALAN}  "Elements of the official collection"
+        LangString var2              ${LANG_CATALAN}  "languagues files"
+        LangString var3              ${LANG_CATALAN}  "Examples of cartridges"
+        LangString var4              ${LANG_CATALAN}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_ITALIAN} "${SOFT_NAME} è già installato. $\n$\nFare click su `OK` per rimuovere la versione precedente o su `Cancel` per annullare questo aggiornamento." 
@@ -183,6 +223,10 @@
         LangString Titleblocks       ${LANG_ITALIAN}  "Cartigli"
         LangString Examples          ${LANG_ITALIAN}  "Esempi"
         LangString Check             ${LANG_ITALIAN}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_ITALIAN}  "Elements of the official collection"
+        LangString var2              ${LANG_ITALIAN}  "languagues files"
+        LangString var3              ${LANG_ITALIAN}  "Examples of cartridges"
+        LangString var4              ${LANG_ITALIAN}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_PORTUGUESE} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -200,6 +244,10 @@
         LangString Titleblocks       ${LANG_PORTUGUESE}  "Titleblocks"
         LangString Examples          ${LANG_PORTUGUESE}  "Examples"
         LangString Check             ${LANG_PORTUGUESE}  "Avviare ${SOFT_NAME}"
+        LangString var1              ${LANG_PORTUGUESE}  "Elements of the official collection"
+        LangString var2              ${LANG_PORTUGUESE}  "languagues files"
+        LangString var3              ${LANG_PORTUGUESE}  "Examples of cartridges"
+        LangString var4              ${LANG_PORTUGUESE}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_ROMANIAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -217,6 +265,10 @@
         LangString Titleblocks       ${LANG_ROMANIAN}  "Titleblocks"
         LangString Examples          ${LANG_ROMANIAN}  "Examples"
         LangString Check             ${LANG_ROMANIAN}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_ROMANIAN}  "Elements of the official collection"
+        LangString var2              ${LANG_ROMANIAN}  "languagues files"
+        LangString var3              ${LANG_ROMANIAN}  "Examples of cartridges"
+        LangString var4              ${LANG_ROMANIAN}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_CROATIAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -234,6 +286,10 @@
         LangString Titleblocks       ${LANG_CROATIAN}  "Titleblocks"
         LangString Examples          ${LANG_CROATIAN}  "Examples"
         LangString Check             ${LANG_CROATIAN}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_CROATIAN}  "Elements of the official collection"
+        LangString var2              ${LANG_CROATIAN}  "languagues files"
+        LangString var3              ${LANG_CROATIAN}  "Examples of cartridges"
+        LangString var4              ${LANG_CROATIAN}  "Examples of diagrams"
         
         
         LangString installed         ${LANG_DUTCH}  "${SOFT_NAME} is al geinstalleerd. $\n$\nklik `OK` om vorige versie te verwijderen of `annuleer` om deze upgrade te annuleren."
@@ -251,3 +307,9 @@
         LangString Titleblocks       ${LANG_DUTCH}  "Titelblok"
         LangString Examples          ${LANG_DUTCH}  "Voorbeelden"
         LangString Check             ${LANG_DUTCH}  "Check to start ${SOFT_NAME}"
+        LangString Check             ${LANG_DUTCH}  "Check to start ${SOFT_NAME}"
+        LangString var1              ${LANG_DUTCH}  "Elements of the official collection"
+        LangString var2              ${LANG_DUTCH}  "languagues files"
+        LangString var3              ${LANG_DUTCH}  "Examples of cartridges"
+        LangString var4              ${LANG_DUTCH}  "Examples of diagrams"
+        
