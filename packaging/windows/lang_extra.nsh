@@ -37,7 +37,7 @@
         LangString var1              ${LANG_FRENCH}  "Elements de la collection officielle"
         LangString var2              ${LANG_FRENCH}  "Fichiers de langues"
         LangString var3              ${LANG_FRENCH}  "Exemples de cartouches"
-        LangString var4              ${LANG_FRENCH}  "Examples de schemas"
+        LangString var4              ${LANG_FRENCH}  "Exemples de schemas"
         
         
         LangString installed         ${LANG_POLISH}  "${SOFT_NAME} jest już zainstalowany. $\n$\nKliknij `OK` aby odinstalować poprzednią wersję lub `Cancel` aby przerwać aktualizację."
