@@ -161,26 +161,26 @@ SubSection "$(Elements)" SEC01
 
 SetOverwrite on
 Section "$(Electric)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements"
   File /r "./files/elements/10_electric"
 SectionEnd
 
 SetOverwrite on
 Section "$(Logic)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements"
   File /r "./files/elements/20_logic"
 SectionEnd
 
 SetOverwrite on
 Section  "$(Hydraulic)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements"
   File /r "./files/elements/30_hydraulic"
 SectionEnd
 
 
 SetOverwrite on
 Section "$(Pneumatic)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements"
   File /r "./files/elements/50_pneumatic"
 SectionEnd
 
@@ -190,19 +190,19 @@ SubSection "$(Energy)"
 
 SetOverwrite on
 Section  "$(water)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements\60_energy"
   File /r "./files/elements/60_energy/11_water"
 SectionEnd
 
 SetOverwrite on
 Section  "$(Refrigeration)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements\60_energy"
   File /r "./files/elements/60_energy/21_refrigeration"
 SectionEnd
 
 SetOverwrite on
 Section  "$(Solar_thermal)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements\60_energy"
   File /r "./files/elements/60_energy/31_solar_thermal"
 SectionEnd
 
@@ -228,7 +228,6 @@ Section "$(Examples)" SEC04
   File /r "./files/examples"
 SectionEnd
 
-
 ;--------------------------------
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
 !insertmacro MUI_DESCRIPTION_TEXT ${SEC01} $(var1)
@@ -236,7 +235,7 @@ SectionEnd
 !insertmacro MUI_DESCRIPTION_TEXT ${SEC03} $(var3)
 !insertmacro MUI_DESCRIPTION_TEXT ${SEC04} $(var4)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
-;------------------------
+;--------------------------------
 
 ;Installer Sections
 

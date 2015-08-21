@@ -157,26 +157,26 @@ SubSection "$(Elements)" SEC01
 
 SetOverwrite on
 Section "$(Electric)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements"
   File /r "./files/elements/10_electric"
 SectionEnd
 
 SetOverwrite on
 Section "$(Logic)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements"
   File /r "./files/elements/20_logic"
 SectionEnd
 
 SetOverwrite on
 Section  "$(Hydraulic)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements"
   File /r "./files/elements/30_hydraulic"
 SectionEnd
 
 
 SetOverwrite on
 Section "$(Pneumatic)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements"
   File /r "./files/elements/50_pneumatic"
 SectionEnd
 
@@ -186,19 +186,19 @@ SubSection "$(Energy)"
 
 SetOverwrite on
 Section  "$(water)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements\60_energy"
   File /r "./files/elements/60_energy/11_water"
 SectionEnd
 
 SetOverwrite on
 Section  "$(Refrigeration)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements\60_energy"
   File /r "./files/elements/60_energy/21_refrigeration"
 SectionEnd
 
 SetOverwrite on
 Section  "$(Solar_thermal)" 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\elements\60_energy"
   File /r "./files/elements/60_energy/31_solar_thermal"
 SectionEnd
 
