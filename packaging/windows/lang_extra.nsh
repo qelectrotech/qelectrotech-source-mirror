@@ -187,10 +187,10 @@
         LangString var4              ${LANG_CATALAN}  "Examples of diagrams"
         
         
-        LangString installed         ${LANG_ITALIAN} "${SOFT_NAME} è già installato. $\n$\nFare click su `OK` per rimuovere la versione precedente o su `Cancel` per annullare questo aggiornamento." 
-        LangString wrongArch         ${LANG_ITALIAN} "Questa distribuzione è riservata ai sistemi a 64 bit."
+        LangString installed         ${LANG_ITALIAN} "${SOFT_NAME} &egrave; già installato. $\n$\nFare click su `OK` per rimuovere la versione precedente o su `Cancel` per annullare questo aggiornamento." 
+        LangString wrongArch         ${LANG_ITALIAN} "Questa distribuzione &egrave; riservata ai sistemi a 64 bit."
         LangString Elements          ${LANG_ITALIAN}  "Elementi"
-        LangString Electric          ${LANG_ITALIAN}  "Electrica"
+        LangString Electric          ${LANG_ITALIAN}  "Electricit&agrave;"
         LangString Logic             ${LANG_ITALIAN}  "Logica"
         LangString Hydraulic         ${LANG_ITALIAN}  "Idraulica"
         LangString Pneumatic         ${LANG_ITALIAN}  "Pneumatica"
@@ -201,11 +201,11 @@
         LangString Lang              ${LANG_ITALIAN}  "Lingua"
         LangString Titleblocks       ${LANG_ITALIAN}  "Cartigli"
         LangString Examples          ${LANG_ITALIAN}  "Esempi"
-        LangString Check             ${LANG_ITALIAN}  "Check to start ${SOFT_NAME}"
-        LangString var1              ${LANG_ITALIAN}  "Elements of the official collection"
-        LangString var2              ${LANG_ITALIAN}  "languagues files"
-        LangString var3              ${LANG_ITALIAN}  "Examples of cartridges"
-        LangString var4              ${LANG_ITALIAN}  "Examples of diagrams"
+        LangString Check             ${LANG_ITALIAN}  "Avvia ${SOFT_NAME}"
+        LangString var1              ${LANG_ITALIAN}  "Elementi della collezione ufficiale"
+        LangString var2              ${LANG_ITALIAN}  "File della lingua"
+        LangString var3              ${LANG_ITALIAN}  "Cartigli di esempio"
+        LangString var4              ${LANG_ITALIAN}  "Schemi di esempio"
         
         
         LangString installed         ${LANG_PORTUGUESE} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
