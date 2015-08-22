@@ -114,22 +114,25 @@ void ConductorAutoNumerotation::applyText(QString t)
  * @brief ConductorAutoNumerotation::numeratePotential
  * Numerate a conductor on an existing potential
  */
-void ConductorAutoNumerotation::numeratePotential() {
+void ConductorAutoNumerotation::numeratePotential()
+{
 	QStringList strl;
 	foreach (const Conductor *cc, conductor_list) strl<<(cc->text());
+
 		//the texts is identicals
-	if (QET::eachStrIsEqual(strl)) {
+	if (QET::eachStrIsEqual(strl))
+	{
 		ConductorProperties cp = conductor_ -> properties();
 		cp.text = strl.at(0);
 		conductor_ -> setProperties(cp);
 		conductor_ -> setText(strl.at(0));
 	}
-	//the texts isn't identicals
-	else {
+		//the texts isn't identicals
+	else
+	{
 		PotentialTextsDialog ptd (conductor_, conductor_ -> diagramEditor());
-		if (ptd.exec() == QDialog::Accepted) {
-			applyText(ptd.selectedText());
-		}
+		ptd.exec();
+		applyText(ptd.selectedText());
 	}
 }
 

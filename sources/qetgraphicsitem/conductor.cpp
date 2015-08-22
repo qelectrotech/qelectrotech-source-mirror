@@ -90,15 +90,11 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	setFlags(QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
 	
-	// ajout du champ de texte editable
+		// Add the text field
 	text_item = new ConductorTextItem(properties_.text, this);
 	text_item -> setFlag(QGraphicsItem::ItemStacksBehindParent);
-	connect(
-		text_item,
-		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
-		this,
-		SLOT(displayedTextChanged())
-	);
+
+	connect(text_item, &ConductorTextItem::diagramTextChanged, this, &Conductor::displayedTextChanged);
 }
 
 /**
@@ -1392,43 +1388,38 @@ void Conductor::setHighlighted(Conductor::Highlight hl) {
 }
 
 /**
-	Met a jour les proprietes du conducteur apres modification du champ de texte affiche
-*/
-void Conductor::displayedTextChanged() {
-	// verifie que le texte a reellement change
-	if (text_item -> toPlainText() == properties_.text) return;
-	
-	if (Diagram *my_diagram = diagram())
+ * @brief Conductor::displayedTextChanged
+ * Update the properties (text) of this conductor and other conductors
+ * at the same potential of this conductor.
+ */
+void Conductor::displayedTextChanged()
+{
+	if ((text_item->toPlainText() == properties_.text) || !diagram()) return;
+
+	QVariant old_value, new_value;
+	old_value.setValue(properties_);
+	ConductorProperties new_properties(properties_);
+	new_properties.text = text_item -> toPlainText();
+	new_value.setValue(new_properties);
+
+	QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "properties", old_value, new_value);
+	undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
+
+	if (!relatedPotentialConductors().isEmpty())
 	{
-		int qmbreturn=0;
-			//if conductor isn't alone at this potential
-			//ask user to apply text on every conductors of this potential
-		if (relatedPotentialConductors().size() >= 1)
-		{
-			qmbreturn = QMessageBox::question(diagramEditor(), tr("Textes de conducteurs"),
-											  tr("Voulez-vous appliquer le nouveau texte \n"
-												 "à l'ensemble des conducteurs de ce potentiel ?"),
-											  QMessageBox::No| QMessageBox::Yes, QMessageBox::Yes);
-			if (qmbreturn == QMessageBox::Yes)
-			{
-				ConductorAutoNumerotation can(this, my_diagram);
-				can.applyText(text_item -> toPlainText());
-			}
-		}
+		undo->setText(tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
 
-		if (qmbreturn == 0 || qmbreturn == QMessageBox::No)
+		foreach (Conductor *potential_conductor, relatedPotentialConductors())
 		{
-			QVariant old_value, new_value;
-			old_value.setValue(properties_);
-			ConductorProperties new_properties(properties_);
-			new_properties.text = text_item -> toPlainText();
+			old_value.setValue(potential_conductor->properties());
+			ConductorProperties new_properties = potential_conductor->properties();
+			new_properties.text = text_item->toPlainText();
 			new_value.setValue(new_properties);
-
-			QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "properties", old_value, new_value);
-			undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
-			my_diagram -> undoStack().push(undo);
+			new QPropertyUndoCommand (potential_conductor, "properties", old_value, new_value, undo);
 		}
 	}
+
+	diagram()->undoStack().push(undo);
 }
 
 

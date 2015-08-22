@@ -61,28 +61,44 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor, QWidget *
 {
 	ConductorPropertiesDialog cpd (conductor, parent);
 
-	if (cpd.exec() == QDialog::Accepted && cpd.properties() != conductor->properties())
+	if (cpd.exec() == QDialog::Rejected || cpd.properties() == conductor->properties()) return;
+
+	QVariant old_value, new_value;
+	old_value.setValue(conductor->properties());
+	new_value.setValue(cpd.properties());
+
+	QPropertyUndoCommand *undo = new QPropertyUndoCommand(conductor, "properties", old_value, new_value);
+	undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
+
+	if (!conductor->relatedPotentialConductors().isEmpty())
 	{
-		QVariant old_value, new_value;
-		old_value.setValue(conductor->properties());
-		new_value.setValue(cpd.properties());
+		undo->setText(tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
+		QString old_text = conductor->properties().text;
+		QString new_text = cpd.properties().text;
 
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(conductor, "properties", old_value, new_value);
-		undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
-
-			//Make undo for all related potiential conductors
-		if (cpd.applyAll() && !conductor->relatedPotentialConductors().isEmpty())
+		foreach (Conductor *potential_conductor, conductor->relatedPotentialConductors())
 		{
-			undo->setText(tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
-			foreach (Conductor *cond, conductor->relatedPotentialConductors())
+				//"Apply to all conductors of potential" is checked,
+				//we apply the new properties for every conductors in the same potential.
+			if (cpd.applyAll())
 			{
-				old_value.setValue(cond->properties());
-				new QPropertyUndoCommand (cond, "properties", old_value, new_value, undo);
+				old_value.setValue(potential_conductor->properties());
+				new QPropertyUndoCommand (potential_conductor, "properties", old_value, new_value, undo);
+			}
+				//The num of conductor isn't affected by "Apply to all conductors of potential"
+				//we always apply it to the potential if he change.
+			else if(old_text != new_text)
+			{
+				old_value.setValue(potential_conductor->properties());
+				ConductorProperties new_properties = potential_conductor->properties();
+				new_properties.text = new_text;
+				new_value.setValue(new_properties);
+				new QPropertyUndoCommand (potential_conductor, "properties", old_value, new_value, undo);
 			}
 		}
-
-		conductor->diagram()->undoStack().push(undo);
 	}
+
+	conductor->diagram()->undoStack().push(undo);
 }
 
 /**
