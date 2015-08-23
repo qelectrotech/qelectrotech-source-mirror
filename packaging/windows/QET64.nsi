@@ -123,6 +123,7 @@
         !insertmacro MUI_LANGUAGE "Catalan"
         !insertmacro MUI_LANGUAGE "Croatian"
         !insertmacro MUI_LANGUAGE "Dutch"
+        !insertmacro MUI_LANGUAGE "Dutch_Belgium"
 	!insertmacro MUI_RESERVEFILE_LANGDLL
 	
 	!include lang_extra.nsh

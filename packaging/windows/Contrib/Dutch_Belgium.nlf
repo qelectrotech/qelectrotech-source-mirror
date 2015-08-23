@@ -1,0 +1,191 @@
+# Header, don't edit
+NLF v6
+# Start editing here
+# Language ID
+2067
+# Font and size - dash (-) means default
+-
+-
+# Codepage - dash (-) means ANSI code page
+1252
+# RTL - anything else than RTL means LTR
+-
+# Translation by Ronny Desmedt (any credits should go here)
+# ^Branding
+Nullsoft Install System %s
+# ^SetupCaption
+$(^Name) Installatie
+# ^UninstallCaption
+$(^Name) Deïnstallatie
+# ^LicenseSubCaption
+: Licentie overeenkomst
+# ^ComponentsSubCaption
+: Installatie Opties
+# ^DirSubCaption
+: Installatie Map
+# ^InstallingSubCaption
+: Installeren
+# ^CompletedSubCaption
+: Voltooid
+# ^UnComponentsSubCaption
+: Deïnstallatie Opties
+# ^UnDirSubCaption
+: Deïnstallatie Map
+# ^ConfirmSubCaption
+: Bevestigen
+# ^UninstallingSubCaption
+: Deïnstalleren
+# ^UnCompletedSubCaption
+: Voltooid
+# ^BackBtn
+< &Terug
+# ^NextBtn
+&Volgende >
+# ^AgreeBtn
+Ik ben &Akkoord
+# ^AcceptBtn
+Ik &Accepteer de licentie overeenkomst
+# ^DontAcceptBtn
+Ik &Accepteer de licentie overeenkomst niet
+# ^InstallBtn
+&Installeer
+# ^UninstallBtn
+&Deïnstalleer
+# ^CancelBtn
+Afbreken
+# ^CloseBtn
+&Sluiten
+# ^BrowseBtn
+B&laderen...
+# ^ShowDetailsBtn
+Toon &details
+# ^ClickNext
+Klik op volgende om verder te gaan.
+# ^ClickInstall
+Klik op installeren om de installatie te starten.
+# ^ClickUninstall
+Klik op deïnstalleren om de installatie te verwijderen.
+# ^Name
+Naam
+# ^Completed
+Voltooid
+# ^LicenseText
+Gelieve de licentie overeenkomst te lezen alvorens $(^NameDA) te installeren. Als u akkord bent met de licentie overeenkomst, klik op akkoord.
+# ^LicenseTextCB
+Gelieve de licentie overeenkomst te lezen alvorens $(^NameDA) te installeren. Als u akkord bent met de licentie overeenkomst, klik op onderstaande selectievakje. $_CLICK
+# ^LicenseTextRB
+Gelieve de licentie overeenkomst te lezen alvorens $(^NameDA) te installeren. Als u akkord bent met de licentie overeenkomst, selecteer de eerste onderstaande optie. $_CLICK
+# ^UnLicenseText
+Gelieve de licentie overeenkomst te lezen alvorens $(^NameDA) te deïnstalleren. Als u akkord bent met de licentie overeenkomst, klik op akkoord.
+# ^UnLicenseTextCB
+Gelieve de licentie overeenkomst te lezen alvorens $(^NameDA) te deïnstalleren. Als u akkord bent met de licentie overeenkomst, klik op onderstaande selectievakje. $_CLICK
+# ^UnLicenseTextRB
+Gelieve de licentie overeenkomst te lezen alvorens $(^NameDA) te deïnstalleren. Als u akkord bent met de licentie overeenkomst, selecteer de eerste onderstaande optie. $_CLICK
+# ^Custom
+Aangepast
+# ^ComponentsText
+Selecteer de onderdelen die u wilt installeren en deselecteer de onderdelen die u niet wilt installeren. $_CLICK
+# ^ComponentsSubText1
+Selecteer een installatie type:
+# ^ComponentsSubText2_NoInstTypes
+Selecteer de onderdelen om te installeren:
+# ^ComponentsSubText2
+Of, selecteer optionelen onderdelen die u wilt installeren:
+# ^UnComponentsText
+Selecteer de onderdelen die u wilt deïnstalleren en deselecteer de onderdelen die u niet wilt deïinstalleren. $_CLICK
+# ^UnComponentsSubText1
+Selecteer een deïnstallatie type:
+# ^UnComponentsSubText2_NoInstTypes
+Selecteer de onderdelen om te deïnstalleren:
+# ^UnComponentsSubText2
+Of, selecteer optionelen onderdelen die u wilt deïnstalleren:
+# ^DirText
+De installatie van $(^NameDA) wordt in volgende map uitgevoerd. Om in een andere map te installeren, klik op bladeren om een andere map te selecteren. $_CLICK
+# ^DirSubText
+Installatie map
+# ^DirBrowseText
+Selecteerd de map om $(^NameDA) in te installeren:
+# ^UnDirText
+De deïnstallatie van $(^NameDA) in de volgende map. Om een andere map te deïnstalleren, klik op bladren om een andere map te selecteren. $_CLICK
+# ^UnDirSubText
+""
+# ^UnDirBrowseText
+Selecteer en map om $(^NameDA) van te deînstalleren:
+# ^SpaceAvailable
+"Beschikbare ruimte: "
+# ^SpaceRequired
+"Benodigde ruimte: "
+# ^UninstallingText
+$(^NameDA) wordt gedeïnstalleerd uit volgende map. $_CLICK
+# ^UninstallingSubText
+Deïnstalleren van:
+# ^FileError
+Fout bij openen van bestand om te schrijven: \r\n\r\n$0\r\n\r\nKlik op afbreken om de installatie te stoppen,\r\nOpnieuw om te proberen, of\r\nNegeren om dit bestand over te slaan.
+# ^FileError_NoIgnore
+Fout bij openen van bestand om te schrijven: \r\n\r\n$0\r\n\r\nOpnieuw om te proberen, of\r\nAfbreken om de installatie te stoppen.
+# ^CantWrite
+"Kan niet schrijven: "
+# ^CopyFailed
+Kopieren mislukt
+# ^CopyTo
+"Copier naar "
+# ^Registering
+"Registreren: "
+# ^Unregistering
+"Deregistreren: "
+# ^SymbolNotFound
+"Kan symbool niet vinden: "
+# ^CouldNotLoad
+"Kan niet laden: "
+# ^CreateFolder
+"Map maken: "
+# ^CreateShortcut
+"Snelkoppeling maken: "
+# ^CreatedUninstaller
+"Doe deïnstallatie: "
+# ^Delete
+"Verwijder bestanden: "
+# ^DeleteOnReboot
+Verwijder bij herstarten: "
+# ^ErrorCreatingShortcut
+"Fout bij maken snelkoppeling: "
+# ^ErrorCreating
+"Fout bij maken: "
+# ^ErrorDecompressing
+Fout bij uitpakken gegevens! Beschadigd bestand?
+# ^ErrorRegistering
+Fout bij registreren DLL
+# ^ExecShell
+"ExecShell: "
+# ^Exec
+"Uitvoeren: "
+# ^Extract
+"Extract: "
+# ^ErrorWriting
+Fout: fout bij schrijven naar bestand "
+# ^InvalidOpcode
+Installie beschadigd: niet toegestane opcode
+# ^NoOLE
+"Geen OLE voor: "
+# ^OutputFolder
+"Bestemmings map: "
+# ^RemoveFolder
+"Verwijder mapr: "
+# ^RenameOnReboot
+"Hernoem bij opstarten: "
+# ^Rename
+"Hernoem: "
+# ^Skipped
+Overgeslagen: "
+# ^CopyDetails
+Copier details naar klembord
+# ^LogInstall
+Log instaltie proces
+# ^Byte
+B
+# ^Kilo
+K
+# ^Mega
+M
+# ^Giga
+G
