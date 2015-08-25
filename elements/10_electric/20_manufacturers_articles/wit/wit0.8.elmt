@@ -1,90 +1,92 @@
-<definition width="290" version="0.3" hotspot_x="163" hotspot_y="55" height="150" type="element" orientation="dyyy">
-<uuid uuid="{2F6490AA-36F2-427A-8624-2895F8BD782F}"/><names>
-        <name lang="en">WIT 0.8</name>
-        <name lang="fr">WIT 0.8</name>
+<definition type="element" version="0.5" hotspot_y="54" width="290" height="150" orientation="dyyy" link_type="simple" hotspot_x="163">
+    <uuid uuid="{0a6e551c-ab6f-4057-acdb-fdff7558f3a1}"/>
+    <names>
         <name lang="pl">Wit 0.8</name>
-        <name lang="cs">Wit 0.8</name>
         <name lang="pt">Wit 0.8</name>
-        <name lang="es">Wit 0.8</name>
-        <name lang="it">Wit 0.8</name>
-        <name lang="el">Wit 0.8</name>
         <name lang="nl">Wit 0.8</name>
+        <name lang="en">WIT 0.8</name>
+        <name lang="it">Wit 0.8</name>
+        <name lang="es">Wit 0.8</name>
+        <name lang="cs">Wit 0.8</name>
+        <name lang="el">Wit 0.8</name>
+        <name lang="fr">WIT 0.8</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="280" x="-159" y="-50" antialias="false" height="139" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-134" y="12.5" size="9" rotate="true" text="WIT"/>
-        <text x="58" y="-10" size="6" text="DO0.7"/>
-        <text x="24" y="-10" size="6" text="DO0.6"/>
-        <text x="-10" y="-10" size="6" text="DO0.5"/>
-        <text x="-47" y="-10" size="6" text="DO0.4"/>
-        <text x="-83" y="-10" size="6" text="DO0.3"/>
-        <text x="-115" y="-10" size="6" text="DO0.2"/>
-        <text x="-151" y="-10" size="6" text="D00.1"/>
-        <text x="93" y="-10" size="6" text="DO0.8"/>
-        <input x="-14" y="67.5" size="5" rotate="true" text="0V"/>
-        <rect width="10" x="3" y="76" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-159" y2="60" x2="121"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-158" y2="-20" x2="122"/>
-        <input x="-17" y="31.5" size="12" text="CLIP 0.8.0.0 "/>
-        <input x="39" y="69.5" size="5" rotate="true" text="BUS"/>
-        <input x="56" y="69.5" size="5" rotate="true" text="BUS"/>
-        <input x="-2" y="67.5" size="5" rotate="true" text="12V"/>
-        <rect width="10" x="-140" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-157" y="-27.5" size="5" rotate="true" text="01"/>
-        <input x="-74" y="-27.5" size="5" rotate="true" text="06"/>
-        <input x="19" y="-27.5" size="5" rotate="true" text="11"/>
-        <input x="-1" y="-27.5" size="5" rotate="true" text="10"/>
-        <input x="-37" y="-27.5" size="5" rotate="true" text="08"/>
-        <input x="-87" y="-27.5" size="5" rotate="true" text="05"/>
-        <input x="-122" y="-27.5" size="5" rotate="true" text="03"/>
-        <input x="-143" y="-27.5" size="5" rotate="true" text="02"/>
-        <rect width="10" x="-155" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-109" y="-27.5" size="5" rotate="true" text="04"/>
-        <rect width="10" x="-105" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-53" y="-26.5" size="5" rotate="true" text="07"/>
-        <rect width="10" x="-35" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-18" y="-27.5" size="5" rotate="true" text="09"/>
-        <rect width="10" x="-15" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="0" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="34" y="-27.5" size="5" rotate="true" text="12"/>
-        <input x="88" y="-27.5" size="5" rotate="true" text="15"/>
-        <input x="53" y="-27.5" size="5" rotate="true" text="13"/>
-        <input x="69" y="-27.5" size="5" rotate="true" text="14"/>
-        <input x="105" y="-27.5" size="5" rotate="true" text="16"/>
-        <rect width="10" x="91" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="70" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="20" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="35" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="106" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="55" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="46" y="76" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="-85" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="-50" y="-44" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="61" y="76" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="-10" y="76" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="-120" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="-70" y="-44" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="-150" y="-49" orientation="n"/>
-        <terminal x="-135" y="-49" orientation="n"/>
-        <terminal x="-115" y="-49" orientation="n"/>
-        <terminal x="-100" y="-49" orientation="n"/>
-        <terminal x="-80" y="-49" orientation="n"/>
-        <terminal x="-65" y="-49" orientation="n"/>
-        <terminal x="-45" y="-49" orientation="n"/>
-        <terminal x="-30" y="-49" orientation="n"/>
-        <terminal x="-10" y="-49" orientation="n"/>
-        <terminal x="5" y="-49" orientation="n"/>
-        <terminal x="25" y="-49" orientation="n"/>
-        <terminal x="40" y="-49" orientation="n"/>
-        <terminal x="60" y="-49" orientation="n"/>
-        <terminal x="75" y="-49" orientation="n"/>
-        <terminal x="96" y="-49" orientation="n"/>
-        <terminal x="111" y="-49" orientation="n"/>
-        <terminal x="-5" y="88" orientation="s"/>
-        <terminal x="51" y="88" orientation="s"/>
-        <terminal x="66" y="89" orientation="s"/>
-        <terminal x="8" y="88" orientation="s"/>
+        <input tagg="label" y="-19.45" x="132.5" size="9" rotate="true" text="_"/>
+        <rect y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-159" width="280" antialias="false" height="139"/>
+        <input tagg="none" y="12.5" x="-134" size="9" rotate="true" text="WIT"/>
+        <text y="-10" x="58" size="6" text="DO0.7"/>
+        <text y="-10" x="24" size="6" text="DO0.6"/>
+        <text y="-10" x="-10" size="6" text="DO0.5"/>
+        <text y="-10" x="-47" size="6" text="DO0.4"/>
+        <text y="-10" x="-83" size="6" text="DO0.3"/>
+        <text y="-10" x="-115" size="6" text="DO0.2"/>
+        <text y="-10" x="-151" size="6" text="D00.1"/>
+        <text y="-10" x="93" size="6" text="DO0.8"/>
+        <input tagg="none" y="67.5" x="-14" size="5" rotate="true" text="0V"/>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3" width="10" antialias="false" height="8"/>
+        <line y1="60" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-159" length2="1.5" antialias="false" y2="60" x2="121"/>
+        <line y1="-20" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-158" length2="1.5" antialias="false" y2="-20" x2="122"/>
+        <input tagg="none" y="31.5" x="-17" size="12" text="CLIP 0.8.0.0 "/>
+        <input tagg="none" y="69.5" x="39" size="5" rotate="true" text="BUS"/>
+        <input tagg="none" y="69.5" x="56" size="5" rotate="true" text="BUS"/>
+        <input tagg="none" y="67.5" x="-2" size="5" rotate="true" text="12V"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-140" width="10" antialias="false" height="8"/>
+        <input tagg="none" y="-27.5" x="-157" size="5" rotate="true" text="01"/>
+        <input tagg="none" y="-27.5" x="-74" size="5" rotate="true" text="06"/>
+        <input tagg="none" y="-27.5" x="19" size="5" rotate="true" text="11"/>
+        <input tagg="none" y="-27.5" x="-1" size="5" rotate="true" text="10"/>
+        <input tagg="none" y="-27.5" x="-37" size="5" rotate="true" text="08"/>
+        <input tagg="none" y="-27.5" x="-87" size="5" rotate="true" text="05"/>
+        <input tagg="none" y="-27.5" x="-122" size="5" rotate="true" text="03"/>
+        <input tagg="none" y="-27.5" x="-143" size="5" rotate="true" text="02"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-155" width="10" antialias="false" height="8"/>
+        <input tagg="none" y="-27.5" x="-109" size="5" rotate="true" text="04"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-105" width="10" antialias="false" height="8"/>
+        <input tagg="none" y="-26.5" x="-53" size="5" rotate="true" text="07"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-35" width="10" antialias="false" height="8"/>
+        <input tagg="none" y="-27.5" x="-18" size="5" rotate="true" text="09"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15" width="10" antialias="false" height="8"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" width="10" antialias="false" height="8"/>
+        <input tagg="none" y="-27.5" x="34" size="5" rotate="true" text="12"/>
+        <input tagg="none" y="-27.5" x="88" size="5" rotate="true" text="15"/>
+        <input tagg="none" y="-27.5" x="53" size="5" rotate="true" text="13"/>
+        <input tagg="none" y="-27.5" x="69" size="5" rotate="true" text="14"/>
+        <input tagg="none" y="-27.5" x="105" size="5" rotate="true" text="16"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="91" width="10" antialias="false" height="8"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="70" width="10" antialias="false" height="8"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="20" width="10" antialias="false" height="8"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="35" width="10" antialias="false" height="8"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="106" width="10" antialias="false" height="8"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="55" width="10" antialias="false" height="8"/>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="46" width="10" antialias="false" height="8"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-85" width="10" antialias="false" height="8"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-50" width="10" antialias="true" height="8"/>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="61" width="10" antialias="false" height="8"/>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" width="10" antialias="false" height="8"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-120" width="10" antialias="false" height="8"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-70" width="10" antialias="false" height="8"/>
+        <terminal y="-49" x="-150" orientation="n"/>
+        <terminal y="89" x="66" orientation="s"/>
+        <terminal y="88" x="8" orientation="s"/>
+        <terminal y="88" x="-5" orientation="s"/>
+        <terminal y="88" x="51" orientation="s"/>
+        <terminal y="-49" x="96" orientation="n"/>
+        <terminal y="-49" x="111" orientation="n"/>
+        <terminal y="-49" x="5" orientation="n"/>
+        <terminal y="-49" x="-30" orientation="n"/>
+        <terminal y="-49" x="-10" orientation="n"/>
+        <terminal y="-49" x="-65" orientation="n"/>
+        <terminal y="-49" x="-45" orientation="n"/>
+        <terminal y="-49" x="-100" orientation="n"/>
+        <terminal y="-49" x="-80" orientation="n"/>
+        <terminal y="-49" x="-135" orientation="n"/>
+        <terminal y="-49" x="-115" orientation="n"/>
+        <terminal y="-49" x="60" orientation="n"/>
+        <terminal y="-49" x="40" orientation="n"/>
+        <terminal y="-49" x="25" orientation="n"/>
+        <terminal y="-49" x="75" orientation="n"/>
     </description>
 </definition>

@@ -1,50 +1,52 @@
-<definition width="760" version="0.3" hotspot_x="5" hotspot_y="4" height="160" type="element" orientation="dnyn">
-<uuid uuid="{FEE92675-9569-4BA8-874A-FFF6BECDBCAE}"/><names>
+<definition type="element" version="0.5" hotspot_y="3" width="760" height="160" orientation="dyyy" link_type="simple" hotspot_x="5">
+    <uuid uuid="{ad46efe0-7ab7-4f0b-a9cf-025d9b74a51c}"/>
+    <names>
         <name lang="ar">لوحة تغذية </name>
+        <name lang="pl">Zasilacz</name>
         <name lang="pt">fonte alimentação</name>
-        <name lang="el">Τροφοδοτικό</name>
+        <name lang="nl">Voedingskaart</name>
         <name lang="en">Power board</name>
         <name lang="it">Scheda di alimentazione</name>
-        <name lang="fr">Carte d'Alimentation</name>
-        <name lang="pl">Zasilacz</name>
         <name lang="es">Fuente de alimentación</name>
+        <name lang="el">Τροφοδοτικό</name>
         <name lang="cs">Podavač</name>
-        <name lang="nl">Voedingskaart</name>
+        <name lang="fr">Carte d'Alimentation</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="750" x="0" y="0" antialias="false" height="150" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="644" y="144" size="9" text="0V"/>
-        <text x="595" y="144" size="9" text="V+"/>
-        <text x="397" y="144" size="9" text="B-"/>
-        <text x="345" y="144" size="9" text="B+"/>
-        <text x="637" y="14" size="9" text="EMPLACEMENT"/>
-        <text x="738" y="12.667" size="9" text="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="662" y2="131" x2="662"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="592" y2="131" x2="592"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="642" y2="131" x2="642"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="612" y2="131" x2="612"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="92" y2="131" x2="92"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="112" y2="131" x2="112"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="162" y2="131" x2="162"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="142" y2="131" x2="142"/>
-        <text x="147.5" y="144" size="9" text="N"/>
-        <text x="99" y="144" size="9" text="L"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="412" y2="131" x2="412"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="392" y2="131" x2="392"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="148.667" x1="362" y2="130.667" x2="362"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="150" x1="342" y2="131" x2="342"/>
-        <text x="203" y="85" size="25" text="CARTE ALIMENTATION"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20" x1="632" y2="0" x2="632"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" x1="732" y2="20" x2="732"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="131" x1="0" y2="131" x2="750"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20" x1="0" y2="20" x2="750"/>
-        <terminal x="100" y="151" orientation="s"/>
-        <terminal x="150" y="151" orientation="s"/>
-        <terminal x="350" y="151" orientation="s"/>
-        <terminal x="400" y="151" orientation="s"/>
-        <terminal x="600" y="151" orientation="s"/>
-        <terminal x="650" y="151" orientation="s"/>
+        <input tagg="label" y="25.55" x="763.5" size="9" rotate="true" text="_"/>
+        <rect y="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" width="750" antialias="false" height="150"/>
+        <text y="144" x="644" size="9" text="0V"/>
+        <text y="144" x="595" size="9" text="V+"/>
+        <text y="144" x="397" size="9" text="B-"/>
+        <text y="144" x="345" size="9" text="B+"/>
+        <text y="14" x="637" size="9" text="EMPLACEMENT"/>
+        <text y="12.667" x="738" size="9" text="0"/>
+        <line y1="150" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="662" length2="1.5" antialias="false" y2="131" x2="662"/>
+        <line y1="150" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="592" length2="1.5" antialias="false" y2="131" x2="592"/>
+        <line y1="150" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="642" length2="1.5" antialias="false" y2="131" x2="642"/>
+        <line y1="150" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="612" length2="1.5" antialias="false" y2="131" x2="612"/>
+        <line y1="150" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="92" length2="1.5" antialias="false" y2="131" x2="92"/>
+        <line y1="150" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="112" length2="1.5" antialias="false" y2="131" x2="112"/>
+        <line y1="150" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="162" length2="1.5" antialias="false" y2="131" x2="162"/>
+        <line y1="150" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="142" length2="1.5" antialias="false" y2="131" x2="142"/>
+        <text y="144" x="147.5" size="9" text="N"/>
+        <text y="144" x="99" size="9" text="L"/>
+        <line y1="150" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="412" length2="1.5" antialias="false" y2="131" x2="412"/>
+        <line y1="150" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="392" length2="1.5" antialias="false" y2="131" x2="392"/>
+        <line y1="148.667" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="362" length2="1.5" antialias="false" y2="130.667" x2="362"/>
+        <line y1="150" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="342" length2="1.5" antialias="false" y2="131" x2="342"/>
+        <text y="85" x="203" size="25" text="CARTE ALIMENTATION"/>
+        <line y1="20" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="632" length2="1.5" antialias="false" y2="0" x2="632"/>
+        <line y1="0" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="732" length2="1.5" antialias="false" y2="20" x2="732"/>
+        <line y1="131" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="0" length2="1.5" antialias="false" y2="131" x2="750"/>
+        <line y1="20" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="0" length2="1.5" antialias="false" y2="20" x2="750"/>
+        <terminal y="151" x="100" orientation="s"/>
+        <terminal y="151" x="350" orientation="s"/>
+        <terminal y="151" x="400" orientation="s"/>
+        <terminal y="151" x="600" orientation="s"/>
+        <terminal y="151" x="650" orientation="s"/>
+        <terminal y="151" x="150" orientation="s"/>
     </description>
 </definition>

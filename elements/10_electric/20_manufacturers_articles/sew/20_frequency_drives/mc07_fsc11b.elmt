@@ -1,62 +1,63 @@
-<definition width="300" version="0.3" hotspot_x="0" hotspot_y="0" height="120" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{BCB576B8-4F55-4587-BB72-FEFCCF3E5AED}"/><names>
+<definition type="element" version="0.5" hotspot_y="48" width="310" height="110" orientation="dyyy" link_type="simple" hotspot_x="145">
+    <uuid uuid="{909e70b6-cf49-4ea5-a91a-db461e28ad69}"/>
+    <names>
         <name lang="ar">MC07 FSC11B</name>
+        <name lang="pl">MC07 FSC11B</name>
+        <name lang="nl">MC07 FSC11B</name>
         <name lang="en">MC07 FSC11B</name>
         <name lang="it">MC07 FSC11B</name>
-        <name lang="fr">MC07 FSC11B</name>
-        <name lang="pl">MC07 FSC11B</name>
         <name lang="cs">MC07 FSC11B</name>
-        <name lang="nl">MC07 FSC11B</name>
+        <name lang="fr">MC07 FSC11B</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="105.657" y="24.2426" size="5" rotation="315" text="SC11"/>
-        <text x="66.6569" y="24.2426" size="5" rotation="315" text="GND"/>
-        <text x="72" y="25" size="5" rotation="180" text="T"/>
-        <text x="34.9408" y="25.2426" size="5" rotation="315" text="ST12"/>
-        <input x="227" y="95" size="7" rotate="true" text="ON_"/>
-        <text x="8" y="31" size="5" text="H"/>
-        <text x="29" y="43" size="9" text="X45"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="29" x1="90.5" y2="33" x2="90.5"/>
-        <text x="134.657" y="24.2426" size="5" rotation="315" text="SC12"/>
-        <text x="38" y="31" size="5" text="L"/>
-        <rect width="52" x="177" y="90" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="165.819" y="24.2426" size="5" rotation="315" text="GND"/>
-        <text x="35" y="99" size="9" text="S1"/>
-        <text x="161" y="99" size="9" text="S2"/>
-        <text x="257.144" y="24.2426" size="5" rotation="315" text="GND"/>
-        <text x="281.307" y="28.2426" size="5" rotation="315" text="24VIO"/>
-        <text x="225.982" y="24.2426" size="5" rotation="315" text="SC22"/>
-        <rect width="26" x="203" y="90" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <text x="196.982" y="24.2426" size="5" rotation="315" text="SC21"/>
-        <text x="188" y="43" size="9" text="X46"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="29" x1="295.5" y2="33" x2="295.5"/>
-        <text x="288" y="30" size="5" text="7"/>
-        <text x="108" y="30" size="5" text="1"/>
-        <text x="168" y="30" size="5" text="3"/>
-        <text x="138" y="30" size="5" text="2"/>
-        <text x="198" y="30" size="5" text="4"/>
-        <text x="258" y="30" size="5" text="6"/>
-        <text x="228" y="30" size="5" text="5"/>
-        <text x="185" y="75" size="9" text="FSC11B"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x1="7" y2="33" x2="295"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="29" x1="6" y2="33" x2="6"/>
-        <input x="47" y="68" size="9" rotate="true" text="MC07-b_"/>
-        <text x="6.65685" y="24.2426" size="5" rotation="315" text="ST11"/>
-        <rect width="52" x="50" y="90" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="26" x="76" y="90" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <input x="100" y="96" size="7" rotate="true" text="ON_"/>
-        <rect width="294" x="3" y="6" antialias="false" height="103" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="10" y="6" orientation="n"/>
-        <terminal x="40" y="6" orientation="n"/>
-        <terminal x="70" y="6" orientation="n"/>
-        <terminal x="110" y="6" orientation="n"/>
-        <terminal x="140" y="6" orientation="n"/>
-        <terminal x="170" y="6" orientation="n"/>
-        <terminal x="200" y="6" orientation="n"/>
-        <terminal x="230" y="6" orientation="n"/>
-        <terminal x="260" y="6" orientation="n"/>
-        <terminal x="290" y="6" orientation="n"/>
+        <text rotation="315" y="-25.7574" x="-34.343" size="5" text="SC11"/>
+        <text rotation="315" y="-25.7574" x="-73.3431" size="5" text="GND"/>
+        <text rotation="180" y="-25" x="-68" size="5" text="T"/>
+        <text rotation="315" y="-24.7574" x="-105.059" size="5" text="ST12"/>
+        <input tagg="none" y="45" x="87" size="7" rotate="true" text="ON_"/>
+        <text y="-19" x="-132" size="5" text="H"/>
+        <text y="-7" x="-111" size="9" text="X45"/>
+        <line y1="-21" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-49.5" length2="1.5" antialias="false" y2="-17" x2="-49.5"/>
+        <text rotation="315" y="-25.7574" x="-5.343" size="5" text="SC12"/>
+        <text y="-19" x="-102" size="5" text="L"/>
+        <rect y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="37" width="52" antialias="false" height="10"/>
+        <text rotation="315" y="-25.7574" x="25.819" size="5" text="GND"/>
+        <text y="49" x="-105" size="9" text="S1"/>
+        <text y="49" x="21" size="9" text="S2"/>
+        <text rotation="315" y="-25.7574" x="117.144" size="5" text="GND"/>
+        <text rotation="315" y="-21.7574" x="141.307" size="5" text="24VIO"/>
+        <text rotation="315" y="-25.7574" x="85.982" size="5" text="SC22"/>
+        <rect y="40" style="line-style:normal;line-weight:normal;filling:black;color:black" x="63" width="26" antialias="false" height="10"/>
+        <text rotation="315" y="-25.7574" x="56.982" size="5" text="SC21"/>
+        <text y="-7" x="48" size="9" text="X46"/>
+        <line y1="-21" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="155.5" length2="1.5" antialias="false" y2="-17" x2="155.5"/>
+        <text y="-20" x="148" size="5" text="7"/>
+        <text y="-20" x="-32" size="5" text="1"/>
+        <text y="-20" x="28" size="5" text="3"/>
+        <text y="-20" x="-2" size="5" text="2"/>
+        <text y="-20" x="58" size="5" text="4"/>
+        <text y="-20" x="118" size="5" text="6"/>
+        <text y="-20" x="88" size="5" text="5"/>
+        <text y="25" x="45" size="9" text="FSC11B"/>
+        <line y1="-17" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-133" length2="1.5" antialias="false" y2="-17" x2="155"/>
+        <line y1="-21" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-134" length2="1.5" antialias="false" y2="-17" x2="-134"/>
+        <input tagg="label" y="18" x="-93" size="9" rotate="true" text="MC07-b_"/>
+        <text rotation="315" y="-25.7574" x="-133.343" size="5" text="ST11"/>
+        <rect y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-90" width="52" antialias="false" height="10"/>
+        <rect y="40" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-64" width="26" antialias="false" height="10"/>
+        <input tagg="none" y="46" x="-40" size="7" rotate="true" text="ON_"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-137" width="294" antialias="false" height="103"/>
+        <terminal y="-44" x="-130" orientation="n"/>
+        <terminal y="-44" x="-100" orientation="n"/>
+        <terminal y="-44" x="-70" orientation="n"/>
+        <terminal y="-44" x="-30" orientation="n"/>
+        <terminal y="-44" x="0" orientation="n"/>
+        <terminal y="-44" x="30" orientation="n"/>
+        <terminal y="-44" x="60" orientation="n"/>
+        <terminal y="-44" x="90" orientation="n"/>
+        <terminal y="-44" x="120" orientation="n"/>
+        <terminal y="-44" x="150" orientation="n"/>
     </description>
 </definition>

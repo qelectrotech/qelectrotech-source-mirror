@@ -1,33 +1,35 @@
-<definition width="110" version="0.3" hotspot_x="-8" hotspot_y="-6" height="150" type="element" orientation="dyyy">
-<uuid uuid="{1881A650-10CB-4D7B-BE0E-D06DB6DEEC43}"/><names>
+<definition type="element" version="0.5" hotspot_y="79" width="110" height="160" orientation="dyyy" link_type="simple" hotspot_x="52">
+    <uuid uuid="{3bb778b5-d47f-4873-8683-c27b57d5e293}"/>
+    <names>
+        <name lang="pl">FX3-CPU000000</name>
+        <name lang="nl">FX3-CPU000000</name>
         <name lang="en">MAIN UNIT CPU000</name>
         <name lang="it">UNITÀ CPU000</name>
-        <name lang="fr">MAIN UNIT CPU000</name>
-        <name lang="pl">FX3-CPU000000</name>
         <name lang="es">UNIDAD PRINCIPAL CPU000</name>
         <name lang="cs">FX3-CPU000000</name>
-        <name lang="nl">FX3-CPU000000</name>
+        <name lang="fr">MAIN UNIT CPU000</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="14" y="31" size="4" text="MEMORY"/>
-        <rect width="16" x="82" y="10" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="154" x1="10" y2="154" x2="110"/>
-        <text x="85" y="19" size="6" text="A2"/>
-        <rect width="8" x="106" y="23" antialias="false" height="122" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="113" y="103" size="6" rotation="270" text="FLEX BUS +"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="10" x2="110"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="154" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="110" y2="22" x2="110"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="145" x1="110" y2="154" x2="110"/>
-        <text x="55" y="19" size="6" text="A1"/>
-        <rect width="90" x="10" y="10" antialias="false" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="40" y2="34" x2="40"/>
-        <text x="64" y="31" size="4" text="SUPPLY"/>
-        <rect width="16" x="51" y="10" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="23" y="148" size="7" text="FX3-CPU000000"/>
-        <terminal x="90" y="10" orientation="n"/>
-        <terminal x="60" y="10" orientation="n"/>
+        <input tagg="label" y="-54.45" x="62.5" size="9" rotate="true" text="_"/>
+        <text y="-49" x="-46" size="4" text="MEMORY"/>
+        <rect y="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" x="22" width="16" antialias="false" height="10"/>
+        <line y1="74" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-50" length2="1.5" antialias="false" y2="74" x2="50"/>
+        <text y="-61" x="25" size="6" text="A2"/>
+        <rect y="-57" style="line-style:normal;line-weight:normal;filling:none;color:black" x="46" width="8" antialias="false" height="122"/>
+        <text rotation="270" y="23" x="53" size="6" text="FLEX BUS +"/>
+        <line y1="-70" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-50" length2="1.5" antialias="false" y2="-70" x2="50"/>
+        <line y1="-70" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-50" length2="1.5" antialias="false" y2="74" x2="-50"/>
+        <line y1="-70" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="50" length2="1.5" antialias="false" y2="-58" x2="50"/>
+        <line y1="65" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="50" length2="1.5" antialias="false" y2="74" x2="50"/>
+        <text y="-61" x="-5" size="6" text="A1"/>
+        <rect y="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-50" width="90" antialias="false" height="25"/>
+        <line y1="-70" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" length2="1.5" antialias="false" y2="-46" x2="-20"/>
+        <text y="-49" x="4" size="4" text="SUPPLY"/>
+        <rect y="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9" width="16" antialias="false" height="10"/>
+        <text y="68" x="-37" size="7" text="FX3-CPU000000"/>
+        <terminal y="-70" x="0" orientation="n"/>
+        <terminal y="-70" x="30" orientation="n"/>
     </description>
 </definition>

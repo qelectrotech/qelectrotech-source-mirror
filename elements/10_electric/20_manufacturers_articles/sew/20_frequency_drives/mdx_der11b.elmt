@@ -1,96 +1,97 @@
-<definition width="300" version="0.3" hotspot_x="0" hotspot_y="0" height="150" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{C65DF94C-AFC9-449F-806C-2D11C7D44713}"/><names>
+<definition type="element" version="0.5" hotspot_y="73" width="310" height="150" orientation="dyyy" link_type="simple" hotspot_x="153">
+    <uuid uuid="{a5397caa-7230-426a-981e-d54117b0f7c8}"/>
+    <names>
         <name lang="ar">MDX DER11B</name>
+        <name lang="pl">MDX DER11B</name>
+        <name lang="nl">MDX DER11B</name>
         <name lang="en">MDX DER11B</name>
         <name lang="it">MDX DER11B</name>
-        <name lang="fr">MDX DER11B</name>
-        <name lang="pl">MDX DER11B</name>
         <name lang="cs">MDX DER11B</name>
-        <name lang="nl">MDX DER11B</name>
+        <name lang="fr">MDX DER11B</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="182.778" y="140.364" size="7" rotation="315" text="COS-"/>
-        <text x="163.778" y="138.364" size="7" rotation="315" text="SIN-"/>
-        <text x="204.778" y="139.364" size="7" rotation="315" text="REF-"/>
-        <text x="30.8195" y="20.364" size="7" rotation="315" text="B"/>
-        <text x="207.778" y="22.364" size="7" rotation="315" text="/C"/>
-        <text x="243" y="23" size="5" text="RESERVE"/>
-        <text x="223.657" y="26.2426" size="5" rotation="315" text="DATA-"/>
-        <text x="188.778" y="21.364" size="7" rotation="315" text="/B"/>
-        <text x="50.1537" y="20.364" size="7" rotation="315" text="C"/>
-        <text x="167.778" y="21.364" size="7" rotation="315" text="/A"/>
-        <text x="64.195" y="26.364" size="5" rotation="315" text="DATA+"/>
-        <text x="144.657" y="24.2426" size="5" rotation="315" text="DGND"/>
-        <text x="122.657" y="29.2426" size="5" rotation="315" text="COMMUT"/>
-        <text x="286.657" y="22.2426" size="5" rotation="315" text="DC+"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="109" x1="240" y2="113" x2="240"/>
-        <text x="138" y="107" size="9" text="X15"/>
-        <text x="130" y="43" size="9" text="X14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="109" x1="66" y2="113" x2="66"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="29" x1="295.5" y2="33" x2="295.5"/>
-        <text x="142.95" y="139.536" size="4" rotation="315" text="TF/TH/KTY-"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="109" x1="66.525" y2="109" x2="240"/>
-        <text x="82" y="23" size="5" text="RESERVE"/>
-        <text x="246" y="31" size="5" text="13"/>
-        <text x="186" y="31" size="5" text="10"/>
-        <text x="128" y="31" size="5" text="7"/>
-        <text x="206" y="31" size="5" text="11"/>
-        <text x="226" y="31" size="5" text="12"/>
-        <text x="266" y="31" size="5" text="14"/>
-        <text x="227" y="118" size="5" text="9"/>
-        <text x="286" y="31" size="5" text="15"/>
-        <text x="168" y="31" size="5" text="9"/>
-        <text x="8" y="31" size="5" text="1"/>
-        <text x="48" y="31" size="5" text="3"/>
-        <text x="28" y="31" size="5" text="2"/>
-        <text x="68" y="31" size="5" text="4"/>
-        <text x="148" y="31" size="5" text="8"/>
-        <text x="108" y="31" size="5" text="6"/>
-        <text x="88" y="31" size="5" text="5"/>
-        <text x="127.778" y="138.364" size="7" rotation="315" text="NC"/>
-        <text x="222.95" y="140.536" size="4" rotation="315" text="TF/TH/KTY-"/>
-        <text x="90.8195" y="137.364" size="7" rotation="315" text="COS+"/>
-        <text x="110.154" y="137.364" size="7" rotation="315" text="REF+"/>
-        <text x="207" y="118" size="5" text="8"/>
-        <text x="67" y="118" size="5" text="1"/>
-        <text x="87" y="118" size="5" text="2"/>
-        <text x="187" y="118" size="5" text="7"/>
-        <text x="107" y="118" size="5" text="3"/>
-        <text x="70.7782" y="136.364" size="7" rotation="315" text="SIN+"/>
-        <text x="147" y="118" size="5" text="5"/>
-        <text x="167" y="118" size="5" text="6"/>
-        <text x="127" y="118" size="5" text="4"/>
-        <text x="10.7782" y="20.364" size="7" rotation="315" text="A"/>
-        <text x="185" y="75" size="9" text="DER11B"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x1="7" y2="33" x2="295"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="29" x1="6" y2="33" x2="6"/>
-        <input x="47" y="68" size="9" rotate="true" text="MDX_"/>
-        <rect width="293" x="4" y="6" antialias="false" height="135" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="10" y="6" orientation="n"/>
-        <terminal x="30" y="6" orientation="n"/>
-        <terminal x="50" y="6" orientation="n"/>
-        <terminal x="70" y="6" orientation="n"/>
-        <terminal x="90" y="6" orientation="n"/>
-        <terminal x="110" y="6" orientation="n"/>
-        <terminal x="130" y="6" orientation="n"/>
-        <terminal x="150" y="6" orientation="n"/>
-        <terminal x="170" y="6" orientation="n"/>
-        <terminal x="190" y="6" orientation="n"/>
-        <terminal x="210" y="6" orientation="n"/>
-        <terminal x="230" y="6" orientation="n"/>
-        <terminal x="250" y="6" orientation="n"/>
-        <terminal x="270" y="6" orientation="n"/>
-        <terminal x="290" y="6" orientation="n"/>
-        <terminal x="70" y="141" orientation="s"/>
-        <terminal x="90" y="141" orientation="s"/>
-        <terminal x="110" y="141" orientation="s"/>
-        <terminal x="130" y="141" orientation="s"/>
-        <terminal x="150" y="141" orientation="s"/>
-        <terminal x="170" y="141" orientation="s"/>
-        <terminal x="190" y="141" orientation="s"/>
-        <terminal x="210" y="141" orientation="s"/>
-        <terminal x="230" y="141" orientation="s"/>
+        <text rotation="315" y="70.364" x="32.778" size="7" text="COS-"/>
+        <text rotation="315" y="68.364" x="13.778" size="7" text="SIN-"/>
+        <text rotation="315" y="69.364" x="54.778" size="7" text="REF-"/>
+        <text rotation="315" y="-49.636" x="-119.18" size="7" text="B"/>
+        <text rotation="315" y="-47.636" x="57.778" size="7" text="/C"/>
+        <text y="-47" x="93" size="5" text="RESERVE"/>
+        <text rotation="315" y="-43.7574" x="73.657" size="5" text="DATA-"/>
+        <text rotation="315" y="-48.636" x="38.778" size="7" text="/B"/>
+        <text rotation="315" y="-49.636" x="-99.8463" size="7" text="C"/>
+        <text rotation="315" y="-48.636" x="17.778" size="7" text="/A"/>
+        <text rotation="315" y="-43.636" x="-85.805" size="5" text="DATA+"/>
+        <text rotation="315" y="-45.7574" x="-5.343" size="5" text="DGND"/>
+        <text rotation="315" y="-40.7574" x="-27.343" size="5" text="COMMUT"/>
+        <text rotation="315" y="-47.7574" x="136.657" size="5" text="DC+"/>
+        <line y1="39" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="90" length2="1.5" antialias="false" y2="43" x2="90"/>
+        <text y="37" x="-12" size="9" text="X15"/>
+        <text y="-27" x="-20" size="9" text="X14"/>
+        <line y1="39" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-84" length2="1.5" antialias="false" y2="43" x2="-84"/>
+        <line y1="-41" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="145.5" length2="1.5" antialias="false" y2="-37" x2="145.5"/>
+        <text rotation="315" y="69.536" x="-7.05" size="4" text="TF/TH/KTY-"/>
+        <line y1="39" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-83.475" length2="1.5" antialias="false" y2="39" x2="90"/>
+        <text y="-47" x="-68" size="5" text="RESERVE"/>
+        <text y="-39" x="96" size="5" text="13"/>
+        <text y="-39" x="36" size="5" text="10"/>
+        <text y="-39" x="-22" size="5" text="7"/>
+        <text y="-39" x="56" size="5" text="11"/>
+        <text y="-39" x="76" size="5" text="12"/>
+        <text y="-39" x="116" size="5" text="14"/>
+        <text y="48" x="77" size="5" text="9"/>
+        <text y="-39" x="136" size="5" text="15"/>
+        <text y="-39" x="18" size="5" text="9"/>
+        <text y="-39" x="-142" size="5" text="1"/>
+        <text y="-39" x="-102" size="5" text="3"/>
+        <text y="-39" x="-122" size="5" text="2"/>
+        <text y="-39" x="-82" size="5" text="4"/>
+        <text y="-39" x="-2" size="5" text="8"/>
+        <text y="-39" x="-42" size="5" text="6"/>
+        <text y="-39" x="-62" size="5" text="5"/>
+        <text rotation="315" y="68.364" x="-22.222" size="7" text="NC"/>
+        <text rotation="315" y="70.536" x="72.95" size="4" text="TF/TH/KTY-"/>
+        <text rotation="315" y="67.364" x="-59.1805" size="7" text="COS+"/>
+        <text rotation="315" y="67.364" x="-39.846" size="7" text="REF+"/>
+        <text y="48" x="57" size="5" text="8"/>
+        <text y="48" x="-83" size="5" text="1"/>
+        <text y="48" x="-63" size="5" text="2"/>
+        <text y="48" x="37" size="5" text="7"/>
+        <text y="48" x="-43" size="5" text="3"/>
+        <text rotation="315" y="66.364" x="-79.2218" size="7" text="SIN+"/>
+        <text y="48" x="-3" size="5" text="5"/>
+        <text y="48" x="17" size="5" text="6"/>
+        <text y="48" x="-23" size="5" text="4"/>
+        <text rotation="315" y="-49.636" x="-139.222" size="7" text="A"/>
+        <text y="5" x="35" size="9" text="DER11B"/>
+        <line y1="-37" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-143" length2="1.5" antialias="false" y2="-37" x2="145"/>
+        <line y1="-41" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-144" length2="1.5" antialias="false" y2="-37" x2="-144"/>
+        <input tagg="label" y="-2" x="-103" size="9" rotate="true" text="MDX_"/>
+        <rect y="-64" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-146" width="293" antialias="false" height="135"/>
+        <terminal y="-64" x="0" orientation="n"/>
+        <terminal y="-64" x="-140" orientation="n"/>
+        <terminal y="-64" x="-20" orientation="n"/>
+        <terminal y="-64" x="-120" orientation="n"/>
+        <terminal y="-64" x="-100" orientation="n"/>
+        <terminal y="-64" x="-80" orientation="n"/>
+        <terminal y="-64" x="-60" orientation="n"/>
+        <terminal y="-64" x="-40" orientation="n"/>
+        <terminal y="-64" x="20" orientation="n"/>
+        <terminal y="-64" x="40" orientation="n"/>
+        <terminal y="-64" x="60" orientation="n"/>
+        <terminal y="-64" x="80" orientation="n"/>
+        <terminal y="-64" x="100" orientation="n"/>
+        <terminal y="-64" x="120" orientation="n"/>
+        <terminal y="-64" x="140" orientation="n"/>
+        <terminal y="71" x="-80" orientation="s"/>
+        <terminal y="71" x="-60" orientation="s"/>
+        <terminal y="71" x="-40" orientation="s"/>
+        <terminal y="71" x="-20" orientation="s"/>
+        <terminal y="71" x="0" orientation="s"/>
+        <terminal y="71" x="20" orientation="s"/>
+        <terminal y="71" x="40" orientation="s"/>
+        <terminal y="71" x="60" orientation="s"/>
+        <terminal y="71" x="80" orientation="s"/>
     </description>
 </definition>

@@ -1,59 +1,60 @@
-<definition hotspot_x="5" orientation="dyyy" type="element" hotspot_y="5" link_type="simple" height="90" width="770" version="0.5">
-<uuid uuid="{23156B10-2F23-43EF-9E2B-47EEF49E68B5}"/><names>
+<definition type="element" version="0.5" hotspot_y="5" width="770" height="90" orientation="dyyy" link_type="simple" hotspot_x="5">
+    <uuid uuid="{93b196ef-fe3f-4c6a-bc7f-999631fde7c5}"/>
+    <names>
         <name lang="en">007-0AA00</name>
     </names>
     <informations></informations>
     <description>
-        <text size="8" y="74" text="VIPA" x="725"/>
-        <text size="6" y="43" text="NC" x="94"/>
-        <text size="8" y="74" text="PM DC 24VCD 10 A - POWER MODULE" x="11"/>
-        <text size="6" y="43" text="DC 24 V" x="325"/>
-        <text size="8" y="74" text="007-0AA00" x="348"/>
-        <text size="6" y="43" text="0 V" x="413"/>
-        <text size="6" y="43" text="SYS 0 V" x="645"/>
-        <text size="6" y="43" text="NC" x="174"/>
-        <text size="6" y="43" text="0 V" x="493"/>
-        <text size="6" y="43" text="SYS DC 24 V" x="555"/>
-        <input size="6" y="40" text="" x="237" tagg="none" rotate="true"/>
-        <input size="7" y="26.5" text="SLOT X" x="764" tagg="none" rotate="true"/>
-        <line y2="17" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="660" end1="none" length2="1.5" x1="660" y1="10" length1="1.5"/>
-        <line y2="17" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="500" end1="none" length2="1.5" x1="500" y1="10" length1="1.5"/>
-        <line y2="17" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="340" end1="none" length2="1.5" x1="340" y1="10" length1="1.5"/>
-        <line y2="0" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="760" end1="none" length2="1.5" x1="0" y1="0" length1="1.5"/>
-        <line y2="17" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="180" end1="none" length2="1.5" x1="180" y1="10" length1="1.5"/>
-        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="17.5" x="497.5"/>
-        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="17.5" x="657.5"/>
-        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="17.5" x="577.5"/>
-        <line y2="17" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="420" end1="none" length2="1.5" x1="420" y1="10" length1="1.5"/>
-        <line y2="17" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="260" end1="none" length2="1.5" x1="260" y1="10" length1="1.5"/>
-        <line y2="17" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="580" end1="none" length2="1.5" x1="580" y1="10" length1="1.5"/>
-        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="17.5" x="337.5"/>
-        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="17.5" x="257.5"/>
-        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="17.5" x="177.5"/>
-        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="17.5" x="417.5"/>
-        <text size="5" y="18" text="3" x="425"/>
-        <text size="5" y="18" text="8" x="665"/>
-        <text size="5" y="18" text="5" x="184"/>
-        <text size="5" y="18" text="6" x="345"/>
-        <text size="5" y="18" text="4" x="585"/>
-        <text size="5" y="18" text="7" x="505"/>
-        <text size="5" y="18" text="2" x="265"/>
-        <input size="9" y="9.5" text="A_" x="764" tagg="label" rotate="true"/>
-        <line y2="80" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="760" end1="none" length2="1.5" x1="0" y1="80" length1="1.5"/>
-        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="17.5" x="97.5"/>
-        <line y2="60" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="760" end1="none" length2="1.5" x1="0" y1="60" length1="1.5"/>
-        <text size="5" y="18" text="1" x="105"/>
-        <line y2="80" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" x1="0" y1="0" length1="1.5"/>
-        <line y2="80" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="760" end1="none" length2="1.5" x1="760" y1="0" length1="1.5"/>
-        <line y2="17" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="100" end1="none" length2="1.5" x1="100" y1="10" length1="1.5"/>
-        <text size="6" y="47" text="DC 24 V" x="244"/>
-        <terminal orientation="n" y="10" x="100"/>
-        <terminal orientation="n" y="10" x="180"/>
-        <terminal orientation="n" y="10" x="260"/>
-        <terminal orientation="n" y="10" x="340"/>
-        <terminal orientation="n" y="10" x="420"/>
-        <terminal orientation="n" y="10" x="500"/>
-        <terminal orientation="n" y="10" x="580"/>
-        <terminal orientation="n" y="10" x="660"/>
+        <text y="74" x="725" size="8" text="VIPA"/>
+        <text y="43" x="94" size="6" text="NC"/>
+        <text y="74" x="11" size="8" text="PM DC 24VCD 10 A - POWER MODULE"/>
+        <text y="43" x="325" size="6" text="DC 24 V"/>
+        <text y="74" x="348" size="8" text="007-0AA00"/>
+        <text y="43" x="413" size="6" text="0 V"/>
+        <text y="43" x="645" size="6" text="SYS 0 V"/>
+        <text y="43" x="174" size="6" text="NC"/>
+        <text y="43" x="493" size="6" text="0 V"/>
+        <text y="43" x="555" size="6" text="SYS DC 24 V"/>
+        <input tagg="none" y="40" x="237" size="6" rotate="true" text=""/>
+        <input tagg="none" y="26.5" x="764" size="7" rotate="true" text="SLOT X"/>
+        <line y1="10" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="660" length2="1.5" antialias="false" y2="17" x2="660"/>
+        <line y1="10" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="500" length2="1.5" antialias="false" y2="17" x2="500"/>
+        <line y1="10" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="340" length2="1.5" antialias="false" y2="17" x2="340"/>
+        <line y1="0" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" y2="0" x2="760"/>
+        <line y1="10" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="180" length2="1.5" antialias="false" y2="17" x2="180"/>
+        <circle diameter="5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="497.5" antialias="true"/>
+        <circle diameter="5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="657.5" antialias="true"/>
+        <circle diameter="5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="577.5" antialias="true"/>
+        <line y1="10" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="420" length2="1.5" antialias="false" y2="17" x2="420"/>
+        <line y1="10" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="260" length2="1.5" antialias="false" y2="17" x2="260"/>
+        <line y1="10" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="580" length2="1.5" antialias="false" y2="17" x2="580"/>
+        <circle diameter="5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="337.5" antialias="true"/>
+        <circle diameter="5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="257.5" antialias="true"/>
+        <circle diameter="5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="177.5" antialias="true"/>
+        <circle diameter="5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="417.5" antialias="true"/>
+        <text y="18" x="425" size="5" text="3"/>
+        <text y="18" x="665" size="5" text="8"/>
+        <text y="18" x="184" size="5" text="5"/>
+        <text y="18" x="345" size="5" text="6"/>
+        <text y="18" x="585" size="5" text="4"/>
+        <text y="18" x="505" size="5" text="7"/>
+        <text y="18" x="265" size="5" text="2"/>
+        <input tagg="label" y="9.5" x="764" size="9" rotate="true" text="A_"/>
+        <line y1="80" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" y2="80" x2="760"/>
+        <circle diameter="5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="97.5" antialias="true"/>
+        <line y1="60" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" y2="60" x2="760"/>
+        <text y="18" x="105" size="5" text="1"/>
+        <line y1="0" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" y2="80" x2="0"/>
+        <line y1="0" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="760" length2="1.5" antialias="false" y2="80" x2="760"/>
+        <line y1="10" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="100" length2="1.5" antialias="false" y2="17" x2="100"/>
+        <text y="47" x="244" size="6" text="DC 24 V"/>
+        <terminal y="10" x="100" orientation="n"/>
+        <terminal y="10" x="260" orientation="n"/>
+        <terminal y="10" x="500" orientation="n"/>
+        <terminal y="10" x="580" orientation="n"/>
+        <terminal y="10" x="340" orientation="n"/>
+        <terminal y="10" x="660" orientation="n"/>
+        <terminal y="10" x="420" orientation="n"/>
+        <terminal y="10" x="180" orientation="n"/>
     </description>
 </definition>
