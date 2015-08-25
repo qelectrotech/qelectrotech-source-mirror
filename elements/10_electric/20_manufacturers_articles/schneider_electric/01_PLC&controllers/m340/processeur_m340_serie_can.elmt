@@ -1,55 +1,56 @@
-<definition width="100" version="0.3" hotspot_x="-1" hotspot_y="-1" height="240" type="element" orientation="dyyy">
-<uuid uuid="{47F10A03-A790-49CC-8DD6-C9AE669C7AA5}"/><names>
-        <name lang="el">BMX P34 2010</name>
+<definition width="100" height="240" link_type="simple" hotspot_y="119" hotspot_x="50" version="0.5" type="element" orientation="dyyy">
+    <uuid uuid="{412b68af-150c-4a84-a197-2b99f55d82b0}"/>
+    <names>
+        <name lang="cs">BMX P34 2010</name>
+        <name lang="pl">BMX P34 2010</name>
         <name lang="en">BMX P34 2010</name>
         <name lang="it">BMX P34 2010</name>
+        <name lang="el">BMX P34 2010</name>
         <name lang="fr">BMX P34 2010</name>
-        <name lang="pl">BMX P34 2010</name>
-        <name lang="es">BMX P34 2010</name>
-        <name lang="cs">BMX P34 2010</name>
         <name lang="nl">BMX P34 2010</name>
+        <name lang="es">BMX P34 2010</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <ellipse width="1" x="23" y="203.5" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1" x="23" y="197.65" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1" x="23" y="210" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1" x="23" y="191.15" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1" x="28.5" y="213.9" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1" x="28.5" y="194.4" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1" x="28.5" y="207.4" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1" x="28.5" y="200.9" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90.25" x1="27.5" y2="122.25" x2="27.5"/>
-        <text x="94" y="231.25" size="7" rotation="270" text="BMX P34 2010"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="74.25" x1="74.5" y2="90.25" x2="74.5"/>
-        <text x="63" y="136" size="7" text="SERIAL"/>
-        <text x="38" y="116.25" size="7" rotation="270" text="MEM"/>
-        <rect width="15" x="46" y="131.25" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="2" x="44" y="139.25" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="94" x="3" y="3.25" antialias="false" height="232" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="92" x="4" y="3.25" antialias="false" height="47" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <rect width="10" x="70" y="71.25" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="74.25" x1="74" y2="90.25" x2="74"/>
-        <arc width="11" x="16.5" y="83.25" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:blue;color:black" start="180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90.25" x1="16" y2="122.25" x2="16"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="122.25" x1="16" y2="122.25" x2="27"/>
-        <polygon x4="18" y5="88.25" x5="19" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="88.25" x1="18" y2="88.25" x2="25" y3="93.25" x3="21" y4="88.25"/>
-        <polygon x4="96" y5="138.25" x5="97" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" closed="false" y1="139.25" x1="96" y2="146.25" x2="96" y3="142.25" x3="88" y4="139.25"/>
-        <text x="88" y="92.25" size="7" rotation="270" text="USB"/>
-        <input x="9" y="64.75" size="9" rotate="true" text="CPU_"/>
-        <rect width="23" x="15" y="174.25" antialias="false" height="54.6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="182.54" x1="31.5" y2="221.223" x2="31.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="189.046" x1="21" y2="214.067" x2="21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="182.05" x1="31.5" y2="189.2" x2="21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="221.05" x1="31.5" y2="213.9" x2="21"/>
-        <ellipse width="1" x="28.5" y="187.9" antialias="true" height="1.3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="16" y="168.25" size="7" text="CAN"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="234.25" x1="40" y2="141.25" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="140.25" x1="44" y2="140.25" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="232.25" x1="10" y2="199.25" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="198.25" x1="10" y2="198.25" x2="15"/>
-        <terminal x="40" y="236.25" orientation="s"/>
-        <terminal x="10" y="236.25" orientation="s"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1" height="1.3" x="-27" y="83.5" antialias="true"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1" height="1.3" x="-27" y="77.65" antialias="true"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1" height="1.3" x="-27" y="90" antialias="true"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1" height="1.3" x="-27" y="71.15" antialias="true"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1" height="1.3" x="-21.5" y="93.9" antialias="true"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1" height="1.3" x="-21.5" y="74.4" antialias="true"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1" height="1.3" x="-21.5" y="87.4" antialias="true"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1" height="1.3" x="-21.5" y="80.9" antialias="true"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="-29.75" y2="2.25" x2="-22.5" end1="none" x1="-22.5" length2="1.5" antialias="false"/>
+        <text size="7" x="44" text="BMX P34 2010" rotation="270" y="111.25"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="-45.75" y2="-29.75" x2="24.5" end1="none" x1="24.5" length2="1.5" antialias="false"/>
+        <text size="7" x="13" text="SERIAL" y="16"/>
+        <text size="7" x="-12" text="MEM" rotation="270" y="-3.75"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="15" height="20" x="-4" y="11.25" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="2" height="3" x="-6" y="19.25" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="94" height="232" x="-47" y="-116.75" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" width="92" height="47" x="-46" y="-116.75" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" height="22" x="20" y="-48.75" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="-45.75" y2="-29.75" x2="24" end1="none" x1="24" length2="1.5" antialias="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:blue;color:black" width="11" height="14" x="-33.5" y="-36.75" angle="-180" start="180" antialias="true"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="-29.75" y2="2.25" x2="-34" end1="none" x1="-34" length2="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="2.25" y2="2.25" x2="-23" end1="none" x1="-34" length2="1.5" antialias="false"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y5="-31.75" x4="-32" y4="-31.75" y1="-31.75" y2="-31.75" x2="-25" closed="false" x5="-31" y3="-26.75" x1="-32" x3="-29" antialias="false"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" y5="18.25" x4="46" y4="19.25" y1="19.25" y2="26.25" x2="46" closed="false" x5="47" y3="22.25" x1="46" x3="38" antialias="false"/>
+        <text size="7" x="38" text="USB" rotation="270" y="-27.75"/>
+        <input rotate="true" size="9" x="-41" text="CPU_" tagg="label" y="-55.25"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="23" height="54.6" x="-35" y="54.25" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="62.54" y2="101.223" x2="-18.5" end1="none" x1="-18.5" length2="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="69.046" y2="94.067" x2="-29" end1="none" x1="-29" length2="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="62.05" y2="69.2" x2="-29" end1="none" x1="-18.5" length2="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="101.05" y2="93.9" x2="-29" end1="none" x1="-18.5" length2="1.5" antialias="false"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1" height="1.3" x="-21.5" y="67.9" antialias="true"/>
+        <text size="7" x="-34" text="CAN" y="48.25"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="114.25" y2="21.25" x2="-10" end1="none" x1="-10" length2="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="20.25" y2="20.25" x2="-10" end1="none" x1="-6" length2="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="112.25" y2="79.25" x2="-40" end1="none" x1="-40" length2="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="78.25" y2="78.25" x2="-35" end1="none" x1="-40" length2="1.5" antialias="false"/>
+        <terminal x="-10" orientation="s" y="116.25"/>
+        <terminal x="-40" orientation="s" y="116.25"/>
     </description>
 </definition>

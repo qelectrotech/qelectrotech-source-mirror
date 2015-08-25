@@ -1,77 +1,78 @@
-<definition width="380" version="0.3" hotspot_x="10" hotspot_y="10" height="90" type="element" orientation="dyyy">
-<uuid uuid="{41F60A2F-4901-41C7-8CED-A7155C15068E}"/><names>
-        <name lang="el">TWDALM3LT</name>
+<definition width="370" height="80" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element" orientation="dyyy">
+    <uuid uuid="{182a35fb-8e8a-4e37-9c07-f4f58dbdd6f6}"/>
+    <names>
+        <name lang="cs">TWDALM3LT</name>
+        <name lang="pl">TWDALM3LT</name>
         <name lang="en">TWDALM3LT</name>
         <name lang="it">TWDALM3LT</name>
+        <name lang="el">TWDALM3LT</name>
         <name lang="fr">TWDALM3LT</name>
-        <name lang="pl">TWDALM3LT</name>
-        <name lang="cs">TWDALM3LT</name>
-        <name lang="es">TWDALM3LT</name>
         <name lang="nl">TWDALM3LT</name>
+        <name lang="es">TWDALM3LT</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="343" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="68" x1="123" y2="68" x2="360" y3="2" x3="360" y4="2"/>
-        <polygon x4="230" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="7" x1="130" y2="30" x2="130" y3="30" x3="230" y4="6"/>
-        <polygon x4="350" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="6" x1="250" y2="29" x2="250" y3="29" x3="350" y4="5"/>
-        <text x="217" y="22" size="5" text="B"/>
-        <circle x="257.75" y="-0.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <text x="177" y="22" size="5" text="B'"/>
-        <circle x="137.75" y="-0.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <text x="297" y="21" size="5" text="B'"/>
-        <text x="337" y="21" size="5" text="B"/>
-        <polygon x4="130" y5="64" x5="130" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="64" x1="70" y2="40" x2="70" y3="40" x3="130" y4="64"/>
-        <text x="294" y="28" size="5" text="IN 1"/>
-        <text x="174" y="29" size="5" text="IN 0"/>
-        <input x="335" y="10.5" size="5" rotate="true" text="-"/>
-        <input x="35" y="12.5" size="5" rotate="true" text="-"/>
-        <input x="293" y="11.5" size="5" rotate="true" text="+"/>
-        <circle x="337.75" y="-0.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="297.75" y="-0.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <input x="215" y="10.5" size="5" rotate="true" text="-"/>
-        <text x="258" y="21" size="5" text="A"/>
-        <input x="74" y="58.5" size="5" rotate="true" text="+"/>
-        <input x="115" y="58.5" size="5" rotate="true" text="-"/>
-        <input x="173" y="11.5" size="5" rotate="true" text="+"/>
-        <circle x="217.75" y="-0.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="37.75" y="-0.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="57.75" y="-0.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="17.75" y="-0.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="117.75" y="65.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="77.75" y="65.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="177.75" y="-0.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <input x="14" y="12.5" size="5" rotate="true" text="+"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="60" y2="10" x2="60"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="56" y2="11" x2="64"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="57" y2="13" x2="63"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="59" y2="15" x2="61"/>
-        <input x="22" y="27.5" size="5" rotate="true" text="24 VDC"/>
-        <polygon x4="70" y5="6" x5="70" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="6" x1="10" y2="30" x2="10" y3="30" x3="70" y4="6"/>
-        <text x="94" y="51" size="5" text="OUT"/>
-        <polygon x4="77" y5="68" x5="77" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="2" x1="17" y2="2" x2="0" y3="68" x3="0" y4="68"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="68" x1="83" y2="68" x2="117"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="2" x1="23" y2="2" x2="37"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="2" x1="43" y2="2" x2="57"/>
-        <input x="142" y="55.5" size="6" rotate="true" text="TWDALM3LT"/>
-        <input x="256" y="51" size="9" rotate="true" text="API_"/>
-        <text x="138" y="22" size="5" text="A"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="2" x1="337" y2="2" x2="303"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="2" x1="297" y2="2" x2="263"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="2" x1="257" y2="2" x2="223"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="2" x1="217" y2="2" x2="183"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="2" x1="177" y2="2" x2="143"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="2" x1="137" y2="2" x2="63"/>
-        <terminal x="20" y="2" orientation="n"/>
-        <terminal x="40" y="2" orientation="n"/>
-        <terminal x="60" y="2" orientation="n"/>
-        <terminal x="80" y="68" orientation="s"/>
-        <terminal x="120" y="68" orientation="s"/>
-        <terminal x="180" y="2" orientation="n"/>
-        <terminal x="220" y="2" orientation="n"/>
-        <terminal x="140" y="2" orientation="n"/>
-        <terminal x="300" y="2" orientation="n"/>
-        <terminal x="340" y="2" orientation="n"/>
-        <terminal x="260" y="2" orientation="n"/>
+        <polygon style="line-style:dashed;line-weight:normal;filling:none;color:black" x4="343" y4="2" y1="68" y2="68" x2="360" closed="false" y3="2" x1="123" x3="360" antialias="false"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x4="230" y4="6" y1="7" y2="30" x2="130" closed="false" y3="30" x1="130" x3="230" antialias="false"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x4="350" y4="5" y1="6" y2="29" x2="250" closed="false" y3="29" x1="250" x3="350" antialias="false"/>
+        <text size="5" x="217" text="B" y="22"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="257.75" y="-0.25" diameter="4.5" antialias="true"/>
+        <text size="5" x="177" text="B'" y="22"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="137.75" y="-0.25" diameter="4.5" antialias="true"/>
+        <text size="5" x="297" text="B'" y="21"/>
+        <text size="5" x="337" text="B" y="21"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y5="64" x4="130" y4="64" y1="64" y2="40" x2="70" closed="false" x5="130" y3="40" x1="70" x3="130" antialias="false"/>
+        <text size="5" x="294" text="IN 1" y="28"/>
+        <text size="5" x="174" text="IN 0" y="29"/>
+        <input rotate="true" size="5" x="335" text="-" tagg="none" y="10.5"/>
+        <input rotate="true" size="5" x="35" text="-" tagg="none" y="12.5"/>
+        <input rotate="true" size="5" x="293" text="+" tagg="none" y="11.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="337.75" y="-0.25" diameter="4.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="297.75" y="-0.25" diameter="4.5" antialias="true"/>
+        <input rotate="true" size="5" x="215" text="-" tagg="none" y="10.5"/>
+        <text size="5" x="258" text="A" y="21"/>
+        <input rotate="true" size="5" x="74" text="+" tagg="none" y="58.5"/>
+        <input rotate="true" size="5" x="115" text="-" tagg="none" y="58.5"/>
+        <input rotate="true" size="5" x="173" text="+" tagg="none" y="11.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="217.75" y="-0.25" diameter="4.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="37.75" y="-0.25" diameter="4.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="57.75" y="-0.25" diameter="4.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="17.75" y="-0.25" diameter="4.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="117.75" y="65.75" diameter="4.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="77.75" y="65.75" diameter="4.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="177.75" y="-0.25" diameter="4.5" antialias="true"/>
+        <input rotate="true" size="5" x="14" text="+" tagg="none" y="12.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="5" y2="10" x2="60" end1="none" x1="60" length2="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="11" y2="11" x2="64" end1="none" x1="56" length2="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="13" y2="13" x2="63" end1="none" x1="57" length2="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="15" y2="15" x2="61" end1="none" x1="59" length2="1.5" antialias="false"/>
+        <input rotate="true" size="5" x="22" text="24 VDC" tagg="none" y="27.5"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y5="6" x4="70" y4="6" y1="6" y2="30" x2="10" closed="false" x5="70" y3="30" x1="10" x3="70" antialias="false"/>
+        <text size="5" x="94" text="OUT" y="51"/>
+        <polygon style="line-style:dashed;line-weight:normal;filling:none;color:black" y5="68" x4="77" y4="68" y1="2" y2="2" x2="0" closed="false" x5="77" y3="68" x1="17" x3="0" antialias="false"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="68" y2="68" x2="117" end1="none" x1="83" length2="1.5" antialias="false"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="2" y2="2" x2="37" end1="none" x1="23" length2="1.5" antialias="false"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="2" y2="2" x2="57" end1="none" x1="43" length2="1.5" antialias="false"/>
+        <input rotate="true" size="6" x="142" text="TWDALM3LT" tagg="none" y="55.5"/>
+        <input rotate="true" size="9" x="256" text="API_" tagg="label" y="51"/>
+        <text size="5" x="138" text="A" y="22"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="2" y2="2" x2="303" end1="none" x1="337" length2="1.5" antialias="false"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="2" y2="2" x2="263" end1="none" x1="297" length2="1.5" antialias="false"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="2" y2="2" x2="223" end1="none" x1="257" length2="1.5" antialias="false"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="2" y2="2" x2="183" end1="none" x1="217" length2="1.5" antialias="false"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="2" y2="2" x2="143" end1="none" x1="177" length2="1.5" antialias="false"/>
+        <line style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="2" y2="2" x2="63" end1="none" x1="137" length2="1.5" antialias="false"/>
+        <terminal x="20" orientation="n" y="2"/>
+        <terminal x="40" orientation="n" y="2"/>
+        <terminal x="60" orientation="n" y="2"/>
+        <terminal x="80" orientation="s" y="68"/>
+        <terminal x="120" orientation="s" y="68"/>
+        <terminal x="180" orientation="n" y="2"/>
+        <terminal x="220" orientation="n" y="2"/>
+        <terminal x="140" orientation="n" y="2"/>
+        <terminal x="300" orientation="n" y="2"/>
+        <terminal x="340" orientation="n" y="2"/>
+        <terminal x="260" orientation="n" y="2"/>
     </description>
 </definition>
