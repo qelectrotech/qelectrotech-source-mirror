@@ -1,59 +1,61 @@
-<definition width="250" version="0.3" hotspot_x="-5" hotspot_y="0" height="300" type="element" orientation="dyyy">
-<uuid uuid="{761FE998-EDD0-4C60-ABB1-B60E01A70433}"/><names>
-        <name lang="en">Proface LT3301L</name>
-        <name lang="it">Proface LT3301L</name>
-        <name lang="fr">Proface LT3301L</name>
-        <name lang="pl">Pro-face LT3301L</name>
-        <name lang="es">Interface LT3301L</name>
-        <name lang="cs">Proface LT3301L</name>
+<definition width="250" hotspot_y="150" height="300" type="element" hotspot_x="125" orientation="dyyy" version="0.5" link_type="simple">
+    <uuid uuid="{73fe51a5-5887-4d04-9788-3d597950fee2}"/>
+    <names>
         <name lang="nl">Proface LT3301L</name>
+        <name lang="en">Proface LT3301L</name>
+        <name lang="cs">Proface LT3301L</name>
+        <name lang="it">Proface LT3301L</name>
+        <name lang="pl">Pro-face LT3301L</name>
+        <name lang="fr">Proface LT3301L</name>
+        <name lang="es">Interface LT3301L</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="264" x1="137" y2="264" x2="161"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="265" x1="137" y2="265" x2="161"/>
-        <text x="137" y="288" size="9" text="USB"/>
-        <ellipse width="1.7549" x="237.348" y="284.874" antialias="true" height="1.17884" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="212" y="275" size="9" text="COM1"/>
-        <input x="42" y="106.5" size="9" rotate="true" text="SUBNETMASK : 255.255.255.0"/>
-        <rect width="15" x="192" y="258" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="204.1" y="287" size="9" rotation="270" text="EXT2"/>
-        <input x="76" y="129.5" size="9" rotate="true" text="GATEWAY : 0.0.0.0"/>
-        <text x="38" y="285" size="9" text="-"/>
-        <rect width="245" x="7" y="4" antialias="false" height="249" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="52" y="285" size="9" text="FG"/>
-        <rect width="245" x="7" y="253" antialias="false" height="39" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1.7549" x="224.186" y="278.98" antialias="true" height="1.17884" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1.7549" x="232.961" y="278.98" antialias="true" height="1.17884" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="20" y="270" size="9" text="24VDC"/>
-        <ellipse width="1.7549" x="228.574" y="284.874" antialias="true" height="1.17884" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="17" y="285" size="9" text="+"/>
-        <rect width="67" x="7" y="272" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1.7549" x="241.735" y="278.98" antialias="true" height="1.17884" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1.7549" x="220.677" y="284.874" antialias="true" height="1.17884" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="20" x="100" y="260" antialias="false" height="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="277.212" x1="211.025" y2="277.212" x2="247"/>
-        <rect width="6" x="107" y="273" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="98" y="288" size="9" text="ETH"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="289" x1="214.534" y2="289" x2="243.49"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="277.212" x1="211.025" y2="289" x2="214.534"/>
-        <rect width="32" x="133" y="259" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="277.212" x1="247" y2="289" x2="243.49"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="263" x1="137" y2="263" x2="161"/>
-        <ellipse width="1.7549" x="215.412" y="278.98" antialias="true" height="1.17884" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="15" x="173" y="258" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="185" y="287" size="9" rotation="270" text="EXT1"/>
-        <text x="102" y="239" size="9" text="PROFACE"/>
-        <rect width="181" x="41" y="40" antialias="false" height="181" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="23" y="234" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
-        <input x="92" y="59" size="9" rotate="true" text="PLC"/>
-        <input x="65" y="85.5" size="9" rotate="true" text="IP : 192.168.1.100"/>
-        <terminal x="20" y="294" orientation="s"/>
-        <terminal x="40" y="294" orientation="s"/>
-        <terminal x="60" y="294" orientation="s"/>
-        <terminal x="230" y="294" orientation="s"/>
-        <terminal x="200" y="294" orientation="s"/>
-        <terminal x="180" y="294" orientation="s"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="114" x1="7" end2="none" y2="114" length2="1.5" antialias="false" x2="31" end1="none"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="115" x1="7" end2="none" y2="115" length2="1.5" antialias="false" x2="31" end1="none"/>
+        <text size="9" y="138" x="7" text="USB"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1.7549" y="134.874" height="1.17884" x="107.348" antialias="true"/>
+        <text size="9" y="125" x="82" text="COM1"/>
+        <input size="9" y="-43.5" x="-88" text="SUBNETMASK : 255.255.255.0" tagg="none" rotate="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="108" width="15" height="30" x="62" antialias="false"/>
+        <text size="9" y="137" x="74.1" rotation="270" text="EXT2"/>
+        <input size="9" y="-20.5" x="-54" text="GATEWAY : 0.0.0.0" tagg="none" rotate="true"/>
+        <text size="9" y="135" x="-92" text="-"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-146" width="245" height="249" x="-123" antialias="false"/>
+        <text size="9" y="135" x="-78" text="FG"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="103" width="245" height="39" x="-123" antialias="false"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1.7549" y="128.98" height="1.17884" x="94.186" antialias="true"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1.7549" y="128.98" height="1.17884" x="102.961" antialias="true"/>
+        <text size="9" y="120" x="-110" text="24VDC"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1.7549" y="134.874" height="1.17884" x="98.574" antialias="true"/>
+        <text size="9" y="135" x="-113" text="+"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="122" width="67" height="20" x="-123" antialias="false"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1.7549" y="128.98" height="1.17884" x="111.735" antialias="true"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1.7549" y="134.874" height="1.17884" x="90.677" antialias="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="110" width="20" height="13" x="-30" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="127.212" x1="81.025" end2="none" y2="127.212" length2="1.5" antialias="false" x2="117" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="123" width="6" height="3" x="-23" antialias="false"/>
+        <text size="9" y="138" x="-32" text="ETH"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="139" x1="84.534" end2="none" y2="139" length2="1.5" antialias="false" x2="113.49" end1="none"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="127.212" x1="81.025" end2="none" y2="139" length2="1.5" antialias="false" x2="84.534" end1="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="109" width="32" height="12" x="3" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="127.212" x1="117" end2="none" y2="139" length2="1.5" antialias="false" x2="113.49" end1="none"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="113" x1="7" end2="none" y2="113" length2="1.5" antialias="false" x2="31" end1="none"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="1.7549" y="128.98" height="1.17884" x="85.412" antialias="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="108" width="15" height="30" x="43" antialias="false"/>
+        <text size="9" y="137" x="55" rotation="270" text="EXT1"/>
+        <text size="9" y="89" x="-28" text="PROFACE"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-110" width="181" height="181" x="-89" antialias="false"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="84" diameter="3" x="-107" antialias="true"/>
+        <input size="9" y="-91" x="-38" text="PLC" tagg="none" rotate="true"/>
+        <input size="9" y="-64.5" x="-65" text="IP : 192.168.1.100" tagg="none" rotate="true"/>
+        <input size="9" y="-170" x="-120" text="_" tagg="label" rotate="true"/>
+        <terminal y="144" x="-110" orientation="s"/>
+        <terminal y="144" x="-90" orientation="s"/>
+        <terminal y="144" x="-70" orientation="s"/>
+        <terminal y="144" x="100" orientation="s"/>
+        <terminal y="144" x="70" orientation="s"/>
+        <terminal y="144" x="50" orientation="s"/>
     </description>
 </definition>

@@ -1,42 +1,43 @@
-<definition width="1000" version="0.3" hotspot_x="26" hotspot_y="1" height="100" type="element" orientation="dyyy">
-<uuid uuid="{EA23DFFE-5CF5-4119-9E8E-CFACF01AE542}"/><names>
-        <name lang="en">EXM-AMI2HT</name>
-        <name lang="it">EXM-AMI2HT</name>
-        <name lang="fr">EXM-AMI2HT</name>
-        <name lang="pl">EXM-AMI2HT</name>
-        <name lang="es">EXM-AMI2HT</name>
-        <name lang="cs">EXM-AMI2HT</name>
+<definition width="1000" hotspot_y="41" height="100" type="element" hotspot_x="496" orientation="dyyy" version="0.5" link_type="simple">
+    <uuid uuid="{d87affc1-85cd-4e3b-b002-0a9348f26007}"/>
+    <names>
         <name lang="nl">EXM-AMI2HT</name>
+        <name lang="en">EXM-AMI2HT</name>
+        <name lang="cs">EXM-AMI2HT</name>
+        <name lang="it">EXM-AMI2HT</name>
+        <name lang="pl">EXM-AMI2HT</name>
+        <name lang="fr">EXM-AMI2HT</name>
+        <name lang="es">EXM-AMI2HT</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="36" x="-17" y="10" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="36" x="593" y="10" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="237" y="51" size="9" text="INPUT 0"/>
-        <rect width="36" x="293" y="10" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="36" x="192" y="10" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="36" x="22" y="10" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="988" x="-20" y="10" antialias="false" height="85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-3" y="26" size="9" text="+"/>
-        <text x="641" y="51" size="9" text="INPUT 1"/>
-        <text x="38" y="25" size="9" text="-"/>
-        <text x="72" y="25" size="9" text="PE"/>
-        <text x="607" y="26" size="9" text="+"/>
-        <text x="308" y="25" size="9" text="-"/>
-        <rect width="36" x="692" y="10" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="12" y="47" size="9" text="24VDC"/>
-        <rect width="36" x="62" y="10" antialias="false" height="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="709" y="25" size="9" text="-"/>
-        <text x="206" y="25" size="9" text="+"/>
-        <text x="410" y="83" size="9" text="EXM-AMI2HT"/>
-        <input x="39" y="76" size="9" rotate="true" text="_"/>
-        <terminal x="0" y="6" orientation="n"/>
-        <terminal x="40" y="6" orientation="n"/>
-        <terminal x="80" y="6" orientation="n"/>
-        <terminal x="210" y="5" orientation="n"/>
-        <terminal x="310" y="5" orientation="n"/>
-        <terminal x="610" y="5" orientation="n"/>
-        <terminal x="710" y="5" orientation="n"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" width="36" height="21" x="-487" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" width="36" height="21" x="123" antialias="false"/>
+        <text size="9" y="11" x="-233" text="INPUT 0"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" width="36" height="21" x="-177" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" width="36" height="21" x="-278" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" width="36" height="21" x="-448" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" width="988" height="85" x="-490" antialias="false"/>
+        <text size="9" y="-14" x="-473" text="+"/>
+        <text size="9" y="11" x="171" text="INPUT 1"/>
+        <text size="9" y="-15" x="-432" text="-"/>
+        <text size="9" y="-15" x="-398" text="PE"/>
+        <text size="9" y="-14" x="137" text="+"/>
+        <text size="9" y="-15" x="-162" text="-"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" width="36" height="21" x="222" antialias="false"/>
+        <text size="9" y="7" x="-458" text="24VDC"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" width="36" height="21" x="-408" antialias="false"/>
+        <text size="9" y="-15" x="239" text="-"/>
+        <text size="9" y="-15" x="-264" text="+"/>
+        <text size="9" y="43" x="-60" text="EXM-AMI2HT"/>
+        <input size="9" y="36" x="-431" text="_" tagg="label" rotate="true"/>
+        <terminal y="-34" x="-470" orientation="n"/>
+        <terminal y="-34" x="-430" orientation="n"/>
+        <terminal y="-34" x="-390" orientation="n"/>
+        <terminal y="-35" x="-260" orientation="n"/>
+        <terminal y="-35" x="-160" orientation="n"/>
+        <terminal y="-35" x="140" orientation="n"/>
+        <terminal y="-35" x="240" orientation="n"/>
     </description>
 </definition>
