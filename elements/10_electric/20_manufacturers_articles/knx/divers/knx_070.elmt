@@ -1,37 +1,39 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{D07956B2-74F4-43D4-807F-4CCD7F975517}"/><names>
-        <name lang="el">Τροφοδοτικό + φίλτρο</name>
-        <name lang="en">Power Supply + Choke</name>
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="14" orientation="dyyy">
+    <uuid uuid="{f833d12f-e022-41d2-9d81-ae15201190a8}"/>
+    <names>
         <name lang="it">Alimentatore + protezione</name>
         <name lang="fr">Alimentation + protections</name>
-        <name lang="pl">Zasilacz z dławikiem</name>
-        <name lang="es">Fuente de alimentación + Choke</name>
-        <name lang="cs">napájení + ochrany</name>
         <name lang="nl">Voeding + Weerstand</name>
+        <name lang="pl">Zasilacz z dławikiem</name>
+        <name lang="en">Power Supply + Choke</name>
+        <name lang="es">Fuente de alimentación + Choke</name>
+        <name lang="el">Τροφοδοτικό + φίλτρο</name>
+        <name lang="cs">napájení + ochrany</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="5" x="-0.5" y="-11.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <rect width="10" x="20" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="25" y2="12" x2="25"/>
-        <rect width="4" x="23" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-15" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="6" y2="8" x2="16"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="6" y2="10" x2="16"/>
-        <arc width="5" x="-5.5" y="-11.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <terminal x="-10" y="10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-10" y="-10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="30" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="30" y="10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="30" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="20" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="20" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <rect height="30" y="-15" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="30"/>
+        <arc height="5" y="-11.5" x="-0.5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180" antialias="true" width="5"/>
+        <rect height="30" y="-15" x="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="10"/>
+        <line x1="25" y1="-12" end1="none" x2="25" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="12"/>
+        <rect height="20" y="-10" x="23" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" width="4"/>
+        <line x1="-10" y1="15" end1="none" x2="20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="true" y2="-15"/>
+        <line x1="6" y1="8" end1="none" x2="16" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="8"/>
+        <line x1="6" y1="10" end1="none" x2="16" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="10"/>
+        <arc height="5" y="-11.5" x="-5.5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180" antialias="true" width="5"/>
+        <input rotate="true" y="-25" size="9" tagg="label" x="-15" text="_"/>
+        <terminal y="15" x="20" orientation="s"/>
+        <terminal y="-15" x="10" orientation="n"/>
+        <terminal y="-15" x="20" orientation="n"/>
+        <terminal y="-15" x="0" orientation="n"/>
+        <terminal y="15" x="10" orientation="s"/>
+        <terminal y="10" x="-10" orientation="w"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="-10" x="-10" orientation="w"/>
+        <terminal y="0" x="30" orientation="e"/>
+        <terminal y="10" x="30" orientation="e"/>
+        <terminal y="-10" x="30" orientation="e"/>
+        <terminal y="15" x="0" orientation="s"/>
     </description>
 </definition>

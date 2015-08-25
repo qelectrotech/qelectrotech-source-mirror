@@ -1,31 +1,33 @@
-<definition width="40" version="0.4" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{5230D3B4-E8EA-4096-85FA-FB8A2FA52C80}"/><names>
-        <name lang="el">Μονή ψηφιακή έξοδος</name>
-        <name lang="en">Binary Output module single</name>
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="40" hotspot_x="14" orientation="dyyy">
+    <uuid uuid="{6a527475-c40a-4957-92ee-633c62271fc1}"/>
+    <names>
         <name lang="it">Uscita digitale, 1 can</name>
         <name lang="fr">Sortie numérique</name>
-        <name lang="pl">Wyjście cyfrowe</name>
-        <name lang="es">Salida binaria</name>
         <name lang="nl">Digitaal uitgang module, enkel</name>
-        <name lang="cs">Digitální výstup</name>
+        <name lang="pl">Wyjście cyfrowe</name>
         <name lang="be">Digitaal uitgang module, enkel</name>
+        <name lang="en">Binary Output module single</name>
+        <name lang="es">Salida binaria</name>
+        <name lang="el">Μονή ψηφιακή έξοδος</name>
+        <name lang="cs">Digitální výstup</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="9" y="8.5" size="5" rotate="true" text="1"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-5" y2="0" x2="0" y3="-3" x3="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="15" y2="0" x2="10"/>
-        <terminal x="-10" y="10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-10" y="-10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="20" y="10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="20" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <rect height="30" y="-15" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="30"/>
+        <input rotate="true" y="8.5" size="5" tagg="none" x="9" text="1"/>
+        <polygon y3="-3" closed="false" x1="-5" y1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="10" antialias="true" y2="0"/>
+        <line x1="15" y1="0" end1="none" x2="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="0"/>
+        <input rotate="true" y="-26" size="9" tagg="label" x="-12" text="_"/>
+        <terminal y="-10" x="20" orientation="e"/>
+        <terminal y="15" x="0" orientation="s"/>
+        <terminal y="-15" x="10" orientation="n"/>
+        <terminal y="-15" x="0" orientation="n"/>
+        <terminal y="10" x="-10" orientation="w"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="-10" x="-10" orientation="w"/>
+        <terminal y="0" x="20" orientation="e"/>
+        <terminal y="10" x="20" orientation="e"/>
+        <terminal y="15" x="10" orientation="s"/>
     </description>
 </definition>

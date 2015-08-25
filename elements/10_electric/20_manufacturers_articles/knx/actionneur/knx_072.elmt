@@ -1,37 +1,39 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{D1099FF0-491B-4269-80F5-0773B0458E99}"/><names>
-        <name lang="el">Ψηφιακή έξοδος, εξαπλή</name>
-        <name lang="en">Binary output, 6-fold</name>
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+    <uuid uuid="{58f704d6-d73d-47e4-a78a-5b9fa2e8804f}"/>
+    <names>
         <name lang="it">Uscita digitale, 6 can</name>
         <name lang="fr">Six sorties numériques</name>
-        <name lang="pl">Sześć wyjść cyfrowych</name>
-        <name lang="es">Seis salidas binárias</name>
-        <name lang="cs">Šest digitálních výstupů</name>
         <name lang="nl">Digitaal uitgang, 6 voudig</name>
+        <name lang="pl">Sześć wyjść cyfrowych</name>
         <name lang="be">Digitaal uitgang, 6 voudig</name>
+        <name lang="en">Binary output, 6-fold</name>
+        <name lang="es">Seis salidas binárias</name>
+        <name lang="el">Ψηφιακή έξοδος, εξαπλή</name>
+        <name lang="cs">Šest digitálních výstupů</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="-20" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="9" y="8.5" size="5" rotate="true" text="6"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-5" y2="0" x2="0" y3="-3" x3="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="15" y2="0" x2="10"/>
-        <polygon x4="-14" y5="-11" x5="-14" y6="-12" x6="-15" y7="-11" x7="-16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-16" y2="11" x2="-16" y3="12" x3="-15" y4="11"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-18" y2="-12" x2="-15" y3="-9" x3="-12"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
-        <terminal x="-20" y="10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="-10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="20" y="10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="20" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-10" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <rect height="30" y="-15" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="30"/>
+        <rect height="30" y="-15" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="10"/>
+        <input rotate="true" y="8.5" size="5" tagg="none" x="9" text="6"/>
+        <polygon y3="-3" closed="false" x1="-5" y1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="10" antialias="true" y2="0"/>
+        <line x1="15" y1="0" end1="none" x2="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="0"/>
+        <polygon y3="12" x4="-14" x5="-14" x1="-16" y1="-11" y6="-12" x7="-16" y5="-11" x6="-15" x2="-16" y7="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-15" y4="11" antialias="true" y2="11"/>
+        <polygon y3="-9" closed="false" x1="-18" y1="-9" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-12" antialias="true" y2="-12"/>
+        <polygon y3="9" closed="false" x1="-18" y1="9" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-12" antialias="true" y2="12"/>
+        <input rotate="true" y="-28" size="9" tagg="label" x="-24" text="_"/>
+        <terminal y="10" x="-20" orientation="w"/>
+        <terminal y="0" x="-20" orientation="w"/>
+        <terminal y="-10" x="-20" orientation="w"/>
+        <terminal y="0" x="20" orientation="e"/>
+        <terminal y="10" x="20" orientation="e"/>
+        <terminal y="-10" x="20" orientation="e"/>
+        <terminal y="15" x="-10" orientation="s"/>
+        <terminal y="-15" x="0" orientation="n"/>
+        <terminal y="-15" x="10" orientation="n"/>
+        <terminal y="-15" x="-10" orientation="n"/>
+        <terminal y="15" x="0" orientation="s"/>
+        <terminal y="15" x="10" orientation="s"/>
     </description>
 </definition>

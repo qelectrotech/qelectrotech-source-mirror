@@ -1,57 +1,59 @@
-<definition width="180" version="0.3" hotspot_x="20" hotspot_y="37" height="60" type="element" orientation="dyyy">
-<uuid uuid="{76B697B0-29FE-4E92-92F0-F8ADB5E6D6C0}"/><names>
-        <name lang="en">Actuator 6SX10A</name>
+<definition height="70" link_type="simple" type="element" version="0.5" hotspot_y="42" width="180" hotspot_x="20" orientation="dyyy">
+    <uuid uuid="{a4bc3e5a-6b20-464c-b24e-43bc1761a6fe}"/>
+    <names>
         <name lang="it">Attuatore zennio 6sx10a</name>
         <name lang="fr">Actionneur zennio 6sx10a</name>
+        <name lang="nl">Actuator 6SX10A</name>
         <name lang="pl">6SX10A</name>
+        <name lang="be">Actuator 6SX10A</name>
+        <name lang="en">Actuator 6SX10A</name>
         <name lang="es">Actuador 6sx10a</name>
         <name lang="cs">Ovladač 6SX10A</name>
-        <name lang="nl">Actuator 6SX10A</name>
-        <name lang="be">Actuator 6SX10A</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="170" x="-15" y="-35" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="155" y2="0" x2="120" y3="15" x3="120"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="130" y2="19" x2="130"/>
-        <polygon x4="8" y5="-5" x5="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="-8" y2="0" x2="-4" y3="0" x3="4" y4="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.95" x1="149.95" y2="18.95" x2="149.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="14" x2="10"/>
-        <polygon x4="98" y5="-5" x5="98" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="82" y2="0" x2="86" y3="0" x3="94" y4="-5"/>
-        <polygon x4="48" y5="-5" x5="48" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="32" y2="0" x2="36" y3="0" x3="44" y4="-5"/>
-        <text x="130" y="-4" size="6" text="BUS"/>
-        <text x="96" y="14" size="4" text="6"/>
-        <text x="75" y="14" size="4" text="5"/>
-        <text x="46" y="14" size="4" text="4"/>
-        <text x="-14" y="14" size="4" text="1"/>
-        <text x="-5" y="14" size="4" text="A"/>
-        <text x="85" y="14" size="4" text="C"/>
-        <text x="6" y="14" size="4" text="2"/>
-        <text x="36" y="14" size="4" text="B"/>
-        <text x="26" y="14" size="4" text="3"/>
-        <text x="147" y="13" size="9" text="-"/>
-        <text x="125" y="13" size="9" text="+"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="140" y2="14" x2="140"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="14" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="14" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="100" y2="14" x2="100"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="50" y2="14" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="80" y2="14" x2="80"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="30" y2="14" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="90" y2="14" x2="90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="14" x2="40"/>
-        <input x="21" y="-20.5" size="6" rotate="true" text="ACTIONNEUR 6SX10A"/>
-        <terminal x="-10" y="15" orientation="s"/>
-        <terminal x="0" y="15" orientation="s"/>
-        <terminal x="10" y="15" orientation="s"/>
-        <terminal x="30" y="15" orientation="s"/>
-        <terminal x="40" y="15" orientation="s"/>
-        <terminal x="50" y="15" orientation="s"/>
-        <terminal x="80" y="15" orientation="s"/>
-        <terminal x="90" y="15" orientation="s"/>
-        <terminal x="100" y="15" orientation="s"/>
-        <terminal x="130" y="19" orientation="s"/>
-        <terminal x="150" y="19" orientation="s"/>
+        <rect height="50" y="-35" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="170"/>
+        <polygon y3="15" closed="false" x1="155" y1="0" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="120" antialias="false" y2="0"/>
+        <line x1="130" y1="15" end1="none" x2="130" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="19"/>
+        <polygon y3="0" x4="8" x5="8" closed="false" x1="-8" y1="-5" y5="-5" x2="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="4" y4="-5" antialias="true" y2="0"/>
+        <line x1="149.95" y1="14.95" end1="none" x2="149.95" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="18.95"/>
+        <line x1="10" y1="0" end1="none" x2="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="14"/>
+        <polygon y3="0" x4="98" x5="98" closed="false" x1="82" y1="-5" y5="-5" x2="86" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="94" y4="-5" antialias="true" y2="0"/>
+        <polygon y3="0" x4="48" x5="48" closed="false" x1="32" y1="-5" y5="-5" x2="36" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="44" y4="-5" antialias="true" y2="0"/>
+        <text y="-4" size="6" x="130" text="BUS"/>
+        <text y="14" size="4" x="96" text="6"/>
+        <text y="14" size="4" x="75" text="5"/>
+        <text y="14" size="4" x="46" text="4"/>
+        <text y="14" size="4" x="-14" text="1"/>
+        <text y="14" size="4" x="-5" text="A"/>
+        <text y="14" size="4" x="85" text="C"/>
+        <text y="14" size="4" x="6" text="2"/>
+        <text y="14" size="4" x="36" text="B"/>
+        <text y="14" size="4" x="26" text="3"/>
+        <text y="13" size="9" x="147" text="-"/>
+        <text y="13" size="9" x="125" text="+"/>
+        <line x1="140" y1="1" end1="none" x2="140" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="14"/>
+        <line x1="-10" y1="0" end1="none" x2="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="14"/>
+        <line x1="0" y1="0" end1="none" x2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="14"/>
+        <line x1="100" y1="0" end1="none" x2="100" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="14"/>
+        <line x1="50" y1="0" end1="none" x2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="14"/>
+        <line x1="80" y1="0" end1="none" x2="80" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="14"/>
+        <line x1="30" y1="0" end1="none" x2="30" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="14"/>
+        <line x1="90" y1="0" end1="none" x2="90" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="14"/>
+        <line x1="40" y1="0" end1="none" x2="40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="14"/>
+        <input rotate="true" y="-20.5" size="6" tagg="none" x="21" text="ACTIONNEUR 6SX10A"/>
+        <input rotate="true" y="-50" size="9" tagg="label" x="-15" text="_"/>
+        <terminal y="15" x="40" orientation="s"/>
+        <terminal y="15" x="-10" orientation="s"/>
+        <terminal y="15" x="0" orientation="s"/>
+        <terminal y="15" x="10" orientation="s"/>
+        <terminal y="15" x="30" orientation="s"/>
+        <terminal y="15" x="50" orientation="s"/>
+        <terminal y="15" x="80" orientation="s"/>
+        <terminal y="15" x="90" orientation="s"/>
+        <terminal y="15" x="100" orientation="s"/>
+        <terminal y="19" x="130" orientation="s"/>
+        <terminal y="19" x="150" orientation="s"/>
     </description>
 </definition>

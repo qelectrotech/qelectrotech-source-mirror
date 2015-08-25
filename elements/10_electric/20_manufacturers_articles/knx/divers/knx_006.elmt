@@ -1,40 +1,42 @@
-<definition width="60" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{F063E54B-A81D-435D-AB38-FE671BD7F314}"/><names>
-        <name lang="en">Line coupler</name>
-        <name lang="fr">Coupleur de ligne</name>
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="60" hotspot_x="24" orientation="dyyy">
+    <uuid uuid="{9bd15823-e1f0-48de-a3d1-a5b9edcbdfb4}"/>
+    <names>
         <name lang="it">Accoppiatore di linea</name>
+        <name lang="fr">Coupleur de ligne</name>
+        <name lang="nl">Lijn koppelaar</name>
         <name lang="pl">Sprzęgło linii</name>
+        <name lang="en">Line coupler</name>
         <name lang="es">Acoplador de línea</name>
         <name lang="cs">Spojka vedení</name>
-        <name lang="nl">Lijn koppelaar</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="20" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x4="26" y5="-11" x5="26" y6="-12" x6="25" y7="-11" x7="24" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="24" y2="11" x2="24" y3="12" x3="25" y4="11"/>
-        <rect width="10" x="-20" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="22" y2="-12" x2="25" y3="-9" x3="28"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="22" y2="12" x2="25" y3="9" x3="28"/>
-        <polygon x4="-14" y5="-11" x5="-14" y6="-12" x6="-15" y7="-11" x7="-16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-16" y2="11" x2="-16" y3="12" x3="-15" y4="11"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-18" y2="-12" x2="-15" y3="-9" x3="-12"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
-        <polygon x4="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="8" y2="-4" x2="8" y3="-7" x3="2" y4="-10"/>
-        <polygon x4="2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="2" y2="10" x2="2" y3="7" x3="8" y4="4"/>
-        <terminal x="-20" y="10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="-10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="30" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="30" y="10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="30" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-10" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="20" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="20" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <rect height="30" y="-15" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="30"/>
+        <rect height="30" y="-15" x="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="10"/>
+        <polygon y3="12" x4="26" x5="26" x1="24" y1="-11" y6="-12" x7="24" y5="-11" x6="25" x2="24" y7="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="25" y4="11" antialias="true" y2="11"/>
+        <rect height="30" y="-15" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="10"/>
+        <polygon y3="-9" closed="false" x1="22" y1="-9" x2="25" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="28" antialias="true" y2="-12"/>
+        <polygon y3="9" closed="false" x1="22" y1="9" x2="25" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="28" antialias="true" y2="12"/>
+        <polygon y3="12" x4="-14" x5="-14" x1="-16" y1="-11" y6="-12" x7="-16" y5="-11" x6="-15" x2="-16" y7="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-15" y4="11" antialias="true" y2="11"/>
+        <polygon y3="-9" closed="false" x1="-18" y1="-9" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-12" antialias="true" y2="-12"/>
+        <polygon y3="9" closed="false" x1="-18" y1="9" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-12" antialias="true" y2="12"/>
+        <polygon y3="-7" x4="8" x1="8" y1="-10" x2="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="2" y4="-10" antialias="true" y2="-4"/>
+        <polygon y3="7" x4="2" x1="2" y1="4" x2="2" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="8" y4="4" antialias="true" y2="10"/>
+        <input rotate="true" y="-26" size="9" tagg="label" x="-22" text="_"/>
+        <terminal y="10" x="-20" orientation="w"/>
+        <terminal y="0" x="-20" orientation="w"/>
+        <terminal y="-10" x="-20" orientation="w"/>
+        <terminal y="0" x="30" orientation="e"/>
+        <terminal y="10" x="30" orientation="e"/>
+        <terminal y="-10" x="30" orientation="e"/>
+        <terminal y="15" x="-10" orientation="s"/>
+        <terminal y="-15" x="0" orientation="n"/>
+        <terminal y="-15" x="10" orientation="n"/>
+        <terminal y="-15" x="-10" orientation="n"/>
+        <terminal y="15" x="0" orientation="s"/>
+        <terminal y="15" x="10" orientation="s"/>
+        <terminal y="-15" x="20" orientation="n"/>
+        <terminal y="15" x="20" orientation="s"/>
     </description>
 </definition>

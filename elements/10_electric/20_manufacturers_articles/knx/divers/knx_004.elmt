@@ -1,24 +1,26 @@
-<definition width="20" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{4071DFC9-0022-42C6-BE97-4516BC6C0186}"/><names>
-        <name lang="ar">ملف خانق</name>
-        <name lang="de">Drossel</name>
-        <name lang="pt">Bloqueio</name>
-        <name lang="el">Φίλτρο</name>
-        <name lang="en">Choke</name>
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="20" width="20" hotspot_x="14" orientation="dyyy">
+    <uuid uuid="{12658330-47ef-445e-adb5-74ee8b8b843d}"/>
+    <names>
         <name lang="it">Dispositivo di blocco</name>
         <name lang="fr">Dispositif de blocage</name>
-        <name lang="pl">Dławik</name>
-        <name lang="es">Choke</name>
-        <name lang="cs">Škrticí klapka</name>
+        <name lang="pt">Bloqueio</name>
         <name lang="nl">Weerstand</name>
+        <name lang="pl">Dławik</name>
+        <name lang="en">Choke</name>
+        <name lang="es">Choke</name>
+        <name lang="ar">ملف خانق</name>
+        <name lang="de">Drossel</name>
+        <name lang="el">Φίλτρο</name>
+        <name lang="cs">Škrticí klapka</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="10" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-5" y2="12" x2="-5"/>
-        <rect width="4" x="-7" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <terminal x="0" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="w"/>
+        <rect height="30" y="-15" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="10"/>
+        <line x1="-5" y1="-12" end1="none" x2="-5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="12"/>
+        <rect height="20" y="-10" x="-7" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" width="4"/>
+        <input rotate="true" y="-28" size="9" tagg="label" x="-26" text="_"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="0" x="0" orientation="e"/>
     </description>
 </definition>

@@ -1,39 +1,41 @@
-<definition width="70" version="0.4" hotspot_x="28" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{9E9F6C69-4498-42C1-B685-BFF5BAD7C420}"/><names>
-        <name lang="el">Δέκτης/ Αποκωδικοποιητής υπερύθρων</name>
-        <name lang="en">IR Receiver/Decoder</name>
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="70" hotspot_x="28" orientation="dyyy">
+    <uuid uuid="{ee189e27-af3e-4ff8-bd77-02e9192004ec}"/>
+    <names>
         <name lang="it">Ricevitore IR/Decoder</name>
         <name lang="fr">Recepteur/Decodeur IR</name>
-        <name lang="pl">Nadajnik / dekoder podczerwieni</name>
-        <name lang="es">IR Receptor/decodificador</name>
-        <name lang="cs">Infračervený přijímač/dekodér</name>
         <name lang="nl">IR Ontvanger/Decoder</name>
+        <name lang="pl">Nadajnik / dekoder podczerwieni</name>
+        <name lang="en">IR Receiver/Decoder</name>
+        <name lang="es">IR Receptor/decodificador</name>
+        <name lang="el">Δέκτης/ Αποκωδικοποιητής υπερύθρων</name>
+        <name lang="cs">Infračervený přijímač/dekodér</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="10" x="22" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-110" angle="-140"/>
-        <arc width="6" x="26" y="-6" antialias="true" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-110" angle="-140"/>
-        <arc width="2" x="30" y="-2" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-110" angle="-140"/>
-        <rect width="10" x="-20" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="9" y="0.5" size="5" rotate="true" text="n"/>
-        <input x="8" y="8.5" size="5" rotate="true" text="IR"/>
-        <polygon x4="-14" y5="-11" x5="-14" y6="-12" x6="-15" y7="-11" x7="-16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="-16" y2="11" x2="-16" y3="12" x3="-15" y4="11"/>
-        <polygon x4="7" y5="-10" x5="7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="2" x1="-7" y2="2" x2="0" y3="-10" x3="0" y4="-10"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-18" y2="-12" x2="-15" y3="-9" x3="-12"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="9" x1="-18" y2="12" x2="-15" y3="9" x3="-12"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="33" y2="0" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-15" x2="20"/>
-        <terminal x="-20" y="10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="-10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="33" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-10" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
+        <arc height="20" y="-10" x="22" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-110" angle="-140" antialias="true" width="10"/>
+        <arc height="12" y="-6" x="26" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-110" angle="-140" antialias="true" width="6"/>
+        <arc height="4" y="-2" x="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-110" angle="-140" antialias="true" width="2"/>
+        <rect height="30" y="-15" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="10"/>
+        <rect height="30" y="-15" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="30"/>
+        <input rotate="true" y="0.5" size="5" tagg="none" x="9" text="n"/>
+        <input rotate="true" y="8.5" size="5" tagg="none" x="8" text="IR"/>
+        <polygon y3="12" x4="-14" x5="-14" x1="-16" y1="-11" y6="-12" x7="-16" y5="-11" x6="-15" x2="-16" y7="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-15" y4="11" antialias="true" y2="11"/>
+        <polygon y3="-10" x4="7" x5="7" closed="false" x1="-7" y1="2" y5="-10" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="0" y4="-10" antialias="false" y2="2"/>
+        <polygon y3="-9" closed="false" x1="-18" y1="-9" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-12" antialias="true" y2="-12"/>
+        <polygon y3="9" closed="false" x1="-18" y1="9" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-12" antialias="true" y2="12"/>
+        <line x1="33" y1="0" end1="none" x2="20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="0"/>
+        <line x1="-10" y1="15" end1="none" x2="20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="true" y2="-15"/>
+        <input rotate="true" y="-26" size="9" tagg="label" x="-24" text="_"/>
+        <terminal y="10" x="-20" orientation="w"/>
+        <terminal y="0" x="-20" orientation="w"/>
+        <terminal y="-10" x="-20" orientation="w"/>
+        <terminal y="0" x="33" orientation="e"/>
+        <terminal y="15" x="-10" orientation="s"/>
+        <terminal y="-15" x="0" orientation="n"/>
+        <terminal y="-15" x="10" orientation="n"/>
+        <terminal y="-15" x="-10" orientation="n"/>
+        <terminal y="15" x="0" orientation="s"/>
+        <terminal y="15" x="10" orientation="s"/>
     </description>
 </definition>

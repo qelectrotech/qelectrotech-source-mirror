@@ -1,31 +1,32 @@
-<definition width="120" version="0.4" hotspot_x="6" hotspot_y="25" height="30" link_type="master" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{C1635252-4762-4E10-9CEC-3A994621A668}"/><names>
+<definition height="30" link_type="master" type="element" version="0.5" hotspot_y="24" width="120" hotspot_x="6" orientation="dyyy">
+    <uuid uuid="{a5640741-dbdc-4f12-a7b0-d441c153629b}"/>
+    <names>
+        <name lang="it">Indirizzo fisico KNX</name>
+        <name lang="fr">Adresse physique KNX</name>
         <name lang="nl">Fysiek adres KNX</name>
         <name lang="be">Fysiek adres KNX</name>
         <name lang="en">Physical address KNX</name>
-        <name lang="fr">Adresse physique KNX</name>
-        <name lang="it">Indirizzo fisico KNX</name>
         <name lang="cs">Fyzická adresa KNX</name>
     </names>
+    <kindInformations>
+        <kindInformation show="1" name="state">NO</kindInformation>
+        <kindInformation show="1" name="type">simple</kindInformation>
+        <kindInformation show="1" name="number">1</kindInformation>
+    </kindInformations>
     <informations>
 		Author: RDS for QelectroTech
 		
     </informations>
-    <kindInformations>
-        <kindInformation name="state" show="1">NO</kindInformation>
-        <kindInformation name="number" show="1">1</kindInformation>
-        <kindInformation name="type" show="1">simple</kindInformation>
-        <kindInformation name="tempoType" show="0"/>
-    </kindInformations>
     <description>
-        <rect width="21" x="42" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="21" x="21" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="70" y="-9.5" size="9" rotate="true" text="001"/>
-        <rect width="46" x="63" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="3" y="-9.5" size="9" rotate="true" text="F"/>
-        <input x="41" y="-9.5" size="9" rotate="true" text="01"/>
-        <input x="20" y="-9.5" size="9" rotate="true" text="01"/>
-        <rect width="21" x="0" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-5" nameHidden="24" number="" name="" orientation="n"/>
+        <rect height="20" y="-20" x="42" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="21"/>
+        <rect height="20" y="-20" x="21" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="21"/>
+        <input rotate="true" y="-9.5" size="9" tagg="none" x="70" text="001"/>
+        <rect height="20" y="-20" x="63" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="46"/>
+        <input rotate="true" y="-9.5" size="9" tagg="none" x="3" text="F"/>
+        <input rotate="true" y="-9.5" size="9" tagg="none" x="41" text="01"/>
+        <input rotate="true" y="-9.5" size="9" tagg="none" x="20" text="01"/>
+        <rect height="20" y="-20" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="21"/>
+        <input rotate="true" y="-30" size="9" tagg="label" x="0" text="_"/>
+        <terminal y="-5" x="0" orientation="n"/>
     </description>
 </definition>

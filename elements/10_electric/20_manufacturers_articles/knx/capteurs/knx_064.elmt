@@ -1,37 +1,39 @@
-<definition width="70" version="0.3" hotspot_x="44" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{58C16186-80FF-4983-B7D9-71283747BB76}"/><names>
-        <name lang="en">Switch. Act. mod. + PB single</name>
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="70" hotspot_x="44" orientation="dyyy">
+    <uuid uuid="{e1f39d32-2014-4612-bf46-49d763ba07ee}"/>
+    <names>
         <name lang="it">Modulo contatto + pulsante</name>
         <name lang="fr">Connecteur de module + bouton poussoir</name>
+        <name lang="nl">Modulekontakt + Drukknop enkel</name>
         <name lang="pl">Moduł łącznika + przycisk</name>
+        <name lang="en">Switch. Act. mod. + PB single</name>
         <name lang="es">Conector de módulo + botón pulsador</name>
         <name lang="cs">Modul spínače + tlačítko</name>
-        <name lang="nl">Modulekontakt + Drukknop enkel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="30" x="-40" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="9" y="4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
-        <circle x="11" y="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
-        <rect width="30" x="-10" y="-15" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-10" y2="-15" x2="20"/>
-        <input x="10" y="0.5" size="5" rotate="true" text="1"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-35" y2="0" x2="-30" y3="-3" x3="-20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-15" y2="0" x2="-20"/>
-        <terminal x="-40" y="10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-40" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-40" y="-10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="21" y="10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="20" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-30" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-20" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="0" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-30" y="-15" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-20" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="10" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="0" y="15" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="10" y="-15" nameHidden="0" number="" name="" orientation="n"/>
+        <rect height="30" y="-15" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="30"/>
+        <circle y="4" diameter="8" x="9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle y="6" diameter="4" x="11" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <rect height="30" y="-15" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="30"/>
+        <line x1="-10" y1="15" end1="none" x2="20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="true" y2="-15"/>
+        <input rotate="true" y="0.5" size="5" tagg="none" x="10" text="1"/>
+        <polygon y3="-3" closed="false" x1="-35" y1="0" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-20" antialias="true" y2="0"/>
+        <line x1="-15" y1="0" end1="none" x2="-20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" antialias="false" y2="0"/>
+        <input rotate="true" y="-26" size="9" tagg="label" x="-42" text="_"/>
+        <terminal y="10" x="-40" orientation="w"/>
+        <terminal y="0" x="-40" orientation="w"/>
+        <terminal y="-10" x="-40" orientation="w"/>
+        <terminal y="0" x="20" orientation="e"/>
+        <terminal y="10" x="21" orientation="e"/>
+        <terminal y="-10" x="20" orientation="e"/>
+        <terminal y="15" x="-30" orientation="s"/>
+        <terminal y="-15" x="-20" orientation="n"/>
+        <terminal y="-15" x="0" orientation="n"/>
+        <terminal y="-15" x="-30" orientation="n"/>
+        <terminal y="15" x="-20" orientation="s"/>
+        <terminal y="15" x="10" orientation="s"/>
+        <terminal y="15" x="0" orientation="s"/>
+        <terminal y="-15" x="10" orientation="n"/>
     </description>
 </definition>
