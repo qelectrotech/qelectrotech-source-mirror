@@ -1,26 +1,28 @@
-<definition width="70" version="0.3" hotspot_x="34" hotspot_y="20" height="50" type="element" orientation="dyyy">
-<uuid uuid="{0D9A866B-BB7C-453F-9C13-268E3B316B03}"/><names>
+<definition link_type="simple" hotspot_x="34" orientation="dyyy" hotspot_y="19" type="element" height="50" width="70" version="0.5">
+    <uuid uuid="{0a5fde32-7588-4b45-be21-08bed0809e57}"/>
+    <names>
+        <name lang="pl">Ultradźwiękowy czujnik odległości HC-SR04</name>
+        <name lang="nl">Ultrasoon afstandsensor HC-SR04</name>
+        <name lang="fr">Capteur HC-SR04</name>
         <name lang="en">Ultrasonic module HC-SR04</name>
         <name lang="it">Sensore ultrasonico HC-SR04</name>
-        <name lang="fr">Capteur HC-SR04</name>
-        <name lang="pl">Ultradźwiękowy czujnik odległości HC-SR04</name>
         <name lang="cs">Ultrazvukové vzdálenostní čidlo HC-SR04</name>
-        <name lang="nl">Ultrasoon afstandsensor HC-SR04</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="7" y="-9" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="22"/>
-        <text x="11" y="2" size="6" rotation="90" text="Gnd"/>
-        <text x="-4" y="2" size="6" rotation="90" text="Trig"/>
-        <text x="3" y="-1" size="6" rotation="90" text="Echo"/>
-        <rect width="61" x="-30" y="-12" antialias="false" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-28" y="-8" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="22"/>
-        <text x="-11" y="3" size="6" rotation="90" text="Vcc"/>
-        <text x="-7" y="-8" size="3" text="HC-SR04"/>
-        <terminal x="-9" y="22" orientation="s"/>
-        <terminal x="-1.7" y="22" orientation="s"/>
-        <terminal x="5.6" y="22" orientation="s"/>
-        <terminal x="11.9" y="22" orientation="s"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="-9" diameter="22" x="7"/>
+        <text size="6" text="Gnd" y="2" rotation="90" x="11"/>
+        <text size="6" text="Trig" y="2" rotation="90" x="-4"/>
+        <text size="6" text="Echo" y="-1" rotation="90" x="3"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="36" y="-12" width="61" x="-30"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="-8" diameter="22" x="-28"/>
+        <text size="6" text="Vcc" y="3" rotation="90" x="-11"/>
+        <text size="3" text="HC-SR04" y="-8" x="-7"/>
+        <input size="9" text="_" rotate="true" y="-23" tagg="label" x="-31"/>
+        <terminal orientation="s" y="22" x="5.6"/>
+        <terminal orientation="s" y="22" x="11.9"/>
+        <terminal orientation="s" y="22" x="-1.7"/>
+        <terminal orientation="s" y="22" x="-9"/>
     </description>
 </definition>

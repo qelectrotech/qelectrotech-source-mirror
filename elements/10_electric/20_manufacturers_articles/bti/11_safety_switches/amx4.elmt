@@ -1,51 +1,53 @@
-<definition width="120" version="0.3" hotspot_x="0" hotspot_y="50" height="120" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{C3CB93ED-5A7B-4F3C-89CF-C437C25644BB}"/><names>
-        <name lang="ar">AMX4</name>
-        <name lang="en">AMX4</name>
-        <name lang="fr">AMX4</name>
+<definition link_type="simple" hotspot_x="55" orientation="dyyy" hotspot_y="54" type="element" height="110" width="110" version="0.5">
+    <uuid uuid="{10af832b-0ad1-4c67-ac89-48bcef108445}"/>
+    <names>
         <name lang="pl">AMX4</name>
-        <name lang="cs">AMX4</name>
-        <name lang="es">AMX4</name>
-        <name lang="it">AMX4</name>
         <name lang="nl">AMX4</name>
+        <name lang="fr">AMX4</name>
+        <name lang="en">AMX4</name>
+        <name lang="cs">AMX4</name>
+        <name lang="it">AMX4</name>
+        <name lang="ar">AMX4</name>
+        <name lang="es">AMX4</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="28" y2="-25" x2="32"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="30" y2="-23" x2="30"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="85" y2="5" x2="90" y3="60" x3="90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="70" y2="-40" x2="70"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="30" y2="-40" x2="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="10" y2="50" x2="110"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="-30" x2="110"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="50" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-5" x1="51" y2="-5" x2="87"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="110" y2="50" x2="110"/>
-        <input x="85.5" y="-27" size="5" rotation="270" rotate="true" text="RD"/>
-        <input x="65.5" y="-27" size="5" rotation="270" rotate="true" text="OG"/>
-        <input x="65.5" y="64" size="5" rotation="270" rotate="true" text="GY"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="48" y2="-25" x2="52"/>
-        <input x="45.5" y="-27" size="5" rotation="270" rotate="true" text="BU"/>
-        <input x="25.5" y="-27" size="5" rotation="270" rotate="true" text="BN"/>
-        <input x="85.5" y="65" size="5" rotation="270" rotate="true" text="BK"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="65" y2="5" x2="70" y3="60" x3="70"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="90" y2="-40" x2="90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="50" y2="-40" x2="50"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="38.85" y2="0" x2="40.85"/>
-        <rect width="8" x="86" y="15" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="38.85" y2="-10" x2="40.85"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="38.85" y2="0" x2="38.85"/>
-        <rect width="8" x="66" y="15" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="46.85" y2="-1" x2="46.85"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="44.85" y2="-1" x2="44.85"/>
-        <polygon x4="45.85" y5="-5" x5="50.85" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="50.85" y2="-10" x2="45.85" y3="-5" x3="40.85" y4="0"/>
-        <input x="16" y="24.5" size="9" rotate="true" text="AMX4"/>
-        <terminal x="30" y="-40" orientation="n"/>
-        <terminal x="50" y="-40" orientation="n"/>
-        <terminal x="70" y="-40" orientation="n"/>
-        <terminal x="90" y="-40" orientation="n"/>
-        <terminal x="70" y="60" orientation="s"/>
-        <terminal x="90" y="60" orientation="s"/>
+        <line y1="-35" x1="-32" x2="-28" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-35"/>
+        <line y1="-37" x1="-30" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-33"/>
+        <polygon y1="-25" x3="30" x1="25" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y3="50" closed="false" y2="-5"/>
+        <line y1="-25" x1="10" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-50"/>
+        <line y1="-40" x1="-30" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-50"/>
+        <line y1="40" x1="-50" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="40"/>
+        <line y1="-40" x1="-50" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-40"/>
+        <line y1="-40" x1="-50" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="40"/>
+        <line y1="-15" x1="-9" x2="27" style="line-style:dashed;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-15"/>
+        <line y1="-40" x1="50" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="40"/>
+        <input size="5" text="RD" rotate="true" y="-37" rotation="270" tagg="none" x="25.5"/>
+        <input size="5" text="OG" rotate="true" y="-37" rotation="270" tagg="none" x="5.5"/>
+        <input size="5" text="GY" rotate="true" y="54" rotation="270" tagg="none" x="5.5"/>
+        <line y1="-35" x1="-12" x2="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-35"/>
+        <input size="5" text="BU" rotate="true" y="-37" rotation="270" tagg="none" x="-14.5"/>
+        <input size="5" text="BN" rotate="true" y="-37" rotation="270" tagg="none" x="-34.5"/>
+        <input size="5" text="BK" rotate="true" y="55" rotation="270" tagg="none" x="25.5"/>
+        <polygon y1="-25" x3="10" x1="5" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y3="50" closed="false" y2="-5"/>
+        <line y1="-25" x1="30" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-50"/>
+        <line y1="-40" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-50"/>
+        <line y1="-10" x1="-21.15" x2="-19.15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-10"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="20" y="5" width="8" x="26"/>
+        <line y1="-20" x1="-21.15" x2="-19.15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-20"/>
+        <line y1="-20" x1="-21.15" x2="-21.15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-10"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="20" y="5" width="8" x="6"/>
+        <line y1="-19" x1="-13.15" x2="-13.15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-11"/>
+        <line y1="-19" x1="-15.15" x2="-15.15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-11"/>
+        <polygon y1="-15" x3="-19.15" y5="-15" x1="-9.15" x2="-14.15" x4="-14.15" y4="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y3="-15" closed="false" y2="-20" x5="-9.15"/>
+        <input size="9" text="AMX4" rotate="true" y="14.5" tagg="none" x="-44"/>
+        <input size="9" text="_" rotate="true" y="-50" tagg="label" x="-80"/>
+        <terminal orientation="n" y="-50" x="-30"/>
+        <terminal orientation="n" y="-50" x="-10"/>
+        <terminal orientation="n" y="-50" x="30"/>
+        <terminal orientation="s" y="50" x="10"/>
+        <terminal orientation="s" y="50" x="30"/>
+        <terminal orientation="n" y="-50" x="10"/>
     </description>
 </definition>

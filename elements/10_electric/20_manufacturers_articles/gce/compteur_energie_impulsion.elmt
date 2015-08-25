@@ -1,25 +1,27 @@
-<definition width="40" version="0.3" hotspot_x="10" hotspot_y="34" height="110" type="element" orientation="dyyy">
-<uuid uuid="{7365FC7D-E415-4425-9FAA-AF9C73EA4930}"/><names>
-        <name lang="ar">عدّاد طاقة</name>
+<definition link_type="simple" hotspot_x="10" orientation="dyyy" hotspot_y="34" type="element" height="110" width="40" version="0.5">
+    <uuid uuid="{843bbdea-7163-426e-b3ea-0768fceb3c49}"/>
+    <names>
+        <name lang="pl">Licznik energii</name>
+        <name lang="be">Energie meter met pulse contact</name>
         <name lang="el">Μετρητής ενέργειας, Κιλοβατώρες (KWh)</name>
+        <name lang="fr">Compteur d’énergie à Impulsion</name>
         <name lang="en">Energy meter with pulse output</name>
         <name lang="it">Misuratore di Kwh</name>
-        <name lang="fr">Compteur d’énergie à Impulsion</name>
-        <name lang="pl">Licznik energii</name>
         <name lang="cs">Počítadlo energie</name>
-        <name lang="be">Energie meter met pulse contact</name>
+        <name lang="ar">عدّاد طاقة</name>
     </names>
     <informations></informations>
     <description>
-        <rect width="32" x="-6" y="-30" antialias="false" height="101" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="32" x="-6" y="-14" antialias="false" height="68" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="15" y="33" size="10" rotation="270" text="kWh"/>
-        <rect width="16" x="2" y="-5" antialias="false" height="48" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <terminal x="0" y="53" orientation="s"/>
-        <terminal x="20" y="53" orientation="s"/>
-        <terminal x="0" y="70" orientation="s"/>
-        <terminal x="20" y="70" orientation="s"/>
-        <terminal x="0" y="-29" orientation="n"/>
-        <terminal x="20" y="-29" orientation="n"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="101" y="-30" width="32" x="-6"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="68" y="-14" width="32" x="-6"/>
+        <text size="10" text="kWh" y="33" rotation="270" x="15"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="48" y="-5" width="16" x="2"/>
+        <input size="9" text="_" rotate="true" y="10" tagg="label" x="-30"/>
+        <terminal orientation="n" y="-29" x="20"/>
+        <terminal orientation="s" y="70" x="20"/>
+        <terminal orientation="n" y="-29" x="0"/>
+        <terminal orientation="s" y="53" x="20"/>
+        <terminal orientation="s" y="70" x="0"/>
+        <terminal orientation="s" y="53" x="0"/>
     </description>
 </definition>

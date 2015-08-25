@@ -1,68 +1,69 @@
-<definition width="830" version="0.3" hotspot_x="59" hotspot_y="45" height="130" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{9606256F-9E47-4902-96AE-09ACD6B9E3EC}"/><names>
-        <name lang="ar">1762-IT4</name>
-        <name lang="pt">1762-IT4</name>
+<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="42" type="element" height="110" width="770" version="0.5">
+    <uuid uuid="{f3845073-93ec-4dc3-b227-1134a91f156f}"/>
+    <names>
+        <name lang="pl">1762-IT4</name>
+        <name lang="nl">1762-IT4</name>
         <name lang="el">1762-IT4</name>
+        <name lang="fr">1762-IT4</name>
         <name lang="en">1762-IT4</name>
         <name lang="it">1762-IT4</name>
-        <name lang="fr">1762-IT4</name>
-        <name lang="pl">1762-IT4</name>
-        <name lang="es">1762-IT4</name>
         <name lang="cs">1762-IT4</name>
-        <name lang="nl">1762-IT4</name>
+        <name lang="ar">1762-IT4</name>
+        <name lang="pt">1762-IT4</name>
+        <name lang="es">1762-IT4</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="720" y="28" size="7" rotate="true" text="IN4&#xa; -"/>
-        <input x="560" y="28" size="7" rotate="true" text="IN3&#xa; -"/>
-        <input x="320" y="28" size="7" rotate="true" text="IN2&#xa; +"/>
-        <input x="399" y="28" size="7" rotate="true" text="IN2&#xa; -"/>
-        <input x="239" y="28" size="7" rotate="true" text="IN1&#xa; -"/>
-        <input x="17" y="27" size="7" rotate="true" text="CJC&#xa;  +"/>
-        <input x="78" y="27" size="7" rotate="true" text="CJC&#xa;  -"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-10" y2="48" x2="-10"/>
-        <input x="480" y="28" size="7" rotate="true" text="IN3&#xa; +"/>
-        <input x="640" y="27" size="7" rotate="true" text="IN4&#xa; +"/>
-        <ellipse width="5.00431" x="27.4488" y="45.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="-9.98307" y2="48" x2="26.9744"/>
-        <input x="179" y="28" size="7" rotate="true" text="IN1&#xa; +"/>
-        <input x="-6" y="-23" size="9" rotate="true" text="4-Channel Thermocouple/mV Input Module"/>
-        <input x="-55" y="4" size="9" rotate="true" text="/"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-9.96268" y2="-40" x2="749.96"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="32.3983" y2="48" x2="87.5613"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="750" y2="48" x2="750"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="733" y2="48" x2="750"/>
-        <circle x="727.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="653" y2="48" x2="727"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="573" y2="48" x2="647"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="493" y2="48" x2="567"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="413" y2="48" x2="487"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="333" y2="48" x2="407"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="253" y2="48" x2="327"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="173" y2="48" x2="247"/>
-        <circle x="647.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="567.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="487.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="407.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="327.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="247.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="167.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="93" y2="48" x2="167"/>
-        <circle x="87.5001" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="670" y="-25" size="9" rotate="true" text="1762-IT4"/>
-        <input x="751" y="-28" size="9" rotate="true" text="_" tagg="label"/>
-        <arc width="61" x="30" y="29" antialias="true" height="37" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <input x="31" y="72" size="6" rotate="true" text="CJC sensor"/>
-        <terminal x="90" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="170" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="250" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="330" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="410" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="490" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="570" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="650" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="730" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="30" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <input size="7" text="IN4&#xa; -" rotate="true" y="28" tagg="none" x="720"/>
+        <input size="7" text="IN3&#xa; -" rotate="true" y="28" tagg="none" x="560"/>
+        <input size="7" text="IN2&#xa; +" rotate="true" y="28" tagg="none" x="320"/>
+        <input size="7" text="IN2&#xa; -" rotate="true" y="28" tagg="none" x="399"/>
+        <input size="7" text="IN1&#xa; -" rotate="true" y="28" tagg="none" x="239"/>
+        <input size="7" text="CJC&#xa;  +" rotate="true" y="27" tagg="none" x="17"/>
+        <input size="7" text="CJC&#xa;  -" rotate="true" y="27" tagg="none" x="78"/>
+        <line y1="-40" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <input size="7" text="IN3&#xa; +" rotate="true" y="28" tagg="none" x="480"/>
+        <input size="7" text="IN4&#xa; +" rotate="true" y="27" tagg="none" x="640"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="5" y="45.5" width="5.00431" x="27.4488"/>
+        <line y1="48" x1="-9.98307" x2="26.9744" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <input size="7" text="IN1&#xa; +" rotate="true" y="28" tagg="none" x="179"/>
+        <input size="9" text="4-Channel Thermocouple/mV Input Module" rotate="true" y="-23" tagg="none" x="-6"/>
+        <input size="9" text="/" rotate="true" y="4" tagg="none" x="-55"/>
+        <line y1="-40" x1="-9.96268" x2="749.96" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-40"/>
+        <line y1="48" x1="32.3983" x2="87.5613" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <line y1="-40" x1="750" x2="750" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <line y1="48" x1="733" x2="750" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="727.5"/>
+        <line y1="48" x1="653" x2="727" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <line y1="48" x1="573" x2="647" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <line y1="48" x1="493" x2="567" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <line y1="48" x1="413" x2="487" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <line y1="48" x1="333" x2="407" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <line y1="48" x1="253" x2="327" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <line y1="48" x1="173" x2="247" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="647.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="567.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="487.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="407.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="327.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="247.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="167.5"/>
+        <line y1="48" x1="93" x2="167" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="87.5001"/>
+        <input size="9" text="1762-IT4" rotate="true" y="-25" tagg="none" x="670"/>
+        <input size="9" text="_" rotate="true" y="-28" tagg="label" x="751"/>
+        <arc angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="37" y="29" width="61" x="30" start="0"/>
+        <input size="6" text="CJC sensor" rotate="true" y="72" tagg="none" x="31"/>
+        <terminal orientation="s" y="51" x="170"/>
+        <terminal orientation="s" y="51" x="330"/>
+        <terminal orientation="s" y="51" x="730"/>
+        <terminal orientation="s" y="51" x="570"/>
+        <terminal orientation="s" y="51" x="490"/>
+        <terminal orientation="s" y="51" x="90"/>
+        <terminal orientation="s" y="51" x="410"/>
+        <terminal orientation="s" y="51" x="650"/>
+        <terminal orientation="s" y="51" x="30"/>
+        <terminal orientation="s" y="51" x="250"/>
     </description>
 </definition>

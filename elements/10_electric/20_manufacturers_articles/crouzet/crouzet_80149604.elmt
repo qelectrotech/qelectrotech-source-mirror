@@ -1,62 +1,64 @@
-<definition width="140" version="0.3" hotspot_x="30" hotspot_y="80" height="170" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{B3C69BC3-75D2-469A-8AE1-1CD3D247EBFC}"/><names>
-        <name lang="ar">Crouzet80149604</name>
-        <name lang="pt">Crouzet80149604</name>
+<definition link_type="simple" hotspot_x="24" orientation="dyyy" hotspot_y="74" type="element" height="160" width="130" version="0.5">
+    <uuid uuid="{e0b4b2b0-0f72-4bb4-8664-c2e839d79ac2}"/>
+    <names>
+        <name lang="pl">Crouzet 80149604</name>
+        <name lang="nl">Crouzet 80149604</name>
         <name lang="el">Crouzet80149604</name>
+        <name lang="fr">Crouzet 80149604</name>
         <name lang="en">Crouzet 80149604</name>
         <name lang="it">Crouzet 80149604</name>
-        <name lang="fr">Crouzet 80149604</name>
-        <name lang="pl">Crouzet 80149604</name>
         <name lang="cs">Crouzet 80149604</name>
-        <name lang="nl">Crouzet 80149604</name>
+        <name lang="ar">Crouzet80149604</name>
+        <name lang="pt">Crouzet80149604</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="66" y="-1" size="5" text="Logic&#xa;ground"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="70" x1="-10" y2="70" x2="90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-60" x1="-10" y2="-60" x2="90"/>
-        <input x="-26" y="-45.5" size="5" rotate="true" text="BR"/>
-        <input x="34.5" y="-58" size="5" rotation="270" rotate="true" text="RD"/>
-        <input x="88" y="-5.5" size="5" rotate="true" text="BU"/>
-        <input x="34.5" y="85" size="5" rotation="270" rotate="true" text="BL"/>
-        <input x="-26" y="34.5" size="5" rotate="true" text="PU"/>
-        <input x="-26" y="14.5" size="5" rotate="true" text="GN"/>
-        <input x="-26" y="-5.5" size="5" rotate="true" text="YE"/>
-        <input x="-26" y="-25.5" size="5" rotate="true" text="OG"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-60" x1="90" y2="70" x2="90"/>
-        <text x="-9" y="39" size="5" text="Output&#xa;12PT/T"/>
-        <text x="-9" y="19" size="5" text="Enable&#xa;input"/>
-        <text x="-9" y="-1" size="5" text="Direction&#xa;input"/>
-        <text x="-9" y="-21" size="5" text="Input&#xa;PWM"/>
-        <text x="-9" y="-41" size="5" text="Input&#xa;0-10V"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-60" x1="-10" y2="70" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="90" y2="0" x2="100"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="40" y2="81" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-20" y2="-20" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-70" x1="40" y2="-60" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-20" y2="40" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-20" y2="-40" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-20" y2="20" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-10"/>
-        <input x="8" y="54.5" size="9" rotate="true" text="80149604"/>
-        <text x="18" y="68" size="5" text="Power ground"/>
-        <circle x="25" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="45" y2="14.5" x2="45"/>
-        <text x="31.5" y="7" size="15" text="M"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="35" y2="18" x2="45"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="45" y2="-14.5" x2="45"/>
-        <text x="26" y="-52" size="5" text="24V DC"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.5" x1="35" y2="-18" x2="35"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="35" y2="-18" x2="45"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.5" x1="35" y2="18" x2="35"/>
-        <terminal x="40" y="-70" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="100" y="0" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="40" y="81" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-20" y="-20" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="20" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="-40" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-20" y="40" nameHidden="0" number="" name="" orientation="w"/>
+        <text size="5" text="Logic&#xa;ground" y="-1" x="66"/>
+        <line y1="70" x1="-10" x2="90" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="70"/>
+        <line y1="-60" x1="-10" x2="90" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-60"/>
+        <input size="5" text="BR" rotate="true" y="-45.5" tagg="none" x="-26"/>
+        <input size="5" text="RD" rotate="true" y="-58" rotation="270" tagg="none" x="34.5"/>
+        <input size="5" text="BU" rotate="true" y="-5.5" tagg="none" x="88"/>
+        <input size="5" text="BL" rotate="true" y="85" rotation="270" tagg="none" x="34.5"/>
+        <input size="5" text="PU" rotate="true" y="34.5" tagg="none" x="-26"/>
+        <input size="5" text="GN" rotate="true" y="14.5" tagg="none" x="-26"/>
+        <input size="5" text="YE" rotate="true" y="-5.5" tagg="none" x="-26"/>
+        <input size="5" text="OG" rotate="true" y="-25.5" tagg="none" x="-26"/>
+        <line y1="-60" x1="90" x2="90" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="70"/>
+        <text size="5" text="Output&#xa;12PT/T" y="39" x="-9"/>
+        <text size="5" text="Enable&#xa;input" y="19" x="-9"/>
+        <text size="5" text="Direction&#xa;input" y="-1" x="-9"/>
+        <text size="5" text="Input&#xa;PWM" y="-21" x="-9"/>
+        <text size="5" text="Input&#xa;0-10V" y="-41" x="-9"/>
+        <line y1="-60" x1="-10" x2="-10" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="70"/>
+        <line y1="0" x1="90" x2="100" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="0"/>
+        <line y1="70" x1="40" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="81"/>
+        <line y1="-20" x1="-20" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-20"/>
+        <line y1="-70" x1="40" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-60"/>
+        <line y1="40" x1="-20" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="40"/>
+        <line y1="-40" x1="-20" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-40"/>
+        <line y1="20" x1="-20" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="20"/>
+        <line y1="0" x1="-20" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="0"/>
+        <input size="9" text="80149604" rotate="true" y="54.5" tagg="none" x="8"/>
+        <text size="5" text="Power ground" y="68" x="18"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-15" diameter="30" x="25"/>
+        <line y1="18" x1="45" x2="45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="14.5"/>
+        <text size="15" text="M" y="7" x="31.5"/>
+        <line y1="18" x1="35" x2="45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="18"/>
+        <line y1="-18" x1="45" x2="45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-14.5"/>
+        <text size="5" text="24V DC" y="-52" x="26"/>
+        <line y1="-14.5" x1="35" x2="35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-18"/>
+        <line y1="-18" x1="35" x2="45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-18"/>
+        <line y1="14.5" x1="35" x2="35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="18"/>
+        <input size="9" text="_" rotate="true" y="-70" tagg="label" x="-30"/>
+        <terminal orientation="n" y="-70" x="40"/>
+        <terminal orientation="e" y="0" x="100"/>
+        <terminal orientation="s" y="81" x="40"/>
+        <terminal orientation="w" y="-20" x="-20"/>
+        <terminal orientation="w" y="0" x="-20"/>
+        <terminal orientation="w" y="20" x="-20"/>
+        <terminal orientation="w" y="-40" x="-20"/>
+        <terminal orientation="w" y="40" x="-20"/>
     </description>
 </definition>

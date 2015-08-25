@@ -1,56 +1,58 @@
-<definition width="100" version="0.3" hotspot_x="6" hotspot_y="55" height="210" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{12722E1F-C272-4397-9CF3-B260B5D794AD}"/><names>
+<definition link_type="simple" hotspot_x="6" orientation="dyyy" hotspot_y="55" type="element" height="210" width="100" version="0.5">
+    <uuid uuid="{c132510c-d52c-4206-8ced-e16b0ab4aea0}"/>
+    <names>
+        <name lang="pl">MSR41 Micro 400 Controller</name>
+        <name lang="nl">MSR41 Micro 400 Controller</name>
+        <name lang="fr">msr41 micro 400 controller</name>
         <name lang="en">msr41 micro 400 controller</name>
         <name lang="it">MSR41 Micro 400 Controller</name>
-        <name lang="fr">msr41 micro 400 controller</name>
-        <name lang="pl">MSR41 Micro 400 Controller</name>
-        <name lang="es">msr41 micro 400 controlador</name>
         <name lang="cs">MSR41 Micro 400 Controller</name>
-        <name lang="nl">MSR41 Micro 400 Controller</name>
+        <name lang="es">msr41 micro 400 controlador</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="90" y5="150" x5="2" y6="123" x6="2" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="-22" x1="2" y2="-50" x2="2" y3="-50" x3="90" y4="150"/>
-        <text x="47" y="135" size="6" text="Micro 400"/>
-        <text x="48" y="144" size="5" text="Emitter"/>
-        <text x="10" y="62" size="5" text="In2"/>
-        <text x="10" y="22" size="5" text="info 2"/>
-        <text x="10" y="2" size="5" text="OSSD 1"/>
-        <text x="10" y="102" size="5" text="0V"/>
-        <text x="10" y="42" size="5" text="info 1"/>
-        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x1="45" x2="45" x3="35" x4="35" antialias="false" x5="33" x6="33" x7="30" x8="30" x9="33" closed="false" y1="130" y10="132" y2="146" y11="132" y3="146" y4="144" y12="130" y5="144" x10="33" y13="130" y6="142" x11="35" y7="142" x12="35" y8="134" x13="45" y9="134"/>
-        <circle x="-0.25" y="57.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="-0.25" y="37.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="-0.25" y="17.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="-0.25" y="-2.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <text x="10" y="82" size="5" text="In1"/>
-        <text x="10" y="122" size="5" text="24V"/>
-        <circle x="-0.25" y="97.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="-0.25" y="77.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <circle x="-0.25" y="117.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <text x="10" y="-18" size="5" text="OSSD 2"/>
-        <circle x="-0.25" y="-22.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.5"/>
-        <input x="41" y="43.5" size="9" rotate="true" text="msr41"/>
-        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x1="45" x2="45" x3="35" x4="35" antialias="false" x5="33" x6="33" x7="30" x8="30" x9="33" closed="false" y1="-46" y10="-44" y2="-30" y11="-44" y3="-30" y4="-32" y12="-46" y5="-32" x10="33" y13="-46" y6="-34" x11="35" y7="-34" x12="35" y8="-42" x13="45" y9="-42"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="117" x1="2" y2="102" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="77" x1="2" y2="63" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="97" x1="2" y2="83" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="57" x1="2" y2="43" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="37" x1="2" y2="23" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="17" x1="2" y2="3" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-3" x1="2" y2="-17" x2="2"/>
-        <text x="48" y="-37" size="6" text="Micro 400"/>
-        <text x="49" y="-28" size="5" text="Receiver"/>
-        <terminal x="0" y="-20" orientation="w"/>
-        <terminal x="0" y="0" orientation="w"/>
-        <terminal x="0" y="20" orientation="w"/>
-        <terminal x="0" y="40" orientation="w"/>
-        <terminal x="0" y="60" orientation="w"/>
-        <terminal x="0" y="80" orientation="w"/>
-        <terminal x="0" y="100" orientation="w"/>
-        <terminal x="0" y="120" orientation="w"/>
-        <terminal x="40" y="-40" orientation="n"/>
-        <terminal x="40" y="140" orientation="s"/>
+        <polygon y1="-22" x3="90" y5="150" x1="2" x2="2" x4="90" y4="150" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" y3="-50" x6="2" closed="false" y2="-50" y6="123" x5="2"/>
+        <text size="6" text="Micro 400" y="135" x="47"/>
+        <text size="5" text="Emitter" y="144" x="48"/>
+        <text size="5" text="In2" y="62" x="10"/>
+        <text size="5" text="info 2" y="22" x="10"/>
+        <text size="5" text="OSSD 1" y="2" x="10"/>
+        <text size="5" text="0V" y="102" x="10"/>
+        <text size="5" text="info 1" y="42" x="10"/>
+        <polygon y11="132" y1="130" y10="132" x2="45" x10="33" y5="144" x11="35" x13="45" y2="146" y7="142" style="line-style:normal;line-weight:thin;filling:none;color:black" y9="134" x3="35" x1="45" y8="134" y13="130" x4="35" y3="146" x8="30" y4="144" x9="33" x12="35" closed="false" y12="130" y6="142" x7="30" x6="33" x5="33" antialias="false"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="57.75" diameter="4.5" x="-0.25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="37.75" diameter="4.5" x="-0.25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="17.75" diameter="4.5" x="-0.25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.25" diameter="4.5" x="-0.25"/>
+        <text size="5" text="In1" y="82" x="10"/>
+        <text size="5" text="24V" y="122" x="10"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="97.75" diameter="4.5" x="-0.25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="77.75" diameter="4.5" x="-0.25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="117.75" diameter="4.5" x="-0.25"/>
+        <text size="5" text="OSSD 2" y="-18" x="10"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-22.25" diameter="4.5" x="-0.25"/>
+        <input size="9" text="msr41" rotate="true" y="43.5" tagg="none" x="41"/>
+        <polygon y11="-44" y1="-46" y10="-44" x2="45" x10="33" y5="-32" x11="35" x13="45" y2="-30" y7="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" y9="-42" x3="35" x1="45" y8="-42" y13="-46" x4="35" y3="-30" x8="30" y4="-32" x9="33" x12="35" closed="false" y12="-46" y6="-34" x7="30" x6="33" x5="33" antialias="false"/>
+        <line y1="117" x1="2" x2="2" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="102"/>
+        <line y1="77" x1="2" x2="2" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="63"/>
+        <line y1="97" x1="2" x2="2" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="83"/>
+        <line y1="57" x1="2" x2="2" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="43"/>
+        <line y1="37" x1="2" x2="2" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="23"/>
+        <line y1="17" x1="2" x2="2" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="3"/>
+        <line y1="-3" x1="2" x2="2" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-17"/>
+        <text size="6" text="Micro 400" y="-37" x="48"/>
+        <text size="5" text="Receiver" y="-28" x="49"/>
+        <input size="9" text="_" rotate="true" y="-50" tagg="label" x="-30"/>
+        <terminal orientation="s" y="140" x="40"/>
+        <terminal orientation="w" y="100" x="0"/>
+        <terminal orientation="w" y="120" x="0"/>
+        <terminal orientation="n" y="-40" x="40"/>
+        <terminal orientation="w" y="60" x="0"/>
+        <terminal orientation="w" y="80" x="0"/>
+        <terminal orientation="w" y="20" x="0"/>
+        <terminal orientation="w" y="0" x="0"/>
+        <terminal orientation="w" y="40" x="0"/>
+        <terminal orientation="w" y="-20" x="0"/>
     </description>
 </definition>

@@ -1,46 +1,48 @@
-<definition width="400" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy">
-<uuid uuid="{E3ACFEA9-AB85-472E-8F9E-C4A2BA5BA9A5}"/><names>
-        <name lang="ar">لوحة مداخل CD12</name>
-        <name lang="de">CD12 Eingangskarte</name>
-        <name lang="pt">Carta de entradas CD12</name>
-        <name lang="el">Κάρτα εισόδων CD 12</name>
-        <name lang="en">CD12 input board</name>
-        <name lang="it">Scheda ingressi CD12</name>
-        <name lang="fr">CD12 carte entrées</name>
+<definition link_type="simple" hotspot_x="5" orientation="dyyy" hotspot_y="6" type="element" height="50" width="410" version="0.5">
+    <uuid uuid="{6bd605ae-52fc-4d24-b407-623e39a3ec9d}"/>
+    <names>
         <name lang="pl">Karta wejść CD12</name>
-        <name lang="es">CD12 tarjeta de entrada</name>
-        <name lang="cs">Karta CD12 vstupy</name>
         <name lang="nl">CD12 ingangskaart</name>
+        <name lang="el">Κάρτα εισόδων CD 12</name>
+        <name lang="fr">CD12 carte entrées</name>
+        <name lang="en">CD12 input board</name>
+        <name lang="de">CD12 Eingangskarte</name>
+        <name lang="it">Scheda ingressi CD12</name>
+        <name lang="cs">Karta CD12 vstupy</name>
+        <name lang="ar">لوحة مداخل CD12</name>
+        <name lang="pt">Carta de entradas CD12</name>
+        <name lang="es">CD12 tarjeta de entrada</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="125" y="32" size="8" text="CROUZET CD12 Carte entrées"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="130" y2="0" x2="130"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="190" y2="0" x2="190"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="160" y2="0" x2="160"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="220" y2="0" x2="220"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="70" y2="0" x2="70"/>
-        <text x="126" y="19.3333" size="7" text="I1       I2        I3       I4"/>
-        <rect width="400" x="0" y="0" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="68" y="16.6667" size="8" text="-"/>
-        <text x="28" y="34.6667" size="8" text="24 VDC"/>
-        <text x="273" y="19.3333" size="7" text=" Ib       Ic       Id        Ie"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="30" y2="0" x2="30"/>
-        <text x="27" y="17.6667" size="8" text="+"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="310" y2="0" x2="310"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="340" y2="0" x2="340"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="280" y2="0" x2="280"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="370" y2="0" x2="370"/>
-        <terminal x="70" y="0" orientation="n"/>
-        <terminal x="30" y="0" orientation="n"/>
-        <terminal x="190" y="0" orientation="n"/>
-        <terminal x="130" y="0" orientation="n"/>
-        <terminal x="160" y="0" orientation="n"/>
-        <terminal x="220" y="0" orientation="n"/>
-        <terminal x="340" y="0" orientation="n"/>
-        <terminal x="280" y="0" orientation="n"/>
-        <terminal x="370" y="0" orientation="n"/>
-        <terminal x="310" y="0" orientation="n"/>
+        <text size="8" text="CROUZET CD12 Carte entrées" y="32" x="125"/>
+        <line y1="10" x1="130" x2="130" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="190" x2="190" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="160" x2="160" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="220" x2="220" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="70" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <text size="7" text="I1       I2        I3       I4" y="19.3333" x="126"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="40" y="0" width="400" x="0"/>
+        <text size="8" text="-" y="16.6667" x="68"/>
+        <text size="8" text="24 VDC" y="34.6667" x="28"/>
+        <text size="7" text=" Ib       Ic       Id        Ie" y="19.3333" x="273"/>
+        <line y1="10" x1="30" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <text size="8" text="+" y="17.6667" x="27"/>
+        <line y1="10" x1="310" x2="310" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="340" x2="340" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="280" x2="280" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="370" x2="370" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <input size="9" text="_" rotate="true" y="-20" tagg="label" x="0"/>
+        <terminal orientation="n" y="0" x="70"/>
+        <terminal orientation="n" y="0" x="30"/>
+        <terminal orientation="n" y="0" x="190"/>
+        <terminal orientation="n" y="0" x="130"/>
+        <terminal orientation="n" y="0" x="160"/>
+        <terminal orientation="n" y="0" x="220"/>
+        <terminal orientation="n" y="0" x="340"/>
+        <terminal orientation="n" y="0" x="280"/>
+        <terminal orientation="n" y="0" x="370"/>
+        <terminal orientation="n" y="0" x="310"/>
     </description>
 </definition>

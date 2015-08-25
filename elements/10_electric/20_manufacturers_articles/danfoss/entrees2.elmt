@@ -1,66 +1,68 @@
-<definition width="380" version="0.3" hotspot_x="335" hotspot_y="65" height="120" type="element" orientation="dyyy">
-<uuid uuid="{2B1973F7-CBD5-4D80-B4CF-C3A775D08644}"/><names>
-        <name lang="ar">AKCC550 - مداخل/2</name>
-        <name lang="en">AKCC550 inputs/2</name>
-        <name lang="fr">AKCC550 entrées/2</name>
+<definition link_type="simple" hotspot_x="323" orientation="dyyy" hotspot_y="60" type="element" height="110" width="370" version="0.5">
+    <uuid uuid="{5a4a9335-d955-4376-8937-43603f600117}"/>
+    <names>
         <name lang="pl">AKCC550 - wejścia 2</name>
-        <name lang="cs">AKCC550 - vstupy 2</name>
-        <name lang="es">AKCC550 entradas/2</name>
-        <name lang="it">AKCC550 ingressi/2</name>
         <name lang="nl">AKCC550 communicatie 2</name>
+        <name lang="fr">AKCC550 entrées/2</name>
+        <name lang="en">AKCC550 inputs/2</name>
+        <name lang="cs">AKCC550 - vstupy 2</name>
+        <name lang="it">AKCC550 ingressi/2</name>
+        <name lang="ar">AKCC550 - مداخل/2</name>
+        <name lang="es">AKCC550 entradas/2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="363" x="-320" y="-54" antialias="false" height="98" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-241" y="32.6667" size="9" text="Entrées ana AKCC 550"/>
-        <text x="-69" y="27.6667" size="9" text="MODBUS"/>
-        <text x="-79" y="-4.33333" size="9" text="+12V"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-84" y2="-3" x2="-96"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="-90" y2="-6" x2="-90"/>
-        <text x="-4" y="10.6667" size="9" text="B-"/>
-        <text x="-25" y="10.6667" size="9" text="A+"/>
-        <rect width="111" x="-98" y="-50" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-8" y="-27" size="9" text="58"/>
-        <text x="-28" y="-27.3333" size="9" text="57"/>
-        <text x="-49" y="-27" size="9" text="56"/>
-        <text x="-78" y="-27" size="9" text="55"/>
-        <text x="-96" y="-27.3333" size="9" text="54"/>
-        <text x="-159" y="-31.3333" size="9" text="RJ 45"/>
-        <text x="-194" y="9.66667" size="9" text="B-"/>
-        <text x="-216" y="9.66667" size="9" text="A+"/>
-        <ellipse width="43" x="-231" y="-17" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="-231" y2="-14" x2="-231"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="-211" y2="-5" x2="-211"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="-191" y2="-5" x2="-191"/>
-        <rect width="60" x="-239" y="-50" antialias="false" height="27" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="0" x="-239" y="-49" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-199" y="-27.3333" size="9" text="53"/>
-        <text x="-218" y="-27.3333" size="9" text="52"/>
-        <text x="-237" y="-27.3333" size="9" text="51"/>
-        <circle x="-235" y="-47" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <rect width="68" x="-316" y="-48" antialias="false" height="31" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-316" y="5.66667" size="9" text="EKA display"/>
-        <rect width="40" x="-302" y="-39" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="58" x="-171" y="-50" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-5" y="-48" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <circle x="-25" y="-48" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <circle x="-45" y="-48" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <circle x="-75" y="-48" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <circle x="-95" y="-48" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <ellipse width="43" x="-40" y="-14" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-195" y="-47" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <circle x="-215" y="-47" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="-40" y2="-11" x2="-40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="-20" y2="-2" x2="-20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="0" y2="-2" x2="0"/>
-        <terminal x="-230" y="-44" orientation="n"/>
-        <terminal x="-210" y="-44" orientation="n"/>
-        <terminal x="-190" y="-44" orientation="n"/>
-        <terminal x="-90" y="-46" orientation="n"/>
-        <terminal x="-70" y="-45" orientation="n"/>
-        <terminal x="-40" y="-45" orientation="n"/>
-        <terminal x="-20" y="-45" orientation="n"/>
-        <terminal x="0" y="-46" orientation="n"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="98" y="-54" width="363" x="-320"/>
+        <text size="9" text="Entrées ana AKCC 550" y="32.6667" x="-241"/>
+        <text size="9" text="MODBUS" y="27.6667" x="-69"/>
+        <text size="9" text="+12V" y="-4.33333" x="-79"/>
+        <line y1="-8" x1="-84" x2="-96" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" length1="1.5" end1="none" end2="none" length2="1.5" y2="-3"/>
+        <line y1="-19" x1="-90" x2="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-6"/>
+        <text size="9" text="B-" y="10.6667" x="-4"/>
+        <text size="9" text="A+" y="10.6667" x="-25"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="30" y="-50" width="111" x="-98"/>
+        <text size="9" text="58" y="-27" x="-8"/>
+        <text size="9" text="57" y="-27.3333" x="-28"/>
+        <text size="9" text="56" y="-27" x="-49"/>
+        <text size="9" text="55" y="-27" x="-78"/>
+        <text size="9" text="54" y="-27.3333" x="-96"/>
+        <text size="9" text="RJ 45" y="-31.3333" x="-159"/>
+        <text size="9" text="B-" y="9.66667" x="-194"/>
+        <text size="9" text="A+" y="9.66667" x="-216"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="7" y="-17" width="43" x="-231"/>
+        <line y1="-22" x1="-231" x2="-231" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-14"/>
+        <line y1="-22" x1="-211" x2="-211" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-5"/>
+        <line y1="-22" x1="-191" x2="-191" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="27" y="-50" width="60" x="-239"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="1" y="-49" width="0" x="-239"/>
+        <text size="9" text="53" y="-27.3333" x="-199"/>
+        <text size="9" text="52" y="-27.3333" x="-218"/>
+        <text size="9" text="51" y="-27.3333" x="-237"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-47" diameter="10" x="-235"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="31" y="-48" width="68" x="-316"/>
+        <text size="9" text="EKA display" y="5.66667" x="-316"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-39" width="40" x="-302"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="30" y="-50" width="58" x="-171"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-48" diameter="10" x="-5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-48" diameter="10" x="-25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-48" diameter="10" x="-45"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-48" diameter="10" x="-75"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-48" diameter="10" x="-95"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="7" y="-14" width="43" x="-40"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-47" diameter="10" x="-195"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-47" diameter="10" x="-215"/>
+        <line y1="-19" x1="-40" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-11"/>
+        <line y1="-19" x1="-20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-2"/>
+        <line y1="-19" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-2"/>
+        <input size="9" text="_" rotate="true" y="-70" tagg="label" x="-320"/>
+        <terminal orientation="n" y="-44" x="-190"/>
+        <terminal orientation="n" y="-44" x="-210"/>
+        <terminal orientation="n" y="-46" x="0"/>
+        <terminal orientation="n" y="-44" x="-230"/>
+        <terminal orientation="n" y="-46" x="-90"/>
+        <terminal orientation="n" y="-45" x="-70"/>
+        <terminal orientation="n" y="-45" x="-40"/>
+        <terminal orientation="n" y="-45" x="-20"/>
     </description>
 </definition>

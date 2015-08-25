@@ -1,50 +1,52 @@
-<definition width="90" version="0.3" hotspot_x="50" hotspot_y="52" height="70" type="element" orientation="dyyy">
-<uuid uuid="{88F0BEBA-8127-437C-8CA0-36AD6BFE9D1E}"/><names>
-        <name lang="it">Tiny RTC (orologio e calendario)</name>
-        <name lang="fr">Tiny RTC (horloge temps réel)</name>
+<definition link_type="simple" hotspot_x="50" orientation="dyyy" hotspot_y="57" type="element" height="80" width="90" version="0.5">
+    <uuid uuid="{11811a10-ef65-4682-883d-bd4b0aef4580}"/>
+    <names>
         <name lang="pl">Tiny RTC</name>
-        <name lang="cs">Tiny RTC (hodiny a kalendář)</name>
-        <name lang="en">Tiny RTC real time clock)</name>
         <name lang="nl">Tiny RTC Tijdklok</name>
+        <name lang="fr">Tiny RTC (horloge temps réel)</name>
+        <name lang="en">Tiny RTC real time clock)</name>
+        <name lang="it">Tiny RTC (orologio e calendario)</name>
+        <name lang="cs">Tiny RTC (hodiny a kalendář)</name>
     </names>
     <informations>Charles Ferrand 
 novembre 2013</informations>
     <description>
-        <text x="6" y="-8" size="6" rotation="90" text="SCL"/>
-        <text x="15" y="-6" size="6" rotation="90" text="DS"/>
-        <text x="-42" y="13" size="6" text="P1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="35.8432" y2="14" x2="30.2216"/>
-        <text x="23" y="-6" size="6" rotation="90" text="SQ"/>
-        <text x="-30" y="-6" size="6" rotation="90" text="Bat"/>
-        <text x="-2" y="-9" size="6" rotation="90" text="SDA"/>
-        <text x="-21" y="-10" size="6" rotation="90" text="GND"/>
-        <text x="-11" y="-7" size="6" rotation="90" text="Vcc"/>
-        <rect width="62" x="-31" y="8" antialias="false" height="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <text x="15" y="-42" size="6" rotation="90" text="DS"/>
-        <text x="-33" y="-40" size="6" text="P2"/>
-        <text x="6" y="-42" size="6" rotation="90" text="SCL"/>
-        <text x="-3" y="-42" size="6" rotation="90" text="SDA"/>
-        <text x="-12" y="-41" size="6" rotation="90" text="Vcc"/>
-        <text x="-21" y="-42" size="6" rotation="90" text="GND"/>
-        <rect width="42" x="-21" y="-49" antialias="false" height="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-31" y2="14" x2="-47"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-47" y2="-47" x2="-47"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-47" x1="-47" y2="-47" x2="-21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-47" x1="21" y2="-47" x2="36"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-47" x1="36" y2="14" x2="36"/>
-        <text x="-44" y="-38" size="7" rotation="90" text="Tiny RTC"/>
-        <ellipse width="41" x="-21" y="-40" antialias="true" height="42" style="line-style:dotted;line-weight:thin;filling:none;color:black"/>
-        <terminal x="-27" y="13" orientation="s"/>
-        <terminal x="-18" y="13" orientation="s"/>
-        <terminal x="-9" y="13" orientation="s"/>
-        <terminal x="0" y="13" orientation="s"/>
-        <terminal x="9" y="13" orientation="s"/>
-        <terminal x="18" y="13" orientation="s"/>
-        <terminal x="27" y="13" orientation="s"/>
-        <terminal x="-18" y="-48" orientation="n"/>
-        <terminal x="-9" y="-48" orientation="n"/>
-        <terminal x="0" y="-48" orientation="n"/>
-        <terminal x="9" y="-48" orientation="n"/>
-        <terminal x="18" y="-48" orientation="n"/>
+        <text size="6" text="SCL" y="-8" rotation="90" x="6"/>
+        <text size="6" text="DS" y="-6" rotation="90" x="15"/>
+        <text size="6" text="P1" y="13" x="-42"/>
+        <line y1="14" x1="35.8432" x2="30.2216" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="14"/>
+        <text size="6" text="SQ" y="-6" rotation="90" x="23"/>
+        <text size="6" text="Bat" y="-6" rotation="90" x="-30"/>
+        <text size="6" text="SDA" y="-9" rotation="90" x="-2"/>
+        <text size="6" text="GND" y="-10" rotation="90" x="-21"/>
+        <text size="6" text="Vcc" y="-7" rotation="90" x="-11"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="7" y="8" width="62" x="-31"/>
+        <text size="6" text="DS" y="-42" rotation="90" x="15"/>
+        <text size="6" text="P2" y="-40" x="-33"/>
+        <text size="6" text="SCL" y="-42" rotation="90" x="6"/>
+        <text size="6" text="SDA" y="-42" rotation="90" x="-3"/>
+        <text size="6" text="Vcc" y="-41" rotation="90" x="-12"/>
+        <text size="6" text="GND" y="-42" rotation="90" x="-21"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="7" y="-49" width="42" x="-21"/>
+        <line y1="14" x1="-31" x2="-47" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="14"/>
+        <line y1="14" x1="-47" x2="-47" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-47"/>
+        <line y1="-47" x1="-47" x2="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-47"/>
+        <line y1="-47" x1="21" x2="36" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-47"/>
+        <line y1="-47" x1="36" x2="36" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="14"/>
+        <text size="7" text="Tiny RTC" y="-38" rotation="90" x="-44"/>
+        <ellipse style="line-style:dotted;line-weight:thin;filling:none;color:black" antialias="true" height="42" y="-40" width="41" x="-21"/>
+        <input size="9" text="_" rotate="true" y="-60" tagg="label" x="-55"/>
+        <terminal orientation="s" y="13" x="-9"/>
+        <terminal orientation="s" y="13" x="0"/>
+        <terminal orientation="n" y="-48" x="-18"/>
+        <terminal orientation="s" y="13" x="-18"/>
+        <terminal orientation="s" y="13" x="-27"/>
+        <terminal orientation="s" y="13" x="27"/>
+        <terminal orientation="n" y="-48" x="-9"/>
+        <terminal orientation="n" y="-48" x="0"/>
+        <terminal orientation="n" y="-48" x="9"/>
+        <terminal orientation="n" y="-48" x="18"/>
+        <terminal orientation="s" y="13" x="9"/>
+        <terminal orientation="s" y="13" x="18"/>
     </description>
 </definition>

@@ -1,85 +1,87 @@
-<definition width="240" version="0.3" hotspot_x="15" hotspot_y="35" height="150" type="element" orientation="dyyy">
-<uuid uuid="{7BB76EAE-EE16-4E37-AD3A-CF51E1CC3246}"/><names>
-        <name lang="ar">شاشة LCD 4X16</name>
-        <name lang="en">screen LCD 4X16</name>
-        <name lang="fr">Afficheur LCD 4X16</name>
+<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="35" type="element" height="150" width="240" version="0.5">
+    <uuid uuid="{48683ae7-fee9-40e5-8c8a-2e24ecbbc155}"/>
+    <names>
         <name lang="pl">Wyświetlacz LCD 4x16</name>
+        <name lang="nl">Display LCD 4x16</name>
+        <name lang="fr">Afficheur LCD 4X16</name>
+        <name lang="en">screen LCD 4X16</name>
         <name lang="cs">Ukazatel LCD 4x16</name>
         <name lang="it">Display LCD 4x16</name>
-        <name lang="nl">Display LCD 4x16</name>
+        <name lang="ar">شاشة LCD 4X16</name>
     </names>
     <informations>ezza</informations>
     <description>
-        <text x="74" y="-3" size="7" rotation="270" text="7"/>
-        <text x="84" y="-3" size="7" rotation="270" text="8"/>
-        <text x="164" y="-1" size="7" rotation="270" text="16"/>
-        <text x="94" y="-3" size="7" rotation="270" text="9"/>
-        <text x="144" y="-1" size="7" rotation="270" text="14"/>
-        <text x="154" y="-1" size="7" rotation="270" text="15"/>
-        <text x="133" y="-1" size="7" rotation="270" text="13"/>
-        <text x="64" y="-3" size="7" rotation="270" text="6"/>
-        <circle x="212.2" y="-26.8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.6"/>
-        <circle x="-6.8" y="-26.8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.6"/>
-        <text x="53" y="-3" size="7" rotation="270" text="5"/>
-        <text x="94" y="23" size="7" rotation="270" text="DB2"/>
-        <text x="24" y="-3" size="7" rotation="270" text="2"/>
-        <text x="34" y="-3" size="7" rotation="270" text="3"/>
-        <text x="14" y="-3" size="7" rotation="270" text="1"/>
-        <text x="43" y="-3" size="7" rotation="270" text="4"/>
-        <circle x="-7.8" y="100.2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.6"/>
-        <rect width="6" x="57" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6" x="137" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6" x="67" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6" x="147" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="84" y="23" size="7" rotation="270" text="DB1"/>
-        <text x="144" y="23" size="7" rotation="270" text="DB7"/>
-        <rect width="6" x="47" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6" x="127" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="124" y="-1" size="7" rotation="270" text="12"/>
-        <rect width="6" x="157" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="163" y="28" size="7" rotation="270" text="Led -"/>
-        <rect width="6" x="77" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="104" y="0" size="7" rotation="270" text="10"/>
-        <text x="154" y="29" size="7" rotation="270" text="Led +"/>
-        <rect width="6" x="97" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="134" y="23" size="7" rotation="270" text="DB6"/>
-        <rect width="6" x="107" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6" x="87" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="13" y="17" size="7" rotation="270" text="0v"/>
-        <text x="23" y="17" size="7" rotation="270" text="5v"/>
-        <rect width="6" x="117" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="113" y="-1" size="7" rotation="270" text="11"/>
-        <text x="33" y="33" size="6" rotation="270" text="variable"/>
-        <text x="74" y="23" size="7" rotation="270" text="DB0"/>
-        <text x="44" y="21" size="7" rotation="270" text="RS"/>
-        <text x="64" y="23" size="7" rotation="270" text="E"/>
-        <text x="54" y="23" size="7" rotation="270" text="R/W"/>
-        <text x="124" y="23" size="7" rotation="270" text="DB5"/>
-        <text x="104" y="23" size="7" rotation="270" text="DB3"/>
-        <text x="114" y="23" size="7" rotation="270" text="DB4"/>
-        <rect width="6" x="17" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6" x="27" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6" x="7" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="6" x="37" y="-23" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="230" x="-10" y="-29" antialias="false" height="137" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
-        <rect width="210" x="0" y="0" antialias="false" height="80" style="line-style:dotted;line-weight:thin;filling:none;color:black"/>
-        <text x="70" y="93" size="7" text="LCD (Densitron)  LWM1604A"/>
-        <circle x="212.2" y="100.2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.6"/>
-        <terminal x="10" y="-20" orientation="n"/>
-        <terminal x="20" y="-20" orientation="n"/>
-        <terminal x="30" y="-20" orientation="n"/>
-        <terminal x="40" y="-20" orientation="n"/>
-        <terminal x="50" y="-20" orientation="n"/>
-        <terminal x="60" y="-20" orientation="n"/>
-        <terminal x="70" y="-20" orientation="n"/>
-        <terminal x="80" y="-20" orientation="n"/>
-        <terminal x="90" y="-20" orientation="n"/>
-        <terminal x="100" y="-20" orientation="n"/>
-        <terminal x="110" y="-20" orientation="n"/>
-        <terminal x="120" y="-20" orientation="n"/>
-        <terminal x="130" y="-20" orientation="n"/>
-        <terminal x="140" y="-20" orientation="n"/>
-        <terminal x="150" y="-20" orientation="n"/>
-        <terminal x="160" y="-20" orientation="n"/>
+        <text size="7" text="7" y="-3" rotation="270" x="74"/>
+        <text size="7" text="8" y="-3" rotation="270" x="84"/>
+        <text size="7" text="16" y="-1" rotation="270" x="164"/>
+        <text size="7" text="9" y="-3" rotation="270" x="94"/>
+        <text size="7" text="14" y="-1" rotation="270" x="144"/>
+        <text size="7" text="15" y="-1" rotation="270" x="154"/>
+        <text size="7" text="13" y="-1" rotation="270" x="133"/>
+        <text size="7" text="6" y="-3" rotation="270" x="64"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-26.8" diameter="5.6" x="212.2"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-26.8" diameter="5.6" x="-6.8"/>
+        <text size="7" text="5" y="-3" rotation="270" x="53"/>
+        <text size="7" text="DB2" y="23" rotation="270" x="94"/>
+        <text size="7" text="2" y="-3" rotation="270" x="24"/>
+        <text size="7" text="3" y="-3" rotation="270" x="34"/>
+        <text size="7" text="1" y="-3" rotation="270" x="14"/>
+        <text size="7" text="4" y="-3" rotation="270" x="43"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="100.2" diameter="5.6" x="-7.8"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="57"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="137"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="67"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="147"/>
+        <text size="7" text="DB1" y="23" rotation="270" x="84"/>
+        <text size="7" text="DB7" y="23" rotation="270" x="144"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="47"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="127"/>
+        <text size="7" text="12" y="-1" rotation="270" x="124"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="157"/>
+        <text size="7" text="Led -" y="28" rotation="270" x="163"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="77"/>
+        <text size="7" text="10" y="0" rotation="270" x="104"/>
+        <text size="7" text="Led +" y="29" rotation="270" x="154"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="97"/>
+        <text size="7" text="DB6" y="23" rotation="270" x="134"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="107"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="87"/>
+        <text size="7" text="0v" y="17" rotation="270" x="13"/>
+        <text size="7" text="5v" y="17" rotation="270" x="23"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="117"/>
+        <text size="7" text="11" y="-1" rotation="270" x="113"/>
+        <text size="6" text="variable" y="33" rotation="270" x="33"/>
+        <text size="7" text="DB0" y="23" rotation="270" x="74"/>
+        <text size="7" text="RS" y="21" rotation="270" x="44"/>
+        <text size="7" text="E" y="23" rotation="270" x="64"/>
+        <text size="7" text="R/W" y="23" rotation="270" x="54"/>
+        <text size="7" text="DB5" y="23" rotation="270" x="124"/>
+        <text size="7" text="DB3" y="23" rotation="270" x="104"/>
+        <text size="7" text="DB4" y="23" rotation="270" x="114"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="17"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="27"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="7"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="37"/>
+        <rect style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" height="137" y="-29" width="230" x="-10"/>
+        <rect style="line-style:dotted;line-weight:thin;filling:none;color:black" antialias="false" height="80" y="0" width="210" x="0"/>
+        <text size="7" text="LCD (Densitron)  LWM1604A" y="93" x="70"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="100.2" diameter="5.6" x="212.2"/>
+        <input size="9" text="_" rotate="true" y="-40" tagg="label" x="-10"/>
+        <terminal orientation="n" y="-20" x="30"/>
+        <terminal orientation="n" y="-20" x="40"/>
+        <terminal orientation="n" y="-20" x="100"/>
+        <terminal orientation="n" y="-20" x="160"/>
+        <terminal orientation="n" y="-20" x="120"/>
+        <terminal orientation="n" y="-20" x="130"/>
+        <terminal orientation="n" y="-20" x="140"/>
+        <terminal orientation="n" y="-20" x="50"/>
+        <terminal orientation="n" y="-20" x="60"/>
+        <terminal orientation="n" y="-20" x="70"/>
+        <terminal orientation="n" y="-20" x="80"/>
+        <terminal orientation="n" y="-20" x="150"/>
+        <terminal orientation="n" y="-20" x="90"/>
+        <terminal orientation="n" y="-20" x="10"/>
+        <terminal orientation="n" y="-20" x="20"/>
+        <terminal orientation="n" y="-20" x="110"/>
     </description>
 </definition>

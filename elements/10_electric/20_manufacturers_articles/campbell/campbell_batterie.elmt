@@ -1,53 +1,54 @@
-<definition width="140" version="0.3" hotspot_x="15" hotspot_y="34" height="70" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{87078735-B5E2-4837-B0A1-A46935CEF903}"/><names>
-        <name lang="ar">Campbell Batterie PS100E 12V</name>
+<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="36" type="element" height="70" width="140" version="0.5">
+    <uuid uuid="{d144671b-8446-4850-b4c6-e0a306313743}"/>
+    <names>
+        <name lang="pl">Campbell - Bateria PS100E 12V</name>
+        <name lang="nl">Accu PS100E 12V</name>
         <name lang="el">Μπαταρία 12V Campbell PS100E</name>
+        <name lang="fr">Campbell Batterie PS100E 12V</name>
         <name lang="en">Campbell PS100E 12V Battery</name>
         <name lang="it">Batteria 12V Campbell PS100E</name>
-        <name lang="fr">Campbell Batterie PS100E 12V</name>
-        <name lang="pl">Campbell - Bateria PS100E 12V</name>
-        <name lang="es">Campbell PS100E bateria 12V</name>
         <name lang="cs">Baterie Campbell PS100E 12V</name>
-        <name lang="nl">Accu PS100E 12V</name>
+        <name lang="ar">Campbell Batterie PS100E 12V</name>
+        <name lang="es">Campbell PS100E bateria 12V</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="113" y2="-20" x2="120"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="120" y2="-20" x2="120"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="-10" y2="30" x2="120"/>
-        <text x="53" y="14" size="6" rotation="270" text="12V +"/>
-        <text x="92" y="20" size="6" rotation="270" text="Charge"/>
-        <input x="-9" y="24" size="6" rotate="true" text="PS100E 12V"/>
-        <input x="-6" y="3" size="7" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="30" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="23" y2="-20" x2="47"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="93" y2="-20" x2="107"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="73" y2="-20" x2="87"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="53" y2="-20" x2="67"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23" x1="70" y2="-30" x2="70"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23" x1="50" y2="-30" x2="50"/>
-        <circle x="67.172" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
-        <circle x="47.172" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
-        <text x="4" y="-8" size="6" rotation="270" text="G"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="3" y2="-20" x2="17"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-20" x2="-3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23" x1="-3.55271e-15" y2="-30" x2="-3.55271e-15"/>
-        <circle x="-2.82843" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
-        <text x="113" y="20" size="6" rotation="270" text="Charge"/>
-        <text x="73" y="14" size="6" rotation="270" text="12V +"/>
-        <text x="22" y="-8" size="6" rotation="270" text="G"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23" x1="110" y2="-30" x2="110"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23" x1="90" y2="-30" x2="90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23" x1="20" y2="-30" x2="20"/>
-        <circle x="107.172" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
-        <circle x="87.172" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
-        <circle x="17.1716" y="-22.8284" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685"/>
-        <terminal x="-3.55271e-15" y="-30" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="20" y="-30" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="90" y="-30" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="110" y="-30" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="50" y="-30" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="70" y="-30" nameHidden="0" number="" name="" orientation="n"/>
+        <line y1="-20" x1="113" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-20"/>
+        <line y1="30" x1="120" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-20"/>
+        <line y1="30" x1="-10" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="30"/>
+        <text size="6" text="12V +" y="14" rotation="270" x="53"/>
+        <text size="6" text="Charge" y="20" rotation="270" x="92"/>
+        <input size="6" text="PS100E 12V" rotate="true" y="24" tagg="none" x="-9"/>
+        <input size="7" text="_" rotate="true" y="3" tagg="label" x="-6"/>
+        <line y1="-20" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="30"/>
+        <line y1="-20" x1="23" x2="47" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-20"/>
+        <line y1="-20" x1="93" x2="107" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-20"/>
+        <line y1="-20" x1="73" x2="87" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-20"/>
+        <line y1="-20" x1="53" x2="67" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-20"/>
+        <line y1="-23" x1="70" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-30"/>
+        <line y1="-23" x1="50" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-30"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-22.8284" diameter="5.65685" x="67.172"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-22.8284" diameter="5.65685" x="47.172"/>
+        <text size="6" text="G" y="-8" rotation="270" x="4"/>
+        <line y1="-20" x1="3" x2="17" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-20"/>
+        <line y1="-20" x1="-10" x2="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-20"/>
+        <line y1="-23" x1="-3.55271e-15" x2="-3.55271e-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-30"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-22.8284" diameter="5.65685" x="-2.82843"/>
+        <text size="6" text="Charge" y="20" rotation="270" x="113"/>
+        <text size="6" text="12V +" y="14" rotation="270" x="73"/>
+        <text size="6" text="G" y="-8" rotation="270" x="22"/>
+        <line y1="-23" x1="110" x2="110" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-30"/>
+        <line y1="-23" x1="90" x2="90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-30"/>
+        <line y1="-23" x1="20" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-30"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-22.8284" diameter="5.65685" x="107.172"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-22.8284" diameter="5.65685" x="87.172"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-22.8284" diameter="5.65685" x="17.1716"/>
+        <terminal orientation="n" y="-30" x="-3.55271e-15"/>
+        <terminal orientation="n" y="-30" x="20"/>
+        <terminal orientation="n" y="-30" x="90"/>
+        <terminal orientation="n" y="-30" x="110"/>
+        <terminal orientation="n" y="-30" x="50"/>
+        <terminal orientation="n" y="-30" x="70"/>
     </description>
 </definition>

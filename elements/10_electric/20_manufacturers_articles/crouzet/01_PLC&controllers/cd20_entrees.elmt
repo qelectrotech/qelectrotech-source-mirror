@@ -1,54 +1,56 @@
-<definition width="560" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy">
-<uuid uuid="{391649D0-2C0E-4B9F-991E-7AACB4C222B0}"/><names>
-        <name lang="ar">لوحة مداخل CD20 zoom</name>
-        <name lang="de">CD20 Eingangskarte </name>
-        <name lang="pt">Carta de entradas CD20</name>
-        <name lang="el">Κάρτα εισόδων CD20</name>
-        <name lang="en">CD20 input board</name>
-        <name lang="it">Scheda ingressi CD20</name>
-        <name lang="fr">CD20 carte entrees</name>
+<definition link_type="simple" hotspot_x="5" orientation="dyyy" hotspot_y="6" type="element" height="50" width="570" version="0.5">
+    <uuid uuid="{0261aa77-c750-4896-ab89-7b738e0db823}"/>
+    <names>
         <name lang="pl">Karta wejść CD20</name>
-        <name lang="es">CD20 tarjeta de entrada</name>
-        <name lang="cs">Karta CD20 vstupy</name>
         <name lang="nl">CD20 ingangskaart</name>
+        <name lang="el">Κάρτα εισόδων CD20</name>
+        <name lang="fr">CD20 carte entrees</name>
+        <name lang="en">CD20 input board</name>
+        <name lang="de">CD20 Eingangskarte </name>
+        <name lang="it">Scheda ingressi CD20</name>
+        <name lang="cs">Karta CD20 vstupy</name>
+        <name lang="ar">لوحة مداخل CD20 zoom</name>
+        <name lang="pt">Carta de entradas CD20</name>
+        <name lang="es">CD20 tarjeta de entrada</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="460" y2="0" x2="460"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="250" y2="0" x2="250"/>
-        <text x="237" y="34.6667" size="8" text="CROUZET CD20 Carte entrées"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="490" y2="0" x2="490"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="280" y2="0" x2="280"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="130" y2="0" x2="130"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="190" y2="0" x2="190"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="160" y2="0" x2="160"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="220" y2="0" x2="220"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="70" y2="0" x2="70"/>
-        <text x="126" y="19.3333" size="7" text="I1       I2        I3       I4       I5        I6"/>
-        <rect width="560" x="0" y="0" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="68" y="16.6667" size="8" text="-"/>
-        <text x="28" y="34.6667" size="8" text="24 VDC"/>
-        <text x="333" y="19.3333" size="7" text=" IB       IC       ID      IE       IF       IG"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="30" y2="0" x2="30"/>
-        <text x="27" y="17.6667" size="8" text="+"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="370" y2="0" x2="370"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="400" y2="0" x2="400"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="340" y2="0" x2="340"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="430" y2="0" x2="430"/>
-        <terminal x="70" y="0" orientation="n"/>
-        <terminal x="30" y="0" orientation="n"/>
-        <terminal x="190" y="0" orientation="n"/>
-        <terminal x="130" y="0" orientation="n"/>
-        <terminal x="160" y="0" orientation="n"/>
-        <terminal x="220" y="0" orientation="n"/>
-        <terminal x="400" y="0" orientation="n"/>
-        <terminal x="340" y="0" orientation="n"/>
-        <terminal x="430" y="0" orientation="n"/>
-        <terminal x="370" y="0" orientation="n"/>
-        <terminal x="250" y="0" orientation="n"/>
-        <terminal x="280" y="0" orientation="n"/>
-        <terminal x="460" y="0" orientation="n"/>
-        <terminal x="490" y="0" orientation="n"/>
+        <line y1="10" x1="460" x2="460" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="250" x2="250" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <text size="8" text="CROUZET CD20 Carte entrées" y="34.6667" x="237"/>
+        <line y1="10" x1="490" x2="490" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="280" x2="280" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="130" x2="130" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="190" x2="190" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="160" x2="160" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="220" x2="220" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="70" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <text size="7" text="I1       I2        I3       I4       I5        I6" y="19.3333" x="126"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="40" y="0" width="560" x="0"/>
+        <text size="8" text="-" y="16.6667" x="68"/>
+        <text size="8" text="24 VDC" y="34.6667" x="28"/>
+        <text size="7" text=" IB       IC       ID      IE       IF       IG" y="19.3333" x="333"/>
+        <line y1="10" x1="30" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <text size="8" text="+" y="17.6667" x="27"/>
+        <line y1="10" x1="370" x2="370" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="400" x2="400" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="340" x2="340" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <line y1="10" x1="430" x2="430" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="circle" end2="none" length2="1.5" y2="0"/>
+        <input size="9" text="_" rotate="true" y="-30" tagg="label" x="10"/>
+        <terminal orientation="n" y="0" x="190"/>
+        <terminal orientation="n" y="0" x="130"/>
+        <terminal orientation="n" y="0" x="400"/>
+        <terminal orientation="n" y="0" x="340"/>
+        <terminal orientation="n" y="0" x="70"/>
+        <terminal orientation="n" y="0" x="30"/>
+        <terminal orientation="n" y="0" x="430"/>
+        <terminal orientation="n" y="0" x="370"/>
+        <terminal orientation="n" y="0" x="280"/>
+        <terminal orientation="n" y="0" x="460"/>
+        <terminal orientation="n" y="0" x="250"/>
+        <terminal orientation="n" y="0" x="160"/>
+        <terminal orientation="n" y="0" x="220"/>
+        <terminal orientation="n" y="0" x="490"/>
     </description>
 </definition>

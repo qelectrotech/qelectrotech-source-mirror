@@ -1,16 +1,18 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
-<uuid uuid="{1D54DC05-44CD-46D2-BAE8-72D81B015869}"/><names>
+<definition link_type="simple" hotspot_x="11" orientation="dyyy" hotspot_y="5" type="element" height="10" width="20" version="0.5">
+    <uuid uuid="{80855484-020b-429c-9f5c-4bfad9df2586}"/>
+    <names>
+        <name lang="pl">Masa</name>
+        <name lang="nl">Nul</name>
         <name lang="el">Γείωση</name>
+        <name lang="fr">groupement masse</name>
         <name lang="en">ground</name>
         <name lang="it">Massa</name>
-        <name lang="fr">groupement masse</name>
-        <name lang="pl">Masa</name>
         <name lang="cs">Masa</name>
-        <name lang="nl">Nul</name>
     </names>
     <informations>ezza</informations>
     <description>
-        <rect width="6" x="-3" y="-3" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="0" orientation="e"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-3" width="6" x="-3"/>
+        <input size="9" text="_" rotate="true" y="-12" tagg="label" x="-7"/>
+        <terminal orientation="e" y="0" x="0"/>
     </description>
 </definition>

@@ -1,22 +1,23 @@
-<definition width="60" version="0.3" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
-<uuid uuid="{7BBFEB2E-9388-43A8-B0E0-B208A67F34A0}"/><names>
-        <name lang="ar">توصيلة  5V</name>
-        <name lang="en">5 volt</name>
-        <name lang="fr">Liaisons 5volt</name>
+<definition link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="12" type="element" height="30" width="60" version="0.5">
+    <uuid uuid="{62c03a8b-4f5a-4ecf-8039-9d9eecfe5640}"/>
+    <names>
         <name lang="pl">Łączówka +5V</name>
+        <name lang="nl">Voedingrail +5v</name>
+        <name lang="fr">Liaisons 5volt</name>
+        <name lang="en">5 volt</name>
         <name lang="cs">Spojení +5V</name>
         <name lang="it">Alim. +5v</name>
-        <name lang="nl">Voedingrail +5v</name>
+        <name lang="ar">توصيلة  5V</name>
     </names>
     <informations>ezza</informations>
     <description>
-        <input x="6" y="-18" size="7" rotate="true" text="5volt"/>
-        <rect width="1" x="-5" y="-26" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="7" x="-8" y="-23" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-10" x1="-13" y2="-10" x2="43"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="-10" x2="28"/>
-        <terminal x="0" y="-10" orientation="s"/>
-        <terminal x="10" y="-10" orientation="s"/>
-        <terminal x="20" y="-10" orientation="s"/>
+        <input size="7" text="5volt" rotate="true" y="2" tagg="label" x="-4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="7" y="-6" width="1" x="-15"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="1" y="-3" width="7" x="-18"/>
+        <line y1="10" x1="-23" x2="33" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="10"/>
+        <line y1="10" x1="-15" x2="18" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="10"/>
+        <terminal orientation="s" y="10" x="-10"/>
+        <terminal orientation="s" y="10" x="0"/>
+        <terminal orientation="s" y="10" x="10"/>
     </description>
 </definition>
