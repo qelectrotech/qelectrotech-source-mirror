@@ -1,26 +1,28 @@
-<definition width="40" version="0.3" hotspot_x="14" hotspot_y="31" height="60" type="element" orientation="dnny" link_type="master">
-<uuid uuid="{0930F3F8-9AF0-46D3-B832-C44694316792}"/><names>
-        <name lang="en">HDE-M1</name>
-        <name lang="fr">HDE-M1</name>
+<definition width="40" height="60" link_type="master" orientation="dyyy" hotspot_x="14" version="0.5" hotspot_y="29" type="element">
+    <uuid uuid="{3ca3b751-5530-4169-988f-039a72d2bde7}"/>
+    <names>
         <name lang="de">HDE-M1</name>
+        <name lang="fr">HDE-M1</name>
+        <name lang="en">HDE-M1</name>
     </names>
     <kindInformations>
-        <kindInformation name="type" show="1">coil</kindInformation>
+        <kindInformation show="1" name="type">coil</kindInformation>
     </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="9" y="-17" size="4" rotate="true" text="B1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="20" y2="-9" x2="20"/>
-        <rect width="6" x="17" y="-8" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-8" x2="0"/>
-        <input x="-11" y="16" size="4" rotate="true" text="A2"/>
-        <input x="-11" y="-17" size="4" rotate="true" text="A1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="0" y2="20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="7" y2="8" x2="-11"/>
-        <rect width="29" x="-12" y="-8" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
-        <terminal x="20" y="-21" orientation="n"/>
+        <input tagg="none" size="4" text="B1" x="9" y="-17" rotate="true"/>
+        <line length1="1.5" y1="-21" x2="20" end1="none" antialias="false" y2="-9" end2="none" x1="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="6" height="16" antialias="false" x="17" y="-8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" y1="-20" x2="0" end1="none" antialias="false" y2="-8" end2="none" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input tagg="none" size="4" text="A2" x="-11" y="16" rotate="true"/>
+        <input tagg="none" size="4" text="A1" x="-11" y="-17" rotate="true"/>
+        <line length1="1.5" y1="8" x2="0" end1="none" antialias="false" y2="20" end2="none" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" y1="-8" x2="-11" end1="none" antialias="true" y2="8" end2="none" x1="7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="29" height="16" antialias="false" x="-12" y="-8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input tagg="label" size="9" text="_" x="25" y="-1" rotate="true"/>
+        <terminal orientation="n" x="20" y="-21"/>
+        <terminal orientation="n" x="0" y="-21"/>
+        <terminal orientation="s" x="0" y="21"/>
     </description>
 </definition>

@@ -1,23 +1,25 @@
-<definition width="20" version="0.3" hotspot_x="13" hotspot_y="35" height="40" type="element" orientation="dyyy">
-<uuid uuid="{230F141C-E6D6-42F4-9083-33CB3C56D02B}"/><names>
-        <name lang="el">G2RS</name>
-        <name lang="en">G2RS</name>
+<definition width="20" height="40" link_type="simple" orientation="dyyy" hotspot_x="12" version="0.5" hotspot_y="35" type="element">
+    <uuid uuid="{3544be95-24c5-4eac-aef0-750796e782c9}"/>
+    <names>
         <name lang="it">G2RS</name>
-        <name lang="fr">G2RS</name>
+        <name lang="nl">G2RS</name>
         <name lang="pl">G2RS</name>
         <name lang="cs">G2RS</name>
-        <name lang="nl">G2RS</name>
+        <name lang="fr">G2RS</name>
+        <name lang="el">G2RS</name>
+        <name lang="en">G2RS</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="15" x="-10" y="-30" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.03322" x1="-7" y2="-1.03322" x2="2"/>
-        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-7" x2="-7" x3="-5" x4="-5" antialias="false" x5="0" x6="0" x7="2" x8="2" closed="false" y1="-0.0332185" y2="-3.03322" y3="-3.03322" y4="-7.03322" y5="-7.03322" y6="-3.03322" y7="-3.03322" y8="-0.0332185"/>
-        <rect width="14" x="-9.5" y="-29" antialias="false" height="7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <circle x="-8.25" y="-20.25" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2.5"/>
-        <rect width="5" x="-5" y="-14" antialias="false" height="2.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <input x="-13" y="-25.5" size="3" rotate="true" text="KA "/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2.5" x1="-7" y2="-2.5" x2="2"/>
+        <rect width="15" height="30" antialias="false" x="-10" y="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" y1="-1.03322" x2="2" end1="none" antialias="false" y2="-1.03322" end2="none" x1="-7" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon closed="false" y3="-3.03322" y7="-3.03322" y1="-0.0332185" y6="-3.03322" y2="-3.03322" x5="0" x2="-7" style="line-style:normal;line-weight:thin;filling:none;color:black" y5="-7.03322" x6="0" x8="2" antialias="false" y8="-0.0332185" x3="-5" y4="-7.03322" x4="-5" x7="2" x1="-7"/>
+        <rect width="14" height="7" antialias="false" x="-9.5" y="-29" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle diameter="2.5" antialias="true" x="-8.25" y="-20.25" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="5" height="2.5" antialias="false" x="-5" y="-14" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input tagg="none" size="3" text="KA " x="-13" y="-25.5" rotate="true"/>
+        <line length1="1.5" y1="-2.5" x2="2" end1="none" antialias="false" y2="-2.5" end2="none" x1="-7" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input tagg="label" size="9" text="_" x="-14" y="1" rotate="true"/>
     </description>
 </definition>

@@ -1,89 +1,90 @@
-<definition width="60" version="0.4" hotspot_x="34" hotspot_y="77" height="180" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{A4DC58F6-1C06-44A1-BBE1-440B8A5741F1}"/><names>
-        <name lang="en">cRIO 9217 - 4 inputs PT100</name>
+<definition width="50" height="140" link_type="simple" orientation="dyyy" hotspot_x="23" version="0.5" hotspot_y="76" type="element">
+    <uuid uuid="{869ec3a0-d262-42e3-aeab-3d0bec27ec4c}"/>
+    <names>
         <name lang="it">cRIO 9217 - modulo 4 ingressi analogici 100Ω</name>
-        <name lang="fr">cRIO 9217 - 4 entrées PT100</name>
-        <name lang="pl">cRIO 9217 - czterokanałowy moduł wejść analogowych </name>
-        <name lang="es">cRIO 9217 - 4 entradas PT100</name>
-        <name lang="cs">cRIO 9217 - čtyřkanálový modul analogových vstupů, PT100</name>
         <name lang="nl">cRIO 9217 - 4 ingangen PT100</name>
+        <name lang="es">cRIO 9217 - 4 entradas PT100</name>
+        <name lang="pl">cRIO 9217 - czterokanałowy moduł wejść analogowych </name>
+        <name lang="cs">cRIO 9217 - čtyřkanálový modul analogových vstupů, PT100</name>
+        <name lang="fr">cRIO 9217 - 4 entrées PT100</name>
+        <name lang="en">cRIO 9217 - 4 inputs PT100</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-20" y="-63" size="5" text="    entrées &#xa;température"/>
-        <rect width="8" x="-4" y="-36" antialias="false" height="92" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <circle x="-2" y="-36" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4"/>
-        <circle x="-2" y="52" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4"/>
-        <input x="-29" y="79" size="9" rotate="true" text="NI cRIO&#xa;  9217"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-33" x1="-1" y2="-35" x2="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40" x1="-20" y2="-40" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="55" x1="-1" y2="53" x2="1"/>
-        <rect width="12" x="-6" y="-15" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="25" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="-25" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="5" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="-5" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="40" x="-20" y="-50" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="10" y="-26" size="2" text="EX0"/>
-        <text x="10" y="-21" size="2" text="RTD0+"/>
-        <text x="10" y="-16" size="2" text="RTD0-"/>
-        <text x="10" y="-11" size="2" text="COM"/>
-        <text x="10" y="-6" size="2" text="EX1"/>
-        <text x="10" y="-1" size="2" text="RTD1+"/>
-        <text x="10" y="4" size="2" text="RTD1-"/>
-        <text x="10" y="9" size="2" text="COM"/>
-        <text x="10" y="14" size="2" text="EX2"/>
-        <text x="10" y="19" size="2" text="RTD2+"/>
-        <text x="10" y="24" size="2" text="RTD2-"/>
-        <text x="10" y="29" size="2" text="COM"/>
-        <text x="10" y="34" size="2" text="EX3"/>
-        <text x="10" y="39" size="2" text="RTD3+"/>
-        <text x="10" y="44" size="2" text="RTD3-"/>
-        <text x="10" y="49" size="2" text="COM"/>
-        <text x="-13" y="-42" size="5" text="NI 9217"/>
-        <rect width="12" x="-6" y="-20" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="35" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="15" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="0" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="20" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="-10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="45" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="40" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="30" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="10" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <rect width="12" x="-6" y="-30" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <text x="3" y="-26" size="2" text="0"/>
-        <text x="3" y="-21" size="2" text="1"/>
-        <text x="3" y="-16" size="2" text="2"/>
-        <text x="3" y="-11" size="2" text="3"/>
-        <text x="3" y="-6" size="2" text="4"/>
-        <text x="3" y="-1" size="2" text="5"/>
-        <text x="3" y="4" size="2" text="6"/>
-        <text x="3" y="9" size="2" text="7"/>
-        <text x="3" y="14" size="2" text="8"/>
-        <text x="3" y="19" size="2" text="9"/>
-        <text x="1" y="24" size="2" text="10"/>
-        <text x="1" y="29" size="2" text="11"/>
-        <text x="1" y="34" size="2" text="12"/>
-        <text x="1" y="39" size="2" text="13"/>
-        <text x="1" y="44" size="2" text="14"/>
-        <text x="1" y="49" size="2" text="15"/>
-        <terminal x="-6" y="-28" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="-23" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="-18" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="-13" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="-8" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="-3" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="2" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="7" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="12" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="17" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="22" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="27" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="32" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="37" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="42" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-6" y="47" nameHidden="0" number="" name="" orientation="w"/>
+        <text size="5" text="    entrées &#xa;température" x="-20" y="-63"/>
+        <rect width="8" height="92" antialias="false" x="-4" y="-36" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle diameter="4" antialias="true" x="-2" y="-36" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle diameter="4" antialias="true" x="-2" y="52" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input tagg="label" size="9" text="NI cRIO&#xa;  9217" x="-29" y="79" rotate="true"/>
+        <line length1="1.5" y1="-33" x2="1" end1="none" antialias="false" y2="-35" end2="none" x1="-1" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" y1="-40" x2="20" end1="none" antialias="false" y2="-40" end2="none" x1="-20" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" y1="55" x2="1" end1="none" antialias="false" y2="53" end2="none" x1="-1" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="-15" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="25" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="-25" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="-5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="40" height="110" antialias="false" x="-20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="2" text="EX0" x="10" y="-26"/>
+        <text size="2" text="RTD0+" x="10" y="-21"/>
+        <text size="2" text="RTD0-" x="10" y="-16"/>
+        <text size="2" text="COM" x="10" y="-11"/>
+        <text size="2" text="EX1" x="10" y="-6"/>
+        <text size="2" text="RTD1+" x="10" y="-1"/>
+        <text size="2" text="RTD1-" x="10" y="4"/>
+        <text size="2" text="COM" x="10" y="9"/>
+        <text size="2" text="EX2" x="10" y="14"/>
+        <text size="2" text="RTD2+" x="10" y="19"/>
+        <text size="2" text="RTD2-" x="10" y="24"/>
+        <text size="2" text="COM" x="10" y="29"/>
+        <text size="2" text="EX3" x="10" y="34"/>
+        <text size="2" text="RTD3+" x="10" y="39"/>
+        <text size="2" text="RTD3-" x="10" y="44"/>
+        <text size="2" text="COM" x="10" y="49"/>
+        <text size="5" text="NI 9217" x="-13" y="-42"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="-20" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="35" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="15" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="0" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="20" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="-10" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="45" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="40" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="30" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="10" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="12" height="5" antialias="false" x="-6" y="-30" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <text size="2" text="0" x="3" y="-26"/>
+        <text size="2" text="1" x="3" y="-21"/>
+        <text size="2" text="2" x="3" y="-16"/>
+        <text size="2" text="3" x="3" y="-11"/>
+        <text size="2" text="4" x="3" y="-6"/>
+        <text size="2" text="5" x="3" y="-1"/>
+        <text size="2" text="6" x="3" y="4"/>
+        <text size="2" text="7" x="3" y="9"/>
+        <text size="2" text="8" x="3" y="14"/>
+        <text size="2" text="9" x="3" y="19"/>
+        <text size="2" text="10" x="1" y="24"/>
+        <text size="2" text="11" x="1" y="29"/>
+        <text size="2" text="12" x="1" y="34"/>
+        <text size="2" text="13" x="1" y="39"/>
+        <text size="2" text="14" x="1" y="44"/>
+        <text size="2" text="15" x="1" y="49"/>
+        <terminal orientation="w" x="-6" y="-28"/>
+        <terminal orientation="w" x="-6" y="-23"/>
+        <terminal orientation="w" x="-6" y="-18"/>
+        <terminal orientation="w" x="-6" y="-13"/>
+        <terminal orientation="w" x="-6" y="-8"/>
+        <terminal orientation="w" x="-6" y="-3"/>
+        <terminal orientation="w" x="-6" y="2"/>
+        <terminal orientation="w" x="-6" y="7"/>
+        <terminal orientation="w" x="-6" y="12"/>
+        <terminal orientation="w" x="-6" y="17"/>
+        <terminal orientation="w" x="-6" y="22"/>
+        <terminal orientation="w" x="-6" y="27"/>
+        <terminal orientation="w" x="-6" y="32"/>
+        <terminal orientation="w" x="-6" y="37"/>
+        <terminal orientation="w" x="-6" y="42"/>
+        <terminal orientation="w" x="-6" y="47"/>
     </description>
 </definition>

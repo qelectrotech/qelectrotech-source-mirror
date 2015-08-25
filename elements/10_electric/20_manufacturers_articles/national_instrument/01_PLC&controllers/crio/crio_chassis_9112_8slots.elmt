@@ -1,33 +1,35 @@
-<definition width="690" version="0.4" hotspot_x="85" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{E3077399-B153-4742-BBB4-C134FEDD61B2}"/><names>
-        <name lang="en">chassis cRIO 9112 - 8 slots</name>
+<definition width="690" height="30" link_type="simple" orientation="dyyy" hotspot_x="85" version="0.5" hotspot_y="15" type="element">
+    <uuid uuid="{c79c0e62-87a4-4e8e-b34d-5cbd8e81dbce}"/>
+    <names>
         <name lang="it">cRIO 9112 - chassis a 8 slot</name>
-        <name lang="fr">châssis cRIO 9112 - 8 slots</name>
-        <name lang="pl">cRIO 9112 - podstawa montażowa ośmio modułowa</name>
-        <name lang="es">cRIO 9112  chasis 8 ranuras (slot)</name>
-        <name lang="cs">cRIO 9112  montážní základ 8 modulů (slot)</name>
         <name lang="nl">Achterplaat cRIO 9112 - 8 pos</name>
+        <name lang="es">cRIO 9112  chasis 8 ranuras (slot)</name>
+        <name lang="pl">cRIO 9112 - podstawa montażowa ośmio modułowa</name>
+        <name lang="cs">cRIO 9112  montážní základ 8 modulů (slot)</name>
+        <name lang="fr">châssis cRIO 9112 - 8 slots</name>
+        <name lang="en">chassis cRIO 9112 - 8 slots</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="500" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <circle x="220" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <circle x="290" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <circle x="570" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <text x="226" y="6" size="9" text="3"/>
-        <text x="506" y="6" size="9" text="7"/>
-        <text x="296" y="6" size="9" text="4"/>
-        <text x="576" y="6" size="9" text="8"/>
-        <circle x="360" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <circle x="430" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <text x="366" y="6" size="9" text="5"/>
-        <text x="436" y="6" size="9" text="6"/>
-        <circle x="80" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <circle x="150" y="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20"/>
-        <text x="86" y="6" size="9" text="1"/>
-        <text x="156" y="6" size="9" text="2"/>
-        <text x="-73" y="5" size="8" text="châssis cRIO 9112"/>
-        <rect width="680" x="-80" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="20" antialias="true" x="500" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle diameter="20" antialias="true" x="220" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle diameter="20" antialias="true" x="290" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle diameter="20" antialias="true" x="570" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text size="9" text="3" x="226" y="6"/>
+        <text size="9" text="7" x="506" y="6"/>
+        <text size="9" text="4" x="296" y="6"/>
+        <text size="9" text="8" x="576" y="6"/>
+        <circle diameter="20" antialias="true" x="360" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle diameter="20" antialias="true" x="430" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text size="9" text="5" x="366" y="6"/>
+        <text size="9" text="6" x="436" y="6"/>
+        <circle diameter="20" antialias="true" x="80" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle diameter="20" antialias="true" x="150" y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text size="9" text="1" x="86" y="6"/>
+        <text size="9" text="2" x="156" y="6"/>
+        <text size="8" text="châssis cRIO 9112" x="-73" y="5"/>
+        <rect width="680" height="20" antialias="false" x="-80" y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input tagg="label" size="9" text="_" x="-70" y="-30" rotate="true"/>
     </description>
 </definition>

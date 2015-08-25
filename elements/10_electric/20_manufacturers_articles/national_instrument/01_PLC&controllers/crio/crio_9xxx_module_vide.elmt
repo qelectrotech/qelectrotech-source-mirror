@@ -1,20 +1,21 @@
-<definition width="60" version="0.4" hotspot_x="34" hotspot_y="56" height="160" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{0386FBFF-FF9D-41B2-BC6F-449C41F58344}"/><names>
-        <name lang="en">cRIO 9xxx - blank module</name>
+<definition width="50" height="120" link_type="simple" orientation="dyyy" hotspot_x="25" version="0.5" hotspot_y="55" type="element">
+    <uuid uuid="{c34b50b3-5b09-4dbd-87ec-35d43ddf4562}"/>
+    <names>
         <name lang="it">cRIO 9xxx - modulo vuoto</name>
-        <name lang="fr">cRIO 9xxx - module vide</name>
-        <name lang="pl">cRIO 9xxx - pusty moduł</name>
-        <name lang="es">cRIO 9xxx - modulo libre</name>
-        <name lang="cs">cRIO 9xxx - prázdný modul</name>
         <name lang="nl">cRIO 9xxx - Lege module</name>
+        <name lang="es">cRIO 9xxx - modulo libre</name>
+        <name lang="pl">cRIO 9xxx - pusty moduł</name>
+        <name lang="cs">cRIO 9xxx - prázdný modul</name>
+        <name lang="fr">cRIO 9xxx - module vide</name>
+        <name lang="en">cRIO 9xxx - blank module</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="40" x="-20" y="-50" antialias="false" height="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-13" y="-42" size="5" text="NI xxxx"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40" x1="-20" y2="-40" x2="20"/>
-        <input x="-29" y="79" size="9" rotate="true" text="NI cRIO&#xa;  libre"/>
-        <text x="4" y="22" size="10" rotation="270" text="libre"/>
+        <rect width="40" height="110" antialias="false" x="-20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="5" text="NI xxxx" x="-13" y="-42"/>
+        <line length1="1.5" y1="-40" x2="20" end1="none" antialias="false" y2="-40" end2="none" x1="-20" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input tagg="label" size="9" text="NI cRIO&#xa;  libre" x="-29" y="79" rotate="true"/>
+        <text rotation="270" size="10" text="libre" x="4" y="22"/>
     </description>
 </definition>
