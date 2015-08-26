@@ -6,27 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>430</width>
-    <height>300</height>
+    <width>485</width>
+    <height>66</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Éditer les propriétés d'un conducteur</string>
   </property>
   <layout class="QVBoxLayout" name="main_layout">
-   <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item>
     <widget class="QCheckBox" name="m_apply_all_cb">
      <property name="text">

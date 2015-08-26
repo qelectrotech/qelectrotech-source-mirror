@@ -97,8 +97,8 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
  */
 ConductorProperties ConductorPropertiesWidget::properties() const {
 	ConductorProperties properties_;
-	if (ui -> m_multi_rb  -> isChecked()) properties_.type = ConductorProperties::Multi;
-	else if (ui -> m_single_rb -> isChecked()) properties_.type = ConductorProperties::Single;
+	if (ui -> m_multiwires_gb  -> isChecked()) properties_.type = ConductorProperties::Multi;
+	else if (ui -> m_singlewire_gb -> isChecked()) properties_.type = ConductorProperties::Single;
 
 	properties_.color                   = ui -> m_color_pb->palette().color(QPalette::Button);
 	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
@@ -177,9 +177,11 @@ void ConductorPropertiesWidget::initWidget() {
 	ui -> m_line_style_cb -> addItem(tr("Traits et points", "conductor style: dashed and dotted line"), QPen(Qt::DashDotLine));
 
 	ui -> m_update_preview_pb -> setHidden(true);
-	//Check this checkbox for init the associated groupbox
-	ui -> m_single_rb -> setChecked(true);
-	ui -> m_multi_rb -> setChecked(true);
+
+	connect(ui->m_multiwires_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_singlewire_gb->setChecked(!toggle);});
+	connect(ui->m_singlewire_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_multiwires_gb->setChecked(!toggle);});
+	ui->m_multiwires_gb->setChecked(true);
+	ui->m_singlewire_gb->setChecked(true);
 }
 
 /**
@@ -190,13 +192,13 @@ void ConductorPropertiesWidget::initWidget() {
 void ConductorPropertiesWidget::setConductorType(ConductorProperties::ConductorType type) {
 	switch (type) {
 		case ConductorProperties::Multi:
-			ui -> m_multi_rb -> setChecked(true);
+			ui -> m_multiwires_gb -> setChecked(true);
 			break;
 		case ConductorProperties::Single:
-			ui -> m_single_rb -> setChecked(true);
+			ui -> m_singlewire_gb -> setChecked(true);
 			break;
 		default:
-			ui -> m_multi_rb -> setChecked(true);
+			ui -> m_multiwires_gb -> setChecked(true);
 			break;
 	}
 }

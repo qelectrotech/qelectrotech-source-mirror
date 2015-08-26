@@ -40,7 +40,7 @@ ConductorPropertiesDialog::ConductorPropertiesDialog(Conductor *conductor, QWidg
 		conductor -> relatedPotentialConductors().size()) {
 		m_cpw->setDisabledShowText();
 	}
-	ui -> main_layout -> insertWidget(1, m_cpw);
+	ui -> main_layout -> insertWidget(0, m_cpw);
 }
 
 /**
