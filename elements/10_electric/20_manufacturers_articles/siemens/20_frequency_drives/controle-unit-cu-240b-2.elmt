@@ -1,145 +1,147 @@
-<definition width="600" version="0.4" hotspot_x="294" hotspot_y="32" height="100" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{3A8E4E6F-CB11-49DF-B8FF-FF4EB5BA7541}"/><names>
+<definition width="600" orientation="dyyy" link_type="simple" hotspot_x="294" hotspot_y="31" type="element" height="100" version="0.5">
+    <uuid uuid="{932e63ab-882b-425b-8097-b4287544b43a}"/>
+    <names>
         <name lang="en">CU-240B-2</name>
     </names>
     <informations></informations>
     <description>
-        <circle x="-146.5" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="276.6" y="49" size="6" rotation="-90" rotate="true" text="GND IN"/>
-        <circle x="252.5" y="-26" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <text x="-160.05" y="56" size="5" text="5"/>
-        <text x="-130.05" y="55" size="5" text="7"/>
-        <text x="128.95" y="56" size="5" text="18"/>
-        <text x="-145" y="55" size="5" text="6"/>
-        <input x="-28.05" y="52" size="5" rotation="270" rotate="true" text="GND"/>
-        <text x="-216.05" y="55" size="5" text="4"/>
-        <text x="-252.05" y="55" size="5" text="2"/>
-        <text x="-235.05" y="56" size="5" text="3"/>
-        <text x="-271.05" y="55" size="5" text="1"/>
-        <text x="-110.05" y="55" size="5" text="8"/>
-        <text x="-33.05" y="56" size="5" text="28"/>
-        <text x="111.95" y="56" size="5" text="19"/>
-        <text x="-50.05" y="55" size="5" text="9"/>
-        <text x="-13.05" y="55" size="5" text="69"/>
-        <text x="92.95" y="56" size="5" text="20"/>
-        <text x="0.95" y="55" size="5" text="14"/>
-        <text x="36.95" y="55" size="5" text="12"/>
-        <text x="17.95" y="55" size="5" text="15"/>
-        <text x="53.95" y="55" size="5" text="13"/>
-        <text x="251.95" y="55" size="5" text="31"/>
-        <input x="-249.05" y="52" size="5" rotation="270" rotate="true" text="GND"/>
-        <input x="42" y="-12.5" size="5" rotate="true" text="PM - IF  interface 1X16"/>
-        <text x="272.95" y="55" size="5" text="32"/>
-        <input x="5.95" y="52" size="5" rotation="270" rotate="true" text="T1 MOTOR"/>
-        <circle x="-50.55" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="112.95" y="46" size="7" rotation="270" rotate="true" text="NO"/>
-        <input x="-143.65" y="52" size="5" rotation="270" rotate="true" text="DI1"/>
-        <circle x="-271.55" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-10.95" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-160.55" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="-269.05" y="52" size="5" rotation="270" rotate="true" text="+10V OUT"/>
-        <input x="-48.05" y="53" size="5" rotation="270" rotate="true" text="+24V OUT"/>
-        <input x="-214.05" y="52" size="5" rotation="270" rotate="true" text="AI0-"/>
-        <circle x="-251.55" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-235.55" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="99.45" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="55.45" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-175.05" y2="60" x2="-161.05"/>
-        <input x="-108.65" y="52" size="5" rotation="270" rotate="true" text="DI3"/>
-        <circle x="-30.55" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="40.95" y="52" size="5" rotation="270" rotate="true" text="AO0+"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-45.05" y2="60" x2="-31.05"/>
-        <input x="-233.05" y="52" size="5" rotation="270" rotate="true" text="AI0+"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-266.05" y2="60" x2="-252.05"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-210.05" y2="60" x2="-200.05"/>
-        <input x="-158.05" y="53" size="5" rotation="270" rotate="true" text="DI0"/>
-        <circle x="-215.55" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-25.45" y2="60" x2="-11.45"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-230.05" y2="60" x2="-216.05"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-68.05" y2="60" x2="-51.05"/>
-        <input x="57.95" y="53" size="5" rotation="270" rotate="true" text="GND"/>
-        <circle x="-130.15" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="-8.45" y="53" size="5" rotation="270" rotate="true" text="DI COM"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-25.05" y2="60" x2="-15.05"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-5.45" y2="60" x2="8.55"/>
-        <input x="93.95" y="48" size="7" rotation="270" rotate="true" text="COM"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-104.65" y2="60" x2="-94.65"/>
-        <input x="-127.65" y="52" size="5" rotation="270" rotate="true" text="DI2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="81.55" y2="60" x2="98.55"/>
-        <circle x="-115.15" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="19.45" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="3.45" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="135.45" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="119.45" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-140.65" y2="60" x2="-130.65"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="104.95" y2="60" x2="118.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="44.95" y2="60" x2="54.95"/>
-        <input x="21.95" y="52" size="5" rotation="270" rotate="true" text="T2 MOTOR"/>
-        <input x="130.95" y="46" size="7" rotation="270" rotate="true" text="NC"/>
-        <circle x="39.45" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="24.95" y2="60" x2="38.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="8.95" y2="60" x2="18.95"/>
-        <circle x="253.85" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="273.85" y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="259.35" y2="60" x2="273.35"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="-289.05" y2="60" x2="-289.05"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="81.95" y2="60" x2="98.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="124.95" y2="60" x2="134.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="-266.05" y2="-24" x2="-252.05"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-289.05" y2="60" x2="-272.05"/>
-        <circle x="79.5" y="-26" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-271.55" y="-26.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="-289.05" y2="-24" x2="-272.05"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-246.05" y2="60" x2="-236.05"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="57" x1="101.95" y2="27" x2="101.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="57" x1="137.95" y2="18" x2="137.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="57" x1="121.95" y2="24" x2="121.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="120.95" y2="24" x2="106.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="101.95" y2="18" x2="90.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="90.95" y2="13" x2="90.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="90.95" y2="13" x2="137.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.8588" x1="137.95" y2="18.1529" x2="137.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="278.95" y2="60" x2="300.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="-251.05" y2="-24" x2="-60.05"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="-61.05" y2="-24" x2="15.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="15.95" y2="-24" x2="78.95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="300.95" y2="59" x2="300.95"/>
-        <input x="-289" y="-12.5" size="5" rotate="true" text="BOP-2/IOP Interface 1X9"/>
-        <rect width="52" x="88.95" y="1" antialias="false" height="44" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-188" y="9.5" size="9" rotate="true" text="Controle Unit CU 240B-2"/>
-        <input x="255" y="51" size="6" rotation="-90" rotate="true" text="+24 V IN"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="253.011" y2="60" x2="140.99"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-68" y2="60" x2="-95"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-175" y2="60" x2="-200"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="301" y2="-24" x2="258"/>
-        <input x="203" y="-14.5" size="5" rotate="true" text="Communication interface"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="252" y2="-24" x2="85"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="83" y2="60" x2="61"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-147" y2="60" x2="-155"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-104" y2="60" x2="-110"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-116" y2="60" x2="-125"/>
-        <terminal x="82" y="-26.5" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-269.05" y="-27" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-269.05" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-249.05" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-233.05" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-213.05" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-158.05" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-127.65" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-112.65" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-48.05" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-28.05" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-8.45" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="5.95" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="21.95" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="41.95" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="57.95" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="101.95" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="121.95" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="137.95" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="256.35" y="62" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="276.35" y="63" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="255" y="-26.5" nameHidden="0" number="" name="" orientation="n"/>
-        <terminal x="-144" y="63" nameHidden="0" number="" name="" orientation="s"/>
+        <input tagg="label" text="_" size="9" rotate="true" y="-9.45" x="302.5"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="-146.5"/>
+        <input tagg="none" rotation="-90" text="GND IN" size="6" rotate="true" y="49" x="276.6"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-26" x="252.5"/>
+        <text text="5" size="5" y="56" x="-160.05"/>
+        <text text="7" size="5" y="55" x="-130.05"/>
+        <text text="18" size="5" y="56" x="128.95"/>
+        <text text="6" size="5" y="55" x="-145"/>
+        <input tagg="none" rotation="270" text="GND" size="5" rotate="true" y="52" x="-28.05"/>
+        <text text="4" size="5" y="55" x="-216.05"/>
+        <text text="2" size="5" y="55" x="-252.05"/>
+        <text text="3" size="5" y="56" x="-235.05"/>
+        <text text="1" size="5" y="55" x="-271.05"/>
+        <text text="8" size="5" y="55" x="-110.05"/>
+        <text text="28" size="5" y="56" x="-33.05"/>
+        <text text="19" size="5" y="56" x="111.95"/>
+        <text text="9" size="5" y="55" x="-50.05"/>
+        <text text="69" size="5" y="55" x="-13.05"/>
+        <text text="20" size="5" y="56" x="92.95"/>
+        <text text="14" size="5" y="55" x="0.95"/>
+        <text text="12" size="5" y="55" x="36.95"/>
+        <text text="15" size="5" y="55" x="17.95"/>
+        <text text="13" size="5" y="55" x="53.95"/>
+        <text text="31" size="5" y="55" x="251.95"/>
+        <input tagg="none" rotation="270" text="GND" size="5" rotate="true" y="52" x="-249.05"/>
+        <input tagg="none" text="PM - IF  interface 1X16" size="5" rotate="true" y="-12.5" x="42"/>
+        <text text="32" size="5" y="55" x="272.95"/>
+        <input tagg="none" rotation="270" text="T1 MOTOR" size="5" rotate="true" y="52" x="5.95"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="-50.55"/>
+        <input tagg="none" rotation="270" text="NO" size="7" rotate="true" y="46" x="112.95"/>
+        <input tagg="none" rotation="270" text="DI1" size="5" rotate="true" y="52" x="-143.65"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="-271.55"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="-10.95"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="-160.55"/>
+        <input tagg="none" rotation="270" text="+10V OUT" size="5" rotate="true" y="52" x="-269.05"/>
+        <input tagg="none" rotation="270" text="+24V OUT" size="5" rotate="true" y="53" x="-48.05"/>
+        <input tagg="none" rotation="270" text="AI0-" size="5" rotate="true" y="52" x="-214.05"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="-251.55"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="-235.55"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="99.45"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="55.45"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-175.05" y1="60" x2="-161.05" end2="none"/>
+        <input tagg="none" rotation="270" text="DI3" size="5" rotate="true" y="52" x="-108.65"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="-30.55"/>
+        <input tagg="none" rotation="270" text="AO0+" size="5" rotate="true" y="52" x="40.95"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-45.05" y1="60" x2="-31.05" end2="none"/>
+        <input tagg="none" rotation="270" text="AI0+" size="5" rotate="true" y="52" x="-233.05"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-266.05" y1="60" x2="-252.05" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-210.05" y1="60" x2="-200.05" end2="none"/>
+        <input tagg="none" rotation="270" text="DI0" size="5" rotate="true" y="53" x="-158.05"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="-215.55"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-25.45" y1="60" x2="-11.45" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-230.05" y1="60" x2="-216.05" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-68.05" y1="60" x2="-51.05" end2="none"/>
+        <input tagg="none" rotation="270" text="GND" size="5" rotate="true" y="53" x="57.95"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="-130.15"/>
+        <input tagg="none" rotation="270" text="DI COM" size="5" rotate="true" y="53" x="-8.45"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-25.05" y1="60" x2="-15.05" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-5.45" y1="60" x2="8.55" end2="none"/>
+        <input tagg="none" rotation="270" text="COM" size="7" rotate="true" y="48" x="93.95"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-104.65" y1="60" x2="-94.65" end2="none"/>
+        <input tagg="none" rotation="270" text="DI2" size="5" rotate="true" y="52" x="-127.65"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="81.55" y1="60" x2="98.55" end2="none"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="-115.15"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="19.45"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="3.45"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="135.45"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="119.45"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-140.65" y1="60" x2="-130.65" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="104.95" y1="60" x2="118.95" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="44.95" y1="60" x2="54.95" end2="none"/>
+        <input tagg="none" rotation="270" text="T2 MOTOR" size="5" rotate="true" y="52" x="21.95"/>
+        <input tagg="none" rotation="270" text="NC" size="7" rotate="true" y="46" x="130.95"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="39.45"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="24.95" y1="60" x2="38.95" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="8.95" y1="60" x2="18.95" end2="none"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="253.85"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="57.5" x="273.85"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="259.35" y1="60" x2="273.35" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-289.05" y1="-24" x2="-289.05" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="81.95" y1="60" x2="98.95" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="124.95" y1="60" x2="134.95" end2="none"/>
+        <line antialias="false" y2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-266.05" y1="-24" x2="-252.05" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-289.05" y1="60" x2="-272.05" end2="none"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-26" x="79.5"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-26.5" x="-271.55"/>
+        <line antialias="false" y2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-289.05" y1="-24" x2="-272.05" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-246.05" y1="60" x2="-236.05" end2="none"/>
+        <line antialias="false" y2="27" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="101.95" y1="57" x2="101.95" end2="none"/>
+        <line antialias="false" y2="18" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="137.95" y1="57" x2="137.95" end2="none"/>
+        <line antialias="false" y2="24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="121.95" y1="57" x2="121.95" end2="none"/>
+        <line antialias="false" y2="24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="120.95" y1="24" x2="106.95" end2="none"/>
+        <line antialias="false" y2="18" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="101.95" y1="26" x2="90.95" end2="none"/>
+        <line antialias="false" y2="13" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="90.95" y1="18" x2="90.95" end2="none"/>
+        <line antialias="false" y2="13" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="90.95" y1="13" x2="137.95" end2="none"/>
+        <line antialias="false" y2="18.1529" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="137.95" y1="12.8588" x2="137.95" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="278.95" y1="60" x2="300.95" end2="none"/>
+        <line antialias="false" y2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-251.05" y1="-24" x2="-60.05" end2="none"/>
+        <line antialias="false" y2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-61.05" y1="-24" x2="15.95" end2="none"/>
+        <line antialias="false" y2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="15.95" y1="-24" x2="78.95" end2="none"/>
+        <line antialias="false" y2="59" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="300.95" y1="-24" x2="300.95" end2="none"/>
+        <input tagg="none" text="BOP-2/IOP Interface 1X9" size="5" rotate="true" y="-12.5" x="-289"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" width="52" y="1" x="88.95" height="44"/>
+        <input tagg="none" text="Controle Unit CU 240B-2" size="9" rotate="true" y="9.5" x="-188"/>
+        <input tagg="none" rotation="-90" text="+24 V IN" size="6" rotate="true" y="51" x="255"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="253.011" y1="60" x2="140.99" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-68" y1="60" x2="-95" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-175" y1="60" x2="-200" end2="none"/>
+        <line antialias="false" y2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="301" y1="-24" x2="258" end2="none"/>
+        <input tagg="none" text="Communication interface" size="5" rotate="true" y="-14.5" x="203"/>
+        <line antialias="false" y2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="252" y1="-24" x2="85" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="83" y1="60" x2="61" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-147" y1="60" x2="-155" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-104" y1="60" x2="-110" end2="none"/>
+        <line antialias="false" y2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="-116" y1="60" x2="-125" end2="none"/>
+        <terminal y="63" orientation="s" x="21.95"/>
+        <terminal y="63" orientation="s" x="41.95"/>
+        <terminal y="63" orientation="s" x="57.95"/>
+        <terminal y="63" orientation="s" x="101.95"/>
+        <terminal y="62" orientation="s" x="256.35"/>
+        <terminal y="63" orientation="s" x="276.35"/>
+        <terminal y="-26.5" orientation="n" x="255"/>
+        <terminal y="63" orientation="s" x="-249.05"/>
+        <terminal y="63" orientation="s" x="-233.05"/>
+        <terminal y="63" orientation="s" x="-127.65"/>
+        <terminal y="63" orientation="s" x="-213.05"/>
+        <terminal y="63" orientation="s" x="-158.05"/>
+        <terminal y="-27" orientation="n" x="-269.05"/>
+        <terminal y="63" orientation="s" x="-269.05"/>
+        <terminal y="63" orientation="s" x="-112.65"/>
+        <terminal y="63" orientation="s" x="-48.05"/>
+        <terminal y="63" orientation="s" x="5.95"/>
+        <terminal y="63" orientation="s" x="121.95"/>
+        <terminal y="63" orientation="s" x="137.95"/>
+        <terminal y="63" orientation="s" x="-144"/>
+        <terminal y="-26.5" orientation="n" x="82"/>
+        <terminal y="63" orientation="s" x="-28.05"/>
+        <terminal y="63" orientation="s" x="-8.45"/>
     </description>
 </definition>
