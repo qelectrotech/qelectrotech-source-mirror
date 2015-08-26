@@ -19,7 +19,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <arc width="3.74" x="-5.0575" y="-12.2184" antialias="true" height="8.06989" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.93011" x1="-9.69383" y2="4.93011" x2="-3.69691"/>
         <arc width="3.2725" x="-4.59" y="-4.14853" antialias="true" height="9.07863" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <input x="-15" y="-16" size="4" rotate="true" text="rácor3/4-18" tagg="none"/>
+        <input x="-15" y="-16" size="4" rotate="true" text="rácor3/4-18" tagg="label"/>
         <terminal x="-10.2" y="0.390788" orientation="w"/>
         <terminal x="12.7075" y="0.390788" orientation="e"/>
     </description>

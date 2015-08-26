@@ -24,7 +24,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.38571" x1="0" y2="-6.32857" x2="1.8"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.41429" x1="0" y2="5.82857" x2="1.8"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.68571" x1="1.8" y2="2.65714" x2="1.8"/>
-        <input x="-9" y="-16.5" size="4" rotate="true" text="1/2M-18" tagg="none"/>
+        <input x="-9" y="-16.5" size="4" rotate="true" text="1/2M-18" tagg="label"/>
         <terminal x="-10.8" y="-0.514286" orientation="w"/>
         <terminal x="14.4" y="-0.514286" orientation="e"/>
     </description>

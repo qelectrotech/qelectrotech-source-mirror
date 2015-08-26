@@ -29,7 +29,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="7" y2="10" x2="7"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-1" y2="6" x2="2"/>
         <rect width="2" x="-7" y="-9" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <input x="-17" y="32" size="4" rotate="true" text="manguito codo&#xa;16-1/2&quot;H" tagg="none"/>
+        <input x="-17" y="32" size="4" rotate="true" text="manguito codo&#xa;16-1/2&quot;H" tagg="label"/>
         <terminal x="-26" y="1" orientation="w"/>
         <terminal x="10" y="-25" orientation="n"/>
     </description>

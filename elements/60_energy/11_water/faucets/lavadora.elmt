@@ -28,7 +28,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <ellipse width="37.1726" x="-18.4141" y="-16.1311" antialias="true" height="34.3052" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <ellipse width="48.1209" x="-24.052" y="-20.7568" antialias="true" height="44.2086" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="3.98278" x="24.0689" y="-2.93678" antialias="false" height="5.27772" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-29" y="30" size="4" rotate="true" text="Lavadora" tagg="none"/>
+        <input x="-29" y="30" size="4" rotate="true" text="Lavadora" tagg="label"/>
         <terminal x="49" y="11" orientation="n"/>
     </description>
 </definition>

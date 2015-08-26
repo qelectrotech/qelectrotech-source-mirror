@@ -38,7 +38,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.1976" x1="31" y2="57.1308" x2="31"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21" x1="-28.9606" y2="21" x2="30.9574"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="29" x1="-25" y2="29" x2="26"/>
-        <input x="-16" y="13" size="4" rotate="true" text="Lavadero" tagg="none"/>
+        <input x="-16" y="13" size="4" rotate="true" text="Lavadero" tagg="label"/>
         <terminal x="-8" y="-34" orientation="n"/>
         <terminal x="8" y="-34" orientation="n"/>
     </description>

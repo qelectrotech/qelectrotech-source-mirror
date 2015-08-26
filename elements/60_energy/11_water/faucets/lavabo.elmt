@@ -31,7 +31,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="30" y2="-2" x2="40"/>
         <arc width="79" x="-39" y="-26" antialias="true" height="49" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
         <ellipse width="67" x="-33" y="-17" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-13" y="10" size="4" rotate="true" text="Lavabo" tagg="none"/>
+        <input x="-13" y="10" size="4" rotate="true" text="Lavabo" tagg="label"/>
         <terminal x="-8" y="-34" orientation="n"/>
         <terminal x="8" y="-34" orientation="n"/>
     </description>

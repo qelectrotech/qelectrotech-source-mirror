@@ -22,7 +22,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <circle x="9" y="-44" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
         <arc width="15" x="33" y="-13" antialias="true" height="41" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
         <rect width="4" x="47" y="5" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-17" y="-9" size="4" rotate="true" text="Lavavajillas" tagg="none"/>
+        <input x="-17" y="-9" size="4" rotate="true" text="Lavavajillas" tagg="label"/>
         <terminal x="49" y="7" orientation="n"/>
     </description>
 </definition>

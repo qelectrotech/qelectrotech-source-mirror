@@ -41,7 +41,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.33603" x1="46.8015" y2="-7.33603" x2="47.8452"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.12707" x1="46.2797" y2="3.12707" x2="48.3671"/>
         <rect width="2.08737" x="70.8064" y="-11.5213" antialias="false" height="16.741" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-14.7758" y="-33.7554" size="4" rotate="true" text="Bomba ___" tagg="none"/>
+        <input x="-14.7758" y="-33.7554" size="4" rotate="true" text="Bomba ___" tagg="label"/>
         <terminal x="59.7707" y="-30.7876" orientation="n"/>
         <terminal x="78.7299" y="-3.6787" orientation="e"/>
     </description>

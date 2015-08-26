@@ -21,7 +21,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7.31731" x1="-1.99" y2="-8.30353" x2="9.35"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.33109" x1="-1.99" y2="-7.31731" x2="9.35"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5.34487" x1="-1.99" y2="-6.33109" x2="9.35"/>
-        <input x="-20" y="20" size="4" rotate="true" text="manguito aco- &#xa;dado1/2H-15" tagg="none"/>
+        <input x="-20" y="20" size="4" rotate="true" text="manguito aco- &#xa;dado1/2H-15" tagg="label"/>
         <terminal x="-12.7" y="8.20639" orientation="w"/>
         <terminal x="3.68" y="-10.075" orientation="n"/>
     </description>

@@ -25,7 +25,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.55" x1="25.5528" y2="7.85" x2="28.2211"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.2" x1="-2.01978" y2="0.2" x2="5.09573"/>
         <ellipse width="0.889438" x="-7.35641" y="15.5" antialias="true" height="0.85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-11" y="60" size="4" rotate="true" text="Inodoro" tagg="none"/>
+        <input x="-11" y="60" size="4" rotate="true" text="Inodoro" tagg="label"/>
         <terminal x="-30.4818" y="0.2" orientation="w"/>
     </description>
 </definition>

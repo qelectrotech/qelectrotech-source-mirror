@@ -14,7 +14,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <rect width="14" x="-1.4" y="-9.0555" antialias="false" height="5.32374" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <arc width="12" x="-11.4" y="-9.0555" antialias="true" height="11.0277" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
         <arc width="32" x="-21" y="-18.5622" antialias="true" height="30.4214" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <input x="-3" y="12" size="4" rotate="true" text="codo22" tagg="none"/>
+        <input x="-3" y="12" size="4" rotate="true" text="codo22" tagg="label"/>
         <terminal x="-9.4" y="5.77492" orientation="w"/>
         <terminal x="4.6" y="-7.53443" orientation="n"/>
     </description>
