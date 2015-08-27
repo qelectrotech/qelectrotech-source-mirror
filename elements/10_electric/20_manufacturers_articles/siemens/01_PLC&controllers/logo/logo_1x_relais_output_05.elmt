@@ -1,24 +1,25 @@
-<definition width="100" version="0.3" hotspot_x="15" hotspot_y="5" height="130" type="element" orientation="dyyy">
-<uuid uuid="{95723299-1949-4C87-BBE7-AFB61748289B}"/><names>
+<definition hotspot_x="31" width="80" hotspot_y="34" version="0.5" orientation="dyyy" height="70" type="element" link_type="simple">
+    <uuid uuid="{1a078cff-9bce-4d10-aa88-f52dd3c38c45}"/>
+    <names>
         <name lang="en">Logo-1x-relais-output/05</name>
         <name lang="fr">Logo-1x-relais-output/05</name>
-        <name lang="it">Logo 1x relais OUT/05</name>
         <name lang="cs">Logo 1x relais OUT/05</name>
+        <name lang="it">Logo 1x relais OUT/05</name>
     </names>
     <informations></informations>
     <description>
-        <rect width="30" x="4" y="30" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="67" y="112" size="6" rotation="270" rotate="true" text="Q?:?"/>
-        <input x="67" y="30" size="6" rotation="270" rotate="true" text="Q?:?"/>
-        <input x="3.25" y="41.3" size="6" rotate="true" text="PLC;&#xa;Q?"/>
-        <input x="2.25" y="71.3" size="6" rotate="true" text="?"/>
-        <input x="-4.75" y="20.8" size="9" rotate="true" text="-? /"/>
-        <rect width="40" x="34" y="30" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="70" x="4" y="56" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" x1="60" y2="86" x2="60"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="60" y2="34" x2="60"/>
-        <polygon x4="60" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="36" x1="55" y2="45" x2="60" y3="55" x3="60" y4="55"/>
-        <terminal x="60" y="30" orientation="n"/>
-        <terminal x="60" y="90" orientation="s"/>
+        <rect y="-30" width="30" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-26" antialias="false"/>
+        <input rotate="true" y="52" rotation="270" text="Q?:?" tagg="none" x="37" size="6"/>
+        <input rotate="true" y="-30" rotation="270" text="Q?:?" tagg="none" x="37" size="6"/>
+        <input rotate="true" y="-18.7" text="PLC;&#xa;Q?" tagg="none" x="-26.75" size="6"/>
+        <input rotate="true" y="11.3" text="?" tagg="none" x="-27.75" size="6"/>
+        <input rotate="true" y="-39.2" text="-? /" tagg="label" x="-34.75" size="9"/>
+        <rect y="-30" width="40" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" x="4" antialias="false"/>
+        <rect y="-4" width="70" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-26" antialias="false"/>
+        <line y1="30" end1="none" length2="1.5" end2="none" length1="1.5" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="30" y2="26"/>
+        <line y1="-30" end1="none" length2="1.5" end2="none" length1="1.5" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="30" y2="-26"/>
+        <polygon y1="-24" y4="-5" x4="30" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="30" closed="false" antialias="false" x1="25" y2="-15" y3="-5"/>
+        <terminal y="-30" orientation="n" x="30"/>
+        <terminal y="30" orientation="s" x="30"/>
     </description>
 </definition>

@@ -1,34 +1,36 @@
-<definition width="210" version="0.3" hotspot_x="0" hotspot_y="10" height="80" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{37F2942D-AC14-477A-A02A-83C356046A8D}"/><names>
-        <name lang="de">S7-1200-signalboard-sb1232-Out-1xanalog/3A</name>
+<definition hotspot_x="41" width="100" hotspot_y="19" version="0.5" orientation="dyyy" height="40" type="element" link_type="simple">
+    <uuid uuid="{89ef6cdb-c129-498d-8e92-b7f5dffddcbf}"/>
+    <names>
         <name lang="en">S7-1200-signalboard-sb1232-Out-1xanalog/3A</name>
-        <name lang="it">S7-1200 pannello segnali sb1232 Otu 1xanalog/3A</name>
         <name lang="cs">S7-1200 signálová deska sb1232 Out 1xanalog/3A</name>
+        <name lang="it">S7-1200 pannello segnali sb1232 Otu 1xanalog/3A</name>
+        <name lang="de">S7-1200-signalboard-sb1232-Out-1xanalog/3A</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.1883" x1="152" y2="20.8793" x2="152"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="154" y2="22" x2="154"/>
-        <input x="110" y="54" size="4" rotate="true" text="0-10V,      R=>1000 Ohm&#xa;4-20mA, R =&lt; 600 Ohm"/>
-        <text x="116" y="42" size="6" text="-"/>
-        <input x="37" y="9" size="4" rotate="true" text="SB1232, OUT 0-10V, 4-20mA"/>
-        <input x="169" y="15" size="6" rotate="true" text="AQ:PE"/>
-        <input x="170" y="25" size="6" rotate="true" text="AQ:O"/>
-        <input x="37" y="39" size="4" rotate="true" text="Supply&#xa;24V =>40 mA&#xa;5V 15mA"/>
-        <input x="170" y="35" size="6" rotate="true" text="AQ:OM"/>
-        <rect width="20" x="100" y="25" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="6" y="23" size="6" rotate="true" text="#?"/>
-        <input x="1" y="6.5" size="9" rotate="true" text="-K?"/>
-        <line length1="1.5" length2="2.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="120" y2="40" x2="170"/>
-        <input x="123" y="25" size="6" rotate="true" text="QW?"/>
-        <line length1="2.5" length2="2.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" x1="85" y2="35" x2="100"/>
-        <line length1="1.5" length2="2.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="120" y2="30" x2="171"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="45" x1="100" y2="25" x2="120"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17" x1="156" y2="23" x2="156"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="156" y2="20" x2="170"/>
-        <text x="115" y="33" size="6" text="+"/>
-        <terminal x="170" y="30" orientation="e"/>
-        <terminal x="170" y="40" orientation="e"/>
-        <terminal x="170" y="20" orientation="e"/>
+        <input rotate="true" y="-39.45" text="_" tagg="label" x="-57" size="9"/>
+        <line y1="-10.8117" end1="none" length2="1.5" end2="none" length1="1.5" x2="32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="32" y2="-9.1207"/>
+        <line y1="-12" end1="none" length2="1.5" end2="none" length1="1.5" x2="34" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="34" y2="-8"/>
+        <input rotate="true" y="24" text="0-10V,      R=>1000 Ohm&#xa;4-20mA, R =&lt; 600 Ohm" tagg="none" x="-10" size="4"/>
+        <text y="12" text="-" x="-4" size="6"/>
+        <input rotate="true" y="-21" text="SB1232, OUT 0-10V, 4-20mA" tagg="none" x="-83" size="4"/>
+        <input rotate="true" y="-15" text="AQ:PE" tagg="none" x="49" size="6"/>
+        <input rotate="true" y="-5" text="AQ:O" tagg="none" x="50" size="6"/>
+        <input rotate="true" y="9" text="Supply&#xa;24V =>40 mA&#xa;5V 15mA" tagg="none" x="-83" size="4"/>
+        <input rotate="true" y="5" text="AQ:OM" tagg="none" x="50" size="6"/>
+        <rect y="-5" width="20" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" antialias="false"/>
+        <input rotate="true" y="-7" text="#?" tagg="none" x="-114" size="6"/>
+        <input rotate="true" y="-23.5" text="-K?" tagg="none" x="-119" size="9"/>
+        <line y1="10" end1="none" length2="2.5" end2="none" length1="1.5" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="0" y2="10"/>
+        <input rotate="true" y="-5" text="QW?" tagg="none" x="3" size="6"/>
+        <line y1="5" end1="none" length2="2.5" end2="triangle" length1="2.5" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-35" y2="5"/>
+        <line y1="0" end1="none" length2="2.5" end2="triangle" length1="1.5" x2="51" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="0" y2="0"/>
+        <line y1="15" end1="none" length2="1.5" end2="none" length1="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-20" y2="-5"/>
+        <line y1="-13" end1="none" length2="1.5" end2="none" length1="1.5" x2="36" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="36" y2="-7"/>
+        <line y1="-10" end1="none" length2="1.5" end2="none" length1="1.5" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="36" y2="-10"/>
+        <text y="3" text="+" x="-5" size="6"/>
+        <terminal y="0" orientation="e" x="50"/>
+        <terminal y="-10" orientation="e" x="50"/>
+        <terminal y="10" orientation="e" x="50"/>
     </description>
 </definition>

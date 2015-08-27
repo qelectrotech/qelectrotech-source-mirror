@@ -1,39 +1,40 @@
-<definition width="130" version="0.3" hotspot_x="0" hotspot_y="10" height="110" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{19E50A17-43A4-4502-B9A4-84841CE25F29}"/><names>
-        <name lang="de">logo-textdisplay-24v</name>
+<definition hotspot_x="60" width="120" hotspot_y="45" version="0.5" orientation="dyyy" height="100" type="element" link_type="simple">
+    <uuid uuid="{2b26f6cf-df3d-43d7-9e7b-c1d317d9a0c7}"/>
+    <names>
         <name lang="en">logo-textdisplay-24v</name>
-        <name lang="it">Logo Display testo</name>
         <name lang="cs">Logo zobrazení textu</name>
+        <name lang="it">Logo Display testo</name>
+        <name lang="de">logo-textdisplay-24v</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="41.6944" y2="80" x2="80.9977"/>
-        <arc width="6" x="34" y="77" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <line length1="1.5" length2="2.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="41.6944" y2="40" x2="80.9977"/>
-        <input x="13" y="72.5" size="9" rotate="true" text="-"/>
-        <arc width="6" x="34" y="37" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <input x="1" y="23" size="6" rotate="true" text="#?"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="14.9249" y2="80" x2="32.998"/>
-        <rect width="8" x="26" y="79" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="14.9249" y2="40" x2="32.998"/>
-        <rect width="8" x="26" y="39" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <input x="42" y="35" size="4" rotate="true" text="DB-SUB9"/>
-        <input x="39" y="70" size="4" rotate="true" text="24VAC  90mA &#xa;24VDC 40mA &#xa;12VDC 90mA"/>
-        <input x="12" y="52.5" size="9" rotate="true" text="+"/>
-        <rect width="25" x="81" y="58" antialias="false" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="41.6944" y2="60" x2="80.9977"/>
-        <input x="43" y="6" size="6" rotate="true" text="LOGO, textdisplay 24V"/>
-        <input x="2" y="9.5" size="9" rotate="true" text="-P?"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="41.2988" y2="12" x2="124.593"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="83" x1="81" y2="58" x2="106"/>
-        <line length1="1.5" length2="2.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="105.52" y2="70" x2="120.52"/>
-        <arc width="6" x="34" y="57" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="14.9249" y2="60" x2="32.998"/>
-        <rect width="8" x="26" y="59" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="59" x1="30" y2="79" x2="30"/>
-        <rect width="85" x="40" y="0" antialias="false" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="40" y="80" orientation="w"/>
-        <terminal x="40" y="60" orientation="w"/>
-        <terminal x="40" y="40" orientation="w"/>
+        <line y1="40" end1="none" length2="1.5" end2="none" length1="1.5" x2="10.9977" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-28.3056" y2="40"/>
+        <arc y="37" width="6" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" x="-36" start="90" antialias="true"/>
+        <line y1="0" end1="none" length2="2.5" end2="triangle" length1="1.5" x2="10.9977" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-28.3056" y2="0"/>
+        <input rotate="true" y="32.5" text="-" tagg="none" x="-57" size="9"/>
+        <arc y="-3" width="6" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" x="-36" start="90" antialias="true"/>
+        <input rotate="true" y="-17" text="#?" tagg="none" x="-69" size="6"/>
+        <line y1="40" end1="none" length2="1.5" end2="none" length1="1.5" x2="-37.002" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-55.0751" y2="40"/>
+        <rect y="39" width="8" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-44" antialias="false"/>
+        <line y1="0" end1="none" length2="1.5" end2="none" length1="1.5" x2="-37.002" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-55.0751" y2="0"/>
+        <rect y="-1" width="8" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-44" antialias="false"/>
+        <input rotate="true" y="-5" text="DB-SUB9" tagg="none" x="-28" size="4"/>
+        <input rotate="true" y="30" text="24VAC  90mA &#xa;24VDC 40mA &#xa;12VDC 90mA" tagg="none" x="-31" size="4"/>
+        <input rotate="true" y="12.5" text="+" tagg="none" x="-58" size="9"/>
+        <rect y="18" width="25" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black" x="11" antialias="false"/>
+        <line y1="20" end1="none" length2="1.5" end2="none" length1="1.5" x2="10.9977" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-28.3056" y2="20"/>
+        <input rotate="true" y="-34" text="LOGO, textdisplay 24V" tagg="none" x="-27" size="6"/>
+        <input rotate="true" y="-30.5" text="-P?" tagg="label" x="-68" size="9"/>
+        <line y1="-28" end1="none" length2="1.5" end2="none" length1="1.5" x2="54.593" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-28.7012" y2="-28"/>
+        <line y1="43" end1="none" length2="1.5" end2="none" length1="1.5" x2="36" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="11" y2="18"/>
+        <line y1="30" end1="none" length2="2.5" end2="triangle" length1="1.5" x2="50.52" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="35.52" y2="30"/>
+        <arc y="17" width="6" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" x="-36" start="90" antialias="true"/>
+        <line y1="20" end1="none" length2="1.5" end2="none" length1="1.5" x2="-37.002" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-55.0751" y2="20"/>
+        <rect y="19" width="8" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-44" antialias="false"/>
+        <line y1="19" end1="none" length2="1.5" end2="none" length1="1.5" x2="-40" style="line-style:dotted;line-weight:normal;filling:none;color:black" antialias="false" x1="-40" y2="39"/>
+        <rect y="-40" width="85" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-30" antialias="false"/>
+        <terminal y="40" orientation="w" x="-30"/>
+        <terminal y="20" orientation="w" x="-30"/>
+        <terminal y="0" orientation="w" x="-30"/>
     </description>
 </definition>

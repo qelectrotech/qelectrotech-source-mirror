@@ -1,32 +1,34 @@
-<definition width="320" version="0.3" hotspot_x="15" hotspot_y="45" height="110" type="element" ic="true" orientation="dnnn">
-<uuid uuid="{72CD91D8-B5BA-4753-A6F2-CC175E627E16}"/><names>
-        <name lang="ar">6ES7 360-3AA01-0AA0</name>
+<definition hotspot_x="15" width="320" hotspot_y="43" version="0.5" orientation="dyyy" height="110" type="element" link_type="simple">
+    <uuid uuid="{0734bf05-615a-4668-b8f9-c9fd2d46f27a}"/>
+    <names>
         <name lang="pt">6ES7 360-3AA01-0AA0</name>
-        <name lang="el">6ES7 360-3AA01-0AA0</name>
-        <name lang="en">6ES7 360-3AA01-0AA0</name>
-        <name lang="it">6ES7 360-3AA01-0AA0</name>
-        <name lang="fr">6ES7 360-3AA01-0AA0</name>
-        <name lang="pl">6ES7 360-3AA01-0AA0</name>
         <name lang="es">6ES7 360-3AA01-0AA0</name>
+        <name lang="en">6ES7 360-3AA01-0AA0</name>
+        <name lang="fr">6ES7 360-3AA01-0AA0</name>
         <name lang="cs">6ES7 360-3AA01-0AA0</name>
+        <name lang="el">6ES7 360-3AA01-0AA0</name>
+        <name lang="it">6ES7 360-3AA01-0AA0</name>
+        <name lang="pl">6ES7 360-3AA01-0AA0</name>
         <name lang="nl">6ES7 360-3AA01-0AA0</name>
+        <name lang="ar">6ES7 360-3AA01-0AA0</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="-28" x2="277"/>
-        <input x="267" y="-6" size="7" rotate="true" text="OUT"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="281" y2="-29" x2="281"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="279" y2="-29" x2="279"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="280" y2="-29" x2="280"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="283" y2="-28" x2="300"/>
-        <arc width="6" x="277" y="-32" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <input x="272" y="-19.5" size="5" rotate="true" text="X1"/>
-        <input x="0" y="24.5" size="9" text="IM360"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="300" y2="60" x2="300"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="60" x2="-10"/>
-        <input x="0" y="45.5" size="9" rotate="true" text="6ES7 360-3AA01-0AA0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-10" y2="60" x2="300"/>
-        <terminal x="280" y="-35" orientation="n"/>
+        <line y1="-28" end1="none" length2="1.5" end2="none" length1="1.5" x2="277" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-10" y2="-28"/>
+        <input rotate="true" y="-6" text="OUT" tagg="none" x="267" size="7"/>
+        <line y1="-35" end1="none" length2="1.5" end2="none" length1="1.5" x2="281" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="281" y2="-29"/>
+        <line y1="-35" end1="none" length2="1.5" end2="none" length1="1.5" x2="279" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="279" y2="-29"/>
+        <line y1="-35" end1="none" length2="1.5" end2="none" length1="1.5" x2="280" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="280" y2="-29"/>
+        <line y1="-28" end1="none" length2="1.5" end2="none" length1="1.5" x2="300" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="283" y2="-28"/>
+        <arc y="-32" width="6" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" x="277" start="0" antialias="true"/>
+        <input rotate="true" y="-19.5" text="X1" tagg="none" x="272" size="5"/>
+        <input y="24.5" text="IM360" tagg="none" x="0" size="9"/>
+        <line y1="-28" end1="none" length2="1.5" end2="none" length1="1.5" x2="300" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="300" y2="60"/>
+        <line y1="-28" end1="none" length2="1.5" end2="none" length1="1.5" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-10" y2="60"/>
+        <input rotate="true" y="45.5" text="6ES7 360-3AA01-0AA0" tagg="none" x="0" size="9"/>
+        <line y1="60" end1="none" length2="1.5" end2="none" length1="1.5" x2="300" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-10" y2="60"/>
+        <input rotate="true" y="-28.5" text="_" tagg="label" x="303" size="9"/>
+        <terminal y="-35" orientation="n" x="280"/>
     </description>
 </definition>
