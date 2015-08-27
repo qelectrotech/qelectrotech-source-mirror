@@ -1,33 +1,35 @@
-<definition width="60" version="0.4" hotspot_x="30" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{E9AE851A-19D6-44FC-8832-341DAE9E30AD}"/><names>
-        <name lang="ar">موحد ثلاثي الأوجه</name>
-        <name lang="el">Μετατροπέας τριφασικό AC/DC</name>
-        <name lang="en">AC/DC tri converter</name>
-        <name lang="de">Umrichter AC/DC 3-phasig</name>
-        <name lang="it">Convertitore AC trifase / DC</name>
-        <name lang="fr">Convertisseur tri AC/DC</name>
-        <name lang="pl">Prostownik</name>
+<definition hotspot_y="35" type="element" height="70" width="60" hotspot_x="30" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{ba37456e-e7a9-423d-a75d-4d5e8f0cbd22}"/>
+    <names>
         <name lang="nl">Wisselspanning driefase > gelijkspanning  AC3 > DC</name>
         <name lang="cs">Usměrňovač - měnič třífázový střídavý proud/stejnosměrný proud</name>
+        <name lang="it">Convertitore AC trifase / DC</name>
+        <name lang="el">Μετατροπέας τριφασικό AC/DC</name>
+        <name lang="de">Umrichter AC/DC 3-phasig</name>
+        <name lang="en">AC/DC tri converter</name>
+        <name lang="fr">Convertisseur tri AC/DC</name>
+        <name lang="pl">Prostownik</name>
         <name lang="be">Wisselspanning driefasen > gelijkspanning  AC3 > DC</name>
+        <name lang="ar">موحد ثلاثي الأوجه</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="40" x="-20" y="-30" antialias="false" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="20" y2="30" x2="-20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-25" y2="0" x2="-20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="6" y2="24" x2="17"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-20" y2="-20" x2="-25"/>
-        <arc width="5" x="-11.5" y="-25.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-175"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="25" y2="10" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="20" y2="-10" x2="25"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-25" y2="20" x2="-20"/>
-        <arc width="5" x="-16.5" y="-25.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-175"/>
-        <terminal x="-25" y="-20" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="25" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="25" y="10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-25" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-26" y="20" nameHidden="0" number="" name="" orientation="w"/>
+        <input text="_" rotate="true" y="-39.45" size="9" x="-12" tagg="label"/>
+        <rect height="60" antialias="false" y="-30" width="40" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="true" x1="20" y2="30" end1="none" y1="-30" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-25" y2="0" end1="none" y1="0" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="6" y2="24" end1="none" y1="24" x2="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-20" y2="-20" end1="none" y1="-20" x2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-175" height="5" antialias="true" y="-25.5" width="5" start="0" x="-11.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="25" y2="10" end1="none" y1="10" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="20" y2="-10" end1="none" y1="-10" x2="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-25" y2="20" end1="none" y1="20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-175" height="5" antialias="true" y="-25.5" width="5" start="180" x="-16.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-10" orientation="e" x="25"/>
+        <terminal y="10" orientation="e" x="25"/>
+        <terminal y="0" orientation="w" x="-25"/>
+        <terminal y="20" orientation="w" x="-26"/>
+        <terminal y="-20" orientation="w" x="-25"/>
     </description>
 </definition>

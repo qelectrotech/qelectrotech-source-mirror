@@ -1,22 +1,24 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="5" height="50" type="element" orientation="dyyy">
-<uuid uuid="{8A64507E-B57E-47B9-8836-B266211C47AD}"/><names>
-        <name lang="ar">عدّاد طاقة</name>
-        <name lang="el">Μετρητής ενέργειας, Κιλοβατώρες (KWh)</name>
-        <name lang="en">Energy meter</name>
-        <name lang="de">Energiezähler</name>
-        <name lang="it">Misuratore di Kwh</name>
-        <name lang="fr">Compteur d’énergie</name>
-        <name lang="pl">Licznik energii</name>
+<definition hotspot_y="4" type="element" height="50" width="40" hotspot_x="10" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{7dfdf66d-a525-4cac-bf6b-4ae4177ccaf5}"/>
+    <names>
         <name lang="cs">Počítadlo energie</name>
         <name lang="nl">Energiemeter</name>
+        <name lang="it">Misuratore di Kwh</name>
+        <name lang="el">Μετρητής ενέργειας, Κιλοβατώρες (KWh)</name>
+        <name lang="de">Energiezähler</name>
+        <name lang="en">Energy meter</name>
+        <name lang="fr">Compteur d’énergie</name>
+        <name lang="pl">Licznik energii</name>
+        <name lang="ar">عدّاد طاقة</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-6" y2="10" x2="26"/>
-        <rect width="32" x="-6" y="0" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-4" y="30" size="10" text="kWh"/>
-        <terminal x="0" y="40" orientation="s"/>
-        <terminal x="20" y="40" orientation="s"/>
+        <input text="_" rotate="true" y="17.55" size="9" x="26" tagg="label"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-6" y2="10" end1="none" y1="10" x2="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="40" antialias="false" y="0" width="32" x="-6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="kWh" y="30" size="10" x="-4"/>
+        <terminal y="40" orientation="s" x="0"/>
+        <terminal y="40" orientation="s" x="20"/>
     </description>
 </definition>

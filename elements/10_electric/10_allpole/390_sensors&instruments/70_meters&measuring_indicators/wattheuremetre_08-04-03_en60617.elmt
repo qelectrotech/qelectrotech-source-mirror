@@ -1,21 +1,23 @@
-<definition width="60" version="0.3" hotspot_x="30" hotspot_y="40" height="80" type="element" orientation="dyyy">
-<uuid uuid="{F4370B50-2B4D-4164-B2B8-9C53163A9194}"/><names>
-        <name lang="ar">عدّاد طاقة فعّالة - وات ساعة متر -(en_60617) </name>
+<definition hotspot_y="39" type="element" height="80" width="50" hotspot_x="25" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{da2fc8c2-5a5f-48f4-9bf5-88cd6048fb3f}"/>
+    <names>
+        <name lang="cs">Počítadlo watthodin(en_60617) </name>
+        <name lang="nl">Watt uur meter (en_60617)</name>
+        <name lang="it">Misuratore di Wh (en_60617)</name>
         <name lang="de">Wattstundenzähler (EN 60617)</name>
         <name lang="en">Watt hour meter (en_60617)</name>
         <name lang="fr">Compteur d'énergie active Wattheuremètre (en_60617)</name>
         <name lang="pl">Licznik watogodzin (en_60617)</name>
-        <name lang="cs">Počítadlo watthodin(en_60617) </name>
-        <name lang="it">Misuratore di Wh (en_60617)</name>
-        <name lang="nl">Watt uur meter (en_60617)</name>
+        <name lang="ar">عدّاد طاقة فعّالة - وات ساعة متر -(en_60617) </name>
     </names>
     <informations>https://github.com/jonasstein/qelectrotech-symbols
 EN 60617</informations>
     <description>
-        <text x="-10" y="12" size="9" text="Wh"/>
-        <rect width="40" x="-20" y="-10" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="40" x="-20" y="-30" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-34" orientation="n"/>
-        <terminal x="0" y="34" orientation="s"/>
+        <input text="_" rotate="true" y="-19.45" size="9" x="23" tagg="label"/>
+        <text text="Wh" y="12" size="9" x="-10"/>
+        <rect height="40" antialias="false" y="-10" width="40" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="20" antialias="false" y="-30" width="40" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-34" orientation="n" x="0"/>
+        <terminal y="34" orientation="s" x="0"/>
     </description>
 </definition>

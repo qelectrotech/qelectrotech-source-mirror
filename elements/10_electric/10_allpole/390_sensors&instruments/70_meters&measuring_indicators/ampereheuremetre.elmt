@@ -1,22 +1,24 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{4D492106-B25A-4FA2-81BA-3A4D5CC768F4}"/><names>
-        <name lang="ar">أمبيرساعة متر </name>
+<definition hotspot_y="28" type="element" height="50" width="40" hotspot_x="20" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{06087d5d-6b03-463e-b400-51ffcdf5c16d}"/>
+    <names>
+        <name lang="cs">Ampérmetr</name>
+        <name lang="nl">Ampere uur meter</name>
+        <name lang="it">Misuratore di Ah</name>
         <name lang="de">Amperestundenzähler</name>
         <name lang="el">Μετρητής κατανάλωσης, Αμπερώρια (Ah)</name>
         <name lang="en">Ampere Hour Meter</name>
-        <name lang="it">Misuratore di Ah</name>
         <name lang="fr">Ampèreheuremètre</name>
         <name lang="pl">Licznik amperogodzin</name>
-        <name lang="cs">Ampérmetr</name>
-        <name lang="nl">Ampere uur meter</name>
+        <name lang="ar">أمبيرساعة متر </name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-8" y="2.3333" size="9" text="Ah"/>
-        <rect width="30" x="-15" y="-11" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="30" x="-15" y="-19" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-23" orientation="n"/>
-        <terminal x="0" y="15" orientation="s"/>
+        <text text="Ah" y="2.3333" size="9" x="-8"/>
+        <rect height="22" antialias="false" y="-11" width="30" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="8" antialias="false" y="-19" width="30" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="_" rotate="true" y="-25" size="9" x="15" tagg="label"/>
+        <terminal y="-23" orientation="n" x="0"/>
+        <terminal y="15" orientation="s" x="0"/>
     </description>
 </definition>

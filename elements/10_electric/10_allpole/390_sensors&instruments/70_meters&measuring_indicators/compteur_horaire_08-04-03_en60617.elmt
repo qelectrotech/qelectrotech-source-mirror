@@ -1,22 +1,24 @@
-<definition width="60" version="0.3" hotspot_x="30" hotspot_y="40" height="80" type="element" orientation="dyyy">
-<uuid uuid="{F03B0B46-4738-40F1-9D30-6F69148D719F}"/><names>
-        <name lang="ar">عدّاد زمني(en_60617)</name>
+<definition hotspot_y="39" type="element" height="80" width="50" hotspot_x="25" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{4f029867-b53e-4c2c-beec-87f65fa30f4e}"/>
+    <names>
+        <name lang="cs">Počítadlo hodin (en_60617)</name>
+        <name lang="nl">Bedrijfsurenteller (en_60617)</name>
+        <name lang="it">Conta tempo (en_60617)</name>
         <name lang="de">Betriebsstundenzähler (en_60617)</name>
         <name lang="el">Ωρόμετρο (en_60617)</name>
         <name lang="en">Hour counter(en_60617) </name>
-        <name lang="it">Conta tempo (en_60617)</name>
         <name lang="fr">Compteur horaire (en_60617)</name>
         <name lang="pl">Licznik godzin (en_60617)</name>
-        <name lang="cs">Počítadlo hodin (en_60617)</name>
-        <name lang="nl">Bedrijfsurenteller (en_60617)</name>
+        <name lang="ar">عدّاد زمني(en_60617)</name>
     </names>
     <informations>https://github.com/jonasstein/qelectrotech-symbols
 EN 60617</informations>
     <description>
-        <text x="-4" y="12" size="9" text="h"/>
-        <rect width="40" x="-20" y="-10" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="40" x="-20" y="-30" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-34" orientation="n"/>
-        <terminal x="0" y="34" orientation="s"/>
+        <text text="h" y="12" size="9" x="-4"/>
+        <input text="_" rotate="true" y="4.5" size="9" x="18" tagg="label"/>
+        <rect height="40" antialias="false" y="-10" width="40" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="20" antialias="false" y="-30" width="40" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="34" orientation="s" x="0"/>
+        <terminal y="-34" orientation="n" x="0"/>
     </description>
 </definition>

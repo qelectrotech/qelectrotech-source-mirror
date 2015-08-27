@@ -1,30 +1,32 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
-<uuid uuid="{D262B1CD-DAF2-4F20-8D59-6F6C7083AF65}"/><names>
-        <name lang="ar">أوميتر عمودي</name>
-        <name lang="de">Ohmmeter senkrecht</name>
-        <name lang="ru">Омметр (вертикальный)</name>
-        <name lang="pt">Ohmímetro vertical</name>
-        <name lang="el">Ωμόμετρο κατακόρυφο</name>
-        <name lang="en">Vertical ohmmeter</name>
-        <name lang="it">Ohmmetro verticale</name>
-        <name lang="fr">Ohmmètre vertical</name>
-        <name lang="pl">Omomierz (pionowo)</name>
-        <name lang="es">Óhmetro vertical</name>
+<definition hotspot_y="29" type="element" height="60" width="30" hotspot_x="15" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{8aa7d09a-e49e-43bd-84ac-3f9e891d6a0f}"/>
+    <names>
         <name lang="cs">Ohmmetr, svislý</name>
         <name lang="nl">Ohmmeter</name>
+        <name lang="it">Ohmmetro verticale</name>
+        <name lang="ru">Омметр (вертикальный)</name>
+        <name lang="pt">Ohmímetro vertical</name>
+        <name lang="de">Ohmmeter senkrecht</name>
+        <name lang="el">Ωμόμετρο κατακόρυφο</name>
+        <name lang="en">Vertical ohmmeter</name>
+        <name lang="fr">Ohmmètre vertical</name>
+        <name lang="es">Óhmetro vertical</name>
+        <name lang="pl">Omomierz (pionowo)</name>
+        <name lang="ar">أوميتر عمودي</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-5" y2="5" x2="-3.25"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="3.25" y2="5" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-3.25" y2="3" x2="-3.25"/>
-        <arc width="10" x="-5" y="-6" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="225" angle="-270"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="3.25" y2="5" x2="3.25"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="21" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="0" y2="-10" x2="0"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
+        <input text="_" rotate="true" y="-14.5" size="9" x="6" tagg="label"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-5" y2="5" end1="none" y1="5" x2="-3.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="3.25" y2="5" end1="none" y1="5" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-3.25" y2="3" end1="none" y1="5" x2="-3.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-270" height="10" antialias="true" y="-6" width="10" start="225" x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="3.25" y2="5" end1="none" y1="3" x2="3.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="0" y2="21" end1="none" y1="10" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="0" y2="-10" end1="none" y1="-21" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="20" antialias="true" y="-10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-21" orientation="n" x="0"/>
+        <terminal y="21" orientation="s" x="0"/>
     </description>
 </definition>

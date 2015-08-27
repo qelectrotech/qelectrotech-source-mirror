@@ -1,25 +1,27 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
-<uuid uuid="{401A2EDB-7934-468A-B75F-1D2F3AC43CFB}"/><names>
-        <name lang="ar">جلفانومتر عمودي</name>
-        <name lang="de">Galvanometer senkrecht</name>
-        <name lang="pt">Galvanómetro vertical</name>
-        <name lang="el">Γαλβανόμετρο κατακόρυφο</name>
-        <name lang="en">galvanometer v</name>
-        <name lang="it">Galvanometro verticale</name>
-        <name lang="fr">Galvanomètre vertical</name>
-        <name lang="pl">Galwanometr (pionowo)</name>
-        <name lang="es">Galvanómetro vertical</name>
+<definition hotspot_y="29" type="element" height="60" width="30" hotspot_x="15" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{a15f0265-254c-4156-b5aa-f78786a3e219}"/>
+    <names>
         <name lang="cs">Galvanometr, svislý</name>
         <name lang="nl">Galvanometer</name>
+        <name lang="it">Galvanometro verticale</name>
+        <name lang="pt">Galvanómetro vertical</name>
+        <name lang="de">Galvanometer senkrecht</name>
+        <name lang="el">Γαλβανόμετρο κατακόρυφο</name>
+        <name lang="en">galvanometer v</name>
+        <name lang="fr">Galvanomètre vertical</name>
+        <name lang="es">Galvanómetro vertical</name>
+        <name lang="pl">Galwanometr (pionowo)</name>
+        <name lang="ar">جلفانومتر عمودي</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="3" antialias="false" end1="none" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.45" x1="0" y2="-7.55" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="21" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="0" y2="-10" x2="0"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
+        <input text="_" rotate="true" y="-13.5" size="9" x="8" tagg="label"/>
+        <line end2="simple" length2="3" length1="1.5" antialias="false" x1="0" y2="-7.55" end1="none" y1="7.45" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="0" y2="21" end1="none" y1="10" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="0" y2="-10" end1="none" y1="-21" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="20" antialias="true" y="-10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="21" orientation="s" x="0"/>
+        <terminal y="-21" orientation="n" x="0"/>
     </description>
 </definition>

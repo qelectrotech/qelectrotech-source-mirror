@@ -1,37 +1,39 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
-<uuid uuid="{287A4E3A-69FC-49E5-8FB9-71A19049F216}"/><names>
-        <name lang="ar">عاكس أحادي الوجه</name>
-        <name lang="de">Wechselrichter</name>
-        <name lang="ru">Пост. ток > Однофазный перем. ток</name>
-        <name lang="pt">Contínua > Alterna monofásica</name>
-        <name lang="el">Συνεχές > Μονοφασικό εναλλασσόμενο</name>
-        <name lang="en">Direct > One-phase alternating</name>
-        <name lang="it">DC / AC monofase</name>
-        <name lang="fr">Continu > Alternatif monophasé</name>
-        <name lang="pl">Falownik</name>
-        <name lang="es">Continua > Alterna monofásica</name>
+<definition hotspot_y="25" type="element" height="40" width="60" hotspot_x="29" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{c8219681-b937-465a-8d2f-b7fe69870cde}"/>
+    <names>
         <name lang="cs">Stejnosměrný proud > střídavý proud</name>
         <name lang="nl">Gelijkspanning > Wisselspanning DC > AC1</name>
+        <name lang="it">DC / AC monofase</name>
+        <name lang="ru">Пост. ток > Однофазный перем. ток</name>
+        <name lang="pt">Contínua > Alterna monofásica</name>
+        <name lang="de">Wechselrichter</name>
+        <name lang="el">Συνεχές > Μονοφασικό εναλλασσόμενο</name>
+        <name lang="en">Direct > One-phase alternating</name>
+        <name lang="fr">Continu > Alternatif monophasé</name>
+        <name lang="es">Continua > Alterna monofásica</name>
+        <name lang="pl">Falownik</name>
         <name lang="be">Gelijkspanning > Wisselspanning DC > AC1</name>
+        <name lang="ar">عاكس أحادي الوجه</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-15" y2="-10" x2="-20"/>
-        <polygon x4="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-15" y2="-20" x2="15" y3="10" x3="15" y4="10"/>
-        <arc width="5" x="7.5" y="2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-175"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="0" x2="15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="15" y2="-10" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="-11" y2="-17" x2="-12.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="-8" y2="-17" x2="-9.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="-5" y2="-17" x2="-6.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-5" y2="-15" x2="-12.5"/>
-        <arc width="5" x="2.5" y="2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-175"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.5" x1="14.5" y2="9.5" x2="-14.5"/>
-        <terminal x="-21" y="-10" orientation="w"/>
-        <terminal x="-21" y="0" orientation="w"/>
-        <terminal x="21" y="-10" orientation="e"/>
-        <terminal x="21" y="0" orientation="e"/>
+        <input text="_" rotate="true" y="-30.45" size="9" x="-12" tagg="label"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-15" y2="-10" end1="none" y1="-10" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="15" x4="-15" y3="10" antialias="false" x1="-15" y2="-20" y1="-20" x2="15" y4="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-175" height="5" antialias="true" y="2.5" width="5" start="0" x="7.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="20" y2="0" end1="none" y1="0" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="15" y2="-10" end1="none" y1="-10" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-20" y2="0" end1="none" y1="0" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-11" y2="-17" end1="none" y1="-17" x2="-12.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-8" y2="-17" end1="none" y1="-17" x2="-9.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-5" y2="-17" end1="none" y1="-17" x2="-6.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-5" y2="-15" end1="none" y1="-15" x2="-12.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-175" height="5" antialias="true" y="2.5" width="5" start="180" x="2.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="true" x1="14.5" y2="9.5" end1="none" y1="-19.5" x2="-14.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-10" orientation="w" x="-21"/>
+        <terminal y="-10" orientation="e" x="21"/>
+        <terminal y="0" orientation="e" x="21"/>
+        <terminal y="0" orientation="w" x="-21"/>
     </description>
 </definition>

@@ -1,29 +1,31 @@
-<definition width="50" version="0.3" hotspot_x="35" hotspot_y="45" height="50" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{ED2F66B9-B73C-48A9-A724-262181AB786F}"/><names>
-        <name lang="ar">موحد محكوم</name>
+<definition hotspot_y="44" type="element" height="50" width="50" hotspot_x="34" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{f466b24f-cdb3-468d-8076-f5931f5aa644}"/>
+    <names>
+        <name lang="cs">Usměrňovač proudu</name>
+        <name lang="nl">Gelijkrichter AC1/DC</name>
+        <name lang="it">Raddrizzatore AC/DC</name>
         <name lang="de">Gleichrichter</name>
         <name lang="el">Ανορθωτής</name>
         <name lang="en">Rectiﬁer</name>
-        <name lang="it">Raddrizzatore AC/DC</name>
         <name lang="fr">Redresseur</name>
         <name lang="pl">Zasilacz</name>
-        <name lang="cs">Usměrňovač proudu</name>
-        <name lang="nl">Gelijkrichter AC1/DC</name>
         <name lang="be">Gelijkrichter AC1/DC</name>
+        <name lang="ar">موحد محكوم</name>
     </names>
     <informations>EN 60617: 06-14-03</informations>
     <description>
-        <rect width="40" x="-30" y="-40" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-6" y2="-5" x2="-2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="1" y2="-5" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-6" y2="-7" x2="5"/>
-        <line length1="0" length2="0" antialias="true" end1="simple" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-30" y2="-40" x2="10"/>
-        <arc width="5" x="-19.5" y="-35.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-175"/>
-        <arc width="5" x="-24.5" y="-35.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-175"/>
-        <terminal x="-30" y="-30" orientation="w"/>
-        <terminal x="-30" y="-10" orientation="w"/>
-        <terminal x="10" y="-30" orientation="e"/>
-        <terminal x="10" y="-10" orientation="e"/>
-        <terminal x="-10" y="0" orientation="s"/>
+        <input text="_" rotate="true" y="-49.5" size="9" x="-22" tagg="label"/>
+        <rect height="40" antialias="false" y="-40" width="40" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-6" y2="-5" end1="none" y1="-5" x2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="1" y2="-5" end1="none" y1="-5" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-6" y2="-7" end1="none" y1="-7" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="simple" length2="0" length1="0" antialias="true" x1="-30" y2="-40" end1="simple" y1="0" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-175" height="5" antialias="true" y="-35.5" width="5" start="0" x="-19.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="-175" height="5" antialias="true" y="-35.5" width="5" start="180" x="-24.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="0" orientation="s" x="-10"/>
+        <terminal y="-30" orientation="w" x="-30"/>
+        <terminal y="-10" orientation="e" x="10"/>
+        <terminal y="-30" orientation="e" x="10"/>
+        <terminal y="-10" orientation="w" x="-30"/>
     </description>
 </definition>

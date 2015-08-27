@@ -1,30 +1,32 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" ic="true" orientation="dnnn">
-<uuid uuid="{6BBCA5FA-8C69-43CC-A0DE-DC271598A09C}"/><names>
-        <name lang="ar">واتميتر عمودي</name>
-        <name lang="de">Wattmeter senkrecht</name>
-        <name lang="ru">Ватметр (вертикальный)</name>
-        <name lang="pt">Wattímetro vertical</name>
-        <name lang="el">Βατόμετρο κατακόρυφο</name>
-        <name lang="en">Vertical wattmeter</name>
-        <name lang="it">Wattmetro verticale</name>
-        <name lang="fr">Wattmètre vertical</name>
-        <name lang="pl">Watomierz (pionowo)</name>
-        <name lang="es">Vatímetro vertical</name>
+<definition hotspot_y="29" type="element" height="60" width="40" hotspot_x="14" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{e23817d5-48e7-43da-be33-6b4907a9a9dd}"/>
+    <names>
         <name lang="cs">Wattmetr, svislý</name>
         <name lang="nl">Wattmeter</name>
+        <name lang="it">Wattmetro verticale</name>
+        <name lang="ru">Ватметр (вертикальный)</name>
+        <name lang="pt">Wattímetro vertical</name>
+        <name lang="de">Wattmeter senkrecht</name>
+        <name lang="el">Βατόμετρο κατακόρυφο</name>
+        <name lang="en">Vertical wattmeter</name>
+        <name lang="fr">Wattmètre vertical</name>
+        <name lang="es">Vatímetro vertical</name>
+        <name lang="pl">Watomierz (pionowo)</name>
+        <name lang="ar">واتميتر عمودي</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7.5" x1="7.5" y2="10" x2="15" y3="10" x3="20"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-7.5" x1="7.5" y2="-10" x2="15" y3="-10" x3="20"/>
-        <polygon x4="2.5" y5="-6" x5="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6" x1="-5" y2="6" x2="-2.5" y3="0" x3="0" y4="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="21" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="0" y2="-10" x2="0"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
-        <terminal x="20" y="-10" orientation="e"/>
-        <terminal x="20" y="10" orientation="e"/>
+        <input text="_" rotate="true" y="-21.5" size="9" x="2" tagg="label"/>
+        <polygon x3="20" closed="false" y3="10" antialias="true" x1="7.5" y2="10" y1="7.5" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="20" closed="false" y3="-10" antialias="true" x1="7.5" y2="-10" y1="-7.5" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="0" x4="2.5" closed="false" y3="0" y5="-6" antialias="true" x1="-5" y2="6" y1="-6" x2="-2.5" x5="5" y4="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="0" y2="21" end1="none" y1="10" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="0" y2="-10" end1="none" y1="-21" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="20" antialias="true" y="-10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="21" orientation="s" x="0"/>
+        <terminal y="-10" orientation="e" x="20"/>
+        <terminal y="10" orientation="e" x="20"/>
+        <terminal y="-21" orientation="n" x="0"/>
     </description>
 </definition>

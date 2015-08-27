@@ -1,30 +1,32 @@
-<definition width="50" version="0.4" hotspot_x="35" hotspot_y="44" height="50" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{E02EF37E-A8F0-4887-B3FC-31C7456D6A16}"/><names>
-        <name lang="ar">مقطع : محول مستمر / مستمر</name>
+<definition hotspot_y="44" type="element" height="50" width="50" hotspot_x="34" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{8326e12d-d015-48a6-8731-125daca056b5}"/>
+    <names>
+        <name lang="nl">Gelijkspanning > gelijkspanning DC > DC</name>
+        <name lang="cs">Měnič stejnosměrného proudu</name>
+        <name lang="it">Convertitore DC/DC</name>
         <name lang="de">Umrichter DC/DC</name>
         <name lang="el">Μετατροπέας DC/DC</name>
         <name lang="en">DC/DC converter</name>
-        <name lang="it">Convertitore DC/DC</name>
         <name lang="fr">Convertisseur DC/DC</name>
         <name lang="pl">Zasilacz prądu stałego</name>
-        <name lang="nl">Gelijkspanning > gelijkspanning DC > DC</name>
-        <name lang="cs">Měnič stejnosměrného proudu</name>
         <name lang="be">Gelijkspanning > gelijkspanning DC > DC</name>
+        <name lang="ar">مقطع : محول مستمر / مستمر</name>
     </names>
     <informations>EN 60617: 06-14-02</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="-25" y2="-33" x2="-21"/>
-        <rect width="40" x="-30" y="-40" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-33" x1="-18" y2="-33" x2="-14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-6" y2="-5" x2="-2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" x1="-25" y2="-35" x2="-14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="1" y2="-5" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-6" y2="-7" x2="5"/>
-        <line length1="0" length2="0" antialias="true" end1="simple" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-30" y2="-40" x2="10"/>
-        <terminal x="-30" y="-30" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-30" y="-10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="10" y="-30" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="10" y="-10" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-10" y="0" nameHidden="0" number="" name="" orientation="s"/>
+        <input text="_" rotate="true" y="-49.45" size="9" x="-25" tagg="label"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-25" y2="-33" end1="none" y1="-33" x2="-21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="40" antialias="false" y="-40" width="40" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-18" y2="-33" end1="none" y1="-33" x2="-14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-6" y2="-5" end1="none" y1="-5" x2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-25" y2="-35" end1="none" y1="-35" x2="-14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="1" y2="-5" end1="none" y1="-5" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-6" y2="-7" end1="none" y1="-7" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="simple" length2="0" length1="0" antialias="true" x1="-30" y2="-40" end1="simple" y1="0" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-10" orientation="e" x="10"/>
+        <terminal y="0" orientation="s" x="-10"/>
+        <terminal y="-30" orientation="w" x="-30"/>
+        <terminal y="-10" orientation="w" x="-30"/>
+        <terminal y="-30" orientation="e" x="10"/>
     </description>
 </definition>

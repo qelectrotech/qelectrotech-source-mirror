@@ -1,26 +1,28 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
-<uuid uuid="{69EB0C1C-34E0-44AB-99D8-2EF22206B785}"/><names>
-        <name lang="ar">فولتمتر أفقي</name>
-        <name lang="de">Voltmeter waagerecht</name>
-        <name lang="ru">Вольтметр (горизонтальный)</name>
-        <name lang="pt">Voltímetro horizontal</name>
-        <name lang="el">Βολτόμετρο οριζόντιο</name>
-        <name lang="en">Horizontal voltmeter</name>
-        <name lang="it">Volmetro orizzontale</name>
-        <name lang="fr">Voltmètre horizontal</name>
-        <name lang="pl">Woltomierz (poziomo)</name>
-        <name lang="es">Voltímetro horizontal</name>
+<definition hotspot_y="15" type="element" height="30" width="60" hotspot_x="29" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{37112168-7375-4e19-b6af-fb5b00c41489}"/>
+    <names>
         <name lang="cs">Voltmetr, vodorovný</name>
         <name lang="nl">Voltmeter</name>
+        <name lang="it">Volmetro orizzontale</name>
+        <name lang="ru">Вольтметр (горизонтальный)</name>
+        <name lang="pt">Voltímetro horizontal</name>
+        <name lang="de">Voltmeter waagerecht</name>
+        <name lang="el">Βολτόμετρο οριζόντιο</name>
+        <name lang="en">Horizontal voltmeter</name>
+        <name lang="fr">Voltmètre horizontal</name>
+        <name lang="es">Voltímetro horizontal</name>
+        <name lang="pl">Woltomierz (poziomo)</name>
+        <name lang="ar">فولتمتر أفقي</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-21" y2="0" x2="-10"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6" x1="-5" y2="6" x2="0" y3="-6" x3="5"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <terminal x="-21" y="0" orientation="w"/>
-        <terminal x="21" y="0" orientation="e"/>
+        <input text="_" rotate="true" y="-13.5" size="9" x="9" tagg="label"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="10" y2="0" end1="none" y1="0" x2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-21" y2="0" end1="none" y1="0" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="5" closed="false" y3="-6" antialias="true" x1="-5" y2="6" y1="-6" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="20" antialias="true" y="-10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="0" orientation="w" x="-21"/>
+        <terminal y="0" orientation="e" x="21"/>
     </description>
 </definition>

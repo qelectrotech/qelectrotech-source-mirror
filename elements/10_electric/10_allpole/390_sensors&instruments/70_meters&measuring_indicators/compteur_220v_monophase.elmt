@@ -1,22 +1,24 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="60" type="element" orientation="dyyy">
-<uuid uuid="{25B52559-E715-4571-A89A-D50A2674A843}"/><names>
-        <name lang="ar">عدّاد أحادي الوجه 220V </name>
-        <name lang="el">Μονοφασικός μετρητής</name>
-        <name lang="en">220V single phase meter</name>
-        <name lang="de">Stromzähler einphasig</name>
-        <name lang="it">Contatore monofase 230V</name>
-        <name lang="fr">Compteur 220V monophase</name>
-        <name lang="pl">Licznik jednofazowy</name>
+<definition hotspot_y="35" type="element" height="60" width="40" hotspot_x="20" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{1c771334-c532-435b-9225-847ba99104dc}"/>
+    <names>
         <name lang="cs">Jednofázové počítadlo 220V</name>
         <name lang="nl">KWh meter 230V</name>
+        <name lang="it">Contatore monofase 230V</name>
+        <name lang="el">Μονοφασικός μετρητής</name>
+        <name lang="de">Stromzähler einphasig</name>
+        <name lang="en">220V single phase meter</name>
+        <name lang="fr">Compteur 220V monophase</name>
+        <name lang="pl">Licznik jednofazowy</name>
+        <name lang="ar">عدّاد أحادي الوجه 220V </name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="20" x="-10" y="5" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="20" x="-10" y="-20" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="30" x="-15" y="-25" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="0" y="-29" orientation="n"/>
-        <terminal x="0" y="18" orientation="s"/>
+        <rect height="9" antialias="false" y="5" width="20" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="_" rotate="true" y="-13.45" size="9" x="15" tagg="label"/>
+        <rect height="8" antialias="false" y="-20" width="20" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="30" antialias="false" y="-25" width="30" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="18" orientation="s" x="0"/>
+        <terminal y="-29" orientation="n" x="0"/>
     </description>
 </definition>

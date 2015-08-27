@@ -1,21 +1,23 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
-<uuid uuid="{54D5AB84-F9A6-4633-9A9A-400CEFDD1536}"/><names>
+<definition hotspot_y="34" type="element" height="60" width="40" hotspot_x="20" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{a11d1aac-1f77-4300-b214-2c1e4a3d8d1e}"/>
+    <names>
+        <name lang="cs">Měřič hodin jalového výkonu (varhodin)</name>
+        <name lang="nl">VAr energie meter</name>
+        <name lang="it">Misuratore di varh</name>
         <name lang="de">Blindverbrauchszähler</name>
         <name lang="el">Μετρητής αέργου ισχύος (βαρόμετρο)</name>
         <name lang="en">reactive energy meter</name>
-        <name lang="it">Misuratore di varh</name>
         <name lang="fr">Varheuremètre</name>
         <name lang="pl">Licznik warogodzin</name>
-        <name lang="cs">Měřič hodin jalového výkonu (varhodin)</name>
-        <name lang="nl">VAr energie meter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="30" x="-15" y="-14" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="30" x="-15" y="-22" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-12" y="4" size="8" text="varh"/>
-        <terminal x="0" y="-27" orientation="n"/>
-        <terminal x="0" y="17" orientation="s"/>
+        <input text="_" rotate="true" y="-13.45" size="9" x="15" tagg="label"/>
+        <rect height="26" antialias="false" y="-14" width="30" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="8" antialias="false" y="-22" width="30" x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="varh" y="4" size="8" x="-12"/>
+        <terminal y="-27" orientation="n" x="0"/>
+        <terminal y="17" orientation="s" x="0"/>
     </description>
 </definition>

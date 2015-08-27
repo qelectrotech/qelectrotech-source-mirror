@@ -1,25 +1,27 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
-<uuid uuid="{73633145-924F-44B3-A483-64A45FE76CA8}"/><names>
-        <name lang="ar">مقياس تردد أفقي</name>
-        <name lang="de">Frequenzmessgerät waagerecht</name>
-        <name lang="pt">Frequenciómetro horizontal</name>
-        <name lang="el">Συχνόμετρο οριζόντιο</name>
-        <name lang="en">Frequency meter h</name>
-        <name lang="it">Frequenzimetro orizzontale</name>
-        <name lang="fr">Fréquencemètre horizontal</name>
-        <name lang="pl">Częstotliwościomierz (poziomo)</name>
-        <name lang="es">Frecuencímetro horizontal</name>
+<definition hotspot_y="16" type="element" height="30" width="60" hotspot_x="29" orientation="dyyy" link_type="simple" version="0.5">
+    <uuid uuid="{8b9c0435-1430-4840-8353-bb80d85f285a}"/>
+    <names>
         <name lang="cs">Měřič kmitočtu, vodorovný</name>
         <name lang="nl">Frequentiemeter</name>
+        <name lang="it">Frequenzimetro orizzontale</name>
+        <name lang="pt">Frequenciómetro horizontal</name>
+        <name lang="de">Frequenzmessgerät waagerecht</name>
+        <name lang="el">Συχνόμετρο οριζόντιο</name>
+        <name lang="en">Frequency meter h</name>
+        <name lang="fr">Fréquencemètre horizontal</name>
+        <name lang="es">Frecuencímetro horizontal</name>
+        <name lang="pl">Częstotliwościomierz (poziomo)</name>
+        <name lang="ar">مقياس تردد أفقي</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-8" y="2.3333" size="9" text="Hz"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-21" y2="0" x2="-10"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <terminal x="-21" y="0" orientation="w"/>
-        <terminal x="21" y="0" orientation="e"/>
+        <input text="_" rotate="true" y="-13.5" size="9" x="7" tagg="label"/>
+        <text text="Hz" y="2.3333" size="9" x="-8"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="10" y2="0" end1="none" y1="0" x2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-21" y2="0" end1="none" y1="0" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="20" antialias="true" y="-10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="0" orientation="w" x="-21"/>
+        <terminal y="0" orientation="e" x="21"/>
     </description>
 </definition>
