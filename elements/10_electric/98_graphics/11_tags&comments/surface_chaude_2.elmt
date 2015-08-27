@@ -1,28 +1,30 @@
-<definition width="60" version="0.3" hotspot_x="10" hotspot_y="10" height="60" type="element" orientation="dnnn">
-<uuid uuid="{C9DA5C81-7312-444F-BF32-DFFB9C7877A5}"/><names>
+<definition version="0.5" link_type="simple" type="element" hotspot_x="5" width="50" hotspot_y="5" orientation="dyyy" height="50">
+    <uuid uuid="{78d811c3-5fa6-4c6d-a40b-24b16df19651}"/>
+    <names>
         <name lang="el">Θερμή επιφάνεια</name>
-        <name lang="en">hot surface</name>
-        <name lang="de">Hinweis heiße Oberfläche groß</name>
         <name lang="it">Superfice calda</name>
         <name lang="fr">Surface chaude</name>
+        <name lang="de">Hinweis heiße Oberfläche groß</name>
         <name lang="pl">Inne niebezpieczeństwo</name>
+        <name lang="en">hot surface</name>
         <name lang="cs">Horký povrch</name>
         <name lang="nl">Gevaar Heet</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="4" x="18" y="15" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <arc width="4" x="14" y="15" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <arc width="4" x="22" y="15" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="0" y2="40" x2="40" y3="0" x3="20" y4="40"/>
-        <arc width="4" x="18" y="23" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <arc width="4" x="22" y="23" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <polygon x4="1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="39" x1="1" y2="1" x2="20" y3="39" x3="39" y4="39"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="39" y2="39" x2="39"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="1" y2="39" x2="1"/>
-        <rect width="37" x="1" y="39" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <rect width="20" x="10" y="34" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <arc width="4" x="14" y="23" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <input rotate="true" x="15.5" y="45.55" tagg="label" text="_" size="1"/>
+        <arc angle="-180" x="18" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="15" width="4" antialias="true" height="8"/>
+        <arc angle="-180" x="14" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="15" width="4" antialias="true" height="8"/>
+        <arc angle="-180" x="22" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="15" width="4" antialias="true" height="8"/>
+        <polygon x1="0" y4="40" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40" x3="20" x4="0" antialias="true" y2="40" y1="40"/>
+        <arc angle="-180" x="18" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="23" width="4" antialias="true" height="8"/>
+        <arc angle="-180" x="22" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="23" width="4" antialias="true" height="8"/>
+        <polygon x1="1" y4="39" y3="39" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" x3="39" closed="false" x4="1" antialias="true" y2="1" y1="39"/>
+        <line x1="39" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="39" end2="none" antialias="false" y2="39" y1="40"/>
+        <line x1="1" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="1" end2="none" antialias="false" y2="39" y1="40"/>
+        <rect x="1" style="line-style:normal;line-weight:normal;filling:black;color:black" y="39" width="37" antialias="false" height="1"/>
+        <rect x="10" style="line-style:normal;line-weight:normal;filling:black;color:black" y="34" width="20" antialias="false" height="2"/>
+        <arc angle="-180" x="14" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="23" width="4" antialias="true" height="8"/>
     </description>
 </definition>

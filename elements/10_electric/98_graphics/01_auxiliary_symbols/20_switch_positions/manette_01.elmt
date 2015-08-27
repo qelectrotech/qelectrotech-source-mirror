@@ -1,18 +1,20 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="20" type="element" orientation="dnnn">
-<uuid uuid="{2C2B1643-374B-4E8B-8ACF-81FCF9513397}"/><names>
-        <name lang="ar">زرّ دوّار بمقبض</name>
+<definition version="0.5" link_type="simple" type="element" hotspot_x="15" width="30" hotspot_y="15" orientation="dyyy" height="20">
+    <uuid uuid="{020b48f9-213b-4d5b-be76-e882d705d568}"/>
+    <names>
         <name lang="el">Θέσεις διακόπτη</name>
-        <name lang="en">Switch handle and knob positions</name>
         <name lang="it">Comando, selettore</name>
         <name lang="fr">Boutons tournant à manette</name>
         <name lang="pl">Pozycja pokrętła łącznika</name>
+        <name lang="en">Switch handle and knob positions</name>
+        <name lang="ar">زرّ دوّار بمقبض</name>
         <name lang="cs">Poloha otočného knoflíku spínače</name>
         <name lang="nl">Schakelstanden</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-10" y2="0" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-10" x2="10"/>
+        <line x1="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="0" end2="none" antialias="true" y2="0" y1="-10"/>
+        <input rotate="true" x="8" y="-6.5" tagg="label" text="_" size="9"/>
+        <line x1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="10" end2="none" antialias="true" y2="-10" y1="0"/>
     </description>
 </definition>

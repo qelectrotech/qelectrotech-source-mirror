@@ -1,39 +1,40 @@
-<definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
-<uuid uuid="{A7782941-2784-4928-9487-27975398C67F}"/><names>
-        <name lang="el">Μικροαυτόματος διακόπτης</name>
-        <name lang="en">Miniature Circuit Breaker</name>
-        <name lang="de">Mini-Leitungsschutzschalter 1-polig</name>
-        <name lang="it">Interruttore aut.</name>
+<definition width="20" type="element" hotspot_x="9" version="0.5" orientation="dyyy" hotspot_y="24" link_type="simple" height="50">
+    <uuid uuid="{bf2fec63-c0c9-41ac-aab9-387a8d7ce220}"/>
+    <names>
         <name lang="fr">Disjoncteur</name>
         <name lang="pl">Wyłącznik</name>
         <name lang="cs">Jistič (samočinný vypínač)</name>
+        <name lang="de">Mini-Leitungsschutzschalter 1-polig</name>
+        <name lang="el">Μικροαυτόματος διακόπτης</name>
+        <name lang="it">Interruttore aut.</name>
+        <name lang="en">Miniature Circuit Breaker</name>
         <name lang="nl">Stroomonderbreker miniatuur</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-18" x1="-4.4" y2="-18" x2="-1.6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="18" x1="-4.4" y2="18" x2="-1.6"/>
-        <circle x="-4.4142" y="-19.4142" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2.82843"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20.5" x1="7" y2="20.5" x2="-7"/>
-        <arc width="1" x="6.5" y="19.5" antialias="false" height="1" style="line-style:normal;line-weight:thin;filling:none;color:black" start="360" angle="-90"/>
-        <circle x="1.5858" y="-19.4142" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2.82843"/>
-        <arc width="1" x="-7.5" y="19.5" antialias="false" height="1" style="line-style:normal;line-weight:thin;filling:none;color:black" start="270" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-19.4" x1="-3" y2="-16.6" x2="-3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20" x1="-7.5" y2="20" x2="-7.5"/>
-        <arc width="1" x="-7.5" y="-20.5" antialias="false" height="1" style="line-style:normal;line-weight:thin;filling:none;color:black" start="180" angle="-90"/>
-        <circle x="-4.4142" y="16.5858" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2.82843"/>
-        <circle x="1.5858" y="16.5858" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2.82843"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20" x1="7.5" y2="20" x2="7.5"/>
-        <arc width="1" x="6.5" y="-20.5" antialias="false" height="1" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90" angle="-90"/>
-        <input x="12" y="9.5" size="3" rotate="true" text="_A"/>
-        <input x="8" y="-8" size="10" rotate="true" text="Q_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20.5" x1="7" y2="-20.5" x2="-7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="16.6" x1="-3" y2="19.4" x2="-3"/>
-        <rect width="10" x="-5" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <rect width="8" x="-4" y="-8" antialias="false" height="3" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
-        <rect width="4" x="-2" y="-5" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <text x="-2" y="9" size="6" text="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" x1="-5" y2="0" x2="5"/>
+        <line length1="1.5" y2="-18" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-18" length2="1.5" x1="-4.4" x2="-1.6" end2="none"/>
+        <line length1="1.5" y2="18" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="18" length2="1.5" x1="-4.4" x2="-1.6" end2="none"/>
+        <circle y="-19.4142" diameter="2.82843" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-4.4142"/>
+        <line length1="1.5" y2="20.5" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="20.5" length2="1.5" x1="7" x2="-7" end2="none"/>
+        <arc y="19.5" width="1" angle="-90" start="360" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="6.5" height="1"/>
+        <circle y="-19.4142" diameter="2.82843" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" x="1.5858"/>
+        <arc y="19.5" width="1" angle="-90" start="270" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-7.5" height="1"/>
+        <line length1="1.5" y2="-16.6" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-19.4" length2="1.5" x1="-3" x2="-3" end2="none"/>
+        <line length1="1.5" y2="20" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20" length2="1.5" x1="-7.5" x2="-7.5" end2="none"/>
+        <arc y="-20.5" width="1" angle="-90" start="180" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-7.5" height="1"/>
+        <circle y="16.5858" diameter="2.82843" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-4.4142"/>
+        <circle y="16.5858" diameter="2.82843" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" x="1.5858"/>
+        <line length1="1.5" y2="20" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20" length2="1.5" x1="7.5" x2="7.5" end2="none"/>
+        <arc y="-20.5" width="1" angle="-90" start="90" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="6.5" height="1"/>
+        <input y="9.5" tagg="none" rotate="true" x="12" size="3" text="_A"/>
+        <input y="-8" tagg="label" rotate="true" x="8" size="10" text="Q_"/>
+        <line length1="1.5" y2="-20.5" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-20.5" length2="1.5" x1="7" x2="-7" end2="none"/>
+        <line length1="1.5" y2="19.4" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="16.6" length2="1.5" x1="-3" x2="-3" end2="none"/>
+        <rect y="-10" width="10" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-5" height="20"/>
+        <rect y="-8" width="8" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" x="-4" height="3"/>
+        <rect y="-5" width="4" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-2" height="4"/>
+        <text y="9" x="-2" size="6" text="1"/>
+        <line length1="1.5" y2="0" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="0" length2="1.5" x1="-5" x2="5" end2="none"/>
     </description>
 </definition>

@@ -1,22 +1,23 @@
-<definition width="130" version="0.4" hotspot_x="71" hotspot_y="10" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{F8D5265B-E22B-49C6-9C25-B73D215EB89A}"/><names>
-        <name lang="ar">علامة مصدر ثلاثي الأطوار</name>
+<definition version="0.5" link_type="simple" type="element" hotspot_x="8" width="20" hotspot_y="0" orientation="dyyy" height="10">
+    <uuid uuid="{5f7c2dd7-50ca-41e8-aa21-8a1fc34a6fb2}"/>
+    <names>
+        <name lang="es">Etiqueta trifásico</name>
         <name lang="el">Ετικέτα τριφασικού</name>
-        <name lang="en">Label three phase</name>
-        <name lang="de">Etikett Drehstrom</name>
         <name lang="it">Etichetta trifase alternata</name>
         <name lang="fr">Courant alternatif etiquette</name>
+        <name lang="de">Etikett Drehstrom</name>
         <name lang="pl">Prąd przemienny trójfazowy</name>
-        <name lang="es">Etiqueta trifásico</name>
+        <name lang="en">Label three phase</name>
+        <name lang="ar">علامة مصدر ثلاثي الأطوار</name>
         <name lang="cs">Štítek - tři fáze</name>
         <name lang="nl">Label 3 fasen 400 Volt</name>
     </names>
     <informations>EN 60617: 02-02-07</informations>
     <description>
-        <input x="-65" y="5" size="8" rotate="true" text="3N"/>
-        <arc width="5" x="-36.5" y="2.8" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-20" angle="-100"/>
-        <arc width="5" x="-46.5" y="2.2" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-200" angle="-100"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-42" y2="7" x2="-36"/>
-        <input x="-34" y="5" size="8" rotate="true" text="50 Hz 400/230V"/>
+        <input rotate="true" x="-25" y="5" tagg="none" text="3N" size="8"/>
+        <arc angle="-100" x="3.5" start="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="2.8" width="5" antialias="true" height="5"/>
+        <arc angle="-100" x="-6.5" start="-200" style="line-style:normal;line-weight:normal;filling:none;color:black" y="2.2" width="5" antialias="true" height="5"/>
+        <line x1="-2" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="4" end2="none" antialias="true" y2="7" y1="3"/>
+        <input rotate="true" x="6" y="5" tagg="label" text="50 Hz 400/230V" size="8"/>
     </description>
 </definition>
