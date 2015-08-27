@@ -1,25 +1,27 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-<uuid uuid="{FEAC0E81-D660-446A-80C3-6000E32667A7}"/><names>
-        <name lang="ar">مُقاومة مُتغيّرة</name>
+<definition height="60" version="0.5" link_type="simple" width="20" orientation="dyyy" hotspot_x="10" hotspot_y="29" type="element">
+    <uuid uuid="{322abdab-67c2-4ff0-b321-cfbfcf504ac6}"/>
+    <names>
         <name lang="de">Widerstand einstellbar</name>
         <name lang="el">Μεταβλητή αντίσταση</name>
-        <name lang="en">Adjustable resistance</name>
-        <name lang="it">Resistore regolabile</name>
-        <name lang="fr">Résistance réglable</name>
         <name lang="pl">Rezystor regulacyjny</name>
+        <name lang="ar">مُقاومة مُتغيّرة</name>
+        <name lang="it">Resistore regolabile</name>
+        <name lang="en">Adjustable resistance</name>
         <name lang="cs">Nastavitelný fotoodporník</name>
+        <name lang="fr">Résistance réglable</name>
         <name lang="nl">Weerstand instelbaar</name>
     </names>
     <informations>EN 60617: 04-01-03</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="triangle" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="10" x1="8" y2="-10" x2="-8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="4" y2="-10" x2="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-4" y2="10" x2="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="4" y2="-10" x2="-4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-4" y2="10" x2="-4"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
+        <input tagg="label" y="0.55" size="9" rotate="true" text="_" x="8"/>
+        <line style="line-style:normal;line-weight:thin;filling:black;color:black" y1="10" length1="1.5" antialias="true" end2="triangle" length2="1.5" x2="-8" x1="8" end1="none" y2="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="-20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="4" x1="4" end1="none" y2="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="4" x1="-4" end1="none" y2="10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-4" x1="4" end1="none" y2="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-4" x1="-4" end1="none" y2="10"/>
+        <terminal y="-21" orientation="n" x="0"/>
+        <terminal y="21" orientation="s" x="0"/>
     </description>
 </definition>

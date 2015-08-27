@@ -1,24 +1,26 @@
-<definition width="20" version="0.4" hotspot_x="11" hotspot_y="25" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{4DEDB8F1-4A68-4DC1-BA5C-F776A31D379D}"/><names>
-        <name lang="ar">مُكثّف كيميائي</name>
+<definition height="30" version="0.5" link_type="simple" width="20" orientation="dyyy" hotspot_x="11" hotspot_y="24" type="element">
+    <uuid uuid="{e83a86e9-79b6-4d8e-aa83-82514e90469b}"/>
+    <names>
         <name lang="de">Elektrolytkondensator</name>
         <name lang="el">Πυκνωτής με πολικότητα</name>
-        <name lang="en"> Polarized capacitor</name>
-        <name lang="it">Condensatore elettrolitico</name>
-        <name lang="fr">Condensateur electrolytique</name>
         <name lang="pl">Kondensator elektrolityczny</name>
-        <name lang="nl">Condensator electrolytisch</name>
+        <name lang="ar">مُكثّف كيميائي</name>
+        <name lang="it">Condensatore elettrolitico</name>
+        <name lang="en"> Polarized capacitor</name>
         <name lang="cs">Elektrolytický kondenzátor</name>
+        <name lang="fr">Condensateur electrolytique</name>
+        <name lang="nl">Condensator electrolytisch</name>
     </names>
     <informations>EN 60617: 04-02-05</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16" x1="-7" y2="-16" x2="-3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14" x1="-5" y2="-18" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="-20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="0" y2="0" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-5" y2="-8" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-5" y2="-12" x2="5"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="0" orientation="s"/>
+        <input tagg="label" y="-10.45" size="9" rotate="true" text="_" x="6"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-3" x1="-7" end1="none" y2="-16"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-5" x1="-5" end1="none" y2="-18"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="-20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" length1="1.5" antialias="false" end2="none" length2="1.5" x2="5" x1="-5" end1="none" y2="-8"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" length1="1.5" antialias="false" end2="none" length2="1.5" x2="5" x1="-5" end1="none" y2="-12"/>
+        <terminal y="-20" orientation="n" x="0"/>
+        <terminal y="0" orientation="s" x="0"/>
     </description>
 </definition>

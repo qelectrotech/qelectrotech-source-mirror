@@ -1,25 +1,27 @@
-<definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
-<uuid uuid="{D31D65C1-1993-4D3F-B482-D35E117AFDF9}"/><names>
-        <name lang="ar">ترياك , بوابة N</name>
-        <name lang="en">Reverse blocking Thyristortriode, N-Gate</name>
+<definition height="40" version="0.5" link_type="simple" width="40" orientation="dyyy" hotspot_x="6" hotspot_y="24" type="element">
+    <uuid uuid="{b484ac92-96d4-4218-bff1-bde187aa1aca}"/>
+    <names>
         <name lang="de">rückwärts sperrende Thyristortriode, N-Gate</name>
-        <name lang="fr">Thyristor triode bloqué en inverse, gâchette N</name>
         <name lang="pl">Tyrystor triodowy dwukierunkowy. Triak</name>
-        <name lang="cs">Triodový tyristor blokující obráceně, brána N</name>
+        <name lang="ar">ترياك , بوابة N</name>
         <name lang="it">Tiristore triodo bloccato nel senso inverso di conduzione, porta N (controllato sull’anodo)</name>
+        <name lang="en">Reverse blocking Thyristortriode, N-Gate</name>
+        <name lang="cs">Triodový tyristor blokující obráceně, brána N</name>
+        <name lang="fr">Thyristor triode bloqué en inverse, gâchette N</name>
         <name lang="nl">Triac N gate</name>
     </names>
     <informations>EN 60617: 05-04-11</informations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-20" x2="10" y3="-10" x3="16"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="10" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="20" y2="-20" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="30" y2="-10" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="20"/>
-        <polygon x4="25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="25" y2="0" x2="20" y3="0" x3="30" y4="-10"/>
-        <polygon x4="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="10" y2="-10" x2="20" y3="0" x3="15" y4="-10"/>
-        <terminal x="20" y="-20" orientation="n"/>
-        <terminal x="20" y="10" orientation="s"/>
-        <terminal x="0" y="-20" orientation="w"/>
+        <input tagg="label" y="-7.45" size="9" rotate="true" text="_" x="35"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" antialias="true" x3="16" y3="-10" x2="10" x1="0" y2="-20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="20" x1="20" end1="none" y2="10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="20" x1="20" end1="none" y2="-20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="20" x1="30" end1="none" y2="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="20" x1="10" end1="none" y2="0"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="true" x3="30" y4="-10" y3="0" x2="20" x1="25" x4="25" y2="0"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="true" x3="15" y4="-10" y3="0" x2="20" x1="10" x4="10" y2="-10"/>
+        <terminal y="-20" orientation="n" x="20"/>
+        <terminal y="10" orientation="s" x="20"/>
+        <terminal y="-20" orientation="w" x="0"/>
     </description>
 </definition>

@@ -1,31 +1,33 @@
-<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
-<uuid uuid="{144A3991-A1B0-4FBF-9CE6-FA6D0EC47947}"/><names>
-        <name lang="ar">دايود مكثّف متغيّر (فاراكتور)</name>
+<definition height="40" version="0.5" link_type="simple" width="20" orientation="dyyy" hotspot_x="7" hotspot_y="24" type="element">
+    <uuid uuid="{f7d5f966-04b2-44ca-8ead-5c2fc2427365}"/>
+    <names>
         <name lang="de">Kapazitätsdiode
+</name>
+        <name lang="pl">Dioda pojemnościowa. (Waraktor)</name>
+        <name lang="ar">دايود مكثّف متغيّر (فاراكتور)</name>
+        <name lang="it">Diodo a capacità variabile
+Varactor
 </name>
         <name lang="en">Variable capacitance diode
 Varactor
 </name>
-        <name lang="it">Diodo a capacità variabile
-Varactor
-</name>
+        <name lang="cs">Varaktor</name>
         <name lang="fr">Diode à capacité variable
 Varactor
 </name>
-        <name lang="pl">Dioda pojemnościowa. (Waraktor)</name>
-        <name lang="cs">Varaktor</name>
         <name lang="nl">Diode capaciteit</name>
     </names>
     <informations>EN 60617: 05-03-04</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6" x1="8" y2="-9" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4" x1="6" y2="-4" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6" x1="6" y2="-6" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1" x1="8" y2="-4" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="10" x2="0"/>
-        <polygon x4="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="-10" x2="5" y3="0" x3="0" y4="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-5" y2="0" x2="5"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="10" orientation="s"/>
+        <input tagg="label" y="-2.45" size="9" rotate="true" text="_" x="11"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6" length1="1.5" antialias="false" end2="none" length2="1.5" x2="8" x1="8" end1="none" y2="-9"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4" length1="1.5" antialias="false" end2="none" length2="1.5" x2="10" x1="6" end1="none" y2="-4"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6" length1="1.5" antialias="false" end2="none" length2="1.5" x2="10" x1="6" end1="none" y2="-6"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1" length1="1.5" antialias="false" end2="none" length2="1.5" x2="8" x1="8" end1="none" y2="-4"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="10"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="true" x3="0" y4="-10" y3="0" x2="5" x1="-5" x4="-5" y2="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="5" x1="-5" end1="none" y2="0"/>
+        <terminal y="-20" orientation="n" x="0"/>
+        <terminal y="10" orientation="s" x="0"/>
     </description>
 </definition>

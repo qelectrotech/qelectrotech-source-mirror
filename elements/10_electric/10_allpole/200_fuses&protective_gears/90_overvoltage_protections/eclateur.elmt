@@ -1,25 +1,27 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-<uuid uuid="{703020F7-CAD5-490B-A44B-53D636C57830}"/><names>
-        <name lang="ar">فجوة شرارة</name>
-        <name lang="de">Funkenstrecke</name>
+<definition height="60" version="0.5" link_type="simple" width="10" orientation="dyyy" hotspot_x="5" hotspot_y="29" type="element">
+    <uuid uuid="{69bb8867-6b44-4c27-9cf9-204cdadefffc}"/>
+    <names>
         <name lang="ru">Разрядник</name>
-        <name lang="pt">Descarregador de faísca</name>
-        <name lang="en">Spark-gap</name>
-        <name lang="it">Scaricatore</name>
-        <name lang="fr">Éclateur</name>
+        <name lang="de">Funkenstrecke</name>
         <name lang="pl">Iskiernik</name>
+        <name lang="ar">فجوة شرارة</name>
         <name lang="es">Descargador de chispa</name>
+        <name lang="it">Scaricatore</name>
+        <name lang="en">Spark-gap</name>
         <name lang="cs">Jiskřiště</name>
+        <name lang="pt">Descarregador de faísca</name>
+        <name lang="fr">Éclateur</name>
         <name lang="nl">Vonkbrug</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="10" x1="-3" y2="2" x2="0" y3="10" x3="3"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10" x1="-3" y2="-2" x2="0" y3="-10" x3="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-5" x2="0"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="20"/>
+        <input tagg="label" y="-1.45" size="9" rotate="true" text="_" x="5"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" y1="10" antialias="true" x3="3" y3="10" x2="0" x1="-3" y2="2"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10" antialias="true" x3="3" y3="-10" x2="0" x1="-3" y2="-2"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="-5"/>
+        <terminal y="-21" orientation="n" x="0"/>
+        <terminal y="21" orientation="s" x="0"/>
     </description>
 </definition>

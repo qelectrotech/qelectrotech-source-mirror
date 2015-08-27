@@ -1,25 +1,27 @@
-<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
-<uuid uuid="{3C93AE4A-3553-47F8-A0FC-E69730C4D58E}"/><names>
-        <name lang="ar">ثايريستور رباعي الأطراف مكبوح في الإنحياز العكسي</name>
+<definition height="30" version="0.5" link_type="simple" width="30" orientation="dyyy" hotspot_x="4" hotspot_y="24" type="element">
+    <uuid uuid="{162e0efc-2e79-454a-9498-3fa7fe76e4d7}"/>
+    <names>
         <name lang="de">rückwärts sperrende Thyristortetriode</name>
-        <name lang="en">Reverse blocking thyristor tetrode type</name>
+        <name lang="pl">Tyrystor tetrodowy blokujący wstecznie</name>
+        <name lang="ar">ثايريستور رباعي الأطراف مكبوح في الإنحياز العكسي</name>
         <name lang="it">Tiristore tetrodo bloccato nel sen-so inverso di conduzione</name>
+        <name lang="en">Reverse blocking thyristor tetrode type</name>
+        <name lang="cs">Tetrodový tyristor, blokující obráceně</name>
         <name lang="fr">Thyristor tétrode bloqué en inverse
 </name>
-        <name lang="pl">Tyrystor tetrodowy blokujący wstecznie</name>
-        <name lang="cs">Tetrodový tyristor, blokující obráceně</name>
         <name lang="nl">Thyristor tetrode</name>
     </names>
     <informations>EN 60617: 05-04-10</informations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="20" y2="0" x2="16" y3="-5" x3="12"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-20" x2="4" y3="-15" x3="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="0" x2="10"/>
-        <polygon x4="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="5" y2="-15" x2="15" y3="-5" x3="10" y4="-15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="5" y2="-5" x2="15"/>
-        <terminal x="10" y="-20" orientation="n"/>
-        <terminal x="10" y="0" orientation="s"/>
-        <terminal x="0" y="-20" orientation="w"/>
-        <terminal x="20" y="0" orientation="e"/>
+        <input tagg="label" y="-11.5" size="9" rotate="true" text="_" x="16"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="true" x3="12" y3="-5" x2="16" x1="20" y2="0"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" antialias="true" x3="8" y3="-15" x2="4" x1="0" y2="-20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" length1="1.5" antialias="false" end2="none" length2="1.5" x2="10" x1="10" end1="none" y2="0"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" antialias="true" x3="10" y4="-15" y3="-5" x2="15" x1="5" x4="5" y2="-15"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" length1="1.5" antialias="false" end2="none" length2="1.5" x2="15" x1="5" end1="none" y2="-5"/>
+        <terminal y="-20" orientation="n" x="10"/>
+        <terminal y="0" orientation="s" x="10"/>
+        <terminal y="-20" orientation="w" x="0"/>
+        <terminal y="0" orientation="e" x="20"/>
     </description>
 </definition>

@@ -1,29 +1,31 @@
-<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
-<uuid uuid="{68F2B27F-198B-45B3-B09F-FC842D46C8D4}"/><names>
-        <name lang="ar">ثايريستور ببوابة إطفاءGTO  N  (محكوم من جهة الأنود)</name>
+<definition height="30" version="0.5" link_type="simple" width="30" orientation="dyyy" hotspot_x="8" hotspot_y="24" type="element">
+    <uuid uuid="{60ed48ed-0e7d-4094-9b03-d7e048070042}"/>
+    <names>
         <name lang="de">Abschalt-Thyristortriode, N-Gate (Anode
 gesteuert)
 </name>
+        <name lang="pl">Tyrystor triodowy odłączający z bramką N</name>
+        <name lang="ar">ثايريستور ببوابة إطفاءGTO  N  (محكوم من جهة الأنود)</name>
+        <name lang="it">Tiristore triodo bloccabile, porta N (controllato sull’anodo)</name>
         <name lang="en"> Turn-off triode thyristor, N-gate
 (anode-side controlled)
 </name>
-        <name lang="it">Tiristore triodo bloccabile, porta N (controllato sull’anodo)</name>
+        <name lang="cs">Vypínací triodový tyristor, brána N (řízeno na straně anody)</name>
         <name lang="fr">Thyristor triode blocable par la gâchette N
 (commandé côté anode)
 </name>
-        <name lang="pl">Tyrystor triodowy odłączający z bramką N</name>
-        <name lang="cs">Vypínací triodový tyristor, brána N (řízeno na straně anody)</name>
         <name lang="nl">Thyristor N gate</name>
     </names>
     <informations>EN 60617: 05-04-08</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="2" y2="-18" x2="2"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-20" x2="4" y3="-15" x3="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="0" x2="10"/>
-        <polygon x4="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="5" y2="-15" x2="15" y3="-5" x3="10" y4="-15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="5" y2="-5" x2="15"/>
-        <terminal x="10" y="-20" orientation="n"/>
-        <terminal x="10" y="0" orientation="s"/>
-        <terminal x="0" y="-20" orientation="w"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" length1="1.5" antialias="false" end2="none" length2="1.5" x2="2" x1="2" end1="none" y2="-18"/>
+        <input tagg="label" y="-12.45" size="9" rotate="true" text="_" x="16"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" antialias="true" x3="8" y3="-15" x2="4" x1="0" y2="-20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" length1="1.5" antialias="false" end2="none" length2="1.5" x2="10" x1="10" end1="none" y2="0"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" antialias="true" x3="10" y4="-15" y3="-5" x2="15" x1="5" x4="5" y2="-15"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" length1="1.5" antialias="false" end2="none" length2="1.5" x2="15" x1="5" end1="none" y2="-5"/>
+        <terminal y="-20" orientation="n" x="10"/>
+        <terminal y="0" orientation="s" x="10"/>
+        <terminal y="-20" orientation="w" x="0"/>
     </description>
 </definition>

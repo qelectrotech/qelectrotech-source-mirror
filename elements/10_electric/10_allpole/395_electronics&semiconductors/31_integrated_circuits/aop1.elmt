@@ -1,33 +1,35 @@
-<definition width="90" version="0.4" hotspot_x="45" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{61884202-2ECD-4145-AF4E-72E5F611B54B}"/><names>
-        <name lang="ar">دائرة مُدمجة 8 دبابيس</name>
+<definition height="60" version="0.5" link_type="simple" width="90" orientation="dyyy" hotspot_x="44" hotspot_y="30" type="element">
+    <uuid uuid="{53cd8bbf-0978-41c0-bd0b-175d8fa2bc6c}"/>
+    <names>
         <name lang="de">Integrierte Schaltung, 8 Pin</name>
         <name lang="el">Ολοκληρωμένο κύκλωμα 8 ακροδεκτών</name>
-        <name lang="en">Integrated Circuit, 8 pins</name>
-        <name lang="it">Circuito integrato, 8 pin</name>
-        <name lang="fr">amplificateur opérationnel_1</name>
         <name lang="pl">Układ scalony, 8 nóżek</name>
+        <name lang="ar">دائرة مُدمجة 8 دبابيس</name>
+        <name lang="it">Circuito integrato, 8 pin</name>
+        <name lang="en">Integrated Circuit, 8 pins</name>
         <name lang="cs">Integrovaný obvod, 8 kolíků</name>
+        <name lang="fr">amplificateur opérationnel_1</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-35" y2="10" x2="-26"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-35" y2="-10" x2="-26"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="25" y2="-1" x2="34"/>
-        <rect width="50" x="-25" y="-25" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-26" y="10" size="7" rotate="true" text="+"/>
-        <input x="-25" y="-15" size="7" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-15" x2="9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" x1="0" y2="-15" x2="9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.8857" x1="0" y2="-11.1238" x2="0"/>
-        <input x="-39" y="-15.5" size="4" rotate="true" text="_"/>
-        <input x="-39" y="4.5" size="4" rotate="true" text="_"/>
-        <input x="24" y="-6.5" size="4" rotate="true" text="_"/>
-        <input x="-14" y="0.5" size="4" rotate="true" text="_"/>
-        <input x="-6" y="-30.5" size="4" rotate="true" text="vcc_"/>
-        <input x="-6" y="30.5" size="4" rotate="true" text="gnd_"/>
-        <terminal x="36" y="-1" nameHidden="0" number="" name="" orientation="e"/>
-        <terminal x="-36" y="-10" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="-36" y="10" nameHidden="0" number="" name="" orientation="w"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-26" x1="-35" end1="none" y2="10"/>
+        <input tagg="label" y="-39.45" size="9" rotate="true" text="_" x="-22"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-26" x1="-35" end1="none" y2="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" length1="1.5" antialias="false" end2="none" length2="1.5" x2="34" x1="25" end1="none" y2="-1"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="50" y="-25" antialias="false" width="50" x="-25"/>
+        <input tagg="none" y="10" size="7" rotate="true" text="+" x="-26"/>
+        <input tagg="none" y="-15" size="7" rotate="true" text="_" x="-25"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" length1="1.5" antialias="false" end2="none" length2="1.5" x2="9" x1="0" end1="none" y2="-15"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" length1="1.5" antialias="false" end2="none" length2="1.5" x2="9" x1="0" end1="none" y2="-15"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.8857" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="-11.1238"/>
+        <input tagg="none" y="-15.5" size="4" rotate="true" text="_" x="-39"/>
+        <input tagg="none" y="4.5" size="4" rotate="true" text="_" x="-39"/>
+        <input tagg="none" y="-6.5" size="4" rotate="true" text="_" x="24"/>
+        <input tagg="none" y="0.5" size="4" rotate="true" text="_" x="-14"/>
+        <input tagg="none" y="-30.5" size="4" rotate="true" text="vcc_" x="-6"/>
+        <input tagg="none" y="30.5" size="4" rotate="true" text="gnd_" x="-6"/>
+        <terminal y="-1" orientation="e" x="36"/>
+        <terminal y="-10" orientation="w" x="-36"/>
+        <terminal y="10" orientation="w" x="-36"/>
     </description>
 </definition>

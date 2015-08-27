@@ -1,25 +1,27 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
-<uuid uuid="{FEFA3283-66B6-430C-8760-B98A9EC27868}"/><names>
-        <name lang="ar">ثايريستور دايود موصل في الانحياز العكسي</name>
+<definition height="40" version="0.5" link_type="simple" width="20" orientation="dyyy" hotspot_x="10" hotspot_y="24" type="element">
+    <uuid uuid="{2bd448ed-c6ed-43b3-85d5-afb36ca1184b}"/>
+    <names>
         <name lang="de">Thyristordiode, rückwärts leitend
 </name>
+        <name lang="pl">Tyrystor diodowy przewodzący wstecznie</name>
+        <name lang="ar">ثايريستور دايود موصل في الانحياز العكسي</name>
+        <name lang="it">Tiristore diodo che conduce nel senso inverso di conduzione</name>
         <name lang="en">Reverse conducting diode thyristor
 </name>
-        <name lang="it">Tiristore diodo che conduce nel senso inverso di conduzione</name>
+        <name lang="cs">Diodový tyristor, vedoucí zpět</name>
         <name lang="fr">Thyristor diode passant en inverse
 </name>
-        <name lang="pl">Tyrystor diodowy przewodzący wstecznie</name>
-        <name lang="cs">Diodový tyristor, vedoucí zpět</name>
         <name lang="nl">Thyristor geleidend</name>
     </names>
     <informations>EN 60617: 05-04-02</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-5" y2="0" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-5" y2="-5" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="10" x2="0"/>
-        <polygon x4="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="-10" x2="5" y3="0" x3="0" y4="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-5" y2="0" x2="5"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="10" orientation="s"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-5" x1="-5" end1="none" y2="0"/>
+        <input tagg="label" y="-6.5" size="9" rotate="true" text="_" x="5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" length1="1.5" antialias="false" end2="none" length2="1.5" x2="5" x1="-5" end1="none" y2="-5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="10"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="true" x3="0" y4="-10" y3="0" x2="5" x1="-5" x4="-5" y2="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="5" x1="-5" end1="none" y2="0"/>
+        <terminal y="-20" orientation="n" x="0"/>
+        <terminal y="10" orientation="s" x="0"/>
     </description>
 </definition>

@@ -1,30 +1,32 @@
-<definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dyyy">
-<uuid uuid="{358C429E-0BA2-49FB-8C0F-A47559598AD0}"/><names>
-        <name lang="ar">حامي من الصواعق</name>
-        <name lang="el">Προστασία από υπέρταση</name>
-        <name lang="en">Surge protection</name>
+<definition height="60" version="0.5" link_type="simple" width="40" orientation="dyyy" hotspot_x="18" hotspot_y="30" type="element">
+    <uuid uuid="{a091ae1e-5e4f-4afe-a478-25d13dc34e61}"/>
+    <names>
         <name lang="de">Blitz-/Überspannungsschutz</name>
-        <name lang="it">Protez. alimentazione</name>
-        <name lang="fr">Parafoudre</name>
+        <name lang="el">Προστασία από υπέρταση</name>
         <name lang="pl">Ogranicznik przepięć</name>
+        <name lang="ar">حامي من الصواعق</name>
+        <name lang="it">Protez. alimentazione</name>
+        <name lang="en">Surge protection</name>
         <name lang="cs">Bleskojistka, ochrana proti nárazu</name>
+        <name lang="fr">Parafoudre</name>
         <name lang="nl">Overspanning beveiligig</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-10" y="-16.6667" size="4" text="N"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" x1="8" y2="24" x2="14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22" x1="6" y2="22" x2="16"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="4" y2="20" x2="18"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-11" y2="-20" x2="-11"/>
-        <rect width="30" x="-15" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="12.5" y="14.3333" size="4" text="T"/>
-        <text x="11" y="-16.6667" size="4" text="L1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="11" y2="10" x2="11"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="-20" x2="10"/>
-        <terminal x="-11" y="-21" orientation="n"/>
-        <terminal x="10" y="-21" orientation="n"/>
-        <terminal x="11" y="17" orientation="s"/>
+        <input tagg="label" y="-4.45" size="9" rotate="true" text="_" x="18"/>
+        <text y="-16.6667" size="4" text="N" x="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" length1="1.5" antialias="false" end2="none" length2="1.5" x2="14" x1="8" end1="none" y2="24"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22" length1="1.5" antialias="false" end2="none" length2="1.5" x2="16" x1="6" end1="none" y2="22"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" length1="1.5" antialias="false" end2="none" length2="1.5" x2="18" x1="4" end1="none" y2="20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-11" x1="-11" end1="none" y2="-20"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" y="-10" antialias="false" width="30" x="-15"/>
+        <text y="14.3333" size="4" text="T" x="12.5"/>
+        <text y="-16.6667" size="4" text="L1" x="11"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" length1="1.5" antialias="false" end2="none" length2="1.5" x2="11" x1="11" end1="none" y2="10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="10" x1="10" end1="none" y2="-20"/>
+        <terminal y="-21" orientation="n" x="10"/>
+        <terminal y="17" orientation="s" x="11"/>
+        <terminal y="-21" orientation="n" x="-11"/>
     </description>
 </definition>

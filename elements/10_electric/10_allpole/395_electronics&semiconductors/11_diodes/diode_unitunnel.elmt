@@ -1,25 +1,27 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
-<uuid uuid="{78EBB5C5-18F8-4DF9-A8F0-6F8EB53CA75F}"/><names>
-        <name lang="ar">دايود أحادي النفق</name>
+<definition height="40" version="0.5" link_type="simple" width="20" orientation="dyyy" hotspot_x="10" hotspot_y="24" type="element">
+    <uuid uuid="{768ba318-9076-4164-acc8-69714dc0f3aa}"/>
+    <names>
         <name lang="de">Unitunnel-Diode
 </name>
+        <name lang="pl">Dioda wsteczna</name>
+        <name lang="ar">دايود أحادي النفق</name>
+        <name lang="it">Diodo unitunnel</name>
         <name lang="en">Backward diode (unitunnel diode)
 </name>
-        <name lang="it">Diodo unitunnel</name>
+        <name lang="cs">Obrácená dioda</name>
         <name lang="fr">Diode unitunnel
 </name>
-        <name lang="pl">Dioda wsteczna</name>
-        <name lang="cs">Obrácená dioda</name>
         <name lang="nl">Diode tunnel</name>
     </names>
     <informations>EN 60617: 05-03-08</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="5" y2="1" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-5" y2="1" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="10" x2="0"/>
-        <polygon x4="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="-10" x2="5" y3="0" x3="0" y4="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-5" y2="0" x2="5"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="10" orientation="s"/>
+        <input tagg="label" y="-6.5" size="9" rotate="true" text="_" x="6"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" length1="1.5" antialias="false" end2="none" length2="1.5" x2="5" x1="5" end1="none" y2="1"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-5" x1="-5" end1="none" y2="1"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="10"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="true" x3="0" y4="-10" y3="0" x2="5" x1="-5" x4="-5" y2="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="5" x1="-5" end1="none" y2="0"/>
+        <terminal y="-20" orientation="n" x="0"/>
+        <terminal y="10" orientation="s" x="0"/>
     </description>
 </definition>

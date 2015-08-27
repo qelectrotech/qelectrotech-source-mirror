@@ -1,28 +1,30 @@
-<definition width="40" version="0.4" hotspot_x="25" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{417AEC0E-8A65-4D86-8084-66DE2290BAB6}"/><names>
-        <name lang="ar">ترنزيستور PNP</name>
+<definition height="60" version="0.5" link_type="simple" width="40" orientation="dyyy" hotspot_x="25" hotspot_y="29" type="element">
+    <uuid uuid="{6bef12a7-546f-48bc-b41a-d2c7d991fd61}"/>
+    <names>
         <name lang="de">PNP Transistor</name>
         <name lang="el">Τρανζίστορ PNP</name>
-        <name lang="en">PNP transistor</name>
-        <name lang="it">Transistor PNP</name>
-        <name lang="fr">Transistor PNP</name>
         <name lang="pl">Tranzystor PNP</name>
+        <name lang="ar">ترنزيستور PNP</name>
         <name lang="ro">Tranzistor PNP</name>
-        <name lang="nl">Transistor PNP</name>
+        <name lang="it">Transistor PNP</name>
+        <name lang="en">PNP transistor</name>
         <name lang="cs">Tranzistor PNP</name>
+        <name lang="fr">Transistor PNP</name>
+        <name lang="nl">Transistor PNP</name>
     </names>
     <informations>Author: Angelescu Constantin
 titus0818@yahoo.com</informations>
     <description>
-        <polygon x4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-5" y2="-10" x2="10" y3="-17" x3="10" y4="-17"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-5" y2="8" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-5" y2="0" x2="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-17"/>
-        <polygon x4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-5" y2="10" x2="10" y3="17" x3="10" y4="17"/>
-        <circle x="-11.8488" y="-9.8488" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="19.6977"/>
-        <polygon x4="-3" y5="1" x5="-3" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="1" x1="-3" y2="6" x2="-1" y3="2" x3="2" y4="1"/>
-        <terminal x="10" y="-21" orientation="n"/>
-        <terminal x="10" y="21" orientation="s"/>
-        <terminal x="-21" y="0" orientation="w"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" x3="10" y4="-17" y3="-17" x2="10" x1="-5" x4="10" y2="-10"/>
+        <input tagg="label" y="-1.45" size="9" rotate="true" text="_" x="11"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-5" x1="-5" end1="none" y2="8"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-9" x1="-5" end1="none" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-17" x1="-10" end1="none" y2="0"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" x3="10" y4="17" y3="17" x2="10" x1="-5" x4="10" y2="10"/>
+        <circle diameter="19.6977" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9.8488" antialias="true" x="-11.8488"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:black;color:black" y1="1" antialias="false" x3="2" y4="1" y3="2" x5="-3" y5="1" x2="-1" x1="-3" x4="-3" y2="6"/>
+        <terminal y="-21" orientation="n" x="10"/>
+        <terminal y="21" orientation="s" x="10"/>
+        <terminal y="0" orientation="w" x="-21"/>
     </description>
 </definition>

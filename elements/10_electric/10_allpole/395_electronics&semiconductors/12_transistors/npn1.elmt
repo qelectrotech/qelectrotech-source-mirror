@@ -1,27 +1,29 @@
-<definition width="40" version="0.4" hotspot_x="25" hotspot_y="25" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{768EDDE3-AD61-44BF-B4BA-C592DB14E366}"/><names>
-        <name lang="ar">ترنزيستور NPN</name>
+<definition height="60" version="0.5" link_type="simple" width="40" orientation="dyyy" hotspot_x="25" hotspot_y="29" type="element">
+    <uuid uuid="{1db2be55-fa6c-40d6-afa6-e5da144931aa}"/>
+    <names>
         <name lang="de">NPN Transistor</name>
         <name lang="el">Τρανζίστορ NPN</name>
-        <name lang="en">NPN transistor</name>
-        <name lang="it">Transistor NPN</name>
-        <name lang="fr">Transistor NPN</name>
         <name lang="pl">Tranzystor NPN</name>
-        <name lang="nl">Transistor NPN</name>
+        <name lang="ar">ترنزيستور NPN</name>
+        <name lang="it">Transistor NPN</name>
+        <name lang="en">NPN transistor</name>
         <name lang="cs">Tranzistor NPN</name>
+        <name lang="fr">Transistor NPN</name>
+        <name lang="nl">Transistor NPN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-5" y2="-10" x2="10" y3="-17" x3="10" y4="-17"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-5" y2="8" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-5" y2="0" x2="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-17"/>
-        <polygon x4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-5" y2="10" x2="10" y3="17" x3="10" y4="17"/>
-        <circle x="-11.8488" y="-9.8488" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="19.6977"/>
-        <polygon x4="0" y5="-6.70367" x5="0" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-6.70367" x1="0" y2="-2" x2="3" y3="-6.70367" x3="5" y4="-6.70367"/>
-        <terminal x="10" y="-21" orientation="n"/>
-        <terminal x="10" y="21" orientation="s"/>
-        <terminal x="-21" y="0" orientation="w"/>
+        <input tagg="label" y="-1.45" size="9" rotate="true" text="_" x="15"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" x3="10" y4="-17" y3="-17" x2="10" x1="-5" x4="10" y2="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-5" x1="-5" end1="none" y2="8"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-9" x1="-5" end1="none" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-17" x1="-10" end1="none" y2="0"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" x3="10" y4="17" y3="17" x2="10" x1="-5" x4="10" y2="10"/>
+        <circle diameter="19.6977" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9.8488" antialias="true" x="-11.8488"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-6.70367" antialias="false" x3="5" y4="-6.70367" y3="-6.70367" x5="0" y5="-6.70367" x2="3" x1="0" x4="0" y2="-2"/>
+        <terminal y="0" orientation="w" x="-21"/>
+        <terminal y="-21" orientation="n" x="10"/>
+        <terminal y="21" orientation="s" x="10"/>
     </description>
 </definition>

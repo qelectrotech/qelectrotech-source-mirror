@@ -1,27 +1,28 @@
-<definition width="40" version="0.4" hotspot_x="19" hotspot_y="24" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{9E308BD4-8BB1-4276-A1AE-0EF657C8BF6D}"/><names>
-        <name lang="ar">ترنزيستور ثنائي القطبيّة PNP</name>
-        <name lang="en">Bipolar transistor PNP</name>
-        <name lang="it">Transistor bipolare PNP</name>
-        <name lang="fr">Transistor bipolaire PNP</name>
+<definition height="50" version="0.5" link_type="simple" width="40" orientation="dyyy" hotspot_x="19" hotspot_y="24" type="element">
+    <uuid uuid="{852964fd-0d43-4d57-b41a-6c08d88d7279}"/>
+    <names>
         <name lang="pl">Tranzystor biopolarny PNP</name>
+        <name lang="ar">ترنزيستور ثنائي القطبيّة PNP</name>
         <name lang="ro">Tranzistor PNP cu radiator</name>
-        <name lang="nl">Transistor bipolare PNP</name>
+        <name lang="it">Transistor bipolare PNP</name>
+        <name lang="en">Bipolar transistor PNP</name>
         <name lang="cs">Dvoupólový tranzistor PNP</name>
+        <name lang="fr">Transistor bipolaire PNP</name>
+        <name lang="nl">Transistor bipolare PNP</name>
     </names>
     <informations>Author:titus
 titus0818@yahoo.com</informations>
     <description>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="2" x1="0" y2="8" x2="8.925" y3="12.2" x3="8.925"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="-10"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3" x1="0" y2="-8.14777" x2="8.82" y3="-11.7512" x3="8.82"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="5" x2="0"/>
-        <circle x="-8" y="-11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="22"/>
-        <input x="15" y="-1.5" size="9" rotate="true" text="_" tagg="none"/>
-        <circle x="-10" y="-13" antialias="false" style="line-style:dotted;line-weight:normal;filling:none;color:black" diameter="26"/>
-        <polygon x4="4" y5="-8" x5="4" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-8" x1="4" y2="-5" x2="6" y3="-4" x3="2" y4="-8"/>
-        <terminal x="9" y="-16" orientation="n"/>
-        <terminal x="9" y="17" orientation="s"/>
-        <terminal x="-13" y="0" orientation="w"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" antialias="false" x3="8.925" y3="12.2" x2="8.925" x1="0" y2="8"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-10" x1="0" end1="none" y2="0"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" antialias="false" x3="8.82" y3="-11.7512" x2="8.82" x1="0" y2="-8.14777"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="5"/>
+        <circle diameter="22" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11" antialias="true" x="-8"/>
+        <input tagg="label" y="-1.5" size="9" rotate="true" text="_" x="15"/>
+        <circle diameter="26" style="line-style:dotted;line-weight:normal;filling:none;color:black" y="-13" antialias="false" x="-10"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-8" antialias="false" x3="2" y4="-8" y3="-4" x5="4" y5="-8" x2="6" x1="4" x4="4" y2="-5"/>
+        <terminal y="-16" orientation="n" x="9"/>
+        <terminal y="17" orientation="s" x="9"/>
+        <terminal y="0" orientation="w" x="-13"/>
     </description>
 </definition>

@@ -1,25 +1,27 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
-<uuid uuid="{E8EEBBE6-E9A6-4C12-B030-3F507499A547}"/><names>
-        <name lang="ar">مُكثّف</name>
-        <name lang="de">Kondensator</name>
+<definition height="30" version="0.5" link_type="simple" width="20" orientation="dyyy" hotspot_x="10" hotspot_y="24" type="element">
+    <uuid uuid="{378b2ec9-5e30-4c43-9395-e6a172aa83e1}"/>
+    <names>
         <name lang="ru">Конденсатор</name>
-        <name lang="pt">Condensador</name>
+        <name lang="de">Kondensator</name>
         <name lang="el">Πυκνωτής</name>
-        <name lang="en">Capacitor</name>
-        <name lang="it">Condensatore</name>
-        <name lang="fr">Capacité</name>
         <name lang="pl">Kondensator</name>
+        <name lang="ar">مُكثّف</name>
         <name lang="es">Condensador</name>
+        <name lang="it">Condensatore</name>
+        <name lang="en">Capacitor</name>
         <name lang="cs">Kondenzátor</name>
+        <name lang="pt">Condensador</name>
+        <name lang="fr">Capacité</name>
         <name lang="nl">Condensator</name>
     </names>
     <informations>EN 60617: 04-02-01</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="-20" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="0" y2="0" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-5" y2="-8" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-5" y2="-12" x2="5"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="0" orientation="s"/>
+        <input tagg="label" y="-9.45" size="9" rotate="true" text="_" x="6"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="-20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" length1="1.5" antialias="false" end2="none" length2="1.5" x2="5" x1="-5" end1="none" y2="-8"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" length1="1.5" antialias="false" end2="none" length2="1.5" x2="5" x1="-5" end1="none" y2="-12"/>
+        <terminal y="-20" orientation="n" x="0"/>
+        <terminal y="0" orientation="s" x="0"/>
     </description>
 </definition>
