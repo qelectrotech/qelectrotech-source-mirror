@@ -1,26 +1,28 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny">
-<uuid uuid="{0EE1FBD0-3823-4197-BCF3-A94F4A7053F1}"/><names>
-        <name lang="ar">مُؤشّر وميضي</name>
-        <name lang="el">Λυχνία με παλλόμενο φως</name>
-        <name lang="en">Flashing light</name>
+<definition height="60" link_type="simple" type="element" orientation="dyyy" hotspot_y="29" version="0.5" hotspot_x="15" width="30">
+    <uuid uuid="{41cad2a6-e90a-4d04-90af-ff74e15e3031}"/>
+    <names>
+        <name lang="fr">Voyant flash</name>
         <name lang="de">Blinklicht</name>
         <name lang="it">Luce intermittente</name>
-        <name lang="fr">Voyant flash</name>
-        <name lang="pl">Wskaźnik optyczny o świetle migowym</name>
+        <name lang="ar">مُؤشّر وميضي</name>
+        <name lang="el">Λυχνία με παλλόμενο φως</name>
         <name lang="cs">Blikající světlo</name>
+        <name lang="en">Flashing light</name>
+        <name lang="pl">Wskaźnik optyczny o świetle migowym</name>
         <name lang="nl">Knipperlicht</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="-7" y5="0" x5="0" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="0" y2="7" x2="-7" y3="0" x3="-10" y4="-7"/>
-        <polygon x4="7" y5="0" x5="0" y6="0" x6="0" y7="0" x7="0" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="0" y2="-7" x2="7" y3="0" x3="10" y4="7"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="7.03" y2="7.03" x2="-7.03"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="-7.03" y2="7.03" x2="7.03"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
+        <input y="-4.45" text="_" x="13" rotate="true" size="9" tagg="label"/>
+        <polygon x4="-7" y2="7" antialias="false" y5="0" x1="0" y1="0" x3="-10" x2="-7" x5="0" y3="0" y4="-7" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon x4="7" y2="-7" y7="0" antialias="false" y6="0" y5="0" x6="0" x1="0" y1="0" x3="10" x2="7" x5="0" y3="0" y4="7" x7="0" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <circle y="-10" x="-10" antialias="true" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="7.03" antialias="false" x1="7.03" y1="-7.03" length2="1.5" length1="1.5" x2="-7.03" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="7.03" antialias="false" x1="-7.03" y1="-7.03" length2="1.5" length1="1.5" x2="7.03" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="-10" antialias="false" x1="0" y1="-20" length2="1.5" length1="1.5" x2="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="20" antialias="false" x1="0" y1="10" length2="1.5" length1="1.5" x2="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-21" x="0" orientation="n"/>
+        <terminal y="21" x="0" orientation="s"/>
     </description>
 </definition>

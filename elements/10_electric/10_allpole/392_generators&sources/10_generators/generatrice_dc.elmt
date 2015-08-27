@@ -1,34 +1,35 @@
-<definition width="70" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy">
-<uuid uuid="{428D9336-FDAF-43DA-A0B3-3CBBEBD5D15E}"/><names>
-        <name lang="ar">مُولّد تيّار مستمرّ</name>
-        <name lang="de">Gleichstromgenerator</name>
-        <name lang="ru">Генератор постоянного тока</name>
-        <name lang="pt">Gerador de corrente contínua</name>
-        <name lang="el">Γεννήτρια συνεχούς</name>
-        <name lang="en">DC generator</name>
-        <name lang="it">Generatore di corrente continua</name>
+<definition height="70" link_type="simple" type="element" orientation="dyyy" hotspot_y="34" version="0.5" hotspot_x="20" width="40">
+    <uuid uuid="{bfae4d03-faf2-4ad8-a8eb-291c493b826a}"/>
+    <names>
         <name lang="fr">Générateur à courant continu</name>
-        <name lang="pl">Generator prądu stałego</name>
+        <name lang="de">Gleichstromgenerator</name>
+        <name lang="it">Generatore di corrente continua</name>
         <name lang="es">Generador de corriente continuo</name>
-        <name lang="cs">Generátor stejnosměrného proudu</name>
-        <name lang="nl">gelijkspanning generator DC</name>
+        <name lang="ar">مُولّد تيّار مستمرّ</name>
+        <name lang="ru">Генератор постоянного тока</name>
         <name lang="be">Generator DC</name>
+        <name lang="el">Γεννήτρια συνεχούς</name>
+        <name lang="pt">Gerador de corrente contínua</name>
+        <name lang="cs">Generátor stejnosměrného proudu</name>
+        <name lang="en">DC generator</name>
+        <name lang="pl">Generator prądu stałego</name>
+        <name lang="nl">gelijkspanning generator DC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="5" y2="14.5" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="0" y2="30" x2="0"/>
-        <text x="-8.5" y="7" size="15" text="G"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-18" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="-5" y2="18" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="5" y2="-14.5" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.5" x1="-5" y2="-18" x2="-5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-5" y2="-18" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.5" x1="-5" y2="18" x2="-5"/>
-        <input x="20" y="5" size="9" text="G_"/>
-        <terminal x="0" y="-30" orientation="n"/>
-        <terminal x="0" y="30" orientation="s"/>
+        <circle y="-15" x="-15" antialias="true" diameter="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="14.5" antialias="false" x1="5" y1="18" length2="1.5" length1="1.5" x2="5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="30" antialias="false" x1="0" y1="18" length2="1.5" length1="1.5" x2="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="7" text="G" x="-8.5" size="15"/>
+        <line end1="none" y2="-18" antialias="false" x1="0" y1="-30" length2="1.5" length1="1.5" x2="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="18" antialias="false" x1="-5" y1="18" length2="1.5" length1="1.5" x2="5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="-14.5" antialias="false" x1="5" y1="-18" length2="1.5" length1="1.5" x2="5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="-18" antialias="false" x1="-5" y1="-14.5" length2="1.5" length1="1.5" x2="-5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="-18" antialias="false" x1="-5" y1="-18" length2="1.5" length1="1.5" x2="5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="18" antialias="false" x1="-5" y1="14.5" length2="1.5" length1="1.5" x2="-5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="5" text="G_" x="20" size="9" tagg="label"/>
+        <terminal y="-30" x="0" orientation="n"/>
+        <terminal y="30" x="0" orientation="s"/>
     </description>
 </definition>

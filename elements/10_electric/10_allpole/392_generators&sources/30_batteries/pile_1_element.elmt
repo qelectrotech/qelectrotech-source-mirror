@@ -1,27 +1,29 @@
-<definition width="50" version="0.4" hotspot_x="25" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{1C0A9305-53F8-41F2-B965-116CA37D1022}"/><names>
-        <name lang="ar">بطارية خليّة واحدة</name>
-        <name lang="en">Battery one element</name>
+<definition height="30" link_type="simple" type="element" orientation="dyyy" hotspot_y="14" version="0.5" hotspot_x="24" width="50">
+    <uuid uuid="{cd1cb3df-5e68-4b22-9523-0e7ac886d8d2}"/>
+    <names>
+        <name lang="fr">Pile 1 élément</name>
         <name lang="de">Batterie 1 Element</name>
         <name lang="it">Batteria (un elemento)</name>
-        <name lang="fr">Pile 1 élément</name>
-        <name lang="pl">Ogniwo elektrochemiczne</name>
         <name lang="es">Bateria 1 elemento</name>
-        <name lang="cs">Akumulátor 1 prvek</name>
-        <name lang="nl">Batterij 1 element DC</name>
-        <name lang="el">Μπαταρία (1 στοιχείο)</name>
+        <name lang="ar">بطارية خليّة واحدة</name>
         <name lang="be">Batterij 1 element DC</name>
+        <name lang="el">Μπαταρία (1 στοιχείο)</name>
+        <name lang="cs">Akumulátor 1 prvek</name>
+        <name lang="en">Battery one element</name>
+        <name lang="pl">Ogniwo elektrochemiczne</name>
+        <name lang="nl">Batterij 1 element DC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="0" x2="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-3" y2="0" x2="-20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="-3" y2="9" x2="-3"/>
-        <rect width="3" x="0" y="-6" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <text x="6" y="6.6666" size="6" text="-"/>
-        <text x="-11" y="6.6666" size="6" text="+"/>
-        <terminal x="-20" y="0" nameHidden="0" number="" name="" orientation="w"/>
-        <terminal x="20" y="0" nameHidden="0" number="" name="" orientation="e"/>
+        <line end1="none" y2="0" antialias="false" x1="20" y1="0" length2="1.5" length1="1.5" x2="3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="-15.45" text="_" x="5" rotate="true" size="9" tagg="label"/>
+        <line end1="none" y2="0" antialias="false" x1="-3" y1="0" length2="1.5" length1="1.5" x2="-20" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="9" antialias="false" x1="-3" y1="-9" length2="1.5" length1="1.5" x2="-3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-6" height="12" x="0" antialias="false" width="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text y="6.6666" text="-" x="6" size="6"/>
+        <text y="6.6666" text="+" x="-11" size="6"/>
+        <terminal y="0" x="-20" orientation="w"/>
+        <terminal y="0" x="20" orientation="e"/>
     </description>
 </definition>

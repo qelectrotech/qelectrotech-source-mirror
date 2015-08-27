@@ -1,26 +1,28 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-<uuid uuid="{DE33D339-B400-46BE-89D8-CB73EE289070}"/><names>
-        <name lang="ar">جرس بضربة واحدة</name>
-        <name lang="el">Κουδούνι ενός ήχου</name>
-        <name lang="en">1 bell ringer has</name>
+<definition height="40" link_type="simple" type="element" orientation="dyyy" hotspot_y="19" version="0.5" hotspot_x="15" width="30">
+    <uuid uuid="{1d4b77ad-4422-48c7-9801-f6e5789e7f15}"/>
+    <names>
+        <name lang="fr">Sonnerie à un coup</name>
         <name lang="de">Gong</name>
         <name lang="it">Suoneria a singola suonata</name>
-        <name lang="fr">Sonnerie à un coup</name>
-        <name lang="pl">Gong</name>
+        <name lang="ar">جرس بضربة واحدة</name>
+        <name lang="el">Κουδούνι ενός ήχου</name>
         <name lang="cs">Gong - jedno zazvonění</name>
+        <name lang="en">1 bell ringer has</name>
+        <name lang="pl">Gong</name>
         <name lang="nl">Gong</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="7" x="1" y="-1" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="1" y2="-5" x2="-7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="1" y2="7" x2="1"/>
-        <arc width="15" x="-6.5" y="-7.5" antialias="true" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="1" y2="5" x2="-7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-7" y2="-11" x2="-7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-7" y2="5" x2="-7"/>
-        <terminal x="-7" y="-14" orientation="n"/>
-        <terminal x="-7" y="14" orientation="s"/>
+        <input y="0.55" text="_" x="10" rotate="true" size="9" tagg="label"/>
+        <rect y="-1" height="2" x="1" antialias="false" width="7" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line end1="none" y2="-5" antialias="false" x1="1" y1="-5" length2="1.5" length1="1.5" x2="-7" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="7" antialias="false" x1="1" y1="-7" length2="1.5" length1="1.5" x2="1" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc y="-7.5" height="15" x="-6.5" start="90" antialias="true" angle="-180" width="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="5" antialias="false" x1="1" y1="5" length2="1.5" length1="1.5" x2="-7" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="-11" antialias="false" x1="-7" y1="-5" length2="1.5" length1="1.5" x2="-7" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="5" antialias="false" x1="-7" y1="11" length2="1.5" length1="1.5" x2="-7" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-14" x="-7" orientation="n"/>
+        <terminal y="14" x="-7" orientation="s"/>
     </description>
 </definition>

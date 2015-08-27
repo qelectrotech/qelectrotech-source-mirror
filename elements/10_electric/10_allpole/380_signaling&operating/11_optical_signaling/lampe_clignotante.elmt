@@ -1,29 +1,30 @@
-<definition width="60" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
-<uuid uuid="{EADB4C19-8404-4CD6-9836-1BA53904BBB8}"/><names>
-        <name lang="ar">مصباح رفّاف</name>
-        <name lang="de">Blinkleuchte</name>
-        <name lang="ru">Проблесковый маяк</name>
-        <name lang="pt">Luz intermitente</name>
-        <name lang="el">Λυχνία με παλλόμενο φως</name>
-        <name lang="en">Flashing light</name>
-        <name lang="it">Luce intermittente</name>
+<definition height="60" link_type="simple" type="element" orientation="dyyy" hotspot_y="29" version="0.5" hotspot_x="13" width="30">
+    <uuid uuid="{5a60adde-9bf3-4aa6-9927-597956ad0db3}"/>
+    <names>
         <name lang="fr">Lampe clignotante</name>
-        <name lang="pl">Lampa sygnalizacyjna o świetle migowym</name>
+        <name lang="de">Blinkleuchte</name>
+        <name lang="it">Luce intermittente</name>
         <name lang="es">Luz intermitente</name>
+        <name lang="ar">مصباح رفّاف</name>
+        <name lang="ru">Проблесковый маяк</name>
+        <name lang="el">Λυχνία με παλλόμενο φως</name>
+        <name lang="pt">Luz intermitente</name>
         <name lang="cs">Svítící světlo</name>
+        <name lang="en">Flashing light</name>
+        <name lang="pl">Lampa sygnalizacyjna o świetle migowym</name>
         <name lang="nl">Knipperlamp</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="12" y5="20" x5="12" y6="20" x6="14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="5" y2="20" x2="7" y3="15" x3="7" y4="15"/>
-        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="7.03" y2="7.03" x2="-7.03"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="-7.03" y2="7.03" x2="7.03"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
-        <input x="15" y="3" size="9" text="H_"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
+        <polygon x4="12" y2="20" antialias="false" y6="20" y5="20" x6="14" x1="5" y1="20" closed="false" x3="7" x2="7" x5="12" y3="15" y4="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-10" x="-10" antialias="true" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="7.03" antialias="false" x1="7.03" y1="-7.03" length2="1.5" length1="1.5" x2="-7.03" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="7.03" antialias="false" x1="-7.03" y1="-7.03" length2="1.5" length1="1.5" x2="7.03" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="-10" antialias="false" x1="0" y1="-20" length2="1.5" length1="1.5" x2="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="20" antialias="false" x1="0" y1="10" length2="1.5" length1="1.5" x2="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="3" text="H_" x="15" size="9" tagg="label"/>
+        <terminal y="-21" x="0" orientation="n"/>
+        <terminal y="21" x="0" orientation="s"/>
     </description>
 </definition>

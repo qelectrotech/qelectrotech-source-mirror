@@ -1,14 +1,15 @@
-<definition width="110" version="0.4" hotspot_x="55" hotspot_y="201" height="260" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{5C2F2CE3-AECC-4886-96BA-AA34DDA71880}"/><names>
-        <name lang="el">Ανεμογενήτρια</name>
-        <name lang="en">Wind Mill</name>
+<definition height="260" link_type="simple" type="element" orientation="dyyy" hotspot_y="201" version="0.5" hotspot_x="55" width="110">
+    <uuid uuid="{0d051b78-ef86-4657-8815-0c076949b330}"/>
+    <names>
+        <name lang="fr">Eolienne</name>
         <name lang="de">Windkraftanlage</name>
         <name lang="it">Eolico</name>
-        <name lang="fr">Eolienne</name>
-        <name lang="nl">Windmolen</name>
-        <name lang="pl">Turbozespół wiatrowy</name>
-        <name lang="cs">Větrný motor</name>
         <name lang="be">Windmolen</name>
+        <name lang="el">Ανεμογενήτρια</name>
+        <name lang="cs">Větrný motor</name>
+        <name lang="en">Wind Mill</name>
+        <name lang="pl">Turbozespół wiatrowy</name>
+        <name lang="nl">Windmolen</name>
     </names>
     <informations>Author: Arun Kishore Eswara
 
@@ -16,22 +17,23 @@ License: Creative Commons Attribution 3.0 base License
 
 </informations>
     <description>
-        <polygon x4="2.11159" y5="-148" x5="-2.20659" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y1="-146.886" x1="-2.20659" y2="46.9281" x2="-8.095" y3="46.9281" x3="8" y4="-148"/>
-        <rect width="16" x="7" y="-4" antialias="false" height="37" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-11" y="-155" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="21"/>
-        <ellipse width="9" x="-5" y="-149" antialias="true" height="56" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <ellipse width="9" x="-5" y="-197" antialias="true" height="57" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <ellipse width="57" x="-53" y="-149" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <ellipse width="58" x="-6" y="-149" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <circle x="-6" y="-150" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="11"/>
-        <polygon x4="18.961" y5="46.5333" x5="-20.312" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y1="47.33" x1="-21.0974" y2="54.5" x2="-25.0247" y3="54.5" x3="22.8883" y4="46.5333"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="42" x1="-34" y2="49" x2="-34"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="49" x1="-38" y2="49" x2="-30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="51" x1="-36.84" y2="51" x2="-31.1733"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="53" x1="-35" y2="53" x2="-33"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="42" x1="-34" y2="42" x2="-8" y3="42" x3="-8"/>
-        <terminal x="22" y="23" nameHidden="1" number="" name="" orientation="e"/>
-        <terminal x="22" y="29" nameHidden="1" number="" name="" orientation="e"/>
-        <terminal x="22" y="16" nameHidden="1" number="" name="" orientation="e"/>
+        <polygon x4="2.11159" y2="46.9281" antialias="true" y5="-148" x1="-2.20659" y1="-146.886" x3="8" x2="-8.095" x5="-2.20659" y3="46.9281" y4="-148" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <input y="-69.45" text="_" x="43" rotate="true" size="9" tagg="label"/>
+        <rect y="-4" height="37" x="7" antialias="false" width="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-155" x="-11" antialias="true" diameter="21" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse y="-149" height="56" x="-5" antialias="true" width="9" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse y="-197" height="57" x="-5" antialias="true" width="9" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse y="-149" height="9" x="-53" antialias="true" width="57" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse y="-149" height="9" x="-6" antialias="true" width="58" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle y="-150" x="-6" antialias="true" diameter="11" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <polygon x4="18.961" y2="54.5" antialias="true" y5="46.5333" x1="-21.0974" y1="47.33" x3="22.8883" x2="-25.0247" x5="-20.312" y3="54.5" y4="46.5333" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <line end1="none" y2="49" antialias="false" x1="-34" y1="42" length2="1.5" length1="1.5" x2="-34" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="49" antialias="false" x1="-38" y1="49" length2="1.5" length1="1.5" x2="-30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="51" antialias="false" x1="-36.84" y1="51" length2="1.5" length1="1.5" x2="-31.1733" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="53" antialias="false" x1="-35" y1="53" length2="1.5" length1="1.5" x2="-33" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y2="42" antialias="false" x1="-34" y1="42" closed="false" x3="-8" x2="-8" y3="42" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="23" x="22" orientation="e"/>
+        <terminal y="29" x="22" orientation="e"/>
+        <terminal y="16" x="22" orientation="e"/>
     </description>
 </definition>

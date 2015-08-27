@@ -1,33 +1,34 @@
-<definition width="190" version="0.4" hotspot_x="95" hotspot_y="75" height="170" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{976497F5-2155-491D-9225-8D3172F16954}"/><names>
-        <name lang="ar">HMI TACTILE 2</name>
-        <name lang="en">Touch panel 2</name>
+<definition height="170" link_type="simple" type="element" orientation="dyyy" hotspot_y="75" version="0.5" hotspot_x="95" width="190">
+    <uuid uuid="{e8b19d52-137c-4cac-a884-76d245faaf2a}"/>
+    <names>
+        <name lang="fr">HMI TACTILE 2</name>
         <name lang="de">Touchpanel 2</name>
         <name lang="it">Touch screen 2</name>
-        <name lang="fr">HMI TACTILE 2</name>
-        <name lang="pl">HMI TACTILE 2</name>
         <name lang="es">HMI TÁCTIL 2</name>
+        <name lang="ar">HMI TACTILE 2</name>
         <name lang="cs">HMI TACTILE 2</name>
+        <name lang="en">Touch panel 2</name>
+        <name lang="pl">HMI TACTILE 2</name>
         <name lang="nl">HMI Aanraakscherm klein</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="-64.25" y="79.45" size="4" rotate="true" text="-_"/>
-        <arc width="11.25" x="-90" y="76.575" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
-        <input x="-51.25" y="79.45" size="4" rotate="true" text="PE_"/>
-        <arc width="11.25" x="-90" y="-70" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
-        <arc width="11.25" x="78.75" y="76.575" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <arc width="11.25" x="78.75" y="-70" antialias="true" height="9.75" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-70" x1="-84" y2="-70" x2="84"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65.45" x1="-90" y2="80.8" x2="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65.4396" x1="90" y2="80.789" x2="90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="86.325" x1="-85.0877" y2="86.325" x2="83.553"/>
-        <rect width="150" x="-75" y="-57" antialias="false" height="130" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-21" y="2.475" size="5" rotate="true" text="MARQUE_"/>
-        <input x="-80.5" y="79.45" size="4" rotate="true" text="+_"/>
-        <terminal x="-75" y="86.65" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-60" y="86.65" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="-45" y="86.65" nameHidden="0" number="" name="" orientation="s"/>
+        <input y="79.45" text="-_" x="-64.25" rotate="true" size="4" tagg="none"/>
+        <arc y="76.575" height="9.75" x="-90" start="-90" antialias="true" angle="-90" width="11.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="79.45" text="PE_" x="-51.25" rotate="true" size="4" tagg="none"/>
+        <arc y="-70" height="9.75" x="-90" start="-180" antialias="true" angle="-90" width="11.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc y="76.575" height="9.75" x="78.75" start="0" antialias="true" angle="-90" width="11.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc y="-70" height="9.75" x="78.75" start="90" antialias="true" angle="-90" width="11.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="-70" antialias="false" x1="-84" y1="-70" length2="1.5" length1="1.5" x2="84" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="80.8" antialias="false" x1="-90" y1="-65.45" length2="1.5" length1="1.5" x2="-90" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="80.789" antialias="false" x1="90" y1="-65.4396" length2="1.5" length1="1.5" x2="90" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" y2="86.325" antialias="false" x1="-85.0877" y1="86.325" length2="1.5" length1="1.5" x2="83.553" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-57" height="130" x="-75" antialias="false" width="150" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="2.475" text="MARQUE_" x="-21" rotate="true" size="5" tagg="label"/>
+        <input y="79.45" text="+_" x="-80.5" rotate="true" size="4" tagg="none"/>
+        <terminal y="86.65" x="-75" orientation="s"/>
+        <terminal y="86.65" x="-60" orientation="s"/>
+        <terminal y="86.65" x="-45" orientation="s"/>
     </description>
 </definition>
