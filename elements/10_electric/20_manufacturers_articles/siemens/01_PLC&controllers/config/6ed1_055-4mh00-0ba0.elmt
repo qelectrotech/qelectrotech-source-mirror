@@ -1,49 +1,51 @@
-<definition width="200" version="0.3" hotspot_x="5" hotspot_y="5" height="140" type="element" orientation="dnnn">
-<uuid uuid="{11BB7DA6-5B2E-4798-B63B-2C52A849CE84}"/><names>
+<definition orientation="dyyy" type="element" hotspot_y="64" height="140" version="0.5" width="200" hotspot_x="94" link_type="simple">
+    <uuid uuid="{3b0574f3-def9-4092-a235-0e001b9dcf44}"/>
+    <names>
         <name lang="ar">6ED1 055-4MH00-0BA0</name>
-        <name lang="pt">6ED1 055-4MH00-0BA0</name>
-        <name lang="el">6ED1 055-4MH00-0BA0</name>
-        <name lang="en">6ED1 055-4MH00-0BA0</name>
-        <name lang="it">6ED1 055-4MH00-0BA0</name>
-        <name lang="fr">6ED1 055-4MH00-0BA0</name>
         <name lang="pl">6ED1 055-4MH00-0BA0</name>
         <name lang="es">6ED1 055-4MH00-0BA0</name>
         <name lang="cs">6ED1 055-4MH00-0BA0</name>
+        <name lang="pt">6ED1 055-4MH00-0BA0</name>
+        <name lang="en">6ED1 055-4MH00-0BA0</name>
+        <name lang="it">6ED1 055-4MH00-0BA0</name>
         <name lang="nl">6ED1 055-4MH00-0BA0</name>
+        <name lang="fr">6ED1 055-4MH00-0BA0</name>
+        <name lang="el">6ED1 055-4MH00-0BA0</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="8" x1="184" y2="2" x2="190"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="124" x1="184" y2="130" x2="190"/>
-        <rect width="178" x="6" y="8" antialias="false" height="116" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="130" x1="0" y2="124" x2="6"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2" x1="0" y2="8" x2="6"/>
-        <rect width="22" x="154" y="43" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="22" x="130" y="43" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="22" x="142" y="67" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x4="146" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="48" x1="146" y2="60" x2="146" y3="54" x3="134" y4="48"/>
-        <polygon x4="160" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="47" x1="160" y2="59" x2="160" y3="53" x3="172" y4="47"/>
-        <polygon x4="147" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="72" x1="147" y2="72" x2="159" y3="84" x3="153" y4="72"/>
-        <polygon x4="147" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="36" x1="147" y2="36" x2="159" y3="24" x3="153" y4="36"/>
-        <rect width="22" x="142" y="19" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="22" x="154" y="92.5" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="22" x="100" y="92.5" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="22" x="76" y="92.5" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="22" x="52" y="92.5" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="190" x="0" y="2" antialias="false" height="128" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="22" x="130" y="92.5" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="103" y="108" size="10" text="F4"/>
-        <text x="79" y="108" size="10" text="F3"/>
-        <text x="55" y="108" size="10" text="F2"/>
-        <text x="159" y="107" size="7" text="OK"/>
-        <text x="132" y="107" size="7" text="ESC"/>
-        <rect width="22" x="28" y="92.5" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="31" y="108" size="10" text="F1"/>
-        <text x="63" y="21" size="9" text="LOGO! TD"/>
-        <rect width="38" x="10.5" y="12" antialias="false" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <text x="12" y="20" size="6" text="SIEMENS"/>
-        <rect width="89" x="30" y="32" antialias="false" height="51" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="190" y="40" orientation="e"/>
+        <input y="-49.45" size="9" text="_" tagg="label" x="103" rotate="true"/>
+        <line x2="100" y1="-52" end1="none" x1="94" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" antialias="true" y2="-58" end2="none"/>
+        <line x2="100" y1="64" end1="none" x1="94" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" antialias="true" y2="70" end2="none"/>
+        <rect y="-52" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-84" height="116" width="178" antialias="false"/>
+        <line x2="-84" y1="70" end1="none" x1="-90" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" antialias="true" y2="64" end2="none"/>
+        <line x2="-84" y1="-58" end1="none" x1="-90" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" antialias="true" y2="-52" end2="none"/>
+        <rect y="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" x="64" height="22" width="22" antialias="false"/>
+        <rect y="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" x="40" height="22" width="22" antialias="false"/>
+        <rect y="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x="52" height="22" width="22" antialias="false"/>
+        <polygon x2="56" x4="56" y1="-12" y3="-6" x1="56" style="line-style:normal;line-weight:thin;filling:black;color:black" y4="-12" antialias="true" y2="0" x3="44"/>
+        <polygon x2="70" x4="70" y1="-13" y3="-7" x1="70" style="line-style:normal;line-weight:thin;filling:black;color:black" y4="-13" antialias="true" y2="-1" x3="82"/>
+        <polygon x2="69" x4="57" y1="12" y3="24" x1="57" style="line-style:normal;line-weight:thin;filling:black;color:black" y4="12" antialias="true" y2="12" x3="63"/>
+        <polygon x2="69" x4="57" y1="-24" y3="-36" x1="57" style="line-style:normal;line-weight:thin;filling:black;color:black" y4="-24" antialias="true" y2="-24" x3="63"/>
+        <rect y="-41" style="line-style:normal;line-weight:normal;filling:none;color:black" x="52" height="22" width="22" antialias="false"/>
+        <rect y="32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="64" height="22" width="22" antialias="false"/>
+        <rect y="32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" height="22" width="22" antialias="false"/>
+        <rect y="32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14" height="22" width="22" antialias="false"/>
+        <rect y="32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-38" height="22" width="22" antialias="false"/>
+        <rect y="-58" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-90" height="128" width="190" antialias="false"/>
+        <rect y="32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="40" height="22" width="22" antialias="false"/>
+        <text y="48" size="10" text="F4" x="13"/>
+        <text y="48" size="10" text="F3" x="-11"/>
+        <text y="48" size="10" text="F2" x="-35"/>
+        <text y="47" size="7" text="OK" x="69"/>
+        <text y="47" size="7" text="ESC" x="42"/>
+        <rect y="32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-62" height="22" width="22" antialias="false"/>
+        <text y="48" size="10" text="F1" x="-59"/>
+        <text y="-39" size="9" text="LOGO! TD" x="-27"/>
+        <rect y="-48" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-79.5" height="10" width="38" antialias="false"/>
+        <text y="-40" size="6" text="SIEMENS" x="-78"/>
+        <rect y="-28" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" height="51" width="89" antialias="false"/>
+        <terminal y="-20" orientation="e" x="100"/>
     </description>
 </definition>

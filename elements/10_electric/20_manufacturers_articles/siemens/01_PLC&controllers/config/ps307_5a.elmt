@@ -1,69 +1,71 @@
-<definition width="170" version="0.3" hotspot_x="16" hotspot_y="33" height="260" type="element" orientation="dnnn">
-<uuid uuid="{D478D5F0-6F48-41C4-9AB8-A9FCF416C9C2}"/><names>
+<definition orientation="dyyy" type="element" hotspot_y="34" height="260" version="0.5" width="170" hotspot_x="15" link_type="simple">
+    <uuid uuid="{beb32ec4-fb0e-4e39-b8e1-61443e35818f}"/>
+    <names>
         <name lang="ar">PS 307   5A</name>
-        <name lang="pt">PS 307   5A</name>
-        <name lang="el">PS 307   5A</name>
-        <name lang="en">PS 307   5A</name>
-        <name lang="it">PS 307 5A Alim. di potenza</name>
-        <name lang="fr">PS 307   5A</name>
         <name lang="pl">6ES7307-1EA00-0AA0</name>
         <name lang="es">PS 307   5A</name>
         <name lang="cs">PS 307   5A</name>
+        <name lang="pt">PS 307   5A</name>
+        <name lang="en">PS 307   5A</name>
+        <name lang="it">PS 307 5A Alim. di potenza</name>
         <name lang="nl">PS 307   5A</name>
+        <name lang="fr">PS 307   5A</name>
+        <name lang="el">PS 307   5A</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="20" x="0" y="25" antialias="false" height="33" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="160" x="-10" y="-30" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="14" x="3" y="43" antialias="false" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="2" y="39" size="5" text="230V"/>
-        <rect width="14" x="3" y="45" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="82" x1="21" y2="79" x2="21"/>
-        <arc width="5" x="18.5" y="80.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="45" angle="-265"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="72" x1="21" y2="69" x2="21"/>
-        <rect width="9" x="7" y="69" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="21" y="48" size="4" text="SELECTOR"/>
-        <text x="21" y="43" size="4" text="VOLTAGE"/>
-        <input x="125" y="-17" size="4" rotate="true" text="5A"/>
-        <rect width="6" x="7" y="-19.25" antialias="false" height="27" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="145.5" y2="113" x2="145.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="150" y2="70" x2="145.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="113" x1="-5.5" y2="113" x2="145.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="-5.5" y2="113" x2="-5.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="-10" y2="70" x2="-5.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="68" x1="0" y2="87" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="68" x1="3" y2="87" x2="3"/>
-        <arc width="3" x="0" y="66" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <arc width="3" x="0" y="86" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <rect width="7" x="8" y="79.75" antialias="false" height="2.5" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
-        <text x="14" y="7" size="4" text="DC 24V"/>
-        <text x="125" y="206" size="4" text="X"/>
-        <text x="125" y="214" size="4" text="7"/>
-        <text x="132" y="206" size="4" text="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="208" x1="124" y2="208" x2="136"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="202" x1="130" y2="214" x2="130"/>
-        <text x="132" y="214" size="4" text="8"/>
-        <input x="-12" y="216" size="3" rotate="true" text="307-1EA00-0AA0"/>
-        <input x="120" y="-22" size="4" rotate="true" text="PS 307"/>
-        <circle x="-4" y="205" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
-        <rect width="12" x="-8" y="201" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13.25" x1="13" y2="-13.25" x2="7"/>
-        <circle x="8.6" y="3.35" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.8"/>
-        <circle x="8.6" y="-17.65" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.8"/>
-        <circle x="8.6" y="-7.15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.75" x1="13" y2="1.75" x2="7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.75" x1="13" y2="-8.75" x2="7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.75" x1="13" y2="-2.75" x2="7"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31" x1="0" y2="31" x2="20"/>
-        <terminal x="30" y="220" orientation="s"/>
-        <terminal x="10" y="220" orientation="s"/>
-        <terminal x="20" y="220" orientation="s"/>
-        <terminal x="90" y="220" orientation="s"/>
-        <terminal x="70" y="220" orientation="s"/>
-        <terminal x="80" y="220" orientation="s"/>
-        <terminal x="120" y="220" orientation="s"/>
-        <terminal x="100" y="220" orientation="s"/>
-        <terminal x="110" y="220" orientation="s"/>
+        <input y="-39.45" size="9" text="_" tagg="label" x="-7" rotate="true"/>
+        <rect y="25" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" height="33" width="20" antialias="false"/>
+        <rect y="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" height="250" width="160" antialias="false"/>
+        <rect y="43" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3" height="1" width="14" antialias="false"/>
+        <text y="39" size="5" text="230V" x="2"/>
+        <rect y="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3" height="10" width="14" antialias="false"/>
+        <line x2="21" y1="82" end1="none" x1="21" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="79" end2="none"/>
+        <arc y="80.5" start="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x="18.5" height="5" width="5" antialias="true" angle="-265"/>
+        <line x2="21" y1="72" end1="none" x1="21" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="69" end2="none"/>
+        <rect y="69" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7" height="16" width="9" antialias="false"/>
+        <text y="48" size="4" text="SELECTOR" x="21"/>
+        <text y="43" size="4" text="VOLTAGE" x="21"/>
+        <input y="-17" size="4" text="5A" tagg="none" x="125" rotate="true"/>
+        <rect y="-19.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7" height="27" width="6" antialias="false"/>
+        <line x2="145.5" y1="70" end1="none" x1="145.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="113" end2="none"/>
+        <line x2="145.5" y1="70" end1="none" x1="150" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="70" end2="none"/>
+        <line x2="145.5" y1="113" end1="none" x1="-5.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="113" end2="none"/>
+        <line x2="-5.5" y1="70" end1="none" x1="-5.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="113" end2="none"/>
+        <line x2="-5.5" y1="70" end1="none" x1="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="70" end2="none"/>
+        <line x2="0" y1="68" end1="none" x1="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="87" end2="none"/>
+        <line x2="3" y1="68" end1="none" x1="3" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="87" end2="none"/>
+        <arc y="66" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" height="3" width="3" antialias="true" angle="-180"/>
+        <arc y="86" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" height="3" width="3" antialias="true" angle="-180"/>
+        <rect y="79.75" style="line-style:normal;line-weight:thin;filling:black;color:black" x="8" height="2.5" width="7" antialias="false"/>
+        <text y="7" size="4" text="DC 24V" x="14"/>
+        <text y="206" size="4" text="X" x="125"/>
+        <text y="214" size="4" text="7" x="125"/>
+        <text y="206" size="4" text="6" x="132"/>
+        <line x2="136" y1="208" end1="none" x1="124" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="208" end2="none"/>
+        <line x2="130" y1="202" end1="none" x1="130" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="214" end2="none"/>
+        <text y="214" size="4" text="8" x="132"/>
+        <input y="216" size="3" text="307-1EA00-0AA0" tagg="none" x="-12" rotate="true"/>
+        <input y="-22" size="4" text="PS 307" tagg="none" x="120" rotate="true"/>
+        <circle y="205" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4" diameter="4" antialias="true"/>
+        <rect y="201" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8" height="12" width="12" antialias="false"/>
+        <line x2="7" y1="-13.25" end1="none" x1="13" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="-13.25" end2="none"/>
+        <circle y="3.35" style="line-style:normal;line-weight:normal;filling:none;color:black" x="8.6" diameter="2.8" antialias="true"/>
+        <circle y="-17.65" style="line-style:normal;line-weight:normal;filling:none;color:black" x="8.6" diameter="2.8" antialias="true"/>
+        <circle y="-7.15" style="line-style:normal;line-weight:normal;filling:none;color:black" x="8.6" diameter="2.8" antialias="true"/>
+        <line x2="7" y1="1.75" end1="none" x1="13" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="1.75" end2="none"/>
+        <line x2="7" y1="-8.75" end1="none" x1="13" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="-8.75" end2="none"/>
+        <line x2="7" y1="-2.75" end1="none" x1="13" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="-2.75" end2="none"/>
+        <line x2="20" y1="31" end1="none" x1="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="31" end2="none"/>
+        <terminal y="220" orientation="s" x="110"/>
+        <terminal y="220" orientation="s" x="10"/>
+        <terminal y="220" orientation="s" x="100"/>
+        <terminal y="220" orientation="s" x="120"/>
+        <terminal y="220" orientation="s" x="70"/>
+        <terminal y="220" orientation="s" x="80"/>
+        <terminal y="220" orientation="s" x="30"/>
+        <terminal y="220" orientation="s" x="90"/>
+        <terminal y="220" orientation="s" x="20"/>
     </description>
 </definition>

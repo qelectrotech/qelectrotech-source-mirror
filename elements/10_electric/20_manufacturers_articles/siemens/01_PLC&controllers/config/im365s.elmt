@@ -1,26 +1,28 @@
-<definition width="90" version="0.3" hotspot_x="16" hotspot_y="39" height="270" type="element" orientation="dnnn">
-<uuid uuid="{DA010C57-DA8F-48DB-8488-9ABBE688DB02}"/><names>
+<definition orientation="dyyy" type="element" hotspot_y="33" height="260" version="0.5" width="90" hotspot_x="15" link_type="simple">
+    <uuid uuid="{433fabd4-a891-4a7d-9184-62d1a4661cb1}"/>
+    <names>
         <name lang="ar">IM365 SEND 365-0BA01-0AA0</name>
-        <name lang="pt">6ES7 365-0BA01-0AA0</name>
-        <name lang="el">IM365 SEND 365-0BA01-0AA0</name>
-        <name lang="en">IM365 SEND 365-0BA01-0AA0</name>
-        <name lang="it">IM365 Trasmettitore 365-0BA01-0AA0</name>
-        <name lang="fr">IM365 SEND 365-0BA01-0AA0</name>
         <name lang="pl">IM365 SEND 365-0BA01-0AA0</name>
         <name lang="es">IM365 Emisor 365-0BA01-0AA0</name>
         <name lang="cs">IM365 SEND 365-0BA01-0AA0</name>
+        <name lang="pt">6ES7 365-0BA01-0AA0</name>
+        <name lang="en">IM365 SEND 365-0BA01-0AA0</name>
+        <name lang="it">IM365 Trasmettitore 365-0BA01-0AA0</name>
         <name lang="nl">IM365 Zender 365-0BA01-0AA0</name>
+        <name lang="fr">IM365 SEND 365-0BA01-0AA0</name>
+        <name lang="el">IM365 SEND 365-0BA01-0AA0</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="80" x="-10" y="-30" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="33" y="-14.5" size="5" rotate="true" text="SEND"/>
-        <input x="-12" y="217.5" size="3" rotate="true" text="335-0BA01-0AA0"/>
-        <input x="32" y="-23.5" size="5" rotate="true" text="IM 365"/>
-        <circle x="-4" y="206" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
-        <rect width="12" x="-8" y="202" antialias="false" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="120" x1="-10" y2="120" x2="69"/>
-        <terminal x="36" y="217" orientation="n"/>
+        <input y="-49.45" size="9" text="_" tagg="label" x="-7" rotate="true"/>
+        <rect y="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" height="250" width="80" antialias="false"/>
+        <input y="-14.5" size="5" text="SEND" tagg="none" x="33" rotate="true"/>
+        <input y="217.5" size="3" text="335-0BA01-0AA0" tagg="none" x="-12" rotate="true"/>
+        <input y="-23.5" size="5" text="IM 365" tagg="none" x="32" rotate="true"/>
+        <circle y="206" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4" diameter="4" antialias="true"/>
+        <rect y="202" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8" height="12" width="12" antialias="false"/>
+        <line x2="69" y1="120" end1="none" x1="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="120" end2="none"/>
+        <terminal y="217" orientation="n" x="36"/>
     </description>
 </definition>
