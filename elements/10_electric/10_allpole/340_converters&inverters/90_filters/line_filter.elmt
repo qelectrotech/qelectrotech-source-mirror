@@ -1,42 +1,44 @@
-<definition width="90" version="0.3" hotspot_x="45" hotspot_y="25" height="60" type="element" orientation="dyyy">
-<uuid uuid="{22A8939B-AD0B-4281-9FCF-B7CA605892E3}"/><names>
+<definition height="60" type="element" width="90" orientation="dyyy" hotspot_x="45" link_type="simple" version="0.5" hotspot_y="23">
+    <uuid uuid="{846ab7b5-3024-4c60-8e06-ead72711c300}"/>
+    <names>
         <name lang="ar">خط مرشح</name>
-        <name lang="el">Φίλτρο γραμμής</name>
-        <name lang="en">Line filter</name>
-        <name lang="de">Netzfilter</name>
-        <name lang="it">Filtro di linea</name>
-        <name lang="fr">Ligne filtre</name>
         <name lang="pl">Filtr sieciowy</name>
+        <name lang="el">Φίλτρο γραμμής</name>
+        <name lang="fr">Ligne filtre</name>
+        <name lang="de">Netzfilter</name>
         <name lang="cs">Síťový filtr</name>
+        <name lang="en">Line filter</name>
+        <name lang="it">Filtro di linea</name>
         <name lang="nl">Lijn filter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-26" y="8" size="6" text="LINE FILTER"/>
-        <polygon x4="33" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-14" x1="33" y2="-14" x2="40" y3="26" x3="40" y4="26"/>
-        <polygon x4="-33" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-14" x1="-33" y2="-14" x2="-40" y3="26" x3="-40" y4="26"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-28" y2="-14" x2="-13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25.95" x1="-27.55" y2="25.95" x2="-12.55"/>
-        <circle x="-32.2361" y="-16.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
-        <circle x="-32.2361" y="23.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25.95" x1="-7.55" y2="25.95" x2="7.45"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="12" y2="-14" x2="27"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25.95" x1="12.45" y2="25.95" x2="27.45"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-8" y2="-14" x2="7"/>
-        <circle x="27.7639" y="23.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
-        <circle x="27.7639" y="-16.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
-        <circle x="7.7639" y="23.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
-        <circle x="7.7639" y="-16.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
-        <circle x="-12.2361" y="23.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
-        <circle x="-12.2361" y="-16.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
-        <terminal x="-10" y="-16" orientation="n"/>
-        <terminal x="30" y="-16" orientation="n"/>
-        <terminal x="10" y="-16" orientation="n"/>
-        <terminal x="-30" y="-16" orientation="n"/>
-        <terminal x="-10" y="28" orientation="s"/>
-        <terminal x="10" y="28" orientation="s"/>
-        <terminal x="30" y="28" orientation="s"/>
-        <terminal x="-30" y="28" orientation="s"/>
+        <input tagg="label" size="9" rotate="true" text="_" x="43" y="-4.45"/>
+        <text size="6" text="LINE FILTER" x="-26" y="8"/>
+        <polygon y1="-14" x3="40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="40" y3="26" y2="-14" x4="33" y4="26" closed="false" x1="33"/>
+        <polygon y1="-14" x3="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-40" y3="26" y2="-14" x4="-33" y4="26" closed="false" x1="-33"/>
+        <line y1="-14" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-13" y2="-14" length1="1.5" end2="none" x1="-28"/>
+        <line y1="25.95" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-12.55" y2="25.95" length1="1.5" end2="none" x1="-27.55"/>
+        <circle diameter="4.4721" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-32.2361" y="-16.2361"/>
+        <circle diameter="4.4721" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-32.2361" y="23.7639"/>
+        <line y1="25.95" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="7.45" y2="25.95" length1="1.5" end2="none" x1="-7.55"/>
+        <line y1="-14" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="27" y2="-14" length1="1.5" end2="none" x1="12"/>
+        <line y1="25.95" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="27.45" y2="25.95" length1="1.5" end2="none" x1="12.45"/>
+        <line y1="-14" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="7" y2="-14" length1="1.5" end2="none" x1="-8"/>
+        <circle diameter="4.4721" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="27.7639" y="23.7639"/>
+        <circle diameter="4.4721" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="27.7639" y="-16.2361"/>
+        <circle diameter="4.4721" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="7.7639" y="23.7639"/>
+        <circle diameter="4.4721" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="7.7639" y="-16.2361"/>
+        <circle diameter="4.4721" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-12.2361" y="23.7639"/>
+        <circle diameter="4.4721" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-12.2361" y="-16.2361"/>
+        <terminal orientation="n" x="-10" y="-16"/>
+        <terminal orientation="n" x="30" y="-16"/>
+        <terminal orientation="n" x="10" y="-16"/>
+        <terminal orientation="n" x="-30" y="-16"/>
+        <terminal orientation="s" x="-10" y="28"/>
+        <terminal orientation="s" x="10" y="28"/>
+        <terminal orientation="s" x="30" y="28"/>
+        <terminal orientation="s" x="-30" y="28"/>
     </description>
 </definition>

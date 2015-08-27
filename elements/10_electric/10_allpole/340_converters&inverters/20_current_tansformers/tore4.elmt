@@ -1,37 +1,39 @@
-<definition width="70" version="0.3" hotspot_x="45" hotspot_y="25" height="40" type="element" orientation="dyyy">
-<uuid uuid="{7424E7C8-37CB-4C6F-8FA2-A0BEEAE63137}"/><names>
+<definition height="40" type="element" width="70" orientation="dyyy" hotspot_x="46" link_type="simple" version="0.5" hotspot_y="22">
+    <uuid uuid="{25c10fe2-db19-4afa-ade6-1050bbca25f7}"/>
+    <names>
         <name lang="ar">ملف حلقي بأربع أقطاب</name>
-        <name lang="de">Stromwandler 4-polig</name>
+        <name lang="es">Núcleo toroide 4 polos</name>
         <name lang="pt">Núcleo toroidal de 4 polos</name>
+        <name lang="pl">Przekładnik prądowy czterotorowy</name>
         <name lang="el">Τοροειδές πηνίο 4 πόλων</name>
+        <name lang="fr">Tore 4 pôles</name>
+        <name lang="de">Stromwandler 4-polig</name>
+        <name lang="cs">Prstencové jádro se čtyřmi póly</name>
         <name lang="en">4-poles toroidal core</name>
         <name lang="it">Toroide a 4 poli"</name>
-        <name lang="fr">Tore 4 pôles</name>
-        <name lang="pl">Przekładnik prądowy czterotorowy</name>
-        <name lang="es">Núcleo toroide 4 polos</name>
-        <name lang="cs">Prstencové jádro se čtyřmi póly</name>
         <name lang="nl">Stroomtransformator ringkern 4AC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="5" y2="-10" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="14" y2="-10" x2="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="14" y2="0" x2="10"/>
-        <ellipse width="50" x="-40" y="-2.5" antialias="true" height="5" style="line-style:dashed;line-weight:thin;filling:white;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-10" y2="10" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="0" y2="10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-30" y2="10" x2="-30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-20" y2="10" x2="-20"/>
-        <terminal x="0" y="-16" orientation="n"/>
-        <terminal x="0" y="11" orientation="s"/>
-        <terminal x="15" y="0" orientation="e"/>
-        <terminal x="15" y="-10" orientation="e"/>
-        <terminal x="-10" y="-16" orientation="n"/>
-        <terminal x="-10" y="11" orientation="s"/>
-        <terminal x="-30" y="-16" orientation="n"/>
-        <terminal x="-20" y="-16" orientation="n"/>
-        <terminal x="-30" y="11" orientation="s"/>
-        <terminal x="-20" y="11" orientation="s"/>
+        <input tagg="label" size="9" rotate="true" text="_" x="-49" y="-13.45"/>
+        <line y1="0" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" y2="-10" length1="1.5" end2="none" x1="5"/>
+        <line y1="-10" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" y2="-10" length1="1.5" end2="none" x1="14"/>
+        <line y1="0" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="0" length1="1.5" end2="none" x1="14"/>
+        <ellipse height="5" width="50" style="line-style:dashed;line-weight:thin;filling:white;color:black" antialias="true" x="-40" y="-2.5"/>
+        <line y1="-15" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-10" y2="10" length1="1.5" end2="none" x1="-10"/>
+        <line y1="-15" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="0" y2="10" length1="1.5" end2="none" x1="0"/>
+        <line y1="-15" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-30" y2="10" length1="1.5" end2="none" x1="-30"/>
+        <line y1="-15" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-20" y2="10" length1="1.5" end2="none" x1="-20"/>
+        <terminal orientation="n" x="0" y="-16"/>
+        <terminal orientation="s" x="0" y="11"/>
+        <terminal orientation="n" x="-20" y="-16"/>
+        <terminal orientation="s" x="-30" y="11"/>
+        <terminal orientation="e" x="15" y="0"/>
+        <terminal orientation="e" x="15" y="-10"/>
+        <terminal orientation="n" x="-10" y="-16"/>
+        <terminal orientation="s" x="-10" y="11"/>
+        <terminal orientation="n" x="-30" y="-16"/>
+        <terminal orientation="s" x="-20" y="11"/>
     </description>
 </definition>
