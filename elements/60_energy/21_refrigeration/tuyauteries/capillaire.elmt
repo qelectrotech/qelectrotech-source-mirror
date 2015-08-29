@@ -1,19 +1,21 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="2" height="10" type="element" orientation="dyyy">
-<uuid uuid="{CC550AB0-2205-44F8-90D7-D674A9BA1358}"/><names>
-        <name lang="ar">أنابيب شعريّة</name>
-        <name lang="en">Capillary tubing</name>
-        <name lang="fr">Capillaire</name>
-        <name lang="pl">Kapilara</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="8">
+    <uuid uuid="{3dde898a-361b-4032-8e29-4c9e89083b06}"/>
+    <names>
         <name lang="cs">Vlásečnicové trubky</name>
+        <name lang="pl">Kapilara</name>
         <name lang="it">Capillare</name>
+        <name lang="en">Capillary tubing</name>
         <name lang="nl">Capilair pijpje</name>
+        <name lang="ar">أنابيب شعريّة</name>
+        <name lang="fr">Capillaire</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-3" y="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="10"/>
-        <terminal x="10" y="0" orientation="e"/>
-        <terminal x="-10" y="0" orientation="w"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="6" y="0" x="-3"/>
+        <input tagg="label" rotate="true" size="9" y="-10.5" x="-7" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-10" x2="10"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="0" x="10" orientation="e"/>
     </description>
 </definition>

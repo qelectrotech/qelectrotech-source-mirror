@@ -1,27 +1,29 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-<uuid uuid="{A62D7106-F1E8-4643-9B03-2384858B416F}"/><names>
-        <name lang="ar">ضاغط (رمز عام)</name>
-        <name lang="el">Συμπιεστής, γενικό σύμβολο</name>
-        <name lang="en">Compressor (general)</name>
-        <name lang="it">Compressore (segno generale)</name>
-        <name lang="fr">Compresseur (général)</name>
-        <name lang="pl">Kompresor, symbol ogólny</name>
+<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+    <uuid uuid="{2f3d38e1-da85-4783-81b8-67ce73178c51}"/>
+    <names>
         <name lang="cs">Kompresor (obecný symbol)</name>
+        <name lang="it">Compressore (segno generale)</name>
+        <name lang="pl">Kompresor, symbol ogólny</name>
+        <name lang="en">Compressor (general)</name>
         <name lang="nl">Compressor algemeen</name>
+        <name lang="ar">ضاغط (رمز عام)</name>
+        <name lang="fr">Compresseur (général)</name>
+        <name lang="el">Συμπιεστής, γενικό σύμβολο</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-15" y2="0" x2="-16"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="15" y2="0" x2="16"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-7" y2="-7" x2="13"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="-7" y2="7" x2="13"/>
-        <terminal x="-16" y="0" orientation="w"/>
-        <terminal x="16" y="0" orientation="e"/>
-        <terminal x="-10" y="10" orientation="w"/>
-        <terminal x="2" y="11" orientation="w"/>
-        <terminal x="2" y="11" orientation="w"/>
-        <terminal x="-10" y="-10" orientation="w"/>
+        <input tagg="label" rotate="true" size="9" y="14.55" x="-7" text="_"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="30" y="-15" x="-15"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-15" x2="-16"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="15" x2="16"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-13" x1="-7" x2="13"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="7" antialias="true" length2="1.5" end1="none" length1="1.5" y1="13" x1="-7" x2="13"/>
+        <terminal y="0" x="-16" orientation="w"/>
+        <terminal y="0" x="16" orientation="e"/>
+        <terminal y="10" x="-10" orientation="w"/>
+        <terminal y="11" x="2" orientation="w"/>
+        <terminal y="11" x="2" orientation="w"/>
+        <terminal y="-10" x="-10" orientation="w"/>
     </description>
 </definition>

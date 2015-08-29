@@ -1,19 +1,21 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dynn">
-<uuid uuid="{B92348D0-5006-45DA-92E7-8C08B0A0F519}"/><names>
-        <name lang="el">Θερμαντήρας</name>
-        <name lang="en">Heater</name>
-        <name lang="it">Riscaldatore</name>
-        <name lang="fr">Chauffe</name>
-        <name lang="pl">Nagrzewnica</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="25">
+    <uuid uuid="{cb17e669-23c8-42ab-8aeb-22df6d537c66}"/>
+    <names>
         <name lang="cs">Ohřívač</name>
+        <name lang="it">Riscaldatore</name>
+        <name lang="pl">Nagrzewnica</name>
+        <name lang="en">Heater</name>
         <name lang="nl">Verwarmer</name>
+        <name lang="fr">Chauffe</name>
+        <name lang="el">Θερμαντήρας</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="20" x2="10"/>
-        <rect width="20" x="-10" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="10" y="0" orientation="e"/>
-        <terminal x="-10" y="0" orientation="w"/>
+        <input tagg="label" rotate="true" size="9" y="-31.45" x="-7" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" antialias="true" length2="1.5" end1="none" length1="1.5" y1="-20" x1="-10" x2="10"/>
+        <rect width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-20" x="-10" height="40"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="0" x="10" orientation="e"/>
     </description>
 </definition>

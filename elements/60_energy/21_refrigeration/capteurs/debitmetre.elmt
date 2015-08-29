@@ -1,23 +1,25 @@
-<definition width="90" version="0.3" hotspot_x="45" hotspot_y="35" height="70" type="element" orientation="dyyy">
-<uuid uuid="{8324E010-E742-4243-B232-E609B9926CFD}"/><names>
-        <name lang="ar">مقياس تدفق</name>
-        <name lang="el">Μετρητής ροής</name>
-        <name lang="en">Flowmeter</name>
-        <name lang="it">Misuratore di flusso</name>
-        <name lang="fr">Débit mètre</name>
-        <name lang="pl">Przepływomierz</name>
+<definition width="80" hotspot_x="40" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="34">
+    <uuid uuid="{93536c7f-6753-45e2-ac79-33362ec26f24}"/>
+    <names>
         <name lang="cs">Průtokoměr</name>
+        <name lang="it">Misuratore di flusso</name>
+        <name lang="pl">Przepływomierz</name>
+        <name lang="en">Flowmeter</name>
         <name lang="nl">Stromingsmeter</name>
+        <name lang="ar">مقياس تدفق</name>
+        <name lang="fr">Débit mètre</name>
+        <name lang="el">Μετρητής ροής</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="30" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-30" x2="0"/>
-        <arc width="30" x="7" y="-15" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-120" angle="-120"/>
-        <circle x="-20.1324" y="-20.1324" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40.2647"/>
-        <arc width="30" x="-37" y="-15" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="62" angle="-124"/>
-        <terminal x="0" y="-30" orientation="n"/>
-        <terminal x="0" y="30" orientation="s"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" antialias="false" length2="1.5" end1="none" length1="1.5" y1="20" x1="0" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-20" x1="0" x2="0"/>
+        <arc width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-120" antialias="true" angle="-120" y="-15" x="7" height="30"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="40.2647" y="-20.1324" x="-20.1324"/>
+        <arc width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="62" antialias="true" angle="-124" y="-15" x="-37" height="30"/>
+        <input tagg="label" rotate="true" size="9" y="-3.5" x="22" text="_"/>
+        <terminal y="-30" x="0" orientation="n"/>
+        <terminal y="30" x="0" orientation="s"/>
     </description>
 </definition>

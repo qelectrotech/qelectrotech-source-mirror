@@ -1,29 +1,31 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="10" height="20" type="element" orientation="dyyy">
-<uuid uuid="{ED346737-F775-4D78-99AA-16E14633F4FB}"/><names>
-        <name lang="ar">قارورة كبيرة</name>
-        <name lang="el">Μεγάλη φιάλη</name>
-        <name lang="en">Large bottle</name>
-        <name lang="it">Bottiglia grande</name>
-        <name lang="fr">Bouteille grande</name>
-        <name lang="pl">Duża butla</name>
+<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="14">
+    <uuid uuid="{0356f3f4-a074-4ef9-8662-b312389aa5cc}"/>
+    <names>
         <name lang="cs">Velká láhev</name>
+        <name lang="it">Bottiglia grande</name>
+        <name lang="pl">Duża butla</name>
+        <name lang="en">Large bottle</name>
         <name lang="nl">Grote tank</name>
+        <name lang="ar">قارورة كبيرة</name>
+        <name lang="fr">Bouteille grande</name>
+        <name lang="el">Μεγάλη φιάλη</name>
     </names>
     <informations>Rotation possible</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-17" y2="7" x2="17"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-17" y2="-7" x2="17"/>
-        <arc width="5" x="15" y="-7" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <arc width="5" x="-20" y="-7" antialias="true" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <terminal x="20" y="0" orientation="e"/>
-        <terminal x="-20" y="0" orientation="w"/>
-        <terminal x="10" y="-7" orientation="n"/>
-        <terminal x="-10" y="-7" orientation="n"/>
-        <terminal x="-10" y="7" orientation="s"/>
-        <terminal x="10" y="7" orientation="s"/>
-        <terminal x="0" y="-7" orientation="n"/>
-        <terminal x="0" y="7" orientation="s"/>
-        <terminal x="19" y="-4" orientation="e"/>
-        <terminal x="19" y="4" orientation="e"/>
+        <input tagg="label" rotate="true" size="9" y="-19.45" x="-23" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="7" antialias="false" length2="1.5" end1="none" length1="1.5" y1="7" x1="-17" x2="17"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-7" x1="-17" x2="17"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="-180" y="-7" x="15" height="14"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" antialias="true" angle="-180" y="-7" x="-20" height="14"/>
+        <terminal y="7" x="-10" orientation="s"/>
+        <terminal y="7" x="10" orientation="s"/>
+        <terminal y="-7" x="10" orientation="n"/>
+        <terminal y="-7" x="-10" orientation="n"/>
+        <terminal y="-7" x="0" orientation="n"/>
+        <terminal y="4" x="19" orientation="e"/>
+        <terminal y="7" x="0" orientation="s"/>
+        <terminal y="-4" x="19" orientation="e"/>
+        <terminal y="0" x="20" orientation="e"/>
+        <terminal y="0" x="-20" orientation="w"/>
     </description>
 </definition>

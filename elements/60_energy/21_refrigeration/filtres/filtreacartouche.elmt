@@ -1,22 +1,24 @@
-<definition width="40" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dyyy">
-<uuid uuid="{A1C95453-E841-473D-87E7-F0019C4D56E6}"/><names>
-        <name lang="ar">مصفاة</name>
-        <name lang="el">Κασέτα φίλτρου</name>
-        <name lang="en">Cartridge filter</name>
-        <name lang="it">Filtro a cartuccia</name>
-        <name lang="fr">Filtre à cartouche</name>
-        <name lang="pl">Filtr kasetowy</name>
+<definition width="40" hotspot_x="26" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="14">
+    <uuid uuid="{a75c1da4-4fd2-4495-b0c8-1ec4136e763f}"/>
+    <names>
         <name lang="cs">Vložkový filtr</name>
+        <name lang="it">Filtro a cartuccia</name>
+        <name lang="pl">Filtr kasetowy</name>
+        <name lang="en">Cartridge filter</name>
         <name lang="nl">Blokken filter</name>
+        <name lang="ar">مصفاة</name>
+        <name lang="fr">Filtre à cartouche</name>
+        <name lang="el">Κασέτα φίλτρου</name>
     </names>
     <informations>Rotation possible</informations>
     <description>
-        <rect width="25" x="-19" y="-8" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-8" x1="-15" y2="7" x2="-15"/>
-        <polygon x4="-10" y5="5" x5="2" y6="8" x6="2" antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="-8" x1="2" y2="-5" x2="2" y3="-5" x3="-10" y4="5"/>
-        <terminal x="-20" y="0" orientation="w"/>
-        <terminal x="0" y="-9" orientation="n"/>
-        <terminal x="0" y="9" orientation="s"/>
-        <terminal x="7" y="0" orientation="e"/>
+        <input tagg="label" rotate="true" size="9" y="-19.45" x="-22" text="_"/>
+        <rect width="25" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-8" x="-19" height="16"/>
+        <line end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="7" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-8" x1="-15" x2="-15"/>
+        <polygon style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="-5" x4="-10" x6="2" antialias="false" y6="8" y5="5" y1="-8" x1="2" closed="false" x3="-10" y3="-5" y4="5" x2="2" x5="2"/>
+        <terminal y="9" x="0" orientation="s"/>
+        <terminal y="0" x="7" orientation="e"/>
+        <terminal y="-9" x="0" orientation="n"/>
+        <terminal y="0" x="-20" orientation="w"/>
     </description>
 </definition>

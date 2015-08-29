@@ -1,18 +1,20 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dynn">
-<uuid uuid="{B04C89EA-3D2A-4D33-A1C7-D5480F992611}"/><names>
-        <name lang="el">Κιβώτιο μίξης</name>
-        <name lang="en">Mixing box</name>
-        <name lang="it">Box di miscelazione</name>
-        <name lang="fr">Boîte malaxage</name>
-        <name lang="pl">Komora mieszania</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="25">
+    <uuid uuid="{8f727eb4-d460-479e-b98a-448f16efae09}"/>
+    <names>
         <name lang="cs">Smíchávací komora</name>
+        <name lang="it">Box di miscelazione</name>
+        <name lang="pl">Komora mieszania</name>
+        <name lang="en">Mixing box</name>
         <name lang="nl">Mengkast</name>
+        <name lang="fr">Boîte malaxage</name>
+        <name lang="el">Κιβώτιο μίξης</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <rect width="20" x="-10" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="10" y="0" orientation="e"/>
-        <terminal x="-10" y="0" orientation="w"/>
+        <rect width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-20" x="-10" height="40"/>
+        <input tagg="label" rotate="true" size="9" y="-29.45" x="-7" text="_"/>
+        <terminal y="0" x="10" orientation="e"/>
+        <terminal y="0" x="-10" orientation="w"/>
     </description>
 </definition>

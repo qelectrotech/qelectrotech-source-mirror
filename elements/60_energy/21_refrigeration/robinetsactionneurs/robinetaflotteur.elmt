@@ -1,22 +1,24 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="13" height="20" type="element" orientation="dyyy">
-<uuid uuid="{78AC045F-AE6F-4181-B3C5-655027588643}"/><names>
-        <name lang="ar">حنفيّة بعوّامة</name>
-        <name lang="en">Ballcock</name>
-        <name lang="fr">Robinet à flotteur</name>
-        <name lang="pl">Zawór pływakowy</name>
+<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="12">
+    <uuid uuid="{1c4e9a4f-dfcd-463e-aee7-502236d7d529}"/>
+    <names>
         <name lang="cs">Plovákový ventil</name>
+        <name lang="pl">Zawór pływakowy</name>
         <name lang="it">Galleggiante</name>
+        <name lang="en">Ballcock</name>
         <name lang="nl">Vlotterklep</name>
+        <name lang="ar">حنفيّة بعوّامة</name>
+        <name lang="fr">Robinet à flotteur</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <ellipse width="6" x="4" y="-10.5" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="4" y2="-5" x2="0" y3="-1" x3="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="11"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-11"/>
-        <polygon x4="-10" y5="-4" x5="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y1="-5" x1="-10" y2="5" x2="10" y3="-5" x3="10" y4="5"/>
-        <terminal x="-11" y="0" orientation="w"/>
-        <terminal x="11" y="0" orientation="e"/>
+        <input tagg="label" rotate="true" size="9" y="0.55" x="-7" text="_"/>
+        <ellipse width="6" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" y="-10.5" x="4" height="3"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" antialias="false" y1="-9" x1="4" closed="false" x3="0" y3="-1" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="10" x2="11"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-10" x2="-11"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:white;color:black" y2="5" x4="-10" antialias="true" y5="-4" y1="-5" x1="-10" x3="10" y3="-5" y4="5" x2="10" x5="-10"/>
+        <terminal y="0" x="11" orientation="e"/>
+        <terminal y="0" x="-11" orientation="w"/>
     </description>
 </definition>

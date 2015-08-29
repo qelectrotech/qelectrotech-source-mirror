@@ -1,22 +1,24 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
-<uuid uuid="{2555A28C-0E57-4698-B56B-D04E8EB55796}"/><names>
-        <name lang="ar">صمام الكرة</name>
-        <name lang="el">Σφαιροειδής βαλβίδα</name>
-        <name lang="en">Ball valve</name>
-        <name lang="it">Valvola a sfera</name>
-        <name lang="fr">Vanne à boisseau</name>
-        <name lang="pl">Zawór kulowy</name>
+<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="10">
+    <uuid uuid="{5e78bb1c-5e22-4a18-b759-689ab8636291}"/>
+    <names>
         <name lang="cs">Kuličkový ventil</name>
+        <name lang="it">Valvola a sfera</name>
+        <name lang="pl">Zawór kulowy</name>
+        <name lang="en">Ball valve</name>
         <name lang="nl">Kogelklep</name>
+        <name lang="ar">صمام الكرة</name>
+        <name lang="fr">Vanne à boisseau</name>
+        <name lang="el">Σφαιροειδής βαλβίδα</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="11"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-11"/>
-        <polygon x4="-10" y5="-4" x5="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y1="-5" x1="-10" y2="5" x2="10" y3="-5" x3="10" y4="5"/>
-        <circle x="-4" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="8"/>
-        <terminal x="-11" y="0" orientation="w"/>
-        <terminal x="11" y="0" orientation="e"/>
+        <input tagg="label" rotate="true" size="9" y="2.55" x="-6" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="10" x2="11"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-10" x2="-11"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:white;color:black" y2="5" x4="-10" antialias="true" y5="-4" y1="-5" x1="-10" x3="10" y3="-5" y4="5" x2="10" x5="-10"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="8" y="-4" x="-4"/>
+        <terminal y="0" x="-11" orientation="w"/>
+        <terminal y="0" x="11" orientation="e"/>
     </description>
 </definition>

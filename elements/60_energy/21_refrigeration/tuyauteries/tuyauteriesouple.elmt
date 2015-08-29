@@ -1,27 +1,29 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="10" height="20" type="element" orientation="dyyy">
-<uuid uuid="{2569F494-8D39-47AC-BDB9-C8797A890038}"/><names>
-        <name lang="ar">أنابيب مرنة</name>
-        <name lang="el">Εύκαμπτη σωλήνα</name>
-        <name lang="en">flexible piping</name>
-        <name lang="it">Tubatura flessibile</name>
-        <name lang="fr">Tuyauterie souple</name>
-        <name lang="pl">Przewód elestyczny</name>
+<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="11">
+    <uuid uuid="{f106e89a-0c30-48e0-ac6f-9457a5722889}"/>
+    <names>
         <name lang="cs">Pružné potrubí</name>
+        <name lang="it">Tubatura flessibile</name>
+        <name lang="pl">Przewód elestyczny</name>
+        <name lang="en">flexible piping</name>
         <name lang="nl">Flexibele Pijp</name>
+        <name lang="ar">أنابيب مرنة</name>
+        <name lang="fr">Tuyauterie souple</name>
+        <name lang="el">Εύκαμπτη σωλήνα</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="5" x="-7.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <arc width="5" x="-12.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-220" angle="-50"/>
-        <arc width="5" x="-17" y="-5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-35" angle="-45"/>
-        <arc width="5" x="7.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-50"/>
-        <arc width="5" x="12" y="-5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-50"/>
-        <arc width="5" x="7.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
-        <arc width="5" x="-12.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <arc width="5" x="2.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <arc width="5" x="-2.5" y="-2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <terminal x="15" y="0" orientation="e"/>
-        <terminal x="-15" y="0" orientation="w"/>
+        <input tagg="label" rotate="true" size="9" y="2.55" x="-6" text="_"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" angle="-180" y="-2.5" x="-7.5" height="5"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-220" antialias="true" angle="-50" y="-2.5" x="-12.5" height="5"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-35" antialias="true" angle="-45" y="-5" x="-17" height="5"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="-50" y="-2.5" x="7.5" height="5"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" antialias="true" angle="-50" y="-5" x="12" height="5"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" antialias="true" angle="-90" y="-2.5" x="7.5" height="5"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="-90" y="-2.5" x="-12.5" height="5"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" angle="-180" y="-2.5" x="2.5" height="5"/>
+        <arc width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" antialias="true" angle="-180" y="-2.5" x="-2.5" height="5"/>
+        <terminal y="0" x="15" orientation="e"/>
+        <terminal y="0" x="-15" orientation="w"/>
     </description>
 </definition>

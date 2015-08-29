@@ -1,23 +1,25 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
-<uuid uuid="{F6E962CB-B1B8-4EE8-BA67-15B6CB6DB1F7}"/><names>
-        <name lang="ar">راصد حراري (ترموستات)</name>
-        <name lang="el">Θερμοστάτης</name>
-        <name lang="en">Thermostat</name>
-        <name lang="it">Termostato</name>
-        <name lang="fr">Thermostat</name>
-        <name lang="pl">Termostat</name>
+<definition width="20" hotspot_x="10" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="11">
+    <uuid uuid="{d38c214a-83a2-4908-ac8b-222022c134f5}"/>
+    <names>
         <name lang="cs">Termostat</name>
+        <name lang="it">Termostato</name>
+        <name lang="pl">Termostat</name>
+        <name lang="en">Thermostat</name>
         <name lang="nl">Thermostaat</name>
+        <name lang="ar">راصد حراري (ترموستات)</name>
+        <name lang="fr">Thermostat</name>
+        <name lang="el">Θερμοστάτης</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-3" y="-2" size="4" text="TS"/>
-        <arc width="4" x="-4" y="-7" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <ellipse width="1" x="-0.5" y="3.5" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="4" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-2" y2="0" x2="2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-2" y2="-7" x2="2"/>
-        <arc width="4" x="0" y="-7" antialias="true" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <input tagg="label" rotate="true" size="9" y="-1.5" x="1" text="_"/>
+        <text size="4" y="-2" x="-3" text="TS"/>
+        <arc width="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" antialias="true" angle="-180" y="-7" x="-4" height="7"/>
+        <ellipse width="1" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" y="3.5" x="-0.5" height="3"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="0" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-2" x2="2"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-7" x1="-2" x2="2"/>
+        <arc width="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="-180" y="-7" x="0" height="7"/>
     </description>
 </definition>

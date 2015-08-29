@@ -1,20 +1,22 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
-<uuid uuid="{9AC69113-437D-4F5D-AD3A-39596E981CE9}"/><names>
-        <name lang="ar">فاصلة</name>
-        <name lang="el">Διαχωριστής</name>
-        <name lang="en">separator</name>
-        <name lang="it">Separatore</name>
-        <name lang="fr">Séparateur</name>
-        <name lang="pl">Separator</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="18">
+    <uuid uuid="{4431b788-b578-45e0-a645-c1a191f33629}"/>
+    <names>
         <name lang="cs">Odlučovač</name>
+        <name lang="it">Separatore</name>
+        <name lang="pl">Separator</name>
+        <name lang="en">separator</name>
         <name lang="nl">Scheider</name>
+        <name lang="ar">فاصلة</name>
+        <name lang="fr">Séparateur</name>
+        <name lang="el">Διαχωριστής</name>
     </names>
     <informations>Rotation possible</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-2" x2="0"/>
-        <polygon x4="0" y5="5" x5="-8" y6="-13" x6="-8" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-13" x1="-8" y2="-13" x2="8" y3="5" x3="8" y4="13"/>
-        <terminal x="9" y="-10" orientation="e"/>
-        <terminal x="0" y="14" orientation="s"/>
-        <terminal x="-9" y="-10" orientation="w"/>
+        <input tagg="label" rotate="true" size="9" y="-24.5" x="-7" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-2" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-10" x1="0" x2="0"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-13" x4="0" x6="-8" antialias="false" y6="-13" y5="5" y1="-13" x1="-8" closed="false" x3="8" y3="5" y4="13" x2="8" x5="-8"/>
+        <terminal y="14" x="0" orientation="s"/>
+        <terminal y="-10" x="-9" orientation="w"/>
+        <terminal y="-10" x="9" orientation="e"/>
     </description>
 </definition>

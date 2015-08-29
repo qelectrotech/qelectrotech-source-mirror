@@ -1,22 +1,24 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
-<uuid uuid="{05AF061C-E0C8-40D5-BE17-02ECF3BC1B27}"/><names>
-        <name lang="el">Ανεμιστήρας</name>
-        <name lang="en">Ventilator</name>
-        <name lang="it">Ventilatore</name>
-        <name lang="fr">Ventilateur</name>
-        <name lang="pl">Wentylator</name>
+<definition width="50" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="24">
+    <uuid uuid="{2a5b4750-0be8-4a4c-a3f6-bef95019900d}"/>
+    <names>
         <name lang="cs">Větrák</name>
+        <name lang="it">Ventilatore</name>
+        <name lang="pl">Wentylator</name>
+        <name lang="en">Ventilator</name>
         <name lang="nl">Ventilator</name>
+        <name lang="fr">Ventilateur</name>
+        <name lang="el">Ανεμιστήρας</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="5" x2="1" y3="5" x3="18" y4="-10"/>
-        <rect width="40" x="-10" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="2.66454e-15" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-        <terminal x="30" y="0" orientation="e"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="10" y="-20" orientation="n"/>
-        <terminal x="10" y="20" orientation="s"/>
+        <input tagg="label" rotate="true" size="9" y="10.55" x="38" text="_"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" x4="10" antialias="true" y1="-10" x1="10" x3="18" y3="5" y4="-10" x2="1"/>
+        <rect width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-20" x="-10" height="40"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="20" y="-10" x="2.66454e-15"/>
+        <terminal y="0" x="-10" orientation="w"/>
+        <terminal y="-20" x="10" orientation="n"/>
+        <terminal y="0" x="30" orientation="e"/>
+        <terminal y="20" x="10" orientation="s"/>
     </description>
 </definition>

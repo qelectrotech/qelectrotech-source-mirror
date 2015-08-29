@@ -1,23 +1,25 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="22" height="30" type="element" orientation="dyyy">
-<uuid uuid="{C1D94033-AFAF-48E9-9432-D22852AEBDC9}"/><names>
-        <name lang="ar">مُخفّض ضغط بمعدّل حراري داخلي</name>
-        <name lang="en">TXV internal</name>
-        <name lang="fr">Détendeur thermostatique interne</name>
-        <name lang="pl">Zawór termostatyczny wewnętrzny</name>
+<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="22">
+    <uuid uuid="{ca4fcdb5-644b-4655-8fe1-248e19a039fc}"/>
+    <names>
         <name lang="cs">Vnitřní termostatický ventil</name>
+        <name lang="pl">Zawór termostatyczny wewnętrzny</name>
         <name lang="it">Sonda termostatica interna</name>
+        <name lang="en">TXV internal</name>
         <name lang="nl">Expansieventiel intern</name>
+        <name lang="ar">مُخفّض ضغط بمعدّل حراري داخلي</name>
+        <name lang="fr">Détendeur thermostatique interne</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="-5" y="-9.66667" size="5" text="TC"/>
-        <circle x="-5.83095" y="-17.831" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="11.6619"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:white;color:black" x1="2" x2="0" x3="-2" x4="-10" antialias="false" x5="-10" x6="10" x7="10" x8="-2" x9="0" y1="1" y2="3" y10="0" y3="1" y4="5" y5="-5" x10="0" y6="5" y7="-5" y8="1" y9="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-6" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="11"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-11"/>
-        <terminal x="-11" y="0" orientation="w"/>
-        <terminal x="11" y="0" orientation="e"/>
+        <text size="5" y="-9.66667" x="-5" text="TC"/>
+        <input tagg="label" rotate="true" size="9" y="-0.45" x="-7" text="_"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="11.6619" y="-17.831" x="-5.83095"/>
+        <polygon y3="1" x7="10" y9="0" y8="1" x8="-2" antialias="false" style="line-style:normal;line-weight:normal;filling:white;color:black" x6="10" x9="0" y4="5" x1="2" x4="-10" y10="0" y6="5" x5="-10" y5="-5" y2="3" x2="0" x3="-2" y7="-5" y1="1" x10="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-6" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="0" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="10" x2="11"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-10" x2="-11"/>
+        <terminal y="0" x="-11" orientation="w"/>
+        <terminal y="0" x="11" orientation="e"/>
     </description>
 </definition>

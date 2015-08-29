@@ -1,22 +1,24 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
-<uuid uuid="{D08C0A68-0C7A-4E38-A21C-868527E5B66F}"/><names>
-        <name lang="ar">صمّام عزل</name>
-        <name lang="el">Βαλβίδα απομόνωσης</name>
-        <name lang="en">Isolation valve</name>
-        <name lang="it">Valvola di intercettazione</name>
-        <name lang="fr">Vanne d'isolement</name>
-        <name lang="pl">Zawór odcinający</name>
+<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="10">
+    <uuid uuid="{4e669cec-9a34-4117-8272-dfc8590f7275}"/>
+    <names>
         <name lang="cs">Izolační ventil</name>
+        <name lang="it">Valvola di intercettazione</name>
+        <name lang="pl">Zawór odcinający</name>
+        <name lang="en">Isolation valve</name>
         <name lang="nl">Isolatieklep</name>
+        <name lang="ar">صمّام عزل</name>
+        <name lang="fr">Vanne d'isolement</name>
+        <name lang="el">Βαλβίδα απομόνωσης</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="11"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-11"/>
-        <polygon x4="-10" y5="-4" x5="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y1="-5" x1="-10" y2="5" x2="10" y3="-5" x3="10" y4="5"/>
-        <circle x="-2" y="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4"/>
-        <terminal x="-11" y="0" orientation="w"/>
-        <terminal x="11" y="0" orientation="e"/>
+        <input tagg="label" rotate="true" size="9" y="2.5" x="-7" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="10" x2="11"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-10" x2="-11"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:white;color:black" y2="5" x4="-10" antialias="true" y5="-4" y1="-5" x1="-10" x3="10" y3="-5" y4="5" x2="10" x5="-10"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" diameter="4" y="-2" x="-2"/>
+        <terminal y="0" x="11" orientation="e"/>
+        <terminal y="0" x="-11" orientation="w"/>
     </description>
 </definition>

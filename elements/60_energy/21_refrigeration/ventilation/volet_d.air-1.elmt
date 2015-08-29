@@ -1,20 +1,22 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="30" type="element" orientation="dynn">
-<uuid uuid="{C2B0C04E-3BB9-4D83-9DDF-F787F60162F4}"/><names>
-        <name lang="el">Διάφραγμα αέρα</name>
-        <name lang="en">Air damper</name>
-        <name lang="it">Serranda</name>
-        <name lang="fr">Volet d'air</name>
-        <name lang="pl">Przepustnica</name>
+<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="25">
+    <uuid uuid="{c4d27c75-a967-49ee-a6a3-390d7b99e3e9}"/>
+    <names>
         <name lang="cs">Vzduchová klapka</name>
+        <name lang="it">Serranda</name>
+        <name lang="pl">Przepustnica</name>
+        <name lang="en">Air damper</name>
         <name lang="nl">Luchtklep</name>
+        <name lang="fr">Volet d'air</name>
+        <name lang="el">Διάφραγμα αέρα</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.05" x1="-4.05" y2="-14.05" x2="3.95"/>
-        <rect width="20" x="-10" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-1.05" y="-11.05" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2"/>
-        <terminal x="10" y="-10" orientation="e"/>
-        <terminal x="-10" y="-10" orientation="w"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-14.05" antialias="false" length2="1.5" end1="none" length1="1.5" y1="-6.05" x1="-4.05" x2="3.95"/>
+        <input tagg="label" rotate="true" size="9" y="-29.45" x="-7" text="_"/>
+        <rect width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-20" x="-10" height="20"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" diameter="2" y="-11.05" x="-1.05"/>
+        <terminal y="-10" x="-10" orientation="w"/>
+        <terminal y="-10" x="10" orientation="e"/>
     </description>
 </definition>

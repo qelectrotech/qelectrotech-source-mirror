@@ -1,21 +1,23 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
-<uuid uuid="{C4C84D3A-3609-4633-91D0-D533947A4D62}"/><names>
-        <name lang="ar">رابط</name>
-        <name lang="el">Σύνδεση</name>
-        <name lang="en">Connexion</name>
-        <name lang="it">Connessione</name>
-        <name lang="fr">Connexion</name>
-        <name lang="pl">Łącznik</name>
+<definition width="20" hotspot_x="7" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="12">
+    <uuid uuid="{5ccaf28d-8a00-4f50-9c19-8a6f4205babe}"/>
+    <names>
         <name lang="cs">Spoj</name>
+        <name lang="it">Connessione</name>
+        <name lang="pl">Łącznik</name>
+        <name lang="en">Connexion</name>
         <name lang="nl">Verbinding</name>
+        <name lang="ar">رابط</name>
+        <name lang="fr">Connexion</name>
+        <name lang="el">Σύνδεση</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-4" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="4"/>
-        <circle x="-1" y="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2"/>
-        <terminal x="5" y="0" orientation="e"/>
-        <terminal x="0" y="-5" orientation="n"/>
+        <input tagg="label" rotate="true" size="9" y="-0.5" x="-7" text="_"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="0" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="0" x2="4"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" diameter="2" y="-1" x="-1"/>
+        <terminal y="0" x="5" orientation="e"/>
+        <terminal y="-5" x="0" orientation="n"/>
     </description>
 </definition>

@@ -1,24 +1,26 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
-<uuid uuid="{F8156098-9AC4-4291-AC93-8EDDCCA5D794}"/><names>
-        <name lang="ar">مضخّة طرديّة</name>
-        <name lang="el">Φυγοκεντρική αντλία</name>
-        <name lang="en">Centrifugal pump</name>
-        <name lang="it">Pompa centrifuga</name>
-        <name lang="fr">Pompe centrifuge</name>
-        <name lang="pl">Pompa odśrodkowa</name>
+<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+    <uuid uuid="{f79eebce-6a9a-4e3f-b9f5-8e3db3234ede}"/>
+    <names>
         <name lang="cs">Odstředivé čerpadlo</name>
+        <name lang="it">Pompa centrifuga</name>
+        <name lang="pl">Pompa odśrodkowa</name>
+        <name lang="en">Centrifugal pump</name>
         <name lang="nl">Centrifugaal pomp</name>
+        <name lang="ar">مضخّة طرديّة</name>
+        <name lang="fr">Pompe centrifuge</name>
+        <name lang="el">Φυγοκεντρική αντλία</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="30"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-15" y2="0" x2="15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="15" y2="15" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="15" y2="-15" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-15" y2="0" x2="-16"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="15" y2="0" x2="16"/>
-        <terminal x="-16" y="0" orientation="w"/>
-        <terminal x="16" y="0" orientation="e"/>
+        <input tagg="label" rotate="true" size="9" y="15.55" x="-7" text="_"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="30" y="-15" x="-15"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-15" x2="15"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="15" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-15" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="15" x2="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="-15" x2="-16"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" length2="1.5" end1="none" length1="1.5" y1="0" x1="15" x2="16"/>
+        <terminal y="0" x="-16" orientation="w"/>
+        <terminal y="0" x="16" orientation="e"/>
     </description>
 </definition>
